@@ -1,0 +1,45 @@
+    <!-- Navigation -->
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+                {% unless page.url contains 'notes' %}
+                <a class="navbar-brand page-scroll" href="#page-top">
+                    {{ site.title }}
+                </a>
+                {% endunless %}
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+
+                    {% for pagex in site.pages | sort: "title" %}
+                    {% unless pagex.url == "/" %}
+                    {% unless pagex.url contains 'notes' %}
+                    {% unless pagex.url contains 'css' %}
+                        {% if page.url contains 'notes' %}
+                        <li>
+                            <a class="page-scroll" href="{{site.url}}/#{{ pagex.title }}">{{ pagex.title }}</a>
+                        </li>
+                        {% else %}
+                        <li>
+                            <a class="page-scroll" href="#{{ pagex.title }}">{{ pagex.title }}</a>
+                        </li>
+                        {% endif %}
+                    {% endunless %}
+                    {% endunless %}
+                    {% endunless %}
+                    {% endfor %}
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>

@@ -1,0 +1,21 @@
+{% include head.html %}
+<div id="header" width="100%">
+    {% include navigation.html %}
+</div>
+<!--<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script type="text/javascript" async
+        src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--<script type="text/javascript" async src="{{ site.baseurl }}/js/mathjax.js"></script>-->
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            processEscapes: true
+        }
+    });
+</script>
+<link href="{{ site.baseurl }}/css/lightpaper.css" rel="stylesheet">
+
+<body style="margin-top: 100px;">
+{{ page.content | markdownify }}
+</body>

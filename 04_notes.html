@@ -1,0 +1,48 @@
+---
+layout: page
+title: Chandan's Reference Sheets
+heading: Chandan's Reference Sheets
+permalink: /notes/
+no_max_width: true
+---
+<!--<link href="{{ site.baseurl }}/css/bootstrap.min.css" rel="stylesheet">-->
+<link href="{{ site.baseurl }}/css/screen.css" rel="stylesheet">
+
+<div id="grid" data-columns>
+    {% for collection in site.collections %}
+    <ul>
+        <section class="category">
+            <h2>{{ collection.name }}</h2>
+            <div class="button"><a target="_blank" href="{{ collection.documentation }}">Docs</a></div>
+
+            {% assign categories = "" | split:"|"	%}
+            {% for doc in collection.docs %}
+            {% if doc.category %}
+            {% unless categories contains doc.category %}
+            {% assign categories = categories | push: doc.category %}
+            {% endunless %}
+            {% endif %}
+            {% endfor %}
+            {% assign categories_size = categories | size %}
+            {% if categories_size == 0 %}
+            {% assign categories = categories | push: nil %}
+            {% endif %}
+
+            {% for category in categories %}
+            {% if category %}
+            <h3>{{ category }}</h3>
+            {% endif %}
+
+            {% assign category_docs = collection.docs | where: "category", category	%}
+            <ul class="list-items">
+                {% for item in category_docs %}
+                {% if item.title %}
+                <li {% if item.version %} data-version="{{ item.version}}"{% endif %}>{% include render_item.html item=item %}</li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+            {% endfor %}
+        </section>
+    </ul>
+    {% endfor %}
+</div>

@@ -1,0 +1,7 @@
+---
+layout: null
+title: Summer 2015, Winter 2015, Summer 2016
+subtitle: HHMI Srini Turaga Lab
+image: "img/timeline/connectome.jpg"
+---
+Contributed to enhanced ML implementations for neural image segmentation

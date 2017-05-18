@@ -1,0 +1,25 @@
+<!-- Intro Header -->
+<header class="intro">
+    <div class="intro-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h1 class="brand-heading">&nbsp;</h1>
+                    <img src="{{ site.url }}/img/propic.jpg" style="border-radius: 50%" width="40%">
+                    <p class="intro-text">{{ content }}</p>
+                    {% capture title %}{% for page in site.pages | sort: "title" %}{% if forloop.first %}{{ page.title
+                    }}{% endif %}{% endfor %}{% endcapture %}
+                    <ul class="list-inline social-buttons">
+                        <li><a href="cs3hq@virginia.edu"><i class="fa fa-envelope fa-fw"></i></a></li>
+                        <li><a href="https://github.com/csinva"><i class="fa fa-github fa-fw"></i></a></li>
+                        <li><a href="https://www.linkedin.com/in/chandan-singh-433a20108/"><i class="fa fa-linkedin fa-fw"></i></a></li>
+                        <li><a href="https://www.facebook.com/chandan.singh.503"><i class="fa fa-facebook fa-fw"></i></a></li>
+                    </ul>
+                    <a href="#{{ title }}" class="btn btn-circle page-scroll">
+                        <i class="fa fa-angle-double-down animated"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

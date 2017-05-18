@@ -1,0 +1,7 @@
+---
+layout: null
+title: Summer 2014
+subtitle: HHMI Scientific Computing
+image: "img/timeline/neuron.jpg"
+---
+Simulated extracellular neural recordings via Neurocube Matlab scripts

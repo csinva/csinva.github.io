@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Big-O Algorithm Complexity Cheat Sheet</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+    <link href="css/main.css" rel="stylesheet">
+    
+  </head>
+  <body>
+    <div class="navbar navbar-inverse">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="http://bigocheatsheet.com">Big-O Cheat Sheet</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li><a href="#data-structures">Data Structures</a></li>
+              <li><a href="#sorting">Sorting</a></li>
+              <li><a href="#graphs">Graphs</a></li> 
+              <li><a href="#heaps">Heaps</a></li>
+              <li><a href="#chart">Chart</a></li>
+              <li><a href="#comments">Comments</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Part 1: Wrap all page content here -->
+    <div id="wrap">
+
+      <!-- Begin page content -->
+      <div class="container">
+
+        <div id="header">
+          <div id="header-ad">
+            <script type="text/javascript"><!--
+            google_ad_client = "ca-pub-8154832549041429";
+            /* BigO Header */
+            google_ad_slot = "1064631020";
+            google_ad_width = 728;
+            google_ad_height = 90;
+            //-->
+            </script>
+            <script type="text/javascript"
+            src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+            </script>
+          </div>
+
+<!--           <div id="gratipay">      
+            <script data-gratipay-username="ericdrowell" src="//grtp.co/v1.js"></script>
+          </div> -->
+        </div>
+
+        <div id="socialContainer">  
+          <!-- TWITTER BUTTON -->
+          <div> 
+            <a href="https://twitter.com/share" class="twitter-share-button" data-text="" data-hashtags="html5" data-count="vertical" data-via="ericdrowell">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+          </div>  
+          <!-- GOOGLE BUTTON -->
+          <div>
+            <!-- Place this tag where you want the +1 button to render -->
+            <g:plusone size="tall"></g:plusone>
+            
+            <!-- Place this render call where appropriate -->
+            <script type="text/javascript">
+              (function() {
+                var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                po.src = 'https://apis.google.com/js/plusone.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+              })();
+            </script>
+          </div>
+          <!-- FACEBOOK BUTTON -->
+          <div id="facebookContainer">
+            <div id="fb-root"></div>
+            <script>(function(d, s, id) {
+              var js, fjs = d.getElementsByTagName(s)[0];
+              if (d.getElementById(id)) {return;}
+              js = d.createElement(s); js.id = id;
+              js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+              fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script>
+            
+            <div class="fb-like" data-send="false" data-layout="box_count" data-width="" data-show-faces="false"></div> 
+          </div>
+        </div>
+
+
+        
+      <h1>Know Thy Complexities!</h1>
+      <p>Hi there!&nbsp; This webpage covers the space and time Big-O complexities of common algorithms used in Computer Science.&nbsp; When preparing for technical interviews in the past, I found myself spending hours crawling the internet putting together the best, average, and worst case complexities for search and sorting algorithms so that I wouldn't be stumped when asked about them.&nbsp; Over the last few years, I've interviewed at several Silicon Valley startups, and also some bigger companies, like Yahoo, eBay, LinkedIn, and Google, and each time that I prepared for an interview, I thought to myself "Why hasn't someone created a nice Big-O cheat sheet?".&nbsp; So, to save all of you fine folks a ton of time, I went ahead and created one.&nbsp; Enjoy! - <a href="https://twitter.com/ericdrowell">Eric</a></p>
+
+      <h2 id="legend">Legend</h2>
+      <table id="legendTable" class="table">
+        <tbody>
+          <tr>
+            <td><code class="green">Excellent</code></td>
+            <td><code class="yellow-green">Good</code></td>
+            <td><code class="yellow">Fair</code></td>
+            <td><code class="orange">Bad</code></td>
+            <td><code class="red">Horrible</code></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div id="middle">
+        <div id="tablesWrapper">
+
+          <h2 id="data-structures">Data Structure Operations</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Data Structure</th>
+      <th colspan="8">Time Complexity</th>
+      <th>Space Complexity</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th colspan="4">Average</th>  
+      <th colspan="4">Worst</th>                
+      <th>Worst</th>                
+    </tr>
+    <tr>
+      <th></th>
+        <th>Access</th>
+        <th>Search</th>
+        <th>Insertion</th>  
+        <th>Deletion</th>  
+        <th>Access</th>
+        <th>Search</th>
+        <th>Insertion</th>  
+        <th>Deletion</th>  
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="http://en.wikipedia.org/wiki/Array_data_structure">Array</a></td>
+      <td><code class="green">O(1)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="green">O(1)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+    </tr>
+    <tr>
+      <td><a href="http://en.wikipedia.org/wiki/Stack_(abstract_data_type)">Stack</a></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="green">O(1)</code></td>
+      <td><code class="green">O(1)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="green">O(1)</code></td>
+      <td><code class="green">O(1)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+    </tr>
+    <tr>
+      <td><a href="http://en.wikipedia.org/wiki/Singly_linked_list#Singly_linked_lists">Singly-Linked List</a></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="green">O(1)</code></td>
+      <td><code class="green">O(1)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="green">O(1)</code></td>
+      <td><code class="green">O(1)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+    </tr> 
+    <tr>
+      <td><a href="http://en.wikipedia.org/wiki/Doubly_linked_list">Doubly-Linked List</a></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="green">O(1)</code></td>
+      <td><code class="green">O(1)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="green">O(1)</code></td>
+      <td><code class="green">O(1)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+    </tr> 
+    <tr>
+      <td><a href="http://en.wikipedia.org/wiki/Skip_list">Skip List</a></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="orange">O(n log(n))</code></td>
+    </tr> 
+    <tr>
+      <td><a href="http://en.wikipedia.org/wiki/Hash_table">Hash Table</a></td>
+      <td><code>-</code></td>
+      <td><code class="green">O(1)</code></td>
+      <td><code class="green">O(1)</code></td>
+      <td><code class="green">O(1)</code></td>
+      <td><code>-</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+    </tr>
+    <tr>
+      <td><a href="http://en.wikipedia.org/wiki/Binary_search_tree">Binary Search Tree</a></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+    </tr>
+    <tr>
+      <td><a href="https://en.wikipedia.org/wiki/Cartesian_tree">Cartesian Tree</a></td>
+      <td><code>-</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code>-</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+    </tr>
+    <tr>
+      <td><a href="http://en.wikipedia.org/wiki/B_tree">B-Tree</a></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow">O(n)</code></td>
+    </tr>
+    <tr>
+      <td><a href="http://en.wikipedia.org/wiki/Red-black_tree">Red-Black Tree</a></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow">O(n)</code></td>
+    </tr>
+    <tr>
+      <td><a href="https://en.wikipedia.org/wiki/Splay_tree">Splay Tree</a></td>
+      <td><code>-</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code>-</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow">O(n)</code></td>
+    </tr>
+    <tr>
+      <td><a href="http://en.wikipedia.org/wiki/AVL_tree">AVL Tree</a></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow">O(n)</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="sorting">Array Sorting Algorithms</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Algorithm</th>
+      <th colspan="3">Time Complexity</th>
+      <th>Space Complexity</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>Best</th>
+      <th>Average</th>  
+      <th>Worst</th>     
+      <th>Worst</th>            
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="http://en.wikipedia.org/wiki/Quicksort">Quicksort</a></td>
+      <td><code class="orange">O(n log(n))</code></td>
+      <td><code class="orange">O(n log(n))</code></td>
+      <td><code class="red">O(n^2)</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+    </tr>
+    <tr>
+      <td><a href="http://en.wikipedia.org/wiki/Merge_sort">Mergesort</a></td>
+      <td><code class="orange">O(n log(n))</code></td>
+      <td><code class="orange">O(n log(n))</code></td>
+      <td><code class="orange">O(n log(n))</code></td>
+      <td><code class="yellow">O(n)</code></td>
+    </tr>
+    <tr>
+      <td><a href="http://en.wikipedia.org/wiki/Timsort">Timsort</a></td>
+      <td><code class="green">O(n)</code></td>
+      <td><code class="orange">O(n log(n))</code></td>
+      <td><code class="orange">O(n log(n))</code></td>
+      <td><code class="yellow">O(n)</code></td>
+    </tr>
+    <tr>
+      <td><a href="http://en.wikipedia.org/wiki/Heapsort">Heapsort</a></td>
+      <td><code class="orange">O(n log(n))</code></td>
+      <td><code class="orange">O(n log(n))</code></td>
+      <td><code class="orange">O(n log(n))</code></td>
+      <td><code class="green">O(1)</code></td>
+    </tr>
+    <tr>
+      <td><a href="http://en.wikipedia.org/wiki/Bubble_sort">Bubble Sort</a></td>
+      <td><code class="green">O(n)</code></td>
+      <td><code class="red">O(n^2)</code></td>
+      <td><code class="red">O(n^2)</code></td>
+      <td><code class="green">O(1)</code></td>
+    </tr>
+    <tr>
+      <td><a href="http://en.wikipedia.org/wiki/Insertion_sort">Insertion Sort</a></td>
+      <td><code class="green">O(n)</code></td>
+      <td><code class="red">O(n^2)</code></td>
+      <td><code class="red">O(n^2)</code></td>
+      <td><code class="green">O(1)</code></td>
+    </tr>
+    <tr>
+      <td><a href="http://en.wikipedia.org/wiki/Selection_sort">Selection Sort</a></td>
+      <td><code class="red">O(n^2)</code></td>
+      <td><code class="red">O(n^2)</code></td>
+      <td><code class="red">O(n^2)</code></td>
+      <td><code class="green">O(1)</code></td>
+    </tr>
+    <tr>
+      <td><a href="http://en.wikipedia.org/wiki/Shellsort">Shell Sort</a></td>
+      <td><code class="green">O(n)</code></td>
+      <td><code class="red">O((nlog(n))^2)</code></td>
+      <td><code class="red">O((nlog(n))^2)</code></td>
+      <td><code class="green">O(1)</code></td>
+    </tr>
+    <tr>
+      <td><a rel="tooltip" title="Only for integers. k is a number of buckets" href="http://en.wikipedia.org/wiki/Bucket_sort">Bucket Sort</a></td>
+      <td><code class="green">O(n+k)</code></td>
+      <td><code class="green">O(n+k)</code></td>
+      <td><code class="red">O(n^2)</code></td>
+      <td><code class="yellow">O(n)</code></td>
+    </tr>
+    <tr>
+      <td><a rel="tooltip" title="Constant number of digits 'k'" href="http://en.wikipedia.org/wiki/Radix_sort">Radix Sort</a></td>
+      <td><code class="green">O(nk)</code></td>
+      <td><code class="green">O(nk)</code></td>
+      <td><code class="green">O(nk)</code></td>
+      <td><code class="yellow">O(n+k)</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="graphs">Graph Operations</h2>
+<table class="table table-striped">
+  <tbody>
+    <tr>
+      <th>Node / Edge Management</th>
+      <th>Storage</th>
+      <th>Add Vertex</th>
+      <th>Add Edge</th>
+      <th>Remove Vertex</th>
+      <th>Remove Edge</th>
+      <th>Query</th>
+    </tr>
+    <tr>
+      <td><a href="http://en.wikipedia.org/wiki/Adjacency_list">Adjacency list</a></td>
+      <td><code class="yellow">O(|V|+|E|)</code></td>
+      <td><code class="green">O(1)</code></td>
+      <td><code class="green">O(1)</code></td>
+      <td><code class="yellow">O(|V| + |E|)</code></td>
+      <td><code class="yellow">O(|E|)</code></td>
+      <td><code class="yellow">O(|V|)</code></td>
+    </tr>
+    <tr>
+      <td><a href="http://en.wikipedia.org/wiki/Incidence_list">Incidence list</a></td>
+      <td><code class="yellow">O(|V|+|E|)</code></td>
+      <td><code class="green">O(1)</code></td>
+      <td><code class="green">O(1)</code></td>
+      <td><code class="yellow">O(|E|)</code></td>
+      <td><code class="yellow">O(|E|)</code></td>
+      <td><code class="yellow">O(|E|)</code></td>
+    </tr>
+    <tr>
+      <td><a href="http://en.wikipedia.org/wiki/Adjacency_matrix">Adjacency matrix</a></td>
+      <td><code class="red">O(|V|^2)</code></td>
+      <td><code class="red">O(|V|^2)</code></td>
+      <td><code class="green">O(1)</code></td>
+      <td><code class="red">O(|V|^2)</code></td>
+      <td><code class="green">O(1)</code></td>
+      <td><code class="green">O(1)</code></td>
+    </tr>
+    <tr>
+      <td><a href="http://en.wikipedia.org/wiki/Incidence_matrix">Incidence matrix</a></td>
+      <td><code class="red">O(|V| &sdot; |E|)</code></td>
+      <td><code class="red">O(|V| &sdot; |E|)</code></td>
+      <td><code class="red">O(|V| &sdot; |E|)</code></td>
+      <td><code class="red">O(|V| &sdot; |E|)</code></td>
+      <td><code class="red">O(|V| &sdot; |E|)</code></td>
+      <td><code class="yellow">O(|E|)</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="heaps">Heap Operations</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th colspan="7">Time Complexity</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>Heapify</th>
+      <th>Find Max</th>  
+      <th>Extract Max</th>  
+      <th>Increase Key</th>
+      <th>Insert</th>
+      <th>Delete</th>
+      <th>Merge</th>  
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="http://en.wikipedia.org/wiki/Linked_list">Linked List (sorted)</a></td>
+      <td><code>-</code></td> <!-- heapify -->
+      <td><code class="green">O(1)</code></td> <!-- Find max -->
+      <td><code class="green">O(1)</code></td> <!-- Extract max -->
+      <td><code class="red">O(n)</code></td> <!-- Increase -->
+      <td><code class="red">O(n)</code></td> <!-- insert -->
+      <td><code class="green">O(1)</code></td> <!-- delete -->
+      <td><code class="red">O(m+n)</code></td> <!-- merge -->
+    </tr>
+    <tr>
+      <td><a href="http://en.wikipedia.org/wiki/Linked_list">Linked List (unsorted)</a></td>
+      <td><code>-</code></td> <!-- heapify -->
+      <td><code class="red">O(n)</code></td> <!-- Find max -->
+      <td><code class="red">O(n)</code></td> <!-- Extract max -->
+      <td><code class="green">O(1)</code></td> <!-- Increase -->
+      <td><code class="green">O(1)</code></td> <!-- insert -->
+      <td><code class="green">O(1)</code></td> <!-- delete -->
+      <td><code class="green">O(1)</code></td> <!-- merge -->
+    </tr>
+    <tr>
+      <td><a href="http://en.wikipedia.org/wiki/Binary_heap">Binary Heap</a></td>
+      <td><code class="yellow">O(n)</code></td>
+      <td><code class="green">O(1)</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="red">O(m+n)</code></td>
+    </tr>
+    <tr>
+      <td><a href="http://en.wikipedia.org/wiki/Binomial_heap">Binomial Heap</a></td>
+      <td><code>-</code></td>
+      <td><code rel="tooltip" title="With aux pointer" class="green">O(1)</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code rel="tooltip" title="Amortized" class="green">O(1)</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+      <td><code class="yellow-green">O(log(n))</code></td>
+    </tr>
+    <tr>
+      <td><a href="http://en.wikipedia.org/wiki/Fibonacci_heap">Fibonacci Heap</a></td>
+      <td><code>-</code></td>
+      <td><code class="green">O(1)</code></td>
+      <td><code rel="tooltip" title="Amortized" class="yellow-green">O(log(n))</code></td>
+      <td><code rel="tooltip" title="Amortized" class="green">O(1)</code></td>
+      <td><code class="green">O(1)</code></td>
+      <td><code rel="tooltip" title="Amortized" class="yellow-green">O(log(n))</code></td>
+      <td><code class="green">O(1)</code></td>
+    </tr>
+  </tbody>
+</table>
+
+        </div>
+        <!--
+        <div id="sidebar">
+          <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ss&ref=ss_til&ad_type=product_link&tracking_id=htcatu-20&marketplace=amazon&region=US&placement=098478280X&asins=098478280X&linkId=G5U5FU6PWZODB7SX&show_border=true&link_opens_in_new_window=true"></iframe>
+        
+          <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ss&ref=ss_til&ad_type=product_link&tracking_id=htcatu-20&marketplace=amazon&region=US&placement=0262033844&asins=0262033844&linkId=W3FKXENR2TTN2TNP&show_border=true&link_opens_in_new_window=true"></iframe>
+
+          <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ss&ref=ss_til&ad_type=product_link&tracking_id=htcatu-20&marketplace=amazon&region=US&placement=0672324539&asins=0672324539&linkId=BO5UYWK6MDY32IS3&show_border=true&link_opens_in_new_window=true"></iframe>
+        
+          <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ss&ref=ss_til&ad_type=product_link&tracking_id=htcatu-20&marketplace=amazon&region=US&placement=059680279X&asins=059680279X&linkId=FNEWXMUQ5LAY5FWY&show_border=true&link_opens_in_new_window=true"></iframe>
+        </div>
+        -->
+      </div>
+
+      <div id="middle-ad">
+      <script type="text/javascript"><!--
+      google_ad_client = "ca-pub-8154832549041429";
+      /* BigO Middle */
+      google_ad_slot = "4018097420";
+      google_ad_width = 728;
+      google_ad_height = 90;
+      //-->
+      </script>
+      <script type="text/javascript"
+      src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+      </script>
+      </div>
+
+          
+    	<h2 id="chart">Big-O Complexity Chart</h2>  
+    	<img src="img/big-o-complexity.png" alt="Big O Complexity Graph" title="Big O Complexity Graph">
+ 
+     <h2>Recommended Reading</h2>
+
+    <ul>
+      <li><a href="http://www.amazon.com/gp/product/098478280X/ref=as_li_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=098478280X&linkCode=as2&tag=htcatu-20&linkId=B6WXIEKJHEBBWJ7B">Cracking the Coding Interview: 150 Programming Questions and Solutions</a><img src="http://ir-na.amazon-adsystem.com/e/ir?t=htcatu-20&l=as2&o=1&a=098478280X" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></li>
+      <li><a href="http://www.amazon.com/gp/product/0262033844/ref=as_li_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=0262033844&linkCode=as2&tag=htcatu-20&linkId=J2PHCTWEAND3YQF4">Introduction to Algorithms, 3rd Edition</a><img src="http://ir-na.amazon-adsystem.com/e/ir?t=htcatu-20&l=as2&o=1&a=0262033844" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></li>
+      <li><a href="http://www.amazon.com/gp/product/0672324539/ref=as_li_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=0672324539&linkCode=as2&tag=htcatu-20&linkId=Y4KPAZH5PFHYXMBA">Data Structures and Algorithms in Java (2nd Edition)</a><img src="http://ir-na.amazon-adsystem.com/e/ir?t=htcatu-20&l=as2&o=1&a=0672324539" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></li>
+      <li><a href="http://www.amazon.com/gp/product/059680279X/ref=as_li_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=059680279X&linkCode=as2&tag=htcatu-20&linkId=WUNMGD5EARDJZKTT">High Performance JavaScript (Build Faster Web Application Interfaces)</a><img src="http://ir-na.amazon-adsystem.com/e/ir?t=htcatu-20&l=as2&o=1&a=059680279X" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></li>
+    </ul>
+
+    <div id="contribute-container">
+      <h2>Contributors</h2>
+      
+      <ol>
+        <li><a href="https://github.com/ericdrowell">Eric Rowell</a>, founder of <a href="http://www.coderlifestyle.com">Coder Lifestyle</a></li>
+        <li><a href="https://github.com/qpleple">Quentin Pleple</a></li>
+        <li><a href="https://github.com/vault">Michael Abed</a></li>
+        <li><a href="https://github.com/ndizazzo">Nick Dizazzo</a></li>
+        <li><a href="https://github.com/agfor">Adam Forsyth</a></li> 
+        <li><a href="https://github.com/d3dave">David Dorfman</a></li> 
+        <li><a href="https://github.com/jay754">Jay Engineer</a></li>
+        <li><a href="https://github.com/jhamon">Jennifer Hamon</a></li>
+        <li><a href="https://github.com/jdavis">Josh Davis</a></li>
+        <li><a href="https://github.com/nodirt">Nodir Turakulov</a></li>
+        <li><a href="https://github.com/BartMassey">Bart Massey</a></li>
+        <li><a href="https://github.com/vmagro">Vinnie Magro</a></li>
+        <li><a href="https://github.com/miguel5">Miguel Amigot</a></li>
+        <li><a href="https://github.com/makosblade">Drew Bailey</a></li>
+        <li><a href="https://github.com/WanderingStar">Aneel Nazareth</a></li>
+        <li><a href="https://github.com/rahulc93">Rahul Chowdhury</a></li>
+        <li><a href="https://github.com/sharpobject">Robert Burke</a></li>
+        <li><a href="https://github.com/steven41292">steven41292</a></li>
+        <li><a href="https://github.com/bamos">Brandon Amos</a></li>
+        <li><a href="https://github.com/dodgymike">Mike Davis</a></li>
+        <li><a href="https://github.com/caspervg">Casper Van Gheluwe</a></li>
+        <li><a href="https://github.com/jfriedly">Joel Friedly</a></li> 
+        <li><a href="https://github.com/cristaloleg">Oleg</a></li> 
+        <li><a href="https://github.com/renfredxh">Renfred Harper</a></li>
+        <li><a href="https://github.com/piperchester">Piper Chester</a></li> 
+        <li><a href="https://github.com/elefevre">Eric Lefevre-Ardant</a></li>
+        <li><a href="https://github.com/jonathanmcelroy">Jonathan McElroy</a></li>
+        <li><a href="https://github.com/phamtrisi">Si Pham</a></li> 
+        <li><a href="https://github.com/mcverry">mcverry</a></li> 
+        <li><a href="https://github.com/mhoffman">Max Hoffmann</a></li> 
+        <li><a href="https://github.com/j4n0">Alejandro Ramirez</a></li> 
+        <li><a href="https://github.com/allolex">Damon Davison</a></li> 
+        <li><a href="https://github.com/alvinwan">Alvin Wan</a></li> 
+        <li><a href="https://github.com/alanbriolat">Alan Briolat</a></li> 
+        <li><a href="https://github.com/drewhannay">Drew Hannay</a></li> 
+        <li><a href="https://github.com/andyras">Andrew Rasmussen</a></li> 
+        <li><a href="https://github.com/DennisTT">Dennis Tsang</a></li> 
+        <li><a href="https://github.com/BahadorSaket">Bahador Saket</a></li> 
+      </ol>
+
+      <a href="https://github.com/ericdrowell/BigOCheatSheet/blob/master/Tables.html">Edit these tables!</a><br><br>
+      
+    </div>   
+
+    <h2 id="comments">Comments</h2>
+
+    <div class="container">
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+          /* * * CONFIGURATION VARIABLES * * */
+          var disqus_shortname = 'bigocheatsheet';
+          
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+              var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+              dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+          
+    </div>
+
+    <div class="container">
+      <div id="bottom-ad">
+        <script type="text/javascript"><!--
+        google_ad_client = "ca-pub-8154832549041429";
+        /* BigOBottom */
+        google_ad_slot = "8454970220";
+        google_ad_width = 728;
+        google_ad_height = 90;
+        //-->
+        </script>
+        <script type="text/javascript"
+        src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+        </script>
+      </div>
+    </div>
+
+    <div id="footer">
+      <ul>
+        <li>Page styling via <a href="http://twitter.github.com/bootstrap/" rel="nofollow">Bootstrap</a></li>
+        <li>Comments via <a href="http://disqus.com/" rel="nofollow">Disqus</a></li>
+        <li>Algorithm detail via <a href="http://www.wikipedia.com" rel="nofollow">Wikipedia</a></li>
+        <li>Table source hosted on <a href="https://github.com/ericdrowell/BigOCheatSheet/blob/master/Tables.html" rel="nofollow">Github</a></li>
+        <li>Mashup via <a href="https://twitter.com/ericdrowell">@ericdrowell</a></li>
+      </ul>
+    </div>
+    
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  	<script type="text/javascript">
+  	
+  	  var _gaq = _gaq || [];
+  	  _gaq.push(['_setAccount', 'UA-10955171-12']);
+  	  _gaq.push(['_trackPageview']);
+  	
+  	  (function() {
+  	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  	  })();
+  	
+  	</script>
+  </body>
+</html>

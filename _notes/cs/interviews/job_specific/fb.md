@@ -1,0 +1,25 @@
+- *coderpad.io*
+	- cs3hq@virginia.edu
+	- C1!handan
+	- https://codelab.interviewbit.com/index/
+- *Algorithmic knowledge* - Can you explain your solution? Can you explain why one algorithm is better than the other? Do you know what the most optimal algorithm is? Don't overcomplicate the interview problem. Come up with a working solution first and then work on optimizing it. Sure there are algorithms that might be the most optimal but if it is going to take you 45 minutes to explain it, then go with the easier one first. Ask interviewer questions to clarify what he/she is looking for.
+- ask questions during technical part
+- *Coding* - ­ You will be asked to produce clean, efficient code in a reasonable amount of time. You have 45 minutes on the call. You might be asked 1 or 2 questions within that timeframe so your goal is to finish the interview question as best as you can and move on. Do not assume you only have 1 question to solve. If the interviewer gives you hints to improve your code, take them and run with them. It is good to adjust and work through the problems with the interviewer to show your thought process and problem solving ability. At the bottom of this email, there are several links for you to practice coding puzzles.
+- *Culture Fit* - communication - are you able to talk about things top down in a hierarchical way? For ex., if they ask you about a project you have done, they want you to first give an overview of the project. Then, they want hear you describe the project in detail and explain what your involvement is. Was the problem you were working on hard? Why was the problem hard? How did you go about coming up with a solution? We want to hear about work that YOU HAVE DONE, not a project where you were not very involved. They want to hear you talk about your project from beginning to end.
+- *behavioral*
+	- weaknesses
+		- not good at short-term things
+		- still not sure what I want to do
+- *why fb*
+	- most importantly, people who work there like working there
+	- I like that it's between a startup and a big company - there's credibility, but also freedom and responsibility. 
+	- bunch of the work they're doing search, photos, videos, captions, virtual reality is super interesting
+	- It's also important that some big-name scientists like Jason Weston and Yann LeCun are involved in guiding facebook AI.
+	- Know tech they're working on 
+- *my questions*
+	- ask about how interns can get on research
+	- ask him what kinds of projects interns are involved in
+	- ask him about the balance of learning / catching up / coding
+	- Ask the engineer why he likes working at Facebook
+	- Ask him what his challenges are
+	- Ask him how big his team is

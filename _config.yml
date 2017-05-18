@@ -1,0 +1,17 @@
+url: http://csinva.github.io
+baseurl: ""
+
+# Site Settings
+title: Chandan Singh
+description: "Chandan Singh Homepage"
+keywords: "Chandan, Singh, Computer Science"
+collections:
+ notes:
+    name: Notes
+    documentation: https://github.com/Shopify/liquid/wiki/Liquid-for-Designers
+    output: true
+# Career Settings
+# Default career thumbnail image.
+career-img: "img/timeline/default.jpg"
+gems: ['jekyll/scholar']
+exclude: ["Rakefile", "LICENSE", "readme.markdown"]

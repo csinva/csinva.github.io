@@ -1,0 +1,7 @@
+---
+layout: null
+title: Fall 2016 - Present
+subtitle: UVA Yanjun Qi Research Lab.
+image: "img/timeline/uva.png"
+---
+Contributed to development of novel weighted-L1, multi-task Gaussian graphical models

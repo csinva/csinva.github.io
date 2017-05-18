@@ -1,0 +1,7 @@
+---
+layout: null
+title: January 2015 - Fall 2016
+subtitle: UVA William Levy Lab
+image: "img/timeline/uva.png"
+---
+Simulated stochastic neurons to determine mutual information, variability, energy efficiency, and threshold

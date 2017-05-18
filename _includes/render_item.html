@@ -1,0 +1,9 @@
+<!--<h1>{{ include.item.title | markdownify | remove: '<p>' | remove: '</p>' }}</h1>-->
+<a href="{{item.url}}">{{item.title}} </a>
+<div class="inner-content">
+	{% if include.item.description %}
+		<p class="description">{{ include.item.description | markdownify | remove: '<p>' | remove: '</p>'  }}</p>
+	{% endif %}
+
+	{{ include.item.content }}
+</div>
