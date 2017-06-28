@@ -32,6 +32,7 @@ category: research
 		2. allows the brain to run simulations
 		3. consolidating memories and forgetting
 	- where is consciousness?
+		- at this point, sounds and vision should line up (delayed appropriately)
 	- how do we make decisions?
 	- how does the brain represent abstract ideas?
 	- what does neural baseline activity represent?

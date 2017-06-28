@@ -59,24 +59,24 @@ category: neuro
 - simple linear model
 	- r(t) = c * s(t)
 - *weighted linear model* - takes into account previous states weighted by f
-	- ex. *temporal filtering*
-	- r(t) = $\sum s_{t-k} f_k$ where f weights stimulus over time
-	- could also make this an integral, yielding a convolution:
-	- r(t) = $\int_{-\infty}^t d\tau \: s(t-\tau) f(\tau)$
-	- a linear system can be thought of as a system that searches for portions of the signal that resemble its filter f
-	- leaky integrator - sums its inputs with f decaying exponentially into the past
-	- flaws
-		- no negative firing rates
-		- no extremely high firing rates
-		- can add a nonlinear function g of the linear sum can fix this
-			- r(t) = $g(\int_{-\infty}^t d\tau \: s(t-\tau) f(\tau))$
-- *spatial filtering*
-	- r(x,y) = $\sum_{x',y'} s_{x-x',y-y'} f_{x',y'}$ where f again is spatial weights that represent the spatial field
-	-  could also write this as a convolution
-	- for a retinal center surround cell, f is positive for small $\Delta x$ and then negative for large $\Delta x$
-		- can be calculated as a narrow, large positive Gaussian + spread out negative Gaussian
-- can combine above to make *spatiotemporal filtering*
-	- filtering = convolution = projection
+	1. *temporal filtering*
+		- r(t) = $f_0 \cdot s_0 + ... + f_t \cdot s_t =  \sum s_{t-k} f_k$ where f weights stimulus over time
+		- could also make this an integral, yielding a convolution:
+		- r(t) = $\int_{-\infty}^t d\tau \: s(t-\tau) f(\tau)$
+		- a linear system can be thought of as a system that searches for portions of the signal that resemble its filter f
+		- leaky integrator - sums its inputs with f decaying exponentially into the past
+		- flaws
+			- no negative firing rates
+			- no extremely high firing rates
+			- can add a nonlinear function g of the linear sum can fix this
+				- r(t) = $g(\int_{-\infty}^t d\tau \: s(t-\tau) f(\tau))$
+	2. *spatial filtering*
+		- r(x,y) = $\sum_{x',y'} s_{x-x',y-y'} f_{x',y'}$ where f again is spatial weights that represent the spatial field
+		-  could also write this as a convolution
+		- for a retinal center surround cell, f is positive for small $\Delta x$ and then negative for large $\Delta x$
+			- can be calculated as a narrow, large positive Gaussian + spread out negative Gaussian
+	- can combine above to make *spatiotemporal filtering*
+		- filtering = convolution = projection
 	
 ### 2.3 - feature selection
 - P(response|stimulus) is very hard to get
@@ -84,7 +84,7 @@ category: neuro
 	- stimulus can take on many values
 	- need to keep track of stimulus over time
 	- solution: sample P(response|s) to many stimuli to characterize what in input triggers responses
--find vector *f* that captures features that lead to spike
+- find vector *f* that captures features that lead to spike
 	- dimensionality reduction - ex. discretize 
 	- value at each time $t_i$ is new dimension
 	- commonly use Gaussian white noise
@@ -98,6 +98,7 @@ category: neuro
 		- use bayes rule $g=P(spike|s_1)=\frac{P(s_1|spike)P(spike)}{P(s_1)}$
 		- if $P(s_1|spike) \approx P(s_1)$ then response doesn't seem to have to do with stimulus
 - incorporating many features *$f_1,...,f_n$*
+	- here, each $f_i$ is a vector of weights
 	- $r(t) = g(f_1\cdot s,f_2 \cdot s,...,f_n \cdot s)$
 	- could use *PCA* - discovers low-dimensional structure in high-dimensional data
 	- each f represents a feature (maybe a curve over time) that fires the neuron
@@ -267,7 +268,7 @@ category: neuro
 	- let $P(r=0|s) = 1 - r(t) \Delta t$
 	- get r(t) by having simulus on for long time
 	- *ergodicity* - a time average is equivalent to averging over the s ensemble
-	- <img src="4_2_1.png" width=40%/>
+	- ![](assets/comp_neuro/4_2_1.png)
 	- info per spike $I(r,s) = \frac{1}{T} \int_0^T dt \frac{r(t)}{\bar{r}} log \frac{r(t)}{\bar{r}}$
 		- timing precision reduces r(t)
 		- low mean spike rate -> high info per spike
@@ -282,7 +283,7 @@ category: neuro
 	- want to use each of our "symbols" (ex. different firing rates) equally often
 	- should assign equal areas of input stimulus PDF to each symbol
 - adaptataion to stimulus statistics
-	- <img src="4_3_1.png" width=40%/>	
+	- ![](assets/comp_neuro/4_3_1.png)
 	- feature adaptation (Atick and Redlich)
 		- spatial filtering properties in retina / LGN change with varying light levels
 		- at low light levels surround becomes weaker
@@ -301,7 +302,7 @@ category: neuro
 
 # 5 - computing in carbon
 ### 5.1 - modeling neurons
-- <img src="5_1_1.png" width=40%/>
+- ![](assets/comp_neuro/5_1_1.png)
 - nernst battery
 	1. osmosis (for each ion)
 	2. electrostatic forces (for each ion)
@@ -312,7 +313,7 @@ category: neuro
 	- part of voltage is accounted for by nernst battery $V_{rest}$
 	- yields $\tau \frac{dV}{dt} = -V + V_\infty$ where $\tau=R_mC_m=r_mc_m$
 	- equivalently, $\tau_m \frac{dV}{dt} = -((V-E_L) - g_s(t)(V-E_s) r_m) + I_e R_m $
-- <img src="5_1_2.png" width=40%/>
+- ![](assets/comp_neuro/5_1_2.png)
 
 ### 5.2 - spikes
 
@@ -329,13 +330,13 @@ category: neuro
 	- also model a K current
 	- can capture things like resonance
 - *theta neuron* (Ermentrout and Kopell)
-	- <img src="5_3_1.png" width=40%/>
+	- ![](assets/comp_neuro/5_3_1.png)
 	- often used for periodically firing neurons (it fires spontaneously)
 	
 ### 5.4 - a forest of dendrites
 - cable theory - Kelvin
 - voltage V is a function of both x and t
-- <img src="5_4_1.png" width=40%/>
+- ![](assets/comp_neuro/5_4_1.png)
 - separate into sections that don't depend on x
 	- coupling conductances link the sections (based on area of compartments / branching)
 - Rall model for dendrites
@@ -462,7 +463,7 @@ category: neuro
 	- this is same as PCA
 
 ### 7.2 - intro to unsupervised learning
-- <img src="7_2_1.png" width=40%/>
+- ![](assets/comp_neuro/7_2_1.png)
 	- most active neuron is the one whose w is closest to x
 - *competitive learning*
 	- updating weights given a new input
@@ -484,7 +485,7 @@ category: neuro
 			- for Gaussian model, each cluster gets a probability of changing
 			- this probability weights the change - *"soft"
 		2. learn parameters of generative model - change parameters of Gaussian (mean and variance) for clusters
-	- <img src="7_2_2.png" width=40%/>
+	- ![](assets/comp_neuro/7_2_2.png)
 		- assumes you have all the points at once
 
 ### 7.3 - sparse coding and predictive coding
@@ -511,7 +512,7 @@ category: neuro
 	- can implement sparse coding in a recurrent neural network
 	- Olshausen & Field, 1996 - learns receptive fields in V1
 - sparse coding is a special case of *predicive coding*
-	- <img src="7_3_1.png" width=40%/>
+	- ![](assets/comp_neuro/7_3_1.png)
 	- there is usually a feedback connection for every feedforward connection (Rao & Ballard, 1999)
 	
 # 8 - 

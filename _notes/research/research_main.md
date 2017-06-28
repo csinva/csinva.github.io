@@ -26,6 +26,7 @@ category: research
 - can get gt with intracellular recordings
 - spike sorting with GANs
 - simulated datasets also work well
+- http://spikefinder.codeneuro.org
 
 ## neural encoding
 - cochlear implant turns sound into neural signal

@@ -29,10 +29,10 @@ category: stat
 - point estimate - single number prediction
 - point estimator - statistic that predicts a parameter
 - MSE - mean squared error  - $E[(\hat{\theta}-\theta)^2]$ = $V(\hat{\theta})+[E(\hat{\theta})-\theta]^2$
-- bias = $E(\hat{\theta})=\theta$
+- *bias* = $E(\hat{\theta})=\theta$
 - after unbiased we want MVUE (minimum variance unbiased estimator)
 - Estimators: $ \tilde{X} $ = Median, $X_e$ = Midrange((max+min)/2), $X_{tr(10)}=$ 10 percent trimmed mean (discard smallest and largest 10 percent)
-- standard error: $\sigma_{\hat{\theta}} = s_{\hat{\sigma}} = \sqrt{Var(\hat{\theta)}}$ - determines consistency
+- standard error: $\sigma_{\hat{\theta}} = s_{\hat{\sigma}} = \sqrt{Var(\hat{\theta)}}$ - determines *consistency*
 - boostrap - computationally compute standard error
 - $S^2 (Unbiased)= \sum{\frac{(X_i-\bar{X})^2}{n-1}}$
 - $\hat{\sigma^2} (MLE) = \sum{\frac{(X_i-\mu)^2}{n}}$

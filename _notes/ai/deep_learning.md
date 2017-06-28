@@ -55,7 +55,6 @@ category: ai
     - you can basically always pad with zeros as long as you keep 1 in middle
     - can use these to detect edges with small convolutions
     - can do Guassian filters
-- landmark AlexNet on ImageNet competition
 - convolutions typically sum over all color channels
 - weight matrices have special structure (Toeplitz or block Toeplitz)
 - input layer is usually centered (subtract mean over training set)
@@ -70,6 +69,37 @@ category: ai
     - make it easy to learn the identity function
     - want to preserve info through layers
     - help with vanishing/exploding gradients
+ 
+## 1 - AlexNet (2012)
+- landmark (5 conv layers, some pooling/dropout)
+
+## 2 - ZFNet (2013)
+- fine tuning and deconvnet
+
+## 3 - VGGNet (2014)
+- 19 layers, all 3x3 conv layers and 2x2 maxpooling
+
+## 4 - GoogLeNet (2015)
+- lots of parallel elements (called *Inception module*)
+
+## 5 - Msft ResNet (2015)
+- very deep - 152 layers
+- connections straight from initial layers to end
+	- only learn "residual" from top to bottom
+
+## 6 - Region Based CNNs (R-CNN - 2013, Fast R-CNN - 2015, Faster R-CNN - 2015)
+- object detection
+
+## 7- GAN (2014)
+
+## 8 - Generating image descriptions (2014)
+- RNN+CNN
+
+## 9 - Spatial transformer networks (2015)
+- transformations within the network
+
+## 10 - Segnet (2015)
+- encoder-decoder network
     
 # RNNs
 - feedforward NNs have no memory so we introduce recurrent NNs
@@ -92,3 +122,33 @@ category: ai
 - input gate - conditionally remember new info
 - output gate - conditionally output a relevant part of memory
 - GRUs - similar, merge input / forget units into a single update unit
+
+# GAN original
+- might not converge
+- *generative adversarial network*
+- goal: want G to generate distribution that follows data
+	- ex. generate good images
+- two models
+	- *G* - generative
+	- *D* - discriminative
+- G generates adversarial sample x for D
+	- G has prior z
+	- D gives probability p that x comes from data, not G
+		- like a binary classifier: 1 if from data, 0 from G
+	- *adversarial sample* - from G, but tricks D to predicting 1
+- training goals
+	- G wants D(G(z)) = 1
+	- D wants D(G(z)) = 0
+		- D(x) = 1
+	- converge when D(G(z)) = 1/2
+	- G loss function: $G = argmin_G log(1-D(G(Z))$
+	- overall $min_g max_D$ log(1-D(G(Z))
+- training algorithm
+	- in the beginning, since G is bad, only train  my minimizing G loss function
+	- later
+		```
+		for 
+			for
+				max D by SGD
+			min G by SGD
+		```

@@ -6,20 +6,19 @@ category: cs
 ---
 * TOC
 {:toc}
-
 - Edges are of the form (v1, v2)
     - Can be ordered pair or unordered pair
 - Definitions
-    - A weight or cost can be associated with each edge - this is determined by the application
-    - w is adjacent to v iff (v, w) ∈ E
+    - A *weight* or cost can be associated with each edge - this is determined by the application
+    - w is adjacent to v iff (v, w) $\in$ E
     - path: sequence of vertices w1, w2, w3, ..., wn such that (wi, wi+1) ∈ E for 1 ≤ i < n
     - length of a path: number of edges in the path
     - simple path: all vertices are distinct
     - cycle:
-        - directed graph: path of length ≥ 1 such that w1 = wn
+        - directed graph: path of length $\geq$ 1 such that w1 = wn
         - undirected graph: same, except all edges are distinct
     - connected: there is a path from every vertex to every other vertex
-    - loop: (v, v) ∈ E
+    - loop: (v, v) $\in$ E
     - complete graph: there is an edge between every pair of vertices
 - digraph
     - directed acyclic graph: no cycles; often called a "DAG"
@@ -82,22 +81,22 @@ category: cs
         - Remove an edge from each cycle
         - What remains has the same set of vertices but is a tree
         - Spanning Trees
-    - Minimal-weight spanning tree: spanning tree with the minimal total weight
-        - Generic Minimum Spanning Tree Algorithm
-            - KnownVertices <- {}
-            - while KnownVertices does not form a spanning tree, loop:
-                - find edge (u,v) that is "safe" for KnownVertices
-                - KnownVertices <- KnownVertices U {(u,v)}
-            - end loop
-            - Prim's algorithm
-                - Idea: Grow a tree by adding an edge to the "known" vertices from the "unknown" vertices. Pick the edge with the smallest weight.
-                - Pick one node as the root,
-                - Incrementally add edges that connect a "new" vertex to the tree.
-                - Pick the edge (u,v) where:
-                - u is in the tree, v is not, AND
-                - where the edge weight is the smallest of all edges (where u is in the tree and v is not)
-                - Running time: Same as Dijkstra's: Θ(e log v)
-            - Kruskal's algorithm
-                - Idea: Grow a forest out of edges that do not create a cycle. Pick an edge with the smallest weight.
-                - When optimized, it has the same running time as Prim's and Dijkstra's: Θ(e log v)
-                - unoptomized: v^2
+- Minimal-weight spanning tree: spanning tree with the minimal total weight
+    - Generic Minimum Spanning Tree Algorithm
+        - KnownVertices <- {}
+        - while KnownVertices does not form a spanning tree, loop:
+            - find edge (u,v) that is "safe" for KnownVertices
+            - KnownVertices <- KnownVertices U {(u,v)}
+        - end loop
+    - Prim's algorithm
+        - Idea: Grow a tree by adding an edge to the "known" vertices from the "unknown" vertices. Pick the edge with the smallest weight.
+        - Pick one node as the root,
+        - Incrementally add edges that connect a "new" vertex to the tree.
+        - Pick the edge (u,v) where:
+        - u is in the tree, v is not, AND
+        - where the edge weight is the smallest of all edges (where u is in the tree and v is not)
+        - Running time: Same as Dijkstra's: Θ(e log v)
+    - Kruskal's algorithm
+        - Idea: Grow a forest out of edges that do not create a cycle. Pick an edge with the smallest weight.
+        - When optimized, it has the same running time as Prim's and Dijkstra's: Θ(e log v)
+        - unoptomized: v^2
