@@ -69,6 +69,36 @@ category: ai
  
 ## Discriminative
 ### SVMs
+- svm benefits
+	1. *maximum margin separator* generalizes well
+	2. *kernel trick* makes it very nonlinear
+	3. nonparametric - can retain training examples, although often get rid of many
+- notation
+	- $y \in \{-1,1\}$
+	- $h(x) = g(w^tx +b)$
+		- g(z) = 1 if $z \geq 0$ and -1 otherwise
+- define *functional margin* $\gamma^{(i)} = y^{(i)} (w^t x +b)$
+	- want to limit the size of (w,b) so we can't arbitrarily increase functional margin
+	- function margin $\hat{\gamma}$ is smallest functional margin in a training set
+- *geometric margin* = functional margin / ||w||
+	- if ||w||=1, then same as functional margin
+	- invariant to scaling of w
+- optimal margin classifier
+	- want $$max \: \gamma \: s.t. \: y^{(i)} (w^T x^{(i)} + b) \geq \gamma, i=1,..,m; ||w||=1$$
+		- difficult to solve, especially because of ||w||=1 constraint
+		- assume $\hat{\gamma}=1$ - just a scaling factor
+		- now we are maximizing $1/||w||$
+	- equivalent to this formulation: $$min \: 1/2 ||w||^2 \: s.t. \: y^{(i)}(w^Tx^{(i)}+b)\geq1, i = 1,...,m$$
+- Lagrange duality
+- dual representation is found by solving $\underset{a}{argmax} \sum_j \alpha_j - 1/2 \sum_{j,k} \alpha_j \alpha_k y_j y_k (x_j \cdot x_k)$ subject to $\alpha_j \geq 0$ and $\sum_j \alpha_j y_j = 0$
+	- convex
+	- data only enter in form of dot products, even when predicting $h(x) = sgn(\sum_j \alpha_j y_j (x \cdot x_j) - b)$
+	- weights $\alpha_j$ are zero except for *support vectors*
+- replace dot product $x_j \cdot x_k$ with *kernel function* $K(x_j, x_k)$
+	- faster than just transforming x
+	- allows to find optimal linear separators efficiently
+- *soft margin* classifier - lets examples fall on wrong side of decision boundary
+	- assigns them penalty proportional to distance required to move them back to correct side
 - want to maximize margin $M = \frac{2}{\sqrt{w^T w}}$
 \begin{itemize}
 - we get this from $M=|x^+ - x^-| = |\lambda w| = \lambda \sqrt{w^Tw} $
@@ -127,26 +157,6 @@ category: ai
 - logit (log-odds) of $p:ln\left[ \frac{p}{1-p} \right] = \theta^T x$
 - predict using Bernoulli distribution with this parameter p
 - can be extended to multiple classes - multinomial distribution
-
-### Decision Tree
-- want to pick attribute that splits training data as much as possible
-    - use information gain (could also use Gini or Chi-squared Test)
-- high variance - instability - small changes in training set will result in changes of tree model
-    - stop growing when further splitting doesn't yield improvement
-    - grow full tree then prune by eliminating nodes
-- bootstrap - a method of sampling
-- bagging = bootstrap aggregation - an ensemble method
-    - training multiple models by randomly drawing new training data
-    - bootstrap with replacement can keep the sampling size the same as the original size
-- voting
-    - consensus: take the majority vote
-    - average: take average of distribution of votes
-        - reduces variance, better for improving more variable (unstable) models
-- random forest -uses decorrelated trees
-    - for each split of each tree, pick only m of the p possible dimensions
-    - when m=p, we are just doing bagging
-    lowering m reduces correlations between the trees
-    - reducing correlation of the trees reduces variance
 
 ## Generative
 ### Naive Bayes Classifier
@@ -240,11 +250,30 @@ category: ai
 - c = argmax log$P(c)$ + $\sum_i log P(X_i|c)$
 \end{itemize}
 
-## Instance-Based=lazy learner (ex. K nearest neighbors)
+## Instance-Based (ex. K nearest neighbors)
+- also called lazy learners
 - makes Voronoi diagrams
-- distance can be Euclidean, cosine, or other
 - can take majority vote of neighbors or weight them by distance
-- attributes may have to be scaled so that large-valued features don't dominate
+- distance can be Euclidean, cosine, or other
+	- should scale attributes so large-valued features don't dominate
+	- *Mahalanobois* distance metric takes into account covariance between neighbors
+	- in higher dimensions, distances tend to be much farther, worse extrapolation
+	- sometimes need to use *invariant metrics*
+		- ex. rotate digits to find the most similar angle before computing pixel difference
+			- could just augment data, but can be infeasible
+		- computationally costly so we can approximate the curve these rotations make in pixel space with the *invariant tangent line*
+			- stores this line for each point and then find distance as the distance between these lines
+- finding NN with *k-d* (k-dimensional) tree
+	- balanced binary tree over data with arbitrary dimensions
+	- each level splits in one dimension
+	- might have to search both branches of tree if close to split
+- finding NN with *locality-sensitive hashing*
+	- approximate
+	- make multiple hash tables
+		- each uses random subset of bit-string dimensions to project onto a line
+		- union candidate points from all hash tables and actually check their distances
+- comparisons
+	- error rate of 1 NN is never more than twice that of Bayes error
 
 # Feature Selection
 ## Filtering

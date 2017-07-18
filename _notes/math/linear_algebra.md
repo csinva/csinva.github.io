@@ -8,6 +8,65 @@ category: math
 * TOC
 {:toc}
 
+# SVD + eigenvectors
+### strang 5.1 - intro
+- elimination changes eigenvalues
+- eigenvector application to diff eqs $\frac{du}{dt}=Au$
+	- soln is exponential: $u(t) = c_1 e^{\lambda_1 t} x_1 + c_2 e^{\lambda_2 t} x_2$
+- *eigenvalue eqn*: $Ax = \lambda x \implies (A-\lambda I)x=0$
+	- set $det(A-\lambda I) = 0$ to get *characteristic polynomial*
+- eigenvalue properties
+	- 0 eigenvalue signals that A is singular
+	- eigenvalues are on the main diagonal when the matrix is triangular
+	- checks
+		1. sum of eigenvalues = trace(A)
+		2. prod eigenvalues = det(A)
+- *defective matrices* - lack a full set of eigenvalues
+
+### strang 5.2 - diagonalization
+- assume A (nxn) has n eigenvectors
+	- S := eigenvectors as columns
+	- $S^{-1} A S = \Lambda$ where corresponding eigenvalues are on diagonal of $\Lambda$
+- if matrix A has no repeated eigenvalues, eigenvectors are independent
+- other S matrices won't produce diagonal
+- only diagonalizable if n independent eigenvectors
+	- not related to invertibility
+	- eigenvectors corresponding to different eigenvalues are lin. independent
+- there are always n complex eigenvalues
+- eigenvalues of $A^2$ are squared, eigenvectors remain same
+- eigenvalues of $A^{-1}$ are inverse eigenvalues
+- eigenvalue of rotation matrix is $i$
+- eigenvalues for $AB$ only multiply when A and B share eigenvectors
+	- diagonalizable matrices *share the same eigenvector* matrix S iff $AB = BA$
+	
+### strang 5.3 - difference eqs and power $A^k$
+- compound interest
+- solving for fibonacci numbers
+- Markov matrices
+	- steady-state Ax = x 
+	- corresponds to $\lambda = 1$
+- stability of $u_{k+1} = A u_k$
+	- stable if all eigenvalues satisfy $|\lambda_i|$  <1
+	- neutrally stable if some $|\lambda_i|=1$
+	- unstable if at least one $|\lambda_i|$ > 1
+- Leontief's input-output matrix
+- *Perron-Frobenius thm* - if A is a positive matrix (positive values), so is its largest eigenvalue. Every component of the corresponding eigenvector is also positive.
+
+### strang 6.3 - singular value decomposition
+- SVD for any m x n matrix: $A=U\Sigma V^T$
+	- U (mxm) are eigenvectors of $AA^T$
+	- columns of V (nxn) are eigenvectors of $A^TA$
+	- r singular values on diagonal of $\Sigma$ (m x n) - square roots of nonzero eigenvalues of both $AA^T$ and $A^TA$
+- properties
+	1. for PD matrices, $\Sigma=\Lambda$, $U\Sigma V^T = Q \Lambda Q^T$
+		- for other symmetric matrices, any negative eigenvalues in $\Lambda$ become positive in $\Sigma$
+- applications
+	- very numerically stable because U and V are orthogonal matrices
+	- *condition number* of invertible nxn matrix = $\sigma_{max} / \sigma_{min}$
+	- $A=U\Sigma V^T = u_1 \sigma_1 v_1^T + ... + u_r \sigma_r v_r^T$
+		- we can throw away columns corresponding to small $\sigma_i$
+	- *pseudoinverse* $A^+ = V \Sigma^+ U^T$
+
 ## Linear Basics
 - Linear 
     1. Superposition f(x+y) =  f(x)+f(y) 

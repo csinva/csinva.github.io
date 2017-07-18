@@ -62,3 +62,9 @@ category: research
 - linearization PLOS
 - linearization JCNeuro
 - interspike interval
+
+# 5 - cnns
+- auto-encoder with sparsity rules
+- rotation project
+	- train without flips
+- neural network compression

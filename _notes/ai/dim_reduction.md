@@ -9,10 +9,15 @@ category: ai
 
 # PCA
 - have p random variables
-- want to develop a new set of K axes (linear combinations of the original p axes) in the direction of greatest variability
+- want new set of K axes (linear combinations of the original p axes) in the direction of greatest variability
     - this is best for visualization, reduction, classification, noise reduction
 - to find axis - minimize sum of squares of projections onto line =($v^TX^TXv$ subject to $v^T v=1$ )
     - $\implies v^T(X^TXv-\lambda v)=0$
+- SVD: let $X = U D V^T$
+	- $V_q$ (pxq) is first q columns of V
+		- $H = V_q V_q^T$ is the *projection matrix*
+		- to transform $x = Hx$
+	- columns of $UD$ (Nxp) are called the *principal components* of X
 - eigenvectors of covariance matrix -> principal components
     - most important corresponds to largest eigenvalue (eigenvalue corresponds to variance)
 - finding eigenvectors can be hard to solve, so 3 other methods

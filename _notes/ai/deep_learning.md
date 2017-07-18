@@ -8,6 +8,8 @@ category: ai
 * TOC
 {:toc}
 
+- understand backprop
+
 # neural networks
 - basic perceptron update rule
     - if output is 0 but should be 1: raise weights on active connections by d
@@ -28,11 +30,11 @@ category: ai
 	- N is output
 	- if dependency graph is more complex, need to apply multi-dimensional chain rule and sum
 	- $\frac{dx_N}{dx_i} = \sum_{j:i\in \pi (j)} \frac{dx_N}{dx_{j}} (\frac{\partial x_{j}}{\partial x_i})$
-	- pipeline
-	    - initialize weights ($\frac{dx_N}{dx_N}=1$)
-	    - for each batch
+- pipeline
+	- initialize weights, and final derivative ($\frac{dx_N}{dx_N}=1$)
+	- for each batch
 		- run network forward to compute outputs, loss
-		- run compute gradients with backprop
+		- compute gradients with backprop
 		- update weights with SGD
 
 # training
@@ -47,6 +49,11 @@ category: ai
 - *softmax* - takes vector z and returns vector of the same length
 	- makes it so output sums to 1 (like probabilities of classes)
 	
+### learning stucture
+- google's learning to learn
+- *optimal brain damage* - starts with fully connected and weeds out connections
+- *tiling* - train networks on the error of previous networks
+
 # CNNs
 - kernel here means filter
 - convolution G- takes a windowed average of an image F with a filter H where the filter is flipped horizontally and vertically before being applied
@@ -65,10 +72,6 @@ category: ai
     - max pooling - backprop error back to neuron w/ max value
     - average pooling - backprop splits error equally among input neurons
 - data augmentation - random rotations, flips, shifts, recolorings
-- residual networks - connect the input to end skipping layers
-    - make it easy to learn the identity function
-    - want to preserve info through layers
-    - help with vanishing/exploding gradients
  
 ## 1 - AlexNet (2012)
 - landmark (5 conv layers, some pooling/dropout)
@@ -91,8 +94,36 @@ category: ai
 - object detection
 
 ## 7- GAN (2014)
+- might not converge
+- *generative adversarial network*
+- goal: want G to generate distribution that follows data
+	- ex. generate good images
+- two models
+	- *G* - generative
+	- *D* - discriminative
+- G generates adversarial sample x for D
+	- G has prior z
+	- D gives probability p that x comes from data, not G
+		- like a binary classifier: 1 if from data, 0 from G
+	- *adversarial sample* - from G, but tricks D to predicting 1
+- training goals
+	- G wants D(G(z)) = 1
+	- D wants D(G(z)) = 0
+		- D(x) = 1
+	- converge when D(G(z)) = 1/2
+	- G loss function: $G = argmin_G log(1-D(G(Z))$
+	- overall $min_g max_D$ log(1-D(G(Z))
+- training algorithm
+	- in the beginning, since G is bad, only train  my minimizing G loss function
+	- later
+		```
+		for 
+			for
+				max D by SGD
+			min G by SGD
+		```
 
-## 8 - Generating image descriptions (2014)
+## 8 - Karpathy Generating image descriptions (2014)
 - RNN+CNN
 
 ## 9 - Spatial transformer networks (2015)
@@ -122,33 +153,3 @@ category: ai
 - input gate - conditionally remember new info
 - output gate - conditionally output a relevant part of memory
 - GRUs - similar, merge input / forget units into a single update unit
-
-# GAN original
-- might not converge
-- *generative adversarial network*
-- goal: want G to generate distribution that follows data
-	- ex. generate good images
-- two models
-	- *G* - generative
-	- *D* - discriminative
-- G generates adversarial sample x for D
-	- G has prior z
-	- D gives probability p that x comes from data, not G
-		- like a binary classifier: 1 if from data, 0 from G
-	- *adversarial sample* - from G, but tricks D to predicting 1
-- training goals
-	- G wants D(G(z)) = 1
-	- D wants D(G(z)) = 0
-		- D(x) = 1
-	- converge when D(G(z)) = 1/2
-	- G loss function: $G = argmin_G log(1-D(G(Z))$
-	- overall $min_g max_D$ log(1-D(G(Z))
-- training algorithm
-	- in the beginning, since G is bad, only train  my minimizing G loss function
-	- later
-		```
-		for 
-			for
-				max D by SGD
-			min G by SGD
-		```
