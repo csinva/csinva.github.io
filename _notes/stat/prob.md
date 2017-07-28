@@ -17,7 +17,7 @@ category: stat
 - $V[X] = E[(x-\mu)^2] = E[x^2]-E[x]^2$
 	- for unbiased estimate, divide by n-1
 - $Cov[X,Y] = E[(X-\mu_X)(Y-\mu_Y)] = E[XY]-E[X]E[Y]$
-	- $Cor(Y,X) = \frac{Cov(Y,X)}{s_xs_y}$
+	- $Cor(Y,X) = \rho = \frac{Cov(Y,X)}{s_xs_y}$
 	- $(Cor(Y,X))^2 = R^2$
 	- Cov is a measure of how much 2 variables change together
 - linearity
@@ -27,7 +27,6 @@ category: stat
 - $f(X), X=v(Y), g(Y) = f(v(Y))$ |$\frac{d}{dy}g^{-1}(y)$|
 - $g(y_1,y_2) = f(v_1,v_2)|det(M)|$ where M in row-major is $\frac{\partial v1}{y1}, \frac{\partial v1}{y2} ...$
 - $Corr(aX+b,cY+d) = Corr(X,Y)$ if a and c have same sign
-- $\rho = \pm 1$ iff Y=aX+b $\rho$ is a measure of linear relationship
 - $E[h(X)] \approx h(E[X])$
 - $V[h(X)] \approx h'(E[X])^2 V[X]$
 - skewness = $E[(\frac{X-\mu}{\sigma})^3]$

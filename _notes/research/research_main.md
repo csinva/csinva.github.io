@@ -4,14 +4,7 @@ section-type: notes
 title: Research main
 category: research
 ---
-
-# to discuss
-- prelim exam
-- switching to cs dept?
-- “the great events of the world take place in the brain” – Picture of Dorian Gray- Problems: Alzheimers, PTSD, autism, addiction, MS, depression, schizophrenia
-- extracting memory with deep learning
-	- learning how to find the right segments of memory
-	- learning to decode another neural network?
+- Problems: Alzheimers, PTSD, autism, addiction, MS, depression, schizophrenia
 
 # 1 - neural decoding
 ## fMRI decoding
@@ -68,3 +61,6 @@ category: research
 - rotation project
 	- train without flips
 - neural network compression
+- extracting memory with deep learning
+	- learning how to find the right segments of memory
+	- learning to decode another neural network?

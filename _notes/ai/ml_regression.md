@@ -5,16 +5,12 @@ title: Regression
 category: ai
 ---
 
-- supervised regression models
-	- linear regression (LR)
-	- LR with non-linear basis functions
-	- locally weighted LR
-	- LR with regularizations
+[toc]
 
 # problem formulation
 - absorb intercept into feature vector of 1
 	- x = column
-	- add x^0 = 1 as the first element
+	- add $x^{(0)} = 1$ as the first element
 - matrix formation
 	- $\hat{y} = f(x) = x^T \theta = \theta x^T = \theta_0 + \theta_1 x^1 + \theta_2 x^2 + ...$
 	- $\pmb{x_1}$ is all the features for one data sample
@@ -36,7 +32,7 @@ category: ai
 	- = $1/2 (X \theta - y)^T (X \theta -y)$
 	- set derivative equal to 0 and solve
 	- $\theta = (X^TX)^{-1} X^Ty$
-	- solving normal function is computationally expensive - that's why we do things like regularization (matrix multiplication is O(n^3))
+	- solving normal function is computationally expensive - that's why we do things like regularization (matrix multiplication is $O(n^3)$)
 2. gradient descent = *batch gradient descent*
 	- *gradient* - vector that points to direction of maximum increase
 	- at every step, subtract gradient multiplied by learning rate: $x_k = x_{k-1} - \alpha \nabla_x F(x_{k-1})$
@@ -78,13 +74,12 @@ category: ai
 	- leave one out (LOOCV)
 		- train on all the data and only test on one
 		- then cycle through everything
-- *regularization path* of a regression - plot each Beta_j v. lambda
+- *regularization path* of a regression - plot each coeff v. $\lambda$
 	- tells you which features get pushed to 0 and when
 	
 # 1 - simple LR
 - ml: task -> representation -> score function -> optimization -> models
 	- all of these things are assumptions
-- has zero bias, but high variance
 
 # 2 - LR with non-linear basis functions
 - can have nonlinear basis functions (ex. polynomial regression)
@@ -97,12 +92,12 @@ category: ai
 - instead of minimizing SSE, we minimize SSE weighted by each observation's closeness to the sample we want to query
 
 # 4 - linear regression model with regularizations
-- when (X^T X) isn't invertible can't use normal equations and gradient descent is likely unstable
+- when $(X^T X)$ isn't invertible can't use normal equations and gradient descent is likely unstable
 	- X is nxp, usually n >> p and X almost always has rank p
 	- problems when n < p
 - intuitive way to fix this problem is to reduce p by getting read of features
 - a lot of papers assume your data is already zero-centered
-	- conventionally don't regularize the B_0 intercept term
+	- conventionally don't regularize the intercept term
 
 ### regularizations
 1. *ridge* regression (L2)
@@ -115,7 +110,6 @@ category: ai
 	- solution is $\hat{\beta_\lambda} = (X^TX+\lambda I)^{-1} X^T y$
 	- for small $\lambda$ numerical solution is unstable
 	- When $X^TX=I$, $\beta _{Ridge} = \frac{1}{1+\lambda} \beta_{Least Squares}$
-	- introduces bias, but decreases variance
 2. *lasso* regression (L1)
 	- $\sum_i (y_i - \hat{y_i})^2+\lambda  ||\beta||_1 $ 
 	- equivalent to minimizing $\sum_i (y_i - \hat{y_i})^2$ s.t. $\sum_j |\beta_j| \leq t$

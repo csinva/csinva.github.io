@@ -28,44 +28,29 @@ category: ai
 
 ## Error
 - Define a loss function $\mathcal{L}$
-\begin{itemize}
-- 0-1 loss: |C-f(X)|
-- $L_2$ loss: $(C-f(X))^2$
-\end{itemize}
+	- 0-1 loss: |C-f(X)|
+	- $L_2$ loss: $(C-f(X))^2$
 - Expected Prediction Error EPE(f) = $E_{X,C} [\mathcal{L}(C,f(X))]$
-\begin{itemize}
-- =$E_{X}\left[ \sum_i \mathcal{L}(C_i,f(X)) Pr(C_i|X) \right]$
-\end{itemize}
+	- =$E_{X}\left[ \sum_i \mathcal{L}(C_i,f(X)) Pr(C_i|X) \right]$
 - Minimize EPE
-\begin{itemize}
-- Bayes Classifier minimizes 0-1 loss: $\hat{f}(X)=C_i$ if $P(C_i|X)=max_f P(f|X)$
-- KNN minimizes L2 loss: $\hat{f}(X)=E(Y|X)$ 
-\end{itemize}
+	- Bayes Classifier minimizes 0-1 loss: $\hat{f}(X)=C_i$ if $P(C_i|X)=max_f P(f|X)$
+	- KNN minimizes L2 loss: $\hat{f}(X)=E(Y|X)$ 
 - EPE(f(X)) = $noise^2+bias^2+variance$
-\begin{itemize}
-- noise - unavoidable
-- bias=$E[(\bar{\theta}-\theta_{true})^2]$ - error due to incorrect assumptions
-- variance=$E[(\bar{\theta}-\theta_{estimated})^2]$ - error due to variance of training samples
-\end{itemize}
+	- noise - unavoidable
+	- bias=$E[(\bar{\theta}-\theta_{true})^2]$ - error due to incorrect assumptions
+		- simple linear regression has 0 bias
+	- variance=$E[(\bar{\theta}-\theta_{estimated})^2]$ - error due to variance of training samples
 - more complex models (more nonzero parameters) have lower bias, higher variance
-\begin{itemize}
-- if high bias, train and test error will be very close (model isn't complex enough)
-\end{itemize}
+	- if high bias, train and test error will be very close (model isn't complex enough)
 
 # Classification
 - asymptotic classifier - assume you get infinite training / testing points
-\end{itemize}
-\begin{itemize}
-- discriminative - model P(C|X) directly
-\begin{itemize}
-- smaller asymptotic error
-- slow convergence ~ O(p)
-\end{itemize}
-- generative - model P(X|C) directly
-\begin{itemize}
-- generally has higher bias -> can handle missing data
-- fast convergence ~ O(log(p))
-\end{itemize}
+- *discriminative* - model P(C|X) directly
+	- smaller asymptotic error
+	- slow convergence ~ O(p)
+- *generative* - model P(X|C) directly
+	- generally has higher bias -> can handle missing data
+	- fast convergence ~ O(log(p))
  
 ## Discriminative
 ### SVMs
@@ -135,7 +120,6 @@ category: ai
 - VC (Vapnic-Chervonenkis) dimension - if data is mapped into sufficiently high dimension, then samples will be linearly separable (N points, N-1 dims)
 
 ### kernel functions - new ways to compute dot product (similarity function)
-\begin{itemize}
 - original testing function: $\hat{y}=sign(\Sigma_{i\in train} \alpha_i y_i x_i^Tx_{test}+b)$
 - with kernel function: $\hat{y}=sign(\Sigma_{i\in train} \alpha_i y_i K(x_i,x_{test})+b)$
 - linear $K(x,z) = x^Tz$
@@ -150,7 +134,6 @@ category: ai
 - scale before applying
 - fill in missing values
 - start with RBF
-\end{itemize}
 
 ### Logistic Regression
 - $p = P(Y=1|X)=\frac{exp(\theta^T x)}{1+exp(\theta ^Tx)}$ 

@@ -8,7 +8,7 @@ category: ai
 * TOC
 {:toc}
 
-- understand backprop
+[toc]
 
 # neural networks
 - basic perceptron update rule
@@ -19,7 +19,7 @@ category: ai
     - Binary step
     - TanH
     - Rectifier = ReLU
-- "deep" - more than 1 hidden layer
+- *deep* - more than 1 hidden layer
 - regression loss = $\frac{1}{2}(y-\hat{y})^2$
 - classification loss = $-y log (\hat{y}) - (1-y) log(1-\hat{y})$ 
     - can't use SSE because not convex here
@@ -44,15 +44,11 @@ category: ai
 	- do this for each input to the next layer
 - *dropout* - randomly zero outputs of p fraction of the neurons during training
 	- like learning large ensemble of models that share weights
-	- at test time can multiply all neurons' outputs by p
-	- or during training divide all neurons' outputs by p
+	- 2 ways to compensate (pick one)
+		1. at test time multiply all neurons' outputs by p
+		2. during training divide all neurons' outputs by p
 - *softmax* - takes vector z and returns vector of the same length
 	- makes it so output sums to 1 (like probabilities of classes)
-	
-### learning stucture
-- google's learning to learn
-- *optimal brain damage* - starts with fully connected and weeds out connections
-- *tiling* - train networks on the error of previous networks
 
 # CNNs
 - kernel here means filter
@@ -131,6 +127,15 @@ category: ai
 
 ## 10 - Segnet (2015)
 - encoder-decoder network
+
+## 11 - Pixelnet (2017)
+- predicts pixel-level for different tasks with the same architecture
+- convolutional layers then 3 FC layers which use outputs from all convolutional layrs together
+    
+# recent papers
+- deepmind's learning to learn
+- *optimal brain damage* - starts with fully connected and weeds out connections (Lecun)
+- *tiling* - train networks on the error of previous networks
     
 # RNNs
 - feedforward NNs have no memory so we introduce recurrent NNs
