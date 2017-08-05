@@ -181,8 +181,8 @@
  	- can solve by keeping track of maximizing values of variables in max-product algorithm
  
 ## hmms R&N 15.1-15.5, J. 12 (hmm)
-- agent maintains *belief state* of state variables $X_t$ given evidence variables $E_t
-	- *transition model* - $P(X_t|X_{0:t-1}$
+- agent maintains *belief state* of state variables $X_t$ given evidence variables $E_t$
+	- *transition model* - $P(X_t|X_{0:t-1})$
 		- often assume this is *Markov* or other stationary process
 	- *sensor model* - $P(E_t | X_t)$
 		- inference goes the other way
@@ -194,8 +194,8 @@
 - 4 inference problems
 	1. *filtering* = *state estimation* - compute $P(X_t | e_{1:t})$
 		- use *recursive estimation* for message $f_{1:t+1} = \alpha FORWARD(f_{1:t}, e_{t+1}$
-	2. *prediction* - compute $P(X_{t+k}|e_{1:t}$ for 0<k
-	3. *smoothing* - compute $P(X_{k}|e_{1:t}$ for 0<k<t
+	2. *prediction* - compute $P(X_{t+k}|e_{1:t})$ for 0<k
+	3. *smoothing* - compute $P(X_{k}|e_{1:t})$ for 0<k<t
 	4. *most likely explanation* - $argmax_{x_{1:t}}P(x_{1:t}|e_{1:t})$
 2. *learning* - form of EM - learn  $(\pi,A,B)$
 	1. supervised (given y)
@@ -223,8 +223,7 @@
 		- given $(\pi,A,B)$ and $\mathbf{x}$
 			1. calculate probability of $\mathbf{x}$
 			2. calculate most probable $\mathbf{y}$
-			- use MAP:  $\hmes
-			at{y}=\underset{y}{argmax} \: P(y|x,\pi, A,B)=\underset{y}{argmax} \: P(y \land x | \pi, A,B)$
+			- use MAP:  $\hat{y}=\underset{y}{argmax} \: P(y|x,\pi, A,B)=\underset{y}{argmax} \: P(y \land x | \pi, A,B)$
 		- use *Viterbi algorithm*
 			1. initial for each state s
 				- $score_1(s) = P(s) P(x_1 | s) = \pi_s B_{x_1,s}$
