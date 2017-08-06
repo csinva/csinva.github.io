@@ -1,27 +1,26 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 	{% include head.html %}
-<style>
-    /*#header {*/
-        /*width: 100%;*/
-        /*margin: 0px;*/
-        /*z-index: 9999;*/
-        /*pzosition: absolute;*/
-    /*}*/
-</style>
+<!--<style>-->
+    <!--/*#header {*/-->
+        <!--/*width: 100%;*/-->
+        <!--/*margin: 0px;*/-->
+        <!--/*z-index: 9999;*/-->
+        <!--/*pzosition: absolute;*/-->
+    <!--/*}*/-->
+<!--</style>-->
+{% include navigation.html %}
+{% include header.html %}
 <!--<div id="particles-js">-->
-    <!--<div id="header">-->
-        <!--{% include navigation.html %}-->
-        <!--{% include header.html %}-->
-    <!--</div>-->
+
 <!--</div>-->
 <!--<script src="assets/particles.js"></script>-->
-<script>
-        /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
-//    particlesJS.load('particles-js', 'assets/particles.json', function() {
-//      console.log('callback - particles.js config loaded');
-//    });
-</script>
+<!--<script>-->
+    <!--particlesJS.load(@dom-id, @path-json, @callback (optional));-->
+    <!--particlesJS.load('particles-js', 'assets/particles.json', function() {-->
+      <!--console.log('callback - particles.js config loaded');-->
+    <!--});-->
+<!--</script>-->
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
   {% for page in site.pages %}
@@ -56,7 +55,7 @@
       <!-- {{ page.title }} Section -->
       <section id="{{ page.title }}" class="container content-section text-center">
           <div class="row">
-              <div class="col-lg-8 col-lg-offset-2">
+              <div class="col-lg-64 col-lg-offset-0">
                 {{ page.content | markdownify }}
                 <ul class="timeline">
                 {% for post in site.posts %}

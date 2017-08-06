@@ -7,6 +7,7 @@ category: stat
 
 * TOC
 {:toc}
+[toc]
 
 # Info-theory basics
 ### entropy
