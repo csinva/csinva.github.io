@@ -26,20 +26,24 @@ category: ai
 - multiclass classification loss $=-\sum_j y_j ln \hat{y}_j$
 - **backpropagation** - application of *reverse mode automatic differentiation* to neural networks's loss
 	- apply the chain rule from the end of the program back towards the beginning
-		- $\frac{dx_N}{dx_i} = \frac{dx_N}{dx_{i+1}} (\frac{\partial x_{i+1}}{\partial x_i})$
-	- N is output
-	- if dependency graph is more complex, need to apply multi-dimensional chain rule and sum
-	- $\frac{dx_N}{dx_i} = \sum_{j:i\in \pi (j)} \frac{dx_N}{dx_{j}} (\frac{\partial x_{j}}{\partial x_i})$
+		- $\frac{dL}{dx_i} = \frac{dL}{dz} \frac{\partial z}{\partial x_i}$
+		- sum $\frac{dL}{dz}$ if neuron has multiple outputs z
+		- L is output
+	- $\frac{\partial z}{\partial x_i}$ is actually a Jacobian (deriv each $z_i$ wrt each $x_i$ - these are vectors)
+		- each gate usually has some sparsity structure so you don't compute whole Jacobian
 - pipeline
-	- initialize weights, and final derivative ($\frac{dx_N}{dx_N}=1$)
+	- initialize weights, and final derivative ($\frac{dL}{dL}=1$)
 	- for each batch
-		- run network forward to compute outputs, loss
-		- compute gradients with backprop
+		- run network forward to compute outputs at each step
+		- compute gradients at each gate with backprop
 		- update weights with SGD
 
 # training
 - *vanishing gradients problem* - neurons in earlier layers learn more slowly than in later layers
+	- happens with sigmoids
+	- dead ReLus
 - *exploding gradients problem* - gradients are significantly larger in earlier layers than later layers
+	- RNNs
 - *batch normalization* - whiten inputs to all neurons (zero mean, variance of 1)
 	- do this for each input to the next layer
 - *dropout* - randomly zero outputs of p fraction of the neurons during training
@@ -128,7 +132,10 @@ category: ai
 ## 10 - Segnet (2015)
 - encoder-decoder network
 
-## 11 - Pixelnet (2017)
+## 11 - Unet (2015)
+- Ronneberger - applies to biomedical segmentation
+
+## 12 - Pixelnet (2017)
 - predicts pixel-level for different tasks with the same architecture
 - convolutional layers then 3 FC layers which use outputs from all convolutional layrs together
     

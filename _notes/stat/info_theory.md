@@ -18,9 +18,8 @@ category: stat
 	- higher entropy $\implies$ more uniform
 	- lower entropy $\implies$ more pure
 	1. expectation of variable $W=W(X)$, which assumes the value $-log(p_i)$ with probability $p_i$
-	2. minimum average number of "yes or no" questions required to determine result on one observation of X
+	2. minimum, average number of binary questions (like is X=1?) required to determine value is between H(X) and H(X)+1
 	3. related to asymptotic behavior of sequence of i.i.d. random variables
-	- minimum, average number of binary questions (like is X=1?) needed to determine value is between H(X) and H(X)+1
 - $H(Y|X)=\sum_j p(x_j) H(Y|X=x_j)$
 	- $H(X,Y)=H(X)+H(Y|X) =H(Y)+H(X|Y)$
 	
@@ -31,8 +30,7 @@ category: stat
 	- If, instead, we used the code for a distribution q, we would need H(p) + D(p||q) bits on the average to describe the random variable.
 	- $D(p||q) \neq D(q||p)$
 - *mutual info I(X; Y)*
-	- $I(X; Y) = \sum_X \sum_y p(x,y) log \frac{p(x,y)}{p(x) p(y)}$
-		- the relative entropy between p(x,y) and p(x)*p(y)
+	- $I(X; Y) = \sum_X \sum_y p(x,y) log \frac{p(x,y)}{p(x) p(y)} = D(p(x,y)||p(x)\cdot p(y))$
 	- $I(X; Y) = H(X) - H(X|Y)$
 		- $I(X; X) = H(X)$ so entropy sometimes called *self-information*
 	
@@ -49,10 +47,11 @@ category: stat
 	- linear functions are both convex and concave
 - *Jensen's inequality* - if f is a convex function and X is an R.V., $E[f(X)] \geq f(E[X])$
 	- if f strictly convex, equality $\implies X=E[X]$
-- *information inequality* $D(p||q) \geq 0$ with equality iff p(x)=q(x) for all x
-- $H(X) \leq log |X|$ where |X| denotes the number of elements in the range of X, with equality if and only X has a uniform distr
-- $H(X|Y) \leq H(X)$ - information can't hurt
-- $H(X_1, ..., X_n) \leq \sum_i H(X_i)$
+- implications
+	- *information inequality* $D(p||q) \geq 0$ with equality iff p(x)=q(x) for all x
+	- $H(X) \leq log |X|$ where |X| denotes the number of elements in the range of X, with equality if and only X has a uniform distr
+	- $H(X|Y) \leq H(X)$ - information can't hurt
+	- $H(X_1, ..., X_n) \leq \sum_i H(X_i)$
 
 # axiomatic approach
 - *fundamental theorem of information theory* - it is possible to transmit information through a noisy channel at any rate less than channel capacity with an arbitrarily small probability of error

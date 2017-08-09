@@ -85,55 +85,40 @@ category: ai
 - *soft margin* classifier - lets examples fall on wrong side of decision boundary
 	- assigns them penalty proportional to distance required to move them back to correct side
 - want to maximize margin $M = \frac{2}{\sqrt{w^T w}}$
-\begin{itemize}
-- we get this from $M=|x^+ - x^-| = |\lambda w| = \lambda \sqrt{w^Tw} $
-\end{itemize}
-- separable case: argmin($w^Tw$) subject to 
-\begin{itemize}
-- $w^Tx+b\geq 1$ for all x in +1 class
-- $w^Tx+b\leq 1$ for all x in -1 class
-\end{itemize}
+	- we get this from $M=|x^+ - x^-| = |\lambda w| = \lambda \sqrt{w^Tw} $
+	- separable case: argmin($w^Tw$) subject to 
+	- $w^Tx+b\geq 1$ for all x in +1 class
+	- $w^Tx+b\leq 1$ for all x in -1 class
 - solve with quadratic programming
 - non-separable case: argmin($w^T w/2 + C \sum_i^n \epsilon_i$) subject to
-\begin{itemize}
-- $w^Tx_i +b \geq 1-\epsilon_i $ for all x in +1 class
-- $w^Tx_i +b \leq -1+\epsilon_i $ for all x in -1 class
-- $\forall i, \epsilon_i \geq 0$
-- large C can lead to overfitting
-\end{itemize}
+	- $w^Tx_i +b \geq 1-\epsilon_i $ for all x in +1 class
+	- $w^Tx_i +b \leq -1+\epsilon_i $ for all x in -1 class
+	- $\forall i, \epsilon_i \geq 0$
+	- large C can lead to overfitting
 - benefits
-\begin{itemize}
-- number of parameters remains the same (and most are set to 0)
-- we only care about support vectors
-- maximizing margin is like regularization: reduces overfitting
-\end{itemize}
+	- number of parameters remains the same (and most are set to 0)
+	- we only care about support vectors
+	- maximizing margin is like regularization: reduces overfitting
 - these can be solved with quadratic programming QP
 - solve a dual formulation (Lagrangian) instead of QPs directly so we can use kernel trick
-\begin{itemize}
-- primal: $min_w max_\alpha L(w,\alpha)$
-- dual: $max_\alpha min_w L(w,\alpha)$
-\end{itemize}
+	- primal: $min_w max_\alpha L(w,\alpha)$
+	- dual: $max_\alpha min_w L(w,\alpha)$
 - KKT condition for strong duality
-\begin{itemize}
-- complementary slackness: $\lambda_i f_i(x) = 0, i=1,...,m$
-\end{itemize}
+	- complementary slackness: $\lambda_i f_i(x) = 0, i=1,...,m$
 - VC (Vapnic-Chervonenkis) dimension - if data is mapped into sufficiently high dimension, then samples will be linearly separable (N points, N-1 dims)
-
-### kernel functions - new ways to compute dot product (similarity function)
-- original testing function: $\hat{y}=sign(\Sigma_{i\in train} \alpha_i y_i x_i^Tx_{test}+b)$
-- with kernel function: $\hat{y}=sign(\Sigma_{i\in train} \alpha_i y_i K(x_i,x_{test})+b)$
-- linear $K(x,z) = x^Tz$
-- polynomial $K (x, z) = (1+x^Tz)^d$
-- radial basis kernel $K (x, z) = exp(-r||x-z||^2)$
-- computing these is O($m^2$), but dot-product is just O(m)
-- function that corresponds to an inner product in some expanded feature space
-\end{itemize}
+- kernel functions - new ways to compute dot product (similarity function)
+	- original testing function: $\hat{y}=sign(\Sigma_{i\in train} \alpha_i y_i x_i^Tx_{test}+b)$
+	- with kernel function: $\hat{y}=sign(\Sigma_{i\in train} \alpha_i y_i K(x_i,x_{test})+b)$
+	- linear $K(x,z) = x^Tz$
+	- polynomial $K (x, z) = (1+x^Tz)^d$
+	- radial basis kernel $K (x, z) = exp(-r||x-z||^2)$
+	- computing these is O($m^2$), but dot-product is just O(m)
+	- function that corresponds to an inner product in some expanded feature space
 - practical guide
-\begin{itemize}
-- use m numbers to represent categorical features
-- scale before applying
-- fill in missing values
-- start with RBF
+	- use m numbers to represent categorical features
+	- scale before applying
+	- fill in missing values
+	- start with RBF
 
 ### Logistic Regression
 - $p = P(Y=1|X)=\frac{exp(\theta^T x)}{1+exp(\theta ^Tx)}$ 
@@ -328,21 +313,18 @@ category: ai
 ### Expectation Maximization (EM)
 - general procedure that includes K-means
 - E-step
-\begin{itemize}
-- calculate how strongly to which mode each data point “belongs” (maximize likelihood)
-\end{itemize}
+	- calculate how strongly to which mode each data point “belongs” (maximize likelihood)
 - M-step - calculate what each mode’s mean and covariance should be given the various responsibilities (maximization step)
 - known to converge
 - can be suboptimal
 - monotonically decreases goodness measure
 - can also partition around medoids
-- mixture-based clustering \end{itemize}
-\subsubsection{K-Means}
-\begin{itemize}
-- start with random centers
-- assign everything to nearest center: O(|clusters|*np) 
-- recompute centers O(np) and repeat until nothing changes
-- partition amounts to Voronoi diagram
+- mixture-based clustering 
+- *K-Means*
+	- start with random centers
+	- assign everything to nearest center: O(|clusters|*np) 
+	- recompute centers O(np) and repeat until nothing changes
+	- partition amounts to Voronoi diagram
 
 ### Gaussian Mixture Model (GMM)
 - continue deriving new mean and variance at each step

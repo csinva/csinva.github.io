@@ -166,10 +166,25 @@
     - reducing correlation of the trees reduces variance
 
 # Neural nets -- R&N 18.7
+
 # Clustering, k-means, mixture of Gaussians -- J. 10 (Mixtures and Conditional Mixtures)
+- *latent vars* - values not specified in the observed data
+
+## unconditional mixture models - density estimation
+- *K-Means*
+	- start with random centers
+	- assign everything to nearest center: O(|clusters|*np) 
+	- recompute centers O(np) and repeat until nothing changes
+	- partition amounts to Voronoi diagram
+- *GMMs*
+	- continue deriving new mean and variance at each step
+	- "soft" version of K-means - update means as weighted sums of data instead of just normal mean
+	- sometimes initialize K-means w/ GMMs
+
+## conditional mixture models - regression/classification
 
 # EM -- J. 11 (EM Algorithm)
-- hill=climbing on log-likelihood achieved indirectly by coordinate ascent in the auxilary function
+- hill-climbing on log-likelihood achieved indirectly by coordinate ascent in the auxilary function
 - model with observed variable X and hidden variable Z
 	1. *expectation step* - values of unobserved latent variables are "filled in"
 		- calculates prob of latent variables given observed variables and current param values
@@ -179,7 +194,7 @@
 	- know *incomplete log-likelihood* $l(\theta; x) = log \: p(x|\theta) = log \sum_z p(x,z|\theta)$
 	- *expected complete log-likelihood* $<l_c(\theta; x,z)>_q = \sum_z q(z|x,\theta) log \: p(x,z|\theta)$
 		- q is the averaging distr.
-	- *auxilary function* $L(q, \theta) = \sum_z q(z|x) log \frac{p(x,z|\theta){q(z|x)}$ - lower bound for the log likelihood
+	- *auxilary function* $L(q, \theta) = \sum_z q(z|x) log \frac{p(x,z|\theta)}{q(z|x)}$ - lower bound for the log likelihood
 - steps
 	- E: $q^(t+1) = \underset{q}{argmax} L(q,\theta^{(t)})$
 		- maximized with $q = p(z|x, \theta^{(t)})$

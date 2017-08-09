@@ -14,6 +14,12 @@
 
 # Kalman Filtering and Smoothing (Jordan 15)
 ### 15.1 - state space model
+- underlying *state space model* = SSM is structurally identical to HMM
+	- type of nodes (real-valued vectors) and prob model (linear-Gaussian) changes	- state nodes: $x_{t+1} = Ax_t + Gw_t$
+		- x is Gaussian, w is noise Gaussian
+	- output nodes: $y_t = Cx_t+v_t$
+		- y is linear Gaussian
+	
 ### 15.2 - unconditional distr.
 ### 15.3 - inference
 ### 15.4 - filtering
