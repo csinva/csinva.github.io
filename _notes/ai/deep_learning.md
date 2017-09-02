@@ -17,8 +17,10 @@ category: ai
 - transfer / activation functions
     - sigmoid(z) = $\frac{1}{1+e^{-z}}$
     - Binary step
-    - TanH
+    - TanH (always preferred to sigmoid)
     - Rectifier = ReLU
+    	   - Leaky ReLU - still has some negative slope when <0
+    - rare to mix and match neuron types
 - *deep* - more than 1 hidden layer
 - regression loss = $\frac{1}{2}(y-\hat{y})^2$
 - classification loss = $-y log (\hat{y}) - (1-y) log(1-\hat{y})$ 
@@ -63,6 +65,17 @@ category: ai
     - can use these to detect edges with small convolutions
     - can do Guassian filters
 - convolutions typically sum over all color channels
+- 1x1 conv - still convolves over channels
+- pooling - usually max - doesn't pool over depth
+	- people trying to move away from this - larger strides in conversation layers
+	- stacking small layers is generally better
+- most of memory impact is usually from activations from each layer kept around for backdrop
+- visualizations
+    - layer activations (maybe average over channels)
+    - visualize the weights (maybe average over channels)v
+    - feed a bunch of images and keep track of which activate a neuron most
+    - t-SNE embedding of images
+    - occluding
 - weight matrices have special structure (Toeplitz or block Toeplitz)
 - input layer is usually centered (subtract mean over training set)
 - usually crop to fixed size (square input)
@@ -72,6 +85,9 @@ category: ai
     - max pooling - backprop error back to neuron w/ max value
     - average pooling - backprop splits error equally among input neurons
 - data augmentation - random rotations, flips, shifts, recolorings
+
+## 0 - LeNet (1998)
+- first, used on MNIST
  
 ## 1 - AlexNet (2012)
 - landmark (5 conv layers, some pooling/dropout)

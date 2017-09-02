@@ -57,6 +57,7 @@ category: math
 	- U (mxm) are eigenvectors of $AA^T$
 	- columns of V (nxn) are eigenvectors of $A^TA$
 	- r singular values on diagonal of $\Sigma$ (m x n) - square roots of nonzero eigenvalues of both $AA^T$ and $A^TA$
+	- like rotating, scaling, and rotating back
 - properties
 	1. for PD matrices, $\Sigma=\Lambda$, $U\Sigma V^T = Q \Lambda Q^T$
 		- for other symmetric matrices, any negative eigenvalues in $\Lambda$ become positive in $\Sigma$
@@ -109,6 +110,7 @@ category: math
 - *positive semi-definite* -  $A \in R^{nxn}$
     - intuitively is like having upwards curve
     - if $\forall x \in R^n, x^TAx \geq 0$ then A is positive semi definite (PSD)
+    	- like it curves up
     - if $\forall x \in R^n, x^TAx > 0$ then A is positive definite (PD)
     - PD $\to$ full rank, invertible
 - *Gram matrix* - G = $X^T X \implies $PSD

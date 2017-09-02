@@ -26,6 +26,7 @@ category: ai
 		- based on eigenvalue decomposition
 	3. adaptive PCA
 		- extract components sequentially, starting with highest variance so you don't have to extract them all	
+- good PCA code: http://cs231n.github.io/neural-networks-2/
 		
 ### nonlinear PCA
 - usually uses an auto-associative neural network
