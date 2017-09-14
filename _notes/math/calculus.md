@@ -56,8 +56,14 @@ $cos(x) = \sum_0^\infty{\frac{(-1)^n x^{2n}}{(2n)!}}$
 Geometric Sum: $a_{1st}\frac{1-r^{n+1}}{1-r}$
 
 # Multivariable calculus
-Polar: r,$\theta$,z
-
-Spherical: $\rho,\theta,\phi$
-
-Clairut's Thm: Conservative function $f_{xy}=f_{yx}$
+- Polar: r,$\theta$,z
+- Spherical: $\rho,\theta,\phi$
+- Clairut's Thm: Conservative function $f_{xy}=f_{yx}$
+- *Lagrangian* - solves minimize f subject to g = c
+	- solution will always be *tangent* to f
+	- $\nabla f = \lambda \nabla g$ - gives us n constraints
+	- remember g = c is a constraint too
+	- to do this efficiently, define the *Lagrangian* $L(x, \lambda) = f - \lambda \cdot g$
+		- taking deriv wrt $\lambda$ and setting = 0 enforces g = c 
+		- taking deriv wrt other variables and setting = 0 enforces other conditions
+		- therefore final eq just becomes $\nabla L = 0$

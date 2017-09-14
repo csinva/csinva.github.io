@@ -136,6 +136,7 @@ category: research
 
 | | 2017 | 2018 | 2019 |
 | --- | --- | --- | --- |
+| AAAI	| |  2/2 - New Orleans	| 
 | AISTATS | | 4/9 - Playa | 
 | VSS 	| | 	5/18 - Florida |  Florida
 | SAND | | ~5/31 - Pitt | ~5/31 - Pitt

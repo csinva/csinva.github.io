@@ -45,7 +45,7 @@ category: stat
 - *convex* - lies below any chord
 	- has positive 2nd deriv
 	- linear functions are both convex and concave
-- *Jensen's inequality* - if f is a convex function and X is an R.V., $E[f(X)] \geq f(E[X])$
+- *Jensen's inequality* - if f is a convex function and X is an R.V., $f(E[X]) \leq E[f(X)]$
 	- if f strictly convex, equality $\implies X=E[X]$
 - implications
 	- *information inequality* $D(p||q) \geq 0$ with equality iff p(x)=q(x) for all x
