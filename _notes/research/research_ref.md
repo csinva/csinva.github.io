@@ -16,10 +16,11 @@ category: research
 	- model databases: http://www.cnsorg.org/model-database 
 	- comp neuro databases: http://home.earthlink.net/~perlewitz/database.html
 - *raw misc data*
-	- crns data: http://crcns.org/
+	- crcns data: http://crcns.org/
 		- visual cortex data (gallant)
 		- hippocampus spike trains
-	- allen brain atlas
+	- allen brain atlas: http://www.brain-map.org/
+		- includes calcium-imaging dataset: http://help.brain-map.org/display/observatory/Data+-+Visual+Coding
 	- wikipedia page: https://en.wikipedia.org/wiki/List_of_neuroscience_databases
 - *human fMRI datasets*: https://docs.google.com/document/d/1bRqfcJOV7U4f-aa3h8yPBjYQoLXYLLgeY6_af_N2CTM/edit
 	- Kay et al 2008 has data on responses to images

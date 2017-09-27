@@ -1,3 +1,4 @@
+
 ---
 layout: notes
 section-type: notes
@@ -8,37 +9,33 @@ category: math
 * TOC
 {:toc}
 
-## Linear Basics
+[toc]
+
+# linear basics
+## linearity
 - inner product <X, Y> $= tr(X^TY) = \sum_i \sum_j X_{ij} Y_{ij}$
-- Linear 
-    1. Superposition f(x+y) =  f(x)+f(y) 
-    2. Proportionality $f(k*x) = k*f(x)$
-- Vector Space
-    1. Closed under addition
-    2. Contains Identity
-- Inner Product - returns a scalar
-    1. Linear
-    2. Symmetric
-    3. Something Tricky
-- Determinant - sum of products including one element from each row / column with correct sign
-- Linearly Independent: $c_1x_1+c_2x_2=0 \implies c_1=c_2=0$
+	- like inner product if we collapsed into big vector
+	- linear
+	- symmetric
+	- gives angle back
+- linear 
+    1. superposition f(x+y) =  f(x)+f(y) 
+    2. proportionality $f(k*x) = k*f(x)$
+- vector space
+    1. closed under addition
+    2. contains identity
+- det - sum of products including one element from each row / column with correct sign
+- lin independent: $c_1x_1+c_2x_2=0 \implies c_1=c_2=0$
 - *cauchy-schwartz inequality* = *triangle inequality*
 	- $||f(a+b)|| \leq ||f(a)|| + ||f(b)||$
 	- or $|x^T y| \leq ||x||_2 ||y||_2$
-- Mapping $f: a \mapsto b$
-    - Onto (surjective): $ \forall b\in B \exists a\in A \, f(a)=b$
-    - 1-1 (injective): $f(a_1)=f(a_2) \implies a_1=a_2 $
-- norms  $||x||_p = (\sum_{i=1}^n |x_i|^p)^{1/p}$
-	- $L_0$ norm - number of nonzero elements
-	- $||x||_1 = \sum |x_i|$
-	- $||x||_\infty = max_i |x_i|$
-	- *P-quadratic norms*: $||x||_p = (x^TPx)^{1/2} = || P^{1/2} x ||_2$ where $P \in S_{++}^n$
-- matrix norm - given a vector norm ||X||, matrix norm is given by: ||A|| = $max_{x ≠ 0} ||Ax|| / ||x||$
-	- represents the maximum stretching that A does to a vector x
-	- in some sense, all norms are equivalent
-	- *operator norm* = *max singular value*: $||X||_2 = \sigma_{max}(X) = (\lambda_{max} (X^TX))^{(1/2)}$
-	- $\lambda_{max} (A) = sup_{x \neq 0} \frac{x^T A x}{x^T x}$
-	- $\lambda_{min} (A) = inf_{x \neq 0} \frac{x^T A x}{x^T x}$
+
+## matrix properties
+- *nonsingular* = invertible = nonzero determinant = null space of zero
+    - only square matrices
+    - *rank* of mxn matrix- max number of linearly independent columns / rows
+    	- rank==m==n, then nonsingular
+    - *ill-conditioned matrix* - matrix is close to being singular - very small determinant
 - inverse
     - if *orthogonal*, $A^{-1} = A^T$
     	- all columns are *orthonormal*
@@ -58,53 +55,53 @@ category: math
 	- dim (R(A)) = r
 	- dim (N(A)) = n-r
 	- dim R(A^T) = r
-	- dim N(A^T) = m-r
-- $AA^Tb = $ projection of b onto R(A)
-- *symmetric*: $A=A^T$
-	- can be *diagonalized* $A = U \Lambda U^T$
-	- A is basically a weighted sum of dyads
-- *dyad* - rank 1 matrix of form $vv^T$
-- *PSD*
-	- $S^n$ - set of symmetric matrices
-	- $S^n_+$ - set of PSD matrices
-	- $S^n_{++}$ - set of PD matrices
-- *SVD*
-	- A (mxn) with rank r
-	- $A = W_1 \Sigma W_2^T$
-	- $W_1$ is mxr
-- diagonalize $AA^T = W \Sigma W^T$
-
-   
-# Singularity
-- *nonsingular* = invertible = nonzero determinant = null space of zero
-    - only square matrices
-    - *rank* of mxn matrix- max number of linearly independent columns / rows
-    	- rank==m==n, then nonsingular
-    - *ill-conditioned matrix* - matrix is close to being singular - very small determinant
-- *positive semi-definite* -  $A \in R^{nxn}$
-    - intuitively is like having upwards curve
-    - if $\forall x \in R^n, x^TAx \geq 0$ then A is positive semi definite (PSD)
-    	- like it curves up
-    - if $\forall x \in R^n, x^TAx > 0$ then A is positive definite (PD)
-    - PD $\to$ full rank, invertible
-- *Gram matrix* - G = $X^T X \implies $PSD
-    - if X full rank, then G is PD
+	- dim N(A^T) = m-r    
     
-# Matrix Calculus
-- gradient $\Delta_A f(\mathbf{A})$- partial derivatives with respect to each element of matrix
-    - f has to be a function that takes matrix, returns a scalar
-    - output will be the same sizes as the variable you take the gradient of (in this case A)
-    - $\nabla^2$ is not gradient of the gradient
+# matrix calc
+- function f: $mathbb{R}^n \to \mathbb{R}^m$ 
+    - 1st derivative is *gradient* vector
+    	- $\nabla_A f(\mathbf{A})$- partial derivatives with respect to each element of matrix
+    - 2nd derivative is *Hessian* matrix
+		- $\nabla^2 f(x)_{ij} = \frac{\partial^2 f(x)}{\partial x_i \partial x_j}$
 - examples
     - $\nabla_x a^T x = a$
     - $\nabla_x x^TAx = 2Ax$ (if A symmetric)
     - $\nabla_x^2 x^TAx = 2A$ (if A symmetric)
-- function f(x,y)
-    - 1st derivative is vector of derivatives
-    - 2nd derivative is Hessian matrix
+    
+# norms
+- def
+	1. nonnegative
+	2. definite f(x) = 0 iff x = 0
+	3. proportionality (also called homogenous)
+	4. triangle inequality
+- all norms are equivalent in some sense
 
-# SVD + eigenvectors
-### strang 5.1 - intro
+## vector norms
+- *$l_p-$norms*: $||x||_p = (\sum_{i=1}^n |x_i|^p)^{1/p}$
+	- $L_0$ norm - number of nonzero elements
+	- $||x||_1 = \sum |x_i|$
+	- $||x||_\infty = max_i |x_i|$ - also called *Cheybyshev norm*
+- *quadratic norms*
+	- *P-quadratic norm*: $||x||_P = (x^TPx)^{1/2} = || P^{1/2} x ||_2$ where $P \in S_{++}^n$
+- *dual norm*
+	- given a norm $|| \cdot ||$, dual norm $||z||_* = sup\{ z^Tx \: | \: ||x|| \leq 1\}$
+	- dual of the dual is the original
+	- dual of Euclidean is just Euclidean
+	- dual of $l_1$ is $l_\infty$
+	- dual of spectral norm is some of the singular values
+
+## matrix norms		
+- *frobenius norm* - like $l_2$, but for a matrix
+- similarly, sum-absolute-value norm (like l1) and maximum-absolute-value norm (like linf)
+- *operator norm*
+	- let $||\cdot||_a$ and $|| \cdot ||_b$ be vector norms
+	- operator norm $||X||_{a,b} = sup\{ ||Xu||_a \: | \: ||u||_b \leq 1 \}$
+			- represents the maximum stretching that X does to a vector u
+	- if both Euclidean norms, X is *max singular value*: $||X||_2 = \sigma_{max}(X) = (\lambda_{max} (X^TX))^{(1/2)}$
+		- also called *spectral norm* or *$l_2 norm$* (of a matrix)
+
+# eigenstuff
+## eigenvalues intro - strang 5.1
 - elimination changes eigenvalues
 - eigenvector application to diff eqs $\frac{du}{dt}=Au$
 	- soln is exponential: $u(t) = c_1 e^{\lambda_1 t} x_1 + c_2 e^{\lambda_2 t} x_2$
@@ -113,12 +110,30 @@ category: math
 - eigenvalue properties
 	- 0 eigenvalue signals that A is singular
 	- eigenvalues are on the main diagonal when the matrix is triangular
-	- checks
-		1. sum of eigenvalues = trace(A)
-		2. prod eigenvalues = det(A)
+- expressions
+	- sum of eigenvalues = trace(A)
+	- prod eigenvalues = det(A)
+	- $||A||_2 = max | \lambda_i |$
+	- $||A||_F = \sqrt{\sum \lambda_i^2}$
+	- $\lambda_{max} (A) = sup_{x \neq 0} \frac{x^T A x}{x^T x}$
+	- $\lambda_{min} (A) = inf_{x \neq 0} \frac{x^T A x}{x^T x}$
 - *defective matrices* - lack a full set of eigenvalues
+- *positive semi-definite* -  $A \in R^{nxn}$
+	- basically these are always *symmetric* $A=A^T$
+	- intuitively is like having upwards curve
+	- if $\forall x \in R^n, x^TAx \geq 0$ then A is positive semi definite (PSD)
+		- like it curves up
+	- if $\forall x \in R^n, x^TAx > 0$ then A is positive definite (PD)
+		- PD $\to$ full rank, invertible
+		- *Gram matrix* - G = $X^T X \implies $PSD
+		    - if X full rank, then G is PD
+	- all it's eigenvalues are nonnegative
+	- PSD notation
+		- $S^n$ - set of symmetric matrices
+		- $S^n_+$ - set of PSD matrices
+		- $S^n_{++}$ - set of PD matrices
 
-### strang 5.2 - diagonalization
+## strang 5.2 - diagonalization = eigenvalue decomposition = spectral decomposition
 - assume A (nxn) has n eigenvectors
 	- S := eigenvectors as columns
 	- $S^{-1} A S = \Lambda$ where corresponding eigenvalues are on diagonal of $\Lambda$
@@ -128,28 +143,18 @@ category: math
 	- not related to invertibility
 	- eigenvectors corresponding to different eigenvalues are lin. independent
 - there are always n complex eigenvalues
-- lets us easily calculate $A^2$, $sqrt(A)$
-- eigenvalues of $A^2$ are squared, eigenvectors remain same
-- eigenvalues of $A^{-1}$ are inverse eigenvalues
-- eigenvalue of rotation matrix is $i$
+- examples
+	- lets us easily calculate $A^2$, $sqrt(A)$
+	- eigenvalues of $A^2$ are squared, eigenvectors remain same
+	- eigenvalues of $A^{-1}$ are inverse eigenvalues
+	- eigenvalue of rotation matrix is $i$
 - eigenvalues for $AB$ only multiply when A and B share eigenvectors
 	- diagonalizable matrices *share the same eigenvector* matrix S iff $AB = BA$
-	
-### strang 5.3 - difference eqs and power $A^k$
-- compound interest
-- solving for fibonacci numbers
-- Markov matrices
-	- steady-state Ax = x 
-	- corresponds to $\lambda = 1$
-- stability of $u_{k+1} = A u_k$
-	- stable if all eigenvalues satisfy $|\lambda_i|$  <1
-	- neutrally stable if some $|\lambda_i|=1$
-	- unstable if at least one $|\lambda_i|$ > 1
-- Leontief's input-output matrix
-- *Perron-Frobenius thm* - if A is a positive matrix (positive values), so is its largest eigenvalue. Every component of the corresponding eigenvector is also positive.
-
-### strang 6.3 - singular value decomposition
-- SVD for any m x n matrix: $A=U\Sigma V^T$
+- *generalized eigenvalue decomposition* - for 2 symmetric matrices
+	- $A = V \Lambda V^T$, $B=VV^T$
+    
+## strang 6.3 - singular value decomposition
+- SVD for any m x n matrix: $A=U \Sigma V^T$
 	- U (mxm) are eigenvectors of $AA^T$
 	- columns of V (nxn) are eigenvectors of $A^TA$
 	- r singular values on diagonal of $\Sigma$ (m x n) - square roots of nonzero eigenvalues of both $AA^T$ and $A^TA$
@@ -162,4 +167,17 @@ category: math
 	- *condition number* of invertible nxn matrix = $\sigma_{max} / \sigma_{min}$
 	- $A=U\Sigma V^T = u_1 \sigma_1 v_1^T + ... + u_r \sigma_r v_r^T$
 		- we can throw away columns corresponding to small $\sigma_i$
-	- *pseudoinverse* $A^+ = V \Sigma^+ U^T$h
+	- pseudoinverse $A^+ = V \Sigma^+ U^T$h
+	
+## strang 5.3 - difference eqs and power $A^k$
+- compound interest
+- solving for fibonacci numbers
+- Markov matrices
+	- steady-state Ax = x 
+	- corresponds to $\lambda = 1$
+- stability of $u_{k+1} = A u_k$
+	- stable if all eigenvalues satisfy $|\lambda_i|$  <1
+	- neutrally stable if some $|\lambda_i|=1$
+	- unstable if at least one $|\lambda_i|$ > 1
+- Leontief's input-output matrix
+- *Perron-Frobenius thm* - if A is a positive matrix (positive values), so is its largest eigenvalue. Every component of the corresponding eigenvector is also positive.
