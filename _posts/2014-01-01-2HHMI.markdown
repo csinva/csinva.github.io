@@ -1,7 +1,7 @@
 ---
 layout: null
 title: Summer 2014
-subtitle: HHMI Scientific Computing
+subtitle: <a href="https://www.janelia.org/support-team/scientific-computing-software"> HHMI Scientific Computing </a>
 image: "img/timeline/neuron.jpg"
 ---
 Simulated extracellular neural recordings via Neurocube Matlab scripts
