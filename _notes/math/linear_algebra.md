@@ -12,6 +12,11 @@ category: math
 [toc]
 
 # linear basics
+## notation
+- $x \preceq y$ - these are vectors and x is less than y elementwise
+- $X \preceq Y$ - matrices, Y-X is PSD
+	- $v^TXv \leq v^TYv \:\: \forall v$
+
 ## linearity
 - inner product <X, Y> $= tr(X^TY) = \sum_i \sum_j X_{ij} Y_{ij}$
 	- like inner product if we collapsed into big vector
@@ -31,6 +36,7 @@ category: math
 	- or $|x^T y| \leq ||x||_2 ||y||_2$
 
 ## matrix properties
+- $x^TAx = tr(xx^TA)$
 - *nonsingular* = invertible = nonzero determinant = null space of zero
     - only square matrices
     - *rank* of mxn matrix- max number of linearly independent columns / rows
@@ -39,16 +45,13 @@ category: math
 - inverse
     - if *orthogonal*, $A^{-1} = A^T$
     	- all columns are *orthonormal*
-    	- preserves the Euclidean norm $||Ux||_2 = ||x||_2$
+    	- preserves the Euclidean norm $||Ax||_2 = ||x||_2$
     - if diagonal, inverse is invert all elements
     - inverting 3x3 - transpose, find all mini dets, multiply by signs, divide by det
     - *psuedo-inverse* = *Moore-Penrose inverse* $A^\dagger = (A^T A)^{-1} A^T$
-		- if A is nonsingular, $A = A^{-1}$
+		- if A is nonsingular, $A^\dagger = A^{-1}$
 		- if rank(A) = m, then must invert using $A A^T$
 		- if rank(A) = n, then must use $A^T A$
-- to find eigenvectors, values
-    - $det(A-\lambda I)=0$ and solve for lambdas
-    - $A = QDQ^T$ where Q columns are eigenvectors
 - *orthogonal complement* - set of orthogonal vectors
 	- define R(A) to be *range space* of A (column space) and N(A) to be *null space* of A
 	- R(A) and N(A) are orthogonal complements
@@ -58,7 +61,7 @@ category: math
 	- dim N(A^T) = m-r    
     
 # matrix calc
-- function f: $mathbb{R}^n \to \mathbb{R}^m$ 
+- function f: $\mathbb{R}^n \to \mathbb{R}^m$ 
     - 1st derivative is *gradient* vector
     	- $\nabla_A f(\mathbf{A})$- partial derivatives with respect to each element of matrix
     - 2nd derivative is *Hessian* matrix
@@ -74,7 +77,6 @@ category: math
 	2. definite f(x) = 0 iff x = 0
 	3. proportionality (also called homogenous)
 	4. triangle inequality
-- all norms are equivalent in some sense
 
 ## vector norms
 - *$l_p-$norms*: $||x||_p = (\sum_{i=1}^n |x_i|^p)^{1/p}$
@@ -110,9 +112,9 @@ category: math
 - eigenvalue properties
 	- 0 eigenvalue signals that A is singular
 	- eigenvalues are on the main diagonal when the matrix is triangular
-- expressions
-	- sum of eigenvalues = trace(A)
-	- prod eigenvalues = det(A)
+- expressions when $A \in \mathbb{S}$
+	- $det(A) = \prod_i \lambda_i$
+	- $tr(A) = \sum_i \lambda_i$
 	- $||A||_2 = max | \lambda_i |$
 	- $||A||_F = \sqrt{\sum \lambda_i^2}$
 	- $\lambda_{max} (A) = sup_{x \neq 0} \frac{x^T A x}{x^T x}$
@@ -120,30 +122,29 @@ category: math
 - *defective matrices* - lack a full set of eigenvalues
 - *positive semi-definite* -  $A \in R^{nxn}$
 	- basically these are always *symmetric* $A=A^T$
-	- intuitively is like having upwards curve
+	- all eigenvalues are nonnegative
 	- if $\forall x \in R^n, x^TAx \geq 0$ then A is positive semi definite (PSD)
 		- like it curves up
 	- if $\forall x \in R^n, x^TAx > 0$ then A is positive definite (PD)
 		- PD $\to$ full rank, invertible
-		- *Gram matrix* - G = $X^T X \implies $PSD
-		    - if X full rank, then G is PD
-	- all it's eigenvalues are nonnegative
+	- PSD + symmetric $\implies$ can be written as *Gram matrix* $A = X^T X $
+	    - if X full rank, then G is PD
 	- PSD notation
 		- $S^n$ - set of symmetric matrices
 		- $S^n_+$ - set of PSD matrices
 		- $S^n_{++}$ - set of PD matrices
 
 ## strang 5.2 - diagonalization = eigenvalue decomposition = spectral decomposition
-- assume A (nxn) has n eigenvectors
-	- S := eigenvectors as columns
-	- $S^{-1} A S = \Lambda$ where corresponding eigenvalues are on diagonal of $\Lambda$
-- if matrix A has no repeated eigenvalues, eigenvectors are independent
-- other S matrices won't produce diagonal
+- assume A (nxn) is symmetric
+	- $A = Q \Lambda Q^T$
+	- Q := eigenvectors as columns, Q is orthonormal
 - only diagonalizable if n independent eigenvectors
 	- not related to invertibility
 	- eigenvectors corresponding to different eigenvalues are lin. independent
-- there are always n complex eigenvalues
+	- other Q matrices won't produce diagonal
+	- there are always n complex eigenvalues
 - examples
+	- if X, Y symmetric, $tr(YX) = tr(Y \sum \lambda_i q_i q_i^T)$
 	- lets us easily calculate $A^2$, $sqrt(A)$
 	- eigenvalues of $A^2$ are squared, eigenvectors remain same
 	- eigenvalues of $A^{-1}$ are inverse eigenvalues

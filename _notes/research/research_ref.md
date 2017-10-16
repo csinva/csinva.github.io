@@ -146,6 +146,7 @@ category: research
 | CNS 	| |  ~July - Seattle |
 | ICML 	| | 	*7/10 - Stockholm* | 	7/10 - Long Beach |
 | ECCV	| | 8/8 - Munich | |
+| CCN	| | 9/6 |
 | ICCV 	| 	11/22 - Venice | | |
 | SFN 	|   	11/11 - DC |  11/3 - San Diego | 10/19 - Chicago |
 | NIPS 	| 	*12/4 - Long Beach* | 12/3 - Montreal |

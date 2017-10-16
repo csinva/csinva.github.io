@@ -315,6 +315,8 @@ category: ai
 	2. *Q-learning agent*
 		- learns *action-utility function* = *Q-function* maps directly from actions to utility
 	3. *reflex agent* - learns policy that maps directly from states to actions
+Ian Oldenburg
+- after learning, can the agent make predictions about what the next state and reward will be before it takes each action? If it can, then it’s a model-based RL algorithm. if it cannot, it’s a model-free algorithm.
 
 ### passive reinforcement learning
 - given policy $\pi$, learn $U^\pi (s)$
