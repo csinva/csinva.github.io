@@ -1,7 +1,7 @@
 ---
 layout: null
-title: Fall 2016 - Present
-subtitle: UVA Yanjun Qi Research Lab.
+title: Fall 2016 - Spring 2017
+subtitle: <a href="https://www.cs.virginia.edu/yanjun/"> UVA Yanjun Qi Research Lab</a>
 image: "img/timeline/uva.png"
 ---
 Contributed to development of novel weighted-L1, multi-task Gaussian graphical models

@@ -1,7 +1,7 @@
 ---
 layout: null
 title: PhD - Started Fall 2017
-subtitle: UC Berkeley
+subtitle: <a href="https://www.stat.berkeley.edu/~binyu/Site/Welcome.html"> UC Berkeley</a>
 image: "img/timeline/berkeley.png"
 ---
 PhD student in Computer Science advised by [Bin Yu](https://www.stat.berkeley.edu/~binyu/Site/Welcome.html).

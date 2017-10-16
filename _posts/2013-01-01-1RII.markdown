@@ -1,7 +1,7 @@
 ---
 layout: null
 title: Summer 2013 - Spring 2014
-subtitle:
+subtitle: <a href="http://www.researchinnovations.com/"> RII </a>
 image: "img/timeline/rii.png"
 ---
-Developed a web application for simultaneous task coordination and developed an Android app to increase the data storage capacity of QR codes.
+Developed a web application + Android app for simultaneous task coordination + increasing the data storage capacity of QR codes.
