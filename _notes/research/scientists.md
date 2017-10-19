@@ -20,6 +20,8 @@
 
 # comp neuroscientists
 ### most famous
+- *Karl Friston* - functional imaging analysis
+- *Raymond Dolan* - emotion, pain
 - *Terrence J. Sejnowski* - boltzmann machines, ICA
 - *david marr* - vision
 - *tomaso poggio* - vision
