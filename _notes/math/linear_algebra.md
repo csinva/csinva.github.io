@@ -59,6 +59,13 @@ category: math
 	- dim (N(A)) = n-r
 	- dim R(A^T) = r
 	- dim N(A^T) = m-r    
+- *Schur complement* of X = 
+$\begin{bmatrix}
+    A & B \\
+    B^T & C
+  \end{bmatrix}$
+ 	- $S = C - B^TA^{-1}B$
+ 	- $X \succeq 0 \iff S \succeq 0$
     
 # matrix calc
 - function f: $\mathbb{R}^n \to \mathbb{R}^m$ 
@@ -70,6 +77,7 @@ category: math
     - $\nabla_x a^T x = a$
     - $\nabla_x x^TAx = 2Ax$ (if A symmetric)
     - $\nabla_x^2 x^TAx = 2A$ (if A symmetric)
+    - $\nabla_x log \: det X = X^{-1}$
     
 # norms
 - def
@@ -77,6 +85,8 @@ category: math
 	2. definite f(x) = 0 iff x = 0
 	3. proportionality (also called homogenous)
 	4. triangle inequality
+- properties
+	- convex
 
 ## vector norms
 - *$l_p-$norms*: $||x||_p = (\sum_{i=1}^n |x_i|^p)^{1/p}$
@@ -93,8 +103,10 @@ category: math
 	- dual of spectral norm is some of the singular values
 
 ## matrix norms		
-- *frobenius norm* - like $l_2$, but for a matrix
-- similarly, sum-absolute-value norm (like l1) and maximum-absolute-value norm (like linf)
+- over elements
+	- *frobenius norm* - like $l_2$, but for a matrix
+	- sum-absolute-value norm (like l1) 
+	- maximum-absolute-value norm (like linf)
 - *operator norm*
 	- let $||\cdot||_a$ and $|| \cdot ||_b$ be vector norms
 	- operator norm $||X||_{a,b} = sup\{ ||Xu||_a \: | \: ||u||_b \leq 1 \}$
@@ -134,7 +146,8 @@ category: math
 		- $S^n_+$ - set of PSD matrices
 		- $S^n_{++}$ - set of PD matrices
 
-## strang 5.2 - diagonalization = eigenvalue decomposition = spectral decomposition
+## strang 5.2 - diagonalization
+- *diagonalization* = *eigenvalue decomposition* = *spectral decomposition*
 - assume A (nxn) is symmetric
 	- $A = Q \Lambda Q^T$
 	- Q := eigenvectors as columns, Q is orthonormal

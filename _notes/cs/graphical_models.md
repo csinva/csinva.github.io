@@ -63,7 +63,7 @@ category: cs
 		
 ### 16 learning overview
 - notation
-	- P* - true distribution
+	- *P* - true distribution
 	- $\hat{P}$ - sample distribution of P
 	- $\tilde{P}$ - estimated distribution P
 1. *density estimation* - construct a model $\tilde{M}$ such that $\tilde{P}$ is close to generating $P^*$

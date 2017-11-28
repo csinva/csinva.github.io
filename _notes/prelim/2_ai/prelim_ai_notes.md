@@ -138,6 +138,7 @@
 ## propagation factor graphs - J 4
 ### probabilistic inference on trees
 - *tree* - undirected graph in which there is exactly one path between any pair of nodes
+	- alternative defn? - every node has exactly one parent
 	- $$p(x) = \frac{1}{Z} \left( \prod_{i \in V} \psi (x_i) \prod_{(i,j)\in E} \psi (x_i,x_j) \right)$$
 	- if directed, then moralized graph should be a tree
  	- can once again use evidence potentials for conditioning
