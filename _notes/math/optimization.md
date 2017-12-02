@@ -1,9 +1,17 @@
+---
+layout: notes
+section-type: notes
+title: Optimization
+category: math
+---
+
 # convex optimization
 
 ## convex sets (boyd 2)
 - *affine set*: $x_1, x_2 \in C, \theta \in \mathbb{R} \implies \theta x_1 + (1 - \theta) x_2 \in C$
 	- *affine hull*: aff C = {$\sum \theta_i x_i | x_i \in C, \sum \theta_i =1 $}
 - *convex set*: $x_1, x_2 \in C, 0 \leq \theta \leq 1 \implies \theta x_1 + (1 - \theta) x_2 $
+	- *convex hull*: conv C = {$\sum \theta_i x_i \: | x_i \in C, \theta_i \geq 0, \sum \theta_i = 1$}
 - *cone*: $\theta \geq 0 \implies \theta x \in C$
 - operations that preserve convexity
 	- intersection (finite intersection of half-spaces)
@@ -18,16 +26,15 @@
 - *separating hyperplane thm*: C, D convex $C \cap D =\emptyset \implies \exists a \neq 0, b \: s.t. \\ a^Tx \leq b \forall x \in C, \\a^Tx \geq b \forall x \in D$
 - *supporting hyperplane thm*: {$x|a^tx = a^t x_0$} where $x_0$ on boundary of convex C
 - dual cone $K^*$ = {$y|x^Ty \geq 0 \: \forall x \in K$}
-	- $\preceq_{K^*} is dual of \preceq_K$
-	- $x \preceq_K y \iff \lambda^T x \leq \lambda^T y \forall \: \lambda \succeq_{K^*} 0$
+	- $\preceq_{K^*}$ is dual of $\preceq_K$
+	- $x \preceq_K y \iff \lambda^T x \leq \lambda^T y \quad \forall \: \lambda \succeq_{K^*} 0$
 
 ### geometry
 - *ellipsoid*: {$x \in \mathbb{R}^n | (x-x_c)^T P^{-1} (x-x_c) \leq 1$} where P symmetric, PSD
 	- {$x_c + Au | ||u||_2 \leq 1$}
-- *hyperplane*: {$x|a^tx = b$} ~ creates a halfspace
+- *hyperplane*: {$x|a^Tx = b$} ~ creates a halfspace
 - *norm cone*: {$(x, t)| \: ||x|| \leq t$}
-- *polyhedron*: {x|Ax=b, Cx=d}
-	- = $\{ \sum_i^k \theta_i v_i | \sum_i^m \theta_i = 1, \theta_i \geq 0 \} \: m \leq k$  
+- *polyhedron*: {x | Ax=b, Cx=d} = $\{ \sum_i^k \theta_i v_i \; | \sum_i^m \theta_i = 1, \theta_i \geq 0 \} \: m \leq k$  
 - *simplex*: conv{$v_{0:k}$}
 
 ## convex funcs (boyd 3)
@@ -40,9 +47,9 @@
 		- can show this by restricting to an arbitrary line
 	4. consider epi f - also use things that preseve convexity
 - concepts
-	- *epigraph* epi f = $\{ (x, t) | x \in dom f, f(x) \leq t \}$
+	- *epigraph* epi f = $\{ (x, t) \; | \: x \in dom f, f(x) \leq t \}$
 	- *extended value extension*: $\tilde{f}(x) = f(x)$ if $x \in dom f$ else $\infty$
-	- wide sense function - can take on values $\pm \infty$
+	- *wide sense function* - can take on values $\pm \infty$
 		- = dom f = {$x | f(x) < \infty$}
 	- *wide sense convex func*: $f(x) = inf \{ t \in \mathbb{R} | (x, t) \in F\}$ where $F \subseteq \mathbb{R}^{n+1}$
 		- $F(x) = inf \{ t \in \mathbb{R} | (x, t) \in F \}$
@@ -63,7 +70,7 @@
 - ex. $f(S) = log \: det X^{-1}$
 	- $f^*(Y) = \underset{X}{sup} [tr(YX) + log \: det X]$
 		- $= -n - log \: det(-Y) $ if $-Y \in S^n_{++}$
-- can use conj. to go other way: $f(y) = \underset{x}{sup}(y^Tx - f^*(x)$
+- can use conj. to go other way: $f(y) = \underset{x}{sup}(y^Tx - f^*(x))$
 
 
 ## optimization problems (boyd 4)
@@ -81,7 +88,7 @@
 	- implicit + explicit constraints
 	
 ## convex optimization
-- standard form: $p^* = min \: f_0(x)\\s.t. \: f_i(x) \leq 0 \\ a_i^Tx = b_i$ where all f are convex
+- standard form: $$p^* = min \: f_0(x)\\s.t. \: f_i(x) \leq 0 \\ a_i^Tx = b_i$$ where all f are convex
 - optimality criteria (special cases of KKT)
 	- x optimal if
 		1. x is feasible
@@ -97,27 +104,27 @@
 	- minimizing over some vars
 	
 ## linear optimization
-- $p^* = min \: c^T x + d\\s.t. \: Gx \succeq h \\ Ax=b$
+- $$p^* = min \: c^T x + d\\s.t. \: Gx \succeq h \\ Ax=b$$
 - standard form $x \succeq 0$ is the only inequality
 - standard dual: max $-b^T \nu$ s.t. $A^T \nu + c \geq 0$
 - *linear-fractional* program
 	- $min \: \frac{c^Tx + d}{e^tx+f} \\ s.t \: Gx \succeq h \\ Ax = b$ ~ can be converted to LP
 	
 ## quadratic optimization
-- $min \: 1/2 x^TPx + q^Txr \\s.t. \: Gx \succeq h$ where $P \in S_+^n$
+- $$min \: 1/2 x^TPx + q^Txr \\s.t. \: Gx \succeq h$$ where $P \in S_+^n$
 - *QCQP* - inequality constraints also convex
 	- ex. $min \: ||Ax-b||_2^2$
-- *SOCP* - $min f^Tx \\ s.t. \: ||A_ix+b_i||_2 \leq c_i^T + d_i \\ Fx=g$
+- *SOCP* - $$min f^Tx \\ s.t. \: ||A_ix+b_i||_2 \leq c_i^T + d_i \\ Fx=g$$
 
 ## geometric program
-- $min \: f_0(x) \\ s.t. \: f_i(x) \leq 1 \: i = 1:m \\ h_i(x) = 1 \: i = 1:p$ where $f_{0:m}$ posynomials, $h_i$ monomials
+- $$min \: f_0(x) \\ s.t. \: f_i(x) \leq 1 \: i = 1:m \\ h_i(x) = 1 \: i = 1:p$$ where $f_{0:m}$ posynomials, $h_i$ monomials
 	- *monomial* $f(x) = c x_1^{a_1} \cdot x_n^{a_n}, c>0$
 	- posynomial ~ sum of monomials ~ can transform into convex w/ $y_i = log x_i$
 	
 ## generalized inequality
-- $min \: f_0(x)\\s.t. \: f_i(x) \preceq_{K_i} 0, i=1:m\\Ax=b$
-- *conic form problem*: $min \: c^Tx \\ s.t. \: Fx +g \preceq_K 0\\Ax=b$ ~ set $K=S_+^K$
-- *SDP* = *semi-definite program*: $min \: c^T x\\s.t. \: x_1F_1+...+x_nF_n+G \preceq 0\\Ax=b$ ~ where $F_1, ..., F_n \in S^k$
+- $$min \: f_0(x)\\s.t. \: f_i(x) \preceq_{K_i} 0, i=1:m\\Ax=b$$
+- *conic form problem*: $$min \: c^Tx \\ s.t. \: Fx +g \preceq_K 0\\Ax=b$$ ~ set $K=S_+^K$
+- *SDP* = *semi-definite program*: $$min \: c^T x\\s.t. \: x_1F_1+...+x_nF_n+G \preceq 0\\Ax=b$$ ~ where $F_1, ..., F_n \in S^k$
 	- standard form: $min \: tr(CX) \\ s.to \: tr(A_iX)=b_i \\ X \succeq 0$
 
 # duality (boyd 5)
@@ -163,6 +170,7 @@
 		1. $\exists x \: Ax \leq 0, c^Tx < 0$
 		2. $\exists y \: y \geq 0, A^Ty + c = 0$
 		
+		
 # approx + fitting (boyd 6)
 ## norm approx problem
 - minimize $||Ax-b||$
@@ -193,6 +201,13 @@
 - $f(u) = x_1 f_1 (u) + .... + x_n f_n (u)$ ~ $f_i$ are basis funcs, $x_i$ are coefficients
 - sparse descriptions + basis pursuit
 - interpolation
+
+
+# statistical estimation (boyd 7)
+
+## chebyshev and chernoff bounds
+
+
 
 # unconstrained minimization (boyd 9)
 
@@ -253,3 +268,35 @@
 	2. stopping criterion: quit if $\lambda^2 / 2 \leq \epsilon$
 	3. line search: choose step size t w/ backtracking line search
 	4. update: $x += t \Delta x_{nt}$
+	
+# descent methods
+
+## gradient method basics
+- perspective 1: *fixed point iteration*
+	- contracts distance to optimatl soln each time
+	- bounded if f *Lipschitz continuous*: $||f(x) - f(y)|| \leq L||x-y||$
+- perspective 2: *line search method* - find direction and minimize in that direction
+- *strong convexity* = Hessian has positive eigenvalues
+	- If f is strongly convex and two-times differentiable, then $\nabla^2 f(x) \succeq mI$
+- 3 proofs of convergence
+	1. descent analysis
+	2. contraction mapping
+	3. lyapunov analysis
+- *backtracking line search* - choose a step size, and if function not sufficiently decreased choose smaller step size
+- complexity
+
+## gradient_method_projected
+- for constrained optimization, solution must lie in some set $\Omega$
+	- solution is no longer when gradient = 0
+- now, If f is smooth and $x^*$ locally minimizes f on a closed convxes set $\Omega$, then <$\nabla f(x^*), z-x^*$> $\geq 0 \: \forall z \in \Omega$. If f is convex, then the converse holds
+- let 
+
+
+# convex algorithms
+- interior point methods: solve $min \: c^Tx \\s.t. \: x \in X$, where X convex and compact
+- *barrier* - goes to infinity at boundaries
+- $x^*(t) \in argmin tc^Tx + F(x)$ where F is a barrier
+	- solve for increasing t until converges to soln with Newton's method
+	
+- *strongly convex*: $f(x_2) \geq f(x_1) + \nabla f(x_1)^T (x_2 - x_1) + m/2 ||x_2 - x_1||^2$
+- *L-smooth*: $f(x_2) \leq f(x_1) + \nabla f(x_1)^T (x_2 - x_1) + m/2 ||x_2 - x_1||^2$

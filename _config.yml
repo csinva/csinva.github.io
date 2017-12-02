@@ -13,5 +13,4 @@ collections:
 # Career Settings
 # Default career thumbnail image.
 career-img: "img/timeline/default.jpg"
-gems: ['jekyll/scholar']
 exclude: ["Rakefile", "LICENSE", "readme.markdown"]

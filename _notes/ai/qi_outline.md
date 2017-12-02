@@ -1,7 +1,7 @@
 ---
 layout: notes
 section-type: notes
-title: graphical models
+title: qi models
 category: ai
 ---
 
