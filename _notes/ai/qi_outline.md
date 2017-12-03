@@ -50,7 +50,7 @@ category: ai
 
 # kendall tau
 - https://en.wikipedia.org/wiki/Kendall_rank_correlation_coefficient
-- (# concordant pairs - # discordant pairs) / (n*(n-1)/2)
+- (num concordant pairs - num discordant pairs) / (n*(n-1)/2)
 	- concordant if both ranks agree
 	- must do something special if tied
 - matlab has pretty fast implementation, R slow
@@ -63,7 +63,7 @@ category: ai
 - http://www.cis.upenn.edu/~mkearns/papers/barbados/jordan-tut.pdf
 - the weights in a network make local assertions about the relationships between neighboring nodes
 	- inference algorithms turn these local assertions into global assertions about the relationships between nodes
-- $P(A|B) = P(AB) / P(B)$
+- $P(A\vert B) = P(AB) / P(B)$
 - can be used for learning (given inputs, outputs)
 - A *Gaussian graphical model* is a graph in which all random variables are continuous and jointly Gaussian.
 - see defs.png

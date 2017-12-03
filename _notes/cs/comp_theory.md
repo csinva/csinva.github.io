@@ -18,18 +18,18 @@ category: cs
 	- L_1 - context-sensitive grammars - all languages that can be recognized by a linear bounded automaton
 	- L_2 - context-free grammars - these languages are exactly all languages that can be recognized by a non-deterministic pushdown automaton.
 	- L_3 - regular grammars - all languages that can be decided by a finite state automaton
-		- contains Σ*, |Σ*| is countably infinite
+		- contains Σ*, $\vert Σ*\vert $ is countably infinite
 - strings
 - languages
 	- Σ* Kleene Closure has multiple definitions
-		- {w | w is a finite length string ^ w is a string over Σ}
-		- {xw | w in Σ* ^ x in Σ} U {Ɛ}
+		- {w $\vert $ w is a finite length string ^ w is a string over Σ}
+		- {xw $\vert $ w in Σ* ^ x in Σ} U {Ɛ}
 	- Σ_i has strings of length i
 - problems
 - automata
 	- delta v delta-hat - delta hat transitions on a string not a symbol
-	- |- notation writes the state between the symbols you have read and have yet to read
-	- |- notation with * writes the state before the symbols you have to read and after what you have read
+	- $\vert $- notation writes the state between the symbols you have read and have yet to read
+	- $\vert $- notation with * writes the state before the symbols you have to read and after what you have read
 - grammars
 	- leftmost grammar - expand leftmost variables first - doesn't matter for context-free
 	- parse tree - write string on bottom
@@ -61,9 +61,9 @@ category: cs
 	4. start state
 	5. final states
 - language - L(M)=A - means A is the set of all strings that the machine M accepts
-- A* = {$x_1x_2...x_k | k\geq0 \wedge x_i \in A$}
+- A* = {$x_1x_2...x_k \vert  k\geq0 \wedge x_i \in A$}
 - A+ = A* - Ɛ
-- concatenation A o B = {xy | x in A and y in B}
+- concatenation A o B = {xy $\vert $ x in A and y in B}
 - regular language - is recognized by a finite automata
 	- class of regular languages is closed under union, concatenation, star operation
 	- nondeterministic automata
@@ -77,14 +77,14 @@ category: cs
 		- to convert, first convert to gnfa
 	- gnfa (generalized nfa) - start state isn't accept state
 - nonregular languages - isn't recognized by a finite automata
-	- ex. C = {w | w has an equal number of Os and 1s}
+	- ex. C = {w $\vert $ w has an equal number of Os and 1s}
 	- requires infinite states
 
 # ch 4 - properties of regular languages (except Sections 4.2.3 and 4.2.4) 
 - pumping lemma- proves languages not to be regular
-- if L regular, there exists a constant n such that for every string w in L such that |w| ≥ n, we can break w into 3 strings w=xyz, such that:
+- if L regular, there exists a constant n such that for every string w in L such that \vert w\vert  ≥ n, we can break w into 3 strings w=xyz, such that:
 	1. y≠Ɛ
-	2. |xy| ≤ n
+	2. $\vert xy\vert $ ≤ n
 	3. For all k ≥ 0, x y^k z is also in L
 - closed under union, intersection, complement, concatenation, closure, difference, reversal
 - convert NFA to DFA - write the possible routes to the final state, write the intermediate states, remove unnecessary ones
@@ -119,7 +119,7 @@ category: cs
 	3. rightmost derivation
 	4. recursive inference
 	5. derivation
-- if else grammar: $S \to \epsilon | SS | iS | iSeS $
+- if else grammar: $S \to \epsilon \vert  SS \vert  iS \vert  iSeS $
 - context-free grammars used for parsers (compilers), matching parentheses, palindromes, if-else, html, xml
 - if a grammar generates a string in several different ways, we say that the string is derived ambiguously in that grammar
 - ambiguity resolution
@@ -192,17 +192,17 @@ category: cs
 - generating - if x produces some terminal string w
 - reachable - x reachable if S ${\to}^*$ aXb for some a,b 
 - CFL pumping lemma - pick two small strings to pump
-- If L CFL, then |z| ≥ n, we can break z into 5 strings z=uvwxy, such that:
+- If L CFL, then $\vert z\vert  \geq n$, we can break z into 5 strings z=uvwxy, such that:
 	1. vx ≠ Ɛ
-	2. |vwx| ≤ n, middle portion not too long
+	2. $\vert vwx\vert  \leq n$, middle portion not too long
 	3. For all i ≥ 0, $u v^i w x^i y \in$ L
 	- ex. $\{0^n1^n\}$
 	- often have to break it into cases
 	- proof uses Chomsky Normal Form
 - not context free examples
-	- $\{0^n1^n2^n|n\geq1\}$
-	- {$0^i1^j2^i3^j|i\geq 1,j\geq 1$}
-	- {ww|w $\in \{0,1\}^*$ }
+	- $\{0^n1^n2^n\vert n\geq1\}$
+	- {$0^i1^j2^i3^j\vert i\geq 1,j\geq 1$}
+	- {ww$\vert w \in \{0,1\}^*$ }
 - closed under union, concatenation, closure, and positive closure, homomorphism, reversal, inverse homomorphism, substitutions
 	- intersection with a regular language (basically run in parallel)
 - not closed under intersection, complement

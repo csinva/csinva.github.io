@@ -50,7 +50,7 @@ $\zeta(x) = \sum_1^\infty \frac{1}{x^2} $
 # stochastic processes
 Stochastic - random process evolving with time
 
-Markov: $P(X_t=x|X_{t-1})=P(X_t=x|X_{t-1}...X_1)$
+Markov: $P(X_t=x\|X_{t-1})=P(X_t=x\|X_{t-1}...X_1)$
 
 Martingale: $E[X_t]=X_{t-1}$ 
 
@@ -83,7 +83,7 @@ Converse: $q\ra p$ (same as inverse: $-p \ra -q$)
 
 $p_1 \ra p_2 \iff - p_1 \lor p_2 $
 
-The greatest common divisor of two integers a and b is the largest integer d such that d $|$ a and d $|$ b
+The greatest common divisor of two integers a and b is the largest integer d such that d $\|$ a and d $\|$ b
 
 Proof Techniques
 

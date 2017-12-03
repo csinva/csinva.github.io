@@ -50,7 +50,7 @@ category: ai
 	- completeness - does it find a solution
 	- optimality - does it find the best solution
 	- time/space complexity
-		- theoretical CS: |V|+|E|
+		- theoretical CS: $\vert V\vert +\vert E\vert $
 		- b - *branching factor* - max number of branches of any node
 		- d - *depth* - number of steps from the root
 		- m - *max length* of any path in the search space
@@ -178,7 +178,7 @@ category: ai
 		- set of all arcs = binary constraints
 		- pick one and apply it
 			- if things changed, re-add all the neighboring arcs to the set
-		- $O(cd^3)$ - |domain| = d, # arcs = c
+		- $O(cd^3) - \vert domain\vert $ = d, # arcs = c
 	- variable can be *generalized arc consistent*
 - *path consistency* - consider constraints on triplets - PC-2 algorithm
 	- extends to *k-consistency* (although path consistency assumes binary constraint networks)

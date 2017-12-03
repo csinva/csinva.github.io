@@ -180,4 +180,4 @@ category: ai
 - forget gate - conditionally discard previously remembered info
 - input gate - conditionally remember new info
 - output gate - conditionally output a relevant part of memory
-- GRUs - similar, merge input / forget units into a single update unit
+- GRUs - similar, merge input / forget units into a single update unit \vert 

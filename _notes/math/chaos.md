@@ -75,7 +75,7 @@ $$
 # Discrete Nonlinear Dynamical Systems
 - functional iteration: $x_{n+m} = f^m(x_n)$ (apply f m times)
 - fixed point: $f(x^*)=x^*$
-- f.p. stable if $|\frac{df}{dx}(x^*)|<1$, unstable if $>$ 1
+- f.p. stable if $\|\frac{df}{dx}(x^*)\|<1$, unstable if $>$ 1
 - check n-orbit by checking nth derivative: $\frac{df^n}{dx}(x_i^*) = \prod_{i=1}^{n-1} \frac{df}{dx}(x_i^*)$
 - period-doubling bifurcations
 - self-stability - orbit for which the stability-determining derivative is zero.  This means that the max of the map and the point at which the max occurs are in the orbit.
@@ -83,9 +83,9 @@ $$
 - Feigenbaum sequence - period-doubling path to chaos, keep increasing parameter until period is chaotic
 
 \begin{center}
-\begin{tabular}{ | m{4cm} | m{4cm} | } 
+\begin{tabular}{ \| m{4cm} \| m{4cm} \| } 
 \hline
-\multicolumn{2}{|c|}{3D Attractors} \\
+\multicolumn{2}{\|c\|}{3D Attractors} \\
  \hline
 Type of Attractor & Sign of Exponents \\ 
 \hline

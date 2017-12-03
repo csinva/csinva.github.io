@@ -10,7 +10,7 @@ category: stat
 # Properties
 - Mutually Exclusive: P(AB)=0
 - Independent: P(AB) = P(A)P(B)
-- Conditional: P(A | B) = $\frac{P(AB)}{P(B)}$
+- Conditional: P(A \| B) = $\frac{P(AB)}{P(B)}$
 
 # Measures
 - $E[X] = \int P(x)x dx$
@@ -24,8 +24,8 @@ category: stat
 	- $Cov(aX+bY,Z) = aCov(X,Z)+bCov(Y,Z)$
 	- $V(a_1X_...+a_nX_n) =  \sum_{i=1}^{n}\sum_{j=1}^{n}a_ia_jcov(X_i,X_j)$
 	- if $X_1,X_2$ independent, $V(X_1-X_2) = V(X_1) + V(X_2)$
-- $f(X), X=v(Y), g(Y) = f(v(Y))$ |$\frac{d}{dy}g^{-1}(y)$|
-- $g(y_1,y_2) = f(v_1,v_2)|det(M)|$ where M in row-major is $\frac{\partial v1}{y1}, \frac{\partial v1}{y2} ...$
+- $f(X), X=v(Y), g(Y) = f(v(Y))$ \|$\frac{d}{dy}g^{-1}(y)$\|
+- $g(y_1,y_2) = f(v_1,v_2)\|det(M)\|$ where M in row-major is $\frac{\partial v1}{y1}, \frac{\partial v1}{y2} ...$
 - $Corr(aX+b,cY+d) = Corr(X,Y)$ if a and c have same sign
 - $E[h(X)] \approx h(E[X])$
 - $V[h(X)] \approx h'(E[X])^2 V[X]$
@@ -73,7 +73,7 @@ $f(\lambda)=
 
 ### Law of Large Numbers 
 - $ E(\bar{X}-\mu)^2 \to 0$ as $n \to \infty,$
-- $ P(|\bar{X}-\mu| \geq \epsilon) \to 0$ as $n \to \infty$
+- $ P(\|\bar{X}-\mu\| \geq \epsilon) \to 0$ as $n \to \infty$
 - $T_o = X_1+...+X_n, E(T_o) = n\mu , V(T_o) = n\mu ^2$
 - $E(\bar{X}) = \mu$
 - $V(\bar{X}) = \frac{\sigma_x^2}{n}$
@@ -98,7 +98,7 @@ $f(\lambda)=
 - Can calculate estimators for a distr. by calculating moments
 - A statistic T = t(X1, . . ., Xn) is said to be sufficient for making inferences about a parameter y if the joint distribution of X1, X2, . . ., Xn given that T = t does not depend upon y for every possible value t of the statistic T.
 - Neyman Factorization Thm - $t(X_1,...,X_n)$ is sufficient $\leftrightarrow f = g(t,\theta)*h(x_1,...,x_n)$
-- Estimating h($\theta$), if U is unbiased, T is sufficient for $\theta$, then use $U^* = E(U|T)$
+- Estimating h($\theta$), if U is unbiased, T is sufficient for $\theta$, then use $U^* = E(U\|T)$
 - Fisher Information $I(\theta)=V[\frac{\partial}{\partial\theta}ln(f(x;\theta))]$ (for n samples, multiply by n)
 - If T is unbiased estimator for $\theta$ then $V(T) \geq \frac{1}{nI(\theta)}$
 - Efficiency of T is ratio of lower bound to variance of T
@@ -110,10 +110,10 @@ $f(\lambda)=
 ## MLE
 - MLE - maximize $f(x_1,...,x_n;\theta_1,...\theta_m)$ - agreement with chosen distribution - often take ln(f) and then take derivative $\approx$ MVUE, but can be biased
 - $\hat{\theta} = $argmax $  L(\theta)$
-    - Likelihood $L(\theta)=P(X_1...X_n|\theta)=\prod_{i=1}^n P(X_i|\theta)$
-    - $logL(\theta)=\sum log P(X_i|\theta)$
+    - Likelihood $L(\theta)=P(X_1...X_n\|\theta)=\prod_{i=1}^n P(X_i\|\theta)$
+    - $logL(\theta)=\sum log P(X_i\|\theta)$
     - to maximize, set $\frac{\partial LL(\theta)}{\partial \theta} = 0$
-- Use $\hat{\theta} = $argmax $  P(\text{Train|Model}(\theta))$
+- Use $\hat{\theta} = $argmax $  P(\text{Train\|Model}(\theta))$
 
 # statistical intervals
 - interval estimates come with confidence levels
@@ -165,7 +165,7 @@ $f(\lambda)=
 ### Regression and Correlations
 - y - called dependent, response variable
 - x - independent, explanatory, predictor variable
-- notation: $E(Y|x^*) = \mu_{Y\cdot x^*} = $ mean value of Y when x = $x^*$
+- notation: $E(Y\|x^*) = \mu_{Y\cdot x^*} = $ mean value of Y when x = $x^*$
 - Y = f(x) + $\epsilon$
 - linear: $Y=\beta_0+\beta_1 x+\epsilon$
 - logistic: $odds = \frac{p(x)}{1-p(x)}=e^{\beta_0+\beta_1 x+\epsilon}$

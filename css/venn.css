@@ -1,0 +1,119 @@
+body {
+  color: #858585;
+  font-family: "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+#web {
+  background: #f3f3f3 url('http://wp.ewsproduction.com/elliott/wp-content/themes/memorable/images/home-section-bg.png') bottom center repeat-x;
+  width: 960px;
+  height: 960px;
+  border: 1px solid #000;
+  position: relative;
+}
+
+#center-sphere {
+  width: 275px;
+  height: 275px;
+  position: absolute;
+  left: 342px;
+  top: 342px;
+  border: 2px rgb(115,166,183) solid;
+  border-radius: 50%;
+}
+
+.sphere {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  position: absolute;
+  border: 2px rgb(115,166,183) solid;
+  border-radius: 50%;
+  transition: background-color 800ms ease-in-out;
+  background: rgba(125,184,214, .2);
+   transition:width 800ms, height 800ms, border-radius 800ms,left 800ms, top 800ms ;
+  -moz-transition:width 800ms, height 800ms, border-radius 800ms,left 800ms, top 800ms;
+  -ms-transition:width 800ms, height 800ms, border-radius 800ms,left 800ms, top 800ms;
+  -o-transition:width 800ms, height 800ms, border-radius 800ms,left 800ms, top 800ms;
+  -webkit-transition:width 800ms, height 800ms, border-radius 800ms,left 800ms, top 800ms;
+}
+
+.sphere:hover {
+  transition: background-color 800ms ease-in-out;
+  background: rgb(115,166,183);
+  color: #ffffff;
+  z-index: 999;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  width: 275px;
+  height: 275px;
+}
+
+.one{left:605px; top: 405px;}
+.two{left: 567px; top: 523px;}
+.three{left: 467px; top: 595px;}
+.four{left: 343px; top: 595px;}
+.five{left: 243px; top: 523px;}
+.six{left: 205px; top: 405px;}
+.seven{left: 243px; top: 287px;}
+.eight{left: 343px; top: 215px;}
+.nine{left: 467px; top: 215px;}
+.ten{left: 567px; top: 287px;}
+
+.text {
+   -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  position: relative;
+  top: 65px;
+  left: 45px;
+}
+
+.sphere:hover .text {
+  top: 20px;
+  left: 100px;
+}
+
+.sphere:hover .muscles{
+  top: 20px;
+  left: 82px;
+}
+
+.blurb {
+  margin: 2.5em;
+  color: rgba(255,255,255,0);
+  -ms-transform: scale(.9);
+  -webkit-transform: scale(.9);
+  transform: scale(.9);
+  visibility: hidden;
+}
+
+.sphere:hover .blurb {
+   -webkit-transition: all 2s ease-in-out;
+  -moz-transition: all 2s ease-in-out;
+  -o-transition: all 2s ease-in-out;
+  -ms-transition: all 2s ease-in-out;
+  transition: all 2s ease-in-out;
+  color: rgba(255,255,255,1);
+  visibility: visible;
+}
+
+.muscles {
+  top: 70px;
+  left: 20px;
+}
+
+.title {
+   position: relative;
+   top: 65px;
+   left: 55px;
+}
+.description {
+   position: relative;
+   top: 65px;
+   left: 25px;
+}

@@ -38,7 +38,7 @@ category: stat
 - CLT
 	- define $S_n = X_1 + ... + X_n$
 	- define $Z_n = \frac{S_n - n \mu}{\sigma \sqrt{n}}$
-	- $P(|Z_n| < 1) \to \int_{-1}^1 x ~ N(0, 1)$
+	- $P(\|Z_n\| < 1) \to \int_{-1}^1 x ~ N(0, 1)$
 
 ## ch 4 - multiple regression
 - multiple x, single y
@@ -48,8 +48,8 @@ category: stat
 	3. $\epsilon$ independent of $X$
 		- $e_i$ still orthogonal to $X$
 - OLS is conditionally unbiased
-	- $E[\hat{\theta} | X] = \theta$
-- $Cov(\hat{\theta}|X) = \sigma^2 (X^TX)^{-1}$
+	- $E[\hat{\theta} \| X] = \theta$
+- $Cov(\hat{\theta}\|X) = \sigma^2 (X^TX)^{-1}$
 	- $\hat{\sigma^2} = \frac{1}{n-p} \sum_i e_i^2$
 		- this is unbiased - just dividing by n is too small since we have minimized $e_i$ so their variance is lower than var of $\epsilon_i$
 - *random errors* $\epsilon$
@@ -61,37 +61,37 @@ category: stat
 	4. HX = X
 	5. $e \perp X$
 - basically H projects Y int R(X)
-- $E[\hat{\sigma^2}|X] = \sigma^2$
+- $E[\hat{\sigma^2}\|X] = \sigma^2$
 - random errs don't need to be normal
 - variance
 	- $var(Y) = var(X \hat{\theta}) + var(e)$
 		- $var(X \hat{\theta})$ is the *explained variance*
 		- *fraction of variance explained*: $R^2 = var(X \hat{\theta}) / var(Y)$
 		- like summing squares by projecting
-	- if there is no intercept in a regression eq, $R^2 = ||\hat{Y}||^2 / ||Y||^2$
+	- if there is no intercept in a regression eq, $R^2 = \|\|\hat{Y}\|\|^2 / \|\|Y\|\|^2$
 - notes
 	- if everything is integrable, OLS is unconditionally unbiased
 	
 ## ch 5 - multiple regression - special topics
 - drop assumption: $\epsilon$ independent of $X$
-	- instead: $E[\epsilon|X]=0, cov[\epsilon|X] = \sigma^2 I$
+	- instead: $E[\epsilon\|X]=0, cov[\epsilon\|X] = \sigma^2 I$
 	- can rewrite: $E[\epsilon]=0, cov[\epsilon] = \sigma^2 I$ fixing X
 - *Gauss-markov thm* - assume linear model and assumption above: when X is fixed, OLS estimator is *BLUE* = best linear unbiased estimator
 	- has smallest variance.
 	- ***prove this***
-- *generalized least squares regression model*: instead of above assumption, use $E[\epsilon|X]=0, cov[\epsilon|X] = G, \: G \in S^K_{++}$
-	- covariance formula changes: $cov(\hat{\theta}_{OLS}|X) = (X^TX)^{-1} X^TGX(X^TX)^{-1}$
+- *generalized least squares regression model*: instead of above assumption, use $E[\epsilon\|X]=0, cov[\epsilon\|X] = G, \: G \in S^K_{++}$
+	- covariance formula changes: $cov(\hat{\theta}_{OLS}\|X) = (X^TX)^{-1} X^TGX(X^TX)^{-1}$
 	- estimator is the same, but is no longer BLUE - can correct for this:
 		$(G^{-1/2}Y) = (G^{-1/2}X)\theta + (G^{-1/2}\epsilon)$
 - *feasible GLS*=*Aitken estimator* - use $\hat{G}$
 - examples
 	- simple
 	- iteratively reweighted
-- *homoscedasticity*: $var(Y_i|X)$ is the same for all i
+- *homoscedasticity*: $var(Y_i\|X)$ is the same for all i
 	- opposite of *heteroscedasticity*
 - 3 assumptions can break down:
-	1. if $E[\epsilon|X] \neq 0$ - GLS estimator is biased
-	2. else if $cov(\epsilon|X) \neq G$ - GLS unbiased, but covariance formula breaks down
+	1. if $E[\epsilon\|X] \neq 0$ - GLS estimator is biased
+	2. else if $cov(\epsilon\|X) \neq G$ - GLS unbiased, but covariance formula breaks down
 	3. if G from data, but violates estimation procedure, estimator will be misealding estimate of cov
 - ***skipped some pfs***
 
@@ -103,18 +103,18 @@ category: stat
 	- *student's t-distr.*: $U_{d+1} / \sqrt{d^{-1} \sum_1^d U_i^2}$ w/ d degress of freedom
 - t-test
 	- test null $\theta_k=0$ w/ $t = \hat{\theta}_k / \hat{SE}$ where $SE = \hat{\sigma} \cdot \sqrt{\Sigma_{kk}^{-1}}$
-	- t-test: reject if |t| is large
+	- t-test: reject if \|t\| is large
 	- when n-p is large, t-test is called the z-test
 	- under null hypothesis t follows t-distr with n-p degrees of freedom
 	- here, $\hat{\theta}$ has a normal distr. with mean $\theta$ and cov matrix $\sigma^2 (X^TX)^{-1}$
-		- e independent of $\hat{\theta}$ and $||e||^2 ~ \sigma^2 \chi^2_d$ with d = n-p
+		- e independent of $\hat{\theta}$ and $\|\|e\|\|^2 ~ \sigma^2 \chi^2_d$ with d = n-p
 	- *observed stat. significance level* = *P-value* - area of normal curve beyond $\pm \hat{\theta_k} / \hat{SE}$
 	- if 2 vars are statistically significant, said to have *independent effects* on Y
 - the F-test
 	- null hypothesis: $\theta_i = 0,  i=p-p_0, ..., p$
 	- alternative hypothesis: for at least one $ i \in \{p-p_0, ..., p\}, \: \theta_i \neq 0$
-	- $F = \frac{(||X\hat{\theta}||^2 - ||X\hat{\theta}^{(s)}||^2) / p_0}{||e||^2 / (n-p)} $ where $\hat{\theta^{(s)}}$ has last $p_0$ entries 0
-	- under null hypothesis, $||X\hat{\theta}||^2 - ||X\hat{\theta}^{(s)}||^2$ ~ $U$, $||e||^2$ ~ $V$, $F$ ~ $\frac{U/p_0}{V/(n-p)}$ where $ U \: indep \: V$, $U$ ~ $\sigma^2 \chi^2_{p_0}$, $V$ ~ $\sigma^2 \chi_{n-p}^2$
+	- $F = \frac{(\|\|X\hat{\theta}\|\|^2 - \|\|X\hat{\theta}^{(s)}\|\|^2) / p_0}{\|\|e\|\|^2 / (n-p)} $ where $\hat{\theta^{(s)}}$ has last $p_0$ entries 0
+	- under null hypothesis, $\|\|X\hat{\theta}\|\|^2 - \|\|X\hat{\theta}^{(s)}\|\|^2$ ~ $U$, $\|\|e\|\|^2$ ~ $V$, $F$ ~ $\frac{U/p_0}{V/(n-p)}$ where $ U \: indep \: V$, $U$ ~ $\sigma^2 \chi^2_{p_0}$, $V$ ~ $\sigma^2 \chi_{n-p}^2$
 - *data snooping* - decide which hypotheses to test after examining data
 
 ## ch 6 - path models

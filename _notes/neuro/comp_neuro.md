@@ -46,16 +46,16 @@ category: neuro
 - intracellular - can use patch electrodes
 - raster plot
 	- replay a movie many times and record from retinal ganglion cells during movie
-- *encoding*: P(response | stimulus)
+- *encoding*: P(response \| stimulus)
 	- *tuning curve* - neuron's response (ex. firing rate) as a function of stimulus
 	- orientation / color selective cells are distributed in organized fashion
 	- some neurons fire to a concept, like "Pamela Anderson"
 	- retina (simple) -> V1 (orientations) -> V4 (combinations) -> ?
 	- also massive feedback
-- *decoding*: P(stimulus | response)
+- *decoding*: P(stimulus \| response)
 
 ### 2.2 - simple encoding
-- want P(response | stimulus)
+- want P(response \| stimulus)
 	- response := firing rate r(t)
 	- stimulus := s
 - simple linear model
@@ -81,11 +81,11 @@ category: neuro
 		- filtering = convolution = projection
 	
 ### 2.3 - feature selection
-- P(response|stimulus) is very hard to get
+- P(response\|stimulus) is very hard to get
 	- stimulus can be high-dimensional (e.g. video)
 	- stimulus can take on many values
 	- need to keep track of stimulus over time
-	- solution: sample P(response|s) to many stimuli to characterize what in input triggers responses
+	- solution: sample P(response\|s) to many stimuli to characterize what in input triggers responses
 - find vector *f* that captures features that lead to spike
 	- dimensionality reduction - ex. discretize 
 	- value at each time $t_i$ is new dimension
@@ -96,9 +96,9 @@ category: neuro
 	- look at where spike-triggering points are and calculate *spike-triggered average* *f* of features that led to spike
 		- use this f as filter
 - determining the nonlinear input/output function *g*
-	- replace stimulus in P(spike|stimulus) with P(spike|$s_1$), where s1 is our filtered stimulus
-		- use bayes rule $g=P(spike|s_1)=\frac{P(s_1|spike)P(spike)}{P(s_1)}$
-		- if $P(s_1|spike) \approx P(s_1)$ then response doesn't seem to have to do with stimulus
+	- replace stimulus in P(spike\|stimulus) with P(spike\|$s_1$), where s1 is our filtered stimulus
+		- use bayes rule $g=P(spike\|s_1)=\frac{P(s_1\|spike)P(spike)}{P(s_1)}$
+		- if $P(s_1\|spike) \approx P(s_1)$ then response doesn't seem to have to do with stimulus
 - incorporating many features *$f_1,...,f_n$*
 	- here, each $f_i$ is a vector of weights
 	- $r(t) = g(f_1\cdot s,f_2 \cdot s,...,f_n \cdot s)$
@@ -108,10 +108,10 @@ category: neuro
 ### 2.4 - variability
 - hidden assumptions about time-varying firing rate and single spikes
 	- smooth function RFT can miss some stimuli
-- statistics of stimulus can effect P(spike|stimulus)
+- statistics of stimulus can effect P(spike\|stimulus)
 	- Gaussian white noise is nice because no way to filter it to get structure
 - identifying good filter
-	- want $P(s_f|spike)$ to differ from $P(s_f)$ where $s_f$ is calculated via the filter
+	- want $P(s_f\|spike)$ to differ from $P(s_f)$ where $s_f$ is calculated via the filter
 	- instead of PCA, could look for f that directly maximizes this difference (Sharpee & Bialek, 2004)
 	- *Kullback-Leibler divergence* - calculates difference between 2 distributions
 		- $D_{KL}(P(s),Q(s)) = \int ds P(s) log_2 P(s) / Q(s)$
@@ -141,7 +141,7 @@ category: neuro
 
 # 3- neural decoding
 ### 3.1 - neural decoding and signal detection
-- decoding: P(stimulus | response) - ex. you hear noise and want to tell what it is
+- decoding: P(stimulus \| response) - ex. you hear noise and want to tell what it is
 	- here r = response = firing rate
 - monkey is trained to move eyes in same direction as dot pattern (Britten et al. 92)
 	- when dots all move in same direction (100% coherence), easy
@@ -149,30 +149,30 @@ category: neuro
 		- count firing rate when monkey tracks in right direction
 		- count firing rate when  monkey tracks in wrong direction
 		- as coherence decreases, these firing rates blur
-	- need to get P(+ or - | r)
+	- need to get P(+ or - \| r)
 		- can set a threshold on r by maximizing likelihood
-			- P(r|+) and P(r|-) are likelihoods
+			- P(r\|+) and P(r\|-) are likelihoods
 		- *Neyman-Pearson lemma* - likelihood ratio test is the most efficient statistic, in that is has the most power for a given size
-			- $\frac{p(r|+)}{p(r|-)} > 1?$
+			- $\frac{p(r\|+)}{p(r\|-)} > 1?$
 - accumulated evidence - we can accumulate evidence over time by multiplying these probabilities
 	- instead we take sum the logs, and compare to 0
-	- $\sum_i ln \frac{p(r_i|+)}{p(r_i|-)} > 0?$
+	- $\sum_i ln \frac{p(r_i\|+)}{p(r_i\|-)} > 0?$
 	- once we hit some threshold for this sum, we can make a decision + or -
 - experimental evidence (Kiani, Hanks, & Shadlen, Nat. Neurosci 2006)
 	- monkey is making decision about whether dots are moving left/right
 	- neuron firing rates increase over time, representing integrated evidence
 	- neuron always seems to stop at same firing rate
 - priors - ex. tiger is much less likely then breeze
-	- scale P(+|r) by prior P(+)
-	- neuroscience ex. photoreceptor cells P(noise|r) is much larger than P(signal|r)
+	- scale P(+\|r) by prior P(+)
+	- neuroscience ex. photoreceptor cells P(noise\|r) is much larger than P(signal\|r)
 		- therefore threshold on r is high to minimize total mistakes
 - cost of acting/not acting
-	- loss for predicting + when it is -: $L_- \cdot P[+|r]$
-	- loss for predicting - when it is +: $L_+ \cdot P[-|r]$
+	- loss for predicting + when it is -: $L_- \cdot P[+\|r]$
+	- loss for predicting - when it is +: $L_+ \cdot P[-\|r]$
 	- cut your losses: answer + when average Loss$_+$ < Loss$_-$
-		- i.e. $L_+ \cdot P[-|r]$ < $L_- \cdot P[+|r]$
+		- i.e. $L_+ \cdot P[-\|r]$ < $L_- \cdot P[+\|r]$
 	- rewriting with Baye's rule yields new test:
-		- $\frac{p(r|+)}{p(r|-)}> L_+ \cdot P[-] / L_- \cdot P[+]$
+		- $\frac{p(r\|+)}{p(r\|-)}> L_+ \cdot P[-] / L_- \cdot P[+]$
 		- here the loss term replaces the 1 in the Neyman-Pearson lemma
 		
 ### 3.2 - population coding and bayesian estimation
@@ -183,10 +183,10 @@ category: neuro
 	- not general - some neurons aren't tuned, are noisier
 	- not *optimal* - making use of all information in the stimulus/response distributions
 - *bayesian inference*
-	- $p(s|r) = \frac{p(r|s)p(s)}{p( r)}$
+	- $p(s\|r) = \frac{p(r\|s)p(s)}{p( r)}$
 	- ![](assets/comp_neuro/3_2_1.png)
-	- maximum likelihood: s* which maximizes p(r|s)
-	- MAP = maximum $a\:posteriori$: s* which mazimizes p(s|r)
+	- maximum likelihood: s* which maximizes p(r\|s)
+	- MAP = maximum $a\:posteriori$: s* which mazimizes p(s\|r)
 - simple continuous stimulus example
 	- setup
 		- s - orientation of an edge
@@ -200,7 +200,7 @@ category: neuro
 			- if all the $\sigma$ are same, $s^* = \frac{\sum r_a s_a}{\sum r_a}$
 				- this is the population vector
 		- maximum *a posteriori*
-			- $ln \: p(s|r) = ln \: P(r|s) + ln \: p(s) = ln \: P(r )$
+			- $ln \: p(s\|r) = ln \: P(r\|s) + ln \: p(s) = ln \: P(r )$
 			- $s^* = \frac{T \sum r_a s_a / \sigma^2_a + s_{prior} / \sigma^2_{prior}}{T \sum r_a / \sigma^2_a + 1/\sigma^2_{prior}}$
 			- this takes into account the prior
 				- narrow prior makes it matter more
@@ -210,20 +210,20 @@ category: neuro
 - decoding s -> $s^*$
 - want an estimator $s_{Bayes}=s_B$ given some response r
 	- error function $L(s,s_{B})=(s-s_{B})^2$
-	- minimize $\int ds \: L(s,s_{B}) \: p(s|r)$ by taking derivative with respect to $s_B$
-	- $s_B = \int ds \: p(s|r) \: s$ - the conditional mean (spike-triggered average)
+	- minimize $\int ds \: L(s,s_{B}) \: p(s\|r)$ by taking derivative with respect to $s_B$
+	- $s_B = \int ds \: p(s\|r) \: s$ - the conditional mean (spike-triggered average)
 - add in spike-triggered average at each spike
 	- if spike-triggered average looks exponential, can never have smooth downwards stimulus
 	- could use 2 neurons (like in H1) and replay the second with negative sign
 - LGN neurons can reconstruct a video, but with noise
 - recreated 1 sec long movies - (*Jack Gallant* - Nishimoto et al. 2011, Current Biology)
 	1. voxel-based encoding model samples ton of prior clips and predicts signal
-		- get p(r|s)
-		- pick best p(r|s) by comparing predicted signal to actual signal
+		- get p(r\|s)
+		- pick best p(r\|s) by comparing predicted signal to actual signal
 		- input is filtered to extract certain features
 		- filtered again to account for slow timescale of BOLD signal
 	2. decoding
-		- maximize p(s|r) by maximizing p(r|s) p(s), and assume p(s) uniform
+		- maximize p(s\|r) by maximizing p(r\|s) p(s), and assume p(s) uniform
 		- 30 signals that have highest match to predicted signal are averaged 
 		- yields pretty good pictures
 		
@@ -234,19 +234,19 @@ category: neuro
 - code might not align spikes with what we are encoding
 - how much of the variability in r is encoding s
 	- define q as en error
-		- $P(r_+|s=+)=1-q$
-		- $P(r_-|s=+)=q$
+		- $P(r_+\|s=+)=1-q$
+		- $P(r_-\|s=+)=q$
 		- similar for when s=-
 	- total entropy: $H(R ) = - P(r_+) log P(r_+) - P(r_-)log P(r_-)$
-	- noise entropy: $H(R|S=+) = -q log q - (1-q) log (1-q)$
-	- mutual info I(S;R) = $H(R ) - H(R|S) $ = total entropy - average noise entropy
+	- noise entropy: $H(R\|S=+) = -q log q - (1-q) log (1-q)$
+	- mutual info I(S;R) = $H(R ) - H(R\|S) $ = total entropy - average noise entropy
 		- = $D_{KL} (P(R,S), P(R )P(S))$
 - *grandma's famous mutual info recipe*
 	- for each s
-		- P(R|s) - take one stimulus and repeat many times (or run for a long time)
-		- H(R|s) - noise entropy
-	- $H(R|S)=\sum_s P(s) H(R|s)$
-	- $H(R ) $ calculated using $P(R ) = \sum_s P(s) P(R|s)$
+		- P(R\|s) - take one stimulus and repeat many times (or run for a long time)
+		- H(R\|s) - noise entropy
+	- $H(R\|S)=\sum_s P(s) H(R\|s)$
+	- $H(R ) $ calculated using $P(R ) = \sum_s P(s) P(R\|s)$
 
 ### 4.2 information in spike trains
 1. information in spike patterns
@@ -266,8 +266,8 @@ category: neuro
 	1. calculate entropy for random stimulus
 		- $p=\bar{r} \Delta t$ where $\bar{r}$ is the mean firing rate
 	2. calculate entropy for specific stimulus
-	- let $P(r=1|s) = r(t) \Delta t$
-	- let $P(r=0|s) = 1 - r(t) \Delta t$
+	- let $P(r=1\|s) = r(t) \Delta t$
+	- let $P(r=0\|s) = 1 - r(t) \Delta t$
 	- get r(t) by having simulus on for long time
 	- *ergodicity* - a time average is equivalent to averging over the s ensemble
 	- ![](assets/comp_neuro/4_2_1.png)
@@ -454,8 +454,8 @@ category: neuro
 - stability
 	- Hebb rule - derivative of w is always positive $\implies$ w grows without bound
 	- covariance rule - derivative of w is still always positive $\implies$ w grows without bound
-		- could add constraint that $||w||=1$ and normalize w after every step
-	- Oja's rule - $||w|| = 1/\sqrt{alpha}$, so stable
+		- could add constraint that $\|\|w\|\|=1$ and normalize w after every step
+	- Oja's rule - $\|\|w\|\| = 1/\sqrt{alpha}$, so stable
 - solving *Hebb rule* $\tau_w \frac{d\mathbf{w}}{dt} = Q w$ where Q represents correlation matrix
 	- write w(t) in terms of eigenvectors of Q
 	- lets us solve for $\mathbf{w}(t)=\sum_i c_i(0)exp(\lambda_i t / \tau_w) \mathbf{e}_i$
@@ -479,11 +479,11 @@ category: neuro
 		- ex. V1 has orientation preference maps that do this
 - generative model
 	- prior P(C )
-	- likelihoood P(X|C)
-	- posterior P(C|X)
-	- *mixture of Gaussians model* - Gaussian assumption P(X|C=c) is Gaussian
+	- likelihoood P(X\|C)
+	- posterior P(C\|X)
+	- *mixture of Gaussians model* - Gaussian assumption P(X\|C=c) is Gaussian
 	- *EM* = expectation-maximization
-		1. estimate P(C|X) - pick what cluster point belongs to
+		1. estimate P(C\|X) - pick what cluster point belongs to
 			- for Gaussian model, each cluster gets a probability of changing
 			- this probability weights the change - *"soft"
 		2. learn parameters of generative model - change parameters of Gaussian (mean and variance) for clusters
@@ -502,10 +502,10 @@ category: neuro
 - generative model
 	- images X
 	- causes 
-	- likelihood P(X=x|C=c)
+	- likelihood P(X=x\|C=c)
 		- Gaussian
 		- proportional to $exp(x-Gc)$
-	- want posterior P(C|X)
+	- want posterior P(C\|X)
 	- prior p(C )
 		- assume priors causes are independent
 		- want sparse distribution
@@ -523,4 +523,59 @@ category: neuro
 
 # ml analogies
 
-## Brain theories-	Computational Theory of Mind-	Classical associationism-	Connectionism-	Situated cognition-	Memory-prediction framework-	Fractal Theory: https://www.youtube.com/watch?v=axaH4HFzA24-	Brain sheets are made of cortical columns (about .3mm diameter, 1000 neurons / column)-	Have ~6 layers## brain as a computer-	Brain as a Computer – Analog VLSI and Neural Systems by Mead (VLSI – very large scale integration)-	Brain Computer Analogy-	Process info-	Signals represented by potential-	Signals are amplified = gain-	Power supply-	Knowledge is not stored in knowledge of the parts, but in their connections-	Based on electrically charged entities interacting with energy barriers-	http://en.wikipedia.org/wiki/Computational_theory_of_mind-	http://scienceblogs.com/developingintelligence/2007/03/27/why-the-brain-is-not-like-a-co/-	Brain’ storage capacity is about 2.5 petabytes (Scientific American, 2005)-	Electronics-	Voltage can be thought of as water in a reservoir at a height-	It can flow down, but the water will never reach above the initial voltage-	A capacitor is like a tank that collects the water under the reservoir-	The capacitance is the cross-sectional area of the tank-	Capacitance – electrical charge required to raise the potential by 1 volt-	Conductance = 1/ resistance = mho, siemens-	We could also say the word is a computer with individuals being the processors – with all the wasted thoughts we have – the solution is probably to identify global problems and channel people’s focus towards working on them-	Brain chip: http://www.research.ibm.com/articles/brain-chip.shtml-	Differences: What Can AI Get from Neuroscience? -	Brains are not digital-	Brains don’t have a CPU-	Memories are not separable from processing-	Asynchronous and continuous-	Details of brain substrate matter-	Feedback and Circular Causality-	Asking questions-	Brains has lots of sensors-	Lots of cellular diversity-	NI uses lots of parallelism-	Delays are part of the computation## Brain v. Deep Learning-	http://timdettmers.com/-	problems with brain simulations:-	Not possible to test specific scientific hypotheses (compare this to the large hadron collider project with its perfectly defined hypotheses)-	Does not simulate real brain processing (no firing connections, no biological interactions)-	Does not give any insight into the functionality of brain processing (the meaning of the simulated activity is not assessed)-	Neuron information processing parts-	Dendritic spikes are like first layer of conv net-	Neurons will typically have a genome that is different from the original genome that you were assigned to at birth. Neurons may have additional or fewer chromosomes and have sequences of information removed or added from certain chromosomes.-	http://timdettmers.com/2015/03/26/convolution-deep-learning/-	The adult brain has 86 billion neurons, about 10 trillion synapse, and about 300 billion dendrites (tree-like structures with synapses on them
+## Brain theories
+-	Computational Theory of Mind
+-	Classical associationism
+-	Connectionism
+-	Situated cognition
+-	Memory-prediction framework
+-	Fractal Theory: https://www.youtube.com/watch?v=axaH4HFzA24
+-	Brain sheets are made of cortical columns (about .3mm diameter, 1000 neurons / column)
+-	Have ~6 layers
+
+## brain as a computer
+-	Brain as a Computer – Analog VLSI and Neural Systems by Mead (VLSI – very large scale integration)
+-	Brain Computer Analogy
+-	Process info
+-	Signals represented by potential
+-	Signals are amplified = gain
+-	Power supply
+-	Knowledge is not stored in knowledge of the parts, but in their connections
+-	Based on electrically charged entities interacting with energy barriers
+-	http://en.wikipedia.org/wiki/Computational_theory_of_mind
+-	http://scienceblogs.com/developingintelligence/2007/03/27/why-the-brain-is-not-like-a-co/
+-	Brain’ storage capacity is about 2.5 petabytes (Scientific American, 2005)
+-	Electronics
+-	Voltage can be thought of as water in a reservoir at a height
+-	It can flow down, but the water will never reach above the initial voltage
+-	A capacitor is like a tank that collects the water under the reservoir
+-	The capacitance is the cross-sectional area of the tank
+-	Capacitance – electrical charge required to raise the potential by 1 volt
+-	Conductance = 1/ resistance = mho, siemens
+-	We could also say the word is a computer with individuals being the processors – with all the wasted thoughts we have – the solution is probably to identify global problems and channel people’s focus towards working on them
+-	Brain chip: http://www.research.ibm.com/articles/brain-chip.shtml
+-	Differences: What Can AI Get from Neuroscience? 
+-	Brains are not digital
+-	Brains don’t have a CPU
+-	Memories are not separable from processing
+-	Asynchronous and continuous
+-	Details of brain substrate matter
+-	Feedback and Circular Causality
+-	Asking questions
+-	Brains has lots of sensors
+-	Lots of cellular diversity
+-	NI uses lots of parallelism
+-	Delays are part of the computation
+
+## Brain v. Deep Learning
+-	http://timdettmers.com/
+-	problems with brain simulations:
+-	Not possible to test specific scientific hypotheses (compare this to the large hadron collider project with its perfectly defined hypotheses)
+-	Does not simulate real brain processing (no firing connections, no biological interactions)
+-	Does not give any insight into the functionality of brain processing (the meaning of the simulated activity is not assessed)
+-	Neuron information processing parts
+-	Dendritic spikes are like first layer of conv net
+-	Neurons will typically have a genome that is different from the original genome that you were assigned to at birth. Neurons may have additional or fewer chromosomes and have sequences of information removed or added from certain chromosomes.
+-	http://timdettmers.com/2015/03/26/convolution-deep-learning/
+-	The adult brain has 86 billion neurons, about 10 trillion synapse, and about 300 billion dendrites (tree-like structures with synapses on them
+

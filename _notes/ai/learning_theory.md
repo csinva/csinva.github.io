@@ -21,7 +21,7 @@ category: ai
 		- X is typically running time of the algorithm
 		- if we don't have E[X], can use upper bound for E[X]
 	2. *Chebyshev's inequality*
-		- $P(|X-\mu| \geq a) \leq \frac{Var[X]}{a^2}$
+		- $P(\vert X-\mu\vert  \geq a) \leq \frac{Var[X]}{a^2}$
 		- utilizes the variance to get a better bound
 	- CLT
 	- law of large numbers
@@ -88,7 +88,7 @@ category: ai
 ## VC dimension
 - *VC dimension* measures *capacity* of a space of functions that can be learend by a statistical classification algorithm
 	- let H be set of sets and C be a set
-	- $H \cap C := \{ h \cap C \: | h \in H \}$
+	- $H \cap C := \{ h \cap C \: \vert  h \in H \}$
 	- a set C is *shattered* by H if $H \cap C$ contains all subsets of C
 	- The VC dimension of $H$ is the largest integer $D$ such that there exists a set $C$ with cardinality $D$ that is shattered by $H$
 - VC dimension 0 -> hypothesis either always returns false or always returns true

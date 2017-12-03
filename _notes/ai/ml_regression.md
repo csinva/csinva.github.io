@@ -14,7 +14,7 @@ category: ai
 - matrix formation
 	- $\hat{y} = f(x) = x^T \theta = \theta x^T = \theta_0 + \theta_1 x^1 + \theta_2 x^2 + ...$
 	- $\pmb{x_1}$ is all the features for one data sample
-	- $\pmb{x^1}$ is the first feature over all the data samples
+	- $\pmb{x^1}$ is the first fea\vert ture over all the data samples
 	- our goal is to pick the optimal theta to minimize least squares
 - loss function - minimize SSE
 - SSE is a *convex function*
@@ -105,14 +105,14 @@ category: ai
 	- then it becomes invertible
 	- small lambda -> numerical solution is unstable
 	- proof of why it's invertible is difficult
-	- argmin $\sum_i (y_i - \hat{y_i})^2+ \lambda ||\beta||_2^2 $
+	- argmin $\sum_i (y_i - \hat{y_i})^2+ \lambda \vert \vert \beta\vert \vert _2^2 $
 	- equivalent to minimizing $\sum_i (y_i - \hat{y_i})^2$ s.t. $\sum_j \beta_j^2 \leq t$
 	- solution is $\hat{\beta_\lambda} = (X^TX+\lambda I)^{-1} X^T y$
 	- for small $\lambda$ numerical solution is unstable
 	- When $X^TX=I$, $\beta _{Ridge} = \frac{1}{1+\lambda} \beta_{Least Squares}$
 2. *lasso* regression (L1)
-	- $\sum_i (y_i - \hat{y_i})^2+\lambda  ||\beta||_1 $ 
-	- equivalent to minimizing $\sum_i (y_i - \hat{y_i})^2$ s.t. $\sum_j |\beta_j| \leq t$
+	- $\sum_i (y_i - \hat{y_i})^2+\lambda  \vert \vert \beta\vert \vert _1 $ 
+	- equivalent to minimizing $\sum_i (y_i - \hat{y_i})^2$ s.t. $\sum_j \vert \beta_j\vert  \leq t$
 	- "least absolute shrinkage and selection operator"
 	- lasso - least absolute shrinkage and selection operator - L1
 	- acts in a nonlinear manner on the outcome y
@@ -127,7 +127,7 @@ category: ai
 		- if p>n, lasso selects at most n variables
 		- if pairwise correlations are very high, lasso only selects one variable
 3. *elastic net* - hybrid of the other two
-	- $\beta_{Naive ENet} = \sum_i (y_i - \hat{y_i})^2+\lambda_1 ||\beta||_1 + \lambda_2  ||\beta||_2^2$ 
+	- $\beta_{Naive ENet} = \sum_i (y_i - \hat{y_i})^2+\lambda_1 \vert \vert \beta\vert \vert _1 + \lambda_2  \vert \vert \beta\vert \vert _2^2$ 
 	- l1 part generates sparse model
 	- l2 part encourages grouping effect, stabilizes l1 regularization path
 		- grouping effect - group of highly correlated features should all be selected

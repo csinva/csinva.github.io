@@ -32,8 +32,8 @@ category: math
 - det - sum of products including one element from each row / column with correct sign
 - lin independent: $c_1x_1+c_2x_2=0 \implies c_1=c_2=0$
 - *cauchy-schwartz inequality* = *triangle inequality*
-	- $||f(a+b)|| \leq ||f(a)|| + ||f(b)||$
-	- or $|x^T y| \leq ||x||_2 ||y||_2$
+	- $\|\|f(a+b)\|\| \leq \|\|f(a)\|\| + \|\|f(b)\|\|$
+	- or $\|x^T y\| \leq \|\|x\|\|_2 \|\|y\|\|_2$
 
 ## matrix properties
 - $x^TAx = tr(xx^TA)$
@@ -45,7 +45,7 @@ category: math
 - inverse
     - if *orthogonal*, $A^{-1} = A^T$
     	- all columns are *orthonormal*
-    	- preserves the Euclidean norm $||Ax||_2 = ||x||_2$
+    	- preserves the Euclidean norm $\|\|Ax\|\|_2 = \|\|x\|\|_2$
     - if diagonal, inverse is invert all elements
     - inverting 3x3 - transpose, find all mini dets, multiply by signs, divide by det
     - *psuedo-inverse* = *Moore-Penrose inverse* $A^\dagger = (A^T A)^{-1} A^T$
@@ -89,14 +89,14 @@ $\begin{bmatrix}
 	- convex
 
 ## vector norms
-- *$l_p-$norms*: $||x||_p = (\sum_{i=1}^n |x_i|^p)^{1/p}$
+- *$l_p-$norms*: $\|\|x\|\|_p = (\sum_{i=1}^n \|x_i\|^p)^{1/p}$
 	- $L_0$ norm - number of nonzero elements
-	- $||x||_1 = \sum |x_i|$
-	- $||x||_\infty = max_i |x_i|$ - also called *Cheybyshev norm*
+	- $\|\|x\|\|_1 = \sum \|x_i\|$
+	- $\|\|x\|\|_\infty = max_i \|x_i\|$ - also called *Cheybyshev norm*
 - *quadratic norms*
-	- *P-quadratic norm*: $||x||_P = (x^TPx)^{1/2} = || P^{1/2} x ||_2$ where $P \in S_{++}^n$
+	- *P-quadratic norm*: $\|\|x\|\|_P = (x^TPx)^{1/2} = \|\| P^{1/2} x \|\|_2$ where $P \in S_{++}^n$
 - *dual norm*
-	- given a norm $|| \cdot ||$, dual norm $||z||_* = sup\{ z^Tx \: | \: ||x|| \leq 1\}$
+	- given a norm $\|\| \cdot \|\|$, dual norm $\|\|z\|\|_* = sup\{ z^Tx \: \| \: \|\|x\|\| \leq 1\}$
 	- dual of the dual is the original
 	- dual of Euclidean is just Euclidean
 	- dual of $l_1$ is $l_\infty$
@@ -108,10 +108,10 @@ $\begin{bmatrix}
 	- sum-absolute-value norm (like l1) 
 	- maximum-absolute-value norm (like linf)
 - *operator norm*
-	- let $||\cdot||_a$ and $|| \cdot ||_b$ be vector norms
-	- operator norm $||X||_{a,b} = sup\{ ||Xu||_a \: | \: ||u||_b \leq 1 \}$
+	- let $\|\|\cdot\|\|_a$ and $\|\| \cdot \|\|_b$ be vector norms
+	- operator norm $\|\|X\|\|_{a,b} = sup\{ \|\|Xu\|\|_a \: \| \: \|\|u\|\|_b \leq 1 \}$
 			- represents the maximum stretching that X does to a vector u
-	- if both Euclidean norms, X is *max singular value*: $||X||_2 = \sigma_{max}(X) = (\lambda_{max} (X^TX))^{(1/2)}$
+	- if both Euclidean norms, X is *max singular value*: $\|\|X\|\|_2 = \sigma_{max}(X) = (\lambda_{max} (X^TX))^{(1/2)}$
 		- also called *spectral norm* or *$l_2 norm$* (of a matrix)
 
 # eigenstuff
@@ -127,8 +127,8 @@ $\begin{bmatrix}
 - expressions when $A \in \mathbb{S}$
 	- $det(A) = \prod_i \lambda_i$
 	- $tr(A) = \sum_i \lambda_i$
-	- $||A||_2 = max | \lambda_i |$
-	- $||A||_F = \sqrt{\sum \lambda_i^2}$
+	- $\|\|A\|\|_2 = max \| \lambda_i \|$
+	- $\|\|A\|\|_F = \sqrt{\sum \lambda_i^2}$
 	- $\lambda_{max} (A) = sup_{x \neq 0} \frac{x^T A x}{x^T x}$
 	- $\lambda_{min} (A) = inf_{x \neq 0} \frac{x^T A x}{x^T x}$
 - *defective matrices* - lack a full set of eigenvalues
@@ -190,8 +190,8 @@ $\begin{bmatrix}
 	- steady-state Ax = x 
 	- corresponds to $\lambda = 1$
 - stability of $u_{k+1} = A u_k$
-	- stable if all eigenvalues satisfy $|\lambda_i|$  <1
-	- neutrally stable if some $|\lambda_i|=1$
-	- unstable if at least one $|\lambda_i|$ > 1
+	- stable if all eigenvalues satisfy $\|\lambda_i\|$  <1
+	- neutrally stable if some $\|\lambda_i\|=1$
+	- unstable if at least one $\|\lambda_i\|$ > 1
 - Leontief's input-output matrix
 - *Perron-Frobenius thm* - if A is a positive matrix (positive values), so is its largest eigenvalue. Every component of the corresponding eigenvector is also positive.

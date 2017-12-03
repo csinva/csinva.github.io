@@ -23,13 +23,13 @@ $\frac{d}{dx}sec(x)= sec(x)tan(x)$
 
 $\frac{d}{dx}csc(x)= -csc(x)cot(x)$
 
-$\int tan = ln|sec|$
+$\int tan = ln\|sec\|$
 
-$\int cot = ln|sin|$
+$\int cot = ln\|sin\|$
 
-$\int sec = ln|sec+tan|$
+$\int sec = ln\|sec+tan\|$
 
-$\int csc = ln|csc-cot|$
+$\int csc = ln\|csc-cot\|$
 
 $\int \frac{du}{\sqrt{a^2-u^2}} = sin^{-1}(\frac{u}{a})$
 

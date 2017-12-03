@@ -11,7 +11,7 @@ category: ai
 
 # 1 - introduction
 1. *structured prediction* - have multiple independent output variables
-	- output assignements are evaluated jointly
+	- output assignments are evaluated jointly
 	- requires joint (global) inference
 	- can't use classifier because output space is combinatorially large
 	- three steps
@@ -74,7 +74,7 @@ category: ai
 	- multiclass SVMs (Crammer&Singer)
 		- minimize total norm of weights s.t. true label is score at least 1 more than second best label
 	- multinomial logistic regression = multi-class *log-linear* model
-		- $P(y|x,w)=\frac{exp(w^T_yx)}{\sum_{y' \in \{ 1,...,K\}} exp(w_{y'}^T,x)}$
+		- $P(y\vert x,w)=\frac{exp(w^T_yx)}{\sum_{y' \in \{ 1,...,K\}} exp(w_{y'}^T,x)}$
 			- we control the peakedness of this by dividing by stddev
 		- *soft-max*: sometimes substitue this for $w^T_y x$
 
@@ -110,7 +110,7 @@ category: ai
 - goal: learn distribution $P(x_1,...,x_n)$ for sequences $x_1,...,x_n$
 	- ex. text generation
 - *discrete Markov model*
-	- $P(x_1,...,x_n) = \prod_i P(x_i | x_{i-1})$
+	- $P(x_1,...,x_n) = \prod_i P(x_i \vert  x_{i-1})$
 	- requires 
 		1. initial probabilites
 		2. transition matrix
@@ -122,29 +122,29 @@ category: ai
 	- learn distribution $P(x_1,...,x_n,y_1,...,y_n)$
 		- ex. POS tagging
 - model
-	- define $P(x_1,...,x_n,y_1,...,y_n) =  P(y_1) P(x_1|y_1) \prod_{i} P(y_i | y_{i-1})$
+	- define $P(x_1,...,x_n,y_1,...,y_n) =  P(y_1) P(x_1\vert y_1) \prod_{i} P(y_i \vert  y_{i-1})$
 	- each output label is dependent on its neighbors in addition to the input
 - definitions
 	- $\mathbf{y}$ - state 
 		- states are not observed
 	- $\mathbf{x}$ - observation 
 	- $\pi$ - initial state probabilities
-	- A = transition probabilities $P(y_2|y_1)$
-	- B = emission probabilities $P(x_1|y_1)$
+	- A = transition probabilities $P(y_2\vert y_1)$
+	- B = emission probabilities $P(x_1\vert y_1)$
 		- each state stochastically emits an observation
 1. *inference*
 	- given $(\pi,A,B)$ and $\mathbf{x}$
 		1. calculate probability of $\mathbf{x}$
 		2. calculate most probable $\mathbf{y}$
-		- define $P(x_1,...,x_n,y_1,...,y_n) =  P(y_1) P(x_1|y_1) \prod_{i} P(y_i | y_{i-1}) P(x_i|y_i)$
-		- use MAP:  $\hat{y}=\underset{y}{argmax} \: P(y|x,\pi, A,B)=\underset{y}{argmax} \: P(y \land x | \pi, A,B)$
+		- define $P(x_1,...,x_n,y_1,...,y_n) =  P(y_1) P(x_1\vert y_1) \prod_{i} P(y_i \vert  y_{i-1}) P(x_i\vert y_i)$
+		- use MAP:  $\hat{y}=\underset{y}{argmax} \: P(y\vert x,\pi, A,B)=\underset{y}{argmax} \: P(y \land x \vert  \pi, A,B)$
 	- use *Viterbi algorithm*
 		1. initial for each state s
-			- $score_1(s) = P(s) P(x_1 | s) = \pi_s B_{x_1,s}$
+			- $score_1(s) = P(s) P(x_1 \vert  s) = \pi_s B_{x_1,s}$
 		2. recurrence - for i = 2 to n, calculate scores using previous score only
-			- $score_i(s) = \underset{y_i-1}{max} P(s|y_{i-1}) P(x_i | s) \cdot score_{i-1}(y_{i-1})$
+			- $score_i(s) = \underset{y_i-1}{max} P(s\vert y_{i-1}) P(x_i \vert  s) \cdot score_{i-1}(y_{i-1})$
 		3. final state
-			- $\hat{y}=\underset{y}{argmax} \: P(y,x | \pi, A,B) = \underset{x}{max} \: score_n (s)$
+			- $\hat{y}=\underset{y}{argmax} \: P(y,x \vert  \pi, A,B) = \underset{x}{max} \: score_n (s)$
 	- complexity
 		- K = number of states
 		- M = number of observations
@@ -161,29 +161,29 @@ category: ai
 
 ## conditional models and local classifiers - discriminative model
 - conditional models = discriminative models
-	- goal: model $P(Y|X)$
+	- goal: model $P(Y\vert X)$
 	- learns the decision boundary only
 	- ignores how data is generated (like generative models)
 - ex. *log-linear models*
-	- $P(\mathbf{y|x,w}) = \frac{exp(w^T \phi (x,y))}{\sum_y' exp(w^T \phi (x,y'))}$
-	- training: $w = \underset{w}{argmin} \sum log \: P(y_i|x_i,w)$
+	- $P(\mathbf{y\vert x,w}) = \frac{exp(w^T \phi (x,y))}{\sum_y' exp(w^T \phi (x,y'))}$
+	- training: $w = \underset{w}{argmin} \sum log \: P(y_i\vert x_i,w)$
 - ex. *next-state model*
-	- $P(\mathbf{y}|\mathbf{x})=\prod_i P(y_i|y_{i-1},x_i)$
+	- $P(\mathbf{y}\vert \mathbf{x})=\prod_i P(y_i\vert y_{i-1},x_i)$
 - ex. *maximum entropy markov model*
-	- $P(y_i|y_{i-1},x) \propto exp( w^T \phi(x,i,y_i,y_{i-1}))$
+	- $P(y_i\vert y_{i-1},x) \propto exp( w^T \phi(x,i,y_i,y_{i-1}))$
 		- adds more things into the feature representation than HMM via $\phi$
 	- has *label bias* problem
 		- if state has fewer next states they get high probability
-			- effectively ignores x if $P(y_i|y_{i-1})$ is too high
+			- effectively ignores x if $P(y_i\vert y_{i-1})$ is too high
 - ex. *conditional random fields=CRF* 
 	- a global, undirected graphical model
 		- divide into *factors*
-	- $P(Y|x) = \frac{1}{Z} \prod_i exp(w^T \phi (x,y_i,y_{i-1}))$
+	- $P(Y\vert x) = \frac{1}{Z} \prod_i exp(w^T \phi (x,y_i,y_{i-1}))$
 		- $Z = \sum_{\hat{y}} \prod_i exp(w^T \phi (x,\hat{y_i},\hat{y}_{i-1}))$
 		- $\phi (x,y) = \sum_i \phi (x,y_i,y_{i-1})$
 	- prediction via Viterbi (with sum instead of product)
 	- training
-		- maximize log-likelihood $\underset{W}{max} -\frac{\lambda}{2} w^T w + \sum log \: P(y_I|x_I,w)$
+		- maximize log-likelihood $\underset{W}{max} -\frac{\lambda}{2} w^T w + \sum log \: P(y_I\vert x_I,w)$
 		- requires inference
 	- *linear-chain CRF* - only looks at current and previous labels
 - ex. *structured perceptron*
@@ -196,7 +196,7 @@ category: ai
 ### 1 - Bayesian networks = causal networks (directed graphs)
 - must be acyclic
 - *local independence* - each node is independent of its non-descendants given its parents
-	- $P(z_1,...,z_n)=\prod P(z_i|Parents(z_i))$
+	- $P(z_1,...,z_n)=\prod P(z_i\vert Parents(z_i))$
 - *topological independence* - a node is independent of all other nodes given its parents, children, and children's parents = *markov blanket*
 - compact representation of the joint prob. distr.
 - *global independencies* - D-separation

@@ -9,9 +9,9 @@ category: math
 
 ## convex sets (boyd 2)
 - *affine set*: $x_1, x_2 \in C, \theta \in \mathbb{R} \implies \theta x_1 + (1 - \theta) x_2 \in C$
-	- *affine hull*: aff C = {$\sum \theta_i x_i | x_i \in C, \sum \theta_i =1 $}
+	- *affine hull*: aff C = {$\sum \theta_i x_i \| x_i \in C, \sum \theta_i =1 $}
 - *convex set*: $x_1, x_2 \in C, 0 \leq \theta \leq 1 \implies \theta x_1 + (1 - \theta) x_2 $
-	- *convex hull*: conv C = {$\sum \theta_i x_i \: | x_i \in C, \theta_i \geq 0, \sum \theta_i = 1$}
+	- *convex hull*: conv C = {$\sum \theta_i x_i \: \| x_i \in C, \theta_i \geq 0, \sum \theta_i = 1$}
 - *cone*: $\theta \geq 0 \implies \theta x \in C$
 - operations that preserve convexity
 	- intersection (finite intersection of half-spaces)
@@ -24,17 +24,17 @@ category: math
 	- *proper cone* K: convex, closed, pointed, solid
 		- $x \preceq_K y \iff y-x \in K$
 - *separating hyperplane thm*: C, D convex $C \cap D =\emptyset \implies \exists a \neq 0, b \: s.t. \\ a^Tx \leq b \forall x \in C, \\a^Tx \geq b \forall x \in D$
-- *supporting hyperplane thm*: {$x|a^tx = a^t x_0$} where $x_0$ on boundary of convex C
-- dual cone $K^*$ = {$y|x^Ty \geq 0 \: \forall x \in K$}
+- *supporting hyperplane thm*: {$x\|a^tx = a^t x_0$} where $x_0$ on boundary of convex C
+- dual cone $K^*$ = {$y\|x^Ty \geq 0 \: \forall x \in K$}
 	- $\preceq_{K^*}$ is dual of $\preceq_K$
 	- $x \preceq_K y \iff \lambda^T x \leq \lambda^T y \quad \forall \: \lambda \succeq_{K^*} 0$
 
 ### geometry
-- *ellipsoid*: {$x \in \mathbb{R}^n | (x-x_c)^T P^{-1} (x-x_c) \leq 1$} where P symmetric, PSD
-	- {$x_c + Au | ||u||_2 \leq 1$}
-- *hyperplane*: {$x|a^Tx = b$} ~ creates a halfspace
-- *norm cone*: {$(x, t)| \: ||x|| \leq t$}
-- *polyhedron*: {x | Ax=b, Cx=d} = $\{ \sum_i^k \theta_i v_i \; | \sum_i^m \theta_i = 1, \theta_i \geq 0 \} \: m \leq k$  
+- *ellipsoid*: {$x \in \mathbb{R}^n \| (x-x_c)^T P^{-1} (x-x_c) \leq 1$} where P symmetric, PSD
+	- {$x_c + Au \| \|\|u\|\|_2 \leq 1$}
+- *hyperplane*: {$x\|a^Tx = b$} ~ creates a halfspace
+- *norm cone*: {$(x, t)\| \: \|\|x\|\| \leq t$}
+- *polyhedron*: {x \| Ax=b, Cx=d} = $\{ \sum_i^k \theta_i v_i \; \| \sum_i^m \theta_i = 1, \theta_i \geq 0 \} \: m \leq k$  
 - *simplex*: conv{$v_{0:k}$}
 
 ## convex funcs (boyd 3)
@@ -47,12 +47,12 @@ category: math
 		- can show this by restricting to an arbitrary line
 	4. consider epi f - also use things that preseve convexity
 - concepts
-	- *epigraph* epi f = $\{ (x, t) \; | \: x \in dom f, f(x) \leq t \}$
+	- *epigraph* epi f = $\{ (x, t) \; \| \: x \in dom f, f(x) \leq t \}$
 	- *extended value extension*: $\tilde{f}(x) = f(x)$ if $x \in dom f$ else $\infty$
 	- *wide sense function* - can take on values $\pm \infty$
-		- = dom f = {$x | f(x) < \infty$}
-	- *wide sense convex func*: $f(x) = inf \{ t \in \mathbb{R} | (x, t) \in F\}$ where $F \subseteq \mathbb{R}^{n+1}$
-		- $F(x) = inf \{ t \in \mathbb{R} | (x, t) \in F \}$
+		- = dom f = {$x \| f(x) < \infty$}
+	- *wide sense convex func*: $f(x) = inf \{ t \in \mathbb{R} \| (x, t) \in F\}$ where $F \subseteq \mathbb{R}^{n+1}$
+		- $F(x) = inf \{ t \in \mathbb{R} \| (x, t) \in F \}$
 	- $\alpha$-sublevel set of convex func is convex
 - operations that preserve convexity
 	- nonnegative weighted sums ~ multiplies for logs
@@ -63,7 +63,7 @@ category: math
 	- minimization ~ sometimes
 - *conjugate* of f
 	- $f^*(y) = \underset{x \in dom f}{sup} \: y^T x - f(x)$
-	- dom $f^*$ = {$y|f^*(y)$ is finite}
+	- dom $f^*$ = {$y\|f^*(y)$ is finite}
 	- called *Legendre transform* when f differentiable
 	- *fenchel's inequality*: $f(x) + f^*(y) \geq x^ty$
 	- $f^{**} = f$ iff convex, closed
@@ -113,8 +113,8 @@ category: math
 ## quadratic optimization
 - $$min \: 1/2 x^TPx + q^Txr \\s.t. \: Gx \succeq h$$ where $P \in S_+^n$
 - *QCQP* - inequality constraints also convex
-	- ex. $min \: ||Ax-b||_2^2$
-- *SOCP* - $$min f^Tx \\ s.t. \: ||A_ix+b_i||_2 \leq c_i^T + d_i \\ Fx=g$$
+	- ex. $min \: \|\|Ax-b\|\|_2^2$
+- *SOCP* - $$min f^Tx \\ s.t. \: \|\|A_ix+b_i\|\|_2 \leq c_i^T + d_i \\ Fx=g$$
 
 ## geometric program
 - $$min \: f_0(x) \\ s.t. \: f_i(x) \leq 1 \: i = 1:m \\ h_i(x) = 1 \: i = 1:p$$ where $f_{0:m}$ posynomials, $h_i$ monomials
@@ -173,29 +173,29 @@ category: math
 		
 # approx + fitting (boyd 6)
 ## norm approx problem
-- minimize $||Ax-b||$
-- ex. weighted norm approx. min||W(Ax-b)||
-- ex. least squares min ||Ax-b||$_2^2$
-- ex. chebyshev approx norm min||Ax-b||$_\infty$
+- minimize $\|\|Ax-b\|\|$
+- ex. weighted norm approx. min\|\|W(Ax-b)\|\|
+- ex. least squares min \|\|Ax-b\|\|$_2^2$
+- ex. chebyshev approx norm min\|\|Ax-b\|\|$_\infty$
 - ex. penalty function approx problem: $min \: \phi(r_1) + ... + \phi(r_m)\\s.t. \: r=Ax-b$
 
 ## least norm problem
-- min $||x||\\s.t. \: Ax=b$ ~ min $||x_0+ Zu||$, Z cols basis for N(A)
+- min $\|\|x\|\|\\s.t. \: Ax=b$ ~ min $\|\|x_0+ Zu\|\|$, Z cols basis for N(A)
 
 ## regularized approximation
-- min $||Ax-b|| + \gamma ||x||$
-- min $||Ax-b||^2 + \gamma ||x||^2$
-- *Tikhonov*: $min \: ||Ax-b||_2^2 + \gamma ||x||_2^2$
+- min $\|\|Ax-b\|\| + \gamma \|\|x\|\|$
+- min $\|\|Ax-b\|\|^2 + \gamma \|\|x\|\|^2$
+- *Tikhonov*: $min \: \|\|Ax-b\|\|_2^2 + \gamma \|\|x\|\|_2^2$
 - examples
-	- ex. regularize w/ ||Dx||
+	- ex. regularize w/ \|\|Dx\|\|
 	- ex. lasso
 	- ex. quadratic smoothing
 	- ex. total variation
 
 ## robust approximation
 - $A = \bar{A} + U$ ~ random w/ mean 0
-1. stochastic robust approx problem: $min \: E||Ax-b||$
-2. (worst-case) robust approx prob: $min \: sup ||Ax-b|| \: | A \in \mathcal{A}$
+1. stochastic robust approx problem: $min \: E\|\|Ax-b\|\|$
+2. (worst-case) robust approx prob: $min \: sup \|\|Ax-b\|\| \: \| A \in \mathcal{A}$
 
 ## function fitting
 - $f(u) = x_1 f_1 (u) + .... + x_n f_n (u)$ ~ $f_i$ are basis funcs, $x_i$ are coefficients
@@ -219,18 +219,18 @@ category: math
 		- solved w/ $Px^* + q = 0$, if $P \succeq 0$, unique soln $-P^{-1}q$
 	- ex. unconstrained geometric program
 	- ex. analytic center of linear inequalities
-		- $min \: f(x) = -\sum \: log (b_i - a_i^Tx)$ where dom f = $\{x|a_i^Tx< b_i, i = 1:m\}$
+		- $min \: f(x) = -\sum \: log (b_i - a_i^Tx)$ where dom f = $\{x\|a_i^Tx< b_i, i = 1:m\}$
 - *strongly convex*: $\nabla^2 f(x) \succeq mI$
-	- $\implies f(y) \geq f(x) + \nabla f(x)^T(y-x) + m/2 ||y-x||_2^2$
-	- minimizing...$p^* \geq f(x) - 1/(2m) ||\nabla f(x)||_2^2$
+	- $\implies f(y) \geq f(x) + \nabla f(x)^T(y-x) + m/2 \|\|y-x\|\|_2^2$
+	- minimizing...$p^* \geq f(x) - 1/(2m) \|\|\nabla f(x)\|\|_2^2$
 - also, $\exists \: M, \: \nabla^2f(x) \preceq MI$
-	- $\implies f(y) \leq f(x) + \nabla f(x)^T(y-x) + M/2 ||y-x||_2^2$
+	- $\implies f(y) \leq f(x) + \nabla f(x)^T(y-x) + M/2 \|\|y-x\|\|_2^2$
 - $mI \preceq \nabla^2 f(x) \preceq MI, \kappa = M/m$ bounds *condition number* of $\nabla^2 f = \frac{\lambda_{max}(
 \nabla^2 f)}{\lambda_{min}(\nabla^2 f)}$
 - *cond(C)* = $W_{max}^2 / W_{min}^2$
-	- *width* of convex set $C \subset \mathbb{R}^n$ in direction q with $||q||_2=1$
+	- *width* of convex set $C \subset \mathbb{R}^n$ in direction q with $\|\|q\|\|_2=1$
 	- $W(C, q) = \underset{z \in C}{sup} q^Tz - \underset{z \in C}{inf} q^Tz$
-- *alpha-level subset*: $C_\alpha = \{x|f(x) \leq \alpha\}$
+- *alpha-level subset*: $C_\alpha = \{x\|f(x) \leq \alpha\}$
 	
 ## descent methods
 - update rule $x = x + t \Delta x$
@@ -256,7 +256,7 @@ category: math
 ## steepest descent method
 - examples
 	- euclidean norm: $\Delta x_{sd} = - \nabla f(x)$
-	- quadratic norm $||z||_P = (z^TPz)^{1/2} = ||P^{1/2}z||_2$ where $P \in S_{++}^n$
+	- quadratic norm $\|\|z\|\|_P = (z^TPz)^{1/2} = \|\|P^{1/2}z\|\|_2$ where $P \in S_{++}^n$
 		- $\Delta x_{sd} = -P^{-1} \nabla f(x)$
 	- $\ell_1$ norm: $\Delta_{sd} = -\frac{\partial f(x)}{\partial x_i} e_i$
 	
@@ -274,7 +274,7 @@ category: math
 ## gradient method basics
 - perspective 1: *fixed point iteration*
 	- contracts distance to optimatl soln each time
-	- bounded if f *Lipschitz continuous*: $||f(x) - f(y)|| \leq L||x-y||$
+	- bounded if f *Lipschitz continuous*: $\|\|f(x) - f(y)\|\| \leq L\|\|x-y\|\|$
 - perspective 2: *line search method* - find direction and minimize in that direction
 - *strong convexity* = Hessian has positive eigenvalues
 	- If f is strongly convex and two-times differentiable, then $\nabla^2 f(x) \succeq mI$
@@ -298,5 +298,5 @@ category: math
 - $x^*(t) \in argmin tc^Tx + F(x)$ where F is a barrier
 	- solve for increasing t until converges to soln with Newton's method
 	
-- *strongly convex*: $f(x_2) \geq f(x_1) + \nabla f(x_1)^T (x_2 - x_1) + m/2 ||x_2 - x_1||^2$
-- *L-smooth*: $f(x_2) \leq f(x_1) + \nabla f(x_1)^T (x_2 - x_1) + m/2 ||x_2 - x_1||^2$
+- *strongly convex*: $f(x_2) \geq f(x_1) + \nabla f(x_1)^T (x_2 - x_1) + m/2 \|\|x_2 - x_1\|\|^2$
+- *L-smooth*: $f(x_2) \leq f(x_1) + \nabla f(x_1)^T (x_2 - x_1) + m/2 \|\|x_2 - x_1\|\|^2$

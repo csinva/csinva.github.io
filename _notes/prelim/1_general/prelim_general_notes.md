@@ -2,8 +2,8 @@
 
 # Multivariate Gaussians (Jordan  13)
 ### 13.1 - parameterizations
-1. $$p(x|\mu, \Sigma) = \frac{1}{(2\pi )^{n/2} |\Sigma|^{1/2}} exp\left( -\frac{1}{2} (x-\mu)^T \Sigma^{-1} (x-\mu) \right)$$
-2. $$p(x|\eta, \Lambda) = exp\left( a + \eta^T x - \frac{1}{2} x^T \Lambda x\right)$$
+1. $$p(x\|\mu, \Sigma) = \frac{1}{(2\pi )^{n/2} \|\Sigma\|^{1/2}} exp\left( -\frac{1}{2} (x-\mu)^T \Sigma^{-1} (x-\mu) \right)$$
+2. $$p(x\|\eta, \Lambda) = exp\left( a + \eta^T x - \frac{1}{2} x^T \Lambda x\right)$$
 	- $\Lambda = \Sigma^{-1}$
 	- $\eta = \Sigma^{-1} \mu$
 

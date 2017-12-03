@@ -181,7 +181,7 @@ emphasis on efficiency  | emphasis on effectiveness
 	- soln: generalized postings match
 	- equality condition check with requirement of position patter between two query terms
 	- ex. t2.pos-t1.pos (t1 must be immediately before t2 in any matched document)
-	- proximity query: |t2.pos-t1.pos| <= k
+	- proximity query: $\vert t2.pos-t1.pos\vert  <= k $
 - spelling correction 
 	- pick nearest alternative or pick most common alternative
 	- proximity between query terms
@@ -283,24 +283,24 @@ emphasis on efficiency  | emphasis on effectiveness
 # probabalistic ranking principle - different approach, ML
 - total probablility - use bayes's rule over a partition
 - Hypothesis space H={H_1,...,H_n}, training data E
-- $P(H_i|E) = P(E|H_i)P(H_i)/P(E)$
+- $P(H_i\vert E) = P(E\vert H_i)P(H_i)/P(E)$
 - prior = P(H_i)
-- posterior = P(H_i|E)
+- posterior = $P(H_i\vert E)$
 - to pick the most likely hypothesis H*, we drop P(E)
-	- P(H_i|E) = P(E|H_i)P(H_i)
+	- $P(H_i\vert E) = P(E\vert H_i)P(H_i)$
 - losses - rank by descending loss
-	- a1 = loss(retrieved|non-relevant) 
-	- a2 = loss(not retrieved|relevant)
+	- a1 = loss(retrieved $\vert $ non-relevant)
+	- a2 = loss(not retrieved $\vert $ relevant)
 - we need to make a relevance measure function
 	- assume independent relevance, sequential browsing
 	- most existing ir research has fallen into this line of thinking
 	
-- conditional models for P(R=1|Q,D)
+- conditional models for $P(R=1\vert Q,D)$
 	- basic idea - relevance depends on how well a query matches a document
-	- P(R=1|Q,D) = g(Rep(Q,D),t)
+	- $P(R=1\vert Q,D)$ = g(Rep(Q,D),t)
 	- linear regression
-- MLE: prediction = argmax(P(X|0))
-- Bayesian: prediction = argmax(P(X|0)) P(0)
+- MLE: prediction = $argmax(P(X\vert 0))$
+- Bayesian: prediction = $argmax(P(X\vert 0)) P(0)$
 
 ###### ml
 - features/attributes for ranking - many things
@@ -308,8 +308,8 @@ emphasis on efficiency  | emphasis on effectiveness
 - little guidance on feature selection
 - this model has completely taken over
 
-###### generative models for P(R=1|Q,D)
-- compute Odd(R=1|Q,D) using Bayes' rule
+###### generative models for $P(R=1\vert Q,D)$
+- compute Odd($R=1\vert Q,D$) using Bayes' rule
 
 ###### language models
 - a model specifying probabilty distributions for different word sequences (generative model)
@@ -343,8 +343,8 @@ emphasis on efficiency  | emphasis on effectiveness
 	3. relevance judgements - binary relevant, nonrelevant for each query-document pair
 - stats
 	- type 1: false positive - wrongly returneda
-	- precision - fraction of retrieved documents that are relevant = p(relevant\|retrieved) = tp/(tp+fp)
-	- recall - fraction of relevant documents that are retrieved = p(retrieved\|relevant) = tp/(tp+fn)
+	- precision - fraction of retrieved documents that are relevant = $p(relevant\|retrieved)$ = tp/(tp+fp)
+	- recall - fraction of relevant documents that are retrieved = $p(retrieved\|relevant)$ = tp/(tp+fn)
 	- they generally trade off
 - evaluation is in terms of one query
 1. unordered evaluation - consider the documents unordered
@@ -459,7 +459,7 @@ emphasis on efficiency  | emphasis on effectiveness
 	- idf(t) = log(N/df(t)) where N = #docs
 - combination weighting scheme: tf_idf(t,d) = tf(t,d)*idf(t)   - (tf is actually log)
 - document score = sum over terms tf_idf(t,d)
-- cosine similarity = doc1*doc2 / (|doc1|*|doc2|)  (this is the dot product)
+- cosine similarity = doc1*doc2 / ($\vert doc1\vert *\vert doc2\vert $)  (this is the dot product)
 	- we want the highest possible similarity
 	- euclidean distance penalizes long documents too much
 - similarity = cosine similarity of (query,doc)

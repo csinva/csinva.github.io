@@ -199,8 +199,8 @@ void BST::insert(int x, BinaryNode * & curNode){    //we pass in by reference be
     - Lossless compression: X = X'
     - Lossy compression: X != X'
         - Information is lost (irreversible)
-    - Compression ratio: |X|/|Y|
-        - Where |X| is the number of bits (i.e., file size) of X
+    - Compression ratio: $\vert X\vert /\vert Y\vert $
+        - Where $\vert X\vert $ is the number of bits (i.e., file size) of X
 - Huffman coding
     - Compression
         1. Determine frequencies

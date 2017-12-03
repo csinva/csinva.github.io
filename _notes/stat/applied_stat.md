@@ -11,7 +11,7 @@ category: stat
 - taylor expansion: $f(x) \approx f(x_0) + \frac{f'(x_0)}{1!}(x-x_0) + \frac{f''(x_0)}{2!}(x-x_0)^2 + ...$
 - inversion of matrix is $\approx O(n^3)$
 - Gaussian distr: $\frac{1}{\sqrt{2 \pi \sigma^2}} exp(\frac{-(x-\mu)^2}{2 \sigma^2})$
-	- $p(x|\mu, \Sigma) = \frac{1}{(2\pi )^{n/2} |\Sigma|^{1/2}} exp\left( -\frac{1}{2} (x-\mu)^T \Sigma^{-1} (x-\mu) \right)$
+	- $p(x\|\mu, \Sigma) = \frac{1}{(2\pi )^{n/2} \|\Sigma\|^{1/2}} exp\left( -\frac{1}{2} (x-\mu)^T \Sigma^{-1} (x-\mu) \right)$
 
 # evaluation
 - lab notes 7: stability
@@ -119,12 +119,12 @@ category: stat
 	- computational cost
 	- interpretability
 	- stability
-- LS - minimize $||Y-Xw||$
+- LS - minimize $\|\|Y-Xw\|\|$
 	- $\hat{\theta} = (X^TX)^{-1} X^TY$
 		- 1. set deriv and solve
 		- 2. use projection matrix H to show HY is proj of Y onto R(X)
 			- define projection matrix $H = X(X^TX)^{-1} X^T$
-				- show $||Y-X \theta||^2 \geq ||Y - HY||^2$
+				- show $\|\|Y-X \theta\|\|^2 \geq \|\|Y - HY\|\|^2$
 				- key idea: subtract and add HY
 			- ***pf in pics***
 	- if feature correlated, weights aren't stable / can't be interpreted
@@ -139,7 +139,7 @@ category: stat
 	3. stability measures
 		- ex. similarity metric accross clusters / matrices
 - linear decompositions: learn D s.t. $X=DA$
-	1. NMF - $min_{D \geq 0, A \geq 0} ||X-DA||_F^2$
+	1. NMF - $min_{D \geq 0, A \geq 0} \|\|X-DA\|\|_F^2$
 	2. ICA
 		- remove correlations and higher order dependence
 		- all components are equally important
@@ -181,16 +181,16 @@ category: stat
 - ex. mixture of 2 gaussians
 - ***EM***
 	- goal: maximize $L(\theta)$ for data X and parameters $\theta$
-		- equivalent: maximize $\Delta(\theta | \theta_n) \leq L(\theta) - L(\theta_n)$
-			- the function $l(\theta | \theta_n) = L(\theta_n) + \Delta(\theta | \theta_n)$ is local concave 
+		- equivalent: maximize $\Delta(\theta \| \theta_n) \leq L(\theta) - L(\theta_n)$
+			- the function $l(\theta \| \theta_n) = L(\theta_n) + \Delta(\theta \| \theta_n)$ is local concave 
 			approximator
-			- introduce z (probablity of assignment): $P(X|\theta) = \sum_z P(X|z, \theta) P(z|\theta)$
+			- introduce z (probablity of assignment): $P(X\|\theta) = \sum_z P(X\|z, \theta) P(z\|\theta)$
 	- 3 steps
 		1. initialize $\theta_1$
-		2. E-step - calculate $E_{Z|X, \theta_n} ln P(X, z | \theta)$
+		2. E-step - calculate $E_{Z\|X, \theta_n} ln P(X, z \| \theta)$
 			- basically assigns z var
-			- this is the part of $l(\theta | \theta_n)$ that actually depends on $\theta$
-		3. M-step - $\theta_{n+1} = argmax_{\theta} E_{Z|X, \theta_n} ln P(X, z | \theta)$
+			- this is the part of $l(\theta \| \theta_n)$ that actually depends on $\theta$
+		3. M-step - $\theta_{n+1} = argmax_{\theta} E_{Z\|X, \theta_n} ln P(X, z \| \theta)$
 	- guaranteed to converge to local min of likelihood
 
 # 13 - basic causal inference
@@ -251,5 +251,5 @@ category: stat
 - *LAD (least absolute deviation)* fit
 	- MLE estimator when error is Laplacian
 - *logistic regression*
-	- $p_i = P(Y_i=1|x_i) = exp(x_i^T \theta) / (1+exp(x_i^T \theta))$
+	- $p_i = P(Y_i=1\|x_i) = exp(x_i^T \theta) / (1+exp(x_i^T \theta))$
 	- $Logit(p_i) = log(p_i / (1-p_i)) = x_i^T \theta$

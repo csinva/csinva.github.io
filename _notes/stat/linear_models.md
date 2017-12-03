@@ -162,7 +162,7 @@ category: stat
 		- tries to eliminate these from the model
 
 ### anova table
-- last column is P(>|t|)		
+- last column is P(>\\\|t\\\|)		
 - test is whether the statistic = 0
 - default F-value is for all coefficients=0
 

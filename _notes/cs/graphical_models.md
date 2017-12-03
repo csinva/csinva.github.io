@@ -18,8 +18,8 @@ category: cs
 - conditional correlation - inverse covariance matrix = precision matrix
 
 # 1 - bayesian networks
-- A and B have conditional independence given C if A|B and A|C are independent
-	- $$P(AB|C) = P(A|C) P(B|C)$$
+- A and B have conditional independence given C if A\vert B and A\vert C are independent
+	- $$P(AB\vert C) = P(A\vert C) P(B\vert C)$$
 
 ### bayesian networks intro
 - represented by directed acyclic graph
@@ -30,7 +30,7 @@ category: cs
 1. encodes conditional independence relationships
 2. compact representation of joint prob. distr. over the variables
 - *markov condition* - given its parents, a node is conditionally independent of its non-descendants
-- therefore joint distr: $P(X_1 = x_1,...X_n=x_n)=\prod_{i=1}^n P(X_i = x_i | Parents(X_i))$
+- therefore joint distr: $P(X_1 = x_1,...X_n=x_n)=\prod_{i=1}^n P(X_i = x_i \vert  Parents(X_i))$
 - *inference* - using a Bayesian network to compute probabilities
 	- sometimes have unobserved variables
 
@@ -44,10 +44,10 @@ category: cs
 	- ex. flip a weighted coin to find out what the probabilities are
 		- then move to child nodes and repeat
 2. inference
-	- suppose we want to know P(D|!A)
+	- suppose we want to know $P(D\vert !A)$
 		- sample network N times, report probability of D being true when A is false
 		- more samples is better
-	- *rejection sampling* - if want to know P(D|!A)
+	- *rejection sampling* - if want to know $P(D\vert !A)$
 		- sample N times, throw out samples where A isn't false
 		- return probability of D being true
 		- this is slow
@@ -71,7 +71,7 @@ category: cs
 		- also $= - \mathbf{H}_{P^*}(X) - \mathbf{E}_X [log \tilde{P}(X)]$
 		- intuitively measures extent of *compression loss (in bits)*
 		- can ignore first term because it is unaffected by the model
-		- concentrate on *expected log-likelihood* = $\mathcal{l}(D|M) =  \mathbf{E}_X [log \tilde{P}(X)]$
+		- concentrate on *expected log-likelihood* = $\mathcal{l}(D\vert M) =  \mathbf{E}_X [log \tilde{P}(X)]$
 		- maximizes probability of data given the model
 		- maximizes prediction assuming we are given complete instances
 		- could design test suite of queries to evaluate performance on a range of queries
@@ -79,14 +79,14 @@ category: cs
 	- can set loss function to *classification error* (0/1 loss)
 		- this doesn't work well for multiclass labeling
 	- *Hamming loss* - counts number of variables Y in which pred differs from ground truth
-	- *conditional log-likelihood* = $\mathbf{E}_{x,y ~ P}[log \tilde{P}(y|x)]$ - only measure likelihood with respect to predicted y
+	- *conditional log-likelihood* = $\mathbf{E}_{x,y ~ P}[log \tilde{P}(y\vert x)]$ - only measure likelihood with respect to predicted y
 3. *knowledge discovery*
 	- far more critical to assess the confidence in a prediction
 - the amount of data required to estimate parameters reliably grows linearly with the number of parameters, so that the amount of data required can grow exponentially with the network connectivity
 - *goodness of fit* - how well does the learned distribution represent the real distribution?
 
 ### 17 parameter estimation
-- assume *parametric model* P ($x$|$\theta$)
+- assume *parametric model* P ($x \vert  \theta$)
 - a *sufficent statistic* can be used to calculate likelihood
 
 ### 18 structure learning

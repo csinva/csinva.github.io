@@ -137,7 +137,7 @@ category: ai
 	- can explain reasoning
 	- can free up human experts to deal with rare problems
 
-# decisions
+# decisions\vert
 
 ## game trees -- R&N 5.2-5.5
 - *minimax algorithm*
@@ -172,11 +172,11 @@ category: ai
 	
 
 ## utilities / decision theory -- R&N 16.1-16.3
-- $P(RESULT(a)=s'|a,e)$
+- $P(RESULT(a)=s' \vert a,e)$
 	- s - state, observations e, action a
 - utility function U(s)
 - rational agent should choose action  with *maximum expected utility*
-	- expected utility $EU(a|e) = \sum_{s'} P(RESULT(a)=s'|a,e) U(s')$
+	- expected utility $EU(a\vert e) = \sum_{s'} P(RESULT(a)=s' \vert a,e) U(s')$
 - notation
 	- A>B - agent prefers A over B
 	- A~B - agenet is indifferent between A and B
@@ -234,7 +234,7 @@ category: ai
 	- observations only effect agents belief state
 	- value of info = expected value between best actions before and after info is obtained
 - *value of perfect information VPI* - assume we can obtain exact evidence on some variable $e_j$
-	- $VPI_e(E_j) = \left(\sum_k P(E_j = e_{jk}|e) \: EU(\alpha_{ejk} | e, E_j = e_{jk})\right) - EU(\alpha|e)$
+	- $VPI_e(E_j) = \left(\sum_k P(E_j = e_{jk} \vert e) \: EU(\alpha_{ejk}  \vert  e, E_j = e_{jk})\right) - EU(\alpha \vert e)$
 	- info is more valuable when it is likely to cause a change of plan
 	- info is more valuable when the new plan will be much better than the old plan
 	- VPI not linearly additive, but is order-independent
@@ -247,7 +247,7 @@ category: ai
 - *markov decision process*
 	- set of states
 	- set of actions
-	- transition model $P(s'|s,a)$
+	- transition model $P(s' \vert s,a)$
 	- reward function R(s)
 	- solution is policy $\pi^* (s)$ - what action to do in state s
 		- optimal policy yields highest expected utlity
@@ -262,22 +262,22 @@ category: ai
 		- ex. agent is guaranteed to get to terminal state eventually - *proper policy*
 - expected utility executing $\pi$: $U^\pi (s) = E[\sum_t \gamma^t R(S_t)]$
 	- when we use discounted utilities, $\pi$ is independent of starting state
-	- $\pi^*(s) = \underset{\pi}{argmax \: U^\pi (s)} = \underset{a}{argmax} \sum_{s'} P(s'|s,a) U'(s)$ - utility of state is immediate reward for that state plus the expected discounted utility of the next state, assuming agent chooses optimal action
+	- $\pi^*(s) = \underset{\pi}{argmax \: U^\pi (s)} = \underset{a}{argmax} \sum_{s'} P(s' \vert s,a) U'(s)$ - utility of state is immediate reward for that state plus the expected discounted utility of the next state, assuming agent chooses optimal action
 	
 ### value iteration
 - *value iteration* - calculates utility of each state and uses utilities to find optimal policy
-	- *bellman eqn* - $U(s) = R(s) + \gamma \: \underset{a}{max} \sum_{s'} P(s'|s, a) U(s')$
+	- *bellman eqn* - $U(s) = R(s) + \gamma \: \underset{a}{max} \sum_{s'} P(s' \vert s, a) U(s')$
 	- start with arbitrary utilities
 	- recalculate several times with *Bellman update* to approximate solns to bellman eqn
-		= $U_{i+1}(s) = R(s) + \gamma \: \underset{a}{max} \sum_{s'} P(s'|s, a) U_i(s')$
+		= $U_{i+1}(s) = R(s) + \gamma \: \underset{a}{max} \sum_{s'} P(s' \vert s, a) U_i(s')$
 - value iteration eventually converges
 	- *contraction* - function of one variable that when applied to 2 different inputs in turn produces 2 output values that are closer together than the original inputs
 		- contraction only has 1 fixed point
 	- Bellman update is a contraction on the space of utility vectors and therefore converges
 	- error is reduced by factor of $\gamma$ each iteration
-	- also, terminating condition -  if $||U_{i+1}-U_i|| < \epsilon (1-\gamma) / \gamma$ then $||U_{i+1}-U||<\epsilon$
-	- what actually matters is *policy loss* $||U^{\pi_i}-U||$ - the most the agent can lose by executing $\pi_i$ instead of the optimal policy $\pi^*$
-		- if $||U_i -U|| < \epsilon$ then $||U^{\pi_i} - U|| < 2\epsilon \gamma / (1-\gamma)$
+	- also, terminating condition -  if $ \vert  \vert U_{i+1}-U_i \vert  \vert  < \epsilon (1-\gamma) / \gamma$ then $ \vert  \vert U_{i+1}-U \vert  \vert <\epsilon$
+	- what actually matters is *policy loss* $ \vert  \vert U^{\pi_i}-U \vert  \vert $ - the most the agent can lose by executing $\pi_i$ instead of the optimal policy $\pi^*$
+		- if $ \vert  \vert U_i -U \vert  \vert  < \epsilon$ then $ \vert  \vert U^{\pi_i} - U \vert  \vert  < 2\epsilon \gamma / (1-\gamma)$
 		
 ### policy iteration
 - another way to find optimal policies
@@ -285,15 +285,15 @@ category: ai
 		- like value iteration, but with a set policy so there's no max
 		- can solve exactly for small spaces, or approximate
 	2. *policy improvement* - calculate a new MEU policy $\pi_{i+1}$ using one-step look-ahead based on $U_i$
-		- same as above, just $\pi^*(s) = \underset{\pi}{argmax \: U^\pi (s)} = \underset{a}{argmax} \sum_{s'} P(s'|s,a) U'(s)$
+		- same as above, just $\pi^*(s) = \underset{\pi}{argmax \: U^\pi (s)} = \underset{a}{argmax} \sum_{s'} P(s' \vert s,a) U'(s)$
 - *asynchronous policy iteration* - don't have to update all states at once
 
 ### partially observable markov decision processes (POMDP)
 - agent is not sure what state it's in
-- same elements but add *sensor model* P(e|s)
+- same elements but add *sensor model* $P(e \vert s)$
 - have prob. distr b(s) for belief states
 	- updates like the HMM
-	- $b'(s') = \alpha P(e|s') \sum_s P(s'|s, a) b(s)$
+	- $b'(s') = \alpha P(e \vert s') \sum_s P(s' \vert s, a) b(s)$
 	- changes based on observations
 - optimal action depends only on the agent's current belief state - use belief states as the states of an MDP and solve as before
 	- changes because state space is now continuous
@@ -326,9 +326,9 @@ Ian Oldenburg
 	- *prioritized sweeping* - prefers to make adjustements to states whose likely succesors have just undergone a large adjustment in their own utility estimates
 - two ways to add prior
 	1. *Bayesian reinforcement learning* - assume a prior P(h) on the transition model
-		- use prior to calculate $P(h|e)$
+		- use prior to calculate $P(h \vert e)$
 		- let $u_h^\pi$ be expected utility avareaged over all possible start states, obtained by executing policy $\pi$ in model h
-		- $\pi^* = \underset{\pi}{argmax} \sum_h P(h|e) u_h^\pi$
+		- $\pi^* = \underset{\pi}{argmax} \sum_h P(h \vert e) u_h^\pi$
 	2. give best outcome in the worst case over H (from *robust control theory*)
 		- $\pi^* = \underset{\pi}{argmax} \underset{h}{min} u_h^\pi$
 - *temporal-difference learning* - adjust utility estimates towards the ideal equilibrium that holds locally when the utility estimates are correct
@@ -347,8 +347,8 @@ Ian Oldenburg
 			
 ### learning action-utility function
 - U(s) = $\underset{a}{max} Q(s,a)$
-	- does require $P(s'|s,a)$ if we use ADP
-	- doesn't require knowing $P(s'|s,a)$ if we use TD: $Q(s,a) = Q(s,a) + \alpha (R(s) + \gamma \underset{a'}{max} Q(s', a') - Q(s,a))$
+	- does require $P(s' \vert s,a)$ if we use ADP
+	- doesn't require knowing $P(s' \vert s,a)$ if we use TD: $Q(s,a) = Q(s,a) + \alpha (R(s) + \gamma \underset{a'}{max} Q(s', a') - Q(s,a))$
 - *SARSA* is related: $Q(s,a) = Q(s,a) + \alpha (R(s) + \gamma Q(s', a') - Q(s,a))$
 	- here, a' is action actually taken
 	- SARSA is *on-policy* while Q-learning is *off-policy*
