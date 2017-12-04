@@ -137,21 +137,21 @@ category: research
 
 #conferences
 
-| | 2017 | 2018 | 2019 |
+| | 2018 | 2019 |
 | --- | --- | --- | --- |
-| AAAI	| |  2/2 - New Orleans	| 
-| AISTATS | | 4/9 - Playa | 
-| VSS 	| | 	5/18 - Florida |  Florida
-| SAND | | ~5/31 - Pitt | ~5/31 - Pitt
-| AREADNE | | 6/20 - Greece | 
-| CVPR 	| | 	6/18 - Salt Lake City | 
-| CNS 	| |  ~July - Seattle |
-| ICML 	| | 	*7/10 - Stockholm* | 	7/10 - Long Beach |
-| ECCV	| | 8/8 - Munich | |
-| CCN	| | 9/6 |
-| ICCV 	| 	11/22 - Venice | | |
-| SFN 	|   	11/11 - DC |  11/3 - San Diego | 10/19 - Chicago |
-| NIPS 	| 	*12/4 - Long Beach* | 12/3 - Montreal |
+| AAAI	|  2/2 - New Orleans	| 
+| AISTATS | 4/9 - Playa | 
+| VSS 	| 	5/18 - Florida |  Florida
+| SAND | ~5/31 - Pitt | ~5/31 - Pitt
+| AREADNE | 6/20 - Greece | 
+| CVPR 	| 	6/18 - Salt Lake City | 
+| CNS 	|  ~July - Seattle |
+| ICML  | 	*7/10 - Stockholm* | 	7/10 - Long Beach |
+| ECCV	| 8/8 - Munich | |
+| CCN	| 9/6 |
+| ICCV |
+| SFN  | 11/3 - San Diego | 10/19 - Chicago |
+| NIPS | 12/3 - Montreal |
 
 # areas
 - Basic approaches

@@ -20,7 +20,7 @@ category: stat
 				- bootstrap samples has same size as observed sample
 			2. *subsampling*
 				- sample without replacement
-			3. Is *jackknife resampling*
+			3. *jackknife resampling*
 				- subsample containing all but one of the points
 - cv
 	- cv error is not good when n < complexity of predictor
@@ -32,6 +32,7 @@ category: stat
 		2. LOOCV
 		3. random split - shuffle and repeat
 		4. *one-way CV* = *prequential analysis* - keep testing on next data point, updating model
+		5. ESCV - penalize variance between folds
 
 # 3 - 1-dim numerical and visual summaries of data in context
 - numerical summaries
