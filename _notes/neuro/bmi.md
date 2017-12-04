@@ -12,4 +12,3 @@ category: neuro
 - data types
 	- Neural dust
 	- calcium imaging
-

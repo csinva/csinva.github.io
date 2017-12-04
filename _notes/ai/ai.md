@@ -25,15 +25,7 @@ category: ai
 	2. not restricted to human systems
 	- *designation* - then given the expression, the system can affect the object
 	- *interpretation* - expression designates a process
-- *physical symbol system hypothesis* - a physical symbol system has the necessary and sufficient means for general intelligent action
-    - from { cite newell1980physical }
-	- identify a task domain calling for intelligence; then construct a program for a digital computer that can handle tasks in that domain
-- no boundaries have come up yet
-- wanted general problem solver - leads to generalized schemes of representation
-- goes along with information processing psychology
-	- observe human actions requiring intelligence
-	- program systems to model human actions
-
+	
 ## heuristic searching
 - symbol systems solve problems with *heuristic search*
 - *Heuristic Search Hypothesis* - solutions are represented as symbol structures. A physical symbol system exercises its intelligence in problem solving by search--that is, by generating and progressively modifying symbol structures until it produces a solution structure
@@ -137,7 +129,7 @@ category: ai
 	- can explain reasoning
 	- can free up human experts to deal with rare problems
 
-# decisions\vert
+# decisions
 
 ## game trees -- R&N 5.2-5.5
 - *minimax algorithm*
@@ -304,7 +296,7 @@ category: ai
 		- do this by iterating and keeping any values that are optimal at some point
 			- remove *dominated plans*
 	- generally this is far too inefficient
-- *dynamic decision network* - online agent ![](online_pomdp.jpg) 
+- *dynamic decision network* - online agent ![](assets/ai/online_pomdp.jpg) 
 	- still don't really understand this
 
 ## reinforcement learning
@@ -536,53 +528,3 @@ Ian Oldenburg
 	- like a method
 
 ### algorithms for planning as state-space search
-
-
-
-## knowledge representation 12.1 - 12.3
-- *ontological engineering* - representing objects and their relationships
-	- upper ontology - tree more general at the top more specific at bottom
-- must represent *categories*
-	- subcategories make a *taxonomy*
-- can also define functions
-	- *mass noun* - function that includes only *intrinsic* properties
-	- *count noun* - function that includes any *extrinsic* properties
-- *physical symbol system hypothesis* - a physical symbol system has the necessary and sufficient means for general intelligent action
-	- computers and minds are both *physical symbol systems*
-	- *symbol* - meaningful pattern that can be manipulated
-	- symbol system - creates, modifies, destroys symbols
-- want to represent
-	1. *meta-knowledge* - knowledge about what we know
-	2. *objects* - facts
-	3. *performance* - knowledge about how to do things
-	4. *events* - actions
-- two levels
-	1. knowledge level - where facts are described
-	2. symbol level - lower
-- properties
-	1. representational adequacy - ability to represent
-	2. inferential adequacy
-	3. inferential efficiency
-	4. acquisitional efficiency - acquire new information
-- two views of knowledge
-	1. logic
-		- a *logic* is a language with concrete rules
-		- *syntax* - rules for constructing legal logic
-		- *semantics* - how we interpret / read
-			- assigns a meaning
-		- multi-valued logic - not just booleans
-		- higher-order logic - functions / predicates are also objects
-		- multi-valued logics - more than 2 truth values
-			- fuzzy logic - uses probabilities rather than booleans
-		- match-resolve-act cycle
-	2. associationist
-		- knowledge based on observation
-		- semantic networks - objects and relationships between them			- like is a, can, has
-			- *graphical representation*
-			- equivalent to logical statements
-			- ex. nlp - conceptual dependency theory - sentences with same meaning have same graphs
-			- *frame representations* - semantic networks where nodes have structure
-				- ex. each frame has age, height, weight, ...
-			- when agent faces *new situation* - slots can be filled in, may trigger actions / retrieval of other frames
-			- inheritance of properties between frames
-			- frames can contain relationships and procedures to carry out after various slots filled

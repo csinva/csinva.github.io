@@ -7,14 +7,9 @@ category: stat
 * TOC
 {:toc}
 
-# math misc
-- taylor expansion: $f(x) \approx f(x_0) + \frac{f'(x_0)}{1!}(x-x_0) + \frac{f''(x_0)}{2!}(x-x_0)^2 + ...$
-- inversion of matrix is $\approx O(n^3)$
-- Gaussian distr: $\frac{1}{\sqrt{2 \pi \sigma^2}} exp(\frac{-(x-\mu)^2}{2 \sigma^2})$
-	- $p(x\|\mu, \Sigma) = \frac{1}{(2\pi )^{n/2} \|\Sigma\|^{1/2}} exp\left( -\frac{1}{2} (x-\mu)^T \Sigma^{-1} (x-\mu) \right)$
 
 # evaluation
-- lab notes 7: stability
+- stability
 	1. computational stability
 		- randomness in the algorithm
 	2. generalization stability
@@ -27,7 +22,7 @@ category: stat
 				- sample without replacement
 			3. Is *jackknife resampling*
 				- subsample containing all but one of the points
-- cv - lec 8
+- cv
 	- cv error is not good when n < complexity of predictor
 		- because summands are correlated
 		- assume data units are exchangeable
@@ -193,39 +188,6 @@ category: stat
 		3. M-step - $\theta_{n+1} = argmax_{\theta} E_{Z\|X, \theta_n} ln P(X, z \| \theta)$
 	- guaranteed to converge to local min of likelihood
 
-# 13 - basic causal inference
-- *confounding* - difference between groups other than the treatment which affects the response
-- 3 frameworks
-	1. neyman-rubin model: $Y_i = T_i a_i + (1-T_i) b_i$
-		- $\hat{ate} = \hat{a}_A - \hat{b}_B$
-		- $\hat{ate}_{adj} = [\bar{a}_A - (\bar{x}_A - \bar{x})^T \hat{\theta}_A] - [\bar{b}_B - (\bar{x}_B - \bar{x})^T \hat{\theta}_B]$
-			- $\hat{\theta}_A = argmin \sum_{i \in A} (a_i - \bar{a}_A - (x_i - \bar{x}_A)^T \theta)^2$
-
-	2. neyman-pearson
-		- null + alternative hypothesis
-			- null is favored unless there is strong evidence to refute it
-	3. fisherian testing framework
-		- small p-values evidence against null hypothesis
-		- null hypothesis
-		
-- errors
-	- *type I err*: FP - reject when false
-	- *type II err*: FN
-	- *power*: TP = sensitivity
-	- TN
-	- newer
-		- sensitivity = power
-		- recall = sensitivity - true positive rate = TP / P
-		- precision = TP / (TP + FP)
-		- specificity = true neg rate = TN / N
-- natural experiments
-	- ex. john snow
-- *propensity score* - probability that a subject recieving a treatment is valid after conditioning on appropriate covariates
-- 3 principles of experimental design
-	1. replication
-	2. randomization
-	3. conditioning
-	
 # 14 - linear regression and stat. inference
 - real slope - should be for the population
 - normal lin reg

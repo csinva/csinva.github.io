@@ -44,6 +44,8 @@ category: stat
 - $g(y_i) = \frac{n!}{(i-1)!(n-i)!}(F(y_i))^{i-1}(1-F(y_i))^{n-1}f(y_i)$
 
 # Distributions
+- Gaussian distr: $\frac{1}{\sqrt{2 \pi \sigma^2}} exp(\frac{-(x-\mu)^2}{2 \sigma^2})$
+	- $p(x\|\mu, \Sigma) = \frac{1}{(2\pi )^{n/2} \|\Sigma\|^{1/2}} exp\left( -\frac{1}{2} (x-\mu)^T \Sigma^{-1} (x-\mu) \right)$
 - Bernoulli: 
 $f(x)= 
 \begin{cases}
@@ -58,7 +60,7 @@ $f(n,p)=
     0,              & \text{otherwise}
 \end{cases}$
 
-- Gaussian: 
+- Exponential: 
 $f(\lambda)= 
 \begin{cases}
     \frac{1}{\lambda}e^{\lambda t},& \text{if } 0\leq x\leq p\\

@@ -1,21 +1,13 @@
 ---
 layout: notes
 section-type: notes
-title: Freedman
+title: linear regression
 category: stat
 ---
 * TOC
 {:toc}
 
 # freedman
-## ch 1 - causality
-- When using observational (non-experimental) data to make causal inferences, the key problem is *confounding*
-	- *stratification* = *cross-tabulation* - only look at when confounding variables have same value
-- Generally, association is circumstantial evidence for causation
-- examples
-	- HIP trial of mammography - want to do whole treatment group v whole control group
-	- Snow on cholera - water
-	- causes of poverty - Yul's model, changes with lots of things
 
 ## ch 2 - the regression line
 - regression line
@@ -128,27 +120,3 @@ category: stat
 	- these techniques avoid *simultaneity bias = endogeneity bias*ch
 
 ## ch 10 - issues in statistical modeling
-
-# causal inference
-- 2 general approaches
-	1. matching - find patients that are similar and differ only in the treatment
-	2. regression
-		- requires *unconfoundedness* = *omitted variable bias*
-		- if there are no confounders, correlation is causation
-- Hainmueller & Hangartner (2013) - Swiss passport
-	- naturalization decisions vary with immigrants' attributes
-	- is there immigration against immigrants based on country of origin?
-	- citizenship requires voting by municipality
-- Sekhon et al. - when natural experiments are neither natural nor experiments
-	- even when natural interventions are randomly as- signed, some of the treatment–control comparisons made available by natural experiments may not be valid
-- Grossman et al. - "Descriptive Representation and Judicial Outcomes in Multiethnic Societies"
-	- judicial outcomes of arabs depended on whether there was an Arab judge on the panel
-- liver transplant
-	- maximize benefit (life with - life without)
-	- currently just goes to person who would die quickest without
-	- Y = T Y(1) + (1-T) Y(0)
-		- Y(1) = survival with transplant
-		- Y(0) = survival w/out transplant
-			- fundamental problem of causal inference - can't observe Y(1) and Y(0)
-		- T = 1 if receive transplant else 0
-	- goal: estimate $\tau = Y(1) - Y(0)$ for each person

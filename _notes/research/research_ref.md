@@ -118,7 +118,9 @@ category: research
 | spatial res | mid-low | very low | low | mid-low | x | low
 | temporal res | very low | mid-high | high | high | super high | high
 | invasiveness | non | non | yes (under skull) | very | very | non 
-- neural dust
+- newer
+	- neural dust
+	- neuropixels
 
 # ongoing projects
 - gov-sponsored

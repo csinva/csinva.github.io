@@ -13,4 +13,5 @@ collections:
 # Career Settings
 # Default career thumbnail image.
 career-img: "img/timeline/default.jpg"
+markdown: kramdown
 exclude: ["Rakefile", "LICENSE", "readme.markdown"]

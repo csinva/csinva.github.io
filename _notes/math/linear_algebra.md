@@ -52,6 +52,7 @@ category: math
 		- if A is nonsingular, $A^\dagger = A^{-1}$
 		- if rank(A) = m, then must invert using $A A^T$
 		- if rank(A) = n, then must use $A^T A$
+	- inversion of matrix is $\approx O(n^3)$
 - *orthogonal complement* - set of orthogonal vectors
 	- define R(A) to be *range space* of A (column space) and N(A) to be *null space* of A
 	- R(A) and N(A) are orthogonal complements
