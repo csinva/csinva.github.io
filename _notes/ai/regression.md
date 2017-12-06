@@ -60,22 +60,6 @@ category: ai
 	- $\theta_{k+1} = \theta_k - H_K^{-1} g_k$
 	- update with inverse of Hessian as alpha - this is an approximation to a taylor series
 	- finding inverse of Hessian can be hard / expensive
-
-# evaluation
-- accuracy = number of correct classifications / total number of test cases
-- you train by lowering SSE or MSE on training data
-	- report MSE for test samples
-- *cross validation* - don't have enough data for a test set
-	- data is reused
-	- k-fold - split data into N pieces
-		- N-1 pieces for fit model, 1 for test
-		- cycle through all N cases
-		- average the values we get for testing
-	- leave one out (LOOCV)
-		- train on all the data and only test on one
-		- then cycle through everything
-- *regularization path* of a regression - plot each coeff v. $\lambda$
-	- tells you which features get pushed to 0 and when
 	
 # 1 - simple LR
 - ml: task -> representation -> score function -> optimization -> models

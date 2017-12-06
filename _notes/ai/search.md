@@ -23,7 +23,7 @@ category: ai
 	4. goal states
 	5. path cost function
 
-#### problems
+### problems
 - toy problems
 	1. vacuum world
 	2. 8-puzzle (type of sliding-block puzzle)

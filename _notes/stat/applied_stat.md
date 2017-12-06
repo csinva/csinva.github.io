@@ -8,31 +8,7 @@ category: stat
 {:toc}
 
 
-# evaluation
-- stability
-	1. computational stability
-		- randomness in the algorithm
-	2. generalization stability
-		- randomness in the data
-		- sampling methods
-			1. *bootstrap* - take a sample
-				- repeatedly sample from observed sample w/ replacement
-				- bootstrap samples has same size as observed sample
-			2. *subsampling*
-				- sample without replacement
-			3. *jackknife resampling*
-				- subsample containing all but one of the points
-- cv
-	- cv error is not good when n < complexity of predictor
-		- because summands are correlated
-		- assume data units are exchangeable
-		- can sometimes use this to pick k for k-means
-	- types of cv
-		1. v-fold
-		2. LOOCV
-		3. random split - shuffle and repeat
-		4. *one-way CV* = *prequential analysis* - keep testing on next data point, updating model
-		5. ESCV - penalize variance between folds
+
 
 # 3 - 1-dim numerical and visual summaries of data in context
 - numerical summaries
