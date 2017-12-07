@@ -16,7 +16,11 @@ category: ai
   - PCA - orthogonaltiy
     - compress data, remove correlations
   - K-means - can be viewed as a linear decomposition
-  - sparse coding???
+- sparse coding
+- *spectral* clustering - does dim reduction on eigenvalues (spectrum) of similarity matrix before clustering in few dims
+  - uses adjacency matrix
+  - basically like PCA then k-means
+  - performs better with regularization - add small constant to the adjacency matrix
 
 # pca
 
@@ -55,3 +59,24 @@ category: ai
   - maximize information transferred in a network of non-linear units
   - uses information theoretic unsupervised learning rules for neural networks
 - problem - doesn't rank features for us
+
+
+
+# multidimensional scaling (MDS)
+
+- given a a distance matrix, MDS tries to recover low-dim coordinates s.t. distances are preserved
+- minimizes goodness-of-fit measure called *stress* = $\sqrt{\sum (d_{ij} - \hat{d}_{ij})^2 / \sum d_{ij}^2}$
+- visualize in low dims the similarity between individial points in high-dim dataset
+- classical MDS assumes Euclidean distances and uses eigenvalues
+  - constructing configuration of n points using distances between n objects
+  - uses distance matrix
+    - $d_{rr} = 0$
+    - $d_{rs} \geq 0$
+  - solns are invariant to translation, rotation, relfection
+  - solutions types
+    1. non-metric methods - use rank orders of distances
+       - invariant to uniform expansion / contraction
+    2. metric methods - use values
+  - D is *Euclidean* if there exists points s.t. D gives interpoint Euclidean distances
+    - define B = HAH
+      - D Euclidean iff B is psd

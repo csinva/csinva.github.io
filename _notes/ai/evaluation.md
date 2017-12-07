@@ -73,3 +73,9 @@ category: ai
 
 - computational cost
 - interpretability
+- model-selection criteria
+  - *adjusted $R^2_p$* - penalty 
+  - *Mallow's $C_p$*
+  - *$AIC_p$*
+  - *$BIC_p$*
+  - PRESS

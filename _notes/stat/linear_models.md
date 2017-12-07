@@ -7,20 +7,20 @@ category: stat
 
 [TOC]
 
-# ch 1 introduction
+- uses some material from "Statistical Models Theory and Practice" - David Freedman
 
-- regression analysis studies relationships among variables
-- $Y = f(X_1,...X_i) + \epsilon$
-- terms can be non-linear in X, but must be linear function of weights
-- *regressions*
-  - *simple linear regression* - univariate Y, univariate X
-  - *multiple linear regression* - univariate Y, multivariate X
-  - *multivariate linear regression* - multivariate Y
-  - *generalized linear regression*s - Y isn't normally distributed
-  - ANOVA - all X are categorical
-  - Analysis of covariance - part of X are categorical
+# introduction
 
-# ch 2 simple linear regression
+- $Y = X \beta + \epsilon$
+
+  | type of linear regression | X            | Y                |
+  | ------------------------- | ------------ | ---------------- |
+  | simple                    | univariate   | univariate       |
+  | multiple                  | multivariate | univariate       |
+  | multivariate              | either       | multivariate     |
+  | generalized               | either       | error not normal |
+
+  ​
 
 ### basics
 
@@ -97,32 +97,6 @@ category: stat
   1. the prediction of the value of the respone variable Y which corresponds to any chose value, $x_o$ of the predictor variable
   2. the estimation of the mean response $\mu_o$ when X = $x_o$
 
-### assumptions
-
-1. There exists a linear relation between the response and predictor variable(s).
-   - otherwise predicted values will be biased
-2. The error terms have the constant variance, usually denoted as $\sigma^2$.
-   - otherwise prediction / confidence intervals for Y will be affected
-3. The error terms are independent, have mean 0.
-   - otherwise a predictor like time might have been omitted from the model
-4. Model fits all observations well (no outliers).
-   - otherwise misleading fit
-5. The errors follow a Normal distribution.
-   - otherwise usually ok
-
-- assessing regression assumptions
-
-  1. look at scatterplot
-  2. look at residual plot
-     - should fall randomly near 0 with similar vertical variation, magnitudes
-  3. Q-Q plot / normal probability plot
-     - standardized residulas vs. normal scores
-     - values should fall near line y = x, which represents normal distribution
-  4. could do histogram of residuals
-     - look for normal curve - only works with a lot of data points
-
-  - lack of fit test - based on repeated Y values at same X values
-
 ### variable transformations
 
 - if assumptions don't work, sometimes we can transform data so they work
@@ -139,16 +113,6 @@ category: stat
   - each coefficient is the contribution of x_i after both variables have been linearly adjusted for the other predictor variables
 - least squares solved to estimate regression coefficients
 - unbiased $\hat{\sigma}^2 = \frac{SSE}{n-p-1}$
-
-### matrix form
-
-- write Y = X*$\beta+\epsilon$
-  - each row is one $X_0,X_1,...,X_p$
-- $\hat{\underline{\beta}} = (X'X)^{-1}X'Y$ 
-  - multicollinearity - sometimes no unique soln - parameter estimates have large variability
-- $\hat{\sigma}^2 = \frac{SSE}{n-p-1}$ where there are p predictors
-- hat matrix - $\hat{Y}=HY$
-  - H = $X(X'X)^{-1}X'$
 
 ### F-tests
 
@@ -177,7 +141,7 @@ category: stat
 
 # ch 4 multicollinearity
 
-- *multicollinearity* - when predictors are highly correlated with each other
+- *multicollinearity* - predictors highly correlated
 - roundoff errors
   1. X'X has determintant close to zero
   2. X'X elements differ substantially in magnitude
@@ -228,19 +192,6 @@ category: stat
   - if a given order term is retained, all related terms of lower order must be retianed
   - otherwise it isn't invariant to transformations of the columns
 - interaction terms are similar to before
-
-# ch 7 model comparison and selection
-
-- Ockham’s razor - principle of parsimony - given two theories that describe a phenomenon equally well, we should prefer the theory that is simpler
-- several different criteria 
-  - don't penalize many predictors
-    - *$R^2_p$* - doesn't pen
-  - penalize many predictors
-    - *adjusted $R^2_p$* - penalty 
-    - *Mallow's $C_p$*
-    - *$AIC_p$*
-    - *$BIC_p$*
-    - *PRESS
 
 # problem formulation
 
@@ -361,6 +312,7 @@ category: stat
 # freedman
 
 ## ch 2 - the regression line
+
 - regression line
   - goes through $(\bar{x}, \bar{y})$
   - slope: $r s_y / s_x$
@@ -371,20 +323,8 @@ category: stat
   - intercept changes accordingly
 - for regression, MSE = $(1-r^2) Var(Y)$
 
-## ch 3 - matrix algebra
-- adjoint - compute with mini-dets
-- $A^{-1} = adj(A) / det(A)$
-- PSD
-  1. symmetric
-  2. $x^TAx \geq 0$
-- alternatively PSD iff $\exists$ diagonal D, orthogonal R s.t. $A=RDR^T$
-- CLT
-  - define $S_n = X_1 + ... + X_n$
-  - define $Z_n = \frac{S_n - n \mu}{\sigma \sqrt{n}}$
-  - $P(\|Z_n\| < 1) \to \int_{-1}^1 x ~ N(0, 1)$
-
 ## ch 4 - multiple regression
-- multiple x, single y
+
 - assumptions
   1. assume $n > p$ and X has full rank (rank p - columns are linearly independent)
   2. $\epsilon_i$ are iid, mean 0, variance $\sigma^2$
@@ -436,39 +376,13 @@ category: stat
   1. if $E[\epsilon\|X] \neq 0$ - GLS estimator is biased
   2. else if $cov(\epsilon\|X) \neq G$ - GLS unbiased, but covariance formula breaks down
   3. if G from data, but violates estimation procedure, estimator will be misealding estimate of cov
-- ***skipped some pfs***
-
-### 5.7 - normal theory
-- normal theory: assume $\epsilon_i$ ~ $N(0, \sigma^2)$
-- distributions
-  - suppose $U_1, ...$ are iid N(0, 1)
-  - *chi-squared distr.*: $\chi_d^2$ ~ $\sum_i^d U_i^2$ w/ d degrees of freedom
-  - *student's t-distr.*: $U_{d+1} / \sqrt{d^{-1} \sum_1^d U_i^2}$ w/ d degress of freedom
-- t-test
-  - test null $\theta_k=0$ w/ $t = \hat{\theta}_k / \hat{SE}$ where $SE = \hat{\sigma} \cdot \sqrt{\Sigma_{kk}^{-1}}$
-  - t-test: reject if \|t\| is large
-  - when n-p is large, t-test is called the z-test
-  - under null hypothesis t follows t-distr with n-p degrees of freedom
-  - here, $\hat{\theta}$ has a normal distr. with mean $\theta$ and cov matrix $\sigma^2 (X^TX)^{-1}$
-    - e independent of $\hat{\theta}$ and $\|\|e\|\|^2 ~ \sigma^2 \chi^2_d$ with d = n-p
-  - *observed stat. significance level* = *P-value* - area of normal curve beyond $\pm \hat{\theta_k} / \hat{SE}$
-  - if 2 vars are statistically significant, said to have *independent effects* on Y
-- the F-test
-  - null hypothesis: $\theta_i = 0,  i=p-p_0, ..., p$
-  - alternative hypothesis: for at least one $ i \in \{p-p_0, ..., p\}, \: \theta_i \neq 0$
-  - $F = \frac{(\|\|X\hat{\theta}\|\|^2 - \|\|X\hat{\theta}^{(s)}\|\|^2) / p_0}{\|\|e\|\|^2 / (n-p)} $ where $\hat{\theta^{(s)}}$ has last $p_0$ entries 0
-  - under null hypothesis, $\|\|X\hat{\theta}\|\|^2 - \|\|X\hat{\theta}^{(s)}\|\|^2$ ~ $U$, $\|\|e\|\|^2$ ~ $V$, $F$ ~ $\frac{U/p_0}{V/(n-p)}$ where $ U \: indep \: V$, $U$ ~ $\sigma^2 \chi^2_{p_0}$, $V$ ~ $\sigma^2 \chi_{n-p}^2$
-- *data snooping* - decide which hypotheses to test after examining data
 
 ## ch 6 - path models
 
 - *path model* - graphical way to represent a regression equation
 - making causal inferences by regression requires a *response schedule*
 
-## ch 8 - bootstrap
-
 ## ch 9 - simultaneous equations
-- *simultaneous-equation* models - use *instruemtanl variables / two-stage least squares*
-  - these techniques avoid *simultaneity bias = endogeneity bias*ch
 
-## ch 10 - issues in statistical modeling
+- *simultaneous-equation* models - use *instrumental variables / two-stage least squares*
+  - these techniques avoid *simultaneity bias = endogeneity bias*

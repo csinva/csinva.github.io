@@ -12,19 +12,6 @@ category: ai
   - supervised 
   - unsupervised
   - reinforcement
-- *bias/variance trade-off*
-  - pf
-    - ![mse](assets/ml/mse.png)
-  - defs
-    - bias sometimes called approximation err
-    - variance called estimation err
-  - ex. ***estimator for kde***: $\hat{f_{n, h}(x)} = \frac{1}{n}\sum_i K_h (X_i - x)$
-    - smooths voxel-wise output
-    - $bias = E[\hat{f}(x)] - f(x) = f''(x)/2 \int t^t K(t) dt \cdot h^2$ + smaller order
-    - $variance =Var[\hat{f}(x)] = 1/n^2 \sum Var[Y_i] + \frac{2}{n^2} \sum_{i<j} Cov(Y_i, Y_j)$
-  - ex. $mse = E[\hat{f}_h(x) - f(x)]^2 = bias^2 + variance$
-    - define *risk* = mean L2 err = $\int mse(x) dx$
-      - minimizing this yields an asymptotically optimal bandwidth
 
 # Feature Selection
 
@@ -94,6 +81,20 @@ category: ai
 - Evaluation w/ labels - purity - ratio between dominant class in cluster and size of cluster
 
 ### Expectation Maximization (EM)
+
+- goal: maximize $L(\theta)$ for data X and parameters $\theta$
+  - equivalent: maximize $\Delta(\theta \| \theta_n) \leq L(\theta) - L(\theta_n)$
+    - the function $l(\theta \| \theta_n) = L(\theta_n) + \Delta(\theta \| \theta_n)$ is local concave 
+      approximator
+    - introduce z (probablity of assignment): $P(X\|\theta) = \sum_z P(X\|z, \theta) P(z\|\theta)$
+- 3 steps
+  1. initialize $\theta_1$
+  2. E-step - calculate $E_{Z\|X, \theta_n} ln P(X, z \| \theta)$
+     - basically assigns z var
+     - this is the part of $l(\theta \| \theta_n)$ that actually depends on $\theta$
+  3. M-step - $\theta_{n+1} = argmax_{\theta} E_{Z\|X, \theta_n} ln P(X, z \| \theta)$
+- guaranteed to converge to local min of likelihood
+
 - general procedure that includes K-means
 - E-step
   - calculate how strongly to which mode each data point “belongs” (maximize likelihood)
