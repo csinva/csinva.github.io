@@ -1,7 +1,7 @@
 ---
 layout: notes
 section-type: notes
-title: Real Analysis
+title: real analysis
 category: math
 ---
 

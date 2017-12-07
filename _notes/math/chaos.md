@@ -1,7 +1,7 @@
 ---
 layout: notes
 section-type: notes
-title: Chaos
+title: chaos
 category: math
 ---
 * TOC

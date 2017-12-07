@@ -1,7 +1,7 @@
 ---
 layout: notes
 section-type: notes
-title: Calculus
+title: calculus
 category: math
 ---
 

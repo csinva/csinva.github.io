@@ -6,233 +6,43 @@ category: ai
 ---
 * TOC
 {:toc}
-
-[toc]
-
 # Overview
+
 - 3 types
-	- supervised 
-	- unsupervised
-	- reinforcement
-
-# Classification
-- asymptotic classifier - assume you get infinite training / testing points
-- *discriminative* - model $P(C\vert X)$ directly
-	- smaller asymptotic error
-	- slow convergence ~ O(p)
-- *generative* - model $P(X\vert C)$\vert  directly
-	- generally has higher bias -> can handle missing data
-	- fast convergence ~ O(log(p))
- 
-## Discriminative
-### SVMs
-- svm benefits
-	1. *maximum margin separator* generalizes well
-	2. *kernel trick* makes it very nonlinear
-	3. nonparametric - can retain training examples, although often get rid of many
-- notation
-	- $y \in \{-1,1\}$
-	- $h(x) = g(w^tx +b)$
-		- g(z) = 1 if $z \geq 0$ and -1 otherwise
-- define *functional margin* $\gamma^{(i)} = y^{(i)} (w^t x +b)$
-	- want to limit the size of (w,b) so we can't arbitrarily increase functional margin
-	- function margin $\hat{\gamma}$ is smallest functional margin in a training set
-- *geometric margin* = functional margin / $\vert \vert w\vert \vert $
-	- if $\vert \vert w\vert \vert =1$, then same as functional margin
-	- invariant to scaling of w
-- optimal margin classifier
-	- want $$max \: \gamma \: s.t. \: y^{(i)} (w^T x^{(i)} + b) \geq \gamma, i=1,..,m; \vert \vert w\vert \vert =1$$
-		- difficult to solve, especially because of $\vert \vert w\vert \vert =1$ constraint
-		- assume $\hat{\gamma}=1$ - just a scaling factor
-		- now we are maximizing $1/\vert \vert w\vert \vert $
-	- equivalent to this formulation: $$min \: 1/2 \vert \vert w\vert \vert ^2 \: s.t. \: y^{(i)}(w^Tx^{(i)}+b)\geq1, i = 1,...,m$$
-- Lagrange duality
-- dual representation is found by solving $\underset{a}{argmax} \sum_j \alpha_j - 1/2 \sum_{j,k} \alpha_j \alpha_k y_j y_k (x_j \cdot x_k)$ subject to $\alpha_j \geq 0$ and $\sum_j \alpha_j y_j = 0$
-	- convex
-	- data only enter in form of dot products, even when predicting $h(x) = sgn(\sum_j \alpha_j y_j (x \cdot x_j) - b)$
-	- weights $\alpha_j$ are zero except for *support vectors*
-- replace dot product $x_j \cdot x_k$ with *kernel function* $K(x_j, x_k)$
-	- faster than just transforming x
-	- allows to find optimal linear separators efficiently
-- *soft margin* classifier - lets examples fall on wrong side of decision boundary
-	- assigns them penalty proportional to distance required to move them back to correct side
-- want to maximize margin $M = \frac{2}{\sqrt{w^T w}}$
-	- we get this from $M=\vert x^+ - x^-\vert  = \vert \lambda w\vert  = \lambda \sqrt{w^Tw} $
-	- separable case: argmin($w^Tw$) subject to 
-	- $w^Tx+b\geq 1$ for all x in +1 class
-	- $w^Tx+b\leq 1$ for all x in -1 class
-- solve with quadratic programming
-- non-separable case: argmin($w^T w/2 + C \sum_i^n \epsilon_i$) subject to
-	- $w^Tx_i +b \geq 1-\epsilon_i $ for all x in +1 class
-	- $w^Tx_i +b \leq -1+\epsilon_i $ for all x in -1 class
-	- $\forall i, \epsilon_i \geq 0$
-	- large C can lead to overfitting
-- benefits
-	- number of parameters remains the same (and most are set to 0)
-	- we only care about support vectors
-	- maximizing margin is like regularization: reduces overfitting
-- these can be solved with quadratic programming QP
-- solve a dual formulation (Lagrangian) instead of QPs directly so we can use kernel trick
-	- primal: $min_w max_\alpha L(w,\alpha)$
-	- dual: $max_\alpha min_w L(w,\alpha)$
-- KKT condition for strong duality
-	- complementary slackness: $\lambda_i f_i(x) = 0, i=1,...,m$
-- VC (Vapnic-Chervonenkis) dimension - if data is mapped into sufficiently high dimension, then samples will be linearly separable (N points, N-1 dims)
-- kernel functions - new ways to compute dot product (similarity function)
-	- original testing function: $\hat{y}=sign(\Sigma_{i\in train} \alpha_i y_i x_i^Tx_{test}+b)$
-	- with kernel function: $\hat{y}=sign(\Sigma_{i\in train} \alpha_i y_i K(x_i,x_{test})+b)$
-	- linear $K(x,z) = x^Tz$
-	- polynomial $K (x, z) = (1+x^Tz)^d$
-	- radial basis kernel $K (x, z) = exp(-r\vert \vert x-z\vert \vert ^2)$
-	- computing these is O($m^2$), but dot-product is just O(m)
-	- function that corresponds to an inner product in some expanded feature space
-- practical guide
-	- use m numbers to represent categorical features
-	- scale before applying
-	- fill in missing values
-	- start with RBF
-
-### Logistic Regression
-- $p = P(Y=1\vert X)=\frac{exp(\theta^T x)}{1+exp(\theta ^Tx)}$ 
-- logit (log-odds) of $p:ln\left[ \frac{p}{1-p} \right] = \theta^T x$
-- predict using Bernoulli distribution with this parameter p
-- can be extended to multiple classes - multinomial distribution
-
-## Generative
-### Naive Bayes Classifier
-- let $C_1,...,C_L$ be the classes of Y
-- want Posterior $P(C\vert X) = \frac{P(X\vert C)(P(C)}{P(X)}$ 
-- MAP rule - maximum A Posterior rule
-\begin{itemize}
-- use Prior P(C)
-- using x, predict $C^*=\text{argmax}_C P(C\vert X_1,...,X_p)=\text{argmax}_C P(X_1,...,X_p\vert C) P(C)$ - generally ignore denominator
-\end{itemize}
-- naive assumption - assume that all input attributes are conditionally independent given C
-\begin{itemize}
-- $P(X_1,...,X_p\vert C) = P(X_1\vert C)\cdot...\cdot P(X_p\vert C) = \prod_i P(X_i\vert C)$ 
-\end{itemize}
-- learning
-\begin{enumerate}
-- learn L distributions $P(C_1),P(C_2),...,P(C_L)$
-- learn $P(X_j=x_{jk}\vert C_i)$ 
-\begin{itemize}
-- for j in 1:p
-- i in 1:$\vert C\vert $
-- k in 1:$\vert X_j\vert $
-- for discrete case we store $P(X_j\vert c_i)$, otherwise we assume a prob. distr. form
-\end{itemize}
-\begin{itemize}
-- naive: $\vert C\vert  \cdot (\vert X_1\vert  + \vert X_2\vert  + ... + \vert X_p\vert )$ distributions
-- otherwise: $\vert C\vert \cdot (\vert X_1\vert  \cdot \vert X_2\vert  \cdot ... \cdot \vert X_p\vert )$
-\end{itemize}
-\end{enumerate}
-- testing
-\begin{itemize}
-- $P(X\vert c)$ - look up for each feature $X_i\vert C$ and try to maximize
-\end{itemize}
-- smoothing - used to fill in 0s
-\begin{itemize}
-- $P(x_i\vert c_j) = \frac{N(x_i, c_j) +1}{N(c_j)+\vert X_i\vert }$ 
-- then, $\sum_i P(x_i\vert c_j) = 1$
-\end{itemize}
-
-### Gaussian classifiers
-- distributions
-\begin{itemize}
-- Normal $P(X_j\vert C_i) = \frac{1}{\sigma_{ij} \sqrt{2\pi}} exp\left( -\frac{(X_j-\mu_{ij})^2}{2\sigma_{ij}^2}\right)$- requires storing $\vert C\vert \cdot p$ distributions
-- Multivariate Normal $\frac{1}{(2\pi)^{D/2}} \frac{1}{\vert \Sigma\vert ^{1/2}} exp\left(-\frac{1}{2} (x-\mu)^T \Sigma^{-1} (x-\mu)\right)$where $\Sigma$ is covariance matrix
-\end{itemize}
-\end{itemize}
-\begin{itemize}
-- decision boundary are points satisfying $P(C_i\vert X) = P(C_j\vert X)$
-- LDA - linear discriminant analysis - assume covariance matrix is the same across classes
-\begin{itemize}
-- Gaussian distributions are shifted versions of each other
-- decision boundary is linear
-\end{itemize}
-- QDA - different covariance matrices
-\begin{itemize}
-- estimate the covariance matrix separately for each class C
-- decision boundaries are quadratic
-- fits data better but has more parameters to estimate
-\end{itemize}
-- Regularized discriminant analysis - shrink the separate covariance matrices towards a common matrix
-\begin{itemize}
-- $\Sigma_k = \alpha \Sigma_k + (1-\alpha) \Sigma$
-\end{itemize}
-- treat each feature attribute and class label as random variables
-\begin{itemize}
-- we assume distributions for these
-- for 1D Gaussian, just set mean and var to sample mean and sample var
-\end{itemize}
-
-### Text classification
-- bag of words - represent text as a vector of word frequencies X
-\begin{itemize}
-- remove stopwords, stemming, collapsing multiple - NLTK package in python
-- assumes word order isn't important
-- can store n-grams
-\end{itemize}
-- multivariate Bernoulli: $P(X\vert C)=P(w_1=true,w_2=false,...\vert C)$
-- multivariate Binomial: $P(X\vert C)=P(w_1=n_1,w_2=n_2,...\vert C)$
-\begin{itemize}
-- this is inherently naive
-\end{itemize}
-- time complexity
-\begin{itemize}
-- training O(n*average\_doc\_length\_train+$\vert c\vert \vert dict\vert $)
-- testing O($\vert C\vert $ average\_doc\_length\_test)
-\end{itemize}
-- implementation
-\begin{itemize}
-- have symbol for unknown words
-- underflow prevention - take logs of all probabilities so we don't get 0
-- c = argmax log$P(c)$ + $\sum_i log P(X_i\vert c)$
-\end{itemize}
-
-## Instance-Based (ex. K nearest neighbors)
-- also called lazy learners
-- makes Voronoi diagrams
-- can take majority vote of neighbors or weight them by distance
-- distance can be Euclidean, cosine, or other
-	- should scale attributes so large-valued features don't dominate
-	- *Mahalanobois* distance metric takes into account covariance between neighbors
-	- in higher dimensions, distances tend to be much farther, worse extrapolation
-	- sometimes need to use *invariant metrics*
-		- ex. rotate digits to find the most similar angle before computing pixel difference
-			- could just augment data, but can be infeasible
-		- computationally costly so we can approximate the curve these rotations make in pixel space with the *invariant tangent line*
-			- stores this line for each point and then find distance as the distance between these lines
-- finding NN with *k-d* (k-dimensional) tree
-	- balanced binary tree over data with arbitrary dimensions
-	- each level splits in one dimension
-	- might have to search both branches of tree if close to split
-- finding NN with *locality-sensitive hashing*
-	- approximate
-	- make multiple hash tables
-		- each uses random subset of bit-string dimensions to project onto a line
-		- union candidate points from all hash tables and actually check their distances
-- comparisons
-	- error rate of 1 NN is never more than twice that of Bayes error
+  - supervised 
+  - unsupervised
+  - reinforcement
+- *bias/variance trade-off*
+  - pf
+    - ![mse](assets/ml/mse.png)
+  - defs
+    - bias sometimes called approximation err
+    - variance called estimation err
+  - ex. ***estimator for kde***: $\hat{f_{n, h}(x)} = \frac{1}{n}\sum_i K_h (X_i - x)$
+    - smooths voxel-wise output
+    - $bias = E[\hat{f}(x)] - f(x) = f''(x)/2 \int t^t K(t) dt \cdot h^2$ + smaller order
+    - $variance =Var[\hat{f}(x)] = 1/n^2 \sum Var[Y_i] + \frac{2}{n^2} \sum_{i<j} Cov(Y_i, Y_j)$
+  - ex. $mse = E[\hat{f}_h(x) - f(x)]^2 = bias^2 + variance$
+    - define *risk* = mean L2 err = $\int mse(x) dx$
+      - minimizing this yields an asymptotically optimal bandwidth
 
 # Feature Selection
+
 ## Filtering
+
 - ranks features or feature subsets independently of the predictor
 - univariate methods (consider one variable at a time)
-\begin{itemize}
-- ex. T-test of y for each variable
-- ex. Pearson correlation coefficient - this can only capture linear dependencies
-- mutual information - covers all dependencies
-\end{itemize}
+  - ex. T-test of y for each variable
+  - ex. Pearson correlation coefficient - this can only capture linear dependencies
+  - mutual information - covers all dependencies
 - multivariate methods
-\begin{itemize}
-- features subset selection
-- need a scoring function
-- need a strategy to search the space
--  sometimes used as preprocessing for other methods
-\end{itemize}
+  - features subset selection
+  - need a scoring function
+  - need a strategy to search the space
+  - sometimes used as preprocessing for other methods
 
 ## Wrapper
+
 - uses a predictor to assess features of feature subsets
 - learner is considered a black-box - use train, validate, test set
 - forward selection - start with nothing and keep adding
@@ -247,18 +57,15 @@ category: ai
 - labels are not given
 - intra-cluster distances are minimized, inter-cluster distances are maximized
 - Distance measures
-\begin{itemize}
-- symmetric D(A,B)=D(B,A)
-- self-similarity D(A,A)=0
-- positivity separation D(A,B)=0 iff A=B
-- triangular inequality D(A,B) <= D(A,C)+D(B,C)
-- ex. Minkowski Metrics $d(x,y)=\sqrt[r]{\sum \vert x_i-y_i\vert ^r}$
-\begin{itemize}
-- r=1 Manhattan distance
-- r=1 when y is binary -> Hamming distance
-- r=2 Euclidean
-- r=$\infty$ "sup" distance
-\end{itemize}
+  - symmetric D(A,B)=D(B,A)
+  - self-similarity D(A,A)=0
+  - positivity separation D(A,B)=0 iff A=B
+  - triangular inequality D(A,B) <= D(A,C)+D(B,C)
+  - ex. Minkowski Metrics $d(x,y)=\sqrt[r]{\sum \vert x_i-y_i\vert ^r}$
+    - r=1 Manhattan distance
+    - r=1 when y is binary -> Hamming distance
+    - r=2 Euclidean
+    - r=$\infty$ "sup" distance
 - correlation coefficient - unit independent
 - edit distance
 
@@ -268,15 +75,19 @@ category: ai
     2. Top-down divisive - starts with 1 cluster then separates
 - ex. starting with each item in its own cluster, find best pair to merge into a new cluster
 - repeatedly do this to make a tree (dendrogram)
-- distances between clusters
-\begin{itemize}
-- single-link=nearest neighbor=their closest members (long, skinny clusters)
-- complete-link=furthest neighbor=their furthest members (tight clusters)
-- average=average of all cross-cluster pairs - most widely used
-\end{itemize}
+- distances between clustersdefined by *linkage function*
+  - single-link - closest members (long, skinny clusters)
+  - complete-link - furthest members  (tight clusters)
+  - average - most widely used
+- ex. MST - keep linking shortest link
+- *ultrametric distance* - tighter than triangle inequality
+    - $d(x, y) \leq max(d(x,z), d(y,z))$
+- k-means++ - better at not getting stuck in local minima
+    - randomly move centers apart
 - Complexity: $O(n^2p)$ for first iteration and then can only get worse
 
 ## Partitional
+
 - partition n objects into a set of K clusters (must be specified)
 - globally optimal: exhaustively enumerate all partitions
 - minimize sum of squared distances from cluster centroid
@@ -285,7 +96,7 @@ category: ai
 ### Expectation Maximization (EM)
 - general procedure that includes K-means
 - E-step
-	- calculate how strongly to which mode each data point “belongs” (maximize likelihood)
+  - calculate how strongly to which mode each data point “belongs” (maximize likelihood)
 - M-step - calculate what each mode’s mean and covariance should be given the various responsibilities (maximization step)
 - known to converge
 - can be suboptimal
@@ -293,10 +104,10 @@ category: ai
 - can also partition around medoids
 - mixture-based clustering 
 - *K-Means*
-	- start with random centers
-	- assign everything to nearest center: O(\vert clusters\vert *np) 
-	- recompute centers O(np) and repeat until nothing changes
-	- partition amounts to Voronoi diagram
+  - start with random centers
+  - assign everything to nearest center: O(\vert clusters\vert *np) 
+  - recompute centers O(np) and repeat until nothing changes
+  - partition amounts to Voronoi diagram
 
 ### Gaussian Mixture Model (GMM)
 - continue deriving new mean and variance at each step
@@ -319,7 +130,7 @@ category: ai
 - $\theta = (X^TX+\lambda I)^{-1} X^T y$
 
 ## single Bernoulli
-- L(p) = P(Train\vert Bernoulli(p)) = $P(X_1,...,X_n\vert p)=\prod_i P(X_i\vert p)=\prod_i p^{X_i} (1-p)^{1-X_i}$
+- L(p) = P(Train | Bernoulli(p)) = $P(X_1,...,X_n\vert p)=\prod_i P(X_i\vert p)=\prod_i p^{X_i} (1-p)^{1-X_i}$
 - $=p^x (1-p)^{n-x}$ where x = $\sum x_i$
 - $log(L(p)) = log(p^x (1-p)^{n-x}=x log(p) + (n-x) log(1-p)$
 - $0=\frac{dL(p)}{dp} = \frac{x}{p} - \frac{n-x}{1-p} = \frac{x-xp - np+xp}{p(1-p)}=x-np$
@@ -328,7 +139,7 @@ category: ai
 ## multinomial
 - $L(\theta)=P(Train\vert Multinomial(\theta))=P(d_1,...,d_n\vert \theta_1,...,\theta_p)$ where d is a document of counts x
 - =$\prod_i^n P(d_i\vert \theta_1,...\theta_p)=\prod_i^n factorials \cdot \theta_1^{x_1},...,\theta_p^{x_p}$- ignore factorials because they are always same
-\begin{itemize}
+  \begin{itemize}
 - require $\sum \theta_i = 1$
-\end{itemize}
+  \end{itemize}
 - $\implies \theta_i = \frac{\sum_{j=1}^n x_{ij}}{N}$ where N is total number of words in all docs

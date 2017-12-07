@@ -14,6 +14,7 @@ category: ai
 - basic perceptron update rule
     - if output is 0 but should be 1: raise weights on active connections by d
     - if output is 1 but should be 0: lower weights on active connections by d
+- *perceptron convergence thm* - if data is linearly separable, perceptron learning algorithm wiil converge
 - transfer / activation functions
     - sigmoid(z) = $\frac{1}{1+e^{-z}}$
     - Binary step

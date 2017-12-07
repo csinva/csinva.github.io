@@ -32,20 +32,6 @@ category: stat
 			- might actually want to increase dimensionality (ex. svms embedded in higher dimension)
 	- industry was problem-solving, academia had too much culture
 		
-# multidimensional scaling
-- constructing configuraiton of n points using distances between n objects
-- uses distance matrix
-	- $d_{rr} = 0$
-	- $d_{rs} \geq 0$
-- solns are invariant to translation, rotation, relfection
-- solutions types
-	1. non-metric methods - use rank orders of distances
-		- invariant to uniform expansion / contraction
-	2. metric methods - use values
-- D is *Euclidean* if there exists points s.t. D gives interpoint Euclidean distances
-	- define B = HAH
-	- D Euclidean iff B is psd	
-		
 
 # box + tukey
 - questions
