@@ -1,19 +1,19 @@
 # famous names
 - *Geoffrey Hinton* - emeritus, Toronto
-	- *Yann Lecun* (NYU) - heads fb AI
-		- was his research associate
+  - *Yann Lecun* (NYU) - heads fb AI
+    - was his research associate
 - *Michael Jordan* - Berkeley
-	- students: Ng, Blei; postdoc: Bengio
-	- *Andrew Ng* - Stanford
-	- *David Blei* - topic modeling
-	- *Yoshua Bengio* - McGill
-		- *Ian Goodfellow* - GANs
+  - students: Ng, Blei; postdoc: Bengio
+  - *Andrew Ng* - Stanford
+  - *David Blei* - topic modeling
+  - *Yoshua Bengio* - McGill
+    - *Ian Goodfellow* - GANs
 - *Jeff Hawkins* - established redwood
-	- left to found numenta
+  - left to found numenta
 - *Terry Sejnowski*
-	- coinvented Boltzmann machines
+  - coinvented Boltzmann machines
 - *Daphne Koller* - co-founder of Coursera
-	- representation, inference, learning, and decision making
+  - representation, inference, learning, and decision making
 - *Schmidhuber & Hochreiter* - LSTM
 - *Jitendra Malik* - computer vision
 - *Andrej Karpathy* - blogger, Tesla AI director
@@ -45,7 +45,8 @@
 - Eugene M. Izhikevich
 - Eric L. Schwartz
 
-# favorites
+# personal
+
 - *James DiCarlo*
 - *Liam Paninski* - decoding
 - *Jack Gallant* - v4, fmri

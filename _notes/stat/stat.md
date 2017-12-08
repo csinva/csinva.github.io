@@ -69,10 +69,8 @@ category: stat
 - t - to use the sample standard deviation to measure precision for the mean X, we combine the square root of a chi-squared variable with a normal variable
 - f - compare two independent sample variances in terms of the ratio of two independent chi-squared variables.
 
-# Moment-generating function
+# Moment-generating function​
 
-- ​
-- ​
 - sometimes you can use  to find  and 
 - Y = aX+b 
 - Y =  if  independent

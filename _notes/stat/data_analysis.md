@@ -39,6 +39,13 @@ category: stat
   3. transformations = feature engineering
     - log/sqrt make long-tail data more centered and more normal
     - **delta-method** - sets comparable bw (wrt variance) after log or sqrt transform: $Var(g(X)) \approx [g'(\mu_X)]^2 Var(X)$ where $\mu_X = E(X)$
+    - if assumptions don't work, sometimes we can transform data so they work
+    - *transform x* - if residuals generally normal and have constant variance 
+      - *corrects nonlinearity*
+    - *transform y* - if relationship generally linear, but non-constant error variance
+      - *stabilizes variance*
+    - if both problems, try y first
+    - Box-Cox: Y' = $Y^l \: if \: l \neq 0$, else log(Y)
   4. *least squares*
     - inversion of pxp matrix ~O(p^3)
     - regression effect - things tend to the mean (ex. bball children are shorter)

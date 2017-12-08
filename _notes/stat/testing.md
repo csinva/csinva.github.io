@@ -9,12 +9,16 @@ category: stat
 # basics
 
 - *data snooping* - decide which hypotheses to test after examining data
+- significance levels
+  - *stat. significant*: p = 0.05
+  - *highly stat. significant*: p = 0.01
+  - *bonferroni procedure* - we are doing 3 tests with 5% confidence, so we actually do 5/3% for each test in order to restrict everything to 5% total
 
 # normal theory
 
 - normal theory: assume $\epsilon_i$ ~ $N(0, \sigma^2)$
 - distributions
-  - suppose $U_1, ...$ are iid N(0, 1)
+  - suppose $U_1, ...​$ are iid N(0, 1)
   - *chi-squared distr.*: $\chi_d^2$ ~ $\sum_i^d U_i^2$ w/ d degrees of freedom
   - *student's t-distr.*: $U_{d+1} / \sqrt{d^{-1} \sum_1^d U_i^2}$ w/ d degress of freedom
 - t-test
@@ -31,6 +35,7 @@ category: stat
   - alternative hypothesis: for at least one $ i \in \{p-p_0, ..., p\}, \: \theta_i \neq 0$
   - $F = \frac{(\|\|X\hat{\theta}\|\|^2 - \|\|X\hat{\theta}^{(s)}\|\|^2) / p_0}{\|\|e\|\|^2 / (n-p)} $ where $\hat{\theta^{(s)}}$ has last $p_0$ entries 0
   - under null hypothesis, $\|\|X\hat{\theta}\|\|^2 - \|\|X\hat{\theta}^{(s)}\|\|^2$ ~ $U$, $\|\|e\|\|^2$ ~ $V$, $F$ ~ $\frac{U/p_0}{V/(n-p)}$ where $ U \: indep \: V$, $U$ ~ $\sigma^2 \chi^2_{p_0}$, $V$ ~ $\sigma^2 \chi_{n-p}^2$
+  - there is also a *partial f-test*
 
 # statistical intervals
 
@@ -39,7 +44,7 @@ category: stat
 - For p not close to 0.5, use Wilson score confidence interval (has extra terms)
 - confidence interval - If multiple samples of trained typists were selected and an interval constructed for each sample mean, 95 percent of these intervals contain the true preferred keyboard height
 
-# Tests on Hypotheses
+# tests on hypotheses
 
 - Var($\bar{X}-\bar{Y})=\frac{\sigma_1^2}{m}+\frac{\sigma_2^2}{n}$
 - tail refers to the side we reject (e.g. upper-tailed=$H_a:\theta>\theta_0$
@@ -52,6 +57,30 @@ category: stat
 - can standardize values and test these instead
 - P-value is the probability, calculated assuming that the null hypothesis is true, of obtaining a value of the test statistic at least as contradictory to $H_0$ as the value calculated from the available sample. (observed significance level)
 - reject $H_0$ if p $\leq \alpha$
+
+# testing LR coefficients
+
+- confidence interval construction
+  - confidence interval (CI) is range of values likely to include true value of a parameter of interest
+  - confidence level (CL) - probability that the procedure used to determine CI will provide an interval that covers the value of the parameter -  if we remade it 100 times, 95 would contain the true $\theta_1$
+- $\hat{\beta_0} \pm t_{n-2,\alpha /2} * s.e.(\hat{\beta_0}) $
+  - for $\beta_1$
+    - with known $\sigma$
+      - $\frac{\hat{\beta_1}-\beta_1}{\sigma(\hat{\beta_1})} \sim N(0,1)$
+      - derive CI
+    - with unknown $\sigma$
+      - $\frac{\hat{\beta_1}-\beta_1}{s(\hat{\beta_1})} \sim t_{n-2}$
+      - derive CI
+- hypothesis testing
+  - t-test
+    - $H_0:\beta_1=b $
+    - $t_1 = \frac{\hat{\beta_1}-b}{s.e.(\hat{\beta_1})}$, n-2 degrees of freedom
+  - f-test: $H_0:\beta_1=0 $
+    - F=MSR/MSE  
+    - reject if F > $F_{1-\alpha;1,n-2}$
+- two kinds of prediction
+  1. the prediction of the value of the respone variable Y which corresponds to any chose value, $x_o$ of the predictor variable
+  2. the estimation of the mean response $\mu_o$ when X = $x_o$
 
 # Inferences Based on 2 Samples
 

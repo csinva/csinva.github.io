@@ -150,29 +150,19 @@ category: ai
 - let $C_1,...,C_L$ be the classes of Y
 - want Posterior $P(C\vert X) = \frac{P(X\vert C)(P(C)}{P(X)}$ 
 - MAP rule - maximum A Posterior rule
-  \begin{itemize}
-- use Prior P(C)
-- using x, predict $C^*=\text{argmax}_C P(C\vert X_1,...,X_p)=\text{argmax}_C P(X_1,...,X_p\vert C) P(C)$ - generally ignore denominator
-  \end{itemize}
+  - use Prior P(C)
+  - using x, predict $C^*=\text{argmax}_C P(C\vert X_1,...,X_p)=\text{argmax}_C P(X_1,...,X_p\vert C) P(C)$ - generally ignore denominator
 - naive assumption - assume that all input attributes are conditionally independent given C
-  \begin{itemize}
-- $P(X_1,...,X_p\vert C) = P(X_1\vert C)\cdot...\cdot P(X_p\vert C) = \prod_i P(X_i\vert C)$ 
-  \end{itemize}
+  - $P(X_1,...,X_p\vert C) = P(X_1\vert C)\cdot...\cdot P(X_p\vert C) = \prod_i P(X_i\vert C)$ 
 - learning
-  \begin{enumerate}
-- learn L distributions $P(C_1),P(C_2),...,P(C_L)$
-- learn $P(X_j=x_{jk}\vert C_i)$ 
-  \begin{itemize}
-- for j in 1:p
-- i in 1:$\vert C\vert $
-- k in 1:$\vert X_j\vert $
-- for discrete case we store $P(X_j\vert c_i)$, otherwise we assume a prob. distr. form
-  \end{itemize}
-  \begin{itemize}
+  - learn L distributions $P(C_1),P(C_2),...,P(C_L)$
+  - learn $P(X_j=x_{jk}\vert C_i)$
+  - for j in 1:p
+  - i in 1:$\vert C\vert $
+  - k in 1:$\vert X_j\vert $
+  - for discrete case we store $P(X_j\vert c_i)$, otherwise we assume a prob. distr. form
 - naive: $\vert C\vert  \cdot (\vert X_1\vert  + \vert X_2\vert  + ... + \vert X_p\vert )$ distributions
 - otherwise: $\vert C\vert \cdot (\vert X_1\vert  \cdot \vert X_2\vert  \cdot ... \cdot \vert X_p\vert )$
-  \end{itemize}
-  \end{enumerate}
 - testing
   \begin{itemize}
 - $P(X\vert c)$ - look up for each feature $X_i\vert C$ and try to maximize
