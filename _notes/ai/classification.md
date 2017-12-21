@@ -7,18 +7,14 @@ category: ai
 * TOC
 {:toc}
 
-
-[TOC]
-
-
 # Classification
 - asymptotic classifier - assume you get infinite training / testing points
 - *discriminative* - model $P(C\vert X)$ directly
   - smaller asymptotic error
-  - slow convergence ~ O(p)
+  - slow convergence ~ $O(p)$
 - *generative* - model $P(X\vert C)$  directly
   - generally has higher bias -> can handle missing data
-  - fast convergence ~ O(log(p))
+  - fast convergence ~ $O(log(p))$
 
 
 ## binary classification
@@ -58,12 +54,9 @@ category: ai
         - here $\phi (x,i)$ puts x in the ith spot and zeros elsewhere
         - $\phi$ is often used for feature representation
       - define margin: 
-        $\Delta (y,y') = \begin{cases} 
-        \delta& if y \neq y' \\\
-        0& if y=y'
-        \end{cases}$
+        $\Delta (y,y') = \begin{cases} \delta& if y \neq y' \\\ 0& if y=y'\end{cases}$
       - check if $y=argmax_{y'}w^T \phi(x,y') + \delta (y,y')$
-  - multiclass SVMs (Crammer&Singer)
+  - multiclass SVMs (Crammer & Singer)
     - minimize total norm of weights s.t. true label is score at least 1 more than second best label
   - multinomial logistic regression = multi-class *log-linear* model
     - $P(y\vert x,w)=\frac{exp(w^T_yx)}{\sum_{y' \in \{ 1,...,K\}} exp(w_{y'}^T,x)}$
@@ -205,16 +198,12 @@ category: ai
 
 ### Text classification
 - bag of words - represent text as a vector of word frequencies X
-  \begin{itemize}
-- remove stopwords, stemming, collapsing multiple - NLTK package in python
-- assumes word order isn't important
-- can store n-grams
-  \end{itemize}
+  - remove stopwords, stemming, collapsing multiple - NLTK package in python
+  - assumes word order isn't important
+  - can store n-grams
 - multivariate Bernoulli: $P(X\vert C)=P(w_1=true,w_2=false,...\vert C)$
 - multivariate Binomial: $P(X\vert C)=P(w_1=n_1,w_2=n_2,...\vert C)$
-  \begin{itemize}
-- this is inherently naive
-  \end{itemize}
+  - this is inherently naive
 - time complexity
   \begin{itemize}
 - training O(n*average\_doc\_length\_train+$\vert c\vert \vert dict\vert $)
@@ -251,3 +240,4 @@ category: ai
     - union candidate points from all hash tables and actually check their distances
 - comparisons
   - error rate of 1 NN is never more than twice that of Bayes error
+

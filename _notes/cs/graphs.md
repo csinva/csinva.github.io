@@ -4,8 +4,6 @@ section-type: notes
 title: Graphs
 category: cs
 ---
-* TOC
-{:toc}
 - Edges are of the form (v1, v2)
     - Can be ordered pair or unordered pair
 - Definitions
@@ -28,7 +26,7 @@ category: cs
     - an adjacency list would work much better
     - an adjacency matrix would work for airline routes
 - detect cycle
-	- dfs from every vertex and keep track of visited, if repeat then cycle
+  - dfs from every vertex and keep track of visited, if repeat then cycle
 - Topological Sort
     - Given a directed acyclic graph, construct an ordering of the vertices such that if there is a path from vi to vj, then vj appears after vi in the ordering
     - The result is a linear list of vertices

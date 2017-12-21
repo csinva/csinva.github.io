@@ -29,7 +29,7 @@ category: stat
   1. set deriv and solve
   2. use projection matrix H to show HY is proj of Y onto R(X)
 
-  - define projection matrix $H = X(X^TX)^{-1} X^T$
+  - define projection (hat) matrix $H = X(X^TX)^{-1} X^T$
     - show $\|\|Y-X \theta\|\|^2 \geq \|\|Y - HY\|\|^2$
     - key idea: subtract and add HY
 

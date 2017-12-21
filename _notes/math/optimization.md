@@ -202,15 +202,10 @@ category: math
 - interpolation
 
 
-# statistical estimation (boyd 7) - missing
-
-
-
 # unconstrained minimization (boyd 9)
 
 ## unconstrained problems
-- $$min \: f(x)$$
-  - $\implies \nabla f(x^*) = 0$
+- $x^* = argmin \: f(x) \implies \nabla f(x^*) = 0$
 - examples
   - ex. quadratic: $min \: 1/2 x^TPX + q^Tx + r$
     - solved w/ $Px^* + q = 0$, if $P \succeq 0$, unique soln $-P^{-1}q$
@@ -290,18 +285,19 @@ category: math
 - let 
 
 
-# convex algorithms
+## convex algorithms
+
 - interior point methods: solve $min \: c^Tx \\s.t. \: x \in X$, where X convex and compact
 - *barrier* - goes to infinity at boundaries
 - $x^*(t) \in argmin tc^Tx + F(x)$ where F is a barrier
   - solve for increasing t until converges to soln with Newton's method
-
 - *strongly convex*: $f(x_2) \geq f(x_1) + \nabla f(x_1)^T (x_2 - x_1) + m/2 \|\|x_2 - x_1\|\|^2$
 - *L-smooth*: $f(x_2) \leq f(x_1) + \nabla f(x_1)^T (x_2 - x_1) + m/2 \|\|x_2 - x_1\|\|^2$
 
 
+# basic algorithms
 
-## basic algorithms
+types: *batch* (have full data) vs *online*
 
 1. gradient descent = *batch gradient descent*
    - *gradient* - vector that points to direction of maximum increase

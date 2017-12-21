@@ -7,23 +7,22 @@ category: math
 
 * TOC
 {:toc}
-
-[TOC]
-
 # linear basics
+
 ## notation
+
 - $x \preceq y$ - these are vectors and x is less than y elementwise
 - $X \preceq Y$ - matrices, Y-X is PSD
   - $v^TXv \leq v^TYv \:\: \forall v$
 
 ## linearity
-- inner product <X, Y> $= tr(X^TY) = \sum_i \sum_j X_{ij} Y_{ij}$
+- inner product $<X, Y> = tr(X^TY) = \sum_i \sum_j X_{ij} Y_{ij}$
   - like inner product if we collapsed into big vector
   - linear
   - symmetric
   - gives angle back
 - linear 
-    1. superposition f(x+y) =  f(x)+f(y) 
+    1. superposition $f(x+y) =  f(x)+f(y) $
     2. proportionality $f(k*x) = k*f(x)$
 - vector space
     1. closed under addition
@@ -35,6 +34,7 @@ category: math
   - or $\|x^T y\| \leq \|\|x\|\|_2 \|\|y\|\|_2$
 
 ## matrix properties
+
 - $x^TAx = tr(xx^TA)$
 - *nonsingular* = invertible = nonzero determinant = null space of zero
     - only square matrices
@@ -55,13 +55,13 @@ category: math
 - *orthogonal complement* - set of orthogonal vectors
   - define R(A) to be *range space* of A (column space) and N(A) to be *null space* of A
   - R(A) and N(A) are orthogonal complements
-  - dim (R(A)) = r
-  - dim (N(A)) = n-r
-  - dim R(A^T) = r
-  - dim N(A^T) = m-r    
+  - dim $R(A)$ = r
+  - dim $N(A)$ = n-r
+  - dim $R(A^T)$ = r
+  - dim $N(A^T)$ = m-r    
 - *adjoint* - compute with mini-dets
     - $A^{-1} = adj(A) / det(A)$
-- *Schur complement* of X =  $\begin{bmatrix}  A & B \\  B^T & C\end{bmatrix}$
+- *Schur complement* of $X = \begin{bmatrix}  A & B \\  B^T & C\end{bmatrix}$
    - $S = C - B^TA^{-1}B$
    - $X \succeq 0 \iff S \succeq 0$
 
@@ -168,6 +168,7 @@ category: math
   - $A = V \Lambda V^T$, $B=VV^T$
 
 ## strang 6.3 - singular value decomposition
+
 - SVD for any m x n matrix: $A=U \Sigma V^T$
   - U (mxm) are eigenvectors of $AA^T$
   - columns of V (nxn) are eigenvectors of $A^TA$

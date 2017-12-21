@@ -9,10 +9,23 @@ category: stat
 # basics
 
 - *data snooping* - decide which hypotheses to test after examining data
+- null hypothesis $H_0$ vs alternative hypothesis $H_1$
+- types
+  - simple hypothesis $\theta = \theta_0$
+  - composite hypothesis $\theta > \theta_0$ or $\theta < \theta_0$
+  - two-sided test: $H_0: \theta = \theta_0 \: vs. \: H_1 \theta \neq \theta_0$
+  - one-sided test: $H_0: \theta \leq \theta_0 \: vs. \: H_1: \theta > \theta_0$
 - significance levels
   - *stat. significant*: p = 0.05
   - *highly stat. significant*: p = 0.01
+- errors
+  - $\alpha$ - type 1 - reject $H_0$ but $H_0$ true
+  - $\beta$ - type 2 - fail to reject $H_0$ but $H_0$ false
+- *p-value* = probability, calculated assuming that the null hypothesis is true, of obtaining a value of the test statistic at least as contradictory to $H_0$ as the value calculated from the available sample
+- *power*: $1 - \beta$
+- adjustments
   - *bonferroni procedure* - we are doing 3 tests with 5% confidence, so we actually do 5/3% for each test in order to restrict everything to 5% total
+  - *Benjamini–Hochberg procedure* - controls for false discovery rate
 
 # normal theory
 
@@ -48,15 +61,12 @@ category: stat
 
 - Var($\bar{X}-\bar{Y})=\frac{\sigma_1^2}{m}+\frac{\sigma_2^2}{n}$
 - tail refers to the side we reject (e.g. upper-tailed=$H_a:\theta>\theta_0$
-- $\alpha$ - type 1 - reject $H_0$ but $H_0$ true
-- $\beta$ - type 2 - fail to reject $H_0$ but $H_0$ false
 - we try to make the null hypothesis a statement of equality
 - upper-tailed - reject large values
 - $\alpha$ is computed using the probability distribution of the test statistic when $H_0$ is true, whereas determination of b requires knowing the test statistic distribution when $H_0$ is false
 - type 1 error usually more serious, pick $\alpha$ level, then constrain $\beta$
 - can standardize values and test these instead
-- P-value is the probability, calculated assuming that the null hypothesis is true, of obtaining a value of the test statistic at least as contradictory to $H_0$ as the value calculated from the available sample. (observed significance level)
-- reject $H_0$ if p $\leq \alpha$
+- ​
 
 # testing LR coefficients
 
@@ -71,46 +81,9 @@ category: stat
     - with unknown $\sigma$
       - $\frac{\hat{\beta_1}-\beta_1}{s(\hat{\beta_1})} \sim t_{n-2}$
       - derive CI
-- hypothesis testing
-  - t-test
-    - $H_0:\beta_1=b $
-    - $t_1 = \frac{\hat{\beta_1}-b}{s.e.(\hat{\beta_1})}$, n-2 degrees of freedom
-  - f-test: $H_0:\beta_1=0 $
-    - F=MSR/MSE  
-    - reject if F > $F_{1-\alpha;1,n-2}$
-- two kinds of prediction
-  1. the prediction of the value of the respone variable Y which corresponds to any chose value, $x_o$ of the predictor variable
-  2. the estimation of the mean response $\mu_o$ when X = $x_o$
 
-# Inferences Based on 2 Samples
+# ANOVA (analysis of variance)
 
-- $\sigma_{\bar{X}-\bar{Y}} = \sqrt{\frac{\sigma_1^2}{m}+\frac{\sigma_2^2}{n}}$
-- there are formulas for type 1,2 errors
-- If both normal, $Z = \frac{\bar{X}-\bar{Y}-(\mu_1-\mu_2)}{\sqrt{\frac{\sigma_1^2}{m}+\frac{\sigma_2^2}{n}}}$
-- If both have same variance, do a weighted average (pooled) $S_p^2 = \frac{m-1}{m+n-2}S_1^2+\frac{n-1}{m+n-2}S_2^2$
-- If we have a large sample size, these expressions are basically true, we just use the sample standard deviation
-- randomized controlled experiment - investigators assign subjects to the two treatments in a random fashion
-- small sample sizes - two-sample t test
-- $T = \frac{\bar{X}-\bar{Y}-(\mu_1-\mu_2)}{\sqrt{\frac{S_1^2}{m}+\frac{S_2^2}{n}}}$
-- $\nu= \frac{(se_1^2 + se_2^2)^2}{\frac{se_1^4}{m-1}+\frac{se_2^4}{n-1}}$ (round down)
-- $se_1 = \frac{s_1}{\sqrt{m}}$
-- $se_2 = \frac{s_2}{\sqrt{n}}$
-- two-sample t confidence interval for $\mu_1-\mu_2$ with confidence 100(1-a) percent:
-- $\bar{x}-\bar{y} \pm t_{\alpha/2,v} \sqrt{\frac{s_1^2}{m}+\frac{s_2^2}{n}}$
-- very hard to calculate type II errors here
-- paired data - not independent
-- we do a one-sample t test on the differences
-- do pairing when large correlation within experimental units
-- do independent-samples when correlation within pairs is not large
-- proportions when m and n both large:
-- $Z=\frac{\hat{p_1}-\hat{p_2}}{\sqrt{\hat{p}\hat{q}(\frac{1}{m}+\frac{1}{n})}}$ where $\hat{p}=\frac{m}{m+n}\hat{p_1}+\frac{n}{m+n}\hat{p_2}$, $\hat{q}=1-\hat{p}$
-- bootstrap - computationally compute by taking samples, can use percentile intervals (sort and then pick nth from bottom/top)
-- permutation tests - permute the labels on the data - p-value is the fraction of arrangements that are at least as extreme as the value computed for the original data
-- for testing if two variances are equal, use $F_{\alpha,m-1,n-1}$
-# ANOVA
-- ANOVA - analysis of variance
-
-### Regression and Correlations
 - y - called dependent, response variable
 - x - independent, explanatory, predictor variable
 - notation: $E(Y\|x^*) = \mu_{Y\cdot x^*} = $ mean value of Y when x = $x^*$

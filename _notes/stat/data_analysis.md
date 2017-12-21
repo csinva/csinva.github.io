@@ -66,4 +66,4 @@ category: stat
        1. a(i) - ave dissimilarity of data point i with other points within same cluster
        2. b(i) - lowest average dissimilarity of point i to any other cluster
      3. good values of k maximize the average silhouette score
-  7. Lack-of-fit test - based on repeated Y values at same X values
+  7. lack-of-fit test - based on repeated Y values at same X values

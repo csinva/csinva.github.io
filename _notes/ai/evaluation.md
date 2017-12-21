@@ -7,11 +7,9 @@ category: ai
 * TOC
 {:toc}
 
-[TOC]
-
-
 # metrics
-- Define a loss function $\mathcal{L}$
+- *goodness of fit* - how well does the learned distribution represent the real distribution?
+- define a loss function $\mathcal{L}$
   - 0-1 loss: $\vert C-f(X)\vert$ 
   - $L_2$ loss: $(C-f(X))^2$
 - Expected Prediction Error EPE(f) = $E_{X,C} [\mathcal{L}(C,f(X))]$
@@ -19,13 +17,8 @@ category: ai
 - Minimize EPE
   - Bayes Classifier minimizes 0-1 loss: $\hat{f}(X)=C_i$ if $P(C_i\vert X)=max_f P(f\vert X)$
   - KNN minimizes L2 loss: $\hat{f}(X)=E(Y\vert X)$ 
-- EPE(f(X)) = $noise^2+bias^2+variance$
+- $EPE[f(X)]$ = $noise^2+bias^2+variance$
   - noise - unavoidable
-  - bias=$E[(\bar{\theta}-\theta_{true})^2]$ - error due to incorrect assumptions
-    - simple linear regression has 0 bias
-  - variance=$E[(\bar{\theta}-\theta_{estimated})^2]$ - error due to variance of training samples
-- more complex models (more nonzero parameters) have lower bias, higher variance
-  - if high bias, train and test error will be very close (model isn't complex enough)
 - accuracy-based
   - accuracy = number of correct classifications / total number of test cases
   - balanced accuracy = 1/2 (TP/P + TN/N)
@@ -33,6 +26,7 @@ category: ai
   - precision - TP/(TP+FP)
 
 # cv
+
 - *cross validation* - don't have enough data for a test set
   - properties
     - not good when n < complexity of predictor

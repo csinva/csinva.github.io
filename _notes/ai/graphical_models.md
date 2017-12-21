@@ -6,8 +6,13 @@ category: ai
 ---
 [TOC]
 
+# overview
 
-# big data
+- *mixture models* - discrete latent variable vs. *factor analysis models* - continuous latent variable
+- *bayesian networks* - directed vs. *undirected networks*
+
+# structure learning
+
 - marginal correlation - covariance matrix
     - estimates are bad when not n >> d
     - eigenvalues are not well-approximated
@@ -17,99 +22,24 @@ category: ai
     - POET doesn't assume sparsity
 - conditional correlation - inverse covariance matrix = precision matrix
 
-# 1 - bayesian networks
-- A and B have conditional independence given C if A|B and A|C are independent
-  - $$P(AB\vert C) = P(A\vert C) P(B\vert C)$$
+# bayesian networks - R & N 14.1-5
 
-### bayesian networks intro
 - represented by directed acyclic graph
+
 1. could get an expert to design Bayesian network
 2. otherwise, have to learn it from data
+
 - each node is random variable
 - weights as tables of conditional probabilities for all possibilities
+
 1. encodes conditional independence relationships
 2. compact representation of joint prob. distr. over the variables
+
 - *markov condition* - given its parents, a node is conditionally independent of its non-descendants
 - therefore joint distr: $P(X_1 = x_1,...X_n=x_n)=\prod_{i=1}^n P(X_i = x_i \vert  Parents(X_i))$
 - *inference* - using a Bayesian network to compute probabilities
   - sometimes have unobserved variables
 
-### sampling
-- *exact inference* is feasible in small networks, but takes a long time in large networks
-  - approximate inference techniques
-1. learning
-  - *prior sampling*
-    - draw N samples from a distribution S
-    - approximate posterior probability based on observed values
-  - ex. flip a weighted coin to find out what the probabilities are
-    - then move to child nodes and repeat
-2. inference
-  - suppose we want to know $P(D\vert !A)$
-    - sample network N times, report probability of D being true when A is false
-    - more samples is better
-  - *rejection sampling* - if want to know $P(D\vert !A)$
-    - sample N times, throw out samples where A isn't false
-    - return probability of D being true
-    - this is slow
-  - *likelihood weighting* - fix our evidence variables to their observed values, then simulate the network
-    - can't just fix variables - distr. might be inconsistent
-    - instead we weight by probability of evidence given parents, then add to final prob
-    - for each observation
-      - if correct, Count = Count+(1*W)
-      - always, Total = Total+(1*W)
-    - return Count/Total
-    - this way we don't have to throw out wrong samples
-    - doesn't solve all problems - evidence only influences the choice of downstream variables
-
-### 16 learning overview
-- notation
-  - $P$ - true distribution
-  - $\hat{P}$ - sample distribution of P
-  - $\tilde{P}$ - estimated distribution P
-1. *density estimation* - construct a model $\tilde{M}$ such that $\tilde{P}$ is close to generating $P^*$
-  - this can be estimated with *relative entropy distance* = $\mathbf{E_X}\left[ log(\frac{P^*(X)}{\tilde{P(X)}} \right]$
-    - also $= - \mathbf{H}_{P^*}(X) - \mathbf{E}_X [log \tilde{P}(X)]$
-    - intuitively measures extent of *compression loss (in bits)*
-    - can ignore first term because it is unaffected by the model
-    - concentrate on *expected log-likelihood* = $\mathcal{l}(D\vert M) =  \mathbf{E}_X [log \tilde{P}(X)]$
-    - maximizes probability of data given the model
-    - maximizes prediction assuming we are given complete instances
-    - could design test suite of queries to evaluate performance on a range of queries
-2. *classification*
-  - can set loss function to *classification error* (0/1 loss)
-    - this doesn't work well for multiclass labeling
-  - *Hamming loss* - counts number of variables Y in which pred differs from ground truth
-  - *conditional log-likelihood* = $\mathbf{E}_{x,y ~ P}[log \tilde{P}(y\vert x)]$ - only measure likelihood with respect to predicted y
-3. *knowledge discovery*
-  - far more critical to assess the confidence in a prediction
-- the amount of data required to estimate parameters reliably grows linearly with the number of parameters, so that the amount of data required can grow exponentially with the network connectivity
-- *goodness of fit* - how well does the learned distribution represent the real distribution?
-
-### 17 parameter estimation
-- assume *parametric model* P($x \vert  \theta$)
-- a *sufficent statistic* can be used to calculate likelihood
-
-### 18 structure learning
-- *structure learning* - learning the structure (e.g. connections) in the model
-
-### 20 learning undirected models
-- a *potential function* is a non-negative function
-- values with higher potential are more probable
-- can maximize *entropy* in order to impose as little structure as possible while satisfying constraints
-
-
-
-
-
-
-
-
-
-
-
-# graphical models
-
-## bayesian networks - R & N 14.1-5
 - BN has no redundancy -> no chance for inconsistency
 - forming a BN: keep adding nodes, and only previous nodes are allowed to be parents of new nodes
   - want *causal model* - causes are first, effects are later
@@ -119,7 +49,8 @@ category: ai
   - a node is conditionally independent of its non-descendants given its parents
 - can have a *noisy-OR* relation - only requires k params not $2^k$
 
-### hybrid BN (both continuous & discrete vars)
+## hybrid BN (both continuous & discrete vars)
+
 - for continuous variables, can sometimes discretize
 1. when parents are discrete/continuous and child is continuous can use *linear Gaussian*
   - h is continuous, s is discrete; a,b,$\sigma$ all change when s changes
@@ -132,7 +63,8 @@ category: ai
   2. *logit distr.* - $P(buys\|Cost=c)=\frac{1}{1+exp(-2 (-c + \mu) / \sigma)}$
     - logistic function produces thresh
 
-### exact inference
+## exact inference
+
 - given assignment to *evidence variables*, find probs of *query variables*
   - other variables are *hidden variables*
 - *polytree*=*singly connected network* - time and space complexity of exact inference is linear in the size of the network
@@ -148,7 +80,8 @@ category: ai
   - can compute posterior probabilities in O(n)
     - however, conditional probability tables may still be exponentially large
 
-### approximate inferences in BNs
+## approximate inferences in BNs
+
 - randomized sampling algorithms = *monte carlo* algorithms
 1. *direct sampling* methods
   - sample network in topolgical order
@@ -167,22 +100,26 @@ category: ai
     - return Count/Total
     - this way we don't have to throw out wrong samples
     - doesn't solve all problems - evidence only influences the choice of downstream variables
-2. *Markov chain monte carlo* - ex. *Gibbs sampling*
+2. *Markov chain monte carlo* - ex. *Gibbs sampling*, *Metropolis-Hastings*
   - fix evidence variables
   - sample a nonevidence variable $X_i$ conditioned on the current values of its Markov blanket
   - repeatedly resample one-at-a-time in arbitrary order
   - why it works
     - the sampling process settles into a dynamic equilibrium where time spent in each state is proportional to its posterior probability
     - provided transition matrix q is *ergodic* - every state is reachable and there are no periodic cycles - only 1 steady-state soln
+3. *variational inference* - formulate inference as optimization
+   - minimize KL-divergence between observed samples and assumed distribution
 
-## conditional independence / factorization - J 2
+# conditional independence / factorization - J 2
+
 - representations
   1. numerical representation of joint prob. distr.
     - helpful for constructing network
   2. set of conditional independencies
     - helpful for inference
 
-### directed
+## directed
+
 - write p(x) or P(X)
   - $p(x_1, ..., x_n) = \prod_i p (x_i \| x_{\pi_i})$
 - let $V_i$ be set of all nodes that appear earlier (topologically) than $i$ in the ordering excluding the parents $\pi_i$
@@ -190,7 +127,7 @@ category: ai
 - conditional independencies will always be present
   - sometimes conditional dependencies can also be independent (if we pick p(y\|x) to not actually depend on x)
 - multiple, competing explanation ("explaining-away")
-  -  ![](j2_1.png) 
+  -  ![](assets/graphical_models/j2_1.png) 
   -  in fact any descendant of the base of the v suffices for explaining away
 - *d-separation* = directed separation
 - *Bayes ball algorithm* - is $X_A \perp X_B \| X_C$
@@ -202,7 +139,8 @@ category: ai
     - balls can't pass through shaded unless shaded is at base of v
     - balls pass through unshaded unless unshaded is at base of v
 
-### undirected
+## undirected
+
 - $X_A \perp X_C \| X_B$ if the set of nodes $X_B$ separates the nodes $X_A$ from $X_C$
 - can't convert directed / undirected
 - *clique* - fully connected
@@ -214,8 +152,12 @@ category: ai
 - $Z = \sum_x \prod_{C \in Cliques} \psi_{X_C} (x_C)$
 - alternatively, could specify the conditional independencies
 - *reduced parameterizations* - impose constraints on probability distributions (e.g. Gaussian)
+- if x is dependent on all its neighbors
+  - *Ising model* - if x is binary
+  - *Potts model* - x is multiclass
 
-## elimination - J 3
+# elimination - J 3
+
 - the elimination algorithm is for *probabilistic inference*
 - want $p(x_F\|x_E)$ where E and F are disjoint
 - here let $X_F$ be a single node
@@ -227,7 +169,7 @@ category: ai
 - this lets us write $p^E (x) = \frac{1}{Z} \prod_{c\in C} \psi^E_{X_c} (x_c)$
   - condition on E, and find probability
   - in actuality don't compute the product, just take the correct slice
-- ![](j3_1.png) 
+- ![](assets/graphical_models/j3_1.png) 
 - undirected graph elimination algorithm
   - for directed graph, first *moralize*
     - for each node connect its parents
@@ -242,8 +184,10 @@ category: ai
     - range over all possible elimination orderings
     - NP-hard to find elimination ordeirng that achieves the treewidth
 
-## propagation factor graphs - J 4
-### probabilistic inference on trees
+# propagation factor graphs - J 4
+
+## probabilistic inference on trees
+
 - *tree* - undirected graph in which there is exactly one path between any pair of nodes
   - alternative defn? - every node has exactly one parent
   - $$p(x) = \frac{1}{Z} \left( \prod_{i \in V} \psi (x_i) \prod_{(i,j)\in E} \psi (x_i,x_j) \right)$$
@@ -261,9 +205,10 @@ category: ai
   - *message-passing protocol* - a node can send a message to a neighboring node when, and only when, it has received messages from all of its other neighbors
     1. implement via a parallel algorithm
     2. implement via a two-phase schedule based on depth-first traversal
-      -  ![](j4_1.png) 
+      -  ![](assets/graphical_models/j4_1.png) 
 
-### factor graphs
+## factor graphs
+
 - *factor graphs* capture factorizations, not conditional independence statements 
    - ex $\psi (x_1, x_2, x_3) = f_a(x_1,x_2) f_b(x_2,x_3) f_c (x_1,x_3)$ factors but has no conditional independence
     - $$f(x_1,...,x_n) = \prod_s f_s (x_{C_s})$$
@@ -273,22 +218,24 @@ category: ai
        - could add more nodes to normal graphical model to do this
  - *factor tree* - if factors are made nodes, resulting undirected graph is tree
     - two kinds of messages (variable-> factor & factor-> variable)
-     - ![](j4_2.png)
+     - ![](assets/graphical_models/j4_2.png)
      - $$p(x_i) \propto \prod_{s \in N(i)} \mu_{si} (x_i)$$
      - if a graph is orginally a tree, there is little to be gained from factor graph framework
         - sometimes factor graph is factor tree, but original graph is not
 - *polytree* - directed graph that reduces to an undirected tree if we convert each directed edge to an undirected edge
 
-### maximum a posteriori (MAP)
+## maximum a posteriori (MAP)
+
 1. find $max_{x_F} p(x_F \| \bar{x}_E)$ 	
   - MAP-eliminate algorithm is very similar to before
-   - ![](j4_3.png)
+   - ![](assets/graphical_models/j4_3.png)
    - products of probs tend to underflow, so take the log $max_x p^E (x) = max_x log p^E (x)$
    - can also derive a *max-product algorithm* for trees
  2. find $argmax_x p^E (x)$
     - can solve by keeping track of maximizing values of variables in max-product algorithm
 
-## hmms R&N 15.1-15.5, J. 12 (hmm)
+# hmms R&N 15.1-15.5, J. 12 (hmm)
+
 - agent maintains *belief state* of state variables $X_t$ given evidence variables $E_t$
   - *transition model* - $P(X_t\|X_{0:t-1})$
     - often assume this is *Markov* or other stationary process

@@ -4,19 +4,18 @@
 - prob theory: given model $\theta$, infer data $X$
 - statistics: given data $X$, infer model $\theta$
 - 2 statistical schools of thought: *Bayesian* and *frequentist*
-  1. Bayesian
-    - $P(\theta \| x) = \frac{p(x\|\theta) p(\theta)}{p(x)}$
-    - assumes $\theta$ is an RV, gives us a distr. for i
-    - requires a prior probability, could represent *statistician's uncertainty*
-    - $\hat{\theta}_{Bayes} = \int \theta \: p(\theta\|x) d\theta$
-      - this is mean of the posterior
-    - $\hat{\theta}_{MAP} = argmax_\theta p(\theta\|x) = argmax_\theta p(x\|\theta) p(\theta)  \\\ = argmax_\theta ( log p(x\|\theta) + log p(\theta) )$
+  1. Bayesian: $P(\theta \| x) = \frac{p(x\|\theta) p(\theta)}{p(x)}$
+    - assumes $\theta$ is a RV, find its distr.
+    - requires a prior probability $p(\theta)$= *statistician's uncertainty*
+    - $\hat{\theta}_{Bayes} = \int \theta \: p(\theta\|x) d\theta$ ~ mean of the posterior
+    - $\hat{\theta}_{MAP} = argmax_\theta p(\theta\|x) = argmax_\theta p(x\|\theta) p(\theta)  \\\ = argmax_\theta [ log \: p(x\|\theta) + log \: p(\theta) ]$
        - like *penalized likelihood*
   2. frequentist - use estimators (ex. MLE)
     - ignores prior - only use priors when they correspond to objective frequencies of observing values
     - $\hat{\theta}_{MLE} = argmax_\theta \: p(x\|\theta)$
 
 ## 3 problems
+
 1. *density estimation* - given samples of X, estimate P(X)
   - ex. univariate Gaussian density estimation
     - derive MLE for mean and variance
@@ -27,7 +26,7 @@
     - derive MAP
       - want to be able to plug in posterior as prior recursively
       - this requires a *Dirichlet prior* to multiply the multinomial
-        -ex. *mixture models* - $p(x\|\theta)=\sum_k \alpha_k f_k (x\|\theta_k)$
+        - ex. *mixture models* - $p(x\|\theta)=\sum_k \alpha_k f_k (x\|\theta_k)$
     - here $f_k$ represent densities (*mixture components*)
     - $\alpha_k$ are weights (*mixing proportions*)
     - can do inference on this - given x, figure out which cluster it fits into better
@@ -53,13 +52,12 @@
   - for model m, want to maximize $p(m\|x) = \frac{p(x\|m) p(m)}{p(x)}$
     - usually, just take $m$ that maximizes $p(m\|x)$
     - otherwise integrate over $\theta, m$ - *model averaging*
-  - can't use MLE - will always prefer more complex models, which might overfit
 - frequentist
+  - can't use MLE - will always prefer more complex models, which might overfit
   - use some criteria such as KL-divergence, AIC, cross-validation
 
 # Linear regression -- J. 6 (Linear Regression and the LMS Algorithm)
-- batch and on-line algorithms
-  - *batch* - data are available as a block
+
 - *LMS* = *least mean squares*
   - ![](j6_1.png)
   - $y_n = \theta^T x_n + \epsilon_n$
@@ -69,7 +67,7 @@
   - ![](j6_2.png)
   1. geometry - $y-X\theta^*$ must be orthogonal to columns of X
   2. minimize least square cost function and differentiate
-  - either of these approachs yield the *normal eqns*: $X^TX \theta^* = X^Ty$
+  - either of these approaches yield the *normal eqns*: $X^TX \theta^* = X^Ty$
 - SGD
   - SGD converges to normal eqn
   - requires $0 < \rho < 2/\lambda_{max} [X^TX]$
@@ -81,6 +79,7 @@
   - log-likelihood is equivalent to least-squares cost function
 
 # linear classification -- J. 7 (Linear Classification)
+
 - *decision theory* - models don't require finding p(y\|x)
 - regression doesn't work with classification
   - even in binary case, outliers can skew fit
@@ -96,14 +95,10 @@
   5. other exponential models
 
 
-# Nearest neighbor -- R&N 18.8-18.8.3; Hastie, Tibshirani, Friedman (HTF) 13.3.0
-
 # Decision trees -- R&N 18.3; HTF 9.2.1-9.2.3
 - *inductive bias*
   - prefer small trees
   - prefeer tres with high IG near root
-  - since decision tree can search entire space, its bias is a *preference bias*=*search bias*
-  - in contrast, candidate elimination has a *restriction bias*=*language bias*
 - good for certain types of problems
   - instances are attribute-value pairs
   - target function has discrete output values
@@ -151,23 +146,23 @@
   - can bias the tree to favor low-cost attributes
     - ex. divide gain by the cost of the attribute
 - high variance - instability - small changes in training set will result in changes of tree model
-- *bootstrap* - a method of sampling
-- *bagging* = bootstrap aggregation - an ensemble method
-    - training multiple models by randomly drawing new training data
-    - bootstrap with replacement can keep the sampling size the same as the original size
-- voting
-    - consensus: take the majority vote
-    - average: take average of distribution of votes
-        - reduces variance, better for improving more variable (unstable) models
-- random forest -uses decorrelated trees
-    - for each split of each tree, pick only m of the p possible dimensions
-    - when m=p, we are just doing bagging
-      lowering m reduces correlations between the trees
-    - reducing correlation of the trees reduces variance
-
-# Neural nets -- R&N 18.7
+- lots of trees
+    - *bootstrap* - a method of sampling
+    - *bagging* = bootstrap aggregation - an ensemble method
+        - training multiple models by randomly drawing new training data
+        - bootstrap with replacement can keep the sampling size the same as the original size
+    - voting
+        - consensus: take the majority vote
+        - average: take average of distribution of votes
+            - reduces variance, better for improving more variable (unstable) models
+    - random forest - uses decorrelated trees
+        - for each split of each tree, pick only m of the p possible dimensions
+        - when m=p, we are just doing bagging
+          lowering m reduces correlations between the trees
+        - reducing correlation of the trees reduces variance
 
 # Clustering, k-means, mixture of Gaussians -- J. 10 (Mixtures and Conditional Mixtures)
+
 - *latent vars* - values not specified in the observed data
 
 ## unconditional mixture models - density estimation
@@ -182,6 +177,9 @@
   - sometimes initialize K-means w/ GMMs
 
 ## conditional mixture models - regression/classification
+
+- mixture of linear regressions
+- mixtures of logistic regressions
 
 # EM -- J. 11 (EM Algorithm)
 - hill-climbing on log-likelihood achieved indirectly by coordinate ascent in the auxilary function

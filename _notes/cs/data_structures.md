@@ -10,7 +10,7 @@ category: cs
 - *ascii* is 128, extended is 256
 
 ## queue - linkedlist
-- has insert at back (enqueueu) and remove from front (dequeue)
+- has insert at back (enqueue) and remove from front (dequeue)
 ```java
 class Node {
 	Node next;
@@ -20,8 +20,8 @@ class Node {
 ```
 - finding a loop is tricky, use visited
 - reverse a linked list
-	- requires 3 ptrs (one temporary to store next)
-	- return pointer to new end
+  - requires 3 ptrs (one temporary to store next)
+  - return pointer to new end
 
 ## stack
 ```java
@@ -43,10 +43,10 @@ class Stack {
 }
 ```
 - sort a stack with 2 stacks
-	- make a new stack called ans
-	- pop from old
-	- while old element is > ans.peek(), old.push(ans.pop())
-	- then new.push(old element)
+  - make a new stack called ans
+  - pop from old
+  - while old element is > ans.peek(), old.push(ans.pop())
+  - then new.push(old element)
 - stack with min - each el stores min of things below it
 - queue with 2 stacks - keep popping everything off of one and putting them on the other
 - sort with 2 stacks
@@ -57,7 +57,7 @@ class Stack {
     - Leaf: a node with no children
     - Siblings: two nodes with the same parent
     - Height of a node: length of the longest path from that node to a leaf
-     	- Thus, all leaves have height of zero
+       - Thus, all leaves have height of zero
         - Height of a tree: maximum depth of a node in that tree = height of the root
     - Depth of a node: length of the path from the root to that node
     - Path: sequence of nodes n1, n2, ..., nk such that ni is parent of ni+1 for 1 ≤ i ≤ k
@@ -80,7 +80,7 @@ void BST::insert(int x, BinaryNode * & curNode){    //we pass in by reference be
 }
 ```
 - BST Remove
-	- if no children: remove node (reclaiming memory), set parent pointer to null
+  - if no children: remove node (reclaiming memory), set parent pointer to null
         - one child: Adjust pointer of parent to point at child, and reclaim memory
         - two children: successor is min of right subtree
             - replace node with successor, then remove successor from tree
@@ -129,43 +129,43 @@ void BST::insert(int x, BinaryNode * & curNode){    //we pass in by reference be
                 - This child is N, it's sibling is S, it's parent is P
 ## Splay Trees
 - A self-balancing tree that keeps "recently" used nodes close to the top
-	- This improves performance in some cases
-	- Great for caches
-	- Not good for uniform access
+  - This improves performance in some cases
+  - Great for caches
+  - Not good for uniform access
 - Anytime you find / insert / delete a node, you splay the tree around that node
 - Perform tree rotations to make that node the new root node
 - Splaying is Θ(h) where h is the height of the tree
     - At worst this is linear time - Θ(n)
     - We say it runs in Θ(log n) amortized time - individual operations might take linear time, but other operations take almost constant time - averages out to logarithmic time
         - m operations will take m*log(n) time
-        
+
 ## other trees
 - to go through *bst (without recursion) in order*, use stacks
-	- push and go left
-	- if can't go left, pop
-		- add new left nodes
-		- go right	
+  - push and go left
+  - if can't go left, pop
+    - add new left nodes
+      - go right
 - *breadth-first tree*
-	- recursively print only at a particular level each time
-	- create pointers to nodes on the right
+  - recursively print only at a particular level each time
+  - create pointers to nodes on the right
 - *balanced tree*  = any 2 nodes differ in height by more than 1
-	- (maxDepth - minDepth) <=1
+  - (maxDepth - minDepth) <=1
 - *trie* is an infix of the word “retrieval” because the trie can find a single word in a dictionary with only a prefix of the word
-	- root is empty string
-	- each node stores a character in the word
-	- if ends, full word
-		- need a way to tell if prefix is a word -> each node stores a boolean isWord
+  - root is empty string
+  - each node stores a character in the word
+  - if ends, full word
+    - need a way to tell if prefix is a word -> each node stores a boolean isWord
 
 # heaps
 - used for *priority queue*
 - peek(): just look at the root node
 - add(val): put it at correct spot, percolate up
-	- percolate - Repeatedly exchange node with its parent if needed
-	- expected run time: ∑i=1..n 1/2^n∗n=2
+  - percolate - Repeatedly exchange node with its parent if needed
+  - expected run time: ∑i=1..n 1/2^n∗n=2
 - pop(): put last leaf at root, percolate down
-	- Remove root (that is always the min!)
-	- Put "last" leaf node at root
-	- Repeatedly find smallest child and swap node with smallest child if needed.
+  - Remove root (that is always the min!)
+  - Put "last" leaf node at root
+  - Repeatedly find smallest child and swap node with smallest child if needed.
 - Priority Queue - Binary Heap is always used for Priority Queue
     1. insert
         - inserts with a priority
@@ -222,8 +222,9 @@ void BST::insert(int x, BinaryNode * & curNode){    //we pass in by reference be
     - isEmpty()
     - makeEmpty()
     - size()
-    
-# Hash Tables
+
+# Hash tables
+
 - java: load factor = .75, default init capacity: 16, uses buckets
 - string hash function: s[0]*31^(n-1) + s[1]*31^(n-2) + ... + s[n-1] where n is length mod (table_size)
     - Standard set of operations: find, insert, delete
@@ -280,7 +281,7 @@ void BST::insert(int x, BinaryNode * & curNode){    //we pass in by reference be
 - Open Addressing: The general idea with all of them is that, if a spot is occupied, to 'probe', or try, other spots in the table to use
     - 3 Types:
         - General: pi(k) = (hash(k) + f(i)) mod table_size
-        1.Linear Probing: f(i) = i
+          1.Linear Probing: f(i) = i
             - Check spots in this order :
                 - hash(k)
                 - hash(k)+1
@@ -292,13 +293,13 @@ void BST::insert(int x, BinaryNode * & curNode){    //we pass in by reference be
                 - cannot have a load factor > 1, as you get close to 1, you get a lot of collisons
                 - clustering - large blocks of occupied cells
                 - "holes" when an element is removed
-        2.Quadratic:  f(i) = i^2
+                  2.Quadratic:  f(i) = i^2
             - hash(k)
             - hash(k)+1
             - hash(k)+4
             - hash(k)+9
             - you move out of clusters much quicker
-        3.Double hashing: i * hash2(k)
+            3.Double hashing: i * hash2(k)
             - hash2 is another hash function - typically the fastest
             - problem where you loop over spots that are filled - hash2 yields a factor of the table size
                 - solve by making table size prime

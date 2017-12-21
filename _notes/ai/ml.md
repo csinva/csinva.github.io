@@ -20,7 +20,7 @@ category: ai
 - ranks features or feature subsets independently of the predictor
 - univariate methods (consider one variable at a time)
   - ex. T-test of y for each variable
-  - ex. Pearson correlation coefficient - this can only capture linear dependencies
+  - ex. pearson correlation coefficient - this can only capture linear dependencies
   - mutual information - covers all dependencies
 - multivariate methods
   - features subset selection
@@ -43,7 +43,7 @@ category: ai
 # Unsupervised Learning
 - labels are not given
 - intra-cluster distances are minimized, inter-cluster distances are maximized
-- Distance measures
+- distance measures
   - symmetric D(A,B)=D(B,A)
   - self-similarity D(A,A)=0
   - positivity separation D(A,B)=0 iff A=B
@@ -140,7 +140,5 @@ category: ai
 ## multinomial
 - $L(\theta)=P(Train\vert Multinomial(\theta))=P(d_1,...,d_n\vert \theta_1,...,\theta_p)$ where d is a document of counts x
 - =$\prod_i^n P(d_i\vert \theta_1,...\theta_p)=\prod_i^n factorials \cdot \theta_1^{x_1},...,\theta_p^{x_p}$- ignore factorials because they are always same
-  \begin{itemize}
-- require $\sum \theta_i = 1$
-  \end{itemize}
+  - require $\sum \theta_i = 1$
 - $\implies \theta_i = \frac{\sum_{j=1}^n x_{ij}}{N}$ where N is total number of words in all docs

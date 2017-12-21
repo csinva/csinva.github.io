@@ -46,9 +46,11 @@
 - Eric L. Schwartz
 
 # personal
-
 - *James DiCarlo*
 - *Liam Paninski* - decoding
 - *Jack Gallant* - v4, fmri
 - *Bin Yu* - model consistency
 - *Sebastian Seung* - connectomes
+
+# experimental
+- *Susumu Tonegawa* - memory

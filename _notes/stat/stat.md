@@ -6,17 +6,24 @@ category: stat
 ---
 * TOC
 {:toc}
-# Resources
+- *material based on probability and statistics cookbook by matthias vallentin*
 
-- material from probability and statistics cookbook by matthias vallentin
+# probability
 
-# Properties
+- Mutually Exclusive: $P(AB)=0$
+- Independent: $P(AB) = P(A)P(B)$
+  - A and B conditional independence given C: $$P(AB\vert C) = P(A\vert C) P(B\vert C)$$
+- Conditional (Bayes' thm): $P(A\|B) = \frac{P(AB)}{P(B)} = \frac{P(B|A)P(A)}{\sum P(B|A)P(A)}$
 
-- Mutually Exclusive: P(AB)=0
-- Independent: P(AB) = P(A)P(B)
-- Conditional: P(A \| B) = $\frac{P(AB)}{P(B)}$
+# distributions
 
-# Measures
+- PMF: $f_X(x) = P(X=x)$
+- PDF: $P(a \leq X \leq b) = \int_a^b f(x) dx$
+
+![distrs](assets/stat/distrs.png)
+
+# expectation and variance
+
 - $E[X] = \int P(x)x dx$
 - $V[X] = E[(x-\mu)^2] = E[x^2]-E[x]^2$
   - for unbiased estimate, divide by n-1
@@ -34,7 +41,20 @@ category: stat
 - $V[h(X)] \approx h'(E[X])^2 V[X]$
 - skewness = $E[(\frac{X-\mu}{\sigma})^3]$
 
-# Moment-generating function
+# inequalities
+
+- *Cauchy-Schwarz*: $E[XY]^2 \leq E[X^2] E[Y^2]$
+- *Markov's*
+  - $P(X \geq a) \leq \frac{E[X]}{a}$
+  - X is typically running time of the algorithm
+  - if we don't have E[X], can use upper bound for E[X]
+- *Chebyshev's*
+  - $P(\vert X-\mu\vert  \geq a) \leq \frac{Var[X]}{a^2}$
+  - utilizes the variance to get a better bound
+- *Jensen's*: $f(E[X]) \leq E[f(X)]$ for convex f
+
+# moment-generating function
+
 - $M_X(t) = E(e^{tX})$
 - $E(X^r) = M_X ^ {(r )} (0)$
 - sometimes you can use $ln(M_x(t))$ to find $\mu$ and $V(X)$
@@ -47,17 +67,10 @@ category: stat
 
   $g(y_i) = \frac{n!}{(i-1)!(n-i)!}(F(y_i))^{i-1}(1-F(y_i))^{n-1}f(y_i)​$
 
-# Distributions
-![distrs](assets/stat/distrs.png)
-
 # Statistics and Sampling Distributions
 
-- can calculated expected values of sample mean and sample $\sigma$ 2 ways: prob. rules and simulation (for simulation fix n and repeat k times)
-- CLT - random samples have a normal distr. if n is large
-- CLT: $lim_{n->\infty}P(\frac{\bar{X}-\mu}{\sigma/\sqrt{n}}\leq z)=P(Z\leq z) = \Phi(z)$
-- CLT $\to Y = X_1*..*X_n$ has approximately lognormal distribution if all $P(X_i>0)$
+## Law of Large Numbers
 
-### Law of Large Numbers 
 - $ E(\bar{X}-\mu)^2 \to 0$ as $n \to \infty,$
 - $ P(\|\bar{X}-\mu\| \geq \epsilon) \to 0$ as $n \to \infty$
 - $T_o = X_1+...+X_n, E(T_o) = n\mu , V(T_o) = n\mu ^2$
@@ -69,57 +82,40 @@ category: stat
 - t - to use the sample standard deviation to measure precision for the mean X, we combine the square root of a chi-squared variable with a normal variable
 - f - compare two independent sample variances in terms of the ratio of two independent chi-squared variables.
 
-# Moment-generating function​
+## central limit thm
 
-- sometimes you can use  to find  and 
-- Y = aX+b 
-- Y =  if  independent
-- probability plot  - straight line is better - plot ([100(i-.5)/n]the percentile, ith ordered observation)
-- ordered statistics - variables  such that  is the ith smallest
-- If X has pdf f(x) and cdf F(x), , 
-  - If joint, 
+- CLT - random samples have a normal distr. if n is large
+- CLT  has approximately lognormal distribution if all
+- CLT: $lim_{n->\infty}P(\frac{\bar{X}-\mu}{\sigma/\sqrt{n}}\leq z)=P(Z\leq z) = \Phi(z)$
+- CLT $\to Y = X_1*..*X_n$ has approximately lognormal distribution if all $P(X_i>0)$
 
-# Point Estimation
+# Bias and point Estimation
 
-- point estimate - single number prediction
-- point estimator - statistic that predicts a parameter
-- MSE - mean squared error  - $E[(\hat{\theta}-\theta)^2]$ = $V(\hat{\theta})+[E(\hat{\theta})-\theta]^2$
-- *bias*: $E(\hat{\theta})=\theta$
+- *point estimator* $\hat{\theta}$ - statistic that predicts a parameter
+  - *point estimate* - single number prediction
+- *bias*: $E(\hat{\theta}) - \theta$
   - after unbiased we want MVUE (minimum variance unbiased estimator)
+  - need *inductive inference property*: must make prior assumptions in order to classify unseen instances
+  - define *inductive bias* of a learner as the set of additional assumptions B sufficient to justify its inductive inferences as deductive inferences
+  - *preference bias* = *search bias* - models can search entire space (e.g. NN, decision tree)
+  - *restriction bias* = *language bias* - models that can't express entire space (e.g. linear)
+  - more complex models (more nonzero parameters) have lower bias, higher variance
+    - if high bias, train and test error will be very close (model isn't complex enough)
+- *consistency*: $\hat{\theta_n} \to \theta$
+- standard error: $\sigma_{\hat{\theta}} = s_{\hat{\sigma}} = \sqrt{Var(\hat{\theta)}}$ 
 - *bias/variance trade-off*
-  - pf
+  - MSE - mean squared error  - $E[(\hat{\theta}-\theta)^2]$ = $V(\hat{\theta})+[E(\hat{\theta})-\theta]^2$
     - ![mse](assets/stat/mse.png)
   - defs
     - bias sometimes called approximation err
     - variance called estimation err
-  - ex. ***estimator for kde***: $\hat{f_{n, h}(x)} = \frac{1}{n}\sum_i K_h (X_i - x)$
-    - smooths voxel-wise output
-    - $bias = E[\hat{f}(x)] - f(x) = f''(x)/2 \int t^t K(t) dt \cdot h^2$ + smaller order
-    - $variance =Var[\hat{f}(x)] = 1/n^2 \sum Var[Y_i] + \frac{2}{n^2} \sum_{i<j} Cov(Y_i, Y_j)$
-  - ex. $mse = E[\hat{f}_h(x) - f(x)]^2 = bias^2 + variance$
-    - define *risk* = mean L2 err = $\int mse(x) dx$
-      - minimizing this yields an asymptotically optimal bandwidth
-- Estimators: $ \tilde{X} $ = Median, $X_e$ = Midrange((max+min)/2), $X_{tr(10)}=$ 10 percent trimmed mean (discard smallest and largest 10 percent)
-- standard error: $\sigma_{\hat{\theta}} = s_{\hat{\sigma}} = \sqrt{Var(\hat{\theta)}}$ - determines *consistency*
-  - consistent when converges in probability to the true value of the parameter
-- $S^2 (Unbiased)= \sum{\frac{(X_i-\bar{X})^2}{n-1}}$
-- $\hat{\sigma^2} (MLE) = \sum{\frac{(X_i-\mu)^2}{n}}$
-- Can calculate estimators for a distr. by calculating moments
-- A statistic T = t(X1, . . ., Xn) is said to be sufficient for making inferences about a parameter y if the joint distribution of X1, X2, . . ., Xn given that T = t does not depend upon y for every possible value t of the statistic T.
-- Neyman Factorization Thm - $t(X_1,...,X_n)$ is sufficient $\leftrightarrow f = g(t,\theta)*h(x_1,...,x_n)$
-- Estimating h($\theta$), if U is unbiased, T is sufficient for $\theta$, then use $U^* = E(U\|T)$
-- Fisher Information $I(\theta)=V[\frac{\partial}{\partial\theta}ln(f(x;\theta))]$ (for n samples, multiply by n)
-- If T is unbiased estimator for $\theta$ then $V(T) \geq \frac{1}{nI(\theta)}$
-- Efficiency of T is ratio of lower bound to variance of T
-- hypergeometric - number of success in n draws of (without replacement) of sample with m successes and N-m failures
-- negative binomial - fix number of successes, X = number of trials before rth success
-- normal - standardized: $\frac{X-\mu}{\sigma}$ (mean 0 and std.dev.=1)
-- gamma: $ \Gamma (a) = \int_{0}^{\infty} x^{a-1}e^{-x}dx$, $\Gamma(1/2) = \sqrt{\pi}$
 
 ## MLE
-- MLE - maximize $f(x_1,...,x_n;\theta_1,...\theta_m)$ - agreement with chosen distribution - often take ln(f) and then take derivative $\approx$ MVUE, but can be biased
+
+- MLE - maximize $f(x_1,...,x_n;\theta_1,...\theta_m)​$ - agreement with chosen distribution - often take ln(f) and then take derivative $\approx​$ MVUE, but can be biased
 - $\hat{\theta} = $argmax $  L(\theta)$
     - Likelihood $L(\theta)=P(X_1...X_n\|\theta)=\prod_{i=1}^n P(X_i\|\theta)$
     - $logL(\theta)=\sum log P(X_i\|\theta)$
-    - to maximize, set $\frac{\partial LL(\theta)}{\partial \theta} = 0​$
+    - to maximize, set $\frac{\partial log \: L(\theta)}{\partial \theta} = 0$
 - Use $\hat{\theta} = $argmax $  P(\text{Train} \| {Model}(\theta))$
+- Fisher Information $I(\theta)=V[\frac{\partial}{\partial\theta}ln(f(x;\theta))]$ (for n samples, multiply by n)

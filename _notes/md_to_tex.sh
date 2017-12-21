@@ -1,1 +1,1 @@
-pandoc stat_class_notes.md -s --latex-engine=xelatex -o ex.tex
+pandoc *.md -s --latex-engine=xelatex -o out.tex
