@@ -7,15 +7,17 @@ category: ai
 
 * TOC
 {:toc}
+*material from Ruseel & Norvig "Artificial Intelligence" 3rd edition*
+
 # decisions
 
-## game trees -- R&N 5.2-5.5
+## game trees - R&N 5.2-5.5
 
 - *minimax algorithm*
   - *ply* - half a move in a tree
   - for multiplayer, the backed-up value of a node n is the vector of the successor state with the highest value for the player choosing at n
   - time complexity - $O(b^m)$
-  - space complexity - O(bm) or even O(m)
+  - space complexity - $O(bm)$ or even $O(m)$
 - *alpha-beta* pruning cut in half the exponential depth
   - once we have found out enough about n, we can prune it
   - depends on move-ordering
@@ -25,8 +27,8 @@ category: ai
   - can evaluate nodes with a heuristic and cutoff before reaching goal
   - heuristic uses features
   - want *quiescent search* - consider if something dramatic will happen in the next ply
-  - *horizon effect* - a position is bad but isn't apparent for a few moves
-  - *singular extension* - allow searching for certain specific moves that are always good at deeper depths
+    - *horizon effect* - a position is bad but isn't apparent for a few moves
+    - *singular extension* - allow searching for certain specific moves that are always good at deeper depths
   - *forward pruning* - ignore some branches
     - *beam search* - consider only n best moves
     - PROBCUT prunes some more
@@ -43,11 +45,11 @@ category: ai
 
 
 ## utilities / decision theory -- R&N 16.1-16.3
-- $P(RESULT(a)=s' \vert a,e)$
+- $P[RESULT(a)=s' \vert a,e]$
   - s - state, observations e, action a
 - utility function U(s)
-- rational agent should choose action  with *maximum expected utility*
-  - expected utility $EU(a\vert e) = \sum_{s'} P(RESULT(a)=s' \vert a,e) U(s')$
+- rational agent should choose action with *maximum expected utility*
+  - expected utility $EU(a\vert e) = \sum_{s'} P[RESULT(a)=s' \vert a,e] U(s')$
 - notation
   - A>B - agent prefers A over B
   - A~B - agenet is indifferent between A and B
@@ -71,15 +73,14 @@ category: ai
   - *micromort* - one in a million chance of death
   - *QALY* - quality-adjusted life year
 - money
-  - agenets exhibits *monotonic preference* for more money
+  - agents exhibits *monotonic preference* for more money
   - gambling has expected monetary value = EMV
   - when utility of money is sublinear - *risk averse*
     - value agent will accept in lieu of lottery = *certainty equivalent*
     - EMV - certainty equivalent = *insurance premium*
   - when supralinear - *risk-seeking* or linear - *risk-neutral*
 - *optimizer's curse* - tendency for E[utility] to be too high
-- *descriptive theory* - how actual agents work
-  - decision theory - *normative theory*
+- *descriptive theory* - how actual agents work vs *normative theory* - how idealized agents work
   - *certainty effect* - people are drawn to things that are certain
   - *ambiguity aversion*
   - *framing effect* - wording can influence people's judgements
@@ -104,7 +105,7 @@ category: ai
 ### the value of information
 - *information value theory* - enables agent to choose what info to acquire
   - observations only effect agents belief state
-  - value of info = expected value between best actions before and after info is obtained
+  - value of info = difference in best expected value with/without info
 - *value of perfect information VPI* - assume we can obtain exact evidence on some variable $e_j$
   - $VPI_e(E_j) = \left[\sum_k P(E_j = e_{jk} \vert e) \: EU(\alpha_{ejk}  \vert  e, E_j = e_{jk})\right] - EU(\alpha \vert e)$
   - info is more valuable when it is likely to cause a change of plan
@@ -117,8 +118,8 @@ category: ai
 
 - *fully observable* - agent knows its state
 - *markov decision process*
-  - set of states
-  - set of actions
+  - set of states s
+  - set of actions a
   - transition model $P(s' \vert s,a)$
   - reward function R(s)
   - solution is policy $\pi^* (s)$ - what action to do in state s
@@ -143,7 +144,7 @@ category: ai
   - recalculate several times with *Bellman update* to approximate solns to bellman eqn
     = $U_{i+1}(s) = R(s) + \gamma \: \underset{a}{max} \sum_{s'} P(s' \vert s, a) U_i(s')$
 - value iteration eventually converges
-  - *contraction* - function of one variable that when applied to 2 different inputs in turn produces 2 output values that are closer together than the original inputs
+  - *contraction* - function that brings variables together
     - contraction only has 1 fixed point
   - Bellman update is a contraction on the space of utility vectors and therefore converges
   - error is reduced by factor of $\gamma$ each iteration
@@ -177,7 +178,7 @@ category: ai
       - remove *dominated plans*
   - generally this is far too inefficient
 - *dynamic decision network* - online agent ![](assets/ai/online_pomdp.jpg) 
-  - still don't really understand this
+  - ***still don't really understand this***
 
 ## reinforcement learning
 - *reinforcement learning* - use observed rewards to learn optimal policy for the environment
@@ -187,7 +188,6 @@ category: ai
   2. *Q-learning agent*
     - learns *action-utility function* = *Q-function* maps directly from actions to utility
   3. *reflex agent* - learns policy that maps directly from states to actions
-    Ian Oldenburg
 - after learning, can the agent make predictions about what the next state and reward will be before it takes each action? 
   - If it can, then it’s a model-based RL algorithm. 
   - if it cannot, it’s a model-free algorithm.
@@ -196,15 +196,15 @@ category: ai
 - given policy $\pi$, learn $U^\pi (s)$
 - like policy evaluation, but transition model / reward function are unknown
 - *direct utility estimation* - run a bunch of trials to sample utility = expected total reward from each state
-- *adaptive dynamic programming* (ADP) - learn transition model and rewards, and then plug into Bellman eqn
-  - *prioritized sweeping* - prefers to make adjustements to states whose likely succesors have just undergone a large adjustment in their own utility estimates
 - two ways to add prior
   1. *Bayesian reinforcement learning* - assume a prior P(h) on the transition model
     - use prior to calculate $P(h \vert e)$
-    - let $u_h^\pi$ be expected utility avareaged over all possible start states, obtained by executing policy $\pi$ in model h
+    - let $u_h^\pi$ be expected utility averaged over all possible start states, obtained by executing policy $\pi$ in model h
     - $\pi^* = \underset{\pi}{argmax} \sum_h P(h \vert e) u_h^\pi$
   2. give best outcome in the worst case over H (from *robust control theory*)
     - $\pi^* = \underset{\pi}{argmax}\:  \underset{h}{min} \: u_h^\pi$
+- *adaptive dynamic programming* (ADP) - learn transition model and rewards, and then plug into Bellman eqn
+  - *prioritized sweeping* - prefers to make adjustements to states whose likely succesors have just undergone a large adjustment in their own utility estimates
 - *temporal-difference learning* - adjust utility estimates towards the ideal equilibrium that holds locally when the utility estimates are correct
   - $U^\pi = U^\pi (s) + \alpha \left[R(s) + \gamma \:U^\pi (s') - U^\pi (s)\right]$
   - like a crude approximation of ADP
@@ -220,10 +220,11 @@ category: ai
     - *Gittins index* - function of number of pulls / payoff
 
 ### learning action-utility function
+
 - U(s) = $\underset{a}{max} \: Q(s,a)$
   - does require $P(s' \vert s,a)$ if we use ADP
-  - doesn't require knowing $P(s' \vert s,a)$ if we use TD: $Q(s,a) = Q(s,a) + \alpha (R(s) + \gamma \underset{a'}{max} Q(s', a') - Q(s,a))$
-- *SARSA* is related: $Q(s,a) = Q(s,a) + \alpha (R(s) + \gamma Q(s', a') - Q(s,a))$
+  - doesn't require knowing $P(s' \vert s,a)$ if we use TD: $Q(s,a) = Q(s,a) + \alpha [R(s) + \gamma \: \underset{a'}{max} Q(s', a') - Q(s,a)]$
+- *SARSA* is related: $Q(s,a) = Q(s,a) + \alpha [R(s) + \gamma \: Q(s', a') - Q(s,a)]$
   - here, a' is action actually taken
   - SARSA is *on-policy* while Q-learning is *off-policy*
 
@@ -236,7 +237,7 @@ category: ai
 - keep twiddling the policy as long as it improves, then stop
   - store one Q-function (parameterized by $\theta$) for each action
   - $\pi(s) = \underset{a}{max} \: \hat{Q}_\theta (s,a)$
-    - this is discontinunous, instead often use *stochastic policy* representation (ex. softmax for $\pi_theta (s,a)$)
+    - this is discontinunous, instead often use *stochastic policy* representation (ex. softmax for $\pi_\theta (s,a)$)
 - learns $\theta$ that results in good performance
   - Q-learning learns actual Q* function - coulde be different (scaling factor etc.)
 - to find $\pi$ maximize *policy value* $p(\theta)$
@@ -274,10 +275,11 @@ category: ai
 - theorem properties
   - *satisfiable* - true under some model
   - *validity* - *tautalogy* - true under all models
-  - *monotonicity* - set of impliciations can only increase as info is added to the knowledge base
+  - *monotonicity* - set of implications can only increase as info is added to the knowledge base
     - if $KB \implies A$ then $KB \land B \implies A$
 
 ## theorem proving
+
 - *resolution rule* - resolves different rules with each other - leads to complete inference procedure
 - *CNF* - *conjunctive normal form* - conjunction of clauses 
   - anything can be expressed as this
@@ -315,7 +317,7 @@ category: ai
     - evaluation function can just count number of unsatisfied clauses (MIN-CONFLICTS algorithm for CSPs)
     - WALKSAT - randomly chooses between flipping based on MIN-CONFLICTS and randomly
       - runs forever if no soln
-  - *underconstrained* problems are easy to find solns too
+  - *underconstrained* problems are easy to find solns
   - *satisfiability threshold conjecture* - for random clauses, probability of satisfiability goes to 0 or 1 based on ratio of clauses to symbols
     - hardest problems are at the threshold
     - state variables that change over time also called *fluents*

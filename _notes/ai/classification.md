@@ -144,7 +144,8 @@ category: ai
 - want Posterior $P(C\vert X) = \frac{P(X\vert C)(P(C)}{P(X)}$ 
 - MAP rule - maximum A Posterior rule
   - use Prior P(C)
-  - using x, predict $C^*=\text{argmax}_C P(C\vert X_1,...,X_p)=\text{argmax}_C P(X_1,...,X_p\vert C) P(C)$ - generally ignore denominator
+  - given x, predict $C^*=\text{argmax}_C P(C\vert X_1,...,X_p)=\text{argmax}_C P(X_1,...,X_p\vert C) P(C)$
+    - generally ignore constant denominator
 - naive assumption - assume that all input attributes are conditionally independent given C
   - $P(X_1,...,X_p\vert C) = P(X_1\vert C)\cdot...\cdot P(X_p\vert C) = \prod_i P(X_i\vert C)$ 
 - learning
@@ -157,44 +158,28 @@ category: ai
 - naive: $\vert C\vert  \cdot (\vert X_1\vert  + \vert X_2\vert  + ... + \vert X_p\vert )$ distributions
 - otherwise: $\vert C\vert \cdot (\vert X_1\vert  \cdot \vert X_2\vert  \cdot ... \cdot \vert X_p\vert )$
 - testing
-  \begin{itemize}
-- $P(X\vert c)$ - look up for each feature $X_i\vert C$ and try to maximize
-  \end{itemize}
+  - $P(X\vert c)$ - look up for each feature $X_i\vert C$ and try to maximize
 - smoothing - used to fill in 0s
-  \begin{itemize}
-- $P(x_i\vert c_j) = \frac{N(x_i, c_j) +1}{N(c_j)+\vert X_i\vert }$ 
-- then, $\sum_i P(x_i\vert c_j) = 1$
-  \end{itemize}
+  - $P(x_i\vert c_j) = \frac{N(x_i, c_j) +1}{N(c_j)+\vert X_i\vert }$ 
+  - then, $\sum_i P(x_i\vert c_j) = 1$
 
 ### Gaussian classifiers
 - distributions
-  \begin{itemize}
-- Normal $P(X_j\vert C_i) = \frac{1}{\sigma_{ij} \sqrt{2\pi}} exp\left( -\frac{(X_j-\mu_{ij})^2}{2\sigma_{ij}^2}\right)$- requires storing $\vert C\vert \cdot p$ distributions
-- Multivariate Normal $\frac{1}{(2\pi)^{D/2}} \frac{1}{\vert \Sigma\vert ^{1/2}} exp\left(-\frac{1}{2} (x-\mu)^T \Sigma^{-1} (x-\mu)\right)$where $\Sigma$ is covariance matrix
-  \end{itemize}
-  \end{itemize}
-  \begin{itemize}
+  - Normal $P(X_j\vert C_i) = \frac{1}{\sigma_{ij} \sqrt{2\pi}} exp\left( -\frac{(X_j-\mu_{ij})^2}{2\sigma_{ij}^2}\right)$- requires storing $\vert C\vert \cdot p$ distributions
+  - Multivariate Normal $\frac{1}{(2\pi)^{D/2}} \frac{1}{\vert \Sigma\vert ^{1/2}} exp\left(-\frac{1}{2} (x-\mu)^T \Sigma^{-1} (x-\mu)\right)$where $\Sigma$ is covariance matrix
 - decision boundary are points satisfying $P(C_i\vert X) = P(C_j\vert X)$
 - LDA - linear discriminant analysis - assume covariance matrix is the same across classes
-  \begin{itemize}
-- Gaussian distributions are shifted versions of each other
-- decision boundary is linear
-  \end{itemize}
+  - Gaussian distributions are shifted versions of each other
+  - decision boundary is linear
 - QDA - different covariance matrices
-  \begin{itemize}
-- estimate the covariance matrix separately for each class C
-- decision boundaries are quadratic
-- fits data better but has more parameters to estimate
-  \end{itemize}
+  - estimate the covariance matrix separately for each class C
+  - decision boundaries are quadratic
+  - fits data better but has more parameters to estimate
 - Regularized discriminant analysis - shrink the separate covariance matrices towards a common matrix
-  \begin{itemize}
-- $\Sigma_k = \alpha \Sigma_k + (1-\alpha) \Sigma$
-  \end{itemize}
+  - $\Sigma_k = \alpha \Sigma_k + (1-\alpha) \Sigma$
 - treat each feature attribute and class label as random variables
-  \begin{itemize}
-- we assume distributions for these
-- for 1D Gaussian, just set mean and var to sample mean and sample var
-  \end{itemize}
+  - we assume distributions for these
+  - for 1D Gaussian, just set mean and var to sample mean and sample var
 
 ### Text classification
 - bag of words - represent text as a vector of word frequencies X

@@ -4,7 +4,8 @@ section-type: notes
 title: Optimization
 category: math
 ---
-
+* TOC
+{:toc}
 # convex optimization
 
 ## convex sets (boyd 2)

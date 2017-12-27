@@ -19,6 +19,8 @@ category: ai
   - KNN minimizes L2 loss: $\hat{f}(X)=E(Y\vert X)$ 
 - $EPE[f(X)]$ = $noise^2+bias^2+variance$
   - noise - unavoidable
+- classification
+  - cross-entropy
 - accuracy-based
   - accuracy = number of correct classifications / total number of test cases
   - balanced accuracy = 1/2 (TP/P + TN/N)

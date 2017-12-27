@@ -6,6 +6,8 @@ category: ai
 ---
 [TOC]
 
+*Material from Russel and Norvig "Artifical Intelligence" 3rd Edition*
+
 # overview
 
 - *mixture models* - discrete latent variable vs. *factor analysis models* - continuous latent variable
@@ -24,29 +26,29 @@ category: ai
 
 # bayesian networks - R & N 14.1-5
 
-- represented by directed acyclic graph
+1. purpose
+   1. encodes conditional independence relationships
+   2. compact representation of joint prob. distr. over the variables
+2. learning
+   1. could get an expert to design Bayesian network
+   2. otherwise, have to learn it from data
 
-1. could get an expert to design Bayesian network
-2. otherwise, have to learn it from data
+- properties
+  - each node is random variable
+  - weights as tables of conditional probabilities for all possibilities
+  - represented by directed acyclic graph
 
-- each node is random variable
-- weights as tables of conditional probabilities for all possibilities
 
-1. encodes conditional independence relationships
-2. compact representation of joint prob. distr. over the variables
-
-- *markov condition* - given its parents, a node is conditionally independent of its non-descendants
-- therefore joint distr: $P(X_1 = x_1,...X_n=x_n)=\prod_{i=1}^n P(X_i = x_i \vert  Parents(X_i))$
-- *inference* - using a Bayesian network to compute probabilities
-  - sometimes have unobserved variables
-
-- BN has no redundancy -> no chance for inconsistency
+- joint distr: $P(X_1 = x_1,...X_n=x_n)=\prod_{i=1}^n P(X_i = x_i \vert  Parents(X_i))$
+  - *Markov condition* - given its parents, a node is conditionally independent of its non-descendants
+  - *topological independence* - a node is independent of all other nodes given its parents, children, and children's parents = *markov blanket*
+    - a node is conditionally independent of its non-descendants given its parents
+- *inference* - compute probs with some observed vars
+  - BN has no redundancy -> no chance for inconsistency
 - forming a BN: keep adding nodes, and only previous nodes are allowed to be parents of new nodes
   - want *causal model* - causes are first, effects are later
   - *diagnostic model* - links from symptoms to causes
     - requires more dependencies
-- *topological independence* - a node is independent of all other nodes given its parents, children, and children's parents = *markov blanket*
-  - a node is conditionally independent of its non-descendants given its parents
 - can have a *noisy-OR* relation - only requires k params not $2^k$
 
 ## hybrid BN (both continuous & discrete vars)
@@ -54,8 +56,8 @@ category: ai
 - for continuous variables, can sometimes discretize
 1. when parents are discrete/continuous and child is continuous can use *linear Gaussian*
   - h is continuous, s is discrete; a,b,$\sigma$ all change when s changes
-  - P(c\|h,s) = $N(a \cdot h + b, \sigma^2)$, so mean is linear function of h
-  - if discrete parents, but not children, network defines *conditional Gaussian* - multivariate Gaussian given assignment to discrete variables
+  - $P(c\|h,s) = N(a \cdot h + b, \sigma^2)$, so mean is linear function of h
+  - if discrete parents, but continuous children, network defines *conditional Gaussian* - multivariate Gaussian given assignment to discrete variables
   - if only continuous variables, then linear Guassian yields a *multivariate Gaussian* over all the variables, and a multivariate posterior distribution (given any evidence)
 2. continuous parents w/ discrete children
   1. *probit distr* - $P(buys\|Cost=c) = \phi((-c+\mu)/\sigma)$ - integral of standard normal distr
@@ -70,21 +72,21 @@ category: ai
 - *polytree*=*singly connected network* - time and space complexity of exact inference is linear in the size of the network
   - holds even if the number of parents of each node is bounded by a constant
 1. *enumeration* - just try everything
-  - $O(n 2^n)$
+  - $O(n \cdot 2^n)$
   - ENUMERATION-ASK evaluates in depth-first order: $O(2^n)$
 2. *variable elimination* - dynamic programming
   - every variable that is not an ancestor of a query variable or evidence variable is irrelevant to the query
   - picking order can be tricky
 3. *clustering algorithms* = *join tree* algorithms
   - join individual nodes in such a way that resulting network is a polytree
-  - can compute posterior probabilities in O(n)
+  - can compute posterior probabilities in $O(n)$
     - however, conditional probability tables may still be exponentially large
 
 ## approximate inferences in BNs
 
 - randomized sampling algorithms = *monte carlo* algorithms
 1. *direct sampling* methods
-  - sample network in topolgical order
+  - sample network in topological order
     - more samples is better
   - *rejection sampling* - produces samples from a hard-to-sample distr. given an easy-to-sample distr.
     - want P(D\|A)
@@ -121,8 +123,8 @@ category: ai
 ## directed
 
 - write p(x) or P(X)
-  - $p(x_1, ..., x_n) = \prod_i p (x_i \| x_{\pi_i})$
-- let $V_i$ be set of all nodes that appear earlier (topologically) than $i$ in the ordering excluding the parents $\pi_i$
+  - $p(x_1, ..., x_n) = \prod_i p (x_i \| x_{\pi_i})$ where $\pi_i$ are the parents
+- let $V_i$ be set of all nodes that appear earlier (topologically) than $i$ in the ordering excluding $\pi_i$
   - $X_i \perp X_{V_i} \| x_{\pi_i}$
 - conditional independencies will always be present
   - sometimes conditional dependencies can also be independent (if we pick p(y\|x) to not actually depend on x)
@@ -130,7 +132,7 @@ category: ai
   -  ![](assets/graphical_models/j2_1.png) 
   -  in fact any descendant of the base of the v suffices for explaining away
 - *d-separation* = directed separation
-- *Bayes ball algorithm* - is $X_A \perp X_B \| X_C$
+- *Bayes ball algorithm* - is $X_A \perp X_B \| X_C$?
   - initialize
     - shade $X_C$
     - place ball at each of $X_A$
@@ -144,7 +146,7 @@ category: ai
 - $X_A \perp X_C \| X_B$ if the set of nodes $X_B$ separates the nodes $X_A$ from $X_C$
 - can't convert directed / undirected
 - *clique* - fully connected
-- *maximal clique* - cannot be extended
+  - *maximal clique* - cannot be extended
 - potential function $\psi_{X_C} (x_C)$ function on possible realizations $x_C$ of the maximal clique $X_C$
   - non-negative, but not a probability
   - commonly let these be exponential, yielding *energy* and *Boltzmann distribution*
@@ -190,7 +192,7 @@ category: ai
 
 - *tree* - undirected graph in which there is exactly one path between any pair of nodes
   - alternative defn? - every node has exactly one parent
-  - $$p(x) = \frac{1}{Z} \left( \prod_{i \in V} \psi (x_i) \prod_{(i,j)\in E} \psi (x_i,x_j) \right)$$
+  - $$p(x) = \frac{1}{Z} \left[ \prod_{i \in V} \psi (x_i) \prod_{(i,j)\in E} \psi (x_i,x_j) \right]$$
   - if directed, then moralized graph should be a tree
    - can once again use evidence potentials for conditioning
 - eliminate algorithm through message-passing
@@ -274,21 +276,21 @@ category: ai
   - B = emission probabilities $P(x_1\|y_1)$
     - each state stochastically emits an observation
 
-  - details
-    - given $(\pi,A,B)$ and $\mathbf{x}$
-      1. calculate probability of $\mathbf{x}$
-      2. calculate most probable $\mathbf{y}$
-      - use MAP:  $\hat{y}=\underset{y}{argmax} \: P(y\|x,\pi, A,B)=\underset{y}{argmax} \: P(y \land x \| \pi, A,B)$
-    - use *Viterbi algorithm*
-      1. initial for each state s
-        - $score_1(s) = P(s) P(x_1 \| s) = \pi_s B_{x_1,s}$
-      2. recurrence - for i = 2 to n, calculate scores using previous score only
-        - $score_i(s) = \underset{y_i-1}{max} P(s\|y_{i-1}) P(x_i \| s) \cdot score_{i-1}(y_{i-1})$
-      3. final state
-        - $\hat{y}=\underset{y}{argmax} \: P(y,x \| \pi, A,B) = \underset{x}{max} \: score_n (s)$
-    - complexity
-      - K = number of states
-      - M = number of observations
-      - n = length of sequence
-      - memory - nK
-      - runtime - $O(nK^2)$
+- details
+  - given $(\pi,A,B)$ and $\mathbf{x}$
+    1. calculate probability of $\mathbf{x}$
+    2. calculate most probable $\mathbf{y}$
+    - use MAP:  $\hat{y}=\underset{y}{argmax} \: P(y\|x,\pi, A,B)=\underset{y}{argmax} \: P(y \land x \| \pi, A,B)$
+  - use *Viterbi algorithm*
+    1. initial for each state s
+      - $score_1(s) = P(s) P(x_1 \| s) = \pi_s B_{x_1,s}$
+    2. recurrence - for i = 2 to n, calculate scores using previous score only
+      - $score_i(s) = \underset{y_i-1}{max} P(s\|y_{i-1}) P(x_i \| s) \cdot score_{i-1}(y_{i-1})$
+    3. final state
+      - $\hat{y}=\underset{y}{argmax} \: P(y,x \| \pi, A,B) = \underset{x}{max} \: score_n (s)$
+  - complexity
+    - K = number of states
+    - M = number of observations
+    - n = length of sequence
+    - memory - nK
+    - runtime - $O(nK^2)$

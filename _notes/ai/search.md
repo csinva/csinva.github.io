@@ -7,17 +7,19 @@ category: ai
 
 * TOC
 {:toc}
+From "Artificial Intelligence" Russel & Norvig 3rd Edition
 
+# Uninformed Search - R&N 3.1-3.4
 
-# Uninformed Search -- Russell & Norvig 3rd ed. (R&N) 3.1-3.4
 ### problem-solving agents
+
 - *goal* - 1st step
   - *problem* formulation - deciding what action and states to consider given a goal
 - *uninformed* - given no info about problem besides definition
-- an agent with several immediate options of unknown value can decide what to do first by examining future actions that lead to states of known value
+  - an agent with several immediate options of unknown value can decide what to do first by examining future actions that lead to states of known value
 - 5 components
   1. initial state
-  2. applicable actions at teach state
+  2. actions at each state
   3. transition model
   4. goal states
   5. path cost function
@@ -46,7 +48,7 @@ category: ai
 ### infrastructure
 - *node* - data structure that contains parent, state, path-cost, action
 - metrics
-  - completeness - does it find a solution
+  - completeness - does it find a solution in finite steps
   - optimality - does it find the best solution
   - time/space complexity
     - theoretical CS: $\vert V\vert +\vert E\vert $
@@ -55,14 +57,15 @@ category: ai
     - m - *max length* of any path in the search space
   - *search cost* - just time/memory
   - *total cost* - search cost + *path cost*
-  - ![](assets/search/uninformed_comparisons.jpg)
 
 ### uninformed search = blind search
+
+- ![](assets/search/uninformed_comparisons.jpg)
 - bfs
 - *uniform-cost search* - always expand node with lowest path cost g(n)
   - frontier is priority queue ordered by g
 - dfs
-  - *backtracking search* - dsp but only one successor is generated at a time; each partially expande node remembers which succesor to generate next
+  - *backtracking search* - dfs but only one successor is generated at a time; each partially expande node remembers which succesor to generate next
     - only O(m) memory instead of O(bm)
   - *depth-limited search*
     - *diameter of state space* - longest possible distance to goal from any start
@@ -75,31 +78,32 @@ category: ai
 # A* Search and Heuristics -- R&N 3.5-3.6
 
 ### informed search
+
 - *informed search* - uses problem-specific knowledge
   - has *evaluation function* f which likely incorporate g and h
     - *heuristic* h = estimated cost of cheapest path from state at node n to a goal state
   - *best-first* - choose nodes with best f
 - *greedy best-first search* - keep expanding node closest to goal
-- *A* search
+- $A^*$ search
   - $f(n) = g(n) + h(n)$ represents the estimated cost of the cheapest solution through n
-- $A^*$ (with tree search) is optimal and complete if h(n) is *admissible*
-  - h(n) never overestimates the cost to reach the goal 
-- $A^*$ (with graph search) is optimal and complete if h(n) is *consistent* (stronger than admissible)
-  - $h(n) \leq cost(n \to n') + h(n')$
-  - can draw contours of f (because nondecreasing)
-- $A^*$ is also *optimally efficient* (guaranteed to expand fewest nodes) for any given consisten heuristic because any algorithm that that expands fewer nodes runs the risk of missing the optimal solution
-  - for a heuristic, *absolute error* $\delta := h^*-h$ and *relative error* $\epsilon := \delta / h^*$
-    - here $h^*$ is actual cost of root to goal
-    - bad when lots of solutions with small absolute error because it must try them all
-  - bad because it must store all nodes in memory
+  - $A^*$ (with tree search) is optimal and complete if h(n) is *admissible*
+    - $h(n)$ never overestimates the cost to reach the goal 
+  - $A^*$ (with graph search) is optimal and complete if h(n) is *consistent* (stronger than admissible) = *monotonicity*
+    - $h(n) \leq cost(n \to n') + h(n')$
+    - can draw contours of f (because nondecreasing)
+  - $A^*$ is also *optimally efficient* (guaranteed to expand fewest nodes) for any given consisten heuristic because any algorithm that that expands fewer nodes runs the risk of missing the optimal solution
+    - for a heuristic, *absolute error* $\delta := h^*-h$ and *relative error* $\epsilon := \delta / h^*$
+      - here $h^*$ is actual cost of root to goal
+      - bad when lots of solutions with small absolute error because it must try them all
+    - bad because it must store all nodes in memory
 - memory-bounded heuristic search
-  - *iterative-deepening $A^*$ - iterative deepening with cutoff f-cost
+  - *iterative-deepening* $A^*$ - iterative deepening with cutoff f-cost
   - *recursive best-first search* - like standard best-first search but with linear space
     - each node keeps f_limit variable which is best alternative path available from any ancestor
     - as it unwinds, each node is replaced with *backed-up value* - best f-value of its children
       - decides whether it's worth reexpanding subtree later
       - often flips between different good paths (h is usually less optimistic for nodes close to the goal)
-  - *$SMA*^*$ - simplified memory-bounded A* - best-first until memory is full then forgot worst leaf node and add new leaf
+  - $SMA^*$ - simplified memory-bounded A* - best-first until memory is full then forgot worst leaf node and add new leaf
     - store forgotten leaf node info in its parent
     - on hard problems, too much time switching between nodes
 - agents can also learn to search with *metalevel learning*
@@ -120,16 +124,16 @@ category: ai
   - aren't necessarily admissible / consisten
 
 # Local Search -- R&N 4.1-4.2
-- *local search* looks for solution not path
+- *local search* looks for solution not path ~ like optimization
   - maintains only *current node* and its neighbors
-  - more like optimization
-  - *complete* - finds a goal
-  - *optimal* - finds global min/max
-- *hill-climbing* = *greedy local search*
+
+## discrete space
+
+- *hill-climbing* = *greedy local search* 
   - also stochastic hill climbing and random-restart hill climbing
 - *simulated annealing* - pick random move
   - if move better, then accept
-  - otherwise accept with some probability proportional to how bad it is and accept less as time goes on
+  - otherwise accept with some probability p'roportional to how bad it is and accept less as time goes on
 - *local beam search* - pick k starts, then choose the best k states from their neighbors
   - *stochastic beam search* - pick best k with prob proportional to how good they are
 - *genetic algorithms* - population of k individuals
@@ -139,9 +143,10 @@ category: ai
   - *schema* - substring in which some of the positions can be left unspecified (ex. $246****$)
     - want schema to be good representation because chunks tend to be passed on together
 
-### continuous space
+## continuous space
+
 - hill-climbing / simulated annealing still work
-- could just discretize neighborhood of each state
+  - could just discretize neighborhood of each state
 - use gradient
   - if possible, solve $\nabla f  = 0$
   - otherwise SGD $x = x + \alpha \nabla f(x)$
@@ -150,11 +155,9 @@ category: ai
 - *Newton-Raphson* method
   - uses 2nd deriv: x = x - g(x) / g'(x)
   - $x = x - H_f^{-1} (x) \nabla f(x)$ where H is the Hessian of 2nd derivs
-- constrained optimization
-  - contains *linear programming* problems in which constraints must be linear inequalities forming a *convex set*
-    - these have no local minima
 
 # Constraint satisfaction problems -- R&N 6.1-6.5
+
 - CSP
   1. set of variables $X_1, ..., X_n$
   2. set of domains $D_1, ..., D_n$
@@ -168,7 +171,7 @@ category: ai
   - *global constraint* - arbitrary number of variables (doesn't have to be all)
 - converting graphs to only binary constraints
   - every finite-domain constraint can be reduced to set of binary constraints w/ enough auxiliary variables
-  - another way to convert an n-ary CSP to a binary one is the *dual graph* transformation - create a new graph in which there is one variable for each constraint in the original graph and one binary constraint for each pair of original constraints that share variables
+  - *dual graph* transformation - create a new graph in which there is one variable for each constraint in the original graph and one binary constraint for each pair of original constraints that share variables
 - also can have *preference constraints* instead of *absolute constraints*
 
 ### inference
@@ -217,8 +220,8 @@ category: ai
 ### structure of problems
 - connected components of constraint graph are independent subproblems
 - *tree* - any 2 variables are connected by only one path
-  - *directed arc constistency* - ordered variables $X_i$, every $X_i$ is consistent with each $X_j$ for j>i
-    - tree with n nodes can be made directed arc-consisten in O(n) steps - $O(nd^2)$
+  - *directed arc consistency* - ordered variables $X_i$, every $X_i$ is consistent with each $X_j$ for j>i
+    - tree with n nodes can be made directed arc-consisten in $O(n)$ steps - $O(nd^2)$
 - two ways to reduce constraint graphs to trees
   1. assign variables so remaining variables form a tree
     - assigned variables called *cycle cutset* with size c

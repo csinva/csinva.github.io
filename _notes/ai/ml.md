@@ -13,6 +13,12 @@ category: ai
   - unsupervised
   - reinforcement
 
+```mermaid
+graph TD;
+  X-->Y;
+  X --> Z(Z)
+  Z --> Y
+```
 # Feature Selection
 
 ## Filtering
