@@ -327,3 +327,40 @@ types: *batch* (have full data) vs *online*
    - $\theta_{k+1} = \theta_k - H_K^{-1} g_k$
    - update with inverse of Hessian as alpha - this is an approximation to a taylor series
    - finding inverse of Hessian can be hard / expensive
+
+# expectation maximization (em) - j 11
+
+- hill-climbing on log-likelihood achieved indirectly by coordinate ascent in the auxilary function
+- model with observed variable X and hidden variable Z
+  1. *expectation step* - values of unobserved latent variables are "filled in"
+     - calculates prob of latent variables given observed variables and current param values
+  2. *maximization step* - parameters are adjusted based on filled-in variables
+- *stochastically* converges to *local* minimum
+- quantities
+  - want to maximize *complete log-likelihood* $l_c (\theta; x, z) = log \: p(x,z\|\theta)$ but don't know z
+  - know *incomplete log-likelihood* $l(\theta; x) = log \: p(x\|\theta) = log \sum_z p(x,z\|\theta)$
+  - *expected complete log-likelihood* $<l_c(\theta; x,z)>_q = \sum_z q(z\|x,\theta) log \: p(x,z\|\theta)$
+    - ​	q is the averaging distr.
+  - *auxilary function* $L(q, \theta) = \sum_z q(z\|x) \: log \: \frac{p(x,z\|\theta)}{q(z\|x)}$ - lower bound for the log likelihood
+- steps
+  - E: $q^{(t+1)} = \underset{q}{argmax} L(q,\theta^{(t)})$
+    - maximized with $q = p(z\|x, \theta^{(t)})$
+  - M: $\theta^{(t+1)} = \underset{\theta}{argmax} L(q^{(t+1)}, \theta)$
+    - equivalent to maximizing expected complete log-likelihood
+- simplified in terms of KL divergence
+  - E: $q^{(t+1)} (z\|x) = \underset{q}{argmin} \: D(q\|\|\theta^{(t)})$
+  - M: $\theta^{(t+1)} = \underset{\theta}{argmin} \: D(q^{(t+1)} \|\| \theta)$
+- goal: maximize $L(\theta)​$ for data X and parameters $\theta​$
+  - equivalent: maximize $\Delta(\theta \| \theta_n) \leq L(\theta) - L(\theta_n)$
+    - the function $l(\theta \| \theta_n) = L(\theta_n) + \Delta(\theta \| \theta_n)$ is local concave 
+      approximator
+    - introduce z (probablity of assignment): $P(X\|\theta) = \sum_z P(X\|z, \theta) P(z\|\theta)$
+- 3 steps
+  1. initialize $\theta_1$
+  2. E-step - calculate $E_{Z\|X, \theta_n} ln P(X, z \| \theta)$
+     - basically assigns z var
+     - this is the part of $l(\theta \| \theta_n)$ that actually depends on $\theta$
+  3. M-step - $\theta_{n+1} = argmax_{\theta} E_{Z\|X, \theta_n} ln P(X, z \| \theta)$
+- guaranteed to converge to local min of likelihood
+- can also partition around medoids
+- mixture-based clustering 

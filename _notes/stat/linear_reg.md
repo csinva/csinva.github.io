@@ -7,7 +7,7 @@ category: stat
 
 [TOC]
 
-- uses some material from "Statistical Models Theory and Practice" - David Freedman
+- *Material from "Statistical Models Theory and Practice" - David Freedman*
 
 # introduction
 
@@ -217,3 +217,64 @@ category: stat
 - SST = SSR + SSE
 - $R^2 = \frac{SSR}{SST}$ - coefficient of determination
   - measures the proportion of variation in Y that is explained by the predictor
+
+# geometry - J. 6
+
+- *LMS* = *least mean squares* (p-dimensional geometries)
+
+  - ![](assets/linear_reg/j6_1.png)
+  - $y_n = \theta^T x_n + \epsilon_n$
+  - $\theta^{(t+1)}=\theta^{(t)} + \alpha (y_n - \theta^{(t)T} x_n) x_n$
+    - converges if $0 < \alpha < 2/||x_n||^2$
+    - ![](assets/linear_reg/j6_2.png)
+    - ![](assets/linear_reg/j6_3.png)
+  - if N=p and all $x^{(i)}$ are lin. indepedent, then there exists exact solution $\theta$
+
+- solving requires finding *orthogonal projection of y on column space of X* (n-dimensional geometries)
+
+  - ![](assets/linear_reg/j6_4.png)
+
+  1. 3 Pfs
+     1. geometry - $y-X\theta^*$ must be orthogonal to columns of X: $X^T(y-X\theta)=0$
+     2. minimize least square cost function and differentiate
+     3. show HY projects Y onto col(X)
+
+  - either of these approaches yield the *normal eqns*: $X^TX \theta^* = X^Ty$
+
+- SGD
+
+  - SGD converges to normal eqn
+
+- ***convergence analysis***: requires $0 < \rho < 2/\lambda_{max} [X^TX]$
+
+  - algebraic analysis: expand $\theta^(t+1)$ and take $t \to \infty$
+  - geometric convergence analysis: consider contours of loss function
+
+- weighted least squares: $J(\theta)=\frac{1}{2}\sum_n w_n (y_n - \theta^T x_n)^2$
+
+  - yields $X^T WX \theta^* = X^T Wy$
+
+- probabilistic interpretation
+
+  - $p(y\|x, \theta) = \frac{1}{(2\pi\sigma^2)^{N/2}} exp \left( \frac{-1}{2\sigma^2} \sum_{n=1}^N (y_n - \theta^T x_n)^2 \right)$
+  - $l(\theta; x,y) = - \frac{1}{2\sigma^2} \sum_{n=1}^N (y_n - \theta^T x_n)^2$
+    - log-likelihood is equivalent to least-squares cost function
+
+# likelihood calcs
+
+## normal equation
+
+- $L(\theta) = \frac{1}{2} \sum_{i=1}^n (\hat{y}_i-y_i)^2$
+- $L(\theta) = 1/2 (X \theta - y)^T (X \theta -y)$
+- $L(\theta) = 1/2 (\theta^T X^T - y^T) (X \theta -y)$ 
+- $L(\theta) = 1/2 (\theta^T X^T X \theta - 2 \theta^T X^T y +y^T y)$ 
+- $0=\frac{\partial L}{\partial \theta} = 2X^TX\theta - 2X^T y$
+- $\theta = (X^TX)^{-1} X^Ty$
+
+## ridge regression
+
+- $L(\theta) = \sum_{i=1}^n (\hat{y}_i-y_i)^2+ \lambda \vert \vert \theta\vert \vert _2^2$ 
+- $L(\theta) = (X \theta - y)^T (X \theta -y)+ \lambda \theta^T \theta$
+- $L(\theta) = \theta^T X^T X \theta - 2 \theta^T X^T y +y^T y +  \lambda \theta^T \theta$ 
+- $0=\frac{\partial L}{\partial \theta} = 2X^TX\theta - 2X^T y+2\lambda \theta$
+- $\theta = (X^TX+\lambda I)^{-1} X^T y$

@@ -1,17 +1,15 @@
 ---
 layout: notes
 section-type: notes
-title: Decisions
+title: decisions
 category: ai
 ---
 
 * TOC
 {:toc}
-*material from Ruseel & Norvig "Artificial Intelligence" 3rd edition*
+*From "Artificial Intelligence" Russel & Norvig 3rd Edition*
 
-# decisions
-
-## game trees - R&N 5.2-5.5
+# game trees - R&N 5.2-5.5
 
 - *minimax algorithm*
   - *ply* - half a move in a tree
@@ -46,13 +44,13 @@ category: ai
 
 ## utilities / decision theory -- R&N 16.1-16.3
 - $P[RESULT(a)=s' \vert a,e]$
-  - s - state, observations e, action a
+  - s - state, e - observations, a - action
 - utility function U(s)
 - rational agent should choose action with *maximum expected utility*
   - expected utility $EU(a\vert e) = \sum_{s'} P[RESULT(a)=s' \vert a,e] U(s')$
 - notation
   - A>B - agent prefers A over B
-  - A~B - agenet is indifferent between A and B
+  - A~B - agent is indifferent between A and B
 - preference relation has 6 *axioms of utility theory*
   1. *orderability* - A>B, A~B, or A<B
   2. *transitivity*
@@ -65,31 +63,32 @@ category: ai
   - *value function* = *ordinal utility function* - sometimes ranking, not numbers needed
   - agent might not be explicitly maximizing the utility function
 
-### utility functions
+## utility functions
 
 - *preference elicitation* - finds utility function
   - normalized utility to have min and max value
-  - assess utility of s by asking agent to choose between s and (p:min, (1-p):max)
+  - assess utility of s by asking agent to choose between s and $(p:min, (1-p):max)$
   - *micromort* - one in a million chance of death
   - *QALY* - quality-adjusted life year
 - money
   - agents exhibits *monotonic preference* for more money
   - gambling has expected monetary value = EMV
   - when utility of money is sublinear - *risk averse*
-    - value agent will accept in lieu of lottery = *certainty equivalent*
-    - EMV - certainty equivalent = *insurance premium*
+    - value agent will accept in lieu of lottery = *certainty equivalent*= *insurance premium*
   - when supralinear - *risk-seeking* or linear - *risk-neutral*
 - *optimizer's curse* - tendency for E[utility] to be too high
-- *descriptive theory* - how actual agents work vs *normative theory* - how idealized agents work
+- *normative theory* - how idealized agents work
+- *descriptive theory* - how actual agents work
   - *certainty effect* - people are drawn to things that are certain
   - *ambiguity aversion*
   - *framing effect* - wording can influence people's judgements
     - *evolutionary psychology*
   - *anchoring effect* - buy middle-tier wine because expensive is there
 
-## decision theory / VPI -- R&N 16.5 & 16.6
+# decision theory / VPI -- R&N 16.5 & 16.6
+
 - *decision network*
-  1. *chance nodes* - represent RVS (like BN)
+  1. *chance nodes* - represent RVs (like BN)
   2. *decision nodes* - points where decision maker has a choice of actions
   3. *utility nodes* - represent agent's utility function
 - can ignore chance nodes
@@ -102,9 +101,10 @@ category: ai
     - calculate resulting utility
   3. return action with highest utility
 
-### the value of information
+## the value of information
+
 - *information value theory* - enables agent to choose what info to acquire
-  - observations only effect agents belief state
+  - observations only affect agent's belief state
   - value of info = difference in best expected value with/without info
 - *value of perfect information VPI* - assume we can obtain exact evidence on some variable $e_j$
   - $VPI_e(E_j) = \left[\sum_k P(E_j = e_{jk} \vert e) \: EU(\alpha_{ejk}  \vert  e, E_j = e_{jk})\right] - EU(\alpha \vert e)$
@@ -114,7 +114,7 @@ category: ai
 - information-gathering agent
   - *myopic* - greedily obtain evidence which yields highest VPI until some threshold
   - *conditional plan* - considers more things
-## mdps and rl -- R&N 17.1-17.4, 21.1-21.6
+# mdps and rl - R&N 17.1-17.4, 21.1-21.6
 
 - *fully observable* - agent knows its state
 - *markov decision process*
@@ -127,17 +127,18 @@ category: ai
 - optimizing MDP - *multiattribute utility theory*
   - could sum rewards, but results are infinite
   - instead define objective function (maps infinite sequences of rewards to single real numbers)
-    - ex. set a *finite horizon* and sum rewards
-      - optimal action in a given state could change over time = *nonstationary*
     - ex. discounting to prefer earlier rewards (most common)
       - could discount reward n steps away by $\gamma^n$, 0<r<1
+    - ex. set a *finite horizon* and sum rewards
+      - optimal action in a given state could change over time = *nonstationary*
     - ex. average reward rate per time step
     - ex. agent is guaranteed to get to terminal state eventually - *proper policy*
 - expected utility executing $\pi$: $U^\pi (s) = E[\sum_t \gamma^t R(S_t)]$
   - when we use discounted utilities, $\pi$ is independent of starting state
-  - $\pi^*(s) = \underset{\pi}{argmax \: U^\pi (s)} = \underset{a}{argmax} \sum_{s'} P(s' \vert s,a) U'(s)$ - utility of state is immediate reward for that state plus the expected discounted utility of the next state, assuming agent chooses optimal action
+  - $\pi^*(s) = \underset{\pi}{argmax} \: U^\pi (s) = \underset{a}{argmax} \sum_{s'} P(s' \vert s,a) U'(s)$
 
-### value iteration
+## value iteration
+
 - *value iteration* - calculates utility of each state and uses utilities to find optimal policy
   - *bellman eqn*: $U(s) = R(s) + \gamma \: \underset{a}{max} \sum_{s'} P(s' \vert s, a) U(s')$
   - start with arbitrary utilities
@@ -152,35 +153,45 @@ category: ai
   - what actually matters is *policy loss* $ \vert  \vert U^{\pi_i}-U \vert  \vert $ - the most the agent can lose by executing $\pi_i$ instead of the optimal policy $\pi^*$
     - if $ \vert  \vert U_i -U \vert  \vert  < \epsilon$ then $ \vert  \vert U^{\pi_i} - U \vert  \vert  < 2\epsilon \gamma / (1-\gamma)$
 
-### policy iteration
+## policy iteration
+
 - another way to find optimal policies
   1. *policy evaluation* - given a policy $\pi_i$, calculate $U_i=U^{\pi_i}$, the utility of each state if $\pi_i$ were to be executed
     - like value iteration, but with a set policy so there's no max
     - can solve exactly for small spaces, or approximate
   2. *policy improvement* - calculate a new MEU policy $\pi_{i+1}$ using one-step look-ahead based on $U_i$
-    - same as above, just $\pi^*(s) = \underset{\pi}{argmax \: U^\pi (s)} = \underset{a}{argmax} \sum_{s'} P(s' \vert s,a) U'(s)$
+    - same as above, just $\pi^*(s) = \underset{\pi}{argmax} \: U^\pi (s) = \underset{a}{argmax} \sum_{s'} P(s' \vert s,a) U'(s)$
 - *asynchronous policy iteration* - don't have to update all states at once
 
-### partially observable markov decision processes (POMDP)
+## partially observable markov decision processes (POMDP)
+
 - agent is not sure what state it's in
+
 - same elements but add *sensor model* $P(e \vert s)$
-- have prob. distr b(s) for belief states
+
+- have distr $b(s)$ for belief states
   - updates like the HMM
   - $b'(s') = \alpha P(e \vert s') \sum_s P(s' \vert s, a) b(s)$
   - changes based on observations
-- optimal action depends only on the agent's current belief state - use belief states as the states of an MDP and solve as before
+
+- optimal action depends only on the agent's current belief state
+
+  - use belief states as the states of an MDP and solve as before
   - changes because state space is now continuous
+
 - value iteration
-  1. expected utility of executing p in belif state is just $b \cdot \alpha_p$ - dot product
+  1. expected utility of executing p in belif state is just $b \cdot \alpha_p$  (dot product)
   2. $U(b) = U^{\pi^*}(b)=\underset{p}{max} \: b \cdot \alpha_p$
-  - belief space is continuous [0,1] so we represent it as piecewise linear, and store these discrete lines in memory
+  - belief space is continuous [0, 1] so we represent it as piecewise linear, and store these discrete lines in memory
     - do this by iterating and keeping any values that are optimal at some point
       - remove *dominated plans*
   - generally this is far too inefficient
-- *dynamic decision network* - online agent ![](assets/ai/online_pomdp.jpg) 
+
+- *dynamic decision network* - online agent ![](assets/ai/online_pomdp.png) 
   - ***still don't really understand this***
 
-## reinforcement learning
+# reinforcement learning
+
 - *reinforcement learning* - use observed rewards to learn optimal policy for the environment
 - 3 agent designs
   1. *utility-based agent* - learns utility function on states
@@ -189,12 +200,13 @@ category: ai
     - learns *action-utility function* = *Q-function* maps directly from actions to utility
   3. *reflex agent* - learns policy that maps directly from states to actions
 - after learning, can the agent make predictions about what the next state and reward will be before it takes each action? 
-  - If it can, then it’s a model-based RL algorithm. 
+  - if it can, then it’s a model-based RL algorithm. 
   - if it cannot, it’s a model-free algorithm.
 
-### passive reinforcement learning
+## passive reinforcement learning
+
 - given policy $\pi$, learn $U^\pi (s)$
-- like policy evaluation, but transition model / reward function are unknown
+  - like policy evaluation, but transition model / reward function are unknown
 - *direct utility estimation* - run a bunch of trials to sample utility = expected total reward from each state
 - two ways to add prior
   1. *Bayesian reinforcement learning* - assume a prior P(h) on the transition model
@@ -203,37 +215,40 @@ category: ai
     - $\pi^* = \underset{\pi}{argmax} \sum_h P(h \vert e) u_h^\pi$
   2. give best outcome in the worst case over H (from *robust control theory*)
     - $\pi^* = \underset{\pi}{argmax}\:  \underset{h}{min} \: u_h^\pi$
-- *adaptive dynamic programming* (ADP) - learn transition model and rewards, and then plug into Bellman eqn
-  - *prioritized sweeping* - prefers to make adjustements to states whose likely succesors have just undergone a large adjustment in their own utility estimates
+- *adaptive dynamic programming* (ADP) - learn transition model and rewards, then plug into Bellman eqn
+  - *prioritized sweeping* - prefers to make adjustments to states whose likely successors have just undergone a large adjustment in their own utility estimates
 - *temporal-difference learning* - adjust utility estimates towards the ideal equilibrium that holds locally when the utility estimates are correct
   - $U^\pi = U^\pi (s) + \alpha \left[R(s) + \gamma \:U^\pi (s') - U^\pi (s)\right]$
   - like a crude approximation of ADP
 
-### active reinforcement learning
+## active reinforcement learning
+
 - *explore* states to find their utilities and *exploit* model to get highest reward
 - *bandit* problems - determining exploration policy
   - should be *GLIE* - greedy in the limit of infinite exploration - visits all states infinitely, but eventually become greedy
-    - ex. choose random action 1/t of the time
-    - better ex. give optomistic prior utility to unexplored states
-      - uses *exploration function* f(u,numTimesVisited) in utility update rule
+  - ex. choose random action $1/t$ of the time
+  - better ex. give optimistic prior utility to unexplored states
+    - uses *exploration function* f(u, numTimesVisited) in utility update rule
   - *n-armed bandit* - pulling n levelers on a slot machine, each with different distr.
     - *Gittins index* - function of number of pulls / payoff
 
-### learning action-utility function
+## learning action-utility function
 
-- U(s) = $\underset{a}{max} \: Q(s,a)$
+- $U(s) = \underset{a}{max} \: Q(s,a)$
   - does require $P(s' \vert s,a)$ if we use ADP
   - doesn't require knowing $P(s' \vert s,a)$ if we use TD: $Q(s,a) = Q(s,a) + \alpha [R(s) + \gamma \: \underset{a'}{max} Q(s', a') - Q(s,a)]$
 - *SARSA* is related: $Q(s,a) = Q(s,a) + \alpha [R(s) + \gamma \: Q(s', a') - Q(s,a)]$
   - here, a' is action actually taken
   - SARSA is *on-policy* while Q-learning is *off-policy*
 
-### generalization
+## generalization
+
 - approximate Q-function
   - ex. linear function of parameters
     - can learn params online with *delta rule* = *wildrow-hoff rule*: $\theta_i = \theta - \alpha \: \frac{\partial Loss}{\partial \theta_i}$
 
-### policy search
+## policy search
+
 - keep twiddling the policy as long as it improves, then stop
   - store one Q-function (parameterized by $\theta$) for each action
   - $\pi(s) = \underset{a}{max} \: \hat{Q}_\theta (s,a)$
@@ -246,170 +261,3 @@ category: ai
   1. could sample mutiple times to compute gradient
   2. REINFORCE algorithm - could approximate gradient at $\theta$ by just sampling at $\theta$: $\nabla_\theta p(\theta) \approx \frac{1}{N} \sum_{j=1}^N \frac{(\nabla_\theta \pi_\theta (s,a_j)) R_j (s)}{\pi_\theta (s,a_j)}$
   3. PEGASUS - *correlated sampling* - ex. 2 blackjack programs would both be dealt same hands
-
-### applications
-- game playing
-- robot control
-
-# logic and planning
-
-- *knowledge-based agents* - intelligence is based on *reasoning* that operates on internal *representations of knowledge*
-
-## logical agents - 7.1-7.7 (omitting 7.5.2)
-- 3 steps: given a percept, the agent 
-  1. adds the percept to its knowledge base
-  2. asks the knowledge base for the best action
-  3. tells the knowledge base that it has taken that action
-- *declarative* approach - tell sentences until agent knows how to opearte
-- *procedural* approach - encodes desired behaviors as program code
-- ex. Wumpus World
-- logical *entailment* between senteces
-  - B follows logically from A (A implies B)
-  - $A \vDash B$
-- *model checking* - try everything to see if A $\implies$ B
-  - this is *sound* = *truth-preserving*
-  - *complete* - can derive any sentence that is entailed
-- *grounding* - connection between logic and real environment (usually sensors)
-- inference
-  - TT-ENTAILS - recursively enumerate all sentences - check if a query is in the table
-- theorem properties
-  - *satisfiable* - true under some model
-  - *validity* - *tautalogy* - true under all models
-  - *monotonicity* - set of implications can only increase as info is added to the knowledge base
-    - if $KB \implies A$ then $KB \land B \implies A$
-
-## theorem proving
-
-- *resolution rule* - resolves different rules with each other - leads to complete inference procedure
-- *CNF* - *conjunctive normal form* - conjunction of clauses 
-  - anything can be expressed as this
-- *skip this* - resolution algorithm: check if $KB \implies A$ so check if $KB \land -A$
-  - keep adding clauses until 
-    1. nothing can be added
-    2. get empty clause so $KB \implies A​$
-  - *ground resolution thm* - if a set of clauses is unsatisfiable, then the resolution closure of those clauses contains the empty clause
-    - *resolution closure* - set of all clauses derivable by repeated application of resolution rule
-- restricted knowledge bases
-  - *horn clause* - at most one positive
-    - *definite clause* - disjunction of literals with exactly one positive
-    - *goal clause* - no positive
-    - benefits
-      - easy to understand
-      - forward-chaining / backward-chaining are applicable
-      - deciding entailment is linear in size(KB)
-  - forward/backward chaining
-    - checks if q is entailed by KB of definite clauses
-      - keep adding until query is added or nothing else can be added
-    - backward chaining works backwards from the query
-- checking satisfiability
-  - complete backtracking
-    - *davis-putnam* algorithm = *DPLL* - like TT-entails with 3 improvements
-      1. early termination
-      2. pure symbol heuristic - *pure symbol* appears with same sign in all clauses
-      3. unit clause heuristic - clause with just on eliteral or one literal not already assigned false
-    - other improvements (similar to search)
-      1. component analysis
-      2. variable and value ordering
-      3. intelligent backtracking
-      4. random restarts
-      5. clever indexing
-  - local search
-    - evaluation function can just count number of unsatisfied clauses (MIN-CONFLICTS algorithm for CSPs)
-    - WALKSAT - randomly chooses between flipping based on MIN-CONFLICTS and randomly
-      - runs forever if no soln
-  - *underconstrained* problems are easy to find solns
-  - *satisfiability threshold conjecture* - for random clauses, probability of satisfiability goes to 0 or 1 based on ratio of clauses to symbols
-    - hardest problems are at the threshold
-    - state variables that change over time also called *fluents*
-      - can index these by time
-  - *effect axioms* - specify the effect of an action at the next time step
-  - *frame axioms* - assert that all propositions remain the same
-  - *succesor-state axiom*: $F^{t+1} \iff  ActionCausesF^t \lor (F^t \land -ActionCausesNotF^t )$
-- keeping track of *belief state*
-  - can just use 1-CNF
-    - 1-CNF includes all states that are in fact possible given the full percept history
-    - *conservative approximation*
-- *SATPLAN* - how to make plans for future actions that solve the goal by propositional inference
-  - must add *precondition axioms* - states that action occurrence requires preconditions to be satisfied
-  - *action exclusion axioms* - one action at a time
-
-## first-order logic - 8.1-8.3.3
-- declarative language - semantics based on a truth relation between sentences and possible worlds
-  - has *compositionality* - meaning decomposes
-- *Sapir-Whorf hypothesis* - understanding of the world is influenced by the language we speak
-- 3 elements
-  1. objects
-  2. relations
-    - functions - only one value for given input
-- first-order logic assumes more about the world than propositional logic
-  - *epistemological commitments* - the possible states of knowledge that a logic allows with respect to each fact
-  - *higher-order logic* - views relations and functions as objects in themselves
-- first-order consists of symbols
-  1. *constant symbols* - stand for objects
-  2. *predicate symbols* - stand for relations
-  3. *function symbols* - stand for functions
-  - *arity* - fixes number of args
-  - *term* - logical expresision tha refers to an object'
-  - *atomic sentence* - formed from a predicate symbol optionally followed by a parenthesized list of terms
-    - true if relation holds among objects referred to by the args
-  - $\forall, \exists$, etc.
-  - *interpretation* - specifies exactly which objects, relations and functions are referred to by the symbols
-
-## inference in first-order logic - 9.1-9.4
-- *propositionalization* - can convert first-order logic to propositional logic and do propositional inference
-  - *universal instantiation* - we can infer any sentence obtained by substituting a ground term for the variable
-    - replace "forall x" with a specific x
-  - *existential instantiation* - variable is replaced by a new constant symbol
-    - replace "there exists x" with a specific x
-    - *Skolem constant* - new name of constant
-  - only need finite subset of propositionalized KB - can stop nested functions at some depth
-    - *semidecidable* - algorithms exist that say yes to every entailed sentence, but no algorithm exists that also says no to every nonentailed sentence
-- *generalized modus ponens*
-- *unification* - finding substitutions that make different logical expressions look identical
-  - UNIFY(Knows(John,x), Knows(x,Elizabeth)) = fail .
-    - use different x's - *standardizing apart*
-    - want most general uniier
-  - need *occur check* - S(x) can't unify with S(S(x))
-- storage and retrieval
-  - STORE(s) - stores a sentence s into the KB
-  - FETCH(q) - returns all unifiers such that the query q unifies with some sentence in the KB
-    - only try to unfity reasonable facts using *indexing*
-    - query such as Employs(IBM, Richard)
-    - all possible unifying queries form *subsumption lattice*
-- forward chaining
-  - *first-order definite clauses* - disjunctions of literals of which exactly one is positive (could also be implication whose consequent is a single positive literal)
-  - *Datalog* - language restricted to first-order definite clauses with no function symbols
-  - simple forward-chaining: FOL-FC-ASK
-    1. *pattern matching* is expensive
-    2. rechecks every rule
-    3. generates irrelevant facts
-  - efficient forward chaining (solns to above problems)
-    1. *conjuct odering* problem - find an ordering to solve the conjuncts of the rule premise so the total cost is minimized
-      - requires heuristics (ex. *minimum-remaining-values*)
-    2. incremental forward chaining - ignore redundant rules
-      - every new fact inferred on iteration t must be derived from at least one new fact inferred on iteration t-1
-      - *rete* algorithm was first to do this
-    3. irrelevant facts can be ignored by backward chaining
-      - could also use *deductive database* to keep track of relevant variables
-- backward-chaining
-  - simple backward-chaining: FOL-BC-ASK
-    - is a *generator* - returns multiple times, each giving one possible result
-  - logic programming: algorithm = logic + control
-    - ex. *prolog*
-    - a lot more here
-    - can have parallelism
-    - redudant inference / infinite loops because of repeated states and infinite paths
-    - can use *memoization* (similar to the dynamic programming that forward-chaining does)
-    - generally easier than converting it into FOLD
-  - *constraint logic programming* - allows variables to be constrained rather than *bound*
-    - allows for things with infinite solns
-    - can use *metarules* to determine which conjuncts are tried first
-
-## classical planning 10.1-10.2
-- *planning* - devising a plan of action to achieve one's goals
-- *Planning Domain Definition Language* (PDDL) - uses *factored representation* of world
-- *closed-world* assumption - fluents that aren't present are false
-- set of ground (variable-free) actions can be represented by a single *action schema*
-  - like a method
-
-### algorithms for planning as state-space search

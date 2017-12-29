@@ -6,21 +6,19 @@ category: ai
 ---
 * TOC
 {:toc}
-
 # metrics
+
 - *goodness of fit* - how well does the learned distribution represent the real distribution?
 - define a loss function $\mathcal{L}$
   - 0-1 loss: $\vert C-f(X)\vert$ 
-  - $L_2$ loss: $(C-f(X))^2$
-- Expected Prediction Error EPE(f) = $E_{X,C} [\mathcal{L}(C,f(X))]$
-  - =$E_{X}\left[ \sum_i \mathcal{L}(C_i,f(X)) Pr(C_i\vert X) \right]$
-- Minimize EPE
-  - Bayes Classifier minimizes 0-1 loss: $\hat{f}(X)=C_i$ if $P(C_i\vert X)=max_f P(f\vert X)$
-  - KNN minimizes L2 loss: $\hat{f}(X)=E(Y\vert X)$ 
-- $EPE[f(X)]$ = $noise^2+bias^2+variance$
-  - noise - unavoidable
-- classification
-  - cross-entropy
+  - $L_2$ loss: $[C-f(X)[^2$
+- optimal classifiers
+  - Bayes classifier minimizes 0-1 loss: $\hat{f}(X)=C_i$ if $P(C_i\vert X)=max_f P(f\vert X)$
+  - KNN minimizes $L_2$ loss: $\hat{f}(X)=E(Y\vert X)$ 
+- classification cost functions
+  1. misclassification error - not differentiable
+  2. Gini index: $\sum_{i != j} p_i q_j$
+  3. cross-entropy: $-\sum_x p(x)\: log \: q(x) $
 - accuracy-based
   - accuracy = number of correct classifications / total number of test cases
   - balanced accuracy = 1/2 (TP/P + TN/N)

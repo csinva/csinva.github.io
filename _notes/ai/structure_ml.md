@@ -8,7 +8,8 @@ category: ai
 {:toc}
 
 
-# 1 - introduction
+# introduction
+
 1. *structured prediction* - have multiple independent output variables
   - output assignments are evaluated jointly
   - requires joint (global) inference
@@ -23,7 +24,8 @@ category: ai
   2. hierarchical - ex. first layers of CNN
 
 
-# 5 - structure
+# structure
+
 - structured output can be represented as a graph
 - outputs y
 - inputs x
@@ -38,7 +40,7 @@ category: ai
   - could score nodes and edges independently
   - could score each node and its edges together
 
-# 6 - sequential models
+# sequential models
 
 ![](assets/structure/hmm_vs_condition.png) 
 
@@ -52,48 +54,6 @@ category: ai
     2. transition matrix
 - *mth order Markov model* - keeps history of previous m states
 - each state is an observation
-
-## hidden Markov model - this is generative
-- goal 
-  - learn distribution $P(x_1,...,x_n,y_1,...,y_n)$
-    - ex. POS tagging
-- model
-  - define $P(x_1,...,x_n,y_1,...,y_n) =  P(y_1) P(x_1\vert y_1) \prod_{i} P(y_i \vert  y_{i-1})$
-  - each output label is dependent on its neighbors in addition to the input
-- definitions
-  - $\mathbf{y}$ - state 
-    - states are not observed
-  - $\mathbf{x}$ - observation 
-  - $\pi$ - initial state probabilities
-  - A = transition probabilities $P(y_2\vert y_1)$
-  - B = emission probabilities $P(x_1\vert y_1)$
-    - each state stochastically emits an observation
-1. *inference*
-  - given $(\pi,A,B)$ and $\mathbf{x}$
-    1. calculate probability of $\mathbf{x}$
-    2. calculate most probable $\mathbf{y}$
-    - define $P(x_1,...,x_n,y_1,...,y_n) =  P(y_1) P(x_1\vert y_1) \prod_{i} P(y_i \vert  y_{i-1}) P(x_i\vert y_i)$
-    - use MAP:  $\hat{y}=\underset{y}{argmax} \: P(y\vert x,\pi, A,B)=\underset{y}{argmax} \: P(y \land x \vert  \pi, A,B)$
-  - use *Viterbi algorithm*
-    1. initial for each state s
-      - $score_1(s) = P(s) P(x_1 \vert  s) = \pi_s B_{x_1,s}$
-    2. recurrence - for i = 2 to n, calculate scores using previous score only
-      - $score_i(s) = \underset{y_i-1}{max} P(s\vert y_{i-1}) P(x_i \vert  s) \cdot score_{i-1}(y_{i-1})$
-    3. final state
-      - $\hat{y}=\underset{y}{argmax} \: P(y,x \vert  \pi, A,B) = \underset{x}{max} \: score_n (s)$
-  - complexity
-    - K = number of states
-    - M = number of observations
-    - n = length of sequence
-    - memory - nK
-    - runtime - $O(nK^2)$
-2. *learning* - learn  $(\pi,A,B)$
-  1. supervised (given y)
-    - basically just count (maximizing joint likelihood of input and output)
-    - $\pi_s = \frac{count(start \to s)}{n}$
-    - $A_{s',s} = \frac{count(s \to s')}{count(s)}$
-    - $B_{s,x} = \frac{count (s \to x)}{count(s)}$
-  2. unsupervised (not given y)
 
 ## conditional models and local classifiers - discriminative model
 - conditional models = discriminative models
@@ -125,11 +85,7 @@ category: ai
 - ex. *structured perceptron*
   - HMM is a linear classifier
 
-# 7 - graphical models
-- graphical models represent prob. distributions over multiple random variables
-- ![](assets/structure/models.png) 
-
-# 8 - constrained conditional models
+# constrained conditional models
 
 ## consistency of outputs and the value of inference
 - ex. POS tagging - sentence shouldn't have more than 1 verb
@@ -140,15 +96,15 @@ category: ai
 - *learning*
   - global - learn with inference (computationally difficult)
 
-## constrained conditional models via an example
-
 ## hard constraints and integer programs
+
 - ![](assets/structure/8_hard_constraints.png) 
 
 ## soft constraints
 - ![](assets/structure/8_1.png) 
 
-# 9 - inference
+# inference
+
 - inference constructs the output given the model
 - goal: find highest scoring state sequence
   - $argmax_y \: score(y) = argmax_y w^T \phi(x,y)$
@@ -186,7 +142,8 @@ category: ai
       - message $m_{ij}(x_j)$ high means node i believes $P(x_j)$ is high
     - use *beam search* - keep size-limited priority queue of states
 
-# 10/11 - learning protocols
+# learning protocols
+
 ## structural svm
 - $\underset{w}{min} \: \frac{1}{2} w^T w + C \sum_i \underset{y}{max} (w^T \phi (x_i,y)+ \Delta(y,y_i) - w^T \phi(x_i,y_i) )$
 

@@ -10,8 +10,13 @@ category: ai
 
 # overview
 
-- *mixture models* - discrete latent variable vs. *factor analysis models* - continuous latent variable
-- *bayesian networks* - directed vs. *undirected networks*
+- latent variable types
+  1. *mixture models* - discrete latent variable
+  2. *factor analysis models* - continuous latent variable
+- network types
+  1. *bayesian networks* - directed
+  2. undirected models
+- ![](assets/graphical_models/models.png)
 
 # structure learning
 
@@ -39,27 +44,25 @@ category: ai
   - represented by directed acyclic graph
 
 
-- joint distr: $P(X_1 = x_1,...X_n=x_n)=\prod_{i=1}^n P(X_i = x_i \vert  Parents(X_i))$
+- joint distr: $P(X_1 = x_1,...X_n=x_n)=\prod_{i=1}^n P[X_i = x_i \vert  Parents(X_i)]$
   - *Markov condition* - given its parents, a node is conditionally independent of its non-descendants
   - *topological independence* - a node is independent of all other nodes given its parents, children, and children's parents = *markov blanket*
     - a node is conditionally independent of its non-descendants given its parents
-- *inference* - compute probs with some observed vars
-  - BN has no redundancy -> no chance for inconsistency
+- BN has no redundancy $\implies$ no chance for inconsistency
 - forming a BN: keep adding nodes, and only previous nodes are allowed to be parents of new nodes
   - want *causal model* - causes are first, effects are later
   - *diagnostic model* - links from symptoms to causes
     - requires more dependencies
-- can have a *noisy-OR* relation - only requires k params not $2^k$
 
 ## hybrid BN (both continuous & discrete vars)
 
 - for continuous variables, can sometimes discretize
-1. when parents are discrete/continuous and child is continuous can use *linear Gaussian*
-  - h is continuous, s is discrete; a,b,$\sigma$ all change when s changes
+1. *linear Gaussian* - for continuous children
+  - h is continuous, s is discrete; a, b, $\sigma$ all change when s changes
   - $P(c\|h,s) = N(a \cdot h + b, \sigma^2)$, so mean is linear function of h
-  - if discrete parents, but continuous children, network defines *conditional Gaussian* - multivariate Gaussian given assignment to discrete variables
-  - if only continuous variables, then linear Guassian yields a *multivariate Gaussian* over all the variables, and a multivariate posterior distribution (given any evidence)
-2. continuous parents w/ discrete children
+  - discrete parents continuous children $\implies$ *conditional Gaussian* - multivariate Gaussian given assignment to discrete variables
+  - all continuous $\implies$ *multivariate Gaussian* over all the variables, and a multivariate posterior distribution (given any evidence)
+2. discrete children (continuous parents)
   1. *probit distr* - $P(buys\|Cost=c) = \phi((-c+\mu)/\sigma)$ - integral of standard normal distr
     - like a soft threshold
   2. *logit distr.* - $P(buys\|Cost=c)=\frac{1}{1+exp(-2 (-c + \mu) / \sigma)}$
@@ -97,8 +100,8 @@ category: ai
     - can't just fix variables - distr. might be inconsistent
     - instead we weight by probability of evidence given parents, then add to final prob
     - for each observation
-      - if correct, Count = Count+(1*W)
-      - always, Total = Total+(1*W)
+      - if correct, Count = Count + (1*W)
+      - always, Total = Total + (1*W)
     - return Count/Total
     - this way we don't have to throw out wrong samples
     - doesn't solve all problems - evidence only influences the choice of downstream variables
@@ -128,7 +131,7 @@ category: ai
   - $X_i \perp X_{V_i} \| x_{\pi_i}$
 - conditional independencies will always be present
   - sometimes conditional dependencies can also be independent (if we pick p(y\|x) to not actually depend on x)
-- multiple, competing explanation ("explaining-away")
+- multiple, competing explanations ("explaining-away")
   -  ![](assets/graphical_models/j2_1.png) 
   -  in fact any descendant of the base of the v suffices for explaining away
 - *d-separation* = directed separation
@@ -151,7 +154,7 @@ category: ai
   - non-negative, but not a probability
   - commonly let these be exponential, yielding *energy* and *Boltzmann distribution*
 - $p(x) = \frac{1}{Z} \prod_{C \in Cliques} \psi_{X_C}(x_c)$
-- $Z = \sum_x \prod_{C \in Cliques} \psi_{X_C} (x_C)$
+  - $Z = \sum_x \prod_{C \in Cliques} \psi_{X_C} (x_C)$
 - alternatively, could specify the conditional independencies
 - *reduced parameterizations* - impose constraints on probability distributions (e.g. Gaussian)
 - if x is dependent on all its neighbors
@@ -161,14 +164,14 @@ category: ai
 # elimination - J 3
 
 - the elimination algorithm is for *probabilistic inference*
-- want $p(x_F\|x_E)$ where E and F are disjoint
+  - want $p(x_F\|x_E)$ where E and F are disjoint
 - here let $X_F$ be a single node
 - define $m_i (x_{S_i})$ as the expression that arises from performing the sum $\sum_{x_i}$, where $x_{S_i}$ are the variables, other than $x_i$, that appear in the summand
 - define *evidence potential* $\delta(x_i, \bar{x_i})$ = 1 if $x_i == \bar{x_i}$ and 0 otherwise
   - then $$g(\bar{x_i}) = \sum_{x_i} \delta (x_i, \bar{x_i})$$
   - for a set $\delta (x_E, \bar{x_E}) = \prod_{i \in E} \delta (x_i, \bar{x_i})$
 - now define $p^E(x) = p(x) \delta (x_E, \bar{x_E})$
-- this lets us write $p^E (x) = \frac{1}{Z} \prod_{c\in C} \psi^E_{X_c} (x_c)$
+  - this lets us write $p^E (x) = \frac{1}{Z} \prod_{c\in C} \psi^E_{X_c} (x_c)$
   - condition on E, and find probability
   - in actuality don't compute the product, just take the correct slice
 - ![](assets/graphical_models/j3_1.png) 
@@ -236,61 +239,69 @@ category: ai
  2. find $argmax_x p^E (x)$
     - can solve by keeping track of maximizing values of variables in max-product algorithm
 
-# hmms R&N 15.1-15.5, J. 12 (hmm)
+# dynamic bayesian nets
 
-- agent maintains *belief state* of state variables $X_t$ given evidence variables $E_t$
-  - *transition model* - $P(X_t\|X_{0:t-1})$
-    - often assume this is *Markov* or other stationary process
-  - *sensor model* - $P(E_t \| X_t)$
-    - inference goes the other way
-  - define $P(X_{0:t}, E_{1:t}) = P(X_0) \prod_{i} P(X_i \| X_{i-1}) P(E_i\|X_i)$
-    - improve accuracy
-      1. increase order of Markov process model
-      2. increase set of state variables
-      - hard to maintains state variables over time, want more sensors
+- *dynamic bayesian nets* - represents a temporal prob. model
+
+## state space model
+
+- state space model: ![](assets/graphical_models/j15_1.png)
+
+
+- $P(X_{0:t}, E_{1:t}) = P(X_0) \prod_{i} \underbrace{P(X_i \| X_{i-1}) }_{\text{transition model}}  \underbrace{P(E_i\|X_i)}_{\text{sensor model}}$
+
+  - agent maintains *belief state* of state variables $X_t$ given evidence variables $E_t$
+
+  - improve accuracy
+    1. increase order of Markov transition model
+    2. increase set of state variables (can be equivalent to 1)
+    - hard to maintain state variables over time, want more sensors
+
 - 4 inference problems
   1. *filtering* = *state estimation* - compute $P(X_t \| e_{1:t})$
-    - use *recursive estimation* for message $f_{1:t+1} = \alpha FORWARD(f_{1:t}, e_{t+1}$
-  2. *prediction* - compute $P(X_{t+k}\|e_{1:t})$ for 0<k
-  3. *smoothing* - compute $P(X_{k}\|e_{1:t})$ for 0<k<t
-  4. *most likely explanation* - $argmax_{x_{1:t}}P(x_{1:t}\|e_{1:t})$
-2. *learning* - form of EM - learn  $(\pi,A,B)$
-  1. supervised (given y)
-    - basically just count (maximizing joint likelihood of input and output)
-    - $\pi_s = \frac{count(start \to s)}{n}$
-    - $A_{s',s} = \frac{count(s \to s')}{count(s)}$
-    - $B_{s,x} = \frac{count (s \to x)}{count(s)}$
-  2. unsupervised (not given y)
-- goal 
-  - learn distribution $P(x_1,...,x_n,y_1,...,y_n)$
-    - ex. POS tagging
-- model
-  - define $P(x_1,...,x_n,y_1,...,y_n) =  P(y_1) P(x_1\|y_1) \prod_{i} P(y_i \| y_{i-1})$
-  - each output label is dependent on its neighbors in addition to the input
-- definitions
-  - $\mathbf{y}$ - state 
-    - states are not observed
-  - $\mathbf{x}$ - observation 
-  - $\pi$ - initial state probabilities
-  - A = transition probabilities $P(y_2\|y_1)$
-  - B = emission probabilities $P(x_1\|y_1)$
-    - each state stochastically emits an observation
+    - *recursive estimation* $\underbrace{P(X_{t+1}|e_{1:t+1})}_{\text{new state}} = \alpha \: \underbrace{P(e_{t+1}|X_{t+1})}_{\text{sensor}} \cdot \underset{x_t}{\sum} \: \underbrace{P(X_{t+1}|x_t)}_{\text{transition}} \cdot \underbrace{P(x_t|e_{1:t})}_{\text{old state}}$ where $\alpha$ normalizes probs
 
-- details
-  - given $(\pi,A,B)$ and $\mathbf{x}$
-    1. calculate probability of $\mathbf{x}$
-    2. calculate most probable $\mathbf{y}$
-    - use MAP:  $\hat{y}=\underset{y}{argmax} \: P(y\|x,\pi, A,B)=\underset{y}{argmax} \: P(y \land x \| \pi, A,B)$
-  - use *Viterbi algorithm*
-    1. initial for each state s
-      - $score_1(s) = P(s) P(x_1 \| s) = \pi_s B_{x_1,s}$
-    2. recurrence - for i = 2 to n, calculate scores using previous score only
-      - $score_i(s) = \underset{y_i-1}{max} P(s\|y_{i-1}) P(x_i \| s) \cdot score_{i-1}(y_{i-1})$
-    3. final state
-      - $\hat{y}=\underset{y}{argmax} \: P(y,x \| \pi, A,B) = \underset{x}{max} \: score_n (s)$
-  - complexity
-    - K = number of states
-    - M = number of observations
-    - n = length of sequence
-    - memory - nK
-    - runtime - $O(nK^2)$
+  2. *prediction* - compute $P(X_{t+k}\|e_{1:t})$ for $0 < k$
+
+     - $\underbrace{P(X_{t+k+1} |e_{1:t})}_{\text{new state}} = \sum_{x_{t+k}} \underbrace{P(X_{t+k+1} |x_{t+k})}_{\text{transition}}  \cdot \underbrace{P(x_{t+k} |e_{1:t})}_{\text{old state}}$
+
+  3. *smoothing* - compute $P(X_{k}\|e_{1:t})$ for $0 < k < t$
+
+     1. 2 components $P(X_k|e_{1:t}) = \alpha \underbrace{P(X_k|e_{1:k})}_{\text{forward}} \cdot \underbrace{P(e_{k+1:t}|X_k)}_{\text{backward}}$
+
+       1. forward pass: filtering from $1:t$
+       2. backward pass from $t:1$ $\underbrace{P(e_{k+1:t}|X_k)}_{\text{sensor past k}} = \sum_{x_{k+1}} \underbrace{P(e_{k+1}|x_{k+1})}_{\text{sensor}} \cdot \underbrace{P(e_{k+2:t}|x_{k+1})}_{\text{recursive call}} \cdot \underbrace{P(x_{k+1}|X_k)}_{\text{transition}}$ (also there is a separate algorithm that doesn't use the observations on the backward pass)
+
+  4. *most likely explanation* - $\underset{x_{1:t}}{\text{argmax}}\:P(x_{1:t}\|e_{1:t})$
+
+     1. *Viterbi algorithm*: $\underbrace{\underset{x_{1:t}}{\text{max}} \: P(x_{1:t}, X_{t+1}|e_{1:t+1})}_{\text{mle x}} = \alpha \: \underbrace{P(e_{t+1}|X_{t+1})}_{\text{sensor}} \cdot \underset{x_t}{\text{max}} \left[ \: \underbrace{P(X_{t+1}|x_t)}_{\text{transition}} \cdot \underbrace{\underset{x_{1:t-1}}{\text{max}} \:P(x_{1:t-1}, x_{t+1}|e_{1:t})}_{\text{max prev state}} \right]$
+     2. complexity
+        - K = number of states
+        - M = number of observations
+        - n = length of sequence
+        - memory - $nK$
+        - runtime - $O(nK^2)​$
+
+- *learning* - form of EM
+
+  - basically just count (maximizing joint likelihood of input and output)
+  - initial state probs $\frac{count(start \to s)}{n}$
+  - $P(x'|x) = \frac{count(s \to s')}{count(s)}$
+  - $P(y|x) = \frac{count (x \to y)}{count(x)}$
+
+## hmm
+
+- state is a single discrete process
+  - for matrices, forward pass is invertible so can use constant space
+
+## kalman filtering
+
+- type of nodes (real-valued vectors) and prob model (linear-Gaussian) changes from HMM
+- state nodes: $x_{t+1} = Ax_t + Gw_t$
+
+
+- output nodes: $y_t = Cx_t+v_t$
+  - x is Gaussian
+  - w is noise Gaussian
+  - y is linear Gaussian
+- *Lyapunov eqn*: evolution of variance of states

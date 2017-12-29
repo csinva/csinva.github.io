@@ -6,22 +6,16 @@ category: ai
 ---
 * TOC
 {:toc}
-# Overview
+# overview
 
 - 3 types
   - supervised 
   - unsupervised
   - reinforcement
 
-```mermaid
-graph TD;
-  X-->Y;
-  X --> Z(Z)
-  Z --> Y
-```
-# Feature Selection
+# feature selection
 
-## Filtering
+## filtering
 
 - ranks features or feature subsets independently of the predictor
 - univariate methods (consider one variable at a time)
@@ -34,7 +28,7 @@ graph TD;
   - need a strategy to search the space
   - sometimes used as preprocessing for other methods
 
-## Wrapper
+## wrapper
 
 - uses a predictor to assess features of feature subsets
 - learner is considered a black-box - use train, validate, test set
@@ -42,11 +36,13 @@ graph TD;
 - backward elimination - start with all and keep removing
 - others: Beam search - keep k best path at teach step, GSFS, PTA(l,r), floating search - SFS then SBS
 
-## Embedding
+## embedding
+
 - uses a predictor to build a model with a subset of features that are internally selected
 - ex. lasso, ridge regression
 
-# Unsupervised Learning
+# unsupervised learning
+
 - labels are not given
 - intra-cluster distances are minimized, inter-cluster distances are maximized
 - distance measures
@@ -62,7 +58,8 @@ graph TD;
 - correlation coefficient - unit independent
 - edit distance
 
-## Hierarchical
+## hierarchical
+
 - Two approaches:
     1. Bottom-up agglomerative clustering - starts with each object in separate cluster then joins
     2. Top-down divisive - starts with 1 cluster then separates
@@ -74,77 +71,55 @@ graph TD;
   - average - most widely used
 - ex. MST - keep linking shortest link
 - *ultrametric distance* - tighter than triangle inequality
-    - $d(x, y) \leq max(d(x,z), d(y,z))$
-- k-means++ - better at not getting stuck in local minima
-    - randomly move centers apart
-- Complexity: $O(n^2p)$ for first iteration and then can only get worse
+    - $d(x, y) \leq max[d(x,z), d(y,z)]$
 
-## Partitional
+## partitional
 
 - partition n objects into a set of K clusters (must be specified)
 - globally optimal: exhaustively enumerate all partitions
 - minimize sum of squared distances from cluster centroid
-- Evaluation w/ labels - purity - ratio between dominant class in cluster and size of cluster
+- evaluation w/ labels - purity - ratio between dominant class in cluster and size of cluster
+- k-means++ - better at not getting stuck in local minima
+  - randomly move centers apart
+- Complexity: $O(n^2p)$ for first iteration and then can only get worse
 
-### Expectation Maximization (EM)
+# clustering & conditional mixtures - J. 10
 
-- goal: maximize $L(\theta)$ for data X and parameters $\theta$
-  - equivalent: maximize $\Delta(\theta \| \theta_n) \leq L(\theta) - L(\theta_n)$
-    - the function $l(\theta \| \theta_n) = L(\theta_n) + \Delta(\theta \| \theta_n)$ is local concave 
-      approximator
-    - introduce z (probablity of assignment): $P(X\|\theta) = \sum_z P(X\|z, \theta) P(z\|\theta)$
-- 3 steps
-  1. initialize $\theta_1$
-  2. E-step - calculate $E_{Z\|X, \theta_n} ln P(X, z \| \theta)$
-     - basically assigns z var
-     - this is the part of $l(\theta \| \theta_n)$ that actually depends on $\theta$
-  3. M-step - $\theta_{n+1} = argmax_{\theta} E_{Z\|X, \theta_n} ln P(X, z \| \theta)$
-- guaranteed to converge to local min of likelihood
+- *latent vars* - values not specified in the observed data
 
-- general procedure that includes K-means
-- E-step
-  - calculate how strongly to which mode each data point “belongs” (maximize likelihood)
-- M-step - calculate what each mode’s mean and covariance should be given the various responsibilities (maximization step)
-- known to converge
-- can be suboptimal
-- monotonically decreases goodness measure
-- can also partition around medoids
-- mixture-based clustering 
+## clustering![](assets/ml/j10_1.png)
+
 - *K-Means*
   - start with random centers
-  - assign everything to nearest center: O(\vert clusters\vert *np) 
-  - recompute centers O(np) and repeat until nothing changes
+  - assign everything to nearest center: $O(\|\text{clusters}\|*np) $
+  - recompute centers $O(np)$ and repeat until nothing changes
   - partition amounts to Voronoi diagram
+  - can be viewed as minimizing *distortion measure* $J=\sum_n \sum_i z_n^i ||x_n - \mu_i||^2$
+  - ***EM algo for this***
+- *GMMs*
+  - $p(x|\theta) = \underset{i}{\Sigma} \pi_i \mathcal{N}(x|\mu_i, \Sigma_i)$
+    - $l(\theta|x) = \sum_n log \: p(x_n|\theta) \\ = \sum_n log \sum_i \pi_i \mathcal{N}(x_n|\mu_i, \Sigma_i)$
+    - hard to maximize bcause log acts on a sum
+  - continue deriving new mean and variance at each step
+  - "soft" version of K-means - update means as weighted sums of data instead of just normal mean
+  - sometimes initialize K-means w/ GMMs
 
-### Gaussian Mixture Model (GMM)
-- continue deriving new mean and variance at each step
-- "soft" version of K-means - update means as weighted sums of data instead of just normal mean
+## conditional mixture models - regression/classification
 
-# Derivations
-## normal equation
-- $L(\theta) = \frac{1}{2} \sum_{i=1}^n (\hat{y}_i-y_i)^2$
-- $L(\theta) = 1/2 (X \theta - y)^T (X \theta -y)$
-- $L(\theta) = 1/2 (\theta^T X^T - y^T) (X \theta -y)$ 
-- $L(\theta) = 1/2 (\theta^T X^T X \theta - 2 \theta^T X^T y +y^T y)$ 
-- $0=\frac{\partial L}{\partial \theta} = 2X^TX\theta - 2X^T y$
-- $\theta = (X^TX)^{-1} X^Ty$
+```mermaid
+graph LR;
+  X-->Y;
+  X --> Z(Z)
+  Z --> Y
+```
 
-## ridge regression
-- $L(\theta) = \sum_{i=1}^n (\hat{y}_i-y_i)^2+ \lambda \vert \vert \theta\vert \vert _2^2$ 
-- $L(\theta) = (X \theta - y)^T (X \theta -y)+ \lambda \theta^T \theta$
-- $L(\theta) = \theta^T X^T X \theta - 2 \theta^T X^T y +y^T y +  \lambda \theta^T \theta$ 
-- $0=\frac{\partial L}{\partial \theta} = 2X^TX\theta - 2X^T y+2\lambda \theta$
-- $\theta = (X^TX+\lambda I)^{-1} X^T y$
-
-## single Bernoulli
-- L(p) = P(Train | Bernoulli(p)) = $P(X_1,...,X_n\vert p)=\prod_i P(X_i\vert p)=\prod_i p^{X_i} (1-p)^{1-X_i}$
-- $=p^x (1-p)^{n-x}$ where x = $\sum x_i$
-- $log(L(p)) = log(p^x (1-p)^{n-x}=x log(p) + (n-x) log(1-p)$
-- $0=\frac{dL(p)}{dp} = \frac{x}{p} - \frac{n-x}{1-p} = \frac{x-xp - np+xp}{p(1-p)}=x-np$
-- $\implies \hat{p} = \frac{x}{n}$
-
-## multinomial
-- $L(\theta)=P(Train\vert Multinomial(\theta))=P(d_1,...,d_n\vert \theta_1,...,\theta_p)$ where d is a document of counts x
-- =$\prod_i^n P(d_i\vert \theta_1,...\theta_p)=\prod_i^n factorials \cdot \theta_1^{x_1},...,\theta_p^{x_p}$- ignore factorials because they are always same
-  - require $\sum \theta_i = 1$
-- $\implies \theta_i = \frac{\sum_{j=1}^n x_{ij}}{N}$ where N is total number of words in all docs
+- ex. ![](assets/ml/j5_16.png)
+- latent variable Z has multinomial distr.
+  - *mixing proportions*: $P(Z^i=1|x, \xi) = \frac{e^{\xi_i^Tx}}{\sum_je^{\xi_j^Tx}}$
+  - *mixture components*: $p(y|Z^i=1, x, \theta_i)$ ~ different choices
+  - ex. mixture of linear regressions
+    - $p(y|Z^i=1, x, \theta_i) = \mathcal{N}(y|\beta_i^Tx, \sigma_i^2)$
+  - mixtures of logistic regressions
+    - $p(y|Z^i=1, x, \theta_i) = \mu(\theta_i^Tx)^y\cdot[1-\mu(\theta_i^Tx)]^{1-y}$ where $\mu$ is the logistic function
+- ***EM algorithm for this***
+- also, nonlinear optimization for this
