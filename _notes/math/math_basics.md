@@ -35,7 +35,7 @@ Equivalence Relation;
 - Goldbach's weak conjecture: All odd numbers greater than 7 are the sum of three primes.
 - Set - An unordered collection of items without replication
 - Proper subset - subset with cardinality less than the set
-- A U A = A				Idempotent law
+  - A U A = A			Idempotent law
 - Disjoint: A and B = empty set
 - Partition: mutually disjoint, union fills space
 - powerset $\mathcal{P}$(A) = set of all subsets

@@ -1,5 +1,5 @@
 ---
-layout: notes
+	layout: notes
 section-type: notes
 title: graphical models
 category: ai
@@ -63,7 +63,7 @@ category: ai
   - discrete parents continuous children $\implies$ *conditional Gaussian* - multivariate Gaussian given assignment to discrete variables
   - all continuous $\implies$ *multivariate Gaussian* over all the variables, and a multivariate posterior distribution (given any evidence)
 2. discrete children (continuous parents)
-  1. *probit distr* - $P(buys\|Cost=c) = \phi((-c+\mu)/\sigma)$ - integral of standard normal distr
+  1. *probit distr* - $P(buys\|Cost=c) = \phi[(-c+\mu)/\sigma]$ - integral of standard normal distr
     - like a soft threshold
   2. *logit distr.* - $P(buys\|Cost=c)=\frac{1}{1+exp(-2 (-c + \mu) / \sigma)}$
     - logistic function produces thresh
@@ -270,7 +270,7 @@ category: ai
      1. 2 components $P(X_k|e_{1:t}) = \alpha \underbrace{P(X_k|e_{1:k})}_{\text{forward}} \cdot \underbrace{P(e_{k+1:t}|X_k)}_{\text{backward}}$
 
        1. forward pass: filtering from $1:t$
-       2. backward pass from $t:1$ $\underbrace{P(e_{k+1:t}|X_k)}_{\text{sensor past k}} = \sum_{x_{k+1}} \underbrace{P(e_{k+1}|x_{k+1})}_{\text{sensor}} \cdot \underbrace{P(e_{k+2:t}|x_{k+1})}_{\text{recursive call}} \cdot \underbrace{P(x_{k+1}|X_k)}_{\text{transition}}$ (also there is a separate algorithm that doesn't use the observations on the backward pass)
+       2. backward pass from $t:1$ $\underbrace{P(e_{k+1:t}|X_k)}_{\text{sensor past k}} = \sum_{x_{k+1}} \underbrace{P(e_{k+1}|x_{k+1})}_{\text{sensor}} \cdot \underbrace{P(e_{k+2:t}|x_{k+1})}_{\text{recursive call}} \cdot \underbrace{P(x_{k+1}|X_k)}_{\text{transition}}$ ***(also there is a separate algorithm that doesn't use the observations on the backward pass)***
 
   4. *most likely explanation* - $\underset{x_{1:t}}{\text{argmax}}\:P(x_{1:t}\|e_{1:t})$
 
@@ -292,16 +292,46 @@ category: ai
 ## hmm
 
 - state is a single discrete process
-  - for matrices, forward pass is invertible so can use constant space
+- transitions are all matrices (and no zeros in sensor model)$\implies$ forward pass is invertible so can use constant space
+- ***online smoothing (with lag)***
+- ex. robot localization
 
 ## kalman filtering
 
+- state is continuous
+- ex. ![](assets/graphical_models/r15_9.png)
 - type of nodes (real-valued vectors) and prob model (linear-Gaussian) changes from HMM
+- 1d example: *random walk*
 - state nodes: $x_{t+1} = Ax_t + Gw_t$
 
 
 - output nodes: $y_t = Cx_t+v_t$
-  - x is Gaussian
+  - x is linear Gaussian
   - w is noise Gaussian
   - y is linear Gaussian
+- doing the integral for prediction involves completing the square
+- properties
+  1. new mean is weighted mean of new observation and old mean
+  2. update rule for variance is independent of the observation
+  3. variance converges quickly to fixed value that depends only on $\sigma^2_x, \sigma^2_z$
 - *Lyapunov eqn*: evolution of variance of states
+- *extended Kalman filter*
+  - works on nonlinear systems
+  - locally linear
+- *switching Kalman filter* - multiple Kalman filters run in parallel and weighted sum of predictions is used 
+  - ex. one for straight flight, one for sharp left turns, one for sharp right turns
+  - equivalent to adding discrete "maneuver" state variable
+
+## general dbns
+
+- can be better to decompose state variable into mulitple vars
+  - reduces size of transition matrix
+- *transient failure model* - allows probability of sensor giving wrong value
+- *persistent failure model* - additional variable describing status of battery meter
+- exact inference - *variable elimination* mimics recursive filtering
+  - still difficult
+- approximate inference - modification of likelihood weighting
+  - use samples as approximate representation of current state distr.
+  - ***particle filtering*** - focus set of samples on high-prob regions of the state space
+    - consistent
+

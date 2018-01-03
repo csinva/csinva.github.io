@@ -1,7 +1,7 @@
 ---
 layout: notes
 section-type: notes
-title: Research ref
+title: research ref
 category: research
 ---
 
@@ -24,7 +24,7 @@ category: research
   - wikipedia page: https://en.wikipedia.org/wiki/List_of_neuroscience_databases
 - *human fMRI datasets*: https://docs.google.com/document/d/1bRqfcJOV7U4f-aa3h8yPBjYQoLXYLLgeY6_af_N2CTM/edit
   - Kay et al 2008 has data on responses to images
-- *calcium imaging*: http://spikefinder.codeneuro.org/
+- *calcium imaging* for spike sorting: http://spikefinder.codeneuro.org/
   - spikes: http://www2.le.ac.uk/departments/engineering/research/bioengineering/neuroengineering-lab/software
 
 # levels
