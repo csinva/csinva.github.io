@@ -110,6 +110,7 @@ category: research
 - future of electrophysiology: https://www.technologynetworks.com/neuroscience/articles/shining-a-light-on-the-future-of-electrophysiology-286992
 
 ### brain transplant
+
 - computational hypothesis of the mind
 
 ### tms
@@ -120,12 +121,15 @@ category: research
 - quantum brain?
 
 ### data types
-|  | fMRI | EEG | ECoG | Local field potential (together forms microelectrode array) | single-unit | calcium imaging |
-|--------------|----------|----------|-------------------|-------------------------------------------------------------|-------------| ---|
-| scale | high | high | high | low | tiny | low
-| spatial res | mid-low | very low | low | mid-low | x | low
-| temporal res | very low | mid-high | high | high | super high | high
-| invasiveness | non | non | yes (under skull) | very | very | non 
+
+
+|              | EEG      | ECoG              | Local Field potential (LFP) -> microelectrode array | single-unit | calcium imaging | fMRI     |
+| ------------ | -------- | ----------------- | ---------------------------------------- | ----------- | --------------- | -------- |
+| scale        | high     | high              | low                                      | tiny        | low             | high     |
+| spatial res  | very low | low               | mid-low                                  | x           | low             | mid-low  |
+| temporal res | mid-high | high              | high                                     | super high  | high            | very low |
+| invasiveness | non      | yes (under skull) | very                                     | very        | non             | non      |
+
 - newer
   - neural dust
   - neuropixels
@@ -145,25 +149,23 @@ category: research
 
 #conferences
 
-|         | 2018              | 2019    |
-| ------- | ----------------- | ------- |
-| AAAI    | 2/2 - New Orleans |         |
-| AISTATS | 4/9 - Playa       |         |
-| VSS     | 5/18 - Florida    | Florida |
-| SAND | ~5/31 - Pitt | ~5/31 - Pitt
-
-| AREADNE | 6/20 - Greece | 
-
-| CVPR 	| 	6/18 - Salt Lake City | 
-| CNS 	|  ~July - Seattle |
-| ICML  | 	*7/10 - Stockholm* | 	7/10 - Long Beach |
-| ECCV	| 8/8 - Munich | |
-| CCN	| 9/6 |
-| ICCV |
-| SFN  | 11/3 - San Diego | 10/19 - Chicago |
-| NIPS | 12/3 - Montreal |
-
-- COSYNE?
+|         | 2018                   | 2019              |
+| ------- | ---------------------- | ----------------- |
+| AAAI    | 2/2 - New Orleans      |                   |
+| COSYNE  | **3/1 - Denver**       |                   |
+| AISTATS | 4/9 - Playa            |                   |
+| VSS     | 5/18 - Florida         | Florida           |
+| SAND    | ~5/31 - Pitt           | ~5/31 - Pitt      |
+| AREADNE | 6/20 - Greece          |                   |
+| CVPR    | 6/18 - Salt Lake City  |                   |
+| CNS     | ~July - Seattle        |                   |
+| ICML    | ***7/10 - Stockholm*** | 7/10 - Long Beach |
+| ECCV    | 8/8 - Munich           |                   |
+| CCN     | 9/6                    |                   |
+| ICCV    | X                      |                   |
+| SFN     | 11/3 - San Diego       | 10/19 - Chicago   |
+| NIPS    | 12/3 - Montreal        |                   |
+|         |                        |                   |
 - C Elegans
   - 302 neurons
   - no evidence of Hebbian learning

@@ -333,5 +333,5 @@ category: ai
 - approximate inference - modification of likelihood weighting
   - use samples as approximate representation of current state distr.
   - ***particle filtering*** - focus set of samples on high-prob regions of the state space
-    - consistent
+    - consistent 
 

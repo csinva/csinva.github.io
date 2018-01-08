@@ -11,7 +11,8 @@ category: ai
 # asymptotics
 - Big-O
     - big-oh: O(g): functions that grow no faster than g - upper bound, runs in time less than g
-        - f(n)≤c*g(n) for some c, large n
+        - $f(n) \leq c\cdot g(n)$ for some c, large n
+        - set of functions s.t. there exists c,k>0, 0 ≤ f(n) ≤ c*g(n), for all n > k
     - big-theta: Θ(g): functions that grow at the same rate as g
         - big-oh(g) and big-theta(g) - asymptotic tight bound
     - big-omega: Ω(g): functions that grow at least as fast as g
@@ -27,23 +28,14 @@ category: ai
         - we write f(n) ∈ O(g(n)), not f(n) = O(g(n))
     - They are all reflexive and transitive, but only Θ is symmetric.
         - Θ defines an equivalence relation.
-    - The difference between log10n and log2n is always a constant (about 3.322)
-- existence then efficiency
-- Upper bound: O(g(n)) - set of functions s.t. there exists c,k>0, 0 ≤ f(n) ≤ c*g(n), for all n > k
-  - o(g(n)) - O(g(n)) and not Ω(g(n))
-- Tight bound: Θ(g(n)) - set of functions s.t. O(g(n)) and Ω(g(n))
-- Lower bound: Ω(g(n)) - set of functions s.t. there exists c,k>0, 0 ≤ f(n) ≤ c*g(n), for all n > k
-  - ω(g(n)) - Ω(g(n)) but not O(g(n))
 - add 2 functions, growth rate will be $O(max(g_1(n)+g_2(n))$ (same for sequential code)
 - recurrence thm:$ f(n) = O(n^c) => T(n) = 0(n^c)$
   - $T(n) = a*T(n/b) + f(n)$
   - $c = log_b(a)$
-- Stirling's formula: $ n! ~= (\frac{n}{e})^n $
-  - corollary: log(n!) = 0(n log n)
-  - gives us a bound on sorting
 - over bounded number of elements, almost everything is constant time
 
 # recursion
+
 - moving down/right on an NxN grid - each path has length (N-1)+(N-1)
   - we must move right N-1 times
   - ans = (N-1+N-1 choose N-1)
@@ -68,7 +60,7 @@ for (int i = 0; i <= n; i++)
 	   else if (wt[i-1] <= w) //max of including weight, not including
 		   K[i][w] = max(val[i-1] + K[i-1][w-wt[i-1]], K[i-1][w]);
 	   else //weight too large
-		   K[i][w] = K[i-1][w];  pipes are connected at their endpoints. What is the maximum amount of water that you can route from a given starting point to a given ending point?
+		   K[i][w] = K[i-1][w];
 return K[n][W];
 ```
 
@@ -80,7 +72,7 @@ return K[n][W];
 
 # max-flow
 
-- A list of pipes is given, with different flow-capacities. These
+- A list of pipes is given, with different flow-capacities. These pipes are connected at their endpoints. What is the maximum amount of water that you can route from a given starting point to a given ending point?
 
 # sorting
 - you can assume w.l.o.g. all input numbers are unique

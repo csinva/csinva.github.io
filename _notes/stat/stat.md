@@ -30,7 +30,7 @@ category: stat
   - $x \in \mathbb{R}^n$
 
 1. *canonical parameterization*: $$p(x\|\mu, \Sigma) = \frac{1}{(2\pi )^{n/2} \|\Sigma\|^{1/2}} exp\left[ -\frac{1}{2} (x-\mu)^T \Sigma^{-1} (x-\mu) \right]$$
-2. *moment parameterization*: $$p(x\|\eta, \Lambda) = exp\left( a + \eta^T x - \frac{1}{2} x^T \Lambda x\right)$$ ~ also called information parameterization
+2. *moment parameterization*: $$p(x\|\eta, \Lambda) = \text{exp}\left( a + \eta^T x - \frac{1}{2} x^T \Lambda x\right)$$ ~ also called information parameterization
    - $\Lambda = \Sigma^{-1}$
    - $\eta = \Sigma^{-1} \mu$
 
@@ -41,7 +41,7 @@ category: stat
   - *Schur complement* of matrix M w.r.t. H: $M/H$
   - $\mu = \begin{bmatrix} \mu_1 \\ \mu_2 \end{bmatrix}$
   - $\Sigma = \begin{bmatrix} \Sigma_{11} & \Sigma_{12}\\ \Sigma_{21} & \Sigma_{22} \end{bmatrix}$
-  - factor $p(x_1, x_2) = p(x_1|x_2)\:p(x_2) = conditional * marginal$
+  - $p(x_1, x_2) = p(x_1|x_2)\:p(x_2) = conditional * marginal$
     - marginal
       - $\mu_2^m = \mu_2$
       - $\Sigma_2^m = \Sigma_{22}$

@@ -8,29 +8,34 @@ category: ai
 {:toc}
 # overview
 
+- regression doesn't work with classification
+  - even in binary case, outliers can skew fit
 - asymptotic classifier - assume you get infinite training / testing points
-- *discriminative* - model $P(Y\vert X)$ directly
+- linear model $\implies$ boundaries are hyperplanes
+- *discriminative* - model $P(Y\vert X)$ directly ![](assets/classification/j7_10.png)
   - smaller asymptotic error
   - slow convergence ~ $O(p)$
-- *generative* - model $P(X\vert Y)$  directly
-  - generally has higher bias -> can handle missing data
+- *generative* - model $P(X\vert Y)$ ![](assets/classification/j7_4.png)
+  - usually higher bias $\implies$ can handle missing data
   - fast convergence ~ $O[log(p)]$
+- *decision theory* - models don't require finding $p(y\|x)$ at all
 
 
 # binary classification
 
-- $\hat{y}=sign(w^T x)$
+- $\hat{y} = \text{sign}(w^T x)$
 - usually don't minimize 0-1 loss (combinatorial)
 - usually $w^Tx$ includes b term, but generally we don't want to regularize b
 
-| Model               | $\hat{w}$ objective                      |
+| Model               | $\mathbf{\hat{w}}$ objective             |
 | ------------------- | ---------------------------------------- |
 | Perceptron          | $\sum_i max(0,  -y_i \cdot w^T x_i)$     |
 | Linear SVM          | $w^Tw + C \sum_i max(0,1-y_i \cdot w^T x_i)$ |
-| Logistic regression | $w^Tw + C \sum_i log(1+exp(-y_i \cdot w^T x_i))$ |
+| Logistic regression | $w^Tw + C \sum_i log[1+exp(-y_i \cdot w^T x_i)]$ |
 - *perceptron* - tries to find separating hyperplane
   - whenever misclassified, update w
   - can add in delta term to maximize margin
+- ![](assets/classification/losses.png)
 
 # multiclass classification
 
@@ -40,7 +45,7 @@ category: ai
     - class i = positive otherwise negative
     - take max of predictions
   - *one-vs-one* = *all-vs-all*
-    - train C(K,2) binary classifiers
+    - train $C(K, 2)$ binary classifiers
     - labels are class i and class j
     - inference - any class can get up to k-1 votes, must decide how to break ties
   - flaws - learning only optimizes *local correctness*
@@ -52,58 +57,104 @@ category: ai
       - $w =  [w_1 ... w_k] $
       - want $w_i^T x > w_j^T x \quad \forall j$
       - rewrite $w^T \phi (x,i) > w^T \phi (x,j) \quad \forall j$
-        - here $\phi (x,i)$ puts x in the ith spot and zeros elsewhere
+        - here $\phi (x, i)$ puts x in the ith spot and zeros elsewhere
         - $\phi$ is often used for feature representation
       - define margin: 
         $\Delta (y,y') = \begin{cases} \delta& if y \neq y' \\\ 0& if y=y'\end{cases}$
-      - check if $y=argmax_{y'}w^T \phi(x,y') + \delta (y,y')$
+      - check if $y=\text{argmax}_{y'}w^T \phi(x,y') + \delta (y,y')$
   - multiclass SVMs (Crammer & Singer)
-    - minimize total norm of weights s.t. true label is score at least 1 more than second best label
-  - multinomial logistic regression = multi-class *log-linear* model
-    - $P(y\vert x,w)=\frac{exp(w^T_yx)}{\sum_{y' \in \{ 1,...,K\}} exp(w_{y'}^T,x)}$
-      - we control the peakedness of this by dividing by stddev
-    - *soft-max*: sometimes substitue this for $w^T_y x$ 
-
-# linear classification - J. 7
-
-- *decision theory* - models don't require finding $p(y\|x)$
-- regression doesn't work with classification
-  - even in binary case, outliers can skew fit
-- linear model $\implies$ boundaries are hyperplanes
-- generative models![](assets/classification/j7_4.png)
-  1. Gaussian class-conditional densities
-     1. binary case: posterior probability $p(Y=1|x, \theta)$ is a sigmoid $\frac{1}{1+e^{-z}}$ where $z = \beta^Tx+\gamma$
-        1. multiclass extends to *softmax function*: $\frac{e^{\beta_k^Tx}}{\sum_i e^{\beta_i^Tx}}$
-     2. only a linear classifier when covariance matrices are the same
-        1. otherwise a quadratic classifier
-     3. LDA / QDA?
-     4. MLE for estimates are pretty intuitive
-  2. naive Bayes classifier
-     1. assumes multinomial Y
-     2. with very clever tricks, can produce $P(Y^i=1|x, \eta)$ again as a softmax
-  3. exponential family
-     1. includes Gaussian, binomial, Poisson, gamma, Dirichlet
-     2. $p(x|\eta) = \text{exp}[\eta^Tx - a(\eta)] h(x)$
-     3. for classification, anything from exponential family will result in posterior probability that is logistic function of a linear function of x
-- discriminative models: ![](assets/classification/j7_10.png)
-  1. logistic regression: $p(Y=1|x, \theta) = logistic(\theta^Tx)$
-     1. assume Y ~ $Bernoulli(\mu_n)$ with $\mu_n=logistic(\theta^Tx$)
-     2. can solve this online with GD of ***likelihood***
-     3. better to solve with iteratively reweighted least squares
-  2. multiway logistic classification
-     1. Assume $P(Y^k=1|x, \theta) = \frac{e^{\beta_k^Tx}}{\sum_i e^{\beta_i^Tx}}$, just as arises from class-conditional exponential family distributions
-  3. probit (binary) regression
-     1. $p(Y=1|x, \theta) = \phi(\theta^Tx)$ where $\phi$ is the Gaussian CDF
-     2. pretty similar to logistic
-  4. noise-OR (binary) model
-     1. consider $Y = X_1 \lor X_2 \lor … X_m$ where each has a probability of failing
-        1. define $\theta$ to be the failure probabilities
-     2. $p(Y=1|x, \theta) = 1-e^{-\theta^Tx}$
-  5. other (binary) exponential models
-     1. $p(Y=1|x, \theta) = 1-e^{-\theta^Tx}$ but x doesn't have to be binary
-     2. *complementary log-log model*: $p(Y=1|x, \theta) = 1-\text{exp}[e^{-\theta^Tx}]
+    - minimize total norm of weights s.t. true label score is at least 1 more than second best label
+  - multinomial logistic regression = multi-class *log-linear* model (softmax on outputs)
+    - we control the peakedness of this by dividing by stddev
 
 # discriminative
+
+## logistic regression
+
+- $p(Y=1|x, \theta) = logistic(\theta^Tx)$
+  1. assume Y ~ $Bernoulli(\mu_n)$ with $\mu_n=logistic(\theta^Tx$)
+  2. can solve this online with GD of ***likelihood***
+  3. better to solve with iteratively reweighted least squares
+- $Logit(p) = log[p / (1-p)] = \theta^Tx$
+- predict using Bernoulli distribution with this parameter p
+- can be extended to multiple classes - multinomial distribution
+- multiway logistic classification
+  - assume $P(Y^k=1|x, \theta) = \frac{e^{\beta_k^Tx}}{\sum_i e^{\beta_i^Tx}}$, just as arises from class-conditional exponential family distributions
+
+## binary models
+
+- probit (binary) regression
+  - $p(Y=1|x, \theta) = \phi(\theta^Tx)$ where $\phi$ is the Gaussian CDF
+  - pretty similar to logistic
+- noise-OR (binary) model
+  - consider $Y = X_1 \lor X_2 \lor … X_m$ where each has a probability of failing
+  - define $\theta$ to be the failure probabilities
+  - $p(Y=1|x, \theta) = 1-e^{-\theta^Tx}$
+- other (binary) exponential models
+  - $p(Y=1|x, \theta) = 1-e^{-\theta^Tx}$ but x doesn't have to be binary
+  - *complementary log-log model*: $p(Y=1|x, \theta) = 1-\text{exp}[e^{-\theta^Tx}]
+
+## decision trees - R&N 18.3; HTF 9.2.1-9.2.3
+
+- *inductive bias*
+  - prefer small trees
+  - prefer tres with high IG near root
+- good for certain types of problems
+  - instances are attribute-value pairs
+  - target function has discrete output values
+  - disjunctive descriptions may be required
+  - training data may have errors
+  - training data may have missing attributes
+- greedy - use statistical test to figure out which attribute is best
+  - split on this attribute then repeat
+- growing algorithm
+  1. *information gain* - decrease in entropy
+     - weight resulting branches by their probs
+     - bias towards attributes with many values
+     - use *GainRatio* = Gain/SplitInformation
+       - can incorporate *SplitInformation* - discourages selection of attributes with many uniformly distributed values
+       - sometimes SplitInformation is very low (when almost all attributes are in one category)
+         - might want to filter using Gain then use GainRatio
+  2. regression tree
+     - must decide when to stop splitting and start applying linear regression
+     - must *minimize SSE* 
+- can get stuck in local optima
+- avoid overfitting 
+  - don't grow too deep
+  - early stopping doesn't see combinations of useful attributes
+  - overfit then prune - proven more succesful
+    - *reduced-error pruning* - prune only if doesn't decrease error on validation set
+    - *$\chi^2$ pruning* - test if each split is statistically significant with $\chi^2$ test
+    - *rule post-pruning* = *cost-complexity pruning*
+      1. Infer the decision tree from the training set, growing the tree until the training data is fit as well as possible and allowing overfitting to occur.
+      2. Convert the learned tree into an equivalent set of rules by creating one rule for each path from the root node to a leaf node.
+         - these rules are easier to work with, have no structure
+      3. Prune (generalize) each rule by removing any preconditions that result in improving its estimated accuracy.
+      4. Sort the pruned rules by their estimated accuracy, and consider them in this sequence when classifying subsequent instances.
+- incorporating continuous-valued attributes
+  - have to pick threshold to split on
+    - candidate thresholds: separate examples that differ in their target classificaiton
+      - just evaluate them all
+- missing values
+  - could just fill in most common value
+  - also could assign values probabilistically
+- differing costs
+  - can bias the tree to favor low-cost attributes
+    - ex. divide gain by the cost of the attribute
+- high variance - instability - small changes in training set will result in changes of tree model
+- many trees
+  - *bagging* = bootstrap aggregation - an ensemble method
+    - *bootstrap* - resampling with replacement
+    - training multiple models by randomly drawing new training data
+    - bootstrap with replacement can keep the sampling size the same as the original size
+  - *random forest* - for each split of each tree, choose from only m of the p possible features
+    - smaller m decorrelates trees, reduces variance
+    - RF with m=p $\implies$ bagging
+  - voting
+    - consensus: take the majority vote
+    - average: take average of distribution of votes
+      - reduces variance, better for improving more variable (unstable) models
+    - *adaboost* - weight models based on their performance
 
 ## svms
 
@@ -173,79 +224,26 @@ category: ai
   - fill in missing values
   - start with RBF
 
-## logistic regression
-
-- $p_i = P(Y_i=1\|x_i) = exp(x_i^T \theta) / (1+exp(x_i^T \theta))$
-- $Logit(p_i) = log(p_i / (1-p_i)) = x_i^T \theta$
-- predict using Bernoulli distribution with this parameter p
-- can be extended to multiple classes - multinomial distribution
-
-## decision trees - R&N 18.3; HTF 9.2.1-9.2.3
-
-- *inductive bias*
-  - prefer small trees
-  - prefer tres with high IG near root
-- good for certain types of problems
-  - instances are attribute-value pairs
-  - target function has discrete output values
-  - disjunctive descriptions may be required
-  - training data may have errors
-  - training data may have missing attributes
-- greedy - use statistical test to figure out which attribute is best
-  - split on this attribute then repeat
-- growing algorithm
-  1. *information gain* - decrease in entropy
-     - weight resulting branches by their probs
-     - bias towards attributes with many values
-     - use *GainRatio* = Gain/SplitInformation
-       - can incorporate *SplitInformation* - discourages selection of attributes with many uniformly distributed values
-       - sometimes SplitInformation is very low (when almost all attributes are in one category)
-         - might want to filter using Gain then use GainRatio
-  2. regression tree
-     - must decide when to stop splitting and start applying linear regression
-     - must *minimize SSE* 
-- can get stuck in local optima
-- avoid overfitting 
-  - don't grow too deep
-  - early stopping doesn't see combinations of useful attributes
-  - overfit then prune - proven more succesful
-    - *reduced-error pruning* - prune only if doesn't decrease error on validation set
-    - *$\chi^2$ pruning* - test if each split is statistically significant with $\chi^2$ test
-    - *rule post-pruning* = *cost-complexity pruning*
-      1. Infer the decision tree from the training set, growing the tree until the training data is fit as well as possible and allowing overfitting to occur.
-      2. Convert the learned tree into an equivalent set of rules by creating one rule for each path from the root node to a leaf node.
-         - these rules are easier to work with, have no structure
-      3. Prune (generalize) each rule by removing any preconditions that result in improving its estimated accuracy.
-      4. Sort the pruned rules by their estimated accuracy, and consider them in this sequence when classifying subsequent instances.
-- incorporating continuous-valued attributes
-  - have to pick threshold to split on
-    - candidate thresholds: separate examples that differ in their target classificaiton
-      - just evaluate them all
-- missing values
-  - could just fill in most common value
-  - also could assign values probabilistically
-- differing costs
-  - can bias the tree to favor low-cost attributes
-    - ex. divide gain by the cost of the attribute
-- high variance - instability - small changes in training set will result in changes of tree model
-- many trees
-  - *bagging* = bootstrap aggregation - an ensemble method
-    - *bootstrap* - resampling with replacement
-    - training multiple models by randomly drawing new training data
-    - bootstrap with replacement can keep the sampling size the same as the original size
-  - *random forest* - for each split of each tree, choose from only m of the p possible features
-    - smaller m decorrelates trees, reduces variance
-    - RF with m=p $\implies$ bagging
-  - voting
-    - consensus: take the majority vote
-    - average: take average of distribution of votes
-      - reduces variance, better for improving more variable (unstable) models
-    - *adaboost* - weight models based on their performance
-
 # generative
+
+## gaussian class-conditioned classifiers
+
+- binary case: posterior probability $p(Y=1|x, \theta)$ is a sigmoid $\frac{1}{1+e^{-z}}$ where $z = \beta^Tx+\gamma$
+  1. multiclass extends to *softmax function*: $\frac{e^{\beta_k^Tx}}{\sum_i e^{\beta_i^Tx}}$
+- only a linear classifier when covariance matrices are the same (LDA)
+  1. otherwise a quadratic classifier (QDA) - decision boundary is quadratic
+- MLE for estimates are pretty intuitive
+- decision boundary are points satisfying $P(C_i\vert X) = P(C_j\vert X)$
+- Regularized discriminant analysis - shrink the separate covariance matrices towards a common matrix
+  - $\Sigma_k = \alpha \Sigma_k + (1-\alpha) \Sigma$
+- treat each feature attribute and class label as random variables
+  - we assume distributions for these
+  - for 1D Gaussian, just set mean and var to sample mean and sample var
 
 ## naive bayes classifier
 
+- assumes multinomial Y
+- with very clever tricks, can produce $P(Y^i=1|x, \eta)$ again as a softmax
 - let $C_1,...,C_L$ be the classes of Y
 - want Posterior $P(C\vert X) = \frac{P(X\vert C)(P(C)}{P(X)}$ 
 - MAP rule - maximum A Posterior rule
@@ -269,24 +267,11 @@ category: ai
   - $P(x_i\vert c_j) = \frac{N(x_i, c_j) +1}{N(c_j)+\vert X_i\vert }$ 
   - then, $\sum_i P(x_i\vert c_j) = 1$
 
-## gaussian classifiers
+## exponential family class-conditioned classifiers
 
-- distributions
-  - Normal $P(X_j\vert C_i) = \frac{1}{\sigma_{ij} \sqrt{2\pi}} exp\left( -\frac{(X_j-\mu_{ij})^2}{2\sigma_{ij}^2}\right)$- requires storing $\vert C\vert \cdot p$ distributions
-  - Multivariate Normal $\frac{1}{(2\pi)^{D/2}} \frac{1}{\vert \Sigma\vert ^{1/2}} exp\left(-\frac{1}{2} (x-\mu)^T \Sigma^{-1} (x-\mu)\right)$where $\Sigma$ is covariance matrix
-- decision boundary are points satisfying $P(C_i\vert X) = P(C_j\vert X)$
-- LDA - linear discriminant analysis - assume covariance matrix is the same across classes
-  - Gaussian distributions are shifted versions of each other
-  - decision boundary is linear
-- QDA - different covariance matrices
-  - estimate the covariance matrix separately for each class C
-  - decision boundaries are quadratic
-  - fits data better but has more parameters to estimate
-- Regularized discriminant analysis - shrink the separate covariance matrices towards a common matrix
-  - $\Sigma_k = \alpha \Sigma_k + (1-\alpha) \Sigma$
-- treat each feature attribute and class label as random variables
-  - we assume distributions for these
-  - for 1D Gaussian, just set mean and var to sample mean and sample var
+1. includes Gaussian, binomial, Poisson, gamma, Dirichlet
+2. $p(x|\eta) = \text{exp}[\eta^Tx - a(\eta)] h(x)$
+3. for classification, anything from exponential family will result in posterior probability that is logistic function of a linear function of x
 
 ## text classification
 

@@ -9,17 +9,16 @@ category: ai
 {:toc}
 *From "Artificial Intelligence" Russel & Norvig 3rd Edition*
 
-- *knowledge-based agents* - intelligence is based on *reasoning* that operates on internal *representations of knowledge*
-
 # logical agents - 7.1-7.7 (omitting 7.5.2)
 
+- *knowledge-based agents* - intelligence is based on *reasoning* that operates on internal *representations of knowledge*
 - 3 steps: given a percept, the agent 
   1. adds the percept to its knowledge base
   2. asks the knowledge base for the best action
   3. tells the knowledge base that it has taken that action
-- *declarative* approach - tell sentences until agent knows how to opearte
+- *declarative* approach - tell sentences until agent knows how to operate
 - *procedural* approach - encodes desired behaviors as program code
-- ex. Wumpus World
+  - ex. Wumpus World
 - logical *entailment* between senteces
   - B follows logically from A (A implies B)
   - $A \vDash B$

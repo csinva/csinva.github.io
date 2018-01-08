@@ -9,6 +9,3 @@ category: neuro
   - Neuralink
   - Kernel
   - Facebook
-- data types
-  - Neural dust
-  - calcium imaging
