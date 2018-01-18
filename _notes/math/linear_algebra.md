@@ -12,7 +12,7 @@ category: math
 ## notation
 
 - $x \preceq y$ - these are vectors and x is less than y elementwise
-- $X \preceq Y$ - matrices, Y-X is PSD
+- $X \preceq Y$ - matrices, $Y-X$ is PSD
   - $v^TXv \leq v^TYv \:\: \forall v$
 
 ## linearity
@@ -42,7 +42,7 @@ category: math
       - rank==m==n, then nonsingular
     - *ill-conditioned matrix* - matrix is close to being singular - very small determinant
 - inverse
-    - if *orthogonal*, $A^{-1} = A^T$
+    - if *orthogonal matrix*, $A^{-1} = A^T$
       - all columns are *orthonormal*
       - preserves the Euclidean norm $\|\|Ax\|\|_2 = \|\|x\|\|_2$
     - if diagonal, inverse is invert all elements
@@ -105,25 +105,26 @@ category: math
 ## matrix norms
 
 - over elements
-  - *frobenius norm* - like $l_2$, but for a matrix
-  - sum-absolute-value norm (like l1) 
-  - maximum-absolute-value norm (like linf)
+  - *frobenius norm* - (like $l_2$)
+  - sum-absolute-value norm (like $l_1$) 
+  - maximum-absolute-value norm (like $l_\infty$)
 - *operator norm*
   - let $\|\|\cdot\|\|_a$ and $\|\| \cdot \|\|_b$ be vector norms
   - operator norm $\|\|X\|\|_{a,b} = sup\{ \|\|Xu\|\|_a \: \| \: \|\|u\|\|_b \leq 1 \}$
      - represents the maximum stretching that X does to a vector u
-  - if both Euclidean norms, X is *max singular value*: $\|\|X\|\|_2 = \sigma_{max}(X) = (\lambda_{max} (X^TX))^{(1/2)}$
-    - also called *spectral norm* or *$l_2 norm$* (of a matrix)
+  - if both Euclidean norms, X is *max singular value*: $\|\|X\|\|_2 = \sigma_{max}(X) = [\lambda_{max} (X^TX)]^{1/2}$
+    - also called *spectral norm* or *$l_2-norm$* (of a matrix)
 
 # eigenstuff
 ## eigenvalues intro - strang 5.1
+
 - elimination changes eigenvalues
 - eigenvector application to diff eqs $\frac{du}{dt}=Au$
   - soln is exponential: $u(t) = c_1 e^{\lambda_1 t} x_1 + c_2 e^{\lambda_2 t} x_2$
 - *eigenvalue eqn*: $Ax = \lambda x \implies (A-\lambda I)x=0$
-  - set $det(A-\lambda I) = 0$ to get *characteristic polynomial*
+  - $det(A-\lambda I) = 0$ yields *characteristic polynomial*
 - eigenvalue properties
-  - 0 eigenvalue signals that A is singular
+  - 0 eigenvalue $\implies$ A is singular
   - eigenvalues are on the main diagonal when the matrix is triangular
 - expressions when $A \in \mathbb{S}$
   - $det(A) = \prod_i \lambda_i$
@@ -171,7 +172,7 @@ category: math
 ## strang 6.3 - singular value decomposition
 
 - SVD for any m x n matrix: $A=U \Sigma V^T$
-  - U (mxm) are eigenvectors of $AA^T$
+  - U (mxm) are eigenvectors of $AA^T​$
   - columns of V (nxn) are eigenvectors of $A^TA$
   - r singular values on diagonal of $\Sigma$ (m x n) - square roots of nonzero eigenvalues of both $AA^T$ and $A^TA$
   - like rotating, scaling, and rotating back
@@ -185,7 +186,8 @@ category: math
     - we can throw away columns corresponding to small $\sigma_i$
   - pseudoinverse $A^+ = V \Sigma^+ U^T$h
 
-## strang 5.3 - difference eqs and power $A^k$
+##  strang 5.3 - difference eqs and power $A^k$
+
 - compound interest
 - solving for fibonacci numbers
 - Markov matrices

@@ -2,37 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bb550f8f-7c94-4712-8ab6-ac3f3bdb01c4" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_notes/cs/interviews/job_specific/Icon&#13;" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_notes/cs/interviews/job_specific/google app/Icon&#13;" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_notes/cs/interviews/job_specific/google app/big-O cheat sheet.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_notes/cs/interviews/job_specific/google app/google app.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_notes/cs/interviews/job_specific/google app/google prep.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_notes/cs/interviews/job_specific/interview_essays.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_notes/md_to_tex.sh" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_notes/prelim/1_general/Icon&#13;" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_notes/prelim/1_general/cover_info_solns.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_notes/prelim/1_general/cover_info_theory.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_notes/prelim/1_general/jordan_13_multivariate_gaussian.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_notes/prelim/1_general/jordan_15_kalman_filtering.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_notes/prelim/1_general/strang_lin_alg_book.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_notes/prelim/2_ai/Icon&#13;" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_notes/prelim/2_ai/jordan_12_hmm.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_notes/prelim/2_ai/jordan_2_cond_independence.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_notes/prelim/2_ai/jordan_3_elimination.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_notes/prelim/2_ai/jordan_4_propagation.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_notes/prelim/2_ai/russell_ai.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_notes/prelim/3_ml/Icon&#13;" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_notes/prelim/3_ml/distrs.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_notes/prelim/3_ml/jordan_10_mixtures.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_notes/prelim/3_ml/jordan_11_em.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_notes/prelim/3_ml/jordan_5_stat_concepts.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_notes/prelim/3_ml/jordan_6_linreg.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_notes/prelim/3_ml/jordan_7_lin_classification.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_notes/prelim/3_ml/ng_svm.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_notes/prelim/Icon&#13;" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_notes/prelim/prelim_syllabus.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_notes/stat/stat_cookbook.pdf" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_notes/ai/graphical_models.md" afterPath="$PROJECT_DIR$/_notes/ai/graphical_models.md" />
     </list>
     <ignored path="csinva.github.io.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -52,12 +23,12 @@
     <favorites_list name="csinva.github.io" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="135">
-              <caret line="9" column="98" lean-forward="false" selection-start-line="9" selection-start-column="98" selection-end-line="9" selection-end-column="98" />
+              <caret line="9" column="39" lean-forward="true" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -208,6 +179,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -248,7 +220,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
@@ -653,16 +624,16 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32920793" sideWeight="0.4972145" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="SFDX" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26732674" sideWeight="0.5027855" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Execute Anonymous" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.07403433" sideWeight="0.4972145" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24746075" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25669438" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Log Manager" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Salesforce" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -881,21 +852,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/_notes/stat/applied_stat.md" />
     <entry file="file://$PROJECT_DIR$/_notes/stat/freedman.md" />
-    <entry file="file://$PROJECT_DIR$/_notes/prelim/1_general/prelim_general_notes.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/_notes/prelim/1_general/prelim_general_notes.md" />
     <entry file="file://$PROJECT_DIR$/_notes/prelim/2_ai/prelim_ai_notes.md" />
-    <entry file="file://$PROJECT_DIR$/_notes/prelim/3_ml/prelim_ml_notes.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="71">
-          <caret line="169" column="49" lean-forward="true" selection-start-line="169" selection-start-column="49" selection-end-line="169" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/_notes/prelim/3_ml/prelim_ml_notes.md" />
     <entry file="file://$PROJECT_DIR$/readme.markdown">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-26">
@@ -1017,21 +976,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_notes/stat/linear_models.md">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="-514">
-          <caret line="160" column="44" lean-forward="false" selection-start-line="160" selection-start-column="44" selection-end-line="160" selection-end-column="44" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/_notes/stat/linear_models.md" />
     <entry file="file://$PROJECT_DIR$/_notes/stat/linear_regression.md" />
     <entry file="file://$PROJECT_DIR$/_notes/stat/stat.md">
       <provider editor-type-id="text-editor">
@@ -1116,7 +1061,7 @@
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
-          <caret line="9" column="98" lean-forward="false" selection-start-line="9" selection-start-column="98" selection-end-line="9" selection-end-column="98" />
+          <caret line="9" column="39" lean-forward="true" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
           <folding />
         </state>
       </provider>

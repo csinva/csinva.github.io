@@ -8,10 +8,7 @@ category: ai
 {:toc}
 # overview
 
-- 3 types
-  - supervised 
-  - unsupervised
-  - reinforcement
+- 3 types: supervised, unsupervised, reinforcement
 
 # feature selection
 
@@ -60,12 +57,12 @@ category: ai
 
 ## hierarchical
 
-- Two approaches:
-    1. Bottom-up agglomerative clustering - starts with each object in separate cluster then joins
-    2. Top-down divisive - starts with 1 cluster then separates
+- two approaches:
+    1. bottom-up agglomerative clustering - starts with each object in separate cluster then joins
+    2. top-down divisive - starts with 1 cluster then separates
 - ex. starting with each item in its own cluster, find best pair to merge into a new cluster
-- repeatedly do this to make a tree (dendrogram)
-- distances between clustersdefined by *linkage function*
+    - repeatedly do this to make a tree (dendrogram)
+- distances between clusters defined by *linkage function*
   - single-link - closest members (long, skinny clusters)
   - complete-link - furthest members  (tight clusters)
   - average - most widely used

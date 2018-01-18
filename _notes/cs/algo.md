@@ -9,9 +9,10 @@ category: ai
 
 
 # asymptotics
+
 - Big-O
     - big-oh: O(g): functions that grow no faster than g - upper bound, runs in time less than g
-        - $f(n) \leq c\cdot g(n)$ for some c, large n
+        - $f(n) \leq c\cdot g(n)​$ for some c, large n
         - set of functions s.t. there exists c,k>0, 0 ≤ f(n) ≤ c*g(n), for all n > k
     - big-theta: Θ(g): functions that grow at the same rate as g
         - big-oh(g) and big-theta(g) - asymptotic tight bound
@@ -336,4 +337,4 @@ for i=1:n-1
     - can be computed in nlogn total time
       1. idea divide and conquer
       - merging is complex
-      2. sweep line using parabolas
+      2. sweep line using parabolas 

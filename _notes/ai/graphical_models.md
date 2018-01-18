@@ -166,7 +166,7 @@ category: ai
 - the elimination algorithm is for *probabilistic inference*
   - want $p(x_F\|x_E)$ where E and F are disjoint
 - here let $X_F$ be a single node
-- define $m_i (x_{S_i})$ as the expression that arises from performing the sum $\sum_{x_i}$, where $x_{S_i}$ are the variables, other than $x_i$, that appear in the summand
+- define $m_i (x_{S_i})$ = $\sum_{x_i}$ where $x_{S_i}$ are the variables, other than $x_i$, that appear in the summand
 - define *evidence potential* $\delta(x_i, \bar{x_i})$ = 1 if $x_i == \bar{x_i}$ and 0 otherwise
   - then $$g(\bar{x_i}) = \sum_{x_i} \delta (x_i, \bar{x_i})$$
   - for a set $\delta (x_E, \bar{x_E}) = \prod_{i \in E} \delta (x_i, \bar{x_i})$

@@ -267,7 +267,7 @@ category: math
 
 ## gradient method basics
 - perspective 1: *fixed point iteration*
-  - contracts distance to optimatl soln each time
+  - contracts distance to optimal soln each time
   - bounded if f *Lipschitz continuous*: $\|\|f(x) - f(y)\|\| \leq L\|\|x-y\|\|$
 - perspective 2: *line search method* - find direction and minimize in that direction
 - *strong convexity* = Hessian has positive eigenvalues
@@ -279,18 +279,18 @@ category: math
 - *backtracking line search* - choose a step size, and if function not sufficiently decreased choose smaller step size
 - complexity
 
-## gradient_method_projected
+## constrained gd
+
 - for constrained optimization, solution must lie in some set $\Omega$
   - solution is no longer when gradient = 0
 - now, If f is smooth and $x^*$ locally minimizes f on a closed convxes set $\Omega$, then <$\nabla f(x^*), z-x^*$> $\geq 0 \: \forall z \in \Omega$. If f is convex, then the converse holds
-- let 
 
 
 ## convex algorithms
 
 - interior point methods: solve $min \: c^Tx \\s.t. \: x \in X$, where X convex and compact
 - *barrier* - goes to infinity at boundaries
-- $x^*(t) \in argmin tc^Tx + F(x)$ where F is a barrier
+- $x^*(t) \in argmin \:c^Tx + F(x)$ where F is a barrier
   - solve for increasing t until converges to soln with Newton's method
 - *strongly convex*: $f(x_2) \geq f(x_1) + \nabla f(x_1)^T (x_2 - x_1) + m/2 \|\|x_2 - x_1\|\|^2$
 - *L-smooth*: $f(x_2) \leq f(x_1) + \nabla f(x_1)^T (x_2 - x_1) + m/2 \|\|x_2 - x_1\|\|^2$
@@ -298,7 +298,7 @@ category: math
 
 # basic algorithms
 
-types: *batch* (have full data) vs *online*
+- types: *batch* (have full data) vs *online*
 
 1. gradient descent = *batch gradient descent*
    - *gradient* - vector that points to direction of maximum increase

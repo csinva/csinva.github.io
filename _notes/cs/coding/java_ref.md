@@ -7,7 +7,6 @@ category: cs
 
 * TOC
 {:toc}
-
 # data structures
 
 ```java
@@ -96,25 +95,25 @@ class Test implements Comparable<Object>
 # higher level
 - *primitives* - `byte, short, char, int, long, float, double`
 - java only has primitive and reference *types*
-	- when you assign primitives to each other, it's fine
-	- when you pass in a primitive, its value is copied
-	- when you pass in an object, its reference is copied
-		- you can modify the object through the reference, but can't change the object's address
+  - when you assign primitives to each other, it's fine
+  - when you pass in a primitive, its value is copied
+  - when you pass in an object, its reference is copied
+    - you can modify the object through the reference, but can't change the object's address
 - *garbage collection*
-	- once an object no longer referenced, gc removes it and reclaims memory
-	- jvm intermittently runs a mark-and-sweep algorithm
-		- runs when short-term stuff gets full
-		- older stuff moves to different part
-		- eventually older stuff is cleared
+  - once an object no longer referenced, gc removes it and reclaims memory
+  - jvm intermittently runs a mark-and-sweep algorithm
+    - runs when short-term stuff gets full
+    - older stuff moves to different part
+    - eventually older stuff is cleared
 
 # object-oriented
 | declare | instantiate | initialize |
-|---------|-------------|------------|
+| ------- | ----------- | ---------- |
 | Robot k | new         | Robot()    |
 - *class method* = *static*
-	- called with Foo.DoIt()
-	- initialized before constructor
-	- class shares one copy, can't refer to non-static
+  - called with Foo.DoIt()
+  - initialized before constructor
+  - class shares one copy, can't refer to non-static
 - *instance method* - invoked on specific instance of the class
-	-  called with f.DoIt()
+  -  called with f.DoIt()
 - *protected* member is accessible within its class and subclasses
