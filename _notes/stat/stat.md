@@ -192,6 +192,7 @@ category: stat
      - learning requires EM
      - can be used nonparametrically - *mixture seive*
        - however, means are allowed to vary
+     - solving method ex. - random projection - project ot llow dim and keep track of means etc.
    - ex. *nonparametric density estimation*
      - ex. *kernel density estimator* - stacking up mass
      - each point contributes a kernel function $k(x,x_n, \lambda)$
