@@ -113,9 +113,10 @@ category: math
   - operator norm $\|\|X\|\|_{a,b} = sup\{ \|\|Xu\|\|_a \: \| \: \|\|u\|\|_b \leq 1 \}$
      - represents the maximum stretching that X does to a vector u
   - if both Euclidean norms, X is *max singular value*: $\|\|X\|\|_2 = \sigma_{max}(X) = [\lambda_{max} (X^TX)]^{1/2}$
-    - also called *spectral norm* or *$l_2-norm$* (of a matrix)
+    - also called *spectral norm* or *$L_2$-norm* (of a matrix)
 
 # eigenstuff
+
 ## eigenvalues intro - strang 5.1
 
 - elimination changes eigenvalues

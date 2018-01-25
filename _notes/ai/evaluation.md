@@ -24,6 +24,7 @@ category: ai
   - balanced accuracy = 1/2 (TP/P + TN/N)
   - recall - TP/(TP+FN)
   - precision - TP/(TP+FP)
+- roc curve: TPR (recall) vs. FPR (not precision)
 
 # cv
 

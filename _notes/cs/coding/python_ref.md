@@ -12,16 +12,22 @@ category: cs
 - from math import log2, floor, ceil
 - % is modulus
 - from random import random
-- random.random() - [0, 1.0)
-- to copy: x = [1, 2, 3] or x = {3:4} -> y = x.copy()
+  - `random.random() # [0, 1.0)`
+- copying: x = [1, 2, 3] or x = {3:4} -> y = x.copy()
 
 # data structures
 
 ```Python
-- list [] (arraylist)
-	- append(x)
-  - queue: from collections import deque
-      - popleft()
+- list [] l (arraylist)
+	- l.append(x)
+    - l.insert(index, element)
+  - queue: from collections import deque # implemented as doubly linked list
+      - q = deque()
+      - q.append(x)
+      - q.pop()
+      - q.popleft()
+      - q.appendleft(x)
+      - index like normal
   - stack - use normal list
       - pop()
 - linked list
@@ -32,7 +38,7 @@ category: cs
 - set()
 	- add(x)
     - remove(x)
-- map {'key':3}
+- map {'key': 3}
 	- keys()
 	- values()
     - del m['key']
@@ -46,8 +52,8 @@ category: cs
 
 *strings*
 
-```Python
-s = "test"
+```python
+- s = "test"
 - s.upper()
 - reversed(s)
 - "".join(s)
@@ -60,7 +66,7 @@ s = "test"
 	"%05d"	//pad to fill 5 spaces
 	"%8.3f" //max number of digits
 	"%-d"	//left justify
-	"%,d" 	//print commas ex. 1,000,000
+	"%,d" 	//print commas ex. "1,000,000"
 	| int | double | string |
 	|-----|--------|--------|
 	| d   | f      | s      |
@@ -68,6 +74,7 @@ s = "test"
 - int("3") = 3
 - bin(10) = '0b1010'
 - hex(100) = '0x64'
+- ord('a') = 97
 ```
 
 *sorting*
@@ -91,6 +98,7 @@ except ValueError as e:
     print('error!', e)
 
 raise Exception('spam', 'eggs')
+assert(x == 3)
 ```
 
 # higher level
@@ -104,9 +112,6 @@ raise Exception('spam', 'eggs')
 
 # object-oriented
 
-| declare | instantiate | initialize |
-| ------- | ----------- | ---------- |
-| Robot k | new         | Robot()    |
 ```python
 class Document:
     def __init__(self, name):    

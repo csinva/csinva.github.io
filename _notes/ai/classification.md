@@ -88,11 +88,11 @@ category: ai
   - pretty similar to logistic
 - noise-OR (binary) model
   - consider $Y = X_1 \lor X_2 \lor … X_m$ where each has a probability of failing
-  - define $\theta$ to be the failure probabilities
+  - define $\theta​$ to be the failure probabilities
   - $p(Y=1|x, \theta) = 1-e^{-\theta^Tx}$
 - other (binary) exponential models
   - $p(Y=1|x, \theta) = 1-e^{-\theta^Tx}$ but x doesn't have to be binary
-  - *complementary log-log model*: $p(Y=1|x, \theta) = 1-\text{exp}[e^{-\theta^Tx}]
+  - *complementary log-log model*: $p(Y=1|x, \theta) = 1-\text{exp}[e^{-\theta^Tx}]$
 
 ## decision trees - R&N 18.3; HTF 9.2.1-9.2.3
 
@@ -165,9 +165,9 @@ category: ai
 - notation
   - $y \in \{-1,1\}$
   - $h(x) = g(w^Tx +b)$
-    - g(z) = 1 if $z \geq 0$ and -1 otherwise
-- define *functional margin* $\gamma^{(i)} = y^{(i)} (w^T x +b)$
-  - want to limit the size of $(w, b)$ so we can't arbitrarily increase functional margin
+    - $g(z) = 1$ if $z \geq 0$ and -1 otherwise
+- *functional margin* $\gamma^{(i)} = y^{(i)} (w^T x +b)$
+  - want to limit the size of $(w, b)​$ so we can't arbitrarily increase functional margin
   - function margin $\hat{\gamma}$ is smallest functional margin in a training set
 - *geometric margin* = functional margin / $\vert \vert w\vert \vert $
   - if $\vert \vert w\vert \vert =1$, then same as functional margin
@@ -192,7 +192,6 @@ category: ai
   - separable case: argmin($w^Tw$) subject to 
   - $w^Tx+b\geq 1$ for all x in +1 class
   - $w^Tx+b\leq 1$ for all x in -1 class
-- solve with quadratic programming
 - non-separable case: argmin($w^T w/2 + C \sum_i^n \epsilon_i$) subject to
   - $w^Tx_i +b \geq 1-\epsilon_i $ for all x in +1 class
   - $w^Tx_i +b \leq -1+\epsilon_i $ for all x in -1 class
@@ -293,7 +292,7 @@ category: ai
 # instance-based (nearest neighbors)
 
 - also called lazy learners = nonparametric models
-- makes Voronoi diagrams
+- make Voronoi diagrams
 - can take majority vote of neighbors or weight them by distance
 - distance can be Euclidean, cosine, or other
   - should scale attributes so large-valued features don't dominate
@@ -321,9 +320,9 @@ category: ai
 
 ## single Bernoulli
 
-- $L(p) = P$[Train | Bernoulli(p))]= $P(X_1,...,X_n\vert p)=\prod_i P(X_i\vert p)=\prod_i p^{X_i} (1-p)^{1-X_i}$
+- $L(p) = P$[Train | Bernoulli(p)]= $P(X_1,...,X_n\vert p)=\prod_i P(X_i\vert p)=\prod_i p^{X_i} (1-p)^{1-X_i}$
 - $=p^x (1-p)^{n-x}$ where x = $\sum x_i$
-- $log(L(p)) = log(p^x (1-p)^{n-x}=x log(p) + (n-x) log(1-p)$
+- $log[L(p)] = log[p^x (1-p)^{n-x}]=x log(p) + (n-x) log(1-p)$
 - $0=\frac{dL(p)}{dp} = \frac{x}{p} - \frac{n-x}{1-p} = \frac{x-xp - np+xp}{p(1-p)}=x-np$
 - $\implies \hat{p} = \frac{x}{n}$
 
@@ -332,4 +331,4 @@ category: ai
 - $L(\theta)=P(Train\vert Multinomial(\theta))=P(d_1,...,d_n\vert \theta_1,...,\theta_p)$ where d is a document of counts x
 - =$\prod_i^n P(d_i\vert \theta_1,...\theta_p)=\prod_i^n factorials \cdot \theta_1^{x_1},...,\theta_p^{x_p}$- ignore factorials because they are always same
   - require $\sum \theta_i = 1$
-- $\implies \theta_i = \frac{\sum_{j=1}^n x_{ij}}{N}$ where N is total number of words in all docs
+- $\implies \theta_i = \frac{\sum_{j=1}^n x_{ij}}{N}​$ where N is total number of words in all docs

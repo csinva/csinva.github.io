@@ -10,10 +10,10 @@ category: stat
 
 # probability
 
-- Mutually Exclusive: $P(AB)=0$
-- Independent: $P(AB) = P(A)P(B)$
+- mutually exclusive: $P(AB)=0$
+- independent: $P(AB) = P(A)P(B)$
   - A and B conditional independence given C: $$P(AB\vert C) = P(A\vert C) P(B\vert C)$$
-- Conditional (Bayes' thm): $P(A\|B) = \frac{P(AB)}{P(B)} = \frac{P(B|A)P(A)}{\sum P(B|A)P(A)}$
+- conditional (Bayes' thm): $P(A|B) = \frac{P(AB)}{P(B)} = \frac{P(B|A)P(A)}{\sum P(B|A)P(A)}$
 
 # distributions
 
@@ -87,7 +87,7 @@ category: stat
 
 - $M_X(t) = E(e^{tX})$
 - $E(X^r) = M_X ^ {(r )} (0)$
-- sometimes you can use $ln(M_x(t))$ to find $\mu$ and $V(X)$
+- sometimes you can use $ln[M_x(t)]$ to find $\mu$ and $V(X)$
 - Y = aX+b $-> M_y(t) = e^{bt}M_x(at)$
 - Y = $a_1X_1+a_2X_2 \to M_Y(t) = M_{X_1}(a_1t)M_{X_2}(a_2t)$ if $X_i$ independent
 - probability plot  - straight line is better - plot ([100(i-.5)/n]the percentile, ith ordered observation)
