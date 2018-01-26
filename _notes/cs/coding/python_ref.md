@@ -13,7 +13,7 @@ category: cs
 - % is modulus
 - from random import random
   - `random.random() # [0, 1.0)`
-- copying: x = [1, 2, 3] or x = {3:4} -> y = x.copy()
+- copying: x.copy() for list, dict; np.copy(x) for numpy
 
 # data structures
 
@@ -28,6 +28,7 @@ category: cs
       - q.popleft()
       - q.appendleft(x)
       - index like normal
+      - len(q)
   - stack - use normal list
       - pop()
 - linked list
@@ -103,8 +104,8 @@ assert(x == 3)
 
 # higher level
 
-- *primitives* - `byte, short, char, int, long, float, double`
-- java only has primitive and reference *types*
+- *primitives* - `byte, short, char, int, long, float, double`, bool
+- only primitive and reference *types*
   - when you assign primitives to each other, it's fine
   - when you pass in a primitive, its value is copied
   - when you pass in an object, its reference is copied
@@ -137,9 +138,11 @@ for document in documents:
 ```
 
 - *class method* = *static*
+  - @classmethod
   - called with Foo.DoIt()
   - initialized before constructor
   - class shares one copy, can't refer to non-static
 - *instance method* - invoked on specific instance of the class
-  -  called with f.DoIt()
+  - @staticmethod
+  - called with f.DoIt()
 - *protected* member is accessible within its class and subclasses
