@@ -5,11 +5,7 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
                     <i class="fa fa-bars"></i>
                 </button>
-                {% if page.url contains 'notes' %}
-                    <a class="navbar-brand page-scroll" href="{{site.url}}">
-                        Chandan <i class="fa fa-home fa-fw"></i> Singh
-                    </a>
-                {% elsif page.url contains 'projects' %}
+                {% if page.url contains 'notes' or page.url contains 'projects' %}
                     <a class="navbar-brand page-scroll" href="{{site.url}}">
                         Chandan <i class="fa fa-home fa-fw"></i> Singh
                     </a>
@@ -28,19 +24,36 @@
                         <a href="#page-top"></a>
                     </li>
 
-                    {% for pagex in site.pages | sort: "title" %}
-                    {% unless pagex.url == "/" %}
-                    {% unless pagex.url contains 'css' %}
-                    {% unless pagex.url contains 'projects' %}
-                    {% unless pagex.url contains 'notes' %}
-                        <a class="page-scroll" href="#{{ pagex.title }}">{{ pagex.title }}</a>
-                    {% endunless %}
-                    {% endunless %}
-                    {% endunless %}
-                    {% endunless %}
-                    {% endfor %}
 
-                    <a class="page-scroll" href="#notes_main">Notes</a>
+                    {% if page.url contains 'notes' or page.url contains 'projects' %}
+                        {% for pagex in site.pages | sort: "title" %}
+                            {% unless pagex.url == "/" %}
+                            {% unless pagex.url contains 'css' %}
+                            {% unless pagex.url contains 'projects' %}
+                            {% unless pagex.url contains 'notes' %}
+                            <li><a class="page-scroll" href="{{site.baseurl}}/#{{ pagex.title }}">{{ pagex.title }}</a></li>
+                            {% endunless %}
+                            {% endunless %}
+                            {% endunless %}
+                            {% endunless %}
+                        {% endfor %}
+                        <li><a class="page-scroll" href="{{site.baseurl}}/#notes_main">Notes</a></li>
+
+                    {% else %}
+                        {% for pagex in site.pages | sort: "title" %}
+                            {% unless pagex.url == "/" %}
+                            {% unless pagex.url contains 'css' %}
+                            {% unless pagex.url contains 'projects' %}
+                            {% unless pagex.url contains 'notes' %}
+                            <li><a class="page-scroll" href="#{{ pagex.title }}">{{ pagex.title }}</a></li>
+                            {% endunless %}
+                            {% endunless %}
+                            {% endunless %}
+                            {% endunless %}
+                        {% endfor %}
+                        <li><a class="page-scroll" href="#notes_main">Notes</a></li>
+                    {% endif %}
+
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
