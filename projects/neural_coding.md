@@ -31,5 +31,3 @@ In order to obtain a complete understanding of neural computation and communicat
 # Backpropagating action potentials
 
 "Examining the Effect of Action Potential Back Propagation on Spike Shape" - <a color="#219AB3" href="/assets/singh_14_dendrite_backprop.pdf"> Singh 2014, Unpublished</a>.
-
-This study 
