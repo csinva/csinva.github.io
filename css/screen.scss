@@ -1,17 +1,19 @@
 ---
 ---
 
-$content-color: #dcdcdc;
-$content-background-color: #4d4d4d;
+$content-color: #000000;
+//$content-background-color: #4d4d4d;
+$content-background-color: #000000;
 
-$nav-background-color: #262626;
-$nav-color-secondary: #4d4d4d;
+$nav-background-color: #000000;
+//$nav-background-color: #262626;
+$nav-color-secondary: #000000;
 $nav-width: 300px;
 
 $mobile-nav-height: 60px;
 $mobile-nav-padding: 10px;
 
-$brand-color: #ffd200;
+$brand-color: #000000;
 
 $space: 20px;
 $border-radius: 5px;
@@ -281,7 +283,7 @@ p > code {
 			top: 0;
 			left: 0;
 			right: 0;
-			border-top: 5px solid #FC0;
+			border-top: 5px solid #000000;
 			z-index:1;
 		}
 	}
@@ -304,7 +306,7 @@ p > code {
 }
 
 .cast {
-	background: #4d4d4d;
+	background: #000000;
 	padding: 10px;
 	border-radius: 5px;
 	margin: 30px 0;
@@ -368,7 +370,7 @@ p > code {
 }
 
 .jekyll-plugin {
-	background: #4d4d4d;
+	background: #000000;
 	padding: 20px;
 	border-radius: 5px;
 	margin: 30px 0;
@@ -395,7 +397,7 @@ p > code {
 	}
 
 	a {
-		background: #4d4d4d;
+		background: #000000;
 		padding: 0;
 		margin: 0;
 		border-radius: 5px;
@@ -421,7 +423,7 @@ p > code {
 	}
 
 	a:hover {
-		background: #333;
+		background: #000000;
 
 		img {
 			-webkit-filter: grayscale(0%);

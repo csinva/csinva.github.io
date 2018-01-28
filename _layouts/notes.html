@@ -10,13 +10,13 @@
 <script>
     MathJax.Hub.Config({
         tex2jax: {
-            inlineMath: [['$', '$'], ['\\(', '\\)']],
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
             processEscapes: true
         }
     });
 </script>
-<link href="{{ site.baseurl }}/css/lightpaper.css" rel="stylesheet">
+<!--<link href="{{ site.baseurl }}/css/lightpaper.css" rel="stylesheet">-->
 
 <body style="margin-top: 100px;">
-{{ page.content | markdownify }}
+    {{ page.content | markdownify }}
 </body>

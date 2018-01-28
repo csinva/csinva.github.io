@@ -192,6 +192,7 @@ category: research
 - corticocortical connections tend to have parallel connection that goes through thalamus
   - fastest axons are cotex -> thalamus -> cortex
   - connections through thalamus have almost same latency regardless of start/end area
+- let's not impose artificial constraints based on cartoon models of topics in science that we don't yet understand.
 
 ### biomechanics
 

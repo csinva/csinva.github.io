@@ -35,19 +35,19 @@
       </section>
     {% elsif page.section-type == "contact" %}
       <!-- {{ page.title }} Section -->
-      <section id="{{ page.title }}" class="container content-section text-center">
+      <section id="{{ page.title }}" class="container content-section">
           <div class="row">
               <div class="col-lg-8 col-lg-offset-2">
-                {{ page.content | markdownify }}
+                    {{ page.content | markdownify }}
 
-                {% if page.email %}
-                <p><a href="mailto:{{ page.email }}">{{ page.email }}</a></p>
-                {% endif %}
-                <ul class="list-inline social-buttons">
-                    {% for network in page.social %}
-                    <li><a href="{{ network.url }}"><i class="fa fa-{{ network.title }} fa-fw"></i></a></li>
-                    {% endfor %}
-                </ul>
+                    {% if page.email %}
+                    <p><a href="mailto:{{ page.email }}">{{ page.email }}</a></p>
+                    {% endif %}
+                    <ul class="list-inline social-buttons">
+                        {% for network in page.social %}
+                        <li><a href="{{ network.url }}"><i class="fa fa-{{ network.title }} fa-fw"></i></a></li>
+                        {% endfor %}
+                    </ul>
               </div>
           </div>
       </section>
