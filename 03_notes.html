@@ -4,38 +4,52 @@ title: notes_main
 section-type: notes
 ---
 
-<h2>Notes</h2>
+<h2 align="center">Notes</h2>
 
-<div id="grid" data-columns>
 {% for collection in site.collections %}
-<ul>
-{% assign categories = "" | split:"|"	%}
-{% for doc in collection.docs %}
-{% if doc.category %}
-{% unless categories contains doc.category %}
-{% assign categories = categories | push: doc.category %}
-{% endunless %}
-{% endif %}
-{% endfor %}
-{% assign categories_size = categories | size %}
-{% if categories_size == 0 %}
-{% assign categories = categories | push: nil %}
-{% endif %}
-
-{% for category in categories %}
-    {% if category %}
-    <h3>{{ category }}</h3>
-    {% endif %}
-    {% assign category_docs = collection.docs | where: "category", category	%}
-    <ul class="list-items">
-    {% for item in category_docs %}
-        {% if item.title %}
-        <li><a href="{{ site.baseurl }}{{item.url}}"> {{ item.title | capitalize }} </a></li>
+    <div class="row">
+        {% assign categories = "" | split:"|" %}
+        {% for doc in collection.docs %}
+        {% if doc.category %}
+        {% unless categories contains doc.category %}
+        {% assign categories = categories | push: doc.category %}
+        {% endunless %}
         {% endif %}
-    {% endfor %}
-    </ul>
+        {% endfor %}
+        {% assign categories_size = categories | size %}
+        {% if categories_size == 0 %}
+        {% assign categories = categories | push: nil %}
+        {% endif %}
+
+        {% for category in categories %}
+            <div class="column">
+            {% if category %}
+            <h3 align="center">{{ category }}</h3>
+            {% endif %}
+            {% assign category_docs = collection.docs | where: "category", category %}
+            <ul class="list-items">
+            {% for item in category_docs %}
+                {% if item.title %}
+                <li><a href="{{ site.baseurl }}{{item.url}}" style="font-size:20px"> {{ item.title | capitalize }} </a></li>
+                {% endif %}
+            {% endfor %}
+            </ul>
+            </div>
+        {% endfor %}
+
+    </div>
 {% endfor %}
 
-</ul>
-{% endfor %}
-</div>
+<style>
+    .column {
+    float: left;
+    width: 33.33%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+</style>
