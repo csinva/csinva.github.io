@@ -1,5 +1,5 @@
 ---
-	layout: notes
+layout: notes
 section-type: notes
 title: graphical models
 category: ai

@@ -383,6 +383,7 @@ footer p {
 
 img::selection {
     background: 0 0;
+    object-fit: cover;
 }
 
 img::-moz-selection {

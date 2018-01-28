@@ -5,11 +5,19 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
                     <i class="fa fa-bars"></i>
                 </button>
-                {% unless page.url contains 'notes' %}
-                <a class="navbar-brand page-scroll" href="#page-top">
-                    Chandan <i class="fa fa-home fa-fw"></i> Singh
-                </a>
-                {% endunless %}
+                {% if page.url contains 'notes' %}
+                    <a class="navbar-brand page-scroll" href="{{site.url}}">
+                        Chandan <i class="fa fa-home fa-fw"></i> Singh
+                    </a>
+                {% elsif page.url contains 'projects' %}
+                    <a class="navbar-brand page-scroll" href="{{site.url}}">
+                        Chandan <i class="fa fa-home fa-fw"></i> Singh
+                    </a>
+                {% else %}
+                    <a class="navbar-brand page-scroll" href="#page-top">
+                        Chandan <i class="fa fa-home fa-fw"></i> Singh
+                    </a>
+                {% endif %}
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->

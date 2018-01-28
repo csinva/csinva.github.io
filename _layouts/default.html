@@ -1,26 +1,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-	{% include head.html %}
-<!--<style>-->
-    <!--/*#header {*/-->
-        <!--/*width: 100%;*/-->
-        <!--/*margin: 0px;*/-->
-        <!--/*z-index: 9999;*/-->
-        <!--/*pzosition: absolute;*/-->
-    <!--/*}*/-->
-<!--</style>-->
-{% include navigation.html %}
-{% include header.html %}
-<!--<div id="particles-js">-->
 
-<!--</div>-->
-<!--<script src="assets/particles.js"></script>-->
-<!--<script>-->
-    <!--particlesJS.load(@dom-id, @path-json, @callback (optional));-->
-    <!--particlesJS.load('particles-js', 'assets/particles.json', function() {-->
-      <!--console.log('callback - particles.js config loaded');-->
-    <!--});-->
-<!--</script>-->
+<div id="particles-js" text-align="center"></div>
+
+{% include particles.html %}
+{% include head.html %}
+{% include navigation.html %}
+{% include about.html %}
+
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
   {% for page in site.pages %}
@@ -58,37 +45,36 @@
               <div class="col-lg-64 col-lg-offset-0">
                 {{ page.content | markdownify }}
                 <ul class="timeline">
-                {% for post in site.posts %}
-                  {% assign loopindex = forloop.index | modulo: 2 %}
-                  {% capture class %}
-                    {% if loopindex == 0 %}
-                      timeline-inverted
-                    {% endif %}
-                  {% endcapture %}
+                    {% for post in site.posts %}
+                      {% assign loopindex = forloop.index | modulo: 2 %}
+                      {% capture class %}
+                        {% if loopindex == 0 %}
+                          timeline-inverted
+                        {% endif %}
+                      {% endcapture %}
 
-                  <li class="{{ class }}">
-                      <div class="timeline-image">
-                          <img class="img-circle img-responsive" src="{{ site.baseurl }}/{% if post.image %}{{ post.image }}{% else %}{{site.career-img}}{% endif %}" alt="">
-                      </div>
-                      <div class="timeline-panel">
-                          <div class="timeline-heading">
-                              <h4>{{ post.title }}</h4>
-                              <h4 class="subheading">{{ post.subtitle }}</h4>
+                      <li class="{{ class }}">
+                          <div class="timeline-image">
+                              <img class="img-circle img-responsive" src="{{ site.baseurl }}/{% if post.image %}{{ post.image }}{% else %}{{site.career-img}}{% endif %}" alt="">
                           </div>
-                          <div class="timeline-body">
-                              <p class="text-muted">{{ post.content }}</p>
+                          <div class="timeline-panel">
+                              <div class="timeline-heading">
+                                  <h4>{{ post.title }}</h4>
+                                  <h4 class="subheading">{{ post.subtitle }}</h4>
+                              </div>
+                              <div class="timeline-body">
+                                  <p class="text-muted">{{ post.content }}</p>
+                              </div>
                           </div>
-                      </div>
-                  </li>
+                      </li>
 
-                {% endfor %}
+                    {% endfor %}
 
-                  <li class="timeline-inverted">
-                    <div class="timeline-image">
-                      <img class="img-circle img-responsive" src="{{ site.baseurl }}/{{ site.career-img }}" alt="">
-                    </div>
-                  </li>
-   
+                      <li class="timeline-inverted">
+                        <div class="timeline-image">
+                          <img class="img-circle img-responsive" src="{{ site.baseurl }}/{{ site.career-img }}" alt="">
+                        </div>
+                      </li>
                 </ul>
 
               </div>
@@ -97,8 +83,7 @@
     {% endif %}
   {% endfor %}
 
-	{% include footer.html %}
-	{% include js.html %}
+{% include js.html %}
 
 </body>
 </html>

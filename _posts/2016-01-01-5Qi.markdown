@@ -4,4 +4,4 @@ title: Fall 2016 - Spring 2017
 subtitle: <a href="https://www.cs.virginia.edu/yanjun/"> UVA Yanjun Qi Research Lab</a>
 image: "img/timeline/uva.png"
 ---
-Contributed to development of novel weighted-L1, multi-task Gaussian graphical models
+Contributed to development of novel weighted-L1, multi-task Gaussian graphical models<a href="https://arxiv.org/abs/1709.04090"><i class="fa fa-file fa-fw"></i></a>
