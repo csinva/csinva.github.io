@@ -1,5 +1,7 @@
 ---
 layout: notes
-title: Computer 
+title: Computer vision
 ---
-TEST CONTENT FOR COMPUTER VISION
+
+Deep neural networks excel at several computer vision tasks. These networks resemble biological visual systems in several ways. 
+
