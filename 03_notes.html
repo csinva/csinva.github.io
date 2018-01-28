@@ -11,8 +11,6 @@ no_max_width: true
     <ul>
         <section class="category">
             <h2>{{ collection.name }}</h2>
-            <div class="button"><a target="_blank" href="{{ collection.documentation }}">Docs</a></div>
-
             {% assign categories = "" | split:"|"	%}
             {% for doc in collection.docs %}
             {% if doc.category %}

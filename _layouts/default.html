@@ -11,17 +11,7 @@
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
   {% for page in site.pages %}
-    {% if page.section-type == "default" %}
-      <!-- {{ page.title }} Section -->
-      <section id="{{ page.title }}" class="container content-section text-center">
-          <div class="row">
-              <div class="col-lg-8 col-lg-offset-2">
-                {{ page.content | markdownify }}
-              </div>
-          </div>
-      </section>
-    {% elsif page.section-type == "contact" %}
-      <!-- {{ page.title }} Section -->
+    {% if page.section-type == "intro" %}
       <section id="{{ page.title }}" class="container content-section">
           <div class="row">
               <div class="col-lg-8 col-lg-offset-2">
@@ -38,6 +28,15 @@
               </div>
           </div>
       </section>
+    {% elsif page.section-type == "research" %}
+      <!-- {{ page.title }} Section -->
+      <section id="{{ page.title }}" class="container content-section text-center">
+          <div class="row">
+              <div class="col-lg-8 col-lg-offset-2">
+                {{ page.content | markdownify }}
+              </div>
+          </div>
+    </section>
     {% elsif page.section-type == "timeline" %}
       <!-- {{ page.title }} Section -->
       <section id="{{ page.title }}" class="container content-section text-center">
