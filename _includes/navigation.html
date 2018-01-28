@@ -7,7 +7,7 @@
                 </button>
                 {% if page.url contains 'notes' %}
                     <a class="navbar-brand page-scroll" href="{{site.url}}">
-                        Chandan <i class="fa fa-home fa-fw"></i> Singh X
+                        Chandan <i class="fa fa-home fa-fw"></i> Singh
                     </a>
                 {% elsif page.url contains 'projects' %}
                     <a class="navbar-brand page-scroll" href="{{site.url}}">
@@ -30,26 +30,17 @@
 
                     {% for pagex in site.pages | sort: "title" %}
                     {% unless pagex.url == "/" %}
-                    <!--{% unless pagex.url contains 'notes' %}-->
                     {% unless pagex.url contains 'css' %}
                     {% unless pagex.url contains 'projects' %}
-                        {% if page.url contains 'notes' %}
-                        <li>
-                            <a class="page-scroll" href="{{site.url}}/#{{ pagex.title }}">{{ pagex.title }}</a>
-                        </li>
-                        {% else %}
-                        <li>
-                            <a class="page-scroll" href="#{{ pagex.title }}">{{ pagex.title }}</a>
-                        </li>
-                        {% endif %}
+                    {% unless pagex.url contains 'notes' %}
+                        <a class="page-scroll" href="#{{ pagex.title }}">{{ pagex.title }}</a>
                     {% endunless %}
                     {% endunless %}
-                    <!--{% endunless %}-->
+                    {% endunless %}
                     {% endunless %}
                     {% endfor %}
-                    <li>
-                        <a class="page-scroll" href="/notes">Notes</a>
-                    </li>
+
+                    <a class="page-scroll" href="#notes_main">Notes</a>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

@@ -81,7 +81,9 @@
       </section>
 
     {% elsif page.section-type == "notes" %}
-        {{page.content}}
+        <section id="notes_main" class="container content-section text-center">
+            {{page.content}}
+        </section>
 
     {% endif %}
   {% endfor %}
