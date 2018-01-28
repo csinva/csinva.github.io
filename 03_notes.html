@@ -1,44 +1,43 @@
 ---
-layout: notes_main
+layout: default
 title: Chandan's Reference Sheets
 heading: Chandan's Reference Sheets
 permalink: /notes/
 no_max_width: true
+section-type: notes
+
 ---
 
 <div id="grid" data-columns>
-    {% for collection in site.collections %}
-    <ul>
-        <section class="category">
-            <h2>{{ collection.name }}</h2>
-            {% assign categories = "" | split:"|"	%}
-            {% for doc in collection.docs %}
-            {% if doc.category %}
-            {% unless categories contains doc.category %}
-            {% assign categories = categories | push: doc.category %}
-            {% endunless %}
-            {% endif %}
-            {% endfor %}
-            {% assign categories_size = categories | size %}
-            {% if categories_size == 0 %}
-            {% assign categories = categories | push: nil %}
-            {% endif %}
+{% for collection in site.collections %}
+<ul>
+{% assign categories = "" | split:"|"	%}
+{% for doc in collection.docs %}
+{% if doc.category %}
+{% unless categories contains doc.category %}
+{% assign categories = categories | push: doc.category %}
+{% endunless %}
+{% endif %}
+{% endfor %}
+{% assign categories_size = categories | size %}
+{% if categories_size == 0 %}
+{% assign categories = categories | push: nil %}
+{% endif %}
 
-            {% for category in categories %}
-            {% if category %}
-            <h3>{{ category }}</h3>
-            {% endif %}
-
-            {% assign category_docs = collection.docs | where: "category", category	%}
-            <ul class="list-items">
-                {% for item in category_docs %}
-                {% if item.title %}
-                <li {% if item.version %} data-version="{{ item.version}}"{% endif %}>{% include render_item.html item=item %}</li>
-                {% endif %}
-                {% endfor %}
-            </ul>
-            {% endfor %}
-        </section>
-    </ul>
+{% for category in categories %}
+    {% if category %}
+    <h3>{{ category }}</h3>
+    {% endif %}
+    {% assign category_docs = collection.docs | where: "category", category	%}
+    <ul class="list-items">
+    {% for item in category_docs %}
+        {% if item.title %}
+        <li><a href="{{ site.baseurl }}{{item.url}}"> {{ item.title | capitalize }} </a></li>
+        {% endif %}
     {% endfor %}
+    </ul>
+{% endfor %}
+
+</ul>
+{% endfor %}
 </div>

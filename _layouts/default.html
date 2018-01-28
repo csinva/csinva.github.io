@@ -79,6 +79,10 @@
               </div>
           </div>
       </section>
+
+    {% elsif page.section-type == "notes" %}
+        {{page.content}}
+
     {% endif %}
   {% endfor %}
 
