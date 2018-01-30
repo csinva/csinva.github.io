@@ -15,7 +15,7 @@ Furthermore, the results show that it requires no extra energy for a neuron mode
 
 # Interpulse interval coding
 
-"A consensus layer V pyramidal neuron can sustain interpulse-interval coding" -  <a color="#219AB3" href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0180839"> Singh & Levy, 2017, Plos One</a>.
+*"A consensus layer V pyramidal neuron can sustain interpulse-interval coding" -  <a color="#219AB3" href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0180839"> Singh & Levy, 2017, Plos One</a>.*
 
 ## Coding
 Neurons communicate via spikes called action potentials. It is unclear exactly how these spikes transmit information. There are two general hypotheses: 
@@ -30,4 +30,6 @@ In order to obtain a complete understanding of neural computation and communicat
 
 # Backpropagating action potentials
 
-"Examining the Effect of Action Potential Back Propagation on Spike Shape" - <a color="#219AB3" href="/assets/singh_14_dendrite_backprop.pdf"> Singh 2014, Unpublished</a>.
+*"Examining the Effect of Action Potential Back Propagation on Spike Shape" - <a color="#219AB3" href="/assets/singh_14_dendrite_backprop.pdf"> Singh 2014, Unpublished</a>.*
+
+# Action potential velocity

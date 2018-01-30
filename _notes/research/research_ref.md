@@ -1,12 +1,3 @@
----
-layout: notes
-section-type: notes
-title: research ref
-category: research
----
-
-[TOC]
-
 # datasets
 
 - keeping up to date: https://sanjayankur31.github.io/planet-neuroscience/
