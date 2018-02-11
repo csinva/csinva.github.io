@@ -4,4 +4,4 @@ title: Summer 2017
 subtitle: <a href="https://code.facebook.com/ai-research/"> Facebook Computer Vision </a>
 image: "img/timeline/fb.png"
 ---
-Summer intern working on unsupervised pretraining of CNNs for semantic segmentation at Facebook, Menlo Park office.
+Worked on unsupervised pretraining of CNNs for semantic segmentation.

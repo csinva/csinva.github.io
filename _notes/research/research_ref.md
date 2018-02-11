@@ -1,5 +1,29 @@
+
+# conferences
+
+- https://aideadlin.es/
+
+|         | 2018                   | 2019              |
+| ------- | ---------------------- | ----------------- |
+| AAAI    | 2/2 - New Orleans      |                   |
+| COSYNE  | **3/1 - Denver**       |                   |
+| AISTATS | 4/9 - Playa            |                   |
+| VSS     | 5/18 - Florida         | Florida           |
+| SAND    | ~5/31 - Pitt           | ~5/31 - Pitt      |
+| AREADNE | 6/20 - Greece          |                   |
+| CVPR    | 6/18 - Salt Lake City  |                   |
+| CNS     | ~July - Seattle        |                   |
+| ICML    | ***7/10 - Stockholm*** | 7/10 - Long Beach |
+| ECCV    | 8/8 - Munich           |                   |
+| CCN     | 9/6                    |                   |
+| ICCV    | X                      |                   |
+| SFN     | 11/3 - San Diego       | 10/19 - Chicago   |
+| NIPS    | 12/3 - Montreal        |                   |
+|         |                        |                   |
+
 # datasets
 
+- overview: http://www.scholarpedia.org/article/Encyclopedia_of_computational_neuroscience
 - keeping up to date: https://sanjayankur31.github.io/planet-neuroscience/
 - *lots of good data*: http://home.earthlink.net/~perlewitz/index.html
 - *models*
@@ -113,6 +137,11 @@
 
 - quantum brain?
 
+### brain on a chip
+
+- neuromorphic chips
+- grow cells in vivo
+
 ### connectomics
 
 - C Elegans
@@ -125,6 +154,9 @@
 - biology U: phenomenon (high level) -> element (low level) -> synthesis (high level)
 
 
+### cogsci
+
+- model-free vs model-based
 
 # misc
 
@@ -206,38 +238,6 @@
   - neural dust
   - neuropixels
 
-# ongoing projects
-- gov-sponsored
-  - human brain project
-    - blue brain project- large-scale brain simulation
-  - european brain project
-- companies
-  - Neuralink
-    - surgeons won't want to put chips into people's brains: http://waitbutwhy.com/2017/04/neuralink.html
-  - Kernel
-  - Facebook neural typing interface
-  - google brain / google deepmind
-  - IBM: project joshua blue
-
-#conferences
-
-|         | 2018                   | 2019              |
-| ------- | ---------------------- | ----------------- |
-| AAAI    | 2/2 - New Orleans      |                   |
-| COSYNE  | **3/1 - Denver**       |                   |
-| AISTATS | 4/9 - Playa            |                   |
-| VSS     | 5/18 - Florida         | Florida           |
-| SAND    | ~5/31 - Pitt           | ~5/31 - Pitt      |
-| AREADNE | 6/20 - Greece          |                   |
-| CVPR    | 6/18 - Salt Lake City  |                   |
-| CNS     | ~July - Seattle        |                   |
-| ICML    | ***7/10 - Stockholm*** | 7/10 - Long Beach |
-| ECCV    | 8/8 - Munich           |                   |
-| CCN     | 9/6                    |                   |
-| ICCV    | X                      |                   |
-| SFN     | 11/3 - San Diego       | 10/19 - Chicago   |
-| NIPS    | 12/3 - Montreal        |                   |
-|         |                        |                   |
 # areas
 
 - Basic approaches

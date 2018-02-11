@@ -49,6 +49,8 @@ category: ai
       - $\sum \lambda_i = tr(\Sigma) = \sum Var(X_i)$
     - *screeplot*  - eigenvalues in decreasing order, look for num dims with kink
       - don't automatically center/normalize, especially for positive data
+
+
 ### nonlinear pca
 
 - usually uses an auto-associative neural network
