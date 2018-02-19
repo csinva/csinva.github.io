@@ -31,10 +31,11 @@ category: stat
 
 - normal theory: assume $\epsilon_i$ ~ $N(0, \sigma^2)$
 - distributions
-  - suppose $U_1, ...​$ are iid N(0, 1)
-  - *chi-squared distr.*: $\chi_d^2$ ~ $\sum_i^d U_i^2$ w/ d degrees of freedom
-  - *student's t-distr.*: $U_{d+1} / \sqrt{d^{-1} \sum_1^d U_i^2}$ w/ d degress of freedom
-- t-test
+  - suppose $Z_1, ..., Z_n$ ~ iid N(0, 1)
+  - **chi-squared**: $\chi_d^2$ ~ $\sum_i^d U_i^2$ w/ d degrees of freedom
+    - $(d-1)S^2/\sigma^2 \text{ proportional to } \chi_{d-1}^2$
+  - *student's t*: $U_{d+1} / \sqrt{d^{-1} \sum_1^d U_i^2}$ w/ d degress of freedom
+- **t-test**: test if mean is nonzero
   - test null $\theta_k=0$ w/ $t = \hat{\theta}_k / \hat{SE}$ where $SE = \hat{\sigma} \cdot \sqrt{\Sigma_{kk}^{-1}}$
   - t-test: reject if \|t\| is large
   - when n-p is large, t-test is called the z-test
@@ -43,7 +44,7 @@ category: stat
     - e independent of $\hat{\theta}$ and $\|\|e\|\|^2 ~ \sigma^2 \chi^2_d$ with d = n-p
   - *observed stat. significance level* = *P-value* - area of normal curve beyond $\pm \hat{\theta_k} / \hat{SE}$
   - if 2 vars are statistically significant, said to have *independent effects* on Y
-- the F-test
+- **f-test**: test if any of non-zero means
   - null hypothesis: $\theta_i = 0,  i=p-p_0, ..., p$
   - alternative hypothesis: for at least one $ i \in \{p-p_0, ..., p\}, \: \theta_i \neq 0$
   - $F = \frac{(\|\|X\hat{\theta}\|\|^2 - \|\|X\hat{\theta}^{(s)}\|\|^2) / p_0}{\|\|e\|\|^2 / (n-p)} $ where $\hat{\theta^{(s)}}$ has last $p_0$ entries 0
@@ -55,7 +56,8 @@ category: stat
 - interval estimates come with confidence levels
 - $Z=\frac{\bar{X}-\mu}{\sigma / \sqrt{n}}$
 - For p not close to 0.5, use Wilson score confidence interval (has extra terms)
-- confidence interval - If multiple samples of trained typists were selected and an interval constructed for each sample mean, 95 percent of these intervals contain the true preferred keyboard height
+- **confidence interval** - if multiple samples of trained typists were selected and an interval constructed for each sample mean, 95 percent of these intervals contain the true preferred keyboard height
+  - frequentist idea
 
 # tests on hypotheses
 
@@ -66,7 +68,6 @@ category: stat
 - $\alpha$ is computed using the probability distribution of the test statistic when $H_0$ is true, whereas determination of b requires knowing the test statistic distribution when $H_0$ is false
 - type 1 error usually more serious, pick $\alpha$ level, then constrain $\beta$
 - can standardize values and test these instead
-- ​
 
 # testing LR coefficients
 

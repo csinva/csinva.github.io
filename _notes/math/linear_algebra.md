@@ -78,6 +78,10 @@ category: math
     - $\nabla_x x^TAx = 2Ax$ (if A symmetric)
     - $\nabla_x^2 x^TAx = 2A$ (if A symmetric)
     - $\nabla_x log \: det X = X^{-1}$
+- trick with the trace for taking derivs: $x^TAx = tr[x^TAx] = tr[xx^TA]$
+    - $\frac{\partial}{\partial A} x^TAx = \frac{\partial}{\partial A} tr[xx^TA] = [xx^T]^T = xx^T$
+- we can calculate derivs of quadratic forms by calculating derivs of traces
+- useful result: $\frac{\partial}{\partial A} log|A| = A^{-T}$
 
 # norms
 - def

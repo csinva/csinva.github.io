@@ -13,8 +13,9 @@ category: ai
   - ICA
     - remove correlations and higher order dependence
     - all components are equally important
-  - PCA - orthogonaltiy
+  - PCA - orthogonality
     - compress data, remove correlations
+  - LDA/QDA - finds basis that separates classes
   - K-means - can be viewed as a linear decomposition
 - sparse coding
 - *spectral* clustering - does dim reduction on eigenvalues (spectrum) of similarity matrix before clustering in few dims
@@ -49,12 +50,11 @@ category: ai
       - $\sum \lambda_i = tr(\Sigma) = \sum Var(X_i)$
     - *screeplot*  - eigenvalues in decreasing order, look for num dims with kink
       - don't automatically center/normalize, especially for positive data
+-  nonlinear pca
+    - usually uses an auto-associative neural network
+      ​	
 
 
-### nonlinear pca
-
-- usually uses an auto-associative neural network
-  ​	
 # ica
 
 - like PCA, but instead of the dot product between components being 0, the mutual info between components is 0
@@ -63,6 +63,15 @@ category: ai
   - maximize information transferred in a network of non-linear units
   - uses information theoretic unsupervised learning rules for neural networks
 - problem - doesn't rank features for us
+
+
+# lda / qda
+- reduced to axes which separate classes (perpendicular to the boundaries)
+
+
+# t-sne / umap
+- t-sne preserves pairwise neighbors
+- UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction
 
 
 

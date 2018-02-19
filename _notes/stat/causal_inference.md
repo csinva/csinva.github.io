@@ -11,9 +11,9 @@ category: stat
 # causality (freedman ch 1)
 - When using observational (non-experimental) data to make causal inferences, the key problem is *confounding*
   - *stratification* = *cross-tabulation* - only look at when confounding variables have same value
-- Generally, association is circumstantial evidence for causation
+- association is circumstantial evidence for causation
 - examples
-  - HIP trial of mammography - want to do whole treatment group v whole control group
+  - HIP trial of mammography - want to do whole treatment group v. whole control group
   - Snow on cholera - water
   - causes of poverty - Yul's model, changes with lots of things
 

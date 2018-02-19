@@ -8,10 +8,10 @@ category: ai
 {:toc}
 # overview
 
-- regression doesn't work with classification
-  - even in binary case, outliers can skew fit
-- asymptotic classifier - assume you get infinite training / testing points
-- linear model $\implies$ boundaries are hyperplanes
+- regressor doesn't classify well
+  - even in binary case, outliers skew fit
+- asymptotic classifier - assumes infinite data
+- linear classifer $\implies$ boundaries are hyperplanes
 - *discriminative* - model $P(Y\vert X)$ directly ![](assets/classification/j7_10.png)
   - smaller asymptotic error
   - slow convergence ~ $O(p)$
@@ -23,15 +23,14 @@ category: ai
 
 # binary classification
 
-- $\hat{y} = \text{sign}(w^T x)$
-- usually don't minimize 0-1 loss (combinatorial)
-- usually $w^Tx$ includes b term, but generally we don't want to regularize b
+- $\hat{y} = \text{sign}(\theta^T x)$
+- usually $\theta^Tx$ includes b term, but generally we don't want to regularize b
 
-| Model               | $\mathbf{\hat{w}}$ objective             |
-| ------------------- | ---------------------------------------- |
-| Perceptron          | $\sum_i max(0,  -y_i \cdot w^T x_i)$     |
-| Linear SVM          | $w^Tw + C \sum_i max(0,1-y_i \cdot w^T x_i)$ |
-| Logistic regression | $w^Tw + C \sum_i log[1+exp(-y_i \cdot w^T x_i)]$|
+| Model               | $\mathbf{\hat{\theta}}$ objective                            |
+| ------------------- | ------------------------------------------------------------ |
+| Perceptron          | $\sum_i max(0,  -y_i \cdot \theta^T x_i)$                    |
+| Linear SVM          | $\theta^T\theta + C \sum_i max(0,1-y_i \cdot \theta^T x_i)$  |
+| Logistic regression | $\theta^T\theta + C \sum_i log[1+exp(-y_i \cdot \theta^T x_i)]$ |
 
 
 - *perceptron* - tries to find separating hyperplane
@@ -53,17 +52,17 @@ category: ai
   - flaws - learning only optimizes *local correctness*
 - single classifier
   - *multiclass perceptron* (Kesler)
-    - if label=i, want $w_i ^Tx > w_j^T x \quad \forall j$
-    - if not, update $w_i$ and $w_j$* accordingly
+    - if label=i, want $\theta_i ^Tx > \theta_j^T x \quad \forall j$
+    - if not, update $\theta_i$ and $\theta_j$* accordingly
     - *kessler construction*
-      - $w =  [w_1 ... w_k] $
-      - want $w_i^T x > w_j^T x \quad \forall j$
-      - rewrite $w^T \phi (x,i) > w^T \phi (x,j) \quad \forall j$
+      - $\theta =  [\theta_1 ... \theta_k] $
+      - want $\theta_i^T x > \theta_j^T x \quad \forall j$
+      - rewrite $\theta^T \phi (x,i) > \theta^T \phi (x,j) \quad \forall j$
         - here $\phi (x, i)$ puts x in the ith spot and zeros elsewhere
         - $\phi$ is often used for feature representation
       - define margin: 
-        $\Delta (y,y') = \begin{cases} \delta& if y \neq y' \\\ 0& if y=y'\end{cases}$
-      - check if $y=\text{argmax}_{y'}w^T \phi(x,y') + \delta (y,y')$
+        $\Delta (y,y') = \begin{cases} \delta& if \: y \neq y' \\\ 0& if \: y=y'\end{cases}$
+      - check if $y=\text{argmax}_{y'} \theta^T \phi(x,y') + \delta (y,y')$
   - multiclass SVMs (Crammer & Singer)
     - minimize total norm of weights s.t. true label score is at least 1 more than second best label
   - multinomial logistic regression = multi-class *log-linear* model (softmax on outputs)
@@ -74,14 +73,12 @@ category: ai
 ## logistic regression
 
 - $p(Y=1|x, \theta) = logistic(\theta^Tx)$
-  1. assume Y ~ $Bernoulli(\mu_n)$ with $\mu_n=logistic(\theta^Tx$)
+  1. assume Y ~ $Bernoulli(p)$ with $p=\text{logistic}(\theta^Tx$)
   2. can solve this online with GD of ***likelihood***
   3. better to solve with iteratively reweighted least squares
 - $Logit(p) = log[p / (1-p)] = \theta^Tx$
-- predict using Bernoulli distribution with this parameter p
-- can be extended to multiple classes - multinomial distribution
 - multiway logistic classification
-  - assume $P(Y^k=1|x, \theta) = \frac{e^{\beta_k^Tx}}{\sum_i e^{\beta_i^Tx}}$, just as arises from class-conditional exponential family distributions
+  - assume $P(Y^k=1|x, \theta) = \frac{e^{\theta_k^Tx}}{\sum_i e^{\theta_i^Tx}}$, just as arises from class-conditional exponential family distributions
 
 ## binary models
 
@@ -112,7 +109,7 @@ category: ai
 - growing algorithm
   1. *information gain* - decrease in entropy
      - weight resulting branches by their probs
-     - bias towards attributes with many values
+     - biased towards attributes with many values
      - use *GainRatio* = Gain/SplitInformation
        - can incorporate *SplitInformation* - discourages selection of attributes with many uniformly distributed values
        - sometimes SplitInformation is very low (when almost all attributes are in one category)
@@ -128,22 +125,21 @@ category: ai
     - *reduced-error pruning* - prune only if doesn't decrease error on validation set
     - *$\chi^2$ pruning* - test if each split is statistically significant with $\chi^2$ test
     - *rule post-pruning* = *cost-complexity pruning*
-      1. Infer the decision tree from the training set, growing the tree until the training data is fit as well as possible and allowing overfitting to occur.
-      2. Convert the learned tree into an equivalent set of rules by creating one rule for each path from the root node to a leaf node.
+      1. infer the decision tree from the training set, growing the tree until the training data is fit as well as possible and allowing overfitting to occur.
+      2. convert the learned tree into an equivalent set of rules by creating one rule for each path from the root node to a leaf node.
          - these rules are easier to work with, have no structure
-      3. Prune (generalize) each rule by removing any preconditions that result in improving its estimated accuracy.
-      4. Sort the pruned rules by their estimated accuracy, and consider them in this sequence when classifying subsequent instances.
+      3. prune (generalize) each rule by removing any preconditions that result in improving its estimated accuracy.
+      4. sort the pruned rules by their estimated accuracy, and consider them in this sequence when classifying subsequent instances.
 - incorporating continuous-valued attributes
-  - have to pick threshold to split on
-    - candidate thresholds: separate examples that differ in their target classificaiton
-      - just evaluate them all
+  - choose candidate thresholds which separate examples that differ in their target classification
+  - just evaluate them all
 - missing values
   - could just fill in most common value
   - also could assign values probabilistically
 - differing costs
   - can bias the tree to favor low-cost attributes
     - ex. divide gain by the cost of the attribute
-- high variance - instability - small changes in training set will result in changes of tree model
+- high variance - instability - small changes in data yield changes to tree
 - many trees
   - *bagging* = bootstrap aggregation - an ensemble method
     - *bootstrap* - resampling with replacement
@@ -158,67 +154,39 @@ category: ai
       - reduces variance, better for improving more variable (unstable) models
     - *adaboost* - weight models based on their performance
 
-## svms
+## svm
 
 - svm benefits
   1. *maximum margin separator* generalizes well
   2. *kernel trick* makes it very nonlinear
   3. nonparametric - can retain training examples, although often get rid of many
-- notation
-  - $y \in \{-1,1\}$
-  - $h(x) = g(w^Tx +b)$
-    - $g(z) = 1$ if $z \geq 0$ and -1 otherwise
-- *functional margin* $\gamma^{(i)} = y^{(i)} (w^T x +b)$
-  - want to limit the size of $(w, b)​$ so we can't arbitrarily increase functional margin
-  - function margin $\hat{\gamma}$ is smallest functional margin in a training set
-- *geometric margin* = functional margin / $\vert \vert w\vert \vert $
-  - if $\vert \vert w\vert \vert =1$, then same as functional margin
-  - invariant to scaling of w
-- optimal margin classifier
-  - want $$max \: \gamma \\\: s.t. \: y^{(i)} (w^T x^{(i)} + b) \geq \gamma, i=1,..,m\\ \vert \vert w\vert \vert =1$$
+- notation ![](assets/classification/svm_margin.png)
+- $y =\begin{cases}   1 &\text{if } \theta^Tx +b \geq 0 \\ -1 &\text{otherwise}\end{cases}$
+- $\hat{\theta} = argmin \:\frac{1}{2} \vert \vert \theta\vert \vert ^2 \\s.t. \: y^{(i)}(\theta^Tx^{(i)}+b)\geq1, i = 1,...,m$
+  - *functional margin* $\gamma^{(i)} = y^{(i)} (\theta^T x +b)$
+    - limit the size of $(\theta, b)$ so we can't arbitrarily increase functional margin
+    - function margin $\hat{\gamma}$ is smallest functional margin in a training set
+  - *geometric margin* = functional margin / $\vert \vert \theta \vert \vert $
+    - if $\vert \vert \theta \vert \vert =1$, then same as functional margin
+    - invariant to scaling of w
+  - derived from maximizing margin: $$max \: \gamma \\\: s.t. \: y^{(i)} (\theta^T x^{(i)} + b) \geq \gamma, i=1,..,m\\ \vert \vert \theta\vert \vert =1$$
     - difficult to solve, especially because of $\vert \vert w\vert \vert =1$ constraint
-    - assume $\hat{\gamma}=1$ - just a scaling factor
+    - assume $\hat{\gamma}=1$ ~ just a scaling factor
     - now we are maximizing $1/\vert \vert w\vert \vert $
-  - equivalent to this formulation: $$min \: 1/2 \vert \vert w\vert \vert ^2 \\s.t. \: y^{(i)}(w^Tx^{(i)}+b)\geq1, i = 1,...,m$$
-- Lagrange duality
-  - dual representation is found by solving $\underset{a}{argmax} \sum_j \alpha_j - 1/2 \sum_{j,k} \alpha_j \alpha_k y_j y_k (x_j \cdot x_k)$ subject to $\alpha_j \geq 0$ and $\sum_j \alpha_j y_j = 0$
-  - data only enter in form of dot products, even when predicting $h(x) = sgn(\sum_j \alpha_j y_j (x \cdot x_j) - b)$
-  - weights $\alpha_j$ are zero except for *support vectors*
-- replace dot product $x_j \cdot x_k$ with *kernel function* $K(x_j, x_k)$
-  - faster than just transforming x
-  - allows to find optimal linear separators efficiently
 - *soft margin* classifier - lets examples fall on wrong side of decision boundary
   - assigns them penalty proportional to distance required to move them back to correct side
-- want to maximize margin $M = \frac{2}{\sqrt{w^T w}}$
-  - we get this from $M=\vert x^+ - x^-\vert  = \vert \lambda w\vert  = \lambda \sqrt{w^Tw} $
-  - separable case: argmin($w^Tw$) subject to 
-  - $w^Tx+b\geq 1$ for all x in +1 class
-  - $w^Tx+b\leq 1$ for all x in -1 class
-- non-separable case: argmin($w^T w/2 + C \sum_i^n \epsilon_i$) subject to
-  - $w^Tx_i +b \geq 1-\epsilon_i $ for all x in +1 class
-  - $w^Tx_i +b \leq -1+\epsilon_i $ for all x in -1 class
-  - $\forall i, \epsilon_i \geq 0$
+  - min $\frac{1}{2}||\theta||^2 \textcolor{blue}{ + C \sum_i^n \epsilon_i} \\s.t. y^{(i)} (\theta^T x^{(i)} + b) \geq 1 \textcolor{blue}{- \epsilon_i}, i=1:m \\ \textcolor{blue}{\epsilon_i \geq0, 1:m}$
   - large C can lead to overfitting
 - benefits
   - number of parameters remains the same (and most are set to 0)
   - we only care about support vectors
   - maximizing margin is like regularization: reduces overfitting
-- optimization
-  - these can be solved with quadratic programming QP
-  - solve a dual formulation (Lagrangian) instead of QPs directly so we can use kernel trick
-    - primal: $min_w max_\alpha L(w,\alpha)$
-    - dual: $max_\alpha min_w L(w,\alpha)$
-  - KKT condition for strong duality
-    - complementary slackness: $\lambda_i f_i(x) = 0, i=1,...,m$
-- VC (Vapnic-Chervonenkis) dimension - if data is mapped into sufficiently high dimension, then samples will be linearly separable (N points, N-1 dims)
-- kernel functions - new ways to compute dot product (similarity function)
-  - original testing function: $\hat{y}=sign(\Sigma_{i\in train} \alpha_i y_i x_i^Tx_{test}+b)$
-  - with kernel function: $\hat{y}=sign(\Sigma_{i\in train} \alpha_i y_i K(x_i,x_{test})+b)$
+- actually solve dual formulation (which only requires calculating dot product) - QP
+- replace dot product $x_j \cdot x_k$ with *kernel function* $K(x_j, x_k)$, that computes dot product in expanded feature space
   - linear $K(x,z) = x^Tz$
   - polynomial $K (x, z) = (1+x^Tz)^d$
   - radial basis kernel $K (x, z) = exp(-r\vert \vert x-z\vert \vert ^2)$
-  - computing these is O($m^2$), but dot-product is just $O(m)$
-  - function that corresponds to an inner product in some expanded feature space
+  - transforming then computing is O($m^2$), but this is just $O(m)$
 - practical guide
   - use m numbers to represent categorical features
   - scale before applying
@@ -230,43 +198,39 @@ category: ai
 ## gaussian class-conditioned classifiers
 
 - binary case: posterior probability $p(Y=1|x, \theta)$ is a sigmoid $\frac{1}{1+e^{-z}}$ where $z = \beta^Tx+\gamma$
-  1. multiclass extends to *softmax function*: $\frac{e^{\beta_k^Tx}}{\sum_i e^{\beta_i^Tx}}$
-- only a linear classifier when covariance matrices are the same (LDA)
-  1. otherwise a quadratic classifier (QDA) - decision boundary is quadratic
+  1. multiclass extends to *softmax function*: $\frac{e^{\beta_k^Tx}}{\sum_i e^{\beta_i^Tx}}$ - $\beta$s can be used for dim reduction
+- only a linear classifier when covariance matrices are the same (**LDA**)
+  1. otherwise a quadratic classifier (like **QDA**) - decision boundary is quadratic
 - MLE for estimates are pretty intuitive
 - decision boundary are points satisfying $P(C_i\vert X) = P(C_j\vert X)$
-- Regularized discriminant analysis - shrink the separate covariance matrices towards a common matrix
+- *regularized discriminant analysis* - shrink the separate covariance matrices towards a common matrix
   - $\Sigma_k = \alpha \Sigma_k + (1-\alpha) \Sigma$
-- treat each feature attribute and class label as random variables
-  - we assume distributions for these
+- parameter estimation: treat each feature attribute and class label as random variables
+  - assume distributions for these
   - for 1D Gaussian, just set mean and var to sample mean and sample var
 
 ## naive bayes classifier
 
-- assumes multinomial Y
+- assume multinomial Y
 - with very clever tricks, can produce $P(Y^i=1|x, \eta)$ again as a softmax
-- let $C_1,...,C_L$ be the classes of Y
-- want Posterior $P(C\vert X) = \frac{P(X\vert C)(P(C)}{P(X)}$ 
-- MAP rule - maximum A Posterior rule
-  - use prior P(C)
-  - given x, predict $C^*=\text{argmax}_C P(C\vert X_1,...,X_p)=\text{argmax}_C P(X_1,...,X_p\vert C) P(C)$
+- let $y_1,...y_l$ be the classes of Y
+- want Posterior $P(Y\vert X) = \frac{P(X\vert Y)(P(Y)}{P(X)}$ 
+- MAP rule - maximum a posterior rule
+  - use prior P(Y)
+  - given x, predict $\hat{y}=\text{argmax}_y P(y\vert X_1,...,X_p)=\text{argmax}_y P(X_1,...,X_p\vert y) P(y)$
     - generally ignore constant denominator
-- naive assumption - assume that all input attributes are conditionally independent given C
-  - $P(X_1,...,X_p\vert C) = P(X_1\vert C)\cdot...\cdot P(X_p\vert C) = \prod_i P(X_i\vert C)$ 
+- naive assumption - assume that all input attributes are conditionally independent given y
+  - $P(X_1,...,X_p\vert Y) = P(X_1\vert Y)\cdot...\cdot P(X_p\vert Y) = \prod_i P(X_i\vert Y)$ 
 - learning
-  - learn L distributions $P(C_1),P(C_2),...,P(C_L)$
-  - learn $P(X_j=x_{jk}\vert C_i)$
-  - for j in 1:p
-  - i in 1:$\vert C\vert $
-  - k in 1:$\vert X_j\vert $
-  - for discrete case we store $P(X_j\vert c_i)$, otherwise we assume a prob. distr. form
-- naive: $\vert C\vert  \cdot (\vert X_1\vert  + \vert X_2\vert  + ... + \vert X_p\vert )$ distributions
-- otherwise: $\vert C\vert \cdot (\vert X_1\vert  \cdot \vert X_2\vert  \cdot ... \cdot \vert X_p\vert )$
-- testing
-  - $P(X\vert c)$ - look up for each feature $X_i\vert C$ and try to maximize
+  - learn L distributions $P(y_1),P(y_2),...,P(y_l)$
+  - for i in 1:$\vert Y \vert$
+    - learn $P(X \vert y_i)$ 
+    - for discrete case we store $P(X_j\vert y_i)$, otherwise we assume a prob. distr. form
+- naive: $\vert Y\vert  \cdot (\vert X_1\vert  + \vert X_2\vert  + ... + \vert X_p\vert )$ distributions
+- otherwise: $\vert Y\vert \cdot (\vert X_1\vert  \cdot \vert X_2\vert  \cdot ... \cdot \vert X_p\vert )$
 - smoothing - used to fill in 0s
-  - $P(x_i\vert c_j) = \frac{N(x_i, c_j) +1}{N(c_j)+\vert X_i\vert }$ 
-  - then, $\sum_i P(x_i\vert c_j) = 1$
+  - $P(x_i\vert y_j) = \frac{N(x_i, y_j) +1}{N(y_j)+\vert X_i\vert }$ 
+  - then, $\sum_i P(x_i\vert y_j) = 1$
 
 ## exponential family class-conditioned classifiers
 
@@ -280,16 +244,16 @@ category: ai
   - remove stopwords, stemming, collapsing multiple - NLTK package in python
   - assumes word order isn't important
   - can store n-grams
-- multivariate Bernoulli: $P(X\vert C)=P(w_1=true,w_2=false,...\vert C)$
-- multivariate Binomial: $P(X\vert C)=P(w_1=n_1,w_2=n_2,...\vert C)$
+- multivariate Bernoulli: $P(X\vert Y)=P(w_1=true,w_2=false,...\vert Y)$
+- multivariate Binomial: $P(X\vert Y)=P(w_1=n_1,w_2=n_2,...\vert Y)$
   - this is inherently naive
 - time complexity
   - training O(n*average\_doc\_length\_train+$\vert c\vert \vert dict\vert $)
-  - testing O($\vert C\vert $ average\_doc\_length\_test)
+  - testing O($\vert Y\vert $ average\_doc\_length\_test)
 - implementation
   - have symbol for unknown words
   - underflow prevention - take logs of all probabilities so we don't get 0
-  - $c = \text{argmax }log \:P(c) + \sum_i log \: P(X_i\vert c)$
+  - $y = \text{argmax }log \:P(y) + \sum_i log \: P(X_i\vert y)$
 
 # instance-based (nearest neighbors)
 
@@ -298,7 +262,7 @@ category: ai
 - can take majority vote of neighbors or weight them by distance
 - distance can be Euclidean, cosine, or other
   - should scale attributes so large-valued features don't dominate
-  - *Mahalanobois* distance metric takes into account covariance between neighbors
+  - *Mahalanobois* distance metric accounts for covariance between neighbors
   - in higher dimensions, distances tend to be much farther, worse extrapolation
   - sometimes need to use *invariant metrics*
     - ex. rotate digits to find the most similar angle before computing pixel difference
@@ -330,7 +294,6 @@ category: ai
 
 ## multinomial
 
-- $L(\theta)=P(Train\vert Multinomial(\theta))=P(d_1,...,d_n\vert \theta_1,...,\theta_p)$ where d is a document of counts x
-- =$\prod_i^n P(d_i\vert \theta_1,...\theta_p)=\prod_i^n factorials \cdot \theta_1^{x_1},...,\theta_p^{x_p}$- ignore factorials because they are always same
+- $L(\theta) = P(x_1,...,x_n\vert \theta_1,...,\theta_p) = \prod_i^n P(d_i\vert \theta_1,...\theta_p)=\prod_i^n factorials \cdot \theta_1^{x_1},...,\theta_p^{x_p}$- ignore factorials because they are always same
   - require $\sum \theta_i = 1$
 - $\implies \theta_i = \frac{\sum_{j=1}^n x_{ij}}{N}​$ where N is total number of words in all docs

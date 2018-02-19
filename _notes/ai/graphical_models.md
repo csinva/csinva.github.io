@@ -20,14 +20,13 @@ category: ai
 
 # structure learning
 
-- marginal correlation - covariance matrix
-    - estimates are bad when not n >> d
+- conditional correlation - inverse covariance matrix = precision matrix
+    - estimates only good when $n >> p$
     - eigenvalues are not well-approximated
     - often enforce sparsity
     - ex. threshold each value in the cov matrix (set to 0 unless greater than thresh) - this threshold can depend on different things
     - can also use regularization to enforce sparsity
     - POET doesn't assume sparsity
-- conditional correlation - inverse covariance matrix = precision matrix
 
 # bayesian networks - R & N 14.1-5
 
@@ -35,8 +34,8 @@ category: ai
    1. encodes conditional independence relationships
    2. compact representation of joint prob. distr. over the variables
 2. learning
-   1. could get an expert to design Bayesian network
-   2. otherwise, have to learn it from data
+   1. expert-designed
+   2. otherwise, must learn from data
 
 - properties
   - each node is random variable
@@ -47,11 +46,11 @@ category: ai
 - joint distr: $P(X_1 = x_1,...X_n=x_n)=\prod_{i=1}^n P[X_i = x_i \vert  Parents(X_i)]$
   - *Markov condition* - given its parents, a node is conditionally independent of its non-descendants
   - *topological independence* - a node is independent of all other nodes given its parents, children, and children's parents = *markov blanket*
-    - a node is conditionally independent of its non-descendants given its parents
+    - a node is conditionally independent of its non-descendants given its parents???
 - BN has no redundancy $\implies$ no chance for inconsistency
 - forming a BN: keep adding nodes, and only previous nodes are allowed to be parents of new nodes
   - want *causal model* - causes are first, effects are later
-  - *diagnostic model* - links from symptoms to causes
+  - ex. *diagnostic model* - links from symptoms to causes
     - requires more dependencies
 
 ## hybrid BN (both continuous & discrete vars)
@@ -59,9 +58,9 @@ category: ai
 - for continuous variables, can sometimes discretize
 1. *linear Gaussian* - for continuous children
   - h is continuous, s is discrete; a, b, $\sigma$ all change when s changes
-  - $P(c\|h,s) = N(a \cdot h + b, \sigma^2)$, so mean is linear function of h
+  - $P(c\y\|h,s) = N(a \cdot h + b, \sigma^2)$, so mean is linear function of h
   - discrete parents continuous children $\implies$ *conditional Gaussian* - multivariate Gaussian given assignment to discrete variables
-  - all continuous $\implies$ *multivariate Gaussian* over all the variables, and a multivariate posterior distribution (given any evidence)
+  - all continuous $\implies​$ *multivariate Gaussian* over all the variables, and a multivariate posterior distribution (given any evidence)
 2. discrete children (continuous parents)
   1. *probit distr* - $P(buys\|Cost=c) = \phi[(-c+\mu)/\sigma]$ - integral of standard normal distr
     - like a soft threshold
@@ -333,5 +332,5 @@ category: ai
 - approximate inference - modification of likelihood weighting
   - use samples as approximate representation of current state distr.
   - ***particle filtering*** - focus set of samples on high-prob regions of the state space
-    - consistent 
+    - consistent
 

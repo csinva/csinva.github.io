@@ -10,7 +10,7 @@ category: ai
 
 - *goodness of fit* - how well does the learned distribution represent the real distribution?
 - define a loss function $\mathcal{L}$
-  - 0-1 loss: $\vert C-f(X)\vert$ 
+  - 0-1 loss: $\vert C-f(X)\vert$  - hard to minimize (combinatorial)
   - $L_2$ loss: $[C-f(X)[^2$
 - optimal classifiers
   - Bayes classifier minimizes 0-1 loss: $\hat{f}(X)=C_i$ if $P(C_i\vert X)=max_f P(f\vert X)$

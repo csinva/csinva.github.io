@@ -160,6 +160,7 @@
 
 # misc
 
+- brain as a computer?
 - 4 axioms of neurobiology
   - neuron doctrine - neuron is basic unit
   - different stereotyped cell types
@@ -175,7 +176,7 @@
 - Hubel 82: simple cells could be skipped and replaced by dendrites
 - dendritic subunits are not locationless
   - distal and proximal inputs combine in complex ways
-  - ![](assets/neuron_models.JPG)
+  - ![](pics/neuron_models.JPG)
 - spike firing lights up entire basal dendrites
   - local dendritic computation can still maintain individuality despite APs
   - basal dendrites still linear despite APs

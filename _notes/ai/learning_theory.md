@@ -67,6 +67,7 @@ category: ai
   - $H \cap C := \{ h \cap C \: \vert  h \in H \}$
   - a set C is *shattered* by H if $H \cap C$ contains all subsets of C
   - The VC dimension of $H$ is the largest integer $D$ such that there exists a set $C$ with cardinality $D$ that is shattered by $H$
+- VC (Vapnic-Chervonenkis) dimension - if data is mapped into sufficiently high dimension, then samples will be linearly separable (N points, N-1 dims)
 - VC dimension 0 -> hypothesis either always returns false or always returns true
 - *Sauer's lemma* - let $d \geq 0, m \geq 1$, $H$ hypothesis space, VC-dim(H) = d. Then, $\Pi_H(m) \leq \phi (d,m)$
 - fundamental theorem of learning theory provides bound of m that guarantees learning: $m \geq [\frac{4}{\epsilon} \cdot (d \cdot ln(\frac{12}{\epsilon}) + ln(\frac{2}{\delta}))]$

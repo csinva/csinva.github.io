@@ -1,3 +1,5 @@
+[TOC]
+
 - what does physics tell us about the limits of computers?
 - NP - can check soln in polynomial time
 - NP-hard - if solved, solves every NP
@@ -11,12 +13,12 @@
   - ex. relativity computer
     - leave computer on earth, travel at speed of light for a while, come back and should be done
     - if you want exponential speedup, need to get exponentially close to speed of light (requires exponential energy)
-  - ex. zeno's computer - run clock faster (ex;onentially more cooling = energy)
+  - ex. zeno's computer - run clock faster (exponentially more cooling = energy)
 
 # quantum computing
 
 - probability with minus signs
-- *amplitudes* - used to calculate probabilites,   but can be negative / complex
+- *amplitudes* - used to calculate probabilites, but can be negative / complex
 
 ![](assets/quantum/double_slit.png)
 
@@ -38,3 +40,16 @@
   - hope: *quantum tunneling* can get past local maximum in polynomial time maybe
     - empircally unclear if this is true
 - quantum supremacy - getting quantum speedup for something, maybe not something useful
+
+# maxwell's demon
+
+- second law of thermodynamics: entropy is always increasing
+- hot things transfer heat to cold things
+  - temperature is avg kinetic energy - particles follow a diistribution of temperature
+- separate 2 samples (one hot, one cold) with insulator
+  - **idea**: demon makes all fast particles go to hot side, all slow particles go to slow side - **this is against entropy**
+  - demon controls door between the samples
+  - ![](assets/quantum/demon.png)
+    - demon opens door whenever high temperature particle comes from cold sample, then closes
+    - demon opens door for slow particles from hot sample, then closes
+- problem: demon has to track all the particles (which would generate a lot of heat)

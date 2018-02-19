@@ -165,6 +165,10 @@ category: ai
 
 ## Yolonet
 
+## Wavenet
+
+## Densenet
+
 # recent papers
 
 - deepmind's learning to learn

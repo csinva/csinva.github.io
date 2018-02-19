@@ -196,6 +196,7 @@ category: neuro
 	- axons mainline straight up, go through vpl, go straight to insular cortex
 
 # 11 - vision (eye)
+
 - most of visual system is to read faces
 - eye
 	- aqueous humor
@@ -313,7 +314,7 @@ category: neuro
 	- kinocilium is the tallest
 	- tall ones are in the back
 	- dying hair cells - can't be replaced
-		1. 
+		1. ​
 		2. loud sounds
 		3. certain antibiotics
 - auditory pathwayz

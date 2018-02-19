@@ -33,7 +33,7 @@ category: stat
 - plots
   1. box plot / pie-chart
   2. scatter plot / q-q plot
-    - *q-q plot* - easily check normality
+    - *q-q plot* = *probability plot* - easily check normality
       - plot percentiles of a data set against percentiles of a theoretical distr.
       - should be straight line if they match
   3. transformations = feature engineering
