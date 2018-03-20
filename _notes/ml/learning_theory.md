@@ -2,7 +2,7 @@
 layout: notes
 section-type: notes
 title: Learning Theory
-category: ai
+category: ml
 ---
 
 * TOC

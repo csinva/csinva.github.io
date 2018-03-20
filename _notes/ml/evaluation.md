@@ -2,7 +2,7 @@
 layout: notes
 section-type: notes
 title: Evaluation
-category: ai
+category: ml
 ---
 * TOC
 {:toc}

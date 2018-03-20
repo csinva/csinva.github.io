@@ -2,3 +2,4 @@
 - graphical model inference
 - do russel practice qs
 
+

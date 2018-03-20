@@ -119,6 +119,8 @@
 
 # problems
 
+- neuroscience is like IT - given computer, figure out how it works
+
 ### rna barcoding
 - allows for tagging different neurons
   - can then optically get differences
@@ -160,7 +162,7 @@
 
 # misc
 
-- brain as a computer?
+- emerge behaviors of groups (Iain Couzin)
 - 4 axioms of neurobiology
   - neuron doctrine - neuron is basic unit
   - different stereotyped cell types

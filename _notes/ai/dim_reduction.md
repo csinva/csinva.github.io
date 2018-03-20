@@ -9,7 +9,9 @@ category: ai
 # overview
 
 - linear decompositions: learn D s.t. $X=DA$
+  - FA (factor analysis) - like PCA but with errors, not biased by variance
   - NMF - $min_{D \geq 0, A \geq 0} \|\|X-DA\|\|_F^2$
+    - SEQNMF
   - ICA
     - remove correlations and higher order dependence
     - all components are equally important
@@ -17,6 +19,9 @@ category: ai
     - compress data, remove correlations
   - LDA/QDA - finds basis that separates classes
   - K-means - can be viewed as a linear decomposition
+- dynamics
+  - LDS/GPFA
+  - NLDS
 - sparse coding
 - *spectral* clustering - does dim reduction on eigenvalues (spectrum) of similarity matrix before clustering in few dims
   - uses adjacency matrix

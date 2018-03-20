@@ -50,7 +50,7 @@ category: stat
       - $\Sigma_{1|2}^c = \Sigma_{11} - \Sigma_{12} \Sigma_{22}^{-1} \Sigma_{21}$
 - mle
 
-# expectation and variance
+# expectation, variance, and correlation
 
 - $E[X] = \int P(x)x dx$
   - $E[h(X)] \approx h(E[X])$

@@ -2,7 +2,7 @@
 layout: notes
 section-type: notes
 title: Machine Learning
-category: ai
+category: ml
 ---
 * TOC
 {:toc}

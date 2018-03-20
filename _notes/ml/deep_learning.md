@@ -2,7 +2,7 @@
 layout: notes
 section-type: notes
 title: Deep Learning
-category: ai
+category: ml
 ---
 
 * TOC
@@ -20,6 +20,7 @@ category: ai
     - TanH (always preferred to sigmoid)
     - Rectifier = ReLU
          - Leaky ReLU - still has some negative slope when <0
+         - rectifying in electronics converts analog -> digital
     - rare to mix and match neuron types
 - *deep* - more than 1 hidden layer
 - regression loss = $\frac{1}{2}(y-\hat{y})^2$

@@ -2,7 +2,7 @@
 layout: notes
 section-type: notes
 title: structure learning
-category: ai
+category: ml
 ---
 * TOC
 {:toc}

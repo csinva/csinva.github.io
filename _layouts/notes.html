@@ -3,23 +3,26 @@
     {% include navigation.html %}
 </div>
 
- <script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "all" } } }); </script>
-       <script type="text/x-mathjax-config">
-         MathJax.Hub.Config({
-           tex2jax: {
-             inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-             processEscapes: true
-           }
-         });
-       </script>
-       <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "all" } } });
+    MathJax.Hub.Config({
+    tex2jax: {
+     inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+     processEscapes: true
+    }
+    });
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
 
 
 <body>
+
     <div width="40%" class="column" style="margin-top: 150px; margin-bot: 150px; margin-left: 100px; margin-right: 100px">
         {{ page.content | markdownify }}
     </div>
 
 
 </body>
-

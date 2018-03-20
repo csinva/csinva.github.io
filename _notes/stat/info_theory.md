@@ -87,3 +87,55 @@ category: stat
   3. *objective* - minimize the average word length $\sum p_i n_i$ where $n_i$ is average word length of $x_i$
 - code is *uniquely decipherable* if every finite sequence of code characters corresponds to at most one message
   - *instantaneous code* - no code word is a prefix of another code word
+
+# info theory of deep learning
+
+- information bottleneck method
+  - introduced by Tishby, Pereira, Bialek
+  - tradeoff between accuracy and complexity (compression) when summarizing (e.g. clustering) a random variable **X**, given **p(X, Y)** where Y observed
+- papers
+  - Emergence of Invariance and Disentangling in Deep Representations - Alessandro Achille, Stefano Soatto <https://arxiv.org/abs/1706.01350>
+  - "Stochastic gradient descent performs variational inference, converges to limit cycles for deep networks" - Pratik Chaudhari, Stefano Soatto <https://arxiv.org/abs/1710.11029>
+- *representation* - any function of data that is useful for a task
+  - you cannot create info in data - transforming data at best preserves information
+  - ml function - function of future data constructed from past data that is useful for task regardless of nuisance factors
+  - without task, raw data is best representation
+- desiderata for an "optimal" representation
+  - data x, task y, repr. z ~ p(z|x) - this represents a stochastic function
+  - *sufficient* $I(z; y) = I(x; y)$
+  - *minimal* $I(x;z)$ is minimal among inefficient z
+  - *invariant to nuisances*: if $n \perp y$ then $I(n, z) = 0$
+    - *maximally insensitive*: if $n \perp y$ then $I(n, z)$ is minimized
+  - *maximally disentangled*: minimizes total correlation $KL[ p(z) | \prod_i p(z_i)]$
+- for only sufficiency and minimality - Information Bottleneck, Tishby et al. 1999
+  - $$\text{minimize}_{p(z|x)} I(x;z) \\ \text{s.t.} H(y|z)=H(y|x)$$
+  - intractable except for exponential family so Tishby solves Lagrangian $\mathcal{L} = \underbrace{H_{p, q}(y|z)}_{cross-entropy} + \beta I(z;x)$
+  - in fact, gives us invariances since *invariant* $\iff$ minimal
+- layers - if last layer is sufficient, it is more minimal (invariant) than previous layers
+  - because going through a layer can only lose info
+- deep learning dataset D, 
+  - $\underbrace{H_{p, q}(D|w)}_{cross-entropy} = H(D|\theta) + I(\theta; D|w) + KL(q|p) - \underbrace{I(D; w, \theta)}_{overfitting}$
+    - easy to overfit by storing w completely
+  - minimizing $\underbrace{H_{p, q}(D|w)}_{cross-entropy} + \underbrace{I(D; w, \theta)}_{overfitting}$ would minimize all the terms that we want, but second term is incomputable
+  - instead SGVB (kingman and welling, 2015), minimize $\underset{q(w|D)}{arg min} \: \underbrace{H_{p, q}(D|w)}_{cross-entropy} + \beta \underbrace{I(D; w)}_{overfitting}$ 
+    - looks like informaiton bottleneck, but slightly different
+    - describes future data given past data
+    - also can do the smae things using PAC_Bayes
+  - SGD approximates this $\underset{q}{argmin} \: H_{p,q} - \beta H(q)$
+    - amazing that SGD does this
+  - for deep networks this and the normal information bottleneck are duals of each other
+- one layer $z = wx​$
+  - $\underbrace{g[I(w; D)]}_{weights} \leq \underbrace{I(z; x) + TC(z)}_{activations} \leq \underbrace{g[I(w; D)] +c}_{weights}$
+  - assume you get sufficiency (so probably need this for more layers)
+  - weight minimality on past data bounds representation **minimality** of future data
+  - corollary - less info in weights increases invariance and disentaglement of learned representation
+  - corrolary - information bottleneck lagrangian and sgd are biased toward invariant and disentangled repr.
+- sgd
+  - sgd -> stochastic differential eqn
+  - sgd doesn't minimize actual loss function but rather regularized thing above
+  - sgd doesn't get to absolute minimum or local minimum
+    - travels around on limit cycles
+- summary
+  - we want desiderata
+  - practice - sgd / layers yield 
+  - duality of representation - train set in weights, test set in activations
