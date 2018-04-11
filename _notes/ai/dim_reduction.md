@@ -74,11 +74,6 @@ category: ai
 - reduced to axes which separate classes (perpendicular to the boundaries)
 
 
-# t-sne / umap
-- t-sne preserves pairwise neighbors
-- UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction
-
-
 
 # multidimensional scaling (MDS)
 
@@ -98,3 +93,13 @@ category: ai
   - D is *Euclidean* if there exists points s.t. D gives interpoint Euclidean distances
     - define B = HAH
       - D Euclidean iff B is psd
+
+# nonlinear
+
+# t-sne / umap
+
+- t-sne preserves pairwise neighbors
+- UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction
+
+# diffusion embedding
+

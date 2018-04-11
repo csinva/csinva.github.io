@@ -162,6 +162,7 @@
 
 # misc
 
+- theoretical neuroscience: we hope the brain does understandable things
 - emerge behaviors of groups (Iain Couzin)
 - 4 axioms of neurobiology
   - neuron doctrine - neuron is basic unit
@@ -214,11 +215,22 @@
   - neural codes drift
   - anything that remains invariant?
 - excite + inhibit at same time lowers gain - future EPSP will be smaller
-- monkey v2 latency is less than v1!
 - corticocortical connections tend to have parallel connection that goes through thalamus
   - fastest axons are cotex -> thalamus -> cortex
   - connections through thalamus have almost same latency regardless of start/end area
 - let's not impose artificial constraints based on cartoon models of topics in science that we don't yet understand.
+- a lot of data is wrong
+- Marr's levels aren't very good separators
+- dynamic routing - there are infinite types of stimuli and infinite types of motor responses, can't be a simple pathway
+- similarity alignment idea: similar input activity patterns evoke similar outputs
+- oscillations tend to be traveling waves
+- http://news.berkeley.edu/2017/07/13/21-6-million-funding-from-darpa-to-build-window-into-the-brain/
+
+### vision
+
+- monkey v2 latency is less than v1!
+- vision is really about prediction
+- each layer updates predictions about previous layer
 
 ### biomechanics
 
@@ -226,6 +238,7 @@
 - reflexes don't need cortex, but still tricky
   - ex. wipe skin when irritated in frog - works when leg at different points, leg stopped
 - idea: t-sne on neural dynamics: someone at Emory
+- spinal chord is where reflexes are, then brainstem, and cortex is quite slow
 
 ### data types
 
@@ -240,6 +253,10 @@
 - newer
   - neural dust
   - neuropixels
+  - https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4846560/
+  - voltage dyes / voltage imaging with Voltron
+  - optogenetic stimulation
+  - molecular fmri (bartelle)
 
 # areas
 

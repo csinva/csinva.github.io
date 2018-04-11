@@ -341,7 +341,7 @@ category: neuro
 
 ## single cell
 
-- fluroescence imaging
+- fluorescence imaging
   - gfp - protein, gets spine-level precision
   - calcium imaging - not a protein, but still does fluorescence
 - microelectrode recording
@@ -629,6 +629,8 @@ category: neuro
 - magnocellular are bottom 2 layers
   - inputs from parasol cells
 - losing magno seems to lose spatial frequency, control different temporal frequencies, parvo gives you color
+- **important** - different spatial/temporal frequencies - differentiate from the beginning
+  - ![](assets/vissci/magno_parvo.png)
 
 ## color
 
@@ -724,3 +726,134 @@ category: neuro
   - fft function assumes image at boundary is tiled - artifacts giving artificial edges (spatial frequencies of 0)
     - could attenuate function at edges to fix this
 
+
+# extrastriate cortex
+
+- striate cortex - v1 (has some kind of stripe - not striatum)
+- extrastriate cortex - everything else
+- all areas have one part on each hemisphere
+- orientation columns - columns have similar orientation preferences
+  - doesn't have to do with ocular dominance columns
+  - laterally within layers get all orientations in very small area
+  - repeated - one orientation will be represented lots of times
+  - different columns represent different xy coordinates
+- overview
+  - dorsal stream - where
+    - mt (middle temporal area)
+    - spatial visual pathway - positional relationships
+    - vision for action pathway
+  - ventral stream - what
+    - v4
+    - object recognition pathway
+    - high resolution and form
+- 10x more feedback, no strict motor areas, but lots of visuomotor areas
+- V2 / V3 aren't clearly in either stream
+
+## dorsal stream
+
+- adaptation - like psychophysicist's electrode
+- area MT (middle temporal of macaque, although farther back in human)
+  - has preferred motion orientation columns
+- visual area STS (superior temporal sulcus) responds to biological motion
+  - ex. 12 dots look like people
+- parietal cortex also important for spatial attention
+- biomotionlab is cool
+
+## ventral stream
+
+- V1 -> V4 -> IT ->LGN
+- we're constantly adjusting for changes in illumination
+- v4
+  - v4 seems to correspond to perceived colors not wavelengths
+  - damage to v4 stops you from seeing in color
+  - selectivity of v4 responses
+  - mixed magno and parvo inputs (ferrera et al. 1994)
+- IT
+  - single column thing...
+    - jennifer aniston cell
+    - hand
+    - Halle Berry cell
+  - columnar architecture in IT also though....
+    - pseudo semantic columnar architecture (ex. facial perspective)
+- face perception orientation can be discriminated by newborn baby (meltzoff)
+  - can also imitate faces
+  - babies have trouble resolving high frequencies
+- areas
+  - FFA - face selective, fusiform face area
+    - might not be faces, could be expertise
+  - PPA - places, parahippocampal place area (surrounds hippocampus)
+  - things are assymetric in unclear ways (although they contain representations of different visual fields)
+
+
+# sparse coding
+
+- **THIS ISN"T REALLY SPARSE CODING MOVE ELSEWHERE**: power spectrum falls off with frequency as $1/f^2$(amplitude falls as 1/f)
+  - want to decorrelate - multiply by frequency that's $f^2$
+  - you can't do this for very high frequencies otherwise you amplify noise
+  - in spatial domain, looks like center surround
+  	 similar to finding edges	
+- v1 has map of space, magnified at fovea
+- want to explain how center-surround ganglion cells -> elongated orientation selective receptive fields
+- representation - complete repr. with minimum number of possible neurons
+  - deeper in cortex - cells become more silent
+- codes: insert pic!!!!
+  - dense -> sparse -> local (grandmother) codes
+- sparse coding has questionable empirical evidence
+  - lgn fibers around 20 spikes / sec
+  - layer 4 fires ~ 1 spike /sec
+  - we don't know this at other layers
+- sparseness seems pretty constant as you go deeper (Rust & DiCarlo)
+  - tradeoff between complexity and invariance
+- V1 simple cells are oriented, localized, bandpass
+- projection pursuit (Field 1994) - project distr. onto low dim: you should get gaussian
+  - want to find axes that maximize non-gaussianity
+- project idea
+  - look at sparsity in different layers
+  - ***sparse coding is v1 + retina!!! basis transformation***
+
+# object recognition
+
+- gabor function - convolve Gaussian with sinusoids of different frequency
+  - from dennis gabor
+  - in gabor transform, each basis function has same number of wobbles (self-similar)
+- at top of visual system goes to entorhinal cortex then to hippocampus
+- map sizes
+  - V2 little bigger than V1
+  - they fold over so that map of V1 goes 1-1 with map of V2
+- neocognitron is unsupervised
+- comments:
+  - "vision is about more than object recognition so deep nets don't work"
+  - turing test for vision
+- *affordance* = prior
+- not like deep net which is a top box
+  - lots of outputs from intermediate areas
+- perception as inference
+  - generative model we're trying to fit data too
+  - bayes rules: $P(E|D) \propto P(D|E) \cdot P(E)$ where E is environment and D is data about environment
+  - lee + mumford, 2003 - hierarchical bayesian inference in visual cortex
+    - each area makes guesses and higher areas send back corrections
+    - mumford - fields medalist
+    - in real life, we are constantly guessing and trying to resolve ambiguities
+
+# top-down modulation
+
+- attention is most-studied (refers to some different things)
+  - *endogenous attention* - voluntary, slow, effortful, interruptible
+  - *exogenous attention* - involuntary, fast effortless, disruptive
+- attention is about more than where the eye is pointing
+- *change blindness* - blind to things you're not attending to
+  - invisible gorrila, door study
+- *covert attention* - posner cueing task
+
+## endogenous
+
+- better studied because it's hard to disentangle stimulus vs. attention in exogenous case
+- v4 very filtered by attention (ex. reynolds + chelazzi 04)
+- also effects of attention in area v1 (ex. pick a side to attend to while fixating in center)
+- IPS1 seem to have maps of attended stimuli (but ignore other stimuli)
+- frontal eye fields - microstimulation forces eye movement
+  - can stimulate enough to attend, but not to saccade
+
+## exogenous
+
+- inhibition of return - if we have attended a region, less like we return to that region

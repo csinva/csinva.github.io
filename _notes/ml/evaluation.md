@@ -24,7 +24,7 @@ category: ml
   - balanced accuracy = 1/2 (TP/P + TN/N)
   - recall - TP/(TP+FN)
   - precision - TP/(TP+FP)
-- roc curve: TPR (recall) vs. FPR (not precision)
+- roc curve: TPR = hit rate (recall) vs. FPR (not precision) = FP/N
 
 # cv
 

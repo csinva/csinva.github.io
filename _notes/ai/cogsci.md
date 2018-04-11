@@ -258,3 +258,14 @@ category: ai
 - children use pre-linguistic communication for sharing attention
 - some children have crib speech - talking to themselves, seems systematic
 - children have U-curves - use ate, then eated, then back to ate
+
+# theory of mind
+
+- theory of mind - human understanding of agents' mental states and how they shape actions
+  - understand intentional actions - like dots, understand evil, purpose
+  - we can track this month by month
+- Theory of mind 
+  - is rapidly acquired in the normal case
+  - is acquired in an extended series of developmental accomplishments
+  - encompasses several basic insights that are acquired world-wide on a roughly similar trajectory (but not timetable), (4) requires considerable learning and development based on an infant set of specialized abilities to attend to and represent persons,  (5) is severely impaired in autism, (6) is severely delayed in deaf children of hearing parents, and (6) results from but also contributes to specialized neural substrates associated with reasoning about agency, experience, and mind
+- Preschool Theory of Mind, Part 1:  Universal Belief-Desire Understanding 
