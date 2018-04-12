@@ -69,6 +69,7 @@ category: ml
 ## frequencies and colors
 
 - contrast sensitivity depends on frequency (also color)
+  - <img src="assets/comp_vision/spatial_freq.png" width="3in"/>
   - ![](assets/comp_vision/spatial_freq.png)
 - fourier transform - low vs high freqs
 - band-pass filtering - use gaussian pyramid
@@ -307,16 +308,18 @@ category: ml
     - things closer to you change faster
   - if you move left / right points move in opposite direction
     - rotations also appear to move opposite to way you turn your head
-- equations
+- equations: relate optical flow in image to world coords
   - optical flow at $(u, v) = (\Delta x / \Delta t,  \Delta y/ \Delta t)$ in time $\Delta t$
     - function in image space (produces vector field)
-  - $\dot{X} = -t -\omega \times X$![opt_flow2](assets/comp_vision/opt_flow2.png)
-- translational component of flow fields is more important - tells us $Z(x, y)$ and translation $t$
+  - $\begin{bmatrix} \dot{X}\\ \dot{Y} \\ \dot{Z} \end{bmatrix} = -t -\omega \times \begin{bmatrix} X \\ Y \\ Z\end{bmatrix} \implies \begin{bmatrix} \dot{x}\\ \dot{y}\end{bmatrix}= \frac{1}{Z} \begin{bmatrix}  -1 & 0 & x\\ 0 & 1 & y\end{bmatrix} \begin{bmatrix} t_x \\ t_y \\ t_z \end{bmatrix}+ \begin{bmatrix} xy & -(1+x^2) & y \\ 1+y^2 & -xy & -x\end{bmatrix}\begin{bmatrix} \omega_x \\ \omega_y \\ \omega_z\end{bmatrix}$
+  - decomposed into translation component + rotation component
+  - $t_z / Z$ is time to impact for a point
+- translational component of flow fields is more important - tells us $Z(x, y)​$ and translation $t​$
 - we can compute the time to contact
 
 
-
 # cogsci / neuro
+
 ## psychophysics
 
 - julesz search experiment
@@ -714,3 +717,20 @@ category: ml
     -  want consistency with CRF
       - spectral graph segmentation
     - embedding approach - satisfy pairwise affinities
+
+## single-view 3d construction
+
+- useful for planning, depth, etc.
+- different levels of output (increasing complexity)
+  - image depth map
+  - scene layout - predict simple shapes of things
+  - volumetric 3d - predict 3d binary voxels for which voxels are occupied
+    - could approximate these with CAD models, deformable shape models
+- need to use priors of the world
+- (explicit) single-view modeling - assume a model and fit it
+  - many classes are very difficult to model explicitly
+  - ex. use dominant edges in a few directions to calculate vanishing points and then align things
+- (implicit) single-view prediction - learn model of world data-driven
+  - collect data + labels (ex. sensors)
+  - train + predict
+  - supervision from annotation can be wrong
