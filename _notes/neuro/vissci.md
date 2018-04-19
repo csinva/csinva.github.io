@@ -857,3 +857,53 @@ category: neuro
 ## exogenous
 
 - inhibition of return - if we have attended a region, less like we return to that region
+
+## visual search
+
+- having more similar objects makes it difficult
+- feature-integration theory - different visual features are coded in parallel in separate feature maps (orientation, size, color)
+  - *conjunction search* - conjunction of features (ex. red circle) takes longer
+- plenty of other areas
+  - ADD, alzheimers, intermodal attention, applied attention, attentional tracking, neurochemistry of attention, feature- and object-based attention...
+  - ex. driving - people in car will stop talking in serious situations unlike on phone
+- **predictive coding** - unpredicted response evokes larger response
+  - fits with bayesian method - only need large response when you don't predict what's going to happen
+  - in this way, prediction is opposite to attention
+
+# visual neuropsychology
+
+- blindsight - damage to V1; aren't aware of visual stimuli but can do tasks in forced-choice paradigmsnp
+  - retina goes through some things (ex. pulvinar) that aren't V1 to get to higher order areas (ex. MT)
+- dorsal pathway
+  - MT monkey lesions in monkeys impair motion perception but not contrast detection
+    - damage to MT causes motion blindness - life is a set of snapshots
+- ventral pathway
+  - damage to V4 causes loss of color perception, can't even imagine colors
+  - patient DF (well-known) - can only do vision for perception + action, couldn't describe it = *visual agnosia* - perception as an object is impaired
+  - lots of different kinds
+  - *prosopagnosia* - can't recognize faces - FFA, PPA (up to 1%)
+- spatial neglect - failure to acknowledge objects in field contralateral to the lesion
+  - sometimes group things and only look at right sides of groups
+  - very weird - has strange reference frames
+  - functionally very similar to having blindness on one side
+
+# visual cortical development + plasticity
+
+- development things
+  - neurons of right types generated in appropriate places
+  - migrate to final positions
+  - differentiate into final forms
+  - axons must follow right paths
+  - neurons must refine synaptic connections
+  - brain must remain flexible
+- neurons ride up glial fibers until it stops - cortical layers develop inside-first (tracked)
+- axon projections - some axons have to travel very far to connect (ex. LGN -> V1)
+  - follows chemical signal (even if it starts somewhere diff ends same place) - roger sperry 1943
+- 3 stages in development of retina-lgn-v1 pathways
+  1. experience-independent development - can occur prenatally
+     - ex. segregation in eye-specific layers
+     - retinal waves - spontaneous activity go accross the entire retina
+  2. critical period of refinement of connections within and between cortical columns
+     - extremeley sensitive to abnormal experience
+     - competition to decide who connects where
+  3. maturation and plasticity in adult life

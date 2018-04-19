@@ -19,14 +19,12 @@ category: ml
 - image I(x,y) projects scene(X, Y, Z)
   - lower case for image, upper case for scene
   - ![](assets/comp_vision/pinhole.png)
+    - f is a fixed dist. not a function
     - box with pinhole=*center of projection*, which lets light go through
     - Z axis points out of box, X and Y aligned w/ image plane (x, y)
-  - $x = \frac{-fX}{Z}$ (f is a fixed dist. not a function)
-  - $y = \frac{-fY}{Z}$
 - perspective projection - maps 3d points to 2d points through holes
   - ![](assets/comp_vision/perspective.png)
-  - perspective projection works for spherical imaging surface
-    - what's important is 1-1 mapping between rays and pixels
+  - perspective projection works for spherical imaging surface - what's important is 1-1 mapping between rays and pixels
   - natural measure of image size is visual angle
 - **orthographic projection** - appproximation to perspective when object is relatively far
   - define constant $s = f/Z_0​$
@@ -44,9 +42,7 @@ category: ml
 - nearer objects are lower in the image
   - let ground plane be $Y = -h$ (where h is your height)
   - point on ground plane $y = -fh / Z$
-    - smaller z $\implies$ more negative y
 - nearer objects look bigger
-  - scaling factor is $1/Z$
 - *foreshortening* - objects slanted w.r.t line of sight become smaller w/ scaling factor cos $\sigma$ ~ $\sigma$ is angle between line of sight and the surface normal
 
 ## radiometry
@@ -55,6 +51,7 @@ category: ml
   - radiant power / unit area ($W/m^2$)
   - *radiance* - power in given direction / unit area / unit solid angle
     - L = directional quantity (measured perpendicular to direction of travel)
+    - $L = Power / (dA cos \theta \cdot d\Omega)$  where $d\Omega$ is a solid angle (in steradians)
 - irradiance $\propto$ radiance in direction of the camera
 - outgoing radiance of a patch has 3 factors
   - incoming radiance from light source
@@ -64,16 +61,13 @@ category: ml
   - *specular surfaces* - outgoing radiance direction obeys angle of incidence
   - *lambertian surfaces* - outgoing radiance same in all directions
     - albedo * radiance of light * cos(angle)
-  - often model reflectance as a combination of Lambertian term and specular term
+  - model reflectance as a combination of Lambertian term and specular term
 - also illuminated by reflections of other objects (ray tracing / radiosity)
-- *shape-from-shading* (SFS) goes from irradiance -> geometry, reflectances, illumination
+- *shape-from-shading* (SFS) goes from irradiance $\to$ geometry, reflectances, illumination
 
 ## frequencies and colors
 
-- contrast sensitivity depends on frequency (also color)
-  - <img src="assets/comp_vision/spatial_freq.png" width="3in"/>
-  - ![](assets/comp_vision/spatial_freq.png)
-- fourier transform - low vs high freqs
+- contrast sensitivity depends on frequency + color
 - band-pass filtering - use gaussian pyramid
   - pyramid blending
 - eye
@@ -113,40 +107,29 @@ category: ml
 
 - **projective transformation** = **homography**
 
-  - **homogenous coordinates** - use n + 1 coordinates for n-dim space
+  - **homogenous coordinates** - use n + 1 coordinates for n-dim space to help us represent points at $\infty$
     - $[x, y] \to [x_1, x_2, x_3]$ with $x = x_1/x_3, y=x_2/x_3$
-    - want to be able to use infinity - added coordinate helps us represent infinity
-    - $[x_1, x_2] = \lambda [x_1, x_2]  \quad \forall \lambda \neq 0$ - each points is like a line through origin in n + 1 dimensional space
-    - even though we added a coordinate, didn't add a dimension
+      - $[x_1, x_2] = \lambda [x_1, x_2]  \quad \forall \lambda \neq 0$ - each points is like a line through origin in n + 1 dimensional space
+      - even though we added a coordinate, didn't add a dimension
     - standardize - make third coordinate 1 (then top 2 coordinates are euclidean coordinates)
       - when third coordinate is 0, other points are infinity
-      - all coordinates 0 disallowed
-    - Euclidean line $a_1x + a_2y + a_3=0$ to homogenous eqn for line $a_1 x_1 + a_2x_2 + a_3 x_3 = 0$
+      - all 0 disallowed
+    - Euclidean line $a_1x + a_2y + a_3=0$ $\iff$ homogenous line $a_1 x_1 + a_2x_2 + a_3 x_3 = 0$
   - perspective maps parallel lines to lines that intersect
   - incidence of points on lines
     - when does a point $[x_1, x_2, x_3]$ lie on a line $[a_1, a_2, a_3]$ (homogenous coordinates)
     - when $\mathbf{x} \cdot \mathbf{a} = 0$
   - cross product gives intersection of any 2 lines
-  - representing affine transformations
-    - multiply by a matrix, but bottom row of affine transformation is [0, 0, 1]
-    - $\begin{bmatrix}X'\\Y'\\W'\end{bmatrix} = \begin{bmatrix}a_{11} & a_{12}  & t_x\\ a_{21} & a_{22} & t_y \\ 0 & 0 & 1\end{bmatrix}\begin{bmatrix}X\\Y\\1\end{bmatrix}$
-      - derivs are same as for normal affine transformations
-  - representing **perspective projection**
-    - $\begin{bmatrix}1 & 0& 0 & 0\\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1/f & 0 \end{bmatrix} \begin{bmatrix}X\\Y\\Z \\ 1\end{bmatrix} = \begin{bmatrix}X\\Y\\Z/f\end{bmatrix} = \begin{bmatrix}fX/Z\\fY/Z\\1\end{bmatrix}​$
-- **affine transformation**
-  - affine transformations are also a a group
-  - 2D - 6 parameters
+  - representing affine transformations: $\begin{bmatrix}X'\\Y'\\W'\end{bmatrix} = \begin{bmatrix}a_{11} & a_{12}  & t_x\\ a_{21} & a_{22} & t_y \\ 0 & 0 & 1\end{bmatrix}\begin{bmatrix}X\\Y\\1\end{bmatrix}$
+  - representing **perspective projection**: $\begin{bmatrix}1 & 0& 0 & 0\\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1/f & 0 \end{bmatrix} \begin{bmatrix}X\\Y\\Z \\ 1\end{bmatrix} = \begin{bmatrix}X\\Y\\Z/f\end{bmatrix} = \begin{bmatrix}fX/Z\\fY/Z\\1\end{bmatrix}$
+- **affine transformations**
+  - affine transformations are a a group
   - examples
     - anisotropic scaling - ex. $\begin{bmatrix}2 & 0 \\ 0 & 1 \end{bmatrix}$
     - shear
-  - tangent: three medians (vertex - midpoint of other side) of a triangle intersect
-    - pf: can convert any triangle to another triangle via affine transform
-      - can convert to equilateral triangle where it's obvious they intersect
 - **euclidean transformations** = *isometries* = *rigid body transform*
   - preserves distances between pairs of points: $||\psi(a) - \psi(b)|| = ||a-b||$
     - ex. translation $\psi(a) = a+t$
-  - $\implies$ orthogonal transformation preserves norms
-  - $\implies$ orthogonal transformation are isometries
   - composition of 2 isometries is an isometry - they are a group
 - **orthogonal transformations** - preserves inner products $\forall a,b \: a \cdot b =a^T A^TA b$
   - $\implies A^TA = I \implies A^T = A^{-1}$
@@ -162,19 +145,17 @@ category: ml
 
 - **rotation** - orthogonal transformations with det = +1 
   - 2D: $\begin{bmatrix}cos \theta & - sin \theta \\ sin \theta & cos \theta \end{bmatrix}$
-  - 3D: $ \begin{bmatrix}cos \theta & - sin \theta  & 0 \\ sin \theta & cos \theta & 0 \\ 0 & 0 & 1\end{bmatrix}$ (rotate around z-axis)
+  - 3D: $ \begin{bmatrix}cos \theta & - sin \theta  & 0 \\ sin \theta & cos \theta & 0 \\ 0 & 0 & 1\end{bmatrix}​$ (rotate around z-axis)
 - lots of ways to specify angles
   - axis plus amount of rotation - we will use this
   - euler angles
   - quaternions (generalize complex numbers)
 - **Roderigues formula** - converts: $R = e^{\phi \hat{s}} = I + sin [\phi] \: \hat{s} + (1 - cos \phi) \hat{s}^2$
   - $s$ is a unit vector along $w$ and $\phi=||w||t$ is total amount of rotation
-    - $\hat{s}$ is skew symmetric matrix for s
   - rotation matrix
-    - can replace cross product with matrix multiplication with a skew symmetric matrix:
-    - skew symmetric $B^T = -B$
+    - can replace cross product with matrix multiplication with a skew symmetric $(B^T = -B)$ matrix: 
     - $\begin{bmatrix} t_1 \\ t_2 \\ t_3\end{bmatrix}$ ^ $\begin{bmatrix} x_1 \\ x_2 \\ x_3 \end{bmatrix} = \begin{bmatrix} t_2 x_3 - t_3 x_2 \\ t_3 x_1 - t_1 x_3 \\ t_1 x_2 - t_2 x_1\end{bmatrix}$
-      - $\hat{t} = \begin{bmatrix}  0 & -t_3 & t_2 \\ t_3 & 0 & -t_1 \\ -t_2 & t_1 & 0\end{bmatrix}$
+      - $\hat{t} = [t_\times] = \begin{bmatrix}  0 & -t_3 & t_2 \\ t_3 & 0 & -t_1 \\ -t_2 & t_1 & 0\end{bmatrix}$
   - proof
     - $\dot{q(t)} = \hat{w} q(t)$
     - $\implies q(t) = e^{\hat{w}t}q(0)$
@@ -184,7 +165,11 @@ category: ml
 ## image preprocessing
 
 - image is a function from $R^2 \to R$
-- f(x,y) = reflectance(x,y) * illumination(x,y)
+  - f(x,y) = reflectance(x,y) * illumination(x,y)
+- image histograms - treat each pixel independently
+  - better to look at CDF
+  - use CDF as mapping to normalize a histogram
+  - histogram matching - try to get histograms of all pixels to be same
 - need to map high dynamic range (HDR) to 0-255 by ignoring lots of values
   - do this with long exposure
   - *point processing* does this transformation independent of position x, y
@@ -210,7 +195,7 @@ category: ml
     - *sobel* filter is edge detector
   - *gaussian filter* - blur, better than just box blur
     - rule of thumb - set filter width to about 6 $\sigma$
-    - removes "high-frequency" components
+    - removes high-frequency components
   - **convolution** - cross-correlation where filter is flipped horizontally and vertically
     - commutative and associative
     - **convolution theorem**: $F[g*h] = F[g]F[h]$ where F is Fourier, * is convolution
@@ -224,7 +209,7 @@ category: ml
 - sharpening - add back the high frequencies you remove by blurring (laplacian pyramid): ![](assets/comp_vision/laplacian.png)
 
 
-## edges, templates, & texture
+## edges + templates
 
 - **edge** - place of rapid change in the image intensity function
 - solns
@@ -235,7 +220,8 @@ category: ml
 
   - can convolve with deriv of gaussian
   - can give orientation of edges
-- always tradeoff between smoothing (denoising) and good edge localization (not getting blurry edges)
+- tradeoff between smoothing (denoising) and good edge localization (not getting blurry edges)
+- image gradient looks like edges
 - canny edge detector
 
   1. filter image w/ deriv of Gaussian
@@ -253,7 +239,6 @@ category: ml
     - should sum to 0 (0 response on constant)
       - intuitive to have positive sum to +1, negative sum to -1
 - matching with filters (increasing accuracy, but slower)
-  - **think about how to compute these w/ convolution**
   - ex. zero-mean filter subtract mean of patch from patch (otherwise might just match brightest regions)
   - ex. SSD - L2 norm with filter
     - doesn't deal well with intensities
@@ -262,17 +247,17 @@ category: ml
   - instance - "find me this particular chair"
     - simple template matching can work
   - category - "find me all chairs"
+
+## texture
+
 - *texture* - non-countable stuff
   - related to material, but different
 - texture analysis - compare 2 things, see if they're made of same stuff
   - pioneered by bela julesz
   - random dot stereograms - eyes can find subtle differences in randomness if fed to different eyes
   - human vision sensitive to some difference types, but not others
-
-## texture synthesis
-
 - easy to classify textures based on v1 gabor-like features
-  - can make histogram of filter response histograms
+- can make histogram of **filter response histograms** - convolve filter with image and then treat each pixel independently
 - heeger & bergen siggraph 95 - given texture, want to make more of that texture
   - start with noise
   - match histograms of noise with each of your filter responses
@@ -337,8 +322,7 @@ category: ml
     - ex. elongated blobs (rectangles, ellipses, line segments w/ orientation/width/length)
     - ex. terminators - ends of line segments
     - crossing of line segments
-- **julesz conjecture** (not quite true) - textures can't be spontaneously discriminated if they have same first-order + second-order statistics
-  - ex. density
+- **julesz conjecture** (not quite true) - textures can't be spontaneously discriminated if they have same first-order + second-order statistics (ex. density)
 - humans can saccade to correct place in object detection really fast (150 ms - Kirchner & Thorpe, 2006)
   - still in preattentive regime
   - can also do object detection after seeing image for only 40 ms
@@ -362,16 +346,8 @@ category: ml
 ## perceptual organization
 
 - max werthermian - we perceive things not numbers
-- principles
-  - grouping
-  - element connectedness
-- figure-ground organization
-  - surroundedness
-  - size
-  - orientation
-  - contrast
-  - symmetry
-  - convexity
+- principles: grouping, element connectedness
+- figure-ground organization: surroundedness, size, orientation, contrast, symmetry, convexity
 - gestalt - we see based on context
 
 # correspondence + applications (steropsis, optical flow, sfm)
@@ -396,23 +372,22 @@ category: ml
   - humans do this to put things in the fovea
 - use coordinates of *cyclopean eye*
 - *vergence* movement - look at close / far point on same line
-- change angle of convergence (goes to 0 at $\infty$)
-  - disparity of point P' is $\beta - \alpha = 0$
-  - ![epth_disparit](assets/comp_vision/depth_disparity.png)
-    - b - distance between eyes, $\delta$ - change in depth, Z - depth
+  - change angle of convergence (goes to 0 at $\infty$)
+    - *disparity* = $ 2 \delta \theta = b \cdot \delta Z / Z^2$ where b - distance between eyes, $\delta Z$ - change in depth, Z - depth
+    - ![epth_disparit](assets/comp_vision/depth_disparity.png)
+      - b - distance between eyes, $\delta$ - change in depth, Z - depth
 - *version* movement - change direction of gaze
   - forms Vieth-Muller circle - points lie on same circle with eyes
     - cyclopean eye isn't on circle, but close enough
-    - anything on the circle has zero disparity
+    - disparity of P' = $\alpha - \beta = 0$ on Vieth-Muller circle
     - ![ieth_mulle](assets/comp_vision/vieth_muller.png)
 
 ### optical axes parallel (common in robots)
 
 - ![isparity_paralle](assets/comp_vision/disparity_parallel.png)
-- errors: depth z = c / d (disparity)
-  - $|\delta Z| = Z^2/c |\delta d|$ - error gets worse quadratically with distance
-- **parallax** - effect where near objects move (bf/z) when you move
-  - earth moving helps astronomers
+- *disparity* $d = x_l - x_r = bf/Z$
+- *error* $|\delta Z| = \frac{Z^2 |\delta d|}{bf}$
+- **parallax** - effect where near objects move when you move but far don't
 
 ### general case (ex. reconstruct from lots of photos)
 
@@ -423,33 +398,28 @@ category: ml
 - **epipolar plane** - contains cameras, point of fixation
 
   - different epipolar planes, but all contain line between cameras
-
+  - $\vec{c_1 c_2}$ is on all epipolar planes
   - each image plane has corresponding **epipolar line** - intersection of epipolar plane with image plane
-
-    - **epipole** - proj. of c1 onto image plane
+    - **epipole** - intersection of $\vec{c_1 c_2}$ and image plane
       - ![pipolar](assets/comp_vision/epipolar1.png)
 
-    ​
+- **structure from motion** problem: given n corresponding projections $(x_i, y_i)$ in both cameras, find $(X_i, Y_i, Z_i)$ by estimating R, t:  **Longuet-Higgins 8-point algorithm** - overall minimizing *re-projection error* (basically minimizes least squares = bundle adjustment)
 
-- **structure from motion** problem: given bunch of $x_i, y_i$ projections in both cameras, find $X_i, Y_i, Z_i$ by estimating R, t
-
-  - assumes we know which points correspond
-
-- solve with Longuet-Higgins 8-point algorithm - overall minimizing *re-projection error* (basically minimizes least squares = bundle adjustment)
-
-  - find $n (\geq 8)$ corresponding points (here assume we have corresponding points)
+  - find $n (\geq 8)$ corresponding points
   - estimate **essential matrix** $E = \hat{T} R$ (converts between points in normalized image coords - origin at optical center)
-    - **fundamental matrix** F corresponds between points in pixel coordinates (more degrees of freedom)
+    - **fundamental matrix** F corresponds between points in pixel coordinates (more degrees of freedom, coordinates not calibrated )
     - **essential matrix constraint**: $x_1, x_2$ homogoneous coordinates of $M_1, M_2 \implies x_2^T \hat{T} R x_1 = 0$
-      - 5; 3 dof for rotation, 3 dof for translation. Up to a scale, so 1 dof is removed
-    - need at least 8 pairs of corresponding points to estimate E (since E has 8 parameters really)
+      - 6 or 5 dof; 3 dof for rotation, 3 dof for translation. up to a scale, so 1 dof is removed
+      - $t = c_2 - c_1, x_2$ in second camera coords, $Rx_1$ moves 1st camera coords to second camera coords
+    - need at least 8 pairs of corresponding points to estimate E (since E has 8 entries up to scale)
       - if they're all coplanar, etc doesn't always work (need them to be independent)
   - extract (R, t)
-  - recover depth by triangulation
+  - triangulation
+
 
 ## solving for stereo correspondence
 
-- **stereo correspondence** = stereo matching problem: given point in one image, find corresponding point in 2nd image
+- **stereo correspondence** = stereo matching: given point in one image, find corresponding point in 2nd image
 - **basic stereo matching algorithm**
   - **stereo image rectification** - transform images so that image planes are parallel
     - now, epipolar lines are horizontal scan lines
@@ -457,21 +427,15 @@ category: ml
   - for each pixel in 1st image 
     - find corresponding epipolar line in 2nd image
     - correspondence search: search this line and pick best match
-    - result
-      - disparity = x-x'
-      - depth = B*f / disparity
-- simple ex. parallel optical axes
-  - assume cameras at same height, same focal lengths $\implies$ epipolar lines are horizontal scan lines
-  - simple translation / rotation
-  - ![aralle](assets/comp_vision/parallel.png)
-- **correspondence search algorithm**
+  - simple ex. parallel optical axes = assume cameras at same height, same focal lengths $\implies$ epipolar lines are horizontal scan lines
+    - ![aralle](assets/comp_vision/parallel.png)
+- **correspondence search algorithms** (simplest to most complex)
   - assume photo consistency - same points in space will give same brightness of pixels
-  - take a window
+  - take a window and use metric
     - larger window smoother, less detail
-  - metrics between windows
-    - minimize L2 norm (SSD)
-    - or maximize dot product (NCC - normalized cross correlation)
-      - this works a little better because calibration issues could be different
+    - metrics
+      - minimize L2 norm (SSD)
+      - maximize dot product (NCC - normalized cross correlation) - this works a little better because calibration issues could be different
   - failures
     - textureless surfaces
     - occlusions - have to extrapolate the disparity
@@ -492,10 +456,9 @@ category: ml
   - here, $I_x = \partial I / \partial x$
 
 
-  - u and v are unknown
   - local constancy of optical flow - assume u and v are same for n points in neighborhood of a pixel
   - rewrite for n points(left matrix is A): $\begin{bmatrix} I_x^1 & I_y^1\\  I_x^2 & I_y^2\\ \vdots & \vdots \\ I_x^n & I_y^n\\ \end{bmatrix}\begin{bmatrix} u \\ v\end{bmatrix} = - \begin{bmatrix} I_t^1\\ I_t^2\\ \vdots \\ I_t^n\\\end{bmatrix}$
-    - then solve with least squares $u=-(A^TA^{-1} A^Tb)$
+    - then solve with least squares $\begin{bmatrix} u \\ v\end{bmatrix}=-(A^TA^{-1} A^Tb)$
     - *second moment matrix* $A^TA$ - need this to be high enough rank
 
 ## general correspondence + interest points
@@ -530,11 +493,11 @@ category: ml
 
 ### description - extract vector feature for each key point
 
-- lots of ways - ex. SIFT
+- lots of ways - ex. SIFT, image patches wrt gradient
 - simpler: MOPS
   - take point (x, y), scale (s), and orientation from gradients
   - take downsampled rectangle around this point in proper orientation
-- other invariant feature descriptors...
+- invariant to things like shape / lighting changes
 
 ### matching - determine correspondence between 2 views
 
@@ -544,49 +507,42 @@ category: ml
 - problem: outliers will destroy fit
 - **RANSAC** algorithm (random sample consensus) - vote for best transformation
   - repeat this lots of times, pick the match that had the most inliers
-    - select n feature pairs at random (n = minimum needed to compute transformation, 4 for homgraphy)
-    - compute transformation T (exact)
+    - select n feature pairs at random (n = minimum needed to compute transformation - 4 for homography, 8 for rotation/translation)
+    - compute transformation T (exact for homography, or use 8-point algorithm)
     - count *inliers* (how many things agree with this match)
       - 8-point algorithm / homography check 
+      - $x^TEx < \epsilon $ for 8-point algorithm or $x^THx < \epsilon$ for homography
+  - ate end could recompute least squares H or F on all inliers
 
 ## correspondence for sfm / instance retrieval
 
-- sfm (structure for motion) - given many images, simultaneously do 2 things:
+- sfm (structure for motion) - given many images, simultaneously do 2 things
 
-  - calibration - where were they all taken from
-  - triangulation - build 3d model of scene
-- **camera calibration problem**: determine camera parameters from known 3d points
-
-  -  parameters
-
+  - calibration - find camera parameters
+  - triangulation - find 3d points from 2d points
+- **structure for motion** system (ex. photo tourism 2006 paper)
+  - **camera calibration**: determine camera parameters from known 3d points
+    - parameters
       1. internal parameters - ex. focal length, optical center, aspect ratio
       2. external parameters - where is the camera
-          - only makes sense for multiple cameras
-  -  approach 1 - solve for projection matrix (which contains all parameters)
+         - only makes sense for multiple cameras
+    - approach 1 - solve for projection matrix (which contains all parameters)
       - requires knowing the correspondences between image and 3d points (can use calibration object)
       - least squares to find points from 3x4 **projection matrix** which projects  (X, Y, Z, 1) -> (x, y, 1)
-  -  approach 2 - solve for parameters
-
+    - approach 2 - solve for parameters
       - translation T, rotation R, focal length f, principle point (xc, yc), pixel size (sx, sy) 
+        - can't use homography because there are translations with changing depth
         - sometimes camera will just list focal length
       - decompose projection matrix into a matrix dependent on these things
-      -  nonlinear optimization
-- **triangulation** - find 3d location of point given camera parameters and pixels
-  - objective function: minimize reprojection error
-- **structure for motion** system (ex. photo tourism 2006 paper)
-  - preliminaries
-    - feature detection - ex. sift
-    - feature matching - RANSAC
-      - can't use homography because there are translations with changing depth
-      - have to use epipolar constraint = fundamental matrix constraint: $x^TEx=0$
-  - calibration
-  - triangulation
-    - minimize reprojection error (bundle adjustment)![epro](assets/comp_vision/reproj.png)
-    - incremental sfm: start with 2 cameras
-      - initial pair should have lots of matches, big baseline (shouldn't just be a homography)
-      - solve with essential matrix
-      - then iteratively add cameras and recompute
-      - good idea: ignore lots of data since data is cheap in computer vision
+      - nonlinear optimization
+  - **triangulation** - predict 3d points $(X_i, Y_i, Z_i)$ given pixels in multiple cameras $(x_i, y_i)$ and camera parameters $R, t$
+    - minimize reprojection error (bundle adjustment): $\sum_i \sum_j \underbrace{w_{ij}}_{\text{indicator var}}\cdot || \underbrace{P(x_i, R_j, t_j)}_{\text{pred. im location}} - \underbrace{\begin{bmatrix} u_{i, j}\\v_{i, j}\end{bmatrix}}_{\text{observed m location}}||^2$
+      - solve for matrix that projects points into 3d coords
+- incremental sfm: start with 2 cameras
+  - initial pair should have lots of matches, big baseline (shouldn't just be a homography)
+  - solve with essential matrix
+  - then iteratively add cameras and recompute
+  - good idea: ignore lots of data since data is cheap in computer vision
 - search for similar images - want to establish correspondence despite lots of changes
   - see how many keypoint matches we get
   - search with inverted file index
@@ -649,7 +605,7 @@ category: ml
 - **consistency** - 2 segmentations consistent when they can be explained by same segmentation tree
   - *percept tree* - describe what's in an image using a tree
 - evaluation - how to correspond boundaries?
-  - min-cost assignment on **bipartite graph=bigraph** - connections only between groundtruth, signal![bigraph](assets/comp_vision/bigraph.png)
+  - min-cost assignment on **bipartite graph=bigraph** - connections only between groundtruth, signal: ![bigraph](assets/comp_vision/bigraph.png)
 - ex. for each pixel predict if it's on a boundary by looking at window around it
   - proximity cue
   - boundary cues: brightness gradient, color gradient, texture gradient (gabor responses)
@@ -703,18 +659,7 @@ category: ml
   - edge features: shapemes - prototypical local shapes
   - junction features: line labelling - contour directions with convex/concave images
   - lots of principles
-    - surroundedness
-    - size
-    - orientation
-    - contrast
-    - symmetry
-    - convexity
-    - parallelism
-    - lower region
-    - meaningfulness
-    - occlusion
-    - cast shadows
-    - shading
+    - surroundedness, size, orientation, constrast, symmetry, convexity, parallelism, lower region, meaningfulness, occlusion, cast shadows, shading
   - global cues
     -  want consistency with CRF
       - spectral graph segmentation

@@ -3,23 +3,25 @@
 
 - https://aideadlin.es/
 
-|         | 2018                   | 2019              |
-| ------- | ---------------------- | ----------------- |
-| AAAI    | 2/2 - New Orleans      |                   |
-| COSYNE  | **3/1 - Denver**       |                   |
-| AISTATS | 4/9 - Playa            |                   |
-| VSS     | 5/18 - Florida         | Florida           |
-| SAND    | ~5/31 - Pitt           | ~5/31 - Pitt      |
-| AREADNE | 6/20 - Greece          |                   |
-| CVPR    | 6/18 - Salt Lake City  |                   |
-| CNS     | ~July - Seattle        |                   |
-| ICML    | ***7/10 - Stockholm*** | 7/10 - Long Beach |
-| ECCV    | 8/8 - Munich           |                   |
-| CCN     | 9/6                    |                   |
-| ICCV    | X                      |                   |
-| SFN     | 11/3 - San Diego       | 10/19 - Chicago   |
-| NIPS    | 12/3 - Montreal        |                   |
-|         |                        |                   |
+|         |  2019              |
+| ------- |  :---------------- |
+| AAAI    |                   |
+| COSYNE  | Portugal |
+| AISTATS |                     |
+| ICLR   |            |
+| VSS     |     Florida           |
+| SAND    |       ~5/31 - Pitt      |
+| AREADNE |                    |
+| CVPR    |                  |
+| CNS     |                     |
+| ICML    |  7/10 - Long Beach |
+| ECCV    |                   |
+| CCN     |                    |
+| ICCV    |            |
+| SFN     |        |
+| NIPS    |                    |
+|         |                       |
+- went
 
 # datasets
 
@@ -120,6 +122,7 @@
 # problems
 
 - neuroscience is like IT - given computer, figure out how it works
+- https://grand-challenge.org/all_challenges/
 
 ### rna barcoding
 - allows for tagging different neurons
