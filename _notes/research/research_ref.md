@@ -21,30 +21,6 @@
 | SFN     |        |
 | NIPS    |                    |
 |         |                       |
-- went
-
-# datasets
-
-- overview: http://www.scholarpedia.org/article/Encyclopedia_of_computational_neuroscience
-- keeping up to date: https://sanjayankur31.github.io/planet-neuroscience/
-- *lots of good data*: http://home.earthlink.net/~perlewitz/index.html
-- *models*
-  - senseLab: https://senselab.med.yale.edu/
-    - modelDB - has NEURON code
-  - model databases: http://www.cnsorg.org/model-database 
-  - comp neuro databases: http://home.earthlink.net/~perlewitz/database.html
-- *raw misc data*
-  - crcns data: http://crcns.org/
-    - visual cortex data (gallant)
-    - hippocampus spike trains
-  - allen brain atlas: http://www.brain-map.org/
-    - includes calcium-imaging dataset: http://help.brain-map.org/display/observatory/Data+-+Visual+Coding
-  - wikipedia page: https://en.wikipedia.org/wiki/List_of_neuroscience_databases
-- *human fMRI datasets*: https://docs.google.com/document/d/1bRqfcJOV7U4f-aa3h8yPBjYQoLXYLLgeY6_af_N2CTM/edit
-  - Kay et al 2008 has data on responses to images
-- *calcium imaging* for spike sorting: http://spikefinder.codeneuro.org/
-  - spikes: http://www2.le.ac.uk/departments/engineering/research/bioengineering/neuroengineering-lab/software
-
 # levels
 
 - *Marr's three levels*
@@ -212,7 +188,7 @@
 - boyd + chua 1985 - diversity of units may increase the computational capability of a network
 - liquid computing model
 - neural codes are highly correlated - doesn't fit w/ theory
-- synatpic plasticity + neural codes
+- synaptic plasticity + neural codes
   - STDP / hebbian learning seem to work sometimes
   - rewiring happens even w/out firing activity
   - neural codes drift
@@ -242,24 +218,6 @@
   - ex. wipe skin when irritated in frog - works when leg at different points, leg stopped
 - idea: t-sne on neural dynamics: someone at Emory
 - spinal chord is where reflexes are, then brainstem, and cortex is quite slow
-
-### data types
-
-
-|              | EEG      | ECoG              | Local Field potential (LFP) -> microelectrode array | single-unit | calcium imaging | fMRI     |
-| ------------ | -------- | ----------------- | ---------------------------------------- | ----------- | --------------- | -------- |
-| scale        | high     | high              | low                                      | tiny        | low             | high     |
-| spatial res  | very low | low               | mid-low                                  | x           | low             | mid-low  |
-| temporal res | mid-high | high              | high                                     | super high  | high            | very low |
-| invasiveness | non      | yes (under skull) | very                                     | very        | non             | non      |
-
-- newer
-  - neural dust
-  - neuropixels
-  - https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4846560/
-  - voltage dyes / voltage imaging with Voltron
-  - optogenetic stimulation
-  - molecular fmri (bartelle)
 
 # areas
 

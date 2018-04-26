@@ -907,3 +907,19 @@ category: neuro
      - extremeley sensitive to abnormal experience
      - competition to decide who connects where
   3. maturation and plasticity in adult life
+
+# adult plasticity
+
+- these are due to "fatigue" of stimulated neurons
+  - color adaptation - afterim aimages + complementary colors
+  - slight tilt aftereffect as well
+- problems with fatigue hypothesis
+  - doesn't account for long-lasting adaptation effect (ex. McCulloch effect lasts very long time)
+  - don't see optic flow adaptation in driving, even though we see this in the lab
+- there is a clear critical period for plasticity, although auditory / somatosensory don't
+- braille reading in blind subject activates "visual cortex" area
+  - unclear it there is a critical period for this
+- perceptual learning - can learn new visual tasks
+  - very sensitive to eye, etc.
+- trying to reat amblyopia
+  - very unclear how much perceptual learning generalizes

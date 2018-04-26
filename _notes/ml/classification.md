@@ -87,7 +87,7 @@ category: ml
   - pretty similar to logistic
 - noise-OR (binary) model
   - consider $Y = X_1 \lor X_2 \lor … X_m$ where each has a probability of failing
-  - define $\theta​$ to be the failure probabilities
+  - define $\theta$ to be the failure probabilities
   - $p(Y=1|x, \theta) = 1-e^{-\theta^Tx}$
 - other (binary) exponential models
   - $p(Y=1|x, \theta) = 1-e^{-\theta^Tx}$ but x doesn't have to be binary
