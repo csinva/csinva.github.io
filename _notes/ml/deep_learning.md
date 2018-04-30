@@ -200,3 +200,13 @@ category: ml
 - input gate - conditionally remember new info
 - output gate - conditionally output a relevant part of memory
 - GRUs - similar, merge input / forget units into a single update unit \vert 
+
+# adversarial attacks
+
+- **adversarial attack** - designing an input to get the wrong result from the model
+  - **targeted** - try to get specific wrong class
+- fast gradient step method - keep adding gradient to maximize noise (limit amplitude of pixel's channel to stay imperceptible)
+
+# manifolds / topology
+
+http://colah.github.io/posts/2014-03-NN-Manifolds-Topology/
