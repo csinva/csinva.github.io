@@ -923,3 +923,15 @@ category: neuro
   - very sensitive to eye, etc.
 - trying to reat amblyopia
   - very unclear how much perceptual learning generalizes
+
+# alzheimer's
+
+- manifests in the eye
+- two biomarkers - can find with PET or MRI
+  - amyloid $A\beta$ plaque  proteins
+  - pTau proteins
+- bunch of things in retina
+  - ex. RGC loss, NFL atrophy, blood flow rate, inflammation...all exist in other 
+  - main thing - look for AB plaques with stains - requires someone is dead
+- goal: diagnose alzheimer's via noninvasive retinal imaging + visual function assessment
+  - imaging: modified spectralis HRA + OCT should look at biomarkers (+ other things ex. look at retinal structure deficits)
