@@ -531,7 +531,7 @@ category: neuro
 - fish have evolved spherical lens several times independently
   - can understand lenses if we understand optics
   - can understand brain if we understand principles...
-- compound eyes (ex. fly) repeate ddots each get slightly shifted version of world
+- compound eyes (ex. fly) repeat dots each get slightly shifted version of world
   - collects lots of light - operates at very high speed (e.g. fly h1 neuron bialek 2001)
 - sand wasp can find its nest based on pattern of stuff that surrounds its nest
 - jumping spider has interesting visual system
@@ -576,7 +576,7 @@ category: neuro
     - ex. dan et al. 1996 - LGN neurons whiten time-varying natural images but not white noise
 - **efficient coding model** (karklin + simoncelli 2012)
   - why need on and off type - duplicates each cone
-    - hypothesis: RGCs send spikes which are discretized (not continuous like all the signals withing retina)
+    - hypothesis: RGCs send spikes which are discretized (not continuous like all the signals within retina)
     - differences need to be able to send positive/negative rates - this requires having 2 cells
     - alternatively could have a baseline and send more or less but baseline signal is wasteful because usually send 0
       - still don't send 0 as 0 firing rate because too slow to send a 0
@@ -669,15 +669,14 @@ category: neuro
   - left and right lgn, superior colliculus, ...
   - regions defined by having a topographic map
     - for later areas, histological differences, connectivity, physiological properties
-    - connections are all bidirectional
-- wallisch & movshon 2008 put in diagram
-- retinotopy
+      - connections are all bidirectional
+- ![vmap_main](assets/vissci/vmap_main.png)retinotopy
   - v1 has map of retina that's flattened (proportional to ganglion cells)
   - probably no "fixed up" image of the world somewhere
   - could understand perception in terms of action
 - LGN wires don't interact with each other too much
   - some inhibitory interneurons
-- cortex (PUT DIAGRAM HERE!)
+- cortex ![column](assets/vissci/column.png)
   - ~2mm thick
   - layer 1 - mostly axons
   - layer 2/3 - association layer
@@ -783,7 +782,6 @@ category: neuro
     - might not be faces, could be expertise
   - PPA - places, parahippocampal place area (surrounds hippocampus)
   - things are assymetric in unclear ways (although they contain representations of different visual fields)
-
 
 # sparse coding
 

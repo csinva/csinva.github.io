@@ -46,6 +46,7 @@
 - Eric L. Schwartz
 
 # personal
+- *Byron Yu* - bmi
 - *James DiCarlo*
 - *Liam Paninski* - decoding
 - *Jack Gallant* - v4, fmri

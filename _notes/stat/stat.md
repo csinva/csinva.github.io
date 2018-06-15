@@ -8,6 +8,13 @@ category: stat
 {:toc}
 - *material based on probability and statistics cookbook by matthias vallentin*
 
+# error bars
+
+- always write what you use
+  - standard dev
+  - standard error = standard dev / sqrt(n) = standard error of the mean when you're estimating a mean
+  - 95% confidence interval = 2*standard error
+
 # probability
 
 - mutually exclusive: $P(AB)=0$

@@ -76,5 +76,3 @@ category: math
 - $(ax^2+bx+c)^k = \frac{A_1x+B_1}{ax^2+bx+c}+...$
 - $cos(a\pm b) = cos(a)cos(b)\mp sin(a)sin(b)$
 - $sin(a \pm b) = sin(a)cos(b) \pm sin(b)cos(a)$
-
-

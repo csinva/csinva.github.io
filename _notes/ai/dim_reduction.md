@@ -8,6 +8,25 @@ category: ai
 {:toc}
 # overview
 
+| Method              | Analysis objective | Temporal smoothing | Explicit noise model |
+|---------------------|--------------------|--------------------|----------------------|
+| PCA                 | Covariance         | No                 | No                   |
+| FA                  | Covariance         | No                 | Yes                  |
+| LDS/GPFA            | Dynamics           | Yes                | Yes                  |
+| NLDS                | Dynamics           | Yes                | Yes                  |
+| LDA                 | Classification     | No                 | No                   |
+| Demixed             | Regression         | No                 | Yes/No               |
+| Isomap/LLE          | Manifold discovery | No                 | No                   |
+| T-SNE               | ....               | ....               | ...                  |
+| UMAP                | ...                | ...                | ...                  |
+| NMF                 | ...                | ...                | ...                  |
+| SVCCA?              |                    |                    |                      |
+| diffusion embedding |                    |                    |                      |
+| ICA                 |                    |                    |                      |
+| K-means             |                    |                    |                      |
+| Autoencoders        |                    |                    |
+
+
 - linear decompositions: learn D s.t. $X=DA$
   - FA (factor analysis) - like PCA but with errors, not biased by variance
   - NMF - $min_{D \geq 0, A \geq 0} \|\|X-DA\|\|_F^2$

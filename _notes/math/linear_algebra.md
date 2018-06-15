@@ -42,8 +42,8 @@ category: math
       - rank==m==n, then nonsingular
     - *ill-conditioned matrix* - matrix is close to being singular - very small determinant
 - inverse
-    - if *orthogonal matrix*, $A^{-1} = A^T$
-      - all columns are *orthonormal*
+    - *orthogonal matrix*: all columns are *orthonormal*
+      - $A^{-1} = A^T$
       - preserves the Euclidean norm $\|\|Ax\|\|_2 = \|\|x\|\|_2$
     - if diagonal, inverse is invert all elements
     - inverting 3x3 - transpose, find all mini dets, multiply by signs, divide by det
@@ -62,9 +62,10 @@ category: math
   - dim $N(A^T)$ = m-r    
 - *adjoint* - compute with mini-dets
     - $A^{-1} = adj(A) / det(A)$
-- *Schur complement* of $X = \begin{bmatrix}  A & B \\  B^T & C\end{bmatrix}$
-   - $S = C - B^TA^{-1}B$
-   - $X \succeq 0 \iff S \succeq 0$
+- *Schur complement* of $X = \begin{bmatrix}  A & B \\  C & D\end{bmatrix}$
+   - $M/D = A - BD^{-1}C$
+   - $M/A = D-CA^{-1}B$
+   - $X \succeq 0 \iff M/D \succeq 0$
 
 # matrix calc
 
@@ -78,12 +79,13 @@ category: math
     - $\nabla_x x^TAx = 2Ax$ (if A symmetric)
     - $\nabla_x^2 x^TAx = 2A$ (if A symmetric)
     - $\nabla_x log \: det X = X^{-1}$
-- trick with the trace for taking derivs: $x^TAx = tr[x^TAx] = tr[xx^TA]$
-    - $\frac{\partial}{\partial A} x^TAx = \frac{\partial}{\partial A} tr[xx^TA] = [xx^T]^T = xx^T$
 - we can calculate derivs of quadratic forms by calculating derivs of traces
-- useful result: $\frac{\partial}{\partial A} log|A| = A^{-T}$
+    - $x^TAx = tr[x^TAx] = tr[xx^TA]$
+    - $\implies \frac{\partial}{\partial A} x^TAx = \frac{\partial}{\partial A} tr[xx^TA] = [xx^T]^T = xx^T$
+    - useful result: $\frac{\partial}{\partial A} log|A| = A^{-T}$
 
 # norms
+
 - def
   1. nonnegative
   2. definite f(x) = 0 iff x = 0
@@ -93,7 +95,8 @@ category: math
   - convex
 
 ## vector norms
-- *$l_p-$norms*: $\|\|x\|\|_p = (\sum_{i=1}^n \|x_i\|^p)^{1/p}$
+
+- *$L_p-$norms*: $\|\|x\|\|_p = (\sum_{i=1}^n \|x_i\|^p)^{1/p}$
   - $L_0$ norm - number of nonzero elements
   - $\|\|x\|\|_1 = \sum \|x_i\|$
   - $\|\|x\|\|_\infty = max_i \|x_i\|$ - also called *Cheybyshev norm*
@@ -111,7 +114,7 @@ category: math
 - over elements
   - *frobenius norm* - (like $l_2$)
   - sum-absolute-value norm (like $l_1$) 
-  - maximum-absolute-value norm (like $l_\infty$)
+  - maximum-absolute-value norm (like $l_\infty​$)
 - *operator norm*
   - let $\|\|\cdot\|\|_a$ and $\|\| \cdot \|\|_b$ be vector norms
   - operator norm $\|\|X\|\|_{a,b} = sup\{ \|\|Xu\|\|_a \: \| \: \|\|u\|\|_b \leq 1 \}$
