@@ -26,7 +26,7 @@ category: ml
 - $\hat{y} = \text{sign}(\theta^T x)$
 - usually $\theta^Tx$ includes b term, but generally we don't want to regularize b
 
-| Model               | $\mathbf{\hat{\theta}}$ objective                            |
+| Model               | $\mathbf{\hat{\theta}}$ objective (minimize)                 |
 | ------------------- | ------------------------------------------------------------ |
 | Perceptron          | $\sum_i max(0,  -y_i \cdot \theta^T x_i)$                    |
 | Linear SVM          | $\theta^T\theta + C \sum_i max(0,1-y_i \cdot \theta^T x_i)$  |
