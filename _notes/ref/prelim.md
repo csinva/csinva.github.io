@@ -1,3 +1,4 @@
 - value iteration ex.
 - graphical model inference
 - do russel practice qs
+- look over 188 / 189 finals and stuff
