@@ -18,6 +18,7 @@
             <div class="slides"><section ><section data-markdown><script type="text/template">
 
 ### cs 189/289 review
+
 **chandan singh**
 
 *press esc to navigate slides*
@@ -29,7 +30,7 @@
 </script></section><section data-markdown><script type="text/template">
 ## i'm chandan
 
-- I like machine learning, taylor swift, and mac'n cheese
+I like machine learning, taylor swift, and cookies
 
 
 </script></section><section data-markdown><script type="text/template">
@@ -42,6 +43,8 @@
 <aside class="notes"><p>might change after 3 weeks</p>
 </aside></script></section><section data-markdown><script type="text/template">
 ## feedback
+
+http://www.eecs189.org/
 
 tinyurl.com/cs189feedback
 
@@ -171,7 +174,7 @@ tinyurl.com/cs189feedback
 </script></section><section data-markdown><script type="text/template">
 ## likelihood 
 
-$\mathcal L$
+$\mathcal L = p(data | \theta)$
 
 - $p(x|\theta)$?
 - $p(y|x; \theta)$?
@@ -189,7 +192,7 @@ $\mathcal L$
 </script></section><section data-markdown><script type="text/template">
 ## how to do mle problems
 
-- write like likelihood (product of probabilities)
+- write likelihood (product of probabilities)
 - usually take log to turn product into a sum
 - take derivative and set to zero to maximize (assuming convexity)
 
@@ -198,7 +201,15 @@ $\mathcal L$
 ## map - maximum a priori
 
 - $\hat{\theta}_{MAP} = \underset{\theta}{argmax} \: p(\theta\vert x) = \underset{\theta}{argmax} \: p(x\vert \theta) p(\theta)  \\\ = \underset{\theta}{argmax} \: [ log \: p(x\vert\theta) + log \: p(\theta) ]$
+  - $p(x)$ disappears because it doesn't depend on $\theta$
 - associated with *bayesian* school of thought
+
+
+</script></section><section data-markdown><script type="text/template">
+## mle vs. map
+
+- $\hat{\theta}_{MLE} = \underset{\theta}{argmax} \: p(x|\theta)$
+- $\hat{\theta}_{MAP} = \underset{\theta}{argmax} \: p(\theta\vert x) = \underset{\theta}{argmax} \: p(x\vert \theta) \color{red}{p(\theta)}$
 
 
 </script></section></section><section ><section data-markdown><script type="text/template">
