@@ -35,11 +35,10 @@ category: stat
 
 - 2 parameterizations ($x \in \mathbb{R}^n$)
 
-	. ​	*canonical parameterization*: $$p(x\vert\mu, \Sigma) = \frac{1}{(2\pi )^{n/2} \vert\Sigma\vert^{1/2}} exp\left[ -\frac{1}{2} (x-\mu)^T \Sigma^{-1} (x-\mu) \right]$$
-   1. *moment parameterization*: $$p(x\vert\eta, \Omega) = \text{exp}\left( a + \eta^T x - \frac{1}{2} x^T \Omega x\right)$$ ~ also called information parameterization
-
-  	- ​	$\Omega = \Sigma^{-1}$	
-     - $\eta = \Sigma^{-1} \mu$
+  1. canonical parameterization*: $$p(x\vert\mu, \Sigma) = \frac{1}{(2\pi )^{n/2} \vert\Sigma\vert^{1/2}} exp\left[ -\frac{1}{2} (x-\mu)^T \Sigma^{-1} (x-\mu) \right]$$
+  2. . *moment parameterization*: $$p(x\vert\eta, \Omega) = \text{exp}\left( a + \eta^T x - \frac{1}{2} x^T \Omega x\right)$$ ~ also called information parameterization
+  		- $\Omega = \Sigma^{-1}$	
+	    - $\eta = \Sigma^{-1} \mu$
 
 - joint distr - split parameters into block matrices
 

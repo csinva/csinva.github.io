@@ -58,7 +58,7 @@ category: ai
 - for continuous variables, can sometimes discretize
 1. *linear Gaussian* - for continuous children
   - h is continuous, s is discrete; a, b, $\sigma$ all change when s changes
-  - $P(c\y\|h,s) = N(a \cdot h + b, \sigma^2)$, so mean is linear function of h
+  - $P(c|h,s) = N(a \cdot h + b, \sigma^2)$, so mean is linear function of h
   - discrete parents continuous children $\implies$ *conditional Gaussian* - multivariate Gaussian given assignment to discrete variables
   - all continuous $\implies​$ *multivariate Gaussian* over all the variables, and a multivariate posterior distribution (given any evidence)
 2. discrete children (continuous parents)
@@ -260,7 +260,7 @@ category: ai
   1. *filtering* = *state estimation* - compute $P(X_t \| e_{1:t})$
     - *recursive estimation*:  $$\underbrace{P(X_{t+1}|e_{1:t+1})}_{\text{new state}} = \alpha \: \underbrace{P(e_{t+1}|X_{t+1})}_{\text{sensor}} \cdot \underset{x_t}{\sum} \: \underbrace{P(X_{t+1}|x_t)}_{\text{transition}} \cdot \underbrace{P(x_t|e_{1:t})}_{\text{old state}}$$ where $\alpha$ normalizes probs
 
-  2. *prediction* - compute $P(X_{t+k}\|e_{1:t})$ for $0 < k$
+  2. *prediction* - compute $P(X_{t+k}\|e_{1:t})$ for $k>0$
 
      - $\underbrace{P(X_{t+k+1} |e_{1:t})}_{\text{new state}} = \sum_{x_{t+k}} \underbrace{P(X_{t+k+1} |x_{t+k})}_{\text{transition}}  \cdot \underbrace{P(x_{t+k} |e_{1:t})}_{\text{old state}}$
 
@@ -313,7 +313,8 @@ category: ai
   1. new mean is weighted mean of new observation and old mean
   2. update rule for variance is independent of the observation
   3. variance converges quickly to fixed value that depends only on $\sigma^2_x, \sigma^2_z$
-- *Lyapunov eqn*: evolution of variance of states
+- **Lyapunov eqn**: evolution of variance of states
+- **information filter** - mathematically the same but different parameterization
 - *extended Kalman filter*
   - works on nonlinear systems
   - locally linear
