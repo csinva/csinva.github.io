@@ -6,8 +6,8 @@
 
         <title>Chandan's slides</title>
         <link rel="stylesheet" href="./css/reveal.css">
-        <link rel="stylesheet" href="./css/theme/white.css" id="theme">
-        <link rel="stylesheet" href="./css/highlight/zenburn.css">
+        <link rel="stylesheet" href="./_assets/white_c.css" id="theme">
+        <link rel="stylesheet" href="./css/highlight/github.css">
         <link rel="stylesheet" href="./css/print/paper.css" type="text/css" media="print">
 
 
@@ -367,25 +367,17 @@ $\mathcal L = p(data | \theta)$~ product over all n examples
 </script></section><section data-markdown><script type="text/template">
 ## pca in python
 
-<pre><code data-trim data-noescape>
+```python
 
+X -= np.mean(X, axis = 0) #zero-center data (nxd) 
 
-</script></section></section><section  data-markdown><script type="text/template">
-X -= np.mean(X, axis = 0) # zero-center data (nxd) 
+cov = np.dot(X.T, X) / X.shape[0] #get cov. matrix (dxd) 
 
+U, D, V = np.linalg.svd(cov) #compute svd, (all dxd) 
 
-</script></section><section  data-markdown><script type="text/template">
-cov = np.dot(X.T, X) / X.shape[0] # get cov. matrix (dxd) 
+Xrot_reduced = np.dot(X, U[:, :2]) #project onto first 2 dimensions (n x 2)
 
-
-</script></section><section  data-markdown><script type="text/template">
-U, D, V = np.linalg.svd(cov) # compute svd, (all dxd) 
-
-
-</script></section><section ><section data-markdown><script type="text/template">
-Xrot_reduced = np.dot(X, U[:, :2]) # project onto first 2 dimensions (n x 2)
-
-</code></pre>
+```
 
 
 </script></section><section data-markdown><script type="text/template">
@@ -412,6 +404,8 @@ Xrot_reduced = np.dot(X, U[:, :2]) # project onto first 2 dimensions (n x 2)
 
 </script></section></section><section ><section data-markdown><script type="text/template">
 # optimization
+
+minimizing and maximizing things, sometimes with constraints
 
 
 </script></section><section data-markdown><script type="text/template">
