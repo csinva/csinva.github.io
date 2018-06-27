@@ -6,7 +6,7 @@
 
         <title>Chandan's slides</title>
         <link rel="stylesheet" href="./css/reveal.css">
-        <link rel="stylesheet" href="./_assets/white_c.css" id="theme">
+        <link rel="stylesheet" href="./css/theme/white.css" id="theme">
         <link rel="stylesheet" href="./css/highlight/github.css">
         <link rel="stylesheet" href="./css/print/paper.css" type="text/css" media="print">
 
@@ -463,6 +463,29 @@ $\color{red}0 \leq \color{green}{\underset{\text{strong convexity}}{mI}} \leq \n
 
 - $\theta^{(t+1)} = \theta^{(t)} - \alpha_t \nabla f(\theta^{(t)}) + \underset{\text{momentum}}{\beta_t (f(\theta^{(t)}) - f(\theta^{(t-1)}))}$
 
+  <div class="cdiv">
+      <iframe src="https://distill.pub/2017/momentum/" scrolling="no" frameborder="no"></iframe>
+  </div>
+
+  <style>
+
+  .cdiv {
+      position: relative;
+      width: block;
+      height: 600px;
+      overflow: hidden;
+  }
+
+  iframe {
+      position: absolute;            
+      top: -155px;
+      left: -25px;
+      width: 1424px;
+      height: 768px;
+  }
+
+  </style>
+
 
 </script></section><section data-markdown><script type="text/template">
 ## non-linear least squares
@@ -516,7 +539,21 @@ $\color{red}0 \leq \color{green}{\underset{\text{strong convexity}}{mI}} \leq \n
 
 </script></section><section  data-markdown><script type="text/template">
 # boosting
-</script></section></div>
+
+
+
+<style>
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+	text-transform: lowercase;
+}
+
+</style></script></section></div>
         </div>
 
         <script src="./lib/js/head.min.js"></script>
