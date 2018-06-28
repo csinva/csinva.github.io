@@ -9,6 +9,7 @@ category: math
 # convex optimization
 
 ## convex sets (boyd 2)
+
 - *affine set*: $x_1, x_2 \in C, \theta \in \mathbb{R} \implies \theta x_1 + (1 - \theta) x_2 \in C$
   - *affine hull*: aff C = {$\sum \theta_i x_i \| x_i \in C, \sum \theta_i =1 $}
 - *convex set*: $x_1, x_2 \in C, 0 \leq \theta \leq 1 \implies \theta x_1 + (1 - \theta) x_2 $
@@ -202,7 +203,6 @@ category: math
 - sparse descriptions + basis pursuit
 - interpolation
 
-
 # unconstrained minimization (boyd 9)
 
 ## unconstrained problems
@@ -217,8 +217,9 @@ category: math
   - $\implies f(y) \geq f(x) + \nabla f(x)^T(y-x) + m/2 \|\|y-x\|\|_2^2$
   - minimizing...$p^* \geq f(x) - 1/(2m) \|\|\nabla f(x)\|\|_2^2$
 - also, $\exists \: M, \: \nabla^2f(x) \preceq MI$
-  - $\implies f(y) \leq f(x) + \nabla f(x)^T(y-x) + M/2 \|\|y-x\|\|_2^2$
-- $mI \preceq \nabla^2 f(x) \preceq MI, \kappa = M/m$ bounds *condition number* of $\nabla^2 f = \frac{\lambda_{max}(\nabla^2 f)}{\lambda_{min}(\nabla^2 f)}$
+  - $\implies f(y) \leq f(x) + \nabla f(x)^T(y-x) + M/2 \|\|y-x\|\|_2^2​$
+- $mI \preceq \nabla^2 f(x) \preceq MI$
+  - $\kappa = M/m$ bounds *condition number* of $\nabla^2 f = \frac{\lambda_{max}(\nabla^2 f)}{\lambda_{min}(\nabla^2 f)}$
 - *cond(C)* = $W_{max}^2 / W_{min}^2$
   - *width* of convex set $C \subset \mathbb{R}^n$ in direction q with $\|\|q\|\|_2=1$
   - $W(C, q) = \underset{z \in C}{sup} \: q^Tz - \underset{z \in C}{inf} \: q^Tz$

@@ -49,32 +49,40 @@ category: ai
 
 # pca
 
-- have p random variables
-- want new set of K axes (linear combinations of the original p axes) in the direction of greatest variability
+- want new set of axes (linearly combine original axes) in the direction of greatest variability
     - this is best for visualization, reduction, classification, noise reduction
-- to find axis - minimize sum of squares of projections onto line =($v^TX^TXv$ subject to $v^T v=1$ )
-    - $\implies v^T(X^TXv-\lambda v)=0$
-- SVD: let $X = U D V^T$
-  - $V_q$ (pxq) is first q columns of V
-    - $H = V_q V_q^T$ is the *projection matrix*
-    - to transform $x = Hx$
-  - columns of $UD$ (Nxp) are called the *principal components* of X
-- eigenvectors of covariance matrix -> principal components
-    - most important corresponds to largest eigenvalue (eigenvalue corresponds to variance)
-- finding eigenvectors can be hard to solve, so 3 other methods
-  1. singular value decomposition (SVD)
-  2. multidimensional scaling (MDS)
+    - assume $X$ (nxp) has zero mean
+
+- derivation: 
+
+    - minimize variance of X projection onto a unit vector v: ($\frac{1}{n} \sum_ (x_i^Tv)^2 = \frac{1}{n}v^TX^TXv$ subject to $v^T v=1$ )
+    - $\implies v^T(X^TXv-\lambda v)=0$... solution is achieved when $v$ is eigenvector corresponding to largest eigenvalue
+    - like minimizing perpendicular distance between data points and subspace onto which we project
+
+- SVD: let $U D V^T = SVD(Cov(X))$
+
+    - $Cov(X) = \frac{1}{n}X^TX$, where X has been demeaned
+
+- equivalently, eigenvalue decomposition of covariance matrix $\Sigma = X^TX$
+  - each eigenvalue represents prop. of explained variance: $\sum \lambda_i = tr(\Sigma) = \sum Var(X_i)$
+
+  - *screeplot*  - eigenvalues in decreasing order, look for num dims with kink
+    - don't automatically center/normalize, especially for positive data
+
+- SVD is easier to solve than eigenvalue decomposition, can also solve other ways
+  1. multidimensional scaling (MDS)
     - based on eigenvalue decomposition
-  3. adaptive PCA
+  2. adaptive PCA
     - extract components sequentially, starting with highest variance so you don't have to extract them all	
+
 - good PCA code: http://cs231n.github.io/neural-networks-2/
-- *pca*
-    - built on svd / eigen decomposition of covariance matrix $\Sigma = X^TX$
-    - each eigenvalue represents prop. of explained variance
-      - $\sum \lambda_i = tr(\Sigma) = \sum Var(X_i)$
-    - *screeplot*  - eigenvalues in decreasing order, look for num dims with kink
-      - don't automatically center/normalize, especially for positive data
--  nonlinear pca
+```python
+X -= np.mean(X, axis = 0) # zero-center data (nxd)
+cov = np.dot(X.T, X) / X.shape[0] # get cov. matrix (dxd)
+U, D, V = np.linalg.svd(cov) # compute svd, (all dxd)
+Xrot_reduced = np.dot(X, U[:, :2]) # project onto first 2 dimensions (n x 2)
+```
+- nonlinear pca
     - usually uses an auto-associative neural network
       ​	
 

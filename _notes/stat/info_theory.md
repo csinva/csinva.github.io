@@ -9,42 +9,56 @@ category: stat
 {:toc}
 - *material from* Cover "Elements of Information Theory"
 
-# Info-theory basics
+# entropy
 
-### entropy
 - $H(X) = - \sum p(x) log p(x) = E[h(p)]$
   - $h(p)= - log(p)$
   - $H(p)$ implies p is binary
-  - for discrete variables only
+  - usually for discrete variables only
+  - assume 0 log 0 = 0
+
 - intuition
   - higher entropy $\implies$ more uniform
   - lower entropy $\implies$ more pure
   1. expectation of variable $W=W(X)$, which assumes the value $-log(p_i)$ with probability $p_i$
   2. minimum, average number of binary questions (like is X=1?) required to determine value is between $H(X)$ and $H(X)+1$
   3. related to asymptotic behavior of sequence of i.i.d. random variables
-- $H(Y\|X)=\sum_j p(x_j) H(Y\|X=x_j)$
+
+- properties
+
+  - $H(X) \geq 0$ since $p(x) \in [0, 1]$
+
+- $H(Y\|X)=\sum p(x) H(Y\|X=x) = \sum_x \sum_y p(x) p(y|x) log \: p(y|x)$
   - $H(X,Y)=H(X)+H(Y\|X) =H(Y)+H(X\|Y)$
 
-### relative entropy / mutual info
+# relative entropy / mutual info
 
 - *relative entropy* = *KL divergence* - measures distance between 2 distributions
   - $$D(p\|\|q) = \sum_x p(x) log \frac{p(x)}{q(x)} = E_p log \frac{p(X)}{q(X)}$$
   - if we knew the true distribution p of the random variable, we could construct a code with average description length H(p). 
   - If, instead, we used the code for a distribution q, we would need H(p) + D(p\|\|q) bits on the average to describe the random variable.
   - $D(p\|\|q) \neq D(q\|\|p)$
-- *mutual info I(X; Y)*
-  - $I(X; Y) = \sum_X \sum_y p(x,y) log \frac{p(x,y)}{p(x) p(y)} = D(p(x,y)\|\|p(x)\cdot p(y))$
-  - $I(X; Y) = H(X) - H(X\|Y)$
-    - $I(X; X) = H(X)$ so entropy sometimes called *self-information*
+  - properties
+    - nonnegative
+    - not symmetric
+- *mutual info I(X; Y)*: how much you can predict about one given the other
+  - $I(X; Y) = \sum_X \sum_y p(x,y) log \frac{p(x,y)}{p(x) p(y)} = D(p(x,y)\|\|p(x) p(y))$
+  - $I(X; Y) =  -H(X,Y) + H(X) + H(Y))$
+    - $=I(Y|X)$
+    - $I(X; X) = H(X)​$ so entropy sometimes called *self-information*
 
-### chain rules
-- *entropy* - $H(X_1, ..., X_n) = \sum_i H(X_i \| X_{i-1}, ..., X_1)$
+  ![entropy-venn-diagram](assets/info_theory/entropy-venn-diagram.png)
+
+# chain rules
+
+- *entropy* - $H(X_1, ..., X_n) = \sum_i H(X_i \| X_{i-1}, ..., X_1) = H(X_n \| X_{n-1}, ..., X_1) + ... + H(X_1)$
 - *conditional mutual info* $I(X; Y\|Z) = H(X\|Z) - H(X\|Y,Z)$
   - $I(X_1, ..., X_n; Y) = \sum_i I(X_i; Y\|X_{i-1}, ... , X_1)$
 - *conditional relative entropy* $D(p(y\|x) \|\| q(y\|x)) = \sum_x p(x) \sum_y p(y\|x) log \frac{p(y\|x)}{q(y\|x)}$
   - $D(p(x, y)\|\|q(x, y)) = D(p(x)\|\|q(x)) + D(p(y\|x)\|\|q(y\|x))$
 
-### Jensen's inequality
+# jensen's inequality
+
 - *convex* - function lies below any chord
   - has positive 2nd deriv
   - linear functions are both convex and concave
@@ -87,55 +101,3 @@ category: stat
   3. *objective* - minimize the average word length $\sum p_i n_i$ where $n_i$ is average word length of $x_i$
 - code is *uniquely decipherable* if every finite sequence of code characters corresponds to at most one message
   - *instantaneous code* - no code word is a prefix of another code word
-
-# info theory of deep learning
-
-- information bottleneck method
-  - introduced by Tishby, Pereira, Bialek
-  - tradeoff between accuracy and complexity (compression) when summarizing (e.g. clustering) a random variable **X**, given **p(X, Y)** where Y observed
-- papers
-  - Emergence of Invariance and Disentangling in Deep Representations - Alessandro Achille, Stefano Soatto <https://arxiv.org/abs/1706.01350>
-  - "Stochastic gradient descent performs variational inference, converges to limit cycles for deep networks" - Pratik Chaudhari, Stefano Soatto <https://arxiv.org/abs/1710.11029>
-- *representation* - any function of data that is useful for a task
-  - you cannot create info in data - transforming data at best preserves information
-  - ml function - function of future data constructed from past data that is useful for task regardless of nuisance factors
-  - without task, raw data is best representation
-- desiderata for an "optimal" representation
-  - data x, task y, repr. z ~ p(z|x) - this represents a stochastic function
-  - *sufficient* $I(z; y) = I(x; y)$
-  - *minimal* $I(x;z)$ is minimal among inefficient z
-  - *invariant to nuisances*: if $n \perp y$ then $I(n, z) = 0$
-    - *maximally insensitive*: if $n \perp y$ then $I(n, z)$ is minimized
-  - *maximally disentangled*: minimizes total correlation $KL[ p(z) | \prod_i p(z_i)]$
-- for only sufficiency and minimality - Information Bottleneck, Tishby et al. 1999
-  - $$\text{minimize}_{p(z|x)} I(x;z) \\ \text{s.t.} H(y|z)=H(y|x)$$
-  - intractable except for exponential family so Tishby solves Lagrangian $\mathcal{L} = \underbrace{H_{p, q}(y|z)}_{cross-entropy} + \beta I(z;x)$
-  - in fact, gives us invariances since *invariant* $\iff$ minimal
-- layers - if last layer is sufficient, it is more minimal (invariant) than previous layers
-  - because going through a layer can only lose info
-- deep learning dataset D, 
-  - $\underbrace{H_{p, q}(D|w)}_{cross-entropy} = H(D|\theta) + I(\theta; D|w) + KL(q|p) - \underbrace{I(D; w, \theta)}_{overfitting}$
-    - easy to overfit by storing w completely
-  - minimizing $\underbrace{H_{p, q}(D|w)}_{cross-entropy} + \underbrace{I(D; w, \theta)}_{overfitting}$ would minimize all the terms that we want, but second term is incomputable
-  - instead SGVB (kingman and welling, 2015), minimize $\underset{q(w|D)}{arg min} \: \underbrace{H_{p, q}(D|w)}_{cross-entropy} + \beta \underbrace{I(D; w)}_{overfitting}$ 
-    - looks like informaiton bottleneck, but slightly different
-    - describes future data given past data
-    - also can do the smae things using PAC_Bayes
-  - SGD approximates this $\underset{q}{argmin} \: H_{p,q} - \beta H(q)$
-    - amazing that SGD does this
-  - for deep networks this and the normal information bottleneck are duals of each other
-- one layer $z = wx​$
-  - $\underbrace{g[I(w; D)]}_{weights} \leq \underbrace{I(z; x) + TC(z)}_{activations} \leq \underbrace{g[I(w; D)] +c}_{weights}$
-  - assume you get sufficiency (so probably need this for more layers)
-  - weight minimality on past data bounds representation **minimality** of future data
-  - corollary - less info in weights increases invariance and disentaglement of learned representation
-  - corrolary - information bottleneck lagrangian and sgd are biased toward invariant and disentangled repr.
-- sgd
-  - sgd -> stochastic differential eqn
-  - sgd doesn't minimize actual loss function but rather regularized thing above
-  - sgd doesn't get to absolute minimum or local minimum
-    - travels around on limit cycles
-- summary
-  - we want desiderata
-  - practice - sgd / layers yield 
-  - duality of representation - train set in weights, test set in activations

@@ -9,6 +9,8 @@ category: ml
 # overview
 
 - 3 types: supervised, unsupervised, reinforcement
+- 4 problems: regression, classification, density estimation / clustering, dim. reduction
+- models: generative, discriminative
 
 # feature selection
 

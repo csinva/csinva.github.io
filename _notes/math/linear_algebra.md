@@ -69,6 +69,7 @@ category: math
 
 # matrix calc
 
+- derivative usually has same size as topal
 - function f: $\mathbb{R}^n \to \mathbb{R}^m$ 
     - 1st derivative is *gradient* vector
       - $\nabla_A f(\mathbf{A})$- partial derivatives with respect to each element of matrix
@@ -149,8 +150,8 @@ category: math
     - like it curves up
   - if $\forall x \in R^n, x^TAx > 0$ then A is positive definite (PD)
     - PD $\to$ full rank, invertible
-  - PSD + symmetric $\implies$ can be written as *Gram matrix* $A = X^T X $
-      - if X full rank, then G is PD
+  - PSD + symmetric $\implies$ can be written as *Gram matrix* $G = X^T X $
+      - if X full rank, then $G$ is PD
   - PSD notation
     - $S^n$ - set of symmetric matrices
     - $S^n_+$ - set of PSD matrices
@@ -179,10 +180,10 @@ category: math
 
 ## strang 6.3 - singular value decomposition
 
-- SVD for any m x n matrix: $A=U \Sigma V^T$
-  - U (mxm) are eigenvectors of $AA^T​$
-  - columns of V (nxn) are eigenvectors of $A^TA$
-  - r singular values on diagonal of $\Sigma$ (m x n) - square roots of nonzero eigenvalues of both $AA^T$ and $A^TA$
+- SVD for any nxp matrix: $X=U \Sigma V^T$
+  - U (nxn) are eigenvectors of $XX^T$
+  - columns of V (pxp) are eigenvectors of $X^TX$
+  - r singular values on diagonal of $\Sigma$ (nxp) - square roots of nonzero eigenvalues of both $XX^T$ and $X^TX$
   - like rotating, scaling, and rotating back
 - properties
   1. for PD matrices, $\Sigma=\Lambda$, $U\Sigma V^T = Q \Lambda Q^T$

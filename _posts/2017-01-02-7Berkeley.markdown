@@ -4,4 +4,4 @@ title: Fall 2017 - Present
 subtitle: <a href="https://www.stat.berkeley.edu/~binyu/Site/Welcome.html"> UC Berkeley</a>
 image: "img/timeline/berkeley.png"
 ---
-PhD student in Computer Science advised by [Bin Yu](https://www.stat.berkeley.edu/~binyu/Site/Welcome.html).
+PhD student in Computer Science advised by [Bin Yu](https://www.stat.berkeley.edu/~binyu/Site/Welcome.html) <a href="https://arxiv.org/abs/1806.05337"><i class="fa fa-file fa-fw"></i></a><a href="https://github.com/csinva/acd"><i class="fa fa-code fa-fw"></i></a>
