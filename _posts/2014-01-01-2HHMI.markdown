@@ -1,6 +1,6 @@
 ---
 layout: null
-title: Summer 2014
+title: Summer 14
 subtitle: <a href="https://www.janelia.org/support-team/scientific-computing-software"> HHMI Scientific Computing </a>
 image: "img/timeline/neuron.jpg"
 ---

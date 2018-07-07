@@ -93,7 +93,7 @@ category: ml
   - $p(Y=1|x, \theta) = 1-e^{-\theta^Tx}$ but x doesn't have to be binary
   - *complementary log-log model*: $p(Y=1|x, \theta) = 1-\text{exp}[e^{-\theta^Tx}]$
 
-## decision trees - R&N 18.3; HTF 9.2.1-9.2.3
+## decision trees / rfs - R&N 18.3; HTF 9.2.1-9.2.3
 
 - *inductive bias*
   - prefer small trees
@@ -154,14 +154,14 @@ category: ml
       - reduces variance, better for improving more variable (unstable) models
     - *adaboost* - weight models based on their performance
 
-## svm
+## svms
 
 - svm benefits
   1. *maximum margin separator* generalizes well
   2. *kernel trick* makes it very nonlinear
   3. nonparametric - can retain training examples, although often get rid of many
-- notation ![](assets/classification/svm_margin.png)
-- $y =\begin{cases}   1 &\text{if } \theta^Tx +b \geq 0 \\ -1 &\text{otherwise}\end{cases}$
+-  ![](assets/classification/svm_margin.png)
+- $\hat{y} =\begin{cases}   1 &\text{if } w^Tx +b \geq 0 \\ -1 &\text{otherwise}\end{cases}$
 - $\hat{\theta} = argmin \:\frac{1}{2} \vert \vert \theta\vert \vert ^2 \\s.t. \: y^{(i)}(\theta^Tx^{(i)}+b)\geq1, i = 1,...,m$
   - *functional margin* $\gamma^{(i)} = y^{(i)} (\theta^T x +b)$
     - limit the size of $(\theta, b)$ so we can't arbitrarily increase functional margin

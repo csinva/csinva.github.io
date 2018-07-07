@@ -1,6 +1,6 @@
 ---
 layout: null
-title: Fall 2014 - Fall 2016
+title: Fall 14 - Fall 16
 subtitle: <a href="http://faculty.virginia.edu/levylab/"> UVA William Levy Lab</a>
 image: "img/timeline/uva.png"
 ---

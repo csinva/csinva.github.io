@@ -41,13 +41,18 @@ category: stat
   - properties
     - nonnegative
     - not symmetric
+
 - *mutual info I(X; Y)*: how much you can predict about one given the other
   - $I(X; Y) = \sum_X \sum_y p(x,y) log \frac{p(x,y)}{p(x) p(y)} = D(p(x,y)\|\|p(x) p(y))$
   - $I(X; Y) =  -H(X,Y) + H(X) + H(Y))$
     - $=I(Y|X)$
-    - $I(X; X) = H(X)​$ so entropy sometimes called *self-information*
+    - $I(X; X) = H(X)$ so entropy sometimes called *self-information*
 
   ![entropy-venn-diagram](assets/info_theory/entropy-venn-diagram.png)
+
+  - cross-entropy: $H_q(p) = -\sum_x p(x) \: log \: q(x)$
+
+  ![Screen Shot 2018-07-02 at 11.26.42 AM](assets/info_theory/Screen Shot 2018-07-02 at 11.26.42 AM.png)
 
 # chain rules
 

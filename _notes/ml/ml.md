@@ -86,7 +86,11 @@ category: ml
 
 - *latent vars* - values not specified in the observed data
 
-## clustering![](assets/ml/j10_1.png)
+## clustering
+
+![](assets/ml/j10_1.png)
+
+
 
 - *K-Means*
   - start with random centers

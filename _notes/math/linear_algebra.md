@@ -23,15 +23,14 @@ category: math
   - gives angle back
 - linear 
     1. superposition $f(x+y) =  f(x)+f(y) $
-    2. proportionality $f(k*x) = k*f(x)$
+    2. proportionality $f(k*x) = k*f(x)​$
 - vector space
     1. closed under addition
     2. contains identity
 - det - sum of products including one element from each row / column with correct sign
-- lin independent: $c_1x_1+c_2x_2=0 \implies c_1=c_2=0$
-- *cauchy-schwartz inequality* = *triangle inequality*
-  - $\|\|f(a+b)\|\| \leq \|\|f(a)\|\| + \|\|f(b)\|\|$
-  - or $\|x^T y\| \leq \|\|x\|\|_2 \|\|y\|\|_2$
+- lin independent: $c_1x_1+c_2x_2=0 \implies c_1=c_2=0​$
+- *cauchy-schwartz inequality*: $|x^T y| \leq ||x||_2 ||y|||_2$
+  - implies *triangle inequality*: $||x+y||^2 \leq (||x|| + ||y||)^2$
 
 ## matrix properties
 
@@ -69,12 +68,12 @@ category: math
 
 # matrix calc
 
-- derivative usually has same size as topal
+- derivative usually has same size as top
 - function f: $\mathbb{R}^n \to \mathbb{R}^m$ 
-    - 1st derivative is *gradient* vector
-      - $\nabla_A f(\mathbf{A})$- partial derivatives with respect to each element of matrix
+    - *gradient* vector $\nabla_A f(\mathbf{A})$- partial derivatives with respect to each element of matrix
+    - *Jacobian matrix*: $\mathbf J = \begin{bmatrix}    \dfrac{\partial \mathbf{f}}{\partial x_1} & \cdots & \dfrac{\partial \mathbf{f}}{\partial x_n} \end{bmatrix}= \begin{bmatrix}    \dfrac{\partial f_1}{\partial x_1} & \cdots & \dfrac{\partial f_1}{\partial x_n}\\    \vdots & \ddots & \vdots\\    \dfrac{\partial f_m}{\partial x_1} & \cdots & \dfrac{\partial f_m}{\partial x_n} \end{bmatrix}$
     - 2nd derivative is *Hessian* matrix
-      - $\nabla^2 f(x)_{ij} = \frac{\partial^2 f(x)}{\partial x_i \partial x_j}$
+      - $\bold H = \nabla^2 f(x)_{ij} = \frac{\partial^2 f(x)}{\partial x_i \partial x_j} = \begin{bmatrix}  \dfrac{\partial^2 f}{\partial x_1^2} & \dfrac{\partial^2 f}{\partial x_1\,\partial x_2} & \cdots & \dfrac{\partial^2 f}{\partial x_1\,\partial x_n} \\[2.2ex]  \dfrac{\partial^2 f}{\partial x_2\,\partial x_1} & \dfrac{\partial^2 f}{\partial x_2^2} & \cdots & \dfrac{\partial^2 f}{\partial x_2\,\partial x_n} \\[2.2ex]  \vdots & \vdots & \ddots & \vdots \\[2.2ex]  \dfrac{\partial^2 f}{\partial x_n\,\partial x_1} & \dfrac{\partial^2 f}{\partial x_n\,\partial x_2} & \cdots & \dfrac{\partial^2 f}{\partial x_n^2}\end{bmatrix}$
 - examples
     - $\nabla_x a^T x = a$
     - $\nabla_x x^TAx = 2Ax$ (if A symmetric)
@@ -120,7 +119,7 @@ category: math
   - let $\|\|\cdot\|\|_a$ and $\|\| \cdot \|\|_b$ be vector norms
   - operator norm $\|\|X\|\|_{a,b} = sup\{ \|\|Xu\|\|_a \: \| \: \|\|u\|\|_b \leq 1 \}$
      - represents the maximum stretching that X does to a vector u
-  - if both Euclidean norms, X is *max singular value*: $\|\|X\|\|_2 = \sigma_{max}(X) = [\lambda_{max} (X^TX)]^{1/2}$
+  - if both Euclidean norms, X is *max singular value*: $\|\|X\|\|_2 = \sigma_\text{max}(X) = [\lambda_{max} (X^TX)]^{1/2}$
     - also called *spectral norm* or *$L_2$-norm* (of a matrix)
 
 # eigenstuff

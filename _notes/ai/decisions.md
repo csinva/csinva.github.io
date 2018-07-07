@@ -11,6 +11,7 @@ category: ai
 
 # game trees - R&N 5.2-5.5
 
+- like search (adversarial search)
 - *minimax algorithm*
   - *ply* - half a move in a tree
   - for multiplayer, the backed-up value of a node n is the vector of the successor state with the highest value for the player choosing at n
@@ -60,7 +61,7 @@ category: ai
   6. *decomposability* - 2 consecutive lotteries can be compressed into single equivalent lottery
 - these axioms yield a utility function
   - isn't unique (ex. affine transformation yields new utility function)
-  - *value function* = *ordinal utility function* - sometimes ranking, not numbers needed
+  - *value function* = *ordinal utility function* - sometimes ranking, numbers not needed
   - agent might not be explicitly maximizing the utility function
 
 ## utility functions

@@ -24,13 +24,13 @@ section-type: notes
         {% for category in categories %}
             <div class="column">
             {% if category %}
-            <h3 align="center">{{ category }}</h3>
+            <h3 align="center">{{ category | downcase }}</h3>
             {% endif %}
             {% assign category_docs = collection.docs | where: "category", category %}
             <ul class="list-items">
             {% for item in category_docs %}
                 {% if item.title %}
-                <li><a href="{{ site.baseurl }}{{item.url}}" style="font-size:20px"> {{ item.title | capitalize }} </a></li>
+                <li><a href="{{ site.baseurl }}{{item.url}}" style="font-size:20px"> {{ item.title | downcase }} </a></li>
                 {% endif %}
             {% endfor %}
             </ul>

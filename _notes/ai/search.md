@@ -61,7 +61,7 @@ From "Artificial Intelligence" Russel & Norvig 3rd Edition
 
 ### uninformed search = blind search
 
-- ![](assets/search/uninformed_comparisons.jpg)
+- ![](assets/search/uninformed_comparisons.png)
 - bfs
 - *uniform-cost search* - always expand node with lowest path cost g(n)
   - frontier is priority queue ordered by g
@@ -80,11 +80,12 @@ From "Artificial Intelligence" Russel & Norvig 3rd Edition
 
 ### informed search
 
-- *informed search* - uses problem-specific heuristic
-  - has *evaluation function* f incorporating path cost g and heuristic h
-    - *heuristic* h = estimated cost of cheapest path from state at node n to a goal state
-  - *best-first* - choose nodes with best f
-- *greedy best-first search* - keep expanding node closest to goal
+- *informed search* - use path costs $g(n)$ and problem-specific heuristic $h(n)$
+  - has *evaluation function* *f* incorporating path cost *g* and heuristic *h*
+  - *heuristic* h = estimated cost of cheapest path from state at node n to a goal state
+- *best-first* - choose nodes with best f
+  - *greedy best-first search* - let f = h: keep expanding node closest to goal
+  - when f=g, reduces to uniform-cost search
 - $A^*$ search
   - $f(n) = g(n) + h(n)$ represents the estimated cost of the cheapest solution through n
   - $A^*$ (with tree search) is optimal and complete if h(n) is *admissible*

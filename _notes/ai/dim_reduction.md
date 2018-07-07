@@ -55,8 +55,8 @@ category: ai
 
 - derivation: 
 
-    - minimize variance of X projection onto a unit vector v: ($\frac{1}{n} \sum_ (x_i^Tv)^2 = \frac{1}{n}v^TX^TXv$ subject to $v^T v=1$ )
-    - $\implies v^T(X^TXv-\lambda v)=0$... solution is achieved when $v$ is eigenvector corresponding to largest eigenvalue
+    - minimize variance of X projection onto a unit vector v: ($\frac{1}{n} \sum (x_i^Tv)^2 = \frac{1}{n}v^TX^TXv$ subject to $v^T v=1$ )
+    - $\implies v^T(X^TXv-\lambda v)=0​$... solution is achieved when $v​$ is eigenvector corresponding to largest eigenvalue
     - like minimizing perpendicular distance between data points and subspace onto which we project
 
 - SVD: let $U D V^T = SVD(Cov(X))$

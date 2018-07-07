@@ -180,7 +180,7 @@
     }
 
     .timeline>li .timeline-panel {
-        padding: 0 20px 20px 100px;
+        padding: 0 0px 20px 100px;
     }
 
     .timeline>li .timeline-image {
@@ -190,7 +190,7 @@
     }
 
     .timeline>li .timeline-image h4 {
-        margin-top: 40px;
+        margin-top: 0px;
     }
 
     .timeline>li.timeline-inverted>.timeline-panel {
