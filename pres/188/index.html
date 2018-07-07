@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>Search</title>
+        <link rel="stylesheet" href="./css/reveal.css">
+        <link rel="stylesheet" href="./css/theme/black.css" id="theme">
+        <link rel="stylesheet" href="./css/highlight/black.css">
+        <link rel="stylesheet" href="./css/print/paper.css" type="text/css" media="print">
+
+
+    </head>
+    <body>
+
+        <div class="reveal">
+            <div class="slides"><section  data-markdown><script type="text/template">
+
+### decision trees + search
+**chandan**
+
+*based on R&N*
+
+
+</script></section><section  data-markdown><script type="text/template">
+# decision trees / random forests
+![decision](assets/decision.png)
+
+
+
+</script></section><section ><section data-markdown><script type="text/template">
+# uninformed search
+
+
+</script></section><section data-markdown><script type="text/template">
+## the setup
+
+1. initial state: $s_0$
+2. actions at each state: go($s_1$), go($s_2$)
+3. transition model: result($s_0$, go($s_1$)) = $s_1$
+4. goal states: $s_\text{goal}$
+5. path cost function: cost($s_0$, a, $s_1$)
+
+
+</script></section><section data-markdown><script type="text/template">
+## how to search
+
+- TREE-SEARCH - continuously expand the frontier
+  - *frontier*  = set of all leaf nodes available to expand
+- GRAPH-SEARCH - also keep set of visited states
+
+
+</script></section><section data-markdown><script type="text/template">
+## metrics
+
+- *optimal* - finds best solution
+- *complete* - terminates in finite steps
+- *time, space complexity*
+  - *search cost* - just time/memory
+- *total cost* - search cost + *path cost*
+
+
+</script></section><section data-markdown><script type="text/template">
+##  summary
+
+![](assets/uninformed_comparisons.png)
+
+
+</script></section></section><section ><section data-markdown><script type="text/template">
+# A* & Heuristics
+
+
+</script></section><section data-markdown><script type="text/template">
+## informed search
+
+- *informed search* - use $g(n)$ and $h(n)$
+  - *g(n)*:  cost from start to n
+  - *heuristic h(n)*: cost from n to goal
+- *best-first* - choose nodes with best f
+  - f=g: uniform-cost search
+  - f=h: greedy best-first search
+- $A^*$: $f(n) = g(n) + h(n)$
+
+
+</script></section><section data-markdown><script type="text/template">
+## admissible
+
+- *admissible*: $h(n)$ never overestimates
+- $\implies A^*$ (with tree search) is optimal and complete
+
+![graph](assets/graph.png)
+
+
+
+</script></section><section data-markdown><script type="text/template">
+## consistent
+
+- *consistent*: $h(n) \leq cost(n \to n') + h(n')$
+  - monotonic
+- $\implies A^*$ (with graph search) is optimal and complete 
+
+
+</script></section><section data-markdown><script type="text/template">
+## optimally efficient
+
+- *consistent* $\implies$ *optimally efficient* (guaranteed to expand fewest nodes) 
+  - never re-open a node
+- weaknesses
+  - must store all nodes in memory
+
+
+</script></section><section data-markdown><script type="text/template">
+## memory-bounded heuristic search
+
+- *iterative-deepening* $A^*$ - cutoff f-cost
+- *recursive best-first search*
+  - each selected node backs up best f alternative
+  - if exceeding this, rewind
+  - when rewinding, replace nodes with with best child f
+- $SMA^*$ - simplified memory-bounded
+  -  when memory full, collapse worst leaf
+
+
+
+</script></section><section data-markdown><script type="text/template">
+##  recursive best-first
+![Screen Shot 2018-06-28 at 7.47.11 PM](assets/Screen Shot 2018-06-28 at 7.47.11 PM.png)
+
+
+</script></section><section data-markdown><script type="text/template">
+## heuristic functions
+
+- want big h(n) because we expand everything with $f(n) < C^*$
+  - $h_1$ dominates $h_2$ if $h_1(n) \geq h_2(n) \: \forall \: n$
+  - combining heuristics: pick $h(n) = max[h_1(n), ..., h_m(n)]$
+
+- *relaxed problem* yields admissible heuristics
+
+  - ex. 8-tile solver
+
+
+
+</script></section></section><section ><section data-markdown><script type="text/template">
+# local search
+
+
+</script></section><section data-markdown><script type="text/template">
+## definitions
+
+- *local search* looks for solution not path ~ like optimization
+- maintains only *current node* and its neighbors
+
+
+</script></section><section data-markdown><script type="text/template">
+## discrete space
+
+- *hill-climbing* = *greedy local search* 
+  - stochastic hill climbing
+  - random-restart hill climbing
+- *simulated annealing* - pick random move
+  - if better accept
+  - else accept with probability $\exp(\Delta f / T_t)$
+- *local beam search* - pick k starts, then choose the best k states from their neighbors
+  - *stochastic beam search* - pick best k with prob proportional to how good they are
+
+
+</script></section><section data-markdown><script type="text/template">
+## *genetic algorithms*![Screen Shot 2018-06-28 at 8.12.02 PM](assets/Screen Shot 2018-06-28 at 8.12.02 PM.png)
+
+*schema* - representation
+
+
+</script></section><section data-markdown><script type="text/template">
+## continuous space
+
+- could just discretize neighborhood of each state
+
+- SGD: *line search* - double $\alpha$ until f increases
+- *Newton-Raphson* method: $x = x - H_f^{-1} (x) \nabla f(x)$![slide_8](assets/slide_8.jpg)
+
+
+</script></section></section><section ><section data-markdown><script type="text/template">
+# constraint satisfaction problems
+
+
+</script></section><section data-markdown><script type="text/template">
+## definitions
+
+- variables, domains, constraints
+- goal: *assignment* of variables
+  - *consistent* - doesn't violate constraints
+  - *complete* - every variable is assigned
+
+
+</script></section><section data-markdown><script type="text/template">
+## example
+![Screen Shot 2018-06-28 at 8.40.49 PM](assets/australia.png)
+
+
+</script></section><section data-markdown><script type="text/template">
+## local search for csps
+- start with some assignment to variables
+- *min-conflicts* heuristic - change variable to minimize conflicts
+  - can escape plateaus with *tabu search* - keep small list of visited states
+  - could use *constraint weighting*
+
+
+</script></section><section data-markdown><script type="text/template">
+## constraint graph
+
+![Screen Shot 2018-06-28 at 8.40.49 PM](assets/Screen Shot 2018-06-28 at 8.40.49 PM.png)
+
+
+</script></section><section data-markdown><script type="text/template">
+## inference
+
+- **constraint propagation** uses constraints to prune domains of variables
+- finite-domain constraint $\equiv$  set of binary constraints w/ auxiliary variables
+  - ex. *dual graph transformation*: constraint $\to$ variable, shared variables $\to$ edges
+
+
+</script></section><section data-markdown><script type="text/template">
+## basic constraint propagation
+
+- *node consistency* - unary constraints
+- *arc consistency* - satisfy binary constraints (AC-3 algorithm)
+  - for each arc, apply it
+    - if things changed, re-add all the neighboring arcs to the set
+  - $O(cd^3)$ where $d = \vert domain\vert $, c = num arcs
+
+
+</script></section><section data-markdown><script type="text/template">
+## advanced constraint propagation
+
+- *path consistency* - consider constraints on triplets - PC-2 algorithm
+  - extends to *k-consistency*
+  - *strongly k-consistent* - also (k-1), ..., 1-consistent
+    - $\implies O(k^2d)$ to solve
+- global constraints
+
+
+</script></section><section data-markdown><script type="text/template">
+## backtracking
+- depth-first search that backtracks when no legal values left
+  - variable and value ordering
+  - interleaving search and inference
+  - intelligent backtracking - looking backward
+
+
+</script></section><section data-markdown><script type="text/template">
+## variable and value ordering
+
+- *commutative*
+- heuristics
+  - *minimum-remaining-values*
+  - *degree* - pick variable involved in most constraints
+  - *least-constraining-value*
+
+
+</script></section><section data-markdown><script type="text/template">
+## interleaving search and interference
+
+- *forward checking* - after assigning, check arc-consistency on neighbors
+- *maintaining arc consistency (MAC)* - after sasigning, arc consistency initialized on neighbors
+
+
+</script></section><section data-markdown><script type="text/template">
+## intelligent backtracking
+
+- *conflict set* for each node (list of variable assignments that deleted things from its domain)
+- *backjumping*  - backtracks to most recent assignment in conflict set
+- *conflict-directed backjumping* 
+  - let $X_j$ be current variable and $conf(X_j)$ be conflict set. If every possible value for $X_j$ fails, backjump to the most recent variable $X_i$ in $conf(X_j)$ and set $conf(X_i) = conf(X_i) \cup conf(X_j) - X_i$
+- *constraint learning* - finding min set of assigments from conflict set that causes problem
+
+
+</script></section><section data-markdown><script type="text/template">
+## structure of problems
+- connected components of constraint graph are independent subproblems
+- *tree* - any 2 variables are connected by only one path
+  - *directed arc consistency* - ordered variables $X_i$, every $X_i$ is consistent with each $X_j$ for j>i
+    - tree with n nodes can be made directed arc-consisten in $O(n)$ steps - $O(nd^2)$
+
+
+</script></section><section data-markdown><script type="text/template">
+## making trees
+
+1. assign variables so remaining variables form a tree
+  - assigned variables called *cycle cutset* with size c
+  - $O[d^c \cdot (n-c) d^2]$
+  - finding smallest cutset is hard, but can use approximation called *cutset conditioning*
+2. *tree decomposition* - view each subproblem as a mega-variable
+  - *tree width* w - size of largest subproblem - 1
+  - solvable in $O(n d^{w+1})$
+
+<style>
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+	text-transform: lowercase;
+}
+
+.reveal section img { background:none; border:none; box-shadow:none; }
+
+
+img {
+   -webkit-filter: invert(1);
+   filter: invert(1);
+   }
+
+
+
+body {
+  background: #000;
+  background-color: #000; }
+
+
+</style></script></section></section></div>
+        </div>
+
+        <script src="./lib/js/head.min.js"></script>
+        <script src="./js/reveal.js"></script>
+
+        <script>
+            function extend() {
+              var target = {};
+              for (var i = 0; i < arguments.length; i++) {
+                var source = arguments[i];
+                for (var key in source) {
+                  if (source.hasOwnProperty(key)) {
+                    target[key] = source[key];
+                  }
+                }
+              }
+              return target;
+            }
+
+            // Optional libraries used to extend on reveal.js
+            var deps = [
+              { src: './lib/js/classList.js', condition: function() { return !document.body.classList; } },
+              { src: './plugin/markdown/marked.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
+              { src: './plugin/markdown/markdown.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
+              { src: './plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+              { src: './plugin/zoom-js/zoom.js', async: true },
+              { src: './plugin/notes/notes.js', async: true },
+              { src: './plugin/math/math.js', async: true }
+            ];
+
+            // default options to init reveal.js
+            var defaultOptions = {
+              controls: true,
+              progress: true,
+              history: true,
+              center: true,
+              transition: 'default', // none/fade/slide/convex/concave/zoom
+              dependencies: deps
+            };
+
+            // options from URL query string
+            var queryOptions = Reveal.getQueryHash() || {};
+
+            var options = {};
+            options = extend(defaultOptions, options, queryOptions);
+        </script>
+
+
+        <script>
+            Reveal.initialize(options);
+        </script>
+    </body>
+</html>
