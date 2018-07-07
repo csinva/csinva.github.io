@@ -31,7 +31,9 @@
                             {% unless pagex.url contains 'css' %}
                             {% unless pagex.url contains 'projects' %}
                             {% unless pagex.url contains 'notes' %}
+                            {% unless pagex.title contains 'Markdown' %}
                             <li><a class="page-scroll" href="{{site.baseurl}}/#{{ pagex.title }}">{{ pagex.title }}</a></li>
+                            {% endunless %}
                             {% endunless %}
                             {% endunless %}
                             {% endunless %}

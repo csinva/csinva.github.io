@@ -2,7 +2,7 @@
 layout: notes
 section-type: notes
 title: graphical models
-category: ai
+category: stat
 ---
 [TOC]
 
