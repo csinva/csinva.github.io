@@ -1,7 +1,7 @@
 ---
 layout: notes
 section-type: notes
-title: knowledge representation
+title: representations
 category: ai
 ---
 

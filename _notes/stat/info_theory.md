@@ -1,7 +1,7 @@
 ---
 layout: notes
 section-type: notes
-title: Information Theory
+title: info Theory
 category: stat
 ---
 

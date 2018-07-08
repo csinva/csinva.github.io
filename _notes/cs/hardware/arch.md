@@ -1,7 +1,7 @@
 ---
 layout: notes
 section-type: notes
-title: Computer Architecture
+title: Architecture
 category: cs
 ---
 
@@ -19,7 +19,7 @@ category: cs
 - amdahl's law: tells you how much of a speedup you get
     - S = 1 / (1-a+a/k)
     - a-portion optimized, k-level of parallelization, S-total speedup
-- if you really want performance increase in java, allocate a very large array, then keep track of it on your own	
+		if you really want performance increase in java, allocate a very large array, then keep track of it on your own	
 	
 # numbers
 0x means hexadecimal
@@ -91,7 +91,7 @@ You could use a rational or use more digits
     offset=1023
 Cowlishaw encoding: use 3 bits to store a binary digit - inefficient
 	
-	
+​	
 # x86
 Assembly Language - assembler translates text into machine code
 x86 is the type of chip
@@ -212,7 +212,7 @@ Callee
 
     subroutine may not know how many parameters are passed to it - thus, 1st arg must be at ebp+8 and the rest are pushed above it.
     Every subroutine call puts return address and ebp backup on the stack
-    
+
 Activation Records
     Every time a sub-routine is called, a number of things are pushed onto the stack:
         Registers
@@ -242,7 +242,7 @@ Buffer Overflow
     The stack looks like (with sizes in parenthesis):
 
      esi (4) 	 edi (4) 	 buffer (12) 	 ebp (4) 	 ret addr (4) 
-
+    
     Addresses increase to the right (the stack grows to the left)
     What happens if the value stored into buffer is 13 bytes long?
          We overwrite one byte of ebp
@@ -255,7 +255,7 @@ Buffer Overflow
          You can then overwrite the return address
          And set it to your own code
          For example, code that is included later on in the string - overwrite ebp, overwrite ret addr with beginning of malicious code
-         
+
 We are using nasm as our assembler for the x86 labs
     looks different when you use the compiler
 in C, you can only have one method with the same name
@@ -294,7 +294,7 @@ Callee: the function which is called by another function
     pop ebx
     pop ebp
     ret
-	
+
 # intro to C - we use ANSI standard
 ```java
 all C is valid C++
@@ -335,7 +335,7 @@ source (text) -> pre-processor -> modified source (text) -> compiler -> assembly
 h|e|l|l|o|\0
 -|
 10|.|.|.|.|15
- 
+
 # memory in C
 - byte is smallest accessible memory unit - 2 hex digits (ex: 0x3a)
 
@@ -360,7 +360,7 @@ int* p
 sizeof(int) == 4, but all pointers are just one byte - points to location of four consecutive bytes that are int
 indexing this pointer will tell you how much to offset memory by
 address must be 4-bytes aligned (means it will be a multiple of 4)
-```	
+```
 - little-endian - least significant byte first
 - big-endian - most significant byte first (normal) - networks use this
 - we will use little-endian, this is what most computers use
@@ -417,9 +417,9 @@ long long | signed | 64
 - !x - 0 -> 1, anything else -> 0
 - and is often called masking because only the things with 1s go through
 - shifting will pad with 0s
-- (1 << 3 )-1 			gives us 3 1s
-- ~((1 << 3 )-1)		gives us 111...111000
-- x & ~((1 << 3 )-1)	gives us x1x2.....000
+	 (1 << 3 )-1 			gives us 3 1s
+	 ~((1 << 3 )-1)		gives us 111...111000
+	 x & ~((1 << 3 )-1)	gives us x1x2.....000
 - >> copies the msb
 - then we can or it in order to change those last 3 bits
 - trinary operator - a≥b:c means if(a) b; else c 
@@ -458,7 +458,7 @@ long long | signed | 64
 - doesn't really matter: eax, rax are same register but eax is bottom half of rax
 	- on some hardwares eax is faster than rax
 - call example
- 	- PC=0x78 callq 0x56
+		- PC=0x78 callq 0x56
 	- PC=0x7d next command (because callq is 5 bytes long, it could be different)
 		- puts 7d on stack to return to at address 0x100
 		- this address (0x100) is subtracted by number of bytes in address (8)
@@ -477,7 +477,7 @@ long long | signed | 64
 	- sub $8, %rsp
 - pop does the opposite
 	- add $8, %rsp
-	- movq (%rsp), _	
+		 movq (%rsp), _	
 cmp
 	- cmovle %5, (%rax) - move only if we are in this state
 	
@@ -530,9 +530,9 @@ cmp
 		- argument in little-endian order
 	- examples
 		- call $0x123			-> 80 23 01 00 00 00 00 00 00
-		- ret 					-> 90
-		- subq %rcx, %r11		-> 81 1b (there are 15 registers, specify register with one nybble)
-		- irmov $0x3330, %rdi	-> 30 f7 30 33 00 00 00 00 00 00 (register-first always, f means no source, but destination of register 7)
+			 ret 					-> 90
+			 subq %rcx, %r11		-> 81 1b (there are 15 registers, specify register with one nybble)
+			 irmov $0x3330, %rdi	-> 30 f7 30 33 00 00 00 00 00 00 (register-first always, f means no source, but destination of register 7)
 	- compact binary (variable-length encoding) vs. simple binary (fixed-length encoding)
 		- x86 vs. ARM
 		- people can't decide
@@ -557,7 +557,7 @@ cmp
 - register - on rising clock edge store input
 - overclock computer - could work, or logic takes too long to get back - things break
 	- could be fixed with colder, more power
-- chips are small because of how fast they are	
+		chips are small because of how fast they are	
 - mux - selectors pick which input goes through
 - out = [
 	guard:value;
@@ -574,29 +574,30 @@ cmp
 3. instruction memory
 4. status output - 3-bits
 - ex. popq, %rbx
-	- todo: get icode, check if it was pop, read mem at rsp, put value in rbx, inc rsp by 8
-	- getting icode
-		- instruction in instruction memory: B0 3F
-		- register pP (p is inputs), (P is outputs)
-			- pP { pc:64 = 0;} - stores the next pc
-		- pc <- P_pc - the fixed functionality will create i10 bytes
-		- textbook: icode:ifun = M_1[PC] - gets one byte from PC
-		- HCL (HCL uses =): 
-			wire icode:4;
-			icode = i10bytes[4..8] - little endian values, one byte at a time - this grabs B from B0 3F
-	- assume icode was b (in reality, this must be picked with a mux)
-	```java
-		valA 	<- R[4] 		// gets %rsp - rsp is 4th register
-		rA:rB	<- M_1[PC+1]	// book's notation - splits up a byte into 2 halves, 1 byte in rA, 1 byte in rB, PC+1 because we want second byte
-								// 3 is loaded into rA, F is loaded into rB
-		valE 	<- valE+8		// inc rsp by 8
-		valM 	<- M_8[valA] 	// send %rsp to 
-		R[rA] 	<- valM			// writes to %rbx 
-		R[4]	<- valE			// writes to %rsp
-		p_pc	=  P_pc+2		// increment PC	by 2 because popq is 2-byte instruction	
+  - todo: get icode, check if it was pop, read mem at rsp, put value in rbx, inc rsp by 8
+  - getting icode
+  	- instruction in instruction memory: B0 3F
+  	- register pP (p is inputs), (P is outputs)
+  		- pP { pc:64 = 0;} - stores the next pc
+  	- pc <- P_pc - the fixed functionality will create i10 bytes
+  	- textbook: icode:ifun = M_1[PC] - gets one byte from PC
+  	- HCL (HCL uses =): 
+  		wire icode:4;
+  		icode = i10bytes[4..8] - little endian values, one byte at a time - this grabs B from B0 3F
+  - assume icode was b (in reality, this must be picked with a mux)
+  ```java
+  	valA 	<- R[4] 		// gets %rsp - rsp is 4th register
+  	rA:rB	<- M_1[PC+1]	// book's notation - splits up a byte into 2 halves, 1 byte in rA, 1 byte in rB, PC+1 because we want second byte
+  							// 3 is loaded into rA, F is loaded into rB
+  	valE 	<- valE+8		// inc rsp by 8
+  	valM 	<- M_8[valA] 	// send %rsp to 
+  	R[rA] 	<- valM			// writes to %rbx 
+  	R[4]	<- valE			// writes to %rsp
+  	p_pc	=  P_pc+2		// increment PC	by 2 because popq is 2-byte instruction	
+  ```
 ```
 - steps
-```java
+​```java
 	1. fetch - what is wanted
 	2. decode - find what to do it to - read prog registers
 	3. execute and/or memory - do it
@@ -755,7 +756,7 @@ jle
 1. stall until it finishes if there's a problem
 	stall_P = 1;	//stall the fetch/decode stage
 	bubble_E = 1;   //completes and then starts a nop, gives it time to write values
-2. forward values (find what will be written somewhere)	
+	. forward values (find what will be written somewhere)	
 	- in a 2-stage system, we have dstE and we use it to check if there's a problem
 	- usually if we can check that there's a problem, we have the right answer
 	- if we have the answer, put value where it should be
@@ -1001,9 +1002,9 @@ for(i...)
 		- let i3 finish (maybe)
 		- handle interrupt
 		- resume i4 (or rest of i3)
-	2. trap, 		%al (user)				int assembly instruction (user code)
+			 trap, 		%al (user)				int assembly instruction (user code)
 		- trap is between instructions, simple
-	3. fault,		based on what failed	failing user-mode instruction
+			 fault,		based on what failed	failing user-mode instruction
 		- fault during i3
 		- suspend i3
 		- handle fault
@@ -1045,7 +1046,7 @@ for(i...)
 	- hardware usually has some thread support
 		- save/restore instructions
 		- a way to run concurrent threads in parallel
-	- python threads don't run in parallel	
+			python threads don't run in parallel	
 
 # system calls
 - how user code asks the kernel to do stuff
@@ -1194,7 +1195,7 @@ val at 0xfa -> 0x6b
 val at 0xb6
 
 
-[toc]
+[TOC]
 
 # quiz rvw
 - commands
@@ -1368,7 +1369,7 @@ int satAdd(int x, int y) {
 - int Out = [
 		s: A;
 		1: B; 
-  ];
+    ];
 	- B is the default
 - combinatorial circuit - many bits as input simultaneously
 - ALU - three inputs, A, B, func
@@ -1395,7 +1396,7 @@ int satAdd(int x, int y) {
 		- writes up to two results to regfile
 	- PC update
 - popl reads two copies so that it can increment before updating the stack pointer
-- components: combinational logic, clocked registers (the program counter and condition code register), and random-access memories		
+	 components: combinational logic, clocked registers (the program counter and condition code register), and random-access memories		
 	- reading from RAM is fast
 	- only have to consider PC, CC, writing to data memory, regfile
 - processor never needs to read back the state updated by an instruction in order to complete the processing of this instruction.
@@ -1469,7 +1470,7 @@ int satAdd(int x, int y) {
 	- cold cache - cold misses / compulsory misses - when cache is empty
 		- need a placement policy for level k+1 -> k (could be something like put block i into i mod 4)
 	- conflict miss - miss because placement policy gets rid of block you need - ex. block 0 then 8 then 0 with above placement policy
-	- capacity misses - the cache just can't hold enough	
+		 capacity misses - the cache just can't hold enough	
 
 ### 6.4, 6.5 - cache memories & writing cache-friendly code
 - Miss rate. The fraction of memory references during the execution of a program, or a part of a program, that miss. It is computed as #misses/#references.

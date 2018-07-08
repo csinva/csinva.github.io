@@ -1,7 +1,7 @@
 ---
 layout: notes
 section-type: notes
-title: Java Reference
+title: Java ref
 category: cs
 ---
 

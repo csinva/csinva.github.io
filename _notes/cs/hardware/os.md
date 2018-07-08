@@ -1,7 +1,7 @@
 ---
 layout: notes
 section-type: notes
-title: operating systems
+title: os
 category: cs
 ---
 * TOC
@@ -91,7 +91,7 @@ category: cs
 	- memory
 		- processes are *swapped* from main memory to disk
 		- *virtual memory* allows for execution of process not in memory
- 
+
 ## 1.5 operating-system operations
 - *trap / exception* - software-generated *interrupt*
 - *user-mode* and *kernel mode* (also called system mode)
@@ -321,8 +321,11 @@ category: cs
 - restricting a child process to a subset of the parent's resources prevents system overload
 	- parent may pass along initialization data
 - after creating new process
-	1. parent continues to execute concurrently with children	2. parent waits until some or all of its children terminate
-- two address-space possibilities for the new process:	1. child is duplicate of parent (it has the same program and data as the parent).	2. child loads new program
+	1. parent continues to execute concurrently with children
+	2. parent waits until some or all of its children terminate
+- two address-space possibilities for the new process:
+	1. child is duplicate of parent (it has the same program and data as the parent).
+	2. child loads new program
 - forking
 	- when call *fork()* continue operation but returns 0 for parent process and nonzero for child
 		- child is a copy of the parent
@@ -369,7 +372,8 @@ category: cs
 			- indirect - messages are sent / received from mailboxes
 				- more flexible, can send message to whoever shares mailbox
 				- mailbox owned by process - owner receives those messages
-				- mailbox owned by os - unclear		2. *synchronous or asynchronous* communication
+				- mailbox owned by os - unclear
+		2. *synchronous or asynchronous* communication
 			- synchronous = blocking
 			- when both send and recieve are blocking = *rendezvous*
 		3. *automatic or explicit* buffering
@@ -467,8 +471,12 @@ category: cs
 1 - POSIX Pthreads
 
 ```
-/* get the default attributes */pthread attr init(&attr);/* create the thread */pthread create(&tid,&attr,runner,argv[1]);  // runner is a func to call
-/* wait for the thread to exit */pthread join(tid,NULL);
+/* get the default attributes */
+pthread attr init(&attr);
+/* create the thread */
+pthread create(&tid,&attr,runner,argv[1]);  // runner is a func to call
+/* wait for the thread to exit */
+pthread join(tid,NULL);
 ```
 - shared data is declared globally
 
@@ -570,15 +578,21 @@ signal(S) {
 	
 ```c
 typedef struct{ 
-	int value;	struct process *list;
+	int value;
+	struct process *list;
 } semaphore;
 wait(semaphore *S) { 
-	S->value--;	if (S->value < 0)		add this process to S->list;
+	S->value--;
+	if (S->value < 0)
+		add this process to S->list;
 }
 signal(semaphore *S) { 
-	S->value++;	if (S->value <= 0){		remove a process P from S->list; 
+	S->value++;
+	if (S->value <= 0){
+		remove a process P from S->list; 
 		wakeup(P); // resumes execution
-	}}
+	}
+}
 ```
 
 - *deadlocked* - 2 processes are in waiting queues, can't wakeup unless other process signals them
@@ -611,10 +625,15 @@ signal(semaphore *S) {
 	- 3rd semaphore: `next_count` = number of suspended processes
 	
 ```
- wait(mutex);// body of Fif (next count > 0) 
-	signal(next);else	signal(mutex);
-``` 
-	
+ wait(mutex);
+// body of F
+
+if (next count > 0) 
+	signal(next);
+else
+	signal(mutex);
+```
+
 - *conditional-wait* construct can help with resuming
 	- `x.wait(c);`
 	- *priority number* c stored with name of process that is suspended
@@ -623,20 +642,29 @@ signal(semaphore *S) {
 ## 5.9.4 - pthreads synchronization
 ```
 #include <pthread.h> 
-pthread mutex t mutex;/* create the mutex lock */ 
+pthread mutex t mutex;
+
+/* create the mutex lock */ 
 pthread mutex init(&mutex,NULL) // null specifies default attributes
 
-pthread mutex lock(&mutex); // acquire the mutex lock/* critical section */pthread mutex unlock(&mutex); // release the mutex lock
+pthread mutex lock(&mutex); // acquire the mutex lock
+/* critical section */
+pthread mutex unlock(&mutex); // release the mutex lock
 ```
 - these functions return 0 w/ correct operation otherwise error code
 - POSIX specifies *named* and *unnamed* semaphores
 	- name has name and can be shared by different processes
 
 ```
-#include <semaphore.h> sem t sem;/* Create the semaphore and initialize it to 1 */ sem init(&sem, 0, 1);
+#include <semaphore.h> sem t sem;
+/* Create the semaphore and initialize it to 1 */ sem init(&sem, 0, 1);
 
 /* acquire the semaphore */ 
-sem wait(&sem);/* critical section *//* release the semaphore */ 
+sem wait(&sem);
+
+/* critical section */
+
+/* release the semaphore */ 
 sem post(&sem);
 ```
 
@@ -798,11 +826,12 @@ sem post(&sem);
 - *event latency* - amount of time that elapses from when an event occurs to when it is serviced
 1. *interrupt latency* - period of time from the arrival of an interrupt at the CPU to the start of the routine that services the interrupt
 2. *dispatch latency*
-	1. Preemption of any process running in the kernel	2. Release by low-priority processes of resources needed by a high-priority process
+	1. Preemption of any process running in the kernel
+	2. Release by low-priority processes of resources needed by a high-priority process
 - *rate-monotonic* scheduling - schedules periodic tasks using a static priority policy with preemption
 
 ## 6.7 - SKIP
-		
+
 # 8 - virtual memory
 ## 8.1 - background
 - lots of code is seldom used
@@ -958,7 +987,7 @@ sem post(&sem);
 	- FAT
 - indexed allocation - all the pointers in 1 block
 
-## 11.5	
+	# 11.5	
 - keep track of *free-space list*
 	- implemented as bit map
 - keep track of linked list of free space

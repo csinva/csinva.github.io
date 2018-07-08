@@ -1,7 +1,7 @@
 ---
 layout: notes
 section-type: notes
-title: computational cogsci
+title: cogsci
 category: ai
 ---
 

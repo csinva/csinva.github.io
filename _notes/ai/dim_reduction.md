@@ -1,7 +1,7 @@
 ---
 layout: notes
 section-type: notes
-title: Dimensionality Reduction
+title: dim. Reduction
 category: ai
 ---
 * TOC

@@ -1,7 +1,7 @@
 ---
 layout: notes
 section-type: notes
-title: Vision science
+title: Vision
 category: neuro
 ---
 

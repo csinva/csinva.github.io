@@ -1,7 +1,7 @@
 ---
 layout: notes
 section-type: notes
-title: C/C++ Reference
+title: C/C++ ref
 category: cs
 ---
 
@@ -421,7 +421,7 @@ Dispatch
                     In Java default is Dynamic
                     In C++, default is Static - this is faster
             When creating a subclass object, the constructor of each subclass overwrites the appropriate pointers in the virtual method table with the overridden method pointers
-        
+
 Abstract Classes
     class foo {
         public:
@@ -447,5 +447,6 @@ Types of multiple inheritance
         String[] a = new String[1];
         Object[] b = a;
         b[0] = new Integer (1);
-        
-    
+
+
+​    

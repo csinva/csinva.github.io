@@ -1,7 +1,7 @@
 ---
 layout: notes
 section-type: notes
-title: Theory of Computation
+title: cs theory
 category: cs
 ---
 

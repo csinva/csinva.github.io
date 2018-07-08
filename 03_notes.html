@@ -6,8 +6,9 @@ section-type: notes
 
 <h2 align="center">Notes</h2>
 
+<div class="row">
 {% for collection in site.collections %}
-    <div class="row">
+
         {% assign categories = "" | split:"|" %}
         {% for doc in collection.docs %}
         {% if doc.category %}
@@ -24,26 +25,36 @@ section-type: notes
         {% for category in categories %}
             <div class="column">
             {% if category %}
-            <h3 align="center">{{ category | downcase }}</h3>
+                <h3 align="center">{{ category | downcase }}</h3>
             {% endif %}
             {% assign category_docs = collection.docs | where: "category", category %}
             <ul class="list-items">
             {% for item in category_docs %}
                 {% if item.title %}
-                <li><a href="{{ site.baseurl }}{{item.url}}" style="font-size:20px"> {{ item.title | downcase }} </a></li>
+                    <li><a href="{{ site.baseurl }}{{item.url}}" style="font-size:16px"> {{ item.title | downcase }} </a></li>
                 {% endif %}
             {% endfor %}
             </ul>
             </div>
         {% endfor %}
 
-    </div>
+
+
+
 {% endfor %}
+    <div class="column">
+            <h3 align="center">slides</h3>
+            <ul class="list-items">
+                <li><a href="{{ site.baseurl }}/pres/189/" style="font-size:16px"> ml </a></li>
+                <li><a href="{{ site.baseurl }}/pres/188/" style="font-size:16px"> ai </a></li>
+            </ul>
+        </div>
+</div>
 
 <style>
     .column {
     float: left;
-    width: 33.33%;
+    width: 14%;
 }
 
 /* Clear floats after the columns */

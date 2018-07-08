@@ -7,7 +7,8 @@ highlightTheme: black
 typora-copy-images-to: ./assets
 ---
 
-### search
+### ai
+
 **chandan**
 
 *based on R&N*

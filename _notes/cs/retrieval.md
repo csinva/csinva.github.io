@@ -1,7 +1,7 @@
 ---
 layout: notes
 section-type: notes
-title: Information Retrieval
+title: info Retrieval
 category: cs
 ---
 
@@ -50,7 +50,7 @@ semantics are well-defined |  semantics are subjective
 structured query languages (ex. SQL) | simple keyword queries
 exact retrieval         | relevance-drive retrieval
 emphasis on efficiency  | emphasis on effectiveness
-    
+
 - natural language processing - currently the bottleneck
     - deep understainding of language
     - cognitive approaches vs. statistical
@@ -111,7 +111,7 @@ emphasis on efficiency  | emphasis on effectiveness
 	- Zipf's law - frequency of any word is inversely proportional to its rank in the frequency table
 		- frequencies decrease linearly
 		- discrete version of power law
-		- stopwords	- we ignore these and get meaningful part
+			 stopwords	- we ignore these and get meaningful part
 			- head words take large portion but are meaningless e.g. the, a, an
 			- tail words - major portion of dictionary, but rare e.g. dextrosinistral
 			- risk: we lost structure ex. this is not a good option -> option
@@ -252,7 +252,7 @@ emphasis on efficiency  | emphasis on effectiveness
 		- assume query and doc to be the same
 		- lack of predictive adequacy
 		- lots of parameter tuning
-			
+	
 2. (uses probablity of relevance)
 - vocabulary - set of words user can query with
 
