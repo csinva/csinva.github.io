@@ -106,3 +106,7 @@ category: stat
   3. *objective* - minimize the average word length $\sum p_i n_i$ where $n_i$ is average word length of $x_i$
 - code is *uniquely decipherable* if every finite sequence of code characters corresponds to at most one message
   - *instantaneous code* - no code word is a prefix of another code word
+
+# in practice
+
+- with small number of points, estimated mutual information is too high

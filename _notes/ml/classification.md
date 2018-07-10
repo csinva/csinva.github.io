@@ -255,7 +255,7 @@ category: ml
   - underflow prevention - take logs of all probabilities so we don't get 0
   - $y = \text{argmax }log \:P(y) + \sum_i log \: P(X_i\vert y)$
 
-# instance-based (nearest neighbors)
+# instance-based (nearest neighbors) - really discriminative
 
 - also called lazy learners = nonparametric models
 - make Voronoi diagrams

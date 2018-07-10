@@ -2,6 +2,7 @@
 # conferences
 
 - https://aideadlin.es/
+- http://neuro-deadlines.tbryngrey.com/
 
 # levels
 
