@@ -3,24 +3,6 @@
 
 - https://aideadlin.es/
 
-|         |  2019              |
-| ------- |  :---------------- |
-| AAAI    |                   |
-| COSYNE  | Portugal |
-| AISTATS |                     |
-| ICLR   |            |
-| VSS     |     Florida           |
-| SAND    |       ~5/31 - Pitt      |
-| AREADNE |                    |
-| CVPR    |                  |
-| CNS     |                     |
-| ICML    |  7/10 - Long Beach |
-| ECCV    |                   |
-| CCN     |                    |
-| ICCV    |            |
-| SFN     |        |
-| NIPS    |                    |
-|         |                       |
 # levels
 
 - *Marr's three levels*
