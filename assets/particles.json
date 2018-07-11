@@ -54,7 +54,7 @@
     },
     "move": {
       "enable": true,
-      "speed": 0.5,
+      "speed": 0.8,
       "direction": "none",
       "random": false,
       "straight": false,
@@ -92,7 +92,7 @@
         "size": 80,
         "duration": 2,
         "opacity": 0.8,
-        "speed": 3
+        "speed": 5
       },
       "repulse": {
         "distance": 400,
