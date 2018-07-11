@@ -4,61 +4,64 @@ title: notes_main
 section-type: notes
 ---
 
-<h2 align="center">Notes</h2>
+<h2 align="center">Notes and more</h2>
 
-<div class="row">
+<div class="roww"> <!--begin the 1st row-->
 {% for collection in site.collections %}
 
-        {% assign categories = "" | split:"|" %}
-        {% for doc in collection.docs %}
-        {% if doc.category %}
-        {% unless categories contains doc.category %}
-        {% assign categories = categories | push: doc.category %}
-        {% endunless %}
-        {% endif %}
-        {% endfor %}
-        {% assign categories_size = categories | size %}
-        {% if categories_size == 0 %}
-        {% assign categories = categories | push: nil %}
-        {% endif %}
+    {% assign categories = "" | split:"|" %}
+    {% for doc in collection.docs %}
+    {% if doc.category %}
+    {% unless categories contains doc.category %}
+    {% assign categories = categories | push: doc.category %}
+    {% endunless %}
+    {% endif %}
+    {% endfor %}
+    {% assign categories_size = categories | size %}
+    {% if categories_size == 0 %}
+    {% assign categories = categories | push: nil %}
+    {% endif %}
 
-        {% for category in categories %}
-            <div class="column">
-            {% if category %}
+    {% for category in categories %}
+
+        {% if category %}
+            <div class="coll">
                 <h3 align="center">{{ category | downcase }}</h3>
-            {% endif %}
-            {% assign category_docs = collection.docs | where: "category", category %}
-            <ul class="list-items">
-            {% for item in category_docs %}
-                {% if item.title %}
-                    <li><a href="{{ site.baseurl }}{{item.url}}" style="font-size:16px"> {{ item.title | downcase }} </a></li>
-                {% endif %}
-            {% endfor %}
-            </ul>
-            </div>
-        {% endfor %}
 
+                {% assign category_docs = collection.docs | where: "category", category %}
+                <ul class="list-items">
+                {% for item in category_docs %}
+                    {% if item.title %}
+                        <li><a href="{{ site.baseurl }}{{item.url}}" style="font-size:16px"> {{ item.title | downcase }} </a></li>
+                    {% endif %}
+                {% endfor %}
+                </ul>
+             </div>
+        {% endif %}
 
-
-
+        {% if category == "math" %}
+            </div> <!--end the 1st row-->
+            <div class="roww"> <!--begin the 2nd row-->
+        {% endif %}
+    {% endfor %}
 {% endfor %}
-        <div class="column">
+        <div class="coll">
             <h3 align="center">slides</h3>
             <ul class="list-items">
                 <li><a href="{{ site.baseurl }}/pres/189/" style="font-size:16px"> ml </a></li>
                 <li><a href="{{ site.baseurl }}/pres/188/" style="font-size:16px"> ai </a></li>
             </ul>
         </div>
-</div>
+</div> <!--end the 2nd row-->
 
 <style>
-.column {
+.coll {
     float: left;
-    width: 14%;
+    width: 24%;
 }
 
 /* Clear floats after the columns */
-.row:after {
+.roww:after {
     content: "";
     display: table;
     clear: both;
