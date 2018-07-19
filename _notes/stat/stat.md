@@ -8,6 +8,15 @@ category: stat
 {:toc}
 - *material based on probability and statistics cookbook by matthias vallentin*
 
+# models
+
+- normative - fully interpretable + modelled
+  - idealized
+  - probablistic
+- ~mechanistic - somewhere in between
+- descriptive - based on reality
+  - empirical
+
 # error bars
 
 - always write what you use

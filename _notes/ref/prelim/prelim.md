@@ -11,12 +11,12 @@
   - a*
   - csps
   - local search
-- decisions
+- **decisions**
   - game trees
   - utilities / decision theory
   - mdps + rl
   - decision theory / vpi
-- graphical models
+- **graphical models**
   - independence / factorization
   - elimination
   - propagation-factor graphs

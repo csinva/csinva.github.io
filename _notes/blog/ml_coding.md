@@ -17,3 +17,4 @@ Machine learning code gets messy fast. In contrast to other programs, machine le
 
 1. Make a class for your dataset that includes funciton such as loading, preprocessing, and iterating through the data. This will allow you to easily do these things from different files, notebooks and be much cleaner
 2. Store hyperparameters along with the results of your runs. I'd recommend saving hyperparameter sweeps into a pandas library.
+3. The tqdm package displays a loading bar which is very useful

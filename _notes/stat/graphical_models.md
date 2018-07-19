@@ -6,36 +6,30 @@ category: stat
 ---
 [TOC]
 
-*Material from Russel and Norvig "Artifical Intelligence" 3rd Edition*
+*Material from Russell and Norvig "Artifical Intelligence" 3rd Edition*
 
 # overview
 
-- latent variable types
-  1. *mixture models* - discrete latent variable
-  2. *factor analysis models* - continuous latent variable
 - network types
   1. *bayesian networks* - directed
   2. undirected models
-- ![](assets/graphical_models/models.png)
+- latent variable types
+  1. *mixture models* - discrete latent variable
+  2. *factor analysis models* - continuous latent variable
 
-# structure learning
-
-- conditional correlation - inverse covariance matrix = precision matrix
-    - estimates only good when $n >> p$
-    - eigenvalues are not well-approximated
-    - often enforce sparsity
-    - ex. threshold each value in the cov matrix (set to 0 unless greater than thresh) - this threshold can depend on different things
-    - can also use regularization to enforce sparsity
-    - POET doesn't assume sparsity
+![](assets/graphical_models/models.png)
 
 # bayesian networks - R & N 14.1-5
 
 1. purpose
    1. encodes conditional independence relationships
    2. compact representation of joint prob. distr. over the variables
+   3. want *causal model* - causes are first, effects are later
+      1. ex. *diagnostic model* - links from symptoms to causes
+         1. requires more dependencies
 2. learning
    1. expert-designed
-   2. otherwise, must learn from data
+   2. from data
 
 - properties
   - each node is random variable
@@ -49,18 +43,16 @@ category: stat
     - a node is conditionally independent of its non-descendants given its parents???
 - BN has no redundancy $\implies$ no chance for inconsistency
 - forming a BN: keep adding nodes, and only previous nodes are allowed to be parents of new nodes
-  - want *causal model* - causes are first, effects are later
-  - ex. *diagnostic model* - links from symptoms to causes
-    - requires more dependencies
 
 ## hybrid BN (both continuous & discrete vars)
 
-- for continuous variables, can sometimes discretize
+- for continuous variables can sometimes discretize
 1. *linear Gaussian* - for continuous children
-  - h is continuous, s is discrete; a, b, $\sigma$ all change when s changes
-  - $P(c|h,s) = N(a \cdot h + b, \sigma^2)$, so mean is linear function of h
-  - discrete parents continuous children $\implies$ *conditional Gaussian* - multivariate Gaussian given assignment to discrete variables
-  - all continuous $\implies​$ *multivariate Gaussian* over all the variables, and a multivariate posterior distribution (given any evidence)
+  - parents all discrete $\implies$ *conditional Gaussian* - multivariate Gaussian given assignment to discrete variables
+  - parents all continuous $\implies$ *multivariate Gaussian* over all the variables, and a multivariate posterior distribution (given any evidence)
+  - parents some discrete, some continuous
+    - h is continuous, s is discrete; a, b, $\sigma$ all change when s changes
+    - $P(c|h,s) = N(a \cdot h + b, \sigma^2)$, so mean is linear function of h
 2. discrete children (continuous parents)
   1. *probit distr* - $P(buys\|Cost=c) = \phi[(-c+\mu)/\sigma]$ - integral of standard normal distr
     - like a soft threshold
@@ -335,3 +327,12 @@ category: stat
   - ***particle filtering*** - focus set of samples on high-prob regions of the state space
     - consistent
 
+# structure learning
+
+- conditional correlation - inverse covariance matrix = precision matrix
+    - estimates only good when $n >> p$
+    - eigenvalues are not well-approximated
+    - often enforce sparsity
+    - ex. threshold each value in the cov matrix (set to 0 unless greater than thresh) - this threshold can depend on different things
+    - can also use regularization to enforce sparsity
+    - POET doesn't assume sparsity

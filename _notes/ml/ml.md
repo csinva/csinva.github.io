@@ -3,6 +3,7 @@ layout: notes
 section-type: notes
 title: Machine Learning
 category: ml
+typora-copy-images-to: ./assets/ml
 ---
 * TOC
 {:toc}
@@ -81,6 +82,16 @@ category: ml
 - k-means++ - better at not getting stuck in local minima
   - randomly move centers apart
 - Complexity: $O(n^2p)$ for first iteration and then can only get worse
+
+# semi-supervised learning and more
+
+- blog: https://dawn.cs.stanford.edu/2017/07/16/weak-supervision/
+  - training data is hard
+- related paper: https://www.biorxiv.org/content/early/2018/06/16/339630
+
+ ![semi](assets/ml/semi.png)
+
+- missing self-supervised?
 
 # clustering & conditional mixtures - J. 10
 
