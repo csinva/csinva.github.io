@@ -29,13 +29,65 @@
           </div>
       </section>
     {% elsif page.section-type == "research" %}
-      <!-- {{ page.title }} Section -->
+
       <section id="{{ page.title }}" class="container content-section text-center">
           <div class="row">
               <div class="col-lg-8 col-lg-offset-2">
                 {{ page.content | markdownify }}
               </div>
           </div>
+
+           <table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>year</th>
+                <th>title</th>
+                <th>authors</th>
+                <th>tags</th>
+                <th>link</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>2018</td>
+                <td>hierarchical interpretations for neural network predictions</td>
+                <td>Singh, Murdoch, & Yu</td>
+                <td>ml</td>
+                <td><a href="https://arxiv.org/abs/1806.05337">arXiv</a></td>
+            </tr>
+            <tr>
+                <td>2018</td>
+                <td>large scale image segmentation with structured loss based deep learning for connectome reconstruction</td>
+                <td>Funke, Tschopp, Grisaitis, Sheridan, Singh, Saalfeld, & Turaga</td>
+                <td>ml, neuro</td>
+                <td><a href="https://ieeexplore.ieee.org/abstract/document/8364622/">TPAMI</a></td>
+            </tr>
+           <tr>
+                <td>2018</td>
+                <td>linearization of excitatory synaptic integration at no extra cost</td>
+                <td>Morel, Singh, & Levy</td>
+                <td>neuro</td>
+                <td><a href="http://rdcu.be/FDUo">J Comp Neuro</a></td>
+            </tr>
+           <tr>
+                <td>2017</td>
+                <td>a consensus layer V pyramidal neuron can sustain interpulse-interval coding</td>
+                <td>Singh & Levy</td>
+                <td>neuro</td>
+                <td><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0180839">Plos One</a></td>
+            </tr>
+           <tr>
+                <td>2017</td>
+                <td>a constrained, weighted-l1 minimization approach for joint discovery of heterogeneous neural connectivity graphs</td>
+                <td>Singh, Wang, & Qi</td>
+                <td>ml, neuro</td>
+                <td><a href="https://arxiv.org/abs/1709.04090">NIPS Workshop</a></td>
+            </tr>
+
+    </table>
+
+
+
     </section>
     {% elsif page.section-type == "timeline" %}
       <!-- {{ page.title }} Section -->

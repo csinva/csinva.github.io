@@ -1,0 +1,138 @@
+table {
+  width           : 100%;
+  margin-bottom   : 10px;
+  border-collapse : collapse;
+  background      : #fff;
+  box-shadow      : 0 2px 6px rgba(0,0,0,0.1);
+}
+
+th {
+  font-weight        : 300;
+  color              : #fff;
+  background-image   : -webkit-linear-gradient(bottom,rgb(202,0,89), rgb(243,0,107) );
+  background-image   :    -moz-linear-gradient(bottom,rgb(202,0,89), rgb(243,0,107) );
+  background-image   :     -ms-linear-gradient(bottom,rgb(202,0,89), rgb(243,0,107) );
+  background-image   :         linear-gradient(bottom,rgb(202,0,89), rgb(243,0,107) );
+  -webkit-transition : all 0.3s;
+  -moz-transition    : all 0.3s;
+  -ms-transition     : all 0.3s;
+  -o-transition      : all 0.3s;
+  transition         : all 0.3s;
+}
+
+td {
+  font-weight: 300;
+}
+
+td,th {
+  padding     : 0 10px;
+  font-size   : 13px;
+  line-height : 32px;
+}
+
+tbody tr:nth-child(even) {
+  background: rgb(240, 240, 240);
+}
+
+/* Table Sorting */
+th.table-sort {
+  padding-right : 36px;
+  text-align    : left;
+  cursor        : pointer;
+}
+
+th.table-sort:hover {
+  background-image : -webkit-linear-gradient(bottom,rgb(216,0,95), rgb(252,29,127) );
+  background-image :    -moz-linear-gradient(bottom,rgb(216,0,95), rgb(252,29,127) );
+  background-image :     -ms-linear-gradient(bottom,rgb(216,0,95), rgb(252,29,127) );
+  background-image :         linear-gradient(bottom,rgb(216,0,95), rgb(252,29,127) );
+}
+
+.table-sort-field {
+  position: relative;
+}
+
+.table-sort-control {
+  background-image: -webkit-linear-gradient(bottom,rgba(0,0,0,0.1),rgba(0,0,0,0.0));
+  height    : 32px;
+  width     : 16px;
+  position  : absolute;
+  top       : 0;
+  right     : -36px;
+}
+
+.table-sort-up,
+.table-sort-down {
+  border  : 3px solid transparent;
+  position: absolute;
+  right   : 6px;
+}
+
+.table-sort-up {
+  border-bottom-color: rgba(255,255,255,0.3);
+  top                : 8px;
+}
+
+.table-sort-down {
+  border-top-color: rgba(255,255,255,0.3);
+  top             : 19px;
+}
+
+.table-sort-order-asc .table-sort-up {
+  border-bottom-color: rgba(255,255,255,1);
+}
+
+.table-sort-order-des .table-sort-down {
+  border-top-color: rgba(255,255,255,1);
+}
+
+/* Table Sort Search */
+.table-sort-search-container {
+  background-image : -webkit-linear-gradient(bottom,rgb(63, 63, 63),rgb(73, 73, 73));
+  background-image : -ms-linear-gradient(bottom,rgb(63, 63, 63),rgb(73, 73, 73));
+  background-image : -o-linear-gradient(bottom,rgb(63, 63, 63),rgb(73, 73, 73));
+  background-image : -moz-linear-gradient(bottom,rgb(63, 63, 63),rgb(73, 73, 73));
+  background-image : linear-gradient(bottom,rgb(63, 63, 63),rgb(73, 73, 73));
+  padding          : 3px 8px;
+  position         : relative;
+}
+
+.table-sort-search-input {
+  -webkit-appearance : none;
+  width              : 100%;
+  height             : 25px;
+  padding            : 0 10px;
+  border             : 1px solid rgb(50,50,50);
+  border-radius      : 6px;
+  font-size          : 13px;
+  line-height        : 25px;
+  background         : rgb(238,238,238);
+  -webkit-transition : all 0.2s;
+  -moz-transition    : all 0.2s;
+  -ms-transition     : all 0.2s;
+  transition         : all 0.2s;
+}
+
+.table-sort-search-input:focus,.table-sort-search-input:hover {
+  outline    : none;
+  background : #fff;
+}
+
+.table-sort-highlight {
+  color      : #fff;
+  background : rgb(255,86,174);
+}
+
+.table-sort-search-count {
+  position         : absolute;
+  top              : 10px;
+  right            : 11px;
+  padding          : 0 7px;
+  border-radius    : 3px;
+  line-height      : 19px;
+  color            : #fff;
+  background-image : -webkit-linear-gradient(bottom,rgb(94,108,117), rgb(145,162,177) );
+  background-image : -moz-linear-gradient(bottom,rgb(94,108,117), rgb(145,162,177) );
+  background-image : -ms-linear-gradient(bottom,rgb(94,108,117), rgb(145,162,177) );
+  background-image : linear-gradient(bottom,rgb(94,108,117), rgb(145,162,177) );
+}

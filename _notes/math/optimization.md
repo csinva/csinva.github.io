@@ -350,3 +350,24 @@ category: math
 - simplified in terms of KL divergence
   - E: $q^{(t+1)} (z\|x) = \underset{q}{argmin} \: D(q\|\|\theta^{(t)})$
   - M: $\theta^{(t+1)} = \underset{\theta}{argmin} \: D(q^{(t+1)} \|\| \theta)$
+
+# nn optimization
+
+## why is it hard?
+
+- plateaus
+- winding canyons
+- cliffs
+- local maxima to dodge
+- saddle points
+
+## visualization
+
+- requires low dims
+  - goodfellow 2014 "Qualitatively characterizing neural network optimization problems" plots loss on line from starting point to ending point
+  - could do PCA on params
+
+## complicated is simpler
+
+- ex. $x^3 sin(x)$ is simpler than just $x$ on the domain [−0.01, 0.01]
+- dropout is like ridge

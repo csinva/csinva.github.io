@@ -1,0 +1,15 @@
+td, th {
+    <!--border: 1px solid #e9e9e9;-->
+    padding: 10px;
+    background: #000;
+}
+.hidden {
+    display: none;
+}
+td.sorting_1 {
+    color: #fff;
+}
+
+table.dataTable.display tbody tr.even>.sorting_1, table.dataTable.order-column.stripe tbody tr.even>.sorting_1, table.dataTable.display tbody tr.odd>.sorting_1, table.dataTable.order-column.stripe tbody tr.odd>.sorting_1{
+   background-color: #222;
+}

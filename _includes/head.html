@@ -7,7 +7,8 @@
     <meta name="author" content="{{ site.author }}" />
     <meta name="keywords" content="{{ site.keywords }}" />
     <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
-    <link rel="shortcut icon"  type="image/png" href="neuron.png">
+    <!--<link rel="shortcut icon"  type="image/png" href="{{ site.baseurl }}/img/favicon.png">-->
+    <!--<link rel="icon"  type="image/png" href="{{ site.baseurl }}/img/favicon.png">-->
 
     <title>{{ site.title }} {% if page.title %} | {{ page.title }}{% endif %}</title>
 
@@ -29,5 +30,9 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <!--<link href="{{ site.baseurl }}/css/jquery.tablesorter.blue.css" rel="stylesheet" type="text/css">-->
+    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="{{ site.baseurl }}/css/chandan_tables.css" rel="stylesheet">
 
 </head>
