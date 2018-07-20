@@ -19,9 +19,6 @@ input {
     color: #eee;
 }
 
-label {
-    color: #ccc;
-}
 
 select {
     background: #000;
@@ -33,3 +30,11 @@ select {
 }
 
 thead, th {text-align: center;}
+
+.dataTables_info{
+    color: #ccc;
+}
+
+label {
+    color: #ccc;
+}

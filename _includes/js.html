@@ -15,7 +15,9 @@
     <script>
     $(document).ready(function() {
         $('#example').DataTable({
-            "order": [[ 0, "desc" ]]
+            "order": [[ 0, "desc" ]],
+            "aLengthMenu": [[5, 10, -1], [5, 10, "All"]],
+            "pageLength": 5
         } );
     } );
     </script>

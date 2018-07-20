@@ -31,6 +31,7 @@
   - em
 - generative
   - density estimation models
+  - naive bayes
 - discriminative
   - linear reg.
   - logistic reg.
