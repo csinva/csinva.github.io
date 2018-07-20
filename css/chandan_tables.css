@@ -13,3 +13,23 @@ td.sorting_1 {
 table.dataTable.display tbody tr.even>.sorting_1, table.dataTable.order-column.stripe tbody tr.even>.sorting_1, table.dataTable.display tbody tr.odd>.sorting_1, table.dataTable.order-column.stripe tbody tr.odd>.sorting_1{
    background-color: #222;
 }
+
+input {
+    background: #000;
+    color: #eee;
+}
+
+label {
+    color: #ccc;
+}
+
+select {
+    background: #000;
+    border:0px;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button{
+    background-color: #111;
+}
+
+thead, th {text-align: center;}

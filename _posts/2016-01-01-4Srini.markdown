@@ -4,4 +4,4 @@ title: Summer 15, Winter 15, Summer 16
 subtitle: <a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0ahUKEwik_6XR8vXWAhULz2MKHfemCs4QFggmMAA&url=https%3A%2F%2Fwww.janelia.org%2Fpeople%2Fsrini-turaga&usg=AOvVaw2bz69zeov78HQO7KQKxKSK"> HHMI Srini Turaga Lab </a>
 image: "img/timeline/connectome.jpg"
 ---
-Contributed to enhanced ML implementations for neural image segmentation <a href="https://arxiv.org/abs/1709.02974"><i class="fa fa-file fa-fw"></i></a><a href="https://github.com/funkey/mala"><i class="fa fa-code fa-fw"></i></a>
+Contributed to enhanced ML implementations for neural image segmentation
