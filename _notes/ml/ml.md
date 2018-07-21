@@ -7,6 +7,9 @@ typora-copy-images-to: ./assets/ml
 ---
 * TOC
 {:toc}
+
+---
+
 # overview
 
 - 3 types: supervised, unsupervised, reinforcement

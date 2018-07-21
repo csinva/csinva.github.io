@@ -8,6 +8,8 @@ category: neuro
 * TOC
 {:toc}
 
+---
+
 # neural signals
 
 - ion channel properties

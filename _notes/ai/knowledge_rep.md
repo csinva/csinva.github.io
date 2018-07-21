@@ -7,6 +7,9 @@ category: ai
 
 * TOC
 {:toc}
+
+---
+
 # intro
 
 - AI - field of study which studies the goal of creating intelligence

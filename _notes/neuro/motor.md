@@ -8,6 +8,8 @@ category: neuro
 * TOC
 {:toc}
 
+---
+
 # 16 lower
 - sensory in dorsal spinal cord, motor in ventral
   - farther out neurons control farther out body parts (medial=trunk, lateral=arms,legs)

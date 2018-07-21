@@ -4,8 +4,12 @@ section-type: notes
 title: data analysis
 category: stat
 ---
+
 * TOC
 {:toc}
+
+---
+
 # pqrs
 
 - Goal: *inference* - conclusion or opinion formed from evidence

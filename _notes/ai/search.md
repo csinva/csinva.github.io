@@ -9,6 +9,8 @@ category: ai
 {:toc}
 From "Artificial Intelligence" Russel & Norvig 3rd Edition
 
+---
+
 # Uninformed Search - R&N 3.1-3.4
 
 ### problem-solving agents

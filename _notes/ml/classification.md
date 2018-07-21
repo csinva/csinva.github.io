@@ -6,6 +6,9 @@ category: ml
 ---
 * TOC
 {:toc}
+
+---
+
 # overview
 
 - regressor doesn't classify well
@@ -13,10 +16,11 @@ category: ml
 - asymptotic classifier - assumes infinite data
 - linear classifer $\implies$ boundaries are hyperplanes
 - *discriminative* - model $P(Y\vert X)$ directly ![](assets/classification/j7_10.png)
-  - smaller asymptotic error
+  - usually lower bias $\implies$smaller asymptotic error
   - slow convergence ~ $O(p)$
 - *generative* - model $P(X\vert Y)$ ![](assets/classification/j7_4.png)
   - usually higher bias $\implies$ can handle missing data
+    - this is because we assume some underlying X
   - fast convergence ~ $O[log(p)]$
 - *decision theory* - models don't require finding $p(y\|x)$ at all
 

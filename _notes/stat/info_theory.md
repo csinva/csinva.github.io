@@ -7,7 +7,10 @@ category: stat
 
 * TOC
 {:toc}
+
 - *material from* Cover "Elements of Information Theory"
+
+---
 
 # entropy
 

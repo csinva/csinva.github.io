@@ -7,6 +7,8 @@ category: stat
 * TOC
 {:toc}
 
+---
+
 # breiman
 - conversation
   - moved sf -> la -> caltech (physics) -> columbia (math) -> berkeley (math)

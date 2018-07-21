@@ -6,6 +6,9 @@ category: stat
 ---
 * TOC
 {:toc}
+
+---
+
 # basics
 
 - *data snooping* - decide which hypotheses to test after examining data

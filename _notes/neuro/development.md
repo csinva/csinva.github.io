@@ -8,6 +8,8 @@ category: neuro
 * TOC
 {:toc}
 
+---
+
 # 22 early development
 - ways to study
 	1. top-down: rosy retrospection

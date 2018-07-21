@@ -4,6 +4,12 @@ section-type: notes
 title: Graphs
 category: cs
 ---
+
+* TOC
+{:toc}
+
+---
+
 - Edges are of the form (v1, v2)
     - Can be ordered pair or unordered pair
 - Definitions

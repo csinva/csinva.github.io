@@ -5,6 +5,10 @@ title: cogsci
 category: ai
 ---
 
+* TOC
+{:toc}
+---
+
 # nativism, empiricism
 
 - cogsci "inverse problem" - give world, how do we form representations

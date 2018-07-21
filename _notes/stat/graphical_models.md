@@ -4,9 +4,13 @@ section-type: notes
 title: graphical models
 category: stat
 ---
-[TOC]
+
+* TOC
+{:toc}
 
 *Material from Russell and Norvig "Artifical Intelligence" 3rd Edition*
+
+---
 
 # overview
 

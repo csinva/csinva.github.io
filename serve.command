@@ -1,2 +1,2 @@
-cd /Users/chandan/drive/website
+cd /Users/chandan/website
 jekyll serve --watch

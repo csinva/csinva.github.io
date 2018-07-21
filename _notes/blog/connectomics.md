@@ -1,7 +1,18 @@
 ---
 layout: notes
-title: Connectomics
+section-type: notes
+title: connectomics
+category: blog
 ---
+
+
+# connectomics
+**chandan singh**  
+*last updated jul 20, 2018*
+
+---
+
+
 Connectomics is the field interested in mapping the brain.
 
 # Structural connectomics

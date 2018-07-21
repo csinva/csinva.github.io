@@ -7,7 +7,10 @@ category: ml
 
 * TOC
 {:toc}
+
 *references*: (1) Machine Learning - Tom Mitchell, (2) An Introduction to Computational Learning Theory - Kearns & Vazirani
+
+---
 
 # evolution
 

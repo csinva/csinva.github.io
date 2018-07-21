@@ -7,11 +7,14 @@ category: math
 
 * TOC
 {:toc}
+
+---
+
 # linear basics
 
 ## notation
 
-- $x \preceq y$ - these are vectors and x is less than y elementwise
+- $x \preceq y​$ - these are vectors and x is less than y elementwise
 - $X \preceq Y$ - matrices, $Y-X$ is PSD
   - $v^TXv \leq v^TYv \:\: \forall v$
 

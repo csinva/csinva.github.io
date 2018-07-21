@@ -8,6 +8,7 @@ category: ml
 * TOC
 {:toc}
 
+---
 
 # neural networks
 - basic perceptron update rule

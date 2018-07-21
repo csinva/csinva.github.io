@@ -4,6 +4,12 @@ section-type: notes
 title: Data Structures
 category: cs
 ---
+
+* TOC
+{:toc}
+
+---
+
 # lists
 ## arrays and strings
 - start by checking for null, length 0

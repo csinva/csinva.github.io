@@ -5,10 +5,10 @@ title: Computational Neuroscience
 category: neuro
 ---
 
-[TOC]
+* TOC
+{:toc}
 
-
-
+---
 
 # 1- introduction
 ### 1.1 - overview

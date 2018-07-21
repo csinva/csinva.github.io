@@ -8,6 +8,8 @@ category: cs
 * TOC
 {:toc}
 
+---
+
 # introduction
 - building blocks of search engines
     - search (user initiates)

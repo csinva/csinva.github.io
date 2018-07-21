@@ -9,6 +9,8 @@ category: ai
 {:toc}
 *From "Artificial Intelligence" Russel & Norvig 3rd Edition*
 
+---
+
 # logical agents - 7.1-7.7 (omitting 7.5.2)
 
 - *knowledge-based agents* - intelligence is based on *reasoning* that operates on internal *representations of knowledge*

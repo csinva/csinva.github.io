@@ -7,6 +7,8 @@ category: math
 * TOC
 {:toc}
 
+---
+
 # Normal forms of Hopf bifurcations
 - pitchfork: $$\dot{x} = \lambda x - x^3$$ ![](assets/chaos/pitch.png)
 - subcritical pitchfork: $\dot{x} = \lambda x + x^3$ ![](assets/chaos/subpitch.png)

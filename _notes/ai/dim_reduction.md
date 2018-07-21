@@ -6,6 +6,9 @@ category: ai
 ---
 * TOC
 {:toc}
+
+---
+
 # overview
 
 | Method              | Analysis objective | Temporal smoothing | Explicit noise model |

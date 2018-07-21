@@ -7,6 +7,9 @@ category: math
 
 * TOC
 {:toc}
+
+---
+
 # misc
 
 - $\left( \frac{n}{k} \right) < \left( \frac{ne}{k} \right)^k$

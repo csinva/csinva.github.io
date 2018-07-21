@@ -10,6 +10,8 @@ typora-copy-images-to: ./assets/ai
 {:toc}
 *From "Artificial Intelligence" Russel & Norvig 3rd Edition*
 
+---
+
 # game trees - R&N 5.2-5.5
 
 - like search (adversarial search)

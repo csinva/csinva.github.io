@@ -6,6 +6,9 @@ category: ml
 ---
 * TOC
 {:toc}
+
+---
+
 # metrics
 
 - *goodness of fit* - how well does the learned distribution represent the real distribution?

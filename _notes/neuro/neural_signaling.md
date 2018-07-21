@@ -8,6 +8,8 @@ category: neuro
 * TOC
 {:toc}
 
+---
+
 # 1 - introduction
 - ![](assets/neural_signaling/map.png)
 ## genomics

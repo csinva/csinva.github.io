@@ -4,8 +4,11 @@ section-type: notes
 title: causal inference
 category: stat
 ---
+
 * TOC
 {:toc}
+
+---
 
 
 # causality (freedman ch 1)

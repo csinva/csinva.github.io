@@ -8,6 +8,8 @@ category: neuro
 * TOC
 {:toc}
 
+---
+
 # whole brain
 - *Cerebrum* - The cerebrum is the largest portion of the brain, and contains tools which are responsible for most of the brain's function. It is divided into four sections: 
   - the temporal lobe

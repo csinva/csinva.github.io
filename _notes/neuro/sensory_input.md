@@ -8,6 +8,8 @@ category: neuro
 * TOC
 {:toc}
 
+---
+
 # 9- somatosensory
 ## cheat sheet
 - vocab

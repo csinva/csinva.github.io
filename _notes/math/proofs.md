@@ -8,6 +8,8 @@ category: math
 * TOC
 {:toc}
 
+---
+
 # proofs
 - induction
 	- must already know formula

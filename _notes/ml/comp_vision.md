@@ -7,6 +7,9 @@ category: ml
 
 * TOC
 {:toc}
+
+---
+
 # what's in an image?
 
 - vision doesn't exist in isolation - movement
