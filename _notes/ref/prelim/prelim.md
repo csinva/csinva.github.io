@@ -46,3 +46,9 @@
 - graphical model inference
 - do russel practice qs
 - look over 188 / 189 finals and stuff
+- memorize
+  - sigmoid
+  - normal distr
+  - multivariate normal distr
+  - cross-entropy
+  - linear algebra facts

@@ -6,7 +6,6 @@ category: ml
 ---
 * TOC
 {:toc}
-
 ---
 
 # overview
@@ -37,6 +36,7 @@ category: ml
 | Logistic regression | $\theta^T\theta + C \sum_i log[1+exp(-y_i \cdot \theta^T x_i)]$ |
 
 
+- svm use 1/-1, logistic use 1/0
 - *perceptron* - tries to find separating hyperplane
   - whenever misclassified, update w
   - can add in delta term to maximize margin
@@ -54,7 +54,7 @@ category: ml
     - labels are class i and class j
     - inference - any class can get up to k-1 votes, must decide how to break ties
   - flaws - learning only optimizes *local correctness*
-- single classifier
+- single classifier - **one hot vector encoding**
   - *multiclass perceptron* (Kesler)
     - if label=i, want $\theta_i ^Tx > \theta_j^T x \quad \forall j$
     - if not, update $\theta_i$ and $\theta_j$* accordingly
@@ -203,15 +203,19 @@ category: ml
 
 - binary case: posterior probability $p(Y=1|x, \theta)$ is a sigmoid $\frac{1}{1+e^{-z}}$ where $z = \beta^Tx+\gamma$
   1. multiclass extends to *softmax function*: $\frac{e^{\beta_k^Tx}}{\sum_i e^{\beta_i^Tx}}$ - $\beta$s can be used for dim reduction
+- probabilistic interpretation
+  - assumes classes are distributed as different Gaussians
+  - it turns out this yields posterior probability in the form of sigmoids / softmax
 - only a linear classifier when covariance matrices are the same (**LDA**)
   1. otherwise a quadratic classifier (like **QDA**) - decision boundary is quadratic
-- MLE for estimates are pretty intuitive
-- decision boundary are points satisfying $P(C_i\vert X) = P(C_j\vert X)$
+  2. MLE for estimates are pretty intuitive
+  3. decision boundary are points satisfying $P(C_i\vert X) = P(C_j\vert X)$
 - *regularized discriminant analysis* - shrink the separate covariance matrices towards a common matrix
   - $\Sigma_k = \alpha \Sigma_k + (1-\alpha) \Sigma$
 - parameter estimation: treat each feature attribute and class label as random variables
   - assume distributions for these
   - for 1D Gaussian, just set mean and var to sample mean and sample var
+- can use directions for dimensionality reduction (class-separation)
 
 ## naive bayes classifier
 

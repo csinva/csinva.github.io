@@ -15,32 +15,21 @@ category: ai
   - like cv, given pixels, how do we understand world?
 - historical cognitive dev: how do we form representations?
   - **nativism** - plato - representation w/out learning
-
-
   - **empiricism** - aristotle - learning w/out representation
-
   - **constructivism** - jean piaget - cognitive development
-
     - types
-
       - assimilation - start with schema, which tells you how to act
       - accomodation - adjust schema based on what you see
       - equilibration - everything set
-
     - periods
-
       | sensorimotor  | preoperational      | concrete operational  | formal operational     |
       | ------------- | ------------------- | --------------------- | ---------------------- |
       | 0 - 18 months | 18 months - 5 years | 5 years - adolescence | adolescence and beyond |
-
     - problems
-
       - dev. is domain-specific and variable
       - when measured better, children show earlier competence
       - doesn't specify learning methods
-
 - contemporary theories
-
   - **nativism** - core knowledge or modules
     - plato, descartes
     - chomsky - language acuquisition device
