@@ -93,6 +93,7 @@ typora-copy-images-to: ./assets/ai
 
 # decision theory / VPI -- R&N 16.5 & 16.6
 
+- note: here we are just making 1 decision
 - *decision network* (sometimes called *influence diagram*)
   1. *chance nodes* - represent RVs (like BN)
   2. *decision nodes* - points where decision maker has a choice of actions
@@ -115,8 +116,10 @@ typora-copy-images-to: ./assets/ai
 - *information value theory* - enables agent to choose what info to acquire
   - observations only affect agent's belief state
   - value of info = difference in best expected value with/without info
-- *value of perfect information VPI* - assume we can obtain exact evidence for a variable (ex.  variable $E_j = e_j$)
-  - $VPI_e(E_j) = \left[\sum_k P(E_j = e_{jk} \vert e) \cdot \underbrace{EU(\alpha_{ejk}  \vert  e, E_j = e_{jk})}_{\text{EU if $E_j=e_{jk}$}}  \right] - \underbrace{EU(\alpha \vert e)}_{\text{original EU}}$
+  - $EU(\alpha|e) = \underset{a}{\max} \sum_{s'} P(Result(a)=s'|a, e) U(s')$
+- *value of perfect information VPI* - assume we can obtain exact evidence for a variable (ex. variable $E_j = e_j$)
+  - $VPI_e(E_j) = \left[\sum_k P(E_j = e_{k} \vert e) \cdot \underbrace{EU(\alpha \vert  e, E_j = e_{k})}_{\text{EU if $E_j=e_{k}$}}  \right] - \underbrace{EU(\alpha \vert e)}_{\text{original EU}}$
+  - first term is like $\mathbb{E}_{E_j|e}\left[ EU(\alpha|e) \right]$
   - info is more valuable when it is likely to cause a change of plan
   - info is more valuable when the new plan will be much better than the old plan
   - VPI not linearly additive, but is order-independent
@@ -144,7 +147,7 @@ typora-copy-images-to: ./assets/ai
       - optimal action in a given state could change over time = *nonstationary*
     - ex. average reward rate per time step
     - ex. agent is guaranteed to get to terminal state eventually - *proper policy*
-- expected utility executing $\pi$: $U^\pi (s) = E[\sum_t \gamma^t R(S_t)]$
+- expected utility executing $\pi$: $U^\pi (s) = \mathbb E_{s_1,...,s_t}\left[\sum_t \gamma^t R(s_t)\right]$
   - when we use discounted utilities, $\pi$ is independent of starting state
   - $\pi^*(s) = \underset{\pi}{argmax} \: U^\pi (s) = \underset{a}{argmax} \sum_{s'} P(s' \vert s,a) U'(s)$
 

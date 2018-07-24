@@ -1,10 +1,19 @@
-{% include head.html %}
-<div id="header" width="100%">
+<header>
+    {% include head.html %}
     {% include navigation.html %}
-</div>
+</header>
+
+
+<body data-spy="scroll" data-target=".navbar-fixed-top">
+    <div width="40%" class="column" style="margin-top: 150px; margin-bot: 150px; margin-left: 100px; margin-right: 100px">
+        {{ page.content | markdownify }}
+    </div>
+</body>
 
 
 
+
+<!--js-->
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "all" } } });
     MathJax.Hub.Config({
@@ -15,22 +24,16 @@
     });
 </script>
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+{% include js.html %}
 
 
-<body>
-
-    <div width="40%" class="column" style="margin-top: 150px; margin-bot: 150px; margin-left: 100px; margin-right: 100px">
-        {{ page.content | markdownify }}
-    </div>
-
-    <style>
-     img {
-        background:none;
-        border:none;
-        box-shadow:none;
-        filter: invert(1);
-        width: 25%;
-     }
-    </style>
-
-</body>
+<!--css-->
+<style>
+ img {
+    background:none;
+    border:none;
+    box-shadow:none;
+    filter: invert(1);
+    width: 25%;
+ }
+</style>

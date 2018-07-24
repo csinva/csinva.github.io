@@ -72,6 +72,8 @@ Artificial neural networks can compute in several different ways. There is some 
 - overview: http://www.scholarpedia.org/article/Encyclopedia_of_computational_neuroscience
 - keeping up to date: https://sanjayankur31.github.io/planet-neuroscience/
 - *lots of good data*: http://home.earthlink.net/~perlewitz/index.html
+- connectome
+  - fly brain: http://temca2data.org/
 - *models*
   - senseLab: https://senselab.med.yale.edu/
     - modelDB - has NEURON code

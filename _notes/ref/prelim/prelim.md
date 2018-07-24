@@ -52,3 +52,5 @@
   - multivariate normal distr
   - cross-entropy
   - linear algebra facts
+  - vpi formula
+
