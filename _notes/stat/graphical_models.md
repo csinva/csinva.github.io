@@ -68,20 +68,30 @@ category: stat
 
 ## exact inference
 
-- given assignment to *evidence variables*, find probs of *query variables*
-  - other variables are *hidden variables*
+- given assignment to *evidence variables* E, find probs of *query variables* X
+  - other variables are *hidden variables* H
 - *polytree*=*singly connected network* - time and space complexity of exact inference is linear in the size of the network
   - holds even if the number of parents of each node is bounded by a constant
-1. *enumeration* - just try everything
+1. *enumeration* - just try summing over all hidden variables
+  - $P(X|e) = \alpha P(X, e) = \alpha \sum_h P(X, e, h)$
+    - $\alpha$ can be calculated as $1 / \sum_x P(x, e)$
   - $O(n \cdot 2^n)$
-    - one summation for each variable
+    - one summation for each of *n* variables
   - ENUMERATION-ASK evaluates in depth-first order: $O(2^n)$
     - we removed the factor of *n*
 2. *variable elimination* - dynamic programming
-  - every variable that is not an ancestor of a query variable or evidence variable is irrelevant to the query
-  - picking order can be tricky
+  - ![Screen Shot 2018-07-26 at 8.52.30 AM](assets/Screen Shot 2018-07-26 at 8.52.30 AM.png)
+  - $P(B|j, m) = \alpha \underbrace{P(B)}_{f_1(B)} \sum_e \underbrace{P(e)}_{f_2(E)} \sum_a \underbrace{P(a|B,e)}_{f_3(A, B, E)} \underbrace{P(j|a)}_{f_4(A)} \underbrace{P(m|a)}_{f_5(A)}$
+    - calculate factors in reverse order (bottom-up)
+    - each factor is a vector with num entries = $\prod$ |num_elements| * |num_values| 
+    - when we multiply them, pointwise products
+  - ordering
+    - any ordering works, some are more efficient
+    - every variable that is not an ancestor of a query variable or evidence variable is irrelevant to the query
+    - complexity depends on largest factor formed
 3. *clustering algorithms* = *join tree* algorithms
   - join individual nodes in such a way that resulting network is a polytree
+    - ![Screen Shot 2018-07-26 at 8.52.30 AM-2621781](assets/Screen Shot 2018-07-26 at 8.52.30 AM-2621781.png)
     - *polytree*=*singly-connected network* - only 1 undirected paths between any 2 nodes
   - can compute posterior probabilities in $O(n)$
     - however, conditional probability tables may still be exponentially large
@@ -167,15 +177,16 @@ category: stat
 
 - the elimination algorithm is for *probabilistic inference*
   - want $p(x_F\|x_E)$ where E and F are disjoint
-- here let $X_F$ be a single node
-- define $m_i (x_{S_i})$ = $\sum_{x_i}$ where $x_{S_i}$ are the variables, other than $x_i$, that appear in the summand
-- define *evidence potential* $\delta(x_i, \bar{x_i})$ = 1 if $x_i == \bar{x_i}$ and 0 otherwise
-  - then $$g(\bar{x_i}) = \sum_{x_i} \delta (x_i, \bar{x_i})$$
-  - for a set $\delta (x_E, \bar{x_E}) = \prod_{i \in E} \delta (x_i, \bar{x_i})$
-- now define $p^E(x) = p(x) \delta (x_E, \bar{x_E})$
-  - this lets us write $p^E (x) = \frac{1}{Z} \prod_{c\in C} \psi^E_{X_c} (x_c)$
-  - condition on E, and find probability
-  - in actuality don't compute the product, just take the correct slice
+- here, let $X_F$ be a single node
+- notation
+  - define $m_i (x_{S_i})$ = $\sum_{x_i}$ where $x_{S_i}$ are the variables, other than $x_i$, that appear in the summand
+  - define *evidence potential* $\delta(x_i, \bar{x_i})$ = 1 if $x_i == \bar{x_i}$ and 0 otherwise
+    - then $$g(\bar{x_i}) = \sum_{x_i} \delta (x_i, \bar{x_i})$$
+    - for a set $\delta (x_E, \bar{x_E}) = \prod_{i \in E} \delta (x_i, \bar{x_i})$
+  - now define $p^E(x) = p(x) \delta (x_E, \bar{x_E})$
+    - this lets us write $p^E (x) = \frac{1}{Z} \prod_{c\in C} \psi^E_{X_c} (x_c)$
+    - condition on E, and find probability
+    - in actuality don't compute the product, just take the correct slice
 - ![](assets/graphical_models/j3_1.png) 
 - undirected graph elimination algorithm
   - for directed graph, first *moralize*
