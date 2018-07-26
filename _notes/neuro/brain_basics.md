@@ -7,10 +7,20 @@ category: neuro
 
 * TOC
 {:toc}
-
 ---
 
+# delineations
+
+- 3 things
+  - cortex
+  - limbic system
+    - thalamus (has pulvinar), hypothalamus, hippocampus, amygdala, ...
+    - glands / hormones
+  - brain stem
+    - midbrain (has superior colliculus), pons, medulla
+
 # whole brain
+
 - *Cerebrum* - The cerebrum is the largest portion of the brain, and contains tools which are responsible for most of the brain's function. It is divided into four sections: 
   - the temporal lobe
   - the occipital lobe

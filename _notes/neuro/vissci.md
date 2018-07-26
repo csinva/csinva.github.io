@@ -7,7 +7,6 @@ category: neuro
 
 * TOC
 {:toc}
-
 ---
 
 # neural signals

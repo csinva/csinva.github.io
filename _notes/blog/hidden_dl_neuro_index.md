@@ -69,6 +69,7 @@ Artificial neural networks can compute in several different ways. There is some 
 
 - lots of stuff: http://datalad.org/datasets.html
 - springer 10k calcium imaging recording: https://figshare.com/articles/Recordings_of_ten_thousand_neurons_in_visual_cortex_during_spontaneous_behaviors/6163622 
+  - springer 2: 10k neurons with 2800 images
 - overview: http://www.scholarpedia.org/article/Encyclopedia_of_computational_neuroscience
 - keeping up to date: https://sanjayankur31.github.io/planet-neuroscience/
 - *lots of good data*: http://home.earthlink.net/~perlewitz/index.html

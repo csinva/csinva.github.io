@@ -7,7 +7,6 @@ category: math
 
 * TOC
 {:toc}
-
 ---
 
 # linear basics
@@ -46,7 +45,7 @@ category: math
 - inverse
     - *orthogonal matrix*: all columns are *orthonormal*
       - $A^{-1} = A^T$
-      - preserves the Euclidean norm $\|\|Ax\|\|_2 = \|\|x\|\|_2$
+      - preserves the Euclidean norm $||Ax||_2 = ||x||_2$
     - if diagonal, inverse is invert all elements
     - inverting 3x3 - transpose, find all mini dets, multiply by signs, divide by det
     - *psuedo-inverse* = *Moore-Penrose inverse* $A^\dagger = (A^T A)^{-1} A^T$
@@ -71,9 +70,10 @@ category: math
 
 # matrix calc
 
-- derivative usually has same size as top
-- function f: $\mathbb{R}^n \to \mathbb{R}^m$ 
+- function f: $\text{anything} \to \mathbb{R}^m$ 
     - *gradient* vector $\nabla_A f(\mathbf{A})$- partial derivatives with respect to each element of matrix
+- these next 2 assume numerator layout (numerator-major order, so numerator constant along rows)
+- function f: $\mathbb{R}^n \to \mathbb{R}^m$ 
     - *Jacobian matrix*: $\mathbf J = \begin{bmatrix}    \dfrac{\partial \mathbf{f}}{\partial x_1} & \cdots & \dfrac{\partial \mathbf{f}}{\partial x_n} \end{bmatrix}= \begin{bmatrix}    \dfrac{\partial f_1}{\partial x_1} & \cdots & \dfrac{\partial f_1}{\partial x_n}\\    \vdots & \ddots & \vdots\\    \dfrac{\partial f_m}{\partial x_1} & \cdots & \dfrac{\partial f_m}{\partial x_n} \end{bmatrix}$
 - function f: $\mathbb{R}^n \to \mathbb{R}$ 
     - 2nd derivative is *Hessian* matrix
@@ -100,14 +100,14 @@ category: math
 
 ## vector norms
 
-- *$L_p-$norms*: $\|\|x\|\|_p = (\sum_{i=1}^n \|x_i\|^p)^{1/p}$
+- *$L_p-$norms*: $||x||_p = (\sum_{i=1}^n |x_i|^p)^{1/p}$
   - $L_0$ norm - number of nonzero elements
-  - $\|\|x\|\|_1 = \sum \|x_i\|$
-  - $\|\|x\|\|_\infty = max_i \|x_i\|$ - also called *Cheybyshev norm*
+  - $||x||_1 = \sum |x_i|$
+  - $||x||_\infty = max_i |x_i|$ - also called *Cheybyshev norm*
 - *quadratic norms*
-  - *P-quadratic norm*: $\|\|x\|\|_P = (x^TPx)^{1/2} = \|\| P^{1/2} x \|\|_2$ where $P \in S_{++}^n$
+  - *P-quadratic norm*: $||x||_P = (x^TPx)^{1/2} = || P^{1/2} x ||_2$ where $P \in S_{++}^n$
 - *dual norm*
-  - given a norm $\|\| \cdot \|\|$, dual norm $\|\|z\|\|_* = sup\{ z^Tx \: \| \: \|\|x\|\| \leq 1\}$
+  - given a norm $|| \cdot ||$, dual norm $||z||_* = sup\{ z^Tx \: | \: ||x|| \leq 1\}$
   - dual of the dual is the original
   - dual of Euclidean is just Euclidean
   - dual of $l_1$ is $l_\infty$
@@ -120,10 +120,10 @@ category: math
   - sum-absolute-value norm (like $l_1$) 
   - maximum-absolute-value norm (like $l_\infty​$)
 - *operator norm*
-  - let $\|\|\cdot\|\|_a$ and $\|\| \cdot \|\|_b$ be vector norms
-  - operator norm $\|\|X\|\|_{a,b} = sup\{ \|\|Xu\|\|_a \: \| \: \|\|u\|\|_b \leq 1 \}$
+  - let $||\cdot||_a$ and $|| \cdot ||_b$ be vector norms
+  - operator norm $||X||_{a,b} = sup\{ ||Xu||_a \: | \: ||u||_b \leq 1 \}$
      - represents the maximum stretching that X does to a vector u
-  - if both Euclidean norms, X is *max singular value*: $\|\|X\|\|_2 = \sigma_\text{max}(X) = [\lambda_{max} (X^TX)]^{1/2}$
+  - if both Euclidean norms, X is *max singular value*: $||X||_2 = \sigma_\text{max}(X) = [\lambda_{max} (X^TX)]^{1/2}$
     - also called *spectral norm* or *$L_2$-norm* (of a matrix)
 
 # eigenstuff
@@ -141,8 +141,8 @@ category: math
 - expressions when $A \in \mathbb{S}$
   - $det(A) = \prod_i \lambda_i$
   - $tr(A) = \sum_i \lambda_i$
-  - $\|\|A\|\|_2 = max \| \lambda_i \|$
-  - $\|\|A\|\|_F = \sqrt{\sum \lambda_i^2}$
+  - $||A||_2 = max | \lambda_i |$
+  - $||A||_F = \sqrt{\sum \lambda_i^2}$
   - $\lambda_{max} (A) = sup_{x \neq 0} \frac{x^T A x}{x^T x}$
   - $\lambda_{min} (A) = inf_{x \neq 0} \frac{x^T A x}{x^T x}$
 - *defective matrices* - lack a full set of eigenvalues
@@ -184,7 +184,7 @@ category: math
 ## strang 6.3 - singular value decomposition
 
 - SVD for any nxp matrix: $X=U \Sigma V^T$
-  - U (nxn) are eigenvectors of $XX^T$
+  - U columns (nxn) are eigenvectors of $XX^T$
   - columns of V (pxp) are eigenvectors of $X^TX$
   - r singular values on diagonal of $\Sigma$ (nxp) - square roots of nonzero eigenvalues of both $XX^T$ and $X^TX$
   - like rotating, scaling, and rotating back
@@ -206,8 +206,8 @@ category: math
   - steady-state Ax = x 
   - corresponds to $\lambda = 1$
 - stability of $u_{k+1} = A u_k$
-  - stable if all eigenvalues satisfy $\|\lambda_i\|$  <1
-  - neutrally stable if some $\|\lambda_i\|=1$
-  - unstable if at least one $\|\lambda_i\|$ > 1
+  - stable if all eigenvalues satisfy $|\lambda_i|$  <1
+  - neutrally stable if some $|\lambda_i|=1$
+  - unstable if at least one $|\lambda_i|$ > 1
 - Leontief's input-output matrix
 - *Perron-Frobenius thm* - if A is a positive matrix (positive values), so is its largest eigenvalue. Every component of the corresponding eigenvector is also positive.

@@ -14,8 +14,8 @@ category: stat
 
 # entropy
 
-- $H(X) = - \sum p(x) log p(x) = E[h(p)]$
-  - $h(p)= - log(p)$
+- $H(X) = - \sum p(x) \:\log p(x) = E[h(p)]$
+  - $h(p)= - \log(p)$
   - $H(p)$ implies p is binary
   - usually for discrete variables only
   - assume 0 log 0 = 0
@@ -31,7 +31,7 @@ category: stat
 
   - $H(X) \geq 0$ since $p(x) \in [0, 1]$
 
-- $H(Y\|X)=\sum p(x) H(Y\|X=x) = \sum_x \sum_y p(x) p(y|x) log \: p(y|x)$
+- $H(Y\|X)=\sum p(x) H(Y\|X=x) = \sum_x p(x) \sum_y  p(y|x) log \: p(y|x)$
   - $H(X,Y)=H(X)+H(Y\|X) =H(Y)+H(X\|Y)$
 
 # relative entropy / mutual info

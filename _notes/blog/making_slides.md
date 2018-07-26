@@ -20,7 +20,7 @@ This has 2 main benefits:
 2. Having a 2D layout that helps keep slides organized
 3. You can easily embed webpages / interactive animations
 
-You can see [a demo](http://localhost:4000/pres/189/#/) of one of my slide decks, created completely from markdown (with external images). 
+You can see [a demo](https://csinva.github.io/pres/189/#/) of one of my slide decks, created completely from markdown (with external images). 
 
 To make things even faster, I use this `preproc.js` file to automatically  create new slides with a double \## and new columns of slides with a single \#:
 

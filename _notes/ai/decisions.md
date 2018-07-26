@@ -116,16 +116,18 @@ typora-copy-images-to: ./assets/ai
 - *information value theory* - enables agent to choose what info to acquire
   - observations only affect agent's belief state
   - value of info = difference in best expected value with/without info
-  - $EU(\alpha|e) = \underset{a}{\max} \sum_{s'} P(Result(a)=s'|a, e) U(s')$
-- *value of perfect information VPI* - assume we can obtain exact evidence for a variable (ex. variable $E_j = e_j$)
-  - $VPI_e(E_j) = \left[\sum_k P(E_j = e_{k} \vert e) \cdot \underbrace{EU(\alpha \vert  e, E_j = e_{k})}_{\text{EU if $E_j=e_{k}$}}  \right] - \underbrace{EU(\alpha \vert e)}_{\text{original EU}}$
-  - first term is like $\mathbb{E}_{E_j|e}\left[ EU(\alpha|e) \right]$
+  - maximum $EU(\alpha|e) = \underset{a}{\max} \sum_{s'} P(Result(a)=s'|a, e) U(s')$
+- *value of perfect information VPI* - assume we can obtain exact evidence for a variable (ex. variable $T=t$)
+  - $VPI(T) =  \mathbb{E}_{T}\left[ EU(\alpha|e, T) \right] - \underbrace{EU(\alpha \vert e)}_{\text{original EU}}$
+  - first term expands to $\sum_t P(T=t \vert e) \cdot EU(\alpha \vert  e, T=t) $
+    - within each of these EU, we take a max over actions
   - info is more valuable when it is likely to cause a change of plan
   - info is more valuable when the new plan will be much better than the old plan
   - VPI not linearly additive, but is order-independent
 - information-gathering agent
   - *myopic* - greedily obtain evidence which yields highest VPI until some threshold
   - *conditional plan* - considers more things
+
 # mdps and rl - R&N 17.1-17.4
 
 - sequences of actions
@@ -160,8 +162,8 @@ typora-copy-images-to: ./assets/ai
 - value iteration eventually converges
   - *contraction* - function that brings variables together
     - contraction only has 1 fixed point
-  - Bellman update is a contraction on the space of utility vectors and therefore converges
-  - error is reduced by factor of $\gamma$ each iteration
+    - Bellman update is a contraction on the space of utility vectors and therefore converges
+    - error is reduced by factor of $\gamma$ each iteration
   - also, terminating condition -  if $ \vert  \vert U_{i+1}-U_i \vert  \vert  < \epsilon (1-\gamma) / \gamma$ then $ \vert  \vert U_{i+1}-U \vert  \vert <\epsilon$
   - what actually matters is *policy loss* $ \vert  \vert U^{\pi_i}-U \vert  \vert $ - the most the agent can lose by executing $\pi_i$ instead of the optimal policy $\pi^*$
     - if $ \vert  \vert U_i -U \vert  \vert  < \epsilon$ then $ \vert  \vert U^{\pi_i} - U \vert  \vert  < 2\epsilon \gamma / (1-\gamma)$
@@ -173,7 +175,7 @@ typora-copy-images-to: ./assets/ai
     - like value iteration, but with a set policy so there's no max
       - $U_i(s) = R(s) + \gamma \: \sum_{s'} P(s' \vert s, \pi_i(s)) U_i(s')$
       - can solve exactly for small spaces, or approximate (set of lin. eqs.)
-  2. *policy improvement* - calculate a new MEU policy $\pi_{i+1}$ using one-step look-ahead based on $U_i$
+  2. *policy improvement* - calculate a new MEU policy $\pi_{i+1}$ using $U_i$
     - same as above, just $\pi^*(s) = \underset{\pi}{argmax} \: U^\pi (s) = \underset{a}{argmax} \sum_{s'} P(s' \vert s,a) U'(s)$
 - *asynchronous policy iteration* - don't have to update all states at once
 
@@ -202,77 +204,98 @@ typora-copy-images-to: ./assets/ai
   - generally this is far too inefficient
 
 - *dynamic decision network* - online agent ![](assets/ai/online_pomdp.png) 
-  - ***still don't really understand this***
 
 # reinforcement learning -- R&N 21.1-21.6
 
 - *reinforcement learning* - use observed rewards to learn optimal policy for the environment
+  - in ch 17, agent had model of environment (this is why we write P(Result(a)=s')) + reward function
 - 2 problems
   - *passive* - given $\pi$, learn $U^\pi (s)$
   - *active* - *explore* states to find utilities and *exploit* to get highest reward
-- 2 model types, 3 agent design examples
-  - model-based: can predict next state/reward before taking action
+- 2 model types, 3 agent designs
+  - model-based: can predict next state/reward before taking action (for MDP, requires learning $P(s'|s,a)$)
     - *utility-based agent* - learns utility function on states
       - requires model of the environment
   - model-free 
     - *Q-learning agent*: learns *action-utility function* = *Q-function* maps actions $\to$ utility
-    - *reflex agent: *learns policy that maps directly from states to actions
+    - *reflex agent*: learns policy that maps directly from states to actions
 
 ## passive reinforcement learning
 
-- given policy $\pi$, learn $U^\pi (s)$
+- given policy $\pi$, learn $U^\pi (s) = E\left[ \sum_{t=0}^{\infty} \gamma^t R(S_t)\right]$
   - like policy evaluation, but transition model / reward function are unknown
-- *direct utility estimation* - run a bunch of trials to sample utility = expected total reward from each state
-- two ways to add prior
-  1. *Bayesian reinforcement learning* - assume a prior $P(h)$ on the transition model
-    - use prior to calculate $P(h \vert e)$
-    - let $u_h^\pi$ be expected utility averaged over all possible start states, obtained by executing policy $\pi$ in model h
-    - $\pi^* = \underset{\pi}{argmax} \sum_h P(h \vert e) u_h^\pi$
-  2. give best outcome in the worst case over H (from *robust control theory*)
-    - $\pi^* = \underset{\pi}{argmax}\:  \underset{h}{\min} \: u_h^\pi$
-- *adaptive dynamic programming* (ADP) - learn transition model and rewards, then plug into Bellman eqn
+- **direct utility estimation**: treat states independently
+  - run trials to sample utility
+  - average to get expected total reward for each state = expected total reward from each state
+- **adaptive dynamic programming** (ADP) - sample to estimate transition model $P(s'|s, a)$ and rewards $R(s)$, then plug into Bellman eqn to find $U^\pi(s)$ (plug in at each step)
+  - we might want to enforce a prior on the model (two ways)
+    1. *Bayesian reinforcement learning* - assume a prior $P(h)$ on transition model h
+      - use prior to calculate $P(h \vert e)$
+      - use $P(h|e)$ to calculate optimal policy: $\pi^* = \underset{\pi}{argmax} \sum_h P(h \vert e) u_h^\pi$
+        - $u_h^\pi$= expected utility over all possible start states, obtained by executing policy $\pi$ in model h
+    2. give best outcome in the worst case over H (from *robust control theory*)
+      - $\pi^* = \underset{\pi}{argmax}\:  \underset{h}{\min} \: u_h^\pi$
+- **temporal-difference learning** - adjust utility estimates towards local equilibrium for correct utilities
+  - like an approximation of ADP
+  - when we transition $s \to s'$, update $U^\pi(s) = U^\pi (s) + \alpha \left[R(s) - U^\pi (s) + \gamma \:U^\pi (s') \right]$
+    - $\alpha$ should decrease over time to converge
   - *prioritized sweeping* - prefers to make adjustments to states whose likely successors have just undergone a large adjustment in their own utility estimates
-- *temporal-difference learning* - adjust utility estimates towards the ideal equilibrium that holds locally when the utility estimates are correct
-  - $U^\pi = U^\pi (s) + \alpha \left[R(s) + \gamma \:U^\pi (s') - U^\pi (s)\right]$
-  - like a crude approximation of ADP
+    - speeds things up
 
 ## active reinforcement learning
 
-- *explore* states to find their utilities and *exploit* model to get highest reward
+- no longer following set policy
+
+  - *explore* states to find their utilities and *exploit* model to get highest reward
+
+  - must explore all actions, not just those in the policy
+
 - *bandit* problems - determining exploration policy
-  - should be *GLIE* - greedy in the limit of infinite exploration - visits all states infinitely, but eventually become greedy
-  - ex. choose random action $1/t$ of the time
-  - better ex. give optimistic prior utility to unexplored states
-    - uses *exploration function* f(u, numTimesVisited) in utility update rule
+
   - *n-armed bandit* - pulling n levelers on a slot machine, each with different distr.
-    - *Gittins index* - function of number of pulls / payoff
+  - *Gittins index* - function of number of pulls / payoff
 
-## learning action-utility function
+- coorect schemes should be *GLIE* - greedy in the limit of infinite exploration - visits all states infinitely, but eventually become greedy
 
-- $U(s) = \underset{a}{max} \: Q(s,a)$
-  - does require $P(s' \vert s,a)$ if we use ADP
-  - doesn't require knowing $P(s' \vert s,a)$ if we use TD: $Q(s,a) = Q(s,a) + \alpha [R(s) + \gamma \: \underset{a'}{max} Q(s', a') - Q(s,a)]$
-- *SARSA* is related: $Q(s,a) = Q(s,a) + \alpha [R(s) + \gamma \: Q(s', a') - Q(s,a)]$
+### agent examples
+
+- ex. choose random action $1/t$ of the time
+- ex. active adp agent
+  - give optimistic utility to relatively unexplored states
+  - uses *exploration function* f(u, numTimesVisited) around the sum in the bellman eqn
+    - high utilities will propagate
+- ex. active TD agent
+  - now must learn transitions (same as adp)
+  - update rule same as passive TD
+
+### learning action-utility function
+
+- $U(s) = \underset{a}{\max} \: Q(s,a)$
+  - ADP version: $Q(s, a) = R(s) + \gamma \sum_{s'} P(s'|s, a) \underset{a'}{\max} Q(s', a')$
+  - TD version: $Q(s,a) = Q(s,a) + \alpha [R(s) - Q(s,a) + \gamma \: \underset{a'}{\max} Q(s', a')]$
+- *SARSA* (state-action-reward-state-action) is related: $Q(s,a) = Q(s,a) + \alpha [R(s) - Q(s,a) + \gamma \: Q(s', a')]$
   - here, a' is action actually taken
-  - SARSA is *on-policy* while Q-learning is *off-policy*
+- Q-learning is *off-policy* (only uses best Q-value)
+  - more flexible
+- SARSA is *on-policy* (pays attention to actual policy being followed) 
 
-## generalization
-
-- approximate Q-function
-  - ex. linear function of parameters
+- can approximate Q-function with something other than a lookup table
+  - ex. linear function of parameters $\hat{U}_\theta(s) = \theta_1f_1(s) + ... + \theta_n f_n(s)$
     - can learn params online with *delta rule* = *wildrow-hoff rule*: $\theta_i = \theta - \alpha \: \frac{\partial Loss}{\partial \theta_i}$
 
 ## policy search
 
 - keep twiddling the policy as long as it improves, then stop
   - store one Q-function (parameterized by $\theta$) for each action
-  - $\pi(s) = \underset{a}{max} \: \hat{Q}_\theta (s,a)$
+  - ex. $\pi(s) = \underset{a}{\max} \: \hat{Q}_\theta (s,a)$
     - this is discontinunous, instead often use *stochastic policy* representation (ex. softmax for $\pi_\theta (s,a)$)
-- learns $\theta​$ that results in good performance
-  - Q-learning learns actual Q* function - coulde be different (scaling factor etc.)
-- to find $\pi$ maximize *policy value* $p(\theta)$
-  - could do this with gradient ascient / empirical gradient hill climbing
-- when environment/policy is stochastic, more difficult
-  1. could sample mutiple times to compute gradient
-  2. REINFORCE algorithm - could approximate gradient at $\theta$ by just sampling at $\theta$: $\nabla_\theta p(\theta) \approx \frac{1}{N} \sum_{j=1}^N \frac{(\nabla_\theta \pi_\theta (s,a_j)) R_j (s)}{\pi_\theta (s,a_j)}$
-  3. PEGASUS - *correlated sampling* - ex. 2 blackjack programs would both be dealt same hands
+  - learn $\theta$ that results in good performance
+    - Q-learning learns actual Q* function - could be different (scaling factor etc.)
+- to find $\pi$ maximize *policy value* $p(\theta) = $ expected reward executing $\pi_\theta$
+  - could do this with sgd using *policy gradient*
+  - when environment/policy is stochastic, more difficult
+    1. could sample mutiple times to compute gradient
+    2. REINFORCE algorithm - could approximate gradient at $\theta$ by just sampling at $\theta$: $\nabla_\theta p(\theta) \approx \frac{1}{N} \sum_{j=1}^N \frac{(\nabla_\theta \pi_\theta (s, a_j)) R_j (s)}{\pi_\theta (s, a_j)}$
+    3. PEGASUS - *correlated sampling* - ex. 2 blackjack programs would both be dealt same hands -  want to see different policies on same things
+
+---

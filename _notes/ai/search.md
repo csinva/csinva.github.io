@@ -157,8 +157,9 @@ From "Artificial Intelligence" Russel & Norvig 3rd Edition
     - can estimate gradient by evaluating response to small increments
 - *line search* - repeatedly double $\alpha$ until f starts to increase again
 - *Newton-Raphson* method
-  - uses 2nd deriv: x = x - g(x) / g'(x)
-  - $x = x - H_f^{-1} (x) \nabla f(x)$ where H is the Hessian of 2nd derivs
+  - finds roots of func using 1st derive: $x_{root} = x - g(x) / g'(x)$
+  - apply this on 1st deriv to get minimum
+    - $x = x - H_f^{-1} (x) \nabla f(x)$ where H is the Hessian of 2nd derivs
 
 # Constraint satisfaction problems - R&N 6.1-6.5
 

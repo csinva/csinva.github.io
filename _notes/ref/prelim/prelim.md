@@ -1,3 +1,5 @@
+- pick up at jordan 2!
+
 # general
 
 - linear algebra
@@ -11,11 +13,12 @@
   - a*
   - csps
   - local search
-- **decisions**
+- decisions
   - game trees
   - utilities / decision theory
-  - mdps + rl
   - decision theory / vpi
+  - mdps **pomdps?**
+  - rl
 - **graphical models**
   - independence / factorization
   - elimination
@@ -42,15 +45,12 @@
 
 # todo
 
-- value iteration ex.
-- graphical model inference
-- do russel practice qs
-- look over 188 / 189 finals and stuff
-- memorize
-  - sigmoid
-  - normal distr
-  - multivariate normal distr
-  - cross-entropy
-  - linear algebra facts
-  - vpi formula
-
+- read through decisions / rl
+  - value iteration ex.
+- read through graphical models
+  - graphical model inference
+- read through optimization
+- memorize things
+- practice
+  - russell qs
+  - look over 188 / 189 finals and stuff

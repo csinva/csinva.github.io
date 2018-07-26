@@ -20,20 +20,22 @@ category: stat
 - latent variable types
   1. *mixture models* - discrete latent variable
   2. *factor analysis models* - continuous latent variable
+- graph representation: missing edges specify independence (converse is not true)
+  - encode conditional independence relationships
+    - helpful for inference
+  - compact representation of joint prob. distr. over the variables
 
 ![](assets/graphical_models/models.png)
 
-# bayesian networks - R & N 14.1-5
+# bayesian networks - R & N 14.1-5 + J 2
 
-1. purpose
-   1. encodes conditional independence relationships
-   2. compact representation of joint prob. distr. over the variables
-   3. want *causal model* - causes are first, effects are later
-      1. ex. *diagnostic model* - links from symptoms to causes
-         1. requires more dependencies
+1. examples
+   1. ex. *causal model* - causes $\to$ symptoms
+   2. ex. *diagnostic model* - symptoms $\to$ causes
+      1. requires more dependencies
 2. learning
    1. expert-designed
-   2. from data
+   2. data-driven
 
 - properties
   - each node is random variable
@@ -42,11 +44,12 @@ category: stat
 
 
 - joint distr: $P(X_1 = x_1,...X_n=x_n)=\prod_{i=1}^n P[X_i = x_i \vert  Parents(X_i)]$
-  - *Markov condition* - given its parents, a node is conditionally independent of its non-descendants
-  - *topological independence* - a node is independent of all other nodes given its parents, children, and children's parents = *markov blanket*
-    - a node is conditionally independent of its non-descendants given its parents???
+  - *markov condition*: given parents, node is conditionally independent of its non-descendants
+    - marginally, they can still be dependent (e.g. explaining away)
+  - given its *markov blanket* (parents, children, and children's parents), a node is independent of all other nodes
 - BN has no redundancy $\implies$ no chance for inconsistency
-- forming a BN: keep adding nodes, and only previous nodes are allowed to be parents of new nodes
+
+  - forming a BN: keep adding nodes, and only previous nodes are allowed to be parents of new nodes
 
 ## hybrid BN (both continuous & discrete vars)
 
@@ -71,35 +74,43 @@ category: stat
   - holds even if the number of parents of each node is bounded by a constant
 1. *enumeration* - just try everything
   - $O(n \cdot 2^n)$
+    - one summation for each variable
   - ENUMERATION-ASK evaluates in depth-first order: $O(2^n)$
+    - we removed the factor of *n*
 2. *variable elimination* - dynamic programming
   - every variable that is not an ancestor of a query variable or evidence variable is irrelevant to the query
   - picking order can be tricky
 3. *clustering algorithms* = *join tree* algorithms
   - join individual nodes in such a way that resulting network is a polytree
+    - *polytree*=*singly-connected network* - only 1 undirected paths between any 2 nodes
   - can compute posterior probabilities in $O(n)$
     - however, conditional probability tables may still be exponentially large
 
 ## approximate inferences in BNs
 
 - randomized sampling algorithms = *monte carlo* algorithms
-1. *direct sampling* methods
-  - sample network in topological order
-    - more samples is better
+1. *direct sampling* methods: *simplest* - sample network in topological order
+
+  1. more samples is better
+
   - *rejection sampling* - produces samples from a hard-to-sample distr. given an easy-to-sample distr.
     - want P(D\|A)
     - sample N times, throw out samples where A is false
     - return probability of D being true
     - this is slow
-  - *likelihood weighting* - fix our evidence variables to their observed values, then simulate the network
-    - can't just fix variables - distr. might be inconsistent
-    - instead we weight by probability of evidence given parents, then add to final prob
+  - *likelihood weighting* - fix evidence to be more efficient
+    - generating a sample
+      - fix our evidence variables to their observed values, then simulate the network
+      - can't just fix variables - distr. might be inconsistent
+      - calculate *W* = prob of sample being generated
+        - when we get to an evidence variable, multiply by prob it appears given its parents
     - for each observation
-      - if correct, Count = Count + (1*W)
-      - always, Total = Total + (1*W)
+      - if positive, Count = Count + *W*
+      - Total = Total + *W*
     - return Count/Total
     - this way we don't have to throw out wrong samples
     - doesn't solve all problems - evidence only influences the choice of downstream variables
+
 2. *Markov chain monte carlo* - ex. *Gibbs sampling*, *Metropolis-Hastings*
   - fix evidence variables
   - sample a nonevidence variable $X_i$ conditioned on the current values of its Markov blanket
@@ -107,29 +118,19 @@ category: stat
   - why it works
     - the sampling process settles into a dynamic equilibrium where time spent in each state is proportional to its posterior probability
     - provided transition matrix q is *ergodic* - every state is reachable and there are no periodic cycles - only 1 steady-state soln
+
 3. *variational inference* - formulate inference as optimization
    - minimize KL-divergence between observed samples and assumed distribution
+### conditional independence properties
 
-# conditional independence / factorization - J 2
-
-- representations
-  1. numerical representation of joint prob. distr.
-    - helpful for constructing network
-  2. set of conditional independencies
-    - helpful for inference
-
-## directed
-
-- write p(x) or P(X)
-  - $p(x_1, ..., x_n) = \prod_i p (x_i \| x_{\pi_i})$ where $\pi_i$ are the parents
-- let $V_i$ be set of all nodes that appear earlier (topologically) than $i$ in the ordering excluding $\pi_i$
-  - $X_i \perp X_{V_i} \| x_{\pi_i}$
-- conditional independencies will always be present
-  - sometimes conditional dependencies can also be independent (if we pick p(y\|x) to not actually depend on x)
 - multiple, competing explanations ("explaining-away")
-  -  ![](assets/graphical_models/j2_1.png) 
+
+  ![](assets/graphical_models/j2_1.png) 
+
   -  in fact any descendant of the base of the v suffices for explaining away
+
 - *d-separation* = directed separation
+
 - *Bayes ball algorithm* - is $X_A \perp X_B \| X_C$?
   - initialize
     - shade $X_C$
@@ -142,15 +143,21 @@ category: stat
 ## undirected
 
 - $X_A \perp X_C \| X_B$ if the set of nodes $X_B$ separates the nodes $X_A$ from $X_C$
+
+  ![Screen Shot 2018-07-24 at 11.16.29 PM](assets/Screen Shot 2018-07-24 at 11.16.29 PM.png)
+
 - can't convert directed / undirected
-- *clique* - fully connected
-  - *maximal clique* - cannot be extended
+
+![Screen Shot 2018-07-24 at 11.17.57 PM](assets/Screen Shot 2018-07-24 at 11.17.57 PM.png)
+
+- factor over *maximal cliques* (largest sets of fully connected nodes)
 - potential function $\psi_{X_C} (x_C)$ function on possible realizations $x_C$ of the maximal clique $X_C$
-  - non-negative, but not a probability
-  - commonly let these be exponential, yielding *energy* and *Boltzmann distribution*
+  - non-negative, but not a probability (specifying conditional probs. doesn't work)
+  - commonly let these be exponential: $\psi_{X_C} (x_C) = \exp(-f_C(x_C))$
+    - yields energy $f(x) = \sum_C f_C(x_C)$
+    - yields *Boltzmann distribution*: $p(x) = \frac{1}{Z} \exp (-f(x))$
 - $p(x) = \frac{1}{Z} \prod_{C \in Cliques} \psi_{X_C}(x_c)$
   - $Z = \sum_x \prod_{C \in Cliques} \psi_{X_C} (x_C)$
-- alternatively, could specify the conditional independencies
 - *reduced parameterizations* - impose constraints on probability distributions (e.g. Gaussian)
 - if x is dependent on all its neighbors
   - *Ising model* - if x is binary
