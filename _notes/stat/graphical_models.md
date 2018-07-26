@@ -121,7 +121,7 @@ category: stat
 
 3. *variational inference* - formulate inference as optimization
    - minimize KL-divergence between observed samples and assumed distribution
-### conditional independence properties
+## conditional independence properties
 
 - multiple, competing explanations ("explaining-away")
 
@@ -140,7 +140,7 @@ category: stat
     - balls can't pass through shaded unless shaded is at base of v
     - balls pass through unshaded unless unshaded is at base of v
 
-## undirected
+# undirected
 
 - $X_A \perp X_C \| X_B$ if the set of nodes $X_B$ separates the nodes $X_A$ from $X_C$
 
