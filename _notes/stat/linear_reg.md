@@ -250,7 +250,7 @@ category: stat
 
 - ***convergence analysis***: requires $0 < \rho < 2/\lambda_{max} [X^TX]$
 
-  - algebraic analysis: expand $\theta^(t+1)$ and take $t \to \infty$
+  - algebraic analysis: expand $\theta^{(t+1)}$ and take $t \to \infty$
   - geometric convergence analysis: consider contours of loss function
 
 - weighted least squares: $J(\theta)=\frac{1}{2}\sum_n w_n (y_n - \theta^T x_n)^2$

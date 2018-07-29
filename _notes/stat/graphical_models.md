@@ -176,16 +176,19 @@ category: stat
 # elimination - J 3
 
 - the elimination algorithm is for *probabilistic inference*
-  - want $p(x_F\|x_E)$ where E and F are disjoint
+  - want $p(x_F\|x_E)​$ where E and F are disjoint
 - here, let $X_F$ be a single node
 - notation
   - define $m_i (x_{S_i})$ = $\sum_{x_i}$ where $x_{S_i}$ are the variables, other than $x_i$, that appear in the summand
-  - define *evidence potential* $\delta(x_i, \bar{x_i})$ = 1 if $x_i == \bar{x_i}$ and 0 otherwise
+  - define *evidence potential* $\delta(x_i, \bar{x_i})$ is defined as $x_i == \bar{x_i}$
     - then $$g(\bar{x_i}) = \sum_{x_i} \delta (x_i, \bar{x_i})$$
     - for a set $\delta (x_E, \bar{x_E}) = \prod_{i \in E} \delta (x_i, \bar{x_i})$
-  - now define $p^E(x) = p(x) \delta (x_E, \bar{x_E})$
+    - lets us define $p(x, \bar{x}_E) = p^E(x) = p(x) \delta (x_E, \bar{x_E})$
+  - undirected graphs
+    - $\psi_i^E(x_i) \triangleq \psi_i(x_i) \delta(x_i, \bar{x}_i)$
     - this lets us write $p^E (x) = \frac{1}{Z} \prod_{c\in C} \psi^E_{X_c} (x_c)$
-    - condition on E, and find probability
+      - can ignore z since this is unnormalized anyway
+      - to find conditional probability, divide by all sum of $p^E(x)$ for all values of E
     - in actuality don't compute the product, just take the correct slice
 - ![](assets/graphical_models/j3_1.png) 
 - undirected graph elimination algorithm
@@ -247,7 +250,7 @@ category: stat
 1. find $max_{x_F} p(x_F \| \bar{x}_E)$ 	
   - MAP-eliminate algorithm is very similar to before
    - ![](assets/graphical_models/j4_3.png)
-   - products of probs tend to underflow, so take the log $max_x p^E (x) = max_x log p^E (x)$
+   - products of probs tend to underflow, so take the log $\max_x p^E (x) = \max_x log p^E (x)$
    - can also derive a *max-product algorithm* for trees
  2. find $argmax_x p^E (x)$
     - can solve by keeping track of maximizing values of variables in max-product algorithm
@@ -258,7 +261,7 @@ category: stat
 
 ## state space model
 
-- state space model: ![](assets/graphical_models/j15_1.png)
+- state space model ![](assets/graphical_models/j15_1.png)
 
 
 - $P(X_{0:t}, E_{1:t}) = P(X_0) \prod_{i} \underbrace{P(X_i \| X_{i-1}) }_{\text{transition model}}  \underbrace{P(E_i\|X_i)}_{\text{sensor model}}$
@@ -304,14 +307,14 @@ category: stat
 
 ## hmm
 
-- state is a single discrete process
+- **state is a single discrete process**
 - transitions are all matrices (and no zeros in sensor model)$\implies$ forward pass is invertible so can use constant space
 - ***online smoothing (with lag)***
 - ex. robot localization
 
 ## kalman filtering
 
-- state is continuous
+- **state is continuous**
 - ex. ![](assets/graphical_models/r15_9.png)
 - type of nodes (real-valued vectors) and prob model (linear-Gaussian) changes from HMM
 - 1d example: *random walk*

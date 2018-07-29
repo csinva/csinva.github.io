@@ -1,5 +1,3 @@
-- pick up at jordan 2!
-
 # general
 
 - linear algebra
@@ -19,21 +17,21 @@
   - decision theory / vpi
   - mdps **pomdps?**
   - rl
-- **graphical models**
+- graphical models
   - independence / factorization
-  - elimination
-  - propagation-factor graphs
+  - **elimination**
+  - **propagation-factor graphs**
   - hmms
   - kalman filters
 
 # ml
 
+- **optimization**
+  - **em**
 - statistical estimation
   - multivariate gaussians
-- **optimization**
-  - em
 - generative
-  - density estimation models
+  - **density estimation models**
   - naive bayes
 - discriminative
   - linear reg.
@@ -45,12 +43,11 @@
 
 # todo
 
-- read through decisions / rl
-  - value iteration ex.
-- read through graphical models
-  - graphical model inference
-- read through optimization
 - memorize things
+- go over bold topics
 - practice
+  - 188 finals
+  - 189 finals
+  - 188 discussions
+  - 189 discussions
   - russell qs
-  - look over 188 / 189 finals and stuff

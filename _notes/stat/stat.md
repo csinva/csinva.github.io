@@ -46,7 +46,7 @@ category: stat
 
 - 2 parameterizations ($x \in \mathbb{R}^n$)
 
-  1. *canonical parameterization*: $$p(x\vert\mu, \Sigma) = \frac{1}{(2\pi )^{n/2} \vert\Sigma\vert^{1/2}} exp\left[ -\frac{1}{2} (x-\mu)^T \Sigma^{-1} (x-\mu) \right]$$
+  1. *canonical parameterization*: $$p(x\vert\mu, \Sigma) = \frac{1}{(2\pi )^{n/2} \vert\Sigma\vert^{1/2}} \exp\left[ -\frac{1}{2} (x-\mu)^T \Sigma^{-1} (x-\mu) \right]$$
   2. *moment parameterization*: $$p(x\vert\eta, \Omega) = \text{exp}\left( a + \eta^T x - \frac{1}{2} x^T \Omega x\right)$$ ~ also called information parameterization
   		- $\Omega = \Sigma^{-1}$	
 	    - $\eta = \Sigma^{-1} \mu$
@@ -58,10 +58,10 @@ category: stat
   - *Schur complement* of matrix M w.r.t. H: $M/H$
   - $\mu = \begin{bmatrix} \mu_1 \\ \mu_2 \end{bmatrix}$
   - $\Sigma = \begin{bmatrix} \Sigma_{11} & \Sigma_{12}\\ \Sigma_{21} & \Sigma_{22} \end{bmatrix}$
-  - $p(x_1, x_2) = p(x_1|x_2)\:p(x_2) = conditional * marginal$
+  - $p(x_1, x_2) = \underbrace{p(x_1|x_2)}_{\text{conditional}}\cdot\underbrace{p(x_2)}_{\text{marginal}}$
     - marginal
       - $\mu_2^m = \mu_2$
-      - $\Sigma_2^m = \Sigma_{22}​$
+      - $\Sigma_2^m = \Sigma_{22}$
     - conditional
       - $\mu_{1|2}^c = \mu_1 + \Sigma_{12}\Sigma_{22}^{-1} (x_2 - \mu_2)$
       - $\Sigma_{1|2}^c = \Sigma_{11} - \Sigma_{12} \Sigma_{22}^{-1} \Sigma_{21}$
