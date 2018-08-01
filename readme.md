@@ -1,4 +1,6 @@
-# Timeline Jekyll Theme
+# home page for website (https://csinva.github.io)
+
+- uses theme for [Timeline Jekyll Theme]()
 
 Timeline is multipurpose, single page Jekyll theme that includes a timeline section. 
 
