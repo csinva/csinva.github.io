@@ -31,9 +31,9 @@ category: ml
 
 | Model               | $\mathbf{\hat{\theta}}$ objective (minimize)                 |
 | ------------------- | ------------------------------------------------------------ |
-| Perceptron          | $\sum_i max(0,  -y_i \cdot \theta^T x_i)$                    |
-| Linear SVM          | $\theta^T\theta + C \sum_i max(0,1-y_i \cdot \theta^T x_i)$  |
-| Logistic regression | $\theta^T\theta + C \sum_i log[1+exp(-y_i \cdot \theta^T x_i)]$ |
+| Perceptron          | $\sum_i \max(0,  -y_i \cdot \theta^T x_i)$                   |
+| Linear SVM          | $\theta^T\theta + C \sum_i \max(0,1-y_i \cdot \theta^T x_i)$ |
+| Logistic regression | $\theta^T\theta + C \sum_i \log[1+\exp(-y_i \cdot \theta^T x_i)]$ |
 
 
 - svm use 1/-1, logistic use 1/0

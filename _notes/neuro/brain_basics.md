@@ -19,6 +19,15 @@ category: neuro
   - brain stem
     - midbrain (has superior colliculus), pons, medulla
 
+# numbers
+
+- human brain
+  - 86 bil total
+  - 16 bil in cortex - largest of anything (proportionally)
+  - 15 tril synapses
+  - 1 glial cell : 1 neuron
+  - cooking allowed us to meet the energy requirements for this
+
 # whole brain
 
 - *Cerebrum* - The cerebrum is the largest portion of the brain, and contains tools which are responsible for most of the brain's function. It is divided into four sections: 

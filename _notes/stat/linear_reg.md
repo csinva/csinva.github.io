@@ -209,6 +209,22 @@ category: stat
 - recompute model for each target point
 - instead of minimizing SSE, we minimize SSE weighted by each observation's closeness to the sample we want to query
 
+## kernel regression
+
+- nonparametric method
+
+- $\operatorname{E}(Y | X=x) = \int y f(y|x) dy = \int y \frac{f(x,y)}{f(x)} dy$
+
+  Using the [[kernel density estimation]] for the joint distribution ''f(x,y)'' and ''f(x)'' with a kernel '''''K''''',
+
+  $\hat{f}(x,y) = \frac{1}{n}\sum_{i=1}^{n} K_h\left(x-x_i\right) K_h\left(y-y_i\right)$
+  $\hat{f}(x) = \frac{1}{n} \sum_{i=1}^{n} K_h\left(x-x_i\right)$
+  
+
+  we get
+
+  $\begin{align} \operatorname{\hat E}(Y | X=x) &= \int \frac{y \sum_{i=1}^{n} K_h\left(x-x_i\right) K_h\left(y-y_i\right)}{\sum_{j=1}^{n} K_h\left(x-x_j\right)} dy,\\ &= \frac{\sum_{i=1}^{n} K_h\left(x-x_i\right) \int y \, K_h\left(y-y_i\right) dy}{\sum_{j=1}^{n} K_h\left(x-x_j\right)},\\ &= \frac{\sum_{i=1}^{n} K_h\left(x-x_i\right) y_i}{\sum_{j=1}^{n} K_h\left(x-x_j\right)},\end{align}$
+
 # sums interpretation
 
 - SST - total sum of squares - measure of total variation in response variable

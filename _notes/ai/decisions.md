@@ -186,8 +186,7 @@ typora-copy-images-to: ./assets/ai
 - same elements but add *sensor model* $P(e \vert s)$
 
 - have distr $b(s)$ for belief states
-  - updates like the HMM
-  - $b'(s') = \alpha P(e \vert s') \sum_s P(s' \vert s, a) b(s)$
+  - updates like the HMM: $b'(s') = \alpha P(e \vert s') \sum_s P(s' \vert s, a) b(s)$
   - changes based on observations
 
 - optimal action depends only on the agent's current belief state
@@ -196,7 +195,7 @@ typora-copy-images-to: ./assets/ai
   - changes because state space is now continuous
 
 - value iteration
-  1. expected utility of executing p in belif state is just $b \cdot \alpha_p$  (dot product)
+  1. expected utility of executing p in belief state is just $b \cdot \alpha_p$  (dot product)
   2. $U(b) = U^{\pi^*}(b)=\underset{p}{\max} \: b \cdot \alpha_p$
   - belief space is continuous [0, 1] so we represent it as piecewise linear, and store these discrete lines in memory
     - do this by iterating and keeping any values that are optimal at some point

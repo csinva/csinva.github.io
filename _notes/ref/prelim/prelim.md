@@ -13,25 +13,26 @@
   - local search
 - decisions
   - game trees
-  - utilities / decision theory
-  - decision theory / vpi
-  - mdps **pomdps?**
+  - logic
+  - utilities
+  - decision theory
+  - vpi
+  - mdps
   - rl
 - graphical models
   - independence / factorization
-  - **elimination**
-  - **propagation-factor graphs**
-  - hmms
-  - kalman filters
+  - elimination
+  - propagation-factor graphs
+  - hmms / kalman filters
 
 # ml
 
-- **optimization**
-  - **em**
+- optimization
+  - em
 - statistical estimation
   - multivariate gaussians
 - generative
-  - **density estimation models**
+  - density estimation models
   - naive bayes
 - discriminative
   - linear reg.
@@ -43,11 +44,21 @@
 
 # todo
 
-- memorize things
-- go over bold topics
-- practice
+- memorize 
+- organize
+- practice problems
   - 188 finals
   - 189 finals
   - 188 discussions
   - 189 discussions
   - russell qs
+  - ml discussions
+  - ai discussions
+- committee
+  - stuart
+
+- complex eigenvalues?
+- logic stuff
+- understand binary classifiers
+- CSPs
+- linear reg alpha bound?

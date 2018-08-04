@@ -3,6 +3,7 @@ layout: notes
 section-type: notes
 title: graphical models
 category: stat
+typora-copy-images-to: ./assets/graphical_models
 ---
 
 * TOC
@@ -61,9 +62,9 @@ category: stat
     - h is continuous, s is discrete; a, b, $\sigma$ all change when s changes
     - $P(c|h,s) = N(a \cdot h + b, \sigma^2)$, so mean is linear function of h
 2. discrete children (continuous parents)
-  1. *probit distr* - $P(buys\|Cost=c) = \phi[(-c+\mu)/\sigma]$ - integral of standard normal distr
+  1. *probit distr* - $P(buys|Cost=c) = \phi[(-c+\mu)/\sigma]$ - integral of standard normal distr
     - like a soft threshold
-  2. *logit distr.* - $P(buys\|Cost=c)=\frac{1}{1+exp(-2 (-c + \mu) / \sigma)}$
+  2. *logit distr.* - $P(buys|Cost=c)=\frac{1}{1+exp(-2 (-c + \mu) / \sigma)}$
     - logistic function produces thresh
 
 ## exact inference
@@ -79,7 +80,7 @@ category: stat
     - one summation for each of *n* variables
   - ENUMERATION-ASK evaluates in depth-first order: $O(2^n)$
     - we removed the factor of *n*
-2. *variable elimination* - dynamic programming
+2. *variable elimination* - dynamic programming **(see elimination)**
   - ![Screen Shot 2018-07-26 at 8.52.30 AM](assets/Screen Shot 2018-07-26 at 8.52.30 AM.png)
   - $P(B|j, m) = \alpha \underbrace{P(B)}_{f_1(B)} \sum_e \underbrace{P(e)}_{f_2(E)} \sum_a \underbrace{P(a|B,e)}_{f_3(A, B, E)} \underbrace{P(j|a)}_{f_4(A)} \underbrace{P(m|a)}_{f_5(A)}$
     - calculate factors in reverse order (bottom-up)
@@ -89,7 +90,7 @@ category: stat
     - any ordering works, some are more efficient
     - every variable that is not an ancestor of a query variable or evidence variable is irrelevant to the query
     - complexity depends on largest factor formed
-3. *clustering algorithms* = *join tree* algorithms
+3. *clustering algorithms* = *join tree* algorithms **(see propagation factor graphs)**
   - join individual nodes in such a way that resulting network is a polytree
     - ![Screen Shot 2018-07-26 at 8.52.30 AM-2621781](assets/Screen Shot 2018-07-26 at 8.52.30 AM-2621781.png)
     - *polytree*=*singly-connected network* - only 1 undirected paths between any 2 nodes
@@ -104,7 +105,7 @@ category: stat
   1. more samples is better
 
   - *rejection sampling* - produces samples from a hard-to-sample distr. given an easy-to-sample distr.
-    - want P(D\|A)
+    - want P(D|A)
     - sample N times, throw out samples where A is false
     - return probability of D being true
     - this is slow
@@ -131,6 +132,7 @@ category: stat
 
 3. *variational inference* - formulate inference as optimization
    - minimize KL-divergence between observed samples and assumed distribution
+
 ## conditional independence properties
 
 - multiple, competing explanations ("explaining-away")
@@ -141,7 +143,7 @@ category: stat
 
 - *d-separation* = directed separation
 
-- *Bayes ball algorithm* - is $X_A \perp X_B \| X_C$?
+- *Bayes ball algorithm* - is $X_A \perp X_B | X_C$?
   - initialize
     - shade $X_C$
     - place ball at each of $X_A$
@@ -152,7 +154,7 @@ category: stat
 
 # undirected
 
-- $X_A \perp X_C \| X_B$ if the set of nodes $X_B$ separates the nodes $X_A$ from $X_C$
+- $X_A \perp X_C | X_B$ if the set of nodes $X_B$ separates the nodes $X_A$ from $X_C$
 
   ![Screen Shot 2018-07-24 at 11.16.29 PM](assets/Screen Shot 2018-07-24 at 11.16.29 PM.png)
 
@@ -176,7 +178,8 @@ category: stat
 # elimination - J 3
 
 - the elimination algorithm is for *probabilistic inference*
-  - want $p(x_F\|x_E)​$ where E and F are disjoint
+  - want $p(x_F|x_E)$ where E and F are disjoint
+  - any var that is not ancestor of evidence or ancestor of query is irrelevant
 - here, let $X_F$ be a single node
 - notation
   - define $m_i (x_{S_i})$ = $\sum_{x_i}$ where $x_{S_i}$ are the variables, other than $x_i$, that appear in the summand
@@ -190,7 +193,13 @@ category: stat
       - can ignore z since this is unnormalized anyway
       - to find conditional probability, divide by all sum of $p^E(x)$ for all values of E
     - in actuality don't compute the product, just take the correct slice
-- ![](assets/graphical_models/j3_1.png) 
+- eliminate algorithm
+  1. initialize: choose an ordering with query last
+  2. evidence: set evidence vars to their values
+  3. update: loop over element $x_i$ in ordering
+     1. let $\phi_i(x_{T_i})$ be product of all potentials involving $x_i$
+     2. sum over the product of these potentials $m_i(x_{S_i}) = \sum_x \phi_i(x_{T_i})$
+  4. normalize: $p(x_F|\bar{x}_E) = \phi_F(x_F) / \sum_{x_F} \phi_F (x_F)$
 - undirected graph elimination algorithm
   - for directed graph, first *moralize*
     - for each node connect its parents
@@ -203,35 +212,53 @@ category: stat
   - computational complexity is the exponential in the number of variables in the elimination clique
   - involves *treewidth* - one less than smallest achievable value of cardinality of largest elimination clique
     - range over all possible elimination orderings
-    - NP-hard to find elimination ordeirng that achieves the treewidth
+    - NP-hard to find elimination ordering that achieves the treewidth
 
 # propagation factor graphs - J 4
 
+- *tree* - undirected graph in which there is exactly one path between any pair of nodes
+   - if directed, then moralized graph should be a tree
+   - *polytree* - directed graph that reduces to an undirected tree if we convert each directed edge to an undirected edge
+   - ![Screen Shot 2018-07-31 at 11.44.52 AM](assets/graphical_models/Screen Shot 2018-07-31 at 11.44.52 AM.png)
+   - $$p(x) = \frac{1}{Z} \left[ \prod_{i \in V} \psi (x_i) \prod_{(i,j)\in E} \psi (x_i,x_j) \right]$$
+      - for directed, root has individual prob and others are conditionals
+    - can once again use evidence potentials for conditioning
+
 ## probabilistic inference on trees
 
-- *tree* - undirected graph in which there is exactly one path between any pair of nodes
-  - alternative defn? - every node has exactly one parent
-  - $$p(x) = \frac{1}{Z} \left[ \prod_{i \in V} \psi (x_i) \prod_{(i,j)\in E} \psi (x_i,x_j) \right]$$
-  - if directed, then moralized graph should be a tree
-   - can once again use evidence potentials for conditioning
 - eliminate algorithm through message-passing
-   - ordering I should be depth-first traversal (if undirected point all edges away from root)
+   - ordering I should be **depth-first traversal** of tree with f as root and all edges pointing away
       - *message* $m_{ji}(x_i)$ from $j$ to $i$ =*intermediate factor*
+
+- 2 key equations
+
     - $m_{ji}(x_i) = \sum_{x_j} \left( \psi^E (x_j) \psi (x_i, x_j) \prod_{k \in N(j) \backslash i} m_{kj} (x_j) \right)$
-    - $p(x_f \| \bar{x}_E) \propto \psi^E (x_f) \prod_{e \in N(f)} m_{ef} (x_f) $
-- algorithm for probabilistic inference known as *sum-product* or *belief propagation* algorithm
+    - $p(x_f | \bar{x}_E) \propto \psi^E (x_f) \prod_{e \in N(f)} m_{ef} (x_f) ​$
+       - ![Screen Shot 2018-07-31 at 9.55.08 PM](assets/graphical_models/Screen Shot 2018-07-31 at 9.55.08 PM.png)
+
+- **sum-product** = **belief propagation** - inference algorithm
   - computes all single-node marginals (for certain classes of graphs) rather than only a single marginal
+
   - only works in trees or tree-like graphs
-  - works by reusing messages
-  - *message-passing protocol* - a node can send a message to a neighboring node when, and only when, it has received messages from all of its other neighbors
-    1. implement via a parallel algorithm
-    2. implement via a two-phase schedule based on depth-first traversal
-      -  ![](assets/graphical_models/j4_1.png) 
+
+  - ![Screen Shot 2018-07-31 at 10.07.15 PM](assets/graphical_models/Screen Shot 2018-07-31 at 10.07.15 PM.png)
+
+    ![Screen Shot 2018-07-31 at 10.07.40 PM](assets/graphical_models/Screen Shot 2018-07-31 at 10.07.40 PM.png)
+
+  - *message-passing protocol* - a node can send a message to a neighboring node when, and only when, it has received messages from all of its other neighbors (parallel algorithm)
+    1. evidence(E)
+    2. choose root
+    3. collect: send messages evidence to root
+    4. distribute: send messages root back out
+
+    ![Screen Shot 2018-07-31 at 10.22.55 PM](assets/graphical_models/Screen Shot 2018-07-31 at 10.22.55 PM.png) ![Screen Shot 2018-07-31 at 10.23.01 PM](assets/graphical_models/Screen Shot 2018-07-31 at 10.23.01 PM.png)
+
 
 ## factor graphs
 
 - *factor graphs* capture factorizations, not conditional independence statements 
    - ex $\psi (x_1, x_2, x_3) = f_a(x_1,x_2) f_b(x_2,x_3) f_c (x_1,x_3)$ factors but has no conditional independence
+       - ![Screen Shot 2018-07-31 at 11.30.19 PM](assets/graphical_models/Screen Shot 2018-07-31 at 11.30.19 PM.png)
     - $$f(x_1,...,x_n) = \prod_s f_s (x_{C_s})$$
     - neighborhood N(s) for a factor index s is all the variables the factor references
     - neighborhood N(i) for a node i is set of factors that reference $x_i$
@@ -239,20 +266,25 @@ category: stat
        - could add more nodes to normal graphical model to do this
  - *factor tree* - if factors are made nodes, resulting undirected graph is tree
     - two kinds of messages (variable-> factor & factor-> variable)
+    - run all the factor $\to$ variables first
      - ![](assets/graphical_models/j4_2.png)
      - $$p(x_i) \propto \prod_{s \in N(i)} \mu_{si} (x_i)$$
-     - if a graph is orginally a tree, there is little to be gained from factor graph framework
+     - if a graph is originally a tree, there is little to be gained from factor graph framework
         - sometimes factor graph is factor tree, but original graph is not
-- *polytree* - directed graph that reduces to an undirected tree if we convert each directed edge to an undirected edge
 
 ## maximum a posteriori (MAP)
 
-1. find $max_{x_F} p(x_F \| \bar{x}_E)$ 	
-  - MAP-eliminate algorithm is very similar to before
-   - ![](assets/graphical_models/j4_3.png)
-   - products of probs tend to underflow, so take the log $\max_x p^E (x) = \max_x log p^E (x)$
-   - can also derive a *max-product algorithm* for trees
- 2. find $argmax_x p^E (x)$
+- want $\max_{x_F} p(x_F | \bar{x}_E)$ 	
+- MAP-eliminate algorithm is very similar to before
+  - initialize - choose ordering
+  - evidence - set evidence
+  - update - for each take max over variable and make new factor
+  - maximum - marginalize
+
+ - products of probs tend to underflow, so take $\max_x \log p^E (x)$
+ - can also derive a *max-product algorithm* for trees
+
+ 1. find $argmax_x p^E (x)$
     - can solve by keeping track of maximizing values of variables in max-product algorithm
 
 # dynamic bayesian nets
@@ -264,7 +296,7 @@ category: stat
 - state space model ![](assets/graphical_models/j15_1.png)
 
 
-- $P(X_{0:t}, E_{1:t}) = P(X_0) \prod_{i} \underbrace{P(X_i \| X_{i-1}) }_{\text{transition model}}  \underbrace{P(E_i\|X_i)}_{\text{sensor model}}$
+- $P(X_{0:t}, E_{1:t}) = P(X_0) \prod_{i} \underbrace{P(X_i | X_{i-1}) }_{\text{transition model}}  \underbrace{P(E_i|X_i)}_{\text{sensor model}}$
 
   - agent maintains *belief state* of state variables $X_t$ given evidence variables $E_t$
 
@@ -274,21 +306,21 @@ category: stat
     - hard to maintain state variables over time, want more sensors
 
 - 4 inference problems
-  1. *filtering* = *state estimation* - compute $P(X_t \| e_{1:t})$
+  1. *filtering* = *state estimation* - compute $P(X_t | e_{1:t})$
     - *recursive estimation*:  $$\underbrace{P(X_{t+1}|e_{1:t+1})}_{\text{new state}} = \alpha \: \underbrace{P(e_{t+1}|X_{t+1})}_{\text{sensor}} \cdot \underset{x_t}{\sum} \: \underbrace{P(X_{t+1}|x_t)}_{\text{transition}} \cdot \underbrace{P(x_t|e_{1:t})}_{\text{old state}}$$ where $\alpha$ normalizes probs
 
-  2. *prediction* - compute $P(X_{t+k}\|e_{1:t})$ for $k>0$
+  2. *prediction* - compute $P(X_{t+k}|e_{1:t})$ for $k>0$
 
      - $\underbrace{P(X_{t+k+1} |e_{1:t})}_{\text{new state}} = \sum_{x_{t+k}} \underbrace{P(X_{t+k+1} |x_{t+k})}_{\text{transition}}  \cdot \underbrace{P(x_{t+k} |e_{1:t})}_{\text{old state}}$
 
-  3. *smoothing* - compute $P(X_{k}\|e_{1:t})$ for $0 < k < t$
+  3. *smoothing* - compute $P(X_{k}|e_{1:t})$ for $0 < k < t$
 
      1. 2 components $P(X_k|e_{1:t}) = \alpha \underbrace{P(X_k|e_{1:k})}_{\text{forward}} \cdot \underbrace{P(e_{k+1:t}|X_k)}_{\text{backward}}$
 
        1. forward pass: filtering from $1:t$
        2. backward pass from $t:1$ $\underbrace{P(e_{k+1:t}|X_k)}_{\text{sensor past k}} = \sum_{x_{k+1}} \underbrace{P(e_{k+1}|x_{k+1})}_{\text{sensor}} \cdot \underbrace{P(e_{k+2:t}|x_{k+1})}_{\text{recursive call}} \cdot \underbrace{P(x_{k+1}|X_k)}_{\text{transition}}$ ***(also there is a separate algorithm that doesn't use the observations on the backward pass)***
 
-  4. *most likely explanation* - $\underset{x_{1:t}}{\text{argmax}}\:P(x_{1:t}\|e_{1:t})$
+  4. *most likely explanation* - $\underset{x_{1:t}}{\text{argmax}}\:P(x_{1:t}|e_{1:t})$
 
      1. *Viterbi algorithm*: $\underbrace{\underset{x_{1:t}}{\text{max}} \: P(x_{1:t}, X_{t+1}|e_{1:t+1})}_{\text{mle x}} = \alpha \: \underbrace{P(e_{t+1}|X_{t+1})}_{\text{sensor}} \cdot \underset{x_t}{\text{max}} \left[ \: \underbrace{P(X_{t+1}|x_t)}_{\text{transition}} \cdot \underbrace{\underset{x_{1:t-1}}{\text{max}} \:P(x_{1:t-1}, x_{t+1}|e_{1:t})}_{\text{max prev state}} \right]$
      2. complexity

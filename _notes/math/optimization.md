@@ -215,14 +215,20 @@ category: math
   - ex. unconstrained geometric program
   - ex. analytic center of linear inequalities
     - $\min \: f(x) = -\sum \: \log (b_i - a_i^Tx)$ where dom f = $\{x|a_i^Tx< b_i, i = 1:m\}$
-- *strongly convex*: $\nabla^2 f(x) \succeq mI$
-  - $\implies f(y) \geq f(x) + \nabla f(x)^T(y-x) + m/2 ||y-x||_2^2$
-  - minimizing...$p^* \geq f(x) - 1/(2m) ||\nabla f(x)||_2^2$
-- also, $\exists \: M, \: \nabla^2f(x) \preceq MI$
-  - $\implies f(y) \leq f(x) + \nabla f(x)^T(y-x) + M/2 ||y-x||_2^2​$
-- $mI \preceq \nabla^2 f(x) \preceq MI$
+- 3 definitions of convexity
+  - $0 \leq \theta \leq 1$
+    - $f(\theta x_1 + (1 - \theta) x_2) \leq \theta f(x_1) + (1 - \theta) f(x_2)$
+  - $\nabla^2 f(x) \succeq 0$
+  - $f(x_2) \geq f(x_1) + \nabla f(x_1)^T (x_2 - x_1)$
+- $\color{red}0 \preceq \color{green}{\underset{\text{strong convexity}}{mI}} \preceq \nabla^2 \color{cornflowerblue}{f(x)} \preceq \underset{\text{smoothness}}{MI}$
   - $\kappa = M/m$ bounds *condition number* of $\nabla^2 f = \frac{\lambda_{\max}(\nabla^2 f)}{\lambda_{\min}(\nabla^2 f)}$
-- *cond(C)* = $W_{max}^2 / W_{min}^2$
+  - *strongly convex*: $\nabla^2 f(x) \succeq mI$
+    - $\implies f(y) \geq f(x) + \nabla f(x)^T(y-x) + m/2 ||y-x||_2^2$
+    - minimizing yields $p^* \geq f(x) - 1/(2m) ||\nabla f(x)||_2^2$
+    - if the gradient of f at x is small enough, then the difference between f(x) and p⋆ is small 
+  - *smooth*: $\exists \: M, \: \nabla^2f(x) \preceq MI$
+    - $\implies f(y) \leq f(x) + \nabla f(x)^T(y-x) + M/2 ||y-x||_2^2$
+- cond(*C*) = $W_{\max}^2 / W_{\min}^2$
   - *width* of convex set $C \subset \mathbb{R}^n$ in direction q with $||q||_2=1$
   - $W(C, q) = \underset{z \in C}{\sup} \: q^Tz - \underset{z \in C}{\inf} \: q^Tz$
 - *alpha-level subset*: $C_\alpha = \{x|f(x) \leq \alpha\}$
@@ -233,9 +239,10 @@ category: math
 - *exact line search*: $t = \underset{s \geq 0}{\text{argmin}} \:f(x+s \Delta x)$
 - *backtracking line search*
   - given a descent direction $\Delta x \text{ for } f, x \in dom \: f, \alpha \in (0, 0.5), \beta \in (0, 1)$
-  - t:=1
-  - while $f(x + t \Delta x) > f(x) + \alpha t \nabla f(x)^T \delta x$
+  - t:=1, $\alpha \in (0, 0.5), \beta \in (0, 1)$
+  - while $f(x + t \Delta x) > f(x) + \alpha t \nabla f(x)^T \Delta x$
     - $t *= \beta$
+  - ![Screen Shot 2018-07-30 at 10.23.19 PM-3014637](assets/Screen Shot 2018-07-30 at 10.23.19 PM-3014637.png)
 
 ## gd method
 
@@ -258,11 +265,11 @@ category: math
   - $\ell_1$ norm: $\Delta_{sd} = -\frac{\partial f(x)}{\partial x_i} e_i$
 
 ## newton's method
-- *Newton step* $\Delta_{nt} = - \nabla^2 f(x)^{-1} \nabla f(x)$
-  - $\nabla f(x)^T \Delta x_{nt} = - \nabla f(x)^T \nabla^2 f(x)^{-1} \nabla f(x) < 0$
+- *Newton step* $\Delta x_{nt} = - \nabla^2 f(x)^{-1} \nabla f(x)$
+  - PSD $\implies \nabla f(x)^T \Delta x_{nt} = - \nabla f(x)^T \nabla^2 f(x)^{-1} \nabla f(x) < 0$
 - *Newton's method*
   1. compute the newton step $\Delta x_{nt}$ and decrement $\lambda^2 = \nabla f(x)^T \nabla^2 f(x)^{-1} \nabla f(x)$
-  2. stopping criterion: quit if $\lambda^2 / 2 \leq \epsilon$
+  2. stopping criterion: quit if $\lambda^2 / 2 \leq \epsilon​$
   3. line search: choose step size t w/ backtracking line search
   4. update: $x += t \Delta x_{nt}$
 
@@ -305,21 +312,16 @@ category: math
   1. *expectation step* - values of unobserved latent variables are filled in
      - calculates prob of latent variables given observed variables and current param values
   2. *maximization step* - parameters are adjusted based on filled-in variables
-- goal: maximize *complete log-likelihood* $l (\theta; x, z) = log \: p(x,z|\theta)$ but don't know z
-  - know *incomplete log-likelihood* $l(\theta; x) = log \: p(x|\theta) = log \sum_z p(x,z|\theta)$
-  - *expected complete log-likelihood* $E_q[l(\theta; x,z)] = \sum_z q(z|x,\theta) \cdot log \: p(x,z|\theta)$
-    - q distribution is assignment to z vars
-  - *auxilary function* $L(q, \theta) = \sum_z q(z|x) \: log \: \frac{p(x,z|\theta)}{q(z|x)}$ - lower bound for the log likelihood
-    - ![](assets/optimization/j11_eq11_4.png)
-  - *stochastically* converges to *local* minimum
+- goal: maximize *complete log-likelihood*, but don't know z
+  - *expected complete log-likelihood* $E_{p'}[l(\theta; x,z)] = \sum_z p'(z|x,\theta) \cdot \log \: p(x,z|\theta)$
+    - p' distribution is assignment to z vars
+  - deriving *auxilary function* $\mathcal L(q, \theta) = \sum_z p'(z|x) \log \frac{p(x,z|\theta)}{p'(z|x)}$ - lower bound for the log likelihood
+  - $\begin{align} l(\theta; x) &= \log \: p(x|\theta) & \text{incomplete log-likelihood} \\&= \log \sum_z p(x,z|\theta) &\text{complete log-likelihood}\\&= \log\sum_z p'(z|x) \frac{p(x,z|\theta)}{p'(z|x)} &\text{multiplying by 1} \\ &\geq \sum_z p'(z|x) \log \frac{p(x,z|\theta)}{p'(z|x)} &\text{Jensen's inequality}\\&\triangleq \mathcal L (p', \theta) \end{align}$
 - steps
-  - E: $q^{(t+1)} = \underset{q}{argmax}\: L(q,\theta^{(t)})$
-    - solving, $q^{(t+1)} = p(z|x, \theta^{(t)})$
-  - M: $\theta^{(t+1)} = \underset{\theta}{argmax} \: L(q^{(t+1)}, \theta)$
-    - equivalent to maximizing expected complete log-likelihood
-- simplified in terms of KL divergence
-  - E: $q^{(t+1)} (z|x) = \underset{q}{argmin} \: D(q||\theta^{(t)})$
-  - M: $\theta^{(t+1)} = \underset{\theta}{argmin} \: D(q^{(t+1)} || \theta)$
+  - E: $p'(z|x, \theta) = \underset{p'}{argmax}\: \mathcal L(p',\theta)$
+  - M: $\theta = \underset{\theta}{argmax} \: \mathcal L(p', \theta)$
+  - equivalent to maximizing expected complete log-likelihood
+  - *stochastically* converges to *local* minimum
 
 # nn optimization
 
@@ -329,15 +331,15 @@ category: math
 - winding canyons
 - cliffs
 - local maxima to dodge
-- saddle points
+- saddle points (local max and local min)
 
 ## visualization
 
 - requires low dims
-  - goodfellow 2014 "Qualitatively characterizing neural network optimization problems" plots loss on line from starting point to ending point
+  - goodfellow 2015 "Qualitatively characterizing neural network optimization problems" plots loss on line from starting point to ending point
   - could do PCA on params
 
 ## complicated is simpler
 
-- ex. $x^3 sin(x)$ is simpler than just $x$ on the domain [−0.01, 0.01]
+- ex. $x^3 \sin(x)$ is simpler than just $x$ on the domain [−0.01, 0.01]
 - dropout is like ridge

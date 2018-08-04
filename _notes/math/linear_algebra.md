@@ -3,6 +3,7 @@ layout: notes
 section-type: notes
 title: linear algebra
 category: math
+typora-copy-images-to: ./assets/linear_algebra
 ---
 
 * TOC
@@ -30,7 +31,9 @@ category: math
     1. closed under addition
     2. contains identity
 - det - sum of products including one element from each row / column with correct sign
-- lin independent: $c_1x_1+c_2x_2=0 \implies c_1=c_2=0​$
+    - absolute value = area of parallelogram made by rows (or cols)
+    - ![220px-Area_parallellogram_as_determinant.svg](assets/linear_algebra/220px-Area_parallellogram_as_determinant.svg.png)
+- lin independent: $c_1x_1+c_2x_2=0 \implies c_1=c_2=0$
 - *cauchy-schwartz inequality*: $|x^T y| \leq ||x||_2 ||y|||_2$
   - implies *triangle inequality*: $||x+y||^2 \leq (||x|| + ||y||)^2$
 
@@ -70,8 +73,10 @@ category: math
 
 # matrix calc
 
+- overview: imagine derivative $f(x + \Delta)$
 - function f: $\text{anything} \to \mathbb{R}^m$ 
-    - *gradient* vector $\nabla_A f(\mathbf{A})$- partial derivatives with respect to each element of matrix
+    - *gradient* vector $\nabla_A f(\mathbf{A})$- partial derivatives with respect to each element of A (vector or matrix)
+    - gradient = $\frac{\partial f}{\partial A}^T$
 - these next 2 assume numerator layout (numerator-major order, so numerator constant along rows)
 - function f: $\mathbb{R}^n \to \mathbb{R}^m$ 
     - *Jacobian matrix*: $\mathbf J = \begin{bmatrix}    \dfrac{\partial \mathbf{f}}{\partial x_1} & \cdots & \dfrac{\partial \mathbf{f}}{\partial x_n} \end{bmatrix}= \begin{bmatrix}    \dfrac{\partial f_1}{\partial x_1} & \cdots & \dfrac{\partial f_1}{\partial x_n}\\    \vdots & \ddots & \vdots\\    \dfrac{\partial f_m}{\partial x_1} & \cdots & \dfrac{\partial f_m}{\partial x_n} \end{bmatrix}$
@@ -80,9 +85,9 @@ category: math
       - $\bold H = \nabla^2 f(x)_{ij} = \frac{\partial^2 f(x)}{\partial x_i \partial x_j} = \begin{bmatrix}  \dfrac{\partial^2 f}{\partial x_1^2} & \dfrac{\partial^2 f}{\partial x_1\,\partial x_2} & \cdots & \dfrac{\partial^2 f}{\partial x_1\,\partial x_n} \\[2.2ex]  \dfrac{\partial^2 f}{\partial x_2\,\partial x_1} & \dfrac{\partial^2 f}{\partial x_2^2} & \cdots & \dfrac{\partial^2 f}{\partial x_2\,\partial x_n} \\[2.2ex]  \vdots & \vdots & \ddots & \vdots \\[2.2ex]  \dfrac{\partial^2 f}{\partial x_n\,\partial x_1} & \dfrac{\partial^2 f}{\partial x_n\,\partial x_2} & \cdots & \dfrac{\partial^2 f}{\partial x_n^2}\end{bmatrix}$
 - examples
     - $\nabla_x a^T x = a$
-    - $\nabla_x x^TAx = 2Ax$ (if A symmetric)
-    - $\nabla_x^2 x^TAx = 2A$ (if A symmetric)
-    - $\nabla_x log \: det X = X^{-1}$
+    - $\nabla_x x^TAx = 2Ax$ (if A symmetric, else $(A+A^T)x)$)
+    - $\nabla_x^2 x^TAx = 2A$ (if A symmetric, else $A+A^T$)
+    - $\nabla_x \log \: \det X = X^{-1}$
 - we can calculate derivs of quadratic forms by calculating derivs of traces
     - $x^TAx = tr[x^TAx] = tr[xx^TA]$
     - $\implies \frac{\partial}{\partial A} x^TAx = \frac{\partial}{\partial A} tr[xx^TA] = [xx^T]^T = xx^T$
@@ -151,6 +156,7 @@ category: math
   - all eigenvalues are nonnegative
   - if $\forall x \in R^n, x^TAx \geq 0$ then A is positive semi definite (PSD)
     - like it curves up
+    - Note: $x^TAx = \sum_{i, j} x_iA_{i, j} x_j$
   - if $\forall x \in R^n, x^TAx > 0$ then A is positive definite (PD)
     - PD $\to$ full rank, invertible
   - PSD + symmetric $\implies$ can be written as *Gram matrix* $G = X^T X $
@@ -170,6 +176,7 @@ category: math
   - eigenvectors corresponding to different eigenvalues are lin. independent
   - other Q matrices won't produce diagonal
   - there are always n complex eigenvalues
+  - orthogonal matrix $Q^TQ=I$
 - examples
   - if X, Y symmetric, $tr(YX) = tr(Y \sum \lambda_i q_i q_i^T)$
   - lets us easily calculate $A^2$, $sqrt(A)$
