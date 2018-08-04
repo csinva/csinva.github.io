@@ -1,5 +1,5 @@
 ---
-title: Search
+title: ai notes
 separator: '---'
 verticalSeparator: '--'
 theme: black
@@ -7,72 +7,13 @@ highlightTheme: black
 typora-copy-images-to: ./assets
 ---
 
-### ai
+<h1> ai </h1>
 
 **chandan**
 
 *based on R&N*
 
 [TOC]
-
-# decision trees / random forests
-
-## decision tree intuition
-
-![decision](assets/decision.png)
-
-## training
-
-- greedy - use metric to pick attribute
-  - split on this attribute then repeat
-  - high variance
-
-## information gain
-
-maximize: entropy(parent) - [weighted average] * entropy(children)
-
-![c50](assets/c50.png)
-
-## comparing split functions
-
-- info gain often picks attributes with many values (can divide by split information)
-- gini impurity - very similar but faster to compute
-- misclassification rate - doesn't always pick best splits 
-  - ex. real distr. ~ (40-40)
-  - (30-10, 10-30), (20-40, 20-0)
-
-![errs](assets/errs.png)
-
-## stopping
-
-- depth
-- metric
-- node proportion
-- pruning
-  - *reduced-error pruning* - prune based on test set err.
-  - *$\chi^2$ pruning* - test splits with $\chi^2$ test
-  - *rule post-pruning* = *cost-complexity pruning*
-
-## random forests
-
-- multiple classifiers
-- *bagging* = *bootstrap aggregating*: each classifier uses subset of datapoints
-- *feature randomization*: each split uses subset of features
-
-## random forest voting
-
-- consensus
-- average
-- *adaboost*
-
-## regression tree
-
-- stop splitting at some point and apply linear regression
-
-## other values
-
-- missing values - fill in with most common val / probabilistically
-- continuous values - split on thresholds
 
 # uninformed search
 
@@ -145,8 +86,8 @@ maximize: entropy(parent) - [weighted average] * entropy(children)
 - $SMA^*$ - simplified memory-bounded
   -  when memory full, collapse worst leaf
 
-
 ##  recursive best-first
+
 ![Screen Shot 2018-06-28 at 7.47.11 PM](assets/Screen Shot 2018-06-28 at 7.47.11 PM.png)
 
 ## heuristic functions
@@ -178,7 +119,9 @@ maximize: entropy(parent) - [weighted average] * entropy(children)
 - *local beam search* - pick k starts, then choose the best k states from their neighbors
   - *stochastic beam search* - pick best k with prob proportional to how good they are
 
-## *genetic algorithms*![Screen Shot 2018-06-28 at 8.12.02 PM](assets/Screen Shot 2018-06-28 at 8.12.02 PM.png)
+## genetic algorithms
+
+![Screen Shot 2018-06-28 at 8.12.02 PM](assets/Screen Shot 2018-06-28 at 8.12.02 PM.png)
 
 *schema* - representation
 
@@ -197,6 +140,9 @@ maximize: entropy(parent) - [weighted average] * entropy(children)
 - goal: *assignment* of variables
   - *consistent* - doesn't violate constraints
   - *complete* - every variable is assigned
+- 2 ways to solve
+  - local search - assign all variables and then alter
+  - search (with inference) - assign one at a time
 
 ## example
 ![Screen Shot 2018-06-28 at 8.40.49 PM](assets/australia.png)
@@ -208,6 +154,8 @@ maximize: entropy(parent) - [weighted average] * entropy(children)
   - could use *constraint weighting*
 
 ## constraint graph
+
+*this is not the search graph!*
 
 ![Screen Shot 2018-06-28 at 8.40.49 PM](assets/Screen Shot 2018-06-28 at 8.40.49 PM.png)
 
@@ -235,11 +183,11 @@ maximize: entropy(parent) - [weighted average] * entropy(children)
 
 ## backtracking
 - depth-first search that backtracks when no legal values left
-  - variable and value ordering
-  - interleaving search and inference
-  - intelligent backtracking - looking backward
+  - b1 - variable and value ordering
+  - b2 - interleaving search and inference
+  - b3 - intelligent backtracking - looking backward
 
-## variable and value ordering
+## b1 - variable and value ordering
 
 - *commutative*
 - heuristics
@@ -247,12 +195,12 @@ maximize: entropy(parent) - [weighted average] * entropy(children)
   - *degree* - pick variable involved in most constraints
   - *least-constraining-value*
 
-## interleaving search and interference
+## b2 - interleaving search and inference
 
 - *forward checking* - after assigning, check arc-consistency on neighbors
-- *maintaining arc consistency (MAC)* - after sasigning, arc consistency initialized on neighbors
+- *maintaining arc consistency (MAC)* - after assigning, arc consistency initialized on neighbors
 
-## intelligent backtracking
+## b3 - intelligent backtracking
 
 - *conflict set* for each node (list of variable assignments that deleted things from its domain)
 - *backjumping*  - backtracks to most recent assignment in conflict set
@@ -275,6 +223,90 @@ maximize: entropy(parent) - [weighted average] * entropy(children)
 2. *tree decomposition* - view each subproblem as a mega-variable
   - *tree width* w - size of largest subproblem - 1
   - solvable in $O(n d^{w+1})$
+
+
+# propositional logic
+
+- declarative vs procedural (knowing how to ride a bike)
+- horn clause - at most one positive
+  - definite clause - exactly one positive
+  - goal clause - 0 positive
+
+## TT-ENTAILS: check everything
+- forward-chaining/backward chaining
+
+## DPLL: TT-ENTAILS with 3 improvements
+  - early termination
+  - pure symbols
+  - unit clause
+
+## agents
+  - use A* with entailment
+  - SATPLAN
+- propositional logic: facts - true/false/unknown
+
+# first-order logic
+
+![Screen Shot 2018-08-01 at 7.52.25 PM](assets/Screen Shot 2018-08-01 at 7.52.25 PM.png)
+
+
+- first-order logic: add objects, relations, quantifiers ($\exists, \forall$)
+
+  - unification
+
+## inference 1
+
+- simple: first-order logic forward-chaining: FOL-FC-ASK
+
+  - efficient forward chaining
+    - conjunct ordering
+    - ignore redundanat rules
+    - ignore irrelevant facts w/ backward chaining
+
+## inference 2
+
+- backward-chaining: FOL-BC-ASK
+  - generator - returns multiple times
+
+# classical planning
+
+- requires 4 things (like search w/out path cost function)
+  - initial state
+  - actions
+  - transitions
+  - goals
+
+## action example
+
+
+- $Action(Fly(p, from, to))$:
+	- PRECOND: $At(p, from) \land Plane(p) \land Airport(from) \land Airport(to)$
+	- EFFECT: $\neg At(p, from) \land At(p, to)$
+  - can only use variables in the precondition
+
+## planning as search
+
+![search](assets/search.jpg)
+
+## algorithms
+
+1. forward state-space search
+   1. inefficient, but preferred because good heuristics
+2. backward
+   1. start with a set of things in the goal (and other fluents can have any value)
+
+## heuristics
+
+- ex. ignore preconditions
+- ex. ignore delete lists - remove all negative literals
+- ex. **state abstractions** - many-to-one mapping from states $\to$ abstract states
+  - ex. ignore some fluents
+
+# knowledge repr.
+
+- compositionality
+- intrinsic / extrinsic properties
+- event calculus
 
 <style>
 

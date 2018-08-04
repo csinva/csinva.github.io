@@ -6,9 +6,9 @@ theme: black
 highlightTheme: ir-black
 typora-copy-images-to: ./assets
 ---
-### interpretable deep learning for neuroscience
+<h1> interpretable machine learning for neuroscience </h1>
 
-**chandan singh**
+<h3> chandan singh </h3> 
 
 *advised by bin yu*
 
@@ -23,25 +23,28 @@ typora-copy-images-to: ./assets
   - michael oliver
 - prof. na ji
 
-## overview
-
-- definitions
-- acd
-- v4 project
-- v1 project
-
 ## big-data neuroscience
 
+- lots of challenges with understanding the brain
 - needs interpretability
+
+## intersection of different approaches
+
+- theory
+- data-driven experiments
+- fine-tuned experiments
 
 ## interpretable ml framework
 
-- 
+with *jamie murdoch, karl kumbier, reza abbasi-asl, & bin yu*
 
-## what's in an interpretation?
 
-- fruitfulness (prediction + intervention)
-- simplicity / relevancy
+
+## overview
+
+1. [interpreting dnns](#/1)
+2. [v4 proj](#/2)
+3. [v1 proj](#/3)
 
 # explaining dnn predictions to humans
 
@@ -84,6 +87,16 @@ explain a **single prediction** by a dnn in terms of the **input**
 ## analysis
 
 ## goal
+
+
+
+# appendix
+
+1. [interpreting dnns](#/1)
+2. [v4 proj](#/2)
+3. [v1 proj](#/3)
+
+
 
 
 

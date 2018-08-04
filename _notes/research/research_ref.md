@@ -5,7 +5,7 @@
 - https://aideadlin.es/
 - http://neuro-deadlines.tbryngrey.com/
 - nips (montreal)
-- aistat oct 4 (okinawa)
+- aistats oct 4 (okinawa)
 - cosyne nov 14 (portugal)
 - sigkdd feb (anchorage)
 - iccv mar (korea)

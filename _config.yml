@@ -10,8 +10,5 @@ collections:
     name: Notes
     documentation: https://github.com/Shopify/liquid/wiki/Liquid-for-Designers
     output: true
-# Career Settings
-# Default career thumbnail image.
-career-img: "img/timeline/default.jpg"
 markdown: kramdown
 exclude: ["Rakefile", "LICENSE", "readme.markdown"]

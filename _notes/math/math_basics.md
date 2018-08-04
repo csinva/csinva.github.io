@@ -7,7 +7,6 @@ category: math
 
 * TOC
 {:toc}
-
 ---
 
 # misc
@@ -58,14 +57,10 @@ category: math
 - $p_1 \to p_2 \iff - p_1 \lor p_2 $
 - The greatest common divisor of two integers a and b is the largest integer d such that d $\|$ a and d $\|$ b
 - Proof Techniques
-
-1. Proof by Induction
-
-2. Direct Proof
-
-3. Proof by Contradiction - assume p $\land$ -q, show contradiction
-
-4. Proof by Contrapositive - show -q $\to$ -p
+    - Proof by Induction
+    - Direct Proof
+    - Proof by Contradiction - assume p $\land$ -q, show contradiction
+    - Proof by Contrapositive - show -q $\to​$ -p
 
 # identities
 

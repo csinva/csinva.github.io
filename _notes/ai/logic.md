@@ -210,7 +210,8 @@ typora-copy-images-to: ./assets/logic
   - solving the frame problem: only specify result of action in terms of what changes
   - requires 4 things (like search w/out path cost function)
     - initial state
-    - actions transitions
+    - actions
+    - transitions
     - goals
   - no quantifiers
 - set of ground (variable-free) actions can be represented by a single *action schema*
@@ -240,16 +241,4 @@ typora-copy-images-to: ./assets/logic
     - ex. ignore some fluents
 - decomposition
   - requires subgoal independence
-
-# knowledge repr. 12.1-12.3
-
-
-
-## ontological engineering
-
-
-
-## categories and objects
-
-## events
 

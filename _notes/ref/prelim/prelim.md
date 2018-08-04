@@ -56,9 +56,9 @@
   - ai discussions
 - committee
   - stuart
-
-- complex eigenvalues?
-- logic stuff
-- understand binary classifiers
-- CSPs
-- linear reg alpha bound?
+- new stuff
+  - CSPs
+  - understand binary classifiers
+  - complex eigenvalues?
+  - logic stuff
+  - linear reg alpha bound?
