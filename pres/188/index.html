@@ -408,6 +408,58 @@
 - intrinsic / extrinsic properties
 - event calculus
 
+
+
+
+</script></section><section ><section data-markdown><script type="text/template">
+# decisions + rl
+
+
+</script></section><section data-markdown><script type="text/template">
+## decision theory
+
+- $EU(a|e) = \sum_{s'} P(s'|s, a) U(s')$
+- $MEU(e) = \underset{a}{\max} EU(a|e)$
+- $VPI(T) = E_T[MEU(e, t)] - MEU(e)$
+
+
+</script></section><section data-markdown><script type="text/template">
+## mdps
+
+$\pi(s) = \underset{\pi}{\text{argmax}} \:U^\pi (s)$
+
+- value iteration: $U(s) = R(s) + \gamma MEU(s)$ (Bellman eqn)
+- policy iteration: $U(s) = R(s) + \gamma EU(s)$
+
+
+</script></section><section data-markdown><script type="text/template">
+## passive rl
+
+*given $\pi$, find $U(s)$*
+
+- ADP: find $P(s'|s, a)$, $R(s) \to $ plug into Bellman eqn
+- TD: when $s \to s'$: $U(s) = U(s) + \alpha[R(s) + \gamma U(s') - U(s)]$
+
+
+
+
+</script></section><section data-markdown><script type="text/template">
+## active rl
+
+*find $\pi$, maybe maximize rewards along the way*
+
+*here only Q-learning: $U(s) = \underset{a}{\max}Q(s, a)$*
+
+- ADP: $Q(s, a) =  R(s) + \alpha[\sum_{s'} P(s'|s, a)\underset{\alpha}{\max}Q(s', a')]$
+- TD: when $s\to s'$: $Q(s, a) = Q(s, a) + \alpha[R(s) + \gamma \underset{\alpha}{\max}Q(s', a') - Q(s, a)]$
+- SARSA: when $s\to s'$: $Q(s, a) = Q(s, a) + \alpha[R(s) + \gamma Q(s', a') - Q(s, a)]$
+
+
+
+
+
+
+
 <style>
 
 .reveal h1,
@@ -434,7 +486,7 @@ body {
   background-color: #000; }
 
 
-</style></script></section></div>
+</style></script></section></section></div>
         </div>
 
         <script src="./lib/js/head.min.js"></script>
