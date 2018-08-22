@@ -17,10 +17,10 @@ category: ml
 - *discriminative* - model $P(Y\vert X)$ directly ![](assets/classification/j7_10.png)
   - usually lower bias $\implies$smaller asymptotic error
   - slow convergence ~ $O(p)$
-- *generative* - model $P(X\vert Y)$ ![](assets/classification/j7_4.png)
+- *generative* - model $P(X, Y) = P(X\vert Y) P(Y)$ ![](assets/classification/j7_4.png)
   - usually higher bias $\implies$ can handle missing data
     - this is because we assume some underlying X
-  - fast convergence ~ $O[log(p)]$
+  - fast convergence ~ $O[\log(p)]$
 - *decision theory* - models don't require finding $p(y\|x)$ at all
 
 
@@ -36,7 +36,7 @@ category: ml
 | Logistic regression | $\theta^T\theta + C \sum_i \log[1+\exp(-y_i \cdot \theta^T x_i)]$ |
 
 
-- svm use 1/-1, logistic use 1/0
+- svm use +1/-1, logistic use 1/0
 - *perceptron* - tries to find separating hyperplane
   - whenever misclassified, update w
   - can add in delta term to maximize margin
@@ -65,7 +65,7 @@ category: ml
         - here $\phi (x, i)$ puts x in the ith spot and zeros elsewhere
         - $\phi$ is often used for feature representation
       - define margin: 
-        $\Delta (y,y') = \begin{cases} \delta& if \: y \neq y' \\\ 0& if \: y=y'\end{cases}$
+        $\Delta (y,y') = \begin{cases} \delta& if \: y \neq y' \\ 0& if \: y=y'\end{cases}$
       - check if $y=\text{argmax}_{y'} \theta^T \phi(x,y') + \delta (y,y')$
   - multiclass SVMs (Crammer & Singer)
     - minimize total norm of weights s.t. true label score is at least 1 more than second best label
@@ -80,7 +80,7 @@ category: ml
   1. assume Y ~ $Bernoulli(p)$ with $p=\text{logistic}(\theta^Tx$)
   2. can solve this online with GD of ***likelihood***
   3. better to solve with iteratively reweighted least squares
-- $Logit(p) = log[p / (1-p)] = \theta^Tx$
+- $Logit(p) = \log[p / (1-p)] = \theta^Tx$
 - multiway logistic classification
   - assume $P(Y^k=1|x, \theta) = \frac{e^{\theta_k^Tx}}{\sum_i e^{\theta_i^Tx}}$, just as arises from class-conditional exponential family distributions
 
@@ -164,7 +164,8 @@ category: ml
   1. *maximum margin separator* generalizes well
   2. *kernel trick* makes it very nonlinear
   3. nonparametric - can retain training examples, although often get rid of many
--  ![](assets/classification/svm_margin.png)
+     1. at test time, can't just store w - have to store support vectors
+- ![](assets/classification/svm_margin.png)
 - $\hat{y} =\begin{cases}   1 &\text{if } w^Tx +b \geq 0 \\ -1 &\text{otherwise}\end{cases}$
 - $\hat{\theta} = argmin \:\frac{1}{2} \vert \vert \theta\vert \vert ^2 \\s.t. \: y^{(i)}(\theta^Tx^{(i)}+b)\geq1, i = 1,...,m$
   - *functional margin* $\gamma^{(i)} = y^{(i)} (\theta^T x +b)$
@@ -173,7 +174,7 @@ category: ml
   - *geometric margin* = functional margin / $\vert \vert \theta \vert \vert $
     - if $\vert \vert \theta \vert \vert =1$, then same as functional margin
     - invariant to scaling of w
-  - derived from maximizing margin: $$max \: \gamma \\\: s.t. \: y^{(i)} (\theta^T x^{(i)} + b) \geq \gamma, i=1,..,m\\ \vert \vert \theta\vert \vert =1$$
+  - derived from maximizing margin: $$\max \: \gamma \\\: s.t. \: y^{(i)} (\theta^T x^{(i)} + b) \geq \gamma, i=1,..,m\\ \vert \vert \theta\vert \vert =1$$
     - difficult to solve, especially because of $\vert \vert w\vert \vert =1$ constraint
     - assume $\hat{\gamma}=1$ ~ just a scaling factor
     - now we are maximizing $1/\vert \vert w\vert \vert $
@@ -189,7 +190,7 @@ category: ml
 - replace dot product $x_j \cdot x_k$ with *kernel function* $K(x_j, x_k)$, that computes dot product in expanded feature space
   - linear $K(x,z) = x^Tz$
   - polynomial $K (x, z) = (1+x^Tz)^d$
-  - radial basis kernel $K (x, z) = exp(-r\vert \vert x-z\vert \vert ^2)$
+  - radial basis kernel $K (x, z) = \exp(-r\vert \vert x-z\vert \vert ^2)$
   - transforming then computing is O($m^2$), but this is just $O(m)$
 - practical guide
   - use m numbers to represent categorical features
@@ -295,8 +296,8 @@ category: ml
 ## single Bernoulli
 
 - $L(p) = P$[Train | Bernoulli(p)]= $P(X_1,...,X_n\vert p)=\prod_i P(X_i\vert p)=\prod_i p^{X_i} (1-p)^{1-X_i}$
-- $=p^x (1-p)^{n-x}$ where x = $\sum x_i$
-- $log[L(p)] = log[p^x (1-p)^{n-x}]=x log(p) + (n-x) log(1-p)$
+- $=p^x (1-p)^{n-x}​$ where x = $\sum x_i​$
+- $\log[L(p)] = \log[p^x (1-p)^{n-x}]=x \log(p) + (n-x) \log(1-p)$
 - $0=\frac{dL(p)}{dp} = \frac{x}{p} - \frac{n-x}{1-p} = \frac{x-xp - np+xp}{p(1-p)}=x-np$
 - $\implies \hat{p} = \frac{x}{n}$
 

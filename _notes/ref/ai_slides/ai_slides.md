@@ -141,17 +141,36 @@ typora-copy-images-to: ./assets
   - *consistent* - doesn't violate constraints
   - *complete* - every variable is assigned
 - 2 ways to solve
-  - local search - assign all variables and then alter
-  - search (with inference) - assign one at a time
+  1. local search - assign all variables and then alter
+  2. backtracking search (with inference) - assign one at a time
 
 ## example
 ![Screen Shot 2018-06-28 at 8.40.49 PM](assets/australia.png)
 
-## local search for csps
+## 1 - local search for csps
 - start with some assignment to variables
 - *min-conflicts* heuristic - change variable to minimize conflicts
   - can escape plateaus with *tabu search* - keep small list of visited states
   - could use *constraint weighting*
+
+## 2 - backtracking
+- depth-first search that backtracks when no legal values left
+  - b1 - variable and value ordering
+  - b2 - interleaving search and inference
+  - b3 - intelligent backtracking - looking backward
+
+## b1 - variable and value ordering
+
+- *commutative*
+- heuristics
+  - *minimum-remaining-values*
+  - *degree* - pick variable involved in most constraints
+  - *least-constraining-value*
+
+## b2 - interleaving search and inference
+
+- *forward checking* - after assigning, check arc-consistency on neighbors
+- *maintaining arc consistency (MAC)* - after assigning, arc consistency initialized on neighbors
 
 ## constraint graph
 
@@ -181,25 +200,6 @@ typora-copy-images-to: ./assets
     - $\implies O(k^2d)$ to solve
 - global constraints
 
-## backtracking
-- depth-first search that backtracks when no legal values left
-  - b1 - variable and value ordering
-  - b2 - interleaving search and inference
-  - b3 - intelligent backtracking - looking backward
-
-## b1 - variable and value ordering
-
-- *commutative*
-- heuristics
-  - *minimum-remaining-values*
-  - *degree* - pick variable involved in most constraints
-  - *least-constraining-value*
-
-## b2 - interleaving search and inference
-
-- *forward checking* - after assigning, check arc-consistency on neighbors
-- *maintaining arc consistency (MAC)* - after assigning, arc consistency initialized on neighbors
-
 ## b3 - intelligent backtracking
 
 - *conflict set* for each node (list of variable assignments that deleted things from its domain)
@@ -207,6 +207,7 @@ typora-copy-images-to: ./assets
 - *conflict-directed backjumping* 
   - let $X_j$ be current variable and $conf(X_j)$ be conflict set. If every possible value for $X_j$ fails, backjump to the most recent variable $X_i$ in $conf(X_j)$ and set $conf(X_i) = conf(X_i) \cup conf(X_j) - X_i$
 - *constraint learning* - finding min set of assigments from conflict set that causes problem
+
 
 ## structure of problems
 - connected components of constraint graph are independent subproblems
@@ -307,6 +308,48 @@ typora-copy-images-to: ./assets
 - compositionality
 - intrinsic / extrinsic properties
 - event calculus
+
+
+
+# decisions + rl
+
+## decision theory
+
+- $EU(a|e) = \sum_{s'} P(s'|s, a) U(s')$
+- $MEU(e) = \underset{a}{\max} EU(a|e)$
+- $VPI(T) = E_T[MEU(e, t)] - MEU(e)$
+
+## mdps
+
+$\pi(s) = \underset{\pi}{\text{argmax}} \:U^\pi (s)$
+
+- value iteration: $U(s) = R(s) + \gamma MEU(s)$ (Bellman eqn)
+- policy iteration: $U(s) = R(s) + \gamma EU(s)$
+
+## passive rl
+
+*given $\pi$, find $U(s)$*
+
+- ADP: find $P(s'|s, a)$, $R(s) \to $ plug into Bellman eqn
+- TD: when $s \to s'$: $U(s) = U(s) + \alpha[R(s) + \gamma U(s') - U(s)]$
+
+
+
+## active rl
+
+*find $\pi$, maybe maximize rewards along the way*
+
+*here only Q-learning: $U(s) = \underset{a}{\max}Q(s, a)$*
+
+- ADP: $Q(s, a) =  R(s) + \alpha[\sum_{s'} P(s'|s, a)\underset{\alpha}{\max}Q(s', a')]$
+- TD: when $s\to s'$: $Q(s, a) = Q(s, a) + \alpha[R(s) + \gamma \underset{a}{\max}Q(s', a') - Q(s, a)]$
+- SARSA: when $s\to s'$: $Q(s, a) = Q(s, a) + \alpha[R(s) + \gamma Q(s', a') - Q(s, a)]$
+
+
+
+
+
+
 
 <style>
 

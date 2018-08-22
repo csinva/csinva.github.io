@@ -6,11 +6,69 @@
 
 
 <body data-spy="scroll" data-target=".navbar-fixed-top">
-    <div width="40%" class="column" style="margin-top: 150px; margin-bot: 150px; margin-left: 100px; margin-right: 100px">
-        {{ page.content | markdownify }}
+
+    <div class="wrapper">
+        <div class="sidenav">
+            <div id="toc"></div>
+        </div>
+
+        <div class="main">
+            <div id="content">
+                {{ page.content | markdownify }}
+            </div>
+        </div>
+
     </div>
+
 </body>
 
+
+<style>
+.sidenav {
+    height: 100%;
+    width: 20%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #000;
+    overflow-x: hidden;
+    padding-top: 80px;
+}
+
+.sidenav a {
+    text-decoration: none;
+    color:#5bc0de
+    display: block;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenave li {
+    display: flex;
+    list-style-type: square;
+}
+
+.main {
+    margin-left: 25%; /* Same as the width of the sidenav */
+    padding-top: 80px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+img {
+    background:none;
+    border:none;
+    box-shadow:none;
+    filter: invert(1);
+    width: 25%;
+}
+</style>
 
 
 
@@ -28,13 +86,8 @@
 {% include js.html %}
 
 
-<!--css-->
-<style>
- img {
-    background:none;
-    border:none;
-    box-shadow:none;
-    filter: invert(1);
-    width: 25%;
- }
-</style>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#toc').toc();
+});
+</script>

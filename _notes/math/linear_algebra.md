@@ -106,9 +106,9 @@ typora-copy-images-to: ./assets/linear_algebra
 ## vector norms
 
 - *$L_p-$norms*: $||x||_p = (\sum_{i=1}^n |x_i|^p)^{1/p}$
-  - $L_0$ norm - number of nonzero elements
+  - $L_0$ norm - number of nonzero elements (this is not actually a norm!)
   - $||x||_1 = \sum |x_i|$
-  - $||x||_\infty = max_i |x_i|$ - also called *Cheybyshev norm*
+  - $||x||_\infty = \max_i |x_i|$ - also called *Cheybyshev norm*
 - *quadratic norms*
   - *P-quadratic norm*: $||x||_P = (x^TPx)^{1/2} = || P^{1/2} x ||_2$ where $P \in S_{++}^n$
 - *dual norm*

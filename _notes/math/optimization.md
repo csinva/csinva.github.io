@@ -135,6 +135,7 @@ category: math
 - consider $\min \: f_0 (x) \\ s.t. \: f_i(x) \leq 0 \\ h_i(x) = 0$
 - *lagrangian* $L(x, \lambda, \nu) = f_0(x) + \sum \lambda_i f_i(x) + \sum \nu_i h_i(x)$
 - *dual function* $g(\lambda, \nu) = \underset{x \in D}{\inf} L(x, \lambda, \nu)$ ~ g always concave
+
   - $\lambda \succeq 0 \implies g(\lambda, \nu) \leq p^*$
 - $(\lambda, \nu)$ *dual feasible* if
   1. $\lambda \succeq 0$
@@ -142,15 +143,18 @@ category: math
   - when $p^* = - \infty$, dual infeasible
   - when $d^*=\infty$, primal infeasible
 - dual related to to conjugate func
+
   - ex. min f(x) s.t. $x = 0 \implies g(\nu) = -f^*(-\nu)$
 - *lagrange dual problem*: $\max \: g(\lambda, \nu)\\s.t. \: \lambda \succeq 0$
 - *weak duality*: $d^* \leq p^*$
+
   - *optimal duality gap*: $p^* - d^*$
 - *strong duality*: $d^* = p^*$ ~ requires more than convexity
 - *slater's condition* ~ if problem convex $\implies$ strong duality + $\exists$ dual optimal point
   - $\exists x \in relint \: D\\f_i(x) < 0\\Ax = b$ ~ point is strictly feasible
   - to weaken this, affine $f_i$ can be $\leq 0$
 - *sion's minimax thm*: $x \to f(x, y)$ ~ conditions
+
   - $\implies \underset{x}{min} \: \underset{y}{sup} \: f(x,y) = \underset{y}{sup} \: \underset{x}{min} \: f(x,y)$
 
 ## optimality conditions
@@ -315,13 +319,15 @@ category: math
 - goal: maximize *complete log-likelihood*, but don't know z
   - *expected complete log-likelihood* $E_{p'}[l(\theta; x,z)] = \sum_z p'(z|x,\theta) \cdot \log \: p(x,z|\theta)$
     - p' distribution is assignment to z vars
-  - deriving *auxilary function* $\mathcal L(q, \theta) = \sum_z p'(z|x) \log \frac{p(x,z|\theta)}{p'(z|x)}$ - lower bound for the log likelihood
+  - deriving *auxilary function* $\mathcal L(q, \theta, x) = \sum_z p'(z|x) \log \frac{p(x,z|\theta)}{p'(z|x)}$ - lower bound for the log likelihood
   - $\begin{align} l(\theta; x) &= \log \: p(x|\theta) & \text{incomplete log-likelihood} \\&= \log \sum_z p(x,z|\theta) &\text{complete log-likelihood}\\&= \log\sum_z p'(z|x) \frac{p(x,z|\theta)}{p'(z|x)} &\text{multiplying by 1} \\ &\geq \sum_z p'(z|x) \log \frac{p(x,z|\theta)}{p'(z|x)} &\text{Jensen's inequality}\\&\triangleq \mathcal L (p', \theta) \end{align}$
+  - this removes dependence on z
 - steps
-  - E: $p'(z|x, \theta) = \underset{p'}{argmax}\: \mathcal L(p',\theta)$
-  - M: $\theta = \underset{\theta}{argmax} \: \mathcal L(p', \theta)$
+  - E: $p'(z|x, \theta) = \underset{p'}{\text{argmax}}\: \mathcal L(p',\theta, x)$
+  - M: $\theta = \underset{\theta}{\text{argmax}} \: \mathcal L(p', \theta, x)$
   - equivalent to maximizing expected complete log-likelihood
   - *stochastically* converges to *local* minimum
+- alternatively, can look at kl-divergences
 
 # nn optimization
 

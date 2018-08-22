@@ -20,7 +20,7 @@ typora-copy-images-to: ./assets/ai
   - for multiplayer, the backed-up value of a node n is the vector of the successor state with the highest value for the player choosing at n
   - time complexity - $O(b^m)$
   - space complexity - $O(bm)$ or even $O(m)$
-- *alpha-beta* pruning cut in half the exponential depth
+- *alpha-beta* pruning cuts in half the exponential depth
   - once we have found out enough about n, we can prune it
   - depends on move-ordering
     - might want to explore best moves = *killer moves* first
@@ -72,7 +72,7 @@ typora-copy-images-to: ./assets/ai
 
 - *preference elicitation* - finds utility function
   - normalized utility to have min and max value
-  - assess utility of s by asking agent to choose between s and $(p:min, (1-p):max)$
+  - assess utility of s by asking agent to choose between s and $(p: \min, (1-p): \max)$
 - people have complicated utility functions
   - ex. *micromort* - one in a million chance of death
   - ex. *QALY* - quality-adjusted life year
@@ -121,9 +121,10 @@ typora-copy-images-to: ./assets/ai
   - $VPI(T) =  \mathbb{E}_{T}\left[ EU(\alpha|e, T) \right] - \underbrace{EU(\alpha \vert e)}_{\text{original EU}}$
   - first term expands to $\sum_t P(T=t \vert e) \cdot EU(\alpha \vert  e, T=t) $
     - within each of these EU, we take a max over actions
-  - info is more valuable when it is likely to cause a change of plan
-  - info is more valuable when the new plan will be much better than the old plan
   - VPI not linearly additive, but is order-independent
+  - intuition
+    - info is more valuable when it is likely to cause a change of plan
+    - info is more valuable when the new plan will be much better than the old plan
 - information-gathering agent
   - *myopic* - greedily obtain evidence which yields highest VPI until some threshold
   - *conditional plan* - considers more things
@@ -132,13 +133,13 @@ typora-copy-images-to: ./assets/ai
 
 - sequences of actions
 - *fully observable* - agent knows its state
-- *markov decision process*
+- *markov decision process* - all these things are given
   - set of states s
   - set of actions a
   - stochastic transition model $P(s' \vert s,a)$
   - reward function R(s)
     - utility aggregates rewards, for models more complex than mdps reward can be a function of past sequences of actions / observations
-- policy $\pi (s)$ - what action to do in state s
+- want policy $\pi (s)$ - what action to do in state s
   - optimal policy yields highest expected utlity
 - optimizing MDP - *multiattribute utility theory*
   - could sum rewards, but results are infinite
@@ -207,7 +208,7 @@ typora-copy-images-to: ./assets/ai
 # reinforcement learning -- R&N 21.1-21.6
 
 - *reinforcement learning* - use observed rewards to learn optimal policy for the environment
-  - in ch 17, agent had model of environment (this is why we write P(Result(a)=s')) + reward function
+  - in ch 17, agent had model of environment (P(s'|s, a) and R(s))
 - 2 problems
   - *passive* - given $\pi$, learn $U^\pi (s)$
   - *active* - *explore* states to find utilities and *exploit* to get highest reward
@@ -221,14 +222,14 @@ typora-copy-images-to: ./assets/ai
 
 ## passive reinforcement learning
 
-- given policy $\pi$, learn $U^\pi (s) = E\left[ \sum_{t=0}^{\infty} \gamma^t R(S_t)\right]$
+- given policy $\pi$, learn $U^\pi (s) = \mathbb E\left[ \sum_{t=0}^{\infty} \gamma^t R(S_t)\right]$
   - like policy evaluation, but transition model / reward function are unknown
 - **direct utility estimation**: treat states independently
   - run trials to sample utility
   - average to get expected total reward for each state = expected total reward from each state
 - **adaptive dynamic programming** (ADP) - sample to estimate transition model $P(s'|s, a)$ and rewards $R(s)$, then plug into Bellman eqn to find $U^\pi(s)$ (plug in at each step)
   - we might want to enforce a prior on the model (two ways)
-    1. *Bayesian reinforcement learning* - assume a prior $P(h)$ on transition model h
+    1. *Bayesian reinforcement learning* - assume a prior $P(h)​$ on transition model h
       - use prior to calculate $P(h \vert e)$
       - use $P(h|e)$ to calculate optimal policy: $\pi^* = \underset{\pi}{argmax} \sum_h P(h \vert e) u_h^\pi$
         - $u_h^\pi$= expected utility over all possible start states, obtained by executing policy $\pi$ in model h
@@ -271,7 +272,7 @@ typora-copy-images-to: ./assets/ai
 
 - $U(s) = \underset{a}{\max} \: Q(s,a)$
   - ADP version: $Q(s, a) = R(s) + \gamma \sum_{s'} P(s'|s, a) \underset{a'}{\max} Q(s', a')$
-  - TD version: $Q(s,a) = Q(s,a) + \alpha [R(s) - Q(s,a) + \gamma \: \underset{a'}{\max} Q(s', a')]$
+  - TD version: $Q(s,a) = Q(s,a) + \alpha [R(s) - Q(s,a) + \gamma \: \underset{a'}{\max} Q(s', a')]$ - **this is what is usually referred to as Q-learning**
 - *SARSA* (state-action-reward-state-action) is related: $Q(s,a) = Q(s,a) + \alpha [R(s) - Q(s,a) + \gamma \: Q(s', a')]$
   - here, a' is action actually taken
 - Q-learning is *off-policy* (only uses best Q-value)
@@ -285,7 +286,7 @@ typora-copy-images-to: ./assets/ai
 ## policy search
 
 - keep twiddling the policy as long as it improves, then stop
-  - store one Q-function (parameterized by $\theta$) for each action
+  - store one Q-function (parameterized by $\theta​$) for each action
   - ex. $\pi(s) = \underset{a}{\max} \: \hat{Q}_\theta (s,a)$
     - this is discontinunous, instead often use *stochastic policy* representation (ex. softmax for $\pi_\theta (s,a)$)
   - learn $\theta$ that results in good performance

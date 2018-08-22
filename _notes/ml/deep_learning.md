@@ -7,7 +7,6 @@ category: ml
 
 * TOC
 {:toc}
-
 ---
 
 # neural networks
@@ -171,6 +170,10 @@ category: ml
 ## Wavenet
 
 ## Densenet
+
+# coordconv
+
+- break translation equivariance by passing in i, j coords as extra filters
 
 # recent papers
 

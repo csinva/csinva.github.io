@@ -99,6 +99,7 @@ typora-copy-images-to: ./assets/ml
 
 
 ## clustering (j 10)
+
 - *latent vars* - values not specified in the observed data
 - 
   ![](assets/ml/j10_1.png)

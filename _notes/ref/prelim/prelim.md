@@ -18,6 +18,7 @@
   - decision theory
   - vpi
   - mdps
+    - **pomdps**
   - rl
 - graphical models
   - independence / factorization
@@ -54,11 +55,22 @@
   - russell qs
   - ml discussions
   - ai discussions
+    - dis 3/4 on rl
+    - **read end of rl**
+  - ai/ml notes
 - committee
   - stuart
+  - moritz
+  - maybe anca, trevor...
 - new stuff
-  - CSPs
   - understand binary classifiers
   - complex eigenvalues?
   - logic stuff
   - linear reg alpha bound?
+- siamese nets
+- read graphical models
+- read logic...
+- read stat stuff...
+- primal / dual (late svm stuff)
+- read 189 pdf
+- em cheat sheet

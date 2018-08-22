@@ -1,13 +1,6 @@
----
-layout: notes
-section-type: notes
-title: bmi
-category: neuro
----
 
 * TOC
 {:toc}
-
 ---
 
 - companies

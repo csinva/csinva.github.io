@@ -28,22 +28,21 @@ typora-copy-images-to: ./assets/graphical_models
 
 ![](assets/graphical_models/models.png)
 
+- dark is observed for HMMs, for other things unclear what it means
+
 # bayesian networks - R & N 14.1-5 + J 2
 
-1. examples
-   1. ex. *causal model* - causes $\to$ symptoms
-   2. ex. *diagnostic model* - symptoms $\to$ causes
-      1. requires more dependencies
-2. learning
+- examples
+   1. *causal model*: causes $\to$ symptoms
+   2. *diagnostic model*: symptoms $\to$ causes
+      - generally requires more dependencies
+- learning
    1. expert-designed
    2. data-driven
-
 - properties
   - each node is random variable
   - weights as tables of conditional probabilities for all possibilities
   - represented by directed acyclic graph
-
-
 - joint distr: $P(X_1 = x_1,...X_n=x_n)=\prod_{i=1}^n P[X_i = x_i \vert  Parents(X_i)]$
   - *markov condition*: given parents, node is conditionally independent of its non-descendants
     - marginally, they can still be dependent (e.g. explaining away)
@@ -62,17 +61,15 @@ typora-copy-images-to: ./assets/graphical_models
     - h is continuous, s is discrete; a, b, $\sigma$ all change when s changes
     - $P(c|h,s) = N(a \cdot h + b, \sigma^2)$, so mean is linear function of h
 2. discrete children (continuous parents)
-  1. *probit distr* - $P(buys|Cost=c) = \phi[(-c+\mu)/\sigma]$ - integral of standard normal distr
+  1. *probit distr* - $P(buys|Cost=c) = \phi[(\mu - c)/\sigma]$ - integral of standard normal distr
     - like a soft threshold
-  2. *logit distr.* - $P(buys|Cost=c)=\frac{1}{1+exp(-2 (-c + \mu) / \sigma)}$
-    - logistic function produces thresh
+  2. *logit distr.* - $P(buys|Cost=c) =s\left(\frac{-2 (\mu - c)}\sigma \right)$
+    - logistic function (sigmoid s) produces thresh
 
 ## exact inference
 
 - given assignment to *evidence variables* E, find probs of *query variables* X
   - other variables are *hidden variables* H
-- *polytree*=*singly connected network* - time and space complexity of exact inference is linear in the size of the network
-  - holds even if the number of parents of each node is bounded by a constant
 1. *enumeration* - just try summing over all hidden variables
   - $P(X|e) = \alpha P(X, e) = \alpha \sum_h P(X, e, h)$
     - $\alpha$ can be calculated as $1 / \sum_x P(x, e)$
@@ -94,6 +91,8 @@ typora-copy-images-to: ./assets/graphical_models
   - join individual nodes in such a way that resulting network is a polytree
     - ![Screen Shot 2018-07-26 at 8.52.30 AM-2621781](assets/Screen Shot 2018-07-26 at 8.52.30 AM-2621781.png)
     - *polytree*=*singly-connected network* - only 1 undirected paths between any 2 nodes
+      - time and space complexity of exact inference is linear in the size of the network
+      - holds even if the number of parents of each node is bounded by a constant
   - can compute posterior probabilities in $O(n)$
     - however, conditional probability tables may still be exponentially large
 
@@ -131,6 +130,7 @@ typora-copy-images-to: ./assets/graphical_models
     - provided transition matrix q is *ergodic* - every state is reachable and there are no periodic cycles - only 1 steady-state soln
 
 3. *variational inference* - formulate inference as optimization
+
    - minimize KL-divergence between observed samples and assumed distribution
 
 ## conditional independence properties

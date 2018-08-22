@@ -182,7 +182,7 @@ From "Artificial Intelligence" Russel & Norvig 3rd Edition
   - *dual graph* transformation - create a new graph with one variable for each constraint in the original graph and one binary constraint for each pair of original constraints that share variables
 - also can have *preference constraints* instead of *absolute constraints*
 
-## inference
+## inference (prunes search space before backtracking)
 
 - *node consistency* - prune domains violating unary constraints
 - *arc consistency* - satisfy binary constraints (every node is made arc-consistent with all other nodes)
