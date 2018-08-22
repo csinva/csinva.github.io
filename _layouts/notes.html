@@ -14,6 +14,7 @@
 
         <div class="main">
             <div id="content">
+                <p class="title"> {{ page.title }} </p>
                 {{ page.content | markdownify }}
             </div>
         </div>
@@ -24,6 +25,12 @@
 
 
 <style>
+.title {
+    font-size: 70px;
+    margin: -10;
+    padding: -10;
+}
+
 .sidenav {
     height: 100%;
     width: 20%;
@@ -54,6 +61,10 @@
 .main {
     margin-left: 25%; /* Same as the width of the sidenav */
     padding-top: 80px;
+}
+
+#markdown-toc {
+    display: none;
 }
 
 @media screen and (max-height: 450px) {
