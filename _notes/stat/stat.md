@@ -174,6 +174,7 @@ category: stat
      - no prior - only use priors when they correspond to objective frequencies of observing values
      - neyman / pearson
      - $\hat{\theta}_{MLE} = argmax_\theta \: p(x\vert\theta)$
+       - really likelihood is whatever we model (ex. for discriminative models would be $p(y|x, \theta)$)
 
 ## 3 problems
 

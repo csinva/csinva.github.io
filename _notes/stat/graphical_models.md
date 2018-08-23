@@ -9,7 +9,7 @@ typora-copy-images-to: ./assets/graphical_models
 * TOC
 {:toc}
 
-*Material from Russell and Norvig "Artifical Intelligence" 3rd Edition*
+*Material from Russell and Norvig "Artifical Intelligence" 3rd Edition* and *Jordan "Graphical Models"*
 
 ---
 

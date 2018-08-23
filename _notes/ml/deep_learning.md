@@ -88,6 +88,8 @@ category: ml
     - max pooling - backprop error back to neuron w/ max value
     - average pooling - backprop splits error equally among input neurons
 - data augmentation - random rotations, flips, shifts, recolorings
+- siamese networks - extract features twice with same net then put layer on top
+    - ex. find how similar to representations are
 
 ## LeNet (1998)
 

@@ -5,16 +5,16 @@
 </header>
 
 
-<body data-spy="scroll" data-target=".navbar-fixed-top">
+<body data-spy="scroll" data-target=".sidebar">
 
     <div class="wrapper">
-        <div class="sidenav">
+        <div class="sidenav navbar">
             <div id="toc"></div>
         </div>
 
         <div class="main">
             <div id="content">
-                <p class="title"> {{ page.title }} </p>
+                <p class="title"> {{ page.title | downcase }} </p>
                 {{ page.content | markdownify }}
             </div>
         </div>
@@ -28,7 +28,7 @@
 .title {
     font-size: 70px;
     margin: -10;
-    padding: -10;
+    padding: -10;jek
 }
 
 .sidenav {
