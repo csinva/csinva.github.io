@@ -1,7 +1,7 @@
 ---
 layout: notes
 section-type: notes
-title: Machine Learning
+title: Unsupervised learning
 category: ml
 typora-copy-images-to: ./assets/ml
 ---
@@ -10,51 +10,6 @@ typora-copy-images-to: ./assets/ml
 ---
 
 # overview
-
-- 3 types: supervised, unsupervised, reinforcement
-- 4 problems: regression, classification, dim. reduction, density estimation / clustering
-- models: generative, discriminative
-
-# feature selection
-
-## filtering
-
-- ranks features or feature subsets independently of the predictor
-- univariate methods (consider one variable at a time)
-  - ex. T-test of y for each variable
-  - ex. pearson correlation coefficient - this can only capture linear dependencies
-  - mutual information - covers all dependencies
-- multivariate methods
-  - features subset selection
-  - need a scoring function
-  - need a strategy to search the space
-  - sometimes used as preprocessing for other methods
-
-## wrapper
-
-- uses a predictor to assess features of feature subsets
-- learner is considered a black-box - use train, validate, test set
-- forward selection - start with nothing and keep adding
-- backward elimination - start with all and keep removing
-- others: Beam search - keep k best path at teach step, GSFS, PTA(l,r), floating search - SFS then SBS
-
-## embedding
-
-- uses a predictor to build a model with a subset of features that are internally selected
-- ex. lasso, ridge regression
-
-
-# semi-supervised learning and more
-
-- blog: https://dawn.cs.stanford.edu/2017/07/16/weak-supervision/
-  - training data is hard
-- related paper: https://www.biorxiv.org/content/early/2018/06/16/339630
-
- ![semi](assets/ml/semi.png)
-
-- missing self-supervised?
-
-# unsupervised learning
 
 - labels are not given
 - intra-cluster distances are minimized, inter-cluster distances are maximized
@@ -71,7 +26,7 @@ typora-copy-images-to: ./assets/ml
 - correlation coefficient - unit independent
 - edit distance
 
-## hierarchical
+# hierarchical
 
 - two approaches:
     1. bottom-up agglomerative clustering - starts with each object in separate cluster then joins
@@ -86,7 +41,7 @@ typora-copy-images-to: ./assets/ml
 - *ultrametric distance* - tighter than triangle inequality
     - $d(x, y) \leq \max[d(x,z), d(y,z)]$
 
-## partitional
+# partitional
 
 - partition n objects into a set of K clusters (must be specified)
 - globally optimal: exhaustively enumerate all partitions
@@ -98,7 +53,7 @@ typora-copy-images-to: ./assets/ml
 
 
 
-## clustering (j 10)
+# clustering (j 10)
 
 - *latent vars* - values not specified in the observed data
 - 
@@ -110,10 +65,11 @@ typora-copy-images-to: ./assets/ml
   - M: recompute centers $O(np)$ and repeat until nothing changes
   - partition amounts to Voronoi diagram
   - can be viewed as minimizing *distortion measure* $J=\sum_n \sum_i z_n^i ||x_n - \mu_i||^2$
-- *GMMs*
-  - $p(x|\theta) = \underset{i}{\Sigma} \pi_i \mathcal{N}(x|\mu_i, \Sigma_i)$
-    - $l(\theta|x) = \sum_n \log \: p(x_n|\theta) \\ = \sum_n \log \sum_i \pi_i \mathcal{N}(x_n|\mu_i, \Sigma_i)$
-    - hard to maximize bcause log acts on a sum
+- *GMMs*: $p(x|\theta) = \underset{i}{\Sigma} \pi_i \mathcal{N}(x|\mu_i, \Sigma_i)$
+
+  - $l(\theta|x) = \sum_n \log \: p(x_n|\theta) \\ = \sum_n \log \sum_i \pi_i \mathcal{N}(x_n|\mu_i, \Sigma_i)$
+  - hard to maximize bcause log acts on a sum
+
   - "soft" version of K-means - update means as weighted sums of data instead of just normal mean
   - sometimes initialize K-means w/ GMMs
 

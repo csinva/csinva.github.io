@@ -1,13 +1,12 @@
 ---
 layout: notes
 section-type: notes
-title: Computational Neuroscience
+title: comp neuro 1
 category: neuro
 ---
 
 * TOC
 {:toc}
-
 ---
 
 # 1- introduction
@@ -59,6 +58,7 @@ category: neuro
   - response := firing rate r(t)
   - stimulus := s
 - simple linear model
+
   - r(t) = c * s(t)
 - *weighted linear model* - takes into account previous states weighted by f
   1. *temporal filtering*
@@ -107,8 +107,10 @@ category: neuro
 
 ### 2.4 - variability
 - hidden assumptions about time-varying firing rate and single spikes
+
   - smooth function RFT can miss some stimuli
 - statistics of stimulus can effect P(spike\|stimulus)
+
   - Gaussian white noise is nice because no way to filter it to get structure
 - identifying good filter
   - want $P(s_f\|spike)$ to differ from $P(s_f)$ where $s_f$ is calculated via the filter

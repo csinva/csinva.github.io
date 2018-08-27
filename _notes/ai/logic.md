@@ -8,7 +8,7 @@ typora-copy-images-to: ./assets/logic
 
 * TOC
 {:toc}
-*From "Artificial Intelligence" Russel & Norvig 3rd Edition*
+*from "Artificial Intelligence" Russel & Norvig 3rd Edition*
 
 ---
 
@@ -46,9 +46,9 @@ typora-copy-images-to: ./assets/logic
 ## theorem proving
 
 - *resolution rule* - resolves different rules with each other - leads to complete inference procedure
-- *CNF* - *conjunctive normal form* - conjunction of clauses 
+- *CNF* - *conjunctive normal form* - conjunction (and) of clauses (with ors) 
+  - ex: $ ( \neg A \lor  B) \land \neg C \land (D \lor E)$
   - anything can be expressed as this
-
 - *horn clause* - at most one positive
   - *definite clause* - disjunction of literals with exactly one positive: ex. ($A \lor \neg B \lor \neg C$)
   - *goal clause* - no positive: ex. ($\neg A \lor \neg B \lor \neg C$)
@@ -66,7 +66,6 @@ typora-copy-images-to: ./assets/logic
     - backward chaining works backwards from the query
       - *goal-driven*
       - keep going until get back to known facts
-
 - checking satisfiability
   - complete backtracking
     - *davis-putnam* algorithm = *DPLL* - like TT-entails with 3 improvements

@@ -79,6 +79,7 @@ category: math
 
 ## optimization problems (boyd 4)
 ## optimization
+
 - standard form: $p^* = min \: f_0(x)\\s.t. \: f_i(x) \leq 0 \\ h_i(x) = 0$
 - equivalent problems
   - change of vars
@@ -227,12 +228,12 @@ category: math
 - $\color{red}0 \preceq \color{green}{\underset{\text{strong convexity}}{mI}} \preceq \nabla^2 \color{cornflowerblue}{f(x)} \preceq \underset{\text{smoothness}}{MI}$
   - $\kappa = M/m$ bounds *condition number* of $\nabla^2 f = \frac{\lambda_{\max}(\nabla^2 f)}{\lambda_{\min}(\nabla^2 f)}$
   - *strongly convex*: $\nabla^2 f(x) \succeq mI$
-    - $\implies f(y) \geq f(x) + \nabla f(x)^T(y-x) + m/2 ||y-x||_2^2$
+    - $\implies f(x_2) \geq f(x_1) + \nabla f(x_1)^T(x_2-x_1) + m/2 ||x_2-x_1||_2^2$
     - minimizing yields $p^* \geq f(x) - 1/(2m) ||\nabla f(x)||_2^2$
     - if the gradient of f at x is small enough, then the difference between f(x) and p⋆ is small 
   - *smooth*: $\exists \: M, \: \nabla^2f(x) \preceq MI$
     - $\implies f(y) \leq f(x) + \nabla f(x)^T(y-x) + M/2 ||y-x||_2^2$
-- cond(*C*) = $W_{\max}^2 / W_{\min}^2$
+- cond(*C*) = $W_{\max}^2 / W_{\min}^2​$
   - *width* of convex set $C \subset \mathbb{R}^n$ in direction q with $||q||_2=1$
   - $W(C, q) = \underset{z \in C}{\sup} \: q^Tz - \underset{z \in C}{\inf} \: q^Tz$
 - *alpha-level subset*: $C_\alpha = \{x|f(x) \leq \alpha\}$

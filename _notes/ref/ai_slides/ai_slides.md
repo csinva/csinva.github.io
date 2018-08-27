@@ -225,7 +225,6 @@ typora-copy-images-to: ./assets
   - *tree width* w - size of largest subproblem - 1
   - solvable in $O(n d^{w+1})$
 
-
 # propositional logic
 
 - declarative vs procedural (knowing how to ride a bike)

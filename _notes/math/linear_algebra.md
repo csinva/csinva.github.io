@@ -135,6 +135,7 @@ typora-copy-images-to: ./assets/linear_algebra
 
 ## eigenvalues intro - strang 5.1
 
+- [nice viz](http://setosa.io/ev/eigenvectors-and-eigenvalues/)
 - elimination changes eigenvalues
 - eigenvector application to diff eqs $\frac{du}{dt}=Au$
   - soln is exponential: $u(t) = c_1 e^{\lambda_1 t} x_1 + c_2 e^{\lambda_2 t} x_2$

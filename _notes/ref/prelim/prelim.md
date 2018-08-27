@@ -45,29 +45,11 @@
 
 # todo
 
-- memorize 
-- organize
+- memorize new cheat sheet (logic, planning)
 - practice problems
-  - 188 finals
-  - 189 finals
-  - 188 discussions
-  - 189 discussions
+  - 188 finals / discussions
+  - 189 finals / discussions
   - russell qs
-  - ml discussions
-  - ai discussions
-    - dis 3/4 on rl
-    - **read end of rl**
-  - ai/ml notes
-- committee
-  - stuart
-  - moritz
-  - maybe anca, trevor...
-- new stuff
-  - understand binary classifiers
-  - complex eigenvalues?
-  - logic stuff
-  - linear reg alpha bound?
-- read graphical models
-- read logic...
-- read stat stuff...
-- primal / dual (late svm stuff)
+- approximate q-learning?
+- ac-3 / backtracking
+- forward-backward algo

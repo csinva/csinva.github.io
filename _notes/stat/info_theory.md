@@ -31,7 +31,8 @@ category: stat
 
   - $H(X) \geq 0$ since $p(x) \in [0, 1]$
 
-- $H(Y\|X)=\sum p(x) H(Y\|X=x) =- \sum_x p(x) \sum_y  p(y|x) log \: p(y|x)$
+- $H(Y\|X)=\sum p(x) H(Y\|X=x) =- \sum_x p(x) \sum_y  p(y|x) \log \: p(y|x)$
+
   - $H(X,Y)=H(X)+H(Y\|X) =H(Y)+H(X\|Y)$
 
 # relative entropy / mutual info
@@ -113,3 +114,14 @@ category: stat
 # in practice
 
 - with small number of points, estimated mutual information is too high
+
+# historical
+
+- founded with claude shannon 1948
+- set of principles that govern flow + transmission of info
+
+# information measures
+
+- X is a R.V. on (finite) discrete alphabet ~ won't cover much continuous
+- **entropy** $H(X) = - \sum p(x) \:\log p(x) = E[h(p)]$
+  - $h(p)= - \log(p)$

@@ -99,11 +99,9 @@ typora-copy-images-to: ./assets/graphical_models
 ## approximate inferences in BNs
 
 - randomized sampling algorithms = *monte carlo* algorithms
-1. *direct sampling* methods: *simplest* - sample network in topological order
-
-  1. more samples is better
-
-  - *rejection sampling* - produces samples from a hard-to-sample distr. given an easy-to-sample distr.
+1. *direct sampling* methods:
+  - *simplest* - sample network in topological order
+  - *rejection sampling* - sample in order and stop once evidence is violated
     - want P(D|A)
     - sample N times, throw out samples where A is false
     - return probability of D being true
@@ -128,9 +126,10 @@ typora-copy-images-to: ./assets/graphical_models
   - why it works
     - the sampling process settles into a dynamic equilibrium where time spent in each state is proportional to its posterior probability
     - provided transition matrix q is *ergodic* - every state is reachable and there are no periodic cycles - only 1 steady-state soln
+  - Gibbs: we have conditionals
+    - Metropolis-Hastings we have to estimate conditionals
 
 3. *variational inference* - formulate inference as optimization
-
    - minimize KL-divergence between observed samples and assumed distribution
 
 ## conditional independence properties
@@ -144,6 +143,7 @@ typora-copy-images-to: ./assets/graphical_models
 - *d-separation* = directed separation
 
 - *Bayes ball algorithm* - is $X_A \perp X_B | X_C$?
+
   - initialize
     - shade $X_C$
     - place ball at each of $X_A$
@@ -284,7 +284,7 @@ typora-copy-images-to: ./assets/graphical_models
  - products of probs tend to underflow, so take $\max_x \log p^E (x)$
  - can also derive a *max-product algorithm* for trees
 
- 1. find $argmax_x p^E (x)$
+ 1. find $\text{argmax}_x p^E (x)$
     - can solve by keeping track of maximizing values of variables in max-product algorithm
 
 # dynamic bayesian nets
@@ -296,7 +296,7 @@ typora-copy-images-to: ./assets/graphical_models
 - state space model ![](assets/graphical_models/j15_1.png)
 
 
-- $P(X_{0:t}, E_{1:t}) = P(X_0) \prod_{i} \underbrace{P(X_i | X_{i-1}) }_{\text{transition model}}  \underbrace{P(E_i|X_i)}_{\text{sensor model}}$
+- $P(X_{0:t}, E_{1:t}) = P(X_0) \prod_{i} \underbrace{P(X_i | X_{i-1}) }_{\text{transition model}}  \: \underbrace{P(E_i|X_i)}_{\text{sensor model}}$
 
   - agent maintains *belief state* of state variables $X_t$ given evidence variables $E_t$
 
