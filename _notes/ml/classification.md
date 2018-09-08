@@ -197,6 +197,7 @@ category: ml
   - scale before applying
   - fill in missing values
   - start with RBF
+- - valid kernel: kernel matrix is PSd
 
 # generative
 

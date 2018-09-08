@@ -43,6 +43,17 @@
   - nearest neighbor
   - neural nets (usually)
 
+- misc facts
+  - bayes estimator minimizes **risk** (expected loss, varies with loss func)
+  - hard-margin + soft differ for separable data (c=inf when same)
+  - can't use implies with there exists (trivially true)
+  - bayes net can't have loops
+  - left-singular is left vector in SVD
+  - averaging multiple trees (decreases var, doesn't increase)
+  - for alpha-beta pruning, usually pick correct soln first
+  - uniform distr can be represented by any bayes net
+  - likelihood weighting only takes upstream evidence into account when sampling (unlike Gibbs)
+
 # todo
 
 - memorize new cheat sheet (logic, planning)
@@ -50,6 +61,12 @@
   - 188 finals / discussions
   - 189 finals / discussions
   - russell qs
-- approximate q-learning?
-- ac-3 / backtracking
-- forward-backward algo
+  - **do exam-prep** - 7 q2
+- review topics
+  - approximate q-learning?
+    - rl eqs
+  - conditional independencies
+    - forward-backward algo
+  - ac-3 / backtracking
+  - kernels
+    - svms duality

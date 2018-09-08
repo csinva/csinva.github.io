@@ -12,7 +12,19 @@ category: stat
 
 ---
 
-# entropy
+# overview
+
+- with small number of points, estimated mutual information is too high
+- founded with claude shannon 1948
+- set of principles that govern flow + transmission of info
+
+- X is a R.V. on (finite) discrete alphabet ~ won't cover much continuous
+- **entropy** $H(X) = - \sum p(x)  \log p(x) = E[h(p)]$
+  - $h(p)= - \log(p)$
+
+# entropy, relative entropy, and mutual info
+
+## entropy
 
 - $H(X) = - \sum p(x) \:\log p(x) = E[h(p)]$
   - $h(p)= - \log(p)$
@@ -35,7 +47,7 @@ category: stat
 
   - $H(X,Y)=H(X)+H(Y\|X) =H(Y)+H(X\|Y)$
 
-# relative entropy / mutual info
+## relative entropy / mutual info
 
 - *relative entropy* = *KL divergence* - measures distance between 2 distributions
   - $$D(p\|\|q) = \sum_x p(x) log \frac{p(x)}{q(x)} = E_p log \frac{p(X)}{q(X)}$$
@@ -58,7 +70,7 @@ category: stat
 
   ![Screen Shot 2018-07-02 at 11.26.42 AM](assets/info_theory/Screen Shot 2018-07-02 at 11.26.42 AM.png)
 
-# chain rules
+## chain rules
 
 - *entropy* - $H(X_1, ..., X_n) = \sum_i H(X_i \| X_{i-1}, ..., X_1) = H(X_n \| X_{n-1}, ..., X_1) + ... + H(X_1)$
 - *conditional mutual info* $I(X; Y\|Z) = H(X\|Z) - H(X\|Y,Z)$
@@ -66,20 +78,8 @@ category: stat
 - *conditional relative entropy* $D(p(y\|x) \|\| q(y\|x)) = \sum_x p(x) \sum_y p(y\|x) log \frac{p(y\|x)}{q(y\|x)}$
   - $D(p(x, y)\|\|q(x, y)) = D(p(x)\|\|q(x)) + D(p(y\|x)\|\|q(y\|x))$
 
-# jensen's inequality
+## axiomatic approach
 
-- *convex* - function lies below any chord
-  - has positive 2nd deriv
-  - linear functions are both convex and concave
-- *Jensen's inequality* - if f is a convex function and X is an R.V., $f(E[X]) \leq E[f(X)]$
-  - if f strictly convex, equality $\implies X=E[X]$
-- implications
-  - *information inequality* $D(p\|\|q) \geq 0$ with equality iff p(x)=q(x) for all x
-  - $H(X) \leq log \|X\|$ where \|X\| denotes the number of elements in the range of X, with equality if and only X has a uniform distr
-  - $H(X\|Y) \leq H(X)$ - information can't hurt
-  - $H(X_1, ..., X_n) \leq \sum_i H(X_i)$
-
-# axiomatic approach
 - *fundamental theorem of information theory* - it is possible to transmit information through a noisy channel at any rate less than channel capacity with an arbitrarily small probability of error
   - to achieve arbitrarily high reliability, it is necessary to reduce the transmission rate to the *channel capacity*
 - uncertainty measure axioms
@@ -111,17 +111,27 @@ category: stat
 - code is *uniquely decipherable* if every finite sequence of code characters corresponds to at most one message
   - *instantaneous code* - no code word is a prefix of another code word
 
-# in practice
+# basic inequalities
 
-- with small number of points, estimated mutual information is too high
+## jensen's inequality
 
-# historical
+- *convex* - function lies below any chord
+  - has positive 2nd deriv
+  - linear functions are both convex and concave
+- *Jensen's inequality* - if f is a convex function and X is an R.V., $f(E[X]) \leq E[f(X)]$
+  - if f strictly convex, equality $\implies X=E[X]$
+- implications
+  - *information inequality* $D(p\|\|q) \geq 0$ with equality iff p(x)=q(x) for all x
+  - $H(X) \leq log \|X\|$ where \|X\| denotes the number of elements in the range of X, with equality if and only X has a uniform distr
+  - $H(X\|Y) \leq H(X)$ - information can't hurt
+  - $H(X_1, ..., X_n) \leq \sum_i H(X_i)$
 
-- founded with claude shannon 1948
-- set of principles that govern flow + transmission of info
 
-# information measures
+# asymptotic equipartition property
 
-- X is a R.V. on (finite) discrete alphabet ~ won't cover much continuous
-- **entropy** $H(X) = - \sum p(x) \:\log p(x) = E[h(p)]$
-  - $h(p)= - \log(p)$
+ # entropy rate of stochastic processes
+
+# kraft inequality, limits on lossless compression
+
+# lossless compression: huffman coding, lempel-ziv, etc.
+

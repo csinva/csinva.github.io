@@ -14,7 +14,7 @@ category: neuro
 - 3 things
   - cortex
   - limbic system
-    - thalamus (has pulvinar), hypothalamus, hippocampus, amygdala, ...
+    - **thalamus** (has pulvinar), **basal ganglia**, hypothalamus, hippocampus, amygdala, ...
     - glands / hormones
   - brain stem
     - midbrain (has superior colliculus), pons, medulla

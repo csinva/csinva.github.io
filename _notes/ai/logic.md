@@ -25,7 +25,7 @@ typora-copy-images-to: ./assets/logic
   - *procedural* approach - encodes desired behaviors as program code
     - intuitively know how to do it (ex. riding a bike)
 - ex. Wumpus World
-- logical *entailment* between senteces
+- logical *entailment* between sentences
   - $A \vDash B$ means B follows logically from A (A implies B)
   - *logical inference* - showing entailment
 - *model checking* - try everything to see if A $\implies$ B

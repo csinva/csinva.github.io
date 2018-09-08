@@ -117,7 +117,7 @@ explain a **single prediction** by a dnn in terms of the **input**
 	box-shadow:none; 
 }
 
-​	filter: invert(1); 
+	filter: invert(1); 
 }
 
 iframe {
