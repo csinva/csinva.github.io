@@ -124,7 +124,7 @@ From "Artificial Intelligence" Russel & Norvig 3rd Edition
   - solution to original problem still solves relaxed problem
   - cost of optimal solution to a relaxed problem is an admissible heuristic for the original problem 
     - also is consistent
-- when there are several good heuristics, pick $h(n) = max[h_1(n), ..., h_m(n)]$ for each node
+- when there are several good heuristics, pick $h(n) = \max[h_1(n), ..., h_m(n)]$ for each node
 - *pattern database* - heuristic stores exact solution cost for every possible subproblem instance
   - *disjoint pattern database* - break into independent possible subproblems
 - can learn heuristic by solving lots of problems using useful features

@@ -7,7 +7,7 @@ category: blog
 
 
 # interpretability
-**chandan singh**  
+**chandan singh** 
 *last updated jul 20, 2018*
 
 ---

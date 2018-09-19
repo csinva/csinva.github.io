@@ -50,7 +50,9 @@ category: neuro
   - neocognitron fukushima 1980
   - david marr: theory, representation, implementation
 
-# circuit-modelling basics
+# neuron models
+
+## circuit-modelling basics
 
 - membrane has capacitance $C_m$
 - force for diffusion, force for drift
@@ -62,7 +64,7 @@ category: neuro
     - $C_m \propto D$
   - axial resistance $R_A \propto 1/D^2$ (not same as membrane lerk), thus bigger axons actually charge faster
 
-# action potentials
+## action potentials
 
 - channel/receptor types
   - ionotropic: $G_{ion}$ = f(molecules outside)
@@ -74,7 +76,7 @@ category: neuro
     - hair cell
   - voltage-gated (active - provide gain; might not require active ATP, other channels are all passive)
 
-# physics of computation
+## physics of computation
 
 - based on carver mead: drift and diffusion are at the heart of everything
 - different things realted by the **Boltzmann distr.** (ex. distr of air molecules vs elevation. Subject to gravity and diffusion upwards since they're colliding)
@@ -100,4 +102,78 @@ category: neuro
     - can't just do biological mimicry - need to understand the principles
 
 # supervised learning
+
+- see machine learning course
+- net talk was major breakthrough (words -> audio) Sejnowski & Rosenberg 1987
+- people looked for world-centric receptive fields (so neurons responded to things not relative to retina but relative to body) but didn't find them
+  - however, they did find gain fields: (Zipser & Anderson, 1987)
+    - gain changes based on what retina is pointing at
+  - trained nn to go from pixels to head-centered coordinate frame
+    - yielded gain fields
+  - pouget et al. were able to find that this helped having 2 pop vectors: one for retina, one for eye, then add to account for it
+- support vector networks (vapnik et al.) - svms early inspired from nns
+- dendritic nonlinearities (hausser & mel 03)
+- example to think about neurons due this: $u = w_1 x_1 + w_2x_2 + w_{12}x_1x_2$
+  - $y=\sigma(u)$
+  - somestimes called sigma-pi unit since it's a sum of products
+  - exponential number of params...**could be fixed w/ kernel trick?**
+    - could also incorporate geometry constraint...
+
+# unsupervised learning
+
+- born w/ extremely strong priors on weights in different areas
+- barlow 1961, attneave 1954: efficient coding hypothesis = redundancy reduction hypothesis
+  - representation: compression / usefulness
+  - easier to store prior probabilities (because inputs are independent)
+  - relich 93: redundancy reduction for unsupervised learning (text ex. learns words from text w/out spaces)
+
+## hebbian learning and pca
+
+- pca can also be thought of as a tool for decorrelation (in pc dimension, tends to be less correlated)
+- hebbian learning = fire together, wire together: $\Delta w_{ab} \propto <a, b>$ note: $<a, b>$ is correlation of a and b (average over time)
+- linear hebbian learning (perceptron with linear output)
+- $\dot{w}_i \propto <y, x_i> \propto \sum_j w_j <x_j, x_i>$ since weights change relatively slowly
+  - 
+
+# sparse, distributed coding
+
+
+
+# self-organizing maps
+
+
+
+# manifold learning
+
+
+
+# reinforcement learning
+
+
+
+# recurrent networks
+
+
+
+# probabilistic models + inference
+
+
+
+# boltzmann machines
+
+
+
+# ica
+
+
+
+# dynamical models
+
+
+
+# neural coding
+
+
+
+# high-dimensional computing
 

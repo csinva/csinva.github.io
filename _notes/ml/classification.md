@@ -36,7 +36,7 @@ category: ml
 | Logistic regression | $\theta^T\theta + C \sum_i \log[1+\exp(-y_i \cdot \theta^T x_i)]$ |
 
 
-- svm use +1/-1, logistic use 1/0
+- svm, perceptron use +1/-1, logistic use 1/0
 - *perceptron* - tries to find separating hyperplane
   - whenever misclassified, update w
   - can add in delta term to maximize margin
@@ -167,7 +167,7 @@ category: ml
      1. at test time, can't just store w - have to store support vectors
 - ![](assets/classification/svm_margin.png)
 - $\hat{y} =\begin{cases}   1 &\text{if } w^Tx +b \geq 0 \\ -1 &\text{otherwise}\end{cases}$
-- $\hat{\theta} = argmin \:\frac{1}{2} \vert \vert \theta\vert \vert ^2 \\s.t. \: y^{(i)}(\theta^Tx^{(i)}+b)\geq1, i = 1,...,m$
+- $\hat{\theta} = \text{argmin} \:\frac{1}{2} \vert \vert \theta\vert \vert ^2 \\s.t. \: y^{(i)}(\theta^Tx^{(i)}+b)\geq1, i = 1,...,m$
   - *functional margin* $\gamma^{(i)} = y^{(i)} (\theta^T x +b)$
     - limit the size of $(\theta, b)$ so we can't arbitrarily increase functional margin
     - function margin $\hat{\gamma}$ is smallest functional margin in a training set
@@ -197,7 +197,7 @@ category: ml
   - scale before applying
   - fill in missing values
   - start with RBF
-- - valid kernel: kernel matrix is PSd
+  - valid kernel: kernel matrix is Psd
 
 # generative
 
@@ -222,7 +222,7 @@ category: ml
 ## naive bayes classifier
 
 - assume multinomial Y
-- with very clever tricks, can produce $P(Y^i=1|x, \eta)$ again as a softmax
+- with clever tricks, can produce $P(Y^i=1|x, \eta)$ again as a softmax
 - let $y_1,...y_l$ be the classes of Y
 - want Posterior $P(Y\vert X) = \frac{P(X\vert Y)(P(Y)}{P(X)}$ 
 - MAP rule - maximum a posterior rule
@@ -304,6 +304,6 @@ category: ml
 
 ## multinomial
 
-- $L(\theta) = P(x_1,...,x_n\vert \theta_1,...,\theta_p) = \prod_i^n P(d_i\vert \theta_1,...\theta_p)=\prod_i^n factorials \cdot \theta_1^{x_1},...,\theta_p^{x_p}$- ignore factorials because they are always same
+- $L(\theta) = P(x_1,...,x_n\vert \theta_1,...,\theta_p) = \prod_i^n P(d_i\vert \theta_1,...\theta_p)=\prod_i^n factorials \cdot \theta_1^{x_1},...,\theta_p^{x_p}​$- ignore factorials because they are always same
   - require $\sum \theta_i = 1$
 - $\implies \theta_i = \frac{\sum_{j=1}^n x_{ij}}{N}​$ where N is total number of words in all docs

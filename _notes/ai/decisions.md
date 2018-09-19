@@ -210,7 +210,7 @@ typora-copy-images-to: ./assets/ai
 - *reinforcement learning* - use observed rewards to learn optimal policy for the environment
   - in ch 17, agent had model of environment (P(s'|s, a) and R(s))
 - 2 problems
-  - *passive* - given $\pi$, learn $U^\pi (s)$
+  - *passive* - given $\pi$, learn $U^\pi (s)​$
   - *active* - *explore* states to find utilities and *exploit* to get highest reward
 - 2 model types, 3 agent designs
   - model-based: can predict next state/reward before taking action (for MDP, requires learning $P(s'|s,a)$)

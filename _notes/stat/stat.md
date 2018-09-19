@@ -101,7 +101,7 @@ category: stat
 
 - $M_X(t) = E(e^{tX})$
   - derivatives yield moments: $\frac{d^r}{dX^r}M_X (0) = E(X^r) $
-- sometimes $ln[M_x(t)]$ yields $\mu$ and $V(X)$
+- sometimes $\ln[M_x(t)]$ yields $\mu$ and $V(X)$
 - $Y = aX+b \implies M_y(t) = e^{bt}M_x(at)$
 - $Y = a_1X_1+a_2X_2 \implies M_Y(t) = M_{X_1}(a_1t)M_{X_2}(a_2t)$ if $X_i$ independent
 - *ordered statistics* - variables $Y_i$ such that $Y_i$ is the ith smalless
@@ -221,7 +221,7 @@ category: stat
 ## model selection / averaging
 
 - bayesian
-  - for model m, want to maximize $p(m\vert x) = \frac{p(x\vert m) p(m)}{p(x)}$
+  - for model m, want to maximize $p(m\vert x) = \frac{p(x\vert m) p(m)}{p(x)}​$
     - usually, just take $m$ that maximizes $p(m\vert x)$
     - *model averaging*: $p(x_{new}|x) = \int dm \int d\theta \: p(x_{new}|\theta, m) p(\theta|x, m) p(m|x)$
     - otherwise integrate over $\theta, m​$ - *model averaging*

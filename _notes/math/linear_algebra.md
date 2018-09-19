@@ -14,7 +14,7 @@ typora-copy-images-to: ./assets/linear_algebra
 
 ## notation
 
-- $x \preceq y​$ - these are vectors and x is less than y elementwise
+- $x \preceq y$ - these are vectors and x is less than y elementwise
 - $X \preceq Y$ - matrices, $Y-X$ is PSD
   - $v^TXv \leq v^TYv \:\: \forall v$
 
@@ -26,7 +26,7 @@ typora-copy-images-to: ./assets/linear_algebra
   - gives angle back
 - linear 
     1. superposition $f(x+y) =  f(x)+f(y) $
-    2. proportionality $f(k*x) = k*f(x)​$
+    2. proportionality $f(k\cdot x) = k \cdot f(x)$
 - vector space
     1. closed under addition
     2. contains identity
@@ -57,6 +57,7 @@ typora-copy-images-to: ./assets/linear_algebra
       - if rank(A) = n, then must use $A^T A$
     - inversion of matrix is $\approx O(n^3)$
     - inverse of psd symmetric matrix is also psd and symmetric
+    - if A, B invertible $(AB)^{-1} = B^{-1} A^{-1}$
 - *orthogonal complement* - set of orthogonal vectors
   - define R(A) to be *range space* of A (column space) and N(A) to be *null space* of A
   - R(A) and N(A) are orthogonal complements
@@ -147,17 +148,17 @@ typora-copy-images-to: ./assets/linear_algebra
 - expressions when $A \in \mathbb{S}$
   - $det(A) = \prod_i \lambda_i$
   - $tr(A) = \sum_i \lambda_i$
-  - $||A||_2 = max | \lambda_i |$
+  - $||A||_2 = \max | \lambda_i |$
   - $||A||_F = \sqrt{\sum \lambda_i^2}$
-  - $\lambda_{max} (A) = sup_{x \neq 0} \frac{x^T A x}{x^T x}$
-  - $\lambda_{min} (A) = inf_{x \neq 0} \frac{x^T A x}{x^T x}$
+  - $\lambda_{max} (A) = \sup_{x \neq 0} \frac{x^T A x}{x^T x}$
+  - $\lambda_{min} (A) = \inf_{x \neq 0} \frac{x^T A x}{x^T x}$
 - *defective matrices* - lack a full set of eigenvalues
-- *positive semi-definite* -  $A \in R^{nxn}$
+- *positive semi-definite*:  $A \in R^{nxn}$
   - basically these are always *symmetric* $A=A^T$
   - all eigenvalues are nonnegative
   - if $\forall x \in R^n, x^TAx \geq 0$ then A is positive semi definite (PSD)
     - like it curves up
-    - Note: $x^TAx = \sum_{i, j} x_iA_{i, j} x_j$
+    - Note: $x^TAx = \sum_{i, j} x_iA_{i, j} x_j​$
   - if $\forall x \in R^n, x^TAx > 0$ then A is positive definite (PD)
     - PD $\to$ full rank, invertible
   - PSD + symmetric $\implies$ can be written as *Gram matrix* $G = X^T X $
@@ -196,6 +197,8 @@ typora-copy-images-to: ./assets/linear_algebra
   - columns of V (pxp) are eigenvectors of $X^TX$
   - r singular values on diagonal of $\Sigma$ (nxp) - square roots of nonzero eigenvalues of both $XX^T$ and $X^TX$
   - like rotating, scaling, and rotating back
+  - SVD ex. $A=UDV^T \implies A^{-1} = VD^{-1} U^T$
+  - $X = \sum_i \sigma_i u_i v_i^T$
 - properties
   1. for PD matrices, $\Sigma=\Lambda$, $U\Sigma V^T = Q \Lambda Q^T$
     - for other symmetric matrices, any negative eigenvalues in $\Lambda$ become positive in $\Sigma$

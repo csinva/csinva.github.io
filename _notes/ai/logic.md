@@ -174,7 +174,7 @@ typora-copy-images-to: ./assets/logic
 - forward chaining: start w/ atomic sentences + apply modus ponens until no new inferences can be made
   - *first-order definite clauses* - (remember this is a type of Horn clause)
   - *Datalog* - language restricted to first-order definite clauses with no function symbols
-  - simple forward-chaining: FOL-FC-ASK
+  - simple forward-chaining: FOL-FC-ASK - may not terminate if not entailed
     1. *pattern matching* is expensive
     2. rechecks every rule
     3. generates irrelevant facts

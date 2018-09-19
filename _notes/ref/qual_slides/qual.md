@@ -6,7 +6,7 @@ theme: black
 highlightTheme: ir-black
 typora-copy-images-to: ./assets
 ---
-<h1> interpretable machine learning for neuroscience </h1>
+<h1> towards interpretable machine learning for neuroscience </h1>
 
 <h3> chandan singh </h3> 
 
@@ -21,7 +21,19 @@ typora-copy-images-to: ./assets
 - prof. jack gallant
   - michael eickenberg
   - michael oliver
-- prof. na ji
+
+
+
+## machine learning is powerful
+
+- strong predictive performance
+- often perceived as black-box
+
+## interpretable ml framework
+
+with *jamie murdoch, karl kumbier, reza abbasi-asl, & bin yu*
+
+- variety of different places where interpretability comes in
 
 ## big-data neuroscience
 
@@ -34,17 +46,12 @@ typora-copy-images-to: ./assets
 - data-driven experiments
 - fine-tuned experiments
 
-## interpretable ml framework
-
-with *jamie murdoch, karl kumbier, reza abbasi-asl, & bin yu*
-
 
 
 ## overview
 
 1. [interpreting dnns](#/1)
 2. [v4 proj](#/2)
-3. [v1 proj](#/3)
 
 # explaining dnn predictions to humans
 
@@ -54,11 +61,38 @@ with *jamie murdoch, karl kumbier, reza abbasi-asl, & bin yu*
 
 explain a **single prediction** by a dnn in terms of the **input**
 
+
+
+## previous work
+
+- LRP
+- LIME
+
 ## decomposition
 
-## results
+- CD (for LSTMS)
 
-## extracting dataset-level info
+## extending CD
+
+- work with CNNs
+
+## hierarchical interpretation
+
+- ACD
+
+## qualitative results
+
+
+
+## quantitative results
+
+
+
+## future work
+
+- building similar trees at the dataset-level
+
+
 
 # v4 project
 
@@ -66,19 +100,9 @@ explain a **single prediction** by a dnn in terms of the **input**
 
 ## background
 
-## experiment
+## previous work: deeptune
 
-## eda
-
-## analysis
-
-## goal
-
-# v1 project
-
-*with na ji & bin yu*
-
-## background
+- deeptune analysis
 
 ## experiment
 
@@ -87,6 +111,10 @@ explain a **single prediction** by a dnn in terms of the **input**
 ## analysis
 
 ## goal
+
+
+
+# future work
 
 
 
@@ -108,20 +136,20 @@ explain a **single prediction** by a dnn in terms of the **input**
 .reveal h4,
 .reveal h5,
 .reveal h6 {
-	text-transform: lowercase;
+​	text-transform: lowercase;
 }
 
 .reveal section img { 
-	background:none; 
-	border:none; 
-	box-shadow:none; 
+​	background:none; 
+​	border:none; 
+​	box-shadow:none; 
 }
 
 	filter: invert(1); 
 }
 
 iframe {
-    filter: invert(1);
+​    filter: invert(1);
 }
 
 

@@ -8,7 +8,6 @@ typora-copy-images-to: ./assets/graphical_models
 
 * TOC
 {:toc}
-
 *Material from Russell and Norvig "Artifical Intelligence" 3rd Edition* and *Jordan "Graphical Models"*
 
 ---
@@ -142,7 +141,7 @@ typora-copy-images-to: ./assets/graphical_models
 
 - *d-separation* = directed separation
 
-- *Bayes ball algorithm* - is $X_A \perp X_B | X_C$?
+- *Bayes ball algorithm* - is $( X_A \perp X_B )| X_C$?
 
   - initialize
     - shade $X_C$
@@ -151,6 +150,8 @@ typora-copy-images-to: ./assets/graphical_models
   - rules
     - balls can't pass through shaded unless shaded is at base of v
     - balls pass through unshaded unless unshaded is at base of v
+
+- ![Screen Shot 2018-09-16 at 7.12.22 PM](assets/graphical_models/Screen Shot 2018-09-16 at 7.12.22 PM.png)
 
 # undirected
 
@@ -305,7 +306,8 @@ typora-copy-images-to: ./assets/graphical_models
     2. increase set of state variables (can be equivalent to 1)
     - hard to maintain state variables over time, want more sensors
 
-- 4 inference problems
+- 4 inference problems (here $\cdot$ is elementwise multiplication)
+
   1. *filtering* = *state estimation* - compute $P(X_t | e_{1:t})$
     - *recursive estimation*:  $$\underbrace{P(X_{t+1}|e_{1:t+1})}_{\text{new state}} = \alpha \: \underbrace{P(e_{t+1}|X_{t+1})}_{\text{sensor}} \cdot \underset{x_t}{\sum} \: \underbrace{P(X_{t+1}|x_t)}_{\text{transition}} \cdot \underbrace{P(x_t|e_{1:t})}_{\text{old state}}$$ where $\alpha$ normalizes probs
 
@@ -314,11 +316,11 @@ typora-copy-images-to: ./assets/graphical_models
      - $\underbrace{P(X_{t+k+1} |e_{1:t})}_{\text{new state}} = \sum_{x_{t+k}} \underbrace{P(X_{t+k+1} |x_{t+k})}_{\text{transition}}  \cdot \underbrace{P(x_{t+k} |e_{1:t})}_{\text{old state}}$
 
   3. *smoothing* - compute $P(X_{k}|e_{1:t})$ for $0 < k < t$
-
      1. 2 components $P(X_k|e_{1:t}) = \alpha \underbrace{P(X_k|e_{1:k})}_{\text{forward}} \cdot \underbrace{P(e_{k+1:t}|X_k)}_{\text{backward}}$
 
        1. forward pass: filtering from $1:t$
-       2. backward pass from $t:1$ $\underbrace{P(e_{k+1:t}|X_k)}_{\text{sensor past k}} = \sum_{x_{k+1}} \underbrace{P(e_{k+1}|x_{k+1})}_{\text{sensor}} \cdot \underbrace{P(e_{k+2:t}|x_{k+1})}_{\text{recursive call}} \cdot \underbrace{P(x_{k+1}|X_k)}_{\text{transition}}$ ***(also there is a separate algorithm that doesn't use the observations on the backward pass)***
+       2. backward pass from $t:1$ $\underbrace{P(e_{k+1:t}|X_k)}_{\text{sensor past k}} = \sum_{x_{k+1}} \underbrace{P(e_{k+1}|x_{k+1})}_{\text{sensor}} \cdot \underbrace{P(e_{k+2:t}|x_{k+1})}_{\text{recursive call}} \cdot \underbrace{P(x_{k+1}|X_k)}_{\text{transition}}$
+       3. this is called the forward-backward algo(also there is a separate algorithm that doesn't use the observations on the backward pass)
 
   4. *most likely explanation* - $\underset{x_{1:t}}{\text{argmax}}\:P(x_{1:t}|e_{1:t})$
 
@@ -373,16 +375,20 @@ typora-copy-images-to: ./assets/graphical_models
 
 ## general dbns
 
-- can be better to decompose state variable into mulitple vars
+- can be better to decompose state variable into multiple vars
   - reduces size of transition matrix
 - *transient failure model* - allows probability of sensor giving wrong value
 - *persistent failure model* - additional variable describing status of battery meter
-- exact inference - *variable elimination* mimics recursive filtering
+- exact inference - *våariable elimination* mimics recursive filtering
   - still difficult
 - approximate inference - modification of likelihood weighting
   - use samples as approximate representation of current state distr.
   - ***particle filtering*** - focus set of samples on high-prob regions of the state space
     - consistent
+    - sample a state
+    - sample the next state given the previous state
+    - weight each sample by $P(e_t | x_t)$
+    - resample based on weight
 
 # structure learning
 
