@@ -3,6 +3,7 @@ layout: notes
 section-type: notes
 title: Optimization
 category: math
+typora-copy-images-to: ./assets/optimization
 ---
 * TOC
 {:toc}
@@ -310,6 +311,7 @@ category: math
    - $\theta_{k+1} = \theta_k - H_K^{-1} g_k$
    - update with inverse of Hessian as alpha - this is an approximation to a taylor series
    - finding inverse of Hessian can be hard / expensive
+4. ADMM - *alternating direction method of multipliers* (ADMM) is an algorithm that solves convex optimization problems by breaking them into smaller pieces, each of which are then easier to handle
 
 # expectation maximization - j 11
 
@@ -339,8 +341,21 @@ category: math
 - cliffs
 - local maxima to dodge
 - saddle points (local max and local min)
-
-## visualization
+- most popular
+  - sgd
+  - sgd + nesterov momentum
+  - adam
+  - adagrad - maintains a per-parameter learning rate that improves performance on problems with sparse gradients
+  - rmsprop - (ignore) per-parameter learning rates that are adapted based on the average of recent magnitudes of the gradients for the weight (e.g. how quickly it is changing)
+- adam - "adaptive moment estimation" (kingma_2015)
+  - keep track of per-parameter learning rate (based on first moment of gradients tracked) and per-parameter second moment (based on variance of gradients tracked)
+  - alpha - learning rate
+  - beta1 - exponential decay rate for first moment estimate
+    - default 0.9
+  - beta2 - exponential decay rate for 2nd moment estimates (should be higher when gradients sparser)
+    - default 0.999
+  - epsilon - small number to prevent division by zero
+    - default 1e-8 - usually requires tuning (ex. inception requires 1e-1) ![Screen Shot 2018-10-11 at 8.07.56 AM](assets/optimization/Screen Shot 2018-10-11 at 8.07.56 AM.png)visualization
 
 - requires low dims
   - goodfellow 2015 "Qualitatively characterizing neural network optimization problems" plots loss on line from starting point to ending point

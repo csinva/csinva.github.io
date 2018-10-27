@@ -18,6 +18,7 @@ category: neuro
     - glands / hormones
   - brain stem
     - midbrain (has superior colliculus), pons, medulla
+- cerebellum?? (has 60% of neurons)
 
 # numbers
 
@@ -46,6 +47,7 @@ category: neuro
   - Broca's Area- This area of the brain controls the facial neurons as well as the understanding of speech and language. It is located in the triangular and opercular section of the inferior frontal gyrus.
 - Cerebellum
   - This is commonly referred to as "the little brain," and is considered to be older than the cerebrum on the evolutionary scale. The cerebellum controls essential body functions such as balance, posture and coordination, allowing humans to move properly and maintain their structure.
+  - 60% of neurons
 
 ## thalamocortical system
 

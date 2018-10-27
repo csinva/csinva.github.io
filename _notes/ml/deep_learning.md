@@ -217,3 +217,17 @@ category: ml
 # manifolds / topology
 
 http://colah.github.io/posts/2014-03-NN-Manifolds-Topology/
+
+
+
+# geometry
+
+- transformers: https://arxiv.org/pdf/1706.03762.pdf
+  - spatial transformers: https://papers.nips.cc/paper/5854-spatial-transformer-networks.pdf 
+
+# attention
+
+- attention ovw: https://lilianweng.github.io/lil-log/2018/06/24/attention-attention.html
+- vector of importance weights: in order to predict or infer one element, such as a pixel in an image or a word in a sentence, we estimate using the attention vector how strongly it is correlated with (or “*attends to*” as you may have read in many papers) other elements and take the sum of their values weighted by the attention vector as the approximation of the target.
+- attention [born](https://arxiv.org/pdf/1409.0473.pdf) to solve problem of going from arbitrary length -> fixed length encoding -> arbitrary length output
+- 

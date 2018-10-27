@@ -77,3 +77,4 @@
   - when enforcing arc consistency before every value assignment, we will only be guaranteed that we won’t need to backtrack when our remaining variables left to be assign form a tree structure 
 - $MEU(B) = P(B=0) MEU(B=0) + P(B=1)MEU(B=1)$
   - note we calculate MEU with respect to an assignment of a variable
+- $E[X^2] = V[X] + (E[X])^2$

@@ -43,6 +43,7 @@ category: stat
 - properties
 
   - $H(X) \geq 0$ since $p(x) \in [0, 1]$
+  - funtion of distr. only, not the specific values the RV takes (the support of the RV)
 
 - $H(Y\|X)=\sum p(x) H(Y\|X=x) =- \sum_x p(x) \sum_y  p(y|x) \log \: p(y|x)$
 

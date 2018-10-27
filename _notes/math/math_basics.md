@@ -66,8 +66,9 @@ category: math
 
 - $e^{-2lnx}= \frac{1}{e^{2lnx}} = \frac{1}{e^{lnx}e^{lnx}} = \frac{1}{x^2}$
 - $ln(xy) = ln(x)+ln(y)$
-- $lnx * lny = ln(x^{lny})$
+- $\ln x * \ln y = \ln(x^{\ln y})$
   - difference between log 10n and log 2n is always a constant (about 3.322)
+- $\log_b (x) = \log_d (x) / \log_d (b)$
 - $e^{\mu it} = cos(\mu t)+ isin(\mu t)$
 - Partial Fractions: $\frac{3x+11}{(x-3)(x+2)} = \frac{A}{x-3} + \frac{B}{x+2}$
 - $(ax+b)^k = \frac{A_1}{ax+b}+\frac{A_2}{(ax+b)^2}+...$

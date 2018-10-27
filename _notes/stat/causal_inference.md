@@ -7,7 +7,6 @@ category: stat
 
 * TOC
 {:toc}
-
 ---
 
 
@@ -58,6 +57,7 @@ category: stat
 
 - 2 general approaches
   1. matching - find patients that are similar and differ only in the treatment
+     1. only variables you don't match on could be considered causal
   2. regression
      - requires *unconfoundedness* = *omitted variable bias*
      - if there are no confounders, correlation is causation
