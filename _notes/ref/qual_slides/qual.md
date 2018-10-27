@@ -51,6 +51,8 @@ revealOptions:
 
 with *jamie murdoch, karl kumbier, reza abbasi-asl, & bin yu*
 
+<img src="assets/jamie.jpg" class="icon"> <img src="assets/karl.jpg" class="icon"> <img src="assets/reza.jpg" class="icon"> <img src="assets/bin.jpg" class="icon">
+
 ## ml is powerful
 
 - strong predictive performance
@@ -64,13 +66,15 @@ with *jamie murdoch, karl kumbier, reza abbasi-asl, & bin yu*
 
 ## interpretable ml framework
 
-![framework](assets/framework.png)
+<img src="assets/framework.png"  class="invert">
+
 
 # explaining **single** dnn predictions
 
 *with jamie murdoch & bin yu*
 
-![intro](assets/intro.png)
+<img src="assets/jamie.jpg" class="icon"> <img src="assets/bin.jpg" class="icon">
+<img src="assets/intro.png"  class="invert">
 
 ## previous work
 
@@ -79,7 +83,7 @@ with *jamie murdoch, karl kumbier, reza abbasi-asl, & bin yu*
 - CD (for LSTMS)
 
 ## cd for cnns
-<img src="assets/cd_propagation_full.png" class="plain">
+<img src="assets/cd_propagation_full.png">
 <!--![cd](assets/cd_propagation_full.png)-->
 
 ## equations
@@ -114,6 +118,8 @@ with *jamie murdoch, karl kumbier, reza abbasi-asl, & bin yu*
 
 *with jamie murdoch, summer devlin, & bin yu*
 
+<img src="assets/jamie.jpg" class="icon"> <img src="assets/jamie.jpg" class="icon"> <img src="assets/bin.jpg" class="icon">
+
 explain a **single prediction** by a random forest in terms of the **input**
 
 ## previous work
@@ -127,6 +133,9 @@ explain a **single prediction** by a random forest in terms of the **input**
 # a neuroscience application
 
 *with michael eickenberg, michael oliver, reza abbasi-asl, jack gallant, & bin yu*
+
+<img src="assets/eick.jpg" class="icon"> <img src="assets/michael_oliver.jpg" class="icon"> <img src="assets/reza.jpg" class="icon"> <img src="assets/jack.jpg" class="icon"> <img src="assets/bin.jpg" class="icon">
+
 
 ## previous work: deeptune
 
@@ -147,6 +156,9 @@ explain a **single prediction** by a random forest in terms of the **input**
 
 *with lillian zhang, chris lu, bin yu, & gang-yu liu*
 
+<img src="assets/jiali.jpg" class="icon"> <img src="assets/chris.jpg" class="icon"> <img src="assets/bin.jpg" class="icon"> <img src="assets/gangyu.jpg" class="icon">
+
+
 ## providing descriptions of nanomaterials
 
 - 
@@ -155,15 +167,18 @@ explain a **single prediction** by a random forest in terms of the **input**
 
 *with raaz dwivedi, bin yu, martin wainwright*
 
+<img src="assets/raaz.jpg" class="icon"> <img src="assets/bin.jpg" class="icon"> <img src="assets/martin.jpg" class="icon">
+
 ## learned weights are different
 
 ![Screen Shot 2018-10-26 at 11.44.06 PM](assets/Screen Shot 2018-10-26 at 11.44.06 PM.png)
 
 # towards dnn theory 2: scattering transform
 
-*with christopher lu, bin yu*
+*with christopher lu, bin yu (building on work by yuansi chen, reza abbasi-asl)*
 
-*building on previous work by yuansi chen, reza abbasi-asl*
+<img src="assets/chris.jpg" class="icon"> <img src="assets/bin.jpg" class="icon"> <img src="assets/yuansi.jpg" class="icon"> <img src="assets/reza.jpg" class="icon">
+
 
 ## scattering transform
 
@@ -171,7 +186,10 @@ explain a **single prediction** by a random forest in terms of the **input**
 
 # what's next: delving deeper into neuro
 
-*with yu wang, ed boyden*
+*with yu wang, bin yu, ed boyden*
+
+<img src="assets/yu.jpg" class="icon"> <img src="assets/bin.jpg" class="icon"> <img src="assets/ed.jpg" class="icon">
+
 
 ## connectomics: unsupervised image segmentation
 

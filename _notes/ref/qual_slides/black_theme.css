@@ -226,7 +226,21 @@ body {
 /*********************************************
  * IMAGES
  *********************************************/
+
+
 .reveal section img {
+  margin: 15px 0px;
+}
+
+.plain img {
+  margin: 15px 0px;
+/*  background: rgba(255, 255, 255, 0.12);*/
+  border: 4px solid #fff;
+/*  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); */
+/*  filter: invert(1); */
+}
+
+.reveal section img.invert {
   margin: 15px 0px;
 /*  background: rgba(255, 255, 255, 0.12);*/
 /*  border: 4px solid #fff;*/
@@ -234,13 +248,13 @@ body {
   filter: invert(1); 
 }
 
-.plain {
-  margin: 15px 0px;
-/*  background: rgba(255, 255, 255, 0.12);*/
-  border: 4px solid #fff;
-/*  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); */
-/*  filter: invert(1); */
+.reveal section img.icon {
+  height: 10%;
+  width: 10%;;      
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);     
+  border-radius: 50%
 }
+
 
 
 .reveal section img.plain {
