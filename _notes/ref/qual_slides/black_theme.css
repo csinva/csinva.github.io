@@ -306,6 +306,11 @@ body {
 }
 */
 
+cap {
+    color: lightsteelblue;
+    font-size: .7em;
+}
+
 .reveal .header {
   position: fixed;
   top: 0;

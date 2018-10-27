@@ -34,18 +34,39 @@ revealOptions:
 
 ## collaborators
 
-- prof. bin yu
-  - jamie murdoch
-  - raaz dwivedi
-  - christopher lu
-  - karl kumbier
-  - summer devlin
-  - reza abbasi-asl
-- prof. jack gallant
-  - michael eickenberg
-  - michael oliver
-- prof. gang-yu liu
-  - jiali (lillian) zhang
+<div style='float:left;width:45%;' class='centered'>
+<ul>
+    <li>prof. bin yu </li>
+    <ul>
+        <li> jamie murdoch </li>
+        <li> raaz dwivedi </li>
+        <li> karl kumbier </li>
+        <li> christopher lu </li>
+        <li> yu wang </li>
+        <li> summer devlin </li>
+        <li> reza abbasi-asl </li>
+    </ul>
+</ul>  
+</div>
+  
+<div style='float:right;width:45%;'>  
+<ul>
+    <li>prof. jack gallant </li>
+    <ul>
+        <li> jamie murdoch </li>
+        <li> michael eickenberg </li>
+        <li> michael oliver </li>
+    </ul>
+</ul>  
+
+
+<ul>
+    <li>prof. gang-yu liu </li>
+    <ul>
+        <li> jiali (lillian) zhang </li>
+    </ul>
+    </ul> 
+</div>
 
 # interpretable ml: why?
 
@@ -74,6 +95,9 @@ with *jamie murdoch, karl kumbier, reza abbasi-asl, & bin yu*
 *with jamie murdoch & bin yu*
 
 <img src="assets/jamie.jpg" class="icon"> <img src="assets/bin.jpg" class="icon">
+
+## the goal
+
 <img src="assets/intro.png"  class="invert">
 
 ## previous work
@@ -101,24 +125,26 @@ with *jamie murdoch, karl kumbier, reza abbasi-asl, & bin yu*
   \end{align}$```
 
 ## <hierarchical text example>
-![text_ex](assets/text_ex.png)
-
+<img src="assets/text_ex.png"  class="invert">
 
 ## vision example
 
-![viz_ex](assets/viz_ex.png)
+<img src="assets/viz_ex.png"  class="invert">
 
 
 
 ## quantitative results
 
-![human_eval](assets/human_eval.png)
+<img src="assets/human_eval.png"  class="invert">
 
 # getting random forest importance scores
 
-*with jamie murdoch, summer devlin, & bin yu*
+*with summer devlin, jamie murdoch, & bin yu*
 
 <img src="assets/jamie.jpg" class="icon"> <img src="assets/jamie.jpg" class="icon"> <img src="assets/bin.jpg" class="icon">
+
+
+## the goal
 
 explain a **single prediction** by a random forest in terms of the **input**
 
@@ -171,7 +197,7 @@ explain a **single prediction** by a random forest in terms of the **input**
 
 ## learned weights are different
 
-![Screen Shot 2018-10-26 at 11.44.06 PM](assets/Screen Shot 2018-10-26 at 11.44.06 PM.png)
+<img src="assets/Screen Shot 2018-10-26 at 11.44.06 PM.png" class="invert">
 
 # towards dnn theory 2: scattering transform
 
@@ -182,7 +208,26 @@ explain a **single prediction** by a random forest in terms of the **input**
 
 ## scattering transform
 
+$x$ = signal, $\phi$ = wavelets, $\psi$ = low-pass filter
+<img src="assets/scat.png"  class="invert">
+<cap> ref: mallat 2012 "group invariant scattering" </cap>
 
+## properties
+
+- translation invariance:  $ scat\left( f \left( x \right)  \right) =  scat  \left( f \left( x-c \right)  \right)   \forall f \in L^{2} \left( \mathbb{R}^{d} \right) , c \in \mathbb{R}^{d} $ 
+
+- Lipschitz continuity:  $  \forall f, h  \vert  \vert  scat  \left( f \right) - scat  \left( h \right)  \vert  \vert  \leq  \vert  \vert f-h \vert  \vert  $
+    
+    
+## conv filters
+<img src="assets/conv.png"  class="invert">
+
+
+## conv + scat filters
+<img src="assets/conv_scat.png"  class="invert">
+
+## conv + scat 1x1 filters
+<img src="assets/conv_scat_1x1.png"  class="invert">
 
 # what's next: delving deeper into neuro
 
