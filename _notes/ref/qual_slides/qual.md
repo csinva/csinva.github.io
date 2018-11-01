@@ -3,8 +3,6 @@ title: Chandan qual slides
 separator: '----'
 verticalSeparator: '---'
 typora-copy-images-to: ./assets
-revealOptions: 
-	center: false
 ---
 
 
@@ -48,7 +46,7 @@ revealOptions:
     </ul>
 </ul>  
 </div>
-  
+
 <div style='float:right;width:45%;'>  
 <ul>
     <li>prof. jack gallant </li>
@@ -125,6 +123,7 @@ with *jamie murdoch, karl kumbier, reza abbasi-asl, & bin yu*
   \end{align}$```
 
 ## <hierarchical text example>
+
 <img src="assets/text_ex.png"  class="invert">
 
 ## vision example
@@ -217,7 +216,7 @@ $x$ = signal, $\phi$ = wavelets, $\psi$ = low-pass filter
 - translation invariance:  $ scat\left( f \left( x \right)  \right) =  scat  \left( f \left( x-c \right)  \right)   \forall f \in L^{2} \left( \mathbb{R}^{d} \right) , c \in \mathbb{R}^{d} $ 
 
 - Lipschitz continuity:  $  \forall f, h  \vert  \vert  scat  \left( f \right) - scat  \left( h \right)  \vert  \vert  \leq  \vert  \vert f-h \vert  \vert  $
-    
+  
     
 ## conv filters
 <img src="assets/conv.png"  class="invert">
