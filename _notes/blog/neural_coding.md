@@ -1,6 +1,6 @@
 ---
 layout: notes
-section-type: notes
+section-type: notes_without_title
 title: neural coding
 category: blog
 ---

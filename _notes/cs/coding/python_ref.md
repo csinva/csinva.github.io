@@ -76,6 +76,7 @@ category: cs
 - bin(10) = '0b1010'
 - hex(100) = '0x64'
 - ord('a') = 97
+f string: x = 3 ; print(f"{x:#0.3f}")
 ```
 
 *sorting*
@@ -146,3 +147,9 @@ for document in documents:
   - @staticmethod
   - called with f.DoIt()
 - *protected* member is accessible within its class and subclasses
+
+# pandas
+
+- loc indexes by val
+- iloc indexes by index position
+- .groupby returns a dict

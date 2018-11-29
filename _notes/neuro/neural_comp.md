@@ -1,7 +1,7 @@
 ---
 layout: notes
 section-type: notes
-title: comp neuro 2
+title: comp neuro models
 category: neuro
 ---
 
@@ -9,13 +9,8 @@ category: neuro
 {:toc}
 ---
 
-- website: redwood website
 - convs are organized spatially
-- could do transform so that have spetial convs that are organized spatially, orientation based, frequency based
-- projects
-  - 5 page report
-  - pres last day (oral pres - 10 min or poster) will go all day
-  - should be new, different
+- could do transform so that have spatial convs that are organized spatially, orientation based, frequency based
 
 # introduction
 
@@ -268,23 +263,76 @@ category: neuro
 
 # probabilistic models + inference
 
+<details>
+  <summary>Wiener filter</summary>
+  has Gaussian prior + likelihood
+</details>
+- gaussians are everywhere because of CLT, max entropy (subject to power constraint)
 
+  - for gaussian function, $d/dx f(x) = -x f(x)$
 
 # boltzmann machines
 
-
+- hinton & sejnowski 1983
+- starts with a hopfield net (states $s_i$ weights $\lambda_{ij}$) where states are $\pm 1$
+- define energy function $E(\mathbf{s}) = - \sum_{ij} \lambda_{ij} s_i s_j$
+- assume Boltzmann distr $P(s) = \frac{1}{z} \exp (- \beta \phi(s))$
+- learning rule is basically expectation over data - expectation over model
+  - could use wake-sleep algorithm
+  - during day, calculate expectation over data via Hebbian learning (in Hopfield net this would store minima)
+  - during night, would run anit hebbian by doing random walk over network (in Hopfield ne this would remove spurious local minima)
+- learn via gibs sampling (prob for one node conditioned on others is sigmoid)
+- can add hiddent units to allow for learning higher-order interactions (not just pairwise)
+  - restricted boltzmann machine: no connections between "visible" units and no connections between "hidden units"
+  - computationally easier (sampling is independent) but less rich
+- stacked rbm: hinton & salakhutdinov (hinton argues this is first paper to launch deep learning)
+  - don't train layers jointly
+  - learn weights with rbms as encoder
+  - then decoder is just transpose of weights
+  - finally, run fine-tuning on autoencoder
+  - able to separate units in hidden layer
+  - **cool - didn't actually need decoder**
+- in rbm
+  - when measuring true distr, don't see hidden vals
+    - instead observe visible units and conditionally sample over hidden units
+    - $P(h|v) = \prod_i P(h_i | v)$ ~ easy to sample from
+  - when measuring sampled distr., just sample $P(h|v)$ then sample $P(v|h)$
+- ising model - only visible units
+  - basically just replicates pairwise statistics (kind of like pca)
+    - pairwise statistics basically say "when I'm on, are my neighbors on?"
+  - need 3-point statistics to learn a line
+- generating textures
+  - learn the distribution of pixels in 3x3 patches
+  - then maximize this distribution - can yield textures
+- reducing the dimensionality of data with neural networks
 
 # ica
 
+- PCA vs ICA: both have $X = As$, where $s$ is components (assume X has zero mean)
+  - PCA / factor analysis assume $s$ Gaussian, want to decorrelate them
+    - $\mathbb E [s_i \cdot s_j] = 0$
+    - when Gaussian this implies independenct
+  - ICA: assume s not Gaussian, want to make them independent
+    - $P(s) = \prod_i P(s_i)$
+    - this is a special case of sparse coding
+- bell & sejnowski 1995
+  - entropy maximization - try to find a nonlinear function $g(x)$ which lets you map that distr $f(x)$ to uniform![Screen Shot 2018-11-13 at 4.23.46 PM](assets/Screen Shot 2018-11-13 at 4.23.46 PM.png)
+  - then, that function $g(x)$ is the cdf of $f(x)$
+  - in ICA, we do this for higher dims - want to map distr of $x_1, ..., x_p$ to $y_1, ..., y_p$ where distr over $y_i$'s is uniform (implying that they are independent)
+    - additionally we want the map to be information preserving
+  - mathematically: $\underset{W} \max I(x; y) = \underset{W} \max H(y)$ since $H(y|x)$ is zero (there is no randomness)
+    - assume $y = \sigma (W x)$ where $\sigma$ is elementwise
+    - (then S = WX, $W=A^{-1}$)
+    - requires certain assumptions so that $p(y)$ is still a distr. :$p(y) = p(x) / |J|$ where J is Jacobian
+  - learn W via gradient ascent $\Delta W \propto \partial / \partial W (\log |J|)$
+    - there is now something faster called fast ICA
+  - relationship to sparse coding
+    - ICA can be a special case of sparse coding...
+    - can think of cost as a prior over coefficients (Laplacian distr.) and reconstruction error as likelihood model
+    - can write down posterior distr, derive learning on A for gradient ascent
+  - topographic ICA (make nearby coefficient like each other)
 
+# predictive coding
 
-# dynamical models
-
-
-
-# neural coding
-
-
-
-# high-dimensional computing
+- model predicts and all that's passed on is the residual
 

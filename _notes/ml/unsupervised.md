@@ -1,7 +1,7 @@
 ---
 layout: notes
 section-type: notes
-title: Unsupervised learning
+title: Unsupervised
 category: ml
 typora-copy-images-to: ./assets/ml
 ---
@@ -96,3 +96,26 @@ graph LR;
 ## spectral clustering
 
 - use the spectrum (eigenvalues) of the similarity matrix of the data to perform dim. reduction before clustering in fewer dimensions
+
+# generative models
+
+- overview: https://blog.openai.com/generative-models/
+
+## vaes
+
+- just an autoencoder where the middle hidden layer is supposed to be unit gaussian
+  - add a kl loss to measure how well it maches a unit gaussian
+    - for calculation purposes, encoder actually produces means / vars of gaussians in hidden layer rather than the continuous values....
+  - this kl loss is not too complicated...https://web.stanford.edu/class/cs294a/sparseAutoencoder.pdf
+- generally less sharp than GANs
+  - uses mse loss instead of gan loss...
+  - intuition: vaes put mass between modes while GANs push mass towards modes
+- constraint forces the encoder to be very efficient, creating information-rich latent variables. This improves generalization, so latent variables that we either randomly generated, or we got from encoding non-training images, will produce a nicer result when decoded.
+
+## gans
+
+- train network to be loss function
+
+## autoregressive models
+
+- model input based on input

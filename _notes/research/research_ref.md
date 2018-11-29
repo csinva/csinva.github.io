@@ -1,15 +1,7 @@
+# misc
 
-# conferences
-
-- https://jackietseng.github.io/conference_call_for_paper/2018-2019-conferences.html
-- https://aideadlin.es/
-- http://neuro-deadlines.tbryngrey.com/
-- nips (montreal)
-- aistats oct 4 (okinawa)
-- cosyne nov 14 (portugal)
-- sigkdd feb (anchorage)
-- iccv mar (korea)
-- acl mar 27 (florence)
+- draw arch: http://alexlenail.me/NN-SVG/index.html
+- viz architectures: https://tensorspace.org/index.html
 
 # levels
 

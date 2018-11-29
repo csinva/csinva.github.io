@@ -1,5 +1,5 @@
 ---
-layout: notes
+layout: notes_without_title
 section-type: notes
 title: connectomics
 category: blog

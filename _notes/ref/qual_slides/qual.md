@@ -46,16 +46,15 @@ typora-copy-images-to: ./assets
     </ul>
 </ul>  
 </div>
-
 <div style='float:right;width:45%;'>  
 <ul>
     <li>prof. jack gallant </li>
     <ul>
-        <li> jamie murdoch </li>
         <li> michael eickenberg </li>
         <li> michael oliver </li>
     </ul>
 </ul>  
+
 
 
 <ul>
@@ -78,10 +77,11 @@ with *jamie murdoch, karl kumbier, reza abbasi-asl, & bin yu*
 - part of the power is the surge in big data (e.g. calcium imaging)
 - often perceived as black-box: need interpretability
 
-## defining interpretability
+## defining interpretable ml
 
-- often defined poorly
-- 
+"the use of machine learning models for the extraction of *relevant* knowledge about domain relationships contained in data"
+
+*relevant* = provides insight for a particular audience into a chosen problem
 
 ## interpretable ml framework
 
@@ -198,7 +198,13 @@ explain a **single prediction** by a random forest in terms of the **input**
 
 <img src="assets/Screen Shot 2018-10-26 at 11.44.06 PM.png" class="invert">
 
-# towards dnn theory 2: scattering transform
+
+## connectomics: unsupervised image segmentation
+
+
+# appendix
+
+# towards dnn theory: scattering transform
 
 *with christopher lu, bin yu (building on work by yuansi chen, reza abbasi-asl)*
 
@@ -216,8 +222,7 @@ $x$ = signal, $\phi$ = wavelets, $\psi$ = low-pass filter
 - translation invariance:  $ scat\left( f \left( x \right)  \right) =  scat  \left( f \left( x-c \right)  \right)   \forall f \in L^{2} \left( \mathbb{R}^{d} \right) , c \in \mathbb{R}^{d} $ 
 
 - Lipschitz continuity:  $  \forall f, h  \vert  \vert  scat  \left( f \right) - scat  \left( h \right)  \vert  \vert  \leq  \vert  \vert f-h \vert  \vert  $
-  
-    
+
 ## conv filters
 <img src="assets/conv.png"  class="invert">
 
@@ -233,8 +238,3 @@ $x$ = signal, $\phi$ = wavelets, $\psi$ = low-pass filter
 *with yu wang, bin yu, ed boyden*
 
 <img src="assets/yu.jpg" class="icon"> <img src="assets/bin.jpg" class="icon"> <img src="assets/ed.jpg" class="icon">
-
-
-## connectomics: unsupervised image segmentation
-
-

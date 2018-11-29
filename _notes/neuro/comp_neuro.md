@@ -1,7 +1,7 @@
 ---
 layout: notes
 section-type: notes
-title: comp neuro 1
+title: comp neuro
 category: neuro
 ---
 
