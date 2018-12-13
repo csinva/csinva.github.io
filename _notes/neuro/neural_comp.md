@@ -1,7 +1,7 @@
 ---
 layout: notes
 section-type: notes
-title: comp neuro models
+title: neuro models
 category: neuro
 ---
 
@@ -153,6 +153,11 @@ category: neuro
   - only has ~1.5 million fibers
 
 # sparse, distributed coding
+
+- $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{h^{(t)}}} \min ||\mathbf{x^{(t)}} - \mathbf{Dh^{(t)}}||_2^2 + \lambda ||\mathbf{h^{(t)}}||_1$$
+  - D is like autoencoder output weight matrix
+  - h is more complicated - requires solving inner minimization problem
+  - outer loop is not quite lasso - weights are not what is penalized
 
 - barlow 1972: want to represent stimulus with minimum active neurons
   - neurons farther in cortex are more silent
@@ -332,7 +337,127 @@ category: neuro
     - can write down posterior distr, derive learning on A for gradient ascent
   - topographic ICA (make nearby coefficient like each other)
 
-# predictive coding
-
 - model predicts and all that's passed on is the residual
 
+# spiking neurons
+
+- passive membrane model was leaky integrator
+- voltage-gaed channels were more complicated
+- can be though of as leaky integrate-and-fire neuron (LIF)
+  - this charges up and then fires a spike, has refractory period, then starts charging up again
+- rate coding hypothesis - signal conveyed is the rate of spiking (bruno thinks this is usually too simple)
+  - spiking irregulariy is largely due to noise and doesn't convey information
+  - some neurons (e.g. neurons in LIP) might actually just convey a rate
+- linear-nonlinear-poisson model (LNP) - sometimes called GLM (generalized linear model)
+  - based on observation that variance in firing rate $\propto$ mean firing rate
+    - plotting mean vs variance = 1 $\implies$ Poisson output
+  - these led people to model firing rates as Poisson $\frac {\lambda^n e^{-\lambda}} {n!}$
+  - bruno doesn't really believe the firing is random (just an effect of other things we can't measure)
+  - ex. fly H1 neuron 1997
+    - constant stimulus looks very Poisson
+    - moving stimulus looks very Bernoulli
+- spike timing hypothesis
+  - spiece timing can be very precise in response to time-varying signals (mainen & sejnowski 1995; bair & koch 1996)
+  - often see precise timing
+- encoding: stimulus $\to$ spikes
+- decoding: spikes $\to$ representation
+- encoding + decoding are related through the joint distr. over simulus and repsonse (see Bialek spikes book)
+  - nonlinear encoding function can yield linear decoding
+  - able to directly decode spikes using a kernel to reproduce signal (seems to say you need spikes - rates would not be good enough)
+    - some reactions happen too fast to average spikes (e.g. 30 ms)
+  - estimating information rate: bits (usually better than snr - can calculate between them) - usually 2-3 bits/spike
+
+# high-dimensional computing
+
+- high-level overview
+  - current inspiration has all come from single neurons at a time - hd computing is going past this
+  - the brain's circuits are high-dimensional
+  - elements are stochastic not deterministic
+  - can learn from experience
+  - no 2 brains are alike yet they exhibit the same behavior
+- basic question of comp neuro: what kind of computing can explain behavior produced by trains?
+  - recognizing ppl by how they look, sound, or behave
+  - learning from examples
+  - remembering things going back to childhood
+  - communicating with language
+
+### definitions
+
+- what is hd computing
+  - compute with random high-dim vectors
+  - ex. 10k vectors A, B of +1/-1 (also extends to real / complex vectors)
+- 3 operations
+  - addition: A + B = (0, 0, 2, 0, 2,-2, 0,  ....)
+  - multiplication: A * B =  (-1, -1, -1, 1, 1, -1, 1, ...)
+  - permutation: shuffles values
+    - ex. rotate (bit shift with wrapping around)
+- these operations allow for encoding all normal data structures: sets, sequences, lists, databases
+- similarity = dot product (sometimes normalized)
+  - A . A = 10k
+  - A . A = 0 - orthogonal
+  - in high-dim spaces, almost all pairs of vectors are dissimilar A. B = 0
+  - goal similar meanings should have large similarity
+- benefits - very simple and scalable - only go through data once
+  - equally easy to use 4-grams vs. 5-grams
+
+### ex. identify the language
+
+- data
+  - train: given million bytes of text per language (in the same alphabet)
+  - test: new sentences for each language
+- training: compute a 10k profile vector for each language and for each test sentence
+  - could encode each letter wih a seed vector which is 10k
+  - instead encode trigrams with **rotate and multiply**
+    - 1st letter vec rotated by 2 * 2nd letter vec rotated by 1 * 3rd leter vec
+    - ex. THE = r(r(T)) * r(H) * r(E)
+    - approximately orthogonal to all the letter vectors and all the other possible trigram vectors...
+  - profile = sum of all trigram vectors (taken sliding)
+    - ex. banana = ban + ana + nan + ana
+    - profile is like a histogram of trigrams
+- testing
+  - compare each test sentence to profiles via dot product
+  - clusters similar languages - cool!
+  - gets 97% test acc
+  - can query the letter most likely to follor "TH"
+    - form query vector Q = r(r(T)) * r(H)
+    - query by using multiply X + Q * english-profile-vec
+    - find closest letter vecs to X - yields "e"
+
+### mathematical background
+
+- randomly chosen vecs are dissimilar
+- sum vector is similar to its argument vectors
+- product vector and permuted vector are dissimilar to their argument vectors
+- multiplication distibutes over addition
+- permutation distributes over both additions and multiplication
+- multiplication and permutations are invertible
+- addition is approximately invertible
+
+### comparison to DNNs
+
+- both do statistical learning from data
+- data can be noisy
+- both use high-dim vecs although DNNs get bad with him dims (e.g. 100k)
+- HD is founded on rich mathematical theory
+- new codewords are made from existing ones
+- HD memory is a separate func
+- HD algos are transparent, incremental (on-line), scalable
+- somewhat closer to the brain...cerebellum anatomy seems to be match HD
+- HD: holistic (distributed repr.) is robus
+
+### different names
+
+- Tony plate: holographic reduced representation
+- ross gayler: multiply-add-permute arch
+- gayler & levi: vector-symbolic arch
+- gallant & okaywe: matrix binding with additive termps
+- fourier holographic reduced reprsentations (FHRR; Plate)
+- ...many more names
+
+
+
+### theory of sequence indexing and working memory in RNNs
+
+- trying to make key-value pairs
+- VSA as a structured approach for understanding neural networks
+- reservoir computing = state-dependent network = echos-state network = liquid state machine - try to represen sequential temporal data - builds representations on the fly

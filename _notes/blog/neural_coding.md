@@ -7,7 +7,7 @@ category: blog
 
 
 # neural coding
-**chandan singh**  
+**chandan singh** 
 *last updated jul 20, 2018*
 
 ---
@@ -29,7 +29,7 @@ Furthermore, the results show that it requires no extra energy for a neuron mode
 
 ## Coding
 Neurons communicate via spikes called action potentials. It is unclear exactly how these spikes transmit information. There are two general hypotheses: 
-    
+​    
 1. rate codes - neurons communicate with the rate of their firing, so firing more would send a higher signal 
 2. spike-timing codes (or interpulse-interval codes) - neurons communicate the precise timing between their spikes
 

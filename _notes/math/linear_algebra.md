@@ -122,15 +122,14 @@ typora-copy-images-to: ./assets/linear_algebra
 ## matrix norms
 
 - over elements
-  - *frobenius norm* - (like $l_2$)
-  - sum-absolute-value norm (like $l_1$) 
+  - *frobenius norm* - (like $l_2$): $||X||_F^2 = \sqrt {\sum_{ij} X_{ij}^2} = \sqrt{\sum_i \sigma_i^2}$
+  - sum-absolute-value norm (like $l_1​$) 
   - maximum-absolute-value norm (like $l_\infty​$)
 - *operator norm*
   - let $||\cdot||_a$ and $|| \cdot ||_b$ be vector norms
   - operator norm $||X||_{a,b} = sup\{ ||Xu||_a \: | \: ||u||_b \leq 1 \}$
      - represents the maximum stretching that X does to a vector u
-  - if both Euclidean norms, X is *max singular value*: $||X||_2 = \sigma_\text{max}(X) = [\lambda_{max} (X^TX)]^{1/2}$
-    - also called *spectral norm* or *$L_2$-norm* (of a matrix)
+  - *spectral norm* = *$L_2$-norm* (of a matrix) = $||X||_2 = \sigma_\text{max}(X) = [\lambda_{max} (X^TX)]^{1/2}$
 
 # eigenstuff
 
