@@ -17,7 +17,7 @@ Modern machine learning models, particularly deep neural networks, are difficult
 As machine-learning models enter into high-stakes fields, interpretability will become increasingly important. Some of my recent work has focused on addressing this problem.
 
 
-*"Interpretable machine learning: definitions, methods, and applications", <a color="#219AB3" href="https://arxiv.org/abs/1709.02974"> Murdoch, Singh, Kumbier, Abbasi-Asl, & Yu, 2019, arXiv</a>*
+*"Interpretable machine learning: definitions, methods, and applications", <a color="#219AB3" href="https://arxiv.org/abs/1901.04592"> Murdoch, Singh, Kumbier, Abbasi-Asl, & Yu, 2019, arXiv</a>*
 
 In this work, we aim to define what interpretability concretely means in the context of machine learning.
  
