@@ -14,7 +14,7 @@ typora-copy-images-to: ./assets
 
 ## requirements
 
-- can have outside faculty 
+- can have outside faculty
 - can only have one faculty that is remote
 - at least 2 eecs (0% counts e.g. bin)
 - chair must be eecs
@@ -39,9 +39,10 @@ typora-copy-images-to: ./assets
         <li> jamie murdoch </li>
         <li> raaz dwivedi </li>
         <li> karl kumbier </li>
+        <li> summer devlin </li>
+        <li> laura rieger </li>
         <li> christopher lu </li>
         <li> yu wang </li>
-        <li> summer devlin </li>
         <li> reza abbasi-asl </li>
     </ul>
 </ul>  
@@ -56,20 +57,23 @@ typora-copy-images-to: ./assets
 </ul>  
 
 
-
 <ul>
     <li>prof. gang-yu liu </li>
     <ul>
         <li> jiali (lillian) zhang </li>
     </ul>
-    </ul> 
+    <li>prof. martin wainwright </li>
+</ul> 
+
 </div>
 
-# interpretable ml: why?
+# interpretable ml: what is it?
 
 with *jamie murdoch, karl kumbier, reza abbasi-asl, & bin yu*
 
 <img src="assets/jamie.jpg" class="icon"> <img src="assets/karl.jpg" class="icon"> <img src="assets/reza.jpg" class="icon"> <img src="assets/bin.jpg" class="icon">
+
+*submitted to PNAS*
 
 ## ml is powerful
 
@@ -93,6 +97,8 @@ with *jamie murdoch, karl kumbier, reza abbasi-asl, & bin yu*
 *with jamie murdoch & bin yu*
 
 <img src="assets/jamie.jpg" class="icon"> <img src="assets/bin.jpg" class="icon">
+
+*published in ICLR 2019*
 
 ## the goal
 
@@ -122,7 +128,7 @@ with *jamie murdoch, karl kumbier, reza abbasi-asl, & bin yu*
   ​    \gamma_{i} &=  \text{ReLU}(\beta_{i-1} + \gamma_{i-1}) - \text{ReLU}(\beta_{i-1})
   \end{align}$```
 
-## <hierarchical text example>
+## <a>
 
 <img src="assets/text_ex.png"  class="invert">
 
@@ -140,7 +146,7 @@ with *jamie murdoch, karl kumbier, reza abbasi-asl, & bin yu*
 
 *with summer devlin, jamie murdoch, & bin yu*
 
-<img src="assets/jamie.jpg" class="icon"> <img src="assets/jamie.jpg" class="icon"> <img src="assets/bin.jpg" class="icon">
+<img src="assets/summer.jpg" class="icon"> <img src="assets/jamie.jpg" class="icon"> <img src="assets/bin.jpg" class="icon">
 
 
 ## the goal
@@ -154,6 +160,11 @@ explain a **single prediction** by a random forest in terms of the **input**
 
 ## xor: a simple failure case
 
+# interpreting cnns
+
+*with laura rieger, jamie murdoch, & bin yu*
+
+<img src="assets/laura.jpg" class="icon"> <img src="assets/jamie.jpg" class="icon"> <img src="assets/bin.jpg" class="icon">
 
 # a neuroscience application
 
@@ -177,18 +188,7 @@ explain a **single prediction** by a random forest in terms of the **input**
 - data-driven experiments
 - fine-tuned experiments
 
-# describing textures from nanoscience
-
-*with lillian zhang, chris lu, bin yu, & gang-yu liu*
-
-<img src="assets/jiali.jpg" class="icon"> <img src="assets/chris.jpg" class="icon"> <img src="assets/bin.jpg" class="icon"> <img src="assets/gangyu.jpg" class="icon">
-
-
-## providing descriptions of nanomaterials
-
-- 
-
-# towards dnn theory 1: adam vs sgd
+# towards dnn theory: memorization
 
 *with raaz dwivedi, bin yu, martin wainwright*
 
@@ -232,6 +232,12 @@ $x$ = signal, $\phi$ = wavelets, $\psi$ = low-pass filter
 
 ## conv + scat 1x1 filters
 <img src="assets/conv_scat_1x1.png"  class="invert">
+
+# describing textures from nanoscience
+
+*with lillian zhang, chris lu, bin yu, & gang-yu liu*
+
+<img src="assets/jiali.jpg" class="icon"> <img src="assets/chris.jpg" class="icon"> <img src="assets/bin.jpg" class="icon"> <img src="assets/gangyu.jpg" class="icon">
 
 # what's next: delving deeper into neuro
 
