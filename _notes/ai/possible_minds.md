@@ -5,11 +5,10 @@ title: possible minds
 category: ai
 ---
 
+*A set of notes based on the book possible minds*
+
 * TOC
 {:toc}
----
-
-
 # 0 - intro (brockman)
 
 - new technologies = new perceptions
@@ -21,8 +20,13 @@ category: ai
 - ai has gone down and up for a while
 - gofai - good old-fashioned ai
 - things people thought would be hard, like chess, were easy
+- lots of physicists in this book...
 
 # 1 - wrong but more relevant than ever (seth lloyd)
+
+- current AI is way worse than people think it is
+- wiener was very pessimistic - wwII / cold war
+- singularity is not coming...
 
 
 
@@ -76,7 +80,6 @@ category: ai
 
 # 5 - what can we do? (daniel dennett)
 
-- **agree with dennett more than anyone else**
 - dennett wrote from bacteria to bach & back
 - praise: willingness to admit he is wrong / stay levelheaded
 - rereading stuff opens new doors
@@ -94,31 +97,41 @@ category: ai
 
 # 7 - the unity of intelligence (frank wilczek)
 
+- can an ai be conscious/creative/evil?
 - mind is emergent property of matter $\implies$ all intelligence is machine intelligence
-- david hume: 'reason is, and outght only to be, the slave of the passions'
+- david hume: 'reason is, and ought only to be, the slave of the passions'
 - no sharp divide between natural and artificial intelligence: seem to work on the same physics
 - intelligence seems to be an emergent behavior
 - key differences between brains and computers: brains can self-repair, have higher connectivity, but lower efficiency overall
 - most profound advantage of brain: connectivity and interactive development
 - ais will be good at exploring
+- defining general intelligence - maybe using language?
+- earth's environment not great for ais
+- ai could control world w/ just info, not just physical means
+- affective economy - sale of emotions (like talking to starbucks barista)
+- people seem to like to live in human world
+  - ex. work in cafes, libraries, etc.
+- future life institute - funded by elon...maybe just trying to make money
 
 # 8 - lets aspire to more than making ourselves obsolete (max tegmark)
+
 - sometimes listed as scaremonger
 - maybe consciousness could be much more hype - like waking up from being drowsy
-- survey of AI experts said 50% chance of general ai surpassing human by 2040-2050
+- survey of AI experts said 50% chance of general ai surpassing human intelligence by 2040-2050
 - finding purpose if we aren't needed for anything?
 - importance of keeping ai beneficial
 - possible AIs will replace all jobs
 - curiosity is dangerous
 - 3 reasons ai danger is downplayed
     1. people downplay danger because it makes their research seem good - "It is difficult to get a man to understand something, when his salary depends on his not understanding it" - Upton Sinclair
-    - **luddite** - person opposoed to new technology or ways of working
-        - stems from secret organization of english textile workers who protested
-	2. it's an abstract threat
-	3. it feels hopeless to think about
+    	- **luddite** - person opposoed to new technology or ways of working - stems from secret organization of english textile workers who protested
+    2. it's an abstract threat
+    3. it feels hopeless to think about
 - AI safety research must precede AI developments
 - the real risk with AGI isn't malice but competence
 - intelligence = ability to accomplish complex goals
+- how good are people at predicting the future of technology?
+- joseph weizenbbam wrote psychotherapist bot that was pretty bad but scared him
 
 # 9 - dissident messages (jaan taliin)
 - voices that stand up slowly end up convincing people
@@ -128,6 +141,7 @@ category: ai
 - short-term risks: automation + bias
 - one big risk: AI environmental risk: how to constrain ai to not render our environment uninhabitable for biological forms
 - need to stop thinking of the world as a zero-sum game
+- famous survery: katja grace at the future of humanity institute
 
 # 10 - tech prophecy and the underappreciated causal power of ideas (steven pinker)
 
@@ -163,13 +177,20 @@ category: ai
 # 12 - the artificial use of human beings (tom griffiths)
 
 - believes key to ml is human learning
+
 - we now have good models of images/text, but not of 
+
 - value alignment
+
 - inverse rl: look at actions of intelligent agent, learn reward
+
 - accuracy (heuristics) vs generalizability (often assumes rationality)
   - however, people are often not rational - people follow simple heuristics
   - ex. don't calculate probabilities, just try to remember examples
+
 - people usually tradeoff time with how important a decision is - **bounded optimality**
+
+- could ai actually produce more leisure?
 
 ---
 

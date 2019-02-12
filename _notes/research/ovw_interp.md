@@ -1,0 +1,191 @@
+---
+layout: notes_without_title
+section-type: notes
+title: interp ref
+category: research
+---
+
+# recent papers
+
+
+- neural stethoscopes: https://arxiv.org/pdf/1806.05502.pdf
+- RISE - randomized input sampling: https://arxiv.org/pdf/1806.07421.pdf
+- xGEMs: https://arxiv.org/pdf/1806.08867.pdf
+- maximally invariant data perturbation: https://arxiv.org/pdf/1806.07004.pdf
+- hard coding
+  - SSIM layer: https://arxiv.org/abs/1806.09152
+  - Inverting Supervised Representations with Autoregressive Neural Density Models 
+- [rvw](https://arxiv.org/abs/1803.07517)
+- robustness
+  - https://arxiv.org/pdf/1806.08049.pdf
+  - https://arxiv.org/pdf/1806.07538.pdf
+- [piecewise linear interp](https://arxiv.org/pdf/1806.10270.pdf)
+- [nonparametric var importance](http://proceedings.mlr.press/v80/feng18a/feng18a.pdf)
+- [supervised local modeling](https://arxiv.org/abs/1807.02910 ) 
+- [detect adversarial cnn attacks w/ feature maps](https://digitalcollection.zhaw.ch/handle/11475/8027) 
+- adaptive dropout: https://arxiv.org/abs/1807.08024
+- lesion detection saliency: https://arxiv.org/pdf/1807.07784.pdf
+- integrated gradients 2: https://arxiv.org/abs/1805.12233
+- [symbolic execution for dnns](https://arxiv.org/pdf/1807.10439.pdf)
+- [L-shapley abd C-shapley](https://arxiv.org/pdf/1808.02610.pdf)
+- [iNNvestigate neural nets](https://arxiv.org/abs/1808.04260)
+  - library iNNvestigate addresses this by providing a common interface and out-of-thebox implementation
+- debugging
+  - [tensorfuzz](https://arxiv.org/abs/1807.10875) 
+- [Understanding Deep Architectures by Visual Summaries](http://bmvc2018.org/papers/0794.pdf)
+- [A Simple and Effective Model-Based Variable Importance Measure](https://arxiv.org/pdf/1805.04755.pdf)
+  - measures the feature importance (defined as the variance of the 1D partial dependence function) of one feature conditional on different, fixed points of the other feature. When the variance is high, then the features interact with each other, if it is zero, they don’t interact.
+- random forests
+  - Breiman proposes permutation tests: Breiman, Leo. 2001. “Random Forests.” Machine Learning 45 (1). Springer: 5–32
+- [Interpreting Neural Network Judgments via Minimal, Stable, and Symbolic Corrections](https://arxiv.org/pdf/1802.07384.pdf)
+- "[Sanity Checks for Saliency Maps](https://arxiv.org/pdf/1810.03292.pdf)" .. accepted to NIPS
+- [DeepPINK: reproducible feature selection in deep neural networks](https://arxiv.org/pdf/1809.01185.pdf)
+- "Transparency by Disentangling Interactions"
+- "To Trust Or Not To Trust A Classifier"
+- "Interpreting Neural Network Judgments via Minimal, Stable, and Symbolic Corrections"
+- [Towards Robust Interpretability with Self-Explaining Neural Networks](https://arxiv.org/pdf/1806.07538.pdf)
+- "Explaining Deep Learning Models -- A Bayesian Non-parametric Approach"
+- [Detecting Potential Local Adversarial Examples for Human-Interpretable Defense](https://arxiv.org/pdf/1809.02397.pdf)
+- [Deep k-Nearest Neighbors: Towards Confident, Interpretable and Robust Deep Learning](https://arxiv.org/pdf/1803.04765.pdf)
+  - [Interpreting Neural Networks With Nearest Neighbors](https://arxiv.org/pdf/1809.02847.pdf)
+- [Generalizability vs. Robustness: Adversarial Examples for Medical Imaging](https://arxiv.org/abs/1804.00504)
+- [Interpreting Layered Neural Networks via Hierarchical Modular Representation](https://arxiv.org/pdf/1810.01588.pdf)
+- [Entropic Variable Boosting for Explainability & Interpretability in Machine Learning](https://arxiv.org/abs/1810.07924)
+- [Explain to Fix: A Framework to Interpret and Correct DNN Object Detector Predictions](https://arxiv.org/pdf/1811.08011.pdf)
+- [Interpretable Deep Learning under Fire](https://arxiv.org/abs/1812.00891)
+- [Understanding Individual Decisions of CNNs via Contrastive Backpropagation](https://arxiv.org/abs/1812.02100v1)
+- [“What are You Listening to?” Explaining Predictions of Deep Machine Listening Systems](https://ieeexplore.ieee.org/abstract/document/8553178)
+- [Diagnostic Visualization for Deep Neural Networks Using Stochastic Gradient Langevin Dynamics](https://arxiv.org/pdf/1812.04604.pdf)
+- [Interpretable Convolutional Neural Networks](http://openaccess.thecvf.com/content_cvpr_2018/CameraReady/0490.pdf)
+  - could also just use specific filters for specific classes
+- [Manipulating and Measuring Model Interpretability](https://arxiv.org/abs/1802.07810)
+- local
+  - [grad-cam++](https://arxiv.org/abs/1710.11063) 
+  - [What made you do this? Understanding black-box decisions with sufficient input subsets](https://arxiv.org/pdf/1810.03805.pdf)
+- importance scores
+  - [Variable Importance Clouds: A Way to Explore Variable Importance for the Set of Good Models](https://arxiv.org/pdf/1901.03209.pdf) 
+  - [Permutation tests in general](http://arxiv.org/abs/1801.01489): Fisher, Aaron, Cynthia Rudin, and Francesca Dominici. 2018. “Model Class Reliance: Variable Importance Measures for any Machine Learning Model Class, from the ‘Rashomon’ Perspective.”
+- [Recovering Pairwise Interactions Using Neural Networks](https://arxiv.org/pdf/1901.08361.pdf)
+- [How Sensitive are Sensitivity-Based Explanations?](https://arxiv.org/abs/1901.09392)
+- [Understanding Impacts of High-Order Loss Approximations and Features in Deep Learning Interpretation](https://arxiv.org/abs/1902.00407)
+
+
+
+
+
+# cnns
+
+- good summary: https://distill.pub/2017/feature-visualization/
+
+
+## visualize intermediate features
+1. visualize filters by layer
+  - doesn't really work past layer 1
+2. *decoded filter* - rafegas & vanrell 2016
+  - project filter weights into the image space
+  - pooling layers make this harder
+3. *deep visualization* - yosinski 15
+
+## penalizing activations
+
+- tsang interpreatble cnns
+- teaching compositionality to cnns - mask features by objects
+
+
+
+## maximal activation stuff
+1. images that maximally activate a feature 
+  - *deconv nets* - Zeiler & Fergus (2014)
+    - might want to use optimization to generate image that makes optimal feature instead of picking from training set
+  - before this, erhan et al. did this for unsupervised features
+2. deep dream - reconstruct image from feature map
+  - blog: https://research.googleblog.com/2015/06/inceptionism-going-deeper-into-neural.html
+  - could use natural image prior
+  - could train deconvolutional NN
+  - also called *deep neuronal tuning* - GD to find image that optimally excites filters
+3. define *neuron feature* - weighted average version of a set of maximum activation images that capture essential properties - rafegas_17
+  - can also define *color selectivity index* - angle between first PC of color distribution of NF and intensity axis of opponent color space
+  - *class selectivity index* - derived from classes of images that make NF
+4. saliency maps for each image / class
+  - simonyan et al 2014
+
+## attention maps
+1. occluding parts of the image
+  - sweep over image and remove patches
+  - which patch removals had highest impact on change in class?
+2. text usually uses attention maps
+  - ex. karpathy et al LSTMs
+  - ex. lei et al. - most relevant sentences in sentiment prediction
+
+## effect of modifications
+1. ribeiro's LIME model - local approximation to the model
+2. dosovitskiy et al 16 - train generative deconv net to create images from neuron activations
+  - aubry & russel 15 do similar thing
+3. gradient-based methods - visualize what in image would change class label
+  - *guided backpropagation* - springenberg et al
+    - lets you better create maximally specific image
+  - selvaraju 17 - *grad-CAM*
+4. koh and liang 17 - *find training points* that contribute most to classification errors
+
+## other
+1. textual explanations
+  1. hendricks et al
+  2. darrel vision + textual work
+2. create an explanatory graph
+  - zhang_17 - create a graph that responds better to things like objects than individual neurons
+3. information bottleneck framework on deep nets (schwartz-ziv & tishby)
+4. *t-SNE* embeds images into a clustered 2d space so we can see them
+5. wei_15 understanding intraclass variation
+6. mahendran_14 inverting CNNS
+
+## model-based
+1. learning AND-OR Templates for Object Recognition and Detection (zhu_13)
+2. ross et al. - constraing model during training
+3. scat transform idea (mallat_16 rvw, oyallan_17)
+4. force interpretable description by piping through something interpretable (ex. tenenbaum scene de-rendering)
+5. learn concepts through probabilistic program induction
+6. force biphysically plausible learning rules
+
+
+
+## interpreting weights
+
+-  tsang_17: interacting inputs must follow strongly weighted connections to a common hidden unit before the final output
+
+## prototypes
+
+- [prototypes I](https://arxiv.org/pdf/1710.04806.pdf)
+  - uses encoder/decoder setup
+  - encourage every prototype to be similar to at least one encoded input
+  - learned prototypes in fact look like digits
+  - correct class prototypes go to correct classes
+  - loss: classification + reconstruction + distance to a training point
+- [prototypes II](https://arxiv.org/abs/1806.10574)
+  - can have smaller prototypes
+  - l2 distance
+  - require the filters to be identical to the latent representation of some training image patch
+  - cluster image patches of a particular class around the prototypes of the same class, while separating image patches of different classes
+  - maxpool class prototypes so spatial size doesn't matter
+  - also get heatmap of where prototype was activated (only max really matters)
+  - train in 3 steps
+    - train everything: classification + clustering around intraclass prototypes + separation between interclass prototypes (last layer fixed to 1s / -0.5s)
+    - project prototypes to data patches
+    - learn last layer
+- [posthoc prototypes](https://openreview.net/forum?id=r1xyx3R9tQ)
+
+# general
+
+- hooker_17_ml_and_future
+  - anti-realism over realism
+  - lack of interpretability in NNs is part of what makes them powerful
+  - *naked predictions* - numbers with no real interpretation
+    - more central to science than modelling?
+    - no theory needed? (Breiman 2001)
+- old school: realist studied neuroscience (Wundt), anti-realist just stimuli/response patterns (Skinner), now neither
+- interpretability properties
+  - *simplicity* - too complex
+  - *risk* - too complex
+  - *efficiency* - basically generalizability
+  - *unification* - answers *ontology* - the nature of being
+  - *realism* in a partially accessible world
+- overall, they believe there is inherent value of ontological description

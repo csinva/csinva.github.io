@@ -2,6 +2,7 @@
 
 - draw arch: http://alexlenail.me/NN-SVG/index.html
 - viz architectures: https://tensorspace.org/index.html
+- ovw![ai_generations](data_ovw/ai_generations.png)
 
 # levels
 
