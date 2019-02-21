@@ -192,6 +192,19 @@ category: ai
 
 - could ai actually produce more leisure?
 
+# 22 - algorists dream of objectivity (peter galison)
+- science historian
+- stories of dangerous technologies have been repeated (e.g. nanoscience, recombinant DNA)
+- review in psychology found objective models outperformed groups of human clinicians ("prediction procedures: the clinical-statistical controversy")
+- people initially started w/ drawing things
+	- then shifted to more objective measures (e.g. microscope)
+	- then slight shift away (e.g. humans outperformed algorithms at things)
+- objectivity is not everything
+
+# 23 - the rights of machines (george church)
+- machines should increasingly get rights as those of humans
+- potential for AI to make humans smarter as well
+
 ---
 
 # Rodney Brooks: The inhuman mess our machines have got us into
@@ -215,10 +228,6 @@ category: ai
 # Hans Ulrich Obrist: Making the invisible visible: Art meets AI
 
 # Alison Gopnik: AI’s versus Four-Year-Olds 
-
-# Peter Galison: Algorists dream of objectivity
-
-# George Church: The rights of machines
 
 
 # Caroline Jones: The artistic use of cybernetic beings

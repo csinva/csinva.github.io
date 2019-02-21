@@ -5,6 +5,7 @@ verticalSeparator: '---'
 typora-copy-images-to: ./assets
 ---
 
+[TOC]
 
 <h1> towards interpretable ml for neuroscience </h1>
 
@@ -200,7 +201,6 @@ explain a **single prediction** by a random forest in terms of the **input**
 
 
 ## connectomics: unsupervised image segmentation
-
 
 # appendix
 

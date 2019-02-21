@@ -9,8 +9,8 @@ category: research
 
 # basics
 
+- [good set of class notes](https://people.csail.mit.edu/madry/6.883/)
 - demos to gain intuition
-
   - [colah](http://colah.github.io/posts/2014-03-NN-Manifolds-Topology/) 
     - [tf playground](https://playground.tensorflow.org/)
     - [convnetJS](https://cs.stanford.edu/people/karpathy/convnetjs//demo/classify2d.html)

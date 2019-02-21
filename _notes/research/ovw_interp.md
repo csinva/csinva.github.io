@@ -5,15 +5,20 @@ title: interp ref
 category: research
 ---
 
-# recent papers
-
-
-- neural stethoscopes: https://arxiv.org/pdf/1806.05502.pdf
-- RISE - randomized input sampling: https://arxiv.org/pdf/1806.07421.pdf
-- xGEMs: https://arxiv.org/pdf/1806.08867.pdf
-- maximally invariant data perturbation: https://arxiv.org/pdf/1806.07004.pdf
+- "where and why net": WAWnet
+- [discovering and testing visual concepts learned by DNNs](https://arxiv.org/abs/1902.03129) - cluster in bottleneck space
+- [interpretable filters](http://openaccess.thecvf.com/content_cvpr_2018/CameraReady/0490.pdf)
+- [interactive explanation tool](https://link.springer.com/chapter/10.1007/978-3-030-13463-1_6)
+- [global explanations](https://arxiv.org/abs/1902.02384)
+- [bagnet bag-of-features](https://openreview.net/pdf?id=SkfMWhAqYQ)
+  - [learn shapes not texture](https://openreview.net/pdf?id=Bygh9j09KX)
+  - [code](https://github.com/wielandbrendel/bag-of-local-features-models)
+- [neural stethoscopes](https://arxiv.org/pdf/1806.05502.pdf) 
+- [RISE](https://arxiv.org/pdf/1806.07421.pdf) - randomized input sampling
+- [xGEMs](https://arxiv.org/pdf/1806.08867.pdf) 
+- [maximally invariant data perturbation](https://arxiv.org/pdf/1806.07004.pdf)
 - hard coding
-  - SSIM layer: https://arxiv.org/abs/1806.09152
+  - [SSIM layer](https://arxiv.org/abs/1806.09152)
   - Inverting Supervised Representations with Autoregressive Neural Density Models 
 - [rvw](https://arxiv.org/abs/1803.07517)
 - robustness
@@ -23,15 +28,13 @@ category: research
 - [nonparametric var importance](http://proceedings.mlr.press/v80/feng18a/feng18a.pdf)
 - [supervised local modeling](https://arxiv.org/abs/1807.02910 ) 
 - [detect adversarial cnn attacks w/ feature maps](https://digitalcollection.zhaw.ch/handle/11475/8027) 
-- adaptive dropout: https://arxiv.org/abs/1807.08024
-- lesion detection saliency: https://arxiv.org/pdf/1807.07784.pdf
-- integrated gradients 2: https://arxiv.org/abs/1805.12233
+- [adaptive dropout](https://arxiv.org/abs/1807.08024)
+- [lesion detection saliency](https://arxiv.org/pdf/1807.07784.pdf) 
+- [integrated gradients 2](https://arxiv.org/abs/1805.12233)
 - [symbolic execution for dnns](https://arxiv.org/pdf/1807.10439.pdf)
 - [L-shapley abd C-shapley](https://arxiv.org/pdf/1808.02610.pdf)
-- [iNNvestigate neural nets](https://arxiv.org/abs/1808.04260)
-  - library iNNvestigate addresses this by providing a common interface and out-of-thebox implementation
-- debugging
-  - [tensorfuzz](https://arxiv.org/abs/1807.10875) 
+- [iNNvestigate neural nets](https://arxiv.org/abs/1808.04260) - provides a common interface and out-of-thebox implementation
+- [tensorfuzz](https://arxiv.org/abs/1807.10875) - debugging
 - [Understanding Deep Architectures by Visual Summaries](http://bmvc2018.org/papers/0794.pdf)
 - [A Simple and Effective Model-Based Variable Importance Measure](https://arxiv.org/pdf/1805.04755.pdf)
   - measures the feature importance (defined as the variance of the 1D partial dependence function) of one feature conditional on different, fixed points of the other feature. When the variance is high, then the features interact with each other, if it is zero, they don’t interact.
@@ -78,65 +81,58 @@ category: research
 - good summary: https://distill.pub/2017/feature-visualization/
 
 
-## visualize intermediate features
-1. visualize filters by layer
-  - doesn't really work past layer 1
-2. *decoded filter* - rafegas & vanrell 2016
-  - project filter weights into the image space
-  - pooling layers make this harder
-3. *deep visualization* - yosinski 15
+- **visualize intermediate features**
+    1. visualize filters by layer
+      - doesn't really work past layer 1
+    2. *decoded filter* - rafegas & vanrell 2016
+      - project filter weights into the image space
+      - pooling layers make this harder
+    3. *deep visualization* - yosinski 15
 
-## penalizing activations
-
-- tsang interpreatble cnns
-- teaching compositionality to cnns - mask features by objects
-
-
-
-## maximal activation stuff
-1. images that maximally activate a feature 
-  - *deconv nets* - Zeiler & Fergus (2014)
-    - might want to use optimization to generate image that makes optimal feature instead of picking from training set
-  - before this, erhan et al. did this for unsupervised features
-2. deep dream - reconstruct image from feature map
-  - blog: https://research.googleblog.com/2015/06/inceptionism-going-deeper-into-neural.html
-  - could use natural image prior
-  - could train deconvolutional NN
-  - also called *deep neuronal tuning* - GD to find image that optimally excites filters
-3. define *neuron feature* - weighted average version of a set of maximum activation images that capture essential properties - rafegas_17
-  - can also define *color selectivity index* - angle between first PC of color distribution of NF and intensity axis of opponent color space
-  - *class selectivity index* - derived from classes of images that make NF
-4. saliency maps for each image / class
-  - simonyan et al 2014
-
-## attention maps
-1. occluding parts of the image
-  - sweep over image and remove patches
-  - which patch removals had highest impact on change in class?
-2. text usually uses attention maps
-  - ex. karpathy et al LSTMs
-  - ex. lei et al. - most relevant sentences in sentiment prediction
-
-## effect of modifications
-1. ribeiro's LIME model - local approximation to the model
-2. dosovitskiy et al 16 - train generative deconv net to create images from neuron activations
-  - aubry & russel 15 do similar thing
-3. gradient-based methods - visualize what in image would change class label
-  - *guided backpropagation* - springenberg et al
-    - lets you better create maximally specific image
-  - selvaraju 17 - *grad-CAM*
-4. koh and liang 17 - *find training points* that contribute most to classification errors
-
-## other
-1. textual explanations
-  1. hendricks et al
-  2. darrel vision + textual work
-2. create an explanatory graph
-  - zhang_17 - create a graph that responds better to things like objects than individual neurons
-3. information bottleneck framework on deep nets (schwartz-ziv & tishby)
-4. *t-SNE* embeds images into a clustered 2d space so we can see them
-5. wei_15 understanding intraclass variation
-6. mahendran_14 inverting CNNS
+- penalizing activations
+    - tsang interpreatble cnns
+    - teaching compositionality to cnns - mask features by objects
+- maximal activation stuff
+    1. images that maximally activate a feature 
+      - *deconv nets* - Zeiler & Fergus (2014)
+        - might want to use optimization to generate image that makes optimal feature instead of picking from training set
+      - before this, erhan et al. did this for unsupervised features
+    2. deep dream - reconstruct image from feature map
+      - blog: https://research.googleblog.com/2015/06/inceptionism-going-deeper-into-neural.html
+      - could use natural image prior
+      - could train deconvolutional NN
+      - also called *deep neuronal tuning* - GD to find image that optimally excites filters
+    3. define *neuron feature* - weighted average version of a set of maximum activation images that capture essential properties - rafegas_17
+      - can also define *color selectivity index* - angle between first PC of color distribution of NF and intensity axis of opponent color space
+      - *class selectivity index* - derived from classes of images that make NF
+    4. saliency maps for each image / class
+      - simonyan et al 2014
+- attention maps
+    1. occluding parts of the image
+      - sweep over image and remove patches
+      - which patch removals had highest impact on change in class?
+    2. text usually uses attention maps
+      - ex. karpathy et al LSTMs
+      - ex. lei et al. - most relevant sentences in sentiment prediction
+- **posthoc methods**
+    1. ribeiro's LIME model - local approximation to the model
+    2. dosovitskiy et al 16 - train generative deconv net to create images from neuron activations
+      - aubry & russel 15 do similar thing
+    3. gradient-based methods - visualize what in image would change class label
+      - *guided backpropagation* - springenberg et al
+        - lets you better create maximally specific image
+      - selvaraju 17 - *grad-CAM*
+    4. koh and liang 17 - *find training points* that contribute most to classification errors
+- misc
+    1. textual explanations
+      1. hendricks et al
+      2. darrel vision + textual work
+    2. create an explanatory graph
+      - zhang_17 - create a graph that responds better to things like objects than individual neurons
+    3. information bottleneck framework on deep nets (schwartz-ziv & tishby)
+    4. *t-SNE* embeds images into a clustered 2d space so we can see them
+    5. wei_15 understanding intraclass variation
+    6. mahendran_14 inverting CNNS
 
 ## model-based
 1. learning AND-OR Templates for Object Recognition and Detection (zhu_13)
@@ -173,7 +169,7 @@ category: research
     - learn last layer
 - [posthoc prototypes](https://openreview.net/forum?id=r1xyx3R9tQ)
 
-# general
+# high-level
 
 - hooker_17_ml_and_future
   - anti-realism over realism
