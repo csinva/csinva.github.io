@@ -4,7 +4,75 @@ title: notes_main
 section-type: notes
 ---
 
-<h2 align="center"> notes </h2>
+<h2 align="center"> resources </h2>
+
+<!--<h2 align="center"> more </h2>-->
+
+        <div class="coll">
+            <h3 align="center">ovw slides</h3>
+            <ul class="list-items">
+                <li><a href="{{ site.baseurl }}/pres/189/" style="font-size:16px"> ml ovw </a></li>
+                <li><a href="{{ site.baseurl }}/pres/188/" style="font-size:16px"> ai ovw </a></li>
+                <!--<li><a href="{{ site.baseurl }}/pres/qual" style="font-size:16px"> research ovw </a></li>-->
+                <li><a href="https://docs.google.com/presentation/d/1d2prZlhmG72whCTzfGJ_pk-Pgv9Sx-bGG0e503whYvw/present?slide=id.p" style="font-size:16px"> vissci ovw </a></li>
+                <li><a href="https://docs.google.com/presentation/d/15iygjXGLu7Ha096GwMV5t6sjP7IPcTHqimPkTDwrpPI/present?slide=id.p" style="font-size:16px"> hummingbird </a></li>
+            </ul>
+        </div>
+
+        <div class="coll">
+            <h3 align="center">code</h3>
+            <ul class="list-items">
+                <li><a href="{{ site.baseurl }}/acd/" style="font-size:16px"> acd </a></li>
+                <li><a href="{{ site.baseurl }}/pytorch_gan_pretrained/" style="font-size:16px"> pytorch gan pretrained </a></li>
+                <li><a href="{{ site.baseurl }}/machine_learning_coding_tips/" style="font-size:16px"> writing good ml code </a></li>
+                <li><a href="{{ site.baseurl }}/reveal_md_enhanced/" style="font-size:16px"> making reveal-md slides </a></li>
+            </ul>
+        </div>
+
+
+
+        <!--<div class="roww"> &lt;!&ndash;begin the 1st row&ndash;&gt;-->
+{% for collection in site.collections %}
+
+    {% assign categories = "" | split:"|" %}
+    {% for doc in collection.docs %}
+    {% if doc.category %}
+    {% unless categories contains doc.category %}
+    {% assign categories = categories | push: doc.category %}
+    {% endunless %}
+    {% endif %}
+    {% endfor %}
+    {% assign categories_size = categories | size %}
+    {% if categories_size == 0 %}
+    {% assign categories = categories | push: nil %}
+    {% endif %}
+
+    {% for category in categories %}
+
+        {% if category == "research" %}
+
+
+            <div class="coll">
+                <h3 align="center">{{ category | downcase }}</h3>
+
+                {% assign category_docs = collection.docs | where: "category", category %}
+                <ul class="list-items">
+                {% for item in category_docs %}
+                    {% if item.title %}
+                        <li><a href="{{ site.baseurl }}{{item.url}}" style="font-size:16px"> {{ item.title | downcase }} </a></li>
+                    {% endif %}
+                {% endfor %}
+                </ul>
+             </div>
+
+        {% endif %}
+
+    {% endfor %}
+{% endfor %}
+
+
+
+
 <center>
     <i>A rough set of notes/posts which may serve as useful reference for people in machine learning / neuroscience.</i>
     </br></br>
@@ -59,81 +127,16 @@ section-type: notes
     {% endfor %}
 {% endfor %}
 
-<h2 align="center"> more </h2>
 
-        <div class="coll2">
-            <h3 align="center">ovw slides</h3>
-            <ul class="list-items">
-                <li><a href="{{ site.baseurl }}/pres/189/" style="font-size:16px"> ml ovw </a></li>
-                <li><a href="{{ site.baseurl }}/pres/188/" style="font-size:16px"> ai ovw </a></li>
-                <!--<li><a href="{{ site.baseurl }}/pres/qual" style="font-size:16px"> research ovw </a></li>-->
-                <li><a href="https://docs.google.com/presentation/d/1d2prZlhmG72whCTzfGJ_pk-Pgv9Sx-bGG0e503whYvw/present?slide=id.p" style="font-size:16px"> vissci ovw </a></li>
-                <li><a href="https://docs.google.com/presentation/d/15iygjXGLu7Ha096GwMV5t6sjP7IPcTHqimPkTDwrpPI/present?slide=id.p" style="font-size:16px"> hummingbird </a></li>
-            </ul>
-        </div>
-
-        <div class="coll2">
-            <h3 align="center">code</h3>
-            <ul class="list-items">
-                <li><a href="{{ site.baseurl }}/acd/" style="font-size:16px"> acd </a></li>
-                <li><a href="{{ site.baseurl }}/pytorch_gan_pretrained/" style="font-size:16px"> pytorch gan pretrained </a></li>
-            </ul>
-        </div>
-
-
-
-        <div class="roww"> <!--begin the 1st row-->
-{% for collection in site.collections %}
-
-    {% assign categories = "" | split:"|" %}
-    {% for doc in collection.docs %}
-    {% if doc.category %}
-    {% unless categories contains doc.category %}
-    {% assign categories = categories | push: doc.category %}
-    {% endunless %}
-    {% endif %}
-    {% endfor %}
-    {% assign categories_size = categories | size %}
-    {% if categories_size == 0 %}
-    {% assign categories = categories | push: nil %}
-    {% endif %}
-
-    {% for category in categories %}
-
-        {% if category == "blog" or category == "research" %}
-
-
-            <div class="coll2">
-                <h3 align="center">{{ category | downcase }}</h3>
-
-                {% assign category_docs = collection.docs | where: "category", category %}
-                <ul class="list-items">
-                {% for item in category_docs %}
-                    {% if item.title %}
-                        <li><a href="{{ site.baseurl }}{{item.url}}" style="font-size:16px"> {{ item.title | downcase }} </a></li>
-                    {% endif %}
-                {% endfor %}
-                </ul>
-             </div>
-
-        {% endif %}
-
-    {% endfor %}
-{% endfor %}
-</div> <!--end the 2nd row-->
+<!--</div> &lt;!&ndash;end the 2nd row&ndash;&gt;-->
 
 <style>
 .coll {
     float: left;
-    width: 33%;
+    width: 33.33%;
     padding-bottom: 50px;
 }
 
-.coll2 {
-    float: left;
-    width: 24%;
-    padding-bottom: 50px;
-}
 
 /* Clear floats after the columns */
 .roww:after {
