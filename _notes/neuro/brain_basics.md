@@ -487,7 +487,7 @@ category: neuro
   3. MAP kinase, ras
     - on/off switch
   - when all of these things come in at once - convergence signaling - CREB will make actin, AMPA receptors
-  - ​
+  - 
 - *TrkA* binds NGF (Nerve growth factor) - peptide and has 3 pathways:
   1. PI 3 kinase
   2. ras

@@ -8,26 +8,30 @@ category: blog
 
 # connectomics
 **chandan singh**  
-*last updated jul 20, 2018*
 
 ---
 
 
-Connectomics is the field interested in mapping the brain.
+The brain is an immensely complicated system consisting of on the order of 86 billion neurons and 15 trillion synapses. Connectomics is the loose term referring to the field interested in mapping the brain. Two general categories exist: *structural connectomics*, which aims to map physical anatomy and *functional connectomics*, which aims to map the functions of different brain regions.
 
 # Structural connectomics
 
-Structural connectomics is interested in developing a map of how the brain is physically connected. The studies here examine electron microscopy data to produce segmentations of neurons in the fly brain.
+Structural connectomics is interested in developing a map of how the brain is physically connected. The field had early success with simple organisms, such as *C. Elegans* (a roundworm), which has precisely 302 neurons ([source](http://www.opensourcebrain.org/projects/celegans)):
 
-*"A Deep Structured Learning Approach Towards Automating Connectome Reconstruction from 3D Electron Micrographs", <a color="#219AB3" href="https://arxiv.org/abs/1709.02974"> Funke, Tschopp, Grisaitis, Sheridan, Singh, Saalfeld, & Turaga, 2017, arXiv</a>*
+![medium](assets/medium.png)
 
-*"Optimizing Random Forest Image Segmentaion for Connectomics" <a color="#219AB3" href="/assets/singh_15_rf_segmentation.pdf"> Singh, Hewitt, & Turaga 2014, Janelia Undergraduate Scholars Poster Session</a>*
+Recent efforts have mapped the brains of much larger organisms, such as the *[Drosophila](https://www.janelia.org/news/complete-fly-brain-imaged-at-nanoscale-resolution)* (fruit fly). One very difficult part of this is converting from raw microscope images to segmented neurons. I have been part of some work focused on automating this process using machine learning algorithms. has focused on automating this process using computer vision algorithms (see below).
 
+![Screen Shot 2019-02-22 at 2.00.35 PM](assets/Screen Shot 2019-02-22 at 2.00.35 PM.png)
 
+Our [initial approach in 2014](/assets/singh_15_rf_segmentation.pdf), using random forests didn't scale well to very large datasets and this work culminated in a novel technique/loss function for performing segmentation using deep learning: [Large Scale Image Segmentation with Structured Loss based Deep Learning for Connectome Reconstruction](https://ieeexplore.ieee.org/document/8364622/), resulting in the automatic segmentation of some interesting-looking neurons:
 
-# Functional connetomics
+![Screen Shot 2019-02-22 at 2.05.49 PM](assets/Screen Shot 2019-02-22 at 2.05.49 PM.png)
 
-Functional connectomics focuses on developing maps of how brain activity in different regions is connected. The work here tries to generate maps for connectivity between 160 brain regions in the human brain. Furthermore, it analyzes how the connectivity differs between people with and without autism.
+# Functional connectomics
 
-*"A constrained, weighted-l1 minimization approach for joint discovery of heterogeneous neural connectivity graphs" - <a color="#219AB3" href="https://arxiv.org/abs/1709.04090"> Singh, Wang, & Qi, 2017, NIPS 2017 Workshop on Advances in Modeling and Learning Interactions from Complex Data</a>.*
+Functional connectomics focuses on developing maps of how functions are represented by the activity in different brain regions. These maps tend to be lower resolution that the anatomical maps provided by structural connectomics, but can tell us about higher-level concepts, such as language and speech.
 
+My foray into functional connectomics aimed to generate maps for connectivity between 160 brain regions in the human brain, based on the [ABIDE](http://fcon_1000.projects.nitrc.org/indi/abide/) dataset. Using graphical models, we analyzed how connectivity differs between people with and without autism. Specifically, we used a [constrained, weighted-l1 minimization approach](https://arxiv.org/abs/1709.04090), graphically depicted below.
+
+![Screen Shot 2019-02-22 at 2.16.08 PM](assets/Screen Shot 2019-02-22 at 2.16.08 PM.png)
