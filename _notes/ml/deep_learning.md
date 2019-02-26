@@ -10,6 +10,7 @@ category: ml
 ---
 
 # neural networks
+
 - basic perceptron update rule
     - if output is 0 but should be 1: raise weights on active connections by d
     - if output is 1 but should be 0: lower weights on active connections by d
@@ -90,39 +91,44 @@ category: ml
 - data augmentation - random rotations, flips, shifts, recolorings
 - siamese networks - extract features twice with same net then put layer on top
     - ex. find how similar to representations are
+- famous cnns
+	- LeNet (1998)
+		- first, used on MNIST
+	- AlexNet (2012)
+		- landmark (5 conv layers, some pooling/dropout)
+	- ZFNet (2013)
+		- fine tuning and deconvnet
+	- VGGNet (2014)
+		- 19 layers, all 3x3 conv layers and 2x2 maxpooling
+    - GoogLeNet (2015)
+		- lots of parallel elements (called *Inception module*)
+	- Msft ResNet (2015)
+        - very deep - 152 layers
+        - connections straight from initial layers to end
+          - only learn "residual" from top to bottom
+	- Region Based CNNs (R-CNN - 2013, Fast R-CNN - 2015, Faster R-CNN - 2015)
+		- object detection
+	- Karpathy Generating image descriptions (2014)
+		- RNN+CNN
+	- Spatial transformer networks (2015)
+		- transformations within the network
+	- Segnet (2015)
+		- encoder-decoder network
+	- Unet (2015)
+		- Ronneberger - applies to biomedical segmentation
+	- Pixelnet (2017)
+        - predicts pixel-level for different tasks with the same architecture
+        - convolutional layers then 3 FC layers which use outputs from all convolutional layrs together
+	- Squeezenet
+	- Yolonet
+	- Wavenet
+	- Densenet
 
-## LeNet (1998)
 
-- first, used on MNIST
 
-## AlexNet (2012)
 
-- landmark (5 conv layers, some pooling/dropout)
-
-## ZFNet (2013)
-
-- fine tuning and deconvnet
-
-## VGGNet (2014)
-
-- 19 layers, all 3x3 conv layers and 2x2 maxpooling
-
-## GoogLeNet (2015)
-
-- lots of parallel elements (called *Inception module*)
-
-## Msft ResNet (2015)
-
-- very deep - 152 layers
-- connections straight from initial layers to end
-  - only learn "residual" from top to bottom
-
-## Region Based CNNs (R-CNN - 2013, Fast R-CNN - 2015, Faster R-CNN - 2015)
-
-- object detection
-
-## GAN (2014)
-
+# gans (2014)
+- original gan paper (2014)
 - might not converge
 - *generative adversarial network*
 - goal: want G to generate distribution that follows data
@@ -145,45 +151,18 @@ category: ml
 - training algorithm
   - in the beginning, since G is bad, only train  my minimizing G loss function
 
-## Karpathy Generating image descriptions (2014)
+# architectural components
+- **coordconv** - break translation equivariance by passing in i, j coords as extra filters
+- **deconvolution** = transposed convolution = fractionally-strided convolution - like upsampling
+- **attention**
+    - attention ovw: https://lilianweng.github.io/lil-log/2018/06/24/attention-attention.html
+    - vector of importance weights: in order to predict or infer one element, such as a pixel in an image or a word in a sentence, we estimate using the attention vector how strongly it is correlated with (or “*attends to*” as you may have read in many papers) other elements and take the sum of their values weighted by the attention vector as the approximation of the target.
+    - attention [born](https://arxiv.org/pdf/1409.0473.pdf) to solve problem of going from arbitrary length -> fixed length encoding -> arbitrary length output
 
-- RNN+CNN
-
-## Spatial transformer networks (2015)
-
-- transformations within the network
-
-## Segnet (2015)
-
-- encoder-decoder network
-
-## Unet (2015)
-
-- Ronneberger - applies to biomedical segmentation
-
-## Pixelnet (2017)
-
-- predicts pixel-level for different tasks with the same architecture
-- convolutional layers then 3 FC layers which use outputs from all convolutional layrs together
-## Squeezenet
-
-## Yolonet
-
-## Wavenet
-
-## Densenet
-
-# coordconv
-
-- break translation equivariance by passing in i, j coords as extra filters
-
-# recent papers
-
-- deepmind's learning to learn
+# recent trends
+- architecture search: learning to learn
 - *optimal brain damage* - starts with fully connected and weeds out connections (Lecun)
 - *tiling* - train networks on the error of previous networks
-- we keep training after training err tapers off
-  - negative log-likelihood starts going down
 
 # RNNs
 
@@ -214,20 +193,8 @@ category: ml
   - **targeted** - try to get specific wrong class
 - fast gradient step method - keep adding gradient to maximize noise (limit amplitude of pixel's channel to stay imperceptible)
 
-# manifolds / topology
-
-http://colah.github.io/posts/2014-03-NN-Manifolds-Topology/
-
-
-
 # geometry
 
 - transformers: https://arxiv.org/pdf/1706.03762.pdf
   - spatial transformers: https://papers.nips.cc/paper/5854-spatial-transformer-networks.pdf 
-
-# attention
-
-- attention ovw: https://lilianweng.github.io/lil-log/2018/06/24/attention-attention.html
-- vector of importance weights: in order to predict or infer one element, such as a pixel in an image or a word in a sentence, we estimate using the attention vector how strongly it is correlated with (or “*attends to*” as you may have read in many papers) other elements and take the sum of their values weighted by the attention vector as the approximation of the target.
-- attention [born](https://arxiv.org/pdf/1409.0473.pdf) to solve problem of going from arbitrary length -> fixed length encoding -> arbitrary length output
-- 
+- http://colah.github.io/posts/2014-03-NN-Manifolds-Topology/

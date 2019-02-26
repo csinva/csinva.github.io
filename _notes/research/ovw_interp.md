@@ -5,6 +5,7 @@ title: interp ref
 category: research
 ---
 
+- [explaining a black-box w/ deep variational bottleneck](https://arxiv.org/abs/1902.06918)
 - "where and why net": WAWnet
 - [discovering and testing visual concepts learned by DNNs](https://arxiv.org/abs/1902.03129) - cluster in bottleneck space
 - [interpretable filters](http://openaccess.thecvf.com/content_cvpr_2018/CameraReady/0490.pdf)
