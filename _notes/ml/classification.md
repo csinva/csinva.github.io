@@ -83,6 +83,8 @@ category: ml
 - $Logit(p) = \log[p / (1-p)] = \theta^Tx$
 - multiway logistic classification
   - assume $P(Y^k=1|x, \theta) = \frac{e^{\theta_k^Tx}}{\sum_i e^{\theta_i^Tx}}$, just as arises from class-conditional exponential family distributions
+- logistic weight change represents change in odds
+- fitting requires penalty on weights, otherwise they might not converge (i.e. go to infinity)
 
 ## binary models
 
@@ -99,6 +101,17 @@ category: ml
 
 ## decision trees / rfs - R&N 18.3; HTF 9.2.1-9.2.3
 
+- **importance scores**
+  - dataset-level
+    - for all splits where the feature was used, measure how much variance reduced (either summed or averaged over splits)
+    - the sum of importances is scaled to 1
+  - prediction-level: go through the splits and add up the changes (one change per each split) for each features
+    - note: this bakes in interactions of other variables
+    - ours: only apply rules based on this variable (all else constant)
+    - why not perturbation based?
+  - trees group things, which can be nice
+  - trees are unstsable
+- follow rules: predict based on prob distr. of points in same leaf you end up in
 - *inductive bias*
   - prefer small trees
   - prefer tres with high IG near root
@@ -198,6 +211,24 @@ category: ml
   - fill in missing values
   - start with RBF
   - valid kernel: kernel matrix is Psd
+
+## decision rules
+
+- if-thens, rule can contain ands
+- good rules have large **support** and high accuracy (they tradeoff)
+- decision list is ordered, decision set is not (requires way to resolve rules)
+- most common rules: Gini - classification, variance - regression
+- ways to learn rules
+  - oneR - learn from a single feature
+  - sequential covering - iteratively learn rules and then remove data points which are covered
+    - ex rule could be learn decision tree and only take purest node
+  - bayesian rule lists - use pre-mined frequent patterns
+- generally more interpretable than trees, but doesn't work well for regression
+- features often have to be categorical
+- **rulefit**
+    - learns a sparse linear model with the original features and also a number of new features that are decision rules
+    - train trees and extract rules from them - these become features in a sparse linear model
+    - feature importance becomes a little stickier....
 
 # generative
 

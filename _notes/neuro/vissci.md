@@ -153,9 +153,7 @@ category: neuro
   - subtract predicted value from actually measured value
   - send nothing if you could have predicted, otherwise info you send is *interesting*
 
-# signaling pathways through the retina
-
-# amacrine cells and inner retinal processing of visual information
+# signaling pathways through the retina - amacrine cells and inner retinal processing of visual information
 
 - bipolar cells begin parallel signalling in the visual system
 - amacrine cells - generally modulate bipolar cells / ganglion cells
@@ -173,7 +171,7 @@ category: neuro
 ## primate retina
 
 - primate retina has 2 major types of ganglion cells
-  1. midget ganglion cells  (~75%) - majority, high chspatial acuity
+  1. midget ganglion cells  (~75%) - majority, high spatial acuity
      1. parvocellular pathway
   2. parasol ganglion cells (~15%) - high temporal resolution
      1. magnocellular pathway
@@ -572,7 +570,7 @@ category: neuro
     - multiply by filter = frequency to get filter that is flat (whitening - atick & redlich 1992)
       - this is a lowpass filter
       - this filter looks like center-surround 2D filter (looks like edges)
-    - wasn't feasible to do this experiment (measuring optic nerve) until recently
+    - wasn't feasible to do this experiment (measuring optic nerve) until recently but has been shown to be true
   - people have characterized spatiotemporal power spectrum of natural scenes
     - ex. dan et al. 1996 - LGN neurons whiten time-varying natural images but not white noise
 - **efficient coding model** (karklin + simoncelli 2012)

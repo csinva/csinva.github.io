@@ -2,6 +2,7 @@
 
 - draw arch: http://alexlenail.me/NN-SVG/index.html
 - viz architectures: https://tensorspace.org/index.html
+- medical ideas: many diseases manifest themselves in the activity of neurons, not in the structure
 - ovw![ai_generations](data_ovw/ai_generations.png)
 
 # levels

@@ -40,10 +40,11 @@ category: stat
 - interpretation
   - if feature correlated, weights aren't stable / can't be interpreted
   - curvature inverse $(X^TX)^{-1}$ - dictates stability
+  - importance: weight * feature value
 - LS doesn't work when p >> n because of colinearity of X columns
 - assumptions
   - $\epsilon \sim N(X\beta,\sigma^2)$
-  - *homoscedasticity*: $var(Y_i\|X)$ is the same for all i
+  - *homoscedasticity*: $var(Y_i\|X)​$ is the same for all i
     - opposite of *heteroscedasticity*
 - *multicollinearity* - predictors highly correlated
   - *variance inflation factor (VIF)* - measure how much the variances of the estimated regression coefficients are inflated as compared to when the predictors are not linearly related
@@ -161,6 +162,9 @@ category: stat
 
 ## GLS
 
+- GLMs roughly solve the problem where outcomes are non-Gaussian
+  - mean is related to $w^tx$ through a link function (ex. logistic reg assumes sigmoid)
+  - also assume different prob distr on Y (ex. logistic reg assumes Bernoulli)
 - *generalized least squares regression model*: instead of above assumption, use $E[\epsilon\|X]=0, cov[\epsilon\|X] = G, \: G \in S^K_{++}$
   - covariance formula changes: $cov(\hat{\theta}_{OLS}\|X) = (X^TX)^{-1} X^TGX(X^TX)^{-1}$
   - estimator is the same, but is no longer BLUE - can correct for this:
@@ -224,6 +228,11 @@ category: stat
   we get
 
   $\begin{align} \operatorname{\hat E}(Y | X=x) &= \int \frac{y \sum_{i=1}^{n} K_h\left(x-x_i\right) K_h\left(y-y_i\right)}{\sum_{j=1}^{n} K_h\left(x-x_j\right)} dy,\\ &= \frac{\sum_{i=1}^{n} K_h\left(x-x_i\right) \int y \, K_h\left(y-y_i\right) dy}{\sum_{j=1}^{n} K_h\left(x-x_j\right)},\\ &= \frac{\sum_{i=1}^{n} K_h\left(x-x_i\right) y_i}{\sum_{j=1}^{n} K_h\left(x-x_j\right)},\end{align}$
+
+## gam
+
+- generalized additive models: assume mean output is sum of functions of individual variables (no interactions)
+  - learn individual functions using splines
 
 # sums interpretation
 

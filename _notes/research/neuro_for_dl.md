@@ -76,9 +76,9 @@ For more information, see a very good review on modeling individual neurons<dt-c
   - nested loop architectures
   - avoiding catostrophic forgetting through synaptic complexity
   - learning asymmetric recurrent generative models
-
+- spiking networks ([bindsnet](https://github.com/Hananel-Hazan/bindsnet))
 - neural priors
-	- cox...
+  - cox...
 
 # Conclusion
 

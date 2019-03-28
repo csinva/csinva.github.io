@@ -5,6 +5,16 @@ title: interp ref
 category: research
 ---
 
+**some papers I like involving interpretable machine learning and some notes from the [interpretable ml book](https://christophm.github.io/interpretable-ml-book/)**
+
+[TOC]
+
+# misc new papers
+
+- [Harnessing Deep Neural Networks with Logic Rules](https://arxiv.org/pdf/1603.06318.pdf)
+- Exploring Principled Visualizations for Deep Network Attributions - viz of attribution can be misleading (might want to clip, etc.)
+  - layer separation - want to have both image and attributions on top of it 
+- [Interpretable Deep Learning in Drug Discovery](https://arxiv.org/abs/1903.02788)
 - [explaining a black-box w/ deep variational bottleneck](https://arxiv.org/abs/1902.06918)
 - "where and why net": WAWnet
 - [discovering and testing visual concepts learned by DNNs](https://arxiv.org/abs/1902.03129) - cluster in bottleneck space
@@ -169,6 +179,18 @@ category: research
     - project prototypes to data patches
     - learn last layer
 - [posthoc prototypes](https://openreview.net/forum?id=r1xyx3R9tQ)
+- **counterfactual explanations** - like adversarial, counterfactual explanation describes smallest change to feature vals that changes the prediction to a predefined output
+  - maybe change fewest number of variables not their values
+  - counterfactual should be reasonable (have likely feature values)
+  - human-friendly
+  - usually multiple possible counterfactuals (Rashomon effect)
+  - can use optimization to generate counterfactual
+  - **anchors** - opposite of counterfactuals, once we have these other things won't change the prediction
+- prototypes (assumed to be data instances)
+  - prototype = data instance that is representative of lots of points
+  - criticism = data instances that is not well represented by the set of prototypes
+  - examples: k-medoids or MMD-critic
+    - selects prototypes that minimize the discrepancy between the data + prototype distributions
 
 # high-level
 
@@ -186,3 +208,98 @@ category: research
   - *unification* - answers *ontology* - the nature of being
   - *realism* in a partially accessible world
 - overall, they believe there is inherent value of ontological description
+
+
+
+# evaluating interp
+
+- [An Evaluation of the Human-Interpretability of Explanation](https://arxiv.org/pdf/1902.00006.pdf)
+- [How do Humans Understand Explanations from Machine Learning Systems?: An Evaluation of the Human-Interpretability of Explanation](https://arxiv.org/pdf/1802.00682.pdf)
+- [Towards A Rigorous Science of Interpretable Machine Learning](https://arxiv.org/pdf/1702.08608.pdf)
+
+# feature importance and interactions
+
+- build-up = context-free, less faithful: score is contribution of only variable of interest ignoring other variables
+- break-down = context-dependent, more faithful: score is contribution of variable of interest given all other variables (e.g. permutation test - randomize var of interest from right distr.)
+
+## interactions explicitly
+
+- H-statistic*: 0 for no interaction, 1 for complete interaction
+  - how much of the variance of the output of the joint partial dependence is explained by the interaction instead of the individuals
+  - $H^2_{jk} = \underbrace{\sum_i [\overbrace{PD(x_j^{(i)}, x_k^{(i)})}^{\text{interaction}} \overbrace{- PD(x_j^{(i)}) - PD(x_k^{(i)})}^{\text{individual}}]^2}_{\text{sum over data points}} \: / \: \underbrace{\sum_i [PD(x_j^{(i)}, x_k^{(i)})}_{\text{normalization}}]^2$
+  - same assumptions as PDP: features need to be independent
+- alternatives
+  - variable interaction networks (Hooker, 2004) - decompose pred into main effects + feature interactions
+  - PDP-based feature interaction (greenwell et al. 2018)
+
+## feature importance
+
+- importance of a feature is the increase in the prediction error after we permuted the feature's values
+- If features are correlated, the permutation feature importance can be biased by unrealistic data
+  instances (PDP problem)
+- not the same as model variance
+- Adding a correlated feature can decrease the importance of the associated feature
+
+## surrogates
+
+- could globally fit a simpler model to the complex model
+- **local surrogate (LIME)** - fit a simple model locally to on point and interpret that
+  - select data perturbations and get new predictions
+    - for images, this is turning superpixels on/off
+    - superpixels determined in unsupervised way
+  - weight the new samples based on their proximity
+  - train a weighted, interpretable model on these points
+
+## shapley values
+
+- **shapley value** - average marginal contribution of a feature value across all possible sets of feature values
+  - "how much does prediction change on average when this feature is added?"
+  - tells us the difference between the actual prediction and the average prediction
+  - estimating: all possible sets of feature values have to be evaluated with and without the j-th feature
+    - this includes sets of different sizes
+
+## example-based explanations
+- influential instances - want to find important data points
+  - deletion diagnostics - delete a point and see how much it changed
+
+  - koh 17 influence funcs: use **Hessian** ($\theta x \theta$) to give effect of upweighting a point
+
+  - influence functions = inifinitesimal approach - upweight one person by infinitesimally small weight and see how much estimate changes (e.g. calculate first derivative)
+
+    - influential instance - when data point removed, has a strong effect on the model (not necessarily same as an outlier)
+    - requires access to gradient (e.g. nn, logistic regression)
+    - take single step with Newton's method after upweighting loss
+
+    - yield change in parameters by removing one point
+    - yield change in loss at one point by removing a different point (by multiplying above by cahin rule)
+    - yield change in parameters by modifying one point
+
+
+# model-agnostic
+
+- **pdp plots** - marginals
+
+- separate into **ice plots**  - marginals for instance
+
+  - average of ice plots = pdp plot
+  - sometimes these are centered, sometimes look at derivative
+
+- both pdp ice suffer from many points possibly not being real
+
+- possible solution: **Marginal plots M-plots** (bad name - uses conditional, not marginal)
+
+  - only use points conditioned on certain variable
+  - problem: this bakes things in (e.g. if two features are correlated and only one important, will say both are important)
+
+- **ALE-plots** - take points conditioned on value of interest, then look at differences in predictions around a window
+
+  - this gives pure effect of that var and not the others
+  - needs an order (i.e. might not work for caterogical)
+  - doesn't give you individual curves
+  - recommended very highly by the book...
+  - they integrate as you go...
+
+- summary: To summarize how each type of plot (PDP, M, ALE) calculates the effect of a feature at a certain grid value v:
+   Partial Dependence Plots: “Let me show you what the model predicts on average when each data instance has the value v for that feature. I ignore whether the value v makes sense for all data instances.” 
+
+  M-Plots: “Let me show you what the model predicts on average for data instances that have values close to v for that feature. The effect could be due to that feature, but also due to correlated features.” ALE plots: “Let me show you how the model predictions change in a small “window” of the feature around v for data instances in that window.” 

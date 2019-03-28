@@ -192,18 +192,43 @@ category: ai
 
 - could ai actually produce more leisure?
 
+# 20 - making the invisible visible (hans ulrich obrist)
+- need to use art to better interpret visualizations, like deepdream
+- ai as a tool, like photoshop
+- tweaking simulations is art (again in a deep-dream like way)
+- meta-objectives are important
+- art - an early alarm system to think about the future, evocative
+- design - has a clearer purpose, invisible
+  - fluxist movement - do it yourself, like flash mob, spontanous, not snobby
+- this progress exhibit - guggenheim where they hand you off to people getting older
+- art - tracks what people appreciate over time
+- everything except museums + pixels are pixels
+- marcel duchamp 1917 - urinal in art museum was worth a ton
+
 # 22 - algorists dream of objectivity (peter galison)
 - science historian
 - stories of dangerous technologies have been repeated (e.g. nanoscience, recombinant DNA)
 - review in psychology found objective models outperformed groups of human clinicians ("prediction procedures: the clinical-statistical controversy")
 - people initially started w/ drawing things
-	- then shifted to more objective measures (e.g. microscope)
-	- then slight shift away (e.g. humans outperformed algorithms at things)
+  - then shifted to more objective measures (e.g. microscope)
+  - then slight shift away (e.g. humans outperformed algorithms at things)
 - objectivity is not everything
+- art w/ a nervous system
+- animations with charcters that have goals
 
 # 23 - the rights of machines (george church)
 - machines should increasingly get rights as those of humans
 - potential for AI to make humans smarter as well
+
+# 24 - the artistic use of cybernetic beings (caroline jones)
+- how to strech people beyond our simple, selfish parameters
+- cybernetics seance art
+- more grounded in hardware
+- culture-based evolution
+- uncanny valley - if things look too humanlike, we find them creepy
+  - this doesn't happen for kids (until ~10 years)
+- neil mendoza animal-based aft reflections
+- is current ai more advanced than game of life?
 
 ---
 
@@ -225,12 +250,9 @@ category: ai
 
 # Alex Pentland: The human strategy
 
-# Hans Ulrich Obrist: Making the invisible visible: Art meets AI
 
 # Alison Gopnik: AI’s versus Four-Year-Olds 
 
-
-# Caroline Jones: The artistic use of cybernetic beings
 
 # Stephen Wolfram: Artificial intelligence and the future of civilization
 

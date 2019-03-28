@@ -1,7 +1,7 @@
 ---
 layout: notes_without_title
 section-type: notes
-title: engineering features
+title: wavelet features
 category: research
 ---
 
@@ -11,12 +11,7 @@ category: research
 
 
 - some of the researchers involved
-  - edouard oyallan
-  - joan bruna
-  - stephan mallat
-  - Helmut Bölcskei
-
-  - max welling
+  - edouard oyallan, joan bruna, stephan mallat, Helmut Bölcskei, max welling
 
 # goals
 
@@ -155,3 +150,10 @@ category: research
   - [Wavelet families of increasing order in arbitrary dimensions](https://ieeexplore.ieee.org/abstract/document/826784)
   - [Parametrizing smooth compactly supported wavelets](https://www.ams.org/journals/tran/1993-338-02/S0002-9947-1993-1107031-8/)
     - just for daubuchet
+
+## reversible/invertible models
+
+- [williams  inverting w/ autoregressive models](https://arxiv.org/abs/1806.00400)
+
+- [arora reversibility](https://arxiv.org/pdf/1511.05653.pdf) 
+- iResNet
