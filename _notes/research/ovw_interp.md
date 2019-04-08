@@ -99,7 +99,6 @@ category: research
       - project filter weights into the image space
       - pooling layers make this harder
     3. *deep visualization* - yosinski 15
-
 - penalizing activations
     - tsang interpreatble cnns
     - teaching compositionality to cnns - mask features by objects
@@ -125,6 +124,21 @@ category: research
     2. text usually uses attention maps
       - ex. karpathy et al LSTMs
       - ex. lei et al. - most relevant sentences in sentiment prediction
+- concept activation vectors
+
+    - [concept activation vectors](https://arxiv.org/abs/1711.11279)
+
+        - Given: a user-defined set of examples for a concept (e.g., ‘striped’), and random
+            examples, labeled training-data examples for the studied class (zebras) 
+        - given trained network
+        - TCAV can quantify the model’s sensitivity to the concept for that class. CAVs are learned by training a linear classifier to distinguish between the activations produced by
+            a concept’s examples and examples in any layer
+        - CAV - vector orthogonal to the classification boundary
+        - TCAV uses the derivative of the CAV direction wrt input
+    - [automated concept activation vectors](https://arxiv.org/abs/1902.03129)
+
+        - Given a set of concept discovery images, each image is segmented with different resolutions
+            to find concepts that are captured best at different sizes. (b) After removing duplicate segments, each segment is resized tothe original input size resulting in a pool of resized segments of the discovery images. (c) Resized segments are mapped to a model’s activation space at a bottleneck layer. To discover the concepts associated with the target class, clustering with outlier removal is performed. (d) The output of our method is a set of discovered concepts for each class, sorted by their importance in prediction
 - **posthoc methods**
     1. ribeiro's LIME model - local approximation to the model
     2. dosovitskiy et al 16 - train generative deconv net to create images from neuron activations
@@ -257,6 +271,8 @@ category: research
   - tells us the difference between the actual prediction and the average prediction
   - estimating: all possible sets of feature values have to be evaluated with and without the j-th feature
     - this includes sets of different sizes
+- shapley sampling value - sample instead of exactly computing
+  - quantitative input influence is similar to this...
 
 ## example-based explanations
 - influential instances - want to find important data points

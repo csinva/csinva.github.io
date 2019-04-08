@@ -78,3 +78,7 @@ category: stat
       - fundamental problem of causal inference - can't observe Y(1) and Y(0)
     - T = 1 if receive transplant else 0
   - goal: estimate $\tau = Y(1) - Y(0)$ for each person
+
+# causality ovw
+
+![Screen Shot 2019-04-07 at 7.01.55 PM](assets/Screen Shot 2019-04-07 at 7.01.55 PM.png)

@@ -232,6 +232,43 @@ category: ai
 
 ---
 
+# David Kaiser: Information for wiener, Shannon, and for Us
+
+- wiener: society can only be understood based on analyzing messages
+  - information = semantic information
+  - shannon: information = entropy (not reduction in entropy?)
+  - predictions
+    - information can not be conserved (effective level of info will be perpetually advancing)
+    - information is unsuited to being commodities
+      - can easily be replicated
+      - science started having citations in 17th century because before that people didn't want to publish
+        - turned info into currency
+      - art world has struggled w/ this
+        - 80s: appropration art - only changed title
+      - literature for a long time had no copyrights
+      - algorithms hard to patent
+  - wiener's warning: machines would dominate us only when individuals are the same
+    - style and such become more similar as we are more connected
+      - twitter would be the opposite of that
+      - amazon could make things more homogenous
+    - fashion changes consistently
+      - maybe arbitrary way to identify in/out groups
+    - comparison to markets
+    - cities seem to increase diversity - more people to interact with
+- dl should seek more semantic info not statistical info
+
+# Neil Gershenfield: Scaling
+
+- ai is more about scaling laws rathern that fashions
+- mania: success to limited domains
+- depression: failure to ill-posed problems
+- knowledge vs information: which is in the world, which is in your head?
+- problem 1: communication - important that knowledge can be replicated w/ no loss (shannon)
+- problem 2: computation - import knowledge can be stored (von Neumann)
+- problem 3: generalization - how to come up w/ rules for reasoning?
+- next: fabrication - how to make things?
+  - ex. body uses only 20 amino acids
+
 # Rodney Brooks: The inhuman mess our machines have got us into
 
 
@@ -239,9 +276,7 @@ category: ai
 
 # Chris Anderson: Gradient descent
 
-# David Kaiser: Information for Weiner, Shannon, and for Us
 
-# Neil Gershenfield: Scaling
 
 # W. Daniel Hillis: The first machine intelligences
 

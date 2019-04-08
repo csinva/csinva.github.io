@@ -67,6 +67,10 @@ category: research
   - theory paper
 - cotter_18 "[Deep learning in the wavelet domain](https://arxiv.org/pdf/1811.06115.pdf)"
 
+## wavelet style transfer
+
+- [Photorealistic Style Transfer via Wavelet Transforms>](https://arxiv.org/pdf/1903.09760v1.pdf)
+
 # helmut lab papers
 
 - wiatoski_15 "[Deep Convolutional Neural Networks Based on Semi-Discrete Frames"](https://arxiv.org/abs/1504.05487)

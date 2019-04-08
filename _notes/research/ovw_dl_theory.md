@@ -70,6 +70,7 @@ Some more concrete questions are
 - [random projections in the brain](https://www.biorxiv.org/content/biorxiv/early/2017/08/25/180471.full.pdf)….doing locality sensitive hashing (basically nearest neighbors)
 
 ##  interesting empirical papers
+
 - [modularity (“lottery ticket hypothesis”)](https://arxiv.org/abs/1803.03635) 
 - contemporary experience is that it is difficult to train small architectures from scratch, which would similarly improve training performance - **lottery ticket hypothesis**: It states that large networks that train successfully contain subnetworks that--when trained in isolation--converge in a comparable number of iterations to comparable accuracy
 - [ablation studies](https://arxiv.org/abs/1812.05687)
