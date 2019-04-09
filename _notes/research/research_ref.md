@@ -1,3 +1,5 @@
+[TOC]
+
 # misc
 
 - draw arch: http://alexlenail.me/NN-SVG/index.html
@@ -79,7 +81,7 @@
 - ref David Eaglemen article: http://discovermagazine.com/2007/aug/unsolved-brain-mysteries
 - ref Adolphs 2015, "The unsolved problems of neuroscience"
 
-# problems
+# small misc things
 
 - neuroscience is like IT - given computer, figure out how it works
 - https://grand-challenge.org/all_challenges/
@@ -123,77 +125,7 @@
 
 - model-free vs model-based
 
-# misc
 
-- theoretical neuroscience: we hope the brain does understandable things
-- emerge behaviors of groups (Iain Couzin)
-- 4 axioms of neurobiology
-  - neuron doctrine - neuron is basic unit
-  - different stereotyped cell types
-  - action potentials flow in -> out axon
-  - canonical circuits
-- what is the min descreption we need to describe a neuron?
-  - depends on which neuron, which scenario
-  - purkinje neurons may just be linear - they look like trees
-- neurons aren't point neurons
-  - dendrites - need multicompartments
-  - NMDA "spikes" - local
-  - summation between branches are more nonlinear than on the same branch
-- Hubel 82: simple cells could be skipped and replaced by dendrites
-- dendritic subunits are not locationless
-  - distal and proximal inputs combine in complex ways
-  - ![](pics/neuron_models.JPG)
-- spike firing lights up entire basal dendrites
-  - local dendritic computation can still maintain individuality despite APs
-  - basal dendrites still linear despite APs
-  - charging is slow - ignores spikes
-    - spikes help to linearize
-    - locks down IV curve of basal synapses
-  - backpropagating spike can be learning signal
-- encoding info w/ spikes
-  - rate
-  - firint time wrt ref signal (ex. oscillation)
-  - simultaineuos firing of several neurons
-  - relative timing of spikes
-- synapses only work ~50% of the time - ***like dropout***
-  - Branco...Nat rev. neurosci 2009
-  - kavalali...Nat rev neurosci 2015 
-- compare neuron with Boltzmann machines
-  - bin times each neuron 0 or 1 if firing during the bin
-  - Boltzmann machine each time step 0 or 1
-  - n-bit vector dynamics
-- some evidence for finding solns through fast sampling
-- ideas
-  - diversity of neurons + synapses, synapse has complex temporal dynamics
-  - generic firing patterns
-  - hard to easily make BNN that can do subtraction
-    - can't transmit negative numbers
-  - dynamical system (firing rate vector) evolves over time
-- boyd + chua 1985 - diversity of units may increase the computational capability of a network
-- liquid computing model
-- neural codes are highly correlated - doesn't fit w/ theory
-- synaptic plasticity + neural codes
-  - STDP / hebbian learning seem to work sometimes
-  - rewiring happens even w/out firing activity
-  - neural codes drift
-  - anything that remains invariant?
-- excite + inhibit at same time lowers gain - future EPSP will be smaller
-- corticocortical connections tend to have parallel connection that goes through thalamus
-  - fastest axons are cotex -> thalamus -> cortex
-  - connections through thalamus have almost same latency regardless of start/end area
-- let's not impose artificial constraints based on cartoon models of topics in science that we don't yet understand.
-- a lot of data is wrong
-- Marr's levels aren't very good separators
-- dynamic routing - there are infinite types of stimuli and infinite types of motor responses, can't be a simple pathway
-- similarity alignment idea: similar input activity patterns evoke similar outputs
-- oscillations tend to be traveling waves
-- http://news.berkeley.edu/2017/07/13/21-6-million-funding-from-darpa-to-build-window-into-the-brain/
-
-### vision
-
-- monkey v2 latency is less than v1!
-- vision is really about prediction
-- each layer updates predictions about previous layer
 
 ### biomechanics
 
@@ -202,30 +134,3 @@
   - ex. wipe skin when irritated in frog - works when leg at different points, leg stopped
 - idea: t-sne on neural dynamics: someone at Emory
 - spinal chord is where reflexes are, then brainstem, and cortex is quite slow
-
-# areas
-
-- Basic approaches
-  -  The problem of neural coding
-  -  Spike trains, point processes, and firing rate
-  -  Statistical thinking in neuroscience
-  -  Overview of stimulus-response function models
-  -  Theory of model fitting / regularization / hypothesis testing
-  -  Bayesian methods
-  -  Estimation of stimulus-response functionals:  regression methods, spike-triggered covariance
-  -  Variance analysis of neural response
-  -  Estimation of SNR. Coherence
-  -  Generalized Linear Models
-- Information theoretic approaches:
-  -  Information transmission rates and maximally informative dimensions
-  -  Scene statistics approaches and neural modeling
-- Techniques for analyzing multiple-unit recordings:
-  - Event sorting in electrophysiology and optical imaging
-  - Optophysiology cell detection
-  - Sparse coding/ICA methods, vanilla and methods including statistical models of nonlinear dependencies
-  - Methods for assessing functional connectivity
-  - Statistical issues in network identification
-  - Low-dimensional latent dynamical structure in network activity–Gaussian process factor analysis/newer methods
-- Models of memory, motor control and decision making:
-  - Neural integrators
-  - Attractor networks
