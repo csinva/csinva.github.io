@@ -32,6 +32,11 @@ category: ai
 
 # 2 - the limitations of opaque learning machines (judea pearl)
 
+- 3 levels of reasoning
+  - statistical
+  - causal
+  - counterfactual - lots of counterfactuals but language is good and providing lots of them
+- "explaining away" = "backwards blocking" in the conditioning literature
 - starts causal inference, but doesn't work for large systems
 - dl is more about speed than learning
 - dl is not interpretable
@@ -173,6 +178,9 @@ category: ai
 - open society is the only stable kind
 - will be hard to test / optimize for directly
 - AGI could still be deterministic
+- tension between imitation and learning? (immitation/innovation)
+- people falsely believe AGI should be able to learn on its own, like Nietzche's *causa sui*, buy humans don't do this
+- culture might make you more model-free
 
 # 12 - the artificial use of human beings (tom griffiths)
 
@@ -269,6 +277,8 @@ category: ai
 - next: fabrication - how to make things?
   - ex. body uses only 20 amino acids
 
+# Alison Gopnik: AI’s versus Four-Year-Olds
+
 # Rodney Brooks: The inhuman mess our machines have got us into
 
 
@@ -286,10 +296,10 @@ category: ai
 # Alex Pentland: The human strategy
 
 
-# Alison Gopnik: AI’s versus Four-Year-Olds 
 
 
 # Stephen Wolfram: Artificial intelligence and the future of civilization
+
 
 
 

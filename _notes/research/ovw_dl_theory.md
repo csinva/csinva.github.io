@@ -1,7 +1,7 @@
 ---
 layout: notes_without_title
 section-type: notes
-title: dl theory primer
+title: dl theory
 category: research
 ---
 
@@ -9,7 +9,8 @@ category: research
 
 [TOC]
 
-# general research ovw
+# theoretical methods
+
 DNNs display many surprising properties
 
 - surprising: [more parameters yields better generalization](https://arxiv.org/abs/1802.08760) 
@@ -23,8 +24,9 @@ Some more concrete questions are
 - what are good statistical markers of an effectively trained DNN?
 - how far apart are 2 nets?
 
+## inductive bias: gradient descent finds good minima
 
-## gradient descent finds good minima
+*DL learns solutions that generalize even though it can find many which don't due to its inductive bias.*
 
 - [gd bousquet paper](https://arxiv.org/pdf/1803.08367.pdf) 
 - [in high dims, local minima are usually saddles (ganguli)](http://papers.nips.cc/paper/5486-identifying-and-attacking-the-saddle-point-problem-in-high-dimensional-non-convex-optimization)
@@ -39,25 +41,58 @@ Some more concrete questions are
 - ex. savarese 2019
   - infinite width relu net 1-d input
   - weight decay minimization minimizes derivative of TV
+- [implicit bias towards simpler models](https://arxiv.org/abs/1805.08522)
+- [How do infinite width bounded norm networks look in function space?](https://arxiv.org/pdf/1902.05040.pdf) (savarese...srebro 2019)
+  - minimal norm fit for a sample is given by a linear spline interpolation (2 layer net)
 
-## generalization
+## expressiveness: what can a dnn repreresent?
 
+- [complexity of linear regions in deep networks](https://arxiv.org/pdf/1901.09021.pdf)
+- [Bounding and Counting Linear Regions of Deep Neural Networks](https://arxiv.org/pdf/1711.02114.pdf)
+- [On the Expressive Power of Deep Neural Networks](https://arxiv.org/pdf/1606.05336.pdf)
+
+
+
+## complexity + generalization: dnns are low-rank / redundant parameters
+
+- [predicting params](http://papers.nips.cc/paper/5025-predicting-parameters-in-deep-learning): weight matrices are low-rank, decompose into UV by picking a U
+- [pruning neurons](https://arxiv.org/abs/1507.06149)
+- [circulant projection](https://www.cv-foundation.org/openaccess/content_iccv_2015/papers/Cheng_An_Exploration_of_ICCV_2015_paper.pdf)
+- [rethinking the value of pruning](https://arxiv.org/pdf/1810.05270.pdf): pruning and training from scratch, upto 30% size
+- [Lottery ticket](https://openreview.net/pdf?id=rJl-b3RcF7): pruning and training from initial random weights, upto 1% size ([followup](https://arxiv.org/abs/1903.01611))
+- [rank of relu activations](https://arxiv.org/pdf/1810.03372.pdf)
+- [random weights are good](https://arxiv.org/pdf/1504.08291.pdf)
+- [singular values of conv layers](https://arxiv.org/pdf/1805.10408.pdf)
+- [T-Net: Parametrizing Fully Convolutional Nets with a Single High-Order Tensor](https://arxiv.org/abs/1904.02698)
 - generalization
   - [size of the weights is more important](http://eprints.qut.edu.au/43927/)
-  - [Reconciling modern machine learning and the bias-variance trade-off](https://arxiv.org/abs/1812.11118)
-  - Nati Srebro papers
+
+## double descent: bias + variance in high dims?
+
+- [Reconciling modern machine learning and the bias-variance trade-off](https://arxiv.org/abs/1812.11118) (belkin et al. 2018)
+- [Surprises in High-Dimensional Ridgeless Least Squares Interpolation](https://arxiv.org/abs/1903.08560)
+  - main result of limiting risk, where $\gamma \in (0, \infty)$:
+    - $R(\gamma) = \begin{cases} \sigma^2 \frac{\gamma}{1-\gamma} & \gamma < 1\\||\beta||_2^2(1 - \frac 1 \gamma) + \sigma^2 \frac{1} {\gamma - 1} & \gamma > 1\end{cases}$
+- [linear regression depends on data distr.](https://arxiv.org/abs/1802.05801)
+- [two models of double descent for weak features](https://arxiv.org/abs/1903.07571)
+- [double descent curve](https://openreview.net/forum?id=HkgmzhC5F7)
+- [boosting w/ l2 loss](https://www.tandfonline.com/doi/pdf/10.1198/016214503000125?casa_token=5OE5LZe_mIcAAAAA:-4DdXLa4A6SeXnguyYv1S3bfIbRXrSb1qojj_UkGZpmbNHqjkWMojm0al5xx2yz-7ABcfDXmdvBeCw)
+- [effective degrees of freedom](https://web.stanford.edu/~hastie/Papers/df_paper_LJrev6.pdf)
+- [high-dimensional ridge](https://projecteuclid.org/euclid.aos/1519268430)
 
 ## kernels
 
-- [kernels](https://en.wikipedia.org/wiki/Kernel_method#cite_note-4): kernel memorizes points then uses dists between points to classify
+- [kernels wiki](https://en.wikipedia.org/wiki/Kernel_method#cite_note-4): kernel memorizes points then uses dists between points to classify
 - [learning deep kernels](https://arxiv.org/pdf/1811.08357v1.pdf)
 - [learning data-adaptive kernels](https://arxiv.org/abs/1901.07114)
 - [kernels that mimic dl](https://cseweb.ucsd.edu/~saul/papers/nips09_kernel.pdf)
 - [kernel methods](http://papers.nips.cc/paper/3628-kernel-methods-for-deep-learning.pdfs)
-
+- [understanding the neural tangent kernel](https://arxiv.org/pdf/1904.11955.pdf) (arora et al. 2019)
 
 ## nearest neighbor comparisons
+
 - [weighted interpolating nearest neighbors can generalize well (belkin...mitra 2018)](http://papers.nips.cc/paper/7498-overfitting-or-perfect-fitting-risk-bounds-for-classification-and-regression-rules-that-interpolate)
+- [Statistical Optimality of Interpolated Nearest Neighbor Algorithms](https://arxiv.org/abs/1810.02814)
 - [nearest neighbor comparison](https://arxiv.org/pdf/1805.06822.pdf)
 - [nearest embedding neighbors](https://arxiv.org/pdf/1803.04765.pdf)
 
@@ -69,10 +104,12 @@ Some more concrete questions are
 - [hierarchical sparse coding for images](https://pdfs.semanticscholar.org/9636/d8aedd476ef19c762923119750aec95bf8ca.pdf) (can’t just repeat sparse coding, need to include input again)
 - [random projections in the brain](https://www.biorxiv.org/content/biorxiv/early/2017/08/25/180471.full.pdf)….doing locality sensitive hashing (basically nearest neighbors)
 
+# empirical studies
+
 ##  interesting empirical papers
 
 - [modularity (“lottery ticket hypothesis”)](https://arxiv.org/abs/1803.03635) 
-- contemporary experience is that it is difficult to train small architectures from scratch, which would similarly improve training performance - **lottery ticket hypothesis**: It states that large networks that train successfully contain subnetworks that--when trained in isolation--converge in a comparable number of iterations to comparable accuracy
+  - contemporary experience is that it is difficult to train small architectures from scratch, which would similarly improve training performance - **lottery ticket hypothesis**: large networks that train successfully contain subnetworks that--when trained in isolation--converge in a comparable number of iterations to comparable accuracy
 - [ablation studies](https://arxiv.org/abs/1812.05687)
 - [deep learning is robust to massive label noise](https://arxiv.org/pdf/1705.10694.pdf)
 
@@ -90,11 +127,89 @@ Some more concrete questions are
   - use PCA to find important directions (ex. sample w at each step, pca to find most important directions of variance)
 
 ## misc theoretical areas
+
 - deep vs. shallow [rvw](http://cbmm.mit.edu/sites/default/files/publications/CBMM-Memo-058v5.pdf)
 - [probabilistic framework](https://www.nari.ee.ethz.ch/commth//pubs/files/deep-2016.pdf)
 - information bottleneck: tishby paper + david cox follow-up
 - [manifold learning](https://www.deeplearningbook.org/version-2015-10-03/contents/manifolds.html)
   - [random manifold learning paper](https://ieeexplore.ieee.org/document/7348689/) 
+
+## comparing representations
+
+- [shared representations across nets](https://arxiv.org/abs/1811.11684)
+- [comparing across random initializations](https://arxiv.org/abs/1810.11750)
+
+
+
+## simple papers
+
+- [rvw of random features approach](https://arxiv.org/pdf/1904.00687.pdf)
+- [similar nets learn different weights](http://proceedings.mlr.press/v44/li15convergent.pdf)
+
+
+
+## adam vs sgd papers
+
+- svd parameterization rnn paper: [inderjit paper](https://arxiv.org/pdf/1803.09327.pdf)
+    - original adam paper: [kingma 15](https://arxiv.org/abs/1412.6980)
+    - [regularization via SGD](https://arxiv.org/pdf/1806.00900.pdf) (layers are balanced: du 18)
+    - marginal value of adaptive methods: [recht 17](http://papers.nips.cc/paper/7003-the-marginal-value-of-adaptive-gradient-methods-in-machine-learning)
+    - comparing representations: [svcca](https://arxiv.org/abs/1706.05806)
+    - [montanari 18](https://arxiv.org/pdf/1804.06561.pdf) pde mean field view
+    - [normalized margin bounds](http://papers.nips.cc/paper/7204-spectrally-normalized-margin-bounds-for-neural-networks)
+
+## memorization background
+
+- [memorization on single training example](https://arxiv.org/abs/1902.04698v2)
+- [memorization in dnns](https://arxiv.org/pdf/1706.05394.pdf)
+  
+- “memorization” as the behavior exhibited by DNNs trained on noise, and conduct a series of experiments that contrast the learning dynamics of DNNs on real vs. noise data
+  - look at critical samples - adversarial exists nearby
+  
+- networks that generalize well have deep layers that are approximately linear with respect to batches of similar inputs
+  - networks that memorize their training data are highly non-linear with respect to similar inputs, even in deep layers
+  - expect that with respect to a single class, deep layers are approximately linear
+  
+- [example forgetting paper](https://openreview.net/forum?id=BJlxm30cKm)
+  
+- [secret sharing](https://arxiv.org/abs/1802.08232)
+
+## probabilistic inference
+
+- multilayer idea
+- [equilibrium propagation](https://www.frontiersin.org/articles/10.3389/fncom.2017.00024/full)
+
+## architecture search background
+
+- ideas: nested search (retrain each time), joint search (make arch search differentiable), one-shot search (train big net then search for subnet)
+  - [asap: online pruning + training](https://arxiv.org/pdf/1904.04123.pdf)
+  - [rvw](https://arxiv.org/abs/1904.00438)
+  - [original (dumb) strategy](https://arxiv.org/abs/1611.01578)
+  - [progressive nas](http://openaccess.thecvf.com/content_ECCV_2018/papers/Chenxi_Liu_Progressive_Neural_Architecture_ECCV_2018_paper.pdf)
+  - [Efficient Neural Architecture Search via Parameter Sharing](https://arxiv.org/abs/1802.03268) - sharing params
+  - [randomly replace layers with the identity when training](https://link.springer.com/chapter/10.1007/978-3-319-46493-0_39)
+  - [learning both weights and connections](https://pdfs.semanticscholar.org/1ff9/a37d766e3a4f39757f5e1b235a42dacf18ff.pdf)
+  - [single-path one-shot search](https://arxiv.org/abs/1904.00420)
+
+## trust scores background
+
+- papers using embeddings to generate confidences
+- [been kim trust paper](http://papers.nips.cc/paper/7798-to-trust-or-not-to-trust-a-classifier.pdf) - trust score = density over some set of nearest neighbors
+  - [papernot knn](https://arxiv.org/abs/1803.04765)
+  - [distance-based confidence scores](https://arxiv.org/pdf/1709.09844.pdf)
+  - [deep kernel knn](https://arxiv.org/pdf/1811.02579.pdf)
+- lots of papers on confidence calibration (transforms outputs into probabilities)
+
+  - [get confidences before overfitting](https://arxiv.org/abs/1805.08206)
+    - 2 popular things: max margin, entropy of last layer
+    - [add an extra output for uncertainty](https://arxiv.org/abs/1810.01861)
+    - [learn to predict confidences](https://arxiv.org/pdf/1802.04865.pdf)
+- also methods on predict with rejection possibility
+
+  - [contextual outlier detection](https://arxiv.org/abs/1711.10589)
+  - [ensembling background](https://machinelearningmastery.com/ensemble-methods-for-deep-learning-neural-networks/)
+
+  - [snapshot ensembles](https://arxiv.org/abs/1704.00109)
 
 # basics
 

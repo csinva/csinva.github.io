@@ -15,7 +15,7 @@ typora-copy-images-to: ./assets/linear_algebra
 ## notation
 
 - $x \preceq y$ - these are vectors and x is less than y elementwise
-- $X \preceq Y​$ - matrices, $Y-X​$ is PSD
+- $X \preceq Y$ - matrices, $Y-X$ is PSD
   - $v^TXv \leq v^TYv \:\: \forall v$
 
 ## linearity
@@ -74,13 +74,13 @@ typora-copy-images-to: ./assets/linear_algebra
 
 # matrix calc
 
-- overview: imagine derivative $f(x + \Delta)​$
+- overview: imagine derivative $f(x + \Delta)$
 - function f: $\text{anything} \to \mathbb{R}^m$ 
-    - *gradient* vector $\nabla_A f(\mathbf{A})​$- partial derivatives with respect to each element of A (vector or matrix)
+    - *gradient* vector $\nabla_A f(\mathbf{A})$- partial derivatives with respect to each element of A (vector or matrix)
     - gradient = $\frac{\partial f}{\partial A}^T$
 - these next 2 assume numerator layout (numerator-major order, so numerator constant along rows)
 - function f: $\mathbb{R}^n \to \mathbb{R}^m$ 
-    - *Jacobian matrix*: $\mathbf J = \begin{bmatrix}    \dfrac{\partial \mathbf{f}}{\partial x_1} & \cdots & \dfrac{\partial \mathbf{f}}{\partial x_n} \end{bmatrix}= \begin{bmatrix}    \dfrac{\partial f_1}{\partial x_1} & \cdots & \dfrac{\partial f_1}{\partial x_n}\\    \vdots & \ddots & \vdots\\    \dfrac{\partial f_m}{\partial x_1} & \cdots & \dfrac{\partial f_m}{\partial x_n} \end{bmatrix}$ - this is dim(f) x dim(x)
+    - *Jacobian matrix*: $$\mathbf J = \begin{bmatrix}    \dfrac{\partial \mathbf{f}}{\partial x_1} & \cdots & \dfrac{\partial \mathbf{f}}{\partial x_n} \end{bmatrix}= \begin{bmatrix}    \dfrac{\partial f_1}{\partial x_1} & \cdots & \dfrac{\partial f_1}{\partial x_n}\\   \vdots & \ddots & \vdots\\    \dfrac{\partial f_m}{\partial x_1} & \cdots & \dfrac{\partial f_m}{\partial x_n} \end{bmatrix}$$ - this is dim(f) x dim(x)
 - function f: $\mathbb{R}^n \to \mathbb{R}$ 
     - 2nd derivative is *Hessian* matrix
       - $\bold H = \nabla^2 f(x)_{ij} = \frac{\partial^2 f(x)}{\partial x_i \partial x_j} = \begin{bmatrix}  \dfrac{\partial^2 f}{\partial x_1^2} & \dfrac{\partial^2 f}{\partial x_1\,\partial x_2} & \cdots & \dfrac{\partial^2 f}{\partial x_1\,\partial x_n} \\[2.2ex]  \dfrac{\partial^2 f}{\partial x_2\,\partial x_1} & \dfrac{\partial^2 f}{\partial x_2^2} & \cdots & \dfrac{\partial^2 f}{\partial x_2\,\partial x_n} \\[2.2ex]  \vdots & \vdots & \ddots & \vdots \\[2.2ex]  \dfrac{\partial^2 f}{\partial x_n\,\partial x_1} & \dfrac{\partial^2 f}{\partial x_n\,\partial x_2} & \cdots & \dfrac{\partial^2 f}{\partial x_n^2}\end{bmatrix}$
@@ -106,9 +106,10 @@ typora-copy-images-to: ./assets/linear_algebra
 
 ## vector norms
 
-- *$L_p-$norms*: $||x||_p = (\sum_{i=1}^n |x_i|^p)^{1/p}$
+- **$L_p-$norms**: $||x||_p = (\sum_{i=1}^n |x_i|^p)^{1/p}$
   - $L_0$ norm - number of nonzero elements (this is not actually a norm!)
   - $||x||_1 = \sum |x_i|$
+  - $||x||_2$ - Euclidean norm
   - $||x||_\infty = \max_i |x_i|$ - also called *Cheybyshev norm*
 - *quadratic norms*
   - *P-quadratic norm*: $||x||_P = (x^TPx)^{1/2} = || P^{1/2} x ||_2$ where $P \in S_{++}^n$
@@ -121,15 +122,22 @@ typora-copy-images-to: ./assets/linear_algebra
 
 ## matrix norms
 
-- over elements
-  - *frobenius norm* - (like $l_2$): $||X||_F^2 = \sqrt {\sum_{ij} X_{ij}^2} = \sqrt{\sum_i \sigma_i^2}$
-  - sum-absolute-value norm (like $l_1​$) 
-  - maximum-absolute-value norm (like $l_\infty​$)
+- schatten p-norms: $||X||_p = (\sum \sigma^p_i(A) )^{1/p}$ - note this is nice for organization but this p is never really mentioned
+  - p=1: **nuclear norm** = **trace norm**: $||X||_* = \sum_i \sigma_i$
+  - p=2: **frobenius norm** = **euclidean norm**: $||X||_F^2 = \sqrt {\sum_{ij} X_{ij}^2} = \sqrt{\sum_i \sigma_i^2}$
+		- like vector $L_2$ norm
+  - p=$\infty$: **spectral norm** = **$\mathbf{L_2}$-norm** (of a matrix) = $||X||_2 = \sigma_\text{max}(X) $
+
+
+- entrywise norms
+
+  - sum-absolute-value norm (like vector $l_1$) 
+  - maximum-absolute-value norm (like vector $l_\infty$)
 - *operator norm*
   - let $||\cdot||_a$ and $|| \cdot ||_b$ be vector norms
   - operator norm $||X||_{a,b} = sup\{ ||Xu||_a \: | \: ||u||_b \leq 1 \}$
      - represents the maximum stretching that X does to a vector u
-  - *spectral norm* = *$L_2$-norm* (of a matrix) = $||X||_2 = \sigma_\text{max}(X) = [\lambda_{max} (X^TX)]^{1/2}$
+  - if using p-norms, can get Frobenius and some others
 
 # eigenstuff
 
@@ -157,7 +165,7 @@ typora-copy-images-to: ./assets/linear_algebra
   - all eigenvalues are nonnegative
   - if $\forall x \in R^n, x^TAx \geq 0$ then A is positive semi definite (PSD)
     - like it curves up
-    - Note: $x^TAx = \sum_{i, j} x_iA_{i, j} x_j​$
+    - Note: $x^TAx = \sum_{i, j} x_iA_{i, j} x_j$
   - if $\forall x \in R^n, x^TAx > 0$ then A is positive definite (PD)
     - PD $\to$ full rank, invertible
   - PSD + symmetric $\implies$ can be written as *Gram matrix* $G = X^T X $
@@ -207,7 +215,7 @@ typora-copy-images-to: ./assets/linear_algebra
   - *condition number* of invertible nxn matrix = $\sigma_{max} / \sigma_{min}$
   - $A=U\Sigma V^T = u_1 \sigma_1 v_1^T + ... + u_r \sigma_r v_r^T$
     - we can throw away columns corresponding to small $\sigma_i$
-  - pseudoinverse $A^+ = V \Sigma^+ U^T$h
+  - pseudoinverse $A^+ = V \Sigma^+ U^T$
 
 ##  strang 5.3 - difference eqs and power $A^k$
 

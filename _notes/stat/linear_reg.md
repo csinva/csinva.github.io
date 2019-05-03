@@ -31,6 +31,7 @@ category: stat
 
   1. set deriv and solve
   2. use projection matrix H to show HY is proj of Y onto R(X)
+     1. the projection matrix maps the responses to the predictions: $\hat{y} = Hy$
 
   - define projection (hat) matrix $H = X(X^TX)^{-1} X^T$
     - show $\|\|Y-X \theta\|\|^2 \geq \|\|Y - HY\|\|^2$

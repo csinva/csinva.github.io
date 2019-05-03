@@ -139,7 +139,8 @@ category: stat
   - bias types
     - *preference bias* = *search bias* - models can search entire space (e.g. NN, decision tree)
     - *restriction bias* = *language bias* - models that can't express entire space (e.g. linear)
-- **consistent**: $\hat{\theta_n} \to \theta$
+- **consistent**: $\hat{\theta_n} \to some \: value$
+  - basically it converges to a number (can still be biased)
 - **bias/variance trade-off**
   - MSE - mean squared error  - $E[(\hat{\theta}-\theta)^2]$ = $V(\hat{\theta})+[E(\hat{\theta})-\theta]^2$
     - ![mse](assets/stat/mse.png)
@@ -155,7 +156,7 @@ category: stat
     - $log \: L(\theta)= \ell(\theta) = \sum log P(X_i\vert\theta)$
     - to maximize, set $\frac{\partial \ell (\theta)}{\partial \theta} = 0$
 - **fisher information** $I(\theta)=V[\frac{\partial}{\partial\theta}ln(f[x;\theta])]$ (for n samples, multiply by n)
-    - higher info $\implies​$ lower estimation error
+    - higher info $\implies$ lower estimation error
 
 # overview - J. 5
 
@@ -221,10 +222,10 @@ category: stat
 ## model selection / averaging
 
 - bayesian
-  - for model m, want to maximize $p(m\vert x) = \frac{p(x\vert m) p(m)}{p(x)}​$
+  - for model m, want to maximize $p(m\vert x) = \frac{p(x\vert m) p(m)}{p(x)}$
     - usually, just take $m$ that maximizes $p(m\vert x)$
     - *model averaging*: $p(x_{new}|x) = \int dm \int d\theta \: p(x_{new}|\theta, m) p(\theta|x, m) p(m|x)$
-    - otherwise integrate over $\theta, m​$ - *model averaging*
+    - otherwise integrate over $\theta, m$ - *model averaging*
 - frequentist
   - can't use MLE - will always prefer more complex models
   - use some criteria such as KL-divergence, AIC, cross-validationt

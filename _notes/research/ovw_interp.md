@@ -1,16 +1,19 @@
 ---
 layout: notes_without_title
 section-type: notes
-title: interp ref
+title: interp
 category: research
 ---
 
-**some papers I like involving interpretable machine learning and some notes from the [interpretable ml book](https://christophm.github.io/interpretable-ml-book/)**
+**some papers I like involving interpretable machine learning, references from this [interpretable ml review](https://arxiv.org/abs/1901.04592), and some notes from the [interpretable ml book](https://christophm.github.io/interpretable-ml-book/)**
 
 [TOC]
 
 # misc new papers
 
+- [BRIDGING ADVERSARIAL ROBUSTNESS AND GRADIENT INTERPRETABILITY](https://arxiv.org/abs/1903.11626)
+- [Evaluating Feature Importance Estimates](https://arxiv.org/abs/1806.10758)
+- [Quantifying Interpretability of Arbitrary Machine Learning Models Through Functional Decomposition](https://arxiv.org/pdf/1904.03867.pdf)
 - [Harnessing Deep Neural Networks with Logic Rules](https://arxiv.org/pdf/1603.06318.pdf)
 - Exploring Principled Visualizations for Deep Network Attributions - viz of attribution can be misleading (might want to clip, etc.)
   - layer separation - want to have both image and attributions on top of it 
@@ -293,20 +296,16 @@ category: research
 
 # model-agnostic
 
-- **pdp plots** - marginals
-
+- **pdp plots** - marginals (force value of plotted var to be what you want it to be)
 - separate into **ice plots**  - marginals for instance
 
   - average of ice plots = pdp plot
   - sometimes these are centered, sometimes look at derivative
-
 - both pdp ice suffer from many points possibly not being real
-
 - possible solution: **Marginal plots M-plots** (bad name - uses conditional, not marginal)
 
   - only use points conditioned on certain variable
   - problem: this bakes things in (e.g. if two features are correlated and only one important, will say both are important)
-
 - **ALE-plots** - take points conditioned on value of interest, then look at differences in predictions around a window
 
   - this gives pure effect of that var and not the others
@@ -314,8 +313,36 @@ category: research
   - doesn't give you individual curves
   - recommended very highly by the book...
   - they integrate as you go...
-
 - summary: To summarize how each type of plot (PDP, M, ALE) calculates the effect of a feature at a certain grid value v:
-   Partial Dependence Plots: “Let me show you what the model predicts on average when each data instance has the value v for that feature. I ignore whether the value v makes sense for all data instances.” 
+   - Partial Dependence Plots: “Let me show you what the model predicts on average when each data instance has the value v for that feature. I ignore whether the value v makes sense for all data instances.” 
+- M-Plots: “Let me show you what the model predicts on average for data instances that have values close to v for that feature. The effect could be due to that feature, but also due to correlated features.” 
+  - ALE plots: “Let me show you how the model predictions change in a small “window” of the feature around v for data instances in that window.” 
 
-  M-Plots: “Let me show you what the model predicts on average for data instances that have values close to v for that feature. The effect could be due to that feature, but also due to correlated features.” ALE plots: “Let me show you how the model predictions change in a small “window” of the feature around v for data instances in that window.” 
+
+
+# fairness
+
+- good introductory [blog](https://towardsdatascience.com/a-tutorial-on-fairness-in-machine-learning-3ff8ba1040cb)
+- causes of bias
+  - skewed sample
+  - tainted examples
+  - selectively limited features
+  - sample size disparity
+  - proxies of sensitive attributes
+- definitions
+  - Unawareness - don't show sensitive attributes
+    - flaw: other attributes can still signal for it
+  - group fairness
+    - Demographic Parity - means for each group should be approximately equal
+      - flaw: means might not be equal
+    - Equalized Odds - predictions are independent of group given label
+      - equality of opportunity: $p(\hat y=1|y=1)$ is same for both groups
+    - Predictive Rate Parity - Y is independent of group given prediction
+  - Individual Fairness
+    - similar individuals should be treated similarly
+  - Counterfactual fairness
+    - replace attributes w/ flipped values
+- fair algorithms
+  - preprocessing - remove sensitive information
+  - optimization at training time - add regularization
+  - postprocessing - change thresholds to impose fairness

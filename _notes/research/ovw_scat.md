@@ -1,7 +1,7 @@
 ---
 layout: notes_without_title
 section-type: notes
-title: wavelet features
+title: scattering transform
 category: research
 ---
 

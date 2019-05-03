@@ -332,9 +332,9 @@ category: neuro
 - dimensions
 	- spatial res.
 	- temporal res.
-	- depth
-	- toxicity
-	- spatial field
+	- depth - how deep in can you image
+	- toxicity - does it damage the cells
+	- spatial field - how big a region can you see
 	- temporal duration (how long it can stay in)
 	- invasiveness
 

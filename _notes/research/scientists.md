@@ -52,6 +52,13 @@
 - *Jack Gallant* - v4, fmri
 - *Bin Yu* - model consistency
 - *Sebastian Seung* - connectomes
+- *Surya Ganguli* - Stanford
+- *David Cox* - MIT/IBM
+- *Jascha Sohl-Dickstein* - Google
+- kinda good
+  - Haim Sompolinksy
+- charlest gilbert - rockefeller
+  - studies spatial distribution of visual cortex
 
 # experimental
 - *Susumu Tonegawa* - memory
