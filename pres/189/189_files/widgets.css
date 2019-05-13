@@ -1,0 +1,287 @@
+
+.ticks {
+  font: 10px sans-serif;
+}
+
+.track,
+.track-inset,
+.track-overlay {
+  stroke-linecap: round;
+
+}
+
+.track {
+  stroke: #e6e6e6;
+  stroke-opacity: 0.5;
+  stroke-width: 2px;
+}
+
+.track-inset {
+  stroke: #e6e6e6;
+  stroke-width: 5px;
+
+}
+
+.track-overlay {
+  pointer-events: stroke;
+  stroke-width: 50px;
+  stroke: rgba(0,0,0,0)
+}
+
+.handle {
+  fill: #fff;
+  fill-opacity: 0.2;
+  stroke: #000;
+  stroke-opacity: 0.5;
+  stroke-width: 1.5px;
+}
+
+.figtext path{
+    stroke: black;
+    stroke-width:1;
+    fill: none;
+}
+
+/* Tooltip Styles */
+
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 5px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+  pointer-events: none;
+  font-size: 10px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  pointer-events: none;
+}
+
+/* Northward tooltips */
+.d3-tip.n:after {
+  content: "\25BC";
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+  text-align: center;
+}
+
+/* Eastward tooltips */
+.d3-tip.e:after {
+  content: "\25C0";
+  margin: -4px 0 0 0;
+  top: 50%;
+  left: -8px;
+}
+
+/* Southward tooltips */
+.d3-tip.s:after {
+  content: "\25B2";
+  margin: 0 0 1px 0;
+  top: -8px;
+  left: 0;
+  text-align: center;
+}
+
+/* Westward tooltips */
+.d3-tip.w:after {
+  content: "\25B6";
+  margin: -4px 0 0 -1px;
+  top: 50%;
+  left: 100%;
+}
+
+#eigenFeatures .stage {
+  position: relative;
+  margin-bottom: 24px;
+}
+#eigenFeatures .waveform {
+  position: absolute;
+  opacity: 0.7;
+}
+#eigenFeatures .pointer {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  top: 36px;
+  left: -48px;
+}
+#eigenFeatures svg {
+  z-index: 1;
+  position: absolute;
+  margin-left:auto;
+  margin-right:auto;
+  width: 920px;
+
+}
+#eigenFeatures svg .labels {
+  font-size: 12px;
+  fill-opacity: 0.5;
+}
+#eigenFeatures figcaption {
+  text-align: center;
+}
+#eigenFeatures .background {
+  fill: rgb(240, 240, 245);
+  fill-opacity: 0.1;
+  border:solid 1px black;
+}
+#eigenFeatures .audio-background {
+  fill: none;
+  stroke: black;
+  stroke-opacity: 0.3;
+}
+#eigenFeatures .cell .node {
+  fill: white;
+  fill-opacity: 0.5;
+  stroke: black;
+  stroke-width: 1.5px;
+  stroke-opacity: 0.5;
+}
+#eigenFeatures .cell:hover .node {
+  stroke-opacity: 1;
+  fill:#7570b3;
+  stroke:#7570b3;
+  stroke-width: 2.0px;
+}
+#eigenFeatures .cell .shadow {
+  fill: black;
+  fill-opacity: 0.07;
+}
+#eigenFeatures .cell text {
+  font-size: 13px;
+  fill-opacity: 0.5;
+  text-anchor: middle;
+  alignment-baseline: middle;
+}
+#eigenFeatures .cell text.label {
+  font-size: 10px;
+  /*fill-opacity: 0.8;*/
+  text-anchor: middle;
+  alignment-baseline: middle;
+}
+
+#eigenFeatures .link-group {
+  transition: opacity, 0.3s, linear;
+}
+#eigenFeatures .link-group .node-highlight {
+  transition: stroke-opacity, 0.3s, linear;
+  stroke: black;
+  stroke-opacity: 0;
+  fill: none;
+}
+#eigenFeatures .link-group:hover .node-highlight {
+  stroke-opacity: 1;
+}
+#eigenFeatures .link {
+  fill: none;
+  stroke: black;
+  stroke-width: 1.5px;
+  pointer-events: none;
+}
+#eigenFeatures .arrow {
+  stroke: black;
+  stroke-opacity: 0.3;
+}
+#eigenFeatures .cell:last-child .arrow:first-of-type {
+  display: none;
+}
+#eigenFeatures .tick {
+  stroke: black;
+  stroke-opacity: 0.2;
+}
+
+
+.figtext{
+  font-size:12px;
+  line-height:18px;
+  font-family:Helvetica;
+  font-weight: bold;
+}
+
+.figtext2{
+  font-size:13px;
+  line-height:18px;
+  font-family:Helvetica;
+  text-align:left;
+  color:gray;
+}
+
+
+.annotatetext{
+  font-size:12px;
+  line-height:18px;
+  font-family:Helvetica;
+  color:gray;
+}
+
+.annotatetext path{
+    stroke: black;
+    stroke-width:1;
+    fill: none;
+}
+
+
+.ticktext{
+  font-size:12px;
+  line-height:18px;
+  font-family:Helvetica;
+  text-align:right;
+}
+
+.mycaptiontext{
+  font-size:15px;
+  line-height:22px !important;
+  font-family:Open Sans;
+  text-align:right;
+  color:gray;
+}
+
+
+.links line {
+  stroke: #000;
+  stroke-opacity: 1;
+}
+
+.nodes circle {
+  stroke: #000;
+  stroke-width: 1px;
+}
+.axis line, .axis path {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.annotations path{
+  fill: none;
+  stroke: black;
+}
+.annotations g:hover circle{
+  stroke: red;
+}
+.annotations g:hover text{
+  fill: red;
+}
+
+.draggable-number > .katex {
+  /*hsl(24, 100%, 50%)*/
+  border-bottom: dotted 1px #bbb;
+  /*color: hsl(24, 100%, 45%);*/
+  padding-bottom: 4px;
+}
+
+.draggable-number:hover > .katex {
+  color: hsl(24, 100%, 45%);
+  border-bottom: dotted 1px hsl(24, 100%, 50%);
+}

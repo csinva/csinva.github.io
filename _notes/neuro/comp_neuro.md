@@ -9,7 +9,25 @@ category: neuro
 {:toc}
 ---
 
+# modern research
+
+- navigation
+  - cognitive maps (tolman 1940s) - idea that rats in mazes learn spatial maps
+  - **place cells** (o'keefe 1971) - in the hippocampus - fire to indicate one's current location
+    - remap to new locations
+  - **grid cells** (moser & moser 2005) - in the entorhinal cotex (provides inputs to the hippocampus) - not particular locations but rather hexagonal coordinate system
+    - grid cells fire if the mouse is in any location at the vertex (or center) of one of the hexagons
+      - ![Screen Shot 2019-05-10 at 1.25.02 PM](assets/Screen Shot 2019-05-10 at 1.25.02 PM.png)
+    - there are grid cells with larger/smaller hexagons, different orientations, different offsets
+  - can look for grid cells signature in fmri: https://www.nature.com/articles/nature08704
+  - other places with grid cell-like behavior
+    - eye movement task
+    - some evidence for "time cells" like place cells for time
+    - sound frequency task https://www.nature.com/articles/nature21692
+    - 2d "bird space" [task](https://science.sciencemag.org/content/352/6292/1464.full?ijkey=sXaWNaNjkIcik&keytype=ref&siteid=sci)
+
 # 1- introduction
+
 ### 1.1 - overview
 - three types
   1. *descriptive* brain model - encode / decode external stimuli

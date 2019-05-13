@@ -5,7 +5,7 @@ title: dl theory
 category: research
 ---
 
-*Deep learning theory is a complex emerging field - this post contains links displaying some different new research directions*
+*Deep learning theory is a complex emerging field - this post contains links displaying some different interesting research directions*
 
 [TOC]
 
@@ -24,6 +24,17 @@ Some more concrete questions are
 - what are good statistical markers of an effectively trained DNN?
 - how far apart are 2 nets?
 
+## intuitive explanations
+
+- composition allows an approximation of a function through level sets (split it up and approximate on these sets) - Zuowei Shen ([talk](http://www.ipam.ucla.edu/programs/workshops/workshop-iii-geometry-of-big-data/?tab=schedule), [slides](../../../drive/papers/dl_theory/shen_19_composition_dl_slides.pdf)) 
+  - composition operation allows an approximation of a function f through level sets of f --
+  - one divides up the range of f into equal intervals and approximate the functions on these sets 
+  - this makes a lot sense and might really explain why composition is so effective --
+- how do the weights in each layer help this approximation to be more effective?
+  - here are some thoughts -- If other layers are like the first layer, the weights "whiten" or make the inputs more independent or random projections -- that is basically finding PC directions for low-rank inputs. 
+  - Are the outputs from later layers more or less low - rank?
+  - I wonder how this "whitening" helps level set estimation...
+
 ## inductive bias: gradient descent finds good minima
 
 *DL learns solutions that generalize even though it can find many which don't due to its inductive bias.*
@@ -31,19 +42,20 @@ Some more concrete questions are
 - [gd bousquet paper](https://arxiv.org/pdf/1803.08367.pdf) 
 - [in high dims, local minima are usually saddles (ganguli)](http://papers.nips.cc/paper/5486-identifying-and-attacking-the-saddle-point-problem-in-high-dimensional-non-convex-optimization)
 - [srebro understanding over-parameterization	](https://arxiv.org/abs/1805.12076) 
-- ex. gunasekar et al 2017: unconstrained matrix completion
-  - grad descent on U, V yields min nuclear norm solution
-- ex. [soudry et al 2017](http://www.jmlr.org/papers/volume19/18-188/18-188.pdf)
-  - sgd on logistic reg. gives hard margin svm
-  - deep linear net gives the same thing - doesn't actually changed anything
-- ex. [gunaskar, 2018](http://papers.nips.cc/paper/8156-implicit-bias-of-gradient-descent-on-linear-convolutional-networks)
-  - linear convnets give smth better - minimum l1 norm in discrete fourier transform 
-- ex. savarese 2019
-  - infinite width relu net 1-d input
-  - weight decay minimization minimizes derivative of TV
+  - ex. gunasekar et al 2017: unconstrained matrix completion
+    - grad descent on U, V yields min nuclear norm solution
+  - ex. [soudry et al 2017](http://www.jmlr.org/papers/volume19/18-188/18-188.pdf)
+    - sgd on logistic reg. gives hard margin svm
+    - deep linear net gives the same thing - doesn't actually changed anything
+  - ex. [gunaskar, 2018](http://papers.nips.cc/paper/8156-implicit-bias-of-gradient-descent-on-linear-convolutional-networks)
+    - linear convnets give smth better - minimum l1 norm in discrete fourier transform 
+  - ex. savarese 2019
+    - infinite width relu net 1-d input
+    - weight decay minimization minimizes derivative of TV
 - [implicit bias towards simpler models](https://arxiv.org/abs/1805.08522)
 - [How do infinite width bounded norm networks look in function space?](https://arxiv.org/pdf/1902.05040.pdf) (savarese...srebro 2019)
   - minimal norm fit for a sample is given by a linear spline interpolation (2 layer net)
+- [analytic theory of generalization + transfer (ganguli 19)](https://arxiv.org/abs/1809.10374)
 
 ## expressiveness: what can a dnn repreresent?
 
@@ -87,7 +99,17 @@ Some more concrete questions are
 - [learning data-adaptive kernels](https://arxiv.org/abs/1901.07114)
 - [kernels that mimic dl](https://cseweb.ucsd.edu/~saul/papers/nips09_kernel.pdf)
 - [kernel methods](http://papers.nips.cc/paper/3628-kernel-methods-for-deep-learning.pdfs)
+- [neural tangent kernel](https://arxiv.org/abs/1806.07572) (jacot et al. 2018)
+  - at initialization, artificial neural networks (ANNs) are equivalent to Gaussian
+    processes in the infinite-width limit
+    - evolution of an ANN during training can also be described by a kernel (kernel gradient descent)
+- [Scaling description of generalization with number of parameters in deep learning](https://arxiv.org/abs/1901.01608) (geiger et al. 2019)
+  - number of params = N
+  - above 0 training err, larger number of params reduces variance but doesn't actually help
+    - ensembling with smaller N fixes problem
+  - the improvement of generalization performance with N in this classification task originates from reduced variance of fN when N gets large, as recently observed for mean-square regression
 - [understanding the neural tangent kernel](https://arxiv.org/pdf/1904.11955.pdf) (arora et al. 2019)
+  - method to compute the kernel quickly on a gpu
 
 ## nearest neighbor comparisons
 
@@ -198,6 +220,7 @@ Some more concrete questions are
   - [papernot knn](https://arxiv.org/abs/1803.04765)
   - [distance-based confidence scores](https://arxiv.org/pdf/1709.09844.pdf)
   - [deep kernel knn](https://arxiv.org/pdf/1811.02579.pdf)
+  - fair paper: gradients should be larger if you are on the image manifold
 - lots of papers on confidence calibration (transforms outputs into probabilities)
 
   - [get confidences before overfitting](https://arxiv.org/abs/1805.08206)

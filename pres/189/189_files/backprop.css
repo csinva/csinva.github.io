@@ -1,0 +1,188 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+}
+
+#container {
+  width: 890px;
+  margin: 0 auto;
+  padding: 15px 15px;
+}
+
+#loader {
+  display: none;
+  position: absolute;
+  top: 20px;
+  right: 90px;
+}
+
+/* --------- SVG  ----------*/
+#mainsvg {
+  margin-top: 20px;
+  flex: 1;
+}
+
+text {
+  font-size: 11px;
+  fill: black;
+}
+
+tspan {
+  font-size: 8px;
+}
+
+rect.border {
+  stroke: black;
+  stroke-width: 0;
+  fill: none;
+}
+
+rect.background {
+  stroke: none;
+  opacity: 0.1;
+}
+
+.formula {
+  font-size: 20px;
+  display: flex;
+  padding: 5px;
+  margin: 4px 0;
+}
+
+.formula.selected {
+  outline: 2px solid black;
+}
+
+.Input {
+  fill: rgb(66, 133, 244);
+}
+
+.Output {
+  fill: rgb(219, 68, 55);
+}
+
+.DerInput {
+  fill: rgb(244, 180, 0);
+}
+
+.DerOutput {
+  fill: rgb(15, 157, 88);
+}
+
+.error circle {
+  fill: none;
+  stroke: black;
+  stroke-width: 1px;
+}
+
+rect.DerWeight {
+  stroke: black;
+  stroke-width: 0;
+  fill: hsl(264, 100%, 95%);
+}
+
+.weight {
+  stroke: black;
+  stroke-width: 0;
+  fill: none;
+}
+
+line {
+  stroke: #aaa;
+  stroke-width: 1;
+}
+
+.MathJax_Display {
+  width: initial !important;
+  float: left !important;
+}
+
+#sections {
+  position: relative;
+  display: inline-block;
+  width: 400px;
+  top: 0px;
+  z-index: 90;
+  padding-bottom: 200px;
+}
+
+section {
+  display: none;
+}
+
+section h2 {
+  font-size: 32px;
+  font-weight: 300;
+  margin-top: 0px;
+  margin-bottom: 2px;
+  color: #262626;
+  line-height: 1.2em;
+}
+
+#vis {
+  display: inline-block;
+  height: 700px;
+  width: 300px;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  margin-left: 0;
+}
+
+#extra-space {
+  height: 300px;
+}
+
+circle.activation {
+  fill: white;
+  stroke: black;
+  stroke-width: 1px;
+}
+
+text.main-label {
+  font-size: 20px;
+}
+
+rect.target {
+  stroke-width: 0px;
+  stroke: black;
+  fill: rgb(219, 68, 55);
+}
+
+.pulsate-thick {
+  animation: pulse-thick 0.5s infinite;
+}
+
+@keyframes pulse-thick {
+  0% {
+    stroke-width: 0px;
+  }
+  50% {
+    stroke-width: 5px;
+  }
+  100% {
+    stroke-width: 0px;
+  }
+}
+
+.pulsate-thin {
+  animation: pulse-thin 0.5s infinite;
+}
+
+@keyframes pulse-thin {
+  0% {
+    stroke-width: 0px;
+  }
+  50% {
+    stroke-width: 2px;
+  }
+  100% {
+    stroke-width: 0px;
+  }
+}

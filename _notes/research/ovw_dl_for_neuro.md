@@ -137,8 +137,7 @@ Artificial neural networks can compute in several different ways. There is some 
 
 # deeptune-style
 
-- ponce_19_evolving_stimuli
-
+- ponce_19_evolving_stimuli: [https://www.cell.com/action/showPdf?pii=S0092-8674%2819%2930391-5](https://www.cell.com/action/showPdf?pii=S0092-8674(19)30391-5)
 - bashivan_18_ann_synthesis
 - [adept paper](https://papers.nips.cc/paper/6738-adaptive-stimulus-selection-for-optimizing-neural-population-responses.pdf)
   - use kernel regression from CNN embedding to calculate distances between preset images
@@ -153,7 +152,6 @@ Artificial neural networks can compute in several different ways. There is some 
   - maximizing firing rates via genetic algorithms
 
   - maximizing firing rate via gradient ascent
-
 - C. DiMattina and K. Zhang,“Adaptive stimulus optimization for sensory systems neuroscience"](https://www.frontiersin.org/articles/10.3389/fncir.2013.00101/full)
 
   - 2 general approaches: gradient-based approaches + genetic algorithms
