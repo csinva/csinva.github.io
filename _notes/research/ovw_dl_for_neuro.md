@@ -72,7 +72,8 @@ Artificial neural networks can compute in several different ways. There is some 
 
 # datasets
 
-- MRNet: knee MRI diagnosis
+- [vision dsets](https://www.visualdata.io/)
+    - MRNet: knee MRI diagnosis
 - [datalad lots of stuff](http://datalad.org/datasets.html)
 - springer 10k calcium imaging recording: https://figshare.com/articles/Recordings_of_ten_thousand_neurons_in_visual_cortex_during_spontaneous_behaviors/6163622 
 

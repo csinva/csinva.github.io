@@ -56,6 +56,19 @@ Some more concrete questions are
 - [How do infinite width bounded norm networks look in function space?](https://arxiv.org/pdf/1902.05040.pdf) (savarese...srebro 2019)
   - minimal norm fit for a sample is given by a linear spline interpolation (2 layer net)
 - [analytic theory of generalization + transfer (ganguli 19)](https://arxiv.org/abs/1809.10374)
+  - deep linear nets learn important structure of the data first (less noisy eigenvectors)
+
+## semantic biases: what correlations will a net learn?
+
+- [imagenet models are biased towards texture](https://arxiv.org/abs/1811.12231) (and removing texture makes them more robust)
+
+- [analyzing semantic robustness](https://arxiv.org/pdf/1904.04621.pdf)
+- [eval w/ simulations](https://arxiv.org/abs/1712.06302) (reviewer argued against this)
+- [glcm captures superficial statistics](https://arxiv.org/abs/1903.06256)
+- [deeper, unpruned networks are better against noise](https://arxiv.org/abs/1903.12261)
+- [analytic theory of generalization + transfer (ganguli 19)](https://arxiv.org/abs/1809.10374)
+- [causality in dnns talk by bottou](https://www.technologyreview.com/s/613502/deep-learning-could-reveal-why-the-world-works-the-way-it-does/)
+  - on mnist, color vs shape will learn color
 
 ## expressiveness: what can a dnn repreresent?
 
@@ -67,15 +80,20 @@ Some more concrete questions are
 
 ## complexity + generalization: dnns are low-rank / redundant parameters
 
-- [predicting params](http://papers.nips.cc/paper/5025-predicting-parameters-in-deep-learning): weight matrices are low-rank, decompose into UV by picking a U
-- [pruning neurons](https://arxiv.org/abs/1507.06149)
-- [circulant projection](https://www.cv-foundation.org/openaccess/content_iccv_2015/papers/Cheng_An_Exploration_of_ICCV_2015_paper.pdf)
-- [rethinking the value of pruning](https://arxiv.org/pdf/1810.05270.pdf): pruning and training from scratch, upto 30% size
-- [Lottery ticket](https://openreview.net/pdf?id=rJl-b3RcF7): pruning and training from initial random weights, upto 1% size ([followup](https://arxiv.org/abs/1903.01611))
-- [rank of relu activations](https://arxiv.org/pdf/1810.03372.pdf)
-- [random weights are good](https://arxiv.org/pdf/1504.08291.pdf)
-- [singular values of conv layers](https://arxiv.org/pdf/1805.10408.pdf)
-- [T-Net: Parametrizing Fully Convolutional Nets with a Single High-Order Tensor](https://arxiv.org/abs/1904.02698)
+- measuring complexity
+  - [functional decomposition](https://arxiv.org/abs/1904.03867) (molnar 2019)
+    - decompose function into bias + first-order effects (ALE) + interactions
+    - 3 things: number of features used, interaction strength, main effect complexity
+- parameters are redundant
+  - [predicting params](http://papers.nips.cc/paper/5025-predicting-parameters-in-deep-learning): weight matrices are low-rank, decompose into UV by picking a U
+  - [pruning neurons](https://arxiv.org/abs/1507.06149)
+  - [circulant projection](https://www.cv-foundation.org/openaccess/content_iccv_2015/papers/Cheng_An_Exploration_of_ICCV_2015_paper.pdf)
+  - [rethinking the value of pruning](https://arxiv.org/pdf/1810.05270.pdf): pruning and training from scratch, upto 30% size
+  - [Lottery ticket](https://openreview.net/pdf?id=rJl-b3RcF7): pruning and training from initial random weights, upto 1% size ([followup](https://arxiv.org/abs/1903.01611))
+  - [rank of relu activations](https://arxiv.org/pdf/1810.03372.pdf)
+  - [random weights are good](https://arxiv.org/pdf/1504.08291.pdf)
+  - [singular values of conv layers](https://arxiv.org/pdf/1805.10408.pdf)
+  - [T-Net: Parametrizing Fully Convolutional Nets with a Single High-Order Tensor](https://arxiv.org/abs/1904.02698)
 - generalization
   - [size of the weights is more important](http://eprints.qut.edu.au/43927/)
 
@@ -125,6 +143,12 @@ Some more concrete questions are
 - relation to bousquet - fitting random polynomials
 - [hierarchical sparse coding for images](https://pdfs.semanticscholar.org/9636/d8aedd476ef19c762923119750aec95bf8ca.pdf) (can’t just repeat sparse coding, need to include input again)
 - [random projections in the brain](https://www.biorxiv.org/content/biorxiv/early/2017/08/25/180471.full.pdf)….doing locality sensitive hashing (basically nearest neighbors)
+
+## robustness
+
+- [robustness may be at odds with accuracy](https://openreview.net/pdf?id=SyxAb30cY7) (madry 2019)
+  - adversarial training helps w/ little data but hurts with lots of data
+  - adversarially trained models have more meaningful gradients (and their adversarial examples actually look like other classes)
 
 # empirical studies
 
@@ -216,7 +240,7 @@ Some more concrete questions are
 ## trust scores background
 
 - papers using embeddings to generate confidences
-- [been kim trust paper](http://papers.nips.cc/paper/7798-to-trust-or-not-to-trust-a-classifier.pdf) - trust score = density over some set of nearest neighbors
+- [been kim trust paper](http://papers.nips.cc/paper/7798-to-trust-or-not-to-trust-a-classifier.pdf) - trust score uses density over some set of nearest neighbors(do clustering for each class - trust score = distance to once class's cluster vs the other classes')
   - [papernot knn](https://arxiv.org/abs/1803.04765)
   - [distance-based confidence scores](https://arxiv.org/pdf/1709.09844.pdf)
   - [deep kernel knn](https://arxiv.org/pdf/1811.02579.pdf)
