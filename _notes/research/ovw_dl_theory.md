@@ -30,6 +30,7 @@ Some more concrete questions are
   - composition operation allows an approximation of a function f through level sets of f --
   - one divides up the range of f into equal intervals and approximate the functions on these sets 
   - this makes a lot sense and might really explain why composition is so effective --
+  - [nonlinear approximation via compositions](https://arxiv.org/pdf/1902.10170.pdf) (shen 2019)
 - how do the weights in each layer help this approximation to be more effective?
   - here are some thoughts -- If other layers are like the first layer, the weights "whiten" or make the inputs more independent or random projections -- that is basically finding PC directions for low-rank inputs. 
   - Are the outputs from later layers more or less low - rank?
@@ -57,11 +58,11 @@ Some more concrete questions are
   - minimal norm fit for a sample is given by a linear spline interpolation (2 layer net)
 - [analytic theory of generalization + transfer (ganguli 19)](https://arxiv.org/abs/1809.10374)
   - deep linear nets learn important structure of the data first (less noisy eigenvectors)
+  - [similar paper for layer nets](https://arxiv.org/pdf/1904.13262.pdf)
 
 ## semantic biases: what correlations will a net learn?
 
 - [imagenet models are biased towards texture](https://arxiv.org/abs/1811.12231) (and removing texture makes them more robust)
-
 - [analyzing semantic robustness](https://arxiv.org/pdf/1904.04621.pdf)
 - [eval w/ simulations](https://arxiv.org/abs/1712.06302) (reviewer argued against this)
 - [glcm captures superficial statistics](https://arxiv.org/abs/1903.06256)
@@ -69,6 +70,7 @@ Some more concrete questions are
 - [analytic theory of generalization + transfer (ganguli 19)](https://arxiv.org/abs/1809.10374)
 - [causality in dnns talk by bottou](https://www.technologyreview.com/s/613502/deep-learning-could-reveal-why-the-world-works-the-way-it-does/)
   - on mnist, color vs shape will learn color
+- [A mathematical theory of semantic development in deep neural networks](https://arxiv.org/abs/1810.10531)
 
 ## expressiveness: what can a dnn repreresent?
 

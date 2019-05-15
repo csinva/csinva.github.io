@@ -3,4 +3,11 @@ _site/
 **.DS_*
 **Icon*
 _notes/ref/qual_slides/qual/
+**cache*
+_notes/research/*hidden*
 
+
+_notes/talks
+_notes/ref/ai_resources
+_notes/ref/ml_resources
+_notes/research/resesarch_ref.md
