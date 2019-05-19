@@ -1,34 +1,34 @@
 # source for chandan's personal website (https://csinva.github.io)
 
-**contains notes, slides, blog posts, and personal information**
+**contains [slides](_slides), [research overviews](_research_ovws), [notes](_notes),  [blog posts](_blog), links to code/research, and personal information**
 
 ## slides
 
-- contains source for many presentations, including [slides](https://csinva.github.io/pres/189/#/) from teaching intro machine learning at berkeley:
+- the [_slides](_slides) folder contains source for many presentations, including [ml slides](https://csinva.github.io/pres/189/#/) from teaching intro machine learning at berkeley:
 
 ![](assets/img/pres_demo.gif)
 
+## research overviews
 
+- notes on different research areas in the [research_ovws](_notes/research_ovws) folder (e.g. interpretability, complexity) with links to recent papers
 
 ## notes
 
-- notes on different research areas in the [_notes/research](_notes/research) folder (e.g. interpretability, complexity)
-
-- the [_notes](_notes) folder also contains markdown notes for many different classes and areas
-
-
+- the [_notes](_notes) folder contains markdown notes for many different classes and areas between computer science, statistics, and neuroscience
 
 ## blog posts
 
-- blogs on different research areas such as [interpretability](https://csinva.github.io/notes/blog/interpretability) and [connectomics](https://csinva.github.io/notes/blog/connectomics).
 
-  ![](assets/img/400by31Normalized.gif)
+| [interpretability](https://csinva.github.io/notes/blog/interpretability)                                            | [connectomics](https://csinva.github.io/notes/blog/connectomics)     |
+| ------------------------------------------------------------ | ----------------------------------------------------- |
+| ![](assets/img/400by31Normalized.gif) | ![](assets/img/alexnet.png) |
+
 
 
 
 ## code
 
-- links to many simple coding projects, such as this [github repo](https://github.com/csinva/pytorch_gan_pretrained), which contains code for simple pre-trained gans
+- links to code, such as this these repos ([acd](https://github.com/csinva/hierarchical_dnn_interpretations), [dac](https://github.com/csinva/disentangled_attribution_curves)) for interpretable machine learning and [this repo](https://github.com/csinva/pytorch_gan_pretrained), which contains code for simple pre-trained gans
 
 | generated samples                                            | data samples     |
 | ------------------------------------------------------------ | ----------------------------------------------------- |

@@ -52,6 +52,15 @@
         <tbody>
             <tr>
                 <td>2019</td>
+                <td>disentangled attribution curves for interpreting random forests and boosted trees</td>
+                <td>devlin, singh, murdoch & yu</td>
+                <td>ml</td>
+                <td><a href="https://arxiv.org/abs/1901.04592">arxiv</a></td>
+                <td><a href="https://github.com/csinva/disentangled_attribution_curves"><i class="fa fa-code fa-fw"></i></a></td>
+                <td>--</td>
+            </tr>
+            <tr>
+                <td>2019</td>
                 <td>interpretable machine learning: definitions, methods, and applications</td>
                 <td>Murdoch*, Singh*, Kumbier, Abbasi-Asl, & Yu</td>
                 <td>ml</td>
@@ -117,7 +126,7 @@
               <div class="col-lg-64 col-lg-offset-0">
                 {{ page.content | markdownify }}
                 <ul class="timeline">
-                    {% for post in site.posts %}
+                    {% for timeline_blurb in site.timeline_blurbs %}
                       {% assign loopindex = forloop.index | modulo: 2 %}
                       {% capture class %}
                         {% if loopindex == 0 %}
@@ -127,15 +136,15 @@
 
                       <li class="{{ class }}">
                           <div class="timeline-image">
-                              <img class="img-circle img-responsive" src="{{ site.baseurl }}/{% if post.image %}{{ post.image }}{% else %}{{site.career-img}}{% endif %}" alt="">
+                              <img class="img-circle img-responsive" src="{{ site.baseurl }}/{% if timeline_blurb.image %}{{ timeline_blurb.image }}{% else %}{{site.career-img}}{% endif %}" alt="">
                           </div>
                           <div class="timeline-panel">
                               <div class="timeline-heading">
-                                  <h4>{{ post.title }}</h4>
-                                  <h4 class="subheading">{{ post.subtitle }}</h4>
+                                  <h4>{{ timeline_blurb.title }}</h4>
+                                  <h4 class="subheading">{{ timeline_blurb.subtitle }}</h4>
                               </div>
                               <div class="timeline-body">
-                                  <p class="text-muted">{{ post.content }}</p>
+                                  <p class="text-muted">{{ timeline_blurb.content }}</p>
                               </div>
                           </div>
                       </li>

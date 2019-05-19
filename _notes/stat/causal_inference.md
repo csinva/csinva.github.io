@@ -54,14 +54,16 @@ category: stat
   2. randomization
   3. conditioning
 
+# 2 general approaches
+
+1. matching - find patients that are similar and differ only in the treatment
+   1. only variables you don't match on could be considered causal
+2. regression
+   - requires *unconfoundedness* = *omitted variable bias*
+   - if there are no confounders, correlation is causation
+
 # causal inference papers
 
-- 2 general approaches
-  1. matching - find patients that are similar and differ only in the treatment
-     1. only variables you don't match on could be considered causal
-  2. regression
-     - requires *unconfoundedness* = *omitted variable bias*
-     - if there are no confounders, correlation is causation
 - Hainmueller & Hangartner (2013) - Swiss passport
   - naturalization decisions vary with immigrants' attributes
   - is there immigration against immigrants based on country of origin?
@@ -76,10 +78,20 @@ category: stat
   - Y = T Y(1) + (1-T) Y(0)
     - Y(1) = survival with transplant
     - Y(0) = survival w/out transplant
-      - fundamental problem of causal inference - can't observe Y(1) and Y(0)
+      - fundamental problem of causal inference - can 't observe Y(1) and Y(0)
     - T = 1 if receive transplant else 0
   - goal: estimate $\tau = Y(1) - Y(0)$ for each person
 
 # causality ovw
 
 ![Screen Shot 2019-04-07 at 7.01.55 PM](assets/Screen Shot 2019-04-07 at 7.01.55 PM.png)
+
+
+
+# pearl's causal ladder
+
+- [blog post](http://smithamilli.com/blog/causal-ladder/)
+  - prediction - just need to have the joint distr. of all the variables
+  - intervention - we can change things and get conditionals based on evidence **after intervention**
+  - counterfactuals - we can change things and get conditionals based on evidence **before intervention**
+
