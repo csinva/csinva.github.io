@@ -10,10 +10,11 @@ typora-copy-images-to: ./assets
 
 <h1> machine learning </h1>
 
+*press esc to navigate slides*
+
 **<a href="https://twitter.com/chandan_singh96">@chandan_singh96</a>**
 
-
-*press esc to navigate slides*
+[![](assets/GitHub-Mark-64px.png)](https://github.com/csinva/csinva.github.io/blob/master/_slides/ml_slides/slides.md)
 
 
 
@@ -21,11 +22,11 @@ typora-copy-images-to: ./assets
 
 | Section               | Topic              |
 | -- | -- |
-| General | [intro](https://csinva.github.io/pres/189/#/1), [linear algebra](https://csinva.github.io/pres/189/#/2), [gaussian](https://csinva.github.io/pres/189/#/6), [parameter estimation](https://csinva.github.io/pres/189/#/4), [bias-variance](https://csinva.github.io/pres/189/#/5) |
-| Regression | [lin reg](https://csinva.github.io/pres/189/#/3), [LS](https://csinva.github.io/pres/189/#/7), [kernels](https://csinva.github.io/pres/189/#/9), [sparsity](https://csinva.github.io/pres/189/#/20) |
-| Dim reduction | [dim reduction](https://csinva.github.io/pres/189/#/8)|
-| Classification | [discr. vs. generative](https://csinva.github.io/pres/189/#/13), [nearest neighbor](https://csinva.github.io/pres/189/#/19), [DNNs](https://csinva.github.io/pres/189/#/12), [log. regression](https://csinva.github.io/pres/189/#/14), [lda/qda](https://csinva.github.io/pres/189/#/15), [decision trees](https://csinva.github.io/pres/189/#/21), [svms](https://csinva.github.io/pres/189/#/17) |
-| Optimization | [problems](https://csinva.github.io/pres/189/#/10), [algorithms](https://csinva.github.io/pres/189/#/11), [duality](https://csinva.github.io/pres/189/#/18), [boosting](https://csinva.github.io/pres/189/#/22), [em](https://csinva.github.io/pres/189/#/16) |
+| general | [intro](https://csinva.github.io/pres/189/#/1), [linear algebra](https://csinva.github.io/pres/189/#/2), [gaussian](https://csinva.github.io/pres/189/#/6), [parameter estimation](https://csinva.github.io/pres/189/#/4), [bias-variance](https://csinva.github.io/pres/189/#/5) |
+| regression | [lin reg](https://csinva.github.io/pres/189/#/3), [LS](https://csinva.github.io/pres/189/#/7), [kernels](https://csinva.github.io/pres/189/#/9), [sparsity](https://csinva.github.io/pres/189/#/20) |
+| dim reduction | [dim reduction](https://csinva.github.io/pres/189/#/8)|
+| classification | [discr. vs. generative](https://csinva.github.io/pres/189/#/13), [nearest neighbor](https://csinva.github.io/pres/189/#/19), [DNNs](https://csinva.github.io/pres/189/#/12), [log. regression](https://csinva.github.io/pres/189/#/14), [lda/qda](https://csinva.github.io/pres/189/#/15), [decision trees](https://csinva.github.io/pres/189/#/21), [svms](https://csinva.github.io/pres/189/#/17) |
+| optimization | [problems](https://csinva.github.io/pres/189/#/10), [algorithms](https://csinva.github.io/pres/189/#/11), [duality](https://csinva.github.io/pres/189/#/18), [boosting](https://csinva.github.io/pres/189/#/22), [em](https://csinva.github.io/pres/189/#/16) |
 
 
 
@@ -541,7 +542,7 @@ M-smooth = Lipschitz continuous gradient: $||\nabla f(x_2) - \nabla f(x_1)|| \le
 
 - it predicts: vision, audio, text, ~rl
 - it's easy: little feature engineering
-- it generalizes: huge, but doesn't overfit
+- it generalizes, despite having many parameters
 
 ## perceptron
 

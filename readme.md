@@ -19,16 +19,16 @@
 ## blog posts
 
 
-| [interpretability](https://csinva.github.io/notes/blog/interpretability)                                            | [connectomics](https://csinva.github.io/notes/blog/connectomics)     |
-| ------------------------------------------------------------ | ----------------------------------------------------- |
-| ![](assets/img/400by31Normalized.gif) | ![](assets/img/alexnet.png) |
+| [interpretability](https://csinva.github.io/notes/blog/interpretability) | [connectomics](https://csinva.github.io/notes/blog/connectomics) |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+|            ![](assets/img/alexnet.png)                                                   | ![](assets/img/400by31Normalized.gif)                        |
 
 
 
 
 ## code
 
-- links to code, such as this these repos ([acd](https://github.com/csinva/hierarchical_dnn_interpretations), [dac](https://github.com/csinva/disentangled_attribution_curves)) for interpretable machine learning and [this repo](https://github.com/csinva/pytorch_gan_pretrained), which contains code for simple pre-trained gans
+- links to code, such as these repos ([acd](https://github.com/csinva/hierarchical_dnn_interpretations), [dac](https://github.com/csinva/disentangled_attribution_curves)) for interpretable machine learning and [this repo](https://github.com/csinva/pytorch_gan_pretrained), which contains code for simple pre-trained gans
 
 | generated samples                                            | data samples     |
 | ------------------------------------------------------------ | ----------------------------------------------------- |

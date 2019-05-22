@@ -59,6 +59,8 @@ Some more concrete questions are
 - [analytic theory of generalization + transfer (ganguli 19)](https://arxiv.org/abs/1809.10374)
   - deep linear nets learn important structure of the data first (less noisy eigenvectors)
   - [similar paper for layer nets](https://arxiv.org/pdf/1904.13262.pdf)
+- datasets for measuring causality
+  - Inferring Hidden Statuses and Actions in Video by Causal Reasoning - about finding causality in the video, not interpretation
 
 ## semantic biases: what correlations will a net learn?
 

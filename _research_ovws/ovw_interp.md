@@ -11,6 +11,10 @@ category: research
 
 # misc new papers
 
+- [explaining image classifiers by counterfactual generation](https://arxiv.org/pdf/1807.08024.pdf) 
+  - generate changes (e.g. with GAN in-filling) and see if pred actually changes
+- [ConvNets and ImageNet Beyond Accuracy: Understanding Mistakes and Uncovering Biases](https://arxiv.org/abs/1711.11443)
+  - cnns are more accurate, robust, and biased then we might expect on imagenet
 - [BRIDGING ADVERSARIAL ROBUSTNESS AND GRADIENT INTERPRETABILITY](https://arxiv.org/abs/1903.11626)
 - [Evaluating Feature Importance Estimates](https://arxiv.org/abs/1806.10758)
 - [Quantifying Interpretability of Arbitrary Machine Learning Models Through Functional Decomposition](https://arxiv.org/pdf/1904.03867.pdf)

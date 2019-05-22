@@ -35,7 +35,6 @@ category: stat
   3. fisherian testing framework
     - small p-values evidence against null hypothesis
     - null hypothesis
-
 - errors
   - *type I err*: FP - reject when false
   - *type II err*: FN
@@ -95,3 +94,22 @@ category: stat
   - intervention - we can change things and get conditionals based on evidence **after intervention**
   - counterfactuals - we can change things and get conditionals based on evidence **before intervention**
 
+# bottou causality
+
+- ex. [lopez-paz_17](http://openaccess.thecvf.com/content_cvpr_2017/papers/Lopez-Paz_Discovering_Causal_Signals_CVPR_2017_paper.pdf)
+  - C(A, B) - count number of images in which B would disappear if A was removed
+  - we say A *causes* B when C(A, B) is (sufficiently) greater than the converse C(B, A)
+  - basics
+    - given joint distr. of (A, B), we want to know if A -> B, B-> A
+      - with no assumptions, this is nonidentifiable
+    - requires 2 assumptions
+      - ICM: independence between cause and mechanism (i.e. the function doesn't change based on distr. of X) - this usually gets violated in anticausal direction
+      - causal sufficiency - we aren't missing any vars
+    - ex. ![Screen Shot 2019-05-20 at 10.04.03 PM](assets/Screen Shot 2019-05-20 at 10.04.03 PM.png)
+      - here noise is indep. from x (causal direction), but can't be independent from y (non-causal direction)
+      - in (c), function changes based on input
+    - can turn this into binary classification and learn w/ network: given X, Y, does X->Y or Y-X?
+  - on images, they get scores for different objects (w/ bounding boxes)
+    - eval - when one thing is erased, does the other also get erased?
+- [link to iclr talk](https://www.technologyreview.com/s/613502/deep-learning-could-reveal-why-the-world-works-the-way-it-does/?fbclid=IwAR3LF2dc_3EvWXzEHhtrsqtH9Vs-4pjPALfuqKCOma9_gqLXMKDeCWrcdrQ)
+- [visual causal feature learning](https://arxiv.org/abs/1412.2309)

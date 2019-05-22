@@ -13,7 +13,7 @@ section-type: notes
             <ul class="list-items">
                 <li><a href="{{ site.baseurl }}/pres/189/" style="font-size:16px"> ml ovw </a></li>
                 <li><a href="{{ site.baseurl }}/pres/188/" style="font-size:16px"> ai ovw </a></li>
-                <!--<li><a href="{{ site.baseurl }}/pres/qual" style="font-size:16px"> research ovw </a></li>-->
+                <li><a href="https://docs.google.com/presentation/d/19fTICv0pyRiwGE39mqE_eGTq0Arn3OtVnDSrURFbPMA/present" style="font-size:16px"> research ovw </a></li>
                 <li><a href="https://docs.google.com/presentation/d/1d2prZlhmG72whCTzfGJ_pk-Pgv9Sx-bGG0e503whYvw/present?slide=id.p" style="font-size:16px"> vissci ovw </a></li>
                 <!--<li><a href="https://docs.google.com/presentation/d/15iygjXGLu7Ha096GwMV5t6sjP7IPcTHqimPkTDwrpPI/present?slide=id.p" style="font-size:16px"> hummingbird </a></li>-->
             </ul>
@@ -52,43 +52,42 @@ section-type: notes
 
 
         <!--<div class="roww"> &lt;!&ndash;begin the 1st row&ndash;&gt;-->
-{% for collection in site.collections %}
 
-    {% assign categories = "" | split:"|" %}
-    {% for doc in collection.docs %}
-    {% if doc.category %}
-    {% unless categories contains doc.category %}
-    {% assign categories = categories | push: doc.category %}
-    {% endunless %}
-    {% endif %}
-    {% endfor %}
-    {% assign categories_size = categories | size %}
-    {% if categories_size == 0 %}
-    {% assign categories = categories | push: nil %}
-    {% endif %}
+          <div class="coll5">
+              <h3 align="center">research ovws</h3>
 
-    {% for category in categories %}
+              <!-- a lot of lines which really just get the posts with tag research -->
+              {% for collection in site.collections %}
+              {% assign categories = "" | split:"|" %}
+              {% for doc in collection.docs %}
+              {% if doc.category %}
+              {% unless categories contains doc.category %}
+              {% assign categories = categories | push: doc.category %}
+              {% endunless %}
+              {% endif %}
+              {% endfor %}
+              {% assign categories_size = categories | size %}
+              {% if categories_size == 0 %}
+              {% assign categories = categories | push: nil %}
+              {% endif %}
+              {% for category in categories %}
+              {% if category == "research" %}
+              {% assign category_docs = collection.docs | where: "category", category %}
 
-        {% if category == "research" %}
+
+              <ul class="list-items">
+              {% for item in category_docs %}
+                  {% if item.title %}
+                      <li><a href="{{ site.baseurl }}{{item.url}}" style="font-size:16px"> {{ item.title | downcase }} </a></li>
+                  {% endif %}
+              {% endfor %}
+              </ul>
+              {% endif %}
+              {% endfor %}
+              {% endfor %}
+           </div>
 
 
-            <div class="coll5">
-                <h3 align="center">{{ category | downcase }}</h3>
-
-                {% assign category_docs = collection.docs | where: "category", category %}
-                <ul class="list-items">
-                {% for item in category_docs %}
-                    {% if item.title %}
-                        <li><a href="{{ site.baseurl }}{{item.url}}" style="font-size:16px"> {{ item.title | downcase }} </a></li>
-                    {% endif %}
-                {% endfor %}
-                </ul>
-             </div>
-
-        {% endif %}
-
-    {% endfor %}
-{% endfor %}
 <!--</div>-->
 
 <div class="roww">
