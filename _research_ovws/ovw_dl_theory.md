@@ -24,8 +24,12 @@ Some more concrete questions are
 - what are good statistical markers of an effectively trained DNN?
 - how far apart are 2 nets?
 
-## intuitive explanations
+## functional approximation
 
+- background
+  - $L^2$ function (or function space) is square integrable: $|f|^2 = \int_X |f|^2 d\mu$, and $|f|$ is its $L_2$-norm
+  - **Hilbert space** - vector space w/ additional structure of inner product which allows length + angle to be measured
+    - complete - there are enough limits in the space to allow calculus techniques (is a *complete metric space*)
 - composition allows an approximation of a function through level sets (split it up and approximate on these sets) - Zuowei Shen ([talk](http://www.ipam.ucla.edu/programs/workshops/workshop-iii-geometry-of-big-data/?tab=schedule), [slides](../../../drive/papers/dl_theory/shen_19_composition_dl_slides.pdf)) 
   - composition operation allows an approximation of a function f through level sets of f --
   - one divides up the range of f into equal intervals and approximate the functions on these sets 
