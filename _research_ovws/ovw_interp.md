@@ -16,17 +16,12 @@ category: research
 - [ConvNets and ImageNet Beyond Accuracy: Understanding Mistakes and Uncovering Biases](https://arxiv.org/abs/1711.11443)
   - cnns are more accurate, robust, and biased then we might expect on imagenet
 - [BRIDGING ADVERSARIAL ROBUSTNESS AND GRADIENT INTERPRETABILITY](https://arxiv.org/abs/1903.11626)
-- [Evaluating Feature Importance Estimates](https://arxiv.org/abs/1806.10758)
-- [Quantifying Interpretability of Arbitrary Machine Learning Models Through Functional Decomposition](https://arxiv.org/pdf/1904.03867.pdf)
 - [Harnessing Deep Neural Networks with Logic Rules](https://arxiv.org/pdf/1603.06318.pdf)
 - Exploring Principled Visualizations for Deep Network Attributions - viz of attribution can be misleading (might want to clip, etc.)
   - layer separation - want to have both image and attributions on top of it 
-- [Interpretable Deep Learning in Drug Discovery](https://arxiv.org/abs/1903.02788)
 - [explaining a black-box w/ deep variational bottleneck](https://arxiv.org/abs/1902.06918)
-- "where and why net": WAWnet
 - [discovering and testing visual concepts learned by DNNs](https://arxiv.org/abs/1902.03129) - cluster in bottleneck space
 - [interpretable filters](http://openaccess.thecvf.com/content_cvpr_2018/CameraReady/0490.pdf)
-- [interactive explanation tool](https://link.springer.com/chapter/10.1007/978-3-030-13463-1_6)
 - [global explanations](https://arxiv.org/abs/1902.02384)
 - [bagnet bag-of-features](https://openreview.net/pdf?id=SkfMWhAqYQ)
   - [learn shapes not texture](https://openreview.net/pdf?id=Bygh9j09KX)
@@ -38,7 +33,6 @@ category: research
 - hard coding
   - [SSIM layer](https://arxiv.org/abs/1806.09152)
   - Inverting Supervised Representations with Autoregressive Neural Density Models 
-- [rvw](https://arxiv.org/abs/1803.07517)
 - robustness
   - https://arxiv.org/pdf/1806.08049.pdf
   - https://arxiv.org/pdf/1806.07538.pdf
@@ -51,15 +45,12 @@ category: research
 - [integrated gradients 2](https://arxiv.org/abs/1805.12233)
 - [symbolic execution for dnns](https://arxiv.org/pdf/1807.10439.pdf)
 - [L-shapley abd C-shapley](https://arxiv.org/pdf/1808.02610.pdf)
-- [iNNvestigate neural nets](https://arxiv.org/abs/1808.04260) - provides a common interface and out-of-thebox implementation
-- [tensorfuzz](https://arxiv.org/abs/1807.10875) - debugging
 - [Understanding Deep Architectures by Visual Summaries](http://bmvc2018.org/papers/0794.pdf)
 - [A Simple and Effective Model-Based Variable Importance Measure](https://arxiv.org/pdf/1805.04755.pdf)
   - measures the feature importance (defined as the variance of the 1D partial dependence function) of one feature conditional on different, fixed points of the other feature. When the variance is high, then the features interact with each other, if it is zero, they don’t interact.
 - random forests
   - Breiman proposes permutation tests: Breiman, Leo. 2001. “Random Forests.” Machine Learning 45 (1). Springer: 5–32
 - [Interpreting Neural Network Judgments via Minimal, Stable, and Symbolic Corrections](https://arxiv.org/pdf/1802.07384.pdf)
-- "[Sanity Checks for Saliency Maps](https://arxiv.org/pdf/1810.03292.pdf)" .. accepted to NIPS
 - [DeepPINK: reproducible feature selection in deep neural networks](https://arxiv.org/pdf/1809.01185.pdf)
 - "Transparency by Disentangling Interactions"
 - "To Trust Or Not To Trust A Classifier"
@@ -73,7 +64,6 @@ category: research
 - [Interpreting Layered Neural Networks via Hierarchical Modular Representation](https://arxiv.org/pdf/1810.01588.pdf)
 - [Entropic Variable Boosting for Explainability & Interpretability in Machine Learning](https://arxiv.org/abs/1810.07924)
 - [Explain to Fix: A Framework to Interpret and Correct DNN Object Detector Predictions](https://arxiv.org/pdf/1811.08011.pdf)
-- [Interpretable Deep Learning under Fire](https://arxiv.org/abs/1812.00891)
 - [Understanding Individual Decisions of CNNs via Contrastive Backpropagation](https://arxiv.org/abs/1812.02100v1)
 - [“What are You Listening to?” Explaining Predictions of Deep Machine Listening Systems](https://ieeexplore.ieee.org/abstract/document/8553178)
 - [Diagnostic Visualization for Deep Neural Networks Using Stochastic Gradient Langevin Dynamics](https://arxiv.org/pdf/1812.04604.pdf)
@@ -92,7 +82,24 @@ category: research
 
 
 
+# packages
 
+- [iNNvestigate neural nets](https://arxiv.org/abs/1808.04260) - provides a common interface and out-of-thebox implementation
+- [tensorfuzz](https://arxiv.org/abs/1807.10875) - debugging
+- [interactive explanation tool](https://link.springer.com/chapter/10.1007/978-3-030-13463-1_6)
+
+# reviews
+
+- [Interpretable machine learning: definitions, methods, and applications](https://arxiv.org/abs/1901.04592)
+- [Interpretable Deep Learning in Drug Discovery](https://arxiv.org/abs/1903.02788)
+- [Explanation Methods in Deep Learning: Users, Values, Concerns and Challenges](https://arxiv.org/abs/1803.07517)
+
+## criticisms / eval
+
+- [Sanity Checks for Saliency Maps](https://papers.nips.cc/paper/8160-sanity-checks-for-saliency-maps.pdf)
+- [Quantifying Interpretability of Arbitrary Machine Learning Models Through Functional Decomposition](https://arxiv.org/pdf/1904.03867.pdf)
+- [Evaluating Feature Importance Estimates](https://arxiv.org/abs/1806.10758)
+- [Interpretable Deep Learning under Fire](https://arxiv.org/abs/1812.00891)
 
 # cnns
 

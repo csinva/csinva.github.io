@@ -18,7 +18,7 @@ DNNs display many surprising properties
 
 Many things seem to contribute to the inductive bias of DNNs: SGD, dropout, early stopping, resnets, convolution, more layers...all of these are tangled together and many things correlate with generalization error...what are the important things and how do they contribute? 
 
-Some more concrete questions are
+some more concrete questions:
 
 - what is happening when training err stops going down but val err keeps going down (interpolation regime)?
 - what are good statistical markers of an effectively trained DNN?
@@ -26,6 +26,11 @@ Some more concrete questions are
 
 ## functional approximation
 
+- nonlinear approximation (e.g. sparse coding) - 2 steps
+
+  1. construct a dictionary function (T)
+  2. learn linear combination of the dictionary elements (g)
+- when 
 - background
   - $L^2$ function (or function space) is square integrable: $|f|^2 = \int_X |f|^2 d\mu$, and $|f|$ is its $L_2$-norm
   - **Hilbert space** - vector space w/ additional structure of inner product which allows length + angle to be measured
