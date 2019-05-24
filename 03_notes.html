@@ -4,11 +4,43 @@ title: notes_main
 section-type: notes
 ---
 
-<h2 align="center"> resources </h2>
+<h2 align="center"> blog + resources </h2>
 
 <!--<h2 align="center"> more </h2>-->
 
-        <div class="coll5">
+
+<div class="coll2">
+    <h3 align="center">personal research blog</h3>
+    <ul class="list-items">
+        <li><a href="{{ site.baseurl }}/blog/interpretability/" style="font-size:16px"> 2019 - interpretability </a></li>
+        <li><a href="{{ site.baseurl }}/blog/connectomics/" style="font-size:16px"> 2019 - connectomics </a></li>
+        <li><a href="{{ site.baseurl }}/blog/neural_coding/" style="font-size:16px"> 2019 - neural coding </a></li>
+    </ul>
+</div>
+
+<div class="coll2">
+    <h3 align="center">misc blog</h3>
+    <ul class="list-items">
+        <li><a href="{{ site.baseurl }}/blog/reveal_md_enhanced/readme" style="font-size:16px"> 2019 - beautiful slides with reveal-md </a></li>
+        <li><a href="{{ site.baseurl }}/blog/latex_useful_tips/readme" style="font-size:16px"> 2019 - latex useful tips </a></li>
+        <li><a href="{{ site.baseurl }}/blog/imagenet_quickstart/readme" style="font-size:16px"> 2018 - imagenet quickstart </a></li>
+        <li><a href="{{ site.baseurl }}/blog/pytorch_dangerous_mistake/readme" style="font-size:16px"> 2018 - pytorch dangerous mistake </a></li>
+    </ul>
+</div>
+
+
+
+<center>
+    <!--<p>-->
+    <!--<hr>-->
+    <!--</br></br>-->
+    <i align="left">Resources including slides and research overviews in machine learning.</i>
+    </br></br>
+    <!--</p>-->
+</center>
+
+
+        <div class="coll4">
             <h3 align="center">ovw slides</h3>
             <ul class="list-items">
                 <li><a href="{{ site.baseurl }}/pres/189/" style="font-size:16px"> ml ovw </a></li>
@@ -20,17 +52,41 @@ section-type: notes
             </ul>
         </div>
 
-        <div class="coll5">
-            <h3 align="center">code guides</h3>
-            <ul class="list-items">
-                <li><a href="{{ site.baseurl }}/imagenet_quickstart_pytorch/" style="font-size:16px"> imagenet quickstart </a></li>
-                <li><a href="{{ site.baseurl }}/machine_learning_coding_tips/" style="font-size:16px"> writing good ml code </a></li>
-                <li><a href="{{ site.baseurl }}/reveal_md_enhanced/" style="font-size:16px"> making reveal-md slides </a></li>
-                <li><a href="{{ site.baseurl }}/pytorch_gan_pretrained/" style="font-size:16px"> pretrained pytorch gans </a></li>
-            </ul>
-        </div>
+        <div class="coll4">
+            <h3 align="center">research ovws</h3>
 
-        <div class="coll5">
+            <!-- a lot of lines which really just get the posts with tag research -->
+            {% for collection in site.collections %}
+            {% assign categories = "" | split:"|" %}
+            {% for doc in collection.docs %}
+            {% if doc.category %}
+            {% unless categories contains doc.category %}
+            {% assign categories = categories | push: doc.category %}
+            {% endunless %}
+            {% endif %}
+            {% endfor %}
+            {% assign categories_size = categories | size %}
+            {% if categories_size == 0 %}
+            {% assign categories = categories | push: nil %}
+            {% endif %}
+            {% for category in categories %}
+            {% if category == "research" %}
+            {% assign category_docs = collection.docs | where: "category", category %}
+
+
+            <ul class="list-items">
+            {% for item in category_docs %}
+                {% if item.title %}
+                    <li><a href="{{ site.baseurl }}{{item.url}}" style="font-size:16px"> {{ item.title | downcase }} </a></li>
+                {% endif %}
+            {% endfor %}
+            </ul>
+            {% endif %}
+            {% endfor %}
+            {% endfor %}
+         </div>
+
+        <div class="coll4">
             <h3 align="center">ml mini-projects</h3>
             <ul class="list-items">
                 <!--<li><a href="{{ site.baseurl }}/prototype_learning/" style="font-size:16px"> prototype learning </a></li>-->
@@ -38,10 +94,11 @@ section-type: notes
                 <li><a href="https://github.com/csinva/scattering_transform_experiments" style="font-size:16px"> scattering transform </a></li>
                 <li><a href="https://github.com/csinva/calcium_decoding_gan" style="font-size:16px"> gan brain decoding </a></li>
                 <li><a href="https://github.com/csinva/glaucoma_diagnosis" style="font-size:16px"> glaucoma diagnosis </a></li>
+                <li><a href="{{ site.baseurl }}/pytorch_gan_pretrained/" style="font-size:16px"> pretrained pytorch gans </a></li>
             </ul>
         </div>
 
-         <div class="coll5">
+         <div class="coll4">
             <h3 align="center">misc</h3>
             <ul class="list-items">
                 <li><a href="https://github.com/csinva/news-balancer" style="font-size:16px"> news balancer web </a></li>
@@ -53,40 +110,6 @@ section-type: notes
 
 
         <!--<div class="roww"> &lt;!&ndash;begin the 1st row&ndash;&gt;-->
-
-          <div class="coll5">
-              <h3 align="center">research ovws</h3>
-
-              <!-- a lot of lines which really just get the posts with tag research -->
-              {% for collection in site.collections %}
-              {% assign categories = "" | split:"|" %}
-              {% for doc in collection.docs %}
-              {% if doc.category %}
-              {% unless categories contains doc.category %}
-              {% assign categories = categories | push: doc.category %}
-              {% endunless %}
-              {% endif %}
-              {% endfor %}
-              {% assign categories_size = categories | size %}
-              {% if categories_size == 0 %}
-              {% assign categories = categories | push: nil %}
-              {% endif %}
-              {% for category in categories %}
-              {% if category == "research" %}
-              {% assign category_docs = collection.docs | where: "category", category %}
-
-
-              <ul class="list-items">
-              {% for item in category_docs %}
-                  {% if item.title %}
-                      <li><a href="{{ site.baseurl }}{{item.url}}" style="font-size:16px"> {{ item.title | downcase }} </a></li>
-                  {% endif %}
-              {% endfor %}
-              </ul>
-              {% endif %}
-              {% endfor %}
-              {% endfor %}
-           </div>
 
 
 <!--</div>-->
@@ -162,6 +185,12 @@ section-type: notes
 .coll {
     float: left;
     width: 33.33%;
+    padding-bottom: 50px;
+}
+
+.coll2 {
+    float: left;
+    width: 49.9%;
     padding-bottom: 50px;
 }
 

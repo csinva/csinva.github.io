@@ -5,7 +5,7 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
                     <i class="fa fa-bars"></i>
                 </button>
-                {% if page.url contains 'notes' or page.url contains 'projects' %}
+                {% if page.url contains 'notes' or page.url contains 'projects' or page.url contains 'blog' or page.url contains 'ovw'%}
                     <a class="navbar-brand page-scroll" href="{{site.url}}">
                         Chandan Singh
                     </a>
@@ -25,7 +25,7 @@
                     </li>
 
 
-                    {% if page.url contains 'notes' or page.url contains 'projects' %}
+                    {% if page.url contains 'notes' or page.url contains 'projects' or page.url contains 'blog' or page.url contains 'ovw'%}
                         {% for pagex in site.pages | sort: "title" %}
                             {% unless pagex.url == "/" %}
                             {% unless pagex.url contains 'css' %}
@@ -39,7 +39,7 @@
                             {% endunless %}
                             {% endunless %}
                         {% endfor %}
-                        <li><a class="page-scroll" href="{{site.baseurl}}/#notes_main">Resources</a></li>
+                        <li><a class="page-scroll" href="{{site.baseurl}}/#notes_main">Blog+Resources</a></li>
 
                     {% else %}
                         {% for pagex in site.pages | sort: "title" %}
@@ -55,7 +55,7 @@
                             {% endunless %}
                             {% endunless %}
                         {% endfor %}
-                        <li><a class="page-scroll" href="#notes_main">Resources</a></li>
+                        <li><a class="page-scroll" href="#notes_main">Blog+Resources</a></li>
                     {% endif %}
 
                 </ul>
