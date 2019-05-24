@@ -5,6 +5,8 @@ title: complexity
 category: research
 ---
 
+[TOC]
+
 # philosophy
 
 - [What is complexity?](http://cogprints.org/357/4/evolcomp.pdf) (edmonds 95)
@@ -32,23 +34,45 @@ category: research
       - where C(x) is the complexity (measured in bits), ℓ(x) the length of the description, N the size of the alphabet used to encode the description and ω(ℓ,x) the size of the class of all descriptions of length less than ℓ equivalent to x.
   - emergence - ex. game of life
 - [What is complexity 2](https://link.springer.com/chapter/10.1007/978-3-642-50007-7_2) (Gell-Mann 02)
-  -
+  - AIC - algorithmic information content - contains 2 terms
+    - effective complexity (EC) = the length of a very concise description of an entity's regularities
+      - regularities are judged subjectively (e.g. birds would judge a bird song's regularity)
+    - 2nd term relating to random features
+- [complexity](http://www.scholarpedia.org/article/Complexity) (Sporns 07)
+  - complexity = degree to which **components** engage in organized structured **interactions**
+  - High complexity -> mixture of order and disorder (randomness and regularity) + have a high capacity to generate **emergent** phenomena.
+  - (simon 1981): complex systems are “made up of a large number of parts that have many interactions.”
+  - 2 categories
+    - algorithmic / mdl
+    - natural complexity (e.g. physical complexity)
+      - ![300px-Complexity_figure1](assets/300px-Complexity_figure1.jpg)
 
 # minimum description length
 
-- Kolmogorov complexity K(x) = the shortest computer program (in binary) that generates x (a binary string).
+- [mdl intro](http://www.scholarpedia.org/article/Minimum_description_length)
+  - coding just the data would be like maximum likelihood
+  - minimize $\underset{\text{log-likelihood}}{-\log P(y^n|x^n;\theta)} + \underset{\text{description length}}{L(\theta)}$
+    - ex. OLS
+    - if we want to send all the coefficients, assume an order and $L(\theta) = L(p) + L(\theta_1, ... \theta_p)$
+      - $L(\theta) \approx \frac p 2 \log p$
+        - quantization for each parameter (must quantize otherwise need to specify infinite bits of precision)
+    - if we want only a subset of the coefficients, also need to send $L(i_1, ..., i_k)$ for the indexes of the non-zero coefficients
+  - minimization becomes $\underset p \min \quad [\underset{\text{noise}}{- \log P(y^n|x^n; \hat{\theta}_{OLS})} + \underset{\text{learnable info}}{(p/2) \log n}]$
+    - *noise* - no more info can be extracted with this class of models
+    - *learnable info* in the data = precisely the best model
+    - **stochastic complexity** = *noise* + *learnable info*
+    - in this case, is same as BIC but often different
+  - modern mdl - don't assume a model form, try to code the data as short as possible with a *universal* model class
+    - often can actually construct these codes
+- Kolmogorov complexity K(x) = the shortest computer program (in binary) that generates x (a binary string) = the "amount of info" in x
   - complexity of a string x is at most its length
-  - algorithmically random - any string whose length is close to |x|
+  - algorithmically random - any string whose length is close to $|x|$
+    - more random = higher complexity
 - Minimum description length original reference \cite{rissanen1978modeling}. What is the minimum length description of the original?
   - MDL reviews \cite{barron1998minimum, hansen2001model}.
   - Book on stochastic complexity \cite{rissanen1989stochastic}
   - *Minimum Description Length*, *MDL*, principle for model selection, of which the original form states that the best model is the one which permits the shortest encoding of the data and the model itself
-- [mdl intro](http://www.scholarpedia.org/article/Minimum_description_length)
-  - coding just the data would be like maximum likelihood
-  - minimize $\underset{\text{log-likelihood}}{-\log P(y^n|x^n;\theta)} + \underset{\text{description length}}{L(\theta)}$
-    - if we want to send all the coefficients, assume an order and $L(\theta) = L(p) + L(\theta_1, ... \theta_p)$
-      - $L(\theta) \approx \frac p 2 \log p$
-        - quantization for each parameter
+- *note: this type of complexity applies to the description, not the system*
 
 # computational complexity
 
@@ -57,13 +81,6 @@ category: research
   - like run times of algorithms etc. $O(n)$
 - [Parameterized complexity](https://www.researchgate.net/profile/Michael_Fellows/publication/2376092_Parameterized_Complexity/links/5419e9240cf25ebee98883da/Parameterized-Complexity.pdf) (Downey and Fellows)
   - want to solve problems that are NP-hard or worse, so we isolate input into a parameter
-
-# misc
-
-- bennet's logical depth - computational resources taken to calculate the results of a minimal length problem (combines computational complexity w/ kolmogorov complexity)
-- lofgren's interpretation and descriptive complexity
-  - convert between system and description
-- kaffman's number of conflicting constraints
 
 # bayesian model complexity
 
@@ -75,3 +92,16 @@ category: research
 
 - VC-dimension - measure of capacity of a function class that can be learned
   - cardinality of largest number of points which can be shattered
+
+# misc
+
+- bennet's logical depth (1988) - computational resources taken to calculate the results of a minimal length problem (combines computational complexity w/ kolmogorov complexity)
+- Effective measure complexity (Grassberger, 1986) quantifies the complexity of a sequence by the amount of information contained in a given part of the sequence that is needed to predict the next symbol
+- Thermodynamic depth (Lloyd and Pagels, 1988) relates the entropy of a system to the number of possible historical paths that led to its observed state
+- lofgren's interpretation and descriptive complexity
+  - convert between system and description
+- kaffman's number of conflicting constraints
+- Effective complexity (Gell-Mann, 1995) measures the minimal description length of a system’s regularities
+- Physical complexity (Adami and Cerf, 2000) is related to effective complexity and is designed to estimate the complexity of any sequence of symbols that is about a physical world or environment
+- Statistical complexity (Crutchfield and Young, 1989) is a component of a broader theoretic framework known as computational mechanics, and can be calculated directly from empirical data
+- Neural complexity (Tononi et al., 1994) - multivariate extension of mutual information that estimates the total amount of statistical structure within an arbitrarily large system.= the difference between the sum of the component’s individual entropies and the joint entropy of the system as a whole

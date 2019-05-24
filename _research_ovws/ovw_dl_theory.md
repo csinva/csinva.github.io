@@ -30,7 +30,6 @@ some more concrete questions:
 
   1. construct a dictionary function (T)
   2. learn linear combination of the dictionary elements (g)
-- when 
 - background
   - $L^2$ function (or function space) is square integrable: $|f|^2 = \int_X |f|^2 d\mu$, and $|f|$ is its $L_2$-norm
   - **Hilbert space** - vector space w/ additional structure of inner product which allows length + angle to be measured
@@ -38,7 +37,6 @@ some more concrete questions:
 - composition allows an approximation of a function through level sets (split it up and approximate on these sets) - Zuowei Shen ([talk](http://www.ipam.ucla.edu/programs/workshops/workshop-iii-geometry-of-big-data/?tab=schedule), [slides](../../../drive/papers/dl_theory/shen_19_composition_dl_slides.pdf)) 
   - composition operation allows an approximation of a function f through level sets of f --
   - one divides up the range of f into equal intervals and approximate the functions on these sets 
-  - this makes a lot sense and might really explain why composition is so effective --
   - [nonlinear approximation via compositions](https://arxiv.org/pdf/1902.10170.pdf) (shen 2019)
 - how do the weights in each layer help this approximation to be more effective?
   - here are some thoughts -- If other layers are like the first layer, the weights "whiten" or make the inputs more independent or random projections -- that is basically finding PC directions for low-rank inputs. 

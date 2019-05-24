@@ -19,7 +19,7 @@
 ## blog posts
 
 
-| [interpretability](https://csinva.github.io/notes/blog/interpretability) | [connectomics](https://csinva.github.io/notes/blog/connectomics) |
+| [interpretability](https://csinva.github.io/blog/interpretability) | [connectomics](https://csinva.github.io/blog/connectomics) |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 |            ![](assets/img/alexnet.png)                                                   | ![](assets/img/400by31Normalized.gif)                        |
 
