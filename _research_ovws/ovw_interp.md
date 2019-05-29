@@ -11,6 +11,10 @@ category: research
 
 # misc new papers
 
+- [Beyond Sparsity: Tree Regularization of Deep Models for Interpretability](https://arxiv.org/pdf/1711.06178.pdf)
+  - regularize so that deep model can be closely modeled by tree w/ few nodes
+- [THE CONVOLUTIONAL TSETLIN MACHINE](https://arxiv.org/pdf/1905.09688.pdf)
+  - [The Tsetlin Machine](https://arxiv.org/pdf/1804.01508.pdf)
 - [explaining image classifiers by counterfactual generation](https://arxiv.org/pdf/1807.08024.pdf) 
   - generate changes (e.g. with GAN in-filling) and see if pred actually changes
 - [ConvNets and ImageNet Beyond Accuracy: Understanding Mistakes and Uncovering Biases](https://arxiv.org/abs/1711.11443)
@@ -71,8 +75,7 @@ category: research
   - could also just use specific filters for specific classes
 - [Manipulating and Measuring Model Interpretability](https://arxiv.org/abs/1802.07810)
 - local
-  - [grad-cam++](https://arxiv.org/abs/1710.11063) 
-  - [What made you do this? Understanding black-box decisions with sufficient input subsets](https://arxiv.org/pdf/1810.03805.pdf)
+  - [grad-cam++](https://arxiv.org/abs/1710.11063)
 - importance scores
   - [Variable Importance Clouds: A Way to Explore Variable Importance for the Set of Good Models](https://arxiv.org/pdf/1901.03209.pdf) 
   - [Permutation tests in general](http://arxiv.org/abs/1801.01489): Fisher, Aaron, Cynthia Rudin, and Francesca Dominici. 2018. “Model Class Reliance: Variable Importance Measures for any Machine Learning Model Class, from the ‘Rashomon’ Perspective.”
@@ -298,8 +301,15 @@ category: research
     - this includes sets of different sizes
 - shapley sampling value - sample instead of exactly computing
   - quantitative input influence is similar to this...
+- [A Unified Approach to Interpreting Model Predictions](http://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predicti)
+  - 3 properties
+    - local accuracy - basically, explanation scores sum to original prediction
+    - missingness - features with $x'_i=0$ have 0 impact
+    - consistency - if a model changes so that some simplified input’s contribution increases or stays the same regardless of the other inputs, that input’s attribution should not decrease.
+  - ![Screen Shot 2019-05-28 at 10.23.49 PM](../../Desktop/Screen Shot 2019-05-28 at 10.23.49 PM.png)
 
 ## example-based explanations
+
 - influential instances - want to find important data points
   - deletion diagnostics - delete a point and see how much it changed
 
@@ -339,6 +349,9 @@ category: research
    - Partial Dependence Plots: “Let me show you what the model predicts on average when each data instance has the value v for that feature. I ignore whether the value v makes sense for all data instances.” 
 - M-Plots: “Let me show you what the model predicts on average for data instances that have values close to v for that feature. The effect could be due to that feature, but also due to correlated features.” 
   - ALE plots: “Let me show you how the model predictions change in a small “window” of the feature around v for data instances in that window.” 
+- [What made you do this? Understanding black-box decisions with sufficient input subsets](https://arxiv.org/pdf/1810.03805.pdf)
+   - want to find smallest subsets of features which can produce the prediction
+      - other features are masked or imputed
 
 
 

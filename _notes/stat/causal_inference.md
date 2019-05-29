@@ -23,6 +23,7 @@ category: stat
 # basic causal inference
 
 - *confounding* - difference between groups other than the treatment which affects the response
+- [bradford hill criteria](https://en.wikipedia.org/wiki/Bradford_Hill_criteria) - some simple criteria for establishing causality (e.g. strength, consistency, specificity)
 - 3 frameworks
   1. neyman-rubin model: $Y_i = T_i a_i + (1-T_i) b_i$
     - $\hat{ate} = \hat{a}_A - \hat{b}_B$

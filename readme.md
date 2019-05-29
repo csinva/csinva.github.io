@@ -4,17 +4,24 @@
 
 ## slides
 
-- the [_slides](_slides) folder contains source for many presentations, including [ml slides](https://csinva.github.io/pres/189/#/) from teaching intro machine learning at berkeley:
+- the [_slides](_slides) folder contains source for presentations, including [ml slides](https://csinva.github.io/pres/189/#/) from teaching intro machine learning at berkeley
 
 ![](assets/img/pres_demo.gif)
 
 ## research overviews
 
-- notes on different research areas in the [research_ovws](_notes/research_ovws) folder (e.g. interpretability, complexity) with links to recent papers
+- overviews and summaries of recent papers in different research areas in the [research_ovws](_notes/research_ovws) folder (e.g. [interpretable ml](https://github.com/csinva/csinva.github.io/blob/master/_research_ovws/ovw_interp.md),  [theoretical ml](https://github.com/csinva/csinva.github.io/blob/master/_research_ovws/ovw_dl_theory.md),  [complexity in ml](https://github.com/csinva/csinva.github.io/blob/master/_research_ovws/ovw_complexity.md), [scattering transform](https://github.com/csinva/csinva.github.io/blob/master/_research_ovws/ovw_scat.md), [dl in neuroscience](https://github.com/csinva/csinva.github.io/blob/master/_research_ovws/ovw_dl_for_neuro.md))
 
 ## notes
 
 - the [_notes](_notes) folder contains markdown notes for many different classes and areas between computer science, statistics, and neuroscience
+
+
+## code
+
+- links to research code, such as these repos for interpretable machine learning (e.g. [hierarchical-dnn-interpretations](https://github.com/csinva/hierarchical_dnn_interpretations), [disentangled-attribution-curves](https://github.com/csinva/disentangled_attribution_curves)) and miscellaneous repos for data science (e.g. [pytorch-pretrained-gans](https://github.com/csinva/pytorch_gan_pretrained)), which contains code for simple pre-trained gans
+
+![](assets/img/acd_intro.png)
 
 ## blog posts
 
@@ -24,19 +31,8 @@
 |            ![](assets/img/alexnet.png)                                                   | ![](assets/img/400by31Normalized.gif)                        |
 
 
-
-
-## code
-
-- links to code, such as these repos ([acd](https://github.com/csinva/hierarchical_dnn_interpretations), [dac](https://github.com/csinva/disentangled_attribution_curves)) for interpretable machine learning and [this repo](https://github.com/csinva/pytorch_gan_pretrained), which contains code for simple pre-trained gans
-
-| generated samples                                            | data samples     |
-| ------------------------------------------------------------ | ----------------------------------------------------- |
-| ![fake_images-300](assets/img/samples/fake_samples_epoch_199.png) | ![real_images](assets/img/samples/real_samples.png) |
-
-
-
 # reference
 
-- uses theme from [here](http://kirbyt.github.io/timeline-jekyll-theme)
+- for updates, see [@chandan_singh96](https://twitter.com/chandan_singh96)
+- uses [timeline theme](http://kirbyt.github.io/timeline-jekyll-theme)
 - uses [particles.js](https://vincentgarreau.com/particles.js/)
