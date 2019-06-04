@@ -19,7 +19,7 @@
 
 ## code
 
-- links to research code, such as these repos for interpretable machine learning (e.g. [hierarchical-dnn-interpretations](https://github.com/csinva/hierarchical_dnn_interpretations), [disentangled-attribution-curves](https://github.com/csinva/disentangled_attribution_curves)) and miscellaneous repos for data science (e.g. [pytorch-pretrained-gans](https://github.com/csinva/pytorch_gan_pretrained)), which contains code for simple pre-trained gans
+- links to research code, such as these repos for interpretable machine learning (e.g. [hierarchical-dnn-interpretations](https://github.com/csinva/hierarchical_dnn_interpretations), [disentangled-attribution-curves](https://github.com/csinva/disentangled_attribution_curves)) and miscellaneous repos for data science (e.g. [pytorch-pretrained-gans](https://github.com/csinva/pytorch_gan_pretrained))
 
 ![](assets/img/acd_intro.png)
 

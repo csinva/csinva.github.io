@@ -1,19 +1,21 @@
 ---
-title: ai notes
-separator: '---'
-verticalSeparator: '--'
-theme: black
-highlightTheme: black
+title: ml slides
+separator: '----'
+verticalSeparator: '---'
+highlightTheme: ir-black
 typora-copy-images-to: ./assets
 ---
 
-<h1> ai </h1>
+<!-- .slide: data-transition="convex" data-transition-speed="medium"-->
 
-**chandan**
+<h1> artificial intelligence </h1>
 
-*based on R&N*
+*press esc to navigate slides*
 
-[TOC]
+**<a href="https://twitter.com/chandan_singh96">@chandan_singh96</a>**
+
+[![](assets/GitHub-Mark-64px.png)](https://github.com/csinva/csinva.github.io/blob/master/_slides/ai_slides/slides.md)
+
 
 # uninformed search
 
@@ -343,37 +345,3 @@ $\pi(s) = \underset{\pi}{\text{argmax}} \:U^\pi (s)$
 - ADP: $Q(s, a) =  R(s) + \alpha[\sum_{s'} P(s'|s, a)\underset{\alpha}{\max}Q(s', a')]$
 - TD: when $s\to s'$: $Q(s, a) = Q(s, a) + \alpha[R(s) + \gamma \underset{a}{\max}Q(s', a') - Q(s, a)]$
 - SARSA: when $s\to s'$: $Q(s, a) = Q(s, a) + \alpha[R(s) + \gamma Q(s', a') - Q(s, a)]$
-
-
-
-
-
-
-
-<style>
-
-.reveal h1,
-.reveal h2,
-.reveal h3,
-.reveal h4,
-.reveal h5,
-.reveal h6 {
-	text-transform: lowercase;
-}
-
-.reveal section img { background:none; border:none; box-shadow:none; }
-
-
-img {
-   -webkit-filter: invert(1);
-   filter: invert(1);
-   }
-
-
-
-body {
-  background: #000;
-  background-color: #000; }
-
-
-</style>

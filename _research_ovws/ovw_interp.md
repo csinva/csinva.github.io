@@ -5,84 +5,9 @@ title: interp
 category: research
 ---
 
-**some papers I like involving interpretable machine learning, references from this [interpretable ml review](https://arxiv.org/abs/1901.04592), and some notes from the [interpretable ml book](https://christophm.github.io/interpretable-ml-book/)**
+**some papers I like involving interpretable machine learning, largely organized based on this [interpretable ml review](https://arxiv.org/abs/1901.04592), and some notes from this [interpretable ml book](https://christophm.github.io/interpretable-ml-book/)**
 
 [TOC]
-
-# misc new papers
-
-- [Beyond Sparsity: Tree Regularization of Deep Models for Interpretability](https://arxiv.org/pdf/1711.06178.pdf)
-  - regularize so that deep model can be closely modeled by tree w/ few nodes
-- [THE CONVOLUTIONAL TSETLIN MACHINE](https://arxiv.org/pdf/1905.09688.pdf)
-  - [The Tsetlin Machine](https://arxiv.org/pdf/1804.01508.pdf)
-- [explaining image classifiers by counterfactual generation](https://arxiv.org/pdf/1807.08024.pdf) 
-  - generate changes (e.g. with GAN in-filling) and see if pred actually changes
-- [ConvNets and ImageNet Beyond Accuracy: Understanding Mistakes and Uncovering Biases](https://arxiv.org/abs/1711.11443)
-  - cnns are more accurate, robust, and biased then we might expect on imagenet
-- [BRIDGING ADVERSARIAL ROBUSTNESS AND GRADIENT INTERPRETABILITY](https://arxiv.org/abs/1903.11626)
-- [Harnessing Deep Neural Networks with Logic Rules](https://arxiv.org/pdf/1603.06318.pdf)
-- Exploring Principled Visualizations for Deep Network Attributions - viz of attribution can be misleading (might want to clip, etc.)
-  - layer separation - want to have both image and attributions on top of it 
-- [explaining a black-box w/ deep variational bottleneck](https://arxiv.org/abs/1902.06918)
-- [discovering and testing visual concepts learned by DNNs](https://arxiv.org/abs/1902.03129) - cluster in bottleneck space
-- [interpretable filters](http://openaccess.thecvf.com/content_cvpr_2018/CameraReady/0490.pdf)
-- [global explanations](https://arxiv.org/abs/1902.02384)
-- [bagnet bag-of-features](https://openreview.net/pdf?id=SkfMWhAqYQ)
-  - [learn shapes not texture](https://openreview.net/pdf?id=Bygh9j09KX)
-  - [code](https://github.com/wielandbrendel/bag-of-local-features-models)
-- [neural stethoscopes](https://arxiv.org/pdf/1806.05502.pdf) 
-- [RISE](https://arxiv.org/pdf/1806.07421.pdf) - randomized input sampling
-- [xGEMs](https://arxiv.org/pdf/1806.08867.pdf) 
-- [maximally invariant data perturbation](https://arxiv.org/pdf/1806.07004.pdf)
-- hard coding
-  - [SSIM layer](https://arxiv.org/abs/1806.09152)
-  - Inverting Supervised Representations with Autoregressive Neural Density Models 
-- robustness
-  - https://arxiv.org/pdf/1806.08049.pdf
-  - https://arxiv.org/pdf/1806.07538.pdf
-- [piecewise linear interp](https://arxiv.org/pdf/1806.10270.pdf)
-- [nonparametric var importance](http://proceedings.mlr.press/v80/feng18a/feng18a.pdf)
-- [supervised local modeling](https://arxiv.org/abs/1807.02910 ) 
-- [detect adversarial cnn attacks w/ feature maps](https://digitalcollection.zhaw.ch/handle/11475/8027) 
-- [adaptive dropout](https://arxiv.org/abs/1807.08024)
-- [lesion detection saliency](https://arxiv.org/pdf/1807.07784.pdf) 
-- [integrated gradients 2](https://arxiv.org/abs/1805.12233)
-- [symbolic execution for dnns](https://arxiv.org/pdf/1807.10439.pdf)
-- [L-shapley abd C-shapley](https://arxiv.org/pdf/1808.02610.pdf)
-- [Understanding Deep Architectures by Visual Summaries](http://bmvc2018.org/papers/0794.pdf)
-- [A Simple and Effective Model-Based Variable Importance Measure](https://arxiv.org/pdf/1805.04755.pdf)
-  - measures the feature importance (defined as the variance of the 1D partial dependence function) of one feature conditional on different, fixed points of the other feature. When the variance is high, then the features interact with each other, if it is zero, they don’t interact.
-- random forests
-  - Breiman proposes permutation tests: Breiman, Leo. 2001. “Random Forests.” Machine Learning 45 (1). Springer: 5–32
-- [Interpreting Neural Network Judgments via Minimal, Stable, and Symbolic Corrections](https://arxiv.org/pdf/1802.07384.pdf)
-- [DeepPINK: reproducible feature selection in deep neural networks](https://arxiv.org/pdf/1809.01185.pdf)
-- "Transparency by Disentangling Interactions"
-- "To Trust Or Not To Trust A Classifier"
-- "Interpreting Neural Network Judgments via Minimal, Stable, and Symbolic Corrections"
-- [Towards Robust Interpretability with Self-Explaining Neural Networks](https://arxiv.org/pdf/1806.07538.pdf)
-- "Explaining Deep Learning Models -- A Bayesian Non-parametric Approach"
-- [Detecting Potential Local Adversarial Examples for Human-Interpretable Defense](https://arxiv.org/pdf/1809.02397.pdf)
-- [Deep k-Nearest Neighbors: Towards Confident, Interpretable and Robust Deep Learning](https://arxiv.org/pdf/1803.04765.pdf)
-  - [Interpreting Neural Networks With Nearest Neighbors](https://arxiv.org/pdf/1809.02847.pdf)
-- [Generalizability vs. Robustness: Adversarial Examples for Medical Imaging](https://arxiv.org/abs/1804.00504)
-- [Interpreting Layered Neural Networks via Hierarchical Modular Representation](https://arxiv.org/pdf/1810.01588.pdf)
-- [Entropic Variable Boosting for Explainability & Interpretability in Machine Learning](https://arxiv.org/abs/1810.07924)
-- [Explain to Fix: A Framework to Interpret and Correct DNN Object Detector Predictions](https://arxiv.org/pdf/1811.08011.pdf)
-- [Understanding Individual Decisions of CNNs via Contrastive Backpropagation](https://arxiv.org/abs/1812.02100v1)
-- [“What are You Listening to?” Explaining Predictions of Deep Machine Listening Systems](https://ieeexplore.ieee.org/abstract/document/8553178)
-- [Diagnostic Visualization for Deep Neural Networks Using Stochastic Gradient Langevin Dynamics](https://arxiv.org/pdf/1812.04604.pdf)
-- [Interpretable Convolutional Neural Networks](http://openaccess.thecvf.com/content_cvpr_2018/CameraReady/0490.pdf)
-  - could also just use specific filters for specific classes
-- [Manipulating and Measuring Model Interpretability](https://arxiv.org/abs/1802.07810)
-- local
-  - [grad-cam++](https://arxiv.org/abs/1710.11063)
-- importance scores
-  - [Variable Importance Clouds: A Way to Explore Variable Importance for the Set of Good Models](https://arxiv.org/pdf/1901.03209.pdf) 
-  - [Permutation tests in general](http://arxiv.org/abs/1801.01489): Fisher, Aaron, Cynthia Rudin, and Francesca Dominici. 2018. “Model Class Reliance: Variable Importance Measures for any Machine Learning Model Class, from the ‘Rashomon’ Perspective.”
-- [Recovering Pairwise Interactions Using Neural Networks](https://arxiv.org/pdf/1901.08361.pdf)
-- [How Sensitive are Sensitivity-Based Explanations?](https://arxiv.org/abs/1901.09392)
-- [Understanding Impacts of High-Order Loss Approximations and Features in Deep Learning Interpretation](https://arxiv.org/abs/1902.00407)
-
 
 
 # packages
@@ -96,6 +21,20 @@ category: research
 - [Interpretable machine learning: definitions, methods, and applications](https://arxiv.org/abs/1901.04592)
 - [Interpretable Deep Learning in Drug Discovery](https://arxiv.org/abs/1903.02788)
 - [Explanation Methods in Deep Learning: Users, Values, Concerns and Challenges](https://arxiv.org/abs/1803.07517)
+- [Towards a Generic Framework for Black-box Explanation Methods](https://hal.inria.fr/hal-02131174v2/document)
+  
+  - sampling - selection of inputs to submit to the system to be explained
+- generation - analysis of links between selected inputs and corresponding outputs to generate explanations
+  
+  1. *proxy* - approximates model (ex. rule list, linear model)
+    2. *explanation generation* - explains the proxy (ex. just give most important 2 features in rule list proxy, ex. LIME gives coefficients of linear model, Shap: sums of elements)
+  - interaction (with the user)
+
+![Screen Shot 2019-06-04 at 11.38.50 AM](assets/Screen Shot 2019-06-04 at 11.38.50 AM.png)
+
+![Screen Shot 2019-06-04 at 11.41.02 AM](assets/Screen Shot 2019-06-04 at 11.41.02 AM.png)
+
+![Screen Shot 2019-06-04 at 11.42.17 AM](assets/Screen Shot 2019-06-04 at 11.42.17 AM.png)
 
 ## criticisms / eval
 
@@ -103,6 +42,10 @@ category: research
 - [Quantifying Interpretability of Arbitrary Machine Learning Models Through Functional Decomposition](https://arxiv.org/pdf/1904.03867.pdf)
 - [Evaluating Feature Importance Estimates](https://arxiv.org/abs/1806.10758)
 - [Interpretable Deep Learning under Fire](https://arxiv.org/abs/1812.00891)
+- [An Evaluation of the Human-Interpretability of Explanation](https://arxiv.org/pdf/1902.00006.pdf)
+- [How do Humans Understand Explanations from Machine Learning Systems?: An Evaluation of the Human-Interpretability of Explanation](https://arxiv.org/pdf/1802.00682.pdf)
+- [Towards A Rigorous Science of Interpretable Machine Learning](https://arxiv.org/pdf/1702.08608.pdf)
+- [Manipulating and Measuring Model Interpretability](https://arxiv.org/abs/1802.07810)
 
 # cnns
 
@@ -117,7 +60,8 @@ category: research
       - pooling layers make this harder
     3. *deep visualization* - yosinski 15
 - penalizing activations
-    - tsang interpreatble cnns
+    - [interpretable cnns](http://openaccess.thecvf.com/content_cvpr_2018/CameraReady/0490.pdf) (zhang et al. 2018) - penalize activations to make filters slightly more intepretable
+      - could also just use specific filters for specific classes...
     - teaching compositionality to cnns - mask features by objects
 - maximal activation stuff
     1. images that maximally activate a feature 
@@ -134,6 +78,7 @@ category: research
       - *class selectivity index* - derived from classes of images that make NF
     4. saliency maps for each image / class
       - simonyan et al 2014
+    5. [Diagnostic Visualization for Deep Neural Networks Using Stochastic Gradient Langevin Dynamics](https://arxiv.org/pdf/1812.04604.pdf)
 - attention maps
     1. occluding parts of the image
       - sweep over image and remove patches
@@ -157,14 +102,15 @@ category: research
         - Given a set of concept discovery images, each image is segmented with different resolutions
             to find concepts that are captured best at different sizes. (b) After removing duplicate segments, each segment is resized tothe original input size resulting in a pool of resized segments of the discovery images. (c) Resized segments are mapped to a model’s activation space at a bottleneck layer. To discover the concepts associated with the target class, clustering with outlier removal is performed. (d) The output of our method is a set of discovered concepts for each class, sorted by their importance in prediction
 - **posthoc methods**
-    1. ribeiro's LIME model - local approximation to the model
-    2. dosovitskiy et al 16 - train generative deconv net to create images from neuron activations
-      - aubry & russel 15 do similar thing
+    1. dosovitskiy et al 16 - train generative deconv net to create images from neuron activations
+       - aubry & russel 15 do similar thing
     3. gradient-based methods - visualize what in image would change class label
       - *guided backpropagation* - springenberg et al
         - lets you better create maximally specific image
       - selvaraju 17 - *grad-CAM*
+      - [grad-cam++](https://arxiv.org/abs/1710.11063)
     4. koh and liang 17 - *find training points* that contribute most to classification errors
+
 
 ## textual explanations
 
@@ -179,15 +125,15 @@ category: research
 
 ## misc
 
-1. 7. 
-2. create an explanatory graph
-  - zhang_17 - create a graph that responds better to things like objects than individual neurons
+1. create an explanatory graph
+   - zhang_17 - create a graph that responds better to things like objects than individual neurons
 3. information bottleneck framework on deep nets (schwartz-ziv & tishby)
 4. *t-SNE* embeds images into a clustered 2d space so we can see them
 5. wei_15 understanding intraclass variation
 6. mahendran_14 inverting CNNS
 
 ## model-based
+
 1. learning AND-OR Templates for Object Recognition and Detection (zhu_13)
 2. ross et al. - constraing model during training
 3. scat transform idea (mallat_16 rvw, oyallan_17)
@@ -234,30 +180,53 @@ category: research
   - examples: k-medoids or MMD-critic
     - selects prototypes that minimize the discrepancy between the data + prototype distributions
 
-# high-level
-
-- hooker_17_ml_and_future
-  - anti-realism over realism
-  - lack of interpretability in NNs is part of what makes them powerful
-  - *naked predictions* - numbers with no real interpretation
-    - more central to science than modelling?
-    - no theory needed? (Breiman 2001)
-- old school: realist studied neuroscience (Wundt), anti-realist just stimuli/response patterns (Skinner), now neither
-- interpretability properties
-  - *simplicity* - too complex
-  - *risk* - too complex
-  - *efficiency* - basically generalizability
-  - *unification* - answers *ontology* - the nature of being
-  - *realism* in a partially accessible world
-- overall, they believe there is inherent value of ontological description
 
 
+# tree ensembles
 
-# evaluating interp
+- Breiman proposes permutation tests: Breiman, Leo. 2001. “Random Forests.” Machine Learning 45 (1). Springer: 5–32
 
-- [An Evaluation of the Human-Interpretability of Explanation](https://arxiv.org/pdf/1902.00006.pdf)
-- [How do Humans Understand Explanations from Machine Learning Systems?: An Evaluation of the Human-Interpretability of Explanation](https://arxiv.org/pdf/1802.00682.pdf)
-- [Towards A Rigorous Science of Interpretable Machine Learning](https://arxiv.org/pdf/1702.08608.pdf)
+# posthoc model-agnostic methods
+
+1. **local surrogate (LIME)** - fit a simple model locally to on point and interpret that
+   - select data perturbations and get new predictions
+     - for images, this is turning superpixels on/off
+     - superpixels determined in unsupervised way
+   - weight the new samples based on their proximity
+   - train a kernel-weighted, interpretable model on these points
+   - LEMNA - like lime but uses lasso + small changes
+2. [anchors](https://www.aaai.org/ocs/index.php/AAAI/AAAI18/paper/view/16982/15850) (ribeiro et al. 2018) - find biggest square region of input space that contains input and preserves same output (with high precision)
+   1. does this search via iterative rules
+3. [What made you do this? Understanding black-box decisions with sufficient input subsets](https://arxiv.org/pdf/1810.03805.pdf)
+   - want to find smallest subsets of features which can produce the prediction
+     - other features are masked or imputed
+4. [VIN](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.91.7500&rep=rep1&type=pdf) (hooker 04) - variable interaction networks - globel explanation based on detecting additive structure in a black-box, based on ANOVA
+5. [local-gradient](http://www.jmlr.org/papers/v11/baehrens10a.html) (bahrens et al. 2010) - direction of highest slope towards a particular class / other class
+6. [golden eye](https://idp.springer.com/authorize/casa?redirect_uri=https://link.springer.com/article/10.1007/s10618-014-0368-8&casa_token=AhKnW6Xx4L0AAAAA:-SEMsMjDX3_rU5gyGx6plcmF5A_ufXvsWJHzjCUIGWHGW0fqOe50yhWKYOK6UIPDHQaUwEkE3RK17XOByzo) (henelius et al. 2014) - randomize different groups of features and search for groups which interact
+7. model distillation
+   1. Trepan - approximate model w/ a decision tree
+   2. [BETA](https://arxiv.org/abs/1707.01154) (lakkaraju et al. 2017) - approximate model by a rule list
+8. **[shapley value](http://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predicti)** - average marginal contribution of a feature value across all possible sets of feature values
+  - "how much does prediction change on average when this feature is added?"
+  - tells us the difference between the actual prediction and the average prediction
+  - estimating: all possible sets of feature values have to be evaluated with and without the j-th feature
+    - this includes sets of different sizes
+    - to evaluate, take expectation over all the other variables, fixing this variables value
+  - shapley sampling value - sample instead of exactly computing
+    - quantitative input influence is similar to this...
+  - satisfies 3 properties
+      - local accuracy - basically, explanation scores sum to original prediction
+      - missingness - features with $x'_i=0$ have 0 impact
+      - consistency - if a model changes so that some simplified input’s contribution increases or stays the same regardless of the other inputs, that input’s attribution should not decrease.
+  - interpretation: Given the current set of feature values, the contribution of a feature value to the
+    difference between the actual prediction and the mean prediction is the estimated Shapley value.
+  - recalculate via sampling other features in expectation
+9. [quantitative input influence](https://ieeexplore.ieee.org/abstract/document/7546525) - similar to shap but more general
+10. permutation importance - increase in the prediction error after we permuted the feature's values
+	- If features are correlated, the permutation feature importance can be biased by unrealistic data
+  instances (PDP problem)
+  - not the same as model variance
+  - Adding a correlated feature can decrease the importance of the associated feature
 
 # feature importance and interactions
 
@@ -274,59 +243,24 @@ category: research
   - variable interaction networks (Hooker, 2004) - decompose pred into main effects + feature interactions
   - PDP-based feature interaction (greenwell et al. 2018)
 
-## feature importance
-
-- importance of a feature is the increase in the prediction error after we permuted the feature's values
-- If features are correlated, the permutation feature importance can be biased by unrealistic data
-  instances (PDP problem)
-- not the same as model variance
-- Adding a correlated feature can decrease the importance of the associated feature
-
-## surrogates
-
-- could globally fit a simpler model to the complex model
-- **local surrogate (LIME)** - fit a simple model locally to on point and interpret that
-  - select data perturbations and get new predictions
-    - for images, this is turning superpixels on/off
-    - superpixels determined in unsupervised way
-  - weight the new samples based on their proximity
-  - train a weighted, interpretable model on these points
-
-## shapley values
-
-- **shapley value** - average marginal contribution of a feature value across all possible sets of feature values
-  - "how much does prediction change on average when this feature is added?"
-  - tells us the difference between the actual prediction and the average prediction
-  - estimating: all possible sets of feature values have to be evaluated with and without the j-th feature
-    - this includes sets of different sizes
-- shapley sampling value - sample instead of exactly computing
-  - quantitative input influence is similar to this...
-- [A Unified Approach to Interpreting Model Predictions](http://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predicti)
-  - 3 properties
-    - local accuracy - basically, explanation scores sum to original prediction
-    - missingness - features with $x'_i=0$ have 0 impact
-    - consistency - if a model changes so that some simplified input’s contribution increases or stays the same regardless of the other inputs, that input’s attribution should not decrease.
-  - ![Screen Shot 2019-05-28 at 10.23.49 PM](../../Desktop/Screen Shot 2019-05-28 at 10.23.49 PM.png)
 
 ## example-based explanations
 
 - influential instances - want to find important data points
-  - deletion diagnostics - delete a point and see how much it changed
+- deletion diagnostics - delete a point and see how much it changed
 
-  - koh 17 influence funcs: use **Hessian** ($\theta x \theta$) to give effect of upweighting a point
+- koh 17 influence funcs: use **Hessian** ($\theta x \theta$) to give effect of upweighting a point
+- influence functions = inifinitesimal approach - upweight one person by infinitesimally small weight and see how much estimate changes (e.g. calculate first derivative)
 
-  - influence functions = inifinitesimal approach - upweight one person by infinitesimally small weight and see how much estimate changes (e.g. calculate first derivative)
+  - influential instance - when data point removed, has a strong effect on the model (not necessarily same as an outlier)
+  - requires access to gradient (e.g. nn, logistic regression)
+  - take single step with Newton's method after upweighting loss
 
-    - influential instance - when data point removed, has a strong effect on the model (not necessarily same as an outlier)
-    - requires access to gradient (e.g. nn, logistic regression)
-    - take single step with Newton's method after upweighting loss
+  - yield change in parameters by removing one point
+  - yield change in loss at one point by removing a different point (by multiplying above by cahin rule)
+  - yield change in parameters by modifying one point
 
-    - yield change in parameters by removing one point
-    - yield change in loss at one point by removing a different point (by multiplying above by cahin rule)
-    - yield change in parameters by modifying one point
-
-
-# model-agnostic
+# model-agnostic curves
 
 - **pdp plots** - marginals (force value of plotted var to be what you want it to be)
 - separate into **ice plots**  - marginals for instance
@@ -349,10 +283,23 @@ category: research
    - Partial Dependence Plots: “Let me show you what the model predicts on average when each data instance has the value v for that feature. I ignore whether the value v makes sense for all data instances.” 
 - M-Plots: “Let me show you what the model predicts on average for data instances that have values close to v for that feature. The effect could be due to that feature, but also due to correlated features.” 
   - ALE plots: “Let me show you how the model predictions change in a small “window” of the feature around v for data instances in that window.” 
-- [What made you do this? Understanding black-box decisions with sufficient input subsets](https://arxiv.org/pdf/1810.03805.pdf)
-   - want to find smallest subsets of features which can produce the prediction
-      - other features are masked or imputed
 
+# high-level
+
+- hooker_17_ml_and_future
+  - anti-realism over realism
+  - lack of interpretability in NNs is part of what makes them powerful
+  - *naked predictions* - numbers with no real interpretation
+    - more central to science than modelling?
+    - no theory needed? (Breiman 2001)
+- old school: realist studied neuroscience (Wundt), anti-realist just stimuli/response patterns (Skinner), now neither
+- interpretability properties
+  - *simplicity* - too complex
+  - *risk* - too complex
+  - *efficiency* - basically generalizability
+  - *unification* - answers *ontology* - the nature of being
+  - *realism* in a partially accessible world
+- overall, they believe there is inherent value of ontological description
 
 
 # fairness
@@ -381,3 +328,117 @@ category: research
   - preprocessing - remove sensitive information
   - optimization at training time - add regularization
   - postprocessing - change thresholds to impose fairness
+
+
+# misc new papers
+
+- [Beyond Sparsity: Tree Regularization of Deep Models for Interpretability](https://arxiv.org/pdf/1711.06178.pdf)
+  
+  - regularize so that deep model can be closely modeled by tree w/ few nodes
+  
+- [THE CONVOLUTIONAL TSETLIN MACHINE](https://arxiv.org/pdf/1905.09688.pdf)
+  - [The Tsetlin Machine](https://arxiv.org/pdf/1804.01508.pdf)
+  
+- [explaining image classifiers by counterfactual generation](https://arxiv.org/pdf/1807.08024.pdf) 
+  
+  - generate changes (e.g. with GAN in-filling) and see if pred actually changes
+  
+- [ConvNets and ImageNet Beyond Accuracy: Understanding Mistakes and Uncovering Biases](https://arxiv.org/abs/1711.11443)
+  
+  - cnns are more accurate, robust, and biased then we might expect on imagenet
+  
+- [BRIDGING ADVERSARIAL ROBUSTNESS AND GRADIENT INTERPRETABILITY](https://arxiv.org/abs/1903.11626)
+
+- [Harnessing Deep Neural Networks with Logic Rules](https://arxiv.org/pdf/1603.06318.pdf)
+
+- Exploring Principled Visualizations for Deep Network Attributions - viz of attribution can be misleading (might want to clip, etc.)
+  
+  - layer separation - want to have both image and attributions on top of it 
+  
+- [explaining a black-box w/ deep variational bottleneck](https://arxiv.org/abs/1902.06918)
+
+- [discovering and testing visual concepts learned by DNNs](https://arxiv.org/abs/1902.03129) - cluster in bottleneck space
+
+- [global explanations](https://arxiv.org/abs/1902.02384)
+
+- [bagnet bag-of-features](https://openreview.net/pdf?id=SkfMWhAqYQ)
+  - [learn shapes not texture](https://openreview.net/pdf?id=Bygh9j09KX)
+  - [code](https://github.com/wielandbrendel/bag-of-local-features-models)
+  
+- [neural stethoscopes](https://arxiv.org/pdf/1806.05502.pdf) 
+
+- [RISE](https://arxiv.org/pdf/1806.07421.pdf) - randomized input sampling
+
+- [xGEMs](https://arxiv.org/pdf/1806.08867.pdf) 
+
+- [maximally invariant data perturbation](https://arxiv.org/pdf/1806.07004.pdf)
+
+- hard coding
+  - [SSIM layer](https://arxiv.org/abs/1806.09152)
+  - Inverting Supervised Representations with Autoregressive Neural Density Models 
+  
+- robustness
+  - https://arxiv.org/pdf/1806.08049.pdf
+  - https://arxiv.org/pdf/1806.07538.pdf
+  - [Generalizability vs. Robustness: Adversarial Examples for Medical Imaging](https://arxiv.org/abs/1804.00504)
+  
+- [piecewise linear interp](https://arxiv.org/pdf/1806.10270.pdf)
+
+- [nonparametric var importance](http://proceedings.mlr.press/v80/feng18a/feng18a.pdf)
+
+- [supervised local modeling](https://arxiv.org/abs/1807.02910 ) 
+
+- [detect adversarial cnn attacks w/ feature maps](https://digitalcollection.zhaw.ch/handle/11475/8027) 
+
+- [adaptive dropout](https://arxiv.org/abs/1807.08024)
+
+- [lesion detection saliency](https://arxiv.org/pdf/1807.07784.pdf) 
+
+- [integrated gradients 2](https://arxiv.org/abs/1805.12233)
+
+- [symbolic execution for dnns](https://arxiv.org/pdf/1807.10439.pdf)
+
+- [L-shapley abd C-shapley](https://arxiv.org/pdf/1808.02610.pdf)
+
+- [Understanding Deep Architectures by Visual Summaries](http://bmvc2018.org/papers/0794.pdf)
+
+- [A Simple and Effective Model-Based Variable Importance Measure](https://arxiv.org/pdf/1805.04755.pdf)
+  - measures the feature importance (defined as the variance of the 1D partial dependence function) of one feature conditional on different, fixed points of the other feature. When the variance is high, then the features interact with each other, if it is zero, they don’t interact.
+  
+- [Interpreting Neural Network Judgments via Minimal, Stable, and Symbolic Corrections](https://arxiv.org/pdf/1802.07384.pdf)
+
+- [DeepPINK: reproducible feature selection in deep neural networks](https://arxiv.org/pdf/1809.01185.pdf)
+
+- "Transparency by Disentangling Interactions"
+
+- "To Trust Or Not To Trust A Classifier"
+
+- [Towards Robust Interpretability with Self-Explaining Neural Networks](https://arxiv.org/pdf/1806.07538.pdf)
+
+- "Explaining Deep Learning Models -- A Bayesian Non-parametric Approach"
+
+- [Detecting Potential Local Adversarial Examples for Human-Interpretable Defense](https://arxiv.org/pdf/1809.02397.pdf)
+
+- [Deep k-Nearest Neighbors: Towards Confident, Interpretable and Robust Deep Learning](https://arxiv.org/pdf/1803.04765.pdf)
+  
+  - [Interpreting Neural Networks With Nearest Neighbors](https://arxiv.org/pdf/1809.02847.pdf)
+  
+- [Interpreting Layered Neural Networks via Hierarchical Modular Representation](https://arxiv.org/pdf/1810.01588.pdf)
+
+- [Entropic Variable Boosting for Explainability & Interpretability in Machine Learning](https://arxiv.org/abs/1810.07924)
+
+- [Explain to Fix: A Framework to Interpret and Correct DNN Object Detector Predictions](https://arxiv.org/pdf/1811.08011.pdf)
+
+- [Understanding Individual Decisions of CNNs via Contrastive Backpropagation](https://arxiv.org/abs/1812.02100v1)
+
+- [“What are You Listening to?” Explaining Predictions of Deep Machine Listening Systems](https://ieeexplore.ieee.org/abstract/document/8553178)
+
+- importance scores
+  - [Variable Importance Clouds: A Way to Explore Variable Importance for the Set of Good Models](https://arxiv.org/pdf/1901.03209.pdf) 
+  - [Permutation tests in general](http://arxiv.org/abs/1801.01489): Fisher, Aaron, Cynthia Rudin, and Francesca Dominici. 2018. “Model Class Reliance: Variable Importance Measures for any Machine Learning Model Class, from the ‘Rashomon’ Perspective.”
+  
+- [Recovering Pairwise Interactions Using Neural Networks](https://arxiv.org/pdf/1901.08361.pdf)
+
+- [How Sensitive are Sensitivity-Based Explanations?](https://arxiv.org/abs/1901.09392)
+
+- [Understanding Impacts of High-Order Loss Approximations and Features in Deep Learning Interpretation](https://arxiv.org/abs/1902.00407)

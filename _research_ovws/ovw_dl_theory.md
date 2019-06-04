@@ -107,6 +107,8 @@ some more concrete questions:
   - [T-Net: Parametrizing Fully Convolutional Nets with a Single High-Order Tensor](https://arxiv.org/abs/1904.02698)
 - generalization
   - [size of the weights is more important](http://eprints.qut.edu.au/43927/)
+  - [Quantifying the generalization error in deep learning in terms of data distribution and
+    neural network smoothness](https://arxiv.org/pdf/1905.11427v1.pdf)
 
 ## double descent: bias + variance in high dims?
 

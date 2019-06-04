@@ -123,6 +123,8 @@ category: ml
 	- Yolonet
 	- Wavenet
 	- Densenet
+	- NASNET
+	- [Efficientnet (2019)](https://arxiv.org/pdf/1905.11946.pdf)
 
 
 
