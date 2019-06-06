@@ -11,7 +11,8 @@ Machine learning code gets messy fast. In contrast to other programs, machine le
 
 ### very useful packages
 
-**[tqdm](https://github.com/tqdm/tqdm)**: add a loading bar to any loop in a super easy way:
+- [tqdm](https://github.com/tqdm/tqdm): add a loading bar to any loop in a super easy way:
+
 ```python
 for i in tqdm(range(10000)):
 	...
@@ -21,27 +22,26 @@ displays
 76%|████████████████████████████         | 7568/10000 [00:33<00:10, 229.00it/s]
 ```
 
-**[h5py](http://docs.h5py.org/en/stable/)**: a great way to read/write to arrays which are too big to store in memory, as if they were in memory
+- [h5py](http://docs.h5py.org/en/stable/): a great way to read/write to arrays which are too big to store in memory, as if they were in memory
+- [slurmpy](https://github.com/brentp/slurmpy): lets you submit jobs to slurm using just python, so you never need to write bash scripts.
+- [pandas](https://pandas.pydata.org/): provides dataframes to python - often overlooked for big data which might not fit into DataFrames that fit into memory. Still very useful for comparing results of models, particularly with many hyperparameters.
+- [dask](https://dask.org/) - natively scales python
 
-**[slurmpy](https://github.com/brentp/slurmpy)**: lets you submit jobs to slurm using just python, so you never need to write bash scripts.
 
-**[pandas](https://pandas.pydata.org/)**: provides dataframes to python - often overlooked for big data which might not fit into DataFrames that fit into memory. Still very useful for comparing results of models, particularly with many hyperparameters.
 
 ### plotting
 
-[matplotlib](https://matplotlib.org/) - basic plotting in python
-[animatplot](https://github.com/t-makaro/animatplot) - animates plots in matplotlib
-[seaborn](https://seaborn.pydata.org/) - makes quick and beautiful plots for easy data exploration, although may not be best for final plots
-[bokeh](https://bokeh.pydata.org/en/latest/) - Interactive visualization library, [Examples](https://bokeh.pydata.org/en/latest/docs/user_guide/server.html), [Examples](https://github.com/WillKoehrsen/Bokeh-Python-Visualization).  
+- [matplotlib](https://matplotlib.org/) - basic plotting in python
+- [animatplot](https://github.com/t-makaro/animatplot) - animates plots in matplotlib
+- [seaborn](https://seaborn.pydata.org/) - makes quick and beautiful plots for easy data exploration, although may not be best for final plots
+- [bokeh](https://bokeh.pydata.org/en/latest/) - Interactive visualization library, [examples](https://github.com/WillKoehrsen/Bokeh-Python-Visualization)  
 
 
 ### general tips
 
-**installing things**: using pip/conda is generally the best way to install things. If you're running into permission errors `pip install --user` tends to fix a lot of common problems
-
-**make classes for datasets/dataloaders**: wrapping data loading/preprocessing allows your code to be much cleaner and more modular. It also lets your models easily be adapted to different datasets. Pytorch has a good [tutorial](https://pytorch.org/tutorials/beginner/data_loading_tutorial.html) on how to do this (although the same principles apply without using pytorch.
-
-**store hyperparameters**: when you test many different sets of hyperparameters, it is difficult to easily map which hyperparameters correspond to which results. It's important to store hyperparameters in a easily readable way, such as saving an [argparse object](https://docs.python.org/3/library/argparse.html), or storing/saving parameters in a class you define yourself.
+- **installing things**: using pip/conda is generally the best way to install things. If you're running into permission errors `pip install --user` tends to fix a lot of common problems
+- **make classes for datasets/dataloaders**: wrapping data loading/preprocessing allows your code to be much cleaner and more modular. It also lets your models easily be adapted to different datasets. Pytorch has a good [tutorial](https://pytorch.org/tutorials/beginner/data_loading_tutorial.html) on how to do this (although the same principles apply without using pytorch.
+- **store hyperparameters**: when you test many different sets of hyperparameters, it is difficult to easily map which hyperparameters correspond to which results. It's important to store hyperparameters in a easily readable way, such as saving an [argparse object](https://docs.python.org/3/library/argparse.html), or storing/saving parameters in a class you define yourself.
 
 
 ### environment

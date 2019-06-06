@@ -980,23 +980,29 @@ maximize H(parent) - [weighted average] $\cdot$ H(children)
 
 # boosting
 
-- train more *weak learners* to fix current errors
+- train many *weak learners* to approximate a function
 
 ## adaboost
 
 - initialize weights to 1/n
 - iterate
   - classify weighted points
-  - re-weight points based on errors
+  - re-weight points to emphasize errors
 - finally, output error-weighted sum of weak learners
 
 ## adaboost comments
 
-- derived using exponential loss risk minimization
+- derived using exponential loss risk minimization (freund and schapire)
 - test error can keep decreasing once training error is at 0
 
 ## gradient boosting
 
-- want to subtract gradient of loss with respect to current total model
+- weak learners applied in sequence
+- subtract gradient of loss with respect to current total model
+  - for squared loss, just the residual
 - models need not be differentiable
-- for squared loss, just the residual
+
+## xgboost
+
+- very popular implementation of gradient boosting
+- fast and efficient

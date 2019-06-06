@@ -162,6 +162,8 @@ some more concrete questions:
 - [robustness may be at odds with accuracy](https://openreview.net/pdf?id=SyxAb30cY7) (madry 2019)
   - adversarial training helps w/ little data but hurts with lots of data
   - adversarially trained models have more meaningful gradients (and their adversarial examples actually look like other classes)
+- [Generalizability vs. Robustness: Adversarial Examples for Medical Imaging](https://arxiv.org/abs/1804.00504)
+- [robustness of explanations](https://arxiv.org/pdf/1806.07538.pdf)
 
 # empirical studies
 
@@ -250,26 +252,6 @@ some more concrete questions:
   - [learning both weights and connections](https://pdfs.semanticscholar.org/1ff9/a37d766e3a4f39757f5e1b235a42dacf18ff.pdf)
   - [single-path one-shot search](https://arxiv.org/abs/1904.00420)
 
-## trust scores background
-
-- papers using embeddings to generate confidences
-- [been kim trust paper](http://papers.nips.cc/paper/7798-to-trust-or-not-to-trust-a-classifier.pdf) - trust score uses density over some set of nearest neighbors(do clustering for each class - trust score = distance to once class's cluster vs the other classes')
-  - [papernot knn](https://arxiv.org/abs/1803.04765)
-  - [distance-based confidence scores](https://arxiv.org/pdf/1709.09844.pdf)
-  - [deep kernel knn](https://arxiv.org/pdf/1811.02579.pdf)
-  - fair paper: gradients should be larger if you are on the image manifold
-- lots of papers on confidence calibration (transforms outputs into probabilities)
-
-  - [get confidences before overfitting](https://arxiv.org/abs/1805.08206)
-    - 2 popular things: max margin, entropy of last layer
-    - [add an extra output for uncertainty](https://arxiv.org/abs/1810.01861)
-    - [learn to predict confidences](https://arxiv.org/pdf/1802.04865.pdf)
-- also methods on predict with rejection possibility
-
-  - [contextual outlier detection](https://arxiv.org/abs/1711.10589)
-  - [ensembling background](https://machinelearningmastery.com/ensemble-methods-for-deep-learning-neural-networks/)
-
-  - [snapshot ensembles](https://arxiv.org/abs/1704.00109)
 
 # basics
 

@@ -328,13 +328,30 @@ category: ml
 ## single Bernoulli
 
 - $L(p) = P$[Train | Bernoulli(p)]= $P(X_1,...,X_n\vert p)=\prod_i P(X_i\vert p)=\prod_i p^{X_i} (1-p)^{1-X_i}$
-- $=p^x (1-p)^{n-x}​$ where x = $\sum x_i​$
+- $=p^x (1-p)^{n-x}$ where x = $\sum x_i$
 - $\log[L(p)] = \log[p^x (1-p)^{n-x}]=x \log(p) + (n-x) \log(1-p)$
 - $0=\frac{dL(p)}{dp} = \frac{x}{p} - \frac{n-x}{1-p} = \frac{x-xp - np+xp}{p(1-p)}=x-np$
 - $\implies \hat{p} = \frac{x}{n}$
 
 ## multinomial
 
-- $L(\theta) = P(x_1,...,x_n\vert \theta_1,...,\theta_p) = \prod_i^n P(d_i\vert \theta_1,...\theta_p)=\prod_i^n factorials \cdot \theta_1^{x_1},...,\theta_p^{x_p}​$- ignore factorials because they are always same
+- $L(\theta) = P(x_1,...,x_n\vert \theta_1,...,\theta_p) = \prod_i^n P(d_i\vert \theta_1,...\theta_p)=\prod_i^n factorials \cdot \theta_1^{x_1},...,\theta_p^{x_p}$- ignore factorials because they are always same
   - require $\sum \theta_i = 1$
-- $\implies \theta_i = \frac{\sum_{j=1}^n x_{ij}}{N}​$ where N is total number of words in all docs
+- $\implies \theta_i = \frac{\sum_{j=1}^n x_{ij}}{N}$ where N is total number of words in all docs
+
+
+
+
+
+# boosting
+
+1. adaboost
+   1. freund & schapire
+   2. reweight data points based on errs of previous weak learners, then train new classifiers
+   3. classify as an ensemble
+2. gradient boosting
+   1. leo breiman
+   2. actually fits the residual errors made by the previous predictors
+3. xgboost
+   1. implementation of gradient boosted decision trees designed for speed and performance
+   2. things like caching, etc.

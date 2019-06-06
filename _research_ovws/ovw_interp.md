@@ -24,11 +24,13 @@ category: research
 - [Towards a Generic Framework for Black-box Explanation Methods](https://hal.inria.fr/hal-02131174v2/document)
   
   - sampling - selection of inputs to submit to the system to be explained
-- generation - analysis of links between selected inputs and corresponding outputs to generate explanations
+  - generation - analysis of links between selected inputs and corresponding outputs to generate explanations
   
-  1. *proxy* - approximates model (ex. rule list, linear model)
+	  1. *proxy* - approximates model (ex. rule list, linear model)
+    
     2. *explanation generation* - explains the proxy (ex. just give most important 2 features in rule list proxy, ex. LIME gives coefficients of linear model, Shap: sums of elements)
   - interaction (with the user)
+  - this is a super useful way to think about explanations (especially local), but doesn't work for SHAP / CD which are more about how much a variable contributes rather than a local approximation
 
 ![Screen Shot 2019-06-04 at 11.38.50 AM](assets/Screen Shot 2019-06-04 at 11.38.50 AM.png)
 
@@ -105,10 +107,19 @@ category: research
     1. dosovitskiy et al 16 - train generative deconv net to create images from neuron activations
        - aubry & russel 15 do similar thing
     3. gradient-based methods - visualize what in image would change class label
-      - *guided backpropagation* - springenberg et al
+      - gradient * input
+      - integrated gradients
+      - lrp
+      - taylor decomposition
+      - deeplift
+      - guided backpropagation - springenberg et al
         - lets you better create maximally specific image
       - selvaraju 17 - *grad-CAM*
       - [grad-cam++](https://arxiv.org/abs/1710.11063)
+      - [competitive gradients](https://arxiv.org/pdf/1905.12152.pdf) (gupta & arora 2019)
+        - Label  "wins" a pixel if either (a) its map assigns that pixel a positive score higher than the scores assigned by every other label ora negative score lower than the scores assigned by every other label. 
+        - final saliency map consists of scores assigned by the chosen label to each pixel it won, with the map containing a score 0 for any pixel it did not win.
+        - can be applied to any method which satisfies completeness (sum of pixel scores is exactly the logit value)
     4. koh and liang 17 - *find training points* that contribute most to classification errors
 
 
@@ -188,7 +199,7 @@ category: research
 
 # posthoc model-agnostic methods
 
-1. **local surrogate (LIME)** - fit a simple model locally to on point and interpret that
+1. local surrogate (LIME)** - fit a simple model locally to on point and interpret that
    - select data perturbations and get new predictions
      - for images, this is turning superpixels on/off
      - superpixels determined in unsupervised way
@@ -223,10 +234,11 @@ category: research
   - recalculate via sampling other features in expectation
 9. [quantitative input influence](https://ieeexplore.ieee.org/abstract/document/7546525) - similar to shap but more general
 10. permutation importance - increase in the prediction error after we permuted the feature's values
-	- If features are correlated, the permutation feature importance can be biased by unrealistic data
+  - If features are correlated, the permutation feature importance can be biased by unrealistic data
   instances (PDP problem)
   - not the same as model variance
   - Adding a correlated feature can decrease the importance of the associated feature
+11. [L2X: information-theoretical local approximation](https://arxiv.org/pdf/1802.07814.pdf) (chen et al. 2018) - locally assign feature importance based on mutual information with function
 
 # feature importance and interactions
 
@@ -301,6 +313,42 @@ category: research
   - *realism* in a partially accessible world
 - overall, they believe there is inherent value of ontological description
 
+# trust scores
+
+*papers using embeddings to generate confidences*
+
+- [been kim trust paper](http://papers.nips.cc/paper/7798-to-trust-or-not-to-trust-a-classifier.pdf) - trust score uses density over some set of nearest neighbors(do clustering for each class - trust score = distance to once class's cluster vs the other classes')
+  - [papernot knn](https://arxiv.org/abs/1803.04765)
+  - [distance-based confidence scores](https://arxiv.org/pdf/1709.09844.pdf)
+  - [deep kernel knn](https://arxiv.org/pdf/1811.02579.pdf)
+  - fair paper: gradients should be larger if you are on the image manifold
+- lots of papers on confidence calibration (transforms outputs into probabilities)
+
+  - [get confidences before overfitting](https://arxiv.org/abs/1805.08206)
+    - 2 popular things: max margin, entropy of last layer
+    - [add an extra output for uncertainty](https://arxiv.org/abs/1810.01861)
+    - [learn to predict confidences](https://arxiv.org/pdf/1802.04865.pdf)
+- also methods on predict with rejection possibility
+
+  - [contextual outlier detection](https://arxiv.org/abs/1711.10589)
+  - [ensembling background](https://machinelearningmastery.com/ensemble-methods-for-deep-learning-neural-networks/)
+- [snapshot ensembles](https://arxiv.org/abs/1704.00109)
+- bayesian neural nets
+  - [uncertainty though ensemble confidence](http://papers.nips.cc/paper/7219-simple-and-scalable-predictive-uncertainty-estimation-using-deep-ensembles)
+    - predict mean and variance w/ each network then ensemble
+    - also add in adversarial training
+  - [icu bayesian dnns](https://aiforsocialgood.github.io/icml2019/accepted/track1/pdfs/38_aisg_icml2019.pdf)
+    - focuses on epistemic uncertainty
+    - could use one model to get uncertainty and other model to predict
+  - [Evaluating Scalable Bayesian Deep Learning Methods for Robust Computer Vision](https://arxiv.org/pdf/1906.01620.pdf)
+    - *epistemic uncertainty* - uncertainty in the DNN model parameters
+      - without good estimates of this, often get aleatoric uncertainty wrong (since $p(y|x) = \int p(y|x, \theta) p(\theta |data) d\theta$
+    - *aleatoric uncertainty* -  inherent and irreducible data noise
+      - this can usually be gotten by predicting a distr. $p(y|x)$ instead of a point estimate
+      - ex. logistic reg. already does this
+      - ex. regression - just predict mean and variance of Gaussian
+
+
 
 # fairness
 
@@ -312,7 +360,7 @@ category: research
   - sample size disparity
   - proxies of sensitive attributes
 - definitions
-  - Unawareness - don't show sensitive attributes
+  - unawareness - don't show sensitive attributes
     - flaw: other attributes can still signal for it
   - group fairness
     - Demographic Parity - means for each group should be approximately equal
@@ -329,6 +377,12 @@ category: research
   - optimization at training time - add regularization
   - postprocessing - change thresholds to impose fairness
 
+# data science
+
+- [How to Generate Prediction Intervals with Scikit-Learn and Python](https://towardsdatascience.com/how-to-generate-prediction-intervals-with-scikit-learn-and-python-ab3899f992ed)
+  - can use quantile loss to penalize models differently
+  - than can use these different models to get confidence intervals
+- [experiment-tracking frameworks](https://www.reddit.com/r/MachineLearning/comments/bx0apm/d_how_do_you_manage_your_machine_learning/)
 
 # misc new papers
 
@@ -376,11 +430,6 @@ category: research
 - hard coding
   - [SSIM layer](https://arxiv.org/abs/1806.09152)
   - Inverting Supervised Representations with Autoregressive Neural Density Models 
-  
-- robustness
-  - https://arxiv.org/pdf/1806.08049.pdf
-  - https://arxiv.org/pdf/1806.07538.pdf
-  - [Generalizability vs. Robustness: Adversarial Examples for Medical Imaging](https://arxiv.org/abs/1804.00504)
   
 - [piecewise linear interp](https://arxiv.org/pdf/1806.10270.pdf)
 
