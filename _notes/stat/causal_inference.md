@@ -114,3 +114,6 @@ category: stat
     - eval - when one thing is erased, does the other also get erased?
 - [link to iclr talk](https://www.technologyreview.com/s/613502/deep-learning-could-reveal-why-the-world-works-the-way-it-does/?fbclid=IwAR3LF2dc_3EvWXzEHhtrsqtH9Vs-4pjPALfuqKCOma9_gqLXMKDeCWrcdrQ)
 - [visual causal feature learning](https://arxiv.org/abs/1412.2309)
+- [The Hierarchy of Stable Distributions and Operators to Trade Off Stability and Performance](https://arxiv.org/abs/1905.11374)
+  - different predictors learn different things
+  - only pick the stable parts of what they learn (in a graph representation)

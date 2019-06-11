@@ -266,6 +266,14 @@ $\mathbf{\hat{y}} = \mathbf{X} \mathbf{\hat{w}}^T$
 $\hat w_{RIDGE} = (X^TX \color{red}{+ \lambda I})^{-1}X^Ty$
 ![1d8XV](assets/1d8XV.png)
 
+
+
+## later models will be nonlinear
+
+<img src="assets/Screen Shot 2019-06-11 at 10.55.01 AM.png" width="80%">
+
+
+
 # parameter estimation
 
 ## probabilistic model

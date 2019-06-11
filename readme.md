@@ -33,6 +33,6 @@
 
 # reference
 
-- for updates, see [@chandan_singh96](https://twitter.com/chandan_singh96)
+- for updates, star the repo or follow [@chandan_singh96](https://twitter.com/chandan_singh96)
 - uses [timeline theme](http://kirbyt.github.io/timeline-jekyll-theme)
 - uses [particles.js](https://vincentgarreau.com/particles.js/)

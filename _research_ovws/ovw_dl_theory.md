@@ -223,17 +223,16 @@ some more concrete questions:
 
 - [memorization on single training example](https://arxiv.org/abs/1902.04698v2)
 - [memorization in dnns](https://arxiv.org/pdf/1706.05394.pdf)
-  
 - “memorization” as the behavior exhibited by DNNs trained on noise, and conduct a series of experiments that contrast the learning dynamics of DNNs on real vs. noise data
   - look at critical samples - adversarial exists nearby
-  
 - networks that generalize well have deep layers that are approximately linear with respect to batches of similar inputs
   - networks that memorize their training data are highly non-linear with respect to similar inputs, even in deep layers
   - expect that with respect to a single class, deep layers are approximately linear
-  
 - [example forgetting paper](https://openreview.net/forum?id=BJlxm30cKm)
-  
 - [secret sharing](https://arxiv.org/abs/1802.08232)
+- [memorization in overparameterized autoencoders](https://arxiv.org/abs/1810.10333)
+  - autoencoders don't lean identity, but learn projection onto span of training examples = memorization of training examples
+  - sometimes output individual training images, not just project onto space of training images
 
 ## probabilistic inference
 

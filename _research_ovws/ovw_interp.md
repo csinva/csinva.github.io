@@ -197,10 +197,16 @@ category: research
 
 - Breiman proposes permutation tests: Breiman, Leo. 2001. “Random Forests.” Machine Learning 45 (1). Springer: 5–32
 
+# rule lists
+
+- [2helps2b paper](http://eds.b.ebscohost.com.libproxy.berkeley.edu/eds/detail/detail?vid=2&sid=d1cdb5bf-8414-430e-a2a1-f2023a0cb632%40sessionmgr101&bdata=JnNpdGU9ZWRzLWxpdmU%3d#AN=000417622700007&db=edswsc)
+  - ![Screen Shot 2019-06-11 at 11.17.35 AM](assets/Screen Shot 2019-06-11 at 11.17.35 AM.png)
+
 # posthoc model-agnostic methods
 
-1. local surrogate (LIME)** - fit a simple model locally to on point and interpret that
+1. local surrogate ([LIME](https://arxiv.org/abs/1602.04938)) - fit a simple model locally to on point and interpret that
    - select data perturbations and get new predictions
+     - for tabular data, this is just varying the values around the prediction
      - for images, this is turning superpixels on/off
      - superpixels determined in unsupervised way
    - weight the new samples based on their proximity
