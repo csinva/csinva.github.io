@@ -9,7 +9,6 @@ category: research
 
 [TOC]
 
-
 # packages
 
 - [iNNvestigate neural nets](https://arxiv.org/abs/1808.04260) - provides a common interface and out-of-thebox implementation
@@ -37,6 +36,65 @@ category: research
 ![Screen Shot 2019-06-04 at 11.41.02 AM](assets/Screen Shot 2019-06-04 at 11.41.02 AM.png)
 
 ![Screen Shot 2019-06-04 at 11.42.17 AM](assets/Screen Shot 2019-06-04 at 11.42.17 AM.png)
+
+- [feature (variable) importance measurement review (VIM)](https://www.sciencedirect.com/science/article/pii/S0951832015001672) (wei et al. 2015)
+  - often-termed sensitivity, contribution, or impact
+  - some of these can be applied to data directly w/out model (e.g. correlation coefficient, rank correlation coefficient, moment-independent VIMs)
+  - ![Screen Shot 2019-06-14 at 9.07.18 AM](assets/Screen Shot 2019-06-14 at 9.07.18 AM.png)
+  - (epistemic) uncerainty: given model and distrs. on the input vars
+    - generate samples of input vars
+    - compute outputs for these samples
+    - characterize uncertainty of output
+  - types
+    - difference-based - deriv=based methods, local importance measure, morris' screening method
+      - **LIM** (local importance measure) - like LIME
+        - can normalize weights by values of x, y, or ratios of their standard deviations
+        - can also decompose variance to get the covariances between different variables
+        - can approximate derivative via adjoint method or smth else
+      - **morris' screening method**
+        - take a grid of local derivs and look at the mean / std of these derivs
+        - can't distinguish between nonlinearity / interaction
+      - using the squared derivative allows for a close connection w/ sobol's total effect index
+        - can extend this to taking derivs wrt different combinations of variables
+    - parametric regression
+      - correlation coefficient, linear reg coeffeicients
+      - **partial correlation coefficient** (PCC) - wipe out correlations due to other variables
+        - do a linear regression using the other variables (on both X and Y) and then look only at the residuals
+      - rank regression coefficient - better at capturing nonlinearity
+      - could also do polynomial regression
+      - more techniques (e.g. relative importance analysis RIA)
+    - nonparametric regression
+      - use something like LOESS, GAM, projection pursuit
+      - rank variables by doing greedy search (add one var at a time) and seeing which explains the most variance
+    - hypothesis test
+      - **grid-based hypothesis tests**: splitting the sample space (X, Y) into grids and then testing whether the patterns of sample distributions across different grid cells are random
+        - ex. see if means vary
+        - ex. look at entropy reduction
+      - other hypothesis tests include the squared rank difference, 2D kolmogorov-smirnov test, and distance-based tests
+    - variance-based vim (sobol's indices)
+      - sobol's indices - attribute total variance of model output: $Y = g(\mathbf{X}) = g_0 + \sum_i g_i (X_i) + \sum_i \sum_{j > i} g_{ij} (X_i, X_j) + \dots + g_{1,2,..., n}$
+        - $g_0 = \mathbf E (Y), \:g_i = \mathbf E(Y|X_i) - g_0, \:g_{ij} = \mathbf E (Y|X_i, X_j) - g_i - g_j - g_0$
+        - take variances of these terms
+        - if there are correlations between variables some of these terms can misbehave
+      - $S_i$: Sobol’s main effect index for $i$ measures the average residual variance of model output when all the inputs except $X_i$ are fixed over their full supports
+        - small value indicates $X_i$ is non-influential
+        - usually used to select important variabels
+      - $S_{Ti}$: Sobol's total effect index - include all terms (even interactions) involving a variable
+        - usually used to screen unimportant variables
+    - moment-independent vim
+      - want more than just the variance ot the output variables
+      - e.g. **delta index** = average dist. between $f_Y(y)$ and $f_{Y|X_i}(y)$ when $X_i$ is fixed over its full distr.
+        - $\delta_i = \frac 1 2 \mathbb E \int |f_Y(y) - f_{Y|X_i} (y) | dy = \frac 1 2 \int \int |f_{Y, X_i}(y, x_i) - f_Y(y) f_{X_i}(x_i)|dy \,dx_i$
+        - moment-independent because it depends on the density, not just any moment (like measure of dependence between $y$ and $X_i$
+    - graphic vim - like curves
+      - e.g. scatter plot, meta-model plot, regional VIMs, parametric VIMs
+      - CSM - relative change of model ouput mean when range of $X_i$ is reduced to any subregion
+      - CSV - same thing for variance
+  - a lot of algos for sampling
+- vim definition
+  1. a quantitative indicator that quantifies the change of model output value w.r.t. the change or permutation of one or a set of input variables
+  2. an indicator that quantifies the contribution of the uncertainties of one or a set of input variables to the uncertainty of model output variable
+  3. an indicator that quantifies the strength of dependence between the model output variable and one or a set of input variables. 
 
 ## criticisms / eval
 
@@ -195,7 +253,46 @@ category: research
 
 # tree ensembles
 
+- MDI = Gini import
 - Breiman proposes permutation tests: Breiman, Leo. 2001. “Random Forests.” Machine Learning 45 (1). Springer: 5–32
+- [Explainable AI for Trees: From Local Explanations to Global Understanding](https://arxiv.org/abs/1905.04610)
+  - shap-interaction scores - distribute among pairwise interactions + local effects
+  - plot lots of local interactions together - helps detect trends
+  - propose doing shap directly on loss function (identify how features contribute to loss instead of prediction)
+  - can run supervised clustering (where SHAP score is the label) to get meaningful clusters
+    - alternatively, could do smth like CCA on the model output
+- [conditional variable importance for random forests](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-9-307)
+  - propose permuting conditioned on the values of variables not being permuted
+    - to find region in which to permute, define the grid within which the values of $X_j$ are permuted for each tree by means of the partition of the feature space induced by that tree
+  - many scores (such as MDI, MDA) measure marginal importance, not conditional importance
+    - as a result, correlated variables get importances which are too high
+- [treeshap](https://arxiv.org/abs/1802.03888): prediction-level
+  - individual feature attribution: want to decompose prediction into sum of attributions for each feature
+    - each thing can depend on all features
+  - Saabas method: basic thing for tree
+    - you get a pred at end
+    - count up change in value at each split for each variable
+  - three properties
+    - local acc - decomposition is exact
+    - missingness - features that are already missing are attributed no importance
+      - for missing feature, just (weighted) average nodes from each split
+    - consistency - if F(X) relies more on a certain feature j, $F_j(x)$ should 
+      - however Sabaas method doesn't change $F_j(X)$ for $F'(x) = F(x) + x_j$
+  - these 3 things iply we want shap values
+  - average increase in func value when selecting i (given all subsets of other features)
+  - for binary features with totally random splits, same as Saabas
+  - **can cluster based on explanation similarity** (fig 4)
+    - can quantitatively evaluate based on clustering of explanations
+  - their fig 8 - qualitatively can see how different features alter outpu
+  - gini importance is like weighting all of the orderings
+- [understanding variable importances in forests of randomized trees](http://papers.nips.cc/paper/4928-understanding-variable-importances-in-forests-of-randomized-tre) (louppe et al. 2013)
+  - consider fully randomized trees
+    - assume all categorical
+    - randomly pick feature at each depth, split on all possibilities
+    - also studied by biau 2012
+    - extreme case of random forest w/ binary vars?
+  - real trees are harder: correlated vars and stuff mask results of other vars lower down
+  - asymptotically, randomized trees might actually be better
 
 # rule lists
 
@@ -250,6 +347,7 @@ category: research
 
 - build-up = context-free, less faithful: score is contribution of only variable of interest ignoring other variables
 - break-down = context-dependent, more faithful: score is contribution of variable of interest given all other variables (e.g. permutation test - randomize var of interest from right distr.)
+
 
 ## interactions explicitly
 

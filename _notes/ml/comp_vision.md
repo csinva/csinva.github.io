@@ -7,7 +7,6 @@ category: ml
 
 * TOC
 {:toc}
-
 ---
 
 # what's in an image?
@@ -30,7 +29,7 @@ category: ml
   - perspective projection works for spherical imaging surface - what's important is 1-1 mapping between rays and pixels
   - natural measure of image size is visual angle
 - **orthographic projection** - appproximation to perspective when object is relatively far
-  - define constant $s = f/Z_0​$
+  - define constant $s = f/Z_0$
   - transform $x = sX, y = sY$
 
 ### phenomena from perspective projection
@@ -148,7 +147,7 @@ category: ml
 
 - **rotation** - orthogonal transformations with det = +1 
   - 2D: $\begin{bmatrix}cos \theta & - sin \theta \\ sin \theta & cos \theta \end{bmatrix}$
-  - 3D: $ \begin{bmatrix}cos \theta & - sin \theta  & 0 \\ sin \theta & cos \theta & 0 \\ 0 & 0 & 1\end{bmatrix}​$ (rotate around z-axis)
+  - 3D: $ \begin{bmatrix}cos \theta & - sin \theta  & 0 \\ sin \theta & cos \theta & 0 \\ 0 & 0 & 1\end{bmatrix}$ (rotate around z-axis)
 - lots of ways to specify angles
   - axis plus amount of rotation - we will use this
   - euler angles
@@ -304,7 +303,7 @@ category: ml
   - $\begin{bmatrix} \dot{X}\\ \dot{Y} \\ \dot{Z} \end{bmatrix} = -t -\omega \times \begin{bmatrix} X \\ Y \\ Z\end{bmatrix} \implies \begin{bmatrix} \dot{x}\\ \dot{y}\end{bmatrix}= \frac{1}{Z} \begin{bmatrix}  -1 & 0 & x\\ 0 & 1 & y\end{bmatrix} \begin{bmatrix} t_x \\ t_y \\ t_z \end{bmatrix}+ \begin{bmatrix} xy & -(1+x^2) & y \\ 1+y^2 & -xy & -x\end{bmatrix}\begin{bmatrix} \omega_x \\ \omega_y \\ \omega_z\end{bmatrix}$
   - decomposed into translation component + rotation component
   - $t_z / Z$ is time to impact for a point
-- translational component of flow fields is more important - tells us $Z(x, y)​$ and translation $t​$
+- translational component of flow fields is more important - tells us $Z(x, y)$ and translation $t$
 - we can compute the time to contact
 
 
@@ -506,7 +505,7 @@ category: ml
 
 - not all key points will match - only match above some threshold
   - ex. criteria: symmetry - only use if a is b's nearest neighbor and b is a's nearest neighbor
-  - ​better: David Lowe trick -  how much better is 1-NN than 2-NN (e.g. threshold on 1-NN / 2-NN)
+  - better: David Lowe trick -  how much better is 1-NN than 2-NN (e.g. threshold on 1-NN / 2-NN)
 - problem: outliers will destroy fit
 - **RANSAC** algorithm (random sample consensus) - vote for best transformation
   - repeat this lots of times, pick the match that had the most inliers

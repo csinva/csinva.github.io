@@ -25,7 +25,14 @@ displays
 - [h5py](http://docs.h5py.org/en/stable/): a great way to read/write to arrays which are too big to store in memory, as if they were in memory
 - [slurmpy](https://github.com/brentp/slurmpy): lets you submit jobs to slurm using just python, so you never need to write bash scripts.
 - [pandas](https://pandas.pydata.org/): provides dataframes to python - often overlooked for big data which might not fit into DataFrames that fit into memory. Still very useful for comparing results of models, particularly with many hyperparameters.
+
+
+
+### computation
+
 - [dask](https://dask.org/) - natively scales python
+- [jax](https://github.com/google/jax) - high-performance python + numpy
+- [numba](https://numba.pydata.org/) - alternative to dask, just requires adding decorators to functions
 
 
 
@@ -46,9 +53,17 @@ displays
 
 ### environment
 
-- it's hard to pick a good ide for data science. [Jupyter](https://jupyter.org/) notebooks are great for exploratory analysis, while more fully built ides like [pycharm](https://www.jetbrains.com/pycharm/) are better for large-scale projects
+- it's hard to pick a good ide for data science. [jupyter](https://jupyter.org/) notebooks are great for exploratory analysis, while more fully built ides like [pycharm](https://www.jetbrains.com/pycharm/) are better for large-scale projects
 - using [atom](https://atom.io/) with the [hydrogen](https://atom.io/packages/hydrogen) plugin often strikes a nice balance
 - [jupytertext](https://github.com/mwouts/jupytext) offers a nice way to use version control with jupyter
+
+### hyperparameter tracking
+
+- it can often be messy to keep track of ml experiments
+- often I like to create a class which is basically a dictionary for params I want to vary / save and then save those to a dict (ex [here](https://github.com/csinva/dnn-experiments/tree/master/vision_fit)), but this only works for relatively small projects
+- [trains](https://github.com/allegroai/trains) by allegroai seems to be a promising experiment manager
+
+
 
 
 ### reference

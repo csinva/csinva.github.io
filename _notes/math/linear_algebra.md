@@ -27,6 +27,7 @@ typora-copy-images-to: ./assets/linear_algebra
 - linear 
     1. superposition $f(x+y) =  f(x)+f(y) $
     2. proportionality $f(k\cdot x) = k \cdot f(x)$
+- bilinear just means a function is linear in 2 variables
 - vector space
     1. closed under addition
     2. contains identity
@@ -229,4 +230,10 @@ typora-copy-images-to: ./assets/linear_algebra
   - neutrally stable if some $|\lambda_i|=1$
   - unstable if at least one $|\lambda_i|$ > 1
 - Leontief's input-output matrix
-- *Perron-Frobenius thm* - if A is a positive matrix (positive values), so is its largest eigenvalue. Every component of the corresponding eigenvector is also positive.
+- **Perron-Frobenius thm** - if A is a positive matrix (positive values), so is its largest eigenvalue and every component of the corresponding eigenvector is also positive
+  - useful for ranking, etc.
+- **power method**: want to find eigenvector $v$ corresponding to largest eigenvalue
+  - $v = \underset{n \to \infty}{\lim} \frac{A^n v_0}{|A^nv_0|}$ where $v_0$ is nonnegative
+
+
+

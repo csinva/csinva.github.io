@@ -23,7 +23,7 @@ input {
 
 select {
     background: #000;
-    border:0px;
+    border:1px;
 }
 
 .dataTables_wrapper .dataTables_paginate .paginate_button{

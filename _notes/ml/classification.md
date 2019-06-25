@@ -352,6 +352,11 @@ category: ml
 2. gradient boosting
    1. leo breiman
    2. actually fits the residual errors made by the previous predictors
-3. xgboost
-   1. implementation of gradient boosted decision trees designed for speed and performance
-   2. things like caching, etc.
+3. newer algorithms for gradient boosting (speed / approximations)
+   1. xgboost (2014 - popularized around 2016)
+      1. implementation of gradient boosted decision trees designed for speed and performance
+      2. things like caching, etc.
+   2. light gbm (2017)
+      1. can get gradient of each point wrt to loss - this is like importance for point (like weights in adaboost)
+         1. when picking split, filter out unimportant points
+   3. Catboost (2017)

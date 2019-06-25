@@ -84,6 +84,8 @@ category: stat
   - $Corr(aX+b,cY+d) = Corr(X,Y)$ if a and c have same sign
   - $R^2 = \rho^2$
 - **skewness** = $E[(\frac{X-\mu}{\sigma})^3]$
+- law of total expectation: $E[X] = E[E(X|Y)]$
+- **law of total variance**: $V[Y] =\underbrace{E[V(Y|X)]}_{\text{unexplained variance}} + \underbrace{V(E[Y|X])}_{\text{explained variance}}$
 
 # inequalities
 

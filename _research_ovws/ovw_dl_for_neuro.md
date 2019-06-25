@@ -35,6 +35,7 @@ Artificial neural networks can compute in several different ways. There is some 
 | temporal res | mid-high | high              | high                                                | super high  | high            | very low |
 | invasiveness | non      | yes (under skull) | very                                                | very        | non             | non      |
 
+- [ovw of advancements in neuroengineering](https://medium.com/neurotechx/timeline-of-global-highlights-in-neuroengineering-2005-2018-75e4637b9e38)
 - cellular
   - extracellular microeelectrodes
   - intracellular microelectrode

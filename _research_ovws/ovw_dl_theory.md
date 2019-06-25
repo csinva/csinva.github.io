@@ -251,6 +251,10 @@ some more concrete questions:
   - [learning both weights and connections](https://pdfs.semanticscholar.org/1ff9/a37d766e3a4f39757f5e1b235a42dacf18ff.pdf)
   - [single-path one-shot search](https://arxiv.org/abs/1904.00420)
 
+## bagging and boosting
+
+- [analyzing bagging](https://projecteuclid.org/download/pdf_1/euclid.aos/1031689014) (buhlmann and yu 2002)
+- [boosting with the L2 loss](http://zmjones.com/static/statistical-learning/buhlmann-jasa-2003.pdf) (buhlmann & yu 2003)
 
 # basics
 
