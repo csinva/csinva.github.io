@@ -149,6 +149,8 @@ category: stat
   - defs
     - bias = *approximation err*
     - variance = *estimation err*
+- **confidence intervals** - take sample data + produce a range of values that likely contains population parameter you are interested in
+- [confidence interval of the prediction](https://statisticsbyjim.com/glossary/confidence-interval-prediction/) is a range that likely contains the mean value of the dependent variable given specific values of the independent variables - usually wider because it is one point, not a mean
 
 ## MLE
 

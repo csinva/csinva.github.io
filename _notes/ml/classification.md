@@ -170,6 +170,7 @@ category: ml
     - average: take average of distribution of votes
       - reduces variance, better for improving more variable (unstable) models
     - *adaboost* - weight models based on their performance
+- [optimal classification trees](https://link.springer.com/content/pdf/10.1007%2Fs10994-017-5633-9.pdf) - simultaneously optimize all splits, not one at a time
 
 ## svms
 
@@ -341,17 +342,17 @@ category: ml
 
 
 
-
-
 # boosting
 
 1. adaboost
    1. freund & schapire
    2. reweight data points based on errs of previous weak learners, then train new classifiers
    3. classify as an ensemble
+   
 2. gradient boosting
    1. leo breiman
    2. actually fits the residual errors made by the previous predictors
+   
 3. newer algorithms for gradient boosting (speed / approximations)
    1. xgboost (2014 - popularized around 2016)
       1. implementation of gradient boosted decision trees designed for speed and performance
@@ -360,3 +361,11 @@ category: ml
       1. can get gradient of each point wrt to loss - this is like importance for point (like weights in adaboost)
          1. when picking split, filter out unimportant points
    3. Catboost (2017)
+   
+4. boosting with different cost function ($y \in \{-1, 1\}$, or for $L_2$Boost, also $y \in \mathbb R$)
+
+   | Adaboost         | LogitBoost                       | $L_2$Boost           |
+   | ---------------- | -------------------------------- | -------------------- |
+   | $\exp(y\hat{y})$ | $\log_2 (1 + \exp(-2y \hat y ))$ | $(y - \hat y)^2 / 2$ |
+
+   

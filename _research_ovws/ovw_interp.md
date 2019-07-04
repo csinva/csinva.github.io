@@ -294,8 +294,14 @@ category: research
   - real trees are harder: correlated vars and stuff mask results of other vars lower down
   - asymptotically, randomized trees might actually be better
 
-# rule lists
+# rule lists / sets
 
+- [interpretable classifiers using rules and bayesian analysis](https://projecteuclid.org/download/pdfview_1/euclid.aoas/1446488742) (letham et al. 2015)
+  - [scalable bayesian rule lists](https://dl.acm.org/citation.cfm?id=3306086) (yang et al. 2017) - faster algorithm for computing
+- [learning certifiably optimal rules lists](https://dl.acm.org/citation.cfm?id=3098047) (angelino et al. 2017) - optimization for categorical feature space
+- [interpretable decision set](https://dl.acm.org/citation.cfm?id=2939874) (lakkaraju et al. 2016) - set of if then rules which are all independent (not falling)
+- [A Bayesian Framework for Learning Rule Sets for Interpretable Classification](http://www.jmlr.org/papers/volume18/16-003/16-003.pdf) (wang et al. 2017) - rules are a bunch of clauses OR'd together (e.g. if (X1>0 AND X2<1) OR (X2<1 AND X3>1) OR ... then Y=1)
+- [optimal sparse decision trees](https://arxiv.org/abs/1904.12847) (hu et al. 2019) - optimal decision trees for binary variables
 - [2helps2b paper](http://eds.b.ebscohost.com.libproxy.berkeley.edu/eds/detail/detail?vid=2&sid=d1cdb5bf-8414-430e-a2a1-f2023a0cb632%40sessionmgr101&bdata=JnNpdGU9ZWRzLWxpdmU%3d#AN=000417622700007&db=edswsc)
   - ![Screen Shot 2019-06-11 at 11.17.35 AM](assets/Screen Shot 2019-06-11 at 11.17.35 AM.png)
 
@@ -417,7 +423,7 @@ category: research
   - *realism* in a partially accessible world
 - overall, they believe there is inherent value of ontological description
 
-# trust scores
+# trust scores / uncertainty
 
 *papers using embeddings to generate confidences*
 
@@ -426,9 +432,10 @@ category: research
   - [distance-based confidence scores](https://arxiv.org/pdf/1709.09844.pdf)
   - [deep kernel knn](https://arxiv.org/pdf/1811.02579.pdf)
   - fair paper: gradients should be larger if you are on the image manifold
+- [outlier-detection](https://scikit-learn.org/stable/modules/outlier_detection.html)
+    - [isolation forest](https://ieeexplore.ieee.org/abstract/document/4781136) - lower average number of random splits required to isolate a sample means more outlier
 - lots of papers on confidence calibration (transforms outputs into probabilities)
-
-  - [get confidences before overfitting](https://arxiv.org/abs/1805.08206)
+- [get confidences before overfitting](https://arxiv.org/abs/1805.08206)
     - 2 popular things: max margin, entropy of last layer
     - [add an extra output for uncertainty](https://arxiv.org/abs/1810.01861)
     - [learn to predict confidences](https://arxiv.org/pdf/1802.04865.pdf)
@@ -436,21 +443,30 @@ category: research
 
   - [contextual outlier detection](https://arxiv.org/abs/1711.10589)
   - [ensembling background](https://machinelearningmastery.com/ensemble-methods-for-deep-learning-neural-networks/)
-- [snapshot ensembles](https://arxiv.org/abs/1704.00109)
+- [How to Generate Prediction Intervals with Scikit-Learn and Python](https://towardsdatascience.com/how-to-generate-prediction-intervals-with-scikit-learn-and-python-ab3899f992ed)
+  - can use quantile loss to penalize models differently
+  - than can use these different models to get confidence intervals
+  - [can easily do this with sklearn](https://scikit-learn.org/stable/auto_examples/ensemble/plot_gradient_boosting_quantile.html)
+  - quantile loss = $\begin{cases} \alpha \cdot \Delta & \text {if} \quad \Delta > 0\\(\alpha - 1) \cdot \Delta & \text{if} \quad \Delta < 0\end{cases}$
+    - $\Delta =$ actual - predicted
+    - ![Screen Shot 2019-06-26 at 10.06.11 AM](assets/Screen Shot 2019-06-26 at 10.06.11 AM.png)
+- [uncertainty though ensemble confidence](http://papers.nips.cc/paper/7219-simple-and-scalable-predictive-uncertainty-estimation-using-deep-ensembles)
+  - predict mean and variance w/ each network then ensemble
+  - also add in adversarial training
+  - [snapshot ensembles](https://arxiv.org/abs/1704.00109)
 - bayesian neural nets
-  - [uncertainty though ensemble confidence](http://papers.nips.cc/paper/7219-simple-and-scalable-predictive-uncertainty-estimation-using-deep-ensembles)
-    - predict mean and variance w/ each network then ensemble
-    - also add in adversarial training
   - [icu bayesian dnns](https://aiforsocialgood.github.io/icml2019/accepted/track1/pdfs/38_aisg_icml2019.pdf)
     - focuses on epistemic uncertainty
     - could use one model to get uncertainty and other model to predict
   - [Evaluating Scalable Bayesian Deep Learning Methods for Robust Computer Vision](https://arxiv.org/pdf/1906.01620.pdf)
-    - *epistemic uncertainty* - uncertainty in the DNN model parameters
+    - **epistemic uncertainty** - uncertainty in the DNN model parameters
       - without good estimates of this, often get aleatoric uncertainty wrong (since $p(y|x) = \int p(y|x, \theta) p(\theta |data) d\theta$
-    - *aleatoric uncertainty* -  inherent and irreducible data noise
+    - **aleatoric uncertainty** -  inherent and irreducible data noise (e.g. features contradict each other)
       - this can usually be gotten by predicting a distr. $p(y|x)$ instead of a point estimate
       - ex. logistic reg. already does this
       - ex. regression - just predict mean and variance of Gaussian
+- [Dropout as a Bayesian Approximation: Representing Model Uncertainty in Deep Learning](http://proceedings.mlr.press/v48/gal16.pdf)
+  - dropout at test time gives you uncertainty
 
 
 
@@ -483,9 +499,6 @@ category: research
 
 # data science
 
-- [How to Generate Prediction Intervals with Scikit-Learn and Python](https://towardsdatascience.com/how-to-generate-prediction-intervals-with-scikit-learn-and-python-ab3899f992ed)
-  - can use quantile loss to penalize models differently
-  - than can use these different models to get confidence intervals
 - [experiment-tracking frameworks](https://www.reddit.com/r/MachineLearning/comments/bx0apm/d_how_do_you_manage_your_machine_learning/)
 
 # misc new papers

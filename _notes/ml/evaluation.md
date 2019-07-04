@@ -8,9 +8,8 @@ category: ml
 {:toc}
 ---
 
-# metrics
+# losses
 
-- *goodness of fit* - how well does the learned distribution represent the real distribution?
 - define a loss function $\mathcal{L}$
   - 0-1 loss: $\vert C-f(X)\vert$  - hard to minimize (combinatorial)
   - $L_2$ loss: $[C-f(X)[^2$
@@ -22,12 +21,40 @@ category: ml
   1. misclassification error - not differentiable
   2. Gini index: $\sum_{i != j} p_i q_j$
   3. cross-entropy: $-\sum_x p(x)\: log \: q(x) $
+
+# measures
+
+- *goodness of fit* - how well does the learned distribution represent the real distribution?
+
+![Screen Shot 2019-06-30 at 8.27.56 PM](assets/Screen Shot 2019-06-30 at 8.27.56 PM.png)
+
 - accuracy-based
-  - accuracy = number of correct classifications / total number of test cases
-  - balanced accuracy = 1/2 (TP/P + TN/N)
-  - recall - TP/(TP+FN)
-  - precision - TP/(TP+FP)
-- roc curve: TPR = hit rate (recall) vs. FPR (not precision) = FP/N
+  
+  - accuracy = (TP + TN) / (P + N)
+    - correct classifications / total number of test cases
+  - balanced accuracy = 1/2 (TP / P + TN / N)
+  
+  - **recall** = sensitivity = true positive rate = TP / P
+    - what fraction of the real positives do we return?
+  - **precision** = TP / (TP + FP)
+    - what fraction of the prediction positives are real positives?
+  - **specificity** = true negative rate = TN / N
+    - what fraction of the real negatives do we return?
+  - **false positive rate** = FP / N $= 1 - \text{specificity}$
+    - what fraction of the predicted negatives are wrong?
+  - F-score is harmonic mean of precision and recall: 2 * (prec * rec) / (prec + rec)
+  
+- curves
+
+  - roc curve: recall vs. false positive rate
+    - perfect is recall = 1, false positive rate = 0
+  - precision-recall curve
+  - AUC: area under (either one) of these curves
+
+# comparing two things
+
+- odds: p1 : not p1
+- odds ratio is a ratio of odds
 
 # cv
 

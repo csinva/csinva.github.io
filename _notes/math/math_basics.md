@@ -27,6 +27,7 @@ category: math
 - *Zeta*: $\zeta(x) = \sum_1^\infty \frac{1}{x^2} $
 - Sigmoid (logistic): $f(x) = \frac{1}{1+e^{-x}} = \frac{e^x}{e^x+1}$
 - Softmax: $f(x) = \frac{e^{x_i}}{\sum_i e^{x_i}}$
+- spline: piecewise polynomial
 
 # stochastic processes
 
@@ -60,7 +61,7 @@ category: math
     - Proof by Induction
     - Direct Proof
     - Proof by Contradiction - assume p $\land$ -q, show contradiction
-    - Proof by Contrapositive - show -q $\to​$ -p
+    - Proof by Contrapositive - show -q $\to$ -p
 
 # identities
 

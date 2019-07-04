@@ -7,7 +7,6 @@ category: math
 
 * TOC
 {:toc}
-
 ---
 
 # ch 1 - the real numbers
@@ -53,9 +52,11 @@ use AoC with x = sup{$a_n: n \in \mathbb{N}$} in the intersection of all sets</d
 
 # ch 2 - sequences and series
 - a sequence $(a_n)$ *converges* to a real number if $\forall \epsilon > 0, \exists N \in \mathbb{N}$ such that $\forall n\geq N, \|a_n-a\| < \epsilon$
+	
 	- otherwise it *diverges*
 - if a limit exists, it is unique
 - a sequence $(x_n)$ is *bounded* if there exists a number M > 0 such that $\|x_n\|\leq M \forall n \in \mathbb{N}$
+	
 	- every convergent sequence is bounded
 - *algebraic limit thm* - let lim $a_n = a$ and lim $b_n$ = b.  Then
 	1. lim($ca_n$) = ca
@@ -98,6 +99,7 @@ use AoC with x = sup{$a_n: n \in \mathbb{N}$} in the intersection of all sets</d
 - if the series $\sum_{n=1}^\infty a_n$ converges then lim $a_n=0$
 2. *comparison test*
 3. *geometric series* - 	$\sum_{n=0}^\infty a r^n = \frac{a}{1-r}$
+	
 	- $s_m = a+ar+...+ar^{m-1} = \frac{a(1-r^m)}{1-r}$
 4. *absolute convergence test*
 5. *alternating series test*
@@ -108,7 +110,7 @@ use AoC with x = sup{$a_n: n \in \mathbb{N}$} in the intersection of all sets</d
 - if a series converges absolutely, any rearrangement converges to same limit	
 
 # ch 3 - basic topology of R
-	
+
 ### 3.1 cantor set
 - C has small length, but its cardinality is uncountable
 - discussion of dimensions, doubling sizes leads to 2^dimension sizes
@@ -143,7 +145,7 @@ use AoC with x = sup{$a_n: n \in \mathbb{N}$} in the intersection of all sets</d
 	3. every open cover for K has a finite subcover
 	
 # ch 4	- functional limits and continuity
-	
+
 ### 4.1 
 - dirichlet function: 1 if r $\in \mathbb{Q}$ 0 otherwise	
 	

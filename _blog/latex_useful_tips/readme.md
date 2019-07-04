@@ -11,8 +11,9 @@ category: blog
 
 *Contains simple instructions for common issues with writing in latex*
 
-## latex_diff_complex
-Pipeline for finding the differences between 2 versions of complex latex projects.
+## diffing complex latex files
+
+**Pipeline for finding the differences between 2 versions of complex latex projects.**
 
 *Note: this assumes that style files for the two do not change (only changes to .tex files).*
 
@@ -21,7 +22,7 @@ Pipeline for finding the differences between 2 versions of complex latex project
 2. "Flatten" the tex files by replacing `\input{fname.tex}` with the contents of the file `fname.tex`
   - simple python code to do this [here](https://github.com/johnjosephhorton/flatex)
   - installing (locally): 
-  ```
+  ```bash
       git clone git@github.com:johnjosephhorton/flatex.git
       cd flatex
       pip install --editable . 

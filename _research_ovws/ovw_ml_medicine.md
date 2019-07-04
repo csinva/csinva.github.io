@@ -11,3 +11,11 @@
   - things can't be de-identified
   - algorithms / data can be biased
   - correlation / causation get confused
+
+
+
+# interpretations
+
+- doctors also misinterpret things to be causal
+- doctors don't have intuition for even relatively simple features, such as averages
+- doctors require context for features (e.g. this feature is larger than the average)

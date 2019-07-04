@@ -1,0 +1,46 @@
+set nocompatible              " required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
+
+" Bundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+" Plugin 'tmhedberg/SimpylFold' " folding
+Plugin 'scrooloose/syntastic' " synatx highlighting
+Plugin 'nvie/vim-flake8'  " PEP8 checking
+Plugin 'kien/ctrlp.vim'  " ctrlp searching
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+
+call vundle#end()            " required
+
+"esc with jk
+inoremap jk <esc>
+filetype plugin indent on    " required
+
+" Enable folding
+set foldmethod=indent
+set foldlevel=99
+
+" Enable folding with the spacebar
+nnoremap <space> za
+
+filetype plugin indent on    " required
+
+" Line numbering
+" set nu
+
+" pretty python
+let python_highlight_all=1
+syntax on
+set clipboard=unnamed " copy paste from other applications
+
+:colorscheme koehler
+":set mouse=nicr
+":set mouse=a

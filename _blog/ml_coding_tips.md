@@ -63,7 +63,9 @@ displays
 - often I like to create a class which is basically a dictionary for params I want to vary / save and then save those to a dict (ex [here](https://github.com/csinva/dnn-experiments/tree/master/vision_fit)), but this only works for relatively small projects
 - [trains](https://github.com/allegroai/trains) by allegroai seems to be a promising experiment manager
 
+### command line utils
 
+- `ctrl-a`: HOME, `ctrl-e`: END
 
 
 ### reference

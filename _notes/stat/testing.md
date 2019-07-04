@@ -6,8 +6,9 @@ category: stat
 ---
 * TOC
 {:toc}
-
 ---
+
+[wonderful summarizing blog post](https://lindeloev.github.io/tests-as-linear/)
 
 # basics
 
