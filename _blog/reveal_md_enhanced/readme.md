@@ -5,7 +5,12 @@ title: great slides with reveal-md
 category: blog
 ---
 
-**This repo contains some enhancements for [reveal-md](https://github.com/webpro/reveal-md), an awesome library for creating presentations with markdown.**
+# great slides with reveal markdown 
+**chandan singh** 
+
+---
+
+**This post and the [associated code](https://github.com/csinva/csinva.github.io/tree/master/_blog/reveal_md_enhanced) contain some enhancements for [reveal-md](https://github.com/webpro/reveal-md), an awesome library for creating presentations with markdown.**
 
 This has several big benefits:
 

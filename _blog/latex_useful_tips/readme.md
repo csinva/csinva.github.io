@@ -6,8 +6,10 @@ category: blog
 ---
 
 
-
 # latex how-tos
+**chandan singh** 
+
+---
 
 *Contains simple instructions for common issues with writing in latex*
 

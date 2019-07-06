@@ -9,6 +9,10 @@ category: blog
 
 # Quick start imagenet in pytorch
 
+**chandan singh** 
+
+---
+
 [ImageNet](http://www.image-net.org/) has become a staple dataset in computer vision, but is still pretty difficult to download/install. These are some simple instructions to get up and running in pytorch.
 
 ## step 1: download/preprocessing

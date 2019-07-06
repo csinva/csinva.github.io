@@ -5,6 +5,12 @@ title: ml coding tips
 category: blog
 ---
 
+# Useful ml / data-science packages
+
+**chandan singh** 
+
+---
+
 **These are some packages/tips for machine-learning coding in python.**
 
 Machine learning code gets messy fast. In contrast to other programs, machine learning programs often require a large number of variations of similar models that can often be difficult to keep track of. Here are some tips on coding for machine learning, assuming you already know the basics (e.g. [numpy](http://www.numpy.org/), [scikit-learn](https://scikit-learn.org/stable/), etc.) and appropriate framework for your problem (e.g. [pytorch](https://pytorch.org/)):
