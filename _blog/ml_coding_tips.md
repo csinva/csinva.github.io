@@ -41,7 +41,8 @@ displays
 - [matplotlib](https://matplotlib.org/) - basic plotting in python
 - [animatplot](https://github.com/t-makaro/animatplot) - animates plots in matplotlib
 - [seaborn](https://seaborn.pydata.org/) - makes quick and beautiful plots for easy data exploration, although may not be best for final plots
-- [bokeh](https://bokeh.pydata.org/en/latest/) - Interactive visualization library, [examples](https://github.com/WillKoehrsen/Bokeh-Python-Visualization)  
+- [bokeh](https://bokeh.pydata.org/en/latest/) - interactive visualization library, [examples](https://github.com/WillKoehrsen/Bokeh-Python-Visualization)  
+- [plotly](https://plot.ly/python/offline/) - make interactive plots
 
 
 ### general tips

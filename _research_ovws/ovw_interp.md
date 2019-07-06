@@ -296,9 +296,26 @@ category: research
 
 # rule lists / sets
 
+- these algorithms usually don't support regression, but you can get regression by cutting the outcome into intervals
+- oneR algorithm - select feature that carries most information about the outcome and then split multiple times on that feature
+- sequential covering - keep trying to cover more points sequentially
+- people are frequently trying to extract rules from trained dnns
+- [foundations of rule learning](https://dl.acm.org/citation.cfm?id=2788240) (furnkranz et al. 2014)
+  - 2 basic concepts for a rule
+    - converage = support
+    - accuracy = confidence = consistency
+      - measures for rules: precision, info gain, correlation, m-estimate, Laplace estimate
 - [interpretable classifiers using rules and bayesian analysis](https://projecteuclid.org/download/pdfview_1/euclid.aoas/1446488742) (letham et al. 2015)
+  - start by mining rules (want them to apply to a large amount of data and not have too many conditions) - uses FP-Growth algorithm (borgelt 2005), could also uses Apriori or Eclat
+    - current approach does not allow for negation (e.g. not diabetes) and must split continuous variables into categorical somehow (e.g. quartiles)
+    - mines things that frequently occur together, but doesn't look at outcomes in this step - okay (since this is all about finding rules with high support)
+  - learn rules w/ prior for short rule conditions and short lists
+    - start w/ random list 
+    - sample new lists by adding/removing/moving a rule
+    - at the end, return the list that had the highest probability
   - [scalable bayesian rule lists](https://dl.acm.org/citation.cfm?id=3306086) (yang et al. 2017) - faster algorithm for computing
 - [learning certifiably optimal rules lists](https://dl.acm.org/citation.cfm?id=3098047) (angelino et al. 2017) - optimization for categorical feature space
+  - can get upper / lower bounds for loss = risk + $\lambda$ * listLength
 - [interpretable decision set](https://dl.acm.org/citation.cfm?id=2939874) (lakkaraju et al. 2016) - set of if then rules which are all independent (not falling)
 - [A Bayesian Framework for Learning Rule Sets for Interpretable Classification](http://www.jmlr.org/papers/volume18/16-003/16-003.pdf) (wang et al. 2017) - rules are a bunch of clauses OR'd together (e.g. if (X1>0 AND X2<1) OR (X2<1 AND X3>1) OR ... then Y=1)
 - [optimal sparse decision trees](https://arxiv.org/abs/1904.12847) (hu et al. 2019) - optimal decision trees for binary variables
