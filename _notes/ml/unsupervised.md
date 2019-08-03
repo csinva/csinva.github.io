@@ -86,7 +86,7 @@ graph LR;
 - latent variable Z has multinomial distr.
   - *mixing proportions*: $P(Z^i=1|x, \xi)$
     - ex. $ \frac{e^{\xi_i^Tx}}{\sum_je^{\xi_j^Tx}}$
-  - *mixture components*: $p(y|Z^i=1, x, \theta_i)​$ ~ different choices
+  - *mixture components*: $p(y|Z^i=1, x, \theta_i)$ ~ different choices
   - ex. mixture of linear regressions
     - $p(y| x, \theta) = \sum_i \underbrace{\pi_i (x, \xi)}_{\text{mixing prop.}} \cdot \underbrace{\mathcal{N}(y|\beta_i^Tx, \sigma_i^2)}_{\text{mixture comp.}}$
   - ex. mixtures of logistic regressions
@@ -95,7 +95,7 @@ graph LR;
 
 ## spectral clustering
 
-- use the spectrum (eigenvalues) of the similarity matrix of the data to perform dim. reduction before clustering in fewer dimensions
+- use the spectrum (eigenvalues) of the similarity matrix (ie.e kernal matrix) of the data to perform dim. reduction before clustering in fewer dimensions
 
 # generative models
 

@@ -14,13 +14,25 @@ category: stat
 - When using observational (non-experimental) data to make causal inferences, the key problem is *confounding*
   - *stratification* = *cross-tabulation* - only look at when confounding variables have same value
 - association is circumstantial evidence for causation
-- examples
-  - HIP trial of mammography - want to do whole treatment group v. whole control group
-  - Snow on cholera - water
-  - causes of poverty - Yul's model, changes with lots of things
 - problem: never get to see gt
+- groundtruth: randomized control trial (RCT) - controls for any possible confounders
 
-# basic causal inference
+
+## 2 general approaches
+
+1. matching - find patients that are similar and differ only in the treatment
+   1. only variables you don't match on could be considered causal
+2. regression
+   - requires *unconfoundedness* = *omitted variable bias*
+   - if there are no confounders, correlation is causation
+
+## common examples
+
+- HIP trial of mammography - want to do whole treatment group v. whole control group
+- Snow on cholera - water
+- causes of poverty - Yul's model, changes with lots of things
+
+# basic neyman-pearson causal inference
 
 - *confounding* - difference between groups other than the treatment which affects the response
 - [bradford hill criteria](https://en.wikipedia.org/wiki/Bradford_Hill_criteria) - some simple criteria for establishing causality (e.g. strength, consistency, specificity)
@@ -36,16 +48,6 @@ category: stat
   3. fisherian testing framework
     - small p-values evidence against null hypothesis
     - null hypothesis
-- errors
-  - *type I err*: FP - reject when false
-  - *type II err*: FN
-  - *power*: TP = sensitivity
-  - TN
-  - newer
-    - sensitivity = power
-    - recall = sensitivity - true positive rate = TP / P
-    - precision = TP / (TP + FP)
-    - specificity = true neg rate = TN / N
 - natural experiments
   - ex. john snow
 - *propensity score* - probability that a subject recieving a treatment is valid after conditioning on appropriate covariates
@@ -54,66 +56,84 @@ category: stat
   2. randomization
   3. conditioning
 
-# 2 general approaches
 
-1. matching - find patients that are similar and differ only in the treatment
-   1. only variables you don't match on could be considered causal
-2. regression
-   - requires *unconfoundedness* = *omitted variable bias*
-   - if there are no confounders, correlation is causation
-
-# causal inference papers
-
-- Hainmueller & Hangartner (2013) - Swiss passport
-  - naturalization decisions vary with immigrants' attributes
-  - is there immigration against immigrants based on country of origin?
-  - citizenship requires voting by municipality
-- Sekhon et al. - when natural experiments are neither natural nor experiments
-  - even when natural interventions are randomly as- signed, some of the treatment–control comparisons made available by natural experiments may not be valid
-- Grossman et al. - "Descriptive Representation and Judicial Outcomes in Multiethnic Societies"
-  - judicial outcomes of arabs depended on whether there was an Arab judge on the panel
-- liver transplant
-  - maximize benefit (life with - life without)
-  - currently just goes to person who would die quickest without
-  - Y = T Y(1) + (1-T) Y(0)
-    - Y(1) = survival with transplant
-    - Y(0) = survival w/out transplant
-      - fundamental problem of causal inference - can 't observe Y(1) and Y(0)
-    - T = 1 if receive transplant else 0
-  - goal: estimate $\tau = Y(1) - Y(0)$ for each person
-
-# causality ovw
+# causality graphs causal inference
 
 ![Screen Shot 2019-04-07 at 7.01.55 PM](assets/Screen Shot 2019-04-07 at 7.01.55 PM.png)
 
 
 
-# pearl's causal ladder
+- more from the book of why
+- [blog post on causal ladder](http://smithamilli.com/blog/causal-ladder/)
+- [intro to do-calculus post](https://www.inference.vc/untitled/) and subsequent posts
 
-- [blog post](http://smithamilli.com/blog/causal-ladder/)
-  - prediction - just need to have the joint distr. of all the variables
-  - intervention - we can change things and get conditionals based on evidence **after intervention**
-  - counterfactuals - we can change things and get conditionals based on evidence **before intervention**
+## 1- **prediction/association** - just need to have the joint distr. of all the variables
 
-# bottou causality
+- basically just $p(y|x)$
 
-- ex. [lopez-paz_17](http://openaccess.thecvf.com/content_cvpr_2017/papers/Lopez-Paz_Discovering_Causal_Signals_CVPR_2017_paper.pdf)
-  - C(A, B) - count number of images in which B would disappear if A was removed
-  - we say A *causes* B when C(A, B) is (sufficiently) greater than the converse C(B, A)
-  - basics
-    - given joint distr. of (A, B), we want to know if A -> B, B-> A
-      - with no assumptions, this is nonidentifiable
-    - requires 2 assumptions
-      - ICM: independence between cause and mechanism (i.e. the function doesn't change based on distr. of X) - this usually gets violated in anticausal direction
-      - causal sufficiency - we aren't missing any vars
-    - ex. ![Screen Shot 2019-05-20 at 10.04.03 PM](assets/Screen Shot 2019-05-20 at 10.04.03 PM.png)
-      - here noise is indep. from x (causal direction), but can't be independent from y (non-causal direction)
-      - in (c), function changes based on input
-    - can turn this into binary classification and learn w/ network: given X, Y, does X->Y or Y-X?
-  - on images, they get scores for different objects (w/ bounding boxes)
-    - eval - when one thing is erased, does the other also get erased?
-- [link to iclr talk](https://www.technologyreview.com/s/613502/deep-learning-could-reveal-why-the-world-works-the-way-it-does/?fbclid=IwAR3LF2dc_3EvWXzEHhtrsqtH9Vs-4pjPALfuqKCOma9_gqLXMKDeCWrcdrQ)
-- [visual causal feature learning](https://arxiv.org/abs/1412.2309)
-- [The Hierarchy of Stable Distributions and Operators to Trade Off Stability and Performance](https://arxiv.org/abs/1905.11374)
-  - different predictors learn different things
-  - only pick the stable parts of what they learn (in a graph representation)
+## 2 - **intervention** - we can change things and get conditionals based on evidence **after intervention**
+
+- $p(y|do(x))$ - which represents the conditional distr. we would get if we were to manipulate $x$ in a randomized trial
+  - to get this, we assume the causal structure (can still kind of test it based on conditional distrs., can sometimes use causal discovery techniques to try to identify the causal diagram under just some smoothness / independence assumptions)
+  - having assumed the structure, we delete all edges going into a do operator and set the value of $x$
+  - then, do-calculus yields a formula to estimate $p(y|do(x))$ assuming this causal structure
+  - see introductory paper [here](https://arxiv.org/pdf/1305.5506.pdf), more detailed paper [here](https://ftp.cs.ucla.edu/pub/stat_ser/r416-reprint.pdf) (pearl 2013)
+- by assuming structure, we learn how large impacts are
+
+## 3 - **counterfactuals** - we can change things and get conditionals based on evidence **before intervention**
+- probablilistic answer to a "what would have happened if" question
+- this is for a specific data point, not a randomly sampled data point like an intervention would be
+  - instead of intervention $p(y|do(x))$ we get $p(y^*|x^*, z=z)$ where z represents fixing all the other variables and $y^*$ and $x^*$ are not observed
+  - averaging over all data points, we'd expect to get something similar to the intervention $p(y|do(x))$
+- requires SEM - structured equation model not just causal graph
+  - this is set of equations which tell how to compute value of each node given parents (and maybe some noise $\epsilon$ for each node)
+  - again, fix value of $x$ (and values of $\epsilon$ seend in the data) and use SEM to set all downstream variables
+- this allows for our intervention to contradict something we condition on 
+	- 	e.g. "Given that Hillary lost and didn't visit Michigan, would she win if she had visited Michigan?"
+	- 	e.g. “What fraction of patients who are treated and died would have survived if they were not treated?”
+- 	exogenous nodes - node in the network that represents all the data note collected
+
+## technical notes
+
+- **case-control study** - retrospective - compares "cases" (people with a disease) to controls
+- **sensitivity analysis** - instead of drawing conclusions by assuming the absence of certain causal relationships, challenge such assumptions and evaluate how strong altervnative relationships must be in order to explain the observed data
+- **regression-based adjustment** - if we know the confounders, can just regress on the confounders and the treatment and the coefficient for the treatment (the partial regression coefficient) will give us the average causal effect)
+  - works only for linear models
+- 
+
+## historical notes
+
+- key problem: no language to write causal relationships 
+- counter factual: set value but erase all arrows going into the variable which we set (everything else the same)
+- do causal diagrams exist in brain?
+- regression to the mean - galton and pearson originally discover correlation instead of causation
+- sewall wright studying guinea pigs uses causation to predict correlations (path analysis)
+- path analysis became structural equation modeling
+- **back-door criterion** - want to deconfound 2 variables X and Y
+  - ensure that there is no path which points to X which allows dependence between X and Y ( paths which point to X are non-causal, representing confounders )
+  - remember, in DAG junctions conditioning makes things independent unless its at a V junction
+
+# paradoxes
+- monty hall problem: why you should switch
+```mermaid
+graph LR
+A(Your Door) -->B(Door Opened)
+C(Location of Car) --> B
+```
+
+- berkson's paradox - diseases in hospitals are correlated even when they are not in the general population
+  - possible explanation - only having both diseases together is strong enough to put you in the hospital
+- simpson's paradox - see plot above where lines decrease given conditioning but increase overall
+
+## example
+
+liver transplant
+
+- maximize benefit (life with - life without)
+- currently just goes to person who would die quickest without
+- Y = T Y(1) + (1-T) Y(0)
+  - Y(1) = survival with transplant
+  - Y(0) = survival w/out transplant
+    - fundamental problem of causal inference - can 't observe Y(1) and Y(0)
+  - T = 1 if receive transplant else 0
+- goal: estimate $\tau = Y(1) - Y(0)$ for each person

@@ -8,6 +8,8 @@ typora-copy-images-to: ./assets/graphical_models
 
 * TOC
 {:toc}
+
+
 *Material from Russell and Norvig "Artifical Intelligence" 3rd Edition* and *Jordan "Graphical Models"*
 
 ---
@@ -234,7 +236,7 @@ typora-copy-images-to: ./assets/graphical_models
 - 2 key equations
 
     - $m_{ji}(x_i) = \sum_{x_j} \left( \psi^E (x_j) \psi (x_i, x_j) \prod_{k \in N(j) \backslash i} m_{kj} (x_j) \right)$
-    - $p(x_f | \bar{x}_E) \propto \psi^E (x_f) \prod_{e \in N(f)} m_{ef} (x_f) ​$
+    - $p(x_f | \bar{x}_E) \propto \psi^E (x_f) \prod_{e \in N(f)} m_{ef} (x_f) $
        - ![Screen Shot 2018-07-31 at 9.55.08 PM](assets/graphical_models/Screen Shot 2018-07-31 at 9.55.08 PM.png)
 
 - **sum-product** = **belief propagation** - inference algorithm
@@ -330,7 +332,7 @@ typora-copy-images-to: ./assets/graphical_models
         - M = number of observations
         - n = length of sequence
         - memory - $nK$
-        - runtime - $O(nK^2)​$
+        - runtime - $O(nK^2)$
 
 - *learning* - form of EM
 

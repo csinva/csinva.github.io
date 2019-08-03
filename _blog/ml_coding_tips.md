@@ -31,6 +31,8 @@ displays
 - [h5py](http://docs.h5py.org/en/stable/): a great way to read/write to arrays which are too big to store in memory, as if they were in memory
 - [slurmpy](https://github.com/brentp/slurmpy): lets you submit jobs to slurm using just python, so you never need to write bash scripts.
 - [pandas](https://pandas.pydata.org/): provides dataframes to python - often overlooked for big data which might not fit into DataFrames that fit into memory. Still very useful for comparing results of models, particularly with many hyperparameters.
+- [pandas-profiling](https://github.com/pandas-profiling/pandas-profiling) - very quick data overviews
+- [pandas bamboolib](https://www.youtube.com/watch?v=yM-j5bY6cHw&feature=youtu.be) - ui for pandas, in development
 
 
 
@@ -73,9 +75,27 @@ displays
 ### command line utils
 
 - `ctrl-a`: HOME, `ctrl-e`: END
+- `git add folder/\*.py`
 
+### sharing
+
+- [gradio](https://github.com/gradio-app/gradio) yields nice web interface for getting model predictions
+
+### cheat-sheets
+
+- [dalex](https://github.com/pbiecek/DALEX) 
+- [microsoft-interpret](https://github.com/microsoft/interpret)
+
+### converting between dl frameworks
+
+- [mmdnn](https://github.com/microsoft/MMdnn)
+
+### sharing
+
+- [bookdown](https://bookdown.org/) - write books in markdown
 
 ### reference
-- [this repo](https://raw.githubusercontent.com/r0f1/datascience/master/README.md) has a more comprehensive and useful list
+
+- [this repo](https://raw.githubusercontent.com/r0f1/datascience/master/README.md) and [this repo](https://github.com/r0f1/datascience) has a more comprehensive and useful list
 - feel free to use/share this openly
-- for similar projects, see some of my other repos: (e.g. [acd](https://github.com/csinva/acd)) or my website ([csinva.github.io](https://csinva.github.io/))
+- for similar projects, see some other repos: (e.g. [acd](https://github.com/csinva/acd)) or my website ([csinva.github.io](https://csinva.github.io/))

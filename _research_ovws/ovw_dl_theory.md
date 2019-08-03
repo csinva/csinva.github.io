@@ -26,9 +26,9 @@ some more concrete questions:
 
 ## functional approximation
 
+- dnns are very hard to study in the parameter space (e.g. swapping two parameters changes things like the Hessian), easier to to study in the function space (e.g. the input-output relationship)
 - nonlinear approximation (e.g. sparse coding) - 2 steps
-
-  1. construct a dictionary function (T)
+1. construct a dictionary function (T)
   2. learn linear combination of the dictionary elements (g)
 - background
   - $L^2$ function (or function space) is square integrable: $|f|^2 = \int_X |f|^2 d\mu$, and $|f|$ is its $L_2$-norm
@@ -80,8 +80,10 @@ some more concrete questions:
 - [causality in dnns talk by bottou](https://www.technologyreview.com/s/613502/deep-learning-could-reveal-why-the-world-works-the-way-it-does/)
   - on mnist, color vs shape will learn color
 - [A mathematical theory of semantic development in deep neural networks](https://arxiv.org/abs/1810.10531)
+- [rl agents learn some crazy things](https://arxiv.org/pdf/1803.03453.pdf)
+  - [itemized list](https://docs.google.com/spreadsheets/u/1/d/e/2PACX-1vRPiprOaC3HsCf5Tuum8bRfzYUiKLRqJmbOoC-32JorNdfyTiRRsR7Ea5eWtvsWzuxo8bjOxCG84dAg/pubhtml)
 
-## expressiveness: what can a dnn repreresent?
+## expressiveness: what can a dnn represent?
 
 - [complexity of linear regions in deep networks](https://arxiv.org/pdf/1901.09021.pdf)
 - [Bounding and Counting Linear Regions of Deep Neural Networks](https://arxiv.org/pdf/1711.02114.pdf)
@@ -110,7 +112,7 @@ some more concrete questions:
   - [Quantifying the generalization error in deep learning in terms of data distribution and
     neural network smoothness](https://arxiv.org/pdf/1905.11427v1.pdf)
 
-## double descent: bias + variance in high dims?
+## interpolation + double descent
 
 - [Reconciling modern machine learning and the bias-variance trade-off](https://arxiv.org/abs/1812.11118) (belkin et al. 2018)
 - [Surprises in High-Dimensional Ridgeless Least Squares Interpolation](https://arxiv.org/abs/1903.08560)
@@ -122,25 +124,35 @@ some more concrete questions:
 - [boosting w/ l2 loss](https://www.tandfonline.com/doi/pdf/10.1198/016214503000125?casa_token=5OE5LZe_mIcAAAAA:-4DdXLa4A6SeXnguyYv1S3bfIbRXrSb1qojj_UkGZpmbNHqjkWMojm0al5xx2yz-7ABcfDXmdvBeCw)
 - [effective degrees of freedom](https://web.stanford.edu/~hastie/Papers/df_paper_LJrev6.pdf)
 - [high-dimensional ridge](https://projecteuclid.org/euclid.aos/1519268430)
+- [Harmless interpolation of noisy data in regression](https://arxiv.org/abs/1903.09139) - bound on how well interpolative solns can generalize to fresh data (goes to zero with extra features)
 
 ## kernels
 
+- [To understand deep learning we need to understand kernel learning](https://arxiv.org/abs/1802.01396) - overfitted kernel classifiers can still fit the data well
 - [kernels wiki](https://en.wikipedia.org/wiki/Kernel_method#cite_note-4): kernel memorizes points then uses dists between points to classify
 - [learning deep kernels](https://arxiv.org/pdf/1811.08357v1.pdf)
 - [learning data-adaptive kernels](https://arxiv.org/abs/1901.07114)
 - [kernels that mimic dl](https://cseweb.ucsd.edu/~saul/papers/nips09_kernel.pdf)
 - [kernel methods](http://papers.nips.cc/paper/3628-kernel-methods-for-deep-learning.pdfs)
+- [wavelet support vector machines](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.412.362&rep=rep1&type=pdf) - kernels using wavelets
 - [neural tangent kernel](https://arxiv.org/abs/1806.07572) (jacot et al. 2018)
   - at initialization, artificial neural networks (ANNs) are equivalent to Gaussian
     processes in the infinite-width limit
     - evolution of an ANN during training can also be described by a kernel (kernel gradient descent)
+  - different types of kernels impose different things on a function (e.g. want more / less low frequencies)
+    - gradient descent in kernel space can be convex if kernel is PD (even if nonconvex in the parameter space)
 - [Scaling description of generalization with number of parameters in deep learning](https://arxiv.org/abs/1901.01608) (geiger et al. 2019)
   - number of params = N
   - above 0 training err, larger number of params reduces variance but doesn't actually help
     - ensembling with smaller N fixes problem
   - the improvement of generalization performance with N in this classification task originates from reduced variance of fN when N gets large, as recently observed for mean-square regression
 - [understanding the neural tangent kernel](https://arxiv.org/pdf/1904.11955.pdf) (arora et al. 2019)
+  
   - method to compute the kernel quickly on a gpu
+- [On the Inductive Bias of Neural Tangent Kernels](https://arxiv.org/abs/1905.12173) (bietti & mairal 2019)
+- [Kernel and Deep Regimes in Overparametrized Models](https://arxiv.org/abs/1906.05827) (Woodworth...Srebro 2019)
+  
+  - transition between *kernel* and *deep regimes*
 
 ## nearest neighbor comparisons
 

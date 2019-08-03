@@ -6,9 +6,7 @@ typora-copy-images-to: ./assets
 ---
 
 <h1>  what do neural network weights reliably learn? </h1>
-
 <h3> chandan singh </h3> 
-
 ## why analyze neural net weights?
 
 - neural nets learn useful representations
@@ -118,3 +116,33 @@ $\implies \color{cyan}{W^{\text{proj}}}$ dominates
 ## going deeper: memorization in deep cnns
 
 <img src="assets/cnns.png" class="invert">
+
+# linear experiments
+
+## bias vs var
+
+<img src="assets/Screen Shot 2019-07-29 at 11.51.53 AM.png" class="invert">
+
+
+
+## mse changes based on distr
+
+<img src="assets/Screen Shot 2019-07-29 at 11.53.33 AM.png" class="invert">
+
+
+
+## mse with pcs
+
+<img src="assets/Screen Shot 2019-07-29 at 11.53.41 AM.png" class="invert">
+
+
+
+## logistic regression with cvs (score is mse)
+
+<img src="assets/Screen Shot 2019-07-29 at 11.53.55 AM.png" class="invert">
+
+
+
+## linear regression with cvs (score is mse)
+
+<img src="assets/Screen Shot 2019-07-29 at 11.54.10 AM.png" class="invert">

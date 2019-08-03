@@ -33,8 +33,7 @@ category: ml
   - accuracy = (TP + TN) / (P + N)
     - correct classifications / total number of test cases
   - balanced accuracy = 1/2 (TP / P + TN / N)
-  
-  - **recall** = sensitivity = true positive rate = TP / P
+  - **recall** = sensitivity = **power** =  true positive rate = TP / P
     - what fraction of the real positives do we return?
   - **precision** = TP / (TP + FP)
     - what fraction of the prediction positives are real positives?

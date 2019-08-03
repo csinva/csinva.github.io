@@ -18,15 +18,15 @@ category: research
 # reviews
 
 - [Interpretable machine learning: definitions, methods, and applications](https://arxiv.org/abs/1901.04592)
+- [model-agnostic debugging book in progress](https://pbiecek.github.io/PM_VEE/preface.html)
 - [Interpretable Deep Learning in Drug Discovery](https://arxiv.org/abs/1903.02788)
 - [Explanation Methods in Deep Learning: Users, Values, Concerns and Challenges](https://arxiv.org/abs/1803.07517)
-- [Towards a Generic Framework for Black-box Explanation Methods](https://hal.inria.fr/hal-02131174v2/document)
-  
+- [Towards a Generic Framework for Black-box Explanation Methods](https://hal.inria.fr/hal-02131174v2/document) (henin & metayer 2019)
   - sampling - selection of inputs to submit to the system to be explained
   - generation - analysis of links between selected inputs and corresponding outputs to generate explanations
   
-	  1. *proxy* - approximates model (ex. rule list, linear model)
-    
+    1. *proxy* - approximates model (ex. rule list, linear model)
+	  
     2. *explanation generation* - explains the proxy (ex. just give most important 2 features in rule list proxy, ex. LIME gives coefficients of linear model, Shap: sums of elements)
   - interaction (with the user)
   - this is a super useful way to think about explanations (especially local), but doesn't work for SHAP / CD which are more about how much a variable contributes rather than a local approximation
@@ -106,6 +106,11 @@ category: research
 - [How do Humans Understand Explanations from Machine Learning Systems?: An Evaluation of the Human-Interpretability of Explanation](https://arxiv.org/pdf/1802.00682.pdf)
 - [Towards A Rigorous Science of Interpretable Machine Learning](https://arxiv.org/pdf/1702.08608.pdf)
 - [Manipulating and Measuring Model Interpretability](https://arxiv.org/abs/1802.07810)
+- [Evaluating Explanation Without Ground Truth in Interpretable Machine Learning](https://arxiv.org/pdf/1907.06831.pdf)
+  - 3 criteria
+    - predictability (does the knowledge in the explanation generalize well)
+    - fidelity (does explanation reflect the target system well)
+    - persuasibility (does human satisfy or comprehend explanation well)
 
 # cnns
 
@@ -319,7 +324,7 @@ category: research
 - [interpretable decision set](https://dl.acm.org/citation.cfm?id=2939874) (lakkaraju et al. 2016) - set of if then rules which are all independent (not falling)
 - [A Bayesian Framework for Learning Rule Sets for Interpretable Classification](http://www.jmlr.org/papers/volume18/16-003/16-003.pdf) (wang et al. 2017) - rules are a bunch of clauses OR'd together (e.g. if (X1>0 AND X2<1) OR (X2<1 AND X3>1) OR ... then Y=1)
 - [optimal sparse decision trees](https://arxiv.org/abs/1904.12847) (hu et al. 2019) - optimal decision trees for binary variables
-- [2helps2b paper](http://eds.b.ebscohost.com.libproxy.berkeley.edu/eds/detail/detail?vid=2&sid=d1cdb5bf-8414-430e-a2a1-f2023a0cb632%40sessionmgr101&bdata=JnNpdGU9ZWRzLWxpdmU%3d#AN=000417622700007&db=edswsc)
+- [2helps2b paper](https://www.ncbi.nlm.nih.gov/pubmed/29052706)
   - ![Screen Shot 2019-06-11 at 11.17.35 AM](assets/Screen Shot 2019-06-11 at 11.17.35 AM.png)
 
 # posthoc model-agnostic methods
