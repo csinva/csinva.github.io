@@ -34,5 +34,5 @@ In a [recent study](http://journals.plos.org/plosone/article?id=10.1371/journal.
 ## misc
 Over the years, I've also worked on some other interesting problems related to neural coding including:
 
-- [Examining the Effect of Action Potential Back Propagation on Spike Shape](/assets/singh_14_dendrite_backprop.pdf)
+- [Examining the Effect of Action Potential Back Propagation on Spike Shape](/assets/write_ups/singh_14_dendrite_backprop.pdf)
 - [Simulations of action potential propagation and velocity](https://github.com/csinva/act_potential)

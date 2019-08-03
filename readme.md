@@ -1,10 +1,10 @@
 # source for https://csinva.github.io
 
-**contains [slides](_slides), [research overviews](_research_ovws), [notes](_notes),  [blog posts](_blog), links to code/research, and personal information**
+**contains [slides](pres), [research overviews](_research_ovws), [notes](_notes),  [blog posts](_blog), links to code/research, and personal information**
 
 ## slides
 
-the [_slides](_slides) folder contains source for presentations, including [ml slides](https://csinva.github.io/pres/189/#/) from teaching intro machine learning at berkeley
+the [pres](pres) folder contains source for presentations, including [ml slides](https://csinva.github.io/pres/189/#/) from teaching intro machine learning at berkeley - the source is in markdown and is easily editable
 
 ![](assets/img/pres_demo.gif)
 

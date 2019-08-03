@@ -51,6 +51,8 @@ Some interesting / seminal papers in causal inference along with my notes.
   - carefully discuss the assumptions
   - instrumental variables - regression w/ constant treatment effects
   - effect of veteran status on mortality, using lottery number as instrument
+- [Sex Bias in Graduate Admissions: Data from Berkeley](https://homepage.stat.uiowa.edu/~mbognar/1030/Bickel-Berkeley.pdf) (bickel et al. (1975)
+  - simpson's paradox example
 - angrist_99_class_size
   - reducing class size induces a signi􏰜cant and substantial increase in test scores for fourth and 􏰜fth graders, although not for third graders.
 - [cornfield_59_smoking](https://academic.oup.com/jnci/article/22/1/173/912572)

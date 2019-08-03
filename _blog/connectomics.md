@@ -24,7 +24,7 @@ Recent efforts have mapped the brains of much larger organisms, such as the *[Dr
 
 ![Screen Shot 2019-02-22 at 2.00.35 PM](assets/Screen Shot 2019-02-22 at 2.00.35 PM.png)
 
-Our [initial approach in 2014](/assets/singh_15_rf_segmentation.pdf), using random forests didn't scale well to very large datasets and this work culminated in a novel technique/loss function for performing segmentation using deep learning: [Large Scale Image Segmentation with Structured Loss based Deep Learning for Connectome Reconstruction](https://ieeexplore.ieee.org/document/8364622/), resulting in the automatic segmentation of some interesting-looking neurons:
+Our [initial approach in 2014](/assets/write_ups/singh_15_rf_segmentation.pdf), using random forests didn't scale well to very large datasets and this work culminated in a novel technique/loss function for performing segmentation using deep learning: [Large Scale Image Segmentation with Structured Loss based Deep Learning for Connectome Reconstruction](https://ieeexplore.ieee.org/document/8364622/), resulting in the automatic segmentation of some interesting-looking neurons:
 
 ![Screen Shot 2019-02-22 at 2.05.49 PM](assets/Screen Shot 2019-02-22 at 2.05.49 PM.png)
 
