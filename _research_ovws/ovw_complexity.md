@@ -98,6 +98,13 @@ category: research
 
 # misc
 
+- [rashomon curves](https://arxiv.org/abs/1908.01755) (semenova & rudin, 2019)
+  - **rashomon effect** - many different explanations exist for same phenomenon
+  - **rashomon set** - set of almost-equally accurate models for a given problem
+  - **rashomon ratio** - ratio of volume of set of accurate models to the volume of the hypothesis space
+  - **rashomon curve** - empirical risk vs rashomon ratio
+    - **rashomon elbow** - maximize rashomon ratio while minimizing risk
+      - good for model selection
 - bennet's logical depth (1988) - computational resources taken to calculate the results of a minimal length problem (combines computational complexity w/ kolmogorov complexity)
 - Effective measure complexity (Grassberger, 1986) quantifies the complexity of a sequence by the amount of information contained in a given part of the sequence that is needed to predict the next symbol
 - Thermodynamic depth (Lloyd and Pagels, 1988) relates the entropy of a system to the number of possible historical paths that led to its observed state

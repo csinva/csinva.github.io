@@ -329,7 +329,7 @@ category: neuro
 
 ![](assets/vissci/method_coverage.png)
 
-- dimensions
+- 7 dimensions
 	- spatial res.
 	- temporal res.
 	- depth - how deep in can you image
@@ -869,7 +869,7 @@ category: neuro
 
 # visual neuropsychology
 
-- blindsight - damage to V1; aren't aware of visual stimuli but can do tasks in forced-choice paradigmsnp
+- blindsight - damage to V1; aren't aware of visual stimuli but can do tasks in forced-choice paradigms
   - retina goes through some things (ex. pulvinar) that aren't V1 to get to higher order areas (ex. MT)
 - dorsal pathway
   - MT monkey lesions in monkeys impair motion perception but not contrast detection

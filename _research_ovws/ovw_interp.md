@@ -151,6 +151,7 @@ category: research
     2. text usually uses attention maps
       - ex. karpathy et al LSTMs
       - ex. lei et al. - most relevant sentences in sentiment prediction
+    3. class-activation map - sum the activations across channels (weighted by their weight for a particular class)
 - concept activation vectors
 
     - [concept activation vectors](https://arxiv.org/abs/1711.11279)
@@ -370,6 +371,8 @@ category: research
   - not the same as model variance
   - Adding a correlated feature can decrease the importance of the associated feature
 11. [L2X: information-theoretical local approximation](https://arxiv.org/pdf/1802.07814.pdf) (chen et al. 2018) - locally assign feature importance based on mutual information with function
+12. [Learning Explainable Models Using Attribution Priors + Expected Gradients](https://arxiv.org/abs/1906.10670) - like doing integrated gradients in many directions (e.g. by using other points in the training batch as the baseline)
+    - can use this prior to help improve performance
 
 # feature importance and interactions
 

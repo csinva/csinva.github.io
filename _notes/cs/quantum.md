@@ -1,3 +1,11 @@
+---
+layout: notes
+section-type: notes
+title: quantum
+category: cs
+typora-copy-images-to: ./assets
+---
+
 [TOC]
 
 - what does physics tell us about the limits of computers?
@@ -53,3 +61,12 @@
     - demon opens door whenever high temperature particle comes from cold sample, then closes
     - demon opens door for slow particles from hot sample, then closes
 - problem: demon has to track all the particles (which would generate a lot of heat)
+
+# quantum probability
+
+- based on this [blog post](https://www.math3ma.com/blog/a-first-look-at-quantum-probability-part-1)
+
+  - marginal prob. loses information but we don't need to
+- ![Screen Shot 2019-08-17 at 10.36.26 AM](assets/Screen Shot 2019-08-17 at 10.36.26 AM.png)
+  
+  

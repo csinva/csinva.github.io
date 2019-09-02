@@ -49,12 +49,18 @@ typora-copy-images-to: ./assets/nlp
 - **transformer** - proposed in [attention is all you need paper](<https://arxiv.org/abs/1706.03762>)
   - self-attention - layer that lets word learn its relation to other layers
   - many stacked layers in encoder + decoder (not rnn - self-attention + feed forward)
-  - self-attention 3 components
-    - queries
-    - keys
-    - values
+  - details
+    - initial encoding: each word -> vector
+    - each layer takes a list of fixed size (hyperparameter e.g. length of longest sentence) and outputs a list of that same fixed size (so one output for each word)
+      - can easily train with a masked word to predict the word at the predicted position in the encoding
+  - self-attention 
     - for each word, want score telling how much importance to place on each other word (queries * keys)
-    - softmax this and use it to do weighted sum of values
+      - softmax this and use it to do weighted sum of values![Screen Shot 2019-08-17 at 2.51.53 PM](assets/nlp/Screen Shot 2019-08-17 at 2.51.53 PM.png)
+      - 
+    - 3 components
+      - queries
+      - keys
+      - values
   - multi-headed attention has several of each of these (then just concat them)
 - recent papers
   - [Semi-supervised Sequence Learning](https://arxiv.org/abs/1511.01432) (by [Andrew Dai](https://twitter.com/iamandrewdai) and [Quoc Le](https://twitter.com/quocleix))
@@ -62,6 +68,8 @@ typora-copy-images-to: ./assets/nlp
     - context vector is weighted sum of context vector at each word
   - [ULMFiT](https://arxiv.org/abs/1801.06146) (by fast.ai founder [Jeremy Howard](https://twitter.com/jeremyphoward) and [Sebastian Ruder](https://twitter.com/seb_ruder)), the
   - [OpenAI transformer](https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf) (by OpenAI researchers [Radford](https://twitter.com/alecrad), [Narasimhan](https://twitter.com/karthik_r_n), [Salimans](https://twitter.com/timsalimans), and [Sutskever](https://twitter.com/ilyasut))
-- culminated in **bert**
-  - semi-supervised learning (predict masked word - this is bidirectional) + supervised finetuning
+  - [BERT](BERT) - semi-supervised learning (predict masked word - this is bidirectional) + supervised finetuning
+  - [GPT-2](https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf) (small released model, full trained model, even larger model from Nvidia)
+  - [XLNet](https://arxiv.org/abs/1906.08237)
+  - [roberta](https://arxiv.org/abs/1907.11692)
 - these ideas are [starting to be applied to vision cnns](https://arxiv.org/abs/1904.09925)

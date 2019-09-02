@@ -59,20 +59,26 @@
   - **affective** error - decisions based on what we wish were true (e.g. caring too much about patient)
   - See one, do one, teach one - teaching axiom
 
+# political elements
 
+- [why doctors should organize](https://www.newyorker.com/culture/annals-of-inquiry/why-doctors-should-organize)
+- big pharma
+- day-to-day
+  - Doctors now face a burnout epidemic: thirty-five per cent of them show signs of high depersonalization
+  - according to one recent [report](https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/2730353?resultClick=1), only thirteen per cent of a physician’s day, on average, is spent on doctor-patient interaction
+  - [study](https://www.nytimes.com/2017/11/14/well/live/the-patients-vs-paperwork-problem-for-doctors.html) during an average, eleven-hour workday, six hours are spent at the keyboard, maintaining electronic health records.
+  - medicare's r.v.u - changes how doctors are reimbursed, emphasising procedural over cognitive things
+  - ai could help - make simple diagnoses faster, reduce paperwork, help patients manage their own diseases like diabetes
+  - ai could also make things worse - hospitals are mostly run by business people
 
 # terminology
 
 - internal/external validity = training/testing error
 
-
-
 # medical ai example
 
 - EKG has a small interpretation on it
 - there used to be bayesian networks / expert systems but they went away...
-
-
 
 # icu interpretability example
 
@@ -83,3 +89,8 @@
 - some features don’t really make sense to change (e.g. was this thing measured)
 - doctors like to see trends - patient health changes over time and must include history
 - feature importance under intervention
+
+# communicating findings
+
+- [don't use ROC curves, use deciles](https://modelplot.github.io/intro_modelplotpy.html)
+- [need to evaluate use, not just metric](https://jamanetwork.com/journals/jama/fullarticle/2748179)

@@ -153,6 +153,8 @@ some more concrete questions:
 - [Kernel and Deep Regimes in Overparametrized Models](https://arxiv.org/abs/1906.05827) (Woodworth...Srebro 2019)
   
   - transition between *kernel* and *deep regimes*
+- [The HSIC Bottleneck: Deep Learning without Back-Propagation](https://arxiv.org/abs/1908.01580) (Ma et al. 2019)
+  - directly optimize information bottleneck (approximated by HSIC) yields pretty good results
 
 ## nearest neighbor comparisons
 

@@ -13,6 +13,7 @@ category: stat
 
 # basics
 
+- [good overview](https://arxiv.org/abs/1907.07271)
 - when using observational (non-experimental) data to make causal inferences, the key problem is **confounding** - difference between groups other than the treatment which affects the response
   - *stratification* = *cross-tabulation* - only look at when confounding variables have same value
 - [bradford hill criteria](https://en.wikipedia.org/wiki/Bradford_Hill_criteria) - some simple criteria for establishing causality (e.g. strength, consistency, specificity)
@@ -44,9 +45,10 @@ category: stat
     - T = 1 if receive transplant else 0
   - goal: estimate $\tau = Y(1) - Y(0)$ for each person
 
-# neyman-rubin basics
+# potential outcome framework (neyman-rubin)
 
-- 
+- advantages over DAGs
+  - easy to express some common assumptions, such as monotonicity / convexity
 - 3 frameworks
   1. neyman-rubin model: $Y_i = T_i a_i + (1-T_i) b_i$
     - $\hat{ate} = \hat{a}_A - \hat{b}_B$
@@ -67,13 +69,16 @@ category: stat
   2. randomization
   3. conditioning
 
-# causality graphs causal inference
+# causality DAGs (Pearl et al.)
 
 ![Screen Shot 2019-04-07 at 7.01.55 PM](assets/Screen Shot 2019-04-07 at 7.01.55 PM.png)
 
 
 
 - more from the book of why
+- advantages over potential outcomes
+  - easy to express assumptions on what is independent, particularly when there are many variables
+  - do-calculus allows for answering some specific questions easily
 - [blog post on causal ladder](http://smithamilli.com/blog/causal-ladder/)
 - [intro to do-calculus post](https://www.inference.vc/untitled/) and subsequent posts
 
