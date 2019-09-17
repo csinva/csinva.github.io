@@ -24,6 +24,8 @@ some more concrete questions:
 - what are good statistical markers of an effectively trained DNN?
 - how far apart are 2 nets?
 
+
+
 ## functional approximation
 
 - dnns are very hard to study in the parameter space (e.g. swapping two parameters changes things like the Hessian), easier to to study in the function space (e.g. the input-output relationship)

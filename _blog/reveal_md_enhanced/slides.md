@@ -10,7 +10,6 @@ typora-copy-images-to: ./assets
 <!-- .slide: data-transition="convex" data-transition-speed="medium"-->
 
 <h1> machine learning </h1>
-
 **chandan singh**
 
 *press esc to navigate slides*
@@ -110,7 +109,7 @@ http://www.eecs189.org/
 
 ## jensen's inequality
 
-- $f(E[X]) \leq E[f(X)]​$ for convex f
+- $f(E[X]) \leq E[f(X)]$ for convex f
 
 ![1200px-ConvexFunction.svg](assets/1200px-ConvexFunction.svg.png)
 
@@ -187,7 +186,7 @@ nxp matrix: $X=U \Sigma V^T$
 
 ## matrix calculus
 
-- *gradient* vector $\nabla_x f(x)$- partial derivatives with respect to each element of function
+- *gradient* vector $\nabla_x f(x)$ - partial derivatives with respect to each element of function
 
 ## jacobian
 
@@ -467,7 +466,7 @@ Xrot_reduced = np.dot(X, U[:, :2]) #project in 2d (nx2)
 
 ## convexity continued
 
-- $\color{purple}{t f(x_1) + (1-t) f(x_2)} \geq f(tx_1 + (1-t)x_2)​$
+- $\color{purple}{t f(x_1) + (1-t) f(x_2)} \geq f(tx_1 + (1-t)x_2)$
 
 ![1200px-ConvexFunction.svg](assets/1200px-ConvexFunction.svg.png)
 
@@ -529,7 +528,7 @@ $\color{red}0 \preceq \color{green}{\underset{\text{strong convexity}}{mI}} \pre
 ## newton-raphson
 
 ![slide_8](assets/slide_8.jpg)
-- apply to find roots of **f'(x)**: $\theta^{(t+1)} = \theta^{(t)} - \nabla^2 f(\theta^{(t)})^{-1}\nabla f(\theta^{(t)})​$
+- apply to find roots of **f'(x)**: $\theta^{(t+1)} = \theta^{(t)} - \nabla^2 f(\theta^{(t)})^{-1}\nabla f(\theta^{(t)})$
 
 ## gauss-newton
 
@@ -868,7 +867,6 @@ $\underset{w, b}{\min} \quad \frac{1}{2}||w||^2 + C\sum_i \max(1-y_i(w^Tx_i - b)
 <div style='float:left;width:30%;' class='centered'>
 
 <h3> primal </h3>
-
 ```$p^* = \min \: f_0 (x) \\ s.t. \: f_i(x) \leq 0 \\ h_i(x) = 0$```
 
 </div>

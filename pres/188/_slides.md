@@ -226,6 +226,37 @@ typora-copy-images-to: ./assets_files
   - *tree width* w - size of largest subproblem - 1
   - solvable in $O(n d^{w+1})$
 
+# game trees
+
+## what are game trees?
+
+- adversarial search problems - adversaries attempt to keep us from goal state
+
+## components
+
+- states have utilities ~ like the score obtained at a state
+- state's value is often best possible utility obtainable from a state
+
+## minimax algorithm
+
+- visit nodes in postorder traversal (like DFS)
+- at each decision node, pick the node with best utility
+
+![Screen Shot 2019-09-17 at 10.31.15 AM](assets_files/Screen Shot 2019-09-17 at 10.31.15 AM.png)
+
+
+## alpha-beta pruning
+
+- can stop searching a branch if we know it won't be picked
+
+![alpha-beta-pruning](assets_files/alpha-beta-pruning.jpg)
+
+## evaluation functions
+
+- estimate utility of a node
+- often do this as a linear function of features
+
+
 # propositional logic
 
 - declarative vs procedural (knowing how to ride a bike)

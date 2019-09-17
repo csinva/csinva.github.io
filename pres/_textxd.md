@@ -1,0 +1,7 @@
+# Interpreting and improving NLP models via disentangled interpretations
+
+List of authors: Chandan Singh, Jamie Murdoch, Laura Rieger, Bin Yu
+
+
+
+​    Neural networks have achieved impressive predictive performance in a variety of NLP tasks, but continue to struggle with issues regarding interpretability. In response, many methods have been developed to help explain such models. However, these interpretability methods suffer from many shortcomings, often oversimplifying the interactions between different features. Here, we go over a series of works aimed at producing accurate and useful interpretations by disentangling the effects of interactions. We first introduce a new interpretation method to interpret the contributions of different features (e.g. words) and groups of features (e.g. phrases). We then show how this interpretation method can effectively capture groundtruth importances and be quickly summarized to understand neural network predictions. Finally, we demonstrate how to directly use these interpretations to regularize neural networks during training. This yields models which, on a series of toy and real-world datasets, generalize better by ignoring spurious signals in training data.

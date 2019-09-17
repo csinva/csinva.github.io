@@ -72,7 +72,9 @@ create a helper command named `\anonfinal` which takes two arguments and will pr
 
 
 
+## making figures
 
+- figures should be saved as pdf unless they have a ton of points
 
 # some useful links
 - https://github.com/Wookai/paper-tips-and-tricks
