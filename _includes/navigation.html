@@ -5,7 +5,7 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
                     <i class="fa fa-bars"></i>
                 </button>
-                {% if page.url contains 'notes' or page.url contains 'projects' or page.url contains 'blog' or page.url contains 'ovw'%}
+                {% if page.url contains 'notes' or page.url contains 'projects' or page.url contains 'blog' or page.url contains 'ovw' or page.url contains 'pres'%}
                     <a class="navbar-brand page-scroll" href="{{site.url}}">
                         Chandan Singh
                     </a>
@@ -25,14 +25,16 @@
                     </li>
 
 
-                    {% if page.url contains 'notes' or page.url contains 'projects' or page.url contains 'blog' or page.url contains 'ovw'%}
+                    {% if page.url contains 'notes' or page.url contains 'projects' or page.url contains 'blog' or page.url contains 'ovw' or page.url contains 'pres'%}
                         {% for pagex in site.pages | sort: "title" %}
                             {% unless pagex.url == "/" %}
                             {% unless pagex.url contains 'css' %}
                             {% unless pagex.url contains 'projects' %}
                             {% unless pagex.url contains 'notes' %}
+                            {% unless pagex.url contains 'pres' %}
                             {% unless pagex.title contains 'Markdown' %}
                             <li><a class="page-scroll" href="{{site.baseurl}}/#{{ pagex.title }}">{{ pagex.title }}</a></li>
+                            {% endunless %}
                             {% endunless %}
                             {% endunless %}
                             {% endunless %}
@@ -48,7 +50,9 @@
                             {% unless pagex.url contains 'projects' %}
                             {% unless pagex.url contains 'notes' %}
                             {% unless pagex.title contains 'Markdown' %}
+                            {% unless pagex.url contains 'pres' %}
                             <li><a class="page-scroll" href="#{{ pagex.title }}">{{ pagex.title }}</a></li>
+                            {% endunless %}
                             {% endunless %}
                             {% endunless %}
                             {% endunless %}
