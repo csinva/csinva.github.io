@@ -986,7 +986,7 @@ maximize H(parent) - [weighted average] $\cdot$ H(children)
 
 # boosting
 
-- train many *weak learners* to approximate a function
+- sequentially train many *weak learners* to approximate a function
 
 ## adaboost
 

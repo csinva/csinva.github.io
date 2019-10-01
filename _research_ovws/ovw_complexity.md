@@ -115,9 +115,27 @@ category: research
 - Physical complexity (Adami and Cerf, 2000) is related to effective complexity and is designed to estimate the complexity of any sequence of symbols that is about a physical world or environment
 - Statistical complexity (Crutchfield and Young, 1989) is a component of a broader theoretic framework known as computational mechanics, and can be calculated directly from empirical data
 - Neural complexity (Tononi et al., 1994) - multivariate extension of mutual information that estimates the total amount of statistical structure within an arbitrarily large system.= the difference between the sum of the component’s individual entropies and the joint entropy of the system as a whole
+- complexity = variance of the model predictions
 
 
 
-# todo 
+# estimated
 
-- add bracket entropy kind of thing
+- [optimal m estimation in high dimensions](https://www.pnas.org/content/110/36/14563)optimal loss function (optimize over different loss functions, but evaluate with L2)assumes unbiased (so variance is the mse)
+
+
+
+# entropy characterizations
+
+- try to characterize functions in the prediction space
+- **metric entropy** - want functions to be close (within epsilon)
+- **bracket entropy** - function is both upper and lower bounded by bounding functions, which are within epsilon
+- can do this on an entire function class (e.g. all neural networks) or on a restricted subset (e.g. path during training)
+
+
+
+# deep learning complexity
+
+- [a hessian-based complexity measure for dnns](https://arxiv.org/abs/1905.11639)with generalization and computation to a different form of stability
+  - thm 3 - want function to be smooth wrt to augmented loss
+  - [complexity measure](http://proceedings.mlr.press/v89/liang19a/liang19a.pdf) (liang et al. 2019)

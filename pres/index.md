@@ -25,7 +25,7 @@ title: presentations
 - [dnn experiments](http://localhost:4000/pres/dnn_experiments/#/)
 - [sensible local interpretations](https://docs.google.com/presentation/d/1tKVgg2bo7jSgE8TMyt15VAOkGhDPncFpMnZ-mmtoMNI/edit#slide=id.p) (5 min update for pacmed internship)
 
-## course presentations
+## coursework
 - [vissci ovw](https://docs.google.com/presentation/d/1d2prZlhmG72whCTzfGJ_pk-Pgv9Sx-bGG0e503whYvw/present?slide=id.p)
 - [harms of ai](https://docs.google.com/presentation/d/1yZkEkDU-ELvh_Od3xvhd8Lsu70U7Cjs5QJnpNIVLgII/present) (1 hr talk given in possible minds course 2019)
 - [hummingbird tracking](https://docs.google.com/presentation/d/15iygjXGLu7Ha096GwMV5t6sjP7IPcTHqimPkTDwrpPI/present?slide=id.p)
@@ -41,4 +41,3 @@ title: presentations
     - [acd + interp poster](/assets/write_ups/utokyo_19_interp_poster.pdf)
 - [rf segmentation](/assets/write_ups/singh_15_rf_segmentation.pdf)
 - [wsimule poster](/assets/write_ups/wsimule_17_nips_poster.pdf)
-

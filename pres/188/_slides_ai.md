@@ -256,6 +256,49 @@ typora-copy-images-to: ./assets_files
 - estimate utility of a node
 - often do this as a linear function of features
 
+# mdps (nondeterministic search)
+
+## nondeterministic search
+
+- multiple successors can result from an action (w/ some prob)
+- can represent this as a a game tree with expectimax chance nodes
+- mdps can help solve these problems
+- goal: find a policy $\pi$ which maps states to actions
+
+## elements
+
+- standard: states, actions, start, terminal states
+- transition function: $T(s, a, s')$
+- reward function: $R(s, a, s')$
+- try to maximize sum of rewards or discounted sum of rewards
+
+## mdps
+
+- memoryless: $T(s, a, s') = P(s'|s, a)$
+- value $V^*(s)$ = maximum expected utility starting at s
+- q-value $Q^*(s, a)$ = maximum expected utility starting in s, taking action a
+
+## the bellman eqn
+
+- $V^*(s) = \underset{a}{\max}\: Q^*(s, a)$
+  - $Q^*(s, a) = \underset{s'}{\sum} T(s, a, s')[R(s, a, s') + \gamma V^*(s')]$
+- condition for optimality
+
+## value iteration
+
+initialize state values to zero and iteratively them
+
+1. $V_0(s) = 0$
+2. Bellman update for each state
+
+- once we have values for each state, $\pi^*(s) = \underset{a}{\text{argmax}} \: Q^*(s, a)$
+
+## policy iteration
+
+initialize policy and iteratively update it
+
+1. define $\pi_0(s)$
+2. Bellman update for policy, where values are computed using the current policy $V^\pi_i(s)$
 
 # propositional logic
 
@@ -338,11 +381,11 @@ typora-copy-images-to: ./assets_files
 
 - compositionality
 - intrinsic / extrinsic properties
-- event calculus
+- event calculus  
 
+# decisions + rl 
 
-
-# decisions + rl
+**this re-iterates the relevant equations using the equations in Russel & Norvig (all based on utitily funciton U(s)**
 
 ## decision theory
 

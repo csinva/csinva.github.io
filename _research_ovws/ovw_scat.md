@@ -22,32 +22,32 @@ category: research
 - scattering transform - computes a translation invariant repr. by cascading wavelet transforms and modulus pooling operators, which average the amplitude of iterated wavelet coefficients
 
 # review-type
-- mallat_16 "Understanding deep convolutional networks"
-- vidal_17 "Mathematics of deep learning"
-- bronstein_17 "Geometric deep learning: going beyond euclidean data"
+- [Understanding deep convolutional networks](https://arxiv.org/abs/1601.04920) (mallat 2016)
+- [Mathematics of deep learning](https://arxiv.org/abs/1712.04741) (vidal et al. 2017)
+- [Geometric deep learning: going beyond euclidean data](https://arxiv.org/abs/1611.08097) (bronstein et al. 2017)
 
 # initial papers
 
-- bruna_10 "classification with scattering operators"
-- mallat_10 "recursive interferometric repr."
-- mallat_12 "group invariant scattering"
-  - introduce scat transform
-- oyallan_13 "Generic deep networks with wavelet scattering"
-- bruna_13 "Invariant Scattering Convolution Networks"
+- [classification with scattering operators](https://arxiv.org/abs/1011.3023) (bruna & mallat 2010)
+- [recursive interferometric repr.](https://www.di.ens.fr/data/publications/papers/Eusipco2010InterConfPap.pdf) (mallat 2010)
+- [group invariant scattering](https://arxiv.org/abs/1101.2286) (mallat 2012)
+  - introduces scat transform
+- [Generic deep networks with wavelet scattering](https://arxiv.org/abs/1312.5940) (oyallan et al. 2013)
+- [Invariant Scattering Convolution Networks](https://arxiv.org/abs/1203.1513) (bruna & mallat 2012)
    - introduces the scattering transform implemented as a cnn
-- anden_14 "Deep scattering spectrum"
-
+- [Deep scattering spectrum](https://arxiv.org/abs/1304.6763) (anden & mallat 2013)
 
 ## scat_conv
-- oyallan_15 "Deep roto-translation scattering for object classification"
+
+- [Deep roto-translation scattering for object classification](https://arxiv.org/abs/1412.8659) (oyallan & mallat 2014)
     - can capture rounded figures
     - can further impose robustness to rotation variability (although not full rotation invariance)
-- cotter_17 "[Visualizing and improving scattering networks](https://arxiv.org/pdf/1709.01355.pdf)"
+- [Visualizing and improving scattering networks](https://arxiv.org/pdf/1709.01355.pdf) (cotter et al. 2017)
   - add deconvnet to visualize
-- oyallan_18 "[Scattering Networks for Hybrid Representation Learning](https://hal.inria.fr/hal-01837587/document)"
+- [Scattering Networks for Hybrid Representation Learning](https://hal.inria.fr/hal-01837587/document) (oyallon et al. 2018)
     - using early layers scat is good enough
-- oyallan_18 "i-RevNet: Deep Invertible Networks"
-- oyallan_17 "[Scaling the scattering transform: Deep hybrid networks](http://openaccess.thecvf.com/content_ICCV_2017/papers/Oyallon_Scaling_the_Scattering_ICCV_2017_paper.pdf)"
+- [i-RevNet: Deep Invertible Networks](https://arxiv.org/abs/1802.07088) (jacobsen et al. 2018)
+- [Scaling the scattering transform: Deep hybrid networks](http://openaccess.thecvf.com/content_ICCV_2017/papers/Oyallon_Scaling_the_Scattering_ICCV_2017_paper.pdf) (oyallon et al. 2017)
     - use 1x1 convolutions to collapse accross channels
 - jacobsen_17 "Hierarchical Attribute CNNs"
     - modularity
@@ -73,7 +73,7 @@ category: research
 
 # helmut lab papers
 
-- wiatoski_15 "[Deep Convolutional Neural Networks Based on Semi-Discrete Frames"](https://arxiv.org/abs/1504.05487)
+- [Deep Convolutional Neural Networks Based on Semi-Discrete Frames](https://arxiv.org/abs/1504.05487) (wiatowski et al. 2015)
   - allowing for different and, most importantly, general semidiscrete frames (such as, e.g., Gabor frames, wavelets, curvelets, shearlets, ridgelets) in distinct network layers
   - translation-invariant, and we develop deformation stability results
 - wiatoski_18 "[A mathematical theory of deep convolutional neural networks for feature extraction](https://ieeexplore.ieee.org/document/8116648/)"
