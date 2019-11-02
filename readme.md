@@ -1,6 +1,6 @@
 # source for https://csinva.github.io
 
-**contains [slides](pres), [research overviews](_research_ovws), [notes](_notes),  [blog posts](_blog), links to code/research, and personal information**
+**contains [slides](pres), [research overviews](_research_ovws), [notes](_notes),  [blog posts](_blog), links to code/research, and personal info**
 
 ## slides
 

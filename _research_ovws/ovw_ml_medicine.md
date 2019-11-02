@@ -41,6 +41,8 @@
   - little uncertainty: specialty disciplines
   - 2 systems at work: intuitive (uses context, heuristics) vs analytic (systematic, rule-based)
     - a combination of both performs best
+  - doctors are often black boxes as well - validated infrequently, unclear how closely they follow rules
+  - doctors adapt to local conditions - should be evaluated only on local dataset
 
 # doctor education
 

@@ -7,6 +7,14 @@ category: research
 
 [TOC]
 
+Complexity can be a useful notion for many things in statistical models. It can help answer the following questions:
+
+- can I interpret this model?
+- how many samples should I collect?
+- is my model a good fit for this problem?
+- model class selectiondirectionsmore stable (e.g. LOOCV, deletion, weights)interpolating estimator w/ lowest var?
+- set an err threshold and then look at stability
+
 # philosophy
 
 - [What is complexity?](http://cogprints.org/357/4/evolcomp.pdf) (edmonds 95)
@@ -31,7 +39,7 @@ category: research
   - soln
     - incorporate context - what descriptions are the same?
     - $C(x) = \lim _{\ell \to \infty} \log_2 N - \log_2 \omega (\ell, x)$
-      - where C(x) is the complexity (measured in bits), ℓ(x) the length of the description, N the size of the alphabet used to encode the description and ω(ℓ,x) the size of the class of all descriptions of length less than ℓ equivalent to x.
+      - where C(x) is the complexity (measured in bits), $\ell(x)$ the length of the description, N the size of the alphabet used to encode the description and ω(ℓ,x) the size of the class of all descriptions of length less than ℓ equivalent to x.
   - emergence - ex. game of life
 - [What is complexity 2](https://link.springer.com/chapter/10.1007/978-3-642-50007-7_2) (Gell-Mann 02)
   - AIC - algorithmic information content - contains 2 terms
@@ -52,7 +60,36 @@ category: research
 
 # minimum description length
 
-- [mdl intro](http://www.scholarpedia.org/article/Minimum_description_length)
+- mdl in linear regression: want to send y over, X is known to both sides, theta is also sent (used to pick a decoder for y)
+	- normalize maximum likelihood (nml): use theta to make codebook, then send code
+- [The Minimum Description Length Principle in Coding and Modeling](https://pdfs.semanticscholar.org/65d3/4977d9055f42e51dc1e7d9b4ca2f36c17537.pdf) (barron, rissanen, & yu, 98)
+  - mdl: represent an entire class of prob. distrs. as models by a single "universal" representative model such that it would be able to imitate the behavior of any model in the class. The best model class for a set of bserved data, then, is the onwhose representative premits the shortest coding of the data
+  - tradeoff: "good" prob. models for the data permit shorter code lengths
+    - generally agrees w/ low mse
+  - ex. encode data w/ model defined by mle estimates, quantized optimally to finite precision, then encode estimate w/ prefix code
+  - coding: $x \sim P(X)$, codelengths $\ell(x)$
+    - Kraft inequality: $\sum_x 2^{-\ell(x)} \leq 1$
+    - ideal codeword lenghts = $-\log P(X)$
+    - ideal mean length = $H(X)$
+  - mdl
+    - likelihood = summarize data in accodance / model (e.g. $P(y|x, \theta)$)
+    - parametric complexity = summarize model params
+- [Model Selection and the Principle of Minimum Description Length](https://www.tandfonline.com/doi/abs/10.1198/016214501753168398) (hansen & yu 2001)
+  - mdl: choose the model that gives the shortest description of data
+    - description length = length of binary string used to code the data
+    - using a prob distr. for coding/description purposes doesn't require that it actually generate our data
+  - basic coding
+    - set A, code C (mapping from A to a set of codewords)
+    - Q is a distr. on A
+    - $-\log_2Q$ is the code length for symbols in A
+      - can construct such a code w/ Huffman coding
+    - expected code length is minimized when Q = P, the true distr of our data
+  - different forms
+    - 2-stage
+    - mixture
+    - predictive
+    - normalized maximum likelihood (NML)
+- [mdl intro](http://www.scholarpedia.org/article/Minimum_description_length) (Rissanen, 2008) - scholarpedia
   - coding just the data would be like maximum likelihood
   - minimize $\underset{\text{log-likelihood}}{-\log P(y^n|x^n;\theta)} + \underset{\text{description length}}{L(\theta)}$
     - ex. OLS
@@ -67,7 +104,7 @@ category: research
     - in this case, is same as BIC but often different
   - modern mdl - don't assume a model form, try to code the data as short as possible with a *universal* model class
     - often can actually construct these codes
-- Kolmogorov complexity K(x) = the shortest computer program (in binary) that generates x (a binary string) = the "amount of info" in x
+- Kolmogorov complexity $K(x)$ = the shortest computer program (in binary) that generates x (a binary string) = the "amount of info" in x
   - complexity of a string x is at most its length
   - algorithmically random - any string whose length is close to $|x|$
     - more random = higher complexity
@@ -76,6 +113,12 @@ category: research
   - Book on stochastic complexity \cite{rissanen1989stochastic}
   - *Minimum Description Length*, *MDL*, principle for model selection, of which the original form states that the best model is the one which permits the shortest encoding of the data and the model itself
 - *note: this type of complexity applies to the description, not the system*
+- Look into the neurips [paper](https://papers.nips.cc/paper/7954-chaining-mutual-information-and-tightening-generalization-bounds.pdf) on using mutual information and entropy and this [paper](https://projecteuclid.org/download/pdf_1/euclid.aos/1017939142) by barron that related covering balls etc to minimax bounds
+- [Information Theory in Probability Statistics Learning and Neural Nets](http://www.stat.yale.edu/~arb4/publications_files/COLT97.pdf) (barron 97)
+- [Information-Theoretic Asymptotics of Bayes Methods](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=54897) (Clarke & Barron 90)
+
+## mdl in non-linear models
+- [MDL-based Decision Tree Pruning](https://www.aaai.org/Papers/KDD/1995/KDD95-025.pdf) (mehta et al. 95)
 
 # computational complexity
 
@@ -90,6 +133,7 @@ category: research
 - [Bayesian measures of model complexity and fit](https://rss.onlinelibrary.wiley.com/doi/full/10.1111/1467-9868.00353) (spiegelhalter et al.)
 - AIC
 - BIC
+- [TIC](https://arxiv.org/pdf/1803.04947.pdf)
 
 # statistical learning theory
 
@@ -115,13 +159,13 @@ category: research
 - Physical complexity (Adami and Cerf, 2000) is related to effective complexity and is designed to estimate the complexity of any sequence of symbols that is about a physical world or environment
 - Statistical complexity (Crutchfield and Young, 1989) is a component of a broader theoretic framework known as computational mechanics, and can be calculated directly from empirical data
 - Neural complexity (Tononi et al., 1994) - multivariate extension of mutual information that estimates the total amount of statistical structure within an arbitrarily large system.= the difference between the sum of the component’s individual entropies and the joint entropy of the system as a whole
-- complexity = variance of the model predictions
+- complexity = variance of the model predictions (given that there is zero bias)
 
 
 
 # estimated
 
-- [optimal m estimation in high dimensions](https://www.pnas.org/content/110/36/14563)optimal loss function (optimize over different loss functions, but evaluate with L2)assumes unbiased (so variance is the mse)
+- [optimal m estimation in high dimensions](https://www.pnas.org/content/110/36/14563) optimal loss function (optimize over different loss functions, but evaluate with L2)assumes unbiased (so variance is the mse)
 
 
 
@@ -129,8 +173,13 @@ category: research
 
 - try to characterize functions in the prediction space
 - **metric entropy** - want functions to be close (within epsilon)
-- **bracket entropy** - function is both upper and lower bounded by bounding functions, which are within epsilon
+  - **bracket entropy** - function is both upper and lower bounded by bounding functions, which are within epsilon
 - can do this on an entire function class (e.g. all neural networks) or on a restricted subset (e.g. path during training)
+- [optimal learning via local entropies and sample compression](https://arxiv.org/pdf/1706.01124.pdf)
+- [risk bounds for statistical learning](https://arxiv.org/pdf/math/0702683.pdf)
+- [Chaining Mutual Information and Tightening Generalization Bounds](https://papers.nips.cc/paper/7954-chaining-mutual-information-and-tightening-generalization-bounds.pdf) (asadi et al. 2018)
+- describing DNN paths
+  - [Online Regularized Nonlinear Acceleration](https://arxiv.org/pdf/1805.09639.pdf) 
 
 
 
@@ -139,3 +188,25 @@ category: research
 - [a hessian-based complexity measure for dnns](https://arxiv.org/abs/1905.11639)with generalization and computation to a different form of stability
   - thm 3 - want function to be smooth wrt to augmented loss
   - [complexity measure](http://proceedings.mlr.press/v89/liang19a/liang19a.pdf) (liang et al. 2019)
+
+# double descent
+
+- [Reconciling modern machine learning and the bias-variance trade-off](https://arxiv.org/abs/1812.11118) (belkin et al. 2018)
+- [Surprises in High-Dimensional Ridgeless Least Squares Interpolation](https://arxiv.org/abs/1903.08560)
+  - main result of limiting risk, where $\gamma \in (0, \infty)$:
+    - $R(\gamma) = \begin{cases} \sigma^2 \frac{\gamma}{1-\gamma} & \gamma < 1\\||\beta||_2^2(1 - \frac 1 \gamma) + \sigma^2 \frac{1} {\gamma - 1} & \gamma > 1\end{cases}$
+- [linear regression depends on data distr.](https://arxiv.org/abs/1802.05801)
+- [two models of double descent for weak features](https://arxiv.org/abs/1903.07571)
+- [double descent curve](https://openreview.net/forum?id=HkgmzhC5F7)
+- [boosting w/ l2 loss](https://www.tandfonline.com/doi/pdf/10.1198/016214503000125?casa_token=5OE5LZe_mIcAAAAA:-4DdXLa4A6SeXnguyYv1S3bfIbRXrSb1qojj_UkGZpmbNHqjkWMojm0al5xx2yz-7ABcfDXmdvBeCw)
+- [effective degrees of freedom](https://web.stanford.edu/~hastie/Papers/df_paper_LJrev6.pdf)
+- [high-dimensional ridge](https://projecteuclid.org/euclid.aos/1519268430)
+- [Harmless interpolation of noisy data in regression](https://arxiv.org/abs/1903.09139) - bound on how well interpolative solns can generalize to fresh data (goes to zero with extra features)
+
+
+
+## linear models
+
+- [Degrees of Freedom and Model Search](https://arxiv.org/abs/1402.1920) (tibshirani 2014)
+  - degrees of freedom = quantitative description of the amount of fitting performed by a given procedure
+- [linear smoothers and additive models](https://projecteuclid.org/download/pdf_1/euclid.aos/1176347115) (buja et al. 1989) see page 469 for degrees of freedom in ridge

@@ -22,7 +22,7 @@ title: presentations
 - [cogsci acd slides](https://docs.google.com/presentation/d/1I6djTqVn6YGKqxvQk59-4C39LbE68mNQbX1Go5pzTH4/present?slide=id.p)
     - [acd white-theme slides for bin](https://docs.google.com/presentation/d/1GjL0IJWft3IpdWxAwprXNiZkAG4Jl5mU6FNT2t0DGkQ/edit#slide=id.g5d6ee59cb4_0_0)
     - [acd bavrd](https://docs.google.com/presentation/d/1IVeb5ibe561VR5PAQEN5hdnwmpAHquK4JLb1vzT9fd8/present) (3 min pres. given at bavrd 2019)
-- [dnn experiments](http://localhost:4000/pres/dnn_experiments/#/)
+- [dnn experiments](http://csinva.github.io/pres/dnn_experiments/#/)
 - [sensible local interpretations](https://docs.google.com/presentation/d/1tKVgg2bo7jSgE8TMyt15VAOkGhDPncFpMnZ-mmtoMNI/edit#slide=id.p) (5 min update for pacmed internship)
 
 ## coursework

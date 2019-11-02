@@ -42,8 +42,10 @@ some more concrete questions:
   - [nonlinear approximation via compositions](https://arxiv.org/pdf/1902.10170.pdf) (shen 2019)
 - how do the weights in each layer help this approximation to be more effective?
   - here are some thoughts -- If other layers are like the first layer, the weights "whiten" or make the inputs more independent or random projections -- that is basically finding PC directions for low-rank inputs. 
-  - Are the outputs from later layers more or less low - rank?
+  - are the outputs from later layers more or less low - rank?
   - I wonder how this "whitening" helps level set estimation...
+- [takagi functions](https://arxiv.org/abs/1112.4205)
+- [nonlinear approximation and (deep) relu nets](https://www.math.tamu.edu/~rdevore/publications/170.pdf) - also comes with slides
 
 ## inductive bias: gradient descent finds good minima
 
@@ -114,20 +116,6 @@ some more concrete questions:
   - [Quantifying the generalization error in deep learning in terms of data distribution and
     neural network smoothness](https://arxiv.org/pdf/1905.11427v1.pdf)
 
-## interpolation + double descent
-
-- [Reconciling modern machine learning and the bias-variance trade-off](https://arxiv.org/abs/1812.11118) (belkin et al. 2018)
-- [Surprises in High-Dimensional Ridgeless Least Squares Interpolation](https://arxiv.org/abs/1903.08560)
-  - main result of limiting risk, where $\gamma \in (0, \infty)$:
-    - $R(\gamma) = \begin{cases} \sigma^2 \frac{\gamma}{1-\gamma} & \gamma < 1\\||\beta||_2^2(1 - \frac 1 \gamma) + \sigma^2 \frac{1} {\gamma - 1} & \gamma > 1\end{cases}$
-- [linear regression depends on data distr.](https://arxiv.org/abs/1802.05801)
-- [two models of double descent for weak features](https://arxiv.org/abs/1903.07571)
-- [double descent curve](https://openreview.net/forum?id=HkgmzhC5F7)
-- [boosting w/ l2 loss](https://www.tandfonline.com/doi/pdf/10.1198/016214503000125?casa_token=5OE5LZe_mIcAAAAA:-4DdXLa4A6SeXnguyYv1S3bfIbRXrSb1qojj_UkGZpmbNHqjkWMojm0al5xx2yz-7ABcfDXmdvBeCw)
-- [effective degrees of freedom](https://web.stanford.edu/~hastie/Papers/df_paper_LJrev6.pdf)
-- [high-dimensional ridge](https://projecteuclid.org/euclid.aos/1519268430)
-- [Harmless interpolation of noisy data in regression](https://arxiv.org/abs/1903.09139) - bound on how well interpolative solns can generalize to fresh data (goes to zero with extra features)
-
 ## kernels
 
 - [To understand deep learning we need to understand kernel learning](https://arxiv.org/abs/1802.01396) - overfitted kernel classifiers can still fit the data well
@@ -189,6 +177,7 @@ some more concrete questions:
   - contemporary experience is that it is difficult to train small architectures from scratch, which would similarly improve training performance - **lottery ticket hypothesis**: large networks that train successfully contain subnetworks that--when trained in isolation--converge in a comparable number of iterations to comparable accuracy
 - [ablation studies](https://arxiv.org/abs/1812.05687)
 - [deep learning is robust to massive label noise](https://arxiv.org/pdf/1705.10694.pdf)
+- [are all layers created equal?](https://arxiv.org/pdf/1902.01996.pdf)
 
 ## tools for analyzing
 

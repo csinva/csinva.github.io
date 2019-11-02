@@ -152,11 +152,13 @@ category: research
       - ex. karpathy et al LSTMs
       - ex. lei et al. - most relevant sentences in sentiment prediction
     3. class-activation map - sum the activations across channels (weighted by their weight for a particular class)
+- interpretable generative models
+
+    - [Interpretable VAEs for nonlinear group factor analysis](https://arxiv.org/abs/1802.06765)
 - concept activation vectors
-
-    - [concept activation vectors](https://arxiv.org/abs/1711.11279)
-
-        - Given: a user-defined set of examples for a concept (e.g., ‘striped’), and random
+- [concept activation vectors](https://arxiv.org/abs/1711.11279)
+    
+    - Given: a user-defined set of examples for a concept (e.g., ‘striped’), and random
             examples, labeled training-data examples for the studied class (zebras) 
         - given trained network
         - TCAV can quantify the model’s sensitivity to the concept for that class. CAVs are learned by training a linear classifier to distinguish between the activations produced by
@@ -164,8 +166,8 @@ category: research
         - CAV - vector orthogonal to the classification boundary
         - TCAV uses the derivative of the CAV direction wrt input
     - [automated concept activation vectors](https://arxiv.org/abs/1902.03129)
-
-        - Given a set of concept discovery images, each image is segmented with different resolutions
+    
+    - Given a set of concept discovery images, each image is segmented with different resolutions
             to find concepts that are captured best at different sizes. (b) After removing duplicate segments, each segment is resized tothe original input size resulting in a pool of resized segments of the discovery images. (c) Resized segments are mapped to a model’s activation space at a bottleneck layer. To discover the concepts associated with the target class, clustering with outlier removal is performed. (d) The output of our method is a set of discovered concepts for each class, sorted by their importance in prediction
 - **posthoc methods**
     1. dosovitskiy et al 16 - train generative deconv net to create images from neuron activations
@@ -389,6 +391,10 @@ category: research
 - alternatives
   - variable interaction networks (Hooker, 2004) - decompose pred into main effects + feature interactions
   - PDP-based feature interaction (greenwell et al. 2018)
+- feature-screening (feng ruan's work)
+  - want to find beta which is positive when a variable is important
+  - idea: maximize difference between (distances for interclass) and (distances for intraclass)
+  - using an L1 distance yields better gradients than an L2 distance
 
 
 ## example-based explanations

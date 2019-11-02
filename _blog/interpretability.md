@@ -25,4 +25,4 @@ The work introduces three desiderata a good interpretable ML pipeline should sat
 
 The work also categorizes existing methods into two main categories: **model-based interpretability** (i.e. the construction of models that readily provide insight into the relationships they have learned) and **post-hoc interpretability** (i.e. methods that analyze a trained model in order to provide insights into the learned relationships).
 
-Most of my recent work (e.g. [ACD](https://openreview.net/pdf?id=SkEqro0ctQ)), has focused on post-hoc interpretability. I am currently working on developing post-hoc methods for getting variable importances for random forests as well as model-based methods for more interpretable deep learning.
+Most of my recent work (e.g. [ACD](https://openreview.net/pdf?id=SkEqro0ctQ), [DAC](https://arxiv.org/abs/1905.07631)), has focused on post-hoc interpretability. I am currently working on developing post-hoc methods for getting variable importances for random forests as well as model-based methods for more interpretable deep learning.

@@ -300,6 +300,75 @@ initialize policy and iteratively update it
 1. define $\pi_0(s)$
 2. Bellman update for policy, where values are computed using the current policy $V^\pi_i(s)$
 
+# rl
+
+## what is rl
+
+- don't know rewards / transitions, but want to learn best policy to optimize rewards
+- must balance exploration with exploitation
+- uses samples or **episodes** = samples until reaching a terminal state
+
+## types of rl
+
+- **model-based** learn transition + rewards and used value/policy iteration vs **model-free**: directly estimate values /q-values
+  - keeping counts of transitions can be memory-intensive
+- **passive** (given policy - e.g. direct evaluation, TD-learning) and **active** (e.g. Q-learning) needs to learn policy
+- **on-policy learning** requires policy to be optimal to learn optimal values while **off-policy learning** can learn optimal values following suboptimal policy (e.g. Q-learning)
+
+
+
+## equations
+
+- direct methods: just keep track of counts
+- TD (bellman eqn w/ fixed policy): $V^\pi(s) = \underset{s'}{\sum} T(s, \pi(s), s')\underbrace{ [R(s, \pi(s), s') + \gamma V^\pi (s')]}_{\text{sample}}$
+  -  exponential moving average: $V^\pi(s) = (1- \alpha) V^\pi (s) + \alpha \cdot sample$
+- $Q_{k+1}(s, a) = \underset{s'}{\sum} T(s, a, s') \cdot \underbrace{[R(s, a, s') + \gamma \underset{a'}{\max} Q(s', a')]}_{\text{sample}}$ (like value iteration, but no max)
+  -  exponential moving average: $Q(s, a) = (1 - \alpha) Q(s, a) + \alpha \cdot sample$
+  - approximate q-learning = use feature-based repr.
+
+## exploration + exploitation
+
+- $\epsilon$-greedy policy - act randomly with probability $\epsilon$
+- exploration function - replace Q(s, a) with some function based on how many times state has been visited
+
+# bayesian networks
+
+## variables
+
+1. query variables - unkown and we want to know them
+2. evidence variables - known
+3. hidden variables - present, but unknown
+
+
+
+## representation
+
+- each node is conditionally indep of all ancestors given all of its parents
+
+
+
+## inference
+
+- inference by enumeration: sum over all the variables
+- elimination: join all factors and sum them out
+  - two steps: alternate joining and eliminating
+  - want to pick ordering to create smallest factors
+
+## sampling
+
+- **prior sampling**: sample and throw away things which don't match
+- **rejection sampling**: throw away anything as soon as it doesn't match
+- **likelihood weighting** - fix evidence variables and weight them by their likelihood
+- **gibbs sampling** - set them random and repeatedly resample one var at a time
+
+
+
+## independence
+
+- **d-separation** - color evidence vars, they separate unles they are at a common effect (or downstream)
+
+
+
 # propositional logic
 
 - declarative vs procedural (knowing how to ride a bike)

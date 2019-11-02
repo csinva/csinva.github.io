@@ -58,18 +58,18 @@ http://www.eecs189.org/
 - density estimation
 - dimensionality reduction
 
-## types of problems <br>(by amount of labels)
+## types of learning <br>(by amount of labels)
 
 - supervised
 - ~semi-supervised
 - reinforcement
 - unsupervised
 
-## types of models
+## categorizing models
 
 - what problems do they solve?
-- sort by how simple they are (bias/variance)
-- discriminative vs. generative
+- how "complex" are they? (bias/variance)
+- discriminative or generative?
 
 ## visual roadmap
 
@@ -77,7 +77,7 @@ http://www.eecs189.org/
 
 ## parameters and hyperparameters
 
-- result of optimization are a set of parameters
+- result of optimization is a set of parameters
 - parameters vs. hyperparameters
 
 ## train vs test
@@ -91,8 +91,8 @@ http://www.eecs189.org/
 ## matrix properties
 
 - *nonsingular* = invertible = nonzero determinant = null space of zero $\implies$ square
-  - *rank* = dimension
-  - *ill-conditioned matrix* - matrix is close to being singular - very small determinant
+  - $\implies$ *rank* = dimension
+  - *ill-conditioned matrix* - close to being singular - very small determinant
 
 ## vector norms
 
@@ -104,8 +104,8 @@ http://www.eecs189.org/
 ## matrix norms
 
 - nuclear norm: $||X||_* = \sum_i \sigma_i$
-- frobenius norm = euclidean norm (of a matrix): $||X||_F^2 =  \sqrt{\sum_i \sigma_i^2} $
-- spectral norm = $L_2$ -norm (of a matrix) = $||X||_2 = \underset{\max}{\sigma}(X)$
+- frobenius norm = euclidean norm: $||X||_F^2 =  \sqrt{\sum_i \sigma_i^2} $
+- spectral norm = $L_2$ -norm: $||X||_2 = \underset{\max}{\sigma}(X)$
 
 ## cauchy-shwartz inequality
 
@@ -117,7 +117,7 @@ equivalent to the triangle inequality $||x+y||_2^2 \leq (||x||_2 + ||y||_2)^2$
 
 - $f(E[X]) \leq E[f(X)]$ for convex f
 
-![1200px-ConvexFunction.svg](assets_files/1200px-ConvexFunction.svg.png)
+![1200px-ConvexFunction.svg](assets_files/1200px-ConvexFunction.png)
 
 ## subspaces
 
@@ -134,7 +134,7 @@ equivalent to the triangle inequality $||x+y||_2^2 \leq (||x||_2 + ||y||_2)^2$
 
 ## eigenvectors in pca
 
-![Screen Shot 2018-07-06 at 11.31.56 AM](assets_files/Screen Shot 2018-07-06 at 11.31.56 AM.png)
+![Screen Shot 2018-07-06 at 11.31.56 AM](assets_files/eigenvalues_transformed.jpg)
 
 ## evd
 
@@ -177,16 +177,16 @@ nxp matrix: $X=U \Sigma V^T$
   - $\underset{\max}{\lambda}(A) = \sup_{x \neq 0} \frac{x^T A x}{x^T x}$
   - $\underset{\min}{\lambda}(A) = \inf_{x \neq 0} \frac{x^T A x}{x^T x}$
 
-## positive semi-definite notation
+## positive semi-definite (psd)
+
+- defn 1: all eigenvalues are nonnegative
+- defn 2: $x^TAx \geq 0 \:\forall x \in R^n$ 
+
+## psd notation
 
 - vectors: $x \preceq y$ means x is less than y elementwise
 - matrices: $X \preceq Y$ means $Y-X$ is PSD
   - $v^TXv \leq v^TYv \:\: \forall v$
-
-## psd
-
-- defn 1: all eigenvalues are nonnegative
-- defn 2: $x^TAx \geq 0 \:\forall x \in R^n$ 
 
 ## matrix calculus
 
@@ -236,7 +236,7 @@ n = number of data points
 
 d = dimension of each data point
 
-`$$n\left\{\vphantom{\begin{bmatrix} X \\ \vdots \\. \end{bmatrix}}\right. \underbrace{ \begin{bmatrix} \vdots \\ y \\ \vdots \end{bmatrix}}_{\displaystyle 1}   = \underbrace{ \begin{bmatrix} \vdots \\ \cdots X \cdots\\ \vdots \end{bmatrix}}_{\displaystyle d} \vphantom{\begin{bmatrix} X \\ \vdots\\c \end{bmatrix}} \underbrace{ \begin{bmatrix} \vdots \\ w \\ \vdots \end{bmatrix}}_{\displaystyle 1} \left.\vphantom{\begin{bmatrix} X \\ \vdots \\. \end{bmatrix}}\right\}n$$`
+`$$n\left\{\vphantom{\begin{bmatrix} X \\ \vdots \\. \end{bmatrix}}\right. \underbrace{ \begin{bmatrix} \vdots \\ y \\ \vdots \end{bmatrix}}_{\displaystyle 1}   = n\left\{\vphantom{\begin{bmatrix} X \\ \vdots \\. \end{bmatrix}}\right. \underbrace{ \begin{bmatrix} \vdots \\ \cdots X \cdots\\ \vdots \end{bmatrix}}_{\displaystyle d} \vphantom{\begin{bmatrix} X \\ \vdots\\c \end{bmatrix}} \underbrace{ \begin{bmatrix} \smash{\vdots} \\ w \\ \smash\vdots \end{bmatrix}}_{\displaystyle 1} \left.\vphantom{\begin{bmatrix} X \\ \smash \vdots \\. \end{bmatrix}}\right\}d$$`
 
 ## lin. regression intuition 2
 
@@ -244,7 +244,7 @@ d = dimension of each data point
 
 ## regularization
 
-$\mathbf{\hat{y}} = \mathbf{X} \mathbf{\hat{w}}^T$
+$\mathbf{\hat{y}} = \mathbf{X} \mathbf{\hat{w}}$
 
   
 
@@ -264,12 +264,6 @@ $\mathbf{\hat{y}} = \mathbf{X} \mathbf{\hat{w}}^T$
 
 $\hat w_{RIDGE} = (X^TX \color{red}{+ \lambda I})^{-1}X^Ty$
 ![1d8XV](assets_files/1d8XV.png)
-
-
-
-## later models will be nonlinear
-
-<img src="assets_files/Screen Shot 2019-06-11 at 10.55.01 AM.png" width="80%">
 
 
 
@@ -296,7 +290,7 @@ $\mathcal L = p(data | \theta)$~ product over all n examples
 
 ## mle - maximum likelihood estimation
 
-- $\hat{\theta}_{MLE} = \underset{\theta}{argmax} \: \mathcal{L}$
+- $\hat{\theta}_{MLE} = \underset{\theta}{\text{argmax}} \: \mathcal{L}$
 - associated with *frequentist* school of thought
 
 ## how to do mle problems
@@ -387,13 +381,13 @@ $\mathcal L = p(data | \theta)$~ product over all n examples
 
 ## overview
 
-![Screen Shot 2018-06-24 at 7.40.57 PM](assets_files/Screen Shot 2018-06-24 at 7.40.57 PM.png)
+![Screen Shot 2018-06-24 at 7.40.57 PM](assets_files/ols_table.png)
 
 ## total LS intuition
 
-- add i.i.d. gaussian noise in x and y - regularization
+add i.i.d. gaussian noise in x and y - regularization
 
-![Screen Shot 2018-06-29 at 4.08.09 PM](assets_files/Screen Shot 2018-06-29 at 4.08.09 PM.png)
+![Screen Shot 2018-06-29 at 4.08.09 PM](assets_files/tls.png)
 
 ## total LS solution
 
@@ -449,7 +443,7 @@ X_2d = np.dot(X, U[:, :2]) #project in 2d (nx2)
 
 ## kernels
 
-![Screen Shot 2018-06-24 at 9.53.55 PM](assets_files/Screen Shot 2018-06-24 at 9.53.55 PM.png)
+![Screen Shot 2018-06-24 at 9.53.55 PM](assets_files/kernels.png)
 
 - $\phi_i^T\phi_j = \phi(x_i)^T \phi(x_j)$
 
@@ -483,13 +477,12 @@ X_2d = np.dot(X, U[:, :2]) #project in 2d (nx2)
 
 - $f(x_2) \geq f(x_1) + \nabla f(x_1) (x_2 - x_1)$
 
-  ![ tangents](assets_files/ tangents.png)
 
 ## convexity continued
 
 $\color{purple}{t f(x_1) + (1-t) f(x_2)} \geq f(tx_1 + (1-t)x_2)$
 
-![1200px-ConvexFunction.svg](assets_files/1200px-ConvexFunction.svg.png)
+![1200px-ConvexFunction.svg](assets_files/1200px-ConvexFunction.png)
 
 ## strong convexity + smoothness
 
@@ -545,10 +538,10 @@ M-smooth = Lipschitz continuous gradient: $||\nabla f(x_2) - \nabla f(x_1)|| \le
 
 # neural nets
 
-## so much hype
+## surprisingly effective
 
 - it predicts: vision, audio, text, ~rl
-- it's easy: little feature engineering
+- it's flexible: little/no feature engineering
 - it generalizes, despite having many parameters
 
 ## perceptron
@@ -563,7 +556,7 @@ M-smooth = Lipschitz continuous gradient: $||\nabla f(x_2) - \nabla f(x_1)|| \le
 
 ## [backprop demo](https://google-developers.appspot.com/machine-learning/crash-course/backprop-scroll/)
 
-- [nn demo playground](https://playground.tensorflow.org/#activation=tanh&batchSize=10&dataset=circle&regDataset=reg-plane&learningRate=0.03&regularizationRate=0&noise=0&networkShape=4,2&seed=0.63885&showTestData=false&discretize=false&percTrainData=50&x=true&y=true&xTimesY=false&xSquared=false&ySquared=false&cosX=false&sinX=false&cosY=false&sinY=false&collectStats=false&problem=classification&initZero=false&hideText=false)
+also see [nn demo playground](https://playground.tensorflow.org/#activation=tanh&batchSize=10&dataset=circle&regDataset=reg-plane&learningRate=0.03&regularizationRate=0&noise=0&networkShape=4,2&seed=0.63885&showTestData=false&discretize=false&percTrainData=50&x=true&y=true&xTimesY=false&xSquared=false&ySquared=false&cosX=false&sinX=false&cosY=false&sinY=false&collectStats=false&problem=classification&initZero=false&hideText=false)
 
 
 ## going deeper
@@ -651,7 +644,6 @@ decision trees / random forests </br>
 - risk: $\mathbb E_{(X,Y)}[L(f(x), y) ] = \sum_x p(x) \sum_y L(f(x), y) p(y|x)$
 - bayes classifier: $f^*(x) = \underset{y}{argmin} \: \underset{y}{\sum} \:L(y, y') p(y'|x)$
   - given x, pick y that minimizes risk
-- with 0-1 error: $f^*(x) = \underset{y}{argmax} \: p(y|x)$
 
 ## bayes classifier example
 
@@ -683,7 +675,7 @@ decision trees / random forests </br>
   - $q(x)$ predicted probability of y
 - corresponds to MLE for Bernoulli
 
-![Screen Shot 2018-07-02 at 11.26.42 AM](assets_files/Screen Shot 2018-07-02 at 11.26.42 AM.png)
+![Screen Shot 2018-07-02 at 11.26.42 AM](assets_files/loss.png)
 
 ## multiclass
 
@@ -727,7 +719,7 @@ decision trees / random forests </br>
 
 ## multiclass lda vs. qda
 
-![Screen Shot 2018-07-21 at 10.41.16 AM](assets_files/Screen Shot 2018-07-21 at 10.41.16 AM.png)
+![Screen Shot 2018-07-21 at 10.41.16 AM](assets_files/multiclass.png)
 
 # em
 
@@ -749,13 +741,14 @@ decision trees / random forests </br>
 
 ## EM
 
-- want to maximize *complete log-likelihood* $l (\theta; x, z) = log \: p(x,z\|\theta)$ but don't know latent z
-  - *expectation step* - values of z filled in
-  - *maximization step* - parameters are adjusted based on z
+want to maximize *complete log-likelihood* $l (\theta; x, z) = log \: p(x,z\|\theta)$ but don't know latent z
+- *expectation step* - values of z filled in
+- *maximization step* - parameters are adjusted based on z
 
 ## simplifying the math
 
-- $x$: observed vars, $z$: latent vars, $q$: assignments to z
+$x$: observed vars, $z$: latent vars, $q$: assignments to z
+
 - E: $q^{(t+1)} (z|x) = \underset{q}{argmin} \: D(q||\theta^{(t)})$
   - lower bound on complete log-likelihood (pf: Jensen's inequality)
 - M: $\theta^{(t+1)} = \underset{\theta}{argmin} \: D(q^{(t+1)} || \theta)$
@@ -766,7 +759,7 @@ decision trees / random forests </br>
 
 ## perceptron/logistic reg. problems
 
-![Screen Shot 2018-07-02 at 3.37.07 PM](assets_files/Screen Shot 2018-07-02 at 3.37.07 PM.png)
+![Screen Shot 2018-07-02 at 3.37.07 PM](assets_files/lin_sep.png)
 
 - doesn't find best solution
 - unstable when data not linearly separable
@@ -864,7 +857,7 @@ $\underset{w, b}{\min} \quad \frac{1}{2}||w||^2 + C\sum_i \max(1-y_i(w^Tx_i - b)
 
 ## intuition
 
-![Screen Shot 2018-07-03 at 12.14.53 AM](assets_files/Screen Shot 2018-07-03 at 12.14.53 AM.png)
+![Screen Shot 2018-07-03 at 12.14.53 AM](assets_files/knn.png)
 
 ## comments
 
@@ -893,7 +886,7 @@ ridge: ```$\underset{w}{\min} \quad ||Xw-y||_2^2\\s.t.\quad\color{cadetblue}{||w
 </div>
 
 
-![Screen Shot 2018-07-03 at 9.16.55 AM](assets_files/Screen Shot 2018-07-03 at 9.16.55 AM.png)
+![Screen Shot 2018-07-03 at 9.16.55 AM](assets_files/constrained.png)
 
 ## dual form
 
@@ -916,7 +909,7 @@ ridge: $\underset{w}{\min} \quad ||Xw-y||_2^2 + \color{cadetblue}{\lambda ||w||_
 - start with all 0s
 - iteratively choose/update $w_i$ to minimize $||y-Xw||^2$
 
-![Screen Shot 2018-07-03 at 9.51.10 AM](assets_files/Screen Shot 2018-07-03 at 9.51.10 AM.png)
+![Screen Shot 2018-07-03 at 9.51.10 AM](assets_files/pursuit.png)
 
 ## orthogonal matching pursuit
 
@@ -969,6 +962,8 @@ maximize H(parent) - [weighted average] $\cdot$ H(children)
 - *bagging* = *bootstrap aggregating*: each classifier uses subset of datapoints
 - *feature randomization*: each split uses subset of features
 
+![rf](assets_files/rf.png)
+
 ## random forest voting
 
 - consensus
@@ -986,7 +981,7 @@ maximize H(parent) - [weighted average] $\cdot$ H(children)
 
 # boosting
 
-- sequentially train many *weak learners* to approximate a function
+sequentially train many *weak learners* to approximate a function
 
 ## adaboost
 
