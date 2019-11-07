@@ -4,9 +4,10 @@ separator: '----'
 verticalSeparator: '---'
 highlightTheme: ir-black
 typora-copy-images-to: ./assets_files
+revealOptions:
+    transition: 'slide'
+	transitionSpeed: 'fast'
 ---
-
-<!-- .slide: data-transition="convex" data-transition-speed="medium"-->
 
 <h1> artificial intelligence </h1>
 *press esc to navigate slides*
@@ -14,7 +15,6 @@ typora-copy-images-to: ./assets_files
 **<a href="https://twitter.com/chandan_singh96">@chandan_singh96</a>**
 
 [![](assets_files/GitHub-Mark-64px.png)](https://github.com/csinva/csinva.github.io/blob/master/_slides/ai_slides/slides.md)
-
 
 # uninformed search
 
@@ -339,11 +339,19 @@ initialize policy and iteratively update it
 2. evidence variables - known
 3. hidden variables - present, but unknown
 
-
-
 ## representation
 
 - each node is conditionally indep of all ancestors given all of its parents
+- **d-separation** - color evidence vars, they separate unles they are at a common effect (or downstream)
+
+## triples
+
+| | Causal chain                                                 | Common cause                                                 | Common effect                                                |
+| :-- | --:-- | -:- | -:- |
+| | ![Screen Shot 2019-11-05 at 2.42.01 PM](assets_files/Screen Shot 2019-11-05 at 2.42.01 PM.png) | ![Screen Shot 2019-11-05 at 2.42.05 PM](assets_files/Screen Shot 2019-11-05 at 2.42.05 PM.png) | ![Screen Shot 2019-11-05 at 2.42.10 PM](assets_files/Screen Shot 2019-11-05 at 2.42.10 PM.png) |
+| $X \perp Z$? |  ❌  |   ❌ | ✅      |
+| $X \perp Z \vert Y$? |  ✅  |   ✅ | ❌     |
+
 
 
 
@@ -359,13 +367,67 @@ initialize policy and iteratively update it
 - **prior sampling**: sample and throw away things which don't match
 - **rejection sampling**: throw away anything as soon as it doesn't match
 - **likelihood weighting** - fix evidence variables and weight them by their likelihood
-- **gibbs sampling** - set them random and repeatedly resample one var at a time
+- **gibbs sampling** - set variables random and repeatedly resample one var at a time
+
+
+# decision networks
+
+## what is a decision network?
+
+similar to bayes nets, but we add 2 things:
+1. action nodes - we have complete control
+2. utility nodes - give us a result
+
+## decision theory
+
+- $EU(a|e) = \sum_{s'} P(s'|s, a) U(s')$
+- $MEU(e) = \underset{a}{\max} EU(a|e)$
+- $VPI(T) = E_T[MEU(e, t)] - MEU(e)$
+
+# hidden markov models
+
+## 4 inference problems
+
+1. *filtering* = *state estimation* - compute `$P(W_t | e_{1:t})$`
+
+2. *prediction* - compute `$P(W_{t+k}|e_{1:t})$` for $k>0$
+
+3. *smoothing* - compute `$P(W_{k}|e_{1:t})$` for $0 < k < t$
+
+4. *most likely explanation* - `$\underset{w_{1:t}}{\text{argmax}}\:P(w_{1:t}|e_{1:t})$`
+
+## simple markov model
+
+![Screen Shot 2019-11-06 at 5.00.18 PM](assets_files/Screen Shot 2019-11-06 at 5.00.18 PM.png)
+
+`$P(W_{i+1}) = \underset{w_i}{\sum} P(W_{i+1}|w_i) P (w_i)$`
+
+## hidden markov model
+
+![Screen Shot 2019-11-06 at 4.28.20 PM](assets_files/Screen Shot 2019-11-06 at 4.28.20 PM.png)
+
+`$$\underbrace{P(w_{t+1}|e_{1:t+1})}_{\text{new state}} = \alpha \: \underbrace{P(e_{t+1}|w_{t+1})}_{\text{sensor}} \cdot \underset{w_t}{\sum} \: \underbrace{P(w_{t+1}|w_t)}_{\text{transition}} \cdot \underbrace{P(w_t|e_{1:t})}_{\text{old state}}$$`
+
+## viterbi algorithm
+
+`$\underbrace{\underset{w_{1:t}}{\text{max}} \: P(w_{1:t}, W_{t+1}|e_{1:t+1})}_{\text{mle}} =\\ \alpha \: \underbrace{P(e_{t+1}|W_{t+1})}_{\text{sensor}} \cdot \underset{w_t}{\text{max}} \left[ \: \underbrace{P(W_{t+1}|w_t)}_{\text{transition}} \cdot \underbrace{\underset{w_{1:t-1}}{\text{max}} \:P(w_{1:t-1}, w_{t+1}|e_{1:t})}_{\text{max prev state}} \right]$`
+
+## particle filtering
+
+sample a bunch of particles and use to approximate probabilities:
+
+1. initialize particles
+   1. time-lapse update
+   2. observation update
+
+speed-ups when num particles < num possible states
+
+# extra topics
 
 
 
-## independence
 
-- **d-separation** - color evidence vars, they separate unles they are at a common effect (or downstream)
+
 
 
 
@@ -455,12 +517,6 @@ initialize policy and iteratively update it
 # decisions + rl 
 
 **this re-iterates the relevant equations using the equations in Russel & Norvig (all based on utitily funciton U(s)**
-
-## decision theory
-
-- $EU(a|e) = \sum_{s'} P(s'|s, a) U(s')$
-- $MEU(e) = \underset{a}{\max} EU(a|e)$
-- $VPI(T) = E_T[MEU(e, t)] - MEU(e)$
 
 ## mdps
 

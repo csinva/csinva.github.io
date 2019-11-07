@@ -3,6 +3,9 @@ title: Chandan nn weights pres
 separator: '----'
 verticalSeparator: '---'
 typora-copy-images-to: ./assets_files
+revealOptions:
+    transition: 'slide'
+	transitionSpeed: 'fast'
 ---
 
 <h1>  what do neural network weights reliably learn? </h1>

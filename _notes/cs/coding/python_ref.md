@@ -25,6 +25,8 @@ category: cs
 	- l.append(x)
     - l.insert(index, element)
   - l.pop()
+  - ['x'] + ['y'] = ['x', 'y']
+  - [True] * 5
 - queue: from collections import deque # implemented as doubly linked list
       - q = deque()
       - q.append(x)
@@ -76,6 +78,7 @@ category: cs
 - bin(10) = '0b1010'
 - hex(100) = '0x64'
 - ord('a') = 97
+- 'x' * 3 = 'xxx'
 ```
 
 *sorting*

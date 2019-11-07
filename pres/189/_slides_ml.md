@@ -4,9 +4,10 @@ separator: '----'
 verticalSeparator: '---'
 highlightTheme: ir-black
 typora-copy-images-to: ./assets_files
+revealOptions:
+    transition: 'slide'
+	transitionSpeed: 'fast'
 ---
-
-<!-- .slide: data-transition="convex" data-transition-speed="medium"-->
 
 <h1> machine learning </h1>
 *press esc to navigate slides*
