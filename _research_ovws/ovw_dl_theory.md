@@ -92,6 +92,7 @@ some more concrete questions:
 - [complexity of linear regions in deep networks](https://arxiv.org/pdf/1901.09021.pdf)
 - [Bounding and Counting Linear Regions of Deep Neural Networks](https://arxiv.org/pdf/1711.02114.pdf)
 - [On the Expressive Power of Deep Neural Networks](https://arxiv.org/pdf/1606.05336.pdf)
+- [Deep ReLU Networks Have Surprisingly Few Activation Patterns](https://arxiv.org/pdf/1906.00904.pdf)
 
 
 
@@ -168,6 +169,22 @@ some more concrete questions:
   - adversarially trained models have more meaningful gradients (and their adversarial examples actually look like other classes)
 - [Generalizability vs. Robustness: Adversarial Examples for Medical Imaging](https://arxiv.org/abs/1804.00504)
 - [robustness of explanations](https://arxiv.org/pdf/1806.07538.pdf)
+
+## implicit dl
+
+- [implicit deep learning](https://arxiv.org/abs/1908.06315) (el ghauli et al. 2019)
+  - $\hat y (u) = Cx + D u $, where $x = \phi(Ax + Bu)$
+    - here, $u$ is a new input, $x$ is a hidden state (which depends on u)
+    - A, B are matrices which let us compute x given u
+    - C, D help us do the final prediction (like the final linear layer)
+- [lifted neural networks](https://arxiv.org/abs/1805.01532) (askari et al. 2018)
+  - can solve dnn $\hat y = \phi(W_2 \phi (W_1X_0))$ by rewriting using constraints:
+    - $X_1 = \phi(W_1 X_0)$
+    - $X_2 = \phi(W_2 X_1)$
+  - $\begin{align}&\min (y - \hat y)^2\\s.t. X_1 &= \phi(WX_0)\\X_2 &= \phi(WX_1)\end{align}$
+  - can be written using Lagrangian multipliers: $\min (y - \hat y)^2 + \lambda_1( X_1 - \phi(WX_0)) + \lambda_2(X_2 - \phi(WX_1))$
+- [Fenchel Lifted Networks: A Lagrange Relaxation of Neural Network Training](https://arxiv.org/abs/1811.08039) (gu et al. 2018)
+  - in the lifted setting above, can replace Lagrangian with simpler expression using Fenchel conjugates
 
 # empirical studies
 

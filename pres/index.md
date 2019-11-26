@@ -18,8 +18,10 @@ title: presentations
 ## research
 - [quals research overview](https://docs.google.com/presentation/d/19fTICv0pyRiwGE39mqE_eGTq0Arn3OtVnDSrURFbPMA/present?slide=id.p)
 - [acd + interpretable ml talk](https://docs.google.com/presentation/d/1x4zzugqu1kMhUKdM94MWrfB9Y6-YfrnHsv5MDFvzfmE/edit#slide=id.p)
+    - [nlp version](https://docs.google.com/presentation/d/1bFIdoarqhZdwyXmvNKgqfbhKXByfgPW9h27HYGDXKGM/edit)
     - [interpretable ml](https://docs.google.com/presentation/d/13jbgFyYSSDaMUd2w4RY9GHteTcWJj1drS6_2sOkvnv4/present?slide=id.p) (discussion slides for group meeting)
-- [cogsci acd slides](https://docs.google.com/presentation/d/1I6djTqVn6YGKqxvQk59-4C39LbE68mNQbX1Go5pzTH4/present?slide=id.p)
+- [cd + acd + cdep 5 min talk](https://docs.google.com/presentation/d/1qWor5d7AXVQfcLtQmFdMPUDPHeBkN1wWZid_pfxZjVQ/present?slide=id.g51955b76d5_0_7)
+    - [cogsci acd slides](https://docs.google.com/presentation/d/1I6djTqVn6YGKqxvQk59-4C39LbE68mNQbX1Go5pzTH4/present?slide=id.p)
     - [acd white-theme slides for bin](https://docs.google.com/presentation/d/1GjL0IJWft3IpdWxAwprXNiZkAG4Jl5mU6FNT2t0DGkQ/edit#slide=id.g5d6ee59cb4_0_0)
     - [acd bavrd](https://docs.google.com/presentation/d/1IVeb5ibe561VR5PAQEN5hdnwmpAHquK4JLb1vzT9fd8/present) (3 min pres. given at bavrd 2019)
 - [dnn experiments](http://csinva.github.io/pres/dnn_experiments/#/)

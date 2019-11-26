@@ -1,0 +1,7 @@
+- talks
+	- grad slam 2019: https://www.youtube.com/watch?v=6VVppY-uUgE&feature=youtu.be&t=5600
+- misc releases
+  - https://uvacsnews.wordpress.com/2017/05/04/chandansingh/
+  - https://uvacsnews.wordpress.com/2017/05/12/congratulations-to-our-cs-award-winners/
+  - https://twitter.com/CS_UVA/status/860155364347715584
+  - [bids iml piece](https://bids.berkeley.edu/publications/definitions-methods-and-applications-interpretable-machine-learning)

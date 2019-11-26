@@ -58,68 +58,6 @@ Complexity can be a useful notion for many things in statistical models. It can 
   - "the probability of producing some types of outputs is far greater when randomness operates at the level of the program describing it rather than at the level of the output itself"
   - "they [recently reported in *Royal Society Open Science*](http://rsos.royalsocietypublishing.org/content/5/8/180399) that, compared to statistically random mutations, this mutational bias caused the networks to evolve toward solutions significantly faster."
 
-# minimum description length
-
-- mdl in linear regression: want to send y over, X is known to both sides, theta is also sent (used to pick a decoder for y)
-	- normalize maximum likelihood (nml): use theta to make codebook, then send code
-- [The Minimum Description Length Principle in Coding and Modeling](https://pdfs.semanticscholar.org/65d3/4977d9055f42e51dc1e7d9b4ca2f36c17537.pdf) (barron, rissanen, & yu, 98)
-  - mdl: represent an entire class of prob. distrs. as models by a single "universal" representative model such that it would be able to imitate the behavior of any model in the class. The best model class for a set of bserved data, then, is the onwhose representative premits the shortest coding of the data
-  - tradeoff: "good" prob. models for the data permit shorter code lengths
-    - generally agrees w/ low mse
-  - ex. encode data w/ model defined by mle estimates, quantized optimally to finite precision, then encode estimate w/ prefix code
-  - coding: $x \sim P(X)$, codelengths $\ell(x)$
-    - Kraft inequality: $\sum_x 2^{-\ell(x)} \leq 1$
-    - ideal codeword lenghts = $-\log P(X)$
-    - ideal mean length = $H(X)$
-  - mdl
-    - likelihood = summarize data in accodance / model (e.g. $P(y|x, \theta)$)
-    - parametric complexity = summarize model params
-- [Model Selection and the Principle of Minimum Description Length](https://www.tandfonline.com/doi/abs/10.1198/016214501753168398) (hansen & yu 2001)
-  - mdl: choose the model that gives the shortest description of data
-    - description length = length of binary string used to code the data
-    - using a prob distr. for coding/description purposes doesn't require that it actually generate our data
-  - basic coding
-    - set A, code C (mapping from A to a set of codewords)
-    - Q is a distr. on A
-    - $-\log_2Q$ is the code length for symbols in A
-      - can construct such a code w/ Huffman coding
-    - expected code length is minimized when Q = P, the true distr of our data
-  - different forms
-    - 2-stage
-    - mixture
-    - predictive
-    - normalized maximum likelihood (NML)
-- [mdl intro](http://www.scholarpedia.org/article/Minimum_description_length) (Rissanen, 2008) - scholarpedia
-  - coding just the data would be like maximum likelihood
-  - minimize $\underset{\text{log-likelihood}}{-\log P(y^n|x^n;\theta)} + \underset{\text{description length}}{L(\theta)}$
-    - ex. OLS
-    - if we want to send all the coefficients, assume an order and $L(\theta) = L(p) + L(\theta_1, ... \theta_p)$
-      - $L(\theta) \approx \frac p 2 \log p$
-        - quantization for each parameter (must quantize otherwise need to specify infinite bits of precision)
-    - if we want only a subset of the coefficients, also need to send $L(i_1, ..., i_k)$ for the indexes of the non-zero coefficients
-  - minimization becomes $\underset p \min \quad [\underset{\text{noise}}{- \log P(y^n|x^n; \hat{\theta}_{OLS})} + \underset{\text{learnable info}}{(p/2) \log n}]$
-    - *noise* - no more info can be extracted with this class of models
-    - *learnable info* in the data = precisely the best model
-    - **stochastic complexity** = *noise* + *learnable info*
-    - in this case, is same as BIC but often different
-  - modern mdl - don't assume a model form, try to code the data as short as possible with a *universal* model class
-    - often can actually construct these codes
-- Kolmogorov complexity $K(x)$ = the shortest computer program (in binary) that generates x (a binary string) = the "amount of info" in x
-  - complexity of a string x is at most its length
-  - algorithmically random - any string whose length is close to $|x|$
-    - more random = higher complexity
-- Minimum description length original reference \cite{rissanen1978modeling}. What is the minimum length description of the original?
-  - MDL reviews \cite{barron1998minimum, hansen2001model}.
-  - Book on stochastic complexity \cite{rissanen1989stochastic}
-  - *Minimum Description Length*, *MDL*, principle for model selection, of which the original form states that the best model is the one which permits the shortest encoding of the data and the model itself
-- *note: this type of complexity applies to the description, not the system*
-- Look into the neurips [paper](https://papers.nips.cc/paper/7954-chaining-mutual-information-and-tightening-generalization-bounds.pdf) on using mutual information and entropy and this [paper](https://projecteuclid.org/download/pdf_1/euclid.aos/1017939142) by barron that related covering balls etc to minimax bounds
-- [Information Theory in Probability Statistics Learning and Neural Nets](http://www.stat.yale.edu/~arb4/publications_files/COLT97.pdf) (barron 97)
-- [Information-Theoretic Asymptotics of Bayes Methods](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=54897) (Clarke & Barron 90)
-
-## mdl in non-linear models
-- [MDL-based Decision Tree Pruning](https://www.aaai.org/Papers/KDD/1995/KDD95-025.pdf) (mehta et al. 95)
-
 # computational complexity
 
 - amount of computational resource that it takes to solve a class of problem
@@ -210,3 +148,99 @@ Complexity can be a useful notion for many things in statistical models. It can 
 - [Degrees of Freedom and Model Search](https://arxiv.org/abs/1402.1920) (tibshirani 2014)
   - degrees of freedom = quantitative description of the amount of fitting performed by a given procedure
 - [linear smoothers and additive models](https://projecteuclid.org/download/pdf_1/euclid.aos/1176347115) (buja et al. 1989) see page 469 for degrees of freedom in ridge
+
+# minimum description length
+
+- [simplest mdl tutorial](https://homepages.cwi.nl/~pdg/ftp/mdlintro.pdf)
+- chapter 1: overview
+  - explain data given limited observations
+  - benefits
+    - occam's razor
+    - no overfitting (can pick both form of model and params), without need for ad hoc penalties
+    - bayesian interpretation
+    - no need for underlying truth
+  - description - in terms of some description method 
+    - e.g. a python program which prints a sequence then halts = Kolmogorov complexity
+      - invariance thm - as long as sequence is long enough, choice of programming language doesn't matter, as long as it's long enough) - (Kolmogorov 1965, chaitin 1969, solomonoff 1964)
+      - not computable in general
+      - for small samples in practice, depends on choice of programming language
+    - in practice, we don't use general programming languages but rather select a description method which we know we can get the length of the shortest description in that class (e.g. linear models)
+      - trade-off: we may fail to minimally compress some sequences which have regularity
+    - knowing data-generating process can help compress (e.g. recording times for something to fall from a height, generating digits of pi via taylor expansion, compressing natural language based on correct grammar)
+  - simplest version - let $\theta$ be the model and $X$ be the data
+    - 2-part MDL: minimize $L(\theta) + L(X|\theta)$
+      - $L(X|\theta) = - \log P(X|\theta)$  - Shannon code
+      - $L(\theta)$ - hard to get this, basic problem with 2-part codes
+        - have to do this for each model, not model-class (e.g. different linear models with same number of parameters would have different $L(\theta)$
+    - stochastic complexity ("refined mdl"): $\bar{L}(X|\theta)$ - only construct one code
+      - ex. $\bar L(X|\theta) = L(X|\theta) + |\theta|_0$ - like 2-part code but breaks up $\theta$ space into different sets (e.g. same number of parameters) and assigns them equal codelength
+    - normalized maximum likelihood - most recent version
+- chapter 2.1 background
+  - in mdl, we only work with prefix codes (i.e. no codeword is a prefix of any other codeword)
+    - these are uniquely decodable
+    - in fact, any uniquely decodable code can be rewritten as a prefix code which achieves the same code length
+  - probability mass functions correspond to codelength functions
+    - given a code $C$ and a prob distr. $P$, we can construct a code so short codewords get high probs and vice versa
+      - given $P$, $\exists C, \forall z L_C(z) \leq -\log P(z) $ ***add ciel here***
+      - given $C'$, $\exists P' \forall z -\log P(z) = L_{C'}(z)$
+    - uniform distr. - every codeword just has same length
+- mdl in linear regression: want to send y over, X is known to both sides, theta is also sent (used to pick a decoder for y)
+	- normalize maximum likelihood (nml): use theta to make codebook, then send code
+- [The Minimum Description Length Principle in Coding and Modeling](https://pdfs.semanticscholar.org/65d3/4977d9055f42e51dc1e7d9b4ca2f36c17537.pdf) (barron, rissanen, & yu, 98)
+  - mdl: represent an entire class of prob. distrs. as models by a single "universal" representative model such that it would be able to imitate the behavior of any model in the class. The best model class for a set of bserved data, then, is the onwhose representative premits the shortest coding of the data
+  - tradeoff: "good" prob. models for the data permit shorter code lengths
+    - generally agrees w/ low mse
+  - ex. encode data w/ model defined by mle estimates, quantized optimally to finite precision, then encode estimate w/ prefix code
+  - coding: $x \sim P(X)$, codelengths $\ell(x)$
+    - Kraft inequality: $\sum_x 2^{-\ell(x)} \leq 1$
+    - ideal codeword lenghts = $-\log P(X)$
+    - ideal mean length = $H(X)$
+  - mdl
+    - likelihood = summarize data in accodance / model (e.g. $P(y|x, \theta)$)
+    - parametric complexity = summarize model params
+- [Model Selection and the Principle of Minimum Description Length](https://www.tandfonline.com/doi/abs/10.1198/016214501753168398) (hansen & yu 2001)
+  - mdl: choose the model that gives the shortest description of data
+    - description length = length of binary string used to code the data
+    - using a prob distr. for coding/description purposes doesn't require that it actually generate our data
+  - basic coding
+    - set A, code C (mapping from A to a set of codewords)
+    - Q is a distr. on A
+    - $-\log_2Q$ is the code length for symbols in A
+      - can construct such a code w/ Huffman coding
+    - expected code length is minimized when Q = P, the true distr of our data
+  - different forms
+    - 2-stage
+    - mixture
+    - predictive
+    - normalized maximum likelihood (NML)
+- [mdl intro](http://www.scholarpedia.org/article/Minimum_description_length) (Rissanen, 2008) - scholarpedia
+  - coding just the data would be like maximum likelihood
+  - minimize $\underset{\text{log-likelihood}}{-\log P(y^n|x^n;\theta)} + \underset{\text{description length}}{L(\theta)}$
+    - ex. OLS
+    - if we want to send all the coefficients, assume an order and $L(\theta) = L(p) + L(\theta_1, ... \theta_p)$
+      - $L(\theta) \approx \frac p 2 \log p$
+        - quantization for each parameter (must quantize otherwise need to specify infinite bits of precision)
+    - if we want only a subset of the coefficients, also need to send $L(i_1, ..., i_k)$ for the indexes of the non-zero coefficients
+  - minimization becomes $\underset p \min \quad [\underset{\text{noise}}{- \log P(y^n|x^n; \hat{\theta}_{OLS})} + \underset{\text{learnable info}}{(p/2) \log n}]$
+    - *noise* - no more info can be extracted with this class of models
+    - *learnable info* in the data = precisely the best model
+    - **stochastic complexity** = *noise* + *learnable info*
+    - in this case, is same as BIC but often different
+  - modern mdl - don't assume a model form, try to code the data as short as possible with a *universal* model class
+    - often can actually construct these codes
+- Kolmogorov complexity $K(x)$ = the shortest computer program (in binary) that generates x (a binary string) = the "amount of info" in x
+  - complexity of a string x is at most its length
+  - algorithmically random - any string whose length is close to $|x|$
+    - more random = higher complexity
+- Minimum description length original reference \cite{rissanen1978modeling}. What is the minimum length description of the original?
+  - MDL reviews \cite{barron1998minimum, hansen2001model}.
+  - Book on stochastic complexity \cite{rissanen1989stochastic}
+  - *Minimum Description Length*, *MDL*, principle for model selection, of which the original form states that the best model is the one which permits the shortest encoding of the data and the model itself
+- *note: this type of complexity applies to the description, not the system*
+- Look into the neurips [paper](https://papers.nips.cc/paper/7954-chaining-mutual-information-and-tightening-generalization-bounds.pdf) on using mutual information and entropy and this [paper](https://projecteuclid.org/download/pdf_1/euclid.aos/1017939142) by barron that related covering balls etc to minimax bounds
+- [Information Theory in Probability Statistics Learning and Neural Nets](http://www.stat.yale.edu/~arb4/publications_files/COLT97.pdf) (barron 97)
+- [Information-Theoretic Asymptotics of Bayes Methods](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=54897) (Clarke & Barron 90)
+
+## mdl in non-linear models
+- [MDL-based Decision Tree Pruning](https://www.aaai.org/Papers/KDD/1995/KDD95-025.pdf) (mehta et al. 95)
+

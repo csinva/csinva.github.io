@@ -6,10 +6,10 @@ category: stat
 ---
 * TOC
 {:toc}
-
 ---
 
 # breiman
+
 - conversation
   - moved sf -> la -> caltech (physics) -> columbia (math) -> berkeley (math)
   - info theory + gambling
@@ -88,6 +88,7 @@ category: stat
     - FUNOP - fulll normal plot
       - can be visualized in table
   - spotty data in more complex situations
+    
     - FUNOR-FUNOM
   - multiple-response data
     - understudied except for factor analysis
@@ -98,4 +99,5 @@ category: stat
       - can use multiple regression factors as one factor if they are very correlated
     - regression techniques always offer hopes of learning more from less data than do variance-component techniques
   - flexibility of attack
+    
     - ex. what unit to measure in

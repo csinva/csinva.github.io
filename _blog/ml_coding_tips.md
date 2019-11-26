@@ -33,6 +33,8 @@ displays
 - [pandas](https://pandas.pydata.org/): provides dataframes to python - often overlooked for big data which might not fit into DataFrames that fit into memory. Still very useful for comparing results of models, particularly with many hyperparameters.
 - [pandas-profiling](https://github.com/pandas-profiling/pandas-profiling) - very quick data overviews
 - [pandas bamboolib](https://www.youtube.com/watch?v=yM-j5bY6cHw&feature=youtu.be) - ui for pandas, in development
+- [dovpanda](https://github.com/dovpanda-dev/dovpanda) - helpful hints for using pandas
+- [tabnine](https://github.com/wenmin-wu/jupyter-tabnine?utm_source=share&utm_medium=ios_app&utm_name=iossmf) - autocomplete for jupyter
 
 
 
@@ -41,6 +43,8 @@ displays
 - [dask](https://dask.org/) - natively scales python
 - [jax](https://github.com/google/jax) - high-performance python + numpy
 - [numba](https://numba.pydata.org/) - alternative to dask, just requires adding decorators to functions
+- [some tips for using jupyter](https://github.com/NirantK/best-of-jupyter)
+  - useful shortcute `tab`, `shift+tab`: inspect something
 
 
 
@@ -71,6 +75,7 @@ displays
 - it can often be messy to keep track of ml experiments
 - often I like to create a class which is basically a dictionary for params I want to vary / save and then save those to a dict (ex [here](https://github.com/csinva/dnn-experiments/tree/master/vision_fit)), but this only works for relatively small projects
 - [trains](https://github.com/allegroai/trains) by allegroai seems to be a promising experiment manager
+- [reddit thread](https://www.reddit.com/r/MachineLearning/comments/bx0apm/d_how_do_you_manage_your_machine_learning/) detailing different tracking frameworks
 
 ### command line utils
 
@@ -89,6 +94,36 @@ displays
 ### converting between dl frameworks
 
 - [mmdnn](https://github.com/microsoft/MMdnn)
+
+### vim shortcuts
+
+- remap esc -> jk
+- J - remove whitespace
+- ctrl+r - redo
+- o - new empty line below (in insert mode)
+- O - new empty line above (in insert mode)
+- e - move to end of word
+- use h and l!
+- r - replace command
+- R - enter replace mode (deletes as it inserts)
+- c - change operator (basically delete and then insert)
+  - use with position (ex. ce)
+- W, B, gE, E - move by white-space separated words
+- ctrl+o - go back, end search
+- % - matching parenthesis
+  - can find and substitute
+- vim extensive
+  - ! ls
+
+### tmux shortcuts
+
+- remap so clicking/scrolling works
+- use ctrl+b to do things
+- tmux ls
+
+### installation
+
+- pip use `--user`
 
 ### sharing
 
