@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Copyright 2017 mathsisfun.com -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="395.2"
+   height="239.2"
+   version="1.1"
+   style="font-family:Verdana;font-size:9.2px;stroke-width:1px"
+   id="svg113"
+   sodipodi:docname="amplitude-period-ex3.svg"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)">
+  <metadata
+     id="metadata117">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="640"
+     inkscape:window-height="480"
+     id="namedview115"
+     showgrid="false"
+     inkscape:current-layer="svg113" />
+  <defs
+     id="defs17">
+    <marker
+       id="aa1"
+       style="overflow:visible"
+       orient="auto">
+      <path
+         transform="matrix(0.4,0,0,0.4,4,0)"
+         style="fill:#19aeff;stroke:#19aeff;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
+         id="path2" />
+    </marker>
+    <marker
+       id="aa2"
+       style="overflow:visible"
+       orient="auto">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:#19aeff;stroke:#19aeff;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
+         id="path5" />
+    </marker>
+    <marker
+       id="aa3"
+       style="overflow:visible"
+       orient="auto">
+      <path
+         transform="matrix(0.4,0,0,0.4,4,0)"
+         style="fill:#73d216;stroke:#73d216;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
+         id="path8" />
+    </marker>
+    <marker
+       id="aa4"
+       style="overflow:visible"
+       orient="auto">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:#73d216;stroke:#73d216;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
+         id="path11" />
+    </marker>
+    <marker
+       id="aa5"
+       style="overflow:visible"
+       orient="auto">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:#c4a000;stroke:#c4a000;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
+         id="path14" />
+    </marker>
+  </defs>
+  <g
+     transform="matrix(-0.797643,0,0,0.070724,343.142,14.9857)"
+     id="g21">
+    <path
+       style="fill:#19aeff;stroke:#19aeff;stroke-width:1.11"
+       d="M 286,692 V 50"
+       id="path19" />
+  </g>
+  <path
+     style="marker-start:url(#aa1);marker-end:url(#aa2);fill:#19aeff;fill-opacity:0.75;stroke:#19aeff;stroke-width:2.34"
+     d="m 118.5,29 h 109.4"
+     id="path23" />
+  <path
+     style="fill:none;stroke:#c4a000;stroke-width:1.16;stroke-dasharray:6.9, 2.29999999999999982"
+     d="m 256,67.7 h 73.6"
+     id="path25" />
+  <text
+     x="354.2"
+     y="106.4"
+     transform="scale(0.999921,1.00008)"
+     style="font-family:'Comic Sans MS';text-align:center;text-anchor:middle;font-size:17.5px;fill:#73d216"
+     id="text27">Amplitude</text>
+  <path
+     style="fill:#2e3436;fill-opacity:0.75;stroke:#73d216;stroke-width:1.73;stroke-dasharray:6.9, 3.50000000000000000, 1.69999999999999996, 3.50000000000000000"
+     d="m 298.4,151.7 h 27.3"
+     id="path29" />
+  <text
+     x="174.7"
+     y="13.6"
+     transform="scale(0.999921,1.00008)"
+     style="font-family:'Comic Sans MS';text-align:center;text-anchor:middle;font-size:17.5px;fill:#19aeff"
+     id="text31">Period = 0.02π</text>
+  <text
+     x="3.10032"
+     y="43.7002"
+     transform="scale(0.999921,1.00008)"
+     style="font-size:17.5px;font-family:'Comic Sans MS';fill:#c4a000"
+     id="text33">Phase</text>
+  <g
+     transform="matrix(-0.797643,0,0,0.070724,458.532,14.9857)"
+     id="g37">
+    <path
+       style="fill:#19aeff;stroke:#19aeff;stroke-width:1.11"
+       d="M 286,692 V 50"
+       id="path35" />
+  </g>
+  <path
+     style="marker-start:url(#aa3);marker-end:url(#aa4);fill:none;stroke:#73d216;stroke-width:2.34"
+     d="m 305.1,71.2 v 76"
+     id="path39" />
+  <g
+     transform="matrix(2.79585,0,0,0.128841,-714.648,58.5157)"
+     id="g43">
+    <path
+       style="fill:#19aeff;stroke:#c4a000;stroke-width:0.44"
+       d="M 286,692 V 50"
+       id="path41" />
+  </g>
+  <path
+     style="marker-end:url(#aa5);fill:#c4a000;fill-opacity:0.75;stroke:#c4a000;stroke-width:2.34"
+     d="M 104,75.3 H 88.3"
+     id="path45" />
+  <path
+     style="fill:#204a87;stroke-width:2.57"
+     d="m 278.7,158.8 v -14.9 l 12.9,7.5 z"
+     id="path47" />
+  <text
+     x="93.6"
+     y="239.1"
+     style="fill:black"
+     id="text49">-3</text>
+  <text
+     x="236.3"
+     y="165.5"
+     transform="scale(1.1347,0.88129)"
+     style="font-family:'Comic Sans MS';font-size:17.5px;fill:#204a87"
+     id="text51">t</text>
+  <g
+     transform="matrix(0.263946,0,0,-0.524932,-395.238,346.466)"
+     id="g55">
+    <path
+       style="fill:none;stroke:#19aeff;stroke-width:5.55"
+       d="m 1677,232 c 18.6,-30.5 61,-24.3 77,5 56.5,80.4 77.7,179.4 132,261 14.4,29.5 57,47.5 79,15 39.2,-46.1 58.2,-105.1 83.3,-159.3 22.3,-46.9 39.7,-99.9 79.7,-135.3 32.9,-23.6 63,14.4 77.5,40.6 45.2,76.5 68.2,164.1 116.8,238.7 14.3,28 53.6,47.5 77,18.4 45.5,-53.9 66.2,-122.9 96,-185.7 19.2,-39.8 35.5,-84.6 71,-113.1 19.6,-14.6 43.9,-2.9 56.8,14.7"
+       id="path53" />
+  </g>
+  <path
+     style="fill:none;stroke:#808080;stroke-width:0.33"
+     d="m 46.6,179.9 h 240.2"
+     id="path57" />
+  <path
+     style="fill:none;stroke:#808080;stroke-width:0.33"
+     d="m 46.6,123.9 h 240.2"
+     id="path59" />
+  <path
+     style="fill:none;stroke:#808080;stroke-width:0.33"
+     d="m 46.6,95.9 h 240.2"
+     id="path61" />
+  <path
+     style="fill:none;stroke:#808080;stroke-width:0.33"
+     d="m 46.6,67.9 h 240.2"
+     id="path63" />
+  <path
+     style="fill:none;stroke:#808080;stroke-width:0.4"
+     d="M 68,235.4 V 67.7"
+     id="path65" />
+  <path
+     style="fill:none;stroke:#808080;stroke-width:0.4"
+     d="M 104.2,235.8 V 68.1"
+     id="path67" />
+  <path
+     style="fill:none;stroke:#808080;stroke-width:0.4"
+     d="M 141.1,235.8 V 68.1"
+     id="path69" />
+  <path
+     style="fill:none;stroke:#808080;stroke-width:0.4"
+     d="M 178,235.8 V 68.1"
+     id="path71" />
+  <path
+     style="fill:none;stroke:#808080;stroke-width:0.4"
+     d="M 287.1,235.8 V 68.1"
+     id="path73" />
+  <path
+     style="fill:none;stroke:#808080;stroke-width:0.4"
+     d="M 214.4,235.8 V 68.1"
+     id="path75" />
+  <path
+     style="fill:none;stroke:#808080;stroke-width:0.4"
+     d="M 250.7,235.8 V 68.1"
+     id="path77" />
+  <path
+     style="fill:none;stroke:#808080;stroke-width:0.33"
+     d="m 46.6,235.8 h 240.2"
+     id="path79" />
+  <path
+     style="fill:none;stroke:#808080;stroke-width:0.33"
+     d="m 46.6,207.8 h 240.2"
+     id="path81" />
+  <text
+     x="55.6"
+     y="162"
+     style="fill:black"
+     id="text83">-0.02</text>
+  <text
+     x="127.8"
+     y="162.2"
+     style="fill:black"
+     id="text85">0.02</text>
+  <text
+     x="167"
+     y="161.4"
+     style="fill:black"
+     id="text87">0.04</text>
+  <text
+     x="204.1"
+     y="161.4"
+     style="fill:black"
+     id="text89">0.06</text>
+  <text
+     x="240.6"
+     y="161.2"
+     style="fill:black"
+     id="text91">0.08</text>
+  <text
+     x="93.6"
+     y="183.3"
+     style="fill:black"
+     id="text93">-1</text>
+  <text
+     x="93.6"
+     y="211.3"
+     style="fill:black"
+     id="text95">-2</text>
+  <text
+     x="96.3"
+     y="126.5"
+     style="fill:black"
+     id="text97">1</text>
+  <text
+     x="97.5"
+     y="99.2"
+     style="fill:black"
+     id="text99">2</text>
+  <path
+     style="fill:none;stroke:#204a87;stroke-width:1.58"
+     d="m 44.2,151.9 h 242.5"
+     id="path101" />
+  <path
+     style="fill:none;stroke:#ff4141;stroke-width:1.2"
+     d="m 104.7,68.6 v 169"
+     id="path103" />
+  <text
+     x="101.6"
+     y="162.4"
+     style="fill:black"
+     id="text105">0</text>
+  <text
+     x="96.6"
+     y="155.1"
+     style="fill:black"
+     id="text107">0</text>
+  <text
+     x="354.2"
+     y="124.4"
+     transform="scale(0.999921,1.00008)"
+     style="font-family:'Comic Sans MS';text-align:center;text-anchor:middle;font-size:17.5px;fill:#73d216"
+     id="text109">= 3</text>
+  <text
+     x="3.10032"
+     y="61.7002"
+     transform="scale(0.999921,1.00008)"
+     style="font-size:17.5px;font-family:'Comic Sans MS';fill:#c4a000"
+     id="text111">Shift = 0.01</text>
+</svg>

@@ -96,44 +96,6 @@ category: research
   - prob moire effect with near-field scanning optical microscopy
 - chen_12_crystallization
 
-#  wavelets intro
-
-- notes based on “An intro to wavelets” - Amara
-- has frequency and duration
-- convolve w/ signal and see if they match
-- set of complementary wavelets - decomposes data without gaps/overlap so that decomposition process is reversible
-- better than Fourier for spikes / discontinuities
-- translation covariant (not invariant)
-
-## Fourier transform
-
-- translate function in time domain to frequency domain
-- *discrete fourier transform* - estimates Fourier transform from a finite number of its sampled points
-- *windowed fourier transform* - chop signal into sections and analyze each section separately
-- *fast fourier transform* - factors Fourier matrix into product of few sparse matrices
-
-## wavelet comparison to Fourier
-
-- both linear operations
-- the inverse transform matrix is transpose of the original
-- both localized in frequency
-- wavelets are also localized in space
-- makes many functions sparse in wavelet domain
-- Fourier just uses sin/cos
-- wavelet has infinite set of possible basis functions
-
-## wavelet analysis
-
-- must adopt a wavelet prototype function $\phi(x)$, called an *analyzing wavelet*=*mother wavelet*
-- orthogonal wavelet basis: $\phi_{(s,l)} (x) = 2^{-s/2} \phi (2^{-s} x-l)$
-- *scaling function* $W(x) = \sum_{k=-1}^{N-2} (-1)^k c_{k+1} \phi (2x+k)$ where $\sum_{k=0,N-1} c_k=2, \: \sum_{k=0}^{N-1} c_k c_{k+2l} = 2 \delta_{l,0}$
-- one pattern of coefficients is smoothing and another brings out detail = called *quadrature mirror filter pair*
-- there is also a fast discrete wavelet transform (Mallat)
-- wavelet packet transform - basis of *wavelet packets* = linear combinations of wavelets
-- *basis of adapted waveform* - best basis function for a given signal representation
-- *Marr wavelet* - developed for vision
-- differential operator and capable of being tuned to act at any desired scale
-
 ## l2 functions
 
 - $L^2$ function is a function $f: X \to \mathbb{R}$ that is square integrable: $|f|^2 = \int_X |f|^2 d\mu$ with respect to the measure $\mu$
@@ -142,18 +104,6 @@ category: research
 - **Hilbert space** H: a vectors space with an innor product $<f, g>$ such that the following norm turns H into a complete metric space: $|f| = \sqrt{<f, f>}$
 - **diffeomorphism** is an [isomorphism](https://en.wikipedia.org/wiki/Isomorphism) of [smooth manifolds](https://en.wikipedia.org/wiki/Smooth_manifold). It is an [invertible function](https://en.wikipedia.org/wiki/Invertible_function) that [maps](https://en.wikipedia.org/wiki/Map_(mathematics)) one [differentiable manifold](https://en.wikipedia.org/wiki/Differentiable_manifold) to another such that both the function and its inverse are [smooth](https://en.wikipedia.org/wiki/Smooth_function).
 
-# wavelet families
-
-- [overview](https://www.eecis.udel.edu/~amer/CISC651/IEEEwavelet.pdf)
-- [matlab wavelets](https://www.mathworks.com/help/wavelet/ug/wavelet-families-additional-discussion.html)
-- [python wavelets](http://wavelets.pybytes.com/)
-- morlet = gabor
-- generalizations
-  - [generalized daubechet wavelet families](http://bigwww.epfl.ch/publications/vonesch0702.pdf)
-  - [generalized coiflets](https://pdfs.semanticscholar.org/46e3/4016b8c4b187118e83392242c2165a6db3db.pdf)
-  - [Wavelet families of increasing order in arbitrary dimensions](https://ieeexplore.ieee.org/abstract/document/826784)
-  - [Parametrizing smooth compactly supported wavelets](https://www.ams.org/journals/tran/1993-338-02/S0002-9947-1993-1107031-8/)
-    - just for daubuchet
 
 ## reversible/invertible models
 
@@ -161,8 +111,6 @@ category: research
 
 - [arora reversibility](https://arxiv.org/pdf/1511.05653.pdf)
 - iResNet
-
-
 
 # unsupervised learning
 

@@ -81,6 +81,7 @@ category: research
   - we can build classifiers which use important features (such as race) but explanations will not reflect that
   - basically classifier is different on X which is OOD (and used by LIME and SHAP)
 - [Saliency Methods for Explaining Adversarial Attacks](https://arxiv.org/abs/1908.08413)
+- [Fooling Neural Network Interpretations via Adversarial Model Manipulation](https://arxiv.org/abs/1902.02041) (heo et al. 2019)
 
 
 # intrinsic (during model fitting)
@@ -104,6 +105,7 @@ category: research
     - train everything: classification + clustering around intraclass prototypes + separation between interclass prototypes (last layer fixed to 1s / -0.5s)
     - project prototypes to data patches
     - learn last layer
+- [Towards Explainable Deep Neural Networks (xDNN)](https://arxiv.org/abs/1912.02523) (angelov & soares 2019) - more complex versionf of using prototypes
 - [MonoNet: Towards Interpretable Models by Learning Monotonic Features](https://arxiv.org/abs/1909.13611) - enforce output to be a monotonic function of individuaul features
 - [Interpretability Beyond Classification Output: Semantic Bottleneck Networks](https://arxiv.org/abs/1907.10882) - add an interpretable intermediate bottleneck representation
 - [Improved Deep Fuzzy Clustering for Accurate and Interpretable Classifiers](https://ieeexplore.ieee.org/abstract/document/8858809) - extract features with a DNN then do fuzzy clustering on this
@@ -198,6 +200,11 @@ category: research
   - interpretation: Given the current set of feature values, the contribution of a feature value to the
     difference between the actual prediction and the mean prediction is the estimated Shapley value.
   - recalculate via sampling other features in expectation
+  - followup [propagating shapley values](https://arxiv.org/pdf/1911.11888.pdf) (chen, lundberg, & lee 2019) - can work with stacks of different models
+
+- [Explaining individual predictions when features are dependent: More accurate approximations to Shapley values](https://arxiv.org/abs/1903.10464) (aas et al. 2019) - tries to more accurately compute conditional expectation
+- [Feature relevance quantification in explainable AI: A causal problem](https://arxiv.org/abs/1910.13413) (janzing et al. 2019) - argues we should just use unconditional expectation
+
 - [quantitative input influence](https://ieeexplore.ieee.org/abstract/document/7546525) - similar to shap but more general
 - permutation importance - increase in the prediction error after we permuted the feature's values
   - If features are correlated, the permutation feature importance can be biased by unrealistic data
@@ -305,7 +312,7 @@ category: research
 - M-Plots: “Let me show you what the model predicts on average for data instances that have values close to v for that feature. The effect could be due to that feature, but also due to correlated features.” 
   - ALE plots: “Let me show you how the model predictions change in a small “window” of the feature around v for data instances in that window.” 
 
-## scores for tree ensembles
+## tree ensembles
 
 - MDI = Gini importance
 - Breiman proposes permutation tests: Breiman, Leo. 2001. “Random Forests.” Machine Learning 45 (1). Springer: 5–32
@@ -347,6 +354,7 @@ category: research
     - extreme case of random forest w/ binary vars?
   - real trees are harder: correlated vars and stuff mask results of other vars lower down
   - asymptotically, randomized trees might actually be better
+- [Actionable Interpretability through Optimizable Counterfactual Explanations for Tree Ensembles](https://arxiv.org/pdf/1911.12199v1.pdf) (lucic et al. 2019)
 
 ## example-based explanations
 
@@ -451,7 +459,9 @@ category: research
     3. class-activation map - sum the activations across channels (weighted by their weight for a particular class)
 - gradient-based methods - visualize what in image would change class label
   - gradient * input
-  - integrated gradients
+  - [integrated gradients](http://proceedings.mlr.press/v70/sundararajan17a/sundararajan17a.pdf) (sundararajan et al. 2017) - just sum up the gradients from some baseline to the image (in 1d, this is just $f(x) - f(baseline))$
+    - in higher dimensions, such as images, we pick the path to integrate by starting at some baseline (e.g. all zero) and then get gradients as we interpolate between the zero image and the real image
+    - if we picture 2 features, we can see that integrating the gradients will not just yield $f(x) - f(baseline)$, because each time we evaluate the gradient we change both features
   - lrp
   - taylor decomposition
   - deeplift
@@ -474,7 +484,8 @@ category: research
     - [Learning Reliable Visual Saliency for Model Explanations](https://ieeexplore.ieee.org/abstract/document/8884184)
     - [Neural Network Attributions: A Causal Perspective](https://arxiv.org/abs/1902.02302)
     - [Gradient Weighted Superpixels for Interpretability in CNNs](https://arxiv.org/abs/1908.08997)
-    - [Decision Explanation and Feature Importance for Invertible Networks](https://arxiv.org/abs/1910.00406)
+    - [Decision Explanation and Feature Importance for Invertible Networks](https://arxiv.org/abs/1910.00406) (mundhenk et al. 2019)
+    - [Efficient Saliency Maps for Explainable AI](https://deepai.org/publication/efficient-saliency-maps-for-explainable-ai) 
 - interactions
     - [hierarchical interpretations for neural network predictions](https://arxiv.org/abs/1806.05337) (singh et al. 2019)
       - [contextual decomposition](https://arxiv.org/abs/1801.05453) (murdoch et al. 2018)
@@ -513,7 +524,16 @@ category: research
 - [Deep k-Nearest Neighbors: Towards Confident, Interpretable and Robust Deep Learning](https://arxiv.org/pdf/1803.04765.pdf)
     - [Interpreting Neural Networks With Nearest Neighbors](https://arxiv.org/pdf/1809.02847.pdf)
 - [outlier-detection](https://scikit-learn.org/stable/modules/outlier_detection.html)
-    - [isolation forest](https://ieeexplore.ieee.org/abstract/document/4781136) - lower average number of random splits required to isolate a sample means more outlier
+    - assume data is Gaussian and fit elliptic envelop (maybe robustly) to tell when data is an outlier
+    - local outlier factor (breunig et al. 2000) - score based on nearest neighbor density 
+    - [isolation forest](https://ieeexplore.ieee.org/abstract/document/4781136) (liu et al. 2008) - lower average number of random splits required to isolate a sample means more outlier
+    - [one-class svm](https://scikit-learn.org/stable/modules/generated/sklearn.svm.OneClassSVM.html#sklearn.svm.OneClassSVM) - estimates the support of a high-dimensional distribution using a kernel
+      - 2 approaches
+        - separate the data from the origin (with max margin between origin and points) (scholkopf et al. 2000)
+        - find a sphere boundary around a dataset with the volume of the sphere minimized ([tax & duin 2004](https://link.springer.com/article/10.1023/B:MACH.0000008084.60811.49))
+    - [detachment index](https://escholarship.org/uc/item/9d34m0wz) (kuenzel 2019) - based on random forest
+      - for covariate $j$, detachment index $d^j(x) = \sum_i^n w (x, X_i) |X_i^j - x^j|$
+        - $w(x, X_i) = \underbrace{1 / T\sum_{t=1}^{T}}_{\text{average over T trees}} \frac{\overbrace{1\{ X_i \in L_t(x) \}}^{\text{is }   X_i \text{ in the same leaf?}}}{\underbrace{|L_t(x)|}_{\text{num points in leaf}}}$ is $X_i$ relevant to the point $x$?
 - lots of papers on confidence calibration (transforms outputs into probabilities)
 - [get confidences before overfitting](https://arxiv.org/abs/1805.08206)
     - 2 popular things: max margin, entropy of last layer
@@ -560,18 +580,16 @@ category: research
   - sample size disparity
   - proxies of sensitive attributes
 - definitions
-  - unawareness - don't show sensitive attributes
+  - **unawareness** - don't show sensitive attributes
     - flaw: other attributes can still signal for it
   - group fairness
-    - Demographic Parity - means for each group should be approximately equal
+    - **demographic parity** - mean predictions for each group should be approximately equal
       - flaw: means might not be equal
-    - Equalized Odds - predictions are independent of group given label
+    - **equalized odds** - predictions are independent of group given label
       - equality of opportunity: $p(\hat y=1|y=1)$ is same for both groups
-    - Predictive Rate Parity - Y is independent of group given prediction
-  - Individual Fairness
-    - similar individuals should be treated similarly
-  - Counterfactual fairness
-    - replace attributes w/ flipped values
+    - **predictive rate parity** - Y is independent of group given prediction
+  - **individual fairness** - similar individuals should be treated similarly
+  - **counterfactual fairness** - replace attributes w/ flipped values
 - fair algorithms
   - preprocessing - remove sensitive information
   - optimization at training time - add regularization

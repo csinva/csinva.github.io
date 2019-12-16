@@ -31,6 +31,20 @@ typora-copy-images-to: ./assets/nlp
     - intuition: train classifier on binary prediction: is word $w$ likely to show up near this word? (algorithm also called skip-gram)
       - the weights are the embeddings
     - also **GloVe**, which is based on ratios of word co-occurrence probs
+- some tasks
+  - tokenization
+  - pos tagging
+  - named entity recognition
+    - nested entity recognition - not just names (but also Jacob's brother type entity)
+  - sentiment classification
+  - language modeling (i.e. text generation)
+  - machine translation
+  - hardest: coreference resolution
+  - question answering
+- most popular datasets
+  - (by far) WSJ
+  - then twitter
+  - then Wikipedia
 
 # dl for nlp
 

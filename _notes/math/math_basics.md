@@ -19,8 +19,6 @@ category: math
 - $(1-x)^N \leq e^{-Nx}$
 - Poisson pmf approximates binomial when N large, p small
 
-
-
 # functions
 
 - *Gamma*: $\Gamma(n)=(n-1)!=\int_0^\infty x^{n-1}e^{-x}dx$
@@ -70,9 +68,25 @@ category: math
 - $\ln x * \ln y = \ln(x^{\ln y})$
   - difference between log 10n and log 2n is always a constant (about 3.322)
 - $\log_b (x) = \log_d (x) / \log_d (b)$
-- $e^{\mu it} = cos(\mu t)+ isin(\mu t)$
 - Partial Fractions: $\frac{3x+11}{(x-3)(x+2)} = \frac{A}{x-3} + \frac{B}{x+2}$
 - $(ax+b)^k = \frac{A_1}{ax+b}+\frac{A_2}{(ax+b)^2}+...$
 - $(ax^2+bx+c)^k = \frac{A_1x+B_1}{ax^2+bx+c}+...$
 - $cos(a\pm b) = cos(a)cos(b)\mp sin(a)sin(b)$
 - $sin(a \pm b) = sin(a)cos(b) \pm sin(b)cos(a)$
+
+
+
+# imaginary numbers
+
+- complex conjugate of z=x+iy is  $z^*$ = x - iy
+- Euler's formula $e^{i \theta} = \cos (\theta) + i \sin (\theta)$
+- sometimes we write imaginary numbers in polar form: $z = |z| e^{i \theta}$
+  - makes multiplication / division simpler
+- absolute value / modules of imaginary numbers: $|a + ib| = \sqrt{a^2 + b^2}$
+
+
+
+# spaces
+
+- hilbert space - requires an inner product (useful in analyzing kernels) - more general than an inner product space
+  - reproducing kernel hilbert space with extra property

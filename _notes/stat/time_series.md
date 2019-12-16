@@ -61,4 +61,5 @@ category: stat
 **ARMA model**: $ARMA(p, q)$: $X_t = c + \varepsilon_t +  \sum_{i=1}^p \varphi_i X_{t-i} + \sum_{i=1}^q \theta_i \varepsilon_{t-i}$
 
 **ARIMA model**: $ARIMA(p, d, q)$: - generalizes ARMA model to non-stationarity (using differencing)
-	- d number of nonseasonal differences (differencing order i.e. what order of derivative to take)
+
+- d number of nonseasonal differences (differencing order i.e. what order of derivative to take)

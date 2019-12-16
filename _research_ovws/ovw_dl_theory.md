@@ -9,7 +9,7 @@ category: research
 
 [TOC]
 
-# theoretical methods
+# theoretical studies
 
 DNNs display many surprising properties
 
@@ -170,7 +170,7 @@ some more concrete questions:
 - [Generalizability vs. Robustness: Adversarial Examples for Medical Imaging](https://arxiv.org/abs/1804.00504)
 - [robustness of explanations](https://arxiv.org/pdf/1806.07538.pdf)
 
-## implicit dl
+## implicit dl + optimization
 
 - [implicit deep learning](https://arxiv.org/abs/1908.06315) (el ghauli et al. 2019)
   - $\hat y (u) = Cx + D u $, where $x = \phi(Ax + Bu)$
@@ -181,10 +181,34 @@ some more concrete questions:
   - can solve dnn $\hat y = \phi(W_2 \phi (W_1X_0))$ by rewriting using constraints:
     - $X_1 = \phi(W_1 X_0)$
     - $X_2 = \phi(W_2 X_1)$
-  - $\begin{align}&\min (y - \hat y)^2\\s.t. X_1 &= \phi(WX_0)\\X_2 &= \phi(WX_1)\end{align}$
+  - $\begin{align} &\min (y - \hat y)^2\\s.t. X_1 &= \phi(WX_0)\\X_2 &= \phi(WX_1)\end{align}$
   - can be written using Lagrangian multipliers: $\min (y - \hat y)^2 + \lambda_1( X_1 - \phi(WX_0)) + \lambda_2(X_2 - \phi(WX_1))$
 - [Fenchel Lifted Networks: A Lagrange Relaxation of Neural Network Training](https://arxiv.org/abs/1811.08039) (gu et al. 2018)
   - in the lifted setting above, can replace Lagrangian with simpler expression using Fenchel conjugates
+- robust optimization basics
+  - immunize optimization problems against uncertainty in the data
+  - do so by having worst-case constraints (e.g. $a < 5, \forall a$)
+  - *local robustness* - maximize radius surrounding parameter subject to all constraints (no objective to maximize)
+  - *global robustness* - maximize objective subject to robustness constraint  (trades off robustness with objective value)
+  - *non-probabilistic robust optimization models* (e.g. Wald's maximin model: $\underset{x}{\max} \underset{u}{\min} f(x, u)$
+  - also are *probabilistically robust optimization*
+- distributional robustness - using moments in the dl work
+  - ch 4 and ch10 of [robust optimization book](https://people.eecs.berkeley.edu/~elghaoui/robbook.html) (bental, el ghaoui, & nemirovski 2009)
+  - [Certifying Some Distributional Robustness with Principled Adversarial Training](https://arxiv.org/abs/1710.10571) (sinha,  namkoong, & duchi 2018)
+    - want to guarantee performance under adversarial input perturbations
+    - considering a Lagrangian penalty formulation of perturbing the underlying data distribution in a Wasserstein ball
+      - during training, augments model parameter updates with worst-case perturbations of training data
+    - little extra cost and achieves guarantees for smooth losses
+  - [On Distributionally Robust Chance-Constrained Linear Programs](https://pdfs.semanticscholar.org/dc8a/e0f1ee878d68208184d123020f1acd2525bb.pdf) (calafiore & el ghaoui 2006)
+    - linear programs where data (in the constraints) is random
+    - want to enforce the constraints up to a given prob. level
+    - can convert the prob. constraints into convex 2nd-order cone constraints
+    - under distrs. for the random data, can guarantee constraints
+- [Differentiable Convex Optimization Layers](http://web.stanford.edu/~boyd/papers/pdf/diff_cvxpy.pdf) (agrawal et al. 2019)
+
+## statistical physics
+
+- [Statistical Mechanics of Deep Learning](https://www.annualreviews.org/doi/abs/10.1146/annurev-conmatphys-031119-050745) (bahri et al. 2019)
 
 # empirical studies
 
@@ -209,6 +233,8 @@ some more concrete questions:
   - want to scale direction vector to have same norm in each direction as filter
   - use PCA to find important directions (ex. sample w at each step, pca to find most important directions of variance)
 
+
+
 ## misc theoretical areas
 
 - deep vs. shallow [rvw](http://cbmm.mit.edu/sites/default/files/publications/CBMM-Memo-058v5.pdf)
@@ -231,7 +257,7 @@ some more concrete questions:
 
 
 
-## adam vs sgd papers
+## adam vs sgd
 
 - svd parameterization rnn paper: [inderjit paper](https://arxiv.org/pdf/1803.09327.pdf)
     - original adam paper: [kingma 15](https://arxiv.org/abs/1412.6980)

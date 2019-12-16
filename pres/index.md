@@ -43,3 +43,13 @@ title: presentations
     - [acd + interp poster](/assets/write_ups/utokyo_19_interp_poster.pdf)
 - [rf segmentation](/assets/write_ups/singh_15_rf_segmentation.pdf)
 - [wsimule poster](/assets/write_ups/wsimule_17_nips_poster.pdf)
+
+# recordings
+- talks
+	- grad slam 2019: https://www.youtube.com/watch?v=6VVppY-uUgE&feature=youtu.be&t=5600
+	- [textxd 2019](https://berkeley-haas.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=276daa74-7298-40b1-9503-ab17014b5863)
+- misc releases
+  - https://uvacsnews.wordpress.com/2017/05/04/chandansingh/
+  - https://uvacsnews.wordpress.com/2017/05/12/congratulations-to-our-cs-award-winners/
+  - https://twitter.com/CS_UVA/status/860155364347715584
+  - [bids iml piece](https://bids.berkeley.edu/publications/definitions-methods-and-applications-interpretable-machine-learning)

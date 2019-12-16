@@ -30,6 +30,7 @@ category: stat
 - adjustments
   - *bonferroni procedure* - we are doing 3 tests with 5% confidence, so we actually do 5/3% for each test in order to restrict everything to 5% total
   - *Benjamini–Hochberg procedure* - controls for false discovery rate
+- note: ranking is often more important than actual FDR control (because we just need to know what experiments to do)
 
 # normal theory
 

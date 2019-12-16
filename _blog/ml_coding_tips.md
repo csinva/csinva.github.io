@@ -31,6 +31,7 @@ displays
 - [h5py](http://docs.h5py.org/en/stable/): a great way to read/write to arrays which are too big to store in memory, as if they were in memory
 - [slurmpy](https://github.com/brentp/slurmpy): lets you submit jobs to slurm using just python, so you never need to write bash scripts.
 - [pandas](https://pandas.pydata.org/): provides dataframes to python - often overlooked for big data which might not fit into DataFrames that fit into memory. Still very useful for comparing results of models, particularly with many hyperparameters.
+  - [modin](https://github.com/modin-project/modin) - drop in pandas replacement to speed up operations
 - [pandas-profiling](https://github.com/pandas-profiling/pandas-profiling) - very quick data overviews
 - [pandas bamboolib](https://www.youtube.com/watch?v=yM-j5bY6cHw&feature=youtu.be) - ui for pandas, in development
 - [dovpanda](https://github.com/dovpanda-dev/dovpanda) - helpful hints for using pandas
@@ -69,6 +70,7 @@ displays
 - it's hard to pick a good ide for data science. [jupyter](https://jupyter.org/) notebooks are great for exploratory analysis, while more fully built ides like [pycharm](https://www.jetbrains.com/pycharm/) are better for large-scale projects
 - using [atom](https://atom.io/) with the [hydrogen](https://atom.io/packages/hydrogen) plugin often strikes a nice balance
 - [jupytertext](https://github.com/mwouts/jupytext) offers a nice way to use version control with jupyter
+- [pdoc3](https://pypi.org/project/pdoc3/) can very quickly generate simple api from docstrings
 
 ### hyperparameter tracking
 
@@ -114,6 +116,10 @@ displays
   - can find and substitute
 - vim extensive
   - ! ls
+
+### misc services
+
+- google buckets: just type gsutil and then can type a linux command (e.g. ls, du)
 
 ### tmux shortcuts
 

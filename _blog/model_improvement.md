@@ -26,6 +26,8 @@ category: blog
 
 - normalizing features and output
 - balance the data (random sampling, random sampling + ensembling, [smote](https://jair.org/index.php/jair/article/view/10302), etc.)
+- do [feature selection](https://scikit-learn.org/stable/modules/feature_selection.html) with simple screening (e.g. variance, correlation, etc)
+- do feature selection using a model (e.g. tree, lasso)
 
 ## debugging
 
@@ -47,4 +49,5 @@ category: blog
 ## analyzing erros
 
 - plot predictions vs groundtruth
+- try to [detect outliers](https://scikit-learn.org/stable/modules/outlier_detection.html)
 - visualize the examples with the largest prediction error

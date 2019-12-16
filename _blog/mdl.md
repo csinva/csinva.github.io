@@ -13,7 +13,7 @@ category: blog
 
 ---
 
-The idea of mdl originated with [Risanen (1976)[], building on the concept of [Kolmogorov (algorithmic) complexity refs.]().
+The idea of mdl originated with [Rissanen (1976)[], building on the concept of [Kolmogorov (algorithmic) complexity refs.]().
 
 
 
