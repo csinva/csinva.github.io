@@ -67,7 +67,7 @@ typora-copy-images-to: ./assets/linear_algebra
   - dim $R(A^T)$ = r
   - dim $N(A^T)$ = m-r    
 - *adjoint* - compute with mini-dets
-    - $A^{-1} = adj(A) / det(A)$
+    - $A^{-1} = adj(A) / \det(A)$
 - *Schur complement* of $X = \begin{bmatrix}  A & B \\  C & D\end{bmatrix}$
    - $M/D = A - BD^{-1}C$
    - $M/A = D-CA^{-1}B$
@@ -154,7 +154,7 @@ typora-copy-images-to: ./assets/linear_algebra
   - 0 eigenvalue $\implies$ A is singular
   - eigenvalues are on the main diagonal when the matrix is triangular
 - expressions when $A \in \mathbb{S}$
-  - $det(A) = \prod_i \lambda_i$
+  - $\det(A) = \prod_i \lambda_i$
   - $tr(A) = \sum_i \lambda_i$
   - $||A||_2 = \max | \lambda_i |$
   - $||A||_F = \sqrt{\sum \lambda_i^2}$

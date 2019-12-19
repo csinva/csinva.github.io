@@ -232,6 +232,9 @@ category: ml
       - anything that's not a local maximum is set to 0
       - on line direction, require a weighted average to interpolate between points (bilinear interpolation = average on edges, then average those points)
   4. **hysteresis thresholding** - high threshold to start edge curves then low threshold to continue them
+- [Scale-space and edge detection using anisotropic diffusion](https://ieeexplore.ieee.org/abstract/document/56205) (perona & malik 1990)
+  - introduces **anisotropic diffusion** (see [wiki page](https://en.wikipedia.org/wiki/Anisotropic_diffusion)) - removes image noise without removing content
+  - produces series of images, similar to repeatedly convolving with Gaussian
 - filter review
   - smoothing
     - no negative values

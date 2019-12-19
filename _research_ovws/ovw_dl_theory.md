@@ -172,11 +172,22 @@ some more concrete questions:
 
 ## implicit dl + optimization
 
-- [implicit deep learning](https://arxiv.org/abs/1908.06315) (el ghauli et al. 2019)
+- [implicit deep learning](https://arxiv.org/abs/1908.06315) (el ghaoui et al. 2019)
   - $\hat y (u) = Cx + D u $, where $x = \phi(Ax + Bu)$
-    - here, $u$ is a new input, $x$ is a hidden state (which depends on u)
-    - A, B are matrices which let us compute x given u
-    - C, D help us do the final prediction (like the final linear layer)
+    - here, $u$ is a new input
+    - $x$ is a hidden state which represents some hidden features (which depends on $u$)
+      - **well-posedness** - want x to be unique for a given u
+    - $A, B$ are matrices which let us compute $x$ given $u$
+    - $C, D$ help us do the final prediction (like the final linear layer)
+  - ex. feedforward nets
+    - consider net with $L$ layers
+      - $x_0 = u$
+      - $x_{l + 1} = \phi_l (W_l x_l)$
+      - $\hat y (u) = W_L x_L$
+    - rewriting in implicit form
+      - $x = (x_L, ..., x_1)$ - concatenate all the activations into one big vector
+      - ![implicit_dl](assets/implicit_dl.png)
+      - ex. $Ax + Bu= \begin{bmatrix} W_{L-1}x_{L-1} \\ W_{L-2} x_{L-2} \\ \vdots \\ W_1x_1 \\ \mathbf 0\end{bmatrix} + \begin{bmatrix} 0 \\ 0 \\ \vdots \\ 0 \\ W_0 u \end{bmatrix}$ 
 - [lifted neural networks](https://arxiv.org/abs/1805.01532) (askari et al. 2018)
   - can solve dnn $\hat y = \phi(W_2 \phi (W_1X_0))$ by rewriting using constraints:
     - $X_1 = \phi(W_1 X_0)$
@@ -209,6 +220,21 @@ some more concrete questions:
 ## statistical physics
 
 - [Statistical Mechanics of Deep Learning](https://www.annualreviews.org/doi/abs/10.1146/annurev-conmatphys-031119-050745) (bahri et al. 2019)
+  - what is the advantage of depth  - connect to dynamical phase transitions
+    - there are several function which require only polynomial nodes in each layer for deep nets, but exponential for shallow nets
+  - what is the shape of the loss landscape - connect to random Gaussian processes, sping glasses, and jamming
+  - how to pick a good parameter initialization?
+  - bounding generalization error
+    - often, generalization bounds take the form $\epsilon_{test} \leq \epsilon_{train} + \frac {\mathcal C (\mathcal F)} p$, where $\mathcal C (\mathcal F)$ is the complexity of a function class and $p$ is the number of examples
+      - ex. VC-dimension, Rademacher complexity
+    - alternative framework: algorithmic stability - will generalize if map is stable wrt perturbations of the data $\mathcal D$
+    - altenative: PAC bounds suggest if distr. of weights doesn't change much during training, generalization will be succesful
+  - deep linear networks
+    - student learns biggest singular values of the input-output correlation matrix $\Sigma = \sum_i y_i x_i^T$, so it learns the important stuff first and the noise last
+  - infinite-width limit
+    - if parameters are random, indcues a prior distribution $P(\mathcal F)$ over the space of functions
+    - in th limit of infinite width, this prior is Gaussian, with a specific correlation kernel
+    - learning is similar to learning the Bayesian posterior $P(f|data)$, but connecting this to sgd is still not clear
 
 # empirical studies
 
