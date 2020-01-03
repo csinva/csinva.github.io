@@ -99,8 +99,8 @@ Xrot_reduced = np.dot(X, U[:, :2]) # project onto first 2 dimensions (n x 2)
   - uses information theoretic unsupervised learning rules for neural networks
 - problem - doesn't rank features for us
 
+# lda / qda (disciminant analysis)
 
-# lda / qda
 - reduced to axes which separate classes (perpendicular to the boundaries)
 
 
@@ -133,3 +133,17 @@ Xrot_reduced = np.dot(X, U[:, :2]) # project onto first 2 dimensions (n x 2)
 
 # diffusion embedding
 
+
+
+# dictionary learning (not really dim reduction)
+
+goal: $X \approx W D $, during training simultaneously learn $W$ (coefficients) and $D$ (dictionary and at test time use $D$ and learn $w$
+
+- **nmf**: $W, D \geq 0$ elementwise
+- **sparse coding**: want W to be sparse, D to not be too large
+  - impose norm D not too big
+
+
+
+- topic modeling - similar, try to discover topics in a model (which maybe can be linearly combined to produce the original document)
+  - ex. LDA - generative model: posits that each document is a mixture of a **small number of topics** and that **each word's presence is attributable to one of the document's topics**

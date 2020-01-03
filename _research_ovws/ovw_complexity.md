@@ -140,6 +140,7 @@ Complexity can be a useful notion for many things in statistical models. It can 
 - [effective degrees of freedom](https://web.stanford.edu/~hastie/Papers/df_paper_LJrev6.pdf)
 - [high-dimensional ridge](https://projecteuclid.org/euclid.aos/1519268430)
 - [Harmless interpolation of noisy data in regression](https://arxiv.org/abs/1903.09139) - bound on how well interpolative solns can generalize to fresh data (goes to zero with extra features)
+- [Deep Double Descent: Where Bigger Models and More Data Hurt](https://arxiv.org/abs/1912.02292) (nakkiran et al. 2019)
 
 
 
@@ -152,6 +153,7 @@ Complexity can be a useful notion for many things in statistical models. It can 
 # minimum description length
 
 - [simplest mdl tutorial](https://homepages.cwi.nl/~pdg/ftp/mdlintro.pdf)
+
 - chapter 1: overview
   - explain data given limited observations
   - benefits
@@ -161,12 +163,12 @@ Complexity can be a useful notion for many things in statistical models. It can 
     - no need for underlying truth
   - description - in terms of some description method 
     - e.g. a python program which prints a sequence then halts = Kolmogorov complexity
-      - invariance thm - as long as sequence is long enough, choice of programming language doesn't matter, as long as it's long enough) - (Kolmogorov 1965, chaitin 1969, solomonoff 1964)
+      - invariance thm - as long as sequence is long enough, choice of programming language doesn't matter, as long as it's long enough) - (kolmogorov 1965, chaitin 1969, solomonoff 1964)
       - not computable in general
       - for small samples in practice, depends on choice of programming language
     - in practice, we don't use general programming languages but rather select a description method which we know we can get the length of the shortest description in that class (e.g. linear models)
       - trade-off: we may fail to minimally compress some sequences which have regularity
-    - knowing data-generating process can help compress (e.g. recording times for something to fall from a height, generating digits of pi via taylor expansion, compressing natural language based on correct grammar)
+    - knowing data-generating process can help compress (e.g. recording times for something to fall from a height, generating digits of $\pi$ via taylor expansion, compressing natural language based on correct grammar)
   - simplest version - let $\theta$ be the model and $X$ be the data
     - 2-part MDL: minimize $L(\theta) + L(X|\theta)$
       - $L(X|\theta) = - \log P(X|\theta)$  - Shannon code
@@ -175,17 +177,38 @@ Complexity can be a useful notion for many things in statistical models. It can 
     - stochastic complexity ("refined mdl"): $\bar{L}(X|\theta)$ - only construct one code
       - ex. $\bar L(X|\theta) = L(X|\theta) + |\theta|_0$ - like 2-part code but breaks up $\theta$ space into different sets (e.g. same number of parameters) and assigns them equal codelength
     - normalized maximum likelihood - most recent version
-- chapter 2.1 background
+  
+- chapter 2.2.1 background
   - in mdl, we only work with prefix codes (i.e. no codeword is a prefix of any other codeword)
     - these are uniquely decodable
     - in fact, any uniquely decodable code can be rewritten as a prefix code which achieves the same code length
+  
+- chapter 2.2.2 the kraft inequality
+
   - probability mass functions correspond to codelength functions
     - given a code $C$ and a prob distr. $P$, we can construct a code so short codewords get high probs and vice versa
-      - given $P$, $\exists C, \forall z L_C(z) \leq -\log P(z) $ ***add ciel here***
-      - given $C'$, $\exists P' \forall z -\log P(z) = L_{C'}(z)$
-    - uniform distr. - every codeword just has same length
+      - given $P$, $\exists C, \forall z \: L_C(z) \leq \lceil -\log P(z) \rceil$
+      - given $C'$, $\exists P' \: \forall z -\log P(z) = L_{C'}(z)$
+    - uniform distr. - every codeword just has same length (fixed-length)
+
+  - we redefine codelength so it doesn't require actual integer lengths
+
+    - we don't care about the actual encodings, only the codelengths
+    - given a sample space $\mathcal Z$, the set of all codelength functions $L_\mathcal Z$ is the set of functions $L$ on $\mathcal Z$ where $\exists \,Q$, such that $\sum_z Q(z) \leq 1$ and $\forall z,\; L(z) = -\log Q(z)$
+    - we usually assume we are encoding a sequences $x^n$ which is large, so the rounding becomes negligible
+
+    - ex. encoding integers: send $\log k$ zeros, then add a 1, then uniform code from 0 to $2^{\log k}$
+
+  - Given $P(Z)$, the codelength function $L(z) = -\log P(z)$ minimizes expected code length for the variable $Z$
+
+- chapter 2.2.3 - the information inequality
+
+  - **information inequality**: $E_P[-\log Q(X)] > E_P[-\log P(X)]$
+
 - mdl in linear regression: want to send y over, X is known to both sides, theta is also sent (used to pick a decoder for y)
+	
 	- normalize maximum likelihood (nml): use theta to make codebook, then send code
+	
 - [The Minimum Description Length Principle in Coding and Modeling](https://pdfs.semanticscholar.org/65d3/4977d9055f42e51dc1e7d9b4ca2f36c17537.pdf) (barron, rissanen, & yu, 98)
   - mdl: represent an entire class of prob. distrs. as models by a single "universal" representative model such that it would be able to imitate the behavior of any model in the class. The best model class for a set of bserved data, then, is the onwhose representative premits the shortest coding of the data
   - tradeoff: "good" prob. models for the data permit shorter code lengths
@@ -193,11 +216,12 @@ Complexity can be a useful notion for many things in statistical models. It can 
   - ex. encode data w/ model defined by mle estimates, quantized optimally to finite precision, then encode estimate w/ prefix code
   - coding: $x \sim P(X)$, codelengths $\ell(x)$
     - Kraft inequality: $\sum_x 2^{-\ell(x)} \leq 1$
-    - ideal codeword lenghts = $-\log P(X)$
+    - ideal codeword lengths $\ell(x) = -\log p(x)$
     - ideal mean length = $H(X)$
   - mdl
     - likelihood = summarize data in accodance / model (e.g. $P(y|x, \theta)$)
     - parametric complexity = summarize model params
+  
 - [Model Selection and the Principle of Minimum Description Length](https://www.tandfonline.com/doi/abs/10.1198/016214501753168398) (hansen & yu 2001)
   - mdl: choose the model that gives the shortest description of data
     - description length = length of binary string used to code the data
@@ -213,6 +237,7 @@ Complexity can be a useful notion for many things in statistical models. It can 
     - mixture
     - predictive
     - normalized maximum likelihood (NML)
+  
 - [mdl intro](http://www.scholarpedia.org/article/Minimum_description_length) (Rissanen, 2008) - scholarpedia
   - coding just the data would be like maximum likelihood
   - minimize $\underset{\text{log-likelihood}}{-\log P(y^n|x^n;\theta)} + \underset{\text{description length}}{L(\theta)}$
@@ -228,17 +253,23 @@ Complexity can be a useful notion for many things in statistical models. It can 
     - in this case, is same as BIC but often different
   - modern mdl - don't assume a model form, try to code the data as short as possible with a *universal* model class
     - often can actually construct these codes
+  
 - Kolmogorov complexity $K(x)$ = the shortest computer program (in binary) that generates x (a binary string) = the "amount of info" in x
   - complexity of a string x is at most its length
   - algorithmically random - any string whose length is close to $|x|$
     - more random = higher complexity
+  
 - Minimum description length original reference \cite{rissanen1978modeling}. What is the minimum length description of the original?
   - MDL reviews \cite{barron1998minimum, hansen2001model}.
   - Book on stochastic complexity \cite{rissanen1989stochastic}
   - *Minimum Description Length*, *MDL*, principle for model selection, of which the original form states that the best model is the one which permits the shortest encoding of the data and the model itself
+  
 - *note: this type of complexity applies to the description, not the system*
+
 - Look into the neurips [paper](https://papers.nips.cc/paper/7954-chaining-mutual-information-and-tightening-generalization-bounds.pdf) on using mutual information and entropy and this [paper](https://projecteuclid.org/download/pdf_1/euclid.aos/1017939142) by barron that related covering balls etc to minimax bounds
+
 - [Information Theory in Probability Statistics Learning and Neural Nets](http://www.stat.yale.edu/~arb4/publications_files/COLT97.pdf) (barron 97)
+
 - [Information-Theoretic Asymptotics of Bayes Methods](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=54897) (Clarke & Barron 90)
 
 ## mdl in non-linear models

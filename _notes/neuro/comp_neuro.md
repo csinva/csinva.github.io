@@ -41,6 +41,7 @@ category: neuro
 - retina has on-center / off-surround cells - stimulated by points
 - then, V1 has differently shaped receptive fields
 - *efficient coding hypothesis* - learns different combinations (e.g. lines) that can efficiently represent images
+  
   1. sparse coding (Olshausen and Field 1996)
   2. ICA (Bell and Sejnowski 1997)
   3. Predictive Coding (Rao and Ballard 1999)
@@ -589,13 +590,22 @@ category: neuro
 ## Brain v. Deep Learning
 
 -	http://timdettmers.com/
-  -problems with brain simulations:
-  -Not possible to test specific scientific hypotheses (compare this to the large hadron collider project with its perfectly defined hypotheses)
-  -Does not simulate real brain processing (no firing connections, no biological interactions)
-  -Does not give any insight into the functionality of brain processing (the meaning of the simulated activity is not assessed)
-  -Neuron information processing parts
-  -Dendritic spikes are like first layer of conv net
-  -Neurons will typically have a genome that is different from the original genome that you were assigned to at birth. Neurons may have additional or fewer chromosomes and have sequences of information removed or added from certain chromosomes.
-  -http://timdettmers.com/2015/03/26/convolution-deep-learning/
-  -The adult brain has 86 billion neurons, about 10 trillion synapse, and about 300 billion dendrites (tree-like structures with synapses on them
+  -	problems with brain simulations:
+    -	Not possible to test specific scientific hypotheses (compare this to the large hadron collider project with its perfectly defined hypotheses)
+    -	Does not simulate real brain processing (no firing connections, no biological interactions)
+    -	Does not give any insight into the functionality of brain processing (the meaning of the simulated activity is not assessed)
+  -	Neuron information processing parts
+    -	Dendritic spikes are like first layer of conv net
+    -	Neurons will typically have a genome that is different from the original genome that you were assigned to at birth. Neurons may have additional or fewer chromosomes and have sequences of information removed or added from certain chromosomes.
+    -	http://timdettmers.com/2015/03/26/convolution-deep-learning/
+    -	The adult brain has 86 billion neurons, about 10 trillion synapse, and about 300 billion dendrites (tree-like structures with synapses on them
 
+# neuro for dl papers
+
+- [Continual Lifelong Learning with Neural Networks: A Review](https://arxiv.org/pdf/1802.07569.pdf)
+  - main issues is *catastrophic forgetting* / *stability-plasticity dilemma*
+  - ![Screen Shot 2020-01-01 at 11.49.32 AM](assets/Screen Shot 2020-01-01 at 11.49.32 AM.png)
+  - 2 types of plasticity
+    - Hebbian plasticity (Hebb 1949) for positive feedback instability
+    - compensatory homeostatic plasticity which stabilizes neural activity
+  - approaches: regularization, dynamic architectures (e.g. add more nodes after each task), memory replay

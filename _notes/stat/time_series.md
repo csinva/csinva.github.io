@@ -8,7 +8,9 @@ category: stat
 {:toc}
 ---
 
-# basics
+# high-level
+
+## basics
 
 - usually assume points are equally spaced
 - modeling - for understanding underlying process or predicting
@@ -20,12 +22,12 @@ category: stat
 - exogenous variable = y = dependent variable = value is determined outside the model and is imposed on the model
 - endogenous variable = x = independent variable = regressor - value is determined by model
 
-# libraries
+## libraries
 
 - [pandas has some great time-series functionality](https://tomaugspurger.github.io/modern-7-timeseries)
 - [skits library](https://github.com/EthanRosenthal/skits) for forecasting
 
-# high-level modelling
+## high-level modelling
 
 - common methods
   - decomposition - identify each of these components given a time-series
@@ -42,7 +44,7 @@ category: stat
   - autoregressive integrated moving average (arima)
     - assumptions: stationary model
 
-# modelling
+## modelling
 
 **AR model** $AR(p)$: $$ X_t = c + \sum_{i=1}^p \varphi_i X_{t-i}+ \varepsilon_t $$
 
@@ -63,3 +65,70 @@ category: stat
 **ARIMA model**: $ARIMA(p, d, q)$: - generalizes ARMA model to non-stationarity (using differencing)
 
 - d number of nonseasonal differences (differencing order i.e. what order of derivative to take)
+
+
+
+# [book](https://www.stat.tamu.edu/~suhasini/teaching673/time_series.pdf) notes
+
+## ch 1
+
+- usually in time-series analysis, we begin by de-trending the data and analyzing the residuals
+  - ex. assume linear trend or quadratic trend and subtract that fit (or could include sin / cos for seasonal behavior)
+  - a common approach is to look at the differences instead of the points (nth order difference removes nth order polynomial trend). However, taking differences can introduce dependencies in the data
+  - ex. remove trend using sliding window (maybe with exponential weighting)
+- when errors are dependent, very hard to distinguish noise from signal
+- periodogram - in FFT, this looks at the magnitude of the coefficients (but loses the phase information)
+
+
+
+## ch 2 - stationary time series
+
+- in time series, we never get iid data
+- instead we make assumptions
+  - the process has a constant mean (a type of stationarity)
+  - the dependencies in the time-series are short-term
+  - autocorrelation plots: plot correlation of series vs series offset by different lags
+- formal definitions of stationarity
+  - **strict stationarity** - the distribution is the same across time
+  - **second-order / weak stationarity** - the time series $\{X_t\}$ is said to be seoncd order stationary if the man is constant for all t and if for any t and k the covariance between $X_t$ and $X_{t+k}$ only depends on the lag difference k. In other wors, there exists a function $c: \mathbb Z \to \mathbb R$ such that for all t and k we have $c(k) = cov (X_t, X_{t+k})$
+  - if strict stationary and $E|X_T^2| < \infty$, then it is also second-order stationary
+  - **ergodic** - stronger condition, says samples approach the expectation of functions on the time series: for any function $g$ and shift $\tau_1, ... \tau_k$:
+    - $\frac 1 n \sum_t g(X_t, ... X_{t+\tau_k}) \to \mathbb E [g(X_0, ..., X_{t+\tau_k} )]$
+- **causal** - can predict given only past values (for Gaussian processes no difference)
+
+## ch 3 - linear time series
+
+- $AR(p)$ model: $X_t = \sum_{j=1}^p \phi_j X_{t-j} + \epsilon_t$
+  - looks just like linear regression, but is more complex
+  - if we don't account for issues, model will not be stationary, model may be missspecified, and $E(\epsilon_t|X_{t-p}) \neq 0$
+  - this represents a set of difference equations, and as such, must have a solution
+  - ex. $AR(1)$ model - if $|\phi|$ < 0, then soln is in terms of past values of {$\epsilon_t$}, tohewrise in is in terms of future values
+  - ex. $AR(p)$ model - if $\sum_j |\phi_j|$< 1, and $\mathbb E |\epsilon_t| < \infty$, then will have a causal stationary solution
+  - solving requires using the Backshift operator, because we need to solve for what all the residuals are
+  - Backshift operator $B^kX_t=X_{t-k}$
+  - characteristic polynomial $\phi(B) = 1 - \sum_{j=1}^p \phi_j B^j$
+    - $\phi(B) X_t = \epsilon_t$
+  - can represent $AR(p)$ as a vector $AR(1)$ using the vector $\bar X_t = (X_t, ..., X_{t-p+1})$
+  - note: can reparametrize in terms of frequencies
+- $MA(q)$ model: $X_t = \sum_{j=0}^q \theta_j \epsilon_{t-j}$ 
+  - $E[\epsilon_t] = 0$, $Var[\epsilon_t] = 1$
+  - much harder to estimate these parameters
+  - $X_t = \theta (B) \epsilon_t$ (assuming $\theta_0=1$)
+- $ARMA(p, q)$ - there are conditions for being invertible/causal + identifiable
+- linear time-series = linear process - like MA$(\infty)$, but can depend on future observations as well
+- *ARIMA(p, q)* - just take differences first
+
+## ch 4 - the autocovariance function
+
+- autocovariance function: {$c(k): k \in \mathbb Z$} where $c(k) = \mathbb E (X_0 X_k)$
+- **Yule-Walker equations** (assuming AR(p) process): $\mathbb E (X_t X_{t-k}) = \sum_{j=1}^p \phi_j \mathbb E (X_{t-j} X_{t-k}) + \underbrace{\mathbb E (\epsilon_tX_{t-k})}_{=0} = \sum_{j=1}^p \phi_j \mathbb E (X_{t-j} X_{t-k})$
+- ex. MA covariance becomes 0 with lag > num params
+
+
+
+## ch 8 - parameter estimation
+
+
+
+
+

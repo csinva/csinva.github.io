@@ -30,9 +30,9 @@ links to research code, such as these repos for interpretable machine learning (
 blog on various aspects of machine learning / statistics / neuroscience advancements
 
 
-| [interpretability](https://csinva.github.io/blog/interpretability) | [connectomics](https://csinva.github.io/blog/connectomics) |
+| [interpretability](https://csinva.github.io/blog/research/interp) | [connectomics](https://csinva.github.io/blog/research/connectomics) |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-|            ![](assets/img/alexnet.png)                                                   | ![](assets/img/400by31Normalized.gif)                        |
+|            ![](assets/img/alexnet.png)                                                   | ![](assets/img/neuron.gif)                        |
 
 
 # reference
