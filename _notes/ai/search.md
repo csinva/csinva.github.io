@@ -7,6 +7,7 @@ category: ai
 
 * TOC
 {:toc}
+
 From "Artificial Intelligence" Russel & Norvig 3rd Edition
 
 ---

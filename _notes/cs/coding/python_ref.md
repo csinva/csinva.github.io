@@ -7,6 +7,9 @@ category: cs
 
 * TOC
 {:toc}
+
+---
+
 # basic
 
 - from math import log, log2, floor, ceil

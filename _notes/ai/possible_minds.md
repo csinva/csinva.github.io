@@ -9,6 +9,8 @@ category: ai
 
 * TOC
 {:toc}
+---
+
 # 0 - intro (brockman)
 
 - new technologies = new perceptions

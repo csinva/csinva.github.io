@@ -7,6 +7,7 @@ category: cs
 
 * TOC
 {:toc}
+----
 
 - The C memory model: global, local, and heap variables. Where they are stored, their properties, etc.
 - Variable scope

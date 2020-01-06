@@ -10,6 +10,33 @@ category: stat
 
 ---
 
+# probability
+
+- mutually exclusive: $P(AB)=0$
+- independent: $P(AB) = P(A)P(B)$
+  - A and B conditional independence given C: $$P(AB\vert C) = P(A\vert C) P(B\vert C)$$
+- conditional (Bayes' thm): $P(A|B) = \frac{P(AB)}{P(B)} = \frac{P(B|A)P(A)}{\sum P(B|A)P(A)}$
+
+# expectation, variance, and correlation
+
+- $E[X] = \int P(x)x dx$
+  - $E[h(X)] \approx h(E[X])$
+- $V[X] = E[(x-\mu)^2] = E[x^2]-E[x]^2$
+  - for unbiased estimate, divide by n-1
+  - $V(X_1-X_2) = V(X_1) + V(X_2)$ if $X_1,X_2$ independent
+  - $V(a_1X_...+a_nX_n) =  \sum_{i=1}^{n}\sum_{j=1}^{n}a_ia_jcov(X_i,X_j)$
+  - $V[h(X)] \approx h'(E[X])^2 V[X]$
+  - standard deviation - sqrt of variance
+  - standard error - error of the mean
+- $Cov[X,Y] = E[(X-\mu_X)(Y-\mu_Y)] = E[XY]-E[X]E[Y]$
+  - $Cov(aX+bY,Z) = aCov(X,Z)+bCov(Y,Z)$
+- $Corr(Y,X) = \rho = \frac{Cov(Y,X)}{s_xs_y}$
+  - $Corr(aX+b,cY+d) = Corr(X,Y)$ if a and c have same sign
+  - $R^2 = \rho^2$
+- **skewness** = $E[(\frac{X-\mu}{\sigma})^3]$
+- law of total expectation: $E[X] = E_Y[E(X|Y)]$
+- **law of total variance**: $V[Y] =\underbrace{E[V(Y|X)]}_{\text{unexplained variance}} + \underbrace{V(E[Y|X])}_{\text{explained variance}}$
+
 # models
 
 - normative - fully interpretable + modelled
@@ -25,13 +52,6 @@ category: stat
   - standard dev
   - standard error = standard dev / sqrt(n) = standard error of the mean when you're estimating a mean
   - 95% confidence interval = 2*standard error
-
-# probability
-
-- mutually exclusive: $P(AB)=0$
-- independent: $P(AB) = P(A)P(B)$
-  - A and B conditional independence given C: $$P(AB\vert C) = P(A\vert C) P(B\vert C)$$
-- conditional (Bayes' thm): $P(A|B) = \frac{P(AB)}{P(B)} = \frac{P(B|A)P(A)}{\sum P(B|A)P(A)}$
 
 # distributions
 
@@ -67,25 +87,6 @@ category: stat
       - $\Sigma_{1|2}^c = \Sigma_{11} - \Sigma_{12} \Sigma_{22}^{-1} \Sigma_{21}$
 - mle
 
-# expectation, variance, and correlation
-
-- $E[X] = \int P(x)x dx$
-  - $E[h(X)] \approx h(E[X])$
-- $V[X] = E[(x-\mu)^2] = E[x^2]-E[x]^2$
-  - for unbiased estimate, divide by n-1
-  - $V(X_1-X_2) = V(X_1) + V(X_2)$ if $X_1,X_2$ independent
-  - $V(a_1X_...+a_nX_n) =  \sum_{i=1}^{n}\sum_{j=1}^{n}a_ia_jcov(X_i,X_j)$
-  - $V[h(X)] \approx h'(E[X])^2 V[X]$
-  - standard deviation - sqrt of variance
-  - standard error - error of the mean
-- $Cov[X,Y] = E[(X-\mu_X)(Y-\mu_Y)] = E[XY]-E[X]E[Y]$
-  - $Cov(aX+bY,Z) = aCov(X,Z)+bCov(Y,Z)$
-- $Corr(Y,X) = \rho = \frac{Cov(Y,X)}{s_xs_y}$
-  - $Corr(aX+b,cY+d) = Corr(X,Y)$ if a and c have same sign
-  - $R^2 = \rho^2$
-- **skewness** = $E[(\frac{X-\mu}{\sigma})^3]$
-- law of total expectation: $E[X] = E[E(X|Y)]$
-- **law of total variance**: $V[Y] =\underbrace{E[V(Y|X)]}_{\text{unexplained variance}} + \underbrace{V(E[Y|X])}_{\text{explained variance}}$
 
 # inequalities
 

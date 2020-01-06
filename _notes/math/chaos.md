@@ -6,7 +6,6 @@ category: math
 ---
 * TOC
 {:toc}
-
 ---
 
 # Normal forms of Hopf bifurcations
@@ -128,3 +127,68 @@ Strange Attractor & (+, 0, -) \\
 - $e^{\mu it} = cos(\mu t)+ isin(\mu t)$
 - $x = A e^{(\lambda + i)t} + B e^{(\lambda - i)t} \implies x = (A' sin(t) + B' cos(t)) e^{\lambda t} $
 If we have $\dot{x_1},\dot{x_2}$ then we can get $x_2(x_1) with \frac{dx_1}{dx_2} = \frac{\dot{x_1}}{\dot{x_2}}$
+
+
+
+# Benard Convection
+
+- The Navier-Stokes Equations
+	1. Position
+	2. Differential element in configuration space
+	3. Time
+
+# Lorenz equations
+- Lorenz was studying hurricanes 
+- ODEs for 3 coefficients in larger system (others are pretty small
+	- use stream functions
+- Navier-Stokes PDEs - conservation of momentum - derive these equations as project?
+	- no-flow steady-state $T(y) = T_B + (T_T-T_B)y$
+- Lorenz (ODE's): x,y,z are coefficients in Fourier expansion, not dimensions
+$$\dot{x}(t) = -\sigma x+ \sigma y$$
+$$\dot{y}(t) = (\rho_o)x - y - xz$$
+$$\dot{z}(t) = -bz + xy$$
+- $p_o$ - proportional to size of system
+- b - aspect ration - related to height:width
+- Navier-Stokes
+	- independent variables
+		1. Position (vector)
+		2. Time (scalar)
+	- dependent variables
+		1. Density (scalar)
+- fixed points
+	- $b>0, \rho_0 > 0, \sigma>0$ - let b,$\sigma$ be fixed
+	- fixed point $(\bar{x},\bar{y},\bar{z})$ is constant
+	- equations
+		- $\dot{\bar{x}}(t) = 0 = -\sigma \bar{x}+ \sigma \bar{y}$
+		- $\dot{\bar{y}}(t) = 0 = (\rho_o) \bar{x} - \bar{y} - \bar{x}\bar{z}$
+		- $\dot{z}(t) = 0 = -b\bar{z} + \bar{x}\bar{y}$
+	- doing some algebra we get
+		- $FP_0, \forall \rho_o$
+			- $\bar{x} = 0$
+			- $\bar{y} = 0$
+			- $\bar{z} = 0$
+		- $FP_+, \rho_o \geq 1$
+			- $\bar{x} = +\sqrt{b (\rho_o-1)} $
+			- $\bar{y} = +\sqrt{b (\rho_o-1)}$
+			- $\bar{z} = \rho_o-1$
+		- $FP_-, \rho_o \geq 1$
+			- $\bar{x} = -\sqrt{b (\rho_o-1)} $
+			- $\bar{y} = -\sqrt{b (\rho_o-1)}$
+			- $\bar{z} = \rho_o-1$
+- these equations have symmetry
+	- replace $(x(t),y(t),z(t))$ by $(-x(t),-y(t)),z(t)) \to$ we get back the original equations
+	
+
+$
+M=
+  \begin{bmatrix}
+    1 & 2 & 3 & 4 & 5 \newline
+    3 & 4 & 5 & 6 & 7
+  \end{bmatrix}
+$
+
+# Linearization of Lorenz Equations about FPs $\bar{\underline{x}}$
+- $\frac{d}{dt}\delta x(t) = \frac{\partial f}{\partial x}|_ \bar{\underline{x}}= -\sigma$ 
+- $\frac{d}{dt}\delta y(t) = \frac{\partial f_2}{\partial x}|_ \bar{\underline{x}}*\delta x(t) + \frac{\partial f_2}{\partial y}|_ \bar{\underline{x}}*\delta y(t) + \frac{\partial f_2}{\partial z}|_ \bar{\underline{x}}*\delta z(t) +...$ (higher order derivatives)
+	- $ = (r-\bar{z})*\delta x(t) + -1*\delta y(t) + -\bar{x}*\delta z(t) + \delta x \delta z$
+- do the same thing for $\delta z(t)$

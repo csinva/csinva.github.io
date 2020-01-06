@@ -96,7 +96,7 @@ typora-copy-images-to: ./assets/logic
     - ex. $HaveArrow^{t+1} \iff (HaveArrow^t \land \neg Shoot^t)$
     - makes things stay the same unles something changes
 -  *state-estimation*: keep track of *belief state*
-  - can just use 1-CNF (conjunctions of literals: ex. $WumpusAlive \land L_2 \and B$)
+  - can just use 1-CNF (conjunctions of literals: ex. $WumpusAlive \land L_2 \land B$)
     - 1-CNF includes all states that are in fact possible given the full percept history
     - *conservative approximation* - contains belief state, but also extraneous stuff
 -  planning
@@ -116,29 +116,20 @@ typora-copy-images-to: ./assets/logic
 # first-order logic - 8.1-8.3.3
 
 - ![Screen Shot 2018-08-01 at 7.52.25 PM](assets/logic/Screen Shot 2018-08-01 at 7.52.25 PM.png)
-
 - basically added objects, relations, quantifiers ($\exists, \forall$)
-
 - declarative language - semantics based on a truth relation between sentences and possible worlds
-
   - has *compositionality* - meaning decomposes
-
   - *sapir-whorf hypothesis* - understanding of the world is influenced by the language we speak
-
 - 3 elements
-
   1. objects - john (cannot appear by itself, need boolean value)
   2. relations - set of tuples (ex. brother(richard, john))
   3. functions - only one value for given input (ex. leftLeg(john))
-
 - sentences return true or false
-
+  
   - combine these things
-
 - first-order logic assumes more about the world than propositional logic
   - *epistemological commitments* - the possible states of knowledge that a logic allows with respect to each fact
   - *higher-order logic* - views relations and functions as objects in themselves
-
 - first-order consists of symbols
   1. *constant symbols* - stand for objects
   2. *predicate symbols* - stand for relations

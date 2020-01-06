@@ -381,7 +381,7 @@ category: neuro
   - remembering things going back to childhood
   - communicating with language
 
-### definitions
+## definitions
 
 - what is hd computing
   - compute with random high-dim vectors
@@ -400,7 +400,7 @@ category: neuro
 - benefits - very simple and scalable - only go through data once
   - equally easy to use 4-grams vs. 5-grams
 
-### ex. identify the language
+## ex. identify the language
 
 - data
   - train: given million bytes of text per language (in the same alphabet)
@@ -423,41 +423,34 @@ category: neuro
     - query by using multiply X + Q * english-profile-vec
     - find closest letter vecs to X - yields "e"
 
-### mathematical background
+## details
 
-- randomly chosen vecs are dissimilar
-- sum vector is similar to its argument vectors
-- product vector and permuted vector are dissimilar to their argument vectors
-- multiplication distibutes over addition
-- permutation distributes over both additions and multiplication
-- multiplication and permutations are invertible
-- addition is approximately invertible
-
-### comparison to DNNs
-
-- both do statistical learning from data
-- data can be noisy
-- both use high-dim vecs although DNNs get bad with him dims (e.g. 100k)
-- HD is founded on rich mathematical theory
-- new codewords are made from existing ones
-- HD memory is a separate func
-- HD algos are transparent, incremental (on-line), scalable
-- somewhat closer to the brain...cerebellum anatomy seems to be match HD
-- HD: holistic (distributed repr.) is robus
-
-### different names
-
-- Tony plate: holographic reduced representation
-- ross gayler: multiply-add-permute arch
-- gayler & levi: vector-symbolic arch
-- gallant & okaywe: matrix binding with additive termps
-- fourier holographic reduced reprsentations (FHRR; Plate)
-- ...many more names
-
-
-
-### theory of sequence indexing and working memory in RNNs
-
-- trying to make key-value pairs
-- VSA as a structured approach for understanding neural networks
-- reservoir computing = state-dependent network = echos-state network = liquid state machine - try to represen sequential temporal data - builds representations on the fly
+- mathematical background
+  - randomly chosen vecs are dissimilar
+  - sum vector is similar to its argument vectors
+  - product vector and permuted vector are dissimilar to their argument vectors
+  - multiplication distibutes over addition
+  - permutation distributes over both additions and multiplication
+  - multiplication and permutations are invertible
+  - addition is approximately invertible
+- comparison to DNNs
+  - both do statistical learning from data
+  - data can be noisy
+  - both use high-dim vecs although DNNs get bad with him dims (e.g. 100k)
+  - HD is founded on rich mathematical theory
+  - new codewords are made from existing ones
+  - HD memory is a separate func
+  - HD algos are transparent, incremental (on-line), scalable
+  - somewhat closer to the brain...cerebellum anatomy seems to be match HD
+  - HD: holistic (distributed repr.) is robust
+- different names
+  - Tony plate: holographic reduced representation
+  - ross gayler: multiply-add-permute arch
+  - gayler & levi: vector-symbolic arch
+  - gallant & okaywe: matrix binding with additive termps
+  - fourier holographic reduced reprsentations (FHRR; Plate)
+  - ...many more names
+- theory of sequence indexing and working memory in RNNs
+  - trying to make key-value pairs
+  - VSA as a structured approach for understanding neural networks
+  - reservoir computing = state-dependent network = echos-state network = liquid state machine - try to represen sequential temporal data - builds representations on the fly

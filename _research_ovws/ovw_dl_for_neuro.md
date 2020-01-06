@@ -7,6 +7,8 @@ category: research
 
 # Ideas for neuroscience using deep learning
 
+list of comparisons: https://docs.google.com/document/d/1qil2ylAnw6XrHPymYjKKYNDJn2qZQYA_Qg2_ijl-MaQ/edit
+
 Modern deep learning evokes many parallels with the human brain. Here, we explore how these two concepts are related and how deep learning can help understand neural systems using big data.
 
 - https://medium.com/the-spike/a-neural-data-science-how-and-why-d7e3969086f2

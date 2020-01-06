@@ -78,20 +78,20 @@ use AoC with x = sup{$a_n: n \in \mathbb{N}$} in the intersection of all sets</d
 - *cauchy condensation test* - suppose $a_n$ is decreasing and satisfies $a_n \geq 0$ for all $n \in \mathbb{N}$.  Then, the series $\sum_{n=1}^\infty a_n$ converges iff the series $\sum_{n=1}^\infty 2^na_{2^n}$ converges
 	- *p-series* $\sum_{n=1}^\infty 1/n^p$ converges iff p > 1
 	
-### 2.5
+## 2.5
 - let $(a_n)$ be a sequence and $n_1<n_2<...$ be an increasing sequence of natural numbers.  Then $(a_{n_1},a_{n_2},...)$ is a *subsequence* of $(a_n)$
 - subsequences of a convergent sequence converge to the same limit as the original sequence
 	- can be used as divergence criterion
 - *bolzano-weierstrass thm* - every bounded sequence contains a convergent subsequence
 	- pf: use NIP, keep splitting interval into two
 
-### 2.6
+## 2.6
 - $(a_n)$ is a *cauchy sequence* if $\forall \epsilon > 0, \exists N \in \mathbb{N}$ such that $\forall m,n\geq N, \|a_n-a_m\| < \epsilon$
 - *cauchy criterion* - a sequence converges $\iff$ it is a cauchy sequence
 	- cauchy sequences are bounded
 - overview: AoC $\iff$ NIP $\iff$ MCT $\iff$ BW $\iff$ CC
 
-### 2.7
+## 2.7
 - *algebraic limit thm* - let $\sum_{n=1}^\infty a_n$ = A, $\sum_{n=1}^\infty b_n$ = B
 	1. $\sum_{n=1}^\infty ca_n$ = cA
 	2. $\sum_{n=1}^\infty a_n+b_n$ = A+B
@@ -111,12 +111,12 @@ use AoC with x = sup{$a_n: n \in \mathbb{N}$} in the intersection of all sets</d
 
 # ch 3 - basic topology of R
 
-### 3.1 cantor set
+## 3.1 cantor set
 - C has small length, but its cardinality is uncountable
 - discussion of dimensions, doubling sizes leads to 2^dimension sizes
 	- Cantor set is about dimension .631
 	
-### 3.2 open/closed sets
+## 3.2 open/closed sets
 - A set O $\subseteq \mathbb{R}$ is *open* if for all points a $\in$ O there exists an $\epsilon$-neighborhood $V_{\epsilon}(a) \subseteq O$
 	-  $V_{\epsilon}(a)=\{ x \in R : \|x-a\| < \epsilon$}
 1. the union of an arbitrary collection of open sets is open
@@ -134,7 +134,7 @@ use AoC with x = sup{$a_n: n \in \mathbb{N}$} in the intersection of all sets</d
 1. the union of a finite collection of closed sets is closed
 2. the intersection of an arbitrary collection of closed sets is closed
 
-### 3.3 
+## 3.3 
 - a set K $\subseteq \mathbb{R}$ is *compact* if every sequence in K has a subsequence that converges to a limit that is also in K
 - *Nested Compact Set Property* - intersection of nested sequence of nonempty compact sets is not empty
 - let A $\subseteq \mathbb{R}$.  *open cover* for A is a (possibly infinite) collection of  open sets whose union contains the set A.  
@@ -146,10 +146,10 @@ use AoC with x = sup{$a_n: n \in \mathbb{N}$} in the intersection of all sets</d
 	
 # ch 4	- functional limits and continuity
 
-### 4.1 
+## 4.1 
 - dirichlet function: 1 if r $\in \mathbb{Q}$ 0 otherwise	
 	
-### 4.2 functional limits
+## 4.2 functional limits
 - def 1. Let f:$A \to R$, and let c be a limit point of the domain A.  We say that *$lim_{x \to c} f(x) = L$* provided that for all $\epsilon$ > 0, there exists a $\delta$ > 0 s.t. whenever 0 < \|x-c\| < $\delta$ (and x $\in$ A) it follows that \|f(x)-L\|< $\epsilon$
 - def 2. Let f:$A \to R$, and let c be a limit point of the domain A. We say that $lim_{x \to c} f(x) = L$ provided that for every $\epsilon$-neighborhood $V_{\epsilon}(L)$ of L, there exists a $\delta$-neighborhood $V_{\delta}($c) around c with the property that for all x $\in V_{\delta}($c) different from c (with x $\in$ A) it follows that f(x) $\in V_{\epsilon}(L)$.
 - *sequential criterion for functional limits* - Given function f:$A \to R$ and a limit point c of A, the following 2 statements are equivalent:
@@ -158,27 +158,27 @@ use AoC with x = sup{$a_n: n \in \mathbb{N}$} in the intersection of all sets</d
 - *algebraic limit thm for functional limits*
 - *divergence criterion for functional limits*
 
-### 4.3 continuous functions
+## 4.3 continuous functions
 - a function f:$A \to R$ is *continuous at a point* c $\in$ A if, for all $\epsilon$>0, there exists a $\delta$>0 such that whenever \|x-c\|<$\delta$ (and x$\in$ A) it follows that $\|f(x)-f( c)\|<\epsilon$.  F is *continous* if it is continuous at every point in the domain A
 - characterizations of continuouty
 - criterion for discontinuity
 - algebraic continuity theorem
 - if f is continuous at c and g is continous at f( c) then g $\circ$ f is continuous at c
 
-### 4.4 continuous functions on compact sets
+## 4.4 continuous functions on compact sets
 - *preservation of compact sets* - if f continuous and K compact, then f(K) is compact as well
 - *extreme value theorem* - if f if continuous on a compact set K, then f attains a maximum and minimum value.  In other words, there exist $x_0,x_1 \in K$ such that $f(x_0) \leq f(x) \leq f(x_1)$ for all x $\in$ K
 - f is *uniformly continuous on A* if for every $\epsilon$>0, there exists a $\delta$>0 such that for all x,y $\in$ A, $\|x-y\| < \delta \implies \|f(x)-f(y)\| < \epsilon$
 	- a function f fails to be uniformly continuous on A iff there exists a particular $\epsilon_o$ > 0 and two sequences $(x_n),(y_n)$ in A sastisfying $\|x_n - y_n\| \to 0$ but $\|f(x_n)-f(y_n)\| \geq \epsilon_o$
 - a function that is continuous on a compact set K is *uniformly continuous on K*
 
-### 4.5 intermediate value theorem
+## 4.5 intermediate value theorem
 - *intermediate value theorem* - Let f:[a,b]$ \to R$ be continuous.  If L is a real number satisfying f(a) < L < f(b) or f(a) > L > f(b), then there exists a point c $\in (a,b)$ where f( c) = L
 - a function f has the *intermediate value property* on an inverval [a,b] if for all x < y in [a,n] and all L between f(x) and f(y), it is always possible to find a point c $\in (x,y)$ where f( c)=L.
 
 # ch 5 - the derivative
 
-### 5.2 derivatives and the intermediate value property
+## 5.2 derivatives and the intermediate value property
 - let g: A -> R be a function defined on an interval A.  Given c $\in$ A, the *derivative of g at c* is defined by g'( c) = $\lim_{x \to c} \frac{g(x) - g( c)}{x-c}$, provided this limit exists.  Then g is differentiable at c.  If g' exists for all points in A, we say g is *differentiable* on A
 - identity: $x^n-c^n = (x-c)(x^{n-1}+cx^{n-2}+c^2x^{n-3}+...+c^{n-1}$)
 - differentiable $\implies$ continuous
@@ -192,7 +192,7 @@ use AoC with x = sup{$a_n: n \in \mathbb{N}$} in the intersection of all sets</d
 - *Darboux's thm* - if f is differentiable on an interval [a,b], and a satisfies f'(a) < $\alpha$ < f'(b)  (or f'(a) > $\alpha$ > f'(b)), then there exists a point c $\in (a,b)$ where f'( c) = $\alpha$
 	- derivative satisfies intermediate value property
 
-### 5.3 mean value theorems
+## 5.3 mean value theorems
 - *mean value theorem* - if f:[a,b] -> R is continuous on [a,b] and differentiable on (a,b), then there exists a point c $\in$ (a,b) where $f'( c) = \frac{f(b)-f(a)}{b-a}$
 	- *Rolle's thm* - f(a)=f(b) -> f'( c)=0
 	- if f'(x) = 0 for all x in A, then f(x) = k for some constant k
@@ -204,23 +204,23 @@ use AoC with x = sup{$a_n: n \in \mathbb{N}$} in the intersection of all sets</d
 
 # ch 6 - sequences and series of function
 
-### 6.2 uniform convergence of a sequence of functions
+## 6.2 uniform convergence of a sequence of functions
 - for each n $\in \mathbb{N}$ let $f_n$ be a function defined on a set A$\subseteq R$.  The sequence ($f_n$) of functions *converges pointwise* on A to a function f if, for all x in A, the sequence of real numbers $f_n(x)$ converges to f(x)
 - let ($f_n$) be a sequence of functions defined on a set A$\subseteq$R.  Then ($f_n$) *converges unformly* on A to a limit function f defined on A if, for every $\epsilon$>0, there exists an N in $\mathbb{N}$ such that $\forall n ≥N,  x \in A , \|f_n(x)-f(x)\|<\epsilon$
 	- *Cauchy Criterion* for uniform convergence - a sequence of functions $(f_n)$ defined on a set A $\subseteq$ R  converges uniformly on A iff $\forall \epsilon > 0 \exists N \in \mathbb{N}$ s.t. whenever m,n ≥N and x in A, $\|f_n(x)-f_m(x)\|<\epsilon$
 - *continuous limit thm* - Let ($f_n$) be a sequence of functions defined on A that converges uniformly on A to a function f.  If each $f_n$ is continuous at c in A, then f is continuous at c
 
-### 6.3 uniform convergence and differentiation
+## 6.3 uniform convergence and differentiation
 - *differentiable limit theorem* - let $f_n \to f$ pointwise on the closed interval [a,b], and assume that each $f_n$ is differentiable.  If $(f'_n)$ converges uniformly on [a,b] to a function g, then the function f is differentiable and f'=g
 - let ($f_n$) be a sequence of differentiable functions defined on the closed interval [a,b], and assume $(f'_n)$ converges uniformly to a function g on [a,b].  If there exists a point $x_0 \in [a,b]$ for which $f_n(x_0)$ is convergent, then ($f_n$) converges uniformly.  Moreover, the limit function f = lim $f_n$ is differentiable and satisfies f' = g
 
-### 6.4 series of functions
+## 6.4 series of functions
 - *term-by-term continuity thm* - let $f_n$ be continuous functions defined on a set A $\subseteq$ R and assume $\sum f_n$ converges uniformly on A to a function f.  Then, f is continuous on A.
 - *term-by-term differentiability thm* - let $f_n$ be differentiable functions defined on an interval A, and assume $\sum f'_n(x)$ converges uniformly to a limit g(x) on A.  If there exists a point $x_0 \in [a,b]$ where $\sum f_n(x_0)$ converges, then the series $\sum f_n(x)$ converges uniformly to a differentiable function f(x) satisfying f'(x) = g(x) on A.  In other words, $f(x) = \sum f_n(x)$ and $f'(x) = \sum f'_n(x)$
 - *Cauchy Criterion for uniform convergence of series* - A series $\sum f_n$ converges uniformly on A iff $\forall \epsilon > 0 \exists N \in N$ s.t. whenever n>m≥N, x in A $\|f_{m+1}(x) + f_{m+2}(x) + f_{m+3}(x) + ...+f_n(x)\| < \epsilon$
 	- *Wierstrass M-Test* - For each n in N, let $f_n$ be a function defined on a set A $\subseteq$ R, and let $M_n > 0$ be a real number satisfying $\|f_n(x)\| ≤ M_n$ for all x in A.  If $\sum M_n$ converges, then $\sum f_n$ converges uniformly on A
 
-### 6.5 power series
+## 6.5 power series
 - power series f(x) = $\sum_{n=0}^\infty a_n x^n = a_0 + a_1 x_1 + a_2 x^2 + a_3 x^3 + ...$
 - if a power series converges at some point $x_0 \in \mathbb{R}$, then it converges absolutely for any x satisfying \|x\|<\|$x_0$\|
 - if a power series converges pointwise on the set A, then it converges uniformly on any compact set K $\subseteq$ A
@@ -229,7 +229,7 @@ use AoC with x = sup{$a_n: n \in \mathbb{N}$} in the intersection of all sets</d
 - if $\sum_{n=0}^\infty a_n x^n$ converges for all x in (-R,R), then the differentiated series $\sum_{n=0}^\infty n a_n x^{n-1}$ converges at each x in (-R,R) as well.  Consequently the convergence is uniform on compact sets contained in (-R,R).
 	- can take infinite derivatives
 
-### 6.6 taylor series
+## 6.6 taylor series
 - *Taylor's Formula* $\sum_{n=0}^\infty a_n x^n = a_0 + a_1 x_1 + a_2 x^2 + a_3 x^3 + ...$
 	- centered at 0: $a_n = \frac{f^{(n)}(0)}{n!}$
 - *Lagrange's Remainder thm* - Let f be differentiable N+1 times on (-R,R), define $a_n = \frac{f^{(n)}(0)}{n!}.....$
@@ -237,7 +237,7 @@ use AoC with x = sup{$a_n: n \in \mathbb{N}$} in the intersection of all sets</d
 
 # ch 7 - the Riemann Integral
 
-### 7.2 def of Riemann integral
+## 7.2 def of Riemann integral
 - *partition* of [a,b] is a finite set of points from [a,b] that includes both a and b
 - *lower sum* - sum all the possible smallest rectangles
 - a partition Q is a *refinement* of a partition P if $P \subseteq Q$ 
@@ -247,14 +247,14 @@ use AoC with x = sup{$a_n: n \in \mathbb{N}$} in the intersection of all sets</d
 	- U(f) = inf{U(f,P)} for all possible partitions P
 - if f is continuous on [a,b] then it is integrable
 
-### 7.3 integrating functions with discontinuities
+## 7.3 integrating functions with discontinuities
 - if f:[a,b]->R is bounded and f is integrable on [c,b] for all c in (a,b), then f is integrable on [a,b]
 
-### 7.4 properties of Integral
+## 7.4 properties of Integral
 - assume f: [a,b]->R is bounded and let c in (a,b).  Then, f is integrable on [a,b] iff f is integrable on [a,c] and [c,b].  In this case we have $\int_a^b f = \int_a^c f + \int_c^b f.$F
 - *integrable limit thm* - Assume that $f_n \to f$ uniformly on [a,b] and that each $f_n$ is integarble.  Then, f is integrable and $lim_{n \to \infty} \int_a^b f_n = \int_a^b f$.
 
-### 7.5 fundamental theorem of calculus
+## 7.5 fundamental theorem of calculus
 1. If f:[a,b] -> R is integrable, and F:[a,b]->R satisfies F'(x) = f(x) for all x $\in$ [a,b], then $\int_a^b f = F(b) - F(a)$
 2. Let f: [a,b]-> R be integrable and for x $\in$ [a,b] define G(x) = $\int_a^x g$.  Then G is continuous on [a,b]. If g is continuous at some point $c \in [a,b]$ then G is differentiable at c and G'(c) = g(c).
 

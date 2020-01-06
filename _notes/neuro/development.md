@@ -7,7 +7,6 @@ category: neuro
 
 * TOC
 {:toc}
-
 ---
 
 # 22 early development
@@ -75,6 +74,7 @@ category: neuro
 		- *cortical dysplasia* - missing a layer / duplicating a layer
 			- small part with 2 layer 3s - severe epilepsy
 5. *cell death*
+	
 	- 1/2 of cells die in development
 6. *axon guidance* (ch 23)
 	- each cell born and axon grows and are guided to a target
@@ -252,7 +252,7 @@ category: neuro
 		- in stress times neurotrophin goes down
 
 # 26 diseases
-### alzheimer's
+## alzheimer's
 - ![](assets/development/26_1.png)
 - overview
 	- age-associated - tons of people get it
@@ -287,7 +287,7 @@ category: neuro
 		- tangles made of protein called *Tau*
 	- most people think these are just dead cells resulting from Alzheimer's but some think they cause it
 
-### parkinson's
+## parkinson's
 - loss of substantia nigra pars compacta dopaminergic neurons
 	- when you get down to 20% what you were born with
 	- dopaminergic neurons form *melanin* = dark color

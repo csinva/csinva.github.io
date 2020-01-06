@@ -124,8 +124,6 @@ Xrot_reduced = np.dot(X, U[:, :2]) # project onto first 2 dimensions (n x 2)
     - define B = HAH
       - D Euclidean iff B is psd
 
-# nonlinear
-
 # t-sne / umap
 
 - t-sne preserves pairwise neighbors

@@ -37,6 +37,7 @@ title: presentations
     - [wsimule tomtom](https://docs.google.com/presentation/d/1KghayB2g8u5xwVuILzT4XtalKi3rerVROaoRb6RUVBk/edit) (10 min talk given at Tom Tom 2017)
     - [wsimule slide](/assets/write_ups/wsimule_17_nips_slide.pdf) (1 min pres. given at AMLCID Neurips 2017 workshop)
 - [linearization](https://docs.google.com/presentation/d/1JriXXofysuXyfU4CeyNHJUTYSfa18R9Q3EhkCwFwh4g/present?slide=id.p) (5 min talk given at URDS 2017)
+- [sparse coding class pres](https://docs.google.com/presentation/d/199lCpVaOA6ez4QXkt9W8-fMv8rF_rGv_9rsXIwe1LKI/edit#slide=id.p)
 
 # posters
 - [acd poster](/assets/write_ups/acd_18_bairday_poster.pdf)

@@ -42,6 +42,7 @@ A checklist of things to check that may be able to help improve a data-science w
 
 ## modeling
 
+- try simple rules to cover most of the cases
 - try ensembling
 
 ## feature importances

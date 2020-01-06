@@ -8,10 +8,9 @@ typora-copy-images-to: ./assets/ml
 * TOC
 {:toc}
 
+---
 
-# feature selection
-
-## filtering
+# filtering
 
 - ranks features or feature subsets independently of the predictor
 - univariate methods (consider one variable at a time)
@@ -24,7 +23,7 @@ typora-copy-images-to: ./assets/ml
   - need a strategy to search the space
   - sometimes used as preprocessing for other methods
 
-## wrapper
+# wrapper
 
 - uses a predictor to assess features of feature subsets
 - learner is considered a black-box - use train, validate, test set
@@ -32,7 +31,7 @@ typora-copy-images-to: ./assets/ml
 - backward elimination - start with all and keep removing
 - others: Beam search - keep k best path at teach step, GSFS, PTA(l,r), floating search - SFS then SBS
 
-## embedding
+# embedding
 
 - uses a predictor to build a model with a subset of features that are internally selected
 - ex. lasso, ridge regression

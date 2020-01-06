@@ -7,6 +7,8 @@ category: cs
 * TOC
 {:toc}
 
+---
+
 # 1 - introduction
 ## 1.1 what operating systems do
 - *computer system* - hierarchical approach = layered approach
@@ -696,6 +698,7 @@ sem post(&sem);
 ## 7.1 - background
 - CPU can only directly access main memory and registers
 - accessing memory is slower than registers
+	
 	- processor must *stall* or use *cache*
 - processes need separate memory spaces
 	1. *base register* - holds smallest usable address
@@ -703,12 +706,14 @@ sem post(&sem);
 	- os / hardware check these, throw a trap if there was error
 - *input queue* holds processes waiting to be be brought into memory
 - compiler *binds* symbolic addresses to relocatable addresses
+	
 	- linkage editor binds relocatable addresses to absolute addresses
 - CPU uses *virtual address*=logical address
 	- *memory-management unit (MMU)* maps from virtual to *physical address*
 		- simple ex. add virtual address to a process's base register = *relocation register*
 - *dynamic loading* - don't load whole process, only load things when called
 - *dynamically linked libraries* - system libraries linked to user programs when the programs are run
+	
 	- *stub* - tells how to load / locate library routine
 - *shared libraries* - all use same library
 
@@ -854,6 +859,7 @@ sem post(&sem);
 		1. don't let anything change while fetching
 		2. use registers to store state before fetching
 - *pure demand paging* - never bring a page into memory until it is required
+	
 	- programs tend to have *locality of reference*, so we bring in chunks at a time
 - extra time when there is a page fault
 	1. service the page-fault interrupt
@@ -874,6 +880,7 @@ sem post(&sem);
 
 ## 8.4 - page replacement - select which frames to replace
 - multiprogramming might *over-allocate* memory 
+	
 	- all programs might need all their mem at once
 - buffers for I/O also use a bunch of mem
 - when over-allocated, 3 options
@@ -886,11 +893,14 @@ sem post(&sem);
 - write its contents to swap space
 - <img src="pics/8_10.png" width=40%/>
 - *modify bit*=*dirty bit* reduces overhead
+	
 	- if hasn't been modified then don't have to rewrite it to disk
 - page replacement examples
 	1. FIFO
+		
 		- *Belady's anomaly* - for some algorithms, page-fault rate may increase as number of allocate frames increases
 	2. optimal (OPT / MIN)
+		
 		- replace the page that will not be used for the longest period of time
 	3. LRU - least recently used (last used)
 		1. implement with counters since each use
@@ -984,11 +994,13 @@ sem post(&sem);
 ## 11.4
 - contiguous allocation
 - linked allocation
+	
 	- FAT
 - indexed allocation - all the pointers in 1 block
 
 	# 11.5	
 - keep track of *free-space list*
+	
 	- implemented as bit map
 - keep track of linked list of free space
 - *grouping* - block stores n-1 free blocks and 1 pointer to next block

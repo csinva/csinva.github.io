@@ -4,6 +4,7 @@ section-type: notes
 title: Principles
 category: stat
 ---
+
 * TOC
 {:toc}
 ---

@@ -86,6 +86,10 @@ some more concrete questions:
 - [A mathematical theory of semantic development in deep neural networks](https://arxiv.org/abs/1810.10531)
 - [rl agents learn some crazy things](https://arxiv.org/pdf/1803.03453.pdf)
   - [itemized list](https://docs.google.com/spreadsheets/u/1/d/e/2PACX-1vRPiprOaC3HsCf5Tuum8bRfzYUiKLRqJmbOoC-32JorNdfyTiRRsR7Ea5eWtvsWzuxo8bjOxCG84dAg/pubhtml)
+- [Emergence of Invariance and Disentanglement in Deep Representations](https://arxiv.org/abs/1706.01350) (achille & soatto 2018)
+  -  information in the weights as a measure of complexity of a learned model (information complexity)
+  - IB Lagrangian between the **weights of a network and the training data**, as opposed to the traditional one between the **activations and the test datum**
+  - explains tradeoff between over/underfitting
 
 ## expressiveness: what can a dnn represent?
 

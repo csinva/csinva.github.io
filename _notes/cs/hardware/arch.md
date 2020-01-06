@@ -8,6 +8,8 @@ category: cs
 * TOC
 {:toc}
 
+---
+
 # units
 - we will use only the i versions (don't have to write i):
 	- K - 10^3: Ki - 1024
@@ -1011,6 +1013,7 @@ for(i...)
 		- rerun i3 (assuming we corrected fault - ex. allocating new memory) otherwise abort
 	- abort - reaction to an exception (usually to a fault) - quits instead of resuming
 - suspending
+	
 	- save PC, program register, condition codes (put them in a struct in kernel memory)
 - on an exception
 	1. switch to kernel mode
@@ -1021,6 +1024,7 @@ for(i...)
 
 # processes
 - (user) read file -> (kernel) send request to disk, wait, clean up -> (user) resume
+	
 	- this has lots of waiting so we run another program while we wait (see pic)
 - process - code with an address space
 	- CPU has a register that maps user addresses to physical addresses (memory pointers to each process)
@@ -1104,6 +1108,7 @@ for(i...)
 	- lots of unused at bottom, top because few programs use 2^64 bytes
 	- RAM - we'll say this includes all caches
 	- virtual memory is usually mostly empty
+		
 		- allocated in a few blocks / regions
 	- MMU
 		1. bad idea 1: could be a mapping from every virtual address to every physical address, but this wastes a lot
@@ -1147,6 +1152,7 @@ for(i...)
 - TLB - maps from virtual page numbers to physical page numbers
 - TLB vs L1, L2, etc:
 - Similarities
+	
 	- They are all caches- i.e., they have an index and a tag and a valid bit (and sets)
 - Differences
 	- TLB has a 0-bit BO (i.e., 1 entry per block; lg(1) = 0)

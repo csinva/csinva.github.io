@@ -6,6 +6,10 @@ category: ai
 typora-copy-images-to: ./assets/nlp
 ---
 
+* TOC
+{:toc}
+---
+
 # useful tools
 
 - [eli5](https://eli5.readthedocs.io/en/latest/libraries/sklearn.html#library-scikit-learn) has nice text highlighting for interp

@@ -8,13 +8,14 @@ category: ml
 * TOC
 {:toc}
 
-*references*: (1) Machine Learning - Tom Mitchell, (2) An Introduction to Computational Learning Theory - Kearns & Vazirani
+
+*references: (1) Machine Learning - Tom Mitchell, (2) An Introduction to Computational Learning Theory - Kearns & Vazirani*
 
 ---
 
 # evolution
 
-- performance is correlation  $Perf_D (h,c) = \sum h(x) \cdot c(x) \cdot P(x)​$
+- performance is correlation  $Perf_D (h,c) = \sum h(x) \cdot c(x) \cdot P(x)$
   - want $P(Perf_D(h,c) < Perf_D(c,c)-\epsilon) < \delta$
 
 # sample problems

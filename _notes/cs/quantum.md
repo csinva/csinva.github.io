@@ -8,6 +8,8 @@ typora-copy-images-to: ./assets
 
 [TOC]
 
+---
+
 - what does physics tell us about the limits of computers?
 - NP - can check soln in polynomial time
 - NP-hard - if solved, solves every NP
