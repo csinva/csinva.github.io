@@ -1,6 +1,5 @@
 ---
 layout: notes
-section-type: notes
 title: Feature selection
 category: ml
 typora-copy-images-to: ./assets/ml
@@ -8,7 +7,6 @@ typora-copy-images-to: ./assets/ml
 * TOC
 {:toc}
 
----
 
 # filtering
 

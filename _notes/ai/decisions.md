@@ -1,6 +1,5 @@
 ---
 layout: notes
-section-type: notes
 title: decisions
 category: ai
 typora-copy-images-to: ./assets/ai
@@ -9,8 +8,6 @@ typora-copy-images-to: ./assets/ai
 * TOC
 {:toc}
 *From "Artificial Intelligence" Russel & Norvig 3rd Edition*
-
----
 
 # game trees - R&N 5.2-5.5
 

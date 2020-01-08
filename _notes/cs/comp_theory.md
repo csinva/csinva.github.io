@@ -1,14 +1,11 @@
 ---
 layout: notes
-section-type: notes
 title: cs theory
 category: cs
 ---
 
 * TOC
 {:toc}
-
----
 
 # introduction
 - Chomsky hierarchy of languages: $L_3 \subset L_2 \subset L_1 \subset L_R \subset L_0 \subset Σ*$

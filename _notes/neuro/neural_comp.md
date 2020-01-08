@@ -1,13 +1,11 @@
 ---
 layout: notes
-section-type: notes
 title: neuro models
 category: neuro
 ---
 
 * TOC
 {:toc}
----
 
 - convs are organized spatially
 - could do transform so that have spatial convs that are organized spatially, orientation based, frequency based

@@ -1,13 +1,11 @@
 ---
 layout: notes
-section-type: notes
 title: Vision
 category: neuro
 ---
 
 * TOC
 {:toc}
----
 
 # neural signals
 

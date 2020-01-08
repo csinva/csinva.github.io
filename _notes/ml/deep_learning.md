@@ -1,13 +1,11 @@
 ---
 layout: notes
-section-type: notes
 title: Deep Learning
 category: ml
 ---
 
 * TOC
 {:toc}
----
 
 # neural networks
 

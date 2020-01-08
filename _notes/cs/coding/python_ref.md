@@ -1,14 +1,11 @@
 ---
 layout: notes
-section-type: notes
 title: python ref
 category: cs
 ---
 
 * TOC
 {:toc}
-
----
 
 # basic
 

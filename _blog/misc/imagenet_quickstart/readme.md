@@ -1,17 +1,9 @@
 ---
-layout: notes_without_title
-section-type: notes
-title: imagenet quickstart
+layout: notes
+title: Quick start imagenet in pytorch
 category: blog
 ---
 
-
-
-# Quick start imagenet in pytorch
-
-**chandan singh** 
-
----
 
 [ImageNet](http://www.image-net.org/) has become a staple dataset in computer vision, but is still pretty difficult to download/install. These are some simple instructions to get up and running in pytorch.
 

@@ -1,14 +1,11 @@
 ---
 layout: notes
-section-type: notes
 title: Architecture
 category: cs
 ---
 
 * TOC
 {:toc}
-
----
 
 # units
 - we will use only the i versions (don't have to write i):

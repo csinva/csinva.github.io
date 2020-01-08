@@ -1,13 +1,11 @@
 ---
 layout: notes
-section-type: notes
 title: real analysis
 category: math
 ---
 
 * TOC
 {:toc}
----
 
 # ch 1 - the real numbers
 - there is no rational number whose square is 2 <button data-toggle="collapse" data-target="#111" >+</button><div class="collapse" id="111">

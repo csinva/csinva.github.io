@@ -1,6 +1,5 @@
 ---
 layout: notes
-section-type: notes
 title: linear models
 category: stat
 ---
@@ -10,7 +9,6 @@ category: stat
 
 - *Material from "Statistical Models Theory and Practice" - David Freedman*
 
----
 
 # introduction
 

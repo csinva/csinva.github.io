@@ -1,6 +1,5 @@
 ---
 layout: notes
-section-type: notes
 title: linear algebra
 category: math
 typora-copy-images-to: ./assets/linear_algebra
@@ -8,7 +7,6 @@ typora-copy-images-to: ./assets/linear_algebra
 
 * TOC
 {:toc}
----
 
 # linear basics
 

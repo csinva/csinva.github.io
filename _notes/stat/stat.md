@@ -1,14 +1,11 @@
 ---
 layout: notes
-section-type: notes
 title: Statistics
 category: stat
 ---
 * TOC
 {:toc}
 - *material based on probability and statistics cookbook by matthias vallentin*
-
----
 
 # probability
 

@@ -1,13 +1,11 @@
 ---
 layout: notes
-section-type: notes
 title: Java ref
 category: cs
 ---
 
 * TOC
 {:toc}
----
 
 # data structures
 

@@ -1,14 +1,7 @@
 ---
-layout: notes_without_title
-section-type: notes
-title: ml coding tips
+layout: notes
+title: Useful ml / data-science packages and tips
 category: blog
----
-
-# Useful ml / data-science packages and tips
-
-**chandan singh** 
-
 ---
 
 **These are some packages/tips for machine-learning coding in python.**

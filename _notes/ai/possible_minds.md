@@ -1,6 +1,5 @@
 ---
 layout: notes
-section-type: notes
 title: possible minds
 category: ai
 ---
@@ -9,7 +8,6 @@ category: ai
 
 * TOC
 {:toc}
----
 
 # 0 - intro (brockman)
 

@@ -1,14 +1,11 @@
 ---
 layout: notes
-section-type: notes
 title: Proofs
 category: math
 ---
 
 * TOC
 {:toc}
-
----
 
 # proofs
 - induction

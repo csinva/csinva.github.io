@@ -1,6 +1,5 @@
 ---
-layout: notes_without_title
-section-type: notes
+layout: notes
 title: dl for neuro
 category: research
 ---

@@ -1,13 +1,11 @@
 ---
 layout: notes
-section-type: notes
 title: Optimization
 category: math
 typora-copy-images-to: ./assets/optimization
 ---
 * TOC
 {:toc}
----
 
 # convex optimization
 

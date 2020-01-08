@@ -1,14 +1,7 @@
 ---
-layout: notes_without_title
-section-type: notes
+layout: notes
 title: connectomics
 category: blog
----
-
-
-# connectomics
-**chandan singh**  
-
 ---
 
 

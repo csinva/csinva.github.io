@@ -1,6 +1,5 @@
 ---
 layout: notes
-section-type: notes
 title: Search
 category: ai
 ---
@@ -9,8 +8,6 @@ category: ai
 {:toc}
 
 From "Artificial Intelligence" Russel & Norvig 3rd Edition
-
----
 
 # Uninformed Search - R&N 3.1-3.4
 

@@ -1,13 +1,8 @@
 ---
-layout: notes_without_title
-section-type: notes
-title: evaluating interpretability
+layout: notes
+title: running notes on evaluating interpretability
 category: blog
 ---
-
-# running notes on evaluating interpretability
-
-**chandan singh** 
 
 - Interpretability is gaining increased attention, but also [coming under much criticism](https://arxiv.org/abs/1606.03490)
 - The purpose of interpretations is to [help a particular audience solve a particular task](https://www.pnas.org/content/116/44/22071). It is important that the evaluations reflect this.

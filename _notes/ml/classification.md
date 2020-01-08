@@ -1,12 +1,10 @@
 ---
 layout: notes
-section-type: notes
 title: Classification
 category: ml
 ---
 * TOC
 {:toc}
----
 
 # overview
 

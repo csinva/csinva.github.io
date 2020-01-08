@@ -1,12 +1,10 @@
 ---
 layout: notes
-section-type: notes
 title: time series
 category: stat
 ---
 * TOC
 {:toc}
----
 
 # high-level
 
@@ -44,31 +42,9 @@ category: stat
   - autoregressive integrated moving average (arima)
     - assumptions: stationary model
 
-## models
-
-**AR model** $AR(p)$: $$ X_t = c + \sum_{i=1}^p \varphi_i X_{t-i}+ \varepsilon_t $$
-
-- $\varphi_1, \ldots, \varphi_p$ are parameters
-- $c$ is a constant
-- $\varepsilon_t$ is white noise
-- stationary assumption places constraints on param values (e.g. processes in the AR(1) model with $|\varphi_1| \ge 1$ are not stationary)
-
-**MA model** $MA(q)$: $ X_t = \mu + \varepsilon_t + \sum_{i=1}^q \theta_i \varepsilon_{t-i}$
-
-- $\theta_1 ... \theta_q$ are params
-- $\mu$ is the mean of $X_t$ 
-- $\varepsilon_t$, $\varepsilon_{t-1}$ are white noise error terms
-- harder to fit, because the lagged error terms are not visible (also means can't make preds on new time-series)
-
-**ARMA model**: $ARMA(p, q)$: $X_t = c + \varepsilon_t +  \sum_{i=1}^p \varphi_i X_{t-i} + \sum_{i=1}^q \theta_i \varepsilon_{t-i}$
-
-**ARIMA model**: $ARIMA(p, d, q)$: - generalizes ARMA model to non-stationarity (using differencing)
-
-- d number of nonseasonal differences (differencing order i.e. what order of derivative to take)
 
 
-
-# [book](https://www.stat.tamu.edu/~suhasini/teaching673/time_series.pdf) notes
+# [book](https://www.stat.tamu.edu/~suhasini/teaching673/time_series.pdf) notes + [book2](http://home.iitj.ac.in/~parmod/document/introduction%20time%20series.pdf) - Introduction to Time Series and Forecasting
 
 ## ch 1
 
@@ -97,7 +73,12 @@ category: stat
 
 ## ch 3 - linear time series
 
-- $AR(p)$ model: $X_t = \sum_{j=1}^p \phi_j X_{t-j} + \epsilon_t$
+**note: can just assume all have 0 mean (otherwise add a constant)**
+
+- **AR model** $AR(p)$:  $$ X_t = \sum_{i=1}^p \phi_i X_{t-i}+ \varepsilon_t $$
+  - $\phi_1, \ldots, \phi_p$ are parameters
+  - $\varepsilon_t$ is white noise
+  - stationary assumption places constraints on param values (e.g. processes in the AR(1) model with $|\phi_1| \ge 1$ are not stationary)
   - looks just like linear regression, but is more complex
     - if we don't account for issues, model will not be stationary, model may be misspecified, and $E(\epsilon_t|X_{t-p}) \neq 0$
     - this represents a set of difference equations, and as such, must have a solution
@@ -106,37 +87,55 @@ category: stat
   - ex. $AR(p)$ model - if $\sum_j |\phi_j|$< 1, and $\mathbb E |\epsilon_t| < \infty$, then will have a causal stationary solution
   - **backshift operator** $B^kX_t=X_{t-k}$
     - solving requires using the backshift operator, because we need to solve for what all the residuals are
-  - **characteristic polynomial** $\phi(B) = 1 - \sum_{j=1}^p \phi_j B^j$
+  - **characteristic polynomial** $\phi(a) = 1 - \sum_{j=1}^p \phi_j a^j$
     - $\phi(B) X_t = \epsilon_t$
     - $X_t=\phi(B)^{-1} \epsilon_t$
   - can represent $AR(p)$ as a vector $AR(1)$ using the vector $\bar X_t = (X_t, ..., X_{t-p+1})$
   - note: can reparametrize in terms of frequencies
-- $MA(q)$ model: $X_t = \sum_{j=0}^q \theta_j \epsilon_{t-j}$ 
+- **MA model** $MA(q)$: $ X_t = \sum_{i=1}^q \theta_i \varepsilon_{t-i} + \varepsilon_t$
+  - $\theta_1 ... \theta_q$ are params
+  - $\varepsilon_t$, $\varepsilon_{t-1}$ are white noise error terms
+  - harder to fit, because the lagged error terms are not visible (also means can't make preds on new time-series)
   - $E[\epsilon_t] = 0$, $Var[\epsilon_t] = 1$
   - much harder to estimate these parameters
-  - $X_t = \theta (B) \epsilon_t$ (assuming $\theta_0=1$)
-- $ARMA(p, q)$ - there are conditions for being invertible/causal + identifiable
-- linear time-series = linear process - like MA$(\infty)$, but can depend on future observations as well
-- $ARIMA(p, q)$ - just take differences first
+  - $X_t = \theta (B) \epsilon_t$ (assuming $\theta_0=1$)  - 
+- **ARMA model**: $ARMA(p, q)$: $X_t = \sum_{i=1}^p \phi_i X_{t-i} + \sum_{i=1}^q \theta_i \varepsilon_{t-i} + \varepsilon_t$
+  - $\{X_t\}$ is stationary
+  - $\phi (B) X_t = \theta(B) \varepsilon_t$
+  - $\phi(B) = 1 - \sum_{j=1}^p \phi_j B^j$
+  - $\theta(B) = 1 + \sum_{j=1}^{q}\theta_jz^j$
+  - **causal** if $\exists \{ \psi_j \}$ such that $X_t = \sum_{j=0}^\infty \psi_j Z_{t-j}$ for all t
 
-## ch 4 - the autocovariance function
+- **ARIMA model**: $ARIMA(p, d, q)$: - generalizes ARMA model to non-stationarity (using differencing)
 
-- autocovariance function: {$c(k): k \in \mathbb Z$} where $c(k) = \mathbb E (X_0 X_k)$
+
+## ch 4 + 8 - the autocovariance function + parameter estimation
+
+- estimation
+  - pure autoregressive
+    - Yule-walker
+    - Burg estimation - minimizing sums of squares of forward and backward one-step prediction errors with respect to the coefficients
+  - when $q > 0$
+    - innovations algorithm
+    - hannan-rissanen algorithm
+- autocovariance function: {$\gamma(k): k \in \mathbb Z$} where $\gamma(k) = \text{Cov}(X_{t+h}. X_t) =  \mathbb E (X_0 X_k)$ (assuming mean 0)
 - **Yule-Walker equations** (assuming AR(p) process): $\mathbb E (X_t X_{t-k}) = \sum_{j=1}^p \phi_j \mathbb E (X_{t-j} X_{t-k}) + \underbrace{\mathbb E (\epsilon_tX_{t-k})}_{=0} = \sum_{j=1}^p \phi_j \mathbb E (X_{t-j} X_{t-k})$
-- ex. MA covariance becomes 0 with lag > num params
-
-## ch 8 - parameter estimation
-
+  - ex. MA covariance becomes 0 with lag > num params
 - can rewrite the Yule-Walker equations:
 
-  - $c(i) = \sum_{j=1}^p \phi_j c(i -j)$
-  - $\underline r_p = \Sigma_p \underline \phi_p$
-    - $(\Sigma_p)_{i, j} = c(i - j)$
-  - $(\underline r_p)_k = c(i)$
+  - $\gamma(i) = \sum_{j=1}^p \phi_j \gamma(i -j)$
+  - $\underline\gamma_p = \Gamma_p \underline \phi_p$
+    - $(\Gamma_p)_{i, j} = \gamma(i - j)$
+    - $\hat{\Gamma}_p$ is nonegative definite (and nonsingular if there is at least one nonzero $Y_i$)
+    - 
+  - $(\underline \gamma_p)_k = \gamma(i)$
     - $\underline \phi_p = (\phi_1, ..., \phi_p)$
     - this minimizes the mse $\mathbb E [X_{t+1} - \sum_{j=1}^p \phi_j X_{t+1-j}]^2$
-  
 -  use estimates to solve: $\hat{\underline \phi}_p = \hat \Sigma_p^{-1} \hat{\underline r}_p $
 
-  
+- **mle** (ch 5.2)
+  - eq. 5.2.9: Gaussian likelihood for an ARMA process
 
+
+
+# multivariate time-series ch 7

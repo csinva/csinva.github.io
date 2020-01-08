@@ -1,14 +1,11 @@
 ---
 layout: notes
-section-type: notes
 title: Differential Equations
 category: math
 ---
 
 * TOC
 {:toc}
-
----
 
 # Differential Equations
 Separable: Separate and Integrate

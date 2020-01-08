@@ -1,14 +1,11 @@
 ---
 layout: notes
-section-type: notes
 title: info Retrieval
 category: cs
 ---
 
 * TOC
 {:toc}
-
----
 
 # introduction
 - building blocks of search engines

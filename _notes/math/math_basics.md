@@ -1,13 +1,11 @@
 ---
 layout: notes
-section-type: notes
 title: Math Basics
 category: math
 ---
 
 * TOC
 {:toc}
----
 
 # misc
 

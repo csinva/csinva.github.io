@@ -1,13 +1,10 @@
 ---
 layout: notes
-section-type: notes
 title: os
 category: cs
 ---
 * TOC
 {:toc}
-
----
 
 # 1 - introduction
 ## 1.1 what operating systems do

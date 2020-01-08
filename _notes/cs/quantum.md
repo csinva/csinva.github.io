@@ -1,14 +1,12 @@
 ---
 layout: notes
-section-type: notes
 title: quantum
 category: cs
 typora-copy-images-to: ./assets
 ---
 
-[TOC]
-
----
+* TOC
+{:toc}
 
 - what does physics tell us about the limits of computers?
 - NP - can check soln in polynomial time

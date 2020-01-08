@@ -1,15 +1,9 @@
 ---
-layout: notes_without_title
-section-type: notes
+layout: notes
 title: latex tips and tricks
 category: blog
 ---
 
-
-# latex how-tos
-**chandan singh** 
-
----
 
 *Contains simple instructions for common issues with writing in latex*
 
@@ -76,5 +70,5 @@ create a helper command named `\anonfinal` which takes two arguments and will pr
 
 - figures should be saved as pdf unless they have a ton of points
 
-# some useful links
+## some useful links
 - https://github.com/Wookai/paper-tips-and-tricks

@@ -1,13 +1,11 @@
 ---
 layout: notes
-section-type: notes
 title: cogsci
 category: ai
 ---
 
 * TOC
 {:toc}
----
 
 # nativism, empiricism
 

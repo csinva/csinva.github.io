@@ -1,14 +1,11 @@
 ---
 layout: notes
-section-type: notes
 title: software engineering
 category: cs
 ---
 
 * TOC
 {:toc}
-
----
 
 # ch 2 - software engineering
 - software engineering - the application of a systematic, disciplined, quantifiable approach to the development, operation, and maintenance of software; that is, the application of engineering to software

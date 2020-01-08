@@ -1,7 +1,6 @@
 ---
 
 layout: notes
-section-type: notes
 title: info Theory
 category: stat
 ---
@@ -10,8 +9,6 @@ category: stat
 {:toc}
 
 - *material from* Cover "Elements of Information Theory"
-
----
 
 # overview
 

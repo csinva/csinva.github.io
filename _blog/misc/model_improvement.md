@@ -1,16 +1,7 @@
 ---
-layout: notes_without_title
-section-type: notes
-title: tips to improve a model
+layout: notes
+title: A checklist for model improvement
 category: blog
----
-
-
-
-# A bunch of things to check to improve a model
-
-**chandan singh** 
-
 ---
 
 A checklist of things to check that may be able to help improve a data-science workflow.

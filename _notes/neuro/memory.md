@@ -1,13 +1,11 @@
 ---
 layout: notes
-section-type: notes
 title: memory
 category: neuro
 ---
 
 * TOC
 {:toc}
----
 
 # history
 

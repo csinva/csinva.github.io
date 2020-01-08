@@ -1,14 +1,11 @@
 ---
 layout: notes
-section-type: notes
 title: Motor system
 category: neuro
 ---
 
 * TOC
 {:toc}
-
----
 
 # 16 lower
 - sensory in dorsal spinal cord, motor in ventral

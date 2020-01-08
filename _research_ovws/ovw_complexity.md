@@ -1,11 +1,11 @@
 ---
-layout: notes_without_title
-section-type: notes
+layout: notes
 title: complexity
 category: research
 ---
 
-[TOC]
+* TOC
+{:toc}
 
 Complexity can be a useful notion for many things in statistical models. It can help answer the following questions:
 

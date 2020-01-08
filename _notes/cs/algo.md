@@ -1,13 +1,10 @@
 ---
 layout: notes
-section-type: notes
 title: Algorithms
 category: ai
 ---
 * TOC
 {:toc}
-
----
 
 # asymptotics
 

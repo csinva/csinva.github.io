@@ -1,13 +1,10 @@
 ---
 layout: notes
-section-type: notes
 title: structure learning
 category: ml
 ---
 * TOC
 {:toc}
-
----
 
 # introduction
 

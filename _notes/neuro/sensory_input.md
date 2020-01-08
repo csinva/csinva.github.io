@@ -1,14 +1,11 @@
 ---
 layout: notes
-section-type: notes
 title: Sensory Input
 category: neuro
 ---
 
 * TOC
 {:toc}
-
----
 
 # 9- somatosensory
 ## cheat sheet

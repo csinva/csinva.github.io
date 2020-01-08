@@ -1,14 +1,11 @@
 ---
 layout: notes
-section-type: notes
 title: representations
 category: ai
 ---
 
 * TOC
 {:toc}
-
----
 
 # intro
 

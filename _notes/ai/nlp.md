@@ -1,6 +1,5 @@
 ---
 layout: notes
-section-type: notes
 title: nlp
 category: ai
 typora-copy-images-to: ./assets/nlp
@@ -8,7 +7,6 @@ typora-copy-images-to: ./assets/nlp
 
 * TOC
 {:toc}
----
 
 # useful tools
 

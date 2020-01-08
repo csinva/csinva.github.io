@@ -1,13 +1,11 @@
 ---
 layout: notes
-section-type: notes
 title: brain basics
 category: neuro
 ---
 
 * TOC
 {:toc}
----
 
 # delineations
 

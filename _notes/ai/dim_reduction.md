@@ -1,12 +1,10 @@
 ---
 layout: notes
-section-type: notes
-title: dim. Reduction
+title: dimensionality Reduction
 category: ai
 ---
 * TOC
 {:toc}
----
 
 # overview
 

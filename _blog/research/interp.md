@@ -1,14 +1,7 @@
 ---
-layout: notes_without_title
-section-type: notes
-title: interp
+layout: notes
+title: what is interpretable machine learning?
 category: blog
----
-
-# what is interpretable machine learning?
-
-**chandan singh** 
-
 ---
 
 

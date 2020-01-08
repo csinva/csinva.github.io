@@ -1,6 +1,5 @@
 ---
 layout: notes
-section-type: notes
 title: logic
 category: ai
 typora-copy-images-to: ./assets/logic
@@ -9,8 +8,6 @@ typora-copy-images-to: ./assets/logic
 * TOC
 {:toc}
 *from "Artificial Intelligence" Russel & Norvig 3rd Edition*
-
----
 
 # logical agents - 7.1-7.7 (omitting 7.5.2)
 

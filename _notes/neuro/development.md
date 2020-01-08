@@ -1,13 +1,11 @@
 ---
 layout: notes
-section-type: notes
 title: Development
 category: neuro
 ---
 
 * TOC
 {:toc}
----
 
 # 22 early development
 - ways to study

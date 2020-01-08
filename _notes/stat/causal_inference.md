@@ -1,13 +1,11 @@
 ---
 layout: notes
-section-type: notes
 title: causal inference
 category: stat
 ---
 
 * TOC
 {:toc}
----
 
 *Some notes on causal inference both from introductory courses following the neyman-rubin school of thought and based on Judea Pearl's ladder of causality*
 

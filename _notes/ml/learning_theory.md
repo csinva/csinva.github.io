@@ -1,6 +1,5 @@
 ---
 layout: notes
-section-type: notes
 title: Learning Theory
 category: ml
 ---
@@ -10,8 +9,6 @@ category: ml
 
 
 *references: (1) Machine Learning - Tom Mitchell, (2) An Introduction to Computational Learning Theory - Kearns & Vazirani*
-
----
 
 # evolution
 

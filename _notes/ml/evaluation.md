@@ -1,12 +1,10 @@
 ---
 layout: notes
-section-type: notes
 title: Evaluation
 category: ml
 ---
 * TOC
 {:toc}
----
 
 # losses
 

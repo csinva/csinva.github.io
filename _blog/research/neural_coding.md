@@ -1,14 +1,7 @@
 ---
-layout: notes_without_title
-section-type: notes
+layout: notes
 title: neural coding
 category: blog
----
-
-
-# neural coding
-**chandan singh** 
-
 ---
 
 Biological neurons are incredibly complex. Their computations involve integrating inputs from thousands of other neurons over time and space, with sophisticated molecular machinery. The research here explores these computations in detail through biophysical simulations. Surprisingly, simplicity often emerges from all of this complexity.

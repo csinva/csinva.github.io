@@ -1,6 +1,5 @@
 ---
 layout: notes
-section-type: notes
 title: graphical models
 category: stat
 typora-copy-images-to: ./assets/graphical_models
@@ -11,8 +10,6 @@ typora-copy-images-to: ./assets/graphical_models
 
 
 *Material from Russell and Norvig "Artifical Intelligence" 3rd Edition* and *Jordan "Graphical Models"*
-
----
 
 # overview
 

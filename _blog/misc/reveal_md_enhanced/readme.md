@@ -1,13 +1,7 @@
 ---
-layout: notes_without_title
-section-type: notes
-title: great slides with reveal-md
+layout: notes
+title: great slides with reveal markdown
 category: blog
----
-
-# great slides with reveal markdown 
-**chandan singh** 
-
 ---
 
 **This post and the [associated code](https://github.com/csinva/csinva.github.io/tree/master/_blog/reveal_md_enhanced) contain some enhancements for [reveal-md](https://github.com/webpro/reveal-md), an awesome library for creating presentations with markdown.**

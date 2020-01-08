@@ -1,14 +1,11 @@
 ---
 layout: notes
-section-type: notes
 title: Data Structures
 category: cs
 ---
 
 * TOC
 {:toc}
-
----
 
 # lists
 ## arrays and strings
