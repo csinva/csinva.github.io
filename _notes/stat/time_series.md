@@ -139,3 +139,6 @@ category: stat
 
 
 # multivariate time-series ch 7
+
+- vector-valued time-series has dependencies between variables across time
+  - just modeling as univariate fails to take into account possible dependencies between the series

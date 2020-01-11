@@ -23,7 +23,21 @@ typora-copy-images-to: ./assets
     - if you want exponential speedup, need to get exponentially close to speed of light (requires exponential energy)
   - ex. zeno's computer - run clock faster (exponentially more cooling = energy)
 
-# quantum computing
+# basics
+- An n-bit computer has 2^n states and is in one of them with probability 1.  You can think of it as having 2^n coefficients, one of which is 0 and the rest of which are 1.  Operations on it are multiplying these coefficients by stochastic matrices.  Only produces n bits of info.
+- an n-qubit quantum computer is described by 2^n complex coefficients.  The sum of their squares sums to 1.  It’s 2^n complex coefficients must be multiplied by unitary matrices (they preserve that the sum of the squares add up to 1.)
+- Problem: **Decoherence** – results from interaction with the outside world
+- Properties: 	
+	- Superposition – an object is in more than one state at once
+		- Has a percentage of being in both states
+	- Entanglement – 2 particles behave exactly the opposite – instantly
+
+# storing qubits
+- Fullerenes – naturally found in Precambrian rock, reasonable for storing qubits – can store 
+	- not developed, but some experiments have shown ability to store qubits for milliseconds
+
+
+# intro
 
 - probability with minus signs
 - *amplitudes* - used to calculate probabilites, but can be negative / complex

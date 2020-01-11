@@ -1,0 +1,4 @@
+- Id – set of instinctual trends
+  - "contrary impulses exist side by side, without cancelling each other out. ... There is nothing in the id that could be compared with negation ... nothing in the id which corresponds to the idea of time."
+- Ego – organized and realistic
+- Super-ego – analyzes and moralizes – mediates between id and ego

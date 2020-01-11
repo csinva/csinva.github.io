@@ -1,0 +1,12 @@
+- **arbitrary coherence** - market prices themselves that influence consumers' willingness to pay. What this means is that demand is not, in fact, a completely separate force from supply.
+- Choices are always relatives
+	- Adding a comparable worse option makes the comparable option seem better
+	- Supply and demand doesn’t always work
+		- The price for black pearls was completely made up
+		- People often stay anchored to the prices they first see
+- Social norms compete with market norms
+	- Fining parents who pick up their children late
+- High price of ownership
+	- Students who won tickets in a lottery would sell them for much more than buy them
+	- Pepsi wins blind taste tests, coke wins shown ones
+- [“dollar auction”](http://www.smbc-comics.com/index.php?id=3594)

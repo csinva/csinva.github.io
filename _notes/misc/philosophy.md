@@ -1,0 +1,2 @@
+- [Foundationalism](http://en.wikipedia.org/wiki/Foundationalism) - where the chain of justifications eventually relies on [basic beliefs](http://en.wikipedia.org/wiki/Basic_beliefs) or [axioms](http://en.wikipedia.org/wiki/Axiom) that are left unproven
+  - Plato’s Republic
