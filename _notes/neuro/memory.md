@@ -6,40 +6,40 @@ category: neuro
 
 * TOC
 {:toc}
-
 # history
 
-The Neuron Doctrine – the neuron is the fundamental building block and elementary signaling unit of the brain
--Golgi – develops silver staining method which allows Cajal to see entire neuron
--Santiago Ramon y Cajal – Spanish anatomist who simplifies neuron forest and looks at individual neurons, develops model with dendrites, cell body, and axon
--4 parts: neuron, synapse, connection specificity (specific neurons connect to specific others), dynamic polarization (signals travel in one direction)
--Freud looks into Cajal’s theories, but doesn’t incorporate them
--1906 – they share Nobel despite Golgi hating Cajal’s theories
--1955 – Cajal’s intuitions borne out conclusively
--Next Generation
--Sherrington – builds on Cajal’s work – finds that neurons integrate signals and some signals are inhibitory
--Shares Nobel with Adrian in 1932 – Adrian is younger and grateful
--Phases of Nerve Signaling
--Galvani discovers electrical activity in animals, Helmholtz measures speed of electrical signals in neurons
--Adrian measures action potentials and sees that they all have the same size and that intensity correlates with their frequency
--Bernstein (student of Helmholtz) finds that ions carry the electrical current – he investigates only the potassium ion
--Ionic hypothesis – Hodgkin, Huxley (and Katz) – find sodium, potassium in squid axon using voltage clamp, discover voltage-gated channels, win Nobel in 1963
--Interneuronal signaling
--1920s – Dale and Loewi find that synaptic transmission is chemical - use acetylcholine in frogs
--synaptic potential – has different sizes, slower – only over synapses (can be excitatory or inhibitory, can generate action potential)
--long-term potentiation (LTP) is a persistent strengthening of synapses based on recent patterns of activity
--Eccles – believed in spark theory (synaptic transmission was electrical), but after talking to Popper disproves it with Katz and believes in soup theory (synaptic transmission is chemical)
--Glutamate – major excitatory neurotransmitter
--GABA – main inhibitory transmitter
--Katz’s lab later showed there are a few synapses that are electrical
--Katz – found that neurotransmitters were released by voltage-gated gates letting in Ca ions 
--Packets of neurotransmitters called quanta are released in synaptic vesicles
--Confirmed in in 1955
+- The Neuron Doctrine – the neuron is the fundamental building block and elementary signaling unit of the brain
+- Golgi – develops silver staining method which allows Cajal to see entire neuron
+- Santiago Ramon y Cajal – Spanish anatomist who simplifies neuron forest and looks at individual neurons, develops model with dendrites, cell body, and axon
+- 4 parts: neuron, synapse, connection specificity (specific neurons connect to specific others), dynamic polarization (signals travel in one direction)
+- Freud looks into Cajal’s theories, but doesn’t incorporate them
+- 1906 – they share Nobel despite Golgi hating Cajal’s theories
+- 1955 – Cajal’s intuitions borne out conclusively
+
+## next generation
+
+- Sherrington – builds on Cajal’s work – finds that neurons integrate signals and some signals are inhibitory
+- Shares Nobel with Adrian in 1932 – Adrian is younger and grateful
+- Phases of Nerve Signaling
+- Galvani discovers electrical activity in animals, Helmholtz measures speed of electrical signals in neurons
+- Adrian measures action potentials and sees that they all have the same size and that intensity correlates with their frequency
+- Bernstein (student of Helmholtz) finds that ions carry the electrical current – he investigates only the potassium ion
+- Ionic hypothesis – Hodgkin, Huxley (and Katz) – find sodium, potassium in squid axon using voltage clamp, discover voltage-gated channels, win Nobel in 1963
+- Interneuronal signaling
+- 1920s – Dale and Loewi find that synaptic transmission is chemical - use acetylcholine in frogs
+- synaptic potential – has different sizes, slower – only over synapses (can be excitatory or inhibitory, can generate action potential)
+- long-term potentiation (LTP) is a persistent strengthening of synapses based on recent patterns of activity
+- Eccles – believed in spark theory (synaptic transmission was electrical), but after talking to Popper disproves it with Katz and believes in soup theory (synaptic transmission is chemical)
+- Glutamate – major excitatory neurotransmitter
+- GABA – main inhibitory transmitter
+- Katz’s lab later showed there are a few synapses that are electrical
+- Katz – found that neurotransmitters were released by voltage-gated gates letting in Ca ions 
+- Packets of neurotransmitters called quanta are released in synaptic vesicles
+- Confirmed in in 1955
 
 # modern generation
 
--Modern Generation
--Four Lobes
+- Four Lobes
 -Frontal – working memory and lots of stuff
 -Temporal – auditory processing, language, and memory
 -Parietal – sensory information

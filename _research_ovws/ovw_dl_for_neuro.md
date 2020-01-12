@@ -87,6 +87,8 @@ Artificial neural networks can compute in several different ways. There is some 
 - neuropixels probes
     - [10k neurons visual coding](https://portal.brain-map.org/explore/circuits/visual-coding-neuropixels) from allen institute
     - this probe has also been used in [macaques](https://www.cell.com/neuron/pdf/S0896-6273(19)30428-3.pdf)
+- [allen institute calcium imaging](http://observatory.brain-map.org/visualcoding)
+    - An experiment is the unique combination of one mouse, one imaging depth (e.g. 175 um from surface of cortex), and one visual area (e.g. “Anterolateral visual area” or “VISal”)
 - predicting running, facial cues
     - dimensionality reduction
 		- enforcing bottleneck in the deep model

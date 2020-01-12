@@ -4,9 +4,9 @@
 ---
 
 - companies
-  - Neuralink
+  - [Neuralink](https://waitbutwhy.com/2017/04/neuralink.html)
   - Kernel
-  - Facebook
+  - [Facebook](https://www.sciencealert.com/facebook-is-working-on-tech-to-let-you-type-with-your-brain-and-hear-with-your-skin)
   - IBM: project joshua blue
   - Facebook neural typing interface
 - gov-sponsored

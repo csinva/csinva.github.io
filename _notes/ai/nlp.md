@@ -98,3 +98,5 @@ typora-copy-images-to: ./assets/nlp
   - [XLNet](https://arxiv.org/abs/1906.08237)
   - [roberta](https://arxiv.org/abs/1907.11692)
 - these ideas are [starting to be applied to vision cnns](https://arxiv.org/abs/1904.09925)
+- misc papers
+  - [Deal or No Deal? End-to-End Learning for Negotiation Dialogues](https://arxiv.org/abs/1706.05125) - controversial FB paper where agents "make up their own language"

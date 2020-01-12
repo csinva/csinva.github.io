@@ -1,6 +1,6 @@
 ---
 layout: notes
-title: Testing
+title: game theory
 category: stat
 ---
 * TOC

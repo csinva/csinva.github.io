@@ -119,6 +119,7 @@ category: stat
     - innovations algorithm
     - hannan-rissanen algorithm
 - autocovariance function: {$\gamma(k): k \in \mathbb Z$} where $\gamma(k) = \text{Cov}(X_{t+h}. X_t) =  \mathbb E (X_0 X_k)$ (assuming mean 0)
+- ![Screen Shot 2020-01-11 at 5.29.15 PM](assets/Screen Shot 2020-01-11 at 5.29.15 PM.png)
 - **Yule-Walker equations** (assuming AR(p) process): $\mathbb E (X_t X_{t-k}) = \sum_{j=1}^p \phi_j \mathbb E (X_{t-j} X_{t-k}) + \underbrace{\mathbb E (\epsilon_tX_{t-k})}_{=0} = \sum_{j=1}^p \phi_j \mathbb E (X_{t-j} X_{t-k})$
   - ex. MA covariance becomes 0 with lag > num params
 - can rewrite the Yule-Walker equations:
@@ -127,14 +128,16 @@ category: stat
   - $\underline\gamma_p = \Gamma_p \underline \phi_p$
     - $(\Gamma_p)_{i, j} = \gamma(i - j)$
     - $\hat{\Gamma}_p$ is nonegative definite (and nonsingular if there is at least one nonzero $Y_i$)
-    - 
   - $(\underline \gamma_p)_k = \gamma(i)$
     - $\underline \phi_p = (\phi_1, ..., \phi_p)$
     - this minimizes the mse $\mathbb E [X_{t+1} - \sum_{j=1}^p \phi_j X_{t+1-j}]^2$
--  use estimates to solve: $\hat{\underline \phi}_p = \hat \Sigma_p^{-1} \hat{\underline r}_p $
-
+- use estimates to solve: $\hat{\underline \phi}_p = \hat \Sigma_p^{-1} \hat{\underline r}_p $
+- the innovations algorithm
+  - set $\hat X_1 = 0$
+  - **innovations** = one-step prediction errors $U_n = X_n - \hat X _n$
 - **mle** (ch 5.2)
   - eq. 5.2.9: Gaussian likelihood for an ARMA process
+  - $r_n = \mathbb E[(W_{n+1} - \hat W_{n+1})^2]$
 
 
 

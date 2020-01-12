@@ -55,19 +55,23 @@ category: ai
   - computers and minds are both *physical symbol systems*
   - *symbol* - meaningful pattern that can be manipulated
   - symbol system - creates, modifies, destroys symbols
+  
 - want to represent
   1. *meta-knowledge* - knowledge about what we know
   2. *objects* - facts
   3. *performance* - knowledge about how to do things
   4. *events* - actions
+  
 - two levels
   1. knowledge level - where facts are described
   2. symbol level - lower
+  
 - properties
   1. representational adequacy - ability to represent
   2. inferential adequacy
   3. inferential efficiency
   4. acquisitional efficiency - acquire new information
+  
 - two views of knowledge
   1. logic
     - a *logic* is a language with concrete rules
@@ -90,6 +94,20 @@ category: ai
       - when agent faces *new situation* - slots can be filled in, may trigger actions / retrieval of other frames
       - inheritance of properties between frames
       - frames can contain relationships and procedures to carry out after various slots filled
+  
+- statistical
+
+  - distributed - usually different from sparse code (sparser generally less robust)
+    - opposite of sparse code = dense code
+    - have to check multiple indexes
+    - penti's work: distributed
+    - usually want these to be robust
+    - nlp is main place where unsupervised pretraining widely used
+  - hierarchical
+
+  - good representations - *linearly separable*
+  - representation that *factors*
+  - information bottleneck method: want simple representation that keeps class but throws away lots of extraneous info
 
 # expert systems
 - *expert system* - program that contains some of the subject-specific knowledge of one or more human experts.

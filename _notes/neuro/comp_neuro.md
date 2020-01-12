@@ -600,10 +600,3 @@ category: neuro
 
 # neuro for dl papers
 
-- [Continual Lifelong Learning with Neural Networks: A Review](https://arxiv.org/pdf/1802.07569.pdf)
-  - main issues is *catastrophic forgetting* / *stability-plasticity dilemma*
-  - ![Screen Shot 2020-01-01 at 11.49.32 AM](assets/Screen Shot 2020-01-01 at 11.49.32 AM.png)
-  - 2 types of plasticity
-    - Hebbian plasticity (Hebb 1949) for positive feedback instability
-    - compensatory homeostatic plasticity which stabilizes neural activity
-  - approaches: regularization, dynamic architectures (e.g. add more nodes after each task), memory replay
