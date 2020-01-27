@@ -2,13 +2,7 @@ _site/
 .idea
 **.DS_*
 **Icon*
-_notes/ref/qual_slides/qual/
 **cache*
+pres/ml_resources
+pres/ai_resources
 **hidden*
-
-
-_notes/research/*hidden*
-_notes/talks
-
-_slides/ai_resources
-_slides/ml_resources

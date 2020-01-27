@@ -66,6 +66,8 @@ typora-copy-images-to: ./assets/signals
       - the n=0 parts correspond to a constant
       - all other frequencies are integer multiples of the first fundamental frequency
       - finding coefs: basically want to use the correlation between the signal and the basis element (this is what the summation and muliptlying does)
+      - real part - corresponds to even part of the signal (the cosines)
+      - imaginary part - corresponds to odd parts of the signal
 - can be quickly computed using the **Fast Fourier Transform** in $O(n \log n)$ instead of $O(n^2)$
 - **inverse discrete Fourier Transform** (IDFT) 
 - *windowed fourier transform* - chop signal into sections and analyze each section separately

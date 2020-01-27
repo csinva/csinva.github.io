@@ -1,0 +1,28 @@
+# CTRL-labs: Non-Invasive Neural Interfaces for Human Augmentation
+- **Patrick Kaifosh**, CTRL-labs
+- neural interface can be used for browsing
+- some people don't like using eye-tracking
+- principles
+  - human input bandwidth > human output bandwidth
+  - spikes are basis of neural code - inacessible non-invasively
+  - muscles amplify neural signals
+    - ideas - targeted muscle reinnervation - use surface to read muscles from non-severed part
+  - cortical code is distributed and complex
+  - motor neural code is simple
+  - spinal motor neurons are the nervous system's evolved output port
+  - the hand is a major recipient of neural output
+- is motor system too simple?
+  - textbook: "the brain cannot selectively activate specific motor units"
+  - realistically, seems like they can be learned
+- how to build it?
+  - wearable emg w/ dry electrodes
+  - need to do spike sorting
+- demo
+  - very good model of hand - want to get to negative latency (ex. 50 ms lag, longer for actual motions)
+  - can model grasp force, individual fingers
+- applications
+  - button pressing
+  - typing - everything is pipelined so latency doesn't really matter...
+  - don't even really need the hand...
+  - might be able to reduce fatigue
+  - can give auditory feedback during learning

@@ -1,0 +1,26 @@
+# playing newton - ilya nemenman, emory
+
+- cartography story - too detailed a map would cover the whole world, not useful
+- common opionion: "final theory of biological systems will be a large multiscale computational model"
+- no such thing as a final theory
+- "dont model bulldozers with quarks"
+- what is a good theory?
+  - avoiding a map on the scale of 1-1
+  - falsifiable but not falsified
+  - empirical philosophy of science
+  - quanta magazine 2015 - a fight for the soul of science
+    - theory was able to explain experiment and its inverse
+  - philosophy has failed to define science - no dichotomies - grayscale of goodness of theories
+- theories don't have to be correct, just have to explain missing data
+  - wouldn't answer every question, but specific questions on coarse scales
+  - will only answer questions about what they were fit to
+- bottom-up approach might not work because too many things, would require very good model
+- two types of model families
+  - sigmoidal recurrent networks
+  - S-systems
+- automated Sir Isaac - finds hidden variable needed to account for the Newton's laws (Danields and Nemenman Nature Comm 2015, PLoS ONE 2015)
+  - able to extrapolate to trajectories we haven't seen
+  - system figures out how many independent variables there are
+- newer work in worm
+  - can find single attractor vs multiple attractors
+  - model learns things that weren't been put in

@@ -92,6 +92,7 @@ category: ml
   1. local classifiers
   2. constraints
 - *learning*
+  
   - global - learn with inference (computationally difficult)
 
 ## hard constraints and integer programs
@@ -105,6 +106,7 @@ category: ml
 
 - inference constructs the output given the model
 - goal: find highest scoring state sequence
+  
   - $argmax_y \: score(y) = argmax_y w^T \phi(x,y)$
 - naive: score all and pick max - terribly slow
 - *viterbi* - decompose scores over edges

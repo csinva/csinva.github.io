@@ -155,9 +155,9 @@ Complexity can be a useful notion for many things in statistical models. It can 
 
 - mdl in linear regression: want to send y over, X is known to both sides, theta is also sent (used to pick a decoder for y)
 	
-	- normalize maximum likelihood (nml): use theta to make codebook, then send code
+	- normalized maximum likelihood (nml): use theta to make codebook, then send code
 - [The Minimum Description Length Principle in Coding and Modeling](https://pdfs.semanticscholar.org/65d3/4977d9055f42e51dc1e7d9b4ca2f36c17537.pdf) (barron, rissanen, & yu, 98)
-  - mdl: represent an entire class of prob. distrs. as models by a single "universal" representative model such that it would be able to imitate the behavior of any model in the class. The best model class for a set of bserved data, then, is the onwhose representative premits the shortest coding of the data
+  - mdl: represent an entire class of prob. distrs. as models by a single "universal" representative model such that it would be able to imitate the behavior of any model in the class. The best model class for a set of observed data, then, is the one whose representative premits the shortest coding of the data
   - tradeoff: "good" prob. models for the data permit shorter code lengths
     - generally agrees w/ low mse
   - ex. encode data w/ model defined by mle estimates, quantized optimally to finite precision, then encode estimate w/ prefix code

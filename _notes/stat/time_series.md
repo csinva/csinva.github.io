@@ -17,8 +17,8 @@ category: stat
 - multiplicative models: time series = trend * seasonality * noise
 - additive model: time series = trend + seasonality + noise
 - stationarity - mean, variance, and autocorrelation structure do not change over time
-- exogenous variable = y = dependent variable = value is determined outside the model and is imposed on the model
-- endogenous variable = x = independent variable = regressor - value is determined by model
+- **endogenous variable = x** = independent variable
+- **exogenous variable = y** = dependent variable
 
 ## libraries
 
@@ -44,15 +44,15 @@ category: stat
 
 
 
-# [book](https://www.stat.tamu.edu/~suhasini/teaching673/time_series.pdf) notes + [book2](http://home.iitj.ac.in/~parmod/document/introduction%20time%20series.pdf) - Introduction to Time Series and Forecasting
+# [book1](https://www.stat.tamu.edu/~suhasini/teaching673/time_series.pdf) (A course in Time Series Analysis) + [book2](http://home.iitj.ac.in/~parmod/document/introduction%20time%20series.pdf) (Intro to Time Series and Forecasting)
 
 ## ch 1
 
+- when errors are dependent, very hard to distinguish noise from signal
 - usually in time-series analysis, we begin by de-trending the data and analyzing the residuals
   - ex. assume linear trend or quadratic trend and subtract that fit (or could include sin / cos for seasonal behavior)
   - ex. look at the differences instead of the points (nth order difference removes nth order polynomial trend). However, taking differences can introduce dependencies in the data
   - ex. remove trend using sliding window (maybe with exponential weighting)
-- when errors are dependent, very hard to distinguish noise from signal
 - periodogram - in FFT, this looks at the magnitude of the coefficients (but loses the phase information)
 
 ## ch 2 - stationary time series
@@ -64,8 +64,8 @@ category: stat
 - autocorrelation plots: plot correlation of series vs series offset by different lags
 - formal definitions of stationarity for time series $\{X_t\}$
   - **strict stationarity** - the distribution is the same across time
-  - **second-order / weak stationarity** -  mean is constant for all t and if for any t and k the covariance between $X_t$ and $X_{t+k}$ only depends on the lag difference k
-    - In other words, there exists a function $c: \mathbb Z \to \mathbb R$ such that for all t and k we have $c(k) = cov (X_t, X_{t+k})$
+  - **second-order / weak stationarity** -  mean is constant for all t and, for any t and k, the covariance between $X_t$ and $X_{t+k}$ only depends on the lag difference k
+    - In other words, there exists a function $c: \mathbb Z \to \mathbb R$ such that for all t and k we have $c(k) = \text{cov} (X_t, X_{t+k})$
     - strict stationary and $E|X_T^2| < \infty \implies$ second-order stationary
   - **ergodic** - stronger condition, says samples approach the expectation of functions on the time series: for any function $g$ and shift $\tau_1, ... \tau_k$:
     - $\frac 1 n \sum_t g(X_t, ... X_{t+\tau_k}) \to \mathbb E [g(X_0, ..., X_{t+\tau_k} )]$
@@ -78,12 +78,15 @@ category: stat
 - **AR model** $AR(p)$:  $$ X_t = \sum_{i=1}^p \phi_i X_{t-i}+ \varepsilon_t $$
   - $\phi_1, \ldots, \phi_p$ are parameters
   - $\varepsilon_t$ is white noise
-  - stationary assumption places constraints on param values (e.g. processes in the AR(1) model with $|\phi_1| \ge 1$ are not stationary)
+  - stationary assumption places constraints on param values (e.g. processes in the $AR(1)$ model with $|\phi_1| \ge 1$ are not stationary)
   - looks just like linear regression, but is more complex
-    - if we don't account for issues, model will not be stationary, model may be misspecified, and $E(\epsilon_t|X_{t-p}) \neq 0$
+    - if we don't account for issues, things can go wrong
+      - model will not be stationary
+      - model may be misspecified
+      - $E(\epsilon_t|X_{t-p}) \neq 0$
     - this represents a set of difference equations, and as such, must have a solution
-  - ex. $AR(1)$ model - if $|\phi|$ < 0, then soln is in terms of past values of {$\epsilon_t$}, otherwise it is in terms of future values
-    - ex. simulating - if we know $\phi$ and $\{\epsilon_t\}$, we wstill need to use the backshift operator to solve for  $\{ X_t \}$
+  - ex. $AR(1)$ model - if $|\phi| < 0$, then soln is in terms of past values of {$\epsilon_t$}, otherwise it is in terms of future values
+    - ex. simulating - if we know $\phi$ and $\{\epsilon_t\}$, we still need to use the backshift operator to solve for  $\{ X_t \}$
   - ex. $AR(p)$ model - if $\sum_j |\phi_j|$< 1, and $\mathbb E |\epsilon_t| < \infty$, then will have a causal stationary solution
   - **backshift operator** $B^kX_t=X_{t-k}$
     - solving requires using the backshift operator, because we need to solve for what all the residuals are
@@ -98,7 +101,7 @@ category: stat
   - harder to fit, because the lagged error terms are not visible (also means can't make preds on new time-series)
   - $E[\epsilon_t] = 0$, $Var[\epsilon_t] = 1$
   - much harder to estimate these parameters
-  - $X_t = \theta (B) \epsilon_t$ (assuming $\theta_0=1$)  - 
+  - $X_t = \theta (B) \epsilon_t$ (assuming $\theta_0=1$)
 - **ARMA model**: $ARMA(p, q)$: $X_t = \sum_{i=1}^p \phi_i X_{t-i} + \sum_{i=1}^q \theta_i \varepsilon_{t-i} + \varepsilon_t$
   - $\{X_t\}$ is stationary
   - $\phi (B) X_t = \theta(B) \varepsilon_t$
@@ -122,7 +125,7 @@ category: stat
 - ![Screen Shot 2020-01-11 at 5.29.15 PM](assets/Screen Shot 2020-01-11 at 5.29.15 PM.png)
 - **Yule-Walker equations** (assuming AR(p) process): $\mathbb E (X_t X_{t-k}) = \sum_{j=1}^p \phi_j \mathbb E (X_{t-j} X_{t-k}) + \underbrace{\mathbb E (\epsilon_tX_{t-k})}_{=0} = \sum_{j=1}^p \phi_j \mathbb E (X_{t-j} X_{t-k})$
   - ex. MA covariance becomes 0 with lag > num params
-- can rewrite the Yule-Walker equations:
+- can rewrite the Yule-Walker equations
 
   - $\gamma(i) = \sum_{j=1}^p \phi_j \gamma(i -j)$
   - $\underline\gamma_p = \Gamma_p \underline \phi_p$

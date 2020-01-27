@@ -8,6 +8,8 @@ category: research
 
 [TOC]
 
+- [off convex blog](http://www.offconvex.org/)
+
 # theoretical studies
 
 DNNs display many surprising properties

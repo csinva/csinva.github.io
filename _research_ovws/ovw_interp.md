@@ -51,10 +51,16 @@ category: research
     - *realism* in a partially accessible world
   - overall, they believe there is inherent value of ontological description
 
-# evaluating interp
+# evaluating interp + criticisms
 
-- [Quantifying Interpretability of Arbitrary Machine Learning Models Through Functional Decomposition](https://arxiv.org/pdf/1904.03867.pdf) (molnar 2019)
+- [Visualizing the Impact of Feature Attribution Baselines](https://distill.pub/2020/attribution-baselines/)
+  - **top-k-ablation**: should identify top pixels, ablate them, and want it to actually decrease
+  - **center-of-mass ablation**: also could identify center of mass of saliency map and blur a box around it (to avoid destroying feature correlations in the model)
+  - should we be **true-to-the-model** or **true-to-the-data**?
+
 - [Evaluating Feature Importance Estimates](https://arxiv.org/abs/1806.10758) (hooker et al. 2019)
+  - **remove-and-retrain test accuracy decrease**
+- [Quantifying Interpretability of Arbitrary Machine Learning Models Through Functional Decomposition](https://arxiv.org/pdf/1904.03867.pdf) (molnar 2019)
 - [An Evaluation of the Human-Interpretability of Explanation](https://arxiv.org/pdf/1902.00006.pdf) (lage et al. 2019)
 - [How do Humans Understand Explanations from Machine Learning Systems?: An Evaluation of the Human-Interpretability of Explanation](https://arxiv.org/pdf/1802.00682.pdf) (narayanan et al. 2018)
 - [On the (In)fidelity and Sensitivity for Explanations](https://arxiv.org/abs/1901.09392)
@@ -67,7 +73,6 @@ category: research
   - participants who were shown a clear model with a small number of features were better able to simulate the model’s predictions
   - no improvements in the degree to which participants followed the model’s predictions when it was beneficial to do so.
   - increased transparency hampered people’s ability to detect when the model makes a sizable mistake and correct for it, seemingly due to information overload
-- [Feature relevance quantification in explainable AI: A causality problem](https://arxiv.org/abs/1910.13413)
 - [Towards a Framework for Validating Machine Learning Results in Medical Imaging](https://dl.acm.org/citation.cfm?id=3332193)
 - [An Integrative 3C evaluation framework for Explainable Artificial Intelligence](https://aisel.aisnet.org/amcis2019/ai_semantic_for_intelligent_info_systems/ai_semantic_for_intelligent_info_systems/10/)
 - [Evaluating Explanation Without Ground Truth in Interpretable Machine Learning](https://arxiv.org/pdf/1907.06831.pdf) (yang et al. 2019)
@@ -78,6 +83,7 @@ category: research
 ## criticisms
 
 - [Sanity Checks for Saliency Maps](https://papers.nips.cc/paper/8160-sanity-checks-for-saliency-maps.pdf) (adebayo et al. 2018)
+  - **Model Parameter Randomization Test** - attributions should be different for trained vs random model
 - [Interpretable Deep Learning under Fire](https://arxiv.org/abs/1812.00891) (zhang et al. 2019)
 - [How can we fool LIME and SHAP? Adversarial Attacks on Post hoc Explanation Methods](https://arxiv.org/abs/1911.02508)
   - we can build classifiers which use important features (such as race) but explanations will not reflect that
@@ -444,6 +450,8 @@ category: research
 - [explaining image classifiers by counterfactual generation](https://arxiv.org/pdf/1807.08024.pdf) 
 
     - generate changes (e.g. with GAN in-filling) and see if pred actually changes
+    - can search for smallest sufficient region and smallest destructive region
+    - ![Screen Shot 2020-01-20 at 9.14.44 PM](assets/Screen Shot 2020-01-20 at 9.14.44 PM.png)
 
 ## dnn feature importance
 
@@ -455,11 +463,19 @@ category: research
       - ex. karpathy et al LSTMs
       - ex. lei et al. - most relevant sentences in sentiment prediction
     3. class-activation map - sum the activations across channels (weighted by their weight for a particular class)
+    4. [RISE](https://arxiv.org/pdf/1806.07421.pdf) (Petsiuk et al. 2018) - randomized input sampling
+       1. randomly mask the images, get prediction
+       2. saliency map = sum of masks weighted by the produced predictions
 - gradient-based methods - visualize what in image would change class label
   - gradient * input
   - [integrated gradients](http://proceedings.mlr.press/v70/sundararajan17a/sundararajan17a.pdf) (sundararajan et al. 2017) - just sum up the gradients from some baseline to the image (in 1d, this is just $f(x) - f(baseline))$
     - in higher dimensions, such as images, we pick the path to integrate by starting at some baseline (e.g. all zero) and then get gradients as we interpolate between the zero image and the real image
     - if we picture 2 features, we can see that integrating the gradients will not just yield $f(x) - f(baseline)$, because each time we evaluate the gradient we change both features
+    - [explanation distill article](https://distill.pub/2020/attribution-baselines/) 
+      - ex. any pixels which are same in original image and modified image will be given 0 importance
+      - lots of different possible choices for baseline (e.g. random Gaussian image, blurred image, random image from the training set)
+      - could also average over distributions of baseline (this yields **expected gradients**)
+      - when we do a Gaussian distr., this is very similar to smoothgrad
   - lrp
   - taylor decomposition
   - deeplift
@@ -595,6 +611,10 @@ category: research
   - optimization at training time - add regularization
   - postprocessing - change thresholds to impose fairness
 
+# interp for causal discovery
+- [Visual Physics: Discovering Physical Laws from Videos]()
+
+
 # packages
 
 - [iNNvestigate neural nets](https://arxiv.org/abs/1808.04260) - provides a common interface and out-of-thebox implementation
@@ -610,7 +630,6 @@ category: research
 - [explaining a black-box w/ deep variational bottleneck](https://arxiv.org/abs/1902.06918)
 - [Global Explanations of Neural Networks: Mapping the Landscape of Predictions](https://arxiv.org/abs/1902.02384)
 - [neural stethoscopes](https://arxiv.org/pdf/1806.05502.pdf) 
-- [RISE](https://arxiv.org/pdf/1806.07421.pdf) - randomized input sampling
 - [xGEMs](https://arxiv.org/pdf/1806.08867.pdf) 
 - [maximally invariant data perturbation](https://arxiv.org/pdf/1806.07004.pdf)
 - hard coding
