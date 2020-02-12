@@ -111,7 +111,6 @@ category: stat
 
 - **ARIMA model**: $ARIMA(p, d, q)$: - generalizes ARMA model to non-stationarity (using differencing)
 
-
 ## ch 4 + 8 - the autocovariance function + parameter estimation
 
 - estimation
@@ -131,8 +130,8 @@ category: stat
   - $\underline\gamma_p = \Gamma_p \underline \phi_p$
     - $(\Gamma_p)_{i, j} = \gamma(i - j)$
     - $\hat{\Gamma}_p$ is nonegative definite (and nonsingular if there is at least one nonzero $Y_i$)
-  - $(\underline \gamma_p)_k = \gamma(i)$
-    - $\underline \phi_p = (\phi_1, ..., \phi_p)$
+  - $\underline \gamma_p = [\gamma(1), ..., \gamma(p)]$
+  - $\underline \phi_p = (\phi_1, ..., \phi_p)$
     - this minimizes the mse $\mathbb E [X_{t+1} - \sum_{j=1}^p \phi_j X_{t+1-j}]^2$
 - use estimates to solve: $\hat{\underline \phi}_p = \hat \Sigma_p^{-1} \hat{\underline r}_p $
 - the innovations algorithm

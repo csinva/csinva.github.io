@@ -24,13 +24,13 @@ category: stat
   - $\alpha$ - type 1 - reject $H_0$ but $H_0$ true
   - $\beta$ - type 2 - fail to reject $H_0$ but $H_0$ false
 - *p-value* = probability, calculated assuming that the null hypothesis is true, of obtaining a value of the test statistic at least as contradictory to $H_0$ as the value calculated from the available sample
-- *power*: $1 - \beta$
+- **power**: $1 - \beta$
 - adjustments
   - *bonferroni procedure* - we are doing 3 tests with 5% confidence, so we actually do 5/3% for each test in order to restrict everything to 5% total
   - *Benjamini–Hochberg procedure* - controls for false discovery rate
 - note: ranking is often more important than actual FDR control (because we just need to know what experiments to do)
 
-# normal theory
+# gaussian theory
 
 - normal theory: assume $\epsilon_i$ ~ $N(0, \sigma^2)$
 - distributions

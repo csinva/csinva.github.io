@@ -5,17 +5,14 @@ category: stat
 ---
 * TOC
 {:toc}
-- *material based on probability and statistics cookbook by matthias vallentin*
+*some material based on probability and statistics cookbook by matthias vallentin*
 
-# probability
+# basics
 
 - mutually exclusive: $P(AB)=0$
 - independent: $P(AB) = P(A)P(B)$
   - A and B conditional independence given C: $$P(AB\vert C) = P(A\vert C) P(B\vert C)$$
 - conditional (Bayes' thm): $P(A|B) = \frac{P(AB)}{P(B)} = \frac{P(B|A)P(A)}{\sum P(B|A)P(A)}$
-
-# expectation, variance, and correlation
-
 - $E[X] = \int P(x)x dx$
   - $E[h(X)] \approx h(E[X])$
 - $V[X] = E[(x-\mu)^2] = E[x^2]-E[x]^2$
@@ -30,62 +27,22 @@ category: stat
 - $Corr(Y,X) = \rho = \frac{Cov(Y,X)}{s_xs_y}$
   - $Corr(aX+b,cY+d) = Corr(X,Y)$ if a and c have same sign
   - $R^2 = \rho^2$
-- **skewness** = $E[(\frac{X-\mu}{\sigma})^3]$
+- skewness = $E[(\frac{X-\mu}{\sigma})^3]$
 - law of total expectation: $E[X] = E_Y[E(X|Y)]$
-- **law of total variance**: $V[Y] =\underbrace{E[V(Y|X)]}_{\text{unexplained variance}} + \underbrace{V(E[Y|X])}_{\text{explained variance}}$
+- law of total variance: $V[Y] =\underbrace{E[V(Y|X)]}_{\text{unexplained variance}} + \underbrace{V(E[Y|X])}_{\text{explained variance}}$
 
-# models
-
-- normative - fully interpretable + modelled
-  - idealized
-  - probablistic
-- ~mechanistic - somewhere in between
-- descriptive - based on reality
-  - empirical
-
-# error bars
+## error bars
 
 - always write what you use
   - standard dev
   - standard error = standard dev / sqrt(n) = standard error of the mean when you're estimating a mean
   - 95% confidence interval = 2*standard error
 
-# distributions
+## sample-size calculation
 
-- PMF: $f_X(x) = P(X=x)$
-- PDF: $P(a \leq X \leq b) = \int_a^b f(x) dx$
+- how many samples must I collect?
 
-![distrs](assets/stat/distrs.png)
-
-
-
-## multivariate gaussians - j 13
-
-- 2 parameterizations ($x \in \mathbb{R}^n$)
-
-  1. *canonical parameterization*: $$p(x\vert\mu, \Sigma) = \frac{1}{(2\pi )^{n/2} \vert\Sigma\vert^{1/2}} \exp\left[ -\frac{1}{2} (x-\mu)^T \Sigma^{-1} (x-\mu) \right]$$
-  2. *moment parameterization*: $$p(x\vert\eta, \Omega) = \text{exp}\left( a + \eta^T x - \frac{1}{2} x^T \Omega x\right)$$ ~ also called information parameterization
-  		- $\Omega = \Sigma^{-1}$	
-	    - $\eta = \Sigma^{-1} \mu$
-
-- joint distr - split parameters into block matrices
-
-
-- want to *block diagonalize* the matrix
-  - *Schur complement* of matrix M w.r.t. H: $M/H$
-  - $\mu = \begin{bmatrix} \mu_1 \\ \mu_2 \end{bmatrix}$
-  - $\Sigma = \begin{bmatrix} \Sigma_{11} & \Sigma_{12}\\ \Sigma_{21} & \Sigma_{22} \end{bmatrix}$
-  - $p(x_1, x_2) = \underbrace{p(x_1|x_2)}_{\text{conditional}}\cdot\underbrace{p(x_2)}_{\text{marginal}}$
-    - marginal
-      - $\mu_2^m = \mu_2$
-      - $\Sigma_2^m = \Sigma_{22}$
-    - conditional
-      - $\mu_{1|2}^c = \mu_1 + \Sigma_{12}\Sigma_{22}^{-1} (x_2 - \mu_2)$
-      - $\Sigma_{1|2}^c = \Sigma_{11} - \Sigma_{12} \Sigma_{22}^{-1} \Sigma_{21}$
-- mle
-
-
-# inequalities
+## inequalities
 
 - *cauchy-schwarz*: $|x \cdot y| \leq ||x||\:||y||$
   - $E[XY]^2 \leq E[X^2] E[Y^2]$
@@ -95,9 +52,9 @@ category: stat
   - if we don't have E[X], can use upper bound for E[X]
 - *chebyshev's*: $P(\vert X-\mu\vert  \geq a) \leq \frac{Var[X]}{a^2}$
   - utilizes the variance to get a better bound
-- *jensen's*: $f(E[X]) \leq E[f(X)]$ for convex f
+- *jensen's*: $f(E[X]) \leq E[f(X)]$ for convex $f$
 
-# moment-generating function
+## moment-generating function
 
 - $M_X(t) = E(e^{tX})$
   - derivatives yield moments: $\frac{d^r}{dX^r}M_X (0) = E(X^r) $
@@ -106,7 +63,33 @@ category: stat
 - $Y = a_1X_1+a_2X_2 \implies M_Y(t) = M_{X_1}(a_1t)M_{X_2}(a_2t)$ if $X_i$ independent
 - *ordered statistics* - variables $Y_i$ such that $Y_i$ is the ith smalless
 
-# statistics and sampling distributions
+# distributions
+
+- PMF: $f_X(x) = P(X=x)$
+- PDF: $P(a \leq X \leq b) = \int_a^b f(x) dx$
+
+![distrs](assets/stat/distrs.png)
+
+- multivariate gaussian
+  - 2 parameterizations ($x \in \mathbb{R}^n$)
+    1. *canonical parameterization*: $$p(x\vert\mu, \Sigma) = \frac{1}{(2\pi )^{n/2} \vert\Sigma\vert^{1/2}} \exp\left[ -\frac{1}{2} (x-\mu)^T \Sigma^{-1} (x-\mu) \right]$$
+    2. *moment parameterization*: $$p(x\vert\eta, \Omega) = \text{exp}\left( a + \eta^T x - \frac{1}{2} x^T \Omega x\right)$$ ~ also called information parameterization
+	  		- $\Omega = \Sigma^{-1}$	
+		    - $\eta = \Sigma^{-1} \mu$
+	- joint distr - split parameters into block matrices
+	- want to *block diagonalize* the matrix
+	  - *Schur complement* of matrix M w.r.t. H: $M/H$
+	  - $\mu = \begin{bmatrix} \mu_1 \\ \mu_2 \end{bmatrix}$
+	  - $\Sigma = \begin{bmatrix} \Sigma_{11} & \Sigma_{12}\\ \Sigma_{21} & \Sigma_{22} \end{bmatrix}$
+	  - $p(x_1, x_2) = \underbrace{p(x_1|x_2)}_{\text{conditional}}\cdot\underbrace{p(x_2)}_{\text{marginal}}$
+	    - marginal
+	      - $\mu_2^m = \mu_2$
+	      - $\Sigma_2^m = \Sigma_{22}$
+	    - conditional
+	      - $\mu_{1|2}^c = \mu_1 + \Sigma_{12}\Sigma_{22}^{-1} (x_2 - \mu_2)$
+	      - $\Sigma_{1|2}^c = \Sigma_{11} - \Sigma_{12} \Sigma_{22}^{-1} \Sigma_{21}$
+
+# law of large numbers
 
 ## law of large numbers
 
@@ -149,16 +132,14 @@ category: stat
     - variance = *estimation err*
 - **confidence intervals** - take sample data + produce a range of values that likely contains population parameter you are interested in
 - [confidence interval of the prediction](https://statisticsbyjim.com/glossary/confidence-interval-prediction/) is a range that likely contains the mean value of the dependent variable given specific values of the independent variables - usually wider because it is one point, not a mean
-
-## MLE
-
-- MLE - maximize likelihood $L(\theta) = p(X_1,...,X_n;\theta_1,...\theta_m)$ (the agreement with a chosen distribution)
-- $\hat{\theta} = $argmax $  L(\theta)$
-    - $L(\theta)=P(X_1...X_n\vert\theta)=\prod_{i=1}^n P(X_i\vert\theta)$
-    - $log \: L(\theta)= \ell(\theta) = \sum log P(X_i\vert\theta)$
-    - to maximize, set $\frac{\partial \ell (\theta)}{\partial \theta} = 0$
-- **fisher information** $I(\theta)=V[\frac{\partial}{\partial\theta}ln(f[x;\theta])]$ (for n samples, multiply by n)
-    - higher info $\implies$ lower estimation error
+- MLE example
+  - MLE - maximize likelihood $L(\theta) = p(X_1,...,X_n;\theta_1,...\theta_m)$ (the agreement with a chosen distribution)
+  - $\hat{\theta} = $argmax $  L(\theta)$
+      - $L(\theta)=P(X_1...X_n\vert\theta)=\prod_{i=1}^n P(X_i\vert\theta)$
+      - $log \: L(\theta)= \ell(\theta) = \sum log P(X_i\vert\theta)$
+      - to maximize, set $\frac{\partial \ell (\theta)}{\partial \theta} = 0$
+  - **fisher information** $I(\theta)=V[\frac{\partial}{\partial\theta}ln(f[x;\theta])]$ (for n samples, multiply by n)
+      - higher info $\implies$ lower estimation error
 
 # overview - J. 5
 
@@ -230,4 +211,4 @@ category: stat
     - otherwise integrate over $\theta, m$ - *model averaging*
 - frequentist
   - can't use MLE - will always prefer more complex models
-  - use some criteria such as KL-divergence, AIC, cross-validationt
+  - use some criteria such as KL-divergence, AIC, cross-validation

@@ -167,14 +167,6 @@ some more concrete questions:
 - [hierarchical sparse coding for images](https://pdfs.semanticscholar.org/9636/d8aedd476ef19c762923119750aec95bf8ca.pdf) (can’t just repeat sparse coding, need to include input again)
 - [random projections in the brain](https://www.biorxiv.org/content/biorxiv/early/2017/08/25/180471.full.pdf)….doing locality sensitive hashing (basically nearest neighbors)
 
-## robustness
-
-- [robustness may be at odds with accuracy](https://openreview.net/pdf?id=SyxAb30cY7) (madry 2019)
-  - adversarial training helps w/ little data but hurts with lots of data
-  - adversarially trained models have more meaningful gradients (and their adversarial examples actually look like other classes)
-- [Generalizability vs. Robustness: Adversarial Examples for Medical Imaging](https://arxiv.org/abs/1804.00504)
-- [robustness of explanations](https://arxiv.org/pdf/1806.07538.pdf)
-
 ## implicit dl + optimization
 
 - [implicit deep learning](https://arxiv.org/abs/1908.06315) (el ghaoui et al. 2019)
@@ -251,6 +243,30 @@ some more concrete questions:
 - [deep learning is robust to massive label noise](https://arxiv.org/pdf/1705.10694.pdf)
 - [are all layers created equal?](https://arxiv.org/pdf/1902.01996.pdf)
 
+## adversarial + robustness
+
+- [robustness may be at odds with accuracy](https://openreview.net/pdf?id=SyxAb30cY7) (madry 2019)
+  - adversarial training helps w/ little data but hurts with lots of data
+  - adversarially trained models have more meaningful gradients (and their adversarial examples actually look like other classes)
+- [Generalizability vs. Robustness: Adversarial Examples for Medical Imaging](https://arxiv.org/abs/1804.00504)
+- [Towards Robust Interpretability with Self-Explaining Neural Networks](https://arxiv.org/pdf/1806.07538.pdf) 
+- [Adversarial Attacks and Defenses in Images, Graphs and Text: A Review](https://arxiv.org/abs/1909.08072) (xu et al. 2019)
+  - *Adversarial examples are inputs to machine learning models that an attacker intentionally designed to cause the model to make mistakes*
+  - threat models
+    - poisoning attack (insert fake samples into training data) vs. evasion attack (just evade at test time)
+    - targeted attack (want specific class) vs. non-targeted attack (just change the prediction)
+  - adversary's knowledge
+    - white-box - adversary knows everything
+    - black-box - can only feed inputs and get outputs
+    - gray-box - might have white box for limited amount of time
+  - security evaluation
+    - robustness - minimum norm perturbation to change class
+    - adversarial loss - biggest change in loss within some epsilon ball
+  - ![Screen Shot 2020-02-04 at 1.54.49 PM](assets/Screen Shot 2020-02-04 at 1.54.49 PM.png)
+  - ![Screen Shot 2020-02-04 at 1.54.28 PM](assets/Screen Shot 2020-02-04 at 1.54.28 PM.png)
+- [AugMix: A Simple Data Processing Method to Improve Robustness and Uncertainty](https://arxiv.org/abs/1912.02781) (hendrycks et al. 2020)
+  - do a bunch of transformations and average images to create each training image
+
 ## tools for analyzing
 
 - dim reduction: [svcca](http://papers.nips.cc/paper/7188-svcca-singular-vector-canonical-correlation-analysis-for-deep-understanding-and-improvement), diffusion maps
@@ -263,8 +279,6 @@ some more concrete questions:
   - important to think about scale invariance (dinh et al. 2017)
   - want to scale direction vector to have same norm in each direction as filter
   - use PCA to find important directions (ex. sample w at each step, pca to find most important directions of variance)
-
-
 
 ## misc theoretical areas
 

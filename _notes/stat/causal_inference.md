@@ -6,8 +6,7 @@ category: stat
 
 * TOC
 {:toc}
-
-*Some notes on causal inference both from introductory courses following the neyman-rubin school of thought and based on Judea Pearl's ladder of causality*
+*Some notes on causal inference both from introductory courses following the neyman-rubin school of thought + based on Judea Pearl's ladder of causality*
 
 # basics
 
@@ -15,42 +14,26 @@ category: stat
 - when using observational (non-experimental) data to make causal inferences, the key problem is **confounding** - difference between groups other than the treatment which affects the response
   - *stratification* = *cross-tabulation* - only look at when confounding variables have same value
 - [bradford hill criteria](https://en.wikipedia.org/wiki/Bradford_Hill_criteria) - some simple criteria for establishing causality (e.g. strength, consistency, specificity)
-- association is circumstantial evidence for causation
+  - association is circumstantial evidence for causation
 - problem: never get to see gt
-- groundtruth: randomized control trial (RCT) - controls for any possible confounders
-
-
-## 2 general approaches
-
-1. matching - find patients that are similar and differ only in the treatment
-   1. only variables you don't match on could be considered causal
-2. regression adjustments
-   - requires *unconfoundedness* = *omitted variable bias*
-   - if there are no confounders, correlation is causation
-
-## common examples
-
-- HIP trial of mammography - want to do whole treatment group v. whole control group
-- Snow on cholera - water
-- causes of poverty - Yul's model, changes with lots of things
-- liver transplant
-  - maximize benefit (life with - life without)
-  - currently just goes to person who would die quickest without
-  - Y = T Y(1) + (1-T) Y(0)
-    - Y(1) = survival with transplant
-    - Y(0) = survival w/out transplant
-      - fundamental problem of causal inference - can 't observe Y(1) and Y(0)
-    - T = 1 if receive transplant else 0
-  - goal: estimate $\tau = Y(1) - Y(0)$ for each person
+  - groundtruth: randomized control trial (RCT) - controls for any possible confounders
+- 2 general approaches
+  1. matching - find patients that are similar and differ only in the treatment
+     1. only variables you don't match on could be considered causal
+  2. regression adjustments
+     - requires *unconfoundedness* = *omitted variable bias*
+     - if there are no confounders, correlation is causation
+- 2 frameworks
+  - potential outcomes
+  - causal graphs
 
 # potential outcome framework (neyman-rubin)
 
-- advantages over DAGs
-  - easy to express some common assumptions, such as monotonicity / convexity
+- advantages over DAGs: easy to express some common assumptions, such as monotonicity / convexity
 - 3 frameworks
   1. neyman-rubin model: $Y_i = T_i a_i + (1-T_i) b_i$
-    - $\hat{ate} = \hat{a}_A - \hat{b}_B$
-    - $\hat{ate}_{adj} = [\bar{a}_A - (\bar{x}_A - \bar{x})^T \hat{\theta}_A] - [\bar{b}_B - (\bar{x}_B - \bar{x})^T \hat{\theta}_B]$
+    - $\widehat{ATE} = \hat{a}_A - \hat{b}_B$
+    - $\widehat{ATE}_{adj} = [\bar{a}_A - (\bar{x}_A - \bar{x})^T \hat{\theta}_A] - [\bar{b}_B - (\bar{x}_B - \bar{x})^T \hat{\theta}_B]$
       - $\hat{\theta}_A = argmin \sum_{i \in A} (a_i - \bar{a}_A - (x_i - \bar{x}_A)^T \theta)^2$
 
   2. neyman-pearson
@@ -67,7 +50,7 @@ category: stat
   2. randomization
   3. conditioning
 
-# causality DAGs (Pearl et al.)
+# causality DAGs (pearl et al.)
 
 ![Screen Shot 2019-04-07 at 7.01.55 PM](assets/Screen Shot 2019-04-07 at 7.01.55 PM.png)
 
@@ -80,21 +63,22 @@ category: stat
 - [blog post on causal ladder](http://smithamilli.com/blog/causal-ladder/)
 - [intro to do-calculus post](https://www.inference.vc/untitled/) and subsequent posts
 
-## 1- **prediction/association** - just need to have the joint distr. of all the variables
+## 1 prediction/association - just need to have the joint distr. of all the variables
 
 - basically just $p(y|x)$
 
-## 2 - **intervention** - we can change things and get conditionals based on evidence **after intervention**
+## 2 - intervention - we can change things and get conditionals based on evidence **after intervention**
 
 - $p(y|do(x))$ - which represents the conditional distr. we would get if we were to manipulate $x$ in a randomized trial
-  - to get this, we assume the causal structure (can still kind of test it based on conditional distrs., can sometimes use causal discovery techniques to try to identify the causal diagram under just some smoothness / independence assumptions)
+  - to get this, we assume the causal structure (can still kind of test it based on conditional distrs.)
   - having assumed the structure, we delete all edges going into a do operator and set the value of $x$
   - then, do-calculus yields a formula to estimate $p(y|do(x))$ assuming this causal structure
     - 3 rules which go from do-calculus to probability expressiom (remove do operator from statement and allow us to calculate it)
   - see introductory paper [here](https://arxiv.org/pdf/1305.5506.pdf), more detailed paper [here](https://ftp.cs.ucla.edu/pub/stat_ser/r416-reprint.pdf) (pearl 2013)
 - by assuming structure, we learn how large impacts are
 
-## 3 - **counterfactuals** - we can change things and get conditionals based on evidence **before intervention**
+## 3 - counterfactuals - we can change things and get conditionals based on evidence **before intervention**
+
 - probablilistic answer to a "what would have happened if" question
 - very similar to neyman's potential outcome framework
 - simple matching is often not sufficient (need a very good model for how to match, hopefully a causal one)
@@ -154,51 +138,77 @@ C(Location of Car) --> B
   - possible explanation - only having both diseases together is strong enough to put you in the hospital
 - simpson's paradox - see plot above where lines decrease given conditioning but increase overall
 
-
-
 # reviews
 
 - [Causality for Machine Learning](https://arxiv.org/abs/1911.10500) (scholkopf 19)
   - most of ml is built on the iid assumption and fails when it is violated (e.g. cow on a beach)
 
-# interesting empirical studes
+# studies
 
-- Hainmueller & Hangartner (2013) - Swiss passport
+## common examples
+
+- HIP trial of mammography - want to do whole treatment group v. whole control group
+- Snow on cholera - water
+- causes of poverty - Yul's model, changes with lots of things
+- liver transplant
+  - maximize benefit (life with - life without)
+  - currently just goes to person who would die quickest without
+  - Y = T Y(1) + (1-T) Y(0)
+    - Y(1) = survival with transplant
+    - Y(0) = survival w/out transplant
+      - fundamental problem of causal inference - can 't observe Y(1) and Y(0)
+    - T = 1 if receive transplant else 0
+  - goal: estimate $\tau = Y(1) - Y(0)$ for each person
+
+## misc papers
+
+- [Who Gets a Swiss Passport? A Natural Experiment in Immigrant Discrimination](http://www.hangartner.net/files/passportapsr.pdf) (Hainmueller & Hangartner 2013)
   - naturalization decisions vary with immigrants' attributes
   - is there immigration against immigrants based on country of origin?
   - citizenship requires voting by municipality
-- Sekhon et al. - when natural experiments are neither natural nor experiments
+- [When Natural Experiments Are Neither Natural nor Experiments](http://sekhon.berkeley.edu/papers/SekhonTitiunik.pdf) (sekhon & titunik 2012)
   - even when natural interventions are randomly as- signed, some of the treatment–control comparisons made available by natural experiments may not be valid
-- Grossman et al. - "Descriptive Representation and Judicial Outcomes in Multiethnic Societies"
+- [Descriptive Representation and Judicial Outcomes in Multiethnic Societies](https://onlinelibrary.wiley.com/doi/full/10.1111/ajps.12187) (Grossman et al. 2016)
   - judicial outcomes of arabs depended on whether there was an Arab judge on the panel
-- angrist_96_instruemtal
+- [Identification of Causal Effects Using Instrumental Variables](https://www.jstor.org/stable/2291629?seq=1#metadata_info_tab_contents) (angrist, imbens, & rubin 1996)
   - bridges the literature of instrumental variables in econometrics and the literature of causal inference in statistics
   - applied paper with delicate statistics
   - carefully discuss the assumptions
   - instrumental variables - regression w/ constant treatment effects
   - effect of veteran status on mortality, using lottery number as instrument
-- [Sex Bias in Graduate Admissions: Data from Berkeley](https://homepage.stat.uiowa.edu/~mbognar/1030/Bickel-Berkeley.pdf) (bickel et al. (1975)
+- [Sex Bias in Graduate Admissions: Data from Berkeley](https://homepage.stat.uiowa.edu/~mbognar/1030/Bickel-Berkeley.pdf) (bickel et al. 1975)
   - simpson's paradox example
-- angrist_99_class_size
+- [Using Maimonides' Rule to Estimate the Effect of Class Size on Scholastic Achievement](http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.554.9675) (angrist & lavy 1999)
   - reducing class size induces a signi􏰜cant and substantial increase in test scores for fourth and 􏰜fth graders, although not for third graders.
-- [cornfield_59_smoking](https://academic.oup.com/jnci/article/22/1/173/912572)
+- [Smoking and Lung Cancer: Recent Evidence and a Discussion of Some Questions](https://academic.oup.com/jnci/article/22/1/173/912572) (cornfield et al. 1959)
   - not a traditional statistics paper
   - most of it is a review of various scientific evidence about smoking and cancer
   - small methodology section that describes an early version of sensitivity analysis
   - describes one of the most important contributions causal inference has made to science
-- rosenbaum_01_surgery
-  - spends a lot of time dsiscussing links between quantitative and qualitative analyses
+- [Matching and thick description in an observational study of mortality after surgery.](https://www.ncbi.nlm.nih.gov/pubmed/12933551) (rosenbaum & silber 2001)
+  - spends a lot of time discussing links between quantitative and qualitative analyses
   - takes the process of checking assumptions very seriously, and it deals with an important scientific problem
-- hansen_09_vote
+- [Attributing Effects to a Cluster-Randomized Get-Out-the-Vote Campaign](https://www.tandfonline.com/doi/abs/10.1198/jasa.2009.ap06589) (hansen & bowers 2009)
   - about a randomized experiment
   - proved complex to analyze and led to some controversy in political science
   - resolves that controversy using well-chosen statistical tools.
   - Because randomization is present in the design I think the assumptions are much less of a stretch than in many settings (this is also the case in the Angrist, Imbens, Rubin paper)
 - [Incremental causal effects](https://arxiv.org/abs/1907.13258) (rothenhausler & yu, 2019)
+- [The Hierarchy of Stable Distributions and Operators to Trade Off Stability and Performance](https://arxiv.org/abs/1905.11374)
+  - different predictors learn different things
+  - only pick the stable parts of what they learn (in a graph representation)
+- [link to iclr talk](https://www.technologyreview.com/s/613502/deep-learning-could-reveal-why-the-world-works-the-way-it-does/?fbclid=IwAR3LF2dc_3EvWXzEHhtrsqtH9Vs-4pjPALfuqKCOma9_gqLXMKDeCWrcdrQ) (bottou 2019)
+- [The Blessings of Multiple Causes](https://arxiv.org/abs/1805.06826) (wang & blei, 2019) - having multiple causes can help construct / find all the confounders
 
-# using non-linear models
+# causal discovery
 
-- ex. [lopez-paz_17](http://openaccess.thecvf.com/content_cvpr_2017/papers/Lopez-Paz_Discovering_Causal_Signals_CVPR_2017_paper.pdf)
+- overview
+  - **goal of causal discovery is to identify the causal relationships** (sometimes under some smoothness / independence assumptions)
+    - basics: conditional indep. checks can only determine graphs up to markov equivalence
+  - 2 approaches
+    - test noise distr. of relationships in different directions
+    - check variables which reduce entropy the most
+- [Discovering Causal Signals in Images](http://openaccess.thecvf.com/content_cvpr_2017/papers/Lopez-Paz_Discovering_Causal_Signals_CVPR_2017_paper.pdf) (lopez-paz et al. 2017)
   - C(A, B) - count number of images in which B would disappear if A was removed
   - we say A *causes* B when C(A, B) is (sufficiently) greater than the converse C(B, A)
   - basics
@@ -213,8 +223,22 @@ C(Location of Car) --> B
     - can turn this into binary classification and learn w/ network: given X, Y, does X->Y or Y-X?
   - on images, they get scores for different objects (w/ bounding boxes)
     - eval - when one thing is erased, does the other also get erased?
-- [link to iclr talk](https://www.technologyreview.com/s/613502/deep-learning-could-reveal-why-the-world-works-the-way-it-does/?fbclid=IwAR3LF2dc_3EvWXzEHhtrsqtH9Vs-4pjPALfuqKCOma9_gqLXMKDeCWrcdrQ)
-- [visual causal feature learning](https://arxiv.org/abs/1412.2309)
-- [The Hierarchy of Stable Distributions and Operators to Trade Off Stability and Performance](https://arxiv.org/abs/1905.11374)
-  - different predictors learn different things
-  - only pick the stable parts of what they learn (in a graph representation)
+- [Visual Causal Feature Learning](https://arxiv.org/abs/1412.2309) (chalupka, perona, & eberhardt, 2015)
+  - assume the behavior $T$ is a function of some hidden causes $H_i$ and the image
+    - ![Screen Shot 2020-02-03 at 2.27.27 PM](assets/Screen Shot 2020-02-03 at 2.27.27 PM-0768863.png)
+  - **Causal Coarsening Theorem** - causal partition is coarser version of the observational partition
+    - observational partition - divide images into partition where each partition has constant prediction $P(T|I)$
+    - causal partition - divide images into partition where each partition has constant $P(T|man(I))$
+      - $man(I)$ does visual manipulation which changes $I$, while keeping all $H_i$ fixed and $T$ fixed
+        - ex. turn a digit into a 7 (or turn a 7 into not a 7)
+  - can further simplify the problem into $P(T|I) = P(T|C, S)$
+    - $C$ are the causes and $S$ are the spurious correlates
+    - any other variable $X$ such that $P(T|I) = P(T|X)$ has Shannon entropy $H(X) \geq H(C, S)$ - these are the simplest descriptions of $P(T|I$)
+  - causal effect prediction
+    - first, create causal dataset of $P(T|man(I))$ and train, so the model can't learn spurious correlations
+    - then train on this - very similar to adversarial training
+
+
+
+# notes based on [what if (hernan & robins)](https://cdn1.sph.harvard.edu/wp-content/uploads/sites/1268/2020/01/ci_hernanrobins_21jan20.pdf)
+

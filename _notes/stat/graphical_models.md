@@ -128,7 +128,11 @@ typora-copy-images-to: ./assets/graphical_models
     - Metropolis-Hastings we have to estimate conditionals
 
 3. *variational inference* - formulate inference as optimization
+   - [good intro paper](https://arxiv.org/abs/1601.00670)
    - minimize KL-divergence between observed samples and assumed distribution
+     - the actual KL is hard to minimize so instead we maximize the ELBO, which is equivalent
+   - do this over a class of possible distrs.
+   - variational inference tends to be faster, but may not be as good as MCMC
 
 ## conditional independence properties
 
@@ -312,10 +316,10 @@ typora-copy-images-to: ./assets/graphical_models
 
   2. *prediction* - compute $P(X_{t+k}|e_{1:t})$ for $k>0$
 - $\underbrace{P(X_{t+k+1} |e_{1:t})}_{\text{new state}} = \sum_{x_{t+k}} \underbrace{P(X_{t+k+1} |x_{t+k})}_{\text{transition}}  \cdot \underbrace{P(x_{t+k} |e_{1:t})}_{\text{old state}}$
-     
+  
 3. *smoothing* - compute $P(X_{k}|e_{1:t})$ for $0 < k < t$
      1. 2 components $P(X_k|e_{1:t}) = \alpha \underbrace{P(X_k|e_{1:k})}_{\text{forward}} \cdot \underbrace{P(e_{k+1:t}|X_k)}_{\text{backward}}$
-  
+      
      1. forward pass: filtering from $1:t$
        2. backward pass from $t:1$ $\underbrace{P(e_{k+1:t}|X_k)}_{\text{sensor past k}} = \sum_{x_{k+1}} \underbrace{P(e_{k+1}|x_{k+1})}_{\text{sensor}} \cdot \underbrace{P(e_{k+2:t}|x_{k+1})}_{\text{recursive call}} \cdot \underbrace{P(x_{k+1}|X_k)}_{\text{transition}}$
        3. this is called the forward-backward algo(also there is a separate algorithm that doesn't use the observations on the backward pass)
@@ -329,7 +333,7 @@ typora-copy-images-to: ./assets/graphical_models
         - n = length of sequence
         - memory - $nK$
         - runtime - $O(nK^2)$
-  
+
 - *learning* - form of EM
 
   - basically just count (maximizing joint likelihood of input and output)

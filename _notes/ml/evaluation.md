@@ -27,20 +27,21 @@ category: ml
 ![Screen Shot 2019-06-30 at 8.27.56 PM](assets/Screen Shot 2019-06-30 at 8.27.56 PM.png)
 
 - accuracy-based
-  
   - accuracy = (TP + TN) / (P + N)
     - correct classifications / total number of test cases
   - balanced accuracy = 1/2 (TP / P + TN / N)
-  - **recall** = sensitivity = **power** =  true positive rate = TP / P
+  - **recall** = **sensitivity** =  true positive rate = TP / P
     - what fraction of the real positives do we return?
-  - **precision** = TP / (TP + FP)
+  - **precision** = **positive predictive value** = TP / (TP + FP)
     - what fraction of the prediction positives are real positives?
   - **specificity** = true negative rate = TN / N
     - what fraction of the real negatives do we return?
+    - like recall, but for negatives
   - **false positive rate** = FP / N $= 1 - \text{specificity}$
     - what fraction of the predicted negatives are wrong?
-  - F-score is harmonic mean of precision and recall: 2 * (prec * rec) / (prec + rec)
-  
+  - **negative predictive value** = tn / (fn + tn)
+    - what percent of the things we predict as negative are negative?
+  - **F-score** is harmonic mean of precision and recall: 2 * (prec * rec) / (prec + rec)
 - curves
 
   - roc curve: recall vs. false positive rate

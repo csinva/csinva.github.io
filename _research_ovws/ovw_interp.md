@@ -50,6 +50,10 @@ category: research
     - *unification* - answers *ontology* - the nature of being
     - *realism* in a partially accessible world
   - overall, they believe there is inherent value of ontological description
+- [Explainable Artificial Intelligence and Machine Learning: A reality rooted perspective](https://arxiv.org/pdf/2001.09464v1.pdf) (Emmert-Streib et al. 2020)
+  - explainable AI is not a new field but has been already recognized and discussed for expert systems in the 1980s
+  1. in some cases, such as simple physics, we can hope to get a **theory** - however, when the underlying process is complicated, interpretation can't hope to simplify it
+  2. in other cases, we might hope just for a **description**
 
 # evaluating interp + criticisms
 
@@ -113,6 +117,7 @@ category: research
     - train everything: classification + clustering around intraclass prototypes + separation between interclass prototypes (last layer fixed to 1s / -0.5s)
     - project prototypes to data patches
     - learn last layer
+- [Concept Whitening for Interpretable Image Recognition](https://arxiv.org/pdf/2002.01650.pdf) (chen et al. 2020) - force network to separate "concepts" (like in TCAV) along different axes
 - [Towards Explainable Deep Neural Networks (xDNN)](https://arxiv.org/abs/1912.02523) (angelov & soares 2019) - more complex versionf of using prototypes
 - [MonoNet: Towards Interpretable Models by Learning Monotonic Features](https://arxiv.org/abs/1909.13611) - enforce output to be a monotonic function of individuaul features
 - [Interpretability Beyond Classification Output: Semantic Bottleneck Networks](https://arxiv.org/abs/1907.10882) - add an interpretable intermediate bottleneck representation
@@ -120,8 +125,9 @@ category: research
 - [Approximating CNNs with Bag-of-local-Features models works surprisingly well on ImageNet](https://arxiv.org/abs/1904.00760)
   - [learn shapes not texture](https://openreview.net/pdf?id=Bygh9j09KX)
   - [code](https://github.com/wielandbrendel/bag-of-local-features-models)
-- [Towards Robust Interpretability with Self-Explaining Neural Networks](https://arxiv.org/pdf/1806.07538.pdf) - building architectures that explain their predictions
+- [Towards Robust Interpretability with Self-Explaining Neural Networks](https://arxiv.org/pdf/1806.07538.pdf) (alvarez-melis & jaakkola 2018) - building architectures that explain their predictions
 - [Harnessing Deep Neural Networks with Logic Rules](https://arxiv.org/pdf/1603.06318.pdf)
+- [Tensor networks](https://www.perimeterinstitute.ca/research/research-initiatives/tensor-networks-initiative) - like DNN that only takes boolean inputs and deals with interactions explicitly
 
 ## rule lists / sets
 
@@ -151,7 +157,7 @@ category: research
 - [2helps2b paper](https://www.ncbi.nlm.nih.gov/pubmed/29052706)
   - ![Screen Shot 2019-06-11 at 11.17.35 AM](assets/Screen Shot 2019-06-11 at 11.17.35 AM.png)
 
-## interpretable generative models
+## learning disentangled representations
 - [InfoGAN: Interpretable Representation Learning by Information Maximizing Generative Adversarial Nets](https://arxiv.org/abs/1606.03657) (chen et al. 2016)
 - [Interpretable VAEs for nonlinear group factor analysis](https://arxiv.org/abs/1802.06765)
 
@@ -169,6 +175,12 @@ category: research
 - [Case-Based Reasoning for Assisting Domain Experts in Processing Fraud Alerts of Black-Box Machine Learning Models](https://arxiv.org/abs/1907.03334)
 - [Beyond Sparsity: Tree Regularization of Deep Models for Interpretability](https://arxiv.org/pdf/1711.06178.pdf)
   - regularize so that deep model can be closely modeled by tree w/ few nodes
+
+## gams + symbolic regression
+
+- [Building and Evaluating Interpretable Models using Symbolic Regression and Generalized Additive Models](https://openreview.net/pdf?id=BkgyvQzmW)
+  - gams - assume model form is additive combination of some funcs, then solve via GD
+  - however, if we don't know the form of the model we must generate it
 
 # posthoc (after model fitting)
 
@@ -611,8 +623,19 @@ category: research
   - optimization at training time - add regularization
   - postprocessing - change thresholds to impose fairness
 
-# interp for causal discovery
-- [Visual Physics: Discovering Physical Laws from Videos]()
+## causal discovery
+
+- [Visual Physics: Discovering Physical Laws from Videos](https://arxiv.org/abs/1911.11893)
+  - 3 steps
+    - Mask R-CNN finds bounding box of object and center of bounding box is taken to be location
+    - $\beta-VAE$ compresses the trajectory to some latent repr. (while also being able to predict held-out points of the trajectory)
+    - **Eureqa** package does eq. discovery on latent repr + trajectory
+      - includes all basic operations, such as addition, mult., sine function
+      - R-squared value measures goodness of fit
+  - see also SciNet -  [Discovering physical concepts with neural networks](https://arxiv.org/abs/1807.10300) (iten et al. 2020)
+  - see also the field of symbolic regression
+    - genetic programming is the most pervalent method here
+    - alternatives: sparse regression, dimensional function synthesis
 
 
 # packages

@@ -29,7 +29,9 @@ displays
 - [pandas bamboolib](https://www.youtube.com/watch?v=yM-j5bY6cHw&feature=youtu.be) - ui for pandas, in development
 - [dovpanda](https://github.com/dovpanda-dev/dovpanda) - helpful hints for using pandas
 - [tabnine](https://github.com/wenmin-wu/jupyter-tabnine?utm_source=share&utm_medium=ios_app&utm_name=iossmf) - autocomplete for jupyter
-- cloud9sdk can be a useful subsitute for jupyterhub
+- [cloud9sdk](https://github.com/c9/core) can be a useful subsitute for jupyterhub
+- [thinc](https://github.com/explosion/thinc) - interoperable dl framework
+- [napari](https://github.com/napari/napari) - image viewer
 
 
 
