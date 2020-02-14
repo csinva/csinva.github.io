@@ -448,6 +448,13 @@ X_2d = np.dot(X, U[:, :2]) #project in 2d (nx2)
 
 - $\phi_i^T\phi_j = \phi(x_i)^T \phi(x_j)$
 
+## ex. kernel ridge regression
+
+- linear kernel: $\widehat{w} = X^T(XX^T + \lambda I)^{-1}y$ 
+- generic kernel: $\widehat{w} = \mathbf \phi^T(\mathbf \phi\mathbf \phi^T + \lambda I)^{-1}y$ 
+  - at test time, $\widehat{y}(x) = \phi(x) \mathbf \phi^T(\mathbf \phi\mathbf \phi^T + \lambda I)^{-1}y$
+  - only requires kernel products! 
+
 ## kernel trick ex.
 
 - $\mathbf{x} = [x_1, x_2]$

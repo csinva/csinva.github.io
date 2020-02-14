@@ -57,11 +57,12 @@ category: research
 
 # evaluating interp + criticisms
 
+- [Benchmarking Attribution Methods with Relative Feature Importance](https://arxiv.org/abs/1907.09701) (yang & kim 2019)
+  - train a classifier, add random stuff (like dogs) to the image, classifier should assign them little importance
 - [Visualizing the Impact of Feature Attribution Baselines](https://distill.pub/2020/attribution-baselines/)
   - **top-k-ablation**: should identify top pixels, ablate them, and want it to actually decrease
   - **center-of-mass ablation**: also could identify center of mass of saliency map and blur a box around it (to avoid destroying feature correlations in the model)
   - should we be **true-to-the-model** or **true-to-the-data**?
-
 - [Evaluating Feature Importance Estimates](https://arxiv.org/abs/1806.10758) (hooker et al. 2019)
   - **remove-and-retrain test accuracy decrease**
 - [Quantifying Interpretability of Arbitrary Machine Learning Models Through Functional Decomposition](https://arxiv.org/pdf/1904.03867.pdf) (molnar 2019)
@@ -181,6 +182,13 @@ category: research
 - [Building and Evaluating Interpretable Models using Symbolic Regression and Generalized Additive Models](https://openreview.net/pdf?id=BkgyvQzmW)
   - gams - assume model form is additive combination of some funcs, then solve via GD
   - however, if we don't know the form of the model we must generate it
+- [Bridging the Gap: Providing Post-Hoc Symbolic Explanations for Sequential Decision-Making Problems with Black Box Simulators](https://arxiv.org/abs/2002.01080)
+
+## programs
+
+- **program synthesis** - automatically find a program in an underlying programming language that satisfies some user intent
+  - **ex. program induction** - given a dataset consisting of input/output pairs, generate a (simple?) program that produces the same pairs
+- [probabilistic programming](https://en.wikipedia.org/wiki/Probabilistic_programming) - specify graphical models via a programming language
 
 # posthoc (after model fitting)
 
