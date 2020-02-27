@@ -16,17 +16,20 @@ title: presentations
 
 
 ## research
-- [quals research overview](https://docs.google.com/presentation/d/19fTICv0pyRiwGE39mqE_eGTq0Arn3OtVnDSrURFbPMA/present?slide=id.p)
-- [acd + interpretable ml talk](https://docs.google.com/presentation/d/1x4zzugqu1kMhUKdM94MWrfB9Y6-YfrnHsv5MDFvzfmE/edit#slide=id.p)
-    - [nlp version](https://docs.google.com/presentation/d/1bFIdoarqhZdwyXmvNKgqfbhKXByfgPW9h27HYGDXKGM/edit)
-    - [interpretable ml](https://docs.google.com/presentation/d/13jbgFyYSSDaMUd2w4RY9GHteTcWJj1drS6_2sOkvnv4/present?slide=id.p) (discussion slides for group meeting)
-- [cd + acd + cdep 5 min talk](https://docs.google.com/presentation/d/1qWor5d7AXVQfcLtQmFdMPUDPHeBkN1wWZid_pfxZjVQ/present?slide=id.g51955b76d5_0_7)
-    - [cogsci acd slides](https://docs.google.com/presentation/d/1I6djTqVn6YGKqxvQk59-4C39LbE68mNQbX1Go5pzTH4/present?slide=id.p)
-    - [acd white-theme slides for bin](https://docs.google.com/presentation/d/1GjL0IJWft3IpdWxAwprXNiZkAG4Jl5mU6FNT2t0DGkQ/edit#slide=id.g5d6ee59cb4_0_0)
-    - [acd bavrd](https://docs.google.com/presentation/d/1IVeb5ibe561VR5PAQEN5hdnwmpAHquK4JLb1vzT9fd8/present) (3 min pres. given at bavrd 2019)
+- [research overview](https://docs.google.com/presentation/d/19fTICv0pyRiwGE39mqE_eGTq0Arn3OtVnDSrURFbPMA/present?slide=id.p)
+- [qual slides](https://docs.google.com/presentation/d/1cdzZsyRYRs9GiR9s2-V7OO8oIcaabT5TVJFGR9qk_HY/edit#slide=id.p)
+    - [bair sem slides](https://docs.google.com/presentation/d/1vpunbuggj1sHxz3g_20pj2vtesHxJNUQoPbsHMMfz3A/edit#slide=id.p)
+    - [acd + interpretable ml talk](https://docs.google.com/presentation/d/1x4zzugqu1kMhUKdM94MWrfB9Y6-YfrnHsv5MDFvzfmE/edit#slide=id.p)
+        - [nlp version](https://docs.google.com/presentation/d/1bFIdoarqhZdwyXmvNKgqfbhKXByfgPW9h27HYGDXKGM/edit)
+        - [interpretable ml](https://docs.google.com/presentation/d/13jbgFyYSSDaMUd2w4RY9GHteTcWJj1drS6_2sOkvnv4/present?slide=id.p) (discussion slides for group meeting)
+    - [cd + acd + cdep 5 min talk](https://docs.google.com/presentation/d/1qWor5d7AXVQfcLtQmFdMPUDPHeBkN1wWZid_pfxZjVQ/present?slide=id.g51955b76d5_0_7)
+        - [cogsci acd slides](https://docs.google.com/presentation/d/1I6djTqVn6YGKqxvQk59-4C39LbE68mNQbX1Go5pzTH4/present?slide=id.p)
+        - [acd white-theme slides for bin](https://docs.google.com/presentation/d/1GjL0IJWft3IpdWxAwprXNiZkAG4Jl5mU6FNT2t0DGkQ/edit#slide=id.g5d6ee59cb4_0_0)
+        - [acd bavrd](https://docs.google.com/presentation/d/1IVeb5ibe561VR5PAQEN5hdnwmpAHquK4JLb1vzT9fd8/present) (3 min pres. given at bavrd 2019)
+- [interpretation to causation](https://docs.google.com/presentation/d/18Tdiym7hDeu0c4tj5XezrznIDfbltR4QQJJZjaHi7tk/present?slide=id.p)
 - [dnn experiments](http://csinva.github.io/pres/dnn_experiments/#/)
 - [sensible local interpretations](https://docs.google.com/presentation/d/1tKVgg2bo7jSgE8TMyt15VAOkGhDPncFpMnZ-mmtoMNI/edit#slide=id.p) (5 min update for pacmed internship)
-- [interpretation to causation](https://docs.google.com/presentation/d/18Tdiym7hDeu0c4tj5XezrznIDfbltR4QQJJZjaHi7tk/present?slide=id.p)
+
 
 ## coursework
 - [vissci ovw](https://docs.google.com/presentation/d/1d2prZlhmG72whCTzfGJ_pk-Pgv9Sx-bGG0e503whYvw/present?slide=id.p)
@@ -48,7 +51,9 @@ title: presentations
 
 # recordings
 - talks
-	- grad slam 2019: https://www.youtube.com/watch?v=6VVppY-uUgE&feature=youtu.be&t=5600
+    - [bair sem feb 2020 best vid](https://www.youtube.com/watch?v=avrnelFZSS4&feature=youtu.be)
+	    - [bair sem feb 2020 livestream](https://www.youtube.com/watch?v=x6AHX-VrcdM&feature=youtu.be)
+	- [grad slam 2019](https://www.youtube.com/watch?v=6VVppY-uUgE&feature=youtu.be&t=5600)
 	- [textxd 2019](https://berkeley-haas.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=276daa74-7298-40b1-9503-ab17014b5863)
 - misc releases
   - https://uvacsnews.wordpress.com/2017/05/04/chandansingh/

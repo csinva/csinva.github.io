@@ -25,6 +25,7 @@ category: ai
 | ICA                 |                    |                    |                      |
 | K-means             |                    |                    |                      |
 | Autoencoders        |                    |                    |
+| VAEs        |                    |                    |
 
 
 - linear decompositions: learn D s.t. $X=DA$
@@ -85,8 +86,6 @@ Xrot_reduced = np.dot(X, U[:, :2]) # project onto first 2 dimensions (n x 2)
 ```
 - nonlinear pca
     - usually uses an auto-associative neural network
-      ​	
-
 
 # ica
 
@@ -100,8 +99,6 @@ Xrot_reduced = np.dot(X, U[:, :2]) # project onto first 2 dimensions (n x 2)
 # lda / qda (disciminant analysis)
 
 - reduced to axes which separate classes (perpendicular to the boundaries)
-
-
 
 # multidimensional scaling (MDS)
 
@@ -122,14 +119,13 @@ Xrot_reduced = np.dot(X, U[:, :2]) # project onto first 2 dimensions (n x 2)
     - define B = HAH
       - D Euclidean iff B is psd
 
-# t-sne / umap
+# newer
 
 - t-sne preserves pairwise neighbors
+  - [t-sne tutorial](https://distill.pub/2016/misread-tsne/)
 - UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction
-
-# diffusion embedding
-
-
+- [VAE tutorial](https://jaan.io/what-is-variational-autoencoder-vae-tutorial/)
+- [beta-vae](https://openreview.net/references/pdf?id=Sy2fzU9gl) - adjustable hyperparameter $\beta$ that balances latent channel capacity and independence constraints with reconstruction accuracy.
 
 # dictionary learning (not really dim reduction)
 
@@ -138,8 +134,5 @@ goal: $X \approx W D $, during training simultaneously learn $W$ (coefficients) 
 - **nmf**: $W, D \geq 0$ elementwise
 - **sparse coding**: want W to be sparse, D to not be too large
   - impose norm D not too big
-
-
-
 - topic modeling - similar, try to discover topics in a model (which maybe can be linearly combined to produce the original document)
   - ex. LDA - generative model: posits that each document is a mixture of a **small number of topics** and that **each word's presence is attributable to one of the document's topics**

@@ -29,7 +29,8 @@ A checklist of things to check that may be able to help improve a data-science w
 
 ## feature engineering
 
-- visualize the outputs of sparse coding on your features
+- visualize the outputs of dim reduction / transformations (e.g. pca, sparse coding, nmf) on your features
+- for correlated features, group them together or extract out a more stable feature
 
 ## modeling
 

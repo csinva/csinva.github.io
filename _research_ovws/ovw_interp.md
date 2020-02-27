@@ -298,7 +298,7 @@ category: research
       - if there are correlations between variables some of these terms can misbehave
     - $S_i$: Sobol’s main effect index for $i$ measures the average residual variance of model output when all the inputs except $X_i$ are fixed over their full supports
       - small value indicates $X_i$ is non-influential
-      - usually used to select important variabels
+      - usually used to select important variables
     - $S_{Ti}$: Sobol's total effect index - include all terms (even interactions) involving a variable
       - usually used to screen unimportant variables
 
@@ -312,6 +312,8 @@ category: research
     - e.g. scatter plot, meta-model plot, regional VIMs, parametric VIMs
     - CSM - relative change of model ouput mean when range of $X_i$ is reduced to any subregion
     - CSV - same thing for variance
+- [anova decomposition](https://statweb.stanford.edu/~owen/mc/A-anova.pdf) - factor function into means, first-order terms, and interaction terms
+    - [sobol indices connected to shapley value](https://epubs.siam.org/doi/pdf/10.1137/130936233)
 
 ## model-agnostic curves
 

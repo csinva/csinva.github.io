@@ -43,6 +43,7 @@ typora-copy-images-to: ./assets/nlp
   - machine translation
   - hardest: coreference resolution
   - question answering
+  - [natural language inference](https://www.aclweb.org/anthology/P19-1334.pdf) - does one sentence entail another?
 - most popular datasets
   - (by far) WSJ
   - then twitter

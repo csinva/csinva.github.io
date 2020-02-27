@@ -1,0 +1,16 @@
+---
+layout: notes
+title: A checklist for paper writing
+category: blog
+---
+
+A checklist of things to check that may be able to help with paper writing.
+
+- each sentence should start with the most relevant message of the sentence and then end with everything else
+
+
+
+Useful phrases
+
+- previous work did this. We perform the crucial next step...
+- To meet this challenge, we...
