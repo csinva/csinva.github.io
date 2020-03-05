@@ -72,4 +72,4 @@ All the above tasks implicitly require that the model has high descriptive accur
 
 # examples
 
-- we are constantly striving to evaluate interp and make it better (e.g. human experiments in ACD paper, simulation experiments in DAC paper, improving predictive accuracy in CDEP paper)
+- we are constantly striving to evaluate interp and make it better (e.g. human experiments in the [ACD](https://openreview.net/pdf?id=SkEqro0ctQ) paper, simulation experiments in the [TRIM](https://arxiv.org/abs/2003.01926)/[DAC](https://arxiv.org/abs/1905.07631) papers, improving predictive accuracy in [CDEP](https://arxiv.org/abs/1909.13584) paper)

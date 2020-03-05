@@ -26,16 +26,16 @@ category: neuro
 
 # 1- introduction
 
-### 1.1 - overview
+## 1.1 - overview
 - three types
   1. *descriptive* brain model - encode / decode external stimuli
   2. *mechanistic* brian cell / network model - simulate the behavior of a single neuron / network
   3. *interpretive* (or normative) brain model - why do brain circuits operate how they do
 
-### 1.2 - descriptive
+## 1.2 - descriptive
 - *receptive field* - the things that make a neuron fire
   ​	
-### 1.3 - mechanistic and interpretive
+## 1.3 - mechanistic and interpretive
 - retina has on-center / off-surround cells - stimulated by points
 - then, V1 has differently shaped receptive fields
 - *efficient coding hypothesis* - learns different combinations (e.g. lines) that can efficiently represent images
@@ -47,7 +47,7 @@ category: neuro
     - same goes for auditory cortex
 
 # 2 - neural encoding
-### 2.1 - defining neural code
+## 2.1 - defining neural code
 - extracellular
   - fMRI
     - averaged over space
@@ -70,7 +70,7 @@ category: neuro
   - also massive feedback
 - *decoding*: P(stimulus \| response)
 
-### 2.2 - simple encoding
+## 2.2 - simple encoding
 - want P(response \| stimulus)
   - response := firing rate r(t)
   - stimulus := s
@@ -97,7 +97,7 @@ category: neuro
   - can combine above to make *spatiotemporal filtering*
     - filtering = convolution = projection
 
-### 2.3 - feature selection
+## 2.3 - feature selection
 - P(response\|stimulus) is very hard to get
   - stimulus can be high-dimensional (e.g. video)
   - stimulus can take on many values
@@ -122,7 +122,7 @@ category: neuro
   - could use *PCA* - discovers low-dimensional structure in high-dimensional data
   - each f represents a feature (maybe a curve over time) that fires the neuron
 
-### 2.4 - variability
+## 2.4 - variability
 - hidden assumptions about time-varying firing rate and single spikes
 
   - smooth function RFT can miss some stimuli
@@ -159,7 +159,7 @@ category: neuro
     - scaled ISIs ($t_{i-1}-t_i$) r(t) should be exponential
 
 # 3- neural decoding
-### 3.1 - neural decoding and signal detection
+## 3.1 - neural decoding and signal detection
 - decoding: P(stimulus \| response) - ex. you hear noise and want to tell what it is
   - here r = response = firing rate
 - monkey is trained to move eyes in same direction as dot pattern (Britten et al. 92)
@@ -194,7 +194,7 @@ category: neuro
     - $\frac{p(r\|+)}{p(r\|-)}> L_+ \cdot P[-] / L_- \cdot P[+]$
     - here the loss term replaces the 1 in the Neyman-Pearson lemma
 
-### 3.2 - population coding and bayesian estimation
+## 3.2 - population coding and bayesian estimation
 - *population vector* - sums vectors for cells that point in different directions weighted by their firing rates
   - ex. cricket cercal cells sense wind in different directions
   - since neuron can't have negative firing rate, need overcomplete basis so that can record wind in both directions along an axis
@@ -225,7 +225,7 @@ category: neuro
         - narrow prior makes it matter more
     - doesn't incorporate correlations in the population
 
-### 3.3 - stimulus reconstruction (not sure about this)
+## 3.3 - stimulus reconstruction (not sure about this)
 - decoding s -> $s^*$
 - want an estimator $s_{Bayes}=s_B$ given some response r
   - error function $L(s,s_{B})=(s-s_{B})^2$
@@ -247,7 +247,7 @@ category: neuro
     - yields pretty good pictures
 
 # 4 - information theory
-### 4.1 - information and entropy
+## 4.1 - information and entropy
 - surprise for seeing a spike h(p) = $-log_2 (p)$
 - entropy = average information
 - code might not align spikes with what we are encoding
@@ -267,7 +267,7 @@ category: neuro
   - $H(R\|S)=\sum_s P(s) H(R\|s)$
   - $H(R ) $ calculated using $P(R ) = \sum_s P(s) P(R\|s)$
 
-### 4.2 information in spike trains
+## 4.2 information in spike trains
 1. information in spike patterns
   - divide pattern into time bins of 0 (no spike) and 1 (spike)
   - binary words w with letter size $\Delta t$, length T (Reinagel & Reid 2000)
@@ -296,7 +296,7 @@ category: neuro
   - ex. rat runs through place field and only fires when it's in place field
     - spikes can be sharper, more / less frequent
 
-### 4.3 coding principles
+## 4.3 coding principles
 - natural stimuli
   - huge dynamic range - variations over many orders of magnitude (ex. brightness)
   - power law scaling - structure at many scales (ex. far away things)
@@ -322,7 +322,7 @@ category: neuro
 - we ignored the behavioral feedback loop
 
 # 5 - computing in carbon
-### 5.1 - modeling neurons
+## 5.1 - modeling neurons
 - ![](assets/comp_neuro/5_1_1.png)
 - nernst battery
   1. osmosis (for each ion)
@@ -336,9 +336,9 @@ category: neuro
   - equivalently, $\tau_m \frac{dV}{dt} = -((V-E_L) - g_s(t)(V-E_s) r_m) + I_e R_m $
 - ![](assets/comp_neuro/5_1_2.png)
 
-### 5.2 - spikes
+## 5.2 - spikes
 
-### 5.3 - simplified model neurons
+## 5.3 - simplified model neurons
 - *integrate-and-fire* neuron
   - passive membrane (neuron charges)
   - when V = V$_{thresh}$, a spike is fired
@@ -354,7 +354,7 @@ category: neuro
   - ![](assets/comp_neuro/5_3_1.png)
   - often used for periodically firing neurons (it fires spontaneously)
 
-### 5.4 - a forest of dendrites
+## 5.4 - a forest of dendrites
 - cable theory - Kelvin
 - voltage V is a function of both x and t
 - ![](assets/comp_neuro/5_4_1.png)
@@ -371,7 +371,7 @@ category: neuro
 - ex. direction selectivity in retinal ganglion cells - if events arive at dendrite far -> close, all get to soma at same time and add
 
 # 6 - computing with networks
-### 6.1 - modeling connections between neurons
+## 6.1 - modeling connections between neurons
 - model effects of synapse by using synaptic conductance $g_s$ with reversal potential $E_s$
   - $g_s = g_{s,max} \cdot P_{rel} \cdot P_s$
     - $P_{rel}$ - probability of release given an input spike
@@ -392,7 +392,7 @@ category: neuro
 - network of integrate-and-fire neurons
   - if 2 neurons inhibit each other, get *synchrony* (fire at the same time
 
-### 6.2 - intro to network models
+## 6.2 - intro to network models
 - comparing spiking models to firing-rate models
   - advantages
     - spike timing
@@ -422,7 +422,7 @@ category: neuro
   - ex. edge detectors
   - V1 neurons are basically computing derivatives
 
-### 6.3 - recurrent networks
+## 6.3 - recurrent networks
 - linear recurrent network: $\tau \frac{d\mathbf{v}}{dt} = -\mathbf{v} + W\mathbf{u} + M \mathbf{v}$
   - let $\mathbf{h} = W\mathbf{u}$
   - want to investiage different M
@@ -459,7 +459,7 @@ category: neuro
     - use eigenvalues to determine dynamics of the nonlinear network near a fixed point
 
     # 7 - networks that learn: plasticity in the brain & learning
-### 7.1 - synaptic plasticity, hebb's rule, and statistical learning
+## 7.1 - synaptic plasticity, hebb's rule, and statistical learning
 - if 2 spikes keep firing at same time, get LTP - long-term potentiation
   - if input fires, but not B then could get LTD - long-term depression
 - *Hebb rule* $\tau_w \frac{d\mathbf{w}}{dt} = \mathbf{x}v$
@@ -483,7 +483,7 @@ category: neuro
   - hebbian learning learns w aligned with principal eigenvector of input correlation matrix
   - this is same as PCA
 
-### 7.2 - intro to unsupervised learning
+## 7.2 - intro to unsupervised learning
 - ![](assets/comp_neuro/7_2_1.png)
   - most active neuron is the one whose w is closest to x
 - *competitive learning*
@@ -509,7 +509,7 @@ category: neuro
   - ![](assets/comp_neuro/7_2_2.png)
     - assumes you have all the points at once
 
-### 7.3 - sparse coding and predictive coding
+## 7.3 - sparse coding and predictive coding
 - eigenface - Turk and Pentland 1991
   - eigenvectors of the input covariance matrix are good features
   - can represent images using sum of eigenvectors (orthonormal basis)
@@ -536,7 +536,7 @@ category: neuro
   - ![](assets/comp_neuro/7_3_1.png)
   - there is usually a feedback connection for every feedforward connection (Rao & Ballard, 1999)
 
-### 8.2 - reinforcement learning - predicting rewards
+## 8.2 - reinforcement learning - predicting rewards
 - dopamine serves as brain's reward
 
 # ml analogies

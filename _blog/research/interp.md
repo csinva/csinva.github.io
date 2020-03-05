@@ -27,3 +27,4 @@ Work from our lab has generated a number of methods, mostly focused on post-hoc 
   - ![acd](assets/acd.png)
 - [CDEP](https://arxiv.org/abs/1909.13584) penalizes interpretations of a DNN during training in order to incoporate prior knowledge and improve the predictive accuracy of models
 - [DAC](https://arxiv.org/abs/1905.07631) extracts interactions from a fully trained random forest and visualizes these importances in the form of a curve or a heatmap
+- [TRIM](https://arxiv.org/abs/2003.01926) attributes importance to different transformations of the input to any trained model

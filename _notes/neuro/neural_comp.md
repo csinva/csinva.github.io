@@ -156,7 +156,6 @@ category: neuro
   - D is like autoencoder output weight matrix
   - h is more complicated - requires solving inner minimization problem
   - outer loop is not quite lasso - weights are not what is penalized
-
 - barlow 1972: want to represent stimulus with minimum active neurons
   - neurons farther in cortex are more silent
   - v1 is highly overcomplete (dimensionality expansion)
@@ -219,6 +218,11 @@ category: neuro
 - people didn't see sparsity for a while because they were using very specific stimuli and specific neurons
   - now people with less biased sampling are finding more sparsity
   - in cortex anasthesia tends to lower firing rates, but opposite in hippocampus
+- algorithms
+  - thresholding (simplest) - do $D^Ty$ and then threshold this
+  - basis pursuit - change $l_0$ to $l_1$
+    - this will work under certain conditions (with theoretical guarantees)
+  - matching purusuit - greedy, find support one at a time, then look for the next one
 
 # self-organizing maps
 
