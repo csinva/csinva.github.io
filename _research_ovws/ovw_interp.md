@@ -33,6 +33,7 @@ category: research
 ![Screen Shot 2019-06-04 at 11.42.17 AM](assets/Screen Shot 2019-06-04 at 11.42.17 AM.png)
 
 - [feature (variable) importance measurement review (VIM)](https://www.sciencedirect.com/science/article/pii/S0951832015001672) (wei et al. 2015)
+  
   - often-termed sensitivity, contribution, or impact
   - some of these can be applied to data directly w/out model (e.g. correlation coefficient, rank correlation coefficient, moment-independent VIMs)
   - ![Screen Shot 2019-06-14 at 9.07.18 AM](assets/Screen Shot 2019-06-14 at 9.07.18 AM.png)
@@ -96,7 +97,6 @@ category: research
 - [Saliency Methods for Explaining Adversarial Attacks](https://arxiv.org/abs/1908.08413)
 - [Fooling Neural Network Interpretations via Adversarial Model Manipulation](https://arxiv.org/abs/1902.02041) (heo et al. 2019)
 
-
 # intrinsic (during model fitting)
 
 ## interpretable dnns
@@ -130,6 +130,15 @@ category: research
 - [Harnessing Deep Neural Networks with Logic Rules](https://arxiv.org/pdf/1603.06318.pdf)
 - [Tensor networks](https://www.perimeterinstitute.ca/research/research-initiatives/tensor-networks-initiative) - like DNN that only takes boolean inputs and deals with interactions explicitly
 
+## trees
+
+- [Building more accurate decision trees with the additive tree](https://www.pnas.org/content/116/40/19887) (luna et al. 2019)
+  - present additive tree (AddTree), which builds a single decision tree, which is between a single CART tree and boosted decision stumps
+  - cart can be seen as a boosting algorithm on stumps
+    - can rewrite boosted stumps as a tree very easily
+    - previous work: can grow tree based on Adaboost idea = AdaTree
+  - ![Screen Shot 2020-03-11 at 11.10.13 PM](assets/Screen Shot 2020-03-11 at 11.10.13 PM.png)
+
 ## rule lists / sets
 
 - these algorithms usually don't support regression, but you can get regression by cutting the outcome into intervals
@@ -157,8 +166,12 @@ category: research
 - [optimal sparse decision trees](https://arxiv.org/abs/1904.12847) (hu et al. 2019) - optimal decision trees for binary variables
 - [2helps2b paper](https://www.ncbi.nlm.nih.gov/pubmed/29052706)
   - ![Screen Shot 2019-06-11 at 11.17.35 AM](assets/Screen Shot 2019-06-11 at 11.17.35 AM.png)
+- [Expert-augmented machine learning](https://arxiv.org/abs/1903.09731) (gennatas et al. 2019)
+  - make rule lists, then compare the outcomes for each rule with what clinicians think should be outcome for each rule
+    - look at rules with biggest disagreement and engineer/improve rules or penalize unreliable rules
 
 ## learning disentangled representations
+
 - [InfoGAN: Interpretable Representation Learning by Information Maximizing Generative Adversarial Nets](https://arxiv.org/abs/1606.03657) (chen et al. 2016)
 - [Interpretable VAEs for nonlinear group factor analysis](https://arxiv.org/abs/1802.06765)
 
@@ -232,6 +245,7 @@ category: research
 
 - [quantitative input influence](https://ieeexplore.ieee.org/abstract/document/7546525) - similar to shap but more general
 - permutation importance - increase in the prediction error after we permuted the feature's values
+  - $\mathbb E[Y] - \mathbb E[Y|X_{\sim i}]$
   - If features are correlated, the permutation feature importance can be biased by unrealistic data
   instances (PDP problem)
   - not the same as model variance
@@ -244,11 +258,13 @@ category: research
 - [Interpreting Black Box Models via Hypothesis Testing](https://arxiv.org/abs/1904.00045)
 
 ### feature interactions
+- *note: interactions depends on scale (e.g. $y= a \cdot b$, $\log y = \log a + \log b$)*
 - build-up = context-free, less faithful: score is contribution of only variable of interest ignoring other variables
-- break-down = context-dependent, more faithful: score is contribution of variable of interest given all other variables (e.g. permutation test - randomize var of interest from right distr.)
-- H-statistic*: 0 for no interaction, 1 for complete interaction
+- break-down = occlusion = context-dependent, more faithful: score is contribution of variable of interest given all other variables (e.g. permutation test - randomize var of interest from right distr.)
+- *H-statistic*: 0 for no interaction, 1 for complete interaction
   - how much of the variance of the output of the joint partial dependence is explained by the interaction instead of the individuals
   - $H^2_{jk} = \underbrace{\sum_i [\overbrace{PD(x_j^{(i)}, x_k^{(i)})}^{\text{interaction}} \overbrace{- PD(x_j^{(i)}) - PD(x_k^{(i)})}^{\text{individual}}]^2}_{\text{sum over data points}} \: / \: \underbrace{\sum_i [PD(x_j^{(i)}, x_k^{(i)})}_{\text{normalization}}]^2$
+  - alternatively, using ANOVA decomp: $H_{jk}^2 = \sum_i g_{ij}^2 / \sum_i (\mathbb E [Y|X_i, X_j])^2$
   - same assumptions as PDP: features need to be independent
 - alternatives
   - variable interaction networks (Hooker, 2004) - decompose pred into main effects + feature interactions
@@ -292,28 +308,36 @@ category: research
       - ex. look at entropy reduction
     - other hypothesis tests include the squared rank difference, 2D kolmogorov-smirnov test, and distance-based tests
   - variance-based vim (sobol's indices)
-    - sobol's indices - attribute total variance of model output: $Y = g(\mathbf{X}) = g_0 + \sum_i g_i (X_i) + \sum_i \sum_{j > i} g_{ij} (X_i, X_j) + \dots + g_{1,2,..., n}$
-      - $g_0 = \mathbf E (Y), \:g_i = \mathbf E(Y|X_i) - g_0, \:g_{ij} = \mathbf E (Y|X_i, X_j) - g_i - g_j - g_0$
+    - **ANOVA decomposition** - decompose model into conditional expectations $Y = g_0 + \sum_i g_i (X_i) + \sum_i \sum_{j > i} g_{ij} (X_i, X_j) + \dots + g_{1,2,..., p}$
+      - $g_0 = \mathbf E (Y)\\ g_i = \mathbf E(Y|X_i) - g_0 \\ g_{ij} = \mathbf E (Y|X_i, X_j) - g_i - g_j - g_0\\...$
       - take variances of these terms
       - if there are correlations between variables some of these terms can misbehave
-    - $S_i$: Sobol’s main effect index for $i$ measures the average residual variance of model output when all the inputs except $X_i$ are fixed over their full supports
+      - note: $V(Y) = \sum_i V (g_i) + \sum_i \sum_{j > i} V(g_{ij}) + ... V(g_{1,2,...,p})$ - variances are orthogonal and all sum to total variance
+    - $S_i$: **Sobol’s main effect** index: $=V(g_i)=V(E(Y|X_i))=V(Y)-E(V(Y|X_i))$
       - small value indicates $X_i$ is non-influential
       - usually used to select important variables
-    - $S_{Ti}$: Sobol's total effect index - include all terms (even interactions) involving a variable
-      - usually used to screen unimportant variables
-
-      - moment-independent vim
-        - want more than just the variance ot the output variables
-        - e.g. **delta index** = average dist. between $f_Y(y)$ and $f_{Y|X_i}(y)$ when $X_i$ is fixed over its full distr.
-          - $\delta_i = \frac 1 2 \mathbb E \int |f_Y(y) - f_{Y|X_i} (y) | dy = \frac 1 2 \int \int |f_{Y, X_i}(y, x_i) - f_Y(y) f_{X_i}(x_i)|dy \,dx_i$
-          - moment-independent because it depends on the density, not just any moment (like measure of dependence between $y$ and $X_i$
-
+    - $S_{Ti}$: **Sobol's total effect** index - include all terms (even interactions) involving a variable
+  - equivalently, $V(Y) - V(E[Y|X_{\sim i}])$
+    - usually used to screen unimportant variables
+      - it is common to normalize these indices by the total variance $V(Y)$
+    - three methods for computation - Fourire amplitude sensitivity test, meta-model, MCMC
+    - when features are correlated, these can be strange (often inflating the main effects)
+      - can consider $X_i^{\text{Correlated}} = E(X_i|X_{\sim i})$ and $X_i^{\text{Uncorrelated}} = X_i - X_i^{\text{Correlated}}$
+  - this can help us understand the contributions that come from different features, as well as the correlations between features (e.g. $S_i^{\text{Uncorrelated}} = V(E[Y|X_i^{\text{Uncorrelated}}])/V(Y)$
+    - [sobol indices connected to shapley value](https://epubs.siam.org/doi/pdf/10.1137/130936233)
+      - $SHAP_i = \underset{S, i \in S}{\sum} V(g_S) / |S|$
+  - moment-independent vim
+    - want more than just the variance ot the output variables
+    - e.g. **delta index** = average dist. between $f_Y(y)$ and $f_{Y|X_i}(y)$ when $X_i$ is fixed over its full distr.
+      - $\delta_i = \frac 1 2 \mathbb E \int |f_Y(y) - f_{Y|X_i} (y) | dy = \frac 1 2 \int \int |f_{Y, X_i}(y, x_i) - f_Y(y) f_{X_i}(x_i)|dy \,dx_i$
+      - moment-independent because it depends on the density, not just any moment (like measure of dependence between $y$ and $X_i$
+    - can also look at KL, max dist..
   - graphic vim - like curves
     - e.g. scatter plot, meta-model plot, regional VIMs, parametric VIMs
     - CSM - relative change of model ouput mean when range of $X_i$ is reduced to any subregion
     - CSV - same thing for variance
 - [anova decomposition](https://statweb.stanford.edu/~owen/mc/A-anova.pdf) - factor function into means, first-order terms, and interaction terms
-    - [sobol indices connected to shapley value](https://epubs.siam.org/doi/pdf/10.1137/130936233)
+    - 
 
 ## model-agnostic curves
 
@@ -426,7 +450,10 @@ category: research
     - teaching compositionality to cnns - mask features by objects
 - **maximal activation stuff**
     1. images that maximally activate a feature 
-      - *deconv nets* - Zeiler & Fergus (2014)
+      - [deconv nets](https://arxiv.org/pdf/1311.2901.pdf) - Zeiler & Fergus (2014)
+        - use deconvnets (zeiler et al. 2011) to map features back to pixel space
+        - given one image, get the activations (e.g. maxpool indices) and use these to get back to pixel space
+        - everything else does not depend on the original image
         - might want to use optimization to generate image that makes optimal feature instead of picking from training set
       - before this, erhan et al. did this for unsupervised features
       - dosovitskiy et al 16 - train generative deconv net to create images from neuron activations
@@ -548,17 +575,29 @@ category: research
   - [BETA](https://arxiv.org/abs/1707.01154) (lakkaraju et al. 2017) - approximate model by a rule list
 - [Distilling a Neural Network Into a Soft Decision Tree](https://arxiv.org/pdf/1711.09784.pdf) (frosst & hinton 2017)
 
+## interp for rl
+
+- heatmaps
+- visualize most interesting states / rollouts
+- language explanations
+- interpretable intermediate representations (e.g. bounding boxes for autonomous driving)
+- policy extraction - distill a simple model from a bigger model (e.g. neural net -> tree)
+
 # related concepts
 
 ## trust scores / uncertainty
 
 *papers using embeddings to generate confidences*
 
-- [To Trust Or Not To Trust A Classifier](http://papers.nips.cc/paper/7798-to-trust-or-not-to-trust-a-classifier.pdf) (jiang et al - trust score uses density over some set of nearest neighbors(do clustering for each class - trust score = distance to once class's cluster vs the other classes')
+- [To Trust Or Not To Trust A Classifier](http://papers.nips.cc/paper/7798-to-trust-or-not-to-trust-a-classifier.pdf) (jiang et al - trust score uses density over some set of nearest neighbors (do clustering for each class - trust score = distance to once class's cluster vs the other classes')
   - [papernot knn](https://arxiv.org/abs/1803.04765)
   - [distance-based confidence scores](https://arxiv.org/pdf/1709.09844.pdf)
   - [deep kernel knn](https://arxiv.org/pdf/1811.02579.pdf)
   - fair paper: gradients should be larger if you are on the image manifold
+- calibration
+    - **platt scaling** - given trained classifier and new calibration dataset, basically just fit a logistic regression from the classifier predictions -> labels
+    - **isotonic regression** - nonparametric, requires more data than platt scaling
+        - piecewise-constant non-decreasing function instead of logistic regression
 - [Deep k-Nearest Neighbors: Towards Confident, Interpretable and Robust Deep Learning](https://arxiv.org/pdf/1803.04765.pdf)
     - [Interpreting Neural Networks With Nearest Neighbors](https://arxiv.org/pdf/1809.02847.pdf)
 - [outlier-detection](https://scikit-learn.org/stable/modules/outlier_detection.html)
@@ -658,7 +697,6 @@ category: research
 
 - [ConvNets and ImageNet Beyond Accuracy: Understanding Mistakes and Uncovering Biases](https://arxiv.org/abs/1711.11443)
   - cnns are more accurate, robust, and biased then we might expect on imagenet
-  
 - [Bridging Adversarial Robustness and Gradient Interpretability](https://arxiv.org/abs/1903.11626)
 - [explaining a black-box w/ deep variational bottleneck](https://arxiv.org/abs/1902.06918)
 - [Global Explanations of Neural Networks: Mapping the Landscape of Predictions](https://arxiv.org/abs/1902.02384)
@@ -706,5 +744,21 @@ category: research
 - [The many Shapley values for model explanation](https://arxiv.org/abs/1908.08474)
 - [XDeep: An Interpretation Tool for Deep Neural Networks](https://arxiv.org/abs/1911.01005)
 - [Shapley Decomposition of R-Squared in Machine Learning Models](https://arxiv.org/abs/1908.09718)
+- https://dl.acm.org/doi/abs/10.14778/3380750.3380752
+- https://arxiv.org/abs/2002.08125
+- https://arxiv.org/abs/2002.08247
+- https://arxiv.org/abs/2002.00079
+- https://arxiv.org/abs/2003.03622
+- https://arxiv.org/abs/2002.03549
+- *https://arxiv.org/abs/2002.11097
+- *https://www.researchgate.net/profile/Leon_Sixt/publication/338115768_When_Explanations_Lie_Why_Many_Modified_BP_Attributions_Fail/links/5e4e226292851c7f7f48becb/When-Explanations-Lie-Why-Many-Modified-BP-Attributions-Fail.pdf
+- https://arxiv.org/abs/2002.08484
+- *https://arxiv.org/abs/2002.07985
+- https://arxiv.org/abs/2003.01640
+- https://arxiv.org/abs/2003.03934
+- https://ieeexplore.ieee.org/abstract/document/8999347
+- https://www.semanticscholar.org/paper/A-Causality-Analysis-for-Nonlinear-Classification-Kirihata-Maekawa/4b76830be36ae14d878f7c0a7ff2508bfe172f64
+- https://arxiv.org/abs/2001.11366
+- https://umangsbhatt.github.io/reports/icassp_2020.pdf
 
 

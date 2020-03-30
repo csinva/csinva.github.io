@@ -237,6 +237,7 @@ void BST::insert(int x, BinaryNode * & curNode){    //we pass in by reference be
     - Each value has a specific key associated with it
 - fixed size array of some size, usually a prime number
 - A hash function takes in a "thing" )string, int, object, etc._
+    
     - returns hash value - an unsigned integer value which is then mod'ed by the size of the hash table to yield a spot within the bounds of the hash table array
 - Three required properties
     1. Must be deterministic
@@ -250,8 +251,10 @@ void BST::insert(int x, BinaryNode * & curNode){    //we pass in by reference be
     - No collisions
 - Lookup table is at best logarithmic
 - We can't just make a very large array - we assume the key space is too large
+    
     - you can't just hash by social security number
 - hash(s)=(∑k−1i=0si∗37^i) mod table_size
+    
     - you would precompute the powers of 37
 - collision - putting two things into same spot in hash table
     - Two primary ways to resolve collisions:
@@ -302,7 +305,7 @@ void BST::insert(int x, BinaryNode * & curNode){    //we pass in by reference be
             - hash(k)+4
             - hash(k)+9
             - you move out of clusters much quicker
-            3.Double hashing: i * hash2(k)
+              3.Double hashing: i * hash2(k)
             - hash2 is another hash function - typically the fastest
             - problem where you loop over spots that are filled - hash2 yields a factor of the table size
                 - solve by making table size prime

@@ -6,7 +6,6 @@ category: ml
 
 * TOC
 {:toc}
-
 # neural networks
 
 - basic perceptron update rule
@@ -126,8 +125,8 @@ category: ml
 
 
 
+# gans
 
-# gans (2014)
 - original gan paper (2014)
 - might not converge
 - *generative adversarial network*
@@ -193,8 +192,14 @@ category: ml
   - **targeted** - try to get specific wrong class
 - fast gradient step method - keep adding gradient to maximize noise (limit amplitude of pixel's channel to stay imperceptible)
 
-# geometry
+# transformers
 
 - transformers: https://arxiv.org/pdf/1706.03762.pdf
   - spatial transformers: https://papers.nips.cc/paper/5854-spatial-transformer-networks.pdf 
 - http://colah.github.io/posts/2014-03-NN-Manifolds-Topology/
+
+
+
+# misc
+
+- adaptive pooling can help deal with different sizes

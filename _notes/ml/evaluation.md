@@ -18,7 +18,9 @@ category: ml
 - classification cost functions
   1. misclassification error - not differentiable
   2. Gini index: $\sum_{i != j} p_i q_j$
-  3. cross-entropy: $-\sum_x p(x)\: log \: q(x) $
+  3. cross-entropy: $-\sum_x p(x)\: \log \: \hat p(x) $, where $p(x)$ are usually labels and $\hat p(x)$ are softmax outputs
+     1. only penalizes target class (others penalized implicitly because of softmax)
+     2. for binary, $- (p \log \hat p + (1-p) \log (1-\hat p)$
 
 # measures
 

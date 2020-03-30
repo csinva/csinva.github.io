@@ -21,61 +21,63 @@ category: cs
 		if you really want performance increase in java, allocate a very large array, then keep track of it on your own	
 	
 # numbers
-0x means hexadecimal
-0 means octal
-bit - stores 0 or 1
-byte - 8 bits - 2 hex digits
-integer - almost always 32 bits
-"Big-endian": most significant first (lowest address) - how we thnk
-    1000 0000 0000 0000 = 2^5 = 32768
-"Little-endian": most significant last (highest address) - this is what computers do
-    1000 0000 0000 0000 = 2^0 = 1
-Note that although all the bits are reversed, usually it is displayed with just the bytes reversed
-    Consider 0xdeadbeef
-        On a big-endian machine, that's 0xdeadbeef
-        On a little-endian machine, that's 0xefbeadde
-        0xdeadbeef is used as a memory allocation pattern by some OSes
-Representing integers
-    Sign and magnitude - first digit specifies sign
-    One's complement - encode using n-1 bits, flip if negative
-    Two's complement - encode using n-1 bits, flip if negative, add 1
-        only one representation for 0
-        maximum: 2^(n-1) - 1
-        minimum: - 2^(n-1)
-        flip everything to the left of the rightmost 1
-Floating point - like scientific notation
-    3.24 * 10 ^ -6
-    Mantissa - 3.24 - between 1 and the base (10)
-        For binary, the mantissa must be between 1 and 2 
-    we assume the base is 2
-    32 bits are split as follows:
-        bit 1: sign bit, 1 means negative (1 bit)
-        bits 2-9: exponent (8 bits)
-            Exponent values:
-                0: zeros
-                1-254: exponent-127
-                255: infinities, overflow, underflow, NaN
-        bits 10-32: mantissa (23 bits)
-            mantissa=1.0+∑(i=1:23)(b^i/2^i) //we don't encode the 1. because it has to be there
-    value=(1−2∗sign)∗(1+mantissa)∗2^(exponent−127)
-    The largest float has:
-        0 as the sign bit (it's positive)
-        254 as the exponent (1111 1110)
-            255 is reserved for infinities and overflows
-        That exponent is 254-127 = 127
-        All 1's for the mantissa
-            Which yields almost 2
-        2 * 2^127 = 2^128 = 3.402823 * 10^38    //actually a little bit lower
-    Minimum positive:
-        1 * 2^-126 = 2^-126 = 1.175494 x 10^-38 //this is exact
-    Floating point numbers are not spatially uniform
-        Depending on the exponent, the difference between two successive numbers is not the same
-union class - converts from one data type to another //when you write one field, it overrides the other
-    union foo {  //this converts a float to hex
-        float f;
-        int *x;
-    } bar;
+- 0x means hexadecimal
+- 0 means octal
+- bit - stores 0 or 1
+- byte - 8 bits - 2 hex digits
+- integer - almost always 32 bits
+- "Big-endian": most significant first (lowest address) - how we thnk
+  
+  - 1000 0000 0000 0000 = 2^5 = 32768
+- "Little-endian": most significant last (highest address) - this is what computers do
+  - 1000 0000 0000 0000 = 2^0 = 1
+  - Note that although all the bits are reversed, usually it is displayed with just the bytes reversed
+- Consider 0xdeadbeef
+  - On a big-endian machine, that's 0xdeadbeef
+  - On a little-endian machine, that's 0xefbeadde
+  - 0xdeadbeef is used as a memory allocation pattern by some OSes
+- Representing integers
+  - Sign and magnitude - first digit specifies sign
+  - One's complement - encode using n-1 bits, flip if negative\
+  - Two's complement - encode using n-1 bits, flip if negative, add 1
+    - only one representation for 0
+      - maximum: 2^(n-1) - 1
+      - minimum: - 2^(n-1)
+        - flip everything to the left of the rightmost 1
+- Floating point - like scientific notation
+  - 3.24 * 10 ^ -6
+  - Mantissa - 3.24 - between 1 and the base (10)
+    - For binary, the mantissa must be between 1 and 2 
+    - we assume the base is 2
+  - 32 bits are split as follows:
+    - bit 1: sign bit, 1 means negative (1 bit)
+    - bits 2-9: exponent (8 bits)
+    - Exponent values:
+      - 0: zeros
+      - 1-254: exponent-127
+      - 255: infinities, overflow, underflow, NaN
+      - bits 10-32: mantissa (23 bits)
+      - mantissa=1.0+∑(i=1:23)(b^i/2^i) //we don't encode the 1. because it has to be there
+            value=(1−2∗sign)∗(1+mantissa)∗2^(exponent−127)
+    - The largest float has:
+      - 0 as the sign bit (it's positive)
+        - 254 as the exponent (1111 1110)
+        - 255 is reserved for infinities and overflows
+        - That exponent is 254-127 = 127
+        - All 1's for the mantissa
+          - Which yields almost 2
+                    2 * 2^127 = 2^128 = 3.402823 * 10^38    //actually a little bit lower
+                Minimum positive:
+                    1 * 2^-126 = 2^-126 = 1.175494 x 10^-38 //this is exact
+                Floating point numbers are not spatially uniform
+                    Depending on the exponent, the difference between two successive numbers is not the same
+            union class - converts from one data type to another //when you write one field, it overrides the other
+                
 
+    union foo {  //this converts a float to hex
+      float f;
+      int *x;
+    } bar;
     int main() {
         bar.f = 42.125;
         cout << bar.x << endl; // this outputs as 0x42288000 (it is now converted to hex)
@@ -90,6 +92,7 @@ You could use a rational or use more digits
     offset=1023
 Cowlishaw encoding: use 3 bits to store a binary digit - inefficient
 	
+
 ​	
 # x86
 Assembly Language - assembler translates text into machine code

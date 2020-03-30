@@ -523,7 +523,6 @@ pthread join(tid,NULL);
 	
 ## 5.2 - critical-section problem
 - each process has *critical section* where it updates common variables
-	- <img src="pics/5_1.png"/ width=40%>
 - 3 requirements
 	1. *mutual exclusion* -	2 processes can't concurrently do critical section
 	2. *progress* - things should be in critical selection
@@ -536,9 +535,7 @@ pthread join(tid,NULL);
 
 ## 5.3 - peterson's solution
 - *peterson's solution*
-	- <img src="pics/5_2.png" width=40%/>
-		- here i is one task and j is the other
-	- not guaranteed to work
+  - not guaranteed to work
 
 ## 5.4  - synchronization hardware
 - *locking* - protecting critical regions using locks
@@ -550,7 +547,7 @@ pthread join(tid,NULL);
 	- ex. `compare_and_swap()`
 	
 ## 5.5 - mutex locks
-- *mutex*: <img src="pics/5_8.png" width=40%/>
+- *mutex*
 	- simplest synchronization tool
 	- this type of mutex lock is called *spinlock* because requires *busy waiting* - processes not in critical section are continuously looping
 	- good when locks are short
@@ -756,7 +753,6 @@ sem post(&sem);
 - CPU address = [*page number*|*page offset*]
 	- *page table* contains base address of each page in physical mem
 	- usually, each process gets a page table
-	- <img src="pics/7_10.png" width=40%/>
 - *frame table* keeps track of which frames are available / who owns them
 - paging is prevalent
 - avoids external fragmentation, but has internal fragmentation
@@ -777,17 +773,15 @@ sem post(&sem);
 ## 7.6 - page table structure (skip)
 - page tables can get quite large (total mem / page size)
 1. *hierarchical paging* - ex. two-level page table
-	- <img src="pics/7_18.png" width=40%/>
-	- also called *forward-mapped page table*
-	- unused things aren't filled in
-	- for 64-bit, would generally require too many levels
+  - also called *forward-mapped page table*
+  - unused things aren't filled in
+  - for 64-bit, would generally require too many levels
 2. *hashed page tables*
 	- virtual page number is hash key -> physical page number
 	- *clustered page tables* - each entry stores everal pages, can be faster
 3. *inverted page tables*
 	- only one page table in system
 	- one entry for each page/frame of memory
-	- <img src="pics/7_20.png" width=40%/>
 	- takes more time to lookup
 		- hash table can speed this up
 	- difficulty with shared memory
@@ -843,7 +837,6 @@ sem post(&sem);
 	- more processes in mem at same time
 	- less swapping programs into mem
 - *sparse* address space - virtual address spaces with hole (betwen heap and stack)
-	- <img src="pics/8_3.png" width=40%/>
 
 ## 8.2 - demand paging
 - *demand paging* - load pages only when they are needed
@@ -851,10 +844,9 @@ sem post(&sem);
 	- can use valid-indvalid bit in page table to signal whether a page is in memory
 - *memory resident* - residing in memory
 - accessing page marked invalid causes *page fault*
-	- <img src="pics/8_6.png" width=40%/>
-	- must restart after fetching page
-		1. don't let anything change while fetching
-		2. use registers to store state before fetching
+  - must restart after fetching page
+  	1. don't let anything change while fetching
+  	2. use registers to store state before fetching
 - *pure demand paging* - never bring a page into memory until it is required
 	
 	- programs tend to have *locality of reference*, so we bring in chunks at a time
@@ -888,7 +880,6 @@ sem post(&sem);
 - test with *reference string*, which is just a list of memory references
 - if no frame is free, find one not being used and free it
 - write its contents to swap space
-- <img src="pics/8_10.png" width=40%/>
 - *modify bit*=*dirty bit* reduces overhead
 	
 	- if hasn't been modified then don't have to rewrite it to disk
@@ -909,7 +900,6 @@ sem post(&sem);
 		- can keep *additional reference bits* by recording reference bits at regular intervals1
 		- *second-chance* algorithm - FIFO, but if ref bit is 1, set ref bit to 0 and move on to next FIFO page
 		- can have clock algorithm
-		- <img src="pics/8_17.png" width=40%/>
 		- *enhanced second-chance* - uses reference bit and modify bit
 			- give preference to pages that have been modified
 	5. counting-based - count and implement LFU (least frequently used) or MFU (most frequently used)
@@ -934,16 +924,14 @@ sem post(&sem);
 	- approximate with fixed-interval timer
 - *page-fault frequency* - add / decrease pages based on targe page-fault rate
 
-## 8.7 - (skipped)
-
 ## 8.8.1 - buddy system
 - memory allocated with *power-of-2 allocator* - requests are given powers of 2
 	- each page is split into 2 *buddies* and each of those splits again recursively
 	- *coalescing* - buddies can be combined quickly
 	
+
 # 9 - mass-storage structure
-## 9.1
-## 9.2
+
 ## 9.4 - disk scheduling
 - *bandwidth* - total number of bytes transferred, divided by time
 - first-come first-served
@@ -979,25 +967,20 @@ sem post(&sem);
 	- cycles require very slow *garbage collection*
 - *link* - pointer to another thing
 
-## 10.4 - file system mounting
-
 # 11 - file-system implementation
+
 ## 11.1
 - *file-control block (FCB)* contains info about file ownership, etc.
-
-## 11.2
-## 11.3 (SKIP)
 
 ## 11.4
 - contiguous allocation
 - linked allocation
-	
 	- FAT
 - indexed allocation - all the pointers in 1 block
 
-	# 11.5	
+# 11.5	
+
 - keep track of *free-space list*
-	
 	- implemented as bit map
 - keep track of linked list of free space
 - *grouping* - block stores n-1 free blocks and 1 pointer to next block

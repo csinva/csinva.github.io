@@ -74,8 +74,8 @@ category: ml
 
 ## logistic regression
 
-- $p(Y=1|x, \theta) = logistic(\theta^Tx)$
-  1. assume Y ~ $Bernoulli(p)$ with $p=\text{logistic}(\theta^Tx$)
+- $p(Y=1|x, \theta) = \text{logistic}(\theta^Tx)$
+  1. assume Y ~ $\text{Bernoulli}(p)$ with $p=\text{logistic}(\theta^Tx$)
   2. can solve this online with GD of ***likelihood***
   3. better to solve with iteratively reweighted least squares
 - $Logit(p) = \log[p / (1-p)] = \theta^Tx$

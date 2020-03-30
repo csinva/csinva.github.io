@@ -199,6 +199,13 @@ C(Location of Car) --> B
   - only pick the stable parts of what they learn (in a graph representation)
 - [link to iclr talk](https://www.technologyreview.com/s/613502/deep-learning-could-reveal-why-the-world-works-the-way-it-does/?fbclid=IwAR3LF2dc_3EvWXzEHhtrsqtH9Vs-4pjPALfuqKCOma9_gqLXMKDeCWrcdrQ) (bottou 2019)
 - [The Blessings of Multiple Causes](https://arxiv.org/abs/1805.06826) (wang & blei, 2019) - having multiple causes can help construct / find all the confounders
+- [Invariant Risk Minimization](https://arxiv.org/abs/1907.02893) (arjovsky et al. 2019)
+  - random splitting causes problems with our data
+  - what to perform well under different distributions of X, Y
+  - can't be solved via robust optimization
+  - assume we have infinite data, and know what kinds of changes our distribution for the problem might have (e.g. variance of features might change)
+    - make a model which has the minimum test error regardless of the distribution of the problem
+  - adds a penalty inspired by invariance (which can be viewed as a stability criterionZZZyyhhhy5r)
 
 # causal discovery
 
@@ -242,3 +249,6 @@ C(Location of Car) --> B
 
 # notes based on [what if (hernan & robins)](https://cdn1.sph.harvard.edu/wp-content/uploads/sites/1268/2020/01/ci_hernanrobins_21jan20.pdf)
 
+- action = intervention, exposure, treatments
+- action $A$ and outcome $Y$
+  - 

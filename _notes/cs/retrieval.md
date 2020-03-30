@@ -67,5 +67,3 @@ emphasis on efficiency  | emphasis on effectiveness
     - better when user doesn't know keywords, just wants to explore
     - push mode - systems push relevant info to users without a query
     - pull mode - users pull out info using keywords
-
-# web crawler

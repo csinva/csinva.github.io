@@ -8,23 +8,20 @@ category: math
 {:toc}
 
 # ch 1 - the real numbers
-- there is no rational number whose square is 2 <button data-toggle="collapse" data-target="#111" >+</button><div class="collapse" id="111">
-proof by contradiction </div>
+- there is no rational number whose square is 2 (proof by contradiction)
 - *contrapositive*: $$-q \to -p$$ - logically equivalent
-- *triangle inequality*: $\|a+b\| \leq \|a\| + \|b\|$<button data-toggle="collapse" data-target="#121" >+</button><div class="collapse" id="121">
-often use \|a-b\| = \|(a-c)+(c-b)\|</div>
+- *triangle inequality*: $\|a+b\| \leq \|a\| + \|b\|$ (often use \|a-b\| = \|(a-c)+(c-b)\|)
 - *axiom of completeness* - every nonempty set $A \subseteq \mathbb{R}$ that is bounded above has a least upper bound
 	- doesn't work for $\mathbb{Q}$
 - *supremum* = supA = least upper bound (similarly, *infimum*)
 	1. supA is an upper bound of A
 	2. if $s \in \mathbb{R}$ is another u.b. then $s \geq supA$
 		- can be restated as $\forall \epsilon > 0, \exists a \in A$ $s-\epsilon < a$
-- *nested interval property* - for each $n \in N$, assume we are given a closed interval $I_n = [a_n,b_n]=\{ x \in \mathbb{R} : a_n \leq x \leq b_n \}$  Assume also that each $I_n$ contains $I_{n+1}$.  Then, the resulting nested sequence of nonempty closed intervals $I_1 \supseteq I_2 \supseteq ...$ has a nonempty intersection <button data-toggle="collapse" data-target="#141" >+</button><div class="collapse" id="141">
-use AoC with x = sup{$a_n: n \in \mathbb{N}$} in the intersection of all sets</div>
-- *archimedean property*<button data-toggle="collapse" data-target="#142" >+</button>
+- *nested interval property* - for each $n \in N$, assume we are given a closed interval $I_n = [a_n,b_n]=\{ x \in \mathbb{R} : a_n \leq x \leq b_n \}$  Assume also that each $I_n$ contains $I_{n+1}$.  Then, the resulting nested sequence of nonempty closed intervals $I_1 \supseteq I_2 \supseteq ...$ has a nonempty intersection
+use AoC with x = sup{$a_n: n \in \mathbb{N}$} in the intersection of all sets
+- *archimedean property*
 	1. $\mathbb{N}$ is unbounded above (sup $\mathbb{N}=\infty$)
 	2. $\forall x \in \mathbb{R}, x>0, \exists n \in \mathbb{N}, 0 < \frac{1}{n} < x$
-<div class="collapse" id="142">contradiction with AoC</div>
 - $\mathbb{Q}$ is dense in $\mathbb{R}$ - for every $a,b \in \mathbb{R}, a<b$, $\exists r \in \mathbb{Q}$ s.t. $a<r<b$
 	- pf: want $a < \frac{m}{n} < b$
 		- by Archimedean property, want $\frac{1}{n} < b-a$
@@ -290,7 +287,3 @@ use AoC with x = sup{$a_n: n \in \mathbb{N}$} in the intersection of all sets</d
 - uniform continuity: minimize $\|f(x)-f(y)\|$
 - derivative doesn't have to be continuous
 - integrable if finite amount of discontinuities and bounded
-
-<!--link rel="stylesheet" type="text/css" href="collapse_working.css"-->
-<!--script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script-->
-<!--script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script-->

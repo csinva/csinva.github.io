@@ -242,6 +242,7 @@ some more concrete questions:
 - [ablation studies](https://arxiv.org/abs/1812.05687)
 - [deep learning is robust to massive label noise](https://arxiv.org/pdf/1705.10694.pdf)
 - [are all layers created equal?](https://arxiv.org/pdf/1902.01996.pdf)
+- [Truth or backpropaganda? An empirical investigation of deep learning theory](https://openreview.net/forum?id=HyxyIgHFvr)
 
 ## adversarial + robustness
 
@@ -285,6 +286,7 @@ some more concrete questions:
 - deep vs. shallow [rvw](http://cbmm.mit.edu/sites/default/files/publications/CBMM-Memo-058v5.pdf)
 - [probabilistic framework](https://www.nari.ee.ethz.ch/commth//pubs/files/deep-2016.pdf)
 - information bottleneck: tishby paper + david cox follow-up
+- [Emergence of Invariance and Disentanglement in Deep Representations](https://arxiv.org/abs/1706.01350)
 - [manifold learning](https://www.deeplearningbook.org/version-2015-10-03/contents/manifolds.html)
   - [random manifold learning paper](https://ieeexplore.ieee.org/document/7348689/) 
 
@@ -326,6 +328,10 @@ some more concrete questions:
 - [memorization in overparameterized autoencoders](https://arxiv.org/abs/1810.10333)
   - autoencoders don't lean identity, but learn projection onto span of training examples = memorization of training examples
   - sometimes output individual training images, not just project onto space of training images
+- https://arxiv.org/pdf/1810.10333.pdf
+- https://arxiv.org/pdf/1909.12362.pdf
+- https://pdfs.semanticscholar.org/a624/6278cb5e2d0ab79fe20fe20a41c586732a11.pdf
+- [Auto-encoders: reconstruction versus compression](http://www.yann-ollivier.org/rech/publs/aagen.pdf)
 
 ## probabilistic inference
 
