@@ -21,4 +21,4 @@ collections:
     output: true
 
 markdown: kramdown
-exclude: ["Rakefile", "LICENSE", "readme.markdown"]
+exclude: ["Rakefile", "LICENSE", "readme.md"]

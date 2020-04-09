@@ -2,17 +2,14 @@
     {% include head.html %}
     {% include navigation.html %}
     {% include google_analytics.html %}
+    {% include js.html %}
 </header>
 
-
 <body data-spy="scroll" data-target=".sidebar">
-
     <div class="wrapper">
         <div class="sidenav navbar">
             <div id="toc"></div>
         </div>
-
-
 
         <div class="main">
             <div id="content">
@@ -72,10 +69,6 @@
     padding-top: 80px;
 }
 
-#markdown-toc {
-    display: none;
-}
-
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
@@ -103,7 +96,6 @@ img {
     });
 </script>
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
-{% include js.html %}
 
 
 <script type="text/javascript">

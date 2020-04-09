@@ -14,3 +14,10 @@ Useful phrases
 
 - previous work did this. We perform the crucial next step...
 - To meet this challenge, we...
+
+
+
+# viz
+
+- legends should be easy to correspond to lines
+- think about whether colormap should be sequential/diverging

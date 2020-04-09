@@ -24,42 +24,15 @@
                         <a href="#page-top"></a>
                     </li>
 
-
                     {% if page.url contains 'notes' or page.url contains 'projects' or page.url contains 'blog' or page.url contains 'ovw' or page.url contains 'pres'%}
-                        {% for pagex in site.pages | sort: "title" %}
-                            {% unless pagex.url == "/" %}
-                            {% unless pagex.url contains 'css' %}
-                            {% unless pagex.url contains 'projects' %}
-                            {% unless pagex.url contains 'notes' %}
-                            {% unless pagex.url contains 'pres' %}
-                            {% unless pagex.title contains 'Markdown' %}
-                            <li><a class="page-scroll" href="{{site.baseurl}}/#{{ pagex.title }}">{{ pagex.title }}</a></li>
-                            {% endunless %}
-                            {% endunless %}
-                            {% endunless %}
-                            {% endunless %}
-                            {% endunless %}
-                            {% endunless %}
-                        {% endfor %}
+                        <li><a class="page-scroll" href="{{site.baseurl}}/#research">Research</a></li>
+                        <li><a class="page-scroll" href="{{site.baseurl}}/#experience">Experience</a></li>
                         <li><a class="page-scroll" href="{{site.baseurl}}/#notes_main">Posts+Resources</a></li>
 
                     {% else %}
-                        {% for pagex in site.pages | sort: "title" %}
-                            {% unless pagex.url == "/" %}
-                            {% unless pagex.url contains 'css' %}
-                            {% unless pagex.url contains 'projects' %}
-                            {% unless pagex.url contains 'notes' %}
-                            {% unless pagex.title contains 'Markdown' %}
-                            {% unless pagex.url contains 'pres' %}
-                            <li><a class="page-scroll" href="#{{ pagex.title }}">{{ pagex.title }}</a></li>
-                            {% endunless %}
-                            {% endunless %}
-                            {% endunless %}
-                            {% endunless %}
-                            {% endunless %}
-                            {% endunless %}
-                        {% endfor %}
-                        <li><a class="page-scroll" href="#notes_main">posts+Resources</a></li>
+                        <li><a class="page-scroll" href="#research">Research</a></li>
+                        <li><a class="page-scroll" href="#experience">Experience</a></li>
+                        <li><a class="page-scroll" href="#notes_main">Posts+Resources</a></li>
                     {% endif %}
 
                 </ul>

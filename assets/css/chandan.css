@@ -11,3 +11,18 @@ a, h1, h2, h3, h4, h5, ul, li {
     text-transform: lowercase;
 }
 
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+
+    /* background: rgb(20,50,107); */
+    /* background: radial-gradient(circle, rgba(20,50,107,1) 0%, rgba(0,0,0,1) 46%); */
+    /* background: radial-gradient(circle, rgba(20,50,107,1) 0%, rgba(0,0,0,1) 84%); */
+
+    /* background-image: radial-gradient(blue, black); */
+    /* background-image: linear-gradient(red, yellow); */
+    background: #000000;
+    background-size: cover /* background-image: radial-gradient(circle, blue 0.00001%, black 99.9999%); /* Standard syntax (must be last) */ */
+}
