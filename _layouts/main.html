@@ -1,96 +1,32 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-
-<div id="particles-js" text-align="center"></div>
-
-{% include google_analytics.html %}
-{% include head.html %}
-{% include navigation.html %}
+<header>
+    <div id="particles-js" text-align="center"></div>
+    {% include google_analytics.html %}
+    {% include head.html %}
+    {% include navigation.html %}
+    {% include js.html %}
+</header>
 {% include 00_about.html %}
 
-
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-  {% for page in site.pages %}
-    {% if page.section-type == "intro" %}
-      <section id="{{ page.title }}" class="container content-section">
-          <div class="row">
-              <div class="col-lg-8 col-lg-offset-2">
-                    {{ page.content | markdownify }}
-
-                    {% if page.email %}
-                    <p><a href="mailto:{{ page.email }}">{{ page.email }}</a></p>
-                    {% endif %}
-                    <ul class="list-inline social-buttons">
-                        {% for network in page.social %}
-                        <li><a href="{{ network.url }}"><i class="fa fa-{{ network.title }} fa-fw"></i></a></li>
-                        {% endfor %}
-                    </ul>
-              </div>
+    <section id="research" class="container content-section">
+          <div class="col-lg-8 col-lg-offset-2">
+                {% include 01_research.html %}
           </div>
-      </section>
-    {% elsif page.section-type == "research" %}
-
-      <section id="{{ page.title }}" class="container content-section text-center">
-          <div class="row">
-              <div class="col-lg-8 col-lg-offset-2">
-                {{ page.content | markdownify }}
-              </div>
-          </div>
-
-
     </section>
-    {% elsif page.section-type == "timeline" %}
-      <!-- {{ page.title }} Section -->
-      <section id="{{ page.title }}" class="container content-section text-center">
-          <div class="row">
-              <div class="col-lg-64 col-lg-offset-0">
-                {{ page.content | markdownify }}
-                <ul class="timeline">
-                    {% for timeline_blurb in site.timeline_blurbs %}
-                      {% assign loopindex = forloop.index | modulo: 2 %}
-                      {% capture class %}
-                        {% if loopindex == 0 %}
-                          timeline-inverted
-                        {% endif %}
-                      {% endcapture %}
 
-                      <li class="{{ class }}">
-                          <div class="timeline-image">
-                              <img class="img-circle img-responsive" src="{{ site.baseurl }}/{% if timeline_blurb.image %}{{ timeline_blurb.image }}{% else %}{{site.career-img}}{% endif %}" alt="">
-                          </div>
-                          <div class="timeline-panel">
-                              <div class="timeline-heading">
-                                  <h4>{{ timeline_blurb.title }}</h4>
-                                  <h4 class="subheading">{{ timeline_blurb.subtitle }}</h4>
-                              </div>
-                              <div class="timeline-body">
-                                  <p class="text-muted">{{ timeline_blurb.content }}</p>
-                              </div>
-                          </div>
-                      </li>
-
-                    {% endfor %}
-
-                      <li class="timeline-inverted">
-                        <div class="timeline-image">
-                          <img class="img-circle img-responsive" src="{{ site.baseurl }}/assets/img/default.jpg" alt="">
-                        </div>
-                      </li>
-                </ul>
-
-              </div>
+    <section id="experience" class="container content-section">
+          <div class="col-lg-64 col-lg-offset-0">
+                {% include 02_experience.html %}
           </div>
-      </section>
+    </section>
 
-    {% elsif page.section-type == "notes" %}
-        <section id="notes_main" class="container content-section">
-            {{page.content}}
-        </section>
-
-    {% endif %}
-  {% endfor %}
-
-{% include js.html %}
+    <section id="notes_main" class="container content-section">
+        <div class="col-lg-64 col-lg-offset-0">
+            {% include 03_notes_main.html %}
+        </div>
+    </section>
 
 </body>
 </html>

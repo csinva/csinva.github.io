@@ -1,0 +1,34 @@
+<h2 style="text-align: center;"> Research </h2>
+
+<ul class="timeline">
+    {% for timeline_blurb in site.timeline_blurbs %}
+      {% assign loopindex = forloop.index | modulo: 2 %}
+      {% capture class %}
+        {% if loopindex == 0 %}
+          timeline-inverted
+        {% endif %}
+      {% endcapture %}
+
+      <li class="{{ class }}">
+          <div class="timeline-image">
+              <img class="img-circle img-responsive" src="{{ site.baseurl }}/{% if timeline_blurb.image %}{{ timeline_blurb.image }}{% else %}{{site.career-img}}{% endif %}" alt="">
+          </div>
+          <div class="timeline-panel">
+              <div class="timeline-heading">
+                  <h4>{{ timeline_blurb.title }}</h4>
+                  <h4 class="subheading">{{ timeline_blurb.subtitle }}</h4>
+              </div>
+              <div class="timeline-body">
+                  <p class="text-muted">{{ timeline_blurb.content }}</p>
+              </div>
+          </div>
+      </li>
+
+    {% endfor %}
+
+      <li class="timeline-inverted">
+        <div class="timeline-image">
+          <img class="img-circle img-responsive" src="{{ site.baseurl }}/assets/img/default.jpg" alt="">
+        </div>
+      </li>
+</ul>

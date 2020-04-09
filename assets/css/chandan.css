@@ -11,6 +11,15 @@ a, h1, h2, h3, h4, h5, ul, li {
     text-transform: lowercase;
 }
 
+.research_thumb {
+    width: 50%; /* 90% */
+    border-radius: 50%;
+    border: 1px solid #f1f1f1;
+}
+td {
+    text-align: center;
+}
+
 #particles-js {
     position: absolute;
     width: 100%;
