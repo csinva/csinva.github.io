@@ -1,6 +1,6 @@
 ---
 layout: notes
-title: A checklist for paper writing
+title: A checklist for vizualizations + paper writing
 category: blog
 ---
 
@@ -20,4 +20,5 @@ Useful phrases
 # viz
 
 - legends should be easy to correspond to lines
+  - maybe just put label on every line
 - think about whether colormap should be sequential/diverging

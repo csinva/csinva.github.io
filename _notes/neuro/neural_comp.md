@@ -218,11 +218,6 @@ category: neuro
 - people didn't see sparsity for a while because they were using very specific stimuli and specific neurons
   - now people with less biased sampling are finding more sparsity
   - in cortex anasthesia tends to lower firing rates, but opposite in hippocampus
-- algorithms
-  - thresholding (simplest) - do $D^Ty$ and then threshold this
-  - basis pursuit - change $l_0$ to $l_1$
-    - this will work under certain conditions (with theoretical guarantees)
-  - matching purusuit - greedy, find support one at a time, then look for the next one
 
 # self-organizing maps
 
@@ -312,34 +307,6 @@ category: neuro
   - learn the distribution of pixels in 3x3 patches
   - then maximize this distribution - can yield textures
 - reducing the dimensionality of data with neural networks
-
-# ica
-
-- PCA vs ICA: both have $X = As$, where $s$ is components (assume X has zero mean)
-  - PCA / factor analysis assume $s$ Gaussian, want to decorrelate them
-    - $\mathbb E [s_i \cdot s_j] = 0$
-    - when Gaussian this implies independenct
-  - ICA: assume s not Gaussian, want to make them independent
-    - $P(s) = \prod_i P(s_i)$
-    - this is a special case of sparse coding
-- bell & sejnowski 1995
-  - entropy maximization - try to find a nonlinear function $g(x)$ which lets you map that distr $f(x)$ to uniform![Screen Shot 2018-11-13 at 4.23.46 PM](assets/Screen Shot 2018-11-13 at 4.23.46 PM.png)
-  - then, that function $g(x)$ is the cdf of $f(x)$
-  - in ICA, we do this for higher dims - want to map distr of $x_1, ..., x_p$ to $y_1, ..., y_p$ where distr over $y_i$'s is uniform (implying that they are independent)
-    - additionally we want the map to be information preserving
-  - mathematically: $\underset{W} \max I(x; y) = \underset{W} \max H(y)$ since $H(y|x)$ is zero (there is no randomness)
-    - assume $y = \sigma (W x)$ where $\sigma$ is elementwise
-    - (then S = WX, $W=A^{-1}$)
-    - requires certain assumptions so that $p(y)$ is still a distr. :$p(y) = p(x) / |J|$ where J is Jacobian
-  - learn W via gradient ascent $\Delta W \propto \partial / \partial W (\log |J|)$
-    - there is now something faster called fast ICA
-  - relationship to sparse coding
-    - ICA can be a special case of sparse coding...
-    - can think of cost as a prior over coefficients (Laplacian distr.) and reconstruction error as likelihood model
-    - can write down posterior distr, derive learning on A for gradient ascent
-  - topographic ICA (make nearby coefficient like each other)
-
-- model predicts and all that's passed on is the residual
 
 # spiking neurons
 

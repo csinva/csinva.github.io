@@ -170,11 +170,6 @@ category: research
   - make rule lists, then compare the outcomes for each rule with what clinicians think should be outcome for each rule
     - look at rules with biggest disagreement and engineer/improve rules or penalize unreliable rules
 
-## learning disentangled representations
-
-- [InfoGAN: Interpretable Representation Learning by Information Maximizing Generative Adversarial Nets](https://arxiv.org/abs/1606.03657) (chen et al. 2016)
-- [Interpretable VAEs for nonlinear group factor analysis](https://arxiv.org/abs/1802.06765)
-
 ## misc models
 
 - learning AND-OR Templates for Object Recognition and Detection (zhu_13)
@@ -275,6 +270,7 @@ category: research
   - using an L1 distance yields better gradients than an L2 distance
 
 ### vim framework
+
 - vim definition
         1. a quantitative indicator that quantifies the change of model output value w.r.t. the change or permutation of one or a set of input variables
         2. an indicator that quantifies the contribution of the uncertainties of one or a set of input variables to the uncertainty of model output variable
@@ -337,7 +333,6 @@ category: research
     - CSM - relative change of model ouput mean when range of $X_i$ is reduced to any subregion
     - CSV - same thing for variance
 - [anova decomposition](https://statweb.stanford.edu/~owen/mc/A-anova.pdf) - factor function into means, first-order terms, and interaction terms
-    - 
 
 ## model-agnostic curves
 
@@ -723,7 +718,6 @@ category: research
 - [Interpreting Layered Neural Networks via Hierarchical Modular Representation](https://arxiv.org/pdf/1810.01588.pdf)
 - [Entropic Variable Boosting for Explainability & Interpretability in Machine Learning](https://arxiv.org/abs/1810.07924)
 - [Understanding Individual Decisions of CNNs via Contrastive Backpropagation](https://arxiv.org/abs/1812.02100v1)
-- [“What are You Listening to?” Explaining Predictions of Deep Machine Listening Systems](https://ieeexplore.ieee.org/abstract/document/8553178)
 - [Understanding Impacts of High-Order Loss Approximations and Features in Deep Learning Interpretation](https://arxiv.org/abs/1902.00407)
 - [A Game Theoretic Approach to Class-wise Selective Rationalization](https://arxiv.org/abs/1910.12853)
 - [Additive Explanations for Anomalies Detected from Multivariate Temporal Data](https://dl.acm.org/citation.cfm?id=3358121)
@@ -744,21 +738,24 @@ category: research
 - [The many Shapley values for model explanation](https://arxiv.org/abs/1908.08474)
 - [XDeep: An Interpretation Tool for Deep Neural Networks](https://arxiv.org/abs/1911.01005)
 - [Shapley Decomposition of R-Squared in Machine Learning Models](https://arxiv.org/abs/1908.09718)
-- https://dl.acm.org/doi/abs/10.14778/3380750.3380752
-- https://arxiv.org/abs/2002.08125
-- https://arxiv.org/abs/2002.08247
-- https://arxiv.org/abs/2002.00079
-- https://arxiv.org/abs/2003.03622
-- https://arxiv.org/abs/2002.03549
-- *https://arxiv.org/abs/2002.11097
-- *https://www.researchgate.net/profile/Leon_Sixt/publication/338115768_When_Explanations_Lie_Why_Many_Modified_BP_Attributions_Fail/links/5e4e226292851c7f7f48becb/When-Explanations-Lie-Why-Many-Modified-BP-Attributions-Fail.pdf
-- https://arxiv.org/abs/2002.08484
-- *https://arxiv.org/abs/2002.07985
-- https://arxiv.org/abs/2003.01640
-- https://arxiv.org/abs/2003.03934
-- https://ieeexplore.ieee.org/abstract/document/8999347
-- https://www.semanticscholar.org/paper/A-Causality-Analysis-for-Nonlinear-Classification-Kirihata-Maekawa/4b76830be36ae14d878f7c0a7ff2508bfe172f64
-- https://arxiv.org/abs/2001.11366
-- https://umangsbhatt.github.io/reports/icassp_2020.pdf
+- [Understanding Global Feature Contributions Through Additive Importance Measures](https://arxiv.org/abs/2004.00668) (covert, lundberg, & lee 2020)
+  - SAGE score looks at reduction in predictive accuracy due to subsets of features
+- [Personal insights for altering decisions of tree-based ensembles over time](https://dl.acm.org/doi/abs/10.14778/3380750.3380752)
+- [Gradient-Adjusted Neuron Activation Profiles for Comprehensive Introspection of Convolutional Speech Recognition Models](https://arxiv.org/abs/2002.08125)[
+- [Learning Global Transparent Models from Local Contrastive Explanations](https://arxiv.org/abs/2002.08247)
+- [Boosting Algorithms for Estimating Optimal Individualized Treatment Rules](https://arxiv.org/abs/2002.00079)
+- [Explaining Knowledge Distillation by Quantifying the Knowledge](https://arxiv.org/abs/2003.03622)
+- [Adversarial TCAV -- Robust and Effective Interpretation of Intermediate Layers in Neural Networks](https://arxiv.org/abs/2002.03549)
+- [Problems with Shapley-value-based explanations as feature importance measures](https://arxiv.org/abs/2002.11097)*
+- [When Explanations Lie: Why Many Modified BP Attributions Fail](https://www.researchgate.net/profile/Leon_Sixt/publication/338115768_When_Explanations_Lie_Why_Many_Modified_BP_Attributions_Fail/links/5e4e226292851c7f7f48becb/When-Explanations-Lie-Why-Many-Modified-BP-Attributions-Fail.pdf)
+- [Estimating Training Data Influence by Tracking Gradient Descent](https://arxiv.org/abs/2002.08484)
+- [Interpreting Interpretations: Organizing Attribution Methods by Criteria](https://arxiv.org/abs/2002.07985)
+- [Explaining Groups of Points in Low-Dimensional Representations](https://arxiv.org/abs/2003.01640)
+- [Causal Interpretability for Machine Learning -- Problems, Methods and Evaluation](https://arxiv.org/abs/2003.03934)
+- [Cyclic Boosting - An Explainable Supervised Machine Learning Algorithm - IEEE Conference Publication](https://ieeexplore.ieee.org/abstract/document/8999347)
+- [A Causality Analysis for Nonlinear Classification Model with Self-Organizing Map and Locally Approximation to Linear Model](https://www.semanticscholar.org/paper/A-Causality-Analysis-for-Nonlinear-Classification-Kirihata-Maekawa/4b76830be36ae14d878f7c0a7ff2508bfe172f64)
+- [Black-Box Saliency Map Generation Using Bayesian Optimisation](https://arxiv.org/abs/2001.11366)
+- [ON NETWORK SCIENCE AND MUTUAL INFORMATION FOR EXPLAINING DEEP NEURAL NETWORKS Brian Davis1∗](https://umangsbhatt.github.io/reports/icassp_2020.pdf)
+
 
 

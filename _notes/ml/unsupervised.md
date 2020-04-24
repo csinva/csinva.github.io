@@ -1,4 +1,5 @@
 ---
+
 layout: notes
 title: Unsupervised
 category: ml
@@ -88,60 +89,45 @@ graph LR;
     - $p(y|x, \theta_i) = \underbrace{\pi_i (x, \xi)}_{\text{mixing prop.}} \cdot \underbrace{\mu(\theta_i^Tx)^y\cdot[1-\mu(\theta_i^Tx)]^{1-y}}_{\text{mixture comp.}}$ where $\mu$ is the logistic function
 - also, nonlinear optimization for this (including EM)
 
-## spectral clustering
-
-- use the spectrum (eigenvalues) of the similarity matrix (ie.e kernal matrix) of the data to perform dim. reduction before clustering in fewer dimensions
-
 
 # dim reduction
 
-| Method              | Analysis objective | Temporal smoothing | Explicit noise model |
-|---------------------|--------------------|--------------------|----------------------|
-| PCA                 | Covariance         | No                 | No                   |
-| FA                  | Covariance         | No                 | Yes                  |
-| LDS/GPFA            | Dynamics           | Yes                | Yes                  |
-| NLDS                | Dynamics           | Yes                | Yes                  |
-| LDA                 | Classification     | No                 | No                   |
-| Demixed             | Regression         | No                 | Yes/No               |
-| Isomap/LLE          | Manifold discovery | No                 | No                   |
-| T-SNE               | ....               | ....               | ...                  |
-| UMAP                | ...                | ...                | ...                  |
-| NMF                 | ...                | ...                | ...                  |
-| SVCCA?              |                    |                    |                      |
-| diffusion embedding |                    |                    |                      |
-| ICA                 |                    |                    |                      |
-| K-means             |                    |                    |                      |
-| Autoencoders        |                    |                    |
-| VAEs        |                    |                    |
+| Method              | Analysis objective | Temporal smoothing | Explicit noise model | Notes |
+|---------------------|--------------------|--------------------|----------------------|---------------------|
+| PCA                 | Covariance         | No                 | No                   | orthogonality |
+| FA                  | Covariance         | No                 | Yes                  | like PCA, but with errors (not biased by variance) |
+| LDS/GPFA            | Dynamics           | Yes                | Yes                  |  |
+| NLDS                | Dynamics           | Yes                | Yes                  |  |
+| LDA                 | Classification     | No                 | No                   |  |
+| Demixed             | Regression         | No                 | Yes/No               |  |
+| Isomap/LLE          | Manifold discovery | No                 | No                   |  |
+| T-SNE               | ....               | ....               | ...                  |  |
+| UMAP                | ...                | ...                | ...                  |  |
 
-## linear decompositions: learn D s.t. $X=DA$
-
-- PCA - orthogonality
-  - compress data, remove correlations
-- FA (factor analysis) - like PCA but with errors, not biased by variance
-- NMF - $min_{D \geq 0, A \geq 0} \|\|X-DA\|\|_F^2$
+- NMF - $\min_{D \geq 0, A \geq 0} \|\|X-DA\|\|_F^2$
   - SEQNMF
 - ICA
   - remove correlations and higher order dependence
   - all components are equally important
   - like PCA, but instead of the dot product between components being 0, the mutual info between components is 0
   - goals
-    - minimizes statistical dependence between its components
+    - minimize statistical dependence between components
     - maximize information transferred in a network of non-linear units
     - uses information theoretic unsupervised learning rules for neural networks
   - problem - doesn't rank features for us
 - LDA/QDA - finds basis that separates classes
   - reduced to axes which separate classes (perpendicular to the boundaries)
 - K-means - can be viewed as a linear decomposition
-- dynamics
-  - LDS/GPFA
-  - NLDS
+
+## spectral clustering
+
 - *spectral* clustering - does dim reduction on eigenvalues (spectrum) of similarity matrix before clustering in few dims
   - uses adjacency matrix
   - basically like PCA then k-means
   - performs better with regularization - add small constant to the adjacency matrix
 
-### more on pca
+## pca
+
 - want new set of axes (linearly combine original axes) in the direction of greatest variability
     - this is best for visualization, reduction, classification, noise reduction
     - assume $X$ (nxp) has zero mean
@@ -179,17 +165,55 @@ Xrot_reduced = np.dot(X, U[:, :2]) # project onto first 2 dimensions (n x 2)
 - nonlinear pca
     - usually uses an auto-associative neural network
 
-## dictionary learning (not really dim reduction)
+## topic modeling
 
-goal: $X \approx W D $, during training simultaneously learn $W$ (coefficients) and $D$ (dictionary and at test time use $D$ and learn $w$
+- similar, try to discover topics in a model (which maybe can be linearly combined to produce the original document)
 
-- **nmf**: $W, D \geq 0$ elementwise
-- **sparse coding**: want W to be sparse, D to not be too large
-  - impose norm D not too big
-- topic modeling - similar, try to discover topics in a model (which maybe can be linearly combined to produce the original document)
-  - ex. LDA - generative model: posits that each document is a mixture of a **small number of topics** and that **each word's presence is attributable to one of the document's topics**
+- ex. LDA - generative model: posits that each document is a mixture of a **small number of topics** and that **each word's presence is attributable to one of the document's topics**
 
-## toplogical
+## sparse coding = sparse dictionary learning
+
+$$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min ||\mathbf{x^{(t)}} - \mathbf{Da^{(t)}}||_2^2 + \lambda ||\mathbf{a^{(t)}}||_1$$
+
+- D is like autoencoder output weight matrix
+- $a$ is more complicated - requires solving inner minimization problem
+- outer loop is not quite lasso - weights are not what is penalized
+- impose norm $D$ not too big
+- algorithms
+  - thresholding (simplest) - do $D^Ty$ and then threshold this
+  - basis pursuit - change $l_0$ to $l_1$
+    - this will work under certain conditions (with theoretical guarantees)
+  - matching purusuit - greedy, find support one at a time, then look for the next one
+
+## ica
+
+- 2 ways to define
+  - minimization of mutual info between components (use KL, max entropy)
+  - maximization of non-gaussianity - use kurtosis, negentropy
+- PCA vs ICA: both have $X = As$, where $s$ is components (assume X has zero mean)
+  - PCA / factor analysis assume $s$ Gaussian, want to decorrelate them
+    - $\mathbb E [s_i \cdot s_j] = 0$
+    - when Gaussian this implies independent
+  - ICA: assume s not Gaussian, want to make them independent
+    - $P(s) = \prod_i P(s_i)$
+- bell & sejnowski 1995
+  - entropy maximization - try to find a nonlinear function $g(x)$ which lets you map that distr $f(x)$ to uniform
+    - then, that function $g(x)$ is the cdf of $f(x)$
+  - in ICA, we do this for higher dims - want to map distr of $x_1, ..., x_p$ to $y_1, ..., y_p$ where distr over $y_i$'s is uniform (implying that they are independent)
+    - additionally we want the map to be information preserving
+  - mathematically: $\underset{W} \max I(x; y) = \underset{W} \max H(y)$ since $H(y|x)$ is zero (there is no randomness)
+    - assume $y = \sigma (W x)$ where $\sigma$ is elementwise
+    - (then S = WX, $W=A^{-1}$)
+    - requires certain assumptions so that $p(y)$ is still a distr: $p(y) = p(x) / |J|$ where J is Jacobian
+  - learn W via gradient ascent $\Delta W \propto \partial / \partial W (\log |J|)$
+    - there is now something faster called fast ICA
+  - relationship to sparse coding
+    - ICA can be a special case of sparse coding...
+    - can think of cost as a prior over coefficients (Laplacian distr.) and reconstruction error as likelihood model
+    - can write down posterior distr, derive learning on A for gradient ascent
+  - topographic ICA (make nearby coefficient like each other
+
+## topological
 
 - **multidimensional scaling (MDS)**
   - given a a distance matrix, MDS tries to recover low-dim coordinates s.t. distances are preserved
@@ -215,11 +239,78 @@ goal: $X \approx W D $, during training simultaneously learn $W$ (coefficients) 
 # generative models
 
 - overview: https://blog.openai.com/generative-models/
+- notes for [deep unsupervised learning](https://sites.google.com/view/berkeley-cs294-158-sp20/home)
+- MLE equivalent to minimizing KL for density estimation:
+  - $\min_\theta KL(p|| p_\theta) =\\ \min_\theta-H(p) + \mathbb E_{x\sim p}[-\log p_\theta(x)] \\ \max_\theta E_p[\log p_\theta(x)]$
+
+## autoregressive models
+
+- model input based on input
+  - $p(x_1)$ is a histogram (learned prior)
+  - $p(x_2|x_1)$ is a distr. ouptut by a neural net (output is logits, followed by softmax)
+  - all conditional distrs. can be given by neural net
+- can model using an RNN: e.g. char-rnn (karpathy, 2015): $\log p(x) - \sum_i \log p(x_i | x_{1:i-1})$, where each $x_i$ is a character
+- can also use masks
+  - masked autoencoder for distr. estimation - mask some weights so that autoencoder output is a factorized distr
+    - pick an odering for the pixels to be conditioned on
+  - ex. 1d masked convolution on wavenet (use past points to predict future points)
+  - ex. pixelcnn - use masking for pixels to the topleft
+  - ex. gated pixelcnn - fixes issue with blindspot
+  - ex. pixelcnn++ - nearby pixel values are likely to cooccur
+  - ex. pixelSNAIL - uses attention and can get wider receptive field
+  - **attention:**$A(q, K, V) = \sum_i \frac{\exp(q \cdot k_i)}{\sum_j \exp (q \cdot k_j)} v_i$
+    - masked attention can be more flexible than masked convolution
+  - can do super resolution, hierarchical autoregressive model
+- problems
+  - slow - have to sample each pixel (can speed up by caching activations)
+    - can also speed up by assuming some pixels conditionally independent
+- hard to get a latent reprsentation
+  - can use **Fisher score** $\nabla_\theta \log p_\theta (x)$
+
+
+
+### flow models
+
+- [normalizing flows](https://arxiv.org/pdf/1908.09257.pdf)
+- ultimate goal: a likelihood-based model with
+  - fast sampling
+  - fast inference (evaluating the likelihood)
+  - fast training
+  - good samples
+  - good compression
+- transform some $p(x)$ to some $p(z)$
+  - $x \to z = f_\theta (x)$, where $z \sim p_Z(z)$
+  - $p_\theta (x) dx = p(z)dz$
+  - $p_\theta(x) = p(f_\theta(x))|\frac {\partial f_\theta (x)}{\partial x}|$
+- autoregressive flows
+  - map $x\to z$ invertible
+    - $x \to z$ is same as log-likelihood computation
+    - $z\to x$ is like sampling
+  - end up being as deep as the number of variables
+- realnvp (dinh et al. 2017) - can couple layers to preserve invertibility but still be tractable
+  - downsample things and have different latents at different spatial scales
+- other flows
+  - flow++
+  - glow
+  - FFJORD - continuous time flows
+- discrete data can be harder to model
+  - **dequantization** - add noise (uniform) to discrete data
+
 
 ## vaes
 
+- [intuitively understanding vae](https://towardsdatascience.com/intuitively-understanding-variational-autoencoders-1bfe67eb5daf)
 - [VAE tutorial](https://jaan.io/what-is-variational-autoencoder-vae-tutorial/)
-- [beta-vae](https://openreview.net/references/pdf?id=Sy2fzU9gl) - adjustable hyperparameter $\beta$ that balances latent channel capacity and independence constraints with reconstruction accuracy.
+  - minimize $\mathbb E_{q_\phi(z|x)}[\log p_\theta(x|z)- D_{KL}(q_\phi(z|x)\:||\:p(z))]$
+    - want latent $z$ to be standard normal - keeps the space smooth
+  - hard to directly calculate $p(z|x)$, since it includes $p(x)$, so we approximate it with the variational posterior $q_\phi (z|x)$, which we assume to be Gaussian
+  - goal: $\text{argmin}_\phi KL(q_\phi(z|x) \:|| \:p(z|x))$
+    - still don't have acess to $p(x)$, so rewrite $\log p(x) = ELBO(\phi) + KL(q_\phi(z|x) \: || \: p(z|x))$
+    - instead of minimizing $KL$, we can just maximize the $ELBO=\mathbb E_q [\log p(x, z)] - \mathbb E_q[\log q_\phi (z|x)]$
+  - **mean-field variational inference** - each point has its own params (e.g. different encoder DNN) vs **amortized inference** - same encoder for all points
+- [pyro explanation](https://pyro.ai/examples/vae.html)
+  - want large evidence $\log p_\theta (\mathbf x)$ (means model is a good fit to the data)
+  - want good fit to the posterior $q_\phi(z|x)$
 - just an autoencoder where the middle hidden layer is supposed to be unit gaussian
   - add a kl loss to measure how well it maches a unit gaussian
     - for calculation purposes, encoder actually produces means / vars of gaussians in hidden layer rather than the continuous values....
@@ -229,10 +320,88 @@ goal: $X \approx W D $, during training simultaneously learn $W$ (coefficients) 
   - intuition: vaes put mass between modes while GANs push mass towards modes
 - constraint forces the encoder to be very efficient, creating information-rich latent variables. This improves generalization, so latent variables that we either randomly generated, or we got from encoding non-training images, will produce a nicer result when decoded.
 
+
 ## gans
 
+- evaluating gans
+  - don't have explicit objective like likelihood anymore
+  - kernel density = parzen-window density based on samples yields likelihood
+  - inception score $IS(\mathbf x) = \exp(\underbrace{H(\mathbf y)}_{\text{want to generate diversity of classes}} - \underbrace{H(\mathbf y|\mathbf x)}_{\text{each image should be distinctly recognizable}})$
+  - Frechet inception score works directly on embedded features
+- infogan
+  - ![infogan](assets/ml/infogan.png)
+- problems
+  - mode collapse - pick just one mode in the distr.
 - train network to be loss function
+- original gan paper (2014)
+- *generative adversarial network*
+- goal: want G to generate distribution that follows data
+  - ex. generate good images
+- two models
+  - *G* - generative
+  - *D* - discriminative
+- G generates adversarial sample x for D
+  - G has prior z
+  - D gives probability p that x comes from data, not G
+    - like a binary classifier: 1 if from data, 0 from G
+  - *adversarial sample* - from G, but tricks D to predicting 1
+- training goals
+  - G wants D(G(z)) = 1
+  - D wants D(G(z)) = 0
+    - D(x) = 1
+  - converge when D(G(z)) = 1/2
+  - G loss function: $G = argmin_G log(1-D(G(Z))$
+  - overall $\min_g \max_D$ log(1-D(G(Z))
+- training algorithm
+  - in the beginning, since G is bad, only train  my minimizing G loss function
 
-## autoregressive models
+## self-supervised
 
-- model input based on input
+- basics: predict some part of the input (e.g. present from past, bottom from top, etc.)
+  - ex. denoising autoencoder
+  - ex. in-painting (can use adversarial loss)
+  - ex. colorization, split-brain autoencoder
+    - colorization in video given first frame (helps learn tracking)
+  - ex. relative patch prediction
+  - ex. orientation prediction
+  - ex. nlp
+    - word2vec
+    - bert - predict blank word
+- contrastive predictive coding - translates generative modeling into classification
+  - *contrastive loss* = *InfoNCE loss* uses cross-entropy loss to measure how well the model can classify the “future” representation amongst a set of unrelated “negative” samples
+  - negative samples may be from other batches or other parts of the input
+- momentum contrast - queue of previous embeddings are "keys"
+  - match new embedding (query) against keys and use contrastive loss
+  - similar idea as memory bank
+- **SimCLR** ([Chen et al, 2020](https://arxiv.org/abs/2002.05709))
+  - maximize agreement for different points after some augmentation (contrastive loss)
+
+
+
+## semi-supervised
+
+- make the classifier more confident
+  - entropy minimization - try to minimize the entropy of output predictions (like making confident predictions labels)
+  - pseudo labeling - just take argmax pred as if it were the label
+- label consistency with data augmentation
+- ensembling
+  - temporal ensembling - ensemble multiple models at different training epochs
+  - mean teachers - learn from exponential moving average of students
+- unsupervised data augmentation - augment and ensure prediction is the same
+- distribution alignment - ex. cyclegan - enforce  cycle consistency = dual learning = back translation
+  - simpler is marginal matching
+
+
+
+# compression
+
+- simplest - fixed-length code
+- variable-length code
+  - could append stop char to each codeword
+  - general prefix-free code = binary tries
+    - codeword is path from froot to leaf
+    - ![Screen Shot 2020-04-20 at 8.50.07 PM](assets/ml/Screen Shot 2020-04-20 at 8.50.07 PM.png)
+  - huffman code - higher prob = shorter
+- **arithmetic coding**
+  - motivation: coding one symbol at a time incurs penalty of +1 per symbol - more efficient to encode groups of things
+  - can be improved with good autoregressive model

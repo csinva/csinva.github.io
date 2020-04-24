@@ -47,7 +47,7 @@ category: stat
 ## relative entropy / mutual info
 
 - *relative entropy* = *KL divergence* - measures distance between 2 distributions
-  - $$D(p\|\|q) = \sum_x p(x) log \frac{p(x)}{q(x)} = E_p log \frac{p(X)}{q(X)}$$
+  - $$D(p\|\|q) = \sum_x p(x) log \frac{p(x)}{q(x)} = \mathbb E_p log \frac{p(X)}{q(X)} = \mathbb E_p[-\log q(X)] - H(p)	$$
   - if we knew the true distribution p of the random variable, we could construct a code with average description length H(p). 
   - If, instead, we used the code for a distribution q, we would need H(p) + D(p\|\|q) bits on average to describe the random variable.
   - $D(p\|\|q) \neq D(q\|\|p)$
