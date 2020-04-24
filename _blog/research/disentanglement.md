@@ -6,11 +6,15 @@ category: blog
 
 # VAEs
 
-*Some good disentangled VAE implementations are [here](https://github.com/YannDubs/disentangling-vae) and more general VAE implementations are [here](https://github.com/AntixK/PyTorch-VAE)*
+*Some good disentangled VAE implementations are [here](https://github.com/YannDubs/disentangling-vae) and more general VAE implementations are [here](https://github.com/AntixK/PyTorch-VAE)*.
 
-- loss function to minimize: $$\overbrace{\mathbb  E_{enc_\phi(\mathbf z \vert \mathbf x)}}^{\text{Samples}} [ \underbrace{-\log dec_{\mathbf \theta} ( \mathbf x\vert \mathbf z)}_{\text{reconstruction loss}} ]      		+ {\color{teal}\beta}\; \sum_i \underbrace{\text{KL} \left(enc_\phi( \mathbf z_i\vert \mathbf x)\:\vert \vert\:prior(\mathbf z_i) \right)}_{\text{compactness prior loss}} 																		 					+ \gamma \; \underbrace{\text{KL} \left( dec_\phi(\mathbf z\vert \mathbf x) \vert \vert \prod_i dec_\phi( \mathbf z_i\vert \mathbf x)  \right)}_{\text{total correlation loss}}$$
-	- goal is to learn $\phi$ for the encoder $enc_\phi( \mathbf z| \mathbf x)$ and $\theta$ for the decoder $dec_{\mathbf \theta} ( \mathbf x| \mathbf z)$
-	- all done with standard vae setup (i.e. code $z$ is sampled)
+The goal is to obtain a nice latent representation $\mathbf z$ for our inputs $\mathbf x$. To do this, we learn parameters $\phi$ for the encoder $enc_\phi( \mathbf z| \mathbf x)$ and $\theta$ for the decoder $dec_{\mathbf \theta} ( \mathbf x| \mathbf z)$. We do this with the standard vae setup, whereby a code $z$ is sampled, using the output of the encoder (intro to VAEs [here](https://towardsdatascience.com/intuitively-understanding-variational-autoencoders-1bfe67eb5daf)).
+
+
+
+## disentangled vae loss function
+
+$$\overbrace{\mathbb  E_{enc_\phi(\mathbf z \vert \mathbf x)}}^{\text{Samples}} [ \underbrace{-\log dec_{\mathbf \theta} ( \mathbf x\vert \mathbf z)}_{\text{reconstruction loss}} ]      		+ {\color{teal}\beta}\; \sum_i \underbrace{\text{KL} \left(enc_\phi( \mathbf z_i\vert \mathbf x)\:\vert \vert\:prior(\mathbf z_i) \right)}_{\text{compactness prior loss}} 																		 					+ \gamma \; \underbrace{\text{KL} \left( dec_\phi(\mathbf z\vert \mathbf x) \vert \vert \prod_i dec_\phi( \mathbf z_i\vert \mathbf x)  \right)}_{\text{total correlation loss}}$$
 
 | reconstruction loss                             | compactness prior loss                            |            total correlation loss             |
 | ----------------------------------------------- | ------------------------------------------------- | :-------------------------------------------: |
@@ -33,6 +37,10 @@ category: blog
     - intractable (requires pass through the whole dset)
     - instead sample $dec_\phi(\mathbf z| \mathbf x)$ and create $\prod_j dec_\phi( \mathbf z_i| \mathbf x) $ by permuting across the batch dimension
       - now, calculate the kl with the *density-ratio trick* - train a classifier to approximate the ratio from these terms
+
+
+
+## disentangled vae in code
 
 ```python
 # Reconstruction + KL divergence losses summed over all elements and batch
@@ -66,14 +74,21 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
   
 	return rec_loss + beta * KLD
 ```
+
+
+## how do these terms appear in different papers
+
 - [beta-vae](https://openreview.net/references/pdf?id=Sy2fzU9gl) (higgins et al. 2017) - add hyperparameter $\beta$ to weight the compactness prior term
 - [beta-vae H](https://arxiv.org/pdf/1804.03599.pdf) (burgess et al. 2018) - add parameter $C$ to control the contribution of the compactness prior term
-  - $\overbrace{\mathbb  E_{enc_\phi(\mathbf z| \mathbf x^{})}}^{\text{Samples}} [ \underbrace{-\log dec_{\mathbf \theta} ( \mathbf x| \mathbf z)}_{\text{reconstruction loss}} ]      		+ \textcolor{teal}{\beta}\; |\sum_i \underbrace{\text{KL} \left(enc_\phi( \mathbf z_i| \mathbf x)\:||\:prior(\mathbf z_i) \right)}_{\text{compactness prior loss}} -C|																		 					$
+  - $\overbrace{\mathbb  E_{enc_\phi(\mathbf z| \mathbf x^{})}}^{\text{samples}} [ \underbrace{-\log dec_{\mathbf \theta} ( \mathbf x| \mathbf z)}_{\text{reconstruction loss}} ]      		+ \textcolor{teal}{\beta}\; |\sum_i \underbrace{\text{KL} \left(enc_\phi( \mathbf z_i| \mathbf x)\:||\:prior(\mathbf z_i) \right)}_{\text{compactness prior loss}} -C|																		 					$
   -  C is gradually increased from zero (allowing for a larger compactness prior loss) until good quality reconstruction is achieved
 - [factor-vae](https://arxiv.org/abs/1802.05983) (kim & minh 2018) - adds total correlation loss term
   - computes correlation loss term using discriminator
   - [beta-TC-VAE = beta-total-correlation VAE](https://arxiv.org/abs/1802.04942) (chen et al. 2018) - same objective but computed without need for discriminator
   - [Interpretable VAEs for nonlinear group factor analysis](https://arxiv.org/abs/1802.06765)
+- ICA
+  - maximize non-gaussianity of $z$ - use kurtosis, negentropy
+  - minimize mutual info between components of $z$ - use KL, max entropy
 - more papers
   - [infoVAE](https://arxiv.org/abs/1706.02262)
   - [dipVAE](https://arxiv.org/abs/1711.00848)

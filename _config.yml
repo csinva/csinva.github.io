@@ -4,7 +4,7 @@ baseurl: ""
 # Site Settings
 title: Chandan Singh
 description: "Chandan Singh Homepage"
-keywords: "Chandan, Singh, Machine Learning, Berkeley, Interpretability"
+keywords: "Chandan Singh, Machine Learning, Berkeley, Interpretability, Explainability"
 collections:
  research_ovws:
     name: research_ovws
@@ -19,6 +19,6 @@ collections:
  timeline_blurbs:
     name: timeline_blurbs
     output: true
-
 markdown: kramdown
+highlighter: rouge
 exclude: ["Rakefile", "LICENSE", "readme.md"]

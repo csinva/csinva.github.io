@@ -187,16 +187,21 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
 
 ## ica
 
-- 2 ways to define
-  - minimization of mutual info between components (use KL, max entropy)
-  - maximization of non-gaussianity - use kurtosis, negentropy
-- PCA vs ICA: both have $X = As$, where $s$ is components (assume X has zero mean)
-  - PCA / factor analysis assume $s$ Gaussian, want to decorrelate them
-    - $\mathbb E [s_i \cdot s_j] = 0$
-    - when Gaussian this implies independent
-  - ICA: assume s not Gaussian, want to make them independent
-    - $P(s) = \prod_i P(s_i)$
-- bell & sejnowski 1995
+- goal: want to decompose $X$ into $s$, where we assume $X = As$
+  - assumptions
+    - independence: $P(s) = \prod_i P(s_i)$
+    - non-gaussianity of $s$
+  - 2 ways to get $s$ which matches these assumptions
+    1. maximize non-gaussianity of $s$ - use kurtosis, negentropy
+    2. minimize mutual info between components of $s$ - use KL, max entropy
+       1. often equivalent
+  - identifiability: $s$ is identifiable up to a permutation ans scaling of sources when
+    - at most one of the sources $s_k$ is gaussian
+    - $A$ is full-rank
+- ICA learns components which are completely independent, whereas PCA learns orthogonal components
+- **non-linear ica**: $X \approx f(s)$, where assumptions on $s$ are the same, and $f$ can be nonlinear
+  - to obtain identifiability, we need to restrict $f$ and/or constrain the distr of the sources $s$
+- bell & sejnowski 1995 original formulation (slightly different)
   - entropy maximization - try to find a nonlinear function $g(x)$ which lets you map that distr $f(x)$ to uniform
     - then, that function $g(x)$ is the cdf of $f(x)$
   - in ICA, we do this for higher dims - want to map distr of $x_1, ..., x_p$ to $y_1, ..., y_p$ where distr over $y_i$'s is uniform (implying that they are independent)
@@ -207,11 +212,7 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
     - requires certain assumptions so that $p(y)$ is still a distr: $p(y) = p(x) / |J|$ where J is Jacobian
   - learn W via gradient ascent $\Delta W \propto \partial / \partial W (\log |J|)$
     - there is now something faster called fast ICA
-  - relationship to sparse coding
-    - ICA can be a special case of sparse coding...
-    - can think of cost as a prior over coefficients (Laplacian distr.) and reconstruction error as likelihood model
-    - can write down posterior distr, derive learning on A for gradient ascent
-  - topographic ICA (make nearby coefficient like each other
+- topographic ICA (make nearby coefficient like each other)
 
 ## topological
 

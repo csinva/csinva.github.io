@@ -12,11 +12,12 @@
             <div id="toc"></div>
         </div>
 
-        <div class="main">
-            <div id="content">
-                <p class="title"> {{ page.title | downcase }} </p>
+        <div class="main" style="margin-right: 15%;">
+            <div id="content" class="markdown">
+                <p class="title" style="font-size: 60px"> {{ page.title | downcase }} </p>
+                <br>
                 <a style="float:left" href="https://github.com/csinva/csinva.github.io">view on github<i class="fa fa-github fa-fw"></i></a>
-                <br/><br/><hr>
+                <br/><hr>
                 {{ page.content | markdownify }}
             </div>
         </div>
@@ -25,7 +26,11 @@
 
 </body>
 
-
+<style>
+.markdown p, li, ul{
+    font-size: large;
+}
+</style>
 
 <!--js-->
 <script type="text/x-mathjax-config">
