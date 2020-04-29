@@ -37,6 +37,8 @@ category: stat
   - standard dev
   - standard error = standard dev / sqrt(n) = standard error of the mean when you're estimating a mean
   - 95% confidence interval = 2*standard error
+- can get prediction intervals for on-line data using [conformal prediction](https://arxiv.org/abs/0706.3188)
+  - *nonconformity measure* - how unusual an examples looks relative to previous examples
 
 ## sample-size calculation
 
