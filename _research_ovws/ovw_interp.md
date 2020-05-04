@@ -13,6 +13,7 @@ category: research
 - [Interpretable machine learning: definitions, methods, and applications](https://arxiv.org/abs/1901.04592) (murdoch et al. 2019)
 - [Predictive Models: Explore, Explain, and Debug](https://pbiecek.github.io/PM_VEE/preface.html) (biecek & burzykowski, in progress)
 - [Explanation Methods in Deep Learning: Users, Values, Concerns and Challenges](https://arxiv.org/abs/1803.07517) (ras et al. 2018)
+- [Explainable Deep Learning: A Field Guide for the Uninitiated](https://arxiv.org/pdf/2004.14545.pdf)
 - [Interpretable Deep Learning in Drug Discovery](https://arxiv.org/abs/1903.02788)
 - [Explainable AI: A Brief Survey on History, Research Areas, Approaches and Challenges](https://link.springer.com/chapter/10.1007/978-3-030-32236-6_51)
 - [Explainable Artificial Intelligence (XAI): Concepts, Taxonomies, Opportunities and Challenges toward Responsible AI](https://arxiv.org/abs/1910.10045)

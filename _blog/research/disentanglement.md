@@ -81,7 +81,7 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
 
 - [beta-vae](https://openreview.net/references/pdf?id=Sy2fzU9gl) (higgins et al. 2017) - add hyperparameter $\beta$ to weight the compactness prior term
 - [beta-vae H](https://arxiv.org/pdf/1804.03599.pdf) (burgess et al. 2018) - add parameter $C$ to control the contribution of the compactness prior term
-  - $\overbrace{\mathbb  E_{enc_\phi(\mathbf z\vert \mathbf x^{})}}^{\text{samples}} [ \underbrace{-\log dec_{\mathbf \theta} ( \mathbf x\vert \mathbf z)}_{\text{reconstruction loss}} ]      		+ \textcolor{teal}{\beta}\; \vert\sum_i \underbrace{\text{KL} \left(enc_\phi( \mathbf z_i\vert \mathbf x)\:\vert\vert\:prior(\mathbf z_i) \right)}_{\text{compactness prior loss}} -C\vert																		 					$
+  - $\overbrace{\mathbb  E_{enc_\phi(\mathbf z\vert \mathbf x)}}^{\text{samples}} [ \underbrace{-\log dec_{\mathbf \theta} ( \mathbf x\vert \mathbf z)}_{\text{reconstruction loss}} ]      		+ \textcolor{teal}{\beta}\; \vert\sum_i \underbrace{\text{KL} \left(enc_\phi( \mathbf z_i\vert \mathbf x)\:\vert\vert\:prior(\mathbf z_i) \right)}_{\text{compactness prior loss}} -C\vert																		 					$
   -  C is gradually increased from zero (allowing for a larger compactness prior loss) until good quality reconstruction is achieved
 - [factor-vae](https://arxiv.org/abs/1802.05983) (kim & minh 2018) - adds total correlation loss term
   - computes correlation loss term using discriminator
