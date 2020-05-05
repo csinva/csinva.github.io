@@ -187,19 +187,19 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
 
 ## ica
 
-- goal: want to decompose $X$ into $s$, where we assume $X = As$
+- goal: want to decompose $X$ into $z$, where we assume $X = Az$
   - assumptions
-    - independence: $P(s) = \prod_i P(s_i)$
-    - non-gaussianity of $s$
-  - 2 ways to get $s$ which matches these assumptions
-    1. maximize non-gaussianity of $s$ - use kurtosis, negentropy
-    2. minimize mutual info between components of $s$ - use KL, max entropy
+    - independence: $P(z) = \prod_i P(z_i)$
+    - non-gaussianity of $z$
+  - 2 ways to get $z$ which matches these assumptions
+    1. maximize non-gaussianity of $z$ - use kurtosis, negentropy
+    2. minimize mutual info between components of $z$ - use KL, max entropy
        1. often equivalent
-  - identifiability: $s$ is identifiable up to a permutation ans scaling of sources when
-    - at most one of the sources $s_k$ is gaussian
+  - identifiability: $z$ is identifiable up to a permutation ans scaling of sources when
+    - at most one of the sources $z_k$ is gaussian
     - $A$ is full-rank
 - ICA learns components which are completely independent, whereas PCA learns orthogonal components
-- **non-linear ica**: $X \approx f(s)$, where assumptions on $s$ are the same, and $f$ can be nonlinear
+- **non-linear ica**: $X \approx f(z)$, where assumptions on $s$ are the same, and $f$ can be nonlinear
   - to obtain identifiability, we need to restrict $f$ and/or constrain the distr of the sources $s$
 - bell & sejnowski 1995 original formulation (slightly different)
   - entropy maximization - try to find a nonlinear function $g(x)$ which lets you map that distr $f(x)$ to uniform
