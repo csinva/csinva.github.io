@@ -251,4 +251,8 @@ C(Location of Car) --> B
 
 - action = intervention, exposure, treatments
 - action $A$ and outcome $Y$
-  - 
+- ![Screen Shot 2020-05-05 at 10.50.28 AM](assets/Screen Shot 2020-05-05 at 10.50.28 AM.png)
+- **potential outcomes** = **counterfactual outcomes** $Y^{a=1}, Y^{a=0}$ 
+- **average treatment effect ATE**: $E[Y^{a=1} - Y^{a=0}]$
+- **exchangeability** = exogeneity: $\color{orange}{Y^{a}} \perp \!\!\! \perp A$ for all $a$ - $\textcolor{orange}{\text{the value of the counterfactuals}}$ doesn't change based on the choice of the action
+- 

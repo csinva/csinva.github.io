@@ -4,6 +4,13 @@ title: Disentangled representation learning
 category: blog
 ---
 
+
+
+<div class="iframe-box" style="margin-top: 0px">
+<iframe class="iframe" src="https://csinva.github.io/notes/cheat_sheets/disentanglement_cheat_sheet#/"
+        frameborder="0" width="100%" height="auto" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+</div>
+
 # VAEs
 
 *Some good disentangled VAE implementations are [here](https://github.com/YannDubs/disentangling-vae) and more general VAE implementations are [here](https://github.com/AntixK/PyTorch-VAE)*.
@@ -14,7 +21,12 @@ The goal is to obtain a nice latent representation $\mathbf z$ for our inputs $\
 
 ## disentangled vae loss function
 
-$$\overbrace{\mathbb  E_{p_\phi(\mathbf z \vert \mathbf x)}}^{\text{Samples}} [ \underbrace{-\log q_{\mathbf \theta} ( \mathbf x\vert \mathbf z)}_{\text{reconstruction loss}} ]      		+ {\color{teal}\beta}\; \sum_i \underbrace{\text{KL} \left(p_\phi( \mathbf z_i\vert \mathbf x)\:\vert \vert\:prior(\mathbf z_i) \right)}_{\text{compactness prior loss}} 																		 					+ \gamma \; \underbrace{\text{KL} \left( q_\phi(\mathbf z\vert \mathbf x) \vert \vert \prod_i q_\phi( \mathbf z_i\vert \mathbf x)  \right)}_{\text{total correlation loss}}$$
+
+
+
+
+$$\overbrace{\mathbb E_{p_\phi(\mathbf z \vert \mathbf x)}}^{\text{Samples}} [ \underbrace{-\log q_{\mathbf \theta} ( \mathbf x\vert \mathbf z)}*{\text{reconstruction loss}} ] + {\color{teal}\beta}; \sum_i \underbrace{\text{KL} \left(p*\phi( \mathbf z_i\vert \mathbf x):\vert \vert:prior(\mathbf z_i) \right)}*{\text{compactness prior loss}} + \gamma ; \underbrace{\text{KL} \left( q*\phi(\mathbf z\vert \mathbf x) \vert \vert \prod_i q_\phi( \mathbf z_i\vert \mathbf x) \right)}_{\text{total correlation loss}}$$
+
 
 | reconstruction loss                             | compactness prior loss                           |         total correlation loss             |
 | ----------------------------------------------- | ------------------------------------------------- |:-------------------------------------------: |
