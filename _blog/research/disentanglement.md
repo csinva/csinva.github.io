@@ -104,8 +104,11 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
   - computes correlation loss term using discriminator
   - [beta-TC-VAE = beta-total-correlation VAE](https://arxiv.org/abs/1802.04942) (chen et al. 2018) - same objective but computed without need for discriminator
   - [Interpretable VAEs for nonlinear group factor analysis](https://arxiv.org/abs/1802.06765)
+- [Adversarial Latent Autoencoder](https://arxiv.org/pdf/2004.04467.pdf) (pidhorskyi et al. 2020)
+- - - improve quality of generated VAE reconstructions by using a different setup which allows for using a GAN loss
+    - ![alae](assets/alae.png)
+
 - more papers
-  - [ALAE](https://arxiv.org/pdf/2004.04467.pdf) - Adversarial Latent Autoencoders
   - [infoVAE](https://arxiv.org/abs/1706.02262)
   - [dipVAE](https://arxiv.org/abs/1711.00848)
   - [vq-vae](https://arxiv.org/abs/1711.00937)
@@ -129,6 +132,10 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
   - encourages $I(x; c)$ to be high for a subset of the latent variables $z$
     - slightly different than vae - defined under the distribution $p(c) p(x\vert c)$ whereas vae uses $p_{data}(x)enc(z\vert x)$
   - mutual info is intractable so optimizes a lower bound
+- [Stylegan](https://arxiv.org/abs/1812.04948) (karras et al. 2018)
+  - ![stylegan](assets/stylegan.png)
+- [Stylegan2](https://arxiv.org/abs/1912.04958) (karras et al. 2019)
+  - ![stylegan2](assets/stylegan2.png)
 - [unifying vae and nonlinear ica](https://arxiv.org/pdf/1907.04809.pdf) (khemakhem et al. 2020)
 	- ICA
 	  - maximize non-gaussianity of $z$ - use kurtosis, negentropy

@@ -43,6 +43,7 @@ category: stat
     - small p-values evidence against null hypothesis
     - null hypothesis
 - natural experiments
+  
   - ex. john snow
 - *propensity score* - probability that a subject recieving a treatment is valid after conditioning on appropriate covariates
 - 3 principles of experimental design
@@ -244,8 +245,17 @@ C(Location of Car) --> B
   - causal effect prediction
     - first, create causal dataset of $P(T|man(I))$ and train, so the model can't learn spurious correlations
     - then train on this - very similar to adversarial training
-
-
+- [Visual Physics: Discovering Physical Laws from Videos](https://arxiv.org/abs/1911.11893)
+  - 3 steps
+    - Mask R-CNN finds bounding box of object and center of bounding box is taken to be location
+    - $\beta-VAE$ compresses the trajectory to some latent repr. (while also being able to predict held-out points of the trajectory)
+    - **Eureqa** package does eq. discovery on latent repr + trajectory
+      - includes all basic operations, such as addition, mult., sine function
+      - R-squared value measures goodness of fit
+  - see also SciNet -  [Discovering physical concepts with neural networks](https://arxiv.org/abs/1807.10300) (iten et al. 2020)
+  - see also the field of symbolic regression
+    - genetic programming is the most pervalent method here
+    - alternatives: sparse regression, dimensional function synthesis
 
 # notes based on [what if (hernan & robins)](https://cdn1.sph.harvard.edu/wp-content/uploads/sites/1268/2020/01/ci_hernanrobins_21jan20.pdf)
 
