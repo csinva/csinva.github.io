@@ -328,7 +328,7 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
   - don't have explicit objective like likelihood anymore
   - kernel density = parzen-window density based on samples yields likelihood
   - inception score $IS(\mathbf x) = \exp(\underbrace{H(\mathbf y)}_{\text{want to generate diversity of classes}} - \underbrace{H(\mathbf y|\mathbf x)}_{\text{each image should be distinctly recognizable}})$
-  - Frechet inception score works directly on embedded features
+  - **FID** - Frechet inception score works directly on embedded features from inception v3 model
 - infogan
   - ![infogan](assets/ml/infogan.png)
 - problems

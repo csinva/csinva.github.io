@@ -4,6 +4,9 @@
     {% include google_analytics.html %}
     {% include js.html %}
     <link href="{{ site.baseurl }}/assets/css/notes.css" rel="stylesheet">
+    <link href="{{ site.baseurl }}/assets/css/highlight_androidstudio.css" rel="stylesheet">
+    <script src="{{ site.baseurl }}/assets/js/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
 </header>
 
 <body data-spy="scroll" data-target=".sidebar">
@@ -50,3 +53,10 @@ $(document).ready(function() {
     $('#toc').toc();
 });
 </script>
+
+<style>
+.highlight{
+    background-color: black;
+    border-color: black;
+}
+</style>

@@ -494,15 +494,12 @@ category: research
     
 - [Interpreting Deep Visual Representations via Network Dissection](https://arxiv.org/abs/1711.05611) (zhou et al. 2017)
 
-- - obtain image attributes for each z (using classifier, not human labels)
-
-    - - this classifier may put bias back in
+    - obtain image attributes for each z (using classifier, not human labels)
+      - this classifier may put bias back in
 
     - to find directions representing an attribute, train a linear model to predict it from z
 
-- [On Concept-Based Explanations in Deep Neural Networks](https://arxiv.org/abs/1910.07969)
-
-- [Explanation by Progressive Exaggeration](https://arxiv.org/abs/1911.00483)
+- [On Completeness-aware Concept-Based Explanations in Deep Neural Networks](https://arxiv.org/abs/1910.07969)
 
 - [Explaining Deep Learning Models with Constrained Adversarial Examples](https://arxiv.org/abs/1906.10671)
 
@@ -691,26 +688,6 @@ category: research
   - optimization at training time - add regularization
   - postprocessing - change thresholds to impose fairness
   
-- [Towards causal benchmarking of bias in computer vision algorithms](https://www.overleaf.com/project/5e6aa80234ed3e0001b9ac23) (balakrishnan et al. 2020)
-
-- - data
-
-  - - celebA has 40 binary attributes per image
-    - PPB is more balanced
-
-  - used stylegan2
-
-  - removed images people regarded as fake
-
-  - synthesis approach can alter multiple attributes at a time to produce grid-like matched samples of images we call *transects*
-
-  - why orthogonalize it this way? isn’t it possible that the directions become less representative? one could do a joint optimization
-
-- [Detecting Bias with Generative Counterfactual Face Attribute Augmentation](https://arxiv.org/abs/1906.06439) (denton et al. 2019) - identify latent dims by training a classifier in the latent space on groundtruth attributes of the training images
-
-- - should related work include disentangled papers (e.g. beta-vae, total-correlation-vae)?
-  - human annotations are used to identify dims in latent space - alternatives: annotations on training data + tcav, annotations on bounding boxespackages
-
 - [iNNvestigate neural nets](https://arxiv.org/abs/1808.04260) - provides a common interface and out-of-thebox implementation
 - [tensorfuzz](https://arxiv.org/abs/1807.10875) - debugging
 - [ICIE 1.0: A Novel Tool for Interactive Contextual Interaction Explanations](https://link.springer.com/chapter/10.1007/978-3-030-13463-1_6)
