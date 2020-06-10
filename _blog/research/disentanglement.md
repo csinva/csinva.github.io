@@ -21,10 +21,10 @@ category: blog
         - slightly different than vae - defined under the distribution $p(c) p(x\vert c)$ whereas vae uses $p_{data}(x)enc(z\vert x)$
       - mutual info is intractable so optimizes a lower bound
     - [Stylegan](https://arxiv.org/abs/1812.04948) (karras et al. 2018)
-      
       - introduced perceptual path length and linear separability to measure the disentanglement property of latent space
       - ![stylegan](assets/stylegan.png)
       - [Stylegan2](https://arxiv.org/abs/1912.04958) (karras et al. 2019): ![stylegan2](assets/stylegan2.png)
+        - $\psi$ scales the deviation of *w* from the average - $\psi=1$ is original, moving towards 0 improves quality but reduces variety
 - [DNA-GAN: Learning Disentangled Representations from Multi-Attribute Images](https://arxiv.org/abs/1711.05415)
 - [Clustering by Directly Disentangling Latent Space](https://arxiv.org/abs/1911.05210) - clustering in the latent space of a gan
 - [Semi-Supervised StyleGAN for Disentanglement Learning](https://arxiv.org/abs/2003.03461) - further improvements on StyleGAN using labels in the training data
@@ -32,6 +32,7 @@ category: blog
 ## post-hoc (disentangle after training)
 
 - mapping latent space
+  - [InterFaceGAN: Interpreting the Disentangled Face Representation Learned by GANs](https://arxiv.org/pdf/2005.09635.pdf) (shen et al. 2020)
   - [Interpreting the Latent Space of GANs for Semantic Face Editing](https://arxiv.org/abs/1907.10786) (shen et al. 2020)
     - find latent directions for each binary attribute, as directions which separate the classes using linear svm
       - validation accuracies in tab 1 are high...much higher for all data (because they have high confidence level on attribute scores maybe) - for PGGAN but not StyleGAN
@@ -49,6 +50,9 @@ category: blog
       - alternatively, with no user-supplied concepts, try to get independent components in unsupervised way
   - [Disentangling in Latent Space by Harnessing a Pretrained Generator](https://arxiv.org/abs/2005.07728) (nitzan et al. 2020)
       - learn to map attributes onto latent space of stylegan
+      - works using two images at a time and 2 encoders
+        - for each image, predict attributes + identity, then mix the attributes
+      - results look realy good, but can't vary one attribute at a time (have to transfer all attributes from the new image)
   - [ELEGANT: Exchanging Latent Encodings with GAN for Transferring Multiple Face Attributes](http://openaccess.thecvf.com/content_ECCV_2018/papers/Taihong_Xiao_ELEGANT_Exchanging_Latent_ECCV_2018_paper.pdf) (xiao et al. 2018)
       - trains 2 images at a time - swap an attribute that differs between the images and reconstruct images that have the transferred attribute
 - bias
@@ -189,16 +193,24 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
 
 - *note* - vae's come with reconstruction loss + compactness prior loss which can be looked at on their own
 - data
+  
   - [dsprites dataset](https://github.com/deepmind/dsprites-dataset/) has known latent factors we try to recover
 - [beta-vae **disentanglement metric score** = higgins metric](https://medium.com/uci-nlp/summary-beta-vae-learning-basic-visual-concepts-with-a-constrained-variational-framework-91ad843b49e8) - see if we can capture known disentangled repr. using pairs of things where only one thing changes
   - start with a known generative model that has an observed set of independent and interpretable factors (e.g. scale, color, etc.) that can be used to simulate data.
   - create a dataset comprised of pairs of generated data for which a single factor is held constant (e.g. a pair of images which have objects with the same color).
   - use the inference network to map each pair of images to a pair of latent variables.
   - train a linear classifier to predict which interpretable factor was held constant based on the latent representations. The accuracy of this predictor is the disentanglement metric score.
+- [Evaluating Disentangled Representations](https://arxiv.org/abs/1910.05587) (sepliarskaia et al. 2019)
+  - defn 1  (Higgins et al., 2017; Kim and Mnih, 2018; Eastwood and Williams, 2018): A disentangled representation is a representation where a change in one latent dimension corresponds to a change in one generative factor while being relatively invariant to changes in other generative factors.
+  - defn 2 (Locatello et al., 2018; Kumar et al., 2017): A disentangled representation is a representation where a change in a single generative factor leads to a change in a single factor in the learned representation.
+  - metrics
+    - DCI: Eastwood and Williams (2018) - informativeness based on predicting gt factors using latent factors
+    - SAP: Kumar et al. (2017) - how much does top latent factor match gt more than 2nd latent factor
+    - MIG: Chen et al. 2018 - mutual info to compute the same thing
 
 # other
 
 - [unifying vae and nonlinear ica](https://arxiv.org/pdf/1907.04809.pdf) (khemakhem et al. 2020)
 	- ICA
 	  - maximize non-gaussianity of $z$ - use kurtosis, negentropy
-	  - minimize mutual info between components of $z$ - use KL, max entropy
+	  - minimize mutual info between components of $z$ - use KL, max entropyd

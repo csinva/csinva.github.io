@@ -272,6 +272,9 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
 
 ### flow models
 
+- good intro to implementing invertible neural networks: https://hci.iwr.uni-heidelberg.de/vislearn/inverse-problems-invertible-neural-networks/
+  - input / output dimension need to have same dimension
+  - we can get around this by padding one of the dimensions with noise variables (and we might want to penalize these slightly during training)
 - [normalizing flows](https://arxiv.org/pdf/1908.09257.pdf)
 - ultimate goal: a likelihood-based model with
   - fast sampling
@@ -392,7 +395,19 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
 - distribution alignment - ex. cyclegan - enforce  cycle consistency = dual learning = back translation
   - simpler is marginal matching
 
+## projecting into gan latent space (=gan inversion)
 
+- 2 general approaches
+  1. learn an encoder to go image -> latent space
+  	- [In-Domain GAN Inversion for Real Image Editing](https://arxiv.org/pdf/2004.00049.pdf) (zhu et al. 2020) 
+  	- learn encoder to project image into latent space, with regularizer to make sure it follows the right distr.
+2. optimize latent code wrt image directly
+     1. can also learn an encoder to initialize this optimization
+  3. some work designing GANs that are intrinsically invertible
+  4. stylegan-specific - some works which exploit layer-wise noises
+       1. stylegan2 paper: optimize w along with noise maps - need to make sure noise maps don't include signal
+
+  
 
 # compression
 

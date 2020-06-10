@@ -24,7 +24,7 @@ category: ml
 
 # measures
 
-- *goodness of fit* - how well does the learned distribution represent the real distribution?
+*goodness of fit* - how well does the learned distribution represent the real distribution?
 
 ![Screen Shot 2019-06-30 at 8.27.56 PM](assets/Screen Shot 2019-06-30 at 8.27.56 PM.png)
 
@@ -42,7 +42,7 @@ category: ml
   - **false positive rate** = FP / N $= 1 - \text{specificity}$
     - what fraction of the predicted negatives are wrong?
   - **negative predictive value** = tn / (fn + tn)
-    - what percent of the things we predict as negative are negative?
+    - what fraction of the things we predict as negative are negative?
   - **F-score** is harmonic mean of precision and recall: 2 * (prec * rec) / (prec + rec)
 - curves
 
@@ -77,6 +77,7 @@ category: ml
     4. *one-way CV* = *prequential analysis* - keep testing on next data point, updating model
     5. ESCV - penalize variance between folds
 - *regularization path* of a regression - plot each coeff v. $\lambda$
+  
   - tells you which features get pushed to 0 and when
 - for OLS (and maybe other linear models), [can compute leave-one-out CV without training separate models](https://robjhyndman.com/hyndsight/crossvalidation/)
 

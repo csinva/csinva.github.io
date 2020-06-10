@@ -1,0 +1,131 @@
+{
+    "shortcuts": [
+        // enter command mode with Ctrl C
+        {
+            "command": "notebook:enter-command-mode",
+            "keys": [
+                "Ctrl C"
+            ],
+            "selector": ".jp-Notebook.jp-mod-editMode",
+          "title": "Enter Command Mode",
+          "category": "Notebook Operations"
+        },
+        // add cell below
+        {
+            "command": "notebook:insert-cell-below",
+            "keys": [
+                "O"
+            ],
+            "selector": ".jp-Notebook:focus",
+            "title": "Insert Cell Below",
+            "category": "Notebook Cell Operations"
+        },
+        // enter edit mode with I    
+        {
+          "command": "notebook:enter-edit-mode",
+          "keys": [
+            "I"
+          ],
+          "selector": ".jp-Notebook:focus",
+          "title": "Enter Edit Mode",
+          "category": "Notebook Operations"
+        },                
+       // undo with u
+        {
+          "command": "notebook:undo-cell-action",
+          "keys": [
+            "U"
+          ],
+          "selector": ".jp-Notebook:focus",
+          "title": "Undo Cell Operation",
+          "category": "Notebook Cell Operations"
+        },
+
+        // add cell below
+        {
+          "command": "notebook:insert-cell-below",
+          "keys": [
+            "O"
+          ],
+          "selector": ".jp-Notebook:focus",
+          "title": "Insert Cell Below",
+          "category": "Notebook Cell Operations"
+        },
+
+        // copy cell with yy
+        {
+          "command": "notebook:copy-cell",
+          "keys": [
+            "Y",
+            "Y"
+          ],
+          "selector": ".jp-Notebook:focus",
+          "title": "Copy Cell(s)",
+          "category": "Notebook Cell Operations"
+        },
+
+        // paste with p    
+        {
+          "command": "notebook:paste-cell-below",
+          "keys": [
+            "P"
+          ],
+          "selector": ".jp-Notebook:focus",
+          "title": "Paste Cell(s) Below",
+          "category": "Notebook Cell Operations"
+        },
+
+        // interupt kernel with Ctrl C + Ctrl C
+        {
+          "command": "kernelmenu:interrupt",
+          "keys": [
+            "Ctrl C",
+            "Ctrl C"
+          ],
+          "selector": "[data-jp-kernel-user]:focus",
+          "title": "Interrupt Kernel",
+          "category": "Kernel Operations"
+        },
+
+        // remap I -> Ctrl I (to avoid conflict)
+        {
+          "command": "imageviewer:invert-colors",
+          "keys": [
+            "Ctrl I"
+          ],
+          "selector": ".jp-ImageViewer",
+          "title": "Invert Colors",
+          "category": "Image Viewer"
+        },
+        {
+          "command": "editmenu:clear-current",
+          "keys": [
+            "Ctrl D"
+          ],
+          "selector": "[data-jp-undoer]",
+          "title": "Clear",
+          "category": "Editing"
+        },   
+        {
+          "command": "application:activate-next-tab",
+          "keys": [
+            "Ctrl ]"
+          ],
+          "selector": "body",
+          "title": "Activate Next Tab",
+          "category": "Main Area"
+        },
+
+        // [missing schema title]
+        // [missing schema description]
+        {
+          "command": "application:activate-previous-tab",
+          "keys": [
+            "Ctrl ["
+          ],
+          "selector": "body",
+          "title": "Activate Previous Tab",
+          "category": "Main Area"
+        }        
+    ]
+}
