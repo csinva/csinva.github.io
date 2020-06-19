@@ -70,10 +70,16 @@ category: blog
       - minor
         - used human experiments
         - limited to binary classification
+    - [Interpreting Deep Visual Representations via Network Dissection](https://arxiv.org/abs/1711.05611) (zhou et al. 2017)
+    
+      - obtain image attributes for each z (using classifier, not human labels)
+        - this classifier may put bias back in
+    
+      - to find directions representing an attribute, train a linear model to predict it from z
     - [GAN Dissection: Visualizing and Understanding Generative Adversarial Networks](https://arxiv.org/abs/1811.10597) (bau et al. 2018) - identify group of interpretable units based on segmentation of training images
       - find directions which allow for altering the attributes
     - [GANSpace: Discovering Interpretable GAN Controls](https://arxiv.org/abs/2004.02546) - use PCA in the latent space (w for styleGAN, activation-space at a specific layer for BigGAN) to select directions
-    - [Editing in Style: Uncovering the Local Semantics of GANs](https://arxiv.org/abs/2004.14367) - use k-means on gan activations to find meaningful clusters (with quick human annotation)
+    - [Editing in Style: Uncovering the Local Semantics of GANs](https://arxiv.org/abs/2004.14367) (collins et al. 2020) - use k-means on gan activations to find meaningful clusters (with quick human annotation)
       - add style transfer using target/source image
     - [Unsupervised Discovery of Interpretable Directions in the GAN Latent Space](https://arxiv.org/abs/2002.03754) - loss function which tries to recover random shifts made to the latent space
 

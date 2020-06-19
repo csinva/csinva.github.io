@@ -27,6 +27,7 @@ title: presentations
         - [acd white-theme slides for bin](https://docs.google.com/presentation/d/1GjL0IJWft3IpdWxAwprXNiZkAG4Jl5mU6FNT2t0DGkQ/edit#slide=id.g5d6ee59cb4_0_0)
         - [acd bavrd](https://docs.google.com/presentation/d/1IVeb5ibe561VR5PAQEN5hdnwmpAHquK4JLb1vzT9fd8/present) (3 min pres. given at bavrd 2019)
     - [transform interp](https://docs.google.com/presentation/d/1mH1uG38qJg-ar0G-LiVPZWNKPO_2GiD-uayWM5AI-bo/present?slide=id.p)
+    - [faces work](https://docs.google.com/presentation/d/1C6l4qq0O_-SosHswPwqo3ixJweMI8gkNku9crzZMw80/edit#slide=id.g81d534b27f_7_75)
     - [presentation at dudoit group meeting](https://docs.google.com/presentation/d/1xA4aaBXKV4cO5_iXZZcUnheFpcMsT1U5fJZdaE7FwME/edit#slide=id.p)
 - [interpretation to causation](https://docs.google.com/presentation/d/18Tdiym7hDeu0c4tj5XezrznIDfbltR4QQJJZjaHi7tk/present?slide=id.p)
 - [dnn experiments](http://csinva.github.io/pres/dnn_experiments/#/)

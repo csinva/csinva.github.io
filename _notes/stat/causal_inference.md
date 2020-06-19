@@ -195,6 +195,9 @@ C(Location of Car) --> B
   - resolves that controversy using well-chosen statistical tools.
   - Because randomization is present in the design I think the assumptions are much less of a stretch than in many settings (this is also the case in the Angrist, Imbens, Rubin paper)
 - [Incremental causal effects](https://arxiv.org/abs/1907.13258) (rothenhausler & yu, 2019)
+  - instead of considering a treatment, consider an infinitesimal change in a continuous treatment
+  - use assumption of local independence and can prove some nice things
+    - local ignorability assumption states that potential outcomes are independent of the current treatment assignment in a neighborhood of observations
 - [The Hierarchy of Stable Distributions and Operators to Trade Off Stability and Performance](https://arxiv.org/abs/1905.11374)
   - different predictors learn different things
   - only pick the stable parts of what they learn (in a graph representation)

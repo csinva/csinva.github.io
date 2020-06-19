@@ -492,13 +492,6 @@ category: research
         - TCAV uses the derivative of the CAV direction wrt input
     - [automated concept activation vectors](https://arxiv.org/abs/1902.03129) - Given a set of concept discovery images, each image is segmented with different resolutions to find concepts that are captured best at different sizes. (b) After removing duplicate segments, each segment is resized tothe original input size resulting in a pool of resized segments of the discovery images. (c) Resized segments are mapped to a model’s activation space at a bottleneck layer. To discover the concepts associated with the target class, clustering with outlier removal is performed. (d) The output of our method is a set of discovered concepts for each class, sorted by their importance in prediction
     
-- [Interpreting Deep Visual Representations via Network Dissection](https://arxiv.org/abs/1711.05611) (zhou et al. 2017)
-
-    - obtain image attributes for each z (using classifier, not human labels)
-      - this classifier may put bias back in
-
-    - to find directions representing an attribute, train a linear model to predict it from z
-
 - [On Completeness-aware Concept-Based Explanations in Deep Neural Networks](https://arxiv.org/abs/1910.07969)
 
 - [Explaining Deep Learning Models with Constrained Adversarial Examples](https://arxiv.org/abs/1906.10671)

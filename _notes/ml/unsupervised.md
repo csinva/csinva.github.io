@@ -407,8 +407,6 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
   4. stylegan-specific - some works which exploit layer-wise noises
        1. stylegan2 paper: optimize w along with noise maps - need to make sure noise maps don't include signal
 
-  
-
 # compression
 
 - simplest - fixed-length code
