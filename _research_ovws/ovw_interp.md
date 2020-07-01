@@ -1,6 +1,6 @@
 ---
 layout: notes
-title: interp
+title: interpretability
 category: research
 ---
 
@@ -192,6 +192,8 @@ category: research
   - gams - assume model form is additive combination of some funcs, then solve via GD
   - however, if we don't know the form of the model we must generate it
 - [Bridging the Gap: Providing Post-Hoc Symbolic Explanations for Sequential Decision-Making Problems with Black Box Simulators](https://arxiv.org/abs/2002.01080)
+- [Demystifying Black-box Models with Symbolic Metamodels](https://papers.nips.cc/paper/9308-demystifying-black-box-models-with-symbolic-metamodels.pdf)
+  - parameterized with Meijer G-functions (rather than pre-specifying some forms, as is done with symbolic regression)
 
 ## programs
 
@@ -653,40 +655,12 @@ category: research
 
 
 
-## fairness
-
-- good introductory [blog](https://towardsdatascience.com/a-tutorial-on-fairness-in-machine-learning-3ff8ba1040cb)
-
-- causes of bias
-  - skewed sample
-  - tainted examples
-  - selectively limited features
-  - sample size disparity
-  - proxies of sensitive attributes
-  
-- definitions
-  - **unawareness** - don't show sensitive attributes
-    - flaw: other attributes can still signal for it
-  - group fairness
-    - **demographic parity** - mean predictions for each group should be approximately equal
-      - flaw: means might not be equal
-    - **equalized odds** - predictions are independent of group given label
-      - equality of opportunity: $p(\hat y=1|y=1)$ is same for both groups
-    - **predictive rate parity** - Y is independent of group given prediction
-  - **individual fairness** - similar individuals should be treated similarly
-  - **counterfactual fairness** - replace attributes w/ flipped values
-  
-- fair algorithms
-  - preprocessing - remove sensitive information
-  - optimization at training time - add regularization
-  - postprocessing - change thresholds to impose fairness
-  
-- [iNNvestigate neural nets](https://arxiv.org/abs/1808.04260) - provides a common interface and out-of-thebox implementation
-- [tensorfuzz](https://arxiv.org/abs/1807.10875) - debugging
-- [ICIE 1.0: A Novel Tool for Interactive Contextual Interaction Explanations](https://link.springer.com/chapter/10.1007/978-3-030-13463-1_6)
 
 # misc new papers
 
+- [iNNvestigate neural nets](https://arxiv.org/abs/1808.04260) - provides a common interface and out-of-thebox implementation
+- [tensorfuzz](https://arxiv.org/abs/1807.10875) - debugging
+- [ICIE 1.0: A Novel Tool for Interactive Contextual Interaction Explanations](https://link.springer.com/chapter/10.1007/978-3-030-13463-1_6)
 - [ConvNets and ImageNet Beyond Accuracy: Understanding Mistakes and Uncovering Biases](https://arxiv.org/abs/1711.11443)
   - cnns are more accurate, robust, and biased then we might expect on imagenet
 - [Bridging Adversarial Robustness and Gradient Interpretability](https://arxiv.org/abs/1903.11626)

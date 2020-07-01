@@ -15,7 +15,7 @@ title: presentations
 - [interpretability workshop](https://docs.google.com/presentation/d/1RIdbV279r20marRrN0b1bu2z9STkrivsMDa_Dauk8kE/present?slide=id.p)
 
 
-## research
+## phd research
 - [research overview](https://docs.google.com/presentation/d/19fTICv0pyRiwGE39mqE_eGTq0Arn3OtVnDSrURFbPMA/present?slide=id.p)
 - [qual slides](https://docs.google.com/presentation/d/1cdzZsyRYRs9GiR9s2-V7OO8oIcaabT5TVJFGR9qk_HY/edit#slide=id.p)
     - [bair sem slides](https://docs.google.com/presentation/d/1vpunbuggj1sHxz3g_20pj2vtesHxJNUQoPbsHMMfz3A/edit#slide=id.p)
@@ -27,7 +27,9 @@ title: presentations
         - [acd white-theme slides for bin](https://docs.google.com/presentation/d/1GjL0IJWft3IpdWxAwprXNiZkAG4Jl5mU6FNT2t0DGkQ/edit#slide=id.g5d6ee59cb4_0_0)
         - [acd bavrd](https://docs.google.com/presentation/d/1IVeb5ibe561VR5PAQEN5hdnwmpAHquK4JLb1vzT9fd8/present) (3 min pres. given at bavrd 2019)
     - [transform interp](https://docs.google.com/presentation/d/1mH1uG38qJg-ar0G-LiVPZWNKPO_2GiD-uayWM5AI-bo/present?slide=id.p)
-    - [faces work](https://docs.google.com/presentation/d/1C6l4qq0O_-SosHswPwqo3ixJweMI8gkNku9crzZMw80/edit#slide=id.g81d534b27f_7_75)
+        - [faces final pres](https://docs.google.com/presentation/d/19Z4TnHCDkNENutyKmE_kZBSJX4jMUam6DoH3HckkMrI/present?slide=id.p)
+        - [faces midterm pres](https://docs.google.com/presentation/d/1YxSZtsSOdQ_OZYgctFE1Cgfymv0cmBTzNDkt68d-RE0/present?slide=id.p)
+        - [faces lit rvw](https://docs.google.com/presentation/d/1C6l4qq0O_-SosHswPwqo3ixJweMI8gkNku9crzZMw80/present?slide=id.p)
     - [presentation at dudoit group meeting](https://docs.google.com/presentation/d/1xA4aaBXKV4cO5_iXZZcUnheFpcMsT1U5fJZdaE7FwME/edit#slide=id.p)
 - [interpretation to causation](https://docs.google.com/presentation/d/18Tdiym7hDeu0c4tj5XezrznIDfbltR4QQJJZjaHi7tk/present?slide=id.p)
 - [dnn experiments](http://csinva.github.io/pres/dnn_experiments/#/)
@@ -40,7 +42,8 @@ title: presentations
 - [hummingbird tracking](https://docs.google.com/presentation/d/15iygjXGLu7Ha096GwMV5t6sjP7IPcTHqimPkTDwrpPI/present?slide=id.p)
 
 ## undergrad
-- [wsimule urds](https://docs.google.com/presentation/d/1GO6lN5o2idozOUdnObXGnXKFbZiJiKKKkmx73uE4BAI/present?slide=id.p4) (5 min talk given at URDS 2017)
+- [facebook pres](https://drive.google.com/file/d/1n_EImcRN8_R-smL6h-Gfxa11vsUczljj/present?slide=id.p)
+- [wsimule urds](https://docs.google.com/presentation/d/1GO6lN5o2idozOUdnObXGnXKFbZiJiKKKkmx73uE4BAI/present?slide=id.p) (5 min talk given at URDS 2017)
     - [wsimule tomtom](https://docs.google.com/presentation/d/1KghayB2g8u5xwVuILzT4XtalKi3rerVROaoRb6RUVBk/edit) (10 min talk given at Tom Tom 2017)
     - [wsimule slide](/assets/write_ups/wsimule_17_nips_slide.pdf) (1 min pres. given at AMLCID Neurips 2017 workshop)
 - [linearization](https://docs.google.com/presentation/d/1JriXXofysuXyfU4CeyNHJUTYSfa18R9Q3EhkCwFwh4g/present?slide=id.p) (5 min talk given at URDS 2017)
