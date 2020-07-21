@@ -131,8 +131,12 @@ displays
 
 - [bookdown](https://bookdown.org/) - write books in markdown
 
+### data
+
+- cool analysis / data from BuzzFeed [here](https://github.com/BuzzFeedNews/everything)
+
 ### reference
 
-- [this repo](https://raw.githubusercontent.com/r0f1/datascience/master/README.md) and [this repo](https://github.com/r0f1/datascience) has a more comprehensive and useful list
+- [this repo](https://raw.githubusercontent.com/r0f1/datascience/master/README.md) and [this repo](https://github.com/r0f1/datascience) have really useful lists
 - feel free to use/share this openly
-- for similar projects, see some other repos: (e.g. [acd](https://github.com/csinva/acd)) or my website ([csinva.github.io](https://csinva.github.io/))
+- for similar projects, see some other repos: (e.g. [acd](https://github.com/csinva/acd)) or my [collection of resources](https://csinva.github.io/)

@@ -85,7 +85,10 @@ typora-copy-images-to: ./assets/nlp
   - transparent dataset documentation
   - think about perspectives of marginalized groups
 
+## misc papers
 
+- [Large image datasets: A pyrrhic win for computer vision?](https://openreview.net/pdf?id=s-e2zaAlG3I) - bias in imagenet / tiny images
+- http://positivelysemidefinite.com/2020/06/160k-students.html
 
 # sts
 
@@ -109,3 +112,29 @@ typora-copy-images-to: ./assets/nlp
       - attempts to justify strong authority on the basis of supposedly necessary conditions of technical practice have an ancient history. 
 - [Disembodied Machine Learning: On the Illusion of Objectivity in NLP](https://openreview.net/pdf?id=fkAxTMzy3fs)
 - [less work for mother](https://www.americanheritage.com/less-work-mother) (cowan 1987) - technologies that seem like they save time rarely do (although they increase "productivity")
+
+
+
+# facial rec. demographic benchmarking
+
+- [Face Recognition Vendor Test (FRVT) Part 3: Demographic Effects](https://nvlpubs.nist.gov/nistpubs/ir/2019/NIST.IR.8280.pdf) (grother et al. 2019), NIST
+- facial rec types
+  - 1: 1 == **verification**
+  - 1: N == **identification**
+- data
+	- **domestic mugshots** collected in the United States
+	- **application photographs** from a global population of applicants for immigration benefits
+	- **visa photographs** submitted in support of visa applicants
+	- **border crossing photographs** of travelers entering the United States
+- a common practice is to use random pairs, but as the pairs are stratified to become more similar, the false match rate increases (Fig 3)
+- results
+  - biggest errors seem to be in African Americans + East Asians
+    - impact of errors - in verification, false positives can be security threat (while false negative is mostly just a nuisance)
+  -  In domestic mugshots, false negatives are higher in Asian and American Indian individuals, with error rates above those in white and black face
+    - possible confounder - aging between subsequent photos
+  - better image quality reduces false negative rates and differentials
+  - false positives to be between 2 and 5 times higher in women than men
+  - one to many matching usually has same biases
+    - a few systems have been able to remove bias in these false positives
+  - did not analyze cause and effect
+    - don't consider skin tone

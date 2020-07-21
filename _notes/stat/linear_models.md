@@ -43,7 +43,7 @@ category: stat
 - LS doesn't work when p >> n because of colinearity of X columns
 - assumptions
   - $\epsilon \sim N(X\beta,\sigma^2)$
-  - *homoscedasticity*: $var(Y_i\|X)​$ is the same for all i
+  - *homoscedasticity*: $var(Y_i\|X)$ is the same for all i
     - opposite of *heteroscedasticity*
 - *multicollinearity* - predictors highly correlated
   - *variance inflation factor (VIF)* - measure how much the variances of the estimated regression coefficients are inflated as compared to when the predictors are not linearly related
@@ -126,6 +126,7 @@ category: stat
   3. $\epsilon$ independent of $X$
     - $e_i$ still orthogonal to $X$
 - OLS is conditionally unbiased
+  
   - $E[\hat{\theta} \| X] = \theta$
 - $Cov(\hat{\theta}\|X) = \sigma^2 (X^TX)^{-1}$
   - $\hat{\sigma^2} = \frac{1}{n-p} \sum_i e_i^2$
@@ -159,7 +160,7 @@ category: stat
   - has smallest variance.
   - ***prove this***
 
-## GLS
+## GLS = GLM
 
 - GLMs roughly solve the problem where outcomes are non-Gaussian
   - mean is related to $w^tx$ through a link function (ex. logistic reg assumes sigmoid)
@@ -228,10 +229,12 @@ category: stat
 
   $\begin{align} \operatorname{\hat E}(Y | X=x) &= \int \frac{y \sum_{i=1}^{n} K_h\left(x-x_i\right) K_h\left(y-y_i\right)}{\sum_{j=1}^{n} K_h\left(x-x_j\right)} dy,\\ &= \frac{\sum_{i=1}^{n} K_h\left(x-x_i\right) \int y \, K_h\left(y-y_i\right) dy}{\sum_{j=1}^{n} K_h\left(x-x_j\right)},\\ &= \frac{\sum_{i=1}^{n} K_h\left(x-x_i\right) y_i}{\sum_{j=1}^{n} K_h\left(x-x_j\right)},\end{align}$
 
-## gam
+## GAM = generalized additive model
 
 - generalized additive models: assume mean output is sum of functions of individual variables (no interactions)
   - learn individual functions using splines
+- $g(\mu) = b + f(x_0) + f(x_1) + f(x_2) + ...$
+- can also add some interaction terms (e.g. $f(x_0, x_1)$)
 
 # sums interpretation
 

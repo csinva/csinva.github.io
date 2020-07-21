@@ -186,14 +186,25 @@ category: research
 - [Beyond Sparsity: Tree Regularization of Deep Models for Interpretability](https://arxiv.org/pdf/1711.06178.pdf)
   - regularize so that deep model can be closely modeled by tree w/ few nodes
 
-## gams + symbolic regression
+## gams
+
+- remember, gam takes form $g(\mu) = b + f(x_0) + f(x_1) + f(x_2) + ...$
+  
+  - usually assume some basis for the $f$, like splines or polynomials (and we select how many either manually or with some complexity penalty)
+  
+- [Demystifying Black-box Models with Symbolic Metamodels](https://papers.nips.cc/paper/9308-demystifying-black-box-models-with-symbolic-metamodels.pdf)
+  
+  - GAM parameterized with Meijer G-functions (rather than pre-specifying some forms, as is done with symbolic regression)
+  
+- [Neural Additive Models: Interpretable Machine Learning with Neural Nets](https://arxiv.org/abs/2004.13912) - GAM where we learn $f$ with a neural net
+
+## symbolic regression
 
 - [Building and Evaluating Interpretable Models using Symbolic Regression and Generalized Additive Models](https://openreview.net/pdf?id=BkgyvQzmW)
   - gams - assume model form is additive combination of some funcs, then solve via GD
   - however, if we don't know the form of the model we must generate it
+
 - [Bridging the Gap: Providing Post-Hoc Symbolic Explanations for Sequential Decision-Making Problems with Black Box Simulators](https://arxiv.org/abs/2002.01080)
-- [Demystifying Black-box Models with Symbolic Metamodels](https://papers.nips.cc/paper/9308-demystifying-black-box-models-with-symbolic-metamodels.pdf)
-  - parameterized with Meijer G-functions (rather than pre-specifying some forms, as is done with symbolic regression)
 
 ## programs
 
@@ -271,6 +282,10 @@ category: research
   - want to find beta which is positive when a variable is important
   - idea: maximize difference between (distances for interclass) and (distances for intraclass)
   - using an L1 distance yields better gradients than an L2 distance
+- methods for finding frequent item sets
+  - [random intersection trees](https://arxiv.org/pdf/1303.6223.pdf)
+  - [fp-growth](https://www.softwaretestinghelp.com/fp-growth-algorithm-data-mining/)
+  - eclat
 
 ### vim framework
 
@@ -590,6 +605,13 @@ category: research
 - language explanations
 - interpretable intermediate representations (e.g. bounding boxes for autonomous driving)
 - policy extraction - distill a simple model from a bigger model (e.g. neural net -> tree)
+
+## providing insights
+
+- [actionable recourse in linear classification](https://arxiv.org/pdf/1809.06514.pdf)
+  - want model to provide actionable inputs (e.g. income) rather than immutable variables (e.g. age, marital status)
+    - drastic changes in actionable inputs are basically immutable
+  - **recourse** - can person obtain desired prediction from fixed mode by changing actionable input variables (not just standard explainability)
 
 # related concepts
 

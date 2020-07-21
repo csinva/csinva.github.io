@@ -83,14 +83,23 @@ some more concrete questions:
 - [deeper, unpruned networks are better against noise](https://arxiv.org/abs/1903.12261)
 - [analytic theory of generalization + transfer (ganguli 19)](https://arxiv.org/abs/1809.10374)
 - [causality in dnns talk by bottou](https://www.technologyreview.com/s/613502/deep-learning-could-reveal-why-the-world-works-the-way-it-does/)
+  
   - on mnist, color vs shape will learn color
 - [A mathematical theory of semantic development in deep neural networks](https://arxiv.org/abs/1810.10531)
 - [rl agents learn some crazy things](https://arxiv.org/pdf/1803.03453.pdf)
+  
   - [itemized list](https://docs.google.com/spreadsheets/u/1/d/e/2PACX-1vRPiprOaC3HsCf5Tuum8bRfzYUiKLRqJmbOoC-32JorNdfyTiRRsR7Ea5eWtvsWzuxo8bjOxCG84dAg/pubhtml)
 - [Emergence of Invariance and Disentanglement in Deep Representations](https://arxiv.org/abs/1706.01350) (achille & soatto 2018)
   -  information in the weights as a measure of complexity of a learned model (information complexity)
   - IB Lagrangian between the **weights of a network and the training data**, as opposed to the traditional one between the **activations and the test datum**
   - explains tradeoff between over/underfitting
+- [On Dropout, Overfitting, and Interaction Effects in Deep Neural Networks](https://arxiv.org/abs/2007.00823) (lengerich..caruana, 2020)
+
+  - use ANOVA to meaure 1st/2nd/3rd order effects and such
+    - approximate ANOVA decomp. using boosted trees of depth based on a particular order
+- they find that increasing dropout rate forces nets to emphasize lower-order effects
+- [An Investigation of Why Overparameterization Exacerbates Spurious Correlations](https://arxiv.org/abs/2005.04345)
+  - overparameterization can hurt test error on minority groups despite improving average test error when there are spurious correlations in the data
 
 ## expressiveness: what can a dnn represent?
 

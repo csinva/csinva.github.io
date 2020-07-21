@@ -32,17 +32,19 @@ category: ml
   - accuracy = (TP + TN) / (P + N)
     - correct classifications / total number of test cases
   - balanced accuracy = 1/2 (TP / P + TN / N)
-  - **recall** = **sensitivity** =  true positive rate = TP / P
-    - what fraction of the real positives do we return?
-  - **precision** = **positive predictive value** = TP / (TP + FP)
-    - what fraction of the prediction positives are real positives?
-  - **specificity** = true negative rate = TN / N
-    - what fraction of the real negatives do we return?
-    - like recall, but for negatives
-  - **false positive rate** = FP / N $= 1 - \text{specificity}$
-    - what fraction of the predicted negatives are wrong?
-  - **negative predictive value** = tn / (fn + tn)
-    - what fraction of the things we predict as negative are negative?
+  - denominator is total pos/neg
+    - **recall** = **sensitivity** =  true positive rate = TP / P = TP / (TP + FN)
+      - what fraction of the real positives do we return?
+    - **specificity** = true negative rate = TN / N = TN / (TN + FP)
+      - what fraction of the real negatives do we return?
+      - **false positive rate** = FP / N $= 1 - \text{specificity}$
+        - what fraction of the predicted negatives are wrong?
+  - fraction is total predictions
+    - **precision** = **positive predictive value** = TP / (TP + FP)
+      - what fraction of the prediction positives are true positives?
+
+    - **negative predictive value** = tn / (fn + tn)
+      - what fraction of predicted negatives are true negatives?
   - **F-score** is harmonic mean of precision and recall: 2 * (prec * rec) / (prec + rec)
 - curves
 

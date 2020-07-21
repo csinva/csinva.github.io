@@ -97,11 +97,11 @@ category: ml
 		- fine tuning and deconvnet
 	- VGGNet (2014)
 		- 19 layers, all 3x3 conv layers and 2x2 maxpooling
-    - GoogLeNet (2015)
-		- lots of parallel elements (called *Inception module*)
+  - GoogLeNet (2015)
+	  - lots of parallel elements (called *Inception module*)
 	- Msft ResNet (2015)
         - very deep - 152 layers
-        - connections straight from initial layers to end
+            - connections straight from initial layers to end
           - only learn "residual" from top to bottom
 	- Region Based CNNs (R-CNN - 2013, Fast R-CNN - 2015, Faster R-CNN - 2015)
 		- object detection

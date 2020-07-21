@@ -11,6 +11,8 @@ category: blog
         frameborder="0" width="100%" height="auto" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 </div>
 
+[toc]
+
 # GANs
 
 ## model-based (disentangle during training)
@@ -93,7 +95,7 @@ The goal is to obtain a nice latent representation $\mathbf z$ for our inputs $\
 
 ## disentangled vae loss function
 
-$$\overbrace{\mathbb E_{p_\phi(\mathbf z \vert \mathbf x)}}^{\text{Samples}} [ \underbrace{-\log q_{\mathbf \theta} ( \mathbf x\vert \mathbf z)}*{\text{reconstruction loss}} ] + {\color{teal}\beta}; \sum_i \underbrace{\text{KL} \left(p*\phi( \mathbf z_i\vert \mathbf x):\vert \vert:prior(\mathbf z_i) \right)}*{\text{compactness prior loss}} + \gamma ; \underbrace{\text{KL} \left( q*\phi(\mathbf z\vert \mathbf x) \vert \vert \prod_i q_\phi( \mathbf z_i\vert \mathbf x) \right)}_{\text{total correlation loss}}$$
+$$\overbrace{\mathbb E_{p_\phi(\mathbf z \vert \mathbf x)}}^{\text{Samples}} [ \underbrace{-\log q_{\mathbf \theta} ( \mathbf x\vert \mathbf z)}_{\text{reconstruction loss}} ] + {\color{teal}\beta}; \sum_i \underbrace{\text{KL} \left(p*\phi( \mathbf z_i\vert \mathbf x):\vert \vert:prior(\mathbf z_i) \right)}_{\text{compactness prior loss}} + \gamma ; \underbrace{\text{KL} \left( q*\phi(\mathbf z\vert \mathbf x) \vert \vert \prod_i q_\phi( \mathbf z_i\vert \mathbf x) \right)}_{\text{total correlation loss}}$$
 
 
 | reconstruction loss                             | compactness prior loss                           |         total correlation loss             |
@@ -166,13 +168,50 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
   - $\overbrace{\mathbb  E_{p_\phi(\mathbf z\vert \mathbf x)}}^{\text{samples}} [ \underbrace{-\log q_{\mathbf \theta} ( \mathbf x\vert \mathbf z)}_{\text{reconstruction loss}} ]      		+ \textcolor{teal}{\beta}\; \vert\sum_i \underbrace{\text{KL} \left(p_\phi( \mathbf z_i\vert \mathbf x)\:\vert\vert\:prior(\mathbf z_i) \right)}_{\text{compactness prior loss}} -C\vert$
   -  C is gradually increased from zero (allowing for a larger compactness prior loss) until good quality reconstruction is achieved
 - [factor-vae](https://arxiv.org/abs/1802.05983) (kim & minh 2018) - adds total correlation loss term
-  - computes correlation loss term using discriminator
+  - computes correlation loss term using discriminator (can we discriminate between the samples when we shuffle over the batch dimension or not?)
   - [beta-TC-VAE = beta-total-correlation VAE](https://arxiv.org/abs/1802.04942) (chen et al. 2018) - same objective but computed without need for discriminator
   - [Interpretable VAEs for nonlinear group factor analysis](https://arxiv.org/abs/1802.06765)
 - [Adversarial Latent Autoencoder](https://arxiv.org/pdf/2004.04467.pdf) (pidhorskyi et al. 2020)
   - improve quality of generated VAE reconstructions by using a different setup which allows for using a GAN loss
   - ![alae](assets/alae.png)
+- [Variational Autoencoders Pursue PCA Directions (by Accident)](https://arxiv.org/pdf/1812.06775.pdf)
+  - local orthogonality of the embedding transformation
+  - prior $p(z)$ is standard normal, so encoder is assumed to be Gaussian with a certain mean, and **diagonal covariance**
+  - disentanglement is sensitive to rotations of the latent embeddings but reconstruction err doesn't care
+  - for linear autoencoder w/ square-error as reconstruction loss, we recover PCA decomp.
+- [A Survey of Inductive Biases for Factorial Representation-Learning](https://arxiv.org/abs/1612.05299) (ridgeway 2016)
+  - desiderata
+    - **compact**
+    - **faithful** - preserve info required for task
+    - **explicitly** represent the attributes required for the task at hand
+    - **interpretable** by humans
+  - factorial representation - attributes are statistically independent and can provide a userful bias for learning
+    - "compete" - factors are more orthogonal
+    - "cooperate" - factors are more similar
+    - bias on distribution of factors
+      - PCA - minimize reconstruction err. subject to orthogonal weights
+      - ICA - maximize non-Gaussianity (can also have sparse ICA)
+    - bias on factors being invariant to certain types of changes
+      - ISA (independent subspace analysis) - 2 layer model where first layer is linear, 2nd layer pools first layer (not maxpool, more like avgpool), sparsity at second layer
+        - i.e. 1st layer cooperates, 2nd layer competes
+      - SOM - forces topographic map by enforcing nearby filters to be similar
+      - VQ - vector quantizer - like ISA but first layer filters now compete and 2nd layer cooperates
+    - bias in how factors are combined
+      - linear combination - PCA/ICA
+      - multilinear models - multiplicative interactions between factors (e.g on top of ISA)
+      - functional parts - factor components are combined to construct the output
+        - ex. NMF - parts can only add, not substract to total output
+        - ex. have each pixel in the output be represented by only one factor in a VQ
+      - hierarchical layers
+        - ex. R-ICA - recursive ICA - run ICA on coefficients from previous layer (after some transformation)
+  - supervision bias
+    - constraints on some examples
+      - e.g. some groups have same value for a factor
+      - e.g. some examples have similar distances (basis for MDS = multidimensional scaling)
+      - e.g. analogies between examples
+      - can do all of these things with auto-encoders
 - more papers
+  
   - [infoVAE](https://arxiv.org/abs/1706.02262)
   - [dipVAE](https://arxiv.org/abs/1711.00848)
   - [vq-vae](https://arxiv.org/abs/1711.00937)

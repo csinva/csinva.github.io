@@ -240,28 +240,34 @@ category: neuro
 - hopfield three-way connections
   - $E = - \sum_{i, j, k} T_{i, j, k} V_i V_j V_k$ (self connections set to 0)
     - update to $V_i$ is now bilinear
-- dynamic routing
-  - hinton 1981 - reference frames requires structured representations
-    - mapping units vote for different orientations, sizes, positions based on basic units
-    - mapping units **gate the activity** from other types of units - weight is dependent on if mapping is activated
-    - top-down activations give info back to mapping units
-    - this is a hopfield net with three-way connections (between input units, output units, mapping units)
-    - reference frame is a key part of how we see - need to vote for transformations
-  - olshausen, anderson, & van essen 1993 - dynamic routing circuits
-    - ran simulations of such things (hinton said it was hard to get simulations to work)
-    - we learn things in object-based reference frames
-    - inputs -> outputs has weight matrix gated by control
-  - zeiler & fergus 2013 - visualizing things at intermediate layers - deconv (by dynamic routing)
-    - save indexes of max pooling (these would be the control neurons)
-    - when you do deconv, assign max value to these indexes
-  - arathom 02 - map-seeking circuits
-  - tenenbaum & freeman 2000 - bilinear models
-    - trying to separate content + style
-  - hinton et al 2011 - transforming autoencoders - trained neural net to learn to shift imge
-  - sabour et al 2017 - dynamic routing between capsules
-    - units output a vector (represents info about reference frame)
-    - matrix transforms reference frames between units
-    - recurrent control units settle on some transformation to identify reference frame
+
+
+
+## dynamic routing
+
+- hinton 1981 - reference frames requires structured representations
+  - mapping units vote for different orientations, sizes, positions based on basic units
+  - mapping units **gate the activity** from other types of units - weight is dependent on if mapping is activated
+  - top-down activations give info back to mapping units
+  - this is a hopfield net with three-way connections (between input units, output units, mapping units)
+  - reference frame is a key part of how we see - need to vote for transformations
+- olshausen, anderson, & van essen 1993 - dynamic routing circuits
+  - ran simulations of such things (hinton said it was hard to get simulations to work)
+  - we learn things in object-based reference frames
+  - inputs -> outputs has weight matrix gated by control
+- zeiler & fergus 2013 - visualizing things at intermediate layers - deconv (by dynamic routing)
+  - save indexes of max pooling (these would be the control neurons)
+  - when you do deconv, assign max value to these indexes
+- arathom 02 - map-seeking circuits
+- tenenbaum & freeman 2000 - bilinear models
+  - trying to separate content + style
+- hinton et al 2011 - transforming autoencoders - trained neural net to learn to shift imge
+- sabour et al 2017 - dynamic routing between capsules
+  - units output a vector (represents info about reference frame)
+  - matrix transforms reference frames between units
+  - recurrent control units settle on some transformation to identify reference frame
+- notes from this [blog post](https://towardsdatascience.com/capsule-neural-networks-part-2-what-is-a-capsule-846d5418929f)
+  - 
 
 # probabilistic models + inference
 
@@ -344,40 +350,93 @@ category: neuro
   - elements are stochastic not deterministic
   - can learn from experience
   - no 2 brains are alike yet they exhibit the same behavior
-- basic question of comp neuro: what kind of computing can explain behavior produced by trains?
+- basic question of comp neuro: what kind of computing can explain behavior produced by spike trains?
   - recognizing ppl by how they look, sound, or behave
   - learning from examples
   - remembering things going back to childhood
   - communicating with language
+- [HD computing overview paper](https://link.springer.com/content/pdf/10.1007/s12559-009-9009-8.pdf)
+  - in these high dimensions, most points are close to equidistant from one another (L1 distance), and are approximately orthogonal (dot product is 0)
+  - memory
+    - *heteroassociative* - can return stored *X* based on its address *A*
+    - *autoassociative* - can return stored *X* based on a noisy version of *X* (since it is a point attractor), maybe with some iteration
+      - this adds robustness to the memory
+      - this also removes the need for addresses altogether
 
 ## definitions
 
-- what is hd computing
+- what is hd computing?
   - compute with random high-dim vectors
   - ex. 10k vectors A, B of +1/-1 (also extends to real / complex vectors)
 - 3 operations
-  - addition: A + B = (0, 0, 2, 0, 2,-2, 0,  ....)
-  - multiplication: A * B =  (-1, -1, -1, 1, 1, -1, 1, ...)
+  - **addition**: A + B = (0, 0, 2, 0, 2,-2, 0,  ....)
+  - **multiplication**: A * B =  (-1, -1, -1, 1, 1, -1, 1, ...) - this is **XOR**
+    - want this to be invertible, dsitribute over addition, preserve distance, and be dissimilar to the vectors being multiplied
+    - number of ones after multiplication is the distance between the two original vectors
+    - can represent a dissimilar set vector by using multiplication
   - permutation: shuffles values
     - ex. rotate (bit shift with wrapping around)
+    - multiply by rotation matrix (where each row and col contain exactly one 1)
+    - can think of permutation as a list of numbers 1, 2, ..., n in permuted order
+    - many properties similar to multiplication
+    - random permutation randomizes
+- basic operations
+  - weighting by a scalar
+  - similarity = dot product (sometimes normalized)
+    - A $\cdot$ A = 10k
+    - A $\cdot$ A = 0 (orthogonal)
+    - in high-dim spaces, almost all pairs of vectors are dissimilar A $\cdot$ B = 0
+    - goal: similar meanings should have large similarity
+  - normalization
+    - for binary vectors, just take the sign
+    - for non-binary vectors, scalar weight
+- data structures
 - these operations allow for encoding all normal data structures: sets, sequences, lists, databases
-- similarity = dot product (sometimes normalized)
-  - A . A = 10k
-  - A . A = 0 - orthogonal
-  - in high-dim spaces, almost all pairs of vectors are dissimilar A. B = 0
-  - goal similar meanings should have large similarity
-- benefits - very simple and scalable - only go through data once
-  - equally easy to use 4-grams vs. 5-grams
+  - set - can represent with a sum (since the sum is similar to all the vectors)
+    - can find a stored set using any element
+    - if we don't store the sum, can probe with the sum and keep subtracting the vectors we find
+  - multiset = bag (stores set with frequency counts) - can store things with order by adding them multiple times, but hard to actually retrieve frequencies
+  - sequence - could have each element be an address pointing to the next element
+    - problem - hard to represent sequences that share a subsequence (could have pointers which skip over the subsquence)
+    - soln: index elements based on permuted sums
+      - can look up an element based on previous element or previous string of elements
+    - could do some kind of weighting also
+  - pairs - could just multiply (XOR), but then get some weird things, e.g. A * A = **0**
+    - instead, permute then multiply
+    - can use these to index (address, value) pairs and make more complex data structures
+  - named tuples - have smth like (name: x, date: m, age: y)  and store as holistic vector $H = N*X + D *  M + A * Y$
+    - individual attribute value can be retrieved using vector for individual key
+  - representation substituting is a little trickier....
+    - we blur what is a value and whit is a variable
+    - can do this for a pair or for a named tuple with new values
+      - this doesn't always work
+- examples
+  - context vectors
+    - standard practice (e.g. LSA): make matrix of word counts, where each row is a word, and each column is a document
+    - HD computing alternative: each row is a word, but each document is assigned a few ~10 columns at random
+      - thus, the number of columns doesn't scale with the number of documents
+      - **can also do this randomness for the rows (so the number of rows < the number of words)**
+      - can still get semantic vector for a row/column by adding together the rows/columns which are activated by that row/column
+      - this examples still only uses bag-of-words (but can be extended to more)
+  - learning rules by example
+    - particular instance of a rule is a rule (e.g mother-son-baby $\to$ grandmother)
+      - as we get more examples and average them, the rule gets better
+      - doesn't always work (especially when things collapse to identity rule)
+  - analogies from pairs
+    - ex. what is the dollar of mexico?
 
 ## ex. identify the language
 
+- paper: [LANGUAGE RECOGNITION USING RANDOM INDEXING](https://arxiv.org/pdf/1412.7026.pdf) (joshi et al. 2015)
+- benefits - very simple and scalable - only go through data once
+  - equally easy to use 4-grams vs. 5-grams
 - data
   - train: given million bytes of text per language (in the same alphabet)
   - test: new sentences for each language
 - training: compute a 10k profile vector for each language and for each test sentence
   - could encode each letter wih a seed vector which is 10k
   - instead encode trigrams with **rotate and multiply**
-    - 1st letter vec rotated by 2 * 2nd letter vec rotated by 1 * 3rd leter vec
+    - 1st letter vec rotated by 2 * 2nd letter vec rotated by 1 * 3rd letter vec
     - ex. THE = r(r(T)) * r(H) * r(E)
     - approximately orthogonal to all the letter vectors and all the other possible trigram vectors...
   - profile = sum of all trigram vectors (taken sliding)
@@ -388,7 +447,7 @@ category: neuro
   - clusters similar languages - cool!
   - gets 97% test acc
   - can query the letter most likely to follor "TH"
-    - form query vector Q = r(r(T)) * r(H)
+    - form query vector $Q = r(r(T)) * r(H)$
     - query by using multiply X + Q * english-profile-vec
     - find closest letter vecs to X - yields "e"
 
@@ -423,3 +482,11 @@ category: neuro
   - trying to make key-value pairs
   - VSA as a structured approach for understanding neural networks
   - reservoir computing = state-dependent network = echos-state network = liquid state machine - try to represen sequential temporal data - builds representations on the fly
+
+
+
+## papers
+
+- [text classification](https://iis-people.ee.ethz.ch/~arahimi/papers/DATE16_HD.pdf) (najafabadi et al. 2016)
+- [Classification and Recall With Binary Hyperdimensional Computing: Tradeoffs in Choice of Density and Mapping Characteristics](https://ieeexplore.ieee.org/abstract/document/8331890?casa_token=FbderL4T3RgAAAAA:LfP2kRSJwhY5z4OHMqvNDrxmSpyIMLzGs80vGj_IdBXVhVVDwZg1tfIeD2nj0S5N7T2YsRrOcg)
+  - note: for sparse vectors, might need some threshold before computing mean (otherwise will have too many zeros)
