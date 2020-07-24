@@ -1,6 +1,15 @@
-# source for https://csinva.github.io
+<h1 align="center">source for https://csinva.github.io</h1>
 
-**contains [slides](pres), [research overviews](_research_ovws), [notes](_notes),  [blog posts](_blog), links to code/research, and personal info**
+
+<p align="center">
+  <a href="pres">slides</a> •
+  <a href="_research_ovws">research overview</a> •
+  <a href="_notes">notes</a>
+  <br>
+  <a href="_blog">posts</a> •
+  <a href="#code">links to code/research</a>  •
+  <a href="https://scholar.google.com/citations?hl=en&user=XpttKK8AAAAJ&view_op=list_works&sortby=pubdate">personal info</a> 
+</p>
 
 ## slides
 
@@ -21,7 +30,8 @@ the [_notes](_notes) folder contains markdown notes for many different classes a
 
 ## code
 
-links to research code, such as these repos for interpretable machine learning (e.g. [hierarchical-dnn-interpretations](https://github.com/csinva/hierarchical_dnn_interpretations), [disentangled-attribution-curves](https://github.com/csinva/disentangled_attribution_curves)) and miscellaneous repos for data science (e.g. [pytorch-pretrained-gans](https://github.com/csinva/pytorch_gan_pretrained))
+links to research code, such as these repos for interpretable machine learning (e.g. [hierarchical-dnn-interpretations](https://github.com/csinva/hierarchical_dnn_interpretations), [deep-explanation-penalization](https://github.com/laura-rieger/deep-explanation-penalization), [disentangled-attribution-curves](https://github.com/csinva/disentangled_attribution_curves)) and miscellaneous repos for data science (e.g. [pytorch-pretrained-gans](https://github.com/csinva/pytorch_gan_pretrained), [
+gpt2-paper-title-generator](https://github.com/csinva/gpt2-paper-title-generator))
 
 ![](assets/img/acd_intro.png)
 
