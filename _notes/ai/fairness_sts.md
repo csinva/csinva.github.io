@@ -93,7 +93,9 @@ typora-copy-images-to: ./assets/nlp
 # sts
 
 - **social determinism** - theory that social interactions and constructs alone determine individual behavior
+
 - **technological determinism** - theory that assumes that a society's technology determines the development of its social structure and cultural values
+
 - [do artifacts have politics?](https://www.cc.gatech.edu/~beki/cs4001/Winner.pdf) (winner 2009)
     - **politics** - arrangements of power and authority in human associations as well as the activitites that take place within those arrangements
     - **technology** -  smaller or larger pieces or systems of hardware of a specific kind. 
@@ -110,8 +112,12 @@ typora-copy-images-to: ./assets/nlp
     - technologies which are inherently political, regardless of use
       - ex. "If man, by dint of his knowledge and inventive genius has subdued the forces of nature, the latter avenge themselves upon him by subjecting him, insofar as he employs them, to a veritable despotism independent of all social organization."
       - attempts to justify strong authority on the basis of supposedly necessary conditions of technical practice have an ancient history. 
+    
 - [Disembodied Machine Learning: On the Illusion of Objectivity in NLP](https://openreview.net/pdf?id=fkAxTMzy3fs)
+
 - [less work for mother](https://www.americanheritage.com/less-work-mother) (cowan 1987) - technologies that seem like they save time rarely do (although they increase "productivity")
+
+- [The Concept of Function Creep](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3547903) - “Function creep denotes an imperceptibly transformative and therewith contestable change in a data-processing system’s proper activity.”
 
 
 

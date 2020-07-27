@@ -67,6 +67,7 @@ displays
 - using [atom](https://atom.io/) with the [hydrogen](https://atom.io/packages/hydrogen) plugin often strikes a nice balance
 - [jupytertext](https://github.com/mwouts/jupytext) offers a nice way to use version control with jupyter
 - [pdoc3](https://pypi.org/project/pdoc3/) can very quickly generate simple api from docstrings
+- when working on AWS, this command is useful for starting remote jupyterlab sessions `screen jupyter lab --certfile=~/ssl/mycert.pem --keyfile ~/ssl/mykey.key`
 
 ### hyperparameter tracking
 

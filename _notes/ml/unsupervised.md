@@ -233,9 +233,10 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
     - D is *Euclidean* if there exists points s.t. D gives interpoint Euclidean distances
       - define B = HAH
         - D Euclidean iff B is psd
-- t-sne preserves pairwise neighbors
+- **t-sne** preserves pairwise neighbors
   - [t-sne tutorial](https://distill.pub/2016/misread-tsne/)
-- UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction
+- **umap**: Uniform Manifold Approximation and Projection for Dimension Reduction
+	- [umap tutorial](https://umap-learn.readthedocs.io/en/latest/how_umap_works.html) 
 
 # generative models
 

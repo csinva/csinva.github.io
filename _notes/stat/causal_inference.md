@@ -144,6 +144,11 @@ C(Location of Car) --> B
 
 - [Causality for Machine Learning](https://arxiv.org/abs/1911.10500) (scholkopf 19)
   - most of ml is built on the iid assumption and fails when it is violated (e.g. cow on a beach)
+
+
+
+# matching
+
 - [Matching methods for causal inference: A review and a look forward](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2943670/pdf/nihms200640.pdf) (stuart 2010)
   - matching methods choose try to to equate (or “balance”) the distribution of covariates in the treated and control groups 
     - they do this by picking well-matched samples of the original treated and control groups
@@ -155,6 +160,7 @@ C(Location of Car) --> B
       - propensity scores are balancing scores: At each value of the propensity score, the distribution of the covariates X defining the propensity score is the same in the treated and control groups -- usually this is logistic regresion
       - if treatment assignment is ignorable given the covariates, then treatment assignment is also ignorable given the propensity score
     - hard constraints are called "exact matching" - can be combined with other methods
+    - mahalanabois distance
   - matching methods
     - nearest neighbor matching - we discard many samples this way (but samples are more similar, so still helpful)
       - optimal matching - consider all potential matches at once, rather than one at a time
@@ -165,11 +171,13 @@ C(Location of Car) --> B
       - full matching - automatically picks the number of groups
       - weighting - use propensity score as weight in calculating ATE (also know as inverse probability of treatment weighting)
     - common support - want to look at points which are similar, and need to be careful with how we treat points that violate similarity
+    - genetic matching - find the set of matches which minimize the discrepancy between the distribution of potential confounders
   - diagnosing matches - are covariates balanced after matching?
     - ideally we would look at all multi-dimensional histograms, but since we have few points we end up looking at 1-d summaries
     - one standard metric is difference in means of each covariate, divided by its stddev in the whole dataset
   - analysis of the outcome - can still use regression adjustment after doing the matching to clean up residual covariances
     - unclear how to propagate variance from matching to outcome analysis
+- [Multivariate and Propensity Score Matching Software with Automated Balance Optimization: The Matching Package for R](http://sekhon.berkeley.edu/papers/MatchingJSS.pdf) (sekhon 2011)
 
 # studies
 
