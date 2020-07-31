@@ -3,12 +3,14 @@
 
 <p align="center">
   <a href="pres">slides</a> •
-  <a href="_research_ovws">research overview</a> •
+  <a href="_research_ovws">research overviews</a> •
   <a href="_notes">notes</a>
   <br>
   <a href="_blog">posts</a> •
   <a href="#code">links to code/research</a>  •
-  <a href="https://scholar.google.com/citations?hl=en&user=XpttKK8AAAAJ&view_op=list_works&sortby=pubdate">personal info</a> 
+  <a href="https://scholar.google.com/citations?hl=en&user=XpttKK8AAAAJ&view_op=list_works&sortby=pubdate">personal info</a>
+  <br>
+  <a href="https://twitter.com/chandan_singh96">@chandan_singh96</a>
 </p>
 
 ## slides

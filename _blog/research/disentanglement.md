@@ -171,6 +171,7 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
   - computes correlation loss term using discriminator (can we discriminate between the samples when we shuffle over the batch dimension or not?)
   - [beta-TC-VAE = beta-total-correlation VAE](https://arxiv.org/abs/1802.04942) (chen et al. 2018) - same objective but computed without need for discriminator
   - [Interpretable VAEs for nonlinear group factor analysis](https://arxiv.org/abs/1802.06765)
+- [Wasserstein Auto-Encoders](https://arxiv.org/pdf/1711.01558.pdf) (tolstikhin et al.) - get rid of regularization term
 - [Adversarial Latent Autoencoder](https://arxiv.org/pdf/2004.04467.pdf) (pidhorskyi et al. 2020)
   - improve quality of generated VAE reconstructions by using a different setup which allows for using a GAN loss
   - ![alae](assets/alae.png)

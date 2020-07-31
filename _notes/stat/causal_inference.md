@@ -31,6 +31,7 @@ category: stat
 # potential outcome framework (neyman-rubin)
 
 - advantages over DAGs: easy to express some common assumptions, such as monotonicity / convexity
+
 - 3 frameworks
   1. neyman-rubin model: $Y_i = T_i a_i + (1-T_i) b_i$
     - $\widehat{ATE} = \hat{a}_A - \hat{b}_B$
@@ -43,10 +44,13 @@ category: stat
   3. fisherian testing framework
     - small p-values evidence against null hypothesis
     - null hypothesis
+  
 - natural experiments
   
   - ex. john snow
+  
 - *propensity score* - probability that a subject recieving a treatment is valid after conditioning on appropriate covariates
+
 - 3 principles of experimental design
   1. replication
   2. randomization
@@ -159,7 +163,8 @@ C(Location of Car) --> B
       - defined as the probability of being treated given the observed covariates
       - propensity scores are balancing scores: At each value of the propensity score, the distribution of the covariates X defining the propensity score is the same in the treated and control groups -- usually this is logistic regresion
       - if treatment assignment is ignorable given the covariates, then treatment assignment is also ignorable given the propensity score
-    - hard constraints are called "exact matching" - can be combined with other methods
+      - 
+    - ![propensity](assets/propensity.png)hard constraints are called "exact matching" - can be combined with other methods
     - mahalanabois distance
   - matching methods
     - nearest neighbor matching - we discard many samples this way (but samples are more similar, so still helpful)

@@ -333,6 +333,8 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
   - kernel density = parzen-window density based on samples yields likelihood
   - inception score $IS(\mathbf x) = \exp(\underbrace{H(\mathbf y)}_{\text{want to generate diversity of classes}} - \underbrace{H(\mathbf y|\mathbf x)}_{\text{each image should be distinctly recognizable}})$
   - **FID** - Frechet inception score works directly on embedded features from inception v3 model
+    - embed population of images and calculate mean + variance in embedding space
+    - measure distance between these means / variances for real/synthetic images using Frechet distance = Wasseterstein-2 distance
 - infogan
   - ![infogan](assets/ml/infogan.png)
 - problems
