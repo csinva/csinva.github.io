@@ -4,7 +4,6 @@ title: Math Basics
 category: math
 ---
 
-* TOC
 {:toc}
 
 # misc

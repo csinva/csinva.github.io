@@ -6,7 +6,7 @@ category: research
 
 **some papers I like involving interpretable machine learning, largely organized based on this [interpretable ml review](https://arxiv.org/abs/1901.04592), and some notes from this [interpretable ml book](https://christophm.github.io/interpretable-ml-book/)**
 
-[TOC]
+{:toc}
 
 # reviews
 

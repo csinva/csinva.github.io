@@ -6,9 +6,6 @@ title: Chandan Singh
 description: "Chandan Singh Homepage"
 keywords: "Chandan Singh, Machine Learning, Berkeley, Interpretability, Explainability"
 collections:
- research_ovws:
-    name: research_ovws
-    output: true
  blog:
     name: blog
     output: true

@@ -4,7 +4,6 @@ title: calculus
 category: math
 ---
 
-* TOC
 {:toc}
 
 # taylor expansion

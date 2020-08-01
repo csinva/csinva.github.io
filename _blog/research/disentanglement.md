@@ -10,9 +10,6 @@ category: blog
 <iframe class="iframe" src="https://csinva.github.io/notes/cheat_sheets/disentanglement_cheat_sheet#/"
         frameborder="0" width="100%" height="auto" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 </div>
-
-[toc]
-
 # GANs
 
 ## model-based (disentangle during training)

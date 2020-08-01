@@ -3,7 +3,7 @@ layout: notes
 title: game theory
 category: stat
 ---
-* TOC
+
 {:toc}
 
 - **Backward Induction** – start at the ends and consider the last moves for each player until the beginning is reached

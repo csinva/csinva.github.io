@@ -4,7 +4,6 @@ title: Learning Theory
 category: ml
 ---
 
-* TOC
 {:toc}
 
 

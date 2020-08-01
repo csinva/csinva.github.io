@@ -4,7 +4,6 @@ title: Data Structures
 category: cs
 ---
 
-* TOC
 {:toc}
 
 # lists

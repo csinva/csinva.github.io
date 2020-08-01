@@ -4,7 +4,6 @@ title: linear models
 category: stat
 ---
 
-* TOC
 {:toc}
 
 - *Material from "Statistical Models Theory and Practice" - David Freedman*

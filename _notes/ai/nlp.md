@@ -5,8 +5,9 @@ category: ai
 typora-copy-images-to: ./assets/nlp
 ---
 
-* TOC
 {:toc}
+
+Some notes on natural language processing.
 
 # useful tools
 

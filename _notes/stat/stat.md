@@ -3,7 +3,7 @@ layout: notes
 title: Statistics
 category: stat
 ---
-* TOC
+
 {:toc}
 *some material based on probability and statistics cookbook by matthias vallentin*
 

@@ -5,9 +5,9 @@ category: ai
 typora-copy-images-to: ./assets/ai
 ---
 
-* TOC
 {:toc}
-*From "Artificial Intelligence" Russel & Norvig 3rd Edition*
+
+Some notes on decision theory based on Berkeley's CS 188 course and  "Artificial Intelligence" Russel & Norvig 3rd Edition
 
 # game trees - R&N 5.2-5.5
 
@@ -207,7 +207,7 @@ typora-copy-images-to: ./assets/ai
 - *reinforcement learning* - use observed rewards to learn optimal policy for the environment
   - in ch 17, agent had model of environment (P(s'|s, a) and R(s))
 - 2 problems
-  - *passive* - given $\pi$, learn $U^\pi (s)​$
+  - *passive* - given $\pi$, learn $U^\pi (s)$
   - *active* - *explore* states to find utilities and *exploit* to get highest reward
 - 2 model types, 3 agent designs
   - model-based: can predict next state/reward before taking action (for MDP, requires learning $P(s'|s,a)$)
@@ -220,13 +220,14 @@ typora-copy-images-to: ./assets/ai
 ## passive reinforcement learning
 
 - given policy $\pi$, learn $U^\pi (s) = \mathbb E\left[ \sum_{t=0}^{\infty} \gamma^t R(S_t)\right]$
+  
   - like policy evaluation, but transition model / reward function are unknown
 - **direct utility estimation**: treat states independently
   - run trials to sample utility
   - average to get expected total reward for each state = expected total reward from each state
 - **adaptive dynamic programming** (ADP) - sample to estimate transition model $P(s'|s, a)$ and rewards $R(s)$, then plug into Bellman eqn to find $U^\pi(s)$ (plug in at each step)
   - we might want to enforce a prior on the model (two ways)
-    1. *Bayesian reinforcement learning* - assume a prior $P(h)​$ on transition model h
+    1. *Bayesian reinforcement learning* - assume a prior $P(h)$ on transition model h
       - use prior to calculate $P(h \vert e)$
       - use $P(h|e)$ to calculate optimal policy: $\pi^* = \underset{\pi}{argmax} \sum_h P(h \vert e) u_h^\pi$
         - $u_h^\pi$= expected utility over all possible start states, obtained by executing policy $\pi$ in model h
@@ -283,7 +284,7 @@ typora-copy-images-to: ./assets/ai
 ## policy search
 
 - keep twiddling the policy as long as it improves, then stop
-  - store one Q-function (parameterized by $\theta​$) for each action
+  - store one Q-function (parameterized by $\theta$) for each action
   - ex. $\pi(s) = \underset{a}{\max} \: \hat{Q}_\theta (s,a)$
     - this is discontinunous, instead often use *stochastic policy* representation (ex. softmax for $\pi_\theta (s,a)$)
   - learn $\theta$ that results in good performance

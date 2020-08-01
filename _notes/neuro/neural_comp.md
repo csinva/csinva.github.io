@@ -4,7 +4,6 @@ title: neuro models
 category: neuro
 ---
 
-* TOC
 {:toc}
 
 - convs are organized spatially

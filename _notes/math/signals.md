@@ -4,7 +4,7 @@ title: signals
 category: math
 typora-copy-images-to: ./assets/signals
 ---
-* TOC
+
 {:toc}
 
 # basics

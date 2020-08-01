@@ -4,7 +4,6 @@ title: Development
 category: neuro
 ---
 
-* TOC
 {:toc}
 
 # 22 early development

@@ -4,7 +4,7 @@ title: Feature selection
 category: ml
 typora-copy-images-to: ./assets/ml
 ---
-* TOC
+
 {:toc}
 
 

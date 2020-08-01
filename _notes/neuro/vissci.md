@@ -4,7 +4,6 @@ title: Vision
 category: neuro
 ---
 
-* TOC
 {:toc}
 
 # neural signals

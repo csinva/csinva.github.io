@@ -4,7 +4,6 @@ title: representations
 category: ai
 ---
 
-* TOC
 {:toc}
 
 # intro

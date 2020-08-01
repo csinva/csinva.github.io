@@ -4,8 +4,8 @@ title: causal inference
 category: stat
 ---
 
-* TOC
 {:toc}
+
 *Some notes on causal inference both from introductory courses following the neyman-rubin school of thought + based on Judea Pearl's ladder of causality*
 
 # basics
@@ -27,6 +27,8 @@ category: stat
 - 2 frameworks
   - potential outcomes
   - causal graphs
+- **epiphenomenon** - a correlated effect (not a cause)
+  - a secondary effect or byproduct that arises from but does not causally influence a process
 
 # potential outcome framework (neyman-rubin)
 

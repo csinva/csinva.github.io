@@ -18,9 +18,15 @@
         <div class="main" style="margin-right: 15%;">
             <div id="content" class="markdown">
                 <p class="title" style="font-size: 60px"> {{ page.title | downcase }} </p>
-                <br>
-                <a style="float:left" href="https://github.com/csinva/csinva.github.io">view on github<i class="fa fa-github fa-fw"></i></a>
-                <br/><hr>
+                <div style="width:25px; display:inline-block; height:auto;"></div>
+                <a class="btn btn-success" style="float:left;   text-transform: lowercase;"
+                   href="https://github.com/csinva/csinva.github.io/blob/master/{{ page.path }}">view markdown <i class="fa fa-github fa-fw"></i></a>
+
+                <a class="btn btn-info" style="float:left;   text-transform: lowercase;"
+                   href="https://twitter.com/intent/tweet?url={{site.baseurl}}{{ page.url }}">tweet this <i class="fa fa-twitter fa-fw"></i></a>
+                <br/>
+                <br/>
+                <hr>
                 {{ page.content | markdownify }}
             </div>
         </div>
@@ -32,6 +38,10 @@
 <style>
 .markdown p, li, ul{
     font-size: large;
+}
+
+#markdown-toc{
+    display: none;
 }
 </style>
 

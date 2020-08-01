@@ -4,7 +4,6 @@ title: software engineering
 category: cs
 ---
 
-* TOC
 {:toc}
 
 # ch 2 - software engineering

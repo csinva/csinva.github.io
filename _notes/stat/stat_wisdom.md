@@ -5,9 +5,7 @@ title: Principles
 category: stat
 ---
 
-* TOC
 {:toc}
----
 
 # breiman
 

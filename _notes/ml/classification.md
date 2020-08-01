@@ -3,7 +3,7 @@ layout: notes
 title: Classification
 category: ml
 ---
-* TOC
+
 {:toc}
 
 # overview

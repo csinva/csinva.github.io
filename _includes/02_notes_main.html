@@ -1,4 +1,4 @@
-<h2 align="center"> posts + resources </h2>
+<h2 align="center"> resources + posts </h2>
 
 <div class="coll3">
     <h3 align="center">research posts</h3>
@@ -12,7 +12,7 @@
 </div>
 
 <div class="coll3">
-    <h3 align="center">misc posts</h3>
+    <h3 align="center">research-ish posts</h3>
     <ul class="list-items">
         <li><a href="{{ site.baseurl }}/blog/misc/attributions" style="font-size:16px"> 2020 - super quick intro to attribution methods </a></li>
         <li><a href="{{ site.baseurl }}/blog/misc/model_improvement" style="font-size:16px"> 2019 - model improvement checklist </a></li>
@@ -24,7 +24,7 @@
 </div>
 
 <div class="coll3">
-    <h3 align="center">research notes</h3>
+    <h3 align="center">paper overviews</h3>
 
     <ul class="list-items">
     {% for collection in site.collections %}
@@ -143,24 +143,28 @@
     float: left;
     width: 33.33%;
     padding-bottom: 50px;
+    text-align: center;
 }
 
 .coll2 {
     float: left;
     width: 49.9%;
     padding-bottom: 50px;
+    text-align: center;
 }
 
 .coll3 {
     float: left;
     width: 32.9%;
     padding-bottom: 50px;
+    text-align: center;
 }
 
 .coll4 {
     float: left;
     width: 24.9%;
     padding-bottom: 50px;
+    text-align: center;
 }
 
 .coll5 {
@@ -175,5 +179,10 @@
     content: "";
     display: table;
     clear: both;
+}
+
+.list-items {
+    display: inline-block;
+    text-align: left;
 }
 </style>

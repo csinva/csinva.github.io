@@ -4,7 +4,6 @@ title: Proofs
 category: math
 ---
 
-* TOC
 {:toc}
 
 # proofs

@@ -5,7 +5,6 @@ title: info Theory
 category: stat
 ---
 
-* TOC
 {:toc}
 
 - *material from* Cover "Elements of Information Theory"

@@ -4,7 +4,6 @@ title: comp neuro
 category: neuro
 ---
 
-* TOC
 {:toc}
 
 # modern research

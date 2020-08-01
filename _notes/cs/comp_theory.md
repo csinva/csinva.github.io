@@ -4,7 +4,6 @@ title: cs theory
 category: cs
 ---
 
-* TOC
 {:toc}
 
 # introduction

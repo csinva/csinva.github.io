@@ -5,12 +5,12 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
                     <i class="fa fa-bars"></i>
                 </button>
-                {% if page.url contains 'notes' or page.url contains 'projects' or page.url contains 'blog' or page.url contains 'ovw' or page.url contains 'pres'%}
+                {% if page.url contains 'notes' or page.url contains 'blog' or page.url contains 'pres'%}
                     <a class="navbar-brand page-scroll" href="{{site.url}}" style="font-weight:italic">
                         Chandan Singh
                     </a>
                 {% else %}
-                    <a class="navbar-brand page-scroll" href="#page-top"">
+                    <a class="navbar-brand page-scroll" href="#page-top">
                         Chandan Singh
                     </a>
                 {% endif %}
@@ -26,13 +26,13 @@
 
                     {% if page.url contains 'notes' or page.url contains 'projects' or page.url contains 'blog' or page.url contains 'ovw' or page.url contains 'pres'%}
                         <li><a class="page-scroll" href="{{site.baseurl}}/#research">Research</a></li>
+                        <li><a class="page-scroll" href="{{site.baseurl}}/#notes_main">Resources</a></li>
                         <li><a class="page-scroll" href="{{site.baseurl}}/#experience">Experience</a></li>
-                        <li><a class="page-scroll" href="{{site.baseurl}}/#notes_main">Posts+Resources</a></li>
 
                     {% else %}
                         <li><a class="page-scroll" href="#research">Research</a></li>
+                        <li><a class="page-scroll" href="#notes_main">Resources</a></li>
                         <li><a class="page-scroll" href="#experience">Experience</a></li>
-                        <li><a class="page-scroll" href="#notes_main">Posts+Resources</a></li>
                     {% endif %}
 
                 </ul>

@@ -5,7 +5,6 @@ category: math
 typora-copy-images-to: ./assets/linear_algebra
 ---
 
-* TOC
 {:toc}
 
 # linear basics

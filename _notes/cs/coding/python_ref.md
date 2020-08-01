@@ -20,7 +20,7 @@ category: cs
 
 # data structures
 
-```Python
+```python
 - list l (use this for stack as well) # implemented like an arraylist
 	- l.append(x)
     - l.insert(index, element)

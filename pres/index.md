@@ -4,12 +4,12 @@ title: presentations
 ---
 
 
-<br>
+Links to many of my presentations
 
 
-# slides
+# presentations
 
-## instructive
+## teaching
 - [machine learning (cs 189)](https://csinva.github.io/pres/189/#/)
 - [intro to ai (cs 188)](https://csinva.github.io/pres/188/#/)
 - [interpretability workshop](https://docs.google.com/presentation/d/1RIdbV279r20marRrN0b1bu2z9STkrivsMDa_Dauk8kE/present?slide=id.p)
@@ -57,7 +57,7 @@ title: presentations
 # posters
 - [acd poster](/assets/write_ups/acd_18_bairday_poster.pdf)
     - [acd + interp poster](/assets/write_ups/utokyo_19_interp_poster.pdf)
-- [rf segmentation](/assets/write_ups/singh_15_rf_segmentation.pdf)
+- [random forest image segmentation](/assets/write_ups/singh_15_rf_segmentation.pdf)
 - [wsimule poster](/assets/write_ups/wsimule_17_nips_poster.pdf)
 
 # recordings
@@ -67,10 +67,10 @@ title: presentations
 	- [grad slam 2019](https://www.youtube.com/watch?v=6VVppY-uUgE&feature=youtu.be&t=5600)
 	- [textxd 2019](https://berkeley-haas.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=276daa74-7298-40b1-9503-ab17014b5863)
 - misc releases
+  - [covid coe article](https://engineering.berkeley.edu/news/2020/04/getting-the-right-equipment-to-the-right-people/)
+  - [bids iml piece](https://bids.berkeley.edu/publications/definitions-methods-and-applications-interpretable-machine-learning)
   - https://uvacsnews.wordpress.com/2017/05/04/chandansingh/
   - https://uvacsnews.wordpress.com/2017/05/12/congratulations-to-our-cs-award-winners/
   - https://twitter.com/CS_UVA/status/860155364347715584
-  - [bids iml piece](https://bids.berkeley.edu/publications/definitions-methods-and-applications-interpretable-machine-learning)
-  - [covid coe article](https://engineering.berkeley.edu/news/2020/04/getting-the-right-equipment-to-the-right-people/)
   
-## presentation abstracts
+  

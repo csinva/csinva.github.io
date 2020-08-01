@@ -3,7 +3,7 @@ layout: notes
 title: chaos
 category: math
 ---
-* TOC
+
 {:toc}
 
 # Normal forms of Hopf bifurcations

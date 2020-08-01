@@ -4,7 +4,6 @@ title: Differential Equations
 category: math
 ---
 
-* TOC
 {:toc}
 
 # Differential Equations

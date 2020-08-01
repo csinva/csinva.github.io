@@ -6,9 +6,10 @@ category: research
 
 *Deep learning theory is a complex emerging field - this post contains links displaying some different interesting research directions*
 
-[TOC]
 
-- [off convex blog](http://www.offconvex.org/)
+{:toc}
+
+[off convex blog](http://www.offconvex.org/)
 
 # theoretical studies
 

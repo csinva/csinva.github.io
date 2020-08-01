@@ -3,7 +3,7 @@ layout: notes
 title: time series
 category: stat
 ---
-* TOC
+
 {:toc}
 
 # high-level

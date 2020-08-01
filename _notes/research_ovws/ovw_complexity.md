@@ -4,7 +4,6 @@ title: complexity
 category: research
 ---
 
-* TOC
 {:toc}
 
 Complexity can be a useful notion for many things in statistical models. It can help answer the following questions:
@@ -221,4 +220,7 @@ Complexity can be a useful notion for many things in statistical models. It can 
   - [mdl for attention](https://arxiv.org/abs/1902.10658?utm_source=share&utm_medium=ios_app&utm_name=iossmf) (lin 2019)
 - [Lightlike Neuromanifolds, Occam’s Razor and Deep Learning](https://pdfs.semanticscholar.org/9c61/2ea1d8e8c9ce75427f5fd879a367210c2cc7.pdf) (sun & nielsen 2019)
   - "A new MDL formulation which can explain the double descent risk curve of deep learning"
+- [Towards Learning Convolutions from Scratch](https://arxiv.org/pdf/2007.13657v1.pdf) (neyshabur 2020)
+  - uses some mdl as guiding principles
+  - training with $\beta$-lasso, fc weights become very local
 

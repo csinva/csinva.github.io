@@ -4,7 +4,6 @@ title: info Retrieval
 category: cs
 ---
 
-* TOC
 {:toc}
 
 # introduction

@@ -5,7 +5,6 @@ category: cs
 typora-copy-images-to: ./assets
 ---
 
-* TOC
 {:toc}
 
 - what does physics tell us about the limits of computers?

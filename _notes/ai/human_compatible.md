@@ -1,4 +1,10 @@
-Notes on **human compatible** by **Stuart Russell**
+---
+layout: notes
+title: human compatible
+category: ai
+---
+
+*A set of notes based on the book human compatible, by Stuart Russell*
 
 # what if we succeed?
 

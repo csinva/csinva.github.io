@@ -6,7 +6,6 @@ category: ai
 
 *A set of notes based on the book possible minds*
 
-* TOC
 {:toc}
 
 # 0 - intro (brockman)

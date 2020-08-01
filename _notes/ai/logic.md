@@ -5,9 +5,8 @@ category: ai
 typora-copy-images-to: ./assets/logic
 ---
 
-* TOC
 {:toc}
-*from "Artificial Intelligence" Russel & Norvig 3rd Edition*
+Some notes on logic based on Berkeley's CS 188 course and  "Artificial Intelligence" Russel & Norvig 3rd Edition
 
 # logical agents - 7.1-7.7 (omitting 7.5.2)
 

@@ -4,8 +4,7 @@ title: kernels
 category: research
 ---
 
-
-[TOC]
+{:toc}
 
 # kernel basics
 

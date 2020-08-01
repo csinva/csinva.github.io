@@ -4,7 +4,6 @@ title: Motor system
 category: neuro
 ---
 
-* TOC
 {:toc}
 
 # 16 lower

@@ -1,8 +1,6 @@
 
 
-* TOC
 {:toc}
----
 
 # pqrs
 

@@ -5,7 +5,6 @@ category: ai
 typora-copy-images-to: ./assets/nlp
 ---
 
-* TOC
 {:toc}
 
 # fairness metrics

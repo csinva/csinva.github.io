@@ -4,8 +4,9 @@ title: Graphs
 category: cs
 ---
 
-* TOC
 {:toc}
+
+Some notes on computer science graphs.
 
 - Edges are of the form (v1, v2)
     - Can be ordered pair or unordered pair

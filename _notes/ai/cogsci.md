@@ -4,8 +4,9 @@ title: cogsci
 category: ai
 ---
 
-* TOC
 {:toc}
+
+Some notes on a computational perspective on cognitive science.
 
 # nativism, empiricism
 

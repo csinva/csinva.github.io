@@ -3,7 +3,7 @@ layout: notes
 title: Evaluation
 category: ml
 ---
-* TOC
+
 {:toc}
 
 # losses

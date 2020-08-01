@@ -4,7 +4,6 @@ title: Sensory Input
 category: neuro
 ---
 
-* TOC
 {:toc}
 
 # 9- somatosensory

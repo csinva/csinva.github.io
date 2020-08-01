@@ -5,8 +5,9 @@ title: Unsupervised
 category: ml
 typora-copy-images-to: ./assets/ml
 ---
-* TOC
+
 {:toc}
+
 # clustering
 
 - labels are not given

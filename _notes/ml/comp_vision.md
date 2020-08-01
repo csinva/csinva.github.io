@@ -4,7 +4,6 @@ title: Computer Vision
 category: ml
 ---
 
-* TOC
 {:toc}
 
 # what's in an image?

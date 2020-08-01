@@ -4,7 +4,6 @@ title: real analysis
 category: math
 ---
 
-* TOC
 {:toc}
 
 # ch 1 - the real numbers

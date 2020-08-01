@@ -5,7 +5,6 @@ category: stat
 typora-copy-images-to: ./assets/graphical_models
 ---
 
-* TOC
 {:toc}
 
 

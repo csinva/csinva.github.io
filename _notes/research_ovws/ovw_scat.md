@@ -4,8 +4,7 @@ title: scattering transform
 category: research
 ---
 
-
-[TOC]
+{:toc}
 
 **some papers involving the scattering transform and similar developments bringing structure to replace learned filters**
 
