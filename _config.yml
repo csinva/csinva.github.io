@@ -3,8 +3,8 @@ baseurl: ""
 
 # Site Settings
 title: Chandan Singh
-description: "Chandan Singh Homepage"
-keywords: "Chandan Singh, Machine Learning, Berkeley, Interpretability, Explainability"
+description: "Let's do good with models"
+keywords: "Machine Learning, Chandan Singh, Berkeley, Interpretability, Explainability"
 collections:
  blog:
     name: blog

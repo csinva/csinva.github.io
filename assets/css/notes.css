@@ -48,3 +48,13 @@ img {
     filter: invert(1);
     width: 35%;
 }
+
+.medium_image {
+    align: center;
+    width: 60%;
+}
+
+.big_image {
+    align: center;
+    width: 80%;
+}

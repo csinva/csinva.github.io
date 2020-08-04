@@ -242,7 +242,7 @@ category: neuro
 
 
 
-## dynamic routing
+## dynamic routing between capsules
 
 - hinton 1981 - reference frames requires structured representations
   - mapping units vote for different orientations, sizes, positions based on basic units
@@ -266,7 +266,19 @@ category: neuro
   - matrix transforms reference frames between units
   - recurrent control units settle on some transformation to identify reference frame
 - notes from this [blog post](https://towardsdatascience.com/capsule-neural-networks-part-2-what-is-a-capsule-846d5418929f)
-  - 
+  - problems with cnns
+    - pooling loses info
+    - don't account for spatial relations between image parts
+    - can't transfer info to new viewpoints
+  - **capsule** - vector specifying the features of an object (e.g. position, size, orientation, hue texture) and its likelihood
+    - ex. an "eye" capsule could specify the probability it exists, its position, and its size
+    - magnitude (i.e. length) of vector represents probability it exists (e.g. there is an eye)
+    - direction of vector represents the instatntiation parameters (e.g. position, size)
+  - hierarchy
+    - capsules in later layers are functions of the capsules in lower layers, and since capsule has extra properties can ask questions like "are both eyes similarly sized?"
+      - equivariance = we can ensure our net is invariant to viewpoints by checking for all similar rotations/transformations in the same amount/direction
+    - active capsules at one level make predictions for the instantiation parameters of higher-level capsules
+      - when multiple predictions agree, a higher-level capsule is activated
 
 # probabilistic models + inference
 

@@ -4,83 +4,12 @@ title: Disentangled representation learning
 category: blog
 ---
 
-
-
 <div class="iframe-box" style="margin-top: 0px">
 <iframe class="iframe" src="https://csinva.github.io/notes/cheat_sheets/disentanglement_cheat_sheet#/"
         frameborder="0" width="100%" height="auto" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 </div>
-# GANs
 
-## model-based (disentangle during training)
-
-- disentangling architectures
-    - [InfoGAN: Interpretable Representation Learning by Information Maximizing Generative Adversarial Nets](https://arxiv.org/abs/1606.03657) (chen et al. 2016)
-      - encourages $I(x; c)$ to be high for a subset of the latent variables $z$
-        - slightly different than vae - defined under the distribution $p(c) p(x\vert c)$ whereas vae uses $p_{data}(x)enc(z\vert x)$
-      - mutual info is intractable so optimizes a lower bound
-    - [Stylegan](https://arxiv.org/abs/1812.04948) (karras et al. 2018)
-      - introduced perceptual path length and linear separability to measure the disentanglement property of latent space
-      - ![stylegan](assets/stylegan.png)
-      - [Stylegan2](https://arxiv.org/abs/1912.04958) (karras et al. 2019): ![stylegan2](assets/stylegan2.png)
-        - $\psi$ scales the deviation of *w* from the average - $\psi=1$ is original, moving towards 0 improves quality but reduces variety
-- [DNA-GAN: Learning Disentangled Representations from Multi-Attribute Images](https://arxiv.org/abs/1711.05415)
-- [Clustering by Directly Disentangling Latent Space](https://arxiv.org/abs/1911.05210) - clustering in the latent space of a gan
-- [Semi-Supervised StyleGAN for Disentanglement Learning](https://arxiv.org/abs/2003.03461) - further improvements on StyleGAN using labels in the training data
-
-## post-hoc (disentangle after training)
-
-- mapping latent space
-  - [InterFaceGAN: Interpreting the Disentangled Face Representation Learned by GANs](https://arxiv.org/pdf/2005.09635.pdf) (shen et al. 2020)
-  - [Interpreting the Latent Space of GANs for Semantic Face Editing](https://arxiv.org/abs/1907.10786) (shen et al. 2020)
-    - find latent directions for each binary attribute, as directions which separate the classes using linear svm
-      - validation accuracies in tab 1 are high...much higher for all data (because they have high confidence level on attribute scores maybe) - for PGGAN but not StyleGAN
-    - intro of this paper gives good survey of how people have studied GAN latent space
-    - few papers posthoc analyze learned latent repr.
-  - [On the "steerability" of generative adversarial networks](https://arxiv.org/abs/1907.07171) (jahanian et al. 2020)
-    - learn to approximate edits to images, such as zooms
-      - linear walk is as effective as more complex non-linear walks for learning this
-      - nonlinear setting - learn a neural network which applies a small perturbation in a specific direction (e.g. zooming)
-        - to move further in this space, repeatedly apply the function
-  - [A Disentangling Invertible Interpretation Network for Explaining Latent Representations](https://arxiv.org/abs/2004.13166) (esser et al. 2020) - map latent space to interpretable space, with invertible neural network
-      - interpretable space factorizes, so is disentangled
-      - individual concepts (e.g. color) can use multiple interpretable latent dims
-      - instead of user-supplied interpretable concepts, user supplies two sketches which demonstrate a change in a concept - these sketches are used w/ style transfer to create data points which describe the concept
-      - alternatively, with no user-supplied concepts, try to get independent components in unsupervised way
-  - [Disentangling in Latent Space by Harnessing a Pretrained Generator](https://arxiv.org/abs/2005.07728) (nitzan et al. 2020)
-      - learn to map attributes onto latent space of stylegan
-      - works using two images at a time and 2 encoders
-        - for each image, predict attributes + identity, then mix the attributes
-      - results look realy good, but can't vary one attribute at a time (have to transfer all attributes from the new image)
-  - [ELEGANT: Exchanging Latent Encodings with GAN for Transferring Multiple Face Attributes](http://openaccess.thecvf.com/content_ECCV_2018/papers/Taihong_Xiao_ELEGANT_Exchanging_Latent_ECCV_2018_paper.pdf) (xiao et al. 2018)
-      - trains 2 images at a time - swap an attribute that differs between the images and reconstruct images that have the transferred attribute
-- bias
-  - [Towards causal benchmarking of bias in computer vision algorithms](https://www.overleaf.com/project/5e6aa80234ed3e0001b9ac23) (balakrishnan et al. 2020) - use human annotations to disentangle latent space
-    - synthesis approach can alter multiple attributes at a time to produce grid-like matched samples of images we call *transects*
-    - find directions + orthogonalize same as shen et al. 2020
-  - [Detecting Bias with Generative Counterfactual Face Attribute Augmentation](https://arxiv.org/abs/1906.06439) (denton et al. 2019) - identify latent dims by training a classifier in the latent space on groundtruth attributes of the training images
-  - [Explaining Classifiers with Causal Concept Effect (CaCE)](https://arxiv.org/abs/1907.07165) (goyal et al. 2020) - use vae to disentangle / alter concepts to probe classifier
-- post-hoc
-    - [Explanation by Progressive Exaggeration](https://arxiv.org/abs/1911.00483) (singla et al. 2019)
-      - progressively change image to negate the prediction, keeping most features fixed
-        - want to learn mapping $I(x, \delta)$ which produces realistic image that changes features by $\delta$
-      - 3 losses: **data consistency** (perturbed samples should look real), **prediction changes** (perturbed samples should appropriately alter prediction), **self-consistency** (applying reverse perturbatino should bring x back to original, and $\delta=0$ should return identity)
-      - moving finds ways to generate images that do change the wanted attribute (and don't change the others too much)
-      - minor
-        - used human experiments
-        - limited to binary classification
-    - [Interpreting Deep Visual Representations via Network Dissection](https://arxiv.org/abs/1711.05611) (zhou et al. 2017)
-    
-      - obtain image attributes for each z (using classifier, not human labels)
-        - this classifier may put bias back in
-    
-      - to find directions representing an attribute, train a linear model to predict it from z
-    - [GAN Dissection: Visualizing and Understanding Generative Adversarial Networks](https://arxiv.org/abs/1811.10597) (bau et al. 2018) - identify group of interpretable units based on segmentation of training images
-      - find directions which allow for altering the attributes
-    - [GANSpace: Discovering Interpretable GAN Controls](https://arxiv.org/abs/2004.02546) - use PCA in the latent space (w for styleGAN, activation-space at a specific layer for BigGAN) to select directions
-    - [Editing in Style: Uncovering the Local Semantics of GANs](https://arxiv.org/abs/2004.14367) (collins et al. 2020) - use k-means on gan activations to find meaningful clusters (with quick human annotation)
-      - add style transfer using target/source image
-    - [Unsupervised Discovery of Interpretable Directions in the GAN Latent Space](https://arxiv.org/abs/2002.03754) - loss function which tries to recover random shifts made to the latent space
+{:toc}
 
 # VAEs
 
@@ -168,7 +97,11 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
   - computes correlation loss term using discriminator (can we discriminate between the samples when we shuffle over the batch dimension or not?)
   - [beta-TC-VAE = beta-total-correlation VAE](https://arxiv.org/abs/1802.04942) (chen et al. 2018) - same objective but computed without need for discriminator
   - [Interpretable VAEs for nonlinear group factor analysis](https://arxiv.org/abs/1802.06765)
-- [Wasserstein Auto-Encoders](https://arxiv.org/pdf/1711.01558.pdf) (tolstikhin et al.) - get rid of regularization term
+- [Wasserstein Auto-Encoders](https://arxiv.org/pdf/1711.01558.pdf) (tolstikhin et al.) - removes the mutual info part of the loss
+  - wasserstein distance = earth-movers distance, how far apart are 2 distrs
+  - minimizes wasserstein distance + penalty which is similar to auto-encoding penalty,  without the mutual info term
+  - another intuition: rather than map each point to a ball (since VAE adds noise to each latent repr), we only constraint the overall distr of Z, potentially making reconstructions less blurry (but potentially making latent space less smooth)
+  - ![wae](assets/wae.png)
 - [Adversarial Latent Autoencoder](https://arxiv.org/pdf/2004.04467.pdf) (pidhorskyi et al. 2020)
   - improve quality of generated VAE reconstructions by using a different setup which allows for using a GAN loss
   - ![alae](assets/alae.png)
@@ -215,6 +148,79 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
   - [vq-vae](https://arxiv.org/abs/1711.00937)
   - [Learning Disentangled Representations with Semi-Supervised Deep Generative Models](http://papers.nips.cc/paper/7174-learning-disentangled-representations-with-semi-supervised-deep-generative-models)
     - specify graph structure for some of the vars and learn the rest
+
+# GANs
+
+## model-based (disentangle during training)
+
+- disentangling architectures
+    - [InfoGAN: Interpretable Representation Learning by Information Maximizing Generative Adversarial Nets](https://arxiv.org/abs/1606.03657) (chen et al. 2016)
+      - encourages $I(x; c)$ to be high for a subset of the latent variables $z$
+        - slightly different than vae - defined under the distribution $p(c) p(x\vert c)$ whereas vae uses $p_{data}(x)enc(z\vert x)$
+      - mutual info is intractable so optimizes a lower bound
+    - [Stylegan](https://arxiv.org/abs/1812.04948) (karras et al. 2018)
+      - introduced perceptual path length and linear separability to measure the disentanglement property of latent space
+      - ![stylegan](assets/stylegan.png)
+      - [Stylegan2](https://arxiv.org/abs/1912.04958) (karras et al. 2019): ![stylegan2](assets/stylegan2.png)
+        - $\psi$ scales the deviation of *w* from the average - $\psi=1$ is original, moving towards 0 improves quality but reduces variety
+- [DNA-GAN: Learning Disentangled Representations from Multi-Attribute Images](https://arxiv.org/abs/1711.05415)
+- [Clustering by Directly Disentangling Latent Space](https://arxiv.org/abs/1911.05210) - clustering in the latent space of a gan
+- [Semi-Supervised StyleGAN for Disentanglement Learning](https://arxiv.org/abs/2003.03461) - further improvements on StyleGAN using labels in the training data
+
+## post-hoc (disentangle after training)
+
+- mapping latent space
+  - [InterFaceGAN: Interpreting the Disentangled Face Representation Learned by GANs](https://arxiv.org/pdf/2005.09635.pdf) (shen et al. 2020)
+  - [Interpreting the Latent Space of GANs for Semantic Face Editing](https://arxiv.org/abs/1907.10786) (shen et al. 2020)
+    - find latent directions for each binary attribute, as directions which separate the classes using linear svm
+      - validation accuracies in tab 1 are high...much higher for all data (because they have high confidence level on attribute scores maybe) - for PGGAN but not StyleGAN
+    - intro of this paper gives good survey of how people have studied GAN latent space
+    - few papers posthoc analyze learned latent repr.
+  - [On the "steerability" of generative adversarial networks](https://arxiv.org/abs/1907.07171) (jahanian et al. 2020)
+    - learn to approximate edits to images, such as zooms
+      - linear walk is as effective as more complex non-linear walks for learning this
+      - nonlinear setting - learn a neural network which applies a small perturbation in a specific direction (e.g. zooming)
+        - to move further in this space, repeatedly apply the function
+  - [A Disentangling Invertible Interpretation Network for Explaining Latent Representations](https://arxiv.org/abs/2004.13166) (esser et al. 2020) - map latent space to interpretable space, with invertible neural network
+      - interpretable space factorizes, so is disentangled
+      - individual concepts (e.g. color) can use multiple interpretable latent dims
+      - instead of user-supplied interpretable concepts, user supplies two sketches which demonstrate a change in a concept - these sketches are used w/ style transfer to create data points which describe the concept
+      - alternatively, with no user-supplied concepts, try to get independent components in unsupervised way
+  - [Disentangling in Latent Space by Harnessing a Pretrained Generator](https://arxiv.org/abs/2005.07728) (nitzan et al. 2020)
+      - learn to map attributes onto latent space of stylegan
+      - works using two images at a time and 2 encoders
+        - for each image, predict attributes + identity, then mix the attributes
+      - results look realy good, but can't vary one attribute at a time (have to transfer all attributes from the new image)
+  - [ELEGANT: Exchanging Latent Encodings with GAN for Transferring Multiple Face Attributes](http://openaccess.thecvf.com/content_ECCV_2018/papers/Taihong_Xiao_ELEGANT_Exchanging_Latent_ECCV_2018_paper.pdf) (xiao et al. 2018)
+      - trains 2 images at a time - swap an attribute that differs between the images and reconstruct images that have the transferred attribute
+- bias
+  - [Towards causal benchmarking of bias in computer vision algorithms](https://www.overleaf.com/project/5e6aa80234ed3e0001b9ac23) (balakrishnan et al. 2020) - use human annotations to disentangle latent space
+    - synthesis approach can alter multiple attributes at a time to produce grid-like matched samples of images we call *transects*
+    - find directions + orthogonalize same as shen et al. 2020
+  - [Detecting Bias with Generative Counterfactual Face Attribute Augmentation](https://arxiv.org/abs/1906.06439) (denton et al. 2019) - identify latent dims by training a classifier in the latent space on groundtruth attributes of the training images
+  - [Explaining Classifiers with Causal Concept Effect (CaCE)](https://arxiv.org/abs/1907.07165) (goyal et al. 2020) - use vae to disentangle / alter concepts to probe classifier
+- post-hoc
+    - [Explanation by Progressive Exaggeration](https://arxiv.org/abs/1911.00483) (singla et al. 2019)
+      - progressively change image to negate the prediction, keeping most features fixed
+        - want to learn mapping $I(x, \delta)$ which produces realistic image that changes features by $\delta$
+      - 3 losses: **data consistency** (perturbed samples should look real), **prediction changes** (perturbed samples should appropriately alter prediction), **self-consistency** (applying reverse perturbatino should bring x back to original, and $\delta=0$ should return identity)
+      - moving finds ways to generate images that do change the wanted attribute (and don't change the others too much)
+      - minor
+        - used human experiments
+        - limited to binary classification
+    - [Interpreting Deep Visual Representations via Network Dissection](https://arxiv.org/abs/1711.05611) (zhou et al. 2017)
+    
+      - obtain image attributes for each z (using classifier, not human labels)
+        - this classifier may put bias back in
+    
+      - to find directions representing an attribute, train a linear model to predict it from z
+    - [GAN Dissection: Visualizing and Understanding Generative Adversarial Networks](https://arxiv.org/abs/1811.10597) (bau et al. 2018) - identify group of interpretable units based on segmentation of training images
+      - find directions which allow for altering the attributes
+    - [GANSpace: Discovering Interpretable GAN Controls](https://arxiv.org/abs/2004.02546) - use PCA in the latent space (w for styleGAN, activation-space at a specific layer for BigGAN) to select directions
+    - [Editing in Style: Uncovering the Local Semantics of GANs](https://arxiv.org/abs/2004.14367) (collins et al. 2020) - use k-means on gan activations to find meaningful clusters (with quick human annotation)
+      - add style transfer using target/source image
+    - [Unsupervised Discovery of Interpretable Directions in the GAN Latent Space](https://arxiv.org/abs/2002.03754) - loss function which tries to recover random shifts made to the latent space
+
 
 # (semi)-supervised disentanglement
 

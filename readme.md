@@ -43,9 +43,9 @@ gpt2-paper-title-generator](https://github.com/csinva/gpt2-paper-title-generator
 posts on various aspects of machine learning / statistics / neuroscience advancements
 
 
-| [interpretability](https://csinva.github.io/blog/research/interp) | [connectomics](https://csinva.github.io/blog/research/connectomics) |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-|            ![](assets/img/alexnet.png)                                                   | ![](assets/img/neuron.gif)                        |
+| [interpretability](https://csinva.github.io/blog/research/interp) | [connectomics](https://csinva.github.io/blog/research/connectomics) | [disentanglement](https://csinva.github.io/blog/research/disentanglement) |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+|            ![](assets/img/alexnet.png)                                                   | ![](assets/img/neuron.gif)                        | ![](assets/img/complexity.png)                        |
 
 
 # reference

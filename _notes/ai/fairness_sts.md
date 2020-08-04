@@ -143,3 +143,56 @@ typora-copy-images-to: ./assets/nlp
     - a few systems have been able to remove bias in these false positives
   - did not analyze cause and effect
     - don't consider skin tone
+
+
+
+# legal perspectives
+
+- **“the master’s tools will never dismantle the master’s house.”**
+
+## [ALGORITHMIC ACCOUNTABILITY: A LEGAL AND ECONOMIC FRAMEWORK](http://faculty.haas.berkeley.edu/morse/research/papers/AlgorithmicAccountability_BartlettMorseStantonWallace.pdf) (2020)
+
+- Title VII defines accountability under under U.S. antidiscrimination law
+  - protected attributes: sex, religion, national origin, color
+  - law is all about who has the burden of proof - 3 steps
+    - **plaintiff** identifies practice that has observed statistical disparities on protected group
+    - **defendant** demonstrates practice is (a) job-related (b) consistent with business necessity
+    - **plaintiff** proposes alternative
+- ex. dothard vs rawlingson: prison guards were selected based on weight/height rather than strength, so female applicants sued
+  - legitimate target variable: strength
+  - proxy variable: weight/height
+  - supreme court ruled that best criterion is to assess strength, not use weight/height proxies
+- ex. redlining - people in certain neighborhoods do not get access to credit
+  - legitimate target: ability to pay back a loan
+  - proxy variable: zip code (disproportionately affected minorities)
+- 2 key questions
+  - **legitimate target variable** - is unobservable target characteristic (e.g. strength) one that can justify hiring disparities?
+    - disparate outcomes mus be justified by reference to a legitimate "business necessity" (e.g. for hiring, this would be a required job-related skill)
+  - **biased proxy** - do proxy variables (e.g. weight/height) properly capture the legitimate target variable?
+    - problematic "redundant encodings" - a proxy variable can be predictive of a legitimate target variable and membership in a protected group
+
+### **input accountability test - captures these questions w/ basic statistics**
+
+  - intuition: exclude input variables which are potentially problematic
+    - in this context, easier to define fairness without tradeoffs
+    - even in unbiased approach, still need things like subsidies to address systemic issues
+  - the test
+    - look at correlations between proxy and legitimate target, proxy and different groups - proxy should not systematically penalize members of a protected group
+    - **regression form**
+      - predict legitimate target from proxy: $Height_i = \alpha \cdot Strength_i + \epsilon_i$
+      - measure if residuals are correlated with protected groups: $\epsilon_i \perp gender$
+      - if they are correlated, exclude the feature
+  - difficulties
+    - target is often unobservable / has measurement err
+    - have to define a threshold for testing residual correaltions (maybe 0.05 p-vaues)
+    - there might exist nonlinear interactions
+- major issues
+  - even if features are independently okay, when you combine them in a model the outputs can be problematic
+
+### **related approaches**
+
+- some propose balancing the outcomes
+  - one common problem here is that balancing err rates can force different groups to be different
+- some propose using best predictive model alone
+  - some have argued that a test for fairness is that there is no other algorithm that is as accurate and have less of an adverse impact (skanderson and ritter)
+- HUD's mere predictive test - only requires that prediction is good and that inputs are not subsitutes for a protected characteristic
