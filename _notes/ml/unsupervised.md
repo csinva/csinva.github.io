@@ -214,6 +214,7 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
   - learn W via gradient ascent $\Delta W \propto \partial / \partial W (\log |J|)$
     - there is now something faster called fast ICA
 - topographic ICA (make nearby coefficient like each other)
+- interestingly, some types of self-supervised learning perform ICA assuming certain data structure (e.g. time-contrastive learning (hyvarinen et al. 2016))
 
 ## topological
 

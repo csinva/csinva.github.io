@@ -94,8 +94,10 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
   - $\overbrace{\mathbb  E_{p_\phi(\mathbf z\vert \mathbf x)}}^{\text{samples}} [ \underbrace{-\log q_{\mathbf \theta} ( \mathbf x\vert \mathbf z)}_{\text{reconstruction loss}} ]      		+ \textcolor{teal}{\beta}\; \vert\sum_i \underbrace{\text{KL} \left(p_\phi( \mathbf z_i\vert \mathbf x)\:\vert\vert\:prior(\mathbf z_i) \right)}_{\text{compactness prior loss}} -C\vert$
   -  C is gradually increased from zero (allowing for a larger compactness prior loss) until good quality reconstruction is achieved
 - [factor-vae](https://arxiv.org/abs/1802.05983) (kim & minh 2018) - adds total correlation loss term
-  - computes correlation loss term using discriminator (can we discriminate between the samples when we shuffle over the batch dimension or not?)
+  - computes *total correlation loss term* using discriminator (can we discriminate between the samples when we shuffle over the batch dimension or not?)
   - [beta-TC-VAE = beta-total-correlation VAE](https://arxiv.org/abs/1802.04942) (chen et al. 2018) - same objective but computed without need for discriminator
+    - use minibatch-weighted sampling to compute each of the 3 terms that make up the original VAE *compactness prior loss*
+    - main idea is to better approximate $q(z)$ by weighting samples appropriately - biased, but easier to compute
   - [Interpretable VAEs for nonlinear group factor analysis](https://arxiv.org/abs/1802.06765)
 - [Wasserstein Auto-Encoders](https://arxiv.org/pdf/1711.01558.pdf) (tolstikhin et al.) - removes the mutual info part of the loss
   - wasserstein distance = earth-movers distance, how far apart are 2 distrs

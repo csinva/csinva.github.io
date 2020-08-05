@@ -96,3 +96,15 @@
 
 - [don't use ROC curves, use deciles](https://modelplot.github.io/intro_modelplotpy.html)
 - [need to evaluate use, not just metric](https://jamanetwork.com/journals/jama/fullarticle/2748179)
+
+# high-level
+
+- focus on building something you want to deploy
+  - clinically useful - more efficient, cutting costs?
+  - effective - does it improve the current baseline
+  - focused on patient care - what are the unintended consequences
+- need to think a lot about regulation
+  - USA: FDA
+  - Europe: CE (more convoluted)
+- intended use
+  - very specific and well-defined

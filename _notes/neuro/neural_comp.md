@@ -279,6 +279,13 @@ category: neuro
       - equivariance = we can ensure our net is invariant to viewpoints by checking for all similar rotations/transformations in the same amount/direction
     - active capsules at one level make predictions for the instantiation parameters of higher-level capsules
       - when multiple predictions agree, a higher-level capsule is activated
+  - steps in a capsule (e.g. one that recognizes faces)
+    - receives an input vector (e.g. representing eye)
+    - apply affine transformation - encodes spatial relationships (e.g. between eye and where the face should be)
+    - applying weighted sum by the C weights, learned by the routing algorithm
+      - these weights are learned to group similar outputs to make higher-level capsules
+    - vectors are squashed so their magnitudes are between 0 and 1
+    - outputs a vector
 
 # probabilistic models + inference
 
