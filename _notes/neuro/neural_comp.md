@@ -232,6 +232,8 @@ category: neuro
 
 # recurrent networks
 
+## hopfield nets
+
 - hopfield nets can store / retrieve memories
 - fully connected (no input/output) - activations are what matter
   - can memorize patterns - starting with noisy patterns can converge to these patterns
@@ -239,6 +241,13 @@ category: neuro
 - hopfield three-way connections
   - $E = - \sum_{i, j, k} T_{i, j, k} V_i V_j V_k$ (self connections set to 0)
     - update to $V_i$ is now bilinear
+- [hopfield nets are all you need](https://arxiv.org/abs/2008.02217)
+  - keys: each input has a key vector which "represents info about this input" (e.g. this is a noun)
+  - queries: each input has a query vector which "asks for other inputs that would be useful context" (e.g. what adjectives describe this word)
+    - in self-attention these queries also come from the input whereas in just regular attention they come from somewhere else (e.g. the output of a translation task)
+  - transformer finds similarity between each key with each query then takes softmax - this provides weights for each of the inputs, as context for the original input
+    - in transformer, these weights are used to weight the values but in hopfield nets we would take a weighted sum of the keys and feed it back as the input
+  - as we update becomes more skewed towards the things that match the most
 
 
 
@@ -508,3 +517,11 @@ category: neuro
 - [text classification](https://iis-people.ee.ethz.ch/~arahimi/papers/DATE16_HD.pdf) (najafabadi et al. 2016)
 - [Classification and Recall With Binary Hyperdimensional Computing: Tradeoffs in Choice of Density and Mapping Characteristics](https://ieeexplore.ieee.org/abstract/document/8331890?casa_token=FbderL4T3RgAAAAA:LfP2kRSJwhY5z4OHMqvNDrxmSpyIMLzGs80vGj_IdBXVhVVDwZg1tfIeD2nj0S5N7T2YsRrOcg)
   - note: for sparse vectors, might need some threshold before computing mean (otherwise will have too many zeros)
+
+
+
+# dnns with memory
+
+- Neural Statistician (Edwards & Storkey, 2016) summarises a dataset by averaging over their embeddings
+- [kanerva machine](https://arxiv.org/pdf/1804.01756.pdf)
+  - like a VAE where the prior is derived from an adaptive memory store

@@ -193,6 +193,6 @@ typora-copy-images-to: ./assets/nlp
 
 - some propose balancing the outcomes
   - one common problem here is that balancing err rates can force different groups to be different
-- some propose using best predictive model alone
+- some propose using bst predictive model alone
   - some have argued that a test for fairness is that there is no other algorithm that is as accurate and have less of an adverse impact (skanderson and ritter)
 - HUD's mere predictive test - only requires that prediction is good and that inputs are not subsitutes for a protected characteristic

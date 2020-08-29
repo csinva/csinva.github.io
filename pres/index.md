@@ -40,6 +40,8 @@ Links to many of my presentations
     - [faces lit rvw](https://docs.google.com/presentation/d/1C6l4qq0O_-SosHswPwqo3ixJweMI8gkNku9crzZMw80/present?slide=id.p)
 - [dnn experiments](http://csinva.github.io/pres/dnn_experiments/#/)
 
+## misc
+- [deep learning trends 2020](https://docs.google.com/presentation/d/15NRwGfKyGkcDIDKYwoq82PXdJrkJeRmSQfUbk5oQvuM/edit#slide=id.g8da3737a00_0_24)
 
 ## coursework
 - [vissci ovw](https://docs.google.com/presentation/d/1d2prZlhmG72whCTzfGJ_pk-Pgv9Sx-bGG0e503whYvw/present?slide=id.p)

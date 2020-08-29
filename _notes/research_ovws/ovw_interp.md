@@ -110,14 +110,8 @@ Evaluating interpretability can be very difficult (largely because it rarely mak
 
 ## interpretable dnns
 
-- [prototypes I](https://arxiv.org/pdf/1710.04806.pdf) (li et al. 2017)
-  - uses encoder/decoder setup
-  - encourage every prototype to be similar to at least one encoded input
-  - learned prototypes in fact look like digits
-  - correct class prototypes go to correct classes
-  - loss: classification + reconstruction + distance to a training point
 - [prototypes II](https://arxiv.org/abs/1806.10574) (chen et al. 2018)
-  - can have smaller prototypes
+  - can have prototypes smaller than original input size
   - l2 distance
   - require the filters to be identical to the latent representation of some training image patch
   - cluster image patches of a particular class around the prototypes of the same class, while separating image patches of different classes
@@ -127,6 +121,12 @@ Evaluating interpretability can be very difficult (largely because it rarely mak
     - train everything: classification + clustering around intraclass prototypes + separation between interclass prototypes (last layer fixed to 1s / -0.5s)
     - project prototypes to data patches
     - learn last layer
+- [prototypes I](https://arxiv.org/pdf/1710.04806.pdf) (li et al. 2017)
+  - uses encoder/decoder setup
+  - encourage every prototype to be similar to at least one encoded input
+  - learned prototypes in fact look like digits
+  - correct class prototypes go to correct classes
+  - loss: classification + reconstruction + distance to a training point
 - [Concept Whitening for Interpretable Image Recognition](https://arxiv.org/pdf/2002.01650.pdf) (chen et al. 2020) - force network to separate "concepts" (like in TCAV) along different axes
 - [Towards Explainable Deep Neural Networks (xDNN)](https://arxiv.org/abs/1912.02523) (angelov & soares 2019) - more complex version of using prototypes
 - [MonoNet: Towards Interpretable Models by Learning Monotonic Features](https://arxiv.org/abs/1909.13611) - enforce output to be a monotonic function of individuaul features
@@ -139,6 +139,12 @@ Evaluating interpretability can be very difficult (largely because it rarely mak
 - [Towards Robust Interpretability with Self-Explaining Neural Networks](https://arxiv.org/pdf/1806.07538.pdf) (alvarez-melis & jaakkola 2018) - building architectures that explain their predictions
 - [Harnessing Deep Neural Networks with Logic Rules](https://arxiv.org/pdf/1603.06318.pdf)
 - [Tensor networks](https://www.perimeterinstitute.ca/research/research-initiatives/tensor-networks-initiative) - like DNN that only takes boolean inputs and deals with interactions explicitly
+  - widely used in physics
+- [iCaps: An Interpretable Classifier via Disentangled Capsule Networks](https://arxiv.org/abs/2008.08756) (jung et al. 2020)
+  - the class capsule also includes classification-irrelevant information
+    - uses a novel class-supervised disentanglement algorithm
+  - entities represented by the class capsule overlap
+    - adds additional regularizer
 
 ## trees
 

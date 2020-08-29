@@ -42,7 +42,26 @@ category: stat
   - autoregressive integrated moving average (arima)
     - assumptions: stationary model
 
+# similarity measures
 
+- [An Empirical Evaluation of Similarity Measures for Time Series Classification](https://arxiv.org/pdf/1401.3973.pdf) (serra et al. 2014)
+  - lock-step measures (Euclidean distance, or any norm)
+    - can resample to make them same length
+  - feature-based measures (Fourier coefficients)
+    - euclidean distance over all coefs is same as over time-series, but we usually filter out high-freq coefs
+    - can also use wavelets
+  - model-based measures (auto-regressive)
+    - compare coefs of an AR (or ARMA) model
+  - elastic measures
+    - dynamic time warping = DTW - optimallt aligns in temporal domaub ti nubunuze accumulated cost
+      - can also enforce some local window around points
+      - Every index from the first sequence must be matched with one or more indices from the other sequence and vice versa
+      - The first index from the first sequence must be matched with the first index from the other sequence (but it does not have to be its only match)
+      - The last index from the first sequence must be matched with the last index from the other sequence (but it does not have to be its only match)
+      - The mapping of the indices from the first sequence to indices from the other sequence must be monotonically increasing, and vice versa, i.e. if `j > i` are indices from the first sequence, then there must not be two indices `l > k` in the other sequence, such that index `i` is matched with index `l` and index `j` is matched with index `k` , and vice versa
+    - edit distance EDR
+    - time-warped edit distance - TWED
+    - minimum jump cost - MJC
 
 # [book1](https://www.stat.tamu.edu/~suhasini/teaching673/time_series.pdf) (A course in Time Series Analysis) + [book2](http://home.iitj.ac.in/~parmod/document/introduction%20time%20series.pdf) (Intro to Time Series and Forecasting)
 

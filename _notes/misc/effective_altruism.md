@@ -1,4 +1,5 @@
-[toc]
+
+{:toc}
 
 - [effectivealtruism](https://www.effectivealtruism.org/articles/introduction-to-effective-altruism/)
     - promising causes
@@ -14,3 +15,5 @@
 - careers can have greater impacts than altruism ([80k hours](https://80000hours.org/key-ideas/))
     - https://80000hours.org/career-guide/
     - [80k hours AI careers](https://80000hours.org/problem-profiles/positively-shaping-artificial-intelligence/)
+- [givewell cost-effective calculations](https://www.givewell.org/how-we-work/our-criteria/cost-effectiveness)
+    - charities often exaggerate their "cost to save a life"

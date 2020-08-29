@@ -40,6 +40,12 @@ category: stat
 - can get prediction intervals for on-line data using [conformal prediction](https://arxiv.org/abs/0706.3188)
   - *nonconformity measure* - how unusual an examples looks relative to previous examples
 
+## inter-rater agreement
+
+- cohen's kappa - measures how well different raters agree (just taking fraction may be too simple, because they might agree by chance)
+  - from -1 to 1 (1 is perfect agreement)
+  - $\kappa = 1 - \frac{1 - p_o}{1-p_e}$ where $p_o$ is the relative observed agreement among raters (identical to [accuracy](https://en.wikipedia.org/wiki/Evaluation_of_binary_classifiers)), and $p_e$ is the hypothetical probability of chance agreement, using the observed data to calculate the probabilities of each observer randomly seeing each category
+
 ## sample-size calculation
 
 - how many samples must I collect?

@@ -253,6 +253,21 @@ C(Location of Car) --> B
     - make a model which has the minimum test error regardless of the distribution of the problem
   - adds a penalty inspired by invariance (which can be viewed as a stability criterionZZZyyhhhy5r)
 
+# heterogenous treatment effects
+
+- staDISC
+  - two lines of work on heterogenous treatment effects
+    - conditional average treatment effect (CATE) - get treatement effect for each individual conditioned on its covariates
+      - meta-learneres do this by using supervised methods
+      - e.g. T-learner fits a model for conditional expectation of each potential outcome
+      - e.g. X-learner / R-learner are more sophisticated
+      - also other methods such as causal tree + causal forest
+      - main difficulty: hard to do model selection / validation
+    - subgroup analysis - identify subgroups with treatment effects far from the average
+      - easier, but still linked to real downstream tasks (e.g. identify which subgroup to treat)
+      - main difficulty: can quickly overfit
+      - some have also proposed using CATE as a stepping stone to finding subgroups
+
 # causal discovery
 
 - overview

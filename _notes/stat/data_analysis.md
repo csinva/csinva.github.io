@@ -108,3 +108,10 @@
 	- tree, lasso
 - recursive feature elimination
 	- keep retraining and removing features
+
+
+
+# feature engineering
+
+- often good to discretize/binarize features
+  - e.g. from genomics: http://cis.jhu.edu/people/faculty/geman/publications/pdf/Digitizing_omics_profiles_by_divergence_from_a_baseline.pdf

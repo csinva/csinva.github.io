@@ -54,6 +54,14 @@ displays
 - [plotly](https://plot.ly/python/offline/) - make interactive plots
 
 
+
+### deploying
+
+- [streamlit](https://docs.streamlit.io/) - building interactive application
+
+
+
+
 ### general tips
 
 - **installing things**: using pip/conda is generally the best way to install things. If you're running into permission errors `pip install --user` tends to fix a lot of common problems
@@ -135,6 +143,10 @@ displays
 ### data
 
 - cool analysis / data from BuzzFeed [here](https://github.com/BuzzFeedNews/everything)
+
+### scaling
+
+- [kubeflow](https://www.kubeflow.org/)
 
 ### reference
 

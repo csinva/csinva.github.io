@@ -33,7 +33,7 @@ category: ml
     - correct classifications / total number of test cases
   - balanced accuracy = 1/2 (TP / P + TN / N)
   - denominator is total pos/neg
-    - **recall** = **sensitivity** =  true positive rate = TP / P = TP / (TP + FN)
+    - **recall** = **sensitivity** =  **true-positive rate** = TP / P = TP / (TP + FN)
       - what fraction of the real positives do we return?
     - **specificity** = true negative rate = TN / N = TN / (TN + FP)
       - what fraction of the real negatives do we return?

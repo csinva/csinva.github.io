@@ -1,4 +1,4 @@
-# [What Information Do the Voices of African Savanna Elephants Communicate](https://simons.berkeley.edu/talks/tbd-177)
+# What Information Do the Voices of African Savanna Elephants Communicate
 
 **Joyce Poole, ElephantVoices**
 

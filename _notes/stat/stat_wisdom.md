@@ -110,3 +110,26 @@ category: stat
 - ~mechanistic - somewhere in between
 - descriptive - based on reality
   - empirical
+
+
+
+# exaggerated claims
+
+- [video](https://www.youtube.com/watch?time_continue=4&v=PwCyvSDkUCY&feature=emb_logo) by Rob Kass
+- concepts are ambiguous and have many mathematical instantiations
+  - e.g. "central tendency" can be mean or median
+  - e.g. "information" can be mutual info (reduction in entropy) or squared correlation (reduction in variance)
+  - e.g. measuring socioeconomic status and controlling for it
+- regression "when controlling for another variable" makes causal assumptions
+  - must make sure that everything that could confound is controlled for
+- Idan Segev: "modeling is the lie that reveals the truth"
+  - picasso: "art is the lie that reveals the truth"
+- box: "all models are wrong but some are useful" - statistical pragmatism
+  - moves **from true to useful** - less emphasis on truth
+  - "truth" is contingent on the purposes to which it will be put
+- the scientific method aims to provide explanatory models (theories) by collecting and analyzing data, according to protocols, so that
+  - the data provide info about models
+  - replication is possible
+  - the models become increasingly accurate
+- scientific knowledge is always uncertain - depends on scientific method
+

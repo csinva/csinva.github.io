@@ -1,3 +1,23 @@
+# ideas
+
+- public health
+  - how can we just get people to be healthier?
+- universal health care - make this easier to sign up for
+- value-based healthcare
+  - reducing superfluous tests
+  - lower risk of malpractice lawsuits
+- hopsital pricing
+  - like glassdoor - make this transparent
+- more evidence-based teaching
+- EMR - epic vs athena health would be nice to integrate
+- good RX
+- prior auth
+  - currently, insurance requires that cheaper drugs are tried before expensive ones (often with negative results for patients)
+  - can bypass the cheap drugs by filling out a "prior authentication" form (something medical assistants often do), but this is laborius
+  - would be nice if we can automate this
+
+# general
+
 - 3 types
 	- disease and patient categorization (e.g. classification)
 	- fundamental biological study
@@ -6,6 +26,7 @@
   - want to focus on problems doctors can't do
   - alternatively, focus on automating problems parents can do to screen people at home in cost-effective way
 - websites are often easier than apps for patients
+- [The clinical artificial intelligence department: a prerequisite for success](https://informatics.bmj.com/content/27/1/e100183) (cosgriff et al. 2020) - we need designated departments for clinical ai so we don't have to rely on 3rd-party vendors and can test for things like distr. shift
 - [challenges in ai healthcare (news)](https://www.statnews.com/2019/06/19/what-if-ai-in-health-care-is-next-asbestos/)
   - adversarial examples
   - things can't be de-identified
@@ -18,8 +39,6 @@
 - US has pretty good care but it is expensive per patient
 - expensive things (e.g. Da Vinci robot)
 - even if ml is not perfect, it may still outperform some doctors
-
-
 
 # how do doctors think
 
@@ -108,3 +127,11 @@
   - Europe: CE (more convoluted)
 - intended use
   - very specific and well-defined
+
+# high-performance ai studies
+
+- chest-xray: chexnet
+- echocardiograms: madani, ali, et al. 2018
+- skin: esteva, andre, et al. 2017
+- pathology: campanella, gabriele, et al.. 2019
+- mammogram: kerlikowske, karla, et al. 2018

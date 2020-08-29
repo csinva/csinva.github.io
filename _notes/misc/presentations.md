@@ -10,3 +10,5 @@
     - salient
     - story
   - don't end with "thanks", end with contributions and more
+- cool effects
+  - like this video: https://www.facebook.com/sheryl/videos/10163939435900177/
