@@ -6,6 +6,8 @@ category: cs
 
 {:toc}
 
+Some notes on advanced data structures, based on UVA's "Program and Data Representation" course.
+
 # lists
 ## arrays and strings
 - start by checking for null, length 0

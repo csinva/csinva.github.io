@@ -6,6 +6,8 @@ category: neuro
 
 {:toc}
 
+notes from Neuroscience, 5th edition + Intro to neurobiology course at UVA
+
 # 9- somatosensory
 ## cheat sheet
 - vocab

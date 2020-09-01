@@ -7,7 +7,7 @@ typora-copy-images-to: ./assets/nlp
 
 {:toc}
 
-Some notes on natural language processing.
+Some notes on natural language processing, focused on modern improvements based on deep learning.
 
 # useful tools
 

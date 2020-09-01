@@ -6,6 +6,8 @@ category: research
 
 {:toc}
 
+Some interesting papers in science and statistics.
+
 - [Moravec's paradox](https://en.wikipedia.org/wiki/Moravec%27s_paradox)
 - [Held & Hein 1963](https://marom.net.technion.ac.il/files/2016/07/Held-1963.pdf) - moving kittens
 - [Human attention vqa dataset (VQA HAT) ~ 60k images](https://computing.ece.vt.edu/~abhshkdz/vqa-hat/)

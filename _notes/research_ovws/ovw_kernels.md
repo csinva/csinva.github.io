@@ -6,6 +6,8 @@ category: research
 
 {:toc}
 
+An introduction to kernels and recent research.
+
 # kernel basics
 
 - basic definition

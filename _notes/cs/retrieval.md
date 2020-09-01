@@ -1,10 +1,12 @@
 ---
 layout: notes
-title: info Retrieval
+title: info retrieval
 category: cs
 ---
 
 {:toc}
+
+Some notes on information retrieval, based on UVA"s Info Retrieval course.
 
 # introduction
 - building blocks of search engines

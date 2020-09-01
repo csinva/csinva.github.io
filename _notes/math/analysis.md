@@ -6,6 +6,8 @@ category: math
 
 {:toc}
 
+Some notes on real analysis, following the textbook [Understanding analysis](https://link.springer.com/book/10.1007/978-1-4939-2712-8)
+
 # ch 1 - the real numbers
 - there is no rational number whose square is 2 (proof by contradiction)
 - *contrapositive*: $$-q \to -p$$ - logically equivalent

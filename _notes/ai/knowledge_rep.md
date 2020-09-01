@@ -6,6 +6,8 @@ category: ai
 
 {:toc}
 
+Some notes on knowledge representation based on Berkeley's CS 188 course and  "Artificial Intelligence" Russel & Norvig 3rd Edition
+
 # intro
 
 - AI - field of study which studies the goal of creating intelligence

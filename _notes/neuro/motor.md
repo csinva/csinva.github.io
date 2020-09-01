@@ -6,6 +6,8 @@ category: neuro
 
 {:toc}
 
+notes from Neuroscience, 5th edition + Intro to neurobiology course at UVA
+
 # 16 lower
 - sensory in dorsal spinal cord, motor in ventral
   - farther out neurons control farther out body parts (medial=trunk, lateral=arms,legs)

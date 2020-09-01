@@ -32,6 +32,7 @@
   - things can't be de-identified
   - algorithms / data can be biased
   - correlation / causation get confused
+- healthcare is 20% of US GDP
 
 # evaluation
 

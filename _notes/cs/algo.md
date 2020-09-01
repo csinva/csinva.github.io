@@ -5,6 +5,8 @@ category: ai
 ---
 {:toc}
 
+Some notes on algorithms following the book [Introduction to algorithms](https://en.wikipedia.org/wiki/Introduction_to_Algorithms) and based on UVA's course.
+
 # asymptotics
 
 - Big-O

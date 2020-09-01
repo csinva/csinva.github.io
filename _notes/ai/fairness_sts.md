@@ -7,6 +7,9 @@ typora-copy-images-to: ./assets/nlp
 
 {:toc}
 
+Some notes on algorithm fairness and STS.
+
+
 # fairness metrics
 
 - good introductory [blog](https://towardsdatascience.com/a-tutorial-on-fairness-in-machine-learning-3ff8ba1040cb)
