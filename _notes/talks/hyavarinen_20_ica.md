@@ -18,7 +18,7 @@
 
 ## temporal structure helps in nonlinear ica
 
-- time-contrastive learning (hyvarinene et al. 2016)
+- time-contrastive learning (hyvarinen et al. 2016)
   - divide x into even segments then train mlp to tell which segment a single data point comes from
   - NN learns nonstationarity (difference between segments)
   - this can provide identifiability

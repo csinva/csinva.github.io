@@ -17,11 +17,7 @@ category: blog
 
 The goal is to obtain a nice latent representation $\mathbf z$ for our inputs $\mathbf x$. To do this, we learn parameters $\phi$ for the encoder $p_\phi( \mathbf z\vert \mathbf x)$ and $\theta$ for the decoder $q_{\mathbf \theta} ( \mathbf x\vert \mathbf z)$. We do this with the standard vae setup, whereby a code $z$ is sampled, using the output of the encoder (intro to VAEs [here](https://towardsdatascience.com/intuitively-understanding-variational-autoencoders-1bfe67eb5daf)).
 
-
-
 ## disentangled vae loss function
-
-$$\overbrace{\mathbb E_{p_\phi(\mathbf z \vert \mathbf x)}}^{\text{Samples}} [ \underbrace{-\log q_{\mathbf \theta} ( \mathbf x\vert \mathbf z)}_{\text{reconstruction loss}} ] + {\color{teal}\beta}; \sum_i \underbrace{\text{KL} \left(p*\phi( \mathbf z_i\vert \mathbf x):\vert \vert:prior(\mathbf z_i) \right)}_{\text{compactness prior loss}} + \gamma ; \underbrace{\text{KL} \left( q*\phi(\mathbf z\vert \mathbf x) \vert \vert \prod_i q_\phi( \mathbf z_i\vert \mathbf x) \right)}_{\text{total correlation loss}}$$
 
 
 | reconstruction loss                             | compactness prior loss                           |         total correlation loss             |
@@ -111,7 +107,17 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
   - local orthogonality of the embedding transformation
   - prior $p(z)$ is standard normal, so encoder is assumed to be Gaussian with a certain mean, and **diagonal covariance**
   - disentanglement is sensitive to rotations of the latent embeddings but reconstruction err doesn't care
-  - for linear autoencoder w/ square-error as reconstruction loss, we recover PCA decomp.
+  - for linear autoencoder w/ square-error as reconstruction loss, we recover PCA decomp
+- [Disentangling Disentanglement in Variational Autoencoders](https://arxiv.org/pdf/1812.02833.pdf) (2019)
+  - independence can be too simplistic, instead 2 things:
+    - the latent encodings of data having an appropriate level of overlap
+      - keeps encodings from just being a lookup table
+      - when encoder is unimodal, $I(x; z)$ gives us a good handle on this
+    - prior structure on the latents (e.g. independence, sparsity)
+  - to trade these off, can penalize divergence between $q_\phi(z)$ and $p(z)$
+  - nonisotropic priors -  isotropic priors are only good up to rotation in the latent space
+    - by chossing a nonisotropic prior (e.g. nonisotropic gaussian), can learn certain directions more easily
+  - sparse prior - can help do clustering
 - [A Survey of Inductive Biases for Factorial Representation-Learning](https://arxiv.org/abs/1612.05299) (ridgeway 2016)
   - desiderata
     - **compact**

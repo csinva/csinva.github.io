@@ -41,6 +41,7 @@ The definition of interpretability I find most useful is that given in [this wor
   - often-termed sensitivity, contribution, or impact
   - some of these can be applied to data directly w/out model (e.g. correlation coefficient, rank correlation coefficient, moment-independent VIMs)
   - <img class="medium_image" src="assets/Screen Shot 2019-06-14 at 9.07.18 AM.png"/>
+- [Pitfalls to Avoid when Interpreting Machine Learning Models](https://arxiv.org/pdf/2007.04131.pdf) (molnar et al. 2020)
 
 ## philosophical perspectives
 
@@ -110,23 +111,25 @@ Evaluating interpretability can be very difficult (largely because it rarely mak
 
 ## interpretable dnns
 
-- [prototypes II](https://arxiv.org/abs/1806.10574) (chen et al. 2018)
-  - can have prototypes smaller than original input size
-  - l2 distance
-  - require the filters to be identical to the latent representation of some training image patch
-  - cluster image patches of a particular class around the prototypes of the same class, while separating image patches of different classes
-  - maxpool class prototypes so spatial size doesn't matter
-  - also get heatmap of where prototype was activated (only max really matters)
-  - train in 3 steps
-    - train everything: classification + clustering around intraclass prototypes + separation between interclass prototypes (last layer fixed to 1s / -0.5s)
-    - project prototypes to data patches
-    - learn last layer
-- [prototypes I](https://arxiv.org/pdf/1710.04806.pdf) (li et al. 2017)
-  - uses encoder/decoder setup
-  - encourage every prototype to be similar to at least one encoded input
-  - learned prototypes in fact look like digits
-  - correct class prototypes go to correct classes
-  - loss: classification + reconstruction + distance to a training point
+- prototypes
+  - [prototypes II](https://arxiv.org/abs/1806.10574) (chen et al. 2018)
+    - can have prototypes smaller than original input size
+    - l2 distance
+    - require the filters to be identical to the latent representation of some training image patch
+    - cluster image patches of a particular class around the prototypes of the same class, while separating image patches of different classes
+    - maxpool class prototypes so spatial size doesn't matter
+    - also get heatmap of where prototype was activated (only max really matters)
+    - train in 3 steps
+      - train everything: classification + clustering around intraclass prototypes + separation between interclass prototypes (last layer fixed to 1s / -0.5s)
+      - project prototypes to data patches
+      - learn last layer
+  - [prototypes I](https://arxiv.org/pdf/1710.04806.pdf) (li et al. 2017)
+    - uses encoder/decoder setup
+    - encourage every prototype to be similar to at least one encoded input
+    - learned prototypes in fact look like digits
+    - correct class prototypes go to correct classes
+    - loss: classification + reconstruction + distance to a training point
+- [Symbolic Semantic Segmentation and Interpretation of COVID-19 Lung Infections in Chest CT volumes based on Emergent Languages](https://arxiv.org/pdf/2008.09866v1.pdf) (chowdhury et al. 2020) - combine some segmentation with the classifier
 - [Concept Whitening for Interpretable Image Recognition](https://arxiv.org/pdf/2002.01650.pdf) (chen et al. 2020) - force network to separate "concepts" (like in TCAV) along different axes
 - [Towards Explainable Deep Neural Networks (xDNN)](https://arxiv.org/abs/1912.02523) (angelov & soares 2019) - more complex version of using prototypes
 - [MonoNet: Towards Interpretable Models by Learning Monotonic Features](https://arxiv.org/abs/1909.13611) - enforce output to be a monotonic function of individuaul features
