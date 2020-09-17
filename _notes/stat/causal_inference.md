@@ -255,7 +255,7 @@ C(Location of Car) --> B
 
 # heterogenous treatment effects
 
-- staDISC
+- [staDISC](https://arxiv.org/pdf/2008.10109.pdf) (dwivedi, tan et al. 2020)
   - two lines of work on heterogenous treatment effects
     - conditional average treatment effect (CATE) - get treatement effect for each individual conditioned on its covariates
       - meta-learneres do this by using supervised methods
@@ -267,6 +267,16 @@ C(Location of Car) --> B
       - easier, but still linked to real downstream tasks (e.g. identify which subgroup to treat)
       - main difficulty: can quickly overfit
       - some have also proposed using CATE as a stepping stone to finding subgroups
+  - methods
+    - calibration to evaluate subgroup CATEs
+    - cell-search - sequential
+      - first prune features using feature importance
+      - target: maximize a cell's true positive - false positive (subject to using as few features as possible)
+      - sequentially find cell which maximizes target
+        - find all cells which perform close to as good as this cell
+        - remove all cells contained in another cell
+        - pick one randomly, remove all points in this cell, then continue
+    - rerun search multiple times and look for stable cells / stable cell coverage
 
 # causal discovery
 

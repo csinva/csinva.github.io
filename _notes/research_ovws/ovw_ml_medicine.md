@@ -1,20 +1,12 @@
-# ideas
+---
+layout: notes
+title: ml in medicine
+category: research
+---
 
-- public health
-  - how can we just get people to be healthier?
-- universal health care - make this easier to sign up for
-- value-based healthcare
-  - reducing superfluous tests
-  - lower risk of malpractice lawsuits
-- hopsital pricing
-  - like glassdoor - make this transparent
-- more evidence-based teaching
-- EMR - epic vs athena health would be nice to integrate
-- good RX
-- prior auth
-  - currently, insurance requires that cheaper drugs are tried before expensive ones (often with negative results for patients)
-  - can bypass the cheap drugs by filling out a "prior authentication" form (something medical assistants often do), but this is laborius
-  - would be nice if we can automate this
+**some rough notes on ml in medicine**
+
+{:toc}
 
 # general
 
@@ -34,37 +26,32 @@
   - correlation / causation get confused
 - healthcare is 20% of US GDP
 
-# evaluation
+## high-level
+
+- focus on building something you want to deploy
+  - clinically useful - more efficient, cutting costs?
+  - effective - does it improve the current baseline
+  - focused on patient care - what are the unintended consequences
+- need to think a lot about regulation
+  - USA: FDA
+  - Europe: CE (more convoluted)
+- intended use
+  - very specific and well-defined
+
+## criticisms
+
+- [Dissecting racial bias in an algorithm used to manage the health of populations ](https://science.sciencemag.org/content/366/6464/447)(obermeyer et al. 2019)
+
+# medical system
+
+## evaluation
 
 - doctors are evaluated infrequently (and things like personal traits are often included)
 - US has pretty good care but it is expensive per patient
 - expensive things (e.g. Da Vinci robot)
 - even if ml is not perfect, it may still outperform some doctors
 
-# how do doctors think
-
-- doctors also misinterpret things to be causal
-- doctors don't have intuition for even relatively simple features, such as averages
-- doctors require context for features (e.g. this feature is larger than the average)
-- often have some rules memorized (otherwise memorize what needs to be looked up)
-  - unclear how well doctors follow rules
-  - some rules are 1-way (e.g. only follow it if it says there is danger, otherwise use your best judgement)
-    - 2-way rules are better
-    - without proper education 1-way rules can be dangerously used as 2-way rules
-    - doesn't make sense to judge 1-way rules on both sepcificity and sensitivity
-- rules are often ambiguous (e.g. what constitutes vomiting)
-- **doctors adapt to personal experience** - may be unfair to evaluate them on larger dataset
-- sometimes said that doctors know 10 medications by heart
-- [Overconfidence in Clinical Decision Making](https://www.amjmed.com/article/S0002-9343(08)00152-6/pdf)
-  - most uncertainty: family medicine [FM] and emergency medicine [EM]
-  - some uncertainty: internal medicine
-  - little uncertainty: specialty disciplines
-  - 2 systems at work: intuitive (uses context, heuristics) vs analytic (systematic, rule-based)
-    - a combination of both performs best
-  - doctors are often black boxes as well - validated infrequently, unclear how closely they follow rules
-  - doctors adapt to local conditions - should be evaluated only on local dataset
-
-# doctor education
+## medical education
 
 - rarely textbooks (often just slides)
 - 1-2% miss rate for diagnosis can be seen as acceptable
@@ -81,7 +68,7 @@
   - **affective** error - decisions based on what we wish were true (e.g. caring too much about patient)
   - See one, do one, teach one - teaching axiom
 
-# political elements
+## political elements
 
 - [why doctors should organize](https://www.newyorker.com/culture/annals-of-inquiry/why-doctors-should-organize)
 - big pharma
@@ -93,16 +80,58 @@
   - ai could help - make simple diagnoses faster, reduce paperwork, help patients manage their own diseases like diabetes
   - ai could also make things worse - hospitals are mostly run by business people
 
-# terminology
+# medical communication
 
+## "how do doctors think?"
+
+- easy to misinterpret things to be causal
+- often no intuition for even relatively simple engineered features, such as averages
+- doctors require context for features (e.g. this feature is larger than the average)
+- often have some rules memorized (otherwise memorize what needs to be looked up)
+  - unclear how well doctors follow rules
+  - some rules are 1-way (e.g. only follow it if it says there is danger, otherwise use your best judgement)
+    - 2-way rules are better
+    - without proper education 1-way rules can be dangerously used as 2-way rules
+    - doesn't make sense to judge 1-way rules on both sepcificity and sensitivity
+- rules are often ambiguous (e.g. what constitutes vomiting)
+- **doctors adapt to personal experience** - may be unfair to evaluate them on larger dataset
+- sometimes said that doctors know 10 medications by heart
+- [Overconfidence in Clinical Decision Making](https://www.amjmed.com/article/S0002-9343(08)00152-6/pdf) (croskerry 2008)
+  - most uncertainty: family medicine [FM] and emergency medicine [EM]
+  - some uncertainty: internal medicine
+  - little uncertainty: specialty disciplines
+  - 2 systems at work: intuitive (uses context, heuristics) vs analytic (systematic, rule-based)
+    - a combination of both performs best
+  - doctors are often black boxes as well - validated infrequently, unclear how closely they follow rules
+  - doctors adapt to local conditions - should be evaluated only on local dataset
+-  [potential liabilities for physicians using ai](https://jamanetwork.com/journals/jama/fullarticle/2752750) (price et al. 2019)
+- [What's the trouble. How doctors think](https://www.newyorker.com/magazine/2007/01/29/whats-the-trouble). New Yorker. 2007
+- [JAMA Users’ Guide to the Medical Literature](https://jamanetwork.com/journals/jama/article-abstract/192850?utm_campaign=articlePDF&utm_medium=articlePDFlink&utm_source=articlePDF&utm_content=jamapediatrics.2019.1075)
+- [TRIPOD 22 points paper](https://www.tripod-statement.org/Portals/0/Tripod Checklist Prediction Model Development and Validation PDF.pdf)
+- [basic stats in the step1 exam](https://step1.medbullets.com/topic/dashboard?id=101&specialty=101)
+- [How to Read Articles That Use Machine Learning: Users’ Guides to the Medical Literature](https://jamanetwork.com/journals/jama/fullarticle/2754798) (liu et al. 2019
+- [Carmelli et al. 2018](https://www.annemergmed.com/article/S0196-0644(18)30327-5/pdf) - primer for CDRs but also a good example of what sort of article I have envisioned creating.
+- [Looking through the retrospectoscope: reducing bias in emergency medicine chart review studies.](https://www.ncbi.nlm.nih.gov/pubmed/24746846) (kaji et al. 2018)
+
+## communicating findings
+
+- [don't use ROC curves, use deciles](https://modelplot.github.io/intro_modelplotpy.html)
+- [need to evaluate use, not just metric](https://jamanetwork.com/journals/jama/fullarticle/2748179)
 - internal/external validity = training/testing error
+- model -> fitted model
+- retrospective (more confounding, looks back) vs prospective study
+- internal/external validity = train/test (although external was usually using different patient population, so is stronger)
+- specificity/sensitivity = precision/recall
 
-# medical ai example
+# examples
 
+## succesful examples of ai in medicine
+
+- [ECG](https://www.nejm.org/doi/full/10.1056/NEJM199112193252503) (NEJM, 1991)
 - EKG has a small interpretation on it
 - there used to be bayesian networks / expert systems but they went away...
 
-# icu interpretability example
+## icu interpretability example
 
 - goal: explain the model not the patient (that is the doctor’s job)
 - want to know interactions between features
@@ -112,24 +141,7 @@
 - doctors like to see trends - patient health changes over time and must include history
 - feature importance under intervention
 
-# communicating findings
-
-- [don't use ROC curves, use deciles](https://modelplot.github.io/intro_modelplotpy.html)
-- [need to evaluate use, not just metric](https://jamanetwork.com/journals/jama/fullarticle/2748179)
-
-# high-level
-
-- focus on building something you want to deploy
-  - clinically useful - more efficient, cutting costs?
-  - effective - does it improve the current baseline
-  - focused on patient care - what are the unintended consequences
-- need to think a lot about regulation
-  - USA: FDA
-  - Europe: CE (more convoluted)
-- intended use
-  - very specific and well-defined
-
-# high-performance ai studies
+## high-performance ai studies
 
 - chest-xray: chexnet
 - echocardiograms: madani, ali, et al. 2018

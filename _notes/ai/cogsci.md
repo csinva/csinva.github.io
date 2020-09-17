@@ -11,6 +11,7 @@ Some notes on a computational perspective on cognitive science.
 # nativism, empiricism
 
 - cogsci "inverse problem" - give world, how do we form representations
+  
   - like cv, given pixels, how do we understand world?
 - historical cognitive dev: how do we form representations?
   - **nativism** - plato - representation w/out learning
@@ -261,40 +262,3 @@ Some notes on a computational perspective on cognitive science.
   - is acquired in an extended series of developmental accomplishments
   - encompasses several basic insights that are acquired world-wide on a roughly similar trajectory (but not timetable), (4) requires considerable learning and development based on an infant set of specialized abilities to attend to and represent persons,  (5) is severely impaired in autism, (6) is severely delayed in deaf children of hearing parents, and (6) results from but also contributes to specialized neural substrates associated with reasoning about agency, experience, and mind
 - Preschool Theory of Mind, Part 1:  Universal Belief-Desire Understanding 
-
-
-
-# explanations
-
-- relate your treatment of explanation more directly to psychological questions
-- inform the way that you think about the role of explanation and that you could use to motivate this work.
-
-# role of explanations
-
-- <http://cocosci.berkeley.edu/tom/papers/FormalExplanationModelUAI2013.pdf>
-  - overton 2012 finds that explanations used something general (ex. model) to explain something specific (ex. data)
-  - subsequent analysis overton 2012 finds "inference to the best explanation" - use specific instances (ex. data) to draw general inferences
-  - waskan et al 2014 - must be actually intelligible
-  - lombrozo 2011 - explanations are intrinsically valuable, but also play an important instrumental role in the discovery and confirmation of intuitive theories, which in turn support prediction and intervention
-  - explanations should be understood in terms of their role in generating understanding (Achinstein 1983; Wilkenfeld 2014), supporting future judgments (Craik 1943; Heider 1958; Quine & Ullian 1970), or **motivating the construction of causal theories (Gopnik 2000)**
-  - explanations play a role in generalizing from known to novel cases (Rehder 2006; Sloman 1994; Lombrozo & Gwynne 2014)
-  - sometimes impedes learning about properties that are idiosyncratic
-  - explanatory errors and “illusions” can help us identify when and why engaging in explanation is so often beneficial
-  - functional approach: why do we want explanations?
-    - the best explanation for persuasion or efficient storage of information, for example, may not be the one that best supports future prediction.
-  - evidence (=the explanandum) provides for some hypothesis (=the explanans).
-- pacer et. al 13 - given causal thing what is best explanation
-  - most relevant explanation model or explnatory tree model
-  - human explanatory judgments track something more like evidence, information, or relevance, and not simply the prior or posterior probability of the explanans
-- desiderata
-  - **simplicity**
-    - if simplicity does inform explanatory preferences, it is trumped or made moot by probability
-    - count simplicity vs root simplicity (root is often preferred)
-  - **fruitfulness**
-    - generally explanations with broader scope are better except for causal stuff
-- explanations + learning
-  - explanation magnifies our prior beliefs
-- "negative program" - empirical results disprove philosophical intuitions
-- <http://www.concepts.dreamhosters.com/wp-content/uploads/2013/11/WalkerBonawitzLombrozo-PBR-2017.pdf>
-- <http://www.concepts.dreamhosters.com/wp-content/uploads/2013/11/NVDWTL_ExplContUtil.pdf>
-- <http://www.concepts.dreamhosters.com/wp-content/uploads/2013/11/BlackwellXphiCompanion-Explanation-Lombrozo.pdf>

@@ -1,4 +1,8 @@
-
+---
+layout: notes
+title: data analysis
+category: stat
+---
 
 {:toc}
 

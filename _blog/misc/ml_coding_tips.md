@@ -28,6 +28,7 @@ displays
 - [pandas-profiling](https://github.com/pandas-profiling/pandas-profiling) - very quick data overviews
 - [pandas bamboolib](https://www.youtube.com/watch?v=yM-j5bY6cHw&feature=youtu.be) - ui for pandas, in development
 - [dovpanda](https://github.com/dovpanda-dev/dovpanda) - helpful hints for using pandas
+- [imodels](https://github.com/csinva/imodels) - fitting simple models 
 - [tabnine](https://github.com/wenmin-wu/jupyter-tabnine?utm_source=share&utm_medium=ios_app&utm_name=iossmf) - autocomplete for jupyter
 - [cloud9sdk](https://github.com/c9/core) can be a useful subsitute for jupyterhub
 - [thinc](https://github.com/explosion/thinc) - interoperable dl framework

@@ -32,26 +32,26 @@ category: ml
   - accuracy = (TP + TN) / (P + N)
     - correct classifications / total number of test cases
   - balanced accuracy = 1/2 (TP / P + TN / N)
-  - denominator is total pos/neg
-    - **recall** = **sensitivity** =  **true-positive rate** = TP / P = TP / (TP + FN)
-      - what fraction of the real positives do we return?
-    - **specificity** = true negative rate = TN / N = TN / (TN + FP)
-      - what fraction of the real negatives do we return?
-      - **false positive rate** = FP / N $= 1 - \text{specificity}$
-        - what fraction of the predicted negatives are wrong?
-  - fraction is total predictions
-    - **precision** = **positive predictive value** = TP / (TP + FP)
-      - what fraction of the prediction positives are true positives?
+- denominator is total pos/neg
+  - **recall** = **sensitivity** =  **true-positive rate** = TP / P = TP / (TP + FN)
+    - what fraction of the real positives do we return?
+  - **specificity** = true negative rate = TN / N = TN / (TN + FP)
+    - what fraction of the real negatives do we return?
+  - **false positive rate** = FP / N $= 1 - \text{specificity}$
+    - what fraction of the predicted negatives are wrong?
+- fraction is total predictions
+  - **precision** = **positive predictive value** = TP / (TP + FP)
+    - what fraction of the prediction positives are true positives?
 
-    - **negative predictive value** = tn / (fn + tn)
-      - what fraction of predicted negatives are true negatives?
-  - **F-score** is harmonic mean of precision and recall: 2 * (prec * rec) / (prec + rec)
-- curves
+  - **negative predictive value** = TN / (FN + TN)
+    - what fraction of predicted negatives are true negatives?
+- **F-score** is harmonic mean of precision and recall: 2 * (prec * rec) / (prec + rec)
+- curves - easiest is often to just plot TP vs TN or FP vs FN
 
-  - roc curve: recall vs. false positive rate
+  - roc curve: true-positive rate (recall) vs. false-positive rate
     - perfect is recall = 1, false positive rate = 0
   - precision-recall curve
-  - AUC: area under (either one) of these curves
+  - AUC: area under (either one) of these curves - usually roc
 
 # comparing two things
 

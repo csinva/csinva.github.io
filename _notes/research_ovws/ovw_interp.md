@@ -4,13 +4,14 @@ title: interpretability
 category: research
 ---
 
-**some interesting papers on interpretable machine learning, largely organized based on this [interpretable ml review](https://arxiv.org/abs/1901.04592) and notes from this [interpretable ml book](https://christophm.github.io/interpretable-ml-book/)**
+**some interesting papers on interpretable machine learning, largely organized based on this [interpretable ml review](https://arxiv.org/abs/1901.04592) (murdoch et al. 2019) and notes from this [interpretable ml book](https://christophm.github.io/interpretable-ml-book/) (molnar 2019)**
 
 {:toc}
 
 # reviews
 
-The definition of interpretability I find most useful is that given in [this work](https://arxiv.org/abs/1901.04592): basically that interpretability requires a pragmatic approach in order to be useful. As such, interpretability is only defined with respect to a specific audience + problem and should always be thought about in a specific context. It has been defined and studied more broadly in a variety of works:
+## definitions
+The definition of interpretability I find most useful is that given in [murdoch et al. 2019](https://arxiv.org/abs/1901.04592): basically that interpretability requires a pragmatic approach in order to be useful. As such, interpretability is only defined with respect to a specific audience + problem and an interpretation should be evaluated in terms of how well it benefits a specific context. It has been defined and studied more broadly in a variety of works:
 
 - [Explore, Explain and Examine Predictive Models](https://pbiecek.github.io/ema/) (biecek & burzykowski, in progress) - another book on exploratory analysis with interpretability
 - [Explanation Methods in Deep Learning: Users, Values, Concerns and Challenges](https://arxiv.org/abs/1803.07517) (ras et al. 2018)
@@ -42,26 +43,6 @@ The definition of interpretability I find most useful is that given in [this wor
   - some of these can be applied to data directly w/out model (e.g. correlation coefficient, rank correlation coefficient, moment-independent VIMs)
   - <img class="medium_image" src="assets/Screen Shot 2019-06-14 at 9.07.18 AM.png"/>
 - [Pitfalls to Avoid when Interpreting Machine Learning Models](https://arxiv.org/pdf/2007.04131.pdf) (molnar et al. 2020)
-
-## philosophical perspectives
-
-- [Machine Learning and the Future of Realism](https://arxiv.org/pdf/1704.04688.pdf) (hooker & hooker, 2017)
-  - lack of interpretability in DNNs is part of what makes them powerful
-  - *naked predictions* - numbers with no real interpretation
-    - more central to science than modelling?
-    - no theory needed? (Breiman 2001)
-  - old school: realist studied neuroscience (Wundt), anti-realist just stimuli/response patterns (Skinner), now neither
-  - interpretability properties
-    - *simplicity* - too complex
-    - *risk* - too complex
-    - *efficiency* - basically generalizability
-    - *unification* - answers *ontology* - the nature of being
-    - *realism* in a partially accessible world
-  - overall, they believe there is inherent value of ontological description
-- [Explainable Artificial Intelligence and Machine Learning: A reality rooted perspective](https://arxiv.org/pdf/2001.09464v1.pdf) (Emmert-Streib et al. 2020)
-  - explainable AI is not a new field but has been already recognized and discussed for expert systems in the 1980s
-  1. in some cases, such as simple physics, we can hope to get a **theory** - however, when the underlying process is complicated, interpretation can't hope to simplify it
-  2. in other cases, we might hope just for a **description**
 
 # evaluating interpretability
 
@@ -109,26 +90,111 @@ Evaluating interpretability can be very difficult (largely because it rarely mak
 
 # intrinsic interpretability (i.e. how can we fit simpler models)
 
-## interpretable dnns
+For an implementation of many of these models, see the python [imodels package](https://github.com/csinva/imodels). 
 
-- prototypes
-  - [prototypes II](https://arxiv.org/abs/1806.10574) (chen et al. 2018)
-    - can have prototypes smaller than original input size
-    - l2 distance
-    - require the filters to be identical to the latent representation of some training image patch
-    - cluster image patches of a particular class around the prototypes of the same class, while separating image patches of different classes
-    - maxpool class prototypes so spatial size doesn't matter
-    - also get heatmap of where prototype was activated (only max really matters)
-    - train in 3 steps
-      - train everything: classification + clustering around intraclass prototypes + separation between interclass prototypes (last layer fixed to 1s / -0.5s)
-      - project prototypes to data patches
-      - learn last layer
-  - [prototypes I](https://arxiv.org/pdf/1710.04806.pdf) (li et al. 2017)
-    - uses encoder/decoder setup
-    - encourage every prototype to be similar to at least one encoded input
-    - learned prototypes in fact look like digits
-    - correct class prototypes go to correct classes
-    - loss: classification + reconstruction + distance to a training point
+## decision rules
+
+For more on rules, see **[logic notes]()**.
+
+- 2 basic concepts for a rule
+  - converage = support
+  - accuracy = confidence = consistency
+    - measures for rules: precision, info gain, correlation, m-estimate, Laplace estimate
+- these algorithms usually don't support regression, but you can get regression by cutting the outcome into intervals
+
+### rule sets
+
+**Rule sets commonly look like a series of independent if-then rules. Unlike trees / lists, these rules can be overlapping and might not cover the whole space. Final predictions can be made via majority vote, using most accurate rule, or averaging predictions.**
+
+- popular way to learn rule sets
+  - [A Simple, Fast, and Effective Rule Learner](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.33.1184&rep=rep1&type=pdf) (cohen, & singer, 1999) - SLIPPER - repeatedly boosting a simple, greedy rule-builder
+  - [Lightweight Rule Induction](http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.34.4619) (weiss & indurkhya, 2000) - specify number + size of rules and classify via majority vote
+  - [Maximum Likelihood Rule Ensembles](https://dl.acm.org/doi/pdf/10.1145/1390156.1390185?casa_token=Lj3Ypp6bLzoAAAAA:t4p9YRPHEXJEL723ygEW5BJ9qft8EeU5934vPJFf1GrF1GWm1kctIePQGeaRiKHJa6ybpqtTqGg1Ig) (Dembczyński et al. 2008) - MLRules - rule is base estimator in ensemble - build by greedily maximizing log-likelihood
+- more recent global versions of learning rule sets
+  - [interpretable decision set](https://dl.acm.org/citation.cfm?id=2939874) (lakkaraju et al. 2016) - set of if then rules which are all independent (not falling)
+    - short, accurate, and non-overlapping rules that cover the whole feature space and pay attention to small but important classes
+  - [A Bayesian Framework for Learning Rule Sets for Interpretable Classification](http://www.jmlr.org/papers/volume18/16-003/16-003.pdf) (wang et al. 2017) - rules are a bunch of clauses OR'd together (e.g. if (X1>0 AND X2<1) OR (X2<1 AND X3>1) OR ... then Y=1)
+- when learning sequentially, often useful to prune at each step (Furnkranz, 1997)
+
+### rule lists
+
+- oneR algorithm - select feature that carries most information about the outcome and then split multiple times on that feature
+- **sequential covering** - keep trying to cover more points sequentially
+- pre-mining frequent patterns (want them to apply to a large amount of data and not have too many conditions)
+  - FP-Growth algorithm (borgelt 2005) is fast
+  - Aprior + Eclat do the same thing, but with different speeds
+- [interpretable classifiers using rules and bayesian analysis](https://projecteuclid.org/download/pdfview_1/euclid.aoas/1446488742) (letham et al. 2015)
+  - start by pre-mining frequent patterns rules
+    - current approach does not allow for negation (e.g. not diabetes) and must split continuous variables into categorical somehow (e.g. quartiles)
+    - mines things that frequently occur together, but doesn't look at outcomes in this step - okay (since this is all about finding rules with high support)
+  - learn rules w/ prior for short rule conditions and short lists
+    - start w/ random list 
+    - sample new lists by adding/removing/moving a rule
+    - at the end, return the list that had the highest probability
+  - [scalable bayesian rule lists](https://dl.acm.org/citation.cfm?id=3306086) (yang et al. 2017) - faster algorithm for computing
+- [learning certifiably optimal rules lists](https://dl.acm.org/citation.cfm?id=3098047) (angelino et al. 2017) - optimization for categorical feature space
+  - can get upper / lower bounds for loss = risk + $\lambda$ * listLength
+- [Expert-augmented machine learning](https://arxiv.org/abs/1903.09731) (gennatas et al. 2019)
+  - make rule lists, then compare the outcomes for each rule with what clinicians think should be outcome for each rule
+  - look at rules with biggest disagreement and engineer/improve rules or penalize unreliable rules
+
+### trees
+
+- [Building more accurate decision trees with the additive tree](https://www.pnas.org/content/116/40/19887) (luna et al. 2019)
+  - present additive tree (AddTree), which builds a single decision tree, which is between a single CART tree and boosted decision stumps
+  - cart can be seen as a boosting algorithm on stumps
+    - can rewrite boosted stumps as a tree very easily
+    - previous work: can grow tree based on Adaboost idea = AdaTree
+  - ![Screen Shot 2020-03-11 at 11.10.13 PM](assets/Screen Shot 2020-03-11 at 11.10.13 PM.png)
+- [optimal sparse decision trees](https://arxiv.org/abs/1904.12847) (hu et al. 2019) - optimal decision trees for binary variables
+- issues: replicated subtree problem (Pagallo & Haussler, 1990)
+
+## linear (+algebraic) models
+
+### supersparse models
+
+- [Supersparse linear integer models for optimized medical scoring systems](https://link.springer.com/content/pdf/10.1007/s10994-015-5528-6.pdf) (ustun & rudin 2016)
+  - [2helps2b paper](https://www.ncbi.nlm.nih.gov/pubmed/29052706)
+  - ![Screen Shot 2019-06-11 at 11.17.35 AM](assets/Screen Shot 2019-06-11 at 11.17.35 AM.png)
+
+### gams (generalized additive models)
+
+- gam takes form $g(\mu) = b + f(x_0) + f(x_1) + f(x_2) + ...$
+  - usually assume some basis for the $f$, like splines or polynomials (and we select how many either manually or with some complexity penalty)
+- [Demystifying Black-box Models with Symbolic Metamodels](https://papers.nips.cc/paper/9308-demystifying-black-box-models-with-symbolic-metamodels.pdf)
+  - GAM parameterized with Meijer G-functions (rather than pre-specifying some forms, as is done with symbolic regression)
+- [Neural Additive Models: Interpretable Machine Learning with Neural Nets](https://arxiv.org/abs/2004.13912) - GAM where we learn $f$ with a neural net
+
+### symbolic regression
+
+- learn form of the equation using priors on what kinds of thinngs are more difficult
+- [Building and Evaluating Interpretable Models using Symbolic Regression and Generalized Additive Models](https://openreview.net/pdf?id=BkgyvQzmW)
+  - gams - assume model form is additive combination of some funcs, then solve via GD
+  - however, if we don't know the form of the model we must generate it
+- [Bridging the Gap: Providing Post-Hoc Symbolic Explanations for Sequential Decision-Making Problems with Black Box Simulators](https://arxiv.org/abs/2002.01080)
+
+## example-based (e.g. prototypes)
+
+- [prototypes II](https://arxiv.org/abs/1806.10574) (chen et al. 2018)
+  - can have prototypes smaller than original input size
+  - l2 distance
+  - require the filters to be identical to the latent representation of some training image patch
+  - cluster image patches of a particular class around the prototypes of the same class, while separating image patches of different classes
+  - maxpool class prototypes so spatial size doesn't matter
+  - also get heatmap of where prototype was activated (only max really matters)
+  - train in 3 steps
+    - train everything: classification + clustering around intraclass prototypes + separation between interclass prototypes (last layer fixed to 1s / -0.5s)
+    - project prototypes to data patches
+    - learn last layer
+- [prototypes I](https://arxiv.org/pdf/1710.04806.pdf) (li et al. 2017)
+  - uses encoder/decoder setup
+  - encourage every prototype to be similar to at least one encoded input
+  - learned prototypes in fact look like digits
+  - correct class prototypes go to correct classes
+  - loss: classification + reconstruction + distance to a training point
+
+## interpretable neural nets
+
 - [Symbolic Semantic Segmentation and Interpretation of COVID-19 Lung Infections in Chest CT volumes based on Emergent Languages](https://arxiv.org/pdf/2008.09866v1.pdf) (chowdhury et al. 2020) - combine some segmentation with the classifier
 - [Concept Whitening for Interpretable Image Recognition](https://arxiv.org/pdf/2002.01650.pdf) (chen et al. 2020) - force network to separate "concepts" (like in TCAV) along different axes
 - [Towards Explainable Deep Neural Networks (xDNN)](https://arxiv.org/abs/1912.02523) (angelov & soares 2019) - more complex version of using prototypes
@@ -141,74 +207,11 @@ Evaluating interpretability can be very difficult (largely because it rarely mak
   - [code](https://github.com/wielandbrendel/bag-of-local-features-models)
 - [Towards Robust Interpretability with Self-Explaining Neural Networks](https://arxiv.org/pdf/1806.07538.pdf) (alvarez-melis & jaakkola 2018) - building architectures that explain their predictions
 - [Harnessing Deep Neural Networks with Logic Rules](https://arxiv.org/pdf/1603.06318.pdf)
-- [Tensor networks](https://www.perimeterinstitute.ca/research/research-initiatives/tensor-networks-initiative) - like DNN that only takes boolean inputs and deals with interactions explicitly
-  - widely used in physics
 - [iCaps: An Interpretable Classifier via Disentangled Capsule Networks](https://arxiv.org/abs/2008.08756) (jung et al. 2020)
   - the class capsule also includes classification-irrelevant information
     - uses a novel class-supervised disentanglement algorithm
   - entities represented by the class capsule overlap
     - adds additional regularizer
-
-## trees
-
-- [Building more accurate decision trees with the additive tree](https://www.pnas.org/content/116/40/19887) (luna et al. 2019)
-  - present additive tree (AddTree), which builds a single decision tree, which is between a single CART tree and boosted decision stumps
-  - cart can be seen as a boosting algorithm on stumps
-    - can rewrite boosted stumps as a tree very easily
-    - previous work: can grow tree based on Adaboost idea = AdaTree
-  - ![Screen Shot 2020-03-11 at 11.10.13 PM](assets/Screen Shot 2020-03-11 at 11.10.13 PM.png)
-
-## rule lists / sets
-
-- these algorithms usually don't support regression, but you can get regression by cutting the outcome into intervals
-- oneR algorithm - select feature that carries most information about the outcome and then split multiple times on that feature
-- sequential covering - keep trying to cover more points sequentially
-- people are frequently trying to extract rules from trained dnns
-- [foundations of rule learning](https://dl.acm.org/citation.cfm?id=2788240) (furnkranz et al. 2014)
-  - 2 basic concepts for a rule
-    - converage = support
-    - accuracy = confidence = consistency
-      - measures for rules: precision, info gain, correlation, m-estimate, Laplace estimate
-- [interpretable classifiers using rules and bayesian analysis](https://projecteuclid.org/download/pdfview_1/euclid.aoas/1446488742) (letham et al. 2015)
-  - start by mining rules (want them to apply to a large amount of data and not have too many conditions) - uses FP-Growth algorithm (borgelt 2005), could also uses Apriori or Eclat
-    - current approach does not allow for negation (e.g. not diabetes) and must split continuous variables into categorical somehow (e.g. quartiles)
-    - mines things that frequently occur together, but doesn't look at outcomes in this step - okay (since this is all about finding rules with high support)
-  - learn rules w/ prior for short rule conditions and short lists
-    - start w/ random list 
-    - sample new lists by adding/removing/moving a rule
-    - at the end, return the list that had the highest probability
-  - [scalable bayesian rule lists](https://dl.acm.org/citation.cfm?id=3306086) (yang et al. 2017) - faster algorithm for computing
-- [learning certifiably optimal rules lists](https://dl.acm.org/citation.cfm?id=3098047) (angelino et al. 2017) - optimization for categorical feature space
-  - can get upper / lower bounds for loss = risk + $\lambda$ * listLength
-- [interpretable decision set](https://dl.acm.org/citation.cfm?id=2939874) (lakkaraju et al. 2016) - set of if then rules which are all independent (not falling)
-- [A Bayesian Framework for Learning Rule Sets for Interpretable Classification](http://www.jmlr.org/papers/volume18/16-003/16-003.pdf) (wang et al. 2017) - rules are a bunch of clauses OR'd together (e.g. if (X1>0 AND X2<1) OR (X2<1 AND X3>1) OR ... then Y=1)
-- [optimal sparse decision trees](https://arxiv.org/abs/1904.12847) (hu et al. 2019) - optimal decision trees for binary variables
-- [2helps2b paper](https://www.ncbi.nlm.nih.gov/pubmed/29052706)
-  - ![Screen Shot 2019-06-11 at 11.17.35 AM](assets/Screen Shot 2019-06-11 at 11.17.35 AM.png)
-- [Expert-augmented machine learning](https://arxiv.org/abs/1903.09731) (gennatas et al. 2019)
-  - make rule lists, then compare the outcomes for each rule with what clinicians think should be outcome for each rule
-    - look at rules with biggest disagreement and engineer/improve rules or penalize unreliable rules
-
-## gams
-
-- gam takes form $g(\mu) = b + f(x_0) + f(x_1) + f(x_2) + ...$
-  - usually assume some basis for the $f$, like splines or polynomials (and we select how many either manually or with some complexity penalty)
-- [Demystifying Black-box Models with Symbolic Metamodels](https://papers.nips.cc/paper/9308-demystifying-black-box-models-with-symbolic-metamodels.pdf)
-  - GAM parameterized with Meijer G-functions (rather than pre-specifying some forms, as is done with symbolic regression)
-- [Neural Additive Models: Interpretable Machine Learning with Neural Nets](https://arxiv.org/abs/2004.13912) - GAM where we learn $f$ with a neural net
-
-## symbolic regression
-
-- [Building and Evaluating Interpretable Models using Symbolic Regression and Generalized Additive Models](https://openreview.net/pdf?id=BkgyvQzmW)
-  - gams - assume model form is additive combination of some funcs, then solve via GD
-  - however, if we don't know the form of the model we must generate it
-- [Bridging the Gap: Providing Post-Hoc Symbolic Explanations for Sequential Decision-Making Problems with Black Box Simulators](https://arxiv.org/abs/2002.01080)
-
-## programs
-
-- **program synthesis** - automatically find a program in an underlying programming language that satisfies some user intent
-  - **ex. program induction** - given a dataset consisting of input/output pairs, generate a (simple?) program that produces the same pairs
-- [probabilistic programming](https://en.wikipedia.org/wiki/Probabilistic_programming) - specify graphical models via a programming language
 
 ## misc models
 
@@ -224,10 +227,18 @@ Evaluating interpretability can be very difficult (largely because it rarely mak
 - [Case-Based Reasoning for Assisting Domain Experts in Processing Fraud Alerts of Black-Box Machine Learning Models](https://arxiv.org/abs/1907.03334)
 - [Beyond Sparsity: Tree Regularization of Deep Models for Interpretability](https://arxiv.org/pdf/1711.06178.pdf)
   - regularize so that deep model can be closely modeled by tree w/ few nodes
+- [Tensor networks](https://www.perimeterinstitute.ca/research/research-initiatives/tensor-networks-initiative) - like DNN that only takes boolean inputs and deals with interactions explicitly
+  - widely used in physics
+
+### programs
+
+- **program synthesis** - automatically find a program in an underlying programming language that satisfies some user intent
+  - **ex. program induction** - given a dataset consisting of input/output pairs, generate a (simple?) program that produces the same pairs
+- [probabilistic programming](https://en.wikipedia.org/wiki/Probabilistic_programming) - specify graphical models via a programming language
 
 # posthoc interpretability (i.e. how can we interpret a fitted model)
 
-## model-agnostic methods
+## model-agnostic
 
 - local surrogate ([LIME](https://arxiv.org/abs/1602.04938)) - fit a simple model locally to on point and interpret that
    - select data perturbations and get new predictions
@@ -362,7 +373,7 @@ How interactions are defined and summarized is a very difficult thing to specify
   - CSM - relative change of model ouput mean when range of $X_i$ is reduced to any subregion
   - CSV - same thing for variance
 
-## model-agnostic curves
+### importance curves
 
 - **pdp plots** - marginals (force value of plotted var to be what you want it to be)
 - separate into **ice plots**  - marginals for instance
@@ -440,17 +451,9 @@ How interactions are defined and summarized is a very difficult thing to specify
   - asymptotically, randomized trees might actually be better
 - [Actionable Interpretability through Optimizable Counterfactual Explanations for Tree Ensembles](https://arxiv.org/pdf/1911.12199v1.pdf) (lucic et al. 2019)
 
-## textual explanations
+## neural nets (dnns)
 
-- [Adversarial Inference for Multi-Sentence Video Description](https://arxiv.org/pdf/1812.05634.pdf) - adversarial techniques during inference for a better multi-sentence video description
-- [Object Hallucination in Image Captioning](https://aclweb.org/anthology/D18-1437) - image relevance metric - asses rate of object hallucination
-   - CHAIR metric - what proportion of words generated are actually in the image according to gt sentences and object segmentations
-- [women also snowboard](https://arxiv.org/pdf/1803.09797.pdf) - force caption models to look at people when making gender-specific predictions
-- [Fooling Vision and Language Models Despite Localization and Attention Mechanism](http://openaccess.thecvf.com/content_cvpr_2018/papers/Xu_Fooling_Vision_and_CVPR_2018_paper.pdf) -  can do adversarial attacks on captioning and VQA
-- [Grounding of Textual Phrases in Images by Reconstruction](https://arxiv.org/pdf/1511.03745.pdf) - given text and image provide a bounding box (supervised problem w/ attention)
-- [Natural Language Explanations of Classifier Behavior](https://ieeexplore.ieee.org/abstract/document/8791710)
-
-## dnn visualization
+### dnn visualization
 
 - [good summary on distill](https://distill.pub/2017/feature-visualization/)
 - **visualize intermediate features**
@@ -506,7 +509,8 @@ How interactions are defined and summarized is a very difficult thing to specify
     - can search for smallest sufficient region and smallest destructive region
     - ![Screen Shot 2020-01-20 at 9.14.44 PM](assets/Screen Shot 2020-01-20 at 9.14.44 PM.png)
 
-## concept-based explanations
+### dnn concept-based explanations
+
 - [concept activation vectors](https://arxiv.org/abs/1711.11279)
     - Given: a user-defined set of examples for a concept (e.g., ‘striped’), and random
             examples, labeled training-data examples for the studied class (zebras) 
@@ -519,7 +523,7 @@ How interactions are defined and summarized is a very difficult thing to specify
 - [Explaining The Behavior Of Black-Box Prediction Algorithms With Causal Learning](https://arxiv.org/abs/2006.02482) - specify some interpretable features and learn a causal graph of how the classifier uses these features
 - [On Completeness-aware Concept-Based Explanations in Deep Neural Networks](https://arxiv.org/abs/1910.07969)
 
-## dnn feature importance
+### dnn feature importance
 
 - saliency maps
     1. occluding parts of the image
@@ -575,12 +579,15 @@ How interactions are defined and summarized is a very difficult thing to specify
       - [Neural interaction transparency (NIT)](https://dl.acm.org/citation.cfm?id=3327482) (tsang et al. 2017)
     - [Recovering Pairwise Interactions Using Neural Networks](https://arxiv.org/pdf/1901.08361.pdf)
 
-## improving models
+### textual explanations
 
-- [Interpretations are useful: penalizing explanations to align neural networks with prior knowledge](https://arxiv.org/abs/1909.13584)
-- [Right for the Right Reasons: Training Differentiable Models by Constraining their Explanations](https://arxiv.org/abs/1703.03717)
-- [Explain to Fix: A Framework to Interpret and Correct DNN Object Detector Predictions](https://arxiv.org/pdf/1811.08011.pdf)
-- [Understanding Misclassifications by Attributes](https://arxiv.org/abs/1910.07416)
+- [Adversarial Inference for Multi-Sentence Video Description](https://arxiv.org/pdf/1812.05634.pdf) - adversarial techniques during inference for a better multi-sentence video description
+- [Object Hallucination in Image Captioning](https://aclweb.org/anthology/D18-1437) - image relevance metric - asses rate of object hallucination
+   - CHAIR metric - what proportion of words generated are actually in the image according to gt sentences and object segmentations
+- [women also snowboard](https://arxiv.org/pdf/1803.09797.pdf) - force caption models to look at people when making gender-specific predictions
+- [Fooling Vision and Language Models Despite Localization and Attention Mechanism](http://openaccess.thecvf.com/content_cvpr_2018/papers/Xu_Fooling_Vision_and_CVPR_2018_paper.pdf) -  can do adversarial attacks on captioning and VQA
+- [Grounding of Textual Phrases in Images by Reconstruction](https://arxiv.org/pdf/1511.03745.pdf) - given text and image provide a bounding box (supervised problem w/ attention)
+- [Natural Language Explanations of Classifier Behavior](https://ieeexplore.ieee.org/abstract/document/8791710)
 
 ## model summarization / distillation
 
@@ -592,13 +599,14 @@ How interactions are defined and summarized is a very difficult thing to specify
   - [BETA](https://arxiv.org/abs/1707.01154) (lakkaraju et al. 2017) - approximate model by a rule list
 - [Distilling a Neural Network Into a Soft Decision Tree](https://arxiv.org/pdf/1711.09784.pdf) (frosst & hinton 2017)
 
-## interp for rl
+# different problems / perspectives
 
-- heatmaps
-- visualize most interesting states / rollouts
-- language explanations
-- interpretable intermediate representations (e.g. bounding boxes for autonomous driving)
-- policy extraction - distill a simple model from a bigger model (e.g. neural net -> tree)
+## improving models
+
+- [Interpretations are useful: penalizing explanations to align neural networks with prior knowledge](https://arxiv.org/abs/1909.13584)
+- [Right for the Right Reasons: Training Differentiable Models by Constraining their Explanations](https://arxiv.org/abs/1703.03717)
+- [Explain to Fix: A Framework to Interpret and Correct DNN Object Detector Predictions](https://arxiv.org/pdf/1811.08011.pdf)
+- [Understanding Misclassifications by Attributes](https://arxiv.org/abs/1910.07416)
 
 ## recourse
 
@@ -607,70 +615,13 @@ How interactions are defined and summarized is a very difficult thing to specify
     - drastic changes in actionable inputs are basically immutable
   - **recourse** - can person obtain desired prediction from fixed mode by changing actionable input variables (not just standard explainability)
 
-# related concepts
+## interp for rl
 
-## trust scores / uncertainty
-
-*papers using embeddings to generate confidences*
-
-- [To Trust Or Not To Trust A Classifier](http://papers.nips.cc/paper/7798-to-trust-or-not-to-trust-a-classifier.pdf) (jiang et al - trust score uses density over some set of nearest neighbors (do clustering for each class - trust score = distance to once class's cluster vs the other classes')
-  - [papernot knn](https://arxiv.org/abs/1803.04765)
-  - [distance-based confidence scores](https://arxiv.org/pdf/1709.09844.pdf)
-  - [deep kernel knn](https://arxiv.org/pdf/1811.02579.pdf)
-  - fair paper: gradients should be larger if you are on the image manifold
-- calibration
-    - **platt scaling** - given trained classifier and new calibration dataset, basically just fit a logistic regression from the classifier predictions -> labels
-    - **isotonic regression** - nonparametric, requires more data than platt scaling
-        - piecewise-constant non-decreasing function instead of logistic regression
-- [Deep k-Nearest Neighbors: Towards Confident, Interpretable and Robust Deep Learning](https://arxiv.org/pdf/1803.04765.pdf)
-    - [Interpreting Neural Networks With Nearest Neighbors](https://arxiv.org/pdf/1809.02847.pdf)
-- [outlier-detection](https://scikit-learn.org/stable/modules/outlier_detection.html)
-    - assume data is Gaussian and fit elliptic envelop (maybe robustly) to tell when data is an outlier
-    - local outlier factor (breunig et al. 2000) - score based on nearest neighbor density 
-    - [isolation forest](https://ieeexplore.ieee.org/abstract/document/4781136) (liu et al. 2008) - lower average number of random splits required to isolate a sample means more outlier
-    - [one-class svm](https://scikit-learn.org/stable/modules/generated/sklearn.svm.OneClassSVM.html#sklearn.svm.OneClassSVM) - estimates the support of a high-dimensional distribution using a kernel
-      - 2 approaches
-        - separate the data from the origin (with max margin between origin and points) (scholkopf et al. 2000)
-        - find a sphere boundary around a dataset with the volume of the sphere minimized ([tax & duin 2004](https://link.springer.com/article/10.1023/B:MACH.0000008084.60811.49))
-    - [detachment index](https://escholarship.org/uc/item/9d34m0wz) (kuenzel 2019) - based on random forest
-      - for covariate $j$, detachment index $d^j(x) = \sum_i^n w (x, X_i) \vert X_i^j - x^j \vert$
-        - $w(x, X_i) = \underbrace{1 / T\sum_{t=1}^{T}}_{\text{average over T trees}} \frac{\overbrace{1\{ X_i \in L_t(x) \}}^{\text{is }   X_i \text{ in the same leaf?}}}{\underbrace{\vert L_t(x) \vert}_{\text{num points in leaf}}}$ is $X_i$ relevant to the point $x$?
-- lots of papers on confidence calibration (transforms outputs into probabilities)
-- [get confidences before overfitting](https://arxiv.org/abs/1805.08206)
-    - 2 popular things: max margin, entropy of last layer
-    - [add an extra output for uncertainty](https://arxiv.org/abs/1810.01861)
-    - [learn to predict confidences](https://arxiv.org/pdf/1802.04865.pdf)
-- also methods on predict with rejection possibility
-
-  - [contextual outlier detection](https://arxiv.org/abs/1711.10589)
-  - [ensembling background](https://machinelearningmastery.com/ensemble-methods-for-deep-learning-neural-networks/)
-- [How to Generate Prediction Intervals with Scikit-Learn and Python](https://towardsdatascience.com/how-to-generate-prediction-intervals-with-scikit-learn-and-python-ab3899f992ed)
-  - can use quantile loss to penalize models differently
-  - than can use these different models to get confidence intervals
-  - [can easily do this with sklearn](https://scikit-learn.org/stable/auto_examples/ensemble/plot_gradient_boosting_quantile.html)
-  - quantile loss = $\begin{cases} \alpha \cdot \Delta & \text {if} \quad \Delta > 0\\(\alpha - 1) \cdot \Delta & \text{if} \quad \Delta < 0\end{cases}$
-    - $\Delta =$ actual - predicted
-    - ![Screen Shot 2019-06-26 at 10.06.11 AM](assets/Screen Shot 2019-06-26 at 10.06.11 AM.png)
-- [uncertainty though ensemble confidence](http://papers.nips.cc/paper/7219-simple-and-scalable-predictive-uncertainty-estimation-using-deep-ensembles)
-  - predict mean and variance w/ each network then ensemble
-  - also add in adversarial training
-  - [snapshot ensembles](https://arxiv.org/abs/1704.00109)
-- bayesian neural nets
-  - [icu bayesian dnns](https://aiforsocialgood.github.io/icml2019/accepted/track1/pdfs/38_aisg_icml2019.pdf)
-    - focuses on epistemic uncertainty
-    - could use one model to get uncertainty and other model to predict
-  - [Evaluating Scalable Bayesian Deep Learning Methods for Robust Computer Vision](https://arxiv.org/pdf/1906.01620.pdf)
-    - **epistemic uncertainty** - uncertainty in the DNN model parameters
-      - without good estimates of this, often get aleatoric uncertainty wrong (since $p(y\vert x) = \int p(y \vert x, \theta) p(\theta \vert data) d\theta$
-    - **aleatoric uncertainty** -  inherent and irreducible data noise (e.g. features contradict each other)
-      - this can usually be gotten by predicting a distr. $p(y \vert x)$ instead of a point estimate
-      - ex. logistic reg. already does this
-      - ex. regression - just predict mean and variance of Gaussian
-- [Dropout as a Bayesian Approximation: Representing Model Uncertainty in Deep Learning](http://proceedings.mlr.press/v48/gal16.pdf)
-  - dropout at test time gives you uncertainty
-
-
-
+- heatmaps
+- visualize most interesting states / rollouts
+- language explanations
+- interpretable intermediate representations (e.g. bounding boxes for autonomous driving)
+- policy extraction - distill a simple model from a bigger model (e.g. neural net -> tree)
 
 # misc new papers
 

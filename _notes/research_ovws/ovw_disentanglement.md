@@ -1,7 +1,8 @@
 ---
 layout: notes
-title: Disentangled representation learning
+title: disentanglement
 category: blog
+typora-copy-images-to: ./assets
 ---
 
 <div class="iframe-box" style="margin-top: 0px">
@@ -82,7 +83,7 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
 
 
 
-## how do these terms appear in different papers
+## various vaes
 
 - [vae](https://arxiv.org/abs/1312.6114) (kingma & welling, 2013)
 - [beta-vae](https://openreview.net/references/pdf?id=Sy2fzU9gl) (higgins et al. 2017) - add hyperparameter $\beta$ to weight the compactness prior term
@@ -118,6 +119,24 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
   - nonisotropic priors -  isotropic priors are only good up to rotation in the latent space
     - by chossing a nonisotropic prior (e.g. nonisotropic gaussian), can learn certain directions more easily
   - sparse prior - can help do clustering
+- [VAE-SNE: a deep generative model for simultaneous dimensionality reduction and clustering](https://www.biorxiv.org/content/10.1101/2020.07.17.207993v1.full.pdf) (graving & couzin 2020) - reduce dims + cluster without specifying number of clusters
+  - ![Screen Shot 2020-09-10 at 11.40.10 PM](assets/Screen Shot 2020-09-10 at 11.40.10 PM-9806489.png)
+  - **stochastic neighbor regularizer** that optimizes pairwise similarity kernels between original and latent distrs. to strengthen local neighborhood preservation
+    - can use different neighbor kernels, e.g. t-SNE similarity (van der Maaten & Hinton, 2008) or Gaussian SNE kernel (Hinton & Roweis, 2003)
+    - perplexity annealing technique (Kobak and Berens, 2019) - decay the size of local neighborhoods during training (helps to preserve structure at multiple scales)
+  - **Gaussian mixture prior** for learning latent distr. (with very large number of clusters)
+    - at the end, merge clusters using a sparse watershed (see [todd et al. 2017](https://iopscience.iop.org/article/10.1088/1478-3975/14/1/015002/meta))
+  - extensive evaluation - test several datasets / methods and evaluate how well the first 2 dimensions preserve the following:
+    - global - correlation between pairwise distances in orig/latent spaces
+    - local - both metric (distance- or radius-based) and topological (neighbor-based) neighborhoods which are 1% of total embedding size
+    - fine-scale - neighborhoods which are <1% of total embedding size
+    - temporal info (for time-series data only) - correlation between latent and original temporal derivatives
+    - **likelihood** on out-of-sample data
+  - further advancements
+    - embed into polar coordinates (rather than Euclidean) helps a lot
+    - convolutional VAE-SNE - extract features from images using some pre-trained net and then run VAE-SNE on these features
+  - background: earlier works also used SNE objective for regularization - starts with van der Maaten 2009 (parametric t-SNE)
+  - future work: density-preserving versions of t-SNE, modeling hierarchical structure in vae, conditional t-SNE kernel
 - [A Survey of Inductive Biases for Factorial Representation-Learning](https://arxiv.org/abs/1612.05299) (ridgeway 2016)
   - desiderata
     - **compact**

@@ -6,7 +6,7 @@ typora-copy-images-to: ./assets/logic
 ---
 
 {:toc}
-Some notes on logic based on Berkeley's CS 188 course and  "Artificial Intelligence" Russel & Norvig 3rd Edition
+Some notes on logic based on Berkeley's CS 188 course and  "Artificial Intelligence" Russel & Norvig 3rd Edition + [foundations of rule learning](https://dl.acm.org/citation.cfm?id=2788240) (furnkranz et al. 2014)
 
 # logical agents - 7.1-7.7 (omitting 7.5.2)
 
@@ -228,3 +228,58 @@ Some notes on logic based on Berkeley's CS 188 course and  "Artificial Intellige
 - decomposition
   - requires subgoal independence
 
+# [foundations of rule learning](https://dl.acm.org/citation.cfm?id=2788240) (furnkranz et al. 2014)
+
+- terminology - rule has a condition (conjunctive of binary features) + a conclusion = implication
+  - rule has 2 parts
+    - *antecedent* = *body* - consists of **conditions** = binary features e.g. $X_1 > 0$, $X_2=0$
+    - **conclusion** = consequent* = *head*
+  - rule $r$ has length *L*
+  - $P, N$ - total positives / negatives in the data
+  - $TP, FN$ - positives / negatives covered (predicted) by a rule
+  - $FN, FP$ - positives / negatives not covered by a rule
+  - $\frac{TP}{P}$ = true positive rate = sensitivity
+  - $\frac{TN}{N}$ = true negative rate = specificity
+  - rules evaluated with a heuristic $H(\hat P, \hat N)$
+
+## categorization of tasks (ch 1)
+
+- historically, a lot of this was developed in the data mining community and gave rise to packages such as WEKA, RAPID-I, KNIME, ORANGE
+  - historical algos: AQ2 (michalski, 1969), PRISM (cendrowska, 1987), CN2 (Clar & nibett, 1989), FOIL (quinlan, 1990), RIPPER (cohen 1995), PROGOL (muggleton, 1995), [ALEPH](http://www.comlab.ox.ac.uk/oucl/research/areas/machlearn/Aleph/aleph.pl) (srinivasan, 1999) - entire rule workbench in one prolog file, OPUS (webb, 1955), CBA (lui et al. 1998)
+- predictive rules
+  - **propositional learning** (just propositional logic) v **relational learning** (first-order logic) = relational data mining = inductive logic programming
+  - **concept learning** - binary classification task
+  - **complete** rule set $\mathcal R$ - covers all positive examples (recall = 1)
+  - **consistent** - rule set $\mathcal R$ - covers no negative examples (precision = 1)
+- descriptive data mining - usually unsupervised, just learn patterns
+  - associative rule learning is unsupervised descriptive (e.g. APRIORI)
+    - here, both the conditions + conclusions can have many features
+  - subgroup discovery is descriptive, but has a supervised label, so is actually like supervised clustering - goal is to learn subgroups with a significantly different class distribution than the entire population
+- relational learning - when data doesn't fit in a table but is associated (e.g. customers have many purchases each)
+
+## basics of learning rules (ch 2)
+
+- finding rules is basically a search problem
+  - want to find best rules (generally bigger coverage, less complexity, higher accuracy)
+  - can thing of it as searching on a **refinement graph** - each rule is a node and refinement operators connect rules
+- heuristics - all basically trading off recall / precision of a rule $r$
+  - $CovDiff(r) = \hat P - \hat N$
+  - $RateDiff(r)$ = $\hat P / P - \hat N / N$
+  - $Precision(r) = TN / (TP + FP)$ (sometimes called confidence or rule accuracy - ignore this kinda confusing)
+  - $Laplace(r) = (TN + 1)/(TP+1+FP+1)$ - pad all the values by 1 to adjust scores when numbers are small
+  - *likelihood ratio statistic* - compare distr in rule to distr in full dataset
+- stopping criteria
+  - threshold for some heuristic
+- making final prediction
+  - final predictions can be made via majority vote, using most accurate rule, or averaging predictions.
+- algorithms
+  - sequential covering (remove covered points after each rule)
+
+## (binary split) features
+
+- here, feature means something binary that we split on
+- selector is smth of the form $A_i \sim v_{i, j}$ where relation $\sim$ is like $=, >=, <=$
+  - can also be attribute sets (internal disjunctions) $A_i \in \{v_1, v_2, v_3 \}$, intervals (range operators), or attribute sets (internal conjunctions)
+  - can also be simple combinations of binary variables
+- relational features - function between features (e.g. length > height)
+  - can have splits that are functions of previous splits (like a residual DNN connection)
