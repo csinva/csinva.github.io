@@ -81,6 +81,8 @@ Evaluating interpretability can be very difficult (largely because it rarely mak
 
 - [Sanity Checks for Saliency Maps](https://papers.nips.cc/paper/8160-sanity-checks-for-saliency-maps.pdf) (adebayo et al. 2018)
   - **Model Parameter Randomization Test** - attributions should be different for trained vs random model, but they aren't for many attribution methods
+- [Assessing the (Un)Trustworthiness of Saliency Maps for Localizing Abnormalities in Medical Imaging](https://www.medrxiv.org/content/10.1101/2020.07.28.20163899v1.full.pdf) (arun et al. 2020) - CXR images from SIIM-ACR Pneumothorax Segmentation + RSNA Pneumonia Detection
+  - metrics: localizers (do they overlap with GT segs/bounding boxes), variation with model weight randomization, repeatable (i.e. same after retraining?), reproducibility (i.e. same after training different model?)
 - [Interpretable Deep Learning under Fire](https://arxiv.org/abs/1812.00891) (zhang et al. 2019)
 - [How can we fool LIME and SHAP? Adversarial Attacks on Post hoc Explanation Methods](https://arxiv.org/abs/1911.02508)
   - we can build classifiers which use important features (such as race) but explanations will not reflect that
@@ -111,7 +113,7 @@ For more on rules, see **[logic notes]()**.
   - [Lightweight Rule Induction](http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.34.4619) (weiss & indurkhya, 2000) - specify number + size of rules and classify via majority vote
   - [Maximum Likelihood Rule Ensembles](https://dl.acm.org/doi/pdf/10.1145/1390156.1390185?casa_token=Lj3Ypp6bLzoAAAAA:t4p9YRPHEXJEL723ygEW5BJ9qft8EeU5934vPJFf1GrF1GWm1kctIePQGeaRiKHJa6ybpqtTqGg1Ig) (Dembczyński et al. 2008) - MLRules - rule is base estimator in ensemble - build by greedily maximizing log-likelihood
 - more recent global versions of learning rule sets
-  - [interpretable decision set](https://dl.acm.org/citation.cfm?id=2939874) (lakkaraju et al. 2016) - set of if then rules which are all independent (not falling)
+  - [interpretable decision set](https://dl.acm.org/citation.cfm?id=2939874) (lakkaraju et al. 2016) - set of if then rules
     - short, accurate, and non-overlapping rules that cover the whole feature space and pay attention to small but important classes
   - [A Bayesian Framework for Learning Rule Sets for Interpretable Classification](http://www.jmlr.org/papers/volume18/16-003/16-003.pdf) (wang et al. 2017) - rules are a bunch of clauses OR'd together (e.g. if (X1>0 AND X2<1) OR (X2<1 AND X3>1) OR ... then Y=1)
 - when learning sequentially, often useful to prune at each step (Furnkranz, 1997)
@@ -140,6 +142,11 @@ For more on rules, see **[logic notes]()**.
 
 ### trees
 
+Trees suffer from the fact that they have to cover the entire decision space and often we end up with replicated subtrees.
+
+- [optimal classification trees methodology paper](https://link.springer.com/content/pdf/10.1007%2Fs10994-017-5633-9.pdf) (bertsimas & dunn 2017) - globally optimal decision tree with expensive optimization
+  - [optimal classification trees vs PECARN](https://jamanetwork.com/journals/jamapediatrics/article-abstract/2733157) (bertsimas et al. 2019)
+  - [supplemental tables](https://cdn-jamanetwork-com.libproxy.berkeley.edu/ama/content_public/journal/peds/0/poi190021supp1_prod.pdf?Expires=2147483647&Signature=EnVKjyPUrh7o2GVSU7Bxr4ZYL~5T27-sPKh14TANiL5mpXfj3YPTnUetEBPc~njVrg2VKY5TqqXCFxtR4xr6DfGLgobA~Kl92A1Jubmj9XgSL3U3so1~4O~YKob1WcS5uFI3HBpq9J-o-IkAsRq1qsnTFFzlvH7zlkwO9TW-dxnU9vtvU-QzhPNJ0cdAX-c7rrnZV0p0Fg~gzaEz5lvPP30Nort4kDTxd-FNDW5OYJFqusWF9e~3QK2S6Y4nRjv~IavQ10fQ24fSvEK5Nd1qetME8j2one0LA~KZjOk7avp76aV5os9msn-2hdPcEM7YWtLTUq12a9oVaD6pXKe3ZA__&Key-Pair-Id=APKAIE5G5CRDK6RD3PGA)
 - [Building more accurate decision trees with the additive tree](https://www.pnas.org/content/116/40/19887) (luna et al. 2019)
   - present additive tree (AddTree), which builds a single decision tree, which is between a single CART tree and boosted decision stumps
   - cart can be seen as a boosting algorithm on stumps
@@ -147,7 +154,14 @@ For more on rules, see **[logic notes]()**.
     - previous work: can grow tree based on Adaboost idea = AdaTree
   - ![Screen Shot 2020-03-11 at 11.10.13 PM](assets/Screen Shot 2020-03-11 at 11.10.13 PM.png)
 - [optimal sparse decision trees](https://arxiv.org/abs/1904.12847) (hu et al. 2019) - optimal decision trees for binary variables
+- extremely randomized trees - randomness goes further, not only feature is selected randomly but also split has some randomness
 - issues: replicated subtree problem (Pagallo & Haussler, 1990)
+- [Bayesian Treed Models](http://www-stat.wharton.upenn.edu/~edgeorge/Research_papers/treed-models.pdf) (chipman et al. 2001) - impose priors on tree parameters
+  - tree structure e.g. depth, splitting criteria
+  - values in terminal nodes coditioned on tree structure
+  - residual noise's standard deviation
+
+
 
 ## linear (+algebraic) models
 
@@ -597,13 +611,35 @@ How interactions are defined and summarized is a very difficult thing to specify
 - model distillation (model-agnostic)
   - Trepan - approximate model w/ a decision tree
   - [BETA](https://arxiv.org/abs/1707.01154) (lakkaraju et al. 2017) - approximate model by a rule list
-- [Distilling a Neural Network Into a Soft Decision Tree](https://arxiv.org/pdf/1711.09784.pdf) (frosst & hinton 2017)
+
+
+
+### connecting dnns with tree-models
+
+- [Distilling a Neural Network Into a Soft Decision Tree](https://arxiv.org/pdf/1711.09784.pdf) (frosst & hinton 2017) - distills DNN into DNN-like tree which uses sigmoid neuron decides which path to follow
+  - training on distilled DNN predictions outperforms training on original labels
+  - to make the decision closer to a hard cut, can multiply by a large scalar before applying sigmoid
+  - parameters updated with backprop
+  - regularization to ensure that all paths are taken equally likely
+- [Neural Random Forests](https://link.springer.com/article/10.1007/s13171-018-0133-y) (biau et al. 2018) - convert DNN to RF
+  - first layer learns a node for each split
+  - second layer learns a node for each leaf (by only connecting to nodes on leaves in the path)
+  - finally map each leaf to a value
+  - relax + retrain
+- [Deep Neural Decision Forests](https://openaccess.thecvf.com/content_iccv_2015/papers /Kontschieder_Deep_Neural_Decision_ICCV_2015_paper.pdf) (2015)
+  - dnn learns small intermediate representation, which outputs all possible splits in a tree
+  - these splits are forced into a tree-structure and optimized via SGD
+  - neurons use sigmoid function
+- [Gradient Boosted Decision Tree Neural Network](https://arxiv.org/abs/1910.09340) - build DNN based on decision tree ensemble - basically the same but with gradient-boosted trees
+- [Neural Decision Trees](https://arxiv.org/abs/1702.07360) - treat each neural net like a node in a tree
+
+
 
 # different problems / perspectives
 
 ## improving models
 
-- [Interpretations are useful: penalizing explanations to align neural networks with prior knowledge](https://arxiv.org/abs/1909.13584)
+- [Interpretations are useful: penalizing explanations to align neural networks with prior knowledge](https://arxiv.org/abs/1909.13584) (rieger et al. 2020)
 - [Right for the Right Reasons: Training Differentiable Models by Constraining their Explanations](https://arxiv.org/abs/1703.03717)
 - [Explain to Fix: A Framework to Interpret and Correct DNN Object Detector Predictions](https://arxiv.org/pdf/1811.08011.pdf)
 - [Understanding Misclassifications by Attributes](https://arxiv.org/abs/1910.07416)
@@ -622,6 +658,20 @@ How interactions are defined and summarized is a very difficult thing to specify
 - language explanations
 - interpretable intermediate representations (e.g. bounding boxes for autonomous driving)
 - policy extraction - distill a simple model from a bigger model (e.g. neural net -> tree)
+
+## interp for causal discovery
+
+- [All Models are Wrong, but Many are Useful: Learning a Variable’s Importance by Studying an Entire Class of Prediction Models Simultaneously](https://www.jmlr.org/papers/volume20/18-760/18-760.pdf) (fisher, rudin, & dominici, 2019)
+  - **model reliance** = MR - like permutation importance, measures how much a model relies on covariates of interest for its accuracy
+    - can be connected to U-statistics, conditional causal effects, and additive model coefficients
+  - **model-class reliance** = MCR = highest/lowest degree of MR within a class of well-performing models
+  - **Rashomon set** = class of well-performing models
+    - "Rashomon" effect of statistics - many prediction models may fit the data almost equally well
+    - can study these tools for describing ranke of risk predictions, variance of predictions, e.g. confidence intervals
+    - ![Screen Shot 2020-09-27 at 8.20.35 AM](assets/Screen Shot 2020-09-27 at 8.20.35 AM.png)
+  - MR can be efficiently estimated and MCR can be studed w/ limit on complexity of model class
+  - MCR can be efficiently computed for (regularized) linear / kernel linear models
+  - here, application is to see on COMPAS dataset whether one can build an accurate model which doesn't rely on race / sex (in order to audit black-box COMPAS models)
 
 # misc new papers
 

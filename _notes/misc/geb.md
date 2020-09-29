@@ -36,8 +36,29 @@
   - if decoding is universal, we might call the outer message (e.g. the trigger) the message
 - memory - same bits can be used for different things - part of each message specifies the instruction type
 
+# brain
+
+- intelligence involves a calculus of descriptions = symbols
+  - symbols represent both classes + instances (maybe both depending on amount of activation / context) - def need some context
+  - can have links to other symbols (+priors on these)
+  - *top-down logical structure*??
+  - different ways to combine symbols get blurry
+    - symbols can be learned to branch, merge
+  - can harness temporal firing rates to encode more
+  - can grow incrementally (greedily)
+- analogy of thoughts as trips on a (poorly fleshed out) map
+
+# interpretation
+
+- ex. top is decimal expansion of the sum of the second ($\pi/4$)
+  - 7, 8, 5, 3, 9, 8, 1, 6, ...
+  - 1, -1/3, +1/5, -1/7, +1/9, -1/11...
+
 # math / logic
 
+- **godel's thm** - limitation of any formal axiomatic system: cannot make a program to find a complete + consistent set of axioms
+- **church-turing thesis** - a function on the natural numbers can be calculated by an effective method if and only if it is computable by a Turing machine
+  - no system can do computation which cannot be broken down into simple elements
 - **decision procedure** - decides whether something is a theorem - must terminate
 - we can think of theorems as strings in a formal system
 - **interpretation** - correspondence between symbols and words
@@ -49,3 +70,19 @@
   - **completeness** - when all statements which are true (in some imageinable world), and which can be expressed as well-formed strings of the system, are theorems
 - slightly different axioms lead to elliptical/hyperbolic geometry instead of Euclidean geometry
 - godel numbering - can replace all symbols w/ numbers and all typographic rules w/ arithmetic rules
+- 2 key idesas
+  - strings can speak about other strings
+  - self-scrutiny can be entire concentrated into a single string
+- every aspect of thinking can be viewed as a high-level description of a system which, on a low level, is governed by simple, even formal rules
+
+# causality
+
+- what counterfactuals are the most realistic
+  - different things are stable at different levels
+
+# biology
+
+- dna -> rna -> proteins = sequence of amino acids
+  - folds w/ valrious levels of structure (like music)
+- self-rep - what counts?
+  - quine? instructions on jukebox? human reproduction?

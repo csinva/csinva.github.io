@@ -18,7 +18,7 @@ typora-copy-images-to: ./assets
 
 The goal is to obtain a nice latent representation $\mathbf z$ for our inputs $\mathbf x$. To do this, we learn parameters $\phi$ for the encoder $p_\phi( \mathbf z\vert \mathbf x)$ and $\theta$ for the decoder $q_{\mathbf \theta} ( \mathbf x\vert \mathbf z)$. We do this with the standard vae setup, whereby a code $z$ is sampled, using the output of the encoder (intro to VAEs [here](https://towardsdatascience.com/intuitively-understanding-variational-autoencoders-1bfe67eb5daf)).
 
-## disentangled vae loss function
+## disentangled vae losses
 
 
 | reconstruction loss                             | compactness prior loss                           |         total correlation loss             |
@@ -152,8 +152,8 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
     - bias on factors being invariant to certain types of changes
       - ISA (independent subspace analysis) - 2 layer model where first layer is linear, 2nd layer pools first layer (not maxpool, more like avgpool), sparsity at second layer
         - i.e. 1st layer cooperates, 2nd layer competes
-      - SOM - forces topographic map by enforcing nearby filters to be similar
       - VQ - vector quantizer - like ISA but first layer filters now compete and 2nd layer cooperates
+      - SOM - encourages topographic map by enforcing nearby filters to be similar
     - bias in how factors are combined
       - linear combination - PCA/ICA
       - multilinear models - multiplicative interactions between factors (e.g on top of ISA)
@@ -172,7 +172,7 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
   
   - [infoVAE](https://arxiv.org/abs/1706.02262)
   - [dipVAE](https://arxiv.org/abs/1711.00848)
-  - [vq-vae](https://arxiv.org/abs/1711.00937)
+  - [vq-vae](https://arxiv.org/abs/1711.00937) - latent var is discrete, prior is learned
   - [Learning Disentangled Representations with Semi-Supervised Deep Generative Models](http://papers.nips.cc/paper/7174-learning-disentangled-representations-with-semi-supervised-deep-generative-models)
     - specify graph structure for some of the vars and learn the rest
 
@@ -190,9 +190,17 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
       - ![stylegan](assets/stylegan.png)
       - [Stylegan2](https://arxiv.org/abs/1912.04958) (karras et al. 2019): ![stylegan2](assets/stylegan2.png)
         - $\psi$ scales the deviation of *w* from the average - $\psi=1$ is original, moving towards 0 improves quality but reduces variety
+        - also has jacobian penalty on mapping from style space $w$ to output image $y$
 - [DNA-GAN: Learning Disentangled Representations from Multi-Attribute Images](https://arxiv.org/abs/1711.05415)
 - [Clustering by Directly Disentangling Latent Space](https://arxiv.org/abs/1911.05210) - clustering in the latent space of a gan
 - [Semi-Supervised StyleGAN for Disentanglement Learning](https://arxiv.org/abs/2003.03461) - further improvements on StyleGAN using labels in the training data
+- [The Hessian Penalty: A Weak Prior for Unsupervised Disentanglement](https://arxiv.org/abs/2008.10599) (peebles et al. 2020)
+    - if we perturb a single component of a network’s input, then we would like the change in the output to be independent of the other input components
+    - minimize off-diagonal entries of Hessian matrix (can be obtained with finite differences)
+        - smoother + more disentangled + shrinkage in latent space
+    - Hessian penalty is for a scalar - they define penalty as max penalty over Hessian over all pixels in the generator
+    - unbiased stochastic estimator for the Hessian penalty (Hutchinson estimator)
+    - they apply this penalty with $z$ as input, but different intermediate activations as output
 
 ## post-hoc (disentangle after training)
 
@@ -264,7 +272,6 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
     - rank pairing - label whether a feature is greater than another (e.g. this image has darker skin tone than this one)
 - [Weakly Supervised Disentanglement by Pairwise Similarities](https://arxiv.org/abs/1906.01044) - use pairwise supervision
 
-
 # evaluating distentanglement
 
 - *note* - vae's come with reconstruction loss + compactness prior loss which can be looked at on their own
@@ -284,7 +291,7 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
     - SAP: Kumar et al. (2017) - how much does top latent factor match gt more than 2nd latent factor
     - MIG: Chen et al. 2018 - mutual info to compute the same thing
 
-# other
+# non-deep methods
 
 - [unifying vae and nonlinear ica](https://arxiv.org/pdf/1907.04809.pdf) (khemakhem et al. 2020)
 	- ICA

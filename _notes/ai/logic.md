@@ -236,8 +236,8 @@ Some notes on logic based on Berkeley's CS 188 course and  "Artificial Intellige
     - **conclusion** = consequent* = *head*
   - rule $r$ has length *L*
   - $P, N$ - total positives / negatives in the data
-  - $TP, FN$ - positives / negatives covered (predicted) by a rule
-  - $FN, FP$ - positives / negatives not covered by a rule
+  - $TP =\hat P, FP =\hat N$ - positives / negatives covered (predicted) by a rule
+  - $FN, TN$ - positives / negatives not covered by a rule
   - $\frac{TP}{P}$ = true positive rate = sensitivity
   - $\frac{TN}{N}$ = true negative rate = specificity
   - rules evaluated with a heuristic $H(\hat P, \hat N)$
@@ -275,7 +275,7 @@ Some notes on logic based on Berkeley's CS 188 course and  "Artificial Intellige
 - algorithms
   - sequential covering (remove covered points after each rule)
 
-## (binary split) features
+## (binary split) features (ch 4)
 
 - here, feature means something binary that we split on
 - selector is smth of the form $A_i \sim v_{i, j}$ where relation $\sim$ is like $=, >=, <=$
@@ -283,3 +283,48 @@ Some notes on logic based on Berkeley's CS 188 course and  "Artificial Intellige
   - can also be simple combinations of binary variables
 - relational features - function between features (e.g. length > height)
   - can have splits that are functions of previous splits (like a residual DNN connection)
+- many algorithms start by making a covering table = table of binary values for all possible (reasonable) splits for all features
+  - split on all categorical features
+  - split between all values of continuous features (or ordered discrete)
+  - can compute relational features (e.g. $A_1 - A_2$) by just adding these as features
+- feature relevancy
+  - $pn-pair$: pair of training examples where one is positive and one is negative
+  - totally irrelevant features - don't distinguish between any positive/negative examples
+  - a feature $f_1$ is **more relevant** than another $f_2$ if it separates all the $pn$-pairs that $f_2$ does and more
+  - can also manually set thresholds on TP, FP to decide irrelevance
+- missing values
+  - different types
+    - missing - was not measured but should have been
+    - not applicable - e.g. pregnant for a male
+    - don't care - could be anything
+  - basic strategies
+    - delete incomplement examples
+    - treat missing as special value
+    - impute w/ mean/median/linear prediction
+    - fill in prob distr. over missing val
+    - pessimistic value strategy - imputed values shouldn't differentiate between classes - set value so it doesn't get used (e.g. false for positive class and true for neg class)
+- imprecise values - continuous values with noise
+  - might want to test variables with $\pm \delta$ handled with pessimistic value strategy
+  - **fuzzy rules** - probabilistically split
+
+## relational features (ch 5)
+
+- these kinds of task use relational background knowledge + databases
+  - ex. from knowledge about things like *female(X)*, *parent(X, Y)*, learn that *daughter(X, Y):= female(X) , parent(Y, X)*
+  - allow $\forall, \exists$
+
+## learning single rules (ch 6)
+
+- search problem to maximize some criteria subject to some constraints
+  - top-down - start with large cover then go to small
+  - bottom-up - start with high-sensitivity, low cover rules then go larger
+- ![find_best_rule](assets/logic/find_best_rule.png)
+- search algos
+  - exhaustive search
+  - hill-climbing = local-search - can make less myopic by considering multiple refinements at a time
+  - beam-search - keep k best candidates
+  - best-first search - beam search but keep all candidates
+  - ordered search - prune the search space based on knowledge (e.g. order splitting values)
+  - level-wise search (e.g. apriori) - generate in parallel all rules with a certain minimum quality
+  - stochastic search - involves randomness
+- search directions: combine top-down (specialization) with bottom-up (generalization)

@@ -5,10 +5,9 @@ category: ai
 typora-copy-images-to: ./assets/nlp
 ---
 
+*Some notes on algorithm fairness and STS.**
+
 {:toc}
-
-Some notes on algorithm fairness and STS.
-
 
 # fairness metrics
 
@@ -92,6 +91,53 @@ Some notes on algorithm fairness and STS.
 - [Large image datasets: A pyrrhic win for computer vision?](https://openreview.net/pdf?id=s-e2zaAlG3I) - bias in imagenet / tiny images
 - http://positivelysemidefinite.com/2020/06/160k-students.html
 
+# concrete harms
+
+Technologies, especially world-shaping technologies like CNNs, are never objective. Their existence and adoption change the world in terms of 
+
+- consolidation of power (e.g. facial-rec used to target Uighurs, increased rationale for amassing user data)
+- a shift toward the quantitative (which can lead to the the type of click-bait extremization we see online)
+- automation (low-level layoffs, which also help consolidate power to tech giants)
+- energy usage (the exorbitant footprint of models like GPT-3)
+- access to media (deepfakes, etc.)
+- a lot more
+
+
+
+## pandemic
+
+I hope the pandemic, which has boosted the desire for tracking, does not result in a long-term arc towards more serveillance
+
+
+
+- from [here](https://www.theatlantic.com/magazine/archive/2020/09/china-ai-surveillance/614197/): City Brain would be especially useful in a pandemic. (One of Alibaba’s sister companies created the app that color-coded citizens’ disease risk, while silently sending their health and travel data to police.) As Beijing’s outbreak spread, some malls and restaurants in the city began scanning potential customers’ phones, pulling data from mobile carriers to see whether they’d recently traveled. Mobile carriers also sent municipal governments lists of people who had come to their city from Wuhan, where the coronavirus was first detected. And Chinese AI companies began making networked facial-recognition helmets for police, with built-in infrared fever detectors, capable of sending data to the government. City Brain could automate these processes, or integrate its data streams.
+- "The pandemic may even make people value privacy less, as one early poll in the U.S. suggests"
+
+
+
+# ethics
+
+- [Moral Trade](https://www.fhi.ox.ac.uk/wp-content/uploads/moral-trade-1.pdf) (ord 2015) - **moral trade** = trade that is made possible by differences in the parties' moral views
+- examples
+  - one trading their eating meat for another donating more to a certain charity they both believe in
+  - donating to/against political parties
+  - donating to/against gun lobby
+  - donating to/for pro-life lobby
+  - paying non-profit employees
+- benefits
+  - can yield Pareto improvements = strict improvements where something gets better while other things remain atleast constant
+- real-world examples
+  - vote swapping (i.e. in congress)
+  - vote swapping across states/regions (e.g. Nader Trader, VotePair) - ruled legal when money not involved
+  - election campaign donation swapping - repledge.com (led by eric zolt) - was taken down due to issues w/ election financing
+- issues
+  - factual trust - how to ensure both sides carry through? (maybe financial penalties or audits could solve this)
+  - counterfactual trust - would one party have given this up even if the other party hadn't?
+- minor things
+  - fits most naturally with moral framework of consequentalism
+  - includes indexicals (e.g. prioritizing one's own family)
+  - could have uneven pledges
+
 # sts
 
 - **social determinism** - theory that social interactions and constructs alone determine individual behavior
@@ -147,9 +193,6 @@ Some notes on algorithm fairness and STS.
     - did not analyze cause and effect
       - don't consider skin tone
 - [Saving Face: Investigating the Ethical Concerns of Facial Recognition Auditing](https://dl.acm.org/doi/pdf/10.1145/3375627.3375820) (2020)
-  - 
-
-
 
 # legal perspectives
 

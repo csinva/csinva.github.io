@@ -32,7 +32,7 @@ the [_notes](_notes) folder contains markdown notes and [cheat-sheets](_notes/ch
 
 ## code
 
-links to research code, such as these repos for interpretable machine learning (e.g. [hierarchical-dnn-interpretations](https://github.com/csinva/hierarchical_dnn_interpretations), [imodels](https://github.com/csinva/interpretability-implementations-demos), [deep-explanation-penalization](https://github.com/laura-rieger/deep-explanation-penalization), [disentangled-attribution-curves](https://github.com/csinva/disentangled_attribution_curves)) and miscellaneous repos for machine learning (e.g. [imodels package](https://github.com/csinva/imodels), [pytorch-pretrained-gans](https://github.com/csinva/pytorch_gan_pretrained), [
+links to research code, such as these repos for interpretable machine learning (e.g. [imodels package](https://github.com/csinva/interpretability-implementations-demos), [hierarchical-dnn-interpretations](https://github.com/csinva/hierarchical_dnn_interpretations), [deep-explanation-penalization](https://github.com/laura-rieger/deep-explanation-penalization), [disentangled-attribution-curves](https://github.com/csinva/disentangled_attribution_curves)) and miscellaneous repos for machine learning (e.g. [pytorch-pretrained-gans](https://github.com/csinva/pytorch_gan_pretrained), [
 gpt2-paper-title-generator](https://github.com/csinva/gpt2-paper-title-generator))
 
 ![](assets/img/acd_intro.png)
