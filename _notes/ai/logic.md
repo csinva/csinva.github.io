@@ -11,6 +11,8 @@ Some notes on logic based on Berkeley's CS 188 course and  "Artificial Intellige
 # logical agents - 7.1-7.7 (omitting 7.5.2)
 
 - *knowledge-based agents* - intelligence is based on *reasoning* that operates on internal *representations of knowledge*
+- **deductive** - general-to-specific
+- **inductive** - specific-to-general
 - 3 steps: given a percept, the agent 
   1. adds the percept to its knowledge base (KB)
   2. asks the knowledge base for the best action

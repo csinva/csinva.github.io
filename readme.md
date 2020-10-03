@@ -1,4 +1,4 @@
-<h1 align="center">source for https://csinva.github.io</h1>
+<h1 align="center">source for <a href="https://csinva.github.io">csinva.io</a></h1>
 
 
 <p align="center">
@@ -16,26 +16,28 @@
 
 ## slides
 
-the [pres](pres) folder contains source for presentations, including [ml slides](https://csinva.github.io/pres/189/#/) from teaching intro machine learning at berkeley - the source is in markdown (built with reveal-md) and is easily editable / exportable
+[pres](pres) folder contains source for presentations, including [ml slides](https://csinva.github.io/pres/189/#/) from teaching machine learning at berkeley - the source is in markdown ([built with reveal-md](https://csinva.io/blog/misc/reveal_md_enhanced/readme)) and is easily editable / exportable
 
 ![](assets/img/pres_demo.gif)
 
 ## research overviews
 
-overviews and summaries of recent papers in different research areas in the [research_ovws](_notes/research_ovws) folder (e.g. [interpretable ml](https://github.com/csinva/csinva.github.io/blob/master/_notes/research_ovws/ovw_interp.md),  [theoretical ml](https://github.com/csinva/csinva.github.io/blob/master/_notes/research_ovws/ovw_dl_theory.md),  [complexity in ml](https://github.com/csinva/csinva.github.io/blob/master/_notes/research_ovws/ovw_complexity.md), [scattering transform](https://github.com/csinva/csinva.github.io/blob/master/_notes/research_ovws/ovw_scat.md), [dl in neuroscience](https://github.com/csinva/csinva.github.io/blob/master/_notes/research_ovws/ovw_dl_for_neuro.md))
+overviews and summaries of recent papers in different research areas in the [research_ovws](_notes/research_ovws) folder (e.g. ml [interpretability](https://github.com/csinva/csinva.github.io/blob/master/_notes/research_ovws/ovw_interp.md),  [theory](https://github.com/csinva/csinva.github.io/blob/master/_notes/research_ovws/ovw_dl_theory.md),  [complexity](https://github.com/csinva/csinva.github.io/blob/master/_notes/research_ovws/ovw_complexity.md), [scattering transform](https://github.com/csinva/csinva.github.io/blob/master/_notes/research_ovws/ovw_scat.md), [dl in neuroscience](https://github.com/csinva/csinva.github.io/blob/master/_notes/research_ovws/ovw_dl_for_neuro.md))
 
 ## notes
 
 the [_notes](_notes) folder contains markdown notes and [cheat-sheets](_notes/cheat_sheets) for many different courses and areas between computer science, statistics, and neuroscience
 
-![interp](_notes/cheat_sheets/interp.png)
+![interp](https://csinva.io/notes/cheat_sheets/interp.svg?sanitize=True)
 
 ## code
 
-links to research code, such as these repos for interpretable machine learning (e.g. [imodels package](https://github.com/csinva/interpretability-implementations-demos), [hierarchical-dnn-interpretations](https://github.com/csinva/hierarchical_dnn_interpretations), [deep-explanation-penalization](https://github.com/laura-rieger/deep-explanation-penalization), [disentangled-attribution-curves](https://github.com/csinva/disentangled_attribution_curves)) and miscellaneous repos for machine learning (e.g. [pytorch-pretrained-gans](https://github.com/csinva/pytorch_gan_pretrained), [
-gpt2-paper-title-generator](https://github.com/csinva/gpt2-paper-title-generator))
+links to research code, such as these repos:
+| interpretable machine learning                               | interpretable deep learning                                  | deep learning fun                                            |
+| :----------------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [imodels package](https://github.com/csinva/interpretability-implementations-demos), [disentangled-attribution-curves](https://github.com/csinva/disentangled_attribution_curves) | [ACD](https://github.com/csinva/hierarchical-dnn-interpretations): hierarchical interpretations, [TRIM](https://github.com/csinva/transformation-importance): interpreting transformations, [CDEP](https://github.com/laura-rieger/deep-explanation-penalization): penalizing explanations | [pretrained gans/vaes](https://github.com/csinva/pytorch_gan_pretrained), [gpt2 paper-title generator](https://github.com/csinva/gpt2-paper-title-generator) |
 
-![](assets/img/acd_intro.png)
+![acd_intro](https://csinva.io/hierarchical-dnn-interpretations/reproduce_figs/figs/intro.svg?sanitize=True)
 
 ## posts
 

@@ -43,11 +43,11 @@ category: ai
 - barometer, air pressure, storm
 - collision of pool balls
 - supply/demand curves in economics
-- gas las $PV=nRT$
+- gas law $PV=nRT$
 
 ## DN model = Deductive-Nomological Model
 
-- by Popper, Hempel, Oppenheim
+- by Popper, Hempel, Oppenheim (popper 1935, hempel 1942)
 - explanation has 2 constituents
   - **explanandum** - sentence describing phemonenon to be explained
   - **explanans** - class of sentences used to account for the phenomenon
@@ -70,6 +70,7 @@ category: ai
 
 ## statistical relevance - wesley salmon
 
+- starts with (salmon, 1971)
 - given some class or population *A*, an attribute *C* will be **statistically relevant** to another attribute *B* iff $P(B∣A,C) \neq P(B∣A)$
   - find a set of attributes which divide the target into a homogenous partition = even if we split the cells further, they keep the same probability
     - like in causal inference, assume no missing variables
@@ -79,6 +80,7 @@ category: ai
 
 ## causal mechanical models
 
+- starts with (salmon, 1984)
 - elements
   - **causal process** - leaves marks on the world which persist spatiotemporally (these marks hint at counterfactuals)
     - contrasts with a pseudoprocess, like a shadow
@@ -93,6 +95,7 @@ category: ai
 
 ## unificationist models
 
+- important attempts include friedman (1974) and kitcher (1989)
 - seeks a unified account of a range of different phenomena
 - best explanations explains most phenomena with as few + as stringent arguments possible
 - potential issues
@@ -101,6 +104,7 @@ category: ai
 
 ## pragmatic = contextual explanation models
 
+- scriven (1962), bromberger (1966), van Fraassen (1980), achinstein (1983)
 - takes audience into account
 - others have been after characterizing a single "true" explanation and the role of the audience was minimized
 - "pragmatic" here means not just useful but also explicitly considering psychology + context

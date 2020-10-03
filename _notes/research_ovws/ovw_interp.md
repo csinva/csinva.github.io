@@ -96,7 +96,7 @@ For an implementation of many of these models, see the python [imodels package](
 
 ## decision rules
 
-For more on rules, see **[logic notes]()**.
+For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
 
 - 2 basic concepts for a rule
   - converage = support
@@ -282,8 +282,7 @@ Trees suffer from the fact that they have to cover the entire decision space and
       - local accuracy - basically, explanation scores sum to original prediction
       - missingness - features with $x'_i=0$ have 0 impact
       - consistency - if a model changes so that some simplified input’s contribution increases or stays the same regardless of the other inputs, that input’s attribution should not decrease.
-  - interpretation: Given the current set of feature values, the contribution of a feature value to the
-    difference between the actual prediction and the mean prediction is the estimated Shapley value.
+  - interpretation: Given the current set of feature values, the contribution of a feature value to the difference between the actual prediction and the mean prediction is the estimated Shapley value
   - recalculate via sampling other features in expectation
   - followup [propagating shapley values](https://arxiv.org/pdf/1911.11888.pdf) (chen, lundberg, & lee 2019) - can work with stacks of different models
 - [Explaining individual predictions when features are dependent: More accurate approximations to Shapley values](https://arxiv.org/abs/1903.10464) (aas et al. 2019) - tries to more accurately compute conditional expectation
@@ -659,19 +658,53 @@ How interactions are defined and summarized is a very difficult thing to specify
 - interpretable intermediate representations (e.g. bounding boxes for autonomous driving)
 - policy extraction - distill a simple model from a bigger model (e.g. neural net -> tree)
 
-## interp for causal discovery
+## interpretation over sets / perturbations
 
-- [All Models are Wrong, but Many are Useful: Learning a Variable’s Importance by Studying an Entire Class of Prediction Models Simultaneously](https://www.jmlr.org/papers/volume20/18-760/18-760.pdf) (fisher, rudin, & dominici, 2019)
+These papers don't quite connect to prediction, but are generally about finding stable interpretations across a set of models / choices.
+
+- [All Models are Wrong, but Many are Useful: Learning a Variable’s Importance by Studying an Entire Class of Prediction Models Simultaneously](https://www.jmlr.org/papers/volume20/18-760/18-760.pdf) (fisher, rudin, & dominici, 2019) - also had title *Model class reliance: Variable importance measures for any machine learning model class, from the “Rashomon” perspective*
   - **model reliance** = MR - like permutation importance, measures how much a model relies on covariates of interest for its accuracy
-    - can be connected to U-statistics, conditional causal effects, and additive model coefficients
+    - defined (for a feature) as the ratio of expected loss after permuting (with all possible permutation pairs) to before permuting
+      - could also be defined as a difference or using predictions rather than loss
+    - connects to U-statistics - can shows unbiased etc.
+    - related to *Algorithm Reliance (AR)* - fitting with/without a feature and measuring the difference in loss (see [gevrey et al. 03](https://www.sciencedirect.com/science/article/abs/pii/S0304380002002570))
   - **model-class reliance** = MCR = highest/lowest degree of MR within a class of well-performing models
+    - with some assumptions on model class complexity (in the form of a *covering number*), can create uniform bounds on estimation error
+    - MCR can be efficiently computed for (regularized) linear / kernel linear models
   - **Rashomon set** = class of well-performing models
-    - "Rashomon" effect of statistics - many prediction models may fit the data almost equally well
-    - can study these tools for describing ranke of risk predictions, variance of predictions, e.g. confidence intervals
+    - "Rashomon" effect of statistics - many prediction models may fit the data almost equally well (breiman 01)
+    - "This set can be thought of as representing models that might be arrived at due to differences in data measurement, processing, filtering, model parameterization, covariate selection, or other analysis choices"
+    - can study these tools for describing rank of risk predictions, variance of predictions, e.g. confidence intervals
     - ![Screen Shot 2020-09-27 at 8.20.35 AM](assets/Screen Shot 2020-09-27 at 8.20.35 AM.png)
-  - MR can be efficiently estimated and MCR can be studed w/ limit on complexity of model class
-  - MCR can be efficiently computed for (regularized) linear / kernel linear models
+  - **confidence intervals** - can get finite-sample interval for anything, not just loss (e.g. norm of coefficients, prediction for a specific point)
+  - connections to causality
+    - when function is conditional expectation, then MR is similar to many things studies in causal literature
+    - conditional importance measures a different notion (takes away things attributed to spurious variables)
+      - can be hard to do conditional permutation well when some feature pairs are rare so can use weighting, matching, or imputation
   - here, application is to see on COMPAS dataset whether one can build an accurate model which doesn't rely on race / sex (in order to audit black-box COMPAS models)
+- [A study in Rashomon curves and volumes: A new perspective on generalization and model simplicity in machine learning](https://arxiv.org/pdf/1908.01755.pdf) (semenova, rudin, & parr, 2020)
+  - **rashomon ratio** - ratio of the volume of the set of accurate models to the volume of the hypothesis space
+    - can use this to perform model selection over different hypothesis spaces using empirical risk v. rashomon ratio (*rashomon curve*)
+- [A Theory of Statistical Inference for Ensuring the Robustness of Scientific Results](https://arxiv.org/abs/1804.08646) (coker, rudin, & king, 2018)
+  - Inference = process of using facts we know to learn about facts we do not know
+  - **hacking intervals** - the range of a summary statistic one may obtain given a class of possible endogenous manipulations of the data
+    - **prescriptively constrained** hacking intervals - explicitly define reasonable analysis perturbations
+      - ex. hyperparameters (e.g. k in kNN), matching algorithm, adding a new feature
+    - **tethered hacking intervals** - take any model with small enough loss on the data
+      - rather than choosing $\alpha$, we choose error tolerance
+      - for MLE, equivalent to profile likelihood confidence intervals
+      - ex. SVM distance from point to boundary, Kernel regression prediction for a specific new point, feature selection
+      - ex. linear regression ATE, individual treatment effect
+    - PCS intervals could be seen as slightly broder, including data cleaning and problem translations
+  - different theories of inference have different counterfactual worlds
+    - p-values - data from a superpopulation
+    - Fisher’s exact p-values - fix the data and randomize counterfactual treatment assignments
+    - Causal sensitivity analysis - unmeasured confounders from a defined set
+    - bayesian credible intervals - redrawing the data from the same data generating process, given the observed data and assumed prior and likelihood model
+    - hacking intervals - counterfactual researchers making counterfactual analysis choices
+  - 2 approaches to replication
+    - replicating studies - generally replication is very low
+    - *p*-curve approach: look at distr. of p-values, check if lots of things are near 0.05
 
 # misc new papers
 
