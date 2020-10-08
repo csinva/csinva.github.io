@@ -207,6 +207,10 @@ Trees suffer from the fact that they have to cover the entire decision space and
   - correct class prototypes go to correct classes
   - loss: classification + reconstruction + distance to a training point
 
+## bayesian models
+
+- e.g. naive bayes
+
 ## interpretable neural nets
 
 - [Symbolic Semantic Segmentation and Interpretation of COVID-19 Lung Infections in Chest CT volumes based on Emergent Languages](https://arxiv.org/pdf/2008.09866v1.pdf) (chowdhury et al. 2020) - combine some segmentation with the classifier
@@ -226,6 +230,12 @@ Trees suffer from the fact that they have to cover the entire decision space and
     - uses a novel class-supervised disentanglement algorithm
   - entities represented by the class capsule overlap
     - adds additional regularizer
+- [WILDCAT: Weakly Supervised Learning of Deep ConvNets for Image Classification, Pointwise Localization and Segmentation](https://openaccess.thecvf.com/content_cvpr_2017/html/Durand_WILDCAT_Weakly_Supervised_CVPR_2017_paper.html) (durand et al. 2017) - constrains architecture
+  - after extracting conv features, replace linear layers with special pooling layers, which helps with spatial localization
+    - each class gets a pooling map
+    - prediction for a class is based on top-k spatial regions for a class
+    - finally, can combine the predictions for each class
+
 
 ## misc models
 

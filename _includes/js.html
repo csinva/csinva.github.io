@@ -13,14 +13,15 @@
 <script src="{{ site.baseurl }}/assets/js/jquery.dataTables.min.js"></script>
 
 <script>
-$(document).ready(function() {
-    $('#example').DataTable({
-        "order": [[ 0, "desc" ]],
-        "aLengthMenu": [[8, 11, -1], [8, 11, "All"]],
-        "pageLength": "11"
-    } );
-} );
+    $(document).ready(function () {
+        $('#research_table').DataTable({
+            "order": [[0, "desc"]],
+            "aLengthMenu": [[15, 11, -1], [15, 11, "All"]],
+            "pageLength": "15"
+        });
+    });
 </script>
+
 
 <script src="{{ site.baseurl }}/assets/js/scrollreveal.min.js"></script>
 <script src="{{ site.baseurl }}/assets/js/toc.js"></script>
@@ -28,7 +29,6 @@ $(document).ready(function() {
     window.sr = ScrollReveal();
     sr.reveal('.timeline-panel');
     sr.reveal('.timeline-image');
-
 </script>
 
 

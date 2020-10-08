@@ -256,18 +256,22 @@ C(Location of Car) --> B
 # heterogenous treatment effects
 
 - [staDISC](https://arxiv.org/pdf/2008.10109.pdf) (dwivedi, tan et al. 2020) - learn stable / interpretable subgroups for causal inference
-  - **conditional average treatment effect (CATE)** - get treatement effect for each individual conditioned on its covariates
+  - **conditional average treatment effect (CATE)** - get treatment effect for each individual conditioned on its covariates
     - meta-learners - break down CATE into regression subproblems
-      - e.g. T-learner (simplest) - fit one model for conditional expectation of each potential outcome and then subtract
+      - e.g. T-learner (foster et al. 2011, simplest) - fit one model for conditional expectation of each potential outcome and then subtract
       - e.g. X-learner (kunzel et al. 19)
       - e.g. R-learner (nie-wager, 20)
+      - e.g. S-learner (hill 11)
     - tree-based methods
-      - causal tree (athey-imbens, 16) - like decision tree, but change splitting criterion
-      - causal forest' (wager-athery, 18)
+      - causal tree (athey-imbens, 16) - like decision tree, but change splitting criterion for differentiating 2 outcomes
+      - causal forest (wager-athery, 18)
       - BART (hill, 12)
     - **calibration** to evaluate subgroup CATEs
       - main difficulty: hard to do model selection / validation (especially with imbalanced data)
         - often use some kind of proxy loss function
+      - solution: compare average CATE within a bin to CATE on test data in bin
+        - actual CATE doesn't seem to generalize
+        - but ordering of groups seems pretty preserved
       - stability: check stability of this with many CATE estimators
   - **subgroup analysis** - identify subgroups with treatment effects far from the average
     - use CATE as a stepping stone to finding subgroups

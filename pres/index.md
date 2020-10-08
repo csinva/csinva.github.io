@@ -28,6 +28,7 @@ Links to many of my presentations
         - [cogsci acd slides](https://docs.google.com/presentation/d/1I6djTqVn6YGKqxvQk59-4C39LbE68mNQbX1Go5pzTH4/present?slide=id.p)
         - [acd white-theme slides for bin](https://docs.google.com/presentation/d/1GjL0IJWft3IpdWxAwprXNiZkAG4Jl5mU6FNT2t0DGkQ/edit#slide=id.g5d6ee59cb4_0_0)
         - [acd bavrd](https://docs.google.com/presentation/d/1IVeb5ibe561VR5PAQEN5hdnwmpAHquK4JLb1vzT9fd8/present) (3 min pres. given at bavrd 2019)
+    - [cdep-focused slides 40 min](https://docs.google.com/presentation/d/1F9spZOwKbxtXqpCiKv2V332v4Vs-UV6mQ_7Xs_cnrLg/edit#slide=id.p)    
     - [transform interp](https://docs.google.com/presentation/d/1mH1uG38qJg-ar0G-LiVPZWNKPO_2GiD-uayWM5AI-bo/present?slide=id.p)
     - [presentation at dudoit group meeting](https://docs.google.com/presentation/d/1xA4aaBXKV4cO5_iXZZcUnheFpcMsT1U5fJZdaE7FwME/edit#slide=id.p)
     - [simons 20 min talk](https://docs.google.com/presentation/d/1OW4LxoKd6qxPaTP6XXH_gTLfrDV9DVfO7Wa00oznJv4/edit#slide=id.p) ([announcement](https://simons.berkeley.edu/events/disentangled-interpretations-and-how-we-can-use-them))

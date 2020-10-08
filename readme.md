@@ -11,7 +11,7 @@
   <a href="#code">research links</a>  •
   <a href="https://scholar.google.com/citations?hl=en&user=XpttKK8AAAAJ&view_op=list_works&sortby=pubdate">personal info</a>
   <br>
-  <a href="https://twitter.com/chandan_singh96">@chandan_singh96</a>
+  <a href="https://twitter.com/csinva_">@csinva_</a>
 </p>
 
 ## slides
@@ -35,7 +35,7 @@ the [_notes](_notes) folder contains markdown notes and [cheat-sheets](_notes/ch
 links to research code, such as these repos:
 | interpretable machine learning                               | interpretable deep learning                                  | deep learning fun                                            |
 | :----------------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [imodels package](https://github.com/csinva/interpretability-implementations-demos), [disentangled-attribution-curves](https://github.com/csinva/disentangled_attribution_curves) | [ACD](https://github.com/csinva/hierarchical-dnn-interpretations): hierarchical interpretations, [TRIM](https://github.com/csinva/transformation-importance): interpreting transformations, [CDEP](https://github.com/laura-rieger/deep-explanation-penalization): penalizing explanations | [pretrained gans/vaes](https://github.com/csinva/pytorch_gan_pretrained), [gpt2 paper-title generator](https://github.com/csinva/gpt2-paper-title-generator) |
+| [imodels](https://github.com/csinva/interpretability-implementations-demos): transparent model fitting, [DAC](https://github.com/csinva/disentangled_attribution_curves): disentangled attribution curves | [ACD](https://github.com/csinva/hierarchical-dnn-interpretations): hierarchical interpretations, [TRIM](https://github.com/csinva/transformation-importance): interpreting transformations, [CDEP](https://github.com/laura-rieger/deep-explanation-penalization): penalizing explanations | [GAN/VAE](https://github.com/csinva/pytorch_gan_pretrained): demo models, [paper-title generator](https://github.com/csinva/gpt2-paper-title-generator) with gpt2 |
 
 ![acd_intro](https://csinva.io/hierarchical-dnn-interpretations/reproduce_figs/figs/intro.svg?sanitize=True)
 
@@ -51,7 +51,7 @@ posts on various aspects of machine learning / statistics / neuroscience advance
 
 # reference
 
-- for updates, star the repo or follow [@chandan_singh96](https://twitter.com/chandan_singh96)
+- for updates, star the repo or follow [@csinva_](https://twitter.com/csinva_)
 - feel free to use openly!
 - built with jekyll + github pages
 - uses [timeline theme](http://kirbyt.github.io/timeline-jekyll-theme) and [particles.js](https://vincentgarreau.com/particles.js/)

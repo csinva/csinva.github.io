@@ -12,7 +12,7 @@ revealOptions:
 <h1> machine learning </h1>
 *press esc to navigate slides*
 
-**<a href="https://twitter.com/chandan_singh96">@chandan_singh96</a>**
+**<a href="https://twitter.com/csinva_">@csinva_</a>**
 
 [![](assets_files/GitHub-Mark-64px.png)](https://github.com/csinva/csinva.github.io/blob/master/_slides/ml_slides/slides.md)
 
