@@ -49,12 +49,20 @@ some more concrete questions:
 - [takagi functions](https://arxiv.org/abs/1112.4205)
 - [nonlinear approximation and (deep) relu nets](https://www.math.tamu.edu/~rdevore/publications/170.pdf) - also comes with slides
 
-## inductive bias: gradient descent finds good minima
+## inductive bias=implicit regularization: gradient descent finds good minima
 
 *DL learns solutions that generalize even though it can find many which don't due to its inductive bias.*
 
 - [gd bousquet paper](https://arxiv.org/pdf/1803.08367.pdf) 
 - [in high dims, local minima are usually saddles (ganguli)](http://papers.nips.cc/paper/5486-identifying-and-attacking-the-saddle-point-problem-in-high-dimensional-non-convex-optimization)
+- early stopping is very similar to ridge regression
+- ridge regression: soln will lie in $p-dim$ row-space of X (span of the rows)
+  - when $\lambda \to 0$, will give us min-norm soln (basically because we project onto $col(X)$)
+  - early stopping in least squares
+    - if we initialize at 0, GD soln will always be in the row-space of X
+    - GD will converge to min-norm soln (any soln not in the row-space will necessarily have larger norm)
+    - similar to ridge (endpoints are the same) and can related their risks very closely when $\lambda = 1/t$, where $t$ is GD time iterate
+      - assume gradient flow: take step-size to 0
 - [srebro understanding over-parameterization	](https://arxiv.org/abs/1805.12076) 
   - ex. gunasekar et al 2017: unconstrained matrix completion
     - grad descent on U, V yields min nuclear norm solution
@@ -74,6 +82,8 @@ some more concrete questions:
   - [similar paper for layer nets](https://arxiv.org/pdf/1904.13262.pdf)
 - datasets for measuring causality
   - Inferring Hidden Statuses and Actions in Video by Causal Reasoning - about finding causality in the video, not interpretation
+
+
 
 ## semantic biases: what correlations will a net learn?
 

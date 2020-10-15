@@ -4,7 +4,7 @@ title: psychology
 category: ai
 ---
 
-Some notes on papers / books surrounding psychology, especially evolutionary psychology and the psychology of explanation.
+Some notes on papers / books surrounding psychology, especially evolutionary psychology and the psychology of explanation. These are notes on the authors' points and not an endorsement of their views.
 
 {:toc}
 
@@ -163,11 +163,11 @@ Some notes on papers / books surrounding psychology, especially evolutionary psy
 
 # the moral animal
 
-**Why We Are, the Way We Are: The New Science of Evolutionary Psychology** - Robert Wright, 1965
+**Why We Are, the Way We Are: The New Science of Evolutionary Psychology** - Robert Wright, 1965. Notes in this section are not an endorsement of the author's views.
 
-## i. sex, romance, and love
+## sex, romance, and love
 
-### 1. darwin comes of age
+### darwin comes of age
 - *Emile Durkheim* - father of modern sociology
 - *Wilson* - initial book sociobiology was vehemently opposed
 	- reactive against connotations of *social darwinism*
@@ -176,7 +176,7 @@ Some notes on papers / books surrounding psychology, especially evolutionary psy
 	1. existence of guilt
 	2. developmental program to calibrate guilt
 
-### 2. male and female
+### male and female
 - have to consider environment of evolutionary adaptation (EEA)
 - many studies on !Kung San of the Kalahari desert in Africa
 - throughout nature, females are more coy while males are more promiscuous
@@ -189,36 +189,41 @@ Some notes on papers / books surrounding psychology, especially evolutionary psy
 	- ex. gibbons are monogamous - live in family units separate from others
 		- sing duets
 
-### 3. men and women
+### gender differences in evolution
+
 - ideas that humans are a *pair-bonding species*
 	- humans require high male parental investment (MPI)
 	- vulnerable offspring
 	- more education from two parents
-- for men, worst thing is raising a child that isn't theres
-	- men are most angry at sexual infidelity
-	- sometimes killed children that weren't theirs
-	- quantity of sperm depends heavily on the amount of time a man's mate has been out of his sight lately
-- for women, worst thing is being abandoned
+- genetically speaking, for males, worst thing is raising a child that isn't theres
+	- experiments suggest they are most angry at sexual infidelity
+	- historically, sometimes killed children that weren't theirs
+	- quantity of sperm depends heavily on the amount of time a male's mate has been out of his sight lately
+- genetically speaking, for females, worst thing is being abandoned
 	
-	- women are most angry at emotional infidelity
-- why can women still be unfaithful
-	1. women were able to extract gifts for sex - "resource extraction"
-	2. they don't advertise their ovulation - "seeds of confusion"
-- *madonna-whore dichotomy* - group women into 2 categories: to marry or to have sex with and abandon
-	- perhaps example of *frequency-dependent selection*
-	- ex. blugill sunfish 
-		1. normal males make nests and guard eggs
-		2. drifter males sneak around and fertilize others' eggs
-		- nature strikes a balance between both
-	- in actuality, should be able to guage situation and switch between different behaviors
-	- *self-esteem* might be biological marker that helps with this
-- men are more likely to gain from leaving a marriage
+	- experiments suggest females are relatively more angry at emotional infidelity
+	- however, can still be genetically useful for a female to be unfaithful
+		1. can extract gifts for sex - "resource extraction"
+		2. they don't advertise their ovulation - "seeds of confusion"
 	
-	- wome only have ~25 fertile years
+- *madonna-whore dichotomy* - a psychological phenomenon which groups females into 2 categories: marriage / fling
 
-### 4. the marriage market
-- polygamy, initially, seems to benefit men
-	- one man can get more females
+  - perhaps example of *frequency-dependent selection*
+
+  - ex. blugill sunfish 
+    1. normal males make nests and guard eggs
+    2. drifter males sneak around and fertilize others' eggs
+    - nature strikes a balance between both
+  - in actuality, should be able to guage situation and switch between different behaviors
+  - *self-esteem* might be biological marker that helps with this
+
+- males are more likely to gain from leaving a marriage
+	
+	- females only have ~25 fertile years
+
+### the marriage market
+- polygamy, initially, seems to benefit males
+	- one male can get more females
 - why monogamy
 	1. *ecologically imposed* - if people are struggling to survive, a woman shouldn't share a man with another
 		- they won't have enough resources
@@ -227,13 +232,11 @@ Some notes on papers / books surrounding psychology, especially evolutionary psy
 		- imagine 1000 men and 1000 women -> polygyny actually hurts the men
 		- therefore, monogamy likely evolved to stop the dangers of men without wives
 - current divorce rates are high, hurting all alike
-
-### 5/6. darwin's marriage
 - Charles Darwin focused on wealth, Emma focused on looks, they were married happily
 
-## ii. social cement
+## social cement
 
-### 7. families
+### families
 - altruism makes sense for kin - wasps, ants
 	- part of kin selection theory by Hamilton
 	- some ants are sterile and only defend nests
@@ -254,11 +257,11 @@ Some notes on papers / books surrounding psychology, especially evolutionary psy
 - parents grieve most of children around adolescent age
 	- this maps perfectly the reproductive potential of !Kung people
 
-### 8. darwin and the savages
+### darwin and the savages
 - evolution: kin-selection -> reciprocal altruism (tit for tat) -> higher morals
 - against group selection - even if it helped a group, it would start to decay within the group
 
-### 9. friends
+### friends
 - helping others is not zero-sum
 	- lets you catch big game, spread information
 - late 1970s Axelrod devises competition for prisoner's dillema programs
@@ -271,19 +274,19 @@ Some notes on papers / books surrounding psychology, especially evolutionary psy
 	- people try to maintain appearances of dignity
 - once reciprocal altruism is entrenched, can have "good for the group" type genes
 
-### 10. darwin's conscience
+### darwin's conscience
 - moral guidance is made to be guided by peers / parents
 - lying can be useful
 	- lying can be genetically made exciting to teach its usefulness
 - modern society generally has more lying
 	- this is to be expected as groups get larger and have more immigration and emigration
 
-## iii. social strife
+## social strife
 
-### 11. darwin's delay
+### darwin's delay
 - darwin studies barnacles for a while, probably because he was afraid to unveil his iconoclastic theory
 
-### 12. social status
+### social status
 - hierarchy exists almost everywhere
 - even societies that have shared resources didn't share social status, females, etc.
 - group-selection for hierarchy doesn't make sense - individual fitness in anarchy is fine
@@ -303,7 +306,7 @@ Some notes on papers / books surrounding psychology, especially evolutionary psy
 - *Machiavellianism* is "the employment of cunning and duplicity in statecraft or in general conduct"
 - what we call cultural values are expedients to social success
 
-### 13. deception and self-deception
+### deception and self-deception
 - it is more important to give the appearance of altruism than actually be altruistic
 - some of our motives are hidden from us not incidentally but by design, so that we can credibly act as if they aren't what they are
 - low *self-esteem* - way to reconcile people to subordinate status
@@ -319,28 +322,28 @@ Some notes on papers / books surrounding psychology, especially evolutionary psy
 	- when asked why walking, they make something up
 - NYT quote: "In a week's time, both sides have constructed deeply emotional stories explaining their roles, one-sided accounts that are offered with impassioned conviction, although in many respects they do not stand up, in either case, under careful scrutiny."
 
-### 14. darwin's triumph
+### darwin's triumph
 - people were willing to profess incorrect opinions about the relative length of two lines if placed in a room with other people who professed them
 
-## iv. morals of the story
+## morals of the story
 
-### 15. darwinian (and freudian) cynicism
+### darwinian (and freudian) cynicism
 - Freud
 	1. id - animal
 	2. ego - interprets id to superego
 	3. superego
 
-### 16. evolutionary ethics
+### evolutionary ethics
 - John Mill's *utilitarianism* is a good starting point
 - morality best preserves non-zero sumness
 
-### 17. blaming the victim
+### blaming the victim
 - "genetic determinism" pops up in court cases (cases like insanity)
 	- notion of free will is shrinking
 - less retributive of justice - more emphasis on deterrence, improving utilitarianism
 - rage of juries may wane as they come to believe that male philandering is "natural"
 
-### 18. darwin gets religion
+### darwin gets religion
 - doctrines thus far likely have "harmony" with human nature
 - we are designed to believe that next rung on ladder will bring bliss, but in reality it will evaporate shortly after we get there
 - why religion
@@ -365,13 +368,13 @@ Some notes on papers / books surrounding psychology, especially evolutionary psy
 	- incest
 - *parochial* - having a limited or narrow outlook or scope; of or relating to a church parish
 
-## i - intuitions come first, strategic reasoning second
+## intuitions come first, strategic reasoning second
 - elephant and rider metaphor
 
-### 1 - where does morality come from
-1. *nativist* - morality is innate
-2. *empiricist* - morality is from childhood learning
-3. *rationalist* - morality is self-constructed by children on the basis of their experience with harm
+### where does morality come from
+1. **nativist** - morality is innate
+2. **empiricist** - morality is from childhood learning
+3. **rationalist** - morality is self-constructed by children on the basis of their experience with harm
 	- kids know harm is wrong because they hate to be harmed and learn its is wrong to harm others
 	- came to reject this answer
 - new study
@@ -382,7 +385,7 @@ Some notes on papers / books surrounding psychology, especially evolutionary psy
 	- disgust and disrepect drive reasoning - moral reasoning is posthoc fabrication
 - in fact, morality is probably some combination of 1 & 2
 
-### 2 - intuitive dog and rational tail
+### intuitive dog and rational tail
 1. Plato - reason (mind) is master of emotions
 2. Hume - reason is the servant of passions
 3. Jefferson - reason and sentiment are indpeendent co-rulers
@@ -394,13 +397,13 @@ Some notes on papers / books surrounding psychology, especially evolutionary psy
 	- rider developed to help elephant
 	- *social intuitionism* - other people can alter intuitions
 	
-### 3 - elephants rule
+### elephants rule
 - brain can make snap judgements in 1/10 second
 	- can predict 2/3 outcomes of senate / house elections based on attractiveness in this time
 - intuitions come first, strategic reasoning second
 - smells etc can influence our moral judgements
 
-### 4 - vote for me (and here's why)
+### vote for me (and here's why)
 - conscious reasoning immediately justifies intuitive response
 - self-esteem doesn't make evolutionary sense, since being in groups was what mattered
 	- rather, self-esteem measure's one's fitness as a mate / group member
@@ -408,10 +411,10 @@ Some notes on papers / books surrounding psychology, especially evolutionary psy
 - moral/political matters - we are often *groupish* rather than selfish
 
 
-## ii - there's more to morality than harm and fairness
+## there's more to morality than harm and fairness
 - be suspicious of moral monomists
 
-### 5 - beyond WEIRD mentality	
+### beyond WEIRD mentality	
 - WEIRD - western, educated, industrialized, rich, democratic - outliars, but often used
 - Schweder's three ethics
 	1. *autonomy* - individual rights
@@ -419,7 +422,7 @@ Some notes on papers / books surrounding psychology, especially evolutionary psy
 	3. *divinity* - purity
 - there is more to morality than harm and fairness
 
-### 6 - taste buds of the righteous mind / 7 - the moral foundations of politics
+### taste buds of the righteous mind / 7 - the moral foundations of politics
 - *deontology* - rule-based ethics
 - moral psychology should be empirical - how the mind works, not how it ought to work
 - Moral Foundations Theory
@@ -437,13 +440,13 @@ Some notes on papers / books surrounding psychology, especially evolutionary psy
 		- starts with omnivore's dillema
 		- survive pathogens
 
-### 8 - the conservative advantage
+### the conservative advantage
 - Durkheim - basic unit is family, not individual
 - liberals only really value first three moral foundations
 
-## iii - morality binds and blinds
+## morality binds and blinds
 
-### 9 - why are we so groupish
+### why are we so groupish
 - group selection is controversial
 - here are 3 exhibits defending it
 	1. major transitions produce superorganisms
@@ -452,13 +455,13 @@ Some notes on papers / books surrounding psychology, especially evolutionary psy
 	3. genes and cultures coevolve
 	4. evolution can be fast
 
-### 10 - the hive switch
+### the hive switch
 - two candidates for hive switch
 	1. oxytocin genes
 	2. mirror neurons
 - hive switch doesn't seem to be for everyone, but rather just for one's group
 
-### 11 - religion is a team sport	
+### religion is a team sport	
 - descriptive definitions - describe what people think are moral
 - normative definitions - describe what is truly right
 	- utilitarianism
@@ -466,7 +469,7 @@ Some notes on papers / books surrounding psychology, especially evolutionary psy
 - belief in supernatural - could be accidental as by-product of hypersensitive agency detection device
 - religion can effectively surpress free-rider problem
 
-### 12 - disagreeing more constructively
+### disagreeing more constructively
 - people are predisposed to ideologies
 - then there is serious confirmation bias
 - liberals and conservatives are both necessary to balance each other out

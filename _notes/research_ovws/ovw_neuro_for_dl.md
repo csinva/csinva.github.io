@@ -1,3 +1,4 @@
+{:toc}
 
 # Ideas for deep learning from neuroscience
 
@@ -76,77 +77,3 @@ For more information, see a very good review on modeling individual neurons<dt-c
 # Conclusion
 
 A convergence of ideas from neuroscience and deep learning can be useful.
-
-
-
-# paper notes
-
-
-- [Continual Lifelong Learning with Neural Networks: A Review](https://arxiv.org/pdf/1802.07569.pdf)
-  - main issues is *catastrophic forgetting* / *stability-plasticity dilemma*
-  - ![Screen Shot 2020-01-01 at 11.49.32 AM](assets/Screen Shot 2020-01-01 at 11.49.32 AM.png)
-  - 2 types of plasticity
-    - Hebbian plasticity (Hebb 1949) for positive feedback instability
-    - compensatory homeostatic plasticity which stabilizes neural activity
-  - approaches: regularization, dynamic architectures (e.g. add more nodes after each task), memory replay
-
-
-
-## hierarchical temporal memory (htm)
-
-- binary synapses and learns by modeling the growth of new synapses and the decay of unused synapses
-- separate aspects of brains and neurons that are essential for intelligence from those that depend on brain implementation
-
-### necortical structure
-
-- evolution leads to physical/logical hierarchy of brain regions
-- neocortex is like a flat sheet
-- neocortex regions are similar and do similar computation
-  - Mountcastle 1978: vision regions are vision becase they receive visual input
-  - number of regions / connectivity seems to be genetic
-- before necortex, brain regions were homogenous: spinal cord, brain stem, basal ganglia, ...
-- ![cortical_columns](assets/cortical_columns.png)
-
-### principles
-
-- common algorithims accross neocortex
-- hierarchy
-- **sparse distributed representations (SDR)** - vectors with thousands of bits, mostly 0s
-  - bits of representation encode semantic properties
-- inputs
-  - data from the sense
-  - copy of the motor commands
-    - "sensory-motor" integration - perception is stable while the eyes move
-- patterns are constantly changing
-- necortex tries to control old brain regions which control muscles
-- **learning**: region accepts stream of sensory data + motor commands
-  - learns of changes in inputs
-  - ouputs motor commands
-  - only knows how its output changes its input
-  - must learn how to control behavior via *associative linking*
-- sensory encoders - takes input and turnes it into an SDR
-  - engineered systems can use non-human senses
-- behavior needs to be incorporated fully
-- temporal memory - is a memory of sequences
-  - everything the neocortex does is based on memory and recall of sequences of patterns
-- on-line learning
-  - prediction is compared to what actually happens and forms the basis of learning
-  - minimize the error of predictions
-
-
-### papers
-
-- "A Theory of How Columns in the Neocortex Enable Learning the Structure of the World"
-  - network model that learns the structure of objects through movement
-  - object recognition
-    - over time individual columns integrate changing inputs to recognize complete objects
-    - through existing lateral connections
-  - within each column, neocortex is calculating a location representation
-    - locations relative to each other = **allocentric**
-  - much more motion involved
-  - multiple columns - integrate spatial inputs - make things fast
-  - single column - integrate touches over time - represent objects properly
-- "Why Neurons Have Thousands of Synapses, A Theory of Sequence Memory in Neocortex"
-  - learning and recalling sequences of patterns
-  - neuron with lots of synapses can learn transitions of patterns
-  - network of these can form robust memory

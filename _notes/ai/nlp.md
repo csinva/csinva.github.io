@@ -9,10 +9,6 @@ typora-copy-images-to: ./assets/nlp
 
 Some notes on natural language processing, focused on modern improvements based on deep learning.
 
-# useful tools
-
-- [eli5](https://eli5.readthedocs.io/en/latest/libraries/sklearn.html#library-scikit-learn) has nice text highlighting for interp
-
 # nlp basics
 
 - basics come from book "Speech and Language Processing"
@@ -49,6 +45,7 @@ Some notes on natural language processing, focused on modern improvements based 
   - (by far) WSJ
   - then twitter
   - then Wikipedia
+- [eli5](https://eli5.readthedocs.io/en/latest/libraries/sklearn.html#library-scikit-learn) has nice text highlighting for interp
 
 # dl for nlp
 
@@ -60,26 +57,38 @@ Some notes on natural language processing, focused on modern improvements based 
 - standard seq2seq
   - encoder reads input and outputs context vector (the hidden state)
   - decoder (rnn) takes this context vector and generates a sequence
-- **attention**
-  - encoder reads input and ouputs context vector after each word
-  - decoder at each step uses a different weighted combination of these context vectors
-    - specifically, at each step, decoder concatenates its hidden state w/ the attention vector (the weighted combination of the context vectors)
-    - this is fed to a feedforward net to output a word![Screen Shot 2019-04-11 at 7.57.14 PM](assets/nlp/Screen Shot 2019-04-11 at 7.57.14 PM.png)
+- misc papers
+  - [Deal or No Deal? End-to-End Learning for Negotiation Dialogues](https://arxiv.org/abs/1706.05125) - controversial FB paper where agents "make up their own language"
+
+
+
+## attention / transformers
+
+- self-attention layer [implementation](https://github.com/mertensu/transformer-tutorial) and [mathematics](https://homes.cs.washington.edu/~thickstn/docs/transformers.pdf)
+
 - **self-attention ** - layer that lets word learn its relation to other layers
   - for each word, want score telling how much importance to place on each other word (queries * keys)
   - we get an encoding for each word
     - the encoding of each word returns a weighted sum of the values of the words (the current word gets the highest weight)
     - softmax this and use it to do weighted sum of values![Screen Shot 2019-08-17 at 2.51.53 PM](assets/nlp/Screen Shot 2019-08-17 at 2.51.53 PM.png)
-    - 
-  - multi-headed attention - just like having many filters, get many encodings for each word
-    - each one can take input as the embedding from the previous attention layer
-  - also add in a position vector into the embedding of each word (so words know how far apart they are)
+  - (optional) implementation details
+    - **multi-headed attention** - just like having many filters, get many encodings for each word
+      - each one can take input as the embedding from the previous attention layer
+    - **position vector** - add this into the embedding of each word (so words know how far apart they are) - usually use sin/cos rather than actual position number
+    - **padding mask** - add zeros to the end of the sequence
+    - **look-ahead mask** - might want to mask to only use previous words (e.g. if our final task is decoding)
+    - **add and norm** - after self-attention layer, often have residual connection to previous input, which gets added the normalized
   - also add residual connection around layer with a sum operation
   - decoder - each word only allowed to attend to previous positions
   - 3 components
     - queries
     - keys
     - values
+- **attention**
+  - encoder reads input and ouputs context vector after each word
+  - decoder at each step uses a different weighted combination of these context vectors
+    - specifically, at each step, decoder concatenates its hidden state w/ the attention vector (the weighted combination of the context vectors)
+    - this is fed to a feedforward net to output a word![Screen Shot 2019-04-11 at 7.57.14 PM](assets/nlp/Screen Shot 2019-04-11 at 7.57.14 PM.png)
 - **transformer**
   - uses many self-attention layers
   - many stacked layers in encoder + decoder (not rnn: self-attention + feed forward)
@@ -100,5 +109,3 @@ Some notes on natural language processing, focused on modern improvements based 
   - [XLNet](https://arxiv.org/abs/1906.08237)
   - [roberta](https://arxiv.org/abs/1907.11692)
 - these ideas are [starting to be applied to vision cnns](https://arxiv.org/abs/1904.09925)
-- misc papers
-  - [Deal or No Deal? End-to-End Learning for Negotiation Dialogues](https://arxiv.org/abs/1706.05125) - controversial FB paper where agents "make up their own language"

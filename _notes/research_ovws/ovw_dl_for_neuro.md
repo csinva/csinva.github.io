@@ -4,6 +4,12 @@ title: dl for neuro
 category: research
 ---
 
+
+
+{:toc}
+
+
+
 # Ideas for neuroscience using deep learning
 
 list of comparisons: https://docs.google.com/document/d/1qil2ylAnw6XrHPymYjKKYNDJn2qZQYA_Qg2_ijl-MaQ/edit
@@ -83,7 +89,7 @@ Artificial neural networks can compute in several different ways. There is some 
 
   - stringer et al. data
 
-  - - 10000 neurons from visual cortex
+  - 10000 neurons from visual cortex
 - neuropixels probes
     - [10k neurons visual coding](https://portal.brain-map.org/explore/circuits/visual-coding-neuropixels) from allen institute
     - this probe has also been used in [macaques](https://www.cell.com/neuron/pdf/S0896-6273(19)30428-3.pdf)
@@ -120,55 +126,6 @@ Artificial neural networks can compute in several different ways. There is some 
 
 
 
-## interesting misc papers
-
-- berardino 17 eigendistortions
-  - **Fisher info matrix** under certain assumptions = $Jacob^TJacob$ (pixels x pixels) where *Jacob* is the Jacobian matrix for the function f action on the pixels x
-  - most and least noticeable distortion directions corresponding to the eigenvectors of the Fisher info matrix
-- gao_19_v1_repr
-  - don't learn from images - v1 repr should come from motion like it does in the real world
-  - repr
-    - vector of local content
-    - matrix of local displacement
-  - why is this repr nice?
-    - separate reps of static image content and change due to motion
-    - disentangled rotations
-  - learning
-    - predict next image given current image + displacement field
-    - predict next image vector given current frame vectors + displacement
-- kietzmann_18_dnn_in_neuro_rvw
-- friston_10_free_energy
-  - ![friston_free_energy](data_ovw/friston_free_energy.png)
-
-
-
-# deeptune-style
-
-- ponce_19_evolving_stimuli: [https://www.cell.com/action/showPdf?pii=S0092-8674%2819%2930391-5](https://www.cell.com/action/showPdf?pii=S0092-8674(19)30391-5)
-- bashivan_18_ann_synthesis
-- [adept paper](https://papers.nips.cc/paper/6738-adaptive-stimulus-selection-for-optimizing-neural-population-responses.pdf)
-  - use kernel regression from CNN embedding to calculate distances between preset images
-  - select preset images
-  - verified with macaque v4 recording
-  - currently only study that optimizes firing rates of multiple neurons
-	- pick next stimulus in closed-loop ("adaptive sampling" = "optimal experimental design")
-- J. Benda, T. Gollisch, C. K. Machens, and A. V. Herz, “From response to stimulus: adaptive sampling in sensory physiology”
-  - find the smallest number of stimuli needed to fit parameters of a model that predicts the recorded neuron’s activity from the
-    stimulus
-
-  - maximizing firing rates via genetic algorithms
-
-  - maximizing firing rate via gradient ascent
-- C. DiMattina and K. Zhang,“Adaptive stimulus optimization for sensory systems neuroscience"](https://www.frontiersin.org/articles/10.3389/fncir.2013.00101/full)
-
-  - 2 general approaches: gradient-based approaches + genetic algorithms
-  - can put constraints on stimulus space
-  - stimulus adaptation
-  - might want iso-response surfaces
-  - maximally informative stimulus ensembles (Machens, 2002)
-  - model-fitting: pick to maximize info-gain w/ model params
-  - using fixed stimulus sets like white noise may be deeply problematic for efforts to identify non-linear hierarchical network models due to continuous parameter confounding (DiMattina and Zhang, 2010) 
-  - use for model selection
 
 <script type="text/bibliography">
 @article{hubel1962receptive,

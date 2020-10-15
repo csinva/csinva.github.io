@@ -82,8 +82,7 @@ category: ai
 
 **edited by John Brockman, 2019)**
 
-
-## 0 - intro (brockman)
+## intro (brockman)
 
 - new technologies = new perceptions
 - we create tools and we mold ourselves through our use of them
@@ -96,7 +95,7 @@ category: ai
 - things people thought would be hard, like chess, were easy
 - lots of physicists in this book...
 
-## 1 - wrong but more relevant than ever (seth lloyd)
+## wrong but more relevant than ever (seth lloyd)
 
 - current AI is way worse than people think it is
 - wiener was very pessimistic - wwII / cold war
@@ -104,7 +103,7 @@ category: ai
 
 
 
-## 2 - the limitations of opaque learning machines (judea pearl)
+## the limitations of opaque learning machines (judea pearl)
 
 - 3 levels of reasoning
   - statistical
@@ -127,7 +126,7 @@ category: ai
 - states/companies are like ais
 - **equifinality** - perturb behavior (like use grayscale images instead of color) and they can still do it (like stability)
 
-## 3 - the purpose put into the machine (stuart russell)
+## the purpose put into the machine (stuart russell)
 
 - want safety in ai - need to specify right objective with no uncertainty
 - **value alignment** - putting in the right purpose
@@ -139,7 +138,7 @@ category: ai
   - this way, uncertainty about rewards lets robot preserve its off-switch
   - human actions don't always reflect their true preferences
 
-## 4 - the third law (george dyson)
+## the third law (george dyson)
 
 - 2 eras: before/after digital computers
   - before: thomas hobbes, gottfried wilhelm leibniz
@@ -157,7 +156,7 @@ category: ai
   - von neumman's law - defining characteristic of a complex system is that it constitutes its own simplest behavioral description
   - 3rd law - any system simple enough to be understandable will not be complicated enough to behave intelligently and vice versa
 
-## 5 - what can we do? (daniel dennett)
+## what can we do? (daniel dennett)
 
 - dennett wrote from bacteria to bach & back
 - praise: willingness to admit he is wrong / stay levelheaded
@@ -174,7 +173,7 @@ category: ai
 - we need intelligent tools, not conscious ones - more like oracles
 - very hard to build in morality into ais - even death might not seem bad
 
-## 7 - the unity of intelligence (frank wilczek)
+## the unity of intelligence (frank wilczek)
 
 - can an ai be conscious/creative/evil?
 - mind is emergent property of matter $\implies$ all intelligence is machine intelligence
@@ -192,7 +191,7 @@ category: ai
   - ex. work in cafes, libraries, etc.
 - future life institute - funded by elon...maybe just trying to make money
 
-## 8 - lets aspire to more than making ourselves obsolete (max tegmark)
+## lets aspire to more than making ourselves obsolete (max tegmark)
 
 - sometimes listed as scaremonger
 - maybe consciousness could be much more hype - like waking up from being drowsy
@@ -212,7 +211,8 @@ category: ai
 - how good are people at predicting the future of technology?
 - joseph weizenbbam wrote psychotherapist bot that was pretty bad but scared him
 
-## 9 - dissident messages (jaan taliin)
+## dissident messages (jaan taliin)
+
 - voices that stand up slowly end up convincing people
 - ai is different than tech that has come before - it can self-multiply
 - human brain has caused lots of changes in the world - ai will be similar
@@ -222,7 +222,7 @@ category: ai
 - need to stop thinking of the world as a zero-sum game
 - famous survery: katja grace at the future of humanity institute
 
-## 10 - tech prophecy and the underappreciated causal power of ideas (steven pinker)
+## tech prophecy and the underappreciated causal power of ideas (steven pinker)
 
 - "just as darwin made it possible for a thoughtful observer of the natural world to do without creationism, Turing and others made it possible for a thoughtful observer of the cognitive world to do without spiritualism"
 - entropy view: ais is trying to stave off entropy by following specific goals
@@ -240,7 +240,7 @@ category: ai
 - if humans are smart enough to make ai, they are smart enough to test it
 - "threat isn't machine but what can be made of it"
 
-## 11 - beyond reward and punishment (david deutsch)
+## beyond reward and punishment (david deutsch)
 
 - david deutsch - founder of quantum computing
 - thinking - involves coming up w/ new hypotheses, not just being bayesian
@@ -256,7 +256,7 @@ category: ai
 - people falsely believe AGI should be able to learn on its own, like Nietzche's *causa sui*, buy humans don't do this
 - culture might make you more model-free
 
-## 12 - the artificial use of human beings (tom griffiths)
+## the artificial use of human beings (tom griffiths)
 
 - believes key to ml is human learning
 
@@ -274,7 +274,8 @@ category: ai
 
 - could ai actually produce more leisure?
 
-## 20 - making the invisible visible (hans ulrich obrist)
+## making the invisible visible (hans ulrich obrist)
+
 - need to use art to better interpret visualizations, like deepdream
 - ai as a tool, like photoshop
 - tweaking simulations is art (again in a deep-dream like way)
@@ -287,7 +288,8 @@ category: ai
 - everything except museums + pixels are pixels
 - marcel duchamp 1917 - urinal in art museum was worth a ton
 
-## 22 - algorists dream of objectivity (peter galison)
+## algorists dream of objectivity (peter galison)
+
 - science historian
 - stories of dangerous technologies have been repeated (e.g. nanoscience, recombinant DNA)
 - review in psychology found objective models outperformed groups of human clinicians ("prediction procedures: the clinical-statistical controversy")
@@ -298,11 +300,13 @@ category: ai
 - art w/ a nervous system
 - animations with charcters that have goals
 
-## 23 - the rights of machines (george church)
+## the rights of machines (george church)
+
 - machines should increasingly get rights as those of humans
 - potential for AI to make humans smarter as well
 
-## 24 - the artistic use of cybernetic beings (caroline jones)
+## the artistic use of cybernetic beings (caroline jones)
+
 - how to strech people beyond our simple, selfish parameters
 - cybernetics seance art
 - more grounded in hardware

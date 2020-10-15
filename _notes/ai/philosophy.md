@@ -128,12 +128,56 @@ category: ai
 - more focus on whethery expalanations capture our intuitive judgements and more on the issue of why the info they convey is valuable + relates to our goals
 - to what extent does a single model work across sciences (e.g. biologists claim to be interested in mechanisms whereas physicists in laws)
 
-# misc
+# stability
 
 - [Foundationalism](http://en.wikipedia.org/wiki/Foundationalism) - where the chain of justifications eventually relies on [basic beliefs](http://en.wikipedia.org/wiki/Basic_beliefs) or [axioms](http://en.wikipedia.org/wiki/Axiom) that are left unproven
   - Plato’s Republic
 - the stability of belief: how rational belief coheres with probability (leitgeb, 2017) - introduction
 - https://projecteuclid.org/download/pdfview_1/euclid.ss/1294167961
+
+
+
+# the story of philosophy
+
+**book by will durant**
+
+- states his own view that philosophy should focus on ethics rather the epistemiology (i.e. how we know what we know)
+  - every science begins as philosophy and ends as art
+- some definitions of philosophy
+  - pursuit of fundamental laws
+  - quest of unity
+
+## plato
+
+- socrates, plato's teacher pursued stricter definitions and was put to death
+- plato writes *the Republic* - fictitional dialogue w/ socrates as the protagonist
+  - argues that democracy failes because people are greedy
+  - advocates for an absolute meritocracy with 3 classes
+    - ruling class should live like communists, decent state salary, disallowed from excess
+    - soldiers / auxiliaries
+    - general population
+  - requires equality of education
+  - requires religion to placated the non-ruling majority
+  - excess is regulated
+  - justice = having and doing what is one's own
+    - each shall receive equivalent to what he produces + perform function for which he is best fit
+  - juxtapositions
+    - jesus: kindness to the weak
+    - nietzsche: bravery of the strong
+    - plato: effective harmony of the whole
+- only 3 things: truth, beauty, + justice
+
+## aristotle
+
+- starts systematic science, library science, and **logic**
+- advocates for *uinversals* as individuals (e.g. a man, not *man* like Plat argues for)
+  - this is more grounded in reality
+- theology: God moves the work like force, but does little else
+- science: infinitesimal distinctions - boundaries between plant/animal categories are blurry
+  - form: man, matter: child = possibility of form
+- politics: ideally a monarchy / aristocracy but more realistically would be constitutional gov. (people determine needs, leaders determine how to meet them)
+  - restrictions on pop.
+  - believes in slavery / female inferiority
 
 
 # effective altruism

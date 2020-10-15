@@ -88,7 +88,14 @@ Evaluating interpretability can be very difficult (largely because it rarely mak
   - we can build classifiers which use important features (such as race) but explanations will not reflect that
   - basically classifier is different on X which is OOD (and used by LIME and SHAP)
 - [Saliency Methods for Explaining Adversarial Attacks](https://arxiv.org/abs/1908.08413)
-- [Fooling Neural Network Interpretations via Adversarial Model Manipulation](https://arxiv.org/abs/1902.02041) (heo et al. 2019)
+- [Fooling Neural Network Interpretations via Adversarial Model Manipulation](https://arxiv.org/abs/1902.02041) (heo, joo, & moon 2019) - can change model weights so that it keeps predictive accuracy but changes its interpretation
+  - motivation: could falsely look like a model is "fair" because it places little saliency on sensitive attributes
+    - output of model can still be checked regardless
+  - fooled interpretation generalizes to entire validation set
+  - can force the new saliency to be whatever we like
+    - passive fooling - highlighting uninformative pixels of the image
+    - active fooling - highlighting a completely different object, the firetruck
+  - **model does not actually change that much** - predictions when manipulating pixels in order of saliency remains similar, very different from random (fig 4)
 
 # intrinsic interpretability (i.e. how can we fit simpler models)
 
@@ -214,6 +221,7 @@ Trees suffer from the fact that they have to cover the entire decision space and
 ## interpretable neural nets
 
 - [Symbolic Semantic Segmentation and Interpretation of COVID-19 Lung Infections in Chest CT volumes based on Emergent Languages](https://arxiv.org/pdf/2008.09866v1.pdf) (chowdhury et al. 2020) - combine some segmentation with the classifier
+- [Concept Bottleneck Models](https://arxiv.org/pdf/2007.04612.pdf) (koh et al. 2020) - predict concepts before making final prediction
 - [Concept Whitening for Interpretable Image Recognition](https://arxiv.org/pdf/2002.01650.pdf) (chen et al. 2020) - force network to separate "concepts" (like in TCAV) along different axes
 - [Towards Explainable Deep Neural Networks (xDNN)](https://arxiv.org/abs/1912.02523) (angelov & soares 2019) - more complex version of using prototypes
 - [MonoNet: Towards Interpretable Models by Learning Monotonic Features](https://arxiv.org/abs/1909.13611) - enforce output to be a monotonic function of individuaul features
@@ -555,6 +563,11 @@ How interactions are defined and summarized is a very difficult thing to specify
     2. text usually uses attention maps
       - ex. karpathy et al LSTMs
       - ex. lei et al. - most relevant sentences in sentiment prediction
+      - [attention is not explanation](https://arxiv.org/abs/1902.10186) (jain & wallace, 2019)
+      - [attention is not **not** explanation](https://arxiv.org/abs/1908.04626) (wiegreffe & pinter, 2019)
+        - influence = pred with a word - pred with a word masked
+          - attention corresponds to this kind of influence
+      - deceptive attention - we can successfully train a model to make similar predictions but have different attention
     3. class-activation map - sum the activations across channels (weighted by their weight for a particular class)
     4. [RISE](https://arxiv.org/pdf/1806.07421.pdf) (Petsiuk et al. 2018) - randomized input sampling
        1. randomly mask the images, get prediction

@@ -18,6 +18,7 @@ category: research
   - [DNN ensemble uncertainty works](http://papers.nips.cc/paper/7219-simple-and-scalable-predictive-uncertainty-estimation-using-deep-ensembles) - predict mean and variance w/ each network then ensemble (don't need to do bagging, random init is enough)
   - can also use ensemble of [snapshots during training](https://arxiv.org/abs/1704.00109) (huang et al. 2017)
 - neural network basic uncertainty: predicted probability = confidence, max margin, entropy of predicted probabilities across classes
+- [Single-Model Uncertainties for Deep Learning](https://arxiv.org/abs/1811.00908) (tagovska & lopez-paz 2019) - use simultaneous quantile regression
 - quantile regression - use quantile loss to penalize models differently + get confidence intervals
   - [can easily do this with sklearn](https://scikit-learn.org/stable/auto_examples/ensemble/plot_gradient_boosting_quantile.html)
   - quantile loss = $\begin{cases} \alpha \cdot \Delta & \text{if} \quad \Delta > 0\\\\(\alpha - 1) \cdot \Delta & \text{if} \quad \Delta < 0\end{cases}$
@@ -77,6 +78,8 @@ category: research
     - just predicting uncertainty is biased
     - estimate uncertainty of highly confident points using earlier snapshots of the trained model
 - [Contextual Outlier Interpretation](https://arxiv.org/abs/1711.10589) (liu et al. 2018) - describe outliers with 3 things: outlierness score, attributes that contribute to the abnormality, and contextual description of its neighborhoods
+- [Energy-based Out-of-distribution Detection](https://arxiv.org/abs/2010.03759)
+- [Test-Time Training with Self-Supervision for Generalization under Distribution Shifts](https://proceedings.icml.cc/paper/2020/file/1d3b7f1f8a7625f8d5e700dcf0d9ae68-Paper.pdf) (sun et al. 2020)
 
 # bayesian approaches
 

@@ -272,8 +272,11 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
     - rank pairing - label whether a feature is greater than another (e.g. this image has darker skin tone than this one)
 - [Weakly Supervised Disentanglement by Pairwise Similarities](https://arxiv.org/abs/1906.01044) - use pairwise supervision
 
-# evaluating distentanglement
+# evaluating disentanglement
 
+- [Challenging Common Assumptions in the Unsupervised Learning of Disentangled Representations](http://proceedings.mlr.press/v97/locatello19a/locatello19a.pdf) (locatello et al. 2019)
+  - state of disentanglement is very poor...depends a lot on architecture/hyperparameters
+  - good way to evaluate: make explicit inductive biases, investigate benefits of this disentanglement
 - *note* - vae's come with reconstruction loss + compactness prior loss which can be looked at on their own
 - data
   

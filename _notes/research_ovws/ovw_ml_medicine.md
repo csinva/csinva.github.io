@@ -148,3 +148,17 @@ category: research
 - skin: esteva, andre, et al. 2017
 - pathology: campanella, gabriele, et al.. 2019
 - mammogram: kerlikowske, karla, et al. 2018
+
+
+
+# improving medical studies
+
+- Machine learning methods for developing precision treatment rules with observational data (Kessler et al. 2019)
+  - goal: find precision treatment rules
+  - problem: need large sample sizes but can't obtain them in RCTs
+  - recommendations
+    - screen important predictors using large observational medical records rather than RCTs
+      - important to do matching / weighting to account for bias in treatment assignments
+      - alternatively, can look for natural experiment / instrumental variable / discontinuity analysis
+      - has many benefits
+    - modeling: should use ensemble methods rather than individual models
