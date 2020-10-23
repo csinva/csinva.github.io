@@ -6,24 +6,22 @@ category: stat
 
 {:toc}
 
-*Some notes on causal inference both from introductory courses following neyman-rubin framework (+ the textbook "[What if](https://cdn1.sph.harvard.edu/wp-content/uploads/sites/1268/2020/01/ci_hernanrobins_21jan20.pdf)?") + based on Judea Pearl's ladder of causality (+ "The book of why?")*
+*Some notes on causal inference both from introductory courses following neyman-rubin framework (+ the textbook "[What if](https://cdn1.sph.harvard.edu/wp-content/uploads/sites/1268/2020/01/ci_hernanrobins_21jan20.pdf)?") + based on Judea Pearl's ladder of causality (+ "The book of why?"). Also includes notes from [this chapter](https://fairmlbook.org/causal.html) of the fairml book.*
 
 # basics
 
 ## confounding
 
-- **confounding** - difference between groups other than the treatment which affects the response
+- **confounding** = difference between groups other than the treatment which affects the response
   - this is the key problem when using observational (non-experimental) data to make causal inferences
   - problem occurs because we don't get to see counterfactuals
-- confounding illustration from Pearl:![Screen Shot 2019-04-07 at 7.01.55 PM](assets/Screen Shot 2019-04-07 at 7.01.55 PM.png)
+  - ex from Pearl:![Screen Shot 2019-04-07 at 7.01.55 PM](assets/Screen Shot 2019-04-07 at 7.01.55 PM.png)
 - **randomized control trial (RCT)** - controls for any possible confounders
 
 
 
-## definitions / intuition
+## definitions
 
-- [bradford hill criteria](https://en.wikipedia.org/wiki/Bradford_Hill_criteria) - some simple criteria for establishing causality (e.g. strength, consistency, specificity)
-  - association is circumstantial evidence for causation
 - **epiphenomenon** - a correlated effect (not a cause)
   - a secondary effect or byproduct that arises from but does not causally influence a process
 - **propensity score** - probability that a subject recieving a treatment is valid after conditioning on appropriate covariates
@@ -31,27 +29,22 @@ category: stat
 - **sensitivity analysis** - instead of drawing conclusions by assuming the absence of certain causal relationships, challenge such assumptions and evaluate how strong altervnative relationships must be in order to explain the observed data
 - **regression-based adjustment** - if we know the confounders, can just regress on the confounders and the treatment and the coefficient for the treatment (the partial regression coefficient) will give us the average causal effect)
   - works only for linear models
-- **back-door criterion** - want to deconfound 2 variables X and Y: http://bayes.cs.ucla.edu/BOOK-2K/ch3-3.pdf
-  - ensure that there is no path which points to X which allows dependence between X and Y ( paths which point to X are non-causal, representing confounders )
-  - remember, in DAG junctions conditioning makes things independent unless its at a V junction
-- **front-door criterion** - want to deconfound treatment from outcome, even without info on the confounder
-  - only really need to know about treatment, M, and outcome
-
-```mermaid
-graph LR
-C(Confounder) -->Y(Outcome)
-C --> X(Treatment)
-X --> M
-M --> Y
-```
-
 - **instrumental variables** - variable which can be used to effectively due a RCT because it was made random by some external factor
   - ex. army draft, john snow's cholera study
-- **structural equation model** = **structural causal model** - graph where each variable is generated as a function of its parents + noise variable
+
+## intuition
+
+- [bradford hill criteria](https://en.wikipedia.org/wiki/Bradford_Hill_criteria) - some simple criteria for establishing causality (e.g. strength, consistency, specificity)
+  - association is circumstantial evidence for causation
+- *no causation without manipulation* (Holland, 1986)
+  - in this manner, something like causal effect of race/gender doesn't make sense
+  - can partially get around this by changing *race* $\to$ *perceived race*
+  - weaker view (e.g. of Pearl) is that we only need to be able to understand how entities interact (e.g. write an SEM)
 - different levels
+  - levels of experiment: experiment, RCT, natural experiment, observation
   - levels of evidence: marginal correlation, regression, invariance, causal
-  - pearl's ladder of causality: prediction/association, intervention, counterfactuals
-  - kosuke imai's levels of inference: descriptive, predictive, causal
+  - levels of inference (pearl's ladder of causality): prediction/association, intervention, counterfactuals
+    - kosuke imai's levels of inference: descriptive, predictive, causal
 
 ## common examples
 
@@ -71,14 +64,14 @@ C(Location of Car) --> B
 ```
 - berkson's paradox - diseases in hospitals are correlated even when they are not in the general population
   - possible explanation - only having both diseases together is strong enough to put you in the hospital
-- simpson's paradox
+- **simpson's paradox** - trend appears in several different groups but disappears/reverses when groups are combined
+  - e.g. overall men seemed to have higher acceptance rates, but in each dept. women seemed to have higher acceptance rates - explanation is that women selectively apply to harder depts.
 
 # frameworks
 
 ## potential outcome framework (neyman-rubin)
 
 - advantages over DAGs: easy to express some common assumptions, such as monotonicity / convexity
-
 - 3 frameworks
   1. neyman-rubin model: $Y_i = T_i a_i + (1-T_i) b_i$
     - $\widehat{ATE} = \hat{a}_A - \hat{b}_B$
@@ -96,56 +89,108 @@ C(Location of Car) --> B
 - ![Screen Shot 2020-05-05 at 10.50.28 AM](assets/Screen Shot 2020-05-05 at 10.50.28 AM.png)
 - **potential outcomes** = **counterfactual outcomes** $Y^{a=1}, Y^{a=0}$ 
 - **average treatment effect ATE**: $E[Y^{a=1} - Y^{a=0}]$
-- **exchangeability** = exogeneity: $\color{orange}{Y^{a}} \perp \!\!\! \perp A$ for all $a$ - $\textcolor{orange}{\text{the value of the counterfactuals}}$ doesn't change based on the choice of the action
+- key assumptions: SUTVA, consistency, ignorability
 
 ## DAGs (pearl et al.)
 
 
 - advantages over potential outcomes
-  - easy to express assumptions on what is independent, particularly when there are many variables
+  - easy to make clear exactly what is independent, particularly when there are many variables
+    - however, often very difficult to come up with proper causal graph
   - do-calculus allows for answering some specific questions easily
 - [blog post on causal ladder](http://smithamilli.com/blog/causal-ladder/)
 - [intro to do-calculus post](https://www.inference.vc/untitled/) and subsequent posts
 
-### causal ladder
+### causal ladder (different levels of inference)
 
-**1 - prediction/association** - just need to have the joint distr. of all the variables
-
-- basically just $p(y|x)$
-
-
-
-**2 - intervention** - we can change things and get conditionals based on evidence **after intervention**
-
-- $p(y|do(x))$ - which represents the conditional distr. we would get if we were to manipulate $x$ in a randomized trial
-  - to get this, we assume the causal structure (can still kind of test it based on conditional distrs.)
-  - having assumed the structure, we delete all edges going into a do operator and set the value of $x$
-  - then, do-calculus yields a formula to estimate $p(y|do(x))$ assuming this causal structure
-    - 3 rules which go from do-calculus to probability expressiom (remove do operator from statement and allow us to calculate it)
-  - see introductory paper [here](https://arxiv.org/pdf/1305.5506.pdf), more detailed paper [here](https://ftp.cs.ucla.edu/pub/stat_ser/r416-reprint.pdf) (pearl 2013)
-- by assuming structure, we learn how large impacts are
-
-
-
-**3 - counterfactuals** - we can change things and get conditionals based on evidence **before intervention**
-
-- probabalilistic answer to a "what would have happened if" question
-- very similar to neyman's potential outcome framework
-- simple matching is often not sufficient (need a very good model for how to match, hopefully a causal one)
-- this is for a specific data point, not a randomly sampled data point like an intervention would be
+1. **prediction/association** - just need to have the joint distr. of all the variables
+	- basically just $p(y|x)$
+2. **intervention** - we can change things and get conditionals based on *evidence after intervention*
+  - $p(y|do(x))$ - which represents the conditional distr. we would get if we were to manipulate $x$ in a randomized trial
+    - to get this, we assume the causal structure (can still kind of test it based on conditional distrs.)
+    - having assumed the structure, we delete all edges going into a do operator and set the value of $x$
+    - then, do-calculus yields a formula to estimate $p(y|do(x))$ assuming this causal structure
+    - see introductory paper [here](https://arxiv.org/pdf/1305.5506.pdf), more detailed paper [here](https://ftp.cs.ucla.edu/pub/stat_ser/r416-reprint.pdf) (pearl 2013)
+  - by assuming structure, we learn how large impacts are
+3. **counterfactuals** - we can change things and get conditionals based on *evidence before intervention*
   - instead of intervention $p(y|do(x))$ we get $p(y^*|x^*, z=z)$ where z represents fixing all the other variables and $y^*$ and $x^*$ are not observed
-  - averaging over all data points, we'd expect to get something similar to the intervention $p(y|do(x))$
-- requires SEM - structured equation model not just causal graph
-  - this is set of equations which tell how to compute value of each node given parents (and maybe some noise $\epsilon$ for each node)
-  - again, fix value of $x$ (and values of $\epsilon$ seend in the data) and use SEM to set all downstream variables
-- this allows for our intervention to contradict something we condition on 
-	- 	e.g. "Given that Hillary lost and didn't visit Michigan, would she win if she had visited Michigan?"
-	- 	e.g. “What fraction of patients who are treated and died would have survived if they were not treated?”
-- 	exogenous nodes - node in the network that represents all the data note collected
+    - averaging over all data points, we'd expect to get something similar to the intervention $p(y|do(x))$
+  - probabalistic answer to a "what would have happened if" question
+    - e.g. "Given that Hillary lost and didn't visit Michigan, would she win if she had visited Michigan?"
+    - e.g. “What fraction of patients who are treated and died would have survived if they were not treated?”
+    - this allows for our intervention to contradict something we condition on 
+    - simple matching is often not sufficient (need a very good model for how to match, hopefully a causal one)
+  - key difference with standard intervention is that we incorporate available evidence into our calculation
+    - available evidence influences exogenous variables
+    - this is for a specific data point, not a randomly sampled data point like an intervention would be
+    - requires SEM, not just causal graph
+
+## sem (structured equation model)
+
+- gives a set of variables $X_1, ... X_i$ and and assignments of the form $X_i := f_i(X_{parents(i)}, \epsilon_i)$, which tell how to compute value of each node given parents
+
+  - $\epsilon_i$ = noise variables = **exogenous nodes** - node in the network that represents all the data not collected
+  - parent nodes = *direct causes*
+- again, fix value of $x$ (and values of $\epsilon$ seend in the data) and use SEM to set all downstream variables
+- ex. ![sem](assets/sem.png)
+
+  - in this ex, W and H are usually correlated, so conditional distrs. are similar, but do operator of changing W has no effect on H (and vice versa)
+  - notation: $P(H|do(W:=1))$ or $P_{M[W:=1]}(h)$
+  - ATE of $W$ on $H$ would be $P(H|do(W:=1)) - P(H|do(W:=0))$
+
+### causal graphs
+
+- common graphs
+	- absence of edges often corresponds to qualitative judgements
+| forks                                                        | mediators                                                    | colliders                                                    |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ![Screen Shot 2020-10-21 at 11.57.13 PM](assets/Screen Shot 2020-10-21 at 11.57.13 PM.png) | ![Screen Shot 2020-10-21 at 11.57.17 PM](assets/Screen Shot 2020-10-21 at 11.57.17 PM.png) | ![Screen Shot 2020-10-21 at 11.57.22 PM](assets/Screen Shot 2020-10-21 at 11.57.22 PM.png) |
+| confounder $z$, can be adjusted for                          | confounder can vary causal effect                            | conditioning on confounder z can explain away a cause        |
+
+-   **controlling** for a variable  (when we have a causal graph):
+- $P(Y=y|do(X:=x)) = \sum_z \underbrace{P(Y=y|X=x, X_{parents}=z)}_{\text{effect for slice}} \underbrace{P(X_{parents}=z)}_{\text{weight for slice}}$
+-   **counterfactual** - given structural causal model *M*, observed event *E*, action *X:=x*, target variable *Y*, define counterfactual $Y_{X:=x}(E)$ in 3 steps:
+    - **abduction** - adjust noise variables to be consistent with observation
+    - **action** - perform do-intervention
+    - **prediction** - compute target counterfactual
+    - counterfactual can be a random variable or deterministic
+- **back-door criterion** - establishes if 2 variables X, Y are confounded
+  - more details: http://bayes.cs.ucla.edu/BOOK-2K/ch3-3.pdf
+  - ensure that there is no path which points to X which allows dependence between X and Y ( paths which point to X are non-causal, representing confounders )
+  - remember, in DAG junctions conditioning makes things independent unless its at a V junction
+- **front-door criterion** - want to deconfound treatment from outcome, even without info on the confounder
+  - only really need to know about treatment, M, and outcome
+
+```mermaid
+graph LR
+C(Confounder) -->Y(Outcome)
+C --> X(Treatment)
+X --> M
+M --> Y
+```
+- **mediation analysis** - identify a mechanism through which a cause has an effect
+  - if there are multiple possible paths by which a variable can exert influence, can figure out which path does what, even with just observational data
+
+# assumptions
+
+- **stable unit treatment value assumption (SUTVA)** - treatment one unit receives dosn't change effect of action for any other unit
+  - **exchangeability** = exogeneity: $\color{orange}{Y^{a}} \perp \!\!\! \perp A$ for all $a$ - $\textcolor{orange}{\text{the value of the counterfactuals}}$ doesn't change based on the choice of the action
+- **consistency**: $Y=Y^{a=0}(1-A) + Y^{a=1}A$ - outcome agrees with the potential outcome corresponding to the treatment indicator
+- **ignorability** - potential outcomes are conditionally independent of treatment given some deconfounding varibles
+  - very hard to check!
+- background
+  - very hard to decide what to include and what is irrelevant
+  - **ontology** - study of being, concepts, categories
+    - nodes in graphs must refer to stable concepts
+    - ontologies are not always stable
+      - world changes over time
+      - "looping effect" - social categories (like race) are constantly chainging because people who putatively fall into such categories to change their behavior in possibly unexpected ways
+  - **epistemology** - theory of knowledge
 
 # modeling approaches
 
-## experiments
+## ladder of evidence
+
 - RCT
 - natural experiment
 - instrumental variable
@@ -250,9 +295,9 @@ C(Location of Car) --> B
   - only pick the stable parts of what they learn (in a graph representation)
   - there is a tradeoff between stability to all shifts and average performance on the shifts we expect to see
   - different types of methods
-    - transfer learning: given unlabelled test data, match training/testing representations
+    - *transfer learning* - given unlabelled test data, match training/testing representations
     - *proactive methods* - make assumptions about possible set of target distrs.
-    - *data-driven methods* - assume independence of cause and mechnanism, like ICP, and use data from different shifts to find invariant subsets
+    - *data-driven methods* - assume independence of cause and mechanism, like ICP, and use data from different shifts to find invariant subsets
     - *explicit graph methods* - assume explicit knowledge of graph representing the data-generating process
   - hierarchy
     - level 1 - invariant conditional distrs. of the form $P(Y|\mathbf Z)$

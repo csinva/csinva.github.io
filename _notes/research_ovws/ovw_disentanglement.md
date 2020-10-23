@@ -14,7 +14,7 @@ typora-copy-images-to: ./assets
 
 # VAEs
 
-*Some good disentangled VAE implementations are [here](https://github.com/YannDubs/disentangling-vae) and more general VAE implementations are [here](https://github.com/AntixK/PyTorch-VAE)*.
+*Some good disentangled VAE implementations are [here](https://github.com/YannDubs/disentangling-vae) and more general VAE implementations are [here](https://github.com/AntixK/PyTorch-VAE)*. Tensorflow implementations available [here](https://github.com/google-research/disentanglement_lib)
 
 The goal is to obtain a nice latent representation $\mathbf z$ for our inputs $\mathbf x$. To do this, we learn parameters $\phi$ for the encoder $p_\phi( \mathbf z\vert \mathbf x)$ and $\theta$ for the decoder $q_{\mathbf \theta} ( \mathbf x\vert \mathbf z)$. We do this with the standard vae setup, whereby a code $z$ is sampled, using the output of the encoder (intro to VAEs [here](https://towardsdatascience.com/intuitively-understanding-variational-autoencoders-1bfe67eb5daf)).
 
@@ -169,7 +169,6 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
       - e.g. analogies between examples
       - can do all of these things with auto-encoders
 - more papers
-  
   - [infoVAE](https://arxiv.org/abs/1706.02262)
   - [dipVAE](https://arxiv.org/abs/1711.00848)
   - [vq-vae](https://arxiv.org/abs/1711.00937) - latent var is discrete, prior is learned
@@ -256,6 +255,21 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
       - add style transfer using target/source image
     - [Unsupervised Discovery of Interpretable Directions in the GAN Latent Space](https://arxiv.org/abs/2002.03754) - loss function which tries to recover random shifts made to the latent space
 
+# misc
+- [Learning Diverse and Discriminative Representations via the Principle of Maximal Coding Rate Reduction](https://arxiv.org/abs/2006.08558) (yu, ..., & ma, 2020)
+  - goal: learn low-dimensional structure from high-dim (labeled or unlabeled) data
+  - approach: instead of cross-entropy loss, use **maximal coding rate reduction** = MCR loss function to learn linear feature space where:
+    - *inter-class discriminative* - features of samples from different classes/clusters are uncorrelated + different low-dim linear subspaces
+    - *intra-class compressible* - features of samples from same class/cluster are correlated (i.e. belong to low-dim linear subspace)
+    - *maximally diverse* - dimension (or variance) of features for each class/cluster should be as large as possible as long as uncorrelated from other classes/clusters
+  - related to nonlinear generalized PCA
+  - given random variable $z$ and precision $\epsilon$, rate distortion $R(z, \epsilon)$ is minimal number of bits to encode $z$ such that expected decoding err is less than $\epsilon$
+    - can compute from finite samples
+    - can compute for each class (diagonal matrices represent class/cluster membership in loss function)
+    - MCR maximizes (rate distortion for all features) - (rate distortion for all data separated into classes)
+      - like a generalization of information gain
+  - evaluation
+    - with label corruption performs better
 
 # (semi)-supervised disentanglement
 
@@ -277,6 +291,9 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
 - [Challenging Common Assumptions in the Unsupervised Learning of Disentangled Representations](http://proceedings.mlr.press/v97/locatello19a/locatello19a.pdf) (locatello et al. 2019)
   - state of disentanglement is very poor...depends a lot on architecture/hyperparameters
   - good way to evaluate: make explicit inductive biases, investigate benefits of this disentanglement
+  - defining disentanglement - compact, interpretable, independent, helpful for downstream tasks, causal inference
+    - a change in one *factor of variation* should lead to a change in a single factor in the learned repr.
+  - unsupervised learning of disentangled reprs. is impossible without inductive biases
 - *note* - vae's come with reconstruction loss + compactness prior loss which can be looked at on their own
 - data
   
@@ -287,12 +304,13 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
   - use the inference network to map each pair of images to a pair of latent variables.
   - train a linear classifier to predict which interpretable factor was held constant based on the latent representations. The accuracy of this predictor is the disentanglement metric score.
 - [Evaluating Disentangled Representations](https://arxiv.org/abs/1910.05587) (sepliarskaia et al. 2019)
-  - defn 1  (Higgins et al., 2017; Kim and Mnih, 2018; Eastwood and Williams, 2018): A disentangled representation is a representation where a change in one latent dimension corresponds to a change in one generative factor while being relatively invariant to changes in other generative factors.
+  - defn 1  (Higgins et al., 2017; Kim and Mnih, 2018; Eastwood and Williams, 2018) = **factorVAE metric**: A disentangled representation is a representation where a change in one latent dimension corresponds to a change in one generative factor while being relatively invariant to changes in other generative factors.
   - defn 2 (Locatello et al., 2018; Kumar et al., 2017): A disentangled representation is a representation where a change in a single generative factor leads to a change in a single factor in the learned representation.
   - metrics
-    - DCI: Eastwood and Williams (2018) - informativeness based on predicting gt factors using latent factors
-    - SAP: Kumar et al. (2017) - how much does top latent factor match gt more than 2nd latent factor
-    - MIG: Chen et al. 2018 - mutual info to compute the same thing
+    - **DCI**: Eastwood and Williams (2018) - informativeness based on predicting gt factors using latent factors
+    - **SAP**: Kumar et al. (2017) - how much does top latent factor match gt more than 2nd latent factor
+    - **mutual info gap MIG**: Chen et al. 2018 - mutual info to compute the same thing
+    - **modularity** (ridgeway & mozer, 2018) - if each dimension of r(x) depends on at most a factor of variation using their mutual info
 
 # non-deep methods
 

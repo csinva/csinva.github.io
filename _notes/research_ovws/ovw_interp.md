@@ -303,6 +303,9 @@ Trees suffer from the fact that they have to cover the entire decision space and
   - interpretation: Given the current set of feature values, the contribution of a feature value to the difference between the actual prediction and the mean prediction is the estimated Shapley value
   - recalculate via sampling other features in expectation
   - followup [propagating shapley values](https://arxiv.org/pdf/1911.11888.pdf) (chen, lundberg, & lee 2019) - can work with stacks of different models
+- [probes](https://nlp.stanford.edu/~johnhew/interpreting-probes.html) - check if a representation (e.g. BERT embeddings) learned a certain property (e.g. POS tagging) by seeing if we can predict this property (maybe linearly) directly from the representation
+    - problem: if the post-hoc probe is a complex model (e.g. MLP), it can accurately predict a property even if that property isn't really contained in the representation
+    - potential solution: benchmark against control tasks, where we construct a new random task to predict given a representation, and see how well the post-hoc probe can do on that task
 - [Explaining individual predictions when features are dependent: More accurate approximations to Shapley values](https://arxiv.org/abs/1903.10464) (aas et al. 2019) - tries to more accurately compute conditional expectation
 - [Feature relevance quantification in explainable AI: A causal problem](https://arxiv.org/abs/1910.13413) (janzing et al. 2019) - argues we should just use unconditional expectation
 - [quantitative input influence](https://ieeexplore.ieee.org/abstract/document/7546525) - similar to shap but more general
@@ -705,9 +708,6 @@ These papers don't quite connect to prediction, but are generally about finding 
     - conditional importance measures a different notion (takes away things attributed to spurious variables)
       - can be hard to do conditional permutation well when some feature pairs are rare so can use weighting, matching, or imputation
   - here, application is to see on COMPAS dataset whether one can build an accurate model which doesn't rely on race / sex (in order to audit black-box COMPAS models)
-- [A study in Rashomon curves and volumes: A new perspective on generalization and model simplicity in machine learning](https://arxiv.org/pdf/1908.01755.pdf) (semenova, rudin, & parr, 2020)
-  - **rashomon ratio** - ratio of the volume of the set of accurate models to the volume of the hypothesis space
-    - can use this to perform model selection over different hypothesis spaces using empirical risk v. rashomon ratio (*rashomon curve*)
 - [A Theory of Statistical Inference for Ensuring the Robustness of Scientific Results](https://arxiv.org/abs/1804.08646) (coker, rudin, & king, 2018)
   - Inference = process of using facts we know to learn about facts we do not know
   - **hacking intervals** - the range of a summary statistic one may obtain given a class of possible endogenous manipulations of the data
@@ -728,6 +728,9 @@ These papers don't quite connect to prediction, but are generally about finding 
   - 2 approaches to replication
     - replicating studies - generally replication is very low
     - *p*-curve approach: look at distr. of p-values, check if lots of things are near 0.05
+- [A study in Rashomon curves and volumes: A new perspective on generalization and model simplicity in machine learning](https://arxiv.org/pdf/1908.01755.pdf) (semenova, rudin, & parr, 2020)
+  - **rashomon ratio** - ratio of the volume of the set of accurate models to the volume of the hypothesis space
+    - can use this to perform model selection over different hypothesis spaces using empirical risk v. rashomon ratio (*rashomon curve*)
 
 # misc new papers
 

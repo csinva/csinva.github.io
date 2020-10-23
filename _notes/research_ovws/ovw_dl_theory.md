@@ -82,6 +82,8 @@ some more concrete questions:
   - [similar paper for layer nets](https://arxiv.org/pdf/1904.13262.pdf)
 - datasets for measuring causality
   - Inferring Hidden Statuses and Actions in Video by Causal Reasoning - about finding causality in the video, not interpretation
+- **PL condition** = Polyak-Lojawsiewicz condition guarantees global convergence of loca methods
+  - $||\nabla f(x)||^2 \geq \alpha f(x) \geq 0$
 
 
 
@@ -374,6 +376,7 @@ some more concrete questions:
 
 - [analyzing bagging](https://projecteuclid.org/download/pdf_1/euclid.aos/1031689014) (buhlmann and yu 2002)
 - [boosting with the L2 loss](http://zmjones.com/static/statistical-learning/buhlmann-jasa-2003.pdf) (buhlmann & yu 2003)
+- [boosting algorithms as gradient descent](http://papers.nips.cc/paper/1766-boosting-algorithms-as-gradient-descent.pdf) (mason et al. 2000)
 
 # basics
 
