@@ -179,6 +179,26 @@ category: ai
   - restrictions on pop.
   - believes in slavery / female inferiority
 
+## francis bacon
+
+- lived in 1500s/1600s in England
+- father of the scientific method
+  - objective and realistic
+  - in contrast to descartes = subjctive/idealistic
+    - "I think therefore I am"
+- bacon embraces **epicureanism** - don't want anything
+- scors knowledge that doesn't lead to action
+- **science** = organization of knowledge
+- **philosophy** = organization of science
+- doubt all assumptions
+
+## spinoza
+
+- baroch de espinoza
+- jew who was excommunicated for anti-religious writing
+- no distinction between body and mind
+- no free will - only desires that guide everything
+
 
 # effective altruism
 

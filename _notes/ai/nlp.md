@@ -67,7 +67,7 @@ Some notes on natural language processing, focused on modern improvements based 
 - self-attention layer [implementation](https://github.com/mertensu/transformer-tutorial) and [mathematics](https://homes.cs.washington.edu/~thickstn/docs/transformers.pdf)
 
 - **self-attention ** - layer that lets word learn its relation to other layers
-  - for each word, want score telling how much importance to place on each other word (queries * keys)
+  - for each word, want score telling how much importance to place on each other word (queries $\cdot$ keys)
   - we get an encoding for each word
     - the encoding of each word returns a weighted sum of the values of the words (the current word gets the highest weight)
     - softmax this and use it to do weighted sum of values![Screen Shot 2019-08-17 at 2.51.53 PM](assets/nlp/Screen Shot 2019-08-17 at 2.51.53 PM.png)
@@ -77,8 +77,7 @@ Some notes on natural language processing, focused on modern improvements based 
     - **position vector** - add this into the embedding of each word (so words know how far apart they are) - usually use sin/cos rather than actual position number
     - **padding mask** - add zeros to the end of the sequence
     - **look-ahead mask** - might want to mask to only use previous words (e.g. if our final task is decoding)
-    - **add and norm** - after self-attention layer, often have residual connection to previous input, which gets added the normalized
-  - also add residual connection around layer with a sum operation
+    - **residual + normalize** - after self-attention layer, often have residual connection to previous input, which gets added then normalized
   - decoder - each word only allowed to attend to previous positions
   - 3 components
     - queries

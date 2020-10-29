@@ -26,7 +26,7 @@ displays
 - [pandas](https://pandas.pydata.org/): provides dataframes to python - often overlooked for big data which might not fit into DataFrames that fit into memory. Still very useful for comparing results of models, particularly with many hyperparameters.
   - [modin](https://github.com/modin-project/modin) - drop in pandas replacement to speed up operations
 - [pandas-profiling](https://github.com/pandas-profiling/pandas-profiling) - very quick data overviews
-- [pandas bamboolib](https://www.youtube.com/watch?v=yM-j5bY6cHw&feature=youtu.be) - ui for pandas, in development
+- [pandas bamboolib](https://bamboolib.8080labs.com/) - ui for pandas, in development
 - [dovpanda](https://github.com/dovpanda-dev/dovpanda) - helpful hints for using pandas
 - [imodels](https://github.com/csinva/imodels) - fitting simple models 
 - [tabnine](https://github.com/wenmin-wu/jupyter-tabnine?utm_source=share&utm_medium=ios_app&utm_name=iossmf) - autocomplete for jupyter
