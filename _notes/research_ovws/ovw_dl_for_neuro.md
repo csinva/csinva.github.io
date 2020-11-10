@@ -80,6 +80,7 @@ Artificial neural networks can compute in several different ways. There is some 
 
 # datasets
 
+- [non-human primate optogenetics datasets](https://osf.io/mknfu/)
 - [vision dsets](https://www.visualdata.io/)
     - MRNet: knee MRI diagnosis
 - [datalad lots of stuff](http://datalad.org/datasets.html)

@@ -159,6 +159,10 @@ some more concrete questions:
     - evolution of an ANN during training can also be described by a kernel (kernel gradient descent)
   - different types of kernels impose different things on a function (e.g. want more / less low frequencies)
     - gradient descent in kernel space can be convex if kernel is PD (even if nonconvex in the parameter space)
+  - lazy training regime - small change in weights results in big change in loss func
+    - so final weights are close to original weights
+    - more precisely, gradient norm is much larger than hessian norm
+    - jacobian doesn't change during training $\implies$ NTK is pretty constant throughout training
 - [Scaling description of generalization with number of parameters in deep learning](https://arxiv.org/abs/1901.01608) (geiger et al. 2019)
   - number of params = N
   - above 0 training err, larger number of params reduces variance but doesn't actually help

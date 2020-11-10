@@ -17,6 +17,7 @@ category: research
 - ensemble uncertainty
   - [DNN ensemble uncertainty works](http://papers.nips.cc/paper/7219-simple-and-scalable-predictive-uncertainty-estimation-using-deep-ensembles) - predict mean and variance w/ each network then ensemble (don't need to do bagging, random init is enough)
   - can also use ensemble of [snapshots during training](https://arxiv.org/abs/1704.00109) (huang et al. 2017)
+  - alternatively [batch ensemble](https://arxiv.org/pdf/2002.06715.pdf) (wen et al. 2020) - have several rank-1 keys that index different weights hidden within one neural net
 - neural network basic uncertainty: predicted probability = confidence, max margin, entropy of predicted probabilities across classes
 - [Single-Model Uncertainties for Deep Learning](https://arxiv.org/abs/1811.00908) (tagovska & lopez-paz 2019) - use simultaneous quantile regression
 - quantile regression - use quantile loss to penalize models differently + get confidence intervals
@@ -83,17 +84,26 @@ category: research
 
 # bayesian approaches
 
-- [Dropout as a Bayesian Approximation: Representing Model Uncertainty in Deep Learning](http://proceedings.mlr.press/v48/gal16.pdf)
-  - dropout at test time gives you uncertainty
+- **epistemic uncertainty** - uncertainty in the DNN model parameters
+  - without good estimates of this, often get aleatoric uncertainty wrong (since $p(y\vert x) = \int p(y \vert x, \theta) p(\theta \vert data) d\theta$
+- **aleatoric uncertainty** -  inherent and irreducible data noise (e.g. features contradict each other)
+  - this can usually be gotten by predicting a distr. $p(y \vert x)$ instead of a point estimate
+  - ex. logistic reg. already does this
+  - ex. regression - just predict mean and variance of Gaussian
 - [gaussian processes](https://distill.pub/2019/visual-exploration-gaussian-processes/)
-- bayesian neural networks
-  - [Evaluating Scalable Bayesian Deep Learning Methods for Robust Computer Vision](https://arxiv.org/pdf/1906.01620.pdf)
-    - **epistemic uncertainty** - uncertainty in the DNN model parameters
-      - without good estimates of this, often get aleatoric uncertainty wrong (since $p(y\vert x) = \int p(y \vert x, \theta) p(\theta \vert data) d\theta$
-    - **aleatoric uncertainty** -  inherent and irreducible data noise (e.g. features contradict each other)
-      - this can usually be gotten by predicting a distr. $p(y \vert x)$ instead of a point estimate
-      - ex. logistic reg. already does this
-      - ex. regression - just predict mean and variance of Gaussian
-  - [icu bayesian dnns](https://aiforsocialgood.github.io/icml2019/accepted/track1/pdfs/38_aisg_icml2019.pdf)
-    - focuses on epistemic uncertainty
-    - could use one model to get uncertainty and other model to predict
+- [Dropout as a Bayesian Approximation: Representing Model Uncertainty in Deep Learning](http://proceedings.mlr.press/v48/gal16.pdf)  
+  - dropout at test time gives you uncertainty
+- [SWAG](https://papers.nips.cc/paper/9472-a-simple-baseline-for-bayesian-uncertainty-in-deep-learning.pdf) (maddox et al. 2019) - start with pre-trained net then get Gaussian distr. over weights by training with large constant setp-size
+
+## bayesian neural networks
+
+- [blog posts on basics](https://medium.com/neuralspace/probabilistic-deep-learning-bayes-by-backprop-c4a3de0d9743)
+  - want $p(\theta|x) = \frac {p(x|\theta) p(\theta)}{p(x)}$
+    - $p(x)$ is hard to compute
+- [slides on basics](https://wjmaddox.github.io/assets/BNN_tutorial_CILVR.pdf)
+- [Bayes by backprop (blundell et al. 2015)](https://arxiv.org/abs/1505.05424) - efficient way to train BNNs using backprop
+	- Instead of training a single network, trains an ensemble of networks, where each network has its weights drawn from a shared, learned probability distribution. Unlike other ensemble methods, the method typically only doubles the number of parameters yet trains an infinite ensemble using unbiased Monte Carlo estimates of the gradients.
+- [Evaluating Scalable Bayesian Deep Learning Methods for Robust Computer Vision](https://arxiv.org/pdf/1906.01620.pdf)
+- [icu bayesian dnns](https://aiforsocialgood.github.io/icml2019/accepted/track1/pdfs/38_aisg_icml2019.pdf)
+  - focuses on epistemic uncertainty
+  - could use one model to get uncertainty and other model to predict

@@ -246,6 +246,7 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
       - t-SNE uses heavy-tailed Student's t-distr kernel (van der Maaten & Hinton, 2008)
       - SNE use Gausian kernel (Hinton & Roweis, 2003)
     - kernels have some parameters that can be picked or learned
+    - **perplexity** - how to balance between local/global aspects of data
   - optimization - for optimization purposes, this can be decomposed into attractive/repulsive forces 
 - **umap**: Uniform Manifold Approximation and Projection for Dimension Reduction
 	- [umap tutorial](https://umap-learn.readthedocs.io/en/latest/how_umap_works.html) 

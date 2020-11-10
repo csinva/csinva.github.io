@@ -731,6 +731,15 @@ These papers don't quite connect to prediction, but are generally about finding 
 - [A study in Rashomon curves and volumes: A new perspective on generalization and model simplicity in machine learning](https://arxiv.org/pdf/1908.01755.pdf) (semenova, rudin, & parr, 2020)
   - **rashomon ratio** - ratio of the volume of the set of accurate models to the volume of the hypothesis space
     - can use this to perform model selection over different hypothesis spaces using empirical risk v. rashomon ratio (*rashomon curve*)
+- [Underspecification Presents Challenges for Credibility in Modern Machine Learning](https://arxiv.org/pdf/2011.03395.pdf) (D’Amour et al. 2020)
+  - shortcuts = spurious correlations cause failure because of ambiguity in the data
+  - *stress tests* probe a broader set of requirements
+    - ex. subgroup analyses, domain shift, contrastive evaluations (looking at transformations of an individual example, such as counterfactual notions of fairness)
+  - suggestions
+    - need to test models more thoroughly
+    - need criteria to select among good models (e.g. explanations)
+- [Predictive Multiplicity in Classification](https://arxiv.org/pdf/1909.06677.pdf) (marx et al. 2020)
+  - predictive multiplicity = ability of a prediction problem to admit competing models with conflicting predictions
 
 # misc new papers
 

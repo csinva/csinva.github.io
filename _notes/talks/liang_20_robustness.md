@@ -1,0 +1,35 @@
+# percy liang
+
+- certifying robustness
+  - bound gradients of f around x - solve SDP for 2-layer net (raghunathan, steinhardt, & liang 2018, iclr)
+    - relax SDP and then applies to multilayer nets (raghunathan et al. 2018)
+    - improved optimizer for the SDP (dathathri et al. 2020)
+  - interval bound propagation - instead of passing point, pass an interval where it could be
+    - works well for word substitions (jia et al. 2019)
+  - RobEn - cluster words that are confusable + give them the same encoding when you train (jones et al. 2020)
+    - then you are robust to confusing the words
+- unlabeled data + self-training helps
+  - training robust models has higher sample complexity than training standard models
+  - tradeoff between robustness and accuracy (raghunathann et al. 2020)
+    - adding valid data can hurt even in well-specified, convex setting
+    - robust self-training eliminates this tradeoff in linear regression
+  - sample complexity can be reduced with unlabeled examples (carmon et al. 2019)
+- distributional robust optimization
+  - instead of minimizing training err, minimize maximum training err over different perturbations
+  - hard to pick the perturbation set - can easily be too pessimistic
+  - these things possibly magnify disparities
+    - larger models
+    - selective classification
+    - feature noise
+    - removing spurious features
+  - group DRO (sagawa et al. 2020) - maximize error for worst group
+    - need to add regularization to keep errors from going to 0
+    - training overparameterized models makes this problem worse
+  - abstain from classifying based on confidence (jones et al. 2020)
+    - makes error rates worse for worst group = selective classification can magnify disparities
+  - adding feature noise to each group can magnify disparities
+- domain adaptation
+  - standard domain adaptation: labeled (x, y) in source and unlabeled x in target
+  - gradual domain adaptation - things change slowly over time, can use gradual self-training (kumar et al. 2020)
+  - In-N-Out (xie et al. 2020) - if we have many features, rather than using them all as features, can use some as features and some as targets when we shift, to learn the domain shift
+

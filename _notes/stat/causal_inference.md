@@ -10,27 +10,30 @@ category: stat
 
 # basics
 
-## confounding
-
 - **confounding** = difference between groups other than the treatment which affects the response
   - this is the key problem when using observational (non-experimental) data to make causal inferences
   - problem occurs because we don't get to see counterfactuals
-  - ex from Pearl:![Screen Shot 2019-04-07 at 7.01.55 PM](assets/Screen Shot 2019-04-07 at 7.01.55 PM.png)
-- **randomized control trial (RCT)** - controls for any possible confounders
-
-
-
-## definitions
-
-- **epiphenomenon** - a correlated effect (not a cause)
-  - a secondary effect or byproduct that arises from but does not causally influence a process
-- **propensity score** - probability that a subject recieving a treatment is valid after conditioning on appropriate covariates
-- **case-control study** - retrospective - compares "cases" (people with a disease) to controls
-- **sensitivity analysis** - instead of drawing conclusions by assuming the absence of certain causal relationships, challenge such assumptions and evaluate how strong altervnative relationships must be in order to explain the observed data
-- **regression-based adjustment** - if we know the confounders, can just regress on the confounders and the treatment and the coefficient for the treatment (the partial regression coefficient) will give us the average causal effect)
-  - works only for linear models
-- **instrumental variables** - variable which can be used to effectively due a RCT because it was made random by some external factor
-  - ex. army draft, john snow's cholera study
+  - ex from Pearl where Age is the confounder![Screen Shot 2019-04-07 at 7.01.55 PM](assets/Screen Shot 2019-04-07 at 7.01.55 PM.png)
+- study types
+  - 3 principles of experimental design: replication, randomization, conditioning
+  - **randomized control trial (RCT)** - controls for any possible confounders
+  - **case-control study** - retrospective - compares "cases" (people with a disease) to controls
+  - **sensitivity analysis** - instead of drawing conclusions by assuming the absence of certain causal relationships, challenge such assumptions and evaluate how strong altervnative relationships must be in order to explain the observed data
+  - **regression-based adjustment** - if we know the confounders, can just regress on the confounders and the treatment and the coefficient for the treatment (the partial regression coefficient) will give us the average causal effect)
+    - works only for linear models
+    - **propensity score** - probability that a subject recieving a treatment is valid after conditioning on appropriate covariates
+  - **instrumental variables** - variable which can be used to effectively due a RCT because it was made random by some external factor
+    - ex. army draft, john snow's cholera study
+- background
+  - very hard to decide what to include and what is irrelevant
+  - **epiphenomenon** - a correlated effect (not a cause)
+    - a secondary effect or byproduct that arises from but does not causally influence a process
+  - **ontology** - study of being, concepts, categories
+    - nodes in graphs must refer to stable concepts
+    - ontologies are not always stable
+      - world changes over time
+      - "looping effect" - social categories (like race) are constantly chainging because people who putatively fall into such categories to change their behavior in possibly unexpected ways
+  - **epistemology** - theory of knowledge
 
 ## intuition
 
@@ -41,9 +44,9 @@ category: stat
   - can partially get around this by changing *race* $\to$ *perceived race*
   - weaker view (e.g. of Pearl) is that we only need to be able to understand how entities interact (e.g. write an SEM)
 - different levels
-  - levels of experiment: experiment, RCT, natural experiment, observation
-  - levels of evidence: marginal correlation, regression, invariance, causal
-  - levels of inference (pearl's ladder of causality): prediction/association, intervention, counterfactuals
+  - **experiment**: experiment, RCT, natural experiment, observation
+  - **evidence**: marginal correlation, regression, invariance, causal
+  - **inference** (pearl's ladder of causality): prediction/association, intervention, counterfactuals
     - kosuke imai's levels of inference: descriptive, predictive, causal
 
 ## common examples
@@ -52,10 +55,6 @@ category: stat
 - John Snow on cholera - water
 - causes of poverty - Yul's model, changes with lots of things
 - liver transplant
-  - maximize benefit (life with - life without)
-  - currently just goes to person who would die quickest without
-
-
 - monty hall problem: why you should switch
 ```mermaid
 graph LR
@@ -83,7 +82,6 @@ C(Location of Car) --> B
   3. fisherian testing framework
     - small p-values evidence against null hypothesis
     - null hypothesis
-- 3 principles of experimental design: replication, randomization, conditioning
 - action = intervention, exposure, treatments
 - action $A$ and outcome $Y$
 - ![Screen Shot 2020-05-05 at 10.50.28 AM](assets/Screen Shot 2020-05-05 at 10.50.28 AM.png)
@@ -94,10 +92,10 @@ C(Location of Car) --> B
 ## DAGs (pearl et al.)
 
 
-- advantages over potential outcomes
+- comparison to potential outcomes
   - easy to make clear exactly what is independent, particularly when there are many variables
-    - however, often very difficult to come up with proper causal graph
   - do-calculus allows for answering some specific questions easily
+  - often difficult to come up with proper causal graph
 - [blog post on causal ladder](http://smithamilli.com/blog/causal-ladder/)
 - [intro to do-calculus post](https://www.inference.vc/untitled/) and subsequent posts
 
@@ -173,19 +171,11 @@ M --> Y
 
 # assumptions
 
-- **stable unit treatment value assumption (SUTVA)** - treatment one unit receives dosn't change effect of action for any other unit
+- **stable unit treatment value assumption (SUTVA)** - treatment one unit receives doesn't change effect of action for any other unit
   - **exchangeability** = exogeneity: $\color{orange}{Y^{a}} \perp \!\!\! \perp A$ for all $a$ - $\textcolor{orange}{\text{the value of the counterfactuals}}$ doesn't change based on the choice of the action
 - **consistency**: $Y=Y^{a=0}(1-A) + Y^{a=1}A$ - outcome agrees with the potential outcome corresponding to the treatment indicator
 - **ignorability** - potential outcomes are conditionally independent of treatment given some deconfounding varibles
   - very hard to check!
-- background
-  - very hard to decide what to include and what is irrelevant
-  - **ontology** - study of being, concepts, categories
-    - nodes in graphs must refer to stable concepts
-    - ontologies are not always stable
-      - world changes over time
-      - "looping effect" - social categories (like race) are constantly chainging because people who putatively fall into such categories to change their behavior in possibly unexpected ways
-  - **epistemology** - theory of knowledge
 
 # modeling approaches
 
@@ -303,6 +293,7 @@ M --> Y
     - level 1 - invariant conditional distrs. of the form $P(Y|\mathbf Z)$
     - level 2 - conditional interventional distrs. of the form $P(Y|do(\mathbf W), \mathbf Z)$
     - level 3 - distributions corresponding to counterfactuals
+- [Domain-Adversarial Training of Neural Networks](https://dl.acm.org/ doi/abs/10.5555/2946645.2946704) (ganin et al. 16)
 
 ## reviews
 

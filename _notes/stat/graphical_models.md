@@ -123,8 +123,24 @@ typora-copy-images-to: ./assets/graphical_models
   - why it works
     - the sampling process settles into a dynamic equilibrium where time spent in each state is proportional to its posterior probability
     - provided transition matrix q is *ergodic* - every state is reachable and there are no periodic cycles - only 1 steady-state soln
-  - Gibbs: we have conditionals
-    - Metropolis-Hastings we have to estimate conditionals
+  - 2 steps
+    1. create markov chain with write stationary distr.
+    2. draw samples by simulating the chain
+  - methods
+    - 0th order methods - query density
+      - metropolized random walk
+      - ball walk
+      - hit-and-run algorithm
+    - 1st order methods - uses gradient of the density
+      - Gibbs: we have conditionals
+      - metropolis adjusted langevin algorithm (MALA) = langevin monte carlo
+        - use gradient to propose new states
+        - accept / reject using metropolis-hastings algorithm
+      - unadjusted langevin algorithm (ULA)
+      - hamiltonian monte carlo (neal, 2011)
+  - log-concave distr. density (analog of convexity)
+    - $\pi(x) = \frac{e^{-f(x)}}{\int e^{-f(y)}dy}$
+    - examples: normal distr., exponential distr., Laplace distr.
 
 3. *variational inference* - formulate inference as optimization
    - [good intro paper](https://arxiv.org/abs/1601.00670)
@@ -318,7 +334,7 @@ typora-copy-images-to: ./assets/graphical_models
   
 3. *smoothing* - compute $P(X_{k}|e_{1:t})$ for $0 < k < t$
      1. 2 components $P(X_k|e_{1:t}) = \alpha \underbrace{P(X_k|e_{1:k})}_{\text{forward}} \cdot \underbrace{P(e_{k+1:t}|X_k)}_{\text{backward}}$
-      
+     
      1. forward pass: filtering from $1:t$
        2. backward pass from $t:1$ $\underbrace{P(e_{k+1:t}|X_k)}_{\text{sensor past k}} = \sum_{x_{k+1}} \underbrace{P(e_{k+1}|x_{k+1})}_{\text{sensor}} \cdot \underbrace{P(e_{k+2:t}|x_{k+1})}_{\text{recursive call}} \cdot \underbrace{P(x_{k+1}|X_k)}_{\text{transition}}$
        3. this is called the forward-backward algo(also there is a separate algorithm that doesn't use the observations on the backward pass)
