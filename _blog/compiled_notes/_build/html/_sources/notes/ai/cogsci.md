@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: cogsci
-category: ai
+cat: ai
 ---
 
 #  cogsci

@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: Classification
-category: ml
+cat: ml
 ---
 
 #  classification

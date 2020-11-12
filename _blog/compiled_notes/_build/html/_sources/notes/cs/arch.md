@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: Architecture
-category: cs
+cat: cs
 ---
 
 * TOC

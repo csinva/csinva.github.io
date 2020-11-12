@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: interesting science
-category: research
+cat: research
 ---
 
 #  interesting science

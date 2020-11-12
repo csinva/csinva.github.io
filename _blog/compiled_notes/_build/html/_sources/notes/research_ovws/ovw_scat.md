@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: scattering transform
-category: research
+cat: research
 ---
 
 #  scattering transform

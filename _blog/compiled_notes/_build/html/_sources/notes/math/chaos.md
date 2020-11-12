@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: chaos
-category: math
+cat: math
 ---
 
 #  chaos

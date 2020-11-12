@@ -635,13 +635,18 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#measures-of-association">
+     4.4.4.2. measures of association
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#matching">
-     4.4.4.2. matching
+     4.4.4.3. matching
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#weighting-regression-adjustments">
-     4.4.4.3. weighting / regression adjustments
+     4.4.4.4. weighting / regression adjustments
     </a>
    </li>
   </ul>
@@ -764,7 +769,7 @@
 <li><p>association is circumstantial evidence for causation</p></li>
 </ul>
 </li>
-<li><p><em>no causation without manipulation</em> (Holland, 1986)</p>
+<li><p><em>no causation without manipulation</em> (rubin, 1975; Holland, 1986)</p>
 <ul>
 <li><p>in this manner, something like causal effect of race/gender doesn’t make sense</p></li>
 <li><p>can partially get around this by changing <em>race</em> <span class="math notranslate nohighlight">\(\to\)</span> <em>perceived race</em></p></li>
@@ -804,12 +809,18 @@ C(Location of Car) --&gt; B
 <li><p>possible explanation - only having both diseases together is strong enough to put you in the hospital</p></li>
 </ul>
 </li>
-<li><p><strong>simpson’s paradox</strong> - trend appears in several different groups but disappears/reverses when groups are combined</p>
+<li><p><strong>simpson’s paradox</strong> = <strong>yule-simpson paradox</strong> - trend appears in several different groups but disappears/reverses when groups are combined</p>
 <ul>
 <li><p>e.g. overall men seemed to have higher acceptance rates, but in each dept. women seemed to have higher acceptance rates - explanation is that women selectively apply to harder depts.</p></li>
 </ul>
 </li>
 </ul>
+<div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>graph LR
+A(Gender) --&gt;B(Dept Choice)
+B --&gt; C(Acceptance rate)
+A --&gt; C
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="frameworks">
@@ -1014,8 +1025,18 @@ M --&gt; Y
 <li><p>discontinuity analysis - look for points near a threshold treatment assignment</p></li>
 </ul>
 </div>
+<div class="section" id="measures-of-association">
+<h3>4.4.4.2. measures of association<a class="headerlink" href="#measures-of-association" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>correlation</p></li>
+<li><p>regression coefficient</p></li>
+<li><p>risk difference = <span class="math notranslate nohighlight">\(p(Y=1|A=1) - P(Y=1|A=0)\)</span></p></li>
+<li><p>risk ratio = <span class="math notranslate nohighlight">\(p(Y=1|A=1) / P(Y=1|A=0)\)</span></p></li>
+<li><p>odds ratio = <span class="math notranslate nohighlight">\(\frac{p(Y=1|A=1) / P(Y=0|A=1)}{p(Y=1|A=0) / P(Y=0|A=0)}\)</span></p></li>
+</ul>
+</div>
 <div class="section" id="matching">
-<h3>4.4.4.2. matching<a class="headerlink" href="#matching" title="Permalink to this headline">¶</a></h3>
+<h3>4.4.4.3. matching<a class="headerlink" href="#matching" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2943670/pdf/nihms200640.pdf">Matching methods for causal inference: A review and a look forward</a> (stuart 2010)</p>
 <ul>
@@ -1077,7 +1098,7 @@ M --&gt; Y
 </ul>
 </div>
 <div class="section" id="weighting-regression-adjustments">
-<h3>4.4.4.3. weighting / regression adjustments<a class="headerlink" href="#weighting-regression-adjustments" title="Permalink to this headline">¶</a></h3>
+<h3>4.4.4.4. weighting / regression adjustments<a class="headerlink" href="#weighting-regression-adjustments" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>regression adjustments use models like a linear model to account for confounders</p></li>
 <li><p>requires <em>unconfoundedness</em> = <em>omitted variable bias</em></p></li>

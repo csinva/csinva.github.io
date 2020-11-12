@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: software engineering
-category: cs
+cat: cs
 ---
 
 #  software engineering

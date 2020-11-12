@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: quantum
-category: cs
+cat: cs
 typora-copy-images-to: ../assets
 ---
 

@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: Motor system
-category: neuro
+cat: neuro
 ---
 
 #  motor system

@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: C/C++ ref
-category: cs
+cat: cs
 ---
 
 * TOC

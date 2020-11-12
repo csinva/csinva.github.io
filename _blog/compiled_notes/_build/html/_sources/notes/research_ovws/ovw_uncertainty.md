@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: uncertainty
-category: research
+cat: research
 ---
 
 **some notes on uncertainty in machine learning, particularly deep learning**

@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: Evaluation
-category: ml
+cat: ml
 ---
 
 #  evaluation

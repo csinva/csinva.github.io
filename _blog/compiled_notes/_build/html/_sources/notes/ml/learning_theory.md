@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: Learning Theory
-category: ml
+cat: ml
 ---
 
 #  learning theory

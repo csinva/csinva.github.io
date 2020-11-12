@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: Algorithms
-category: ai
+cat: ai
 ---
 #  algorithms
 

@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: real analysis
-category: math
+cat: math
 ---
 
 #  real analysis

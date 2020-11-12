@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: dl theory
-category: research
+cat: research
 ---
 
 *Deep learning theory is a complex emerging field - this post contains links displaying some different interesting research directions*

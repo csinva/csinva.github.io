@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: transfer learning
-category: research
+cat: research
 ---
 
 

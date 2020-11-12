@@ -1,7 +1,7 @@
 '''Copies files from notes directory, does some preprocessing, then builds them into a website using jupyter-book
 '''
 
-import shutil   
+import shutil
 import os
 from os.path import join as oj
 import subprocess
@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 
 
 # source / dest
-src = '/Users/chandan/website/_notes/'  
+src = '/Users/chandan/website/_notes/'
 dest = 'notes'
 
 # copy stuff
@@ -21,6 +21,7 @@ except:
     pass
 destination = shutil.copytree(src, dest)   # copy
 shutil.rmtree(f'{dest}/talks/') # rm
+shutil.rmtree(f'{dest}/misc/') # rm
 
 
 # toc
@@ -45,18 +46,20 @@ for folder in os.listdir(dest):
                 content = open(fpath, "r").read().replace('# ', '## ')
                 try:
                     title = content.split('title:', 1)[1].split('\n')[0].lower()
+                    title = content.split('title:', 1)[1].split('\n')[0].lower()
                     content = content.replace('{:toc}', f'# {title}')
+                    content = content.replace('category: ', 'cat: ') # remove category information
                     open(fpath, "w").write(content)
                     toc += f'  - file: {fpath}\n'
                 except:
                     os.remove(fpath)
                 contents.append(content)
-                fnames.append(fname[:-3])                   
+                fnames.append(fname[:-3])
 open('_toc.yml', 'w').write(toc)
 
 # make visualization
 fnames = [x.replace('_', ' ') for x in fnames]
-vect = TfidfVectorizer(min_df=1, stop_words="english")                                                      
+vect = TfidfVectorizer(min_df=1, stop_words="english")
 tfidf = vect.fit_transform(contents)
 pairwise_similarity = (tfidf * tfidf.T).todense()
 plt.figure(figsize=(11, 9), dpi=150)

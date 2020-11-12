@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: Testing
-category: stat
+cat: stat
 ---
 
 #  testing

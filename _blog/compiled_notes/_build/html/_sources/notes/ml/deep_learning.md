@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: Deep Learning
-category: ml
+cat: ml
 ---
 
 #  deep learning

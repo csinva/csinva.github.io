@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: Graphs
-category: cs
+cat: cs
 ---
 
 #  graphs

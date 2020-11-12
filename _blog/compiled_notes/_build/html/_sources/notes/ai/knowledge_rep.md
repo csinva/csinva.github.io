@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: representations
-category: ai
+cat: ai
 ---
 
 #  representations

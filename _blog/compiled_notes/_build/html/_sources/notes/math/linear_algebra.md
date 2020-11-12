@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: linear algebra
-category: math
+cat: math
 typora-copy-images-to: ../assets
 ---
 

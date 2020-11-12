@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: Optimization
-category: math
+cat: math
 typora-copy-images-to: ../assets
 ---
 

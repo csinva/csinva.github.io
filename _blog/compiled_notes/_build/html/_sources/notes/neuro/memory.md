@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: memory
-category: neuro
+cat: neuro
 ---
 
 #  memory

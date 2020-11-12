@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: ml in medicine
-category: research
+cat: research
 ---
 
 **some rough notes on ml in medicine**

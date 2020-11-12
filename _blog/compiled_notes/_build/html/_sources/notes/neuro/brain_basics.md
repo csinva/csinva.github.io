@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: brain basics
-category: neuro
+cat: neuro
 ---
 
 #  brain basics

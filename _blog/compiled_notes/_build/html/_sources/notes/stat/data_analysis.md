@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: data analysis
-category: stat
+cat: stat
 ---
 
 #  data analysis

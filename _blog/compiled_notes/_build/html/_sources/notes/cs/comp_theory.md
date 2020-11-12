@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: cs theory
-category: cs
+cat: cs
 ---
 
 #  cs theory

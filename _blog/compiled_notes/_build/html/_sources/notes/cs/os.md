@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: os
-category: cs
+cat: cs
 ---
 * TOC
 #  os

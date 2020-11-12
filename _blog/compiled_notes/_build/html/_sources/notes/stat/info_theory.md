@@ -2,7 +2,7 @@
 
 layout: notes
 title: info Theory
-category: stat
+cat: stat
 ---
 
 #  info theory

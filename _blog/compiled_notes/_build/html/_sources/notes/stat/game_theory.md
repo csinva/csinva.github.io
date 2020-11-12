@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: game theory
-category: stat
+cat: stat
 ---
 
 #  game theory

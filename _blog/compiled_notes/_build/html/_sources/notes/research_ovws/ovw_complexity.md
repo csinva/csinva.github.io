@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: complexity
-category: research
+cat: research
 ---
 
 #  complexity

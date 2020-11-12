@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: Sensory Input
-category: neuro
+cat: neuro
 ---
 
 #  sensory input

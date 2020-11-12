@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: causal inference
-category: stat
+cat: stat
 ---
 
 #  causal inference
@@ -39,7 +39,7 @@ category: stat
 
 - [bradford hill criteria](https://en.wikipedia.org/wiki/Bradford_Hill_criteria) - some simple criteria for establishing causality (e.g. strength, consistency, specificity)
   - association is circumstantial evidence for causation
-- *no causation without manipulation* (Holland, 1986)
+- *no causation without manipulation* (rubin, 1975; Holland, 1986)
   - in this manner, something like causal effect of race/gender doesn't make sense
   - can partially get around this by changing *race* $\to$ *perceived race*
   - weaker view (e.g. of Pearl) is that we only need to be able to understand how entities interact (e.g. write an SEM)
@@ -63,8 +63,14 @@ C(Location of Car) --> B
 ```
 - berkson's paradox - diseases in hospitals are correlated even when they are not in the general population
   - possible explanation - only having both diseases together is strong enough to put you in the hospital
-- **simpson's paradox** - trend appears in several different groups but disappears/reverses when groups are combined
+- **simpson's paradox** = **yule-simpson paradox** - trend appears in several different groups but disappears/reverses when groups are combined
   - e.g. overall men seemed to have higher acceptance rates, but in each dept. women seemed to have higher acceptance rates - explanation is that women selectively apply to harder depts.
+```mermaid
+graph LR
+A(Gender) -->B(Dept Choice)
+B --> C(Acceptance rate)
+A --> C
+```
 
 ## frameworks
 
@@ -185,6 +191,14 @@ M --> Y
 - natural experiment
 - instrumental variable
 - discontinuity analysis - look for points near a threshold treatment assignment
+
+### measures of association
+
+- correlation
+- regression coefficient
+- risk difference = $p(Y=1|A=1) - P(Y=1|A=0)$
+- risk ratio = $p(Y=1|A=1) / P(Y=1|A=0)$
+- odds ratio = $\frac{p(Y=1|A=1) / P(Y=0|A=1)}{p(Y=1|A=0) / P(Y=0|A=0)}$
 
 ### matching
 

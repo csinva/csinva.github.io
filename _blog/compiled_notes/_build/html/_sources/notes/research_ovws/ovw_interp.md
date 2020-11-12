@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: interpretability
-category: research
+cat: research
 ---
 
 **some interesting papers on interpretable machine learning, largely organized based on this [interpretable ml review](https://arxiv.org/abs/1901.04592) (murdoch et al. 2019) and notes from this [interpretable ml book](https://christophm.github.io/interpretable-ml-book/) (molnar 2019)**

@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: psychology
-category: ai
+cat: ai
 ---
 
 Some notes on papers / books surrounding psychology, especially evolutionary psychology and the psychology of explanation. These are notes on the authors' points and not an endorsement of their views.

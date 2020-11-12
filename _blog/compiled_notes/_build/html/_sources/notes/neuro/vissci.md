@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: Vision
-category: neuro
+cat: neuro
 ---
 
 #  vision

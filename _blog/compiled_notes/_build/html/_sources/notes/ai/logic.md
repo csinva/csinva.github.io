@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: logic
-category: ai
+cat: ai
 typora-copy-images-to: ../assets
 ---
 

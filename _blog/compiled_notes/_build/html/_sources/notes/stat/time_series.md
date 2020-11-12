@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: time series
-category: stat
+cat: stat
 ---
 
 #  time series

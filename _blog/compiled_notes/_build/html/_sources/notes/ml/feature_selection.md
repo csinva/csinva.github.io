@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: Feature selection
-category: ml
+cat: ml
 typora-copy-images-to: ../assets
 ---
 

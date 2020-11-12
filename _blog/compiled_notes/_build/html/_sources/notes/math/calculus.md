@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: calculus
-category: math
+cat: math
 ---
 
 #  calculus

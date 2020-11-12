@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: philosophy
-category: ai
+cat: ai
 ---
 
 **Notes on philosophy relevant to explanation (particularly in science)**

@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: graphical models
-category: stat
+cat: stat
 typora-copy-images-to: ../assets
 ---
 

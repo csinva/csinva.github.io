@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: Math Basics
-category: math
+cat: math
 ---
 
 #  math basics

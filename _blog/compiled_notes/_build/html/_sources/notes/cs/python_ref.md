@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: python ref
-category: cs
+cat: cs
 ---
 
 * TOC

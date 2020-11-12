@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: linear models
-category: stat
+cat: stat
 ---
 
 #  linear models

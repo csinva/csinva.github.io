@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: info retrieval
-category: cs
+cat: cs
 ---
 
 #  info retrieval

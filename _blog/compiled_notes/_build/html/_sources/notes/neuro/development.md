@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: Development
-category: neuro
+cat: neuro
 ---
 
 #  development

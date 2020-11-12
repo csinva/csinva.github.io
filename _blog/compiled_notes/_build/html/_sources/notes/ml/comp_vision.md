@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: Computer Vision
-category: ml
+cat: ml
 ---
 
 #  computer vision

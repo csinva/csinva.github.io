@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: kernels
-category: research
+cat: research
 ---
 
 #  kernels

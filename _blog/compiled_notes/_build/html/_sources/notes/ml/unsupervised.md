@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: Unsupervised
-category: ml
+cat: ml
 typora-copy-images-to: ../assets
 ---
 

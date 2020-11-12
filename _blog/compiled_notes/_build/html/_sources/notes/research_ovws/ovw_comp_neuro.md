@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: comp neuro
-category: research
+cat: research
 ---
 
 #  comp neuro

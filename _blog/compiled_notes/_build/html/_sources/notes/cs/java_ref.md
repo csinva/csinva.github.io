@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: Java ref
-category: cs
+cat: cs
 ---
 
 * TOC

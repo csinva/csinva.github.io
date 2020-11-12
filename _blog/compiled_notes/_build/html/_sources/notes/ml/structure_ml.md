@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: structure learning
-category: ml
+cat: ml
 ---
 
 #  structure learning

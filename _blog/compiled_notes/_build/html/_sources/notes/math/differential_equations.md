@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: Differential Equations
-category: math
+cat: math
 ---
 
 #  differential equations

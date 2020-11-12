@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: decisions
-category: ai
+cat: ai
 typora-copy-images-to: ../assets
 ---
 

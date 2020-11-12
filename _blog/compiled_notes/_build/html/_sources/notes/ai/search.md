@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: Search
-category: ai
+cat: ai
 ---
 
 #  search

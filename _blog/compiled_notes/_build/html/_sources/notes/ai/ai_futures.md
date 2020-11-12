@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: ai futures
-category: ai
+cat: ai
 ---
 
 #  ai futures

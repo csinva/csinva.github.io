@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: dl for neuro
-category: research
+cat: research
 ---
 
 

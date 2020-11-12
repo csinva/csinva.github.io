@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: Proofs
-category: math
+cat: math
 ---
 
 #  proofs

@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: Data Structures
-category: cs
+cat: cs
 ---
 
 #  data structures
