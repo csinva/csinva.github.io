@@ -1,0 +1,958 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>1.7. ml in medicine &#8212; learning to learn</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../_static/togglebutton.js"></script>
+    <script type="text/javascript" src="../../_static/clipboard.min.js"></script>
+    <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    <script type="text/javascript">var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script type="text/javascript" src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" type="text/javascript" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script type="text/javascript">
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="1.8. dl for neuro" href="ovw_dl_for_neuro.html" />
+    <link rel="prev" title="1.6. scattering transform" href="ovw_scat.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">learning to learn</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   welcome 👋
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="research_ovws.html">
+   1. research_ovws
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="ovw_comp_neuro.html">
+     1.1. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ovw_disentanglement.html">
+     1.2. disentanglement
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ovw_complexity.html">
+     1.3. complexity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ovw_interesting_science.html">
+     1.4. interesting science
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ovw_dl_theory.html">
+     1.5. dl theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ovw_scat.html">
+     1.6. scattering transform
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     1.7. ml in medicine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ovw_dl_for_neuro.html">
+     1.8. dl for neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ovw_uncertainty.html">
+     1.9. uncertainty
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ovw_interp.html">
+     1.10. interpretability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ovw_kernels.html">
+     1.11. kernels
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../cs/cs.html">
+   2. cs
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/retrieval.html">
+     2.1. info retrieval
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/python_ref.html">
+     2.2. python ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/data_structures.html">
+     2.3. data structures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/software.html">
+     2.4. software engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/quantum.html">
+     2.5. quantum
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/algo.html">
+     2.6. algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/graphs.html">
+     2.7. graphs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/os.html">
+     2.8. os
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/arch.html">
+     2.9. architecture
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/java_ref.html">
+     2.10. java ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/comp_theory.html">
+     2.11. cs theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/cpp_ref.html">
+     2.12. c/c++ ref
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../math/math.html">
+   3. math
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/differential_equations.html">
+     3.1. differential equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/proofs.html">
+     3.2. proofs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/analysis.html">
+     3.3. real analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/linear_algebra.html">
+     3.4. linear algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/signals.html">
+     3.5. signals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/optimization.html">
+     3.6. optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/calculus.html">
+     3.7. calculus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/chaos.html">
+     3.8. chaos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/math_basics.html">
+     3.9. math basics
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../stat/stat.html">
+   4. stat
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/graphical_models.html">
+     4.1. graphical models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/data_analysis.html">
+     4.2. data analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/testing.html">
+     4.3. testing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/causal_inference.html">
+     4.4. causal inference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/info_theory.html">
+     4.5. info theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/linear_models.html">
+     4.6. linear models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/time_series.html">
+     4.7. time series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/game_theory.html">
+     4.8. game theory
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ml/ml.html">
+   5. ml
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/comp_vision.html">
+     5.1. computer vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/structure_ml.html">
+     5.2. structure learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/classification.html">
+     5.3. classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/unsupervised.html">
+     5.4. unsupervised
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/deep_learning.html">
+     5.5. deep learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/feature_selection.html">
+     5.6. feature selection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/learning_theory.html">
+     5.7. learning theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/evaluation.html">
+     5.8. evaluation
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ai/ai.html">
+   6. ai
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/search.html">
+     6.1. search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/nlp.html">
+     6.2. nlp
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/fairness_sts.html">
+     6.3. fairness
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/cogsci.html">
+     6.4. cogsci
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/ai_futures.html">
+     6.5. ai futures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/logic.html">
+     6.6. logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/philosophy.html">
+     6.7. philosophy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/psychology.html">
+     6.8. psychology
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/knowledge_rep.html">
+     6.9. representations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/decisions.html">
+     6.10. decisions
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../neuro/neuro.html">
+   7. neuro
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/brain_basics.html">
+     7.1. brain basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/vissci.html">
+     7.2. vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/comp_neuro.html">
+     7.3. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/sensory_input.html">
+     7.4. sensory input
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/memory.html">
+     7.5. memory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/motor.html">
+     7.6. motor system
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/development.html">
+     7.7. development
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/notes/research_ovws/ovw_ml_medicine.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/csinva/csinva.github.io"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#general">
+   1.7.1. general
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#high-level">
+     1.7.1.1. high-level
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#criticisms">
+     1.7.1.2. criticisms
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#medical-system">
+   1.7.2. medical system
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#evaluation">
+     1.7.2.1. evaluation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#medical-education">
+     1.7.2.2. medical education
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#political-elements">
+     1.7.2.3. political elements
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#medical-communication">
+   1.7.3. medical communication
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-do-doctors-think">
+     1.7.3.1. “how do doctors think?”
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#communicating-findings">
+     1.7.3.2. communicating findings
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#examples">
+   1.7.4. examples
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#succesful-examples-of-ai-in-medicine">
+     1.7.4.1. succesful examples of ai in medicine
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#icu-interpretability-example">
+     1.7.4.2. icu interpretability example
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#high-performance-ai-studies">
+     1.7.4.3. high-performance ai studies
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#improving-medical-studies">
+   1.7.5. improving medical studies
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p><strong>some rough notes on ml in medicine</strong></p>
+<div class="section" id="ml-in-medicine">
+<h1>1.7. ml in medicine<a class="headerlink" href="#ml-in-medicine" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="general">
+<h2>1.7.1. general<a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>3 types</p>
+<ul>
+<li><p>disease and patient categorization (e.g. classification)</p></li>
+<li><p>fundamental biological study</p></li>
+<li><p>treatment of patients</p></li>
+</ul>
+</li>
+<li><p>philosophy</p>
+<ul>
+<li><p>want to focus on problems doctors can’t do</p></li>
+<li><p>alternatively, focus on automating problems parents can do to screen people at home in cost-effective way</p></li>
+</ul>
+</li>
+<li><p>websites are often easier than apps for patients</p></li>
+<li><p><a class="reference external" href="https://informatics.bmj.com/content/27/1/e100183">The clinical artificial intelligence department: a prerequisite for success</a> (cosgriff et al. 2020) - we need designated departments for clinical ai so we don’t have to rely on 3rd-party vendors and can test for things like distr. shift</p></li>
+<li><p><a class="reference external" href="https://www.statnews.com/2019/06/19/what-if-ai-in-health-care-is-next-asbestos/">challenges in ai healthcare (news)</a></p>
+<ul>
+<li><p>adversarial examples</p></li>
+<li><p>things can’t be de-identified</p></li>
+<li><p>algorithms / data can be biased</p></li>
+<li><p>correlation / causation get confused</p></li>
+</ul>
+</li>
+<li><p>healthcare is 20% of US GDP</p></li>
+</ul>
+<div class="section" id="high-level">
+<h3>1.7.1.1. high-level<a class="headerlink" href="#high-level" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>focus on building something you want to deploy</p>
+<ul>
+<li><p>clinically useful - more efficient, cutting costs?</p></li>
+<li><p>effective - does it improve the current baseline</p></li>
+<li><p>focused on patient care - what are the unintended consequences</p></li>
+</ul>
+</li>
+<li><p>need to think a lot about regulation</p>
+<ul>
+<li><p>USA: FDA</p></li>
+<li><p>Europe: CE (more convoluted)</p></li>
+</ul>
+</li>
+<li><p>intended use</p>
+<ul>
+<li><p>very specific and well-defined</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="criticisms">
+<h3>1.7.1.2. criticisms<a class="headerlink" href="#criticisms" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://science.sciencemag.org/content/366/6464/447">Dissecting racial bias in an algorithm used to manage the health of populations </a>(obermeyer et al. 2019)</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="medical-system">
+<h2>1.7.2. medical system<a class="headerlink" href="#medical-system" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="evaluation">
+<h3>1.7.2.1. evaluation<a class="headerlink" href="#evaluation" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>doctors are evaluated infrequently (and things like personal traits are often included)</p></li>
+<li><p>US has pretty good care but it is expensive per patient</p></li>
+<li><p>expensive things (e.g. Da Vinci robot)</p></li>
+<li><p>even if ml is not perfect, it may still outperform some doctors</p></li>
+</ul>
+</div>
+<div class="section" id="medical-education">
+<h3>1.7.2.2. medical education<a class="headerlink" href="#medical-education" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>rarely textbooks (often just slides)</p></li>
+<li><p>1-2% miss rate for diagnosis can be seen as acceptable</p></li>
+<li><p><a class="reference external" href="https://www.newyorker.com/magazine/2007/01/29/whats-the-trouble">how doctors think</a></p>
+<ul>
+<li><p>2 years: memorizing facts about physiology, pharmacology, and pathology</p></li>
+<li><p>2 years learning practical applications for this knowledge, such as how to decipher an EKG and how to determine the appropriate dose of insulin for a diabetic</p></li>
+<li><p>little emphasis on metal logic for making a correct diagnosis and avoiding mistakes</p></li>
+<li><p>see work by pat croskerry</p></li>
+<li><p>there is limited data on misdiagnosis rates</p></li>
+<li><p><strong>representativeness</strong> error - thinking is overly influenced by what is typically true</p></li>
+<li><p><strong>availability</strong> error - tendency to judge the likelihood of an event by the ease with which relevant examples come to mind</p>
+<ul>
+<li><p>common infections tend to occur in epidemics, afflicting large numbers of people in a single community at the same time</p></li>
+<li><p>confirmation bias</p></li>
+</ul>
+</li>
+<li><p><strong>affective</strong> error - decisions based on what we wish were true (e.g. caring too much about patient)</p></li>
+<li><p>See one, do one, teach one - teaching axiom</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="political-elements">
+<h3>1.7.2.3. political elements<a class="headerlink" href="#political-elements" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.newyorker.com/culture/annals-of-inquiry/why-doctors-should-organize">why doctors should organize</a></p></li>
+<li><p>big pharma</p></li>
+<li><p>day-to-day</p>
+<ul>
+<li><p>Doctors now face a burnout epidemic: thirty-five per cent of them show signs of high depersonalization</p></li>
+<li><p>according to one recent <a class="reference external" href="https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/2730353?resultClick=1">report</a>, only thirteen per cent of a physician’s day, on average, is spent on doctor-patient interaction</p></li>
+<li><p><a class="reference external" href="https://www.nytimes.com/2017/11/14/well/live/the-patients-vs-paperwork-problem-for-doctors.html">study</a> during an average, eleven-hour workday, six hours are spent at the keyboard, maintaining electronic health records.</p></li>
+<li><p>medicare’s r.v.u - changes how doctors are reimbursed, emphasising procedural over cognitive things</p></li>
+<li><p>ai could help - make simple diagnoses faster, reduce paperwork, help patients manage their own diseases like diabetes</p></li>
+<li><p>ai could also make things worse - hospitals are mostly run by business people</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="medical-communication">
+<h2>1.7.3. medical communication<a class="headerlink" href="#medical-communication" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="how-do-doctors-think">
+<h3>1.7.3.1. “how do doctors think?”<a class="headerlink" href="#how-do-doctors-think" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>easy to misinterpret things to be causal</p></li>
+<li><p>often no intuition for even relatively simple engineered features, such as averages</p></li>
+<li><p>doctors require context for features (e.g. this feature is larger than the average)</p></li>
+<li><p>often have some rules memorized (otherwise memorize what needs to be looked up)</p>
+<ul>
+<li><p>unclear how well doctors follow rules</p></li>
+<li><p>some rules are 1-way (e.g. only follow it if it says there is danger, otherwise use your best judgement)</p>
+<ul>
+<li><p>2-way rules are better</p></li>
+<li><p>without proper education 1-way rules can be dangerously used as 2-way rules</p></li>
+<li><p>doesn’t make sense to judge 1-way rules on both sepcificity and sensitivity</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>rules are often ambiguous (e.g. what constitutes vomiting)</p></li>
+<li><p><strong>doctors adapt to personal experience</strong> - may be unfair to evaluate them on larger dataset</p></li>
+<li><p>sometimes said that doctors know 10 medications by heart</p></li>
+<li><p><a class="reference external" href="https://www.amjmed.com/article/S0002-9343(08)00152-6/pdf">Overconfidence in Clinical Decision Making</a> (croskerry 2008)</p>
+<ul>
+<li><p>most uncertainty: family medicine [FM] and emergency medicine [EM]</p></li>
+<li><p>some uncertainty: internal medicine</p></li>
+<li><p>little uncertainty: specialty disciplines</p></li>
+<li><p>2 systems at work: intuitive (uses context, heuristics) vs analytic (systematic, rule-based)</p>
+<ul>
+<li><p>a combination of both performs best</p></li>
+</ul>
+</li>
+<li><p>doctors are often black boxes as well - validated infrequently, unclear how closely they follow rules</p></li>
+<li><p>doctors adapt to local conditions - should be evaluated only on local dataset</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://jamanetwork.com/journals/jama/fullarticle/2752750">potential liabilities for physicians using ai</a> (price et al. 2019)</p></li>
+<li><p><a class="reference external" href="https://www.newyorker.com/magazine/2007/01/29/whats-the-trouble">What’s the trouble. How doctors think</a>. New Yorker. 2007</p></li>
+<li><p><a class="reference external" href="https://jamanetwork.com/journals/jama/article-abstract/192850?utm_campaign=articlePDF&amp;utm_medium=articlePDFlink&amp;utm_source=articlePDF&amp;utm_content=jamapediatrics.2019.1075">JAMA Users’ Guide to the Medical Literature</a></p></li>
+<li><p>[TRIPOD 22 points paper](https://www.tripod-statement.org/Portals/0/Tripod Checklist Prediction Model Development and Validation PDF.pdf)</p></li>
+<li><p><a class="reference external" href="https://step1.medbullets.com/topic/dashboard?id=101&amp;specialty=101">basic stats in the step1 exam</a></p></li>
+<li><p><a class="reference external" href="https://jamanetwork.com/journals/jama/fullarticle/2754798">How to Read Articles That Use Machine Learning: Users’ Guides to the Medical Literature</a> (liu et al. 2019</p></li>
+<li><p><a class="reference external" href="https://www.annemergmed.com/article/S0196-0644(18)30327-5/pdf">Carmelli et al. 2018</a> - primer for CDRs but also a good example of what sort of article I have envisioned creating.</p></li>
+<li><p><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pubmed/24746846">Looking through the retrospectoscope: reducing bias in emergency medicine chart review studies.</a> (kaji et al. 2018)</p></li>
+</ul>
+</div>
+<div class="section" id="communicating-findings">
+<h3>1.7.3.2. communicating findings<a class="headerlink" href="#communicating-findings" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://modelplot.github.io/intro_modelplotpy.html">don’t use ROC curves, use deciles</a></p></li>
+<li><p><a class="reference external" href="https://jamanetwork.com/journals/jama/fullarticle/2748179">need to evaluate use, not just metric</a></p></li>
+<li><p>internal/external validity = training/testing error</p></li>
+<li><p>model -&gt; fitted model</p></li>
+<li><p>retrospective (more confounding, looks back) vs prospective study</p></li>
+<li><p>internal/external validity = train/test (although external was usually using different patient population, so is stronger)</p></li>
+<li><p>specificity/sensitivity = precision/recall</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="examples">
+<h2>1.7.4. examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="succesful-examples-of-ai-in-medicine">
+<h3>1.7.4.1. succesful examples of ai in medicine<a class="headerlink" href="#succesful-examples-of-ai-in-medicine" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.nejm.org/doi/full/10.1056/NEJM199112193252503">ECG</a> (NEJM, 1991)</p></li>
+<li><p>EKG has a small interpretation on it</p></li>
+<li><p>there used to be bayesian networks / expert systems but they went away…</p></li>
+</ul>
+</div>
+<div class="section" id="icu-interpretability-example">
+<h3>1.7.4.2. icu interpretability example<a class="headerlink" href="#icu-interpretability-example" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>goal: explain the model not the patient (that is the doctor’s job)</p></li>
+<li><p>want to know interactions between features</p></li>
+<li><p>some features are difficult to understand</p>
+<ul>
+<li><p>e.g. max over this window, might seem high to a doctor unless they think about it</p></li>
+</ul>
+</li>
+<li><p>some features don’t really make sense to change (e.g. was this thing measured)</p></li>
+<li><p>doctors like to see trends - patient health changes over time and must include history</p></li>
+<li><p>feature importance under intervention</p></li>
+</ul>
+</div>
+<div class="section" id="high-performance-ai-studies">
+<h3>1.7.4.3. high-performance ai studies<a class="headerlink" href="#high-performance-ai-studies" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>chest-xray: chexnet</p></li>
+<li><p>echocardiograms: madani, ali, et al. 2018</p></li>
+<li><p>skin: esteva, andre, et al. 2017</p></li>
+<li><p>pathology: campanella, gabriele, et al.. 2019</p></li>
+<li><p>mammogram: kerlikowske, karla, et al. 2018</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="improving-medical-studies">
+<h2>1.7.5. improving medical studies<a class="headerlink" href="#improving-medical-studies" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Machine learning methods for developing precision treatment rules with observational data (Kessler et al. 2019)</p>
+<ul>
+<li><p>goal: find precision treatment rules</p></li>
+<li><p>problem: need large sample sizes but can’t obtain them in RCTs</p></li>
+<li><p>recommendations</p>
+<ul>
+<li><p>screen important predictors using large observational medical records rather than RCTs</p>
+<ul>
+<li><p>important to do matching / weighting to account for bias in treatment assignments</p></li>
+<li><p>alternatively, can look for natural experiment / instrumental variable / discontinuity analysis</p></li>
+<li><p>has many benefits</p></li>
+</ul>
+</li>
+<li><p>modeling: should use ensemble methods rather than individual models</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes/research_ovws"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="ovw_scat.html" title="previous page">1.6. scattering transform</a>
+    <a class='right-next' id="next-link" href="ovw_dl_for_neuro.html" title="next page">1.8. dl for neuro</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Chandan Singh<br/>
+        
+            &copy; Copyright None.<br/>
+          <div class="extra_footer">
+            <p>
+Many of these images are taken from resources on the web.
+</p>
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

@@ -1,0 +1,1115 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>6.9. representations &#8212; learning to learn</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../_static/togglebutton.js"></script>
+    <script type="text/javascript" src="../../_static/clipboard.min.js"></script>
+    <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    <script type="text/javascript">var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script type="text/javascript" src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" type="text/javascript" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script type="text/javascript">
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="6.10. decisions" href="decisions.html" />
+    <link rel="prev" title="6.8. psychology" href="psychology.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">learning to learn</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   welcome 👋
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../research_ovws/research_ovws.html">
+   1. research_ovws
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_comp_neuro.html">
+     1.1. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_disentanglement.html">
+     1.2. disentanglement
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_complexity.html">
+     1.3. complexity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_interesting_science.html">
+     1.4. interesting science
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_dl_theory.html">
+     1.5. dl theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_scat.html">
+     1.6. scattering transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">
+     1.7. ml in medicine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_dl_for_neuro.html">
+     1.8. dl for neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_uncertainty.html">
+     1.9. uncertainty
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_interp.html">
+     1.10. interpretability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_kernels.html">
+     1.11. kernels
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../cs/cs.html">
+   2. cs
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/retrieval.html">
+     2.1. info retrieval
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/python_ref.html">
+     2.2. python ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/data_structures.html">
+     2.3. data structures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/software.html">
+     2.4. software engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/quantum.html">
+     2.5. quantum
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/algo.html">
+     2.6. algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/graphs.html">
+     2.7. graphs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/os.html">
+     2.8. os
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/arch.html">
+     2.9. architecture
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/java_ref.html">
+     2.10. java ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/comp_theory.html">
+     2.11. cs theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/cpp_ref.html">
+     2.12. c/c++ ref
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../math/math.html">
+   3. math
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/differential_equations.html">
+     3.1. differential equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/proofs.html">
+     3.2. proofs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/analysis.html">
+     3.3. real analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/linear_algebra.html">
+     3.4. linear algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/signals.html">
+     3.5. signals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/optimization.html">
+     3.6. optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/calculus.html">
+     3.7. calculus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/chaos.html">
+     3.8. chaos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/math_basics.html">
+     3.9. math basics
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../stat/stat.html">
+   4. stat
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/graphical_models.html">
+     4.1. graphical models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/data_analysis.html">
+     4.2. data analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/testing.html">
+     4.3. testing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/causal_inference.html">
+     4.4. causal inference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/info_theory.html">
+     4.5. info theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/linear_models.html">
+     4.6. linear models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/time_series.html">
+     4.7. time series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/game_theory.html">
+     4.8. game theory
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ml/ml.html">
+   5. ml
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/comp_vision.html">
+     5.1. computer vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/structure_ml.html">
+     5.2. structure learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/classification.html">
+     5.3. classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/unsupervised.html">
+     5.4. unsupervised
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/deep_learning.html">
+     5.5. deep learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/feature_selection.html">
+     5.6. feature selection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/learning_theory.html">
+     5.7. learning theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/evaluation.html">
+     5.8. evaluation
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="ai.html">
+   6. ai
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="search.html">
+     6.1. search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="nlp.html">
+     6.2. nlp
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="fairness_sts.html">
+     6.3. fairness
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cogsci.html">
+     6.4. cogsci
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ai_futures.html">
+     6.5. ai futures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="logic.html">
+     6.6. logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="philosophy.html">
+     6.7. philosophy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="psychology.html">
+     6.8. psychology
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     6.9. representations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="decisions.html">
+     6.10. decisions
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../neuro/neuro.html">
+   7. neuro
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/brain_basics.html">
+     7.1. brain basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/vissci.html">
+     7.2. vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/comp_neuro.html">
+     7.3. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/sensory_input.html">
+     7.4. sensory input
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/memory.html">
+     7.5. memory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/motor.html">
+     7.6. motor system
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/development.html">
+     7.7. development
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/notes/ai/knowledge_rep.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/csinva/csinva.github.io"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#intro">
+   6.9.1. intro
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#symbol-search">
+   6.9.2. symbol search
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#symbols-and-physical-symbol-systems">
+     6.9.2.1. symbols and physical symbol systems
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#heuristic-searching">
+     6.9.2.2. heuristic searching
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#knowledge-representation">
+   6.9.3. knowledge representation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#expert-systems">
+   6.9.4. expert systems
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#godel-escher-bach">
+   6.9.5. Godel, Escher, Bach
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#meta">
+     6.9.5.1. meta
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#music">
+     6.9.5.2. music
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ai">
+     6.9.5.3. ai
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#brain">
+     6.9.5.4. brain
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interpretation">
+     6.9.5.5. interpretation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#math-logic">
+     6.9.5.6. math / logic
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#causality">
+     6.9.5.7. causality
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#biology">
+     6.9.5.8. biology
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="representations">
+<h1>6.9. representations<a class="headerlink" href="#representations" title="Permalink to this headline">¶</a></h1>
+<p>Some notes on knowledge representation based on Berkeley’s CS 188 course and  “Artificial Intelligence” Russel &amp; Norvig 3rd Edition</p>
+<div class="section" id="intro">
+<h2>6.9.1. intro<a class="headerlink" href="#intro" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>AI - field of study which studies the goal of creating intelligence</p>
+<ul>
+<li><p><em>intelligent agent</em> - system that perceives its environment and takes actions that maximize its chances of success</p></li>
+</ul>
+</li>
+<li><p>expert task examples - medical diagnosis, equipment repair, computer configuration, financial planning</p></li>
+</ul>
+<ol class="simple">
+<li><p>formal systems - use axioms and formal logic</p></li>
+<li><p><em>ontologies</em> - structuring knowledge in graph form</p></li>
+<li><p>statistical methods</p></li>
+</ol>
+<ul class="simple">
+<li><p><em>turing test</em> - is human mind deterministic { turing1950computing }</p></li>
+<li><p><em>chinese room argument</em> - rebuts turing test { cite searle1980minds }</p></li>
+<li><p><em>china brain</em> - what if different people hit buttons to fire individual neurons</p></li>
+</ul>
+</div>
+<div class="section" id="symbol-search">
+<h2>6.9.2. symbol search<a class="headerlink" href="#symbol-search" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>computer science - empirical inquiry</p></li>
+</ul>
+<div class="section" id="symbols-and-physical-symbol-systems">
+<h3>6.9.2.1. symbols and physical symbol systems<a class="headerlink" href="#symbols-and-physical-symbol-systems" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>intelligence requires the ability to store and manipulate symbols</p></li>
+<li><p>laws of qualitative structure</p>
+<ul class="simple">
+<li><p>cell doctrine in biology</p></li>
+<li><p>plate tectonics in geology</p></li>
+<li><p>germ theory of disease</p></li>
+<li><p>doctrine of atomism</p></li>
+</ul>
+</li>
+<li><p>“physical”</p>
+<ol class="simple">
+<li><p>obey laws of physics</p></li>
+<li><p>not restricted to human systems</p></li>
+</ol>
+<ul class="simple">
+<li><p><em>designation</em> - then given the expression, the system can affect the object</p></li>
+<li><p><em>interpretation</em> - expression designates a process</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="heuristic-searching">
+<h3>6.9.2.2. heuristic searching<a class="headerlink" href="#heuristic-searching" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>symbol systems solve problems with <em>heuristic search</em></p></li>
+<li><p><em>Heuristic Search Hypothesis</em> - solutions are represented as symbol structures. A physical symbol system exercises its intelligence in problem solving by search–that is, by generating and progressively modifying symbol structures until it produces a solution structure</p>
+<ul>
+<li><p>from { cite newell1976computer }</p></li>
+</ul>
+</li>
+<li><p>there are practical limitations on how fast computers can search</p></li>
+<li><p>To state a problem is to designate</p>
+<ol class="simple">
+<li><p>a test for a class of symbol structures (solutions of the problem)</p></li>
+<li><p>a generator of symbol structures (potential solutions).</p></li>
+</ol>
+</li>
+<li><p>To solve a problem is to generate a structure, using (2), that satisfies the test of (1).</p></li>
+<li><p>searching is generally in a tree-form</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="knowledge-representation">
+<h2>6.9.3. knowledge representation<a class="headerlink" href="#knowledge-representation" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p><em>physical symbol system hypothesis</em> - a physical symbol system has the necessary and sufficient means for general intelligent action</p>
+<ul class="simple">
+<li><p>computers and minds are both <em>physical symbol systems</em></p></li>
+<li><p><em>symbol</em> - meaningful pattern that can be manipulated</p></li>
+<li><p>symbol system - creates, modifies, destroys symbols</p></li>
+</ul>
+</li>
+<li><p>want to represent</p>
+<ol class="simple">
+<li><p><em>meta-knowledge</em> - knowledge about what we know</p></li>
+<li><p><em>objects</em> - facts</p></li>
+<li><p><em>performance</em> - knowledge about how to do things</p></li>
+<li><p><em>events</em> - actions</p></li>
+</ol>
+</li>
+<li><p>two levels</p>
+<ol class="simple">
+<li><p>knowledge level - where facts are described</p></li>
+<li><p>symbol level - lower</p></li>
+</ol>
+</li>
+<li><p>properties</p>
+<ol class="simple">
+<li><p>representational adequacy - ability to represent</p></li>
+<li><p>inferential adequacy</p></li>
+<li><p>inferential efficiency</p></li>
+<li><p>acquisitional efficiency - acquire new information</p></li>
+</ol>
+</li>
+<li><p>two views of knowledge</p>
+<ol class="simple">
+<li><p>logic</p></li>
+</ol>
+<ul class="simple">
+<li><p>a <em>logic</em> is a language with concrete rules</p></li>
+<li><p><em>syntax</em> - rules for constructing legal logic</p></li>
+<li><p><em>semantics</em> - how we interpret / read</p>
+<ul>
+<li><p>assigns a meaning</p></li>
+</ul>
+</li>
+<li><p>multi-valued logic - not just booleans</p></li>
+<li><p>higher-order logic - functions / predicates are also objects</p></li>
+<li><p>multi-valued logics - more than 2 truth values</p>
+<ul>
+<li><p>fuzzy logic - uses probabilities rather than booleans</p></li>
+</ul>
+</li>
+<li><p>match-resolve-act cycle</p></li>
+</ul>
+<ol class="simple">
+<li><p>associationist</p></li>
+</ol>
+<ul class="simple">
+<li><p>knowledge based on observation</p>
+<ul>
+<li><p>semantic networks - objects and relationships between them		- like is a, can, has</p></li>
+<li><p><em>graphical representation</em></p></li>
+<li><p>equivalent to logical statements</p></li>
+<li><p>ex. nlp - conceptual dependency theory - sentences with same meaning have same graphs</p></li>
+<li><p><em>frame representations</em> - semantic networks where nodes have structure</p>
+<ul>
+<li><p>ex. each frame has age, height, weight, …</p></li>
+</ul>
+</li>
+<li><p>when agent faces <em>new situation</em> - slots can be filled in, may trigger actions / retrieval of other frames</p></li>
+<li><p>inheritance of properties between frames</p></li>
+<li><p>frames can contain relationships and procedures to carry out after various slots filled</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>statistical</p>
+<ul class="simple">
+<li><p>distributed - usually different from sparse code (sparser generally less robust)</p>
+<ul>
+<li><p>opposite of sparse code = dense code</p></li>
+<li><p>have to check multiple indexes</p></li>
+<li><p>penti’s work: distributed</p></li>
+<li><p>usually want these to be robust</p></li>
+<li><p>nlp is main place where unsupervised pretraining widely used</p></li>
+</ul>
+</li>
+<li><p>hierarchical</p></li>
+<li><p>good representations - <em>linearly separable</em></p></li>
+<li><p>representation that <em>factors</em></p></li>
+<li><p>information bottleneck method: want simple representation that keeps class but throws away lots of extraneous info</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="expert-systems">
+<h2>6.9.4. expert systems<a class="headerlink" href="#expert-systems" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><em>expert system</em> - program that contains some of the subject-specific knowledge of one or more human experts.</p></li>
+<li><p>problems</p>
+<ol class="simple">
+<li><p>planning</p></li>
+<li><p>monitoring</p></li>
+<li><p>instruction</p></li>
+<li><p>control</p></li>
+</ol>
+</li>
+<li><p>need lots of knowledge to be intelligent</p></li>
+<li><p><em>rule-based architecture</em> - condition-action rules &amp; database of facts</p></li>
+<li><p>acquire new facts</p>
+<ul>
+<li><p>from human operator</p></li>
+<li><p>interacting with environment directly</p></li>
+</ul>
+</li>
+<li><p>forward chaining</p>
+<ul>
+<li><p>until special HALT symbol in DB, keep following logical rule, add result to DB</p></li>
+</ul>
+</li>
+<li><p>conflict resolution - which rule to apply when many choices available</p></li>
+<li><p><em>pattern matching</em> - logic in the if statements</p></li>
+<li><p><em>backward chaining</em> - check if something is true</p>
+<ul>
+<li><p>check database</p></li>
+<li><p>check if on the right side of any facts</p></li>
+</ul>
+</li>
+<li><p><em>CLIPS</em> - expert system shell</p>
+<ul>
+<li><p>define rules and functions…</p></li>
+</ul>
+</li>
+<li><p><em>explanation subsystem</em> - provide explanation of reasoning that led to conclusion</p></li>
+<li><p>people</p>
+<ol class="simple">
+<li><p><em>knowledge engineer</em> - computer scientist who designs / implements ai</p></li>
+<li><p><em>domain expert</em> - has domain knowledge</p></li>
+</ol>
+</li>
+</ul>
+<ol class="simple">
+<li><p>user interface</p></li>
+<li><p>knowledge engineering - art of designing and building expert systems</p></li>
+</ol>
+<ul class="simple">
+<li><p>determine characteristics of problem</p></li>
+<li><p><em>automatic knowledge-acquisition</em> - set of techniques for gaining new knowledge</p>
+<ul>
+<li><p>ex. parse Wikipedia</p></li>
+<li><p>crowdsourcing</p></li>
+</ul>
+</li>
+<li><p>creating an expert system can be very hard</p>
+<ul>
+<li><p>only useful when expert isn’t available, problem uses symbolic reasoning, problem is well-structured</p></li>
+</ul>
+</li>
+<li><p><em>MYCIN</em> - one of first successful expert systems { cite shortliffe2012computer }</p>
+<ul>
+<li><p>Stanford in 1970s</p></li>
+<li><p>used backward chaining but would ask patient questions - sometimes too many questions</p></li>
+</ul>
+</li>
+<li><p>advantages</p>
+<ul>
+<li><p>can explain reasoning</p></li>
+<li><p>can free up human experts to deal with rare problems</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="godel-escher-bach">
+<h2>6.9.5. Godel, Escher, Bach<a class="headerlink" href="#godel-escher-bach" title="Permalink to this headline">¶</a></h2>
+<p><strong>Douglas Hofstadter, 1979</strong></p>
+<div class="section" id="meta">
+<h3>6.9.5.1. meta<a class="headerlink" href="#meta" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>strange loop</em> = paradox - self-referential</p></li>
+<li><p>zen enlightenment</p>
+<ul>
+<li><p>goal: transcend <strong>dualism</strong> = division into concepts (perception, words do this)</p></li>
+<li><p>words give you some truth but always fail to describe some parts of the truth</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="music">
+<h3>6.9.5.2. music<a class="headerlink" href="#music" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>canons</strong> - repeat w/ subtle changes (e.g. pitch shift)</p></li>
+<li><p><strong>fugue</strong> - repeat w/ more substantial changes</p></li>
+</ul>
+</div>
+<div class="section" id="ai">
+<h3>6.9.5.3. ai<a class="headerlink" href="#ai" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>essential abilities - <strong>can we do these things unsupervised?</strong></p>
+<ul>
+<li><p>to recognize the relative importance of different elements of a situation</p></li>
+<li><p>to find similarities between situations despite differences which may separate them;</p></li>
+<li><p>to draw distinctions between situations despite similarities which may link them</p></li>
+<li><p>to synthesize new concepts by taking old concepts and putting them together in new ways</p></li>
+</ul>
+</li>
+<li><p>intelligence consists of rules at different levels</p>
+<ul>
+<li><p>“just plain” rules - like reflexes which respond to stereotyped situations</p></li>
+<li><p>metarules - when situations are mixtures of steretoyped situations, requires rules for deciding which “just plain” rules to apply</p></li>
+<li><p>rules for inventing new rules - when situations can’t be classified</p>
+<ul>
+<li><p>rules may have to change themselves</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>messages - comparison of DNA to a jukebox</p>
+<ul>
+<li><p>where is info stored? records? buttons? smashed buttons?</p></li>
+<li><p>what could constitute a Rosetta stone for DNA codes?</p></li>
+<li><p>3 parts</p>
+<ul>
+<li><p>frame - tells you that this is a message</p></li>
+<li><p>outer - tells you how to read a message (e.g. language, style)</p></li>
+<li><p>inner - actual content</p></li>
+</ul>
+</li>
+<li><p>if decoding is universal, we might call the outer message (e.g. the trigger) the message</p></li>
+</ul>
+</li>
+<li><p>memory - same bits can be used for different things - part of each message specifies the instruction type</p></li>
+</ul>
+</div>
+<div class="section" id="brain">
+<h3>6.9.5.4. brain<a class="headerlink" href="#brain" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>intelligence involves a calculus of descriptions = symbols</p>
+<ul>
+<li><p>symbols represent both classes + instances (maybe both depending on amount of activation / context) - def need some context</p></li>
+<li><p>can have links to other symbols (+priors on these)</p></li>
+<li><p><em>top-down logical structure</em>??</p></li>
+<li><p>different ways to combine symbols get blurry</p>
+<ul>
+<li><p>symbols can be learned to branch, merge</p></li>
+</ul>
+</li>
+<li><p>can harness temporal firing rates to encode more</p></li>
+<li><p>can grow incrementally (greedily)</p></li>
+</ul>
+</li>
+<li><p>analogy of thoughts as trips on a (poorly fleshed out) map</p></li>
+</ul>
+</div>
+<div class="section" id="interpretation">
+<h3>6.9.5.5. interpretation<a class="headerlink" href="#interpretation" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>ex. top is decimal expansion of the sum of the second (<span class="math notranslate nohighlight">\(\pi/4\)</span>)</p>
+<ul>
+<li><p>7, 8, 5, 3, 9, 8, 1, 6, …</p></li>
+<li><p>1, -1/3, +1/5, -1/7, +1/9, -1/11…</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="math-logic">
+<h3>6.9.5.6. math / logic<a class="headerlink" href="#math-logic" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>godel’s thm</strong> - limitation of any formal axiomatic system: cannot make a program to find a complete + consistent set of axioms</p></li>
+<li><p><strong>church-turing thesis</strong> - a function on the natural numbers can be calculated by an effective method if and only if it is computable by a Turing machine</p>
+<ul>
+<li><p>no system can do computation which cannot be broken down into simple elements</p></li>
+</ul>
+</li>
+<li><p><strong>decision procedure</strong> - decides whether something is a theorem - must terminate</p></li>
+<li><p>we can think of theorems as strings in a formal system</p></li>
+<li><p><strong>interpretation</strong> - correspondence between symbols and words</p>
+<ul>
+<li><p>ideally, these are meaningful isomorphisms between codes and reality</p></li>
+<li><p>not all interpretations imply meaningful (or valid) corresponding codes</p></li>
+<li><p>there might be multiple, equally valid interpretations</p></li>
+<li><p>consistency depends on interpretation:</p></li>
+<li><p><strong>consistency</strong> - when every theorem, upon interpretation, comes out true (in some imaginable world)</p></li>
+<li><p><strong>completeness</strong> - when all statements which are true (in some imageinable world), and which can be expressed as well-formed strings of the system, are theorems</p></li>
+</ul>
+</li>
+<li><p>slightly different axioms lead to elliptical/hyperbolic geometry instead of Euclidean geometry</p></li>
+<li><p>godel numbering - can replace all symbols w/ numbers and all typographic rules w/ arithmetic rules</p></li>
+<li><p>2 key idesas</p>
+<ul>
+<li><p>strings can speak about other strings</p></li>
+<li><p>self-scrutiny can be entire concentrated into a single string</p></li>
+</ul>
+</li>
+<li><p>every aspect of thinking can be viewed as a high-level description of a system which, on a low level, is governed by simple, even formal rules</p></li>
+</ul>
+</div>
+<div class="section" id="causality">
+<h3>6.9.5.7. causality<a class="headerlink" href="#causality" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>what counterfactuals are the most realistic</p>
+<ul>
+<li><p>different things are stable at different levels</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="biology">
+<h3>6.9.5.8. biology<a class="headerlink" href="#biology" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>dna -&gt; rna -&gt; proteins = sequence of amino acids</p>
+<ul>
+<li><p>folds w/ valrious levels of structure (like music)</p></li>
+</ul>
+</li>
+<li><p>self-rep - what counts?</p>
+<ul>
+<li><p>quine? instructions on jukebox? human reproduction?</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes/ai"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="psychology.html" title="previous page">6.8. psychology</a>
+    <a class='right-next' id="next-link" href="decisions.html" title="next page">6.10. decisions</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Chandan Singh<br/>
+        
+            &copy; Copyright None.<br/>
+          <div class="extra_footer">
+            <p>
+Many of these images are taken from resources on the web.
+</p>
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

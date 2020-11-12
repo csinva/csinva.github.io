@@ -1,0 +1,1451 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>4.1. graphical models &#8212; learning to learn</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../_static/togglebutton.js"></script>
+    <script type="text/javascript" src="../../_static/clipboard.min.js"></script>
+    <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    <script type="text/javascript">var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script type="text/javascript" src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" type="text/javascript" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script type="text/javascript">
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="4.2. data analysis" href="data_analysis.html" />
+    <link rel="prev" title="4. stat" href="stat.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">learning to learn</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   welcome 👋
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../research_ovws/research_ovws.html">
+   1. research_ovws
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_comp_neuro.html">
+     1.1. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_disentanglement.html">
+     1.2. disentanglement
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_complexity.html">
+     1.3. complexity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_interesting_science.html">
+     1.4. interesting science
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_dl_theory.html">
+     1.5. dl theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_scat.html">
+     1.6. scattering transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">
+     1.7. ml in medicine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_dl_for_neuro.html">
+     1.8. dl for neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_uncertainty.html">
+     1.9. uncertainty
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_interp.html">
+     1.10. interpretability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_kernels.html">
+     1.11. kernels
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../cs/cs.html">
+   2. cs
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/retrieval.html">
+     2.1. info retrieval
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/python_ref.html">
+     2.2. python ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/data_structures.html">
+     2.3. data structures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/software.html">
+     2.4. software engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/quantum.html">
+     2.5. quantum
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/algo.html">
+     2.6. algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/graphs.html">
+     2.7. graphs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/os.html">
+     2.8. os
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/arch.html">
+     2.9. architecture
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/java_ref.html">
+     2.10. java ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/comp_theory.html">
+     2.11. cs theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/cpp_ref.html">
+     2.12. c/c++ ref
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../math/math.html">
+   3. math
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/differential_equations.html">
+     3.1. differential equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/proofs.html">
+     3.2. proofs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/analysis.html">
+     3.3. real analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/linear_algebra.html">
+     3.4. linear algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/signals.html">
+     3.5. signals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/optimization.html">
+     3.6. optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/calculus.html">
+     3.7. calculus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/chaos.html">
+     3.8. chaos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/math_basics.html">
+     3.9. math basics
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="stat.html">
+   4. stat
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     4.1. graphical models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="data_analysis.html">
+     4.2. data analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="testing.html">
+     4.3. testing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="causal_inference.html">
+     4.4. causal inference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="info_theory.html">
+     4.5. info theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="linear_models.html">
+     4.6. linear models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="time_series.html">
+     4.7. time series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="game_theory.html">
+     4.8. game theory
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ml/ml.html">
+   5. ml
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/comp_vision.html">
+     5.1. computer vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/structure_ml.html">
+     5.2. structure learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/classification.html">
+     5.3. classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/unsupervised.html">
+     5.4. unsupervised
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/deep_learning.html">
+     5.5. deep learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/feature_selection.html">
+     5.6. feature selection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/learning_theory.html">
+     5.7. learning theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/evaluation.html">
+     5.8. evaluation
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ai/ai.html">
+   6. ai
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/search.html">
+     6.1. search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/nlp.html">
+     6.2. nlp
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/fairness_sts.html">
+     6.3. fairness
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/cogsci.html">
+     6.4. cogsci
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/ai_futures.html">
+     6.5. ai futures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/logic.html">
+     6.6. logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/philosophy.html">
+     6.7. philosophy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/psychology.html">
+     6.8. psychology
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/knowledge_rep.html">
+     6.9. representations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/decisions.html">
+     6.10. decisions
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../neuro/neuro.html">
+   7. neuro
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/brain_basics.html">
+     7.1. brain basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/vissci.html">
+     7.2. vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/comp_neuro.html">
+     7.3. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/sensory_input.html">
+     7.4. sensory input
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/memory.html">
+     7.5. memory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/motor.html">
+     7.6. motor system
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/development.html">
+     7.7. development
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/notes/stat/graphical_models.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/csinva/csinva.github.io"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview">
+   4.1.1. overview
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bayesian-networks-r-n-14-1-5-j-2">
+   4.1.2. bayesian networks - R &amp; N 14.1-5 + J 2
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hybrid-bn-both-continuous-discrete-vars">
+     4.1.2.1. hybrid BN (both continuous &amp; discrete vars)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exact-inference">
+     4.1.2.2. exact inference
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#approximate-inferences-in-bns">
+     4.1.2.3. approximate inferences in BNs
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conditional-independence-properties">
+     4.1.2.4. conditional independence properties
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#undirected">
+   4.1.3. undirected
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#elimination-j-3">
+   4.1.4. elimination - J 3
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#propagation-factor-graphs-j-4">
+   4.1.5. propagation factor graphs - J 4
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#probabilistic-inference-on-trees">
+     4.1.5.1. probabilistic inference on trees
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#factor-graphs">
+     4.1.5.2. factor graphs
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#maximum-a-posteriori-map">
+     4.1.5.3. maximum a posteriori (MAP)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dynamic-bayesian-nets">
+   4.1.6. dynamic bayesian nets
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#state-space-model">
+     4.1.6.1. state space model
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hmm">
+     4.1.6.2. hmm
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#kalman-filtering">
+     4.1.6.3. kalman filtering
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#general-dbns">
+     4.1.6.4. general dbns
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#structure-learning">
+   4.1.7. structure learning
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="graphical-models">
+<h1>4.1. graphical models<a class="headerlink" href="#graphical-models" title="Permalink to this headline">¶</a></h1>
+<p><em>Material from Russell and Norvig “Artifical Intelligence” 3rd Edition</em> and <em>Jordan “Graphical Models”</em></p>
+<div class="section" id="overview">
+<h2>4.1.1. overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>network types</p>
+<ol class="simple">
+<li><p><em>bayesian networks</em> - directed</p></li>
+<li><p>undirected models</p></li>
+</ol>
+</li>
+<li><p>latent variable types</p>
+<ol class="simple">
+<li><p><em>mixture models</em> - discrete latent variable</p></li>
+<li><p><em>factor analysis models</em> - continuous latent variable</p></li>
+</ol>
+</li>
+<li><p>graph representation: missing edges specify independence (converse is not true)</p>
+<ul>
+<li><p>encode conditional independence relationships</p>
+<ul>
+<li><p>helpful for inference</p></li>
+</ul>
+</li>
+<li><p>compact representation of joint prob. distr. over the variables</p></li>
+</ul>
+</li>
+</ul>
+<p><img alt="" src="../../_images/models.png" /></p>
+<ul class="simple">
+<li><p>dark is observed for HMMs, for other things unclear what it means</p></li>
+</ul>
+</div>
+<div class="section" id="bayesian-networks-r-n-14-1-5-j-2">
+<h2>4.1.2. bayesian networks - R &amp; N 14.1-5 + J 2<a class="headerlink" href="#bayesian-networks-r-n-14-1-5-j-2" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>examples</p>
+<ol class="simple">
+<li><p><em>causal model</em>: causes <span class="math notranslate nohighlight">\(\to\)</span> symptoms</p></li>
+<li><p><em>diagnostic model</em>: symptoms <span class="math notranslate nohighlight">\(\to\)</span> causes</p>
+<ul>
+<li><p>generally requires more dependencies</p></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>learning</p>
+<ol class="simple">
+<li><p>expert-designed</p></li>
+<li><p>data-driven</p></li>
+</ol>
+</li>
+<li><p>properties</p>
+<ul>
+<li><p>each node is random variable</p></li>
+<li><p>weights as tables of conditional probabilities for all possibilities</p></li>
+<li><p>represented by directed acyclic graph</p></li>
+</ul>
+</li>
+<li><p>joint distr: <span class="math notranslate nohighlight">\(P(X_1 = x_1,...X_n=x_n)=\prod_{i=1}^n P[X_i = x_i \vert  Parents(X_i)]\)</span></p>
+<ul>
+<li><p><em>markov condition</em>: given parents, node is conditionally independent of its non-descendants</p>
+<ul>
+<li><p>marginally, they can still be dependent (e.g. explaining away)</p></li>
+</ul>
+</li>
+<li><p>given its <em>markov blanket</em> (parents, children, and children’s parents), a node is independent of all other nodes</p></li>
+</ul>
+</li>
+<li><p>BN has no redundancy <span class="math notranslate nohighlight">\(\implies\)</span> no chance for inconsistency</p>
+<ul>
+<li><p>forming a BN: keep adding nodes, and only previous nodes are allowed to be parents of new nodes</p></li>
+</ul>
+</li>
+</ul>
+<div class="section" id="hybrid-bn-both-continuous-discrete-vars">
+<h3>4.1.2.1. hybrid BN (both continuous &amp; discrete vars)<a class="headerlink" href="#hybrid-bn-both-continuous-discrete-vars" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>for continuous variables can sometimes discretize</p></li>
+</ul>
+<ol class="simple">
+<li><p><em>linear Gaussian</em> - for continuous children</p></li>
+</ol>
+<ul class="simple">
+<li><p>parents all discrete <span class="math notranslate nohighlight">\(\implies\)</span> <em>conditional Gaussian</em> - multivariate Gaussian given assignment to discrete variables</p></li>
+<li><p>parents all continuous <span class="math notranslate nohighlight">\(\implies\)</span> <em>multivariate Gaussian</em> over all the variables, and a multivariate posterior distribution (given any evidence)</p></li>
+<li><p>parents some discrete, some continuous</p>
+<ul>
+<li><p>h is continuous, s is discrete; a, b, <span class="math notranslate nohighlight">\(\sigma\)</span> all change when s changes</p></li>
+<li><p><span class="math notranslate nohighlight">\(P(c|h,s) = N(a \cdot h + b, \sigma^2)\)</span>, so mean is linear function of h</p></li>
+</ul>
+</li>
+</ul>
+<ol class="simple">
+<li><p>discrete children (continuous parents)</p></li>
+<li><p><em>probit distr</em> - <span class="math notranslate nohighlight">\(P(buys|Cost=c) = \phi[(\mu - c)/\sigma]\)</span> - integral of standard normal distr
+- like a soft threshold</p></li>
+<li><p><em>logit distr.</em> - <span class="math notranslate nohighlight">\(P(buys|Cost=c) =s\left(\frac{-2 (\mu - c)}\sigma \right)\)</span>
+- logistic function (sigmoid s) produces thresh</p></li>
+</ol>
+</div>
+<div class="section" id="exact-inference">
+<h3>4.1.2.2. exact inference<a class="headerlink" href="#exact-inference" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>given assignment to <em>evidence variables</em> E, find probs of <em>query variables</em> X</p>
+<ul>
+<li><p>other variables are <em>hidden variables</em> H</p></li>
+</ul>
+</li>
+</ul>
+<ol class="simple">
+<li><p><em>enumeration</em> - just try summing over all hidden variables</p></li>
+</ol>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P(X|e) = \alpha P(X, e) = \alpha \sum_h P(X, e, h)\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\alpha\)</span> can be calculated as <span class="math notranslate nohighlight">\(1 / \sum_x P(x, e)\)</span></p></li>
+</ul>
+</li>
+<li><p><span class="math notranslate nohighlight">\(O(n \cdot 2^n)\)</span></p>
+<ul>
+<li><p>one summation for each of <em>n</em> variables</p></li>
+</ul>
+</li>
+<li><p>ENUMERATION-ASK evaluates in depth-first order: <span class="math notranslate nohighlight">\(O(2^n)\)</span></p>
+<ul>
+<li><p>we removed the factor of <em>n</em></p></li>
+</ul>
+</li>
+</ul>
+<ol class="simple">
+<li><p><em>variable elimination</em> - dynamic programming <strong>(see elimination)</strong></p></li>
+</ol>
+<ul class="simple">
+<li><p><img alt="Screen Shot 2018-07-26 at 8.52.30 AM" src="../../_images/bayesian_net_example.png" /></p></li>
+<li><p><span class="math notranslate nohighlight">\(P(B|j, m) = \alpha \underbrace{P(B)}_{f_1(B)} \sum_e \underbrace{P(e)}_{f_2(E)} \sum_a \underbrace{P(a|B,e)}_{f_3(A, B, E)} \underbrace{P(j|a)}_{f_4(A)} \underbrace{P(m|a)}_{f_5(A)}\)</span></p>
+<ul>
+<li><p>calculate factors in reverse order (bottom-up)</p></li>
+<li><p>each factor is a vector with num entries = <span class="math notranslate nohighlight">\(\prod\)</span> |num_elements| * |num_values|</p></li>
+<li><p>when we multiply them, pointwise products</p></li>
+</ul>
+</li>
+<li><p>ordering</p>
+<ul>
+<li><p>any ordering works, some are more efficient</p></li>
+<li><p>every variable that is not an ancestor of a query variable or evidence variable is irrelevant to the query</p></li>
+<li><p>complexity depends on largest factor formed</p></li>
+</ul>
+</li>
+</ul>
+<ol class="simple">
+<li><p><em>clustering algorithms</em> = <em>join tree</em> algorithms <strong>(see propagation factor graphs)</strong></p></li>
+</ol>
+<ul class="simple">
+<li><p>join individual nodes in such a way that resulting network is a polytree</p>
+<ul>
+<li><p><img alt="Screen Shot 2018-07-26 at 8.52.30 AM-2621781" src="../../_images/bayesian_net_example2.png" /></p></li>
+<li><p><em>polytree</em>=<em>singly-connected network</em> - only 1 undirected paths between any 2 nodes</p>
+<ul>
+<li><p>time and space complexity of exact inference is linear in the size of the network</p></li>
+<li><p>holds even if the number of parents of each node is bounded by a constant</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>can compute posterior probabilities in <span class="math notranslate nohighlight">\(O(n)\)</span></p>
+<ul>
+<li><p>however, conditional probability tables may still be exponentially large</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="approximate-inferences-in-bns">
+<h3>4.1.2.3. approximate inferences in BNs<a class="headerlink" href="#approximate-inferences-in-bns" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>randomized sampling algorithms = <em>monte carlo</em> algorithms</p></li>
+</ul>
+<ol class="simple">
+<li><p><em>direct sampling</em> methods:</p></li>
+</ol>
+<ul class="simple">
+<li><p><em>simplest</em> - sample network in topological order</p></li>
+<li><p><em>rejection sampling</em> - sample in order and stop once evidence is violated</p>
+<ul>
+<li><p>want P(D|A)</p></li>
+<li><p>sample N times, throw out samples where A is false</p></li>
+<li><p>return probability of D being true</p></li>
+<li><p>this is slow</p></li>
+</ul>
+</li>
+<li><p><em>likelihood weighting</em> - fix evidence to be more efficient</p>
+<ul>
+<li><p>generating a sample</p>
+<ul>
+<li><p>fix our evidence variables to their observed values, then simulate the network</p></li>
+<li><p>can’t just fix variables - distr. might be inconsistent</p></li>
+<li><p>calculate <em>W</em> = prob of sample being generated</p>
+<ul>
+<li><p>when we get to an evidence variable, multiply by prob it appears given its parents</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>for each observation</p>
+<ul>
+<li><p>if positive, Count = Count + <em>W</em></p></li>
+<li><p>Total = Total + <em>W</em></p></li>
+</ul>
+</li>
+<li><p>return Count/Total</p></li>
+<li><p>this way we don’t have to throw out wrong samples</p></li>
+<li><p>doesn’t solve all problems - evidence only influences the choice of downstream variables</p></li>
+</ul>
+</li>
+</ul>
+<ol class="simple">
+<li><p><em>Markov chain monte carlo</em> - ex. <em>Gibbs sampling</em>, <em>Metropolis-Hastings</em></p></li>
+</ol>
+<ul class="simple">
+<li><p>fix evidence variables</p></li>
+<li><p>sample a nonevidence variable <span class="math notranslate nohighlight">\(X_i\)</span> conditioned on the current values of its Markov blanket</p></li>
+<li><p>repeatedly resample one-at-a-time in arbitrary order</p></li>
+<li><p>why it works</p>
+<ul>
+<li><p>the sampling process settles into a dynamic equilibrium where time spent in each state is proportional to its posterior probability</p></li>
+<li><p>provided transition matrix q is <em>ergodic</em> - every state is reachable and there are no periodic cycles - only 1 steady-state soln</p></li>
+</ul>
+</li>
+<li><p>2 steps</p>
+<ol class="simple">
+<li><p>create markov chain with write stationary distr.</p></li>
+<li><p>draw samples by simulating the chain</p></li>
+</ol>
+</li>
+<li><p>methods</p>
+<ul>
+<li><p>0th order methods - query density</p>
+<ul>
+<li><p>metropolized random walk</p></li>
+<li><p>ball walk</p></li>
+<li><p>hit-and-run algorithm</p></li>
+</ul>
+</li>
+<li><p>1st order methods - uses gradient of the density</p>
+<ul>
+<li><p>Gibbs: we have conditionals</p></li>
+<li><p>metropolis adjusted langevin algorithm (MALA) = langevin monte carlo</p>
+<ul>
+<li><p>use gradient to propose new states</p></li>
+<li><p>accept / reject using metropolis-hastings algorithm</p></li>
+</ul>
+</li>
+<li><p>unadjusted langevin algorithm (ULA)</p></li>
+<li><p>hamiltonian monte carlo (neal, 2011)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>log-concave distr. density (analog of convexity)</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\pi(x) = \frac{e^{-f(x)}}{\int e^{-f(y)}dy}\)</span></p></li>
+<li><p>examples: normal distr., exponential distr., Laplace distr.</p></li>
+</ul>
+</li>
+</ul>
+<ol class="simple">
+<li><p><em>variational inference</em> - formulate inference as optimization</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://arxiv.org/abs/1601.00670">good intro paper</a></p></li>
+<li><p>minimize KL-divergence between observed samples and assumed distribution</p>
+<ul>
+<li><p>the actual KL is hard to minimize so instead we maximize the ELBO, which is equivalent</p></li>
+</ul>
+</li>
+<li><p>do this over a class of possible distrs.</p></li>
+<li><p>variational inference tends to be faster, but may not be as good as MCMC</p></li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="conditional-independence-properties">
+<h3>4.1.2.4. conditional independence properties<a class="headerlink" href="#conditional-independence-properties" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>multiple, competing explanations (“explaining-away”)</p>
+<p><img alt="" src="../../_images/j2_1.png" /></p>
+<ul class="simple">
+<li><p>in fact any descendant of the base of the v suffices for explaining away</p></li>
+</ul>
+</li>
+<li><p><em>d-separation</em> = directed separation</p></li>
+<li><p><em>Bayes ball algorithm</em> - is <span class="math notranslate nohighlight">\(( X_A \perp X_B )| X_C\)</span>?</p>
+<ul class="simple">
+<li><p>initialize</p>
+<ul>
+<li><p>shade <span class="math notranslate nohighlight">\(X_C\)</span></p></li>
+<li><p>place ball at each of <span class="math notranslate nohighlight">\(X_A\)</span></p></li>
+<li><p>if any ball reaches <span class="math notranslate nohighlight">\(X_B\)</span>, then not conditionally independent</p></li>
+</ul>
+</li>
+<li><p>rules</p>
+<ul>
+<li><p>balls can’t pass through shaded unless shaded is at base of v</p></li>
+<li><p>balls pass through unshaded unless unshaded is at base of v</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><img alt="Screen Shot 2018-09-16 at 7.12.22 PM" src="../../_images/triples.png" /></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="undirected">
+<h2>4.1.3. undirected<a class="headerlink" href="#undirected" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(X_A \perp X_C | X_B\)</span> if the set of nodes <span class="math notranslate nohighlight">\(X_B\)</span> separates the nodes <span class="math notranslate nohighlight">\(X_A\)</span> from <span class="math notranslate nohighlight">\(X_C\)</span></p>
+<p><img alt="Screen Shot 2018-07-24 at 11.16.29 PM" src="../../_images/graph_separation.png" /></p>
+</li>
+<li><p>can’t convert directed / undirected</p></li>
+</ul>
+<p><img alt="Screen Shot 2018-07-24 at 11.17.57 PM" src="../../_images/full_graph_vs_missing.png" /></p>
+<ul class="simple">
+<li><p>factor over <em>maximal cliques</em> (largest sets of fully connected nodes)</p></li>
+<li><p>potential function <span class="math notranslate nohighlight">\(\psi_{X_C} (x_C)\)</span> function on possible realizations <span class="math notranslate nohighlight">\(x_C\)</span> of the maximal clique <span class="math notranslate nohighlight">\(X_C\)</span></p>
+<ul>
+<li><p>non-negative, but not a probability (specifying conditional probs. doesn’t work)</p></li>
+<li><p>commonly let these be exponential: <span class="math notranslate nohighlight">\(\psi_{X_C} (x_C) = \exp(-f_C(x_C))\)</span></p>
+<ul>
+<li><p>yields energy <span class="math notranslate nohighlight">\(f(x) = \sum_C f_C(x_C)\)</span></p></li>
+<li><p>yields <em>Boltzmann distribution</em>: <span class="math notranslate nohighlight">\(p(x) = \frac{1}{Z} \exp (-f(x))\)</span></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><span class="math notranslate nohighlight">\(p(x) = \frac{1}{Z} \prod_{C \in Cliques} \psi_{X_C}(x_c)\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(Z = \sum_x \prod_{C \in Cliques} \psi_{X_C} (x_C)\)</span></p></li>
+</ul>
+</li>
+<li><p><em>reduced parameterizations</em> - impose constraints on probability distributions (e.g. Gaussian)</p></li>
+<li><p>if x is dependent on all its neighbors</p>
+<ul>
+<li><p><em>Ising model</em> - if x is binary</p></li>
+<li><p><em>Potts model</em> - x is multiclass</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="elimination-j-3">
+<h2>4.1.4. elimination - J 3<a class="headerlink" href="#elimination-j-3" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>the elimination algorithm is for <em>probabilistic inference</em></p>
+<ul>
+<li><p>want <span class="math notranslate nohighlight">\(p(x_F|x_E)\)</span> where E and F are disjoint</p></li>
+<li><p>any var that is not ancestor of evidence or ancestor of query is irrelevant</p></li>
+</ul>
+</li>
+<li><p>here, let <span class="math notranslate nohighlight">\(X_F\)</span> be a single node</p></li>
+<li><p>notation</p>
+<ul>
+<li><p>define <span class="math notranslate nohighlight">\(m_i (x_{S_i})\)</span> = <span class="math notranslate nohighlight">\(\sum_{x_i}\)</span> where <span class="math notranslate nohighlight">\(x_{S_i}\)</span> are the variables, other than <span class="math notranslate nohighlight">\(x_i\)</span>, that appear in the summand</p></li>
+<li><p>define <em>evidence potential</em> <span class="math notranslate nohighlight">\(\delta(x_i, \bar{x_i})\)</span> is defined as <span class="math notranslate nohighlight">\(x_i == \bar{x_i}\)</span></p>
+<ul>
+<li><p>then $<span class="math notranslate nohighlight">\(g(\bar{x_i}) = \sum_{x_i} \delta (x_i, \bar{x_i})\)</span>$</p></li>
+<li><p>for a set <span class="math notranslate nohighlight">\(\delta (x_E, \bar{x_E}) = \prod_{i \in E} \delta (x_i, \bar{x_i})\)</span></p></li>
+<li><p>lets us define <span class="math notranslate nohighlight">\(p(x, \bar{x}_E) = p^E(x) = p(x) \delta (x_E, \bar{x_E})\)</span></p></li>
+</ul>
+</li>
+<li><p>undirected graphs</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\psi_i^E(x_i) \triangleq \psi_i(x_i) \delta(x_i, \bar{x}_i)\)</span></p></li>
+<li><p>this lets us write <span class="math notranslate nohighlight">\(p^E (x) = \frac{1}{Z} \prod_{c\in C} \psi^E_{X_c} (x_c)\)</span></p>
+<ul>
+<li><p>can ignore z since this is unnormalized anyway</p></li>
+<li><p>to find conditional probability, divide by all sum of <span class="math notranslate nohighlight">\(p^E(x)\)</span> for all values of E</p></li>
+</ul>
+</li>
+<li><p>in actuality don’t compute the product, just take the correct slice</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>eliminate algorithm</p>
+<ol class="simple">
+<li><p>initialize: choose an ordering with query last</p></li>
+<li><p>evidence: set evidence vars to their values</p></li>
+<li><p>update: loop over element <span class="math notranslate nohighlight">\(x_i\)</span> in ordering</p>
+<ol class="simple">
+<li><p>let <span class="math notranslate nohighlight">\(\phi_i(x_{T_i})\)</span> be product of all potentials involving <span class="math notranslate nohighlight">\(x_i\)</span></p></li>
+<li><p>sum over the product of these potentials <span class="math notranslate nohighlight">\(m_i(x_{S_i}) = \sum_x \phi_i(x_{T_i})\)</span></p></li>
+</ol>
+</li>
+<li><p>normalize: <span class="math notranslate nohighlight">\(p(x_F|\bar{x}_E) = \phi_F(x_F) / \sum_{x_F} \phi_F (x_F)\)</span></p></li>
+</ol>
+</li>
+<li><p>undirected graph elimination algorithm</p>
+<ul>
+<li><p>for directed graph, first <em>moralize</em></p>
+<ul>
+<li><p>for each node connect its parents</p></li>
+<li><p>drop edges orientation</p></li>
+</ul>
+</li>
+<li><p>for each node X</p>
+<ul>
+<li><p>connect all remaining neighbors of X</p></li>
+<li><p>remove X from graph</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><em>reconstituted graph</em> - same nodes, includes all edges that were added</p>
+<ul>
+<li><p><em>elimination cliques</em> - includes X and its neighbors when X is removed</p></li>
+<li><p>computational complexity is the exponential in the number of variables in the elimination clique</p></li>
+<li><p>involves <em>treewidth</em> - one less than smallest achievable value of cardinality of largest elimination clique</p>
+<ul>
+<li><p>range over all possible elimination orderings</p></li>
+<li><p>NP-hard to find elimination ordering that achieves the treewidth</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="propagation-factor-graphs-j-4">
+<h2>4.1.5. propagation factor graphs - J 4<a class="headerlink" href="#propagation-factor-graphs-j-4" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p><em>tree</em> - undirected graph in which there is exactly one path between any pair of nodes</p>
+<ul>
+<li><p>if directed, then moralized graph should be a tree</p></li>
+<li><p><em>polytree</em> - directed graph that reduces to an undirected tree if we convert each directed edge to an undirected edge</p></li>
+<li><p><img alt="Screen Shot 2018-07-31 at 11.44.52 AM" src="../../_images/polytree.png" /></p></li>
+<li><div class="math notranslate nohighlight">
+\[p(x) = \frac{1}{Z} \left[ \prod_{i \in V} \psi (x_i) \prod_{(i,j)\in E} \psi (x_i,x_j) \right]\]</div>
+<ul class="simple">
+<li><p>for directed, root has individual prob and others are conditionals</p></li>
+</ul>
+</li>
+<li><p>can once again use evidence potentials for conditioning</p></li>
+</ul>
+</li>
+</ul>
+<div class="section" id="probabilistic-inference-on-trees">
+<h3>4.1.5.1. probabilistic inference on trees<a class="headerlink" href="#probabilistic-inference-on-trees" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>eliminate algorithm through message-passing</p>
+<ul class="simple">
+<li><p>ordering I should be <strong>depth-first traversal</strong> of tree with f as root and all edges pointing away</p>
+<ul>
+<li><p><em>message</em> <span class="math notranslate nohighlight">\(m_{ji}(x_i)\)</span> from <span class="math notranslate nohighlight">\(j\)</span> to <span class="math notranslate nohighlight">\(i\)</span> =<em>intermediate factor</em></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>2 key equations</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(m_{ji}(x_i) = \sum_{x_j} \left( \psi^E (x_j) \psi (x_i, x_j) \prod_{k \in N(j) \backslash i} m_{kj} (x_j) \right)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(p(x_f | \bar{x}_E) \propto \psi^E (x_f) \prod_{e \in N(f)} m_{ef} (x_f) \)</span></p>
+<ul>
+<li><p><img alt="Screen Shot 2018-07-31 at 9.55.08 PM" src="../../_images/undirected_message_passing.png" /></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>sum-product</strong> = <strong>belief propagation</strong> - inference algorithm</p>
+<ul>
+<li><p>computes all single-node marginals (for certain classes of graphs) rather than only a single marginal</p></li>
+<li><p>only works in trees or tree-like graphs</p></li>
+<li><p><img alt="Screen Shot 2018-07-31 at 10.07.15 PM" src="../../_images/message_passing_misc.png" /></p>
+<p><img alt="Screen Shot 2018-07-31 at 10.07.40 PM" src="../../_images/message_passing_parallel.png" /></p>
+</li>
+<li><p><em>message-passing protocol</em> - a node can send a message to a neighboring node when, and only when, it has received messages from all of its other neighbors (parallel algorithm)</p>
+<ol class="simple">
+<li><p>evidence(E)</p></li>
+<li><p>choose root</p></li>
+<li><p>collect: send messages evidence to root</p></li>
+<li><p>distribute: send messages root back out</p></li>
+</ol>
+<p><img alt="Screen Shot 2018-07-31 at 10.22.55 PM" src="../../_images/message_passing_individual.png" /> <img alt="Screen Shot 2018-07-31 at 10.23.01 PM" src="../../_images/message_passing_distribute.png" /></p>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="factor-graphs">
+<h3>4.1.5.2. factor graphs<a class="headerlink" href="#factor-graphs" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p><em>factor graphs</em> capture factorizations, not conditional independence statements</p>
+<ul>
+<li><p>ex <span class="math notranslate nohighlight">\(\psi (x_1, x_2, x_3) = f_a(x_1,x_2) f_b(x_2,x_3) f_c (x_1,x_3)\)</span> factors but has no conditional independence</p>
+<ul class="simple">
+<li><p><img alt="Screen Shot 2018-07-31 at 11.30.19 PM" src="../../_images/factor_graph.png" /></p></li>
+</ul>
+</li>
+<li><div class="math notranslate nohighlight">
+\[f(x_1,...,x_n) = \prod_s f_s (x_{C_s})\]</div>
+</li>
+<li><p>neighborhood N(s) for a factor index s is all the variables the factor references</p></li>
+<li><p>neighborhood N(i) for a node i is set of factors that reference <span class="math notranslate nohighlight">\(x_i\)</span></p></li>
+<li><p>provide more fine-grained representation of prob. distr.</p>
+<ul class="simple">
+<li><p>could add more nodes to normal graphical model to do this</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><em>factor tree</em> - if factors are made nodes, resulting undirected graph is tree</p>
+<ul>
+<li><p>two kinds of messages (variable-&gt; factor &amp; factor-&gt; variable)</p></li>
+<li><p>run all the factor <span class="math notranslate nohighlight">\(\to\)</span> variables first</p></li>
+<li><p><img alt="" src="../../_images/j4_2.png" /></p></li>
+<li><div class="math notranslate nohighlight">
+\[p(x_i) \propto \prod_{s \in N(i)} \mu_{si} (x_i)\]</div>
+</li>
+<li><p>if a graph is originally a tree, there is little to be gained from factor graph framework</p>
+<ul class="simple">
+<li><p>sometimes factor graph is factor tree, but original graph is not</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="maximum-a-posteriori-map">
+<h3>4.1.5.3. maximum a posteriori (MAP)<a class="headerlink" href="#maximum-a-posteriori-map" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>want <span class="math notranslate nohighlight">\(\max_{x_F} p(x_F | \bar{x}_E)\)</span></p></li>
+<li><p>MAP-eliminate algorithm is very similar to before</p>
+<ul>
+<li><p>initialize - choose ordering</p></li>
+<li><p>evidence - set evidence</p></li>
+<li><p>update - for each take max over variable and make new factor</p></li>
+<li><p>maximum - marginalize</p></li>
+</ul>
+</li>
+<li><p>products of probs tend to underflow, so take <span class="math notranslate nohighlight">\(\max_x \log p^E (x)\)</span></p></li>
+<li><p>can also derive a <em>max-product algorithm</em> for trees</p></li>
+</ul>
+<ol class="simple">
+<li><p>find <span class="math notranslate nohighlight">\(\text{argmax}_x p^E (x)\)</span></p>
+<ul class="simple">
+<li><p>can solve by keeping track of maximizing values of variables in max-product algorithm</p></li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="dynamic-bayesian-nets">
+<h2>4.1.6. dynamic bayesian nets<a class="headerlink" href="#dynamic-bayesian-nets" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><em>dynamic bayesian nets</em> - represents a temporal prob. model</p></li>
+</ul>
+<div class="section" id="state-space-model">
+<h3>4.1.6.1. state space model<a class="headerlink" href="#state-space-model" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>state space model <img alt="" src="../../_images/j15_1.png" /></p></li>
+<li><p><span class="math notranslate nohighlight">\(P(X_{0:t}, E_{1:t}) = P(X_0) \prod_{i} \underbrace{P(X_i | X_{i-1}) }_{\text{transition model}}  \: \underbrace{P(E_i|X_i)}_{\text{sensor model}}\)</span></p>
+<ul>
+<li><p>agent maintains <em>belief state</em> of state variables <span class="math notranslate nohighlight">\(X_t\)</span> given evidence variables <span class="math notranslate nohighlight">\(E_t\)</span></p></li>
+<li><p>improve accuracy</p>
+<ol class="simple">
+<li><p>increase order of Markov transition model</p></li>
+<li><p>increase set of state variables (can be equivalent to 1)</p></li>
+</ol>
+<ul class="simple">
+<li><p>hard to maintain state variables over time, want more sensors</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>4 inference problems (here <span class="math notranslate nohighlight">\(\cdot\)</span> is elementwise multiplication)</p>
+<ol class="simple">
+<li><p><em>filtering</em> = <em>state estimation</em> - compute <span class="math notranslate nohighlight">\(P(X_t | e_{1:t})\)</span></p></li>
+</ol>
+<ul class="simple">
+<li><p><em>recursive estimation</em>:  $<span class="math notranslate nohighlight">\(\underbrace{P(X_{t+1}|e_{1:t+1})}_{\text{new state}} = \alpha \: \underbrace{P(e_{t+1}|X_{t+1})}_{\text{sensor}} \cdot \underset{x_t}{\sum} \: \underbrace{P(X_{t+1}|x_t)}_{\text{transition}} \cdot \underbrace{P(x_t|e_{1:t})}_{\text{old state}}\)</span><span class="math notranslate nohighlight">\( where \)</span>\alpha$ normalizes probs</p></li>
+</ul>
+<ol class="simple">
+<li><p><em>prediction</em> - compute <span class="math notranslate nohighlight">\(P(X_{t+k}|e_{1:t})\)</span> for <span class="math notranslate nohighlight">\(k&gt;0\)</span></p></li>
+</ol>
+</li>
+<li><p><span class="math notranslate nohighlight">\(\underbrace{P(X_{t+k+1} |e_{1:t})}_{\text{new state}} = \sum_{x_{t+k}} \underbrace{P(X_{t+k+1} |x_{t+k})}_{\text{transition}}  \cdot \underbrace{P(x_{t+k} |e_{1:t})}_{\text{old state}}\)</span></p></li>
+</ul>
+<ol class="simple">
+<li><p><em>smoothing</em> - compute <span class="math notranslate nohighlight">\(P(X_{k}|e_{1:t})\)</span> for <span class="math notranslate nohighlight">\(0 &lt; k &lt; t\)</span></p>
+<ol class="simple">
+<li><p>2 components <span class="math notranslate nohighlight">\(P(X_k|e_{1:t}) = \alpha \underbrace{P(X_k|e_{1:k})}_{\text{forward}} \cdot \underbrace{P(e_{k+1:t}|X_k)}_{\text{backward}}\)</span></p></li>
+<li><p>forward pass: filtering from <span class="math notranslate nohighlight">\(1:t\)</span>
+2. backward pass from <span class="math notranslate nohighlight">\(t:1\)</span> <span class="math notranslate nohighlight">\(\underbrace{P(e_{k+1:t}|X_k)}_{\text{sensor past k}} = \sum_{x_{k+1}} \underbrace{P(e_{k+1}|x_{k+1})}_{\text{sensor}} \cdot \underbrace{P(e_{k+2:t}|x_{k+1})}_{\text{recursive call}} \cdot \underbrace{P(x_{k+1}|X_k)}_{\text{transition}}\)</span>
+3. this is called the forward-backward algo(also there is a separate algorithm that doesn’t use the observations on the backward pass)</p></li>
+</ol>
+</li>
+<li><p><em>most likely explanation</em> - <span class="math notranslate nohighlight">\(\underset{x_{1:t}}{\text{argmax}}\:P(x_{1:t}|e_{1:t})\)</span></p>
+<ol class="simple">
+<li><p><em>Viterbi algorithm</em>: <span class="math notranslate nohighlight">\(\underbrace{\underset{x_{1:t}}{\text{max}} \: P(x_{1:t}, X_{t+1}|e_{1:t+1})}_{\text{mle x}} = \alpha \: \underbrace{P(e_{t+1}|X_{t+1})}_{\text{sensor}} \cdot \underset{x_t}{\text{max}} \left[ \: \underbrace{P(X_{t+1}|x_t)}_{\text{transition}} \cdot \underbrace{\underset{x_{1:t-1}}{\text{max}} \:P(x_{1:t-1}, x_{t+1}|e_{1:t})}_{\text{max prev state}} \right]\)</span></p></li>
+<li><p>complexity</p>
+<ul class="simple">
+<li><p>K = number of states</p></li>
+<li><p>M = number of observations</p></li>
+<li><p>n = length of sequence</p></li>
+<li><p>memory - <span class="math notranslate nohighlight">\(nK\)</span></p></li>
+<li><p>runtime - <span class="math notranslate nohighlight">\(O(nK^2)\)</span></p></li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<ul class="simple">
+<li><p><em>learning</em> - form of EM</p>
+<ul>
+<li><p>basically just count (maximizing joint likelihood of input and output)</p></li>
+<li><p>initial state probs <span class="math notranslate nohighlight">\(\frac{count(start \to s)}{n}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P(x'|x) = \frac{count(s \to s')}{count(s)}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P(y|x) = \frac{count (x \to y)}{count(x)}\)</span></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="hmm">
+<h3>4.1.6.2. hmm<a class="headerlink" href="#hmm" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>state is a single discrete process</strong></p></li>
+<li><p>transitions are all matrices (and no zeros in sensor model)<span class="math notranslate nohighlight">\(\implies\)</span> forward pass is invertible so can use constant space</p></li>
+<li><p><em><strong>online smoothing (with lag)</strong></em></p></li>
+<li><p>ex. robot localization</p></li>
+</ul>
+</div>
+<div class="section" id="kalman-filtering">
+<h3>4.1.6.3. kalman filtering<a class="headerlink" href="#kalman-filtering" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>state is continuous</strong></p></li>
+<li><p>ex. <img alt="" src="../../_images/r15_9.png" /></p></li>
+<li><p>type of nodes (real-valued vectors) and prob model (linear-Gaussian) changes from HMM</p></li>
+<li><p>1d example: <em>random walk</em></p></li>
+<li><p>state nodes: <span class="math notranslate nohighlight">\(x_{t+1} = Ax_t + Gw_t\)</span></p></li>
+<li><p>output nodes: <span class="math notranslate nohighlight">\(y_t = Cx_t+v_t\)</span></p>
+<ul>
+<li><p>x is linear Gaussian</p></li>
+<li><p>w is noise Gaussian</p></li>
+<li><p>y is linear Gaussian</p></li>
+</ul>
+</li>
+<li><p>doing the integral for prediction involves completing the square</p></li>
+<li><p>properties</p>
+<ol class="simple">
+<li><p>new mean is weighted mean of new observation and old mean</p></li>
+<li><p>update rule for variance is independent of the observation</p></li>
+<li><p>variance converges quickly to fixed value that depends only on <span class="math notranslate nohighlight">\(\sigma^2_x, \sigma^2_z\)</span></p></li>
+</ol>
+</li>
+<li><p><strong>Lyapunov eqn</strong>: evolution of variance of states</p></li>
+<li><p><strong>information filter</strong> - mathematically the same but different parameterization</p></li>
+<li><p><em>extended Kalman filter</em></p>
+<ul>
+<li><p>works on nonlinear systems</p></li>
+<li><p>locally linear</p></li>
+</ul>
+</li>
+<li><p><em>switching Kalman filter</em> - multiple Kalman filters run in parallel and weighted sum of predictions is used</p>
+<ul>
+<li><p>ex. one for straight flight, one for sharp left turns, one for sharp right turns</p></li>
+<li><p>equivalent to adding discrete “maneuver” state variable</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="general-dbns">
+<h3>4.1.6.4. general dbns<a class="headerlink" href="#general-dbns" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>can be better to decompose state variable into multiple vars</p>
+<ul>
+<li><p>reduces size of transition matrix</p></li>
+</ul>
+</li>
+<li><p><em>transient failure model</em> - allows probability of sensor giving wrong value</p></li>
+<li><p><em>persistent failure model</em> - additional variable describing status of battery meter</p></li>
+<li><p>exact inference - <em>våariable elimination</em> mimics recursive filtering</p>
+<ul>
+<li><p>still difficult</p></li>
+</ul>
+</li>
+<li><p>approximate inference - modification of likelihood weighting</p>
+<ul>
+<li><p>use samples as approximate representation of current state distr.</p></li>
+<li><p><em><strong>particle filtering</strong></em> - focus set of samples on high-prob regions of the state space</p>
+<ul>
+<li><p>consistent</p></li>
+<li><p>sample a state</p></li>
+<li><p>sample the next state given the previous state</p></li>
+<li><p>weight each sample by <span class="math notranslate nohighlight">\(P(e_t | x_t)\)</span></p></li>
+<li><p>resample based on weight</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="structure-learning">
+<h2>4.1.7. structure learning<a class="headerlink" href="#structure-learning" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>conditional correlation - inverse covariance matrix = precision matrix</p>
+<ul>
+<li><p>estimates only good when <span class="math notranslate nohighlight">\(n &gt;&gt; p\)</span></p></li>
+<li><p>eigenvalues are not well-approximated</p></li>
+<li><p>often enforce sparsity</p></li>
+<li><p>ex. threshold each value in the cov matrix (set to 0 unless greater than thresh) - this threshold can depend on different things</p></li>
+<li><p>can also use regularization to enforce sparsity</p></li>
+<li><p>POET doesn’t assume sparsity</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes/stat"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="stat.html" title="previous page">4. stat</a>
+    <a class='right-next' id="next-link" href="data_analysis.html" title="next page">4.2. data analysis</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Chandan Singh<br/>
+        
+            &copy; Copyright None.<br/>
+          <div class="extra_footer">
+            <p>
+Many of these images are taken from resources on the web.
+</p>
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

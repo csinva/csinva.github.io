@@ -1,0 +1,1277 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>6.10. decisions &#8212; learning to learn</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../_static/togglebutton.js"></script>
+    <script type="text/javascript" src="../../_static/clipboard.min.js"></script>
+    <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    <script type="text/javascript">var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script type="text/javascript" src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" type="text/javascript" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script type="text/javascript">
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="7. neuro" href="../neuro/neuro.html" />
+    <link rel="prev" title="6.9. representations" href="knowledge_rep.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">learning to learn</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   welcome 👋
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../research_ovws/research_ovws.html">
+   1. research_ovws
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_comp_neuro.html">
+     1.1. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_disentanglement.html">
+     1.2. disentanglement
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_complexity.html">
+     1.3. complexity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_interesting_science.html">
+     1.4. interesting science
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_dl_theory.html">
+     1.5. dl theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_scat.html">
+     1.6. scattering transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">
+     1.7. ml in medicine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_dl_for_neuro.html">
+     1.8. dl for neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_uncertainty.html">
+     1.9. uncertainty
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_interp.html">
+     1.10. interpretability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_kernels.html">
+     1.11. kernels
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../cs/cs.html">
+   2. cs
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/retrieval.html">
+     2.1. info retrieval
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/python_ref.html">
+     2.2. python ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/data_structures.html">
+     2.3. data structures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/software.html">
+     2.4. software engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/quantum.html">
+     2.5. quantum
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/algo.html">
+     2.6. algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/graphs.html">
+     2.7. graphs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/os.html">
+     2.8. os
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/arch.html">
+     2.9. architecture
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/java_ref.html">
+     2.10. java ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/comp_theory.html">
+     2.11. cs theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/cpp_ref.html">
+     2.12. c/c++ ref
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../math/math.html">
+   3. math
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/differential_equations.html">
+     3.1. differential equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/proofs.html">
+     3.2. proofs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/analysis.html">
+     3.3. real analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/linear_algebra.html">
+     3.4. linear algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/signals.html">
+     3.5. signals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/optimization.html">
+     3.6. optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/calculus.html">
+     3.7. calculus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/chaos.html">
+     3.8. chaos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/math_basics.html">
+     3.9. math basics
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../stat/stat.html">
+   4. stat
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/graphical_models.html">
+     4.1. graphical models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/data_analysis.html">
+     4.2. data analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/testing.html">
+     4.3. testing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/causal_inference.html">
+     4.4. causal inference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/info_theory.html">
+     4.5. info theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/linear_models.html">
+     4.6. linear models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/time_series.html">
+     4.7. time series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/game_theory.html">
+     4.8. game theory
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ml/ml.html">
+   5. ml
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/comp_vision.html">
+     5.1. computer vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/structure_ml.html">
+     5.2. structure learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/classification.html">
+     5.3. classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/unsupervised.html">
+     5.4. unsupervised
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/deep_learning.html">
+     5.5. deep learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/feature_selection.html">
+     5.6. feature selection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/learning_theory.html">
+     5.7. learning theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/evaluation.html">
+     5.8. evaluation
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="ai.html">
+   6. ai
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="search.html">
+     6.1. search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="nlp.html">
+     6.2. nlp
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="fairness_sts.html">
+     6.3. fairness
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cogsci.html">
+     6.4. cogsci
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ai_futures.html">
+     6.5. ai futures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="logic.html">
+     6.6. logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="philosophy.html">
+     6.7. philosophy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="psychology.html">
+     6.8. psychology
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="knowledge_rep.html">
+     6.9. representations
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     6.10. decisions
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../neuro/neuro.html">
+   7. neuro
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/brain_basics.html">
+     7.1. brain basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/vissci.html">
+     7.2. vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/comp_neuro.html">
+     7.3. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/sensory_input.html">
+     7.4. sensory input
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/memory.html">
+     7.5. memory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/motor.html">
+     7.6. motor system
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/development.html">
+     7.7. development
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/notes/ai/decisions.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/csinva/csinva.github.io"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#game-trees-r-n-5-2-5-5">
+   6.10.1. game trees - R&amp;N 5.2-5.5
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#utilities-decision-theory-r-n-16-1-16-3">
+     6.10.1.1. utilities / decision theory – R&amp;N 16.1-16.3
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#utility-functions">
+     6.10.1.2. utility functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#decision-theory-vpi-r-n-16-5-16-6">
+   6.10.2. decision theory / VPI – R&amp;N 16.5 &amp; 16.6
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-value-of-information">
+     6.10.2.1. the value of information
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mdps-and-rl-r-n-17-1-17-4">
+   6.10.3. mdps and rl - R&amp;N 17.1-17.4
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#value-iteration">
+     6.10.3.1. value iteration
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#policy-iteration">
+     6.10.3.2. policy iteration
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#partially-observable-markov-decision-processes-pomdp">
+     6.10.3.3. partially observable markov decision processes (POMDP)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reinforcement-learning-r-n-21-1-21-6">
+   6.10.4. reinforcement learning – R&amp;N 21.1-21.6
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#passive-reinforcement-learning">
+     6.10.4.1. passive reinforcement learning
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#active-reinforcement-learning">
+     6.10.4.2. active reinforcement learning
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#agent-examples">
+       6.10.4.2.1. agent examples
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#learning-action-utility-function">
+       6.10.4.2.2. learning action-utility function
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#policy-search">
+     6.10.4.3. policy search
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="decisions">
+<h1>6.10. decisions<a class="headerlink" href="#decisions" title="Permalink to this headline">¶</a></h1>
+<p>Some notes on decision theory based on Berkeley’s CS 188 course and  “Artificial Intelligence” Russel &amp; Norvig 3rd Edition</p>
+<div class="section" id="game-trees-r-n-5-2-5-5">
+<h2>6.10.1. game trees - R&amp;N 5.2-5.5<a class="headerlink" href="#game-trees-r-n-5-2-5-5" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>like search (adversarial search)</p></li>
+<li><p><em>minimax algorithm</em></p>
+<ul>
+<li><p><em>ply</em> - half a move in a tree</p></li>
+<li><p>for multiplayer, the backed-up value of a node n is the vector of the successor state with the highest value for the player choosing at n</p></li>
+<li><p>time complexity - <span class="math notranslate nohighlight">\(O(b^m)\)</span></p></li>
+<li><p>space complexity - <span class="math notranslate nohighlight">\(O(bm)\)</span> or even <span class="math notranslate nohighlight">\(O(m)\)</span></p></li>
+</ul>
+</li>
+<li><p><em>alpha-beta</em> pruning cuts in half the exponential depth</p>
+<ul>
+<li><p>once we have found out enough about n, we can prune it</p></li>
+<li><p>depends on move-ordering</p>
+<ul>
+<li><p>might want to explore best moves = <em>killer moves</em> first</p></li>
+</ul>
+</li>
+<li><p><em>transposition table</em> can hash different movesets that are just transpositions of each other</p></li>
+</ul>
+</li>
+<li><p>imperfect real-time decisions</p>
+<ul>
+<li><p>can evaluate nodes with a heuristic and cutoff before reaching goal</p></li>
+<li><p>heuristic uses features</p></li>
+<li><p>want <em>quiescent search</em> - consider if something dramatic will happen in the next ply</p>
+<ul>
+<li><p><em>horizon effect</em> - a position is bad but isn’t apparent for a few moves</p></li>
+<li><p><em>singular extension</em> - allow searching for certain specific moves that are always good at deeper depths</p></li>
+</ul>
+</li>
+<li><p><em>forward pruning</em> - ignore some branches</p>
+<ul>
+<li><p><em>beam search</em> - consider only n best moves</p></li>
+<li><p>PROBCUT prunes some more</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>search vs lookup</p>
+<ul>
+<li><p>often just use lookup in the beginning</p></li>
+<li><p>program can solve and just lookup endgames</p></li>
+</ul>
+</li>
+<li><p>stochastic games</p>
+<ul>
+<li><p>include <em>chance nodes</em></p></li>
+<li><p>change minimax to expectiminimax</p></li>
+<li><p><span class="math notranslate nohighlight">\(O(b^m numRolls^m)\)</span></p></li>
+<li><p>cutoff evaluation function is sensitive to scaling - evaluation function must be a positive linear transformation of the probability of winning from a position</p></li>
+<li><p>can do alpha-beta pruning analog if we assume evaluation function is bounded in some range</p></li>
+<li><p>alternatively, could simulate games with <em>Monte Carlo simulation</em></p></li>
+</ul>
+</li>
+</ul>
+<div class="section" id="utilities-decision-theory-r-n-16-1-16-3">
+<h3>6.10.1.1. utilities / decision theory – R&amp;N 16.1-16.3<a class="headerlink" href="#utilities-decision-theory-r-n-16-1-16-3" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>goal: maximize utility by taking actions (focus on single actions)</p>
+<ul>
+<li><p>utility function U(s) gives utility of a state</p></li>
+<li><p>actions are probabilistic: <span class="math notranslate nohighlight">\(P[RESULT(a)=s' \vert a,e]\)</span></p>
+<ul>
+<li><p>s - state, e - observations, a - action</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>soln: pick action with <em>maximum expected utility</em></p>
+<ul>
+<li><p>expected utility <span class="math notranslate nohighlight">\(EU(a\vert e) = \sum_{s'} P(RESULT(a)=s' \vert a,e) U(s')\)</span></p></li>
+</ul>
+</li>
+<li><p>notation</p>
+<ul>
+<li><p>A&gt;B - agent prefers A over B</p></li>
+<li><p>A~B - agent is indifferent between A and B</p></li>
+</ul>
+</li>
+<li><p>preference relation has 6 <em>axioms of utility theory</em></p>
+<ol class="simple">
+<li><p><em>orderability</em> - A&gt;B, A~B, or A&lt;B</p></li>
+<li><p><em>transitivity</em></p></li>
+<li><p><em>continuity</em></p></li>
+<li><p><em>substitutability</em> - can do algebra with preference eqns</p></li>
+<li><p><em>monotonicity</em> - if A&gt;B then must prefer higher probability of A than B</p></li>
+<li><p><em>decomposability</em> - 2 consecutive lotteries can be compressed into single equivalent lottery</p></li>
+</ol>
+</li>
+<li><p>these axioms yield a utility function</p>
+<ul>
+<li><p>isn’t unique (ex. affine transformation yields new utility function)</p></li>
+<li><p><em>value function</em> = <em>ordinal utility function</em> - sometimes ranking, numbers not needed</p></li>
+<li><p>agent might not be explicitly maximizing the utility function</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="utility-functions">
+<h3>6.10.1.2. utility functions<a class="headerlink" href="#utility-functions" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>preference elicitation</em> - finds utility function</p>
+<ul>
+<li><p>normalized utility to have min and max value</p></li>
+<li><p>assess utility of s by asking agent to choose between s and <span class="math notranslate nohighlight">\((p: \min, (1-p): \max)\)</span></p></li>
+</ul>
+</li>
+<li><p>people have complicated utility functions</p>
+<ul>
+<li><p>ex. <em>micromort</em> - one in a million chance of death</p></li>
+<li><p>ex. <em>QALY</em> - quality-adjusted life year</p></li>
+</ul>
+</li>
+<li><p>money</p>
+<ul>
+<li><p>agents exhibits <em>monotonic preference</em> for more money</p></li>
+<li><p>gambling has expected monetary value = EMV</p></li>
+<li><p><em>risk averse</em> = when utility of money is sublinear</p>
+<ul>
+<li><p>value agent will accept in lieu of lottery = <em>certainty equivalent</em>= <em>insurance premium</em></p></li>
+</ul>
+</li>
+<li><p><em>risk-neutral</em> = linear</p></li>
+<li><p><em>risk-seeking</em> = supralinear</p></li>
+</ul>
+</li>
+<li><p><em>optimizer’s curse</em> - tendency for E[utility] to be too high because we keep picking high utility randomness</p></li>
+<li><p><em>normative theory</em> - how idealized agents work</p></li>
+<li><p><em>descriptive theory</em> - how actual agents work</p>
+<ul>
+<li><p><em>certainty effect</em> - people are drawn to things that are certain</p></li>
+<li><p><em>ambiguity aversion</em></p></li>
+<li><p><em>framing effect</em> - wording can influence people’s judgements</p></li>
+<li><p><em>anchoring effect</em> - buy middle-tier wine because expensive is there</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="decision-theory-vpi-r-n-16-5-16-6">
+<h2>6.10.2. decision theory / VPI – R&amp;N 16.5 &amp; 16.6<a class="headerlink" href="#decision-theory-vpi-r-n-16-5-16-6" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>note: here we are just making 1 decision</p></li>
+<li><p><em>decision network</em> (sometimes called <em>influence diagram</em>)</p>
+<ol class="simple">
+<li><p><em>chance nodes</em> - represent RVs (like BN)</p></li>
+<li><p><em>decision nodes</em> - points where decision maker has a choice of actions</p></li>
+<li><p><em>utility nodes</em> - represent agent’s utility function</p></li>
+</ol>
+</li>
+<li><p>can ignore chance nodes</p>
+<ul>
+<li><p>then <em>action-utility function</em> = <em>Q-function</em> maps directly from actions to utility</p></li>
+</ul>
+</li>
+</ul>
+<p><img alt="decision_nets" src="../../_images/decision_nets.png" /></p>
+<ul>
+<li><p>evaluation</p>
+<ol class="simple">
+<li><p>set evidence</p></li>
+<li><p>for each possible value of decision node</p></li>
+</ol>
+<ul class="simple">
+<li><p>set decision node to that value</p></li>
+<li><p>calculate probabilities of parents of utility node</p></li>
+<li><p>calculate resulting utility</p></li>
+</ul>
+<ol class="simple">
+<li><p>return action with highest utility</p></li>
+</ol>
+</li>
+</ul>
+<div class="section" id="the-value-of-information">
+<h3>6.10.2.1. the value of information<a class="headerlink" href="#the-value-of-information" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>information value theory</em> - enables agent to choose what info to acquire</p>
+<ul>
+<li><p>observations only affect agent’s belief state</p></li>
+<li><p>value of info = difference in best expected value with/without info</p></li>
+<li><p>maximum <span class="math notranslate nohighlight">\(EU(\alpha|e) = \underset{a}{\max} \sum_{s'} P(Result(a)=s'|a, e) U(s')\)</span></p></li>
+</ul>
+</li>
+<li><p><em>value of perfect information VPI</em> - assume we can obtain exact evidence for a variable (ex. variable <span class="math notranslate nohighlight">\(T=t\)</span>)</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(VPI(T) =  \mathbb{E}_{T}\left[ EU(\alpha|e, T) \right] - \underbrace{EU(\alpha \vert e)}_{\text{original EU}}\)</span></p></li>
+<li><p>first term expands to <span class="math notranslate nohighlight">\(\sum_t P(T=t \vert e) \cdot EU(\alpha \vert  e, T=t) \)</span></p>
+<ul>
+<li><p>within each of these EU, we take a max over actions</p></li>
+</ul>
+</li>
+<li><p>VPI not linearly additive, but is order-independent</p></li>
+<li><p>intuition</p>
+<ul>
+<li><p>info is more valuable when it is likely to cause a change of plan</p></li>
+<li><p>info is more valuable when the new plan will be much better than the old plan</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>information-gathering agent</p>
+<ul>
+<li><p><em>myopic</em> - greedily obtain evidence which yields highest VPI until some threshold</p></li>
+<li><p><em>conditional plan</em> - considers more things</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="mdps-and-rl-r-n-17-1-17-4">
+<h2>6.10.3. mdps and rl - R&amp;N 17.1-17.4<a class="headerlink" href="#mdps-and-rl-r-n-17-1-17-4" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>sequences of actions</p></li>
+<li><p><em>fully observable</em> - agent knows its state</p></li>
+<li><p><em>markov decision process</em> - all these things are given</p>
+<ul>
+<li><p>set of states s</p></li>
+<li><p>set of actions a</p></li>
+<li><p>stochastic transition model <span class="math notranslate nohighlight">\(P(s' \vert s,a)\)</span></p></li>
+<li><p>reward function R(s)</p>
+<ul>
+<li><p>utility aggregates rewards, for models more complex than mdps reward can be a function of past sequences of actions / observations</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>want policy <span class="math notranslate nohighlight">\(\pi (s)\)</span> - what action to do in state s</p>
+<ul>
+<li><p>optimal policy yields highest expected utlity</p></li>
+</ul>
+</li>
+<li><p>optimizing MDP - <em>multiattribute utility theory</em></p>
+<ul>
+<li><p>could sum rewards, but results are infinite</p></li>
+<li><p>instead define objective function (maps infinite sequences of rewards to single real numbers)</p>
+<ul>
+<li><p>ex. discounting to prefer earlier rewards (most common)</p>
+<ul>
+<li><p>discount reward n steps away by <span class="math notranslate nohighlight">\(\gamma^n, 0&lt;\gamma&lt;1\)</span></p></li>
+</ul>
+</li>
+<li><p>ex. set a <em>finite horizon</em> and sum rewards</p>
+<ul>
+<li><p>optimal action in a given state could change over time = <em>nonstationary</em></p></li>
+</ul>
+</li>
+<li><p>ex. average reward rate per time step</p></li>
+<li><p>ex. agent is guaranteed to get to terminal state eventually - <em>proper policy</em></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>expected utility executing <span class="math notranslate nohighlight">\(\pi\)</span>: <span class="math notranslate nohighlight">\(U^\pi (s) = \mathbb E_{s_1,...,s_t}\left[\sum_t \gamma^t R(s_t)\right]\)</span></p>
+<ul>
+<li><p>when we use discounted utilities, <span class="math notranslate nohighlight">\(\pi\)</span> is independent of starting state</p></li>
+<li><p><span class="math notranslate nohighlight">\(\pi^*(s) = \underset{\pi}{argmax} \: U^\pi (s) = \underset{a}{argmax} \sum_{s'} P(s' \vert s,a) U'(s)\)</span></p></li>
+</ul>
+</li>
+</ul>
+<div class="section" id="value-iteration">
+<h3>6.10.3.1. value iteration<a class="headerlink" href="#value-iteration" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>value iteration</em> - calculates utility of each state and uses utilities to find optimal policy</p>
+<ul>
+<li><p><em>bellman eqn</em>: <span class="math notranslate nohighlight">\(U(s) = R(s) + \gamma \: \underset{a}{\max} \sum_{s'} P(s' \vert s, a) U(s')\)</span></p></li>
+<li><p>start with arbitrary utilities</p></li>
+<li><p>recalculate several times with <em>Bellman update</em> to approximate solns to bellman eqn</p></li>
+</ul>
+</li>
+<li><p>value iteration eventually converges</p>
+<ul>
+<li><p><em>contraction</em> - function that brings variables together</p>
+<ul>
+<li><p>contraction only has 1 fixed point</p></li>
+<li><p>Bellman update is a contraction on the space of utility vectors and therefore converges</p></li>
+<li><p>error is reduced by factor of <span class="math notranslate nohighlight">\(\gamma\)</span> each iteration</p></li>
+</ul>
+</li>
+<li><p>also, terminating condition -  if <span class="math notranslate nohighlight">\( \vert  \vert U_{i+1}-U_i \vert  \vert  &lt; \epsilon (1-\gamma) / \gamma\)</span> then <span class="math notranslate nohighlight">\( \vert  \vert U_{i+1}-U \vert  \vert &lt;\epsilon\)</span></p></li>
+<li><p>what actually matters is <em>policy loss</em> <span class="math notranslate nohighlight">\( \vert  \vert U^{\pi_i}-U \vert  \vert \)</span> - the most the agent can lose by executing <span class="math notranslate nohighlight">\(\pi_i\)</span> instead of the optimal policy <span class="math notranslate nohighlight">\(\pi^*\)</span></p>
+<ul>
+<li><p>if <span class="math notranslate nohighlight">\( \vert  \vert U_i -U \vert  \vert  &lt; \epsilon\)</span> then <span class="math notranslate nohighlight">\( \vert  \vert U^{\pi_i} - U \vert  \vert  &lt; 2\epsilon \gamma / (1-\gamma)\)</span></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="policy-iteration">
+<h3>6.10.3.2. policy iteration<a class="headerlink" href="#policy-iteration" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>another way to find optimal policies</p>
+<ol class="simple">
+<li><p><em>policy evaluation</em> - given a policy <span class="math notranslate nohighlight">\(\pi_i\)</span>, calculate <span class="math notranslate nohighlight">\(U_i=U^{\pi_i}\)</span>, the utility of each state if <span class="math notranslate nohighlight">\(\pi_i\)</span> were to be executed</p></li>
+</ol>
+<ul class="simple">
+<li><p>like value iteration, but with a set policy so there’s no max</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(U_i(s) = R(s) + \gamma \: \sum_{s'} P(s' \vert s, \pi_i(s)) U_i(s')\)</span></p></li>
+<li><p>can solve exactly for small spaces, or approximate (set of lin. eqs.)</p></li>
+</ul>
+</li>
+</ul>
+<ol class="simple">
+<li><p><em>policy improvement</em> - calculate a new MEU policy <span class="math notranslate nohighlight">\(\pi_{i+1}\)</span> using <span class="math notranslate nohighlight">\(U_i\)</span></p></li>
+</ol>
+<ul class="simple">
+<li><p>same as above, just <span class="math notranslate nohighlight">\(\pi^*(s) = \underset{\pi}{argmax} \: U^\pi (s) = \underset{a}{argmax} \sum_{s'} P(s' \vert s,a) U'(s)\)</span></p></li>
+</ul>
+</li>
+<li><p><em>asynchronous policy iteration</em> - don’t have to update all states at once</p></li>
+</ul>
+</div>
+<div class="section" id="partially-observable-markov-decision-processes-pomdp">
+<h3>6.10.3.3. partially observable markov decision processes (POMDP)<a class="headerlink" href="#partially-observable-markov-decision-processes-pomdp" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>agent is not sure what state it’s in</p></li>
+<li><p>same elements but add <em>sensor model</em> <span class="math notranslate nohighlight">\(P(e \vert s)\)</span></p></li>
+<li><p>have distr <span class="math notranslate nohighlight">\(b(s)\)</span> for belief states</p>
+<ul class="simple">
+<li><p>updates like the HMM: <span class="math notranslate nohighlight">\(b'(s') = \alpha P(e \vert s') \sum_s P(s' \vert s, a) b(s)\)</span></p></li>
+<li><p>changes based on observations</p></li>
+</ul>
+</li>
+<li><p>optimal action depends only on the agent’s current belief state</p>
+<ul class="simple">
+<li><p>use belief states as the states of an MDP and solve as before</p></li>
+<li><p>changes because state space is now continuous</p></li>
+</ul>
+</li>
+<li><p>value iteration</p>
+<ol class="simple">
+<li><p>expected utility of executing p in belief state is just <span class="math notranslate nohighlight">\(b \cdot \alpha_p\)</span>  (dot product)</p></li>
+<li><p><span class="math notranslate nohighlight">\(U(b) = U^{\pi^*}(b)=\underset{p}{\max} \: b \cdot \alpha_p\)</span></p></li>
+</ol>
+<ul class="simple">
+<li><p>belief space is continuous [0, 1] so we represent it as piecewise linear, and store these discrete lines in memory</p>
+<ul>
+<li><p>do this by iterating and keeping any values that are optimal at some point</p>
+<ul>
+<li><p>remove <em>dominated plans</em></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>generally this is far too inefficient</p></li>
+</ul>
+</li>
+<li><p><em>dynamic decision network</em> - online agent <img alt="" src="../../_images/online_pomdp.png" /></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="reinforcement-learning-r-n-21-1-21-6">
+<h2>6.10.4. reinforcement learning – R&amp;N 21.1-21.6<a class="headerlink" href="#reinforcement-learning-r-n-21-1-21-6" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><em>reinforcement learning</em> - use observed rewards to learn optimal policy for the environment</p>
+<ul>
+<li><p>in ch 17, agent had model of environment (P(s’|s, a) and R(s))</p></li>
+</ul>
+</li>
+<li><p>2 problems</p>
+<ul>
+<li><p><em>passive</em> - given <span class="math notranslate nohighlight">\(\pi\)</span>, learn <span class="math notranslate nohighlight">\(U^\pi (s)\)</span></p></li>
+<li><p><em>active</em> - <em>explore</em> states to find utilities and <em>exploit</em> to get highest reward</p></li>
+</ul>
+</li>
+<li><p>2 model types, 3 agent designs</p>
+<ul>
+<li><p>model-based: can predict next state/reward before taking action (for MDP, requires learning <span class="math notranslate nohighlight">\(P(s'|s,a)\)</span>)</p>
+<ul>
+<li><p><em>utility-based agent</em> - learns utility function on states</p>
+<ul>
+<li><p>requires model of the environment</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>model-free</p>
+<ul>
+<li><p><em>Q-learning agent</em>: learns <em>action-utility function</em> = <em>Q-function</em> maps actions <span class="math notranslate nohighlight">\(\to\)</span> utility</p></li>
+<li><p><em>reflex agent</em>: learns policy that maps directly from states to actions</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="section" id="passive-reinforcement-learning">
+<h3>6.10.4.1. passive reinforcement learning<a class="headerlink" href="#passive-reinforcement-learning" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>given policy <span class="math notranslate nohighlight">\(\pi\)</span>, learn <span class="math notranslate nohighlight">\(U^\pi (s) = \mathbb E\left[ \sum_{t=0}^{\infty} \gamma^t R(S_t)\right]\)</span></p>
+<ul class="simple">
+<li><p>like policy evaluation, but transition model / reward function are unknown</p></li>
+</ul>
+</li>
+<li><p><strong>direct utility estimation</strong>: treat states independently</p>
+<ul class="simple">
+<li><p>run trials to sample utility</p></li>
+<li><p>average to get expected total reward for each state = expected total reward from each state</p></li>
+</ul>
+</li>
+<li><p><strong>adaptive dynamic programming</strong> (ADP) - sample to estimate transition model <span class="math notranslate nohighlight">\(P(s'|s, a)\)</span> and rewards <span class="math notranslate nohighlight">\(R(s)\)</span>, then plug into Bellman eqn to find <span class="math notranslate nohighlight">\(U^\pi(s)\)</span> (plug in at each step)</p>
+<ul>
+<li><p>we might want to enforce a prior on the model (two ways)</p>
+<ol class="simple">
+<li><p><em>Bayesian reinforcement learning</em> - assume a prior <span class="math notranslate nohighlight">\(P(h)\)</span> on transition model h</p></li>
+</ol>
+<ul class="simple">
+<li><p>use prior to calculate <span class="math notranslate nohighlight">\(P(h \vert e)\)</span></p></li>
+<li><p>use <span class="math notranslate nohighlight">\(P(h|e)\)</span> to calculate optimal policy: <span class="math notranslate nohighlight">\(\pi^* = \underset{\pi}{argmax} \sum_h P(h \vert e) u_h^\pi\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(u_h^\pi\)</span>= expected utility over all possible start states, obtained by executing policy <span class="math notranslate nohighlight">\(\pi\)</span> in model h</p></li>
+</ul>
+</li>
+</ul>
+<ol class="simple">
+<li><p>give best outcome in the worst case over H (from <em>robust control theory</em>)</p></li>
+</ol>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\pi^* = \underset{\pi}{argmax}\:  \underset{h}{\min} \: u_h^\pi\)</span></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>temporal-difference learning</strong> - adjust utility estimates towards local equilibrium for correct utilities</p>
+<ul class="simple">
+<li><p>like an approximation of ADP</p></li>
+<li><p>when we transition <span class="math notranslate nohighlight">\(s \to s'\)</span>, update <span class="math notranslate nohighlight">\(U^\pi(s) = U^\pi (s) + \alpha \left[R(s) - U^\pi (s) + \gamma \:U^\pi (s') \right]\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\alpha\)</span> should decrease over time to converge</p></li>
+</ul>
+</li>
+<li><p><em>prioritized sweeping</em> - prefers to make adjustments to states whose likely successors have just undergone a large adjustment in their own utility estimates</p>
+<ul>
+<li><p>speeds things up</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="active-reinforcement-learning">
+<h3>6.10.4.2. active reinforcement learning<a class="headerlink" href="#active-reinforcement-learning" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>no longer following set policy</p>
+<ul>
+<li><p><em>explore</em> states to find their utilities and <em>exploit</em> model to get highest reward</p></li>
+<li><p>must explore all actions, not just those in the policy</p></li>
+</ul>
+</li>
+<li><p><em>bandit</em> problems - determining exploration policy</p>
+<ul>
+<li><p><em>n-armed bandit</em> - pulling n levelers on a slot machine, each with different distr.</p></li>
+<li><p><em>Gittins index</em> - function of number of pulls / payoff</p></li>
+</ul>
+</li>
+<li><p>coorect schemes should be <em>GLIE</em> - greedy in the limit of infinite exploration - visits all states infinitely, but eventually become greedy</p></li>
+</ul>
+<div class="section" id="agent-examples">
+<h4>6.10.4.2.1. agent examples<a class="headerlink" href="#agent-examples" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>ex. choose random action <span class="math notranslate nohighlight">\(1/t\)</span> of the time</p></li>
+<li><p>ex. active adp agent</p>
+<ul>
+<li><p>give optimistic utility to relatively unexplored states</p></li>
+<li><p>uses <em>exploration function</em> f(u, numTimesVisited) around the sum in the bellman eqn</p>
+<ul>
+<li><p>high utilities will propagate</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ex. active TD agent</p>
+<ul>
+<li><p>now must learn transitions (same as adp)</p></li>
+<li><p>update rule same as passive TD</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="learning-action-utility-function">
+<h4>6.10.4.2.2. learning action-utility function<a class="headerlink" href="#learning-action-utility-function" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(U(s) = \underset{a}{\max} \: Q(s,a)\)</span></p>
+<ul>
+<li><p>ADP version: <span class="math notranslate nohighlight">\(Q(s, a) = R(s) + \gamma \sum_{s'} P(s'|s, a) \underset{a'}{\max} Q(s', a')\)</span></p></li>
+<li><p>TD version: <span class="math notranslate nohighlight">\(Q(s,a) = Q(s,a) + \alpha [R(s) - Q(s,a) + \gamma \: \underset{a'}{\max} Q(s', a')]\)</span> - <strong>this is what is usually referred to as Q-learning</strong></p></li>
+</ul>
+</li>
+<li><p><em>SARSA</em> (state-action-reward-state-action) is related: <span class="math notranslate nohighlight">\(Q(s,a) = Q(s,a) + \alpha [R(s) - Q(s,a) + \gamma \: Q(s', a')]\)</span></p>
+<ul>
+<li><p>here, a’ is action actually taken</p></li>
+</ul>
+</li>
+<li><p>Q-learning is <em>off-policy</em> (only uses best Q-value)</p>
+<ul>
+<li><p>more flexible</p></li>
+</ul>
+</li>
+<li><p>SARSA is <em>on-policy</em> (pays attention to actual policy being followed)</p></li>
+<li><p>can approximate Q-function with something other than a lookup table</p>
+<ul>
+<li><p>ex. linear function of parameters <span class="math notranslate nohighlight">\(\hat{U}_\theta(s) = \theta_1f_1(s) + ... + \theta_n f_n(s)\)</span></p>
+<ul>
+<li><p>can learn params online with <em>delta rule</em> = <em>wildrow-hoff rule</em>: <span class="math notranslate nohighlight">\(\theta_i = \theta - \alpha \: \frac{\partial Loss}{\partial \theta_i}\)</span></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="policy-search">
+<h3>6.10.4.3. policy search<a class="headerlink" href="#policy-search" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>keep twiddling the policy as long as it improves, then stop</p>
+<ul>
+<li><p>store one Q-function (parameterized by <span class="math notranslate nohighlight">\(\theta\)</span>) for each action</p></li>
+<li><p>ex. <span class="math notranslate nohighlight">\(\pi(s) = \underset{a}{\max} \: \hat{Q}_\theta (s,a)\)</span></p>
+<ul>
+<li><p>this is discontinunous, instead often use <em>stochastic policy</em> representation (ex. softmax for <span class="math notranslate nohighlight">\(\pi_\theta (s,a)\)</span>)</p></li>
+</ul>
+</li>
+<li><p>learn <span class="math notranslate nohighlight">\(\theta\)</span> that results in good performance</p>
+<ul>
+<li><p>Q-learning learns actual Q* function - could be different (scaling factor etc.)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>to find <span class="math notranslate nohighlight">\(\pi\)</span> maximize <em>policy value</em> <span class="math notranslate nohighlight">\(p(\theta) = \)</span> expected reward executing <span class="math notranslate nohighlight">\(\pi_\theta\)</span></p>
+<ul>
+<li><p>could do this with sgd using <em>policy gradient</em></p></li>
+<li><p>when environment/policy is stochastic, more difficult</p>
+<ol class="simple">
+<li><p>could sample mutiple times to compute gradient</p></li>
+<li><p>REINFORCE algorithm - could approximate gradient at <span class="math notranslate nohighlight">\(\theta\)</span> by just sampling at <span class="math notranslate nohighlight">\(\theta\)</span>: <span class="math notranslate nohighlight">\(\nabla_\theta p(\theta) \approx \frac{1}{N} \sum_{j=1}^N \frac{(\nabla_\theta \pi_\theta (s, a_j)) R_j (s)}{\pi_\theta (s, a_j)}\)</span></p></li>
+<li><p>PEGASUS - <em>correlated sampling</em> - ex. 2 blackjack programs would both be dealt same hands -  want to see different policies on same things</p></li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<hr class="docutils" />
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes/ai"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="knowledge_rep.html" title="previous page">6.9. representations</a>
+    <a class='right-next' id="next-link" href="../neuro/neuro.html" title="next page">7. neuro</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Chandan Singh<br/>
+        
+            &copy; Copyright None.<br/>
+          <div class="extra_footer">
+            <p>
+Many of these images are taken from resources on the web.
+</p>
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

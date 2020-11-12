@@ -1,0 +1,871 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>5.8. evaluation &#8212; learning to learn</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../_static/togglebutton.js"></script>
+    <script type="text/javascript" src="../../_static/clipboard.min.js"></script>
+    <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    <script type="text/javascript">var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script type="text/javascript" src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" type="text/javascript" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script type="text/javascript">
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="6. ai" href="../ai/ai.html" />
+    <link rel="prev" title="5.7. learning theory" href="learning_theory.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">learning to learn</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   welcome 👋
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../research_ovws/research_ovws.html">
+   1. research_ovws
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_comp_neuro.html">
+     1.1. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_disentanglement.html">
+     1.2. disentanglement
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_complexity.html">
+     1.3. complexity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_interesting_science.html">
+     1.4. interesting science
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_dl_theory.html">
+     1.5. dl theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_scat.html">
+     1.6. scattering transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">
+     1.7. ml in medicine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_dl_for_neuro.html">
+     1.8. dl for neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_uncertainty.html">
+     1.9. uncertainty
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_interp.html">
+     1.10. interpretability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_kernels.html">
+     1.11. kernels
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../cs/cs.html">
+   2. cs
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/retrieval.html">
+     2.1. info retrieval
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/python_ref.html">
+     2.2. python ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/data_structures.html">
+     2.3. data structures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/software.html">
+     2.4. software engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/quantum.html">
+     2.5. quantum
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/algo.html">
+     2.6. algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/graphs.html">
+     2.7. graphs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/os.html">
+     2.8. os
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/arch.html">
+     2.9. architecture
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/java_ref.html">
+     2.10. java ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/comp_theory.html">
+     2.11. cs theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/cpp_ref.html">
+     2.12. c/c++ ref
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../math/math.html">
+   3. math
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/differential_equations.html">
+     3.1. differential equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/proofs.html">
+     3.2. proofs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/analysis.html">
+     3.3. real analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/linear_algebra.html">
+     3.4. linear algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/signals.html">
+     3.5. signals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/optimization.html">
+     3.6. optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/calculus.html">
+     3.7. calculus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/chaos.html">
+     3.8. chaos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/math_basics.html">
+     3.9. math basics
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../stat/stat.html">
+   4. stat
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/graphical_models.html">
+     4.1. graphical models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/data_analysis.html">
+     4.2. data analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/testing.html">
+     4.3. testing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/causal_inference.html">
+     4.4. causal inference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/info_theory.html">
+     4.5. info theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/linear_models.html">
+     4.6. linear models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/time_series.html">
+     4.7. time series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/game_theory.html">
+     4.8. game theory
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="ml.html">
+   5. ml
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="comp_vision.html">
+     5.1. computer vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="structure_ml.html">
+     5.2. structure learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="classification.html">
+     5.3. classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="unsupervised.html">
+     5.4. unsupervised
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="deep_learning.html">
+     5.5. deep learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="feature_selection.html">
+     5.6. feature selection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="learning_theory.html">
+     5.7. learning theory
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     5.8. evaluation
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ai/ai.html">
+   6. ai
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/search.html">
+     6.1. search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/nlp.html">
+     6.2. nlp
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/fairness_sts.html">
+     6.3. fairness
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/cogsci.html">
+     6.4. cogsci
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/ai_futures.html">
+     6.5. ai futures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/logic.html">
+     6.6. logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/philosophy.html">
+     6.7. philosophy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/psychology.html">
+     6.8. psychology
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/knowledge_rep.html">
+     6.9. representations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/decisions.html">
+     6.10. decisions
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../neuro/neuro.html">
+   7. neuro
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/brain_basics.html">
+     7.1. brain basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/vissci.html">
+     7.2. vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/comp_neuro.html">
+     7.3. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/sensory_input.html">
+     7.4. sensory input
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/memory.html">
+     7.5. memory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/motor.html">
+     7.6. motor system
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/development.html">
+     7.7. development
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/notes/ml/evaluation.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/csinva/csinva.github.io"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#losses">
+   5.8.1. losses
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#measures">
+   5.8.2. measures
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#comparing-two-things">
+   5.8.3. comparing two things
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cv">
+   5.8.4. cv
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stability">
+   5.8.5. stability
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#other-considerations">
+   5.8.6. other considerations
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="evaluation">
+<h1>5.8. evaluation<a class="headerlink" href="#evaluation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="losses">
+<h2>5.8.1. losses<a class="headerlink" href="#losses" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>define a loss function <span class="math notranslate nohighlight">\(\mathcal{L}\)</span></p>
+<ul>
+<li><p>0-1 loss: <span class="math notranslate nohighlight">\(\vert C-f(X)\vert\)</span>  - hard to minimize (combinatorial)</p></li>
+<li><p><span class="math notranslate nohighlight">\(L_2\)</span> loss: <span class="math notranslate nohighlight">\([C-f(X)[^2\)</span></p></li>
+</ul>
+</li>
+<li><p><em>risk</em> = <span class="math notranslate nohighlight">\(E_{(x,y)\sim D}[\mathcal L(f(X), y) ]\)</span></p></li>
+<li><p>optimal classifiers</p>
+<ul>
+<li><p>Bayes classifier minimizes 0-1 loss: <span class="math notranslate nohighlight">\(\hat{f}(X)=C_i\)</span> if <span class="math notranslate nohighlight">\(P(C_i\vert X)=max_f P(f\vert X)\)</span></p></li>
+<li><p>KNN minimizes <span class="math notranslate nohighlight">\(L_2\)</span> loss: <span class="math notranslate nohighlight">\(\hat{f}(X)=E(Y\vert X)\)</span></p></li>
+</ul>
+</li>
+<li><p>classification cost functions</p>
+<ol class="simple">
+<li><p>misclassification error - not differentiable</p></li>
+<li><p>Gini index: <span class="math notranslate nohighlight">\(\sum_{i != j} p_i q_j\)</span></p></li>
+<li><p>cross-entropy: <span class="math notranslate nohighlight">\(-\sum_x p(x)\: \log \: \hat p(x) \)</span>, where <span class="math notranslate nohighlight">\(p(x)\)</span> are usually labels and <span class="math notranslate nohighlight">\(\hat p(x)\)</span> are softmax outputs</p>
+<ol class="simple">
+<li><p>only penalizes target class (others penalized implicitly because of softmax)</p></li>
+<li><p>for binary, <span class="math notranslate nohighlight">\(- (p \log \hat p + (1-p) \log (1-\hat p)\)</span></p></li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+</div>
+<div class="section" id="measures">
+<h2>5.8.2. measures<a class="headerlink" href="#measures" title="Permalink to this headline">¶</a></h2>
+<p><em>goodness of fit</em> - how well does the learned distribution represent the real distribution?</p>
+<p><img alt="Screen Shot 2019-06-30 at 8.27.56 PM" src="../../_images/eval_metrics.png" /></p>
+<ul class="simple">
+<li><p>accuracy-based</p>
+<ul>
+<li><p>accuracy = (TP + TN) / (P + N)</p>
+<ul>
+<li><p>correct classifications / total number of test cases</p></li>
+</ul>
+</li>
+<li><p>balanced accuracy = 1/2 (TP / P + TN / N)</p></li>
+</ul>
+</li>
+<li><p>denominator is total pos/neg</p>
+<ul>
+<li><p><strong>recall</strong> = <strong>sensitivity</strong> =  <strong>true-positive rate</strong> = TP / P = TP / (TP + FN)</p>
+<ul>
+<li><p>what fraction of the real positives do we return?</p></li>
+</ul>
+</li>
+<li><p><strong>specificity</strong> = true negative rate = TN / N = TN / (TN + FP)</p>
+<ul>
+<li><p>what fraction of the real negatives do we return?</p></li>
+</ul>
+</li>
+<li><p><strong>false positive rate</strong> = FP / N <span class="math notranslate nohighlight">\(= 1 - \text{specificity}\)</span></p>
+<ul>
+<li><p>what fraction of the predicted negatives are wrong?</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>fraction is total predictions</p>
+<ul>
+<li><p><strong>precision</strong> = <strong>positive predictive value</strong> = TP / (TP + FP)</p>
+<ul>
+<li><p>what fraction of the prediction positives are true positives?</p></li>
+</ul>
+</li>
+<li><p><strong>negative predictive value</strong> = TN / (FN + TN)</p>
+<ul>
+<li><p>what fraction of predicted negatives are true negatives?</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>F-score</strong> is harmonic mean of precision and recall: 2 * (prec * rec) / (prec + rec)</p></li>
+<li><p>curves - easiest is often to just plot TP vs TN or FP vs FN</p>
+<ul>
+<li><p>roc curve: true-positive rate (recall) vs. false-positive rate</p>
+<ul>
+<li><p>perfect is recall = 1, false positive rate = 0</p></li>
+</ul>
+</li>
+<li><p>precision-recall curve</p></li>
+<li><p>AUC: area under (either one) of these curves - usually roc</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="comparing-two-things">
+<h2>5.8.3. comparing two things<a class="headerlink" href="#comparing-two-things" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>odds: p1 : not p1</p></li>
+<li><p>odds ratio is a ratio of odds</p></li>
+</ul>
+</div>
+<div class="section" id="cv">
+<h2>5.8.4. cv<a class="headerlink" href="#cv" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p><em>cross validation</em> - don’t have enough data for a test set</p>
+<ul>
+<li><p>properties</p>
+<ul class="simple">
+<li><p>not good when n &lt; complexity of predictor</p></li>
+<li><p>because summands are correlated</p></li>
+<li><p>assume data units are exchangeable</p></li>
+<li><p>can sometimes use this to pick k for k-means</p></li>
+<li><p>data is reused</p></li>
+</ul>
+</li>
+<li><p>types</p>
+<ol class="simple">
+<li><p>k-fold - split data into N pieces</p></li>
+</ol>
+<ul class="simple">
+<li><p>N-1 pieces for fit model, 1 for test</p></li>
+<li><p>cycle through all N cases</p></li>
+<li><p>average the values we get for testing</p></li>
+</ul>
+<ol class="simple">
+<li><p>leave one out (LOOCV)</p></li>
+</ol>
+<ul class="simple">
+<li><p>train on all the data and only test on one</p></li>
+<li><p>then cycle through everything</p></li>
+</ul>
+<ol class="simple">
+<li><p>random split - shuffle and repeat</p></li>
+<li><p><em>one-way CV</em> = <em>prequential analysis</em> - keep testing on next data point, updating model</p></li>
+<li><p>ESCV - penalize variance between folds</p></li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p><em>regularization path</em> of a regression - plot each coeff v. <span class="math notranslate nohighlight">\(\lambda\)</span></p>
+<ul class="simple">
+<li><p>tells you which features get pushed to 0 and when</p></li>
+</ul>
+</li>
+<li><p>for OLS (and maybe other linear models), <a class="reference external" href="https://robjhyndman.com/hyndsight/crossvalidation/">can compute leave-one-out CV without training separate models</a></p></li>
+</ul>
+</div>
+<div class="section" id="stability">
+<h2>5.8.5. stability<a class="headerlink" href="#stability" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>computational stability</p></li>
+</ol>
+<ul class="simple">
+<li><p>randomness in the algorithm</p></li>
+<li><p>perturbations to models</p></li>
+</ul>
+<ol class="simple">
+<li><p>generalization stability</p></li>
+</ol>
+<ul>
+<li><p>perturbations to data</p></li>
+<li><p>sampling methods</p>
+<ol class="simple">
+<li><p><em>bootstrap</em> - take a sample</p></li>
+</ol>
+<ul class="simple">
+<li><p>repeatedly sample from observed sample w/ replacement</p></li>
+<li><p>bootstrap samples has same size as observed sample</p></li>
+</ul>
+<ol class="simple">
+<li><p><em>subsampling</em></p></li>
+</ol>
+<ul class="simple">
+<li><p>sample without replacement</p></li>
+</ul>
+<ol class="simple">
+<li><p><em>jackknife resampling</em></p></li>
+</ol>
+<ul class="simple">
+<li><p>subsample containing all but one of the points</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="other-considerations">
+<h2>5.8.6. other considerations<a class="headerlink" href="#other-considerations" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>computational cost</p></li>
+<li><p>interpretability</p></li>
+<li><p>model-selection criteria</p>
+<ul>
+<li><p><em>adjusted <span class="math notranslate nohighlight">\(R^2_p\)</span></em> - penalty</p></li>
+<li><p><em>Mallow’s <span class="math notranslate nohighlight">\(C_p\)</span></em></p></li>
+<li><p><em><span class="math notranslate nohighlight">\(AIC_p\)</span></em></p></li>
+<li><p><em><span class="math notranslate nohighlight">\(BIC_p\)</span></em></p></li>
+<li><p>PRESS</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes/ml"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="learning_theory.html" title="previous page">5.7. learning theory</a>
+    <a class='right-next' id="next-link" href="../ai/ai.html" title="next page">6. ai</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Chandan Singh<br/>
+        
+            &copy; Copyright None.<br/>
+          <div class="extra_footer">
+            <p>
+Many of these images are taken from resources on the web.
+</p>
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

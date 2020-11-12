@@ -1,0 +1,3326 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>2.9. architecture &#8212; learning to learn</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../_static/togglebutton.js"></script>
+    <script type="text/javascript" src="../../_static/clipboard.min.js"></script>
+    <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    <script type="text/javascript">var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script type="text/javascript" src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" type="text/javascript" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script type="text/javascript">
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2.10. java ref" href="java_ref.html" />
+    <link rel="prev" title="2.8. os" href="os.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">learning to learn</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   welcome 👋
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../research_ovws/research_ovws.html">
+   1. research_ovws
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_comp_neuro.html">
+     1.1. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_disentanglement.html">
+     1.2. disentanglement
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_complexity.html">
+     1.3. complexity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_interesting_science.html">
+     1.4. interesting science
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_dl_theory.html">
+     1.5. dl theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_scat.html">
+     1.6. scattering transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">
+     1.7. ml in medicine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_dl_for_neuro.html">
+     1.8. dl for neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_uncertainty.html">
+     1.9. uncertainty
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_interp.html">
+     1.10. interpretability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_kernels.html">
+     1.11. kernels
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="cs.html">
+   2. cs
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="retrieval.html">
+     2.1. info retrieval
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="python_ref.html">
+     2.2. python ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="data_structures.html">
+     2.3. data structures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="software.html">
+     2.4. software engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="quantum.html">
+     2.5. quantum
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="algo.html">
+     2.6. algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="graphs.html">
+     2.7. graphs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="os.html">
+     2.8. os
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2.9. architecture
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="java_ref.html">
+     2.10. java ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="comp_theory.html">
+     2.11. cs theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cpp_ref.html">
+     2.12. c/c++ ref
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../math/math.html">
+   3. math
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/differential_equations.html">
+     3.1. differential equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/proofs.html">
+     3.2. proofs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/analysis.html">
+     3.3. real analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/linear_algebra.html">
+     3.4. linear algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/signals.html">
+     3.5. signals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/optimization.html">
+     3.6. optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/calculus.html">
+     3.7. calculus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/chaos.html">
+     3.8. chaos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/math_basics.html">
+     3.9. math basics
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../stat/stat.html">
+   4. stat
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/graphical_models.html">
+     4.1. graphical models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/data_analysis.html">
+     4.2. data analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/testing.html">
+     4.3. testing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/causal_inference.html">
+     4.4. causal inference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/info_theory.html">
+     4.5. info theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/linear_models.html">
+     4.6. linear models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/time_series.html">
+     4.7. time series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/game_theory.html">
+     4.8. game theory
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ml/ml.html">
+   5. ml
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/comp_vision.html">
+     5.1. computer vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/structure_ml.html">
+     5.2. structure learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/classification.html">
+     5.3. classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/unsupervised.html">
+     5.4. unsupervised
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/deep_learning.html">
+     5.5. deep learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/feature_selection.html">
+     5.6. feature selection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/learning_theory.html">
+     5.7. learning theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/evaluation.html">
+     5.8. evaluation
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ai/ai.html">
+   6. ai
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/search.html">
+     6.1. search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/nlp.html">
+     6.2. nlp
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/fairness_sts.html">
+     6.3. fairness
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/cogsci.html">
+     6.4. cogsci
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/ai_futures.html">
+     6.5. ai futures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/logic.html">
+     6.6. logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/philosophy.html">
+     6.7. philosophy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/psychology.html">
+     6.8. psychology
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/knowledge_rep.html">
+     6.9. representations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/decisions.html">
+     6.10. decisions
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../neuro/neuro.html">
+   7. neuro
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/brain_basics.html">
+     7.1. brain basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/vissci.html">
+     7.2. vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/comp_neuro.html">
+     7.3. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/sensory_input.html">
+     7.4. sensory input
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/memory.html">
+     7.5. memory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/motor.html">
+     7.6. motor system
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/development.html">
+     7.7. development
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/notes/cs/arch.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/csinva/csinva.github.io"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#units">
+   2.9.1. units
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#numbers">
+   2.9.2. numbers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#x86">
+   2.9.3. x86
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#intro-to-c-we-use-ansi-standard">
+   2.9.4. intro to C - we use ANSI standard
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#compile-steps">
+   2.9.5. compile steps
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#strings">
+   2.9.6. strings
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#memory-in-c">
+   2.9.7. memory in C
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#call-stack">
+   2.9.8. call stack
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#types">
+   2.9.9. types
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#boolean-operators">
+   2.9.10. boolean operators
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#att-x86-assembly">
+   2.9.11. ATT x86 assembly
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#y86-all-we-use">
+   2.9.12. y86 - all we use
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hardware">
+   2.9.13. hardware
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#executing-instructions">
+   2.9.14. executing instructions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hardware-wires-opq-example">
+   2.9.15. hardware wires - opq example
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pipelining">
+   2.9.16. pipelining
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#problems">
+     2.9.16.1. problems
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solutions">
+     2.9.16.2. solutions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#real-processors">
+     2.9.16.3. real processors
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#memory">
+   2.9.17. memory
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#writing">
+     2.9.17.1. writing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cache-anatomy">
+     2.9.17.2. cache anatomy
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#optimization">
+   2.9.18. optimization
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exceptions">
+   2.9.19. exceptions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#processes">
+   2.9.20. processes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#threads">
+   2.9.21. threads
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#system-calls">
+   2.9.22. system calls
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#software-exceptions">
+   2.9.23. software exceptions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#signals-setjmps">
+   2.9.24. signals, setjmps
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#virtual-memory">
+   2.9.25. virtual memory
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview">
+   2.9.26. overview
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#segments">
+   2.9.27. segments
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quiz-rvw">
+   2.9.28. quiz rvw
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#labs">
+   2.9.29. labs
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#strlen">
+     2.9.29.1. strlen
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#strsep">
+     2.9.29.2. strsep
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bit-puzzles">
+     2.9.29.3. bit puzzles
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reading">
+   2.9.30. reading
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ch-1-1-7-1-9">
+     2.9.30.1. ch 1 (1.7, 1.9)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ch-2-2-1-2-4-2-2-4-4">
+     2.9.30.2. ch 2 (2.1, 2.4.2, 2.4.4)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ch-3-3-6-3-7">
+     2.9.30.3. ch 3 (3.6, 3.7)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     2.9.30.4. 4.1,4.2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     2.9.30.5. 4.3.1-4
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     2.9.30.6. 4.4 pipelining
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     2.9.30.7. 4.5.3, 4.5.8
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     2.9.30.8. 5 - optimization
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     2.9.30.9. 6.1.1, 6.2, 6.3
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cache-memories-writing-cache-friendly-code">
+     2.9.30.10. 6.4, 6.5 - cache memories &amp; writing cache-friendly code
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     2.9.30.11. 8.1 Exceptions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     2.9.30.12. 8.2 Processes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#system-call-error-handling">
+     2.9.30.13. 8.3 System Call Error Handling
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     2.9.30.14. 9-9.5 Virtual Memory
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#address-translation">
+     2.9.30.15. 9.6 Address Translation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <ul class="simple">
+<li><p>TOC</p></li>
+</ul>
+<div class="section" id="architecture">
+<h1>2.9. architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="units">
+<h2>2.9.1. units<a class="headerlink" href="#units" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>we will use only the i versions (don’t have to write i):</p>
+<ul>
+<li><p>K - 10^3: Ki - 1024</p></li>
+<li><p>M - 10^6: Mi - 1024^2</p></li>
+<li><p>G - 10^9: Gi - 1024^3</p></li>
+</ul>
+</li>
+<li><p>convert to these: 2^27 = 128M</p></li>
+<li><p>log(8K)=13</p></li>
+<li><p>hardware is parallel by default</p></li>
+<li><p>amdahl’s law: tells you how much of a speedup you get</p>
+<ul>
+<li><p>S = 1 / (1-a+a/k)</p></li>
+<li><p>a-portion optimized, k-level of parallelization, S-total speedup
+if you really want performance increase in java, allocate a very large array, then keep track of it on your own</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="numbers">
+<h2>2.9.2. numbers<a class="headerlink" href="#numbers" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>0x means hexadecimal</p></li>
+<li><p>0 means octal</p></li>
+<li><p>bit - stores 0 or 1</p></li>
+<li><p>byte - 8 bits - 2 hex digits</p></li>
+<li><p>integer - almost always 32 bits</p></li>
+<li><p>“Big-endian”: most significant first (lowest address) - how we thnk</p>
+<ul class="simple">
+<li><p>1000 0000 0000 0000 = 2^5 = 32768</p></li>
+</ul>
+</li>
+<li><p>“Little-endian”: most significant last (highest address) - this is what computers do</p>
+<ul class="simple">
+<li><p>1000 0000 0000 0000 = 2^0 = 1</p></li>
+<li><p>Note that although all the bits are reversed, usually it is displayed with just the bytes reversed</p></li>
+</ul>
+</li>
+<li><p>Consider 0xdeadbeef</p>
+<ul class="simple">
+<li><p>On a big-endian machine, that’s 0xdeadbeef</p></li>
+<li><p>On a little-endian machine, that’s 0xefbeadde</p></li>
+<li><p>0xdeadbeef is used as a memory allocation pattern by some OSes</p></li>
+</ul>
+</li>
+<li><p>Representing integers</p>
+<ul class="simple">
+<li><p>Sign and magnitude - first digit specifies sign</p></li>
+<li><p>One’s complement - encode using n-1 bits, flip if negative\</p></li>
+<li><p>Two’s complement - encode using n-1 bits, flip if negative, add 1</p>
+<ul>
+<li><p>only one representation for 0</p>
+<ul>
+<li><p>maximum: 2^(n-1) - 1</p></li>
+<li><p>minimum: - 2^(n-1)</p>
+<ul>
+<li><p>flip everything to the left of the rightmost 1</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Floating point - like scientific notation</p>
+<ul>
+<li><p>3.24 * 10 ^ -6</p></li>
+<li><p>Mantissa - 3.24 - between 1 and the base (10)</p>
+<ul class="simple">
+<li><p>For binary, the mantissa must be between 1 and 2</p></li>
+<li><p>we assume the base is 2</p></li>
+</ul>
+</li>
+<li><p>32 bits are split as follows:</p>
+<ul class="simple">
+<li><p>bit 1: sign bit, 1 means negative (1 bit)</p></li>
+<li><p>bits 2-9: exponent (8 bits)</p></li>
+<li><p>Exponent values:</p>
+<ul>
+<li><p>0: zeros</p></li>
+<li><p>1-254: exponent-127</p></li>
+<li><p>255: infinities, overflow, underflow, NaN</p></li>
+<li><p>bits 10-32: mantissa (23 bits)</p></li>
+<li><p>mantissa=1.0+∑(i=1:23)(b^i/2^i) //we don’t encode the 1. because it has to be there
+value=(1−2∗sign)∗(1+mantissa)∗2^(exponent−127)</p></li>
+</ul>
+</li>
+<li><p>The largest float has:</p>
+<ul>
+<li><p>0 as the sign bit (it’s positive)</p>
+<ul>
+<li><p>254 as the exponent (1111 1110)</p></li>
+<li><p>255 is reserved for infinities and overflows</p></li>
+<li><p>That exponent is 254-127 = 127</p></li>
+<li><p>All 1’s for the mantissa</p>
+<ul>
+<li><p>Which yields almost 2
+2 * 2^127 = 2^128 = 3.402823 * 10^38    //actually a little bit lower
+Minimum positive:
+1 * 2^-126 = 2^-126 = 1.175494 x 10^-38 //this is exact
+Floating point numbers are not spatially uniform
+Depending on the exponent, the difference between two successive numbers is not the same
+union class - converts from one data type to another //when you write one field, it overrides the other</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>union foo {  //this converts a float to hex
+float f;
+int *x;
+} bar;
+int main() {
+bar.f = 42.125;
+cout &lt;&lt; bar.x &lt;&lt; endl; // this outputs as 0x42288000 (it is now converted to hex)
+}                          // if you were to dereference it, bad things would happen
+Never compare floating point numbers - even if you print them out, they might be stored internally
+Any fraction that doesn’t have a power of 2 as the denominator will be repeating
+// C++ (need to #include &lt;math.h&gt; and compile with -lm)
+define EPSILON 0.000001
+bool foo = fabs (a-b) &lt; EPSILON;
+You could use a rational or use more digits
+64-bit: 11 exponent bits
+offset=1023
+Cowlishaw encoding: use 3 bits to store a binary digit - inefficient</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>​</p>
+</div>
+<div class="section" id="x86">
+<h2>2.9.3. x86<a class="headerlink" href="#x86" title="Permalink to this headline">¶</a></h2>
+<p>Assembly Language - assembler translates text into machine code
+x86 is the type of chip
+8 registers, although you can’t use 2 (stack pointer and base pointer)
+they are all 32 bit registers
+1 byte = 8 bits
+Declare variables with 3 things:
+identifier, how big it is, and value
+doesn’t give you a type
+? means uninitialized
+x	DD	 	1, 2, 3  //declares arr with 3, 4-byte integers
+y	TIMES 8 DB	0    //declares 8 bytes all with value 0
+nasm assumes you are using 32 bits
+mov <dest>, <src>
+more like copy
+Where dest and src can be:
+A register
+A constant
+Variable name
+Pointer: [ebx]
+always put square brackets around variable
+you can ADD up to two registers, add one constant, and premultipy ONE register by 2,4,or 8
+The destination cannot be a constant (would overwrite the constant)
+You cannot access memory twice in one instruction
+not enough time to do that at clock speed
+Stack starts at the end of memory and goes backwards
+when you push onto it, it’s actually at a lower index
+ESP points to most recently pushed item
+push
+First decrements ESP (stack pointer) by 4 (stack grows down)
+push (mov) operand onto stack (4 bytes - we make this assumption, not always true)
+pop
+Pop top element of stack to memory or register, then increment stack pointer (ESP) by 4
+Value is written to the parameter
+Commands
+0fH - H at end specifies hex number
+lea is like &amp; (get the address of)
+Load effective address
+Place address of second parameter into the first parameter
+this is faster than arithmetic because you can do things as a a single command
+add, sub
+a += b
+inc, dec
+a++
+imul
+a *= b
+idiv - use shift if possible
+have to load a,b into one 64-bit integer
+and, xor - bitwise
+cmp - compare two things
+je - jump when equal - specify where you are going to jump to
+Others: jne, jz, jg, jge, jl, jle, js
+call <label> - subroutine call
+pushes address of next instruction onto stack
+then jumps to label
+ret - returns from subroutine
+Calling conventions
+A set of rules/expectations between functions
+Using a stack for calling convention is implemented on most processors. Why? - Recursion
+Parameters: pushed on the stack
+Registers: saved on the stack
+eax,ecx,edx can be modified
+ebx,edi,esi shouldn’t be
+call - places return address on stack
+Local variables: placed in memory on the stack
+Return value: eax
+Callee: the function which is called by another function
+Register Usage
+Three registers may be modified by the callee: eax, ecx, edx
+If the caller wants to keep those values, they need to be saved by pushing them onto the stack
+Return value: eax register
+Varying number of parameters
+Method overloading
+Foo::bar(int) and Foo::bar(int, float) - this just creates two methods
+Default parameters
+Foo::bar (int x = 3) - value defaults to three, method always gets one parameter
+Variable number of parameters
+#include <cstdarg>
+#include <iostream>
+using namespace std;
+double average (int num, …) { //num is the number of arguments following
+va_list arguments;
+double sum = 0;
+va_start (arguments, num);
+for ( int x = 0; x &lt; num; x++ )
+sum += va_arg (arguments, double);
+va_end (arguments);
+return sum / num;
+}
+int main() {
+cout &lt;&lt; average(3, 12.2, 22.3, 4.5) &lt;&lt; endl;
+cout &lt;&lt; average(5, 3.3, 2.2, 1.1, 5.5, 3.3) &lt;&lt; endl;
+}
+Caller: the function which calls another function
+Prologue
+Tasks to take care of BEFORE calling a subroutine
+Call the subroutine with the call opcode
+Epilogue
+Tasks to complete AFTER subroutine call returns
+(It is not really called this, but I use this to parallel the equivalent components in the callee convention)
+Before calling the function (the prologue)
+Save registers that might be needed after the call (eax, ecx, edx)
+Push parameters on the stack
+Call the function
+call instruction places return address in stack
+After the called function returns (the epilogue)
+Remove parameters from stack
+Restore saved registers
+pop saves the value and the increments esp by 4
+if we don’t need to save the values (like with arguments we passed in), we can just increment esp<br />
+Callee
+parameters are above ebp
+local variables are under ebp
+sub esp,4 - doing this at the beginning makes space for local variables
+…
+return value is placed into eax //we won’t focus on things that don’t return 4 bytes, like returning a double
+mov esp,ebp - this undoes the above command.  We could do add esp,4 but if it were more complicated this would still work.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>subroutine may not know how many parameters are passed to it - thus, 1st arg must be at ebp+8 and the rest are pushed above it.
+Every subroutine call puts return address and ebp backup on the stack
+</pre></div>
+</div>
+<p>Activation Records
+Every time a sub-routine is called, a number of things are pushed onto the stack:
+Registers
+Parameters
+Old base/stack pointers
+Local variables
+Return address
+The callee also pushes caller-saved registers
+Typically stack stops around 100-200 Megabytes, although this can be changed</p>
+<p>Memory - There are two types of memory that need to be handled:
+Dynamic memory (via new, malloc(), etc.)
+This is stored on the heap
+Static memory (on the stack)
+This is where the activation records are kept</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>The binary program starts at the beginning of the 2^32 = 4 Gb of memory
+The heap starts right after this
+The stack starts at the end of this 4 Gb of memory, and grows backward
+If they meet, you run out of memory
+</pre></div>
+</div>
+<p>Buffer Overflow
+void security_hole() {
+char buffer[12];
+scanf (“%s”, buffer); // how C handles input
+}
+The stack looks like (with sizes in parenthesis):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> esi (4) 	 edi (4) 	 buffer (12) 	 ebp (4) 	 ret addr (4) 
+
+Addresses increase to the right (the stack grows to the left)
+What happens if the value stored into buffer is 13 bytes long?
+     We overwrite one byte of ebp
+What happens if the value stored into buffer is 16 bytes long?
+     We completely overwrite ebp
+What if it is exactly 20 bytes long?
+     We overwrite the return address!
+Buffer Overflow Attack
+     When you read in a string (etc.) that goes beyond the size of the buffer
+     You can then overwrite the return address
+     And set it to your own code
+     For example, code that is included later on in the string - overwrite ebp, overwrite ret addr with beginning of malicious code
+</pre></div>
+</div>
+<p>We are using nasm as our assembler for the x86 labs
+looks different when you use the compiler
+in C, you can only have one method with the same name
+C translates more cleanly into assembly
+optimization rearranges stuff to lessen memory access
+_Z3maxii:
+ii is the parameter list (two integers)</p>
+<p>In little-Endian, the entire 32-bit word and the 8-bit least significant byte have the same address
+this makes casting very easy
+RISC
+Reduced instruction set computer
+Fewer and simpler instructions (maybe 50 or so)
+Less chip complexity means they can run fast
+CISC
+Complex instruction set computer
+More and more complex instructions (300-400 or so)
+More chip complexity means harder to make run fast</p>
+<p>Caller
+Parameters: pushed on the stack
+Registers: saved on the stack
+eax,ecx,edx can be modified
+ebx,edi,esi shouldn’t be
+call - places return address on stack
+Local variables: placed in memory on the stack
+Return value: eax
+Callee: the function which is called by another function
+push ebp
+mov ebp, esp
+sub esp, 4 //allocate local variables
+push ebx   //you don’t have to back these up
+mov ebp-4, 1 //load 1 into local variable</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>add esp, 4  //deallocate local var
+pop ebx
+pop ebp
+ret
+</pre></div>
+</div>
+</div>
+<div class="section" id="intro-to-c-we-use-ansi-standard">
+<h2>2.9.4. intro to C - we use ANSI standard<a class="headerlink" href="#intro-to-c-we-use-ansi-standard" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">all</span> <span class="n">C</span> <span class="n">is</span> <span class="n">valid</span> <span class="n">C</span><span class="o">++</span>
+<span class="c1">// doesn&#39;t work</span>
+<span class="n">always</span> <span class="n">use</span> <span class="o">+=</span><span class="mi">1</span> <span class="n">not</span> <span class="o">++</span>
+<span class="n">compile</span> <span class="n">with</span> <span class="n">gcc</span> <span class="o">-</span><span class="n">ansi</span> <span class="o">-</span><span class="n">pedantic</span> <span class="o">-</span><span class="n">Wall</span> <span class="o">-</span><span class="n">Werror</span> <span class="n">program</span><span class="o">.</span><span class="na">c</span>
+	<span class="o">-</span><span class="n">Werror</span> <span class="n">will</span> <span class="n">stop</span> <span class="n">the</span> <span class="n">program</span> <span class="n">from</span> <span class="n">compiling</span>
+<span class="n">all</span> <span class="n">variables</span> <span class="n">have</span> <span class="n">to</span> <span class="n">be</span> <span class="n">declared</span> <span class="n">at</span> <span class="n">the</span> <span class="n">top</span>
+	<span class="kt">int</span> <span class="nf">main</span><span class="o">(</span><span class="kt">int</span> <span class="n">argc</span><span class="o">,</span> <span class="kt">char</span><span class="o">*</span><span class="n">argv</span><span class="o">[]){</span>
+		<span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+		<span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">34</span><span class="o">;</span>
+		<span class="kt">int</span> <span class="n">z</span> <span class="o">=</span> <span class="n">y</span><span class="o">*</span><span class="n">y</span><span class="o">/</span><span class="n">x</span><span class="o">;</span>
+		<span class="n">x</span> <span class="o">=</span> <span class="mi">13</span><span class="o">;</span>
+		<span class="kt">int</span> <span class="n">w</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="o">&lt;-</span> <span class="k">this</span> <span class="n">will</span> <span class="n">not</span> <span class="n">work</span>
+	<span class="n">label_name</span><span class="o">:</span>
+		<span class="n">printf</span><span class="o">(</span><span class="s">&quot;omg!&quot;</span><span class="o">);</span>
+		<span class="k">goto</span> <span class="n">label_name</span><span class="o">;</span> <span class="cm">/*this goes to the label_name line - don&#39;t do this, but assembly only has this*/</span>
+		<span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="n">printf</span><span class="o">(</span><span class="kd">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">format</span><span class="o">,</span> <span class="o">...)</span>
+	<span class="n">printf</span><span class="o">(</span><span class="s">&quot;%d %f %g %s\n&quot;</span><span class="o">,);</span> <span class="cm">/* int, double (these must be explicitly doubles), double (as small as possible), string */</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="compile-steps">
+<h2>2.9.5. compile steps<a class="headerlink" href="#compile-steps" title="Permalink to this headline">¶</a></h2>
+<p>source (text) -&gt; pre-processor -&gt; modified source (text) -&gt; compiler -&gt; assembly (text) -&gt; assembler -&gt; binary program -&gt; linker -&gt; executable</p>
+<ol class="simple">
+<li><p>pre-processing - deals with hashtags - sets up line numbers for errors, includes external definitions, normal defines (.i)</p></li>
+<li><p>compile - turns it into assembly (.s)</p>
+<ul class="simple">
+<li><p>this assembly has commands with destination, src</p></li>
+</ul>
+</li>
+<li><p>assemble - turns assembly into binary with a lot of wrappers (.o)</p></li>
+<li><p>link - makes the file executable, gets the code from includes together (a.out)</p></li>
+</ol>
+</div>
+<div class="section" id="strings">
+<h2>2.9.6. strings<a class="headerlink" href="#strings" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>char - number that fits in 1 byte</p></li>
+<li><p>string is an array of chars: char*</p></li>
+<li><p>all strings end with null character \0, bad security</p></li>
+<li><p>length of string doesn’t include null character</p></li>
+</ul>
+<p>h|e|l|l|o|\0
+-|
+10|.|.|.|.|15</p>
+</div>
+<div class="section" id="memory-in-c">
+<h2>2.9.7. memory in C<a class="headerlink" href="#memory-in-c" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>byte is smallest accessible memory unit - 2 hex digits (ex: 0x3a)</p></li>
+</ul>
+<p>Bits | Name | Bits | Name</p>
+<ul class="simple">
+<li><p>|
+1 | bit | 16 | word
+4 | nyble | 32 | double word, long word
+8 | byte | 64 | quad word</p></li>
+</ul>
+<p>theoretically would work:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">Void</span> <span class="o">*</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">(</span><span class="n">address</span> <span class="mi">3</span><span class="o">)</span>
+<span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="mh">0x3a</span> <span class="o">(</span><span class="n">value</span> <span class="mi">3</span><span class="n">a</span><span class="o">)</span>
+<span class="n">p</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="mh">0x3a</span> <span class="o">(</span><span class="n">value</span> <span class="mi">3</span><span class="n">a</span><span class="o">)</span>
+<span class="n">p</span><span class="o">[</span><span class="mi">3</span><span class="o">]</span> <span class="n">is</span> <span class="n">same</span> <span class="n">as</span> <span class="o">*(</span><span class="n">p</span><span class="o">+</span><span class="mi">3</span><span class="o">)</span> <span class="o">-</span> <span class="n">can</span> <span class="n">even</span> <span class="n">use</span> <span class="n">negative</span> <span class="n">addresses</span><span class="o">,</span> <span class="o">(</span><span class="n">at</span> <span class="n">end</span> <span class="n">wraps</span> <span class="n">around</span> <span class="o">-</span> <span class="n">overflows</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>in practice:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="o">*</span> <span class="n">p</span>
+<span class="nf">sizeof</span><span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="o">==</span> <span class="mi">4</span><span class="o">,</span> <span class="n">but</span> <span class="n">all</span> <span class="n">pointers</span> <span class="n">are</span> <span class="n">just</span> <span class="n">one</span> <span class="kt">byte</span> <span class="o">-</span> <span class="n">points</span> <span class="n">to</span> <span class="n">location</span> <span class="n">of</span> <span class="n">four</span> <span class="n">consecutive</span> <span class="n">bytes</span> <span class="n">that</span> <span class="n">are</span> <span class="kt">int</span>
+<span class="n">indexing</span> <span class="k">this</span> <span class="n">pointer</span> <span class="n">will</span> <span class="n">tell</span> <span class="n">you</span> <span class="n">how</span> <span class="n">much</span> <span class="n">to</span> <span class="n">offset</span> <span class="n">memory</span> <span class="n">by</span>
+<span class="n">address</span> <span class="n">must</span> <span class="n">be</span> <span class="mi">4</span><span class="o">-</span><span class="n">bytes</span> <span class="nf">aligned</span> <span class="o">(</span><span class="n">means</span> <span class="n">it</span> <span class="n">will</span> <span class="n">be</span> <span class="n">a</span> <span class="n">multiple</span> <span class="n">of</span> <span class="mi">4</span><span class="o">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>little-endian - least significant byte first</p></li>
+<li><p>big-endian - most significant byte first (normal) - networks use this</p></li>
+<li><p>we will use little-endian, this is what most computers use</p></li>
+<li><p>low addresses are unused - will throw error if accessed</p></li>
+<li><p>top has the os - will throw error if accessed</p></li>
+<li><p>contains heap, stack, code globals, shared stuff</p></li>
+</ul>
+</div>
+<div class="section" id="call-stack">
+<h2>2.9.8. call stack<a class="headerlink" href="#call-stack" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>return address</p></li>
+<li><p>local variables</p></li>
+<li><p>backups</p></li>
+<li><p>top pointer</p></li>
+<li><p>base pointer</p></li>
+<li><p>next pointer</p></li>
+<li><p>parameters (sometimes)</p></li>
+<li><p>return values (sometimes)</p></li>
+</ol>
+<p>one frame - between the lines is everything the current method has - largest addresses at top, grows downwards</p>
+<ul class="simple">
+<li><p>parameters (backwards)</p></li>
+<li><p>ret address</p></li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>base pointer</p></li>
+<li><p>previous stack base</p></li>
+<li><p>saved stuff</p></li>
+<li><p>locals</p></li>
+<li><p>top pointer (actually at the bottom)</p></li>
+<li><p>return value</p></li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>in practice, most parameters and return values are put in registers</p></li>
+</ul>
+</div>
+<div class="section" id="types">
+<h2>2.9.9. types<a class="headerlink" href="#types" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>2’s complement: positive normal, negative subtract 1 more than biggest number you can do</p>
+<ul>
+<li><p>flip everything to the left of the rightmost one</p></li>
+<li><p>math is exactly the same, discard extra bits</p></li>
+</ul>
+</li>
+</ul>
+<p>type | signed? | bits</p>
+<ul class="simple">
+<li><p>|
+char | ? | 8
+short | signed | 16 (usually)
+int | . | 16 or 32
+long | . | ≤16 or ≥ int
+long long | signed | 64</p></li>
+<li><p>everything can have an unsigned / signed in front of the type</p></li>
+<li><p>C will cast things without throwing error</p></li>
+</ul>
+</div>
+<div class="section" id="boolean-operators">
+<h2>2.9.10. boolean operators<a class="headerlink" href="#boolean-operators" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>9 = 1001 = 1.001 x 2^3</p></li>
+<li><p>x &amp;&amp; y -&gt; {0,1}</p></li>
+<li><p>x &amp; y -&gt; {0,1,…,2^32} (bit operations)</p></li>
+<li><p>^ is xor</p></li>
+<li><p>!x - 0 -&gt; 1, anything else -&gt; 0</p></li>
+<li><p>and is often called masking because only the things with 1s go through</p></li>
+<li><p>shifting will pad with 0s
+(1 &lt;&lt; 3 )-1 			gives us 3 1s
+~((1 &lt;&lt; 3 )-1)		gives us 111…111000
+x &amp; ~((1 &lt;&lt; 3 )-1)	gives us x1x2…..000</p></li>
+<li><blockquote>
+<div><blockquote>
+<div><p>copies the msb</p>
+</div></blockquote>
+</div></blockquote>
+</li>
+<li><p>then we can or it in order to change those last 3 bits</p></li>
+<li><p>trinary operator - a≥b:c means if(a) b; else c</p></li>
+<li><p>a&amp;b | ~a&amp;c</p>
+<ul class="simple">
+<li><p>only works for 2-bit numbers if a=00 or a=11
+-!x 1 if x=0
+-!!x 1 if x!=0 so we want a=-!!x</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="att-x86-assembly">
+<h2>2.9.11. ATT x86 assembly<a class="headerlink" href="#att-x86-assembly" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>there are 2 hardwares</p>
+<ul>
+<li><p>x86-64 (desktop market)</p></li>
+<li><p>Arm7 (mobile market) - all instructions are like cmov</p></li>
+</ul>
+</li>
+<li><p>think -&gt; not = ex. mov $3, %rax is 3 into rax</p></li>
+<li><p>prefixes</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(34 - \)</span> is an immediate (literal) value</p></li>
+<li></li>
+<li><p>main - label (no prefix) - assembler turns this into an immediate</p></li>
+<li><p>3330(%rax,%rdi,8) - memory at (3330+rax+8*rdi) - in x86 but not y86</p>
+<ul>
+<li><p>you could do 23(%rax)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>gcc -S will give you .S file w/ assembly</p>
+<ul>
+<li><p>what would actually be compiled</p></li>
+</ul>
+</li>
+<li><p>gcc -c will give you object file</p></li>
+<li><p>then, objdump -d will dissassemble object file and print assembly</p>
+<ul>
+<li><p>leaves out suffixes that tell you sizes</p></li>
+<li><p>can’t be compiled, but is informative</p></li>
+</ul>
+</li>
+<li><p>gcc -O3 will be fast, default is -O0, -OS optimizes for size</p></li>
+<li><p>we call the part of x86 we use y86</p></li>
+<li><p>registers</p>
+<ul>
+<li><p>general purpose registers (program registers)</p></li>
+<li><p>PC - program counter - cannot directly change this - what line to run next</p></li>
+<li><p>CC - condition codes - sign of last math op result</p>
+<ul>
+<li><p>remembers whether answer was 0,-,+</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>cmp - basically subtraction (works backwards, 2nd-1st), but only sets the condition codes</p></li>
+<li><p>in assembly, arithmetic works as +=</p>
+<ul>
+<li><p>ex. imul %rdi, %rax multiplies and stores result in rdi</p></li>
+</ul>
+</li>
+<li><p>doesn’t really matter: eax, rax are same register but eax is bottom half of rax</p>
+<ul>
+<li><p>on some hardwares eax is faster than rax</p></li>
+</ul>
+</li>
+<li><p>call example
+- PC=0x78 callq 0x56</p>
+<ul>
+<li><p>PC=0x7d next command (because callq is 5 bytes long, it could be different)</p>
+<ul>
+<li><p>puts 7d on stack to return to at address 0x100</p></li>
+<li><p>this address (0x100) is subtracted by number of bytes in address (8)</p></li>
+<li><p>this value (0x0f8) is put into rsp(in C this is always on the stack)</p>
+<ul>
+<li><p>rsp stores address of the top of the stack</p></li>
+</ul>
+</li>
+<li><p>PC becomes 56</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>call</p>
+<ul>
+<li><p>movq (next PC), (%rsp) ~PC can’t actually be changed</p></li>
+<li><p>addq $-8, %rsp</p></li>
+<li><p>jmp $0x56</p></li>
+</ul>
+</li>
+<li><p>ret</p>
+<ul>
+<li><p>addq $8, %rsp</p></li>
+<li><p>movq (%rsp), (PC)  ==same as== jmp (%rsp)</p></li>
+</ul>
+</li>
+<li><p>push</p>
+<ul>
+<li><p>mov _, (%rsp)</p></li>
+<li><p>sub $8, %rsp</p></li>
+</ul>
+</li>
+<li><p>pop does the opposite</p>
+<ul>
+<li><p>add $8, %rsp
+movq (%rsp), _	
+cmp</p></li>
+<li><p>cmovle %5, (%rax) - move only if we are in this state</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="y86-all-we-use">
+<h2>2.9.12. y86 - all we use<a class="headerlink" href="#y86-all-we-use" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>halt - stops the chip</p></li>
+<li><p>nop - do nothing</p></li>
+<li><p>op_q</p>
+<ul class="simple">
+<li><p>addq, subq, andq, xorq</p></li>
+<li><p>takes 2 registers, stores values in second</p>
+<ul>
+<li><p>sub is 2nd-1st</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>jxx</p>
+<ul class="simple">
+<li><p>jl, jle, jg, je, jne, jmp</p></li>
+<li><p>takes immediate</p></li>
+</ul>
+</li>
+<li><p>movq longer PC increment because it stores offset, register always comes first (is rA)</p>
+<ul class="simple">
+<li><p>rrmovq (register-register, same as cmov where condition is always)</p></li>
+<li><p>irmovq (immediate-register)</p></li>
+<li><p>rmmovq</p></li>
+<li><p>mrmovq (memory)</p></li>
+</ul>
+</li>
+<li><p>cmovxx (register-register)</p></li>
+<li><p>call</p>
+<ul class="simple">
+<li><p>takes immediate</p></li>
+<li><p>pushes the return address on the stack and jumps to the destination address.</p></li>
+</ul>
+</li>
+<li><p>ret</p>
+<ul class="simple">
+<li><p>pops a value and jumps to it</p></li>
+</ul>
+</li>
+<li><p>pushq</p>
+<ul class="simple">
+<li><p>one register</p></li>
+<li><p>pushes then decrements</p></li>
+</ul>
+</li>
+<li><p>popq</p>
+<ul class="simple">
+<li><p>one register</p></li>
+</ul>
+</li>
+</ol>
+<ul class="simple">
+<li><p>programmer-visible state</p>
+<ul>
+<li><p>registers</p>
+<ul>
+<li><p>program</p>
+<ul>
+<li><p>rax-r14 (8 registers x86 has 15)</p></li>
+<li><p>rsp is the special one</p></li>
+<li><p>64 bit integer (or pointer) - there is no floating point, in x86 floating point is stored in other registers</p></li>
+</ul>
+</li>
+<li><p>other</p>
+<ul>
+<li><p>program counter (PC), instruction pointer</p>
+<ul>
+<li><p>64-bit pointer</p></li>
+</ul>
+</li>
+<li><p>condition codes (CC) - not important, tell us &lt;, =, &gt; on last operation</p>
+<ul>
+<li><p>only set by the op_q commands</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>memory - all one byte array</p>
+<ul>
+<li><p>instruction</p></li>
+<li><p>data</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>encoding (assembly -&gt; bytes)</p>
+<ul>
+<li><p>1st byte -&gt; high-order nybble | low-order nybble</p>
+<ul>
+<li><p>higher order is opcode (add, sub, …)</p></li>
+<li><p>lower-order is either instruction function or flag(le, g, …) - usually 0</p></li>
+</ul>
+</li>
+<li><p>remaining bytes</p>
+<ul>
+<li><p>argument in little-endian order</p></li>
+</ul>
+</li>
+<li><p>examples</p>
+<ul>
+<li><p>call <span class="math notranslate nohighlight">\(0x123			-&gt; 80 23 01 00 00 00 00 00 00
+   ret 					-&gt; 90
+   subq %rcx, %r11		-&gt; 81 1b (there are 15 registers, specify register with one nybble)
+   irmov \)</span>0x3330, %rdi	-&gt; 30 f7 30 33 00 00 00 00 00 00 (register-first always, f means no source, but destination of register 7)</p></li>
+</ul>
+</li>
+<li><p>compact binary (variable-length encoding) vs. simple binary (fixed-length encoding)</p>
+<ul>
+<li><p>x86 vs. ARM</p></li>
+<li><p>people can’t decide</p></li>
+<li><p>compact binary - complex instruction set computer (cisc) - emphasizes programmer</p></li>
+<li><p>simple binary - reduced instruction set computer (risc) - emphasizes hardware</p>
+<ul>
+<li><p>have more complex compilers</p></li>
+<li><p>fixed width instructions</p></li>
+<li><p>lots of registers</p></li>
+<li><p>few memory addressing modes - no memory operands (only mrmov, rmmov)</p></li>
+<li><p>few opcodes</p></li>
+<li><p>passes parameters in registers, not the stack (usually)</p></li>
+<li><p>no condition codes (uses condition operands)</p></li>
+</ul>
+</li>
+<li><p>in general, computers use compact and tablets/phones use simple</p></li>
+<li><p>if we can get away from x86 backwards compatibility, we will probably meet in the middle</p></li>
+<li><p>study RISC vs. CISC</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="hardware">
+<h2>2.9.13. hardware<a class="headerlink" href="#hardware" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>flows when control is high</p></li>
+<li><p>power - everything loses power by creating heat (every gate consumes power)</p>
+<ul>
+<li><p>changing a transistor takes more power than leaving it</p></li>
+</ul>
+</li>
+<li><p>voltage - threshold above which transistor is open</p></li>
+<li><p>register - on rising clock edge store input</p></li>
+<li><p>overclock computer - could work, or logic takes too long to get back - things break</p>
+<ul>
+<li><p>could be fixed with colder, more power
+chips are small because of how fast they are</p></li>
+</ul>
+</li>
+<li><p>mux - selectors pick which input goes through</p></li>
+<li><p>out = [
+guard:value;
+…
+];</p></li>
+<li><p>this is a language called HCL written by the book’s authors</p></li>
+<li><p>out = g?input: g2:input2: …:0</p>
+<ul>
+<li><p>if first is true return that, otherwise keep going otherwise return 0</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="executing-instructions">
+<h2>2.9.14. executing instructions<a class="headerlink" href="#executing-instructions" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>we have wires</p></li>
+</ul>
+<ol class="simple">
+<li><p>register file</p></li>
+<li><p>data memory</p></li>
+<li><p>instruction memory</p></li>
+<li><p>status output - 3-bits</p></li>
+</ol>
+<ul>
+<li><p>ex. popq, %rbx</p>
+<ul class="simple">
+<li><p>todo: get icode, check if it was pop, read mem at rsp, put value in rbx, inc rsp by 8</p></li>
+<li><p>getting icode</p>
+<ul>
+<li><p>instruction in instruction memory: B0 3F</p></li>
+<li><p>register pP (p is inputs), (P is outputs)</p>
+<ul>
+<li><p>pP { pc:64 = 0;} - stores the next pc</p></li>
+</ul>
+</li>
+<li><p>pc &lt;- P_pc - the fixed functionality will create i10 bytes</p></li>
+<li><p>textbook: icode:ifun = M_1[PC] - gets one byte from PC</p></li>
+<li><p>HCL (HCL uses =):
+wire icode:4;
+icode = i10bytes[4..8] - little endian values, one byte at a time - this grabs B from B0 3F</p></li>
+</ul>
+</li>
+<li><p>assume icode was b (in reality, this must be picked with a mux)</p></li>
+</ul>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span>	<span class="n">valA</span> 	<span class="o">&lt;-</span> <span class="n">R</span><span class="o">[</span><span class="mi">4</span><span class="o">]</span> 		<span class="c1">// gets %rsp - rsp is 4th register</span>
+	<span class="n">rA</span><span class="o">:</span><span class="n">rB</span>	<span class="o">&lt;-</span> <span class="n">M_1</span><span class="o">[</span><span class="n">PC</span><span class="o">+</span><span class="mi">1</span><span class="o">]</span>	<span class="c1">// book&#39;s notation - splits up a byte into 2 halves, 1 byte in rA, 1 byte in rB, PC+1 because we want second byte</span>
+							<span class="c1">// 3 is loaded into rA, F is loaded into rB</span>
+	<span class="n">valE</span> 	<span class="o">&lt;-</span> <span class="n">valE</span><span class="o">+</span><span class="mi">8</span>		<span class="c1">// inc rsp by 8</span>
+	<span class="n">valM</span> 	<span class="o">&lt;-</span> <span class="n">M_8</span><span class="o">[</span><span class="n">valA</span><span class="o">]</span> 	<span class="c1">// send %rsp to </span>
+	<span class="n">R</span><span class="o">[</span><span class="n">rA</span><span class="o">]</span> 	<span class="o">&lt;-</span> <span class="n">valM</span>			<span class="c1">// writes to %rbx </span>
+	<span class="n">R</span><span class="o">[</span><span class="mi">4</span><span class="o">]</span>	<span class="o">&lt;-</span> <span class="n">valE</span>			<span class="c1">// writes to %rsp</span>
+	<span class="n">p_pc</span>	<span class="o">=</span>  <span class="n">P_pc</span><span class="o">+</span><span class="mi">2</span>		<span class="c1">// increment PC	by 2 because popq is 2-byte instruction	</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>- steps
+​```java
+	1. fetch - what is wanted
+	2. decode - find what to do it to - read prog registers
+	3. execute and/or memory - do it
+	4. write back - tell you result
+
+020 10		
+	nop						fetch		change pc to 021
+021 6303	
+	xorq 	%rax,%rbx		fetch 		pc &lt;- 0x023
+							decode 		read reg. file at 0,3 to get 17 and 11
+							execute		17^11 = 10001^01011 = 11010 = 26, also sets CC to &gt;0
+							write back	write 26 to regFile[3]
+023 50 23 1000000000000000 	the immediate 16 is in little-endian but is 8 bytes - 1st in memory last in little-endian
+	mrmovq  16(%rbx),%rcx	fetch 		read bytes, understand, PC &lt;- 0x02d
+							decode		read regFile to get (26),13
+							execute		16+26=42 (to be new address)
+							memory		ask RAM for address 42, it says 0x0000000071000000 - little-endian
+							write back	put 0x71000000 into regFile[2]
+02d 71 0000000032651131				
+    jle 0x3111653200000000 	fetch 		valP &lt;- 0x036
+							decode cc &gt; 0, not jump, PC &lt;- valP
+036	00 
+	halt - set STAT to HALT and the computer shuts off, STAT is always going on in the background
+push
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- reads source register
+- reads rsp
+- dec rsp by 8
+- writes read value to new rsp address
+</pre></div>
+</div>
+</div>
+<div class="section" id="hardware-wires-opq-example">
+<h2>2.9.15. hardware wires - opq example<a class="headerlink" href="#hardware-wires-opq-example" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span>## fetch
+## 1. set pc
+## 1.a. make a register to store the next PC
+register qS {
+	pc : 64 = 0;
+	lt : 1 = 0;
+	eq : 1 = 0;
+	gt : 1 = 0;
+}
+
+## 2. read i10bytes
+pc = S_pc;
+
+## 3. parse out pieces of i10bytes
+wire icode:4, ifun:4, rA:4, rB:4;
+icode = i10bytes[4..8]; ## 1st byte: 0..8  high-order nibble 4..8
+ifun = i10bytes[0..4]; 
+
+const OPQ = 6;
+const NO_REGISTER = 0xf;
+
+rA = [
+	icode == OPQ : i10bytes[12..16];
+	1: NO_REGISTER;
+];
+
+rB = [
+	icode == OPQ : i10bytes[8..12];
+	1: NO_REGISTER;
+];
+
+wire valP : 64;
+
+valP = [
+	icode == OPQ : S_pc + 2;
+	1 : S_pc + 1; ## picked at random
+];
+
+
+Stat = STAT_HLT; ## fix this
+
+## decode
+
+## 1. set srcA and srcB
+
+srcA = rA;
+srcB = rB;
+
+dstE = [
+	icode == OPQ : rB;
+	1 : NO_REGISTER;
+];
+
+## execute
+
+wire valE : 64;
+
+valE = [
+	icode == OPQ &amp;&amp; ifun == 0 : rvalA + rvalB;
+	1 : 0xdeadbeef;
+];
+
+q_lt = [
+	icode == OPQ : valE &lt; 0;
+	## ...
+];
+
+## memory
+
+## writeback
+
+wvalE = [
+	icode == OPQ : valE;
+	1: 0x1234567890abcdef;
+];
+
+
+## PC update
+q_pc = valP; 
+</pre></div>
+</div>
+</div>
+<div class="section" id="pipelining">
+<h2>2.9.16. pipelining<a class="headerlink" href="#pipelining" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>nonuniform partitioning - stages don’t all take same amount of time</p></li>
+<li><p>register - changes on the clock</p>
+<ul>
+<li><p>normal - output your input</p></li>
+<li><p>bubble - puts “nothing” in registers - register outputs nop</p></li>
+<li><p>stall - put output into input (same output)</p></li>
+</ul>
+</li>
+<li><p>see notes on transitions</p></li>
+<li><p>stalling a stage (usually because we are waiting for some earlier instruction to complete)</p>
+<ul>
+<li><p>stall every stage before you</p></li>
+<li><p>bubble stage after you so nothing is done with incomplete work - this will propagate</p></li>
+<li><p>stages after that are normal</p></li>
+</ul>
+</li>
+<li><p>bubbling a stage - the work being performed should be thrown away</p>
+<ul>
+<li><p>bubble stage after it</p></li>
+<li><p>basically send a nop - use values NO_REGISTER and 0s</p>
+<ul>
+<li><p>often there are some fields that don’t matter</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>stalling a pipeline = stalling a stage</p></li>
+<li><p>bubbling a pipeline - bubble all stages</p></li>
+</ul>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">irmovq</span>	 	<span class="n">$31</span><span class="o">,</span> <span class="o">%</span><span class="n">rax</span>
+<span class="n">addq</span> 		<span class="n">$rax</span><span class="o">,%</span><span class="n">rax</span>
+<span class="n">jle</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>the stages are offset - everything always working</p></li>
+<li><p>when you get a jmp, you have to wait for the thing before you to writeback.  2 possible solns</p>
+<ul>
+<li><p>stall decode</p></li>
+<li><p>forward value from the stage it is currently in</p></li>
+</ul>
+</li>
+<li><p>look at online notes - save everything in register that needs to be used later</p></li>
+</ul>
+<div class="section" id="problems">
+<h3>2.9.16.1. problems<a class="headerlink" href="#problems" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>dependencies - outcome of one instruction depends on the outcome of another - in the software</p>
+<ol class="simple">
+<li><p>data - data needed before advancing - destination of one thing is used as source of another</p>
+<ul class="simple">
+<li><p>load/use</p></li>
+</ul>
+</li>
+<li><p>control - which instruction to run depends on what was done before</p></li>
+</ol>
+</li>
+<li><p>hazards - potential for dependency to mess up the <strong>pipeline</strong> - in the hardware design</p>
+<ul class="simple">
+<li><p>hardware may or may not have a hazard for a dependency</p></li>
+<li><p>can detect them by comparing the wire that reads / writes to regfile (rA,rB / dstE) - they shouldn’t be the same because you shouldn’t be reading/writing to the same register (except when all NO_REGISTER)</p></li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="solutions">
+<h3>2.9.16.2. solutions<a class="headerlink" href="#solutions" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>P is PC, then FDEMW</p></li>
+</ul>
+<ol class="simple">
+<li><p>stall until it finishes if there’s a problem
+stall_P = 1;	//stall the fetch/decode stage
+bubble_E = 1;   //completes and then starts a nop, gives it time to write values
+. forward values (find what will be written somewhere)</p>
+<ul class="simple">
+<li><p>in a 2-stage system, we have dstE and we use it to check if there’s a problem</p></li>
+<li><p>usually if we can check that there’s a problem, we have the right answer</p></li>
+<li><p>if we have the answer, put value where it should be</p></li>
+<li><p>this is difficult, but doesn’t slow down hardware</p></li>
+<li><p>we decide whether we can forward based on a pipeline diagram - boxes with stages (time is y axis, but also things are staggered)</p>
+<ul>
+<li><p>we need to look at when we get the value and when we need it</p></li>
+<li><p>we can pipeline if we need the value after we get it</p></li>
+<li><p>if we don’t, we need to stall</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">subq</span> <span class="o">%</span><span class="n">rax</span><span class="o">,%</span><span class="n">rbx</span>
+<span class="n">jge</span> <span class="n">bazzle</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>we could stall until CC is set in execute of subq to fetch for jge - this is slow</p></li>
+</ul>
+<ol class="simple">
+<li><p>speculation execution - we make a guess and sometimes we’ll be right (modern processors are right ~90%)</p>
+<ul class="simple">
+<li><p>branch prediction - process of picking branch</p></li>
+<li><p>jumps to a smaller address are taken more often than not - this algorithm and more things make it complicated</p></li>
+<li><p>if we were wrong, we need to correct our work</p></li>
+</ul>
+</li>
+</ol>
+<ul class="simple">
+<li><p>Example:</p></li>
+</ul>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>	<span class="n">subq</span>
+<span class="mi">2</span>	<span class="n">jge</span> <span class="mi">4</span>
+<span class="mi">3</span>	<span class="n">ir</span>
+<span class="mi">4</span>	<span class="n">rm</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>the stage performing ir is wrong - this stage needs to be bubbled</p></li>
+<li><p>in a 5-stage pipleine like this, we only need to bubble decode</p></li>
+<li><p>ret - doesn’t know the next address to fetch until after memory stage, also can’t be predicted well</p>
+<ul>
+<li><p>returns are slow, we just wait</p></li>
+<li><p>some large processors will guess, can still make mistakes and will have to correct</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="real-processors">
+<h3>2.9.16.3. real processors<a class="headerlink" href="#real-processors" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>memory is slow and unpredictably slow (10-100 cycles is reasonable)</p></li>
+<li><p>pipelines are generally 10-15 stages (Pentium 4 had 30 stages)</p></li>
+<li><p>multiple functional units</p>
+<ul class="simple">
+<li><p>alu could take different number of cycles for addition/division</p></li>
+<li><p>multiple functional units lets one thing wait while another continues sending information down the pipeline</p></li>
+</ul>
+</li>
+<li><p>out-of-order execution</p>
+<ul class="simple">
+<li><p>compilers look at whether instructions can be done out of order</p></li>
+<li><p>it might start them out of order so one can compute in functional unit while another goes through</p></li>
+<li><p>can swap operations if 2nd operation doesn’t depend on 1sts</p></li>
+</ul>
+</li>
+<li><p>(x86) turn the assembly into another language</p>
+<ul class="simple">
+<li><p>micro ops</p></li>
+<li><p>makes things specific to chips</p></li>
+</ul>
+</li>
+</ol>
+<ul class="simple">
+<li><p>profiler - software that times software - should be used to see what is taking time in code</p></li>
+<li><p>hardware vs. software</p>
+<ul>
+<li><p>software: .c -&gt; compiler -&gt; assembler -&gt; linker -&gt; executes</p>
+<ul>
+<li><p>compiler - lexes, parses, O_1, O_2, …</p></li>
+</ul>
+</li>
+<li><p>hardware: register transfer languages (.hcl) -&gt; … -&gt; circuit-level descriptions -&gt; layout (veryify this) -&gt; mask -&gt; add silicon in oven -&gt; processor</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="memory">
+<h2>2.9.17. memory<a class="headerlink" href="#memory" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>we want highest speed at lowest cost (higher speeds correspond to higher costs)</p></li>
+<li><p>fastest to slowest</p>
+<ul class="simple">
+<li><p>register - processor - about 1K</p></li>
+<li><p>SRAM - memory (RAM) - about 1M</p></li>
+<li><p>DRAM - memory (RAM) - 4-16 GB</p></li>
+<li><p>SSD (solid-state drives) - mobile devices</p></li>
+<li><p>Disk/Harddrive - filesystem - 500GB</p></li>
+</ul>
+</li>
+<li><p>the first three are volatile - if you turn off power you lose them</p></li>
+<li><p>the last three are nonvolatile</p></li>
+<li><p>things have gotten a lot faster</p></li>
+<li><p>where we put things affects speed</p>
+<ul class="simple">
+<li><p>registers near ALU</p></li>
+<li><p>SRAM very close to CPU</p></li>
+<li><p>CPU also covered with heat sinks</p></li>
+<li><p>DRAM is large - pretty far away (some other things between them)</p></li>
+</ul>
+</li>
+<li><p>locality</p>
+<ul class="simple">
+<li><p>temporal - close in time - the characteristic of code that repeatedly uses the same address</p></li>
+<li><p>spatial - close in space - the characteristic of code that uses addresses that are numerically close</p></li>
+</ul>
+</li>
+<li><p>real-time performance is not big-O - a tree can be faster than hash because of locality</p></li>
+<li><p>caching - to keep a copy for the purpose of speed</p>
+<ul class="simple">
+<li><p>if we need to read a value, we want to read from SRAM (we call SRAM the cache)</p></li>
+<li><p>if we must read from DRAM (we call DRAM the main memory), we usually want to store the value in SRAM</p></li>
+<li><p>cache - what they wanted most recently (good guess because of temporal locality)</p></li>
+<li><p>slower caches are still bigger</p>
+<ul>
+<li><p>cache nearby bytes to recent acesses (good guess because of spatial locality)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>simplified cache</p>
+<ul class="simple">
+<li><p>4 GB RAM -&gt; 32-bit address</p></li>
+<li><p>1MB cache</p></li>
+<li><p>64-bit words</p></li>
+<li><p>ex. addr: 0x12345678</p>
+<ul>
+<li><p>simple - use entire cache as one block</p></li>
+<li><p>chop off the bottom log(1MB)=20 bits</p></li>
+<li><p>send addr = 0x12300000</p></li>
+<li><p>fill entire cache with 1MB starting at that address</p></li>
+<li><p>tag cache with 0x123</p></li>
+<li><p>send value from cache at address offset=0x45678</p></li>
+<li><p>if the tag of the address is the same as the tag of the cache, then return from cache</p>
+<ul>
+<li><p>otherwise redo everything</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>slightly better cache</p>
+<ul class="simple">
+<li><p>beginning of address is tag</p></li>
+<li><p>middle of address might give you index of block in table = log(num_blocks_in_cache)</p></li>
+<li><p>end of address is block offset (offset size=log(block_size))</p></li>
+<li><p>a (tag,block) pair is called a line</p></li>
+</ul>
+<ol class="simple">
+<li><p>Fully-associative cache set of (tag,block) pairs</p>
+<ul class="simple">
+<li><p>table with first column being tags, second column being blocks</p></li>
+<li><p>to read, check tag against every tag in cache</p>
+<ul>
+<li><p>if found, read from that block</p></li>
+<li><p>else, pick a line to evict (this is discussed in operating systems)</p>
+<ul>
+<li><p>read DRAM into that line, read data from that line’s block</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>long sets are slow! - typicaly 2 or 3 lines would be common</p></li>
+</ul>
+</li>
+<li><p>Direct-mapped cache - array of (tag,block) pairs</p>
+<ul class="simple">
+<li><p>table with 1st column tags, 2nd column blocks</p></li>
+<li><p>to read, check the block at the index given in the address</p>
+<ul>
+<li><p>if found, read from block</p></li>
+<li><p>else, load into that line</p></li>
+</ul>
+</li>
+<li><p>good spatial locality would make the tags adjacent (you read one full block, then the next full block)</p></li>
+<li><p>this is faster (like a mux) instead of many = comparisons, typically big (1K-1M lines)</p></li>
+</ul>
+</li>
+<li><p>Set-associative cache - hybrid - array of sets</p>
+<ul class="simple">
+<li><p>indices each link to a set, each set with multiple elements</p></li>
+<li><p>we search through the tags of this set</p></li>
+</ul>
+</li>
+</ol>
+<ul class="simple">
+<li><p>look at examples in book, know how to tell if we have hit or miss</p></li>
+</ul>
+</li>
+</ul>
+<div class="section" id="writing">
+<h3>2.9.17.1. writing<a class="headerlink" href="#writing" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>assume write-back, write-allocate cache</p></li>
+</ul>
+<ol class="simple">
+<li><p>load block into cache (if not already) - write-allocate cache</p></li>
+<li><p>change it in cache</p></li>
+<li><p>two optionsm</p>
+<ol class="simple">
+<li><p>write back - wait until remove the line to update RAM</p>
+<ul class="simple">
+<li><p>line needs to have tag, block, and dirty bit</p></li>
+<li><p>dirty = wrote but did not update RAM</p></li>
+</ul>
+</li>
+<li><p>write through - update RAM now</p></li>
+</ol>
+</li>
+</ol>
+<ul class="simple">
+<li><p>no-write-allocate bypasses cache and writes straight to memory if block not already in cache (typically goes with write-through cache)</p></li>
+<li><p>valid bits - whether or not the line contains meaningful information</p></li>
+<li><p>kinds of misses</p>
+<ol class="simple">
+<li><p>cold miss - never looked at that line before</p>
+<ul>
+<li><p>valid bit is 0 or we’ve only loaded other lines into the cache</p></li>
+<li><p>associated with tasks that need a lot of memory only once, not much you can do</p></li>
+</ul>
+</li>
+<li><p>capacity miss - we have n lines in the cache and have read ≥ n other lines since we last read this one</p>
+<ul>
+<li><p>typically associated with a fully-associative cache</p></li>
+<li><p>code has bad temporal locality</p></li>
+</ul>
+</li>
+<li><p>conflict miss - recently read line with same index but different tag</p>
+<ul>
+<li><p>typically asssociated with a direct-mapped cache</p></li>
+<li><p>characteristic of the cache more than the code</p></li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</div>
+<div class="section" id="cache-anatomy">
+<h3>2.9.17.2. cache anatomy<a class="headerlink" href="#cache-anatomy" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>i-cache - holds instructions</p>
+<ul>
+<li><p>typically read only</p></li>
+</ul>
+</li>
+<li><p>d-cache - holds program data</p></li>
+<li><p>unified cache - holds both</p></li>
+<li><p>associativity - number of cache lines per set</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="optimization">
+<h2>2.9.18. optimization<a class="headerlink" href="#optimization" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>only need to worry about locality for accessing memory</p>
+<ul>
+<li><p>things that are in registers / immediates don’t matter</p></li>
+</ul>
+</li>
+<li><p>compilers are often cautious</p></li>
+<li><p>some things can’t be optimized because you could pass in the same pointer twice as an argument</p></li>
+<li><p>loop unrolling - often dependencies accross iterations</p></li>
+</ul>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="o">;</span><span class="n">i</span><span class="o">++){</span> <span class="c1">//this line is bookkeeping overhead - want to reduce this</span>
+	<span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]+=</span><span class="mi">1</span><span class="o">;</span> <span class="c1">//has temporal locality because you add and then store back to same address, obviously spatial locality</span>
+<span class="o">}</span>
+<span class="c1">// unrolled</span>
+<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="o">;</span><span class="n">i</span><span class="o">+=</span><span class="mi">3</span><span class="o">){</span> <span class="c1">//reduced number of comparisons, can also get benefits from vectorization (complicated)</span>
+	<span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]+=</span><span class="mi">1</span><span class="o">;</span>
+	<span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">]+=</span><span class="mi">1</span><span class="o">;</span>
+	<span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="o">]+=</span><span class="mi">1</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="k">if</span><span class="o">(</span><span class="n">n</span><span class="o">%</span><span class="mi">3</span><span class="o">&gt;=</span><span class="mi">1</span><span class="o">)</span> <span class="n">a</span><span class="o">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="o">]+=</span><span class="mi">1</span><span class="o">;</span>
+<span class="k">if</span><span class="o">(</span><span class="n">n</span><span class="o">%</span><span class="mi">2</span><span class="o">&gt;=</span><span class="mi">2</span><span class="o">)</span> <span class="n">a</span><span class="o">[</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="o">]+=</span><span class="mi">1</span><span class="o">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>n%4 = n&amp;3</p></li>
+<li><p>n%8 = n&amp;7s</p></li>
+</ul>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span>	<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="o">;</span><span class="n">i</span><span class="o">+=</span><span class="mi">1</span><span class="o">){</span> <span class="c1">//this can be slower, data dependency between lines might not allow full parallelism (more stalling)</span>
+		<span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]+=</span><span class="mi">1</span><span class="o">;</span>
+		<span class="n">i</span><span class="o">+=</span><span class="mi">1</span><span class="o">;</span>
+		<span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]+=</span><span class="mi">1</span><span class="o">;</span>
+		<span class="n">i</span><span class="o">+=</span><span class="mi">1</span><span class="o">;</span>
+		<span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]+=</span><span class="mi">1</span><span class="o">;</span>
+		<span class="n">i</span><span class="o">+=</span><span class="mi">1</span><span class="o">;</span>
+	<span class="o">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>loop order</p></li>
+<li><p>the order of loops can make this way faster</p></li>
+</ul>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="o">(</span><span class="n">i</span><span class="o">...)</span>
+	<span class="k">for</span><span class="o">(</span><span class="n">j</span><span class="o">...)</span>
+		<span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]+=</span><span class="mi">1</span><span class="o">;</span> <span class="c1">//two memory accesses</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>flatten arrays //this is faster, especially if width is a factor of 2, end of one row and beginning of next row are spatially local</p>
+<ul>
+<li><p>row0 then row1 then row2 ….</p></li>
+<li><p>float[height<em>width], access with array[row</em>width+column]</p></li>
+</ul>
+</li>
+<li><p>problem - loop can’t be picked</p></li>
+</ul>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span>	<span class="k">for</span><span class="o">(</span><span class="n">i</span><span class="o">..)</span>
+		<span class="k">for</span><span class="o">(</span><span class="n">j</span><span class="o">...)</span>
+			<span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]=</span><span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">][</span><span class="n">i</span><span class="o">];</span> 
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>solution - blocking</p>
+<ul>
+<li><p>pick two chunks</p></li>
+<li><p>one we read by rows and is happy - only needs one cache line</p></li>
+<li><p>one we read by columns - needs blocksize cache lines (by the time we get to the second column, we want all rows to be present in cache)</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span>	<span class="kt">int</span> <span class="n">bs</span><span class="o">=</span><span class="mi">8</span><span class="o">;</span>
+	<span class="k">for</span> <span class="o">(</span><span class="n">bx</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">bx</span><span class="o">&lt;</span><span class="n">N</span><span class="o">;</span><span class="n">bx</span><span class="o">+=</span><span class="n">bs</span><span class="o">)</span> <span class="c1">// for each block</span>
+		<span class="k">for</span><span class="o">(</span><span class="n">by</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">by</span><span class="o">&lt;</span><span class="n">N</span><span class="o">;</span><span class="n">by</span><span class="o">+=</span><span class="n">bs</span><span class="o">)</span>
+			<span class="k">for</span><span class="o">(</span><span class="n">x</span><span class="o">=</span><span class="n">bx</span><span class="o">;</span><span class="n">x</span><span class="o">&lt;</span><span class="n">bx</span><span class="o">+</span><span class="n">bs</span><span class="o">;</span><span class="n">x</span><span class="o">+=</span><span class="mi">1</span><span class="o">)</span> <span class="c1">// for each element of block</span>
+				<span class="k">for</span><span class="o">(</span><span class="n">y</span><span class="o">=</span><span class="n">by</span><span class="o">;</span><span class="n">y</span><span class="o">&lt;</span><span class="n">by</span><span class="o">+</span><span class="n">bs</span><span class="o">;</span><span class="n">y</span><span class="o">+=</span><span class="mi">1</span><span class="o">)</span>
+					<span class="n">swap</span><span class="o">(</span><span class="n">a</span><span class="o">[</span><span class="n">x</span><span class="o">][</span><span class="n">y</span><span class="o">],</span><span class="n">a</span><span class="o">[</span><span class="n">y</span><span class="o">][</span><span class="n">x</span><span class="o">]);</span> <span class="c1">// do stuff</span>
+</pre></div>
+</div>
+<ul>
+<li><p>conditions for blocking</p>
+<ol class="simple">
+<li><p>the whole thing doesn’t fit in cache</p></li>
+<li><p>there is no spatially local loop order</p></li>
+</ol>
+<ul class="simple">
+<li><p>block size must be able to fit in cach</p></li>
+</ul>
+</li>
+<li><p>reassociation optimization - compiler will do this for integers, but not floats (because of round-off errors)</p>
+<ul class="simple">
+<li><p>a+b+c+d+e -&gt; this is slower (addition is sequential by default, the sum of the first two is then added to the third number)</p></li>
+<li><p>((a+b)+(c+d))+e -&gt; this can do things in parallel, we have multiple adders (we can see logarithmic performace if the chip can be fully parallell)</p></li>
+</ul>
+</li>
+<li><p>using methods can increase your instruction cache hit rate</p></li>
+</ul>
+</div>
+<div class="section" id="exceptions">
+<h2>2.9.19. exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>processor is connected to I/O Bridge which is connected to Memory Bus and I/O Bus</p>
+<ul class="simple">
+<li><p>these things are called the mother board</p></li>
+<li><p>we don’t want to wait for I/O Bus</p>
+<ol class="simple">
+<li><p>Polling - CPU periodically checks if ready</p></li>
+<li><p>Interrupts - CPU asks device to tell the CPU when the device is ready</p>
+<ul>
+<li><p>this is what is usually done</p></li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>CPU has an interrupt pin (interrupt sent by I/O Bridge)</p></li>
+<li><p>steps for an interrupt</p>
+<ol class="simple">
+<li><p>pause my work - save where I can get back to it</p></li>
+<li><p>decide what to do next</p></li>
+<li><p>do the right thing</p></li>
+<li><p>resume my suspended work</p></li>
+</ol>
+</li>
+<li><p>jump table - array of code addresses</p>
+<ul class="simple">
+<li><p>each address points to handler code</p></li>
+<li><p>CPU must pause, get index from bus, jump to exception_table[index]</p></li>
+<li><p>need the exception table, exception code in memory, need register that tells where the exception table is</p></li>
+<li><p>the user’s code should not be able to use exception memory</p></li>
+</ul>
+</li>
+<li><p>memory</p>
+<ul class="simple">
+<li><p>mode register (1-bit): 2 modes</p>
+<ul>
+<li><p>kernel mode (operating system) - allows all instructions</p></li>
+<li><p>user mode - most code, blocks some instructions, blocks some memory</p>
+<ul>
+<li><p>cant set mode register</p></li>
+<li><p>can’t talk to the I/O bus</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>largest addresses are kernel only</p>
+<ul>
+<li><p>some of this holds exception table, exception handlers</p></li>
+</ul>
+</li>
+<li><p>between is user thhings</p></li>
+<li><p>smallest addresses are unused - they are null (people often try to dereference them - we want this to throw an error)</p></li>
+</ul>
+</li>
+<li><p>exceptions</p>
+<ol class="simple">
+<li><p>interrupts, 	index: bus, 			who causes it: I/O Bridge</p>
+<ul class="simple">
+<li><p>i1,i2,i3,i4 -&gt; interrupt during i3 instruction</p></li>
+<li><p>let i3 finish (maybe)</p></li>
+<li><p>handle interrupt</p></li>
+<li><p>resume i4 (or rest of i3)
+trap, 		%al (user)				int assembly instruction (user code)</p></li>
+<li><p>trap is between instructions, simple
+fault,		based on what failed	failing user-mode instruction</p></li>
+<li><p>fault during i3</p></li>
+<li><p>suspend i3</p></li>
+<li><p>handle fault</p></li>
+<li><p>rerun i3 (assuming we corrected fault - ex. allocating new memory) otherwise abort</p></li>
+</ul>
+</li>
+</ol>
+<ul class="simple">
+<li><p>abort - reaction to an exception (usually to a fault) - quits instead of resuming</p></li>
+</ul>
+</li>
+<li><p>suspending</p>
+<ul class="simple">
+<li><p>save PC, program register, condition codes (put them in a struct in kernel memory)</p></li>
+</ul>
+</li>
+<li><p>on an exception</p>
+<ol class="simple">
+<li><p>switch to kernel mode</p></li>
+<li><p>suspend program</p></li>
+<li><p>jump to exception handler</p></li>
+<li><p>execute exception handler</p></li>
+<li><p>resume in user mode</p></li>
+</ol>
+</li>
+</ul>
+</div>
+<div class="section" id="processes">
+<h2>2.9.20. processes<a class="headerlink" href="#processes" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>(user) read file -&gt; (kernel) send request to disk, wait, clean up -&gt; (user) resume</p>
+<ul class="simple">
+<li><p>this has lots of waiting so we run another program while we wait (see pic)</p></li>
+</ul>
+</li>
+<li><p>process - code with an address space</p>
+<ul class="simple">
+<li><p>CPU has a register that maps user addresses to physical addresses (memory pointers to each process)</p></li>
+<li><p>general we don’t call the kernel a process</p></li>
+<li><p>also had pc, prog. registers, cc, etc.</p></li>
+<li><p>each process has a pointer to the kernel memory</p></li>
+<li><p>also has more (will learn in OS)…</p></li>
+</ul>
+</li>
+<li><p>context switch - changing from one process to another</p>
+<ul class="simple">
+<li><p>generally each core of a computer is running one process</p></li>
+</ul>
+<ol class="simple">
+<li><p>freeze one process</p></li>
+<li><p>let OS do some bookkeeping</p></li>
+<li><p>resume another process</p></li>
+</ol>
+<ul class="simple">
+<li><p>takes time because of bookkeeping and cache misses on the resume</p></li>
+<li><p>you can time context switches
+while(true)
+getCurrentTime()
+if(increased a lot) contextSwitches++</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="threads">
+<h2>2.9.21. threads<a class="headerlink" href="#threads" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>threads are like processes that user code manages, not the kernel</p>
+<ul>
+<li><p>within one address space, I have 2 stacks</p></li>
+<li><p>save/restores registers and stack</p></li>
+<li><p>hardware usually has some thread support</p>
+<ul>
+<li><p>save/restore instructions</p></li>
+<li><p>a way to run concurrent threads in parallel
+python threads don’t run in parallel</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="system-calls">
+<h2>2.9.22. system calls<a class="headerlink" href="#system-calls" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>how user code asks the kernel to do stuff</p>
+<ul>
+<li><p>exception table - there are 30ish, some free spots for OS to use</p></li>
+</ul>
+</li>
+<li><p>system call - Linux uses exception 128 for almost all user -&gt; kernel requests</p>
+<ul>
+<li><p>uses rax to decide what you are asking //used in a jump table inside the 128 exception handler</p></li>
+<li><p>most return 0 on success</p></li>
+<li><p>non-zero on error where the ## is errno</p></li>
+</ul>
+</li>
+<li><p>you can write assembly in C code</p></li>
+</ul>
+</div>
+<div class="section" id="software-exceptions">
+<h2>2.9.23. software exceptions<a class="headerlink" href="#software-exceptions" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>you can throw an exception and then you want to return to something several method calls before you</p></li>
+<li><p>nonlocal jump</p>
+<ul>
+<li><p>change PC</p></li>
+<li><p>and registers (all of them)</p></li>
+</ul>
+</li>
+<li><p>try{} - freezes what we need for catch</p></li>
+<li><p>catch{} - what is frozen</p></li>
+<li><p>throw{} - resume</p></li>
+<li><p>hardware exception can freeze state</p></li>
+</ul>
+</div>
+<div class="section" id="signals-setjmps">
+<h2>2.9.24. signals, setjmps<a class="headerlink" href="#signals-setjmps" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>exceptions - caused by hardware (mostly), handled by kernel</p></li>
+<li><p>signal - caused by kernel, handled by user code (or kernel)</p>
+<ul>
+<li><p>mimics exception (usually a fault)</p></li>
+<li><p>user-defined signal handler know to the OS</p></li>
+<li><p>various signals (identified by number)</p>
+<ul>
+<li><p>implemented with a jump table</p></li>
+</ul>
+</li>
+<li><p>we can mask (ignore) some signals</p></li>
+<li><p>turns hardware fault into software exception (ex. divide by 0, access memory that doesn’t exist), this way the user can handle it</p></li>
+<li><p>SIGINT (ctrl-c) - usually cancels, can be blocked</p>
+<ul>
+<li><p>ctrl-c -&gt; interrupt -&gt; handler -&gt; terminal (user code) -&gt; trap (SIGINT is action) -&gt; handler -&gt; sends signal</p></li>
+</ul>
+</li>
+<li><p>SIGTER - cancels, can’t be blocked</p></li>
+<li><p>SIGSEG - seg fault</p></li>
+</ul>
+</li>
+<li><p>setjmp/longjmp - caused by user code, handled by user code</p>
+<ul>
+<li><p>functions in standard C library in setjmp.h</p></li>
+<li><p>jumps somewhere where pointer is something that stores current state</p></li>
+<li><p>setjmp - succeeds first time (returns 0)</p></li>
+<li><p>longjmp - never returns - calls setjmp with a different return value</p></li>
+<li><p>you usually use if(setjmp) else {handle error} - basically try-catch</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="virtual-memory">
+<h2>2.9.25. virtual memory<a class="headerlink" href="#virtual-memory" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>2 address spaces</p>
+<ol class="simple">
+<li><p>virtual address space (addressable space)</p>
+<ul class="simple">
+<li><p>used by code</p></li>
+<li><p>fixed by ISA designer</p></li>
+</ul>
+</li>
+<li><p>memory management unit (MMU) - takes in a virtual address and spits out physical address</p>
+<ul class="simple">
+<li><p>page fault - MMU says this virtual address does not have a physical address</p>
+<ul>
+<li><p>when there’s a page fault, go to exception handler in kernel</p></li>
+<li><p>usually we go to disk</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>physical address space (cannot be discovered by code)</p>
+<ul class="simple">
+<li><p>used by memory chips</p></li>
+<li><p>constrained by size of RAM</p></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>assume all virtual addresses have a physical address in RAM (this is not true, will come back to this)</p>
+<ul>
+<li><p>each process has code, globals, heap, shared functions, stack</p></li>
+<li><p>lots of unused at bottom, top because few programs use 2^64 bytes</p></li>
+<li><p>RAM - we’ll say this includes all caches</p></li>
+<li><p>virtual memory is usually mostly empty</p>
+<ul class="simple">
+<li><p>allocated in a few blocks / regions</p></li>
+</ul>
+</li>
+<li><p>MMU</p>
+<ol class="simple">
+<li><p>bad idea 1: could be a mapping from every virtual address to every physical address, but this wastes a lot</p></li>
+</ol>
+<ul class="simple">
+<li><p>instead, we split memory into pages (page is continuous block of addresses ~ usually 4k)</p>
+<ul>
+<li><p>bigger = fewer things to map, more likely to include unused addresses</p></li>
+<li><p>address = low-order bits: page offset, high-order bits: page number</p>
+<ul>
+<li><p>page offset takes log_2(page_size)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li><p>bad idea 2: page table - map from virtual page number -&gt; physical page number</p>
+<ul class="simple">
+<li><p>we put the map in RAM, we have a register (called the PTBR) that tells us where it is</p></li>
+<li><p>we change the PTBR for each process</p></li>
+<li><p>CPU sends MMU a virtual address</p></li>
+<li><p>MMU splits it into a virtual page number and page offset</p></li>
+<li><p>takes 2 separate accesses to memory</p>
+<ol class="simple">
+<li><p>uses register to read out page number from page table</p>
+<ul>
+<li><p>page table - array of physical page numbers, 2^numbits(virtual page numbers)</p>
+<ul>
+<li><p>page table actually stores page table entries (PTEs)</p></li>
+<li><p>PTE = PPN, read-only?, code or data?, user allowed to see it?</p></li>
+<li><p>MMU will check this and fault on error</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>then it sends page number and page offset and gets back data</p>
+<ul>
+<li><p>lookup address PTBR + VPN*numbytes(PPN)</p></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>consider 32-bit VA, 16k page (too large)</p>
+<ul>
+<li><p>page offset is 14 bits</p></li>
+<li><p>2^18 PTEs = 256k PTEs</p></li>
+<li><p>each PTE could be 4 bytes so the page table takes about 1 Megabyte</p></li>
+</ul>
+</li>
+<li><p>64-bit VA, 4k page</p>
+<ul>
+<li><p>2^52 PTE -&gt; the page table is too big to store</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>good idea: multi-level page table</p>
+<ul class="simple">
+<li><p>virtual address: page offset, multiple virtual page numbers <span class="math notranslate nohighlight">\(VPN_0,VPN_1,VPN_2,VPN_3\)</span> (could have different number of	these)</p></li>
+</ul>
+<ol class="simple">
+<li><p>start by reading highest VPN: PTBR[VPN_3] -&gt; PTE_3</p></li>
+<li><p>read PPN[VPN_2] -&gt; PTE_2</p></li>
+<li><p>read PPN_2[VPN_1] -&gt; PTE_1</p></li>
+<li><p>read PPN_1[VPN_0] -&gt; PTE_0</p></li>
+<li><p>read PPN_0[VPN] -&gt; PTE_ans</p></li>
+</ol>
+<ul class="simple">
+<li><p>check at each level if valid, if unallocated/kernel memory/not usable then fault and stop looking</p></li>
+<li><p>highest level VP_n is highest bits of address, likely that it is unused</p>
+<ul>
+<li><p>therefore we don’t have to check the other addresses</p></li>
+<li><p>they don’t exist so we save space, only create page tables when we need them - OS does this</p></li>
+</ul>
+</li>
+<li><p>look at these in the textbook</p></li>
+<li><p>virtual memory ends up looking like a tree</p>
+<ul>
+<li><p>top table points to several tables which each point to more tables</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>TLB - maps from virtual page numbers to physical page numbers</p></li>
+<li><p>TLB vs L1, L2, etc:</p></li>
+<li><p>Similarities</p>
+<ul class="simple">
+<li><p>They are all caches- i.e., they have an index and a tag and a valid bit (and sets)</p></li>
+</ul>
+</li>
+<li><p>Differences</p>
+<ul class="simple">
+<li><p>TLB has a 0-bit BO (i.e., 1 entry per block; lg(1) = 0)</p></li>
+<li><p>TLB is not writable (hence not write-back or write-through, no dirty bit)</p></li>
+<li><p>TLB entries are PPN, L* entries are bytes</p></li>
+<li><p>TLB does VPN â†’ PPN; the L* do PA â†’ data</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="overview">
+<h2>2.9.26. overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>CPU -&gt; creates virtual address</p></li>
+<li><p>virtual address: 36 bits (VPN), 12 bits (PO) //other bits are disregarded</p></li>
+<li><p>VPN broken into 32 bits (Tag), 4 bits (set index)</p>
+<ul>
+<li><p>set index tells us which set in the Translation Lookaside Buffer to look at</p>
+<ul>
+<li><p>there are 2^4 sets in the TLB</p></li>
+<li><p>currently there are 4 entries per set ~ this could be different</p>
+<ul>
+<li><p>each entry has a valid bit</p></li>
+<li><p>a tag - same length as VP Tag</p></li>
+<li><p>value - normally called block - but here only contains one Physical page number - PPN = 40 bits ~ this could be different</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>when you go into kernel mode, you reload the TLB</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="segments">
+<h2>2.9.27. segments<a class="headerlink" href="#segments" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>memory block</p>
+<ul>
+<li><p>kernel at top</p></li>
+<li><p>stack (grows down)</p></li>
+<li><p>shared code</p></li>
+<li><p>heap (grows up)</p></li>
+<li><p>empty at bottom</p></li>
+</ul>
+</li>
+</ul>
+<p>base: 0x60</p>
+<p>read: 0xb6
+val at 0x6b -&gt; 0x3d
+val at 0xd6 -&gt; ans</p>
+<p>read: 0xa4
+val at 0x6a -&gt; 0x53
+val at 0x34 -&gt; ans</p>
+<p>0xb3a6</p>
+<p>read: 0xb3
+val at 0x6b -&gt; 0x3d
+val at 0xd3 -&gt; 0x0f
+val at 0xfa -&gt; 0x6b
+val at 0xb6</p>
+<p>[TOC]</p>
+</div>
+<div class="section" id="quiz-rvw">
+<h2>2.9.28. quiz rvw<a class="headerlink" href="#quiz-rvw" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>commands</p></li>
+<li><p>floats</p></li>
+<li><p>labs</p></li>
+<li><p>In method main you declare an int variable named x. The compiler might place that variable in a register, or it could be in which region of memory? - Stack</p></li>
+<li><p>round to even is default</p></li>
+<li><p>Which Y86-64 command moves the program counter to a runtime-computed address? - ret</p></li>
+<li><p>[] mux defaults to 0</p></li>
+<li><p>caller-save register - caller must save them to preserve them</p></li>
+<li><p>callee-saved registers - callee must save them to edit them</p></li>
+<li><p>in the sequential y86 architecture valA&lt;-eax</p></li>
+<li><p>valM is read out of memory - used in ret, mrmovl</p></li>
+<li><p>labels are turned into addresses when we assemble files</p></li>
+<li><p>accessing memory is slow</p></li>
+<li><p>most negative binary number: 100000</p></li>
+<li><p>floats can represent less numbers than unsigned ints</p>
+<ul>
+<li><p>0s and -0s are same</p></li>
+<li><p>NaN doesn’t count</p></li>
+</ul>
+</li>
+<li><p>push/pop - sub/add to %rsp, put value into (%rsp)</p></li>
+<li><p>opl is 32-bit, opq is 64-bit</p></li>
+<li><p>fetch determines what the next PC will be</p></li>
+<li><p>fetch reads rA,rB,icode,ifun - decode reads values from these</p></li>
+</ul>
+</div>
+<div class="section" id="labs">
+<h2>2.9.29. labs<a class="headerlink" href="#labs" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="strlen">
+<h3>2.9.29.1. strlen<a class="headerlink" href="#strlen" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">unsigned</span> <span class="kt">int</span> <span class="nf">strlen</span><span class="o">(</span> <span class="kd">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">s</span> <span class="o">){</span>
+	<span class="n">unsigned</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> 
+	<span class="k">while</span><span class="o">(</span><span class="n">s</span><span class="o">[</span><span class="n">i</span><span class="o">])</span> 
+		<span class="n">i</span><span class="o">++;</span> 
+	<span class="k">return</span> <span class="n">i</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="strsep">
+<h3>2.9.29.2. strsep<a class="headerlink" href="#strsep" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span> <span class="o">*</span><span class="n">strsep</span><span class="o">(</span> <span class="kt">char</span> <span class="o">**</span><span class="n">stringp</span><span class="o">,</span> <span class="kt">char</span> <span class="n">delim</span> <span class="o">){</span>
+	<span class="kt">char</span> <span class="o">*</span><span class="n">ans</span> <span class="o">=</span> <span class="o">*</span><span class="n">stringp</span><span class="o">;</span>
+	<span class="k">if</span> <span class="o">(*</span><span class="n">stringp</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> 
+		<span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+	<span class="k">while</span> <span class="o">(**</span><span class="n">stringp</span> <span class="o">!=</span> <span class="n">delim</span> <span class="o">&amp;&amp;</span> <span class="o">**</span><span class="n">stringp</span> <span class="o">!=</span> <span class="mi">0</span><span class="o">)</span> <span class="cm">/* don&#39;t need this 0 check, 0 is same as &#39;\0&#39; */</span>
+		<span class="o">*</span><span class="n">stringp</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">;</span>
+	<span class="k">if</span> <span class="o">(**</span><span class="n">stringp</span> <span class="o">==</span> <span class="n">delim</span><span class="o">){</span> 
+		<span class="o">**</span><span class="n">stringp</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+		<span class="o">*</span><span class="n">stringp</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">;</span> 
+	<span class="o">}</span>
+	<span class="k">else</span> 
+		<span class="o">*</span><span class="n">stringp</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> 
+	<span class="k">return</span> <span class="n">ans</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>###lists</p>
+<ul class="simple">
+<li><p>always test after malloc</p></li>
+<li><p>singly-linked list: node* { TYPE payload, struct node *next }</p>
+<ul>
+<li><p>length: while(list) list = (*list).next</p></li>
+<li><p>allocate: malloc(sizeof(node)*length)
+head[i].next=(i &gt;= length) ? 0 : (head+i+1)</p></li>
+<li><p>access: (*list).payload or list[i].payload (for accessing)</p></li>
+</ul>
+</li>
+<li><p>array: TYPE*</p>
+<ul>
+<li><p>length: while(list[i] != sentinel)</p></li>
+<li><p>allocate: malloc(sizeof(TYPE) * (length+1));</p></li>
+<li><p>access: list[i]</p></li>
+</ul>
+</li>
+<li><p>range: { unsigned int length, TYPE *ptr }</p>
+<ul>
+<li><p>length: list.length</p></li>
+<li><p>allocate: list.ptr = malloc(sizeof(TYPE) * length);
+ans.length = length;</p></li>
+<li><p>access: list.ptr[i]</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="bit-puzzles">
+<h3>2.9.29.3. bit puzzles<a class="headerlink" href="#bit-puzzles" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// leastBitPos - return a mask that marks the position of the least significant 1 bit</span>
+<span class="kt">int</span> <span class="nf">leastBitPos</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">&amp;</span> <span class="o">(~</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="kt">int</span> <span class="nf">bitMask</span><span class="o">(</span><span class="kt">int</span> <span class="n">highbit</span><span class="o">,</span> <span class="kt">int</span> <span class="n">lowbit</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">zeros</span> <span class="o">=</span> <span class="o">~</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">highbit</span><span class="o">;</span> <span class="cm">/* 1100 0000 */</span>
+    <span class="kt">int</span> <span class="n">ones</span> <span class="o">=</span> <span class="o">~</span><span class="mi">0</span> <span class="o">&lt;&lt;</span> <span class="n">lowbit</span><span class="o">;</span>   <span class="cm">/* 1111 1000 */</span>
+    <span class="k">return</span> <span class="o">~</span><span class="n">zeros</span> <span class="o">&amp;</span> <span class="n">ones</span><span class="o">;</span>      <span class="cm">/* 0011 1000 */</span>
+<span class="o">}</span>
+<span class="cm">/* satAdd - adds two numbers but when positive overflow occurs, returns maximum possible value, and when negative overflow occurs, it returns minimum positive value. */</span>
+<span class="c1">// soln - overflow when operands have same sign and sum and operands have different sign</span>
+<span class="kt">int</span> <span class="nf">satAdd</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
+	<span class="kt">int</span> <span class="n">x_is_neg</span> <span class="o">=</span> <span class="n">x</span> <span class="o">&gt;&gt;</span> <span class="mi">31</span><span class="o">;</span>
+	<span class="kt">int</span> <span class="n">y_is_neg</span> <span class="o">=</span> <span class="n">y</span> <span class="o">&gt;&gt;</span> <span class="mi">31</span><span class="o">;</span>
+	<span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">;</span>
+	<span class="kt">int</span> <span class="n">same_sign</span> <span class="o">=</span> <span class="o">(</span><span class="n">x_is_neg</span> <span class="o">&amp;</span> <span class="n">y_is_neg</span>  <span class="o">|</span>  <span class="o">~</span><span class="n">x_is_neg</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">y_is_neg</span><span class="o">);</span>
+	<span class="kt">int</span> <span class="n">overflow</span> <span class="o">=</span> <span class="n">same_sign</span> <span class="o">&amp;</span> <span class="o">(</span><span class="n">x_is_neg</span> <span class="o">^</span> <span class="o">(</span><span class="n">sum</span> <span class="o">&gt;&gt;</span> <span class="mi">31</span><span class="o">));</span>
+	<span class="kt">int</span> <span class="n">pos_overflow</span> <span class="o">=</span> <span class="n">overflow</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">x_is_neg</span><span class="o">;</span>
+	<span class="kt">int</span> <span class="n">neg</span> <span class="o">=</span> <span class="mh">0x1</span> <span class="o">&lt;&lt;</span> <span class="mi">31</span><span class="o">;</span>
+	<span class="kt">int</span> <span class="n">ans</span> <span class="o">=</span> <span class="o">~</span><span class="n">overflow</span><span class="o">&amp;</span><span class="n">sum</span> <span class="o">|</span> <span class="n">overflow</span> <span class="o">&amp;</span> <span class="o">(</span><span class="n">pos_overflow</span><span class="o">&amp;~</span><span class="n">neg</span> <span class="o">|</span> <span class="o">~</span><span class="n">pos_overflow</span><span class="o">&amp;</span><span class="n">neg</span><span class="o">);</span>
+	<span class="k">return</span> <span class="n">ans</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="reading">
+<h2>2.9.30. reading<a class="headerlink" href="#reading" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="ch-1-1-7-1-9">
+<h3>2.9.30.1. ch 1 (1.7, 1.9)<a class="headerlink" href="#ch-1-1-7-1-9" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>files are stored as bytes, most in ascii</p></li>
+<li><p>all files are either text files or binary files</p></li>
+<li><p>i/o devices are connected to the bus by a controller or adapter</p></li>
+<li><p>processor holds PC, main memory holds program</p></li>
+<li><p>os-layer between hardware and applications - protects hardware and unites different types of hardware</p></li>
+<li><p>concurrent - instructions of one process are interleaved with another</p>
+<ul>
+<li><p>does a context switch to switch between processes</p></li>
+<li><p>concurrency - general concept of multiple simultaneous activities</p></li>
+<li><p>parallelism - use of concurrency to make a system faster</p></li>
+</ul>
+</li>
+<li><p>virtual memory-abstraction that provides each process with illusion of full main memory</p>
+<ul>
+<li><p>memory - code-data-heap-shared libraries-stack</p></li>
+</ul>
+</li>
+<li><p>threads allow us to have multiple control flows at the same time - switching</p></li>
+<li><p>multicore processor: either has multicore or is hyperthreaded (one CPU, repeated parts)</p></li>
+<li><p>processors can do several instructions per clock cycle</p></li>
+<li><p>Single-Instruction, Multiple-Data (SIMD) - ex. add four floats</p></li>
+</ul>
+</div>
+<div class="section" id="ch-2-2-1-2-4-2-2-4-4">
+<h3>2.9.30.2. ch 2 (2.1, 2.4.2, 2.4.4)<a class="headerlink" href="#ch-2-2-1-2-4-2-2-4-4" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>floating points (float, double)</p>
+<ul>
+<li><p>sign bit (1)</p></li>
+<li><p>exponent-field (8, 11)</p>
+<ul>
+<li><p>bias = 2^(k-1)-1 ex. 127</p></li>
+<li><p>normalized
+exponent = exp-Bias, mantissa = 1.mantissa</p></li>
+<li><p>denormalized: exp - all 0s</p>
+<ul>
+<li><p>exponent = 1-Bias, mantissa without 1 - 0 and very small values</p></li>
+</ul>
+</li>
+<li><p>exp: all 1s</p>
+<ul>
+<li><p>infinity (if mantissa 0)</p></li>
+<li><p>NaN otherwise</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>mantissa</p></li>
+</ul>
+</li>
+<li><p>rounding</p>
+<ol class="simple">
+<li><p>round-to-even - if halfway go to closest even number - avoides statistical bias</p></li>
+<li><p>round-toward-zero</p></li>
+<li><p>round-down</p></li>
+<li><p>round-up</p></li>
+</ol>
+</li>
+<li><p>leading 0 specifies octal</p></li>
+<li><p>leading 0x specifies hex</p></li>
+<li><p>leading 0b specifies binary</p></li>
+</ul>
+</div>
+<div class="section" id="ch-3-3-6-3-7">
+<h3>2.9.30.3. ch 3 (3.6, 3.7)<a class="headerlink" href="#ch-3-3-6-3-7" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>computers execute machine code</p></li>
+<li><p>intel processors are all back-compatible</p></li>
+<li><p>ISA - instruction set architecture</p></li>
+<li><p>control - condition codes are set after every instruction (1-bit registers)</p>
+<ol class="simple">
+<li><p>Zero Flag - recent operation yielded 0</p></li>
+<li><p>Carry Flag - yielded carry</p></li>
+<li><p>Sign Flag - yielded negative</p></li>
+<li><p>Overflow Flag - had overflow (pos or neg)</p></li>
+</ol>
+</li>
+<li><p>guarded do can check if a loop is infinite</p></li>
+<li><p>instruction src, destination</p></li>
+<li><p>parentheses dereference a point</p></li>
+<li><p>there is a different add command for 16-bit operands than for 64-bit operands</p></li>
+<li><p>all instructions change the program counter</p></li>
+<li><p>call instruction only changes the stack pointer</p></li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h3>2.9.30.4. 4.1,4.2<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>eight registers</p>
+<ul>
+<li><p>esp is stack pointer</p></li>
+</ul>
+</li>
+<li><p>CC and PC</p></li>
+<li><p>4-byte values are little-endian</p></li>
+<li><p>status code State</p>
+<ul>
+<li><p>1 AOK</p></li>
+<li><p>2 HLT</p></li>
+<li><p>3 ADR - seg fault</p></li>
+<li><p>4 INS - invalid instruction code</p></li>
+</ul>
+</li>
+<li><p>lines starting with “.” are assembler directives</p></li>
+<li><p>assembly code is assembled resulting in just addresses and instruction codes</p></li>
+<li><p>pushl %esp - this doesn’t change esp</p></li>
+<li><p>pop %esp - pops the value in esp</p></li>
+<li><p>high voltage = 1</p></li>
+<li><p>digital system components</p>
+<ol class="simple">
+<li><p>logic</p></li>
+<li><p>memory elements</p></li>
+<li><p>clock signals</p></li>
+</ol>
+</li>
+<li><p>mux - picks a value and lets it through</p></li>
+<li><p>int Out = [
+s: A;
+1: B;
+];</p>
+<ul>
+<li><p>B is the default</p></li>
+</ul>
+</li>
+<li><p>combinatorial circuit - many bits as input simultaneously</p></li>
+<li><p>ALU - three inputs, A, B, func</p></li>
+<li><p>clocked registers store individual bits or words</p></li>
+<li><p>RAM stores several words and uses address to retrieve them</p>
+<ul>
+<li><p>stored in register file</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h3>2.9.30.5. 4.3.1-4<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>SEQ - sequential processor</p></li>
+<li><p>stages</p>
+<ul>
+<li><p>fetch</p>
+<ul>
+<li><p>read icode,ifun &lt;- byte 1</p></li>
+<li><p>maybe read rA, rB &lt;- byte 2</p></li>
+<li><p>maybe read valC &lt;- 8 bytes</p></li>
+</ul>
+</li>
+<li><p>decode</p>
+<ul>
+<li><p>read operands usually from rA, rB - sometimes from %esp</p></li>
+<li><p>call these valA, valB</p></li>
+</ul>
+</li>
+<li><p>execute</p>
+<ul>
+<li><p>adds something, called valE</p></li>
+<li><p>for jmp tests condition codes</p></li>
+</ul>
+</li>
+<li><p>memory</p>
+<ul>
+<li><p>reads something from memory called valM or writes to memory</p></li>
+</ul>
+</li>
+<li><p>write back</p>
+<ul>
+<li><p>writes up to two results to regfile</p></li>
+</ul>
+</li>
+<li><p>PC update</p></li>
+</ul>
+</li>
+<li><p>popl reads two copies so that it can increment before updating the stack pointer
+components: combinational logic, clocked registers (the program counter and condition code register), and random-access memories</p>
+<ul>
+<li><p>reading from RAM is fast</p></li>
+<li><p>only have to consider PC, CC, writing to data memory, regfile</p></li>
+</ul>
+</li>
+<li><p>processor never needs to read back the state updated by an instruction in order to complete the processing of this instruction.</p></li>
+<li><p>based on icode, we can compute three 1-bit signals :</p>
+<ol class="simple">
+<li><p>instr_valid: Does this byte correspond to a legal Y86 instruction? This signal is used to detect an illegal instruction.</p></li>
+<li><p>need_regids: Does this instruction include a register specifier byte?</p></li>
+<li><p>need_valC: Does this instruction include a constant word?</p></li>
+</ol>
+</li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h3>2.9.30.6. 4.4 pipelining<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>the task to be performed is divided into a series of discrete stages</p></li>
+<li><p>increases the throughput - ## customers served per unit time</p></li>
+<li><p>might increase latency - time required to service an individual customer.</p></li>
+<li><p>when pipelining, have to add time for each stage to write to register</p></li>
+<li><p>time is limited by slowest stage</p></li>
+<li><p>more stages has diminishing returns for throughput because there is constant time for saving into registers</p>
+<ul>
+<li><p>latency increases with stages</p></li>
+<li><p>throughput approaches 1/(register time)</p></li>
+</ul>
+</li>
+<li><p>we need to deal with dependencies between the stages</p></li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h3>2.9.30.7. 4.5.3, 4.5.8<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>several copies of values such as valC, srcA</p></li>
+<li><p>registers dD, eD, mM, wW - lowercase letter is input, uppercase is output</p></li>
+<li><p>we try to keep all the info of one instruction within a stage</p></li>
+<li><p>merge signals for valP in call and valP in jmp as valA</p></li>
+<li><p>load/use hazard - (try using before loaded) one instruction reads a value from memory while the next instruction needs this value as a source operand</p></li>
+<li><p>we can stop this by stalling and forwarding (the use of a stall here is called a load interlock)</p></li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h3>2.9.30.8. 5 - optimization<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>eliminate unnecessary calls, tests, memory references</p></li>
+<li><p>instruction-level parallelism</p></li>
+<li><p>profilers - tools that measure the performance of different parts of the program</p></li>
+<li><p>critical paths - chains of data dependencies that form during repeated executions of a loop</p></li>
+<li><p>compilers can only apply safe operations</p></li>
+<li><p>watch out for memory aliasing - two pointers desginating same memory location</p></li>
+<li><p>functions can have side effects - calling them multiple times can have different results</p></li>
+<li><p>small boost from replacing function call by body of function (although this can be optimized in compiler sometimes)</p></li>
+<li><p>measure performance with CPE - cycles per element</p></li>
+<li><p>reduce procedure calls (ex. length in for loop check)</p></li>
+<li><p>loop unrolling - increase number of elements computed on each iteration</p></li>
+<li><p>enhance parallelism</p>
+<ul>
+<li><p>multiple accumulators</p></li>
+</ul>
+</li>
+<li><p>limiting factors</p>
+<ul>
+<li><p>register spilling - when we run out of registers, values stored on stack</p></li>
+<li><p>branch prediction - has misprediction penalties, but these are uncommon</p>
+<ul>
+<li><p>trinary operator could make things faster</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>understand memory performance</p></li>
+<li><p>using macros lets compiler optimizem more, lessens bookkeeping</p></li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h3>2.9.30.9. 6.1.1, 6.2, 6.3<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>SRAM is bistable as long as power is on - will fall into one of 2 positions</p></li>
+<li><p>DRAM loses its value ~10-100 ms</p>
+<ul>
+<li><p>memory controller sends row,col (i,j) to DRAM and DRAM sends back contents</p></li>
+<li><p>matrix organization reduces number of inputs, but slower because must use 2 steps to load row then column</p></li>
+</ul>
+</li>
+<li><p>memory modules</p></li>
+<li><p>enhanced DRAMS</p></li>
+<li><p>nonvolatile memory</p>
+<ul>
+<li><p>ROM - read-only memories - firmwared</p></li>
+</ul>
+</li>
+<li><p>accessing main memory</p>
+<ul>
+<li><p>buses - collection of parallel wires that carry address, data, control</p></li>
+</ul>
+</li>
+<li><p>accessing main memory</p></li>
+<li><p>locality</p>
+<ul>
+<li><p>locality of references to program data</p>
+<ul>
+<li><p>visiting things sequentially (like looping through array) - stride-1 reference pattern or sequential reference pattern</p></li>
+</ul>
+</li>
+<li><p>locality of instruction fetches</p>
+<ul>
+<li><p>like in a loop, the same instructions are repeated</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>memory hierarchy</p>
+<ul>
+<li><p>block-sizes for caching can differ between different levels</p></li>
+<li><p>when accessing memory from cache, we either get cache hit or cache miss</p></li>
+<li><p>if we miss we replace or evict a block</p>
+<ul>
+<li><p>can use random replacement or least-recently used</p></li>
+</ul>
+</li>
+<li><p>cold cache - cold misses / compulsory misses - when cache is empty</p>
+<ul>
+<li><p>need a placement policy for level k+1 -&gt; k (could be something like put block i into i mod 4)</p></li>
+</ul>
+</li>
+<li><p>conflict miss - miss because placement policy gets rid of block you need - ex. block 0 then 8 then 0 with above placement policy
+capacity misses - the cache just can’t hold enough</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="cache-memories-writing-cache-friendly-code">
+<h3>2.9.30.10. 6.4, 6.5 - cache memories &amp; writing cache-friendly code<a class="headerlink" href="#cache-memories-writing-cache-friendly-code" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Miss rate. The fraction of memory references during the execution of a program, or a part of a program, that miss. It is computed as #misses/#references.</p></li>
+<li><p>Hit rate. The fraction of memory references that hit. It is computed as 1 − miss rate.</p></li>
+<li><p>Hit time. The time to deliver a word in the cache to the CPU, including the time for set selection, line identification, and word selection. Hit time is on the order of several clock cycles for L1 caches.</p></li>
+<li><p>Miss penalty. Any additional time required because of a miss. The penalty for L1 misses served from L2 is on the order of 10 cycles; from L3, 40 cycles; and from main memory, 100 cycles.</p></li>
+<li><p>Traditionally, high-performance systems that pushed the clock rates would opt for smaller associativity for L1 caches (where the miss penalty is only a few cycles) and a higher degree of associativity for the lower levels, where the miss penalty is higher</p></li>
+<li><p>In general, caches further down the hierarchy are more likely to use write-back than write-through</p></li>
+</ul>
+</div>
+<div class="section" id="id7">
+<h3>2.9.30.11. 8.1 Exceptions<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>exceptions - partly hardware, partly OS</p></li>
+<li><p>when an event occurs, indirect procedure call (the exception) through a jump table called exception table to OS subroutine (exception handler).</p></li>
+<li><p>three possibilities</p>
+<ul>
+<li><p>returns to I_curr</p></li>
+<li><p>returns to I_next</p></li>
+<li><p>program aborts</p></li>
+</ul>
+</li>
+<li><p>exception table - entry k contains address for handler code for exception k</p></li>
+<li><p>processor pushes address, some additional state</p></li>
+<li><p>four classes</p>
+<ol class="simple">
+<li><p>interrupts (the faulting instruction)</p>
+<ul>
+<li><p>signal from I/O device, Async, return next instruction</p></li>
+</ul>
+</li>
+<li><p>traps</p>
+<ul>
+<li><p>intentional exception (interface for making system calls), Sync, return next</p></li>
+</ul>
+</li>
+<li><p>faults</p>
+<ul>
+<li><p>potentially recoverable error (ex. page fault exception), Sync, might return curr</p></li>
+</ul>
+</li>
+<li><p>aborts</p>
+<ul>
+<li><p>nonrecoverable error, Sync, never returns</p></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>examples</p>
+<ul>
+<li><p>general protection fault - seg fault</p></li>
+<li><p>machine check - fatal hardware error</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id8">
+<h3>2.9.30.12. 8.2 Processes<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>process - instance of program in execution</p>
+<ul>
+<li><p>every program runs in the context of some process (context has code, data stack, pc, etc.)</p></li>
+</ul>
+</li>
+</ul>
+<ol class="simple">
+<li><p>logic control flow - like we have exclusive use of processor</p>
+<ul class="simple">
+<li><p>processes execute partially and then are preempted (temporarily suspended)</p></li>
+<li><p>concurrency/multitasking/time slicing - if things trade off</p></li>
+<li><p>parallel - concurrent and on separate things</p></li>
+<li><p>kernel uses context switches</p></li>
+</ul>
+</li>
+<li><p>private address space - like we have exclusive use of memory</p>
+<ul class="simple">
+<li><p>each process has stack, shared libraries, heap, executable</p></li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="system-call-error-handling">
+<h3>2.9.30.13. 8.3 System Call Error Handling<a class="headerlink" href="#system-call-error-handling" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>system level calls return -1, set the global integer variable errno</p>
+<ul>
+<li><p>this should be checked for</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id9">
+<h3>2.9.30.14. 9-9.5 Virtual Memory<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>address translation - converts virtual to physical address</p>
+<ul>
+<li><p>translated by the MMU</p></li>
+</ul>
+</li>
+<li><p>VM partitions virtual memory into fixed-size blocks called virtual pages partitioned into three sets</p>
+<ol class="simple">
+<li><p>unallocated</p></li>
+<li><p>cached</p></li>
+<li><p>uncached</p></li>
+</ol>
+</li>
+<li><p>virtual pages tend to be large because cache misses are large</p></li>
+<li><p>DRAM will be fully associative, write-back</p></li>
+<li><p>each process has a page table - maps virtual pages to physical pages</p>
+<ul>
+<li><p>managed by OS</p></li>
+<li><p>has PTEs</p></li>
+<li><p>PTE - valid bit, n-bit address field</p>
+<ul>
+<li><p>valid bit - whether its currently cached in DRAm</p></li>
+<li><p>if yes, address is the start of corresponding physical page</p></li>
+<li><p>if valid bit not set &amp;&amp; null address - has not been allocated</p></li>
+<li><p>if valid bit not set &amp;&amp; real address - points to start of virtual page on disk</p></li>
+</ul>
+</li>
+<li><p>PTE - 3 permission bits</p>
+<ul>
+<li><p>SUP - does it need to be in kernel (supervisor) mode?</p></li>
+<li><p>READ - read access</p></li>
+<li><p>WRITE - write access</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>page fault - DRAM cache miss</p>
+<ul>
+<li><p>read valid bit is not set - triggers handler in kernel</p></li>
+</ul>
+</li>
+<li><p>demand paging - waiting until a miss occurs to swap in a page</p></li>
+<li><p>malloc creates room on disk</p></li>
+<li><p>thrashing - not good locality - pages are swapped in and out continuoously</p></li>
+<li><p>virtual address space is typically larger</p>
+<ul>
+<li><p>multiple virtual pages can be mapped to the same shared physical page (ex. everything points to printf)</p></li>
+</ul>
+</li>
+<li><p>VM simplifies many things</p>
+<ul>
+<li><p>linking</p>
+<ul>
+<li><p>each process follows same basic format for its memory image</p></li>
+</ul>
+</li>
+<li><p>loading</p>
+<ul>
+<li><p>loading executables / shared object files</p></li>
+</ul>
+</li>
+<li><p>sharing</p>
+<ul>
+<li><p>easier to communicate with OS</p></li>
+</ul>
+</li>
+<li><p>memory allocation</p>
+<ul>
+<li><p>physical pages don’t have to be contiguous</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>memory protection</p>
+<ul>
+<li><p>private memories are easily isolated</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="address-translation">
+<h3>2.9.30.15. 9.6 Address Translation<a class="headerlink" href="#address-translation" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>low order 4 bits serve
+2,3 - fault
+8c: 1000 1100
+b6</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes/cs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="os.html" title="previous page">2.8. os</a>
+    <a class='right-next' id="next-link" href="java_ref.html" title="next page">2.10. java ref</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Chandan Singh<br/>
+        
+            &copy; Copyright None.<br/>
+          <div class="extra_footer">
+            <p>
+Many of these images are taken from resources on the web.
+</p>
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

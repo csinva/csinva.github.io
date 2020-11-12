@@ -1,0 +1,2138 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>5.1. computer vision &#8212; learning to learn</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../_static/togglebutton.js"></script>
+    <script type="text/javascript" src="../../_static/clipboard.min.js"></script>
+    <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    <script type="text/javascript">var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script type="text/javascript" src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" type="text/javascript" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script type="text/javascript">
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="5.2. structure learning" href="structure_ml.html" />
+    <link rel="prev" title="5. ml" href="ml.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">learning to learn</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   welcome 👋
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../research_ovws/research_ovws.html">
+   1. research_ovws
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_comp_neuro.html">
+     1.1. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_disentanglement.html">
+     1.2. disentanglement
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_complexity.html">
+     1.3. complexity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_interesting_science.html">
+     1.4. interesting science
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_dl_theory.html">
+     1.5. dl theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_scat.html">
+     1.6. scattering transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">
+     1.7. ml in medicine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_dl_for_neuro.html">
+     1.8. dl for neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_uncertainty.html">
+     1.9. uncertainty
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_interp.html">
+     1.10. interpretability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_kernels.html">
+     1.11. kernels
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../cs/cs.html">
+   2. cs
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/retrieval.html">
+     2.1. info retrieval
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/python_ref.html">
+     2.2. python ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/data_structures.html">
+     2.3. data structures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/software.html">
+     2.4. software engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/quantum.html">
+     2.5. quantum
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/algo.html">
+     2.6. algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/graphs.html">
+     2.7. graphs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/os.html">
+     2.8. os
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/arch.html">
+     2.9. architecture
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/java_ref.html">
+     2.10. java ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/comp_theory.html">
+     2.11. cs theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/cpp_ref.html">
+     2.12. c/c++ ref
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../math/math.html">
+   3. math
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/differential_equations.html">
+     3.1. differential equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/proofs.html">
+     3.2. proofs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/analysis.html">
+     3.3. real analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/linear_algebra.html">
+     3.4. linear algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/signals.html">
+     3.5. signals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/optimization.html">
+     3.6. optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/calculus.html">
+     3.7. calculus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/chaos.html">
+     3.8. chaos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/math_basics.html">
+     3.9. math basics
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../stat/stat.html">
+   4. stat
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/graphical_models.html">
+     4.1. graphical models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/data_analysis.html">
+     4.2. data analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/testing.html">
+     4.3. testing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/causal_inference.html">
+     4.4. causal inference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/info_theory.html">
+     4.5. info theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/linear_models.html">
+     4.6. linear models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/time_series.html">
+     4.7. time series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/game_theory.html">
+     4.8. game theory
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="ml.html">
+   5. ml
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     5.1. computer vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="structure_ml.html">
+     5.2. structure learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="classification.html">
+     5.3. classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="unsupervised.html">
+     5.4. unsupervised
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="deep_learning.html">
+     5.5. deep learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="feature_selection.html">
+     5.6. feature selection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="learning_theory.html">
+     5.7. learning theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="evaluation.html">
+     5.8. evaluation
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ai/ai.html">
+   6. ai
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/search.html">
+     6.1. search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/nlp.html">
+     6.2. nlp
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/fairness_sts.html">
+     6.3. fairness
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/cogsci.html">
+     6.4. cogsci
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/ai_futures.html">
+     6.5. ai futures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/logic.html">
+     6.6. logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/philosophy.html">
+     6.7. philosophy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/psychology.html">
+     6.8. psychology
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/knowledge_rep.html">
+     6.9. representations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/decisions.html">
+     6.10. decisions
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../neuro/neuro.html">
+   7. neuro
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/brain_basics.html">
+     7.1. brain basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/vissci.html">
+     7.2. vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/comp_neuro.html">
+     7.3. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/sensory_input.html">
+     7.4. sensory input
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/memory.html">
+     7.5. memory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/motor.html">
+     7.6. motor system
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/development.html">
+     7.7. development
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/notes/ml/comp_vision.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/csinva/csinva.github.io"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-s-in-an-image">
+   5.1.1. what’s in an image?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fundamentals-of-image-formation">
+     5.1.1.1. fundamentals of image formation
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#projections">
+       5.1.1.1.1. projections
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#phenomena-from-perspective-projection">
+       5.1.1.1.2. phenomena from perspective projection
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#radiometry">
+     5.1.1.2. radiometry
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#frequencies-and-colors">
+     5.1.1.3. frequencies and colors
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#image-processing">
+   5.1.2. image processing
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#transformations">
+     5.1.2.1. transformations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#image-preprocessing">
+     5.1.2.2. image preprocessing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#edges-templates">
+     5.1.2.3. edges + templates
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#texture">
+     5.1.2.4. texture
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#optical-flow">
+     5.1.2.5. optical flow
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cogsci-neuro">
+   5.1.3. cogsci / neuro
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#psychophysics">
+     5.1.3.1. psychophysics
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#neurophysiology">
+     5.1.3.2. neurophysiology
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#perceptual-organization">
+     5.1.3.3. perceptual organization
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#correspondence-applications-steropsis-optical-flow-sfm">
+   5.1.4. correspondence + applications (steropsis, optical flow, sfm)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#binocular-steropsis">
+     5.1.4.1. binocular steropsis
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#single-point-of-fixation-common-in-eyes">
+       5.1.4.1.1. single point of fixation (common in eyes)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#optical-axes-parallel-common-in-robots">
+       5.1.4.1.2. optical axes parallel (common in robots)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#general-case-ex-reconstruct-from-lots-of-photos">
+       5.1.4.1.3. general case (ex. reconstruct from lots of photos)
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solving-for-stereo-correspondence">
+     5.1.4.2. solving for stereo correspondence
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#optical-flow-ii">
+       5.1.4.2.1. optical flow II
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#general-correspondence-interest-points">
+     5.1.4.3. general correspondence + interest points
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#detection-identify-key-points">
+       5.1.4.3.1. detection - identify key points
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#description-extract-vector-feature-for-each-key-point">
+       5.1.4.3.2. description - extract vector feature for each key point
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#matching-determine-correspondence-between-2-views">
+       5.1.4.3.3. matching - determine correspondence between 2 views
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#correspondence-for-sfm-instance-retrieval">
+     5.1.4.4. correspondence for sfm / instance retrieval
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#deep-learning">
+   5.1.5. deep learning
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cnns">
+     5.1.5.1. cnns
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#image-segmentation">
+     5.1.5.2. image segmentation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#classification-localization">
+     5.1.5.3. classification + localization
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#learning-detection">
+     5.1.5.4. learning detection
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#modeling-figure-ground">
+       5.1.5.4.1. modeling figure-ground
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#single-view-3d-construction">
+     5.1.5.5. single-view 3d construction
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="computer-vision">
+<h1>5.1. computer vision<a class="headerlink" href="#computer-vision" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-s-in-an-image">
+<h2>5.1.1. what’s in an image?<a class="headerlink" href="#what-s-in-an-image" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>vision doesn’t exist in isolation - movement</p></li>
+<li><p>three R’s: recognition, reconstruction, reorganization</p></li>
+</ul>
+<div class="section" id="fundamentals-of-image-formation">
+<h3>5.1.1.1. fundamentals of image formation<a class="headerlink" href="#fundamentals-of-image-formation" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="projections">
+<h4>5.1.1.1.1. projections<a class="headerlink" href="#projections" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>image I(x,y) projects scene(X, Y, Z)</p>
+<ul>
+<li><p>lower case for image, upper case for scene</p></li>
+<li><p><img alt="" src="../../_images/pinhole.png" /></p>
+<ul>
+<li><p>f is a fixed dist. not a function</p></li>
+<li><p>box with pinhole=<em>center of projection</em>, which lets light go through</p></li>
+<li><p>Z axis points out of box, X and Y aligned w/ image plane (x, y)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>perspective projection - maps 3d points to 2d points through holes</p>
+<ul>
+<li><p><img alt="" src="../../_images/perspective.png" /></p></li>
+<li><p>perspective projection works for spherical imaging surface - what’s important is 1-1 mapping between rays and pixels</p></li>
+<li><p>natural measure of image size is visual angle</p></li>
+</ul>
+</li>
+<li><p><strong>orthographic projection</strong> - appproximation to perspective when object is relatively far</p>
+<ul>
+<li><p>define constant <span class="math notranslate nohighlight">\(s = f/Z_0\)</span></p></li>
+<li><p>transform <span class="math notranslate nohighlight">\(x = sX, y = sY\)</span></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="phenomena-from-perspective-projection">
+<h4>5.1.1.1.2. phenomena from perspective projection<a class="headerlink" href="#phenomena-from-perspective-projection" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>parallel lines converge to vanishing point (each family has its own vanishing point)</p>
+<ul>
+<li><p>pf: point on a ray <span class="math notranslate nohighlight">\([x, y, z] = [A_x, A_y, A_z] + \lambda [D_x, D_y, D_z]\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(x = \frac{fX}{Z} = \frac{f \cdot (A_x+\lambda D_X)}{A_z + \lambda D_z}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\lambda \to \infty \implies \frac{f \cdot \lambda D_x}{\lambda D_z} = \frac{f \cdot D_x}{D_z}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\implies\)</span> vanishing point coordinates are <span class="math notranslate nohighlight">\(fD_x / D_z , f D_y / D_z\)</span></p></li>
+<li><p>not true when <span class="math notranslate nohighlight">\(D_z = 0\)</span></p></li>
+<li><p>all vanishing points lie on horizon</p></li>
+</ul>
+</li>
+<li><p>nearer objects are lower in the image</p>
+<ul>
+<li><p>let ground plane be <span class="math notranslate nohighlight">\(Y = -h\)</span> (where h is your height)</p></li>
+<li><p>point on ground plane <span class="math notranslate nohighlight">\(y = -fh / Z\)</span></p></li>
+</ul>
+</li>
+<li><p>nearer objects look bigger</p></li>
+<li><p><em>foreshortening</em> - objects slanted w.r.t line of sight become smaller w/ scaling factor cos <span class="math notranslate nohighlight">\(\sigma\)</span> ~ <span class="math notranslate nohighlight">\(\sigma\)</span> is angle between line of sight and the surface normal</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="radiometry">
+<h3>5.1.1.2. radiometry<a class="headerlink" href="#radiometry" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>irradiance</em> - how much light (photons) are captured in some time interval</p>
+<ul>
+<li><p>radiant power / unit area (<span class="math notranslate nohighlight">\(W/m^2\)</span>)</p></li>
+<li><p><em>radiance</em> - power in given direction / unit area / unit solid angle</p>
+<ul>
+<li><p>L = directional quantity (measured perpendicular to direction of travel)</p></li>
+<li><p><span class="math notranslate nohighlight">\(L = Power / (dA cos \theta \cdot d\Omega)\)</span>  where <span class="math notranslate nohighlight">\(d\Omega\)</span> is a solid angle (in steradians)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>irradiance <span class="math notranslate nohighlight">\(\propto\)</span> radiance in direction of the camera</p></li>
+<li><p>outgoing radiance of a patch has 3 factors</p>
+<ul>
+<li><p>incoming radiance from light source</p></li>
+<li><p>angle between light / camera</p></li>
+<li><p>reflectance properties of patch</p></li>
+</ul>
+</li>
+<li><p>2 special cases</p>
+<ul>
+<li><p><em>specular surfaces</em> - outgoing radiance direction obeys angle of incidence</p></li>
+<li><p><em>lambertian surfaces</em> - outgoing radiance same in all directions</p>
+<ul>
+<li><p>albedo * radiance of light * cos(angle)</p></li>
+</ul>
+</li>
+<li><p>model reflectance as a combination of Lambertian term and specular term</p></li>
+</ul>
+</li>
+<li><p>also illuminated by reflections of other objects (ray tracing / radiosity)</p></li>
+<li><p><em>shape-from-shading</em> (SFS) goes from irradiance <span class="math notranslate nohighlight">\(\to\)</span> geometry, reflectances, illumination</p></li>
+</ul>
+</div>
+<div class="section" id="frequencies-and-colors">
+<h3>5.1.1.3. frequencies and colors<a class="headerlink" href="#frequencies-and-colors" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>contrast sensitivity depends on frequency + color</p></li>
+<li><p>band-pass filtering - use gaussian pyramid</p>
+<ul>
+<li><p>pyramid blending</p></li>
+</ul>
+</li>
+<li><p>eye</p>
+<ul>
+<li><p><em>iris</em> - colored annulus w/ radial muscles</p></li>
+<li><p><em>pupil</em> - hole (aperture) whose size controlled by iris</p></li>
+<li><p><em>retina</em>: <img alt="" src="../../_images/retina.png" /></p></li>
+</ul>
+</li>
+<li><p>colors are what is reflected</p></li>
+<li><p>cones (short = blue, medium = green, long = red)</p></li>
+<li><p><em>metamer</em> - 2 different but indistinguishable spectra</p></li>
+<li><p>color spaces</p>
+<ul>
+<li><p>rgb - easy for devices</p>
+<ul>
+<li><p>chips tend to be more green</p></li>
+</ul>
+</li>
+<li><p>hsv (hue, saturation, value)</p></li>
+<li><p>lab (perceptually uniform color space)</p></li>
+</ul>
+</li>
+<li><p><em>color constancy</em> - ability to perceive invariant color despite ecological variations</p></li>
+<li><p>camera white balancing (when entire photo is too yellow or something)</p>
+<ul>
+<li><p>manual - choose color-neutral object and normalize</p></li>
+<li><p>automatic (AWB)</p>
+<ul>
+<li><p>grey world - force average color to grey</p></li>
+<li><p>white world - force brightest object to white</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="image-processing">
+<h2>5.1.2. image processing<a class="headerlink" href="#image-processing" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="transformations">
+<h3>5.1.2.1. transformations<a class="headerlink" href="#transformations" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>2 object properties</p>
+<ul>
+<li><p><em>pose</em> - position and orientation of object w.r.t. the camera (6 numbers - 3 translation, 3 rotation)</p></li>
+<li><p><em>shape</em> - relative distances of points on the object</p>
+<ul>
+<li><p>nonrigid objects can change shape</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Transform (most general on top)</p></th>
+<th class="head"><p>Constraints</p></th>
+<th class="head"><p>Invariants</p></th>
+<th class="head"><p>2d params</p></th>
+<th class="head"><p>3d params</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Projective = homography (contains perspective proj.)</p></td>
+<td><p>Ax + t, A nonsingular, homogenous coords</p></td>
+<td><p>parallel -&gt; intersecting</p></td>
+<td><p>8 (-1 for scale)</p></td>
+<td><p>15 (-1 for scale)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Affine</p></td>
+<td><p>Ax + t, A nonsingular</p></td>
+<td><p>parallelism, midpoints, intersection</p></td>
+<td><p>6=4+2</p></td>
+<td><p>12=9+3</p></td>
+</tr>
+<tr class="row-even"><td><p>Euclidean = Isometry</p></td>
+<td><p>Ax + t, A orthogonal</p></td>
+<td><p>length, angles, area</p></td>
+<td><p>3=1+2</p></td>
+<td><p>6=3+3</p></td>
+</tr>
+<tr class="row-odd"><td><p>Orthogonal (rotation when det = 1 / reflection when det = -1)</p></td>
+<td><p>Ax, A orthogonal</p></td>
+<td><p></p></td>
+<td><p>1</p></td>
+<td><p>3</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p><strong>projective transformation</strong> = <strong>homography</strong></p>
+<ul>
+<li><p><strong>homogenous coordinates</strong> - use n + 1 coordinates for n-dim space to help us represent points at <span class="math notranslate nohighlight">\(\infty\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\([x, y] \to [x_1, x_2, x_3]\)</span> with <span class="math notranslate nohighlight">\(x = x_1/x_3, y=x_2/x_3\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\([x_1, x_2] = \lambda [x_1, x_2]  \quad \forall \lambda \neq 0\)</span> - each points is like a line through origin in n + 1 dimensional space</p></li>
+<li><p>even though we added a coordinate, didn’t add a dimension</p></li>
+</ul>
+</li>
+<li><p>standardize - make third coordinate 1 (then top 2 coordinates are euclidean coordinates)</p>
+<ul>
+<li><p>when third coordinate is 0, other points are infinity</p></li>
+<li><p>all 0 disallowed</p></li>
+</ul>
+</li>
+<li><p>Euclidean line <span class="math notranslate nohighlight">\(a_1x + a_2y + a_3=0\)</span> <span class="math notranslate nohighlight">\(\iff\)</span> homogenous line <span class="math notranslate nohighlight">\(a_1 x_1 + a_2x_2 + a_3 x_3 = 0\)</span></p></li>
+</ul>
+</li>
+<li><p>perspective maps parallel lines to lines that intersect</p></li>
+<li><p>incidence of points on lines</p>
+<ul>
+<li><p>when does a point <span class="math notranslate nohighlight">\([x_1, x_2, x_3]\)</span> lie on a line <span class="math notranslate nohighlight">\([a_1, a_2, a_3]\)</span> (homogenous coordinates)</p></li>
+<li><p>when <span class="math notranslate nohighlight">\(\mathbf{x} \cdot \mathbf{a} = 0\)</span></p></li>
+</ul>
+</li>
+<li><p>cross product gives intersection of any 2 lines</p></li>
+<li><p>representing affine transformations: <span class="math notranslate nohighlight">\(\begin{bmatrix}X'\\Y'\\W'\end{bmatrix} = \begin{bmatrix}a_{11} &amp; a_{12}  &amp; t_x\\ a_{21} &amp; a_{22} &amp; t_y \\ 0 &amp; 0 &amp; 1\end{bmatrix}\begin{bmatrix}X\\Y\\1\end{bmatrix}\)</span></p></li>
+<li><p>representing <strong>perspective projection</strong>: <span class="math notranslate nohighlight">\(\begin{bmatrix}1 &amp; 0&amp; 0 &amp; 0\\ 0 &amp; 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1/f &amp; 0 \end{bmatrix} \begin{bmatrix}X\\Y\\Z \\ 1\end{bmatrix} = \begin{bmatrix}X\\Y\\Z/f\end{bmatrix} = \begin{bmatrix}fX/Z\\fY/Z\\1\end{bmatrix}\)</span></p></li>
+</ul>
+</li>
+<li><p><strong>affine transformations</strong></p>
+<ul>
+<li><p>affine transformations are a a group</p></li>
+<li><p>examples</p>
+<ul>
+<li><p>anisotropic scaling - ex. <span class="math notranslate nohighlight">\(\begin{bmatrix}2 &amp; 0 \\ 0 &amp; 1 \end{bmatrix}\)</span></p></li>
+<li><p>shear</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>euclidean transformations</strong> = <em>isometries</em> = <em>rigid body transform</em></p>
+<ul>
+<li><p>preserves distances between pairs of points: <span class="math notranslate nohighlight">\(||\psi(a) - \psi(b)|| = ||a-b||\)</span></p>
+<ul>
+<li><p>ex. translation <span class="math notranslate nohighlight">\(\psi(a) = a+t\)</span></p></li>
+</ul>
+</li>
+<li><p>composition of 2 isometries is an isometry - they are a group</p></li>
+</ul>
+</li>
+<li><p><strong>orthogonal transformations</strong> - preserves inner products <span class="math notranslate nohighlight">\(\forall a,b \: a \cdot b =a^T A^TA b\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\implies A^TA = I \implies A^T = A^{-1}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\implies det(A) = \pm 1\)</span></p>
+<ul>
+<li><p>2D</p>
+<ul>
+<li><p>really only 1 parameter <span class="math notranslate nohighlight">\( \theta\)</span> (also for the +t)</p></li>
+<li><p><span class="math notranslate nohighlight">\(A = \begin{bmatrix}cos \theta &amp; - sin \theta \\ sin \theta &amp; cos \theta \end{bmatrix}\)</span> - rotation, det = +1</p></li>
+<li><p><span class="math notranslate nohighlight">\(A = \begin{bmatrix}cos \theta &amp; sin \theta \\ sin \theta &amp; - cos \theta \end{bmatrix}\)</span> - reflection, det = -1</p></li>
+</ul>
+</li>
+<li><p>3D</p>
+<ul>
+<li><p>really only 3 parameters</p></li>
+<li><p>ex. <span class="math notranslate nohighlight">\(A = \begin{bmatrix}cos \theta &amp; - sin \theta  &amp; 0 \\ sin \theta &amp; cos \theta &amp; 0 \\ 0 &amp; 0 &amp; 1\end{bmatrix}\)</span> - rotation, det rotate about z-axis (like before)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>rotation</strong> - orthogonal transformations with det = +1</p>
+<ul>
+<li><p>2D: <span class="math notranslate nohighlight">\(\begin{bmatrix}cos \theta &amp; - sin \theta \\ sin \theta &amp; cos \theta \end{bmatrix}\)</span></p></li>
+<li><p>3D: <span class="math notranslate nohighlight">\( \begin{bmatrix}cos \theta &amp; - sin \theta  &amp; 0 \\ sin \theta &amp; cos \theta &amp; 0 \\ 0 &amp; 0 &amp; 1\end{bmatrix}\)</span> (rotate around z-axis)</p></li>
+</ul>
+</li>
+<li><p>lots of ways to specify angles</p>
+<ul>
+<li><p>axis plus amount of rotation - we will use this</p></li>
+<li><p>euler angles</p></li>
+<li><p>quaternions (generalize complex numbers)</p></li>
+</ul>
+</li>
+<li><p><strong>Roderigues formula</strong> - converts: <span class="math notranslate nohighlight">\(R = e^{\phi \hat{s}} = I + sin [\phi] \: \hat{s} + (1 - cos \phi) \hat{s}^2\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(s\)</span> is a unit vector along <span class="math notranslate nohighlight">\(w\)</span> and <span class="math notranslate nohighlight">\(\phi=||w||t\)</span> is total amount of rotation</p></li>
+<li><p>rotation matrix</p>
+<ul>
+<li><p>can replace cross product with matrix multiplication with a skew symmetric <span class="math notranslate nohighlight">\((B^T = -B)\)</span> matrix:</p></li>
+<li><p><span class="math notranslate nohighlight">\(\begin{bmatrix} t_1 \\ t_2 \\ t_3\end{bmatrix}\)</span> ^ <span class="math notranslate nohighlight">\(\begin{bmatrix} x_1 \\ x_2 \\ x_3 \end{bmatrix} = \begin{bmatrix} t_2 x_3 - t_3 x_2 \\ t_3 x_1 - t_1 x_3 \\ t_1 x_2 - t_2 x_1\end{bmatrix}\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\hat{t} = [t_\times] = \begin{bmatrix}  0 &amp; -t_3 &amp; t_2 \\ t_3 &amp; 0 &amp; -t_1 \\ -t_2 &amp; t_1 &amp; 0\end{bmatrix}\)</span></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>proof</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\dot{q(t)} = \hat{w} q(t)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\implies q(t) = e^{\hat{w}t}q(0)\)</span></p></li>
+<li><p>where <span class="math notranslate nohighlight">\(e^{\hat{w}t} = I + \hat{w} t + (\hat{w}t)^2 / w! + ...\)</span></p>
+<ul>
+<li><p>can rewrite in terms above</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="image-preprocessing">
+<h3>5.1.2.2. image preprocessing<a class="headerlink" href="#image-preprocessing" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>image is a function from <span class="math notranslate nohighlight">\(R^2 \to R\)</span></p>
+<ul>
+<li><p>f(x,y) = reflectance(x,y) * illumination(x,y)</p></li>
+</ul>
+</li>
+<li><p>image histograms - treat each pixel independently</p>
+<ul>
+<li><p>better to look at CDF</p></li>
+<li><p>use CDF as mapping to normalize a histogram</p></li>
+<li><p>histogram matching - try to get histograms of all pixels to be same</p></li>
+</ul>
+</li>
+<li><p>need to map high dynamic range (HDR) to 0-255 by ignoring lots of values</p>
+<ul>
+<li><p>do this with long exposure</p></li>
+<li><p><em>point processing</em> does this transformation independent of position x, y</p></li>
+</ul>
+</li>
+<li><p>can enhance photos with different functions</p>
+<ul>
+<li><p>negative - inverts</p></li>
+<li><p>log - can bring out details if range was too large</p></li>
+<li><p>contrast stretching - stretch the value within a certain range (high contrast has wide histogram of values)</p></li>
+</ul>
+</li>
+<li><p>sampling</p>
+<ul>
+<li><p>sample and write function’s value at many points</p></li>
+<li><p>reconstruction - make samples back into continuous function</p></li>
+<li><p>ex. audio -&gt; digital -&gt; audio</p></li>
+<li><p>undersampling loses information</p></li>
+<li><p><strong>aliasing</strong> - signals traveling in disguise as other frequencies</p>
+<ul>
+<li><p><img alt="" src="../../_images/sin1.png" /></p></li>
+<li><p><img alt="" src="../../_images/sin2.png" /></p></li>
+</ul>
+</li>
+<li><p>antialiasing</p>
+<ul>
+<li><p>can sample more often</p></li>
+<li><p>make signal less wiggly by removing high frequencies first</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>filtering</p>
+<ul>
+<li><p><em>lowpass filter</em> - removes high frequencies</p></li>
+<li><p><em>linear filtering</em> - can be modeled by convolution</p></li>
+<li><p><em>cross correlation</em> - what cnns do, dot product between kernel and neighborhood</p>
+<ul>
+<li><p><em>sobel</em> filter is edge detector</p></li>
+</ul>
+</li>
+<li><p><em>gaussian filter</em> - blur, better than just box blur</p>
+<ul>
+<li><p>rule of thumb - set filter width to about 6 <span class="math notranslate nohighlight">\(\sigma\)</span></p></li>
+<li><p>removes high-frequency components</p></li>
+</ul>
+</li>
+<li><p><strong>convolution</strong> - cross-correlation where filter is flipped horizontally and vertically</p>
+<ul>
+<li><p>commutative and associative</p></li>
+<li><p><strong>convolution theorem</strong>: <span class="math notranslate nohighlight">\(F[g*h] = F[g]F[h]\)</span> where F is Fourier, * is convolution</p>
+<ul>
+<li><p>convolution in spatial domain = multiplication in frequency domain</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>resizing</p>
+<ul>
+<li><p>Gaussian (lowpass) then subsample to avoid aliasing</p></li>
+<li><p>image pyramid - called pyramid because you can subsample after you blur each time</p>
+<ul>
+<li><p>whole pyramid isn’t much bigger than original image</p></li>
+<li><p><em>collapse</em> pyramid - keep upsampling and adding</p></li>
+<li><p>good for template matching, search over translations</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>sharpening - add back the high frequencies you remove by blurring (laplacian pyramid): <img alt="" src="../../_images/laplacian.png" /></p></li>
+</ul>
+</div>
+<div class="section" id="edges-templates">
+<h3>5.1.2.3. edges + templates<a class="headerlink" href="#edges-templates" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>edge</strong> - place of rapid change in the image intensity function</p></li>
+<li><p>solns</p>
+<ul>
+<li><p>smooth first, then take gradient</p></li>
+<li><p>gradient first then smooth gives same results (linear operations are interchangeable)</p></li>
+</ul>
+</li>
+<li><p><em>derivative theorem of convolution</em> - differentiation can also be though of as convolution</p>
+<ul>
+<li><p>can convolve with deriv of gaussian</p></li>
+<li><p>can give orientation of edges</p></li>
+</ul>
+</li>
+<li><p>tradeoff between smoothing (denoising) and good edge localization (not getting blurry edges)</p></li>
+<li><p>image gradient looks like edges</p></li>
+<li><p>canny edge detector</p>
+<ol class="simple">
+<li><p>filter image w/ deriv of Gaussian</p></li>
+<li><p>find magnitude + orientation of gradient</p></li>
+<li><p><strong>non-maximum suppression</strong> - does thinning, check if pixel is local maxima</p>
+<ul>
+<li><p>anything that’s not a local maximum is set to 0</p></li>
+<li><p>on line direction, require a weighted average to interpolate between points (bilinear interpolation = average on edges, then average those points)</p></li>
+</ul>
+</li>
+<li><p><strong>hysteresis thresholding</strong> - high threshold to start edge curves then low threshold to continue them</p></li>
+</ol>
+</li>
+<li><p><a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/56205">Scale-space and edge detection using anisotropic diffusion</a> (perona &amp; malik 1990)</p>
+<ul>
+<li><p>introduces <strong>anisotropic diffusion</strong> (see <a class="reference external" href="https://en.wikipedia.org/wiki/Anisotropic_diffusion">wiki page</a>) - removes image noise without removing content</p></li>
+<li><p>produces series of images, similar to repeatedly convolving with Gaussian</p></li>
+</ul>
+</li>
+<li><p>filter review</p>
+<ul>
+<li><p>smoothing</p>
+<ul>
+<li><p>no negative values</p></li>
+<li><p>should sum to 1 (constant response on constant)</p></li>
+</ul>
+</li>
+<li><p>derivative</p>
+<ul>
+<li><p>must have negative values</p></li>
+<li><p>should sum to 0 (0 response on constant)</p>
+<ul>
+<li><p>intuitive to have positive sum to +1, negative sum to -1</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>matching with filters (increasing accuracy, but slower)</p>
+<ul>
+<li><p>ex. zero-mean filter subtract mean of patch from patch (otherwise might just match brightest regions)</p></li>
+<li><p>ex. SSD - L2 norm with filter</p>
+<ul>
+<li><p>doesn’t deal well with intensities</p></li>
+</ul>
+</li>
+<li><p>ex. normalized cross-correlation</p></li>
+</ul>
+</li>
+<li><p>recognition</p>
+<ul>
+<li><p>instance - “find me this particular chair”</p>
+<ul>
+<li><p>simple template matching can work</p></li>
+</ul>
+</li>
+<li><p>category - “find me all chairs”</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="texture">
+<h3>5.1.2.4. texture<a class="headerlink" href="#texture" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>texture</em> - non-countable stuff</p>
+<ul>
+<li><p>related to material, but different</p></li>
+</ul>
+</li>
+<li><p>texture analysis - compare 2 things, see if they’re made of same stuff</p>
+<ul>
+<li><p>pioneered by bela julesz</p></li>
+<li><p>random dot stereograms - eyes can find subtle differences in randomness if fed to different eyes</p></li>
+<li><p>human vision sensitive to some difference types, but not others</p></li>
+</ul>
+</li>
+<li><p>easy to classify textures based on v1 gabor-like features</p></li>
+<li><p>can make histogram of <strong>filter response histograms</strong> - convolve filter with image and then treat each pixel independently</p></li>
+<li><p>heeger &amp; bergen siggraph 95 - given texture, want to make more of that texture</p>
+<ul>
+<li><p>start with noise</p></li>
+<li><p>match histograms of noise with each of your filter responses</p></li>
+<li><p>combine them back together to make an image</p></li>
+<li><p>repeat this iteratively</p></li>
+</ul>
+</li>
+<li><p>simoncelli + portilla 98 - also match 2nd order statistics (match filters pairwise)</p>
+<ul>
+<li><p>much harder, but works better</p></li>
+</ul>
+</li>
+<li><p><strong>texton histogram matching</strong>  - classify images</p>
+<ul>
+<li><p>use “computational version of textons” - histograms of joint responses</p>
+<ul>
+<li><p>like bag of words but with “visual words”</p></li>
+<li><p>won’t get patches with exact same distribution, so need to extract good “words”</p></li>
+<li><p>define words as k-means of features from 10x10 patches</p>
+<ul>
+<li><p>features could be raw pixels</p></li>
+<li><p>gabor representation ~10 dimensional vector</p></li>
+<li><p>SIFT features: histogram set of oriented filters within each box of grid</p></li>
+<li><p>HOG features</p></li>
+<li><p>usually cluster over a bunch of images</p></li>
+<li><p>invariance - ex. blur signal</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>each image patch -&gt; a k-means cluster so image -&gt; histogram</p></li>
+<li><p>then just do nearest neighbor on this histogram (chi-squared test is good metric)</p></li>
+</ul>
+</li>
+<li><p>object recognition is really texture recognition</p></li>
+<li><p>all methods follow these steps</p>
+<ul>
+<li><p>compute low-level features</p></li>
+<li><p>aggregate features - k-means, pool histogram</p></li>
+<li><p>use as visual representation</p></li>
+</ul>
+</li>
+<li><p>why these filters - sparse coding (data driven find filters)</p></li>
+</ul>
+</div>
+<div class="section" id="optical-flow">
+<h3>5.1.2.5. optical flow<a class="headerlink" href="#optical-flow" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>simplifying assumption - world doesn’t move, camera moves</p>
+<ul>
+<li><p>lets us always use projection relationship <span class="math notranslate nohighlight">\(x, y = -Xf/Z, -Yf/Z\)</span></p></li>
+</ul>
+</li>
+<li><p><strong>optical flow</strong> - movement in the image plane</p>
+<ul>
+<li><p>square of points moves out as you get closer</p>
+<ul>
+<li><p>as you move towards something, the center doesn’t change</p></li>
+<li><p>things closer to you change faster</p></li>
+</ul>
+</li>
+<li><p>if you move left / right points move in opposite direction</p>
+<ul>
+<li><p>rotations also appear to move opposite to way you turn your head</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>equations: relate optical flow in image to world coords</p>
+<ul>
+<li><p>optical flow at <span class="math notranslate nohighlight">\((u, v) = (\Delta x / \Delta t,  \Delta y/ \Delta t)\)</span> in time <span class="math notranslate nohighlight">\(\Delta t\)</span></p>
+<ul>
+<li><p>function in image space (produces vector field)</p></li>
+</ul>
+</li>
+<li><p><span class="math notranslate nohighlight">\(\begin{bmatrix} \dot{X}\\ \dot{Y} \\ \dot{Z} \end{bmatrix} = -t -\omega \times \begin{bmatrix} X \\ Y \\ Z\end{bmatrix} \implies \begin{bmatrix} \dot{x}\\ \dot{y}\end{bmatrix}= \frac{1}{Z} \begin{bmatrix}  -1 &amp; 0 &amp; x\\ 0 &amp; 1 &amp; y\end{bmatrix} \begin{bmatrix} t_x \\ t_y \\ t_z \end{bmatrix}+ \begin{bmatrix} xy &amp; -(1+x^2) &amp; y \\ 1+y^2 &amp; -xy &amp; -x\end{bmatrix}\begin{bmatrix} \omega_x \\ \omega_y \\ \omega_z\end{bmatrix}\)</span></p></li>
+<li><p>decomposed into translation component + rotation component</p></li>
+<li><p><span class="math notranslate nohighlight">\(t_z / Z\)</span> is time to impact for a point</p></li>
+</ul>
+</li>
+<li><p>translational component of flow fields is more important - tells us <span class="math notranslate nohighlight">\(Z(x, y)\)</span> and translation <span class="math notranslate nohighlight">\(t\)</span></p></li>
+<li><p>we can compute the time to contact</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="cogsci-neuro">
+<h2>5.1.3. cogsci / neuro<a class="headerlink" href="#cogsci-neuro" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="psychophysics">
+<h3>5.1.3.1. psychophysics<a class="headerlink" href="#psychophysics" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>julesz search experiment</p>
+<ul>
+<li><p>“pop-out” effect of certain shapes (e.g. triangles but not others)</p></li>
+<li><p>axiom 1: human vision has 2 modes</p>
+<ul>
+<li><p><strong>preattentive vision</strong> - parallel, instantaneous (~100-200 ms)</p>
+<ul>
+<li><p>large visual field, no scrutiny</p></li>
+<li><p>surprisingly large amount of what we do</p></li>
+<li><p>ex. sensitive to size/width, orientation changes</p></li>
+</ul>
+</li>
+<li><p><strong>attentive vision</strong> - serial search with small focal attention in 50 ms steps</p></li>
+</ul>
+</li>
+<li><p>axiom 2: textons are the fundamental elements in preattentive vision</p>
+<ul>
+<li><p>texton is invariant in preattentive vision</p></li>
+<li><p>ex. elongated blobs (rectangles, ellipses, line segments w/ orientation/width/length)</p></li>
+<li><p>ex. terminators - ends of line segments</p></li>
+<li><p>crossing of line segments</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>julesz conjecture</strong> (not quite true) - textures can’t be spontaneously discriminated if they have same first-order + second-order statistics (ex. density)</p></li>
+<li><p>humans can saccade to correct place in object detection really fast (150 ms - Kirchner &amp; Thorpe, 2006)</p>
+<ul>
+<li><p>still in preattentive regime</p></li>
+<li><p>can also do object detection after seeing image for only 40 ms</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="neurophysiology">
+<h3>5.1.3.2. neurophysiology<a class="headerlink" href="#neurophysiology" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>on-center off-surround - looks like Laplacian of a Gaussian</p>
+<ul>
+<li><p>horizontal cell “like convolution”</p></li>
+</ul>
+</li>
+<li><p>LGN does quick processing</p></li>
+<li><p>hubel &amp; wiesel - single-cell recording from visual cortex in v1</p></li>
+<li><p>3 v1 cell classes</p>
+<ul>
+<li><p><em>simple cells</em> - sensitive to oriented lines</p>
+<ul>
+<li><p>oriented Gaussian derivatives</p></li>
+<li><p>some were end-stopped</p></li>
+</ul>
+</li>
+<li><p><em>complex cells</em> - simple cells with some shift invariance (oriented lines but with shifts)</p>
+<ul>
+<li><p>could do this with maxpool on simple cells</p></li>
+</ul>
+</li>
+<li><p><em>hypercomplex cells</em> (less common) - complex cell, but only lines of certain length</p></li>
+</ul>
+</li>
+<li><p><em>retinotopy</em> - radiation stain on retina maintained radiation image</p></li>
+<li><p><em>hypercolumn</em> - cells of different orientations, scales grouped close together for a location</p></li>
+</ul>
+</div>
+<div class="section" id="perceptual-organization">
+<h3>5.1.3.3. perceptual organization<a class="headerlink" href="#perceptual-organization" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>max werthermian - we perceive things not numbers</p></li>
+<li><p>principles: grouping, element connectedness</p></li>
+<li><p>figure-ground organization: surroundedness, size, orientation, contrast, symmetry, convexity</p></li>
+<li><p>gestalt - we see based on context</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="correspondence-applications-steropsis-optical-flow-sfm">
+<h2>5.1.4. correspondence + applications (steropsis, optical flow, sfm)<a class="headerlink" href="#correspondence-applications-steropsis-optical-flow-sfm" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="binocular-steropsis">
+<h3>5.1.4.1. binocular steropsis<a class="headerlink" href="#binocular-steropsis" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>stereopsis</strong> - perception of depth</p></li>
+<li><p><strong>disparity</strong> - difference in image between eyes</p>
+<ul>
+<li><p>this signals depth (0 disparity at infinity)</p></li>
+<li><p>measured in pixels (in retina plane) or angle in degrees</p></li>
+<li><p>sign doesn’t really matter</p></li>
+</ul>
+</li>
+<li><p><strong>active stereopsis</strong> - one projector and one camera vs <strong>passive (ex. eyes)</strong></p>
+<ul>
+<li><p>active uses more energy</p></li>
+<li><p>ex. kinect - measure / triangulate</p>
+<ul>
+<li><p>worse outside</p></li>
+</ul>
+</li>
+<li><p>ex. lidar - time of light - see how long it takes for light to bounce back</p></li>
+</ul>
+</li>
+<li><p>3 types of 2-camera configurations: single point, parallel axes, general case</p></li>
+</ul>
+<div class="section" id="single-point-of-fixation-common-in-eyes">
+<h4>5.1.4.1.1. single point of fixation (common in eyes)<a class="headerlink" href="#single-point-of-fixation-common-in-eyes" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>fixation point has 0 disparity</p>
+<ul>
+<li><p>humans do this to put things in the fovea</p></li>
+</ul>
+</li>
+<li><p>use coordinates of <em>cyclopean eye</em></p></li>
+<li><p><em>vergence</em> movement - look at close / far point on same line</p>
+<ul>
+<li><p>change angle of convergence (goes to 0 at <span class="math notranslate nohighlight">\(\infty\)</span>)</p>
+<ul>
+<li><p><em>disparity</em> = <span class="math notranslate nohighlight">\( 2 \delta \theta = b \cdot \delta Z / Z^2\)</span> where b - distance between eyes, <span class="math notranslate nohighlight">\(\delta Z\)</span> - change in depth, Z - depth</p></li>
+<li><p><img alt="epth_disparit" src="../../_images/depth_disparity.png" /></p>
+<ul>
+<li><p>b - distance between eyes, <span class="math notranslate nohighlight">\(\delta\)</span> - change in depth, Z - depth</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><em>version</em> movement - change direction of gaze</p>
+<ul>
+<li><p>forms Vieth-Muller circle - points lie on same circle with eyes</p>
+<ul>
+<li><p>cyclopean eye isn’t on circle, but close enough</p></li>
+<li><p>disparity of P’ = <span class="math notranslate nohighlight">\(\alpha - \beta = 0\)</span> on Vieth-Muller circle</p></li>
+<li><p><img alt="ieth_mulle" src="../../_images/vieth_muller.png" /></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="optical-axes-parallel-common-in-robots">
+<h4>5.1.4.1.2. optical axes parallel (common in robots)<a class="headerlink" href="#optical-axes-parallel-common-in-robots" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><img alt="isparity_paralle" src="../../_images/disparity_parallel.png" /></p></li>
+<li><p><em>disparity</em> <span class="math notranslate nohighlight">\(d = x_l - x_r = bf/Z\)</span></p></li>
+<li><p><em>error</em> <span class="math notranslate nohighlight">\(|\delta Z| = \frac{Z^2 |\delta d|}{bf}\)</span></p></li>
+<li><p><strong>parallax</strong> - effect where near objects move when you move but far don’t</p></li>
+</ul>
+</div>
+<div class="section" id="general-case-ex-reconstruct-from-lots-of-photos">
+<h4>5.1.4.1.3. general case (ex. reconstruct from lots of photos)<a class="headerlink" href="#general-case-ex-reconstruct-from-lots-of-photos" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>given n point correspondences, estimate rotation matrix R, translation t, and depths at the n points</p>
+<ul>
+<li><p>more difficult - don’t know coordinates / rotations of different cameras</p></li>
+</ul>
+</li>
+<li><p><strong>epipolar plane</strong> - contains cameras, point of fixation</p>
+<ul>
+<li><p>different epipolar planes, but all contain line between cameras</p></li>
+<li><p><span class="math notranslate nohighlight">\(\vec{c_1 c_2}\)</span> is on all epipolar planes</p></li>
+<li><p>each image plane has corresponding <strong>epipolar line</strong> - intersection of epipolar plane with image plane</p>
+<ul>
+<li><p><strong>epipole</strong> - intersection of <span class="math notranslate nohighlight">\(\vec{c_1 c_2}\)</span> and image plane</p>
+<ul>
+<li><p><img alt="pipolar" src="../../_images/epipolar1.png" /></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>structure from motion</strong> problem: given n corresponding projections <span class="math notranslate nohighlight">\((x_i, y_i)\)</span> in both cameras, find <span class="math notranslate nohighlight">\((X_i, Y_i, Z_i)\)</span> by estimating R, t:  <strong>Longuet-Higgins 8-point algorithm</strong> - overall minimizing <em>re-projection error</em> (basically minimizes least squares = bundle adjustment)</p>
+<ul>
+<li><p>find <span class="math notranslate nohighlight">\(n (\geq 8)\)</span> corresponding points</p></li>
+<li><p>estimate <strong>essential matrix</strong> <span class="math notranslate nohighlight">\(E = \hat{T} R\)</span> (converts between points in normalized image coords - origin at optical center)</p>
+<ul>
+<li><p><strong>fundamental matrix</strong> F corresponds between points in pixel coordinates (more degrees of freedom, coordinates not calibrated )</p></li>
+<li><p><strong>essential matrix constraint</strong>: <span class="math notranslate nohighlight">\(x_1, x_2\)</span> homogoneous coordinates of <span class="math notranslate nohighlight">\(M_1, M_2 \implies x_2^T \hat{T} R x_1 = 0\)</span></p>
+<ul>
+<li><p>6 or 5 dof; 3 dof for rotation, 3 dof for translation. up to a scale, so 1 dof is removed</p></li>
+<li><p><span class="math notranslate nohighlight">\(t = c_2 - c_1, x_2\)</span> in second camera coords, <span class="math notranslate nohighlight">\(Rx_1\)</span> moves 1st camera coords to second camera coords</p></li>
+</ul>
+</li>
+<li><p>need at least 8 pairs of corresponding points to estimate E (since E has 8 entries up to scale)</p>
+<ul>
+<li><p>if they’re all coplanar, etc doesn’t always work (need them to be independent)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>extract (R, t)</p></li>
+<li><p>triangulation</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="solving-for-stereo-correspondence">
+<h3>5.1.4.2. solving for stereo correspondence<a class="headerlink" href="#solving-for-stereo-correspondence" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>stereo correspondence</strong> = stereo matching: given point in one image, find corresponding point in 2nd image</p></li>
+<li><p><strong>basic stereo matching algorithm</strong></p>
+<ul>
+<li><p><strong>stereo image rectification</strong> - transform images so that image planes are parallel</p>
+<ul>
+<li><p>now, epipolar lines are horizontal scan lines</p></li>
+<li><p>do this by using a few points to estimate R, t</p></li>
+</ul>
+</li>
+<li><p>for each pixel in 1st image</p>
+<ul>
+<li><p>find corresponding epipolar line in 2nd image</p></li>
+<li><p>correspondence search: search this line and pick best match</p></li>
+</ul>
+</li>
+<li><p>simple ex. parallel optical axes = assume cameras at same height, same focal lengths <span class="math notranslate nohighlight">\(\implies\)</span> epipolar lines are horizontal scan lines</p>
+<ul>
+<li><p><img alt="aralle" src="../../_images/parallel.png" /></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>correspondence search algorithms</strong> (simplest to most complex)</p>
+<ul>
+<li><p>assume photo consistency - same points in space will give same brightness of pixels</p></li>
+<li><p>take a window and use metric</p>
+<ul>
+<li><p>larger window smoother, less detail</p></li>
+<li><p>metrics</p>
+<ul>
+<li><p>minimize L2 norm (SSD)</p></li>
+<li><p>maximize dot product (NCC - normalized cross correlation) - this works a little better because calibration issues could be different</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>failures</p>
+<ul>
+<li><p>textureless surfaces</p></li>
+<li><p>occlusions - have to extrapolate the disparity</p>
+<ul>
+<li><p>half-occlusion - can’t see from one eye</p></li>
+<li><p>full-occlusion - can’t see from either eye</p></li>
+</ul>
+</li>
+<li><p>repetitions</p></li>
+<li><p>non-lambertian surfacies, specularities - mirror has different brightness from different angles</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="section" id="optical-flow-ii">
+<h4>5.1.4.2.1. optical flow II<a class="headerlink" href="#optical-flow-ii" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>related to stereo disparity except moving one camera over time</p></li>
+<li><p><em>aperture problem</em> - looking through certain hole can change perception (ex. see movement in wrong directions)</p></li>
+<li><p>measure correspondence over time</p>
+<ul>
+<li><p>for point (x, y, t), optical flow is (u,v) = <span class="math notranslate nohighlight">\((\Delta x / \Delta t, \Delta y / \Delta t)\)</span></p></li>
+</ul>
+</li>
+<li><p><em>optical flow constraint equation</em>: <span class="math notranslate nohighlight">\(I_x u + I_y v + I_t = 0\)</span></p>
+<ul>
+<li><p>assume everything is Lambertian - brightness of any given point will stay the same</p></li>
+<li><p>also add <strong>brightness constancy assumption</strong> - assume brightness of given point remains constant over short period <span class="math notranslate nohighlight">\(I(x_1, y_1, t_1) = I(x_1 + \Delta x, y_1 + \Delta x, t_1 + \Delta t)\)</span></p></li>
+<li><p>here, <span class="math notranslate nohighlight">\(I_x = \partial I / \partial x\)</span></p></li>
+<li><p>local constancy of optical flow - assume u and v are same for n points in neighborhood of a pixel</p></li>
+<li><p>rewrite for n points(left matrix is A): <span class="math notranslate nohighlight">\(\begin{bmatrix} I_x^1 &amp; I_y^1\\  I_x^2 &amp; I_y^2\\ \vdots &amp; \vdots \\ I_x^n &amp; I_y^n\\ \end{bmatrix}\begin{bmatrix} u \\ v\end{bmatrix} = - \begin{bmatrix} I_t^1\\ I_t^2\\ \vdots \\ I_t^n\\\end{bmatrix}\)</span></p>
+<ul>
+<li><p>then solve with least squares <span class="math notranslate nohighlight">\(\begin{bmatrix} u \\ v\end{bmatrix}=-(A^TA^{-1} A^Tb)\)</span></p></li>
+<li><p><em>second moment matrix</em> <span class="math notranslate nohighlight">\(A^TA\)</span> - need this to be high enough rank</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="general-correspondence-interest-points">
+<h3>5.1.4.3. general correspondence + interest points<a class="headerlink" href="#general-correspondence-interest-points" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>more general <strong>correspondence</strong> - matching points, patches, edges, or regions across images (not in the same basic image)</p>
+<ul>
+<li><p>most important problem - used in steropsis, optical flow, structure from motion</p></li>
+</ul>
+</li>
+<li><p>2 ways of finding correspondences</p>
+<ul>
+<li><p>align and search - not really used</p></li>
+<li><p>keypoint matching - find keypoint that matches and use everything else</p></li>
+</ul>
+</li>
+<li><p>3 steps to kepoint matching: detection, description, matching</p></li>
+</ul>
+<div class="section" id="detection-identify-key-points">
+<h4>5.1.4.3.1. detection - identify key points<a class="headerlink" href="#detection-identify-key-points" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>find ‘corners’ with Harris corner detector</p></li>
+<li><p>shift small window and look for large intensity change in multiple directions</p>
+<ul>
+<li><p>edge - only changes in one direction</p></li>
+<li><p>compare auto-correlation of window (L2 norm of pixelwise differences)</p></li>
+</ul>
+</li>
+<li><p>very slow naively - instead look at gradient (Taylor series expansion - second moment matrix M)</p>
+<ul>
+<li><p>if gradient isn’t flat, then it’s a corner</p></li>
+</ul>
+</li>
+<li><p>look at eigenvalues of M</p>
+<ul>
+<li><p>eigenvalues tell you about magnitude of change in different directions</p></li>
+<li><p>if same, then circular otherwise elliptical</p></li>
+<li><p>corner - 2 large eigenvalues, similar values</p>
+<ul>
+<li><p>edge - 1 eigenvalue larger than other</p></li>
+</ul>
+</li>
+<li><p>simple way to compute this: <span class="math notranslate nohighlight">\(det(M) - \alpha \: trace(M)^2\)</span></p></li>
+</ul>
+</li>
+<li><p>apply max filter to get rid of noise</p>
+<ul>
+<li><p>adaptive - want to distribute points across image</p></li>
+</ul>
+</li>
+<li><p>invariance properties</p>
+<ul>
+<li><p>ignores affine intensity change (only uses derivs)</p></li>
+<li><p>ignores translation/rotation</p></li>
+<li><p>does not ignore scale (can fix this by considering multiple scales and taking max)</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="description-extract-vector-feature-for-each-key-point">
+<h4>5.1.4.3.2. description - extract vector feature for each key point<a class="headerlink" href="#description-extract-vector-feature-for-each-key-point" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>lots of ways - ex. SIFT, image patches wrt gradient</p></li>
+<li><p>simpler: MOPS</p>
+<ul>
+<li><p>take point (x, y), scale (s), and orientation from gradients</p></li>
+<li><p>take downsampled rectangle around this point in proper orientation</p></li>
+</ul>
+</li>
+<li><p>invariant to things like shape / lighting changes</p></li>
+</ul>
+</div>
+<div class="section" id="matching-determine-correspondence-between-2-views">
+<h4>5.1.4.3.3. matching - determine correspondence between 2 views<a class="headerlink" href="#matching-determine-correspondence-between-2-views" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>not all key points will match - only match above some threshold</p>
+<ul>
+<li><p>ex. criteria: symmetry - only use if a is b’s nearest neighbor and b is a’s nearest neighbor</p></li>
+<li><p>better: David Lowe trick -  how much better is 1-NN than 2-NN (e.g. threshold on 1-NN / 2-NN)</p></li>
+</ul>
+</li>
+<li><p>problem: outliers will destroy fit</p></li>
+<li><p><strong>RANSAC</strong> algorithm (random sample consensus) - vote for best transformation</p>
+<ul>
+<li><p>repeat this lots of times, pick the match that had the most inliers</p>
+<ul>
+<li><p>select n feature pairs at random (n = minimum needed to compute transformation - 4 for homography, 8 for rotation/translation)</p></li>
+<li><p>compute transformation T (exact for homography, or use 8-point algorithm)</p></li>
+<li><p>count <em>inliers</em> (how many things agree with this match)</p>
+<ul>
+<li><p>8-point algorithm / homography check</p></li>
+<li><p><span class="math notranslate nohighlight">\(x^TEx &lt; \epsilon \)</span> for 8-point algorithm or <span class="math notranslate nohighlight">\(x^THx &lt; \epsilon\)</span> for homography</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ate end could recompute least squares H or F on all inliers</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="correspondence-for-sfm-instance-retrieval">
+<h3>5.1.4.4. correspondence for sfm / instance retrieval<a class="headerlink" href="#correspondence-for-sfm-instance-retrieval" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>sfm (structure for motion) - given many images, simultaneously do 2 things</p>
+<ul>
+<li><p>calibration - find camera parameters</p></li>
+<li><p>triangulation - find 3d points from 2d points</p></li>
+</ul>
+</li>
+<li><p><strong>structure for motion</strong> system (ex. photo tourism 2006 paper)</p>
+<ul>
+<li><p><strong>camera calibration</strong>: determine camera parameters from known 3d points</p>
+<ul>
+<li><p>parameters</p>
+<ol class="simple">
+<li><p>internal parameters - ex. focal length, optical center, aspect ratio</p></li>
+<li><p>external parameters - where is the camera</p>
+<ul>
+<li><p>only makes sense for multiple cameras</p></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>approach 1 - solve for projection matrix (which contains all parameters)</p>
+<ul>
+<li><p>requires knowing the correspondences between image and 3d points (can use calibration object)</p></li>
+<li><p>least squares to find points from 3x4 <strong>projection matrix</strong> which projects  (X, Y, Z, 1) -&gt; (x, y, 1)</p></li>
+</ul>
+</li>
+<li><p>approach 2 - solve for parameters</p>
+<ul>
+<li><p>translation T, rotation R, focal length f, principle point (xc, yc), pixel size (sx, sy)</p>
+<ul>
+<li><p>can’t use homography because there are translations with changing depth</p></li>
+<li><p>sometimes camera will just list focal length</p></li>
+</ul>
+</li>
+<li><p>decompose projection matrix into a matrix dependent on these things</p></li>
+<li><p>nonlinear optimization</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>triangulation</strong> - predict 3d points <span class="math notranslate nohighlight">\((X_i, Y_i, Z_i)\)</span> given pixels in multiple cameras <span class="math notranslate nohighlight">\((x_i, y_i)\)</span> and camera parameters <span class="math notranslate nohighlight">\(R, t\)</span></p>
+<ul>
+<li><p>minimize reprojection error (bundle adjustment): <span class="math notranslate nohighlight">\(\sum_i \sum_j \underbrace{w_{ij}}_{\text{indicator var}}\cdot || \underbrace{P(x_i, R_j, t_j)}_{\text{pred. im location}} - \underbrace{\begin{bmatrix} u_{i, j}\\v_{i, j}\end{bmatrix}}_{\text{observed m location}}||^2\)</span></p>
+<ul>
+<li><p>solve for matrix that projects points into 3d coords</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>incremental sfm: start with 2 cameras</p>
+<ul>
+<li><p>initial pair should have lots of matches, big baseline (shouldn’t just be a homography)</p></li>
+<li><p>solve with essential matrix</p></li>
+<li><p>then iteratively add cameras and recompute</p></li>
+<li><p>good idea: ignore lots of data since data is cheap in computer vision</p></li>
+</ul>
+</li>
+<li><p>search for similar images - want to establish correspondence despite lots of changes</p>
+<ul>
+<li><p>see how many keypoint matches we get</p></li>
+<li><p>search with inverted file index</p>
+<ul>
+<li><p>ex. visual words - cluster the feature descriptors and use these as keys to a dictionary</p></li>
+<li><p>inverted file indexing</p></li>
+<li><p>should be sparse</p></li>
+</ul>
+</li>
+<li><p><em>spatial verification</em> - don’t just use visual words, use structure of where the words are</p>
+<ul>
+<li><p>want visual words to give similar transformation - RANSAC with some constraint</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="deep-learning">
+<h2>5.1.5. deep learning<a class="headerlink" href="#deep-learning" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="cnns">
+<h3>5.1.5.1. cnns<a class="headerlink" href="#cnns" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>object recognition</em> - visual similarity via labels</p></li>
+<li><p>classification</p>
+<ul>
+<li><p>linear boundary -&gt; nearest neighbors</p></li>
+</ul>
+</li>
+<li><p>neural nets</p>
+<ul>
+<li><p>don’t need feature extraction step</p></li>
+<li><p>high capacity (like nearest neighbors)</p></li>
+<li><p>still very fast test time</p></li>
+<li><p>good at high dimensional noisy inputs (vision + audio)</p></li>
+</ul>
+</li>
+<li><p>pooling - kind of robust to exact locations</p>
+<ul>
+<li><p>a lot like blurring / downsampling</p></li>
+<li><p>everyone now uses maxpooling</p></li>
+</ul>
+</li>
+<li><p>history: lenet 1998</p>
+<ul>
+<li><p>neurocognition (fukushima 1980) - unsupervised</p></li>
+<li><p>convolutional neural nets (lecun et al) - supervised</p></li>
+<li><p>alexnet 2012</p>
+<ul>
+<li><p>used norm layers (still common?)</p></li>
+</ul>
+</li>
+<li><p>resnet 2015</p>
+<ul>
+<li><p>152 layers</p></li>
+<li><p>3x3s with skip layers</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>like nonparametric - number of params is close to number of data points</p></li>
+<li><p>network representations learn a lot</p>
+<ul>
+<li><p>zeiler-fergus - supercategories are learned to be separated, even though only given single class lavels</p></li>
+<li><p>nearest neighbors in embedding spaces learn things like pose</p></li>
+<li><p>can be used for transfer learning</p></li>
+</ul>
+</li>
+<li><p>fancy architectures - not just a classifier</p>
+<ul>
+<li><p>siamese nets</p>
+<ul>
+<li><p>ex. want to compare two things (ex. surveillance) - check if 2 people are the same (even w/ sunglasses)</p></li>
+<li><p>ex. connect pictures to amazon pictures</p>
+<ul>
+<li><p>embed things and make loss function distance between real pics and amazon pics + make different things farther up to some margin</p></li>
+</ul>
+</li>
+<li><p>ex. searching across categories</p></li>
+</ul>
+</li>
+<li><p>multi-modal</p>
+<ul>
+<li><p>ex. could look at repr. between image and caption</p></li>
+</ul>
+</li>
+<li><p>semi-supervised</p>
+<ul>
+<li><p>context as supervision - from word predict neighbors</p></li>
+<li><p>predict neighboring patch from 8 patches in image</p></li>
+</ul>
+</li>
+<li><p>multi-task</p>
+<ul>
+<li><p>many tasks / many losses at once - everything will get better at once</p></li>
+</ul>
+</li>
+<li><p>differentiable programming - any nets that form a DAG</p>
+<ul>
+<li><p>if there are cycles (RNN), unroll it</p></li>
+</ul>
+</li>
+<li><p>fully convolutional</p>
+<ul>
+<li><p>works on different sizes</p></li>
+<li><p>this lets us have things per pixel, not per image (ex. semantic segmentation, colorization)</p></li>
+<li><p>usually use skip connections</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="image-segmentation">
+<h3>5.1.5.2. image segmentation<a class="headerlink" href="#image-segmentation" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>consistency</strong> - 2 segmentations consistent when they can be explained by same segmentation tree</p>
+<ul>
+<li><p><em>percept tree</em> - describe what’s in an image using a tree</p></li>
+</ul>
+</li>
+<li><p>evaluation - how to correspond boundaries?</p>
+<ul>
+<li><p>min-cost assignment on <strong>bipartite graph=bigraph</strong> - connections only between groundtruth, signal: <img alt="bigraph" src="../../_images/bigraph.png" /></p></li>
+</ul>
+</li>
+<li><p>ex. for each pixel predict if it’s on a boundary by looking at window around it</p>
+<ul>
+<li><p>proximity cue</p></li>
+<li><p>boundary cues: brightness gradient, color gradient, texture gradient (gabor responses)</p>
+<ul>
+<li><p>look for sharp change in the property</p></li>
+</ul>
+</li>
+<li><p>region cue - patch similarity</p>
+<ul>
+<li><p>proximity</p></li>
+<li><p>graph partitioning</p></li>
+</ul>
+</li>
+<li><p>learn cue combination by fitting linear combination of cues and outputting whether 2 pixels are in same segmentation</p></li>
+</ul>
+</li>
+<li><p>graph partitioning approach: generate affinity graph from local cues above (with lots of neighbors)</p>
+<ul>
+<li><p><em>normalized cuts</em> - partition so within-group similarity is large and between-group similarity is small</p></li>
+</ul>
+</li>
+<li><p>deep semantic segmentation - fully convolutional</p>
+<ul>
+<li><p>upsampling</p>
+<ul>
+<li><p>unpooling - can fill all, always put at top-left</p></li>
+<li><p><em>max-unpooling</em> - use positions from pooling layer</p></li>
+<li><p><em>learnable upsampling</em> = deconvolution = upconvolution = fractionally strided convolution = backward strided convolution - transpose the convolution</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="classification-localization">
+<h3>5.1.5.3. classification + localization<a class="headerlink" href="#classification-localization" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>goal: coords (x, y, w, h) for each object + class</p></li>
+<li><p>simple: sliding window and use classifier each time - computationally expensive!</p></li>
+<li><p>region proposals - find blobby image regions likely to contain objects and run (fast)</p></li>
+<li><p>R-CNN - run each region of interest, warped to some size, through CNN</p></li>
+<li><p>Fast R-CNN - get ROIs from last conv layer, so everything is faster / no warping</p>
+<ul>
+<li><p>to maintain size, fix number of bins instead of filter sizes (then these bins are adaptively sized) - spatial pyramid pooling layer</p></li>
+</ul>
+</li>
+<li><p>Faster R-CNN - use region proposal network within network to do region proposals as well</p>
+<ul>
+<li><p>train with 4 losses for all things needed</p></li>
+<li><p>region proposal network uses multi-scale anchors and predicts relative to convolution</p></li>
+</ul>
+</li>
+<li><p>instance segmentation</p>
+<ul>
+<li><p>mask-rcnn - keypoint detection then segmentation</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="learning-detection">
+<h3>5.1.5.4. learning detection<a class="headerlink" href="#learning-detection" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>countour detection - predict contour after every conv (at different scales) then interpolate up to get one final output (ICCV 2015)</p>
+<ul>
+<li><p>deep supervision helps to aggregate multiscale info</p></li>
+</ul>
+</li>
+<li><p>semantic segmentation - sliding window</p></li>
+<li><p>classification + localization</p>
+<ul>
+<li><p>need to output a bounding box + classify what’s in the box</p></li>
+<li><p>bounding box: regression problem to output box</p>
+<ul>
+<li><p>use locations of features</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>feature map</p>
+<ul>
+<li><p>location of a feature in a feature map is where it is in the image (with finer localization info accross channels)</p></li>
+<li><p>response of a feature - what it is</p></li>
+</ul>
+</li>
+</ul>
+<div class="section" id="modeling-figure-ground">
+<h4>5.1.5.4.1. modeling figure-ground<a class="headerlink" href="#modeling-figure-ground" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>figure is closer, ground background - affects perception</p></li>
+<li><p>figure/ground datasets</p></li>
+<li><p>local cues</p>
+<ul>
+<li><p>edge features: shapemes - prototypical local shapes</p></li>
+<li><p>junction features: line labelling - contour directions with convex/concave images</p></li>
+<li><p>lots of principles</p>
+<ul>
+<li><p>surroundedness, size, orientation, constrast, symmetry, convexity, parallelism, lower region, meaningfulness, occlusion, cast shadows, shading</p></li>
+</ul>
+</li>
+<li><p>global cues</p>
+<ul>
+<li><p>want consistency with CRF</p></li>
+<li><p>spectral graph segmentation</p></li>
+<li><p>embedding approach - satisfy pairwise affinities</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="single-view-3d-construction">
+<h3>5.1.5.5. single-view 3d construction<a class="headerlink" href="#single-view-3d-construction" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>useful for planning, depth, etc.</p></li>
+<li><p>different levels of output (increasing complexity)</p>
+<ul>
+<li><p>image depth map</p></li>
+<li><p>scene layout - predict simple shapes of things</p></li>
+<li><p>volumetric 3d - predict 3d binary voxels for which voxels are occupied</p>
+<ul>
+<li><p>could approximate these with CAD models, deformable shape models</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>need to use priors of the world</p></li>
+<li><p>(explicit) single-view modeling - assume a model and fit it</p>
+<ul>
+<li><p>many classes are very difficult to model explicitly</p></li>
+<li><p>ex. use dominant edges in a few directions to calculate vanishing points and then align things</p></li>
+</ul>
+</li>
+<li><p>(implicit) single-view prediction - learn model of world data-driven</p>
+<ul>
+<li><p>collect data + labels (ex. sensors)</p></li>
+<li><p>train + predict</p></li>
+<li><p>supervision from annotation can be wrong</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes/ml"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="ml.html" title="previous page">5. ml</a>
+    <a class='right-next' id="next-link" href="structure_ml.html" title="next page">5.2. structure learning</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Chandan Singh<br/>
+        
+            &copy; Copyright None.<br/>
+          <div class="extra_footer">
+            <p>
+Many of these images are taken from resources on the web.
+</p>
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

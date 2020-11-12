@@ -1,0 +1,1210 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>6.1. search &#8212; learning to learn</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../_static/togglebutton.js"></script>
+    <script type="text/javascript" src="../../_static/clipboard.min.js"></script>
+    <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    <script type="text/javascript">var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script type="text/javascript" src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" type="text/javascript" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script type="text/javascript">
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="6.2. nlp" href="nlp.html" />
+    <link rel="prev" title="6. ai" href="ai.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">learning to learn</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   welcome 👋
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../research_ovws/research_ovws.html">
+   1. research_ovws
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_comp_neuro.html">
+     1.1. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_disentanglement.html">
+     1.2. disentanglement
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_complexity.html">
+     1.3. complexity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_interesting_science.html">
+     1.4. interesting science
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_dl_theory.html">
+     1.5. dl theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_scat.html">
+     1.6. scattering transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">
+     1.7. ml in medicine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_dl_for_neuro.html">
+     1.8. dl for neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_uncertainty.html">
+     1.9. uncertainty
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_interp.html">
+     1.10. interpretability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_kernels.html">
+     1.11. kernels
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../cs/cs.html">
+   2. cs
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/retrieval.html">
+     2.1. info retrieval
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/python_ref.html">
+     2.2. python ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/data_structures.html">
+     2.3. data structures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/software.html">
+     2.4. software engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/quantum.html">
+     2.5. quantum
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/algo.html">
+     2.6. algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/graphs.html">
+     2.7. graphs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/os.html">
+     2.8. os
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/arch.html">
+     2.9. architecture
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/java_ref.html">
+     2.10. java ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/comp_theory.html">
+     2.11. cs theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/cpp_ref.html">
+     2.12. c/c++ ref
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../math/math.html">
+   3. math
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/differential_equations.html">
+     3.1. differential equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/proofs.html">
+     3.2. proofs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/analysis.html">
+     3.3. real analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/linear_algebra.html">
+     3.4. linear algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/signals.html">
+     3.5. signals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/optimization.html">
+     3.6. optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/calculus.html">
+     3.7. calculus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/chaos.html">
+     3.8. chaos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/math_basics.html">
+     3.9. math basics
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../stat/stat.html">
+   4. stat
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/graphical_models.html">
+     4.1. graphical models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/data_analysis.html">
+     4.2. data analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/testing.html">
+     4.3. testing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/causal_inference.html">
+     4.4. causal inference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/info_theory.html">
+     4.5. info theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/linear_models.html">
+     4.6. linear models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/time_series.html">
+     4.7. time series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/game_theory.html">
+     4.8. game theory
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ml/ml.html">
+   5. ml
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/comp_vision.html">
+     5.1. computer vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/structure_ml.html">
+     5.2. structure learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/classification.html">
+     5.3. classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/unsupervised.html">
+     5.4. unsupervised
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/deep_learning.html">
+     5.5. deep learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/feature_selection.html">
+     5.6. feature selection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/learning_theory.html">
+     5.7. learning theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/evaluation.html">
+     5.8. evaluation
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="ai.html">
+   6. ai
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     6.1. search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="nlp.html">
+     6.2. nlp
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="fairness_sts.html">
+     6.3. fairness
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cogsci.html">
+     6.4. cogsci
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ai_futures.html">
+     6.5. ai futures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="logic.html">
+     6.6. logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="philosophy.html">
+     6.7. philosophy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="psychology.html">
+     6.8. psychology
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="knowledge_rep.html">
+     6.9. representations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="decisions.html">
+     6.10. decisions
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../neuro/neuro.html">
+   7. neuro
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/brain_basics.html">
+     7.1. brain basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/vissci.html">
+     7.2. vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/comp_neuro.html">
+     7.3. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/sensory_input.html">
+     7.4. sensory input
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/memory.html">
+     7.5. memory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/motor.html">
+     7.6. motor system
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/development.html">
+     7.7. development
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/notes/ai/search.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/csinva/csinva.github.io"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#uninformed-search-r-n-3-1-3-4">
+   6.1.1. Uninformed Search - R&amp;N 3.1-3.4
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#problem-solving-agents">
+     6.1.1.1. problem-solving agents
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#problems">
+     6.1.1.2. problems
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#searching-for-solutions">
+     6.1.1.3. searching for solutions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#infrastructure">
+     6.1.1.4. infrastructure
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#uninformed-search-blind-search">
+     6.1.1.5. uninformed search = blind search
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-search-and-heuristics-r-n-3-5-3-6">
+   6.1.2. A* Search and Heuristics - R&amp;N 3.5-3.6
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#informed-search">
+     6.1.2.1. informed search
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#heuristic-functions">
+     6.1.2.2. heuristic functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#local-search-r-n-4-1-4-2">
+   6.1.3. Local Search - R&amp;N 4.1-4.2
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#discrete-space">
+     6.1.3.1. discrete space
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#continuous-space">
+     6.1.3.2. continuous space
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#constraint-satisfaction-problems-r-n-6-1-6-5">
+   6.1.4. Constraint satisfaction problems - R&amp;N 6.1-6.5
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#inference-prunes-search-space-before-backtracking">
+     6.1.4.1. inference (prunes search space before backtracking)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#backtracking">
+     6.1.4.2. backtracking
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#local-search-for-csps">
+     6.1.4.3. local search for csps
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#structure-of-problems">
+     6.1.4.4. structure of problems
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="search">
+<h1>6.1. search<a class="headerlink" href="#search" title="Permalink to this headline">¶</a></h1>
+<p>Some notes on search based on Berkeley’s CS 188 course and  “Artificial Intelligence” Russel &amp; Norvig 3rd Edition.</p>
+<div class="section" id="uninformed-search-r-n-3-1-3-4">
+<h2>6.1.1. Uninformed Search - R&amp;N 3.1-3.4<a class="headerlink" href="#uninformed-search-r-n-3-1-3-4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="problem-solving-agents">
+<h3>6.1.1.1. problem-solving agents<a class="headerlink" href="#problem-solving-agents" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>goal</em> - 1st step</p>
+<ul>
+<li><p><em>problem</em> formulation - deciding what action and states to consider given a goal</p></li>
+</ul>
+</li>
+<li><p><em>uninformed</em> - given no info about problem besides definition</p>
+<ul>
+<li><p>an agent with several immediate options of unknown value can decide what to do first by examining future actions that lead to states of known value</p></li>
+</ul>
+</li>
+<li><p>5 components</p>
+<ol class="simple">
+<li><p>initial state</p></li>
+<li><p>actions at each state</p></li>
+<li><p>transition model</p></li>
+<li><p>goal states</p></li>
+<li><p>path cost function</p></li>
+</ol>
+</li>
+</ul>
+</div>
+<div class="section" id="problems">
+<h3>6.1.1.2. problems<a class="headerlink" href="#problems" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>toy problems</p>
+<ol class="simple">
+<li><p>vacuum world</p></li>
+<li><p>8-puzzle (type of sliding-block puzzle)</p></li>
+<li><p>8-queens problem</p></li>
+<li><p>Knuth conjecture</p></li>
+</ol>
+</li>
+<li><p>real-world problems</p>
+<ol class="simple">
+<li><p>route-finding</p></li>
+<li><p>TSP (and othe touring problems)</p></li>
+<li><p>VLSI layout</p></li>
+<li><p>robot navigation</p></li>
+<li><p>automatic assembly sequencing</p></li>
+</ol>
+</li>
+</ul>
+</div>
+<div class="section" id="searching-for-solutions">
+<h3>6.1.1.3. searching for solutions<a class="headerlink" href="#searching-for-solutions" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>start at a node and make a search tree</p>
+<ul>
+<li><p><em>frontier</em> = <em>open list</em> = set of all leaf nodes available for expansion at any given point</p></li>
+<li><p><em>search strategy</em> determines which state to expand next</p></li>
+</ul>
+</li>
+<li><p>want to avoid redundant paths</p>
+<ol class="simple">
+<li><p>TREE-SEARCH - continuously expand the frontier</p></li>
+<li><p>GRAPH-SEARCH - tree search but also keep track of previously visited states in <em>explored set</em> = <em>closed set</em> and don’t revisit</p></li>
+</ol>
+</li>
+</ul>
+</div>
+<div class="section" id="infrastructure">
+<h3>6.1.1.4. infrastructure<a class="headerlink" href="#infrastructure" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>node</em> - data structure that contains parent, state, path-cost, action</p></li>
+<li><p>metrics</p>
+<ul>
+<li><p><em>complete</em> - terminates in finite steps</p></li>
+<li><p><em>optimal</em> - finds best solution</p></li>
+<li><p>time/space complexity</p>
+<ul>
+<li><p>theoretical CS: <span class="math notranslate nohighlight">\(\vert V\vert +\vert E\vert \)</span></p></li>
+<li><p>b - <em>branching factor</em> - max number of branches of any node</p></li>
+<li><p>d - <em>depth</em> - number of steps from the root</p></li>
+<li><p>m - <em>max length</em> of any path in the search space</p></li>
+</ul>
+</li>
+<li><p><em>search cost</em> - just time/memory</p></li>
+<li><p><em>total cost</em> - search cost + <em>path cost</em></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="uninformed-search-blind-search">
+<h3>6.1.1.5. uninformed search = blind search<a class="headerlink" href="#uninformed-search-blind-search" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><img alt="" src="../../_images/uninformed_comparisons.png" /></p></li>
+<li><p>bfs</p></li>
+<li><p><em>uniform-cost search</em> - always expand node with lowest path cost g(n)</p>
+<ul>
+<li><p>frontier is priority queue ordered by g</p></li>
+</ul>
+</li>
+<li><p>dfs</p>
+<ul>
+<li><p><em>backtracking search</em> - dfs but only one successor is generated at a time; each partially expanded node remembers which succesor to generate next</p>
+<ul>
+<li><p>only O(m) memory instead of O(bm)</p></li>
+</ul>
+</li>
+<li><p><em>depth-limited search</em></p>
+<ul>
+<li><p><em>diameter of state space</em> - longest possible distance to goal from any start</p></li>
+</ul>
+</li>
+<li><p><em>iterative deepening dfs</em> - like bfs explores entire depth before moving on</p>
+<ul>
+<li><p><em>iterative lengthening search</em> - instead of depth limit has path-cost limit</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><em>bidirectional search</em> - search from start and goal and see if frontiers intersect</p>
+<ul>
+<li><p>just because they intersect doesn’t mean it was the shortest path</p></li>
+<li><p>can be difficult to search backward from goal (ex. N-queens)</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="a-search-and-heuristics-r-n-3-5-3-6">
+<h2>6.1.2. A* Search and Heuristics - R&amp;N 3.5-3.6<a class="headerlink" href="#a-search-and-heuristics-r-n-3-5-3-6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="informed-search">
+<h3>6.1.2.1. informed search<a class="headerlink" href="#informed-search" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>informed search</em> - use path costs <span class="math notranslate nohighlight">\(g(n)\)</span> and problem-specific heuristic <span class="math notranslate nohighlight">\(h(n)\)</span></p>
+<ul>
+<li><p>has <em>evaluation function</em> <em>f</em> incorporating path cost <em>g</em> and heuristic <em>h</em></p></li>
+<li><p><em>heuristic</em> h = estimated cost of cheapest path from state at node n to a goal state</p></li>
+</ul>
+</li>
+<li><p><em>best-first</em> - choose nodes with best f</p>
+<ul>
+<li><p><em>greedy best-first search</em> - let f = h: keep expanding node closest to goal</p></li>
+<li><p>when f=g, reduces to uniform-cost search</p></li>
+</ul>
+</li>
+<li><p><span class="math notranslate nohighlight">\(A^*\)</span> search</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(f(n) = g(n) + h(n)\)</span> represents the estimated cost of the cheapest solution through n</p></li>
+<li><p><span class="math notranslate nohighlight">\(A^*\)</span> (with tree search) is optimal and complete if h(n) is <em>admissible</em></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(h(n)\)</span> never overestimates the cost to reach the goal</p></li>
+</ul>
+</li>
+<li><p><span class="math notranslate nohighlight">\(A^*\)</span> (with graph search) is optimal and complete if h(n) is <em>consistent</em> (stronger than admissible) = <em>monotonicity</em></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(h(n) \leq cost(n \to n') + h(n')\)</span></p></li>
+<li><p>can draw contours of f (because nondecreasing)</p></li>
+</ul>
+</li>
+<li><p><span class="math notranslate nohighlight">\(A^*\)</span> is also <em>optimally efficient</em> (guaranteed to expand fewest nodes) for any given consisten heuristic because any algorithm that that expands fewer nodes runs the risk of missing the optimal solution</p>
+<ul>
+<li><p>for a heuristic, <em>absolute error</em> <span class="math notranslate nohighlight">\(\delta := h^*-h\)</span> and <em>relative error</em> <span class="math notranslate nohighlight">\(\epsilon := \delta / h^*\)</span></p>
+<ul>
+<li><p>here <span class="math notranslate nohighlight">\(h^*\)</span> is actual cost of root to goal</p></li>
+</ul>
+</li>
+<li><p>bad when lots of solutions with small absolute error because it must try them all</p></li>
+<li><p>bad because it must store all nodes in memory</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>memory-bounded heuristic search</p>
+<ul>
+<li><p><em>iterative-deepening</em> <span class="math notranslate nohighlight">\(A^*\)</span> - iterative deepening with cutoff f-cost</p></li>
+<li><p><em>recursive best-first search</em> - like standard best-first search but with linear space</p>
+<ul>
+<li><p>each node keeps f_limit variable which is best alternative path available from any ancestor</p></li>
+<li><p>as it unwinds, each node is replaced with <em>backed-up value</em> - best f-value of its children</p>
+<ul>
+<li><p>decides whether it’s worth reexpanding subtree later</p></li>
+<li><p>often flips between different good paths (h is usually less optimistic for nodes close to the goal)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><span class="math notranslate nohighlight">\(SMA^*\)</span> - simplified memory-bounded A* - best-first until memory is full then forgot worst leaf node and add new leaf</p>
+<ul>
+<li><p>store forgotten leaf node info in its parent</p></li>
+<li><p>on hard problems, too much time switching between nodes</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>agents can also learn to search with <em>metalevel learning</em></p></li>
+</ul>
+</div>
+<div class="section" id="heuristic-functions">
+<h3>6.1.2.2. heuristic functions<a class="headerlink" href="#heuristic-functions" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>effective branching factor</em> <span class="math notranslate nohighlight">\(b^*\)</span> - if total nodes generated by A* is N and solution depth is d, then b* is branching factor for uniform tree of depth d for N+1 nodes: $<span class="math notranslate nohighlight">\(N+1 = 1+b^* +(b^*)^2 + ... + (b^*)^d\)</span>$</p>
+<ul>
+<li><p>want <span class="math notranslate nohighlight">\(b^*\)</span> close to 1</p></li>
+</ul>
+</li>
+<li><p>generally want bigger heuristic because everything with <span class="math notranslate nohighlight">\(f(n) &lt; C^*\)</span> will be expanded</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(h_1\)</span> dominates <span class="math notranslate nohighlight">\(h_2\)</span> if <span class="math notranslate nohighlight">\(h_1(n) \geq h_2(n) \: \forall \: n\)</span></p></li>
+</ul>
+</li>
+<li><p><em>relaxed problem</em> - removes constraints and adds edges to the graph</p>
+<ul>
+<li><p>solution to original problem still solves relaxed problem</p></li>
+<li><p>cost of optimal solution to a relaxed problem is an admissible heuristic for the original problem</p>
+<ul>
+<li><p>also is consistent</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>when there are several good heuristics, pick <span class="math notranslate nohighlight">\(h(n) = \max[h_1(n), ..., h_m(n)]\)</span> for each node</p></li>
+<li><p><em>pattern database</em> - heuristic stores exact solution cost for every possible subproblem instance</p>
+<ul>
+<li><p><em>disjoint pattern database</em> - break into independent possible subproblems</p></li>
+</ul>
+</li>
+<li><p>can learn heuristic by solving lots of problems using useful features</p>
+<ul>
+<li><p>aren’t necessarily admissible / consistent</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="local-search-r-n-4-1-4-2">
+<h2>6.1.3. Local Search - R&amp;N 4.1-4.2<a class="headerlink" href="#local-search-r-n-4-1-4-2" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><em>local search</em> looks for solution not path ~ like optimization</p>
+<ul>
+<li><p>maintains only <em>current node</em> and its neighbors</p></li>
+</ul>
+</li>
+</ul>
+<div class="section" id="discrete-space">
+<h3>6.1.3.1. discrete space<a class="headerlink" href="#discrete-space" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>hill-climbing</em> = <em>greedy local search</em></p>
+<ul>
+<li><p>also stochastic hill climbing and random-restart hill climbing</p></li>
+</ul>
+</li>
+<li><p><em>simulated annealing</em> - pick random move</p>
+<ul>
+<li><p>if move better, then accept</p></li>
+<li><p>otherwise accept with some probability p’roportional to how bad it is and accept less as time goes on</p></li>
+</ul>
+</li>
+<li><p><em>local beam search</em> - pick k starts, then choose the best k states from their neighbors</p>
+<ul>
+<li><p><em>stochastic beam search</em> - pick best k with prob proportional to how good they are</p></li>
+</ul>
+</li>
+<li><p><em>genetic algorithms</em> - population of k individuals</p>
+<ul>
+<li><p>each scored by <em>fitness function</em></p></li>
+<li><p>pairs are selected for <em>reproduction</em> using <em>crossover point</em></p></li>
+<li><p>each location subject to random <em>mutation</em></p></li>
+<li><p><em>schema</em> - substring in which some of the positions can be left unspecified (ex. <span class="math notranslate nohighlight">\(246****\)</span>)</p>
+<ul>
+<li><p>want schema to be good representation because chunks tend to be passed on together</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="continuous-space">
+<h3>6.1.3.2. continuous space<a class="headerlink" href="#continuous-space" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>hill-climbing / simulated annealing still work</p>
+<ul>
+<li><p>could just discretize neighborhood of each state</p></li>
+</ul>
+</li>
+<li><p>use gradient</p>
+<ul>
+<li><p>if possible, solve <span class="math notranslate nohighlight">\(\nabla f  = 0\)</span></p></li>
+<li><p>otherwise SGD <span class="math notranslate nohighlight">\(x = x + \alpha \nabla f(x)\)</span></p>
+<ul>
+<li><p>can estimate gradient by evaluating response to small increments</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><em>line search</em> - repeatedly double <span class="math notranslate nohighlight">\(\alpha\)</span> until f starts to increase again</p></li>
+<li><p><em>Newton-Raphson</em> method</p>
+<ul>
+<li><p>finds roots of func using 1st derive: <span class="math notranslate nohighlight">\(x_\text{root} = x - g(x) / g'(x)\)</span></p></li>
+<li><p>apply this on 1st deriv to get minimum</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(x = x - H_f^{-1} (x) \nabla f(x)\)</span> where H is the Hessian of 2nd derivs</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="constraint-satisfaction-problems-r-n-6-1-6-5">
+<h2>6.1.4. Constraint satisfaction problems - R&amp;N 6.1-6.5<a class="headerlink" href="#constraint-satisfaction-problems-r-n-6-1-6-5" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>CSP</p>
+<ol class="simple">
+<li><p>set of variables <span class="math notranslate nohighlight">\(X_1, ..., X_n\)</span></p></li>
+<li><p>set of domains <span class="math notranslate nohighlight">\(D_1, ..., D_n\)</span></p></li>
+<li><p>set of constraints <span class="math notranslate nohighlight">\(C\)</span> specifying allowable values</p></li>
+</ol>
+</li>
+<li><p>each state is an <em>assignment</em> of variables</p>
+<ul>
+<li><p><em>consistent</em> - doesn’t violate constraints</p></li>
+<li><p><em>complete</em> - every variable is assigned</p></li>
+</ul>
+</li>
+<li><p><em>constraint graph</em> - nodes are variables and links connect any 2 variables that participate in a constraint</p>
+<ul>
+<li><p><em>unary constraint</em> - restricts value of single variable</p></li>
+<li><p><em>binary constraint</em></p></li>
+<li><p><em>global constraint</em> - arbitrary number of variables (doesn’t have to be all)</p></li>
+</ul>
+</li>
+<li><p>converting graphs to only binary constraints</p>
+<ul>
+<li><p>every finite-domain constraint can be reduced to set of binary constraints w/ enough auxiliary variables</p></li>
+<li><p><em>dual graph</em> transformation - create a new graph with one variable for each constraint in the original graph and one binary constraint for each pair of original constraints that share variables</p></li>
+</ul>
+</li>
+<li><p>also can have <em>preference constraints</em> instead of <em>absolute constraints</em></p></li>
+</ul>
+<div class="section" id="inference-prunes-search-space-before-backtracking">
+<h3>6.1.4.1. inference (prunes search space before backtracking)<a class="headerlink" href="#inference-prunes-search-space-before-backtracking" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>node consistency</em> - prune domains violating unary constraints</p></li>
+<li><p><em>arc consistency</em> - satisfy binary constraints (every node is made arc-consistent with all other nodes)</p>
+<ul>
+<li><p>uses AC-3 algorithm</p>
+<ul>
+<li><p>set of all arcs = binary constraints</p></li>
+<li><p>pick one and apply it</p>
+<ul>
+<li><p>if things changed, re-add all the neighboring arcs to the set</p></li>
+</ul>
+</li>
+<li><p><span class="math notranslate nohighlight">\(O(cd^3)\)</span> where <span class="math notranslate nohighlight">\(d = \vert domain\vert \)</span>, c = ## arcs</p></li>
+</ul>
+</li>
+<li><p>variable can be <em>generalized arc consistent</em></p></li>
+</ul>
+</li>
+<li><p><em>path consistency</em> - consider constraints on triplets - PC-2 algorithm</p>
+<ul>
+<li><p>extends to <em>k-consistency</em> (although path consistency assumes binary constraint networks)</p></li>
+<li><p><em>strongly k-consistent</em> - also (k-1) consistent, (k-2) consistent, … 1-consistent</p>
+<ul>
+<li><p>implies <span class="math notranslate nohighlight">\(O(k^2d)\)</span></p></li>
+<li><p>establishing k-consistency time/space is exponential in k</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>global constraints can have more efficient algorithms</p>
+<ul>
+<li><p>ex. assign different colors to everything</p></li>
+<li><p><em>resource constraint</em> = <em>atmost constraint</em> - sum of variable must not exceed some limit</p>
+<ul>
+<li><p><em>bounds propagation</em> - make sure variables can be allotted to solve resource constraint</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="backtracking">
+<h3>6.1.4.2. backtracking<a class="headerlink" href="#backtracking" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>CSPs are <em>commutative</em> - order of choosing states doesn’t matter</p></li>
+<li><p><em>backtracking search</em> - depth-first search that chooses values for one variable at a time and backtracks when no legal values left</p>
+<ol class="simple">
+<li><p>variable and value ordering</p></li>
+</ol>
+<ul class="simple">
+<li><p><em>minimum-remaining-values</em> heuristic - assign variable with fewest choices</p></li>
+<li><p><em>degree</em> heuristic - pick variable involved in largest number of constraints on other unassigned variables</p></li>
+<li><p><em>least-constraining-value</em> heuristic - prefers value that rules out fewest choices for nieghboring variables</p></li>
+</ul>
+<ol class="simple">
+<li><p>interleaving search and inference</p></li>
+</ol>
+<ul class="simple">
+<li><p><em>forward checking</em> - when we assign a variable in search, check arc-consistency on its neighbors</p></li>
+<li><p><em>maintaining arc consistency (MAC)</em> - when we assign a variable, call AC-3, intializing with arcs to neighbors</p></li>
+</ul>
+<ol class="simple">
+<li><p>intelligent backtracking - looking backward</p></li>
+</ol>
+<ul class="simple">
+<li><p>keep track of <em>conflict set</em> for each node (list of variable assignments that deleted things from its domain)</p></li>
+<li><p><em>backjumping</em>  - backtracks to most recent assignment in conflict set</p>
+<ul>
+<li><p>too simple - forward checking makes this redundant</p></li>
+</ul>
+</li>
+<li><p><em>conflict-directed backjumping</em></p>
+<ul>
+<li><p>let <span class="math notranslate nohighlight">\(X_j\)</span> be current variable and <span class="math notranslate nohighlight">\(conf(X_j)\)</span> be conflict set. If every possible value for <span class="math notranslate nohighlight">\(X_j\)</span> fails, backjump to the most recent variable <span class="math notranslate nohighlight">\(X_i\)</span> in <span class="math notranslate nohighlight">\(conf(X_j)\)</span> and set <span class="math notranslate nohighlight">\(conf(X_i) = conf(X_i) \cup conf(X_j) - X_i\)</span></p></li>
+</ul>
+</li>
+<li><p><em>constraint learning</em> - findining minimum set of variables/values from conflict set that causes the problem = <em>no-good</em></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="local-search-for-csps">
+<h3>6.1.4.3. local search for csps<a class="headerlink" href="#local-search-for-csps" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>start with some assignment to variables</p></li>
+<li><p><em>min-conflicts</em> heuristic - change variable to minimize conflicts</p>
+<ul>
+<li><p>can escape plateaus with <em>tabu search</em> - keep small list of visited states</p></li>
+<li><p>could use <em>constraint weighting</em></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="structure-of-problems">
+<h3>6.1.4.4. structure of problems<a class="headerlink" href="#structure-of-problems" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>connected components of constraint graph are independent subproblems</p></li>
+<li><p><em>tree</em> - any 2 variables are connected by only one path</p>
+<ul class="simple">
+<li><p><em>directed arc consistency</em> - ordered variables <span class="math notranslate nohighlight">\(X_i\)</span>, every <span class="math notranslate nohighlight">\(X_i\)</span> is consistent with each <span class="math notranslate nohighlight">\(X_j\)</span> for j&gt;i</p>
+<ul>
+<li><p>tree with n nodes can be made directed arc-consisten in <span class="math notranslate nohighlight">\(O(n)\)</span> steps - <span class="math notranslate nohighlight">\(O(nd^2)\)</span></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>two ways to reduce constraint graphs to trees</p>
+<ol class="simple">
+<li><p>assign variables so remaining variables form a tree</p></li>
+</ol>
+<ul class="simple">
+<li><p>assigned variables called <em>cycle cutset</em> with size c</p></li>
+<li><p><span class="math notranslate nohighlight">\(O[d^c \cdot (n-c) d^2]\)</span></p></li>
+<li><p>finding smallest cutset is hard, but can use approximation called <em>cutset conditioning</em></p></li>
+</ul>
+<ol class="simple">
+<li><p><em>tree decomposition</em> - view each subproblem as a mega-variable</p></li>
+</ol>
+<ul class="simple">
+<li><p><em>tree width</em> w - size of largest subproblem - 1</p></li>
+<li><p>solvable in <span class="math notranslate nohighlight">\(O(n d^{w+1})\)</span></p></li>
+</ul>
+</li>
+<li><p>also can look at structure in variable values</p>
+<ul class="simple">
+<li><p>ex. <em>value symmetry</em> - can assign different colorings</p>
+<ul>
+<li><p>use <em>symmetry-breaking constraint</em> - assign colors in alphabetical order</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes/ai"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="ai.html" title="previous page">6. ai</a>
+    <a class='right-next' id="next-link" href="nlp.html" title="next page">6.2. nlp</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Chandan Singh<br/>
+        
+            &copy; Copyright None.<br/>
+          <div class="extra_footer">
+            <p>
+Many of these images are taken from resources on the web.
+</p>
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

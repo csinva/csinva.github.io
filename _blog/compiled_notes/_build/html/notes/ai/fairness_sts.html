@@ -1,0 +1,1119 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>6.3. fairness &#8212; learning to learn</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../_static/togglebutton.js"></script>
+    <script type="text/javascript" src="../../_static/clipboard.min.js"></script>
+    <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    <script type="text/javascript">var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script type="text/javascript" src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" type="text/javascript" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script type="text/javascript">
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="6.4. cogsci" href="cogsci.html" />
+    <link rel="prev" title="6.2. nlp" href="nlp.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">learning to learn</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   welcome 👋
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../research_ovws/research_ovws.html">
+   1. research_ovws
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_comp_neuro.html">
+     1.1. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_disentanglement.html">
+     1.2. disentanglement
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_complexity.html">
+     1.3. complexity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_interesting_science.html">
+     1.4. interesting science
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_dl_theory.html">
+     1.5. dl theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_scat.html">
+     1.6. scattering transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">
+     1.7. ml in medicine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_dl_for_neuro.html">
+     1.8. dl for neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_uncertainty.html">
+     1.9. uncertainty
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_interp.html">
+     1.10. interpretability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_kernels.html">
+     1.11. kernels
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../cs/cs.html">
+   2. cs
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/retrieval.html">
+     2.1. info retrieval
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/python_ref.html">
+     2.2. python ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/data_structures.html">
+     2.3. data structures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/software.html">
+     2.4. software engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/quantum.html">
+     2.5. quantum
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/algo.html">
+     2.6. algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/graphs.html">
+     2.7. graphs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/os.html">
+     2.8. os
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/arch.html">
+     2.9. architecture
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/java_ref.html">
+     2.10. java ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/comp_theory.html">
+     2.11. cs theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/cpp_ref.html">
+     2.12. c/c++ ref
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../math/math.html">
+   3. math
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/differential_equations.html">
+     3.1. differential equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/proofs.html">
+     3.2. proofs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/analysis.html">
+     3.3. real analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/linear_algebra.html">
+     3.4. linear algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/signals.html">
+     3.5. signals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/optimization.html">
+     3.6. optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/calculus.html">
+     3.7. calculus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/chaos.html">
+     3.8. chaos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/math_basics.html">
+     3.9. math basics
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../stat/stat.html">
+   4. stat
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/graphical_models.html">
+     4.1. graphical models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/data_analysis.html">
+     4.2. data analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/testing.html">
+     4.3. testing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/causal_inference.html">
+     4.4. causal inference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/info_theory.html">
+     4.5. info theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/linear_models.html">
+     4.6. linear models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/time_series.html">
+     4.7. time series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/game_theory.html">
+     4.8. game theory
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ml/ml.html">
+   5. ml
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/comp_vision.html">
+     5.1. computer vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/structure_ml.html">
+     5.2. structure learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/classification.html">
+     5.3. classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/unsupervised.html">
+     5.4. unsupervised
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/deep_learning.html">
+     5.5. deep learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/feature_selection.html">
+     5.6. feature selection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/learning_theory.html">
+     5.7. learning theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/evaluation.html">
+     5.8. evaluation
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="ai.html">
+   6. ai
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="search.html">
+     6.1. search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="nlp.html">
+     6.2. nlp
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     6.3. fairness
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cogsci.html">
+     6.4. cogsci
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ai_futures.html">
+     6.5. ai futures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="logic.html">
+     6.6. logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="philosophy.html">
+     6.7. philosophy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="psychology.html">
+     6.8. psychology
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="knowledge_rep.html">
+     6.9. representations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="decisions.html">
+     6.10. decisions
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../neuro/neuro.html">
+   7. neuro
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/brain_basics.html">
+     7.1. brain basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/vissci.html">
+     7.2. vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/comp_neuro.html">
+     7.3. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/sensory_input.html">
+     7.4. sensory input
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/memory.html">
+     7.5. memory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/motor.html">
+     7.6. motor system
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/development.html">
+     7.7. development
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/notes/ai/fairness_sts.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/csinva/csinva.github.io"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fairness-metrics">
+   6.3.1. fairness metrics
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fairness-in-cv-tutorial">
+   6.3.2. fairness in cv (tutorial)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#computer-vision-in-practice-who-is-benefiting-and-who-is-being-harmed">
+     6.3.2.1. Computer vision in practice: who is benefiting and who is being harmed?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-ethics">
+     6.3.2.2. data ethics
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#where-do-we-go">
+     6.3.2.3. where do we go?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#misc-papers">
+     6.3.2.4. misc papers
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#concrete-harms">
+   6.3.3. concrete harms
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pandemic">
+     6.3.3.1. pandemic
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ethics">
+   6.3.4. ethics
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sts">
+   6.3.5. sts
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#facial-rec-demographic-benchmarking">
+   6.3.6. facial rec. demographic benchmarking
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#legal-perspectives">
+   6.3.7. legal perspectives
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#algorithmic-accountability-a-legal-and-economic-framework-2020">
+     6.3.7.1. ALGORITHMIC ACCOUNTABILITY: A LEGAL AND ECONOMIC FRAMEWORK (2020)
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#input-accountability-test-captures-these-questions-w-basic-statistics">
+       6.3.7.1.1.
+       <strong>
+        input accountability test - captures these questions w/ basic statistics
+       </strong>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#related-approaches">
+       6.3.7.1.2.
+       <strong>
+        related approaches
+       </strong>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p><em>Some notes on algorithm fairness and STS.</em>*</p>
+<div class="section" id="fairness">
+<h1>6.3. fairness<a class="headerlink" href="#fairness" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="fairness-metrics">
+<h2>6.3.1. fairness metrics<a class="headerlink" href="#fairness-metrics" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>good introductory <a class="reference external" href="https://towardsdatascience.com/a-tutorial-on-fairness-in-machine-learning-3ff8ba1040cb">blog</a></p></li>
+<li><p>causes of bias</p>
+<ul>
+<li><p>skewed sample</p></li>
+<li><p>tainted examples</p></li>
+<li><p>selectively limited features</p></li>
+<li><p>sample size disparity</p></li>
+<li><p>proxies of sensitive attributes</p></li>
+</ul>
+</li>
+<li><p>definitions</p>
+<ul>
+<li><p><strong>unawareness</strong> - don’t show sensitive attributes</p>
+<ul>
+<li><p>flaw: other attributes can still signal for it</p></li>
+</ul>
+</li>
+<li><p>group fairness</p>
+<ul>
+<li><p><strong>demographic parity</strong> - mean predictions for each group should be approximately equal</p>
+<ul>
+<li><p>flaw: means might not be equal</p></li>
+</ul>
+</li>
+<li><p><strong>equalized odds</strong> - predictions are independent of group given label</p>
+<ul>
+<li><p>equality of opportunity: <span class="math notranslate nohighlight">\(p(\hat y=1|y=1)\)</span> is same for both groups</p></li>
+</ul>
+</li>
+<li><p><strong>predictive rate parity</strong> - Y is independent of group given prediction</p></li>
+</ul>
+</li>
+<li><p><strong>individual fairness</strong> - similar individuals should be treated similarly</p></li>
+<li><p><strong>counterfactual fairness</strong> - replace attributes w/ flipped values</p></li>
+</ul>
+</li>
+<li><p>fair algorithms</p>
+<ul>
+<li><p>preprocessing - remove sensitive information</p></li>
+<li><p>optimization at training time - add regularization</p></li>
+<li><p>postprocessing - change thresholds to impose fairness</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="fairness-in-cv-tutorial">
+<h2>6.3.2. <a class="reference external" href="https://sites.google.com/view/fatecv-tutorial/schedule">fairness in cv (tutorial)</a><a class="headerlink" href="#fairness-in-cv-tutorial" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="computer-vision-in-practice-who-is-benefiting-and-who-is-being-harmed">
+<h3>6.3.2.1. <a class="reference external" href="https://www.youtube.com/watch?time_continue=546&amp;v=0sBE5OyD7fk&amp;feature=emb_logo">Computer vision in practice: who is benefiting and who is being harmed?</a><a class="headerlink" href="#computer-vision-in-practice-who-is-benefiting-and-who-is-being-harmed" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>timnit gebru</strong> - fairness team at google</p>
+<ul>
+<li><p>also emily denton</p></li>
+</ul>
+</li>
+<li><p>startups</p>
+<ul>
+<li><p>faceception startup - profile people based on their image</p></li>
+<li><p>hirevue startup videos - facial recognition for judging interviews</p></li>
+<li><p>clearview ai - search all faces</p></li>
+<li><p>police using facial recognition - harms protestors</p></li>
+<li><p>facial recognition rarely has good uses</p></li>
+<li><p>contributes to mass surveillance</p></li>
+<li><p>can be used to discriminate different ethnicities (e.g. Uighurs in china)</p></li>
+</ul>
+</li>
+<li><p>gender shades work - models for gender classification were worse for black women</p>
+<ul>
+<li><p>datasets were biased - PPB introduced to balance things somewhat</p></li>
+</ul>
+</li>
+<li><p>gender recognition is harmful in the first place</p>
+<ul>
+<li><p>collecting data without consent is also harmful</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://www.theverge.com/2019/4/3/18291995/amazon-facial-recognition-technology-rekognition-police-ai-researchers-ban-flawed">letter to amazon</a>: stop selling facial analysis technology</p></li>
+<li><p>combating this technology</p>
+<ul>
+<li><p>fashion for fooling facial recognition</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="data-ethics">
+<h3>6.3.2.2. <a class="reference external" href="https://www.youtube.com/watch?v=v_XBJd1Fxqc&amp;feature=emb_logo">data ethics</a><a class="headerlink" href="#data-ethics" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>different types of harms</p>
+<ul>
+<li><p>sometimes you need to make sure there aren’t disparate error rates across subgroups</p></li>
+<li><p>sometimes the task just should not exist</p></li>
+<li><p>sometimes the manner in which the tool is used is problematic because of who has the power</p></li>
+</ul>
+</li>
+<li><p>technology amplifies our intent</p></li>
+<li><p>most people feel that data collection is the most important place to intervene</p></li>
+<li><p>people are denied housing based on data-driven discrimination</p></li>
+<li><p>collecting data</p>
+<ul>
+<li><p>wild west - just collect everything</p></li>
+<li><p>curatorial data - collect very specific data (this can help mitigate bias)</p></li>
+</ul>
+</li>
+<li><p>datasets are value-laden, drive research agendas</p></li>
+<li><p>ex. celeba labels gender, attractiveness</p></li>
+<li><p>ex. captions use gendered language (e.g. beautiful)</p></li>
+</ul>
+</div>
+<div class="section" id="where-do-we-go">
+<h3>6.3.2.3. <a class="reference external" href="https://www.youtube.com/watch?v=vpPpwa7W93I&amp;feature=emb_logo">where do we go?</a><a class="headerlink" href="#where-do-we-go" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>technology is not value-neutral – it’s political</p></li>
+<li><p>model types and metrics embed values</p></li>
+<li><p>science is not <em>neutral, objecive, perspectiveless</em></p></li>
+<li><p>be aware of your own <strong>positionality</strong></p></li>
+<li><p>concrete steps</p>
+<ul>
+<li><p>ethics-informed model evaluations (e.g. disaggregegated evaluations, counterfactual testing)</p></li>
+<li><p>recognize limitations of technical approaches</p></li>
+<li><p>transparent dataset documentation</p></li>
+<li><p>think about perspectives of marginalized groups</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="misc-papers">
+<h3>6.3.2.4. misc papers<a class="headerlink" href="#misc-papers" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://openreview.net/pdf?id=s-e2zaAlG3I">Large image datasets: A pyrrhic win for computer vision?</a> - bias in imagenet / tiny images</p></li>
+<li><p>http://positivelysemidefinite.com/2020/06/160k-students.html</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="concrete-harms">
+<h2>6.3.3. concrete harms<a class="headerlink" href="#concrete-harms" title="Permalink to this headline">¶</a></h2>
+<p>Technologies, especially world-shaping technologies like CNNs, are never objective. Their existence and adoption change the world in terms of</p>
+<ul class="simple">
+<li><p>consolidation of power (e.g. facial-rec used to target Uighurs, increased rationale for amassing user data)</p></li>
+<li><p>a shift toward the quantitative (which can lead to the the type of click-bait extremization we see online)</p></li>
+<li><p>automation (low-level layoffs, which also help consolidate power to tech giants)</p></li>
+<li><p>energy usage (the exorbitant footprint of models like GPT-3)</p></li>
+<li><p>access to media (deepfakes, etc.)</p></li>
+<li><p>a lot more</p></li>
+</ul>
+<div class="section" id="pandemic">
+<h3>6.3.3.1. pandemic<a class="headerlink" href="#pandemic" title="Permalink to this headline">¶</a></h3>
+<p>I hope the pandemic, which has boosted the desire for tracking, does not result in a long-term arc towards more serveillance</p>
+<ul class="simple">
+<li><p>from <a class="reference external" href="https://www.theatlantic.com/magazine/archive/2020/09/china-ai-surveillance/614197/">here</a>: City Brain would be especially useful in a pandemic. (One of Alibaba’s sister companies created the app that color-coded citizens’ disease risk, while silently sending their health and travel data to police.) As Beijing’s outbreak spread, some malls and restaurants in the city began scanning potential customers’ phones, pulling data from mobile carriers to see whether they’d recently traveled. Mobile carriers also sent municipal governments lists of people who had come to their city from Wuhan, where the coronavirus was first detected. And Chinese AI companies began making networked facial-recognition helmets for police, with built-in infrared fever detectors, capable of sending data to the government. City Brain could automate these processes, or integrate its data streams.</p></li>
+<li><p>“The pandemic may even make people value privacy less, as one early poll in the U.S. suggests”</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="ethics">
+<h2>6.3.4. ethics<a class="headerlink" href="#ethics" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.fhi.ox.ac.uk/wp-content/uploads/moral-trade-1.pdf">Moral Trade</a> (ord 2015) - <strong>moral trade</strong> = trade that is made possible by differences in the parties’ moral views</p></li>
+<li><p>examples</p>
+<ul>
+<li><p>one trading their eating meat for another donating more to a certain charity they both believe in</p></li>
+<li><p>donating to/against political parties</p></li>
+<li><p>donating to/against gun lobby</p></li>
+<li><p>donating to/for pro-life lobby</p></li>
+<li><p>paying non-profit employees</p></li>
+</ul>
+</li>
+<li><p>benefits</p>
+<ul>
+<li><p>can yield Pareto improvements = strict improvements where something gets better while other things remain atleast constant</p></li>
+</ul>
+</li>
+<li><p>real-world examples</p>
+<ul>
+<li><p>vote swapping (i.e. in congress)</p></li>
+<li><p>vote swapping across states/regions (e.g. Nader Trader, VotePair) - ruled legal when money not involved</p></li>
+<li><p>election campaign donation swapping - repledge.com (led by eric zolt) - was taken down due to issues w/ election financing</p></li>
+</ul>
+</li>
+<li><p>issues</p>
+<ul>
+<li><p>factual trust - how to ensure both sides carry through? (maybe financial penalties or audits could solve this)</p></li>
+<li><p>counterfactual trust - would one party have given this up even if the other party hadn’t?</p></li>
+</ul>
+</li>
+<li><p>minor things</p>
+<ul>
+<li><p>fits most naturally with moral framework of consequentalism</p></li>
+<li><p>includes indexicals (e.g. prioritizing one’s own family)</p></li>
+<li><p>could have uneven pledges</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="sts">
+<h2>6.3.5. sts<a class="headerlink" href="#sts" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>social determinism</strong> - theory that social interactions and constructs alone determine individual behavior</p></li>
+<li><p><strong>technological determinism</strong> - theory that assumes that a society’s technology determines the development of its social structure and cultural values</p></li>
+<li><p><a class="reference external" href="https://www.cc.gatech.edu/~beki/cs4001/Winner.pdf">do artifacts have politics?</a> (winner 2009)</p>
+<ul>
+<li><p><strong>politics</strong> - arrangements of power and authority in human associations as well as the activitites that take place within those arrangements</p></li>
+<li><p><strong>technology</strong> -  smaller or larger pieces or systems of hardware of a specific kind.</p></li>
+<li><p>examples</p>
+<ul>
+<li><p>pushes back against social determinism - technologies have the ability to shift power</p></li>
+<li><p>ex: nuclear power (consolidates power) vs solar power (democratizes power)</p></li>
+<li><p>ex. tv enables mass advertising</p></li>
+<li><p>ex. low bridges prevent buses</p></li>
+<li><p>ex. automation removes the need for skilled labor</p>
+<ul>
+<li><p>ex. tractors in grapes of wrath / tomato harvesters</p></li>
+</ul>
+</li>
+<li><p>ex. not making things handicap accessible</p></li>
+</ul>
+</li>
+<li><p>“scientific knowledge, technological invention, and corporate profit reinforce each other in deeply entrenched patterns that bear the unmistakable stamp of political and economic power”</p>
+<ul>
+<li><p>pushback on use of things like pesticides, highways, nuclear reactors</p></li>
+</ul>
+</li>
+<li><p>technologies which are inherently political, regardless of use</p>
+<ul>
+<li><p>ex. “If man, by dint of his knowledge and inventive genius has subdued the forces of nature, the latter avenge themselves upon him by subjecting him, insofar as he employs them, to a veritable despotism independent of all social organization.”</p></li>
+<li><p>attempts to justify strong authority on the basis of supposedly necessary conditions of technical practice have an ancient history.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://openreview.net/pdf?id=fkAxTMzy3fs">Disembodied Machine Learning: On the Illusion of Objectivity in NLP</a></p></li>
+<li><p><a class="reference external" href="https://www.americanheritage.com/less-work-mother">less work for mother</a> (cowan 1987) - technologies that seem like they save time rarely do (although they increase “productivity”)</p></li>
+<li><p><a class="reference external" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3547903">The Concept of Function Creep</a> - “Function creep denotes an imperceptibly transformative and therewith contestable change in a data-processing system’s proper activity.”</p></li>
+</ul>
+</div>
+<div class="section" id="facial-rec-demographic-benchmarking">
+<h2>6.3.6. facial rec. demographic benchmarking<a class="headerlink" href="#facial-rec-demographic-benchmarking" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://nvlpubs.nist.gov/nistpubs/ir/2019/NIST.IR.8280.pdf">Face Recognition Vendor Test (FRVT) Part 3: Demographic Effects</a> (grother et al. 2019), NIST</p>
+<ul>
+<li><p>facial rec types</p>
+<ul>
+<li><p>1: 1 == <strong>verification</strong></p></li>
+<li><p>1: N == <strong>identification</strong></p></li>
+</ul>
+</li>
+<li><p>data</p>
+<ul>
+<li><p><strong>domestic mugshots</strong> collected in the United States</p></li>
+<li><p><strong>application photographs</strong> from a global population of applicants for immigration benefits</p></li>
+<li><p><strong>visa photographs</strong> submitted in support of visa applicants</p></li>
+<li><p><strong>border crossing photographs</strong> of travelers entering the United States</p></li>
+</ul>
+</li>
+<li><p>a common practice is to use random pairs, but as the pairs are stratified to become more similar, the false match rate increases (Fig 3)</p></li>
+<li><p>results</p>
+<ul>
+<li><p>biggest errors seem to be in African Americans + East Asians</p>
+<ul>
+<li><p>impact of errors - in verification, false positives can be security threat (while false negative is mostly just a nuisance)</p></li>
+</ul>
+</li>
+<li><p>In domestic mugshots, false negatives are higher in Asian and American Indian individuals, with error rates above those in white and black face</p></li>
+<li><p>possible confounder - aging between subsequent photos</p></li>
+<li><p>better image quality reduces false negative rates and differentials</p></li>
+<li><p>false positives to be between 2 and 5 times higher in women than men</p></li>
+<li><p>one to many matching usually has same biases</p>
+<ul>
+<li><p>a few systems have been able to remove bias in these false positives</p></li>
+</ul>
+</li>
+<li><p>did not analyze cause and effect</p>
+<ul>
+<li><p>don’t consider skin tone</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://dl.acm.org/doi/pdf/10.1145/3375627.3375820">Saving Face: Investigating the Ethical Concerns of Facial Recognition Auditing</a> (2020)</p></li>
+</ul>
+</div>
+<div class="section" id="legal-perspectives">
+<h2>6.3.7. legal perspectives<a class="headerlink" href="#legal-perspectives" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>“the master’s tools will never dismantle the master’s house.”</strong></p></li>
+</ul>
+<div class="section" id="algorithmic-accountability-a-legal-and-economic-framework-2020">
+<h3>6.3.7.1. <a class="reference external" href="http://faculty.haas.berkeley.edu/morse/research/papers/AlgorithmicAccountability_BartlettMorseStantonWallace.pdf">ALGORITHMIC ACCOUNTABILITY: A LEGAL AND ECONOMIC FRAMEWORK</a> (2020)<a class="headerlink" href="#algorithmic-accountability-a-legal-and-economic-framework-2020" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Title VII defines accountability under under U.S. antidiscrimination law</p>
+<ul>
+<li><p>protected attributes: sex, religion, national origin, color</p></li>
+<li><p>law is all about who has the burden of proof - 3 steps</p>
+<ul>
+<li><p><strong>plaintiff</strong> identifies practice that has observed statistical disparities on protected group</p></li>
+<li><p><strong>defendant</strong> demonstrates practice is (a) job-related (b) consistent with business necessity</p></li>
+<li><p><strong>plaintiff</strong> proposes alternative</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ex. dothard vs rawlingson: prison guards were selected based on weight/height rather than strength, so female applicants sued</p>
+<ul>
+<li><p>legitimate target variable: strength</p></li>
+<li><p>proxy variable: weight/height</p></li>
+<li><p>supreme court ruled that best criterion is to assess strength, not use weight/height proxies</p></li>
+</ul>
+</li>
+<li><p>ex. redlining - people in certain neighborhoods do not get access to credit</p>
+<ul>
+<li><p>legitimate target: ability to pay back a loan</p></li>
+<li><p>proxy variable: zip code (disproportionately affected minorities)</p></li>
+</ul>
+</li>
+<li><p>2 key questions</p>
+<ul>
+<li><p><strong>legitimate target variable</strong> - is unobservable target characteristic (e.g. strength) one that can justify hiring disparities?</p>
+<ul>
+<li><p>disparate outcomes mus be justified by reference to a legitimate “business necessity” (e.g. for hiring, this would be a required job-related skill)</p></li>
+</ul>
+</li>
+<li><p><strong>biased proxy</strong> - do proxy variables (e.g. weight/height) properly capture the legitimate target variable?</p>
+<ul>
+<li><p>problematic “redundant encodings” - a proxy variable can be predictive of a legitimate target variable and membership in a protected group</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="section" id="input-accountability-test-captures-these-questions-w-basic-statistics">
+<h4>6.3.7.1.1. <strong>input accountability test - captures these questions w/ basic statistics</strong><a class="headerlink" href="#input-accountability-test-captures-these-questions-w-basic-statistics" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>intuition: exclude input variables which are potentially problematic</p>
+<ul>
+<li><p>in this context, easier to define fairness without tradeoffs</p></li>
+<li><p>even in unbiased approach, still need things like subsidies to address systemic issues</p></li>
+</ul>
+</li>
+<li><p>the test</p>
+<ul>
+<li><p>look at correlations between proxy and legitimate target, proxy and different groups - proxy should not systematically penalize members of a protected group</p></li>
+<li><p><strong>regression form</strong></p>
+<ul>
+<li><p>predict legitimate target from proxy: <span class="math notranslate nohighlight">\(Height_i = \alpha \cdot Strength_i + \epsilon_i\)</span></p></li>
+<li><p>measure if residuals are correlated with protected groups: <span class="math notranslate nohighlight">\(\epsilon_i \perp gender\)</span></p></li>
+<li><p>if they are correlated, exclude the feature</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>difficulties</p>
+<ul>
+<li><p>target is often unobservable / has measurement err</p></li>
+<li><p>have to define a threshold for testing residual correaltions (maybe 0.05 p-vaues)</p></li>
+<li><p>there might exist nonlinear interactions</p></li>
+</ul>
+</li>
+<li><p>major issues</p>
+<ul>
+<li><p>even if features are independently okay, when you combine them in a model the outputs can be problematic</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="related-approaches">
+<h4>6.3.7.1.2. <strong>related approaches</strong><a class="headerlink" href="#related-approaches" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>some propose balancing the outcomes</p>
+<ul>
+<li><p>one common problem here is that balancing err rates can force different groups to be different</p></li>
+</ul>
+</li>
+<li><p>some propose using bst predictive model alone</p>
+<ul>
+<li><p>some have argued that a test for fairness is that there is no other algorithm that is as accurate and have less of an adverse impact (skanderson and ritter)</p></li>
+</ul>
+</li>
+<li><p>HUD’s mere predictive test - only requires that prediction is good and that inputs are not subsitutes for a protected characteristic</p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes/ai"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="nlp.html" title="previous page">6.2. nlp</a>
+    <a class='right-next' id="next-link" href="cogsci.html" title="next page">6.4. cogsci</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Chandan Singh<br/>
+        
+            &copy; Copyright None.<br/>
+          <div class="extra_footer">
+            <p>
+Many of these images are taken from resources on the web.
+</p>
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

@@ -1,0 +1,2545 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>7.3. comp neuro &#8212; learning to learn</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../_static/togglebutton.js"></script>
+    <script type="text/javascript" src="../../_static/clipboard.min.js"></script>
+    <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    <script type="text/javascript">var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script type="text/javascript" src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" type="text/javascript" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script type="text/javascript">
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="7.4. sensory input" href="sensory_input.html" />
+    <link rel="prev" title="7.2. vision" href="vissci.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">learning to learn</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   welcome 👋
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../research_ovws/research_ovws.html">
+   1. research_ovws
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_comp_neuro.html">
+     1.1. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_disentanglement.html">
+     1.2. disentanglement
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_complexity.html">
+     1.3. complexity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_interesting_science.html">
+     1.4. interesting science
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_dl_theory.html">
+     1.5. dl theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_scat.html">
+     1.6. scattering transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">
+     1.7. ml in medicine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_dl_for_neuro.html">
+     1.8. dl for neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_uncertainty.html">
+     1.9. uncertainty
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_interp.html">
+     1.10. interpretability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_kernels.html">
+     1.11. kernels
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../cs/cs.html">
+   2. cs
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/retrieval.html">
+     2.1. info retrieval
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/python_ref.html">
+     2.2. python ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/data_structures.html">
+     2.3. data structures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/software.html">
+     2.4. software engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/quantum.html">
+     2.5. quantum
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/algo.html">
+     2.6. algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/graphs.html">
+     2.7. graphs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/os.html">
+     2.8. os
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/arch.html">
+     2.9. architecture
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/java_ref.html">
+     2.10. java ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/comp_theory.html">
+     2.11. cs theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/cpp_ref.html">
+     2.12. c/c++ ref
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../math/math.html">
+   3. math
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/differential_equations.html">
+     3.1. differential equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/proofs.html">
+     3.2. proofs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/analysis.html">
+     3.3. real analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/linear_algebra.html">
+     3.4. linear algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/signals.html">
+     3.5. signals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/optimization.html">
+     3.6. optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/calculus.html">
+     3.7. calculus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/chaos.html">
+     3.8. chaos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/math_basics.html">
+     3.9. math basics
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../stat/stat.html">
+   4. stat
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/graphical_models.html">
+     4.1. graphical models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/data_analysis.html">
+     4.2. data analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/testing.html">
+     4.3. testing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/causal_inference.html">
+     4.4. causal inference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/info_theory.html">
+     4.5. info theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/linear_models.html">
+     4.6. linear models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/time_series.html">
+     4.7. time series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/game_theory.html">
+     4.8. game theory
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ml/ml.html">
+   5. ml
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/comp_vision.html">
+     5.1. computer vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/structure_ml.html">
+     5.2. structure learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/classification.html">
+     5.3. classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/unsupervised.html">
+     5.4. unsupervised
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/deep_learning.html">
+     5.5. deep learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/feature_selection.html">
+     5.6. feature selection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/learning_theory.html">
+     5.7. learning theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/evaluation.html">
+     5.8. evaluation
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ai/ai.html">
+   6. ai
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/search.html">
+     6.1. search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/nlp.html">
+     6.2. nlp
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/fairness_sts.html">
+     6.3. fairness
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/cogsci.html">
+     6.4. cogsci
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/ai_futures.html">
+     6.5. ai futures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/logic.html">
+     6.6. logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/philosophy.html">
+     6.7. philosophy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/psychology.html">
+     6.8. psychology
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/knowledge_rep.html">
+     6.9. representations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/decisions.html">
+     6.10. decisions
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="neuro.html">
+   7. neuro
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="brain_basics.html">
+     7.1. brain basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="vissci.html">
+     7.2. vision
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     7.3. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sensory_input.html">
+     7.4. sensory input
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="memory.html">
+     7.5. memory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="motor.html">
+     7.6. motor system
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="development.html">
+     7.7. development
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/notes/neuro/comp_neuro.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/csinva/csinva.github.io"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   7.3.1. introduction
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#overview">
+     7.3.1.1. overview
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#historical-ai">
+     7.3.1.2. historical ai
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#historical-cybernetics-nns">
+     7.3.1.3. historical cybernetics/nns
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#types-of-models">
+     7.3.1.4. types of models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#biophysical-models">
+   7.3.2. biophysical models
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#modeling-neurons">
+     7.3.2.1. modeling neurons
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#simplified-model-neurons">
+     7.3.2.2. simplified model neurons
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-forest-of-dendrites">
+     7.3.2.3. a forest of dendrites
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#circuit-modeling-basics">
+     7.3.2.4. circuit-modeling basics
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#action-potentials">
+     7.3.2.5. action potentials
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#physics-of-computation">
+     7.3.2.6. physics of computation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#spiking-neurons">
+     7.3.2.7. spiking neurons
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#neural-coding">
+   7.3.3. neural coding
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#neural-encoding">
+     7.3.3.1. neural encoding
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#defining-neural-code">
+       7.3.3.1.1. defining neural code
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#simple-encoding">
+       7.3.3.1.2. simple encoding
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#feature-selection">
+       7.3.3.1.3. feature selection
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#variability">
+       7.3.3.1.4. variability
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#neural-decoding">
+     7.3.3.2. neural decoding
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#neural-decoding-and-signal-detection">
+       7.3.3.2.1. neural decoding and signal detection
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#population-coding-and-bayesian-estimation">
+       7.3.3.2.2. population coding and bayesian estimation
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#stimulus-reconstruction">
+       7.3.3.2.3. stimulus reconstruction
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#information-theory">
+     7.3.3.3. information theory
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#information-and-entropy">
+       7.3.3.3.1. information and entropy
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#information-in-spike-trains">
+       7.3.3.3.2. information in spike trains
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#coding-principles">
+       7.3.3.3.3. coding principles
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computing-with-networks">
+   7.3.4. computing with networks
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#modeling-connections-between-neurons">
+     7.3.4.1. modeling connections between neurons
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#intro-to-network-models">
+     7.3.4.2. intro to network models
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#recurrent-networks">
+     7.3.4.3. recurrent networks
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#hopfield-nets">
+       7.3.4.3.1. hopfield nets
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning">
+   7.3.5. learning
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#supervised-learning">
+     7.3.5.1. supervised learning
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#unsupervised-learning">
+     7.3.5.2. unsupervised learning
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#hebbian-learning-and-pca">
+       7.3.5.2.1. hebbian learning and pca
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#synaptic-plasticity-hebb-s-rule-and-statistical-learning">
+     7.3.5.3. synaptic plasticity, hebb’s rule, and statistical learning
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#intro-to-unsupervised-learning">
+     7.3.5.4. intro to unsupervised learning
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sparse-coding-and-predictive-coding">
+     7.3.5.5. sparse coding and predictive coding
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sparse-distributed-coding">
+     7.3.5.6. sparse, distributed coding
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#self-organizing-maps">
+     7.3.5.7. self-organizing maps
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ml-analogies">
+   7.3.6. ml analogies
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#brain-theories">
+     7.3.6.1. Brain theories
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#brain-as-a-computer">
+     7.3.6.2. brain as a computer
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#brain-v-deep-learning">
+     7.3.6.3. Brain v. Deep Learning
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#probabilistic-models-inference">
+   7.3.7. probabilistic models + inference
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#boltzmann-machines">
+     7.3.7.1. boltzmann machines
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="comp-neuro">
+<h1>7.3. comp neuro<a class="headerlink" href="#comp-neuro" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>7.3.1. introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="overview">
+<h3>7.3.1.1. overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>does biology have a cutoff level (likecutoffs in computers below which fluctuations don’t matter)</p></li>
+<li><p>core principles underlying these two questions</p>
+<ul>
+<li><p>how do brains work?</p></li>
+<li><p>how do you build an intelligent machine?</p></li>
+</ul>
+</li>
+<li><p>lacking: insight from neuro that can help build machine</p></li>
+<li><p>scales: cortex, column, neuron, synapses</p></li>
+<li><p>physics: theory and practice are much closer</p></li>
+<li><p>are there principles?</p>
+<ul>
+<li><p>“god is a hacker” - francis crick</p></li>
+<li><p>theorists are lazy - ramon y cajal</p></li>
+<li><p>things seemed like mush but became more clear - horace barlow</p></li>
+<li><p>principles of neural design book</p></li>
+</ul>
+</li>
+<li><p>felleman &amp; van essen 1991</p>
+<ul>
+<li><p>ascending layers (e.g. v1-&gt; v2): goes from superficial to deep layers</p></li>
+<li><p>descending layers (e.g. v2 -&gt; v1): deep layers to superficial</p></li>
+</ul>
+</li>
+<li><p><strong>solari &amp; stoner 2011 “cognitive consilience”</strong> - layers thicknesses change in different parts of the brain</p>
+<ul>
+<li><p>motor cortex has much smaller input (layer 4), since it is mostly output</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="historical-ai">
+<h3>7.3.1.2. historical ai<a class="headerlink" href="#historical-ai" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>people: turing, von neumman, marvin minsky, mccarthy…</p></li>
+<li><p>ai: birth at 1956 conference</p>
+<ul>
+<li><p>vision: marvin minsky thought it would be a summer project</p></li>
+</ul>
+</li>
+<li><p>lighthill debate 1973 - was ai worth funding?</p></li>
+<li><p>intelligence tends to be developed by young children…</p></li>
+<li><p>cortex grew very rapidly</p></li>
+</ul>
+</div>
+<div class="section" id="historical-cybernetics-nns">
+<h3>7.3.1.3. historical cybernetics/nns<a class="headerlink" href="#historical-cybernetics-nns" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>people: norbert weiner, mcculloch &amp; pitts, rosenblatt</p></li>
+<li><p>neuro</p>
+<ul>
+<li><p>hubel &amp; weisel (1962, 1965) simple, complex, hypercomplex cells</p></li>
+<li><p>neocognitron fukushima 1980</p></li>
+<li><p>david marr: theory, representation, implementation</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="types-of-models">
+<h3>7.3.1.4. types of models<a class="headerlink" href="#types-of-models" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>three types</p>
+<ol class="simple">
+<li><p><em>descriptive</em> brain model - encode / decode external stimuli</p></li>
+<li><p><em>mechanistic</em> brian cell / network model - simulate the behavior of a single neuron / network</p></li>
+<li><p><em>interpretive</em> (or normative) brain model - why do brain circuits operate how they do</p></li>
+</ol>
+</li>
+<li><p><em>receptive field</em> - the things that make a neuron fire</p></li>
+<li><p>retina has on-center / off-surround cells - stimulated by points</p></li>
+<li><p>then, V1 has differently shaped receptive fields</p></li>
+<li><p><em>efficient coding hypothesis</em> - learns different combinations (e.g. lines) that can efficiently represent images</p>
+<ol class="simple">
+<li><p>sparse coding (Olshausen and Field 1996)</p></li>
+<li><p>ICA (Bell and Sejnowski 1997)</p></li>
+<li><p>Predictive Coding (Rao and Ballard 1999)</p></li>
+</ol>
+<ul class="simple">
+<li><p>brain is trying to learn faithful and efficient representations of an animal’s natural environment</p>
+<ul>
+<li><p>same goes for auditory cortex</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="biophysical-models">
+<h2>7.3.2. biophysical models<a class="headerlink" href="#biophysical-models" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="modeling-neurons">
+<h3>7.3.2.1. modeling neurons<a class="headerlink" href="#modeling-neurons" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p><img alt="" src="../../_images/5_1_1.png" /></p></li>
+<li><p>nernst battery</p>
+<ol class="simple">
+<li><p>osmosis (for each ion)</p></li>
+<li><p>electrostatic forces (for each ion)</p></li>
+</ol>
+<ul class="simple">
+<li><p>together these yield Nernst potential <span class="math notranslate nohighlight">\(E = \frac{k_B T}{zq} ln \frac{[in]}{[out]}\)</span></p>
+<ul>
+<li><p>T is temp</p></li>
+<li><p>q is ionic charge</p></li>
+<li><p>z is num charges</p></li>
+</ul>
+</li>
+<li><p>part of voltage is accounted for by nernst battery <span class="math notranslate nohighlight">\(V_{rest}\)</span></p></li>
+<li><p>yields <span class="math notranslate nohighlight">\(\tau \frac{dV}{dt} = -V + V_\infty\)</span> where <span class="math notranslate nohighlight">\(\tau=R_mC_m=r_mc_m\)</span></p></li>
+<li><p>equivalently, <span class="math notranslate nohighlight">\(\tau_m \frac{dV}{dt} = -((V-E_L) - g_s(t)(V-E_s) r_m) + I_e R_m \)</span></p></li>
+</ul>
+</li>
+<li><p><img alt="" src="../../_images/5_1_2.png" /></p></li>
+</ul>
+</div>
+<div class="section" id="simplified-model-neurons">
+<h3>7.3.2.2. simplified model neurons<a class="headerlink" href="#simplified-model-neurons" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>integrate-and-fire</em> neuron</p>
+<ul>
+<li><p>passive membrane (neuron charges)</p></li>
+<li><p>when V = V<span class="math notranslate nohighlight">\(_{thresh}\)</span>, a spike is fired</p></li>
+<li><p>then V = V<span class="math notranslate nohighlight">\(_{reset}\)</span></p></li>
+<li><p>doesn’t have good modeling near threshold</p></li>
+<li><p>can include threshold by saying</p>
+<ul>
+<li><p>when V = V<span class="math notranslate nohighlight">\(_{max}\)</span>, a spike is fired</p></li>
+<li><p>then V = V<span class="math notranslate nohighlight">\(_{reset}\)</span></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>modeling multiple variables</p>
+<ul>
+<li><p>also model a K current</p></li>
+<li><p>can capture things like resonance</p></li>
+</ul>
+</li>
+<li><p><em>theta neuron</em> (Ermentrout and Kopell)</p>
+<ul>
+<li><p><img alt="" src="../../_images/5_3_1.png" /></p></li>
+<li><p>often used for periodically firing neurons (it fires spontaneously)</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="a-forest-of-dendrites">
+<h3>7.3.2.3. a forest of dendrites<a class="headerlink" href="#a-forest-of-dendrites" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>cable theory - Kelvin</p></li>
+<li><p>voltage V is a function of both x and t</p></li>
+<li><p><img alt="" src="../../_images/5_4_1.png" /></p></li>
+<li><p>separate into sections that don’t depend on x</p>
+<ul>
+<li><p>coupling conductances link the sections (based on area of compartments / branching)</p></li>
+</ul>
+</li>
+<li><p>Rall model for dendrites</p>
+<ul>
+<li><p>if branches obey a certain branching ratio, can replace each pair of branches with a single cable segment with equivalent surface area and electrotonic length</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(d_1^{3/2} = d_{11}^{3/2} + d_{12}^{3/2}\)</span></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>dendritic computation (London and Hausser 2005)</p>
+<ul>
+<li><p>hippocampus - when inputs arrive at soma, similiar shape no matter where they come in = <em>synaptic scaling</em></p></li>
+<li><p>where inputs enter influences how they sum</p></li>
+<li><p>dendrites can generate spikes (usually calcium) / backpropagating spikes</p></li>
+</ul>
+</li>
+<li><p>ex. <em>Jeffress model</em>  - sound localized based on timing difference between ears</p></li>
+<li><p>ex. direction selectivity in retinal ganglion cells - if events arive at dendrite far -&gt; close, all get to soma at same time and add</p></li>
+</ul>
+</div>
+<div class="section" id="circuit-modeling-basics">
+<h3>7.3.2.4. circuit-modeling basics<a class="headerlink" href="#circuit-modeling-basics" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>membrane has capacitance <span class="math notranslate nohighlight">\(C_m\)</span></p></li>
+<li><p>force for diffusion, force for drift</p></li>
+<li><p>can write down diffeq for this, which yields an equilibrium</p></li>
+<li><p><span class="math notranslate nohighlight">\(\tau = RC\)</span></p>
+<ul>
+<li><p>bigger <span class="math notranslate nohighlight">\(\tau\)</span> is slower</p></li>
+<li><p>to increase capacitance</p>
+<ul>
+<li><p>could have larger diameter</p></li>
+<li><p><span class="math notranslate nohighlight">\(C_m \propto D\)</span></p></li>
+</ul>
+</li>
+<li><p>axial resistance <span class="math notranslate nohighlight">\(R_A \propto 1/D^2\)</span> (not same as membrane lerk), thus bigger axons actually charge faster</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="action-potentials">
+<h3>7.3.2.5. action potentials<a class="headerlink" href="#action-potentials" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>channel/receptor types</p>
+<ul>
+<li><p>ionotropic: <span class="math notranslate nohighlight">\(G_{ion}\)</span> = f(molecules outside)</p>
+<ul>
+<li><p>something binds and opens channel</p></li>
+</ul>
+</li>
+<li><p>metabotropic: <span class="math notranslate nohighlight">\(G_{ion}\)</span> = f(molecules inside)</p>
+<ul>
+<li><p>doesn’t directly open a channel: indirect</p></li>
+</ul>
+</li>
+<li><p>others</p>
+<ul>
+<li><p>photoreceptor</p></li>
+<li><p>hair cell</p></li>
+</ul>
+</li>
+<li><p>voltage-gated (active - provide gain; might not require active ATP, other channels are all passive)</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="physics-of-computation">
+<h3>7.3.2.6. physics of computation<a class="headerlink" href="#physics-of-computation" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>based on carver mead: drift and diffusion are at the heart of everything</p></li>
+<li><p>different things realted by the <strong>Boltzmann distr.</strong> (ex. distr of air molecules vs elevation. Subject to gravity and diffusion upwards since they’re colliding)</p>
+<ul>
+<li><p>nernst potential</p></li>
+<li><p>current-voltage relation of voltage-gated channels</p></li>
+<li><p>current-voltage relation of MOS transistor</p></li>
+</ul>
+</li>
+<li><p>these things are all like transistor: energy barrier that must be overcome</p></li>
+<li><p>neuromorphic examples</p>
+<ul>
+<li><p>differential pair sigmoid yields sigmoid-like function</p>
+<ul>
+<li><p>can compute tanh function really simply to simulate</p></li>
+</ul>
+</li>
+<li><p>silicon retina</p>
+<ul>
+<li><p>lateral inhibition exists (gap junctions in horizontal cells)</p></li>
+<li><p>mead &amp; mahowald 1989 - analog VLSI retina (center-surround receptive field is very low energy)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>computation requires energy (otherwise signals would dissipate)</p>
+<ul>
+<li><p>von neumann architecture: CPU - bus (data / address) - Memory</p>
+<ul>
+<li><p>moore’s law ending (in terms of cost, clock speed, etc.)</p>
+<ul>
+<li><p>ex. errors increase as device size decreases (and can’t tolerate any errors)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>neuromorphic computing</p>
+<ul>
+<li><p>brain ~ 20 Watts</p></li>
+<li><p>exploit intrinsic transistor physics (need extremely small amounts of current)</p></li>
+<li><p>exploit electronics laws kirchoff’s law, ohm’s law</p></li>
+<li><p>new materials (ex. memristor - 3d crossbar array)</p></li>
+<li><p>can’t just do biological mimicry - need to understand the principles</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="spiking-neurons">
+<h3>7.3.2.7. spiking neurons<a class="headerlink" href="#spiking-neurons" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>passive membrane model was leaky integrator</p></li>
+<li><p>voltage-gaed channels were more complicated</p></li>
+<li><p>can be though of as leaky integrate-and-fire neuron (LIF)</p>
+<ul>
+<li><p>this charges up and then fires a spike, has refractory period, then starts charging up again</p></li>
+</ul>
+</li>
+<li><p>rate coding hypothesis - signal conveyed is the rate of spiking (bruno thinks this is usually too simple)</p>
+<ul>
+<li><p>spiking irregulariy is largely due to noise and doesn’t convey information</p></li>
+<li><p>some neurons (e.g. neurons in LIP) might actually just convey a rate</p></li>
+</ul>
+</li>
+<li><p>linear-nonlinear-poisson model (LNP) - sometimes called GLM (generalized linear model)</p>
+<ul>
+<li><p>based on observation that variance in firing rate <span class="math notranslate nohighlight">\(\propto\)</span> mean firing rate</p>
+<ul>
+<li><p>plotting mean vs variance = 1 <span class="math notranslate nohighlight">\(\implies\)</span> Poisson output</p></li>
+</ul>
+</li>
+<li><p>these led people to model firing rates as Poisson <span class="math notranslate nohighlight">\(\frac {\lambda^n e^{-\lambda}} {n!}\)</span></p></li>
+<li><p>bruno doesn’t really believe the firing is random (just an effect of other things we can’t measure)</p></li>
+<li><p>ex. fly H1 neuron 1997</p>
+<ul>
+<li><p>constant stimulus looks very Poisson</p></li>
+<li><p>moving stimulus looks very Bernoulli</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>spike timing hypothesis</p>
+<ul>
+<li><p>spiece timing can be very precise in response to time-varying signals (mainen &amp; sejnowski 1995; bair &amp; koch 1996)</p></li>
+<li><p>often see precise timing</p></li>
+</ul>
+</li>
+<li><p>encoding: stimulus <span class="math notranslate nohighlight">\(\to\)</span> spikes</p></li>
+<li><p>decoding: spikes <span class="math notranslate nohighlight">\(\to\)</span> representation</p></li>
+<li><p>encoding + decoding are related through the joint distr. over simulus and repsonse (see Bialek spikes book)</p>
+<ul>
+<li><p>nonlinear encoding function can yield linear decoding</p></li>
+<li><p>able to directly decode spikes using a kernel to reproduce signal (seems to say you need spikes - rates would not be good enough)</p>
+<ul>
+<li><p>some reactions happen too fast to average spikes (e.g. 30 ms)</p></li>
+</ul>
+</li>
+<li><p>estimating information rate: bits (usually better than snr - can calculate between them) - usually 2-3 bits/spike</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="neural-coding">
+<h2>7.3.3. neural coding<a class="headerlink" href="#neural-coding" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="neural-encoding">
+<h3>7.3.3.1. neural encoding<a class="headerlink" href="#neural-encoding" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="defining-neural-code">
+<h4>7.3.3.1.1. defining neural code<a class="headerlink" href="#defining-neural-code" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>extracellular</p>
+<ul>
+<li><p>fMRI</p>
+<ul>
+<li><p>averaged over space</p></li>
+<li><p>slow, requires seconds</p></li>
+</ul>
+</li>
+<li><p>EEG</p>
+<ul>
+<li><p>noisy</p></li>
+<li><p>averaged, but faster</p></li>
+</ul>
+</li>
+<li><p>multielectrode array</p>
+<ul>
+<li><p>record from several individual neurons at once</p></li>
+</ul>
+</li>
+<li><p>calcium imaging</p>
+<ul>
+<li><p>cells have calcium indicator that fluoresce when calcium enters a cell</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>intracellular - can use patch electrodes</p></li>
+<li><p>raster plot</p>
+<ul>
+<li><p>replay a movie many times and record from retinal ganglion cells during movie</p></li>
+</ul>
+</li>
+<li><p><em>encoding</em>: P(response | stimulus)</p>
+<ul>
+<li><p><em>tuning curve</em> - neuron’s response (ex. firing rate) as a function of stimulus</p></li>
+<li><p>orientation / color selective cells are distributed in organized fashion</p></li>
+<li><p>some neurons fire to a concept, like “Pamela Anderson”</p></li>
+<li><p>retina (simple) -&gt; V1 (orientations) -&gt; V4 (combinations) -&gt; ?</p></li>
+<li><p>also massive feedback</p></li>
+</ul>
+</li>
+<li><p><em>decoding</em>: P(stimulus | response)</p></li>
+</ul>
+</div>
+<div class="section" id="simple-encoding">
+<h4>7.3.3.1.2. simple encoding<a class="headerlink" href="#simple-encoding" title="Permalink to this headline">¶</a></h4>
+<ul>
+<li><p>want P(response | stimulus)</p>
+<ul class="simple">
+<li><p>response := firing rate r(t)</p></li>
+<li><p>stimulus := s</p></li>
+</ul>
+</li>
+<li><p>simple linear model</p>
+<ul class="simple">
+<li><p>r(t) = c * s(t)</p></li>
+</ul>
+</li>
+<li><p><em>weighted linear model</em> - takes into account previous states weighted by f</p>
+<ol class="simple">
+<li><p><em>temporal filtering</em></p></li>
+</ol>
+<ul class="simple">
+<li><p>r(t) = <span class="math notranslate nohighlight">\(f_0 \cdot s_0 + ... + f_t \cdot s_t =  \sum s_{t-k} f_k\)</span> where f weights stimulus over time</p></li>
+<li><p>could also make this an integral, yielding a convolution:</p></li>
+<li><p>r(t) = <span class="math notranslate nohighlight">\(\int_{-\infty}^t d\tau \: s(t-\tau) f(\tau)\)</span></p></li>
+<li><p>a linear system can be thought of as a system that searches for portions of the signal that resemble its filter f</p></li>
+<li><p>leaky integrator - sums its inputs with f decaying exponentially into the past</p></li>
+<li><p>flaws</p>
+<ul>
+<li><p>no negative firing rates</p></li>
+<li><p>no extremely high firing rates</p></li>
+<li><p>can add a nonlinear function g of the linear sum can fix this</p>
+<ul>
+<li><p>r(t) = <span class="math notranslate nohighlight">\(g(\int_{-\infty}^t d\tau \: s(t-\tau) f(\tau))\)</span></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ol class="simple">
+<li><p><em>spatial filtering</em></p></li>
+</ol>
+<ul class="simple">
+<li><p>r(x,y) = <span class="math notranslate nohighlight">\(\sum_{x',y'} s_{x-x',y-y'} f_{x',y'}\)</span> where f again is spatial weights that represent the spatial field</p></li>
+<li><p>could also write this as a convolution</p></li>
+<li><p>for a retinal center surround cell, f is positive for small <span class="math notranslate nohighlight">\(\Delta x\)</span> and then negative for large <span class="math notranslate nohighlight">\(\Delta x\)</span></p>
+<ul>
+<li><p>can be calculated as a narrow, large positive Gaussian + spread out negative Gaussian</p></li>
+</ul>
+</li>
+<li><p>can combine above to make <em>spatiotemporal filtering</em></p>
+<ul>
+<li><p>filtering = convolution = projection</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="feature-selection">
+<h4>7.3.3.1.3. feature selection<a class="headerlink" href="#feature-selection" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>P(response|stimulus) is very hard to get</p>
+<ul>
+<li><p>stimulus can be high-dimensional (e.g. video)</p></li>
+<li><p>stimulus can take on many values</p></li>
+<li><p>need to keep track of stimulus over time</p></li>
+<li><p>solution: sample P(response|s) to many stimuli to characterize what in input triggers responses</p></li>
+</ul>
+</li>
+<li><p>find vector <em>f</em> that captures features that lead to spike</p>
+<ul>
+<li><p>dimensionality reduction - ex. discretize</p></li>
+<li><p>value at each time <span class="math notranslate nohighlight">\(t_i\)</span> is new dimension</p></li>
+<li><p>commonly use Gaussian white noise</p></li>
+<li><p>time step sets cutoff of highest frequency present</p></li>
+<li><p><em>prior distribution</em> - distribution of stimulus</p>
+<ul>
+<li><p>multivariate Gaussian - Gaussian in any dimension, or any linear combination of dimensions</p></li>
+</ul>
+</li>
+<li><p>look at where spike-triggering points are and calculate <em>spike-triggered average</em> <em>f</em> of features that led to spike</p>
+<ul>
+<li><p>use this f as filter</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>determining the nonlinear input/output function <em>g</em></p>
+<ul>
+<li><p>replace stimulus in P(spike|stimulus) with P(spike|<span class="math notranslate nohighlight">\(s_1\)</span>), where s1 is our filtered stimulus</p>
+<ul>
+<li><p>use bayes rule <span class="math notranslate nohighlight">\(g=P(spike\|s_1)=\frac{P(s_1\|spike)P(spike)}{P(s_1)}\)</span></p></li>
+<li><p>if <span class="math notranslate nohighlight">\(P(s_1\|spike) \approx P(s_1)\)</span> then response doesn’t seem to have to do with stimulus</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>incorporating many features <em><span class="math notranslate nohighlight">\(f_1,...,f_n\)</span></em></p>
+<ul>
+<li><p>here, each <span class="math notranslate nohighlight">\(f_i\)</span> is a vector of weights</p></li>
+<li><p><span class="math notranslate nohighlight">\(r(t) = g(f_1\cdot s,f_2 \cdot s,...,f_n \cdot s)\)</span></p></li>
+<li><p>could use <em>PCA</em> - discovers low-dimensional structure in high-dimensional data</p></li>
+<li><p>each f represents a feature (maybe a curve over time) that fires the neuron</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="variability">
+<h4>7.3.3.1.4. variability<a class="headerlink" href="#variability" title="Permalink to this headline">¶</a></h4>
+<ul>
+<li><p>hidden assumptions about time-varying firing rate and single spikes</p>
+<ul class="simple">
+<li><p>smooth function RFT can miss some stimuli</p></li>
+</ul>
+</li>
+<li><p>statistics of stimulus can effect P(spike|stimulus)</p>
+<ul class="simple">
+<li><p>Gaussian white noise is nice because no way to filter it to get structure</p></li>
+</ul>
+</li>
+<li><p>identifying good filter</p>
+<ul class="simple">
+<li><p>want <span class="math notranslate nohighlight">\(P(s_f\|spike)\)</span> to differ from <span class="math notranslate nohighlight">\(P(s_f)\)</span> where <span class="math notranslate nohighlight">\(s_f\)</span> is calculated via the filter</p></li>
+<li><p>instead of PCA, could look for f that directly maximizes this difference (Sharpee &amp; Bialek, 2004)</p></li>
+<li><p><em>Kullback-Leibler divergence</em> - calculates difference between 2 distributions</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(D_{KL}(P(s),Q(s)) = \int ds P(s) log_2 P(s) / Q(s)\)</span></p></li>
+</ul>
+</li>
+<li><p>maximizing KL divergence is equivalent to maximizing mutual info between spike and stimulus</p>
+<ul>
+<li><p>this is because we are looking for most informative feature</p></li>
+<li><p>this technique doesn’t require that our stimulus is white noise, so can use natural stimuli</p></li>
+<li><p>maximization isn’t guaranteed to uniquely converge</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>modeling the noise</p>
+<ul>
+<li><p>need to go from r(t) -&gt; spike times</p></li>
+<li><p>divide time T into n bins with p = probability of firing per bin</p></li>
+<li><p>over some chunk T, number of spikes follows binomial distribution (n, p)</p>
+<ul class="simple">
+<li><p>mean = np</p></li>
+<li><p>var = np(1-p)</p></li>
+</ul>
+</li>
+<li><p>if n gets very large, binomial approximates Poisson</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\lambda\)</span> = spikes in some set time</p>
+<ul>
+<li><p>mean = <span class="math notranslate nohighlight">\(\lambda\)</span></p></li>
+<li><p>var = <span class="math notranslate nohighlight">\(\lambda\)</span></p></li>
+</ul>
+</li>
+</ul>
+<ol class="simple">
+<li><p>can test if distr is Poisson with <em>Fano factor</em>=mean/var=1</p></li>
+<li><p>interspike intervals have exponential distribution	- if fires a lot, this can be bad assumption (due to refractory period)</p></li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>generalized linear model adds explicit spike-generation / post-spike filter (Pillow et al. 2008)</p>
+<ul class="simple">
+<li><p><img alt="" src="../../_images/2_4_1.png" /></p></li>
+<li><p>post-spike filter models refractory period</p></li>
+<li><p><em>Paninski</em> showed that using exponential nonlinearity allows this to be optimized</p></li>
+<li><p>could add in firing of other neurons</p></li>
+<li><p><em>time-rescaling theorem</em> - tests how well we have captured influences on spiking (Brown et al 2001)</p>
+<ul>
+<li><p>scaled ISIs (<span class="math notranslate nohighlight">\(t_{i-1}-t_i\)</span>) r(t) should be exponential</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="neural-decoding">
+<h3>7.3.3.2. neural decoding<a class="headerlink" href="#neural-decoding" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="neural-decoding-and-signal-detection">
+<h4>7.3.3.2.1. neural decoding and signal detection<a class="headerlink" href="#neural-decoding-and-signal-detection" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>decoding: P(stimulus | response) - ex. you hear noise and want to tell what it is</p>
+<ul>
+<li><p>here r = response = firing rate</p></li>
+</ul>
+</li>
+<li><p>monkey is trained to move eyes in same direction as dot pattern (Britten et al. 92)</p>
+<ul>
+<li><p>when dots all move in same direction (100% coherence), easy</p>
+<ul>
+<li><p>neuron recorded in MT - tracks dots</p></li>
+<li><p>count firing rate when monkey tracks in right direction</p></li>
+<li><p>count firing rate when  monkey tracks in wrong direction</p></li>
+<li><p>as coherence decreases, these firing rates blur</p></li>
+</ul>
+</li>
+<li><p>need to get P(+ or - | r)</p>
+<ul>
+<li><p>can set a threshold on r by maximizing likelihood</p>
+<ul>
+<li><p>P(r|+) and P(r|-) are likelihoods</p></li>
+</ul>
+</li>
+<li><p><em>Neyman-Pearson lemma</em> - likelihood ratio test is the most efficient statistic, in that is has the most power for a given size</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\frac{p(r\|+)}{p(r\|-)} &gt; 1?\)</span></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>accumulated evidence - we can accumulate evidence over time by multiplying these probabilities</p>
+<ul>
+<li><p>instead we take sum the logs, and compare to 0</p></li>
+<li><p><span class="math notranslate nohighlight">\(\sum_i ln \frac{p(r_i\|+)}{p(r_i\|-)} &gt; 0?\)</span></p></li>
+<li><p>once we hit some threshold for this sum, we can make a decision + or -</p></li>
+</ul>
+</li>
+<li><p>experimental evidence (Kiani, Hanks, &amp; Shadlen, Nat. Neurosci 2006)</p>
+<ul>
+<li><p>monkey is making decision about whether dots are moving left/right</p></li>
+<li><p>neuron firing rates increase over time, representing integrated evidence</p></li>
+<li><p>neuron always seems to stop at same firing rate</p></li>
+</ul>
+</li>
+<li><p>priors - ex. tiger is much less likely then breeze</p>
+<ul>
+<li><p>scale P(+|r) by prior P(+)</p></li>
+<li><p>neuroscience ex. photoreceptor cells P(noise|r) is much larger than P(signal|r)</p>
+<ul>
+<li><p>therefore threshold on r is high to minimize total mistakes</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>cost of acting/not acting</p>
+<ul>
+<li><p>loss for predicting + when it is -: <span class="math notranslate nohighlight">\(L_- \cdot P[+\|r]\)</span></p></li>
+<li><p>loss for predicting - when it is +: <span class="math notranslate nohighlight">\(L_+ \cdot P[-\|r]\)</span></p></li>
+<li><p>cut your losses: answer + when average Loss<span class="math notranslate nohighlight">\(_+\)</span> &lt; Loss<span class="math notranslate nohighlight">\(_-\)</span></p>
+<ul>
+<li><p>i.e. <span class="math notranslate nohighlight">\(L_+ \cdot P[-\|r]\)</span> &lt; <span class="math notranslate nohighlight">\(L_- \cdot P[+\|r]\)</span></p></li>
+</ul>
+</li>
+<li><p>rewriting with Baye’s rule yields new test:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\frac{p(r\|+)}{p(r\|-)}&gt; L_+ \cdot P[-] / L_- \cdot P[+]\)</span></p></li>
+<li><p>here the loss term replaces the 1 in the Neyman-Pearson lemma</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="population-coding-and-bayesian-estimation">
+<h4>7.3.3.2.2. population coding and bayesian estimation<a class="headerlink" href="#population-coding-and-bayesian-estimation" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><em>population vector</em> - sums vectors for cells that point in different directions weighted by their firing rates</p>
+<ul>
+<li><p>ex. cricket cercal cells sense wind in different directions</p></li>
+<li><p>since neuron can’t have negative firing rate, need overcomplete basis so that can record wind in both directions along an axis</p></li>
+<li><p>can do the same thing for direction of arm movement in a neural prosthesis</p></li>
+<li><p>not general - some neurons aren’t tuned, are noisier</p></li>
+<li><p>not <em>optimal</em> - making use of all information in the stimulus/response distributions</p></li>
+</ul>
+</li>
+<li><p><em>bayesian inference</em></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(p(s\|r) = \frac{p(r\|s)p(s)}{p( r)}\)</span></p></li>
+<li><p><img alt="" src="../../_images/3_2_1.png" /></p></li>
+<li><p>maximum likelihood: s* which maximizes p(r|s)</p></li>
+<li><p>MAP = maximum <span class="math notranslate nohighlight">\(a\:posteriori\)</span>: s* which mazimizes p(s|r)</p></li>
+</ul>
+</li>
+<li><p>simple continuous stimulus example</p>
+<ul>
+<li><p>setup</p>
+<ul>
+<li><p>s - orientation of an edge</p></li>
+<li><p>each neuron’s average firing rate=tuning curve <span class="math notranslate nohighlight">\(f_a(s)\)</span> is Gaussian (in s)</p></li>
+<li><p>let <span class="math notranslate nohighlight">\(r_a\)</span> be number of spikes for neuron a</p></li>
+<li><p>assume receptive fields of neurons span s: <span class="math notranslate nohighlight">\(\sum r_a (s)\)</span> is const</p></li>
+<li><p><img alt="" src="../../_images/3_2_2.png" /></p></li>
+</ul>
+</li>
+<li><p>solving</p>
+<ul>
+<li><p>maximizing log-likelihood with respect to s			- take derivative and set to 0</p>
+<ul>
+<li><p>soln <span class="math notranslate nohighlight">\(s^* = \frac{\sum r_a s_a / \sigma_a^2}{\sum r_a / \sigma_a^2}\)</span></p></li>
+<li><p>if all the <span class="math notranslate nohighlight">\(\sigma\)</span> are same, <span class="math notranslate nohighlight">\(s^* = \frac{\sum r_a s_a}{\sum r_a}\)</span></p>
+<ul>
+<li><p>this is the population vector</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>maximum <em>a posteriori</em></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(ln \: p(s\|r) = ln \: P(r\|s) + ln \: p(s) = ln \: P(r )\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(s^* = \frac{T \sum r_a s_a / \sigma^2_a + s_{prior} / \sigma^2_{prior}}{T \sum r_a / \sigma^2_a + 1/\sigma^2_{prior}}\)</span></p></li>
+<li><p>this takes into account the prior</p>
+<ul>
+<li><p>narrow prior makes it matter more</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>doesn’t incorporate correlations in the population</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="stimulus-reconstruction">
+<h4>7.3.3.2.3. stimulus reconstruction<a class="headerlink" href="#stimulus-reconstruction" title="Permalink to this headline">¶</a></h4>
+<ul>
+<li><p>decoding s -&gt; <span class="math notranslate nohighlight">\(s^*\)</span></p></li>
+<li><p>want an estimator <span class="math notranslate nohighlight">\(s_{Bayes}=s_B\)</span> given some response r</p>
+<ul class="simple">
+<li><p>error function <span class="math notranslate nohighlight">\(L(s,s_{B})=(s-s_{B})^2\)</span></p></li>
+<li><p>minimize <span class="math notranslate nohighlight">\(\int ds \: L(s,s_{B}) \: p(s\|r)\)</span> by taking derivative with respect to <span class="math notranslate nohighlight">\(s_B\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(s_B = \int ds \: p(s\|r) \: s\)</span> - the conditional mean (spike-triggered average)</p></li>
+</ul>
+</li>
+<li><p>add in spike-triggered average at each spike</p>
+<ul class="simple">
+<li><p>if spike-triggered average looks exponential, can never have smooth downwards stimulus</p></li>
+<li><p>could use 2 neurons (like in H1) and replay the second with negative sign</p></li>
+</ul>
+</li>
+<li><p>LGN neurons can reconstruct a video, but with noise</p></li>
+<li><p>recreated 1 sec long movies - (<em>Jack Gallant</em> - Nishimoto et al. 2011, Current Biology)</p>
+<ol class="simple">
+<li><p>voxel-based encoding model samples ton of prior clips and predicts signal</p></li>
+</ol>
+<ul class="simple">
+<li><p>get p(r|s)</p></li>
+<li><p>pick best p(r|s) by comparing predicted signal to actual signal</p></li>
+<li><p>input is filtered to extract certain features</p></li>
+<li><p>filtered again to account for slow timescale of BOLD signal</p></li>
+</ul>
+<ol class="simple">
+<li><p>decoding</p></li>
+</ol>
+<ul class="simple">
+<li><p>maximize p(s|r) by maximizing p(r|s) p(s), and assume p(s) uniform</p></li>
+<li><p>30 signals that have highest match to predicted signal are averaged</p></li>
+<li><p>yields pretty good pictures</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="information-theory">
+<h3>7.3.3.3. information theory<a class="headerlink" href="#information-theory" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="information-and-entropy">
+<h4>7.3.3.3.1. information and entropy<a class="headerlink" href="#information-and-entropy" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>surprise for seeing a spike h(p) = <span class="math notranslate nohighlight">\(-log_2 (p)\)</span></p></li>
+<li><p>entropy = average information</p></li>
+<li><p>code might not align spikes with what we are encoding</p></li>
+<li><p>how much of the variability in r is encoding s</p>
+<ul>
+<li><p>define q as en error</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(P(r_+\|s=+)=1-q\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P(r_-\|s=+)=q\)</span></p></li>
+<li><p>similar for when s=-</p></li>
+</ul>
+</li>
+<li><p>total entropy: <span class="math notranslate nohighlight">\(H(R ) = - P(r_+) log P(r_+) - P(r_-)log P(r_-)\)</span></p></li>
+<li><p>noise entropy: <span class="math notranslate nohighlight">\(H(R\|S=+) = -q log q - (1-q) log (1-q)\)</span></p></li>
+<li><p>mutual info I(S;R) = <span class="math notranslate nohighlight">\(H(R ) - H(R\|S) \)</span> = total entropy - average noise entropy</p>
+<ul>
+<li><p>= <span class="math notranslate nohighlight">\(D_{KL} (P(R,S), P(R )P(S))\)</span></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><em>grandma’s famous mutual info recipe</em></p>
+<ul>
+<li><p>for each s</p>
+<ul>
+<li><p>P(R|s) - take one stimulus and repeat many times (or run for a long time)</p></li>
+<li><p>H(R|s) - noise entropy</p></li>
+</ul>
+</li>
+<li><p><span class="math notranslate nohighlight">\(H(R\|S)=\sum_s P(s) H(R\|s)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(H(R ) \)</span> calculated using <span class="math notranslate nohighlight">\(P(R ) = \sum_s P(s) P(R\|s)\)</span></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="information-in-spike-trains">
+<h4>7.3.3.3.2. information in spike trains<a class="headerlink" href="#information-in-spike-trains" title="Permalink to this headline">¶</a></h4>
+<ol class="simple">
+<li><p>information in spike patterns</p></li>
+</ol>
+<ul class="simple">
+<li><p>divide pattern into time bins of 0 (no spike) and 1 (spike)</p></li>
+<li><p>binary words w with letter size <span class="math notranslate nohighlight">\(\Delta t\)</span>, length T (Reinagel &amp; Reid 2000)</p>
+<ul>
+<li><p>can create histogram of each word</p></li>
+<li><p>can calculate entropy of word</p></li>
+</ul>
+</li>
+<li><p>look at distribution of words for just one stimulus</p>
+<ul>
+<li><p>distribution should be narrower</p></li>
+</ul>
+</li>
+<li><p>calculate <span class="math notranslate nohighlight">\(H_{noise}\)</span> - average over time with random stimuli and calculate entropy</p>
+<ul>
+<li><p>varied parameters of word: length of bin (dt) and length of word (T)</p></li>
+<li><p>there’s some limit to dt at which information stops increasing</p>
+<ul>
+<li><p>this represents temporal resolution at which jitter doesn’t stop response from identifying info about the stimulus</p></li>
+</ul>
+</li>
+<li><p>corrections for finite sample size (Panzeri, Nemenman,…)</p></li>
+</ul>
+</li>
+</ul>
+<ol class="simple">
+<li><p>information in single spikes - how much info does single spike tell us about stimulus</p></li>
+</ol>
+<ul class="simple">
+<li><p>don’t have to know encoding, mutual info doesn’t care</p></li>
+</ul>
+<ol class="simple">
+<li><p>calculate entropy for random stimulus
+- <span class="math notranslate nohighlight">\(p=\bar{r} \Delta t\)</span> where <span class="math notranslate nohighlight">\(\bar{r}\)</span> is the mean firing rate</p></li>
+<li><p>calculate entropy for specific stimulus</p></li>
+</ol>
+<ul class="simple">
+<li><p>let <span class="math notranslate nohighlight">\(P(r=1\|s) = r(t) \Delta t\)</span></p></li>
+<li><p>let <span class="math notranslate nohighlight">\(P(r=0\|s) = 1 - r(t) \Delta t\)</span></p></li>
+<li><p>get r(t) by having simulus on for long time</p></li>
+<li><p><em>ergodicity</em> - a time average is equivalent to averging over the s ensemble</p></li>
+<li><p><img alt="" src="../../_images/4_2_1.png" /></p></li>
+<li><p>info per spike <span class="math notranslate nohighlight">\(I(r,s) = \frac{1}{T} \int_0^T dt \frac{r(t)}{\bar{r}} log \frac{r(t)}{\bar{r}}\)</span></p>
+<ul>
+<li><p>timing precision reduces r(t)</p></li>
+<li><p>low mean spike rate -&gt; high info per spike</p></li>
+</ul>
+</li>
+<li><p>ex. rat runs through place field and only fires when it’s in place field</p>
+<ul>
+<li><p>spikes can be sharper, more / less frequent</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="coding-principles">
+<h4>7.3.3.3.3. coding principles<a class="headerlink" href="#coding-principles" title="Permalink to this headline">¶</a></h4>
+<ul>
+<li><p>natural stimuli</p>
+<ul class="simple">
+<li><p>huge dynamic range - variations over many orders of magnitude (ex. brightness)</p></li>
+<li><p>power law scaling - structure at many scales (ex. far away things)</p></li>
+</ul>
+</li>
+<li><p><em>efficient coding</em> - in order to have maximum entropy output, a good encoder should match its outputs to the distribution of its inputs</p>
+<ul class="simple">
+<li><p>want to use each of our “symbols” (ex. different firing rates) equally often</p></li>
+<li><p>should assign equal areas of input stimulus PDF to each symbol</p></li>
+</ul>
+</li>
+<li><p>adaptataion to stimulus statistics</p>
+<ul class="simple">
+<li><p><img alt="" src="../../_images/4_3_1.png" /></p></li>
+<li><p>feature adaptation (Atick and Redlich)</p>
+<ul>
+<li><p>spatial filtering properties in retina / LGN change with varying light levels</p></li>
+<li><p>at low light levels surround becomes weaker</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>coding sechemes</p>
+<ol class="simple">
+<li><p>redundancy reduction</p></li>
+</ol>
+<ul class="simple">
+<li><p>population code <span class="math notranslate nohighlight">\(P(R_1,R_2)\)</span></p></li>
+<li><p>entropy <span class="math notranslate nohighlight">\(H(R_1,R_2) \leq H(R_1) + H(R_2)\)</span> - being independent would maximize entropy</p></li>
+</ul>
+<ol class="simple">
+<li><p>correlations can be good</p></li>
+</ol>
+<ul class="simple">
+<li><p>error correction and robust coding</p></li>
+<li><p>correlations can help discrimination</p></li>
+<li><p>retina neurons are redundant (Berry, Chichilnisky)</p></li>
+</ul>
+<ol class="simple">
+<li><p>more recently, sparse coding</p></li>
+</ol>
+<ul class="simple">
+<li><p>penalize weights of basis functions</p></li>
+<li><p>instead, we get localized features</p></li>
+</ul>
+</li>
+<li><p>we ignored the behavioral feedback loop</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="computing-with-networks">
+<h2>7.3.4. computing with networks<a class="headerlink" href="#computing-with-networks" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="modeling-connections-between-neurons">
+<h3>7.3.4.1. modeling connections between neurons<a class="headerlink" href="#modeling-connections-between-neurons" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>model effects of synapse by using synaptic conductance <span class="math notranslate nohighlight">\(g_s\)</span> with reversal potential <span class="math notranslate nohighlight">\(E_s\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(g_s = g_{s,max} \cdot P_{rel} \cdot P_s\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(P_{rel}\)</span> - probability of release given an input spike</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_s\)</span> - probability of postsynaptic channel opening = fraction of channels opened</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>basic synapse model</p>
+<ul>
+<li><p>assume <span class="math notranslate nohighlight">\(P_{rel}=1\)</span></p></li>
+<li><p>model <span class="math notranslate nohighlight">\(P_s\)</span> with kinetic model</p>
+<ul>
+<li><p>open based on <span class="math notranslate nohighlight">\(\alpha_s\)</span></p></li>
+<li><p>close based on <span class="math notranslate nohighlight">\(\beta_s\)</span></p></li>
+<li><p>yields <span class="math notranslate nohighlight">\(\frac{dP_s}{dt} = \alpha_s (1-P_s) - \beta_s P_s\)</span></p></li>
+</ul>
+</li>
+<li><p>3 synapse types</p>
+<ol class="simple">
+<li><p>AMPA - well-fit by exponential</p></li>
+<li><p>GAMA - fit by “alpha” function - has some delay</p></li>
+<li><p>NMDA - fit by “alpha” function - has some delay</p></li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>linear filter model of a synapse</p>
+<ul>
+<li><p>pick filter (ex. K(t) ~ exponential)</p></li>
+<li><p><span class="math notranslate nohighlight">\(g_s = g_{s,max} \sum K(t-t_i)\)</span></p></li>
+</ul>
+</li>
+<li><p>network of integrate-and-fire neurons</p>
+<ul>
+<li><p>if 2 neurons inhibit each other, get <em>synchrony</em> (fire at the same time</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="intro-to-network-models">
+<h3>7.3.4.2. intro to network models<a class="headerlink" href="#intro-to-network-models" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>comparing spiking models to firing-rate models</p>
+<ul>
+<li><p>advantages</p>
+<ul>
+<li><p>spike timing</p></li>
+<li><p>spike correlations / synchrony between neurons</p></li>
+</ul>
+</li>
+<li><p>disadvantages</p>
+<ul>
+<li><p>computationally expensive</p></li>
+</ul>
+</li>
+<li><p>uses linear filter model of a synapse</p></li>
+</ul>
+</li>
+<li><p>developing a firing-rate model</p>
+<ul>
+<li><p>replace spike train <span class="math notranslate nohighlight">\(\rho_1(t) \to u_1(t)\)</span></p>
+<ul>
+<li><p>can’t make this replacement when there are correlations / synchrony?</p></li>
+</ul>
+</li>
+<li><p>input current <span class="math notranslate nohighlight">\(I_s\)</span>: <span class="math notranslate nohighlight">\(\tau_s \frac{dI_s}{dt}=-I_s + \mathbf{w} \cdot \mathbf{u}\)</span></p>
+<ul>
+<li><p>works only if we let K be exponential</p></li>
+</ul>
+</li>
+<li><p>output firing rate: <span class="math notranslate nohighlight">\(\tau_r \frac{d\nu}{dt} = -\nu + F(I_s(t))\)</span></p></li>
+<li><p>if synapses are fast (<span class="math notranslate nohighlight">\(\tau_s &lt;&lt; \tau_r\)</span>)</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\tau_r \frac{d\nu}{dt} = -\nu + F(\mathbf{w} \cdot \mathbf{u}))\)</span></p></li>
+</ul>
+</li>
+<li><p>if synapses are slow (<span class="math notranslate nohighlight">\(\tau_r &lt;&lt; \tau_s\)</span>)</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\nu = F(I_s(t))\)</span></p></li>
+</ul>
+</li>
+<li><p>if static inputs (input doesn’t change) - this is like artificial neural network, where F is sigmoid</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\nu_{\infty} = F(\mathbf{w} \cdot \mathbf{u})\)</span></p></li>
+<li><p>could make these all vectors to extend to multiple output neurons</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>recurrent networks</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\tau \frac{d\mathbf{v}}{dt} = -\mathbf{v} + F(W\mathbf{u} + M \mathbf{v})\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(-\mathbf{v}\)</span> is decay</p></li>
+<li><p><span class="math notranslate nohighlight">\(W\mathbf{u}\)</span> is input</p></li>
+<li><p><span class="math notranslate nohighlight">\(M \mathbf{v}\)</span> is feedback</p></li>
+</ul>
+</li>
+<li><p>with constant input, <span class="math notranslate nohighlight">\(v_{\infty} = W \mathbf{u}\)</span></p></li>
+<li><p>ex. edge detectors</p></li>
+<li><p>V1 neurons are basically computing derivatives</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="recurrent-networks">
+<h3>7.3.4.3. recurrent networks<a class="headerlink" href="#recurrent-networks" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>linear recurrent network: <span class="math notranslate nohighlight">\(\tau \frac{d\mathbf{v}}{dt} = -\mathbf{v} + W\mathbf{u} + M \mathbf{v}\)</span></p>
+<ul>
+<li><p>let <span class="math notranslate nohighlight">\(\mathbf{h} = W\mathbf{u}\)</span></p></li>
+<li><p>want to investiage different M</p></li>
+</ul>
+</li>
+<li><p>can solve eq for <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> using eigenvectors</p>
+<ul>
+<li><p>suppose M (NxN) is symmetric (connections are equal in both directions)</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\to\)</span> M has N orthogonal eigenvectors / eigenvalues</p></li>
+<li><p>let <span class="math notranslate nohighlight">\(e_i\)</span> be the orthonormal eigenvectors</p></li>
+</ul>
+</li>
+<li><p>output vector <span class="math notranslate nohighlight">\(\mathbf{v}(t) = \sum c_i (t) \mathbf{e_i}\)</span></p></li>
+<li><p>allows us to get a closed-form solution for <span class="math notranslate nohighlight">\(c_i(t)\)</span></p></li>
+<li><p>eigenvalues determine network stability</p>
+<ul>
+<li><p>if any <span class="math notranslate nohighlight">\(\lambda_i &gt; 1, \mathbf{v}(t)\)</span> explodes <span class="math notranslate nohighlight">\(\implies\)</span> network is unstable</p>
+<ul>
+<li><p>otherwise stable and converges to steady-state value</p></li>
+</ul>
+</li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{v}_\infty = \sum \frac{h\cdot e_i}{1-\lambda_i} e_i\)</span></p></li>
+<li><p>amplification of input projection by a factor of <span class="math notranslate nohighlight">\(\frac{1}{1-\lambda_i}\)</span></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ex. each output neuron codes for an angle between -180 to 180</p>
+<ul>
+<li><p>define M as cosine function of relative angle</p></li>
+<li><p>excitation nearby, inhibition further away</p></li>
+</ul>
+</li>
+<li><p>memory in linear recurrent networks</p>
+<ul>
+<li><p>suppose <span class="math notranslate nohighlight">\(\lambda_1=1\)</span> and all other <span class="math notranslate nohighlight">\(\lambda_i &lt; 1\)</span></p></li>
+<li><p>then <span class="math notranslate nohighlight">\(\tau \frac{dc_1}{dt} = h \cdot e_1\)</span> - keeps memory of input</p></li>
+<li><p>ex. memory of eye position in medial vestibular nucleus (Seung et al. 2000)</p>
+<ul>
+<li><p>integrator neuron maintains persistent activity</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>nonlinear recurrent networks: <span class="math notranslate nohighlight">\(\tau \frac{d\mathbf{v}}{dt} = -\mathbf{v} + F(\mathbf{h}+ M \mathbf{v})\)</span></p>
+<ul>
+<li><p>ex. rectification linearity F(x) = max(0,x)</p>
+<ul>
+<li><p>ensures that firing rates never go below</p></li>
+</ul>
+</li>
+<li><p>can have eigenvalues &gt; 1 but stable due to rectification</p></li>
+<li><p>can perform selective “attention”</p>
+<ul>
+<li><p>network performs “winner-takes-all” input selection</p></li>
+</ul>
+</li>
+<li><p><em>gain modulation</em> - adding constant amount to input h multiplies the output</p></li>
+<li><p>also maintains memory</p></li>
+</ul>
+</li>
+<li><p>non-symmetric recurrent networks</p>
+<ul>
+<li><p>ex. excitatory and inhibitory neurons</p></li>
+<li><p>linear stability analysis - find fixed points and take partial derivatives</p>
+<ul>
+<li><p>use eigenvalues to determine dynamics of the nonlinear network near a fixed point</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="section" id="hopfield-nets">
+<h4>7.3.4.3.1. hopfield nets<a class="headerlink" href="#hopfield-nets" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>hopfield nets can store / retrieve memories</p></li>
+<li><p>fully connected (no input/output) - activations are what matter</p>
+<ul>
+<li><p>can memorize patterns - starting with noisy patterns can converge to these patterns</p></li>
+</ul>
+</li>
+<li><p>marr-pogio stereo algorithm</p></li>
+<li><p>hopfield three-way connections</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(E = - \sum_{i, j, k} T_{i, j, k} V_i V_j V_k\)</span> (self connections set to 0)</p>
+<ul>
+<li><p>update to <span class="math notranslate nohighlight">\(V_i\)</span> is now bilinear</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2008.02217">hopfield nets are all you need</a></p>
+<ul>
+<li><p>keys: each input has a key vector which “represents info about this input” (e.g. this is a noun)</p></li>
+<li><p>queries: each input has a query vector which “asks for other inputs that would be useful context” (e.g. what adjectives describe this word)</p>
+<ul>
+<li><p>in self-attention these queries also come from the input whereas in just regular attention they come from somewhere else (e.g. the output of a translation task)</p></li>
+</ul>
+</li>
+<li><p>transformer finds similarity between each key with each query then takes softmax - this provides weights for each of the inputs, as context for the original input</p>
+<ul>
+<li><p>in transformer, these weights are used to weight the values but in hopfield nets we would take a weighted sum of the keys and feed it back as the input</p></li>
+</ul>
+</li>
+<li><p>as we update becomes more skewed towards the things that match the most</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="learning">
+<h2>7.3.5. learning<a class="headerlink" href="#learning" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="supervised-learning">
+<h3>7.3.5.1. supervised learning<a class="headerlink" href="#supervised-learning" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>net talk was major breakthrough (words -&gt; audio) Sejnowski &amp; Rosenberg 1987</p></li>
+<li><p>people looked for world-centric receptive fields (so neurons responded to things not relative to retina but relative to body) but didn’t find them</p>
+<ul>
+<li><p>however, they did find gain fields: (Zipser &amp; Anderson, 1987)</p>
+<ul>
+<li><p>gain changes based on what retina is pointing at</p></li>
+</ul>
+</li>
+<li><p>trained nn to go from pixels to head-centered coordinate frame</p>
+<ul>
+<li><p>yielded gain fields</p></li>
+</ul>
+</li>
+<li><p>pouget et al. were able to find that this helped having 2 pop vectors: one for retina, one for eye, then add to account for it</p></li>
+</ul>
+</li>
+<li><p>support vector networks (vapnik et al.) - svms early inspired from nns</p></li>
+<li><p>dendritic nonlinearities (hausser &amp; mel 03)</p></li>
+<li><p>example to think about neurons due this: <span class="math notranslate nohighlight">\(u = w_1 x_1 + w_2x_2 + w_{12}x_1x_2\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(y=\sigma(u)\)</span></p></li>
+<li><p>somestimes called sigma-pi unit since it’s a sum of products</p></li>
+<li><p>exponential number of params…<strong>could be fixed w/ kernel trick?</strong></p>
+<ul>
+<li><p>could also incorporate geometry constraint…</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="unsupervised-learning">
+<h3>7.3.5.2. unsupervised learning<a class="headerlink" href="#unsupervised-learning" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>born w/ extremely strong priors on weights in different areas</p></li>
+<li><p>barlow 1961, attneave 1954: efficient coding hypothesis = redundancy reduction hypothesis</p>
+<ul>
+<li><p>representation: compression / usefulness</p></li>
+<li><p>easier to store prior probabilities (because inputs are independent)</p></li>
+<li><p>relich 93: redundancy reduction for unsupervised learning (text ex. learns words from text w/out spaces)</p></li>
+</ul>
+</li>
+</ul>
+<div class="section" id="hebbian-learning-and-pca">
+<h4>7.3.5.2.1. hebbian learning and pca<a class="headerlink" href="#hebbian-learning-and-pca" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>pca can also be thought of as a tool for decorrelation (in pc dimension, tends to be less correlated)</p></li>
+<li><p>hebbian learning = fire together, wire together: <span class="math notranslate nohighlight">\(\Delta w_{ab} \propto &lt;a, b&gt;\)</span> note: <span class="math notranslate nohighlight">\(&lt;a, b&gt;\)</span> is correlation of a and b (average over time)</p></li>
+<li><p>linear hebbian learning (perceptron with linear output)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\dot{w}_i \propto &lt;y, x_i&gt; \propto \sum_j w_j &lt;x_j, x_i&gt;\)</span> since weights change relatively slowly</p>
+<ul>
+<li><p>synapse couldn’t do this, would grow too large</p></li>
+</ul>
+</li>
+<li><p>oja’s rule (hebbian learning w/ weight decay so ws don’t get too big)</p>
+<ul>
+<li><p>points to correct direction</p></li>
+</ul>
+</li>
+<li><p>sanger’s rule: for multiple neurons, fit residuals of other neurons</p></li>
+<li><p>competitive learning rule: winner take all</p>
+<ul>
+<li><p>population nonlinearity is a max</p></li>
+<li><p>gets stuck in local minima (basically k-means)</p></li>
+</ul>
+</li>
+<li><p>pca only really good when data is gaussian</p>
+<ul>
+<li><p>interesting problems are non-gaussian, non-linear, non-convex</p></li>
+</ul>
+</li>
+<li><p>pca: yields checkerboards that get increasingly complex (because images are smooth, can describe with smaller checkerboards)</p>
+<ul>
+<li><p>this is what jpeg does</p></li>
+<li><p>very similar to discrete cosine transform (DCT)</p></li>
+<li><p>very hard for neurons to get receptive fields that look like this</p></li>
+</ul>
+</li>
+<li><p>retina: does whitening (yields center-surround receptive fields)</p>
+<ul>
+<li><p>easier to build</p></li>
+<li><p>gets more even outputs</p></li>
+<li><p>only has ~1.5 million fibers</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="synaptic-plasticity-hebb-s-rule-and-statistical-learning">
+<h3>7.3.5.3. synaptic plasticity, hebb’s rule, and statistical learning<a class="headerlink" href="#synaptic-plasticity-hebb-s-rule-and-statistical-learning" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>if 2 spikes keep firing at same time, get LTP - long-term potentiation</p>
+<ul>
+<li><p>if input fires, but not B then could get LTD - long-term depression</p></li>
+</ul>
+</li>
+<li><p><em>Hebb rule</em> <span class="math notranslate nohighlight">\(\tau_w \frac{d\mathbf{w}}{dt} = \mathbf{x}v\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{x}\)</span> - input</p></li>
+<li><p><span class="math notranslate nohighlight">\(v\)</span> - output</p></li>
+<li><p>translates to <span class="math notranslate nohighlight">\(\mathbf{w}_{i+1}=\mathbf{w}_i + \epsilon \cdot \mathbf{x}v\)</span></p></li>
+<li><p>average effect of the rule is to change based on correlation matrix <span class="math notranslate nohighlight">\(\mathbf{x}^T\mathbf{x}\)</span></p></li>
+</ul>
+</li>
+<li><p><em>covariance rule</em>: <span class="math notranslate nohighlight">\(\tau_w \frac{d\mathbf{w}}{dt} = \mathbf{x}(v-E[v])\)</span></p>
+<ul>
+<li><p>includes LTD as well as LTP</p></li>
+</ul>
+</li>
+<li><p><em>Oja’s rule</em>: <span class="math notranslate nohighlight">\(\tau_w \frac{d\mathbf{w}}{dt} = \mathbf{x}v- \alpha v^2 \mathbf{w}\)</span> where <span class="math notranslate nohighlight">\(\alpha&gt;0\)</span></p></li>
+<li><p>stability</p>
+<ul>
+<li><p>Hebb rule - derivative of w is always positive <span class="math notranslate nohighlight">\(\implies\)</span> w grows without bound</p></li>
+<li><p>covariance rule - derivative of w is still always positive <span class="math notranslate nohighlight">\(\implies\)</span> w grows without bound</p>
+<ul>
+<li><p>could add constraint that <span class="math notranslate nohighlight">\(\|\|w\|\|=1\)</span> and normalize w after every step</p></li>
+</ul>
+</li>
+<li><p>Oja’s rule - <span class="math notranslate nohighlight">\(\|\|w\|\| = 1/\sqrt{alpha}\)</span>, so stable</p></li>
+</ul>
+</li>
+<li><p>solving <em>Hebb rule</em> <span class="math notranslate nohighlight">\(\tau_w \frac{d\mathbf{w}}{dt} = Q w\)</span> where Q represents correlation matrix</p>
+<ul>
+<li><p>write w(t) in terms of eigenvectors of Q</p></li>
+<li><p>lets us solve for <span class="math notranslate nohighlight">\(\mathbf{w}(t)=\sum_i c_i(0)exp(\lambda_i t / \tau_w) \mathbf{e}_i\)</span></p></li>
+<li><p>when t is large, largest eigenvalue dominates</p></li>
+</ul>
+</li>
+<li><p>hebbian learning implements PCA</p>
+<ul>
+<li><p>hebbian learning learns w aligned with principal eigenvector of input correlation matrix</p></li>
+<li><p>this is same as PCA</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="intro-to-unsupervised-learning">
+<h3>7.3.5.4. intro to unsupervised learning<a class="headerlink" href="#intro-to-unsupervised-learning" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p><img alt="" src="../../_images/7_2_1.png" /></p>
+<ul class="simple">
+<li><p>most active neuron is the one whose w is closest to x</p></li>
+</ul>
+</li>
+<li><p><em>competitive learning</em></p>
+<ul>
+<li><p>updating weights given a new input</p>
+<ol class="simple">
+<li><p>pick a cluster (corresponds to most active neuron)</p></li>
+<li><p>set weight vector for that cluster to running average of all inputs in that cluster</p></li>
+</ol>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\Delta w = \epsilon \cdot (\mathbf{x} - \mathbf{w})\)</span></p></li>
+</ul>
+</li>
+<li><p>related to <em>self-organizing maps</em> = kohonen maps</p>
+<ul class="simple">
+<li><p>in self-organizing maps also update other neurons in the neighborhood of the winner</p></li>
+<li><p>update winner closer</p></li>
+<li><p>update neighbors to also be closer</p></li>
+<li><p>ex. V1 has orientation preference maps that do this</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="sparse-coding-and-predictive-coding">
+<h3>7.3.5.5. sparse coding and predictive coding<a class="headerlink" href="#sparse-coding-and-predictive-coding" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>eigenface - Turk and Pentland 1991</p>
+<ul>
+<li><p>eigenvectors of the input covariance matrix are good features</p></li>
+<li><p>can represent images using sum of eigenvectors (orthonormal basis)</p></li>
+</ul>
+</li>
+<li><p>suppose you use only first M principal eigenvectors</p>
+<ul>
+<li><p>then there is some noise</p></li>
+<li><p>can use this for compression</p></li>
+<li><p>not good for local components of an image (e.g. parts of face, local edges)</p></li>
+</ul>
+</li>
+<li><p>if you assume Gausian noise, maximizing likelihood = minimizing squared error</p></li>
+<li><p>generative model</p>
+<ul>
+<li><p>images X</p></li>
+<li><p>causes</p></li>
+<li><p>likelihood P(X=x|C=c)</p>
+<ul>
+<li><p>Gaussian</p></li>
+<li><p>proportional to <span class="math notranslate nohighlight">\(exp(x-Gc)\)</span></p></li>
+</ul>
+</li>
+<li><p>want posterior P(C|X)</p></li>
+<li><p>prior p(C )</p>
+<ul>
+<li><p>assume priors causes are independent</p></li>
+<li><p>want sparse distribution</p>
+<ul>
+<li><p>has heavy tail (super-Gaussian distribution)</p></li>
+</ul>
+</li>
+<li><p>then P(C ) = <span class="math notranslate nohighlight">\(k \cdot \prod exp(g(C_i))\)</span></p></li>
+</ul>
+</li>
+<li><p>can implement sparse coding in a recurrent neural network</p></li>
+<li><p>Olshausen &amp; Field, 1996 - learns receptive fields in V1</p></li>
+</ul>
+</li>
+<li><p>sparse coding is a special case of <em>predicive coding</em></p>
+<ul>
+<li><p><img alt="" src="../../_images/7_3_1.png" /></p></li>
+<li><p>there is usually a feedback connection for every feedforward connection (Rao &amp; Ballard, 1999)</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="sparse-distributed-coding">
+<h3>7.3.5.6. sparse, distributed coding<a class="headerlink" href="#sparse-distributed-coding" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><div class="math notranslate nohighlight">
+\[\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{h^{(t)}}} \min ||\mathbf{x^{(t)}} - \mathbf{Dh^{(t)}}||_2^2 + \lambda ||\mathbf{h^{(t)}}||_1\]</div>
+<ul class="simple">
+<li><p>D is like autoencoder output weight matrix</p></li>
+<li><p>h is more complicated - requires solving inner minimization problem</p></li>
+<li><p>outer loop is not quite lasso - weights are not what is penalized</p></li>
+</ul>
+</li>
+<li><p>barlow 1972: want to represent stimulus with minimum active neurons</p>
+<ul class="simple">
+<li><p>neurons farther in cortex are more silent</p></li>
+<li><p>v1 is highly overcomplete (dimensionality expansion)</p></li>
+</ul>
+</li>
+<li><p>codes: dense -&gt; sparse, distributed <span class="math notranslate nohighlight">\(n \choose k\)</span> -&gt; local (grandmother cells)</p>
+<ul class="simple">
+<li><p>energy argument - bruno doesn’t think it’s a big deal (could just not have a brain)</p></li>
+</ul>
+</li>
+<li><p>PCA: autoencoder when you enforce weights to be orthonormal</p>
+<ul class="simple">
+<li><p>retina must output encoded inputs as spikes, lower dimension -&gt; uses whitening</p></li>
+</ul>
+</li>
+<li><p>cortex</p>
+<ul class="simple">
+<li><p>sparse coding different kind of autencoder bottleneck (imposes sparsity)</p></li>
+</ul>
+</li>
+<li><p>using bottlenecks in autoencoders forces you to find structure in data</p></li>
+<li><p>v1 simple-cell receptive fields are localized, oriented, and bandpass</p></li>
+<li><p>higher-order image statistics</p>
+<ul class="simple">
+<li><p>phase alignment</p></li>
+<li><p>orientation (requires at least 3 points stats (like orientation)</p></li>
+<li><p>motion</p></li>
+</ul>
+</li>
+<li><p>how to learn sparse repr?</p>
+<ul class="simple">
+<li><p>foldiak 1990 forming sparse reprs by local anti-hebbian learning</p></li>
+<li><p>driven by inputs and gets lateral inhibition and sum threshold</p></li>
+<li><p>neurons drift towards some firing rate naturally (adjust threshold naturally)</p></li>
+</ul>
+</li>
+<li><p>use higher-order statistics</p>
+<ul class="simple">
+<li><p>projection pursuit (field 1994) - maximize non-gaussianity of projections</p>
+<ul>
+<li><p>CLT says random projections should look gaussian</p></li>
+<li><p>gabor-filter response histogram over natural images look non-Gaussian (sparse) - peaked at 0</p></li>
+</ul>
+</li>
+<li><p>doesn’t work for graded signals</p></li>
+</ul>
+</li>
+<li><p>sparse coding for graded signals: olshausen &amp; field, 1996</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\underset{Image}{I(x, y)} = \sum_i a_i \phi_i (x, y) + \epsilon (x,y)\)</span></p></li>
+<li><p>loss function <span class="math notranslate nohighlight">\(\frac{1}{2} |I - \phi a|^2 + \lambda \sum_i C(a_i)\)</span></p></li>
+<li><p>can think about difference between <span class="math notranslate nohighlight">\(L_1\)</span> and <span class="math notranslate nohighlight">\(L_2\)</span> as having preferred directions (for the same length of vector) - prefer directions which some zeros</p></li>
+<li><p>in terms of optimization, smooth near zero</p></li>
+<li><p>there is a network implementation</p></li>
+<li><p><span class="math notranslate nohighlight">\(a_i\)</span>are calculated by solvin optimization for each image, <span class="math notranslate nohighlight">\(\phi\)</span> is learned more slowly</p></li>
+<li><p><strong>can you get <span class="math notranslate nohighlight">\(a_i\)</span> closed form soln?</strong></p></li>
+</ul>
+</li>
+<li><p>wavelets invented in 1980s/1990s for sparsity + compression</p></li>
+<li><p>these tuning curves match those of real v1 neurons</p></li>
+<li><p>applications</p>
+<ul class="simple">
+<li><p>for time, have spatiotemporal basis where local wavelet moves</p></li>
+<li><p>sparse coding of natural sounds</p>
+<ul>
+<li><p>audition like a movie with two pixels (each ear sounds independent)</p></li>
+<li><p>converges to gamma tone functions, which is what auditory fibers look like</p></li>
+</ul>
+</li>
+<li><p>sparse coding to neural recordings - finds spikes in neurons</p>
+<ul>
+<li><p>learns that different layers activate together, different frequencies come out</p></li>
+<li><p>found place cell bases for LFP in hippocampus</p></li>
+</ul>
+</li>
+<li><p>nonnegative matrix factorization - like sparse coding but enforces nonnegative</p></li>
+<li><p>can explicitly enforce nonnegativity</p></li>
+</ul>
+</li>
+<li><p>LCA algorithm lets us implement sparse coding in biologically plausible local manner</p></li>
+<li><p>explaining away - neural responses at the population should be decodable (shouldn’t be ambiguous)</p></li>
+<li><p>good project: understanding properties of sparse coding bases</p></li>
+<li><p>SNR = <span class="math notranslate nohighlight">\(VAR(I) / VAR(|I- \phi A|)\)</span></p></li>
+<li><p>can run on data after whitening</p>
+<ul class="simple">
+<li><p>graph is of power vs frequency (images go down as <span class="math notranslate nohighlight">\(1/f\)</span>), need to weighten with f</p></li>
+<li><p>don’t whiten highest frequencies (because really just noise)</p>
+<ul>
+<li><p>need to do this softly - roughly what the retina does</p></li>
+</ul>
+</li>
+<li><p>as a result higher spatial frequency activations have less variance</p></li>
+</ul>
+</li>
+<li><p>whitening effect on sparse coding</p>
+<ul class="simple">
+<li><p>if you don’t whiten, have some directions that have much more variance</p></li>
+</ul>
+</li>
+<li><p>projects</p>
+<ul class="simple">
+<li><p>applying to different types of data (ex. auditory)</p></li>
+</ul>
+</li>
+<li><p>adding more bases as time goes on</p></li>
+<li><p>combining convolution w/ sparse coding?</p></li>
+<li><p>people didn’t see sparsity for a while because they were using very specific stimuli and specific neurons</p>
+<ul class="simple">
+<li><p>now people with less biased sampling are finding more sparsity</p></li>
+<li><p>in cortex anasthesia tends to lower firing rates, but opposite in hippocampus</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="self-organizing-maps">
+<h3>7.3.5.7. self-organizing maps<a class="headerlink" href="#self-organizing-maps" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>homunculus - 3d map corresponds to map in cortex (sensory + motor)</p></li>
+<li><p>visual cortex</p>
+<ul>
+<li><p>visual cortex mostly devoted to center</p></li>
+<li><p>different neurons in same regions sensitive to different orientations (changing smoothly)</p></li>
+<li><p>orientation constant along column</p></li>
+<li><p>orientation maps not found in mice (but in cats, monkeys)</p></li>
+<li><p>direction selective cells as well</p></li>
+</ul>
+</li>
+<li><p>maps are plastic - cortex devoted to particular tasks expands (not passive, needs to be active)</p>
+<ul>
+<li><p>kids therapy with tone-tracking video games at higher and higher frequencies</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="ml-analogies">
+<h2>7.3.6. ml analogies<a class="headerlink" href="#ml-analogies" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="brain-theories">
+<h3>7.3.6.1. Brain theories<a class="headerlink" href="#brain-theories" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Computational Theory of Mind</p></li>
+<li><p>Classical associationism</p></li>
+<li><p>Connectionism
+-Situated cognition
+-Memory-prediction framework
+-Fractal Theory: https://www.youtube.com/watch?v=axaH4HFzA24
+-Brain sheets are made of cortical columns (about .3mm diameter, 1000 neurons / column)
+-Have ~6 layers</p></li>
+</ul>
+</div>
+<div class="section" id="brain-as-a-computer">
+<h3>7.3.6.2. brain as a computer<a class="headerlink" href="#brain-as-a-computer" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Brain as a Computer – Analog VLSI and Neural Systems by Mead (VLSI – very large scale integration)
+-Brain Computer Analogy
+-Process info
+-Signals represented by potential
+-Signals are amplified = gain
+-Power supply
+-Knowledge is not stored in knowledge of the parts, but in their connections
+-Based on electrically charged entities interacting with energy barriers
+-http://en.wikipedia.org/wiki/Computational_theory_of_mind
+-http://scienceblogs.com/developingintelligence/2007/03/27/why-the-brain-is-not-like-a-co/
+-Brain’ storage capacity is about 2.5 petabytes (Scientific American, 2005)
+-Electronics
+-Voltage can be thought of as water in a reservoir at a height
+-It can flow down, but the water will never reach above the initial voltage
+-A capacitor is like a tank that collects the water under the reservoir
+-The capacitance is the cross-sectional area of the tank
+-Capacitance – electrical charge required to raise the potential by 1 volt
+-Conductance = 1/ resistance = mho, siemens
+-We could also say the word is a computer with individuals being the processors – with all the wasted thoughts we have – the solution is probably to identify global problems and channel people’s focus towards working on them
+-Brain chip: http://www.research.ibm.com/articles/brain-chip.shtml
+-Differences: What Can AI Get from Neuroscience?
+-Brains are not digital
+-Brains don’t have a CPU
+-Memories are not separable from processing
+-Asynchronous and continuous
+-Details of brain substrate matter
+-Feedback and Circular Causality
+-Asking questions
+-Brains has lots of sensors
+-Lots of cellular diversity
+-NI uses lots of parallelism
+-Delays are part of the computation</p></li>
+</ul>
+</div>
+<div class="section" id="brain-v-deep-learning">
+<h3>7.3.6.3. Brain v. Deep Learning<a class="headerlink" href="#brain-v-deep-learning" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>http://timdettmers.com/</p></li>
+<li><p>problems with brain simulations:</p>
+<ul>
+<li><p>Not possible to test specific scientific hypotheses (compare this to the large hadron collider project with its perfectly defined hypotheses)</p></li>
+<li><p>Does not simulate real brain processing (no firing connections, no biological interactions)</p></li>
+<li><p>Does not give any insight into the functionality of brain processing (the meaning of the simulated activity is not assessed)</p></li>
+</ul>
+</li>
+<li><p>Neuron information processing parts</p>
+<ul>
+<li><p>Dendritic spikes are like first layer of conv net</p></li>
+<li><p>Neurons will typically have a genome that is different from the original genome that you were assigned to at birth. Neurons may have additional or fewer chromosomes and have sequences of information removed or added from certain chromosomes.</p></li>
+<li><p>http://timdettmers.com/2015/03/26/convolution-deep-learning/</p></li>
+<li><p>The adult brain has 86 billion neurons, about 10 trillion synapse, and about 300 billion dendrites (tree-like structures with synapses on them</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="probabilistic-models-inference">
+<h2>7.3.7. probabilistic models + inference<a class="headerlink" href="#probabilistic-models-inference" title="Permalink to this headline">¶</a></h2>
+<details>
+  <summary>Wiener filter</summary>
+  has Gaussian prior + likelihood
+</details>
+- gaussians are everywhere because of CLT, max entropy (subject to power constraint)
+<ul class="simple">
+<li><p>for gaussian function, <span class="math notranslate nohighlight">\(d/dx f(x) = -x f(x)\)</span></p></li>
+</ul>
+<div class="section" id="boltzmann-machines">
+<h3>7.3.7.1. boltzmann machines<a class="headerlink" href="#boltzmann-machines" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>hinton &amp; sejnowski 1983</p></li>
+<li><p>starts with a hopfield net (states <span class="math notranslate nohighlight">\(s_i\)</span> weights <span class="math notranslate nohighlight">\(\lambda_{ij}\)</span>) where states are <span class="math notranslate nohighlight">\(\pm 1\)</span></p></li>
+<li><p>define energy function <span class="math notranslate nohighlight">\(E(\mathbf{s}) = - \sum_{ij} \lambda_{ij} s_i s_j\)</span></p></li>
+<li><p>assume Boltzmann distr <span class="math notranslate nohighlight">\(P(s) = \frac{1}{z} \exp (- \beta \phi(s))\)</span></p></li>
+<li><p>learning rule is basically expectation over data - expectation over model</p>
+<ul>
+<li><p>could use wake-sleep algorithm</p></li>
+<li><p>during day, calculate expectation over data via Hebbian learning (in Hopfield net this would store minima)</p></li>
+<li><p>during night, would run anit hebbian by doing random walk over network (in Hopfield ne this would remove spurious local minima)</p></li>
+</ul>
+</li>
+<li><p>learn via gibs sampling (prob for one node conditioned on others is sigmoid)</p></li>
+<li><p>can add hiddent units to allow for learning higher-order interactions (not just pairwise)</p>
+<ul>
+<li><p>restricted boltzmann machine: no connections between “visible” units and no connections between “hidden units”</p></li>
+<li><p>computationally easier (sampling is independent) but less rich</p></li>
+</ul>
+</li>
+<li><p>stacked rbm: hinton &amp; salakhutdinov (hinton argues this is first paper to launch deep learning)</p>
+<ul>
+<li><p>don’t train layers jointly</p></li>
+<li><p>learn weights with rbms as encoder</p></li>
+<li><p>then decoder is just transpose of weights</p></li>
+<li><p>finally, run fine-tuning on autoencoder</p></li>
+<li><p>able to separate units in hidden layer</p></li>
+<li><p><strong>cool - didn’t actually need decoder</strong></p></li>
+</ul>
+</li>
+<li><p>in rbm</p>
+<ul>
+<li><p>when measuring true distr, don’t see hidden vals</p>
+<ul>
+<li><p>instead observe visible units and conditionally sample over hidden units</p></li>
+<li><p><span class="math notranslate nohighlight">\(P(h|v) = \prod_i P(h_i | v)\)</span> ~ easy to sample from</p></li>
+</ul>
+</li>
+<li><p>when measuring sampled distr., just sample <span class="math notranslate nohighlight">\(P(h|v)\)</span> then sample <span class="math notranslate nohighlight">\(P(v|h)\)</span></p></li>
+</ul>
+</li>
+<li><p>ising model - only visible units</p>
+<ul>
+<li><p>basically just replicates pairwise statistics (kind of like pca)</p>
+<ul>
+<li><p>pairwise statistics basically say “when I’m on, are my neighbors on?”</p></li>
+</ul>
+</li>
+<li><p>need 3-point statistics to learn a line</p></li>
+</ul>
+</li>
+<li><p>generating textures</p>
+<ul>
+<li><p>learn the distribution of pixels in 3x3 patches</p></li>
+<li><p>then maximize this distribution - can yield textures</p></li>
+</ul>
+</li>
+<li><p>reducing the dimensionality of data with neural networks</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes/neuro"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="vissci.html" title="previous page">7.2. vision</a>
+    <a class='right-next' id="next-link" href="sensory_input.html" title="next page">7.4. sensory input</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Chandan Singh<br/>
+        
+            &copy; Copyright None.<br/>
+          <div class="extra_footer">
+            <p>
+Many of these images are taken from resources on the web.
+</p>
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

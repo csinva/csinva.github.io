@@ -1,0 +1,2952 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>2.8. os &#8212; learning to learn</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../_static/togglebutton.js"></script>
+    <script type="text/javascript" src="../../_static/clipboard.min.js"></script>
+    <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    <script type="text/javascript">var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script type="text/javascript" src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" type="text/javascript" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script type="text/javascript">
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2.9. architecture" href="arch.html" />
+    <link rel="prev" title="2.7. graphs" href="graphs.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">learning to learn</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   welcome 👋
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../research_ovws/research_ovws.html">
+   1. research_ovws
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_comp_neuro.html">
+     1.1. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_disentanglement.html">
+     1.2. disentanglement
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_complexity.html">
+     1.3. complexity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_interesting_science.html">
+     1.4. interesting science
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_dl_theory.html">
+     1.5. dl theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_scat.html">
+     1.6. scattering transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">
+     1.7. ml in medicine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_dl_for_neuro.html">
+     1.8. dl for neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_uncertainty.html">
+     1.9. uncertainty
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_interp.html">
+     1.10. interpretability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_kernels.html">
+     1.11. kernels
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="cs.html">
+   2. cs
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="retrieval.html">
+     2.1. info retrieval
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="python_ref.html">
+     2.2. python ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="data_structures.html">
+     2.3. data structures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="software.html">
+     2.4. software engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="quantum.html">
+     2.5. quantum
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="algo.html">
+     2.6. algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="graphs.html">
+     2.7. graphs
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2.8. os
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="arch.html">
+     2.9. architecture
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="java_ref.html">
+     2.10. java ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="comp_theory.html">
+     2.11. cs theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cpp_ref.html">
+     2.12. c/c++ ref
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../math/math.html">
+   3. math
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/differential_equations.html">
+     3.1. differential equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/proofs.html">
+     3.2. proofs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/analysis.html">
+     3.3. real analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/linear_algebra.html">
+     3.4. linear algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/signals.html">
+     3.5. signals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/optimization.html">
+     3.6. optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/calculus.html">
+     3.7. calculus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/chaos.html">
+     3.8. chaos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/math_basics.html">
+     3.9. math basics
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../stat/stat.html">
+   4. stat
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/graphical_models.html">
+     4.1. graphical models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/data_analysis.html">
+     4.2. data analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/testing.html">
+     4.3. testing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/causal_inference.html">
+     4.4. causal inference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/info_theory.html">
+     4.5. info theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/linear_models.html">
+     4.6. linear models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/time_series.html">
+     4.7. time series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/game_theory.html">
+     4.8. game theory
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ml/ml.html">
+   5. ml
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/comp_vision.html">
+     5.1. computer vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/structure_ml.html">
+     5.2. structure learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/classification.html">
+     5.3. classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/unsupervised.html">
+     5.4. unsupervised
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/deep_learning.html">
+     5.5. deep learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/feature_selection.html">
+     5.6. feature selection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/learning_theory.html">
+     5.7. learning theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/evaluation.html">
+     5.8. evaluation
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ai/ai.html">
+   6. ai
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/search.html">
+     6.1. search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/nlp.html">
+     6.2. nlp
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/fairness_sts.html">
+     6.3. fairness
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/cogsci.html">
+     6.4. cogsci
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/ai_futures.html">
+     6.5. ai futures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/logic.html">
+     6.6. logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/philosophy.html">
+     6.7. philosophy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/psychology.html">
+     6.8. psychology
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/knowledge_rep.html">
+     6.9. representations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/decisions.html">
+     6.10. decisions
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../neuro/neuro.html">
+   7. neuro
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/brain_basics.html">
+     7.1. brain basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/vissci.html">
+     7.2. vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/comp_neuro.html">
+     7.3. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/sensory_input.html">
+     7.4. sensory input
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/memory.html">
+     7.5. memory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/motor.html">
+     7.6. motor system
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/development.html">
+     7.7. development
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/notes/cs/os.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/csinva/csinva.github.io"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   2.8.1. 1 - introduction
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-operating-systems-do">
+     2.8.1.1. 1.1 what operating systems do
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#computer-system-organization">
+     2.8.1.2. 1.2 computer-system organization
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#computer-system-architecture">
+     2.8.1.3. 1.3 computer-system architecture
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#operating-system-structure">
+     2.8.1.4. 1.4 operating-system structure
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#operating-system-operations">
+     2.8.1.5. 1.5 operating-system operations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#process-management">
+     2.8.1.6. 1.6 process management
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#memory-management">
+     2.8.1.7. 1.7 memory management
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#storage-management">
+     2.8.1.8. 1.8 storage management
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#protection-security">
+     2.8.1.9. 1.9 protection &amp; security
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#basic-data-structures">
+     2.8.1.10. 1.10 basic data structures
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#computing-environments">
+     2.8.1.11. 1.11 computing environments
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#os-structures">
+   2.8.2. 2 - OS Structures
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#os-services">
+     2.8.2.1. 2.1 os services
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#user-and-os-interface">
+     2.8.2.2. 2.2 user and os interface
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#system-calls">
+     2.8.2.3. 2.3 system calls
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#system-call-types">
+     2.8.2.4. 2.4 system call types
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#system-programs">
+     2.8.2.5. 2.5 system programs
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#os-design-and-implementation">
+     2.8.2.6. 2.6 os design and implementation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#os-structure">
+     2.8.2.7. 2.7 os structure
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#os-debugging">
+     2.8.2.8. 2.8 os debugging
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#generation">
+     2.8.2.9. 2.9 generation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#system-boot">
+     2.8.2.10. 2.10 system boot
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#processes">
+   2.8.3. 3 - processes
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#process-concept">
+     2.8.3.1. 3.1 process concept
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#process-scheduling">
+     2.8.3.2. 3.2 process scheduling
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#operations-on-processes">
+     2.8.3.3. 3.3 operations on processes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interprocess-communication">
+     2.8.3.4. 3.4 interprocess communication
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#examples-of-ipc-systems">
+     2.8.3.5. 3.5 examples of IPC systems
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#communication-in-client-server-systems">
+     2.8.3.6. 3.6 communication in client-server systems
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#threads">
+   2.8.4. 4 - threads
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multicore-programming-skipped">
+     2.8.4.1. 4.2 - multicore programming (skipped)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multithreading-models">
+     2.8.4.2. 4.3 - multithreading models
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#thread-libraries">
+     2.8.4.3. 4.4 - thread libraries
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#implicit-threading-skipped">
+     2.8.4.4. 4.5 - implicit threading (skipped)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#threading-issues">
+     2.8.4.5. 4.6 - threading issues
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#linux-skipped">
+     2.8.4.6. 4.7 - linux (skipped)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#process-synchronization">
+   2.8.5. 5 - process synchronization
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#critical-section-problem">
+     2.8.5.1. 5.2 - critical-section problem
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#peterson-s-solution">
+     2.8.5.2. 5.3 - peterson’s solution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#synchronization-hardware">
+     2.8.5.3. 5.4  - synchronization hardware
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mutex-locks">
+     2.8.5.4. 5.5 - mutex locks
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#semaphores">
+       2.8.5.4.1. 5.6 - semaphores
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#classic-synchronization-problems">
+     2.8.5.5. 5.7 - classic synchronization problems
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#monitors">
+       2.8.5.5.1. 5.8 - monitors
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pthreads-synchronization">
+     2.8.5.6. 5.9.4 - pthreads synchronization
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#alternative-approaches-skip">
+     2.8.5.7. 5.10 - alternative approaches (skip)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#deadlocks">
+     2.8.5.8. 5.11 - deadlocks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#main-memory">
+   2.8.6. 7 - main memory
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#background">
+     2.8.6.1. 7.1 - background
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#skipped">
+     2.8.6.2. 7.2 (skipped)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#contiguous-memory-allocation">
+     2.8.6.3. 7.3 - contiguous memory allocation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#segmentation-skip">
+     2.8.6.4. 7.4 - segmentation (skip)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paging-skip">
+     2.8.6.5. 7.5 - paging (skip)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#page-table-structure-skip">
+     2.8.6.6. 7.6 - page table structure (skip)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     2.8.6.7. 7.7-9 (skipped)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cpu-scheduling">
+   2.8.7. 6 - cpu scheduling
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#algorithms">
+     2.8.7.1. 6.3 - algorithms
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#thread-scheduling">
+     2.8.7.2. 6.4 - thread scheduling
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multiple-processor-scheduling">
+     2.8.7.3. 6.5 - multiple-processor scheduling
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#real-time-systems">
+     2.8.7.4. 6.6 - real-time systems
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#skip">
+     2.8.7.5. 6.7 - SKIP
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#virtual-memory">
+   2.8.8. 8 - virtual memory
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     2.8.8.1. 8.1 - background
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#demand-paging">
+     2.8.8.2. 8.2 - demand paging
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#copy-on-write">
+     2.8.8.3. 8.3 - copy-on-write
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#page-replacement-select-which-frames-to-replace">
+     2.8.8.4. 8.4 - page replacement - select which frames to replace
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#frame-allocation-algorithms-how-many-frames-to-allocate-to-teach-process-in-memory-skipped">
+     2.8.8.5. 8.5
+     <em>
+      frame-allocation algorithms
+     </em>
+     - how many frames to allocate to teach process in memory (skipped)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#thrashing">
+     2.8.8.6. 8.6 - thrashing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#buddy-system">
+     2.8.8.7. 8.8.1 - buddy system
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mass-storage-structure">
+   2.8.9. 9 - mass-storage structure
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#disk-scheduling">
+     2.8.9.1. 9.4 - disk scheduling
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#disk-management">
+     2.8.9.2. 9.5 - disk management
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#file-system-interface">
+   2.8.10. 10 - file-system interface
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     2.8.10.1. 10.1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#access-methods">
+     2.8.10.2. 10.2 - access methods
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     2.8.10.3. 10.3
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#file-system-implementation">
+   2.8.11. 11 - file-system implementation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     2.8.11.1. 11.1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     2.8.11.2. 11.4
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   2.8.12. 11.5
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#i-o-systems">
+   2.8.13. 12 - i/o systems
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <ul class="simple">
+<li><p>TOC</p></li>
+</ul>
+<div class="section" id="os">
+<h1>2.8. os<a class="headerlink" href="#os" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>2.8.1. 1 - introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="what-operating-systems-do">
+<h3>2.8.1.1. 1.1 what operating systems do<a class="headerlink" href="#what-operating-systems-do" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>computer system</em> - hierarchical approach = layered approach</p>
+<ol class="simple">
+<li><p>hardware</p></li>
+<li><p>operating system</p></li>
+<li><p>application programs</p></li>
+<li><p>users</p></li>
+</ol>
+</li>
+<li><p>views</p>
+<ol class="simple">
+<li><p>user view - OS maximizes work user is performing</p></li>
+<li><p>system view</p>
+<ul>
+<li><p>os allocates resources - CPU time, memory, file-storage, I/O</p></li>
+<li><p>os is a <em>control program</em> - manages other programs to prevent errors</p></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>program types</p>
+<ol class="simple">
+<li><p>os is the <em>kernel</em> - one program always running on the computer</p>
+<ul>
+<li><p>only kernel can access resources provided by hardware</p></li>
+</ul>
+</li>
+<li><p>system programs - associated with OS but not in kernel</p></li>
+<li><p>application programs</p></li>
+</ol>
+</li>
+<li><p><em>middleware</em> - set of software frameworks that provide additional services to application developers</p></li>
+</ul>
+</div>
+<div class="section" id="computer-system-organization">
+<h3>2.8.1.2. 1.2 computer-system organization<a class="headerlink" href="#computer-system-organization" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>when computer is booted, needs <em>bootstrap program</em></p>
+<ul>
+<li><p>initializes things then loads OS</p></li>
+<li><p>also launches <em>system processes</em></p>
+<ul>
+<li><p>ex. Unix launches “init”</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>events</p>
+<ul>
+<li><p>hardware signals with <em>interrupt</em></p></li>
+<li><p>software signals with <em>system call</em></p></li>
+<li><p><em>interrupt vector</em> holds addresses for all types of interrupts</p></li>
+<li><p>have to save address of interrupted instruction</p></li>
+</ul>
+</li>
+<li><p>memory</p>
+<ul>
+<li><p><em>von Neumman architecture</em> - uses instruction register</p></li>
+<li><p>main memory is <em>RAM</em></p>
+<ul>
+<li><p><em>volatile</em> - lost when power off</p></li>
+</ul>
+</li>
+<li><p><em>secondary storage</em> is non-volatile (ex. hard disk)</p></li>
+<li><p><em>ROM</em> is unwriteable so static programs like bootstrap are ROM</p></li>
+<li><p>access</p>
+<ol class="simple">
+<li><p>uniform memory access (<em>UMA</em>)</p></li>
+<li><p>non-uniform memory access (<em>NUMA</em>)</p></li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>I/O</p>
+<ul>
+<li><p><em>device driver</em> for I/O devices</p></li>
+<li><p><em>direct memory access (DMA)</em> - transfers entire blocks of data w/out CPU intervention</p>
+<ul>
+<li><p>otherwise device controller must move data to its local buffer and return pointer to that</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>multiprocessor systems</p>
+<ol class="simple">
+<li><p>increased throughput</p></li>
+<li><p>economies of scale (costwise)</p></li>
+<li><p>increased reliability (fault tolerant)</p></li>
+</ol>
+</li>
+</ul>
+</div>
+<div class="section" id="computer-system-architecture">
+<h3>2.8.1.3. 1.3 computer-system architecture<a class="headerlink" href="#computer-system-architecture" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>single-processor system - one main cpu</p>
+<ul class="simple">
+<li><p>usually have special-purpose processors (e.g. keyboard controller)</p></li>
+</ul>
+</li>
+<li><p><em>multi-processor system</em> / <em>multicore system</em></p>
+<ul class="simple">
+<li><p><em>multicore</em> means multi-processor on same chip</p>
+<ul>
+<li><p>multicore is generally faster</p></li>
+</ul>
+</li>
+<li><p>multiple processors in close communication</p></li>
+<li><p>advantages</p>
+<ul>
+<li><p>increased throughput</p></li>
+<li><p>economy of scale</p></li>
+<li><p>increased reliability = <em>graceful degradation</em> = <em>fault tolerant</em></p></li>
+</ul>
+</li>
+<li><p>types</p>
+<ol class="simple">
+<li><p><em>asymmetric multiprocessing</em> - boss processor controls the system</p></li>
+<li><p><em>symmetric multiproccesing (SMP)</em> - each processor performs all tasks</p>
+<ul>
+<li><p>more common</p></li>
+</ul>
+</li>
+<li><p><em>blade server</em> - multiple independence multiprocessor systems in same chassis</p></li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p><em>clustered system</em> - multiple loosely coupled cpus</p>
+<ul class="simple">
+<li><p>types</p>
+<ol class="simple">
+<li><p><em>asymmetric clustering</em> - one machine runs while other monitors it (<em>hot-standby mode</em>)</p></li>
+<li><p><em>symmetric clustering</em> - both run something</p></li>
+</ol>
+</li>
+<li><p>parallel clusters</p>
+<ul>
+<li><p>require <em>disributed lock manager</em> to stop conflicting parallel operations</p></li>
+<li><p>can share same data via <em>storage-area-networks</em></p></li>
+</ul>
+</li>
+<li><p><em>beowulf cluster</em> - use ordinary PCs to make cluster</p></li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="operating-system-structure">
+<h3>2.8.1.4. 1.4 operating-system structure<a class="headerlink" href="#operating-system-structure" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>multiprogramming</em> - increases CPU utilization so CPU is always doing something</p>
+<ul>
+<li><p>keeps <em>job pool</em> ready on disk</p></li>
+<li><p><em>time sharing / multitasking</em> - multiple jobs switch so fast that both can be interacted with</p>
+<ul>
+<li><p>requires an <em>interactive</em> computer system</p></li>
+</ul>
+</li>
+<li><p><em>process</em> - program loaded into memory</p></li>
+<li><p>scheduling</p>
+<ul>
+<li><p><em>job scheduling</em> - picking jobs from job pool (disk -&gt; memory)</p></li>
+<li><p><em>CPU scheduling</em> - what to run first (memory -&gt; cpu)</p></li>
+</ul>
+</li>
+<li><p>memory</p>
+<ul>
+<li><p>processes are <em>swapped</em> from main memory to disk</p></li>
+<li><p><em>virtual memory</em> allows for execution of process not in memory</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="operating-system-operations">
+<h3>2.8.1.5. 1.5 operating-system operations<a class="headerlink" href="#operating-system-operations" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>trap / exception</em> - software-generated <em>interrupt</em></p></li>
+<li><p><em>user-mode</em> and <em>kernel mode</em> (also called system mode)</p>
+<ul>
+<li><p>when in kernel mode, <em>mode bit</em> is 0</p></li>
+<li><p>separate mode for virtual machine manager (VMM)</p></li>
+<li><p>this is built into hardware</p></li>
+</ul>
+</li>
+<li><p>kernel can use a timer to getting stuck in user mode</p></li>
+</ul>
+</div>
+<div class="section" id="process-management">
+<h3>2.8.1.6. 1.6 process management<a class="headerlink" href="#process-management" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>program is passive, process is active</p></li>
+<li><p>process needs resources</p>
+<ul>
+<li><p>process is unit of work</p></li>
+</ul>
+</li>
+<li><p>single-threaded process has one <em>program counter</em></p></li>
+</ul>
+</div>
+<div class="section" id="memory-management">
+<h3>2.8.1.7. 1.7 memory management<a class="headerlink" href="#memory-management" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>cpu can only directly read from main memory</p></li>
+<li><p>computers must keep several programs in memory</p>
+<ul>
+<li><p>hardware design is impmortant</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="storage-management">
+<h3>2.8.1.8. 1.8 storage management<a class="headerlink" href="#storage-management" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>defines <em>file</em> as logical storage unit</p></li>
+<li><p>most programs stored on disk until loaded</p></li>
+<li><p>in addition to secondary storage, there is <em>tertiary storage</em> (like DVDs)</p></li>
+<li><p><em>caching</em> - save frequent items on faster things</p>
+<ul>
+<li><p><em>cache coherency</em> - make sure cache coherency is properly updated with parallel processes</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="protection-security">
+<h3>2.8.1.9. 1.9 protection &amp; security<a class="headerlink" href="#protection-security" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>process can execute only within its address space</p></li>
+<li><p><em>protection</em> - controlling access to resources</p></li>
+<li><p><em>security</em> - defends a system from attacks</p></li>
+<li><p>maintain list of <em>user IDs</em> and <em>group IDs</em></p>
+<ul>
+<li><p>can temporarily <em>escalate priveleges</em> to an <em>effective UID</em> - <em>setuid</em> command</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="basic-data-structures">
+<h3>2.8.1.10. 1.10 basic data structures<a class="headerlink" href="#basic-data-structures" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>bitmap</em> - string of n binary digits</p></li>
+</ul>
+</div>
+<div class="section" id="computing-environments">
+<h3>2.8.1.11. 1.11 computing environments<a class="headerlink" href="#computing-environments" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>network computers</em> - are essentially terminals that understand web-based computing</p></li>
+<li><p><em>distributed system</em> - shares resources among separate computer systems</p>
+<ul>
+<li><p><em>network</em> - communication path between two or more computers</p></li>
+<li><p><em>TCP/IP</em> is most common network protocol</p></li>
+</ul>
+</li>
+<li><p>networks</p>
+<ul>
+<li><p><em>PAN</em> - personal-area network (like bluetooth)</p></li>
+<li><p><em>LAN</em> - local-area network connects computers within a room, building, or campus</p></li>
+<li><p><em>WAN</em> - wide-area network</p></li>
+<li><p><em>MAN</em> - metropolitan-area network</p></li>
+<li><p><em>network OS</em> provides features like file sharing across the network</p></li>
+<li><p><em>distributed OS</em> provides less autonomy - makes it feel like one OS controls entire network</p></li>
+</ul>
+</li>
+<li><p><em>client-server</em> computing</p>
+<ol class="simple">
+<li><p><em>compute-server</em> - performs actions for user</p></li>
+<li><p><em>file-server</em> - stores files</p></li>
+</ol>
+</li>
+<li><p><em>peer-to-peer</em> computing</p>
+<ol class="simple">
+<li><p>all clients w/ central lookup service, ex. Napster</p></li>
+<li><p>no centralized lookup service</p>
+<ul>
+<li><p>uses <em>discovery protocol</em> - puts out request and other peer must respond</p></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p><em>virtualization</em> - allows OS to run within another OS</p>
+<ul>
+<li><p><em>interpretation</em> - run programs as non-native code (ex. java runs on JVM)</p></li>
+<li><p>BASIC can be compiled or interpreted</p></li>
+</ul>
+</li>
+<li><p><em>cloud-computing</em> - computing, storage, and applications as a service accross a network</p>
+<ul>
+<li><p>public cloud</p></li>
+<li><p>private cloud</p></li>
+<li><p>hybrid cloud</p></li>
+<li><p>software as a service (SAAS)</p></li>
+<li><p>platform as a service (PAAS)</p></li>
+<li><p>infrastructure as a service (IAAS)</p></li>
+<li><p>cloud is behind a firewall, can only make requests to it</p></li>
+</ul>
+</li>
+<li><p><em>embedded systems</em> - like microwaves / robots</p>
+<ul>
+<li><p>specific tasks</p></li>
+<li><p>have <em>real-time OS</em> - fixed time constraints</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="os-structures">
+<h2>2.8.2. 2 - OS Structures<a class="headerlink" href="#os-structures" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="os-services">
+<h3>2.8.2.1. 2.1 os services<a class="headerlink" href="#os-services" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>for the user</p>
+<ul>
+<li><p><em>user interface</em> - command-line interface and graphical user interface</p></li>
+<li><p><em>program execution</em> - load a program and run it</p></li>
+<li><p><em>I/O operations</em> - file or device</p></li>
+<li><p><em>File-system manipulation</em></p></li>
+<li><p><em>communications</em> - between processes / computer systems</p></li>
+<li><p><em>error detection</em></p></li>
+</ul>
+</li>
+<li><p>for system operation</p>
+<ul>
+<li><p><em>resource allocation</em></p></li>
+<li><p><em>accounting</em> - keeping stats on users / processes</p></li>
+<li><p><em>protection / security</em></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="user-and-os-interface">
+<h3>2.8.2.2. 2.2 user and os interface<a class="headerlink" href="#user-and-os-interface" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p><em>command interpreter</em> = <em>shell</em> - gets and executes next user-specified command</p>
+<ul class="simple">
+<li><p>could contain the code to execute the command</p></li>
+<li><p>command interpreter could have code to execute commands</p></li>
+<li><p>more often, executes <em>system programs</em>, such as “rm”, that are executed</p></li>
+</ul>
+</li>
+<li><p><em>GUI</em></p></li>
+</ol>
+</div>
+<div class="section" id="system-calls">
+<h3>2.8.2.3. 2.3 system calls<a class="headerlink" href="#system-calls" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>system calls</em> - provide an interface to os services</p></li>
+<li><p>API usually wraps system calls (ex. java)</p>
+<ul>
+<li><p><em>libc</em> - provided by Linux/Mac OS for C</p></li>
+<li><p><em>system-call interface</em> links API calls to system calls</p></li>
+</ul>
+</li>
+<li><p>passing parameters</p>
+<ol class="simple">
+<li><p>pass parameters in registers</p></li>
+<li><p>parameters stored in block of memory and address passed in register</p></li>
+<li><p>parameters pushed onto stack</p></li>
+</ol>
+</li>
+</ul>
+</div>
+<div class="section" id="system-call-types">
+<h3>2.8.2.4. 2.4 system call types<a class="headerlink" href="#system-call-types" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>process control - halting, ending</p>
+<ul class="simple">
+<li><p><em>lock</em> shared data - no other process can access until released</p></li>
+</ul>
+</li>
+<li><p>file manipulation</p></li>
+<li><p>device manipulation</p>
+<ul class="simple">
+<li><p>similar to file manipulation</p></li>
+</ul>
+</li>
+<li><p>information maintenance - time, date, dump()</p>
+<ul class="simple">
+<li><p><em>single step</em> is CPU mode which throws trap for CPU after every instruction for a debugger</p></li>
+</ul>
+</li>
+<li><p>communications</p>
+<ol class="simple">
+<li><p><em>message-passing model</em></p>
+<ul class="simple">
+<li><p>each computer has <em>host name</em> and <em>network identifier</em> (IP address)</p></li>
+<li><p>each process has <em>process name</em></p></li>
+<li><p><em>daemons</em> - system programs for receiving connections (like servers waiting for a client)</p></li>
+</ul>
+</li>
+<li><p><em>shared-memory model</em></p></li>
+</ol>
+</li>
+<li><p>protection</p></li>
+</ol>
+</div>
+<div class="section" id="system-programs">
+<h3>2.8.2.5. 2.5 system programs<a class="headerlink" href="#system-programs" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>system programs</em> = <em>system utilities</em></p></li>
+<li><p>some provide interfaces for system calls</p></li>
+<li><p>other uses</p>
+<ol class="simple">
+<li><p>file management</p></li>
+<li><p>status info</p></li>
+<li><p>file modification</p></li>
+<li><p>programming-language support</p></li>
+<li><p>program loading and execution</p></li>
+<li><p>communications</p></li>
+<li><p>background services</p></li>
+</ol>
+</li>
+</ul>
+</div>
+<div class="section" id="os-design-and-implementation">
+<h3>2.8.2.6. 2.6 os design and implementation<a class="headerlink" href="#os-design-and-implementation" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>mechanism</em> - how to do something</p>
+<ul>
+<li><p>want this to be general so only certain parameters change</p></li>
+</ul>
+</li>
+<li><p><em>policy</em> - what will be done</p></li>
+<li><p>os mostly in C, low-level kernel in assembly</p>
+<ul>
+<li><p>high-level is easier to port but slower</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="os-structure">
+<h3>2.8.2.7. 2.7 os structure<a class="headerlink" href="#os-structure" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>want modules but current models aren’t very modularized</p>
+<ul>
+<li><p><em>monolithic</em> system has performance advantages - very little overhead</p></li>
+<li><p>in practice everything is a hybrid</p></li>
+</ul>
+</li>
+<li><p>system can be modularized with a <em>layered approach</em></p>
+<ul>
+<li><p>layers: hardware, …, user interface</p></li>
+<li><p>easy to construct and debug</p></li>
+<li><p>hard to define layers, less efficient</p></li>
+</ul>
+</li>
+<li><p><em>microkernel approach</em> - used in os <em>Mach</em></p>
+<ul>
+<li><p>move nonessential kernel components to system / user-level</p></li>
+<li><p>smaller kernel, everything communicates with <em>message passing</em></p></li>
+<li><p>makes extending os easier, but slower functions due to system overhead</p></li>
+</ul>
+</li>
+<li><p><em>loadable kernel modules</em></p>
+<ul>
+<li><p>more flexible - kernel modules can change</p></li>
+</ul>
+</li>
+<li><p>examples (see pics)</p></li>
+</ul>
+</div>
+<div class="section" id="os-debugging">
+<h3>2.8.2.8. 2.8 os debugging<a class="headerlink" href="#os-debugging" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>errors are written to <em>log file</em> and <em>core dump</em> (memory snapshot) is written to file</p></li>
+<li><p>if kernel crashes, must save its dump to s special area</p></li>
+<li><p><em>performance tuning</em> - removing <em>bottlenecks</em></p>
+<ul>
+<li><p>monitor <em>trace listings</em> - log if interesting events with times / parameters</p></li>
+</ul>
+</li>
+<li><p>SolarisDTrace is a tool to debug and tune the os</p></li>
+<li><p><em>profiling</em> - periodically samples instruction pointer to determine which code is being executed</p></li>
+</ul>
+</div>
+<div class="section" id="generation">
+<h3>2.8.2.9. 2.9 generation<a class="headerlink" href="#generation" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>system generation</em> - configuring os on a computer</p>
+<ul>
+<li><p>usually on a CD-ROM</p></li>
+<li><p>lots of things must be determined (like what CPU to use)</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="system-boot">
+<h3>2.8.2.10. 2.10 system boot<a class="headerlink" href="#system-boot" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>bootstrap program</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="processes">
+<h2>2.8.3. 3 - processes<a class="headerlink" href="#processes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="process-concept">
+<h3>2.8.3.1. 3.1 process concept<a class="headerlink" href="#process-concept" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>process</em> - program in execution</p>
+<ul>
+<li><p>batch system executes <em>jobs</em> = <em>processes</em></p></li>
+<li><p>time-shared system has user programs or <em>tasks</em></p></li>
+<li><p>program is passive while process is active</p></li>
+</ul>
+</li>
+<li><p>parts</p>
+<ul>
+<li><p>program code - <em>text section</em></p></li>
+<li><p>program counter</p></li>
+<li><p>registers</p></li>
+<li><p>stack</p></li>
+<li><p>data section</p></li>
+<li><p>heap</p></li>
+</ul>
+</li>
+<li><p>same program can have many processes</p></li>
+<li><p>process can be execution environment for other code (ex. JVM)</p></li>
+<li><p><em>process state</em></p>
+<ul>
+<li><p>new</p></li>
+<li><p>running</p></li>
+<li><p>waiting</p></li>
+<li><p>ready</p></li>
+<li><p>terminated</p></li>
+</ul>
+</li>
+<li><p><em>process control block (PCB)</em> = <em>task control block</em> - repository for any info that varies process to process</p>
+<ul>
+<li><p>process state</p></li>
+<li><p>program counter</p></li>
+<li><p>CPU registers</p></li>
+<li><p>CPU-scheduling information</p></li>
+<li><p>memory-management information</p></li>
+<li><p>accounting information</p></li>
+<li><p>I/O status information</p></li>
+<li><p>could include information for each thread</p></li>
+</ul>
+</li>
+<li><p><em>parent</em> - process that created another process</p></li>
+</ul>
+</div>
+<div class="section" id="process-scheduling">
+<h3>2.8.3.2. 3.2 process scheduling<a class="headerlink" href="#process-scheduling" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>process scheduler</em> - selects available process for multi-tasking</p>
+<ul>
+<li><p>processes begin in <em>job queue</em></p></li>
+<li><p>processes that are ready and waiting are in the <em>ready queue</em> until they are <em>dispatched</em> - usually stored as a linked list</p></li>
+<li><p>lots of things can happen here (fig 3_6)</p>
+<ul>
+<li><p>ex. make I/O request and go to I/O queue</p></li>
+</ul>
+</li>
+<li><p><em>I/O-bound process</em> - spends more time doing I/O</p></li>
+<li><p><em>CPU-bound process</em> - spends more time doing computations</p></li>
+<li><p>each device has a list of process waiting in its <em>device queue</em></p></li>
+</ul>
+</li>
+<li><p><em>scheduler</em> - selects processes from queues</p>
+<ul>
+<li><p><em>long-term scheduler</em> - selects from processes on disk to load into memory</p>
+<ul>
+<li><p>controls the <em>degree of multiprogramming</em> = number of processes in memory</p></li>
+<li><p>has much more time than short-term scheduler</p></li>
+<li><p>want good mix of <em>I/O-bound</em> and <em>CPU-bound</em> processes</p></li>
+<li><p>sometimes this doesn’t exist</p></li>
+</ul>
+</li>
+<li><p><em>short-term / CPU scheduler</em> - selects from processes ready to execute and allocates CPU to one of them</p></li>
+<li><p>sometimes <em>medium-term scheduler</em></p>
+<ul>
+<li><p>does <em>swapping</em> - remove a process from memory and later reintroduce it</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><em>context switch</em> - occurs when switching processes</p>
+<ul>
+<li><p>when interrupt occurs, kernel saves <em>context</em> of old process and loads saved context of new process</p></li>
+<li><p>context is in the PCB</p></li>
+<li><p>might be more or less work depending on hardware</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="operations-on-processes">
+<h3>2.8.3.3. 3.3 operations on processes<a class="headerlink" href="#operations-on-processes" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>usually each process has unique process identifier (<em>pid</em>)</p></li>
+<li><p>linux everything starts with init process (pid=1)</p></li>
+<li><p>restricting a child process to a subset of the parent’s resources prevents system overload</p>
+<ul>
+<li><p>parent may pass along initialization data</p></li>
+</ul>
+</li>
+<li><p>after creating new process</p>
+<ol class="simple">
+<li><p>parent continues to execute concurrently with children</p></li>
+<li><p>parent waits until some or all of its children terminate</p></li>
+</ol>
+</li>
+<li><p>two address-space possibilities for the new process:</p>
+<ol class="simple">
+<li><p>child is duplicate of parent (it has the same program and data as the parent).</p></li>
+<li><p>child loads new program</p></li>
+</ol>
+</li>
+<li><p>forking</p>
+<ul>
+<li><p>when call <em>fork()</em> continue operation but returns 0 for parent process and nonzero for child</p>
+<ul>
+<li><p>child is a copy of the parent</p></li>
+</ul>
+</li>
+<li><p>after fork, usually one process calls <em>exec()</em> to load binary file into memory</p>
+<ul>
+<li><p>overrides program, doesn’t return unless error occurs</p></li>
+</ul>
+</li>
+<li><p>parent can call <em>wait()</em> until child finishes (moves itself off ready queue until child finishes)</p></li>
+</ul>
+</li>
+<li><p>on Windows, uses <em>CreateProcess()</em> which requires loading a new program rather than sharing address space</p>
+<ul>
+<li><p>STARTUPINFO -</p></li>
+<li><p>PROCESSINFORMATION -</p></li>
+</ul>
+</li>
+<li><p>process termination</p>
+<ul>
+<li><p><em>exit()</em> kills process (return in main calls exit)</p></li>
+<li><p>process can return status value</p></li>
+<li><p>parent can terminate child if it knows its pid</p></li>
+<li><p><em>cascading termination</em> - if parent dies, its children die</p></li>
+<li><p><em>zombie process</em> - terminated but parent hasn’t called wait() yet</p>
+<ul>
+<li><p>remains because parent wants to know what exit status was</p></li>
+<li><p>if parent terminates without wait(), <em>orphan</em> child is assigned <em>init</em> as new parent (init periodically invokes wait())</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="interprocess-communication">
+<h3>2.8.3.4. 3.4 interprocess communication<a class="headerlink" href="#interprocess-communication" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>process <em>cooperation</em></p>
+<ul class="simple">
+<li><p>information sharing</p></li>
+<li><p>computation speedup</p></li>
+<li><p>modularity</p></li>
+<li><p>convenience</p></li>
+</ul>
+</li>
+<li><p><em>interprocess communication (IPC)</em> - allows exchange of data and info</p>
+<ol>
+<li><p><em>shared memory</em> - shared region of memory is established</p>
+<ul class="simple">
+<li><p>one process establishes region</p></li>
+<li><p>other process must attach to it (OS must allow this)</p></li>
+<li><p>less overhead (no system calls)</p></li>
+<li><p>suffers from cache coherency</p></li>
+<li><p>ex. producer consumer</p>
+<ul>
+<li><p>producer fills buffer and consumer empties it</p></li>
+<li><p><em>unbounded buffer</em> - producer can keep producing indefinitely</p></li>
+<li><p><em>bounded buffer</em> - consumer waits if empty, producer waits if full</p></li>
+<li><p>in points to next free position</p></li>
+<li><p>out points to first full position</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><em>message passing</em> - messages between coordinating processes</p>
+<ul class="simple">
+<li><p>useful for smaller data</p></li>
+<li><p>easier in a distributed system</p></li>
+</ul>
+<ol class="simple">
+<li><p><em>direct or indirect communication</em></p>
+<ul class="simple">
+<li><p>direct requires knowing the id of process to send / receive</p>
+<ul>
+<li><p>can be <em>asymmetrical</em> - need to know id of process to send to, but not receive from</p></li>
+<li><p>results in hard-coding</p></li>
+</ul>
+</li>
+<li><p>indirect - messages are sent / received from mailboxes</p>
+<ul>
+<li><p>more flexible, can send message to whoever shares mailbox</p></li>
+<li><p>mailbox owned by process - owner receives those messages</p></li>
+<li><p>mailbox owned by os - unclear</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><em>synchronous or asynchronous</em> communication</p>
+<ul class="simple">
+<li><p>synchronous = blocking</p></li>
+<li><p>when both send and recieve are blocking = <em>rendezvous</em></p></li>
+</ul>
+</li>
+<li><p><em>automatic or explicit</em> buffering</p>
+<ul class="simple">
+<li><p>queue for messages can have 3 implementations</p>
+<ol class="simple">
+<li><p><em>zero capacity (must be blocking)</em></p></li>
+<li><p><em>bounded capacity</em></p></li>
+<li><p><em>unbounded capacity</em></p></li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+</div>
+<div class="section" id="examples-of-ipc-systems">
+<h3>2.8.3.5. 3.5 examples of IPC systems<a class="headerlink" href="#examples-of-ipc-systems" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>POSIX - shared memory</p></li>
+<li><p>Mach - message passing</p></li>
+<li><p>Windows - shared memory for message passing</p></li>
+</ol>
+</div>
+<div class="section" id="communication-in-client-server-systems">
+<h3>2.8.3.6. 3.6 communication in client-server systems<a class="headerlink" href="#communication-in-client-server-systems" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p><em>sockets</em> - endpoint for communication</p>
+<ul class="simple">
+<li><p>IP address + port number</p></li>
+<li><p>connecting</p>
+<ol class="simple">
+<li><p>server listens on a port</p></li>
+<li><p>client creates socket and requests connection to server’s port</p></li>
+<li><p>server accepts connection (then usually writes data to socket)</p></li>
+</ol>
+</li>
+<li><p>all ports below 1024 are well known</p></li>
+<li><p><em>connection-oriented</em>=<em>TCP</em></p></li>
+<li><p><em>connectionless</em> = <em>UDP</em></p></li>
+<li><p>special IP address 127.0.0.1 - <em>loopback</em> - refers to itself</p></li>
+<li><p>sockets are <em>low-level</em> - can only send unstructured bytes</p></li>
+</ul>
+</li>
+<li><p><em>remote procedure calls (RPCs)</em> - remote message-based communication</p>
+<ul class="simple">
+<li><p>like IPC, but between different computers</p></li>
+<li><p>message addressed to an RPC daemon listening to a port</p></li>
+<li><p>messages are well-structured</p></li>
+<li><p>specifies a <em>port</em> - a number included at the start of a message packet</p>
+<ul>
+<li><p>system has many ports to differentiate different services</p></li>
+</ul>
+</li>
+<li><p>uses <em>stubs</em> to hide details</p>
+<ul>
+<li><p>they <em>marshal</em> the parameters</p></li>
+<li><p>might have to convert data into <em>external data representation (XDR)</em> (to avoid issues like big-endian vs. little-endian)</p></li>
+</ul>
+</li>
+<li><p>must make sure each message is acted on <em>exactly once</em></p></li>
+<li><p>client must know port</p>
+<ol class="simple">
+<li><p>binding info (port numbers) may be predetermined and unchangeable</p></li>
+<li><p>binding can be dynamic with rendezvous deaemon (<em>matchmaker</em>) on a fixed RPC port</p></li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p><em>pipes</em> - conduit allowing 2 processes to communicate</p>
+<ul class="simple">
+<li><p>four issues</p>
+<ol class="simple">
+<li><p>bidirectional?</p></li>
+<li><p>full duplex (data can travel in both directions at same time?) or half duplex (only one way)?</p></li>
+<li><p>parent-child relationship?</p></li>
+<li><p>communicate over a network?</p></li>
+</ol>
+</li>
+<li><p><em>ordinary pipe</em> - write at one end, read at the other</p>
+<ul>
+<li><p>unix function <code class="docutils literal notranslate"><span class="pre">pipe(int</span> <span class="pre">fd[])</span></code></p>
+<ul>
+<li><p>fd[0] is read-end and fd[1] is write-end</p></li>
+</ul>
+</li>
+<li><p>only exists while a child and parent process are communicating</p>
+<ul>
+<li><p>therefore only on same machine</p></li>
+</ul>
+</li>
+<li><p>parent and child should both close unused ends of the pipe</p></li>
+<li><p>on windows, called <em>anonymous pipes</em></p>
+<ul>
+<li><p>requires security attributes</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><em>named pipe</em> - can be bidirectional</p>
+<ul>
+<li><p>called <em>FIFOs</em> in Unix</p>
+<ul>
+<li><p>only half-duplex, requires same machine</p></li>
+</ul>
+</li>
+<li><p>Windows - fulll-duplex and can be different machines</p></li>
+<li><p>many processes can use them</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="threads">
+<h2>2.8.4. 4 - threads<a class="headerlink" href="#threads" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><em>thread</em> - basic unit of CPU utilization</p>
+<ol class="simple">
+<li><p>program counter</p></li>
+<li><p>register set</p></li>
+<li><p>stack</p></li>
+</ol>
+</li>
+<li><p>making a thread is quicker and less resource-intensive than making a process</p></li>
+<li><p>used in RPC and kernels</p></li>
+<li><p>benefits</p>
+<ol class="simple">
+<li><p>responsiveness</p></li>
+<li><p>resource sharing</p></li>
+<li><p>economy</p></li>
+<li><p>scalability</p></li>
+</ol>
+</li>
+</ul>
+<div class="section" id="multicore-programming-skipped">
+<h3>2.8.4.1. 4.2 - multicore programming (skipped)<a class="headerlink" href="#multicore-programming-skipped" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>amdahl’s law</em>: <span class="math notranslate nohighlight">\(speedup \leq \frac{1}{S+(1-S)/N_{cores}}\)</span></p>
+<ul>
+<li><p>S is serial portion</p></li>
+</ul>
+</li>
+<li><p>parallelism</p>
+<ul>
+<li><p><em>data parallelism</em> - distributing subsets of data across cores and performing same operation on each core</p></li>
+<li><p><em>task parallelism</em> - distribution tasks across cores</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="multithreading-models">
+<h3>2.8.4.2. 4.3 - multithreading models<a class="headerlink" href="#multithreading-models" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>need relationship between <em>user threads</em> and <em>kernel threads</em></p>
+<ol class="simple">
+<li><p><em>many-to-one model</em> - maps user-level threads to one kernel thread</p>
+<ul>
+<li><p>can’t be parallel on multicore systems</p></li>
+<li><p>ex. used by <em>Green threads</em></p></li>
+</ul>
+</li>
+<li><p><em>one-to-one model</em></p>
+<ul>
+<li><p>small overhead for creating each thread</p></li>
+<li><p>used by Linux and Windows</p></li>
+</ul>
+</li>
+<li><p><em>many-to-many model</em></p>
+<ul>
+<li><p>less than or equal number of kernel threads</p></li>
+<li><p><em>two-level model</em> mixes a one-to-one model and a many-to-many model</p></li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</div>
+<div class="section" id="thread-libraries">
+<h3>2.8.4.3. 4.4 - thread libraries<a class="headerlink" href="#thread-libraries" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>thread library</em> - provides programmer with an API for creating/managing threads</p></li>
+<li><p><em>asynchronous</em> v. <em>synchronous</em> threading</p></li>
+</ul>
+<p>1 - POSIX Pthreads</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">get</span> <span class="n">the</span> <span class="n">default</span> <span class="n">attributes</span> <span class="o">*/</span>
+<span class="n">pthread</span> <span class="n">attr</span> <span class="n">init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">attr</span><span class="p">);</span>
+<span class="o">/*</span> <span class="n">create</span> <span class="n">the</span> <span class="n">thread</span> <span class="o">*/</span>
+<span class="n">pthread</span> <span class="n">create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">tid</span><span class="p">,</span><span class="o">&amp;</span><span class="n">attr</span><span class="p">,</span><span class="n">runner</span><span class="p">,</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>  <span class="o">//</span> <span class="n">runner</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">func</span> <span class="n">to</span> <span class="n">call</span>
+<span class="o">/*</span> <span class="n">wait</span> <span class="k">for</span> <span class="n">the</span> <span class="n">thread</span> <span class="n">to</span> <span class="n">exit</span> <span class="o">*/</span>
+<span class="n">pthread</span> <span class="n">join</span><span class="p">(</span><span class="n">tid</span><span class="p">,</span><span class="n">NULL</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>shared data is declared globally</p></li>
+</ul>
+<p>2 - Windows</p>
+<p>3 - Java
+- uses Runnable interface</p>
+</div>
+<div class="section" id="implicit-threading-skipped">
+<h3>2.8.4.4. 4.5 - implicit threading (skipped)<a class="headerlink" href="#implicit-threading-skipped" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>implicit threading</em> - handle threading in run-time libraries and compilers</p>
+<ol class="simple">
+<li><p><em>thread pool</em> - number of threads at startup that sit in a pool and wait for work</p></li>
+<li><p><em>OpenMP</em> - set of compiler directives / API for parallel programming</p>
+<ul>
+<li><p>identifies <em>parallel regions</em></p></li>
+<li><p>uses #pragma</p></li>
+</ul>
+</li>
+<li><p><em>Grand central dispatch</em> - extends C</p>
+<ul>
+<li><p>uses <em>dispatch queue</em></p></li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</div>
+<div class="section" id="threading-issues">
+<h3>2.8.4.5. 4.6 - threading issues<a class="headerlink" href="#threading-issues" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>fork/exec need to know if should fork all threads / when to replace program</p></li>
+<li><p><em>signal</em> notifies a process that a particular event has occurred</p>
+<ol class="simple">
+<li><p>has a default signal handler</p></li>
+<li><p>user-defined signal handler</p></li>
+</ol>
+<ul class="simple">
+<li><p>delivering a signal to a process: <code class="docutils literal notranslate"><span class="pre">kill(pid_t</span> <span class="pre">pid,</span> <span class="pre">int</span> <span class="pre">signal)</span></code></p></li>
+<li><p>delivering a signal to a thread: <code class="docutils literal notranslate"><span class="pre">pthread_kill(pthread_t</span> <span class="pre">tid,</span> <span class="pre">int</span> <span class="pre">signal)</span></code></p></li>
+</ul>
+</li>
+<li><p><em>thread cancellation</em> - terminating <em>target thread</em> before it has completed</p>
+<ol class="simple">
+<li><p><em>asynchronous cancellation</em> - one thread immediately terminates target thread</p></li>
+<li><p><em>deferred cancellation</em> - target thread periodically checks whether it should terminate</p></li>
+</ol>
+<ul class="simple">
+<li><p>pthread_cancel(tid)</p>
+<ul>
+<li><p>uses deferred cancellation</p></li>
+<li><p>cancellation occurs only when thread reaches <em>cancellation point</em></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><em>thread-local storage</em> - when threads need separate copies of data</p></li>
+<li><p><em>lightweight process</em> = <em>LWP</em> - between user thread and kernel thread</p></li>
+<li><p><em>scheduler activation</em> - kernel provides application with LWPs</p>
+<ul class="simple">
+<li><p><em>upcall</em> - kernel informs application about certain events</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="linux-skipped">
+<h3>2.8.4.6. 4.7 - linux (skipped)<a class="headerlink" href="#linux-skipped" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>linux process / thread are same = task</p></li>
+<li><p>uses clone() system call</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="process-synchronization">
+<h2>2.8.5. 5 - process synchronization<a class="headerlink" href="#process-synchronization" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><em>cooperating process</em> can effect or be affected by other executing processes</p></li>
+<li><p>ex. consumer/producer</p>
+<ul>
+<li><p>if counter++ and counter– execute concurrently, don’t know what will happen</p></li>
+<li><p>this is a <em>race condition</em></p></li>
+</ul>
+</li>
+</ul>
+<div class="section" id="critical-section-problem">
+<h3>2.8.5.1. 5.2 - critical-section problem<a class="headerlink" href="#critical-section-problem" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>each process has <em>critical section</em> where it updates common variables</p></li>
+<li><p>3 requirements</p>
+<ol class="simple">
+<li><p><em>mutual exclusion</em> -	2 processes can’t concurrently do critical section</p></li>
+<li><p><em>progress</em> - things should be in critical selection</p></li>
+<li><p><em>bounded waiting</em> - every process should eventually get to critical selection</p></li>
+</ol>
+</li>
+<li><p>kernels</p>
+<ol class="simple">
+<li><p><em>preemptive kernels</em></p>
+<ul>
+<li><p>more responsive</p></li>
+</ul>
+</li>
+<li><p><em>nonpreemptive kernels</em></p>
+<ul>
+<li><p>no race conditions</p></li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</div>
+<div class="section" id="peterson-s-solution">
+<h3>2.8.5.2. 5.3 - peterson’s solution<a class="headerlink" href="#peterson-s-solution" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>peterson’s solution</em></p>
+<ul>
+<li><p>not guaranteed to work</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="synchronization-hardware">
+<h3>2.8.5.3. 5.4  - synchronization hardware<a class="headerlink" href="#synchronization-hardware" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>locking</em> - protecting critical regions using locks</p></li>
+<li><p>single-processor solution</p>
+<ul>
+<li><p>prevent interrupts while shared variable is being modified</p></li>
+<li><p>ex. <code class="docutils literal notranslate"><span class="pre">test_and_set()</span></code></p></li>
+</ul>
+</li>
+<li><p>instructions do things like swapping <em>atomically</em> - as one uninterruptable unit</p>
+<ul>
+<li><p>these are basically locked instructions</p></li>
+<li><p>ex. <code class="docutils literal notranslate"><span class="pre">compare_and_swap()</span></code></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="mutex-locks">
+<h3>2.8.5.4. 5.5 - mutex locks<a class="headerlink" href="#mutex-locks" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>mutex</em></p>
+<ul>
+<li><p>simplest synchronization tool</p></li>
+<li><p>this type of mutex lock is called <em>spinlock</em> because requires <em>busy waiting</em> - processes not in critical section are continuously looping</p></li>
+<li><p>good when locks are short</p></li>
+</ul>
+</li>
+</ul>
+<div class="section" id="semaphores">
+<h4>2.8.5.4.1. 5.6 - semaphores<a class="headerlink" href="#semaphores" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><em>semaphore</em> S - integer variable accessed through <em>wait()</em> (like trying to execute) and <em>signal()</em> (like releasing)</p>
+<ul>
+<li><p><em>counting semaphore</em> - unrestricted domain</p></li>
+<li><p><em>binary sempahore</em> - 0 and 1</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">wait</span><span class="p">(</span><span class="n">S</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">while</span><span class="p">(</span><span class="n">S</span><span class="o">&lt;=</span><span class="mi">0</span><span class="p">)</span>
+		<span class="c1">// busy wait</span>
+	<span class="n">S</span><span class="o">--</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">signal</span><span class="p">(</span><span class="n">S</span><span class="p">)</span> <span class="p">{</span>
+	<span class="n">S</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>to improve performace, replace busy wait by process blocking itself</p>
+<ul>
+<li><p>places itself into a waiting queue</p></li>
+<li><p>restarted when other process executes a signal() operation</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="k">struct</span><span class="p">{</span> 
+	<span class="kt">int</span> <span class="n">value</span><span class="p">;</span>
+	<span class="k">struct</span> <span class="n">process</span> <span class="o">*</span><span class="n">list</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">semaphore</span><span class="p">;</span>
+<span class="n">wait</span><span class="p">(</span><span class="n">semaphore</span> <span class="o">*</span><span class="n">S</span><span class="p">)</span> <span class="p">{</span> 
+	<span class="n">S</span><span class="o">-&gt;</span><span class="n">value</span><span class="o">--</span><span class="p">;</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">S</span><span class="o">-&gt;</span><span class="n">value</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+		<span class="n">add</span> <span class="n">this</span> <span class="n">process</span> <span class="n">to</span> <span class="n">S</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">signal</span><span class="p">(</span><span class="n">semaphore</span> <span class="o">*</span><span class="n">S</span><span class="p">)</span> <span class="p">{</span> 
+	<span class="n">S</span><span class="o">-&gt;</span><span class="n">value</span><span class="o">++</span><span class="p">;</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">S</span><span class="o">-&gt;</span><span class="n">value</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">){</span>
+		<span class="n">remove</span> <span class="n">a</span> <span class="n">process</span> <span class="n">P</span> <span class="n">from</span> <span class="n">S</span><span class="o">-&gt;</span><span class="n">list</span><span class="p">;</span> 
+		<span class="n">wakeup</span><span class="p">(</span><span class="n">P</span><span class="p">);</span> <span class="c1">// resumes execution</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>deadlocked</em> - 2 processes are in waiting queues, can’t wakeup unless other process signals them</p></li>
+<li><p><em>indefinite blocking=starving</em> - could happen if we remove processes from waiting queue in LIFO order</p>
+<ul>
+<li><p>bottom never gets out</p></li>
+</ul>
+</li>
+<li><p><em>priority inversion</em></p>
+<ul>
+<li><p>only occurs when processes have &gt; 2 priorities</p></li>
+<li><p>usually solved with a <em>priority-inheritance protocol</em></p>
+<ul>
+<li><p>when a process accesses resources needed by a higher-priority process, it inherits the higher priority until they are finished with the resources in question</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="classic-synchronization-problems">
+<h3>2.8.5.5. 5.7 - classic synchronization problems<a class="headerlink" href="#classic-synchronization-problems" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>bounded-buffer problem</p></li>
+<li><p>readers-writers problem</p>
+<ul class="simple">
+<li><p>writers must have exclusive access</p></li>
+<li><p>readers can read concurrently</p></li>
+</ul>
+</li>
+<li><p>dining-philosophers problem</p></li>
+</ol>
+<div class="section" id="monitors">
+<h4>2.8.5.5.1. 5.8 - monitors<a class="headerlink" href="#monitors" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><em>monitor</em> - highl-level synchronization construct</p>
+<ul>
+<li><p>only 1 process can run at a time</p></li>
+<li><p><em>abstract data type</em> which includes a set of programmer-defined operations with mutual exlusion</p></li>
+<li><p>has <em>condition</em> variables</p>
+<ul>
+<li><p>these can only call wait() or signal()</p></li>
+<li><p>when a signal is encountered, 2 options</p>
+<ol class="simple">
+<li><p>signal and wait</p></li>
+<li><p>signal and continue</p></li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>can implement with a semaphore</p>
+<ul>
+<li><p>1st semaphore: <code class="docutils literal notranslate"><span class="pre">mutex</span></code> - process must wait before entering and signal after leaving the monitor</p></li>
+<li><p>2nd semaphore: <code class="docutils literal notranslate"><span class="pre">next</span></code> - signaling processes use next to suspend themselves</p></li>
+<li><p>3rd semaphore: <code class="docutils literal notranslate"><span class="pre">next_count</span></code> = number of suspended processes</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">wait</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
+<span class="o">//</span> <span class="n">body</span> <span class="n">of</span> <span class="n">F</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nb">next</span> <span class="n">count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> 
+	<span class="n">signal</span><span class="p">(</span><span class="nb">next</span><span class="p">);</span>
+<span class="k">else</span>
+	<span class="n">signal</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>conditional-wait</em> construct can help with resuming</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">x.wait(c);</span></code></p></li>
+<li><p><em>priority number</em> c stored with name of process that is suspended</p></li>
+<li><p>when <code class="docutils literal notranslate"><span class="pre">x.signal()</span></code> is executed, process with smallest priority number is resumed next</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="pthreads-synchronization">
+<h3>2.8.5.6. 5.9.4 - pthreads synchronization<a class="headerlink" href="#pthreads-synchronization" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &lt;pthread.h&gt; </span>
+<span class="n">pthread</span> <span class="n">mutex</span> <span class="n">t</span> <span class="n">mutex</span><span class="p">;</span>
+
+<span class="o">/*</span> <span class="n">create</span> <span class="n">the</span> <span class="n">mutex</span> <span class="n">lock</span> <span class="o">*/</span> 
+<span class="n">pthread</span> <span class="n">mutex</span> <span class="n">init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mutex</span><span class="p">,</span><span class="n">NULL</span><span class="p">)</span> <span class="o">//</span> <span class="n">null</span> <span class="n">specifies</span> <span class="n">default</span> <span class="n">attributes</span>
+
+<span class="n">pthread</span> <span class="n">mutex</span> <span class="n">lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mutex</span><span class="p">);</span> <span class="o">//</span> <span class="n">acquire</span> <span class="n">the</span> <span class="n">mutex</span> <span class="n">lock</span>
+<span class="o">/*</span> <span class="n">critical</span> <span class="n">section</span> <span class="o">*/</span>
+<span class="n">pthread</span> <span class="n">mutex</span> <span class="n">unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mutex</span><span class="p">);</span> <span class="o">//</span> <span class="n">release</span> <span class="n">the</span> <span class="n">mutex</span> <span class="n">lock</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>these functions return 0 w/ correct operation otherwise error code</p></li>
+<li><p>POSIX specifies <em>named</em> and <em>unnamed</em> semaphores</p>
+<ul>
+<li><p>name has name and can be shared by different processes</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &lt;semaphore.h&gt; sem t sem;</span>
+<span class="o">/*</span> <span class="n">Create</span> <span class="n">the</span> <span class="n">semaphore</span> <span class="ow">and</span> <span class="n">initialize</span> <span class="n">it</span> <span class="n">to</span> <span class="mi">1</span> <span class="o">*/</span> <span class="n">sem</span> <span class="n">init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sem</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+<span class="o">/*</span> <span class="n">acquire</span> <span class="n">the</span> <span class="n">semaphore</span> <span class="o">*/</span> 
+<span class="n">sem</span> <span class="n">wait</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sem</span><span class="p">);</span>
+
+<span class="o">/*</span> <span class="n">critical</span> <span class="n">section</span> <span class="o">*/</span>
+
+<span class="o">/*</span> <span class="n">release</span> <span class="n">the</span> <span class="n">semaphore</span> <span class="o">*/</span> 
+<span class="n">sem</span> <span class="n">post</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sem</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="alternative-approaches-skip">
+<h3>2.8.5.7. 5.10 - alternative approaches (skip)<a class="headerlink" href="#alternative-approaches-skip" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="deadlocks">
+<h3>2.8.5.8. 5.11 - deadlocks<a class="headerlink" href="#deadlocks" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>resource utilization</p>
+<ol class="simple">
+<li><p>request</p></li>
+<li><p>use</p></li>
+<li><p>release</p></li>
+</ol>
+</li>
+<li><p>deadlock requires 4 simultaneous conditions</p>
+<ol class="simple">
+<li><p>mutual exclusion</p></li>
+<li><p>hold and wait</p></li>
+<li><p>no preemption</p></li>
+<li><p>circular wait</p></li>
+</ol>
+</li>
+<li><p>deadlocks can be described by <em>system resource-allocation graph</em></p>
+<ul>
+<li><p><em>request edge</em> - directed edge from process P to resource R means P has requested instance of resource type R</p></li>
+<li><p><em>assignment edge</em> - R-&gt; P</p></li>
+<li><p>if the graph has no cycles, not deadlocked</p></li>
+<li><p>if cycle, possible deadlock</p></li>
+</ul>
+</li>
+<li><p>three ways to handle</p>
+<ol class="simple">
+<li><p>use protocol to never enter deadlock</p></li>
+<li><p>enter, detect, recover</p></li>
+<li><p>ignore the problem</p>
+<ul>
+<li><p>developers must write code that avoids deadlocks</p></li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="main-memory">
+<h2>2.8.6. 7 - main memory<a class="headerlink" href="#main-memory" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="background">
+<h3>2.8.6.1. 7.1 - background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>CPU can only directly access main memory and registers</p></li>
+<li><p>accessing memory is slower than registers</p>
+<ul class="simple">
+<li><p>processor must <em>stall</em> or use <em>cache</em></p></li>
+</ul>
+</li>
+<li><p>processes need separate memory spaces</p>
+<ol class="simple">
+<li><p><em>base register</em> - holds smallest usable address</p></li>
+<li><p><em>limit register</em> - specifies size of range</p></li>
+</ol>
+<ul class="simple">
+<li><p>os / hardware check these, throw a trap if there was error</p></li>
+</ul>
+</li>
+<li><p><em>input queue</em> holds processes waiting to be be brought into memory</p></li>
+<li><p>compiler <em>binds</em> symbolic addresses to relocatable addresses</p>
+<ul class="simple">
+<li><p>linkage editor binds relocatable addresses to absolute addresses</p></li>
+</ul>
+</li>
+<li><p>CPU uses <em>virtual address</em>=logical address</p>
+<ul class="simple">
+<li><p><em>memory-management unit (MMU)</em> maps from virtual to <em>physical address</em></p>
+<ul>
+<li><p>simple ex. add virtual address to a process’s base register = <em>relocation register</em></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><em>dynamic loading</em> - don’t load whole process, only load things when called</p></li>
+<li><p><em>dynamically linked libraries</em> - system libraries linked to user programs when the programs are run</p>
+<ul class="simple">
+<li><p><em>stub</em> - tells how to load / locate library routine</p></li>
+</ul>
+</li>
+<li><p><em>shared libraries</em> - all use same library</p></li>
+</ul>
+</div>
+<div class="section" id="skipped">
+<h3>2.8.6.2. 7.2 (skipped)<a class="headerlink" href="#skipped" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="contiguous-memory-allocation">
+<h3>2.8.6.3. 7.3 - contiguous memory allocation<a class="headerlink" href="#contiguous-memory-allocation" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>contiguous memory allocation</em> - each process has a section</p>
+<ul>
+<li><p>put OS in low memory and process memory in higher</p></li>
+</ul>
+</li>
+<li><p><em>transient OS code</em> - not often used</p>
+<ul>
+<li><p>ex. drivers</p></li>
+<li><p>can remove this and change OS memory usage by decreasing val in OS limit register</p></li>
+</ul>
+</li>
+<li><p>split mem into <em>partitions</em></p>
+<ul>
+<li><p>each partition can only have 1 process</p></li>
+<li><p><em>multiple-partition method</em> - free partitions take a new process</p></li>
+<li><p><em>variable-partition scheme</em> - OS keeps table of free mem</p>
+<ul>
+<li><p>all available mem = <em>hole</em></p></li>
+<li><p>holes are divided between processes</p>
+<ol class="simple">
+<li><p><em>first-fit</em> - allocate first hole big enough</p></li>
+<li><p><em>best-fit</em> - allocate smallest hole that is big enough</p></li>
+<li><p><em>worst-fit</em> - allocate largest hole (largest leftover hole)</p>
+<ul>
+<li><p>worst</p></li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><em>external fragmentation</em> - there is enough free mem, but it isn’t contiguous</p>
+<ul>
+<li><p><em>50-percent rule</em> - 1/3 of mem is unusable</p></li>
+<li><p>solved with <em>compaction</em> - shuffle mem to put free mem together</p>
+<ul>
+<li><p>can be expensive to move mem around</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><em>internal fragmentation</em> - extra mem a proc is allocated but not using (because given in block sizes)</p></li>
+<li><p>2 types of non-contiguous solutions</p>
+<ol class="simple">
+<li><p>segmentation</p></li>
+<li><p>paging</p></li>
+</ol>
+</li>
+</ul>
+</div>
+<div class="section" id="segmentation-skip">
+<h3>2.8.6.4. 7.4 - segmentation (skip)<a class="headerlink" href="#segmentation-skip" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>segments</em> make up logical address space</p>
+<ul>
+<li><p>name (or number)</p></li>
+<li><p>length</p></li>
+</ul>
+</li>
+<li><p>logical address is a tuple</p>
+<ul>
+<li><p>(segment-number, offset)</p></li>
+</ul>
+</li>
+<li><p><em>segment table</em></p>
+<ul>
+<li><p>each entry has <em>segment base</em> and <em>segment limit</em></p></li>
+</ul>
+</li>
+<li><p>doesn’t avoid external fragmentation</p></li>
+</ul>
+</div>
+<div class="section" id="paging-skip">
+<h3>2.8.6.5. 7.5 - paging (skip)<a class="headerlink" href="#paging-skip" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>break physical mem into fixed-size <em>frames</em> and logical mem into corresponding <em>pages</em></p></li>
+<li><p>CPU address = [<em>page number</em>|<em>page offset</em>]</p>
+<ul>
+<li><p><em>page table</em> contains base address of each page in physical mem</p></li>
+<li><p>usually, each process gets a page table</p></li>
+</ul>
+</li>
+<li><p><em>frame table</em> keeps track of which frames are available / who owns them</p></li>
+<li><p>paging is prevalent</p></li>
+<li><p>avoids external fragmentation, but has internal fragmentation</p></li>
+<li><p>small page tables can be stored in registers</p>
+<ul>
+<li><p>usually <em>page-table base register</em> points to page table in mem</p></li>
+<li><p>has <em>translation look-aside buffer</em> - stores some page-table entries</p>
+<ul>
+<li><p>some entries are <em>wired down</em> - cannot be removed from TLB</p></li>
+<li><p>some TLBS store <em>address-space identifiers</em> (ADIDs)</p>
+<ul>
+<li><p>identify a process</p></li>
+<li><p>otherwise hard to contain entries for several processes</p></li>
+</ul>
+</li>
+<li><p>want high <em>hit ratio</em></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>page-table often stores a bit for read-write or read-only</p>
+<ul>
+<li><p><em>valid-invalid</em> bit sets whether page is in a process’s logical address space</p></li>
+<li><p>OR <em>page-table length register</em> - says how long page table is</p></li>
+</ul>
+</li>
+<li><p>can share <em>reentrant code</em> = <em>pure code</em></p>
+<ul>
+<li><p>non-self-modifying code</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="page-table-structure-skip">
+<h3>2.8.6.6. 7.6 - page table structure (skip)<a class="headerlink" href="#page-table-structure-skip" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>page tables can get quite large (total mem / page size)</p></li>
+</ul>
+<ol class="simple">
+<li><p><em>hierarchical paging</em> - ex. two-level page table</p></li>
+</ol>
+<ul class="simple">
+<li><p>also called <em>forward-mapped page table</em></p></li>
+<li><p>unused things aren’t filled in</p></li>
+<li><p>for 64-bit, would generally require too many levels</p></li>
+</ul>
+<ol class="simple">
+<li><p><em>hashed page tables</em></p>
+<ul class="simple">
+<li><p>virtual page number is hash key -&gt; physical page number</p></li>
+<li><p><em>clustered page tables</em> - each entry stores everal pages, can be faster</p></li>
+</ul>
+</li>
+<li><p><em>inverted page tables</em></p>
+<ul class="simple">
+<li><p>only one page table in system</p></li>
+<li><p>one entry for each page/frame of memory</p></li>
+<li><p>takes more time to lookup</p>
+<ul>
+<li><p>hash table can speed this up</p></li>
+</ul>
+</li>
+<li><p>difficulty with shared memory</p></li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="id1">
+<h3>2.8.6.7. 7.7-9 (skipped)<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="cpu-scheduling">
+<h2>2.8.7. 6 - cpu scheduling<a class="headerlink" href="#cpu-scheduling" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><em>preemptive</em> - can stop and switch a process that is currently running</p></li>
+</ul>
+<div class="section" id="algorithms">
+<h3>2.8.7.1. 6.3 - algorithms<a class="headerlink" href="#algorithms" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>first-come, first-served</p></li>
+<li><p>shortest-job-first</p>
+<ul class="simple">
+<li><p>can be preemptive or non preemptive</p></li>
+</ul>
+</li>
+<li><p>priority-scheduling</p>
+<ul class="simple">
+<li><p>indefinite blocking / starvation</p></li>
+</ul>
+</li>
+<li><p>round-robin</p>
+<ul class="simple">
+<li><p>every process gets some time</p></li>
+</ul>
+</li>
+<li><p>multilevel queue scheduling</p>
+<ul class="simple">
+<li><p>ex. foreground and background</p></li>
+</ul>
+</li>
+<li><p>multilevel feedback queues</p>
+<ul class="simple">
+<li><p>allows processes to move between queues</p></li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="thread-scheduling">
+<h3>2.8.7.2. 6.4 - thread scheduling<a class="headerlink" href="#thread-scheduling" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>process contention scope</em> - competition for CPU takes place among threads belonging to same process</p>
+<ul>
+<li><p>PTHREAD_SCOPE_PROCESS - user-level threads onto available LWPs</p></li>
+<li><p>PTHREAD_SCOPE_SYSTEM - binds LWP for each user-level thread</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="multiple-processor-scheduling">
+<h3>2.8.7.3. 6.5 - multiple-processor scheduling<a class="headerlink" href="#multiple-processor-scheduling" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>asymmetric vs. symmetric</p>
+<ul>
+<li><p>almost everything is symmetric (SMP)</p></li>
+<li><p><em>processor affinity</em> - try to not switch too much</p></li>
+<li><p><em>load balancing</em> - try to make sure all processes share work</p></li>
+<li><p><em>multithreading</em></p>
+<ol class="simple">
+<li><p>coarse-grained - thread executes until long-latency event, such as memory stall</p></li>
+<li><p>fine-grained - switches between instruction cycle</p></li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="real-time-systems">
+<h3>2.8.7.4. 6.6 - real-time systems<a class="headerlink" href="#real-time-systems" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>event latency</em> - amount of time that elapses from when an event occurs to when it is serviced</p></li>
+</ul>
+<ol class="simple">
+<li><p><em>interrupt latency</em> - period of time from the arrival of an interrupt at the CPU to the start of the routine that services the interrupt</p></li>
+<li><p><em>dispatch latency</em></p>
+<ol class="simple">
+<li><p>Preemption of any process running in the kernel</p></li>
+<li><p>Release by low-priority processes of resources needed by a high-priority process</p></li>
+</ol>
+</li>
+</ol>
+<ul class="simple">
+<li><p><em>rate-monotonic</em> scheduling - schedules periodic tasks using a static priority policy with preemption</p></li>
+</ul>
+</div>
+<div class="section" id="skip">
+<h3>2.8.7.5. 6.7 - SKIP<a class="headerlink" href="#skip" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="virtual-memory">
+<h2>2.8.8. 8 - virtual memory<a class="headerlink" href="#virtual-memory" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h3>2.8.8.1. 8.1 - background<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>lots of code is seldom used</p></li>
+<li><p>virtual mem allows the execution of processes that are not completely in</p></li>
+<li><p>benefits</p>
+<ul>
+<li><p>programs can be larger than physical mem</p></li>
+<li><p>more processes in mem at same time</p></li>
+<li><p>less swapping programs into mem</p></li>
+</ul>
+</li>
+<li><p><em>sparse</em> address space - virtual address spaces with hole (betwen heap and stack)</p></li>
+</ul>
+</div>
+<div class="section" id="demand-paging">
+<h3>2.8.8.2. 8.2 - demand paging<a class="headerlink" href="#demand-paging" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p><em>demand paging</em> - load pages only when they are needed</p>
+<ul class="simple">
+<li><p><em>lazy pager</em> - only swaps a page into memory when it is needed</p></li>
+<li><p>can use valid-indvalid bit in page table to signal whether a page is in memory</p></li>
+</ul>
+</li>
+<li><p><em>memory resident</em> - residing in memory</p></li>
+<li><p>accessing page marked invalid causes <em>page fault</em></p>
+<ul class="simple">
+<li><p>must restart after fetching page</p>
+<ol class="simple">
+<li><p>don’t let anything change while fetching</p></li>
+<li><p>use registers to store state before fetching</p></li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p><em>pure demand paging</em> - never bring a page into memory until it is required</p>
+<ul class="simple">
+<li><p>programs tend to have <em>locality of reference</em>, so we bring in chunks at a time</p></li>
+</ul>
+</li>
+<li><p>extra time when there is a page fault</p>
+<ol class="simple">
+<li><p>service the page-fault interrupt</p></li>
+<li><p>read in the page</p></li>
+<li><p>restart the process</p></li>
+</ol>
+<ul class="simple">
+<li><p>effective access time is directly proportional to <em>page-fault rate</em></p></li>
+</ul>
+</li>
+<li><p><em>anonymous memory</em> - pages not associated with a file</p></li>
+</ul>
+</div>
+<div class="section" id="copy-on-write">
+<h3>2.8.8.3. 8.3 - copy-on-write<a class="headerlink" href="#copy-on-write" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>copy-on-write</em> - allows parent and child processes intially to share the same pages</p>
+<ul>
+<li><p>if either process writes, copy of shared page is created</p></li>
+<li><p>new pages can come from a set <em>pool</em></p></li>
+</ul>
+</li>
+<li><p><em>zero-fill-on-demand</em> - zeroed out before being allocated</p></li>
+<li><p><em>virtual memory fork</em> - not copy-on-write</p>
+<ul>
+<li><p>child uses adress space of parent</p></li>
+<li><p>parent suspended</p></li>
+<li><p>meant for when child calls exec() immediately</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="page-replacement-select-which-frames-to-replace">
+<h3>2.8.8.4. 8.4 - page replacement - select which frames to replace<a class="headerlink" href="#page-replacement-select-which-frames-to-replace" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>multiprogramming might <em>over-allocate</em> memory</p>
+<ul class="simple">
+<li><p>all programs might need all their mem at once</p></li>
+</ul>
+</li>
+<li><p>buffers for I/O also use a bunch of mem</p></li>
+<li><p>when over-allocated, 3 options</p>
+<ol class="simple">
+<li><p>terminate user process</p></li>
+<li><p>swap out a process</p></li>
+<li><p>page replacement</p></li>
+</ol>
+</li>
+<li><p>want lowest page-fault rate</p></li>
+<li><p>test with <em>reference string</em>, which is just a list of memory references</p></li>
+<li><p>if no frame is free, find one not being used and free it</p></li>
+<li><p>write its contents to swap space</p></li>
+<li><p><em>modify bit</em>=<em>dirty bit</em> reduces overhead</p>
+<ul class="simple">
+<li><p>if hasn’t been modified then don’t have to rewrite it to disk</p></li>
+</ul>
+</li>
+<li><p>page replacement examples</p>
+<ol>
+<li><p>FIFO</p>
+<ul class="simple">
+<li><p><em>Belady’s anomaly</em> - for some algorithms, page-fault rate may increase as number of allocate frames increases</p></li>
+</ul>
+</li>
+<li><p>optimal (OPT / MIN)</p>
+<ul class="simple">
+<li><p>replace the page that will not be used for the longest period of time</p></li>
+</ul>
+</li>
+<li><p>LRU - least recently used (last used)</p>
+<ol class="simple">
+<li><p>implement with counters since each use</p></li>
+<li><p>stack of page numbers (whenever something is used, put it on top)</p></li>
+</ol>
+<ul class="simple">
+<li><p><em>stack algorithms</em> - set of pages in memory for n frames is always a subset of the set of pages that would be in memory with n + 1 frames</p>
+<ul>
+<li><p>don’t suffer from Belady’s anomaly</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>LRU-approximation</p>
+<ul class="simple">
+<li><p><em>reference bit</em> - set whenever a page is used</p></li>
+<li><p>can keep <em>additional reference bits</em> by recording reference bits at regular intervals1</p></li>
+<li><p><em>second-chance</em> algorithm - FIFO, but if ref bit is 1, set ref bit to 0 and move on to next FIFO page</p></li>
+<li><p>can have clock algorithm</p></li>
+<li><p><em>enhanced second-chance</em> - uses reference bit and modify bit</p>
+<ul>
+<li><p>give preference to pages that have been modified</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>counting-based - count and implement LFU (least frequently used) or MFU (most frequently used)</p></li>
+</ol>
+</li>
+<li><p>page-buffering algorithms</p>
+<ul class="simple">
+<li><p>pool of free frames - makes things faster</p></li>
+<li><p>list of modified pages - written to disk whenever paging device is idle</p></li>
+<li><p>som algorithms, like databases perform better when they get their own memory capability called <em>raw disk</em> instead of being managed by OS</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="frame-allocation-algorithms-how-many-frames-to-allocate-to-teach-process-in-memory-skipped">
+<h3>2.8.8.5. 8.5 <em>frame-allocation algorithms</em> - how many frames to allocate to teach process in memory (skipped)<a class="headerlink" href="#frame-allocation-algorithms-how-many-frames-to-allocate-to-teach-process-in-memory-skipped" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="thrashing">
+<h3>2.8.8.6. 8.6 - thrashing<a class="headerlink" href="#thrashing" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>if low-priority process gets too few frames, swap it out</p>
+<ul>
+<li><p><em>thrashing</em> - process spends more time paging than executing</p>
+<ul>
+<li><p>CPU utilization stops increasing</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><em>local replacement algorithm</em> = <em>priority replacement algorithm</em> - if one process starts thrashing, cannot steal frames from another</p>
+<ul>
+<li><p><em>locality model</em> - each locality is a set of pages actively used together</p></li>
+<li><p>give process enough for its current locality</p></li>
+</ul>
+</li>
+<li><p><em>working-set model</em> - still based on locality</p>
+<ul>
+<li><p>defines <em>working-set window</em> <span class="math notranslate nohighlight">\(\delta\)</span></p></li>
+<li><p>defines <em>working set</em> as pages in most recent <span class="math notranslate nohighlight">\(\delta\)</span> refs</p></li>
+<li><p>OS adds / suspends processes according to working set sizes</p></li>
+<li><p>approximate with fixed-interval timer</p></li>
+</ul>
+</li>
+<li><p><em>page-fault frequency</em> - add / decrease pages based on targe page-fault rate</p></li>
+</ul>
+</div>
+<div class="section" id="buddy-system">
+<h3>2.8.8.7. 8.8.1 - buddy system<a class="headerlink" href="#buddy-system" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>memory allocated with <em>power-of-2 allocator</em> - requests are given powers of 2</p>
+<ul>
+<li><p>each page is split into 2 <em>buddies</em> and each of those splits again recursively</p></li>
+<li><p><em>coalescing</em> - buddies can be combined quickly</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="mass-storage-structure">
+<h2>2.8.9. 9 - mass-storage structure<a class="headerlink" href="#mass-storage-structure" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="disk-scheduling">
+<h3>2.8.9.1. 9.4 - disk scheduling<a class="headerlink" href="#disk-scheduling" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>bandwidth</em> - total number of bytes transferred, divided by time</p></li>
+<li><p>first-come first-served</p></li>
+<li><p>shortest-seek-time-frist</p></li>
+<li><p><em>SCAN</em> algorithm - disk swings side to side servicing requests on the way</p>
+<ul>
+<li><p>also called elevator algorithm</p></li>
+<li><p>also has circular-scan</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="disk-management">
+<h3>2.8.9.2. 9.5 - disk management<a class="headerlink" href="#disk-management" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>low-level formatting</em> - dividing disk into sectors that <em>controller</em> can read/write</p>
+<ul>
+<li><p>blocks have header / trailer with error-correcting codes</p></li>
+</ul>
+</li>
+<li><p><em>bad blocks</em> are corrupted - need to replace them with others = <em>sector sparing</em> = <em>forwarding</em></p>
+<ul>
+<li><p><em>sector slipping</em> - just renumbers to not index bad blocks</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="file-system-interface">
+<h2>2.8.10. 10 - file-system interface<a class="headerlink" href="#file-system-interface" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>2.8.10.1. 10.1<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>os maintains <em>open-file table</em></p></li>
+<li><p>might require file locking</p></li>
+<li><p>must support different file types</p></li>
+</ul>
+</div>
+<div class="section" id="access-methods">
+<h3>2.8.10.2. 10.2 - access methods<a class="headerlink" href="#access-methods" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>simplest - <em>sequential</em></p></li>
+<li><p><em>direct access</em> = <em>relative access</em></p>
+<ul>
+<li><p>uses relative block numbers</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h3>2.8.10.3. 10.3<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>disk can be partitioned</p></li>
+<li><p>two-level directory</p>
+<ul>
+<li><p>users are first level</p></li>
+<li><p>directory is 2nd level</p></li>
+</ul>
+</li>
+<li><p>extend this into a tree</p>
+<ul>
+<li><p>acyclic makes it faster to search</p></li>
+<li><p>cycles require very slow <em>garbage collection</em></p></li>
+</ul>
+</li>
+<li><p><em>link</em> - pointer to another thing</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="file-system-implementation">
+<h2>2.8.11. 11 - file-system implementation<a class="headerlink" href="#file-system-implementation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h3>2.8.11.1. 11.1<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>file-control block (FCB)</em> contains info about file ownership, etc.</p></li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h3>2.8.11.2. 11.4<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>contiguous allocation</p></li>
+<li><p>linked allocation</p>
+<ul>
+<li><p>FAT</p></li>
+</ul>
+</li>
+<li><p>indexed allocation - all the pointers in 1 block</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>2.8.12. 11.5<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>keep track of <em>free-space list</em></p>
+<ul>
+<li><p>implemented as bit map</p></li>
+</ul>
+</li>
+<li><p>keep track of linked list of free space</p></li>
+<li><p><em>grouping</em> - block stores n-1 free blocks and 1 pointer to next block</p></li>
+<li><p><em>counting</em> - keep track of ptr to next block and the number of free blocks after that</p></li>
+</ul>
+</div>
+<div class="section" id="i-o-systems">
+<h2>2.8.13. 12 - i/o systems<a class="headerlink" href="#i-o-systems" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><em>bus</em> - shared set of wires</p></li>
+<li><p>registers</p>
+<ul>
+<li><p>data-in - read by the host</p></li>
+<li><p>data-out</p></li>
+<li><p>status</p></li>
+<li><p>control</p></li>
+</ul>
+</li>
+<li><p><em>interrupt chaining</em> - each element in the interrupt vector points to the had of a list of interrupt handlers</p></li>
+<li><p>system calls use software interrupt</p></li>
+<li><p><em>direct memory access</em> - read large chunks instead of one byte at a time</p></li>
+<li><p><em>device-status table</em></p></li>
+<li><p><em>spool</em> - buffer for device (ex. printer) that can’t hold interleaved data</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes/cs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="graphs.html" title="previous page">2.7. graphs</a>
+    <a class='right-next' id="next-link" href="arch.html" title="next page">2.9. architecture</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Chandan Singh<br/>
+        
+            &copy; Copyright None.<br/>
+          <div class="extra_footer">
+            <p>
+Many of these images are taken from resources on the web.
+</p>
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

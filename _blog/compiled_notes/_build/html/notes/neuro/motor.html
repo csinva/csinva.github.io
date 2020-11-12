@@ -1,0 +1,1350 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>7.6. motor system &#8212; learning to learn</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../_static/togglebutton.js"></script>
+    <script type="text/javascript" src="../../_static/clipboard.min.js"></script>
+    <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    <script type="text/javascript">var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script type="text/javascript" src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" type="text/javascript" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script type="text/javascript">
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="7.7. development" href="development.html" />
+    <link rel="prev" title="7.5. memory" href="memory.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">learning to learn</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   welcome 👋
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../research_ovws/research_ovws.html">
+   1. research_ovws
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_comp_neuro.html">
+     1.1. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_disentanglement.html">
+     1.2. disentanglement
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_complexity.html">
+     1.3. complexity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_interesting_science.html">
+     1.4. interesting science
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_dl_theory.html">
+     1.5. dl theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_scat.html">
+     1.6. scattering transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">
+     1.7. ml in medicine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_dl_for_neuro.html">
+     1.8. dl for neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_uncertainty.html">
+     1.9. uncertainty
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_interp.html">
+     1.10. interpretability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_kernels.html">
+     1.11. kernels
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../cs/cs.html">
+   2. cs
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/retrieval.html">
+     2.1. info retrieval
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/python_ref.html">
+     2.2. python ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/data_structures.html">
+     2.3. data structures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/software.html">
+     2.4. software engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/quantum.html">
+     2.5. quantum
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/algo.html">
+     2.6. algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/graphs.html">
+     2.7. graphs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/os.html">
+     2.8. os
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/arch.html">
+     2.9. architecture
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/java_ref.html">
+     2.10. java ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/comp_theory.html">
+     2.11. cs theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/cpp_ref.html">
+     2.12. c/c++ ref
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../math/math.html">
+   3. math
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/differential_equations.html">
+     3.1. differential equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/proofs.html">
+     3.2. proofs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/analysis.html">
+     3.3. real analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/linear_algebra.html">
+     3.4. linear algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/signals.html">
+     3.5. signals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/optimization.html">
+     3.6. optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/calculus.html">
+     3.7. calculus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/chaos.html">
+     3.8. chaos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/math_basics.html">
+     3.9. math basics
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../stat/stat.html">
+   4. stat
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/graphical_models.html">
+     4.1. graphical models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/data_analysis.html">
+     4.2. data analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/testing.html">
+     4.3. testing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/causal_inference.html">
+     4.4. causal inference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/info_theory.html">
+     4.5. info theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/linear_models.html">
+     4.6. linear models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/time_series.html">
+     4.7. time series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/game_theory.html">
+     4.8. game theory
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ml/ml.html">
+   5. ml
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/comp_vision.html">
+     5.1. computer vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/structure_ml.html">
+     5.2. structure learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/classification.html">
+     5.3. classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/unsupervised.html">
+     5.4. unsupervised
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/deep_learning.html">
+     5.5. deep learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/feature_selection.html">
+     5.6. feature selection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/learning_theory.html">
+     5.7. learning theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/evaluation.html">
+     5.8. evaluation
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ai/ai.html">
+   6. ai
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/search.html">
+     6.1. search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/nlp.html">
+     6.2. nlp
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/fairness_sts.html">
+     6.3. fairness
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/cogsci.html">
+     6.4. cogsci
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/ai_futures.html">
+     6.5. ai futures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/logic.html">
+     6.6. logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/philosophy.html">
+     6.7. philosophy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/psychology.html">
+     6.8. psychology
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/knowledge_rep.html">
+     6.9. representations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/decisions.html">
+     6.10. decisions
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="neuro.html">
+   7. neuro
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="brain_basics.html">
+     7.1. brain basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="vissci.html">
+     7.2. vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="comp_neuro.html">
+     7.3. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sensory_input.html">
+     7.4. sensory input
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="memory.html">
+     7.5. memory
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     7.6. motor system
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="development.html">
+     7.7. development
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/notes/neuro/motor.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/csinva/csinva.github.io"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lower">
+   7.6.1. 16 lower
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#upper">
+   7.6.2. 17 upper
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basal-ganglia-choose-what-you-want-to-do">
+   7.6.3. 18 basal ganglia (choose what you want to do)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cerebellum-fine-tuning-all-your-motion">
+   7.6.4. 19 cerebellum (fine tuning all your motion)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#eye-movements-integration">
+   7.6.5. 20 eye movements/integration
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visceral-how-you-control-organs-stress-levels-etc">
+   7.6.6. 21 visceral (how you control organs, stress levels, etc.)
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="motor-system">
+<h1>7.6. motor system<a class="headerlink" href="#motor-system" title="Permalink to this headline">¶</a></h1>
+<p>notes from Neuroscience, 5th edition + Intro to neurobiology course at UVA</p>
+<div class="section" id="lower">
+<h2>7.6.1. 16 lower<a class="headerlink" href="#lower" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>sensory in dorsal spinal cord, motor in ventral</p>
+<ul class="simple">
+<li><p>farther out neurons control farther out body parts (medial=trunk, lateral=arms,legs)</p></li>
+</ul>
+</li>
+<li><p>one motor neuron (MN) innervates multiple fibers</p>
+<ul class="simple">
+<li><p>the more fibers/neuron, the less precise</p></li>
+<li><p><em>MN pool</em> - group of MNs=motor units</p></li>
+</ul>
+</li>
+<li><p>muscle tone = all your muscles are a little on, kind of like turning on the car engine and when you want to, you can move forward</p>
+<ul class="simple">
+<li><p>more firing = more contraction</p></li>
+</ul>
+</li>
+<li><p>MN types</p>
+<ol class="simple">
+<li><p>fast fatiguable - white muscle</p></li>
+<li><p>fast fatigue-resistant</p></li>
+<li><p>slow - red muscles, make atp</p></li>
+</ol>
+<ul class="simple">
+<li><p>muscles are innervated by a proportion of these MNs</p></li>
+</ul>
+</li>
+<li><p>reflex</p>
+<ul class="simple">
+<li><p>whenever you get positive signal on one side, also get negative on other</p></li>
+<li><p><em>flexor</em> - curl in (bicep)</p></li>
+<li><p><em>extensor</em> - extend (tricep)</p></li>
+</ul>
+</li>
+</ul>
+<ol class="simple">
+<li><p>proprioceptors (+) - measure length - more you stretch, more firing of alpha MN to contract</p></li>
+</ol>
+<ul class="simple">
+<li><p><em>intrafusal muscle=spindle</em> - stretches the proprioceptor so that it can measure even when muscle is already stretched</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\gamma\)</span> motor neuron - adjusts intrafusal muscles until they are just right</p>
+<ul>
+<li><p>keeps muscles tight so you know how much muscle is streteched</p></li>
+<li><p>if alpha fires a lot, gamma will increase as well</p>
+<ul>
+<li><p>high gamma allows for fast responsiveness - brainstem modulators (serotonin) also do this</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>opposes muscle stretch to keep it fixed</p></li>
+<li><p>spindle -&gt; activates muscles -&gt; contracts -&gt; turns off</p></li>
+<li><p>sensory neurons / gamma MNs innervate muscle spindle</p></li>
+</ul>
+</li>
+<li><p>homonymous MNs go into same muscle, antagonistic muscle pushes other way</p></li>
+</ul>
+<ol class="simple">
+<li><p><em>golgi tendon</em> (-) measures pressure not stretch</p></li>
+</ol>
+<ul class="simple">
+<li><p>safety switch</p></li>
+<li><p>inhibits homonymous neuron so you don’t rip muscle off</p></li>
+<li><p><em>ALS</em> = Lou Gehrig’s disease</p>
+<ul>
+<li><p>MNs are degenerating - reflexes don’t work</p></li>
+<li><p>progressive loss of <span class="math notranslate nohighlight">\(\alpha\)</span> MNs</p></li>
+<li><p>last neuron to go is superior rectus muscle -&gt; people use eyes to talk with tracker</p></li>
+</ul>
+</li>
+<li><p><em>CPG</em> = central pattern generator</p>
+<ul>
+<li><p>ex. step on pin, lift up leg</p></li>
+<li><p>walking works even if you cut cat’s spinal cord</p></li>
+<li><p>collection of interneurons</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="upper">
+<h2>7.6.2. 17 upper<a class="headerlink" href="#upper" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p><img alt="" src="../../_images/17_1.png" /></p></li>
+<li><p><img alt="" src="../../_images/17_2.png" /></p></li>
+<li><p><img alt="" src="../../_images/17_3.png" /></p></li>
+<li><p><img alt="" src="../../_images/17_4.png" /></p></li>
+<li><p>cAMP is used by GPCR</p></li>
+<li><p>lift and hold circuit</p>
+<ol class="simple">
+<li><p>ctx-&gt;<em>lateral white matter</em>-&gt;lateral ventral horn-&gt;limb muscles</p></li>
+</ol>
+<ul class="simple">
+<li><p>lateral white matter - most sensitive to injury</p></li>
+</ul>
+<ol class="simple">
+<li><p>brainstem-&gt;<em>medial white matter</em>-&gt;medial horn-&gt;trunk</p></li>
+</ol>
+<ul class="simple">
+<li><p>medial white matter -&gt; goes into trunk</p></li>
+</ul>
+</li>
+<li><p><em>bulbarspinal tracts</em></p>
+<ol class="simple">
+<li><p>lateral and medial <em>vestibulospinal</em> tracts - feedback</p></li>
+</ol>
+<ul class="simple">
+<li><p>automated system - not much thinking</p></li>
+<li><p>posture - reflex</p></li>
+<li><p>too slow for learning surfing</p></li>
+</ul>
+<ol class="simple">
+<li><p><em>reticular</em> - feedforward = anticipate things before they happen</p></li>
+</ol>
+<ul class="simple">
+<li><p>command / control system for trunk muscles (posture)</p></li>
+<li><p>feedforward - not a reflex, lean back before opening drawer</p></li>
+<li><p><em>caudal pontine</em> - feeds into spinal cord</p></li>
+</ul>
+<ol class="simple">
+<li><p><em>colliculospinal</em> tract</p></li>
+</ol>
+<ul class="simple">
+<li><p>has <em>superior colliculus</em> - eye muscles, neck-looking</p></li>
+<li><p>see ch. 20 - reflex</p></li>
+</ul>
+</li>
+<li><p><em>corticular bulbar tract</em> (premotor-&gt;primary motor-&gt;brainstem)</p>
+<ul class="simple">
+<li><p>motor cortexes - this info is <em>descending</em></p></li>
+<li><p>can override reticular reflexes in reticular formation</p></li>
+<li><p>premotor cortex (P2) - contains all actions you can do</p>
+<ul>
+<li><p>has <em>mirror neurons</em> that fire ahead of primary neurons</p>
+<ul>
+<li><p>fire if you think about it or if you do it</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>primary motor cortex (P1)</p>
+<ul>
+<li><p>layer 1 ascending</p></li>
+<li><p>layer 4 input</p></li>
+<li><p>layer 5 - <em>Betz cells</em> - behave like 6 (output)</p></li>
+<li><p>layer 6 - descending output</p></li>
+<li><p>has map like S1 does</p>
+<ul>
+<li><p><em>Jacksonian march</em> get seizure that goes from feet to face (usually one side)</p>
+<ul>
+<li><p>epileptic seizure - neurons fire too much and fire neurons near them</p>
+<ul>
+<li><p><em>insular</em> - flashes of moods</p></li>
+<li><p><em>pyriform</em> - flashes of smells</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><em>Betz cells</em> - if they fire, you will do something</p>
+<ul>
+<li><p>dictate a goal, not single neuron to fire</p></li>
+<li><p>axons to <em>ventral horn</em> of spinal cord</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>lesions</p>
+<ol class="simple">
+<li><p>upper</p></li>
+</ol>
+<ul class="simple">
+<li><p><em>spasticity</em> - unorganized leg motions</p></li>
+<li><p>increased tone - tight muscles</p></li>
+<li><p>hyperactive deep reflexes</p>
+<ul>
+<li><p>ex. <em>babinski’s sign</em></p></li>
+<li><p>curl foot down a lot because you don’t know how much to curl</p></li>
+<li><p>curling foot down = <em>normal plantar</em></p></li>
+<li><p>more serotonin can cause this</p></li>
+</ul>
+</li>
+</ul>
+<ol class="simple">
+<li><p>lower</p></li>
+</ol>
+<ul class="simple">
+<li><p>hypoactive deep reflexes</p></li>
+<li><p>decreased tone</p></li>
+<li><p>severe muscle atrophy</p></li>
+</ul>
+</li>
+<li><p>pathways</p>
+<ul class="simple">
+<li><p>Betz cell</p>
+<ul>
+<li><p>90% cross midline in brainstem - control limbs</p></li>
+<li><p>10% don’t cross - trunk muscles</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="basal-ganglia-choose-what-you-want-to-do">
+<h2>7.6.3. 18 basal ganglia (choose what you want to do)<a class="headerlink" href="#basal-ganglia-choose-what-you-want-to-do" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p><img alt="" src="../../_images/18_1.png" /></p></li>
+<li><p><img alt="" src="../../_images/18_2.png" /></p></li>
+<li><p><img alt="" src="../../_images/18_3.png" /></p></li>
+<li><p>“who you are”</p></li>
+<li><p>outputs</p>
+<ol class="simple">
+<li><p>brainstem</p></li>
+<li><p>motor cortex</p></li>
+</ol>
+</li>
+<li><p>4 loops (last 2 aren’t really covered)</p>
+<ul>
+<li><p>motor loops</p>
+<ol class="simple">
+<li><p><em>body movement loop</em></p></li>
+</ol>
+<ul class="simple">
+<li><p><em>SnC -&gt; S (CP) -&gt; (-) Gp -&gt; (-) VA/VL -&gt; motor cortex</em></p></li>
+</ul>
+<ol class="simple">
+<li><p><em>oculomotor loop</em></p></li>
+</ol>
+<ul class="simple">
+<li><p><em>cortex -&gt; caudate -&gt; substantia nigra pars reticulata -&gt; superior colliculus</em></p></li>
+</ul>
+</li>
+<li><p>non-motor loops
+3. <em>prefrontal loop</em> - daydreaming (higher-order function)</p>
+<ul class="simple">
+<li><p>spiny neurons corresponding to a silly idea (alien coming after you) filtered out because not fired enough</p></li>
+<li><p>schizophrenia - can’t filter that out</p></li>
+</ul>
+<ol class="simple">
+<li><p><em>limbic loop</em> - mood</p></li>
+</ol>
+<ul class="simple">
+<li><p>has <em>nucleus accumbens</em></p></li>
+<li><p>can make mood better with dopamine</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><em>substantia nigra</em></p>
+<ol class="simple">
+<li><p><em>pars compacta</em> - dopaminergic neurons (input to striatum)</p></li>
+</ol>
+<ul class="simple">
+<li><p>more dopamine = more strength between cortical pyramidal neurons and spiny neurons (turns up the gain)</p></li>
+<li><p>dopamine helps activate a spiny neuron</p></li>
+<li><p>may be the ones that learn (positive outcome is saved, will result in more dopamine later)</p></li>
+<li><p><em>Parkinson’s</em> - specific loss of dopaminergic neurons</p>
+<ul>
+<li><p>dopaminergic neurons form <em>melanin</em> = dark color</p></li>
+<li><p>when you get down to 20% what you were born with</p></li>
+<li><p>know what they need to do - don’t have enough dopamine to act</p></li>
+<li><p>treat with L Dopa -&gt; something like dopamine -&gt; take out globus pallidus</p></li>
+</ul>
+</li>
+<li><p>cocaine, amphetamine - too much dopamine</p></li>
+<li><p><em>Huntington’s</em> - death of specific class of spiny neurons</p>
+<ul>
+<li><p>have uncontrolled actions</p></li>
+</ul>
+</li>
+<li><p><em>Tourette’s</em> - too much dopamine</p>
+<ul>
+<li><p>also alcohol</p></li>
+</ul>
+</li>
+<li><p>MPPP (synthetic heroin)</p>
+<ul>
+<li><p>MPTP looks like dopamine but turns into MPP and kills dopaminergic neurons</p></li>
+<li><p>treated with L Dopa to reactivate spiny neurons</p></li>
+</ul>
+</li>
+</ul>
+<ol class="simple">
+<li><p><em>pars reticulata</em></p></li>
+</ol>
+<ul class="simple">
+<li><p>doesn’t have dopamine (output from striatum)</p></li>
+</ul>
+</li>
+</ul>
+<ol class="simple">
+<li><p><em>striatum</em> contains spiny neurons</p></li>
+<li><p><em>caudate</em> (for vision) - output to globus pallidus and substantia nigra (pars reticulata)</p></li>
+<li><p><em>putamen</em> - output only to globus pallidus</p></li>
+</ol>
+<ul class="simple">
+<li><p>each spiny neuron gets input from ~1000 cortical pyramidal cells</p></li>
+</ul>
+<ol class="simple">
+<li><p><em>globus pallidus</em></p></li>
+</ol>
+<ul class="simple">
+<li><p>each spiny neuron connects to one globus pallidus neuron</p></li>
+<li><p>deja vu - spiny neuron you haven’t fired in a while</p></li>
+</ul>
+<ol class="simple">
+<li><p><em>VA/VL</em> (thalamus)</p></li>
+</ol>
+<ul class="simple">
+<li><p>all motor actions must go through here before cortex</p></li>
+<li><p>has series of commands of all actions you can do</p></li>
+<li><p>has parallel set of betz cells that will illicit those actions</p></li>
+<li><p>VA/VL is always firing, globus pallidus inhibits it (tonic connection)</p></li>
+</ul>
+</div>
+<div class="section" id="cerebellum-fine-tuning-all-your-motion">
+<h2>7.6.4. 19 cerebellum (fine tuning all your motion)<a class="headerlink" href="#cerebellum-fine-tuning-all-your-motion" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><img alt="" src="../../_images/19_1_important.png" /></p></li>
+<li><p><img alt="" src="../../_images/19_2_important.png" /></p></li>
+<li><p><img alt="" src="../../_images/19_3.png" /></p></li>
+<li><p><img alt="" src="../../_images/19_4.png" /></p></li>
+<li><p><img alt="" src="../../_images/19_5.png" /></p></li>
+<li><p><img alt="" src="../../_images/19_6.png" /></p></li>
+<li><p><img alt="" src="../../_images/19_7.png" /></p></li>
+<li><p>redundant system - cortex could do all of this, but would be slow</p></li>
+<li><p>repeated circuit - interesting for neuroscientists</p></li>
+<li><p>all info comes in, gets processed and goes back out</p>
+<ul>
+<li><p>cerebellum gets motor <em>efferant copy</em></p></li>
+<li><p>all structures on your brain that do processing send out efferent</p></li>
+<li><p>cerebellum sends efferant copy back to itself with time delay (through inferior olive)</p></li>
+</ul>
+</li>
+</ul>
+<ol class="simple">
+<li><p><em>cerebrocerebellum</em></p>
+<ul class="simple">
+<li><p>deals with premotor cortex (mostly motor cortex)</p></li>
+</ul>
+</li>
+<li><p><em>spinocerebellum</em> = <em>clarke’s nucleus</em>, knows stretch of every muscle, many proprioceptors go straight into here</p></li>
+</ol>
+<ul class="simple">
+<li><p>motor cortex</p></li>
+<li><p>has a map of muscles</p></li>
+</ul>
+<ol class="simple">
+<li><p><em>vestibular cerebellum</em> - vestibular-&gt;cerebellum-&gt;vestibular</p></li>
+</ol>
+<ul class="simple">
+<li><p>vestibular system leans you back but if wind blows, have to adjust to that</p></li>
+<li><p>input</p>
+<ul>
+<li><p><em>pontine</em> nuclei (from cortex)</p></li>
+<li><p><em>vestibular</em> nuclei (balance)</p></li>
+<li><p><em>cuneate</em> nucleus (somatosensory from spinal upper body)</p></li>
+<li><p><em>clarke</em> (proprio from spinal lower body)</p></li>
+</ul>
+</li>
+<li><p>processing</p>
+<ul>
+<li><p>cerebellar deep nuclei</p></li>
+</ul>
+</li>
+<li><p>output</p>
+<ul>
+<li><p>deep cerebellar nuclei</p>
+<ul>
+<li><p>go to superior colliculus, reticular formation</p></li>
+</ul>
+</li>
+<li><p>VA/VL (thalamus) - back to cortex</p></li>
+<li><p>red nucleus</p></li>
+</ul>
+</li>
+<li><p>circuit 1 - fine-tuning</p></li>
+<li><p>circuit 2 - detects differences, adjusts</p>
+<ul>
+<li><p>cerebellum -&gt; <em>red nucleus</em> (is an efferant copy) -&gt; <em>inferior olive</em> -&gt; cerebellum</p></li>
+<li><p>compare new copy to old copy</p></li>
+</ul>
+</li>
+<li><p>cells</p>
+<ul>
+<li><p><em>purkinje cells</em> - huge number of dendrite branches		- dead planar allows good imaging</p>
+<ul>
+<li><p>GABAergic</p></li>
+</ul>
+</li>
+<li><p>(input) mossy fibers -(+)&gt; granule cells (send parallel fibers) -(+)&gt; purkinje cell -(-)&gt; deep cerebellar nuclei (output)</p>
+<ol class="simple">
+<li><p><em>mossy-&gt;granule-&gt;parallel fibers</em> connect to ~100,000 parallel fibers</p></li>
+<li><p><em>climbing fiber</em> - comes from inferior olive and goes back to purkinje cell (this is the efferent copy) = training signal</p></li>
+</ol>
+</li>
+<li><p>loops</p>
+<ul>
+<li><p>deep excitatory loop (climbing/mossy) -(+)-&gt; deep cerebellar nuclei</p></li>
+<li><p>cortical inhibitory loop (climbing/granule) -(+)-&gt; purkinje</p>
+<ul>
+<li><p>the negative is from purkinje to deep cerebellar nuclei</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>alcohol</p>
+<ul>
+<li><p>can create gaps = <em>folia</em></p></li>
+<li><p>long-term use causes degeneration = <em>ataxia</em> (lack of coordination)</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="eye-movements-integration">
+<h2>7.6.5. 20 eye movements/integration<a class="headerlink" href="#eye-movements-integration" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p><img alt="" src="../../_images/20_1.png" /></p></li>
+<li><p><img alt="" src="../../_images/20_2.png" /></p></li>
+<li><p>Broca’s view - look at people with problems</p></li>
+<li><p>Ramon y Cajal - look at circuits</p></li>
+<li><p>5 kinds of eye movements</p>
+<ol class="simple">
+<li><p><em>saccades</em></p></li>
+</ol>
+<ul class="simple">
+<li><p>use cortex, superior colliculus (visual info -&gt; LGN -&gt; cortex, 10% goes to brainstem)</p></li>
+<li><p>constantly moving eyes around (fovea)</p></li>
+<li><p>~scan at 30 Hz</p></li>
+<li><p>5 Hz=200 ms for cortex to process so pause eyes (get 5-6 images)</p>
+<ul>
+<li><p>there is a little bit of drift</p></li>
+</ul>
+</li>
+<li><p>can’t control this</p></li>
+<li><p>humans are better than other animals at seeing things that aren’t moving</p></li>
+</ul>
+<ol class="simple">
+<li><p><em>VOR</em> - vestibular ocular reflex - keeps eyes still</p></li>
+</ol>
+<ul class="simple">
+<li><p>use vestibular system, occurs in comatose</p></li>
+<li><p>fast</p></li>
+<li><p>works better if you move your head fast</p></li>
+</ul>
+<ol class="simple">
+<li><p><em>optokinetic system</em> - tracks with eyes</p></li>
+</ol>
+<ul class="simple">
+<li><p>ex. stick head out window of car and track objects as they go by</p></li>
+<li><p>slower than VOR (takes 200 ms)</p></li>
+<li><p>works better if slower</p></li>
+<li><p>reflex</p></li>
+<li><p>in cortex (textbooks) but probs brainstem (new)</p></li>
+</ul>
+<ol class="simple">
+<li><p><em>smooth pursuit</em> - can track things moving very fast</p></li>
+</ol>
+<ul class="simple">
+<li><p>suppress saccades and track smoothly</p></li>
+<li><p>only in higher apes</p></li>
+<li><p><em>area MT</em> is highest area of motion coding and goes up and comes down multiple ways</p></li>
+<li><p>high speed processing isn’t understood</p>
+<ul>
+<li><p>could be retina processing</p></li>
+</ul>
+</li>
+</ul>
+<ol class="simple">
+<li><p><em>vergence</em> - crossing your eyes</p></li>
+</ol>
+<ul class="simple">
+<li><p>suppresses conjugate eye movements</p></li>
+<li><p>we can control this</p></li>
+<li><p>only humans - bring objects up very close</p></li>
+<li><p>reading uses this</p></li>
+</ul>
+</li>
+<li><p>eye muscles</p>
+<ul class="simple">
+<li><p>rectus</p>
+<ul>
+<li><p>vertical</p>
+<ul>
+<li><p>superior</p></li>
+<li><p>inferior</p></li>
+<li><p>use complicated <em>vertical gaze center</em></p>
+<ul>
+<li><p>last to degenerate in ALS</p></li>
+<li><p><em>locked-in syndrome</em> - can only move eyes vertically</p></li>
+<li><p>controls oculomotor nucleus</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>lateral</p>
+<ul>
+<li><p>medial</p></li>
+<li><p>lateral (controlled by <em>abducens</em>)</p></li>
+<li><p>use <em>horizontal gaze center=PPRF</em> which talk to abducens
+-<em>MLF</em> connects abducents to opposite medial lateral rectus muscle</p></li>
+</ul>
+</li>
+<li><p>oblique - more circular motions</p>
+<ul>
+<li><p>superior (controlled by <em>trochlear nucleus</em>)</p></li>
+<li><p>inferior</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>everything else controlled by <em>oculomotor nucleus</em></p></li>
+</ul>
+</li>
+<li><p><em>superior colliculus</em> has visual map</p>
+<ul class="simple">
+<li><p>controls saccades, connects to gaze centers</p></li>
+<li><p>takes input from basal ganglia (oculomotor loop)</p></li>
+<li><p>also gets audio input from inferior colliculus (hear someone behind you and turn)</p></li>
+<li><p>gets strokes</p></li>
+<li><p>redundant with <em>frontal eye field</em> in secondary motor cortex</p>
+<ul>
+<li><p>connects to superior colliculus, gaze center, and comes back</p></li>
+<li><p>if you lose one of these, the other will replace it</p></li>
+<li><p>if you lose both, can’t saccade to that side</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="visceral-how-you-control-organs-stress-levels-etc">
+<h2>7.6.6. 21 visceral (how you control organs, stress levels, etc.)<a class="headerlink" href="#visceral-how-you-control-organs-stress-levels-etc" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p><img alt="" src="../../_images/21_1.png" /></p></li>
+<li><p><img alt="" src="../../_images/21_2.png" /></p></li>
+<li><p><img alt="" src="../../_images/21_3.png" /></p></li>
+<li><p><img alt="" src="../../_images/21_4.png" /></p></li>
+<li><p>parasympathetic works against sympathetic</p></li>
+<li><p>divisions</p>
+<ol class="simple">
+<li><p><em>sympathetic</em> - fight-or-flight (<em>adrenaline</em>)</p></li>
+</ol>
+<ul class="simple">
+<li><p>functions</p>
+<ul>
+<li><p>neurons to smooth muscle</p></li>
+<li><p>pupils dilate</p></li>
+<li><p>increases heart rate</p></li>
+<li><p>turn off digestive system</p></li>
+<li><p>2 things with no parasympathetic counterpart</p>
+<ul>
+<li><p>increase BP</p></li>
+<li><p>sweat glands</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>location</p>
+<ul>
+<li><p>neurons in spinal cord lateral horn</p>
+<ul>
+<li><p>send out neurons to sympathetic trunk (along the spinal cord)</p></li>
+<li><p>all outgoing connections are adrenergic</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>beta-adrenergic drugs block adrenaline</p>
+<ul>
+<li><p>beta agonist - activates adrenaline receptors (do this before EKG)</p></li>
+</ul>
+</li>
+</ul>
+<ol class="simple">
+<li><p><em>parasympathetic</em> - relaxing (<em>ACh</em>)</p></li>
+</ol>
+<ul>
+<li><p>location</p>
+<ol class="simple">
+<li><p>brainstem</p></li>
+<li><p><em>edinger westphal nucleus</em> - pupil-constriction</p></li>
+<li><p><em>salivatory nucleus</em></p></li>
+<li><p><em>vagus nucleus</em> - digestive system, sexual function</p></li>
+<li><p><em>nucleus ambiguous</em> - heart</p></li>
+<li><p><strong>nucleus of the solitary tract</strong>
+- all input/output goes through this
+1. <em>rostral</em> part (front) - taste neurons
+2. <em>caudal</em> part (back) contains all sensory information of viscera (ex. BP, heart rate, sexual</p></li>
+<li><p><em>sacral</em> spinal cord (bottom) - gut/bladder/genitals</p></li>
+</ol>
+<ul class="simple">
+<li><p>not parallel to sympathetic – poor design - may cause stress-associated diseases</p></li>
+</ul>
+</li>
+<li><p>hard to make drugs with ACh</p></li>
+</ul>
+<ol class="simple">
+<li><p><em>enteric</em> nervous system - in your gut</p></li>
+</ol>
+<ul class="simple">
+<li><p>takes input through <em>vagus nerve</em> from vagus nucleus</p></li>
+<li><p>also has sensory neurons and sends afferents back to brainstem</p></li>
+</ul>
+</li>
+<li><p>pathway</p>
+<ul class="simple">
+<li><p><em>insular cortex</em> - what you care about</p></li>
+<li><p><em>amygdala</em> - contains emotional memories</p></li>
+<li><p><em>hypothalamus</em> - controls a lot</p>
+<ul>
+<li><p>mostly peptinergin neurons</p></li>
+<li><p>aging, digestion, mood, straight to bloodstream &amp; CNS</p></li>
+<li><p>releases hormones</p></li>
+<li><p>ex. <em>leptin</em> - stops you eating when you eat calories</p></li>
+</ul>
+</li>
+<li><p><em>reticular formation</em> - feedforward, prepares digestion before we eat</p></li>
+</ul>
+</li>
+<li><p>three examples</p>
+<ol class="simple">
+<li><p>heart rate</p></li>
+</ol>
+<ul class="simple">
+<li><p>starts at nucleus ambiguous</p></li>
+<li><p>also takes input from chemoreceptors (ex. pH)</p></li>
+<li><p><em>SA node</em> at heart generates heartbeat - balances Ach and adrenaline</p>
+<ul>
+<li><p>sympathetic sends info from thoracic spinal cord</p></li>
+</ul>
+</li>
+<li><p>heart sends back <em>baroreceptor afferents</em></p></li>
+</ul>
+<ol class="simple">
+<li><p>bladder function</p></li>
+<li><p>parasympathetic in sacral lateral horn make you pee (contracts bladder)</p></li>
+<li><p>turn off sympathetic NS</p></li>
+<li><p>open sphincter muscle (voluntary)</p></li>
+</ol>
+<ul class="simple">
+<li><p>can also control this via skeletal nervous system</p></li>
+<li><p>circuit</p>
+<ul>
+<li><p><em>amygdala</em> (can’t pee when nervous)</p></li>
+<li><p><em>pontine micturation center</em> -&gt; <em>parasympathetic preganglionic neurons</em> -&gt; <em>parasympathetic ganglionic neurons</em></p></li>
+<li><p><em>inhibitory local</em> circuit neurons -&gt; <em>somatic MNs</em></p></li>
+</ul>
+</li>
+</ul>
+<ol class="simple">
+<li><p>sexual function</p></li>
+</ol>
+<ul class="simple">
+<li><p><em>Viagra</em> turns on parasympathetic NS</p>
+<ul>
+<li><p>also gives temporal color blindness</p></li>
+</ul>
+</li>
+<li><p>sympathetic involved in ejaculation</p>
+<ul>
+<li><p>temporal correlation (“Point and Shoot”)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes/neuro"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="memory.html" title="previous page">7.5. memory</a>
+    <a class='right-next' id="next-link" href="development.html" title="next page">7.7. development</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Chandan Singh<br/>
+        
+            &copy; Copyright None.<br/>
+          <div class="extra_footer">
+            <p>
+Many of these images are taken from resources on the web.
+</p>
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

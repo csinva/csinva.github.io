@@ -1,0 +1,1092 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>1.3. complexity &#8212; learning to learn</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../_static/togglebutton.js"></script>
+    <script type="text/javascript" src="../../_static/clipboard.min.js"></script>
+    <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    <script type="text/javascript">var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script type="text/javascript" src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" type="text/javascript" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script type="text/javascript">
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="1.4. interesting science" href="ovw_interesting_science.html" />
+    <link rel="prev" title="1.2. disentanglement" href="ovw_disentanglement.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">learning to learn</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   welcome 👋
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="research_ovws.html">
+   1. research_ovws
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="ovw_comp_neuro.html">
+     1.1. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ovw_disentanglement.html">
+     1.2. disentanglement
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     1.3. complexity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ovw_interesting_science.html">
+     1.4. interesting science
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ovw_dl_theory.html">
+     1.5. dl theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ovw_scat.html">
+     1.6. scattering transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ovw_ml_medicine.html">
+     1.7. ml in medicine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ovw_dl_for_neuro.html">
+     1.8. dl for neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ovw_uncertainty.html">
+     1.9. uncertainty
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ovw_interp.html">
+     1.10. interpretability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ovw_kernels.html">
+     1.11. kernels
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../cs/cs.html">
+   2. cs
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/retrieval.html">
+     2.1. info retrieval
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/python_ref.html">
+     2.2. python ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/data_structures.html">
+     2.3. data structures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/software.html">
+     2.4. software engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/quantum.html">
+     2.5. quantum
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/algo.html">
+     2.6. algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/graphs.html">
+     2.7. graphs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/os.html">
+     2.8. os
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/arch.html">
+     2.9. architecture
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/java_ref.html">
+     2.10. java ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/comp_theory.html">
+     2.11. cs theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/cpp_ref.html">
+     2.12. c/c++ ref
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../math/math.html">
+   3. math
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/differential_equations.html">
+     3.1. differential equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/proofs.html">
+     3.2. proofs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/analysis.html">
+     3.3. real analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/linear_algebra.html">
+     3.4. linear algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/signals.html">
+     3.5. signals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/optimization.html">
+     3.6. optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/calculus.html">
+     3.7. calculus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/chaos.html">
+     3.8. chaos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/math_basics.html">
+     3.9. math basics
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../stat/stat.html">
+   4. stat
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/graphical_models.html">
+     4.1. graphical models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/data_analysis.html">
+     4.2. data analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/testing.html">
+     4.3. testing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/causal_inference.html">
+     4.4. causal inference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/info_theory.html">
+     4.5. info theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/linear_models.html">
+     4.6. linear models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/time_series.html">
+     4.7. time series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/game_theory.html">
+     4.8. game theory
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ml/ml.html">
+   5. ml
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/comp_vision.html">
+     5.1. computer vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/structure_ml.html">
+     5.2. structure learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/classification.html">
+     5.3. classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/unsupervised.html">
+     5.4. unsupervised
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/deep_learning.html">
+     5.5. deep learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/feature_selection.html">
+     5.6. feature selection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/learning_theory.html">
+     5.7. learning theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/evaluation.html">
+     5.8. evaluation
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ai/ai.html">
+   6. ai
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/search.html">
+     6.1. search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/nlp.html">
+     6.2. nlp
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/fairness_sts.html">
+     6.3. fairness
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/cogsci.html">
+     6.4. cogsci
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/ai_futures.html">
+     6.5. ai futures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/logic.html">
+     6.6. logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/philosophy.html">
+     6.7. philosophy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/psychology.html">
+     6.8. psychology
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/knowledge_rep.html">
+     6.9. representations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/decisions.html">
+     6.10. decisions
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../neuro/neuro.html">
+   7. neuro
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/brain_basics.html">
+     7.1. brain basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/vissci.html">
+     7.2. vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/comp_neuro.html">
+     7.3. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/sensory_input.html">
+     7.4. sensory input
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/memory.html">
+     7.5. memory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/motor.html">
+     7.6. motor system
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/development.html">
+     7.7. development
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/notes/research_ovws/ovw_complexity.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/csinva/csinva.github.io"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#philosophy">
+   1.3.1. philosophy
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computational-complexity">
+   1.3.2. computational complexity
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bayesian-model-complexity">
+   1.3.3. bayesian model complexity
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#statistical-learning-theory">
+   1.3.4. statistical learning theory
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#misc">
+   1.3.5. misc
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#estimated">
+   1.3.6. estimated
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#entropy-characterizations">
+   1.3.7. entropy characterizations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#deep-learning-complexity">
+   1.3.8. deep learning complexity
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#double-descent">
+   1.3.9. double descent
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#linear-models">
+     1.3.9.1. linear models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#minimum-description-length">
+   1.3.10. minimum description length
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mdl-in-non-linear-models">
+     1.3.10.1. mdl in non-linear models
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="complexity">
+<h1>1.3. complexity<a class="headerlink" href="#complexity" title="Permalink to this headline">¶</a></h1>
+<p>Complexity can be a useful notion for many things in statistical models. It can help answer the following questions:</p>
+<ul class="simple">
+<li><p>can I interpret this model?</p></li>
+<li><p>how many samples should I collect?</p></li>
+<li><p>is my model a good fit for this problem?</p></li>
+<li><p>model class selectiondirectionsmore stable (e.g. LOOCV, deletion, weights)interpolating estimator w/ lowest var?</p></li>
+<li><p>set an err threshold and then look at stability</p></li>
+</ul>
+<div class="section" id="philosophy">
+<h2>1.3.1. philosophy<a class="headerlink" href="#philosophy" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="http://cogprints.org/357/4/evolcomp.pdf">What is complexity?</a> (edmonds 95)</p>
+<ul>
+<li><p>complexity is only really useful for comparisons</p></li>
+<li><p>properties</p>
+<ul>
+<li><p>size - makes things potentially complex</p></li>
+<li><p>ignorance - complex things represent things we don’t understand (e.g. the brain)</p></li>
+<li><p>minimum description size - more about <strong>information</strong> than complexity</p>
+<ul>
+<li><p>potential problem - expressions are not much more complex than the original axioms in the system, even though they can get quite complex</p></li>
+<li><p>potential problem - things with lots of useless info would seem more complex</p></li>
+</ul>
+</li>
+<li><p>some variety is necessary but not sufficient</p></li>
+<li><p>order - we sometimes find order comes and goes (like double descent) - has a lot to do with language (audience)</p></li>
+</ul>
+</li>
+<li><p>defn: “that property of a language expression which makes it difficult to formulate its overall behaviour even when given almost complete information about its atomic components and their inter-relations”</p>
+<ul>
+<li><p>language matters - what about the system are we describing?</p></li>
+<li><p>goal matters - what outcome are interested in?</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/nlin/0101006">On Complexity and Emergence</a> (standish 01)</p>
+<ul>
+<li><p>definition close to Kolmogorov / shannon entropy</p></li>
+<li><p>adds context dependence</p></li>
+<li><p>kolmogorov complexity = algorithmic information complexity</p>
+<ul>
+<li><p>problem 1: must assume a particular Universal Turing machine (which might give differing results)</p></li>
+<li><p>problem 2: random sequences have max complexity, even though they contain no information</p></li>
+</ul>
+</li>
+<li><p>soln</p>
+<ul>
+<li><p>incorporate context - what descriptions are the same?</p></li>
+<li><p><span class="math notranslate nohighlight">\(C(x) = \lim _{\ell \to \infty} \log_2 N - \log_2 \omega (\ell, x)\)</span></p>
+<ul>
+<li><p>where C(x) is the complexity (measured in bits), <span class="math notranslate nohighlight">\(\ell(x)\)</span> the length of the description, N the size of the alphabet used to encode the description and ω(ℓ,x) the size of the class of all descriptions of length less than ℓ equivalent to x.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>emergence - ex. game of life</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://link.springer.com/chapter/10.1007/978-3-642-50007-7_2">What is complexity 2</a> (Gell-Mann 02)</p>
+<ul>
+<li><p>AIC - algorithmic information content - contains 2 terms</p>
+<ul>
+<li><p>effective complexity (EC) = the length of a very concise description of an entity’s regularities</p>
+<ul>
+<li><p>regularities are judged subjectively (e.g. birds would judge a bird song’s regularity)</p></li>
+</ul>
+</li>
+<li><p>2nd term relating to random features</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="http://www.scholarpedia.org/article/Complexity">complexity</a> (Sporns 07)</p>
+<ul>
+<li><p>complexity = degree to which <strong>components</strong> engage in organized structured <strong>interactions</strong></p></li>
+<li><p>High complexity -&gt; mixture of order and disorder (randomness and regularity) + have a high capacity to generate <strong>emergent</strong> phenomena.</p></li>
+<li><p>(simon 1981): complex systems are “made up of a large number of parts that have many interactions.”</p></li>
+<li><p>2 categories</p>
+<ul>
+<li><p>algorithmic / mdl</p></li>
+<li><p>natural complexity (e.g. physical complexity)</p>
+<ul>
+<li><p><img alt="300px-Complexity_figure1" src="../../_images/300px-Complexity_figure1.jpg" /></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://www.quantamagazine.org/computer-science-and-biology-explore-algorithmic-evolution-20181129/?fbclid=IwAR0rSImplo7lLM0kEYHrHttx8qUimB-482dI9IFxY6dvx0CFeEIqzGuir_w">quanta article</a></p>
+<ul>
+<li><p>“the probability of producing some types of outputs is far greater when randomness operates at the level of the program describing it rather than at the level of the output itself”</p></li>
+<li><p>“they <a class="reference external" href="http://rsos.royalsocietypublishing.org/content/5/8/180399">recently reported in <em>Royal Society Open Science</em></a> that, compared to statistically random mutations, this mutational bias caused the networks to evolve toward solutions significantly faster.”</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="computational-complexity">
+<h2>1.3.2. computational complexity<a class="headerlink" href="#computational-complexity" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>amount of computational resource that it takes to solve a class of problem</p></li>
+<li><p><a class="reference external" href="https://dl.acm.org/citation.cfm?id=1074233">Computational complexity</a> (Papadimitriou)</p>
+<ul>
+<li><p>like run times of algorithms etc. <span class="math notranslate nohighlight">\(O(n)\)</span></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://www.researchgate.net/profile/Michael_Fellows/publication/2376092_Parameterized_Complexity/links/5419e9240cf25ebee98883da/Parameterized-Complexity.pdf">Parameterized complexity</a> (Downey and Fellows)</p>
+<ul>
+<li><p>want to solve problems that are NP-hard or worse, so we isolate input into a parameter</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="bayesian-model-complexity">
+<h2>1.3.3. bayesian model complexity<a class="headerlink" href="#bayesian-model-complexity" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://rss.onlinelibrary.wiley.com/doi/full/10.1111/1467-9868.00353">Bayesian measures of model complexity and fit</a> (spiegelhalter et al.)</p></li>
+<li><p>AIC</p></li>
+<li><p>BIC</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/1803.04947.pdf">TIC</a></p></li>
+</ul>
+</div>
+<div class="section" id="statistical-learning-theory">
+<h2>1.3.4. statistical learning theory<a class="headerlink" href="#statistical-learning-theory" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>VC-dimension - measure of capacity of a function class that can be learned</p>
+<ul>
+<li><p>cardinality of largest number of points which can be shattered</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="misc">
+<h2>1.3.5. misc<a class="headerlink" href="#misc" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://arxiv.org/abs/1908.01755">rashomon curves</a> (semenova &amp; rudin, 2019)</p>
+<ul>
+<li><p><strong>rashomon effect</strong> - many different explanations exist for same phenomenon</p></li>
+<li><p><strong>rashomon set</strong> - set of almost-equally accurate models for a given problem</p></li>
+<li><p><strong>rashomon ratio</strong> - ratio of volume of set of accurate models to the volume of the hypothesis space</p></li>
+<li><p><strong>rashomon curve</strong> - empirical risk vs rashomon ratio</p>
+<ul>
+<li><p><strong>rashomon elbow</strong> - maximize rashomon ratio while minimizing risk</p>
+<ul>
+<li><p>good for model selection</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>bennet’s logical depth (1988) - computational resources taken to calculate the results of a minimal length problem (combines computational complexity w/ kolmogorov complexity)</p></li>
+<li><p>Effective measure complexity (Grassberger, 1986) quantifies the complexity of a sequence by the amount of information contained in a given part of the sequence that is needed to predict the next symbol</p></li>
+<li><p>Thermodynamic depth (Lloyd and Pagels, 1988) relates the entropy of a system to the number of possible historical paths that led to its observed state</p></li>
+<li><p>lofgren’s interpretation and descriptive complexity</p>
+<ul>
+<li><p>convert between system and description</p></li>
+</ul>
+</li>
+<li><p>kaffman’s number of conflicting constraints</p></li>
+<li><p>Effective complexity (Gell-Mann, 1995) measures the minimal description length of a system’s regularities</p></li>
+<li><p>Physical complexity (Adami and Cerf, 2000) is related to effective complexity and is designed to estimate the complexity of any sequence of symbols that is about a physical world or environment</p></li>
+<li><p>Statistical complexity (Crutchfield and Young, 1989) is a component of a broader theoretic framework known as computational mechanics, and can be calculated directly from empirical data</p></li>
+<li><p>Neural complexity (Tononi et al., 1994) - multivariate extension of mutual information that estimates the total amount of statistical structure within an arbitrarily large system.= the difference between the sum of the component’s individual entropies and the joint entropy of the system as a whole</p></li>
+<li><p>complexity = variance of the model predictions (given that there is zero bias)</p></li>
+</ul>
+</div>
+<div class="section" id="estimated">
+<h2>1.3.6. estimated<a class="headerlink" href="#estimated" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.pnas.org/content/110/36/14563">optimal m estimation in high dimensions</a> optimal loss function (optimize over different loss functions, but evaluate with L2)assumes unbiased (so variance is the mse)</p></li>
+</ul>
+</div>
+<div class="section" id="entropy-characterizations">
+<h2>1.3.7. entropy characterizations<a class="headerlink" href="#entropy-characterizations" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>try to characterize functions in the prediction space</p></li>
+<li><p><strong>metric entropy</strong> - want functions to be close (within epsilon)</p>
+<ul>
+<li><p><strong>bracket entropy</strong> - function is both upper and lower bounded by bounding functions, which are within epsilon</p></li>
+</ul>
+</li>
+<li><p>can do this on an entire function class (e.g. all neural networks) or on a restricted subset (e.g. path during training)</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/1706.01124.pdf">optimal learning via local entropies and sample compression</a></p></li>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/math/0702683.pdf">risk bounds for statistical learning</a></p></li>
+<li><p><a class="reference external" href="https://papers.nips.cc/paper/7954-chaining-mutual-information-and-tightening-generalization-bounds.pdf">Chaining Mutual Information and Tightening Generalization Bounds</a> (asadi et al. 2018)</p></li>
+<li><p>describing DNN paths</p>
+<ul>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/1805.09639.pdf">Online Regularized Nonlinear Acceleration</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="deep-learning-complexity">
+<h2>1.3.8. deep learning complexity<a class="headerlink" href="#deep-learning-complexity" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://arxiv.org/abs/1905.11639">a hessian-based complexity measure for dnns</a>with generalization and computation to a different form of stability</p>
+<ul>
+<li><p>thm 3 - want function to be smooth wrt to augmented loss</p></li>
+<li><p><a class="reference external" href="http://proceedings.mlr.press/v89/liang19a/liang19a.pdf">complexity measure</a> (liang et al. 2019)</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="double-descent">
+<h2>1.3.9. double descent<a class="headerlink" href="#double-descent" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://arxiv.org/abs/1812.11118">Reconciling modern machine learning and the bias-variance trade-off</a> (belkin et al. 2018)</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1903.08560">Surprises in High-Dimensional Ridgeless Least Squares Interpolation</a></p>
+<ul>
+<li><p>main result of limiting risk, where <span class="math notranslate nohighlight">\(\gamma \in (0, \infty)\)</span>:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(R(\gamma) = \begin{cases} \sigma^2 \frac{\gamma}{1-\gamma} &amp; \gamma &lt; 1\\||\beta||_2^2(1 - \frac 1 \gamma) + \sigma^2 \frac{1} {\gamma - 1} &amp; \gamma &gt; 1\end{cases}\)</span></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1802.05801">linear regression depends on data distr.</a></p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1903.07571">two models of double descent for weak features</a></p></li>
+<li><p><a class="reference external" href="https://openreview.net/forum?id=HkgmzhC5F7">double descent curve</a></p></li>
+<li><p><a class="reference external" href="https://www.tandfonline.com/doi/pdf/10.1198/016214503000125?casa_token=5OE5LZe_mIcAAAAA:-4DdXLa4A6SeXnguyYv1S3bfIbRXrSb1qojj_UkGZpmbNHqjkWMojm0al5xx2yz-7ABcfDXmdvBeCw">boosting w/ l2 loss</a></p></li>
+<li><p><a class="reference external" href="https://web.stanford.edu/~hastie/Papers/df_paper_LJrev6.pdf">effective degrees of freedom</a></p></li>
+<li><p><a class="reference external" href="https://projecteuclid.org/euclid.aos/1519268430">high-dimensional ridge</a></p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1903.09139">Harmless interpolation of noisy data in regression</a> - bound on how well interpolative solns can generalize to fresh data (goes to zero with extra features)</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1912.02292">Deep Double Descent: Where Bigger Models and More Data Hurt</a> (nakkiran et al. 2019)</p></li>
+</ul>
+<div class="section" id="linear-models">
+<h3>1.3.9.1. linear models<a class="headerlink" href="#linear-models" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://arxiv.org/abs/1402.1920">Degrees of Freedom and Model Search</a> (tibshirani 2014)</p>
+<ul>
+<li><p>degrees of freedom = quantitative description of the amount of fitting performed by a given procedure</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://projecteuclid.org/download/pdf_1/euclid.aos/1176347115">linear smoothers and additive models</a> (buja et al. 1989) see page 469 for degrees of freedom in ridge</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="minimum-description-length">
+<h2>1.3.10. minimum description length<a class="headerlink" href="#minimum-description-length" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>mdl in linear regression: want to send y over, X is known to both sides, theta is also sent (used to pick a decoder for y)</p>
+<ul>
+<li><p>normalized maximum likelihood (nml): use theta to make codebook, then send code</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://pdfs.semanticscholar.org/65d3/4977d9055f42e51dc1e7d9b4ca2f36c17537.pdf">The Minimum Description Length Principle in Coding and Modeling</a> (barron, rissanen, &amp; yu, 98)</p>
+<ul>
+<li><p>mdl: represent an entire class of prob. distrs. as models by a single “universal” representative model such that it would be able to imitate the behavior of any model in the class. The best model class for a set of observed data, then, is the one whose representative premits the shortest coding of the data</p></li>
+<li><p>tradeoff: “good” prob. models for the data permit shorter code lengths</p>
+<ul>
+<li><p>generally agrees w/ low mse</p></li>
+</ul>
+</li>
+<li><p>ex. encode data w/ model defined by mle estimates, quantized optimally to finite precision, then encode estimate w/ prefix code</p></li>
+<li><p>mdl</p>
+<ul>
+<li><p>likelihood = summarize data in accodance / model (e.g. <span class="math notranslate nohighlight">\(P(y|x, \theta)\)</span>)</p></li>
+<li><p>parametric complexity = summarize model params</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://www.tandfonline.com/doi/abs/10.1198/016214501753168398">Model Selection and the Principle of Minimum Description Length</a> (hansen &amp; yu 2001)</p>
+<ul>
+<li><p>mdl: choose the model that gives the shortest description of data</p>
+<ul>
+<li><p>description length = length of binary string used to code the data</p></li>
+<li><p>using a prob distr. for coding/description purposes doesn’t require that it actually generate our data</p></li>
+</ul>
+</li>
+<li><p>basic coding</p>
+<ul>
+<li><p>set A, code C (mapping from A to a set of codewords)</p></li>
+<li><p>Q is a distr. on A</p></li>
+<li><p><span class="math notranslate nohighlight">\(-\log_2Q\)</span> is the code length for symbols in A</p>
+<ul>
+<li><p>can construct such a code w/ Huffman coding</p></li>
+</ul>
+</li>
+<li><p>expected code length is minimized when Q = P, the true distr of our data</p></li>
+</ul>
+</li>
+<li><p>different forms</p>
+<ul>
+<li><p>2-stage</p></li>
+<li><p>mixture</p></li>
+<li><p>predictive</p></li>
+<li><p>normalized maximum likelihood (NML)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="http://www.scholarpedia.org/article/Minimum_description_length">mdl intro</a> (Rissanen, 2008) - scholarpedia</p>
+<ul>
+<li><p>coding just the data would be like maximum likelihood</p></li>
+<li><p>minimize <span class="math notranslate nohighlight">\(\underset{\text{log-likelihood}}{-\log P(y^n|x^n;\theta)} + \underset{\text{description length}}{L(\theta)}\)</span></p>
+<ul>
+<li><p>ex. OLS</p></li>
+<li><p>if we want to send all the coefficients, assume an order and <span class="math notranslate nohighlight">\(L(\theta) = L(p) + L(\theta_1, ... \theta_p)\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(L(\theta) \approx \frac p 2 \log p\)</span></p>
+<ul>
+<li><p>quantization for each parameter (must quantize otherwise need to specify infinite bits of precision)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>if we want only a subset of the coefficients, also need to send <span class="math notranslate nohighlight">\(L(i_1, ..., i_k)\)</span> for the indexes of the non-zero coefficients</p></li>
+</ul>
+</li>
+<li><p>minimization becomes <span class="math notranslate nohighlight">\(\underset p \min \quad [\underset{\text{noise}}{- \log P(y^n|x^n; \hat{\theta}_{OLS})} + \underset{\text{learnable info}}{(p/2) \log n}]\)</span></p>
+<ul>
+<li><p><em>noise</em> - no more info can be extracted with this class of models</p></li>
+<li><p><em>learnable info</em> in the data = precisely the best model</p></li>
+<li><p><strong>stochastic complexity</strong> = <em>noise</em> + <em>learnable info</em></p></li>
+<li><p>in this case, is same as BIC but often different</p></li>
+</ul>
+</li>
+<li><p>modern mdl - don’t assume a model form, try to code the data as short as possible with a <em>universal</em> model class</p>
+<ul>
+<li><p>often can actually construct these codes</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Kolmogorov complexity <span class="math notranslate nohighlight">\(K(x)\)</span> = the shortest computer program (in binary) that generates x (a binary string) = the “amount of info” in x</p>
+<ul>
+<li><p>complexity of a string x is at most its length</p></li>
+<li><p>algorithmically random - any string whose length is close to <span class="math notranslate nohighlight">\(|x|\)</span></p>
+<ul>
+<li><p>more random = higher complexity</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Minimum description length original reference \cite{rissanen1978modeling}. What is the minimum length description of the original?</p>
+<ul>
+<li><p>MDL reviews \cite{barron1998minimum, hansen2001model}.</p></li>
+<li><p>Book on stochastic complexity \cite{rissanen1989stochastic}</p></li>
+<li><p><em>Minimum Description Length</em>, <em>MDL</em>, principle for model selection, of which the original form states that the best model is the one which permits the shortest encoding of the data and the model itself</p></li>
+</ul>
+</li>
+<li><p><em>note: this type of complexity applies to the description, not the system</em></p></li>
+<li><p>Look into the neurips <a class="reference external" href="https://papers.nips.cc/paper/7954-chaining-mutual-information-and-tightening-generalization-bounds.pdf">paper</a> on using mutual information and entropy and this <a class="reference external" href="https://projecteuclid.org/download/pdf_1/euclid.aos/1017939142">paper</a> by barron that related covering balls etc to minimax bounds</p></li>
+<li><p><a class="reference external" href="http://www.stat.yale.edu/~arb4/publications_files/COLT97.pdf">Information Theory in Probability Statistics Learning and Neural Nets</a> (barron 97)</p></li>
+<li><p><a class="reference external" href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=54897">Information-Theoretic Asymptotics of Bayes Methods</a> (Clarke &amp; Barron 90)</p></li>
+</ul>
+<div class="section" id="mdl-in-non-linear-models">
+<h3>1.3.10.1. mdl in non-linear models<a class="headerlink" href="#mdl-in-non-linear-models" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.aaai.org/Papers/KDD/1995/KDD95-025.pdf">MDL-based Decision Tree Pruning</a> (mehta et al. 95)</p></li>
+<li><p>deep learning</p>
+<ul>
+<li><p>high-level</p>
+<ul>
+<li><p>most unsupervised learning can be thought of as mdl</p></li>
+<li><p>to compress the data we must take advantage of mutual info between x and y</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://www.cs.toronto.edu/~hinton/absps/mdlpop.pdf">Learning Population Codes by Minimizing Description Length</a> (zemel &amp; hinton 1995)</p></li>
+<li><p><a class="reference external" href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.44.3435">Keeping Neural Networks Simple by Minimizing the Description Length of the Weights</a> (hinton &amp; van camp 1993)</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/1802.07044.pdf">The Description Length of Deep Learning Models</a> (blier &amp; ollivier 2018)</p>
+<ul>
+<li><p>compress using prequential mdl</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1902.10658?utm_source=share&amp;utm_medium=ios_app&amp;utm_name=iossmf">mdl for attention</a> (lin 2019)</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://pdfs.semanticscholar.org/9c61/2ea1d8e8c9ce75427f5fd879a367210c2cc7.pdf">Lightlike Neuromanifolds, Occam’s Razor and Deep Learning</a> (sun &amp; nielsen 2019)</p>
+<ul>
+<li><p>“A new MDL formulation which can explain the double descent risk curve of deep learning”</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/2007.13657v1.pdf">Towards Learning Convolutions from Scratch</a> (neyshabur 2020)</p>
+<ul>
+<li><p>uses some mdl as guiding principles</p></li>
+<li><p>training with <span class="math notranslate nohighlight">\(\beta\)</span>-lasso, fc weights become very local</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes/research_ovws"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="ovw_disentanglement.html" title="previous page">1.2. disentanglement</a>
+    <a class='right-next' id="next-link" href="ovw_interesting_science.html" title="next page">1.4. interesting science</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Chandan Singh<br/>
+        
+            &copy; Copyright None.<br/>
+          <div class="extra_footer">
+            <p>
+Many of these images are taken from resources on the web.
+</p>
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

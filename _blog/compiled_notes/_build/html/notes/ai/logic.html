@@ -1,0 +1,1327 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>6.6. logic &#8212; learning to learn</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../_static/togglebutton.js"></script>
+    <script type="text/javascript" src="../../_static/clipboard.min.js"></script>
+    <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    <script type="text/javascript">var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script type="text/javascript" src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" type="text/javascript" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script type="text/javascript">
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="6.7. philosophy" href="philosophy.html" />
+    <link rel="prev" title="6.5. ai futures" href="ai_futures.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">learning to learn</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   welcome 👋
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../research_ovws/research_ovws.html">
+   1. research_ovws
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_comp_neuro.html">
+     1.1. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_disentanglement.html">
+     1.2. disentanglement
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_complexity.html">
+     1.3. complexity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_interesting_science.html">
+     1.4. interesting science
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_dl_theory.html">
+     1.5. dl theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_scat.html">
+     1.6. scattering transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">
+     1.7. ml in medicine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_dl_for_neuro.html">
+     1.8. dl for neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_uncertainty.html">
+     1.9. uncertainty
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_interp.html">
+     1.10. interpretability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_kernels.html">
+     1.11. kernels
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../cs/cs.html">
+   2. cs
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/retrieval.html">
+     2.1. info retrieval
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/python_ref.html">
+     2.2. python ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/data_structures.html">
+     2.3. data structures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/software.html">
+     2.4. software engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/quantum.html">
+     2.5. quantum
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/algo.html">
+     2.6. algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/graphs.html">
+     2.7. graphs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/os.html">
+     2.8. os
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/arch.html">
+     2.9. architecture
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/java_ref.html">
+     2.10. java ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/comp_theory.html">
+     2.11. cs theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/cpp_ref.html">
+     2.12. c/c++ ref
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../math/math.html">
+   3. math
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/differential_equations.html">
+     3.1. differential equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/proofs.html">
+     3.2. proofs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/analysis.html">
+     3.3. real analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/linear_algebra.html">
+     3.4. linear algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/signals.html">
+     3.5. signals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/optimization.html">
+     3.6. optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/calculus.html">
+     3.7. calculus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/chaos.html">
+     3.8. chaos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/math_basics.html">
+     3.9. math basics
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../stat/stat.html">
+   4. stat
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/graphical_models.html">
+     4.1. graphical models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/data_analysis.html">
+     4.2. data analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/testing.html">
+     4.3. testing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/causal_inference.html">
+     4.4. causal inference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/info_theory.html">
+     4.5. info theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/linear_models.html">
+     4.6. linear models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/time_series.html">
+     4.7. time series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/game_theory.html">
+     4.8. game theory
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ml/ml.html">
+   5. ml
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/comp_vision.html">
+     5.1. computer vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/structure_ml.html">
+     5.2. structure learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/classification.html">
+     5.3. classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/unsupervised.html">
+     5.4. unsupervised
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/deep_learning.html">
+     5.5. deep learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/feature_selection.html">
+     5.6. feature selection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/learning_theory.html">
+     5.7. learning theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/evaluation.html">
+     5.8. evaluation
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="ai.html">
+   6. ai
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="search.html">
+     6.1. search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="nlp.html">
+     6.2. nlp
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="fairness_sts.html">
+     6.3. fairness
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cogsci.html">
+     6.4. cogsci
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ai_futures.html">
+     6.5. ai futures
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     6.6. logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="philosophy.html">
+     6.7. philosophy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="psychology.html">
+     6.8. psychology
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="knowledge_rep.html">
+     6.9. representations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="decisions.html">
+     6.10. decisions
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../neuro/neuro.html">
+   7. neuro
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/brain_basics.html">
+     7.1. brain basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/vissci.html">
+     7.2. vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/comp_neuro.html">
+     7.3. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/sensory_input.html">
+     7.4. sensory input
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/memory.html">
+     7.5. memory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/motor.html">
+     7.6. motor system
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/development.html">
+     7.7. development
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/notes/ai/logic.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/csinva/csinva.github.io"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#logical-agents-7-1-7-7-omitting-7-5-2">
+   6.6.1. logical agents - 7.1-7.7 (omitting 7.5.2)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#theorem-proving">
+     6.6.1.1. theorem proving
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#agents-based-on-propositional-logic">
+     6.6.1.2. agents based on propositional logic
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#first-order-logic-8-1-8-3-3">
+   6.6.2. first-order logic - 8.1-8.3.3
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#inference-in-first-order-logic-9-1-9-4">
+   6.6.3. inference in first-order logic - 9.1-9.4
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#classical-planning-10-1-10-2">
+   6.6.4. classical planning 10.1-10.2
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#algorithms-for-planning-as-state-space-search">
+     6.6.4.1. algorithms for planning as state-space search
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#foundations-of-rule-learning-furnkranz-et-al-2014">
+   6.6.5. foundations of rule learning (furnkranz et al. 2014)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#categorization-of-tasks-ch-1">
+     6.6.5.1. categorization of tasks (ch 1)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#basics-of-learning-rules-ch-2">
+     6.6.5.2. basics of learning rules (ch 2)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#binary-split-features-ch-4">
+     6.6.5.3. (binary split) features (ch 4)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#relational-features-ch-5">
+     6.6.5.4. relational features (ch 5)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#learning-single-rules-ch-6">
+     6.6.5.5. learning single rules (ch 6)
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="logic">
+<h1>6.6. logic<a class="headerlink" href="#logic" title="Permalink to this headline">¶</a></h1>
+<p>Some notes on logic based on Berkeley’s CS 188 course and  “Artificial Intelligence” Russel &amp; Norvig 3rd Edition + <a class="reference external" href="https://dl.acm.org/citation.cfm?id=2788240">foundations of rule learning</a> (furnkranz et al. 2014)</p>
+<div class="section" id="logical-agents-7-1-7-7-omitting-7-5-2">
+<h2>6.6.1. logical agents - 7.1-7.7 (omitting 7.5.2)<a class="headerlink" href="#logical-agents-7-1-7-7-omitting-7-5-2" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><em>knowledge-based agents</em> - intelligence is based on <em>reasoning</em> that operates on internal <em>representations of knowledge</em></p></li>
+<li><p><strong>deductive</strong> - general-to-specific</p></li>
+<li><p><strong>inductive</strong> - specific-to-general</p></li>
+<li><p>3 steps: given a percept, the agent</p>
+<ol class="simple">
+<li><p>adds the percept to its knowledge base (KB)</p></li>
+<li><p>asks the knowledge base for the best action</p></li>
+<li><p>tells the knowledge base that it has taken that action</p></li>
+</ol>
+</li>
+<li><p>2 approaches</p>
+<ul>
+<li><p><em>declarative</em> approach - tell sentences until agent knows how to operate</p>
+<ul>
+<li><p>know something, can verbalize it</p></li>
+</ul>
+</li>
+<li><p><em>procedural</em> approach - encodes desired behaviors as program code</p>
+<ul>
+<li><p>intuitively know how to do it (ex. riding a bike)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ex. Wumpus World</p></li>
+<li><p>logical <em>entailment</em> between sentences</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(A \vDash B\)</span> means B follows logically from A (A implies B)</p></li>
+<li><p><em>logical inference</em> - showing entailment</p></li>
+</ul>
+</li>
+<li><p><em>model checking</em> - try everything to see if A <span class="math notranslate nohighlight">\(\implies\)</span> B</p>
+<ul>
+<li><p>this is <em>sound</em> = <em>truth-preserving</em></p></li>
+<li><p><em>complete</em> - can derive any sentence that is entailed</p></li>
+<li><p>TT-ENTAILS</p>
+<ul>
+<li><p>recursively enumerate all sentences by assigning true, false to each variable</p></li>
+<li><p>check if these are valid within the KB</p>
+<ul>
+<li><p>if they are, they must also match the query (otherwise return false)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><em>grounding</em> - connection between logic and real environment (usually sensors)</p></li>
+<li><p>theorem properties</p>
+<ul>
+<li><p><em>validity</em> - <em>tautalogy</em> - true under all models</p></li>
+<li><p><em>satisfiable</em> - true under some model</p>
+<ul>
+<li><p>ex. boolean-SAT</p></li>
+</ul>
+</li>
+<li><p><em>monotonicity</em> - set of implications can only increase as info is added to the knowledge base</p>
+<ul>
+<li><p>if <span class="math notranslate nohighlight">\(KB \implies A\)</span> then <span class="math notranslate nohighlight">\(KB \land B \implies A\)</span></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="section" id="theorem-proving">
+<h3>6.6.1.1. theorem proving<a class="headerlink" href="#theorem-proving" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>resolution rule</em> - resolves different rules with each other - leads to complete inference procedure</p></li>
+<li><p><em>CNF</em> - <em>conjunctive normal form</em> - conjunction (and) of clauses (with ors)</p>
+<ul>
+<li><p>ex: <span class="math notranslate nohighlight">\( ( \neg A \lor  B) \land \neg C \land (D \lor E)\)</span></p></li>
+<li><p>anything can be expressed as this</p></li>
+</ul>
+</li>
+<li><p><em>horn clause</em> - at most one positive</p>
+<ul>
+<li><p><em>definite clause</em> - disjunction of literals with exactly one positive: ex. (<span class="math notranslate nohighlight">\(A \lor \neg B \lor \neg C\)</span>)</p></li>
+<li><p><em>goal clause</em> - no positive: ex. (<span class="math notranslate nohighlight">\(\neg A \lor \neg B \lor \neg C\)</span>)</p></li>
+<li><p>benefits</p>
+<ul>
+<li><p>easy to understand</p></li>
+<li><p>forward-chaining / backward-chaining are applicable</p></li>
+<li><p>deciding entailment is linear in size (KB)</p></li>
+</ul>
+</li>
+<li><p><strong>forward/backward chaining</strong>: checks if q is entailed by KB of definite clauses</p>
+<ul>
+<li><p><em>data-driven</em></p></li>
+<li><p>keep adding until query is added or nothing else can be added</p></li>
+<li><p><img alt="Screen Shot 2018-08-01 at 6.54.42 PM" src="../../_images/logic_graph.png" /></p></li>
+<li><p>backward chaining works backwards from the query</p>
+<ul>
+<li><p><em>goal-driven</em></p></li>
+<li><p>keep going until get back to known facts</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>checking satisfiability</p>
+<ul>
+<li><p>complete backtracking</p>
+<ul>
+<li><p><em>davis-putnam</em> algorithm = <em>DPLL</em> - like TT-entails with 3 improvements</p>
+<ol class="simple">
+<li><p>early termination</p></li>
+<li><p>pure symbol heuristic - <em>pure symbol</em> appears with same sign in all clauses, can just set it to the proper value</p></li>
+<li><p>unit clause heuristic - clause with just one literal or one literal not already assigned false</p></li>
+</ol>
+</li>
+<li><p>other improvements (similar to search)</p>
+<ol class="simple">
+<li><p>component analysis</p></li>
+<li><p>variable and value ordering</p></li>
+<li><p>intelligent backtracking</p></li>
+<li><p>random restarts</p></li>
+<li><p>clever indexing</p></li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>local search</p>
+<ul>
+<li><p>evaluation function can just count number of unsatisfied clauses (MIN-CONFLICTS algorithm for CSPs)</p></li>
+<li><p>WALKSAT - randomly chooses between flipping based on MIN-CONFLICTS and randomly</p>
+<ul>
+<li><p>runs forever if no soln</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><em>underconstrained</em> problems are easy to find solns</p></li>
+<li><p><em>satisfiability threshold conjecture</em> - for random clauses, probability of satisfiability goes to 0 or 1 based on ratio of clauses to symbols</p>
+<ul>
+<li><p>hardest problems are at the threshold</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="agents-based-on-propositional-logic">
+<h3>6.6.1.2. agents based on propositional logic<a class="headerlink" href="#agents-based-on-propositional-logic" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>fluents</em> = state variables that change over time</p></li>
+<li><p>can index these by time</p></li>
+<li><p><em>effect axioms</em> - specify the effect of an action at the next time step</p></li>
+<li><p><em>frame axioms</em> - assert that all propositions remain the same under actions</p></li>
+<li><p><em>succesor-state axiom</em>: <span class="math notranslate nohighlight">\(F^{t+1} \iff  ActionCausesF^t \lor (F^t \land -ActionCausesNotF^t )\)</span></p>
+<ul>
+<li><p>ex. <span class="math notranslate nohighlight">\(HaveArrow^{t+1} \iff (HaveArrow^t \land \neg Shoot^t)\)</span></p></li>
+<li><p>makes things stay the same unles something changes</p></li>
+</ul>
+</li>
+<li><p><em>state-estimation</em>: keep track of <em>belief state</em></p></li>
+<li><p>can just use 1-CNF (conjunctions of literals: ex. <span class="math notranslate nohighlight">\(WumpusAlive \land L_2 \land B\)</span>)</p>
+<ul>
+<li><p>1-CNF includes all states that are in fact possible given the full percept history</p></li>
+<li><p><em>conservative approximation</em> - contains belief state, but also extraneous stuff</p></li>
+</ul>
+</li>
+<li><p>planning</p>
+<ul>
+<li><p>could use <span class="math notranslate nohighlight">\(A^*\)</span> with entailment</p></li>
+<li><p>otherwise, could use SATPLAN</p></li>
+</ul>
+</li>
+<li><p><em>SATPLAN</em> - how to make plans for future actions that solve the goal by propositional inference</p></li>
+<li><p>basic idea</p>
+<ul>
+<li><p>make assertions</p></li>
+<li><p>transitions up to some max time <span class="math notranslate nohighlight">\(t_{final}\)</span></p></li>
+<li><p>assert that goal is achieved at time <span class="math notranslate nohighlight">\(t_{final}\)</span> (ex. havegold)</p></li>
+</ul>
+</li>
+<li><p>present this to a SAT solver</p>
+<ul>
+<li><p>must add <em>precondition axioms</em> - states that action occurrence requires preconditions to be satisfied</p>
+<ul>
+<li><p>ex. can’t shoow without arrow</p></li>
+</ul>
+</li>
+<li><p>must add <em>action exclusion axioms</em> - one action at a time</p>
+<ul>
+<li><p>ex. can’t shoot and move at once</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="first-order-logic-8-1-8-3-3">
+<h2>6.6.2. first-order logic - 8.1-8.3.3<a class="headerlink" href="#first-order-logic-8-1-8-3-3" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p><img alt="Screen Shot 2018-08-01 at 7.52.25 PM" src="../../_images/logic_table.png" /></p></li>
+<li><p>basically added objects, relations, quantifiers (<span class="math notranslate nohighlight">\(\exists, \forall\)</span>)</p></li>
+<li><p>declarative language - semantics based on a truth relation between sentences and possible worlds</p>
+<ul class="simple">
+<li><p>has <em>compositionality</em> - meaning decomposes</p></li>
+<li><p><em>sapir-whorf hypothesis</em> - understanding of the world is influenced by the language we speak</p></li>
+</ul>
+</li>
+<li><p>3 elements</p>
+<ol class="simple">
+<li><p>objects - john (cannot appear by itself, need boolean value)</p></li>
+<li><p>relations - set of tuples (ex. brother(richard, john))</p></li>
+<li><p>functions - only one value for given input (ex. leftLeg(john))</p></li>
+</ol>
+</li>
+<li><p>sentences return true or false</p>
+<ul class="simple">
+<li><p>combine these things</p></li>
+</ul>
+</li>
+<li><p>first-order logic assumes more about the world than propositional logic</p>
+<ul class="simple">
+<li><p><em>epistemological commitments</em> - the possible states of knowledge that a logic allows with respect to each fact</p></li>
+<li><p><em>higher-order logic</em> - views relations and functions as objects in themselves</p></li>
+</ul>
+</li>
+<li><p>first-order consists of symbols</p>
+<ol class="simple">
+<li><p><em>constant symbols</em> - stand for objects</p></li>
+<li><p><em>predicate symbols</em> - stand for relations</p></li>
+<li><p><em>function symbols</em> - stand for functions</p></li>
+</ol>
+<ul class="simple">
+<li><p><em>arity</em> - fixes number of args</p></li>
+<li><p><em>term</em> - logical expresision tha refers to an object</p></li>
+<li><p><em>atomic sentence</em> - formed from a predicate symbol optionally followed by a parenthesized list of terms</p>
+<ul>
+<li><p>true if relation holds among objects referred to by the args</p></li>
+<li><p>ex. Brother(Richard, John)</p></li>
+</ul>
+</li>
+<li><p><em>interpretation</em> - specifies exactly which objects, relations and functions are referred to by the symbols</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="inference-in-first-order-logic-9-1-9-4">
+<h2>6.6.3. inference in first-order logic - 9.1-9.4<a class="headerlink" href="#inference-in-first-order-logic-9-1-9-4" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p><em>propositionalization</em> - can convert first-order logic to propositional logic and do propositional inference</p>
+<ul class="simple">
+<li><p><em>universal instantiation</em> - we can infer any sentence obtained by substituting a ground term for the variable</p>
+<ul>
+<li><p>replace “forall x” with a specific x</p></li>
+</ul>
+</li>
+<li><p><em>existential instantiation</em> - variable is replaced by a new constant symbol</p>
+<ul>
+<li><p>replace “there exists x” with a specific x that give a name (called the <em>Skolem constant</em>)</p></li>
+</ul>
+</li>
+<li><p>only need finite subset of propositionalized KB - can stop nested functions at some depth</p>
+<ul>
+<li><p><em>semidecidable</em> - algorithms exist that say yes to every entailed sentence, but no algorithm exists that also says no to every nonentailed sentence</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><em>generalized modus ponens</em></p></li>
+<li><p><em>unification</em> - finding substitutions that make different logical expressions look identical</p>
+<ul class="simple">
+<li><p>UNIFY(Knows(John,x), Knows(x,Elizabeth)) = fail .</p>
+<ul>
+<li><p>use different x’s - <em>standardizing apart</em></p></li>
+<li><p>want most general unifier</p></li>
+</ul>
+</li>
+<li><p>need <em>occur check</em> - S(x) can’t unify with S(S(x))</p></li>
+</ul>
+</li>
+<li><p>storage and retrieval</p>
+<ul class="simple">
+<li><p>STORE(s) - stores a sentence s into the KB</p></li>
+<li><p>FETCH(q) - returns all unifiers such that the query q unifies with some sentence in the KB</p>
+<ul>
+<li><p>only try to unify reasonable facts using <em>indexing</em></p></li>
+<li><p>query such as Employs(IBM, Richard)</p></li>
+<li><p>all possible unifying queries form <em>subsumption lattice</em></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>forward chaining: start w/ atomic sentences + apply modus ponens until no new inferences can be made</p>
+<ul>
+<li><p><em>first-order definite clauses</em> - (remember this is a type of Horn clause)</p></li>
+<li><p><em>Datalog</em> - language restricted to first-order definite clauses with no function symbols</p></li>
+<li><p>simple forward-chaining: FOL-FC-ASK - may not terminate if not entailed</p>
+<ol class="simple">
+<li><p><em>pattern matching</em> is expensive</p></li>
+<li><p>rechecks every rule</p></li>
+<li><p>generates irrelevant facts</p></li>
+</ol>
+</li>
+<li><p>efficient forward chaining (solns to above problems)</p>
+<ol class="simple">
+<li><p><em>conjuct odering</em> problem - find an ordering to solve the conjuncts of the rule premise so the total cost is minimized</p></li>
+</ol>
+<ul class="simple">
+<li><p>requires heuristics (ex. <em>minimum-remaining-values</em>)</p></li>
+</ul>
+<ol class="simple">
+<li><p>incremental forward chaining - ignore redundant rules</p></li>
+</ol>
+<ul class="simple">
+<li><p>every new fact inferred on iteration t must be derived from at least one new fact inferred on iteration t-1</p></li>
+<li><p><em>rete</em> algorithm was first to do this</p></li>
+</ul>
+<ol class="simple">
+<li><p>irrelevant facts can be ignored by backward chaining</p></li>
+</ol>
+<ul class="simple">
+<li><p>could also use <em>deductive database</em> to keep track of relevant variables</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>backward-chaining</p>
+<ul class="simple">
+<li><p>simple backward-chaining: FOL-BC-ASK</p>
+<ul>
+<li><p>is a <em>generator</em> - returns multiple times, each giving one possible result</p></li>
+</ul>
+</li>
+<li><p>like DFS - might go forever</p></li>
+<li><p>logic programming: algorithm = logic + control</p>
+<ul>
+<li><p>ex. <em>prolog</em></p></li>
+<li><p>a lot more here</p></li>
+<li><p>can have parallelism</p></li>
+<li><p>redudant inference / infinite loops because of repeated states and infinite paths</p></li>
+<li><p>can use <em>memoization</em> (similar to the dynamic programming that forward-chaining does)</p></li>
+<li><p>generally easier than converting it into FOLD</p></li>
+</ul>
+</li>
+<li><p><em>constraint logic programming</em> - allows variables to be constrained rather than <em>bound</em></p>
+<ul>
+<li><p>allows for things with infinite solns</p></li>
+<li><p>can use <em>metarules</em> to determine which conjuncts are tried first</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="classical-planning-10-1-10-2">
+<h2>6.6.4. classical planning 10.1-10.2<a class="headerlink" href="#classical-planning-10-1-10-2" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><em>planning</em> - devising a plan of action to achieve one’s goals</p></li>
+<li><p><em>Planning Domain Definition Language</em> (PDDL) - uses <em>factored representation</em> of world</p>
+<ul>
+<li><p><em>closed-world</em> assumption - fluents that aren’t present are false</p></li>
+<li><p>solving the frame problem: only specify result of action in terms of what changes</p></li>
+<li><p>requires 4 things (like search w/out path cost function)</p>
+<ul>
+<li><p>initial state</p></li>
+<li><p>actions</p></li>
+<li><p>transitions</p></li>
+<li><p>goals</p></li>
+</ul>
+</li>
+<li><p>no quantifiers</p></li>
+</ul>
+</li>
+<li><p>set of ground (variable-free) actions can be represented by a single <em>action schema</em></p>
+<ul>
+<li><p>like a method with precond and effect</p></li>
+<li><p><span class="math notranslate nohighlight">\(Action(Fly(p, from, to))\)</span>:</p>
+<ul>
+<li><p>PRECOND: <span class="math notranslate nohighlight">\(At(p, from) \land Plane(p) \land Airport(from) \land Airport(to)\)</span></p></li>
+<li><p>EFFECT: <span class="math notranslate nohighlight">\(\neg At(p, from) \land At(p, to)\)</span></p>
+<ul>
+<li><p>can only use variables in the precondition</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>problems</p>
+<ul>
+<li><p>PlanSAT - try to find plan that solves a planning problem</p></li>
+<li><p>Bounded PlanSAT - ask whether there is a soln of length k or less</p></li>
+</ul>
+</li>
+</ul>
+<div class="section" id="algorithms-for-planning-as-state-space-search">
+<h3>6.6.4.1. algorithms for planning as state-space search<a class="headerlink" href="#algorithms-for-planning-as-state-space-search" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>forward (progression) state-space search</p>
+<ul>
+<li><p>very inefficient</p></li>
+<li><p>generally forward search is preferred because it’s easier to come up with good heuristics</p></li>
+</ul>
+</li>
+<li><p>backward (regression) relevant-states search</p>
+<ul>
+<li><p>PDLL makes it easy to regress from a state description to the predecessor state description</p></li>
+<li><p>start with a set of things in the goal (and any other fluent can hae any value)</p>
+<ul>
+<li><p>keep track of a set at all points</p></li>
+</ul>
+</li>
+<li><p>in going backward, the effects that were added need not have been true before, but preconditions must have held before</p></li>
+</ul>
+</li>
+<li><p>heuristics</p>
+<ul>
+<li><p>ex. ignore preconditions</p></li>
+<li><p>ex. ignore delete lists - remove all negative literals</p></li>
+<li><p>ex. <strong>state abstractions</strong> - many-to-one mapping from states <span class="math notranslate nohighlight">\(\to\)</span> abstract states</p>
+<ul>
+<li><p>ex. ignore some fluents</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>decomposition</p>
+<ul>
+<li><p>requires subgoal independence</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="foundations-of-rule-learning-furnkranz-et-al-2014">
+<h2>6.6.5. <a class="reference external" href="https://dl.acm.org/citation.cfm?id=2788240">foundations of rule learning</a> (furnkranz et al. 2014)<a class="headerlink" href="#foundations-of-rule-learning-furnkranz-et-al-2014" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>terminology - rule has a condition (conjunctive of binary features) + a conclusion = implication</p>
+<ul>
+<li><p>rule has 2 parts</p>
+<ul>
+<li><p><em>antecedent</em> = <em>body</em> - consists of <strong>conditions</strong> = binary features e.g. <span class="math notranslate nohighlight">\(X_1 &gt; 0\)</span>, <span class="math notranslate nohighlight">\(X_2=0\)</span></p></li>
+<li><p><strong>conclusion</strong> = consequent* = <em>head</em></p></li>
+</ul>
+</li>
+<li><p>rule <span class="math notranslate nohighlight">\(r\)</span> has length <em>L</em></p></li>
+<li><p><span class="math notranslate nohighlight">\(P, N\)</span> - total positives / negatives in the data</p></li>
+<li><p><span class="math notranslate nohighlight">\(TP =\hat P, FP =\hat N\)</span> - positives / negatives covered (predicted) by a rule</p></li>
+<li><p><span class="math notranslate nohighlight">\(FN, TN\)</span> - positives / negatives not covered by a rule</p></li>
+<li><p><span class="math notranslate nohighlight">\(\frac{TP}{P}\)</span> = true positive rate = sensitivity</p></li>
+<li><p><span class="math notranslate nohighlight">\(\frac{TN}{N}\)</span> = true negative rate = specificity</p></li>
+<li><p>rules evaluated with a heuristic <span class="math notranslate nohighlight">\(H(\hat P, \hat N)\)</span></p></li>
+</ul>
+</li>
+</ul>
+<div class="section" id="categorization-of-tasks-ch-1">
+<h3>6.6.5.1. categorization of tasks (ch 1)<a class="headerlink" href="#categorization-of-tasks-ch-1" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>historically, a lot of this was developed in the data mining community and gave rise to packages such as WEKA, RAPID-I, KNIME, ORANGE</p>
+<ul>
+<li><p>historical algos: AQ2 (michalski, 1969), PRISM (cendrowska, 1987), CN2 (Clar &amp; nibett, 1989), FOIL (quinlan, 1990), RIPPER (cohen 1995), PROGOL (muggleton, 1995), <a class="reference external" href="http://www.comlab.ox.ac.uk/oucl/research/areas/machlearn/Aleph/aleph.pl">ALEPH</a> (srinivasan, 1999) - entire rule workbench in one prolog file, OPUS (webb, 1955), CBA (lui et al. 1998)</p></li>
+</ul>
+</li>
+<li><p>predictive rules</p>
+<ul>
+<li><p><strong>propositional learning</strong> (just propositional logic) v <strong>relational learning</strong> (first-order logic) = relational data mining = inductive logic programming</p></li>
+<li><p><strong>concept learning</strong> - binary classification task</p></li>
+<li><p><strong>complete</strong> rule set <span class="math notranslate nohighlight">\(\mathcal R\)</span> - covers all positive examples (recall = 1)</p></li>
+<li><p><strong>consistent</strong> - rule set <span class="math notranslate nohighlight">\(\mathcal R\)</span> - covers no negative examples (precision = 1)</p></li>
+</ul>
+</li>
+<li><p>descriptive data mining - usually unsupervised, just learn patterns</p>
+<ul>
+<li><p>associative rule learning is unsupervised descriptive (e.g. APRIORI)</p>
+<ul>
+<li><p>here, both the conditions + conclusions can have many features</p></li>
+</ul>
+</li>
+<li><p>subgroup discovery is descriptive, but has a supervised label, so is actually like supervised clustering - goal is to learn subgroups with a significantly different class distribution than the entire population</p></li>
+</ul>
+</li>
+<li><p>relational learning - when data doesn’t fit in a table but is associated (e.g. customers have many purchases each)</p></li>
+</ul>
+</div>
+<div class="section" id="basics-of-learning-rules-ch-2">
+<h3>6.6.5.2. basics of learning rules (ch 2)<a class="headerlink" href="#basics-of-learning-rules-ch-2" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>finding rules is basically a search problem</p>
+<ul>
+<li><p>want to find best rules (generally bigger coverage, less complexity, higher accuracy)</p></li>
+<li><p>can thing of it as searching on a <strong>refinement graph</strong> - each rule is a node and refinement operators connect rules</p></li>
+</ul>
+</li>
+<li><p>heuristics - all basically trading off recall / precision of a rule <span class="math notranslate nohighlight">\(r\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(CovDiff(r) = \hat P - \hat N\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(RateDiff(r)\)</span> = <span class="math notranslate nohighlight">\(\hat P / P - \hat N / N\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(Precision(r) = TN / (TP + FP)\)</span> (sometimes called confidence or rule accuracy - ignore this kinda confusing)</p></li>
+<li><p><span class="math notranslate nohighlight">\(Laplace(r) = (TN + 1)/(TP+1+FP+1)\)</span> - pad all the values by 1 to adjust scores when numbers are small</p></li>
+<li><p><em>likelihood ratio statistic</em> - compare distr in rule to distr in full dataset</p></li>
+</ul>
+</li>
+<li><p>stopping criteria</p>
+<ul>
+<li><p>threshold for some heuristic</p></li>
+</ul>
+</li>
+<li><p>making final prediction</p>
+<ul>
+<li><p>final predictions can be made via majority vote, using most accurate rule, or averaging predictions.</p></li>
+</ul>
+</li>
+<li><p>algorithms</p>
+<ul>
+<li><p>sequential covering (remove covered points after each rule)</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="binary-split-features-ch-4">
+<h3>6.6.5.3. (binary split) features (ch 4)<a class="headerlink" href="#binary-split-features-ch-4" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>here, feature means something binary that we split on</p></li>
+<li><p>selector is smth of the form <span class="math notranslate nohighlight">\(A_i \sim v_{i, j}\)</span> where relation <span class="math notranslate nohighlight">\(\sim\)</span> is like <span class="math notranslate nohighlight">\(=, &gt;=, &lt;=\)</span></p>
+<ul>
+<li><p>can also be attribute sets (internal disjunctions) <span class="math notranslate nohighlight">\(A_i \in \{v_1, v_2, v_3 \}\)</span>, intervals (range operators), or attribute sets (internal conjunctions)</p></li>
+<li><p>can also be simple combinations of binary variables</p></li>
+</ul>
+</li>
+<li><p>relational features - function between features (e.g. length &gt; height)</p>
+<ul>
+<li><p>can have splits that are functions of previous splits (like a residual DNN connection)</p></li>
+</ul>
+</li>
+<li><p>many algorithms start by making a covering table = table of binary values for all possible (reasonable) splits for all features</p>
+<ul>
+<li><p>split on all categorical features</p></li>
+<li><p>split between all values of continuous features (or ordered discrete)</p></li>
+<li><p>can compute relational features (e.g. <span class="math notranslate nohighlight">\(A_1 - A_2\)</span>) by just adding these as features</p></li>
+</ul>
+</li>
+<li><p>feature relevancy</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(pn-pair\)</span>: pair of training examples where one is positive and one is negative</p></li>
+<li><p>totally irrelevant features - don’t distinguish between any positive/negative examples</p></li>
+<li><p>a feature <span class="math notranslate nohighlight">\(f_1\)</span> is <strong>more relevant</strong> than another <span class="math notranslate nohighlight">\(f_2\)</span> if it separates all the <span class="math notranslate nohighlight">\(pn\)</span>-pairs that <span class="math notranslate nohighlight">\(f_2\)</span> does and more</p></li>
+<li><p>can also manually set thresholds on TP, FP to decide irrelevance</p></li>
+</ul>
+</li>
+<li><p>missing values</p>
+<ul>
+<li><p>different types</p>
+<ul>
+<li><p>missing - was not measured but should have been</p></li>
+<li><p>not applicable - e.g. pregnant for a male</p></li>
+<li><p>don’t care - could be anything</p></li>
+</ul>
+</li>
+<li><p>basic strategies</p>
+<ul>
+<li><p>delete incomplement examples</p></li>
+<li><p>treat missing as special value</p></li>
+<li><p>impute w/ mean/median/linear prediction</p></li>
+<li><p>fill in prob distr. over missing val</p></li>
+<li><p>pessimistic value strategy - imputed values shouldn’t differentiate between classes - set value so it doesn’t get used (e.g. false for positive class and true for neg class)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>imprecise values - continuous values with noise</p>
+<ul>
+<li><p>might want to test variables with <span class="math notranslate nohighlight">\(\pm \delta\)</span> handled with pessimistic value strategy</p></li>
+<li><p><strong>fuzzy rules</strong> - probabilistically split</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="relational-features-ch-5">
+<h3>6.6.5.4. relational features (ch 5)<a class="headerlink" href="#relational-features-ch-5" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>these kinds of task use relational background knowledge + databases</p>
+<ul>
+<li><p>ex. from knowledge about things like <em>female(X)</em>, <em>parent(X, Y)</em>, learn that <em>daughter(X, Y):= female(X) , parent(Y, X)</em></p></li>
+<li><p>allow <span class="math notranslate nohighlight">\(\forall, \exists\)</span></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="learning-single-rules-ch-6">
+<h3>6.6.5.5. learning single rules (ch 6)<a class="headerlink" href="#learning-single-rules-ch-6" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>search problem to maximize some criteria subject to some constraints</p>
+<ul>
+<li><p>top-down - start with large cover then go to small</p></li>
+<li><p>bottom-up - start with high-sensitivity, low cover rules then go larger</p></li>
+</ul>
+</li>
+<li><p><img alt="find_best_rule" src="../../_images/find_best_rule.png" /></p></li>
+<li><p>search algos</p>
+<ul>
+<li><p>exhaustive search</p></li>
+<li><p>hill-climbing = local-search - can make less myopic by considering multiple refinements at a time</p></li>
+<li><p>beam-search - keep k best candidates</p></li>
+<li><p>best-first search - beam search but keep all candidates</p></li>
+<li><p>ordered search - prune the search space based on knowledge (e.g. order splitting values)</p></li>
+<li><p>level-wise search (e.g. apriori) - generate in parallel all rules with a certain minimum quality</p></li>
+<li><p>stochastic search - involves randomness</p></li>
+</ul>
+</li>
+<li><p>search directions: combine top-down (specialization) with bottom-up (generalization)</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes/ai"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="ai_futures.html" title="previous page">6.5. ai futures</a>
+    <a class='right-next' id="next-link" href="philosophy.html" title="next page">6.7. philosophy</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Chandan Singh<br/>
+        
+            &copy; Copyright None.<br/>
+          <div class="extra_footer">
+            <p>
+Many of these images are taken from resources on the web.
+</p>
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

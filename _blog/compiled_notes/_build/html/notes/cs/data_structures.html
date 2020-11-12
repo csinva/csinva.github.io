@@ -1,0 +1,1324 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>2.3. data structures &#8212; learning to learn</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../_static/togglebutton.js"></script>
+    <script type="text/javascript" src="../../_static/clipboard.min.js"></script>
+    <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    <script type="text/javascript">var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script type="text/javascript" src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" type="text/javascript" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script type="text/javascript">
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2.4. software engineering" href="software.html" />
+    <link rel="prev" title="2.2. python ref" href="python_ref.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">learning to learn</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   welcome 👋
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../research_ovws/research_ovws.html">
+   1. research_ovws
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_comp_neuro.html">
+     1.1. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_disentanglement.html">
+     1.2. disentanglement
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_complexity.html">
+     1.3. complexity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_interesting_science.html">
+     1.4. interesting science
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_dl_theory.html">
+     1.5. dl theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_scat.html">
+     1.6. scattering transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">
+     1.7. ml in medicine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_dl_for_neuro.html">
+     1.8. dl for neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_uncertainty.html">
+     1.9. uncertainty
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_interp.html">
+     1.10. interpretability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_kernels.html">
+     1.11. kernels
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="cs.html">
+   2. cs
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="retrieval.html">
+     2.1. info retrieval
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="python_ref.html">
+     2.2. python ref
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2.3. data structures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="software.html">
+     2.4. software engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="quantum.html">
+     2.5. quantum
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="algo.html">
+     2.6. algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="graphs.html">
+     2.7. graphs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="os.html">
+     2.8. os
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="arch.html">
+     2.9. architecture
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="java_ref.html">
+     2.10. java ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="comp_theory.html">
+     2.11. cs theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cpp_ref.html">
+     2.12. c/c++ ref
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../math/math.html">
+   3. math
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/differential_equations.html">
+     3.1. differential equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/proofs.html">
+     3.2. proofs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/analysis.html">
+     3.3. real analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/linear_algebra.html">
+     3.4. linear algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/signals.html">
+     3.5. signals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/optimization.html">
+     3.6. optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/calculus.html">
+     3.7. calculus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/chaos.html">
+     3.8. chaos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/math_basics.html">
+     3.9. math basics
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../stat/stat.html">
+   4. stat
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/graphical_models.html">
+     4.1. graphical models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/data_analysis.html">
+     4.2. data analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/testing.html">
+     4.3. testing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/causal_inference.html">
+     4.4. causal inference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/info_theory.html">
+     4.5. info theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/linear_models.html">
+     4.6. linear models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/time_series.html">
+     4.7. time series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/game_theory.html">
+     4.8. game theory
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ml/ml.html">
+   5. ml
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/comp_vision.html">
+     5.1. computer vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/structure_ml.html">
+     5.2. structure learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/classification.html">
+     5.3. classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/unsupervised.html">
+     5.4. unsupervised
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/deep_learning.html">
+     5.5. deep learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/feature_selection.html">
+     5.6. feature selection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/learning_theory.html">
+     5.7. learning theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/evaluation.html">
+     5.8. evaluation
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ai/ai.html">
+   6. ai
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/search.html">
+     6.1. search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/nlp.html">
+     6.2. nlp
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/fairness_sts.html">
+     6.3. fairness
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/cogsci.html">
+     6.4. cogsci
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/ai_futures.html">
+     6.5. ai futures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/logic.html">
+     6.6. logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/philosophy.html">
+     6.7. philosophy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/psychology.html">
+     6.8. psychology
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/knowledge_rep.html">
+     6.9. representations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/decisions.html">
+     6.10. decisions
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../neuro/neuro.html">
+   7. neuro
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/brain_basics.html">
+     7.1. brain basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/vissci.html">
+     7.2. vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/comp_neuro.html">
+     7.3. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/sensory_input.html">
+     7.4. sensory input
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/memory.html">
+     7.5. memory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/motor.html">
+     7.6. motor system
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/development.html">
+     7.7. development
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/notes/cs/data_structures.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/csinva/csinva.github.io"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lists">
+   2.3.1. lists
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#arrays-and-strings">
+     2.3.1.1. arrays and strings
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#queue-linkedlist">
+     2.3.1.2. queue - linkedlist
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#stack">
+     2.3.1.3. stack
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#trees">
+   2.3.2. trees
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#avl-tree">
+     2.3.2.1. AVL Tree
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#red-black-trees">
+     2.3.2.2. Red-Black Trees
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#splay-trees">
+     2.3.2.3. Splay Trees
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#other-trees">
+     2.3.2.4. other trees
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#heaps">
+   2.3.3. heaps
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hash-tables">
+   2.3.4. Hash tables
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="data-structures">
+<h1>2.3. data structures<a class="headerlink" href="#data-structures" title="Permalink to this headline">¶</a></h1>
+<p>Some notes on advanced data structures, based on UVA’s “Program and Data Representation” course.</p>
+<div class="section" id="lists">
+<h2>2.3.1. lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="arrays-and-strings">
+<h3>2.3.1.1. arrays and strings<a class="headerlink" href="#arrays-and-strings" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>start by checking for null, length 0</p></li>
+<li><p><em>ascii</em> is 128, extended is 256</p></li>
+</ul>
+</div>
+<div class="section" id="queue-linkedlist">
+<h3>2.3.1.2. queue - linkedlist<a class="headerlink" href="#queue-linkedlist" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>has insert at back (enqueue) and remove from front (dequeue)</p></li>
+</ul>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">Node</span> <span class="o">{</span>
+	<span class="n">Node</span> <span class="n">next</span><span class="o">;</span>
+	<span class="kt">int</span> <span class="n">val</span><span class="o">;</span>
+	<span class="kd">public</span> <span class="nf">Node</span><span class="o">(</span><span class="kt">int</span> <span class="n">d</span><span class="o">)</span> <span class="o">{</span> <span class="n">val</span> <span class="o">=</span> <span class="n">d</span><span class="o">;</span> <span class="o">}</span> 
+<span class="o">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>finding a loop is tricky, use visited</p></li>
+<li><p>reverse a linked list</p>
+<ul>
+<li><p>requires 3 ptrs (one temporary to store next)</p></li>
+<li><p>return pointer to new end</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="stack">
+<h3>2.3.1.3. stack<a class="headerlink" href="#stack" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">Stack</span> <span class="o">{</span> 
+	<span class="n">Node</span> <span class="n">top</span><span class="o">;</span>
+	<span class="n">Node</span> <span class="nf">pop</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">if</span> <span class="o">(</span><span class="n">top</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">Object</span> <span class="n">item</span> <span class="o">=</span> <span class="n">top</span><span class="o">.</span><span class="na">data</span><span class="o">;</span> 
+			<span class="n">top</span> <span class="o">=</span> <span class="n">top</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+			<span class="k">return</span> <span class="n">item</span><span class="o">;</span>
+		<span class="o">}</span>
+		<span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kt">void</span> <span class="nf">push</span><span class="o">(</span><span class="n">Object</span> <span class="n">item</span><span class="o">)</span> <span class="o">{</span> 
+		<span class="n">Node</span> <span class="n">t</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Node</span><span class="o">(</span><span class="n">item</span><span class="o">);</span>
+		<span class="n">t</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">top</span><span class="o">;</span>
+		<span class="n">top</span> <span class="o">=</span> <span class="n">t</span><span class="o">;</span>
+	<span class="o">}</span> 
+<span class="o">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>sort a stack with 2 stacks</p>
+<ul>
+<li><p>make a new stack called ans</p></li>
+<li><p>pop from old</p></li>
+<li><p>while old element is &gt; ans.peek(), old.push(ans.pop())</p></li>
+<li><p>then new.push(old element)</p></li>
+</ul>
+</li>
+<li><p>stack with min - each el stores min of things below it</p></li>
+<li><p>queue with 2 stacks - keep popping everything off of one and putting them on the other</p></li>
+<li><p>sort with 2 stacks</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="trees">
+<h2>2.3.2. trees<a class="headerlink" href="#trees" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Balanced binary trees are generally logarithmic</p>
+<ul>
+<li><p>Root: a node with no parent; there can only be one root</p></li>
+<li><p>Leaf: a node with no children</p></li>
+<li><p>Siblings: two nodes with the same parent</p></li>
+<li><p>Height of a node: length of the longest path from that node to a leaf</p>
+<ul>
+<li><p>Thus, all leaves have height of zero</p></li>
+<li><p>Height of a tree: maximum depth of a node in that tree = height of the root</p></li>
+</ul>
+</li>
+<li><p>Depth of a node: length of the path from the root to that node</p></li>
+<li><p>Path: sequence of nodes n1, n2, …, nk such that ni is parent of ni+1 for 1 ≤ i ≤ k</p></li>
+<li><p>Length: number of edges in the path</p></li>
+<li><p>Internal path length: sum of the depths of all the nodes</p></li>
+</ul>
+</li>
+<li><p>Binary Tree - every node has at most 2 children</p></li>
+<li><p>Binary Search Tree - Each node has a key value that can be compared</p>
+<ul>
+<li><p>Every node in left subtree has a key whose value is less than the root’s key value</p></li>
+<li><p>Every node in right subtree has a key whose value is greater than the root’s key value</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">BST</span><span class="o">::</span><span class="n">insert</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="n">BinaryNode</span> <span class="o">*</span> <span class="o">&amp;</span> <span class="n">curNode</span><span class="o">){</span>    <span class="c1">//we pass in by reference because we want a change in the method to actually modify the parameter (the parameter is the curNode *)</span>
+    <span class="c1">//left associative so this is a reference to a pointer</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">curNode</span><span class="o">==</span><span class="n">NULL</span><span class="o">)</span>
+        <span class="n">curNode</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BinaryNode</span><span class="o">(</span><span class="n">x</span><span class="o">,</span><span class="n">NULL</span><span class="o">,</span><span class="n">NULL</span><span class="o">);</span>
+    <span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">x</span><span class="o">&lt;</span><span class="n">curNode</span><span class="o">-&gt;</span><span class="n">element</span><span class="o">)</span>
+        <span class="n">insert</span><span class="o">(</span><span class="n">x</span><span class="o">,</span><span class="n">curNode</span><span class="o">-&gt;</span><span class="n">left</span><span class="o">);</span>
+    <span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">x</span><span class="o">&gt;</span><span class="n">curNode</span><span class="o">-&gt;</span><span class="n">element</span><span class="o">)</span>
+        <span class="n">insert</span><span class="o">(</span><span class="n">x</span><span class="o">,</span><span class="n">curNode</span><span class="o">-&gt;</span><span class="n">right</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>BST Remove</p>
+<ul>
+<li><p>if no children: remove node (reclaiming memory), set parent pointer to null
+- one child: Adjust pointer of parent to point at child, and reclaim memory
+- two children: successor is min of right subtree
+- replace node with successor, then remove successor from tree</p>
+<ul>
+<li><p>worst-case depth = n-1 (this happens when the data is already sorted)</p></li>
+<li><p>maximum number of nodes in tree of height h is 2^(h+1) - 1</p></li>
+<li><p>minimum height h ≥ log(n+1)-1</p></li>
+<li><p>Perfect Binary tree - impractical because you need the perfect amount of nodes</p>
+<ul>
+<li><p>all leaves have the same depth</p></li>
+<li><p>number of leaves 2^h</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="section" id="avl-tree">
+<h3>2.3.2.1. AVL Tree<a class="headerlink" href="#avl-tree" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>For every node in the tree, the height of the left and right sub-trees differs at most by 1</p>
+<ul>
+<li><p>guarantees log(n)</p></li>
+<li><p>balance factor := The height of the right subtree minus the height of the left subtree</p></li>
+<li><p>“Unbalanced” trees: A balance factor of -2 or 2</p></li>
+<li><p>AVL Insert - needs to update balance factors</p></li>
+<li><p>same sign -&gt; single rotation</p></li>
+<li><p>-2, -1 -&gt; needs right rotation</p></li>
+<li><p>-2, +1 -&gt; needs left then right</p></li>
+<li><p>Find: Θ(log n) time: height of tree is always Θ(log n)</p></li>
+<li><p>Insert: Θ(log n) time: find() takes Θ(log n), then may have to visit every node on the path back up to root to perform up to 2 single rotations</p></li>
+<li><p>Remove: Θ(log n): left as an exercise</p></li>
+<li><p>Print: Θ(n): no matter the data structure, it will still take n steps to print n elements</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="red-black-trees">
+<h3>2.3.2.2. Red-Black Trees<a class="headerlink" href="#red-black-trees" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>definition</p>
+<ol class="simple">
+<li><p>A node is either red or black</p></li>
+<li><p>The root is black</p></li>
+<li><p>All leaves are black
+The leaves may be the NULL children</p></li>
+<li><p>Both children of every red node are black
+Therefore, a black node is the only possible parent for a red node</p></li>
+<li><p>Every simple path from a node to any descendant leaf contains the same number of black nodes</p></li>
+</ol>
+</li>
+<li><p>properties</p>
+<ul>
+<li><p>The height of the right and left subtree can differ by a factor of n</p></li>
+<li><p>insert (Assume node is red and try to insert)</p>
+<ol class="simple">
+<li><p>The new node is the root node</p></li>
+<li><p>The new node’s parent is black</p></li>
+<li><p>Both the parent and uncle (aunt?) are red</p></li>
+<li><p>Parent is red, uncle is black, new node is the right child of parent</p></li>
+<li><p>Parent is red, uncle is black, new node is the left child of parent</p></li>
+</ol>
+</li>
+<li><p>Removal</p>
+<ul>
+<li><p>Do a normal BST remove</p>
+<ul>
+<li><p>Find next highest/lowest value, put it’s value in the node to be deleted, remove that highest/lowest node</p>
+<ul>
+<li><p>Note that that node won’t have 2 children!</p></li>
+</ul>
+</li>
+<li><p>We replace the node to be deleted with it’s left child</p>
+<ul>
+<li><p>This child is N, it’s sibling is S, it’s parent is P</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="splay-trees">
+<h3>2.3.2.3. Splay Trees<a class="headerlink" href="#splay-trees" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>A self-balancing tree that keeps “recently” used nodes close to the top</p>
+<ul>
+<li><p>This improves performance in some cases</p></li>
+<li><p>Great for caches</p></li>
+<li><p>Not good for uniform access</p></li>
+</ul>
+</li>
+<li><p>Anytime you find / insert / delete a node, you splay the tree around that node</p></li>
+<li><p>Perform tree rotations to make that node the new root node</p></li>
+<li><p>Splaying is Θ(h) where h is the height of the tree</p>
+<ul>
+<li><p>At worst this is linear time - Θ(n)</p></li>
+<li><p>We say it runs in Θ(log n) amortized time - individual operations might take linear time, but other operations take almost constant time - averages out to logarithmic time</p>
+<ul>
+<li><p>m operations will take m*log(n) time</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="other-trees">
+<h3>2.3.2.4. other trees<a class="headerlink" href="#other-trees" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>to go through <em>bst (without recursion) in order</em>, use stacks</p>
+<ul>
+<li><p>push and go left</p></li>
+<li><p>if can’t go left, pop</p>
+<ul>
+<li><p>add new left nodes</p>
+<ul>
+<li><p>go right</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><em>breadth-first tree</em></p>
+<ul>
+<li><p>recursively print only at a particular level each time</p></li>
+<li><p>create pointers to nodes on the right</p></li>
+</ul>
+</li>
+<li><p><em>balanced tree</em>  = any 2 nodes differ in height by more than 1</p>
+<ul>
+<li><p>(maxDepth - minDepth) &lt;=1</p></li>
+</ul>
+</li>
+<li><p><em>trie</em> is an infix of the word “retrieval” because the trie can find a single word in a dictionary with only a prefix of the word</p>
+<ul>
+<li><p>root is empty string</p></li>
+<li><p>each node stores a character in the word</p></li>
+<li><p>if ends, full word</p>
+<ul>
+<li><p>need a way to tell if prefix is a word -&gt; each node stores a boolean isWord</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="heaps">
+<h2>2.3.3. heaps<a class="headerlink" href="#heaps" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>used for <em>priority queue</em></p></li>
+<li><p>peek(): just look at the root node</p></li>
+<li><p>add(val): put it at correct spot, percolate up</p>
+<ul>
+<li><p>percolate - Repeatedly exchange node with its parent if needed</p></li>
+<li><p>expected run time: ∑i=1..n 1/2^n∗n=2</p></li>
+</ul>
+</li>
+<li><p>pop(): put last leaf at root, percolate down</p>
+<ul>
+<li><p>Remove root (that is always the min!)</p></li>
+<li><p>Put “last” leaf node at root</p></li>
+<li><p>Repeatedly find smallest child and swap node with smallest child if needed.</p></li>
+</ul>
+</li>
+<li><p>Priority Queue - Binary Heap is always used for Priority Queue</p>
+<ol class="simple">
+<li><p>insert</p>
+<ul>
+<li><p>inserts with a priority</p></li>
+</ul>
+</li>
+<li><p>findMin</p>
+<ul>
+<li><p>finds the minimum element</p></li>
+</ul>
+</li>
+<li><p>deleteMin</p>
+<ul>
+<li><p>finds, returns, and removes minimum element</p></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>perfect (or complete) binary tree - binary tree with all leaf nodes at the same depth; all internal nodes have 2 children.</p>
+<ul>
+<li><p>height h, 2h+1-1 nodes, 2h-1 non-leaves, and 2h leaves</p></li>
+</ul>
+</li>
+<li><p>Full Binary Tree</p>
+<ul>
+<li><p>A binary tree in which each node has exactly zero or two children.</p></li>
+</ul>
+</li>
+<li><p>Min-heap - parent is min</p>
+<ol class="simple">
+<li><p>Heap Structure Property: A binary heap is an almost complete binary tree, which is a binary tree that is completely filled, with the possible exception of the bottom level, which is filled left to right.</p>
+<ul>
+<li><p>in an array - this is faster than pointers</p>
+<ul>
+<li><p>left child: 2*i</p></li>
+<li><p>right child: (2*i)+1</p></li>
+<li><p>parent: floor(i/2)</p></li>
+<li><p>pointers need more space, are slower</p></li>
+<li><p>multiplying, dividing by 2 are very fast</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Heap ordering property: For every non-root node X, the key in the parent of X is less than (or equal to) the key in X. Thus, the tree is partially ordered.</p></li>
+</ol>
+</li>
+<li><p>Heap operations</p>
+<ul>
+<li><p>findMin: just look at the root node</p></li>
+<li><p>insert(val): put it at correct spot, percolate up</p>
+<ul>
+<li><p>percolate - Repeatedly exchange node with its parent if needed</p></li>
+<li><p>expecteed run time: ∑i=1..n 1/2^n∗n=2</p></li>
+</ul>
+</li>
+<li><p>deleteMin: put last leaf at root, percolate down</p>
+<ul>
+<li><p>Remove root (that is always the min!)</p></li>
+<li><p>Put “last” leaf node at root</p></li>
+<li><p>Repeatedly find smallest child and swap node with smallest child if needed.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Compression</p>
+<ul>
+<li><p>Lossless compression: X = X’</p></li>
+<li><p>Lossy compression: X != X’</p>
+<ul>
+<li><p>Information is lost (irreversible)</p></li>
+</ul>
+</li>
+<li><p>Compression ratio: <span class="math notranslate nohighlight">\(\vert X\vert /\vert Y\vert \)</span></p>
+<ul>
+<li><p>Where <span class="math notranslate nohighlight">\(\vert X\vert \)</span> is the number of bits (i.e., file size) of X</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Huffman coding</p>
+<ul>
+<li><p>Compression</p>
+<ol class="simple">
+<li><p>Determine frequencies</p></li>
+<li><p>Build a tree of prefix codes</p>
+<ul>
+<li><p>no code is a prefix of another code</p></li>
+<li><p>start with minheap, then keep putting trees together</p></li>
+</ul>
+</li>
+<li><p>Write the prefix codes to the output</p></li>
+<li><p>reread source file and write prefix code to the output file</p></li>
+</ol>
+</li>
+<li><p>Decompression</p>
+<ol class="simple">
+<li><p>read in prefix code - build tree</p></li>
+<li><p>read in one bit at a time and follow tree</p></li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>ASCII characters - 8 bits, 2^7 = 128 characters</p>
+<ul>
+<li><p>cost - total number of bits</p></li>
+<li><p>“straight cost” - bits / character = log2(numDistinctChars)</p></li>
+</ul>
+</li>
+<li><p>Priority Queue Example</p>
+<ul>
+<li><p>insert (x)</p></li>
+<li><p>deleteMin()</p></li>
+<li><p>findMin()</p></li>
+<li><p>isEmpty()</p></li>
+<li><p>makeEmpty()</p></li>
+<li><p>size()</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="hash-tables">
+<h2>2.3.4. Hash tables<a class="headerlink" href="#hash-tables" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>java: load factor = .75, default init capacity: 16, uses buckets</p></li>
+<li><p>string hash function: s[0]*31^(n-1) + s[1]*31^(n-2) + … + s[n-1] where n is length mod (table_size)</p>
+<ul class="simple">
+<li><p>Standard set of operations: find, insert, delete</p></li>
+<li><p>No ordering property!</p></li>
+<li><p>Thus, no findMin or findMax</p></li>
+<li><p>Hash tables store key-value pairs</p></li>
+<li><p>Each value has a specific key associated with it</p></li>
+</ul>
+</li>
+<li><p>fixed size array of some size, usually a prime number</p></li>
+<li><p>A hash function takes in a “thing” )string, int, object, etc._</p>
+<ul class="simple">
+<li><p>returns hash value - an unsigned integer value which is then mod’ed by the size of the hash table to yield a spot within the bounds of the hash table array</p></li>
+</ul>
+</li>
+<li><p>Three required properties</p>
+<ol class="simple">
+<li><p>Must be deterministic</p>
+<ul class="simple">
+<li><p>Meaning it must return the same value each time for the same “thing”</p></li>
+</ul>
+</li>
+<li><p>Must be fast</p></li>
+<li><p>Must be evenly distributed</p>
+<ul class="simple">
+<li><p>implies avoiding collisions</p></li>
+</ul>
+</li>
+</ol>
+<ul class="simple">
+<li><p>Technically, only the first is required for correctness, but the other two are required for fast running times</p></li>
+</ul>
+</li>
+<li><p>A perfect hash function has:</p>
+<ul class="simple">
+<li><p>No blanks (i.e., no empty cells)</p></li>
+<li><p>No collisions</p></li>
+</ul>
+</li>
+<li><p>Lookup table is at best logarithmic</p></li>
+<li><p>We can’t just make a very large array - we assume the key space is too large</p>
+<ul class="simple">
+<li><p>you can’t just hash by social security number</p></li>
+</ul>
+</li>
+<li><p>hash(s)=(∑k−1i=0si∗37^i) mod table_size</p>
+<ul class="simple">
+<li><p>you would precompute the powers of 37</p></li>
+</ul>
+</li>
+<li><p>collision - putting two things into same spot in hash table</p>
+<ul class="simple">
+<li><p>Two primary ways to resolve collisions:</p>
+<ol class="simple">
+<li><p>Separate Chaining (make each spot in the table a ‘bucket’ or a collection)</p></li>
+<li><p>Open Addressing, of which there are 3 types:</p>
+<ol class="simple">
+<li><p>Linear probing</p></li>
+<li><p>Quadratic probing</p></li>
+<li><p>Double hashing</p></li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>Separate Chaining</p>
+<ul class="simple">
+<li><p>each bucket contains a data structure (like a linked list)</p></li>
+<li><p>analysis of find</p>
+<ul>
+<li><p>The load factor, λ, of a hash table is the ratio of the number of elements divided by the table size</p>
+<ul>
+<li><p>For separate chaining, λ is the average number of elements in a bucket</p>
+<ul>
+<li><p>Average time on unsuccessful find: λ</p>
+<ul>
+<li><p>Average length of a list at hash(k)</p></li>
+</ul>
+</li>
+<li><p>Average time on successful find: 1 + (λ/2)</p>
+<ul>
+<li><p>One node, plus half the average length of a list (not including the item)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>typical case will be constant time, but worst case is linear because everything hashes to same spot</p></li>
+<li><p>λ = 1</p>
+<ul>
+<li><p>Make hash table be the number of elements expected</p></li>
+<li><p>So average bucket size is 1</p></li>
+<li><p>Also make it a prime number</p></li>
+</ul>
+</li>
+<li><p>λ = 0.75</p>
+<ul>
+<li><p>Java’s Hashtable but can be set to another value</p></li>
+<li><p>Table will always be bigger than the number of elements</p></li>
+<li><p>This reduces the chance of a collision!</p></li>
+<li><p>Good trade-off between memory use and running time</p></li>
+</ul>
+</li>
+<li><p>λ = 0.5</p>
+<ul>
+<li><p>Uses more memory, but fewer collisions</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Open Addressing: The general idea with all of them is that, if a spot is occupied, to ‘probe’, or try, other spots in the table to use</p>
+<ul class="simple">
+<li><p>3 Types:</p>
+<ul>
+<li><p>General: pi(k) = (hash(k) + f(i)) mod table_size
+1.Linear Probing: f(i) = i</p>
+<ul>
+<li><p>Check spots in this order :</p>
+<ul>
+<li><p>hash(k)</p></li>
+<li><p>hash(k)+1</p></li>
+<li><p>hash(k)+2</p></li>
+<li><p>hash(k)+3</p></li>
+<li><p>These are all mod table_size</p></li>
+</ul>
+</li>
+<li><p>find - keep going until you find an empty cell (or get back)</p></li>
+<li><p>problems</p>
+<ul>
+<li><p>cannot have a load factor &gt; 1, as you get close to 1, you get a lot of collisons</p></li>
+<li><p>clustering - large blocks of occupied cells</p></li>
+<li><p>“holes” when an element is removed
+2.Quadratic:  f(i) = i^2</p></li>
+</ul>
+</li>
+<li><p>hash(k)</p></li>
+<li><p>hash(k)+1</p></li>
+<li><p>hash(k)+4</p></li>
+<li><p>hash(k)+9</p></li>
+<li><p>you move out of clusters much quicker
+3.Double hashing: i * hash2(k)</p></li>
+<li><p>hash2 is another hash function - typically the fastest</p></li>
+<li><p>problem where you loop over spots that are filled - hash2 yields a factor of the table size</p>
+<ul>
+<li><p>solve by making table size prime</p></li>
+</ul>
+</li>
+<li><p>hash(k) + 1 * hash2(k)</p></li>
+<li><p>hash(k) + 2 * hash2(k)</p></li>
+<li><p>hash(k) + 3 * hash2(k)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>a prime table size helps hash function be more evenly distributed</p></li>
+<li><p>problem: when the table gets too full, running time for operations increases</p></li>
+<li><p>solution: create a bigger table and hash all the items from the original table into the new table</p>
+<ul>
+<li><p>position is dependent on table size, which means we have to rehash each value</p></li>
+<li><p>this means we have to re-compute the hash value for each element, and insert it into the new table!</p></li>
+<li><p>When to rehash?</p>
+<ul>
+<li><p>When half full (λ = 0.5)</p></li>
+<li><p>When mostly full (λ = 0.75)</p>
+<ul>
+<li><p>Java’s hashtable does this by default</p></li>
+</ul>
+</li>
+<li><p>When an insertion fails</p></li>
+<li><p>Some other threshold</p></li>
+</ul>
+</li>
+<li><p>Cost of rehashing</p>
+<ul>
+<li><p>Let’s assume that the hash function computation is constant</p></li>
+<li><p>We have to do n inserts, and if each key hashes to the same spot, then it will be a Θ(n2) operation!</p></li>
+<li><p>Although it is not likely to ever run that slow</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Removing</p>
+<ul>
+<li><p>You could rehash on delete</p></li>
+<li><p>You could put in a ‘placeholder’ or ‘sentinel’ value</p>
+<ul>
+<li><p>gets filled with these quickly</p></li>
+<li><p>perhaps rehash after a certain number of deletes</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>has functions</p>
+<ul class="simple">
+<li><p>MD5 is a good hash function (given a string or file contents)</p>
+<ul>
+<li><p>generates 128 bit hash</p></li>
+<li><p>when you download something, you download the MD5, your computer computes the MD5 and they are compared to make sure it downloaded correctly</p></li>
+<li><p>not reversible because when a file has more than 128 bits, won’t be 1-1 mapping</p></li>
+<li><p>you can lookup a MD5 hash in a rainbow table - gives you what the password probably is based on the MD5 hash</p></li>
+</ul>
+</li>
+<li><p>SHA (secure Hash algorithm) is much more secure</p>
+<ul>
+<li><p>generates hash up to 512 bits</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes/cs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="python_ref.html" title="previous page">2.2. python ref</a>
+    <a class='right-next' id="next-link" href="software.html" title="next page">2.4. software engineering</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Chandan Singh<br/>
+        
+            &copy; Copyright None.<br/>
+          <div class="extra_footer">
+            <p>
+Many of these images are taken from resources on the web.
+</p>
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

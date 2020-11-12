@@ -1,0 +1,796 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>7.5. memory &#8212; learning to learn</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../_static/togglebutton.js"></script>
+    <script type="text/javascript" src="../../_static/clipboard.min.js"></script>
+    <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    <script type="text/javascript">var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script type="text/javascript" src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" type="text/javascript" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script type="text/javascript">
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="7.6. motor system" href="motor.html" />
+    <link rel="prev" title="7.4. sensory input" href="sensory_input.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">learning to learn</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   welcome 👋
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../research_ovws/research_ovws.html">
+   1. research_ovws
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_comp_neuro.html">
+     1.1. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_disentanglement.html">
+     1.2. disentanglement
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_complexity.html">
+     1.3. complexity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_interesting_science.html">
+     1.4. interesting science
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_dl_theory.html">
+     1.5. dl theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_scat.html">
+     1.6. scattering transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">
+     1.7. ml in medicine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_dl_for_neuro.html">
+     1.8. dl for neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_uncertainty.html">
+     1.9. uncertainty
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_interp.html">
+     1.10. interpretability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_kernels.html">
+     1.11. kernels
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../cs/cs.html">
+   2. cs
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/retrieval.html">
+     2.1. info retrieval
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/python_ref.html">
+     2.2. python ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/data_structures.html">
+     2.3. data structures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/software.html">
+     2.4. software engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/quantum.html">
+     2.5. quantum
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/algo.html">
+     2.6. algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/graphs.html">
+     2.7. graphs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/os.html">
+     2.8. os
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/arch.html">
+     2.9. architecture
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/java_ref.html">
+     2.10. java ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/comp_theory.html">
+     2.11. cs theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/cpp_ref.html">
+     2.12. c/c++ ref
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../math/math.html">
+   3. math
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/differential_equations.html">
+     3.1. differential equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/proofs.html">
+     3.2. proofs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/analysis.html">
+     3.3. real analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/linear_algebra.html">
+     3.4. linear algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/signals.html">
+     3.5. signals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/optimization.html">
+     3.6. optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/calculus.html">
+     3.7. calculus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/chaos.html">
+     3.8. chaos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/math_basics.html">
+     3.9. math basics
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../stat/stat.html">
+   4. stat
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/graphical_models.html">
+     4.1. graphical models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/data_analysis.html">
+     4.2. data analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/testing.html">
+     4.3. testing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/causal_inference.html">
+     4.4. causal inference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/info_theory.html">
+     4.5. info theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/linear_models.html">
+     4.6. linear models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/time_series.html">
+     4.7. time series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/game_theory.html">
+     4.8. game theory
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ml/ml.html">
+   5. ml
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/comp_vision.html">
+     5.1. computer vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/structure_ml.html">
+     5.2. structure learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/classification.html">
+     5.3. classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/unsupervised.html">
+     5.4. unsupervised
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/deep_learning.html">
+     5.5. deep learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/feature_selection.html">
+     5.6. feature selection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/learning_theory.html">
+     5.7. learning theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/evaluation.html">
+     5.8. evaluation
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ai/ai.html">
+   6. ai
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/search.html">
+     6.1. search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/nlp.html">
+     6.2. nlp
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/fairness_sts.html">
+     6.3. fairness
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/cogsci.html">
+     6.4. cogsci
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/ai_futures.html">
+     6.5. ai futures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/logic.html">
+     6.6. logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/philosophy.html">
+     6.7. philosophy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/psychology.html">
+     6.8. psychology
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/knowledge_rep.html">
+     6.9. representations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/decisions.html">
+     6.10. decisions
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="neuro.html">
+   7. neuro
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="brain_basics.html">
+     7.1. brain basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="vissci.html">
+     7.2. vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="comp_neuro.html">
+     7.3. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sensory_input.html">
+     7.4. sensory input
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     7.5. memory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="motor.html">
+     7.6. motor system
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="development.html">
+     7.7. development
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/notes/neuro/memory.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/csinva/csinva.github.io"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#history">
+   7.5.1. history
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#next-generation">
+     7.5.1.1. next generation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modern-generation">
+   7.5.2. modern generation
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="memory">
+<h1>7.5. memory<a class="headerlink" href="#memory" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="history">
+<h2>7.5.1. history<a class="headerlink" href="#history" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>The Neuron Doctrine – the neuron is the fundamental building block and elementary signaling unit of the brain</p></li>
+<li><p>Golgi – develops silver staining method which allows Cajal to see entire neuron</p></li>
+<li><p>Santiago Ramon y Cajal – Spanish anatomist who simplifies neuron forest and looks at individual neurons, develops model with dendrites, cell body, and axon</p></li>
+<li><p>4 parts: neuron, synapse, connection specificity (specific neurons connect to specific others), dynamic polarization (signals travel in one direction)</p></li>
+<li><p>Freud looks into Cajal’s theories, but doesn’t incorporate them</p></li>
+<li><p>1906 – they share Nobel despite Golgi hating Cajal’s theories</p></li>
+<li><p>1955 – Cajal’s intuitions borne out conclusively</p></li>
+</ul>
+<div class="section" id="next-generation">
+<h3>7.5.1.1. next generation<a class="headerlink" href="#next-generation" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Sherrington – builds on Cajal’s work – finds that neurons integrate signals and some signals are inhibitory</p></li>
+<li><p>Shares Nobel with Adrian in 1932 – Adrian is younger and grateful</p></li>
+<li><p>Phases of Nerve Signaling</p></li>
+<li><p>Galvani discovers electrical activity in animals, Helmholtz measures speed of electrical signals in neurons</p></li>
+<li><p>Adrian measures action potentials and sees that they all have the same size and that intensity correlates with their frequency</p></li>
+<li><p>Bernstein (student of Helmholtz) finds that ions carry the electrical current – he investigates only the potassium ion</p></li>
+<li><p>Ionic hypothesis – Hodgkin, Huxley (and Katz) – find sodium, potassium in squid axon using voltage clamp, discover voltage-gated channels, win Nobel in 1963</p></li>
+<li><p>Interneuronal signaling</p></li>
+<li><p>1920s – Dale and Loewi find that synaptic transmission is chemical - use acetylcholine in frogs</p></li>
+<li><p>synaptic potential – has different sizes, slower – only over synapses (can be excitatory or inhibitory, can generate action potential)</p></li>
+<li><p>long-term potentiation (LTP) is a persistent strengthening of synapses based on recent patterns of activity</p></li>
+<li><p>Eccles – believed in spark theory (synaptic transmission was electrical), but after talking to Popper disproves it with Katz and believes in soup theory (synaptic transmission is chemical)</p></li>
+<li><p>Glutamate – major excitatory neurotransmitter</p></li>
+<li><p>GABA – main inhibitory transmitter</p></li>
+<li><p>Katz’s lab later showed there are a few synapses that are electrical</p></li>
+<li><p>Katz – found that neurotransmitters were released by voltage-gated gates letting in Ca ions</p></li>
+<li><p>Packets of neurotransmitters called quanta are released in synaptic vesicles</p></li>
+<li><p>Confirmed in in 1955</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="modern-generation">
+<h2>7.5.2. modern generation<a class="headerlink" href="#modern-generation" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Four Lobes
+-Frontal – working memory and lots of stuff
+-Temporal – auditory processing, language, and memory
+-Parietal – sensory information
+-Occipital – vision
+-Brain maps - Marshall showed that, even though the different sensory systems carry different types of information and end up in different regions of the cerebral cortex, they share a common logic in their organization: all sensory information is organized topographically in the brain in the form of precise maps of the body’s sensory receptors
+-Broca and Wernicke find that specific brain regions are in charge of specific functions
+-Broca’s area- expression of language
+-Werknicke’s area – perception of language
+-Patient H.M. – research by Brenda Milner
+-He couldn’t store new memories although he could learn new skills
+-Memory is a distinct mental function, clearly separate from other perceptual, motor, and cognitive abilities.
+-Short-term memory and long-term memory can be stored separately. Loss of medial temporal lobe structures, particularly loss of the hippocampus, destroys the ability to convert new short-term memory to new long-term memory.
+-There is explicit and implicit memory (implicit is a collection of processes)
+-Milner showed that at least one type of memory can be traced to specific places in the brain
+-Early Eric Kandel
+-Gets lucky start recording in hippocampus
+-Decides to start recording in Aplysia – large and has only 20,000 neurons separated into nine ganglia (human brain ~ 100 billion)
+-Hypothesizes that persistent changes in the strength of synaptic connections results in memory storage
+-just as neurons and their synaptic connections are exact and invariant, so, too, the function of those connections is invariant.
+-First, we found that the changes in synaptic strength that underlie the learning of a behavior may be great enough to reconfigure a neural network and its information-processing ability
+-a given set of synaptic connections between two neurons can be modified in opposite ways— strengthened or weakened—by different forms of learning.
+-Third, the duration of short-term memory storage depends on the length of time a synapse is weakened or strengthened.
+-Fourth, we were beginning to understand that the strength of a given chemical synapse can be modified in two ways, depending on which of two neural circuits is activated by learning—a mediating circuit or a modulatory circuit
+-Learning may be a matter of combining various elementary forms of synaptic plasticity into new and more complex forms, much as we use an alphabet to form words.
+-forgetting had at least two phases: a rapid initial decline that was sharpest in the first hour after learning and then a much more gradual decline that continued for about a month.
+-Homosynaptic - the depression occurred in the same neural pathway that was stimulated
+-Strengthening synapses = greater responses
+-Short-term to Long-term
+-Memory consolidation – short-term is subject to disruption
+-Head injuries or seizures can lead to retrograde amnesia – you forget what was in you short-term memory
+-Electric shocks were able to get rid of short-term memory
+-A short-term memory lasting minutes is converted—by a process of consolidation that requires the synthesis of new protein—into stable, long-term memory lasting days, weeks, or even longer
+-Long-term memory results in growing or shedding synapses
+-As the memory fades, the number of synapses goes almost back to normal, with the difference accounting for relearning a task easier
+-Recall
+-Based on cues, in the case of Aplysia gill-withdrawal, external stimulus
+-Short-term
+-Short-term memory changes are presynaptic - during short-term habituation lasting minutes, the sensory neuron releases less neurotransmitter, and during short-term sensitization it releases more neurotransmitter
+-Relies on interneurons:
+-Mediating circuits – produce behavior directly, sensory neurons that innervate the siphon, the interneurons, and the motor neurons that control the gill-withdrawal reflex
+-Modulatory circuits - not directly involved in producing a behavior but instead fine-tunes the behavior in response to learning by modulating—heterosynaptically—the strength of synaptic connections between the sensory and motor neurons
+-For example, in gill-withdrawal sensitization, interneurons release serotonin into the presynaptic terminals of the sensory neurons
+-This generates a long, slow synaptic potential in the motor neurons
+-Ionotropic receptors – neurotransmitter-gated, open ion channels
+-Metabotropic receptors – gated, activate enzymes; these enzymes can make cyclic AMP, act much longer
+-Serotonin binds to metabotropic receptors in the presynaptic terminal of sensory neurons increasing the amount of cAMP and in turn the amount of glutamate
+-This was verified in studies of Drosophila
+-Sensory regions map to specific places in brain, keeping proximity
+-Pavlov
+-Habituation – animal repeatedly presented with neutral sensory stimulus learns to ignore it
+-Sensitization – animal learns strong stimulus is dangerous and enhances its defensive reflexes
+-Classical Conditioning – pair neutral stimulus with potentially dangerous stimulus, animal learns to respond to neutral stimulus
+-Long-term memory
+-Proteins must be made - DNA makes RNA, and RNA makes protein
+-The serotonin itself was able to make new synapses grow via synthesis of proteins in the nucleus
+-Genes
+-There are effector genes which mediate cellular functions and regulatory genes which switch them on and off
+-Genes have regions called promoters and repressors and regulatory proteins must bind to these in order to express them
+-With repeated pulses of serotonin, kinase A move into the nucleus – turn on regulatory protein called CREB which turns on some genes
+-Also requires turning off other genes
+-MAP kinase also moves into nucleus and depresses CREB-2
+-Together, activating CREB and deactivating CREB-2 transfers short-term memories to long-term
+-Synaptic marking – the proteins produced in the nucleus know which synapses to go to because of their short-term changes
+-Proteins must be synthesized locally at the synapses
+-Dormant mRNA is sent to all the synapses
+-There is a protein called CPEB that is activated by serotonin and is required by the synapses to maintain protein synthesis
+-Resembles a prion – special protein with dominant and recessive conformation, dominant can be harmful
+-Dominant is self-perpetuating – turns recessive into dominant
+-Explicit memory - depends on the elaborate neural circuitry of the hippocampus and the medial temporal lobe, and it has many more possible storage sites.
+-Long-term potentiation - synaptic strengthening mechanism in the hippocampus
+-long-term potentiation describes a family of slightly different mechanisms, each of which increases the strength of the synapse in response to different rates and patterns of stimulation
+-glutamate acts on two different types of ionotropic receptors in the hippocampus, the AMPA receptor and the NMDA receptor. The AMPA receptor mediates normal synaptic transmission and responds to an individual action potential in the presynaptic neuron. The NMDA receptor, on the other hand, responds only to extraordinarily rapid trains of stimuli and is required for long-term potentiation flow of calcium ions into the postsynaptic cell acts as a second messenger (much as cyclic AMP does), triggering long-term potentiation - allows calcium ions to flow through its channel if and only if it detects the coincidence of two neural events, one presynaptic and the other postsynaptic: The presynaptic neuron must be active and release glutamate, and the AMPA receptor in the postsynaptic cell must bind glutamate and depolarize the cell.
+-explicit memory in the mammalian brain, unlike implicit memory in Aplysia or Drosophila, requires several gene regulators in addition to CREB
+-Cognitive science - Kantian notion that the brain is born with a priori knowledge, “knowledge that is … independent of experience.”
+-Visual system
+-Different layers respond to different things - each cell in the primary visual cortex responds only to a specific orientation of such light-dark contours
+-The brain does not simply take the raw data that it receives through the senses and reproduce it faithfully. Instead, each sensory system first analyzes and deconstructs, then restructures the raw, incoming information according to its own built-in connections and rules
+-What and where are different neural pathways
+-there is no single cortical area to which all other cortical areas report exclusively, either in the visual or in any other system. In sum, the cortex must be using a different strategy for generating the integrated visual image.
+-Spatial Map
+-the hippocampus of rats contains a representation—a map—of external space and that the units of that map are the pyramidal cells of the hippocampus, referred to as “place cells.”
+-The brain sometimes codes with coordinates centered on the receiver and sometimes relative to the outside world
+-Attention acts as a filter, selecting some objects for further processing
+-A modulating circuit involving dopamine in the hippocampus forms spatial maps
+-The dopamine comes from the cerebral cortex (a higher level part of the brain)
+-Eric Kandel tried to translate his research into a cure for age-related memory loss
+-Alzheimer’s: This degeneration of tissue is caused in large part by the accumulation of an abnormal material known as ß-amyloid in the form of insoluble plaques in the spaces between brain cells.
+-We found that drugs which activate these dopamine receptors, and thereby increase cyclic AMP, overcome the deficit in the late phase of long-term potentiation. They also reverse the hippocampus-dependent memory deficit.
+-Various disorders are being solved slowly through research
+-Consciousness
+-consciousness in people, is an awareness of self, an awareness of being aware.
+-The brain does reconstruct our perception of an object, but the object perceived—the color blue or middle on the pia	no—appears to correspond to the physical properties of the wavelength of the reflected light or the frequency of the emitted sound
+-Claustrum is connected to a bunch of different brain parts – could regulate attention
+-viewing frightening stimuli activates two different brain systems, one that involves conscious, presumably top-down attention and one that involves unconscious, bottom-up attention, or vigilance
+-readiness potential can measure what a person is going to do before they know they want to do it</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes/neuro"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="sensory_input.html" title="previous page">7.4. sensory input</a>
+    <a class='right-next' id="next-link" href="motor.html" title="next page">7.6. motor system</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Chandan Singh<br/>
+        
+            &copy; Copyright None.<br/>
+          <div class="extra_footer">
+            <p>
+Many of these images are taken from resources on the web.
+</p>
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

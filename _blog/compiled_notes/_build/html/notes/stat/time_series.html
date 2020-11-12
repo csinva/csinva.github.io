@@ -1,0 +1,980 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>4.7. time series &#8212; learning to learn</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../_static/togglebutton.js"></script>
+    <script type="text/javascript" src="../../_static/clipboard.min.js"></script>
+    <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    <script type="text/javascript">var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script type="text/javascript" src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" type="text/javascript" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script type="text/javascript">
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="4.8. game theory" href="game_theory.html" />
+    <link rel="prev" title="4.6. linear models" href="linear_models.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">learning to learn</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   welcome 👋
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../research_ovws/research_ovws.html">
+   1. research_ovws
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_comp_neuro.html">
+     1.1. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_disentanglement.html">
+     1.2. disentanglement
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_complexity.html">
+     1.3. complexity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_interesting_science.html">
+     1.4. interesting science
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_dl_theory.html">
+     1.5. dl theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_scat.html">
+     1.6. scattering transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">
+     1.7. ml in medicine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_dl_for_neuro.html">
+     1.8. dl for neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_uncertainty.html">
+     1.9. uncertainty
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_interp.html">
+     1.10. interpretability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_kernels.html">
+     1.11. kernels
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../cs/cs.html">
+   2. cs
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/retrieval.html">
+     2.1. info retrieval
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/python_ref.html">
+     2.2. python ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/data_structures.html">
+     2.3. data structures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/software.html">
+     2.4. software engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/quantum.html">
+     2.5. quantum
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/algo.html">
+     2.6. algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/graphs.html">
+     2.7. graphs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/os.html">
+     2.8. os
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/arch.html">
+     2.9. architecture
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/java_ref.html">
+     2.10. java ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/comp_theory.html">
+     2.11. cs theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/cpp_ref.html">
+     2.12. c/c++ ref
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../math/math.html">
+   3. math
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/differential_equations.html">
+     3.1. differential equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/proofs.html">
+     3.2. proofs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/analysis.html">
+     3.3. real analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/linear_algebra.html">
+     3.4. linear algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/signals.html">
+     3.5. signals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/optimization.html">
+     3.6. optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/calculus.html">
+     3.7. calculus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/chaos.html">
+     3.8. chaos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/math_basics.html">
+     3.9. math basics
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="stat.html">
+   4. stat
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="graphical_models.html">
+     4.1. graphical models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="data_analysis.html">
+     4.2. data analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="testing.html">
+     4.3. testing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="causal_inference.html">
+     4.4. causal inference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="info_theory.html">
+     4.5. info theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="linear_models.html">
+     4.6. linear models
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     4.7. time series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="game_theory.html">
+     4.8. game theory
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ml/ml.html">
+   5. ml
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/comp_vision.html">
+     5.1. computer vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/structure_ml.html">
+     5.2. structure learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/classification.html">
+     5.3. classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/unsupervised.html">
+     5.4. unsupervised
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/deep_learning.html">
+     5.5. deep learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/feature_selection.html">
+     5.6. feature selection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/learning_theory.html">
+     5.7. learning theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/evaluation.html">
+     5.8. evaluation
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ai/ai.html">
+   6. ai
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/search.html">
+     6.1. search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/nlp.html">
+     6.2. nlp
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/fairness_sts.html">
+     6.3. fairness
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/cogsci.html">
+     6.4. cogsci
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/ai_futures.html">
+     6.5. ai futures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/logic.html">
+     6.6. logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/philosophy.html">
+     6.7. philosophy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/psychology.html">
+     6.8. psychology
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/knowledge_rep.html">
+     6.9. representations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/decisions.html">
+     6.10. decisions
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../neuro/neuro.html">
+   7. neuro
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/brain_basics.html">
+     7.1. brain basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/vissci.html">
+     7.2. vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/comp_neuro.html">
+     7.3. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/sensory_input.html">
+     7.4. sensory input
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/memory.html">
+     7.5. memory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/motor.html">
+     7.6. motor system
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/development.html">
+     7.7. development
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/notes/stat/time_series.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/csinva/csinva.github.io"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#high-level">
+   4.7.1. high-level
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#basics">
+     4.7.1.1. basics
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#libraries">
+     4.7.1.2. libraries
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#high-level-modelling">
+     4.7.1.3. high-level modelling
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#similarity-measures">
+   4.7.2. similarity measures
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#book1-a-course-in-time-series-analysis-book2-intro-to-time-series-and-forecasting">
+   4.7.3. book1 (A course in Time Series Analysis) + book2 (Intro to Time Series and Forecasting)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ch-1">
+     4.7.3.1. ch 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ch-2-stationary-time-series">
+     4.7.3.2. ch 2 - stationary time series
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ch-3-linear-time-series">
+     4.7.3.3. ch 3 - linear time series
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ch-4-8-the-autocovariance-function-parameter-estimation">
+     4.7.3.4. ch 4 + 8 - the autocovariance function + parameter estimation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multivariate-time-series-ch-7">
+   4.7.4. multivariate time-series ch 7
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="time-series">
+<h1>4.7. time series<a class="headerlink" href="#time-series" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="high-level">
+<h2>4.7.1. high-level<a class="headerlink" href="#high-level" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="basics">
+<h3>4.7.1.1. basics<a class="headerlink" href="#basics" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>usually assume points are equally spaced</p></li>
+<li><p>modeling - for understanding underlying process or predicting</p></li>
+<li><p><a class="reference external" href="https://algorithmia.com/blog/introduction-to-time-series">nice blog</a>, <a class="reference external" href="https://www.itl.nist.gov/div898/handbook/pmc/section4/pmc442.htm">nice tutorial</a>, <a class="reference external" href="https://www.ethanrosenthal.com/2018/01/28/time-series-for-scikit-learn-people-part1/">Time Series for scikit-learn People</a></p></li>
+<li><p><em>noise</em>, <em>seasonality</em> (regular / predictable fluctuations), <em>trend</em>, <em>cycle</em></p></li>
+<li><p>multiplicative models: time series = trend * seasonality * noise</p></li>
+<li><p>additive model: time series = trend + seasonality + noise</p></li>
+<li><p>stationarity - mean, variance, and autocorrelation structure do not change over time</p></li>
+<li><p><strong>endogenous variable = x</strong> = independent variable</p></li>
+<li><p><strong>exogenous variable = y</strong> = dependent variable</p></li>
+</ul>
+</div>
+<div class="section" id="libraries">
+<h3>4.7.1.2. libraries<a class="headerlink" href="#libraries" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://tomaugspurger.github.io/modern-7-timeseries">pandas has some great time-series functionality</a></p></li>
+<li><p><a class="reference external" href="https://github.com/EthanRosenthal/skits">skits library</a> for forecasting</p></li>
+</ul>
+</div>
+<div class="section" id="high-level-modelling">
+<h3>4.7.1.3. high-level modelling<a class="headerlink" href="#high-level-modelling" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>common methods</p>
+<ul>
+<li><p>decomposition - identify each of these components given a time-series</p>
+<ul>
+<li><p>ex. loess, exponential smoothing</p></li>
+</ul>
+</li>
+<li><p>frequency-based methods - e.g. look at spectral plot</p></li>
+<li><p>(AR) autoregressive models - linear regression of current value of one or more prior values of the series</p></li>
+<li><p>(MA) moving-average models - require fitting the noise terms</p></li>
+<li><p>(ARMA) box-jenkins approach</p></li>
+</ul>
+</li>
+<li><p>moving averages</p>
+<ul>
+<li><p>simple moving average - just average over a window</p></li>
+<li><p>cumulative moving average - mean is calculated using previous mean</p></li>
+<li><p>exponential moving average - exponentially weights up more recent points</p></li>
+</ul>
+</li>
+<li><p>prediction (forecasting) models</p>
+<ul>
+<li><p>autoregressive integrated moving average (arima)</p>
+<ul>
+<li><p>assumptions: stationary model</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="similarity-measures">
+<h2>4.7.2. similarity measures<a class="headerlink" href="#similarity-measures" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://arxiv.org/pdf/1401.3973.pdf">An Empirical Evaluation of Similarity Measures for Time Series Classification</a> (serra et al. 2014)</p>
+<ul>
+<li><p>lock-step measures (Euclidean distance, or any norm)</p>
+<ul>
+<li><p>can resample to make them same length</p></li>
+</ul>
+</li>
+<li><p>feature-based measures (Fourier coefficients)</p>
+<ul>
+<li><p>euclidean distance over all coefs is same as over time-series, but we usually filter out high-freq coefs</p></li>
+<li><p>can also use wavelets</p></li>
+</ul>
+</li>
+<li><p>model-based measures (auto-regressive)</p>
+<ul>
+<li><p>compare coefs of an AR (or ARMA) model</p></li>
+</ul>
+</li>
+<li><p>elastic measures</p>
+<ul>
+<li><p>dynamic time warping = DTW - optimallt aligns in temporal domaub ti nubunuze accumulated cost</p>
+<ul>
+<li><p>can also enforce some local window around points</p></li>
+<li><p>Every index from the first sequence must be matched with one or more indices from the other sequence and vice versa</p></li>
+<li><p>The first index from the first sequence must be matched with the first index from the other sequence (but it does not have to be its only match)</p></li>
+<li><p>The last index from the first sequence must be matched with the last index from the other sequence (but it does not have to be its only match)</p></li>
+<li><p>The mapping of the indices from the first sequence to indices from the other sequence must be monotonically increasing, and vice versa, i.e. if <code class="docutils literal notranslate"><span class="pre">j</span> <span class="pre">&gt;</span> <span class="pre">i</span></code> are indices from the first sequence, then there must not be two indices <code class="docutils literal notranslate"><span class="pre">l</span> <span class="pre">&gt;</span> <span class="pre">k</span></code> in the other sequence, such that index <code class="docutils literal notranslate"><span class="pre">i</span></code> is matched with index <code class="docutils literal notranslate"><span class="pre">l</span></code> and index <code class="docutils literal notranslate"><span class="pre">j</span></code> is matched with index <code class="docutils literal notranslate"><span class="pre">k</span></code> , and vice versa</p></li>
+</ul>
+</li>
+<li><p>edit distance EDR</p></li>
+<li><p>time-warped edit distance - TWED</p></li>
+<li><p>minimum jump cost - MJC</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="book1-a-course-in-time-series-analysis-book2-intro-to-time-series-and-forecasting">
+<h2>4.7.3. <a class="reference external" href="https://www.stat.tamu.edu/~suhasini/teaching673/time_series.pdf">book1</a> (A course in Time Series Analysis) + <a class="reference external" href="http://home.iitj.ac.in/~parmod/document/introduction%20time%20series.pdf">book2</a> (Intro to Time Series and Forecasting)<a class="headerlink" href="#book1-a-course-in-time-series-analysis-book2-intro-to-time-series-and-forecasting" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="ch-1">
+<h3>4.7.3.1. ch 1<a class="headerlink" href="#ch-1" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>when errors are dependent, very hard to distinguish noise from signal</p></li>
+<li><p>usually in time-series analysis, we begin by de-trending the data and analyzing the residuals</p>
+<ul>
+<li><p>ex. assume linear trend or quadratic trend and subtract that fit (or could include sin / cos for seasonal behavior)</p></li>
+<li><p>ex. look at the differences instead of the points (nth order difference removes nth order polynomial trend). However, taking differences can introduce dependencies in the data</p></li>
+<li><p>ex. remove trend using sliding window (maybe with exponential weighting)</p></li>
+</ul>
+</li>
+<li><p>periodogram - in FFT, this looks at the magnitude of the coefficients (but loses the phase information)</p></li>
+</ul>
+</div>
+<div class="section" id="ch-2-stationary-time-series">
+<h3>4.7.3.2. ch 2 - stationary time series<a class="headerlink" href="#ch-2-stationary-time-series" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>in time series, we never get iid data</p></li>
+<li><p>instead we make assumptions</p>
+<ul>
+<li><p>ex. the process has a constant mean (a type of stationarity)</p></li>
+<li><p>ex. the dependencies in the time-series are short-term</p></li>
+</ul>
+</li>
+<li><p>autocorrelation plots: plot correlation of series vs series offset by different lags</p></li>
+<li><p>formal definitions of stationarity for time series <span class="math notranslate nohighlight">\(\{X_t\}\)</span></p>
+<ul>
+<li><p><strong>strict stationarity</strong> - the distribution is the same across time</p></li>
+<li><p><strong>second-order / weak stationarity</strong> -  mean is constant for all t and, for any t and k, the covariance between <span class="math notranslate nohighlight">\(X_t\)</span> and <span class="math notranslate nohighlight">\(X_{t+k}\)</span> only depends on the lag difference k</p>
+<ul>
+<li><p>In other words, there exists a function <span class="math notranslate nohighlight">\(c: \mathbb Z \to \mathbb R\)</span> such that for all t and k we have <span class="math notranslate nohighlight">\(c(k) = \text{cov} (X_t, X_{t+k})\)</span></p></li>
+<li><p>strict stationary and <span class="math notranslate nohighlight">\(E|X_T^2| &lt; \infty \implies\)</span> second-order stationary</p></li>
+</ul>
+</li>
+<li><p><strong>ergodic</strong> - stronger condition, says samples approach the expectation of functions on the time series: for any function <span class="math notranslate nohighlight">\(g\)</span> and shift <span class="math notranslate nohighlight">\(\tau_1, ... \tau_k\)</span>:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\frac 1 n \sum_t g(X_t, ... X_{t+\tau_k}) \to \mathbb E [g(X_0, ..., X_{t+\tau_k} )]\)</span></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>causal</strong> - can predict given only past values (for Gaussian processes no difference)</p></li>
+</ul>
+</div>
+<div class="section" id="ch-3-linear-time-series">
+<h3>4.7.3.3. ch 3 - linear time series<a class="headerlink" href="#ch-3-linear-time-series" title="Permalink to this headline">¶</a></h3>
+<p><strong>note: can just assume all have 0 mean (otherwise add a constant)</strong></p>
+<ul class="simple">
+<li><p><strong>AR model</strong> <span class="math notranslate nohighlight">\(AR(p)\)</span>:  $<span class="math notranslate nohighlight">\( X_t = \sum_{i=1}^p \phi_i X_{t-i}+ \varepsilon_t \)</span>$</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\phi_1, \ldots, \phi_p\)</span> are parameters</p></li>
+<li><p><span class="math notranslate nohighlight">\(\varepsilon_t\)</span> is white noise</p></li>
+<li><p>stationary assumption places constraints on param values (e.g. processes in the <span class="math notranslate nohighlight">\(AR(1)\)</span> model with <span class="math notranslate nohighlight">\(|\phi_1| \ge 1\)</span> are not stationary)</p></li>
+<li><p>looks just like linear regression, but is more complex</p>
+<ul>
+<li><p>if we don’t account for issues, things can go wrong</p>
+<ul>
+<li><p>model will not be stationary</p></li>
+<li><p>model may be misspecified</p></li>
+<li><p><span class="math notranslate nohighlight">\(E(\epsilon_t|X_{t-p}) \neq 0\)</span></p></li>
+</ul>
+</li>
+<li><p>this represents a set of difference equations, and as such, must have a solution</p></li>
+</ul>
+</li>
+<li><p>ex. <span class="math notranslate nohighlight">\(AR(1)\)</span> model - if <span class="math notranslate nohighlight">\(|\phi| &lt; 0\)</span>, then soln is in terms of past values of {<span class="math notranslate nohighlight">\(\epsilon_t\)</span>}, otherwise it is in terms of future values</p>
+<ul>
+<li><p>ex. simulating - if we know <span class="math notranslate nohighlight">\(\phi\)</span> and <span class="math notranslate nohighlight">\(\{\epsilon_t\}\)</span>, we still need to use the backshift operator to solve for  <span class="math notranslate nohighlight">\(\{ X_t \}\)</span></p></li>
+</ul>
+</li>
+<li><p>ex. <span class="math notranslate nohighlight">\(AR(p)\)</span> model - if <span class="math notranslate nohighlight">\(\sum_j |\phi_j|\)</span>&lt; 1, and <span class="math notranslate nohighlight">\(\mathbb E |\epsilon_t| &lt; \infty\)</span>, then will have a causal stationary solution</p></li>
+<li><p><strong>backshift operator</strong> <span class="math notranslate nohighlight">\(B^kX_t=X_{t-k}\)</span></p>
+<ul>
+<li><p>solving requires using the backshift operator, because we need to solve for what all the residuals are</p></li>
+</ul>
+</li>
+<li><p><strong>characteristic polynomial</strong> <span class="math notranslate nohighlight">\(\phi(a) = 1 - \sum_{j=1}^p \phi_j a^j\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\phi(B) X_t = \epsilon_t\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(X_t=\phi(B)^{-1} \epsilon_t\)</span></p></li>
+</ul>
+</li>
+<li><p>can represent <span class="math notranslate nohighlight">\(AR(p)\)</span> as a vector <span class="math notranslate nohighlight">\(AR(1)\)</span> using the vector <span class="math notranslate nohighlight">\(\bar X_t = (X_t, ..., X_{t-p+1})\)</span></p></li>
+<li><p>note: can reparametrize in terms of frequencies</p></li>
+</ul>
+</li>
+<li><p><strong>MA model</strong> <span class="math notranslate nohighlight">\(MA(q)\)</span>: <span class="math notranslate nohighlight">\( X_t = \sum_{i=1}^q \theta_i \varepsilon_{t-i} + \varepsilon_t\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\theta_1 ... \theta_q\)</span> are params</p></li>
+<li><p><span class="math notranslate nohighlight">\(\varepsilon_t\)</span>, <span class="math notranslate nohighlight">\(\varepsilon_{t-1}\)</span> are white noise error terms</p></li>
+<li><p>harder to fit, because the lagged error terms are not visible (also means can’t make preds on new time-series)</p></li>
+<li><p><span class="math notranslate nohighlight">\(E[\epsilon_t] = 0\)</span>, <span class="math notranslate nohighlight">\(Var[\epsilon_t] = 1\)</span></p></li>
+<li><p>much harder to estimate these parameters</p></li>
+<li><p><span class="math notranslate nohighlight">\(X_t = \theta (B) \epsilon_t\)</span> (assuming <span class="math notranslate nohighlight">\(\theta_0=1\)</span>)</p></li>
+</ul>
+</li>
+<li><p><strong>ARMA model</strong>: <span class="math notranslate nohighlight">\(ARMA(p, q)\)</span>: <span class="math notranslate nohighlight">\(X_t = \sum_{i=1}^p \phi_i X_{t-i} + \sum_{i=1}^q \theta_i \varepsilon_{t-i} + \varepsilon_t\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\{X_t\}\)</span> is stationary</p></li>
+<li><p><span class="math notranslate nohighlight">\(\phi (B) X_t = \theta(B) \varepsilon_t\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\phi(B) = 1 - \sum_{j=1}^p \phi_j B^j\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\theta(B) = 1 + \sum_{j=1}^{q}\theta_jz^j\)</span></p></li>
+<li><p><strong>causal</strong> if <span class="math notranslate nohighlight">\(\exists \{ \psi_j \}\)</span> such that <span class="math notranslate nohighlight">\(X_t = \sum_{j=0}^\infty \psi_j Z_{t-j}\)</span> for all t</p></li>
+</ul>
+</li>
+<li><p><strong>ARIMA model</strong>: <span class="math notranslate nohighlight">\(ARIMA(p, d, q)\)</span>: - generalizes ARMA model to non-stationarity (using differencing)</p></li>
+</ul>
+</div>
+<div class="section" id="ch-4-8-the-autocovariance-function-parameter-estimation">
+<h3>4.7.3.4. ch 4 + 8 - the autocovariance function + parameter estimation<a class="headerlink" href="#ch-4-8-the-autocovariance-function-parameter-estimation" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>estimation</p>
+<ul>
+<li><p>pure autoregressive</p>
+<ul>
+<li><p>Yule-walker</p></li>
+<li><p>Burg estimation - minimizing sums of squares of forward and backward one-step prediction errors with respect to the coefficients</p></li>
+</ul>
+</li>
+<li><p>when <span class="math notranslate nohighlight">\(q &gt; 0\)</span></p>
+<ul>
+<li><p>innovations algorithm</p></li>
+<li><p>hannan-rissanen algorithm</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>autocovariance function: {<span class="math notranslate nohighlight">\(\gamma(k): k \in \mathbb Z\)</span>} where <span class="math notranslate nohighlight">\(\gamma(k) = \text{Cov}(X_{t+h}. X_t) =  \mathbb E (X_0 X_k)\)</span> (assuming mean 0)</p></li>
+<li><p><img alt="Screen Shot 2020-01-11 at 5.29.15 PM" src="../../_images/durbin-levinson.png" /></p></li>
+<li><p><strong>Yule-Walker equations</strong> (assuming AR(p) process): <span class="math notranslate nohighlight">\(\mathbb E (X_t X_{t-k}) = \sum_{j=1}^p \phi_j \mathbb E (X_{t-j} X_{t-k}) + \underbrace{\mathbb E (\epsilon_tX_{t-k})}_{=0} = \sum_{j=1}^p \phi_j \mathbb E (X_{t-j} X_{t-k})\)</span></p>
+<ul>
+<li><p>ex. MA covariance becomes 0 with lag &gt; num params</p></li>
+</ul>
+</li>
+<li><p>can rewrite the Yule-Walker equations</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\gamma(i) = \sum_{j=1}^p \phi_j \gamma(i -j)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\underline\gamma_p = \Gamma_p \underline \phi_p\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\((\Gamma_p)_{i, j} = \gamma(i - j)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{\Gamma}_p\)</span> is nonegative definite (and nonsingular if there is at least one nonzero <span class="math notranslate nohighlight">\(Y_i\)</span>)</p></li>
+</ul>
+</li>
+<li><p><span class="math notranslate nohighlight">\(\underline \gamma_p = [\gamma(1), ..., \gamma(p)]\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\underline \phi_p = (\phi_1, ..., \phi_p)\)</span></p>
+<ul>
+<li><p>this minimizes the mse <span class="math notranslate nohighlight">\(\mathbb E [X_{t+1} - \sum_{j=1}^p \phi_j X_{t+1-j}]^2\)</span></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>use estimates to solve: <span class="math notranslate nohighlight">\(\hat{\underline \phi}_p = \hat \Sigma_p^{-1} \hat{\underline r}_p \)</span></p></li>
+<li><p>the innovations algorithm</p>
+<ul>
+<li><p>set <span class="math notranslate nohighlight">\(\hat X_1 = 0\)</span></p></li>
+<li><p><strong>innovations</strong> = one-step prediction errors <span class="math notranslate nohighlight">\(U_n = X_n - \hat X _n\)</span></p></li>
+</ul>
+</li>
+<li><p><strong>mle</strong> (ch 5.2)</p>
+<ul>
+<li><p>eq. 5.2.9: Gaussian likelihood for an ARMA process</p></li>
+<li><p><span class="math notranslate nohighlight">\(r_n = \mathbb E[(W_{n+1} - \hat W_{n+1})^2]\)</span></p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="multivariate-time-series-ch-7">
+<h2>4.7.4. multivariate time-series ch 7<a class="headerlink" href="#multivariate-time-series-ch-7" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>vector-valued time-series has dependencies between variables across time</p>
+<ul>
+<li><p>just modeling as univariate fails to take into account possible dependencies between the series</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes/stat"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="linear_models.html" title="previous page">4.6. linear models</a>
+    <a class='right-next' id="next-link" href="game_theory.html" title="next page">4.8. game theory</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Chandan Singh<br/>
+        
+            &copy; Copyright None.<br/>
+          <div class="extra_footer">
+            <p>
+Many of these images are taken from resources on the web.
+</p>
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

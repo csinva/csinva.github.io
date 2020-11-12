@@ -1,0 +1,878 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>1.9. uncertainty &#8212; learning to learn</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../_static/togglebutton.js"></script>
+    <script type="text/javascript" src="../../_static/clipboard.min.js"></script>
+    <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    <script type="text/javascript">var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script type="text/javascript" src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" type="text/javascript" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script type="text/javascript">
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="1.10. interpretability" href="ovw_interp.html" />
+    <link rel="prev" title="1.8. dl for neuro" href="ovw_dl_for_neuro.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">learning to learn</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   welcome 👋
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="research_ovws.html">
+   1. research_ovws
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="ovw_comp_neuro.html">
+     1.1. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ovw_disentanglement.html">
+     1.2. disentanglement
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ovw_complexity.html">
+     1.3. complexity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ovw_interesting_science.html">
+     1.4. interesting science
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ovw_dl_theory.html">
+     1.5. dl theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ovw_scat.html">
+     1.6. scattering transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ovw_ml_medicine.html">
+     1.7. ml in medicine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ovw_dl_for_neuro.html">
+     1.8. dl for neuro
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     1.9. uncertainty
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ovw_interp.html">
+     1.10. interpretability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ovw_kernels.html">
+     1.11. kernels
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../cs/cs.html">
+   2. cs
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/retrieval.html">
+     2.1. info retrieval
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/python_ref.html">
+     2.2. python ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/data_structures.html">
+     2.3. data structures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/software.html">
+     2.4. software engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/quantum.html">
+     2.5. quantum
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/algo.html">
+     2.6. algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/graphs.html">
+     2.7. graphs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/os.html">
+     2.8. os
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/arch.html">
+     2.9. architecture
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/java_ref.html">
+     2.10. java ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/comp_theory.html">
+     2.11. cs theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/cpp_ref.html">
+     2.12. c/c++ ref
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../math/math.html">
+   3. math
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/differential_equations.html">
+     3.1. differential equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/proofs.html">
+     3.2. proofs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/analysis.html">
+     3.3. real analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/linear_algebra.html">
+     3.4. linear algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/signals.html">
+     3.5. signals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/optimization.html">
+     3.6. optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/calculus.html">
+     3.7. calculus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/chaos.html">
+     3.8. chaos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/math_basics.html">
+     3.9. math basics
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../stat/stat.html">
+   4. stat
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/graphical_models.html">
+     4.1. graphical models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/data_analysis.html">
+     4.2. data analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/testing.html">
+     4.3. testing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/causal_inference.html">
+     4.4. causal inference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/info_theory.html">
+     4.5. info theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/linear_models.html">
+     4.6. linear models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/time_series.html">
+     4.7. time series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/game_theory.html">
+     4.8. game theory
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ml/ml.html">
+   5. ml
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/comp_vision.html">
+     5.1. computer vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/structure_ml.html">
+     5.2. structure learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/classification.html">
+     5.3. classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/unsupervised.html">
+     5.4. unsupervised
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/deep_learning.html">
+     5.5. deep learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/feature_selection.html">
+     5.6. feature selection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/learning_theory.html">
+     5.7. learning theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/evaluation.html">
+     5.8. evaluation
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ai/ai.html">
+   6. ai
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/search.html">
+     6.1. search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/nlp.html">
+     6.2. nlp
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/fairness_sts.html">
+     6.3. fairness
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/cogsci.html">
+     6.4. cogsci
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/ai_futures.html">
+     6.5. ai futures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/logic.html">
+     6.6. logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/philosophy.html">
+     6.7. philosophy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/psychology.html">
+     6.8. psychology
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/knowledge_rep.html">
+     6.9. representations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/decisions.html">
+     6.10. decisions
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../neuro/neuro.html">
+   7. neuro
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/brain_basics.html">
+     7.1. brain basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/vissci.html">
+     7.2. vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/comp_neuro.html">
+     7.3. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/sensory_input.html">
+     7.4. sensory input
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/memory.html">
+     7.5. memory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/motor.html">
+     7.6. motor system
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/development.html">
+     7.7. development
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/notes/research_ovws/ovw_uncertainty.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/csinva/csinva.github.io"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basics">
+   1.9.1. basics
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#complementarity">
+   1.9.2. complementarity
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rejection-learning">
+     1.9.2.1. rejection learning
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     1.9.2.2. complementarity
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#nearest-neighbor-methods">
+   1.9.3. nearest-neighbor methods
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#outlier-detection">
+   1.9.4. outlier-detection
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#predicting-uncertainty-for-dnns">
+   1.9.5. predicting uncertainty for DNNs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bayesian-approaches">
+   1.9.6. bayesian approaches
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bayesian-neural-networks">
+     1.9.6.1. bayesian neural networks
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p><strong>some notes on uncertainty in machine learning, particularly deep learning</strong></p>
+<div class="section" id="uncertainty">
+<h1>1.9. uncertainty<a class="headerlink" href="#uncertainty" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="basics">
+<h2>1.9.1. basics<a class="headerlink" href="#basics" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>calibration</strong> - predicted probabilities should match real probabilities</p>
+<ul>
+<li><p>platt scaling - given trained classifier and new calibration dataset, basically just fit a logistic regression from the classifier predictions -&gt; labels</p></li>
+<li><p>isotonic regression - nonparametric, requires more data than platt scaling</p>
+<ul>
+<li><p>piecewise-constant non-decreasing function instead of logistic regression</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ensemble uncertainty</p>
+<ul>
+<li><p><a class="reference external" href="http://papers.nips.cc/paper/7219-simple-and-scalable-predictive-uncertainty-estimation-using-deep-ensembles">DNN ensemble uncertainty works</a> - predict mean and variance w/ each network then ensemble (don’t need to do bagging, random init is enough)</p></li>
+<li><p>can also use ensemble of <a class="reference external" href="https://arxiv.org/abs/1704.00109">snapshots during training</a> (huang et al. 2017)</p></li>
+<li><p>alternatively <a class="reference external" href="https://arxiv.org/pdf/2002.06715.pdf">batch ensemble</a> (wen et al. 2020) - have several rank-1 keys that index different weights hidden within one neural net</p></li>
+</ul>
+</li>
+<li><p>neural network basic uncertainty: predicted probability = confidence, max margin, entropy of predicted probabilities across classes</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1811.00908">Single-Model Uncertainties for Deep Learning</a> (tagovska &amp; lopez-paz 2019) - use simultaneous quantile regression</p></li>
+<li><p>quantile regression - use quantile loss to penalize models differently + get confidence intervals</p>
+<ul>
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/auto_examples/ensemble/plot_gradient_boosting_quantile.html">can easily do this with sklearn</a></p></li>
+<li><p>quantile loss = <span class="math notranslate nohighlight">\(\begin{cases} \alpha \cdot \Delta &amp; \text{if} \quad \Delta &gt; 0\\\\(\alpha - 1) \cdot \Delta &amp; \text{if} \quad \Delta &lt; 0\end{cases}\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\Delta =\)</span> actual - predicted</p></li>
+<li><p><img alt="Screen Shot 2019-06-26 at 10.06.11 AM" src="../../_images/quantile_losses.png" /></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="complementarity">
+<h2>1.9.2. complementarity<a class="headerlink" href="#complementarity" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="rejection-learning">
+<h3>1.9.2.1. rejection learning<a class="headerlink" href="#rejection-learning" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>rejection learning</strong> - allow models to <em>reject</em> (not make a prediction) when they are not confidently accurate (<a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/5222035/?casa_token=UiIdn8AjFjYAAAAA:XvnZPA7rJlvwxD-bIh2dNG4SPfnHtDYWcBUmAFYRxD6Xk8QE5osnKLs8tAlib_doL8OxqYjMLDE">chow 1957</a>, <a class="reference external" href="https://link.springer.com/chapter/10.1007/978-3-319-46379-7_5">cortes et al. 2016</a>)</p></li>
+<li><p><a class="reference external" href="http://papers.nips.cc/paper/7798-to-trust-or-not-to-trust-a-classifier.pdf">To Trust Or Not To Trust A Classifier</a> (jiang, kim et al 2018) - find a trusted region of points based on nearest neighbor density (in some embedding space)</p>
+<ul>
+<li><p>trust score uses density over some set of nearest neighbors</p></li>
+<li><p>do clustering for each class - trust score = distance to once class’s cluster vs the other classes</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h3>1.9.2.2. complementarity<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>complementarity</strong> - ML should focus on points hard for humans + seek human input on points hard for ML</p>
+<ul>
+<li><p>note: goal of perception isn’t to learn categories but learn things that are associated with actions</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="http://papers.nips.cc/paper/7853-predict-responsibly-improving-fairness-and-accuracy-by-learning-to-defer">Predict Responsibly: Improving Fairness and Accuracy by Learning to Defer</a> (madras et al. 2018) - adaptive rejection learning - build on rejection learning considering the strengths/weaknesses of humans</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2005.00582">Learning to Complement Humans</a> (wilder et al. 2020) - 2 approaches for how to incorporate human input:</p>
+<ul>
+<li><p>discriminative approach - jointly train predictive model and policy for deferring to human (witha cost for deferring)</p></li>
+<li><p>decision-theroetic approach - train predictive model + policy jointly based on value of information (VOI)</p></li>
+<li><p>do real-world experiments w/ humans to validate:  scientific discovery (a galaxy classification task) and medical diagnosis (detection of breast cancer metastasis)</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/1802.04346.pdf">Gaining Free or Low-Cost Transparency with Interpretable Partial Substitute</a> (wang, 2019) - given a black-box model, find a subset of the data for which predictions can be made using a simple rule-list (<a class="reference external" href="https://scholar.google.com/citations?hl=en&amp;user=KB6A0esAAAAJ&amp;view_op=list_works&amp;sortby=pubdate">tong wang</a> has a few papers like this)</p>
+<ul>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2002.03494">Interpretable Companions for Black-Box Models</a> (pan, wang, et al. 2020) - offer an interpretable, but slightly less acurate model for each decision</p>
+<ul>
+<li><p>human experiment evaluates how much humans are able to tolerate</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="nearest-neighbor-methods">
+<h2>1.9.3. nearest-neighbor methods<a class="headerlink" href="#nearest-neighbor-methods" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://arxiv.org/pdf/1803.04765.pdf">Deep k-Nearest Neighbors: Towards Confident, Interpretable and Robust Deep Learning</a> (papernot &amp; mcdaniel, 2018)</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/1709.09844.pdf">distance-based confidence scores</a> (mandelbaum et al. 2017) - use either distance in embedding space or adversarial training to get uncertainties for DNNs</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/1811.02579.pdf">deep kernel knn</a> (card et al. 2019) - predict labels based on weighted sum of training instances, where weights are given by distance in embedding space</p>
+<ul>
+<li><p>add an uncertainty based on conformal methods</p></li>
+</ul>
+</li>
+<li><p><strong>local outlier factor</strong> (breunig et al. 2000) - score based on nearest neighbor density</p></li>
+<li><p>idea: gradients should be larger if you are on the image manifold</p></li>
+</ul>
+</div>
+<div class="section" id="outlier-detection">
+<h2>1.9.4. outlier-detection<a class="headerlink" href="#outlier-detection" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>overview from <a class="reference external" href="https://scikit-learn.org/stable/modules/outlier_detection.html">sklearn</a></p></li>
+<li><p><strong>elliptic envelope</strong> - assume data is Gaussian and fit elliptic envelop (maybe robustly) to tell when data is an outlier</p></li>
+<li><p><a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/4781136">isolation forest</a> (liu et al. 2008) - lower average number of random splits required to isolate a sample means more outlier</p></li>
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.OneClassSVM.html#sklearn.svm.OneClassSVM">one-class svm</a> - estimates the support of a high-dimensional distribution using a kernel (2 approaches:)</p>
+<ul>
+<li><p>separate the data from the origin (with max margin between origin and points) (scholkopf et al. 2000)</p></li>
+<li><p>find a sphere boundary around a dataset with the volume of the sphere minimized (<a class="reference external" href="https://link.springer.com/article/10.1023/B:MACH.0000008084.60811.49">tax &amp; duin 2004</a>)</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://escholarship.org/uc/item/9d34m0wz">detachment index</a> (kuenzel 2019) - based on random forest</p>
+<ul>
+<li><p>for covariate <span class="math notranslate nohighlight">\(j\)</span>, detachment index <span class="math notranslate nohighlight">\(d^j(x) = \sum_i^n w (x, X_i) \vert X_i^j - x^j \vert\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(w(x, X_i) = \underbrace{1 / T\sum_{t=1}^{T}}_{\text{average over T trees}} \frac{\overbrace{1\{ X_i \in L_t(x) \}}^{\text{is }   X_i \text{ in the same leaf?}}}{\underbrace{\vert L_t(x) \vert}_{\text{num points in leaf}}}\)</span> is <span class="math notranslate nohighlight">\(X_i\)</span> relevant to the point <span class="math notranslate nohighlight">\(x\)</span>?</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="predicting-uncertainty-for-dnns">
+<h2>1.9.5. predicting uncertainty for DNNs<a class="headerlink" href="#predicting-uncertainty-for-dnns" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://arxiv.org/abs/1810.01861">Inhibited Softmax for Uncertainty Estimation in Neural Networks</a> (mozejko et al. 2019) - directly predict uncertainty by adding an extra output during training</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/1802.04865.pdf">Learning Confidence for Out-of-Distribution Detection in Neural Networks</a> (devries et al. 2018) - predict both prediction <em>p</em> and confidence <em>c</em></p>
+<ul>
+<li><p>during training, learn using <span class="math notranslate nohighlight">\(p' = c \cdot p + (1 - c) \cdot y\)</span></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1805.08206">Bias-Reduced Uncertainty Estimation for Deep Neural Classifiers</a> (geifmen et al. 2019)</p>
+<ul>
+<li><p>just predicting uncertainty is biased</p></li>
+<li><p>estimate uncertainty of highly confident points using earlier snapshots of the trained model</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1711.10589">Contextual Outlier Interpretation</a> (liu et al. 2018) - describe outliers with 3 things: outlierness score, attributes that contribute to the abnormality, and contextual description of its neighborhoods</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2010.03759">Energy-based Out-of-distribution Detection</a></p></li>
+<li><p><a class="reference external" href="https://proceedings.icml.cc/paper/2020/file/1d3b7f1f8a7625f8d5e700dcf0d9ae68-Paper.pdf">Test-Time Training with Self-Supervision for Generalization under Distribution Shifts</a> (sun et al. 2020)</p></li>
+</ul>
+</div>
+<div class="section" id="bayesian-approaches">
+<h2>1.9.6. bayesian approaches<a class="headerlink" href="#bayesian-approaches" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>epistemic uncertainty</strong> - uncertainty in the DNN model parameters</p>
+<ul>
+<li><p>without good estimates of this, often get aleatoric uncertainty wrong (since <span class="math notranslate nohighlight">\(p(y\vert x) = \int p(y \vert x, \theta) p(\theta \vert data) d\theta\)</span></p></li>
+</ul>
+</li>
+<li><p><strong>aleatoric uncertainty</strong> -  inherent and irreducible data noise (e.g. features contradict each other)</p>
+<ul>
+<li><p>this can usually be gotten by predicting a distr. <span class="math notranslate nohighlight">\(p(y \vert x)\)</span> instead of a point estimate</p></li>
+<li><p>ex. logistic reg. already does this</p></li>
+<li><p>ex. regression - just predict mean and variance of Gaussian</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://distill.pub/2019/visual-exploration-gaussian-processes/">gaussian processes</a></p></li>
+<li><p><a class="reference external" href="http://proceedings.mlr.press/v48/gal16.pdf">Dropout as a Bayesian Approximation: Representing Model Uncertainty in Deep Learning</a></p>
+<ul>
+<li><p>dropout at test time gives you uncertainty</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://papers.nips.cc/paper/9472-a-simple-baseline-for-bayesian-uncertainty-in-deep-learning.pdf">SWAG</a> (maddox et al. 2019) - start with pre-trained net then get Gaussian distr. over weights by training with large constant setp-size</p></li>
+</ul>
+<div class="section" id="bayesian-neural-networks">
+<h3>1.9.6.1. bayesian neural networks<a class="headerlink" href="#bayesian-neural-networks" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://medium.com/neuralspace/probabilistic-deep-learning-bayes-by-backprop-c4a3de0d9743">blog posts on basics</a></p>
+<ul>
+<li><p>want <span class="math notranslate nohighlight">\(p(\theta|x) = \frac {p(x|\theta) p(\theta)}{p(x)}\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(p(x)\)</span> is hard to compute</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://wjmaddox.github.io/assets/BNN_tutorial_CILVR.pdf">slides on basics</a></p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1505.05424">Bayes by backprop (blundell et al. 2015)</a> - efficient way to train BNNs using backprop</p>
+<ul>
+<li><p>Instead of training a single network, trains an ensemble of networks, where each network has its weights drawn from a shared, learned probability distribution. Unlike other ensemble methods, the method typically only doubles the number of parameters yet trains an infinite ensemble using unbiased Monte Carlo estimates of the gradients.</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/1906.01620.pdf">Evaluating Scalable Bayesian Deep Learning Methods for Robust Computer Vision</a></p></li>
+<li><p><a class="reference external" href="https://aiforsocialgood.github.io/icml2019/accepted/track1/pdfs/38_aisg_icml2019.pdf">icu bayesian dnns</a></p>
+<ul>
+<li><p>focuses on epistemic uncertainty</p></li>
+<li><p>could use one model to get uncertainty and other model to predict</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes/research_ovws"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="ovw_dl_for_neuro.html" title="previous page">1.8. dl for neuro</a>
+    <a class='right-next' id="next-link" href="ovw_interp.html" title="next page">1.10. interpretability</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Chandan Singh<br/>
+        
+            &copy; Copyright None.<br/>
+          <div class="extra_footer">
+            <p>
+Many of these images are taken from resources on the web.
+</p>
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

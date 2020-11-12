@@ -1,0 +1,1417 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>2.11. cs theory &#8212; learning to learn</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../_static/togglebutton.js"></script>
+    <script type="text/javascript" src="../../_static/clipboard.min.js"></script>
+    <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    <script type="text/javascript">var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script type="text/javascript" src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" type="text/javascript" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script type="text/javascript">
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2.12. c/c++ ref" href="cpp_ref.html" />
+    <link rel="prev" title="2.10. java ref" href="java_ref.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">learning to learn</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   welcome 👋
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../research_ovws/research_ovws.html">
+   1. research_ovws
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_comp_neuro.html">
+     1.1. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_disentanglement.html">
+     1.2. disentanglement
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_complexity.html">
+     1.3. complexity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_interesting_science.html">
+     1.4. interesting science
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_dl_theory.html">
+     1.5. dl theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_scat.html">
+     1.6. scattering transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">
+     1.7. ml in medicine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_dl_for_neuro.html">
+     1.8. dl for neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_uncertainty.html">
+     1.9. uncertainty
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_interp.html">
+     1.10. interpretability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_kernels.html">
+     1.11. kernels
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="cs.html">
+   2. cs
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="retrieval.html">
+     2.1. info retrieval
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="python_ref.html">
+     2.2. python ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="data_structures.html">
+     2.3. data structures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="software.html">
+     2.4. software engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="quantum.html">
+     2.5. quantum
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="algo.html">
+     2.6. algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="graphs.html">
+     2.7. graphs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="os.html">
+     2.8. os
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="arch.html">
+     2.9. architecture
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="java_ref.html">
+     2.10. java ref
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2.11. cs theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cpp_ref.html">
+     2.12. c/c++ ref
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../math/math.html">
+   3. math
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/differential_equations.html">
+     3.1. differential equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/proofs.html">
+     3.2. proofs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/analysis.html">
+     3.3. real analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/linear_algebra.html">
+     3.4. linear algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/signals.html">
+     3.5. signals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/optimization.html">
+     3.6. optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/calculus.html">
+     3.7. calculus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/chaos.html">
+     3.8. chaos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/math_basics.html">
+     3.9. math basics
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../stat/stat.html">
+   4. stat
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/graphical_models.html">
+     4.1. graphical models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/data_analysis.html">
+     4.2. data analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/testing.html">
+     4.3. testing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/causal_inference.html">
+     4.4. causal inference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/info_theory.html">
+     4.5. info theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/linear_models.html">
+     4.6. linear models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/time_series.html">
+     4.7. time series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/game_theory.html">
+     4.8. game theory
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ml/ml.html">
+   5. ml
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/comp_vision.html">
+     5.1. computer vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/structure_ml.html">
+     5.2. structure learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/classification.html">
+     5.3. classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/unsupervised.html">
+     5.4. unsupervised
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/deep_learning.html">
+     5.5. deep learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/feature_selection.html">
+     5.6. feature selection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/learning_theory.html">
+     5.7. learning theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/evaluation.html">
+     5.8. evaluation
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ai/ai.html">
+   6. ai
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/search.html">
+     6.1. search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/nlp.html">
+     6.2. nlp
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/fairness_sts.html">
+     6.3. fairness
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/cogsci.html">
+     6.4. cogsci
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/ai_futures.html">
+     6.5. ai futures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/logic.html">
+     6.6. logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/philosophy.html">
+     6.7. philosophy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/psychology.html">
+     6.8. psychology
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/knowledge_rep.html">
+     6.9. representations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/decisions.html">
+     6.10. decisions
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../neuro/neuro.html">
+   7. neuro
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/brain_basics.html">
+     7.1. brain basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/vissci.html">
+     7.2. vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/comp_neuro.html">
+     7.3. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/sensory_input.html">
+     7.4. sensory input
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/memory.html">
+     7.5. memory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/motor.html">
+     7.6. motor system
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/development.html">
+     7.7. development
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/notes/cs/comp_theory.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/csinva/csinva.github.io"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   2.11.1. introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ch-1-3-finite-automata-regular-expressions">
+   2.11.2. ch 1-3 - finite automata, regular expressions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ch-4-properties-of-regular-languages-except-sections-4-2-3-and-4-2-4">
+   2.11.3. ch 4 - properties of regular languages (except Sections 4.2.3 and 4.2.4)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ch-5-context-free-grammars-and-languages">
+   2.11.4. ch 5 - context free grammars and languages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ch-6-pushdown-automata-don-t-need-to-know-6-3-proofs">
+   2.11.5. ch 6 - pushdown automata (don’t need to know 6.3 proofs)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ch-7-properties-of-cfls">
+   2.11.6. ch 7 - properties of CFLs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ch-8-intro-to-turing-machines-except-8-5-3">
+   2.11.7. ch 8 - intro to turing machines (except 8.5.3)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ch-9-undecidability-9-1-9-2-9-3">
+   2.11.8. ch 9 - undecidability (9.1,9.2,9.3)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ch-10-10-1-10-4-know-the-additional-problems-that-are-np-complete">
+   2.11.9. Ch 10 - 10.1-10.4 know the additional problems that are NP-complete
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-on-np-completeness">
+   2.11.10. more on NP Completeness
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="cs-theory">
+<h1>2.11. cs theory<a class="headerlink" href="#cs-theory" title="Permalink to this headline">¶</a></h1>
+<p>Some notes on theoretical computer science, based on UVA’s course.</p>
+<div class="section" id="introduction">
+<h2>2.11.1. introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Chomsky hierarchy of languages: <span class="math notranslate nohighlight">\(L_3 \subset L_2 \subset L_1 \subset L_R \subset L_0 \subset Σ*\)</span></p>
+<ul class="simple">
+<li><p>each L is a set of languages</p></li>
+<li><p><span class="math notranslate nohighlight">\(L_0=L_{RE}\)</span> - unrestricted grammars - general phase structure grammars - recursively enumerable languages - include all formal grammars. They generate exactly all languages that can be recognized by a Turing machine.</p>
+<ul>
+<li><p>computable, maybe undecidable (if not in L_R)</p></li>
+</ul>
+</li>
+<li><p>L_R - recursive grammars - Turing machine that halts eventually</p>
+<ul>
+<li><p>decidable</p></li>
+</ul>
+</li>
+<li><p>L_1 - context-sensitive grammars - all languages that can be recognized by a linear bounded automaton</p></li>
+<li><p>L_2 - context-free grammars - these languages are exactly all languages that can be recognized by a non-deterministic pushdown automaton.</p></li>
+<li><p>L_3 - regular grammars - all languages that can be decided by a finite state automaton</p>
+<ul>
+<li><p>contains Σ*, <span class="math notranslate nohighlight">\(\vert Σ*\vert \)</span> is countably infinite</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>strings</p></li>
+<li><p>languages</p>
+<ul class="simple">
+<li><p>Σ* Kleene Closure has multiple definitions</p>
+<ul>
+<li><p>{w <span class="math notranslate nohighlight">\(\vert \)</span> w is a finite length string ^ w is a string over Σ}</p></li>
+<li><p>{xw <span class="math notranslate nohighlight">\(\vert \)</span> w in Σ* ^ x in Σ} U {Ɛ}</p></li>
+</ul>
+</li>
+<li><p>Σ_i has strings of length i</p></li>
+</ul>
+</li>
+<li><p>problems</p></li>
+<li><p>automata</p>
+<ul class="simple">
+<li><p>delta v delta-hat - delta hat transitions on a string not a symbol</p></li>
+<li><p><span class="math notranslate nohighlight">\(\vert \)</span>- notation writes the state between the symbols you have read and have yet to read</p></li>
+<li><p><span class="math notranslate nohighlight">\(\vert \)</span>- notation with * writes the state before the symbols you have to read and after what you have read</p></li>
+</ul>
+</li>
+<li><p>grammars</p>
+<ul class="simple">
+<li><p>leftmost grammar - expand leftmost variables first - doesn’t matter for context-free</p></li>
+<li><p>parse tree - write string on bottom</p></li>
+</ul>
+</li>
+<li><p>sets</p>
+<ul class="simple">
+<li><p>finite</p></li>
+<li><p>countably infinite</p></li>
+<li><p>not countably infinite</p></li>
+</ul>
+</li>
+<li><p>mappings</p>
+<ol class="simple">
+<li><p>onto - each output has at least 1 input</p></li>
+<li><p>1-1 - each output has at most 1 input</p></li>
+<li><p>total - each input has at least 1 output</p></li>
+<li><p>function - each input has at most 1 output</p></li>
+</ol>
+<ul class="simple">
+<li><p>equivalence relation - reflexive, symmetric, transitive</p></li>
+</ul>
+</li>
+<li><p>proof methods</p>
+<ul class="simple">
+<li><p>**read induction **</p></li>
+</ul>
+</li>
+<li><p>library of babel</p>
+<ul class="simple">
+<li><p>distinct number of books, each contained, but infinite room</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="ch-1-3-finite-automata-regular-expressions">
+<h2>2.11.2. ch 1-3 - finite automata, regular expressions<a class="headerlink" href="#ch-1-3-finite-automata-regular-expressions" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>alphabet - any nonempty finite set</p></li>
+<li><p>string - finite sequence of symbols from an alphabet</p></li>
+<li><p>induction hypothesis - assumption that P(i) is true</p></li>
+<li><p>lexicographic ordering - {Ɛ,0,1,00,01,10,11,000,…}</p></li>
+<li><p>finite automata - like a Markov chain w/out probabilities - 5 parts</p>
+<ol class="simple">
+<li><p>states</p></li>
+<li><p>E - finite set called the alphabet</p></li>
+<li><p>f: Q x E -&gt; Q is the transition function</p></li>
+</ol>
+<ul class="simple">
+<li><p>ex. f(q,0) = q’</p></li>
+</ul>
+<ol class="simple">
+<li><p>start state</p></li>
+<li><p>final states</p></li>
+</ol>
+</li>
+<li><p>language - L(M)=A - means A is the set of all strings that the machine M accepts</p></li>
+<li><p>A* = {<span class="math notranslate nohighlight">\(x_1x_2...x_k \vert  k\geq0 \wedge x_i \in A\)</span>}</p></li>
+<li><p>A+ = A* - Ɛ</p></li>
+<li><p>concatenation A o B = {xy <span class="math notranslate nohighlight">\(\vert \)</span> x in A and y in B}</p></li>
+<li><p>regular language - is recognized by a finite automata</p>
+<ul class="simple">
+<li><p>class of regular languages is closed under union, concatenation, star operation</p></li>
+<li><p>nondeterministic automata</p>
+<ul>
+<li><p>can have multiple transition states for one symbol</p></li>
+<li><p>can transition on Ɛ</p></li>
+<li><p>can be thought of as a tree</p></li>
+<li><p>After reading that symbol, the machine splits into multiple copies of itself and follows all the possibilities in parallel. Each copy of the machine takes one of the possible ways to proceed and continues as before. If there are subsequent choices, the machine splits again.</p></li>
+<li><p>If the next input symbol doesn’t appear on any of the arrows exiting the current state, that copy of the machine dies.</p></li>
+<li><p>if any copy is in an accept state at the end of the input, the NFA accepts the input string.</p></li>
+</ul>
+</li>
+<li><p>can also use regular expressions (stuff like unions) instead of finite automata</p>
+<ul>
+<li><p>to convert, first convert to gnfa</p></li>
+</ul>
+</li>
+<li><p>gnfa (generalized nfa) - start state isn’t accept state</p></li>
+</ul>
+</li>
+<li><p>nonregular languages - isn’t recognized by a finite automata</p>
+<ul class="simple">
+<li><p>ex. C = {w <span class="math notranslate nohighlight">\(\vert \)</span> w has an equal number of Os and 1s}</p></li>
+<li><p>requires infinite states</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="ch-4-properties-of-regular-languages-except-sections-4-2-3-and-4-2-4">
+<h2>2.11.3. ch 4 - properties of regular languages (except Sections 4.2.3 and 4.2.4)<a class="headerlink" href="#ch-4-properties-of-regular-languages-except-sections-4-2-3-and-4-2-4" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>pumping lemma- proves languages not to be regular</p></li>
+<li><p>if L regular, there exists a constant n such that for every string w in L such that \vert w\vert  ≥ n, we can break w into 3 strings w=xyz, such that:</p>
+<ol class="simple">
+<li><p>y≠Ɛ</p></li>
+<li><p><span class="math notranslate nohighlight">\(\vert xy\vert \)</span> ≤ n</p></li>
+<li><p>For all k ≥ 0, x y^k z is also in L</p></li>
+</ol>
+</li>
+<li><p>closed under union, intersection, complement, concatenation, closure, difference, reversal</p></li>
+<li><p>convert NFA to DFA - write the possible routes to the final state, write the intermediate states, remove unnecessary ones</p></li>
+<li><p>minimization of DFAs</p>
+<ul>
+<li><p>eliminate any state that can’t be reached</p></li>
+<li><p>partition remaining states into blocks so all states in same block are equivalent</p>
+<ul>
+<li><p>can’t do this grouping for nfas</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="ch-5-context-free-grammars-and-languages">
+<h2>2.11.4. ch 5 - context free grammars and languages<a class="headerlink" href="#ch-5-context-free-grammars-and-languages" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(w^R\)</span> = reverse</p></li>
+<li><p>context-free grammar - more powerful way to describe a language</p></li>
+<li><p>ex. substitution rules (generates 0#1)</p>
+<ul class="simple">
+<li><p>A -&gt; OA1</p></li>
+<li><p>A -&gt; B</p></li>
+<li><p>B -&gt; #</p></li>
+</ul>
+</li>
+<li><p>def</p>
+<ol class="simple">
+<li><p>variables - finite set</p></li>
+<li><p>terminals - alphabet</p></li>
+<li><p>productions</p></li>
+<li><p>start variable</p></li>
+</ol>
+</li>
+<li><p>recursive inference - start with terminals, show that string is in grammar</p></li>
+<li><p>derivation - sequence of substitutions to obtain a string</p>
+<ul class="simple">
+<li><p>can also make these into parse trees</p></li>
+</ul>
+</li>
+<li><p>leftmost derivation - at each step we expand leftmost variable</p></li>
+<li><p>arrow with a star does many derivations at once</p></li>
+<li><p>parse tree - final answer is at bottom</p></li>
+<li><p>sentential form - the string at any step in a derivation</p></li>
+<li><p>proofs in 5.2s</p></li>
+<li><p>w equivalence</p>
+<ol class="simple">
+<li><p>parse tree</p></li>
+<li><p>leftmost derivation</p></li>
+<li><p>rightmost derivation</p></li>
+<li><p>recursive inference</p></li>
+<li><p>derivation</p></li>
+</ol>
+</li>
+<li><p>if else grammar: <span class="math notranslate nohighlight">\(S \to \epsilon \vert  SS \vert  iS \vert  iSeS \)</span></p></li>
+<li><p>context-free grammars used for parsers (compilers), matching parentheses, palindromes, if-else, html, xml</p></li>
+<li><p>if a grammar generates a string in several different ways, we say that the string is derived ambiguously in that grammar</p></li>
+<li><p>ambiguity resolution</p>
+<ol class="simple">
+<li><p>some operators take precedence</p></li>
+<li><p>make things left-associative</p></li>
+</ol>
+<ul class="simple">
+<li><p>think about terms, expressions, factors</p></li>
+<li><p>if unambiguous, leftmost derivation will be unique</p></li>
+</ul>
+</li>
+<li><p>in an unambiguous grammar, leftmost derivations will be unique</p></li>
+<li><p>inherently ambiguous language - all its grammars are ambiguous</p>
+<ul class="simple">
+<li><p>ex: <span class="math notranslate nohighlight">\(L = {a^nb^nc^md^m} \cup {a^nb^mc^md^n} , n \geq 1, m\geq1\)</span></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="ch-6-pushdown-automata-don-t-need-to-know-6-3-proofs">
+<h2>2.11.5. ch 6 - pushdown automata (don’t need to know 6.3 proofs)<a class="headerlink" href="#ch-6-pushdown-automata-don-t-need-to-know-6-3-proofs" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>pushdown automata - have extra stack of memory - equivalent to context-free grammar</p>
+<ul class="simple">
+<li><p>similiar to parser in typical compiler</p></li>
+</ul>
+</li>
+<li><p>two ways of accepting</p>
+<ol class="simple">
+<li><p>entering accept state</p></li>
+<li><p>accept by emptying stack</p></li>
+</ol>
+<ul class="simple">
+<li><p>convert from empty stack to accept state</p>
+<ul>
+<li><p>add symbol X_1</p></li>
+<li><p>start by pushing it onto the stack then push on Z_1, spontaneously transition to q_0</p></li>
+<li><p>everything has epsilon-transition to final accepting state when they read X_1</p></li>
+</ul>
+</li>
+<li><p>convert accept state to empty stack</p>
+<ul>
+<li><p>add symbol X_1 under Z_1 (this is so we never empty stack unless we are in p- there are no transitions on X_1)</p></li>
+<li><p>all accept states transition to new state p</p></li>
+<li><p>p epsilon-transitions to itself, removes element from each stack every time</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>6.3</p>
+<ul class="simple">
+<li><p>convert context free grammar to empty stack</p>
+<ul>
+<li><p>simulate leftmost derivations</p></li>
+<li><p>put answer on stack, most recent variable on top</p></li>
+<li><p>if terminal remove</p></li>
+<li><p>if variable nondeterministically expand</p></li>
+<li><p>if empty stack, accept</p></li>
+</ul>
+</li>
+<li><p>convert PDA to grammar</p>
+<ul>
+<li><p>every transition is of from pXq</p></li>
+<li><p>variables of the form [pXq] (X is on the stack)</p>
+<ul>
+<li><p>[pXq] -&gt; a where a is what transitioned p to q</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>pushdown automata can transition on epsilon</p></li>
+<li><p>def:</p>
+<ol class="simple">
+<li><p>transition function - takes (state,symbol,stack symbol) - returns set of pairs (new state, new string to put on stack - length 0, 1, or more)</p></li>
+<li><p>start state</p></li>
+<li><p>start symbol (stack starts with one instance of this symbol)</p></li>
+<li><p>set of accepting states</p></li>
+<li><p>set of all states</p></li>
+<li><p>alphabet</p></li>
+<li><p>stack alphabet</p></li>
+</ol>
+</li>
+<li><p>ex. palindromes</p>
+<ol class="simple">
+<li><p>push onto stack and continue OR</p></li>
+<li><p>assume we are in middle and start popping stack - if empty, accept input up to this point</p></li>
+</ol>
+</li>
+<li><p>label diagrams with i, X/Y - what input is used and new/old tops of stack</p></li>
+<li><p>ID for PDA: (state,remaining string,stack)</p>
+<ul class="simple">
+<li><p>conventionally, we put top of stack on left</p></li>
+</ul>
+</li>
+<li><p>parsers generally behave like deterministic PDA</p></li>
+<li><p>DPDA also includes all regular languages, not all context free languages</p>
+<ul class="simple">
+<li><p>only include unambiguous grammars</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="ch-7-properties-of-cfls">
+<h2>2.11.6. ch 7 - properties of CFLs<a class="headerlink" href="#ch-7-properties-of-cfls" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Chomsky Normal Form</p>
+<ol class="simple">
+<li><p>A-&gt;BC</p></li>
+<li><p>A-&gt;a</p></li>
+</ol>
+<ul class="simple">
+<li><p>no epsilon transitions</p></li>
+<li><p>for any variable that derived to epsilon (ex. A -*&gt; epsilon)</p>
+<ul>
+<li><p>if B -&gt; CAD</p></li>
+<li><p>replace with B -&gt; CD and B -&gt; CAD and remove all places where A could become epsilon</p></li>
+</ul>
+</li>
+<li><p>no unit productions</p></li>
+<li><p>eliminate useless symbols</p></li>
+<li><p>works for any CFL</p></li>
+</ul>
+</li>
+<li><p>Greibach Normal Form</p>
+<ol class="simple">
+<li><p>A-&gt;aw where a is terminal, w is string of 0 or more variables</p></li>
+<li><p>every derivation takes exactly n steps (n length)</p></li>
+</ol>
+</li>
+<li><p>generating - if x produces some terminal string w</p></li>
+<li><p>reachable - x reachable if S <span class="math notranslate nohighlight">\({\to}^*\)</span> aXb for some a,b</p></li>
+<li><p>CFL pumping lemma - pick two small strings to pump</p></li>
+<li><p>If L CFL, then <span class="math notranslate nohighlight">\(\vert z\vert  \geq n\)</span>, we can break z into 5 strings z=uvwxy, such that:</p>
+<ol class="simple">
+<li><p>vx ≠ Ɛ</p></li>
+<li><p><span class="math notranslate nohighlight">\(\vert vwx\vert  \leq n\)</span>, middle portion not too long</p></li>
+<li><p>For all i ≥ 0, <span class="math notranslate nohighlight">\(u v^i w x^i y \in\)</span> L</p></li>
+</ol>
+<ul class="simple">
+<li><p>ex. <span class="math notranslate nohighlight">\(\{0^n1^n\}\)</span></p></li>
+<li><p>often have to break it into cases</p></li>
+<li><p>proof uses Chomsky Normal Form</p></li>
+</ul>
+</li>
+<li><p>not context free examples</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\{0^n1^n2^n\vert n\geq1\}\)</span></p></li>
+<li><p>{<span class="math notranslate nohighlight">\(0^i1^j2^i3^j\vert i\geq 1,j\geq 1\)</span>}</p></li>
+<li><p>{ww<span class="math notranslate nohighlight">\(\vert w \in \{0,1\}^*\)</span> }</p></li>
+</ul>
+</li>
+<li><p>closed under union, concatenation, closure, and positive closure, homomorphism, reversal, inverse homomorphism, substitutions</p>
+<ul class="simple">
+<li><p>intersection with a regular language (basically run in parallel)</p></li>
+</ul>
+</li>
+<li><p>not closed under intersection, complement</p></li>
+<li><p>substitution - replace each letter of alphabet with a language</p>
+<ul class="simple">
+<li><p>s(a) = <span class="math notranslate nohighlight">\(L_a\)</span></p></li>
+<li><p>if <span class="math notranslate nohighlight">\(w = ax\)</span>, <span class="math notranslate nohighlight">\(s(w) = L_aL_x\)</span></p></li>
+<li><p>if L CFL, s(L) CFL</p></li>
+</ul>
+</li>
+<li><p>time complexities</p>
+<ul class="simple">
+<li><p>O(n)</p>
+<ul>
+<li><p>CFG to PDA</p></li>
+<li><p>PDA final state -&gt; empty stack</p></li>
+<li><p>PDA empty stack -&gt; final state</p></li>
+</ul>
+</li>
+<li><p>PDA to CFG: O(<span class="math notranslate nohighlight">\(n^3\)</span>) with size O(n^3)</p></li>
+<li><p>converstion to CNF: O(n^2) with size O(n^2)</p></li>
+<li><p>emptiness of CFL: O(n)</p></li>
+</ul>
+</li>
+<li><p>testing emptiness - O(n)</p>
+<ul class="simple">
+<li><p>which symbols are reachable</p></li>
+</ul>
+</li>
+<li><p>test membership with dynamic programming table - O(n^3)</p>
+<ul class="simple">
+<li><p>CYK algorithm</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="ch-8-intro-to-turing-machines-except-8-5-3">
+<h2>2.11.7. ch 8 - intro to turing machines (except 8.5.3)<a class="headerlink" href="#ch-8-intro-to-turing-machines-except-8-5-3" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Turing Machine def</p>
+<ol class="simple">
+<li><p>states</p></li>
+<li><p>start state</p></li>
+<li><p>final states</p></li>
+<li><p>input symbols</p></li>
+<li><p>tape symbols (includes input symbols)</p></li>
+<li><p>transition function <span class="math notranslate nohighlight">\(\delta(q,X)=\delta(q,Y,L)\)</span></p></li>
+<li><p>B - blank symbol</p></li>
+</ol>
+<ul class="simple">
+<li><p>infinite blanks on either side</p></li>
+</ul>
+</li>
+<li><p>arc has X/Y  D with old/new tape symbols and direction</p></li>
+<li><p>if the TM enters accepting state, it accepts</p>
+<ul class="simple">
+<li><p>assume it halts if it accepts</p></li>
+</ul>
+</li>
+<li><p>we can think of Turing machine as having multiple tracks (symbol could represent a tuple like [X,Y])</p></li>
+<li><p>multitape TM has each head move independently, multitrack doesn’t</p>
+<ul class="simple">
+<li><p>common use one track for data, one track for mark</p></li>
+</ul>
+</li>
+<li><p>running time - number of steps that TM makes</p></li>
+<li><p>NTM - nondeterministic Turing machine - accepts no languages not accepted by a deterministic TM</p></li>
+<li><p>halts if enters a state q, scanning X, and there is no move for (q,X)</p></li>
+<li><p>restrictions that don’t change things</p>
+<ul class="simple">
+<li><p>tape infinite only to right</p></li>
+<li><p>TM can’t print blank</p></li>
+</ul>
+</li>
+<li><p>simplified machines</p>
+<ul class="simple">
+<li><p>two stacks machine - one stack keeps track of left, one right</p></li>
+<li><p>every recursively enumerable language is accepted by a two-counter machine</p></li>
+</ul>
+</li>
+<li><p>TM can simulate computer, and time is some polynomial multiple of computer time (O(n^3))</p>
+<ul class="simple">
+<li><p>limit on how big a number computer can store - one instruction - word can only grow by 1 bit</p></li>
+</ul>
+</li>
+<li><p>LBA - linear bounded automaton - Turing machine with left and right end markers</p></li>
+<li><p>programs might take infinitely long before terminating - can’t be decided</p></li>
+<li><p>turing machine can take 2 inputs: program P and input I</p></li>
+<li><p>ID - instantaneous description</p>
+<ul class="simple">
+<li><p>write <span class="math notranslate nohighlight">\(X_1X_2...qX_iX_{i+1}...\)</span> where q is scanning X_i</p></li>
+</ul>
+</li>
+<li><p>program that prints “h” as input -&gt; yes or no</p>
+<ul class="simple">
+<li><p>imagine instead of no prints h</p></li>
+<li><p>now feed it to itself</p>
+<ul>
+<li><p>if it would print h, now prints yes - paradox! therefore such a machine can’t exist</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>TM simulating computer</p>
+<ol class="simple">
+<li><p>tape that has memory</p></li>
+<li><p>tape with instruction counter</p></li>
+<li><p>tape with memory address</p></li>
+</ol>
+</li>
+<li><p>reduction - we know X is undecidable - if solving Y implies solving X, then Y is undecidable</p>
+<ul class="simple">
+<li><p>if X reduces to Y, solving Y solves X</p></li>
+<li><p>define a total mapping from X to Y</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(X \leq _m Y\)</span> - X reduces to Y - mapping reduction, solving Y solves X</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>intractable - take a very long time to solve (not polynomial)</p></li>
+<li><p>&lt;&gt; notation means bitstring representation</p></li>
+<li><p><span class="math notranslate nohighlight">\(&lt;n&gt; = 0^n\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(&lt;m,w&gt; means w \in L(M)\)</span></p></li>
+<li><p>KD - “known to be distinct”</p></li>
+<li><p>idempotent - R + R = R</p></li>
+</ul>
+</div>
+<div class="section" id="ch-9-undecidability-9-1-9-2-9-3">
+<h2>2.11.8. ch 9 - undecidability (9.1,9.2,9.3)<a class="headerlink" href="#ch-9-undecidability-9-1-9-2-9-3" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>does this TM accept (the code for) itself as input?</p></li>
+<li><p>enumerate binary strings - add a leading 1</p></li>
+<li><p>express TM as binary string</p>
+<ul>
+<li><p>give it a number</p></li>
+<li><p>TM uses this for each transition</p>
+<ul>
+<li><p>separate transitions with 11</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>diagonalization language - set of strings w_i such that w_i is not in L(M_i)</p>
+<ul>
+<li><p>make table with M_i as rows, w_j as cols</p></li>
+<li><p>complement the diagonal is characteristic vector in L_d</p>
+<ul>
+<li><p>diagonal can’t be characteristic vector of any TM</p></li>
+</ul>
+</li>
+<li><p>not RE</p></li>
+</ul>
+</li>
+<li><p>recursive - complement is also recursive</p>
+<ul>
+<li><p>just switch accept and reject</p></li>
+</ul>
+</li>
+<li><p>if language and complement are both RE, then L is recursive</p></li>
+<li><p>universal language - set of binary strings that encode a pair (M,W) where M is TM, w <span class="math notranslate nohighlight">\(\in (0+1)^*\)</span> - set of strings representing a TM and an input accepted by that TM</p></li>
+<li><p>there is a universal Turing machine such that L_u = L(U)</p>
+<ul>
+<li><p>L_u is undecidable: RE but not recursive</p></li>
+</ul>
+</li>
+<li><p>halting problem - RE but not recursive</p></li>
+<li><p>Rice’s Thm - all nontrivial properties of the RE languages are undecidable</p>
+<ul>
+<li><p>property of the RE languages is a set of RE languages</p></li>
+<li><p>property is trivial if it is either empty or is all RE languages</p>
+<ul>
+<li><p>empty property <span class="math notranslate nohighlight">\(\emptyset\)</span> is different from the property of being an empty language {<span class="math notranslate nohighlight">\(\emptyset\)</span>}</p></li>
+</ul>
+</li>
+<li><p>ex. “the language is context-free, empty, finite, regular”</p></li>
+</ul>
+</li>
+<li><p>however properties such as 5 states are decidable</p></li>
+</ul>
+</div>
+<div class="section" id="ch-10-10-1-10-4-know-the-additional-problems-that-are-np-complete">
+<h2>2.11.9. Ch 10 - 10.1-10.4 know the additional problems that are NP-complete<a class="headerlink" href="#ch-10-10-1-10-4-know-the-additional-problems-that-are-np-complete" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>intractable - can’t be solved in polynomial time</p></li>
+<li><p>NP-complete examples</p>
+<ol class="simple">
+<li><p>boolean satisfiability</p></li>
+<li><p>symbols ^-, etc. are represent by themselves</p></li>
+<li><p>x_i is represented by x followed by i in binary</p></li>
+</ol>
+<ul>
+<li><p>Cook’s thm - SAT is NP-complete</p>
+<ol class="simple">
+<li><p>show SAT in NP</p></li>
+<li><p>show all other NP reduce to SAT</p></li>
+</ol>
+<ul class="simple">
+<li><p>pf involves matrix of cell/ID facts</p>
+<ul>
+<li><p>cols are ID 0,1,…,p(n)</p></li>
+<li><p>rows are alpha_0,alpha_1,…alpha_p(n)</p></li>
+<li><p>for any problem’s machine M, there is polynomial-time-converter for M that uses SAT decider to solve in polynomial time</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ol class="simple">
+<li><p>3SAT - easier to reduce things to</p></li>
+</ol>
+<ul class="simple">
+<li><p>AND of clauses each of which is the OR of exactly three variables or negated variables</p></li>
+<li><p>conjunctive normal form - if it is the AND of clauses</p></li>
+<li><p>conversion to cnf isn’t always polynomial time - don’t have to convert to equivalent expression, just have to both be satisfiable at the same times</p>
+<ol class="simple">
+<li><p>push all negatives down the expression tree - linear</p></li>
+<li><p>put it in cnf - demorgans, double negation</p></li>
+</ol>
+</li>
+<li><p>literal - variable or a negated variable</p></li>
+<li><p>k-conjunctive normal form - k is number of literals in clauses</p></li>
+</ul>
+<ol class="simple">
+<li><p>traveling salesman problem - find cycle of weight less than W</p></li>
+</ol>
+<ul class="simple">
+<li><p>O(m!)</p></li>
+</ul>
+<ol class="simple">
+<li><p>Independent Set - graph G and a lower bound k - yes if and only if G has an indpendent set of k nodes</p></li>
+</ol>
+<ul class="simple">
+<li><p>none of them are connected by an edge</p></li>
+<li><p>reduction from 3SAT</p></li>
+</ul>
+<ol class="simple">
+<li><p>node-cover problem</p></li>
+</ol>
+<ul class="simple">
+<li><p>node cover - every node is on one of the edges</p></li>
+</ul>
+<ol class="simple">
+<li><p>Undirected Hamiltonian circuit problem</p></li>
+</ol>
+<ul class="simple">
+<li><p>TSP with all weights 1</p></li>
+</ul>
+<ol class="simple">
+<li><p>Directed Hamiltonian-Circuit Problem</p></li>
+<li><p>subset sum</p></li>
+</ol>
+<ul class="simple">
+<li><p>is there a subset of numbers that sums to a number</p></li>
+</ul>
+</li>
+<li><p>reductions must be polynomial-time reductions</p></li>
+<li><p>P - solvable in polynomial by deterministic TM</p></li>
+<li><p>NP - solvable in polynomial time by nondeterministic TM</p>
+<ul class="simple">
+<li><p>NP-completeness (Karp-completeness) - a problem is at least as hard as any problem in NP = for every language L’ in NP, there is a polynomial-time reduction of L’ to L</p></li>
+<li><p>Cook-completeness equivalent to NP-completeness - if given a meachansim that in one unit of time would answer any equestion about membership of a string in P, it was possible to recognize any language in NP in polynomial time</p></li>
+<li><p>NP-hard - we don’t know if L is in NP, but every problem  in NP reduces to L in polynomial time</p></li>
+</ul>
+</li>
+<li><p>if some NP-complete problem p is in P then P=NP</p></li>
+<li><p>there are things between polynomial and exponential time (like 2^logn), and we group these in with the exponential category</p></li>
+<li><p>could have P polynomials run forever when they don’t accept</p>
+<ul class="simple">
+<li><p>could simply tell them to stop after a certain amount of steps</p></li>
+</ul>
+</li>
+<li><p>there are algorithms called verifiers</p></li>
+</ul>
+</div>
+<div class="section" id="more-on-np-completeness">
+<h2>2.11.10. more on NP Completeness<a class="headerlink" href="#more-on-np-completeness" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>a language is polynomial-time reducible to a language B if there is a polynomial time comoputable function that maps one to the other</p></li>
+<li><p>to solve a problem, efficiently transform to another problem, and then use a solver for the other problem</p></li>
+<li><p>satisfiability problem - check if a boolean expression is true</p>
+<ul class="simple">
+<li><p>have to test every possible boolean value - 2^n where n is number of variables</p>
+<ul>
+<li><p>this can be mapped to all problems of NP</p></li>
+<li><p>ex. traveling salesman can be reduced to satisfiability</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>P - set of all problems that can be solved in polynomial time</p></li>
+<li><p>NP - solved in polynomial time if we allow nondeterminism</p>
+<ul class="simple">
+<li><p>we count the time as the length of the shortest path</p></li>
+</ul>
+</li>
+<li><p>NP-hard problem L’</p>
+<ol class="simple">
+<li><p>every L is NP reduces to L’ in polynomial time</p></li>
+</ol>
+</li>
+<li><p>NP-complete L’</p>
+<ol class="simple">
+<li><p>L’ is NP-hard</p></li>
+<li><p>L’ is in NP</p></li>
+</ol>
+<ul class="simple">
+<li><p>ex. graph coloring</p></li>
+<li><p>partitioning into equal sums</p></li>
+</ul>
+</li>
+<li><p>if one NP-complete problem is in P, P=NP</p></li>
+<li><p>decider vs. optimizer</p>
+<ul class="simple">
+<li><p>decider tells whether it was solved or not</p></li>
+<li><p>if you keep asking it boolean questions it gives you the answer</p></li>
+</ul>
+</li>
+<li><p>graph clique problem - given a graph and an integer k is there a subgraph in G that is a complete graph of size k</p>
+<ul class="simple">
+<li><p>this is reduction from boolean satisfiability</p></li>
+</ul>
+</li>
+<li><p>graph 3-colorability</p>
+<ul class="simple">
+<li><p>reduction from satisfiability - prove with or gate type structure</p></li>
+</ul>
+</li>
+<li><p>approximation algorithms</p>
+<ul class="simple">
+<li><p>find minimum</p>
+<ul>
+<li><p>greedy - keep going down</p></li>
+<li><p>genetic algorithms - pretty bad</p></li>
+</ul>
+</li>
+<li><p>minimum vertex cover problem - given a graph, find a minimum set of vertices such that each edge is incident to at least one of these vertices</p>
+<ul>
+<li><p>NP-complete</p></li>
+<li><p>can not be approximated within 1.36*solution</p></li>
+<li><p>can be approximated within 2*solution in linear time</p>
+<ul>
+<li><p>pick an edge, pick its endpoints</p></li>
+<li><p>put them in solution</p></li>
+<li><p>eliminate these points and their edges from the graph</p></li>
+<li><p>repeat</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>maximum cut problem - given a graph, find a partition of the vertices maximizing the number of crossing edges</p>
+<ul class="simple">
+<li><p>can not be approximated within 17/16*solution</p></li>
+<li><p>can be approximated within 2*solution</p>
+<ul>
+<li><p>if moving arbitrary node across partition will improve the cut, then do so</p></li>
+<li><p>repeat</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes/cs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="java_ref.html" title="previous page">2.10. java ref</a>
+    <a class='right-next' id="next-link" href="cpp_ref.html" title="next page">2.12. c/c++ ref</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Chandan Singh<br/>
+        
+            &copy; Copyright None.<br/>
+          <div class="extra_footer">
+            <p>
+Many of these images are taken from resources on the web.
+</p>
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

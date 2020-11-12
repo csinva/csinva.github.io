@@ -1,0 +1,1080 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>2.4. software engineering &#8212; learning to learn</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../_static/togglebutton.js"></script>
+    <script type="text/javascript" src="../../_static/clipboard.min.js"></script>
+    <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    <script type="text/javascript">var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script type="text/javascript" src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" type="text/javascript" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script type="text/javascript">
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2.5. quantum" href="quantum.html" />
+    <link rel="prev" title="2.3. data structures" href="data_structures.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">learning to learn</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   welcome 👋
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../research_ovws/research_ovws.html">
+   1. research_ovws
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_comp_neuro.html">
+     1.1. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_disentanglement.html">
+     1.2. disentanglement
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_complexity.html">
+     1.3. complexity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_interesting_science.html">
+     1.4. interesting science
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_dl_theory.html">
+     1.5. dl theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_scat.html">
+     1.6. scattering transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">
+     1.7. ml in medicine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_dl_for_neuro.html">
+     1.8. dl for neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_uncertainty.html">
+     1.9. uncertainty
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_interp.html">
+     1.10. interpretability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_kernels.html">
+     1.11. kernels
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="cs.html">
+   2. cs
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="retrieval.html">
+     2.1. info retrieval
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="python_ref.html">
+     2.2. python ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="data_structures.html">
+     2.3. data structures
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2.4. software engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="quantum.html">
+     2.5. quantum
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="algo.html">
+     2.6. algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="graphs.html">
+     2.7. graphs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="os.html">
+     2.8. os
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="arch.html">
+     2.9. architecture
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="java_ref.html">
+     2.10. java ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="comp_theory.html">
+     2.11. cs theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cpp_ref.html">
+     2.12. c/c++ ref
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../math/math.html">
+   3. math
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/differential_equations.html">
+     3.1. differential equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/proofs.html">
+     3.2. proofs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/analysis.html">
+     3.3. real analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/linear_algebra.html">
+     3.4. linear algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/signals.html">
+     3.5. signals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/optimization.html">
+     3.6. optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/calculus.html">
+     3.7. calculus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/chaos.html">
+     3.8. chaos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/math_basics.html">
+     3.9. math basics
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../stat/stat.html">
+   4. stat
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/graphical_models.html">
+     4.1. graphical models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/data_analysis.html">
+     4.2. data analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/testing.html">
+     4.3. testing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/causal_inference.html">
+     4.4. causal inference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/info_theory.html">
+     4.5. info theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/linear_models.html">
+     4.6. linear models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/time_series.html">
+     4.7. time series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/game_theory.html">
+     4.8. game theory
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ml/ml.html">
+   5. ml
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/comp_vision.html">
+     5.1. computer vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/structure_ml.html">
+     5.2. structure learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/classification.html">
+     5.3. classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/unsupervised.html">
+     5.4. unsupervised
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/deep_learning.html">
+     5.5. deep learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/feature_selection.html">
+     5.6. feature selection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/learning_theory.html">
+     5.7. learning theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/evaluation.html">
+     5.8. evaluation
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ai/ai.html">
+   6. ai
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/search.html">
+     6.1. search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/nlp.html">
+     6.2. nlp
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/fairness_sts.html">
+     6.3. fairness
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/cogsci.html">
+     6.4. cogsci
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/ai_futures.html">
+     6.5. ai futures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/logic.html">
+     6.6. logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/philosophy.html">
+     6.7. philosophy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/psychology.html">
+     6.8. psychology
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/knowledge_rep.html">
+     6.9. representations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/decisions.html">
+     6.10. decisions
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../neuro/neuro.html">
+   7. neuro
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/brain_basics.html">
+     7.1. brain basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/vissci.html">
+     7.2. vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/comp_neuro.html">
+     7.3. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/sensory_input.html">
+     7.4. sensory input
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/memory.html">
+     7.5. memory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/motor.html">
+     7.6. motor system
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/development.html">
+     7.7. development
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/notes/cs/software.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/csinva/csinva.github.io"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ch-2-software-engineering">
+   2.4.1. ch 2 - software engineering
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ch-3-software-process-structure">
+   2.4.2. ch 3 - software process structure
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ch-4-process-models">
+   2.4.3. ch 4 - process models
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ch-5-agile-development">
+   2.4.4. ch 5 - agile development
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ch-6-human-aspects">
+   2.4.5. ch 6 - human aspects
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ch-7-principles">
+   2.4.6. ch 7 - principles
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ch-8-understanding-requirements">
+   2.4.7. ch 8 - understanding requirements
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ch-9-requirements-modeling-scenario-based">
+   2.4.8. ch 9 - requirements modeling  - scenario-based
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ch-10-requirements-modeling-class-based-methods">
+   2.4.9. ch 10 - requirements modeling - class-based methods
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ch-11-requirements-modeling-behavior-models">
+   2.4.10. ch 11 - requirements modeling - behavior models
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="software-engineering">
+<h1>2.4. software engineering<a class="headerlink" href="#software-engineering" title="Permalink to this headline">¶</a></h1>
+<p>Some notes on software engineering, based on two courses at UVA.</p>
+<div class="section" id="ch-2-software-engineering">
+<h2>2.4.1. ch 2 - software engineering<a class="headerlink" href="#ch-2-software-engineering" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>software engineering - the application of a systematic, disciplined, quantifiable approach to the development, operation, and maintenance of software; that is, the application of engineering to software</p></li>
+<li><p>SWEBOK guide</p></li>
+<li><p>Polya</p>
+<ol class="simple">
+<li><p>Understand the problem (communication and analysis).</p></li>
+<li><p>Plan a solution (modeling and software design).</p></li>
+<li><p>Carry out the plan (code generation).</p></li>
+<li><p>Examine the result for accuracy (testing and quality assurance).</p></li>
+</ol>
+</li>
+</ul>
+<ol class="simple">
+<li><p><em>tools</em> - provide automated or semi-automated support</p></li>
+<li><p><em>methods</em> - provide technical how-tos</p>
+<ul class="simple">
+<li><p>ex: communication, requirements analysis, design modeling, program construction, testing and support</p></li>
+</ul>
+</li>
+<li><p><em>process model</em> - framework for delivering technology</p>
+<ul class="simple">
+<li><p>framework activities</p>
+<ul>
+<li><p>communication, planning, modeling, construction, deployment</p></li>
+</ul>
+</li>
+<li><p>umbrella activities</p>
+<ul>
+<li><p>software project tracking and control, risk management,
+software quality assurance, technical reviews, measurement, software configuration management, reusability management, work product preparation and production</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>a <em>quality focus</em> - bedrock that supports software engineering</p></li>
+</ol>
+<ul class="simple">
+<li><p>every software has some business need</p></li>
+</ul>
+</div>
+<div class="section" id="ch-3-software-process-structure">
+<h2>2.4.2. ch 3 - software process structure<a class="headerlink" href="#ch-3-software-process-structure" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><em>task set</em> - defines the actual work to be done to accomplish the objectives of a software engineering action</p></li>
+<li><p><em>process pattern</em> - template - describes process-related problem, suggests solutions</p>
+<ul>
+<li><p><em>stage patterns</em> - defines problems associated with a framework activity</p></li>
+<li><p><em>task patterns</em></p></li>
+<li><p><em>phase patterns</em> - define sequence of framework activities</p></li>
+</ul>
+</li>
+<li><p>process assessment and improvement</p>
+<ul>
+<li><p>SCAMPI, CBAIPI, SPICE, ISO 9001:2000 for software</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="ch-4-process-models">
+<h2>2.4.3. ch 4 - process models<a class="headerlink" href="#ch-4-process-models" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><em>prescriptive models</em> - advocated orderly approach</p>
+<ul>
+<li><p><em>waterfall model</em></p>
+<ul>
+<li><p>everything is in order</p></li>
+<li><p>communication, planning, modeling, construction, deployment</p></li>
+</ul>
+</li>
+<li><p><em>V model</em></p>
+<ul>
+<li><p>move down the model and then test each step on the way up</p></li>
+</ul>
+</li>
+<li><p><em>incremental model</em></p>
+<ul>
+<li><p>increments (like versions are produced)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><em>evolutionary models</em> - use prototyping, users may think prototype is actual model</p>
+<ul>
+<li><p><em>spiral</em> - continually do each step of waterfall</p></li>
+<li><p><em>concurrent</em> - different parts have different interations</p></li>
+</ul>
+</li>
+<li><p>others</p>
+<ul>
+<li><p><em>component based</em> - when using outside code</p>
+<ul>
+<li><p>the process to apply when reuse is a development objective</p></li>
+</ul>
+</li>
+<li><p><em>formal</em> - when safety is needed</p></li>
+<li><p><em>aspect-oriented</em> - construct aspects - new paradigm</p></li>
+<li><p><em>unified process</em> - use-case driven, works well with UML</p></li>
+</ul>
+</li>
+<li><p>personal and team software processes</p></li>
+</ul>
+</div>
+<div class="section" id="ch-5-agile-development">
+<h2>2.4.4. ch 5 - agile development<a class="headerlink" href="#ch-5-agile-development" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>driven by customer descriptions</p></li>
+<li><p>adapts as changes occur</p></li>
+<li><p>delivers multiple software increments</p></li>
+<li><p>self-organizing teams</p></li>
+<li><p>at regular intervals, the team reflects on how to become more effective</p></li>
+<li><p><em>agile unified process</em> - each AUP iteration addresses several activies</p>
+<ul>
+<li><p>modeling, implementation, testing, deployment,…</p></li>
+</ul>
+</li>
+<li><p><em>agile modeling</em> - set of modeling principles</p>
+<ul>
+<li><p>model with a purpose</p></li>
+<li><p>use multiple models</p></li>
+<li><p>adapt locally</p></li>
+</ul>
+</li>
+</ul>
+<ol class="simple">
+<li><p><em>extreme programming (xp)</em> - most widely used agile process</p>
+<ul class="simple">
+<li><p>begins with <em>user stories</em></p></li>
+<li><p>each one gets a cost</p></li>
+<li><p>grouped together for deliverable increment</p></li>
+<li><p>CRC - class responsibility collaborator</p></li>
+<li><p>commitment is made on delivery date</p></li>
+<li><p>project velocity defines subsequent delivery dates</p></li>
+<li><p>encourages unit tests, pair programming</p></li>
+<li><p>acceptance tests defined by the user</p></li>
+</ul>
+</li>
+<li><p><em>industrial xp</em> - greater inclusion of management, customers</p>
+<ul class="simple">
+<li><p>readiness assesment, project community, project chartering, test driven management, retrospectives, continuous learning</p></li>
+</ul>
+</li>
+<li><p><em>scrum</em> - development work is partition into “packets”</p>
+<ul class="simple">
+<li><p>testing and documentation are on-going</p></li>
+<li><p>work occurs in <em>sprints</em> and derived from a <em>backlog</em></p></li>
+<li><p>meetings are short</p></li>
+<li><p>demos are delivered to the customer</p></li>
+</ul>
+</li>
+<li><p><em>dynamic systems development method</em> - similar to xp</p></li>
+</ol>
+</div>
+<div class="section" id="ch-6-human-aspects">
+<h2>2.4.5. ch 6 - human aspects<a class="headerlink" href="#ch-6-human-aspects" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>roles</p>
+<ul>
+<li><p>ambassador – represents team to outside constituencies</p></li>
+<li><p>scout – crosses team boundaries to collect information</p></li>
+<li><p>guard – protects access to team work products</p></li>
+<li><p>sentry – controls information sent by stakeholders</p></li>
+<li><p>coordinator – communicates across the team and organization</p></li>
+</ul>
+</li>
+<li><p>teams</p>
+<ul>
+<li><p>sense of purpose, involvement, trust, improvement</p></li>
+<li><p>diversity of skill sets</p></li>
+</ul>
+</li>
+<li><p><em>organizational paradigms</em></p>
+<ul>
+<li><p>closed paradigm — structure by authority</p></li>
+<li><p>random paradigm - loose, depends on individual initiatives</p></li>
+<li><p>open paradigm - mix of closed and random</p></li>
+<li><p>synchronous paradigm - compartmentalizes problem</p></li>
+</ul>
+</li>
+<li><p>some collaboration tools</p>
+<ul>
+<li><p>slack</p></li>
+<li><p>gforge</p></li>
+<li><p>onedesk</p></li>
+<li><p>rational team concert</p></li>
+</ul>
+</li>
+<li><p>collaboration, coordination, communication</p></li>
+</ul>
+</div>
+<div class="section" id="ch-7-principles">
+<h2>2.4.6. ch 7 - principles<a class="headerlink" href="#ch-7-principles" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>process principles</p>
+<ul>
+<li><p>be agile, effective team, communicate, assess risk, quality focus,</p></li>
+</ul>
+</li>
+<li><p>practice principles</p>
+<ul>
+<li><p>divide and conquer, transfer of information, abstraction, patterns, maintenance</p></li>
+</ul>
+</li>
+<li><p>communication principles</p>
+<ul>
+<li><p>gather customer requirements</p></li>
+</ul>
+</li>
+<li><p>planning principles</p>
+<ul>
+<li><p>understand scope, be iterative</p></li>
+</ul>
+</li>
+<li><p>modeling principles</p>
+<ul>
+<li><p><em>UML diagrams</em></p></li>
+<li><p><em>requirements models</em> - <em>analysis models</em> - represent customer requirements in information domain, functional domain, behavioral domain</p></li>
+<li><p><em>design models</em> - represent characteristics of software that helps construct it effectively - ex. like an architect’s plans for a house</p></li>
+</ul>
+</li>
+<li><p>preparation, construction, testing, deployment</p></li>
+<li><p>The deployment activity encompasses 3 actions:</p>
+<ul>
+<li><p>Delivery</p></li>
+<li><p>Support</p></li>
+<li><p>Feedback</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="ch-8-understanding-requirements">
+<h2>2.4.7. ch 8 - understanding requirements<a class="headerlink" href="#ch-8-understanding-requirements" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>inception - first questions</p></li>
+<li><p>elicitation - requirements understood</p></li>
+<li><p>elaboration</p></li>
+<li><p>negotiation</p></li>
+<li><p>specification - maybe in models</p></li>
+<li><p>validation - products are assessed</p></li>
+<li><p>requirements managing</p></li>
+</ol>
+<ul class="simple">
+<li><p>quality function deployment - determines the customer satisfaction of each requirement</p></li>
+<li><p>requirement types - functional  describes what software should do, while non-functional place constraints on how</p>
+<ul>
+<li><p>Functional Requirement:  A system must send an email whenever a certain condition is met (e.g. an order is placed, a customer registers, etc.</p></li>
+<li><p>Nonfunctional Requirement: Emails should be sent with a latency of no greater than 12 hours from such an activity</p></li>
+</ul>
+</li>
+<li><p>use-cases - collection of user scenarios that describe the thread of usage of a system</p>
+<ul>
+<li><p>each described from point-of-view of an actor</p></li>
+</ul>
+</li>
+<li><p>analysis model - provides description for computer-based system</p>
+<ul>
+<li><p>scenario-based elements - functional and use-cases</p></li>
+<li><p>class-based elements - implied by scenarios</p></li>
+<li><p>behavioral elements - state diagram</p></li>
+<li><p>flow-oriented elements - data flow diagram</p></li>
+</ul>
+</li>
+<li><p>state diagram - represents the behavior of a system by depicting its states and the events that cause the system to change state</p></li>
+<li><p><em>UML diagrams</em></p>
+<ul>
+<li><p>case diagrams</p></li>
+<li><p>activity diagrams</p></li>
+<li><p>class diagrams</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="ch-9-requirements-modeling-scenario-based">
+<h2>2.4.8. ch 9 - requirements modeling  - scenario-based<a class="headerlink" href="#ch-9-requirements-modeling-scenario-based" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>analysis modeling - focuses on what not how</p></li>
+<li><p>requirements modeling must achieve 3 objectives</p>
+<ol class="simple">
+<li><p>to describe what the customer requires</p></li>
+<li><p>basis for creation of a software design</p></li>
+<li><p>define a set of requirements that can be validated</p></li>
+</ol>
+</li>
+<li><p>domain analysis - define the domain to be investigated</p>
+<ul>
+<li><p>analyze applications in the domain</p></li>
+</ul>
+</li>
+<li><p>scenario-based modeling</p>
+<ul>
+<li><p><em>use-case</em> - a scenario that describes a thread of usage</p>
+<ul>
+<li><p><em>actors</em> - represent roles people or devices play as the system functions</p></li>
+<li><p><em>users</em> - can play a number of different roles for a given scenario</p></li>
+</ul>
+</li>
+<li><p>exceptions - situations that cause the system to exhibit unusual behavior</p></li>
+</ul>
+</li>
+<li><p>uml models</p>
+<ul>
+<li><p><em>activity diagrams</em> – supplements the use case by providing a graphical representation of the flow of interaction within a specific scenario.</p></li>
+<li><p><em>swimlane diagrams</em> - is a useful variation of the activity diagram and allows you to represent the flow of activities described by the use case at the same time indicate which actor or analysis class has responsibility for the action described by an activity rectangle</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="ch-10-requirements-modeling-class-based-methods">
+<h2>2.4.9. ch 10 - requirements modeling - class-based methods<a class="headerlink" href="#ch-10-requirements-modeling-class-based-methods" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p><em>structured analysis</em> - considers data and the processes that transform the data as separate entities</p></li>
+<li><p><em>object-oriented analysis</em> - focuses on definition of classes</p></li>
+</ol>
+<ul class="simple">
+<li><p>class-based modeling - <em>objects, operations, relationships, collaborations</em></p></li>
+<li><p>processing narrative - describes overall description of the function to be developed - nouns underlined</p></li>
+<li><p><em>attributes</em> - describe a class that has been selected for inclusion in the analysis model</p></li>
+<li><p>operations - define the behavior of an object</p></li>
+<li><p><em>class-responsibility-collaborator (CRC) modeling</em> - provides simple means for making classes that are relevant to requirements</p>
+<ul>
+<li><p>like index cards with class, responsibilities, collaborators on each card</p></li>
+</ul>
+</li>
+<li><p>class types</p>
+<ul>
+<li><p>entity classes - extracted directly from problem statement</p></li>
+<li><p>boundary classes - used to create the interface</p></li>
+<li><p>controller classes - manage a unit of work from start to finish</p></li>
+</ul>
+</li>
+<li><p>collaborations - three different generic relationships</p>
+<ul>
+<li><p>associations</p>
+<ul>
+<li><p>is-part-of</p></li>
+<li><p>has-knowledge-of</p></li>
+</ul>
+</li>
+<li><p>dependencies</p>
+<ul>
+<li><p>depends-upon</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>plus - public visible, minus - private</p></li>
+</ul>
+</div>
+<div class="section" id="ch-11-requirements-modeling-behavior-models">
+<h2>2.4.10. ch 11 - requirements modeling - behavior models<a class="headerlink" href="#ch-11-requirements-modeling-behavior-models" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>behavioral modeling - depicts the system states and its classes</p>
+<ul>
+<li><p>indicates how software will respond to external events or stimuli</p></li>
+</ul>
+</li>
+<li><p>state representations</p>
+<ul>
+<li><p>passive state - current status of attributes</p></li>
+<li><p>active state - current status of object as it undergoes continuing transformation</p></li>
+<li><p>event - occurrence that cuases the system to exhibit some behavoir</p></li>
+<li><p>action - process that occurs as a consequence of making a transaction</p></li>
+</ul>
+</li>
+<li><p>semantic analysis pattern - describes set of use cases for application</p></li>
+</ul>
+<ol class="simple">
+<li><p><em>content Analysis</em> - The full spectrum of content to be provided by the WebApp is identified,  including text, graphics and images, video, and audio data. Data modeling can be used to identify and describe each of the data objects.</p></li>
+<li><p><em>interaction model</em></p>
+<ul class="simple">
+<li><p>use-cases</p></li>
+<li><p>sequence diagrams</p></li>
+<li><p>state diagrams</p></li>
+<li><p>user interface prototypes</p></li>
+</ul>
+</li>
+<li><p><em>functional model</em> - describes operations that will be applied to manipulate content and describes other processing functions that are independent of content but necessary to the end user</p></li>
+<li><p><em>configuration model</em> - environment and infrastructure in which the app resides</p>
+<ul class="simple">
+<li><p>server-side and client-side</p></li>
+</ul>
+</li>
+<li><p><em>navigation modeling</em> - defines overall navigation strategy for the app</p></li>
+</ol>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes/cs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="data_structures.html" title="previous page">2.3. data structures</a>
+    <a class='right-next' id="next-link" href="quantum.html" title="next page">2.5. quantum</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Chandan Singh<br/>
+        
+            &copy; Copyright None.<br/>
+          <div class="extra_footer">
+            <p>
+Many of these images are taken from resources on the web.
+</p>
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

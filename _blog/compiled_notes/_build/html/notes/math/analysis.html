@@ -1,0 +1,1331 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>3.3. real analysis &#8212; learning to learn</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../_static/togglebutton.js"></script>
+    <script type="text/javascript" src="../../_static/clipboard.min.js"></script>
+    <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    <script type="text/javascript">var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script type="text/javascript" src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" type="text/javascript" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script type="text/javascript">
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="3.4. linear algebra" href="linear_algebra.html" />
+    <link rel="prev" title="3.2. proofs" href="proofs.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">learning to learn</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   welcome 👋
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../research_ovws/research_ovws.html">
+   1. research_ovws
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_comp_neuro.html">
+     1.1. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_disentanglement.html">
+     1.2. disentanglement
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_complexity.html">
+     1.3. complexity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_interesting_science.html">
+     1.4. interesting science
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_dl_theory.html">
+     1.5. dl theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_scat.html">
+     1.6. scattering transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">
+     1.7. ml in medicine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_dl_for_neuro.html">
+     1.8. dl for neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_uncertainty.html">
+     1.9. uncertainty
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_interp.html">
+     1.10. interpretability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_kernels.html">
+     1.11. kernels
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../cs/cs.html">
+   2. cs
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/retrieval.html">
+     2.1. info retrieval
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/python_ref.html">
+     2.2. python ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/data_structures.html">
+     2.3. data structures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/software.html">
+     2.4. software engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/quantum.html">
+     2.5. quantum
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/algo.html">
+     2.6. algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/graphs.html">
+     2.7. graphs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/os.html">
+     2.8. os
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/arch.html">
+     2.9. architecture
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/java_ref.html">
+     2.10. java ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/comp_theory.html">
+     2.11. cs theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/cpp_ref.html">
+     2.12. c/c++ ref
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="math.html">
+   3. math
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="differential_equations.html">
+     3.1. differential equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="proofs.html">
+     3.2. proofs
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     3.3. real analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="linear_algebra.html">
+     3.4. linear algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="signals.html">
+     3.5. signals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="optimization.html">
+     3.6. optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="calculus.html">
+     3.7. calculus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chaos.html">
+     3.8. chaos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="math_basics.html">
+     3.9. math basics
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../stat/stat.html">
+   4. stat
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/graphical_models.html">
+     4.1. graphical models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/data_analysis.html">
+     4.2. data analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/testing.html">
+     4.3. testing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/causal_inference.html">
+     4.4. causal inference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/info_theory.html">
+     4.5. info theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/linear_models.html">
+     4.6. linear models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/time_series.html">
+     4.7. time series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/game_theory.html">
+     4.8. game theory
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ml/ml.html">
+   5. ml
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/comp_vision.html">
+     5.1. computer vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/structure_ml.html">
+     5.2. structure learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/classification.html">
+     5.3. classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/unsupervised.html">
+     5.4. unsupervised
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/deep_learning.html">
+     5.5. deep learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/feature_selection.html">
+     5.6. feature selection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/learning_theory.html">
+     5.7. learning theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/evaluation.html">
+     5.8. evaluation
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ai/ai.html">
+   6. ai
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/search.html">
+     6.1. search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/nlp.html">
+     6.2. nlp
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/fairness_sts.html">
+     6.3. fairness
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/cogsci.html">
+     6.4. cogsci
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/ai_futures.html">
+     6.5. ai futures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/logic.html">
+     6.6. logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/philosophy.html">
+     6.7. philosophy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/psychology.html">
+     6.8. psychology
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/knowledge_rep.html">
+     6.9. representations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/decisions.html">
+     6.10. decisions
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../neuro/neuro.html">
+   7. neuro
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/brain_basics.html">
+     7.1. brain basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/vissci.html">
+     7.2. vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/comp_neuro.html">
+     7.3. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/sensory_input.html">
+     7.4. sensory input
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/memory.html">
+     7.5. memory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/motor.html">
+     7.6. motor system
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/development.html">
+     7.7. development
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/notes/math/analysis.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/csinva/csinva.github.io"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ch-1-the-real-numbers">
+   3.3.1. ch 1 - the real numbers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ch-2-sequences-and-series">
+   3.3.2. ch 2 - sequences and series
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     3.3.2.1. 2.5
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     3.3.2.2. 2.6
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     3.3.2.3. 2.7
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ch-3-basic-topology-of-r">
+   3.3.3. ch 3 - basic topology of R
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cantor-set">
+     3.3.3.1. 3.1 cantor set
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#open-closed-sets">
+     3.3.3.2. 3.2 open/closed sets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     3.3.3.3. 3.3
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ch-4-functional-limits-and-continuity">
+   3.3.4. ch 4	- functional limits and continuity
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     3.3.4.1. 4.1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#functional-limits">
+     3.3.4.2. 4.2 functional limits
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#continuous-functions">
+     3.3.4.3. 4.3 continuous functions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#continuous-functions-on-compact-sets">
+     3.3.4.4. 4.4 continuous functions on compact sets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#intermediate-value-theorem">
+     3.3.4.5. 4.5 intermediate value theorem
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ch-5-the-derivative">
+   3.3.5. ch 5 - the derivative
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#derivatives-and-the-intermediate-value-property">
+     3.3.5.1. 5.2 derivatives and the intermediate value property
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mean-value-theorems">
+     3.3.5.2. 5.3 mean value theorems
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ch-6-sequences-and-series-of-function">
+   3.3.6. ch 6 - sequences and series of function
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#uniform-convergence-of-a-sequence-of-functions">
+     3.3.6.1. 6.2 uniform convergence of a sequence of functions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#uniform-convergence-and-differentiation">
+     3.3.6.2. 6.3 uniform convergence and differentiation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#series-of-functions">
+     3.3.6.3. 6.4 series of functions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#power-series">
+     3.3.6.4. 6.5 power series
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#taylor-series">
+     3.3.6.5. 6.6 taylor series
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ch-7-the-riemann-integral">
+   3.3.7. ch 7 - the Riemann Integral
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#def-of-riemann-integral">
+     3.3.7.1. 7.2 def of Riemann integral
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#integrating-functions-with-discontinuities">
+     3.3.7.2. 7.3 integrating functions with discontinuities
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#properties-of-integral">
+     3.3.7.3. 7.4 properties of Integral
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fundamental-theorem-of-calculus">
+     3.3.7.4. 7.5 fundamental theorem of calculus
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview">
+   3.3.8. overview
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="real-analysis">
+<h1>3.3. real analysis<a class="headerlink" href="#real-analysis" title="Permalink to this headline">¶</a></h1>
+<p>Some notes on real analysis, following the textbook <a class="reference external" href="https://link.springer.com/book/10.1007/978-1-4939-2712-8">Understanding analysis</a></p>
+<div class="section" id="ch-1-the-real-numbers">
+<h2>3.3.1. ch 1 - the real numbers<a class="headerlink" href="#ch-1-the-real-numbers" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>there is no rational number whose square is 2 (proof by contradiction)</p></li>
+<li><p><em>contrapositive</em>: $<span class="math notranslate nohighlight">\(-q \to -p\)</span>$ - logically equivalent</p></li>
+<li><p><em>triangle inequality</em>: <span class="math notranslate nohighlight">\(\|a+b\| \leq \|a\| + \|b\|\)</span> (often use |a-b| = |(a-c)+(c-b)|)</p></li>
+<li><p><em>axiom of completeness</em> - every nonempty set <span class="math notranslate nohighlight">\(A \subseteq \mathbb{R}\)</span> that is bounded above has a least upper bound</p>
+<ul>
+<li><p>doesn’t work for <span class="math notranslate nohighlight">\(\mathbb{Q}\)</span></p></li>
+</ul>
+</li>
+<li><p><em>supremum</em> = supA = least upper bound (similarly, <em>infimum</em>)</p>
+<ol class="simple">
+<li><p>supA is an upper bound of A</p></li>
+<li><p>if <span class="math notranslate nohighlight">\(s \in \mathbb{R}\)</span> is another u.b. then <span class="math notranslate nohighlight">\(s \geq supA\)</span></p>
+<ul>
+<li><p>can be restated as <span class="math notranslate nohighlight">\(\forall \epsilon &gt; 0, \exists a \in A\)</span> <span class="math notranslate nohighlight">\(s-\epsilon &lt; a\)</span></p></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p><em>nested interval property</em> - for each <span class="math notranslate nohighlight">\(n \in N\)</span>, assume we are given a closed interval <span class="math notranslate nohighlight">\(I_n = [a_n,b_n]=\{ x \in \mathbb{R} : a_n \leq x \leq b_n \}\)</span>  Assume also that each <span class="math notranslate nohighlight">\(I_n\)</span> contains <span class="math notranslate nohighlight">\(I_{n+1}\)</span>.  Then, the resulting nested sequence of nonempty closed intervals <span class="math notranslate nohighlight">\(I_1 \supseteq I_2 \supseteq ...\)</span> has a nonempty intersection
+use AoC with x = sup{<span class="math notranslate nohighlight">\(a_n: n \in \mathbb{N}\)</span>} in the intersection of all sets</p></li>
+<li><p><em>archimedean property</em></p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathbb{N}\)</span> is unbounded above (sup <span class="math notranslate nohighlight">\(\mathbb{N}=\infty\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\forall x \in \mathbb{R}, x&gt;0, \exists n \in \mathbb{N}, 0 &lt; \frac{1}{n} &lt; x\)</span></p></li>
+</ol>
+</li>
+<li><p><span class="math notranslate nohighlight">\(\mathbb{Q}\)</span> is dense in <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> - for every <span class="math notranslate nohighlight">\(a,b \in \mathbb{R}, a&lt;b\)</span>, <span class="math notranslate nohighlight">\(\exists r \in \mathbb{Q}\)</span> s.t. <span class="math notranslate nohighlight">\(a&lt;r&lt;b\)</span></p>
+<ul>
+<li><p>pf: want <span class="math notranslate nohighlight">\(a &lt; \frac{m}{n} &lt; b\)</span></p>
+<ul>
+<li><p>by Archimedean property, want <span class="math notranslate nohighlight">\(\frac{1}{n} &lt; b-a\)</span></p></li>
+</ul>
+</li>
+<li><p>corollary: the irrationals are dense in <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></li>
+</ul>
+</li>
+<li><p>there exists a real number <span class="math notranslate nohighlight">\(r \in \mathbb{R}\)</span> satisfying <span class="math notranslate nohighlight">\(r^2 = 2\)</span></p>
+<ul>
+<li><p>pf: let r = <span class="math notranslate nohighlight">\(sup \{ t \in \mathbb{R} : t^2 &lt; 2 \}\)</span>.  disprove <span class="math notranslate nohighlight">\(r^2&lt;2, r^2&gt;2\)</span> by considering <span class="math notranslate nohighlight">\(r+\frac{1}{n},r-\frac{1}{n}\)</span></p></li>
+</ul>
+</li>
+<li><p>A ~ B if there exists f:A-&gt;B that is 1-1 and onto</p></li>
+<li><p>A is <em>finite</em> - there exists n <span class="math notranslate nohighlight">\(\in \mathbb{N}\)</span> s.t. <span class="math notranslate nohighlight">\(\mathbb{N}_n\)</span>~A</p></li>
+<li><p><em>countable</em> =  <span class="math notranslate nohighlight">\(\mathbb{N}\)</span>~A.</p>
+<ul>
+<li><p>uncountable - inifinite set that isn’t countable</p></li>
+<li><p>Q is countable</p>
+<ul>
+<li><p>pf: Let <span class="math notranslate nohighlight">\(A_n = \{ \pm \frac{p}{q}:\)</span> where p,q <span class="math notranslate nohighlight">\(\in \mathbb{N}\)</span> are in lowest terms with p+q=n}</p></li>
+</ul>
+</li>
+<li><p>R is uncountable</p>
+<ul>
+<li><p>pf: Assume we can enumerate <span class="math notranslate nohighlight">\(\mathbb{R}\)</span>  Use NIP to exclude one point from <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> each time.  The intersection is still nonempty, so we didn’t succesfully enumerate <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></li>
+</ul>
+</li>
+<li><p><span class="math notranslate nohighlight">\(\frac{x}{x^2-1}\)</span> maps (0,1) <span class="math notranslate nohighlight">\(\to \mathbb{R}\)</span></p></li>
+<li><p>countable union of countable sets is countable</p></li>
+</ul>
+</li>
+<li><p>if <span class="math notranslate nohighlight">\(A \subseteq B\)</span> and B countable, then A is either countable or finite</p></li>
+<li><p>if <span class="math notranslate nohighlight">\(A_n\)</span> is a countable set for each <span class="math notranslate nohighlight">\(n \in \mathbb{N}\)</span>, then their union is countable</p></li>
+<li><p>the open interval (0,1) = <span class="math notranslate nohighlight">\(\{ x \in \mathbb{R} : 0 &lt; x &lt; 1 \}\)</span> is uncountable</p>
+<ul>
+<li><p>pf: diagonalization - assume there exists a function from (0,1) to <span class="math notranslate nohighlight">\(\mathbb{R}\)</span>.  List the decimal expansions of these as rows of a matrix.  Complement of diagonal does not exist.</p></li>
+</ul>
+</li>
+<li><p><em>cantor’s thm</em> - Given any set A, there does not exist a function f:<span class="math notranslate nohighlight">\(A \to P(A)\)</span> that is onto</p>
+<ul>
+<li><p>P(A) is the set of all subsets of A</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="ch-2-sequences-and-series">
+<h2>3.3.2. ch 2 - sequences and series<a class="headerlink" href="#ch-2-sequences-and-series" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>a sequence <span class="math notranslate nohighlight">\((a_n)\)</span> <em>converges</em> to a real number if <span class="math notranslate nohighlight">\(\forall \epsilon &gt; 0, \exists N \in \mathbb{N}\)</span> such that <span class="math notranslate nohighlight">\(\forall n\geq N, \|a_n-a\| &lt; \epsilon\)</span></p>
+<ul class="simple">
+<li><p>otherwise it <em>diverges</em></p></li>
+</ul>
+</li>
+<li><p>if a limit exists, it is unique</p></li>
+<li><p>a sequence <span class="math notranslate nohighlight">\((x_n)\)</span> is <em>bounded</em> if there exists a number M &gt; 0 such that <span class="math notranslate nohighlight">\(\|x_n\|\leq M \forall n \in \mathbb{N}\)</span></p>
+<ul class="simple">
+<li><p>every convergent sequence is bounded</p></li>
+</ul>
+</li>
+<li><p><em>algebraic limit thm</em> - let lim <span class="math notranslate nohighlight">\(a_n = a\)</span> and lim <span class="math notranslate nohighlight">\(b_n\)</span> = b.  Then</p>
+<ol class="simple">
+<li><p>lim(<span class="math notranslate nohighlight">\(ca_n\)</span>) = ca</p></li>
+<li><p>lim(<span class="math notranslate nohighlight">\(a_n+b_n\)</span>) = a+b</p></li>
+<li><p>lim(<span class="math notranslate nohighlight">\(a_n b_n\)</span>) = ab</p></li>
+<li><p>lim(<span class="math notranslate nohighlight">\(a_n/b_n\)</span>) = a/b, provided b <span class="math notranslate nohighlight">\(\neq\)</span> 0</p></li>
+</ol>
+<ul class="simple">
+<li><p>pf 3: use triangle inequality, <span class="math notranslate nohighlight">\(\|a_nb_n-ab\|=\|a_nb_n-ab_n+ab_n-ab\|=...=\|b_n\|\|a_n-a\|+\|a\|\|b_n-b\|\)</span></p></li>
+<li><p>pf 4: show <span class="math notranslate nohighlight">\((b_n) \to b\)</span> implies <span class="math notranslate nohighlight">\((\frac{1}{b_n}) \to \frac{1}{b}\)</span></p></li>
+</ul>
+</li>
+<li><p><em>order limit thm</em> - Assume lim <span class="math notranslate nohighlight">\(a_n = a\)</span> and lim <span class="math notranslate nohighlight">\(b_n\)</span> = b.</p>
+<ol class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(a_n \geq 0\)</span> <span class="math notranslate nohighlight">\(\forall n \in \mathbb{N}\)</span>, then <span class="math notranslate nohighlight">\(a \geq 0\)</span></p></li>
+<li><p>If <span class="math notranslate nohighlight">\(a_n \leq b_n\)</span> <span class="math notranslate nohighlight">\(\forall n \in \mathbb{N}\)</span>, then <span class="math notranslate nohighlight">\(a \leq b\)</span></p></li>
+<li><p>If <span class="math notranslate nohighlight">\(\exists c \in \mathbb{R}\)</span> for which <span class="math notranslate nohighlight">\(c \leq b_n\)</span> <span class="math notranslate nohighlight">\(\forall n \in \mathbb{N}\)</span>, then <span class="math notranslate nohighlight">\(c \leq b\)</span></p></li>
+</ol>
+<ul class="simple">
+<li><p>pf 1: by contradiction</p></li>
+</ul>
+</li>
+<li><p><em>monotone</em> - increasing or decreasing (not strictly)</p></li>
+<li><p><em>monotone convergence thm</em> - if a sequence is monotone and bounded, then it converges</p></li>
+<li><p><em>convergence of a series</em></p>
+<ul class="simple">
+<li><p>define <span class="math notranslate nohighlight">\(s_m=a_1+a_2+...+a_m\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\sum_{n=1}^\infty a_n\)</span> converges to A <span class="math notranslate nohighlight">\(\iff (s_m)\)</span> converges to A</p></li>
+</ul>
+</li>
+<li><p><em>cauchy condensation test</em> - suppose <span class="math notranslate nohighlight">\(a_n\)</span> is decreasing and satisfies <span class="math notranslate nohighlight">\(a_n \geq 0\)</span> for all <span class="math notranslate nohighlight">\(n \in \mathbb{N}\)</span>.  Then, the series <span class="math notranslate nohighlight">\(\sum_{n=1}^\infty a_n\)</span> converges iff the series <span class="math notranslate nohighlight">\(\sum_{n=1}^\infty 2^na_{2^n}\)</span> converges</p>
+<ul class="simple">
+<li><p><em>p-series</em> <span class="math notranslate nohighlight">\(\sum_{n=1}^\infty 1/n^p\)</span> converges iff p &gt; 1</p></li>
+</ul>
+</li>
+</ul>
+<div class="section" id="id1">
+<h3>3.3.2.1. 2.5<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>let <span class="math notranslate nohighlight">\((a_n)\)</span> be a sequence and <span class="math notranslate nohighlight">\(n_1&lt;n_2&lt;...\)</span> be an increasing sequence of natural numbers.  Then <span class="math notranslate nohighlight">\((a_{n_1},a_{n_2},...)\)</span> is a <em>subsequence</em> of <span class="math notranslate nohighlight">\((a_n)\)</span></p></li>
+<li><p>subsequences of a convergent sequence converge to the same limit as the original sequence</p>
+<ul>
+<li><p>can be used as divergence criterion</p></li>
+</ul>
+</li>
+<li><p><em>bolzano-weierstrass thm</em> - every bounded sequence contains a convergent subsequence</p>
+<ul>
+<li><p>pf: use NIP, keep splitting interval into two</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h3>3.3.2.2. 2.6<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\((a_n)\)</span> is a <em>cauchy sequence</em> if <span class="math notranslate nohighlight">\(\forall \epsilon &gt; 0, \exists N \in \mathbb{N}\)</span> such that <span class="math notranslate nohighlight">\(\forall m,n\geq N, \|a_n-a_m\| &lt; \epsilon\)</span></p></li>
+<li><p><em>cauchy criterion</em> - a sequence converges <span class="math notranslate nohighlight">\(\iff\)</span> it is a cauchy sequence</p>
+<ul>
+<li><p>cauchy sequences are bounded</p></li>
+</ul>
+</li>
+<li><p>overview: AoC <span class="math notranslate nohighlight">\(\iff\)</span> NIP <span class="math notranslate nohighlight">\(\iff\)</span> MCT <span class="math notranslate nohighlight">\(\iff\)</span> BW <span class="math notranslate nohighlight">\(\iff\)</span> CC</p></li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h3>3.3.2.3. 2.7<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>algebraic limit thm</em> - let <span class="math notranslate nohighlight">\(\sum_{n=1}^\infty a_n\)</span> = A, <span class="math notranslate nohighlight">\(\sum_{n=1}^\infty b_n\)</span> = B</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(\sum_{n=1}^\infty ca_n\)</span> = cA</p></li>
+<li><p><span class="math notranslate nohighlight">\(\sum_{n=1}^\infty a_n+b_n\)</span> = A+B</p></li>
+</ol>
+</li>
+</ul>
+<ol class="simple">
+<li><p><em>cauchy criterion for series</em> - series converges <span class="math notranslate nohighlight">\(\iff\)</span> <span class="math notranslate nohighlight">\((s_m)\)</span> is a cauchy sequence</p></li>
+</ol>
+<ul class="simple">
+<li><p>if the series <span class="math notranslate nohighlight">\(\sum_{n=1}^\infty a_n\)</span> converges then lim <span class="math notranslate nohighlight">\(a_n=0\)</span></p></li>
+</ul>
+<ol>
+<li><p><em>comparison test</em></p></li>
+<li><p><em>geometric series</em> - 	<span class="math notranslate nohighlight">\(\sum_{n=0}^\infty a r^n = \frac{a}{1-r}\)</span></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(s_m = a+ar+...+ar^{m-1} = \frac{a(1-r^m)}{1-r}\)</span></p></li>
+</ul>
+</li>
+<li><p><em>absolute convergence test</em></p></li>
+<li><p><em>alternating series test</em></p>
+<ol class="simple">
+<li><p>decreasing</p></li>
+<li><p>lim <span class="math notranslate nohighlight">\(a_n\)</span> = 0</p></li>
+</ol>
+<ul class="simple">
+<li><p>then, <span class="math notranslate nohighlight">\(\sum_{n=1}^\infty (-1)^{n+1} a_n\)</span> converges</p></li>
+</ul>
+</li>
+</ol>
+<ul class="simple">
+<li><p>rearrangements: there exists one-to-one correspondence</p></li>
+<li><p>if a series converges absolutely, any rearrangement converges to same limit</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="ch-3-basic-topology-of-r">
+<h2>3.3.3. ch 3 - basic topology of R<a class="headerlink" href="#ch-3-basic-topology-of-r" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="cantor-set">
+<h3>3.3.3.1. 3.1 cantor set<a class="headerlink" href="#cantor-set" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>C has small length, but its cardinality is uncountable</p></li>
+<li><p>discussion of dimensions, doubling sizes leads to 2^dimension sizes</p>
+<ul>
+<li><p>Cantor set is about dimension .631</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="open-closed-sets">
+<h3>3.3.3.2. 3.2 open/closed sets<a class="headerlink" href="#open-closed-sets" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>A set O <span class="math notranslate nohighlight">\(\subseteq \mathbb{R}\)</span> is <em>open</em> if for all points a <span class="math notranslate nohighlight">\(\in\)</span> O there exists an <span class="math notranslate nohighlight">\(\epsilon\)</span>-neighborhood <span class="math notranslate nohighlight">\(V_{\epsilon}(a) \subseteq O\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(V_{\epsilon}(a)=\{ x \in R : \|x-a\| &lt; \epsilon\)</span>}</p></li>
+</ul>
+</li>
+</ul>
+<ol class="simple">
+<li><p>the union of an arbitrary collection of open sets is open</p></li>
+<li><p>the intersection of a finite collection of open sets is open</p></li>
+</ol>
+<ul class="simple">
+<li><p>a point x is a <em>limit point</em> of a set A if every <span class="math notranslate nohighlight">\(\epsilon\)</span>-neighborhood <span class="math notranslate nohighlight">\(V_{\epsilon}(x)\)</span> of x intersects the set A at some point other than x</p></li>
+<li><p>a point x is a limit point of a set A if and only if x = lim <span class="math notranslate nohighlight">\(a_n\)</span> for some sequence (<span class="math notranslate nohighlight">\(a_n\)</span>) contained in A satisfying <span class="math notranslate nohighlight">\(a_n \neq x\)</span> for all n <span class="math notranslate nohighlight">\(\in\)</span> N</p></li>
+<li><p><em>isolated point</em> - not a limit point</p></li>
+<li><p>set <span class="math notranslate nohighlight">\(F \subseteq \mathbb{R}\)</span> <em>closed</em> - contains all limit points</p>
+<ul>
+<li><p><em>closed</em> iff every Cauchy sequence contained in F has a limit that is also an element of F</p></li>
+</ul>
+</li>
+<li><p>density of Q in R - for every <span class="math notranslate nohighlight">\(y \in \mathbb{R}\)</span>, there exists a sequence of rational numbers that converges to y</p></li>
+<li><p><em>closure</em> - set with its limit points</p>
+<ul>
+<li><p>closure <span class="math notranslate nohighlight">\(\bar{A}\)</span> is smallest closed set containing A</p></li>
+</ul>
+</li>
+<li><p>iff set open, complement is closed</p>
+<ul>
+<li><p>R and <span class="math notranslate nohighlight">\(\emptyset\)</span> are both open and closed</p></li>
+</ul>
+</li>
+</ul>
+<ol class="simple">
+<li><p>the union of a finite collection of closed sets is closed</p></li>
+<li><p>the intersection of an arbitrary collection of closed sets is closed</p></li>
+</ol>
+</div>
+<div class="section" id="id4">
+<h3>3.3.3.3. 3.3<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>a set K <span class="math notranslate nohighlight">\(\subseteq \mathbb{R}\)</span> is <em>compact</em> if every sequence in K has a subsequence that converges to a limit that is also in K</p></li>
+<li><p><em>Nested Compact Set Property</em> - intersection of nested sequence of nonempty compact sets is not empty</p></li>
+<li><p>let A <span class="math notranslate nohighlight">\(\subseteq \mathbb{R}\)</span>.  <em>open cover</em> for A is a (possibly infinite) collection of  open sets whose union contains the set A.</p></li>
+<li><p>given an open cover for A, a <em>finite subcover</em> is a finite sub-collection of open sets from the original open cover whose union still manages to completely contain A</p></li>
+<li><p><em>Heine-Borel thm</em> - let K <span class="math notranslate nohighlight">\(\subseteq \mathbb{R}\)</span>.  All of the following are equivalent</p>
+<ol class="simple">
+<li><p>K is compact</p></li>
+<li><p>K is closed and bounded</p></li>
+<li><p>every open cover for K has a finite subcover</p></li>
+</ol>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="ch-4-functional-limits-and-continuity">
+<h2>3.3.4. ch 4	- functional limits and continuity<a class="headerlink" href="#ch-4-functional-limits-and-continuity" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h3>3.3.4.1. 4.1<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>dirichlet function: 1 if r <span class="math notranslate nohighlight">\(\in \mathbb{Q}\)</span> 0 otherwise</p></li>
+</ul>
+</div>
+<div class="section" id="functional-limits">
+<h3>3.3.4.2. 4.2 functional limits<a class="headerlink" href="#functional-limits" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>def 1. Let f:<span class="math notranslate nohighlight">\(A \to R\)</span>, and let c be a limit point of the domain A.  We say that <em><span class="math notranslate nohighlight">\(lim_{x \to c} f(x) = L\)</span></em> provided that for all <span class="math notranslate nohighlight">\(\epsilon\)</span> &gt; 0, there exists a <span class="math notranslate nohighlight">\(\delta\)</span> &gt; 0 s.t. whenever 0 &lt; |x-c| &lt; <span class="math notranslate nohighlight">\(\delta\)</span> (and x <span class="math notranslate nohighlight">\(\in\)</span> A) it follows that |f(x)-L|&lt; <span class="math notranslate nohighlight">\(\epsilon\)</span></p></li>
+<li><p>def 2. Let f:<span class="math notranslate nohighlight">\(A \to R\)</span>, and let c be a limit point of the domain A. We say that <span class="math notranslate nohighlight">\(lim_{x \to c} f(x) = L\)</span> provided that for every <span class="math notranslate nohighlight">\(\epsilon\)</span>-neighborhood <span class="math notranslate nohighlight">\(V_{\epsilon}(L)\)</span> of L, there exists a <span class="math notranslate nohighlight">\(\delta\)</span>-neighborhood <span class="math notranslate nohighlight">\(V_{\delta}(\)</span>c) around c with the property that for all x <span class="math notranslate nohighlight">\(\in V_{\delta}(\)</span>c) different from c (with x <span class="math notranslate nohighlight">\(\in\)</span> A) it follows that f(x) <span class="math notranslate nohighlight">\(\in V_{\epsilon}(L)\)</span>.</p></li>
+<li><p><em>sequential criterion for functional limits</em> - Given function f:<span class="math notranslate nohighlight">\(A \to R\)</span> and a limit point c of A, the following 2 statements are equivalent:</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(lim_{x \to c} f(x) = L\)</span></p></li>
+<li><p>for all sequences <span class="math notranslate nohighlight">\((x_n) \subseteq\)</span> A satisfying <span class="math notranslate nohighlight">\(x_n \neq\)</span> c and <span class="math notranslate nohighlight">\((x_n) \to c\)</span>, it follows that <span class="math notranslate nohighlight">\(f(x_n) \to L\)</span>.</p></li>
+</ol>
+</li>
+<li><p><em>algebraic limit thm for functional limits</em></p></li>
+<li><p><em>divergence criterion for functional limits</em></p></li>
+</ul>
+</div>
+<div class="section" id="continuous-functions">
+<h3>3.3.4.3. 4.3 continuous functions<a class="headerlink" href="#continuous-functions" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>a function f:<span class="math notranslate nohighlight">\(A \to R\)</span> is <em>continuous at a point</em> c <span class="math notranslate nohighlight">\(\in\)</span> A if, for all <span class="math notranslate nohighlight">\(\epsilon\)</span>&gt;0, there exists a <span class="math notranslate nohighlight">\(\delta\)</span>&gt;0 such that whenever |x-c|&lt;<span class="math notranslate nohighlight">\(\delta\)</span> (and x<span class="math notranslate nohighlight">\(\in\)</span> A) it follows that <span class="math notranslate nohighlight">\(\|f(x)-f( c)\|&lt;\epsilon\)</span>.  F is <em>continous</em> if it is continuous at every point in the domain A</p></li>
+<li><p>characterizations of continuouty</p></li>
+<li><p>criterion for discontinuity</p></li>
+<li><p>algebraic continuity theorem</p></li>
+<li><p>if f is continuous at c and g is continous at f( c) then g <span class="math notranslate nohighlight">\(\circ\)</span> f is continuous at c</p></li>
+</ul>
+</div>
+<div class="section" id="continuous-functions-on-compact-sets">
+<h3>3.3.4.4. 4.4 continuous functions on compact sets<a class="headerlink" href="#continuous-functions-on-compact-sets" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>preservation of compact sets</em> - if f continuous and K compact, then f(K) is compact as well</p></li>
+<li><p><em>extreme value theorem</em> - if f if continuous on a compact set K, then f attains a maximum and minimum value.  In other words, there exist <span class="math notranslate nohighlight">\(x_0,x_1 \in K\)</span> such that <span class="math notranslate nohighlight">\(f(x_0) \leq f(x) \leq f(x_1)\)</span> for all x <span class="math notranslate nohighlight">\(\in\)</span> K</p></li>
+<li><p>f is <em>uniformly continuous on A</em> if for every <span class="math notranslate nohighlight">\(\epsilon\)</span>&gt;0, there exists a <span class="math notranslate nohighlight">\(\delta\)</span>&gt;0 such that for all x,y <span class="math notranslate nohighlight">\(\in\)</span> A, <span class="math notranslate nohighlight">\(\|x-y\| &lt; \delta \implies \|f(x)-f(y)\| &lt; \epsilon\)</span></p>
+<ul>
+<li><p>a function f fails to be uniformly continuous on A iff there exists a particular <span class="math notranslate nohighlight">\(\epsilon_o\)</span> &gt; 0 and two sequences <span class="math notranslate nohighlight">\((x_n),(y_n)\)</span> in A sastisfying <span class="math notranslate nohighlight">\(\|x_n - y_n\| \to 0\)</span> but <span class="math notranslate nohighlight">\(\|f(x_n)-f(y_n)\| \geq \epsilon_o\)</span></p></li>
+</ul>
+</li>
+<li><p>a function that is continuous on a compact set K is <em>uniformly continuous on K</em></p></li>
+</ul>
+</div>
+<div class="section" id="intermediate-value-theorem">
+<h3>3.3.4.5. 4.5 intermediate value theorem<a class="headerlink" href="#intermediate-value-theorem" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>intermediate value theorem</em> - Let f:[a,b]<span class="math notranslate nohighlight">\( \to R\)</span> be continuous.  If L is a real number satisfying f(a) &lt; L &lt; f(b) or f(a) &gt; L &gt; f(b), then there exists a point c <span class="math notranslate nohighlight">\(\in (a,b)\)</span> where f( c) = L</p></li>
+<li><p>a function f has the <em>intermediate value property</em> on an inverval [a,b] if for all x &lt; y in [a,n] and all L between f(x) and f(y), it is always possible to find a point c <span class="math notranslate nohighlight">\(\in (x,y)\)</span> where f( c)=L.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="ch-5-the-derivative">
+<h2>3.3.5. ch 5 - the derivative<a class="headerlink" href="#ch-5-the-derivative" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="derivatives-and-the-intermediate-value-property">
+<h3>3.3.5.1. 5.2 derivatives and the intermediate value property<a class="headerlink" href="#derivatives-and-the-intermediate-value-property" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>let g: A -&gt; R be a function defined on an interval A.  Given c <span class="math notranslate nohighlight">\(\in\)</span> A, the <em>derivative of g at c</em> is defined by g’( c) = <span class="math notranslate nohighlight">\(\lim_{x \to c} \frac{g(x) - g( c)}{x-c}\)</span>, provided this limit exists.  Then g is differentiable at c.  If g’ exists for all points in A, we say g is <em>differentiable</em> on A</p></li>
+<li><p>identity: <span class="math notranslate nohighlight">\(x^n-c^n = (x-c)(x^{n-1}+cx^{n-2}+c^2x^{n-3}+...+c^{n-1}\)</span>)</p></li>
+<li><p>differentiable <span class="math notranslate nohighlight">\(\implies\)</span> continuous</p></li>
+<li><p><em>algebraic differentiability theorem</em></p>
+<ol class="simple">
+<li><p>adding</p></li>
+<li><p>scalar multiplying</p></li>
+<li><p>product rule</p></li>
+<li><p>quotient rule</p></li>
+</ol>
+</li>
+<li><p><em>chain rule</em>: let f:A-&gt; R and g:B-&gt;R satisfy f(A)<span class="math notranslate nohighlight">\(\subseteq\)</span> B so that the composition g <span class="math notranslate nohighlight">\(\circ\)</span> f is defined.  If f is differentiable at c in A and g differentiable at f( c) in B, then g <span class="math notranslate nohighlight">\(\circ\)</span> f is differnetiable at c with (g<span class="math notranslate nohighlight">\(\circ\)</span>f)’( c)=g’(f( c))*f’( c)</p></li>
+<li><p><em>interior extremum thm</em> - let f be differentiable on an open interval (a,b).  If f attains a maximum or minimum value at some point c <span class="math notranslate nohighlight">\(\in\)</span> (a,b), then f’( c) = 0.</p></li>
+<li><p><em>Darboux’s thm</em> - if f is differentiable on an interval [a,b], and a satisfies f’(a) &lt; <span class="math notranslate nohighlight">\(\alpha\)</span> &lt; f’(b)  (or f’(a) &gt; <span class="math notranslate nohighlight">\(\alpha\)</span> &gt; f’(b)), then there exists a point c <span class="math notranslate nohighlight">\(\in (a,b)\)</span> where f’( c) = <span class="math notranslate nohighlight">\(\alpha\)</span></p>
+<ul>
+<li><p>derivative satisfies intermediate value property</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="mean-value-theorems">
+<h3>3.3.5.2. 5.3 mean value theorems<a class="headerlink" href="#mean-value-theorems" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>mean value theorem</em> - if f:[a,b] -&gt; R is continuous on [a,b] and differentiable on (a,b), then there exists a point c <span class="math notranslate nohighlight">\(\in\)</span> (a,b) where <span class="math notranslate nohighlight">\(f'( c) = \frac{f(b)-f(a)}{b-a}\)</span></p>
+<ul>
+<li><p><em>Rolle’s thm</em> - f(a)=f(b) -&gt; f’( c)=0</p></li>
+<li><p>if f’(x) = 0 for all x in A, then f(x) = k for some constant k</p></li>
+</ul>
+</li>
+<li><p>if f and g are differentiable functions on an interval A and satisfy f’(x) = g’(x) for all x <span class="math notranslate nohighlight">\(\in\)</span> A, then f(x) = g(x) + k for some constant k</p></li>
+<li><p><em>generalized mean value theorem</em> - if f and g are continuous on the closed interval [a,b] and differentiable on the open interval (a,b), then there exists a point c <span class="math notranslate nohighlight">\(\in (a,b)\)</span> where |f(b)-f(a)|g’( c) = |g(b)-g(a)|f’( c).  If g’ is never 0 on (a,b), then can be restated <span class="math notranslate nohighlight">\(\frac{f'( c)}{g'( c)} = \frac{f(b)-f(a)}{g(b)-g(a)}\)</span></p></li>
+<li><p>given g: A -&gt; R and a limit point c of A, we say that <em><span class="math notranslate nohighlight">\(lim_{x \to c} g(x) = \infty\)</span></em> if, for every M &gt; 0, there exists a <span class="math notranslate nohighlight">\(\delta\)</span>&gt; 0 such that whenever 0 &lt; |x-c| &lt; <span class="math notranslate nohighlight">\(\delta\)</span> it follows that g(x) ≥ M</p></li>
+<li><p><em>L’Hospital’s Rule: 0/0</em> - let f and g be continuous on an interval containing a, and assume f and g are differentiable on this interval with the possible exception of the point a.  If f(a) = g(a) = 0 and g’(x) ≠ 0 for all x ≠ a, then <span class="math notranslate nohighlight">\(lim_{x \to a} \frac{f'(x)}{g'(x)} = L \implies lim_{x \to a} \frac{f'(x)}{g'(x)} = L\)</span></p></li>
+<li><p><em>L’Hospital’s Rule: <span class="math notranslate nohighlight">\(\infty / \infty\)</span></em> - assume f and g are differentiable on (a,b)  and g’(x) ≠ 0 for all x in (a,b).  If <span class="math notranslate nohighlight">\(lim_{x \to a} g(x) = \infty \)</span>, then <span class="math notranslate nohighlight">\(lim_{x \to a} \frac{f'(x)}{g'(x)} = L \implies lim_{x \to a} \frac{f'(x)}{g'(x)} = L\)</span></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="ch-6-sequences-and-series-of-function">
+<h2>3.3.6. ch 6 - sequences and series of function<a class="headerlink" href="#ch-6-sequences-and-series-of-function" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="uniform-convergence-of-a-sequence-of-functions">
+<h3>3.3.6.1. 6.2 uniform convergence of a sequence of functions<a class="headerlink" href="#uniform-convergence-of-a-sequence-of-functions" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>for each n <span class="math notranslate nohighlight">\(\in \mathbb{N}\)</span> let <span class="math notranslate nohighlight">\(f_n\)</span> be a function defined on a set A<span class="math notranslate nohighlight">\(\subseteq R\)</span>.  The sequence (<span class="math notranslate nohighlight">\(f_n\)</span>) of functions <em>converges pointwise</em> on A to a function f if, for all x in A, the sequence of real numbers <span class="math notranslate nohighlight">\(f_n(x)\)</span> converges to f(x)</p></li>
+<li><p>let (<span class="math notranslate nohighlight">\(f_n\)</span>) be a sequence of functions defined on a set A<span class="math notranslate nohighlight">\(\subseteq\)</span>R.  Then (<span class="math notranslate nohighlight">\(f_n\)</span>) <em>converges unformly</em> on A to a limit function f defined on A if, for every <span class="math notranslate nohighlight">\(\epsilon\)</span>&gt;0, there exists an N in <span class="math notranslate nohighlight">\(\mathbb{N}\)</span> such that <span class="math notranslate nohighlight">\(\forall n ≥N,  x \in A , \|f_n(x)-f(x)\|&lt;\epsilon\)</span></p>
+<ul>
+<li><p><em>Cauchy Criterion</em> for uniform convergence - a sequence of functions <span class="math notranslate nohighlight">\((f_n)\)</span> defined on a set A <span class="math notranslate nohighlight">\(\subseteq\)</span> R  converges uniformly on A iff <span class="math notranslate nohighlight">\(\forall \epsilon &gt; 0 \exists N \in \mathbb{N}\)</span> s.t. whenever m,n ≥N and x in A, <span class="math notranslate nohighlight">\(\|f_n(x)-f_m(x)\|&lt;\epsilon\)</span></p></li>
+</ul>
+</li>
+<li><p><em>continuous limit thm</em> - Let (<span class="math notranslate nohighlight">\(f_n\)</span>) be a sequence of functions defined on A that converges uniformly on A to a function f.  If each <span class="math notranslate nohighlight">\(f_n\)</span> is continuous at c in A, then f is continuous at c</p></li>
+</ul>
+</div>
+<div class="section" id="uniform-convergence-and-differentiation">
+<h3>3.3.6.2. 6.3 uniform convergence and differentiation<a class="headerlink" href="#uniform-convergence-and-differentiation" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>differentiable limit theorem</em> - let <span class="math notranslate nohighlight">\(f_n \to f\)</span> pointwise on the closed interval [a,b], and assume that each <span class="math notranslate nohighlight">\(f_n\)</span> is differentiable.  If <span class="math notranslate nohighlight">\((f'_n)\)</span> converges uniformly on [a,b] to a function g, then the function f is differentiable and f’=g</p></li>
+<li><p>let (<span class="math notranslate nohighlight">\(f_n\)</span>) be a sequence of differentiable functions defined on the closed interval [a,b], and assume <span class="math notranslate nohighlight">\((f'_n)\)</span> converges uniformly to a function g on [a,b].  If there exists a point <span class="math notranslate nohighlight">\(x_0 \in [a,b]\)</span> for which <span class="math notranslate nohighlight">\(f_n(x_0)\)</span> is convergent, then (<span class="math notranslate nohighlight">\(f_n\)</span>) converges uniformly.  Moreover, the limit function f = lim <span class="math notranslate nohighlight">\(f_n\)</span> is differentiable and satisfies f’ = g</p></li>
+</ul>
+</div>
+<div class="section" id="series-of-functions">
+<h3>3.3.6.3. 6.4 series of functions<a class="headerlink" href="#series-of-functions" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>term-by-term continuity thm</em> - let <span class="math notranslate nohighlight">\(f_n\)</span> be continuous functions defined on a set A <span class="math notranslate nohighlight">\(\subseteq\)</span> R and assume <span class="math notranslate nohighlight">\(\sum f_n\)</span> converges uniformly on A to a function f.  Then, f is continuous on A.</p></li>
+<li><p><em>term-by-term differentiability thm</em> - let <span class="math notranslate nohighlight">\(f_n\)</span> be differentiable functions defined on an interval A, and assume <span class="math notranslate nohighlight">\(\sum f'_n(x)\)</span> converges uniformly to a limit g(x) on A.  If there exists a point <span class="math notranslate nohighlight">\(x_0 \in [a,b]\)</span> where <span class="math notranslate nohighlight">\(\sum f_n(x_0)\)</span> converges, then the series <span class="math notranslate nohighlight">\(\sum f_n(x)\)</span> converges uniformly to a differentiable function f(x) satisfying f’(x) = g(x) on A.  In other words, <span class="math notranslate nohighlight">\(f(x) = \sum f_n(x)\)</span> and <span class="math notranslate nohighlight">\(f'(x) = \sum f'_n(x)\)</span></p></li>
+<li><p><em>Cauchy Criterion for uniform convergence of series</em> - A series <span class="math notranslate nohighlight">\(\sum f_n\)</span> converges uniformly on A iff <span class="math notranslate nohighlight">\(\forall \epsilon &gt; 0 \exists N \in N\)</span> s.t. whenever n&gt;m≥N, x in A <span class="math notranslate nohighlight">\(\|f_{m+1}(x) + f_{m+2}(x) + f_{m+3}(x) + ...+f_n(x)\| &lt; \epsilon\)</span></p>
+<ul>
+<li><p><em>Wierstrass M-Test</em> - For each n in N, let <span class="math notranslate nohighlight">\(f_n\)</span> be a function defined on a set A <span class="math notranslate nohighlight">\(\subseteq\)</span> R, and let <span class="math notranslate nohighlight">\(M_n &gt; 0\)</span> be a real number satisfying <span class="math notranslate nohighlight">\(\|f_n(x)\| ≤ M_n\)</span> for all x in A.  If <span class="math notranslate nohighlight">\(\sum M_n\)</span> converges, then <span class="math notranslate nohighlight">\(\sum f_n\)</span> converges uniformly on A</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="power-series">
+<h3>3.3.6.4. 6.5 power series<a class="headerlink" href="#power-series" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>power series f(x) = <span class="math notranslate nohighlight">\(\sum_{n=0}^\infty a_n x^n = a_0 + a_1 x_1 + a_2 x^2 + a_3 x^3 + ...\)</span></p></li>
+<li><p>if a power series converges at some point <span class="math notranslate nohighlight">\(x_0 \in \mathbb{R}\)</span>, then it converges absolutely for any x satisfying |x|&lt;|<span class="math notranslate nohighlight">\(x_0\)</span>|</p></li>
+<li><p>if a power series converges pointwise on the set A, then it converges uniformly on any compact set K <span class="math notranslate nohighlight">\(\subseteq\)</span> A</p>
+<ul>
+<li><p>if a power series converges absolutely at a point <span class="math notranslate nohighlight">\(x_0\)</span>, then it converges uniformly on the closed interval [-c,c], where c = |<span class="math notranslate nohighlight">\(x_0\)</span>|</p></li>
+<li><p><em>Abel’s thm</em> - if a power series converges at the point x = R &gt; 0, the the series converges uniformly on the interval [0,R].  A similar result holds if the series converges at x = -R</p></li>
+</ul>
+</li>
+<li><p>if <span class="math notranslate nohighlight">\(\sum_{n=0}^\infty a_n x^n\)</span> converges for all x in (-R,R), then the differentiated series <span class="math notranslate nohighlight">\(\sum_{n=0}^\infty n a_n x^{n-1}\)</span> converges at each x in (-R,R) as well.  Consequently the convergence is uniform on compact sets contained in (-R,R).</p>
+<ul>
+<li><p>can take infinite derivatives</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="taylor-series">
+<h3>3.3.6.5. 6.6 taylor series<a class="headerlink" href="#taylor-series" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>Taylor’s Formula</em> <span class="math notranslate nohighlight">\(\sum_{n=0}^\infty a_n x^n = a_0 + a_1 x_1 + a_2 x^2 + a_3 x^3 + ...\)</span></p>
+<ul>
+<li><p>centered at 0: <span class="math notranslate nohighlight">\(a_n = \frac{f^{(n)}(0)}{n!}\)</span></p></li>
+</ul>
+</li>
+<li><p><em>Lagrange’s Remainder thm</em> - Let f be differentiable N+1 times on (-R,R), define <span class="math notranslate nohighlight">\(a_n = \frac{f^{(n)}(0)}{n!}.....\)</span></p></li>
+<li><p>not every infinitely differentiable function can be represented by its Taylor series (radius of convergence zero)</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="ch-7-the-riemann-integral">
+<h2>3.3.7. ch 7 - the Riemann Integral<a class="headerlink" href="#ch-7-the-riemann-integral" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="def-of-riemann-integral">
+<h3>3.3.7.1. 7.2 def of Riemann integral<a class="headerlink" href="#def-of-riemann-integral" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>partition</em> of [a,b] is a finite set of points from [a,b] that includes both a and b</p></li>
+<li><p><em>lower sum</em> - sum all the possible smallest rectangles</p></li>
+<li><p>a partition Q is a <em>refinement</em> of a partition P if <span class="math notranslate nohighlight">\(P \subseteq Q\)</span></p></li>
+<li><p>if <span class="math notranslate nohighlight">\(P \subseteq Q\)</span>, then L(f,P)≤L(f,Q) and U(f,P)≥U(f,Q)</p></li>
+<li><p>a bounded function f on the interval [a,b] is <em>Riemann-integrable</em> if U(f) = L(f) = <span class="math notranslate nohighlight">\(\int_a^b f\)</span></p>
+<ul>
+<li><p>iff <span class="math notranslate nohighlight">\(\forall \epsilon &gt;0\)</span>, there exists a partition P of [a,b] such that <span class="math notranslate nohighlight">\(U(f,P)-L(f,P)&lt;\epsilon\)</span></p></li>
+<li><p>U(f) = inf{U(f,P)} for all possible partitions P</p></li>
+</ul>
+</li>
+<li><p>if f is continuous on [a,b] then it is integrable</p></li>
+</ul>
+</div>
+<div class="section" id="integrating-functions-with-discontinuities">
+<h3>3.3.7.2. 7.3 integrating functions with discontinuities<a class="headerlink" href="#integrating-functions-with-discontinuities" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>if f:[a,b]-&gt;R is bounded and f is integrable on [c,b] for all c in (a,b), then f is integrable on [a,b]</p></li>
+</ul>
+</div>
+<div class="section" id="properties-of-integral">
+<h3>3.3.7.3. 7.4 properties of Integral<a class="headerlink" href="#properties-of-integral" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>assume f: [a,b]-&gt;R is bounded and let c in (a,b).  Then, f is integrable on [a,b] iff f is integrable on [a,c] and [c,b].  In this case we have <span class="math notranslate nohighlight">\(\int_a^b f = \int_a^c f + \int_c^b f.\)</span>F</p></li>
+<li><p><em>integrable limit thm</em> - Assume that <span class="math notranslate nohighlight">\(f_n \to f\)</span> uniformly on [a,b] and that each <span class="math notranslate nohighlight">\(f_n\)</span> is integarble.  Then, f is integrable and <span class="math notranslate nohighlight">\(lim_{n \to \infty} \int_a^b f_n = \int_a^b f\)</span>.</p></li>
+</ul>
+</div>
+<div class="section" id="fundamental-theorem-of-calculus">
+<h3>3.3.7.4. 7.5 fundamental theorem of calculus<a class="headerlink" href="#fundamental-theorem-of-calculus" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>If f:[a,b] -&gt; R is integrable, and F:[a,b]-&gt;R satisfies F’(x) = f(x) for all x <span class="math notranslate nohighlight">\(\in\)</span> [a,b], then <span class="math notranslate nohighlight">\(\int_a^b f = F(b) - F(a)\)</span></p></li>
+<li><p>Let f: [a,b]-&gt; R be integrable and for x <span class="math notranslate nohighlight">\(\in\)</span> [a,b] define G(x) = <span class="math notranslate nohighlight">\(\int_a^x g\)</span>.  Then G is continuous on [a,b]. If g is continuous at some point <span class="math notranslate nohighlight">\(c \in [a,b]\)</span> then G is differentiable at c and G’(c) = g(c).</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="overview">
+<h2>3.3.8. overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>convergence</p>
+<ol class="simple">
+<li><p>sequences</p></li>
+<li><p>series</p></li>
+<li><p>functional limits</p>
+<ul>
+<li><p>normal, uniform</p></li>
+</ul>
+</li>
+<li><p>sequence of funcs</p>
+<ul>
+<li><p>pointwise, uniform</p></li>
+</ul>
+</li>
+<li><p>series of funcs</p>
+<ul>
+<li><p>pointwise, uniform</p></li>
+</ul>
+</li>
+<li><p>integrability</p></li>
+</ol>
+</li>
+<li><p>sequential criterion - usually good for proving discontinuous</p>
+<ol class="simple">
+<li><p>limit points</p></li>
+<li><p>functional limits</p></li>
+<li><p>continuity</p></li>
+<li><p>absence of uniform continuity</p></li>
+</ol>
+</li>
+<li><p>algebraic limit theorem ~ scalar multiplication, addition, multiplication, division</p>
+<ol class="simple">
+<li><p>limit thm</p></li>
+<li><p>sequences</p></li>
+<li><p>series - can’t multiply / divide these</p></li>
+<li><p>functional limits</p></li>
+<li><p>continuity</p></li>
+<li><p>differentiability</p></li>
+<li><p>~integrability~</p></li>
+</ol>
+</li>
+<li><p>limit thms</p>
+<ul>
+<li><p><em>continuous limit thm</em> - Let (<span class="math notranslate nohighlight">\(f_n\)</span>) be a sequence of functions defined on A that converges uniformly on A to a function f.  If each <span class="math notranslate nohighlight">\(f_n\)</span> is continuous at c in A, then f is continuous at c</p></li>
+<li><p><em>differentiable limit theorem</em> - let <span class="math notranslate nohighlight">\(f_n \to f\)</span> pointwise on the closed interval [a,b], and assume that each <span class="math notranslate nohighlight">\(f_n\)</span> is differentiable.  If <span class="math notranslate nohighlight">\((f'_n)\)</span> converges uniformly on [a,b] to a function g, then the function f is differentiable and f’=g</p>
+<ul>
+<li><p>convergent derivatives almost proves that <span class="math notranslate nohighlight">\(f_n \to f\)</span></p></li>
+<li><p>let (<span class="math notranslate nohighlight">\(f_n\)</span>) be a sequence of differentiable functions defined on the closed interval [a,b], and assume <span class="math notranslate nohighlight">\((f'_n)\)</span> converges uniformly to a function g on [a,b].  If there exists a point <span class="math notranslate nohighlight">\(x_0 \in [a,b]\)</span> for which <span class="math notranslate nohighlight">\(f_n(x_0) \to f(x_0)\)</span> is convergent, then (<span class="math notranslate nohighlight">\(f_n\)</span>) converges uniformly</p></li>
+</ul>
+</li>
+<li><p><em>integrable limit thm</em> - Assume that <span class="math notranslate nohighlight">\(f_n \to f\)</span> uniformly on [a,b] and that each <span class="math notranslate nohighlight">\(f_n\)</span> is integarble.  Then, f is integrable and <span class="math notranslate nohighlight">\(lim_{n \to \infty} \int_a^b f_n = \int_a^b f\)</span>.</p></li>
+</ul>
+</li>
+<li><p>functions are continuous at isolated points, but limits don’t exist there</p></li>
+<li><p>uniform continuity: minimize <span class="math notranslate nohighlight">\(\|f(x)-f(y)\|\)</span></p></li>
+<li><p>derivative doesn’t have to be continuous</p></li>
+<li><p>integrable if finite amount of discontinuities and bounded</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes/math"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="proofs.html" title="previous page">3.2. proofs</a>
+    <a class='right-next' id="next-link" href="linear_algebra.html" title="next page">3.4. linear algebra</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Chandan Singh<br/>
+        
+            &copy; Copyright None.<br/>
+          <div class="extra_footer">
+            <p>
+Many of these images are taken from resources on the web.
+</p>
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

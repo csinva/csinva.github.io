@@ -1,0 +1,1254 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>4.2. data analysis &#8212; learning to learn</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../_static/togglebutton.js"></script>
+    <script type="text/javascript" src="../../_static/clipboard.min.js"></script>
+    <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    <script type="text/javascript">var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script type="text/javascript" src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" type="text/javascript" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script type="text/javascript">
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="4.3. testing" href="testing.html" />
+    <link rel="prev" title="4.1. graphical models" href="graphical_models.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">learning to learn</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   welcome 👋
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../research_ovws/research_ovws.html">
+   1. research_ovws
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_comp_neuro.html">
+     1.1. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_disentanglement.html">
+     1.2. disentanglement
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_complexity.html">
+     1.3. complexity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_interesting_science.html">
+     1.4. interesting science
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_dl_theory.html">
+     1.5. dl theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_scat.html">
+     1.6. scattering transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">
+     1.7. ml in medicine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_dl_for_neuro.html">
+     1.8. dl for neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_uncertainty.html">
+     1.9. uncertainty
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_interp.html">
+     1.10. interpretability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_kernels.html">
+     1.11. kernels
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../cs/cs.html">
+   2. cs
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/retrieval.html">
+     2.1. info retrieval
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/python_ref.html">
+     2.2. python ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/data_structures.html">
+     2.3. data structures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/software.html">
+     2.4. software engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/quantum.html">
+     2.5. quantum
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/algo.html">
+     2.6. algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/graphs.html">
+     2.7. graphs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/os.html">
+     2.8. os
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/arch.html">
+     2.9. architecture
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/java_ref.html">
+     2.10. java ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/comp_theory.html">
+     2.11. cs theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/cpp_ref.html">
+     2.12. c/c++ ref
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../math/math.html">
+   3. math
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/differential_equations.html">
+     3.1. differential equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/proofs.html">
+     3.2. proofs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/analysis.html">
+     3.3. real analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/linear_algebra.html">
+     3.4. linear algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/signals.html">
+     3.5. signals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/optimization.html">
+     3.6. optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/calculus.html">
+     3.7. calculus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/chaos.html">
+     3.8. chaos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/math_basics.html">
+     3.9. math basics
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="stat.html">
+   4. stat
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="graphical_models.html">
+     4.1. graphical models
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     4.2. data analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="testing.html">
+     4.3. testing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="causal_inference.html">
+     4.4. causal inference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="info_theory.html">
+     4.5. info theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="linear_models.html">
+     4.6. linear models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="time_series.html">
+     4.7. time series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="game_theory.html">
+     4.8. game theory
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ml/ml.html">
+   5. ml
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/comp_vision.html">
+     5.1. computer vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/structure_ml.html">
+     5.2. structure learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/classification.html">
+     5.3. classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/unsupervised.html">
+     5.4. unsupervised
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/deep_learning.html">
+     5.5. deep learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/feature_selection.html">
+     5.6. feature selection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/learning_theory.html">
+     5.7. learning theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/evaluation.html">
+     5.8. evaluation
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ai/ai.html">
+   6. ai
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/search.html">
+     6.1. search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/nlp.html">
+     6.2. nlp
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/fairness_sts.html">
+     6.3. fairness
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/cogsci.html">
+     6.4. cogsci
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/ai_futures.html">
+     6.5. ai futures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/logic.html">
+     6.6. logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/philosophy.html">
+     6.7. philosophy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/psychology.html">
+     6.8. psychology
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/knowledge_rep.html">
+     6.9. representations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/decisions.html">
+     6.10. decisions
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../neuro/neuro.html">
+   7. neuro
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/brain_basics.html">
+     7.1. brain basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/vissci.html">
+     7.2. vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/comp_neuro.html">
+     7.3. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/sensory_input.html">
+     7.4. sensory input
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/memory.html">
+     7.5. memory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/motor.html">
+     7.6. motor system
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/development.html">
+     7.7. development
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/notes/stat/data_analysis.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/csinva/csinva.github.io"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pqrs">
+   4.2.1. pqrs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualization">
+   4.2.2. visualization
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#understand-the-context-1">
+     4.2.2.1. understand the context (1)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#choose-an-effective-visual-2">
+     4.2.2.2. choose an effective visual (2)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#eliminate-clutter-3">
+     4.2.2.3. eliminate clutter (3)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#focus-attention-4">
+     4.2.2.4. focus attention (4)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tell-a-story-think-like-a-designer-5">
+     4.2.2.5. tell a story / think like a designer (5)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visual-summaries">
+     4.2.2.6. visual summaries
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dealing-with-imbalanced-data">
+   4.2.3. dealing with imbalanced data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-engineering">
+   4.2.4. feature engineering
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#principles">
+   4.2.5. principles
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#breiman">
+     4.2.5.1. breiman
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#box-tukey">
+     4.2.5.2. box + tukey
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#models">
+     4.2.5.3. models
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exaggerated-claims">
+     4.2.5.4. exaggerated claims
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="data-analysis">
+<h1>4.2. data analysis<a class="headerlink" href="#data-analysis" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="pqrs">
+<h2>4.2.1. pqrs<a class="headerlink" href="#pqrs" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Goal: <em>inference</em> - conclusion or opinion formed from evidence</p></li>
+<li><p><em>PQRS</em></p>
+<ul>
+<li><p>P - population</p></li>
+<li><p>Q - question - 2 types</p>
+<ol class="simple">
+<li><p>hypothesis driven - does a new drug work</p></li>
+<li><p>discovery driven - find a drug that works</p></li>
+</ol>
+</li>
+<li><p>R - representative data colleciton</p>
+<ul>
+<li><p>simple random sampling = <em>SRS</em></p>
+<ul>
+<li><p>w/ replacement: <span class="math notranslate nohighlight">\(var(\bar{X}) = \sigma^2 / n\)</span></p></li>
+<li><p>w/out replacement: <span class="math notranslate nohighlight">\(var(\bar{X}) = (1 - \frac{n}{N}) \sigma^2 / n\)</span></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>S - scrutinizing answers</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="visualization">
+<h2>4.2.2. visualization<a class="headerlink" href="#visualization" title="Permalink to this headline">¶</a></h2>
+<p>First 5 parts here are based on the book <a class="reference external" href="http://www.storytellingwithdata.com/">storytelling with data</a> by cole nussbaumer knaflic</p>
+<ul class="simple">
+<li><p>difference between showing data + storytelling with data</p></li>
+</ul>
+<div class="section" id="understand-the-context-1">
+<h3>4.2.2.1. understand the context (1)<a class="headerlink" href="#understand-the-context-1" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>who is your audience? what do you need them to know/do?</p></li>
+<li><p><strong>exploratory</strong> vs <strong>explanatory</strong> analysis</p></li>
+<li><p>slides (need little details) vs email (needs lots of detail) - usually need to make both in slideument</p></li>
+<li><p>should know how much nonsupporting data to show</p></li>
+<li><p>distill things down into a 3-minute story or a 1-sentence Big Idea</p></li>
+<li><p>easiest to start things on paper/post-it notes</p></li>
+</ul>
+</div>
+<div class="section" id="choose-an-effective-visual-2">
+<h3>4.2.2.2. choose an effective visual (2)<a class="headerlink" href="#choose-an-effective-visual-2" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p><img alt="Screen Shot 2020-09-28 at 8.08.38 PM" src="../../_images/good_plots.png" /></p></th>
+<th class="head"><p><img alt="Screen Shot 2020-09-28 at 8.08.30 PM" src="../../_images/good_visualizations.png" /></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><img alt="Screen Shot 2020-09-28 at 8.23.47 PM" src="../../_images/stacked_hbar_chart.png" /></p></td>
+<td><p><img alt="Screen Shot 2020-09-28 at 8.24.37 PM" src="../../_images/grid_breakdown.png" /></p></td>
+</tr>
+<tr class="row-odd"><td><p><img alt="Screen Shot 2020-09-28 at 8.29.34 PM" src="../../_images/avoiding_secondary_axis.png" /></p></td>
+<td><p><img alt="Screen Shot 2020-09-29 at 9.50.15 AM" src="../../_images/strategic_contrast.png" /></p></td>
+</tr>
+<tr class="row-even"><td><p><img alt="Screen Shot 2020-09-29 at 9.56.44 AM" src="../../_images/preattentive_attributes.png" /></p></td>
+<td><p><img alt="Screen Shot 2020-09-29 at 11.20.07 AM" src="../../_images/line_charts.png" /></p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>generally avoid pie/donut charts, 3D charts, 2nd y-axes</p></li>
+<li><p>tables</p>
+<ul>
+<li><p>best for when people will actually read off numbers</p></li>
+<li><p>minimalist is best</p></li>
+</ul>
+</li>
+<li><p>bar charts should basically always start at 0</p>
+<ul>
+<li><p>horizontal charts typically easy to read</p></li>
+</ul>
+</li>
+<li><p>on axes, retain things like dollar signs, percent, etc.</p></li>
+</ul>
+</div>
+<div class="section" id="eliminate-clutter-3">
+<h3>4.2.2.3. eliminate clutter (3)<a class="headerlink" href="#eliminate-clutter-3" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>gestalt principles of  vision</p>
+<ul>
+<li><p>proximity - close things are grouped</p></li>
+<li><p>similarity - similar things are grouped</p></li>
+<li><p>connection - connected things are grouped</p></li>
+<li><p>enclosure</p></li>
+<li><p>closure</p></li>
+<li><p>continuity</p></li>
+</ul>
+</li>
+<li><p>generally good to have titles and such at top-left!</p></li>
+<li><p>diagonal lines / text should be avoided</p>
+<ul>
+<li><p>center-aligned text should be avoided</p></li>
+</ul>
+</li>
+<li><p>label lines directly</p></li>
+</ul>
+</div>
+<div class="section" id="focus-attention-4">
+<h3>4.2.2.4. focus attention (4)<a class="headerlink" href="#focus-attention-4" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>visual hierarchy - outlines what is important</p></li>
+</ul>
+</div>
+<div class="section" id="tell-a-story-think-like-a-designer-5">
+<h3>4.2.2.5. tell a story / think like a designer (5)<a class="headerlink" href="#tell-a-story-think-like-a-designer-5" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>affordances - aspects that make it obvious how something will be used (e.g. a button affords pushing)</p></li>
+<li><p>“You know you’ve achieved perfection, not when you have nothing more to add, but when you have nothing to take away” (Saint‐Exupery, 1943)</p></li>
+<li><p>stories have different parts, which include conflict + tension</p>
+<ul>
+<li><p>beginning - introduce a problem / promise</p></li>
+<li><p>middle - what could be</p></li>
+<li><p>end - call to action</p></li>
+</ul>
+</li>
+<li><p>horizontal logic - people can just read title slides and get out what they need</p></li>
+<li><p>can either convince ppl through conventional rhetoric or through a story</p></li>
+</ul>
+</div>
+<div class="section" id="visual-summaries">
+<h3>4.2.2.6. visual summaries<a class="headerlink" href="#visual-summaries" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>numerical summaries</p>
+<ul class="simple">
+<li><p>mean vs. median</p></li>
+<li><p>sd vs. iq range</p></li>
+</ul>
+</li>
+<li><p>visual summaries</p>
+<ul class="simple">
+<li><p>histogram</p></li>
+<li><p><em>kernel density plot</em> - Gaussian kernels</p>
+<ul>
+<li><p>with <em>bandwidth</em> h <span class="math notranslate nohighlight">\(K_h(t) = 1/h K(t/h)\)</span></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>plots</p>
+<ol class="simple">
+<li><p>box plot / pie-chart</p></li>
+<li><p>scatter plot / q-q plot</p></li>
+</ol>
+<ul class="simple">
+<li><p><em>q-q plot</em> = <em>probability plot</em> - easily check normality</p>
+<ul>
+<li><p>plot percentiles of a data set against percentiles of a theoretical distr.</p></li>
+<li><p>should be straight line if they match</p></li>
+</ul>
+</li>
+</ul>
+<ol class="simple">
+<li><p>transformations = feature engineering</p></li>
+</ol>
+<ul class="simple">
+<li><p>log/sqrt make long-tail data more centered and more normal</p></li>
+<li><p><strong>delta-method</strong> - sets comparable bw (wrt variance) after log or sqrt transform: <span class="math notranslate nohighlight">\(Var(g(X)) \approx [g'(\mu_X)]^2 Var(X)\)</span> where <span class="math notranslate nohighlight">\(\mu_X = E(X)\)</span></p></li>
+<li><p>if assumptions don’t work, sometimes we can transform data so they work</p></li>
+<li><p><em>transform x</em> - if residuals generally normal and have constant variance</p>
+<ul>
+<li><p><em>corrects nonlinearity</em></p></li>
+</ul>
+</li>
+<li><p><em>transform y</em> - if relationship generally linear, but non-constant error variance</p>
+<ul>
+<li><p><em>stabilizes variance</em></p></li>
+</ul>
+</li>
+<li><p>if both problems, try y first</p></li>
+<li><p>Box-Cox: Y’ = <span class="math notranslate nohighlight">\(Y^l \: if \: l \neq 0\)</span>, else log(Y)</p></li>
+</ul>
+<ol class="simple">
+<li><p><em>least squares</em></p></li>
+</ol>
+<ul class="simple">
+<li><p>inversion of pxp matrix ~O(p^3)</p></li>
+<li><p>regression effect - things tend to the mean (ex. bball children are shorter)</p></li>
+<li><p>in high dims, l2 worked best</p></li>
+</ul>
+<ol class="simple">
+<li><p>kernel smoothing + lowess</p></li>
+</ol>
+<ul class="simple">
+<li><p>can find optimal bandwidth</p></li>
+<li><p><em>nadaraya-watson kernel smoother</em> - locally weighted scatter plot smoothing</p>
+<ul>
+<li><p>$<span class="math notranslate nohighlight">\(g_h(x) = \frac{\sum K_h(x_i - x) y_i}{\sum K_h (x_i - x)}\)</span>$ where h is bandwidth</p></li>
+</ul>
+</li>
+<li><p><em>loess</em> - multiple predictors / <em>lowess</em> - only 1 predictor</p>
+<ul>
+<li><p>also called <em>local polynomial smoother</em> - locally weighted polynomial</p></li>
+<li><p>take a window (span) around a point and fit weighted least squares line to that point</p></li>
+<li><p>replace the point with the prediction of the windowed line</p></li>
+<li><p>can use local polynomial fits rather than local linear fits</p></li>
+</ul>
+</li>
+</ul>
+<ol class="simple">
+<li><p><em>silhouette plots</em> - good clusters members are close to each other and far from other clustersf</p>
+<ol class="simple">
+<li><p>popular graphic method for K selection</p></li>
+<li><p>measure of separation between clusters <span class="math notranslate nohighlight">\(s(i) = \frac{b(i) - a(i)}{max(a(i), b(i))}\)</span></p></li>
+<li><p>a(i) - ave dissimilarity of data point i with other points within same cluster</p></li>
+<li><p>b(i) - lowest average dissimilarity of point i to any other cluster</p></li>
+<li><p>good values of k maximize the average silhouette score</p></li>
+</ol>
+</li>
+<li><p>lack-of-fit test - based on repeated Y values at same X values</p></li>
+</ol>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="dealing-with-imbalanced-data">
+<h2>4.2.3. dealing with imbalanced data<a class="headerlink" href="#dealing-with-imbalanced-data" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>randomly oversample minority class</p></li>
+<li><p>randomly undersample majority class</p></li>
+<li><p>weighting classes in the loss function - more efficient, but requires modifying model code</p></li>
+<li><p>generate synthetic minority class samples</p>
+<ol class="simple">
+<li><p><a class="reference external" href="https://jair.org/index.php/jair/article/view/10302">smote</a> (chawla et al. 2002) - interpolate betwen points and their nearest neighbors (for minority class) - some heuristics for picking which points to interpolate<img alt="smote" src="../../_images/smote.png" /></p>
+<ol class="simple">
+<li><p><a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/4633969/">adasyn</a> (he et al. 2008) - smote, generate more synthetic data for minority examples which are harder to learn (number of samples is proportional to number of nearby samples in a different class)</p></li>
+</ol>
+</li>
+<li><p><a class="reference external" href="https://github.com/tgsmith61591/smrt">smrt</a> - generate with vae</p></li>
+</ol>
+</li>
+<li><p>selectively removing majority class samples</p>
+<ol class="simple">
+<li><p><a class="reference external" href="https://pdfs.semanticscholar.org/090a/6772a1d69f07bfe7e89f99934294a0dac1b9.pdf?_ga=2.141687734.587787484.1573518991-2102528433.1505064485">tomek links</a> (tomek 1976) - selectively remove majority examples until al lminimally distanced nearest-neighbor pairs are of the same class</p></li>
+<li><p><a class="reference external" href="https://www.site.uottawa.ca/~nat/Workshop2003/jzhang.pdf">near-miss</a> (zhang &amp; mani 2003) - select samples from the majority class which are close to the minority class. Example: select samples from the majority class for which the average distance of the N <em>closest</em> samples of a minority class is smallest</p></li>
+<li><p><a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/4309137">edited nearest neighbors</a> (wilson 1972) - “edit” the dataset by removing samples that don’t agree “enough” with their neighborhood</p></li>
+</ol>
+</li>
+<li><p>feature selection and extraction</p>
+<ol class="simple">
+<li><p>minority class samples can be discarded as noise - removing irrelevant features can reduce this risk</p></li>
+<li><p>feature selection - select a subset of features and classify in this space</p></li>
+<li><p>feature extraction - extract new features and classify in this space</p></li>
+<li><p>ideas</p>
+<ol class="simple">
+<li><p>use majority class to find different low dimensions to investigate</p></li>
+<li><p>in this dim, do density estimation</p></li>
+<li><p>residuals - iteratively reweight these (like in boosting) to improve performance</p></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>incorporate sampling / class-weighting into ensemble method (e.g. treat different trees differently)</p>
+<ol class="simple">
+<li><p>ex. undersampling + ensemble learning (e.g. <a class="reference external" href="https://dl.acm.org/citation.cfm?id=2467736">IFME</a>, Becca’s work)</p></li>
+</ol>
+</li>
+<li><p>algorithmic classifier modifications</p></li>
+<li><p>misc papers</p>
+<ol class="simple">
+<li><p><a class="reference external" href="https://arxiv.org/pdf/1911.06965v1.pdf">enrichment</a> (jegierski &amp; saganowski 2019) - add samples from an external dataset</p></li>
+</ol>
+</li>
+<li><p>ref</p></li>
+<li><p><a class="reference external" href="https://imbalanced-learn.readthedocs.io/en/stable/api.html">imblanced-learn package</a> with several methods for dealing with imbalanced data</p></li>
+<li><p><a class="reference external" href="https://www.jeremyjordan.me/imbalanced-data/">good blog post</a></p></li>
+<li><p><a class="reference external" href="https://www-sciencedirect-com.libproxy.berkeley.edu/science/article/pii/S0957417416307175">Learning from class-imbalanced data: Review of methods and applications</a> (Haixiang et al. 2017)</p></li>
+<li><p>sample majority class w/ density (to get best samples)</p></li>
+<li><p>log-spline - doesn’t scale</p></li>
+</ol>
+</div>
+<div class="section" id="feature-engineering">
+<h2>4.2.4. feature engineering<a class="headerlink" href="#feature-engineering" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>often good to discretize/binarize features</p>
+<ul>
+<li><p>e.g. <a class="reference external" href="http://cis.jhu.edu/people/faculty/geman/publications/pdf/Digitizing_omics_profiles_by_divergence_from_a_baseline.pdf">from genomics</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="principles">
+<h2>4.2.5. principles<a class="headerlink" href="#principles" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="breiman">
+<h3>4.2.5.1. breiman<a class="headerlink" href="#breiman" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>conversation</p>
+<ul class="simple">
+<li><p>moved sf -&gt; la -&gt; caltech (physics) -&gt; columbia (math) -&gt; berkeley (math)</p></li>
+<li><p>info theory + gambling</p></li>
+<li><p>CART, ace, and prob book, bagging</p></li>
+<li><p>ucla prof., then consultant, then founded stat computing at berkeley</p></li>
+<li><p>lots of cool outside activities</p>
+<ul>
+<li><p>ex. selling ice in mexico</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>2 cultures paper</p>
+<ol class="simple">
+<li><p><em>generative</em> - data are generated by a given stochastic model</p></li>
+</ol>
+<ul class="simple">
+<li><p>stat does this too much and needs to move to 2</p></li>
+<li><p>ex. assume y = f(x, noise, parameters)</p></li>
+<li><p>validation: goodness-of-fit and residuals</p></li>
+</ul>
+<ol class="simple">
+<li><p><em>predictive</em> - use algorithmic model and data mechanism unknown</p></li>
+</ol>
+<ul>
+<li><p>assume nothing about x and y</p></li>
+<li><p>ex. generate P(x, y) with neural net</p></li>
+<li><p>validation: prediction accuracy</p></li>
+<li><p>axioms</p>
+<ol class="simple">
+<li><p>Occam</p></li>
+<li><p><em>Rashomon</em> - lots of different good models, which explains best?</p></li>
+</ol>
+<ul class="simple">
+<li><p>ex. rf is not robust at all</p></li>
+</ul>
+<ol class="simple">
+<li><p><em>Bellman</em> - curse of dimensionality</p></li>
+</ol>
+<ul class="simple">
+<li><p>might actually want to increase dimensionality (ex. svms embedded in higher dimension)</p></li>
+</ul>
+</li>
+<li><p>industry was problem-solving, academia had too much culture</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="box-tukey">
+<h3>4.2.5.2. box + tukey<a class="headerlink" href="#box-tukey" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>questions</p>
+<ol class="simple">
+<li><p>what points are relevant and irrelevant today in both papers?</p></li>
+</ol>
+<ul class="simple">
+<li><p>relevant</p>
+<ul>
+<li><p>box</p>
+<ul>
+<li><p>thoughts on scientific method</p></li>
+<li><p>solns should be simple</p></li>
+<li><p>necessity for developing experimental design</p></li>
+<li><p>flaws (cookbookery, mathematistry)</p></li>
+</ul>
+</li>
+<li><p>tukey</p>
+<ul>
+<li><p>separating data analysis and stats</p></li>
+<li><p>all models have flaws</p></li>
+<li><p>no best models</p></li>
+<li><p>lots of goold old techniques (e.g. LSR)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>irrelevant</p>
+<ul>
+<li><p>some of the data techniques (I think)</p></li>
+<li><p>tukey multiple-response data has been better attacked (graphical models)</p></li>
+</ul>
+</li>
+</ul>
+<ol class="simple">
+<li><p>how do you think the personal traits of Tukey and Box relate to the scientific opinions expressed in their papers?</p></li>
+</ol>
+<ul class="simple">
+<li><p>probably both pretty critical of the science at the time</p></li>
+<li><p>box - great respect for Fisher</p></li>
+<li><p>both very curious in different fields of science</p></li>
+</ul>
+<ol class="simple">
+<li><p>what is the most valuable msg that you get from each paper?</p></li>
+</ol>
+<ul class="simple">
+<li><p>box - data analysis is a science</p></li>
+<li><p>tukey - models must be useful</p>
+<ul>
+<li><p>no best models</p></li>
+<li><p>find data that is useful</p></li>
+<li><p>no best models</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>box_79 “science and statistics”</p>
+<ul class="simple">
+<li><p>scientific method - iteration between theory and practice</p>
+<ul>
+<li><p>learning - discrepancy between theory and practice</p></li>
+<li><p>solns should be simple</p></li>
+</ul>
+</li>
+<li><p>fisher - founder of statistics (early 1900s)</p>
+<ul>
+<li><p>couples math with applications</p></li>
+<li><p>data analysis - subiteration between tentative model and tentative analysis</p></li>
+<li><p>develops experimental design</p></li>
+</ul>
+</li>
+<li><p>flaws</p>
+<ul>
+<li><p><em>cookbookery</em> - forcing all problems into 1 or 2 routine techniques</p></li>
+<li><p><em>mathematistry</em> - development of theory for theory’s sake</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>tukey_62 “the future of data analysis”</p>
+<ul>
+<li><p>general considerations</p>
+<ul class="simple">
+<li><p>data analysis - different from statistics, is a science</p></li>
+<li><p>lots of techniques are very old (LS - Gauss, 1803)</p></li>
+<li><p>all models have flaws</p></li>
+<li><p>no best models</p></li>
+<li><p>must teach multiple data analysis methods</p></li>
+</ul>
+</li>
+<li><p>spotty data - lots of irregularly non-constant variability</p>
+<ul class="simple">
+<li><p>could just trim highest and lowest values</p>
+<ul>
+<li><p><em>winzorizing</em> - replace suspect values with closest values that aren’t</p></li>
+</ul>
+</li>
+<li><p>must decide when to use new techniques, even when not fully understood</p></li>
+<li><p>want some automation</p></li>
+<li><p>FUNOP - fulll normal plot</p>
+<ul>
+<li><p>can be visualized in table</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>spotty data in more complex situations</p>
+<ul class="simple">
+<li><p>FUNOR-FUNOM</p></li>
+</ul>
+</li>
+<li><p>multiple-response data</p>
+<ul>
+<li><p>understudied except for factor analysis</p></li>
+<li><p>multiple-response procedures have been modeled upon how early single-response procedures were supposed to have been used, rather than upon how they were in fact used</p></li>
+<li><p>factor analysis</p>
+<ol class="simple">
+<li><p>reduce dimensionality with new coordinates</p></li>
+<li><p>rotate to find meaningful coordinates</p></li>
+</ol>
+<ul class="simple">
+<li><p>can use multiple regression factors as one factor if they are very correlated</p></li>
+</ul>
+</li>
+<li><p>regression techniques always offer hopes of learning more from less data than do variance-component techniques</p></li>
+</ul>
+</li>
+<li><p>flexibility of attack</p>
+<ul class="simple">
+<li><p>ex. what unit to measure in</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="models">
+<h3>4.2.5.3. models<a class="headerlink" href="#models" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>normative - fully interpretable + modelled</p>
+<ul>
+<li><p>idealized</p></li>
+<li><p>probablistic</p></li>
+</ul>
+</li>
+<li><p>~mechanistic - somewhere in between</p></li>
+<li><p>descriptive - based on reality</p>
+<ul>
+<li><p>empirical</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="exaggerated-claims">
+<h3>4.2.5.4. exaggerated claims<a class="headerlink" href="#exaggerated-claims" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.youtube.com/watch?time_continue=4&amp;v=PwCyvSDkUCY&amp;feature=emb_logo">video</a> by Rob Kass</p></li>
+<li><p>concepts are ambiguous and have many mathematical instantiations</p>
+<ul>
+<li><p>e.g. “central tendency” can be mean or median</p></li>
+<li><p>e.g. “information” can be mutual info (reduction in entropy) or squared correlation (reduction in variance)</p></li>
+<li><p>e.g. measuring socioeconomic status and controlling for it</p></li>
+</ul>
+</li>
+<li><p>regression “when controlling for another variable” makes causal assumptions</p>
+<ul>
+<li><p>must make sure that everything that could confound is controlled for</p></li>
+</ul>
+</li>
+<li><p>Idan Segev: “modeling is the lie that reveals the truth”</p>
+<ul>
+<li><p>picasso: “art is the lie that reveals the truth”</p></li>
+</ul>
+</li>
+<li><p>box: “all models are wrong but some are useful” - statistical pragmatism</p>
+<ul>
+<li><p>moves <strong>from true to useful</strong> - less emphasis on truth</p></li>
+<li><p>“truth” is contingent on the purposes to which it will be put</p></li>
+</ul>
+</li>
+<li><p>the scientific method aims to provide explanatory models (theories) by collecting and analyzing data, according to protocols, so that</p>
+<ul>
+<li><p>the data provide info about models</p></li>
+<li><p>replication is possible</p></li>
+<li><p>the models become increasingly accurate</p></li>
+</ul>
+</li>
+<li><p>scientific knowledge is always uncertain - depends on scientific method</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes/stat"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="graphical_models.html" title="previous page">4.1. graphical models</a>
+    <a class='right-next' id="next-link" href="testing.html" title="next page">4.3. testing</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Chandan Singh<br/>
+        
+            &copy; Copyright None.<br/>
+          <div class="extra_footer">
+            <p>
+Many of these images are taken from resources on the web.
+</p>
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

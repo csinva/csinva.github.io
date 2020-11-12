@@ -1,0 +1,1273 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>7.7. development &#8212; learning to learn</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../_static/togglebutton.js"></script>
+    <script type="text/javascript" src="../../_static/clipboard.min.js"></script>
+    <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    <script type="text/javascript">var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script type="text/javascript" src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" type="text/javascript" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script type="text/javascript">
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="7.6. motor system" href="motor.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">learning to learn</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   welcome 👋
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../research_ovws/research_ovws.html">
+   1. research_ovws
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_comp_neuro.html">
+     1.1. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_disentanglement.html">
+     1.2. disentanglement
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_complexity.html">
+     1.3. complexity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_interesting_science.html">
+     1.4. interesting science
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_dl_theory.html">
+     1.5. dl theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_scat.html">
+     1.6. scattering transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">
+     1.7. ml in medicine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_dl_for_neuro.html">
+     1.8. dl for neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_uncertainty.html">
+     1.9. uncertainty
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_interp.html">
+     1.10. interpretability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_kernels.html">
+     1.11. kernels
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../cs/cs.html">
+   2. cs
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/retrieval.html">
+     2.1. info retrieval
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/python_ref.html">
+     2.2. python ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/data_structures.html">
+     2.3. data structures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/software.html">
+     2.4. software engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/quantum.html">
+     2.5. quantum
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/algo.html">
+     2.6. algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/graphs.html">
+     2.7. graphs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/os.html">
+     2.8. os
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/arch.html">
+     2.9. architecture
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/java_ref.html">
+     2.10. java ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/comp_theory.html">
+     2.11. cs theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/cpp_ref.html">
+     2.12. c/c++ ref
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../math/math.html">
+   3. math
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/differential_equations.html">
+     3.1. differential equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/proofs.html">
+     3.2. proofs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/analysis.html">
+     3.3. real analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/linear_algebra.html">
+     3.4. linear algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/signals.html">
+     3.5. signals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/optimization.html">
+     3.6. optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/calculus.html">
+     3.7. calculus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/chaos.html">
+     3.8. chaos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/math_basics.html">
+     3.9. math basics
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../stat/stat.html">
+   4. stat
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/graphical_models.html">
+     4.1. graphical models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/data_analysis.html">
+     4.2. data analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/testing.html">
+     4.3. testing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/causal_inference.html">
+     4.4. causal inference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/info_theory.html">
+     4.5. info theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/linear_models.html">
+     4.6. linear models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/time_series.html">
+     4.7. time series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/game_theory.html">
+     4.8. game theory
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ml/ml.html">
+   5. ml
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/comp_vision.html">
+     5.1. computer vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/structure_ml.html">
+     5.2. structure learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/classification.html">
+     5.3. classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/unsupervised.html">
+     5.4. unsupervised
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/deep_learning.html">
+     5.5. deep learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/feature_selection.html">
+     5.6. feature selection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/learning_theory.html">
+     5.7. learning theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/evaluation.html">
+     5.8. evaluation
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ai/ai.html">
+   6. ai
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/search.html">
+     6.1. search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/nlp.html">
+     6.2. nlp
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/fairness_sts.html">
+     6.3. fairness
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/cogsci.html">
+     6.4. cogsci
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/ai_futures.html">
+     6.5. ai futures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/logic.html">
+     6.6. logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/philosophy.html">
+     6.7. philosophy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/psychology.html">
+     6.8. psychology
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/knowledge_rep.html">
+     6.9. representations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/decisions.html">
+     6.10. decisions
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="neuro.html">
+   7. neuro
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="brain_basics.html">
+     7.1. brain basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="vissci.html">
+     7.2. vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="comp_neuro.html">
+     7.3. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sensory_input.html">
+     7.4. sensory input
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="memory.html">
+     7.5. memory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="motor.html">
+     7.6. motor system
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     7.7. development
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/notes/neuro/development.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/csinva/csinva.github.io"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#early-development">
+   7.7.1. 22 early development
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#circuit-formation">
+   7.7.2. 23 circuit formation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plasticity-in-systems">
+   7.7.3. 24 plasticity in systems
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#repair-and-regeneration">
+   7.7.4. 25 repair and regeneration
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#diseases">
+   7.7.5. 26 diseases
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#alzheimer-s">
+     7.7.5.1. alzheimer’s
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#parkinson-s">
+     7.7.5.2. parkinson’s
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="development">
+<h1>7.7. development<a class="headerlink" href="#development" title="Permalink to this headline">¶</a></h1>
+<p>notes from Neuroscience, 5th edition + Intro to neurobiology course at UVA</p>
+<div class="section" id="early-development">
+<h2>7.7.1. 22 early development<a class="headerlink" href="#early-development" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>ways to study</p>
+<ol class="simple">
+<li><p>top-down: rosy retrospection</p></li>
+<li><p>bottom-up: e.g. LTP/LTD</p></li>
+<li><p>human disease: stroke-by-stroke</p></li>
+<li><p>development=<em>ontogeny</em></p></li>
+</ol>
+</li>
+<li><p>timeframe</p>
+<ul>
+<li><p>month 1 - gastrulation</p>
+<ul>
+<li><p>most sensitive time for mom</p></li>
+</ul>
+</li>
+<li><p>month 2-5 - cells being born</p></li>
+<li><p>up to year 2 - axon guidance / synapse formation</p></li>
+</ul>
+</li>
+</ul>
+<ol>
+<li><p><em>gastrulation</em> - process by which early embryo undergoes folds = shapes of NS</p>
+<ul class="simple">
+<li><p>diseases</p>
+<ul>
+<li><p><em>spina bifida</em> - neural tube fails to seal</p>
+<ul>
+<li><p>vitamin B12 can fix this</p></li>
+</ul>
+</li>
+<li><p><em>anencephaly</em> - neural tube fails to close higher up</p></li>
+</ul>
+</li>
+<li><p>parts</p>
+<ol class="simple">
+<li><p><em>roofplate</em> at top (back)</p></li>
+<li><p><em>floorplate</em> on bottom (stomach)</p></li>
+<li><p><em>neural crest</em> - pinches off top of roofplate</p></li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p><em>neuroblasts</em> = classic stem cells</p>
+<ul class="simple">
+<li><p>assymetric division - cells generate themselves and differentiated progeny</p></li>
+<li><p>ultimate stem cell - fertilized eggs</p></li>
+</ul>
+</li>
+<li><p><em>differentiation</em></p>
+<ul class="simple">
+<li><p>cells made by neuroblasts decide what they are going to become</p></li>
+<li><p><em>morphogens</em></p>
+<ul>
+<li><p><em>BMP</em> - roofplate</p>
+<ul>
+<li><p><em>cyclopia</em> - fatal defect in BMP</p></li>
+</ul>
+</li>
+<li><p><em>Hedge hogs</em> - at floor plate</p></li>
+<li><p><em>Retinoids</em> - axial, affect skin</p>
+<ul>
+<li><p>affected by <em>thalidomide</em> - helps morning sickness but causes missing limb segments</p></li>
+<li><p>also affected by <em>accutane</em></p></li>
+</ul>
+</li>
+<li><p><em>FGFs</em> - axial symmetry</p></li>
+<li><p><em>Wnts</em> - skin, gut, hair</p>
+<ul>
+<li><p>loss of wnts is loss of hair</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>floor plate loses function after embryogenesis except glioblastoma</p></li>
+<li><p>measure BMP and HH gradient to figure out where you are</p>
+<ul>
+<li><p>treat ALS by adding HH to make more alpha motor neurons</p></li>
+</ul>
+</li>
+</ul>
+<ol class="simple">
+<li><p>dorsal direction</p>
+<ul class="simple">
+<li><p>roofplate makes BMP</p></li>
+<li><p>low HH - interneurons, sensory neurons (ex. nociceptors)</p></li>
+<li><p>even BMP/HH - sympathetic</p></li>
+<li><p>high HH - more motor neurons</p></li>
+<li><p><em>floorplate</em> makes HH (hedge hog)</p></li>
+</ul>
+</li>
+<li><p>axial specification (anterior/posterior)</p>
+<ul class="simple">
+<li><p>tube swells into bulbs that become cerebellum, superior colliculus, cortex</p></li>
+</ul>
+</li>
+</ol>
+<ul class="simple">
+<li><p><em>homeotic genes</em> = <em>hox genes</em> - set of genes (transcription factors) in order on chromosome</p>
+<ul>
+<li><p>order corresponds to order of your body parts</p></li>
+<li><p><em>rhombomeres</em> - segments in brainstem made by hox gene patterns</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><em>lineages</em></p>
+<ul class="simple">
+<li><p>when neuroblast is born, starts producing progeny (family tree of neuron types)</p></li>
+<li><p>very often, cells are produced in certain order</p></li>
+<li><p>timing: cell-cell interations and tyrosine kinases determine order</p></li>
+<li><p>first alpha neurons, then GABAergic to control those, last is glia</p></li>
+<li><p>neural crest function</p>
+<ul>
+<li><p>migratory - moves out and divides: <img alt="" src="../../_images/22_1.png" /></p></li>
+<li><p><em>neuroblastoma</em> - developed early - severe problem because missing parts of NS</p></li>
+<li><p>makes DRG and associated glial cells (schwann cells)</p></li>
+<li><p>makes sympathetic NS and target ganglia, enteric NS, parasympathetic NS targets</p></li>
+<li><p>makes <em>melanocytes</em> - know how to migrate and divide but can make <em>melanoma</em> (cancer)</p></li>
+</ul>
+</li>
+<li><p>cortex is made inside out (6-&gt;1)</p>
+<ul>
+<li><p>starts with stem cells called <em>radial glia</em></p></li>
+<li><p><em>cortical dysplasia</em> - missing a layer / duplicating a layer</p>
+<ul>
+<li><p>small part with 2 layer 3s - severe epilepsy</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><em>cell death</em></p>
+<ul class="simple">
+<li><p>1/2 of cells die in development</p></li>
+</ul>
+</li>
+<li><p><em>axon guidance</em> (ch 23)</p>
+<ul class="simple">
+<li><p>each cell born and axon grows and are guided to a target</p></li>
+<li><p>dendrite basically follows same rules</p></li>
+</ul>
+</li>
+<li><p><em>synapse formation</em> (ch 23, 24)</p>
+<ul class="simple">
+<li><p>pruning and plasticity</p></li>
+<li><p>NMDA receptor type</p></li>
+<li><p>form synapses and if they don’t look right - get rid of them</p></li>
+<li><p>K1/K-1 synapses breaking and forming</p></li>
+<li><p>after age 21, K-1 starts increasing and net loss of synapses</p></li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="circuit-formation">
+<h2>7.7.2. 23 circuit formation<a class="headerlink" href="#circuit-formation" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p><em>growth cone</em> - motile tip of axon</p>
+<ul class="simple">
+<li><p><em>actin</em> tip</p>
+<ol class="simple">
+<li><p><em>lamellipodium</em> - sheet (hand)</p></li>
+<li><p><em>filopodium</em> - huge curves (fingers)</p>
+<ul>
+<li><p>chemo attraction (actin assembly) and chemo repulsion (actin disassembly)</p></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>microtubule shaft - <em>tubulin</em> is much more cemented in</p></li>
+<li><p><em>mauthner cell</em> of tadpole - first recorded growth cone</p></li>
+<li><p>can’t regrow (that’s why we can’t regrow spinal cord)</p></li>
+</ul>
+</li>
+<li><p>signals in growing axons</p>
+<ol class="simple">
+<li><p><em>pioneer axons</em> (Betz cells) are first - often die</p></li>
+<li><p><em>follower axons</em> (other Betz cells) can jump onto these and connect before pioneer dies</p></li>
+</ol>
+<ul class="simple">
+<li><p><em>trophic support</em> - neuron survives on contact</p></li>
+</ul>
+</li>
+<li><p>frog <em>tectum</em> (has superior colliculus) with map of retina: <img alt="" src="../../_images/23_1.png" /></p>
+<ul class="simple">
+<li><p><em>ephrin</em> (EPH) repulses axon</p>
+<ul>
+<li><p>retinal NT -&gt; tectum AP</p></li>
+<li><p>axons have different amount of EPH receptors (in retina temporal has more than nasal)</p></li>
+<li><p>gradient of EPH (in tectum anterior has less than posterior)</p></li>
+<li><p>if we flip eye upside down (on nasal-temporal axis), image will be upside down</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>3 classes of axon guidance molecules: <img alt="" src="../../_images/23_2.png" /></p>
+<ol class="simple">
+<li><p><em>ECM/integrins</em></p></li>
+<li><p><em>NCAM</em> (homophilic—binds to another neuron that is NCAM),</p>
+<ul class="simple">
+<li><p>follower neurons bind to pioneer through NCAM-NCAM interactions</p></li>
+</ul>
+</li>
+<li><p><em>Cadherin</em> (homophilic)</p>
+<ul class="simple">
+<li><p>involved in recognition of being some place</p></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>4 important ligands/receptors</p>
+<ol class="simple">
+<li><p><em>ephrins/eph</em></p>
+<ul class="simple">
+<li><p>gradient of eph receptor</p></li>
+</ul>
+</li>
+<li><p><em>netrin/dcc</em> = guidance moleculereceptor = DCC</p>
+<ul class="simple">
+<li><p>attracts axons to floorplate (midline)</p></li>
+<li><p>cells without DCC don’t cross midline</p></li>
+</ul>
+</li>
+<li><p><em>slit/robo</em> - receptor is slit</p>
+<ul class="simple">
+<li><p>chases axons off (away from midline)</p></li>
+<li><p>axons not destined to cross midline are born expressing robo</p></li>
+<li><p>axons destined to cross the midline only express robo after crossing</p></li>
+<li><p>if DCC (-) and robo (-) will continue wandering around</p></li>
+<li><p><em>robo 4</em> is associated with Tourette’s</p></li>
+</ul>
+</li>
+<li><p><em>semaphorins/plexins</em></p></li>
+</ol>
+<ul class="simple">
+<li><p>combinatorial code - use combinations of these to guide axons</p></li>
+<li><p>these are the same genes that move cancer around</p></li>
+</ul>
+</li>
+<li><p>synaptic formation</p>
+<ul class="simple">
+<li><p><em>neuroexins</em> - further recognition</p>
+<ul>
+<li><p>turn up in autism and schizophrenia</p></li>
+</ul>
+</li>
+<li><p><em>DSCAM</em></p>
+<ul>
+<li><p>associated with Down’s syndrome</p></li>
+<li><p>doesn’t use gradients</p></li>
+<li><p>makes different kinds of proteins by differential slicing</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>competition</p>
+<ul>
+<li><p><em>neurotrophins</em> are secreted by muscle</p>
+<ul class="simple">
+<li><p>in early development, a muscle fiber has many alpha motor neurons innervating it</p></li>
+<li><p>all innervating neurons suck up neurotrophin and whichever sucks up most, kills all the others</p></li>
+<li><p>eventually, each muscle fiber is innervated by one alpha motor neuron</p></li>
+<li><p>only enough neurotrophin in target cells for a certain number of synapses</p></li>
+</ul>
+</li>
+<li><p>happens everywhere</p>
+<ul class="simple">
+<li><p>ex. sympathetic ganglia</p></li>
+<li><p>ex. sensory neurons in skin get axons to correct cell types based on neurotrophin</p>
+<ul>
+<li><p>merkel - <strong>BDNF</strong></p></li>
+<li><p>proprioceptor - <em>NT3</em></p></li>
+<li><p>nociceptor - <em>NGF</em></p></li>
+</ul>
+</li>
+<li><p>ex. muscles - produce NGF</p>
+<ul>
+<li><p>treating ALS with NGF hyperactivates sensory neurons with trkA -&gt; causes chicken pox</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>signals/receptors</p>
+<ol class="simple">
+<li><p>NGF - <em>trk a</em> (<em>Trk receptor</em> - survival signaling pathways)</p></li>
+<li><p>BDNF - <em>trk b</em></p></li>
+<li><p>NT3 - trk b and <em>c</em></p></li>
+<li><p>NT4/5 - trk b</p></li>
+</ol>
+<ul class="simple">
+<li><p>all bind <em>p75</em> (death receptor)</p></li>
+<li><p>want to keep neurotrophins local, because there aren’t that many of them</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="plasticity-in-systems">
+<h2>7.7.3. 24 plasticity in systems<a class="headerlink" href="#plasticity-in-systems" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>experience-dependent plasticity - <img alt="" src="../../_images/24_1.png" /></p>
+<ul>
+<li><p>ex. ducks imprinting is non-reversable</p></li>
+<li><p>learning is crystallized during <em>critical period</em></p>
+<ul>
+<li><p><em>CREB</em> and protein synthesis</p></li>
+<li><p><em>NMDA</em> receptors</p></li>
+<li><p><em>epigenetics</em> - histones control transcription and other things</p></li>
+</ul>
+</li>
+<li><p>follow <em>Hebb’s postulate</em> - fire together, wire together</p>
+<ul>
+<li><p>different eyes firing together will sync up (NMDA receptors to strengthen synapses)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>systems</p>
+<ol class="simple">
+<li><p><em>ocular dominance</em></p>
+<ul>
+<li><p>left/right neurons terminate in adjacent zones</p></li>
+<li><p>LGN in cortex uses efferents just like superior colliculus</p></li>
+<li><p>label injected into retina can make it into cortex</p></li>
+<li><p>cat experiments</p>
+<ul>
+<li><p>some cells see only one eye, some see both</p></li>
+<li><p>cats need to form visual map in short critical period (&lt;6 days)</p></li>
+<li><p>this is why you need cochlear implant early</p></li>
+<li><p>both eyes open - equal OD columns</p>
+<ul>
+<li><p>one eye closed - unequal OD columns</p></li>
+<li><p>branches coming out of LGN neurons grow more branches based on relative light exposure (they compete for eye’s real estate)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><em>strabismus</em> = lazy eye - poor coordination with one of the muscles</p>
+<ul>
+<li><p>one eye is not quite seeing</p></li>
+<li><p>treat with patch on good eye -&gt; allows bad eye to catch up since eyes compete for ocular dominance columns</p></li>
+<li><p>more stimulus = more branches</p></li>
+</ul>
+</li>
+<li><p>dye from retina goes through thalamus into cortex</p>
+<ul>
+<li><p>rabies virus does same thing: cell-&gt;ganglion-&gt;brain</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><em>tonotopic map</em></p>
+<ul>
+<li><p>connection between MSO and inferior/superior colliculus</p></li>
+<li><p>playing one tone increases representation</p></li>
+<li><p>playing white noise disorganizes map</p></li>
+<li><p><em>birdsong</em></p>
+<ul>
+<li><p>hear song 10-20 times when young - crystallized</p></li>
+<li><p>afterwards can’t learn new skills</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><em>stress</em></p>
+<ul>
+<li><p>early stress sets stress points later in life</p></li>
+<li><p>uses serotonin</p></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>shifts</p>
+<ul>
+<li><p><em>superior colliculus</em> - integrate visual, auditory, motor to get X,Y coordinate</p></li>
+<li><p>auditory map - plastic (but only when young)</p></li>
+<li><p>visual map - not plastic</p></li>
+<li><p>if you shift visual map (with a prism), auditory map can shift over to meet the visual</p></li>
+<li><p><em>optic neuritis</em> - ms optic nerve disease that shifts map</p></li>
+<li><p>only young animals can shift unless they were shifted before and are now unadapting</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="repair-and-regeneration">
+<h2>7.7.4. 25 repair and regeneration<a class="headerlink" href="#repair-and-regeneration" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>full repair - human <em>PNS</em> - skin, muscles</p>
+<ul class="simple">
+<li><p>1-2 mm/day growth - speed of slow axonal transport</p></li>
+<li><p>thinnest axons first (thermal receptors and nociceptors)</p></li>
+<li><p>proprioceptors last</p></li>
+<li><p>process</p>
+<ul>
+<li><p><em>perinerium</em> / <em>schwann cells</em> surrounds axons - helps regeneration</p></li>
+<li><p>growth cones that are cut form stumps -&gt; distal axons degenerate = <em>walerian degeneration</em></p></li>
+<li><p>macrophages come in and eat up the damaged stuff</p></li>
+<li><p>neurotrophins are involved</p></li>
+</ul>
+</li>
+<li><p>miswiring is common - regrow and may not find right target</p>
+<ul>
+<li><p><em>bell’s palsy</em> - loss of facial nerve - recovers with miswiring (salivary / tear)</p></li>
+</ul>
+</li>
+<li><p><em>neuromuscular junctions</em> (NMJ)</p>
+<ul>
+<li><p>damaged cells leave <em>synaptic ghost</em> = glia and protein matrix for nerve to regrow into</p></li>
+<li><p>repairs easily after heavy training</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>no repair / glial scar - human <em>CNS</em></p>
+<ul class="simple">
+<li><p>no ghost because so spread out</p></li>
+<li><p>glia cover wound (scar) but can’t develop further</p></li>
+<li><p>has <em>astrocytes</em> and <em>oligodendrocytes</em> (types of glial cells)</p>
+<ul>
+<li><p>don’t support regrowth</p></li>
+<li><p>involved in scarring</p></li>
+</ul>
+</li>
+<li><p><em>microglia</em> - from immune system</p>
+<ul>
+<li><p>control inflammation</p></li>
+<li><p>release cytokines</p></li>
+</ul>
+</li>
+<li><p><em>nogo</em> - protein that blocks regrowth (but there are other proteins as well)</p></li>
+<li><p>we try repairing with <em>shunts</em> - piece of sciatic nerve from other part of body with schwann cells from PNS to try to repair a connection in the CNS</p></li>
+</ul>
+</li>
+<li><p>stem cell regeneration - put new neurons being formed, 2 places in humans</p>
+<ul class="simple">
+<li><p>non-human examples</p>
+<ul>
+<li><p>floor plate of lizards can make new tail</p></li>
+<li><p>fish retina always making new cells</p></li>
+<li><p>canary brain part has stem cells that learn new song every year</p></li>
+</ul>
+</li>
+<li><p>small C14 incorporation after early development
+- suggests we don’t regenerate neurons
+- C14 was from nuclear testing</p></li>
+<li><p>human areas that do regenerate</p>
+<ol class="simple">
+<li><p><em>hippocampus</em></p>
+<ul>
+<li><p>memories you store temporarily</p></li>
+</ul>
+</li>
+<li><p><em>subventricular zone</em> makes <em>glomeruli</em> in <em>olfactory bulb</em> cells</p>
+<ul>
+<li><p>turnover daily</p></li>
+<li><p>sensory neurons and their targets constantly die and regenerate</p></li>
+</ul>
+</li>
+<li><p><em>niche</em> - places where stem cells stay alive</p>
+<ul>
+<li><p>ex. places in CNS with WINT molecular signals</p></li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<ul class="simple">
+<li><p>damage control - remove these signals for <em>apoptosis</em> = cell death</p>
+<ul>
+<li><p><em>glutamate increase</em> - excitotoxicity</p>
+<ul>
+<li><p>can stop with <em>NMDA blockers</em></p></li>
+<li><p>induce a coma by cooling them down or <em>GABA drugs</em></p></li>
+</ul>
+</li>
+<li><p><em>cytokines increase</em> - immune system (like neurotrophins), inflammation</p></li>
+<li><p><em>hypoxia/stress</em></p></li>
+<li><p><em>neurotrophin withdrawal</em></p>
+<ul>
+<li><p>in stress times neurotrophin goes down</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="diseases">
+<h2>7.7.5. 26 diseases<a class="headerlink" href="#diseases" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="alzheimer-s">
+<h3>7.7.5.1. alzheimer’s<a class="headerlink" href="#alzheimer-s" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><img alt="" src="../../_images/26_1.png" /></p></li>
+<li><p>overview</p>
+<ul>
+<li><p>age-associated - tons of people get it</p></li>
+<li><p>doesn’t kill you, secondary complications like pneumonia will kill you</p></li>
+<li><p>rate is going up</p></li>
+<li><p>very expensive to treat</p></li>
+</ul>
+</li>
+<li><p><em>declarative</em> memories are affected by Alzheimer’s</p>
+<ul>
+<li><p>these are memories that you know</p></li>
+</ul>
+</li>
+<li><p>first 2 areas to go in Alzheimer’s</p>
+<ol class="simple">
+<li><p><em>hippocampus</em></p>
+<ul>
+<li><p>patient HM had no hippocampus</p>
+<ul>
+<li><p>no <em>anterograde</em> memory - learning new things</p></li>
+</ul>
+</li>
+<li><p>hippocampus stores 1 day of info</p>
+<ul>
+<li><p>offloading occurs during sleep (REM sleep) to prefrontal cortex, temporal lobe, V4</p></li>
+<li><p>dreaming - might see images as you are offloading</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><em>basal forebrain</em> - spread synapses all over cortex</p>
+<ul>
+<li><p>uses <em>Ach</em></p></li>
+<li><p>ignition key for entire cortex</p></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>alzheimer’s characteristics only found in autopsy</p>
+<ul>
+<li><p><em>amyloid plaques</em></p>
+<ul>
+<li><p>maybe <em>A-beta</em> causes it</p></li>
+<li><p>A-beta comes from <em>APP</em></p></li>
+<li><p><em>A-beta42</em> binds to itself</p>
+<ul>
+<li><p>prion (starts making more of itself)</p></li>
+<li><p>this cycle could be exacerbated by injury</p></li>
+<li><p>clumps and attracts immune system which kills local important cells</p>
+<ul>
+<li><p>this could cause Alzheimer’s</p></li>
+</ul>
+</li>
+<li><p>rare genetic mutations in A-beta increase probability you get Alzheimer’s</p></li>
+<li><p>anti-inflammation may be too late</p></li>
+<li><p>can take drugs that increase Ach functions - ex. cholinergic agonists, cholinesterase inhibitors</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><em>tangles</em></p>
+<ul>
+<li><p>tangles made of protein called <em>Tau</em></p></li>
+</ul>
+</li>
+<li><p>most people think these are just dead cells resulting from Alzheimer’s but some think they cause it</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="parkinson-s">
+<h3>7.7.5.2. parkinson’s<a class="headerlink" href="#parkinson-s" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>loss of substantia nigra pars compacta dopaminergic neurons</p>
+<ul>
+<li><p>when you get down to 20% what you were born with</p></li>
+<li><p>dopaminergic neurons form <em>melanin</em> = dark color</p></li>
+<li><p>hits to head can give inflammation</p></li>
+</ul>
+</li>
+<li><p>know what they need to do - don’t have enough dopamine to act</p></li>
+<li><p>treat with L Dopa -&gt; something like dopamine -&gt; take out globus pallidus</p></li>
+<li><p><em>Lewy bodies</em> are clumps of <em>alpha synuclein</em> - appear at dopaminergic synapses</p>
+<ul>
+<li><p>clumps like A-beta42</p></li>
+<li><p>associated with early-onset Parkinson’s (rare) associated with genetic mutations</p></li>
+</ul>
+</li>
+<li><p><em>bradykinesia</em> - slowness of movement</p></li>
+<li><p>age can give parksinson’s</p></li>
+<li><p>no evidence that toxins can induce parkinsons</p></li>
+<li><p><em>PTP/ pesticides</em> can induce Parkinson’s in test animals</p></li>
+<li><p>1/500 people</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes/neuro"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="motor.html" title="previous page">7.6. motor system</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Chandan Singh<br/>
+        
+            &copy; Copyright None.<br/>
+          <div class="extra_footer">
+            <p>
+Many of these images are taken from resources on the web.
+</p>
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

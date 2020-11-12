@@ -1,0 +1,1174 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>6.4. cogsci &#8212; learning to learn</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../_static/togglebutton.js"></script>
+    <script type="text/javascript" src="../../_static/clipboard.min.js"></script>
+    <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    <script type="text/javascript">var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script type="text/javascript" src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" type="text/javascript" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script type="text/javascript">
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="6.5. ai futures" href="ai_futures.html" />
+    <link rel="prev" title="6.3. fairness" href="fairness_sts.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">learning to learn</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   welcome 👋
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../research_ovws/research_ovws.html">
+   1. research_ovws
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_comp_neuro.html">
+     1.1. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_disentanglement.html">
+     1.2. disentanglement
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_complexity.html">
+     1.3. complexity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_interesting_science.html">
+     1.4. interesting science
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_dl_theory.html">
+     1.5. dl theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_scat.html">
+     1.6. scattering transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">
+     1.7. ml in medicine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_dl_for_neuro.html">
+     1.8. dl for neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_uncertainty.html">
+     1.9. uncertainty
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_interp.html">
+     1.10. interpretability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_kernels.html">
+     1.11. kernels
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../cs/cs.html">
+   2. cs
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/retrieval.html">
+     2.1. info retrieval
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/python_ref.html">
+     2.2. python ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/data_structures.html">
+     2.3. data structures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/software.html">
+     2.4. software engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/quantum.html">
+     2.5. quantum
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/algo.html">
+     2.6. algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/graphs.html">
+     2.7. graphs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/os.html">
+     2.8. os
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/arch.html">
+     2.9. architecture
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/java_ref.html">
+     2.10. java ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/comp_theory.html">
+     2.11. cs theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/cpp_ref.html">
+     2.12. c/c++ ref
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../math/math.html">
+   3. math
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/differential_equations.html">
+     3.1. differential equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/proofs.html">
+     3.2. proofs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/analysis.html">
+     3.3. real analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/linear_algebra.html">
+     3.4. linear algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/signals.html">
+     3.5. signals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/optimization.html">
+     3.6. optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/calculus.html">
+     3.7. calculus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/chaos.html">
+     3.8. chaos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/math_basics.html">
+     3.9. math basics
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../stat/stat.html">
+   4. stat
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/graphical_models.html">
+     4.1. graphical models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/data_analysis.html">
+     4.2. data analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/testing.html">
+     4.3. testing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/causal_inference.html">
+     4.4. causal inference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/info_theory.html">
+     4.5. info theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/linear_models.html">
+     4.6. linear models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/time_series.html">
+     4.7. time series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/game_theory.html">
+     4.8. game theory
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ml/ml.html">
+   5. ml
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/comp_vision.html">
+     5.1. computer vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/structure_ml.html">
+     5.2. structure learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/classification.html">
+     5.3. classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/unsupervised.html">
+     5.4. unsupervised
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/deep_learning.html">
+     5.5. deep learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/feature_selection.html">
+     5.6. feature selection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/learning_theory.html">
+     5.7. learning theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/evaluation.html">
+     5.8. evaluation
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="ai.html">
+   6. ai
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="search.html">
+     6.1. search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="nlp.html">
+     6.2. nlp
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="fairness_sts.html">
+     6.3. fairness
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     6.4. cogsci
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ai_futures.html">
+     6.5. ai futures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="logic.html">
+     6.6. logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="philosophy.html">
+     6.7. philosophy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="psychology.html">
+     6.8. psychology
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="knowledge_rep.html">
+     6.9. representations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="decisions.html">
+     6.10. decisions
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../neuro/neuro.html">
+   7. neuro
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/brain_basics.html">
+     7.1. brain basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/vissci.html">
+     7.2. vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/comp_neuro.html">
+     7.3. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/sensory_input.html">
+     7.4. sensory input
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/memory.html">
+     7.5. memory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/motor.html">
+     7.6. motor system
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/development.html">
+     7.7. development
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/notes/ai/cogsci.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/csinva/csinva.github.io"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#nativism-empiricism">
+   6.4.1. nativism, empiricism
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#probabalistic-causal-models">
+   6.4.2. probabalistic causal models
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#deep-rl">
+   6.4.3. deep rl
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dl-basics">
+     6.4.3.1. dl basics
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#supervision">
+     6.4.3.2. supervision
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#objects">
+   6.4.4. objects
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#language-development">
+   6.4.5. language development
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#theory-of-mind">
+   6.4.6. theory of mind
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="cogsci">
+<h1>6.4. cogsci<a class="headerlink" href="#cogsci" title="Permalink to this headline">¶</a></h1>
+<p>Some notes on a computational perspective on cognitive science.</p>
+<div class="section" id="nativism-empiricism">
+<h2>6.4.1. nativism, empiricism<a class="headerlink" href="#nativism-empiricism" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>cogsci “inverse problem” - give world, how do we form representations</p>
+<ul class="simple">
+<li><p>like cv, given pixels, how do we understand world?</p></li>
+</ul>
+</li>
+<li><p>historical cognitive dev: how do we form representations?</p>
+<ul>
+<li><p><strong>nativism</strong> - plato - representation w/out learning</p></li>
+<li><p><strong>empiricism</strong> - aristotle - learning w/out representation</p></li>
+<li><p><strong>constructivism</strong> - jean piaget - cognitive development</p>
+<ul>
+<li><p>types</p>
+<ul class="simple">
+<li><p>assimilation - start with schema, which tells you how to act</p></li>
+<li><p>accomodation - adjust schema based on what you see</p></li>
+<li><p>equilibration - everything set</p></li>
+</ul>
+</li>
+<li><p>periods</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>sensorimotor</p></th>
+<th class="head"><p>preoperational</p></th>
+<th class="head"><p>concrete operational</p></th>
+<th class="head"><p>formal operational</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0 - 18 months</p></td>
+<td><p>18 months - 5 years</p></td>
+<td><p>5 years - adolescence</p></td>
+<td><p>adolescence and beyond</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p>problems</p>
+<ul class="simple">
+<li><p>dev. is domain-specific and variable</p></li>
+<li><p>when measured better, children show earlier competence</p></li>
+<li><p>doesn’t specify learning methods</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>contemporary theories</p>
+<ul class="simple">
+<li><p><strong>nativism</strong> - core knowledge or modules</p>
+<ul>
+<li><p>plato, descartes</p></li>
+<li><p>chomsky - language acuquisition device</p></li>
+<li><p>spelke, tenenbaum - core knowledge of domains</p></li>
+<li><p>constraint nativism vs. starting-state nativism</p></li>
+</ul>
+</li>
+<li><p><strong>empiricism</strong> - connectionism, dynamic systems, associationism</p>
+<ul>
+<li><p>aristotle, david hume</p></li>
+<li><p>behaviorism - led to rl</p></li>
+<li><p>connectionists - mclelland, karmiloff-smith</p></li>
+<li><p>dynamic systems - thelen and smith</p></li>
+<li><p><strong>emergentist appproach</strong> - complex behavior is emergent from simple neural properties</p></li>
+<li><p>john locke</p></li>
+<li><p>deep learning</p></li>
+</ul>
+</li>
+<li><p><strong>constructivism</strong> - “the theory theory” (children are scientists), probabilistic models</p>
+<ul>
+<li><p>carey, wellman, gelman, gopnik</p></li>
+<li><p>structural features: abstract, coherent, causal, hierarchical</p></li>
+<li><p>theories change in response to evidence</p></li>
+<li><p>changes may take place at multiple levels</p></li>
+<li><p>playing</p></li>
+<li><p>perhaps bayesian learning</p></li>
+</ul>
+</li>
+<li><p>information-processing - memory changes over time etc.</p>
+<ul>
+<li><p>siegler</p></li>
+</ul>
+</li>
+<li><p>socio-cultural influences - children learn from society / culture</p>
+<ul>
+<li><p>vyogotsky</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>unanswered questions</p>
+<ul class="simple">
+<li><p>search problem: how do children search through all possible hypotheses? sampling?</p></li>
+<li><p>conceptual change problem: how is radical change in representations possible</p></li>
+</ul>
+</li>
+<li><p><strong>counterfactual</strong> - relating to or expressing what has not happened or is not the case</p>
+<ul class="simple">
+<li><p>e.g. If kangaroos had no tails, they would topple over</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="probabalistic-causal-models">
+<h2>6.4.2. probabalistic causal models<a class="headerlink" href="#probabalistic-causal-models" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>abstract representations that provide computational accounts of causal inference</p>
+<ul>
+<li><p>at marr’s highest level: computation</p></li>
+</ul>
+</li>
+<li><p>how much do we need to build in?</p>
+<ul>
+<li><p>dna can build in things that are hard to learn</p></li>
+<li><p>start with nothing built in, ex. deep learning (connectionism)</p></li>
+<li><p>start with best possible learning algorithm and ask what you need to build in (bayesian modeling)</p></li>
+<li><p>bayes rule Bayesian: <span class="math notranslate nohighlight">\(\overbrace{p(\theta | x)}^{\text{posterior}} = \frac{\overbrace{p(x|\theta)}^{\text{likelihood}} \overbrace{p(\theta)}^{\text{prior}}}{p(x)}\)</span> where x is data and <span class="math notranslate nohighlight">\(\theta\)</span> are hypotheses</p>
+<ul>
+<li><p>ask what priors explain people’s inferences</p></li>
+<li><p>humans make very causal priors - restricts hypothesis space of possible bayesian networks</p></li>
+<li><p>hierarhical model - get prior from something (e.g. know all bags contain same color)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>what develops over time?</p>
+<ul>
+<li><p>bayesian doesn’t really tell us this - just has probabilities evolve over time</p></li>
+<li><p>real life we come up with new hypotheses</p></li>
+</ul>
+</li>
+<li><p>what representations do we use?</p></li>
+</ul>
+</div>
+<div class="section" id="deep-rl">
+<h2>6.4.3. deep rl<a class="headerlink" href="#deep-rl" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="dl-basics">
+<h3>6.4.3.1. dl basics<a class="headerlink" href="#dl-basics" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>what does an NN do?</p>
+<ul>
+<li><p>universal function approximator</p></li>
+<li><p>feature learning view - learn features that separate classes linearly</p></li>
+</ul>
+</li>
+<li><p>saxe….ng 2010 compared statistics of primary cortical receptive fields and receptive field plasticity</p>
+<ul>
+<li><p>vision + audio + somatosensory - statistics seem to line up with neuroscience</p></li>
+</ul>
+</li>
+<li><p>a single algorithm?</p>
+<ul>
+<li><p>ex. seeing with your tongue</p></li>
+<li><p>ex. blind people echolocating</p></li>
+<li><p>ex. ferret optic nerve rewired to auditory system and they learn to still see</p></li>
+</ul>
+</li>
+<li><p>lots of inductive bias? or lack of bias?</p>
+<ul>
+<li><p>gabor filters come from deep learning, ica, sparse coding, k-means - come from data, not necessarily algorithm</p>
+<ul>
+<li><p>maybe this is only true for gabor filters though</p></li>
+</ul>
+</li>
+<li><p>bigger and simpler with residuals seems to work best</p>
+<ul>
+<li><p>sequence tasks - lstm started being replaced with “attention is all you need” (attention is basically a dot product)</p></li>
+<li><p>differentiable neural computer didn’t seem to work all that well - tried to build in too much</p></li>
+<li><p>some inductive bias has worked: cnn, lstm</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>structure</p>
+<ul>
+<li><p>structure is very dependent on optimization</p></li>
+</ul>
+</li>
+<li><p>depth seems to help</p>
+<ul>
+<li><p>compositionality</p></li>
+<li><p>increase in representational power?</p></li>
+<li><p>information theoretic arguments</p></li>
+</ul>
+</li>
+<li><p>low-data regimes: few-shot recognition doesn’t work (see Lake, Salakhutidinov, Tenenbaum 2013)</p>
+<ul>
+<li><p>one type of meta-learning for few-shot learning</p>
+<ul>
+<li><p>split data set into tiny train / test blocks and learn to do few-shot learning on these</p></li>
+<li><p>got really good at this (especially for omniglot)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>deep learning: less structure + more data = better results</p></li>
+<li><p>alternative view - not necessarily dl</p>
+<ul>
+<li><p>very unconstrained function class + right learning algorithm + right supervision = better results</p></li>
+<li><p>optimization methods master (is sgd “conveniently” Bayesian?)</p>
+<ul>
+<li><p>ex. everything that works works because it’s Bayesian blog post</p></li>
+</ul>
+</li>
+<li><p>structure of natural dat amatters</p>
+<ul>
+<li><p>source of supervision really matters</p></li>
+</ul>
+</li>
+<li><p>maybe function class doesn’t really matter</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="supervision">
+<h3>6.4.3.2. supervision<a class="headerlink" href="#supervision" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>unsupervised learning: learn <span class="math notranslate nohighlight">\(p_\theta (x)\)</span></p>
+<ul>
+<li><p>overview</p>
+<ul>
+<li><p>pull out features/representation and use them for other tasks</p></li>
+<li><p>recognize novel / unexpected events</p></li>
+<li><p>hallucinate</p></li>
+<li><p>can use all available data</p></li>
+<li><p>often has principled, prob. interpretation</p></li>
+<li><p>hard to use effectively</p></li>
+</ul>
+</li>
+<li><p>deep belief networks (~2006) - built on restricted Boltzmann machine (both a NN and a graphical model)</p>
+<ul>
+<li><p>RBM = markov field with binary variables and connections between but not within layers</p></li>
+<li><p>originally trained layerwise</p></li>
+<li><p>properties</p>
+<ul>
+<li><p>each neuron is (binary) random variable, so we can sample</p></li>
+<li><p>hard to train</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>unsupervised gd (2012-2014) - sparse/denoising/bottleneck autoencoder</p>
+<ul>
+<li><p>ex. if you have linear encoder/decoder with bottleneck, then you get pca</p></li>
+<li><p>ex. denoising - blur image and ask it to learn to clean it up</p>
+<ul>
+<li><p>learns something about the manifold that represents a class / the correct data</p></li>
+</ul>
+</li>
+<li><p>ex. variational autoencders (Kingma &amp; Welling 2013)</p>
+<ul>
+<li><p>network encoder x-&gt;z &amp; decoder z-&gt;x</p></li>
+<li><p>force z to be spherical Gaussian (ex. add noise to make it spherical Gaussian (with learned variance) - KL divergence regularizer between output and spherical Gaussian)</p></li>
+<li><p>then, we can sample z from spherical Gaussian and decoder will give us nice looking x</p></li>
+</ul>
+</li>
+<li><p>ex. GANs (Goodfewllow 2014)</p>
+<ul>
+<li><p>“implicit” density model</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>supervised learning</p>
+<ul>
+<li><p>representations are surprisingly good</p>
+<ul>
+<li><p>labels provide good semantic knowledge</p></li>
+<li><p>simple backprop training</p></li>
+</ul>
+</li>
+<li><p>semi-supervised = self-supervised learning</p>
+<ul>
+<li><p>ex. given patches, tell where they are placed relative to each other (context prediction doersch et al. 2015)</p></li>
+<li><p>prediction supervised learning (time series)</p>
+<ul>
+<li><p>ex. predict video frames from past video frames</p></li>
+</ul>
+</li>
+<li><p>reakes some artistry to figure out objective</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>reinforcement learning</p>
+<ul>
+<li><p>non-differentiable reward function - doesn’t access to output supervision</p></li>
+<li><p>supervised learning is a subset of this</p></li>
+<li><p>3 types (often we do a combination of these together)</p>
+<ul>
+<li><p>direct policy search</p></li>
+<li><p>prediction of value functions</p></li>
+<li><p>prediction of future states</p></li>
+</ul>
+</li>
+<li><p>can collect data by just exploring world</p></li>
+<li><p>rl needs more generalization</p>
+<ul>
+<li><p>want more exploration algorithms</p></li>
+<li><p>train in more settings</p></li>
+<li><p>ex. approximate bayesian experiment design</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="objects">
+<h2>6.4.4. objects<a class="headerlink" href="#objects" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><em>deep deep cnns</em> - not just a chain, combine different layers and maybe represent semantic concepts</p>
+<ul>
+<li><p><em>iterative deep aggregation</em> - generalizes skip connections - new layers for the skips</p></li>
+</ul>
+</li>
+<li><p><em>adaptive learning</em> - too much dataset bias - imagenet things only work on imagenet</p>
+<ul>
+<li><p>need to know about discrepancy between distributions</p></li>
+<li><p>GAN - learn adversarial that decides whether a point comes from one domain or another</p></li>
+<li><p>goal: want both domains to be separable with domains for only one</p></li>
+</ul>
+</li>
+<li><p><em>explainable vision and language agents</em></p>
+<ul>
+<li><p>image captioning doesn’t mean it actually understands scene</p></li>
+<li><p>now, people focused on visual question answering</p>
+<ul>
+<li><p>maybe even provide interpretable explanation</p></li>
+</ul>
+</li>
+<li><p>preprogram 5 types of modules (ex. find, relate, count, …)</p></li>
+</ul>
+</li>
+<li><p>concept vs. category learning</p>
+<ul>
+<li><p>except for NN, need negative examples</p></li>
+<li><p>learning nouns</p>
+<ul>
+<li><p>strong sampling - pick key examples instead of lots of random examples</p></li>
+</ul>
+</li>
+<li><p>bayesian learning can figure out what classes to generalize to</p>
+<ul>
+<li><p>need to assume some ontology</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>it’s all about the data</p>
+<ul>
+<li><p>face detection - made things really work</p></li>
+<li><p>learning spectrum: <em>extrapolation</em> (low samples) -&gt; <em>interpolation</em> (high samples - where we are)</p>
+<ul>
+<li><p>extrapolation = linear reg.  -&gt; interpolation = nearest neighbor / neural network</p></li>
+<li><p>nearest neighbors started to work better with more data</p></li>
+</ul>
+</li>
+<li><p>explainability doesn’t work if system is fundamentally complicated</p></li>
+<li><p>natural world has too many examples for interpolation</p></li>
+<li><p>brain doing nearest neighbors?</p>
+<ul>
+<li><p>capacity of visual long term memory - standing 1973: 10k images, 83% recognition</p></li>
+<li><p>clap if you see a repetition - you can really remember a lot</p></li>
+<li><p>AB testing at end - check if you seaw things or not</p></li>
+<li><p>novel objects: 92%, different examples of same thing: 88%, different states of same thing: 87%</p></li>
+<li><p>we can’t do this with just textured images though</p></li>
+<li><p>big boosts come from data, not necessarily the algorithm</p></li>
+<li><p>word2vec works about same as nearest neighbors embedding</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>top-down vs bottom-up concept learning</p>
+<ul>
+<li><p>problems with top-down / using labels</p>
+<ul>
+<li><p>can’t ask computer about semantic stuff - it only sees pixels</p></li>
+<li><p>cool ex. can see a chair by just looking at silhouette of person sitting in it</p></li>
+<li><p>humans don’t categorize things in binary ways</p>
+<ul>
+<li><p>solns: hierarchy, levels of categories…</p></li>
+</ul>
+</li>
+<li><p>used to have to do this (ex. books in a library), but computers don’t have to do this (ex. amazon)</p></li>
+<li><p>still problematic</p>
+<ul>
+<li><p>intransitivity - car seat is chair, chair is furniture, …</p></li>
+<li><p>multiple category membership</p></li>
+<li><p>“ontologies are overrated” blog post</p></li>
+</ul>
+</li>
+<li><p>this helps with interpretability, but might be worse overal</p></li>
+</ul>
+</li>
+<li><p>start from image (bottom) - use association not categorization</p>
+<ul>
+<li><p>make graph - edges are associations</p></li>
+<li><p>task: predict what’s behind some blurred out box in an image</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="language-development">
+<h2>6.4.5. language development<a class="headerlink" href="#language-development" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>language is interesting problem, lots of children have language difficulties, language might be unique to humans</p></li>
+<li><p>language is somewhat instinctual</p>
+<ul>
+<li><p>learned via association (John Locke) or by reading people’s intentions (St. Augustine)</p></li>
+</ul>
+</li>
+<li><p>behaviorist approach (Skinner) - conditioning, children learn because of adult reinforcement</p>
+<ul>
+<li><p>ex. bird turning to get reward</p></li>
+<li><p>“meaning” - an association between stimulus and response</p></li>
+<li><p>progressilve taught more complex utterances</p></li>
+</ul>
+</li>
+<li><p>noam chomsky’s ciritique of skinner review (1959)</p>
+<ul>
+<li><p>parents correct truth of utterance, not its grammar</p></li>
+<li><p>stimulus doesn’t completely determine response</p></li>
+<li><p>children say things they’ve never heard (e.g. mommy eated the apple)</p></li>
+<li><p>grammar isn’t a chain of associated words</p></li>
+</ul>
+</li>
+<li><p>chomsky: children have innate knowledge</p>
+<ul>
+<li><p>introduces “cognitive revolution” - explain language you need</p>
+<ul>
+<li><p>mental representations</p></li>
+<li><p>rules that operate on those representations</p></li>
+</ul>
+</li>
+<li><p>figure out what is common between all languages</p>
+<ul>
+<li><p>ex. verb agrees with subject</p></li>
+<li><p>mostly part of speaker’s unconscious knowledge of language</p></li>
+</ul>
+</li>
+<li><p>focus on ideal speaker’s competence, not their performance</p></li>
+</ul>
+</li>
+<li><p>ex. question formation</p>
+<ul>
+<li><p><em>poverty of the stimulus</em> - children get this info which doesn’t seem to be in the stimulus</p></li>
+</ul>
+</li>
+<li><p>chomsky theory of universal grammar</p>
+<ul>
+<li><p>fixed invariant structural principles because human brain is wired to understand them</p></li>
+</ul>
+</li>
+<li><p><em>nativists</em> - children guided by universal grammar</p></li>
+<li><p><em>constructivists</em> - innate <strong>general learning mechanisms</strong> operate on experience</p></li>
+<li><p>children use babbling</p></li>
+<li><p>children use pre-linguistic communication for sharing attention</p></li>
+<li><p>some children have crib speech - talking to themselves, seems systematic</p></li>
+<li><p>children have U-curves - use ate, then eated, then back to ate</p></li>
+</ul>
+</div>
+<div class="section" id="theory-of-mind">
+<h2>6.4.6. theory of mind<a class="headerlink" href="#theory-of-mind" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>theory of mind - human understanding of agents’ mental states and how they shape actions</p>
+<ul>
+<li><p>understand intentional actions - like dots, understand evil, purpose</p></li>
+<li><p>we can track this month by month</p></li>
+</ul>
+</li>
+<li><p>Theory of mind</p>
+<ul>
+<li><p>is rapidly acquired in the normal case</p></li>
+<li><p>is acquired in an extended series of developmental accomplishments</p></li>
+<li><p>encompasses several basic insights that are acquired world-wide on a roughly similar trajectory (but not timetable), (4) requires considerable learning and development based on an infant set of specialized abilities to attend to and represent persons,  (5) is severely impaired in autism, (6) is severely delayed in deaf children of hearing parents, and (6) results from but also contributes to specialized neural substrates associated with reasoning about agency, experience, and mind</p></li>
+</ul>
+</li>
+<li><p>Preschool Theory of Mind, Part 1:  Universal Belief-Desire Understanding</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes/ai"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="fairness_sts.html" title="previous page">6.3. fairness</a>
+    <a class='right-next' id="next-link" href="ai_futures.html" title="next page">6.5. ai futures</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Chandan Singh<br/>
+        
+            &copy; Copyright None.<br/>
+          <div class="extra_footer">
+            <p>
+Many of these images are taken from resources on the web.
+</p>
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

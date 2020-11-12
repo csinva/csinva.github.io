@@ -1,0 +1,1005 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>5.5. deep learning &#8212; learning to learn</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../_static/togglebutton.js"></script>
+    <script type="text/javascript" src="../../_static/clipboard.min.js"></script>
+    <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    <script type="text/javascript">var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script type="text/javascript" src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" type="text/javascript" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script type="text/javascript">
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="5.6. feature selection" href="feature_selection.html" />
+    <link rel="prev" title="5.4. unsupervised" href="unsupervised.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">learning to learn</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   welcome 👋
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../research_ovws/research_ovws.html">
+   1. research_ovws
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_comp_neuro.html">
+     1.1. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_disentanglement.html">
+     1.2. disentanglement
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_complexity.html">
+     1.3. complexity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_interesting_science.html">
+     1.4. interesting science
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_dl_theory.html">
+     1.5. dl theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_scat.html">
+     1.6. scattering transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">
+     1.7. ml in medicine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_dl_for_neuro.html">
+     1.8. dl for neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_uncertainty.html">
+     1.9. uncertainty
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_interp.html">
+     1.10. interpretability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_kernels.html">
+     1.11. kernels
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../cs/cs.html">
+   2. cs
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/retrieval.html">
+     2.1. info retrieval
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/python_ref.html">
+     2.2. python ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/data_structures.html">
+     2.3. data structures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/software.html">
+     2.4. software engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/quantum.html">
+     2.5. quantum
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/algo.html">
+     2.6. algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/graphs.html">
+     2.7. graphs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/os.html">
+     2.8. os
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/arch.html">
+     2.9. architecture
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/java_ref.html">
+     2.10. java ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/comp_theory.html">
+     2.11. cs theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/cpp_ref.html">
+     2.12. c/c++ ref
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../math/math.html">
+   3. math
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/differential_equations.html">
+     3.1. differential equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/proofs.html">
+     3.2. proofs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/analysis.html">
+     3.3. real analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/linear_algebra.html">
+     3.4. linear algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/signals.html">
+     3.5. signals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/optimization.html">
+     3.6. optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/calculus.html">
+     3.7. calculus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/chaos.html">
+     3.8. chaos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/math_basics.html">
+     3.9. math basics
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../stat/stat.html">
+   4. stat
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/graphical_models.html">
+     4.1. graphical models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/data_analysis.html">
+     4.2. data analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/testing.html">
+     4.3. testing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/causal_inference.html">
+     4.4. causal inference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/info_theory.html">
+     4.5. info theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/linear_models.html">
+     4.6. linear models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/time_series.html">
+     4.7. time series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/game_theory.html">
+     4.8. game theory
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="ml.html">
+   5. ml
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="comp_vision.html">
+     5.1. computer vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="structure_ml.html">
+     5.2. structure learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="classification.html">
+     5.3. classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="unsupervised.html">
+     5.4. unsupervised
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     5.5. deep learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="feature_selection.html">
+     5.6. feature selection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="learning_theory.html">
+     5.7. learning theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="evaluation.html">
+     5.8. evaluation
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ai/ai.html">
+   6. ai
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/search.html">
+     6.1. search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/nlp.html">
+     6.2. nlp
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/fairness_sts.html">
+     6.3. fairness
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/cogsci.html">
+     6.4. cogsci
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/ai_futures.html">
+     6.5. ai futures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/logic.html">
+     6.6. logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/philosophy.html">
+     6.7. philosophy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/psychology.html">
+     6.8. psychology
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/knowledge_rep.html">
+     6.9. representations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/decisions.html">
+     6.10. decisions
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../neuro/neuro.html">
+   7. neuro
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/brain_basics.html">
+     7.1. brain basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/vissci.html">
+     7.2. vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/comp_neuro.html">
+     7.3. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/sensory_input.html">
+     7.4. sensory input
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/memory.html">
+     7.5. memory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/motor.html">
+     7.6. motor system
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/development.html">
+     7.7. development
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/notes/ml/deep_learning.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/csinva/csinva.github.io"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#neural-networks">
+   5.5.1. neural networks
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#training">
+   5.5.2. training
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cnns">
+   5.5.3. CNNs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#architectural-components">
+   5.5.4. architectural components
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#recent-trends">
+   5.5.5. recent trends
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rnns">
+   5.5.6. RNNs
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lstms">
+     5.5.6.1. LSTMs
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adversarial-attacks">
+   5.5.7. adversarial attacks
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#transformers">
+   5.5.8. transformers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#misc">
+   5.5.9. misc
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="deep-learning">
+<h1>5.5. deep learning<a class="headerlink" href="#deep-learning" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="neural-networks">
+<h2>5.5.1. neural networks<a class="headerlink" href="#neural-networks" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>basic perceptron update rule</p>
+<ul>
+<li><p>if output is 0 but should be 1: raise weights on active connections by d</p></li>
+<li><p>if output is 1 but should be 0: lower weights on active connections by d</p></li>
+</ul>
+</li>
+<li><p><em>perceptron convergence thm</em> - if data is linearly separable, perceptron learning algorithm wiil converge</p></li>
+<li><p>transfer / activation functions</p>
+<ul>
+<li><p>sigmoid(z) = <span class="math notranslate nohighlight">\(\frac{1}{1+e^{-z}}\)</span></p></li>
+<li><p>Binary step</p></li>
+<li><p>TanH (always preferred to sigmoid)</p></li>
+<li><p>Rectifier = ReLU</p>
+<ul>
+<li><p>Leaky ReLU - still has some negative slope when &lt;0</p></li>
+<li><p>rectifying in electronics converts analog -&gt; digital</p></li>
+</ul>
+</li>
+<li><p>rare to mix and match neuron types</p></li>
+</ul>
+</li>
+<li><p><em>deep</em> - more than 1 hidden layer</p></li>
+<li><p>regression loss = <span class="math notranslate nohighlight">\(\frac{1}{2}(y-\hat{y})^2\)</span></p></li>
+<li><p>classification loss = <span class="math notranslate nohighlight">\(-y log (\hat{y}) - (1-y) log(1-\hat{y})\)</span></p>
+<ul>
+<li><p>can’t use SSE because not convex here</p></li>
+</ul>
+</li>
+<li><p>multiclass classification loss <span class="math notranslate nohighlight">\(=-\sum_j y_j ln \hat{y}_j\)</span></p></li>
+<li><p><strong>backpropagation</strong> - application of <em>reverse mode automatic differentiation</em> to neural networks’s loss</p>
+<ul>
+<li><p>apply the chain rule from the end of the program back towards the beginning</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\frac{dL}{dx_i} = \frac{dL}{dz} \frac{\partial z}{\partial x_i}\)</span></p></li>
+<li><p>sum <span class="math notranslate nohighlight">\(\frac{dL}{dz}\)</span> if neuron has multiple outputs z</p></li>
+<li><p>L is output</p></li>
+</ul>
+</li>
+<li><p><span class="math notranslate nohighlight">\(\frac{\partial z}{\partial x_i}\)</span> is actually a Jacobian (deriv each <span class="math notranslate nohighlight">\(z_i\)</span> wrt each <span class="math notranslate nohighlight">\(x_i\)</span> - these are vectors)</p>
+<ul>
+<li><p>each gate usually has some sparsity structure so you don’t compute whole Jacobian</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>pipeline</p>
+<ul>
+<li><p>initialize weights, and final derivative (<span class="math notranslate nohighlight">\(\frac{dL}{dL}=1\)</span>)</p></li>
+<li><p>for each batch</p>
+<ul>
+<li><p>run network forward to compute outputs at each step</p></li>
+<li><p>compute gradients at each gate with backprop</p></li>
+<li><p>update weights with SGD</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><img alt="backprop" src="../../_images/backprop.png" /></p></li>
+</ul>
+</div>
+<div class="section" id="training">
+<h2>5.5.2. training<a class="headerlink" href="#training" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><em>vanishing gradients problem</em> - neurons in earlier layers learn more slowly than in later layers</p>
+<ul>
+<li><p>happens with sigmoids</p></li>
+<li><p>dead ReLus</p></li>
+</ul>
+</li>
+<li><p><em>exploding gradients problem</em> - gradients are significantly larger in earlier layers than later layers</p>
+<ul>
+<li><p>RNNs</p></li>
+</ul>
+</li>
+<li><p><em>batch normalization</em> - whiten inputs to all neurons (zero mean, variance of 1)</p>
+<ul>
+<li><p>do this for each input to the next layer</p></li>
+</ul>
+</li>
+<li><p><em>dropout</em> - randomly zero outputs of p fraction of the neurons during training</p>
+<ul>
+<li><p>like learning large ensemble of models that share weights</p></li>
+<li><p>2 ways to compensate (pick one)</p>
+<ol class="simple">
+<li><p>at test time multiply all neurons’ outputs by p</p></li>
+<li><p>during training divide all neurons’ outputs by p</p></li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p><em>softmax</em> - takes vector z and returns vector of the same length</p>
+<ul>
+<li><p>makes it so output sums to 1 (like probabilities of classes)</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="cnns">
+<h2>5.5.3. CNNs<a class="headerlink" href="#cnns" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>kernel here means filter</p></li>
+<li><p>convolution G- takes a windowed average of an image F with a filter H where the filter is flipped horizontally and vertically before being applied</p></li>
+<li><p>G = H <span class="math notranslate nohighlight">\(\ast\)</span> F</p>
+<ul>
+<li><p>if we do a filter with just a 1 in the middle, we get the exact same image</p></li>
+<li><p>you can basically always pad with zeros as long as you keep 1 in middle</p></li>
+<li><p>can use these to detect edges with small convolutions</p></li>
+<li><p>can do Guassian filters</p></li>
+</ul>
+</li>
+<li><p>convolutions typically sum over all color channels</p></li>
+<li><p>1x1 conv - still convolves over channels</p></li>
+<li><p>pooling - usually max - doesn’t pool over depth</p>
+<ul>
+<li><p>people trying to move away from this - larger strides in conversation layers</p></li>
+<li><p>stacking small layers is generally better</p></li>
+</ul>
+</li>
+<li><p>most of memory impact is usually from activations from each layer kept around for backdrop</p></li>
+<li><p>visualizations</p>
+<ul>
+<li><p>layer activations (maybe average over channels)</p></li>
+<li><p>visualize the weights (maybe average over channels)v</p></li>
+<li><p>feed a bunch of images and keep track of which activate a neuron most</p></li>
+<li><p>t-SNE embedding of images</p></li>
+<li><p>occluding</p></li>
+</ul>
+</li>
+<li><p>weight matrices have special structure (Toeplitz or block Toeplitz)</p></li>
+<li><p>input layer is usually centered (subtract mean over training set)</p></li>
+<li><p>usually crop to fixed size (square input)</p></li>
+<li><p>receptive field - input region</p></li>
+<li><p>stride m - compute only every mth pixel</p></li>
+<li><p>downsampling</p>
+<ul>
+<li><p>max pooling - backprop error back to neuron w/ max value</p></li>
+<li><p>average pooling - backprop splits error equally among input neurons</p></li>
+</ul>
+</li>
+<li><p>data augmentation - random rotations, flips, shifts, recolorings</p></li>
+<li><p>siamese networks - extract features twice with same net then put layer on top</p>
+<ul>
+<li><p>ex. find how similar to representations are</p></li>
+</ul>
+</li>
+<li><p>famous cnns</p>
+<ul>
+<li><p>LeNet (1998)</p>
+<ul>
+<li><p>first, used on MNIST</p></li>
+</ul>
+</li>
+<li><p>AlexNet (2012)</p>
+<ul>
+<li><p>landmark (5 conv layers, some pooling/dropout)</p></li>
+</ul>
+</li>
+<li><p>ZFNet (2013)</p>
+<ul>
+<li><p>fine tuning and deconvnet</p></li>
+</ul>
+</li>
+<li><p>VGGNet (2014)</p>
+<ul>
+<li><p>19 layers, all 3x3 conv layers and 2x2 maxpooling</p></li>
+</ul>
+</li>
+<li><p>GoogLeNet (2015)</p>
+<ul>
+<li><p>lots of parallel elements (called <em>Inception module</em>)</p></li>
+<li><p>Msft ResNet (2015)</p>
+<ul>
+<li><p>very deep - 152 layers</p>
+<ul>
+<li><p>connections straight from initial layers to end</p></li>
+<li><p>only learn “residual” from top to bottom</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Region Based CNNs (R-CNN - 2013, Fast R-CNN - 2015, Faster R-CNN - 2015)</p>
+<ul>
+<li><p>object detection</p></li>
+</ul>
+</li>
+<li><p>Karpathy Generating image descriptions (2014)</p>
+<ul>
+<li><p>RNN+CNN</p></li>
+</ul>
+</li>
+<li><p>Spatial transformer networks (2015)</p>
+<ul>
+<li><p>transformations within the network</p></li>
+</ul>
+</li>
+<li><p>Segnet (2015)</p>
+<ul>
+<li><p>encoder-decoder network</p></li>
+</ul>
+</li>
+<li><p>Unet (2015)</p>
+<ul>
+<li><p>Ronneberger - applies to biomedical segmentation</p></li>
+</ul>
+</li>
+<li><p>Pixelnet (2017)</p>
+<ul>
+<li><p>predicts pixel-level for different tasks with the same architecture</p></li>
+<li><p>convolutional layers then 3 FC layers which use outputs from all convolutional layrs together</p></li>
+</ul>
+</li>
+<li><p>Squeezenet</p></li>
+<li><p>Yolonet</p></li>
+<li><p>Wavenet</p></li>
+<li><p>Densenet</p></li>
+<li><p>NASNET</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/1905.11946.pdf">Efficientnet (2019)</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="architectural-components">
+<h2>5.5.4. architectural components<a class="headerlink" href="#architectural-components" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>coordconv</strong> - break translation equivariance by passing in i, j coords as extra filters</p></li>
+<li><p><strong>deconvolution</strong> = transposed convolution = fractionally-strided convolution - like upsampling</p></li>
+<li><p><strong>attention</strong></p>
+<ul>
+<li><p>attention ovw: https://lilianweng.github.io/lil-log/2018/06/24/attention-attention.html</p></li>
+<li><p>vector of importance weights: in order to predict or infer one element, such as a pixel in an image or a word in a sentence, we estimate using the attention vector how strongly it is correlated with (or “<em>attends to</em>” as you may have read in many papers) other elements and take the sum of their values weighted by the attention vector as the approximation of the target.</p></li>
+<li><p>attention <a class="reference external" href="https://arxiv.org/pdf/1409.0473.pdf">born</a> to solve problem of going from arbitrary length -&gt; fixed length encoding -&gt; arbitrary length output</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="recent-trends">
+<h2>5.5.5. recent trends<a class="headerlink" href="#recent-trends" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>architecture search: learning to learn</p></li>
+<li><p><em>optimal brain damage</em> - starts with fully connected and weeds out connections (Lecun)</p></li>
+<li><p><em>tiling</em> - train networks on the error of previous networks</p></li>
+</ul>
+</div>
+<div class="section" id="rnns">
+<h2>5.5.6. RNNs<a class="headerlink" href="#rnns" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>feedforward NNs have no memory so we introduce recurrent NNs</p></li>
+<li><p>able to have memory</p></li>
+<li><p>could theoretically unfold the network and train with backprop</p></li>
+<li><p>truncated - limit number of times you unfold</p></li>
+<li><p><span class="math notranslate nohighlight">\(state_{new} = f(state_{old},input_t)\)</span></p></li>
+<li><p>ex. <span class="math notranslate nohighlight">\(h_t = tanh(W h_{t-1}+W_2 x_t)\)</span></p></li>
+<li><p>train with backpropagation through time (unfold through time)</p>
+<ul>
+<li><p>truncated backprop through time - only run every k time steps</p></li>
+</ul>
+</li>
+<li><p>error gradients vanish exponentially quickly with time lag</p></li>
+</ul>
+<div class="section" id="lstms">
+<h3>5.5.6.1. LSTMs<a class="headerlink" href="#lstms" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>have gates for forgetting, input, output</p></li>
+<li><p>easy to let hidden state flow through time, unchanged</p></li>
+<li><p>gate <span class="math notranslate nohighlight">\(\sigma\)</span> - pointwise multiplication</p>
+<ul>
+<li><p>multiply by 0 - let nothing through</p></li>
+<li><p>multiply by 1 - let everything through</p></li>
+</ul>
+</li>
+<li><p>forget gate - conditionally discard previously remembered info</p></li>
+<li><p>input gate - conditionally remember new info</p></li>
+<li><p>output gate - conditionally output a relevant part of memory</p></li>
+<li><p>GRUs - similar, merge input / forget units into a single update unit \vert</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="adversarial-attacks">
+<h2>5.5.7. adversarial attacks<a class="headerlink" href="#adversarial-attacks" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>adversarial attack</strong> - designing an input to get the wrong result from the model</p>
+<ul>
+<li><p><strong>targeted</strong> - try to get specific wrong class</p></li>
+</ul>
+</li>
+<li><p>fast gradient step method - keep adding gradient to maximize noise (limit amplitude of pixel’s channel to stay imperceptible)</p></li>
+</ul>
+</div>
+<div class="section" id="transformers">
+<h2>5.5.8. transformers<a class="headerlink" href="#transformers" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>transformers: https://arxiv.org/pdf/1706.03762.pdf</p>
+<ul>
+<li><p>spatial transformers: https://papers.nips.cc/paper/5854-spatial-transformer-networks.pdf</p></li>
+</ul>
+</li>
+<li><p>http://colah.github.io/posts/2014-03-NN-Manifolds-Topology/</p></li>
+</ul>
+</div>
+<div class="section" id="misc">
+<h2>5.5.9. misc<a class="headerlink" href="#misc" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>adaptive pooling can help deal with different sizes</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes/ml"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="unsupervised.html" title="previous page">5.4. unsupervised</a>
+    <a class='right-next' id="next-link" href="feature_selection.html" title="next page">5.6. feature selection</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Chandan Singh<br/>
+        
+            &copy; Copyright None.<br/>
+          <div class="extra_footer">
+            <p>
+Many of these images are taken from resources on the web.
+</p>
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

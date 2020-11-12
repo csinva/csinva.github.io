@@ -1,0 +1,1268 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>6.5. ai futures &#8212; learning to learn</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../_static/togglebutton.js"></script>
+    <script type="text/javascript" src="../../_static/clipboard.min.js"></script>
+    <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    <script type="text/javascript">var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script type="text/javascript" src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" type="text/javascript" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script type="text/javascript">
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="6.6. logic" href="logic.html" />
+    <link rel="prev" title="6.4. cogsci" href="cogsci.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">learning to learn</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   welcome 👋
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../research_ovws/research_ovws.html">
+   1. research_ovws
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_comp_neuro.html">
+     1.1. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_disentanglement.html">
+     1.2. disentanglement
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_complexity.html">
+     1.3. complexity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_interesting_science.html">
+     1.4. interesting science
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_dl_theory.html">
+     1.5. dl theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_scat.html">
+     1.6. scattering transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">
+     1.7. ml in medicine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_dl_for_neuro.html">
+     1.8. dl for neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_uncertainty.html">
+     1.9. uncertainty
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_interp.html">
+     1.10. interpretability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_kernels.html">
+     1.11. kernels
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../cs/cs.html">
+   2. cs
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/retrieval.html">
+     2.1. info retrieval
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/python_ref.html">
+     2.2. python ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/data_structures.html">
+     2.3. data structures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/software.html">
+     2.4. software engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/quantum.html">
+     2.5. quantum
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/algo.html">
+     2.6. algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/graphs.html">
+     2.7. graphs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/os.html">
+     2.8. os
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/arch.html">
+     2.9. architecture
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/java_ref.html">
+     2.10. java ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/comp_theory.html">
+     2.11. cs theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/cpp_ref.html">
+     2.12. c/c++ ref
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../math/math.html">
+   3. math
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/differential_equations.html">
+     3.1. differential equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/proofs.html">
+     3.2. proofs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/analysis.html">
+     3.3. real analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/linear_algebra.html">
+     3.4. linear algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/signals.html">
+     3.5. signals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/optimization.html">
+     3.6. optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/calculus.html">
+     3.7. calculus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/chaos.html">
+     3.8. chaos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/math_basics.html">
+     3.9. math basics
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../stat/stat.html">
+   4. stat
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/graphical_models.html">
+     4.1. graphical models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/data_analysis.html">
+     4.2. data analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/testing.html">
+     4.3. testing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/causal_inference.html">
+     4.4. causal inference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/info_theory.html">
+     4.5. info theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/linear_models.html">
+     4.6. linear models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/time_series.html">
+     4.7. time series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/game_theory.html">
+     4.8. game theory
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ml/ml.html">
+   5. ml
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/comp_vision.html">
+     5.1. computer vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/structure_ml.html">
+     5.2. structure learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/classification.html">
+     5.3. classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/unsupervised.html">
+     5.4. unsupervised
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/deep_learning.html">
+     5.5. deep learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/feature_selection.html">
+     5.6. feature selection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/learning_theory.html">
+     5.7. learning theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/evaluation.html">
+     5.8. evaluation
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="ai.html">
+   6. ai
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="search.html">
+     6.1. search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="nlp.html">
+     6.2. nlp
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="fairness_sts.html">
+     6.3. fairness
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cogsci.html">
+     6.4. cogsci
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     6.5. ai futures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="logic.html">
+     6.6. logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="philosophy.html">
+     6.7. philosophy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="psychology.html">
+     6.8. psychology
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="knowledge_rep.html">
+     6.9. representations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="decisions.html">
+     6.10. decisions
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../neuro/neuro.html">
+   7. neuro
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/brain_basics.html">
+     7.1. brain basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/vissci.html">
+     7.2. vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/comp_neuro.html">
+     7.3. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/sensory_input.html">
+     7.4. sensory input
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/memory.html">
+     7.5. memory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/motor.html">
+     7.6. motor system
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/development.html">
+     7.7. development
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/notes/ai/ai_futures.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/csinva/csinva.github.io"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#human-compatible">
+   6.5.1. human compatible
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-if-we-succeed">
+     6.5.1.1. what if we succeed?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#harms-of-ai">
+     6.5.1.2. harms of ai
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#value-alignment">
+     6.5.1.3. value alignment
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#possible-solns">
+     6.5.1.4. possible solns
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#possible-minds">
+   6.5.2. possible minds
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#intro-brockman">
+     6.5.2.1. intro (brockman)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#wrong-but-more-relevant-than-ever-seth-lloyd">
+     6.5.2.2. wrong but more relevant than ever (seth lloyd)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-limitations-of-opaque-learning-machines-judea-pearl">
+     6.5.2.3. the limitations of opaque learning machines (judea pearl)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-purpose-put-into-the-machine-stuart-russell">
+     6.5.2.4. the purpose put into the machine (stuart russell)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-third-law-george-dyson">
+     6.5.2.5. the third law (george dyson)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-can-we-do-daniel-dennett">
+     6.5.2.6. what can we do? (daniel dennett)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-unity-of-intelligence-frank-wilczek">
+     6.5.2.7. the unity of intelligence (frank wilczek)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lets-aspire-to-more-than-making-ourselves-obsolete-max-tegmark">
+     6.5.2.8. lets aspire to more than making ourselves obsolete (max tegmark)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dissident-messages-jaan-taliin">
+     6.5.2.9. dissident messages (jaan taliin)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tech-prophecy-and-the-underappreciated-causal-power-of-ideas-steven-pinker">
+     6.5.2.10. tech prophecy and the underappreciated causal power of ideas (steven pinker)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#beyond-reward-and-punishment-david-deutsch">
+     6.5.2.11. beyond reward and punishment (david deutsch)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-artificial-use-of-human-beings-tom-griffiths">
+     6.5.2.12. the artificial use of human beings (tom griffiths)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#making-the-invisible-visible-hans-ulrich-obrist">
+     6.5.2.13. making the invisible visible (hans ulrich obrist)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#algorists-dream-of-objectivity-peter-galison">
+     6.5.2.14. algorists dream of objectivity (peter galison)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-rights-of-machines-george-church">
+     6.5.2.15. the rights of machines (george church)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-artistic-use-of-cybernetic-beings-caroline-jones">
+     6.5.2.16. the artistic use of cybernetic beings (caroline jones)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#david-kaiser-information-for-wiener-shannon-and-for-us">
+     6.5.2.17. David Kaiser: Information for wiener, Shannon, and for Us
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#neil-gershenfield-scaling">
+     6.5.2.18. Neil Gershenfield: Scaling
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="ai-futures">
+<h1>6.5. ai futures<a class="headerlink" href="#ai-futures" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="human-compatible">
+<h2>6.5.1. human compatible<a class="headerlink" href="#human-compatible" title="Permalink to this headline">¶</a></h2>
+<p><strong>A set of notes based on the book human compatible, by Stuart Russell 2019</strong></p>
+<div class="section" id="what-if-we-succeed">
+<h3>6.5.1.1. what if we succeed?<a class="headerlink" href="#what-if-we-succeed" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>candidates for biggest event in the future of humanity</p>
+<ul>
+<li><p>we all die</p></li>
+<li><p>we all live forever</p></li>
+<li><p>we conquer the universe</p></li>
+<li><p>we are visited by a superior alien civilization</p></li>
+<li><p>we invent superintelligent AI</p></li>
+</ul>
+</li>
+<li><p><em>defn</em>: humans are intelligent to the extent that our actions can be expected to achieve our objectives (given what we perceive)</p>
+<ul>
+<li><p>machines are <em>beneficial</em> to the extent that <em>their</em> actions can be expected to achieve <em>our</em> objectives</p></li>
+</ul>
+</li>
+<li><p>Baldwin effect - learning can make evolution easier</p></li>
+<li><p><strong>utility</strong> for things like money is <em>diminishing</em></p>
+<ul>
+<li><p>rational agents maximize <strong>expected utility</strong></p></li>
+</ul>
+</li>
+<li><p>McCarthy helped usher in <em>knowledge-based systems</em>, which use <em>first-order logic</em></p>
+<ul>
+<li><p>however, these didn’t incorporate uncertainty</p></li>
+<li><p>modern AI uses utilities and probabilities instead of goals and logic</p></li>
+<li><p>bayesian networks are like probabilistic propositional logic, along with bayesian logic, probabilistic programming languages</p></li>
+</ul>
+</li>
+<li><p>language already encodes a great deal about what we know</p></li>
+<li><p><em>inductive logic programming</em> - propose new concepts and definitions in order to identify theories that are both accurate and concise</p></li>
+<li><p>want to be able to learn many useful abstractions</p></li>
+<li><p>a superhuman ai could do a lot</p>
+<ul>
+<li><p>e.g. help with evacuating by individually guiding every person/vehicle</p></li>
+<li><p>carry out experiments and compare against all existing results easily</p></li>
+<li><p>high-level goal: raise the standard of living for everyone everywhere?</p></li>
+<li><p>AI tutoring</p></li>
+</ul>
+</li>
+<li><p>EU GDPR’s “right to an explanation” wording is actually much weaker: “meaningful information about the logic involved, as well as the significance and the envisaged consequences of such processing for the data subject.”</p></li>
+<li><p>whataboutery - a method for deflecting questions where one always asks “what about X?” rather than engaging</p></li>
+</ul>
+</div>
+<div class="section" id="harms-of-ai">
+<h3>6.5.1.2. harms of ai<a class="headerlink" href="#harms-of-ai" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>ex. surveillance, persuasion, and control</p></li>
+<li><p>ex. lethal autonomous weapons (these are scalable)</p></li>
+<li><p>ex. automated blackmail</p></li>
+<li><p>ex. deepfakes / fake media</p></li>
+<li><p>ex. automation - how to solve this? Universal basic income?</p></li>
+</ul>
+</div>
+<div class="section" id="value-alignment">
+<h3>6.5.1.3. value alignment<a class="headerlink" href="#value-alignment" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>ex. king midas</p></li>
+<li><p>ex. driving dangerously</p></li>
+<li><p>ex. in optimizing sea oxygen levels, takes them out of the air</p></li>
+<li><p>ex. in curing cancer, gives everyone tumors</p></li>
+<li><p>note: for an AI, it might be easier to convince of a different objective than actually solve the objective</p></li>
+<li><p>basically any optimization objective will lead AI to disable its own off-switch</p></li>
+</ul>
+</div>
+<div class="section" id="possible-solns">
+<h3>6.5.1.4. possible solns<a class="headerlink" href="#possible-solns" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Oracle AI - can only answer yes/no/probabilistic questions,  otherwise no output to the real world</p></li>
+<li><p>inverse RL</p>
+<ul>
+<li><p>ai should be uncertain about utitilies</p></li>
+<li><p>utilties should be inferred from human preferences</p></li>
+<li><p>in systems that interact, need to express preferences in terms of game theory</p></li>
+</ul>
+</li>
+<li><p>complications</p>
+<ul>
+<li><p>can be difficult to parse human instruction into preferences</p></li>
+<li><p>people are different</p></li>
+<li><p>AI loyal to one person might harm others</p></li>
+<li><p>ai ethics</p>
+<ul>
+<li><p>consequentalism - choices should be judged according to expected consequences</p></li>
+<li><p>deontological ethics, vritue ethics - concerned with the moral character of actions + individuals</p></li>
+<li><p>hard to compare utilties across people</p></li>
+<li><p>utilitarianism has issues when there is negative utility</p></li>
+</ul>
+</li>
+<li><p>preferences can change</p></li>
+</ul>
+</li>
+<li><p>AI should be regulated</p></li>
+<li><p>deep learning is a lot like our sensory systems - logic is still need to act on these abstractions</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="possible-minds">
+<h2>6.5.2. possible minds<a class="headerlink" href="#possible-minds" title="Permalink to this headline">¶</a></h2>
+<p><strong>edited by John Brockman, 2019)</strong></p>
+<div class="section" id="intro-brockman">
+<h3>6.5.2.1. intro (brockman)<a class="headerlink" href="#intro-brockman" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>new technologies = new perceptions</p></li>
+<li><p>we create tools and we mold ourselves through our use of them</p></li>
+<li><p>Wiener: “We must cease to kiss the whip that lashes us”</p>
+<ul>
+<li><p>initial book <em>The human use of human beings</em></p></li>
+<li><p>he was mostly analog, fell out of fashion</p></li>
+<li><p>initially inspired the field</p></li>
+</ul>
+</li>
+<li><p>ai has gone down and up for a while</p></li>
+<li><p>gofai - good old-fashioned ai</p></li>
+<li><p>things people thought would be hard, like chess, were easy</p></li>
+<li><p>lots of physicists in this book…</p></li>
+</ul>
+</div>
+<div class="section" id="wrong-but-more-relevant-than-ever-seth-lloyd">
+<h3>6.5.2.2. wrong but more relevant than ever (seth lloyd)<a class="headerlink" href="#wrong-but-more-relevant-than-ever-seth-lloyd" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>current AI is way worse than people think it is</p></li>
+<li><p>wiener was very pessimistic - wwII / cold war</p></li>
+<li><p>singularity is not coming…</p></li>
+</ul>
+</div>
+<div class="section" id="the-limitations-of-opaque-learning-machines-judea-pearl">
+<h3>6.5.2.3. the limitations of opaque learning machines (judea pearl)<a class="headerlink" href="#the-limitations-of-opaque-learning-machines-judea-pearl" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>3 levels of reasoning</p>
+<ul>
+<li><p>statistical</p></li>
+<li><p>causal</p></li>
+<li><p>counterfactual - lots of counterfactuals but language is good and providing lots of them</p></li>
+</ul>
+</li>
+<li><p>“explaining away” = “backwards blocking” in the conditioning literature</p></li>
+<li><p>starts causal inference, but doesn’t work for large systems</p></li>
+<li><p>dl is more about speed than learning</p></li>
+<li><p>dl is not interpretable</p></li>
+<li><p>example: ask someone why they are divorced?</p>
+<ul>
+<li><p>income, age, etc…</p></li>
+<li><p>something about relationship…</p></li>
+</ul>
+</li>
+<li><p>correlations, causes, explanations (moral/rational) - biologically biased towards this?</p>
+<ul>
+<li><p>beliefs + desires cause actions</p></li>
+</ul>
+</li>
+<li><p>randomly picking grants above some cutoff…</p></li>
+<li><p>pretty cool that different people do things because of norms (e.g. come to class at 4pm)</p>
+<ul>
+<li><p>could you do this with ai?</p></li>
+</ul>
+</li>
+<li><p>facebook chatbot ex.</p></li>
+<li><p>paperclip machine, ads on social media</p></li>
+<li><p>states/companies are like ais</p></li>
+<li><p><strong>equifinality</strong> - perturb behavior (like use grayscale images instead of color) and they can still do it (like stability)</p></li>
+</ul>
+</div>
+<div class="section" id="the-purpose-put-into-the-machine-stuart-russell">
+<h3>6.5.2.4. the purpose put into the machine (stuart russell)<a class="headerlink" href="#the-purpose-put-into-the-machine-stuart-russell" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>want safety in ai - need to specify right objective with no uncertainty</p></li>
+<li><p><strong>value alignment</strong> - putting in the right purpose</p></li>
+<li><p>ai research studies the ability to achieve objectives, not the design of those objectives</p>
+<ul>
+<li><p>“better at making decisions - not making better decisions”</p></li>
+</ul>
+</li>
+<li><p>want provable beneficial ai</p></li>
+<li><p>can’t just maximize rewards - optimal solution is to control human to give more rewards</p></li>
+<li><p>cooperative inverse-rl - robot learns reward function from human</p>
+<ul>
+<li><p>this way, uncertainty about rewards lets robot preserve its off-switch</p></li>
+<li><p>human actions don’t always reflect their true preferences</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="the-third-law-george-dyson">
+<h3>6.5.2.5. the third law (george dyson)<a class="headerlink" href="#the-third-law-george-dyson" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>2 eras: before/after digital computers</p>
+<ul>
+<li><p>before: thomas hobbes, gottfried wilhelm leibniz</p></li>
+<li><p>after:</p>
+<ul>
+<li><p>alan turing - intelligent machines</p></li>
+<li><p>john von neumann - reproducing machines</p></li>
+<li><p>claude shannon - communicate reliably</p></li>
+<li><p>norbert weiner - when would machines take control</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>analog computing - all about error corrections</p></li>
+<li><p>nature uses digitial coding for proteins but analog for brain</p></li>
+<li><p>social graphs can use digital code for analog computing</p>
+<ul>
+<li><p>analog systems seem to control what they are mapping (e.g. decentralized traffic map)</p></li>
+</ul>
+</li>
+<li><p>3 laws of ai</p>
+<ul>
+<li><p>ashby’s law - any effective control system must be as complex as the system it controls</p></li>
+<li><p>von neumman’s law - defining characteristic of a complex system is that it constitutes its own simplest behavioral description</p></li>
+<li><p>3rd law - any system simple enough to be understandable will not be complicated enough to behave intelligently and vice versa</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="what-can-we-do-daniel-dennett">
+<h3>6.5.2.6. what can we do? (daniel dennett)<a class="headerlink" href="#what-can-we-do-daniel-dennett" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>dennett wrote from bacteria to bach &amp; back</p></li>
+<li><p>praise: willingness to admit he is wrong / stay levelheaded</p></li>
+<li><p>rereading stuff opens new doors</p></li>
+<li><p>import to treat AI as tools - real danger is humans being slaves to the AI coming about naturally</p>
+<ul>
+<li><p>analogy to our dependence on fruit for vitamin C whereas other animals synthesize it</p></li>
+<li><p>tech has made it easy to tamper with evidence etc.</p></li>
+<li><p>Wiener: “In the long run, there is no distinction between arming ourselves and arming our enemies.”</p></li>
+</ul>
+</li>
+<li><p>current AI is parasitic on human intelligence</p></li>
+<li><p>we are robots made of robots made of robots…with no magical ingredients thrown in along the way</p></li>
+<li><p>current humanoid embellishments are <em>false advertising</em></p></li>
+<li><p>need a way to test safety/interpretability of systems, maybe with human judges</p></li>
+<li><p>people automatically personify things</p></li>
+<li><p>we need intelligent tools, not conscious ones - more like oracles</p></li>
+<li><p>very hard to build in morality into ais - even death might not seem bad</p></li>
+</ul>
+</div>
+<div class="section" id="the-unity-of-intelligence-frank-wilczek">
+<h3>6.5.2.7. the unity of intelligence (frank wilczek)<a class="headerlink" href="#the-unity-of-intelligence-frank-wilczek" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>can an ai be conscious/creative/evil?</p></li>
+<li><p>mind is emergent property of matter <span class="math notranslate nohighlight">\(\implies\)</span> all intelligence is machine intelligence</p></li>
+<li><p>david hume: ‘reason is, and ought only to be, the slave of the passions’</p></li>
+<li><p>no sharp divide between natural and artificial intelligence: seem to work on the same physics</p></li>
+<li><p>intelligence seems to be an emergent behavior</p></li>
+<li><p>key differences between brains and computers: brains can self-repair, have higher connectivity, but lower efficiency overall</p></li>
+<li><p>most profound advantage of brain: connectivity and interactive development</p></li>
+<li><p>ais will be good at exploring</p></li>
+<li><p>defining general intelligence - maybe using language?</p></li>
+<li><p>earth’s environment not great for ais</p></li>
+<li><p>ai could control world w/ just info, not just physical means</p></li>
+<li><p>affective economy - sale of emotions (like talking to starbucks barista)</p></li>
+<li><p>people seem to like to live in human world</p>
+<ul>
+<li><p>ex. work in cafes, libraries, etc.</p></li>
+</ul>
+</li>
+<li><p>future life institute - funded by elon…maybe just trying to make money</p></li>
+</ul>
+</div>
+<div class="section" id="lets-aspire-to-more-than-making-ourselves-obsolete-max-tegmark">
+<h3>6.5.2.8. lets aspire to more than making ourselves obsolete (max tegmark)<a class="headerlink" href="#lets-aspire-to-more-than-making-ourselves-obsolete-max-tegmark" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>sometimes listed as scaremonger</p></li>
+<li><p>maybe consciousness could be much more hype - like waking up from being drowsy</p></li>
+<li><p>survey of AI experts said 50% chance of general ai surpassing human intelligence by 2040-2050</p></li>
+<li><p>finding purpose if we aren’t needed for anything?</p></li>
+<li><p>importance of keeping ai beneficial</p></li>
+<li><p>possible AIs will replace all jobs</p></li>
+<li><p>curiosity is dangerous</p></li>
+<li><p>3 reasons ai danger is downplayed</p>
+<ol class="simple">
+<li><p>people downplay danger because it makes their research seem good - “It is difficult to get a man to understand something, when his salary depends on his not understanding it” - Upton Sinclair</p>
+<ul>
+<li><p><strong>luddite</strong> - person opposoed to new technology or ways of working - stems from secret organization of english textile workers who protested</p></li>
+</ul>
+</li>
+<li><p>it’s an abstract threat</p></li>
+<li><p>it feels hopeless to think about</p></li>
+</ol>
+</li>
+<li><p>AI safety research must precede AI developments</p></li>
+<li><p>the real risk with AGI isn’t malice but competence</p></li>
+<li><p>intelligence = ability to accomplish complex goals</p></li>
+<li><p>how good are people at predicting the future of technology?</p></li>
+<li><p>joseph weizenbbam wrote psychotherapist bot that was pretty bad but scared him</p></li>
+</ul>
+</div>
+<div class="section" id="dissident-messages-jaan-taliin">
+<h3>6.5.2.9. dissident messages (jaan taliin)<a class="headerlink" href="#dissident-messages-jaan-taliin" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>voices that stand up slowly end up convincing people</p></li>
+<li><p>ai is different than tech that has come before - it can self-multiply</p></li>
+<li><p>human brain has caused lots of changes in the world - ai will be similar</p></li>
+<li><p>people seem to be tipping more towards the fact that the risk is large</p></li>
+<li><p>short-term risks: automation + bias</p></li>
+<li><p>one big risk: AI environmental risk: how to constrain ai to not render our environment uninhabitable for biological forms</p></li>
+<li><p>need to stop thinking of the world as a zero-sum game</p></li>
+<li><p>famous survery: katja grace at the future of humanity institute</p></li>
+</ul>
+</div>
+<div class="section" id="tech-prophecy-and-the-underappreciated-causal-power-of-ideas-steven-pinker">
+<h3>6.5.2.10. tech prophecy and the underappreciated causal power of ideas (steven pinker)<a class="headerlink" href="#tech-prophecy-and-the-underappreciated-causal-power-of-ideas-steven-pinker" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>“just as darwin made it possible for a thoughtful observer of the natural world to do without creationism, Turing and others made it possible for a thoughtful observer of the cognitive world to do without spiritualism”</p></li>
+<li><p>entropy view: ais is trying to stave off entropy by following specific goals</p></li>
+<li><p>ideas drive human history</p></li>
+<li><p>2 possible demises</p>
+<ul>
+<li><p>surveillance state</p>
+<ul>
+<li><p>automatic speech recognition</p></li>
+<li><p>pinker thinks this isn’t a big deal because freedom of thought is driven by norms and institutions not tech</p></li>
+<li><p>tech’s biggest threat seems to be amplifying dubious voices not surpressing enlightened ones</p></li>
+<li><p>more tech has correlated w/ more democracy</p></li>
+</ul>
+</li>
+<li><p>ai takes over</p>
+<ul>
+<li><p>seems too much like technological determinism</p></li>
+<li><p>intelligence is the ability to deploy novel means to attain a goal - doesn’t specify what the goal is</p></li>
+<li><p>knowledge are things we know - ours are mostly find food, mates, etc. machines will have other ones</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>if humans are smart enough to make ai, they are smart enough to test it</p></li>
+<li><p>“threat isn’t machine but what can be made of it”</p></li>
+</ul>
+</div>
+<div class="section" id="beyond-reward-and-punishment-david-deutsch">
+<h3>6.5.2.11. beyond reward and punishment (david deutsch)<a class="headerlink" href="#beyond-reward-and-punishment-david-deutsch" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>david deutsch - founder of quantum computing</p></li>
+<li><p>thinking - involves coming up w/ new hypotheses, not just being bayesian</p></li>
+<li><p>knowledge itself wasn’t hugely evolutionarily beneficial in the beginning, but retaining cultural knowledge was</p>
+<ul>
+<li><p>in the beginning, people didn’t really learn - just remembered cultural norms</p></li>
+<li><p>no one aspired to anything new</p></li>
+</ul>
+</li>
+<li><p>so far, the way ais have been developed (e.g. chess-playing) is restricting a search space, but AGI wants them to come up with a new search space</p></li>
+<li><p>we usually don’t follow laws because of punishments - neither will AGIs</p></li>
+<li><p>open society is the only stable kind</p></li>
+<li><p>will be hard to test / optimize for directly</p></li>
+<li><p>AGI could still be deterministic</p></li>
+<li><p>tension between imitation and learning? (immitation/innovation)</p></li>
+<li><p>people falsely believe AGI should be able to learn on its own, like Nietzche’s <em>causa sui</em>, buy humans don’t do this</p></li>
+<li><p>culture might make you more model-free</p></li>
+</ul>
+</div>
+<div class="section" id="the-artificial-use-of-human-beings-tom-griffiths">
+<h3>6.5.2.12. the artificial use of human beings (tom griffiths)<a class="headerlink" href="#the-artificial-use-of-human-beings-tom-griffiths" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>believes key to ml is human learning</p></li>
+<li><p>we now have good models of images/text, but not of</p></li>
+<li><p>value alignment</p></li>
+<li><p>inverse rl: look at actions of intelligent agent, learn reward</p></li>
+<li><p>accuracy (heuristics) vs generalizability (often assumes rationality)</p>
+<ul>
+<li><p>however, people are often not rational - people follow simple heuristics</p></li>
+<li><p>ex. don’t calculate probabilities, just try to remember examples</p></li>
+</ul>
+</li>
+<li><p>people usually tradeoff time with how important a decision is - <strong>bounded optimality</strong></p></li>
+<li><p>could ai actually produce more leisure?</p></li>
+</ul>
+</div>
+<div class="section" id="making-the-invisible-visible-hans-ulrich-obrist">
+<h3>6.5.2.13. making the invisible visible (hans ulrich obrist)<a class="headerlink" href="#making-the-invisible-visible-hans-ulrich-obrist" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>need to use art to better interpret visualizations, like deepdream</p></li>
+<li><p>ai as a tool, like photoshop</p></li>
+<li><p>tweaking simulations is art (again in a deep-dream like way)</p></li>
+<li><p>meta-objectives are important</p></li>
+<li><p>art - an early alarm system to think about the future, evocative</p></li>
+<li><p>design - has a clearer purpose, invisible</p>
+<ul>
+<li><p>fluxist movement - do it yourself, like flash mob, spontanous, not snobby</p></li>
+</ul>
+</li>
+<li><p>this progress exhibit - guggenheim where they hand you off to people getting older</p></li>
+<li><p>art - tracks what people appreciate over time</p></li>
+<li><p>everything except museums + pixels are pixels</p></li>
+<li><p>marcel duchamp 1917 - urinal in art museum was worth a ton</p></li>
+</ul>
+</div>
+<div class="section" id="algorists-dream-of-objectivity-peter-galison">
+<h3>6.5.2.14. algorists dream of objectivity (peter galison)<a class="headerlink" href="#algorists-dream-of-objectivity-peter-galison" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>science historian</p></li>
+<li><p>stories of dangerous technologies have been repeated (e.g. nanoscience, recombinant DNA)</p></li>
+<li><p>review in psychology found objective models outperformed groups of human clinicians (“prediction procedures: the clinical-statistical controversy”)</p></li>
+<li><p>people initially started w/ drawing things</p>
+<ul>
+<li><p>then shifted to more objective measures (e.g. microscope)</p></li>
+<li><p>then slight shift away (e.g. humans outperformed algorithms at things)</p></li>
+</ul>
+</li>
+<li><p>objectivity is not everything</p></li>
+<li><p>art w/ a nervous system</p></li>
+<li><p>animations with charcters that have goals</p></li>
+</ul>
+</div>
+<div class="section" id="the-rights-of-machines-george-church">
+<h3>6.5.2.15. the rights of machines (george church)<a class="headerlink" href="#the-rights-of-machines-george-church" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>machines should increasingly get rights as those of humans</p></li>
+<li><p>potential for AI to make humans smarter as well</p></li>
+</ul>
+</div>
+<div class="section" id="the-artistic-use-of-cybernetic-beings-caroline-jones">
+<h3>6.5.2.16. the artistic use of cybernetic beings (caroline jones)<a class="headerlink" href="#the-artistic-use-of-cybernetic-beings-caroline-jones" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>how to strech people beyond our simple, selfish parameters</p></li>
+<li><p>cybernetics seance art</p></li>
+<li><p>more grounded in hardware</p></li>
+<li><p>culture-based evolution</p></li>
+<li><p>uncanny valley - if things look too humanlike, we find them creepy</p>
+<ul>
+<li><p>this doesn’t happen for kids (until ~10 years)</p></li>
+</ul>
+</li>
+<li><p>neil mendoza animal-based aft reflections</p></li>
+<li><p>is current ai more advanced than game of life?</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="david-kaiser-information-for-wiener-shannon-and-for-us">
+<h3>6.5.2.17. David Kaiser: Information for wiener, Shannon, and for Us<a class="headerlink" href="#david-kaiser-information-for-wiener-shannon-and-for-us" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>wiener: society can only be understood based on analyzing messages</p>
+<ul>
+<li><p>information = semantic information</p></li>
+<li><p>shannon: information = entropy (not reduction in entropy?)</p></li>
+<li><p>predictions</p>
+<ul>
+<li><p>information can not be conserved (effective level of info will be perpetually advancing)</p></li>
+<li><p>information is unsuited to being commodities</p>
+<ul>
+<li><p>can easily be replicated</p></li>
+<li><p>science started having citations in 17th century because before that people didn’t want to publish</p>
+<ul>
+<li><p>turned info into currency</p></li>
+</ul>
+</li>
+<li><p>art world has struggled w/ this</p>
+<ul>
+<li><p>80s: appropration art - only changed title</p></li>
+</ul>
+</li>
+<li><p>literature for a long time had no copyrights</p></li>
+<li><p>algorithms hard to patent</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>wiener’s warning: machines would dominate us only when individuals are the same</p>
+<ul>
+<li><p>style and such become more similar as we are more connected</p>
+<ul>
+<li><p>twitter would be the opposite of that</p></li>
+<li><p>amazon could make things more homogenous</p></li>
+</ul>
+</li>
+<li><p>fashion changes consistently</p>
+<ul>
+<li><p>maybe arbitrary way to identify in/out groups</p></li>
+</ul>
+</li>
+<li><p>comparison to markets</p></li>
+<li><p>cities seem to increase diversity - more people to interact with</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>dl should seek more semantic info not statistical info</p></li>
+</ul>
+</div>
+<div class="section" id="neil-gershenfield-scaling">
+<h3>6.5.2.18. Neil Gershenfield: Scaling<a class="headerlink" href="#neil-gershenfield-scaling" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>ai is more about scaling laws rathern that fashions</p></li>
+<li><p>mania: success to limited domains</p></li>
+<li><p>depression: failure to ill-posed problems</p></li>
+<li><p>knowledge vs information: which is in the world, which is in your head?</p></li>
+<li><p>problem 1: communication - important that knowledge can be replicated w/ no loss (shannon)</p></li>
+<li><p>problem 2: computation - import knowledge can be stored (von Neumann)</p></li>
+<li><p>problem 3: generalization - how to come up w/ rules for reasoning?</p></li>
+<li><p>next: fabrication - how to make things?</p>
+<ul>
+<li><p>ex. body uses only 20 amino acids</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes/ai"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="cogsci.html" title="previous page">6.4. cogsci</a>
+    <a class='right-next' id="next-link" href="logic.html" title="next page">6.6. logic</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Chandan Singh<br/>
+        
+            &copy; Copyright None.<br/>
+          <div class="extra_footer">
+            <p>
+Many of these images are taken from resources on the web.
+</p>
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

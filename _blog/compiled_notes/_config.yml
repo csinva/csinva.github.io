@@ -1,0 +1,13 @@
+# Book settings
+title                       : learning to learn  # The title of the book. Will be placed in the left navbar.
+author                      : Chandan Singh  # The author of the book
+copyright                   : "None"  # Copyright year to be placed in the footer
+logo                        : logo.png  # A path to the book logo
+repository:
+  url                       : https://github.com/csinva/csinva.github.io
+html:
+  use_repository_button: true
+  extra_footer: |
+    <p>
+    Many of these images are taken from resources on the web.
+    </p>

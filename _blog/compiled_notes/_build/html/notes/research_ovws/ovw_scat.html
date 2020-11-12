@@ -1,0 +1,912 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>1.6. scattering transform &#8212; learning to learn</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../_static/togglebutton.js"></script>
+    <script type="text/javascript" src="../../_static/clipboard.min.js"></script>
+    <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    <script type="text/javascript">var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script type="text/javascript" src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" type="text/javascript" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script type="text/javascript">
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="1.7. ml in medicine" href="ovw_ml_medicine.html" />
+    <link rel="prev" title="1.5. dl theory" href="ovw_dl_theory.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">learning to learn</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   welcome 👋
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="research_ovws.html">
+   1. research_ovws
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="ovw_comp_neuro.html">
+     1.1. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ovw_disentanglement.html">
+     1.2. disentanglement
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ovw_complexity.html">
+     1.3. complexity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ovw_interesting_science.html">
+     1.4. interesting science
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ovw_dl_theory.html">
+     1.5. dl theory
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     1.6. scattering transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ovw_ml_medicine.html">
+     1.7. ml in medicine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ovw_dl_for_neuro.html">
+     1.8. dl for neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ovw_uncertainty.html">
+     1.9. uncertainty
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ovw_interp.html">
+     1.10. interpretability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ovw_kernels.html">
+     1.11. kernels
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../cs/cs.html">
+   2. cs
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/retrieval.html">
+     2.1. info retrieval
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/python_ref.html">
+     2.2. python ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/data_structures.html">
+     2.3. data structures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/software.html">
+     2.4. software engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/quantum.html">
+     2.5. quantum
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/algo.html">
+     2.6. algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/graphs.html">
+     2.7. graphs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/os.html">
+     2.8. os
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/arch.html">
+     2.9. architecture
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/java_ref.html">
+     2.10. java ref
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/comp_theory.html">
+     2.11. cs theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/cpp_ref.html">
+     2.12. c/c++ ref
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../math/math.html">
+   3. math
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/differential_equations.html">
+     3.1. differential equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/proofs.html">
+     3.2. proofs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/analysis.html">
+     3.3. real analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/linear_algebra.html">
+     3.4. linear algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/signals.html">
+     3.5. signals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/optimization.html">
+     3.6. optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/calculus.html">
+     3.7. calculus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/chaos.html">
+     3.8. chaos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/math_basics.html">
+     3.9. math basics
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../stat/stat.html">
+   4. stat
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/graphical_models.html">
+     4.1. graphical models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/data_analysis.html">
+     4.2. data analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/testing.html">
+     4.3. testing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/causal_inference.html">
+     4.4. causal inference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/info_theory.html">
+     4.5. info theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/linear_models.html">
+     4.6. linear models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/time_series.html">
+     4.7. time series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/game_theory.html">
+     4.8. game theory
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ml/ml.html">
+   5. ml
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/comp_vision.html">
+     5.1. computer vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/structure_ml.html">
+     5.2. structure learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/classification.html">
+     5.3. classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/unsupervised.html">
+     5.4. unsupervised
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/deep_learning.html">
+     5.5. deep learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/feature_selection.html">
+     5.6. feature selection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/learning_theory.html">
+     5.7. learning theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/evaluation.html">
+     5.8. evaluation
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ai/ai.html">
+   6. ai
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/search.html">
+     6.1. search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/nlp.html">
+     6.2. nlp
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/fairness_sts.html">
+     6.3. fairness
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/cogsci.html">
+     6.4. cogsci
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/ai_futures.html">
+     6.5. ai futures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/logic.html">
+     6.6. logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/philosophy.html">
+     6.7. philosophy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/psychology.html">
+     6.8. psychology
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/knowledge_rep.html">
+     6.9. representations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/decisions.html">
+     6.10. decisions
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../neuro/neuro.html">
+   7. neuro
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/brain_basics.html">
+     7.1. brain basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/vissci.html">
+     7.2. vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/comp_neuro.html">
+     7.3. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/sensory_input.html">
+     7.4. sensory input
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/memory.html">
+     7.5. memory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/motor.html">
+     7.6. motor system
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/development.html">
+     7.7. development
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/notes/research_ovws/ovw_scat.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/csinva/csinva.github.io"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#goals">
+   1.6.1. goals
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#review-type">
+   1.6.2. review-type
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#initial-papers">
+   1.6.3. initial papers
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scat-conv">
+     1.6.3.1. scat_conv
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#neuro-style">
+     1.6.3.2. neuro style
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#papers-by-other-groups">
+     1.6.3.3. papers by other groups
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#wavelet-style-transfer">
+     1.6.3.4. wavelet style transfer
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#helmut-lab-papers">
+   1.6.4. helmut lab papers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#nano-papers">
+   1.6.5. nano papers
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#l2-functions">
+     1.6.5.1. l2 functions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reversible-invertible-models">
+     1.6.5.2. reversible/invertible models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#unsupervised-learning">
+   1.6.6. unsupervised learning
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="scattering-transform">
+<h1>1.6. scattering transform<a class="headerlink" href="#scattering-transform" title="Permalink to this headline">¶</a></h1>
+<p><strong>some papers involving the scattering transform and similar developments bringing structure to replace learned filters</strong></p>
+<ul class="simple">
+<li><p>some of the researchers involved</p>
+<ul>
+<li><p>edouard oyallan, joan bruna, stephan mallat, Helmut Bölcskei, max welling</p></li>
+</ul>
+</li>
+</ul>
+<div class="section" id="goals">
+<h2>1.6.1. goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>benefits</p>
+<ul>
+<li><p>all filters are defined</p></li>
+<li><p>more interpretable</p></li>
+<li><p>more biophysically plausible</p></li>
+</ul>
+</li>
+<li><p>scattering transform - computes a translation invariant repr. by cascading wavelet transforms and modulus pooling operators, which average the amplitude of iterated wavelet coefficients</p></li>
+</ul>
+</div>
+<div class="section" id="review-type">
+<h2>1.6.2. review-type<a class="headerlink" href="#review-type" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://arxiv.org/abs/1601.04920">Understanding deep convolutional networks</a> (mallat 2016)</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1712.04741">Mathematics of deep learning</a> (vidal et al. 2017)</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1611.08097">Geometric deep learning: going beyond euclidean data</a> (bronstein et al. 2017)</p></li>
+</ul>
+</div>
+<div class="section" id="initial-papers">
+<h2>1.6.3. initial papers<a class="headerlink" href="#initial-papers" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://arxiv.org/abs/1011.3023">classification with scattering operators</a> (bruna &amp; mallat 2010)</p></li>
+<li><p><a class="reference external" href="https://www.di.ens.fr/data/publications/papers/Eusipco2010InterConfPap.pdf">recursive interferometric repr.</a> (mallat 2010)</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1101.2286">group invariant scattering</a> (mallat 2012)</p>
+<ul>
+<li><p>introduces scat transform</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1312.5940">Generic deep networks with wavelet scattering</a> (oyallan et al. 2013)</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1203.1513">Invariant Scattering Convolution Networks</a> (bruna &amp; mallat 2012)</p>
+<ul>
+<li><p>introduces the scattering transform implemented as a cnn</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1304.6763">Deep scattering spectrum</a> (anden &amp; mallat 2013)</p></li>
+</ul>
+<div class="section" id="scat-conv">
+<h3>1.6.3.1. scat_conv<a class="headerlink" href="#scat-conv" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://arxiv.org/abs/1412.8659">Deep roto-translation scattering for object classification</a> (oyallan &amp; mallat 2014)</p>
+<ul>
+<li><p>can capture rounded figures</p></li>
+<li><p>can further impose robustness to rotation variability (although not full rotation invariance)</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/1709.01355.pdf">Visualizing and improving scattering networks</a> (cotter et al. 2017)</p>
+<ul>
+<li><p>add deconvnet to visualize</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://hal.inria.fr/hal-01837587/document">Scattering Networks for Hybrid Representation Learning</a> (oyallon et al. 2018)</p>
+<ul>
+<li><p>using early layers scat is good enough</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1802.07088">i-RevNet: Deep Invertible Networks</a> (jacobsen et al. 2018)</p></li>
+<li><p><a class="reference external" href="http://openaccess.thecvf.com/content_ICCV_2017/papers/Oyallon_Scaling_the_Scattering_ICCV_2017_paper.pdf">Scaling the scattering transform: Deep hybrid networks</a> (oyallon et al. 2017)</p>
+<ul>
+<li><p>use 1x1 convolutions to collapse accross channels</p></li>
+</ul>
+</li>
+<li><p>jacobsen_17 “Hierarchical Attribute CNNs”</p>
+<ul>
+<li><p>modularity</p></li>
+</ul>
+</li>
+<li><p>cheng_16 “Deep Haar scattering networks”</p></li>
+</ul>
+</div>
+<div class="section" id="neuro-style">
+<h3>1.6.3.2. neuro style<a class="headerlink" href="#neuro-style" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>https://arxiv.org/pdf/1809.10504.pdf</p></li>
+</ul>
+</div>
+<div class="section" id="papers-by-other-groups">
+<h3>1.6.3.3. papers by other groups<a class="headerlink" href="#papers-by-other-groups" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>cohen_16 “<a class="reference external" href="http://www.jmlr.org/proceedings/papers/v48/cohenc16.pdf">Group equivariant convolutional networks</a>”</p>
+<ul>
+<li><p>introduce G-convolutions which share more wieghts than normal conv</p></li>
+</ul>
+</li>
+<li><p>worrall_17 “<a class="reference external" href="http://openaccess.thecvf.com/content_ICCV_2017/papers/Worrall_Interpretable_Transformations_With_ICCV_2017_paper.pdf">Interpretable transformations with encoder-decoder networks</a>”</p>
+<ul>
+<li><p>look at interpretability</p></li>
+</ul>
+</li>
+<li><p>bietti_17 “<a class="reference external" href="http://papers.nips.cc/paper/7201-invariance-and-stability-of-deep-convolutional-representations">Invariance and stability of deep convolutional representations</a>”</p>
+<ul>
+<li><p>theory paper</p></li>
+</ul>
+</li>
+<li><p>cotter_18 “<a class="reference external" href="https://arxiv.org/pdf/1811.06115.pdf">Deep learning in the wavelet domain</a>”</p></li>
+</ul>
+</div>
+<div class="section" id="wavelet-style-transfer">
+<h3>1.6.3.4. wavelet style transfer<a class="headerlink" href="#wavelet-style-transfer" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://arxiv.org/pdf/1903.09760v1.pdf">Photorealistic Style Transfer via Wavelet Transforms&gt;</a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="helmut-lab-papers">
+<h2>1.6.4. helmut lab papers<a class="headerlink" href="#helmut-lab-papers" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://arxiv.org/abs/1504.05487">Deep Convolutional Neural Networks Based on Semi-Discrete Frames</a> (wiatowski et al. 2015)</p>
+<ul>
+<li><p>allowing for different and, most importantly, general semidiscrete frames (such as, e.g., Gabor frames, wavelets, curvelets, shearlets, ridgelets) in distinct network layers</p></li>
+<li><p>translation-invariant, and we develop deformation stability results</p></li>
+</ul>
+</li>
+<li><p>wiatoski_18 “<a class="reference external" href="https://ieeexplore.ieee.org/document/8116648/">A mathematical theory of deep convolutional neural networks for feature extraction</a>”</p>
+<ul>
+<li><p>encompasses general convolutional transforms - general semi-discrete frames (including Weyl-Heisenberg filters, curvelets, shearlets, ridgelets, wavelets, and learned filters), general Lipschitz-continuous non-linearities (e.g., rectified linear units, shifted logistic sigmoids, hyperbolic tangents, and modulus functions), and general Lipschitz-continuous pooling operators emulating, e.g., sub-sampling and averaging</p>
+<ul>
+<li><p>all of these elements can be different in different network layers.</p></li>
+</ul>
+</li>
+<li><p>translation invariance result of vertical nature in the sense of the features becoming progressively more translation-invariant with increasing network depth</p></li>
+<li><p>deformation sensitivity bounds that apply to signal classes such as, e.g., band-limited functions, cartoon functions, and Lipschitz functions.</p></li>
+</ul>
+</li>
+<li><p>wiatowski_18 “<a class="reference external" href="https://arxiv.org/pdf/1704.03636.pdf">Energy Propagation in Deep Convolutional Neural Networks</a>”</p></li>
+</ul>
+</div>
+<div class="section" id="nano-papers">
+<h2>1.6.5. nano papers<a class="headerlink" href="#nano-papers" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>yu_06 “A Nanoengineering Approach to Regulate the Lateral Heterogeneity of Self-Assembled Monolayers”</p>
+<ul>
+<li><p>regulate heterogeneity of self-assembled monlayers</p>
+<ul>
+<li><p>used nanografting + self-assembly chemistry</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>bu_10 nanografting - makes more homogenous morphology</p></li>
+<li><p>fleming_09 “dendrimers”</p>
+<ul>
+<li><p>scanning tunneling microscopy - provides highest spatial res</p></li>
+<li><p>combat this for insulators</p></li>
+</ul>
+</li>
+<li><p>lin_12_moire</p>
+<ul>
+<li><p>prob moire effect with near-field scanning optical microscopy</p></li>
+</ul>
+</li>
+<li><p>chen_12_crystallization</p></li>
+</ul>
+<div class="section" id="l2-functions">
+<h3>1.6.5.1. l2 functions<a class="headerlink" href="#l2-functions" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(L^2\)</span> function is a function <span class="math notranslate nohighlight">\(f: X \to \mathbb{R}\)</span> that is square integrable: <span class="math notranslate nohighlight">\(|f|^2 = \int_X |f|^2 d\mu\)</span> with respect to the measure <span class="math notranslate nohighlight">\(\mu\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(|f|\)</span> is its <span class="math notranslate nohighlight">\(L^2\)</span>-norm</p></li>
+</ul>
+</li>
+<li><p>**measure ** = nonnegative real function from a delta-ring F such that <span class="math notranslate nohighlight">\(m(\empty) = 0\)</span> and <span class="math notranslate nohighlight">\(m(A) = \sum_n m(A_n)\)</span></p></li>
+<li><p><strong>Hilbert space</strong> H: a vectors space with an innor product <span class="math notranslate nohighlight">\(&lt;f, g&gt;\)</span> such that the following norm turns H into a complete metric space: <span class="math notranslate nohighlight">\(|f| = \sqrt{&lt;f, f&gt;}\)</span></p></li>
+<li><p><strong>diffeomorphism</strong> is an <a class="reference external" href="https://en.wikipedia.org/wiki/Isomorphism">isomorphism</a> of <a class="reference external" href="https://en.wikipedia.org/wiki/Smooth_manifold">smooth manifolds</a>. It is an <a class="reference external" href="https://en.wikipedia.org/wiki/Invertible_function">invertible function</a> that <a class="reference external" href="https://en.wikipedia.org/wiki/Map_(mathematics)">maps</a> one <a class="reference external" href="https://en.wikipedia.org/wiki/Differentiable_manifold">differentiable manifold</a> to another such that both the function and its inverse are <a class="reference external" href="https://en.wikipedia.org/wiki/Smooth_function">smooth</a>.</p></li>
+</ul>
+</div>
+<div class="section" id="reversible-invertible-models">
+<h3>1.6.5.2. reversible/invertible models<a class="headerlink" href="#reversible-invertible-models" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://arxiv.org/abs/1806.00400">williams  inverting w/ autoregressive models</a></p></li>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/1511.05653.pdf">arora reversibility</a></p></li>
+<li><p>iResNet</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="unsupervised-learning">
+<h2>1.6.6. unsupervised learning<a class="headerlink" href="#unsupervised-learning" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://arxiv.org/pdf/1905.09272.pdf">Data-Efficient Image Recognition with Contrastive Predictive Coding</a></p>
+<ul>
+<li><p>pre-training with CPC on ImageNet yields super good results</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://www.cv-foundation.org/openaccess/content_iccv_2015/html/Doersch_Unsupervised_Visual_Representation_ICCV_2015_paper.html">Unsupervised Visual Representation Learning by Context Prediction</a> (efros 15)</p>
+<ul>
+<li><p>predict relative location of different patches</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/1905.00546.pdf">Billion-scale semi-supervised learning for image classification</a> (fair 19)</p>
+<ul>
+<li><p>unsupervised learning + model distillation succeeds on imagenet</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes/research_ovws"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="ovw_dl_theory.html" title="previous page">1.5. dl theory</a>
+    <a class='right-next' id="next-link" href="ovw_ml_medicine.html" title="next page">1.7. ml in medicine</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Chandan Singh<br/>
+        
+            &copy; Copyright None.<br/>
+          <div class="extra_footer">
+            <p>
+Many of these images are taken from resources on the web.
+</p>
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

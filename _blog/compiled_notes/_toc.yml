@@ -1,0 +1,83 @@
+- file: intro
+  numbered: true
+
+- file: notes/research_ovws/research_ovws.md
+  sections:
+  - file: notes/research_ovws/ovw_comp_neuro.md
+  - file: notes/research_ovws/ovw_transfer_learning.md
+  - file: notes/research_ovws/ovw_disentanglement.md
+  - file: notes/research_ovws/ovw_complexity.md
+  - file: notes/research_ovws/ovw_interesting_science.md
+  - file: notes/research_ovws/ovw_dl_theory.md
+  - file: notes/research_ovws/ovw_scat.md
+  - file: notes/research_ovws/ovw_ml_medicine.md
+  - file: notes/research_ovws/ovw_dl_for_neuro.md
+  - file: notes/research_ovws/ovw_uncertainty.md
+  - file: notes/research_ovws/ovw_interp.md
+  - file: notes/research_ovws/ovw_kernels.md
+- file: notes/cs/cs.md
+  sections:
+  - file: notes/cs/retrieval.md
+  - file: notes/cs/python_ref.md
+  - file: notes/cs/data_structures.md
+  - file: notes/cs/software.md
+  - file: notes/cs/quantum.md
+  - file: notes/cs/algo.md
+  - file: notes/cs/graphs.md
+  - file: notes/cs/os.md
+  - file: notes/cs/arch.md
+  - file: notes/cs/java_ref.md
+  - file: notes/cs/comp_theory.md
+  - file: notes/cs/cpp_ref.md
+- file: notes/math/math.md
+  sections:
+  - file: notes/math/differential_equations.md
+  - file: notes/math/proofs.md
+  - file: notes/math/analysis.md
+  - file: notes/math/linear_algebra.md
+  - file: notes/math/signals.md
+  - file: notes/math/optimization.md
+  - file: notes/math/calculus.md
+  - file: notes/math/chaos.md
+  - file: notes/math/math_basics.md
+- file: notes/stat/stat.md
+  sections:
+  - file: notes/stat/graphical_models.md
+  - file: notes/stat/data_analysis.md
+  - file: notes/stat/testing.md
+  - file: notes/stat/causal_inference.md
+  - file: notes/stat/info_theory.md
+  - file: notes/stat/linear_models.md
+  - file: notes/stat/time_series.md
+  - file: notes/stat/game_theory.md
+- file: notes/ml/ml.md
+  sections:
+  - file: notes/ml/comp_vision.md
+  - file: notes/ml/structure_ml.md
+  - file: notes/ml/classification.md
+  - file: notes/ml/unsupervised.md
+  - file: notes/ml/deep_learning.md
+  - file: notes/ml/feature_selection.md
+  - file: notes/ml/learning_theory.md
+  - file: notes/ml/evaluation.md
+- file: notes/ai/ai.md
+  sections:
+  - file: notes/ai/search.md
+  - file: notes/ai/nlp.md
+  - file: notes/ai/fairness_sts.md
+  - file: notes/ai/cogsci.md
+  - file: notes/ai/ai_futures.md
+  - file: notes/ai/logic.md
+  - file: notes/ai/philosophy.md
+  - file: notes/ai/psychology.md
+  - file: notes/ai/knowledge_rep.md
+  - file: notes/ai/decisions.md
+- file: notes/neuro/neuro.md
+  sections:
+  - file: notes/neuro/brain_basics.md
+  - file: notes/neuro/vissci.md
+  - file: notes/neuro/comp_neuro.md
+  - file: notes/neuro/sensory_input.md
+  - file: notes/neuro/memory.md
+  - file: notes/neuro/motor.md
+  - file: notes/neuro/development.md
