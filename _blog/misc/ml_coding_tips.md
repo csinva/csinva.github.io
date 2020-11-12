@@ -33,6 +33,7 @@ displays
 - [cloud9sdk](https://github.com/c9/core) can be a useful subsitute for jupyterhub
 - [thinc](https://github.com/explosion/thinc) - interoperable dl framework
 - [napari](https://github.com/napari/napari) - image viewer
+- [python-fire](https://github.com/google/python-fire) - passing cmd line args
 
 
 
@@ -56,11 +57,11 @@ displays
 
 
 
-### deploying
+### documenting / deploying
 
 - [streamlit](https://docs.streamlit.io/) - building interactive application
-
-
+- [pdoc3](https://pypi.org/project/pdoc3/) can very quickly generate simple api from docstrings
+- [jupyterbook](https://jupyterbook.org/start/publish.html#)
 
 
 ### general tips
@@ -75,7 +76,6 @@ displays
 - it's hard to pick a good ide for data science. [jupyter](https://jupyter.org/) notebooks are great for exploratory analysis, while more fully built ides like [pycharm](https://www.jetbrains.com/pycharm/) are better for large-scale projects
 - using [atom](https://atom.io/) with the [hydrogen](https://atom.io/packages/hydrogen) plugin often strikes a nice balance
 - [jupytertext](https://github.com/mwouts/jupytext) offers a nice way to use version control with jupyter
-- [pdoc3](https://pypi.org/project/pdoc3/) can very quickly generate simple api from docstrings
 - when working on AWS, this command is useful for starting remote jupyterlab sessions `screen jupyter lab --certfile=~/ssl/mycert.pem --keyfile ~/ssl/mykey.key`
 
 ### hyperparameter tracking

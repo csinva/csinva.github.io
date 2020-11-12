@@ -1,9 +1,8 @@
 ---
-
 layout: notes
 title: Unsupervised
 category: ml
-typora-copy-images-to: ./assets/ml
+typora-copy-images-to: ../assets
 ---
 
 {:toc}
@@ -54,7 +53,7 @@ typora-copy-images-to: ./assets/ml
 
 - *latent vars* - values not specified in the observed data
 - 
-  ![](assets/ml/j10_1.png)
+  ![](../assets/j10_1.png)
 
 - *K-Means*
   - start with random centers
@@ -79,7 +78,7 @@ graph LR;
   Z --> Y
 ```
 
-- ex. ![](assets/ml/j5_16.png)
+- ex. ![](../assets/j5_16.png)
 - latent variable Z has multinomial distr.
   - *mixing proportions*: $P(Z^i=1|x, \xi)$
     - ex. $ \frac{e^{\xi_i^Tx}}{\sum_je^{\xi_j^Tx}}$
@@ -237,7 +236,7 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
         - D Euclidean iff B is psd
 - **t-sne** preserves pairwise neighbors
   - [t-sne tutorial](https://distill.pub/2016/misread-tsne/)
-  - t-sne tries to match pairwise distances between the original data and the latent space data: ![Screen Shot 2020-09-11 at 12.35.35 AM](assets/ml/Screen Shot 2020-09-11 at 12.35.35 AM.png)
+  - t-sne tries to match pairwise distances between the original data and the latent space data: ![Screen Shot 2020-09-11 at 12.35.35 AM](../assets/tsne.png)
   - original data
     - distances are converted to probabilities by assuming points are means of Gaussians, then normalizing over all pairs
       - variance of each Gaussian is scaled depending on the desired perplexity
@@ -349,7 +348,7 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
     - embed population of images and calculate mean + variance in embedding space
     - measure distance between these means / variances for real/synthetic images using Frechet distance = Wasseterstein-2 distance
 - infogan
-  - ![infogan](assets/ml/infogan.png)
+  - ![infogan](../assets/infogan.png)
 - problems
   - mode collapse - pick just one mode in the distr.
 - train network to be loss function
@@ -430,7 +429,7 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
   - could append stop char to each codeword
   - general prefix-free code = binary tries
     - codeword is path from froot to leaf
-    - ![Screen Shot 2020-04-20 at 8.50.07 PM](assets/ml/Screen Shot 2020-04-20 at 8.50.07 PM.png)
+    - ![Screen Shot 2020-04-20 at 8.50.07 PM](../assets/trie.png)
   - huffman code - higher prob = shorter
 - **arithmetic coding**
   - motivation: coding one symbol at a time incurs penalty of +1 per symbol - more efficient to encode groups of things

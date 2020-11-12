@@ -17,12 +17,12 @@ category: ml
 
 - image I(x,y) projects scene(X, Y, Z)
   - lower case for image, upper case for scene
-  - ![](assets/comp_vision/pinhole.png)
+  - ![](../assets/pinhole.png)
     - f is a fixed dist. not a function
     - box with pinhole=*center of projection*, which lets light go through
     - Z axis points out of box, X and Y aligned w/ image plane (x, y)
 - perspective projection - maps 3d points to 2d points through holes
-  - ![](assets/comp_vision/perspective.png)
+  - ![](../assets/perspective.png)
   - perspective projection works for spherical imaging surface - what's important is 1-1 mapping between rays and pixels
   - natural measure of image size is visual angle
 - **orthographic projection** - appproximation to perspective when object is relatively far
@@ -72,7 +72,7 @@ category: ml
 - eye
   - *iris* - colored annulus w/ radial muscles
   - *pupil* - hole (aperture) whose size controlled by iris
-  - *retina*: ![](assets/comp_vision/retina.png)
+  - *retina*: ![](../assets/retina.png)
 - colors are what is reflected
 - cones (short = blue, medium = green, long = red)
 - *metamer* - 2 different but indistinguishable spectra
@@ -182,8 +182,8 @@ category: ml
   - ex. audio -> digital -> audio
   - undersampling loses information
   - **aliasing** - signals traveling in disguise as other frequencies
-    - ![](assets/comp_vision/sin1.png)
-    - ![](assets/comp_vision/sin2.png)
+    - ![](../assets/sin1.png)
+    - ![](../assets/sin2.png)
   - antialiasing
     - can sample more often
     - make signal less wiggly by removing high frequencies first
@@ -205,7 +205,7 @@ category: ml
     - whole pyramid isn't much bigger than original image
     - *collapse* pyramid - keep upsampling and adding
     - good for template matching, search over translations
-- sharpening - add back the high frequencies you remove by blurring (laplacian pyramid): ![](assets/comp_vision/laplacian.png)
+- sharpening - add back the high frequencies you remove by blurring (laplacian pyramid): ![](../assets/laplacian.png)
 
 
 ## edges + templates
@@ -376,17 +376,17 @@ category: ml
 - *vergence* movement - look at close / far point on same line
   - change angle of convergence (goes to 0 at $\infty$)
     - *disparity* = $ 2 \delta \theta = b \cdot \delta Z / Z^2$ where b - distance between eyes, $\delta Z$ - change in depth, Z - depth
-    - ![epth_disparit](assets/comp_vision/depth_disparity.png)
+    - ![epth_disparit](../assets/depth_disparity.png)
       - b - distance between eyes, $\delta$ - change in depth, Z - depth
 - *version* movement - change direction of gaze
   - forms Vieth-Muller circle - points lie on same circle with eyes
     - cyclopean eye isn't on circle, but close enough
     - disparity of P' = $\alpha - \beta = 0$ on Vieth-Muller circle
-    - ![ieth_mulle](assets/comp_vision/vieth_muller.png)
+    - ![ieth_mulle](../assets/vieth_muller.png)
 
 ### optical axes parallel (common in robots)
 
-- ![isparity_paralle](assets/comp_vision/disparity_parallel.png)
+- ![isparity_paralle](../assets/disparity_parallel.png)
 - *disparity* $d = x_l - x_r = bf/Z$
 - *error* $|\delta Z| = \frac{Z^2 |\delta d|}{bf}$
 - **parallax** - effect where near objects move when you move but far don't
@@ -403,7 +403,7 @@ category: ml
   - $\vec{c_1 c_2}$ is on all epipolar planes
   - each image plane has corresponding **epipolar line** - intersection of epipolar plane with image plane
     - **epipole** - intersection of $\vec{c_1 c_2}$ and image plane
-      - ![pipolar](assets/comp_vision/epipolar1.png)
+      - ![pipolar](../assets/epipolar1.png)
 
 - **structure from motion** problem: given n corresponding projections $(x_i, y_i)$ in both cameras, find $(X_i, Y_i, Z_i)$ by estimating R, t:  **Longuet-Higgins 8-point algorithm** - overall minimizing *re-projection error* (basically minimizes least squares = bundle adjustment)
 
@@ -430,7 +430,7 @@ category: ml
     - find corresponding epipolar line in 2nd image
     - correspondence search: search this line and pick best match
   - simple ex. parallel optical axes = assume cameras at same height, same focal lengths $\implies$ epipolar lines are horizontal scan lines
-    - ![aralle](assets/comp_vision/parallel.png)
+    - ![aralle](../assets/parallel.png)
 - **correspondence search algorithms** (simplest to most complex)
   - assume photo consistency - same points in space will give same brightness of pixels
   - take a window and use metric
@@ -607,7 +607,7 @@ category: ml
 - **consistency** - 2 segmentations consistent when they can be explained by same segmentation tree
   - *percept tree* - describe what's in an image using a tree
 - evaluation - how to correspond boundaries?
-  - min-cost assignment on **bipartite graph=bigraph** - connections only between groundtruth, signal: ![bigraph](assets/comp_vision/bigraph.png)
+  - min-cost assignment on **bipartite graph=bigraph** - connections only between groundtruth, signal: ![bigraph](../assets/bigraph.png)
 - ex. for each pixel predict if it's on a boundary by looking at window around it
   - proximity cue
   - boundary cues: brightness gradient, color gradient, texture gradient (gabor responses)

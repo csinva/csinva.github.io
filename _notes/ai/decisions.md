@@ -2,7 +2,7 @@
 layout: notes
 title: decisions
 category: ai
-typora-copy-images-to: ./assets/ai
+typora-copy-images-to: ../assets
 ---
 
 {:toc}
@@ -98,7 +98,7 @@ Some notes on decision theory based on Berkeley's CS 188 course and  "Artificial
 - can ignore chance nodes
   - then *action-utility function* = *Q-function* maps directly from actions to utility
 
-![decision_nets](assets/ai/decision_nets.png)
+![decision_nets](../assets/decision_nets.png)
 
 - evaluation
   1. set evidence
@@ -200,7 +200,7 @@ Some notes on decision theory based on Berkeley's CS 188 course and  "Artificial
       - remove *dominated plans*
   - generally this is far too inefficient
 
-- *dynamic decision network* - online agent ![](assets/ai/online_pomdp.png) 
+- *dynamic decision network* - online agent ![](../assets/online_pomdp.png) 
 
 # reinforcement learning -- R&N 21.1-21.6
 

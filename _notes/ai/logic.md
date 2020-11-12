@@ -2,7 +2,7 @@
 layout: notes
 title: logic
 category: ai
-typora-copy-images-to: ./assets/logic
+typora-copy-images-to: ../assets
 ---
 
 {:toc}
@@ -59,7 +59,7 @@ Some notes on logic based on Berkeley's CS 188 course and  "Artificial Intellige
 
     - *data-driven*
     - keep adding until query is added or nothing else can be added
-    - ![Screen Shot 2018-08-01 at 6.54.42 PM](assets/logic/Screen Shot 2018-08-01 at 6.54.42 PM.png)
+    - ![Screen Shot 2018-08-01 at 6.54.42 PM](../assets/logic_graph.png)
 
     - backward chaining works backwards from the query
       - *goal-driven*
@@ -113,7 +113,7 @@ Some notes on logic based on Berkeley's CS 188 course and  "Artificial Intellige
 
 # first-order logic - 8.1-8.3.3
 
-- ![Screen Shot 2018-08-01 at 7.52.25 PM](assets/logic/Screen Shot 2018-08-01 at 7.52.25 PM.png)
+- ![Screen Shot 2018-08-01 at 7.52.25 PM](../assets/logic_table.png)
 - basically added objects, relations, quantifiers ($\exists, \forall$)
 - declarative language - semantics based on a truth relation between sentences and possible worlds
   - has *compositionality* - meaning decomposes
@@ -320,7 +320,7 @@ Some notes on logic based on Berkeley's CS 188 course and  "Artificial Intellige
 - search problem to maximize some criteria subject to some constraints
   - top-down - start with large cover then go to small
   - bottom-up - start with high-sensitivity, low cover rules then go larger
-- ![find_best_rule](assets/logic/find_best_rule.png)
+- ![find_best_rule](../assets/find_best_rule.png)
 - search algos
   - exhaustive search
   - hill-climbing = local-search - can make less myopic by considering multiple refinements at a time

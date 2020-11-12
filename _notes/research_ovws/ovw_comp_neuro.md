@@ -13,7 +13,7 @@ category: research
 - remap to new locations
 - **grid cells** (moser & moser 2005) - in the entorhinal cotex (provides inputs to the hippocampus) - not particular locations but rather hexagonal coordinate system
 - grid cells fire if the mouse is in any location at the vertex (or center) of one of the hexagons
-- ![Screen Shot 2019-05-10 at 1.25.02 PM](assets/mouse.png)
+- ![Screen Shot 2019-05-10 at 1.25.02 PM](../assets/mouse.png)
 - there are grid cells with larger/smaller hexagons, different orientations, different offsets
 - can look for grid cells signature in fmri: https://www.nature.com/articles/nature08704
 - other places with grid cell-like behavior
@@ -246,7 +246,7 @@ category: research
   - Mountcastle 1978: vision regions are vision becase they receive visual input
   - number of regions / connectivity seems to be genetic
 - before necortex, brain regions were homogenous: spinal cord, brain stem, basal ganglia, ...
-- ![cortical_columns](assets/cortical_columns.png)
+- ![cortical_columns](../assets/cortical_columns.png)
 
 ## principles
 
@@ -295,7 +295,7 @@ category: research
 # forgetting
 - [Continual Lifelong Learning with Neural Networks: A Review](https://arxiv.org/pdf/1802.07569.pdf)
   - main issues is *catastrophic forgetting* / *stability-plasticity dilemma*
-  - ![Screen Shot 2020-01-01 at 11.49.32 AM](assets/forgetting.png)
+  - ![Screen Shot 2020-01-01 at 11.49.32 AM](../assets/forgetting.png)
   - 2 types of plasticity
     - Hebbian plasticity (Hebb 1949) for positive feedback instability
     - compensatory homeostatic plasticity which stabilizes neural activity
@@ -373,4 +373,4 @@ category: research
     - predict next image vector given current frame vectors + displacement
 - kietzmann_18_dnn_in_neuro_rvw
 - friston_10_free_energy
-  - ![friston_free_energy](assets/friston_free_energy.png)
+  - ![friston_free_energy](../assets/friston_free_energy.png)

@@ -188,7 +188,7 @@ notes from Neuroscience, 5th edition + Intro to neurobiology course at UVA
 
 ## pathway
 - nociception
-    - ![](assets/sensory_input/10_1.png)
+    - ![](../assets/10_1.png)
 	- same as mechanosensory except goes all the way to thalamus
 		- doesn't stop in brainstem
 	- crosses the midline after first synapse
@@ -234,7 +234,7 @@ notes from Neuroscience, 5th edition + Intro to neurobiology course at UVA
 	- have these for each color
 
 ## pathway
-- ![](assets/sensory_input/11_1.png)
+- ![](../assets/11_1.png)
 1. rods / cones
 (2). horizontal cells - regulate gain control, how fast adapts, contrast adaptation
 3. bipolar cells
@@ -270,7 +270,7 @@ notes from Neuroscience, 5th edition + Intro to neurobiology course at UVA
 - *V4* in temporal lobe - object recognition
 
 ## pathways
-- ![](assets/sensory_input/12_1.png)
+- ![](../assets/12_1.png)
 - overall
 	1. V1
 	2. V2
@@ -337,7 +337,7 @@ notes from Neuroscience, 5th edition + Intro to neurobiology course at UVA
 - very related to cochlea
 	- same hair cells
 - differences
-    - ![](assets/sensory_input/14_1.png)
+    - ![](../assets/14_1.png)
 	1. vestibular system doesn't use cortex (you don't think about it)
 		- goes right into spinal chord
 	2. controls eye movements
@@ -388,5 +388,5 @@ notes from Neuroscience, 5th edition + Intro to neurobiology course at UVA
 	- only have to learn excitatory
 	
 # 15 - chemical senses
-![](assets/sensory_input/15_1.png)
+![](../assets/15_1.png)
 - cAMP is used by GPCR

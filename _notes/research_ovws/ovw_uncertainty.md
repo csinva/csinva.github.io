@@ -24,7 +24,7 @@ category: research
   - [can easily do this with sklearn](https://scikit-learn.org/stable/auto_examples/ensemble/plot_gradient_boosting_quantile.html)
   - quantile loss = $\begin{cases} \alpha \cdot \Delta & \text{if} \quad \Delta > 0\\\\(\alpha - 1) \cdot \Delta & \text{if} \quad \Delta < 0\end{cases}$
     - $\Delta =$ actual - predicted
-    - ![Screen Shot 2019-06-26 at 10.06.11 AM](assets/Screen Shot 2019-06-26 at 10.06.11 AM.png)
+    - ![Screen Shot 2019-06-26 at 10.06.11 AM](../assets/quantile_losses.png)
 
 # complementarity
 

@@ -209,7 +209,7 @@ some more concrete questions:
       - $\hat y (u) = W_L x_L$
     - rewriting in implicit form
       - $x = (x_L, ..., x_1)$ - concatenate all the activations into one big vector
-      - ![implicit_dl](assets/implicit_dl.png)
+      - ![implicit_dl](../assets/implicit_dl.png)
       - ex. $Ax + Bu= \begin{bmatrix} W_{L-1}x_{L-1} \\ W_{L-2} x_{L-2} \\ \vdots \\ W_1x_1 \\ \mathbf 0\end{bmatrix} + \begin{bmatrix} 0 \\ 0 \\ \vdots \\ 0 \\ W_0 u \end{bmatrix}$ 
 - [lifted neural networks](https://arxiv.org/abs/1805.01532) (askari et al. 2018)
   - can solve dnn $\hat y = \phi(W_2 \phi (W_1X_0))$ by rewriting using constraints:
@@ -289,8 +289,8 @@ some more concrete questions:
   - security evaluation
     - robustness - minimum norm perturbation to change class
     - adversarial loss - biggest change in loss within some epsilon ball
-  - ![Screen Shot 2020-02-04 at 1.54.49 PM](assets/Screen Shot 2020-02-04 at 1.54.49 PM.png)
-  - ![Screen Shot 2020-02-04 at 1.54.28 PM](assets/Screen Shot 2020-02-04 at 1.54.28 PM.png)
+  - ![Screen Shot 2020-02-04 at 1.54.49 PM](../assets/adv_attacks_table.png)
+  - ![Screen Shot 2020-02-04 at 1.54.28 PM](../assets/adv_attack_hierarchy.png)
 - [AugMix: A Simple Data Processing Method to Improve Robustness and Uncertainty](https://arxiv.org/abs/1912.02781) (hendrycks et al. 2020)
   - do a bunch of transformations and average images to create each training image
 

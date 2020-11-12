@@ -2,7 +2,7 @@
 layout: notes
 title: Optimization
 category: math
-typora-copy-images-to: ./assets/optimization
+typora-copy-images-to: ../assets
 ---
 
 {:toc}
@@ -353,7 +353,7 @@ typora-copy-images-to: ./assets/optimization
   - beta2 - exponential decay rate for 2nd moment estimates (should be higher when gradients sparser)
     - default 0.999
   - epsilon - small number to prevent division by zero
-    - default 1e-8 - usually requires tuning (ex. inception requires 1e-1) ![Screen Shot 2018-10-11 at 8.07.56 AM](assets/optimization/Screen Shot 2018-10-11 at 8.07.56 AM.png)visualization
+    - default 1e-8 - usually requires tuning (ex. inception requires 1e-1) ![Screen Shot 2018-10-11 at 8.07.56 AM](../assets/adam.png)visualization
 
 - requires low dims
   - goodfellow 2015 "Qualitatively characterizing neural network optimization problems" plots loss on line from starting point to ending point

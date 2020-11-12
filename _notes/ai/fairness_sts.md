@@ -2,7 +2,7 @@
 layout: notes
 title: fairness
 category: ai
-typora-copy-images-to: ./assets/nlp
+typora-copy-images-to: ../assets
 ---
 
 *Some notes on algorithm fairness and STS.**

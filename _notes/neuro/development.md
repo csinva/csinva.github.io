@@ -63,7 +63,7 @@ notes from Neuroscience, 5th edition + Intro to neurobiology course at UVA
 	- timing: cell-cell interations and tyrosine kinases determine order
 	- first alpha neurons, then GABAergic to control those, last is glia
 	- neural crest function
-		- migratory - moves out and divides: ![](assets/development/22_1.png)
+		- migratory - moves out and divides: ![](../assets/22_1.png)
 		- *neuroblastoma* - developed early - severe problem because missing parts of NS
 		- makes DRG and associated glial cells (schwann cells)
 		- makes sympathetic NS and target ganglia, enteric NS, parasympathetic NS targets
@@ -98,13 +98,13 @@ notes from Neuroscience, 5th edition + Intro to neurobiology course at UVA
 	1. *pioneer axons* (Betz cells) are first - often die
 	2. *follower axons* (other Betz cells) can jump onto these and connect before pioneer dies
 	- *trophic support* - neuron survives on contact
-- frog *tectum* (has superior colliculus) with map of retina: ![](assets/development/23_1.png)
+- frog *tectum* (has superior colliculus) with map of retina: ![](../assets/23_1.png)
 	- *ephrin* (EPH) repulses axon
 		- retinal NT -> tectum AP
 		- axons have different amount of EPH receptors (in retina temporal has more than nasal)
 		- gradient of EPH (in tectum anterior has less than posterior)
 		- if we flip eye upside down (on nasal-temporal axis), image will be upside down
-- 3 classes of axon guidance molecules: ![](assets/development/23_2.png)
+- 3 classes of axon guidance molecules: ![](../assets/23_2.png)
 	1. *ECM/integrins*
 	2. *NCAM* (homophilic—binds to another neuron that is NCAM),
 		- follower neurons bind to pioneer through NCAM-NCAM interactions
@@ -155,7 +155,7 @@ notes from Neuroscience, 5th edition + Intro to neurobiology course at UVA
 		- want to keep neurotrophins local, because there aren't that many of them
 
 # 24 plasticity in systems
-- experience-dependent plasticity - ![](assets/development/24_1.png)
+- experience-dependent plasticity - ![](../assets/24_1.png)
 	- ex. ducks imprinting is non-reversable
 	- learning is crystallized during *critical period*
 		- *CREB* and protein synthesis
@@ -252,7 +252,7 @@ notes from Neuroscience, 5th edition + Intro to neurobiology course at UVA
 
 # 26 diseases
 ## alzheimer's
-- ![](assets/development/26_1.png)
+- ![](../assets/26_1.png)
 - overview
 	- age-associated - tons of people get it
 	- doesn't kill you, secondary complications like pneumonia will kill you

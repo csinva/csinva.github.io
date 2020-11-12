@@ -40,7 +40,7 @@ category: ml
 
 # sequential models
 
-![](assets/structure/hmm_vs_condition.png) 
+![](../assets/hmm_vs_condition.png) 
 
 ## sequence models
 - goal: learn distribution $P(x_1,...,x_n)$ for sequences $x_1,...,x_n$
@@ -97,10 +97,10 @@ category: ml
 
 ## hard constraints and integer programs
 
-- ![](assets/structure/8_hard_constraints.png) 
+- ![](../assets/8_hard_constraints.png) 
 
 ## soft constraints
-- ![](assets/structure/8_1.png) 
+- ![](../assets/8_1.png) 
 
 # inference
 

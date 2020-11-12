@@ -13,7 +13,7 @@ category: stat
 - **confounding** = difference between groups other than the treatment which affects the response
   - this is the key problem when using observational (non-experimental) data to make causal inferences
   - problem occurs because we don't get to see counterfactuals
-  - ex from Pearl where Age is the confounder![Screen Shot 2019-04-07 at 7.01.55 PM](assets/Screen Shot 2019-04-07 at 7.01.55 PM.png)
+  - ex from Pearl where Age is the confounder![Screen Shot 2019-04-07 at 7.01.55 PM](../assets/confounding_ex.png)
 - study types
   - 3 principles of experimental design: replication, randomization, conditioning
   - **randomized control trial (RCT)** - controls for any possible confounders
@@ -84,7 +84,7 @@ C(Location of Car) --> B
     - null hypothesis
 - action = intervention, exposure, treatments
 - action $A$ and outcome $Y$
-- ![Screen Shot 2020-05-05 at 10.50.28 AM](assets/Screen Shot 2020-05-05 at 10.50.28 AM.png)
+- ![Screen Shot 2020-05-05 at 10.50.28 AM](../assets/counterfactuals.png)
 - **potential outcomes** = **counterfactual outcomes** $Y^{a=1}, Y^{a=0}$ 
 - **average treatment effect ATE**: $E[Y^{a=1} - Y^{a=0}]$
 - key assumptions: SUTVA, consistency, ignorability
@@ -130,7 +130,7 @@ C(Location of Car) --> B
   - $\epsilon_i$ = noise variables = **exogenous nodes** - node in the network that represents all the data not collected
   - parent nodes = *direct causes*
 - again, fix value of $x$ (and values of $\epsilon$ seend in the data) and use SEM to set all downstream variables
-- ex. ![sem](assets/sem.png)
+- ex. ![sem](../assets/sem.png)
 
   - in this ex, W and H are usually correlated, so conditional distrs. are similar, but do operator of changing W has no effect on H (and vice versa)
   - notation: $P(H|do(W:=1))$ or $P_{M[W:=1]}(h)$
@@ -142,7 +142,7 @@ C(Location of Car) --> B
 	- absence of edges often corresponds to qualitative judgements
 | forks                                                        | mediators                                                    | colliders                                                    |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ![Screen Shot 2020-10-21 at 11.57.13 PM](assets/Screen Shot 2020-10-21 at 11.57.13 PM.png) | ![Screen Shot 2020-10-21 at 11.57.17 PM](assets/Screen Shot 2020-10-21 at 11.57.17 PM.png) | ![Screen Shot 2020-10-21 at 11.57.22 PM](assets/Screen Shot 2020-10-21 at 11.57.22 PM.png) |
+| ![Screen Shot 2020-10-21 at 11.57.13 PM](../assets/explaining_away.png) | ![Screen Shot 2020-10-21 at 11.57.17 PM](../assets/confounder_in_way.png) | ![Screen Shot 2020-10-21 at 11.57.22 PM](../assets/confounding_triple.png) |
 | confounder $z$, can be adjusted for                          | confounder can vary causal effect                            | conditioning on confounder z can explain away a cause        |
 
 -   **controlling** for a variable  (when we have a causal graph):
@@ -197,7 +197,7 @@ M --> Y
     - propensity scores summarize all of the covariates into one scalar: the probability of being treated
       - defined as the probability of being treated given the observed covariates
       - propensity scores are balancing scores: At each value of the propensity score, the distribution of the covariates X defining the propensity score is the same in the treated and control groups -- usually this is logistic regresion
-      - if treatment assignment is ignorable given the covariates, then treatment assignment is also ignorable given the propensity score: ![propensity](assets/propensity.png)
+      - if treatment assignment is ignorable given the covariates, then treatment assignment is also ignorable given the propensity score: ![propensity](../assets/propensity_matching.png)
     - hard constraints are called "exact matching" - can be combined with other methods
     - mahalanabois distance
   - matching methods
@@ -293,7 +293,6 @@ M --> Y
     - level 1 - invariant conditional distrs. of the form $P(Y|\mathbf Z)$
     - level 2 - conditional interventional distrs. of the form $P(Y|do(\mathbf W), \mathbf Z)$
     - level 3 - distributions corresponding to counterfactuals
-- [Domain-Adversarial Training of Neural Networks](https://dl.acm.org/ doi/abs/10.5555/2946645.2946704) (ganin et al. 16)
 
 ## reviews
 
@@ -370,7 +369,7 @@ M --> Y
     - requires 2 assumptions
       - ICM: independence between cause and mechanism (i.e. the function doesn't change based on distr. of X) - this usually gets violated in anticausal direction
       - causal sufficiency - we aren't missing any vars
-    - ex. ![Screen Shot 2019-05-20 at 10.04.03 PM](assets/Screen Shot 2019-05-20 at 10.04.03 PM.png)
+    - ex. ![Screen Shot 2019-05-20 at 10.04.03 PM](../assets/learning_causal_pattern.png)
       - here noise is indep. from x (causal direction), but can't be independent from y (non-causal direction)
       - in (c), function changes based on input
     - can turn this into binary classification and learn w/ network: given X, Y, does X->Y or Y-X?
@@ -378,7 +377,7 @@ M --> Y
     - eval - when one thing is erased, does the other also get erased?
 - [Visual Causal Feature Learning](https://arxiv.org/abs/1412.2309) (chalupka, perona, & eberhardt, 2015)
   - assume the behavior $T$ is a function of some hidden causes $H_i$ and the image
-    - ![Screen Shot 2020-02-03 at 2.27.27 PM](assets/Screen Shot 2020-02-03 at 2.27.27 PM-0768863.png)
+    - ![Screen Shot 2020-02-03 at 2.27.27 PM](../assets/hidden_graphical_node.png)
   - **Causal Coarsening Theorem** - causal partition is coarser version of the observational partition
     - observational partition - divide images into partition where each partition has constant prediction $P(T|I)$
     - causal partition - divide images into partition where each partition has constant $P(T|man(I))$

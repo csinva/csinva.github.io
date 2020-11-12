@@ -1,14 +1,14 @@
 # physiology, connectivity, represention, and manifolds
 
 - clay reid, ABA, at Simons Institute
-- ![Screen Shot 2018-09-03 at 7.06.46 PM](assets/Screen Shot 2018-09-03 at 7.06.46 PM.png)
+- ![Screen Shot 2018-09-03 at 7.06.46 PM](assets/neuro_representations.png)
 - how can we learn from only connectivity?
   - correlated connectivity instead of correlated activity
 - calcium-imaging of lots of neurons at same time at color by orientation
   - lots of like-to-like connectivity (red to red, green to green)
 - very slow: similar experiments with $~10^6$ neurons
 - apical dendrites go in bundles
-- relationships: ![Screen Shot 2018-09-03 at 7.29.27 PM](assets/Screen Shot 2018-09-03 at 7.29.27 PM.png)
+- relationships: ![Screen Shot 2018-09-03 at 7.29.27 PM](assets/neural_spaces.png)
 - from connecitons try to learn lgn, simple cells, complex cells...
 - **start with wiring diagram + assume like-to-like connectivity**
   - simple model

@@ -7,16 +7,16 @@ category: math
 {:toc}
 
 # Normal forms of Hopf bifurcations
-- pitchfork: $$\dot{x} = \lambda x - x^3$$ ![](assets/chaos/pitch.png)
-- subcritical pitchfork: $\dot{x} = \lambda x + x^3$ ![](assets/chaos/subpitch.png)
-- saddle node (turning point): $\dot{x} = \lambda - x^2$ ![](assets/chaos/sn.png)
-- transcritical: $\dot{x} = \lambda x - x^2$ ![](assets/chaos/trans.png)
+- pitchfork: $$\dot{x} = \lambda x - x^3$$ ![](../assets/pitch.png)
+- subcritical pitchfork: $\dot{x} = \lambda x + x^3$ ![](../assets/subpitch.png)
+- saddle node (turning point): $\dot{x} = \lambda - x^2$ ![](../assets/sn.png)
+- transcritical: $\dot{x} = \lambda x - x^2$ ![](../assets/trans.png)
 
 # important figs
-- period-doubling (flip bifurcation) $f = \mu x (1-x) (f = \mu sin (\pi x) $ is similiar) ![](assets/chaos/flip.png)
-- inverse tangent bifurcation - unstable and stable P-3 orbits coalesce, move slightly off bisector and becomes chaotic ![](assets/chaos/inverse.png)
-- pendulum ![](assets/chaos/pendulum.png)
-- energy surface - trajectories run around the surface, not down it ![](assets/chaos/e_surface.png)
+- period-doubling (flip bifurcation) $f = \mu x (1-x) (f = \mu sin (\pi x) $ is similiar) ![](../assets/flip.png)
+- inverse tangent bifurcation - unstable and stable P-3 orbits coalesce, move slightly off bisector and becomes chaotic ![](../assets/inverse.png)
+- pendulum ![](../assets/pendulum.png)
+- energy surface - trajectories run around the surface, not down it ![](../assets/e_surface.png)
 - Conservative systems: 6.5
 	- study Hamiltonian p. 187-188
 - Pendulum: 6.7

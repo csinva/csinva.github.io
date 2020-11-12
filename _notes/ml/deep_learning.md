@@ -38,7 +38,7 @@ category: ml
     - run network forward to compute outputs at each step
     - compute gradients at each gate with backprop
     - update weights with SGD
-- ![backprop](assets/deep_learning/backprop.png)
+- ![backprop](../assets/backprop.png)
 
 # training
 

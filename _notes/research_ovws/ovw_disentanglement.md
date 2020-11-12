@@ -2,7 +2,7 @@
 layout: notes
 title: disentanglement
 category: blog
-typora-copy-images-to: ./assets
+typora-copy-images-to: ../assets
 ---
 
 <div class="iframe-box" style="margin-top: 0px">
@@ -100,10 +100,10 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
   - wasserstein distance = earth-movers distance, how far apart are 2 distrs
   - minimizes wasserstein distance + penalty which is similar to auto-encoding penalty,  without the mutual info term
   - another intuition: rather than map each point to a ball (since VAE adds noise to each latent repr), we only constraint the overall distr of Z, potentially making reconstructions less blurry (but potentially making latent space less smooth)
-  - ![wae](assets/wae.png)
+  - ![wae](../assets/wae.png)
 - [Adversarial Latent Autoencoder](https://arxiv.org/pdf/2004.04467.pdf) (pidhorskyi et al. 2020)
   - improve quality of generated VAE reconstructions by using a different setup which allows for using a GAN loss
-  - ![alae](assets/alae.png)
+  - ![alae](../assets/alae.png)
 - [Variational Autoencoders Pursue PCA Directions (by Accident)](https://arxiv.org/pdf/1812.06775.pdf)
   - local orthogonality of the embedding transformation
   - prior $p(z)$ is standard normal, so encoder is assumed to be Gaussian with a certain mean, and **diagonal covariance**
@@ -120,7 +120,7 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
     - by chossing a nonisotropic prior (e.g. nonisotropic gaussian), can learn certain directions more easily
   - sparse prior - can help do clustering
 - [VAE-SNE: a deep generative model for simultaneous dimensionality reduction and clustering](https://www.biorxiv.org/content/10.1101/2020.07.17.207993v1.full.pdf) (graving & couzin 2020) - reduce dims + cluster without specifying number of clusters
-  - ![Screen Shot 2020-09-10 at 11.40.10 PM](assets/Screen Shot 2020-09-10 at 11.40.10 PM-9806489.png)
+  - ![Screen Shot 2020-09-10 at 11.40.10 PM](../assets/sne_eq.png)
   - **stochastic neighbor regularizer** that optimizes pairwise similarity kernels between original and latent distrs. to strengthen local neighborhood preservation
     - can use different neighbor kernels, e.g. t-SNE similarity (van der Maaten & Hinton, 2008) or Gaussian SNE kernel (Hinton & Roweis, 2003)
     - perplexity annealing technique (Kobak and Berens, 2019) - decay the size of local neighborhoods during training (helps to preserve structure at multiple scales)
@@ -186,8 +186,8 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
       - mutual info is intractable so optimizes a lower bound
     - [Stylegan](https://arxiv.org/abs/1812.04948) (karras et al. 2018)
       - introduced perceptual path length and linear separability to measure the disentanglement property of latent space
-      - ![stylegan](assets/stylegan.png)
-      - [Stylegan2](https://arxiv.org/abs/1912.04958) (karras et al. 2019): ![stylegan2](assets/stylegan2.png)
+      - ![stylegan](../assets/stylegan.png)
+      - [Stylegan2](https://arxiv.org/abs/1912.04958) (karras et al. 2019): ![stylegan2](../assets/stylegan2.png)
         - $\psi$ scales the deviation of *w* from the average - $\psi=1$ is original, moving towards 0 improves quality but reduces variety
         - also has jacobian penalty on mapping from style space $w$ to output image $y$
 - [DNA-GAN: Learning Disentangled Representations from Multi-Attribute Images](https://arxiv.org/abs/1711.05415)
@@ -276,11 +276,11 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
 **these papers use some form of supervision for the latent space when disentangling**
 
 - [Semi-supervised Disentanglement with Independent Vector Variational Autoencoders](https://arxiv.org/pdf/2003.06581.pdf)
-  - ![Screen Shot 2020-05-21 at 12.47.22 PM](assets/Screen Shot 2020-05-21 at 12.47.22 PM.png)
+  - ![Screen Shot 2020-05-21 at 12.47.22 PM](../assets/semi_supervised_vae.png)
 - [Learning Disentangled Representations with Semi-Supervised Deep Generative Models](https://arxiv.org/abs/1706.00400) - put priors on interpretable variables during training and learn the rest
 - [Weakly Supervised Disentanglement with Guarantees](https://arxiv.org/abs/1910.09772)
   - prove results on disentanglement for rank pairing
-  - different types of available supervision![Screen Shot 2020-05-21 at 1.05.19 PM](assets/Screen Shot 2020-05-21 at 1.05.19 PM.png)
+  - different types of available supervision![Screen Shot 2020-05-21 at 1.05.19 PM](../assets/unsupervised_settings.png)
     - **restricted labeling** - given labels for some groundtruth factors (e.g. label "glasses", "gender" for all images)
     - match pairing - given pairs or groups (e.g. these images all have glasses)
     - rank pairing - label whether a feature is greater than another (e.g. this image has darker skin tone than this one)

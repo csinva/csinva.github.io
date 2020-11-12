@@ -48,10 +48,10 @@ notes from Neuroscience, 5th edition + Intro to neurobiology course at UVA
   - collection of interneurons
 
 # 17 upper
-- ![](assets/motor/17_1.png)
-- ![](assets/motor/17_2.png)
-- ![](assets/motor/17_3.png)
-- ![](assets/motor/17_4.png)
+- ![](../assets/17_1.png)
+- ![](../assets/17_2.png)
+- ![](../assets/17_3.png)
+- ![](../assets/17_4.png)
 - cAMP is used by GPCR
 - lift and hold circuit
   1. ctx->*lateral white matter*->lateral ventral horn->limb muscles
@@ -108,9 +108,9 @@ notes from Neuroscience, 5th edition + Intro to neurobiology course at UVA
     - 10% don't cross - trunk muscles
 
 # 18 basal ganglia (choose what you want to do)
-- ![](assets/motor/18_1.png)
-- ![](assets/motor/18_2.png)
-- ![](assets/motor/18_3.png)
+- ![](../assets/18_1.png)
+- ![](../assets/18_2.png)
+- ![](../assets/18_3.png)
 - "who you are"
 - outputs
   1. brainstem
@@ -162,13 +162,13 @@ notes from Neuroscience, 5th edition + Intro to neurobiology course at UVA
   - VA/VL is always firing, globus pallidus inhibits it (tonic connection)
 
 # 19 cerebellum (fine tuning all your motion)
-- ![](assets/motor/19_1_important.png)
-- ![](assets/motor/19_2_important.png)
-- ![](assets/motor/19_3.png)
-- ![](assets/motor/19_4.png)
-- ![](assets/motor/19_5.png)
-- ![](assets/motor/19_6.png)
-- ![](assets/motor/19_7.png)
+- ![](../assets/19_1_important.png)
+- ![](../assets/19_2_important.png)
+- ![](../assets/19_3.png)
+- ![](../assets/19_4.png)
+- ![](../assets/19_5.png)
+- ![](../assets/19_6.png)
+- ![](../assets/19_7.png)
 - redundant system - cortex could do all of this, but would be slow
 - repeated circuit - interesting for neuroscientists
 - all info comes in, gets processed and goes back out
@@ -213,8 +213,8 @@ notes from Neuroscience, 5th edition + Intro to neurobiology course at UVA
   - long-term use causes degeneration = *ataxia* (lack of coordination)
 
 # 20 eye movements/integration
-- ![](assets/motor/20_1.png)
-- ![](assets/motor/20_2.png)
+- ![](../assets/20_1.png)
+- ![](../assets/20_2.png)
 - Broca's view - look at people with problems
 - Ramon y Cajal - look at circuits
 - 5 kinds of eye movements
@@ -276,10 +276,10 @@ notes from Neuroscience, 5th edition + Intro to neurobiology course at UVA
     - if you lose both, can't saccade to that side
 
 # 21 visceral (how you control organs, stress levels, etc.)
-- ![](assets/motor/21_1.png)
-- ![](assets/motor/21_2.png)
-- ![](assets/motor/21_3.png)
-- ![](assets/motor/21_4.png)
+- ![](../assets/21_1.png)
+- ![](../assets/21_2.png)
+- ![](../assets/21_3.png)
+- ![](../assets/21_4.png)
 - parasympathetic works against sympathetic
 - divisions
   1. *sympathetic* - fight-or-flight (*adrenaline*)

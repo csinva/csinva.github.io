@@ -12,10 +12,10 @@ category: ml
   - even in binary case, outliers skew fit
 - asymptotic classifier - assumes infinite data
 - linear classifer $\implies$ boundaries are hyperplanes
-- *discriminative* - model $P(Y\vert X)$ directly ![](assets/classification/j7_10.png)
+- *discriminative* - model $P(Y\vert X)$ directly ![](../assets/j7_10.png)
   - usually lower bias $\implies$smaller asymptotic error
   - slow convergence ~ $O(p)$
-- *generative* - model $P(X, Y) = P(X\vert Y) P(Y)$ ![](assets/classification/j7_4.png)
+- *generative* - model $P(X, Y) = P(X\vert Y) P(Y)$ ![](../assets/j7_4.png)
   - usually higher bias $\implies$ can handle missing data
     - this is because we assume some underlying X
   - fast convergence ~ $O[\log(p)]$
@@ -38,7 +38,7 @@ category: ml
 - *perceptron* - tries to find separating hyperplane
   - whenever misclassified, update w
   - can add in delta term to maximize margin
-- ![](assets/classification/losses.png)
+- ![](../assets/losses.png)
 
 # multiclass classification
 
@@ -177,7 +177,7 @@ category: ml
   2. *kernel trick* makes it very nonlinear
   3. nonparametric - can retain training examples, although often get rid of many
      1. at test time, can't just store w - have to store support vectors
-- ![](assets/classification/svm_margin.png)
+- ![](../assets/svm_margin.png)
 - $\hat{y} =\begin{cases}   1 &\text{if } w^Tx +b \geq 0 \\ -1 &\text{otherwise}\end{cases}$
 - $\hat{\theta} = \text{argmin} \:\frac{1}{2} \vert \vert \theta\vert \vert ^2 \\s.t. \: y^{(i)}(\theta^Tx^{(i)}+b)\geq1, i = 1,...,m$
   - *functional margin* $\gamma^{(i)} = y^{(i)} (\theta^T x +b)$

@@ -52,7 +52,7 @@ Complexity can be a useful notion for many things in statistical models. It can 
   - 2 categories
     - algorithmic / mdl
     - natural complexity (e.g. physical complexity)
-      - ![300px-Complexity_figure1](assets/300px-Complexity_figure1.jpg)
+      - ![300px-Complexity_figure1](../assets/300px-Complexity_figure1.jpg)
 - [quanta article](https://www.quantamagazine.org/computer-science-and-biology-explore-algorithmic-evolution-20181129/?fbclid=IwAR0rSImplo7lLM0kEYHrHttx8qUimB-482dI9IFxY6dvx0CFeEIqzGuir_w)
   - "the probability of producing some types of outputs is far greater when randomness operates at the level of the program describing it rather than at the level of the output itself"
   - "they [recently reported in *Royal Society Open Science*](http://rsos.royalsocietypublishing.org/content/5/8/180399) that, compared to statistically random mutations, this mutational bias caused the networks to evolve toward solutions significantly faster."

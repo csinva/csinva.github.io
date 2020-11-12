@@ -63,11 +63,11 @@ category: stat
   - $I(X; X) = H(X)$ so entropy sometimes called *self-information*
   
 
-![entropy-venn-diagram](assets/info_theory/entropy-venn-diagram.png)
+![entropy-venn-diagram](../assets/entropy-venn-diagram.png)
 
 - cross-entropy: $H_q(p) = -\sum_x p(x) \: log \: q(x)$
   
-  ![Screen Shot 2018-07-02 at 11.26.42 AM](assets/info_theory/Screen Shot 2018-07-02 at 11.26.42 AM.png)
+  ![Screen Shot 2018-07-02 at 11.26.42 AM](../assets/cross_entropy.png)
 
 ## chain rules
 

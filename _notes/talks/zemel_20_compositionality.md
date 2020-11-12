@@ -32,7 +32,7 @@
 
 - how can you infer the influence of one brain region on another (e.g. fmri)?
 
-  ![Screen Shot 2020-07-30 at 4.53.21 PM](assets/Screen Shot 2020-07-30 at 4.53.21 PM.png)
+  ![Screen Shot 2020-07-30 at 4.53.21 PM](assets/learning_causal_graphs.png)
 
 - encoder outputs causal graph given a time series
 

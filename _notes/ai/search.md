@@ -62,7 +62,7 @@ Some notes on search based on Berkeley's CS 188 course and  "Artificial Intellig
 
 ## uninformed search = blind search
 
-- ![](assets/search/uninformed_comparisons.png)
+- ![](../assets/uninformed_comparisons.png)
 - bfs
 - *uniform-cost search* - always expand node with lowest path cost g(n)
   - frontier is priority queue ordered by g

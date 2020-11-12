@@ -29,7 +29,7 @@ Some notes on information retrieval, based on UVA"s Info Retrieval course.
         - also need nice display
         - query logs - record user's search history
         - user modeling - assess user's satisfaction
-- steps ![](assets/retrieval/ir_architecture.png) 
+- steps ![](../assets/ir_architecture.png) 
     1. repository -> document representation 
     2. query -> query representation
     3. ranking is performed between the 2 representations and given to the user

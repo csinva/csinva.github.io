@@ -26,7 +26,7 @@ category: ml
 
 *goodness of fit* - how well does the learned distribution represent the real distribution?
 
-![Screen Shot 2019-06-30 at 8.27.56 PM](assets/Screen Shot 2019-06-30 at 8.27.56 PM.png)
+![Screen Shot 2019-06-30 at 8.27.56 PM](../assets/eval_metrics.png)
 
 - accuracy-based
   - accuracy = (TP + TN) / (P + N)

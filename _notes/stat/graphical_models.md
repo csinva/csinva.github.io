@@ -2,7 +2,7 @@
 layout: notes
 title: graphical models
 category: stat
-typora-copy-images-to: ./assets/graphical_models
+typora-copy-images-to: ../assets
 ---
 
 {:toc}
@@ -23,7 +23,7 @@ typora-copy-images-to: ./assets/graphical_models
     - helpful for inference
   - compact representation of joint prob. distr. over the variables
 
-![](assets/graphical_models/models.png)
+![](../assets/models.png)
 
 - dark is observed for HMMs, for other things unclear what it means
 
@@ -75,7 +75,7 @@ typora-copy-images-to: ./assets/graphical_models
   - ENUMERATION-ASK evaluates in depth-first order: $O(2^n)$
     - we removed the factor of *n*
 2. *variable elimination* - dynamic programming **(see elimination)**
-  - ![Screen Shot 2018-07-26 at 8.52.30 AM](assets/Screen Shot 2018-07-26 at 8.52.30 AM.png)
+  - ![Screen Shot 2018-07-26 at 8.52.30 AM](../assets/bayesian_net_example.png)
   - $P(B|j, m) = \alpha \underbrace{P(B)}_{f_1(B)} \sum_e \underbrace{P(e)}_{f_2(E)} \sum_a \underbrace{P(a|B,e)}_{f_3(A, B, E)} \underbrace{P(j|a)}_{f_4(A)} \underbrace{P(m|a)}_{f_5(A)}$
     - calculate factors in reverse order (bottom-up)
     - each factor is a vector with num entries = $\prod$ |num_elements| * |num_values| 
@@ -86,7 +86,7 @@ typora-copy-images-to: ./assets/graphical_models
     - complexity depends on largest factor formed
 3. *clustering algorithms* = *join tree* algorithms **(see propagation factor graphs)**
   - join individual nodes in such a way that resulting network is a polytree
-    - ![Screen Shot 2018-07-26 at 8.52.30 AM-2621781](assets/Screen Shot 2018-07-26 at 8.52.30 AM-2621781.png)
+    - ![Screen Shot 2018-07-26 at 8.52.30 AM-2621781](../assets/bayesian_net_example2.png)
     - *polytree*=*singly-connected network* - only 1 undirected paths between any 2 nodes
       - time and space complexity of exact inference is linear in the size of the network
       - holds even if the number of parents of each node is bounded by a constant
@@ -153,7 +153,7 @@ typora-copy-images-to: ./assets/graphical_models
 
 - multiple, competing explanations ("explaining-away")
 
-  ![](assets/graphical_models/j2_1.png) 
+  ![](../assets/j2_1.png) 
 
   -  in fact any descendant of the base of the v suffices for explaining away
 
@@ -169,17 +169,17 @@ typora-copy-images-to: ./assets/graphical_models
     - balls can't pass through shaded unless shaded is at base of v
     - balls pass through unshaded unless unshaded is at base of v
 
-- ![Screen Shot 2018-09-16 at 7.12.22 PM](assets/graphical_models/Screen Shot 2018-09-16 at 7.12.22 PM.png)
+- ![Screen Shot 2018-09-16 at 7.12.22 PM](../assets/triples.png)
 
 # undirected
 
 - $X_A \perp X_C | X_B$ if the set of nodes $X_B$ separates the nodes $X_A$ from $X_C$
 
-  ![Screen Shot 2018-07-24 at 11.16.29 PM](assets/Screen Shot 2018-07-24 at 11.16.29 PM.png)
+  ![Screen Shot 2018-07-24 at 11.16.29 PM](../assets/graph_separation.png)
 
 - can't convert directed / undirected
 
-![Screen Shot 2018-07-24 at 11.17.57 PM](assets/Screen Shot 2018-07-24 at 11.17.57 PM.png)
+![Screen Shot 2018-07-24 at 11.17.57 PM](../assets/full_graph_vs_missing.png)
 
 - factor over *maximal cliques* (largest sets of fully connected nodes)
 - potential function $\psi_{X_C} (x_C)$ function on possible realizations $x_C$ of the maximal clique $X_C$
@@ -238,7 +238,7 @@ typora-copy-images-to: ./assets/graphical_models
 - *tree* - undirected graph in which there is exactly one path between any pair of nodes
    - if directed, then moralized graph should be a tree
    - *polytree* - directed graph that reduces to an undirected tree if we convert each directed edge to an undirected edge
-   - ![Screen Shot 2018-07-31 at 11.44.52 AM](assets/graphical_models/Screen Shot 2018-07-31 at 11.44.52 AM.png)
+   - ![Screen Shot 2018-07-31 at 11.44.52 AM](../assets/polytree.png)
    - $$p(x) = \frac{1}{Z} \left[ \prod_{i \in V} \psi (x_i) \prod_{(i,j)\in E} \psi (x_i,x_j) \right]$$
       - for directed, root has individual prob and others are conditionals
     - can once again use evidence potentials for conditioning
@@ -253,16 +253,16 @@ typora-copy-images-to: ./assets/graphical_models
 
     - $m_{ji}(x_i) = \sum_{x_j} \left( \psi^E (x_j) \psi (x_i, x_j) \prod_{k \in N(j) \backslash i} m_{kj} (x_j) \right)$
     - $p(x_f | \bar{x}_E) \propto \psi^E (x_f) \prod_{e \in N(f)} m_{ef} (x_f) $
-       - ![Screen Shot 2018-07-31 at 9.55.08 PM](assets/graphical_models/Screen Shot 2018-07-31 at 9.55.08 PM.png)
+       - ![Screen Shot 2018-07-31 at 9.55.08 PM](../assets/undirected_message_passing.png)
 
 - **sum-product** = **belief propagation** - inference algorithm
   - computes all single-node marginals (for certain classes of graphs) rather than only a single marginal
 
   - only works in trees or tree-like graphs
 
-  - ![Screen Shot 2018-07-31 at 10.07.15 PM](assets/graphical_models/Screen Shot 2018-07-31 at 10.07.15 PM.png)
+  - ![Screen Shot 2018-07-31 at 10.07.15 PM](../assets/message_passing_misc.png)
 
-    ![Screen Shot 2018-07-31 at 10.07.40 PM](assets/graphical_models/Screen Shot 2018-07-31 at 10.07.40 PM.png)
+    ![Screen Shot 2018-07-31 at 10.07.40 PM](../assets/message_passing_parallel.png)
 
   - *message-passing protocol* - a node can send a message to a neighboring node when, and only when, it has received messages from all of its other neighbors (parallel algorithm)
     1. evidence(E)
@@ -270,14 +270,14 @@ typora-copy-images-to: ./assets/graphical_models
     3. collect: send messages evidence to root
     4. distribute: send messages root back out
 
-    ![Screen Shot 2018-07-31 at 10.22.55 PM](assets/graphical_models/Screen Shot 2018-07-31 at 10.22.55 PM.png) ![Screen Shot 2018-07-31 at 10.23.01 PM](assets/graphical_models/Screen Shot 2018-07-31 at 10.23.01 PM.png)
+    ![Screen Shot 2018-07-31 at 10.22.55 PM](../assets/message_passing_individual.png) ![Screen Shot 2018-07-31 at 10.23.01 PM](../assets/message_passing_distribute.png)
 
 
 ## factor graphs
 
 - *factor graphs* capture factorizations, not conditional independence statements 
    - ex $\psi (x_1, x_2, x_3) = f_a(x_1,x_2) f_b(x_2,x_3) f_c (x_1,x_3)$ factors but has no conditional independence
-       - ![Screen Shot 2018-07-31 at 11.30.19 PM](assets/graphical_models/Screen Shot 2018-07-31 at 11.30.19 PM.png)
+       - ![Screen Shot 2018-07-31 at 11.30.19 PM](../assets/factor_graph.png)
     - $$f(x_1,...,x_n) = \prod_s f_s (x_{C_s})$$
     - neighborhood N(s) for a factor index s is all the variables the factor references
     - neighborhood N(i) for a node i is set of factors that reference $x_i$
@@ -286,7 +286,7 @@ typora-copy-images-to: ./assets/graphical_models
  - *factor tree* - if factors are made nodes, resulting undirected graph is tree
     - two kinds of messages (variable-> factor & factor-> variable)
     - run all the factor $\to$ variables first
-     - ![](assets/graphical_models/j4_2.png)
+     - ![](../assets/j4_2.png)
      - $$p(x_i) \propto \prod_{s \in N(i)} \mu_{si} (x_i)$$
      - if a graph is originally a tree, there is little to be gained from factor graph framework
         - sometimes factor graph is factor tree, but original graph is not
@@ -312,7 +312,7 @@ typora-copy-images-to: ./assets/graphical_models
 
 ## state space model
 
-- state space model ![](assets/graphical_models/j15_1.png)
+- state space model ![](../assets/j15_1.png)
 
 
 - $P(X_{0:t}, E_{1:t}) = P(X_0) \prod_{i} \underbrace{P(X_i | X_{i-1}) }_{\text{transition model}}  \: \underbrace{P(E_i|X_i)}_{\text{sensor model}}$
@@ -366,7 +366,7 @@ typora-copy-images-to: ./assets/graphical_models
 ## kalman filtering
 
 - **state is continuous**
-- ex. ![](assets/graphical_models/r15_9.png)
+- ex. ![](../assets/r15_9.png)
 - type of nodes (real-valued vectors) and prob model (linear-Gaussian) changes from HMM
 - 1d example: *random walk*
 - state nodes: $x_{t+1} = Ax_t + Gw_t$

@@ -4,7 +4,7 @@
   - training data is hard
 - related paper: https://www.biorxiv.org/content/early/2018/06/16/339630
 
- ![semi](assets/ml/semi.png)
+ ![semi](../assets/semi.png)
 
 - missing self-supervised?
 

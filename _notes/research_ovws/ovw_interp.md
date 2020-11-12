@@ -32,16 +32,16 @@ The definition of interpretability I find most useful is that given in [murdoch 
   - interaction (with the user)
   - this is a super useful way to think about explanations (especially local), but doesn't work for SHAP / CD which are more about how much a variable contributes rather than a local approximation
 
-<img class="medium_image" src="assets/Screen Shot 2019-06-04 at 11.38.50 AM.png"/>
+<img class="medium_image" src="../assets/black_box_explainers.png"/>
 
-<img class="medium_image" src="assets/Screen Shot 2019-06-04 at 11.41.02 AM.png"/>
+<img class="medium_image" src="../assets/black_box_explainers_legend.png"/>
 
-<img class="medium_image" src="assets/Screen Shot 2019-06-04 at 11.42.17 AM.png"/>
+<img class="medium_image" src="../assets/explainers_table.png"/>
 
 - [feature (variable) importance measurement review (VIM)](https://www.sciencedirect.com/science/article/pii/S0951832015001672) (wei et al. 2015)
   - often-termed sensitivity, contribution, or impact
   - some of these can be applied to data directly w/out model (e.g. correlation coefficient, rank correlation coefficient, moment-independent VIMs)
-  - <img class="medium_image" src="assets/Screen Shot 2019-06-14 at 9.07.18 AM.png"/>
+  - <img class="medium_image" src="../assets/vims.png"/>
 - [Pitfalls to Avoid when Interpreting Machine Learning Models](https://arxiv.org/pdf/2007.04131.pdf) (molnar et al. 2020)
 
 # evaluating interpretability
@@ -49,7 +49,7 @@ The definition of interpretability I find most useful is that given in [murdoch 
 Evaluating interpretability can be very difficult (largely because it rarely makes sense to talk about interpretability outside of a specific context). The best possible evaluation of interpretability requires benchmarking it with respect to the relevant audience in a context. For example, if an interpretation claims to help understand radiology models, it should be tested based on how well it helps radiologists when actually making diagnoses. The papers here try to find more generic alternative ways to evaluate interp methods (or just define desiderata to do so).
 
 - [Towards A Rigorous Science of Interpretable Machine Learning](https://arxiv.org/pdf/1702.08608.pdf) (doshi-velez & kim 2017)
-  - ![Screen Shot 2020-08-03 at 10.58.13 PM](assets/Screen Shot 2020-08-03 at 10.58.13 PM.png)
+  - ![Screen Shot 2020-08-03 at 10.58.13 PM](../assets/interp_eval_table.png)
 - [Benchmarking Attribution Methods with Relative Feature Importance](https://arxiv.org/abs/1907.09701) (yang & kim 2019)
   - train a classifier, add random stuff (like dogs) to the image, classifier should assign them little importance
 - [Visualizing the Impact of Feature Attribution Baselines](https://distill.pub/2020/attribution-baselines/)
@@ -159,7 +159,7 @@ Trees suffer from the fact that they have to cover the entire decision space and
   - cart can be seen as a boosting algorithm on stumps
     - can rewrite boosted stumps as a tree very easily
     - previous work: can grow tree based on Adaboost idea = AdaTree
-  - ![Screen Shot 2020-03-11 at 11.10.13 PM](assets/Screen Shot 2020-03-11 at 11.10.13 PM.png)
+  - ![Screen Shot 2020-03-11 at 11.10.13 PM](../assets/additive_trees.png)
 - [optimal sparse decision trees](https://arxiv.org/abs/1904.12847) (hu et al. 2019) - optimal decision trees for binary variables
 - extremely randomized trees - randomness goes further, not only feature is selected randomly but also split has some randomness
 - issues: replicated subtree problem (Pagallo & Haussler, 1990)
@@ -176,7 +176,7 @@ Trees suffer from the fact that they have to cover the entire decision space and
 
 - [Supersparse linear integer models for optimized medical scoring systems](https://link.springer.com/content/pdf/10.1007/s10994-015-5528-6.pdf) (ustun & rudin 2016)
   - [2helps2b paper](https://www.ncbi.nlm.nih.gov/pubmed/29052706)
-  - ![Screen Shot 2019-06-11 at 11.17.35 AM](assets/Screen Shot 2019-06-11 at 11.17.35 AM.png)
+  - ![Screen Shot 2019-06-11 at 11.17.35 AM](../assets/2helps2b.png)
 
 ### gams (generalized additive models)
 
@@ -541,7 +541,7 @@ How interactions are defined and summarized is a very difficult thing to specify
 - [explaining image classifiers by counterfactual generation](https://arxiv.org/pdf/1807.08024.pdf) 
     - generate changes (e.g. with GAN in-filling) and see if pred actually changes
     - can search for smallest sufficient region and smallest destructive region
-    - ![Screen Shot 2020-01-20 at 9.14.44 PM](assets/Screen Shot 2020-01-20 at 9.14.44 PM.png)
+    - ![Screen Shot 2020-01-20 at 9.14.44 PM](../assets/fido.png)
 
 ### dnn concept-based explanations
 
@@ -701,7 +701,7 @@ These papers don't quite connect to prediction, but are generally about finding 
     - "Rashomon" effect of statistics - many prediction models may fit the data almost equally well (breiman 01)
     - "This set can be thought of as representing models that might be arrived at due to differences in data measurement, processing, filtering, model parameterization, covariate selection, or other analysis choices"
     - can study these tools for describing rank of risk predictions, variance of predictions, e.g. confidence intervals
-    - ![Screen Shot 2020-09-27 at 8.20.35 AM](assets/Screen Shot 2020-09-27 at 8.20.35 AM.png)
+    - ![Screen Shot 2020-09-27 at 8.20.35 AM](../assets/mcr_depiction.png)
   - **confidence intervals** - can get finite-sample interval for anything, not just loss (e.g. norm of coefficients, prediction for a specific point)
   - connections to causality
     - when function is conditional expectation, then MR is similar to many things studies in causal literature

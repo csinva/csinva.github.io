@@ -2,7 +2,7 @@
 layout: notes
 title: linear algebra
 category: math
-typora-copy-images-to: ./assets/linear_algebra
+typora-copy-images-to: ../assets
 ---
 
 {:toc}
@@ -30,7 +30,7 @@ typora-copy-images-to: ./assets/linear_algebra
     2. contains identity
 - det - sum of products including one element from each row / column with correct sign
     - absolute value = area of parallelogram made by rows (or cols)
-    - ![220px-Area_parallellogram_as_determinant.svg](assets/linear_algebra/220px-Area_parallellogram_as_determinant.svg.png)
+    - ![220px-Area_parallellogram_as_determinant.svg](../assets/220px-Area_parallellogram_as_determinant.svg.png)
 - lin independent: $c_1x_1+c_2x_2=0 \implies c_1=c_2=0$
 - *cauchy-schwartz inequality*: $|x^T y| \leq ||x||_2 ||y|||_2$
   - implies *triangle inequality*: $||x+y||^2 \leq (||x|| + ||y||)^2$

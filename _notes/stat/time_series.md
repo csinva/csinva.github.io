@@ -140,7 +140,7 @@ category: stat
     - innovations algorithm
     - hannan-rissanen algorithm
 - autocovariance function: {$\gamma(k): k \in \mathbb Z$} where $\gamma(k) = \text{Cov}(X_{t+h}. X_t) =  \mathbb E (X_0 X_k)$ (assuming mean 0)
-- ![Screen Shot 2020-01-11 at 5.29.15 PM](assets/Screen Shot 2020-01-11 at 5.29.15 PM.png)
+- ![Screen Shot 2020-01-11 at 5.29.15 PM](../assets/durbin-levinson.png)
 - **Yule-Walker equations** (assuming AR(p) process): $\mathbb E (X_t X_{t-k}) = \sum_{j=1}^p \phi_j \mathbb E (X_{t-j} X_{t-k}) + \underbrace{\mathbb E (\epsilon_tX_{t-k})}_{=0} = \sum_{j=1}^p \phi_j \mathbb E (X_{t-j} X_{t-k})$
   - ex. MA covariance becomes 0 with lag > num params
 - can rewrite the Yule-Walker equations

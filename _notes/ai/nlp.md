@@ -2,7 +2,7 @@
 layout: notes
 title: nlp
 category: ai
-typora-copy-images-to: ./assets/nlp
+typora-copy-images-to: ../assets
 ---
 
 {:toc}
@@ -70,7 +70,7 @@ Some notes on natural language processing, focused on modern improvements based 
   - for each word, want score telling how much importance to place on each other word (queries $\cdot$ keys)
   - we get an encoding for each word
     - the encoding of each word returns a weighted sum of the values of the words (the current word gets the highest weight)
-    - softmax this and use it to do weighted sum of values![Screen Shot 2019-08-17 at 2.51.53 PM](assets/nlp/Screen Shot 2019-08-17 at 2.51.53 PM.png)
+    - softmax this and use it to do weighted sum of values![Screen Shot 2019-08-17 at 2.51.53 PM](../assets/attention.png)
   - (optional) implementation details
     - **multi-headed attention** - just like having many filters, get many encodings for each word
       - each one can take input as the embedding from the previous attention layer
@@ -87,7 +87,7 @@ Some notes on natural language processing, focused on modern improvements based 
   - encoder reads input and ouputs context vector after each word
   - decoder at each step uses a different weighted combination of these context vectors
     - specifically, at each step, decoder concatenates its hidden state w/ the attention vector (the weighted combination of the context vectors)
-    - this is fed to a feedforward net to output a word![Screen Shot 2019-04-11 at 7.57.14 PM](assets/nlp/Screen Shot 2019-04-11 at 7.57.14 PM.png)
+    - this is fed to a feedforward net to output a word![Screen Shot 2019-04-11 at 7.57.14 PM](../assets/nmt.png)
 - **transformer**
   - uses many self-attention layers
   - many stacked layers in encoder + decoder (not rnn: self-attention + feed forward)

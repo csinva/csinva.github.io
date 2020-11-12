@@ -37,11 +37,11 @@ First 5 parts here are based on the book [storytelling with data](http://www.sto
 
 ## choose an effective visual (2)
 
-| ![Screen Shot 2020-09-28 at 8.08.38 PM](assets/Screen Shot 2020-09-28 at 8.08.38 PM.png) | ![Screen Shot 2020-09-28 at 8.08.30 PM](assets/Screen Shot 2020-09-28 at 8.08.30 PM.png) |
+| ![Screen Shot 2020-09-28 at 8.08.38 PM](../assets/good_plots.png) | ![Screen Shot 2020-09-28 at 8.08.30 PM](../assets/good_visualizations.png) |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ![Screen Shot 2020-09-28 at 8.23.47 PM](assets/Screen Shot 2020-09-28 at 8.23.47 PM.png) | ![Screen Shot 2020-09-28 at 8.24.37 PM](assets/Screen Shot 2020-09-28 at 8.24.37 PM.png) |
-| ![Screen Shot 2020-09-28 at 8.29.34 PM](assets/Screen Shot 2020-09-28 at 8.29.34 PM.png) | ![Screen Shot 2020-09-29 at 9.50.15 AM](assets/Screen Shot 2020-09-29 at 9.50.15 AM.png) |
-| ![Screen Shot 2020-09-29 at 9.56.44 AM](assets/Screen Shot 2020-09-29 at 9.56.44 AM.png) | ![Screen Shot 2020-09-29 at 11.20.07 AM](assets/Screen Shot 2020-09-29 at 11.20.07 AM.png) |
+| ![Screen Shot 2020-09-28 at 8.23.47 PM](../assets/stacked_hbar_chart.png) | ![Screen Shot 2020-09-28 at 8.24.37 PM](../assets/grid_breakdown.png) |
+| ![Screen Shot 2020-09-28 at 8.29.34 PM](../assets/avoiding_secondary_axis.png) | ![Screen Shot 2020-09-29 at 9.50.15 AM](../assets/strategic_contrast.png) |
+| ![Screen Shot 2020-09-29 at 9.56.44 AM](../assets/preattentive_attributes.png) | ![Screen Shot 2020-09-29 at 11.20.07 AM](../assets/line_charts.png) |
 
 - generally avoid pie/donut charts, 3D charts, 2nd y-axes
 - tables
@@ -133,7 +133,7 @@ First 5 parts here are based on the book [storytelling with data](http://www.sto
 2. randomly undersample majority class
 3. weighting classes in the loss function - more efficient, but requires modifying model code
 4. generate synthetic minority class samples
-   1. [smote](https://jair.org/index.php/jair/article/view/10302) (chawla et al. 2002) - interpolate betwen points and their nearest neighbors (for minority class) - some heuristics for picking which points to interpolate![smote](assets/Screen Shot 2019-11-11 at 4.16.00 PM.png)
+   1. [smote](https://jair.org/index.php/jair/article/view/10302) (chawla et al. 2002) - interpolate betwen points and their nearest neighbors (for minority class) - some heuristics for picking which points to interpolate![smote](../assets/smote.png)
       1. [adasyn](https://ieeexplore.ieee.org/abstract/document/4633969/) (he et al. 2008) - smote, generate more synthetic data for minority examples which are harder to learn (number of samples is proportional to number of nearby samples in a different class)
    2. [smrt](https://github.com/tgsmith61591/smrt) - generate with vae
 5. selectively removing majority class samples

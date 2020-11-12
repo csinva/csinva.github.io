@@ -38,9 +38,9 @@ category: neuro
     - Flaw: bad for studying second-messenger systems because inside of electrode / cell fuse
     - different types (whole cell, outside-out, inside-out)
 - clamp 
-  - ![](assets/vissci/clamp_main.png)
-  - ![](assets/vissci/clamp_junction.png)
-  - ![](assets/vissci/clamp_tip.png)
+  - ![](../assets/clamp_main.png)
+  - ![](../assets/clamp_junction.png)
+  - ![](../assets/clamp_tip.png)
 - types
   - whole-cell
   - cell-attached
@@ -54,7 +54,7 @@ category: neuro
 - IV curve - measured with voltage clamp
   - V - voltage clamped at
   - I - maximal current evoked by clamping at this voltage
-- ![](assets/vissci/circuit_model.png)
+- ![](../assets/circuit_model.png)
 
 # recording + imaging
 
@@ -116,7 +116,7 @@ category: neuro
 - retina - large metabolic rate
   - at the back of the eye, fairly regular array
   - ~1.2 mil optic nerve fibers
-- ![](assets/vissci/layers.png)
+- ![](../assets/layers.png)
 - pigment absorbs stray photons to reduce noise
 - cones
   - ~6 mil cones
@@ -129,7 +129,7 @@ category: neuro
   - high sensitivity to light
   - slow responses
   - saturate
-- ![](assets/vissci/receptor_densities.png)
+- ![](../assets/receptor_densities.png)
 - *photo-transduction* - converts photons into voltage-changes
 - terminals
   - cone *pedicle*
@@ -187,7 +187,7 @@ category: neuro
 ## retinal glia
 
 - glia greek for "glue"
-- 3 types ![](assets/vissci/glia.png)
+- 3 types ![](../assets/glia.png)
 - Muller cells
   - from multiplotent retinal progenitor cells (same that make neurons)
     - in fish, with damage muller cells can become neurons (forced in mammals)
@@ -324,7 +324,7 @@ category: neuro
 
 # experimental methods
 
-![](assets/vissci/method_coverage.png)
+![](../assets/method_coverage.png)
 
 - 7 dimensions
 	- spatial res.
@@ -422,7 +422,7 @@ category: neuro
     - blood oxygenation has linear relationship with decay
   - pipeline
     - activity -> more oxygen use + cerebral blood flow -> magnetic field distortions -> MRI signal intensity
-      - activity make oxygen go down real quick then blood flow over compensates, then saturates ![](assets/vissci/hrf.png)
+      - activity make oxygen go down real quick then blood flow over compensates, then saturates ![](../assets/hrf.png)
       - can't separate excitatory / inhibitory
     - LFP predicts BOLD well (only slightly better than MUA)
       - all are really pretty well correlated
@@ -468,7 +468,7 @@ category: neuro
   - mapping
     - each visual areas has some retinotopic mapping
     - moving points
-    -  ![](assets/vissci/vmap.png)
+    -  ![](../assets/vmap.png)
       - periodic mapping stimuli - rotating wedge / other things (fig left) $\implies$ between visual areas (e.g. v1 + v2) mirror image tiling of locations (borders between regions are like mirrors)
       - eccentricity mapping (fig right) - rings spread out evenly - no mirrors
     - cortical magnification - way more v1 for central locations
@@ -546,7 +546,7 @@ category: neuro
     - connected via gap junctions
   - HII (type A)
     - dendrites contact S, M/L cones
-  - ![](assets/vissci/horizontal.png)
+  - ![](../assets/horizontal.png)
 - bipolar cells
   - rod v. cone
   - on v. off
@@ -594,7 +594,7 @@ category: neuro
 
 ## visual pathways
 
-- ![](assets/vissci/visual_pathways.png)
+- ![](../assets/visual_pathways.png)
 - organization
   - thalamus + cortex always work together = thalamocortical system
   - midbrain - reptilian, old
@@ -626,7 +626,7 @@ category: neuro
   - inputs from parasol cells
 - losing magno seems to lose spatial frequency, control different temporal frequencies, parvo gives you color
 - **important** - different spatial/temporal frequencies - differentiate from the beginning
-  - ![](assets/vissci/magno_parvo.png)
+  - ![](../assets/magno_parvo.png)
 
 ## color
 
@@ -666,13 +666,13 @@ category: neuro
   - regions defined by having a topographic map
     - for later areas, histological differences, connectivity, physiological properties
       - connections are all bidirectional
-- ![vmap_main](assets/vissci/vmap_main.png)retinotopy
+- ![vmap_main](../assets/vmap_main.png)retinotopy
   - v1 has map of retina that's flattened (proportional to ganglion cells)
   - probably no "fixed up" image of the world somewhere
   - could understand perception in terms of action
 - LGN wires don't interact with each other too much
   - some inhibitory interneurons
-- cortex ![column](assets/vissci/column.png)
+- cortex ![column](../assets/column.png)
   - ~2mm thick
   - layer 1 - mostly axons
   - layer 2/3 - association layer

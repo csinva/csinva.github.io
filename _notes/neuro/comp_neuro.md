@@ -67,7 +67,7 @@ category: neuro
 
 ## modeling neurons
 
-- ![](assets/comp_neuro/5_1_1.png)
+- ![](../assets/5_1_1.png)
 - nernst battery
   1. osmosis (for each ion)
   2. electrostatic forces (for each ion)
@@ -78,7 +78,7 @@ category: neuro
   - part of voltage is accounted for by nernst battery $V_{rest}$
   - yields $\tau \frac{dV}{dt} = -V + V_\infty$ where $\tau=R_mC_m=r_mc_m$
   - equivalently, $\tau_m \frac{dV}{dt} = -((V-E_L) - g_s(t)(V-E_s) r_m) + I_e R_m $
-- ![](assets/comp_neuro/5_1_2.png)
+- ![](../assets/5_1_2.png)
 
 ## simplified model neurons
 
@@ -94,14 +94,14 @@ category: neuro
   - also model a K current
   - can capture things like resonance
 - *theta neuron* (Ermentrout and Kopell)
-  - ![](assets/comp_neuro/5_3_1.png)
+  - ![](../assets/5_3_1.png)
   - often used for periodically firing neurons (it fires spontaneously)
 
 ## a forest of dendrites
 
 - cable theory - Kelvin
 - voltage V is a function of both x and t
-- ![](assets/comp_neuro/5_4_1.png)
+- ![](../assets/5_4_1.png)
 - separate into sections that don't depend on x
   - coupling conductances link the sections (based on area of compartments / branching)
 - Rall model for dendrites
@@ -304,7 +304,7 @@ category: neuro
     1. can test if distr is Poisson with *Fano factor*=mean/var=1
       2. interspike intervals have exponential distribution	- if fires a lot, this can be bad assumption (due to refractory period)
 - generalized linear model adds explicit spike-generation / post-spike filter (Pillow et al. 2008)
-  - ![](assets/comp_neuro/2_4_1.png)
+  - ![](../assets/2_4_1.png)
   - post-spike filter models refractory period
   - *Paninski* showed that using exponential nonlinearity allows this to be optimized
   - could add in firing of other neurons
@@ -359,7 +359,7 @@ category: neuro
   - not *optimal* - making use of all information in the stimulus/response distributions
 - *bayesian inference*
   - $p(s\|r) = \frac{p(r\|s)p(s)}{p( r)}$
-  - ![](assets/comp_neuro/3_2_1.png)
+  - ![](../assets/3_2_1.png)
   - maximum likelihood: s* which maximizes p(r\|s)
   - MAP = maximum $a\:posteriori$: s* which mazimizes p(s\|r)
 - simple continuous stimulus example
@@ -368,7 +368,7 @@ category: neuro
     - each neuron's average firing rate=tuning curve $f_a(s)$ is Gaussian (in s)
     - let $r_a$ be number of spikes for neuron a
     - assume receptive fields of neurons span s: $\sum r_a (s)$ is const
-    - ![](assets/comp_neuro/3_2_2.png)
+    - ![](../assets/3_2_2.png)
   - solving
     - maximizing log-likelihood with respect to s			- take derivative and set to 0
       - soln $s^* = \frac{\sum r_a s_a / \sigma_a^2}{\sum r_a / \sigma_a^2}$
@@ -449,7 +449,7 @@ category: neuro
   - let $P(r=0\|s) = 1 - r(t) \Delta t$
   - get r(t) by having simulus on for long time
   - *ergodicity* - a time average is equivalent to averging over the s ensemble
-  - ![](assets/comp_neuro/4_2_1.png)
+  - ![](../assets/4_2_1.png)
   - info per spike $I(r,s) = \frac{1}{T} \int_0^T dt \frac{r(t)}{\bar{r}} log \frac{r(t)}{\bar{r}}$
     - timing precision reduces r(t)
     - low mean spike rate -> high info per spike
@@ -465,7 +465,7 @@ category: neuro
   - want to use each of our "symbols" (ex. different firing rates) equally often
   - should assign equal areas of input stimulus PDF to each symbol
 - adaptataion to stimulus statistics
-  - ![](assets/comp_neuro/4_3_1.png)
+  - ![](../assets/4_3_1.png)
   - feature adaptation (Atick and Redlich)
     - spatial filtering properties in retina / LGN change with varying light levels
     - at low light levels surround becomes weaker
@@ -671,7 +671,7 @@ category: neuro
 
 ## intro to unsupervised learning
 
-- ![](assets/comp_neuro/7_2_1.png)
+- ![](../assets/7_2_1.png)
   - most active neuron is the one whose w is closest to x
 - *competitive learning*
   - updating weights given a new input
@@ -709,7 +709,7 @@ category: neuro
   - can implement sparse coding in a recurrent neural network
   - Olshausen & Field, 1996 - learns receptive fields in V1
 - sparse coding is a special case of *predicive coding*
-  - ![](assets/comp_neuro/7_3_1.png)
+  - ![](../assets/7_3_1.png)
   - there is usually a feedback connection for every feedforward connection (Rao & Ballard, 1999)
 
 ## sparse, distributed coding

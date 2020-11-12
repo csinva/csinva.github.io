@@ -2,7 +2,7 @@
 layout: notes
 title: Feature selection
 category: ml
-typora-copy-images-to: ./assets/ml
+typora-copy-images-to: ../assets
 ---
 
 {:toc}

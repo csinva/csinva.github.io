@@ -2,7 +2,7 @@
 layout: notes
 title: quantum
 category: cs
-typora-copy-images-to: ./assets
+typora-copy-images-to: ../assets
 ---
 
 {:toc}
@@ -44,7 +44,7 @@ Some *very limited* notes on quantum computing
 - probability with minus signs
 - *amplitudes* - used to calculate probabilites, but can be negative / complex
 
-![](assets/quantum/double_slit.png)
+![](../assets/double_slit.png)
 
 - applications
   - quantum simulation
@@ -73,7 +73,7 @@ Some *very limited* notes on quantum computing
 - separate 2 samples (one hot, one cold) with insulator
   - **idea**: demon makes all fast particles go to hot side, all slow particles go to slow side - **this is against entropy**
   - demon controls door between the samples
-  - ![](assets/quantum/demon.png)
+  - ![](../assets/demon.png)
     - demon opens door whenever high temperature particle comes from cold sample, then closes
     - demon opens door for slow particles from hot sample, then closes
 - problem: demon has to track all the particles (which would generate a lot of heat)
@@ -83,6 +83,6 @@ Some *very limited* notes on quantum computing
 - based on this [blog post](https://www.math3ma.com/blog/a-first-look-at-quantum-probability-part-1)
 
   - marginal prob. loses information but we don't need to
-- ![Screen Shot 2019-08-17 at 10.36.26 AM](assets/Screen Shot 2019-08-17 at 10.36.26 AM.png)
+- ![Screen Shot 2019-08-17 at 10.36.26 AM](../assets/matrix_prob.png)
   
   

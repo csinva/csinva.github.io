@@ -251,17 +251,17 @@ category: stat
 
 - *LMS* = *least mean squares* (p-dimensional geometries)
 
-  - ![](assets/linear_reg/j6_1.png)
+  - ![](../assets/j6_1.png)
   - $y_n = \theta^T x_n + \epsilon_n$
   - $\theta^{(t+1)}=\theta^{(t)} + \alpha (y_n - \theta^{(t)T} x_n) x_n$
     - converges if $0 < \alpha < 2/||x_n||^2$
-    - ![](assets/linear_reg/j6_2.png)
-    - ![](assets/linear_reg/j6_3.png)
+    - ![](../assets/j6_2.png)
+    - ![](../assets/j6_3.png)
   - if N=p and all $x^{(i)}$ are lin. indepedent, then there exists exact solution $\theta$
 
 - solving requires finding *orthogonal projection of y on column space of X* (n-dimensional geometries)
 
-  - ![](assets/linear_reg/j6_4.png)
+  - ![](../assets/j6_4.png)
 
   1. 3 Pfs
      1. geometry - $y-X\theta^*$ must be orthogonal to columns of X: $X^T(y-X\theta)=0$

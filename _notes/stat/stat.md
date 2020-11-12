@@ -76,7 +76,7 @@ category: stat
 - PMF: $f_X(x) = P(X=x)$
 - PDF: $P(a \leq X \leq b) = \int_a^b f(x) dx$
 
-![distrs](assets/stat/distrs.png)
+![distrs](../assets/distrs.png)
 
 - multivariate gaussian
   - 2 parameterizations ($x \in \mathbb{R}^n$)
@@ -134,7 +134,7 @@ category: stat
   - basically it converges to a number (can still be biased)
 - **bias/variance trade-off**
   - MSE - mean squared error  - $E[(\hat{\theta}-\theta)^2]$ = $V(\hat{\theta})+[E(\hat{\theta})-\theta]^2$
-    - ![mse](assets/stat/mse.png)
+    - ![mse](../assets/mse.png)
   - defs
     - bias = *approximation err*
     - variance = *estimation err*

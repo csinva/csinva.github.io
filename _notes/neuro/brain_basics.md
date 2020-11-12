@@ -68,7 +68,7 @@ category: neuro
 - Medulla: The medulla or medulla oblongata is an essential portion of the brain stem which maintains vital body functions such as the heart rate and breathing.
 
 # 1 - introduction
-- ![](assets/neural_signaling/map.png)
+- ![](../assets/map.png)
 ## genomics
 
 - male Drosophila uses body position and environment to add rhythmic notes to song
@@ -237,7 +237,7 @@ category: neuro
     - loss - multiple sclerosis (MS)
 
 # 4 - ion channel transporters
-- patch electrode - pull a piece of membrane out ![](assets/neural_signaling/4_A.png)
+- patch electrode - pull a piece of membrane out ![](../assets/4_A.png)
   1. cell-attached - don't break membrane
   2. whole-cell - break membrane
   3. inside-out - inside of membrane is outside electrode
@@ -348,8 +348,8 @@ category: neuro
   |----------|-----------	|--------	|---------------------	|-------------------------	|---------------------	|------------------	|-------------------	|------------------	|
   | Abbrev   | Glutamate 	| GABA_B 	| Dopamine            	| NE,Epi                  	| Histamine           	| Serotonin        	| Purines           	| Muscarinic       	|
   | Function |           	|        	| cocaine, ADHD drugs 	| antianxiety             	| unkown, probs sleep 	| 3 is ionotropic! 	|                   	| mushroom drugs   	|
-- ![](assets/neural_signaling/6_1.png)
-- ![](assets/neural_signaling/6_4.png)
+- ![](../assets/6_1.png)
+- ![](../assets/6_4.png)
 ## excitatory
 1. *Acetylcholine* - excites muscle cells
   - receptors: nAch
@@ -443,7 +443,7 @@ category: neuro
   - activate G-protein that then does something
   - these require energy for G-proteins
   1. Heterotrimeric G-proteins
-    - G-protein has 3 subunits: - ![](assets/neural_signaling/7_6.png)
+    - G-protein has 3 subunits: - ![](../assets/7_6.png)
     1. Gs - binds norepinephrine
       - + cAMP
     2. Gq - binds glutamate
@@ -510,7 +510,7 @@ category: neuro
     - min time scale
 - experiments
   - *habituation* - decrease vesicles on sensory neuron after too much stimuli
-  - *sensitization* - associate two stimuli together: ![](assets/neural_signaling/8_5.png)
+  - *sensitization* - associate two stimuli together: ![](../assets/8_5.png)
 - mechanism
   - sensory neuron -> serotinergic neuromodulatary interneuon -> motor neuron
   - interneuron releases serotonin 

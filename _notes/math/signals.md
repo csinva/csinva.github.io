@@ -2,7 +2,7 @@
 layout: notes
 title: signals
 category: math
-typora-copy-images-to: ./assets/signals
+typora-copy-images-to: ../assets
 ---
 
 {:toc}
@@ -10,7 +10,7 @@ typora-copy-images-to: ./assets/signals
 # basics
 
 - dirac-delta infinity at one point, zero everywhere else
-- ![amplitude-period-ex3](assets/signals/amplitude-period-ex3.svg)
+- ![amplitude-period-ex3](../assets/amplitude-period-ex3.svg)
 
 # intro
 
@@ -33,7 +33,7 @@ typora-copy-images-to: ./assets/signals
   - band-stop filter - pass only frequences outside a specified range
 - **power spectrum** - how much of the signal is at a frequency $\omega$? - square of the magnitude of the coefficients of the Fourier coefficients for $\omega$
 
-![Screen Shot 2019-12-11 at 1.37.55 PM](assets/signals/Screen Shot 2019-12-11 at 1.37.55 PM.png)
+![Screen Shot 2019-12-11 at 1.37.55 PM](../assets/transforms.png)
 
 # fourier analysis
 
@@ -90,7 +90,7 @@ typora-copy-images-to: ./assets/signals
     - it is convenient to set $a=2^{-j}, b = k \cdot 2^{-j}$, where k and j are integers
 - website to [explore different wavelets](http://wavelets.pybytes.com/)
   - ex. **Haar wavelet** (step function on [0, 1]
-    - ![haar](assets/signals/haar.png)
+    - ![haar](../assets/haar.png)
     - define translations and dilations $\phi_{jk}(x) = \text{const} \cdot \phi(2^j x - k)$
       - j, k are still integers
       - this is still orthogonal
@@ -102,11 +102,11 @@ typora-copy-images-to: ./assets/signals
 - [how are wavelets implemented?]() (figs taken from blog)
   - note: Continuous Wavelet Transform, (CWT), and the Discrete Wavelet Transform (DWT), **are both, point-by-point, digital, transformations that are easily implemented on a computer**
     - DWT restricts the value of the scale and translation of the wavelets (e.g. scale must increase in powers of 2 and translation must be integer)
-  - ![Screen Shot 2019-12-11 at 2.00.27 PM](assets/signals/Screen Shot 2019-12-11 at 2.00.27 PM.png)
+  - ![Screen Shot 2019-12-11 at 2.00.27 PM](../assets/wavelet_comp.png)
   - The **approximation coefficients** represent the output of the low pass filter (averaging filter) of the DWT.
   - The **detail coefficients** represent the output of the high pass filter (difference filter) of the DWT
   - [pywt 2d](https://pywavelets.readthedocs.io/en/latest/ref/2d-decompositions-overview.html) can decompose in different ways
-    - ![Screen Shot 2019-12-11 at 2.47.53 PM](assets/signals/Screen Shot 2019-12-11 at 2.47.53 PM.png)
+    - ![Screen Shot 2019-12-11 at 2.47.53 PM](../assets/wavelet_coefs.png)
 
 ## wavelet analysis
 
