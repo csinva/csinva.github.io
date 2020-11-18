@@ -270,6 +270,7 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
       - like a generalization of information gain
   - evaluation
     - with label corruption performs better
+- [Learned Equivariant Rendering without Transformation Supervision](https://arxiv.org/abs/2011.05787) - separate foreground / background using video
 
 # (semi)-supervised disentanglement
 

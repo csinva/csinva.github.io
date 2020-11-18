@@ -581,38 +581,143 @@
      4.4.1.2. common examples
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#measures-of-association">
+     4.4.1.3. measures of association
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#frameworks">
-   4.4.2. frameworks
+  <a class="reference internal nav-link" href="#design-and-analysis-of-randomized-experiments">
+   4.4.2. design and analysis of randomized experiments
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#potential-outcome-framework-neyman-rubin">
-     4.4.2.1. potential outcome framework (neyman-rubin)
+    <a class="reference internal nav-link" href="#fisher-randomization-test">
+     4.4.2.1. fisher randomization test
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#dags-pearl-et-al">
-     4.4.2.2. DAGs (pearl et al.)
+    <a class="reference internal nav-link" href="#neyman-rubin-estimator">
+     4.4.2.2. neyman-rubin estimator
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#stratification">
+     4.4.2.3. stratification
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#causal-ladder-different-levels-of-inference">
-       4.4.2.2.1. causal ladder (different levels of inference)
+      <a class="reference internal nav-link" href="#matched-pairs-design">
+       4.4.2.3.1. matched-pairs design
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#adjusting-for-covariate-iblance">
+       4.4.2.3.2. adjusting for covariate iblance
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#observational-studies">
+   4.4.3. observational studies
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ate-estimation">
+     4.4.3.1. ATE estimation
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ate-estimators">
+       4.4.3.1.1. ATE estimators
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#matching">
+       4.4.3.1.2. matching
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#weighting-regression-adjustments">
+       4.4.3.1.3. weighting / regression adjustments
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sem-structured-equation-model">
-     4.4.2.3. sem (structured equation model)
+    <a class="reference internal nav-link" href="#assumption-checking">
+     4.4.3.2. assumption checking
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#check-ignorability-use-auxilary-outcome">
+       4.4.3.2.1. check ignorability: use auxilary outcome
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#check-ignorability-sensitivity-analysis-wrt-unmeasured-confounding">
+       4.4.3.2.2. check ignorability: sensitivity analysis wrt unmeasured confounding
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#quasi-experiment-pseudo-experiment">
+     4.4.3.3. quasi-experiment = pseudo-experiment
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ladder-of-evidence">
+       4.4.3.3.1. ladder of evidence
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#instrumental-variable">
+       4.4.3.3.2. instrumental variable
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#synthetic-data">
+       4.4.3.3.3. synthetic data
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#frameworks">
+   4.4.4. frameworks
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#potential-outcome-framework-neyman-rubin">
+     4.4.4.1. potential outcome framework (neyman-rubin)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dags-pearl-et-al">
+     4.4.4.2. DAGs (pearl et al.)
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#causal-ladder-different-levels-of-inference">
+       4.4.4.2.1. causal ladder (different levels of inference)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#sem-structured-equation-model">
+       4.4.4.2.2. sem (structured equation model)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#causal-graphs">
-       4.4.2.3.1. causal graphs
+       4.4.4.2.3. causal graphs
       </a>
      </li>
     </ul>
@@ -621,76 +726,54 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#assumptions">
-   4.4.3. assumptions
+   4.4.5. assumptions
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#modeling-approaches">
-   4.4.4. modeling approaches
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#ladder-of-evidence">
-     4.4.4.1. ladder of evidence
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#measures-of-association">
-     4.4.4.2. measures of association
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#matching">
-     4.4.4.3. matching
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#weighting-regression-adjustments">
-     4.4.4.4. weighting / regression adjustments
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#studies">
-   4.4.5. studies
+   4.4.6. studies
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#classic-studies">
-     4.4.5.1. classic studies
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#stability-invariance">
-     4.4.5.2. stability / invariance
+     4.4.6.1. classic studies
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#reviews">
-     4.4.5.3. reviews
+     4.4.6.2. reviews
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#recent">
-     4.4.5.4. recent
+    <a class="reference internal nav-link" href="#misc">
+     4.4.6.3. misc
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#different-problems">
-   4.4.6. different problems
+  <a class="reference internal nav-link" href="#different-problems-beyond-ate">
+   4.4.7. different problems beyond ATE
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mediation-analysis">
+     4.4.7.1. mediation analysis
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#heterogenous-treatment-effects">
-     4.4.6.1. heterogenous treatment effects
+     4.4.7.2. heterogenous treatment effects
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#causal-discovery">
-     4.4.6.2. causal discovery
+     4.4.7.3. causal discovery
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#stable-invariant-predictors">
+     4.4.7.4. stable/invariant predictors
     </a>
    </li>
   </ul>
@@ -822,225 +905,337 @@ A --&gt; C
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="frameworks">
-<h2>4.4.2. frameworks<a class="headerlink" href="#frameworks" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="potential-outcome-framework-neyman-rubin">
-<h3>4.4.2.1. potential outcome framework (neyman-rubin)<a class="headerlink" href="#potential-outcome-framework-neyman-rubin" title="Permalink to this headline">¶</a></h3>
-<ul>
-<li><p>advantages over DAGs: easy to express some common assumptions, such as monotonicity / convexity</p></li>
-<li><p>3 frameworks</p>
-<ol class="simple">
-<li><p>neyman-rubin model: <span class="math notranslate nohighlight">\(Y_i = T_i a_i + (1-T_i) b_i\)</span></p></li>
-</ol>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\widehat{ATE} = \hat{a}_A - \hat{b}_B\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\widehat{ATE}_{adj} = [\bar{a}_A - (\bar{x}_A - \bar{x})^T \hat{\theta}_A] - [\bar{b}_B - (\bar{x}_B - \bar{x})^T \hat{\theta}_B]\)</span></p>
-<ul>
-<li><p><span class="math notranslate nohighlight">\(\hat{\theta}_A = argmin \sum_{i \in A} (a_i - \bar{a}_A - (x_i - \bar{x}_A)^T \theta)^2\)</span></p></li>
-</ul>
-</li>
-</ul>
-<ol class="simple">
-<li><p>neyman-pearson</p></li>
-</ol>
-<ul class="simple">
-<li><p>null + alternative hypothesis</p>
-<ul>
-<li><p>null is favored unless there is strong evidence to refute it</p></li>
-</ul>
-</li>
-</ul>
-<ol class="simple">
-<li><p>fisherian testing framework</p></li>
-</ol>
-<ul class="simple">
-<li><p>small p-values evidence against null hypothesis</p></li>
-<li><p>null hypothesis</p></li>
-</ul>
-</li>
-<li><p>action = intervention, exposure, treatments</p></li>
-<li><p>action <span class="math notranslate nohighlight">\(A\)</span> and outcome <span class="math notranslate nohighlight">\(Y\)</span></p></li>
-<li><p><img alt="Screen Shot 2020-05-05 at 10.50.28 AM" src="../../_images/counterfactuals.png" /></p></li>
-<li><p><strong>potential outcomes</strong> = <strong>counterfactual outcomes</strong> <span class="math notranslate nohighlight">\(Y^{a=1}, Y^{a=0}\)</span></p></li>
-<li><p><strong>average treatment effect ATE</strong>: <span class="math notranslate nohighlight">\(E[Y^{a=1} - Y^{a=0}]\)</span></p></li>
-<li><p>key assumptions: SUTVA, consistency, ignorability</p></li>
-</ul>
-</div>
-<div class="section" id="dags-pearl-et-al">
-<h3>4.4.2.2. DAGs (pearl et al.)<a class="headerlink" href="#dags-pearl-et-al" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>comparison to potential outcomes</p>
-<ul>
-<li><p>easy to make clear exactly what is independent, particularly when there are many variables</p></li>
-<li><p>do-calculus allows for answering some specific questions easily</p></li>
-<li><p>often difficult to come up with proper causal graph</p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="http://smithamilli.com/blog/causal-ladder/">blog post on causal ladder</a></p></li>
-<li><p><a class="reference external" href="https://www.inference.vc/untitled/">intro to do-calculus post</a> and subsequent posts</p></li>
-</ul>
-<div class="section" id="causal-ladder-different-levels-of-inference">
-<h4>4.4.2.2.1. causal ladder (different levels of inference)<a class="headerlink" href="#causal-ladder-different-levels-of-inference" title="Permalink to this headline">¶</a></h4>
-<ol class="simple">
-<li><p><strong>prediction/association</strong> - just need to have the joint distr. of all the variables</p>
-<ul class="simple">
-<li><p>basically just <span class="math notranslate nohighlight">\(p(y|x)\)</span></p></li>
-</ul>
-</li>
-<li><p><strong>intervention</strong> - we can change things and get conditionals based on <em>evidence after intervention</em></p></li>
-</ol>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(p(y|do(x))\)</span> - which represents the conditional distr. we would get if we were to manipulate <span class="math notranslate nohighlight">\(x\)</span> in a randomized trial</p>
-<ul>
-<li><p>to get this, we assume the causal structure (can still kind of test it based on conditional distrs.)</p></li>
-<li><p>having assumed the structure, we delete all edges going into a do operator and set the value of <span class="math notranslate nohighlight">\(x\)</span></p></li>
-<li><p>then, do-calculus yields a formula to estimate <span class="math notranslate nohighlight">\(p(y|do(x))\)</span> assuming this causal structure</p></li>
-<li><p>see introductory paper <a class="reference external" href="https://arxiv.org/pdf/1305.5506.pdf">here</a>, more detailed paper <a class="reference external" href="https://ftp.cs.ucla.edu/pub/stat_ser/r416-reprint.pdf">here</a> (pearl 2013)</p></li>
-</ul>
-</li>
-<li><p>by assuming structure, we learn how large impacts are</p></li>
-</ul>
-<ol class="simple">
-<li><p><strong>counterfactuals</strong> - we can change things and get conditionals based on <em>evidence before intervention</em></p></li>
-</ol>
-<ul class="simple">
-<li><p>instead of intervention <span class="math notranslate nohighlight">\(p(y|do(x))\)</span> we get <span class="math notranslate nohighlight">\(p(y^*|x^*, z=z)\)</span> where z represents fixing all the other variables and <span class="math notranslate nohighlight">\(y^*\)</span> and <span class="math notranslate nohighlight">\(x^*\)</span> are not observed</p>
-<ul>
-<li><p>averaging over all data points, we’d expect to get something similar to the intervention <span class="math notranslate nohighlight">\(p(y|do(x))\)</span></p></li>
-</ul>
-</li>
-<li><p>probabalistic answer to a “what would have happened if” question</p>
-<ul>
-<li><p>e.g. “Given that Hillary lost and didn’t visit Michigan, would she win if she had visited Michigan?”</p></li>
-<li><p>e.g. “What fraction of patients who are treated and died would have survived if they were not treated?”</p></li>
-<li><p>this allows for our intervention to contradict something we condition on</p></li>
-<li><p>simple matching is often not sufficient (need a very good model for how to match, hopefully a causal one)</p></li>
-</ul>
-</li>
-<li><p>key difference with standard intervention is that we incorporate available evidence into our calculation</p>
-<ul>
-<li><p>available evidence influences exogenous variables</p></li>
-<li><p>this is for a specific data point, not a randomly sampled data point like an intervention would be</p></li>
-<li><p>requires SEM, not just causal graph</p></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-<div class="section" id="sem-structured-equation-model">
-<h3>4.4.2.3. sem (structured equation model)<a class="headerlink" href="#sem-structured-equation-model" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>gives a set of variables <span class="math notranslate nohighlight">\(X_1, ... X_i\)</span> and and assignments of the form <span class="math notranslate nohighlight">\(X_i := f_i(X_{parents(i)}, \epsilon_i)\)</span>, which tell how to compute value of each node given parents</p>
-<ul>
-<li><p><span class="math notranslate nohighlight">\(\epsilon_i\)</span> = noise variables = <strong>exogenous nodes</strong> - node in the network that represents all the data not collected</p></li>
-<li><p>parent nodes = <em>direct causes</em></p></li>
-</ul>
-</li>
-<li><p>again, fix value of <span class="math notranslate nohighlight">\(x\)</span> (and values of <span class="math notranslate nohighlight">\(\epsilon\)</span> seend in the data) and use SEM to set all downstream variables</p></li>
-<li><p>ex. <img alt="sem" src="../../_images/sem.png" /></p>
-<ul>
-<li><p>in this ex, W and H are usually correlated, so conditional distrs. are similar, but do operator of changing W has no effect on H (and vice versa)</p></li>
-<li><p>notation: <span class="math notranslate nohighlight">\(P(H|do(W:=1))\)</span> or <span class="math notranslate nohighlight">\(P_{M[W:=1]}(h)\)</span></p></li>
-<li><p>ATE of <span class="math notranslate nohighlight">\(W\)</span> on <span class="math notranslate nohighlight">\(H\)</span> would be <span class="math notranslate nohighlight">\(P(H|do(W:=1)) - P(H|do(W:=0))\)</span></p></li>
-</ul>
-</li>
-</ul>
-<div class="section" id="causal-graphs">
-<h4>4.4.2.3.1. causal graphs<a class="headerlink" href="#causal-graphs" title="Permalink to this headline">¶</a></h4>
-<ul class="simple">
-<li><p>common graphs</p>
-<ul>
-<li><p>absence of edges often corresponds to qualitative judgements
-| forks                                                        | mediators                                                    | colliders                                                    |
-| ———————————————————— | ———————————————————— | ———————————————————— |
-| <img alt="Screen Shot 2020-10-21 at 11.57.13 PM" src="../../_images/explaining_away.png" /> | <img alt="Screen Shot 2020-10-21 at 11.57.17 PM" src="../../_images/confounder_in_way.png" /> | <img alt="Screen Shot 2020-10-21 at 11.57.22 PM" src="../../_images/confounding_triple.png" /> |
-| confounder <span class="math notranslate nohighlight">\(z\)</span>, can be adjusted for                          | confounder can vary causal effect                            | conditioning on confounder z can explain away a cause        |</p></li>
-</ul>
-</li>
-<li><p><strong>controlling</strong> for a variable  (when we have a causal graph):</p></li>
-<li><p><span class="math notranslate nohighlight">\(P(Y=y|do(X:=x)) = \sum_z \underbrace{P(Y=y|X=x, X_{parents}=z)}_{\text{effect for slice}} \underbrace{P(X_{parents}=z)}_{\text{weight for slice}}\)</span></p></li>
-<li><p><strong>counterfactual</strong> - given structural causal model <em>M</em>, observed event <em>E</em>, action <em>X:=x</em>, target variable <em>Y</em>, define counterfactual <span class="math notranslate nohighlight">\(Y_{X:=x}(E)\)</span> in 3 steps:</p>
-<ul>
-<li><p><strong>abduction</strong> - adjust noise variables to be consistent with observation</p></li>
-<li><p><strong>action</strong> - perform do-intervention</p></li>
-<li><p><strong>prediction</strong> - compute target counterfactual</p></li>
-<li><p>counterfactual can be a random variable or deterministic</p></li>
-</ul>
-</li>
-<li><p><strong>back-door criterion</strong> - establishes if 2 variables X, Y are confounded</p>
-<ul>
-<li><p>more details: http://bayes.cs.ucla.edu/BOOK-2K/ch3-3.pdf</p></li>
-<li><p>ensure that there is no path which points to X which allows dependence between X and Y ( paths which point to X are non-causal, representing confounders )</p></li>
-<li><p>remember, in DAG junctions conditioning makes things independent unless its at a V junction</p></li>
-</ul>
-</li>
-<li><p><strong>front-door criterion</strong> - want to deconfound treatment from outcome, even without info on the confounder</p>
-<ul>
-<li><p>only really need to know about treatment, M, and outcome</p></li>
-</ul>
-</li>
-</ul>
-<div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>graph LR
-C(Confounder) --&gt;Y(Outcome)
-C --&gt; X(Treatment)
-X --&gt; M
-M --&gt; Y
-</pre></div>
-</div>
-<ul class="simple">
-<li><p><strong>mediation analysis</strong> - identify a mechanism through which a cause has an effect</p>
-<ul>
-<li><p>if there are multiple possible paths by which a variable can exert influence, can figure out which path does what, even with just observational data</p></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="section" id="assumptions">
-<h2>4.4.3. assumptions<a class="headerlink" href="#assumptions" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p><strong>stable unit treatment value assumption (SUTVA)</strong> - treatment one unit receives doesn’t change effect of action for any other unit</p>
-<ul>
-<li><p><strong>exchangeability</strong> = exogeneity: <span class="math notranslate nohighlight">\(\color{orange}{Y^{a}} \perp \!\!\! \perp A\)</span> for all <span class="math notranslate nohighlight">\(a\)</span> - <span class="math notranslate nohighlight">\(\textcolor{orange}{\text{the value of the counterfactuals}}\)</span> doesn’t change based on the choice of the action</p></li>
-</ul>
-</li>
-<li><p><strong>consistency</strong>: <span class="math notranslate nohighlight">\(Y=Y^{a=0}(1-A) + Y^{a=1}A\)</span> - outcome agrees with the potential outcome corresponding to the treatment indicator</p></li>
-<li><p><strong>ignorability</strong> - potential outcomes are conditionally independent of treatment given some deconfounding varibles</p>
-<ul>
-<li><p>very hard to check!</p></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="section" id="modeling-approaches">
-<h2>4.4.4. modeling approaches<a class="headerlink" href="#modeling-approaches" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="ladder-of-evidence">
-<h3>4.4.4.1. ladder of evidence<a class="headerlink" href="#ladder-of-evidence" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>RCT</p></li>
-<li><p>natural experiment</p></li>
-<li><p>instrumental variable</p></li>
-<li><p>discontinuity analysis - look for points near a threshold treatment assignment</p></li>
-</ul>
-</div>
 <div class="section" id="measures-of-association">
-<h3>4.4.4.2. measures of association<a class="headerlink" href="#measures-of-association" title="Permalink to this headline">¶</a></h3>
+<h3>4.4.1.3. measures of association<a class="headerlink" href="#measures-of-association" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>correlation</p></li>
 <li><p>regression coefficient</p></li>
 <li><p>risk difference = <span class="math notranslate nohighlight">\(p(Y=1|A=1) - P(Y=1|A=0)\)</span></p></li>
-<li><p>risk ratio = <span class="math notranslate nohighlight">\(p(Y=1|A=1) / P(Y=1|A=0)\)</span></p></li>
-<li><p>odds ratio = <span class="math notranslate nohighlight">\(\frac{p(Y=1|A=1) / P(Y=0|A=1)}{p(Y=1|A=0) / P(Y=0|A=0)}\)</span></p></li>
+<li><p><strong>risk ratio</strong> = relative risk =  <span class="math notranslate nohighlight">\(p(Y=1|A=1) / P(Y=1|A=0)\)</span></p></li>
+<li><p><strong>odds ratio</strong> = <span class="math notranslate nohighlight">\(\frac{p(Y=1|A=1) / P(Y=0|A=1)}{p(Y=1|A=0) / P(Y=0|A=0)}\)</span></p>
+<ul>
+<li><p>measures association (1 is independent, &gt;1 is positive association, &lt;1 is negative association)</p></li>
+<li><p>define odds <span class="math notranslate nohighlight">\(P(Y=1)\)</span> as <span class="math notranslate nohighlight">\(P(Y=1)/P(Y \neq 1)\)</span></p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="design-and-analysis-of-randomized-experiments">
+<h2>4.4.2. design and analysis of randomized experiments<a class="headerlink" href="#design-and-analysis-of-randomized-experiments" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>RCT intuition (fisher, 1935)</p>
+<ul>
+<li><p>creates comparable treatment and control groups on average</p></li>
+<li><p>serves as a “reasoned basis” for statistical inference</p></li>
+</ul>
+</li>
+</ul>
+<div class="section" id="fisher-randomization-test">
+<h3>4.4.2.1. fisher randomization test<a class="headerlink" href="#fisher-randomization-test" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>fisher null hypothesis</strong>: <span class="math notranslate nohighlight">\(H_{0F}: Y_i^{T=0} = Y_i^{T=1}\quad \forall i\)</span></p>
+<ul>
+<li><p>also called strong null hypothesis = sharp null hypothesis (Rubin, 1980)</p>
+<ul>
+<li><p>weak null hypothesis would be <span class="math notranslate nohighlight">\(\bar Y_i^{T=0} = Y_i^{T=1}\)</span></p></li>
+</ul>
+</li>
+<li><p>can work for any test statistic <span class="math notranslate nohighlight">\(test\)</span></p></li>
+<li><p>only randomness comes from treatment variable - this allows us to get <em>randomization distribution</em> for a test-statistic <span class="math notranslate nohighlight">\(test(T, Y^{A=1}, Y^{A=0})\)</span></p></li>
+<li><p>this yields p-values: <span class="math notranslate nohighlight">\(p= \frac 1 M \sum_{m=1}^M \mathbb 1 \{ test(\mathbf t^m, \mathbf Y) \geq test (\mathbf T, \mathbf Y) \}\)</span></p>
+<ul>
+<li><p>can approximate this with Monte Carlo permutation test, with <span class="math notranslate nohighlight">\(R\)</span> random permutations of <span class="math notranslate nohighlight">\(\mathbf T\)</span>:  <span class="math notranslate nohighlight">\(p= \frac 1 R \sum_r \mathbb 1 \{ test(\mathbf t^r, \mathbf Y) \geq test (\mathbf T, \mathbf Y) \}\)</span></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>canonical choices of test-statistic</p>
+<ul>
+<li><p><strong>difference in means</strong>: <span class="math notranslate nohighlight">\(\hat \tau = \hat{\bar{Y}}^{T=1} - \hat{\bar{Y}}^{T=0}\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(= \frac 1 {n_1} \sum_i T_i Y_i - \frac 1 {n_0}  \sum_i (1 - T_i) Y_i\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(= \frac 1 {n_1} \sum_{T_i=1} Y_i - \frac 1 {n_0}  \sum_{T_i=0} Y_i\)</span></p></li>
+</ul>
+</li>
+<li><p><strong>studentized statistic</strong>:  $<span class="math notranslate nohighlight">\(t=\frac{\hat \tau}{\sqrt{\frac{\hat S^2(T=1)}{n_1}+\frac{\hat S^2 (T=0)}{n_0}}}\)</span>$</p>
+<ul>
+<li><p>allows for variance to change between groups (heteroscedasticity)</p></li>
+</ul>
+</li>
+<li><p><strong>wilcoxon rank sum</strong>: <span class="math notranslate nohighlight">\(W = \sum_i T_i R_i\)</span>, where <span class="math notranslate nohighlight">\(R_i = \#\{j : Y_j \leq Y_i \}\)</span> is the rank of <span class="math notranslate nohighlight">\(Y_i\)</span> in the observed samples</p>
+<ul>
+<li><p>the sum of the ranks is <span class="math notranslate nohighlight">\(n(n+1)/2\)</span>, and the mean of <span class="math notranslate nohighlight">\(W\)</span> is <span class="math notranslate nohighlight">\(n_1(n+1)/2\)</span></p></li>
+<li><p>less sensitive to outliers</p></li>
+</ul>
+</li>
+<li><p><strong>kolmogorov-smirnov statistic</strong>: <span class="math notranslate nohighlight">\(D = \max_y|\hat F_1(y) - \hat F_0 (y)|\)</span> where <span class="math notranslate nohighlight">\(\hat F_1(y) = \frac 1 {n_1} \sum_i Z_i 1(Y_i \leq y)\)</span>, <span class="math notranslate nohighlight">\(\hat F_0(y) = \frac 1 {n_0} \sum_i (1 -Z_i) 1(Y_i \leq y)\)</span></p>
+<ul>
+<li><p>measures distance between distributions of treatment outcomes and control outcomes</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="neyman-rubin-estimator">
+<h3>4.4.2.2. neyman-rubin estimator<a class="headerlink" href="#neyman-rubin-estimator" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>estimator <span class="math notranslate nohighlight">\(\hat \tau = \hat{\bar{Y}}^{T=1} - \hat{\bar{Y}}^{T=0}\)</span></p>
+<ul>
+<li><p>unbiased: <span class="math notranslate nohighlight">\(E(\hat \tau) = \tau\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(V(\hat \tau) = \underbrace{S^2(1) / n_1 + S^2(0)/n_0}_{\hat V(\tau) \text{ conservative estimator}} - S^2(\tau)/n\)</span></p>
+<ul>
+<li><p>95% CI: <span class="math notranslate nohighlight">\(\hat \tau \pm 1.96 \sqrt{\hat V}\)</span> (based on normal approximation)</p></li>
+<li><p>we could similarly get a p-value testing whether <span class="math notranslate nohighlight">\(\hat \tau\)</span> goes to 0, unlcear if this is better</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="stratification">
+<h3>4.4.2.3. stratification<a class="headerlink" href="#stratification" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>sometimes we want different strata, ex. on feature <span class="math notranslate nohighlight">\(X_i \in \{1, ..., K \}\)</span></p>
+<ul>
+<li><p>fully random experiment will not put same amount of points in each stratum + will have different treatment/control balance in each stratum</p></li>
+</ul>
+</li>
+<li><p><strong>stratification at design stage</strong>: stratify and run RCT for each stratum</p>
+<ul>
+<li><p>can do all the same fisher tests, usually by computing statistics within each stratum than aggregating</p>
+<ul>
+<li><p>sometimes bridge strata with global data</p></li>
+<li><p>ex. aligned rank statistic - normalize each <span class="math notranslate nohighlight">\(Y_i\)</span> with stratum mean, then look at ranks across all data (hodges &amp; lehmann 1962)</p></li>
+</ul>
+</li>
+<li><p>can do neyman-rubin analysis as well - CLT holds with a few large strata and many small strata</p>
+<ul>
+<li><p>can prove that variance for stratified estimator is smaller when stratification is predictive of outcome</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>post-stratification at analysis stage: condition on stratum</p>
+<ul>
+<li><p>can do conditional FRT or post-stratified Neymanian analysis</p></li>
+<li><p>can often improve efficiency</p></li>
+<li><p>is limited, because eventually there are no points in certain strata</p></li>
+</ul>
+</li>
+</ul>
+<div class="section" id="matched-pairs-design">
+<h4>4.4.2.3.1. matched-pairs design<a class="headerlink" href="#matched-pairs-design" title="Permalink to this headline">¶</a></h4>
+<p>This is like stratification, but with only one point in each stratum (i.e. a pair)</p>
+<ul class="simple">
+<li><p>in each pair, one unit is given treatment and the other is not</p></li>
+<li><p><span class="math notranslate nohighlight">\(H_{0F}: Y_{i, j}^{T=1}=Y_{i, j}^{T=0} \; \underbrace{\forall i}_{\text{all pairs}} \underbrace{\forall j}_{\text{both units in pair}}\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\hat \tau_i = \underbrace{(2T_i - 1)}_{-1\text{ or } 1}(Y_{i1} - Y_{i2})\)</span>, where <span class="math notranslate nohighlight">\(T_i\)</span> determines which of the two units in the pair was given treatment</p></li>
+<li><p>many other statistics…e.g. wilcoxon sign-rank statistic, sign statistic, mcnemar’s statistic</p></li>
+</ul>
+</li>
+<li><p>Neymanian inference</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\hat \tau = \frac 1 n \sum_i \tau_i\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat V = \frac 1 {n(n-1)} \sum_i (\hat \tau_i - \hat \tau)^2\)</span></p>
+<ul>
+<li><p>can’t estimate variance as in stratified randomized experiment</p></li>
+</ul>
+</li>
+<li><p>heuristically, matched-pairs design helps when matching is well-done and covariates are predictive of outcome (can’t check this at design stage though)</p></li>
+</ul>
+</li>
+<li><p>can also perform covariate adjustment (on covariates that weren’t used for matching, or in case matching was inexact)</p></li>
+</ul>
+</div>
+<div class="section" id="adjusting-for-covariate-iblance">
+<h4>4.4.2.3.2. adjusting for covariate iblance<a class="headerlink" href="#adjusting-for-covariate-iblance" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>adjusting for covariate imbalance given covariate vector <span class="math notranslate nohighlight">\(\mathbf x\)</span> (assume mean 0)</p>
+<ul>
+<li><p><strong>rerandomization</strong>: at design stage</p>
+<ul>
+<li><p>covariate difference-in-means: <span class="math notranslate nohighlight">\(\mathbf{\hat \tau_x} = \frac 1 {n_1} \sum_i T_i \mathbf x_i - \frac 1 {n_0} \sum_i (1 - T_i)\mathbf  x_i\)</span></p>
+<ul>
+<li><p>this is for RCT</p></li>
+<li><p>asymptotically zero, but real value need not be</p></li>
+</ul>
+</li>
+<li><p><span class="math notranslate nohighlight">\(\textbf{cov}(\hat\tau_x) = \frac 1 {n_1} S_x^2 + \frac 1 {n_0}S_x^2 = \frac{n}{n_1 n_0}S_x^2\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(M = \hat \tau_x^T \textbf{cov}(\hat \tau_x)^{-1} \hat \tau_x\)</span> - Mahalanabois distance measures difference between treatment/control gropus</p>
+<ul>
+<li><p>invariant to non-degenerate linear transformations of <span class="math notranslate nohighlight">\(\mathbf x\)</span></p></li>
+<li><p>can use other covariate balance criteria</p></li>
+</ul>
+</li>
+<li><p>rerandomization: discard treatment allocations when <span class="math notranslate nohighlight">\(M \leq m_{thresh}\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(m_{thresh}=\infty\)</span>: RCT</p></li>
+<li><p><span class="math notranslate nohighlight">\(m_{thresh}=0\)</span>: few possible treatment allocations - limits randomness; in practice try to choose very small <span class="math notranslate nohighlight">\(m_{thresh}\)</span></p></li>
+<li><p>proposed by Cox (1982) + Morgan &amp; Rubin (2012)</p></li>
+</ul>
+</li>
+<li><p>can derive asymptotic distr. for <span class="math notranslate nohighlight">\(\hat \tau\)</span> (<a class="reference external" href="https://www.pnas.org/content/115/37/9157.short">li, deng &amp; rubin 2018</a>)</p></li>
+</ul>
+</li>
+<li><p><strong>regression adjustment</strong>: at analysis stage</p>
+<ul>
+<li><p>fisher random trial adjustment - 2 strategies</p>
+<ol class="simple">
+<li><p>construct test-statistic based on residuals of statistical models</p>
+<ul>
+<li><p>regress <span class="math notranslate nohighlight">\(Y_i\)</span> on <span class="math notranslate nohighlight">\(\mathbf x_i\)</span> to obtain residual <span class="math notranslate nohighlight">\(e_i\)</span> - then treat <span class="math notranslate nohighlight">\(e_i\)</span> as pseudo outcome to construct test statistics</p></li>
+</ul>
+</li>
+<li><p>use regression coefficient as a test statistic</p>
+<ul>
+<li><p>regress <span class="math notranslate nohighlight">\(Y_i\)</span> on <span class="math notranslate nohighlight">\((T_i, \mathbf x_i\)</span>) to obtain coefficient of <span class="math notranslate nohighlight">\(T_i\)</span> as the test statistic (Fisher’s ANCOVA estimator): <span class="math notranslate nohighlight">\(\hat \tau_F\)</span></p>
+<ul>
+<li><p>Freedman (2008) found that this estimator had issues: biased, large variance, etc.</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://projecteuclid.org/euclid.aoas/1365527200">Lin (2013)</a> finds favorable properties of the <span class="math notranslate nohighlight">\(\hat \tau_F\)</span> estimator</p>
+<ul>
+<li><p>can get minor improvements by instead using coefficient of <span class="math notranslate nohighlight">\(T_i\)</span> in the OLS of <span class="math notranslate nohighlight">\(Y_i\)</span> on <span class="math notranslate nohighlight">\((T_i, \mathbf x_i, T_i \times \mathbf x_i\)</span>)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p><strong>combining rerandomization + regression adjustment</strong> to achieve better results (<a class="reference external" href="https://rss.onlinelibrary.wiley.com/doi/abs/10.1111/rssb.12353">li &amp; ding, 2020</a>)</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="observational-studies">
+<h2>4.4.3. observational studies<a class="headerlink" href="#observational-studies" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="ate-estimation">
+<h3>4.4.3.1. ATE estimation<a class="headerlink" href="#ate-estimation" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>assume we are govem iid samples of <span class="math notranslate nohighlight">\(\{ X_i, T_i, Y_i^{T=1}, Y_i^{T=0} \}\)</span>, and drop the index <span class="math notranslate nohighlight">\(i\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\tau = E\{Y^{T=1} - Y^{T=0}\}\)</span>: average treatment effect (ATE)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\tau_T =E\{Y^{T=1}−Y^{T=0}|T =1\}\)</span>: ATE on the treated units</p></li>
+<li><p><span class="math notranslate nohighlight">\(\tau_C =E\{Y^{T=1}−Y^{T=0}|T =0\}\)</span>: ATE on the control units</p></li>
+<li><p><span class="math notranslate nohighlight">\(\tau_{PF} = E[Y|T=1] - E[Y|T=0]\)</span>: <em>prima facie causal effect</em></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(= E[Y^{T=1}|T=1] - E[Y^{T=0}|T=0]\)</span></p></li>
+<li><p>naive, but computable!</p></li>
+<li><p>generally biased, with selection biases:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(E[Y^{T=0}|T=\textcolor{NavyBlue}1] - E[Y^{T=0}|T=\textcolor{NavyBlue}0]\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(E[Y^{T=1}|T=\textcolor{NavyBlue}1] - E[Y^{T=1}|T=\textcolor{NavyBlue}0]\)</span></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>propensity score</strong> <span class="math notranslate nohighlight">\(e(X, Y^{T=1}, Y^{T=0}) = P\{T=1|X, Y^{T=1}, Y^{T=0}\}\)</span></p>
+<ul>
+<li><p>under strong ignorability, <span class="math notranslate nohighlight">\(e(X)=P(T=1|X)\)</span></p></li>
+<li><p><em>Thm.</em> if <span class="math notranslate nohighlight">\(\underbrace{T \perp \{ Y^{T=1}, Y^{T=0}\} | \color{NavyBlue} X}_{\text{strong ignorability on X}}\)</span>, then <span class="math notranslate nohighlight">\(\underbrace{T \perp \{ Y^{T=1}, Y^{T=0}\} | \textcolor{NavyBlue}{e(X)}}_{\text{strong ignorability on e(X)}}\)</span></p>
+<ul>
+<li><p>therefore, can stratify on <span class="math notranslate nohighlight">\(e(X)\)</span>, but still need to estimate <span class="math notranslate nohighlight">\(e(X)\)</span>, maybe bin it into K quantiles (and pick K)</p></li>
+<li><p>could combine this propensity score weighting with regression adjustment (e.g. within each stratum)</p></li>
+</ul>
+</li>
+<li><p><em>Thm</em>. <span class="math notranslate nohighlight">\(T \perp X \; | \; e(X)\)</span>. Moreover, for any function <span class="math notranslate nohighlight">\(h\)</span>, <span class="math notranslate nohighlight">\(E\{\frac{Th(X)}{e(X)}\} = E\{\frac{(1-T)h(X)}{1-e(X)}\}\)</span></p>
+<ul>
+<li><p>can use this result to check for covariate balance in design stage</p></li>
+<li><p>can view <span class="math notranslate nohighlight">\(h(X)\)</span> as psuedo outcome and estimtate ATE</p>
+<ul>
+<li><p>if we specify it to something like <span class="math notranslate nohighlight">\(h(X)=X\)</span>, then it should be close to 0</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="section" id="ate-estimators">
+<h4>4.4.3.1.1. ATE estimators<a class="headerlink" href="#ate-estimators" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>ATE simple methods (all assume ignorability)</p>
+<ul>
+<li><p>ex. stratified ATE estimator (given discrete covariate)</p></li>
+<li><p>ex. <span class="math notranslate nohighlight">\(\tau = \beta_t\)</span>  in OLS</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(E(Y|T, X) = \beta_0 + \beta_t T + \beta_x^TX\)</span></p></li>
+</ul>
+</li>
+<li><p>ex. <span class="math notranslate nohighlight">\(\tau = \beta_t + \beta_{tx}^TE(X)\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(E(Y|T, Z) = \beta_0 + \beta_tT + \beta_x^TX + \beta^T_{tx} X T\)</span></p></li>
+<li><p>incorporates heterogeneity</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><span class="math notranslate nohighlight">\(\hat \tau = \frac 1 n \sum_i (\hat \mu_1(X_i) - \hat \mu_0(X_i))\)</span></p>
+<ul>
+<li><p>general mean functions <span class="math notranslate nohighlight">\(\hat \mu_1(x), \hat \mu_0(x)\)</span> approximate <span class="math notranslate nohighlight">\(\mu_i =E\{ Y^{T=i} |X\}\)</span></p></li>
+<li><p>consistent when <span class="math notranslate nohighlight">\(\mu_i\)</span> functions are well-specified</p></li>
+</ul>
+</li>
+<li><p><span class="math notranslate nohighlight">\(\hat \tau_{ht} = \frac 1 n \sum_i \frac{T_iY_i}{\hat e(X_i)} - \frac 1 n \sum_i \frac{(1-T_i)Y_i}{1-\hat e(X_i)} \)</span>  = <strong>inverse propensity score weighting estimator = horvitz-thompson estimator</strong> (horvitz &amp; thompson 1952)</p>
+<ul>
+<li><p><em>Based on Thm.</em> if <span class="math notranslate nohighlight">\(\underbrace{T \perp \{ Y^{T=1}, Y^{T=0}\} | X}_{\text{strong ignorability on X}}\)</span>, then:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(E\{Y^{T=1}\} = E \left \{ \frac{TY}{e(X)} \right \}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(E\{Y^{T=0}\} = E\left \{ \frac{(1-T)Y}{1-e(X)} \right \}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\implies \tau = E \left \{ \frac{TY}{e(X)} - \frac{(1-T)Y}{1-e(X)} \right \}\)</span></p></li>
+</ul>
+</li>
+<li><p>consistent when propensity scores are correctly specified</p></li>
+<li><p>if we add a constant to <span class="math notranslate nohighlight">\(Y\)</span>, then this estimator changes (not good) - if we adjust to avoid this change, we get the <strong>Hajek estimator</strong> (hajek, 1971), which is often more stable</p></li>
+<li><p>scores near 0/1 are unstable - sometimes truncate or drop units with these scores</p>
+<ul>
+<li><p>fundamental problem is ovelap of covariate distrs. in treatment/control</p>
+<ul>
+<li><p>asymptotic analysis might require some thresholds on the scores</p></li>
+</ul>
+</li>
+<li><p>when score = 0 or 1, counterfactuals may not even be well defined</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><span class="math notranslate nohighlight">\(\hat \tau^{\text{dr}} = \hat \mu_1^{dr} - \hat \mu_0^{dr}\)</span> = <strong>doubly robust estimator</strong> = augmented inverse propensity score weighting estimator (scharfstein et al. 1999, <a class="reference external" href="https://onlinelibrary.wiley.com/doi/full/10.1111/j.1541-0420.2005.00377.x?casa_token=oqdc-GxLFTYAAAAA%3A7CETBzsiHXXEu23NM-sMJ1CXlgI6oeAxt1Ydca3wXmPoTGsORR0IEoYszCo1GzNLtYXGNgxU4blu4gLn">bang &amp; robins 2005</a>)</p>
+<ul>
+<li><p>given <span class="math notranslate nohighlight">\(\mu_1(X, \beta_1)\)</span>, <span class="math notranslate nohighlight">\(\mu_0(X, \beta_0)\)</span>, e.g. linear</p></li>
+<li><p>given <span class="math notranslate nohighlight">\(e(X, \alpha)\)</span>, e.g. logistic</p></li>
+<li><p><span class="math notranslate nohighlight">\(\tilde{\mu}_{1}^{\mathrm{dr}} =E\left[ \overbrace{\frac{T\left\{Y-\mu_{1}\left(X, \beta_{1}\right)\right\}}{e(X, \alpha)}}^{\text{inv-prop residuals}}+\overbrace{\mu_{1}\left(X, \beta_{1}\right)}^{\text{outcome mean}}\right]\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\tilde{\mu}_{0}^{\mathrm{dr}} =E\left[\frac{(1-T)\left\{Y-\mu_{0}\left(X, \beta_{0}\right)\right\}}{1-e(X, \alpha)}+\mu_{0}\left(X, \beta_{0}\right)\right]\)</span></p></li>
+<li><p>augments the oucome regression mean with inverse-propensity of residuals</p>
+<ul>
+<li><p>can alternatively augment inv propensity score weighting estimator by the outcome models:</p></li>
+<li><p><span class="math notranslate nohighlight">\(\begin{aligned}
+\tilde{\mu}_{1}^{\mathrm{dr}} &amp;=E\left[\frac{T Y}{e(X, \alpha)}-\frac{T-e(X, \alpha)}{e(X, \alpha)} \mu_{1}\left(X, \beta_{1}\right)\right] \\
+\tilde{\mu}_{0}^{\mathrm{dr}} &amp;=E\left[\frac{(1-T) Y}{1-e(X, \alpha)}-\frac{e(X, \alpha)-T}{1-e(X, \alpha)} \mu_{0}\left(X, \beta_{0}\right)\right]
+\end{aligned}\)</span></p></li>
+</ul>
+</li>
+<li><p>consistent if either the propensity scores or mean functions are well-specified, we get a consistent estimator</p>
+<ul>
+<li><p>propensities well-specified: <span class="math notranslate nohighlight">\(e(X, \alpha) = e(X)\)</span></p></li>
+<li><p>mean functions well-specified: <span class="math notranslate nohighlight">\(\left\{\mu_{1}\left(X, \beta_{1}\right)=\mu_{1}(X), \mu_{0}\left(X, \beta_{0}\right)=\mu_{0}(X)\right\}\)</span></p></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="section" id="matching">
-<h3>4.4.4.3. matching<a class="headerlink" href="#matching" title="Permalink to this headline">¶</a></h3>
+<h4>4.4.3.1.2. matching<a class="headerlink" href="#matching" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2943670/pdf/nihms200640.pdf">Matching methods for causal inference: A review and a look forward</a> (stuart 2010)</p>
 <ul>
-<li><p>matching methods choose try to to equate (or ``balance’’) the distribution of covariates in the treated and control groups</p>
+<li><p>matching methods choose try to to equate (or “balance’’) the distribution of covariates in the treated and control groups</p>
 <ul>
 <li><p>they do this by picking well-matched samples of the original treated and control groups</p></li>
 <li><p>this may involve 1:1 matching, weighting, or subclassification</p></li>
@@ -1094,22 +1289,449 @@ M --&gt; Y
 </li>
 </ul>
 </li>
-<li><p><a class="reference external" href="http://sekhon.berkeley.edu/papers/MatchingJSS.pdf">Multivariate and Propensity Score Matching Software with Automated Balance Optimization: The Matching Package for R</a> (sekhon 2011)</p></li>
+<li><p>if we get perfect matches on covariates <span class="math notranslate nohighlight">\(X\)</span> (or propensity score), it is just like doing matched design</p>
+<ul>
+<li><p>in practice, we only get approximate matches</p></li>
+<li><p><strong>bias-corrected matching estimator</strong> averages over all matches</p>
+<ul>
+<li><p>for a unit, we take its value and impute its counterfactual as <span class="math notranslate nohighlight">\(\frac 1 {|matches|} \sum_{\text{match} \in {\text{matches}}} Y_{\text{match}}\)</span></p></li>
+<li><p><a class="reference external" href="https://economics.mit.edu/files/11861">Abadie and Imbens (2011)</a> add bias correction term</p></li>
+<li><p>requires complex bootstrap procedure to obtain variance</p></li>
+</ul>
+</li>
+<li><p>bias-corrected matching estimator is very similar to doubly robust estimator</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\begin{aligned}
+\hat{\tau}^{\mathrm{mbc}} &amp;=n^{-1} \sum_{i=1}^{n}\left\{\hat{\mu}_{1}\left(X_{i}\right)-\hat{\mu}_{0}\left(X_{i}\right)\right\}+n^{-1} \sum_{i=1}^{n}\left\{\left(1+\frac{K_{i}}{M}\right) T_{i} \hat{R}_{i}-\left(1+\frac{K_{i}}{M}\right)\left(1-T_{i}\right) \hat{R}_{i}\right\} \\
+\hat{\tau}^{\mathrm{dr}} &amp;=n^{-1} \sum_{i=1}^{n}\left\{\hat{\mu}_{1}\left(X_{i}\right)-\hat{\mu}_{0}\left(X_{i}\right)\right\}+n^{-1} \sum_{i=1}^{n}\left\{\frac{T_{i} \hat{R}_{i}}{\hat{e}\left(X_{i}\right)}-\frac{\left(1-T_{i}\right) \hat{R}_{i}}{1-\hat{e}\left(X_{i}\right)}\right\}
+\end{aligned}\)</span></p></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="section" id="weighting-regression-adjustments">
-<h3>4.4.4.4. weighting / regression adjustments<a class="headerlink" href="#weighting-regression-adjustments" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
+<h4>4.4.3.1.3. weighting / regression adjustments<a class="headerlink" href="#weighting-regression-adjustments" title="Permalink to this headline">¶</a></h4>
+<ul>
 <li><p>regression adjustments use models like a linear model to account for confounders</p></li>
 <li><p>requires <em>unconfoundedness</em> = <em>omitted variable bias</em></p></li>
 <li><p>if there are no confounders, correlation is causation</p></li>
+<li><p>over-adjustment</p>
+<ul>
+<li><p>M-bias</p>
+<ul>
+<li><p>originally, <span class="math notranslate nohighlight">\(T \perp Y\)</span> 😊</p></li>
+<li><p>after adjusting for X, <span class="math notranslate nohighlight">\(T \not \perp Y\)</span> 🙁</p></li>
+<li><div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>graph LR
+U1 --&gt; T
+U1 --&gt; X
+U2 --&gt; X
+U2 --&gt; Y
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p>Z-bias: after adjusting, bias is larger</p></li>
+<li><div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>  graph LR
+  X --&gt; T
+  T --&gt; Y
+  U --&gt; Y
+  U --&gt; T
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</li>
 </ul>
 </div>
 </div>
+<div class="section" id="assumption-checking">
+<h3>4.4.3.2. assumption checking<a class="headerlink" href="#assumption-checking" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="check-ignorability-use-auxilary-outcome">
+<h4>4.4.3.2.1. check ignorability: use auxilary outcome<a class="headerlink" href="#check-ignorability-use-auxilary-outcome" title="Permalink to this headline">¶</a></h4>
+<ul>
+<li><p><strong>negative outcome</strong> - assume we have a secondary informative outcome <span class="math notranslate nohighlight">\(Y'\)</span></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(Y'\)</span> is similar to <span class="math notranslate nohighlight">\(Y\)</span> in terms of confounding: if we believe <span class="math notranslate nohighlight">\(T \perp Y(t) \mid X\)</span> we also think <span class="math notranslate nohighlight">\(T \perp Y'(t) \mid X\)</span></p></li>
+<li><p>we know the expected effect of <span class="math notranslate nohighlight">\(T\)</span> on <span class="math notranslate nohighlight">\(Y'\)</span> (ex. it should be 0)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\tau(T \to Y') = E\{Y'^{T=1} - Y'^{T=0})\}\)</span></p></li>
+</ul>
+</li>
+<li><p>ex. cornfield et al. 1959 - effect of smoking on car accident</p></li>
+<li><div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>graph LR
+X(X) --&gt;Y&#39;(Y&#39;)
+  X --&gt; Y
+  X --&gt; T
+  T --&gt; Y
+</pre></div>
+</div>
+</li>
+<li><p><strong>negative exposure</strong> - assume we have a secondary informative treatment <span class="math notranslate nohighlight">\(T'\)</span></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(T'\)</span> is similar to <span class="math notranslate nohighlight">\(T\)</span> in terms of confounding: if we believe <span class="math notranslate nohighlight">\(T \perp Y(t) \mid X\)</span> we also think <span class="math notranslate nohighlight">\(T' \perp Y(t) \mid X\)</span></p></li>
+<li><p>we know the expected effect of <span class="math notranslate nohighlight">\(T'\)</span> on <span class="math notranslate nohighlight">\(Y\)</span> (ex. it should be 0)</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\tau(T' \to Y) = E\{Y^{T'=1} - Y^{T'=0})\}\)</span></p></li>
+</ul>
+</li>
+<li><p>ex. maternal exposure <span class="math notranslate nohighlight">\(T\)</span> and parental exposure <span class="math notranslate nohighlight">\(T'\)</span></p></li>
+</ul>
+</li>
+<li><div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>graph LR
+X --&gt;T&#39;
+X --&gt; Y
+X --&gt; T
+T --&gt; Y
+</pre></div>
+</div>
+</li>
+<li><p><strong>bounds without ignorability</strong> (<a class="reference external" href="https://www.jstor.org/stable/2006592?casa_token=5wsmh0n73ecAAAAA%3AGrmKG84ZmaGgvx7Xsadw_Gta7y59XrUMUe8IpYH-IWfN7mVx0p51Wte4H8m7zZy6l06TYQZeNHRgpz7cPAvXtrw2O6pABDcgYanESUXjuyhM7_9vAOws&amp;seq=1#metadata_info_tab_contents">manski 1990</a>)</p>
+<ul class="simple">
+<li><p>worst-case bounds are very poor</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="check-ignorability-sensitivity-analysis-wrt-unmeasured-confounding">
+<h4>4.4.3.2.2. check ignorability: sensitivity analysis wrt unmeasured confounding<a class="headerlink" href="#check-ignorability-sensitivity-analysis-wrt-unmeasured-confounding" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>broadly, sensitivity analysis measures how “sensitive” a model is to changes in the value of the parameters of the model and to changes in the structure of the model</p></li>
+<li><p>here, we focus on sensitivity analyses <em>wrt unmeasured confounding</em> - how strong the effects of an unobserved covariate <span class="math notranslate nohighlight">\(U\)</span> on the exposure and/or the outcome would have to be to change the study inference (estimated effect of <span class="math notranslate nohighlight">\(T\)</span> on <span class="math notranslate nohighlight">\(Y\)</span>)</p></li>
+<li><p>there are many types of such analyses (for a review, see <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3800481/pdf/nihms470690.pdf">liu et al. 2013</a>)</p>
+<ul>
+<li><p>ex. <strong>rosenbaum-type</strong></p>
+<ul>
+<li><p>interested in finding thresholds of the following association(s) that would render test statistic of the study inference insignificant (e.g. true odds-ratio of outcome and treatment, adjusted for <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(U\)</span>):</p>
+<ul>
+<li><p>unobserved confounder and the treatment (odds-ratio <span class="math notranslate nohighlight">\(OR_{\text{UT}}\)</span>)</p></li>
+<li><p>and/or unobserved confounder and the outcome (odds-ratio <span class="math notranslate nohighlight">\(OR_{\text{UY}}\)</span>)</p></li>
+</ul>
+</li>
+<li><p>usually used after matching</p></li>
+<li><p>3 types</p>
+<ul>
+<li><p>primal sensitivity analysis: vary <span class="math notranslate nohighlight">\(OR_{\text{UT}}\)</span> with <span class="math notranslate nohighlight">\(OR_{\text{UY}} = \infty\)</span></p></li>
+<li><p>dual sensitivity analysis: vary <span class="math notranslate nohighlight">\(OR_{\text{UY}}\)</span> with <span class="math notranslate nohighlight">\(OR_{\text{UT}}=\infty\)</span></p></li>
+<li><p>simultaneous sensitivity analysis: vary both vary <span class="math notranslate nohighlight">\(OR_{\text{UT}}\)</span> and <span class="math notranslate nohighlight">\(OR_{\text{UY}}\)</span></p></li>
+</ul>
+</li>
+<li><p>ex. <strong>confidence-interval methods</strong></p></li>
+<li><p>quantify unobserved confounder under specifications then arrive at target of interest + confidence interval, adjusted for <span class="math notranslate nohighlight">\(U\)</span></p></li>
+<li><p>first approach: use association between <span class="math notranslate nohighlight">\(T, Y, U\)</span> to create data as if <span class="math notranslate nohighlight">\(U\)</span> was observed</p>
+<ul>
+<li><p>specifications: <span class="math notranslate nohighlight">\(P(U|T=0\)</span>), <span class="math notranslate nohighlight">\(P(U|T=1)\)</span> (<a class="reference external" href="https://academic.oup.com/ije/article/25/6/1107/672425">greenland, 1996</a>)</p></li>
+<li><p>specifications: <span class="math notranslate nohighlight">\(OR_{\text{UY}}\)</span> and <span class="math notranslate nohighlight">\(OR_{\text{UT}}\)</span>,  <span class="math notranslate nohighlight">\(U\)</span> evenly distributed (<a class="reference external" href="https://www.journals.uchicago.edu/doi/abs/10.1086/379217?casa_token=LEDms9TVjrEAAAAA:Zg7CU9s6InCHOR4o9N9MTrrmOWRS80iJLw_vjDHrcF5KYCsWgYfE1--tyaKMNbvChjmsirT6eQvD">harding, 2003</a>)</p></li>
+<li><p>given either of these specifications, can fill out the table of <span class="math notranslate nohighlight">\(X, Y|U\)</span>, then use these weights to re-create data and fit weighted logistic regression</p></li>
+</ul>
+</li>
+<li><p>second approach: use association between <span class="math notranslate nohighlight">\(T, Y, U\)</span> to compute adjustment</p>
+<ul>
+<li><p>this approach can relax some assumptions, such as the no-three-way-interaction assumption</p></li>
+<li><p>specifications: <span class="math notranslate nohighlight">\(P(U|T=1), P(U|T=0), OR_{\text{UY|T=1}}, OR_{\text{UY|T=0}}\)</span>(<a class="reference external" href="https://www.jstor.org/stable/2533848?casa_token=VUsEU1I6EgIAAAAA:RZQhdfGYtwlSb2GO_PQvR68CM-mx-RmOcoKMNImxX8-sMxd_M7nmVwWSn6CqVHs6ai0tqBWr54PvUfj--zqGtUFVEw-2Muw8y9HIXBQUoWYosF77m4-f">lin et al. 1998</a>)</p></li>
+<li><p>specifications: <span class="math notranslate nohighlight">\(P(U|T=1), P(U|T=0), OR_{\text{UY}}\)</span> (<a class="reference external" href="https://www.jstor.org/stable/29764679?casa_token=4Gd4twU75G8AAAAA%3AZw_K4QbIK3-VKJMKOzYICbDbW-YASmvJYLfMwyhWISXvnH-3u9S1F_vss66QYrlHpVEfcJar94PaKGKgPLheaTp2-KGD9CHDLLv4cGBkvn7igRzdlpoy&amp;seq=1#metadata_info_tab_contents">vanderweel &amp; arah, 2011</a>)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ex. <strong>cornfield-type</strong> (<a class="reference external" href="https://academic.oup.com/jnci/article-abstract/22/1/173/912572">cornfield et al. 1959</a>) - seminal work</p>
+<ul>
+<li><p>ignorability does not hold <span class="math notranslate nohighlight">\(T \not \perp \{ Y^{T=1}, Y^{T=0}\} | X \)</span></p></li>
+<li><p>latent ignorability holds <span class="math notranslate nohighlight">\(T \perp \{ Y^{T=1}, Y^{T=0}\} | (X, U) \)</span></p></li>
+<li><p>true causal effect (risk ratio): <span class="math notranslate nohighlight">\(\mathrm{RR}_{x}^{\text {true }}=\frac{\operatorname{pr}\{Y^{T=1}=1 \mid X=x\}}{\operatorname{pr}\{Y^{T=0}=1 \mid X=x\}}\)</span></p></li>
+<li><p>observed: <span class="math notranslate nohighlight">\(\mathrm{RR}_{x}^{\mathrm{obs}}=\frac{\operatorname{pr}(Y=1 \mid T=1, X=x)}{\operatorname{pr}(Y=1 \mid T=0, X=x)}\)</span></p></li>
+<li><p>we can ask how strong functions of U, T, Y all given X must be to explain away an observed association</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\mathrm{RR}_{T U \mid x}=\frac{\operatorname{pr}(U=1 \mid T=1, X=x)}{\operatorname{pr}(U=1 \mid T=0, X=x)}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathrm{RR}_{U Y \mid x}=\frac{\operatorname{pr}(Y=1 \mid U=1, X=x)}{\operatorname{pr}(Y=1 \mid U=0, X=x)}\)</span></p></li>
+<li><p><em>Thm</em>: under latent ignorability, <span class="math notranslate nohighlight">\(\mathrm{RR}_{x}^{\mathrm{obs}} \leq \frac{\mathrm{R} \mathrm{R}_{Z U \mid x} \mathrm{RR}_{U Y \mid x}}{\mathrm{RR}_{Z U \mid x}+\mathrm{RR}_{U Y \mid x}-1}\)</span></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="quasi-experiment-pseudo-experiment">
+<h3>4.4.3.3. quasi-experiment = pseudo-experiment<a class="headerlink" href="#quasi-experiment-pseudo-experiment" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="ladder-of-evidence">
+<h4>4.4.3.3.1. ladder of evidence<a class="headerlink" href="#ladder-of-evidence" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>RCT</p></li>
+<li><p>natural experiment</p></li>
+<li><p>instrumental variable</p></li>
+<li><p>discontinuity analysis - look for points near a threshold treatment assignment</p></li>
+</ul>
+</div>
+<div class="section" id="instrumental-variable">
+<h4>4.4.3.3.2. instrumental variable<a class="headerlink" href="#instrumental-variable" title="Permalink to this headline">¶</a></h4>
+<ul>
+<li><p>see this nice <a class="reference external" href="http://www.rebeccabarter.com/blog/2018-05-23-instrumental_variables/">blog post</a> by Rebecca Barter</p></li>
+<li><p><strong>noncompliance</strong> - sometimes treatment assigned <span class="math notranslate nohighlight">\(T\)</span> and treatment received <span class="math notranslate nohighlight">\(D\)</span> are different</p></li>
+<li><p><strong>instrument</strong> <span class="math notranslate nohighlight">\(I\)</span>- measurable quantity that correlates with the treatment, and is <span class="math notranslate nohighlight">\(\underbrace{\color{NavyBlue}{\text{only related to the outcome via the treatment}}}_{\textbf{exclusion restriction}}\)</span></p>
+<ul class="simple">
+<li><p>exclusion restriction is uncheckable</p></li>
+</ul>
+</li>
+<li><div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>graph LR
+I --&gt;T
+U --&gt; T
+T --&gt; Y
+</pre></div>
+</div>
+</li>
+<li><p>intuitively, need to combine effect of instrument on treatment and effect of instrument on outcome (through treatment)</p>
+<ul class="simple">
+<li><p><strong>Wald estimator</strong> = <span class="math notranslate nohighlight">\(\frac{Cov(Y, I)}{Cov(T, I)}\)</span></p></li>
+<li><p>LATE = local average treatment effect - this estimate is only valid for the patients who were influenced by the instrument</p></li>
+<li><p>in practice, often implemented in a 2-stage least squares</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="synthetic-data">
+<h4>4.4.3.3.3. synthetic data<a class="headerlink" href="#synthetic-data" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><a class="reference external" href="https://arxiv.org/abs/2007.06570">Towards causal benchmarking of bias in face analysis algorithms</a> (balakrishnan et al. 2020) - use GANs to generate synthetic data where only attribute varies</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="frameworks">
+<h2>4.4.4. frameworks<a class="headerlink" href="#frameworks" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="potential-outcome-framework-neyman-rubin">
+<h3>4.4.4.1. potential outcome framework (neyman-rubin)<a class="headerlink" href="#potential-outcome-framework-neyman-rubin" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>advantages over DAGs: easy to express some common assumptions, such as monotonicity / convexity</p></li>
+<li><p>3 frameworks</p>
+<ol class="simple">
+<li><p><strong>neyman-rubin model</strong>: <span class="math notranslate nohighlight">\(Y_i = \begin{cases} Y_i^{T=1}, &amp;\text{if } T_i=1\\Y_i^{T=0}, &amp;\text{if } T_i=0 \end{cases}\)</span></p>
+<ul class="simple">
+<li><p>equivalently, <span class="math notranslate nohighlight">\(Y_i = T_i Y_i^{T=1} + (1-T_i) Y_i^{T=0}\)</span></p></li>
+</ul>
+</li>
+</ol>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\widehat{ATE} = \mathbb E [\hat{Y}^{T=1} - \hat{Y}^{T=0}]\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\widehat{ATE}_{adj} = [\bar{a}_A - (\bar{x}_A - \bar{x})^T \hat{\theta}_A] - [\bar{b}_B - (\bar{x}_B - \bar{x})^T \hat{\theta}_B]\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\hat{\theta}_A = argmin \sum_{i \in A} (a_i - \bar{a}_A - (x_i - \bar{x}_A)^T \theta)^2\)</span></p></li>
+</ul>
+</li>
+</ul>
+<ol class="simple">
+<li><p>neyman-pearson</p></li>
+</ol>
+<ul class="simple">
+<li><p>null + alternative hypothesis</p>
+<ul>
+<li><p>null is favored unless there is strong evidence to refute it</p></li>
+</ul>
+</li>
+</ul>
+<ol class="simple">
+<li><p>fisherian testing framework</p></li>
+</ol>
+<ul class="simple">
+<li><p>small p-values evidence against null hypothesis</p></li>
+</ul>
+</li>
+<li><p>action = intervention, exposure, treatments</p></li>
+<li><p>action <span class="math notranslate nohighlight">\(A\)</span> and outcome <span class="math notranslate nohighlight">\(Y\)</span></p></li>
+<li><p><img alt="Screen Shot 2020-05-05 at 10.50.28 AM" src="../../_images/counterfactuals.png" /></p></li>
+<li><p><strong>potential outcomes</strong> = <strong>counterfactual outcomes</strong> <span class="math notranslate nohighlight">\(Y^{a=1}, Y^{a=0}\)</span></p></li>
+<li><p><strong>average treatment effect ATE</strong>: <span class="math notranslate nohighlight">\(E[Y^{a=1} - Y^{a=0}]\)</span></p></li>
+<li><p>key assumptions: SUTVA, consistency, ignorability</p></li>
+</ul>
+</div>
+<div class="section" id="dags-pearl-et-al">
+<h3>4.4.4.2. DAGs (pearl et al.)<a class="headerlink" href="#dags-pearl-et-al" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>comparison to potential outcomes</p>
+<ul>
+<li><p>easy to make clear exactly what is independent, particularly when there are many variables</p></li>
+<li><p>do-calculus allows for answering some specific questions easily</p></li>
+<li><p>often difficult to come up with proper causal graph</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="http://smithamilli.com/blog/causal-ladder/">blog post on causal ladder</a></p></li>
+<li><p><a class="reference external" href="https://www.inference.vc/untitled/">intro to do-calculus post</a> and subsequent posts</p></li>
+</ul>
+<div class="section" id="causal-ladder-different-levels-of-inference">
+<h4>4.4.4.2.1. causal ladder (different levels of inference)<a class="headerlink" href="#causal-ladder-different-levels-of-inference" title="Permalink to this headline">¶</a></h4>
+<ol class="simple">
+<li><p><strong>prediction/association</strong> - just need to have the joint distr. of all the variables</p>
+<ul class="simple">
+<li><p>basically just <span class="math notranslate nohighlight">\(p(y|x)\)</span></p></li>
+</ul>
+</li>
+<li><p><strong>intervention</strong> - we can change things and get conditionals based on <em>evidence after intervention</em></p></li>
+</ol>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(p(y|do(x))\)</span> - which represents the conditional distr. we would get if we were to manipulate <span class="math notranslate nohighlight">\(x\)</span> in a randomized trial</p>
+<ul>
+<li><p>to get this, we assume the causal structure (can still kind of test it based on conditional distrs.)</p></li>
+<li><p>having assumed the structure, we delete all edges going into a do operator and set the value of <span class="math notranslate nohighlight">\(x\)</span></p></li>
+<li><p>then, do-calculus yields a formula to estimate <span class="math notranslate nohighlight">\(p(y|do(x))\)</span> assuming this causal structure</p></li>
+<li><p>see introductory paper <a class="reference external" href="https://arxiv.org/pdf/1305.5506.pdf">here</a>, more detailed paper <a class="reference external" href="https://ftp.cs.ucla.edu/pub/stat_ser/r416-reprint.pdf">here</a> (pearl 2013)</p></li>
+</ul>
+</li>
+<li><p>by assuming structure, we learn how large impacts are</p></li>
+</ul>
+<ol class="simple">
+<li><p><strong>counterfactuals</strong> - we can change things and get conditionals based on <em>evidence before intervention</em></p></li>
+</ol>
+<ul class="simple">
+<li><p>instead of intervention <span class="math notranslate nohighlight">\(p(y|do(x))\)</span> we get <span class="math notranslate nohighlight">\(p(y^*|x^*, z=z)\)</span> where z represents fixing all the other variables and <span class="math notranslate nohighlight">\(y^*\)</span> and <span class="math notranslate nohighlight">\(x^*\)</span> are not observed</p>
+<ul>
+<li><p>averaging over all data points, we’d expect to get something similar to the intervention <span class="math notranslate nohighlight">\(p(y|do(x))\)</span></p></li>
+</ul>
+</li>
+<li><p>probabalistic answer to a “what would have happened if” question</p>
+<ul>
+<li><p>e.g. “Given that Hillary lost and didn’t visit Michigan, would she win if she had visited Michigan?”</p></li>
+<li><p>e.g. “What fraction of patients who are treated and died would have survived if they were not treated?”</p></li>
+<li><p>this allows for our intervention to contradict something we condition on</p></li>
+<li><p>simple matching is often not sufficient (need a very good model for how to match, hopefully a causal one)</p></li>
+</ul>
+</li>
+<li><p>key difference with standard intervention is that we incorporate available evidence into our calculation</p>
+<ul>
+<li><p>available evidence influences exogenous variables</p></li>
+<li><p>this is for a specific data point, not a randomly sampled data point like an intervention would be</p></li>
+<li><p>requires SEM, not just causal graph</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="sem-structured-equation-model">
+<h4>4.4.4.2.2. sem (structured equation model)<a class="headerlink" href="#sem-structured-equation-model" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>gives a set of variables <span class="math notranslate nohighlight">\(X_1, ... X_i\)</span> and and assignments of the form <span class="math notranslate nohighlight">\(X_i := f_i(X_{parents(i)}, \epsilon_i)\)</span>, which tell how to compute value of each node given parents</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\epsilon_i\)</span> = noise variables = <strong>exogenous nodes</strong> - node in the network that represents all the data not collected</p></li>
+<li><p>parent nodes = <em>direct causes</em></p></li>
+</ul>
+</li>
+<li><p>again, fix value of <span class="math notranslate nohighlight">\(x\)</span> (and values of <span class="math notranslate nohighlight">\(\epsilon\)</span> seend in the data) and use SEM to set all downstream variables</p></li>
+<li><p>ex. <img alt="sem" src="../../_images/sem.png" /></p>
+<ul>
+<li><p>in this ex, W and H are usually correlated, so conditional distrs. are similar, but do operator of changing W has no effect on H (and vice versa)</p></li>
+<li><p>notation: <span class="math notranslate nohighlight">\(P(H|do(W:=1))\)</span> or <span class="math notranslate nohighlight">\(P_{M[W:=1]}(h)\)</span></p></li>
+<li><p>ATE of <span class="math notranslate nohighlight">\(W\)</span> on <span class="math notranslate nohighlight">\(H\)</span> would be <span class="math notranslate nohighlight">\(P(H|do(W:=1)) - P(H|do(W:=0))\)</span></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="causal-graphs">
+<h4>4.4.4.2.3. causal graphs<a class="headerlink" href="#causal-graphs" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>common graphs</p>
+<ul>
+<li><p>absence of edges often corresponds to qualitative judgements
+| forks                                                        | mediators                                                    | colliders                                                    |
+| ———————————————————— | ———————————————————— | ———————————————————— |
+| <img alt="Screen Shot 2020-10-21 at 11.57.13 PM" src="../../_images/explaining_away.png" /> | <img alt="Screen Shot 2020-10-21 at 11.57.17 PM" src="../../_images/confounder_in_way.png" /> | <img alt="Screen Shot 2020-10-21 at 11.57.22 PM" src="../../_images/confounding_triple.png" /> |
+| confounder <span class="math notranslate nohighlight">\(z\)</span>, can be adjusted for                          | confounder can vary causal effect                            | conditioning on confounder z can explain away a cause        |</p></li>
+</ul>
+</li>
+<li><p><strong>controlling</strong> for a variable  (when we have a causal graph):</p></li>
+<li><p><span class="math notranslate nohighlight">\(P(Y=y|do(X:=x)) = \sum_z \underbrace{P(Y=y|X=x, X_{parents}=z)}_{\text{effect for slice}} \underbrace{P(X_{parents}=z)}_{\text{weight for slice}}\)</span></p></li>
+<li><p><strong>counterfactual</strong> - given structural causal model <em>M</em>, observed event <em>E</em>, action <em>X:=x</em>, target variable <em>Y</em>, define counterfactual <span class="math notranslate nohighlight">\(Y_{X:=x}(E)\)</span> in 3 steps:</p>
+<ul>
+<li><p><strong>abduction</strong> - adjust noise variables to be consistent with observation</p></li>
+<li><p><strong>action</strong> - perform do-intervention</p></li>
+<li><p><strong>prediction</strong> - compute target counterfactual</p></li>
+<li><p>counterfactual can be a random variable or deterministic</p></li>
+</ul>
+</li>
+<li><p><strong>back-door criterion</strong> - establishes if 2 variables X, Y are confounded</p>
+<ul>
+<li><p>more details: http://bayes.cs.ucla.edu/BOOK-2K/ch3-3.pdf</p></li>
+<li><p>ensure that there is no path which points to X which allows dependence between X and Y ( paths which point to X are non-causal, representing confounders )</p></li>
+<li><p>remember, in DAG junctions conditioning makes things independent unless its at a V junction</p></li>
+</ul>
+</li>
+<li><p><strong>front-door criterion</strong> - want to deconfound treatment from outcome, even without info on the confounder</p>
+<ul>
+<li><p>only really need to know about treatment, M, and outcome</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>graph LR
+C(Confounder) --&gt;Y(Outcome)
+C --&gt; X(Treatment)
+X --&gt; M
+M --&gt; Y
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="assumptions">
+<h2>4.4.5. assumptions<a class="headerlink" href="#assumptions" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>stable unit treatment value assumption (SUTVA) = no-interference assumption</strong> (Rubin, 1980) - treatment one unit receives doesn’t change effect of treatment for any other unit</p>
+<ul>
+<li><p>treatment does not have versions / ambiguity</p></li>
+</ul>
+</li>
+<li><p><strong>exchangeability</strong> = exogeneity: <span class="math notranslate nohighlight">\(\color{NavyBlue}{Y^{t}} \perp \!\!\! \perp T\)</span> for all <span class="math notranslate nohighlight">\(t\)</span> - <span class="math notranslate nohighlight">\(\textcolor{NavyBlue}{\text{the value of the counterfactuals}}\)</span> doesn’t change based on the choice of the treatment</p></li>
+<li><p><strong>consistency</strong>: <span class="math notranslate nohighlight">\(Y=Y^{t=0}(1-T) + Y^{t=1}T\)</span> - outcome agrees with the potential outcome corresponding to the treatment indicator</p></li>
+<li><p><strong>ignorability</strong> - potential outcomes are conditionally independent of treatment given some deconfounding varibles</p>
+<ul>
+<li><p>very hard to check!</p></li>
+</ul>
+</li>
+<li><p>assumptions</p>
+<ul>
+<li><p><strong>randomization</strong> tells us the treatment is independent of the outcome with/without treatment <span class="math notranslate nohighlight">\(T \perp \{Y^{T=1}, Y^{T=0}\}\)</span>, so the selection biases are zero (rubin, 1978)</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\implies \tau = \tau_T = \tau_C\)</span></p></li>
+<li><p>this is more important than balancing the distr. of covariates</p></li>
+</ul>
+</li>
+<li><p><strong>conditioning on observed X, selection bias terms are zero</strong>:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(E\{Y^{T=0}|T=1, X\} = E\{Y^{T=0}|T=0, X\}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(E\{Y^{T=1}|T=1, X\} = E\{Y^{T=1}|T=0, X\}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\implies \tau(X) = \tau_T(X) = \tau_C(X) = \tau_{PF}(X)\)</span></p></li>
+</ul>
+</li>
+<li><p><strong>ignorability = unconfoundedness = selection on observables</strong>:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(T \perp Y(t) \mid X, \quad (t=0, 1)\)</span></p></li>
+<li><p>this is a stronger assumption</p></li>
+<li><p>very hard to check!</p></li>
+</ul>
+</li>
+<li><p><strong>strong ignorability</strong> (rubin 1978; rosenbaum &amp; rubin 1983) <span class="math notranslate nohighlight">\(\textcolor{red}{\text{what is the difference?}}\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(T \perp \{ Y^{T=1}, Y^{T=0}\} | X \)</span></p></li>
+<li><p>even stronger assumption</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>setting up a causal probem</p>
+<ul>
+<li><p>what is the intervention?</p></li>
+<li><p>can we intervene on something like Race? Soln: intervene on perceived race</p></li>
+<li><p>can we intervene on BMI? many potential interventions: e.g. diet, exercise</p></li>
+</ul>
+</li>
+</ul>
+</div>
 <div class="section" id="studies">
-<h2>4.4.5. studies<a class="headerlink" href="#studies" title="Permalink to this headline">¶</a></h2>
+<h2>4.4.6. studies<a class="headerlink" href="#studies" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="classic-studies">
-<h3>4.4.5.1. classic studies<a class="headerlink" href="#classic-studies" title="Permalink to this headline">¶</a></h3>
+<h3>4.4.6.1. classic studies<a class="headerlink" href="#classic-studies" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="http://www.hangartner.net/files/passportapsr.pdf">Who Gets a Swiss Passport? A Natural Experiment in Immigrant Discrimination</a> (Hainmueller &amp; Hangartner 2013)</p>
 <ul>
@@ -1171,70 +1793,8 @@ M --&gt; Y
 </li>
 </ul>
 </div>
-<div class="section" id="stability-invariance">
-<h3>4.4.5.2. stability / invariance<a class="headerlink" href="#stability-invariance" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p><a class="reference external" href="https://arxiv.org/abs/1812.08233">Invariance, Causality and Robustness</a> (buhlmann 18)</p>
-<ul>
-<li><p>predict <span class="math notranslate nohighlight">\(Y^e\)</span> given <span class="math notranslate nohighlight">\(X^e\)</span> such that the prediction “works well” or is “robust” for all <span class="math notranslate nohighlight">\(e ∈ \mathcal F\)</span> based on data from much fewer environments <span class="math notranslate nohighlight">\(e \in \mathcal E\)</span></p>
-<ul>
-<li><p>assumption: ideally <span class="math notranslate nohighlight">\(e\)</span> changes only the distr. of <span class="math notranslate nohighlight">\(X^e\)</span> ( so doesn’t act directly on <span class="math notranslate nohighlight">\(Y^e\)</span> or change the mechanism between <span class="math notranslate nohighlight">\(X^e\)</span> and <span class="math notranslate nohighlight">\(Y^e\)</span>)</p></li>
-<li><p>assumption (invariance): there exists a subset of “causal” covariates - when conditioning on these covariates, the loss is the same across all environments <span class="math notranslate nohighlight">\(e\)</span></p></li>
-<li><p>when these assumptions are satisfied, then minimizing a worst-case risk over environments <span class="math notranslate nohighlight">\(e\)</span> yields a causal parameter</p></li>
-</ul>
-</li>
-<li><p>identifiability issue: we typically can’t identify the causal variables without very many perturbations <span class="math notranslate nohighlight">\(e\)</span></p>
-<ul>
-<li><p><strong>Invariant Causal Prediction (ICP)</strong> only identifies variables as causal if they appear in all invariant sets</p></li>
-</ul>
-</li>
-<li><p>anchor regression model helps to relax assumptions</p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1907.02893">Invariant Risk Minimization</a> (arjovsky, bottou, gulrajani, &amp; lopez-paz 2019)</p>
-<ul>
-<li><p>random splitting causes problems with our data</p></li>
-<li><p>what to perform well under different distributions of X, Y</p></li>
-<li><p>can’t be solved via robust optimization</p></li>
-<li><p>a correlation is spurious when we do not expect it to hold in the future in the same manner as it held in the past</p>
-<ul>
-<li><p>i.e. spurious correlations are unstable</p></li>
-</ul>
-</li>
-<li><p>assume we have infinite data, and know what kinds of changes our distribution for the problem might have (e.g. variance of features might change)</p>
-<ul>
-<li><p>make a model which has the minimum test error regardless of the distribution of the problem</p></li>
-</ul>
-</li>
-<li><p>adds a penalty inspired by invariance (which can be viewed as a stability criterion)</p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1905.11374">The Hierarchy of Stable Distributions and Operators to Trade Off Stability and Performance</a> (subbaswamy, chen, &amp; saria 2019)</p>
-<ul>
-<li><p>different predictors learn different things</p></li>
-<li><p>only pick the stable parts of what they learn (in a graph representation)</p></li>
-<li><p>there is a tradeoff between stability to all shifts and average performance on the shifts we expect to see</p></li>
-<li><p>different types of methods</p>
-<ul>
-<li><p><em>transfer learning</em> - given unlabelled test data, match training/testing representations</p></li>
-<li><p><em>proactive methods</em> - make assumptions about possible set of target distrs.</p></li>
-<li><p><em>data-driven methods</em> - assume independence of cause and mechanism, like ICP, and use data from different shifts to find invariant subsets</p></li>
-<li><p><em>explicit graph methods</em> - assume explicit knowledge of graph representing the data-generating process</p></li>
-</ul>
-</li>
-<li><p>hierarchy</p>
-<ul>
-<li><p>level 1 - invariant conditional distrs. of the form <span class="math notranslate nohighlight">\(P(Y|\mathbf Z)\)</span></p></li>
-<li><p>level 2 - conditional interventional distrs. of the form <span class="math notranslate nohighlight">\(P(Y|do(\mathbf W), \mathbf Z)\)</span></p></li>
-<li><p>level 3 - distributions corresponding to counterfactuals</p></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
 <div class="section" id="reviews">
-<h3>4.4.5.3. reviews<a class="headerlink" href="#reviews" title="Permalink to this headline">¶</a></h3>
+<h3>4.4.6.2. reviews<a class="headerlink" href="#reviews" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/1911.10500">Causality for Machine Learning</a> (scholkopf 19)</p>
 <ul>
@@ -1244,8 +1804,8 @@ M --&gt; Y
 <li><p><a class="reference external" href="https://arxiv.org/abs/1907.07271">Potential Outcome and Directed Acyclic Graph Approaches to Causality: Relevance for Empirical Practice in Economics</a> (imbens 2020)</p></li>
 </ul>
 </div>
-<div class="section" id="recent">
-<h3>4.4.5.4. recent<a class="headerlink" href="#recent" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="misc">
+<h3>4.4.6.3. misc<a class="headerlink" href="#misc" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/1907.13258">Incremental causal effects</a> (rothenhausler &amp; yu, 2019)</p>
 <ul>
@@ -1257,15 +1817,29 @@ M --&gt; Y
 </li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://www.technologyreview.com/s/613502/deep-learning-could-reveal-why-the-world-works-the-way-it-does/?fbclid=IwAR3LF2dc_3EvWXzEHhtrsqtH9Vs-4pjPALfuqKCOma9_gqLXMKDeCWrcdrQ">link to iclr talk</a> (bottou 2019)</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1805.06826">The Blessings of Multiple Causes</a> (wang &amp; blei, 2019) - having multiple causes can help construct / find all the confounders</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1805.06826">The Blessings of Multiple Causes</a> (wang &amp; blei, 2019) - having multiple causes can help construct / find all the confounders</p>
+<ul>
+<li><p>controversial whether this works in general</p></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
-<div class="section" id="different-problems">
-<h2>4.4.6. different problems<a class="headerlink" href="#different-problems" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="different-problems-beyond-ate">
+<h2>4.4.7. different problems beyond ATE<a class="headerlink" href="#different-problems-beyond-ate" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="mediation-analysis">
+<h3>4.4.7.1. mediation analysis<a class="headerlink" href="#mediation-analysis" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>mediation analysis</strong> - identify a mechanism through which a cause has an effect</p>
+<ul>
+<li><p>if there are multiple possible paths by which a variable can exert influence, can figure out which path does what, even with just observational data</p></li>
+<li><p>which pathway do causes flow through (direct/indirect?)</p></li>
+</ul>
+</li>
+</ul>
+</div>
 <div class="section" id="heterogenous-treatment-effects">
-<h3>4.4.6.1. heterogenous treatment effects<a class="headerlink" href="#heterogenous-treatment-effects" title="Permalink to this headline">¶</a></h3>
+<h3>4.4.7.2. heterogenous treatment effects<a class="headerlink" href="#heterogenous-treatment-effects" title="Permalink to this headline">¶</a></h3>
 <p><em>Heterogenous treatment effects refer to effects which differ for different subgroups / individuals in a population and requires more refined modeling.</em></p>
 <ul class="simple">
 <li><p><strong>conditional average treatment effect (CATE)</strong> - get treatment effect for each individual conditioned on its covariates</p>
@@ -1342,7 +1916,7 @@ M --&gt; Y
 </ul>
 </div>
 <div class="section" id="causal-discovery">
-<h3>4.4.6.2. causal discovery<a class="headerlink" href="#causal-discovery" title="Permalink to this headline">¶</a></h3>
+<h3>4.4.7.3. causal discovery<a class="headerlink" href="#causal-discovery" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>overview</p>
 <ul>
@@ -1450,7 +2024,73 @@ M --&gt; Y
 </li>
 </ul>
 </li>
+<li><p><a class="reference external" href="https://www.technologyreview.com/s/613502/deep-learning-could-reveal-why-the-world-works-the-way-it-does/?fbclid=IwAR3LF2dc_3EvWXzEHhtrsqtH9Vs-4pjPALfuqKCOma9_gqLXMKDeCWrcdrQ">link to iclr talk</a> (bottou 2019)</p></li>
 </ul>
+</div>
+<div class="section" id="stable-invariant-predictors">
+<h3>4.4.7.4. stable/invariant predictors<a class="headerlink" href="#stable-invariant-predictors" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://arxiv.org/abs/1812.08233">Invariance, Causality and Robustness</a> (buhlmann 18)</p>
+<ul>
+<li><p>predict <span class="math notranslate nohighlight">\(Y^e\)</span> given <span class="math notranslate nohighlight">\(X^e\)</span> such that the prediction “works well” or is “robust” for all <span class="math notranslate nohighlight">\(e ∈ \mathcal F\)</span> based on data from much fewer environments <span class="math notranslate nohighlight">\(e \in \mathcal E\)</span></p>
+<ul>
+<li><p>assumption: ideally <span class="math notranslate nohighlight">\(e\)</span> changes only the distr. of <span class="math notranslate nohighlight">\(X^e\)</span> ( so doesn’t act directly on <span class="math notranslate nohighlight">\(Y^e\)</span> or change the mechanism between <span class="math notranslate nohighlight">\(X^e\)</span> and <span class="math notranslate nohighlight">\(Y^e\)</span>)</p></li>
+<li><p>assumption (invariance): there exists a subset of “causal” covariates - when conditioning on these covariates, the loss is the same across all environments <span class="math notranslate nohighlight">\(e\)</span></p></li>
+<li><p>when these assumptions are satisfied, then minimizing a worst-case risk over environments <span class="math notranslate nohighlight">\(e\)</span> yields a causal parameter</p></li>
+</ul>
+</li>
+<li><p>identifiability issue: we typically can’t identify the causal variables without very many perturbations <span class="math notranslate nohighlight">\(e\)</span></p>
+<ul>
+<li><p><strong>Invariant Causal Prediction (ICP)</strong> only identifies variables as causal if they appear in all invariant sets</p></li>
+</ul>
+</li>
+<li><p>anchor regression model helps to relax assumptions</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1907.02893">Invariant Risk Minimization</a> (arjovsky, bottou, gulrajani, &amp; lopez-paz 2019)</p>
+<ul>
+<li><p>random splitting causes problems with our data</p></li>
+<li><p>what to perform well under different distributions of X, Y</p></li>
+<li><p>can’t be solved via robust optimization</p></li>
+<li><p>a correlation is spurious when we do not expect it to hold in the future in the same manner as it held in the past</p>
+<ul>
+<li><p>i.e. spurious correlations are unstable</p></li>
+</ul>
+</li>
+<li><p>assume we have infinite data, and know what kinds of changes our distribution for the problem might have (e.g. variance of features might change)</p>
+<ul>
+<li><p>make a model which has the minimum test error regardless of the distribution of the problem</p></li>
+</ul>
+</li>
+<li><p>adds a penalty inspired by invariance (which can be viewed as a stability criterion)</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1905.11374">The Hierarchy of Stable Distributions and Operators to Trade Off Stability and Performance</a> (subbaswamy, chen, &amp; saria 2019)</p>
+<ul>
+<li><p>different predictors learn different things</p></li>
+<li><p>only pick the stable parts of what they learn (in a graph representation)</p></li>
+<li><p>there is a tradeoff between stability to all shifts and average performance on the shifts we expect to see</p></li>
+<li><p>different types of methods</p>
+<ul>
+<li><p><em>transfer learning</em> - given unlabelled test data, match training/testing representations</p></li>
+<li><p><em>proactive methods</em> - make assumptions about possible set of target distrs.</p></li>
+<li><p><em>data-driven methods</em> - assume independence of cause and mechanism, like ICP, and use data from different shifts to find invariant subsets</p></li>
+<li><p><em>explicit graph methods</em> - assume explicit knowledge of graph representing the data-generating process</p></li>
+</ul>
+</li>
+<li><p>hierarchy</p>
+<ul>
+<li><p>level 1 - invariant conditional distrs. of the form <span class="math notranslate nohighlight">\(P(Y|\mathbf Z)\)</span></p></li>
+<li><p>level 2 - conditional interventional distrs. of the form <span class="math notranslate nohighlight">\(P(Y|do(\mathbf W), \mathbf Z)\)</span></p></li>
+<li><p>level 3 - distributions corresponding to counterfactuals</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>

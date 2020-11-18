@@ -1,0 +1,11 @@
+- [Uncertainty-Aware Lookahead Factor Models for Quantitative Investing](https://arxiv.org/abs/2007.04082) (chauhan, alberg, & lipton 2020)
+  - *fundamentals* - publicly traded companies report these periodically, e.g. revenue, earnings, debt, among others
+    - fundamentals forecasting - use LSTM to forecast fundamentals
+      - use model uncertainty to avert risk (scale the earnings forecast in inverse proportion to the modeled earnings variance)
+      - main fundamental to forecast is *EBIT*, but also forecast others for multi-task benefit
+  - *factors* - functions of the reported data that correlate with stock market performance
+    - stock selection part - given future fundamentals, can select stocks better than human-selected factors
+  - *value investing* - base investment on long-term fundamentals
+  - final improvement: compound annualized return of 17.7% vs 14.0% (standard factor model)
+  - previous works have been limited to few stocks / short time periods
+  - given past januaries, predict next january

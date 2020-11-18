@@ -199,6 +199,17 @@ category: ai
 - no distinction between body and mind
 - no free will - only desires that guide everything
 
+## voltaire
+
+- frenchman who was exiled
+- seeks history of ideas, beginning with *The Essay on Morals*
+- *Candide* - short story, denouncing optimism for pragmatism
+- real philosophy begins with *Philosophic dictionary*
+- strongly against superstition
+- wrote simple, accessible pamphlets
+- in his later years, turns to focus on the pursuit of usefulness rather than truth
+- contrasts with younger Roussea, who wanted more action, instinct, social contract
+
 
 # effective altruism
 

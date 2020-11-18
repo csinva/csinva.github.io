@@ -10,9 +10,9 @@ category: stat
 # basics
 
 - mutually exclusive: $P(AB)=0$
-- independent: $P(AB) = P(A)P(B)$
-  - A and B conditional independence given C: $$P(AB\vert C) = P(A\vert C) P(B\vert C)$$
-- conditional (Bayes' thm): $P(A|B) = \frac{P(AB)}{P(B)} = \frac{P(B|A)P(A)}{\sum P(B|A)P(A)}$
+- independence $A \perp B$ means $P(AB) = P(A)P(B)$
+  - conditional independence $A \perp B\:|\:C$ means $P(AB\vert C) = P(A\vert C) P(B\vert C)$
+- conditional prob: $P(A|B) = \frac{P(AB)}{P(B)} = \frac{P(B|A)P(A)}{\sum P(B|A)P(A)}$ (Bayes' thm)
 - $E[X] = \int P(x)x dx$
   - $E[h(X)] \approx h(E[X])$
 - $V[X] = E[(x-\mu)^2] = E[x^2]-E[x]^2$
