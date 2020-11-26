@@ -264,12 +264,6 @@ Some notes on logic based on Berkeley's CS 188 course and  "Artificial Intellige
 - finding rules is basically a search problem
   - want to find best rules (generally bigger coverage, less complexity, higher accuracy)
   - can thing of it as searching on a **refinement graph** - each rule is a node and refinement operators connect rules
-- heuristics - all basically trading off recall / precision of a rule $r$
-  - $CovDiff(r) = \hat P - \hat N$
-  - $RateDiff(r)$ = $\hat P / P - \hat N / N$
-  - $Precision(r) = TN / (TP + FP)$ (sometimes called confidence or rule accuracy - ignore this kinda confusing)
-  - $Laplace(r) = (TN + 1)/(TP+1+FP+1)$ - pad all the values by 1 to adjust scores when numbers are small
-  - *likelihood ratio statistic* - compare distr in rule to distr in full dataset
 - stopping criteria
   - threshold for some heuristic
 - making final prediction
@@ -330,3 +324,34 @@ Some notes on logic based on Berkeley's CS 188 course and  "Artificial Intellige
   - level-wise search (e.g. apriori) - generate in parallel all rules with a certain minimum quality
   - stochastic search - involves randomness
 - search directions: combine top-down (specialization) with bottom-up (generalization)
+
+## rule evaluation measures (ch 7)
+
+- sometimes we only evaluate the quality of covered rules (e.g. rule list) whereas sometimes we evaluate quality of disjoint sets (e.g. both sides of decision tree split)
+- common heuristics are rules that cover a lots of samples or rules that are simple
+- **equivalent heuristics**: *compatible* heuristics $H$, $G$ rank rules in the same order (*antagonistic* rank rules in opposite order)
+- axes to evaluate rules (want to be close to top-left): ![posneg](../assets/posneg.png)
+- list of metrics (to maximize), all basically trade of recall / precision
+  - $Specificity = TN / N$
+  - $Sensitivity = Recall = TP / P$
+    - $Support = TP / (P + N)$
+  - $CovDiff = TP - FP$
+    - equivalent to classification $Accuracy=(TP + TN) / (P + N)$ 
+    - $Coverage = (TP + FN) / (P + N)$ - fraction of points covered
+  - $RateDiff = TP / P - FP / N$
+    - this is equivalent to more general weighted relative accuracy $LinCost = a \cdot TP - b \cdot FP$
+  - $Precision = TP / \underbrace{(TP + FP)}_{\text{predicted pos}}$ (sometimes called confidence or rule accuracy)
+    - RIPPER's pruning heuristic $(TP - FP) / (TP + FP)$ is equivalent to precision
+    - covering ratio $TP / FP$ is equivalent to precision
+- information-theoretic measures
+  - $Info = -\log_2 Precision$
+  - $Entropy = - (Prec \cdot \log_2 Prec +  (1-Prec) \cdot \log_2 (1-Prec))$
+    - when $TP \leq FN$, same as precision and when  $TP > FN$ opposite of precision
+    - originally developed for case where we aren't covering positive examples but rather predicting with majority class
+    - also KL-divergence and Gini index
+- $Laplace(r) = (TN + 1)/(TP+1+FP+1)$ - pad all the values by 1 to adjust scores when numbers are small
+- *likelihood ratio statistic* - compare distr in rule to distr in full dataset
+- complexity-based heuristics
+  - $Length$
+  - $MDL(r) = I(r) + I(\epsilon|r)$
+    - hard to compute

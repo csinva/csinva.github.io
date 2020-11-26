@@ -111,9 +111,11 @@ For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
     - measures for rules: precision, info gain, correlation, m-estimate, Laplace estimate
 - these algorithms usually don't support regression, but you can get regression by cutting the outcome into intervals
 
+![rule_models](../assets/rule_models-6174107.png)
+
 ### rule sets
 
-**Rule sets commonly look like a series of independent if-then rules. Unlike trees / lists, these rules can be overlapping and might not cover the whole space. Final predictions can be made via majority vote, using most accurate rule, or averaging predictions.**
+*Rule sets commonly look like a series of independent if-then rules. Unlike trees / lists, these rules can be overlapping and might not cover the whole space. Final predictions can be made via majority vote, using most accurate rule, or averaging predictions.*
 
 - popular way to learn rule sets
   - [A Simple, Fast, and Effective Rule Learner](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.33.1184&rep=rep1&type=pdf) (cohen, & singer, 1999) - SLIPPER - repeatedly boosting a simple, greedy rule-builder
@@ -149,7 +151,7 @@ For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
 
 ### trees
 
-Trees suffer from the fact that they have to cover the entire decision space and often we end up with replicated subtrees.
+*Trees suffer from the fact that they have to cover the entire decision space and often we end up with replicated subtrees.*
 
 - [optimal classification trees methodology paper](https://link.springer.com/content/pdf/10.1007%2Fs10994-017-5633-9.pdf) (bertsimas & dunn 2017) - globally optimal decision tree with expensive optimization
   - [optimal classification trees vs PECARN](https://jamanetwork.com/journals/jamapediatrics/article-abstract/2733157) (bertsimas et al. 2019)

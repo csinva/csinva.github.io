@@ -34,6 +34,7 @@ displays
 - [thinc](https://github.com/explosion/thinc) - interoperable dl framework
 - [napari](https://github.com/napari/napari) - image viewer
 - [python-fire](https://github.com/google/python-fire) - passing cmd line args
+- [auto-sklearn](https://github.com/automl/auto-sklearn) - automatically select hyperparams / classifiers using bayesian optimization
 
 
 

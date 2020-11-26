@@ -14,17 +14,14 @@ cat: research
   - platt scaling - given trained classifier and new calibration dataset, basically just fit a logistic regression from the classifier predictions -> labels
   - isotonic regression - nonparametric, requires more data than platt scaling
     - piecewise-constant non-decreasing function instead of logistic regression
-- ensemble uncertainty
-  - [DNN ensemble uncertainty works](http://papers.nips.cc/paper/7219-simple-and-scalable-predictive-uncertainty-estimation-using-deep-ensembles) - predict mean and variance w/ each network then ensemble (don't need to do bagging, random init is enough)
-  - can also use ensemble of [snapshots during training](https://arxiv.org/abs/1704.00109) (huang et al. 2017)
-  - alternatively [batch ensemble](https://arxiv.org/pdf/2002.06715.pdf) (wen et al. 2020) - have several rank-1 keys that index different weights hidden within one neural net
-- neural network basic uncertainty: predicted probability = confidence, max margin, entropy of predicted probabilities across classes
-- [Single-Model Uncertainties for Deep Learning](https://arxiv.org/abs/1811.00908) (tagovska & lopez-paz 2019) - use simultaneous quantile regression
-- quantile regression - use quantile loss to penalize models differently + get confidence intervals
+- **confidence** - predicted probability = confidence, max margin, entropy of predicted probabilities across classes
+- **ensemble uncertainty** - ensemble predictions yield uncertainty (e.g. variance within ensemble)
+- **quantile regression** - use quantile loss to penalize models differently + get confidence intervals
   - [can easily do this with sklearn](https://scikit-learn.org/stable/auto_examples/ensemble/plot_gradient_boosting_quantile.html)
   - quantile loss = $\begin{cases} \alpha \cdot \Delta & \text{if} \quad \Delta > 0\\\\(\alpha - 1) \cdot \Delta & \text{if} \quad \Delta < 0\end{cases}$
     - $\Delta =$ actual - predicted
     - ![Screen Shot 2019-06-26 at 10.06.11 AM](../assets/quantile_losses.png)
+  - [Single-Model Uncertainties for Deep Learning](https://arxiv.org/abs/1811.00908) (tagovska & lopez-paz 2019) - use simultaneous quantile regression
 
 ## complementarity
 
@@ -49,19 +46,12 @@ cat: research
       - human experiment evaluates how much humans are able to tolerate
 
 
-## nearest-neighbor methods
-
-- [Deep k-Nearest Neighbors: Towards Confident, Interpretable and Robust Deep Learning](https://arxiv.org/pdf/1803.04765.pdf) (papernot & mcdaniel, 2018)
-- [distance-based confidence scores](https://arxiv.org/pdf/1709.09844.pdf) (mandelbaum et al. 2017) - use either distance in embedding space or adversarial training to get uncertainties for DNNs
-- [deep kernel knn](https://arxiv.org/pdf/1811.02579.pdf) (card et al. 2019) - predict labels based on weighted sum of training instances, where weights are given by distance in embedding space
-    - add an uncertainty based on conformal methods
-- **local outlier factor** (breunig et al. 2000) - score based on nearest neighbor density
-- idea: gradients should be larger if you are on the image manifold
-
 ## outlier-detection
 
 - overview from [sklearn](https://scikit-learn.org/stable/modules/outlier_detection.html)
 - **elliptic envelope** - assume data is Gaussian and fit elliptic envelop (maybe robustly) to tell when data is an outlier
+- **local outlier factor** (breunig et al. 2000) - score based on nearest neighbor density
+- idea: gradients should be larger if you are on the image manifold
 - [isolation forest](https://ieeexplore.ieee.org/abstract/document/4781136) (liu et al. 2008) - lower average number of random splits required to isolate a sample means more outlier
 - [one-class svm](https://scikit-learn.org/stable/modules/generated/sklearn.svm.OneClassSVM.html#sklearn.svm.OneClassSVM) - estimates the support of a high-dimensional distribution using a kernel (2 approaches:)
   - separate the data from the origin (with max margin between origin and points) (scholkopf et al. 2000)
@@ -69,18 +59,6 @@ cat: research
 - [detachment index](https://escholarship.org/uc/item/9d34m0wz) (kuenzel 2019) - based on random forest
   - for covariate $j$, detachment index $d^j(x) = \sum_i^n w (x, X_i) \vert X_i^j - x^j \vert$
     - $w(x, X_i) = \underbrace{1 / T\sum_{t=1}^{T}}_{\text{average over T trees}} \frac{\overbrace{1\{ X_i \in L_t(x) \}}^{\text{is }   X_i \text{ in the same leaf?}}}{\underbrace{\vert L_t(x) \vert}_{\text{num points in leaf}}}$ is $X_i$ relevant to the point $x$?
-
-## predicting uncertainty for DNNs
-
-- [Inhibited Softmax for Uncertainty Estimation in Neural Networks](https://arxiv.org/abs/1810.01861) (mozejko et al. 2019) - directly predict uncertainty by adding an extra output during training
-- [Learning Confidence for Out-of-Distribution Detection in Neural Networks](https://arxiv.org/pdf/1802.04865.pdf) (devries et al. 2018) - predict both prediction *p* and confidence *c*
-  - during training, learn using $p' = c \cdot p + (1 - c) \cdot y$
-- [Bias-Reduced Uncertainty Estimation for Deep Neural Classifiers](https://arxiv.org/abs/1805.08206) (geifmen et al. 2019)
-    - just predicting uncertainty is biased
-    - estimate uncertainty of highly confident points using earlier snapshots of the trained model
-- [Contextual Outlier Interpretation](https://arxiv.org/abs/1711.10589) (liu et al. 2018) - describe outliers with 3 things: outlierness score, attributes that contribute to the abnormality, and contextual description of its neighborhoods
-- [Energy-based Out-of-distribution Detection](https://arxiv.org/abs/2010.03759)
-- [Test-Time Training with Self-Supervision for Generalization under Distribution Shifts](https://proceedings.icml.cc/paper/2020/file/1d3b7f1f8a7625f8d5e700dcf0d9ae68-Paper.pdf) (sun et al. 2020)
 
 ## bayesian approaches
 
@@ -91,9 +69,38 @@ cat: research
   - ex. logistic reg. already does this
   - ex. regression - just predict mean and variance of Gaussian
 - [gaussian processes](https://distill.pub/2019/visual-exploration-gaussian-processes/)
-- [Dropout as a Bayesian Approximation: Representing Model Uncertainty in Deep Learning](http://proceedings.mlr.press/v48/gal16.pdf)  
-  - dropout at test time gives you uncertainty
-- [SWAG](https://papers.nips.cc/paper/9472-a-simple-baseline-for-bayesian-uncertainty-in-deep-learning.pdf) (maddox et al. 2019) - start with pre-trained net then get Gaussian distr. over weights by training with large constant setp-size
+
+
+
+## neural networks
+
+### directly predict uncertainty
+
+- [Inhibited Softmax for Uncertainty Estimation in Neural Networks](https://arxiv.org/abs/1810.01861) (mozejko et al. 2019) - directly predict uncertainty by adding an extra output during training
+- [Learning Confidence for Out-of-Distribution Detection in Neural Networks](https://arxiv.org/pdf/1802.04865.pdf) (devries et al. 2018) - predict both prediction *p* and confidence *c*
+  - during training, learn using $p' = c \cdot p + (1 - c) \cdot y$
+- [Bias-Reduced Uncertainty Estimation for Deep Neural Classifiers](https://arxiv.org/abs/1805.08206) (geifmen et al. 2019)
+    - just predicting uncertainty is biased
+    - estimate uncertainty of highly confident points using earlier snapshots of the trained model
+- [Contextual Outlier Interpretation](https://arxiv.org/abs/1711.10589) (liu et al. 2018) - describe outliers with 3 things: outlierness score, attributes that contribute to the abnormality, and contextual description of its neighborhoods
+- [Energy-based Out-of-distribution Detection](https://arxiv.org/abs/2010.03759)
+
+### nearest-neighbor methods
+
+- [Deep k-Nearest Neighbors: Towards Confident, Interpretable and Robust Deep Learning](https://arxiv.org/pdf/1803.04765.pdf) (papernot & mcdaniel, 2018)
+- [distance-based confidence scores](https://arxiv.org/pdf/1709.09844.pdf) (mandelbaum et al. 2017) - use either distance in embedding space or adversarial training to get uncertainties for DNNs
+- [deep kernel knn](https://arxiv.org/pdf/1811.02579.pdf) (card et al. 2019) - predict labels based on weighted sum of training instances, where weights are given by distance in embedding space
+    - add an uncertainty based on conformal methods
+
+### ensemble approaches
+
+- [DNN ensemble uncertainty works](http://papers.nips.cc/paper/7219-simple-and-scalable-predictive-uncertainty-estimation-using-deep-ensembles) - predict mean and variance w/ each network then ensemble (don't need to do bagging, random init is enough)
+- can also use ensemble of [snapshots during training](https://arxiv.org/abs/1704.00109) (huang et al. 2017)
+- alternatively [batch ensemble](https://arxiv.org/pdf/2002.06715.pdf) (wen et al. 2020) - have several rank-1 keys that index different weights hidden within one neural net
+- [Deep Ensembles: A Loss Landscape Perspective](https://arxiv.org/abs/1912.02757v1) (fort, hu, & lakshminarayanan, 2020)
+  - different random initializations provide most diversity
+  - samples along one path have varying weights but similar predictions
+  - ![deep_ensembles](../assets/deep_ensembles.png)
 
 ### bayesian neural networks
 
@@ -102,8 +109,12 @@ cat: research
     - $p(x)$ is hard to compute
 - [slides on basics](https://wjmaddox.github.io/assets/BNN_tutorial_CILVR.pdf)
 - [Bayes by backprop (blundell et al. 2015)](https://arxiv.org/abs/1505.05424) - efficient way to train BNNs using backprop
-	- Instead of training a single network, trains an ensemble of networks, where each network has its weights drawn from a shared, learned probability distribution. Unlike other ensemble methods, the method typically only doubles the number of parameters yet trains an infinite ensemble using unbiased Monte Carlo estimates of the gradients.
+  - Instead of training a single network, trains an ensemble of networks, where each network has its weights drawn from a shared, learned probability distribution. Unlike other ensemble methods, the method typically only doubles the number of parameters yet trains an infinite ensemble using unbiased Monte Carlo estimates of the gradients.
 - [Evaluating Scalable Bayesian Deep Learning Methods for Robust Computer Vision](https://arxiv.org/pdf/1906.01620.pdf)
 - [icu bayesian dnns](https://aiforsocialgood.github.io/icml2019/accepted/track1/pdfs/38_aisg_icml2019.pdf)
   - focuses on epistemic uncertainty
   - could use one model to get uncertainty and other model to predict
+- [Dropout as a Bayesian Approximation: Representing Model Uncertainty in Deep Learning](http://proceedings.mlr.press/v48/gal16.pdf)  
+  - dropout at test time gives you uncertainty
+- [SWAG](https://papers.nips.cc/paper/9472-a-simple-baseline-for-bayesian-uncertainty-in-deep-learning.pdf) (maddox et al. 2019) - start with pre-trained net then get Gaussian distr. over weights by training with large constant setp-size
+- [Efficient and Scalable Bayesian Neural Nets with Rank-1 Factors](https://arxiv.org/abs/2005.07186) (dusenberry, jerfel et al. 2020) - BNNs scale to SGD-level with better calibration

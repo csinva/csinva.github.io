@@ -46,12 +46,14 @@ cat: ml
   - **negative predictive value** = TN / (FN + TN)
     - what fraction of predicted negatives are true negatives?
 - **F-score** is harmonic mean of precision and recall: 2 * (prec * rec) / (prec + rec)
+- [NRI](https://en.wikipedia.org/wiki/Net_reclassification_improvement) (controversial): compares 2 model's binary predictions
 - curves - easiest is often to just plot TP vs TN or FP vs FN
 
   - roc curve: true-positive rate (recall) vs. false-positive rate
     - perfect is recall = 1, false positive rate = 0
   - precision-recall curve
-  - AUC: area under (either one) of these curves - usually roc
+  - summarizing curves
+    - AUC: area under (either one) of these curves - usually roc
 
 ## comparing two things
 

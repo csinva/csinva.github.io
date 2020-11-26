@@ -111,9 +111,11 @@ For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
     - measures for rules: precision, info gain, correlation, m-estimate, Laplace estimate
 - these algorithms usually don't support regression, but you can get regression by cutting the outcome into intervals
 
+![rule_models](../assets/rule_models-6174107.png)
+
 #### rule sets
 
-**Rule sets commonly look like a series of independent if-then rules. Unlike trees / lists, these rules can be overlapping and might not cover the whole space. Final predictions can be made via majority vote, using most accurate rule, or averaging predictions.**
+*Rule sets commonly look like a series of independent if-then rules. Unlike trees / lists, these rules can be overlapping and might not cover the whole space. Final predictions can be made via majority vote, using most accurate rule, or averaging predictions.*
 
 - popular way to learn rule sets
   - [A Simple, Fast, and Effective Rule Learner](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.33.1184&rep=rep1&type=pdf) (cohen, & singer, 1999) - SLIPPER - repeatedly boosting a simple, greedy rule-builder
@@ -149,7 +151,7 @@ For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
 
 #### trees
 
-Trees suffer from the fact that they have to cover the entire decision space and often we end up with replicated subtrees.
+*Trees suffer from the fact that they have to cover the entire decision space and often we end up with replicated subtrees.*
 
 - [optimal classification trees methodology paper](https://link.springer.com/content/pdf/10.1007%2Fs10994-017-5633-9.pdf) (bertsimas & dunn 2017) - globally optimal decision tree with expensive optimization
   - [optimal classification trees vs PECARN](https://jamanetwork.com/journals/jamapediatrics/article-abstract/2733157) (bertsimas et al. 2019)
@@ -668,6 +670,15 @@ How interactions are defined and summarized is a very difficult thing to specify
 - [Right for the Right Reasons: Training Differentiable Models by Constraining their Explanations](https://arxiv.org/abs/1703.03717)
 - [Explain to Fix: A Framework to Interpret and Correct DNN Object Detector Predictions](https://arxiv.org/pdf/1811.08011.pdf)
 - [Understanding Misclassifications by Attributes](https://arxiv.org/abs/1910.07416)
+- [Improving VQA and its Explanations by Comparing Competing Explanations](https://arxiv.org/abs/2006.15631) (wu et al. 2020)
+  - train to distinguish correct human explanations from competing explanations supporting incorrect answers
+    - first, predict answer candidates
+    - second, retrieve/generate explanation for each candidate
+    - third, predict verification score from explanation (trained on gt explanations)
+    - fourth, reweight predictions by verification scores
+  - generated explanations are rated higher by humans
+  - [VQA-E: Explaining, Elaborating, and Enhancing Your Answers for Visual Questions](https://arxiv.org/abs/1803.07464) (li et al. 2018) - train to jointly predict answer + generate an explanation
+  - [Self-Critical Reasoning for Robust Visual Question Answering](https://proceedings.neurips.cc/paper/2019/hash/33b879e7ab79f56af1e88359f9314a10-Abstract.html) (wu & mooney, 2019) - use textual explanations to extract a set of important visual objects
 
 ### recourse
 
@@ -732,6 +743,7 @@ These papers don't quite connect to prediction, but are generally about finding 
   - **rashomon ratio** - ratio of the volume of the set of accurate models to the volume of the hypothesis space
     - can use this to perform model selection over different hypothesis spaces using empirical risk v. rashomon ratio (*rashomon curve*)
 - [Underspecification Presents Challenges for Credibility in Modern Machine Learning](https://arxiv.org/pdf/2011.03395.pdf) (D’Amour et al. 2020)
+  - different models can achieve the same validation accuracy but perform differently wrt different data perturbations
   - shortcuts = spurious correlations cause failure because of ambiguity in the data
   - *stress tests* probe a broader set of requirements
     - ex. subgroup analyses, domain shift, contrastive evaluations (looking at transformations of an individual example, such as counterfactual notions of fairness)

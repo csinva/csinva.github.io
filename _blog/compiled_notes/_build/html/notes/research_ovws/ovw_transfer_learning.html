@@ -136,23 +136,28 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="ovw_causal_inference.html">
+     1.8. causal inference
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="ovw_dl_for_neuro.html">
-     1.8. dl for neuro
+     1.9. dl for neuro
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_uncertainty.html">
-     1.9. uncertainty
+     1.10. uncertainty
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_interp.html">
-     1.10. interpretability
+     1.11. interpretability
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_kernels.html">
-     1.11. kernels
+     1.12. kernels
     </a>
    </li>
   </ul>
@@ -577,20 +582,21 @@
         
               <div>
                 
-  <ul class="simple">
-<li><p>[Domain-Adversarial Training of Neural Networks](https://dl.acm.org/ doi/abs/10.5555/2946645.2946704) (ganin et al. 16) - want repr. to be invariant to domain label</p>
+  <p>See also notes on causal inference for some close connections.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.jmlr.org/papers/volume17/15-239/15-239.pdf">Domain-Adversarial Training of Neural Networks</a> (ganin et al. 16) - want repr. to be invariant to domain label</p>
 <ul>
 <li><p><img alt="Screen Shot 2020-11-10 at 12.05.12 PM" src="../../_images/domain_adv_training.png" /></p></li>
+<li><p>exact same algorithm is used to <a class="reference external" href="https://www.cs.toronto.edu/~toni/Papers/icml-final.pdf">learn fair representations</a>, except domain label is replaced with sensitive attribute</p></li>
 </ul>
 </li>
-<li><p>domain adatation given multiple training groups</p>
+<li><p>domain adaptation, given multiple training groups</p>
 <ul>
 <li><p><a class="reference external" href="http://papers.neurips.cc/paper/3019-mixture-regression-for-covariate-shift.pdf">group</a> <a class="reference external" href="https://arxiv.org/abs/1611.02041">distributionally robust</a> <a class="reference external" href="https://arxiv.org/abs/1911.08731">optimization</a></p></li>
 <li><p><a class="reference external" href="https://papers.nips.cc/paper/4312-generalizing-from-several-related-classification-tasks-to-a-new-unlabeled-sample">domain</a> <a class="reference external" href="https://arxiv.org/abs/2007.01434">generalization</a></p></li>
-<li></li>
 </ul>
 </li>
-<li><p>domain adaptation using source/target given all at once</p>
+<li><p>domain adaptation using source/target, given all at once</p>
 <ul>
 <li><p><a class="reference external" href="https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.370.4921&amp;rep=rep1&amp;type=pdf">importance weighting</a></p></li>
 <li><p>learning <a class="reference external" href="https://arxiv.org/abs/1702.05464">invariant represetntations</a></p></li>
@@ -600,13 +606,19 @@
 <ul>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1603.04779">batch normalization</a></p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1802.03916">label shift estimation</a></p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1909.13231">rotation prediction</a></p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1909.13231">rotation prediction</a> (sun et al. 2020)</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2006.10726">entropy minimization</a></p></li>
 </ul>
 </li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2007.02931">adaptive risk minimization</a> - combines groups at training time + batches at test-time</p>
 <ul>
 <li><p><em>meta-train</em> the model using simulated distribution shifts, which is enabled by the training groups, such that it exhibits strong <em>post-adaptation</em> performance on each shift</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2010.15764">Domain adaptation under structural causal models</a> (chen &amp; buhlmann, 2020)</p>
+<ul>
+<li><p>make clearer assumptions for domain adaptation to work</p></li>
+<li><p>introduce CIRM, which works better when both covariates and labels are perturbed in target data</p></li>
 </ul>
 </li>
 </ul>

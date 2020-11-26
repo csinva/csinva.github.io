@@ -136,23 +136,28 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_causal_inference.html">
+     1.8. causal inference
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_dl_for_neuro.html">
-     1.8. dl for neuro
+     1.9. dl for neuro
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_uncertainty.html">
-     1.9. uncertainty
+     1.10. uncertainty
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_interp.html">
-     1.10. interpretability
+     1.11. interpretability
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_kernels.html">
-     1.11. kernels
+     1.12. kernels
     </a>
    </li>
   </ul>
@@ -633,6 +638,11 @@
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#learning-single-rules-ch-6">
      6.6.5.5. learning single rules (ch 6)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rule-evaluation-measures-ch-7">
+     6.6.5.6. rule evaluation measures (ch 7)
     </a>
    </li>
   </ul>
@@ -1143,15 +1153,6 @@
 <li><p>can thing of it as searching on a <strong>refinement graph</strong> - each rule is a node and refinement operators connect rules</p></li>
 </ul>
 </li>
-<li><p>heuristics - all basically trading off recall / precision of a rule <span class="math notranslate nohighlight">\(r\)</span></p>
-<ul>
-<li><p><span class="math notranslate nohighlight">\(CovDiff(r) = \hat P - \hat N\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(RateDiff(r)\)</span> = <span class="math notranslate nohighlight">\(\hat P / P - \hat N / N\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(Precision(r) = TN / (TP + FP)\)</span> (sometimes called confidence or rule accuracy - ignore this kinda confusing)</p></li>
-<li><p><span class="math notranslate nohighlight">\(Laplace(r) = (TN + 1)/(TP+1+FP+1)\)</span> - pad all the values by 1 to adjust scores when numbers are small</p></li>
-<li><p><em>likelihood ratio statistic</em> - compare distr in rule to distr in full dataset</p></li>
-</ul>
-</li>
 <li><p>stopping criteria</p>
 <ul>
 <li><p>threshold for some heuristic</p></li>
@@ -1260,6 +1261,66 @@
 </ul>
 </li>
 <li><p>search directions: combine top-down (specialization) with bottom-up (generalization)</p></li>
+</ul>
+</div>
+<div class="section" id="rule-evaluation-measures-ch-7">
+<h3>6.6.5.6. rule evaluation measures (ch 7)<a class="headerlink" href="#rule-evaluation-measures-ch-7" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>sometimes we only evaluate the quality of covered rules (e.g. rule list) whereas sometimes we evaluate quality of disjoint sets (e.g. both sides of decision tree split)</p></li>
+<li><p>common heuristics are rules that cover a lots of samples or rules that are simple</p></li>
+<li><p><strong>equivalent heuristics</strong>: <em>compatible</em> heuristics <span class="math notranslate nohighlight">\(H\)</span>, <span class="math notranslate nohighlight">\(G\)</span> rank rules in the same order (<em>antagonistic</em> rank rules in opposite order)</p></li>
+<li><p>axes to evaluate rules (want to be close to top-left): <img alt="posneg" src="../../_images/posneg.png" /></p></li>
+<li><p>list of metrics (to maximize), all basically trade of recall / precision</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(Specificity = TN / N\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(Sensitivity = Recall = TP / P\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(Support = TP / (P + N)\)</span></p></li>
+</ul>
+</li>
+<li><p><span class="math notranslate nohighlight">\(CovDiff = TP - FP\)</span></p>
+<ul>
+<li><p>equivalent to classification <span class="math notranslate nohighlight">\(Accuracy=(TP + TN) / (P + N)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(Coverage = (TP + FN) / (P + N)\)</span> - fraction of points covered</p></li>
+</ul>
+</li>
+<li><p><span class="math notranslate nohighlight">\(RateDiff = TP / P - FP / N\)</span></p>
+<ul>
+<li><p>this is equivalent to more general weighted relative accuracy <span class="math notranslate nohighlight">\(LinCost = a \cdot TP - b \cdot FP\)</span></p></li>
+</ul>
+</li>
+<li><p><span class="math notranslate nohighlight">\(Precision = TP / \underbrace{(TP + FP)}_{\text{predicted pos}}\)</span> (sometimes called confidence or rule accuracy)</p>
+<ul>
+<li><p>RIPPER’s pruning heuristic <span class="math notranslate nohighlight">\((TP - FP) / (TP + FP)\)</span> is equivalent to precision</p></li>
+<li><p>covering ratio <span class="math notranslate nohighlight">\(TP / FP\)</span> is equivalent to precision</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>information-theoretic measures</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(Info = -\log_2 Precision\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(Entropy = - (Prec \cdot \log_2 Prec +  (1-Prec) \cdot \log_2 (1-Prec))\)</span></p>
+<ul>
+<li><p>when <span class="math notranslate nohighlight">\(TP \leq FN\)</span>, same as precision and when  <span class="math notranslate nohighlight">\(TP &gt; FN\)</span> opposite of precision</p></li>
+<li><p>originally developed for case where we aren’t covering positive examples but rather predicting with majority class</p></li>
+<li><p>also KL-divergence and Gini index</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><span class="math notranslate nohighlight">\(Laplace(r) = (TN + 1)/(TP+1+FP+1)\)</span> - pad all the values by 1 to adjust scores when numbers are small</p></li>
+<li><p><em>likelihood ratio statistic</em> - compare distr in rule to distr in full dataset</p></li>
+<li><p>complexity-based heuristics</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(Length\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(MDL(r) = I(r) + I(\epsilon|r)\)</span></p>
+<ul>
+<li><p>hard to compute</p></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>

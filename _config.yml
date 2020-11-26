@@ -13,9 +13,6 @@ collections:
     name: Notes
     documentation: https://github.com/Shopify/liquid/wiki/Liquid-for-Designers
     output: true
- timeline_blurbs:
-    name: timeline_blurbs
-    output: true
 markdown: kramdown
 highlighter: rouge
 exclude: ["Rakefile", "LICENSE", "readme.md"]

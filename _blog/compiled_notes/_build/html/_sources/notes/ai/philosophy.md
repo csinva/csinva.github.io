@@ -210,6 +210,9 @@ cat: ai
 - in his later years, turns to focus on the pursuit of usefulness rather than truth
 - contrasts with younger Roussea, who wanted more action, instinct, social contract
 
+### kant
+
+- what makes a math law better than some other thing? kant says a priori beliefs...interestingly those beliefs were from evolution in the first place 
 
 ## effective altruism
 
