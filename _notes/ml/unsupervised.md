@@ -434,3 +434,14 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
 - **arithmetic coding**
   - motivation: coding one symbol at a time incurs penalty of +1 per symbol - more efficient to encode groups of things
   - can be improved with good autoregressive model
+
+
+
+# contrastive learning
+
+## supervised contrastive learning
+
+- [What makes for good views for contrastive learning](https://arxiv.org/abs/2005.10243) (tian et al. 2020)
+  - how to select views (e.g. transformations we want to be invariant to)?
+  - reduce the mutual information (MI) between views while keeping task-relevant information intact
+- [Supervised Contrastive Learning](https://arxiv.org/abs/2004.11362) (khosla et al. 2020)

@@ -13,8 +13,15 @@ category: stat
 - the book of why
 -  of the fairml book
 - rebecca barter's [blog posts](http://www.rebeccabarter.com/blog/2017-07-05-ip-weighting/)
+- [in-progress book](https://www.bradyneal.com/causal-inference-course) by brady neal
 
 
+
+# questions
+
+- clear distinction between identification and estimation
+  - A causal quantity is **identifiable** if we can compute it from a purely statistical quantity
+  - ![identification_estimation_flowchart](../assets/identification_estimation_flowchart.png)
 
 # basics
 
@@ -180,7 +187,8 @@ category: stat
         - are not influenced by other variables
         - modeler decides to keep these unexplained
         - not the same as the noise term in a regression - need not be uncorrelated with regressors
-      - *direct causes* = parent nodes
+        - *direct causes* = parent nodes
+    - the $:=$ notation signifies a direction
     - **controlling** for a variable  (when we have a causal graph):
     - $P(Y=y|do(T:=t)) = \sum_z \underbrace{P(Y=y|T=t, T_{parents}=z)}_{\text{effect for slice}} \underbrace{P(T_{parents}=z)}_{\text{weight for slice}}$
     - **post-intervention distribution** $P(z, y|do(t_0))$ - result of setting $T = t_0$
@@ -201,6 +209,10 @@ category: stat
         - alternatively, can factorize the graph, set $x=x_0$ and then marginalize over all variables not in the quantity we want to estimate
           - this is what people commonly call "adjusting for confounders"
         - this is the same as the G-computation formula ([Robins, 1987](https://www.sciencedirect.com/science/article/abs/pii/S0021968187800188)), which was derived from a more complext set of assumptions
+- rules of *do*-calculus allow us to identify causal effects in general (e.g. in front-door adjustement)
+- general criterion
+    - back-door / front-door
+    - **unconfounded children criterion**: if it is possible to block all backdoor paths from $T$ to all of its children that are ancestors of $Y$ with a single conditioning set $S$, then $P(Y=y|do(T=t))$ is identifiable ([tian & pearl, 2002](https://www.aaai.org/Papers/AAAI/2002/AAAI02-085.pdf))
 - examples
     - ex. correlate flips
       - ![sem](../assets/sem.png)
@@ -301,7 +313,7 @@ category: stat
       -   e.g. risk difference $P(Y=1|T=1, S=s) - P(Y=1|T=0, S=s)$
       -   e.g. causal effect $P(Y=1|do(T=1), S=s) - P(Y=1|do(T=0), S=s)$
       -   average outcome under treatment, $P(Y=y|do(T=t)) = \sum_s P(Y=y|T=t, S=s) P(S=s) $
-          -   sometimes called *back-door adjustment* - really just covariate adjustment
+          -   sometimes called *back-door adjustment* - really just covariate adjustment (same as we had in potential outcomes)
   -   there can be many sufficient sets, so we may choose the set which minimizes measurement cost or sampling variability
   -   propensity score methods help us better estimate the RHS of this average outcome, but can't overcome the necessity of the back-door criterion
 
@@ -374,7 +386,7 @@ M --> Y
   - technical setting: **noncompliance** - sometimes treatment assigned $I$ and treatment received $T$ are different
   
 - assumptions
-    - randomization: $I \perp \{T^{I=1}, T^{I=0}, Y^{I=1}, Y^{I=0} \}$
+    - randomization = instrumental unconfoundedness: $I \perp \{T^{I=1}, T^{I=0}, Y^{I=1}, Y^{I=0} \}$
       - randomization lets us identify ATE of $I$ on $T$ and $I$ on $Y$
         - $\tau_{T}=E\{T^{I=1}-T^{I=0}\}=E(T \mid I=1)-E(T \mid I=0)$
         - $\tau_{Y}=E\{Y^{I=1}-Y^{I=0}\}=E(Y \mid I=1)-E(Y \mid I=0)$
@@ -419,7 +431,7 @@ M --> Y
 
 # observational analysis
 
-*The emphasis in this section is on ATE estimation, as an example of the considerations required for making causal conclusions.*
+*The emphasis in this section is on ATE estimation, as an example of the considerations required for making causal conclusions. Observational analysis focuses on adjusting for observed confounding.*
 
 ## ATE estimation basics
 
@@ -440,16 +452,20 @@ M --> Y
   - $E\{Y^{T=0}|T=1, X\} = E\{Y^{T=0}|T=0, X\}$ 
   - $E\{Y^{T=1}|T=1, X\} = E\{Y^{T=1}|T=0, X\}$ 
   - $\implies \tau(X) = \tau_T(X) = \tau_C(X) = \tau_{PF}(X)$
+- ex. stratified ATE estimator (given discrete covariate)
 
 ## regression adjustments
 
-- ATE simple methods (all assume ignorability)
-  - ex. stratified ATE estimator (given discrete covariate)
+- ATE **conditional outcome modeling** (all assume ignorability)
   - ex. $\tau = \beta_t$  in OLS
     - $E(Y|T, X) = \beta_0 + \beta_t T + \beta_x^TX$
+    - assumes treatment effect is same for all individuals
   - ex. $\tau = \beta_t + \beta_{tx}^TE(X)$
     - $E(Y|T, X) = \beta_0 + \beta_tT + \beta_x^TX + \beta^T_{tx} X T$
     - incorporates heterogeneity
+
+- these easily generalize to when $T$ is continuous
+
 - $\hat \tau = \frac 1 n \sum_i (\hat \mu_1(X_i) - \hat \mu_0(X_i))$
   - general mean functions $\hat \mu_1(x), \hat \mu_0(x)$ approximate $\mu_i =E\{ Y^{T=i} |X\}$
   - consistent when $\mu_i$ functions are well-specified
@@ -487,6 +503,8 @@ M --> Y
   - *Thm.* if $\underbrace{T \perp \{ Y^{T=1}, Y^{T=0}\} | \color{NavyBlue} X}_{\text{strong ignorability on X}}$, then $\underbrace{T \perp \{ Y^{T=1}, Y^{T=0}\} | \textcolor{NavyBlue}{e(X)}}_{\text{strong ignorability on e(X)}}$
     - therefore, can stratify on $e(X)$, but still need to estimate $e(X)$, maybe bin it into K quantiles (and pick K)
     - could combine this propensity score weighting with regression adjustment (e.g. within each stratum)
+    - assumes positivity
+    - intuition: $e(X)$ fully mediates path from $X$ to $T$
   - *Thm*. $T \perp X \; | \; e(X)$. Moreover, for any function $h$, $E\{\frac{T \cdot h(X)}{e(X)}\} = E\{\frac{(1-T)h(X)}{1-e(X)}\}$
     - can use this result to check for covariate balance in design stage
     - can view $h(X)$ as psuedo outcome and estimtate ATE
@@ -578,12 +596,27 @@ M --> Y
       \hat{\tau}^{\mathrm{dr}} &=n^{-1} \sum_{i=1}^{n}\left\{\hat{\mu}_{1}\left(X_{i}\right)-\hat{\mu}_{0}\left(X_{i}\right)\right\}+n^{-1} \sum_{i=1}^{n}\left\{\frac{T_{i} \hat{R}_{i}}{\hat{e}\left(X_{i}\right)}-\frac{\left(1-T_{i}\right) \hat{R}_{i}}{1-\hat{e}\left(X_{i}\right)}\right\}
       \end{aligned}$
 
+## misc methods
+
+- double machine learning
+  - first
+    - fit a model to predict $Y$ from $X$ to get $\hat Y$
+    - fit a model to predict $T$ from $X$ to get $\hat T$
+  - next, predict $Y- \hat Y$ from $T - \hat T$, which has no in some sense removed effects of $X$
+    - ex. Chernozhukov et al. (2018), ‘Double/debiased machine learning for treatment and structural parameters’
+    - ex. Felton (2018), *Chernozhukov et al. on Double / Debiased Machine Learning*
+    - ex. Syrgkanis (2019), *Orthogonal/Double Machine Learning*
+    - ex. Foster and Syrgkanis (2019), *Orthogonal Statistical Learning*
+- causal trees/forests
+
 # assumptions
 
 ## common assumptions
 
 - **unconfoundedness**
   - **exchangeability** $T \perp \!\!\! \perp \{ Y^{t=1}, Y^{t=0}\}$  = exogeneity = randomization: the value of the counterfactuals doesn't change based on the choice of the treatment
+    - intuition: we could have exchanged the treatment groups and done this experiment
+    - there are weaker forms of this assumption, such as *mean* exchangeability (where only means are exchangeable) 
     - **ignorability** $T \perp \!\!\! \perp \{ Y^{T=1}, Y^{T=0}\} | X $  = unconfoundedness = selection on observables = conditional exchangeability
       - very hard to check!
       - rubin 1978; rosenbaum & rubin 1983
@@ -592,35 +625,42 @@ M --> Y
       - $E[Y^{T=0}|T=\textcolor{NavyBlue}1] - E[Y^{T=0}|T=\textcolor{NavyBlue}0]$
       - $E[Y^{T=1}|T=\textcolor{NavyBlue}1] - E[Y^{T=1}|T=\textcolor{NavyBlue}0]$
   - graph assumptions
-    - **back-door criterion**, **front-door criterion**
+    - **back-door criterion**, **front-door criterion**, unconfounded children criterion
     - basics in a graph
-      - *exclusion restrictions*: For every variable $Y$ having parents $PA(Y)$ and for every set of endogenous variables $S$ disjoint of $PA(Y)$, we have  $Y^{PA(y)} = Y^{PA(Y), S}$
-        - fixing a variables parents fully determines it
-      - *independence restrictions*: variables are independent of noise variables given their markov blanket
+      - modularity assumptions
+      - markov assumptions
+        - *exclusion restrictions*: For every variable $Y$ having parents $PA(Y)$ and for every set of endogenous variables $S$ disjoint of $PA(Y)$, we have  $Y^{PA(y)} = Y^{PA(Y), S}$
+          - fixing a variables parents fully determines it
+        - *independence restrictions*: variables are independent of noise variables given their markov blanket
 - **overlap** / imbalance assumption
-  - **positivity** - probability of receiving any treatment is positive for every individual: $P(T=1|x) > 0 \: \forall x$
+  - **positivity** $P(T=1|x) > 0 \: \forall x$ = overlap = common support - probability of receiving any treatment is positive for every individual
   - without overlap, assumption of linear effect can be very strong (e.g. extrapolates out of sample)
   - strong overlap assumption: propensity scores are bounded away from 0 and 1
     - $0 < \alpha_L \leq e(X) \leq \alpha_U < 1$
     - when $e(X)=$0 or 1, potential outcomes are not even well-defined ([king & zeng, 2006](https://www.cambridge.org/core/journals/political-analysis/article/dangers-of-extreme-counterfactuals/2E70ACE0D50C6D51A1E042DFBB1BC335))
   - things can be matched
+  - overlap and unconfoundedness trade off (e.g. see [amour et al. 2020](https://www.sciencedirect.com/science/article/pii/S0304407620302694))
 - treatment assumptions
   - treatment is not ambiguous
+  - **no interference**: my outcome is unaffected by anyone else's treatment
+    - $Y_i(t_1, ...,t_n) = Y_i(t_i)$
+  - **consistency**: $Y=Y^{t=0}(1-T) + Y^{t=1}T$ - outcome agrees with the potential outcome corresponding to the treatment indicator (really this is used to ground the definition of the counterfactuals $Y^{t=0}, Y^{t=1}$)
+    - alternatively, $T=t \implies Y=Y(t)$
+    - basically means treatment is well-defined
+  - **stable unit treatment value assumption (SUTVA) = no-interference assumption** (Rubin, 1980): unit $i$'s outcome is a function of unit $i$'s treatment
+    - no interference
+    - consistency
+    - +deterministic potential outcomes
   - is it something that could be intervened on?
     - can we intervene on something like Race? Soln: intervene on perceived race
     - can we intervene on BMI? many potential interventions: e.g. diet, exercise
-    - **consistency**: $Y=Y^{t=0}(1-T) + Y^{t=1}T$ - outcome agrees with the potential outcome corresponding to the treatment indicator (really this is used to ground the definition of the counterfactuals $Y^{t=0}, Y^{t=1}$)
     - SCM counterfactuals further assume 2 things:
       - $Y_{yz} = y \quad \forall y, \text{ subsets }Z\text{, and values } z \text{ for } Z$
         - ensures interventions $do(Y=y)$ results in $Y=y$, regardless of concurrent interventions, say $do(Z=z)$
       - $X_z = x \implies Y_{xz} = Y_z \quad \forall x, \text{ subsets }Z\text{, and values } z \text{ for } Z$
         - generalizes above
         - ensures interventions $do(X=x)$ results in appropriate counterfactual, regardless of holding a variable fixed, say $Z=z$
-- combinations
-  - **stable unit treatment value assumption (SUTVA) = no-interference assumption** (Rubin, 1980)
-    - treatment one unit receives doesn't change effect of treatment for any other unit
-    - treatment does not have versions / ambiguity
-  - assumptions for ATE being identifiable: exhangeability (or ignorability) + consistency, positivity
+- assumptions for ATE being identifiable: exhangeability (or ignorability) + consistency, positivity
 
 
 
@@ -656,9 +696,6 @@ M --> Y
   T --> Y
   ```
 
-- **bounds without ignorability** ([manski 1990](https://www.jstor.org/stable/2006592?casa_token=5wsmh0n73ecAAAAA%3AGrmKG84ZmaGgvx7Xsadw_Gta7y59XrUMUe8IpYH-IWfN7mVx0p51Wte4H8m7zZy6l06TYQZeNHRgpz7cPAvXtrw2O6pABDcgYanESUXjuyhM7_9vAOws&seq=1#metadata_info_tab_contents))
-  
-  - worst-case bounds are very poor
 
 ### check ignorability impact: sensitivity analysis wrt unmeasured confounding
 
@@ -694,4 +731,8 @@ M --> Y
       - $\mathrm{RR}_{U Y \mid x}=\frac{\operatorname{pr}(Y=1 \mid U=1, X=x)}{\operatorname{pr}(Y=1 \mid U=0, X=x)}$
       - *Thm*: under latent ignorability, $\mathrm{RR}_{x}^{\mathrm{obs}} \leq \frac{\mathrm{R} \mathrm{R}_{T U \mid x} \mathrm{RR}_{U Y \mid x}}{\mathrm{RR}_{T U \mid x}+\mathrm{RR}_{U Y \mid x}-1}$
   - ex. bounds on direct effects with confounded intermediate variables ([Cai et al. 2008](https://onlinelibrary.wiley.com/doi/full/10.1111/j.1541-0420.2007.00949.x?casa_token=WdtSDtKM_zsAAAAA%3AyEmvyHkEBk5qtvcj4p8r5ewrI5npbTts9J9IKRQyc4XmbpDvsmtIDy28sbOU2m32oT31ol2VM4Kb5w))
+- **bounds with no assumptions** ([manski 1990](https://www.jstor.org/stable/2006592?casa_token=5wsmh0n73ecAAAAA%3AGrmKG84ZmaGgvx7Xsadw_Gta7y59XrUMUe8IpYH-IWfN7mVx0p51Wte4H8m7zZy6l06TYQZeNHRgpz7cPAvXtrw2O6pABDcgYanESUXjuyhM7_9vAOws&seq=1#metadata_info_tab_contents))
+  - worst-case bounds are very poor
+  - also bounds with monotone treatment response ([manski, 1997](https://ideas.repec.org/a/ecm/emetrp/v65y1997i6p1311-1334.html))
+  - bounds with optimal treatment selection (i.e. individuals always receive the treatement that is best for them) (manski, 1990, "nonparametric bounds on treatment effects")
 

@@ -150,14 +150,21 @@ C(Location of Car) --> B
 
 - **conditional average treatment effect (CATE)** - get treatment effect for each individual conditioned on its covariates
   - meta-learners - break down CATE into regression subproblems
-    - e.g. T-learner (foster et al. 2011, simplest) - fit one model for conditional expectation of each potential outcome and then subtract
-    - e.g. X-learner (kunzel et al. 19)
+    - e.g. S-learner (hill 11) - "S" stands for "single" and fits a single statistical model for $\mu_1 - \mu_0$
+      - can be biased towards 0
+    - e.g. T-learner (foster et al. 2011) - "T" stands for "two" because we fit 2 models:  one model for conditional expectation of each potential outcome: $\hat \mu_1(x), \hat \mu_0(x)$
+    - e.g. X-learner ([kunzel et al. 19](https://www.pnas.org/content/116/10/4156.short)) - "X" stands for crossing between estimates and conditional outcomes for each group
+      - first, fit $\hat \mu_1(x), \hat \mu_0(x)$
+      - second, compute effects using all the data $\begin{aligned} \hat{\tau}_{1, i} &=Y_{i}(1)-\hat{\mu}_{0}\left(x_{i}\right) \\ \hat{\tau}_{0, i} &=\hat{\mu}_{1}\left(x_{i}\right)-Y_{i}(0) \end{aligned}$ 
+      - finally, combine effects $\hat{\tau}(x)=g(x) \hat{\tau}_{0}(x)+(1-g(x)) \hat{\tau}_{1}(x)$
+        - $g(x)$ is weighting function, e.g. estimated propensity score
     - e.g. R-learner (nie-wager, 20)
-    - e.g. S-learner (hill 11)
   - tree-based methods
     - e.g. causal tree ([athey & imbens, 16](https://www.pnas.org/content/113/27/7353.short)) - like decision tree, but change splitting criterion for differentiating 2 outcomes
     - e.g. causal forest ([wager & athey, 18](https://www.tandfonline.com/doi/full/10.1080/01621459.2017.1319839))
     - e.g. BART (hill, 12)
+  - neural-net based methods
+    - e.g. TARNet ([shalit et al. 2017](https://arxiv.org/abs/1606.03976)) - full notes below, use data from both groups
 - **subgroup analysis** - identify subgroups with treatment effects far from the average
   - generally easier than CATE
 - [staDISC](https://arxiv.org/pdf/2008.10109.pdf) (dwivedi, tan et al. 2020) - learn stable / interpretable subgroups for causal inference
@@ -252,7 +259,7 @@ C(Location of Car) --> B
 - [Invariance, Causality and Robustness](https://arxiv.org/abs/1812.08233) (buhlmann 18)
   - predict $Y^e$ given $X^e$ such that the prediction “works well” or is “robust” for all $e ∈ \mathcal F$ based on data from much fewer environments $e \in \mathcal E$
     - assumption: ideally $e$ changes only the distr. of $X^e$ (so doesn't act directly on $Y^e$ or change the mechanism between $X^e$ and $Y^e$)
-    - assumption (invariance): there exists a subset of "causal" covariates - when conditioning on these covariates, the loss is the same across all environments $e$
+    - assumption (*invariance*): there exists a subset of "causal" covariates - when conditioning on these covariates, the loss is the same across all environments $e$
     - when these assumptions are satisfied, then minimizing a worst-case risk over environments $e$ yields a causal parameter
   - identifiability issue: we typically can't identify the causal variables without very many perturbations $e$
     - **Invariant Causal Prediction (ICP)** only identifies variables as causal if they appear in all invariant sets
@@ -313,6 +320,7 @@ C(Location of Car) --> B
   - also an extra loss: penalty that encourages counterfactual preds to be close to nearest observed outcome from the same set
   - fit linear ridge regression on top of representation $\phi$
   - not exactly the same as the setting in [fair repr. learning](http://www.cs.toronto.edu/~zemel/documents/fair-icml-final.pdf) or [domain adversarial training](https://www.jmlr.org/papers/volume17/15-239/15-239.pdf) - MMD or Wasserstein distance instead of classification
+  - same idea present in [Training confounder-free deep learning models for medical applications](https://www.nature.com/articles/s41467-020-19784-9) (zhou et al. 2020)
 - [Estimating individual treatment effect: generalization bounds and algorithms](https://arxiv.org/abs/1606.03976) (shalit et al. 2017)
   - ![ite_dnn](../assets/ite_dnn.png)
   - bound for estimating ITE $\tau(x)$ is uper bounded by error for learning $Y_1$ and $Y_0$ plus a term for the  Integral Probability Metric (IPM)

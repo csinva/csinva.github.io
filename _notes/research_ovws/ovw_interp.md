@@ -486,6 +486,10 @@ How interactions are defined and summarized is a very difficult thing to specify
   - real trees are harder: correlated vars and stuff mask results of other vars lower down
   - asymptotically, randomized trees might actually be better
 - [Actionable Interpretability through Optimizable Counterfactual Explanations for Tree Ensembles](https://arxiv.org/pdf/1911.12199v1.pdf) (lucic et al. 2019)
+- [iterative random forest](https://www.pnas.org/content/115/8/1943) (basu et al. 2018)
+  - fit RF and get MDI importances
+  - iteratively refit RF, weighting probability of feature being selected by its previous MDI
+  - find interactions as features which co-occur on paths (using RIT algorithm)
 
 ## neural nets (dnns)
 

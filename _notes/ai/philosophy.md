@@ -212,7 +212,15 @@ category: ai
 
 ## kant
 
-- what makes a math law better than some other thing? kant says a priori beliefs...interestingly those beliefs were from evolution in the first place 
+- what makes a math law better than some other thing? kant says a priori beliefs...interestingly those beliefs were from evolution in the first place
+- mind is not blank slate: mind filters in what we perceive *a priori* in contrast to growing popular belief that everything comes from perception
+- understanding can never go beyond the limits of sensibility
+  - certain things in science/religion etc. can never be known, just interpreted
+  - time and space are not realities but just our interpretations
+- lots of connections to priors in modern AI research
+- morals come from an innate sense
+- somewhat pro-religion but not fully, still still faced persecution in Prussia
+- "Have strongly-held values, and malleable opinions". - Francois Chollet tweet
 
 # effective altruism
 

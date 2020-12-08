@@ -13,9 +13,9 @@ typora-copy-images-to: ../assets
 
 - *affine set*: $x_1, x_2 \in C, \theta \in \mathbb{R} \implies \theta x_1 + (1 - \theta) x_2 \in C$
   - *affine hull*: aff C = {$\sum \theta_i x_i | x_i \in C, \sum \theta_i =1 $}
-- *convex set*: $x_1, x_2 \in C, 0 \leq \theta \leq 1 \implies \theta x_1 + (1 - \theta) x_2 ​$
+- *convex set*: $x_1, x_2 \in C, 0 \leq \theta \leq 1 \implies \theta x_1 + (1 - \theta) x_2 $
   - *convex hull*: conv C = {$\sum \theta_i x_i \: | x_i \in C, \theta_i \geq 0, \sum \theta_i = 1$}
-- *cone*: $\theta \geq 0 \implies \theta x \in C​$
+- *cone*: $\theta \geq 0 \implies \theta x \in C$
 - operations that preserve convexity
   - intersection (finite intersection of half-spaces)
   - pointwise max of affine funcs
@@ -232,7 +232,7 @@ typora-copy-images-to: ../assets
     - if the gradient of f at x is small enough, then the difference between f(x) and p⋆ is small 
   - *smooth*: $\exists \: M, \: \nabla^2f(x) \preceq MI$
     - $\implies f(y) \leq f(x) + \nabla f(x)^T(y-x) + M/2 ||y-x||_2^2$
-- cond(*C*) = $W_{\max}^2 / W_{\min}^2​$
+- cond(*C*) = $W_{\max}^2 / W_{\min}^2$
   - *width* of convex set $C \subset \mathbb{R}^n$ in direction q with $||q||_2=1$
   - $W(C, q) = \underset{z \in C}{\sup} \: q^Tz - \underset{z \in C}{\inf} \: q^Tz$
 - *alpha-level subset*: $C_\alpha = \{x|f(x) \leq \alpha\}$
@@ -273,7 +273,7 @@ typora-copy-images-to: ../assets
   - PSD $\implies \nabla f(x)^T \Delta x_{nt} = - \nabla f(x)^T \nabla^2 f(x)^{-1} \nabla f(x) < 0$
 - *Newton's method*
   1. compute the newton step $\Delta x_{nt}$ and decrement $\lambda^2 = \nabla f(x)^T \nabla^2 f(x)^{-1} \nabla f(x)$
-  2. stopping criterion: quit if $\lambda^2 / 2 \leq \epsilon​$
+  2. stopping criterion: quit if $\lambda^2 / 2 \leq \epsilon$
   3. line search: choose step size t w/ backtracking line search
   4. update: $x += t \Delta x_{nt}$
 
