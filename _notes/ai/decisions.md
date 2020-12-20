@@ -276,7 +276,7 @@ Some notes on decision theory based on Berkeley's CS 188 course and  "Artificial
 - $U(s) = \underset{a}{\max} \: Q(s,a)$
   - ADP version: $Q(s, a) = R(s) + \gamma \sum_{s'} P(s'|s, a) \underset{a'}{\max} Q(s', a')$
   - TD version: $Q(s,a) = Q(s,a) + \alpha [R(s) - Q(s,a) + \gamma \: \underset{a'}{\max} Q(s', a')]$ - **this is what is usually referred to as Q-learning**
-- *SARSA* (state-action-reward-state-action) is related: $Q(s,a) = Q(s,a) + \alpha [R(s) - Q(s,a) + \gamma \: Q(s', a')]$
+- *SARSA* (state-action-reward-state-action) is related: $Q(s,a) = Q(s,a) + \alpha [R(s) + \gamma \: Q(s', a') - Q(s,a) ]$
   - here, a' is action actually taken
 - Q-learning is *off-policy* (only uses best Q-value)
   - more flexible

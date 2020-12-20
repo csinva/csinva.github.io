@@ -83,6 +83,11 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
 
 
 
+## vaes for interpretation
+
+- [icam](https://proceedings.neurips.cc/paper/2020/file/56f9f88906aebf4ad985aaec7fa01313-Paper.pdf) (bass et al. 2020) - learn disentangled repr using vae with adv loss to make repr class-relevant
+  - [va-gan](https://openaccess.thecvf.com/content_cvpr_2018/html/Baumgartner_Visual_Feature_Attribution_CVPR_2018_paper.html) (baumgartner et al. 2018) - interpret features in GAN space
+
 ## various vaes
 
 - [vae](https://arxiv.org/abs/1312.6114) (kingma & welling, 2013)

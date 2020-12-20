@@ -27,8 +27,10 @@
     - in this case, rank all stocks acording to factor and invest equal amounts into top 50, re-balancing monthly
   - final improvement: compound annualized return of 17.7% vs 14.0% (standard factor model), CV on held-out stocks, test on held-out time period
     - previous works have been limited to few stocks / short time periods
-
-
+  - uncertainty
+    - data uncertainty (aleatoric): DNN predicts mean + var as separate outputs
+      - both are used to calculate loss
+    - model uncertainty (epistemic): use MC dropout w/ 10 reps
 
 # quant finance
 

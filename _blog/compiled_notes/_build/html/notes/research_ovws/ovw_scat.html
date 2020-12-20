@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>1.6. scattering transform &#8212; learning to learn</title>
+    <title>1.7. scattering transform &#8212; learning to learn</title>
     
   <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -56,8 +56,8 @@
     <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="1.7. ml in medicine" href="ovw_ml_medicine.html" />
-    <link rel="prev" title="1.5. dl theory" href="ovw_dl_theory.html" />
+    <link rel="next" title="1.8. ml in medicine" href="ovw_ml_medicine.html" />
+    <link rel="prev" title="1.6. dl theory" href="ovw_dl_theory.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -106,58 +106,63 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="ovw_transfer_learning.html">
+     1.2. adv attacks
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="ovw_disentanglement.html">
-     1.2. disentanglement
+     1.3. disentanglement
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_complexity.html">
-     1.3. complexity
+     1.4. complexity
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_interesting_science.html">
-     1.4. interesting science
+     1.5. interesting science
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_dl_theory.html">
-     1.5. dl theory
+     1.6. dl theory
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     1.6. scattering transform
+     1.7. scattering transform
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_ml_medicine.html">
-     1.7. ml in medicine
+     1.8. ml in medicine
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_causal_inference.html">
-     1.8. causal inference
+     1.9. causal inference
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_dl_for_neuro.html">
-     1.9. dl for neuro
+     1.10. dl for neuro
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_uncertainty.html">
-     1.10. uncertainty
+     1.11. uncertainty
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_interp.html">
-     1.11. interpretability
+     1.12. interpretability
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_kernels.html">
-     1.12. kernels
+     1.13. kernels
     </a>
    </li>
   </ul>
@@ -573,66 +578,66 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#goals">
-   1.6.1. goals
+   1.7.1. goals
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#review-type">
-   1.6.2. review-type
+   1.7.2. review-type
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#initial-papers">
-   1.6.3. initial papers
+   1.7.3. initial papers
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#scat-conv">
-     1.6.3.1. scat_conv
+     1.7.3.1. scat_conv
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#neuro-style">
-     1.6.3.2. neuro style
+     1.7.3.2. neuro style
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#papers-by-other-groups">
-     1.6.3.3. papers by other groups
+     1.7.3.3. papers by other groups
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#wavelet-style-transfer">
-     1.6.3.4. wavelet style transfer
+     1.7.3.4. wavelet style transfer
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#helmut-lab-papers">
-   1.6.4. helmut lab papers
+   1.7.4. helmut lab papers
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#nano-papers">
-   1.6.5. nano papers
+   1.7.5. nano papers
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#l2-functions">
-     1.6.5.1. l2 functions
+     1.7.5.1. l2 functions
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#reversible-invertible-models">
-     1.6.5.2. reversible/invertible models
+     1.7.5.2. reversible/invertible models
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#unsupervised-learning">
-   1.6.6. unsupervised learning
+   1.7.6. unsupervised learning
   </a>
  </li>
 </ul>
@@ -647,7 +652,7 @@
               <div>
                 
   <div class="section" id="scattering-transform">
-<h1>1.6. scattering transform<a class="headerlink" href="#scattering-transform" title="Permalink to this headline">¶</a></h1>
+<h1>1.7. scattering transform<a class="headerlink" href="#scattering-transform" title="Permalink to this headline">¶</a></h1>
 <p><strong>some papers involving the scattering transform and similar developments bringing structure to replace learned filters</strong></p>
 <ul class="simple">
 <li><p>some of the researchers involved</p>
@@ -657,7 +662,7 @@
 </li>
 </ul>
 <div class="section" id="goals">
-<h2>1.6.1. goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a></h2>
+<h2>1.7.1. goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>benefits</p>
 <ul>
@@ -670,7 +675,7 @@
 </ul>
 </div>
 <div class="section" id="review-type">
-<h2>1.6.2. review-type<a class="headerlink" href="#review-type" title="Permalink to this headline">¶</a></h2>
+<h2>1.7.2. review-type<a class="headerlink" href="#review-type" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/1601.04920">Understanding deep convolutional networks</a> (mallat 2016)</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1712.04741">Mathematics of deep learning</a> (vidal et al. 2017)</p></li>
@@ -678,7 +683,7 @@
 </ul>
 </div>
 <div class="section" id="initial-papers">
-<h2>1.6.3. initial papers<a class="headerlink" href="#initial-papers" title="Permalink to this headline">¶</a></h2>
+<h2>1.7.3. initial papers<a class="headerlink" href="#initial-papers" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/1011.3023">classification with scattering operators</a> (bruna &amp; mallat 2010)</p></li>
 <li><p><a class="reference external" href="https://www.di.ens.fr/data/publications/papers/Eusipco2010InterConfPap.pdf">recursive interferometric repr.</a> (mallat 2010)</p></li>
@@ -696,7 +701,7 @@
 <li><p><a class="reference external" href="https://arxiv.org/abs/1304.6763">Deep scattering spectrum</a> (anden &amp; mallat 2013)</p></li>
 </ul>
 <div class="section" id="scat-conv">
-<h3>1.6.3.1. scat_conv<a class="headerlink" href="#scat-conv" title="Permalink to this headline">¶</a></h3>
+<h3>1.7.3.1. scat_conv<a class="headerlink" href="#scat-conv" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/1412.8659">Deep roto-translation scattering for object classification</a> (oyallan &amp; mallat 2014)</p>
 <ul>
@@ -729,13 +734,13 @@
 </ul>
 </div>
 <div class="section" id="neuro-style">
-<h3>1.6.3.2. neuro style<a class="headerlink" href="#neuro-style" title="Permalink to this headline">¶</a></h3>
+<h3>1.7.3.2. neuro style<a class="headerlink" href="#neuro-style" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>https://arxiv.org/pdf/1809.10504.pdf</p></li>
 </ul>
 </div>
 <div class="section" id="papers-by-other-groups">
-<h3>1.6.3.3. papers by other groups<a class="headerlink" href="#papers-by-other-groups" title="Permalink to this headline">¶</a></h3>
+<h3>1.7.3.3. papers by other groups<a class="headerlink" href="#papers-by-other-groups" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>cohen_16 “<a class="reference external" href="http://www.jmlr.org/proceedings/papers/v48/cohenc16.pdf">Group equivariant convolutional networks</a>”</p>
 <ul>
@@ -756,14 +761,14 @@
 </ul>
 </div>
 <div class="section" id="wavelet-style-transfer">
-<h3>1.6.3.4. wavelet style transfer<a class="headerlink" href="#wavelet-style-transfer" title="Permalink to this headline">¶</a></h3>
+<h3>1.7.3.4. wavelet style transfer<a class="headerlink" href="#wavelet-style-transfer" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1903.09760v1.pdf">Photorealistic Style Transfer via Wavelet Transforms&gt;</a></p></li>
 </ul>
 </div>
 </div>
 <div class="section" id="helmut-lab-papers">
-<h2>1.6.4. helmut lab papers<a class="headerlink" href="#helmut-lab-papers" title="Permalink to this headline">¶</a></h2>
+<h2>1.7.4. helmut lab papers<a class="headerlink" href="#helmut-lab-papers" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/1504.05487">Deep Convolutional Neural Networks Based on Semi-Discrete Frames</a> (wiatowski et al. 2015)</p>
 <ul>
@@ -786,7 +791,7 @@
 </ul>
 </div>
 <div class="section" id="nano-papers">
-<h2>1.6.5. nano papers<a class="headerlink" href="#nano-papers" title="Permalink to this headline">¶</a></h2>
+<h2>1.7.5. nano papers<a class="headerlink" href="#nano-papers" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>yu_06 “A Nanoengineering Approach to Regulate the Lateral Heterogeneity of Self-Assembled Monolayers”</p>
 <ul>
@@ -812,7 +817,7 @@
 <li><p>chen_12_crystallization</p></li>
 </ul>
 <div class="section" id="l2-functions">
-<h3>1.6.5.1. l2 functions<a class="headerlink" href="#l2-functions" title="Permalink to this headline">¶</a></h3>
+<h3>1.7.5.1. l2 functions<a class="headerlink" href="#l2-functions" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(L^2\)</span> function is a function <span class="math notranslate nohighlight">\(f: X \to \mathbb{R}\)</span> that is square integrable: <span class="math notranslate nohighlight">\(|f|^2 = \int_X |f|^2 d\mu\)</span> with respect to the measure <span class="math notranslate nohighlight">\(\mu\)</span></p>
 <ul>
@@ -825,7 +830,7 @@
 </ul>
 </div>
 <div class="section" id="reversible-invertible-models">
-<h3>1.6.5.2. reversible/invertible models<a class="headerlink" href="#reversible-invertible-models" title="Permalink to this headline">¶</a></h3>
+<h3>1.7.5.2. reversible/invertible models<a class="headerlink" href="#reversible-invertible-models" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/1806.00400">williams  inverting w/ autoregressive models</a></p></li>
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1511.05653.pdf">arora reversibility</a></p></li>
@@ -834,7 +839,7 @@
 </div>
 </div>
 <div class="section" id="unsupervised-learning">
-<h2>1.6.6. unsupervised learning<a class="headerlink" href="#unsupervised-learning" title="Permalink to this headline">¶</a></h2>
+<h2>1.7.6. unsupervised learning<a class="headerlink" href="#unsupervised-learning" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1905.09272.pdf">Data-Efficient Image Recognition with Contrastive Predictive Coding</a></p>
 <ul>
@@ -883,8 +888,8 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="ovw_dl_theory.html" title="previous page">1.5. dl theory</a>
-    <a class='right-next' id="next-link" href="ovw_ml_medicine.html" title="next page">1.7. ml in medicine</a>
+    <a class='left-prev' id="prev-link" href="ovw_dl_theory.html" title="previous page">1.6. dl theory</a>
+    <a class='right-next' id="next-link" href="ovw_ml_medicine.html" title="next page">1.8. ml in medicine</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

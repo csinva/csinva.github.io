@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>1.5. dl theory &#8212; learning to learn</title>
+    <title>1.6. dl theory &#8212; learning to learn</title>
     
   <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -56,8 +56,8 @@
     <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="1.6. scattering transform" href="ovw_scat.html" />
-    <link rel="prev" title="1.4. interesting science" href="ovw_interesting_science.html" />
+    <link rel="next" title="1.7. scattering transform" href="ovw_scat.html" />
+    <link rel="prev" title="1.5. interesting science" href="ovw_interesting_science.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -106,58 +106,63 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="ovw_transfer_learning.html">
+     1.2. adv attacks
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="ovw_disentanglement.html">
-     1.2. disentanglement
+     1.3. disentanglement
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_complexity.html">
-     1.3. complexity
+     1.4. complexity
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_interesting_science.html">
-     1.4. interesting science
+     1.5. interesting science
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     1.5. dl theory
+     1.6. dl theory
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_scat.html">
-     1.6. scattering transform
+     1.7. scattering transform
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_ml_medicine.html">
-     1.7. ml in medicine
+     1.8. ml in medicine
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_causal_inference.html">
-     1.8. causal inference
+     1.9. causal inference
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_dl_for_neuro.html">
-     1.9. dl for neuro
+     1.10. dl for neuro
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_uncertainty.html">
-     1.10. uncertainty
+     1.11. uncertainty
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_interp.html">
-     1.11. interpretability
+     1.12. interpretability
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_kernels.html">
-     1.12. kernels
+     1.13. kernels
     </a>
    </li>
   </ul>
@@ -573,126 +578,126 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#theoretical-studies">
-   1.5.1. theoretical studies
+   1.6.1. theoretical studies
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#functional-approximation">
-     1.5.1.1. functional approximation
+     1.6.1.1. functional approximation
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#inductive-bias-implicit-regularization-gradient-descent-finds-good-minima">
-     1.5.1.2. inductive bias=implicit regularization: gradient descent finds good minima
+     1.6.1.2. inductive bias=implicit regularization: gradient descent finds good minima
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#semantic-biases-what-correlations-will-a-net-learn">
-     1.5.1.3. semantic biases: what correlations will a net learn?
+     1.6.1.3. semantic biases: what correlations will a net learn?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#expressiveness-what-can-a-dnn-represent">
-     1.5.1.4. expressiveness: what can a dnn represent?
+     1.6.1.4. expressiveness: what can a dnn represent?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#complexity-generalization-dnns-are-low-rank-redundant-parameters">
-     1.5.1.5. complexity + generalization: dnns are low-rank / redundant parameters
+     1.6.1.5. complexity + generalization: dnns are low-rank / redundant parameters
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#kernels">
-     1.5.1.6. kernels
+     1.6.1.6. kernels
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#nearest-neighbor-comparisons">
-     1.5.1.7. nearest neighbor comparisons
+     1.6.1.7. nearest neighbor comparisons
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#random-projections">
-     1.5.1.8. random projections
+     1.6.1.8. random projections
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#implicit-dl-optimization">
-     1.5.1.9. implicit dl + optimization
+     1.6.1.9. implicit dl + optimization
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#statistical-physics">
-     1.5.1.10. statistical physics
+     1.6.1.10. statistical physics
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#empirical-studies">
-   1.5.2. empirical studies
+   1.6.2. empirical studies
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#interesting-empirical-papers">
-     1.5.2.1. interesting empirical papers
+     1.6.2.1. interesting empirical papers
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#adversarial-robustness">
-     1.5.2.2. adversarial + robustness
+     1.6.2.2. adversarial + robustness
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#tools-for-analyzing">
-     1.5.2.3. tools for analyzing
+     1.6.2.3. tools for analyzing
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#misc-theoretical-areas">
-     1.5.2.4. misc theoretical areas
+     1.6.2.4. misc theoretical areas
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#comparing-representations">
-     1.5.2.5. comparing representations
+     1.6.2.5. comparing representations
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#simple-papers">
-     1.5.2.6. simple papers
+     1.6.2.6. simple papers
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#adam-vs-sgd">
-     1.5.2.7. adam vs sgd
+     1.6.2.7. adam vs sgd
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#memorization-background">
-     1.5.2.8. memorization background
+     1.6.2.8. memorization background
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#probabilistic-inference">
-     1.5.2.9. probabilistic inference
+     1.6.2.9. probabilistic inference
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#architecture-search-background">
-     1.5.2.10. architecture search background
+     1.6.2.10. architecture search background
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#bagging-and-boosting">
-     1.5.2.11. bagging and boosting
+     1.6.2.11. bagging and boosting
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#basics">
-   1.5.3. basics
+   1.6.3. basics
   </a>
  </li>
 </ul>
@@ -708,10 +713,10 @@
                 
   <p><em>Deep learning theory is a complex emerging field - this post contains links displaying some different interesting research directions</em></p>
 <div class="section" id="dl-theory">
-<h1>1.5. dl theory<a class="headerlink" href="#dl-theory" title="Permalink to this headline">¶</a></h1>
+<h1>1.6. dl theory<a class="headerlink" href="#dl-theory" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="http://www.offconvex.org/">off convex blog</a></p>
 <div class="section" id="theoretical-studies">
-<h2>1.5.1. theoretical studies<a class="headerlink" href="#theoretical-studies" title="Permalink to this headline">¶</a></h2>
+<h2>1.6.1. theoretical studies<a class="headerlink" href="#theoretical-studies" title="Permalink to this headline">¶</a></h2>
 <p>DNNs display many surprising properties</p>
 <ul class="simple">
 <li><p>surprising: <a class="reference external" href="https://arxiv.org/abs/1802.08760">more parameters yields better generalization</a></p></li>
@@ -725,7 +730,7 @@
 <li><p>how far apart are 2 nets?</p></li>
 </ul>
 <div class="section" id="functional-approximation">
-<h3>1.5.1.1. functional approximation<a class="headerlink" href="#functional-approximation" title="Permalink to this headline">¶</a></h3>
+<h3>1.6.1.1. functional approximation<a class="headerlink" href="#functional-approximation" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>dnns are very hard to study in the parameter space (e.g. swapping two parameters changes things like the Hessian), easier to to study in the function space (e.g. the input-output relationship)</p></li>
 <li><p>nonlinear approximation (e.g. sparse coding) - 2 steps</p></li>
@@ -764,7 +769,7 @@
 </ul>
 </div>
 <div class="section" id="inductive-bias-implicit-regularization-gradient-descent-finds-good-minima">
-<h3>1.5.1.2. inductive bias=implicit regularization: gradient descent finds good minima<a class="headerlink" href="#inductive-bias-implicit-regularization-gradient-descent-finds-good-minima" title="Permalink to this headline">¶</a></h3>
+<h3>1.6.1.2. inductive bias=implicit regularization: gradient descent finds good minima<a class="headerlink" href="#inductive-bias-implicit-regularization-gradient-descent-finds-good-minima" title="Permalink to this headline">¶</a></h3>
 <p><em>DL learns solutions that generalize even though it can find many which don’t due to its inductive bias.</em></p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1803.08367.pdf">gd bousquet paper</a></p></li>
@@ -837,7 +842,7 @@
 </ul>
 </div>
 <div class="section" id="semantic-biases-what-correlations-will-a-net-learn">
-<h3>1.5.1.3. semantic biases: what correlations will a net learn?<a class="headerlink" href="#semantic-biases-what-correlations-will-a-net-learn" title="Permalink to this headline">¶</a></h3>
+<h3>1.6.1.3. semantic biases: what correlations will a net learn?<a class="headerlink" href="#semantic-biases-what-correlations-will-a-net-learn" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/1811.12231">imagenet models are biased towards texture</a> (and removing texture makes them more robust)</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1904.04621.pdf">analyzing semantic robustness</a></p></li>
@@ -881,7 +886,7 @@
 </ul>
 </div>
 <div class="section" id="expressiveness-what-can-a-dnn-represent">
-<h3>1.5.1.4. expressiveness: what can a dnn represent?<a class="headerlink" href="#expressiveness-what-can-a-dnn-represent" title="Permalink to this headline">¶</a></h3>
+<h3>1.6.1.4. expressiveness: what can a dnn represent?<a class="headerlink" href="#expressiveness-what-can-a-dnn-represent" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1901.09021.pdf">complexity of linear regions in deep networks</a></p></li>
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1711.02114.pdf">Bounding and Counting Linear Regions of Deep Neural Networks</a></p></li>
@@ -890,7 +895,7 @@
 </ul>
 </div>
 <div class="section" id="complexity-generalization-dnns-are-low-rank-redundant-parameters">
-<h3>1.5.1.5. complexity + generalization: dnns are low-rank / redundant parameters<a class="headerlink" href="#complexity-generalization-dnns-are-low-rank-redundant-parameters" title="Permalink to this headline">¶</a></h3>
+<h3>1.6.1.5. complexity + generalization: dnns are low-rank / redundant parameters<a class="headerlink" href="#complexity-generalization-dnns-are-low-rank-redundant-parameters" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>measuring complexity</p>
 <ul>
@@ -925,7 +930,7 @@ neural network smoothness</a></p></li>
 </ul>
 </div>
 <div class="section" id="kernels">
-<h3>1.5.1.6. kernels<a class="headerlink" href="#kernels" title="Permalink to this headline">¶</a></h3>
+<h3>1.6.1.6. kernels<a class="headerlink" href="#kernels" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/1802.01396">To understand deep learning we need to understand kernel learning</a> - overfitted kernel classifiers can still fit the data well</p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Kernel_method#cite_note-4">kernels wiki</a>: kernel memorizes points then uses dists between points to classify</p></li>
@@ -986,7 +991,7 @@ processes in the infinite-width limit</p>
 </ul>
 </div>
 <div class="section" id="nearest-neighbor-comparisons">
-<h3>1.5.1.7. nearest neighbor comparisons<a class="headerlink" href="#nearest-neighbor-comparisons" title="Permalink to this headline">¶</a></h3>
+<h3>1.6.1.7. nearest neighbor comparisons<a class="headerlink" href="#nearest-neighbor-comparisons" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="http://papers.nips.cc/paper/7498-overfitting-or-perfect-fitting-risk-bounds-for-classification-and-regression-rules-that-interpolate">weighted interpolating nearest neighbors can generalize well (belkin…mitra 2018)</a></p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1810.02814">Statistical Optimality of Interpolated Nearest Neighbor Algorithms</a></p></li>
@@ -995,7 +1000,7 @@ processes in the infinite-width limit</p>
 </ul>
 </div>
 <div class="section" id="random-projections">
-<h3>1.5.1.8. random projections<a class="headerlink" href="#random-projections" title="Permalink to this headline">¶</a></h3>
+<h3>1.6.1.8. random projections<a class="headerlink" href="#random-projections" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="http://proceedings.mlr.press/v32/andoni14.pdf">sgd for polynomials</a></p></li>
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1811.10495.pdf">deep linear better than just linear</a></p></li>
@@ -1005,7 +1010,7 @@ processes in the infinite-width limit</p>
 </ul>
 </div>
 <div class="section" id="implicit-dl-optimization">
-<h3>1.5.1.9. implicit dl + optimization<a class="headerlink" href="#implicit-dl-optimization" title="Permalink to this headline">¶</a></h3>
+<h3>1.6.1.9. implicit dl + optimization<a class="headerlink" href="#implicit-dl-optimization" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/1908.06315">implicit deep learning</a> (el ghaoui et al. 2019)</p>
 <ul>
@@ -1096,7 +1101,7 @@ processes in the infinite-width limit</p>
 </ul>
 </div>
 <div class="section" id="statistical-physics">
-<h3>1.5.1.10. statistical physics<a class="headerlink" href="#statistical-physics" title="Permalink to this headline">¶</a></h3>
+<h3>1.6.1.10. statistical physics<a class="headerlink" href="#statistical-physics" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.annualreviews.org/doi/abs/10.1146/annurev-conmatphys-031119-050745">Statistical Mechanics of Deep Learning</a> (bahri et al. 2019)</p>
 <ul>
@@ -1132,13 +1137,32 @@ processes in the infinite-width limit</p>
 </li>
 </ul>
 </li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2012.04728">Neural Mechanics: Symmetry and Broken Conservation Laws in Deep Learning Dynamics</a> (kunin et al. 2020)</p>
+<ul>
+<li><p>no assumptions about DNN architecture or gradientflow</p></li>
+<li><p>instead, assumptions on symmetries embedded in a network’s architecture constrain training dynamics</p>
+<ul>
+<li><p>similar to Noether’s thm in physics</p></li>
+</ul>
+</li>
+<li><p>can much better analytically describe learning dynamics</p></li>
+<li><p>weights have a <strong>differentiable symmetry</strong> in the loss if the loss doesn’t change under a certain differentiable transformation of the weights</p>
+<ul>
+<li><p>ex. translation symmetry - for layer before softmax, we get symmetries across weights that shift all outputs</p></li>
+<li><p>ex. scale symmetry - inputs to batch normalization are invariant to scaling</p></li>
+<li><p>ex. rescale symmetry - scaling up/down 2 things which multiply or add</p></li>
+</ul>
+</li>
+<li><p>modeling discretization</p></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 <div class="section" id="empirical-studies">
-<h2>1.5.2. empirical studies<a class="headerlink" href="#empirical-studies" title="Permalink to this headline">¶</a></h2>
+<h2>1.6.2. empirical studies<a class="headerlink" href="#empirical-studies" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="interesting-empirical-papers">
-<h3>1.5.2.1. interesting empirical papers<a class="headerlink" href="#interesting-empirical-papers" title="Permalink to this headline">¶</a></h3>
+<h3>1.6.2.1. interesting empirical papers<a class="headerlink" href="#interesting-empirical-papers" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/1803.03635">modularity (“lottery ticket hypothesis”)</a></p>
 <ul>
@@ -1152,7 +1176,7 @@ processes in the infinite-width limit</p>
 </ul>
 </div>
 <div class="section" id="adversarial-robustness">
-<h3>1.5.2.2. adversarial + robustness<a class="headerlink" href="#adversarial-robustness" title="Permalink to this headline">¶</a></h3>
+<h3>1.6.2.2. adversarial + robustness<a class="headerlink" href="#adversarial-robustness" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://openreview.net/pdf?id=SyxAb30cY7">robustness may be at odds with accuracy</a> (madry 2019)</p>
 <ul>
@@ -1193,10 +1217,75 @@ processes in the infinite-width limit</p>
 <li><p>do a bunch of transformations and average images to create each training image</p></li>
 </ul>
 </li>
+<li><p>certifying robustness</p>
+<ul>
+<li><p>bound gradients of f around x - solve SDP for 2-layer net (<a class="reference external" href="https://arxiv.org/abs/1801.09344">raghunathan, steinhardt, &amp; liang 2018, iclr</a>)</p>
+<ul>
+<li><p>relax SDP and then applies to multilayer nets (raghunathan et al. 2018)</p></li>
+<li><p>improved optimizer for the SDP (dathathri et al. 2020)</p></li>
+</ul>
+</li>
+<li><p>interval bound propagation - instead of passing point, pass an interval where it could be</p>
+<ul>
+<li><p>works well for word substitions (jia et al. 2019)</p></li>
+</ul>
+</li>
+<li><p>RobEn - cluster words that are confusable + give them the same encoding when you train (jones et al. 2020)</p>
+<ul>
+<li><p>then you are robust to confusing the words</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>unlabeled data + self-training helps</p>
+<ul>
+<li><p>training robust models has higher sample complexity than training standard models</p></li>
+<li><p>tradeoff between robustness and accuracy (raghunathann et al. 2020)</p>
+<ul>
+<li><p>adding valid data can hurt even in well-specified, convex setting</p></li>
+<li><p>robust self-training eliminates this tradeoff in linear regression</p></li>
+</ul>
+</li>
+<li><p>sample complexity can be reduced with unlabeled examples (carmon et al. 2019)</p></li>
+</ul>
+</li>
+<li><p>distributional robust optimization</p>
+<ul>
+<li><p>instead of minimizing training err, minimize maximum training err over different perturbations</p></li>
+<li><p>hard to pick the perturbation set - can easily be too pessimistic</p></li>
+<li><p>these things possibly magnify disparities</p>
+<ul>
+<li><p>larger models</p></li>
+<li><p>selective classification</p></li>
+<li><p>feature noise</p></li>
+<li><p>removing spurious features</p></li>
+</ul>
+</li>
+<li><p>group DRO (sagawa et al. 2020) - maximize error for worst group</p>
+<ul>
+<li><p>need to add regularization to keep errors from going to 0</p></li>
+<li><p>training overparameterized models makes this problem worse</p></li>
+</ul>
+</li>
+<li><p>abstain from classifying based on confidence (jones et al. 2020)</p>
+<ul>
+<li><p>makes error rates worse for worst group = selective classification can magnify disparities</p></li>
+</ul>
+</li>
+<li><p>adding feature noise to each group can magnify disparities</p></li>
+</ul>
+</li>
+<li><p>domain adaptation</p>
+<ul>
+<li><p>standard domain adaptation: labeled (x, y) in source and unlabeled x in target</p></li>
+<li><p>gradual domain adaptation - things change slowly over time, can use gradual self-training (kumar et al. 2020)</p></li>
+<li><p>In-N-Out (xie et al. 2020) - if we have many features, rather than using them all as features, can use some as features and some as targets when we shift, to learn the domain shift</p></li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="section" id="tools-for-analyzing">
-<h3>1.5.2.3. tools for analyzing<a class="headerlink" href="#tools-for-analyzing" title="Permalink to this headline">¶</a></h3>
+<h3>1.6.2.3. tools for analyzing<a class="headerlink" href="#tools-for-analyzing" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>dim reduction: <a class="reference external" href="http://papers.nips.cc/paper/7188-svcca-singular-vector-canonical-correlation-analysis-for-deep-understanding-and-improvement">svcca</a>, diffusion maps</p></li>
 <li><p>viz tools: <a class="reference external" href="http://www.sci.utah.edu/~beiwang/">bei wang</a></p></li>
@@ -1214,7 +1303,7 @@ processes in the infinite-width limit</p>
 </ul>
 </div>
 <div class="section" id="misc-theoretical-areas">
-<h3>1.5.2.4. misc theoretical areas<a class="headerlink" href="#misc-theoretical-areas" title="Permalink to this headline">¶</a></h3>
+<h3>1.6.2.4. misc theoretical areas<a class="headerlink" href="#misc-theoretical-areas" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>deep vs. shallow <a class="reference external" href="http://cbmm.mit.edu/sites/default/files/publications/CBMM-Memo-058v5.pdf">rvw</a></p></li>
 <li><p><a class="reference external" href="https://www.nari.ee.ethz.ch/commth//pubs/files/deep-2016.pdf">probabilistic framework</a></p></li>
@@ -1228,21 +1317,21 @@ processes in the infinite-width limit</p>
 </ul>
 </div>
 <div class="section" id="comparing-representations">
-<h3>1.5.2.5. comparing representations<a class="headerlink" href="#comparing-representations" title="Permalink to this headline">¶</a></h3>
+<h3>1.6.2.5. comparing representations<a class="headerlink" href="#comparing-representations" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/1811.11684">shared representations across nets</a></p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1810.11750">comparing across random initializations</a></p></li>
 </ul>
 </div>
 <div class="section" id="simple-papers">
-<h3>1.5.2.6. simple papers<a class="headerlink" href="#simple-papers" title="Permalink to this headline">¶</a></h3>
+<h3>1.6.2.6. simple papers<a class="headerlink" href="#simple-papers" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1904.00687.pdf">rvw of random features approach</a></p></li>
 <li><p><a class="reference external" href="http://proceedings.mlr.press/v44/li15convergent.pdf">similar nets learn different weights</a></p></li>
 </ul>
 </div>
 <div class="section" id="adam-vs-sgd">
-<h3>1.5.2.7. adam vs sgd<a class="headerlink" href="#adam-vs-sgd" title="Permalink to this headline">¶</a></h3>
+<h3>1.6.2.7. adam vs sgd<a class="headerlink" href="#adam-vs-sgd" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>svd parameterization rnn paper: <a class="reference external" href="https://arxiv.org/pdf/1803.09327.pdf">inderjit paper</a></p>
 <ul>
@@ -1257,7 +1346,7 @@ processes in the infinite-width limit</p>
 </ul>
 </div>
 <div class="section" id="memorization-background">
-<h3>1.5.2.8. memorization background<a class="headerlink" href="#memorization-background" title="Permalink to this headline">¶</a></h3>
+<h3>1.6.2.8. memorization background<a class="headerlink" href="#memorization-background" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/1902.04698v2">memorization on single training example</a></p></li>
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1706.05394.pdf">memorization in dnns</a></p></li>
@@ -1287,14 +1376,14 @@ processes in the infinite-width limit</p>
 </ul>
 </div>
 <div class="section" id="probabilistic-inference">
-<h3>1.5.2.9. probabilistic inference<a class="headerlink" href="#probabilistic-inference" title="Permalink to this headline">¶</a></h3>
+<h3>1.6.2.9. probabilistic inference<a class="headerlink" href="#probabilistic-inference" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>multilayer idea</p></li>
 <li><p><a class="reference external" href="https://www.frontiersin.org/articles/10.3389/fncom.2017.00024/full">equilibrium propagation</a></p></li>
 </ul>
 </div>
 <div class="section" id="architecture-search-background">
-<h3>1.5.2.10. architecture search background<a class="headerlink" href="#architecture-search-background" title="Permalink to this headline">¶</a></h3>
+<h3>1.6.2.10. architecture search background<a class="headerlink" href="#architecture-search-background" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>ideas: nested search (retrain each time), joint search (make arch search differentiable), one-shot search (train big net then search for subnet)</p>
 <ul>
@@ -1311,7 +1400,7 @@ processes in the infinite-width limit</p>
 </ul>
 </div>
 <div class="section" id="bagging-and-boosting">
-<h3>1.5.2.11. bagging and boosting<a class="headerlink" href="#bagging-and-boosting" title="Permalink to this headline">¶</a></h3>
+<h3>1.6.2.11. bagging and boosting<a class="headerlink" href="#bagging-and-boosting" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://projecteuclid.org/download/pdf_1/euclid.aos/1031689014">analyzing bagging</a> (buhlmann and yu 2002)</p></li>
 <li><p><a class="reference external" href="http://zmjones.com/static/statistical-learning/buhlmann-jasa-2003.pdf">boosting with the L2 loss</a> (buhlmann &amp; yu 2003)</p></li>
@@ -1320,7 +1409,7 @@ processes in the infinite-width limit</p>
 </div>
 </div>
 <div class="section" id="basics">
-<h2>1.5.3. basics<a class="headerlink" href="#basics" title="Permalink to this headline">¶</a></h2>
+<h2>1.6.3. basics<a class="headerlink" href="#basics" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://people.csail.mit.edu/madry/6.883/">good set of class notes</a></p></li>
 <li><p>demos to gain intuition</p>
@@ -1380,8 +1469,8 @@ processes in the infinite-width limit</p>
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="ovw_interesting_science.html" title="previous page">1.4. interesting science</a>
-    <a class='right-next' id="next-link" href="ovw_scat.html" title="next page">1.6. scattering transform</a>
+    <a class='left-prev' id="prev-link" href="ovw_interesting_science.html" title="previous page">1.5. interesting science</a>
+    <a class='right-next' id="next-link" href="ovw_scat.html" title="next page">1.7. scattering transform</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

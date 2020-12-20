@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>&lt;no title&gt; &#8212; learning to learn</title>
+    <title>1.2. adv attacks &#8212; learning to learn</title>
     
   <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -56,7 +56,7 @@
     <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="1.2. disentanglement" href="ovw_disentanglement.html" />
+    <link rel="next" title="1.3. disentanglement" href="ovw_disentanglement.html" />
     <link rel="prev" title="1.1. comp neuro" href="ovw_comp_neuro.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -94,70 +94,75 @@
   </a>
  </li>
 </ul>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1 collapsible-parent">
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active collapsible-parent">
   <a class="reference internal" href="research_ovws.html">
    1. research_ovws
   </a>
-  <ul class="collapse-ul">
+  <ul class="current collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_comp_neuro.html">
      1.1. comp neuro
     </a>
    </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     1.2. adv attacks
+    </a>
+   </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_disentanglement.html">
-     1.2. disentanglement
+     1.3. disentanglement
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_complexity.html">
-     1.3. complexity
+     1.4. complexity
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_interesting_science.html">
-     1.4. interesting science
+     1.5. interesting science
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_dl_theory.html">
-     1.5. dl theory
+     1.6. dl theory
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_scat.html">
-     1.6. scattering transform
+     1.7. scattering transform
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_ml_medicine.html">
-     1.7. ml in medicine
+     1.8. ml in medicine
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_causal_inference.html">
-     1.8. causal inference
+     1.9. causal inference
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_dl_for_neuro.html">
-     1.9. dl for neuro
+     1.10. dl for neuro
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_uncertainty.html">
-     1.10. uncertainty
+     1.11. uncertainty
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_interp.html">
-     1.11. interpretability
+     1.12. interpretability
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_kernels.html">
-     1.12. kernels
+     1.13. kernels
     </a>
    </li>
   </ul>
@@ -566,15 +571,6 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="simple nav section-nav flex-column">
-</ul>
-
-        </nav>
-        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -622,6 +618,52 @@
 </ul>
 </li>
 </ul>
+<div class="section" id="adv-attacks">
+<h1>1.2. adv attacks<a class="headerlink" href="#adv-attacks" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference external" href="https://arxiv.org/abs/1909.08072">Adversarial Attacks and Defenses in Images, Graphs and Text: A Review</a> (xu et al. 2019)</p></li>
+<li><p>attacks</p>
+<ul>
+<li><p><a class="reference external" href="http://openaccess.thecvf.com/content_CVPR_2019/papers/Raff_Barrage_of_Random_Transforms_for_Adversarially_Robust_Defense_CVPR_2019_paper.pdf">Barrage of Random Transforms for Adversarially Robust Defense</a> (raff et al. 2019)</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1511.04599">DeepFool: a simple and accurate method to fool deep neural networks</a> (Moosavi-Dezfooli et. al 2016)</p></li>
+</ul>
+</li>
+<li><p>defenses</p>
+<ul>
+<li><p>a possible defense against adversarial attacks is to solve the anticausal classification problem by modeling the causal generative direction, a method which in vision is referred to as <em>analysis by synthesis</em> (<a class="reference external" href="https://arxiv.org/abs/1805.09190">Schott et al., 2019</a>)</p></li>
+</ul>
+</li>
+<li><p>robustness vs accuracy</p>
+<ul>
+<li><p><a class="reference external" href="https://openreview.net/pdf?id=SyxAb30cY7">robustness may be at odds with accuracy</a> (tsipiras…madry, 2019)</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1901.08573">Theoretically Principled Trade-off between Robustness and Accuracy</a> (Zhang, Jordan, et. al. 2019)</p></li>
+</ul>
+</li>
+<li><p>adversarial examples</p>
+<ul>
+<li><p><a class="reference external" href="https://pdfs.semanticscholar.org/08c5/88465b7d801ad912ef3e9107fa511ea0e403.pdf">Decision Boundary Analysis of Adversarial Examples </a>(He, Li, &amp; Song 2019)</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1907.07174">Natural Adversarial Examples</a> (Hendrycks, Zhao, Basart, Steinhardt, &amp; Song 2020)</p></li>
+<li><p><a class="reference external" href="https://openreview.net/pdf?id=Bygh9j09KX">Image-Net-Trained CNNs Are Biased Towards Texture</a> (Geirhos et al. 2019)</p></li>
+</ul>
+</li>
+<li><p>transferability</p>
+<ul>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1605.07277">Transferability in Machine Learning: from Phenomena to Black-Box Attacks using Adversarial Samples</a> (papernot, mcdaniel, &amp; goodfellow, 2016)</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/1705.07204.pdf">Ensemble Adversarial Training: Attacks and Defenses</a> (tramer et al. 2018)</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/1901.08846.pdf">Improving Adversarial Robustness via Promoting Ensemble Diversity</a> (pang et al. 2019)</p>
+<ul>
+<li><p>encourage diversity in non-maximal predictions</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ranking</p>
+<ul>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/2002.05714.pdf">Automatically Discovering and Learning New Visual Categories with Ranking Statistics</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -652,7 +694,7 @@
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="ovw_comp_neuro.html" title="previous page">1.1. comp neuro</a>
-    <a class='right-next' id="next-link" href="ovw_disentanglement.html" title="next page">1.2. disentanglement</a>
+    <a class='right-next' id="next-link" href="ovw_disentanglement.html" title="next page">1.3. disentanglement</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

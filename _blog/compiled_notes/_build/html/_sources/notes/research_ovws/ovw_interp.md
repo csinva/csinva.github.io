@@ -43,6 +43,7 @@ The definition of interpretability I find most useful is that given in [murdoch 
   - some of these can be applied to data directly w/out model (e.g. correlation coefficient, rank correlation coefficient, moment-independent VIMs)
   - <img class="medium_image" src="../assets/vims.png"/>
 - [Pitfalls to Avoid when Interpreting Machine Learning Models](https://arxiv.org/pdf/2007.04131.pdf) (molnar et al. 2020)
+- [Feature Removal Is a Unifying Principle for Model Explanation Methods](https://arxiv.org/abs/2011.03623#:~:text=Feature%20Removal%20Is%20a%20Unifying%20Principle%20for%20Model%20Explanation%20Methods,-Ian%20Covert%2C%20Scott&text=Exposing%20the%20fundamental%20similarities%20between,ongoing%20research%20in%20model%20explainability.) (covert, lundberg, & lee 2020)
 
 ## evaluating interpretability
 
@@ -77,17 +78,21 @@ Evaluating interpretability can be very difficult (largely because it rarely mak
   - fidelity (does explanation reflect the target system well)
   - persuasibility (does human satisfy or comprehend explanation well)
 
-### criticisms
+### basic failures
 
 - [Sanity Checks for Saliency Maps](https://papers.nips.cc/paper/8160-sanity-checks-for-saliency-maps.pdf) (adebayo et al. 2018)
   - **Model Parameter Randomization Test** - attributions should be different for trained vs random model, but they aren't for many attribution methods
 - [Assessing the (Un)Trustworthiness of Saliency Maps for Localizing Abnormalities in Medical Imaging](https://www.medrxiv.org/content/10.1101/2020.07.28.20163899v1.full.pdf) (arun et al. 2020) - CXR images from SIIM-ACR Pneumothorax Segmentation + RSNA Pneumonia Detection
   - metrics: localizers (do they overlap with GT segs/bounding boxes), variation with model weight randomization, repeatable (i.e. same after retraining?), reproducibility (i.e. same after training different model?)
 - [Interpretable Deep Learning under Fire](https://arxiv.org/abs/1812.00891) (zhang et al. 2019)
+
+### adv. vulnerabilities
+
 - [How can we fool LIME and SHAP? Adversarial Attacks on Post hoc Explanation Methods](https://arxiv.org/abs/1911.02508)
   - we can build classifiers which use important features (such as race) but explanations will not reflect that
   - basically classifier is different on X which is OOD (and used by LIME and SHAP)
-- [Saliency Methods for Explaining Adversarial Attacks](https://arxiv.org/abs/1908.08413)
+- [Interpretation of Neural Networks is Fragile](https://arxiv.org/abs/1710.10547) (ghorbani et al. 2018)
+  - minor perturbations to inputs can drastically change DNN interpretations
 - [Fooling Neural Network Interpretations via Adversarial Model Manipulation](https://arxiv.org/abs/1902.02041) (heo, joo, & moon 2019) - can change model weights so that it keeps predictive accuracy but changes its interpretation
   - motivation: could falsely look like a model is "fair" because it places little saliency on sensitive attributes
     - output of model can still be checked regardless
@@ -198,7 +203,7 @@ For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
 
 ### example-based (e.g. prototypes)
 
-- [prototypes II](https://arxiv.org/abs/1806.10574) (chen et al. 2018)
+- ["this looks like that" prototypes II](https://arxiv.org/abs/1806.10574) (chen et al. 2018)
   - can have prototypes smaller than original input size
   - l2 distance
   - require the filters to be identical to the latent representation of some training image patch
@@ -209,16 +214,16 @@ For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
     - train everything: classification + clustering around intraclass prototypes + separation between interclass prototypes (last layer fixed to 1s / -0.5s)
     - project prototypes to data patches
     - learn last layer
-- [prototypes I](https://arxiv.org/pdf/1710.04806.pdf) (li et al. 2017)
-  - uses encoder/decoder setup
-  - encourage every prototype to be similar to at least one encoded input
-  - learned prototypes in fact look like digits
-  - correct class prototypes go to correct classes
-  - loss: classification + reconstruction + distance to a training point
+  - [original prototypes paper](https://arxiv.org/pdf/1710.04806.pdf) (li et al. 2017)
+    - uses encoder/decoder setup
+    - encourage every prototype to be similar to at least one encoded input
+    - learned prototypes in fact look like digits
+    - correct class prototypes go to correct classes
+    - loss: classification + reconstruction + distance to a training point
+- [ProtoPShare: Prototype Sharing for Interpretable Image Classification and Similarity Discovery](https://arxiv.org/abs/2011.14340) - share some prototypes between classes with data-dependent merge pruning
 
-### bayesian models
-
-- e.g. naive bayes
+  - merge "similar" prototypes, where similarity is measured as dist of all training patches in repr. space
+- [Case-Based Reasoning for Assisting Domain Experts in Processing Fraud Alerts of Black-Box Machine Learning Models](https://arxiv.org/abs/1907.03334)
 
 ### interpretable neural nets
 
@@ -245,6 +250,26 @@ For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
     - each class gets a pooling map
     - prediction for a class is based on top-k spatial regions for a class
     - finally, can combine the predictions for each class
+- [Sparse Epistatic Regularization of Deep Neural Networks for Inferring Fitness Functions](https://www.biorxiv.org/content/10.1101/2020.11.24.396994v1) (aghazadeh et al. 2020) - directly regularize interactions / high-order freqs in DNNs
+
+#### connecting dnns with tree-models
+
+- [Distilling a Neural Network Into a Soft Decision Tree](https://arxiv.org/pdf/1711.09784.pdf) (frosst & hinton 2017) - distills DNN into DNN-like tree which uses sigmoid neuron decides which path to follow
+  - training on distilled DNN predictions outperforms training on original labels
+  - to make the decision closer to a hard cut, can multiply by a large scalar before applying sigmoid
+  - parameters updated with backprop
+  - regularization to ensure that all paths are taken equally likely
+- [Neural Random Forests](https://link.springer.com/article/10.1007/s13171-018-0133-y) (biau et al. 2018) - convert DNN to RF
+  - first layer learns a node for each split
+  - second layer learns a node for each leaf (by only connecting to nodes on leaves in the path)
+  - finally map each leaf to a value
+  - relax + retrain
+- [Deep Neural Decision Forests](https://openaccess.thecvf.com/content_iccv_2015/papers /Kontschieder_Deep_Neural_Decision_ICCV_2015_paper.pdf) (2015)
+  - dnn learns small intermediate representation, which outputs all possible splits in a tree
+  - these splits are forced into a tree-structure and optimized via SGD
+  - neurons use sigmoid function
+- [Gradient Boosted Decision Tree Neural Network](https://arxiv.org/abs/1910.09340) - build DNN based on decision tree ensemble - basically the same but with gradient-boosted trees
+- [Neural Decision Trees](https://arxiv.org/abs/1702.07360) - treat each neural net like a node in a tree
 
 
 ### misc models
@@ -257,8 +282,6 @@ For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
 - force biphysically plausible learning rules
 - [The Convolutional Tsetlin Machine](https://arxiv.org/pdf/1905.09688.pdf) - uses easy-to-interpret conjunctive clauses
   - [The Tsetlin Machine](https://arxiv.org/pdf/1804.01508.pdf)
-- [Making Bayesian Predictive Models Interpretable: A Decision Theoretic Approach](https://arxiv.org/abs/1910.09358)
-- [Case-Based Reasoning for Assisting Domain Experts in Processing Fraud Alerts of Black-Box Machine Learning Models](https://arxiv.org/abs/1907.03334)
 - [Beyond Sparsity: Tree Regularization of Deep Models for Interpretability](https://arxiv.org/pdf/1711.06178.pdf)
   - regularize so that deep model can be closely modeled by tree w/ few nodes
 - [Tensor networks](https://www.perimeterinstitute.ca/research/research-initiatives/tensor-networks-initiative) - like DNN that only takes boolean inputs and deals with interactions explicitly
@@ -269,6 +292,11 @@ For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
 - **program synthesis** - automatically find a program in an underlying programming language that satisfies some user intent
   - **ex. program induction** - given a dataset consisting of input/output pairs, generate a (simple?) program that produces the same pairs
 - [probabilistic programming](https://en.wikipedia.org/wiki/Probabilistic_programming) - specify graphical models via a programming language
+
+#### bayesian models
+
+- e.g. naive bayes
+- [Making Bayesian Predictive Models Interpretable: A Decision Theoretic Approach](https://arxiv.org/abs/1910.09358)
 
 ## posthoc interpretability (i.e. how can we interpret a fitted model)
 
@@ -486,6 +514,10 @@ How interactions are defined and summarized is a very difficult thing to specify
   - real trees are harder: correlated vars and stuff mask results of other vars lower down
   - asymptotically, randomized trees might actually be better
 - [Actionable Interpretability through Optimizable Counterfactual Explanations for Tree Ensembles](https://arxiv.org/pdf/1911.12199v1.pdf) (lucic et al. 2019)
+- [iterative random forest](https://www.pnas.org/content/115/8/1943) (basu et al. 2018)
+  - fit RF and get MDI importances
+  - iteratively refit RF, weighting probability of feature being selected by its previous MDI
+  - find interactions as features which co-occur on paths (using RIT algorithm)
 
 ### neural nets (dnns)
 
@@ -500,6 +532,7 @@ How interactions are defined and summarized is a very difficult thing to specify
       - pooling layers make this harder
     3. *deep visualization* - yosinski 15
     4. [Understanding Deep Image Representations by Inverting Them](https://arxiv.org/abs/1412.0035) (mahendran & vedaldi 2014) - generate image given representation
+    5. [pruning for identifying critical data routing paths](https://openaccess.thecvf.com/content_cvpr_2018/html/Wang_Interpret_Neural_Networks_CVPR_2018_paper.html) - prune net (while preserving prediction) to identify neurons which result in critical paths
 - penalizing activations
     - [interpretable cnns](http://openaccess.thecvf.com/content_cvpr_2018/CameraReady/0490.pdf) (zhang et al. 2018) - penalize activations to make filters slightly more intepretable
       - could also just use specific filters for specific classes...
@@ -558,6 +591,7 @@ How interactions are defined and summarized is a very difficult thing to specify
     - [automated concept activation vectors](https://arxiv.org/abs/1902.03129) - Given a set of concept discovery images, each image is segmented with different resolutions to find concepts that are captured best at different sizes. (b) After removing duplicate segments, each segment is resized tothe original input size resulting in a pool of resized segments of the discovery images. (c) Resized segments are mapped to a model’s activation space at a bottleneck layer. To discover the concepts associated with the target class, clustering with outlier removal is performed. (d) The output of our method is a set of discovered concepts for each class, sorted by their importance in prediction
 - [Explaining The Behavior Of Black-Box Prediction Algorithms With Causal Learning](https://arxiv.org/abs/2006.02482) - specify some interpretable features and learn a causal graph of how the classifier uses these features
 - [On Completeness-aware Concept-Based Explanations in Deep Neural Networks](https://arxiv.org/abs/1910.07969)
+- [Interpretable Basis Decomposition for Visual Explanation](https://openaccess.thecvf.com/content_ECCV_2018/html/Antonio_Torralba_Interpretable_Basis_Decomposition_ECCV_2018_paper.html) (zhou et al. 2018) - decompose activations of the input image into semantically interpretable components pre-trained from a large concept corpus
 
 #### dnn feature importance
 
@@ -598,6 +632,7 @@ How interactions are defined and summarized is a very difficult thing to specify
   - Label  "wins" a pixel if either (a) its map assigns that pixel a positive score higher than the scores assigned by every other label ora negative score lower than the scores assigned by every other label. 
   - final saliency map consists of scores assigned by the chosen label to each pixel it won, with the map containing a score 0 for any pixel it did not win.
   - can be applied to any method which satisfies completeness (sum of pixel scores is exactly the logit value)
+  - [Saliency Methods for Explaining Adversarial Attacks](https://arxiv.org/abs/1908.08413)
 - newer methods
     - [Score-CAM:Improved Visual Explanations Via Score-Weighted Class Activation Mapping](https://arxiv.org/abs/1910.01279)
     - [Removing input features via a generative model to explain their attributions to classifier's decisions](https://arxiv.org/abs/1910.04256)
@@ -641,27 +676,6 @@ How interactions are defined and summarized is a very difficult thing to specify
 
 
 
-#### connecting dnns with tree-models
-
-- [Distilling a Neural Network Into a Soft Decision Tree](https://arxiv.org/pdf/1711.09784.pdf) (frosst & hinton 2017) - distills DNN into DNN-like tree which uses sigmoid neuron decides which path to follow
-  - training on distilled DNN predictions outperforms training on original labels
-  - to make the decision closer to a hard cut, can multiply by a large scalar before applying sigmoid
-  - parameters updated with backprop
-  - regularization to ensure that all paths are taken equally likely
-- [Neural Random Forests](https://link.springer.com/article/10.1007/s13171-018-0133-y) (biau et al. 2018) - convert DNN to RF
-  - first layer learns a node for each split
-  - second layer learns a node for each leaf (by only connecting to nodes on leaves in the path)
-  - finally map each leaf to a value
-  - relax + retrain
-- [Deep Neural Decision Forests](https://openaccess.thecvf.com/content_iccv_2015/papers /Kontschieder_Deep_Neural_Decision_ICCV_2015_paper.pdf) (2015)
-  - dnn learns small intermediate representation, which outputs all possible splits in a tree
-  - these splits are forced into a tree-structure and optimized via SGD
-  - neurons use sigmoid function
-- [Gradient Boosted Decision Tree Neural Network](https://arxiv.org/abs/1910.09340) - build DNN based on decision tree ensemble - basically the same but with gradient-boosted trees
-- [Neural Decision Trees](https://arxiv.org/abs/1702.07360) - treat each neural net like a node in a tree
-
-
-
 ## different problems / perspectives
 
 ### improving models
@@ -699,6 +713,7 @@ How interactions are defined and summarized is a very difficult thing to specify
 
 These papers don't quite connect to prediction, but are generally about finding stable interpretations across a set of models / choices.
 
+- [Exploring the cloud of variable importance for the set of all good models](https://www.nature.com/articles/s42256-020-00264-0) (dong & rudin, 2020)
 - [All Models are Wrong, but Many are Useful: Learning a Variable’s Importance by Studying an Entire Class of Prediction Models Simultaneously](https://www.jmlr.org/papers/volume20/18-760/18-760.pdf) (fisher, rudin, & dominici, 2019) - also had title *Model class reliance: Variable importance measures for any machine learning model class, from the “Rashomon” perspective*
   - **model reliance** = MR - like permutation importance, measures how much a model relies on covariates of interest for its accuracy
     - defined (for a feature) as the ratio of expected loss after permuting (with all possible permutation pairs) to before permuting

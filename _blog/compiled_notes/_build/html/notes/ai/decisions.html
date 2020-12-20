@@ -106,58 +106,63 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">
+     1.2. adv attacks
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_disentanglement.html">
-     1.2. disentanglement
+     1.3. disentanglement
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_complexity.html">
-     1.3. complexity
+     1.4. complexity
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_interesting_science.html">
-     1.4. interesting science
+     1.5. interesting science
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_dl_theory.html">
-     1.5. dl theory
+     1.6. dl theory
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_scat.html">
-     1.6. scattering transform
+     1.7. scattering transform
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">
-     1.7. ml in medicine
+     1.8. ml in medicine
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_causal_inference.html">
-     1.8. causal inference
+     1.9. causal inference
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_dl_for_neuro.html">
-     1.9. dl for neuro
+     1.10. dl for neuro
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_uncertainty.html">
-     1.10. uncertainty
+     1.11. uncertainty
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_interp.html">
-     1.11. interpretability
+     1.12. interpretability
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_kernels.html">
-     1.12. kernels
+     1.13. kernels
     </a>
    </li>
   </ul>
@@ -577,8 +582,8 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#utilities-decision-theory-r-n-16-1-16-3">
-     6.10.1.1. utilities / decision theory – R&amp;N 16.1-16.3
+    <a class="reference internal nav-link" href="#utilities-decision-theory-r-n-16-1-16-3-mazzonni-quant-finance-book">
+     6.10.1.1. utilities / decision theory – R&amp;N 16.1-16.3, mazzonni quant finance book
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -728,9 +733,15 @@
 </ul>
 </li>
 </ul>
-<div class="section" id="utilities-decision-theory-r-n-16-1-16-3">
-<h3>6.10.1.1. utilities / decision theory – R&amp;N 16.1-16.3<a class="headerlink" href="#utilities-decision-theory-r-n-16-1-16-3" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="utilities-decision-theory-r-n-16-1-16-3-mazzonni-quant-finance-book">
+<h3>6.10.1.1. utilities / decision theory – R&amp;N 16.1-16.3, mazzonni quant finance book<a class="headerlink" href="#utilities-decision-theory-r-n-16-1-16-3-mazzonni-quant-finance-book" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
+<li><p><strong>lottery</strong> - any function of a random variable</p></li>
+<li><p><strong>utility function</strong> - lottery that satisfiers certain properties (e.g. transitivity)</p>
+<ul>
+<li><p>expected utility = <em>von Neumann-Morgenstern</em> utility</p></li>
+</ul>
+</li>
 <li><p>goal: maximize utility by taking actions (focus on single actions)</p>
 <ul>
 <li><p>utility function U(s) gives utility of a state</p></li>
@@ -786,17 +797,19 @@
 <li><p>ex. <em>QALY</em> - quality-adjusted life year</p></li>
 </ul>
 </li>
-<li><p>money</p>
+<li><p>risk</p>
 <ul>
 <li><p>agents exhibits <em>monotonic preference</em> for more money</p></li>
 <li><p>gambling has expected monetary value = EMV</p></li>
 <li><p><em>risk averse</em> = when utility of money is sublinear</p>
 <ul>
-<li><p>value agent will accept in lieu of lottery = <em>certainty equivalent</em>= <em>insurance premium</em></p></li>
+<li><p><strong>risk premium</strong> = value agent will accept in lieu of lottery = <em>certainty equivalent</em>= <em>insurance premium</em></p></li>
 </ul>
 </li>
 <li><p><em>risk-neutral</em> = linear</p></li>
 <li><p><em>risk-seeking</em> = supralinear</p></li>
+<li><p><strong>absolute risk aversion</strong> <span class="math notranslate nohighlight">\(ARA(x) = - \frac{u''(x)}{u'(x)} \)</span> : higher is more risk averse</p></li>
+<li><p><strong>relative risk aversion</strong> <span class="math notranslate nohighlight">\(ARA(x) = - \frac{x \cdot u''(x)}{u'(x)} \)</span></p></li>
 </ul>
 </li>
 <li><p><em>optimizer’s curse</em> - tendency for E[utility] to be too high because we keep picking high utility randomness</p></li>
@@ -1161,7 +1174,7 @@
 <li><p>TD version: <span class="math notranslate nohighlight">\(Q(s,a) = Q(s,a) + \alpha [R(s) - Q(s,a) + \gamma \: \underset{a'}{\max} Q(s', a')]\)</span> - <strong>this is what is usually referred to as Q-learning</strong></p></li>
 </ul>
 </li>
-<li><p><em>SARSA</em> (state-action-reward-state-action) is related: <span class="math notranslate nohighlight">\(Q(s,a) = Q(s,a) + \alpha [R(s) - Q(s,a) + \gamma \: Q(s', a')]\)</span></p>
+<li><p><em>SARSA</em> (state-action-reward-state-action) is related: <span class="math notranslate nohighlight">\(Q(s,a) = Q(s,a) + \alpha [R(s) + \gamma \: Q(s', a') - Q(s,a) ]\)</span></p>
 <ul>
 <li><p>here, a’ is action actually taken</p></li>
 </ul>

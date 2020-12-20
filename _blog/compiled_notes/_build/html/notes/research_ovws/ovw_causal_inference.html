@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>1.8. causal inference &#8212; learning to learn</title>
+    <title>1.9. causal inference &#8212; learning to learn</title>
     
   <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -56,8 +56,8 @@
     <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="1.9. dl for neuro" href="ovw_dl_for_neuro.html" />
-    <link rel="prev" title="1.7. ml in medicine" href="ovw_ml_medicine.html" />
+    <link rel="next" title="1.10. dl for neuro" href="ovw_dl_for_neuro.html" />
+    <link rel="prev" title="1.8. ml in medicine" href="ovw_ml_medicine.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -106,58 +106,63 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="ovw_transfer_learning.html">
+     1.2. adv attacks
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="ovw_disentanglement.html">
-     1.2. disentanglement
+     1.3. disentanglement
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_complexity.html">
-     1.3. complexity
+     1.4. complexity
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_interesting_science.html">
-     1.4. interesting science
+     1.5. interesting science
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_dl_theory.html">
-     1.5. dl theory
+     1.6. dl theory
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_scat.html">
-     1.6. scattering transform
+     1.7. scattering transform
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_ml_medicine.html">
-     1.7. ml in medicine
+     1.8. ml in medicine
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     1.8. causal inference
+     1.9. causal inference
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_dl_for_neuro.html">
-     1.9. dl for neuro
+     1.10. dl for neuro
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_uncertainty.html">
-     1.10. uncertainty
+     1.11. uncertainty
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_interp.html">
-     1.11. interpretability
+     1.12. interpretability
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_kernels.html">
-     1.12. kernels
+     1.13. kernels
     </a>
    </li>
   </ul>
@@ -573,88 +578,93 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#classic-studies">
-   1.8.1. classic studies
+   1.9.1. classic studies
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#natural-experiments">
-     1.8.1.1. natural experiments
+     1.9.1.1. natural experiments
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#instrumental-variables">
-     1.8.1.2. instrumental variables
+     1.9.1.2. instrumental variables
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#matching">
-     1.8.1.3. matching
+     1.9.1.3. matching
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#paradoxes">
-     1.8.1.4. “paradoxes”
+     1.9.1.4. “paradoxes”
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#problems-beyond-ate">
-   1.8.2. problems beyond ATE
+   1.9.2. problems beyond ATE
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#causal-mechanisms">
-     1.8.2.1. causal mechanisms
+     1.9.2.1. causal mechanisms
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#mediation-analysis">
-       1.8.2.1.1. mediation analysis
+       1.9.2.1.1. mediation analysis
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#heterogenous-treatment-effects">
-     1.8.2.2. heterogenous treatment effects
+     1.9.2.2. heterogenous treatment effects
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#causal-discovery">
-     1.8.2.3. causal discovery
+     1.9.2.3. causal discovery
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#stable-invariant-predictors">
-     1.8.2.4. stable/invariant predictors
+     1.9.2.4. stable/invariant predictors
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#misc-problems">
-     1.8.2.5. misc problems
+     1.9.2.5. misc problems
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#transferring-out-of-sample">
+     1.9.2.6. transferring out-of-sample
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#different-assumptions-experimental-designs">
-   1.8.3. different assumptions / experimental designs
+   1.9.3. different assumptions / experimental designs
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#solutions-to-basic-problems">
-   1.8.4. solutions to basic problems
+   1.9.4. solutions to basic problems
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#learning-causal-representations">
-     1.8.4.1. learning “causal representations”
+     1.9.4.1. learning “causal representations”
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#limitations">
-     1.8.4.2. limitations
+     1.9.4.2. limitations
     </a>
    </li>
   </ul>
@@ -671,9 +681,9 @@
               <div>
                 
   <div class="section" id="causal-inference">
-<h1>1.8. causal inference<a class="headerlink" href="#causal-inference" title="Permalink to this headline">¶</a></h1>
+<h1>1.9. causal inference<a class="headerlink" href="#causal-inference" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="classic-studies">
-<h2>1.8.1. classic studies<a class="headerlink" href="#classic-studies" title="Permalink to this headline">¶</a></h2>
+<h2>1.9.1. classic studies<a class="headerlink" href="#classic-studies" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://onlinelibrary.wiley.com/doi/full/10.1111/ajps.12187">Descriptive Representation and Judicial Outcomes in Multiethnic Societies</a> (Grossman et al. 2016)</p>
 <ul>
@@ -682,7 +692,7 @@
 </li>
 <li><p><a class="reference external" href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.554.9675">Using Maimonides’ Rule to Estimate the Effect of Class Size on Scholastic Achievement</a> (angrist &amp; lavy 1999)</p>
 <ul>
-<li><p>reducing class size induces a signi􏰜cant and substantial increase in test scores for fourth and 5th graders, although not for third graders.</p></li>
+<li><p>reducing class size induces a signicant and substantial increase in test scores for fourth and 5th graders, although not for third graders.</p></li>
 </ul>
 </li>
 <li><p><a class="reference external" href="https://academic.oup.com/jnci/article/22/1/173/912572">Smoking and Lung Cancer: Recent Evidence and a Discussion of Some Questions</a> (cornfield et al. 1959)</p>
@@ -703,7 +713,7 @@
 </li>
 </ul>
 <div class="section" id="natural-experiments">
-<h3>1.8.1.1. natural experiments<a class="headerlink" href="#natural-experiments" title="Permalink to this headline">¶</a></h3>
+<h3>1.9.1.1. natural experiments<a class="headerlink" href="#natural-experiments" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://alondoninheritance.com/london-characters/john-snow-soho-cholera-outbreak-1864/">John Snow on cholera</a> - natural experiment - change of water pollution allowed for computing effect of the water pollution on cholera</p></li>
 <li><p><a class="reference external" href="http://www.hangartner.net/files/passportapsr.pdf">Who Gets a Swiss Passport? A Natural Experiment in Immigrant Discrimination</a> (Hainmueller &amp; Hangartner 2013)</p>
@@ -721,7 +731,7 @@
 </ul>
 </div>
 <div class="section" id="instrumental-variables">
-<h3>1.8.1.2. instrumental variables<a class="headerlink" href="#instrumental-variables" title="Permalink to this headline">¶</a></h3>
+<h3>1.9.1.2. instrumental variables<a class="headerlink" href="#instrumental-variables" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.jstor.org/stable/2291629?seq=1#metadata_info_tab_contents">Identification of Causal Effects Using Instrumental Variables</a> (angrist, imbens, &amp; rubin 1996)</p>
 <ul>
@@ -735,7 +745,7 @@
 </ul>
 </div>
 <div class="section" id="matching">
-<h3>1.8.1.3. matching<a class="headerlink" href="#matching" title="Permalink to this headline">¶</a></h3>
+<h3>1.9.1.3. matching<a class="headerlink" href="#matching" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pubmed/12933551">Matching and thick description in an observational study of mortality after surgery.</a> (rosenbaum &amp; silber 2001)</p>
 <ul>
@@ -746,7 +756,7 @@
 </ul>
 </div>
 <div class="section" id="paradoxes">
-<h3>1.8.1.4. “paradoxes”<a class="headerlink" href="#paradoxes" title="Permalink to this headline">¶</a></h3>
+<h3>1.9.1.4. “paradoxes”<a class="headerlink" href="#paradoxes" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><strong>simpson’s paradox</strong> = <strong>yule-simpson paradox</strong> - trend appears in several different groups but disappears/reverses when groups are combined</p>
 <ul>
@@ -779,16 +789,16 @@ C(Location of Car) --&gt; B
 </div>
 </div>
 <div class="section" id="problems-beyond-ate">
-<h2>1.8.2. problems beyond ATE<a class="headerlink" href="#problems-beyond-ate" title="Permalink to this headline">¶</a></h2>
+<h2>1.9.2. problems beyond ATE<a class="headerlink" href="#problems-beyond-ate" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="causal-mechanisms">
-<h3>1.8.2.1. causal mechanisms<a class="headerlink" href="#causal-mechanisms" title="Permalink to this headline">¶</a></h3>
+<h3>1.9.2.1. causal mechanisms<a class="headerlink" href="#causal-mechanisms" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>treatment effect variation?</p></li>
 <li><p>principal stratification</p></li>
 <li><p>interference</p></li>
 </ul>
 <div class="section" id="mediation-analysis">
-<h4>1.8.2.1.1. mediation analysis<a class="headerlink" href="#mediation-analysis" title="Permalink to this headline">¶</a></h4>
+<h4>1.9.2.1.1. mediation analysis<a class="headerlink" href="#mediation-analysis" title="Permalink to this headline">¶</a></h4>
 <p><em>Mediation analysis aims to identify a mechanism through which a cause has an effect. Direct effects measure when the treatment varies as mediators are held constant.</em></p>
 <ul class="simple">
 <li><p>if there are multiple possible paths by which a variable can exert influence, can figure out which path does what, even with just observational data</p></li>
@@ -862,17 +872,46 @@ C(Location of Car) --&gt; B
 </div>
 </div>
 <div class="section" id="heterogenous-treatment-effects">
-<h3>1.8.2.2. heterogenous treatment effects<a class="headerlink" href="#heterogenous-treatment-effects" title="Permalink to this headline">¶</a></h3>
+<h3>1.9.2.2. heterogenous treatment effects<a class="headerlink" href="#heterogenous-treatment-effects" title="Permalink to this headline">¶</a></h3>
 <p><em>Heterogenous treatment effects refer to effects which differ for different subgroups / individuals in a population and requires more refined modeling.</em></p>
 <ul class="simple">
 <li><p><strong>conditional average treatment effect (CATE)</strong> - get treatment effect for each individual conditioned on its covariates</p>
 <ul>
 <li><p>meta-learners - break down CATE into regression subproblems</p>
 <ul>
-<li><p>e.g. T-learner (foster et al. 2011, simplest) - fit one model for conditional expectation of each potential outcome and then subtract</p></li>
-<li><p>e.g. X-learner (kunzel et al. 19)</p></li>
-<li><p>e.g. R-learner (nie-wager, 20)</p></li>
-<li><p>e.g. S-learner (hill 11)</p></li>
+<li><p>e.g. S-learner (hill 11) - “S” stands for “single” and fits a single statistical model for <span class="math notranslate nohighlight">\(\mu_1 - \mu_0\)</span></p>
+<ul>
+<li><p>can be biased towards 0</p></li>
+</ul>
+</li>
+<li><p>e.g. T-learner (foster et al. 2011) - “T” stands for “two” because we fit 2 models:  one model for conditional expectation of each potential outcome: <span class="math notranslate nohighlight">\(\hat \mu_1(x), \hat \mu_0(x)\)</span></p>
+<ul>
+<li><p>can have issues, e.g. different effects are regularized differently</p></li>
+<li><p>doesn’t do well with variation in the propensity score. If <span class="math notranslate nohighlight">\(e(x)\)</span> varies considerably, then our estimates of <span class="math notranslate nohighlight">\(\hat \mu(0)\)</span> will be driven by data in areas with many control units (i.e., with <span class="math notranslate nohighlight">\(e(x)\)</span> closer to 0), and those of <span class="math notranslate nohighlight">\(\hat \mu (1)\)</span> by regions with more treated units (i.e., with e(x) closer to 1).</p></li>
+</ul>
+</li>
+<li><p>e.g. X-learner (<a class="reference external" href="https://www.pnas.org/content/116/10/4156.short">kunzel et al. 19</a>) - “X” stands for crossing between estimates and conditional outcomes for each group</p>
+<ul>
+<li><p>first, fit <span class="math notranslate nohighlight">\(\hat \mu_1(x), \hat \mu_0(x)\)</span></p></li>
+<li><p>second, compute effects using all the data <span class="math notranslate nohighlight">\(\begin{aligned} \hat{\tau}_{1, i} &amp;=Y_{i}(1)-\hat{\mu}_{0}\left(x_{i}\right) \\ \hat{\tau}_{0, i} &amp;=\hat{\mu}_{1}\left(x_{i}\right)-Y_{i}(0) \end{aligned}\)</span></p></li>
+<li><p>finally, combine effects <span class="math notranslate nohighlight">\(\hat{\tau}(x)=g(x) \hat{\tau}_{0}(x)+(1-g(x)) \hat{\tau}_{1}(x)\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(g(x)\)</span> is weighting function, e.g. estimated propensity score</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>e.g. R-learner (<a class="reference external" href="https://www.jstor.org/stable/1912705?casa_token=MIFpVeGtg_AAAAAA%3ASw_iZBgtJwx_P6jezFPxHXy8USBdJugzBzt5S9I2sc1j83K_dmYJmskt-l8cTxMBHffbZFTjPCO7KQzrPGkr4SyAAOID7engZqQrMLQy2fv2yQ-C0rs&amp;seq=1#metadata_info_tab_contents">robinson, 1988</a>; nie-wager, 20) - regularized semiparametric learner</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\hat{\tau}_{R}(\cdot)=\operatorname{argmin}_{\hat \tau}\left\{\frac{1}{n} \sum_{i=1}^{n}\left(\underbrace{Y_{i}-\hat \mu\left(X_{i}\right)}_{\text{Y residual}}-\left(T_{i}-\hat e\left(X_{i}\right)\right) \hat \tau\left(X_{i}\right)\right)^{2}\right. \left.+ \underbrace{\Lambda_{n}\left(\hat \tau(\cdot)\right)}_{\text{regularization}}\right\}\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\hat \mu(x) = E[Y_i|X=x]\)</span></p></li>
+<li><p>use cross-fitting to estimate <span class="math notranslate nohighlight">\(\hat \tau\)</span> and <span class="math notranslate nohighlight">\(\hat \mu\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\tau\)</span> takes a form, e.g. LASSO</p></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><p>tree-based methods</p>
@@ -882,6 +921,19 @@ C(Location of Car) --&gt; B
 <li><p>e.g. BART (hill, 12)</p></li>
 </ul>
 </li>
+<li><p>neural-net based methods</p>
+<ul>
+<li><p>e.g. TARNet (<a class="reference external" href="https://arxiv.org/abs/1606.03976">shalit et al. 2017</a>) - full notes below, use data from both groups</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>validation</p>
+<ul>
+<li><p>can cross-validate CATE on R-loss (sampling variability is high, but may not always be an issue (<a class="reference external" href="https://www.tandfonline.com/doi/full/10.1080/01621459.2020.1727235?casa_token=vqv0KlGeZcIAAAAA:l-UnVbnUT6r_klyrqTnjPnfrlE_XsywwRC08mOgBWtB_qeuSXsN2wXSKyGJP_pmYW_3Ucp1N4nLM">wager, 2020</a>))</p></li>
+<li><p>indirect approach - use CATE to identify subgroups, and then use out-of-sample data to evaluate these subgroups</p></li>
+<li><p>fit <span class="math notranslate nohighlight">\(\hat \tau\)</span> then rerun semiparametric model and see if coefficient for <span class="math notranslate nohighlight">\(\hat \tau\)</span> ends up close to 1</p></li>
+<li><p>more discussion in (<a class="reference external" href="https://arxiv.org/abs/1902.07409">athey &amp; wager, 2019</a>) and (<a class="reference external" href="https://arxiv.org/abs/1712.04802">chernozhukov et al. 2017</a>)</p></li>
 </ul>
 </li>
 <li><p><strong>subgroup analysis</strong> - identify subgroups with treatment effects far from the average</p>
@@ -939,7 +991,7 @@ C(Location of Car) --&gt; B
 </ul>
 </div>
 <div class="section" id="causal-discovery">
-<h3>1.8.2.3. causal discovery<a class="headerlink" href="#causal-discovery" title="Permalink to this headline">¶</a></h3>
+<h3>1.9.2.3. causal discovery<a class="headerlink" href="#causal-discovery" title="Permalink to this headline">¶</a></h3>
 <p><em>Causal discovery aims to identify causal relationships (sometimes under some smoothness / independence assumptions. This is often impossible in general.</em></p>
 <ul class="simple">
 <li><p>overview</p>
@@ -1054,7 +1106,7 @@ C(Location of Car) --&gt; B
 </ul>
 </div>
 <div class="section" id="stable-invariant-predictors">
-<h3>1.8.2.4. stable/invariant predictors<a class="headerlink" href="#stable-invariant-predictors" title="Permalink to this headline">¶</a></h3>
+<h3>1.9.2.4. stable/invariant predictors<a class="headerlink" href="#stable-invariant-predictors" title="Permalink to this headline">¶</a></h3>
 <p><em>Under certain assumptions, invariance to data perturbations (i.e. interventions) can help us identify causal effects.</em></p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/1812.08233">Invariance, Causality and Robustness</a> (buhlmann 18)</p>
@@ -1062,7 +1114,7 @@ C(Location of Car) --&gt; B
 <li><p>predict <span class="math notranslate nohighlight">\(Y^e\)</span> given <span class="math notranslate nohighlight">\(X^e\)</span> such that the prediction “works well” or is “robust” for all <span class="math notranslate nohighlight">\(e ∈ \mathcal F\)</span> based on data from much fewer environments <span class="math notranslate nohighlight">\(e \in \mathcal E\)</span></p>
 <ul>
 <li><p>assumption: ideally <span class="math notranslate nohighlight">\(e\)</span> changes only the distr. of <span class="math notranslate nohighlight">\(X^e\)</span> (so doesn’t act directly on <span class="math notranslate nohighlight">\(Y^e\)</span> or change the mechanism between <span class="math notranslate nohighlight">\(X^e\)</span> and <span class="math notranslate nohighlight">\(Y^e\)</span>)</p></li>
-<li><p>assumption (invariance): there exists a subset of “causal” covariates - when conditioning on these covariates, the loss is the same across all environments <span class="math notranslate nohighlight">\(e\)</span></p></li>
+<li><p>assumption (<em>invariance</em>): there exists a subset of “causal” covariates - when conditioning on these covariates, the loss is the same across all environments <span class="math notranslate nohighlight">\(e\)</span></p></li>
 <li><p>when these assumptions are satisfied, then minimizing a worst-case risk over environments <span class="math notranslate nohighlight">\(e\)</span> yields a causal parameter</p></li>
 </ul>
 </li>
@@ -1119,10 +1171,51 @@ C(Location of Car) --&gt; B
 <li><p>most of ml is built on the iid assumption and fails when it is violated (e.g. cow on a beach)</p></li>
 </ul>
 </li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2009.00329">Learning explanations that are hard to vary</a> (parascandolo…sholkopf, 2020)</p>
+<ul>
+<li><p>basically, gradients should be consistent during learning</p></li>
+<li><p>practical algorithm: AND-mask</p>
+<ul>
+<li><p>like zeroing out those gradient components with respect to weights that have <em>inconsistent signs</em> across environments</p>
+<ul>
+<li><p>basically same complexity as normal GD</p></li>
+</ul>
+</li>
+<li><p>previous works used cosine similarity between weights in different settings</p></li>
+<li><p>experiments</p>
+<ul>
+<li><p>real data is spiral but each env is linearly separable - still able to learn spiral</p></li>
+<li><p>cifar - with real labels, performance unaffected; with random labels, training acc drops significantly</p>
+<ul>
+<li><p>each example is its own environment</p></li>
+<li><p>with noisy labels, imposes good regularization</p></li>
+</ul>
+</li>
+<li><p>rl - works well on coinrun</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>propose <strong>invariant learning consistency</strong> (ILC)- measures expected consistency of the soln found by an algorithm given a hypothesis class</p>
+<ul>
+<li><p>consistency - what extent a minimum of the loss surface appears <strong>only when data from different envs</strong> are pooled</p></li>
+</ul>
+</li>
+<li><p>given algorithm <span class="math notranslate nohighlight">\(\mathcal A\)</span>, maximize this: <span class="math notranslate nohighlight">\(\mathrm{ILC}\left(\mathcal{A}, p_{\theta^{0}}\right):= \underbrace{-\mathbb{E}_{\theta^{0} \sim p\left(\theta^{0}\right)}}_{\text{expectation over reinits}}\left[\mathcal{I}^{\epsilon} (\underbrace{\mathcal{A}_{\infty}(\theta^{0}, \mathcal{E}}_{\hat \theta}) \right]\)</span></p>
+<ul>
+<li><p><strong>inconsistency score</strong> for a solution <span class="math notranslate nohighlight">\(\hat \theta\)</span> given environments <span class="math notranslate nohighlight">\(e\)</span>: <span class="math notranslate nohighlight">\(\mathcal{I}^{\epsilon}(\hat \theta):=\overbrace{\max _{\left(e, e^{\prime}\right) \in \mathcal{E}^{2}} }^{\text{env. pairs}} \underbrace{\max _{\theta \in N_{e, \hat \theta}^{\epsilon}}}_{\text{low-loss region around \)</span>\hat \theta<span class="math notranslate nohighlight">\(}} \overbrace{\mid \mathcal{L}_{e^{\prime}}(\theta)-\mathcal{L}_{e}(\theta)|}^{\text{loss between envs.}}\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(N_{e, \hat \theta}^{\epsilon}\)</span> is path-connected region around <span class="math notranslate nohighlight">\(\hat \theta\)</span> where <span class="math notranslate nohighlight">\(\left\{\theta \in \Theta\right.\)</span> s.t. <span class="math notranslate nohighlight">\(\left|\mathcal{L}_{e}(\theta)-\mathcal{L}_{e}\left(\hat \theta\right)\right| \leqslant \epsilon\)</span></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="section" id="misc-problems">
-<h3>1.8.2.5. misc problems<a class="headerlink" href="#misc-problems" title="Permalink to this headline">¶</a></h3>
+<h3>1.9.2.5. misc problems<a class="headerlink" href="#misc-problems" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/1907.13258">Incremental causal effects</a> (rothenhausler &amp; yu, 2019)</p>
 <ul>
@@ -1145,12 +1238,30 @@ $<span class="math notranslate nohighlight">\(
 </li>
 </ul>
 </div>
+<div class="section" id="transferring-out-of-sample">
+<h3>1.9.2.6. transferring out-of-sample<a class="headerlink" href="#transferring-out-of-sample" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://naokiegami.com/paper/external_full.pdf">Elements of External Validity: Framework, Design, and Analysis</a></p>
+<ul>
+<li><p>external validity - when do results from an RCT generalize to new settings?</p></li>
+<li><p>X-, T-, Y -, and C-validity (units, treatments, outcomes, and contexts)</p></li>
+<li><p>two goals: effect-generalization + sign-generalization</p></li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div class="section" id="different-assumptions-experimental-designs">
-<h2>1.8.3. different assumptions / experimental designs<a class="headerlink" href="#different-assumptions-experimental-designs" title="Permalink to this headline">¶</a></h2>
+<h2>1.9.3. different assumptions / experimental designs<a class="headerlink" href="#different-assumptions-experimental-designs" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/1805.06826">The Blessings of Multiple Causes</a> (wang &amp; blei, 2019) - having multiple causes can help construct / find all the confounders</p>
 <ul>
+<li><p>instead of ignorability, require that any missing confounder affects multiple observed variables</p></li>
+<li><p><em>deconfounder algorithm</em> - infers a latent variable as a substitute for unobserved confounders and then uses that substitute to perform causal inference</p>
+<ul>
+<li><p>replaces an uncheckable search for possible confounders with the checkable goal of building a good factor model of observed casts.</p></li>
+</ul>
+</li>
 <li><p>controversial whether this works in general</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1902.10286">On Multi-Cause Causal Inference with Unobserved Confounding: Counterexamples, Impossibility, and Alternatives</a> (d’amour 2019)</p></li>
 </ul>
@@ -1158,16 +1269,23 @@ $<span class="math notranslate nohighlight">\(
 </ul>
 </div>
 <div class="section" id="solutions-to-basic-problems">
-<h2>1.8.4. solutions to basic problems<a class="headerlink" href="#solutions-to-basic-problems" title="Permalink to this headline">¶</a></h2>
+<h2>1.9.4. solutions to basic problems<a class="headerlink" href="#solutions-to-basic-problems" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="learning-causal-representations">
-<h3>1.8.4.1. learning “causal representations”<a class="headerlink" href="#learning-causal-representations" title="Permalink to this headline">¶</a></h3>
+<h3>1.9.4.1. learning “causal representations”<a class="headerlink" href="#learning-causal-representations" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/1605.03661">Learning Representations for Counterfactual Inference</a> (johansson et al. 2016)</p>
 <ul>
 <li><p><img alt="learning_causal_repr" src="../../_images/learning_causal_repr.png" /></p></li>
+<li><p>assumption similar to ignorability: the treatment assignment information (and any info which predicts it) should not influence the ITE: <span class="math notranslate nohighlight">\(T \perp \!\!\! \perp \{ Y^{T=1}, Y^{T=0}\} | X\)</span></p>
+<ul>
+<li><p>often not the case, e.g. medical symptoms lead doctors to give a treatment more</p></li>
+<li><p>in this case, we will lose info that can help us predict the CATE</p></li>
+</ul>
+</li>
 <li><p>also an extra loss: penalty that encourages counterfactual preds to be close to nearest observed outcome from the same set</p></li>
 <li><p>fit linear ridge regression on top of representation <span class="math notranslate nohighlight">\(\phi\)</span></p></li>
 <li><p>not exactly the same as the setting in <a class="reference external" href="http://www.cs.toronto.edu/~zemel/documents/fair-icml-final.pdf">fair repr. learning</a> or <a class="reference external" href="https://www.jmlr.org/papers/volume17/15-239/15-239.pdf">domain adversarial training</a> - MMD or Wasserstein distance instead of classification</p></li>
+<li><p>same idea present in <a class="reference external" href="https://www.nature.com/articles/s41467-020-19784-9">Training confounder-free deep learning models for medical applications</a> (zhou et al. 2020)</p></li>
 </ul>
 </li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1606.03976">Estimating individual treatment effect: generalization bounds and algorithms</a> (shalit et al. 2017)</p>
@@ -1195,10 +1313,21 @@ $<span class="math notranslate nohighlight">\(
 <li><p>bounds on degree of imbalance as a function of propensity model</p></li>
 </ul>
 </li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2011.12379">Invariant Representation Learning for Treatment Effect Estimation</a> (shi, veitch, &amp; blei, 2020)</p>
+<ul>
+<li><p>Nearly Invariant Causal Estimation - uses IRM to learn repr. that strips out bad controls but preserves sufficient information to adjust for confounding</p>
+<ul>
+<li><p>observe data from multiple environments</p></li>
+<li><p>covariates contain some causal variables</p></li>
+<li><p>covariates also contain some false confounders</p></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="section" id="limitations">
-<h3>1.8.4.2. limitations<a class="headerlink" href="#limitations" title="Permalink to this headline">¶</a></h3>
+<h3>1.9.4.2. limitations<a class="headerlink" href="#limitations" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="http://proceedings.mlr.press/v80/alaa18a.html">Limits of Estimating Heterogeneous Treatment Effects: Guidelines for Practical Algorithm Design</a> (alaa &amp; van der schaar, 2018)</p>
 <ul>
@@ -1249,8 +1378,8 @@ $<span class="math notranslate nohighlight">\(
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="ovw_ml_medicine.html" title="previous page">1.7. ml in medicine</a>
-    <a class='right-next' id="next-link" href="ovw_dl_for_neuro.html" title="next page">1.9. dl for neuro</a>
+    <a class='left-prev' id="prev-link" href="ovw_ml_medicine.html" title="previous page">1.8. ml in medicine</a>
+    <a class='right-next' id="next-link" href="ovw_dl_for_neuro.html" title="next page">1.10. dl for neuro</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

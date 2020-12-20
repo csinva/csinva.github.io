@@ -258,6 +258,16 @@ some more concrete questions:
     - if parameters are random, indcues a prior distribution $P(\mathcal F)$ over the space of functions
     - in th limit of infinite width, this prior is Gaussian, with a specific correlation kernel
     - learning is similar to learning the Bayesian posterior $P(f|data)$, but connecting this to sgd is still not clear
+- [Neural Mechanics: Symmetry and Broken Conservation Laws in Deep Learning Dynamics](https://arxiv.org/abs/2012.04728) (kunin et al. 2020)
+  - no assumptions about DNN architecture or gradientflow
+  - instead, assumptions on symmetries embedded in a network’s architecture constrain training dynamics
+    - similar to Noether's thm in physics
+  - can much better analytically describe learning dynamics
+  - weights have a **differentiable symmetry** in the loss if the loss doesn’t change under a certain differentiable transformation of the weights
+    - ex. translation symmetry - for layer before softmax, we get symmetries across weights that shift all outputs
+    - ex. scale symmetry - inputs to batch normalization are invariant to scaling
+    - ex. rescale symmetry - scaling up/down 2 things which multiply or add
+  - modeling discretization
 
 ## empirical studies
 
@@ -293,6 +303,38 @@ some more concrete questions:
   - ![Screen Shot 2020-02-04 at 1.54.28 PM](../assets/adv_attack_hierarchy.png)
 - [AugMix: A Simple Data Processing Method to Improve Robustness and Uncertainty](https://arxiv.org/abs/1912.02781) (hendrycks et al. 2020)
   - do a bunch of transformations and average images to create each training image
+- certifying robustness
+  - bound gradients of f around x - solve SDP for 2-layer net ([raghunathan, steinhardt, & liang 2018, iclr](https://arxiv.org/abs/1801.09344))
+    - relax SDP and then applies to multilayer nets (raghunathan et al. 2018)
+    - improved optimizer for the SDP (dathathri et al. 2020)
+  - interval bound propagation - instead of passing point, pass an interval where it could be
+    - works well for word substitions (jia et al. 2019)
+  - RobEn - cluster words that are confusable + give them the same encoding when you train (jones et al. 2020)
+    - then you are robust to confusing the words
+- unlabeled data + self-training helps
+  - training robust models has higher sample complexity than training standard models
+  - tradeoff between robustness and accuracy (raghunathann et al. 2020)
+    - adding valid data can hurt even in well-specified, convex setting
+    - robust self-training eliminates this tradeoff in linear regression
+  - sample complexity can be reduced with unlabeled examples (carmon et al. 2019)
+- distributional robust optimization
+  - instead of minimizing training err, minimize maximum training err over different perturbations
+  - hard to pick the perturbation set - can easily be too pessimistic
+  - these things possibly magnify disparities
+    - larger models
+    - selective classification
+    - feature noise
+    - removing spurious features
+  - group DRO (sagawa et al. 2020) - maximize error for worst group
+    - need to add regularization to keep errors from going to 0
+    - training overparameterized models makes this problem worse
+  - abstain from classifying based on confidence (jones et al. 2020)
+    - makes error rates worse for worst group = selective classification can magnify disparities
+  - adding feature noise to each group can magnify disparities
+- domain adaptation
+  - standard domain adaptation: labeled (x, y) in source and unlabeled x in target
+  - gradual domain adaptation - things change slowly over time, can use gradual self-training (kumar et al. 2020)
+  - In-N-Out (xie et al. 2020) - if we have many features, rather than using them all as features, can use some as features and some as targets when we shift, to learn the domain shift
 
 ### tools for analyzing
 

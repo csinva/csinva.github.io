@@ -11,7 +11,7 @@ category: research
 - [Descriptive Representation and Judicial Outcomes in Multiethnic Societies](https://onlinelibrary.wiley.com/doi/full/10.1111/ajps.12187) (Grossman et al. 2016)
   - judicial outcomes of arabs depended on whether there was an Arab judge on the panel
 - [Using Maimonides' Rule to Estimate the Effect of Class Size on Scholastic Achievement](http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.554.9675) (angrist & lavy 1999)
-  - reducing class size induces a signi􏰜cant and substantial increase in test scores for fourth and 5th graders, although not for third graders.
+  - reducing class size induces a signicant and substantial increase in test scores for fourth and 5th graders, although not for third graders.
 - [Smoking and Lung Cancer: Recent Evidence and a Discussion of Some Questions](https://academic.oup.com/jnci/article/22/1/173/912572) (cornfield et al. 1959)
   - not a traditional statistics paper
   - most of it is a review of various scientific evidence about smoking and cancer
@@ -153,18 +153,29 @@ C(Location of Car) --> B
     - e.g. S-learner (hill 11) - "S" stands for "single" and fits a single statistical model for $\mu_1 - \mu_0$
       - can be biased towards 0
     - e.g. T-learner (foster et al. 2011) - "T" stands for "two" because we fit 2 models:  one model for conditional expectation of each potential outcome: $\hat \mu_1(x), \hat \mu_0(x)$
+      - can have issues, e.g. different effects are regularized differently
+      - doesn't do well with variation in the propensity score. If $e(x)$ varies considerably, then our estimates of $\hat \mu(0)$ will be driven by data in areas with many control units (i.e., with $e(x)$ closer to 0), and those of $\hat \mu (1)$ by regions with more treated units (i.e., with e(x) closer to 1).
     - e.g. X-learner ([kunzel et al. 19](https://www.pnas.org/content/116/10/4156.short)) - "X" stands for crossing between estimates and conditional outcomes for each group
       - first, fit $\hat \mu_1(x), \hat \mu_0(x)$
       - second, compute effects using all the data $\begin{aligned} \hat{\tau}_{1, i} &=Y_{i}(1)-\hat{\mu}_{0}\left(x_{i}\right) \\ \hat{\tau}_{0, i} &=\hat{\mu}_{1}\left(x_{i}\right)-Y_{i}(0) \end{aligned}$ 
       - finally, combine effects $\hat{\tau}(x)=g(x) \hat{\tau}_{0}(x)+(1-g(x)) \hat{\tau}_{1}(x)$
         - $g(x)$ is weighting function, e.g. estimated propensity score
-    - e.g. R-learner (nie-wager, 20)
+    - e.g. R-learner ([robinson, 1988](https://www.jstor.org/stable/1912705?casa_token=MIFpVeGtg_AAAAAA%3ASw_iZBgtJwx_P6jezFPxHXy8USBdJugzBzt5S9I2sc1j83K_dmYJmskt-l8cTxMBHffbZFTjPCO7KQzrPGkr4SyAAOID7engZqQrMLQy2fv2yQ-C0rs&seq=1#metadata_info_tab_contents); nie-wager, 20) - regularized semiparametric learner
+      - $\hat{\tau}_{R}(\cdot)=\operatorname{argmin}_{\hat \tau}\left\{\frac{1}{n} \sum_{i=1}^{n}\left(\underbrace{Y_{i}-\hat \mu\left(X_{i}\right)}_{\text{Y residual}}-\left(T_{i}-\hat e\left(X_{i}\right)\right) \hat \tau\left(X_{i}\right)\right)^{2}\right. \left.+ \underbrace{\Lambda_{n}\left(\hat \tau(\cdot)\right)}_{\text{regularization}}\right\}$
+        - $\hat \mu(x) = E[Y_i|X=x]$
+        - use cross-fitting to estimate $\hat \tau$ and $\hat \mu$
+        - $\tau$ takes a form, e.g. LASSO
   - tree-based methods
     - e.g. causal tree ([athey & imbens, 16](https://www.pnas.org/content/113/27/7353.short)) - like decision tree, but change splitting criterion for differentiating 2 outcomes
     - e.g. causal forest ([wager & athey, 18](https://www.tandfonline.com/doi/full/10.1080/01621459.2017.1319839))
     - e.g. BART (hill, 12)
   - neural-net based methods
     - e.g. TARNet ([shalit et al. 2017](https://arxiv.org/abs/1606.03976)) - full notes below, use data from both groups
+- validation
+  - can cross-validate CATE on R-loss (sampling variability is high, but may not always be an issue ([wager, 2020](https://www.tandfonline.com/doi/full/10.1080/01621459.2020.1727235?casa_token=vqv0KlGeZcIAAAAA:l-UnVbnUT6r_klyrqTnjPnfrlE_XsywwRC08mOgBWtB_qeuSXsN2wXSKyGJP_pmYW_3Ucp1N4nLM)))
+  - indirect approach - use CATE to identify subgroups, and then use out-of-sample data to evaluate these subgroups
+  - fit $\hat \tau$ then rerun semiparametric model and see if coefficient for $\hat \tau$ ends up close to 1
+  - more discussion in ([athey & wager, 2019](https://arxiv.org/abs/1902.07409)) and ([chernozhukov et al. 2017](https://arxiv.org/abs/1712.04802))
 - **subgroup analysis** - identify subgroups with treatment effects far from the average
   - generally easier than CATE
 - [staDISC](https://arxiv.org/pdf/2008.10109.pdf) (dwivedi, tan et al. 2020) - learn stable / interpretable subgroups for causal inference
@@ -190,6 +201,12 @@ C(Location of Car) --> B
         - remove all cells contained in another cell
         - pick one randomly, remove all points in this cell, then continue
     - stability: rerun search multiple times and look for stable cells / stable cell coverage
+
+## policy learning
+
+- rather than estimating a treatment effect, find a policy that maximizes some expected utility (e.g. can define utility as the potential outcome $\mathbb E[Y_i(\pi(X_i))]$)
+
+
 
 ## causal discovery
 
@@ -288,6 +305,23 @@ C(Location of Car) --> B
     - level 3 - distributions corresponding to counterfactuals
 - [Causality for Machine Learning](https://arxiv.org/abs/1911.10500) (scholkopf 19)
   - most of ml is built on the iid assumption and fails when it is violated (e.g. cow on a beach)
+- [Learning explanations that are hard to vary](https://arxiv.org/abs/2009.00329) (parascandolo...sholkopf, 2020)
+  - basically, gradients should be consistent during learning
+  - practical algorithm: AND-mask
+    - like zeroing out those gradient components with respect to weights that have *inconsistent signs* across environments
+      - basically same complexity as normal GD
+    - previous works used cosine similarity between weights in different settings
+    - experiments
+      - real data is spiral but each env is linearly separable - still able to learn spiral
+      - cifar - with real labels, performance unaffected; with random labels, training acc drops significantly
+        - each example is its own environment
+        - with noisy labels, imposes good regularization
+      - rl - works well on coinrun
+  - propose **invariant learning consistency** (ILC)- measures expected consistency of the soln found by an algorithm given a hypothesis class
+    - consistency - what extent a minimum of the loss surface appears **only when data from different envs** are pooled
+  - given algorithm $\mathcal A$, maximize this: $\mathrm{ILC}\left(\mathcal{A}, p_{\theta^{0}}\right):= \underbrace{-\mathbb{E}_{\theta^{0} \sim p\left(\theta^{0}\right)}}_{\text{expectation over reinits}}\left[\mathcal{I}^{\epsilon} (\underbrace{\mathcal{A}_{\infty}(\theta^{0}, \mathcal{E}}_{\hat \theta}) \right]$
+    - **inconsistency score** for a solution $\hat \theta$ given environments $e$: $\mathcal{I}^{\epsilon}(\hat \theta):=\overbrace{\max _{\left(e, e^{\prime}\right) \in \mathcal{E}^{2}} }^{\text{env. pairs}} \underbrace{\max _{\theta \in N_{e, \hat \theta}^{\epsilon}}}_{\text{low-loss region around $\hat \theta$}} \overbrace{\mid \mathcal{L}_{e^{\prime}}(\theta)-\mathcal{L}_{e}(\theta)|}^{\text{loss between envs.}}$
+      - $N_{e, \hat \theta}^{\epsilon}$ is path-connected region around $\hat \theta$ where $\left\{\theta \in \Theta\right.$ s.t. $\left|\mathcal{L}_{e}(\theta)-\mathcal{L}_{e}\left(\hat \theta\right)\right| \leqslant \epsilon$
 
 ## misc problems
 
@@ -305,9 +339,19 @@ C(Location of Car) --> B
     \mathrm{PN}=\underbrace{\frac{P(y \mid t)-P\left(y \mid t^{\prime}\right)}{P(y \mid t)}}_{\text{excess risk ratio}}+\underbrace{\frac{P\left(y \mid t^{\prime}\right)-P\left(y \mid d o\left(t^{\prime}\right)\right)}{P(t, y)}}_{\text{confounding adjustment}}
     $$
 
+## transferring out-of-sample
+
+- [Elements of External Validity: Framework, Design, and Analysis](https://naokiegami.com/paper/external_full.pdf)
+  - external validity - when do results from an RCT generalize to new settings?
+  - X-, T-, Y -, and C-validity (units, treatments, outcomes, and contexts)
+  - two goals: effect-generalization + sign-generalization
+
 # different assumptions / experimental designs
 
 - [The Blessings of Multiple Causes](https://arxiv.org/abs/1805.06826) (wang & blei, 2019) - having multiple causes can help construct / find all the confounders
+  - instead of ignorability, require that any missing confounder affects multiple observed variables
+  - *deconfounder algorithm* - infers a latent variable as a substitute for unobserved confounders and then uses that substitute to perform causal inference
+    - replaces an uncheckable search for possible confounders with the checkable goal of building a good factor model of observed casts.
   - controversial whether this works in general
   - [On Multi-Cause Causal Inference with Unobserved Confounding: Counterexamples, Impossibility, and Alternatives](https://arxiv.org/abs/1902.10286) (d'amour 2019)
 
@@ -317,6 +361,9 @@ C(Location of Car) --> B
 
 - [Learning Representations for Counterfactual Inference](https://arxiv.org/abs/1605.03661) (johansson et al. 2016)
   - ![learning_causal_repr](../assets/learning_causal_repr.png)
+  - assumption similar to ignorability: the treatment assignment information (and any info which predicts it) should not influence the ITE: $T \perp \!\!\! \perp \{ Y^{T=1}, Y^{T=0}\} | X$
+    - often not the case, e.g. medical symptoms lead doctors to give a treatment more
+    - in this case, we will lose info that can help us predict the CATE
   - also an extra loss: penalty that encourages counterfactual preds to be close to nearest observed outcome from the same set
   - fit linear ridge regression on top of representation $\phi$
   - not exactly the same as the setting in [fair repr. learning](http://www.cs.toronto.edu/~zemel/documents/fair-icml-final.pdf) or [domain adversarial training](https://www.jmlr.org/papers/volume17/15-239/15-239.pdf) - MMD or Wasserstein distance instead of classification
@@ -334,6 +381,11 @@ C(Location of Car) --> B
     - weights are from propensity scores, unlike johansson et al. 2018
     - intuition: upweight regions with good overlap
   - bounds on degree of imbalance as a function of propensity model
+- [Invariant Representation Learning for Treatment Effect Estimation](https://arxiv.org/abs/2011.12379) (shi, veitch, & blei, 2020)
+  - Nearly Invariant Causal Estimation - uses IRM to learn repr. that strips out bad controls but preserves sufficient information to adjust for confounding
+    - observe data from multiple environments
+    - covariates contain some causal variables
+    - covariates also contain some false confounders
 
 ## limitations
 

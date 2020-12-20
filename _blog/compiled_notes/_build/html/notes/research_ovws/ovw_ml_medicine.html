@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>1.7. ml in medicine &#8212; learning to learn</title>
+    <title>1.8. ml in medicine &#8212; learning to learn</title>
     
   <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -56,8 +56,8 @@
     <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="1.8. causal inference" href="ovw_causal_inference.html" />
-    <link rel="prev" title="1.6. scattering transform" href="ovw_scat.html" />
+    <link rel="next" title="1.9. causal inference" href="ovw_causal_inference.html" />
+    <link rel="prev" title="1.7. scattering transform" href="ovw_scat.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -106,58 +106,63 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="ovw_transfer_learning.html">
+     1.2. adv attacks
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="ovw_disentanglement.html">
-     1.2. disentanglement
+     1.3. disentanglement
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_complexity.html">
-     1.3. complexity
+     1.4. complexity
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_interesting_science.html">
-     1.4. interesting science
+     1.5. interesting science
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_dl_theory.html">
-     1.5. dl theory
+     1.6. dl theory
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_scat.html">
-     1.6. scattering transform
+     1.7. scattering transform
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     1.7. ml in medicine
+     1.8. ml in medicine
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_causal_inference.html">
-     1.8. causal inference
+     1.9. causal inference
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_dl_for_neuro.html">
-     1.9. dl for neuro
+     1.10. dl for neuro
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_uncertainty.html">
-     1.10. uncertainty
+     1.11. uncertainty
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_interp.html">
-     1.11. interpretability
+     1.12. interpretability
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_kernels.html">
-     1.12. kernels
+     1.13. kernels
     </a>
    </li>
   </ul>
@@ -573,85 +578,85 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#general">
-   1.7.1. general
+   1.8.1. general
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#high-level">
-     1.7.1.1. high-level
+     1.8.1.1. high-level
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#criticisms">
-     1.7.1.2. criticisms
+     1.8.1.2. criticisms
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#medical-system">
-   1.7.2. medical system
+   1.8.2. medical system
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#evaluation">
-     1.7.2.1. evaluation
+     1.8.2.1. evaluation
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#medical-education">
-     1.7.2.2. medical education
+     1.8.2.2. medical education
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#political-elements">
-     1.7.2.3. political elements
+     1.8.2.3. political elements
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#medical-communication">
-   1.7.3. medical communication
+   1.8.3. medical communication
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#how-do-doctors-think">
-     1.7.3.1. “how do doctors think?”
+     1.8.3.1. “how do doctors think?”
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#communicating-findings">
-     1.7.3.2. communicating findings
+     1.8.3.2. communicating findings
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#examples">
-   1.7.4. examples
+   1.8.4. examples
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#succesful-examples-of-ai-in-medicine">
-     1.7.4.1. succesful examples of ai in medicine
+     1.8.4.1. succesful examples of ai in medicine
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#icu-interpretability-example">
-     1.7.4.2. icu interpretability example
+     1.8.4.2. icu interpretability example
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#high-performance-ai-studies">
-     1.7.4.3. high-performance ai studies
+     1.8.4.3. high-performance ai studies
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#improving-medical-studies">
-   1.7.5. improving medical studies
+   1.8.5. improving medical studies
   </a>
  </li>
 </ul>
@@ -667,9 +672,9 @@
                 
   <p><strong>some rough notes on ml in medicine</strong></p>
 <div class="section" id="ml-in-medicine">
-<h1>1.7. ml in medicine<a class="headerlink" href="#ml-in-medicine" title="Permalink to this headline">¶</a></h1>
+<h1>1.8. ml in medicine<a class="headerlink" href="#ml-in-medicine" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="general">
-<h2>1.7.1. general<a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h2>
+<h2>1.8.1. general<a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>3 types</p>
 <ul>
@@ -697,7 +702,7 @@
 <li><p>healthcare is 20% of US GDP</p></li>
 </ul>
 <div class="section" id="high-level">
-<h3>1.7.1.1. high-level<a class="headerlink" href="#high-level" title="Permalink to this headline">¶</a></h3>
+<h3>1.8.1.1. high-level<a class="headerlink" href="#high-level" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>focus on building something you want to deploy</p>
 <ul>
@@ -720,16 +725,16 @@
 </ul>
 </div>
 <div class="section" id="criticisms">
-<h3>1.7.1.2. criticisms<a class="headerlink" href="#criticisms" title="Permalink to this headline">¶</a></h3>
+<h3>1.8.1.2. criticisms<a class="headerlink" href="#criticisms" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://science.sciencemag.org/content/366/6464/447">Dissecting racial bias in an algorithm used to manage the health of populations </a>(obermeyer et al. 2019)</p></li>
 </ul>
 </div>
 </div>
 <div class="section" id="medical-system">
-<h2>1.7.2. medical system<a class="headerlink" href="#medical-system" title="Permalink to this headline">¶</a></h2>
+<h2>1.8.2. medical system<a class="headerlink" href="#medical-system" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="evaluation">
-<h3>1.7.2.1. evaluation<a class="headerlink" href="#evaluation" title="Permalink to this headline">¶</a></h3>
+<h3>1.8.2.1. evaluation<a class="headerlink" href="#evaluation" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>doctors are evaluated infrequently (and things like personal traits are often included)</p></li>
 <li><p>US has pretty good care but it is expensive per patient</p></li>
@@ -738,7 +743,7 @@
 </ul>
 </div>
 <div class="section" id="medical-education">
-<h3>1.7.2.2. medical education<a class="headerlink" href="#medical-education" title="Permalink to this headline">¶</a></h3>
+<h3>1.8.2.2. medical education<a class="headerlink" href="#medical-education" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>rarely textbooks (often just slides)</p></li>
 <li><p>1-2% miss rate for diagnosis can be seen as acceptable</p></li>
@@ -763,7 +768,7 @@
 </ul>
 </div>
 <div class="section" id="political-elements">
-<h3>1.7.2.3. political elements<a class="headerlink" href="#political-elements" title="Permalink to this headline">¶</a></h3>
+<h3>1.8.2.3. political elements<a class="headerlink" href="#political-elements" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.newyorker.com/culture/annals-of-inquiry/why-doctors-should-organize">why doctors should organize</a></p></li>
 <li><p>big pharma</p></li>
@@ -781,9 +786,9 @@
 </div>
 </div>
 <div class="section" id="medical-communication">
-<h2>1.7.3. medical communication<a class="headerlink" href="#medical-communication" title="Permalink to this headline">¶</a></h2>
+<h2>1.8.3. medical communication<a class="headerlink" href="#medical-communication" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="how-do-doctors-think">
-<h3>1.7.3.1. “how do doctors think?”<a class="headerlink" href="#how-do-doctors-think" title="Permalink to this headline">¶</a></h3>
+<h3>1.8.3.1. “how do doctors think?”<a class="headerlink" href="#how-do-doctors-think" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>easy to misinterpret things to be causal</p></li>
 <li><p>often no intuition for even relatively simple engineered features, such as averages</p></li>
@@ -828,7 +833,7 @@
 </ul>
 </div>
 <div class="section" id="communicating-findings">
-<h3>1.7.3.2. communicating findings<a class="headerlink" href="#communicating-findings" title="Permalink to this headline">¶</a></h3>
+<h3>1.8.3.2. communicating findings<a class="headerlink" href="#communicating-findings" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://modelplot.github.io/intro_modelplotpy.html">don’t use ROC curves, use deciles</a></p></li>
 <li><p><a class="reference external" href="https://jamanetwork.com/journals/jama/fullarticle/2748179">need to evaluate use, not just metric</a></p></li>
@@ -841,9 +846,9 @@
 </div>
 </div>
 <div class="section" id="examples">
-<h2>1.7.4. examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<h2>1.8.4. examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="succesful-examples-of-ai-in-medicine">
-<h3>1.7.4.1. succesful examples of ai in medicine<a class="headerlink" href="#succesful-examples-of-ai-in-medicine" title="Permalink to this headline">¶</a></h3>
+<h3>1.8.4.1. succesful examples of ai in medicine<a class="headerlink" href="#succesful-examples-of-ai-in-medicine" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.nejm.org/doi/full/10.1056/NEJM199112193252503">ECG</a> (NEJM, 1991)</p></li>
 <li><p>EKG has a small interpretation on it</p></li>
@@ -851,7 +856,7 @@
 </ul>
 </div>
 <div class="section" id="icu-interpretability-example">
-<h3>1.7.4.2. icu interpretability example<a class="headerlink" href="#icu-interpretability-example" title="Permalink to this headline">¶</a></h3>
+<h3>1.8.4.2. icu interpretability example<a class="headerlink" href="#icu-interpretability-example" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>goal: explain the model not the patient (that is the doctor’s job)</p></li>
 <li><p>want to know interactions between features</p></li>
@@ -866,7 +871,7 @@
 </ul>
 </div>
 <div class="section" id="high-performance-ai-studies">
-<h3>1.7.4.3. high-performance ai studies<a class="headerlink" href="#high-performance-ai-studies" title="Permalink to this headline">¶</a></h3>
+<h3>1.8.4.3. high-performance ai studies<a class="headerlink" href="#high-performance-ai-studies" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>chest-xray: chexnet</p></li>
 <li><p>echocardiograms: madani, ali, et al. 2018</p></li>
@@ -877,7 +882,7 @@
 </div>
 </div>
 <div class="section" id="improving-medical-studies">
-<h2>1.7.5. improving medical studies<a class="headerlink" href="#improving-medical-studies" title="Permalink to this headline">¶</a></h2>
+<h2>1.8.5. improving medical studies<a class="headerlink" href="#improving-medical-studies" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Machine learning methods for developing precision treatment rules with observational data (Kessler et al. 2019)</p>
 <ul>
@@ -929,8 +934,8 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="ovw_scat.html" title="previous page">1.6. scattering transform</a>
-    <a class='right-next' id="next-link" href="ovw_causal_inference.html" title="next page">1.8. causal inference</a>
+    <a class='left-prev' id="prev-link" href="ovw_scat.html" title="previous page">1.7. scattering transform</a>
+    <a class='right-next' id="next-link" href="ovw_causal_inference.html" title="next page">1.9. causal inference</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

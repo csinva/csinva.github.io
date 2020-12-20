@@ -42,8 +42,11 @@ Some notes on decision theory based on Berkeley's CS 188 course and  "Artificial
   - can do alpha-beta pruning analog if we assume evaluation function is bounded in some range
   - alternatively, could simulate games with *Monte Carlo simulation*
 
+### utilities / decision theory -- R&N 16.1-16.3, mazzonni quant finance book
 
-### utilities / decision theory -- R&N 16.1-16.3
+- **lottery** - any function of a random variable
+- **utility function** - lottery that satisfiers certain properties (e.g. transitivity)
+  - expected utility = *von Neumann-Morgenstern* utility
 - goal: maximize utility by taking actions (focus on single actions)
   - utility function U(s) gives utility of a state
   - actions are probabilistic: $P[RESULT(a)=s' \vert a,e]$
@@ -73,13 +76,15 @@ Some notes on decision theory based on Berkeley's CS 188 course and  "Artificial
 - people have complicated utility functions
   - ex. *micromort* - one in a million chance of death
   - ex. *QALY* - quality-adjusted life year
-- money
+- risk
   - agents exhibits *monotonic preference* for more money
   - gambling has expected monetary value = EMV
   - *risk averse* = when utility of money is sublinear
-    - value agent will accept in lieu of lottery = *certainty equivalent*= *insurance premium*
+    - **risk premium** = value agent will accept in lieu of lottery = *certainty equivalent*= *insurance premium*
   - *risk-neutral* = linear
   - *risk-seeking* = supralinear
+  - **absolute risk aversion** $ARA(x) = - \frac{u''(x)}{u'(x)} $ : higher is more risk averse
+  - **relative risk aversion** $ARA(x) = - \frac{x \cdot u''(x)}{u'(x)} $
 - *optimizer's curse* - tendency for E[utility] to be too high because we keep picking high utility randomness
 - *normative theory* - how idealized agents work
 - *descriptive theory* - how actual agents work
@@ -271,7 +276,7 @@ Some notes on decision theory based on Berkeley's CS 188 course and  "Artificial
 - $U(s) = \underset{a}{\max} \: Q(s,a)$
   - ADP version: $Q(s, a) = R(s) + \gamma \sum_{s'} P(s'|s, a) \underset{a'}{\max} Q(s', a')$
   - TD version: $Q(s,a) = Q(s,a) + \alpha [R(s) - Q(s,a) + \gamma \: \underset{a'}{\max} Q(s', a')]$ - **this is what is usually referred to as Q-learning**
-- *SARSA* (state-action-reward-state-action) is related: $Q(s,a) = Q(s,a) + \alpha [R(s) - Q(s,a) + \gamma \: Q(s', a')]$
+- *SARSA* (state-action-reward-state-action) is related: $Q(s,a) = Q(s,a) + \alpha [R(s) + \gamma \: Q(s', a') - Q(s,a) ]$
   - here, a' is action actually taken
 - Q-learning is *off-policy* (only uses best Q-value)
   - more flexible
@@ -297,3 +302,4 @@ Some notes on decision theory based on Berkeley's CS 188 course and  "Artificial
     3. PEGASUS - *correlated sampling* - ex. 2 blackjack programs would both be dealt same hands -  want to see different policies on same things
 
 ---
+

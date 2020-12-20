@@ -11,9 +11,10 @@ category: stat
 - introductory courses following neyman-rubin framework at UC Berkeley
 - the textbook [What if](https://cdn1.sph.harvard.edu/wp-content/uploads/sites/1268/2020/01/ci_hernanrobins_21jan20.pdf) (hernan & robins)
 - the book of why
--  of the fairml book
-- rebecca barter's [blog posts](http://www.rebeccabarter.com/blog/2017-07-05-ip-weighting/)
+-  [fairml book](https://fairmlbook.org/)
 - [in-progress book](https://www.bradyneal.com/causal-inference-course) by brady neal
+- [course notes](https://web.stanford.edu/~swager/stats361.pdf) by stefan wager
+- rebecca barter's [blog posts](http://www.rebeccabarter.com/blog/2017-07-05-ip-weighting/)
 
 
 
@@ -117,7 +118,7 @@ category: stat
 
 ## fisher randomization test
 
-*in this framework, look for evidence against the null hypothesis (e.g. that there is no causal effect)*
+* *this framework seeks evidence against the null hypothesis (e.g. that there is no causal effect)*
 
 - **fisher null hypothesis**: $H_{0F}: Y_i^{T=0} = Y_i^{T=1}\quad \forall i$ 
   - also called strong null hypothesis = sharp null hypothesis (Rubin, 1980)
@@ -145,12 +146,16 @@ category: stat
 *In this framework, try to explicitly compute the effect*
 
 - **average treatment effect ATE** $\tau = E \{Y^{T=1} - Y^{T=0} \}$
+  - individual treatment effect $\Delta = Y_i^{T=1} - Y_i^{T=0}$
+  - conditional average effect $= E\{Y^{T=1} - Y^{T=0}\}|X$
 - estimator $\hat \tau = \hat{\bar{Y}}^{T=1} - \hat{\bar{Y}}^{T=0}$ 
   - unbiased: $E(\hat \tau) = \tau$
   - $V(\hat \tau) = \underbrace{S^2(1) / n_1 + S^2(0)/n_0}_{\hat V(\tau) \text{ conservative estimator}} - S^2(\tau)/n$ 
     - 95% CI: $\hat \tau \pm 1.96 \sqrt{\hat V}$ (based on normal approximation)
-    - we could similarly get a p-value testing whether $\hat \tau$ goes to 0, unlcear if this is better
+    - we could similarly get a p-value testing whether $\hat \tau$ goes to 0, unclear if this is better
     - key assumptions: SUTVA, consistency, ignorability
+- strict randomization framework: only assume treatment assignment is take to be a random variable
+  - alternatively assume population distr. from which potential outcomes are drawn
 - advantages over DAGs: easy to express some common assumptions, such as monotonicity / convexity
   1. **neyman-rubin model**: $Y_i = \begin{cases} Y_i^{T=1}, &\text{if } T_i=1\\Y_i^{T=0}, &\text{if } T_i=0 \end{cases}$
   	- equivalently, $Y_i = T_i Y_i^{T=1} + (1-T_i) Y_i^{T=0}$
@@ -176,6 +181,7 @@ category: stat
       - $p$ contains at least one arrow-emitting node that is in $S$
       - $p$ contains at least one collision node that is outside $S$ and has no descendant in $S$
   - absence of edges often corresponds to qualitative judgements of conditional independence
+  - disentangled factorization represented by the graph can use far fewer params
 
 | forks                                                        | mediators                                                    | colliders                                                    |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -280,6 +286,8 @@ category: stat
   - can do conditional FRT or post-stratified Neymanian analysis
   - can often improve efficiency
   - is limited, because eventually there are no points in certain strata
+- this is also called aggregating estimators (e.g. aggregating difference-in-means estimators)
+- for continuous confounder, can also stratify on propensity score
 
 ### regression adjustment balances covariates
 
@@ -344,49 +352,83 @@ M --> Y
 
 ## regression discontinuity
 
+- dates back to [thistlethwaite & campbell, 1960](https://psycnet.apa.org/record/1962-00061-001)
 - treatment definition (e.g. high-school acceptance) has an arbitrary threshold (e.g. score on a test)
   - comparing groups very close to the cutoff should basically control for confounding
+- easily satisfies unconfounding, but has no overlap at all ($P(T_i=1|Z_i=z)$ is always 0 or 1)
+- $\tau_{c}=\mathbb{E}\left[Y_{i}(1)-Y_{i}(0) \mid Z_{i}=c\right]$ is identified via $\tau_{c}=\lim _{z \downarrow c} \mathbb{E}\left[Y_{i} \mid Z_{i}=z\right]-\lim _{z \uparrow c} \mathbb{E}\left[Y_{i} \mid Z_{i}=z\right]$ under continuity assumptions
+- can estimate via local linear regr. -- kernel fits things on either side
+  - needs assumptions on the smoothness of the mean function
+- alternatively, assume some unconfounded noise in the running variable (i.e. the variable being thresholded)
+  - results in deconvolution-type estimators (see [eckles et al. 2020](https://arxiv.org/abs/2004.09458))
 
 ## difference-in-difference
 
-- requires data from both groups at 2 or more time periods (at least one before treatment and one after)
+- difference-in-difference is a name given to many methods for estimating effects in longitudinal data = panel data
+  - requires data from both groups at 2 or more time periods (at least one before treatment and one after)
+- **simple constant-treatment model**: $Y_{i t}=Y_{i t}(0)+T_{i t} \tau,$ for all $i=1, \ldots, n, t=1, \ldots$
+  - assumes no effect heterogeneity
+  - assumes treatment at time only effects outcomes at time t - this can be weird
+- one approach for estimation: assume **two-way model**: $Y_{i t}=\alpha_{i}+\beta_{t}+T_{i t} \tau+\varepsilon_{i t}, \quad \mathbb{E}[\varepsilon \mid \alpha, \beta, T]=0$
+  - estimator for difference-in-difference with two timepoints
+    - $\hat{\tau}=\frac{1}{\left|\left\{i: T_{i 2}=1\right\}\right|} \underbrace{\sum_{\left\{i: T_{i 2}=1\right\}}\left(Y_{i 2}-Y_{i 1}\right)}_{\text{diff for treated group}}-\frac{1}{\left|\left\{i: T_{i 2}=0\right\}\right|} \underbrace{\sum_{\left\{i: T_{i 2}=0\right\}}\left(Y_{i 2}-Y_{i 1}\right)}_{\text{diff for untreated group}}$
+- second approach for estimation of constant-treatment: interactive panel models $Y_{i t}=A_{i .} B_{t .}^{\prime}+T_{i t} \tau+\varepsilon_{i t}, \quad \mathbb{E}[\varepsilon \mid A, B, T]=0, \quad A \in \mathbb{R}^{n \times k}, B \in \mathbb{R}^{T \times k}$
+  - allows for rank $k$ matrix, less restrictive (no longer forces parallel trends for all units)
+  - can estimate with synthetic controls ([abadie, diamon, & hainmueller, 2010](https://amstat.tandfonline.com/doi/abs/10.1198/jasa.2009.ap08746))
+    - artificially re-weight unexposed units (i.e. units with $T_i=0$) so their average trend matches the unweighted mean trend up to time $t_0$
+    - if the weights create thes parallel trends, they should alos balance the latent factors $A_i$
+    - ![src:wager lecture notes](../assets/synth_control_did.png)
+      - trends are clearly not parallel, but after reweighting they become parallel
+  - many other estimators, e.g. via clustering or nuclear norm minimization
+- third approach: design-based assumptions e.g. $Y_{i .}(0) \perp T_{i .} \mid S_{i}, \quad S_{i}=\sum_{t=1}^{T} T_{i t}$
+  - ex. $Y_{it}$ is health outcome, $T_{it}$ is medical treatment, $S_i$ is unobserved health-seeking behavior
+  - $\hat{\tau}=\sum_{i, t} \gamma_{i t} Y_{i t}$ where $\gamma$-matrix depends only on treatment assignment
 
 ## instrumental variable
 
-- see this nice [blog post](http://www.rebeccabarter.com/blog/2018-05-23-instrumental_variables/) by Rebecca Barter
+- ```mermaid
+  graph LR
+  I --> T
+  X --> T
+  T --> Y
+  ```
+  
+- **instrument** $I$- measurable quantity that correlates with the treatment, and is $\underbrace{\color{NavyBlue}{\text{only related to the outcome via the treatment}}}_{\textbf{exclusion restriction}}$
 
-  - ```mermaid
-    graph LR
-    I --> T
-    X --> T
-    T --> Y
-    ```
-    
-  - **instrument** $I$- measurable quantity that correlates with the treatment, and is $\underbrace{\color{NavyBlue}{\text{only related to the outcome via the treatment}}}_{\textbf{exclusion restriction}}$
-    
-    - exclusion restriction is uncheckable
+- precisely 3 conditions must hold for $I_i$:
 
-  - key idea: randomization holds for $I$ but not for $T$
+  - exogenous: $\varepsilon_{i} \perp I_{i}$
+  - relevant: $\operatorname{Cov}\left[T_{i}, I_{i}\right] \neq 0 $
+  - exclusion restriction: any effect of $I_{i}$ on $Y_{i}$ must be mediated via $T_{i}$ 
+    - uncheckable
 
-  - intuitively, need to combine effect of instrument on treatment and effect of instrument on outcome (through treatment)
+- intuitively, need to combine effect of instrument on treatment and effect of instrument on outcome (through treatment)
 
-    - **Wald estimator** = $\frac{Cov(Y, I)}{Cov(T, I)}$
-    - LATE = local average treatment effect - this estimate is only valid for the patients who were influenced by the instrument
-    - in practice, often implemented in a 2-stage least squares (regress $I \to T$ then $T\to Y$)
+  - in practice, often implemented in a 2-stage least squares (regress $I \to T$ then $T\to Y$)
+    - $Y_{i}=\alpha+T_{i} \tau+\varepsilon_{i}, \quad \varepsilon_{i} \perp I_{i}$
+    - $T_{i}=I_{i} \gamma+\eta_{i}$
+    - most important point is that $\epsilon_i \perp I_i$
+  - **Wald estimator** = $\frac{Cov(Y, I)}{Cov(T, I)}$
+  - *LATE* = local average treatment effect - this estimate is only valid for the patients who were influenced by the instrument
+  - we may have many potential instruments
+    - in this case, can learn a funciton of the instruments via cross-fitting as an instrument
 
 - examples
 
+  - $I$: stormy weather, $T$ price of fish, $Y$ demand for fish
+    - stormy weather makes it harder to fish, raising price but not affecting demand
   - $I$: quarter of birth, $T$: schooling in years, $Y$: earnings (angrist & krueger, 1991)
   - $I$: sibling sex composition, $T$: family size, $Y$: mother's employment (angist & evans, 1998)
   - $I$: lottery number, $T$: veteran status, $Y$: mortality
   - $I$: geographic variation in college proximity, $T$: schooling, $Y$: wage (card, 1993)
 
-- **CACE** $\tau_c$ (complier average causal effect) = **LATE** (local average treatement effect)
+### effect under non-compliance
 
-  - technical setting: **noncompliance** - sometimes treatment assigned $I$ and treatment received $T$ are different
-  
+- **CACE** $\tau_c$ (complier average causal effect) = **LATE** (local average treatement effect)
+- technical setting: **noncompliance** - sometimes treatment assigned $I$ and treatment received $T$ are different
+
 - assumptions
-    - randomization = instrumental unconfoundedness: $I \perp \{T^{I=1}, T^{I=0}, Y^{I=1}, Y^{I=0} \}$
+    - *randomization = instrumental unconfoundedness*: $I \perp \{T^{I=1}, T^{I=0}, Y^{I=1}, Y^{I=0} \}$
       - randomization lets us identify ATE of $I$ on $T$ and $I$ on $Y$
         - $\tau_{T}=E\{T^{I=1}-T^{I=0}\}=E(T \mid I=1)-E(T \mid I=0)$
         - $\tau_{Y}=E\{Y^{I=1}-Y^{I=0}\}=E(Y \mid I=1)-E(Y \mid I=0)$
@@ -398,9 +440,9 @@ M --> Y
           \mathrm{d}, & \text { if } T_{i}^{I=1}=0 \text { and } T_{i}^{I=0}=1 \text{ defier}\\
           \mathrm{n}, & \text { if } T_{i}^{I=1}=0 \text { and } T_{i}^{I=0}=0\text{ never taker}
           \end{array}\right.$
-    - exclusion restriction: $Y_i^{I=1} = Y_i^{I=0}$ for always-takers and never-takers
+    - *exclusion restriction*: $Y_i^{I=1} = Y_i^{I=0}$ for always-takers and never-takers
       - means treatment assignment affects outcome only if it affects the treatment
-    - monotonicity: $P(C=d) = 0$ or $T_i^{U=1} \geq T_i^{U=0} \; \forall i$ - there are no defiers
+    - *monotonicity*: $P(C=d) = 0$ or $T_i^{U=1} \geq T_i^{U=0} \; \forall i$ - there are no defiers
       - testable implication: $P(T=1|I=1) \geq P(T=1|C=0)$
   - under these 3 assumptions, LATE $\tau_c = \frac{\tau_Y}{\tau_T} = \frac{E(Y \mid I=1)-E(Y \mid I=0)}{E(T \mid I=1)-E(T \mid I=0)}$ 
   
@@ -463,7 +505,8 @@ M --> Y
   - ex. $\tau = \beta_t + \beta_{tx}^TE(X)$
     - $E(Y|T, X) = \beta_0 + \beta_tT + \beta_x^TX + \beta^T_{tx} X T$
     - incorporates heterogeneity
-
+- assuming linear form is relatively strong assumption compared to that made by weighting / stratification
+  
 - these easily generalize to when $T$ is continuous
 
 - $\hat \tau = \frac 1 n \sum_i (\hat \mu_1(X_i) - \hat \mu_0(X_i))$
@@ -492,9 +535,7 @@ M --> Y
 
 ## weighting methods
 
-*Weighting methods assign a different importance weight to each unit to match the covariates distributions across treatment groups after reweighting.*
-
-
+*Weighting methods assign a different importance weight to each unit to match the covariates distributions across treatment groups after reweighting. Balance is often used as a goodness of fit check after weighting. ([imbens & rubin 2015](https://www.cambridge.org/core/books/causal-inference-for-statistics-social-and-biomedical-sciences/71126BE90C58F1A431FE9B2DD07938AB))*
 
 ### inverse propensity weighting
 
@@ -523,16 +564,17 @@ M --> Y
   - scores near 0/1 are unstable - sometimes truncate ("trim") or drop units with these scores
     - fundamental problem is ovelap of covariate distrs. in treatment/control
     - when score = 0 or 1, counterfactuals may not even be well defined
+  - stratified estimator can be seen as a particular case of IPW estimator
 
 ### doubly robust estimator
 
-- $\hat \tau^{\text{dr}} = \hat \mu_1^{dr} - \hat \mu_0^{dr}$ = **doubly robust estimator** = augmented inverse propensity score weighting estimator (scharfstein et al. 1999, [bang & robins 2005](https://onlinelibrary.wiley.com/doi/full/10.1111/j.1541-0420.2005.00377.x?casa_token=oqdc-GxLFTYAAAAA%3A7CETBzsiHXXEu23NM-sMJ1CXlgI6oeAxt1Ydca3wXmPoTGsORR0IEoYszCo1GzNLtYXGNgxU4blu4gLn))
+- $\hat \tau^{\text{dr}} = \hat \mu_1^{dr} - \hat \mu_0^{dr}$ = **doubly robust estimator** = augmented inverse propensity score weighting estimator ([robins, rotnizky, & zhao 1994](https://www.tandfonline.com/doi/abs/10.1080/01621459.1994.10476818?casa_token=XYTwc8KlTqIAAAAA:zfCvbnWKpatYa1KbWIj9GUrCXpze65EEtzAuhuWD-Oztr7UBle1pivvp2481l-y_t08nScDMrql9), scharfstein et al. 1999, [bang & robins 2005](https://onlinelibrary.wiley.com/doi/full/10.1111/j.1541-0420.2005.00377.x?casa_token=oqdc-GxLFTYAAAAA%3A7CETBzsiHXXEu23NM-sMJ1CXlgI6oeAxt1Ydca3wXmPoTGsORR0IEoYszCo1GzNLtYXGNgxU4blu4gLn))
   - given $\mu_1(X, \beta_1)$, $\mu_0(X, \beta_0)$, e.g. linear
   - given $e(X, \alpha)$, e.g. logistic
-  - $\tilde{\mu}_{1}^{\mathrm{dr}} =E\left[ \overbrace{\frac{T\left\{Y-\mu_{1}\left(X, \beta_{1}\right)\right\}}{e(X, \alpha)}}^{\text{inv-prop residuals}}+\overbrace{\mu_{1}\left(X, \beta_{1}\right)}^{\text{outcome mean}}\right]$
-  - $\tilde{\mu}_{0}^{\mathrm{dr}} =E\left[\frac{(1-T)\left\{Y-\mu_{0}\left(X, \beta_{0}\right)\right\}}{1-e(X, \alpha)}+\mu_{0}\left(X, \beta_{0}\right)\right]$
+  - $\tilde{\mu}_{1}^{\mathrm{dr}} =E\left[ \overbrace{\mu_{1}\left(X, \beta_{1}\right)}^{\text{outcome mean}} + \overbrace{\frac{T\left\{Y-\mu_{1}\left(X, \beta_{1}\right)\right\}}{e(X, \alpha)}}^{\text{inv-prop residuals}}\right]$
+  - $\tilde{\mu}_{0}^{\mathrm{dr}} =E\left[\mu_{0}\left(X, \beta_{0}\right) + \frac{(1-T)\left\{Y-\mu_{0}\left(X, \beta_{0}\right)\right\}}{1-e(X, \alpha)}\right]$
   - augments the oucome regression mean with inverse-propensity of residuals
-    - can alternatively augment inv propensity score weighting estimator by the outcome models:
+  - can alternatively augment inv propensity score weighting estimator by the outcome models:
     - $\begin{aligned}
       \tilde{\mu}_{1}^{\mathrm{dr}} &=E\left[\frac{T Y}{e(X, \alpha)}-\frac{T-e(X, \alpha)}{e(X, \alpha)} \mu_{1}\left(X, \beta_{1}\right)\right] \\
       \tilde{\mu}_{0}^{\mathrm{dr}} &=E\left[\frac{(1-T) Y}{1-e(X, \alpha)}-\frac{e(X, \alpha)-T}{1-e(X, \alpha)} \mu_{0}\left(X, \beta_{0}\right)\right]
@@ -540,6 +582,11 @@ M --> Y
   - consistent if either the propensity scores or mean functions are well-specified:
     - propensities well-specified: $e(X, \alpha) = e(X)$
     - mean functions well-specified: $\left\{\mu_{1}\left(X, \beta_{1}\right)=\mu_{1}(X), \mu_{0}\left(X, \beta_{0}\right)=\mu_{0}(X)\right\}$
+- in practice, often use cross-fitting (split the data randomly into two halves $\mathcal I_1$ and $\mathcal I _2$)
+  - $\hat{\tau}_{A I P W}=\frac{\left|\mathcal{I}_{1}\right|}{n} \hat{\tau}^{\mathcal{I}_{1}}+\frac{\left|\mathcal{I}_{2}\right|}{n} \hat{\tau}^{\mathcal{I}_{2}}$
+  - $\hat{\tau}^{\mathcal{I}_{1}}=\frac{1}{\left|\mathcal{I}_{1}\right|} \sum_{i \in \mathcal{I}_{1}}\left(\hat{\mu}_{(1)}^{\mathcal{I}_{2}}\left(X_{i}\right)-\hat{\mu}_{(0)}^{\mathcal{I}_{2}}\left(X_{i}\right)\right. \left.+W_{i} \frac{Y_{i}-\hat{\mu}_{(1)}^{\mathcal{I}_{2}}\left(X_{i}\right)}{\hat{e}^{\mathcal{I}_{2}}\left(X_{i}\right)}-\left(1-W_{i}\right) \frac{Y_{i}-\hat{\mu}_{(0)}^{\mathcal{I}_{2}}\left(X_{i}\right)}{1-\hat{e}^{\mathcal{I}_{2}}\left(X_{i}\right)}\right)$
+  - avoids bias due to overfitting
+  - allows us to ignore form of estimators $\hat \mu$ and $\hat e$ and depend only on overlap, consistency, and risk decay (so CV risk of estimators should be small)
 
 ### alternatives
 
@@ -548,8 +595,13 @@ M --> Y
   - Truncated IPW (Crump et al., 2009): TruncIPW
   - Overlap Weights (Li et al., 2018): OW
 - directly incorporating covariate imbalance in weight construction (Graham et al., 2012; Diamond & Sekhon, 2013)
+  - unifying perspective on these methods via covariate-balancing loss functions ([zhao, 2019](https://projecteuclid.org/euclid.aos/1547197245))
+  - in general, balancing need not directly balance the propensity scores
+    - instead, might find propensity weights which balance covariates along certain basis functions $\psi_j(x)$
+      - $\frac{1}{n} \sum_{i=1}^{n} \frac{W_{i} \psi_{j}\left(X_{i}\right)}{\hat{e}\left(X_{i}\right)} \approx \frac{1}{n} \sum_{i=1}^{n} \psi_{j}\left(X_{i}\right),$ for all $j=1,2, \ldots$
+      - this can be desirable in high dims, when propensity scores may be unstable
   - hard moment-matching conditions (Li & Fu, 2017; Hainmueller, 2012; Imai & Ratkovic, 2014)
-  - soft moment-matching conditions  (Zubizarreta, 2015).
+  - soft moment-matching conditions  (Zubizarreta, 2015)
 
 ## stratification / matching
 
@@ -644,13 +696,14 @@ M --> Y
   - treatment is not ambiguous
   - **no interference**: my outcome is unaffected by anyone else's treatment
     - $Y_i(t_1, ...,t_n) = Y_i(t_i)$
-  - **consistency**: $Y=Y^{t=0}(1-T) + Y^{t=1}T$ - outcome agrees with the potential outcome corresponding to the treatment indicator (really this is used to ground the definition of the counterfactuals $Y^{t=0}, Y^{t=1}$)
+  - **consistency**: $Y=Y^{t=0}(1-T) + Y^{t=1}T$ - outcome agrees with the potential outcome corresponding to the treatment indicator
+    - this grounds the definition of the counterfactuals $Y^{t=0}, Y^{t=1}$
     - alternatively, $T=t \implies Y=Y(t)$
     - basically means treatment is well-defined
-  - **stable unit treatment value assumption (SUTVA) = no-interference assumption** (Rubin, 1980): unit $i$'s outcome is a function of unit $i$'s treatment
+  - **stable unit treatment value assumption (SUTVA) = no-interference assumption** (Rubin, 1980): $Y_i = Y_i(T_i)$
+    - means unit $i$'s outcome is a function of unit $i$'s treatment
     - no interference
-    - consistency
-    - +deterministic potential outcomes
+    - consistency (+deterministic potential outcomes)
   - is it something that could be intervened on?
     - can we intervene on something like Race? Soln: intervene on perceived race
     - can we intervene on BMI? many potential interventions: e.g. diet, exercise
@@ -660,7 +713,9 @@ M --> Y
       - $X_z = x \implies Y_{xz} = Y_z \quad \forall x, \text{ subsets }Z\text{, and values } z \text{ for } Z$
         - generalizes above
         - ensures interventions $do(X=x)$ results in appropriate counterfactual, regardless of holding a variable fixed, say $Z=z$
-- assumptions for ATE being identifiable: exhangeability (or ignorability) + consistency, positivity
+- assumptions for ATE being identifiable: exchangeability (or ignorability) + consistency, positivity
+- **Independent Causal Mechanisms (ICM) Principle**: The causal generative process of a system’s variables is composed of autonomous modules that do not inform or influence each other.
+  * In the probabilistic case, this means that the conditional distribution of each variable given its causes (i.e., its mechanism) does not inform or influence the other mechanisms.
 
 
 
