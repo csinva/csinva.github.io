@@ -5,6 +5,21 @@
     <i align="left">Some posts in ml research and organizing different papers.</i>
     </p>
 </div>
+
+<div class="coll3">
+    <h3 align="center">paper overviews</h3>
+
+    <ul class="list-items">
+    {% for collection in site.collections %}
+        {% for doc in collection.docs %}
+            {% if doc.category == "research" %}
+            <li><a href="{{ site.baseurl }}{{doc.url}}" style="font-size:16px"> {{ doc.title | downcase }} </a></li>
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+    </ul>
+</div>
+
 <div class="coll3">
     <h3 align="center">research posts</h3>
     <ul class="list-items">
@@ -27,20 +42,6 @@
         <li><a href="{{ site.baseurl }}/blog/misc/imagenet_quickstart/readme" style="font-size:16px"> imagenet quickstart </a>'18</li>
     </ul>
 </div>
-
-<div class="coll3">
-    <h3 align="center">paper overviews</h3>
-
-    <ul class="list-items">
-    {% for collection in site.collections %}
-        {% for doc in collection.docs %}
-            {% if doc.category == "research" %}
-            <li><a href="{{ site.baseurl }}{{doc.url}}" style="font-size:16px"> {{ doc.title | downcase }} </a></li>
-            {% endif %}
-        {% endfor %}
-    {% endfor %}
-    </ul>
- </div>
 
 <div class="colfull">
     <p align="text-center">
@@ -98,7 +99,8 @@
 
 <div class="colfull">
     <p align="text-center">
-    <i align="left">A rough set of notes which may serve as useful reference for people in machine learning / neuroscience. See also in <a href="http://book.csinva.io/">jupyter-book layout 📖</a></i>
+        <i align="left">A rough set of notes which may serve as useful reference for people in machine learning / neuroscience.</i></br>
+        <i align="left"> See also in <a href="http://book.csinva.io/">jupyter-book layout 📖</a></i>
     </p>
 </div>
 <div class="roww"> <!--begin the 1st row-->

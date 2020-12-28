@@ -107,7 +107,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_transfer_learning.html">
-     1.2. adv attacks
+     1.2. transfer learning
     </a>
    </li>
    <li class="toctree-l2">
@@ -347,43 +347,48 @@
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
+    <a class="reference internal" href="../ml/nlp.html">
+     5.1. nlp
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../ml/comp_vision.html">
-     5.1. computer vision
+     5.2. computer vision
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/structure_ml.html">
-     5.2. structure learning
+     5.3. structure learning
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/classification.html">
-     5.3. classification
+     5.4. classification
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/unsupervised.html">
-     5.4. unsupervised
+     5.5. unsupervised
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/deep_learning.html">
-     5.5. deep learning
+     5.6. deep learning
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/feature_selection.html">
-     5.6. feature selection
+     5.7. feature selection
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/learning_theory.html">
-     5.7. learning theory
+     5.8. learning theory
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/evaluation.html">
-     5.8. evaluation
+     5.9. evaluation
     </a>
    </li>
   </ul>
@@ -401,48 +406,43 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../ai/nlp.html">
-     6.2. nlp
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../ai/fairness_sts.html">
-     6.3. fairness
+     6.2. fairness
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/cogsci.html">
-     6.4. cogsci
+     6.3. cogsci
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/ai_futures.html">
-     6.5. ai futures
+     6.4. ai futures
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/logic.html">
-     6.6. logic
+     6.5. logic
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/philosophy.html">
-     6.7. philosophy
+     6.6. philosophy
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/psychology.html">
-     6.8. psychology
+     6.7. psychology
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/knowledge_rep.html">
-     6.9. representations
+     6.8. representations
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/decisions.html">
-     6.10. decisions
+     6.9. decisions
     </a>
    </li>
   </ul>
@@ -983,13 +983,29 @@
 <p><img alt="rule_models" src="../../_images/rule_models-6174107.png" /></p>
 <div class="section" id="rule-sets">
 <h4>1.12.3.1.1. rule sets<a class="headerlink" href="#rule-sets" title="Permalink to this headline">¶</a></h4>
-<p><em>Rule sets commonly look like a series of independent if-then rules. Unlike trees / lists, these rules can be overlapping and might not cover the whole space. Final predictions can be made via majority vote, using most accurate rule, or averaging predictions.</em></p>
+<p><em>Rule sets commonly look like a series of independent if-then rules. Unlike trees / lists, these rules can be overlapping and might not cover the whole space. Final predictions can be made via majority vote, using most accurate rule, or averaging predictions. Sometimes also called rule ensembles.</em></p>
 <ul class="simple">
-<li><p>popular way to learn rule sets</p>
+<li><p>popular ways to learn rule sets</p>
 <ul>
-<li><p><a class="reference external" href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.33.1184&amp;rep=rep1&amp;type=pdf">A Simple, Fast, and Effective Rule Learner</a> (cohen, &amp; singer, 1999) - SLIPPER - repeatedly boosting a simple, greedy rule-builder</p></li>
+<li><p>SLIPPER: <a class="reference external" href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.33.1184&amp;rep=rep1&amp;type=pdf">A Simple, Fast, and Effective Rule Learner</a> (cohen, &amp; singer, 1999) - repeatedly boosting a simple, greedy rule-builder</p></li>
 <li><p><a class="reference external" href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.34.4619">Lightweight Rule Induction</a> (weiss &amp; indurkhya, 2000) - specify number + size of rules and classify via majority vote</p></li>
 <li><p><a class="reference external" href="https://dl.acm.org/doi/pdf/10.1145/1390156.1390185?casa_token=Lj3Ypp6bLzoAAAAA:t4p9YRPHEXJEL723ygEW5BJ9qft8EeU5934vPJFf1GrF1GWm1kctIePQGeaRiKHJa6ybpqtTqGg1Ig">Maximum Likelihood Rule Ensembles</a> (Dembczyński et al. 2008) - MLRules - rule is base estimator in ensemble - build by greedily maximizing log-likelihood</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://projecteuclid.org/euclid.aoas/1223908046">rulefit</a> (friedman &amp; popescu, 2008) - extract rules from many decision trees, then fit sparse linear model on them</p>
+<ul>
+<li><p><a class="reference external" href="https://dl.acm.org/doi/abs/10.1145/1143844.1143943?casa_token=74Cp4L015WQAAAAA:V8gYM4NMkiqRTmuGxtsnnTVZFaXl-eSzmLWFt78aVfoukuuZ-Y4-H-p3e-bF7EhA23uxKJ_oqLNq">A statistical approach to rule learning</a> (ruckert &amp; kramer, 2006) - unsupervised objective to mine rules with large maring and low variance before fitting linear model</p></li>
+<li><p><a class="reference external" href="http://proceedings.mlr.press/v97/wei19a.html">Generalized Linear Rule Models</a> (wei et al. 2019) - use column generation (CG) to intelligently search space of rules</p>
+<ul>
+<li><p>re-fit GLM as rules are generated, reweighting + discarding</p>
+<ul>
+<li><p>with large number of columns, can be intractable even to enumerate rules - CG avoids this by fitting a subset and using it to construct most promising next column</p></li>
+</ul>
+</li>
+<li><p>also propose a non-CG algorithm using only 1st-degree rules</p></li>
+<li><p>note: from every pair of complementary singleton rules (e.g., <span class="math notranslate nohighlight">\(X_j \leq1\)</span>, <span class="math notranslate nohighlight">\(X_j &gt; 1\)</span>), they remove one member as otherwise the pair together is collinear</p></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><p>more recent global versions of learning rule sets</p>
@@ -1286,6 +1302,7 @@
 </div>
 <div class="section" id="posthoc-interpretability-i-e-how-can-we-interpret-a-fitted-model">
 <h2>1.12.4. posthoc interpretability (i.e. how can we interpret a fitted model)<a class="headerlink" href="#posthoc-interpretability-i-e-how-can-we-interpret-a-fitted-model" title="Permalink to this headline">¶</a></h2>
+<p><em>Note that in this section we also include importances that work directly on the data (e.g. we do not first fit a model, rather we do nonparametric calculations of importance)</em></p>
 <div class="section" id="model-agnostic">
 <h3>1.12.4.1. model-agnostic<a class="headerlink" href="#model-agnostic" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
@@ -1518,6 +1535,7 @@ instances (PDP problem)</p></li>
 </li>
 </ul>
 </li>
+<li><p>efficiently compute SHAP values directly from data (<a class="reference external" href="http://proceedings.mlr.press/v119/williamson20a/williamson20a.pdf">williamson &amp; feng, 2020 icml</a>)</p></li>
 </ul>
 </li>
 <li><p>moment-independent vim</p>

@@ -9,7 +9,11 @@ cat: ai
 
 #  philosophy
 
-## interpretable ml
+## basics
+
+- try to understand what principles underly all phenomena
+
+interpretable ml
 
 - [Machine Learning and the Future of Realism](https://arxiv.org/pdf/1704.04688.pdf) (hooker & hooker, 2017)
   - lack of interpretability in DNNs is part of what makes them powerful
@@ -133,7 +137,9 @@ cat: ai
 - [Foundationalism](http://en.wikipedia.org/wiki/Foundationalism) - where the chain of justifications eventually relies on [basic beliefs](http://en.wikipedia.org/wiki/Basic_beliefs) or [axioms](http://en.wikipedia.org/wiki/Axiom) that are left unproven
   - Plato’s Republic
 - the stability of belief: how rational belief coheres with probability (leitgeb, 2017) - introduction
-- https://projecteuclid.org/download/pdfview_1/euclid.ss/1294167961
+- [To Explain or to Predict](https://projecteuclid.org/download/pdfview_1/euclid.ss/1294167961)? (Shmueli, 2010)
+  - explanatory modeling as the use of statistical models for testing causal explanations
+  - many philosophies view explanation and prediction as distinct (but not incompatible)
 
 
 
@@ -146,81 +152,89 @@ cat: ai
 - some definitions of philosophy
   - pursuit of fundamental laws
   - quest of unity
+- plato
+  - socrates, plato's teacher pursued stricter definitions and was put to death
+  - plato writes *the Republic* - fictitional dialogue w/ socrates as the protagonist
+    - argues that democracy failes because people are greedy
+    - advocates for an absolute meritocracy with 3 classes
+      - ruling class should live like communists, decent state salary, disallowed from excess
+      - soldiers / auxiliaries
+      - general population
+    - requires equality of education
+    - requires religion to placated the non-ruling majority
+    - excess is regulated
+    - justice = having and doing what is one's own
+      - each shall receive equivalent to what he produces + perform function for which he is best fit
+    - juxtapositions
+      - jesus: kindness to the weak
+      - nietzsche: bravery of the strong
+      - plato: effective harmony of the whole
+  - only 3 things: truth, beauty, + justice
+- aristotle
+  - starts systematic science, library science, and **logic**
+  - advocates for *uinversals* as individuals (e.g. a man, not *man* like Plat argues for)
+    - this is more grounded in reality
+  - theology: God moves the work like force, but does little else
+  - science: infinitesimal distinctions - boundaries between plant/animal categories are blurry
+    - form: man, matter: child = possibility of form
+  - politics: ideally a monarchy / aristocracy but more realistically would be constitutional gov. (people determine needs, leaders determine how to meet them)
+    - restrictions on pop.
+    - believes in slavery / female inferiority
+- francis bacon
+  - lived in 1500s/1600s in England
+  - father of the scientific method
+    - objective and realistic
+    - in contrast to descartes = subjctive/idealistic
+      - "I think therefore I am"
+  - bacon embraces **epicureanism** - don't want anything
+  - scors knowledge that doesn't lead to action
+  - **science** = organization of knowledge
+  - **philosophy** = organization of science
+  - doubt all assumptions
+- spinoza
+  - baroch de espinoza
+  - jew who was excommunicated for anti-religious writing
+  - no distinction between body and mind
+  - no free will - only desires that guide everything
+	  - beginnings of doubting rationalism
+- voltaire
+  - frenchman who was exiled
+  - seeks history of ideas, beginning with *The Essay on Morals*
+  - *Candide* - short story, denouncing optimism for pragmatism
+  - real philosophy begins with *Philosophic dictionary*
+  - strongly against superstition
+  - wrote simple, accessible pamphlets
+  - in his later years, turns to focus on the pursuit of usefulness rather than truth
+  - contrasts with younger Roussea, who wanted more action, instinct, social contract
+- kant: mind has prior beliefes
+  - what makes a math law better than some other thing? kant says a priori beliefs...interestingly those beliefs were from evolution in the first place
+  - mind is not blank slate: mind filters in what we perceive *a priori* in contrast to growing popular belief that everything comes from perception
+  - understanding can never go beyond the limits of sensibility
+    - certain things in science/religion etc. can never be known, just interpreted
+    - time and space are not realities but just our interpretations
+  - lots of connections to priors in modern AI research
+  - morals come from an innate sense
+  - somewhat pro-religion but not fully, still still faced persecution in Prussia
+  - "Have strongly-held values, and malleable opinions". - Francois Chollet tweet
+- schopenhauer
+  - everything is will: continuing trend from espinoza + kant against rationalism
+  - pessimist: even in Utopia, ennui sets in
+  - objects of science is universal that contains many particulars while object of art is particular than contains a universal -- this requires more genius
+- herbert spencer
+  - evolution as a guiding philosophy of everything
+  - darwin published *Origin of Species* in 1859, when spencer was 40
+    - spencer is thus more lamarckian
+  - greatest contributions were to sociology: carefully curates data for sociology analysis
+  - resulting philosophy is conservative, laissez-fare, anti-regulation
+- friedrich nietzsche
+  - evolution as morality: favors the strong
+  - germans have 2 words for good / bad - one is closer to strong, the other to kind
+  - everything is due to an underlying will for power
+  - evolution towards "the superman"
+- bertrand russel
+  - starts with symbolic reasoning
+  - after WWI, shifts tow grounded philosophy in pacifism, communism
 
-### plato
-
-- socrates, plato's teacher pursued stricter definitions and was put to death
-- plato writes *the Republic* - fictitional dialogue w/ socrates as the protagonist
-  - argues that democracy failes because people are greedy
-  - advocates for an absolute meritocracy with 3 classes
-    - ruling class should live like communists, decent state salary, disallowed from excess
-    - soldiers / auxiliaries
-    - general population
-  - requires equality of education
-  - requires religion to placated the non-ruling majority
-  - excess is regulated
-  - justice = having and doing what is one's own
-    - each shall receive equivalent to what he produces + perform function for which he is best fit
-  - juxtapositions
-    - jesus: kindness to the weak
-    - nietzsche: bravery of the strong
-    - plato: effective harmony of the whole
-- only 3 things: truth, beauty, + justice
-
-### aristotle
-
-- starts systematic science, library science, and **logic**
-- advocates for *uinversals* as individuals (e.g. a man, not *man* like Plat argues for)
-  - this is more grounded in reality
-- theology: God moves the work like force, but does little else
-- science: infinitesimal distinctions - boundaries between plant/animal categories are blurry
-  - form: man, matter: child = possibility of form
-- politics: ideally a monarchy / aristocracy but more realistically would be constitutional gov. (people determine needs, leaders determine how to meet them)
-  - restrictions on pop.
-  - believes in slavery / female inferiority
-
-### francis bacon
-
-- lived in 1500s/1600s in England
-- father of the scientific method
-  - objective and realistic
-  - in contrast to descartes = subjctive/idealistic
-    - "I think therefore I am"
-- bacon embraces **epicureanism** - don't want anything
-- scors knowledge that doesn't lead to action
-- **science** = organization of knowledge
-- **philosophy** = organization of science
-- doubt all assumptions
-
-### spinoza
-
-- baroch de espinoza
-- jew who was excommunicated for anti-religious writing
-- no distinction between body and mind
-- no free will - only desires that guide everything
-
-### voltaire
-
-- frenchman who was exiled
-- seeks history of ideas, beginning with *The Essay on Morals*
-- *Candide* - short story, denouncing optimism for pragmatism
-- real philosophy begins with *Philosophic dictionary*
-- strongly against superstition
-- wrote simple, accessible pamphlets
-- in his later years, turns to focus on the pursuit of usefulness rather than truth
-- contrasts with younger Roussea, who wanted more action, instinct, social contract
-
-### kant
-
-- what makes a math law better than some other thing? kant says a priori beliefs...interestingly those beliefs were from evolution in the first place
-- mind is not blank slate: mind filters in what we perceive *a priori* in contrast to growing popular belief that everything comes from perception
-- understanding can never go beyond the limits of sensibility
-  - certain things in science/religion etc. can never be known, just interpreted
-  - time and space are not realities but just our interpretations
-- lots of connections to priors in modern AI research
-- morals come from an innate sense
-- somewhat pro-religion but not fully, still still faced persecution in Prussia
-- "Have strongly-held values, and malleable opinions". - Francois Chollet tweet
 
 ## effective altruism
 

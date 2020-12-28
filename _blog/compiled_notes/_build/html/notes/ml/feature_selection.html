@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>5.6. feature selection &#8212; learning to learn</title>
+    <title>5.7. feature selection &#8212; learning to learn</title>
     
   <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -56,8 +56,8 @@
     <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="5.7. learning theory" href="learning_theory.html" />
-    <link rel="prev" title="5.5. deep learning" href="deep_learning.html" />
+    <link rel="next" title="5.8. learning theory" href="learning_theory.html" />
+    <link rel="prev" title="5.6. deep learning" href="deep_learning.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -107,7 +107,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">
-     1.2. adv attacks
+     1.2. transfer learning
     </a>
    </li>
    <li class="toctree-l2">
@@ -347,43 +347,48 @@
   </a>
   <ul class="current collapse-ul">
    <li class="toctree-l2">
+    <a class="reference internal" href="nlp.html">
+     5.1. nlp
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="comp_vision.html">
-     5.1. computer vision
+     5.2. computer vision
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="structure_ml.html">
-     5.2. structure learning
+     5.3. structure learning
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="classification.html">
-     5.3. classification
+     5.4. classification
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="unsupervised.html">
-     5.4. unsupervised
+     5.5. unsupervised
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="deep_learning.html">
-     5.5. deep learning
+     5.6. deep learning
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     5.6. feature selection
+     5.7. feature selection
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="learning_theory.html">
-     5.7. learning theory
+     5.8. learning theory
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="evaluation.html">
-     5.8. evaluation
+     5.9. evaluation
     </a>
    </li>
   </ul>
@@ -401,48 +406,43 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../ai/nlp.html">
-     6.2. nlp
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../ai/fairness_sts.html">
-     6.3. fairness
+     6.2. fairness
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/cogsci.html">
-     6.4. cogsci
+     6.3. cogsci
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/ai_futures.html">
-     6.5. ai futures
+     6.4. ai futures
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/logic.html">
-     6.6. logic
+     6.5. logic
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/philosophy.html">
-     6.7. philosophy
+     6.6. philosophy
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/psychology.html">
-     6.8. psychology
+     6.7. psychology
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/knowledge_rep.html">
-     6.9. representations
+     6.8. representations
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/decisions.html">
-     6.10. decisions
+     6.9. decisions
     </a>
    </li>
   </ul>
@@ -578,17 +578,17 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#filtering-select-based-on-summary-statistic">
-   5.6.1. filtering - select based on summary statistic
+   5.7.1. filtering - select based on summary statistic
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#wrapper-recursively-eliminate-features">
-   5.6.2. wrapper - recursively eliminate features
+   5.7.2. wrapper - recursively eliminate features
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#embedding-select-from-a-model">
-   5.6.3. embedding - select from a model
+   5.7.3. embedding - select from a model
   </a>
  </li>
 </ul>
@@ -603,9 +603,9 @@
               <div>
                 
   <div class="section" id="feature-selection">
-<h1>5.6. feature selection<a class="headerlink" href="#feature-selection" title="Permalink to this headline">¶</a></h1>
+<h1>5.7. feature selection<a class="headerlink" href="#feature-selection" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="filtering-select-based-on-summary-statistic">
-<h2>5.6.1. filtering - select based on summary statistic<a class="headerlink" href="#filtering-select-based-on-summary-statistic" title="Permalink to this headline">¶</a></h2>
+<h2>5.7.1. filtering - select based on summary statistic<a class="headerlink" href="#filtering-select-based-on-summary-statistic" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>ranks features or feature subsets independently of the predictor</p></li>
 <li><p>univariate methods (consider one variable at a time)</p>
@@ -628,7 +628,7 @@
 </ul>
 </div>
 <div class="section" id="wrapper-recursively-eliminate-features">
-<h2>5.6.2. wrapper - recursively eliminate features<a class="headerlink" href="#wrapper-recursively-eliminate-features" title="Permalink to this headline">¶</a></h2>
+<h2>5.7.2. wrapper - recursively eliminate features<a class="headerlink" href="#wrapper-recursively-eliminate-features" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>uses a predictor to assess features of feature subsets</p></li>
 <li><p>learner is considered a black-box - use train, validate, test set</p></li>
@@ -638,7 +638,7 @@
 </ul>
 </div>
 <div class="section" id="embedding-select-from-a-model">
-<h2>5.6.3. embedding - select from a model<a class="headerlink" href="#embedding-select-from-a-model" title="Permalink to this headline">¶</a></h2>
+<h2>5.7.3. embedding - select from a model<a class="headerlink" href="#embedding-select-from-a-model" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>uses a predictor to build a model with a subset of features that are internally selected</p></li>
 <li><p>ex. lasso, ridge regression, random forest</p></li>
@@ -674,8 +674,8 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="deep_learning.html" title="previous page">5.5. deep learning</a>
-    <a class='right-next' id="next-link" href="learning_theory.html" title="next page">5.7. learning theory</a>
+    <a class='left-prev' id="prev-link" href="deep_learning.html" title="previous page">5.6. deep learning</a>
+    <a class='right-next' id="next-link" href="learning_theory.html" title="next page">5.8. learning theory</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

@@ -120,12 +120,19 @@ For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
 
 ### rule sets
 
-*Rule sets commonly look like a series of independent if-then rules. Unlike trees / lists, these rules can be overlapping and might not cover the whole space. Final predictions can be made via majority vote, using most accurate rule, or averaging predictions.*
+*Rule sets commonly look like a series of independent if-then rules. Unlike trees / lists, these rules can be overlapping and might not cover the whole space. Final predictions can be made via majority vote, using most accurate rule, or averaging predictions. Sometimes also called rule ensembles.*
 
-- popular way to learn rule sets
-  - [A Simple, Fast, and Effective Rule Learner](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.33.1184&rep=rep1&type=pdf) (cohen, & singer, 1999) - SLIPPER - repeatedly boosting a simple, greedy rule-builder
+- popular ways to learn rule sets
+  - SLIPPER: [A Simple, Fast, and Effective Rule Learner](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.33.1184&rep=rep1&type=pdf) (cohen, & singer, 1999) - repeatedly boosting a simple, greedy rule-builder
   - [Lightweight Rule Induction](http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.34.4619) (weiss & indurkhya, 2000) - specify number + size of rules and classify via majority vote
   - [Maximum Likelihood Rule Ensembles](https://dl.acm.org/doi/pdf/10.1145/1390156.1390185?casa_token=Lj3Ypp6bLzoAAAAA:t4p9YRPHEXJEL723ygEW5BJ9qft8EeU5934vPJFf1GrF1GWm1kctIePQGeaRiKHJa6ybpqtTqGg1Ig) (Dembczyński et al. 2008) - MLRules - rule is base estimator in ensemble - build by greedily maximizing log-likelihood
+- [rulefit](https://projecteuclid.org/euclid.aoas/1223908046) (friedman & popescu, 2008) - extract rules from many decision trees, then fit sparse linear model on them
+  - [A statistical approach to rule learning](https://dl.acm.org/doi/abs/10.1145/1143844.1143943?casa_token=74Cp4L015WQAAAAA:V8gYM4NMkiqRTmuGxtsnnTVZFaXl-eSzmLWFt78aVfoukuuZ-Y4-H-p3e-bF7EhA23uxKJ_oqLNq) (ruckert & kramer, 2006) - unsupervised objective to mine rules with large maring and low variance before fitting linear model
+  - [Generalized Linear Rule Models](http://proceedings.mlr.press/v97/wei19a.html) (wei et al. 2019) - use column generation (CG) to intelligently search space of rules
+    - re-fit GLM as rules are generated, reweighting + discarding
+      - with large number of columns, can be intractable even to enumerate rules - CG avoids this by fitting a subset and using it to construct most promising next column
+    - also propose a non-CG algorithm using only 1st-degree rules
+    - note: from every pair of complementary singleton rules (e.g., $X_j \leq1$, $X_j > 1$), they remove one member as otherwise the pair together is collinear
 - more recent global versions of learning rule sets
   - [interpretable decision set](https://dl.acm.org/citation.cfm?id=2939874) (lakkaraju et al. 2016) - set of if then rules
     - short, accurate, and non-overlapping rules that cover the whole feature space and pay attention to small but important classes
@@ -300,6 +307,8 @@ For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
 
 # posthoc interpretability (i.e. how can we interpret a fitted model)
 
+*Note that in this section we also include importances that work directly on the data (e.g. we do not first fit a model, rather we do nonparametric calculations of importance)*
+
 ## model-agnostic
 
 - local surrogate ([LIME](https://arxiv.org/abs/1602.04938)) - fit a simple model locally to on point and interpret that
@@ -378,9 +387,9 @@ How interactions are defined and summarized is a very difficult thing to specify
 ### vim (variable importance measure) framework
 
 - VIM
-	1. a quantitative indicator that quantifies the change of model output value w.r.t. the change or permutation of one or a set of input variables
-	2. an indicator that quantifies the contribution of the uncertainties of one or a set of input variables to the uncertainty of model output variable
-	3. an indicator that quantifies the strength of dependence between the model output variable and one or a set of input variables. 
+  1. a quantitative indicator that quantifies the change of model output value w.r.t. the change or permutation of one or a set of input variables
+  2. an indicator that quantifies the contribution of the uncertainties of one or a set of input variables to the uncertainty of model output variable
+  3. an indicator that quantifies the strength of dependence between the model output variable and one or a set of input variables. 
 - difference-based - deriv=based methods, local importance measure, morris' screening method
     - **LIM** (local importance measure) - like LIME
       - can normalize weights by values of x, y, or ratios of their standard deviations
@@ -426,6 +435,7 @@ How interactions are defined and summarized is a very difficult thing to specify
   - this can help us understand the contributions that come from different features, as well as the correlations between features (e.g. $S_i^{\text{Uncorrelated}} = V(E[Y \vert X_i^{\text{Uncorrelated}}])/V(Y)$
     - [sobol indices connected to shapley value](https://epubs.siam.org/doi/pdf/10.1137/130936233)
       - $SHAP_i = \underset{S, i \in S}{\sum} V(g_S) / \vert S \vert$
+  - efficiently compute SHAP values directly from data ([williamson & feng, 2020 icml](http://proceedings.mlr.press/v119/williamson20a/williamson20a.pdf))
 - moment-independent vim
   - want more than just the variance ot the output variables
   - e.g. **delta index** = average dist. between $f_Y(y)$ and $f_{Y \vert X_i}(y)$ when $X_i$ is fixed over its full distr.

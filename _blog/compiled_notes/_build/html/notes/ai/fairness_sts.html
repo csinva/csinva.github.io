@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>6.3. fairness &#8212; learning to learn</title>
+    <title>6.2. fairness &#8212; learning to learn</title>
     
   <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -56,8 +56,8 @@
     <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="6.4. cogsci" href="cogsci.html" />
-    <link rel="prev" title="6.2. nlp" href="nlp.html" />
+    <link rel="next" title="6.3. cogsci" href="cogsci.html" />
+    <link rel="prev" title="6.1. search" href="search.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -107,7 +107,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">
-     1.2. adv attacks
+     1.2. transfer learning
     </a>
    </li>
    <li class="toctree-l2">
@@ -347,43 +347,48 @@
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
+    <a class="reference internal" href="../ml/nlp.html">
+     5.1. nlp
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../ml/comp_vision.html">
-     5.1. computer vision
+     5.2. computer vision
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/structure_ml.html">
-     5.2. structure learning
+     5.3. structure learning
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/classification.html">
-     5.3. classification
+     5.4. classification
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/unsupervised.html">
-     5.4. unsupervised
+     5.5. unsupervised
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/deep_learning.html">
-     5.5. deep learning
+     5.6. deep learning
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/feature_selection.html">
-     5.6. feature selection
+     5.7. feature selection
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/learning_theory.html">
-     5.7. learning theory
+     5.8. learning theory
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/evaluation.html">
-     5.8. evaluation
+     5.9. evaluation
     </a>
    </li>
   </ul>
@@ -400,49 +405,44 @@
      6.1. search
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="nlp.html">
-     6.2. nlp
-    </a>
-   </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     6.3. fairness
+     6.2. fairness
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="cogsci.html">
-     6.4. cogsci
+     6.3. cogsci
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ai_futures.html">
-     6.5. ai futures
+     6.4. ai futures
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="logic.html">
-     6.6. logic
+     6.5. logic
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="philosophy.html">
-     6.7. philosophy
+     6.6. philosophy
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="psychology.html">
-     6.8. psychology
+     6.7. psychology
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="knowledge_rep.html">
-     6.9. representations
+     6.8. representations
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="decisions.html">
-     6.10. decisions
+     6.9. decisions
     </a>
    </li>
   </ul>
@@ -578,76 +578,88 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#fairness-metrics">
-   6.3.1. fairness metrics
+   6.2.1. fairness metrics
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#fairness-in-cv-tutorial">
-   6.3.2. fairness in cv (tutorial)
+   6.2.2. fairness in cv (tutorial)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#computer-vision-in-practice-who-is-benefiting-and-who-is-being-harmed">
-     6.3.2.1. Computer vision in practice: who is benefiting and who is being harmed?
+     6.2.2.1. Computer vision in practice: who is benefiting and who is being harmed?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#data-ethics">
-     6.3.2.2. data ethics
+     6.2.2.2. data ethics
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#where-do-we-go">
-     6.3.2.3. where do we go?
+     6.2.2.3. where do we go?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#misc-papers">
-     6.3.2.4. misc papers
+     6.2.2.4. misc papers
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#concrete-harms">
-   6.3.3. concrete harms
+   6.2.3. concrete harms
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#pandemic">
-     6.3.3.1. pandemic
+     6.2.3.1. pandemic
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#ethics">
-   6.3.4. ethics
+   6.2.4. ethics
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#some-basics">
+     6.2.4.1. some basics
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#moral-trade">
+     6.2.4.2. moral trade
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#sts">
-   6.3.5. sts
+   6.2.5. sts
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#facial-rec-demographic-benchmarking">
-   6.3.6. facial rec. demographic benchmarking
+   6.2.6. facial rec. demographic benchmarking
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#legal-perspectives">
-   6.3.7. legal perspectives
+   6.2.7. legal perspectives
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#algorithmic-accountability-a-legal-and-economic-framework-2020">
-     6.3.7.1. ALGORITHMIC ACCOUNTABILITY: A LEGAL AND ECONOMIC FRAMEWORK (2020)
+     6.2.7.1. ALGORITHMIC ACCOUNTABILITY: A LEGAL AND ECONOMIC FRAMEWORK (2020)
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#input-accountability-test-captures-these-questions-w-basic-statistics">
-       6.3.7.1.1.
+       6.2.7.1.1.
        <strong>
         input accountability test - captures these questions w/ basic statistics
        </strong>
@@ -655,7 +667,7 @@
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#related-approaches">
-       6.3.7.1.2.
+       6.2.7.1.2.
        <strong>
         related approaches
        </strong>
@@ -678,9 +690,9 @@
                 
   <p><em>Some notes on algorithm fairness and STS.</em>*</p>
 <div class="section" id="fairness">
-<h1>6.3. fairness<a class="headerlink" href="#fairness" title="Permalink to this headline">¶</a></h1>
+<h1>6.2. fairness<a class="headerlink" href="#fairness" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="fairness-metrics">
-<h2>6.3.1. fairness metrics<a class="headerlink" href="#fairness-metrics" title="Permalink to this headline">¶</a></h2>
+<h2>6.2.1. fairness metrics<a class="headerlink" href="#fairness-metrics" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>good introductory <a class="reference external" href="https://towardsdatascience.com/a-tutorial-on-fairness-in-machine-learning-3ff8ba1040cb">blog</a></p></li>
 <li><p>causes of bias</p>
@@ -728,9 +740,9 @@
 </ul>
 </div>
 <div class="section" id="fairness-in-cv-tutorial">
-<h2>6.3.2. <a class="reference external" href="https://sites.google.com/view/fatecv-tutorial/schedule">fairness in cv (tutorial)</a><a class="headerlink" href="#fairness-in-cv-tutorial" title="Permalink to this headline">¶</a></h2>
+<h2>6.2.2. <a class="reference external" href="https://sites.google.com/view/fatecv-tutorial/schedule">fairness in cv (tutorial)</a><a class="headerlink" href="#fairness-in-cv-tutorial" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="computer-vision-in-practice-who-is-benefiting-and-who-is-being-harmed">
-<h3>6.3.2.1. <a class="reference external" href="https://www.youtube.com/watch?time_continue=546&amp;v=0sBE5OyD7fk&amp;feature=emb_logo">Computer vision in practice: who is benefiting and who is being harmed?</a><a class="headerlink" href="#computer-vision-in-practice-who-is-benefiting-and-who-is-being-harmed" title="Permalink to this headline">¶</a></h3>
+<h3>6.2.2.1. <a class="reference external" href="https://www.youtube.com/watch?time_continue=546&amp;v=0sBE5OyD7fk&amp;feature=emb_logo">Computer vision in practice: who is benefiting and who is being harmed?</a><a class="headerlink" href="#computer-vision-in-practice-who-is-benefiting-and-who-is-being-harmed" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><strong>timnit gebru</strong> - fairness team at google</p>
 <ul>
@@ -767,7 +779,7 @@
 </ul>
 </div>
 <div class="section" id="data-ethics">
-<h3>6.3.2.2. <a class="reference external" href="https://www.youtube.com/watch?v=v_XBJd1Fxqc&amp;feature=emb_logo">data ethics</a><a class="headerlink" href="#data-ethics" title="Permalink to this headline">¶</a></h3>
+<h3>6.2.2.2. <a class="reference external" href="https://www.youtube.com/watch?v=v_XBJd1Fxqc&amp;feature=emb_logo">data ethics</a><a class="headerlink" href="#data-ethics" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>different types of harms</p>
 <ul>
@@ -791,7 +803,7 @@
 </ul>
 </div>
 <div class="section" id="where-do-we-go">
-<h3>6.3.2.3. <a class="reference external" href="https://www.youtube.com/watch?v=vpPpwa7W93I&amp;feature=emb_logo">where do we go?</a><a class="headerlink" href="#where-do-we-go" title="Permalink to this headline">¶</a></h3>
+<h3>6.2.2.3. <a class="reference external" href="https://www.youtube.com/watch?v=vpPpwa7W93I&amp;feature=emb_logo">where do we go?</a><a class="headerlink" href="#where-do-we-go" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>technology is not value-neutral – it’s political</p></li>
 <li><p>model types and metrics embed values</p></li>
@@ -808,7 +820,7 @@
 </ul>
 </div>
 <div class="section" id="misc-papers">
-<h3>6.3.2.4. misc papers<a class="headerlink" href="#misc-papers" title="Permalink to this headline">¶</a></h3>
+<h3>6.2.2.4. misc papers<a class="headerlink" href="#misc-papers" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://openreview.net/pdf?id=s-e2zaAlG3I">Large image datasets: A pyrrhic win for computer vision?</a> - bias in imagenet / tiny images</p></li>
 <li><p>http://positivelysemidefinite.com/2020/06/160k-students.html</p></li>
@@ -816,7 +828,7 @@
 </div>
 </div>
 <div class="section" id="concrete-harms">
-<h2>6.3.3. concrete harms<a class="headerlink" href="#concrete-harms" title="Permalink to this headline">¶</a></h2>
+<h2>6.2.3. concrete harms<a class="headerlink" href="#concrete-harms" title="Permalink to this headline">¶</a></h2>
 <p>Technologies, especially world-shaping technologies like CNNs, are never objective. Their existence and adoption change the world in terms of</p>
 <ul class="simple">
 <li><p>consolidation of power (e.g. facial-rec used to target Uighurs, increased rationale for amassing user data)</p></li>
@@ -827,7 +839,7 @@
 <li><p>a lot more</p></li>
 </ul>
 <div class="section" id="pandemic">
-<h3>6.3.3.1. pandemic<a class="headerlink" href="#pandemic" title="Permalink to this headline">¶</a></h3>
+<h3>6.2.3.1. pandemic<a class="headerlink" href="#pandemic" title="Permalink to this headline">¶</a></h3>
 <p>I hope the pandemic, which has boosted the desire for tracking, does not result in a long-term arc towards more serveillance</p>
 <ul class="simple">
 <li><p>from <a class="reference external" href="https://www.theatlantic.com/magazine/archive/2020/09/china-ai-surveillance/614197/">here</a>: City Brain would be especially useful in a pandemic. (One of Alibaba’s sister companies created the app that color-coded citizens’ disease risk, while silently sending their health and travel data to police.) As Beijing’s outbreak spread, some malls and restaurants in the city began scanning potential customers’ phones, pulling data from mobile carriers to see whether they’d recently traveled. Mobile carriers also sent municipal governments lists of people who had come to their city from Wuhan, where the coronavirus was first detected. And Chinese AI companies began making networked facial-recognition helmets for police, with built-in infrared fever detectors, capable of sending data to the government. City Brain could automate these processes, or integrate its data streams.</p></li>
@@ -836,7 +848,37 @@
 </div>
 </div>
 <div class="section" id="ethics">
-<h2>6.3.4. ethics<a class="headerlink" href="#ethics" title="Permalink to this headline">¶</a></h2>
+<h2>6.2.4. ethics<a class="headerlink" href="#ethics" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="some-basics">
+<h3>6.2.4.1. some basics<a class="headerlink" href="#some-basics" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>utilitarian - good to be maximized</p>
+<ul>
+<li><p>utilitarian approach: which option produces the most good and does the least harm?</p></li>
+<li><p>common good approach: which option best serves the community as a whole?</p></li>
+</ul>
+</li>
+<li><p>deontological - adhering to “the right”</p>
+<ul>
+<li><p>ex. principles like privacy, autonomy, conflicting</p></li>
+<li><p>rights approach: which option bbest respects the rights of all who have a stake?</p></li>
+<li><p>justice approach: which option treats people equally or proportionately?</p></li>
+</ul>
+</li>
+<li><p>consequentalist questions</p>
+<ul>
+<li><p>who will be directly affected? who gets harmed?</p></li>
+</ul>
+</li>
+<li><p>virtue ethics - lives by a code of honor</p>
+<ul>
+<li><p>which option leas me to act as the sort of persion I want to be?</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="moral-trade">
+<h3>6.2.4.2. moral trade<a class="headerlink" href="#moral-trade" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.fhi.ox.ac.uk/wp-content/uploads/moral-trade-1.pdf">Moral Trade</a> (ord 2015) - <strong>moral trade</strong> = trade that is made possible by differences in the parties’ moral views</p></li>
 <li><p>examples</p>
@@ -875,8 +917,9 @@
 </li>
 </ul>
 </div>
+</div>
 <div class="section" id="sts">
-<h2>6.3.5. sts<a class="headerlink" href="#sts" title="Permalink to this headline">¶</a></h2>
+<h2>6.2.5. sts<a class="headerlink" href="#sts" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><strong>social determinism</strong> - theory that social interactions and constructs alone determine individual behavior</p></li>
 <li><p><strong>technological determinism</strong> - theory that assumes that a society’s technology determines the development of its social structure and cultural values</p></li>
@@ -917,7 +960,7 @@
 </ul>
 </div>
 <div class="section" id="facial-rec-demographic-benchmarking">
-<h2>6.3.6. facial rec. demographic benchmarking<a class="headerlink" href="#facial-rec-demographic-benchmarking" title="Permalink to this headline">¶</a></h2>
+<h2>6.2.6. facial rec. demographic benchmarking<a class="headerlink" href="#facial-rec-demographic-benchmarking" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://nvlpubs.nist.gov/nistpubs/ir/2019/NIST.IR.8280.pdf">Face Recognition Vendor Test (FRVT) Part 3: Demographic Effects</a> (grother et al. 2019), NIST</p>
 <ul>
@@ -965,12 +1008,12 @@
 </ul>
 </div>
 <div class="section" id="legal-perspectives">
-<h2>6.3.7. legal perspectives<a class="headerlink" href="#legal-perspectives" title="Permalink to this headline">¶</a></h2>
+<h2>6.2.7. legal perspectives<a class="headerlink" href="#legal-perspectives" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><strong>“the master’s tools will never dismantle the master’s house.”</strong></p></li>
 </ul>
 <div class="section" id="algorithmic-accountability-a-legal-and-economic-framework-2020">
-<h3>6.3.7.1. <a class="reference external" href="http://faculty.haas.berkeley.edu/morse/research/papers/AlgorithmicAccountability_BartlettMorseStantonWallace.pdf">ALGORITHMIC ACCOUNTABILITY: A LEGAL AND ECONOMIC FRAMEWORK</a> (2020)<a class="headerlink" href="#algorithmic-accountability-a-legal-and-economic-framework-2020" title="Permalink to this headline">¶</a></h3>
+<h3>6.2.7.1. <a class="reference external" href="http://faculty.haas.berkeley.edu/morse/research/papers/AlgorithmicAccountability_BartlettMorseStantonWallace.pdf">ALGORITHMIC ACCOUNTABILITY: A LEGAL AND ECONOMIC FRAMEWORK</a> (2020)<a class="headerlink" href="#algorithmic-accountability-a-legal-and-economic-framework-2020" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Title VII defines accountability under under U.S. antidiscrimination law</p>
 <ul>
@@ -1013,7 +1056,7 @@
 </li>
 </ul>
 <div class="section" id="input-accountability-test-captures-these-questions-w-basic-statistics">
-<h4>6.3.7.1.1. <strong>input accountability test - captures these questions w/ basic statistics</strong><a class="headerlink" href="#input-accountability-test-captures-these-questions-w-basic-statistics" title="Permalink to this headline">¶</a></h4>
+<h4>6.2.7.1.1. <strong>input accountability test - captures these questions w/ basic statistics</strong><a class="headerlink" href="#input-accountability-test-captures-these-questions-w-basic-statistics" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>intuition: exclude input variables which are potentially problematic</p>
 <ul>
@@ -1048,7 +1091,7 @@
 </ul>
 </div>
 <div class="section" id="related-approaches">
-<h4>6.3.7.1.2. <strong>related approaches</strong><a class="headerlink" href="#related-approaches" title="Permalink to this headline">¶</a></h4>
+<h4>6.2.7.1.2. <strong>related approaches</strong><a class="headerlink" href="#related-approaches" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>some propose balancing the outcomes</p>
 <ul>
@@ -1095,8 +1138,8 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="nlp.html" title="previous page">6.2. nlp</a>
-    <a class='right-next' id="next-link" href="cogsci.html" title="next page">6.4. cogsci</a>
+    <a class='left-prev' id="prev-link" href="search.html" title="previous page">6.1. search</a>
+    <a class='right-next' id="next-link" href="cogsci.html" title="next page">6.3. cogsci</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

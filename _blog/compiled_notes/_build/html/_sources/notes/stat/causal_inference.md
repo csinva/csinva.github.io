@@ -366,55 +366,69 @@ M --> Y
 
 - difference-in-difference is a name given to many methods for estimating effects in longitudinal data = panel data
   - requires data from both groups at 2 or more time periods (at least one before treatment and one after)
-- simple constant-treatment model: $Y_{i t}=Y_{i t}(0)+T_{i t} \tau,$ for all $i=1, \ldots, n, t=1, \ldots$
+- **simple constant-treatment model**: $Y_{i t}=Y_{i t}(0)+T_{i t} \tau,$ for all $i=1, \ldots, n, t=1, \ldots$
   - assumes no effect heterogeneity
   - assumes treatment at time only effects outcomes at time t - this can be weird
-  - during estimation, assume two-way model: $Y_{i t}=\alpha_{i}+\beta_{t}+T_{i t} \tau+\varepsilon_{i t}, \quad \mathbb{E}[\varepsilon \mid \alpha, \beta, T]=0$
+- one approach for estimation: assume **two-way model**: $Y_{i t}=\alpha_{i}+\beta_{t}+T_{i t} \tau+\varepsilon_{i t}, \quad \mathbb{E}[\varepsilon \mid \alpha, \beta, T]=0$
   - estimator for difference-in-difference with two timepoints
     - $\hat{\tau}=\frac{1}{\left|\left\{i: T_{i 2}=1\right\}\right|} \underbrace{\sum_{\left\{i: T_{i 2}=1\right\}}\left(Y_{i 2}-Y_{i 1}\right)}_{\text{diff for treated group}}-\frac{1}{\left|\left\{i: T_{i 2}=0\right\}\right|} \underbrace{\sum_{\left\{i: T_{i 2}=0\right\}}\left(Y_{i 2}-Y_{i 1}\right)}_{\text{diff for untreated group}}$
-- $Y_{i t}=A_{i .} B_{t .}^{\prime}+T_{i t} \tau+\varepsilon_{i t}, \quad \mathbb{E}[\varepsilon \mid A, B, T]=0, \quad A \in \mathbb{R}^{n \times k}, B \in \mathbb{R}^{T \times k}$
+- second approach for estimation of constant-treatment: interactive panel models $Y_{i t}=A_{i .} B_{t .}^{\prime}+T_{i t} \tau+\varepsilon_{i t}, \quad \mathbb{E}[\varepsilon \mid A, B, T]=0, \quad A \in \mathbb{R}^{n \times k}, B \in \mathbb{R}^{T \times k}$
   - allows for rank $k$ matrix, less restrictive (no longer forces parallel trends for all units)
   - can estimate with synthetic controls ([abadie, diamon, & hainmueller, 2010](https://amstat.tandfonline.com/doi/abs/10.1198/jasa.2009.ap08746))
     - artificially re-weight unexposed units (i.e. units with $T_i=0$) so their average trend matches the unweighted mean trend up to time $t_0$
     - if the weights create thes parallel trends, they should alos balance the latent factors $A_i$
     - ![src:wager lecture notes](../assets/synth_control_did.png)
+      - trends are clearly not parallel, but after reweighting they become parallel
+  - many other estimators, e.g. via clustering or nuclear norm minimization
+- third approach: design-based assumptions e.g. $Y_{i .}(0) \perp T_{i .} \mid S_{i}, \quad S_{i}=\sum_{t=1}^{T} T_{i t}$
+  - ex. $Y_{it}$ is health outcome, $T_{it}$ is medical treatment, $S_i$ is unobserved health-seeking behavior
+  - $\hat{\tau}=\sum_{i, t} \gamma_{i t} Y_{i t}$ where $\gamma$-matrix depends only on treatment assignment
 
 ### instrumental variable
 
-- see this nice [blog post](http://www.rebeccabarter.com/blog/2018-05-23-instrumental_variables/) by Rebecca Barter
+- ```mermaid
+  graph LR
+  I --> T
+  X --> T
+  T --> Y
+  ```
+  
+- **instrument** $I$- measurable quantity that correlates with the treatment, and is $\underbrace{\color{NavyBlue}{\text{only related to the outcome via the treatment}}}_{\textbf{exclusion restriction}}$
 
-  - ```mermaid
-    graph LR
-    I --> T
-    X --> T
-    T --> Y
-    ```
-    
-  - **instrument** $I$- measurable quantity that correlates with the treatment, and is $\underbrace{\color{NavyBlue}{\text{only related to the outcome via the treatment}}}_{\textbf{exclusion restriction}}$
-    
-    - exclusion restriction is uncheckable
+- precisely 3 conditions must hold for $I_i$:
 
-  - key idea: randomization holds for $I$ but not for $T$
+  - exogenous: $\varepsilon_{i} \perp I_{i}$
+  - relevant: $\operatorname{Cov}\left[T_{i}, I_{i}\right] \neq 0 $
+  - exclusion restriction: any effect of $I_{i}$ on $Y_{i}$ must be mediated via $T_{i}$ 
+    - uncheckable
 
-  - intuitively, need to combine effect of instrument on treatment and effect of instrument on outcome (through treatment)
+- intuitively, need to combine effect of instrument on treatment and effect of instrument on outcome (through treatment)
 
-    - **Wald estimator** = $\frac{Cov(Y, I)}{Cov(T, I)}$
-    - LATE = local average treatment effect - this estimate is only valid for the patients who were influenced by the instrument
-    - in practice, often implemented in a 2-stage least squares (regress $I \to T$ then $T\to Y$)
+  - in practice, often implemented in a 2-stage least squares (regress $I \to T$ then $T\to Y$)
+    - $Y_{i}=\alpha+T_{i} \tau+\varepsilon_{i}, \quad \varepsilon_{i} \perp I_{i}$
+    - $T_{i}=I_{i} \gamma+\eta_{i}$
+    - most important point is that $\epsilon_i \perp I_i$
+  - **Wald estimator** = $\frac{Cov(Y, I)}{Cov(T, I)}$
+  - *LATE* = local average treatment effect - this estimate is only valid for the patients who were influenced by the instrument
+  - we may have many potential instruments
+    - in this case, can learn a funciton of the instruments via cross-fitting as an instrument
 
 - examples
 
+  - $I$: stormy weather, $T$ price of fish, $Y$ demand for fish
+    - stormy weather makes it harder to fish, raising price but not affecting demand
   - $I$: quarter of birth, $T$: schooling in years, $Y$: earnings (angrist & krueger, 1991)
   - $I$: sibling sex composition, $T$: family size, $Y$: mother's employment (angist & evans, 1998)
   - $I$: lottery number, $T$: veteran status, $Y$: mortality
   - $I$: geographic variation in college proximity, $T$: schooling, $Y$: wage (card, 1993)
 
-- **CACE** $\tau_c$ (complier average causal effect) = **LATE** (local average treatement effect)
+#### effect under non-compliance
 
-  - technical setting: **noncompliance** - sometimes treatment assigned $I$ and treatment received $T$ are different
-  
+- **CACE** $\tau_c$ (complier average causal effect) = **LATE** (local average treatement effect)
+- technical setting: **noncompliance** - sometimes treatment assigned $I$ and treatment received $T$ are different
+
 - assumptions
-    - randomization = instrumental unconfoundedness: $I \perp \{T^{I=1}, T^{I=0}, Y^{I=1}, Y^{I=0} \}$
+    - *randomization = instrumental unconfoundedness*: $I \perp \{T^{I=1}, T^{I=0}, Y^{I=1}, Y^{I=0} \}$
       - randomization lets us identify ATE of $I$ on $T$ and $I$ on $Y$
         - $\tau_{T}=E\{T^{I=1}-T^{I=0}\}=E(T \mid I=1)-E(T \mid I=0)$
         - $\tau_{Y}=E\{Y^{I=1}-Y^{I=0}\}=E(Y \mid I=1)-E(Y \mid I=0)$
@@ -426,9 +440,9 @@ M --> Y
           \mathrm{d}, & \text { if } T_{i}^{I=1}=0 \text { and } T_{i}^{I=0}=1 \text{ defier}\\
           \mathrm{n}, & \text { if } T_{i}^{I=1}=0 \text { and } T_{i}^{I=0}=0\text{ never taker}
           \end{array}\right.$
-    - exclusion restriction: $Y_i^{I=1} = Y_i^{I=0}$ for always-takers and never-takers
+    - *exclusion restriction*: $Y_i^{I=1} = Y_i^{I=0}$ for always-takers and never-takers
       - means treatment assignment affects outcome only if it affects the treatment
-    - monotonicity: $P(C=d) = 0$ or $T_i^{U=1} \geq T_i^{U=0} \; \forall i$ - there are no defiers
+    - *monotonicity*: $P(C=d) = 0$ or $T_i^{U=1} \geq T_i^{U=0} \; \forall i$ - there are no defiers
       - testable implication: $P(T=1|I=1) \geq P(T=1|C=0)$
   - under these 3 assumptions, LATE $\tau_c = \frac{\tau_Y}{\tau_T} = \frac{E(Y \mid I=1)-E(Y \mid I=0)}{E(T \mid I=1)-E(T \mid I=0)}$ 
   

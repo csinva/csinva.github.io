@@ -74,20 +74,21 @@ typora-copy-images-to: ../assets
 
 # wavelet analysis
 
-- [wavelets for kids](http://www.gtwavelet.bme.gatech.edu/wp/kidsA.pdf) - good reference
-- [overview](https://www.eecis.udel.edu/~amer/CISC651/IEEEwavelet.pdf), [matlab wavelets](https://www.mathworks.com/help/wavelet/ug/wavelet-families-additional-discussion.html), [python wavelets](http://wavelets.pybytes.com/)
-- different based on choice of wavelet
+- wavelet is localized in both time and frequency information
+  - different wavelets thus vary in translation, scale, and sometimes orientation
+  - many choices for wavelet basis, which replaces the sinusoid basis sinusoid $\phi(x) = e^{i 2 \pi k x/N}$
 
-- wavelet has both time and freq information
-- 2 differences with Fourer
-  - replace sinusoid $\phi(x) = e^{i 2 \pi k x/N}$ with wavelet
-  - coefficients must be indexed by more than just frequency (also position, scale, and/or orientation)
-
-## using wavelets
+## wavelet basics
 
 - **$\phi(x)$ = mother wavelet** (or analyzing wavelet)
-  - now form translations and dilations of the mother wavelet $\phi(\frac{x-b}{a})$
-    - it is convenient to set $a=2^{-j}, b = k \cdot 2^{-j}$, where k and j are integers
+  - basis consists of translations and dilations of the mother wavelet $\phi(\frac{x-b}{a})$
+- wavelet vocab
+  - discrete wavelet transform: set $a=2^{-j}, b = k \cdot 2^{-j}$, where $k$ and $j$ are integers
+    - starts from multiresolution analysis (mallat, 1989)
+  - continuous wavelet transform: $a > 0, b$ (still a point-by-point, digita transformation)
+  - orthonormal
+  - biorthogonal - more relaxed, still enables perfect reconstruction
+  - undecimated - highly overparameterized, exists at every location
 - website to [explore different wavelets](http://wavelets.pybytes.com/)
   - ex. **Haar wavelet** (step function on [0, 1]
     - ![haar](../assets/haar.png)
@@ -95,6 +96,7 @@ typora-copy-images-to: ../assets
       - j, k are still integers
       - this is still orthogonal
   - ex. **Gabor==Morlet wavelet**: $\phi_\sigma(x) = c \cdot \underbrace{e^{-\frac 1 2 x^2}}_{\text{gaussian window}} \underbrace{(e^{i\sigma x} - \kappa_\sigma)}_{\text{frequency}}$
+  - ex. **Mexican hat wavelet** - 2nd deriv of Gaussian pdf (in 2d, called Laplacian of Gaussian)
   - ex. **Daubechies wavelet**
   - ex. **coiflet**
   - ex. scattering transform
@@ -107,16 +109,28 @@ typora-copy-images-to: ../assets
   - The **detail coefficients** represent the output of the high pass filter (difference filter) of the DWT
   - [pywt 2d](https://pywavelets.readthedocs.io/en/latest/ref/2d-decompositions-overview.html) can decompose in different ways
     - ![Screen Shot 2019-12-11 at 2.47.53 PM](../assets/wavelet_coefs.png)
+    - wavelet packet uses linear combinations of wavelets
+
+## properties of different wavelet bases
+
+- vanishing moments
+  - higher number of vanishing moments = more complex wavelet
+    - more accurate repr. of complex signal
+    - longer support
+    - *p* vanishing moments => polynomials up to pth order will not be identified
+- regularity
+  - more vanishing moments = higher regularity
+  - low regularity - more jagged wavelets, less smooth reconstructions
+- invertibility
+  - requires *admissibility condition*, which at least requires wavelets have vanishing mean $\int \psi(x) \mathrm{d} x=0$ 
 
 ## wavelet analysis
 
 - orthogonal wavelet basis: $\phi_{(s,l)} (x) = 2^{-s/2} \phi (2^{-s} x-l)$
-- *scaling function* $W(x) = \sum_{k=-1}^{N-2} (-1)^k c_{k+1} \phi (2x+k)$ where $\sum_{k=0,N-1} c_k=2, \: \sum_{k=0}^{N-1} c_k c_{k+2l} = 2 \delta_{l,0}$
+  - *scaling function* $W(x) = \sum_{k=-1}^{N-2} (-1)^k c_{k+1} \phi (2x+k)$ where $\sum_{k=0,N-1} c_k=2, \: \sum_{k=0}^{N-1} c_k c_{k+2l} = 2 \delta_{l,0}$
 - one pattern of coefficients is smoothing and another brings out detail = called *quadrature mirror filter pair*
 - there is also a fast discrete wavelet transform (Mallat)
-- wavelet packet transform - basis of *wavelet packets* = linear combinations of wavelets
 - *basis of adapted waveform* - best basis function for a given signal representation
-- *Marr wavelet* - developed for vision
 - differential operator and capable of being tuned to act at any desired scale
 
 

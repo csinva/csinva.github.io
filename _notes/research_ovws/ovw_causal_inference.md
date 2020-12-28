@@ -1,5 +1,5 @@
 ---
-basicalayout: notes
+layout: notes
 title: causal inference
 category: research
 ---
@@ -273,15 +273,20 @@ C(Location of Car) --> B
 
 *Under certain assumptions, invariance to data perturbations (i.e. interventions) can help us identify causal effects.*
 
+### problem formulations
+
 - [Invariance, Causality and Robustness](https://arxiv.org/abs/1812.08233) (buhlmann 18)
   - predict $Y^e$ given $X^e$ such that the prediction “works well” or is “robust” for all $e ∈ \mathcal F$ based on data from much fewer environments $e \in \mathcal E$
+    - **key assumption (*invariance*)**: there exists a subset of "causal" covariates - when conditioning on these covariates, the loss is the same across all environments $e$
     - assumption: ideally $e$ changes only the distr. of $X^e$ (so doesn't act directly on $Y^e$ or change the mechanism between $X^e$ and $Y^e$)
-    - assumption (*invariance*): there exists a subset of "causal" covariates - when conditioning on these covariates, the loss is the same across all environments $e$
     - when these assumptions are satisfied, then minimizing a worst-case risk over environments $e$ yields a causal parameter
   - identifiability issue: we typically can't identify the causal variables without very many perturbations $e$
-    - **Invariant Causal Prediction (ICP)** only identifies variables as causal if they appear in all invariant sets
+    - **Invariant Causal Prediction (ICP)** only identifies variables as causal if they appear in all invariant sets (see also [Peters, Buhlmann, & Meinshausen, 2015](https://arxiv.org/abs/1501.01332))
   - anchor regression model helps to relax assumptions
 - [Invariant Risk Minimization](https://arxiv.org/abs/1907.02893) (arjovsky, bottou, gulrajani, & lopez-paz 2019)
+  - idealized formulation: $\begin{array}{ll}\min _{\Phi: \mathcal{X} \rightarrow \mathcal{H}} & \sum_{e \in \mathcal{E}_{\mathrm{tr}}} R^{e}(w \circ \Phi) \\ \text { subject to } & w \in \underset{\bar{w}: \mathcal{H} \rightarrow \mathcal{Y}}{\arg \min  } \: R^{e}(\bar{w} \circ \Phi), \text { for all } e \in \mathcal{E}_{\mathrm{tr}}\end{array}$
+    - $\Phi$ is repr., $w \circ \Phi$ is predictor
+  - practical formulation: $\min _{\Phi: \mathcal{X} \rightarrow \mathcal{Y}} \sum_{e \in \mathcal{E}_{\mathrm{tr}}} R^{e}(\Phi)+\lambda \cdot\left\|\nabla_{w \mid w=1.0} R^{e}(w \cdot \Phi)\right\|^{2}$
   - random splitting causes problems with our data
   - what to perform well under different distributions of X, Y
   - can't be solved via robust optimization
@@ -305,8 +310,20 @@ C(Location of Car) --> B
     - level 3 - distributions corresponding to counterfactuals
 - [Causality for Machine Learning](https://arxiv.org/abs/1911.10500) (scholkopf 19)
   - most of ml is built on the iid assumption and fails when it is violated (e.g. cow on a beach)
+
+### invariance algorithms
+
+- algorithms overview (see papers for more details) + [implementations](https://github.com/facebookresearch/InvarianceUnitTests)
+  - ERM - empirical risk minimization - normal training, minimizes the error on the union of all the training splits
+  - IRM - invariant risk minimization (v1) - finds a representation of the features such that the optimal classifier, on top of that representation, is the identity function for all environments
+  - domain-adversarial techniques
+  - ICP - invariant causal prediction - find sets for which features are invariant
+  - [AND-mask](https://arxiv.org/abs/2009.00329) - minimizes the error on the training splits by updating the model on those directions where the sign of the gradient of the loss is the same for most environments.
+  - [IGA]() - inter-environmental gradient alignment - ERM + reduce variance of the gradient of the loss per environment: $\lambda \operatorname{trace}\left(\operatorname{Var}\left(\nabla_{\theta} L_{\mathcal{E}}(\theta)\right)\right)$
+
 - [Learning explanations that are hard to vary](https://arxiv.org/abs/2009.00329) (parascandolo...sholkopf, 2020)
   - basically, gradients should be consistent during learning
+    - after learning, they should be consistent within some epsilon ball
   - practical algorithm: AND-mask
     - like zeroing out those gradient components with respect to weights that have *inconsistent signs* across environments
       - basically same complexity as normal GD
@@ -322,6 +339,14 @@ C(Location of Car) --> B
   - given algorithm $\mathcal A$, maximize this: $\mathrm{ILC}\left(\mathcal{A}, p_{\theta^{0}}\right):= \underbrace{-\mathbb{E}_{\theta^{0} \sim p\left(\theta^{0}\right)}}_{\text{expectation over reinits}}\left[\mathcal{I}^{\epsilon} (\underbrace{\mathcal{A}_{\infty}(\theta^{0}, \mathcal{E}}_{\hat \theta}) \right]$
     - **inconsistency score** for a solution $\hat \theta$ given environments $e$: $\mathcal{I}^{\epsilon}(\hat \theta):=\overbrace{\max _{\left(e, e^{\prime}\right) \in \mathcal{E}^{2}} }^{\text{env. pairs}} \underbrace{\max _{\theta \in N_{e, \hat \theta}^{\epsilon}}}_{\text{low-loss region around $\hat \theta$}} \overbrace{\mid \mathcal{L}_{e^{\prime}}(\theta)-\mathcal{L}_{e}(\theta)|}^{\text{loss between envs.}}$
       - $N_{e, \hat \theta}^{\epsilon}$ is path-connected region around $\hat \theta$ where $\left\{\theta \in \Theta\right.$ s.t. $\left|\mathcal{L}_{e}(\theta)-\mathcal{L}_{e}\left(\hat \theta\right)\right| \leqslant \epsilon$
+- [Invariant Risk Minimization Games](https://arxiv.org/abs/2002.04692) (ahuja et al. 2020) - pose IRM as finding the Nash equilibrium of an ensemble game among several environments
+- [Invariant Rationalization](https://arxiv.org/abs/2003.09772) (chang et al. 2020) - identify a small subset of input features -- the rationale -- that best explains or supports the prediction
+  - key assumption: $Y \perp E | Z$
+  - $\max _{\boldsymbol{m} \in \mathcal{S}} I(Y ; \boldsymbol{Z}) \quad$ s.t. $\boldsymbol{Z}= \overbrace{\boldsymbol{m}}^{\text{binary mask}} \odot \boldsymbol{X}, \quad \underbrace{Y \perp E \mid \boldsymbol{Z}}_{\text{this part is invariance}}$
+    - solve this via 3 nets with adv. penalty to approximate invariance
+    - standard maximum mutual info objective is just $\max _{\boldsymbol{m} \in \mathcal{S}} I(Y ; \boldsymbol{Z}) \quad$ s.t. $\boldsymbol{Z}= \overbrace{\boldsymbol{m}}^{\text{binary mask}} \odot \boldsymbol{X}$ (see [lei et al. 2016](https://arxiv.org/abs/1606.04155))
+    - ex. $X$ is text reviews for beer, $Y$ is aroma, $E$ could be beer brand
+- [Linear unit-tests for invariance discovery](https://www.cmu.edu/dietrich/causality/CameraReadys-accepted%20papers/32%5CCameraReady%5Cdatasets.pdf)  (aubin et al. 2020) - a set of 6 simple settings where current IRM procedures fail
 
 ## misc problems
 

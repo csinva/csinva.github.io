@@ -117,6 +117,22 @@ I hope the pandemic, which has boosted the desire for tracking, does not result 
 
 ## ethics
 
+### some basics
+
+- utilitarian - good to be maximized
+  - utilitarian approach: which option produces the most good and does the least harm?
+  - common good approach: which option best serves the community as a whole?
+- deontological - adhering to "the right"
+  - ex. principles like privacy, autonomy, conflicting 
+  - rights approach: which option bbest respects the rights of all who have a stake?
+  - justice approach: which option treats people equally or proportionately?
+- consequentalist questions
+  - who will be directly affected? who gets harmed?
+- virtue ethics - lives by a code of honor
+  - which option leas me to act as the sort of persion I want to be?
+
+### moral trade
+
 - [Moral Trade](https://www.fhi.ox.ac.uk/wp-content/uploads/moral-trade-1.pdf) (ord 2015) - **moral trade** = trade that is made possible by differences in the parties' moral views
 - examples
   - one trading their eating meat for another donating more to a certain charity they both believe in

@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: nlp
-cat: ai
+cat: ml
 typora-copy-images-to: ../assets
 ---
 

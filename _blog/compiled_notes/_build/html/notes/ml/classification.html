@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>5.3. classification &#8212; learning to learn</title>
+    <title>5.4. classification &#8212; learning to learn</title>
     
   <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -56,8 +56,8 @@
     <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="5.4. unsupervised" href="unsupervised.html" />
-    <link rel="prev" title="5.2. structure learning" href="structure_ml.html" />
+    <link rel="next" title="5.5. unsupervised" href="unsupervised.html" />
+    <link rel="prev" title="5.3. structure learning" href="structure_ml.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -107,7 +107,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">
-     1.2. adv attacks
+     1.2. transfer learning
     </a>
    </li>
    <li class="toctree-l2">
@@ -347,43 +347,48 @@
   </a>
   <ul class="current collapse-ul">
    <li class="toctree-l2">
+    <a class="reference internal" href="nlp.html">
+     5.1. nlp
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="comp_vision.html">
-     5.1. computer vision
+     5.2. computer vision
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="structure_ml.html">
-     5.2. structure learning
+     5.3. structure learning
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     5.3. classification
+     5.4. classification
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="unsupervised.html">
-     5.4. unsupervised
+     5.5. unsupervised
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="deep_learning.html">
-     5.5. deep learning
+     5.6. deep learning
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="feature_selection.html">
-     5.6. feature selection
+     5.7. feature selection
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="learning_theory.html">
-     5.7. learning theory
+     5.8. learning theory
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="evaluation.html">
-     5.8. evaluation
+     5.9. evaluation
     </a>
    </li>
   </ul>
@@ -401,48 +406,43 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../ai/nlp.html">
-     6.2. nlp
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../ai/fairness_sts.html">
-     6.3. fairness
+     6.2. fairness
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/cogsci.html">
-     6.4. cogsci
+     6.3. cogsci
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/ai_futures.html">
-     6.5. ai futures
+     6.4. ai futures
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/logic.html">
-     6.6. logic
+     6.5. logic
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/philosophy.html">
-     6.7. philosophy
+     6.6. philosophy
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/psychology.html">
-     6.8. psychology
+     6.7. psychology
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/knowledge_rep.html">
-     6.9. representations
+     6.8. representations
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/decisions.html">
-     6.10. decisions
+     6.9. decisions
     </a>
    </li>
   </ul>
@@ -578,103 +578,103 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#overview">
-   5.3.1. overview
+   5.4.1. overview
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#binary-classification">
-   5.3.2. binary classification
+   5.4.2. binary classification
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#multiclass-classification">
-   5.3.3. multiclass classification
+   5.4.3. multiclass classification
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#discriminative">
-   5.3.4. discriminative
+   5.4.4. discriminative
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#logistic-regression">
-     5.3.4.1. logistic regression
+     5.4.4.1. logistic regression
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#binary-models">
-     5.3.4.2. binary models
+     5.4.4.2. binary models
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#decision-trees-rfs-r-n-18-3-htf-9-2-1-9-2-3">
-     5.3.4.3. decision trees / rfs - R&amp;N 18.3; HTF 9.2.1-9.2.3
+     5.4.4.3. decision trees / rfs - R&amp;N 18.3; HTF 9.2.1-9.2.3
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#svms">
-     5.3.4.4. svms
+     5.4.4.4. svms
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#decision-rules">
-     5.3.4.5. decision rules
+     5.4.4.5. decision rules
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#generative">
-   5.3.5. generative
+   5.4.5. generative
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#gaussian-class-conditioned-classifiers">
-     5.3.5.1. gaussian class-conditioned classifiers
+     5.4.5.1. gaussian class-conditioned classifiers
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#naive-bayes-classifier">
-     5.3.5.2. naive bayes classifier
+     5.4.5.2. naive bayes classifier
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exponential-family-class-conditioned-classifiers">
-     5.3.5.3. exponential family class-conditioned classifiers
+     5.4.5.3. exponential family class-conditioned classifiers
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#text-classification">
-     5.3.5.4. text classification
+     5.4.5.4. text classification
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#instance-based-nearest-neighbors-really-discriminative">
-   5.3.6. instance-based (nearest neighbors) - really discriminative
+   5.4.6. instance-based (nearest neighbors) - really discriminative
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#likelihood-calcs">
-   5.3.7. likelihood calcs
+   5.4.7. likelihood calcs
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#single-bernoulli">
-     5.3.7.1. single Bernoulli
+     5.4.7.1. single Bernoulli
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#multinomial">
-     5.3.7.2. multinomial
+     5.4.7.2. multinomial
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#boosting">
-   5.3.8. boosting
+   5.4.8. boosting
   </a>
  </li>
 </ul>
@@ -689,9 +689,9 @@
               <div>
                 
   <div class="section" id="classification">
-<h1>5.3. classification<a class="headerlink" href="#classification" title="Permalink to this headline">¶</a></h1>
+<h1>5.4. classification<a class="headerlink" href="#classification" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
-<h2>5.3.1. overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<h2>5.4.1. overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>regressor doesn’t classify well</p>
 <ul>
@@ -720,7 +720,7 @@
 </ul>
 </div>
 <div class="section" id="binary-classification">
-<h2>5.3.2. binary classification<a class="headerlink" href="#binary-classification" title="Permalink to this headline">¶</a></h2>
+<h2>5.4.2. binary classification<a class="headerlink" href="#binary-classification" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\hat{y} = \text{sign}(\theta^T x)\)</span></p></li>
 <li><p>usually <span class="math notranslate nohighlight">\(\theta^Tx\)</span> includes b term, but generally we don’t want to regularize b</p></li>
@@ -755,7 +755,7 @@
 </ul>
 </div>
 <div class="section" id="multiclass-classification">
-<h2>5.3.3. multiclass classification<a class="headerlink" href="#multiclass-classification" title="Permalink to this headline">¶</a></h2>
+<h2>5.4.3. multiclass classification<a class="headerlink" href="#multiclass-classification" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>reducing multiclass (K categories) to binary</p>
 <ul>
@@ -814,9 +814,9 @@
 </ul>
 </div>
 <div class="section" id="discriminative">
-<h2>5.3.4. discriminative<a class="headerlink" href="#discriminative" title="Permalink to this headline">¶</a></h2>
+<h2>5.4.4. discriminative<a class="headerlink" href="#discriminative" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="logistic-regression">
-<h3>5.3.4.1. logistic regression<a class="headerlink" href="#logistic-regression" title="Permalink to this headline">¶</a></h3>
+<h3>5.4.4.1. logistic regression<a class="headerlink" href="#logistic-regression" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(p(Y=1|x, \theta) = \text{logistic}(\theta^Tx)\)</span></p>
 <ol class="simple">
@@ -836,7 +836,7 @@
 </ul>
 </div>
 <div class="section" id="binary-models">
-<h3>5.3.4.2. binary models<a class="headerlink" href="#binary-models" title="Permalink to this headline">¶</a></h3>
+<h3>5.4.4.2. binary models<a class="headerlink" href="#binary-models" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>probit (binary) regression</p>
 <ul>
@@ -860,7 +860,7 @@
 </ul>
 </div>
 <div class="section" id="decision-trees-rfs-r-n-18-3-htf-9-2-1-9-2-3">
-<h3>5.3.4.3. decision trees / rfs - R&amp;N 18.3; HTF 9.2.1-9.2.3<a class="headerlink" href="#decision-trees-rfs-r-n-18-3-htf-9-2-1-9-2-3" title="Permalink to this headline">¶</a></h3>
+<h3>5.4.4.3. decision trees / rfs - R&amp;N 18.3; HTF 9.2.1-9.2.3<a class="headerlink" href="#decision-trees-rfs-r-n-18-3-htf-9-2-1-9-2-3" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><strong>importance scores</strong></p>
 <ul>
@@ -1007,7 +1007,7 @@
 </ul>
 </div>
 <div class="section" id="svms">
-<h3>5.3.4.4. svms<a class="headerlink" href="#svms" title="Permalink to this headline">¶</a></h3>
+<h3>5.4.4.4. svms<a class="headerlink" href="#svms" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>svm benefits</p>
 <ol class="simple">
@@ -1080,7 +1080,7 @@
 </ul>
 </div>
 <div class="section" id="decision-rules">
-<h3>5.3.4.5. decision rules<a class="headerlink" href="#decision-rules" title="Permalink to this headline">¶</a></h3>
+<h3>5.4.4.5. decision rules<a class="headerlink" href="#decision-rules" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>if-thens, rule can contain ands</p></li>
 <li><p>good rules have large <strong>support</strong> and high accuracy (they tradeoff)</p></li>
@@ -1110,9 +1110,9 @@
 </div>
 </div>
 <div class="section" id="generative">
-<h2>5.3.5. generative<a class="headerlink" href="#generative" title="Permalink to this headline">¶</a></h2>
+<h2>5.4.5. generative<a class="headerlink" href="#generative" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="gaussian-class-conditioned-classifiers">
-<h3>5.3.5.1. gaussian class-conditioned classifiers<a class="headerlink" href="#gaussian-class-conditioned-classifiers" title="Permalink to this headline">¶</a></h3>
+<h3>5.4.5.1. gaussian class-conditioned classifiers<a class="headerlink" href="#gaussian-class-conditioned-classifiers" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>binary case: posterior probability <span class="math notranslate nohighlight">\(p(Y=1|x, \theta)\)</span> is a sigmoid <span class="math notranslate nohighlight">\(\frac{1}{1+e^{-z}}\)</span> where <span class="math notranslate nohighlight">\(z = \beta^Tx+\gamma\)</span></p>
 <ol class="simple">
@@ -1147,7 +1147,7 @@
 </ul>
 </div>
 <div class="section" id="naive-bayes-classifier">
-<h3>5.3.5.2. naive bayes classifier<a class="headerlink" href="#naive-bayes-classifier" title="Permalink to this headline">¶</a></h3>
+<h3>5.4.5.2. naive bayes classifier<a class="headerlink" href="#naive-bayes-classifier" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>assume multinomial Y</p></li>
 <li><p>with clever tricks, can produce <span class="math notranslate nohighlight">\(P(Y^i=1|x, \eta)\)</span> again as a softmax</p></li>
@@ -1190,7 +1190,7 @@
 </ul>
 </div>
 <div class="section" id="exponential-family-class-conditioned-classifiers">
-<h3>5.3.5.3. exponential family class-conditioned classifiers<a class="headerlink" href="#exponential-family-class-conditioned-classifiers" title="Permalink to this headline">¶</a></h3>
+<h3>5.4.5.3. exponential family class-conditioned classifiers<a class="headerlink" href="#exponential-family-class-conditioned-classifiers" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
 <li><p>includes Gaussian, binomial, Poisson, gamma, Dirichlet</p></li>
 <li><p><span class="math notranslate nohighlight">\(p(x|\eta) = \text{exp}[\eta^Tx - a(\eta)] h(x)\)</span></p></li>
@@ -1198,7 +1198,7 @@
 </ol>
 </div>
 <div class="section" id="text-classification">
-<h3>5.3.5.4. text classification<a class="headerlink" href="#text-classification" title="Permalink to this headline">¶</a></h3>
+<h3>5.4.5.4. text classification<a class="headerlink" href="#text-classification" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>bag of words - represent text as a vector of word frequencies X</p>
 <ul>
@@ -1230,7 +1230,7 @@
 </div>
 </div>
 <div class="section" id="instance-based-nearest-neighbors-really-discriminative">
-<h2>5.3.6. instance-based (nearest neighbors) - really discriminative<a class="headerlink" href="#instance-based-nearest-neighbors-really-discriminative" title="Permalink to this headline">¶</a></h2>
+<h2>5.4.6. instance-based (nearest neighbors) - really discriminative<a class="headerlink" href="#instance-based-nearest-neighbors-really-discriminative" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>also called lazy learners = nonparametric models</p></li>
 <li><p>make Voronoi diagrams</p></li>
@@ -1279,9 +1279,9 @@
 </ul>
 </div>
 <div class="section" id="likelihood-calcs">
-<h2>5.3.7. likelihood calcs<a class="headerlink" href="#likelihood-calcs" title="Permalink to this headline">¶</a></h2>
+<h2>5.4.7. likelihood calcs<a class="headerlink" href="#likelihood-calcs" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="single-bernoulli">
-<h3>5.3.7.1. single Bernoulli<a class="headerlink" href="#single-bernoulli" title="Permalink to this headline">¶</a></h3>
+<h3>5.4.7.1. single Bernoulli<a class="headerlink" href="#single-bernoulli" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(L(p) = P\)</span>[Train | Bernoulli(p)]= <span class="math notranslate nohighlight">\(P(X_1,...,X_n\vert p)=\prod_i P(X_i\vert p)=\prod_i p^{X_i} (1-p)^{1-X_i}\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(=p^x (1-p)^{n-x}\)</span> where x = <span class="math notranslate nohighlight">\(\sum x_i\)</span></p></li>
@@ -1291,7 +1291,7 @@
 </ul>
 </div>
 <div class="section" id="multinomial">
-<h3>5.3.7.2. multinomial<a class="headerlink" href="#multinomial" title="Permalink to this headline">¶</a></h3>
+<h3>5.4.7.2. multinomial<a class="headerlink" href="#multinomial" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(L(\theta) = P(x_1,...,x_n\vert \theta_1,...,\theta_p) = \prod_i^n P(d_i\vert \theta_1,...\theta_p)=\prod_i^n factorials \cdot \theta_1^{x_1},...,\theta_p^{x_p}\)</span>- ignore factorials because they are always same</p>
 <ul>
@@ -1303,7 +1303,7 @@
 </div>
 </div>
 <div class="section" id="boosting">
-<h2>5.3.8. boosting<a class="headerlink" href="#boosting" title="Permalink to this headline">¶</a></h2>
+<h2>5.4.8. boosting<a class="headerlink" href="#boosting" title="Permalink to this headline">¶</a></h2>
 <ol>
 <li><p>adaboost</p>
 <ol class="simple">
@@ -1386,8 +1386,8 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="structure_ml.html" title="previous page">5.2. structure learning</a>
-    <a class='right-next' id="next-link" href="unsupervised.html" title="next page">5.4. unsupervised</a>
+    <a class='left-prev' id="prev-link" href="structure_ml.html" title="previous page">5.3. structure learning</a>
+    <a class='right-next' id="next-link" href="unsupervised.html" title="next page">5.5. unsupervised</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

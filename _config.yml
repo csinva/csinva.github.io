@@ -4,7 +4,7 @@ baseurl: ""
 # Site Settings
 title: Chandan Singh
 description: "Let's do good with models"
-keywords: "Machine Learning, Chandan Singh, Berkeley, Interpretability, Explainability"
+keywords: "Machine Learning, Chandan Singh, Berkeley, Interpretability, Explainability, Causal Inference"
 collections:
  blog:
     name: blog

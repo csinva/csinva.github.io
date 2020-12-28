@@ -107,7 +107,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">
-     1.2. adv attacks
+     1.2. transfer learning
     </a>
    </li>
    <li class="toctree-l2">
@@ -347,43 +347,48 @@
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
+    <a class="reference internal" href="../ml/nlp.html">
+     5.1. nlp
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../ml/comp_vision.html">
-     5.1. computer vision
+     5.2. computer vision
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/structure_ml.html">
-     5.2. structure learning
+     5.3. structure learning
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/classification.html">
-     5.3. classification
+     5.4. classification
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/unsupervised.html">
-     5.4. unsupervised
+     5.5. unsupervised
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/deep_learning.html">
-     5.5. deep learning
+     5.6. deep learning
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/feature_selection.html">
-     5.6. feature selection
+     5.7. feature selection
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/learning_theory.html">
-     5.7. learning theory
+     5.8. learning theory
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/evaluation.html">
-     5.8. evaluation
+     5.9. evaluation
     </a>
    </li>
   </ul>
@@ -401,48 +406,43 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../ai/nlp.html">
-     6.2. nlp
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../ai/fairness_sts.html">
-     6.3. fairness
+     6.2. fairness
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/cogsci.html">
-     6.4. cogsci
+     6.3. cogsci
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/ai_futures.html">
-     6.5. ai futures
+     6.4. ai futures
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/logic.html">
-     6.6. logic
+     6.5. logic
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/philosophy.html">
-     6.7. philosophy
+     6.6. philosophy
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/psychology.html">
-     6.8. psychology
+     6.7. psychology
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/knowledge_rep.html">
-     6.9. representations
+     6.8. representations
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/decisions.html">
-     6.10. decisions
+     6.9. decisions
     </a>
    </li>
   </ul>
@@ -700,6 +700,13 @@
     <a class="reference internal nav-link" href="#instrumental-variable">
      4.4.5.6. instrumental variable
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#effect-under-non-compliance">
+       4.4.5.6.1. effect under non-compliance
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#synthetic-data-experiments">
@@ -1431,11 +1438,14 @@ M --&gt; Y
 <li><p>requires data from both groups at 2 or more time periods (at least one before treatment and one after)</p></li>
 </ul>
 </li>
-<li><p>simple constant-treatment model: <span class="math notranslate nohighlight">\(Y_{i t}=Y_{i t}(0)+T_{i t} \tau,\)</span> for all <span class="math notranslate nohighlight">\(i=1, \ldots, n, t=1, \ldots\)</span></p>
+<li><p><strong>simple constant-treatment model</strong>: <span class="math notranslate nohighlight">\(Y_{i t}=Y_{i t}(0)+T_{i t} \tau,\)</span> for all <span class="math notranslate nohighlight">\(i=1, \ldots, n, t=1, \ldots\)</span></p>
 <ul>
 <li><p>assumes no effect heterogeneity</p></li>
 <li><p>assumes treatment at time only effects outcomes at time t - this can be weird</p></li>
-<li><p>during estimation, assume two-way model: <span class="math notranslate nohighlight">\(Y_{i t}=\alpha_{i}+\beta_{t}+T_{i t} \tau+\varepsilon_{i t}, \quad \mathbb{E}[\varepsilon \mid \alpha, \beta, T]=0\)</span></p></li>
+</ul>
+</li>
+<li><p>one approach for estimation: assume <strong>two-way model</strong>: <span class="math notranslate nohighlight">\(Y_{i t}=\alpha_{i}+\beta_{t}+T_{i t} \tau+\varepsilon_{i t}, \quad \mathbb{E}[\varepsilon \mid \alpha, \beta, T]=0\)</span></p>
+<ul>
 <li><p>estimator for difference-in-difference with two timepoints</p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(\hat{\tau}=\frac{1}{\left|\left\{i: T_{i 2}=1\right\}\right|} \underbrace{\sum_{\left\{i: T_{i 2}=1\right\}}\left(Y_{i 2}-Y_{i 1}\right)}_{\text{diff for treated group}}-\frac{1}{\left|\left\{i: T_{i 2}=0\right\}\right|} \underbrace{\sum_{\left\{i: T_{i 2}=0\right\}}\left(Y_{i 2}-Y_{i 1}\right)}_{\text{diff for untreated group}}\)</span></p></li>
@@ -1443,24 +1453,33 @@ M --&gt; Y
 </li>
 </ul>
 </li>
-<li><p><span class="math notranslate nohighlight">\(Y_{i t}=A_{i .} B_{t .}^{\prime}+T_{i t} \tau+\varepsilon_{i t}, \quad \mathbb{E}[\varepsilon \mid A, B, T]=0, \quad A \in \mathbb{R}^{n \times k}, B \in \mathbb{R}^{T \times k}\)</span></p>
+<li><p>second approach for estimation of constant-treatment: interactive panel models <span class="math notranslate nohighlight">\(Y_{i t}=A_{i .} B_{t .}^{\prime}+T_{i t} \tau+\varepsilon_{i t}, \quad \mathbb{E}[\varepsilon \mid A, B, T]=0, \quad A \in \mathbb{R}^{n \times k}, B \in \mathbb{R}^{T \times k}\)</span></p>
 <ul>
 <li><p>allows for rank <span class="math notranslate nohighlight">\(k\)</span> matrix, less restrictive (no longer forces parallel trends for all units)</p></li>
 <li><p>can estimate with synthetic controls (<a class="reference external" href="https://amstat.tandfonline.com/doi/abs/10.1198/jasa.2009.ap08746">abadie, diamon, &amp; hainmueller, 2010</a>)</p>
 <ul>
 <li><p>artificially re-weight unexposed units (i.e. units with <span class="math notranslate nohighlight">\(T_i=0\)</span>) so their average trend matches the unweighted mean trend up to time <span class="math notranslate nohighlight">\(t_0\)</span></p></li>
 <li><p>if the weights create thes parallel trends, they should alos balance the latent factors <span class="math notranslate nohighlight">\(A_i\)</span></p></li>
-<li><p><img alt="src:wager lecture notes" src="../../_images/synth_control_did.png" /></p></li>
+<li><p><img alt="src:wager lecture notes" src="../../_images/synth_control_did.png" /></p>
+<ul>
+<li><p>trends are clearly not parallel, but after reweighting they become parallel</p></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><p>many other estimators, e.g. via clustering or nuclear norm minimization</p></li>
+</ul>
+</li>
+<li><p>third approach: design-based assumptions e.g. <span class="math notranslate nohighlight">\(Y_{i .}(0) \perp T_{i .} \mid S_{i}, \quad S_{i}=\sum_{t=1}^{T} T_{i t}\)</span></p>
+<ul>
+<li><p>ex. <span class="math notranslate nohighlight">\(Y_{it}\)</span> is health outcome, <span class="math notranslate nohighlight">\(T_{it}\)</span> is medical treatment, <span class="math notranslate nohighlight">\(S_i\)</span> is unobserved health-seeking behavior</p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{\tau}=\sum_{i, t} \gamma_{i t} Y_{i t}\)</span> where <span class="math notranslate nohighlight">\(\gamma\)</span>-matrix depends only on treatment assignment</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="instrumental-variable">
 <h3>4.4.5.6. instrumental variable<a class="headerlink" href="#instrumental-variable" title="Permalink to this headline">¶</a></h3>
-<ul>
-<li><p>see this nice <a class="reference external" href="http://www.rebeccabarter.com/blog/2018-05-23-instrumental_variables/">blog post</a> by Rebecca Barter</p>
 <ul>
 <li><div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>graph LR
 I --&gt; T
@@ -1469,37 +1488,58 @@ T --&gt; Y
 </pre></div>
 </div>
 </li>
-<li><p><strong>instrument</strong> <span class="math notranslate nohighlight">\(I\)</span>- measurable quantity that correlates with the treatment, and is <span class="math notranslate nohighlight">\(\underbrace{\color{NavyBlue}{\text{only related to the outcome via the treatment}}}_{\textbf{exclusion restriction}}\)</span></p>
+<li><p><strong>instrument</strong> <span class="math notranslate nohighlight">\(I\)</span>- measurable quantity that correlates with the treatment, and is <span class="math notranslate nohighlight">\(\underbrace{\color{NavyBlue}{\text{only related to the outcome via the treatment}}}_{\textbf{exclusion restriction}}\)</span></p></li>
+<li><p>precisely 3 conditions must hold for <span class="math notranslate nohighlight">\(I_i\)</span>:</p>
 <ul class="simple">
-<li><p>exclusion restriction is uncheckable</p></li>
+<li><p>exogenous: <span class="math notranslate nohighlight">\(\varepsilon_{i} \perp I_{i}\)</span></p></li>
+<li><p>relevant: <span class="math notranslate nohighlight">\(\operatorname{Cov}\left[T_{i}, I_{i}\right] \neq 0 \)</span></p></li>
+<li><p>exclusion restriction: any effect of <span class="math notranslate nohighlight">\(I_{i}\)</span> on <span class="math notranslate nohighlight">\(Y_{i}\)</span> must be mediated via <span class="math notranslate nohighlight">\(T_{i}\)</span></p>
+<ul>
+<li><p>uncheckable</p></li>
 </ul>
 </li>
-<li><p>key idea: randomization holds for <span class="math notranslate nohighlight">\(I\)</span> but not for <span class="math notranslate nohighlight">\(T\)</span></p></li>
+</ul>
+</li>
 <li><p>intuitively, need to combine effect of instrument on treatment and effect of instrument on outcome (through treatment)</p>
 <ul class="simple">
+<li><p>in practice, often implemented in a 2-stage least squares (regress <span class="math notranslate nohighlight">\(I \to T\)</span> then <span class="math notranslate nohighlight">\(T\to Y\)</span>)</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(Y_{i}=\alpha+T_{i} \tau+\varepsilon_{i}, \quad \varepsilon_{i} \perp I_{i}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(T_{i}=I_{i} \gamma+\eta_{i}\)</span></p></li>
+<li><p>most important point is that <span class="math notranslate nohighlight">\(\epsilon_i \perp I_i\)</span></p></li>
+</ul>
+</li>
 <li><p><strong>Wald estimator</strong> = <span class="math notranslate nohighlight">\(\frac{Cov(Y, I)}{Cov(T, I)}\)</span></p></li>
-<li><p>LATE = local average treatment effect - this estimate is only valid for the patients who were influenced by the instrument</p></li>
-<li><p>in practice, often implemented in a 2-stage least squares (regress <span class="math notranslate nohighlight">\(I \to T\)</span> then <span class="math notranslate nohighlight">\(T\to Y\)</span>)</p></li>
+<li><p><em>LATE</em> = local average treatment effect - this estimate is only valid for the patients who were influenced by the instrument</p></li>
+<li><p>we may have many potential instruments</p>
+<ul>
+<li><p>in this case, can learn a funciton of the instruments via cross-fitting as an instrument</p></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><p>examples</p>
 <ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(I\)</span>: stormy weather, <span class="math notranslate nohighlight">\(T\)</span> price of fish, <span class="math notranslate nohighlight">\(Y\)</span> demand for fish</p>
+<ul>
+<li><p>stormy weather makes it harder to fish, raising price but not affecting demand</p></li>
+</ul>
+</li>
 <li><p><span class="math notranslate nohighlight">\(I\)</span>: quarter of birth, <span class="math notranslate nohighlight">\(T\)</span>: schooling in years, <span class="math notranslate nohighlight">\(Y\)</span>: earnings (angrist &amp; krueger, 1991)</p></li>
 <li><p><span class="math notranslate nohighlight">\(I\)</span>: sibling sex composition, <span class="math notranslate nohighlight">\(T\)</span>: family size, <span class="math notranslate nohighlight">\(Y\)</span>: mother’s employment (angist &amp; evans, 1998)</p></li>
 <li><p><span class="math notranslate nohighlight">\(I\)</span>: lottery number, <span class="math notranslate nohighlight">\(T\)</span>: veteran status, <span class="math notranslate nohighlight">\(Y\)</span>: mortality</p></li>
 <li><p><span class="math notranslate nohighlight">\(I\)</span>: geographic variation in college proximity, <span class="math notranslate nohighlight">\(T\)</span>: schooling, <span class="math notranslate nohighlight">\(Y\)</span>: wage (card, 1993)</p></li>
 </ul>
 </li>
-<li><p><strong>CACE</strong> <span class="math notranslate nohighlight">\(\tau_c\)</span> (complier average causal effect) = <strong>LATE</strong> (local average treatement effect)</p>
-<ul class="simple">
-<li><p>technical setting: <strong>noncompliance</strong> - sometimes treatment assigned <span class="math notranslate nohighlight">\(I\)</span> and treatment received <span class="math notranslate nohighlight">\(T\)</span> are different</p></li>
 </ul>
-</li>
-<li><p>assumptions</p>
+<div class="section" id="effect-under-non-compliance">
+<h4>4.4.5.6.1. effect under non-compliance<a class="headerlink" href="#effect-under-non-compliance" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
-<li><p>randomization = instrumental unconfoundedness: <span class="math notranslate nohighlight">\(I \perp \{T^{I=1}, T^{I=0}, Y^{I=1}, Y^{I=0} \}\)</span></p>
+<li><p><strong>CACE</strong> <span class="math notranslate nohighlight">\(\tau_c\)</span> (complier average causal effect) = <strong>LATE</strong> (local average treatement effect)</p></li>
+<li><p>technical setting: <strong>noncompliance</strong> - sometimes treatment assigned <span class="math notranslate nohighlight">\(I\)</span> and treatment received <span class="math notranslate nohighlight">\(T\)</span> are different</p></li>
+<li><p>assumptions</p>
+<ul>
+<li><p><em>randomization = instrumental unconfoundedness</em>: <span class="math notranslate nohighlight">\(I \perp \{T^{I=1}, T^{I=0}, Y^{I=1}, Y^{I=0} \}\)</span></p>
 <ul>
 <li><p>randomization lets us identify ATE of <span class="math notranslate nohighlight">\(I\)</span> on <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(I\)</span> on <span class="math notranslate nohighlight">\(Y\)</span></p>
 <ul>
@@ -1520,12 +1560,12 @@ T --&gt; Y
 </li>
 </ul>
 </li>
-<li><p>exclusion restriction: <span class="math notranslate nohighlight">\(Y_i^{I=1} = Y_i^{I=0}\)</span> for always-takers and never-takers</p>
+<li><p><em>exclusion restriction</em>: <span class="math notranslate nohighlight">\(Y_i^{I=1} = Y_i^{I=0}\)</span> for always-takers and never-takers</p>
 <ul>
 <li><p>means treatment assignment affects outcome only if it affects the treatment</p></li>
 </ul>
 </li>
-<li><p>monotonicity: <span class="math notranslate nohighlight">\(P(C=d) = 0\)</span> or <span class="math notranslate nohighlight">\(T_i^{U=1} \geq T_i^{U=0} \; \forall i\)</span> - there are no defiers</p>
+<li><p><em>monotonicity</em>: <span class="math notranslate nohighlight">\(P(C=d) = 0\)</span> or <span class="math notranslate nohighlight">\(T_i^{U=1} \geq T_i^{U=0} \; \forall i\)</span> - there are no defiers</p>
 <ul>
 <li><p>testable implication: <span class="math notranslate nohighlight">\(P(T=1|I=1) \geq P(T=1|C=0)\)</span></p></li>
 </ul>
@@ -1551,11 +1591,12 @@ T --&gt; Y
 </ul>
 </li>
 <li><p><strong>instrumental variable criterion</strong> -  sufficient condition for identifying the causal effect <span class="math notranslate nohighlight">\(P(y|do(t))\)</span> is that every path between <span class="math notranslate nohighlight">\(T\)</span> and any of its children traces at least one arrow emanating from a measured variable</p>
-<ul class="simple">
+<ul>
 <li><p>sometimes this is satisfied even when back-door criterion is not</p></li>
 </ul>
 </li>
 </ul>
+</div>
 </div>
 <div class="section" id="synthetic-data-experiments">
 <h3>4.4.5.7. synthetic data experiments<a class="headerlink" href="#synthetic-data-experiments" title="Permalink to this headline">¶</a></h3>

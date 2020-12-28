@@ -107,7 +107,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_transfer_learning.html">
-     1.2. adv attacks
+     1.2. transfer learning
     </a>
    </li>
    <li class="toctree-l2">
@@ -347,43 +347,48 @@
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
+    <a class="reference internal" href="../ml/nlp.html">
+     5.1. nlp
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../ml/comp_vision.html">
-     5.1. computer vision
+     5.2. computer vision
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/structure_ml.html">
-     5.2. structure learning
+     5.3. structure learning
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/classification.html">
-     5.3. classification
+     5.4. classification
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/unsupervised.html">
-     5.4. unsupervised
+     5.5. unsupervised
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/deep_learning.html">
-     5.5. deep learning
+     5.6. deep learning
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/feature_selection.html">
-     5.6. feature selection
+     5.7. feature selection
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/learning_theory.html">
-     5.7. learning theory
+     5.8. learning theory
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/evaluation.html">
-     5.8. evaluation
+     5.9. evaluation
     </a>
    </li>
   </ul>
@@ -401,48 +406,43 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../ai/nlp.html">
-     6.2. nlp
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../ai/fairness_sts.html">
-     6.3. fairness
+     6.2. fairness
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/cogsci.html">
-     6.4. cogsci
+     6.3. cogsci
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/ai_futures.html">
-     6.5. ai futures
+     6.4. ai futures
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/logic.html">
-     6.6. logic
+     6.5. logic
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/philosophy.html">
-     6.7. philosophy
+     6.6. philosophy
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/psychology.html">
-     6.8. psychology
+     6.7. psychology
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/knowledge_rep.html">
-     6.9. representations
+     6.8. representations
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/decisions.html">
-     6.10. decisions
+     6.9. decisions
     </a>
    </li>
   </ul>
@@ -626,23 +626,40 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#policy-learning">
+     1.9.2.3. policy learning
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#causal-discovery">
-     1.9.2.3. causal discovery
+     1.9.2.4. causal discovery
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#stable-invariant-predictors">
-     1.9.2.4. stable/invariant predictors
+     1.9.2.5. stable/invariant predictors
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#problem-formulations">
+       1.9.2.5.1. problem formulations
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#invariance-algorithms">
+       1.9.2.5.2. invariance algorithms
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#misc-problems">
-     1.9.2.5. misc problems
+     1.9.2.6. misc problems
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#transferring-out-of-sample">
-     1.9.2.6. transferring out-of-sample
+     1.9.2.7. transferring out-of-sample
     </a>
    </li>
   </ul>
@@ -990,8 +1007,14 @@ C(Location of Car) --&gt; B
 </li>
 </ul>
 </div>
+<div class="section" id="policy-learning">
+<h3>1.9.2.3. policy learning<a class="headerlink" href="#policy-learning" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>rather than estimating a treatment effect, find a policy that maximizes some expected utility (e.g. can define utility as the potential outcome <span class="math notranslate nohighlight">\(\mathbb E[Y_i(\pi(X_i))]\)</span>)</p></li>
+</ul>
+</div>
 <div class="section" id="causal-discovery">
-<h3>1.9.2.3. causal discovery<a class="headerlink" href="#causal-discovery" title="Permalink to this headline">¶</a></h3>
+<h3>1.9.2.4. causal discovery<a class="headerlink" href="#causal-discovery" title="Permalink to this headline">¶</a></h3>
 <p><em>Causal discovery aims to identify causal relationships (sometimes under some smoothness / independence assumptions. This is often impossible in general.</em></p>
 <ul class="simple">
 <li><p>overview</p>
@@ -1106,21 +1129,23 @@ C(Location of Car) --&gt; B
 </ul>
 </div>
 <div class="section" id="stable-invariant-predictors">
-<h3>1.9.2.4. stable/invariant predictors<a class="headerlink" href="#stable-invariant-predictors" title="Permalink to this headline">¶</a></h3>
+<h3>1.9.2.5. stable/invariant predictors<a class="headerlink" href="#stable-invariant-predictors" title="Permalink to this headline">¶</a></h3>
 <p><em>Under certain assumptions, invariance to data perturbations (i.e. interventions) can help us identify causal effects.</em></p>
+<div class="section" id="problem-formulations">
+<h4>1.9.2.5.1. problem formulations<a class="headerlink" href="#problem-formulations" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/1812.08233">Invariance, Causality and Robustness</a> (buhlmann 18)</p>
 <ul>
 <li><p>predict <span class="math notranslate nohighlight">\(Y^e\)</span> given <span class="math notranslate nohighlight">\(X^e\)</span> such that the prediction “works well” or is “robust” for all <span class="math notranslate nohighlight">\(e ∈ \mathcal F\)</span> based on data from much fewer environments <span class="math notranslate nohighlight">\(e \in \mathcal E\)</span></p>
 <ul>
+<li><p><strong>key assumption (<em>invariance</em>)</strong>: there exists a subset of “causal” covariates - when conditioning on these covariates, the loss is the same across all environments <span class="math notranslate nohighlight">\(e\)</span></p></li>
 <li><p>assumption: ideally <span class="math notranslate nohighlight">\(e\)</span> changes only the distr. of <span class="math notranslate nohighlight">\(X^e\)</span> (so doesn’t act directly on <span class="math notranslate nohighlight">\(Y^e\)</span> or change the mechanism between <span class="math notranslate nohighlight">\(X^e\)</span> and <span class="math notranslate nohighlight">\(Y^e\)</span>)</p></li>
-<li><p>assumption (<em>invariance</em>): there exists a subset of “causal” covariates - when conditioning on these covariates, the loss is the same across all environments <span class="math notranslate nohighlight">\(e\)</span></p></li>
 <li><p>when these assumptions are satisfied, then minimizing a worst-case risk over environments <span class="math notranslate nohighlight">\(e\)</span> yields a causal parameter</p></li>
 </ul>
 </li>
 <li><p>identifiability issue: we typically can’t identify the causal variables without very many perturbations <span class="math notranslate nohighlight">\(e\)</span></p>
 <ul>
-<li><p><strong>Invariant Causal Prediction (ICP)</strong> only identifies variables as causal if they appear in all invariant sets</p></li>
+<li><p><strong>Invariant Causal Prediction (ICP)</strong> only identifies variables as causal if they appear in all invariant sets (see also <a class="reference external" href="https://arxiv.org/abs/1501.01332">Peters, Buhlmann, &amp; Meinshausen, 2015</a>)</p></li>
 </ul>
 </li>
 <li><p>anchor regression model helps to relax assumptions</p></li>
@@ -1128,6 +1153,12 @@ C(Location of Car) --&gt; B
 </li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1907.02893">Invariant Risk Minimization</a> (arjovsky, bottou, gulrajani, &amp; lopez-paz 2019)</p>
 <ul>
+<li><p>idealized formulation: <span class="math notranslate nohighlight">\(\begin{array}{ll}\min _{\Phi: \mathcal{X} \rightarrow \mathcal{H}} &amp; \sum_{e \in \mathcal{E}_{\mathrm{tr}}} R^{e}(w \circ \Phi) \\ \text { subject to } &amp; w \in \underset{\bar{w}: \mathcal{H} \rightarrow \mathcal{Y}}{\arg \min  } \: R^{e}(\bar{w} \circ \Phi), \text { for all } e \in \mathcal{E}_{\mathrm{tr}}\end{array}\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\Phi\)</span> is repr., <span class="math notranslate nohighlight">\(w \circ \Phi\)</span> is predictor</p></li>
+</ul>
+</li>
+<li><p>practical formulation: <span class="math notranslate nohighlight">\(\min _{\Phi: \mathcal{X} \rightarrow \mathcal{Y}} \sum_{e \in \mathcal{E}_{\mathrm{tr}}} R^{e}(\Phi)+\lambda \cdot\left\|\nabla_{w \mid w=1.0} R^{e}(w \cdot \Phi)\right\|^{2}\)</span></p></li>
 <li><p>random splitting causes problems with our data</p></li>
 <li><p>what to perform well under different distributions of X, Y</p></li>
 <li><p>can’t be solved via robust optimization</p></li>
@@ -1171,9 +1202,28 @@ C(Location of Car) --&gt; B
 <li><p>most of ml is built on the iid assumption and fails when it is violated (e.g. cow on a beach)</p></li>
 </ul>
 </li>
+</ul>
+</div>
+<div class="section" id="invariance-algorithms">
+<h4>1.9.2.5.2. invariance algorithms<a class="headerlink" href="#invariance-algorithms" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>algorithms overview (see papers for more details) + <a class="reference external" href="https://github.com/facebookresearch/InvarianceUnitTests">implementations</a></p>
+<ul>
+<li><p>ERM - empirical risk minimization - normal training, minimizes the error on the union of all the training splits</p></li>
+<li><p>IRM - invariant risk minimization (v1) - finds a representation of the features such that the optimal classifier, on top of that representation, is the identity function for all environments</p></li>
+<li><p>domain-adversarial techniques</p></li>
+<li><p>ICP - invariant causal prediction - find sets for which features are invariant</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2009.00329">AND-mask</a> - minimizes the error on the training splits by updating the model on those directions where the sign of the gradient of the loss is the same for most environments.</p></li>
+<li><p><span class="xref myst">IGA</span> - inter-environmental gradient alignment - ERM + reduce variance of the gradient of the loss per environment: <span class="math notranslate nohighlight">\(\lambda \operatorname{trace}\left(\operatorname{Var}\left(\nabla_{\theta} L_{\mathcal{E}}(\theta)\right)\right)\)</span></p></li>
+</ul>
+</li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2009.00329">Learning explanations that are hard to vary</a> (parascandolo…sholkopf, 2020)</p>
 <ul>
-<li><p>basically, gradients should be consistent during learning</p></li>
+<li><p>basically, gradients should be consistent during learning</p>
+<ul>
+<li><p>after learning, they should be consistent within some epsilon ball</p></li>
+</ul>
+</li>
 <li><p>practical algorithm: AND-mask</p>
 <ul>
 <li><p>like zeroing out those gradient components with respect to weights that have <em>inconsistent signs</em> across environments</p>
@@ -1212,10 +1262,25 @@ C(Location of Car) --&gt; B
 </li>
 </ul>
 </li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2002.04692">Invariant Risk Minimization Games</a> (ahuja et al. 2020) - pose IRM as finding the Nash equilibrium of an ensemble game among several environments</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2003.09772">Invariant Rationalization</a> (chang et al. 2020) - identify a small subset of input features – the rationale – that best explains or supports the prediction</p>
+<ul>
+<li><p>key assumption: <span class="math notranslate nohighlight">\(Y \perp E | Z\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\max _{\boldsymbol{m} \in \mathcal{S}} I(Y ; \boldsymbol{Z}) \quad\)</span> s.t. <span class="math notranslate nohighlight">\(\boldsymbol{Z}= \overbrace{\boldsymbol{m}}^{\text{binary mask}} \odot \boldsymbol{X}, \quad \underbrace{Y \perp E \mid \boldsymbol{Z}}_{\text{this part is invariance}}\)</span></p>
+<ul>
+<li><p>solve this via 3 nets with adv. penalty to approximate invariance</p></li>
+<li><p>standard maximum mutual info objective is just <span class="math notranslate nohighlight">\(\max _{\boldsymbol{m} \in \mathcal{S}} I(Y ; \boldsymbol{Z}) \quad\)</span> s.t. <span class="math notranslate nohighlight">\(\boldsymbol{Z}= \overbrace{\boldsymbol{m}}^{\text{binary mask}} \odot \boldsymbol{X}\)</span> (see <a class="reference external" href="https://arxiv.org/abs/1606.04155">lei et al. 2016</a>)</p></li>
+<li><p>ex. <span class="math notranslate nohighlight">\(X\)</span> is text reviews for beer, <span class="math notranslate nohighlight">\(Y\)</span> is aroma, <span class="math notranslate nohighlight">\(E\)</span> could be beer brand</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://www.cmu.edu/dietrich/causality/CameraReadys-accepted%20papers/32%5CCameraReady%5Cdatasets.pdf">Linear unit-tests for invariance discovery</a>  (aubin et al. 2020) - a set of 6 simple settings where current IRM procedures fail</p></li>
 </ul>
 </div>
+</div>
 <div class="section" id="misc-problems">
-<h3>1.9.2.5. misc problems<a class="headerlink" href="#misc-problems" title="Permalink to this headline">¶</a></h3>
+<h3>1.9.2.6. misc problems<a class="headerlink" href="#misc-problems" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/1907.13258">Incremental causal effects</a> (rothenhausler &amp; yu, 2019)</p>
 <ul>
@@ -1239,7 +1304,7 @@ $<span class="math notranslate nohighlight">\(
 </ul>
 </div>
 <div class="section" id="transferring-out-of-sample">
-<h3>1.9.2.6. transferring out-of-sample<a class="headerlink" href="#transferring-out-of-sample" title="Permalink to this headline">¶</a></h3>
+<h3>1.9.2.7. transferring out-of-sample<a class="headerlink" href="#transferring-out-of-sample" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://naokiegami.com/paper/external_full.pdf">Elements of External Validity: Framework, Design, and Analysis</a></p>
 <ul>

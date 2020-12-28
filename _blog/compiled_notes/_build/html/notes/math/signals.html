@@ -107,7 +107,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">
-     1.2. adv attacks
+     1.2. transfer learning
     </a>
    </li>
    <li class="toctree-l2">
@@ -347,43 +347,48 @@
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
+    <a class="reference internal" href="../ml/nlp.html">
+     5.1. nlp
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../ml/comp_vision.html">
-     5.1. computer vision
+     5.2. computer vision
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/structure_ml.html">
-     5.2. structure learning
+     5.3. structure learning
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/classification.html">
-     5.3. classification
+     5.4. classification
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/unsupervised.html">
-     5.4. unsupervised
+     5.5. unsupervised
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/deep_learning.html">
-     5.5. deep learning
+     5.6. deep learning
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/feature_selection.html">
-     5.6. feature selection
+     5.7. feature selection
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/learning_theory.html">
-     5.7. learning theory
+     5.8. learning theory
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/evaluation.html">
-     5.8. evaluation
+     5.9. evaluation
     </a>
    </li>
   </ul>
@@ -401,48 +406,43 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../ai/nlp.html">
-     6.2. nlp
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../ai/fairness_sts.html">
-     6.3. fairness
+     6.2. fairness
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/cogsci.html">
-     6.4. cogsci
+     6.3. cogsci
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/ai_futures.html">
-     6.5. ai futures
+     6.4. ai futures
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/logic.html">
-     6.6. logic
+     6.5. logic
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/philosophy.html">
-     6.7. philosophy
+     6.6. philosophy
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/psychology.html">
-     6.8. psychology
+     6.7. psychology
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/knowledge_rep.html">
-     6.9. representations
+     6.8. representations
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/decisions.html">
-     6.10. decisions
+     6.9. decisions
     </a>
    </li>
   </ul>
@@ -597,18 +597,23 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#using-wavelets">
-     3.5.4.1. using wavelets
+    <a class="reference internal nav-link" href="#wavelet-basics">
+     3.5.4.1. wavelet basics
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#properties-of-different-wavelet-bases">
+     3.5.4.2. properties of different wavelet bases
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id1">
-     3.5.4.2. wavelet analysis
+     3.5.4.3. wavelet analysis
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#more-general-wavelets">
-     3.5.4.3. more general wavelets
+     3.5.4.4. more general wavelets
     </a>
    </li>
   </ul>
@@ -735,27 +740,32 @@ form an <em>orthogonal basis</em> over the set of <em>N</em>-dimensional complex
 <div class="section" id="wavelet-analysis">
 <h2>3.5.4. wavelet analysis<a class="headerlink" href="#wavelet-analysis" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="http://www.gtwavelet.bme.gatech.edu/wp/kidsA.pdf">wavelets for kids</a> - good reference</p></li>
-<li><p><a class="reference external" href="https://www.eecis.udel.edu/~amer/CISC651/IEEEwavelet.pdf">overview</a>, <a class="reference external" href="https://www.mathworks.com/help/wavelet/ug/wavelet-families-additional-discussion.html">matlab wavelets</a>, <a class="reference external" href="http://wavelets.pybytes.com/">python wavelets</a></p></li>
-<li><p>different based on choice of wavelet</p></li>
-<li><p>wavelet has both time and freq information</p></li>
-<li><p>2 differences with Fourer</p>
+<li><p>wavelet is localized in both time and frequency information</p>
 <ul>
-<li><p>replace sinusoid <span class="math notranslate nohighlight">\(\phi(x) = e^{i 2 \pi k x/N}\)</span> with wavelet</p></li>
-<li><p>coefficients must be indexed by more than just frequency (also position, scale, and/or orientation)</p></li>
+<li><p>different wavelets thus vary in translation, scale, and sometimes orientation</p></li>
+<li><p>many choices for wavelet basis, which replaces the sinusoid basis sinusoid <span class="math notranslate nohighlight">\(\phi(x) = e^{i 2 \pi k x/N}\)</span></p></li>
 </ul>
 </li>
 </ul>
-<div class="section" id="using-wavelets">
-<h3>3.5.4.1. using wavelets<a class="headerlink" href="#using-wavelets" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="wavelet-basics">
+<h3>3.5.4.1. wavelet basics<a class="headerlink" href="#wavelet-basics" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><strong><span class="math notranslate nohighlight">\(\phi(x)\)</span> = mother wavelet</strong> (or analyzing wavelet)</p>
 <ul>
-<li><p>now form translations and dilations of the mother wavelet <span class="math notranslate nohighlight">\(\phi(\frac{x-b}{a})\)</span></p>
-<ul>
-<li><p>it is convenient to set <span class="math notranslate nohighlight">\(a=2^{-j}, b = k \cdot 2^{-j}\)</span>, where k and j are integers</p></li>
+<li><p>basis consists of translations and dilations of the mother wavelet <span class="math notranslate nohighlight">\(\phi(\frac{x-b}{a})\)</span></p></li>
 </ul>
 </li>
+<li><p>wavelet vocab</p>
+<ul>
+<li><p>discrete wavelet transform: set <span class="math notranslate nohighlight">\(a=2^{-j}, b = k \cdot 2^{-j}\)</span>, where <span class="math notranslate nohighlight">\(k\)</span> and <span class="math notranslate nohighlight">\(j\)</span> are integers</p>
+<ul>
+<li><p>starts from multiresolution analysis (mallat, 1989)</p></li>
+</ul>
+</li>
+<li><p>continuous wavelet transform: <span class="math notranslate nohighlight">\(a &gt; 0, b\)</span> (still a point-by-point, digita transformation)</p></li>
+<li><p>orthonormal</p></li>
+<li><p>biorthogonal - more relaxed, still enables perfect reconstruction</p></li>
+<li><p>undecimated - highly overparameterized, exists at every location</p></li>
 </ul>
 </li>
 <li><p>website to <a class="reference external" href="http://wavelets.pybytes.com/">explore different wavelets</a></p>
@@ -772,6 +782,7 @@ form an <em>orthogonal basis</em> over the set of <em>N</em>-dimensional complex
 </ul>
 </li>
 <li><p>ex. <strong>Gabor==Morlet wavelet</strong>: <span class="math notranslate nohighlight">\(\phi_\sigma(x) = c \cdot \underbrace{e^{-\frac 1 2 x^2}}_{\text{gaussian window}} \underbrace{(e^{i\sigma x} - \kappa_\sigma)}_{\text{frequency}}\)</span></p></li>
+<li><p>ex. <strong>Mexican hat wavelet</strong> - 2nd deriv of Gaussian pdf (in 2d, called Laplacian of Gaussian)</p></li>
 <li><p>ex. <strong>Daubechies wavelet</strong></p></li>
 <li><p>ex. <strong>coiflet</strong></p></li>
 <li><p>ex. scattering transform</p></li>
@@ -791,27 +802,56 @@ form an <em>orthogonal basis</em> over the set of <em>N</em>-dimensional complex
 <li><p><a class="reference external" href="https://pywavelets.readthedocs.io/en/latest/ref/2d-decompositions-overview.html">pywt 2d</a> can decompose in different ways</p>
 <ul>
 <li><p><img alt="Screen Shot 2019-12-11 at 2.47.53 PM" src="../../_images/wavelet_coefs.png" /></p></li>
+<li><p>wavelet packet uses linear combinations of wavelets</p></li>
 </ul>
 </li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="properties-of-different-wavelet-bases">
+<h3>3.5.4.2. properties of different wavelet bases<a class="headerlink" href="#properties-of-different-wavelet-bases" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>vanishing moments</p>
+<ul>
+<li><p>higher number of vanishing moments = more complex wavelet</p>
+<ul>
+<li><p>more accurate repr. of complex signal</p></li>
+<li><p>longer support</p></li>
+<li><p><em>p</em> vanishing moments =&gt; polynomials up to pth order will not be identified</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>regularity</p>
+<ul>
+<li><p>more vanishing moments = higher regularity</p></li>
+<li><p>low regularity - more jagged wavelets, less smooth reconstructions</p></li>
+</ul>
+</li>
+<li><p>invertibility</p>
+<ul>
+<li><p>requires <em>admissibility condition</em>, which at least requires wavelets have vanishing mean <span class="math notranslate nohighlight">\(\int \psi(x) \mathrm{d} x=0\)</span></p></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="id1">
-<h3>3.5.4.2. wavelet analysis<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<h3>3.5.4.3. wavelet analysis<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>orthogonal wavelet basis: <span class="math notranslate nohighlight">\(\phi_{(s,l)} (x) = 2^{-s/2} \phi (2^{-s} x-l)\)</span></p></li>
+<li><p>orthogonal wavelet basis: <span class="math notranslate nohighlight">\(\phi_{(s,l)} (x) = 2^{-s/2} \phi (2^{-s} x-l)\)</span></p>
+<ul>
 <li><p><em>scaling function</em> <span class="math notranslate nohighlight">\(W(x) = \sum_{k=-1}^{N-2} (-1)^k c_{k+1} \phi (2x+k)\)</span> where <span class="math notranslate nohighlight">\(\sum_{k=0,N-1} c_k=2, \: \sum_{k=0}^{N-1} c_k c_{k+2l} = 2 \delta_{l,0}\)</span></p></li>
+</ul>
+</li>
 <li><p>one pattern of coefficients is smoothing and another brings out detail = called <em>quadrature mirror filter pair</em></p></li>
 <li><p>there is also a fast discrete wavelet transform (Mallat)</p></li>
-<li><p>wavelet packet transform - basis of <em>wavelet packets</em> = linear combinations of wavelets</p></li>
 <li><p><em>basis of adapted waveform</em> - best basis function for a given signal representation</p></li>
-<li><p><em>Marr wavelet</em> - developed for vision</p></li>
 <li><p>differential operator and capable of being tuned to act at any desired scale</p></li>
 </ul>
 </div>
 <div class="section" id="more-general-wavelets">
-<h3>3.5.4.3. more general wavelets<a class="headerlink" href="#more-general-wavelets" title="Permalink to this headline">¶</a></h3>
+<h3>3.5.4.4. more general wavelets<a class="headerlink" href="#more-general-wavelets" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="http://bigwww.epfl.ch/publications/vonesch0702.pdf">generalized daubechet wavelet families</a></p></li>
 <li><p><a class="reference external" href="https://pdfs.semanticscholar.org/46e3/4016b8c4b187118e83392242c2165a6db3db.pdf">generalized coiflets</a></p></li>

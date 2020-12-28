@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>5.8. evaluation &#8212; learning to learn</title>
+    <title>5.9. evaluation &#8212; learning to learn</title>
     
   <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -57,7 +57,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="6. ai" href="../ai/ai.html" />
-    <link rel="prev" title="5.7. learning theory" href="learning_theory.html" />
+    <link rel="prev" title="5.8. learning theory" href="learning_theory.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -107,7 +107,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">
-     1.2. adv attacks
+     1.2. transfer learning
     </a>
    </li>
    <li class="toctree-l2">
@@ -347,43 +347,48 @@
   </a>
   <ul class="current collapse-ul">
    <li class="toctree-l2">
+    <a class="reference internal" href="nlp.html">
+     5.1. nlp
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="comp_vision.html">
-     5.1. computer vision
+     5.2. computer vision
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="structure_ml.html">
-     5.2. structure learning
+     5.3. structure learning
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="classification.html">
-     5.3. classification
+     5.4. classification
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="unsupervised.html">
-     5.4. unsupervised
+     5.5. unsupervised
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="deep_learning.html">
-     5.5. deep learning
+     5.6. deep learning
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="feature_selection.html">
-     5.6. feature selection
+     5.7. feature selection
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="learning_theory.html">
-     5.7. learning theory
+     5.8. learning theory
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     5.8. evaluation
+     5.9. evaluation
     </a>
    </li>
   </ul>
@@ -401,48 +406,43 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../ai/nlp.html">
-     6.2. nlp
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../ai/fairness_sts.html">
-     6.3. fairness
+     6.2. fairness
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/cogsci.html">
-     6.4. cogsci
+     6.3. cogsci
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/ai_futures.html">
-     6.5. ai futures
+     6.4. ai futures
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/logic.html">
-     6.6. logic
+     6.5. logic
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/philosophy.html">
-     6.7. philosophy
+     6.6. philosophy
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/psychology.html">
-     6.8. psychology
+     6.7. psychology
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/knowledge_rep.html">
-     6.9. representations
+     6.8. representations
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/decisions.html">
-     6.10. decisions
+     6.9. decisions
     </a>
    </li>
   </ul>
@@ -578,32 +578,32 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#losses">
-   5.8.1. losses
+   5.9.1. losses
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#measures">
-   5.8.2. measures
+   5.9.2. measures
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#comparing-two-things">
-   5.8.3. comparing two things
+   5.9.3. comparing two things
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#cv">
-   5.8.4. cv
+   5.9.4. cv
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#stability">
-   5.8.5. stability
+   5.9.5. stability
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#other-considerations">
-   5.8.6. other considerations
+   5.9.6. other considerations
   </a>
  </li>
 </ul>
@@ -618,9 +618,9 @@
               <div>
                 
   <div class="section" id="evaluation">
-<h1>5.8. evaluation<a class="headerlink" href="#evaluation" title="Permalink to this headline">¶</a></h1>
+<h1>5.9. evaluation<a class="headerlink" href="#evaluation" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="losses">
-<h2>5.8.1. losses<a class="headerlink" href="#losses" title="Permalink to this headline">¶</a></h2>
+<h2>5.9.1. losses<a class="headerlink" href="#losses" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>define a loss function <span class="math notranslate nohighlight">\(\mathcal{L}\)</span></p>
 <ul>
@@ -650,7 +650,7 @@
 </ul>
 </div>
 <div class="section" id="measures">
-<h2>5.8.2. measures<a class="headerlink" href="#measures" title="Permalink to this headline">¶</a></h2>
+<h2>5.9.2. measures<a class="headerlink" href="#measures" title="Permalink to this headline">¶</a></h2>
 <p><em>goodness of fit</em> - how well does the learned distribution represent the real distribution?</p>
 <p><img alt="Screen Shot 2019-06-30 at 8.27.56 PM" src="../../_images/eval_metrics.png" /></p>
 <ul class="simple">
@@ -717,14 +717,14 @@
 </ul>
 </div>
 <div class="section" id="comparing-two-things">
-<h2>5.8.3. comparing two things<a class="headerlink" href="#comparing-two-things" title="Permalink to this headline">¶</a></h2>
+<h2>5.9.3. comparing two things<a class="headerlink" href="#comparing-two-things" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>odds: p1 : not p1</p></li>
 <li><p>odds ratio is a ratio of odds</p></li>
 </ul>
 </div>
 <div class="section" id="cv">
-<h2>5.8.4. cv<a class="headerlink" href="#cv" title="Permalink to this headline">¶</a></h2>
+<h2>5.9.4. cv<a class="headerlink" href="#cv" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p><em>cross validation</em> - don’t have enough data for a test set</p>
 <ul>
@@ -770,7 +770,7 @@
 </ul>
 </div>
 <div class="section" id="stability">
-<h2>5.8.5. stability<a class="headerlink" href="#stability" title="Permalink to this headline">¶</a></h2>
+<h2>5.9.5. stability<a class="headerlink" href="#stability" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
 <li><p>computational stability</p></li>
 </ol>
@@ -807,7 +807,7 @@
 </ul>
 </div>
 <div class="section" id="other-considerations">
-<h2>5.8.6. other considerations<a class="headerlink" href="#other-considerations" title="Permalink to this headline">¶</a></h2>
+<h2>5.9.6. other considerations<a class="headerlink" href="#other-considerations" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>computational cost</p></li>
 <li><p>interpretability</p></li>
@@ -852,7 +852,7 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="learning_theory.html" title="previous page">5.7. learning theory</a>
+    <a class='left-prev' id="prev-link" href="learning_theory.html" title="previous page">5.8. learning theory</a>
     <a class='right-next' id="next-link" href="../ai/ai.html" title="next page">6. ai</a>
 
     </div>

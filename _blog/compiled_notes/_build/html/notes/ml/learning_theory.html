@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>5.7. learning theory &#8212; learning to learn</title>
+    <title>5.8. learning theory &#8212; learning to learn</title>
     
   <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -56,8 +56,8 @@
     <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="5.8. evaluation" href="evaluation.html" />
-    <link rel="prev" title="5.6. feature selection" href="feature_selection.html" />
+    <link rel="next" title="5.9. evaluation" href="evaluation.html" />
+    <link rel="prev" title="5.7. feature selection" href="feature_selection.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -107,7 +107,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">
-     1.2. adv attacks
+     1.2. transfer learning
     </a>
    </li>
    <li class="toctree-l2">
@@ -347,43 +347,48 @@
   </a>
   <ul class="current collapse-ul">
    <li class="toctree-l2">
+    <a class="reference internal" href="nlp.html">
+     5.1. nlp
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="comp_vision.html">
-     5.1. computer vision
+     5.2. computer vision
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="structure_ml.html">
-     5.2. structure learning
+     5.3. structure learning
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="classification.html">
-     5.3. classification
+     5.4. classification
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="unsupervised.html">
-     5.4. unsupervised
+     5.5. unsupervised
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="deep_learning.html">
-     5.5. deep learning
+     5.6. deep learning
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="feature_selection.html">
-     5.6. feature selection
+     5.7. feature selection
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     5.7. learning theory
+     5.8. learning theory
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="evaluation.html">
-     5.8. evaluation
+     5.9. evaluation
     </a>
    </li>
   </ul>
@@ -401,48 +406,43 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../ai/nlp.html">
-     6.2. nlp
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../ai/fairness_sts.html">
-     6.3. fairness
+     6.2. fairness
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/cogsci.html">
-     6.4. cogsci
+     6.3. cogsci
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/ai_futures.html">
-     6.5. ai futures
+     6.4. ai futures
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/logic.html">
-     6.6. logic
+     6.5. logic
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/philosophy.html">
-     6.7. philosophy
+     6.6. philosophy
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/psychology.html">
-     6.8. psychology
+     6.7. psychology
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/knowledge_rep.html">
-     6.9. representations
+     6.8. representations
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/decisions.html">
-     6.10. decisions
+     6.9. decisions
     </a>
    </li>
   </ul>
@@ -578,44 +578,44 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#evolution">
-   5.7.1. evolution
+   5.8.1. evolution
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#sample-problems">
-   5.7.2. sample problems
+   5.8.2. sample problems
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#computational-learning-theory">
-   5.7.3. computational learning theory
+   5.8.3. computational learning theory
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#pac-probably-learning-an-approximately-correct-hypothesis-mitchell">
-     5.7.3.1. PAC - probably learning an approximately correct hypothesis - Mitchell
+     5.8.3.1. PAC - probably learning an approximately correct hypothesis - Mitchell
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#sample-complexity-for-finite-hypothesis-space-mitchell">
-     5.7.3.2. sample complexity for finite hypothesis space - Mitchell
+     5.8.3.2. sample complexity for finite hypothesis space - Mitchell
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#rectangle-learning-game-kearns">
-     5.7.3.3. rectangle learning game - Kearns
+     5.8.3.3. rectangle learning game - Kearns
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#vc-dimension">
-     5.7.3.4. VC dimension
+     5.8.3.4. VC dimension
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#concept-learning-and-the-general-to-specific-ordering">
-   5.7.4. concept learning and the general-to-specific ordering
+   5.8.4. concept learning and the general-to-specific ordering
   </a>
  </li>
 </ul>
@@ -630,10 +630,10 @@
               <div>
                 
   <div class="section" id="learning-theory">
-<h1>5.7. learning theory<a class="headerlink" href="#learning-theory" title="Permalink to this headline">¶</a></h1>
+<h1>5.8. learning theory<a class="headerlink" href="#learning-theory" title="Permalink to this headline">¶</a></h1>
 <p><em>references: (1) Machine Learning - Tom Mitchell, (2) An Introduction to Computational Learning Theory - Kearns &amp; Vazirani</em></p>
 <div class="section" id="evolution">
-<h2>5.7.1. evolution<a class="headerlink" href="#evolution" title="Permalink to this headline">¶</a></h2>
+<h2>5.8.1. evolution<a class="headerlink" href="#evolution" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>performance is correlation  <span class="math notranslate nohighlight">\(Perf_D (h,c) = \sum h(x) \cdot c(x) \cdot P(x)\)</span></p>
 <ul>
@@ -643,7 +643,7 @@
 </ul>
 </div>
 <div class="section" id="sample-problems">
-<h2>5.7.2. sample problems<a class="headerlink" href="#sample-problems" title="Permalink to this headline">¶</a></h2>
+<h2>5.8.2. sample problems<a class="headerlink" href="#sample-problems" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>ex: N marbles in a bag. How many draws with replacement needed before we draw all N marbles?</p>
 <ul>
@@ -664,7 +664,7 @@
 </ul>
 </div>
 <div class="section" id="computational-learning-theory">
-<h2>5.7.3. computational learning theory<a class="headerlink" href="#computational-learning-theory" title="Permalink to this headline">¶</a></h2>
+<h2>5.8.3. computational learning theory<a class="headerlink" href="#computational-learning-theory" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>frameworks</p>
 <ol class="simple">
@@ -682,7 +682,7 @@
 <li><p>must define convergence based on some probability</p></li>
 </ul>
 <div class="section" id="pac-probably-learning-an-approximately-correct-hypothesis-mitchell">
-<h3>5.7.3.1. PAC - probably learning an approximately correct hypothesis - Mitchell<a class="headerlink" href="#pac-probably-learning-an-approximately-correct-hypothesis-mitchell" title="Permalink to this headline">¶</a></h3>
+<h3>5.8.3.1. PAC - probably learning an approximately correct hypothesis - Mitchell<a class="headerlink" href="#pac-probably-learning-an-approximately-correct-hypothesis-mitchell" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>want to learn C</p>
 <ul>
@@ -711,7 +711,7 @@
 </ul>
 </div>
 <div class="section" id="sample-complexity-for-finite-hypothesis-space-mitchell">
-<h3>5.7.3.2. sample complexity for finite hypothesis space - Mitchell<a class="headerlink" href="#sample-complexity-for-finite-hypothesis-space-mitchell" title="Permalink to this headline">¶</a></h3>
+<h3>5.8.3.2. sample complexity for finite hypothesis space - Mitchell<a class="headerlink" href="#sample-complexity-for-finite-hypothesis-space-mitchell" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><em>sample complexity</em> - growth in the number of training examples required</p></li>
 <li><p><em>consistent learner</em> - outputs hypotheses that perfectly fit training data whenever possible</p>
@@ -723,7 +723,7 @@
 </ul>
 </div>
 <div class="section" id="rectangle-learning-game-kearns">
-<h3>5.7.3.3. rectangle learning game - Kearns<a class="headerlink" href="#rectangle-learning-game-kearns" title="Permalink to this headline">¶</a></h3>
+<h3>5.8.3.3. rectangle learning game - Kearns<a class="headerlink" href="#rectangle-learning-game-kearns" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>data X is sampled with Distribution D</p></li>
 <li><p>simple soln: tightest-fit rectangle</p></li>
@@ -739,7 +739,7 @@
 </ul>
 </div>
 <div class="section" id="vc-dimension">
-<h3>5.7.3.4. VC dimension<a class="headerlink" href="#vc-dimension" title="Permalink to this headline">¶</a></h3>
+<h3>5.8.3.4. VC dimension<a class="headerlink" href="#vc-dimension" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><em>VC dimension</em> measures <em>capacity</em> of a space of functions that can be learend by a statistical classification algorithm</p>
 <ul>
@@ -757,7 +757,7 @@
 </div>
 </div>
 <div class="section" id="concept-learning-and-the-general-to-specific-ordering">
-<h2>5.7.4. concept learning and the general-to-specific ordering<a class="headerlink" href="#concept-learning-and-the-general-to-specific-ordering" title="Permalink to this headline">¶</a></h2>
+<h2>5.8.4. concept learning and the general-to-specific ordering<a class="headerlink" href="#concept-learning-and-the-general-to-specific-ordering" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>definitions</p>
 <ul>
@@ -855,8 +855,8 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="feature_selection.html" title="previous page">5.6. feature selection</a>
-    <a class='right-next' id="next-link" href="evaluation.html" title="next page">5.8. evaluation</a>
+    <a class='left-prev' id="prev-link" href="feature_selection.html" title="previous page">5.7. feature selection</a>
+    <a class='right-next' id="next-link" href="evaluation.html" title="next page">5.9. evaluation</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

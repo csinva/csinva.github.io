@@ -25,6 +25,7 @@
   - file: notes/cs/quantum.md
   - file: notes/cs/algo.md
   - file: notes/cs/graphs.md
+  - file: notes/cs/databases.md
   - file: notes/cs/os.md
   - file: notes/cs/arch.md
   - file: notes/cs/java_ref.md
@@ -53,6 +54,7 @@
   - file: notes/stat/game_theory.md
 - file: notes/ml/ml.md
   sections:
+  - file: notes/ml/nlp.md
   - file: notes/ml/comp_vision.md
   - file: notes/ml/structure_ml.md
   - file: notes/ml/classification.md
@@ -64,7 +66,6 @@
 - file: notes/ai/ai.md
   sections:
   - file: notes/ai/search.md
-  - file: notes/ai/nlp.md
   - file: notes/ai/fairness_sts.md
   - file: notes/ai/cogsci.md
   - file: notes/ai/ai_futures.md

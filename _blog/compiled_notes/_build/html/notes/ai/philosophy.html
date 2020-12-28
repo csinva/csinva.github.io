@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>6.7. philosophy &#8212; learning to learn</title>
+    <title>6.6. philosophy &#8212; learning to learn</title>
     
   <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -56,8 +56,8 @@
     <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="6.8. psychology" href="psychology.html" />
-    <link rel="prev" title="6.6. logic" href="logic.html" />
+    <link rel="next" title="6.7. psychology" href="psychology.html" />
+    <link rel="prev" title="6.5. logic" href="logic.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -107,7 +107,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">
-     1.2. adv attacks
+     1.2. transfer learning
     </a>
    </li>
    <li class="toctree-l2">
@@ -347,43 +347,48 @@
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
+    <a class="reference internal" href="../ml/nlp.html">
+     5.1. nlp
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../ml/comp_vision.html">
-     5.1. computer vision
+     5.2. computer vision
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/structure_ml.html">
-     5.2. structure learning
+     5.3. structure learning
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/classification.html">
-     5.3. classification
+     5.4. classification
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/unsupervised.html">
-     5.4. unsupervised
+     5.5. unsupervised
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/deep_learning.html">
-     5.5. deep learning
+     5.6. deep learning
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/feature_selection.html">
-     5.6. feature selection
+     5.7. feature selection
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/learning_theory.html">
-     5.7. learning theory
+     5.8. learning theory
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/evaluation.html">
-     5.8. evaluation
+     5.9. evaluation
     </a>
    </li>
   </ul>
@@ -401,48 +406,43 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="nlp.html">
-     6.2. nlp
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="fairness_sts.html">
-     6.3. fairness
+     6.2. fairness
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="cogsci.html">
-     6.4. cogsci
+     6.3. cogsci
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ai_futures.html">
-     6.5. ai futures
+     6.4. ai futures
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="logic.html">
-     6.6. logic
+     6.5. logic
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     6.7. philosophy
+     6.6. philosophy
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="psychology.html">
-     6.8. psychology
+     6.7. psychology
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="knowledge_rep.html">
-     6.9. representations
+     6.8. representations
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="decisions.html">
-     6.10. decisions
+     6.9. decisions
     </a>
    </li>
   </ul>
@@ -577,97 +577,65 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#interpretable-ml">
-   6.7.1. interpretable ml
+  <a class="reference internal nav-link" href="#basics">
+   6.6.1. basics
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#scientific-explanation-sep">
-   6.7.2. scientific explanation (SEP)
+   6.6.2. scientific explanation (SEP)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#some-overarching-examples-what-causes-what">
-     6.7.2.1. some overarching examples - what causes what?
+     6.6.2.1. some overarching examples - what causes what?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#dn-model-deductive-nomological-model">
-     6.7.2.2. DN model = Deductive-Nomological Model
+     6.6.2.2. DN model = Deductive-Nomological Model
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#statistical-relevance-wesley-salmon">
-     6.7.2.3. statistical relevance - wesley salmon
+     6.6.2.3. statistical relevance - wesley salmon
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#causal-mechanical-models">
-     6.7.2.4. causal mechanical models
+     6.6.2.4. causal mechanical models
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#unificationist-models">
-     6.7.2.5. unificationist models
+     6.6.2.5. unificationist models
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#pragmatic-contextual-explanation-models">
-     6.7.2.6. pragmatic = contextual explanation models
+     6.6.2.6. pragmatic = contextual explanation models
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#open-areas">
-     6.7.2.7. open areas
+     6.6.2.7. open areas
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#stability">
-   6.7.3. stability
+   6.6.3. stability
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-story-of-philosophy">
-   6.7.4. the story of philosophy
+   6.6.4. the story of philosophy
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#plato">
-     6.7.4.1. plato
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#aristotle">
-     6.7.4.2. aristotle
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#francis-bacon">
-     6.7.4.3. francis bacon
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#spinoza">
-     6.7.4.4. spinoza
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#voltaire">
-     6.7.4.5. voltaire
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#kant">
-     6.7.4.6. kant
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#effective-altruism">
-   6.7.5. effective altruism
+   6.6.5. effective altruism
   </a>
  </li>
 </ul>
@@ -683,9 +651,13 @@
                 
   <p><strong>Notes on philosophy relevant to explanation (particularly in science)</strong></p>
 <div class="section" id="philosophy">
-<h1>6.7. philosophy<a class="headerlink" href="#philosophy" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="interpretable-ml">
-<h2>6.7.1. interpretable ml<a class="headerlink" href="#interpretable-ml" title="Permalink to this headline">¶</a></h2>
+<h1>6.6. philosophy<a class="headerlink" href="#philosophy" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="basics">
+<h2>6.6.1. basics<a class="headerlink" href="#basics" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>try to understand what principles underly all phenomena</p></li>
+</ul>
+<p>interpretable ml</p>
 <ul>
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1704.04688.pdf">Machine Learning and the Future of Realism</a> (hooker &amp; hooker, 2017)</p>
 <ul class="simple">
@@ -721,7 +693,7 @@
 </ul>
 </div>
 <div class="section" id="scientific-explanation-sep">
-<h2>6.7.2. <a class="reference external" href="https://plato.stanford.edu/entries/scientific-explanation/">scientific explanation</a> (SEP)<a class="headerlink" href="#scientific-explanation-sep" title="Permalink to this headline">¶</a></h2>
+<h2>6.6.2. <a class="reference external" href="https://plato.stanford.edu/entries/scientific-explanation/">scientific explanation</a> (SEP)<a class="headerlink" href="#scientific-explanation-sep" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>distinction between scientific explanation and non-scientific explanation (although can put things on a spectrum)</p></li>
 <li><p>distinction between explanations and accounts which are “merely descriptive”</p></li>
@@ -729,7 +701,7 @@
 <li><p>concepts: explanation, description, causation</p></li>
 </ul>
 <div class="section" id="some-overarching-examples-what-causes-what">
-<h3>6.7.2.1. some overarching examples - what causes what?<a class="headerlink" href="#some-overarching-examples-what-causes-what" title="Permalink to this headline">¶</a></h3>
+<h3>6.6.2.1. some overarching examples - what causes what?<a class="headerlink" href="#some-overarching-examples-what-causes-what" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>do birth pills stop pregnancy (both for men/women)?</p></li>
 <li><p>sun, flagpole, shadow</p></li>
@@ -740,7 +712,7 @@
 </ul>
 </div>
 <div class="section" id="dn-model-deductive-nomological-model">
-<h3>6.7.2.2. DN model = Deductive-Nomological Model<a class="headerlink" href="#dn-model-deductive-nomological-model" title="Permalink to this headline">¶</a></h3>
+<h3>6.6.2.2. DN model = Deductive-Nomological Model<a class="headerlink" href="#dn-model-deductive-nomological-model" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>by Popper, Hempel, Oppenheim (popper 1935, hempel 1942)</p></li>
 <li><p>explanation has 2 constituents</p>
@@ -783,7 +755,7 @@
 </ul>
 </div>
 <div class="section" id="statistical-relevance-wesley-salmon">
-<h3>6.7.2.3. statistical relevance - wesley salmon<a class="headerlink" href="#statistical-relevance-wesley-salmon" title="Permalink to this headline">¶</a></h3>
+<h3>6.6.2.3. statistical relevance - wesley salmon<a class="headerlink" href="#statistical-relevance-wesley-salmon" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>starts with (salmon, 1971)</p></li>
 <li><p>given some class or population <em>A</em>, an attribute <em>C</em> will be <strong>statistically relevant</strong> to another attribute <em>B</em> iff <span class="math notranslate nohighlight">\(P(B∣A,C) \neq P(B∣A)\)</span></p>
@@ -801,7 +773,7 @@
 </ul>
 </div>
 <div class="section" id="causal-mechanical-models">
-<h3>6.7.2.4. causal mechanical models<a class="headerlink" href="#causal-mechanical-models" title="Permalink to this headline">¶</a></h3>
+<h3>6.6.2.4. causal mechanical models<a class="headerlink" href="#causal-mechanical-models" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>starts with (salmon, 1984)</p></li>
 <li><p>elements</p>
@@ -828,7 +800,7 @@
 </ul>
 </div>
 <div class="section" id="unificationist-models">
-<h3>6.7.2.5. unificationist models<a class="headerlink" href="#unificationist-models" title="Permalink to this headline">¶</a></h3>
+<h3>6.6.2.5. unificationist models<a class="headerlink" href="#unificationist-models" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>important attempts include friedman (1974) and kitcher (1989)</p></li>
 <li><p>seeks a unified account of a range of different phenomena</p></li>
@@ -842,7 +814,7 @@
 </ul>
 </div>
 <div class="section" id="pragmatic-contextual-explanation-models">
-<h3>6.7.2.6. pragmatic = contextual explanation models<a class="headerlink" href="#pragmatic-contextual-explanation-models" title="Permalink to this headline">¶</a></h3>
+<h3>6.6.2.6. pragmatic = contextual explanation models<a class="headerlink" href="#pragmatic-contextual-explanation-models" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>scriven (1962), bromberger (1966), van Fraassen (1980), achinstein (1983)</p></li>
 <li><p>takes audience into account</p></li>
@@ -871,7 +843,7 @@
 </ul>
 </div>
 <div class="section" id="open-areas">
-<h3>6.7.2.7. open areas<a class="headerlink" href="#open-areas" title="Permalink to this headline">¶</a></h3>
+<h3>6.6.2.7. open areas<a class="headerlink" href="#open-areas" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>understand casuality</p></li>
 <li><p>more focus on whethery expalanations capture our intuitive judgements and more on the issue of why the info they convey is valuable + relates to our goals</p></li>
@@ -880,7 +852,7 @@
 </div>
 </div>
 <div class="section" id="stability">
-<h2>6.7.3. stability<a class="headerlink" href="#stability" title="Permalink to this headline">¶</a></h2>
+<h2>6.6.3. stability<a class="headerlink" href="#stability" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="http://en.wikipedia.org/wiki/Foundationalism">Foundationalism</a> - where the chain of justifications eventually relies on <a class="reference external" href="http://en.wikipedia.org/wiki/Basic_beliefs">basic beliefs</a> or <a class="reference external" href="http://en.wikipedia.org/wiki/Axiom">axioms</a> that are left unproven</p>
 <ul>
@@ -888,11 +860,16 @@
 </ul>
 </li>
 <li><p>the stability of belief: how rational belief coheres with probability (leitgeb, 2017) - introduction</p></li>
-<li><p>https://projecteuclid.org/download/pdfview_1/euclid.ss/1294167961</p></li>
+<li><p><a class="reference external" href="https://projecteuclid.org/download/pdfview_1/euclid.ss/1294167961">To Explain or to Predict</a>? (Shmueli, 2010)</p>
+<ul>
+<li><p>explanatory modeling as the use of statistical models for testing causal explanations</p></li>
+<li><p>many philosophies view explanation and prediction as distinct (but not incompatible)</p></li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="section" id="the-story-of-philosophy">
-<h2>6.7.4. the story of philosophy<a class="headerlink" href="#the-story-of-philosophy" title="Permalink to this headline">¶</a></h2>
+<h2>6.6.4. the story of philosophy<a class="headerlink" href="#the-story-of-philosophy" title="Permalink to this headline">¶</a></h2>
 <p><strong>book by will durant</strong></p>
 <ul class="simple">
 <li><p>states his own view that philosophy should focus on ethics rather the epistemiology (i.e. how we know what we know)</p>
@@ -906,10 +883,8 @@
 <li><p>quest of unity</p></li>
 </ul>
 </li>
-</ul>
-<div class="section" id="plato">
-<h3>6.7.4.1. plato<a class="headerlink" href="#plato" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
+<li><p>plato</p>
+<ul>
 <li><p>socrates, plato’s teacher pursued stricter definitions and was put to death</p></li>
 <li><p>plato writes <em>the Republic</em> - fictitional dialogue w/ socrates as the protagonist</p>
 <ul>
@@ -940,10 +915,9 @@
 </li>
 <li><p>only 3 things: truth, beauty, + justice</p></li>
 </ul>
-</div>
-<div class="section" id="aristotle">
-<h3>6.7.4.2. aristotle<a class="headerlink" href="#aristotle" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
+</li>
+<li><p>aristotle</p>
+<ul>
 <li><p>starts systematic science, library science, and <strong>logic</strong></p></li>
 <li><p>advocates for <em>uinversals</em> as individuals (e.g. a man, not <em>man</em> like Plat argues for)</p>
 <ul>
@@ -963,10 +937,9 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="francis-bacon">
-<h3>6.7.4.3. francis bacon<a class="headerlink" href="#francis-bacon" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
+</li>
+<li><p>francis bacon</p>
+<ul>
 <li><p>lived in 1500s/1600s in England</p></li>
 <li><p>father of the scientific method</p>
 <ul>
@@ -984,19 +957,21 @@
 <li><p><strong>philosophy</strong> = organization of science</p></li>
 <li><p>doubt all assumptions</p></li>
 </ul>
-</div>
-<div class="section" id="spinoza">
-<h3>6.7.4.4. spinoza<a class="headerlink" href="#spinoza" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
+</li>
+<li><p>spinoza</p>
+<ul>
 <li><p>baroch de espinoza</p></li>
 <li><p>jew who was excommunicated for anti-religious writing</p></li>
 <li><p>no distinction between body and mind</p></li>
-<li><p>no free will - only desires that guide everything</p></li>
+<li><p>no free will - only desires that guide everything</p>
+<ul>
+<li><p>beginnings of doubting rationalism</p></li>
 </ul>
-</div>
-<div class="section" id="voltaire">
-<h3>6.7.4.5. voltaire<a class="headerlink" href="#voltaire" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
+</li>
+</ul>
+</li>
+<li><p>voltaire</p>
+<ul>
 <li><p>frenchman who was exiled</p></li>
 <li><p>seeks history of ideas, beginning with <em>The Essay on Morals</em></p></li>
 <li><p><em>Candide</em> - short story, denouncing optimism for pragmatism</p></li>
@@ -1006,10 +981,9 @@
 <li><p>in his later years, turns to focus on the pursuit of usefulness rather than truth</p></li>
 <li><p>contrasts with younger Roussea, who wanted more action, instinct, social contract</p></li>
 </ul>
-</div>
-<div class="section" id="kant">
-<h3>6.7.4.6. kant<a class="headerlink" href="#kant" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
+</li>
+<li><p>kant: mind has prior beliefes</p>
+<ul>
 <li><p>what makes a math law better than some other thing? kant says a priori beliefs…interestingly those beliefs were from evolution in the first place</p></li>
 <li><p>mind is not blank slate: mind filters in what we perceive <em>a priori</em> in contrast to growing popular belief that everything comes from perception</p></li>
 <li><p>understanding can never go beyond the limits of sensibility</p>
@@ -1023,10 +997,44 @@
 <li><p>somewhat pro-religion but not fully, still still faced persecution in Prussia</p></li>
 <li><p>“Have strongly-held values, and malleable opinions”. - Francois Chollet tweet</p></li>
 </ul>
-</div>
+</li>
+<li><p>schopenhauer</p>
+<ul>
+<li><p>everything is will: continuing trend from espinoza + kant against rationalism</p></li>
+<li><p>pessimist: even in Utopia, ennui sets in</p></li>
+<li><p>objects of science is universal that contains many particulars while object of art is particular than contains a universal – this requires more genius</p></li>
+</ul>
+</li>
+<li><p>herbert spencer</p>
+<ul>
+<li><p>evolution as a guiding philosophy of everything</p></li>
+<li><p>darwin published <em>Origin of Species</em> in 1859, when spencer was 40</p>
+<ul>
+<li><p>spencer is thus more lamarckian</p></li>
+</ul>
+</li>
+<li><p>greatest contributions were to sociology: carefully curates data for sociology analysis</p></li>
+<li><p>resulting philosophy is conservative, laissez-fare, anti-regulation</p></li>
+</ul>
+</li>
+<li><p>friedrich nietzsche</p>
+<ul>
+<li><p>evolution as morality: favors the strong</p></li>
+<li><p>germans have 2 words for good / bad - one is closer to strong, the other to kind</p></li>
+<li><p>everything is due to an underlying will for power</p></li>
+<li><p>evolution towards “the superman”</p></li>
+</ul>
+</li>
+<li><p>bertrand russel</p>
+<ul>
+<li><p>starts with symbolic reasoning</p></li>
+<li><p>after WWI, shifts tow grounded philosophy in pacifism, communism</p></li>
+</ul>
+</li>
+</ul>
 </div>
 <div class="section" id="effective-altruism">
-<h2>6.7.5. effective altruism<a class="headerlink" href="#effective-altruism" title="Permalink to this headline">¶</a></h2>
+<h2>6.6.5. effective altruism<a class="headerlink" href="#effective-altruism" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.effectivealtruism.org/articles/introduction-to-effective-altruism/">effectivealtruism</a></p>
 <ul>
@@ -1091,8 +1099,8 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="logic.html" title="previous page">6.6. logic</a>
-    <a class='right-next' id="next-link" href="psychology.html" title="next page">6.8. psychology</a>
+    <a class='left-prev' id="prev-link" href="logic.html" title="previous page">6.5. logic</a>
+    <a class='right-next' id="next-link" href="psychology.html" title="next page">6.7. psychology</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

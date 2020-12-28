@@ -5,30 +5,60 @@ cat: research
 ---
 
 
-
-See also notes on causal inference for some close connections.
-
+#  transfer learning
 
 
-- [Domain-Adversarial Training of Neural Networks](https://www.jmlr.org/papers/volume17/15-239/15-239.pdf) (ganin et al. 16) - want repr. to be invariant to domain label
-  - ![Screen Shot 2020-11-10 at 12.05.12 PM](../assets/domain_adv_training.png)
-  - exact same algorithm is used to [learn fair representations](https://www.cs.toronto.edu/~toni/Papers/icml-final.pdf), except domain label is replaced with sensitive attribute
-- domain adaptation, given multiple training groups
-  - [group](http://papers.neurips.cc/paper/3019-mixture-regression-for-covariate-shift.pdf) [distributionally robust](https://arxiv.org/abs/1611.02041) [optimization](https://arxiv.org/abs/1911.08731)
-  - [domain](https://papers.nips.cc/paper/4312-generalizing-from-several-related-classification-tasks-to-a-new-unlabeled-sample) [generalization](https://arxiv.org/abs/2007.01434)
-- domain adaptation using source/target, given all at once
-  - [importance weighting](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.370.4921&rep=rep1&type=pdf)
-  - learning [invariant represetntations](https://arxiv.org/abs/1702.05464)
-- test-time adaptation
-  - [batch normalization](https://arxiv.org/abs/1603.04779)
-  - [label shift estimation](https://arxiv.org/abs/1802.03916)
-  - [rotation prediction](https://arxiv.org/abs/1909.13231) (sun et al. 2020)
-  - [entropy minimization](https://arxiv.org/abs/2006.10726)
-- [adaptive risk minimization](https://arxiv.org/abs/2007.02931) - combines groups at training time + batches at test-time
-  - *meta-train* the model using simulated distribution shifts, which is enabled by the training groups, such that it exhibits strong *post-adaptation* performance on each shift
-- [Domain adaptation under structural causal models](https://arxiv.org/abs/2010.15764) (chen & buhlmann, 2020)
+See also notes on causal inference for some close connections. 
+
+## domain adaptation algorithms
+
+*Domain test bed available [here](https://github.com/facebookresearch/DomainBed), for generalizating to new domains (i.e. performing well on domains that differ from previous seen data)*
+
+- Empirical Risk Minimization (ERM, [Vapnik, 1998](https://www.wiley.com/en-fr/Statistical+Learning+Theory-p-9780471030034)) - standard training
+- Invariant Risk Minimization (IRM, [Arjovsky et al., 2019](https://arxiv.org/abs/1907.02893)) - learns a feature representation such that the optimal linear classifier on top of that representation matches across domains.
+- Group Distributionally Robust Optimization (GroupDRO, [Sagawa et al., 2020](https://arxiv.org/abs/1911.08731)) - ERM + increase importance of domains with larger errors (see also papers from Sugiyama group e.g. [1](http://papers.neurips.cc/paper/3019-mixture-regression-for-covariate-shift.pdf), [2](https://arxiv.org/abs/1611.02041))
+  - Variance Risk Extrapolation (VREx, [Krueger et al., 2020](https://arxiv.org/abs/2003.00688)) - encourages robustness over affine combinations of training risks, by encouraging strict equality between training risks
+- Interdomain Mixup (Mixup, [Yan et al., 2020](https://arxiv.org/abs/2001.00677)) - ERM on linear interpolations of examples from random pairs of domains + their labels
+- Marginal Transfer Learning (MTL, [Blanchard et al., 2011-2020](https://arxiv.org/abs/1711.07910)) - augment original feature space with feature vector marginal distributions and then treat as a supervised learning problem
+- Meta Learning Domain Generalization (MLDG, [Li et al., 2017](https://arxiv.org/abs/1710.03463)) - use MAML to meta-learn how to generalize across domains
+- learning more diverse predictors
+  - Representation Self-Challenging (RSC, [Huang et al., 2020](https://arxiv.org/abs/2007.02454)) - adds dropout-like regularization to important features, forcing model to depend on many features
+  - Spectral Decoupling (SD, [Pezeshki et al., 2020](https://arxiv.org/abs/2011.09468)) - regularization which forces model to learn more predictive features, even when only a few suffice
+- embedding prior knowledge
+  - Style Agnostic Networks (SagNet, [Nam et al., 2020](https://arxiv.org/abs/1910.11645)) - penalize style features (assumed to be spurious)
+  - Penalizing explanations ([Rieger et al. 2020](https://arxiv.org/abs/1909.13584)) - penalize spurious features using prior knowledge
+- Domain adaptation under structural causal models ([chen & buhlmann, 2020]((https://arxiv.org/abs/2010.15764)))
   - make clearer assumptions for domain adaptation to work
   - introduce CIRM, which works better when both covariates and labels are perturbed in target data
+- kernel approach ([blanchard, lee & scott, 2011](https://papers.nips.cc/paper/2011/file/b571ecea16a9824023ee1af16897a582-Paper.pdf)) - find an appropriate RKHS and optimize a regularized empirical risk over the space
+
+
+
+### domain invariance
+
+*key idea: want repr. to be invariant to domain label*
+
+- ![Screen Shot 2020-11-10 at 12.05.12 PM](file:///Users/chandan/website/_notes/assets/domain_adv_training.png?lastModify=1609196737)
+- same idea is used to [learn fair representations](https://www.cs.toronto.edu/~toni/Papers/icml-final.pdf), but domain label is replaced with sensitive attribute
+- Domain Adversarial Neural Network (DANN, [Ganin et al., 2015](https://arxiv.org/abs/1505.07818))
+- Conditional Domain Adversarial Neural Network (CDANN, [Li et al., 2018](https://arxiv.org/abs/1807.08479)) - variant of DANN matching the conditional distributions  across domains, for all labels 
+- Deep CORAL (CORAL, [Sun and Saenko, 2016](https://arxiv.org/abs/1607.01719)) - match mean / covariance of feature distrs
+- Maximum Mean Discrepancy (MMD, [Li et al., 2018](https://openaccess.thecvf.com/content_cvpr_2018/papers/Li_Domain_Generalization_With_CVPR_2018_paper.pdf))
+- adversarial discriminative domain adaptation (ADDA [tzeng et al. 2017](https://arxiv.org/abs/1702.05464))
+- balancing with [importance weighting](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.370.4921&rep=rep1&type=pdf)
+
+### test-time adaptation
+
+- test-time adaptation
+  - test-time augmentation
+  - [batch normalization](https://arxiv.org/abs/1603.04779) (AdaBN)
+  - [label shift estimation](https://arxiv.org/abs/1802.03916) (BBSE) - $p(y)$ shifts but $P(x|y)$ does not
+  - [rotation prediction](https://arxiv.org/abs/1909.13231) (sun et al. 2020)
+  - [entropy minimization](https://arxiv.org/abs/2006.10726) (test-time entropy minimization, TENT, wang et al. 2020) - optimize for model confidence (entropy of predictions), using only norm. statistics and channel-wise affine transformations
+
+- combining train-time and test-time adaptation
+  - Adaptive Risk Minimization (ARM, [Zhang et al., 2020](https://arxiv.org/abs/2007.02931)) - combines groups at training time + *batches at test-time*
+    - *meta-train* the model using simulated distribution shifts, which is enabled by the training groups, such that it exhibits strong *post-adaptation* performance on each shift
 
 ## adv attacks
 

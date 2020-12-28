@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>1.2. adv attacks &#8212; learning to learn</title>
+    <title>1.2. transfer learning &#8212; learning to learn</title>
     
   <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -107,7 +107,7 @@
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     1.2. adv attacks
+     1.2. transfer learning
     </a>
    </li>
    <li class="toctree-l2">
@@ -347,43 +347,48 @@
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
+    <a class="reference internal" href="../ml/nlp.html">
+     5.1. nlp
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../ml/comp_vision.html">
-     5.1. computer vision
+     5.2. computer vision
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/structure_ml.html">
-     5.2. structure learning
+     5.3. structure learning
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/classification.html">
-     5.3. classification
+     5.4. classification
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/unsupervised.html">
-     5.4. unsupervised
+     5.5. unsupervised
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/deep_learning.html">
-     5.5. deep learning
+     5.6. deep learning
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/feature_selection.html">
-     5.6. feature selection
+     5.7. feature selection
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/learning_theory.html">
-     5.7. learning theory
+     5.8. learning theory
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/evaluation.html">
-     5.8. evaluation
+     5.9. evaluation
     </a>
    </li>
   </ul>
@@ -401,48 +406,43 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../ai/nlp.html">
-     6.2. nlp
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../ai/fairness_sts.html">
-     6.3. fairness
+     6.2. fairness
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/cogsci.html">
-     6.4. cogsci
+     6.3. cogsci
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/ai_futures.html">
-     6.5. ai futures
+     6.4. ai futures
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/logic.html">
-     6.6. logic
+     6.5. logic
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/philosophy.html">
-     6.7. philosophy
+     6.6. philosophy
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/psychology.html">
-     6.8. psychology
+     6.7. psychology
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/knowledge_rep.html">
-     6.9. representations
+     6.8. representations
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/decisions.html">
-     6.10. decisions
+     6.9. decisions
     </a>
    </li>
   </ul>
@@ -571,6 +571,37 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#domain-adaptation-algorithms">
+   1.2.1. domain adaptation algorithms
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#domain-invariance">
+     1.2.1.1. domain invariance
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#test-time-adaptation">
+     1.2.1.2. test-time adaptation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adv-attacks">
+   1.2.2. adv attacks
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -578,48 +609,83 @@
         
               <div>
                 
-  <p>See also notes on causal inference for some close connections.</p>
+  <div class="section" id="transfer-learning">
+<h1>1.2. transfer learning<a class="headerlink" href="#transfer-learning" title="Permalink to this headline">¶</a></h1>
+<p>See also notes on causal inference for some close connections.</p>
+<div class="section" id="domain-adaptation-algorithms">
+<h2>1.2.1. domain adaptation algorithms<a class="headerlink" href="#domain-adaptation-algorithms" title="Permalink to this headline">¶</a></h2>
+<p><em>Domain test bed available <a class="reference external" href="https://github.com/facebookresearch/DomainBed">here</a>, for generalizating to new domains (i.e. performing well on domains that differ from previous seen data)</em></p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://www.jmlr.org/papers/volume17/15-239/15-239.pdf">Domain-Adversarial Training of Neural Networks</a> (ganin et al. 16) - want repr. to be invariant to domain label</p>
+<li><p>Empirical Risk Minimization (ERM, <a class="reference external" href="https://www.wiley.com/en-fr/Statistical+Learning+Theory-p-9780471030034">Vapnik, 1998</a>) - standard training</p></li>
+<li><p>Invariant Risk Minimization (IRM, <a class="reference external" href="https://arxiv.org/abs/1907.02893">Arjovsky et al., 2019</a>) - learns a feature representation such that the optimal linear classifier on top of that representation matches across domains.</p></li>
+<li><p>Group Distributionally Robust Optimization (GroupDRO, <a class="reference external" href="https://arxiv.org/abs/1911.08731">Sagawa et al., 2020</a>) - ERM + increase importance of domains with larger errors (see also papers from Sugiyama group e.g. <a class="reference external" href="http://papers.neurips.cc/paper/3019-mixture-regression-for-covariate-shift.pdf">1</a>, <a class="reference external" href="https://arxiv.org/abs/1611.02041">2</a>)</p>
 <ul>
-<li><p><img alt="Screen Shot 2020-11-10 at 12.05.12 PM" src="../../_images/domain_adv_training.png" /></p></li>
-<li><p>exact same algorithm is used to <a class="reference external" href="https://www.cs.toronto.edu/~toni/Papers/icml-final.pdf">learn fair representations</a>, except domain label is replaced with sensitive attribute</p></li>
+<li><p>Variance Risk Extrapolation (VREx, <a class="reference external" href="https://arxiv.org/abs/2003.00688">Krueger et al., 2020</a>) - encourages robustness over affine combinations of training risks, by encouraging strict equality between training risks</p></li>
 </ul>
 </li>
-<li><p>domain adaptation, given multiple training groups</p>
+<li><p>Interdomain Mixup (Mixup, <a class="reference external" href="https://arxiv.org/abs/2001.00677">Yan et al., 2020</a>) - ERM on linear interpolations of examples from random pairs of domains + their labels</p></li>
+<li><p>Marginal Transfer Learning (MTL, <a class="reference external" href="https://arxiv.org/abs/1711.07910">Blanchard et al., 2011-2020</a>) - augment original feature space with feature vector marginal distributions and then treat as a supervised learning problem</p></li>
+<li><p>Meta Learning Domain Generalization (MLDG, <a class="reference external" href="https://arxiv.org/abs/1710.03463">Li et al., 2017</a>) - use MAML to meta-learn how to generalize across domains</p></li>
+<li><p>learning more diverse predictors</p>
 <ul>
-<li><p><a class="reference external" href="http://papers.neurips.cc/paper/3019-mixture-regression-for-covariate-shift.pdf">group</a> <a class="reference external" href="https://arxiv.org/abs/1611.02041">distributionally robust</a> <a class="reference external" href="https://arxiv.org/abs/1911.08731">optimization</a></p></li>
-<li><p><a class="reference external" href="https://papers.nips.cc/paper/4312-generalizing-from-several-related-classification-tasks-to-a-new-unlabeled-sample">domain</a> <a class="reference external" href="https://arxiv.org/abs/2007.01434">generalization</a></p></li>
+<li><p>Representation Self-Challenging (RSC, <a class="reference external" href="https://arxiv.org/abs/2007.02454">Huang et al., 2020</a>) - adds dropout-like regularization to important features, forcing model to depend on many features</p></li>
+<li><p>Spectral Decoupling (SD, <a class="reference external" href="https://arxiv.org/abs/2011.09468">Pezeshki et al., 2020</a>) - regularization which forces model to learn more predictive features, even when only a few suffice</p></li>
 </ul>
 </li>
-<li><p>domain adaptation using source/target, given all at once</p>
+<li><p>embedding prior knowledge</p>
 <ul>
-<li><p><a class="reference external" href="https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.370.4921&amp;rep=rep1&amp;type=pdf">importance weighting</a></p></li>
-<li><p>learning <a class="reference external" href="https://arxiv.org/abs/1702.05464">invariant represetntations</a></p></li>
+<li><p>Style Agnostic Networks (SagNet, <a class="reference external" href="https://arxiv.org/abs/1910.11645">Nam et al., 2020</a>) - penalize style features (assumed to be spurious)</p></li>
+<li><p>Penalizing explanations (<a class="reference external" href="https://arxiv.org/abs/1909.13584">Rieger et al. 2020</a>) - penalize spurious features using prior knowledge</p></li>
 </ul>
 </li>
-<li><p>test-time adaptation</p>
-<ul>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1603.04779">batch normalization</a></p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1802.03916">label shift estimation</a></p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1909.13231">rotation prediction</a> (sun et al. 2020)</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/2006.10726">entropy minimization</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/2007.02931">adaptive risk minimization</a> - combines groups at training time + batches at test-time</p>
-<ul>
-<li><p><em>meta-train</em> the model using simulated distribution shifts, which is enabled by the training groups, such that it exhibits strong <em>post-adaptation</em> performance on each shift</p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/2010.15764">Domain adaptation under structural causal models</a> (chen &amp; buhlmann, 2020)</p>
+<li><p>Domain adaptation under structural causal models (<span class="xref myst">chen &amp; buhlmann, 2020</span>)</p>
 <ul>
 <li><p>make clearer assumptions for domain adaptation to work</p></li>
 <li><p>introduce CIRM, which works better when both covariates and labels are perturbed in target data</p></li>
 </ul>
 </li>
+<li><p>kernel approach (<a class="reference external" href="https://papers.nips.cc/paper/2011/file/b571ecea16a9824023ee1af16897a582-Paper.pdf">blanchard, lee &amp; scott, 2011</a>) - find an appropriate RKHS and optimize a regularized empirical risk over the space</p></li>
 </ul>
+<div class="section" id="domain-invariance">
+<h3>1.2.1.1. domain invariance<a class="headerlink" href="#domain-invariance" title="Permalink to this headline">¶</a></h3>
+<p><em>key idea: want repr. to be invariant to domain label</em></p>
+<ul class="simple">
+<li><p>![Screen Shot 2020-11-10 at 12.05.12 PM](file:///Users/chandan/website/_notes/assets/domain_adv_training.png?lastModify=1609196737)</p></li>
+<li><p>same idea is used to <a class="reference external" href="https://www.cs.toronto.edu/~toni/Papers/icml-final.pdf">learn fair representations</a>, but domain label is replaced with sensitive attribute</p></li>
+<li><p>Domain Adversarial Neural Network (DANN, <a class="reference external" href="https://arxiv.org/abs/1505.07818">Ganin et al., 2015</a>)</p></li>
+<li><p>Conditional Domain Adversarial Neural Network (CDANN, <a class="reference external" href="https://arxiv.org/abs/1807.08479">Li et al., 2018</a>) - variant of DANN matching the conditional distributions  across domains, for all labels</p></li>
+<li><p>Deep CORAL (CORAL, <a class="reference external" href="https://arxiv.org/abs/1607.01719">Sun and Saenko, 2016</a>) - match mean / covariance of feature distrs</p></li>
+<li><p>Maximum Mean Discrepancy (MMD, <a class="reference external" href="https://openaccess.thecvf.com/content_cvpr_2018/papers/Li_Domain_Generalization_With_CVPR_2018_paper.pdf">Li et al., 2018</a>)</p></li>
+<li><p>adversarial discriminative domain adaptation (ADDA <a class="reference external" href="https://arxiv.org/abs/1702.05464">tzeng et al. 2017</a>)</p></li>
+<li><p>balancing with <a class="reference external" href="https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.370.4921&amp;rep=rep1&amp;type=pdf">importance weighting</a></p></li>
+</ul>
+</div>
+<div class="section" id="test-time-adaptation">
+<h3>1.2.1.2. test-time adaptation<a class="headerlink" href="#test-time-adaptation" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>test-time adaptation</p>
+<ul>
+<li><p>test-time augmentation</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1603.04779">batch normalization</a> (AdaBN)</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1802.03916">label shift estimation</a> (BBSE) - <span class="math notranslate nohighlight">\(p(y)\)</span> shifts but <span class="math notranslate nohighlight">\(P(x|y)\)</span> does not</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1909.13231">rotation prediction</a> (sun et al. 2020)</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2006.10726">entropy minimization</a> (test-time entropy minimization, TENT, wang et al. 2020) - optimize for model confidence (entropy of predictions), using only norm. statistics and channel-wise affine transformations</p></li>
+</ul>
+</li>
+<li><p>combining train-time and test-time adaptation</p>
+<ul>
+<li><p>Adaptive Risk Minimization (ARM, <a class="reference external" href="https://arxiv.org/abs/2007.02931">Zhang et al., 2020</a>) - combines groups at training time + <em>batches at test-time</em></p>
+<ul>
+<li><p><em>meta-train</em> the model using simulated distribution shifts, which is enabled by the training groups, such that it exhibits strong <em>post-adaptation</em> performance on each shift</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
 <div class="section" id="adv-attacks">
-<h1>1.2. adv attacks<a class="headerlink" href="#adv-attacks" title="Permalink to this headline">¶</a></h1>
+<h2>1.2.2. adv attacks<a class="headerlink" href="#adv-attacks" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/1909.08072">Adversarial Attacks and Defenses in Images, Graphs and Text: A Review</a> (xu et al. 2019)</p></li>
 <li><p>attacks</p>
@@ -663,6 +729,7 @@
 </ul>
 </li>
 </ul>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
