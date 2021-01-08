@@ -1,35 +1,34 @@
-'''Copies files from notes directory, does some preprocessing, then builds them into a website using jupyter-book
+'''Copies files from notes directory, does some preprocessing, then builds them into a web page using jupyter-book
 '''
 
-import shutil
-import os
-from os.path import join as oj
-import subprocess
-from sklearn.feature_extraction.text import TfidfVectorizer
-import numpy as np
 import matplotlib.pyplot as plt
-
+import numpy as np
+import os
+import shutil
+import subprocess
+from os.path import join as oj
+from sklearn.feature_extraction.text import TfidfVectorizer
 
 # source / dest
 src = '/Users/chandan/website/_notes/'
 dest = 'notes'
+dest_extraneous = '_build/html/notes'
 
 # copy stuff
 try:
-    shutil.rmtree(dest) # rm
+    shutil.rmtree(dest)  # rm
 except:
     pass
-destination = shutil.copytree(src, dest)   # copy
-shutil.rmtree(f'{dest}/talks/') # rm
-shutil.rmtree(f'{dest}/misc/') # rm
-
+destination = shutil.copytree(src, dest)  # copy
+shutil.rmtree(f'{dest}/talks/')  # rm
+shutil.rmtree(f'{dest}/misc/')  # rm
 
 # toc
 toc = \
-'''- file: intro
-  numbered: true
-
-'''
+    '''- file: intro
+      numbered: true
+    
+    '''
 
 # process the files
 contents = []
@@ -48,7 +47,7 @@ for folder in os.listdir(dest):
                     title = content.split('title:', 1)[1].split('\n')[0].lower()
                     title = content.split('title:', 1)[1].split('\n')[0].lower()
                     content = content.replace('{:toc}', f'# {title}')
-                    content = content.replace('category: ', 'cat: ') # remove category information
+                    content = content.replace('category: ', 'cat: ')  # remove category information
                     open(fpath, "w").write(content)
                     toc += f'  - file: {fpath}\n'
                 except:
@@ -74,4 +73,5 @@ plt.savefig('area_similarities.svg')
 subprocess.run(['jb', 'build', '.'])
 
 # rm notes
-shutil.rmtree(dest) # rm
+shutil.rmtree(dest)  # rm
+shutil.rmtree(dest_extraneous)  # rm

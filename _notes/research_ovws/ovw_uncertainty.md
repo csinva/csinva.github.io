@@ -101,6 +101,7 @@ category: research
   - different random initializations provide most diversity
   - samples along one path have varying weights but similar predictions
   - ![deep_ensembles](../assets/deep_ensembles.png)
+- [Pitfalls of In-Domain Uncertainty Estimation and Ensembling in Deep Learning](https://github.com/bayesgroup/pytorch-ensembles) - many complex ensemble approaches are similar to just an ensemble of a few randomly initialized DNNs
 
 ## bayesian neural networks
 

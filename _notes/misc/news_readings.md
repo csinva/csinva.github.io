@@ -7,6 +7,10 @@
 - [Do artifacts have Politics?](https://www.cc.gatech.edu/~beki/cs4001/Winner.pdf)	
 - [Everybody lies: how Google search reveals our darkest secrets](https://www.theguardian.com/technology/2017/jul/09/everybody-lies-how-google-reveals-darkest-secrets-seth-stephens-davidowitz?CMP=share_btn_fb)	
 
+# 2021
+
+- [Opinion | We're Google Workers. And We're Forming a Union. - The New York Times](https://www.nytimes.com/2021/01/04/opinion/google-union.html?action=click&module=Opinion&pgtype=Homepage) - union of ~200 workers forms in Google
+
 # 2020
 
 - [Two States. Eight Textbooks. Two American Stories. - The New York Times](https://www.nytimes.com/interactive/2020/01/12/us/texas-vs-california-history-textbooks.html?te=1&nl=morning-briefing&emc=edit_NN_p_20200113&section=longRead?campaign_id=9&instance_id=15142&segment_id=20274&user_id=c9a9cfdf6428d67bbc338d1a6b98bbd2&regi_id=103626597ion=longRead)
@@ -38,4 +42,4 @@
   - effects
     - shifts politics towards identities
     - fails to define boundaries of citizenship and rights: if rights are fundamental to all humans, how can we deny citizenship / rights to migrants?
-
+- [Opinion | 2020 Was the Year Reaganism Died - The New York Times](https://www.nytimes.com/2020/12/28/opinion/reagan-economy-covid.html?action=click&module=Opinion&pgtype=Homepage) (Paul Krugman) - this year, we saw gov. aid to unemployed works lead to very good outcomes with essentially no drawbacks

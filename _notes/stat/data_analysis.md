@@ -127,7 +127,7 @@ First 5 parts here are based on the book [storytelling with data](http://www.sto
      3. good values of k maximize the average silhouette score
   7. lack-of-fit test - based on repeated Y values at same X values
 
-# dealing with imbalanced data
+# imbalanced data
 
 1. randomly oversample minority class
 2. randomly undersample majority class
@@ -159,6 +159,37 @@ First 5 parts here are based on the book [storytelling with data](http://www.sto
    3. [Learning from class-imbalanced data: Review of methods and applications](https://www-sciencedirect-com.libproxy.berkeley.edu/science/article/pii/S0957417416307175) (Haixiang et al. 2017)
    4. sample majority class w/ density (to get best samples)
    5. log-spline - doesn't scale
+
+
+
+# missing-data imputation
+
+- [Missing value imputation: a review and analysis of the literature](https://link.springer.com/article/10.1007/s10462-019-09709-4) (lin & tsai 2019)
+- [Purposeful Variable Selection and Stratification to Impute Missing FAST Data in Trauma Research](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3744188/) (fuchs et al. 2014)
+- [Causal Inference: A Missing Data Perspective](https://arxiv.org/abs/1712.06170) (ding & li, 2018)
+- different missingness mechanisms (little & rubin, 1987)
+  - **MCAR** - missing completely at random - no relationship between the missingness of the data and any values, observed or missing
+  - **MAR** - missing at random - propensity of missing values depends on *observed* data, but *not* the missing data
+    - can easily test for this vs MCAR
+  - **MNAR** - missing not at random - propensity of missing values depends both on observed and unobserved data
+  - connections to causal: MCAR is much like randomization, MAR like ignorability (although slightly more general), and MNAR like unmeasured unconfounding
+- imputation problem: propensity of missing values depends on the unobserved values themselves (not ignorable)
+  - simplest approach: drop rows with missing vals
+  - mean/median imputation
+  - probabilistic approach
+    - EM approach, MCMC, GMM, sampling
+  - matrix completion: low-rank, PCA, SVD
+  - nearest-neighbor / matching: hot-deck
+  - (weighted) prediction approaches
+    - linear regr, LDA, naive bayes, regr. trees, LDA
+    - can do weighting using something similar to inverse propensities, although less common to check things  like covariate balance
+  - multiple imputation: impute multiple times to get better estimates
+    - MICE (passes / imputes data multiple times sequentially)
+- can perform sensitivity analysis to evaluate the assumption that things are not MNAR
+  - two standard models for nonignorable missing data are the *selection* models and the *pattern-mixture* models ([Little and Rubin, 2002](https://books.google.com/books?hl=en&lr=&id=BemMDwAAQBAJ&oi=fnd&pg=PR11&dq=Little,+R.+J.+and+Rubin,+D.+B.+(2002).+Statistical+analysis+with+missing+data.+John+Wiley+%26+Sons.&ots=FByXa-CVWU&sig=jIjvaI90RNK1rNfJoKoGvGJsz-E#v=onepage&q=Little%2C%20R.%20J.%20and%20Rubin%2C%20D.%20B.%20(2002).%20Statistical%20analysis%20with%20missing%20data.%20John%20Wiley%20%26%20Sons.&f=false), Chapter 15)
+- performance evaluation
+  - acc at finding missing vals
+  - acc in downstream task
 
 
 

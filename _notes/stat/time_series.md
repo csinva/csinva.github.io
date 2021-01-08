@@ -166,3 +166,9 @@ category: stat
 
 - vector-valued time-series has dependencies between variables across time
   - just modeling as univariate fails to take into account possible dependencies between the series
+
+
+
+# neural modeling
+
+- see [pytorch-forecasting](https://pytorch-forecasting.readthedocs.io/en/latest/api/pytorch_forecasting.models.html#module-pytorch_forecasting.models) for some new state-of-the-art models

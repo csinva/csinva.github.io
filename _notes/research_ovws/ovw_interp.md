@@ -719,6 +719,10 @@ How interactions are defined and summarized is a very difficult thing to specify
 - interpretable intermediate representations (e.g. bounding boxes for autonomous driving)
 - policy extraction - distill a simple model from a bigger model (e.g. neural net -> tree)
 
+## differential privacy
+
+- differential private if the outputs of the model do not change (within some epsilon tolerance) if you remove a single datapoint
+
 ## interpretation over sets / perturbations
 
 These papers don't quite connect to prediction, but are generally about finding stable interpretations across a set of models / choices.

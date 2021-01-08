@@ -215,15 +215,17 @@ C(Location of Car) --> B
 - overview
 
   - basics: conditional indep. checks can only determine graphs up to markov equivalence
-
-  - 2 approaches
-    - test noise distr. of relationships in different directions
-    - check variables which reduce entropy the most
-
+  - test noise distr. of relationships in different directions
+    - e.g. "functional causal models" (hyavarinen & zhang, 2016) assume additive noise and that $p(E|C)$ can be modeled while $P(C|E)$ cannot
+      - e.g. LiNGAM (Shimizu et al., 2006), ANM (Hoyer et al., 2009), PNL (Zhang and Hyvarinen, 2009) and ANM-MM (Hu et al., 2018)
+  - many models assume the generating cause distribution $p(C)$ is in som sense "independent" to the mechanism $P(E|C)$
+    - e.g. IGCI (Janzing et al., 2012) uses orthogonality in information space to express the independence between the two distributions
+    - e.g. KCDC (Mitrovic et al., 2018) uses  invariance of Kolmogorov complexity of conditional distribution
+    - e.g. RECI (Blobaum et al., 2018) extends IGCI to the setting with small noise, and proceeds by comparing the regression errors in both possible directions
+  - check variables which reduce entropy the most
 - [Learning and Testing Causal Models with Interventions](https://proceedings.neurips.cc/paper/2018/hash/78631a4bb5303be54fa1cfdcb958c00a-Abstract.html) (acharya et al. 2018)
   
   - given DAG, want to learn distribution on interventions with minimum number of interventions, variables intevened on, numper of samples draw per intervention
-  
 - [Discovering Causal Signals in Images](http://openaccess.thecvf.com/content_cvpr_2017/papers/Lopez-Paz_Discovering_Causal_Signals_CVPR_2017_paper.pdf) (lopez-paz et al. 2017)
   - C(A, B) - count number of images in which B would disappear if A was removed
   - we say A *causes* B when C(A, B) is (sufficiently) greater than the converse C(B, A)
@@ -254,7 +256,6 @@ C(Location of Car) --> B
   - causal effect prediction
     - first, create causal dataset of $P(T|man(I))$ and train, so the model can't learn spurious correlations
     - then train on this - very similar to adversarial training
-  
 - [Visual Physics: Discovering Physical Laws from Videos](https://arxiv.org/abs/1911.11893)
   - 3 steps
     - Mask R-CNN finds bounding box of object and center of bounding box is taken to be location
@@ -266,35 +267,16 @@ C(Location of Car) --> B
   - see also the field of symbolic regression
     - genetic programming is the most pervalent method here
     - alternatives: sparse regression, dimensional function synthesis
-  
+- Causal Mosaic: Cause-Effect Inference via Nonlinear ICA and Ensemble Method ([wu & fukumizu, 2020](https://arxiv.org/abs/2001.01894))
+  - focus on bivariate case, 
 - [link to iclr talk](https://www.technologyreview.com/s/613502/deep-learning-could-reveal-why-the-world-works-the-way-it-does/?fbclid=IwAR3LF2dc_3EvWXzEHhtrsqtH9Vs-4pjPALfuqKCOma9_gqLXMKDeCWrcdrQ) (bottou 2019)
 
 ## stable/invariant predictors
 
 *Under certain assumptions, invariance to data perturbations (i.e. interventions) can help us identify causal effects.*
 
-### problem formulations
+### invariance hierarchies
 
-- [Invariance, Causality and Robustness](https://arxiv.org/abs/1812.08233) (buhlmann 18)
-  - predict $Y^e$ given $X^e$ such that the prediction “works well” or is “robust” for all $e ∈ \mathcal F$ based on data from much fewer environments $e \in \mathcal E$
-    - **key assumption (*invariance*)**: there exists a subset of "causal" covariates - when conditioning on these covariates, the loss is the same across all environments $e$
-    - assumption: ideally $e$ changes only the distr. of $X^e$ (so doesn't act directly on $Y^e$ or change the mechanism between $X^e$ and $Y^e$)
-    - when these assumptions are satisfied, then minimizing a worst-case risk over environments $e$ yields a causal parameter
-  - identifiability issue: we typically can't identify the causal variables without very many perturbations $e$
-    - **Invariant Causal Prediction (ICP)** only identifies variables as causal if they appear in all invariant sets (see also [Peters, Buhlmann, & Meinshausen, 2015](https://arxiv.org/abs/1501.01332))
-  - anchor regression model helps to relax assumptions
-- [Invariant Risk Minimization](https://arxiv.org/abs/1907.02893) (arjovsky, bottou, gulrajani, & lopez-paz 2019)
-  - idealized formulation: $\begin{array}{ll}\min _{\Phi: \mathcal{X} \rightarrow \mathcal{H}} & \sum_{e \in \mathcal{E}_{\mathrm{tr}}} R^{e}(w \circ \Phi) \\ \text { subject to } & w \in \underset{\bar{w}: \mathcal{H} \rightarrow \mathcal{Y}}{\arg \min  } \: R^{e}(\bar{w} \circ \Phi), \text { for all } e \in \mathcal{E}_{\mathrm{tr}}\end{array}$
-    - $\Phi$ is repr., $w \circ \Phi$ is predictor
-  - practical formulation: $\min _{\Phi: \mathcal{X} \rightarrow \mathcal{Y}} \sum_{e \in \mathcal{E}_{\mathrm{tr}}} R^{e}(\Phi)+\lambda \cdot\left\|\nabla_{w \mid w=1.0} R^{e}(w \cdot \Phi)\right\|^{2}$
-  - random splitting causes problems with our data
-  - what to perform well under different distributions of X, Y
-  - can't be solved via robust optimization
-  - a correlation is spurious when we do not expect it to hold in the future in the same manner as it held in the past
-    - i.e. spurious correlations are unstable
-  - assume we have infinite data, and know what kinds of changes our distribution for the problem might have (e.g. variance of features might change)
-    - make a model which has the minimum test error regardless of the distribution of the problem
-  - adds a penalty inspired by invariance (which can be viewed as a stability criterion)
 - [The Hierarchy of Stable Distributions and Operators to Trade Off Stability and Performance](https://arxiv.org/abs/1905.11374) (subbaswamy, chen, & saria 2019)
   - different predictors learn different things
   - only pick the stable parts of what they learn (in a graph representation)
@@ -314,14 +296,40 @@ C(Location of Car) --> B
 ### invariance algorithms
 
 - algorithms overview (see papers for more details) + [implementations](https://github.com/facebookresearch/InvarianceUnitTests)
-  - ERM - empirical risk minimization - normal training, minimizes the error on the union of all the training splits
-  - IRM - invariant risk minimization (v1) - finds a representation of the features such that the optimal classifier, on top of that representation, is the identity function for all environments
-  - domain-adversarial techniques
-  - ICP - invariant causal prediction - find sets for which features are invariant
-  - [AND-mask](https://arxiv.org/abs/2009.00329) - minimizes the error on the training splits by updating the model on those directions where the sign of the gradient of the loss is the same for most environments.
+  - *ICP* - invariant causal prediction - find feature set where, after conditioning, loss is the same for all environments
+    - fails when distr. of residuals varies across environments
+  - *IRM* - invariant risk minimization (v1) - find a feature repr. such that the optimal classifier, on top of that repr., is the identity function for all environments
+  - *GroupDRO* - distributionally robust optimization (e.g. encourage strict equality between err of each group)
+  - *ERM* - empirical risk minimization - minimize total training err
+  - *domain-adversarial techniques*: find a repr. which does not differ across environments, then predict
+    - fails when distr. of causes changes across environments
+  - *AND-mask* - minimize the err only in directions where the sign of the gradient of the loss is the same for most environments
   - [IGA]() - inter-environmental gradient alignment - ERM + reduce variance of the gradient of the loss per environment: $\lambda \operatorname{trace}\left(\operatorname{Var}\left(\nabla_{\theta} L_{\mathcal{E}}(\theta)\right)\right)$
+  
+- [Invariance, Causality and Robustness](https://arxiv.org/abs/1812.08233) - ICP (buhlmann 18)
+  - predict $Y^e$ given $X^e$ such that the prediction “works well” or is “robust” for all $e ∈ \mathcal F$ based on data from much fewer environments $e \in \mathcal E$
+    - **key assumption (*invariance*)**: there exists a subset of "causal" covariates - when conditioning on these covariates, the loss is the same across all environments $e$
+    - assumption: ideally $e$ changes only the distr. of $X^e$ (so doesn't act directly on $Y^e$ or change the mechanism between $X^e$ and $Y^e$)
+    - when these assumptions are satisfied, then minimizing a worst-case risk over environments $e$ yields a causal parameter
+  - identifiability issue: we typically can't identify the causal variables without very many perturbations $e$
+    - **Invariant Causal Prediction (ICP)** only identifies variables as causal if they appear in all invariant sets (see also [Peters, Buhlmann, & Meinshausen, 2015](https://arxiv.org/abs/1501.01332))
+    - brute-force feature selection
+  - anchor regression model helps to relax assumptions
+  
+- [Invariant Risk Minimization](https://arxiv.org/abs/1907.02893) - IRM (arjovsky, bottou, gulrajani, & lopez-paz 2019)
+  - idealized formulation: $\begin{array}{ll}\min _{\Phi: \mathcal{X} \rightarrow \mathcal{H}} & \sum_{e \in \mathcal{E}_{\mathrm{tr}}} R^{e}(w \circ \Phi) \\ \text { subject to } & w \in \underset{\bar{w}: \mathcal{H} \rightarrow \mathcal{Y}}{\arg \min  } \: R^{e}(\bar{w} \circ \Phi), \text { for all } e \in \mathcal{E}_{\mathrm{tr}}\end{array}$
+    - $\Phi$ is repr., $w \circ \Phi$ is predictor
+  - practical formulation: $\min _{\Phi: \mathcal{X} \rightarrow \mathcal{Y}} \sum_{e \in \mathcal{E}_{\mathrm{tr}}} R^{e}(\Phi)+\lambda \cdot\left\|\nabla_{w \mid w=1.0} R^{e}(w \cdot \Phi)\right\|^{2}$
+  - random splitting causes problems with our data
+  - what to perform well under different distributions of X, Y
+  - can't be solved via robust optimization
+  - a correlation is spurious when we do not expect it to hold in the future in the same manner as it held in the past
+    - i.e. spurious correlations are unstable
+  - assume we have infinite data, and know what kinds of changes our distribution for the problem might have (e.g. variance of features might change)
+    - make a model which has the minimum test error regardless of the distribution of the problem
+  - adds a penalty inspired by invariance (which can be viewed as a stability criterion)
 
-- [Learning explanations that are hard to vary](https://arxiv.org/abs/2009.00329) (parascandolo...sholkopf, 2020)
+- [Learning explanations that are hard to vary](https://arxiv.org/abs/2009.00329) - AND-mask (parascandolo...sholkopf, 2020)
   - basically, gradients should be consistent during learning
     - after learning, they should be consistent within some epsilon ball
   - practical algorithm: AND-mask
@@ -339,7 +347,9 @@ C(Location of Car) --> B
   - given algorithm $\mathcal A$, maximize this: $\mathrm{ILC}\left(\mathcal{A}, p_{\theta^{0}}\right):= \underbrace{-\mathbb{E}_{\theta^{0} \sim p\left(\theta^{0}\right)}}_{\text{expectation over reinits}}\left[\mathcal{I}^{\epsilon} (\underbrace{\mathcal{A}_{\infty}(\theta^{0}, \mathcal{E}}_{\hat \theta}) \right]$
     - **inconsistency score** for a solution $\hat \theta$ given environments $e$: $\mathcal{I}^{\epsilon}(\hat \theta):=\overbrace{\max _{\left(e, e^{\prime}\right) \in \mathcal{E}^{2}} }^{\text{env. pairs}} \underbrace{\max _{\theta \in N_{e, \hat \theta}^{\epsilon}}}_{\text{low-loss region around $\hat \theta$}} \overbrace{\mid \mathcal{L}_{e^{\prime}}(\theta)-\mathcal{L}_{e}(\theta)|}^{\text{loss between envs.}}$
       - $N_{e, \hat \theta}^{\epsilon}$ is path-connected region around $\hat \theta$ where $\left\{\theta \in \Theta\right.$ s.t. $\left|\mathcal{L}_{e}(\theta)-\mathcal{L}_{e}\left(\hat \theta\right)\right| \leqslant \epsilon$
+  
 - [Invariant Risk Minimization Games](https://arxiv.org/abs/2002.04692) (ahuja et al. 2020) - pose IRM as finding the Nash equilibrium of an ensemble game among several environments
+
 - [Invariant Rationalization](https://arxiv.org/abs/2003.09772) (chang et al. 2020) - identify a small subset of input features -- the rationale -- that best explains or supports the prediction
   - key assumption: $Y \perp E | Z$
   - $\max _{\boldsymbol{m} \in \mathcal{S}} I(Y ; \boldsymbol{Z}) \quad$ s.t. $\boldsymbol{Z}= \overbrace{\boldsymbol{m}}^{\text{binary mask}} \odot \boldsymbol{X}, \quad \underbrace{Y \perp E \mid \boldsymbol{Z}}_{\text{this part is invariance}}$
@@ -347,6 +357,11 @@ C(Location of Car) --> B
     - standard maximum mutual info objective is just $\max _{\boldsymbol{m} \in \mathcal{S}} I(Y ; \boldsymbol{Z}) \quad$ s.t. $\boldsymbol{Z}= \overbrace{\boldsymbol{m}}^{\text{binary mask}} \odot \boldsymbol{X}$ (see [lei et al. 2016](https://arxiv.org/abs/1606.04155))
     - ex. $X$ is text reviews for beer, $Y$ is aroma, $E$ could be beer brand
 - [Linear unit-tests for invariance discovery](https://www.cmu.edu/dietrich/causality/CameraReadys-accepted%20papers/32%5CCameraReady%5Cdatasets.pdf)  (aubin et al. 2020) - a set of 6 simple settings where current IRM procedures fail
+  - test 1 (colormnist-style linear regr): $x_{inv}  \to \tilde y \to x_{spu}$ 
+    - $\tilde y \to y$
+  - test 2 (cows vs camels binary classification): $y=mean(x_{inv})>0$, but $x_{inv} \propto x_{spu}$
+  - test 3 (small invariant margin): $y_i\sim Bern(1/2)$, $x_{inv} = \pm 0.1+$noise, $x_{spu} = \pm \mu^e$ + noise, where $\mu^e ~ N(0, 1)$
+  - scrambling: apply random rotation matrix to inputs
 
 ## misc problems
 
@@ -411,6 +426,9 @@ C(Location of Car) --> B
     - observe data from multiple environments
     - covariates contain some causal variables
     - covariates also contain some false confounders
+- [DeepMatch: Balancing Deep Covariate Representations for Causal Inference Using Adversarial Training](https://arxiv.org/abs/1802.05664) (kallus, 2018)
+  - weighting and a discriminator network compete adversarially to minimize "discriminative discrepancy metric" for measuring covariate balance
+  - this metric goes beyond just the original feature space
 
 ## limitations
 

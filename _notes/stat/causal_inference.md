@@ -15,14 +15,7 @@ category: stat
 - [in-progress book](https://www.bradyneal.com/causal-inference-course) by brady neal
 - [course notes](https://web.stanford.edu/~swager/stats361.pdf) by stefan wager
 - rebecca barter's [blog posts](http://www.rebeccabarter.com/blog/2017-07-05-ip-weighting/)
-
-
-
-# questions
-
-- clear distinction between identification and estimation
-  - A causal quantity is **identifiable** if we can compute it from a purely statistical quantity
-  - ![identification_estimation_flowchart](../assets/identification_estimation_flowchart.png)
+- wonderful review / [intro paper](https://dl.acm.org/doi/abs/10.1145/3397269?casa_token=Fsu-uKOSfUEAAAAA:4hCvZEsOPvbIfV92-17vP82pnVxAlZ8I4z62KsXjLGFse1wfP6uFfvqYzCa4wnueggWOB8KbFA2L) (guo et al. 2020)
 
 # basics
 
@@ -55,6 +48,9 @@ category: stat
       - world changes over time
       - "looping effect" - social categories (like race) are constantly chainging because people who putatively fall into such categories to change their behavior in possibly unexpected ways
   - **epistemology** - theory of knowledge
+- clear distinction between identification and estimation
+  - a causal quantity is **identifiable** if we can compute it from a purely statistical quantity
+  - ![identification_estimation_flowchart](../assets/identification_estimation_flowchart.png)
 
 ## intuition
 
@@ -164,6 +160,7 @@ category: stat
       - $\hat{\theta}_A = \mathrm{argmin} \sum_{i \in A} (a_i - \bar{a}_A - (x_i - \bar{x}_A)^T \theta)^2$
   2. neyman-pearson
     - null + alternative hypothesis
+  3. can also take a bayesian perspective on the missing data
 
 ## DAGs / structural causal models (pearl et al.)
 
@@ -350,7 +347,7 @@ T --> M
 M --> Y
 ```
 
-## regression discontinuity
+## regression discontinuity: running variable
 
 - dates back to [thistlethwaite & campbell, 1960](https://psycnet.apa.org/record/1962-00061-001)
 - treatment definition (e.g. high-school acceptance) has an arbitrary threshold (e.g. score on a test)
@@ -505,13 +502,23 @@ M --> Y
   - ex. $\tau = \beta_t + \beta_{tx}^TE(X)$
     - $E(Y|T, X) = \beta_0 + \beta_tT + \beta_x^TX + \beta^T_{tx} X T$
     - incorporates heterogeneity
+  
+- intuition
+
+    - much like imputing missing potential outcomes using a linear model
+    - using nearest-neighbor regr. would correspond to a matching-without-replacement estimator
+        - sometimes use propensity scores as a predictor as well
+
 - assuming linear form is relatively strong assumption compared to that made by weighting / stratification
+  
+- regr. adjustments are the most popular form of adjustments
   
 - these easily generalize to when $T$ is continuous
 
 - $\hat \tau = \frac 1 n \sum_i (\hat \mu_1(X_i) - \hat \mu_0(X_i))$
   - general mean functions $\hat \mu_1(x), \hat \mu_0(x)$ approximate $\mu_i =E\{ Y^{T=i} |X\}$
   - consistent when $\mu_i$ functions are well-specified
+  
 - over-adjustment
     - M-bias
         - originally, $T \perp Y$ 😊
@@ -535,7 +542,7 @@ M --> Y
 
 ## weighting methods
 
-*Weighting methods assign a different importance weight to each unit to match the covariates distributions across treatment groups after reweighting. Balance is often used as a goodness of fit check after weighting. ([imbens & rubin 2015](https://www.cambridge.org/core/books/causal-inference-for-statistics-social-and-biomedical-sciences/71126BE90C58F1A431FE9B2DD07938AB))*
+*Weighting methods assign a different importance weight to each unit to match the covariates distributions across treatment groups after reweighting. Balance is often used as a goodness of fit check after weighting ([imbens & rubin 2015](https://www.cambridge.org/core/books/causal-inference-for-statistics-social-and-biomedical-sciences/71126BE90C58F1A431FE9B2DD07938AB)).*
 
 ### inverse propensity weighting
 
@@ -588,12 +595,14 @@ M --> Y
   - avoids bias due to overfitting
   - allows us to ignore form of estimators $\hat \mu$ and $\hat e$ and depend only on overlap, consistency, and risk decay (so CV risk of estimators should be small)
 
-### alternatives
+### alternative weighting
 
 - solutions to deal with extreme weights (from assaad et al. 2020): ![tilting_functions](../assets/tilting_functions.png)
   - Matching Weights (Li & Greene, 2013): MW
   - Truncated IPW (Crump et al., 2009): TruncIPW
-  - Overlap Weights (Li et al., 2018): OW
+  - Overlap Weights (Li et al., 2018): OW - this uses (1 - IPW weights), and doesn't suffer from instability at extreme values
+- when estimating propensity scores with neural nets, often overconfident
+- in general, there is a more general class of weights that can be used to balance covariates ([li, morgan, & zaslavsky, 2016](https://www.tandfonline.com/doi/full/10.1080/01621459.2016.1260466?scroll=top&needAccess=true))
 - directly incorporating covariate imbalance in weight construction (Graham et al., 2012; Diamond & Sekhon, 2013)
   - unifying perspective on these methods via covariate-balancing loss functions ([zhao, 2019](https://projecteuclid.org/euclid.aos/1547197245))
   - in general, balancing need not directly balance the propensity scores

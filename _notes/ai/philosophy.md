@@ -29,6 +29,7 @@ interpretable ml
     - *realism* in a partially accessible world
   - overall, they believe there is inherent value of ontological description
 - [Explainable Artificial Intelligence and Machine Learning: A reality rooted perspective](https://arxiv.org/pdf/2001.09464v1.pdf) (Emmert-Streib et al. 2020)
+  
   - explainable AI is not a new field but has been already recognized and discussed for expert systems in the 1980s
   1. in some cases, such as simple physics, we can hope to get a **theory** - however, when the underlying process is complicated, interpretation can't hope to simplify it
   2. in other cases, we might hope just for a **description**
@@ -132,17 +133,6 @@ interpretable ml
 - more focus on whethery expalanations capture our intuitive judgements and more on the issue of why the info they convey is valuable + relates to our goals
 - to what extent does a single model work across sciences (e.g. biologists claim to be interested in mechanisms whereas physicists in laws)
 
-# stability
-
-- [Foundationalism](http://en.wikipedia.org/wiki/Foundationalism) - where the chain of justifications eventually relies on [basic beliefs](http://en.wikipedia.org/wiki/Basic_beliefs) or [axioms](http://en.wikipedia.org/wiki/Axiom) that are left unproven
-  - Plato’s Republic
-- the stability of belief: how rational belief coheres with probability (leitgeb, 2017) - introduction
-- [To Explain or to Predict](https://projecteuclid.org/download/pdfview_1/euclid.ss/1294167961)? (Shmueli, 2010)
-  - explanatory modeling as the use of statistical models for testing causal explanations
-  - many philosophies view explanation and prediction as distinct (but not incompatible)
-
-
-
 # the story of philosophy
 
 **book by will durant**
@@ -235,22 +225,12 @@ interpretable ml
   - starts with symbolic reasoning
   - after WWI, shifts tow grounded philosophy in pacifism, communism
 
+# stability
 
-# effective altruism
+- [Foundationalism](http://en.wikipedia.org/wiki/Foundationalism) - where the chain of justifications eventually relies on [basic beliefs](http://en.wikipedia.org/wiki/Basic_beliefs) or [axioms](http://en.wikipedia.org/wiki/Axiom) that are left unproven
+  - Plato’s Republic
+- the stability of belief: how rational belief coheres with probability (leitgeb, 2017) - introduction
+- [To Explain or to Predict](https://projecteuclid.org/download/pdfview_1/euclid.ss/1294167961)? (Shmueli, 2010)
+  - explanatory modeling as the use of statistical models for testing causal explanations
+  - many philosophies view explanation and prediction as distinct (but not incompatible)
 
-- [effectivealtruism](https://www.effectivealtruism.org/articles/introduction-to-effective-altruism/)
-    - promising causes
-      - Great in *scale* (it affects many lives, by a great amount)
-      - Highly *neglected* (few other people are working on addressing the problem), and
-      - Highly *solvable* or *tractable* (additional resources will do a great deal to address it).
-    - 3 big areas
-      - fighting extreme poverty (e.g. malaria)
-      - animal suffering
-      - improving the long-term future
-- [rethink priorities jobs](https://rethinkpriorities.freshteam.com/jobs/iX8GfQ1eBLDq/researcher-multiple-positions-remote)
-- [open philanthropy](https://www.openphilanthropy.org/blog/modeling-human-trajectory)
-- careers can have greater impacts than altruism ([80k hours](https://80000hours.org/key-ideas/))
-    - https://80000hours.org/career-guide/
-    - [80k hours AI careers](https://80000hours.org/problem-profiles/positively-shaping-artificial-intelligence/)
-- [givewell cost-effective calculations](https://www.givewell.org/how-we-work/our-criteria/cost-effectiveness)
-    - charities often exaggerate their "cost to save a life"
