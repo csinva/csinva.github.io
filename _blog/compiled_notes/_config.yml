@@ -1,5 +1,5 @@
 # Book settings
-title                       : learning to learn  # The title of the book. Will be placed in the left navbar.
+title                       : ""  # The title of the book. Will be placed in the left navbar.
 author                      : Chandan Singh  # The author of the book
 copyright                   : "None"  # Copyright year to be placed in the footer
 logo                        : logo.png  # A path to the book logo

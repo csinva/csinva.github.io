@@ -144,46 +144,39 @@ some more concrete questions:
   - [Quantifying the generalization error in deep learning in terms of data distribution and
     neural network smoothness](https://arxiv.org/pdf/1905.11427v1.pdf)
 
-## kernels
-
-- [To understand deep learning we need to understand kernel learning](https://arxiv.org/abs/1802.01396) - overfitted kernel classifiers can still fit the data well
-- [kernels wiki](https://en.wikipedia.org/wiki/Kernel_method#cite_note-4): kernel memorizes points then uses dists between points to classify
-- [learning deep kernels](https://arxiv.org/pdf/1811.08357v1.pdf)
-- [learning data-adaptive kernels](https://arxiv.org/abs/1901.07114)
-- [kernels that mimic dl](https://cseweb.ucsd.edu/~saul/papers/nips09_kernel.pdf)
-- [kernel methods](http://papers.nips.cc/paper/3628-kernel-methods-for-deep-learning.pdfs)
-- [wavelet support vector machines](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.412.362&rep=rep1&type=pdf) - kernels using wavelets
-- [neural tangent kernel](https://arxiv.org/abs/1806.07572) (jacot et al. 2018)
-  - at initialization, artificial neural networks (ANNs) are equivalent to Gaussian
-    processes in the infinite-width limit
-    - evolution of an ANN during training can also be described by a kernel (kernel gradient descent)
-  - different types of kernels impose different things on a function (e.g. want more / less low frequencies)
-    - gradient descent in kernel space can be convex if kernel is PD (even if nonconvex in the parameter space)
-  - lazy training regime - small change in weights results in big change in loss func
-    - so final weights are close to original weights
-    - more precisely, gradient norm is much larger than hessian norm
-    - jacobian doesn't change during training $\implies$ NTK is pretty constant throughout training
-- [Scaling description of generalization with number of parameters in deep learning](https://arxiv.org/abs/1901.01608) (geiger et al. 2019)
-  - number of params = N
-  - above 0 training err, larger number of params reduces variance but doesn't actually help
-    - ensembling with smaller N fixes problem
-  - the improvement of generalization performance with N in this classification task originates from reduced variance of fN when N gets large, as recently observed for mean-square regression
-- [understanding the neural tangent kernel](https://arxiv.org/pdf/1904.11955.pdf) (arora et al. 2019)
-  
-  - method to compute the kernel quickly on a gpu
-- [On the Inductive Bias of Neural Tangent Kernels](https://arxiv.org/abs/1905.12173) (bietti & mairal 2019)
-- [Kernel and Deep Regimes in Overparametrized Models](https://arxiv.org/abs/1906.05827) (Woodworth...Srebro 2019)
-  
-  - transition between *kernel* and *deep regimes*
-- [The HSIC Bottleneck: Deep Learning without Back-Propagation](https://arxiv.org/abs/1908.01580) (Ma et al. 2019)
-  - directly optimize information bottleneck (approximated by HSIC) yields pretty good results
-
 ## nearest neighbor comparisons
 
 - [weighted interpolating nearest neighbors can generalize well (belkin...mitra 2018)](http://papers.nips.cc/paper/7498-overfitting-or-perfect-fitting-risk-bounds-for-classification-and-regression-rules-that-interpolate)
 - [Statistical Optimality of Interpolated Nearest Neighbor Algorithms](https://arxiv.org/abs/1810.02814)
 - [nearest neighbor comparison](https://arxiv.org/pdf/1805.06822.pdf)
 - [nearest embedding neighbors](https://arxiv.org/pdf/1803.04765.pdf)
+
+## kernels
+
+- [To understand deep learning we need to understand kernel learning](https://arxiv.org/abs/1802.01396) - overfitted kernel classifiers can still fit the data well
+- original kernels (neal 1994) + (lee et al. 2018) + (matthews et al. 2018)
+  - infinitely wide nets and only top layer is trained
+  - corresponds to kernel $\text{ker}(x, x') = \mathbb E_{\theta \sim W}[f(\theta, x) \cdot f(\theta, x')]$, where $W$ is an intialization distr. over $\theta$
+- [neural tangent kernel](https://arxiv.org/abs/1806.07572) (jacot et al. 2018)
+  - $\text{ker}(x, x') = \mathbb E_{\theta \sim W}[\left < \frac{f(\theta, x)}{\partial \theta} \cdot \frac{f(\theta, x')}{\partial \theta} \right> ]$ - evolution of weights over time follows this kernel
+    - with very large width, this kernel is the NTK at initialization
+    - stays stable during training (since weights don't change much)
+  - at initialization, artificial neural networks (ANNs) are equivalent to Gaussian processes in the infinite-width limit
+    - evolution of an ANN during training can also be described by a kernel (kernel gradient descent)
+  - different types of kernels impose different things on a function (e.g. want more / less low frequencies)
+    - gradient descent in kernel space can be convex if kernel is PD (even if nonconvex in the parameter space)
+  - [understanding the neural tangent kernel](https://arxiv.org/pdf/1904.11955.pdf) (arora et al. 2019)
+    - method to compute the kernel quickly on a gpu
+- [Scaling description of generalization with number of parameters in deep learning](https://arxiv.org/abs/1901.01608) (geiger et al. 2019)
+  - number of params = N
+  - above 0 training err, larger number of params reduces variance but doesn't actually help
+    - ensembling with smaller N fixes problem
+  - the improvement of generalization performance with N in this classification task originates from reduced variance of fN when N gets large, as recently observed for mean-square regression
+- [On the Inductive Bias of Neural Tangent Kernels](https://arxiv.org/abs/1905.12173) (bietti & mairal 2019)
+- [Kernel and Deep Regimes in Overparametrized Models](https://arxiv.org/abs/1906.05827) (Woodworth...Srebro 2019)
+  - transition between *kernel* and *deep regimes*
+- [The HSIC Bottleneck: Deep Learning without Back-Propagation](https://arxiv.org/abs/1908.01580) (Ma et al. 2019)
+  - directly optimize information bottleneck (approximated by HSIC) yields pretty good results
 
 ## random projections
 

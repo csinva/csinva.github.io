@@ -181,6 +181,7 @@ For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
   - tree structure e.g. depth, splitting criteria
   - values in terminal nodes coditioned on tree structure
   - residual noise's standard deviation
+- [BART: Bayesian additive regression trees](https://arxiv.org/abs/0806.3286) (chipman et al. 2008) - learns an ensemble of tree models using MCMC on a distr. imbued with a prior
 
 
 

@@ -148,7 +148,7 @@ C(Location of Car) --> B
 
 *Heterogenous treatment effects refer to effects which differ for different subgroups / individuals in a population and requires more refined modeling.*
 
-- **conditional average treatment effect (CATE)** - get treatment effect for each individual conditioned on its covariates
+- **conditional average treatment effect (CATE)** - get treatment effect for each individual conditioned on its covariates $\mathbb E [y|x, t=1] - \mathbb E[y|x, t=0]$ (different from ITE $Y^{T=1}_i - Y^{T=0}_i$)
   - meta-learners - break down CATE into regression subproblems
     - e.g. S-learner (hill 11) - "S" stands for "single" and fits a single statistical model for $\mu_1 - \mu_0$
       - can be biased towards 0
@@ -166,9 +166,9 @@ C(Location of Car) --> B
         - use cross-fitting to estimate $\hat \tau$ and $\hat \mu$
         - $\tau$ takes a form, e.g. LASSO
   - tree-based methods
-    - e.g. causal tree ([athey & imbens, 16](https://www.pnas.org/content/113/27/7353.short)) - like decision tree, but change splitting criterion for differentiating 2 outcomes
-    - e.g. causal forest ([wager & athey, 18](https://www.tandfonline.com/doi/full/10.1080/01621459.2017.1319839))
-    - e.g. BART (hill, 12)
+    - e.g. causal tree ([athey & imbens, 16](https://www.pnas.org/content/113/27/7353.short)) - like decision tree, but change splitting criterion for differentiating 2 outcomes + compute effects for each leaf on out-of-sample data
+    - e.g. causal forest ([wager & athey, 18](https://www.tandfonline.com/doi/full/10.1080/01621459.2017.1319839)) - extends causal tree to forest
+    - e.g. BART ([hill, 12](https://arxiv.org/abs/0806.3286)) - takes treatment as an extra input feature
   - neural-net based methods
     - e.g. TARNet ([shalit et al. 2017](https://arxiv.org/abs/1606.03976)) - full notes below, use data from both groups
 - validation
@@ -202,22 +202,33 @@ C(Location of Car) --> B
         - pick one randomly, remove all points in this cell, then continue
     - stability: rerun search multiple times and look for stable cells / stable cell coverage
 
-## policy learning
+## reinforcement (policy) learning
 
 - rather than estimating a treatment effect, find a policy that maximizes some expected utility (e.g. can define utility as the potential outcome $\mathbb E[Y_i(\pi(X_i))]$)
+- in this case, policy is like an intervention
 
 
 
 ## causal discovery
 
-*Causal discovery aims to identify causal relationships (sometimes under some smoothness / independence assumptions. This is often impossible in general.*
+*Causal discovery aims to identify causal relationships (sometimes under some smoothness / independence assumptions. This is often impossible in general. Also called causal relation learning, causal search.*
 
 - overview
 
-  - basics: conditional indep. checks can only determine graphs up to markov equivalence
-  - test noise distr. of relationships in different directions
-    - e.g. "functional causal models" (hyavarinen & zhang, 2016) assume additive noise and that $p(E|C)$ can be modeled while $P(C|E)$ cannot
-      - e.g. LiNGAM (Shimizu et al., 2006), ANM (Hoyer et al., 2009), PNL (Zhang and Hyvarinen, 2009) and ANM-MM (Hu et al., 2018)
+  - **constraint-based algorithms** - conditional indep. checks can only determine graphs up to markov equivalence
+    - *faithfulness* means the statistical dependence between variables estimated from the data does not violate the independence defined by any causal graph which generates the data
+    - ex. peter-clark (PC) algorithm - first learns undirected graph, then detects edge directions and returns an equivalent class
+    - some work tries to work on more general distrs.
+    - some work tries to extend to seeting with unobserved confounders
+  - **score-based algorithms** - replace conditional indep. tests with godness of fit tests (e.g. BIC)
+    - still can only determine graphs up to markov equivalence
+    - optimizing goodness of fit is NP-hard, so often use heuristics such as greedy equivalence search ([chickering, 2002](https://www.jmlr.org/papers/v3/chickering02b.html))
+  - **functional causal models** - assumpe a variable can be written as a function of its direct causes and some noise term
+    - e.g. (hyavarinen & zhang, 2016) assume additive noise and that $p(E|C)$ can be modeled while $P(C|E)$ cannot
+    - e.g. LiNGAM (Shimizu et al., 2006), ICA-LINGAM - linear relations between different variables and noise
+    - additive noise models ANM (Hoyer et al., 2009) relax the linear restirction
+      - ANM-MM (Hu et al., 2018)
+    - post-nonlinear models PNL (Zhang and Hyvarinen, 2009) expand the functional space with non-linear relations between the variables and the noise
   - many models assume the generating cause distribution $p(C)$ is in som sense "independent" to the mechanism $P(E|C)$
     - e.g. IGCI (Janzing et al., 2012) uses orthogonality in information space to express the independence between the two distributions
     - e.g. KCDC (Mitrovic et al., 2018) uses  invariance of Kolmogorov complexity of conditional distribution
@@ -378,6 +389,7 @@ C(Location of Car) --> B
     $$
     \mathrm{PN}=\underbrace{\frac{P(y \mid t)-P\left(y \mid t^{\prime}\right)}{P(y \mid t)}}_{\text{excess risk ratio}}+\underbrace{\frac{P\left(y \mid t^{\prime}\right)-P\left(y \mid d o\left(t^{\prime}\right)\right)}{P(t, y)}}_{\text{confounding adjustment}}
     $$
+- **causal transportability** - seeks to identify conditions under which causal knowledge learned from experiments can be reused in different domains with observational data only
 
 ## transferring out-of-sample
 
@@ -421,6 +433,7 @@ C(Location of Car) --> B
     - weights are from propensity scores, unlike johansson et al. 2018
     - intuition: upweight regions with good overlap
   - bounds on degree of imbalance as a function of propensity model
+- [Causal Effect Inference with Deep Latent-Variable Models](https://arxiv.org/abs/1705.08821) (louizos et al. 2017) - like vae but learn latent distr. that also changes based on treatment
 - [Invariant Representation Learning for Treatment Effect Estimation](https://arxiv.org/abs/2011.12379) (shi, veitch, & blei, 2020)
   - Nearly Invariant Causal Estimation - uses IRM to learn repr. that strips out bad controls but preserves sufficient information to adjust for confounding
     - observe data from multiple environments

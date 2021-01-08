@@ -9,7 +9,9 @@
 
 # 2021
 
+- [Opinion | This Is When the Fever Breaks - The New York Times](https://www.nytimes.com/2021/01/07/opinion/capitol-riot-republicans.html?action=click&module=Opinion&pgtype=Homepage) (David Brooks)
 - [Opinion | We're Google Workers. And We're Forming a Union. - The New York Times](https://www.nytimes.com/2021/01/04/opinion/google-union.html?action=click&module=Opinion&pgtype=Homepage) - union of ~200 workers forms in Google
+- [A Rebuttal to some CS Academics’ “Free Speech” Open Letter to the ACM | by David Karger | Jan, 2021 | Medium](https://david-karger.medium.com/a-rebuttal-to-some-cs-academics-free-speech-open-letter-to-the-acm-729ce1cb6caf) - cancel culture needs calibrate its threshold to balance false positives and false negatives
 
 # 2020
 

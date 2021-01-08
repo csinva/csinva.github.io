@@ -38,7 +38,7 @@ See also notes on causal inference for some close connections.
 
 *key idea: want repr. to be invariant to domain label*
 
-- ![Screen Shot 2020-11-10 at 12.05.12 PM](file:///Users/chandan/website/_notes/assets/domain_adv_training.png?lastModify=1609196737)
+- ![Screen Shot 2020-11-10 at 12.05.12 PM](../assets/domain_adv_training.png)
 - same idea is used to [learn fair representations](https://www.cs.toronto.edu/~toni/Papers/icml-final.pdf), but domain label is replaced with sensitive attribute
 - Domain Adversarial Neural Network (DANN, [Ganin et al., 2015](https://arxiv.org/abs/1505.07818))
 - Conditional Domain Adversarial Neural Network (CDANN, [Li et al., 2018](https://arxiv.org/abs/1807.08479)) - variant of DANN matching the conditional distributions  across domains, for all labels 

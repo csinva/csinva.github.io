@@ -744,7 +744,7 @@ jle
 	- forward value from the stage it is currently in
 - look at online notes - save everything in register that needs to be used later
 
-### problems
+## problems
 1. dependencies - outcome of one instruction depends on the outcome of another - in the software
 	1. data - data needed before advancing - destination of one thing is used as source of another
 		- load/use
@@ -753,7 +753,7 @@ jle
 	- hardware may or may not have a hazard for a dependency
 	- can detect them by comparing the wire that reads / writes to regfile (rA,rB / dstE) - they shouldn't be the same because you shouldn't be reading/writing to the same register (except when all NO_REGISTER)
 
-### solutions
+## solutions
 - P is PC, then FDEMW
 1. stall until it finishes if there's a problem
 	stall_P = 1;	//stall the fetch/decode stage
@@ -789,7 +789,7 @@ jge bazzle
 	- returns are slow, we just wait
 	- some large processors will guess, can still make mistakes and will have to correct
 	
-### real processors
+## real processors
 1. memory is slow and unpredictably slow (10-100 cycles is reasonable)
 2. pipelines are generally 10-15 stages (Pentium 4 had 30 stages)
 3. multiple functional units
@@ -871,7 +871,7 @@ jge bazzle
 		- we search through the tags of this set
 	- look at examples in book, know how to tell if we have hit or miss
 
-### writing
+## writing
 - assume write-back, write-allocate cache
 1. load block into cache (if not already) - write-allocate cache
 2. change it in cache
@@ -893,7 +893,7 @@ jge bazzle
 		- typically asssociated with a direct-mapped cache
 		- characteristic of the cache more than the code
 
-### cache anatomy
+## cache anatomy
 - i-cache - holds instructions
 	- typically read only
 - d-cache - holds program data
@@ -1227,7 +1227,7 @@ val at 0xb6
 - fetch reads rA,rB,icode,ifun - decode reads values from these
 
 # labs
-### strlen
+## strlen
 ```java
 unsigned int strlen( const char * s ){
 	unsigned int i = 0; 
@@ -1236,7 +1236,7 @@ unsigned int strlen( const char * s ){
 	return i;
 }
 ```
-### strsep
+## strsep
 ```java
 char *strsep( char **stringp, char delim ){
 	char *ans = *stringp;
@@ -1270,7 +1270,7 @@ char *strsep( char **stringp, char delim ){
 				ans.length = length;
 	- access: list.ptr[i]
 	
-### bit puzzles
+## bit puzzles
 ```java
 // leastBitPos - return a mask that marks the position of the least significant 1 bit
 int leastBitPos(int x) {
@@ -1297,7 +1297,7 @@ int satAdd(int x, int y) {
 ```
 
 # reading
-### ch 1 (1.7, 1.9)
+## ch 1 (1.7, 1.9)
 - files are stored as bytes, most in ascii
 - all files are either text files or binary files
 - i/o devices are connected to the bus by a controller or adapter
@@ -1314,7 +1314,7 @@ int satAdd(int x, int y) {
 - processors can do several instructions per clock cycle
 - Single-Instruction, Multiple-Data (SIMD) - ex. add four floats
 
-### ch 2 (2.1, 2.4.2, 2.4.4)
+## ch 2 (2.1, 2.4.2, 2.4.4)
 - floating points (float, double)
 	- sign bit (1)
 	- exponent-field (8, 11)
@@ -1336,7 +1336,7 @@ int satAdd(int x, int y) {
 - leading 0x specifies hex
 - leading 0b specifies binary
 
-### ch 3 (3.6, 3.7)
+## ch 3 (3.6, 3.7)
 - computers execute machine code
 - intel processors are all back-compatible
 - ISA - instruction set architecture
@@ -1352,7 +1352,7 @@ int satAdd(int x, int y) {
 - all instructions change the program counter
 - call instruction only changes the stack pointer
 
-### 4.1,4.2
+## 4.1,4.2
 - eight registers
 	- esp is stack pointer
 - CC and PC
@@ -1383,7 +1383,7 @@ int satAdd(int x, int y) {
 - RAM stores several words and uses address to retrieve them
 	- stored in register file
 
-### 4.3.1-4
+## 4.3.1-4
 - SEQ - sequential processor
 - stages
 	- fetch
@@ -1411,7 +1411,7 @@ int satAdd(int x, int y) {
 	2. need_regids: Does this instruction include a register specifier byte? 
 	3. need_valC: Does this instruction include a constant word?
 	
-### 4.4 pipelining
+## 4.4 pipelining
 - the task to be performed is divided into a series of discrete stages
 - increases the throughput - # customers served per unit time
 - might increase latency - time required to service an individual customer.
@@ -1422,7 +1422,7 @@ int satAdd(int x, int y) {
 	- throughput approaches 1/(register time)
 - we need to deal with dependencies between the stages
 
-### 4.5.3, 4.5.8
+## 4.5.3, 4.5.8
 - several copies of values such as valC, srcA
 - registers dD, eD, mM, wW - lowercase letter is input, uppercase is output
 - we try to keep all the info of one instruction within a stage
@@ -1430,7 +1430,7 @@ int satAdd(int x, int y) {
 - load/use hazard - (try using before loaded) one instruction reads a value from memory while the next instruction needs this value as a source operand
 - we can stop this by stalling and forwarding (the use of a stall here is called a load interlock)
 
-### 5 - optimization
+## 5 - optimization
 - eliminate unnecessary calls, tests, memory references
 - instruction-level parallelism
 - profilers - tools that measure the performance of different parts of the program
@@ -1451,7 +1451,7 @@ int satAdd(int x, int y) {
 - understand memory performance
 - using macros lets compiler optimizem more, lessens bookkeeping
 
-### 6.1.1, 6.2, 6.3
+## 6.1.1, 6.2, 6.3
 - SRAM is bistable as long as power is on - will fall into one of 2 positions
 - DRAM loses its value ~10-100 ms
 	- memory controller sends row,col (i,j) to DRAM and DRAM sends back contents
@@ -1478,7 +1478,7 @@ int satAdd(int x, int y) {
 	- conflict miss - miss because placement policy gets rid of block you need - ex. block 0 then 8 then 0 with above placement policy
 		 capacity misses - the cache just can't hold enough	
 
-### 6.4, 6.5 - cache memories & writing cache-friendly code
+## 6.4, 6.5 - cache memories & writing cache-friendly code
 - Miss rate. The fraction of memory references during the execution of a program, or a part of a program, that miss. It is computed as #misses/#references.
 - Hit rate. The fraction of memory references that hit. It is computed as 1 − miss rate.
 - Hit time. The time to deliver a word in the cache to the CPU, including the time for set selection, line identification, and word selection. Hit time is on the order of several clock cycles for L1 caches.
@@ -1486,7 +1486,7 @@ int satAdd(int x, int y) {
 - Traditionally, high-performance systems that pushed the clock rates would opt for smaller associativity for L1 caches (where the miss penalty is only a few cycles) and a higher degree of associativity for the lower levels, where the miss penalty is higher
 - In general, caches further down the hierarchy are more likely to use write-back than write-through
 
-### 8.1 Exceptions
+## 8.1 Exceptions
 - exceptions - partly hardware, partly OS
 - when an event occurs, indirect procedure call (the exception) through a jump table called exception table to OS subroutine (exception handler).
 - three possibilities
@@ -1508,7 +1508,7 @@ int satAdd(int x, int y) {
 	- general protection fault - seg fault
 	- machine check - fatal hardware error
 	
-### 8.2 Processes
+## 8.2 Processes
 - process - instance of program in execution
 	- every program runs in the context of some process (context has code, data stack, pc, etc.)
 1. logic control flow - like we have exclusive use of processor
@@ -1519,11 +1519,11 @@ int satAdd(int x, int y) {
 2. private address space - like we have exclusive use of memory
 	- each process has stack, shared libraries, heap, executable
 
-### 8.3 System Call Error Handling
+## 8.3 System Call Error Handling
 - system level calls return -1, set the global integer variable errno
 	- this should be checked for
 	
-### 9-9.5 Virtual Memory
+## 9-9.5 Virtual Memory
 - address translation - converts virtual to physical address
 	- translated by the MMU
 - VM partitions virtual memory into fixed-size blocks called virtual pages partitioned into three sets
@@ -1563,7 +1563,7 @@ int satAdd(int x, int y) {
 - memory protection
 	- private memories are easily isolated
 
-### 9.6 Address Translation
+## 9.6 Address Translation
 - low order 4 bits serve
 2,3 - fault
 8c: 1000 1100

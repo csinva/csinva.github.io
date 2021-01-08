@@ -575,6 +575,7 @@ M --> Y
 
 ### doubly robust estimator
 
+- combines weighting and regr. adjustment
 - $\hat \tau^{\text{dr}} = \hat \mu_1^{dr} - \hat \mu_0^{dr}$ = **doubly robust estimator** = augmented inverse propensity score weighting estimator ([robins, rotnizky, & zhao 1994](https://www.tandfonline.com/doi/abs/10.1080/01621459.1994.10476818?casa_token=XYTwc8KlTqIAAAAA:zfCvbnWKpatYa1KbWIj9GUrCXpze65EEtzAuhuWD-Oztr7UBle1pivvp2481l-y_t08nScDMrql9), scharfstein et al. 1999, [bang & robins 2005](https://onlinelibrary.wiley.com/doi/full/10.1111/j.1541-0420.2005.00377.x?casa_token=oqdc-GxLFTYAAAAA%3A7CETBzsiHXXEu23NM-sMJ1CXlgI6oeAxt1Ydca3wXmPoTGsORR0IEoYszCo1GzNLtYXGNgxU4blu4gLn))
   - given $\mu_1(X, \beta_1)$, $\mu_0(X, \beta_0)$, e.g. linear
   - given $e(X, \alpha)$, e.g. logistic
@@ -594,6 +595,7 @@ M --> Y
   - $\hat{\tau}^{\mathcal{I}_{1}}=\frac{1}{\left|\mathcal{I}_{1}\right|} \sum_{i \in \mathcal{I}_{1}}\left(\hat{\mu}_{(1)}^{\mathcal{I}_{2}}\left(X_{i}\right)-\hat{\mu}_{(0)}^{\mathcal{I}_{2}}\left(X_{i}\right)\right. \left.+W_{i} \frac{Y_{i}-\hat{\mu}_{(1)}^{\mathcal{I}_{2}}\left(X_{i}\right)}{\hat{e}^{\mathcal{I}_{2}}\left(X_{i}\right)}-\left(1-W_{i}\right) \frac{Y_{i}-\hat{\mu}_{(0)}^{\mathcal{I}_{2}}\left(X_{i}\right)}{1-\hat{e}^{\mathcal{I}_{2}}\left(X_{i}\right)}\right)$
   - avoids bias due to overfitting
   - allows us to ignore form of estimators $\hat \mu$ and $\hat e$ and depend only on overlap, consistency, and risk decay (so CV risk of estimators should be small)
+- targeted maximum likelihood ([van der laan & rubin, 2006](https://www.degruyter.com/view/journals/ijb/2/1/article-ijb.2006.2.1.1043.xml.xml)) - more general than DRE
 
 ### alternative weighting
 
@@ -609,8 +611,9 @@ M --> Y
     - instead, might find propensity weights which balance covariates along certain basis functions $\psi_j(x)$
       - $\frac{1}{n} \sum_{i=1}^{n} \frac{W_{i} \psi_{j}\left(X_{i}\right)}{\hat{e}\left(X_{i}\right)} \approx \frac{1}{n} \sum_{i=1}^{n} \psi_{j}\left(X_{i}\right),$ for all $j=1,2, \ldots$
       - this can be desirable in high dims, when propensity scores may be unstable
-  - hard moment-matching conditions (Li & Fu, 2017; Hainmueller, 2012; Imai & Ratkovic, 2014)
+  - hard moment-matching conditions (Li & Fu, 2017; entropy balancing from [Hainmueller, 2012](https://www.cambridge.org/core/journals/political-analysis/article/entropy-balancing-for-causal-effects-a-multivariate-reweighting-method-to-produce-balanced-samples-in-observational-studies/220E4FC838066552B53128E647E4FAA7); Imai & Ratkovic, 2014)
   - soft moment-matching conditions  (Zubizarreta, 2015)
+- approximate residual balancing (athey, imbens, & wager, 2018) - combines balancing weights with a regularized regression adjustment for learning ATE from high-dimensional data
 
 ## stratification / matching
 

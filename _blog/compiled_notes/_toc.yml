@@ -1,7 +1,6 @@
 - file: intro
-      numbered: true
-    
-    - file: notes/research_ovws/research_ovws.md
+  numbered: true
+- file: notes/research_ovws/research_ovws.md
   sections:
   - file: notes/research_ovws/ovw_comp_neuro.md
   - file: notes/research_ovws/ovw_transfer_learning.md

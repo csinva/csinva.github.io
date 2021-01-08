@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>6.2. fairness &#8212; learning to learn</title>
+    <title>6.2. fairness, sts</title>
     
   <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -78,8 +78,6 @@
   
   <img src="../../_static/logo.png" class="logo" alt="logo">
   
-  
-  <h1 class="site-logo" id="site-title">learning to learn</h1>
   
 </a>
 </div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
@@ -407,7 +405,7 @@
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     6.2. fairness
+     6.2. fairness, sts
     </a>
    </li>
    <li class="toctree-l2">
@@ -577,105 +575,90 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#fairness-metrics">
-   6.2.1. fairness metrics
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#fairness-in-cv-tutorial">
-   6.2.2. fairness in cv (tutorial)
+  <a class="reference internal nav-link" href="#fairness">
+   6.2.1. fairness
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#computer-vision-in-practice-who-is-benefiting-and-who-is-being-harmed">
-     6.2.2.1. Computer vision in practice: who is benefiting and who is being harmed?
+    <a class="reference internal nav-link" href="#metrics">
+     6.2.1.1. metrics
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#data-ethics">
-     6.2.2.2. data ethics
+    <a class="reference internal nav-link" href="#fairness-in-computer-vision-tutorial">
+     6.2.1.2. fairness in computer vision (tutorial)
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#harms-of-cv">
+       6.2.1.2.1. harms of CV
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#data-ethics">
+       6.2.1.2.2. data ethics
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#where-do-we-go">
+       6.2.1.2.3. where do we go?
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#facial-rec-demographic-benchmarking">
+     6.2.1.3. facial rec. demographic benchmarking
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#where-do-we-go">
-     6.2.2.3. where do we go?
+    <a class="reference internal nav-link" href="#legal-perspectives">
+     6.2.1.4. legal perspectives
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#misc-papers">
-     6.2.2.4. misc papers
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#concrete-harms">
-   6.2.3. concrete harms
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pandemic">
-     6.2.3.1. pandemic
+     6.2.1.5. misc papers
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#ethics">
-   6.2.4. ethics
+   6.2.2. ethics
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#some-basics">
-     6.2.4.1. some basics
+     6.2.2.1. some basics
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#moral-trade">
-     6.2.4.2. moral trade
+     6.2.2.2. moral trade
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#sts">
-   6.2.5. sts
+   6.2.3. sts
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#facial-rec-demographic-benchmarking">
-   6.2.6. facial rec. demographic benchmarking
+  <a class="reference internal nav-link" href="#effective-altruism">
+   6.2.4. effective altruism
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#legal-perspectives">
-   6.2.7. legal perspectives
+  <a class="reference internal nav-link" href="#tech-for-good">
+   6.2.5. tech for “good”
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#algorithmic-accountability-a-legal-and-economic-framework-2020">
-     6.2.7.1. ALGORITHMIC ACCOUNTABILITY: A LEGAL AND ECONOMIC FRAMEWORK (2020)
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#input-accountability-test-captures-these-questions-w-basic-statistics">
-       6.2.7.1.1.
-       <strong>
-        input accountability test - captures these questions w/ basic statistics
-       </strong>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#related-approaches">
-       6.2.7.1.2.
-       <strong>
-        related approaches
-       </strong>
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#concrete-ai-harms">
+   6.2.6. concrete ai harms
+  </a>
  </li>
 </ul>
 
@@ -688,11 +671,13 @@
         
               <div>
                 
-  <p><em>Some notes on algorithm fairness and STS.</em>*</p>
+  <p><strong>Some notes on algorithm fairness and STS as applied to AI</strong></p>
+<div class="section" id="fairness-sts">
+<h1>6.2. fairness, sts<a class="headerlink" href="#fairness-sts" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="fairness">
-<h1>6.2. fairness<a class="headerlink" href="#fairness" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="fairness-metrics">
-<h2>6.2.1. fairness metrics<a class="headerlink" href="#fairness-metrics" title="Permalink to this headline">¶</a></h2>
+<h2>6.2.1. fairness<a class="headerlink" href="#fairness" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="metrics">
+<h3>6.2.1.1. metrics<a class="headerlink" href="#metrics" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>good introductory <a class="reference external" href="https://towardsdatascience.com/a-tutorial-on-fairness-in-machine-learning-3ff8ba1040cb">blog</a></p></li>
 <li><p>causes of bias</p>
@@ -739,10 +724,10 @@
 </li>
 </ul>
 </div>
-<div class="section" id="fairness-in-cv-tutorial">
-<h2>6.2.2. <a class="reference external" href="https://sites.google.com/view/fatecv-tutorial/schedule">fairness in cv (tutorial)</a><a class="headerlink" href="#fairness-in-cv-tutorial" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="computer-vision-in-practice-who-is-benefiting-and-who-is-being-harmed">
-<h3>6.2.2.1. <a class="reference external" href="https://www.youtube.com/watch?time_continue=546&amp;v=0sBE5OyD7fk&amp;feature=emb_logo">Computer vision in practice: who is benefiting and who is being harmed?</a><a class="headerlink" href="#computer-vision-in-practice-who-is-benefiting-and-who-is-being-harmed" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="fairness-in-computer-vision-tutorial">
+<h3>6.2.1.2. <a class="reference external" href="https://sites.google.com/view/fatecv-tutorial/schedule">fairness in computer vision (tutorial)</a><a class="headerlink" href="#fairness-in-computer-vision-tutorial" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="harms-of-cv">
+<h4>6.2.1.2.1. <a class="reference external" href="https://www.youtube.com/watch?time_continue=546&amp;v=0sBE5OyD7fk&amp;feature=emb_logo">harms of CV</a><a class="headerlink" href="#harms-of-cv" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p><strong>timnit gebru</strong> - fairness team at google</p>
 <ul>
@@ -779,7 +764,7 @@
 </ul>
 </div>
 <div class="section" id="data-ethics">
-<h3>6.2.2.2. <a class="reference external" href="https://www.youtube.com/watch?v=v_XBJd1Fxqc&amp;feature=emb_logo">data ethics</a><a class="headerlink" href="#data-ethics" title="Permalink to this headline">¶</a></h3>
+<h4>6.2.1.2.2. <a class="reference external" href="https://www.youtube.com/watch?v=v_XBJd1Fxqc&amp;feature=emb_logo">data ethics</a><a class="headerlink" href="#data-ethics" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>different types of harms</p>
 <ul>
@@ -803,7 +788,7 @@
 </ul>
 </div>
 <div class="section" id="where-do-we-go">
-<h3>6.2.2.3. <a class="reference external" href="https://www.youtube.com/watch?v=vpPpwa7W93I&amp;feature=emb_logo">where do we go?</a><a class="headerlink" href="#where-do-we-go" title="Permalink to this headline">¶</a></h3>
+<h4>6.2.1.2.3. <a class="reference external" href="https://www.youtube.com/watch?v=vpPpwa7W93I&amp;feature=emb_logo">where do we go?</a><a class="headerlink" href="#where-do-we-go" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>technology is not value-neutral – it’s political</p></li>
 <li><p>model types and metrics embed values</p></li>
@@ -819,149 +804,11 @@
 </li>
 </ul>
 </div>
-<div class="section" id="misc-papers">
-<h3>6.2.2.4. misc papers<a class="headerlink" href="#misc-papers" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p><a class="reference external" href="https://openreview.net/pdf?id=s-e2zaAlG3I">Large image datasets: A pyrrhic win for computer vision?</a> - bias in imagenet / tiny images</p></li>
-<li><p>http://positivelysemidefinite.com/2020/06/160k-students.html</p></li>
-</ul>
-</div>
-</div>
-<div class="section" id="concrete-harms">
-<h2>6.2.3. concrete harms<a class="headerlink" href="#concrete-harms" title="Permalink to this headline">¶</a></h2>
-<p>Technologies, especially world-shaping technologies like CNNs, are never objective. Their existence and adoption change the world in terms of</p>
-<ul class="simple">
-<li><p>consolidation of power (e.g. facial-rec used to target Uighurs, increased rationale for amassing user data)</p></li>
-<li><p>a shift toward the quantitative (which can lead to the the type of click-bait extremization we see online)</p></li>
-<li><p>automation (low-level layoffs, which also help consolidate power to tech giants)</p></li>
-<li><p>energy usage (the exorbitant footprint of models like GPT-3)</p></li>
-<li><p>access to media (deepfakes, etc.)</p></li>
-<li><p>a lot more</p></li>
-</ul>
-<div class="section" id="pandemic">
-<h3>6.2.3.1. pandemic<a class="headerlink" href="#pandemic" title="Permalink to this headline">¶</a></h3>
-<p>I hope the pandemic, which has boosted the desire for tracking, does not result in a long-term arc towards more serveillance</p>
-<ul class="simple">
-<li><p>from <a class="reference external" href="https://www.theatlantic.com/magazine/archive/2020/09/china-ai-surveillance/614197/">here</a>: City Brain would be especially useful in a pandemic. (One of Alibaba’s sister companies created the app that color-coded citizens’ disease risk, while silently sending their health and travel data to police.) As Beijing’s outbreak spread, some malls and restaurants in the city began scanning potential customers’ phones, pulling data from mobile carriers to see whether they’d recently traveled. Mobile carriers also sent municipal governments lists of people who had come to their city from Wuhan, where the coronavirus was first detected. And Chinese AI companies began making networked facial-recognition helmets for police, with built-in infrared fever detectors, capable of sending data to the government. City Brain could automate these processes, or integrate its data streams.</p></li>
-<li><p>“The pandemic may even make people value privacy less, as one early poll in the U.S. suggests”</p></li>
-</ul>
-</div>
-</div>
-<div class="section" id="ethics">
-<h2>6.2.4. ethics<a class="headerlink" href="#ethics" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="some-basics">
-<h3>6.2.4.1. some basics<a class="headerlink" href="#some-basics" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>utilitarian - good to be maximized</p>
-<ul>
-<li><p>utilitarian approach: which option produces the most good and does the least harm?</p></li>
-<li><p>common good approach: which option best serves the community as a whole?</p></li>
-</ul>
-</li>
-<li><p>deontological - adhering to “the right”</p>
-<ul>
-<li><p>ex. principles like privacy, autonomy, conflicting</p></li>
-<li><p>rights approach: which option bbest respects the rights of all who have a stake?</p></li>
-<li><p>justice approach: which option treats people equally or proportionately?</p></li>
-</ul>
-</li>
-<li><p>consequentalist questions</p>
-<ul>
-<li><p>who will be directly affected? who gets harmed?</p></li>
-</ul>
-</li>
-<li><p>virtue ethics - lives by a code of honor</p>
-<ul>
-<li><p>which option leas me to act as the sort of persion I want to be?</p></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="section" id="moral-trade">
-<h3>6.2.4.2. moral trade<a class="headerlink" href="#moral-trade" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p><a class="reference external" href="https://www.fhi.ox.ac.uk/wp-content/uploads/moral-trade-1.pdf">Moral Trade</a> (ord 2015) - <strong>moral trade</strong> = trade that is made possible by differences in the parties’ moral views</p></li>
-<li><p>examples</p>
-<ul>
-<li><p>one trading their eating meat for another donating more to a certain charity they both believe in</p></li>
-<li><p>donating to/against political parties</p></li>
-<li><p>donating to/against gun lobby</p></li>
-<li><p>donating to/for pro-life lobby</p></li>
-<li><p>paying non-profit employees</p></li>
-</ul>
-</li>
-<li><p>benefits</p>
-<ul>
-<li><p>can yield Pareto improvements = strict improvements where something gets better while other things remain atleast constant</p></li>
-</ul>
-</li>
-<li><p>real-world examples</p>
-<ul>
-<li><p>vote swapping (i.e. in congress)</p></li>
-<li><p>vote swapping across states/regions (e.g. Nader Trader, VotePair) - ruled legal when money not involved</p></li>
-<li><p>election campaign donation swapping - repledge.com (led by eric zolt) - was taken down due to issues w/ election financing</p></li>
-</ul>
-</li>
-<li><p>issues</p>
-<ul>
-<li><p>factual trust - how to ensure both sides carry through? (maybe financial penalties or audits could solve this)</p></li>
-<li><p>counterfactual trust - would one party have given this up even if the other party hadn’t?</p></li>
-</ul>
-</li>
-<li><p>minor things</p>
-<ul>
-<li><p>fits most naturally with moral framework of consequentalism</p></li>
-<li><p>includes indexicals (e.g. prioritizing one’s own family)</p></li>
-<li><p>could have uneven pledges</p></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-<div class="section" id="sts">
-<h2>6.2.5. sts<a class="headerlink" href="#sts" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p><strong>social determinism</strong> - theory that social interactions and constructs alone determine individual behavior</p></li>
-<li><p><strong>technological determinism</strong> - theory that assumes that a society’s technology determines the development of its social structure and cultural values</p></li>
-<li><p><a class="reference external" href="https://www.cc.gatech.edu/~beki/cs4001/Winner.pdf">do artifacts have politics?</a> (winner 2009)</p>
-<ul>
-<li><p><strong>politics</strong> - arrangements of power and authority in human associations as well as the activitites that take place within those arrangements</p></li>
-<li><p><strong>technology</strong> -  smaller or larger pieces or systems of hardware of a specific kind.</p></li>
-<li><p>examples</p>
-<ul>
-<li><p>pushes back against social determinism - technologies have the ability to shift power</p></li>
-<li><p>ex: nuclear power (consolidates power) vs solar power (democratizes power)</p></li>
-<li><p>ex. tv enables mass advertising</p></li>
-<li><p>ex. low bridges prevent buses</p></li>
-<li><p>ex. automation removes the need for skilled labor</p>
-<ul>
-<li><p>ex. tractors in grapes of wrath / tomato harvesters</p></li>
-</ul>
-</li>
-<li><p>ex. not making things handicap accessible</p></li>
-</ul>
-</li>
-<li><p>“scientific knowledge, technological invention, and corporate profit reinforce each other in deeply entrenched patterns that bear the unmistakable stamp of political and economic power”</p>
-<ul>
-<li><p>pushback on use of things like pesticides, highways, nuclear reactors</p></li>
-</ul>
-</li>
-<li><p>technologies which are inherently political, regardless of use</p>
-<ul>
-<li><p>ex. “If man, by dint of his knowledge and inventive genius has subdued the forces of nature, the latter avenge themselves upon him by subjecting him, insofar as he employs them, to a veritable despotism independent of all social organization.”</p></li>
-<li><p>attempts to justify strong authority on the basis of supposedly necessary conditions of technical practice have an ancient history.</p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><a class="reference external" href="https://openreview.net/pdf?id=fkAxTMzy3fs">Disembodied Machine Learning: On the Illusion of Objectivity in NLP</a></p></li>
-<li><p><a class="reference external" href="https://www.americanheritage.com/less-work-mother">less work for mother</a> (cowan 1987) - technologies that seem like they save time rarely do (although they increase “productivity”)</p></li>
-<li><p><a class="reference external" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3547903">The Concept of Function Creep</a> - “Function creep denotes an imperceptibly transformative and therewith contestable change in a data-processing system’s proper activity.”</p></li>
-</ul>
 </div>
 <div class="section" id="facial-rec-demographic-benchmarking">
-<h2>6.2.6. facial rec. demographic benchmarking<a class="headerlink" href="#facial-rec-demographic-benchmarking" title="Permalink to this headline">¶</a></h2>
+<h3>6.2.1.3. facial rec. demographic benchmarking<a class="headerlink" href="#facial-rec-demographic-benchmarking" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
+<li><p><a class="reference external" href="http://proceedings.mlr.press/v81/buolamwini18a/buolamwini18a.pdf">gender shades</a> (Buolamwini &amp; gebru, 2018)</p></li>
 <li><p><a class="reference external" href="https://nvlpubs.nist.gov/nistpubs/ir/2019/NIST.IR.8280.pdf">Face Recognition Vendor Test (FRVT) Part 3: Demographic Effects</a> (grother et al. 2019), NIST</p>
 <ul>
 <li><p>facial rec types</p>
@@ -1008,12 +855,9 @@
 </ul>
 </div>
 <div class="section" id="legal-perspectives">
-<h2>6.2.7. legal perspectives<a class="headerlink" href="#legal-perspectives" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p><strong>“the master’s tools will never dismantle the master’s house.”</strong></p></li>
-</ul>
-<div class="section" id="algorithmic-accountability-a-legal-and-economic-framework-2020">
-<h3>6.2.7.1. <a class="reference external" href="http://faculty.haas.berkeley.edu/morse/research/papers/AlgorithmicAccountability_BartlettMorseStantonWallace.pdf">ALGORITHMIC ACCOUNTABILITY: A LEGAL AND ECONOMIC FRAMEWORK</a> (2020)<a class="headerlink" href="#algorithmic-accountability-a-legal-and-economic-framework-2020" title="Permalink to this headline">¶</a></h3>
+<h3>6.2.1.4. legal perspectives<a class="headerlink" href="#legal-perspectives" title="Permalink to this headline">¶</a></h3>
+<p><em>“the master’s tools will never dismantle the master’s house.”</em></p>
+<p><strong><a class="reference external" href="http://faculty.haas.berkeley.edu/morse/research/papers/AlgorithmicAccountability_BartlettMorseStantonWallace.pdf">ALGORITHMIC ACCOUNTABILITY: A LEGAL AND ECONOMIC FRAMEWORK</a> (2020)</strong></p>
 <ul class="simple">
 <li><p>Title VII defines accountability under under U.S. antidiscrimination law</p>
 <ul>
@@ -1054,10 +898,8 @@
 </li>
 </ul>
 </li>
-</ul>
-<div class="section" id="input-accountability-test-captures-these-questions-w-basic-statistics">
-<h4>6.2.7.1.1. <strong>input accountability test - captures these questions w/ basic statistics</strong><a class="headerlink" href="#input-accountability-test-captures-these-questions-w-basic-statistics" title="Permalink to this headline">¶</a></h4>
-<ul class="simple">
+<li><p><strong>input accountability test - captures these questions w/ basic statistics</strong></p>
+<ul>
 <li><p>intuition: exclude input variables which are potentially problematic</p>
 <ul>
 <li><p>in this context, easier to define fairness without tradeoffs</p></li>
@@ -1089,10 +931,9 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="related-approaches">
-<h4>6.2.7.1.2. <strong>related approaches</strong><a class="headerlink" href="#related-approaches" title="Permalink to this headline">¶</a></h4>
-<ul class="simple">
+</li>
+<li><p>related approaches</p>
+<ul>
 <li><p>some propose balancing the outcomes</p>
 <ul>
 <li><p>one common problem here is that balancing err rates can force different groups to be different</p></li>
@@ -1105,8 +946,192 @@
 </li>
 <li><p>HUD’s mere predictive test - only requires that prediction is good and that inputs are not subsitutes for a protected characteristic</p></li>
 </ul>
+</li>
+</ul>
+</div>
+<div class="section" id="misc-papers">
+<h3>6.2.1.5. misc papers<a class="headerlink" href="#misc-papers" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://openreview.net/pdf?id=s-e2zaAlG3I">Large image datasets: A pyrrhic win for computer vision?</a> - bias in imagenet / tiny images</p></li>
+<li><p>http://positivelysemidefinite.com/2020/06/160k-students.html</p></li>
+</ul>
 </div>
 </div>
+<div class="section" id="ethics">
+<h2>6.2.2. ethics<a class="headerlink" href="#ethics" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="some-basics">
+<h3>6.2.2.1. some basics<a class="headerlink" href="#some-basics" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>utilitarian - good to be maximized</p>
+<ul>
+<li><p>utilitarian approach: which option produces the most good and does the least harm?</p></li>
+<li><p>common good approach: which option best serves the community as a whole?</p></li>
+</ul>
+</li>
+<li><p>deontological - adhering to “the right”</p>
+<ul>
+<li><p>ex. principles like privacy, autonomy, conflicting</p></li>
+<li><p>rights approach: which option bbest respects the rights of all who have a stake?</p></li>
+<li><p>justice approach: which option treats people equally or proportionately?</p></li>
+</ul>
+</li>
+<li><p>consequentalist questions</p>
+<ul>
+<li><p>who will be directly affected? who gets harmed?</p></li>
+</ul>
+</li>
+<li><p>virtue ethics - lives by a code of honor</p>
+<ul>
+<li><p>which option leas me to act as the sort of persion I want to be?</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="moral-trade">
+<h3>6.2.2.2. moral trade<a class="headerlink" href="#moral-trade" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.fhi.ox.ac.uk/wp-content/uploads/moral-trade-1.pdf">Moral Trade</a> (ord 2015) - <strong>moral trade</strong> = trade that is made possible by differences in the parties’ moral views</p></li>
+<li><p>examples</p>
+<ul>
+<li><p>one trading their eating meat for another donating more to a certain charity they both believe in</p></li>
+<li><p>donating to/against political parties</p></li>
+<li><p>donating to/against gun lobby</p></li>
+<li><p>donating to/for pro-life lobby</p></li>
+<li><p>paying non-profit employees</p></li>
+</ul>
+</li>
+<li><p>benefits</p>
+<ul>
+<li><p>can yield Pareto improvements = strict improvements where something gets better while other things remain atleast constant</p></li>
+</ul>
+</li>
+<li><p>real-world examples</p>
+<ul>
+<li><p>vote swapping (i.e. in congress)</p></li>
+<li><p>vote swapping across states/regions (e.g. Nader Trader, VotePair) - ruled legal when money not involved</p></li>
+<li><p>election campaign donation swapping - repledge.com (led by eric zolt) - was taken down due to issues w/ election financing</p></li>
+</ul>
+</li>
+<li><p>issues</p>
+<ul>
+<li><p>factual trust - how to ensure both sides carry through? (maybe financial penalties or audits could solve this)</p></li>
+<li><p>counterfactual trust - would one party have given this up even if the other party hadn’t?</p></li>
+</ul>
+</li>
+<li><p>minor things</p>
+<ul>
+<li><p>fits most naturally with moral framework of consequentalism</p></li>
+<li><p>includes indexicals (e.g. prioritizing one’s own family)</p></li>
+<li><p>could have uneven pledges</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="sts">
+<h2>6.2.3. sts<a class="headerlink" href="#sts" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>social determinism</strong> - theory that social interactions and constructs alone determine individual behavior</p></li>
+<li><p><strong>technological determinism</strong> - theory that assumes that a society’s technology determines the development of its social structure and cultural values</p></li>
+<li><p><a class="reference external" href="https://www.cc.gatech.edu/~beki/cs4001/Winner.pdf">do artifacts have politics?</a> (winner 2009)</p>
+<ul>
+<li><p><strong>politics</strong> - arrangements of power and authority in human associations as well as the activitites that take place within those arrangements</p></li>
+<li><p><strong>technology</strong> -  smaller or larger pieces or systems of hardware of a specific kind.</p></li>
+<li><p>examples</p>
+<ul>
+<li><p>pushes back against social determinism - technologies have the ability to shift power</p></li>
+<li><p>ex: nuclear power (consolidates power) vs solar power (democratizes power)</p></li>
+<li><p>ex. tv enables mass advertising</p></li>
+<li><p>ex. low bridges prevent buses</p></li>
+<li><p>ex. automation removes the need for skilled labor</p>
+<ul>
+<li><p>ex. tractors in grapes of wrath / tomato harvesters</p></li>
+</ul>
+</li>
+<li><p>ex. not making things handicap accessible</p></li>
+</ul>
+</li>
+<li><p>“scientific knowledge, technological invention, and corporate profit reinforce each other in deeply entrenched patterns that bear the unmistakable stamp of political and economic power”</p>
+<ul>
+<li><p>pushback on use of things like pesticides, highways, nuclear reactors</p></li>
+</ul>
+</li>
+<li><p>technologies which are inherently political, regardless of use</p>
+<ul>
+<li><p>ex. “If man, by dint of his knowledge and inventive genius has subdued the forces of nature, the latter avenge themselves upon him by subjecting him, insofar as he employs them, to a veritable despotism independent of all social organization.”</p></li>
+<li><p>attempts to justify strong authority on the basis of supposedly necessary conditions of technical practice have an ancient history.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://openreview.net/pdf?id=fkAxTMzy3fs">Disembodied Machine Learning: On the Illusion of Objectivity in NLP</a></p></li>
+<li><p><a class="reference external" href="https://www.americanheritage.com/less-work-mother">less work for mother</a> (cowan 1987) - technologies that seem like they save time rarely do (although they increase “productivity”)</p></li>
+<li><p><a class="reference external" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3547903">The Concept of Function Creep</a> - “Function creep denotes an imperceptibly transformative and therewith contestable change in a data-processing system’s proper activity.”</p></li>
+</ul>
+</div>
+<div class="section" id="effective-altruism">
+<h2>6.2.4. effective altruism<a class="headerlink" href="#effective-altruism" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.effectivealtruism.org/articles/introduction-to-effective-altruism/">effectivealtruism</a></p>
+<ul>
+<li><p>promising causes</p>
+<ul>
+<li><p>great in <em>scale</em> (it affects many lives, by a great amount)</p></li>
+<li><p>highly <em>neglected</em> (few other people are working on addressing the problem), and</p></li>
+<li><p>highly <em>solvable</em> or <em>tractable</em> (additional resources will do a great deal to address it).</p></li>
+</ul>
+</li>
+<li><p>3 big areas</p>
+<ul>
+<li><p>fighting extreme poverty (e.g. malaria)</p></li>
+<li><p>animal suffering</p></li>
+<li><p>improving the long-term future</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://rethinkpriorities.freshteam.com/jobs/iX8GfQ1eBLDq/researcher-multiple-positions-remote">rethink-priorities jobs</a></p></li>
+<li><p><a class="reference external" href="https://www.openphilanthropy.org/blog/modeling-human-trajectory">open philanthropy</a></p></li>
+<li><p>careers can have greater impacts than altruism (<a class="reference external" href="https://80000hours.org/key-ideas/">80k hours</a>)</p>
+<ul>
+<li><p>https://80000hours.org/career-guide/</p></li>
+<li><p><a class="reference external" href="https://80000hours.org/problem-profiles/positively-shaping-artificial-intelligence/">80k hours AI careers</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://www.givewell.org/how-we-work/our-criteria/cost-effectiveness">givewell cost-effective calculations</a></p>
+<ul>
+<li><p>charities often exaggerate their “cost to save a life”</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="tech-for-good">
+<h2>6.2.5. tech for “good”<a class="headerlink" href="#tech-for-good" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.schneier.com/essays/archives/2019/02/public-interest_tech.html">Essays: Cybersecurity for the Public Interest - Schneier on Security</a></p></li>
+</ul>
+</div>
+<div class="section" id="concrete-ai-harms">
+<h2>6.2.6. concrete ai harms<a class="headerlink" href="#concrete-ai-harms" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/daviddao/awful-ai">awful-ai</a> - list of scary usages of ai</p></li>
+</ul>
+<p>Technologies, especially world-shaping technologies like CNNs, are never objective. Their existence and adoption change the world in terms of</p>
+<ul class="simple">
+<li><p>consolidation of power (e.g. facial-rec used to target Uighurs, increased rationale for amassing user data)</p></li>
+<li><p>a shift toward the quantitative (which can lead to the the type of click-bait extremization we see online)</p></li>
+<li><p>automation (low-level layoffs, which also help consolidate power to tech giants)</p></li>
+<li><p>energy usage (the exorbitant footprint of models like GPT-3)</p></li>
+<li><p>access to media (deepfakes, etc.)</p></li>
+<li><p>a lot more</p></li>
+<li><p>pandemic</p>
+<ul>
+<li><p>I hope the pandemic, which has boosted the desire for tracking, does not result in a long-term arc towards more serveillance</p></li>
+<li><p>from <a class="reference external" href="https://www.theatlantic.com/magazine/archive/2020/09/china-ai-surveillance/614197/">here</a>: City Brain would be especially useful in a pandemic. (One of Alibaba’s sister companies created the app that color-coded citizens’ disease risk, while silently sending their health and travel data to police.) As Beijing’s outbreak spread, some malls and restaurants in the city began scanning potential customers’ phones, pulling data from mobile carriers to see whether they’d recently traveled. Mobile carriers also sent municipal governments lists of people who had come to their city from Wuhan, where the coronavirus was first detected. And Chinese AI companies began making networked facial-recognition helmets for police, with built-in infrared fever detectors, capable of sending data to the government. City Brain could automate these processes, or integrate its data streams.</p></li>
+<li><p>“The pandemic may even make people value privacy less, as one early poll in the U.S. suggests”</p></li>
+</ul>
+</li>
+</ul>
 </div>
 </div>
 

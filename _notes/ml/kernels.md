@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: kernels
-category: research
+category: ml
 ---
 
 {:toc}
@@ -39,32 +39,6 @@ An introduction to kernels and recent research.
     - every kernel has a unique RKHS
   - sums/products of kernels also work
 
-# kernels in deep learning
-
-- [To understand deep learning we need to understand kernel learning](https://arxiv.org/abs/1802.01396) - overfitted kernel classifiers can still fit the data well
-- original kernels (neal 1994) + (lee et al. 2018) + (matthews et al. 2018)
-  - infinitely wide nets and only top layer is trained
-  - corresponds to kernel $\text{ker}(x, x') = \mathbb E_{\theta \sim W}[f(\theta, x) \cdot f(\theta, x')]$, where $W$ is an intialization distr. over $\theta$
-- [neural tangent kernel](https://arxiv.org/abs/1806.07572) (jacot et al. 2018)
-  - $\text{ker}(x, x') = \mathbb E_{\theta \sim W}[\left < \frac{f(\theta, x)}{\partial \theta} \cdot \frac{f(\theta, x')}{\partial \theta} \right> ]$ - evolution of weights over time follows this kernel
-    - with very large width, this kernel is the NTK at initialization
-    - stays stable during training (since weights don't change much)
-  - at initialization, artificial neural networks (ANNs) are equivalent to Gaussian processes in the infinite-width limit
-    - evolution of an ANN during training can also be described by a kernel (kernel gradient descent)
-  - different types of kernels impose different things on a function (e.g. want more / less low frequencies)
-    - gradient descent in kernel space can be convex if kernel is PD (even if nonconvex in the parameter space)
-  - [understanding the neural tangent kernel](https://arxiv.org/pdf/1904.11955.pdf) (arora et al. 2019)
-
-    - method to compute the kernel quickly on a gpu
-- [Scaling description of generalization with number of parameters in deep learning](https://arxiv.org/abs/1901.01608) (geiger et al. 2019)
-  - number of params = N
-  - above 0 training err, larger number of params reduces variance but doesn't actually help
-    - ensembling with smaller N fixes problem
-  - the improvement of generalization performance with N in this classification task originates from reduced variance of fN when N gets large, as recently observed for mean-square regression
-- [On the Inductive Bias of Neural Tangent Kernels](https://arxiv.org/abs/1905.12173) (bietti & mairal 2019)
-- [Kernel and Deep Regimes in Overparametrized Models](https://arxiv.org/abs/1906.05827) (Woodworth...Srebro 2019)
-  
-  - transition between *kernel* and *deep regimes*
 
 # kernel papers
 

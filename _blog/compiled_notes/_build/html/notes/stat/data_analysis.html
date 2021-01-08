@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>4.2. data analysis &#8212; learning to learn</title>
+    <title>4.2. data analysis</title>
     
   <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -78,8 +78,6 @@
   
   <img src="../../_static/logo.png" class="logo" alt="logo">
   
-  
-  <h1 class="site-logo" id="site-title">learning to learn</h1>
   
 </a>
 </div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
@@ -407,7 +405,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/fairness_sts.html">
-     6.2. fairness
+     6.2. fairness, sts
     </a>
    </li>
    <li class="toctree-l2">
@@ -619,38 +617,43 @@
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dealing-with-imbalanced-data">
-   4.2.3. dealing with imbalanced data
+  <a class="reference internal nav-link" href="#imbalanced-data">
+   4.2.3. imbalanced data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#missing-data-imputation">
+   4.2.4. missing-data imputation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#feature-engineering">
-   4.2.4. feature engineering
+   4.2.5. feature engineering
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#principles">
-   4.2.5. principles
+   4.2.6. principles
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#breiman">
-     4.2.5.1. breiman
+     4.2.6.1. breiman
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#box-tukey">
-     4.2.5.2. box + tukey
+     4.2.6.2. box + tukey
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#models">
-     4.2.5.3. models
+     4.2.6.3. models
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exaggerated-claims">
-     4.2.5.4. exaggerated claims
+     4.2.6.4. exaggerated claims
     </a>
    </li>
   </ul>
@@ -888,8 +891,8 @@
 </ul>
 </div>
 </div>
-<div class="section" id="dealing-with-imbalanced-data">
-<h2>4.2.3. dealing with imbalanced data<a class="headerlink" href="#dealing-with-imbalanced-data" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="imbalanced-data">
+<h2>4.2.3. imbalanced data<a class="headerlink" href="#imbalanced-data" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
 <li><p>randomly oversample minority class</p></li>
 <li><p>randomly undersample majority class</p></li>
@@ -944,8 +947,63 @@
 <li><p>log-spline - doesn’t scale</p></li>
 </ol>
 </div>
+<div class="section" id="missing-data-imputation">
+<h2>4.2.4. missing-data imputation<a class="headerlink" href="#missing-data-imputation" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://link.springer.com/article/10.1007/s10462-019-09709-4">Missing value imputation: a review and analysis of the literature</a> (lin &amp; tsai 2019)</p></li>
+<li><p><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3744188/">Purposeful Variable Selection and Stratification to Impute Missing FAST Data in Trauma Research</a> (fuchs et al. 2014)</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1712.06170">Causal Inference: A Missing Data Perspective</a> (ding &amp; li, 2018)</p></li>
+<li><p>different missingness mechanisms (little &amp; rubin, 1987)</p>
+<ul>
+<li><p><strong>MCAR</strong> - missing completely at random - no relationship between the missingness of the data and any values, observed or missing</p></li>
+<li><p><strong>MAR</strong> - missing at random - propensity of missing values depends on <em>observed</em> data, but <em>not</em> the missing data</p>
+<ul>
+<li><p>can easily test for this vs MCAR</p></li>
+</ul>
+</li>
+<li><p><strong>MNAR</strong> - missing not at random - propensity of missing values depends both on observed and unobserved data</p></li>
+<li><p>connections to causal: MCAR is much like randomization, MAR like ignorability (although slightly more general), and MNAR like unmeasured unconfounding</p></li>
+</ul>
+</li>
+<li><p>imputation problem: propensity of missing values depends on the unobserved values themselves (not ignorable)</p>
+<ul>
+<li><p>simplest approach: drop rows with missing vals</p></li>
+<li><p>mean/median imputation</p></li>
+<li><p>probabilistic approach</p>
+<ul>
+<li><p>EM approach, MCMC, GMM, sampling</p></li>
+</ul>
+</li>
+<li><p>matrix completion: low-rank, PCA, SVD</p></li>
+<li><p>nearest-neighbor / matching: hot-deck</p></li>
+<li><p>(weighted) prediction approaches</p>
+<ul>
+<li><p>linear regr, LDA, naive bayes, regr. trees, LDA</p></li>
+<li><p>can do weighting using something similar to inverse propensities, although less common to check things  like covariate balance</p></li>
+</ul>
+</li>
+<li><p>multiple imputation: impute multiple times to get better estimates</p>
+<ul>
+<li><p>MICE (passes / imputes data multiple times sequentially)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>can perform sensitivity analysis to evaluate the assumption that things are not MNAR</p>
+<ul>
+<li><p>two standard models for nonignorable missing data are the <em>selection</em> models and the <em>pattern-mixture</em> models (<a class="reference external" href="https://books.google.com/books?hl=en&amp;lr=&amp;id=BemMDwAAQBAJ&amp;oi=fnd&amp;pg=PR11&amp;dq=Little,+R.+J.+and+Rubin,+D.+B.+(2002).+Statistical+analysis+with+missing+data.+John+Wiley+%26+Sons.&amp;ots=FByXa-CVWU&amp;sig=jIjvaI90RNK1rNfJoKoGvGJsz-E#v=onepage&amp;q=Little%2C%20R.%20J.%20and%20Rubin%2C%20D.%20B.%20(2002).%20Statistical%20analysis%20with%20missing%20data.%20John%20Wiley%20%26%20Sons.&amp;f=false">Little and Rubin, 2002</a>, Chapter 15)</p></li>
+</ul>
+</li>
+<li><p>performance evaluation</p>
+<ul>
+<li><p>acc at finding missing vals</p></li>
+<li><p>acc in downstream task</p></li>
+</ul>
+</li>
+</ul>
+</div>
 <div class="section" id="feature-engineering">
-<h2>4.2.4. feature engineering<a class="headerlink" href="#feature-engineering" title="Permalink to this headline">¶</a></h2>
+<h2>4.2.5. feature engineering<a class="headerlink" href="#feature-engineering" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>often good to discretize/binarize features</p>
 <ul>
@@ -955,9 +1013,9 @@
 </ul>
 </div>
 <div class="section" id="principles">
-<h2>4.2.5. principles<a class="headerlink" href="#principles" title="Permalink to this headline">¶</a></h2>
+<h2>4.2.6. principles<a class="headerlink" href="#principles" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="breiman">
-<h3>4.2.5.1. breiman<a class="headerlink" href="#breiman" title="Permalink to this headline">¶</a></h3>
+<h3>4.2.6.1. breiman<a class="headerlink" href="#breiman" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p>conversation</p>
 <ul class="simple">
@@ -1009,7 +1067,7 @@
 </ul>
 </div>
 <div class="section" id="box-tukey">
-<h3>4.2.5.2. box + tukey<a class="headerlink" href="#box-tukey" title="Permalink to this headline">¶</a></h3>
+<h3>4.2.6.2. box + tukey<a class="headerlink" href="#box-tukey" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p>questions</p>
 <ol class="simple">
@@ -1146,7 +1204,7 @@
 </ul>
 </div>
 <div class="section" id="models">
-<h3>4.2.5.3. models<a class="headerlink" href="#models" title="Permalink to this headline">¶</a></h3>
+<h3>4.2.6.3. models<a class="headerlink" href="#models" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>normative - fully interpretable + modelled</p>
 <ul>
@@ -1163,7 +1221,7 @@
 </ul>
 </div>
 <div class="section" id="exaggerated-claims">
-<h3>4.2.5.4. exaggerated claims<a class="headerlink" href="#exaggerated-claims" title="Permalink to this headline">¶</a></h3>
+<h3>4.2.6.4. exaggerated claims<a class="headerlink" href="#exaggerated-claims" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.youtube.com/watch?time_continue=4&amp;v=PwCyvSDkUCY&amp;feature=emb_logo">video</a> by Rob Kass</p></li>
 <li><p>concepts are ambiguous and have many mathematical instantiations</p>

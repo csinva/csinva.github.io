@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>1.9. causal inference &#8212; learning to learn</title>
+    <title>1.9. causal inference</title>
     
   <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -78,8 +78,6 @@
   
   <img src="../../_static/logo.png" class="logo" alt="logo">
   
-  
-  <h1 class="site-logo" id="site-title">learning to learn</h1>
   
 </a>
 </div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
@@ -407,7 +405,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/fairness_sts.html">
-     6.2. fairness
+     6.2. fairness, sts
     </a>
    </li>
    <li class="toctree-l2">
@@ -626,8 +624,8 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#policy-learning">
-     1.9.2.3. policy learning
+    <a class="reference internal nav-link" href="#reinforcement-policy-learning">
+     1.9.2.3. reinforcement (policy) learning
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -641,8 +639,8 @@
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#problem-formulations">
-       1.9.2.5.1. problem formulations
+      <a class="reference internal nav-link" href="#invariance-hierarchies">
+       1.9.2.5.1. invariance hierarchies
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
@@ -892,7 +890,7 @@ C(Location of Car) --&gt; B
 <h3>1.9.2.2. heterogenous treatment effects<a class="headerlink" href="#heterogenous-treatment-effects" title="Permalink to this headline">¶</a></h3>
 <p><em>Heterogenous treatment effects refer to effects which differ for different subgroups / individuals in a population and requires more refined modeling.</em></p>
 <ul class="simple">
-<li><p><strong>conditional average treatment effect (CATE)</strong> - get treatment effect for each individual conditioned on its covariates</p>
+<li><p><strong>conditional average treatment effect (CATE)</strong> - get treatment effect for each individual conditioned on its covariates <span class="math notranslate nohighlight">\(\mathbb E [y|x, t=1] - \mathbb E[y|x, t=0]\)</span> (different from ITE <span class="math notranslate nohighlight">\(Y^{T=1}_i - Y^{T=0}_i\)</span>)</p>
 <ul>
 <li><p>meta-learners - break down CATE into regression subproblems</p>
 <ul>
@@ -933,9 +931,9 @@ C(Location of Car) --&gt; B
 </li>
 <li><p>tree-based methods</p>
 <ul>
-<li><p>e.g. causal tree (<a class="reference external" href="https://www.pnas.org/content/113/27/7353.short">athey &amp; imbens, 16</a>) - like decision tree, but change splitting criterion for differentiating 2 outcomes</p></li>
-<li><p>e.g. causal forest (<a class="reference external" href="https://www.tandfonline.com/doi/full/10.1080/01621459.2017.1319839">wager &amp; athey, 18</a>)</p></li>
-<li><p>e.g. BART (hill, 12)</p></li>
+<li><p>e.g. causal tree (<a class="reference external" href="https://www.pnas.org/content/113/27/7353.short">athey &amp; imbens, 16</a>) - like decision tree, but change splitting criterion for differentiating 2 outcomes + compute effects for each leaf on out-of-sample data</p></li>
+<li><p>e.g. causal forest (<a class="reference external" href="https://www.tandfonline.com/doi/full/10.1080/01621459.2017.1319839">wager &amp; athey, 18</a>) - extends causal tree to forest</p></li>
+<li><p>e.g. BART (<a class="reference external" href="https://arxiv.org/abs/0806.3286">hill, 12</a>) - takes treatment as an extra input feature</p></li>
 </ul>
 </li>
 <li><p>neural-net based methods</p>
@@ -1007,25 +1005,53 @@ C(Location of Car) --&gt; B
 </li>
 </ul>
 </div>
-<div class="section" id="policy-learning">
-<h3>1.9.2.3. policy learning<a class="headerlink" href="#policy-learning" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="reinforcement-policy-learning">
+<h3>1.9.2.3. reinforcement (policy) learning<a class="headerlink" href="#reinforcement-policy-learning" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>rather than estimating a treatment effect, find a policy that maximizes some expected utility (e.g. can define utility as the potential outcome <span class="math notranslate nohighlight">\(\mathbb E[Y_i(\pi(X_i))]\)</span>)</p></li>
+<li><p>in this case, policy is like an intervention</p></li>
 </ul>
 </div>
 <div class="section" id="causal-discovery">
 <h3>1.9.2.4. causal discovery<a class="headerlink" href="#causal-discovery" title="Permalink to this headline">¶</a></h3>
-<p><em>Causal discovery aims to identify causal relationships (sometimes under some smoothness / independence assumptions. This is often impossible in general.</em></p>
+<p><em>Causal discovery aims to identify causal relationships (sometimes under some smoothness / independence assumptions. This is often impossible in general. Also called causal relation learning, causal search.</em></p>
 <ul class="simple">
 <li><p>overview</p>
 <ul>
-<li><p>basics: conditional indep. checks can only determine graphs up to markov equivalence</p></li>
-<li><p>2 approaches</p>
+<li><p><strong>constraint-based algorithms</strong> - conditional indep. checks can only determine graphs up to markov equivalence</p>
 <ul>
-<li><p>test noise distr. of relationships in different directions</p></li>
-<li><p>check variables which reduce entropy the most</p></li>
+<li><p><em>faithfulness</em> means the statistical dependence between variables estimated from the data does not violate the independence defined by any causal graph which generates the data</p></li>
+<li><p>ex. peter-clark (PC) algorithm - first learns undirected graph, then detects edge directions and returns an equivalent class</p></li>
+<li><p>some work tries to work on more general distrs.</p></li>
+<li><p>some work tries to extend to seeting with unobserved confounders</p></li>
 </ul>
 </li>
+<li><p><strong>score-based algorithms</strong> - replace conditional indep. tests with godness of fit tests (e.g. BIC)</p>
+<ul>
+<li><p>still can only determine graphs up to markov equivalence</p></li>
+<li><p>optimizing goodness of fit is NP-hard, so often use heuristics such as greedy equivalence search (<a class="reference external" href="https://www.jmlr.org/papers/v3/chickering02b.html">chickering, 2002</a>)</p></li>
+</ul>
+</li>
+<li><p><strong>functional causal models</strong> - assumpe a variable can be written as a function of its direct causes and some noise term</p>
+<ul>
+<li><p>e.g. (hyavarinen &amp; zhang, 2016) assume additive noise and that <span class="math notranslate nohighlight">\(p(E|C)\)</span> can be modeled while <span class="math notranslate nohighlight">\(P(C|E)\)</span> cannot</p></li>
+<li><p>e.g. LiNGAM (Shimizu et al., 2006), ICA-LINGAM - linear relations between different variables and noise</p></li>
+<li><p>additive noise models ANM (Hoyer et al., 2009) relax the linear restirction</p>
+<ul>
+<li><p>ANM-MM (Hu et al., 2018)</p></li>
+</ul>
+</li>
+<li><p>post-nonlinear models PNL (Zhang and Hyvarinen, 2009) expand the functional space with non-linear relations between the variables and the noise</p></li>
+</ul>
+</li>
+<li><p>many models assume the generating cause distribution <span class="math notranslate nohighlight">\(p(C)\)</span> is in som sense “independent” to the mechanism <span class="math notranslate nohighlight">\(P(E|C)\)</span></p>
+<ul>
+<li><p>e.g. IGCI (Janzing et al., 2012) uses orthogonality in information space to express the independence between the two distributions</p></li>
+<li><p>e.g. KCDC (Mitrovic et al., 2018) uses  invariance of Kolmogorov complexity of conditional distribution</p></li>
+<li><p>e.g. RECI (Blobaum et al., 2018) extends IGCI to the setting with small noise, and proceeds by comparing the regression errors in both possible directions</p></li>
+</ul>
+</li>
+<li><p>check variables which reduce entropy the most</p></li>
 </ul>
 </li>
 <li><p><a class="reference external" href="https://proceedings.neurips.cc/paper/2018/hash/78631a4bb5303be54fa1cfdcb958c00a-Abstract.html">Learning and Testing Causal Models with Interventions</a> (acharya et al. 2018)</p>
@@ -1125,56 +1151,20 @@ C(Location of Car) --&gt; B
 </li>
 </ul>
 </li>
+<li><p>Causal Mosaic: Cause-Effect Inference via Nonlinear ICA and Ensemble Method (<a class="reference external" href="https://arxiv.org/abs/2001.01894">wu &amp; fukumizu, 2020</a>)</p>
+<ul>
+<li><p>focus on bivariate case,</p></li>
+</ul>
+</li>
 <li><p><a class="reference external" href="https://www.technologyreview.com/s/613502/deep-learning-could-reveal-why-the-world-works-the-way-it-does/?fbclid=IwAR3LF2dc_3EvWXzEHhtrsqtH9Vs-4pjPALfuqKCOma9_gqLXMKDeCWrcdrQ">link to iclr talk</a> (bottou 2019)</p></li>
 </ul>
 </div>
 <div class="section" id="stable-invariant-predictors">
 <h3>1.9.2.5. stable/invariant predictors<a class="headerlink" href="#stable-invariant-predictors" title="Permalink to this headline">¶</a></h3>
 <p><em>Under certain assumptions, invariance to data perturbations (i.e. interventions) can help us identify causal effects.</em></p>
-<div class="section" id="problem-formulations">
-<h4>1.9.2.5.1. problem formulations<a class="headerlink" href="#problem-formulations" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="invariance-hierarchies">
+<h4>1.9.2.5.1. invariance hierarchies<a class="headerlink" href="#invariance-hierarchies" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
-<li><p><a class="reference external" href="https://arxiv.org/abs/1812.08233">Invariance, Causality and Robustness</a> (buhlmann 18)</p>
-<ul>
-<li><p>predict <span class="math notranslate nohighlight">\(Y^e\)</span> given <span class="math notranslate nohighlight">\(X^e\)</span> such that the prediction “works well” or is “robust” for all <span class="math notranslate nohighlight">\(e ∈ \mathcal F\)</span> based on data from much fewer environments <span class="math notranslate nohighlight">\(e \in \mathcal E\)</span></p>
-<ul>
-<li><p><strong>key assumption (<em>invariance</em>)</strong>: there exists a subset of “causal” covariates - when conditioning on these covariates, the loss is the same across all environments <span class="math notranslate nohighlight">\(e\)</span></p></li>
-<li><p>assumption: ideally <span class="math notranslate nohighlight">\(e\)</span> changes only the distr. of <span class="math notranslate nohighlight">\(X^e\)</span> (so doesn’t act directly on <span class="math notranslate nohighlight">\(Y^e\)</span> or change the mechanism between <span class="math notranslate nohighlight">\(X^e\)</span> and <span class="math notranslate nohighlight">\(Y^e\)</span>)</p></li>
-<li><p>when these assumptions are satisfied, then minimizing a worst-case risk over environments <span class="math notranslate nohighlight">\(e\)</span> yields a causal parameter</p></li>
-</ul>
-</li>
-<li><p>identifiability issue: we typically can’t identify the causal variables without very many perturbations <span class="math notranslate nohighlight">\(e\)</span></p>
-<ul>
-<li><p><strong>Invariant Causal Prediction (ICP)</strong> only identifies variables as causal if they appear in all invariant sets (see also <a class="reference external" href="https://arxiv.org/abs/1501.01332">Peters, Buhlmann, &amp; Meinshausen, 2015</a>)</p></li>
-</ul>
-</li>
-<li><p>anchor regression model helps to relax assumptions</p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1907.02893">Invariant Risk Minimization</a> (arjovsky, bottou, gulrajani, &amp; lopez-paz 2019)</p>
-<ul>
-<li><p>idealized formulation: <span class="math notranslate nohighlight">\(\begin{array}{ll}\min _{\Phi: \mathcal{X} \rightarrow \mathcal{H}} &amp; \sum_{e \in \mathcal{E}_{\mathrm{tr}}} R^{e}(w \circ \Phi) \\ \text { subject to } &amp; w \in \underset{\bar{w}: \mathcal{H} \rightarrow \mathcal{Y}}{\arg \min  } \: R^{e}(\bar{w} \circ \Phi), \text { for all } e \in \mathcal{E}_{\mathrm{tr}}\end{array}\)</span></p>
-<ul>
-<li><p><span class="math notranslate nohighlight">\(\Phi\)</span> is repr., <span class="math notranslate nohighlight">\(w \circ \Phi\)</span> is predictor</p></li>
-</ul>
-</li>
-<li><p>practical formulation: <span class="math notranslate nohighlight">\(\min _{\Phi: \mathcal{X} \rightarrow \mathcal{Y}} \sum_{e \in \mathcal{E}_{\mathrm{tr}}} R^{e}(\Phi)+\lambda \cdot\left\|\nabla_{w \mid w=1.0} R^{e}(w \cdot \Phi)\right\|^{2}\)</span></p></li>
-<li><p>random splitting causes problems with our data</p></li>
-<li><p>what to perform well under different distributions of X, Y</p></li>
-<li><p>can’t be solved via robust optimization</p></li>
-<li><p>a correlation is spurious when we do not expect it to hold in the future in the same manner as it held in the past</p>
-<ul>
-<li><p>i.e. spurious correlations are unstable</p></li>
-</ul>
-</li>
-<li><p>assume we have infinite data, and know what kinds of changes our distribution for the problem might have (e.g. variance of features might change)</p>
-<ul>
-<li><p>make a model which has the minimum test error regardless of the distribution of the problem</p></li>
-</ul>
-</li>
-<li><p>adds a penalty inspired by invariance (which can be viewed as a stability criterion)</p></li>
-</ul>
-</li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1905.11374">The Hierarchy of Stable Distributions and Operators to Trade Off Stability and Performance</a> (subbaswamy, chen, &amp; saria 2019)</p>
 <ul>
 <li><p>different predictors learn different things</p></li>
@@ -1209,15 +1199,66 @@ C(Location of Car) --&gt; B
 <ul class="simple">
 <li><p>algorithms overview (see papers for more details) + <a class="reference external" href="https://github.com/facebookresearch/InvarianceUnitTests">implementations</a></p>
 <ul>
-<li><p>ERM - empirical risk minimization - normal training, minimizes the error on the union of all the training splits</p></li>
-<li><p>IRM - invariant risk minimization (v1) - finds a representation of the features such that the optimal classifier, on top of that representation, is the identity function for all environments</p></li>
-<li><p>domain-adversarial techniques</p></li>
-<li><p>ICP - invariant causal prediction - find sets for which features are invariant</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/2009.00329">AND-mask</a> - minimizes the error on the training splits by updating the model on those directions where the sign of the gradient of the loss is the same for most environments.</p></li>
+<li><p><em>ICP</em> - invariant causal prediction - find feature set where, after conditioning, loss is the same for all environments</p>
+<ul>
+<li><p>fails when distr. of residuals varies across environments</p></li>
+</ul>
+</li>
+<li><p><em>IRM</em> - invariant risk minimization (v1) - find a feature repr. such that the optimal classifier, on top of that repr., is the identity function for all environments</p></li>
+<li><p><em>GroupDRO</em> - distributionally robust optimization (e.g. encourage strict equality between err of each group)</p></li>
+<li><p><em>ERM</em> - empirical risk minimization - minimize total training err</p></li>
+<li><p><em>domain-adversarial techniques</em>: find a repr. which does not differ across environments, then predict</p>
+<ul>
+<li><p>fails when distr. of causes changes across environments</p></li>
+</ul>
+</li>
+<li><p><em>AND-mask</em> - minimize the err only in directions where the sign of the gradient of the loss is the same for most environments</p></li>
 <li><p><span class="xref myst">IGA</span> - inter-environmental gradient alignment - ERM + reduce variance of the gradient of the loss per environment: <span class="math notranslate nohighlight">\(\lambda \operatorname{trace}\left(\operatorname{Var}\left(\nabla_{\theta} L_{\mathcal{E}}(\theta)\right)\right)\)</span></p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/2009.00329">Learning explanations that are hard to vary</a> (parascandolo…sholkopf, 2020)</p>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1812.08233">Invariance, Causality and Robustness</a> - ICP (buhlmann 18)</p>
+<ul>
+<li><p>predict <span class="math notranslate nohighlight">\(Y^e\)</span> given <span class="math notranslate nohighlight">\(X^e\)</span> such that the prediction “works well” or is “robust” for all <span class="math notranslate nohighlight">\(e ∈ \mathcal F\)</span> based on data from much fewer environments <span class="math notranslate nohighlight">\(e \in \mathcal E\)</span></p>
+<ul>
+<li><p><strong>key assumption (<em>invariance</em>)</strong>: there exists a subset of “causal” covariates - when conditioning on these covariates, the loss is the same across all environments <span class="math notranslate nohighlight">\(e\)</span></p></li>
+<li><p>assumption: ideally <span class="math notranslate nohighlight">\(e\)</span> changes only the distr. of <span class="math notranslate nohighlight">\(X^e\)</span> (so doesn’t act directly on <span class="math notranslate nohighlight">\(Y^e\)</span> or change the mechanism between <span class="math notranslate nohighlight">\(X^e\)</span> and <span class="math notranslate nohighlight">\(Y^e\)</span>)</p></li>
+<li><p>when these assumptions are satisfied, then minimizing a worst-case risk over environments <span class="math notranslate nohighlight">\(e\)</span> yields a causal parameter</p></li>
+</ul>
+</li>
+<li><p>identifiability issue: we typically can’t identify the causal variables without very many perturbations <span class="math notranslate nohighlight">\(e\)</span></p>
+<ul>
+<li><p><strong>Invariant Causal Prediction (ICP)</strong> only identifies variables as causal if they appear in all invariant sets (see also <a class="reference external" href="https://arxiv.org/abs/1501.01332">Peters, Buhlmann, &amp; Meinshausen, 2015</a>)</p></li>
+<li><p>brute-force feature selection</p></li>
+</ul>
+</li>
+<li><p>anchor regression model helps to relax assumptions</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1907.02893">Invariant Risk Minimization</a> - IRM (arjovsky, bottou, gulrajani, &amp; lopez-paz 2019)</p>
+<ul>
+<li><p>idealized formulation: <span class="math notranslate nohighlight">\(\begin{array}{ll}\min _{\Phi: \mathcal{X} \rightarrow \mathcal{H}} &amp; \sum_{e \in \mathcal{E}_{\mathrm{tr}}} R^{e}(w \circ \Phi) \\ \text { subject to } &amp; w \in \underset{\bar{w}: \mathcal{H} \rightarrow \mathcal{Y}}{\arg \min  } \: R^{e}(\bar{w} \circ \Phi), \text { for all } e \in \mathcal{E}_{\mathrm{tr}}\end{array}\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\Phi\)</span> is repr., <span class="math notranslate nohighlight">\(w \circ \Phi\)</span> is predictor</p></li>
+</ul>
+</li>
+<li><p>practical formulation: <span class="math notranslate nohighlight">\(\min _{\Phi: \mathcal{X} \rightarrow \mathcal{Y}} \sum_{e \in \mathcal{E}_{\mathrm{tr}}} R^{e}(\Phi)+\lambda \cdot\left\|\nabla_{w \mid w=1.0} R^{e}(w \cdot \Phi)\right\|^{2}\)</span></p></li>
+<li><p>random splitting causes problems with our data</p></li>
+<li><p>what to perform well under different distributions of X, Y</p></li>
+<li><p>can’t be solved via robust optimization</p></li>
+<li><p>a correlation is spurious when we do not expect it to hold in the future in the same manner as it held in the past</p>
+<ul>
+<li><p>i.e. spurious correlations are unstable</p></li>
+</ul>
+</li>
+<li><p>assume we have infinite data, and know what kinds of changes our distribution for the problem might have (e.g. variance of features might change)</p>
+<ul>
+<li><p>make a model which has the minimum test error regardless of the distribution of the problem</p></li>
+</ul>
+</li>
+<li><p>adds a penalty inspired by invariance (which can be viewed as a stability criterion)</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2009.00329">Learning explanations that are hard to vary</a> - AND-mask (parascandolo…sholkopf, 2020)</p>
 <ul>
 <li><p>basically, gradients should be consistent during learning</p>
 <ul>
@@ -1275,7 +1316,18 @@ C(Location of Car) --&gt; B
 </li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://www.cmu.edu/dietrich/causality/CameraReadys-accepted%20papers/32%5CCameraReady%5Cdatasets.pdf">Linear unit-tests for invariance discovery</a>  (aubin et al. 2020) - a set of 6 simple settings where current IRM procedures fail</p></li>
+<li><p><a class="reference external" href="https://www.cmu.edu/dietrich/causality/CameraReadys-accepted%20papers/32%5CCameraReady%5Cdatasets.pdf">Linear unit-tests for invariance discovery</a>  (aubin et al. 2020) - a set of 6 simple settings where current IRM procedures fail</p>
+<ul>
+<li><p>test 1 (colormnist-style linear regr): <span class="math notranslate nohighlight">\(x_{inv}  \to \tilde y \to x_{spu}\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\tilde y \to y\)</span></p></li>
+</ul>
+</li>
+<li><p>test 2 (cows vs camels binary classification): <span class="math notranslate nohighlight">\(y=mean(x_{inv})&gt;0\)</span>, but <span class="math notranslate nohighlight">\(x_{inv} \propto x_{spu}\)</span></p></li>
+<li><p>test 3 (small invariant margin): <span class="math notranslate nohighlight">\(y_i\sim Bern(1/2)\)</span>, <span class="math notranslate nohighlight">\(x_{inv} = \pm 0.1+\)</span>noise, <span class="math notranslate nohighlight">\(x_{spu} = \pm \mu^e\)</span> + noise, where <span class="math notranslate nohighlight">\(\mu^e ~ N(0, 1)\)</span></p></li>
+<li><p>scrambling: apply random rotation matrix to inputs</p></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -1301,6 +1353,7 @@ $<span class="math notranslate nohighlight">\(
 \)</span>$</p></li>
 </ul>
 </li>
+<li><p><strong>causal transportability</strong> - seeks to identify conditions under which causal knowledge learned from experiments can be reused in different domains with observational data only</p></li>
 </ul>
 </div>
 <div class="section" id="transferring-out-of-sample">
@@ -1378,6 +1431,7 @@ $<span class="math notranslate nohighlight">\(
 <li><p>bounds on degree of imbalance as a function of propensity model</p></li>
 </ul>
 </li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1705.08821">Causal Effect Inference with Deep Latent-Variable Models</a> (louizos et al. 2017) - like vae but learn latent distr. that also changes based on treatment</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2011.12379">Invariant Representation Learning for Treatment Effect Estimation</a> (shi, veitch, &amp; blei, 2020)</p>
 <ul>
 <li><p>Nearly Invariant Causal Estimation - uses IRM to learn repr. that strips out bad controls but preserves sufficient information to adjust for confounding</p>
@@ -1387,6 +1441,12 @@ $<span class="math notranslate nohighlight">\(
 <li><p>covariates also contain some false confounders</p></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1802.05664">DeepMatch: Balancing Deep Covariate Representations for Causal Inference Using Adversarial Training</a> (kallus, 2018)</p>
+<ul>
+<li><p>weighting and a discriminator network compete adversarially to minimize “discriminative discrepancy metric” for measuring covariate balance</p></li>
+<li><p>this metric goes beyond just the original feature space</p></li>
 </ul>
 </li>
 </ul>

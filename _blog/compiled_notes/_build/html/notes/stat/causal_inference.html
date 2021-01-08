@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>4.4. causal inference &#8212; learning to learn</title>
+    <title>4.4. causal inference</title>
     
   <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -78,8 +78,6 @@
   
   <img src="../../_static/logo.png" class="logo" alt="logo">
   
-  
-  <h1 class="site-logo" id="site-title">learning to learn</h1>
   
 </a>
 </div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
@@ -407,7 +405,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/fairness_sts.html">
-     6.2. fairness
+     6.2. fairness, sts
     </a>
    </li>
    <li class="toctree-l2">
@@ -577,89 +575,84 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#questions">
-   4.4.1. questions
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#basics">
-   4.4.2. basics
+   4.4.1. basics
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#intuition">
-     4.4.2.1. intuition
+     4.4.1.1. intuition
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#measures-of-association">
-     4.4.2.2. measures of association
+     4.4.1.2. measures of association
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#causal-ladder-different-levels-of-inference">
-     4.4.2.3. causal ladder (different levels of inference)
+     4.4.1.3. causal ladder (different levels of inference)
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#frameworks">
-   4.4.3. frameworks
+   4.4.2. frameworks
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#fisher-randomization-test">
-     4.4.3.1. fisher randomization test
+     4.4.2.1. fisher randomization test
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#potential-outcome-framework-neyman-rubin">
-     4.4.3.2. potential outcome framework (neyman-rubin)
+     4.4.2.2. potential outcome framework (neyman-rubin)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#dags-structural-causal-models-pearl-et-al">
-     4.4.3.3. DAGs / structural causal models (pearl et al.)
+     4.4.2.3. DAGs / structural causal models (pearl et al.)
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#randomized-experiments">
-   4.4.4. randomized experiments
+   4.4.3. randomized experiments
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#design">
-     4.4.4.1. design
+     4.4.3.1. design
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#stratification-matched-pairs-design">
-       4.4.4.1.1. stratification / matched-pairs design
+       4.4.3.1.1. stratification / matched-pairs design
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#rerandomization-balances-covariates">
-       4.4.4.1.2. rerandomization balances covariates
+       4.4.3.1.2. rerandomization balances covariates
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#post-hoc-analysis">
-     4.4.4.2. post-hoc analysis
+     4.4.3.2. post-hoc analysis
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#statification-matching">
-       4.4.4.2.1. statification / matching
+       4.4.3.2.1. statification / matching
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#regression-adjustment-balances-covariates">
-       4.4.4.2.2. regression adjustment balances covariates
+       4.4.3.2.2. regression adjustment balances covariates
       </a>
      </li>
     </ul>
@@ -668,125 +661,125 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#quasi-experiments">
-   4.4.5. quasi-experiments
+   4.4.4. quasi-experiments
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#natural-experiments">
-     4.4.5.1. natural experiments
+     4.4.4.1. natural experiments
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#back-door-criterion-capture-parents-of-t">
-     4.4.5.2. back-door criterion: capture parents of T
+     4.4.4.2. back-door criterion: capture parents of T
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#front-door-criterion-good-mediator-variable">
-     4.4.5.3. front-door criterion: good mediator variable
+     4.4.4.3. front-door criterion: good mediator variable
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#regression-discontinuity">
-     4.4.5.4. regression discontinuity
+    <a class="reference internal nav-link" href="#regression-discontinuity-running-variable">
+     4.4.4.4. regression discontinuity: running variable
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#difference-in-difference">
-     4.4.5.5. difference-in-difference
+     4.4.4.5. difference-in-difference
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#instrumental-variable">
-     4.4.5.6. instrumental variable
+     4.4.4.6. instrumental variable
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#effect-under-non-compliance">
-       4.4.5.6.1. effect under non-compliance
+       4.4.4.6.1. effect under non-compliance
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#synthetic-data-experiments">
-     4.4.5.7. synthetic data experiments
+     4.4.4.7. synthetic data experiments
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#observational-analysis">
-   4.4.6. observational analysis
+   4.4.5. observational analysis
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#ate-estimation-basics">
-     4.4.6.1. ATE estimation basics
+     4.4.5.1. ATE estimation basics
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#regression-adjustments">
-     4.4.6.2. regression adjustments
+     4.4.5.2. regression adjustments
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#weighting-methods">
-     4.4.6.3. weighting methods
+     4.4.5.3. weighting methods
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#inverse-propensity-weighting">
-       4.4.6.3.1. inverse propensity weighting
+       4.4.5.3.1. inverse propensity weighting
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#doubly-robust-estimator">
-       4.4.6.3.2. doubly robust estimator
+       4.4.5.3.2. doubly robust estimator
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#alternatives">
-       4.4.6.3.3. alternatives
+      <a class="reference internal nav-link" href="#alternative-weighting">
+       4.4.5.3.3. alternative weighting
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#stratification-matching">
-     4.4.6.4. stratification / matching
+     4.4.5.4. stratification / matching
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#misc-methods">
-     4.4.6.5. misc methods
+     4.4.5.5. misc methods
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#assumptions">
-   4.4.7. assumptions
+   4.4.6. assumptions
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#common-assumptions">
-     4.4.7.1. common assumptions
+     4.4.6.1. common assumptions
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#assumption-checking">
-     4.4.7.2. assumption checking
+     4.4.6.2. assumption checking
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#check-ignorability-use-auxilary-outcome">
-       4.4.7.2.1. check ignorability: use auxilary outcome
+       4.4.6.2.1. check ignorability: use auxilary outcome
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#check-ignorability-impact-sensitivity-analysis-wrt-unmeasured-confounding">
-       4.4.7.2.2. check ignorability impact: sensitivity analysis wrt unmeasured confounding
+       4.4.6.2.2. check ignorability impact: sensitivity analysis wrt unmeasured confounding
       </a>
      </li>
     </ul>
@@ -815,20 +808,10 @@
 <li><p><a class="reference external" href="https://www.bradyneal.com/causal-inference-course">in-progress book</a> by brady neal</p></li>
 <li><p><a class="reference external" href="https://web.stanford.edu/~swager/stats361.pdf">course notes</a> by stefan wager</p></li>
 <li><p>rebecca barter’s <a class="reference external" href="http://www.rebeccabarter.com/blog/2017-07-05-ip-weighting/">blog posts</a></p></li>
+<li><p>wonderful review / <a class="reference external" href="https://dl.acm.org/doi/abs/10.1145/3397269?casa_token=Fsu-uKOSfUEAAAAA:4hCvZEsOPvbIfV92-17vP82pnVxAlZ8I4z62KsXjLGFse1wfP6uFfvqYzCa4wnueggWOB8KbFA2L">intro paper</a> (guo et al. 2020)</p></li>
 </ul>
-<div class="section" id="questions">
-<h2>4.4.1. questions<a class="headerlink" href="#questions" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>clear distinction between identification and estimation</p>
-<ul>
-<li><p>A causal quantity is <strong>identifiable</strong> if we can compute it from a purely statistical quantity</p></li>
-<li><p><img alt="identification_estimation_flowchart" src="../../_images/identification_estimation_flowchart.png" /></p></li>
-</ul>
-</li>
-</ul>
-</div>
 <div class="section" id="basics">
-<h2>4.4.2. basics<a class="headerlink" href="#basics" title="Permalink to this headline">¶</a></h2>
+<h2>4.4.1. basics<a class="headerlink" href="#basics" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><strong>confounding</strong> = difference between groups other than the treatment which affects the response</p>
 <ul>
@@ -889,9 +872,15 @@
 <li><p><strong>epistemology</strong> - theory of knowledge</p></li>
 </ul>
 </li>
+<li><p>clear distinction between identification and estimation</p>
+<ul>
+<li><p>a causal quantity is <strong>identifiable</strong> if we can compute it from a purely statistical quantity</p></li>
+<li><p><img alt="identification_estimation_flowchart" src="../../_images/identification_estimation_flowchart.png" /></p></li>
+</ul>
+</li>
 </ul>
 <div class="section" id="intuition">
-<h3>4.4.2.1. intuition<a class="headerlink" href="#intuition" title="Permalink to this headline">¶</a></h3>
+<h3>4.4.1.1. intuition<a class="headerlink" href="#intuition" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Bradford_Hill_criteria">bradford hill criteria</a> - some simple criteria for establishing causality (e.g. strength, consistency, specificity)</p>
 <ul>
@@ -919,7 +908,7 @@
 </ul>
 </div>
 <div class="section" id="measures-of-association">
-<h3>4.4.2.2. measures of association<a class="headerlink" href="#measures-of-association" title="Permalink to this headline">¶</a></h3>
+<h3>4.4.1.2. measures of association<a class="headerlink" href="#measures-of-association" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>correlation</p></li>
 <li><p>regression coefficient</p></li>
@@ -934,7 +923,7 @@
 </ul>
 </div>
 <div class="section" id="causal-ladder-different-levels-of-inference">
-<h3>4.4.2.3. causal ladder (different levels of inference)<a class="headerlink" href="#causal-ladder-different-levels-of-inference" title="Permalink to this headline">¶</a></h3>
+<h3>4.4.1.3. causal ladder (different levels of inference)<a class="headerlink" href="#causal-ladder-different-levels-of-inference" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
 <li><p><strong>prediction/association</strong> <span class="math notranslate nohighlight">\(P(Y|T)\)</span></p></li>
 </ol>
@@ -979,9 +968,9 @@
 </div>
 </div>
 <div class="section" id="frameworks">
-<h2>4.4.3. frameworks<a class="headerlink" href="#frameworks" title="Permalink to this headline">¶</a></h2>
+<h2>4.4.2. frameworks<a class="headerlink" href="#frameworks" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="fisher-randomization-test">
-<h3>4.4.3.1. fisher randomization test<a class="headerlink" href="#fisher-randomization-test" title="Permalink to this headline">¶</a></h3>
+<h3>4.4.2.1. fisher randomization test<a class="headerlink" href="#fisher-randomization-test" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><em>this framework seeks evidence against the null hypothesis (e.g. that there is no causal effect)</em></p></li>
 </ul>
@@ -1036,7 +1025,7 @@
 </ul>
 </div>
 <div class="section" id="potential-outcome-framework-neyman-rubin">
-<h3>4.4.3.2. potential outcome framework (neyman-rubin)<a class="headerlink" href="#potential-outcome-framework-neyman-rubin" title="Permalink to this headline">¶</a></h3>
+<h3>4.4.2.2. potential outcome framework (neyman-rubin)<a class="headerlink" href="#potential-outcome-framework-neyman-rubin" title="Permalink to this headline">¶</a></h3>
 <p><em>In this framework, try to explicitly compute the effect</em></p>
 <ul>
 <li><p><strong>average treatment effect ATE</strong> <span class="math notranslate nohighlight">\(\tau = E \{Y^{T=1} - Y^{T=0} \}\)</span></p>
@@ -1081,11 +1070,14 @@
 <ul class="simple">
 <li><p>null + alternative hypothesis</p></li>
 </ul>
+<ol class="simple">
+<li><p>can also take a bayesian perspective on the missing data</p></li>
+</ol>
 </li>
 </ul>
 </div>
 <div class="section" id="dags-structural-causal-models-pearl-et-al">
-<h3>4.4.3.3. DAGs / structural causal models (pearl et al.)<a class="headerlink" href="#dags-structural-causal-models-pearl-et-al" title="Permalink to this headline">¶</a></h3>
+<h3>4.4.2.3. DAGs / structural causal models (pearl et al.)<a class="headerlink" href="#dags-structural-causal-models-pearl-et-al" title="Permalink to this headline">¶</a></h3>
 <p><em>In this framework, depict assumptions in a DAG / SEM and use it to reason about effects. For notes on graphical models, see <a class="reference external" href="https://csinva.io/notes/stat/graphical_models.html">here</a> and basics of do-calculus see <a class="reference external" href="https://www.inference.vc/untitled/">here</a>.</em></p>
 <ul class="simple">
 <li><p>comparison to potential outcomes</p>
@@ -1211,12 +1203,12 @@
 </div>
 </div>
 <div class="section" id="randomized-experiments">
-<h2>4.4.4. randomized experiments<a class="headerlink" href="#randomized-experiments" title="Permalink to this headline">¶</a></h2>
+<h2>4.4.3. randomized experiments<a class="headerlink" href="#randomized-experiments" title="Permalink to this headline">¶</a></h2>
 <p><em>Randomized experiments randomly assign a treatment, thus creating comparable treatment and control groups on average (i.e. controlling for any confounders).</em></p>
 <div class="section" id="design">
-<h3>4.4.4.1. design<a class="headerlink" href="#design" title="Permalink to this headline">¶</a></h3>
+<h3>4.4.3.1. design<a class="headerlink" href="#design" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="stratification-matched-pairs-design">
-<h4>4.4.4.1.1. stratification / matched-pairs design<a class="headerlink" href="#stratification-matched-pairs-design" title="Permalink to this headline">¶</a></h4>
+<h4>4.4.3.1.1. stratification / matched-pairs design<a class="headerlink" href="#stratification-matched-pairs-design" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>sometimes we want different strata, ex. on feature <span class="math notranslate nohighlight">\(X_i \in \{1, ..., K \}\)</span></p>
 <ul>
@@ -1267,7 +1259,7 @@
 </ul>
 </div>
 <div class="section" id="rerandomization-balances-covariates">
-<h4>4.4.4.1.2. rerandomization balances covariates<a class="headerlink" href="#rerandomization-balances-covariates" title="Permalink to this headline">¶</a></h4>
+<h4>4.4.3.1.2. rerandomization balances covariates<a class="headerlink" href="#rerandomization-balances-covariates" title="Permalink to this headline">¶</a></h4>
 <p><em>rerandomization</em> adjusts for covariate imbalance given covariate vector <span class="math notranslate nohighlight">\(\mathbf x\)</span> (assume mean 0) at design stage</p>
 <ul class="simple">
 <li><p>covariate difference-in-means: <span class="math notranslate nohighlight">\(\mathbf{\hat \tau_x} = \frac 1 {n_1} \sum_i T_i \mathbf x_i - \frac 1 {n_0} \sum_i (1 - T_i)\mathbf  x_i\)</span></p>
@@ -1296,9 +1288,9 @@
 </div>
 </div>
 <div class="section" id="post-hoc-analysis">
-<h3>4.4.4.2. post-hoc analysis<a class="headerlink" href="#post-hoc-analysis" title="Permalink to this headline">¶</a></h3>
+<h3>4.4.3.2. post-hoc analysis<a class="headerlink" href="#post-hoc-analysis" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="statification-matching">
-<h4>4.4.4.2.1. statification / matching<a class="headerlink" href="#statification-matching" title="Permalink to this headline">¶</a></h4>
+<h4>4.4.3.2.1. statification / matching<a class="headerlink" href="#statification-matching" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>post-stratification at analysis stage: condition on stratum</p>
 <ul>
@@ -1312,7 +1304,7 @@
 </ul>
 </div>
 <div class="section" id="regression-adjustment-balances-covariates">
-<h4>4.4.4.2.2. regression adjustment balances covariates<a class="headerlink" href="#regression-adjustment-balances-covariates" title="Permalink to this headline">¶</a></h4>
+<h4>4.4.3.2.2. regression adjustment balances covariates<a class="headerlink" href="#regression-adjustment-balances-covariates" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p><em>regression adjustment</em> at analysis stage account for covariates <strong>x</strong></p></li>
 <li><p>fisher random trial adjustment - 2 strategies</p>
@@ -1343,17 +1335,17 @@
 </div>
 </div>
 <div class="section" id="quasi-experiments">
-<h2>4.4.5. quasi-experiments<a class="headerlink" href="#quasi-experiments" title="Permalink to this headline">¶</a></h2>
+<h2>4.4.4. quasi-experiments<a class="headerlink" href="#quasi-experiments" title="Permalink to this headline">¶</a></h2>
 <p><em>Can also be called pseudo-experiments. These don’t explicitly randomize treatment, as in RCTs, but some property of the data allows us to control for confounders.</em></p>
 <div class="section" id="natural-experiments">
-<h3>4.4.5.1. natural experiments<a class="headerlink" href="#natural-experiments" title="Permalink to this headline">¶</a></h3>
+<h3>4.4.4.1. natural experiments<a class="headerlink" href="#natural-experiments" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>hard to justify</p></li>
 <li><p>e.g. jon snow on cholera - something acts as if it were randomized</p></li>
 </ul>
 </div>
 <div class="section" id="back-door-criterion-capture-parents-of-t">
-<h3>4.4.5.2. back-door criterion: capture parents of T<a class="headerlink" href="#back-door-criterion-capture-parents-of-t" title="Permalink to this headline">¶</a></h3>
+<h3>4.4.4.2. back-door criterion: capture parents of T<a class="headerlink" href="#back-door-criterion-capture-parents-of-t" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><strong>back-door criterion</strong> - establishes if variables <span class="math notranslate nohighlight">\(T\)</span> and  <span class="math notranslate nohighlight">\(Y\)</span> are confounded in a graph given set <span class="math notranslate nohighlight">\(S\)</span></p></li>
 <li><p><em>sufficient set</em> <span class="math notranslate nohighlight">\(S\)</span> = admissible set - set of factors to calculate causal effect of <span class="math notranslate nohighlight">\(T\)</span> on <span class="math notranslate nohighlight">\(Y\)</span> requires 2 conditions
@@ -1379,7 +1371,7 @@
 </ul>
 </div>
 <div class="section" id="front-door-criterion-good-mediator-variable">
-<h3>4.4.5.3. front-door criterion: good mediator variable<a class="headerlink" href="#front-door-criterion-good-mediator-variable" title="Permalink to this headline">¶</a></h3>
+<h3>4.4.4.3. front-door criterion: good mediator variable<a class="headerlink" href="#front-door-criterion-good-mediator-variable" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><strong>front-door criterion</strong> - establishes if variables <span class="math notranslate nohighlight">\(T\)</span> and  <span class="math notranslate nohighlight">\(Y\)</span> are confounded in a graph given mediators <span class="math notranslate nohighlight">\(M\)</span></p>
 <ul>
@@ -1407,8 +1399,8 @@ M --&gt; Y
 </pre></div>
 </div>
 </div>
-<div class="section" id="regression-discontinuity">
-<h3>4.4.5.4. regression discontinuity<a class="headerlink" href="#regression-discontinuity" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="regression-discontinuity-running-variable">
+<h3>4.4.4.4. regression discontinuity: running variable<a class="headerlink" href="#regression-discontinuity-running-variable" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>dates back to <a class="reference external" href="https://psycnet.apa.org/record/1962-00061-001">thistlethwaite &amp; campbell, 1960</a></p></li>
 <li><p>treatment definition (e.g. high-school acceptance) has an arbitrary threshold (e.g. score on a test)</p>
@@ -1431,7 +1423,7 @@ M --&gt; Y
 </ul>
 </div>
 <div class="section" id="difference-in-difference">
-<h3>4.4.5.5. difference-in-difference<a class="headerlink" href="#difference-in-difference" title="Permalink to this headline">¶</a></h3>
+<h3>4.4.4.5. difference-in-difference<a class="headerlink" href="#difference-in-difference" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>difference-in-difference is a name given to many methods for estimating effects in longitudinal data = panel data</p>
 <ul>
@@ -1479,7 +1471,7 @@ M --&gt; Y
 </ul>
 </div>
 <div class="section" id="instrumental-variable">
-<h3>4.4.5.6. instrumental variable<a class="headerlink" href="#instrumental-variable" title="Permalink to this headline">¶</a></h3>
+<h3>4.4.4.6. instrumental variable<a class="headerlink" href="#instrumental-variable" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>graph LR
 I --&gt; T
@@ -1533,7 +1525,7 @@ T --&gt; Y
 </li>
 </ul>
 <div class="section" id="effect-under-non-compliance">
-<h4>4.4.5.6.1. effect under non-compliance<a class="headerlink" href="#effect-under-non-compliance" title="Permalink to this headline">¶</a></h4>
+<h4>4.4.4.6.1. effect under non-compliance<a class="headerlink" href="#effect-under-non-compliance" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p><strong>CACE</strong> <span class="math notranslate nohighlight">\(\tau_c\)</span> (complier average causal effect) = <strong>LATE</strong> (local average treatement effect)</p></li>
 <li><p>technical setting: <strong>noncompliance</strong> - sometimes treatment assigned <span class="math notranslate nohighlight">\(I\)</span> and treatment received <span class="math notranslate nohighlight">\(T\)</span> are different</p></li>
@@ -1599,7 +1591,7 @@ T --&gt; Y
 </div>
 </div>
 <div class="section" id="synthetic-data-experiments">
-<h3>4.4.5.7. synthetic data experiments<a class="headerlink" href="#synthetic-data-experiments" title="Permalink to this headline">¶</a></h3>
+<h3>4.4.4.7. synthetic data experiments<a class="headerlink" href="#synthetic-data-experiments" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/2007.06570">Towards causal benchmarking of bias in face analysis algorithms</a> (balakrishnan et al. 2020) - use GANs to generate synthetic data where only attribute varies</p></li>
 <li><p>causal imputation / causal transport = mapping bbetween different domains, where only one domain at a time is ever observed</p>
@@ -1617,10 +1609,10 @@ T --&gt; Y
 </div>
 </div>
 <div class="section" id="observational-analysis">
-<h2>4.4.6. observational analysis<a class="headerlink" href="#observational-analysis" title="Permalink to this headline">¶</a></h2>
+<h2>4.4.5. observational analysis<a class="headerlink" href="#observational-analysis" title="Permalink to this headline">¶</a></h2>
 <p><em>The emphasis in this section is on ATE estimation, as an example of the considerations required for making causal conclusions. Observational analysis focuses on adjusting for observed confounding.</em></p>
 <div class="section" id="ate-estimation-basics">
-<h3>4.4.6.1. ATE estimation basics<a class="headerlink" href="#ate-estimation-basics" title="Permalink to this headline">¶</a></h3>
+<h3>4.4.5.1. ATE estimation basics<a class="headerlink" href="#ate-estimation-basics" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>assume we are given iid samples of <span class="math notranslate nohighlight">\(\{ X_i, T_i, Y_i^{T=1}, Y_i^{T=0} \}\)</span>, and drop the index <span class="math notranslate nohighlight">\(i\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\tau = E\{Y^{T=1} - Y^{T=0}\}\)</span>: <strong>average treatment effect (ATE)</strong> - goal is to estimate this</p></li>
@@ -1655,7 +1647,7 @@ T --&gt; Y
 </ul>
 </div>
 <div class="section" id="regression-adjustments">
-<h3>4.4.6.2. regression adjustments<a class="headerlink" href="#regression-adjustments" title="Permalink to this headline">¶</a></h3>
+<h3>4.4.5.2. regression adjustments<a class="headerlink" href="#regression-adjustments" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p>ATE <strong>conditional outcome modeling</strong> (all assume ignorability)</p>
 <ul class="simple">
@@ -1673,7 +1665,18 @@ T --&gt; Y
 </li>
 </ul>
 </li>
+<li><p>intuition</p>
+<ul class="simple">
+<li><p>much like imputing missing potential outcomes using a linear model</p></li>
+<li><p>using nearest-neighbor regr. would correspond to a matching-without-replacement estimator</p>
+<ul>
+<li><p>sometimes use propensity scores as a predictor as well</p></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><p>assuming linear form is relatively strong assumption compared to that made by weighting / stratification</p></li>
+<li><p>regr. adjustments are the most popular form of adjustments</p></li>
 <li><p>these easily generalize to when <span class="math notranslate nohighlight">\(T\)</span> is continuous</p></li>
 <li><p><span class="math notranslate nohighlight">\(\hat \tau = \frac 1 n \sum_i (\hat \mu_1(X_i) - \hat \mu_0(X_i))\)</span></p>
 <ul class="simple">
@@ -1714,10 +1717,10 @@ U2 --&gt; Y
 </ul>
 </div>
 <div class="section" id="weighting-methods">
-<h3>4.4.6.3. weighting methods<a class="headerlink" href="#weighting-methods" title="Permalink to this headline">¶</a></h3>
-<p><em>Weighting methods assign a different importance weight to each unit to match the covariates distributions across treatment groups after reweighting. Balance is often used as a goodness of fit check after weighting. (<a class="reference external" href="https://www.cambridge.org/core/books/causal-inference-for-statistics-social-and-biomedical-sciences/71126BE90C58F1A431FE9B2DD07938AB">imbens &amp; rubin 2015</a>)</em></p>
+<h3>4.4.5.3. weighting methods<a class="headerlink" href="#weighting-methods" title="Permalink to this headline">¶</a></h3>
+<p><em>Weighting methods assign a different importance weight to each unit to match the covariates distributions across treatment groups after reweighting. Balance is often used as a goodness of fit check after weighting (<a class="reference external" href="https://www.cambridge.org/core/books/causal-inference-for-statistics-social-and-biomedical-sciences/71126BE90C58F1A431FE9B2DD07938AB">imbens &amp; rubin 2015</a>).</em></p>
 <div class="section" id="inverse-propensity-weighting">
-<h4>4.4.6.3.1. inverse propensity weighting<a class="headerlink" href="#inverse-propensity-weighting" title="Permalink to this headline">¶</a></h4>
+<h4>4.4.5.3.1. inverse propensity weighting<a class="headerlink" href="#inverse-propensity-weighting" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p><strong>propensity score</strong> <span class="math notranslate nohighlight">\(e(X, Y^{T=1}, Y^{T=0}) = P\{T=1|X, Y^{T=1}, Y^{T=0}\}\)</span></p>
 <ul>
@@ -1772,8 +1775,9 @@ U2 --&gt; Y
 </ul>
 </div>
 <div class="section" id="doubly-robust-estimator">
-<h4>4.4.6.3.2. doubly robust estimator<a class="headerlink" href="#doubly-robust-estimator" title="Permalink to this headline">¶</a></h4>
+<h4>4.4.5.3.2. doubly robust estimator<a class="headerlink" href="#doubly-robust-estimator" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
+<li><p>combines weighting and regr. adjustment</p></li>
 <li><p><span class="math notranslate nohighlight">\(\hat \tau^{\text{dr}} = \hat \mu_1^{dr} - \hat \mu_0^{dr}\)</span> = <strong>doubly robust estimator</strong> = augmented inverse propensity score weighting estimator (<a class="reference external" href="https://www.tandfonline.com/doi/abs/10.1080/01621459.1994.10476818?casa_token=XYTwc8KlTqIAAAAA:zfCvbnWKpatYa1KbWIj9GUrCXpze65EEtzAuhuWD-Oztr7UBle1pivvp2481l-y_t08nScDMrql9">robins, rotnizky, &amp; zhao 1994</a>, scharfstein et al. 1999, <a class="reference external" href="https://onlinelibrary.wiley.com/doi/full/10.1111/j.1541-0420.2005.00377.x?casa_token=oqdc-GxLFTYAAAAA%3A7CETBzsiHXXEu23NM-sMJ1CXlgI6oeAxt1Ydca3wXmPoTGsORR0IEoYszCo1GzNLtYXGNgxU4blu4gLn">bang &amp; robins 2005</a>)</p>
 <ul>
 <li><p>given <span class="math notranslate nohighlight">\(\mu_1(X, \beta_1)\)</span>, <span class="math notranslate nohighlight">\(\mu_0(X, \beta_0)\)</span>, e.g. linear</p></li>
@@ -1805,18 +1809,21 @@ U2 --&gt; Y
 <li><p>allows us to ignore form of estimators <span class="math notranslate nohighlight">\(\hat \mu\)</span> and <span class="math notranslate nohighlight">\(\hat e\)</span> and depend only on overlap, consistency, and risk decay (so CV risk of estimators should be small)</p></li>
 </ul>
 </li>
+<li><p>targeted maximum likelihood (<a class="reference external" href="https://www.degruyter.com/view/journals/ijb/2/1/article-ijb.2006.2.1.1043.xml.xml">van der laan &amp; rubin, 2006</a>) - more general than DRE</p></li>
 </ul>
 </div>
-<div class="section" id="alternatives">
-<h4>4.4.6.3.3. alternatives<a class="headerlink" href="#alternatives" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="alternative-weighting">
+<h4>4.4.5.3.3. alternative weighting<a class="headerlink" href="#alternative-weighting" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>solutions to deal with extreme weights (from assaad et al. 2020): <img alt="tilting_functions" src="../../_images/tilting_functions.png" /></p>
 <ul>
 <li><p>Matching Weights (Li &amp; Greene, 2013): MW</p></li>
 <li><p>Truncated IPW (Crump et al., 2009): TruncIPW</p></li>
-<li><p>Overlap Weights (Li et al., 2018): OW</p></li>
+<li><p>Overlap Weights (Li et al., 2018): OW - this uses (1 - IPW weights), and doesn’t suffer from instability at extreme values</p></li>
 </ul>
 </li>
+<li><p>when estimating propensity scores with neural nets, often overconfident</p></li>
+<li><p>in general, there is a more general class of weights that can be used to balance covariates (<a class="reference external" href="https://www.tandfonline.com/doi/full/10.1080/01621459.2016.1260466?scroll=top&amp;needAccess=true">li, morgan, &amp; zaslavsky, 2016</a>)</p></li>
 <li><p>directly incorporating covariate imbalance in weight construction (Graham et al., 2012; Diamond &amp; Sekhon, 2013)</p>
 <ul>
 <li><p>unifying perspective on these methods via covariate-balancing loss functions (<a class="reference external" href="https://projecteuclid.org/euclid.aos/1547197245">zhao, 2019</a>)</p></li>
@@ -1830,15 +1837,16 @@ U2 --&gt; Y
 </li>
 </ul>
 </li>
-<li><p>hard moment-matching conditions (Li &amp; Fu, 2017; Hainmueller, 2012; Imai &amp; Ratkovic, 2014)</p></li>
+<li><p>hard moment-matching conditions (Li &amp; Fu, 2017; entropy balancing from <a class="reference external" href="https://www.cambridge.org/core/journals/political-analysis/article/entropy-balancing-for-causal-effects-a-multivariate-reweighting-method-to-produce-balanced-samples-in-observational-studies/220E4FC838066552B53128E647E4FAA7">Hainmueller, 2012</a>; Imai &amp; Ratkovic, 2014)</p></li>
 <li><p>soft moment-matching conditions  (Zubizarreta, 2015)</p></li>
 </ul>
 </li>
+<li><p>approximate residual balancing (athey, imbens, &amp; wager, 2018) - combines balancing weights with a regularized regression adjustment for learning ATE from high-dimensional data</p></li>
 </ul>
 </div>
 </div>
 <div class="section" id="stratification-matching">
-<h3>4.4.6.4. stratification / matching<a class="headerlink" href="#stratification-matching" title="Permalink to this headline">¶</a></h3>
+<h3>4.4.5.4. stratification / matching<a class="headerlink" href="#stratification-matching" title="Permalink to this headline">¶</a></h3>
 <p><em>Matching methods choose try to to equate (or “balance’’) the distribution of covariates in the treated and control groups  by picking well-matched samples of the original treated and control groups</em></p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2943670/pdf/nihms200640.pdf">Matching methods for causal inference: A review and a look forward</a> (stuart 2010)</p>
@@ -1917,7 +1925,7 @@ U2 --&gt; Y
 </ul>
 </div>
 <div class="section" id="misc-methods">
-<h3>4.4.6.5. misc methods<a class="headerlink" href="#misc-methods" title="Permalink to this headline">¶</a></h3>
+<h3>4.4.5.5. misc methods<a class="headerlink" href="#misc-methods" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>double machine learning</p>
 <ul>
@@ -1942,9 +1950,9 @@ U2 --&gt; Y
 </div>
 </div>
 <div class="section" id="assumptions">
-<h2>4.4.7. assumptions<a class="headerlink" href="#assumptions" title="Permalink to this headline">¶</a></h2>
+<h2>4.4.6. assumptions<a class="headerlink" href="#assumptions" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="common-assumptions">
-<h3>4.4.7.1. common assumptions<a class="headerlink" href="#common-assumptions" title="Permalink to this headline">¶</a></h3>
+<h3>4.4.6.1. common assumptions<a class="headerlink" href="#common-assumptions" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><strong>unconfoundedness</strong></p>
 <ul>
@@ -2057,9 +2065,9 @@ U2 --&gt; Y
 </ul>
 </div>
 <div class="section" id="assumption-checking">
-<h3>4.4.7.2. assumption checking<a class="headerlink" href="#assumption-checking" title="Permalink to this headline">¶</a></h3>
+<h3>4.4.6.2. assumption checking<a class="headerlink" href="#assumption-checking" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="check-ignorability-use-auxilary-outcome">
-<h4>4.4.7.2.1. check ignorability: use auxilary outcome<a class="headerlink" href="#check-ignorability-use-auxilary-outcome" title="Permalink to this headline">¶</a></h4>
+<h4>4.4.6.2.1. check ignorability: use auxilary outcome<a class="headerlink" href="#check-ignorability-use-auxilary-outcome" title="Permalink to this headline">¶</a></h4>
 <ul>
 <li><p><strong>negative outcome</strong> - assume we have a secondary informative outcome <span class="math notranslate nohighlight">\(Y'\)</span></p>
 <ul class="simple">
@@ -2099,7 +2107,7 @@ T --&gt; Y
 </ul>
 </div>
 <div class="section" id="check-ignorability-impact-sensitivity-analysis-wrt-unmeasured-confounding">
-<h4>4.4.7.2.2. check ignorability impact: sensitivity analysis wrt unmeasured confounding<a class="headerlink" href="#check-ignorability-impact-sensitivity-analysis-wrt-unmeasured-confounding" title="Permalink to this headline">¶</a></h4>
+<h4>4.4.6.2.2. check ignorability impact: sensitivity analysis wrt unmeasured confounding<a class="headerlink" href="#check-ignorability-impact-sensitivity-analysis-wrt-unmeasured-confounding" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>broadly, sensitivity analysis measures how “sensitive” a model is to changes in the value of the parameters of the model and to changes in the structure of the model</p></li>
 <li><p>here, we focus on sensitivity analyses <em>wrt unmeasured confounding</em> - how strong the effects of an unobserved covariate <span class="math notranslate nohighlight">\(U\)</span> on the exposure and/or the outcome would have to be to change the study inference (estimated effect of <span class="math notranslate nohighlight">\(T\)</span> on <span class="math notranslate nohighlight">\(Y\)</span>)</p></li>

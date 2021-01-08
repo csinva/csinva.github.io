@@ -12,7 +12,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 # source / dest
 src = '/Users/chandan/website/_notes/'
 dest = 'notes'
-dest_extraneous = '_build/html/notes'
+dests_extraneous = ['_build/html/_sources/', '_build/.doctrees', '_build/html/.buildinfo', '_build/html/notes/readme.html']
 
 # copy stuff
 try:
@@ -25,10 +25,9 @@ shutil.rmtree(f'{dest}/misc/')  # rm
 
 # toc
 toc = \
-    '''- file: intro
-      numbered: true
-    
-    '''
+'''- file: intro
+  numbered: true
+'''
 
 # process the files
 contents = []
@@ -44,8 +43,7 @@ for folder in os.listdir(dest):
                 fpath = oj(dest, folder, fname)
                 content = open(fpath, "r").read().replace('# ', '## ')
                 try:
-                    title = content.split('title:', 1)[1].split('\n')[0].lower()
-                    title = content.split('title:', 1)[1].split('\n')[0].lower()
+                    title = content.split('title:', 1)[1].split('\n')[0].lower().capitalize()
                     content = content.replace('{:toc}', f'# {title}')
                     content = content.replace('category: ', 'cat: ')  # remove category information
                     open(fpath, "w").write(content)
@@ -74,4 +72,5 @@ subprocess.run(['jb', 'build', '.'])
 
 # rm notes
 shutil.rmtree(dest)  # rm
-shutil.rmtree(dest_extraneous)  # rm
+for dest_extraneous in dests_extraneous:
+    shutil.rmtree(dest_extraneous)  # rm

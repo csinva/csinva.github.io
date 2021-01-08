@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>1.12. interpretability &#8212; learning to learn</title>
+    <title>1.12. interpretability</title>
     
   <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -78,8 +78,6 @@
   
   <img src="../../_static/logo.png" class="logo" alt="logo">
   
-  
-  <h1 class="site-logo" id="site-title">learning to learn</h1>
   
 </a>
 </div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
@@ -407,7 +405,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/fairness_sts.html">
-     6.2. fairness
+     6.2. fairness, sts
     </a>
    </li>
    <li class="toctree-l2">
@@ -787,8 +785,13 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#differential-privacy">
+     1.12.5.4. differential privacy
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#interpretation-over-sets-perturbations">
-     1.12.5.4. interpretation over sets / perturbations
+     1.12.5.5. interpretation over sets / perturbations
     </a>
    </li>
   </ul>
@@ -1095,6 +1098,7 @@
 <li><p>residual noise’s standard deviation</p></li>
 </ul>
 </li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/0806.3286">BART: Bayesian additive regression trees</a> (chipman et al. 2008) - learns an ensemble of tree models using MCMC on a distr. imbued with a prior</p></li>
 </ul>
 </div>
 </div>
@@ -2023,8 +2027,14 @@ a concept’s examples and examples in any layer</p></li>
 <li><p>policy extraction - distill a simple model from a bigger model (e.g. neural net -&gt; tree)</p></li>
 </ul>
 </div>
+<div class="section" id="differential-privacy">
+<h3>1.12.5.4. differential privacy<a class="headerlink" href="#differential-privacy" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>differential private if the outputs of the model do not change (within some epsilon tolerance) if you remove a single datapoint</p></li>
+</ul>
+</div>
 <div class="section" id="interpretation-over-sets-perturbations">
-<h3>1.12.5.4. interpretation over sets / perturbations<a class="headerlink" href="#interpretation-over-sets-perturbations" title="Permalink to this headline">¶</a></h3>
+<h3>1.12.5.5. interpretation over sets / perturbations<a class="headerlink" href="#interpretation-over-sets-perturbations" title="Permalink to this headline">¶</a></h3>
 <p>These papers don’t quite connect to prediction, but are generally about finding stable interpretations across a set of models / choices.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.nature.com/articles/s42256-020-00264-0">Exploring the cloud of variable importance for the set of all good models</a> (dong &amp; rudin, 2020)</p></li>
