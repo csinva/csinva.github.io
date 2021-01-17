@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>5.6. deep learning</title>
+    <title>5.7. deep learning</title>
     
   <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -56,8 +56,8 @@
     <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="5.7. feature selection" href="feature_selection.html" />
-    <link rel="prev" title="5.5. unsupervised" href="unsupervised.html" />
+    <link rel="next" title="5.8. feature selection" href="feature_selection.html" />
+    <link rel="prev" title="5.6. unsupervised" href="unsupervised.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -156,11 +156,6 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_interp.html">
      1.12. interpretability
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../research_ovws/ovw_kernels.html">
-     1.13. kernels
     </a>
    </li>
   </ul>
@@ -345,48 +340,53 @@
   </a>
   <ul class="current collapse-ul">
    <li class="toctree-l2">
+    <a class="reference internal" href="kernels.html">
+     5.1. kernels
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="nlp.html">
-     5.1. nlp
+     5.2. nlp
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="comp_vision.html">
-     5.2. computer vision
+     5.3. computer vision
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="structure_ml.html">
-     5.3. structure learning
+     5.4. structure learning
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="classification.html">
-     5.4. classification
+     5.5. classification
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="unsupervised.html">
-     5.5. unsupervised
+     5.6. unsupervised
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     5.6. deep learning
+     5.7. deep learning
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="feature_selection.html">
-     5.7. feature selection
+     5.8. feature selection
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="learning_theory.html">
-     5.8. learning theory
+     5.9. learning theory
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="evaluation.html">
-     5.9. evaluation
+     5.10. evaluation
     </a>
    </li>
   </ul>
@@ -576,54 +576,54 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#neural-networks">
-   5.6.1. neural networks
+   5.7.1. neural networks
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#training">
-   5.6.2. training
+   5.7.2. training
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#cnns">
-   5.6.3. CNNs
+   5.7.3. CNNs
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#architectural-components">
-   5.6.4. architectural components
+   5.7.4. architectural components
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#recent-trends">
-   5.6.5. recent trends
+   5.7.5. recent trends
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#rnns">
-   5.6.6. RNNs
+   5.7.6. RNNs
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#lstms">
-     5.6.6.1. LSTMs
+     5.7.6.1. LSTMs
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#adversarial-attacks">
-   5.6.7. adversarial attacks
+   5.7.7. adversarial attacks
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#transformers">
-   5.6.8. transformers
+   5.7.8. transformers
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#misc">
-   5.6.9. misc
+   5.7.9. misc
   </a>
  </li>
 </ul>
@@ -638,9 +638,9 @@
               <div>
                 
   <div class="section" id="deep-learning">
-<h1>5.6. deep learning<a class="headerlink" href="#deep-learning" title="Permalink to this headline">¶</a></h1>
+<h1>5.7. deep learning<a class="headerlink" href="#deep-learning" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="neural-networks">
-<h2>5.6.1. neural networks<a class="headerlink" href="#neural-networks" title="Permalink to this headline">¶</a></h2>
+<h2>5.7.1. neural networks<a class="headerlink" href="#neural-networks" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>basic perceptron update rule</p>
 <ul>
@@ -703,7 +703,7 @@
 </ul>
 </div>
 <div class="section" id="training">
-<h2>5.6.2. training<a class="headerlink" href="#training" title="Permalink to this headline">¶</a></h2>
+<h2>5.7.2. training<a class="headerlink" href="#training" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><em>vanishing gradients problem</em> - neurons in earlier layers learn more slowly than in later layers</p>
 <ul>
@@ -740,7 +740,7 @@
 </ul>
 </div>
 <div class="section" id="cnns">
-<h2>5.6.3. CNNs<a class="headerlink" href="#cnns" title="Permalink to this headline">¶</a></h2>
+<h2>5.7.3. CNNs<a class="headerlink" href="#cnns" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>kernel here means filter</p></li>
 <li><p>convolution G- takes a windowed average of an image F with a filter H where the filter is flipped horizontally and vertically before being applied</p></li>
@@ -866,7 +866,7 @@
 </ul>
 </div>
 <div class="section" id="architectural-components">
-<h2>5.6.4. architectural components<a class="headerlink" href="#architectural-components" title="Permalink to this headline">¶</a></h2>
+<h2>5.7.4. architectural components<a class="headerlink" href="#architectural-components" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><strong>coordconv</strong> - break translation equivariance by passing in i, j coords as extra filters</p></li>
 <li><p><strong>deconvolution</strong> = transposed convolution = fractionally-strided convolution - like upsampling</p></li>
@@ -880,7 +880,7 @@
 </ul>
 </div>
 <div class="section" id="recent-trends">
-<h2>5.6.5. recent trends<a class="headerlink" href="#recent-trends" title="Permalink to this headline">¶</a></h2>
+<h2>5.7.5. recent trends<a class="headerlink" href="#recent-trends" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>architecture search: learning to learn</p></li>
 <li><p><em>optimal brain damage</em> - starts with fully connected and weeds out connections (Lecun)</p></li>
@@ -888,7 +888,7 @@
 </ul>
 </div>
 <div class="section" id="rnns">
-<h2>5.6.6. RNNs<a class="headerlink" href="#rnns" title="Permalink to this headline">¶</a></h2>
+<h2>5.7.6. RNNs<a class="headerlink" href="#rnns" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>feedforward NNs have no memory so we introduce recurrent NNs</p></li>
 <li><p>able to have memory</p></li>
@@ -904,7 +904,7 @@
 <li><p>error gradients vanish exponentially quickly with time lag</p></li>
 </ul>
 <div class="section" id="lstms">
-<h3>5.6.6.1. LSTMs<a class="headerlink" href="#lstms" title="Permalink to this headline">¶</a></h3>
+<h3>5.7.6.1. LSTMs<a class="headerlink" href="#lstms" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>have gates for forgetting, input, output</p></li>
 <li><p>easy to let hidden state flow through time, unchanged</p></li>
@@ -922,7 +922,7 @@
 </div>
 </div>
 <div class="section" id="adversarial-attacks">
-<h2>5.6.7. adversarial attacks<a class="headerlink" href="#adversarial-attacks" title="Permalink to this headline">¶</a></h2>
+<h2>5.7.7. adversarial attacks<a class="headerlink" href="#adversarial-attacks" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><strong>adversarial attack</strong> - designing an input to get the wrong result from the model</p>
 <ul>
@@ -933,7 +933,7 @@
 </ul>
 </div>
 <div class="section" id="transformers">
-<h2>5.6.8. transformers<a class="headerlink" href="#transformers" title="Permalink to this headline">¶</a></h2>
+<h2>5.7.8. transformers<a class="headerlink" href="#transformers" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>transformers: https://arxiv.org/pdf/1706.03762.pdf</p>
 <ul>
@@ -944,7 +944,7 @@
 </ul>
 </div>
 <div class="section" id="misc">
-<h2>5.6.9. misc<a class="headerlink" href="#misc" title="Permalink to this headline">¶</a></h2>
+<h2>5.7.9. misc<a class="headerlink" href="#misc" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>adaptive pooling can help deal with different sizes</p></li>
 </ul>
@@ -979,8 +979,8 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="unsupervised.html" title="previous page">5.5. unsupervised</a>
-    <a class='right-next' id="next-link" href="feature_selection.html" title="next page">5.7. feature selection</a>
+    <a class='left-prev' id="prev-link" href="unsupervised.html" title="previous page">5.6. unsupervised</a>
+    <a class='right-next' id="next-link" href="feature_selection.html" title="next page">5.8. feature selection</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

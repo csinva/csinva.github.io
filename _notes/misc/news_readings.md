@@ -1,14 +1,9 @@
-# misc old
 
-- How to be anti-racist
-  - Racism can be defined generally as anything which perpetuates racist acts (so apathy can be racist)
-- [Op-Ed: How Indian Americans came to dominate the National Spelling Bee](https://www.latimes.com/opinion/op-ed/la-oe-shankar-national-spelling-bee-indian-americans-20190530-story.html)
-  - similar language
-- [Do artifacts have Politics?](https://www.cc.gatech.edu/~beki/cs4001/Winner.pdf)	
-- [Everybody lies: how Google search reveals our darkest secrets](https://www.theguardian.com/technology/2017/jul/09/everybody-lies-how-google-reveals-darkest-secrets-seth-stephens-davidowitz?CMP=share_btn_fb)	
 
 # 2021
 
+- [Why Eric Lander’s Controversial Paper “The Heroes of CRISPR” Is Not Solid Historical Research | American Scientist](https://www.americanscientist.org/blog/macroscope/why-eric-lander%E2%80%99s-controversial-paper-%E2%80%9Cthe-heroes-of-crispr%E2%80%9D-is-not-solid-historical)
+- [Why Aren't We Wearing Better Masks? - The Atlantic](https://www.theatlantic.com/health/archive/2021/01/why-arent-we-wearing-better-masks/617656/)
 - [Opinion | This Is When the Fever Breaks - The New York Times](https://www.nytimes.com/2021/01/07/opinion/capitol-riot-republicans.html?action=click&module=Opinion&pgtype=Homepage) (David Brooks)
 - [Opinion | We're Google Workers. And We're Forming a Union. - The New York Times](https://www.nytimes.com/2021/01/04/opinion/google-union.html?action=click&module=Opinion&pgtype=Homepage) - union of ~200 workers forms in Google
 - [A Rebuttal to some CS Academics’ “Free Speech” Open Letter to the ACM | by David Karger | Jan, 2021 | Medium](https://david-karger.medium.com/a-rebuttal-to-some-cs-academics-free-speech-open-letter-to-the-acm-729ce1cb6caf) - cancel culture needs calibrate its threshold to balance false positives and false negatives
@@ -45,3 +40,12 @@
     - shifts politics towards identities
     - fails to define boundaries of citizenship and rights: if rights are fundamental to all humans, how can we deny citizenship / rights to migrants?
 - [Opinion | 2020 Was the Year Reaganism Died - The New York Times](https://www.nytimes.com/2020/12/28/opinion/reagan-economy-covid.html?action=click&module=Opinion&pgtype=Homepage) (Paul Krugman) - this year, we saw gov. aid to unemployed works lead to very good outcomes with essentially no drawbacks
+
+# misc old
+
+- How to be anti-racist
+  - Racism can be defined generally as anything which perpetuates racist acts (so apathy can be racist)
+- [Op-Ed: How Indian Americans came to dominate the National Spelling Bee](https://www.latimes.com/opinion/op-ed/la-oe-shankar-national-spelling-bee-indian-americans-20190530-story.html)
+  - similar language
+- [Do artifacts have Politics?](https://www.cc.gatech.edu/~beki/cs4001/Winner.pdf)	
+- [Everybody lies: how Google search reveals our darkest secrets](https://www.theguardian.com/technology/2017/jul/09/everybody-lies-how-google-reveals-darkest-secrets-seth-stephens-davidowitz?CMP=share_btn_fb)	

@@ -41,10 +41,11 @@ displays
 ### computation
 
 - [dask](https://dask.org/) - natively scales python
+- [joblib](https://joblib.readthedocs.io/en/latest/) - caches intermediate computations
 - [jax](https://github.com/google/jax) - high-performance python + numpy
 - [numba](https://numba.pydata.org/) - alternative to dask, just requires adding decorators to functions
 - [some tips for using jupyter](https://github.com/NirantK/best-of-jupyter)
-  - useful shortcute `tab`, `shift+tab`: inspect something
+  - useful shortcuts: `tab`, `shift+tab`: inspect something
 
 
 
@@ -60,9 +61,17 @@ displays
 
 ### documenting / deploying
 
+- [dvc](https://dvc.org/) - version control for data science
 - [streamlit](https://docs.streamlit.io/) - building interactive application
+- [gradio](https://github.com/gradio-app/gradio) yields nice web interface for getting model predictions
 - [pdoc3](https://pypi.org/project/pdoc3/) can very quickly generate simple api from docstrings
-- [jupyterbook](https://jupyterbook.org/start/publish.html#)
+- [kubeflow](https://www.kubeflow.org/)
+
+
+
+### deep learning
+
+- [mmdnn](https://github.com/microsoft/MMdnn) - converts between dl frameworks
 
 
 ### general tips
@@ -91,18 +100,11 @@ displays
 - `ctrl-a`: HOME, `ctrl-e`: END
 - `git add folder/\*.py`
 
-### sharing
+### interpretability cheat-sheets
 
-- [gradio](https://github.com/gradio-app/gradio) yields nice web interface for getting model predictions
-
-### cheat-sheets
-
+- [brief overview](https://csinva.io/notes/cheat_sheets/interp.svg?sanitize=True)
 - [dalex](https://github.com/pbiecek/DALEX) 
 - [microsoft-interpret](https://github.com/microsoft/interpret)
-
-### converting between dl frameworks
-
-- [mmdnn](https://github.com/microsoft/MMdnn)
 
 ### vim shortcuts
 
@@ -140,15 +142,12 @@ displays
 
 ### sharing
 
-- [bookdown](https://bookdown.org/) - write books in markdown
+- [bookdown](https://bookdown.org/) - write books in R markdown
+- [jupyter-book](https://jupyterbook.org/intro.html) - write books with markdown + jupyter
 
 ### data
 
 - cool analysis / data from BuzzFeed [here](https://github.com/BuzzFeedNews/everything)
-
-### scaling
-
-- [kubeflow](https://www.kubeflow.org/)
 
 ### reference
 

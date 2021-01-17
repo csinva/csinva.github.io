@@ -43,7 +43,7 @@ for folder in os.listdir(dest):
                 fpath = oj(dest, folder, fname)
                 content = open(fpath, "r").read().replace('# ', '## ')
                 try:
-                    title = content.split('title:', 1)[1].split('\n')[0].lower().capitalize()
+                    title = content.split('title:', 1)[1].split('\n')[0].capitalize()
                     content = content.replace('{:toc}', f'# {title}')
                     content = content.replace('category: ', 'cat: ')  # remove category information
                     open(fpath, "w").write(content)
@@ -69,8 +69,10 @@ plt.savefig('area_similarities.svg')
 
 # jb build .
 subprocess.run(['jb', 'build', '.'])
+# jb build . --builder pdfhtml # make pdf
 
 # rm notes
 shutil.rmtree(dest)  # rm
 for dest_extraneous in dests_extraneous:
     shutil.rmtree(dest_extraneous)  # rm
+

@@ -8,6 +8,8 @@ category: research
 
 {:toc}
 
+![](https://csinva.io/notes/cheat_sheets/interp.svg)
+
 # reviews
 
 ## definitions
@@ -82,6 +84,9 @@ Evaluating interpretability can be very difficult (largely because it rarely mak
 
 - [Sanity Checks for Saliency Maps](https://papers.nips.cc/paper/8160-sanity-checks-for-saliency-maps.pdf) (adebayo et al. 2018)
   - **Model Parameter Randomization Test** - attributions should be different for trained vs random model, but they aren't for many attribution methods
+- [Rethinking the Role of Gradient-based Attribution Methods for Model Interpretability](https://openreview.net/forum?id=dYeAHXnpWJ4) (srinivas & fleuret, 2021)
+  - logits can be arbitrarily shifted without affecting preds / gradient-based explanations
+  - gradient-based explanations then, don't necessarily capture info about $p_\theta(y|x)$
 - [Assessing the (Un)Trustworthiness of Saliency Maps for Localizing Abnormalities in Medical Imaging](https://www.medrxiv.org/content/10.1101/2020.07.28.20163899v1.full.pdf) (arun et al. 2020) - CXR images from SIIM-ACR Pneumothorax Segmentation + RSNA Pneumonia Detection
   - metrics: localizers (do they overlap with GT segs/bounding boxes), variation with model weight randomization, repeatable (i.e. same after retraining?), reproducibility (i.e. same after training different model?)
 - [Interpretable Deep Learning under Fire](https://arxiv.org/abs/1812.00891) (zhang et al. 2019)
@@ -182,6 +187,7 @@ For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
   - values in terminal nodes coditioned on tree structure
   - residual noise's standard deviation
 - [BART: Bayesian additive regression trees](https://arxiv.org/abs/0806.3286) (chipman et al. 2008) - learns an ensemble of tree models using MCMC on a distr. imbued with a prior
+- [On the price of explainability for some clustering problems](https://arxiv.org/abs/2101.01576) (laber et al. 2021) - trees for clustering
 
 
 

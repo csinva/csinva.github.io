@@ -1,8 +1,55 @@
 <h2 align="center"> resources + posts </h2>
 
+<div class="container">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            <div class="item active" class="center-block">
+                <img src="{{ site.baseurl }}/assets/img/imodels_ovw.jpg" class="center-block" alt="imodels">
+                <div class="carousel-caption d-none d-md-block">
+                    <h3><a href="https://github.com/csinva/imodels">imodels python package</a></h3>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="{{ site.baseurl }}/assets/img/pres_demo.gif" alt="intro-ml" style="-webkit-filter: invert(1);filter: invert(1);">
+                <div class="carousel-caption d-none d-md-block">
+                    <h3><a href="https://github.com/csinva/imodels">intro-ml slides (berkeley cs 189)</a></h3>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="{{ site.baseurl }}/assets/img/interp_small.jpg" alt="interpretability cheat sheet" style="-webkit-filter: invert(1);filter: invert(1);">
+                <div class="carousel-caption d-none d-md-block">
+                    <h3><a href="http://localhost:4000/notes/research_ovws/ovw_interp.html">interpretability cheat sheet</a></h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+
+</br>
+</br>
 <div class="colfull">
     <p align="text-center">
-    <i align="left">Some posts in ml research and organizing different papers.</i>
+        <i align="left">Some posts in ml research and organizing different papers.</i>
     </p>
 </div>
 
@@ -10,22 +57,24 @@
     <h3 align="center">paper overviews</h3>
 
     <ul class="list-items">
-    {% for collection in site.collections %}
+        {% for collection in site.collections %}
         {% for doc in collection.docs %}
-            {% if doc.category == "research" %}
-            <li><a href="{{ site.baseurl }}{{doc.url}}" style="font-size:16px"> {{ doc.title | downcase }} </a></li>
-            {% endif %}
+        {% if doc.category == "research" %}
+        <li><a href="{{ site.baseurl }}{{doc.url}}" style="font-size:16px"> {{ doc.title | downcase }} </a></li>
+        {% endif %}
         {% endfor %}
-    {% endfor %}
+        {% endfor %}
     </ul>
 </div>
 
 <div class="coll3">
     <h3 align="center">research posts</h3>
     <ul class="list-items">
-        <li><a href="{{ site.baseurl }}/notes/research_ovws/ovw_disentanglement" style="font-size:16px"> disentangled representations </a>'20</li>
-        <li><a href="{{ site.baseurl }}/blog/research/interp" style="font-size:16px"> what is interpretability? </a>'19</li>
-        <li><a href="{{ site.baseurl }}/blog/research/interp_eval" style="font-size:16px"> evaluating interpretability </a>'19</li>
+        <li><a href="{{ site.baseurl }}/blog/research/interp" style="font-size:16px"> what is interpretability? </a>'19
+        </li>
+        <li><a href="{{ site.baseurl }}/blog/research/interp_eval" style="font-size:16px"> evaluating
+            interpretability </a>'19
+        </li>
         <li><a href="{{ site.baseurl }}/blog/research/connectomics" style="font-size:16px"> connectomics </a>'19</li>
         <li><a href="{{ site.baseurl }}/blog/research/neural_coding" style="font-size:16px"> neural coding </a>'18</li>
     </ul>
@@ -34,27 +83,46 @@
 <div class="coll3">
     <h3 align="center">research-ish posts</h3>
     <ul class="list-items">
-        <li><a href="{{ site.baseurl }}/blog/misc/attributions" style="font-size:16px"> quick intro to attribution methods </a>'20</li>
-        <li><a href="{{ site.baseurl }}/blog/misc/model_improvement" style="font-size:16px"> model improvement checklist </a>'19</li>
-        <li><a href="{{ site.baseurl }}/blog/misc/reveal_md_enhanced/readme" style="font-size:16px"> beautiful slides with reveal-md </a>'19</li>
-        <li><a href="{{ site.baseurl }}/blog/misc/latex_useful_tips" style="font-size:16px"> latex useful tips </a>'19</li>
+        <li><a href="{{ site.baseurl }}/blog/misc/attributions" style="font-size:16px"> quick intro to attribution
+            methods </a>'20
+        </li>
+        <li><a href="{{ site.baseurl }}/blog/misc/model_improvement" style="font-size:16px"> model improvement
+            checklist </a>'19
+        </li>
+        <li><a href="{{ site.baseurl }}/blog/misc/reveal_md_enhanced/readme" style="font-size:16px"> beautiful slides
+            with reveal-md </a>'19
+        </li>
+        <li><a href="{{ site.baseurl }}/blog/misc/latex_useful_tips" style="font-size:16px"> latex useful tips </a>'19
+        </li>
         <li><a href="{{ site.baseurl }}/blog/misc/ml_coding_tips" style="font-size:16px"> ml coding tips </a>'19</li>
-        <li><a href="{{ site.baseurl }}/blog/misc/imagenet_quickstart/readme" style="font-size:16px"> imagenet quickstart </a>'18</li>
+        <li><a href="{{ site.baseurl }}/blog/misc/imagenet_quickstart/readme" style="font-size:16px"> imagenet
+            quickstart </a>'18
+        </li>
     </ul>
 </div>
 
 <div class="colfull">
     <p align="text-center">
-    <i align="left">Resources including teaching slides, research overview slides, and coding projects.</i>
+        <i align="left">Resources including teaching slides, research overview slides, and coding projects.</i>
     </p>
 </div>
 
 <div class="coll4">
     <h3 align="center">instructive slides</h3>
     <ul class="list-items">
-        <li><a href="{{ site.baseurl }}/pres/189/" style="font-size:16px"> intro ml - cs 189 </a>(<a href="https://github.com/csinva/csinva.github.io/blob/master/pres/189/_slides_ml.md"><i class="fa fa-github fa-fw"></i></a>)</li>
-        <li><a href="{{ site.baseurl }}/pres/188/" style="font-size:16px"> intro ai - cs 188 </a>(<a href="https://github.com/csinva/csinva.github.io/blob/master/pres/188/_slides_ai.md"><i class="fa fa-github fa-fw"></i></a>)</li>
-        <li><a href="https://docs.google.com/presentation/d/1RIdbV279r20marRrN0b1bu2z9STkrivsMDa_Dauk8kE/present" style="font-size:16px"> interpretability workshop </a> (<a href="https://github.com/csinva/imodels"><i class="fa fa-github fa-fw"></i></a>, <a href="https://csinva.github.io/imodels/"> <i class="fa">🌐</i></a>)</li>
+        <li><a href="{{ site.baseurl }}/pres/189/" style="font-size:16px"> intro ml - cs 189 </a>(<a
+                href="https://github.com/csinva/csinva.github.io/blob/master/pres/189/_slides_ml.md"><i
+                class="fa fa-github fa-fw"></i></a>)
+        </li>
+        <li><a href="{{ site.baseurl }}/pres/188/" style="font-size:16px"> intro ai - cs 188 </a>(<a
+                href="https://github.com/csinva/csinva.github.io/blob/master/pres/188/_slides_ai.md"><i
+                class="fa fa-github fa-fw"></i></a>)
+        </li>
+        <li><a href="https://docs.google.com/presentation/d/1RIdbV279r20marRrN0b1bu2z9STkrivsMDa_Dauk8kE/present"
+               style="font-size:16px"> interpretability workshop </a> (<a href="https://github.com/csinva/imodels"><i
+                class="fa fa-github fa-fw"></i></a>, <a href="https://csinva.github.io/imodels/"> <i
+                class="fa">🌐</i></a>)
+        </li>
         <!--<li><a href="https://docs.google.com/presentation/d/15iygjXGLu7Ha096GwMV5t6sjP7IPcTHqimPkTDwrpPI/present?slide=id.p" style="font-size:16px"> hummingbird </a></li>-->
     </ul>
 </div>
@@ -62,10 +130,19 @@
 <div class="coll4">
     <h3 align="center">research slides</h3>
     <ul class="list-items">
-        <li><a href="https://docs.google.com/presentation/d/19fTICv0pyRiwGE39mqE_eGTq0Arn3OtVnDSrURFbPMA/present" style="font-size:16px"> research ovw </a></li>
-        <li><a href="https://docs.google.com/presentation/d/1d2prZlhmG72whCTzfGJ_pk-Pgv9Sx-bGG0e503whYvw/present?slide=id.p" style="font-size:16px"> vissci ovw </a></li>
-        <li><a href="{{ site.baseurl }}/pres/dnn_experiments/" style="font-size:16px"> dnn experiments </a> (<a href="https://github.com/csinva/dl_theory"><i class="fa fa-github fa-fw"></i></a>) </li>
-        <li><a href="https://docs.google.com/presentation/d/15iygjXGLu7Ha096GwMV5t6sjP7IPcTHqimPkTDwrpPI/present?slide=id.p" style="font-size:16px"> hummingbird tracking </a>  (<a href="https://github.com/csinva/hummingbird-tracking"><i class="fa fa-github fa-fw"></i></a>)</li>
+        <li><a href="https://docs.google.com/presentation/d/19fTICv0pyRiwGE39mqE_eGTq0Arn3OtVnDSrURFbPMA/present"
+               style="font-size:16px"> research ovw </a></li>
+        <li>
+            <a href="https://docs.google.com/presentation/d/1d2prZlhmG72whCTzfGJ_pk-Pgv9Sx-bGG0e503whYvw/present?slide=id.p"
+               style="font-size:16px"> vissci ovw </a></li>
+        <li><a href="{{ site.baseurl }}/pres/dnn_experiments/" style="font-size:16px"> dnn experiments </a> (<a
+                href="https://github.com/csinva/dl_theory"><i class="fa fa-github fa-fw"></i></a>)
+        </li>
+        <li>
+            <a href="https://docs.google.com/presentation/d/15iygjXGLu7Ha096GwMV5t6sjP7IPcTHqimPkTDwrpPI/present?slide=id.p"
+               style="font-size:16px"> hummingbird tracking </a> (<a
+                href="https://github.com/csinva/hummingbird-tracking"><i class="fa fa-github fa-fw"></i></a>)
+        </li>
     </ul>
 </div>
 
@@ -73,128 +150,137 @@
     <h3 align="center">ml projects</h3>
     <ul class="list-items">
         <!--<li><a href="{{ site.baseurl }}/prototype_learning/" style="font-size:16px"> prototype learning </a></li>-->
-<!--                <li><a href="https://github.com/csinva/dl_theory" style="font-size:16px"> probing deep learning </a></li>-->
-        <li><a href="https://github.com/csinva/gpt2-paper-title-generator" style="font-size:16px"> generating paper titles </a> (<a href="https://csinva.github.io/gpt2-paper-title-generator/index.html"> <i class="fa">🌐</i></a>)</li>
-        <li><a href="https://github.com/csinva/pytorch_gan_pretrained/" style="font-size:16px"> pretrained pytorch gans </a></li>
-        <li><a href="https://github.com/csinva/calcium_decoding_gan" style="font-size:16px"> gan brain decoding </a></li>
-        <li><a href="https://github.com/csinva/scattering_transform_experiments" style="font-size:16px"> scattering transform </a></li>
+        <!--                <li><a href="https://github.com/csinva/dl_theory" style="font-size:16px"> probing deep learning </a></li>-->
+        <li><a href="https://github.com/csinva/gpt2-paper-title-generator" style="font-size:16px"> generating paper
+            titles </a> (<a href="https://csinva.github.io/gpt2-paper-title-generator/index.html"> <i class="fa">🌐</i></a>)
+        </li>
+        <li><a href="https://github.com/csinva/pytorch_gan_pretrained/" style="font-size:16px"> pretrained pytorch
+            gans </a></li>
+        <li><a href="https://github.com/csinva/calcium_decoding_gan" style="font-size:16px"> gan brain decoding </a>
+        </li>
+        <li><a href="https://github.com/csinva/scattering_transform_experiments" style="font-size:16px"> scattering
+            transform </a></li>
         <li><a href="https://github.com/csinva/glaucoma_diagnosis" style="font-size:16px"> glaucoma diagnosis </a></li>
 
     </ul>
 </div>
 
- <div class="coll4">
+<div class="coll4">
     <h3 align="center">misc</h3>
     <ul class="list-items">
         <li><a href="https://github.com/csinva/mini-games-java" style="font-size:16px"> mini-games in java </a></li>
-        <li><a href="https://github.com/Pacmed/sensible-local-interpretations" style="font-size:16px"> sensible local interpretations </a></li>
+        <li><a href="https://github.com/Pacmed/sensible-local-interpretations" style="font-size:16px"> sensible local
+            interpretations </a></li>
         <li><a href="http://csinva.io/news-title-bias/app/" style="font-size:16px"> news bias comparisons </a></li>
         <li><a href="https://github.com/csinva/news-balancer" style="font-size:16px"> news balancer web </a></li>
-<!--                <li><a href="https://docs.google.com/presentation/d/15iygjXGLu7Ha096GwMV5t6sjP7IPcTHqimPkTDwrpPI/present" style="font-size:16px"> hummingbird tracking </a></li>-->
-        <li><a href="https://github.com/csinva/threshold_simulations/" style="font-size:16px"> biophysical simulations </a></li>
-<!--                <li><a href="https://github.com/csinva/interpretability-workshop" style="font-size:16px"> interpretability code </a></li>-->
+        <!--                <li><a href="https://docs.google.com/presentation/d/15iygjXGLu7Ha096GwMV5t6sjP7IPcTHqimPkTDwrpPI/present" style="font-size:16px"> hummingbird tracking </a></li>-->
+        <li><a href="https://github.com/csinva/threshold_simulations/" style="font-size:16px"> biophysical
+            simulations </a></li>
+        <!--                <li><a href="https://github.com/csinva/interpretability-workshop" style="font-size:16px"> interpretability code </a></li>-->
         <li><a href="https://github.com/DavidMChan/lunchwheel" style="font-size:16px"> lunch wheel </a></li>
-        <li><a href="{{ site.baseurl }}/blog/sports_analysis.html" style="font-size:16px"> sports rankings with plotly </a></li>
+        <li><a href="{{ site.baseurl }}/blog/sports_analysis.html" style="font-size:16px"> sports rankings with
+            plotly </a></li>
     </ul>
 </div>
 
 <div class="colfull">
     <p align="text-center">
-        <i align="left">A rough set of notes which may serve as useful reference for people in machine learning / neuroscience.</i></br>
+        <i align="left">A rough set of notes which may serve as useful reference for people in machine learning /
+            neuroscience.</i></br>
         <i align="left"> See also in <a href="http://book.csinva.io/">jupyter-book layout 📖</a></i>
     </p>
 </div>
 <div class="roww"> <!--begin the 1st row-->
-{% for collection in site.collections %}
+    {% for collection in site.collections %}
 
     <!--create categories-->
     {% assign categories = "" | split:"|" %}
     {% for doc in collection.docs %}
-        {% if doc.category %}
-            {% unless categories contains doc.category %}
-                {% assign categories = categories | push: doc.category %}
-            {% endunless %}
-        {% endif %}
+    {% if doc.category %}
+    {% unless categories contains doc.category %}
+    {% assign categories = categories | push: doc.category %}
+    {% endunless %}
+    {% endif %}
     {% endfor %}
 
     {% for category in categories %}
 
-        {% if category != "blog" and category != "research"%}
-            <div class="coll">
-                <h3 align="center">{{ category | downcase }}</h3>
+    {% if category != "blog" and category != "research"%}
+    <div class="coll">
+        <h3 align="center">{{ category | downcase }}</h3>
 
-                {% assign category_docs = collection.docs | where: "category", category %}
-                <ul class="list-items">
-                {% for item in category_docs %}
-                    {% if item.title %}
-                        <li><a href="{{ site.baseurl }}{{item.url}}" style="font-size:16px"> {{ item.title | downcase }} </a></li>
-                    {% endif %}
-                {% endfor %}
-                </ul>
-             </div>
+        {% assign category_docs = collection.docs | where: "category", category %}
+        <ul class="list-items">
+            {% for item in category_docs %}
+            {% if item.title %}
+            <li><a href="{{ site.baseurl }}{{item.url}}" style="font-size:16px"> {{ item.title | downcase }} </a></li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
 
-        {% endif %}
+    {% endif %}
 
-        {% if category == "math" %}
-            </div> <!--end the 1st row-->
-            <div class="roww"> <!--begin the 2nd row-->
-        {% endif %}
+    {% if category == "math" %}
+</div> <!--end the 1st row-->
+<div class="roww"> <!--begin the 2nd row-->
+    {% endif %}
 
     {% endfor %}
-{% endfor %}
+    {% endfor %}
 
-<style>
-.colfull {
-    float: left;
-    width: 100%;
-    padding-bottom: 5px;
-    text-align: center;
-}
+    <style>
+        .colfull {
+            float: left;
+            width: 100%;
+            padding-bottom: 5px;
+            text-align: center;
+        }
 
-.coll {
-    float: left;
-    width: 33.33%;
-    padding-bottom: 50px;
-    text-align: center;
-}
+        .coll {
+            float: left;
+            width: 33.33%;
+            padding-bottom: 50px;
+            text-align: center;
+        }
 
-.coll2 {
-    float: left;
-    width: 49.9%;
-    padding-bottom: 50px;
-    text-align: center;
-}
+        .coll2 {
+            float: left;
+            width: 49.9%;
+            padding-bottom: 50px;
+            text-align: center;
+        }
 
-.coll3 {
-    float: left;
-    width: 32.9%;
-    padding-bottom: 50px;
-    text-align: center;
-}
+        .coll3 {
+            float: left;
+            width: 32.9%;
+            padding-bottom: 50px;
+            text-align: center;
+        }
 
-.coll4 {
-    float: left;
-    width: 24.9%;
-    padding-bottom: 50px;
-    text-align: center;
-}
+        .coll4 {
+            float: left;
+            width: 24.9%;
+            padding-bottom: 50px;
+            text-align: center;
+        }
 
-.coll5 {
-    float: left;
-    width: 19.99%;
-    padding-bottom: 50px;
-}
+        .coll5 {
+            float: left;
+            width: 19.99%;
+            padding-bottom: 50px;
+        }
 
 
-/* Clear floats after the columns */
-.roww:after {
-    content: "";
-    display: table;
-    clear: both;
-}
+        /* Clear floats after the columns */
+        .roww:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
 
-.list-items {
-    display: inline-block;
-    text-align: left;
-}
-</style>
+        .list-items {
+            display: inline-block;
+            text-align: left;
+        }
+    </style>

@@ -14,7 +14,6 @@
   - file: notes/research_ovws/ovw_dl_for_neuro.md
   - file: notes/research_ovws/ovw_uncertainty.md
   - file: notes/research_ovws/ovw_interp.md
-  - file: notes/research_ovws/ovw_kernels.md
 - file: notes/cs/cs.md
   sections:
   - file: notes/cs/retrieval.md
@@ -53,6 +52,7 @@
   - file: notes/stat/game_theory.md
 - file: notes/ml/ml.md
   sections:
+  - file: notes/ml/kernels.md
   - file: notes/ml/nlp.md
   - file: notes/ml/comp_vision.md
   - file: notes/ml/structure_ml.md

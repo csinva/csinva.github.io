@@ -84,6 +84,7 @@ category: research
     - estimate uncertainty of highly confident points using earlier snapshots of the trained model
 - [Contextual Outlier Interpretation](https://arxiv.org/abs/1711.10589) (liu et al. 2018) - describe outliers with 3 things: outlierness score, attributes that contribute to the abnormality, and contextual description of its neighborhoods
 - [Energy-based Out-of-distribution Detection](https://arxiv.org/abs/2010.03759)
+- [Getting a CLUE: A Method for Explaining Uncertainty Estimates](https://arxiv.org/abs/2006.06848) 
 
 ## nearest-neighbor methods
 

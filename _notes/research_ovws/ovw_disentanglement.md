@@ -1,7 +1,7 @@
 ---
 layout: notes
 title: disentanglement
-category: blog
+category: research
 typora-copy-images-to: ../assets
 ---
 

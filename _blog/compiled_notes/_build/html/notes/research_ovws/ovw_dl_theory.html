@@ -158,11 +158,6 @@
      1.12. interpretability
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ovw_kernels.html">
-     1.13. kernels
-    </a>
-   </li>
   </ul>
   <i class="fas fa-chevron-down">
   </i>
@@ -345,48 +340,53 @@
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
+    <a class="reference internal" href="../ml/kernels.html">
+     5.1. kernels
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../ml/nlp.html">
-     5.1. nlp
+     5.2. nlp
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/comp_vision.html">
-     5.2. computer vision
+     5.3. computer vision
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/structure_ml.html">
-     5.3. structure learning
+     5.4. structure learning
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/classification.html">
-     5.4. classification
+     5.5. classification
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/unsupervised.html">
-     5.5. unsupervised
+     5.6. unsupervised
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/deep_learning.html">
-     5.6. deep learning
+     5.7. deep learning
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/feature_selection.html">
-     5.7. feature selection
+     5.8. feature selection
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/learning_theory.html">
-     5.8. learning theory
+     5.9. learning theory
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/evaluation.html">
-     5.9. evaluation
+     5.10. evaluation
     </a>
    </li>
   </ul>
@@ -605,13 +605,13 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#kernels">
-     1.6.1.6. kernels
+    <a class="reference internal nav-link" href="#nearest-neighbor-comparisons">
+     1.6.1.6. nearest neighbor comparisons
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#nearest-neighbor-comparisons">
-     1.6.1.7. nearest neighbor comparisons
+    <a class="reference internal nav-link" href="#kernels">
+     1.6.1.7. kernels
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -927,20 +927,34 @@ neural network smoothness</a></p></li>
 </li>
 </ul>
 </div>
+<div class="section" id="nearest-neighbor-comparisons">
+<h3>1.6.1.6. nearest neighbor comparisons<a class="headerlink" href="#nearest-neighbor-comparisons" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="http://papers.nips.cc/paper/7498-overfitting-or-perfect-fitting-risk-bounds-for-classification-and-regression-rules-that-interpolate">weighted interpolating nearest neighbors can generalize well (belkin…mitra 2018)</a></p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1810.02814">Statistical Optimality of Interpolated Nearest Neighbor Algorithms</a></p></li>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/1805.06822.pdf">nearest neighbor comparison</a></p></li>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/1803.04765.pdf">nearest embedding neighbors</a></p></li>
+</ul>
+</div>
 <div class="section" id="kernels">
-<h3>1.6.1.6. kernels<a class="headerlink" href="#kernels" title="Permalink to this headline">¶</a></h3>
+<h3>1.6.1.7. kernels<a class="headerlink" href="#kernels" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/1802.01396">To understand deep learning we need to understand kernel learning</a> - overfitted kernel classifiers can still fit the data well</p></li>
-<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Kernel_method#cite_note-4">kernels wiki</a>: kernel memorizes points then uses dists between points to classify</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/pdf/1811.08357v1.pdf">learning deep kernels</a></p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1901.07114">learning data-adaptive kernels</a></p></li>
-<li><p><a class="reference external" href="https://cseweb.ucsd.edu/~saul/papers/nips09_kernel.pdf">kernels that mimic dl</a></p></li>
-<li><p><a class="reference external" href="http://papers.nips.cc/paper/3628-kernel-methods-for-deep-learning.pdfs">kernel methods</a></p></li>
-<li><p><a class="reference external" href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.412.362&amp;rep=rep1&amp;type=pdf">wavelet support vector machines</a> - kernels using wavelets</p></li>
+<li><p>original kernels (neal 1994) + (lee et al. 2018) + (matthews et al. 2018)</p>
+<ul>
+<li><p>infinitely wide nets and only top layer is trained</p></li>
+<li><p>corresponds to kernel <span class="math notranslate nohighlight">\(\text{ker}(x, x') = \mathbb E_{\theta \sim W}[f(\theta, x) \cdot f(\theta, x')]\)</span>, where <span class="math notranslate nohighlight">\(W\)</span> is an intialization distr. over <span class="math notranslate nohighlight">\(\theta\)</span></p></li>
+</ul>
+</li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1806.07572">neural tangent kernel</a> (jacot et al. 2018)</p>
 <ul>
-<li><p>at initialization, artificial neural networks (ANNs) are equivalent to Gaussian
-processes in the infinite-width limit</p>
+<li><p><span class="math notranslate nohighlight">\(\text{ker}(x, x') = \mathbb E_{\theta \sim W}[\left &lt; \frac{f(\theta, x)}{\partial \theta} \cdot \frac{f(\theta, x')}{\partial \theta} \right&gt; ]\)</span> - evolution of weights over time follows this kernel</p>
+<ul>
+<li><p>with very large width, this kernel is the NTK at initialization</p></li>
+<li><p>stays stable during training (since weights don’t change much)</p></li>
+</ul>
+</li>
+<li><p>at initialization, artificial neural networks (ANNs) are equivalent to Gaussian processes in the infinite-width limit</p>
 <ul>
 <li><p>evolution of an ANN during training can also be described by a kernel (kernel gradient descent)</p></li>
 </ul>
@@ -950,11 +964,9 @@ processes in the infinite-width limit</p>
 <li><p>gradient descent in kernel space can be convex if kernel is PD (even if nonconvex in the parameter space)</p></li>
 </ul>
 </li>
-<li><p>lazy training regime - small change in weights results in big change in loss func</p>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/1904.11955.pdf">understanding the neural tangent kernel</a> (arora et al. 2019)</p>
 <ul>
-<li><p>so final weights are close to original weights</p></li>
-<li><p>more precisely, gradient norm is much larger than hessian norm</p></li>
-<li><p>jacobian doesn’t change during training <span class="math notranslate nohighlight">\(\implies\)</span> NTK is pretty constant throughout training</p></li>
+<li><p>method to compute the kernel quickly on a gpu</p></li>
 </ul>
 </li>
 </ul>
@@ -970,11 +982,6 @@ processes in the infinite-width limit</p>
 <li><p>the improvement of generalization performance with N in this classification task originates from reduced variance of fN when N gets large, as recently observed for mean-square regression</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://arxiv.org/pdf/1904.11955.pdf">understanding the neural tangent kernel</a> (arora et al. 2019)</p>
-<ul>
-<li><p>method to compute the kernel quickly on a gpu</p></li>
-</ul>
-</li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1905.12173">On the Inductive Bias of Neural Tangent Kernels</a> (bietti &amp; mairal 2019)</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1906.05827">Kernel and Deep Regimes in Overparametrized Models</a> (Woodworth…Srebro 2019)</p>
 <ul>
@@ -986,15 +993,6 @@ processes in the infinite-width limit</p>
 <li><p>directly optimize information bottleneck (approximated by HSIC) yields pretty good results</p></li>
 </ul>
 </li>
-</ul>
-</div>
-<div class="section" id="nearest-neighbor-comparisons">
-<h3>1.6.1.7. nearest neighbor comparisons<a class="headerlink" href="#nearest-neighbor-comparisons" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p><a class="reference external" href="http://papers.nips.cc/paper/7498-overfitting-or-perfect-fitting-risk-bounds-for-classification-and-regression-rules-that-interpolate">weighted interpolating nearest neighbors can generalize well (belkin…mitra 2018)</a></p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1810.02814">Statistical Optimality of Interpolated Nearest Neighbor Algorithms</a></p></li>
-<li><p><a class="reference external" href="https://arxiv.org/pdf/1805.06822.pdf">nearest neighbor comparison</a></p></li>
-<li><p><a class="reference external" href="https://arxiv.org/pdf/1803.04765.pdf">nearest embedding neighbors</a></p></li>
 </ul>
 </div>
 <div class="section" id="random-projections">

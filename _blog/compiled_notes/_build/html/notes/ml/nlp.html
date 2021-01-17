@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>5.1. nlp</title>
+    <title>5.2. nlp</title>
     
   <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -56,8 +56,8 @@
     <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="5.2. computer vision" href="comp_vision.html" />
-    <link rel="prev" title="5. ml" href="ml.html" />
+    <link rel="next" title="5.3. computer vision" href="comp_vision.html" />
+    <link rel="prev" title="5.1. kernels" href="kernels.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -156,11 +156,6 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_interp.html">
      1.12. interpretability
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../research_ovws/ovw_kernels.html">
-     1.13. kernels
     </a>
    </li>
   </ul>
@@ -344,49 +339,54 @@
    5. ml
   </a>
   <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="kernels.html">
+     5.1. kernels
+    </a>
+   </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     5.1. nlp
+     5.2. nlp
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="comp_vision.html">
-     5.2. computer vision
+     5.3. computer vision
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="structure_ml.html">
-     5.3. structure learning
+     5.4. structure learning
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="classification.html">
-     5.4. classification
+     5.5. classification
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="unsupervised.html">
-     5.5. unsupervised
+     5.6. unsupervised
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="deep_learning.html">
-     5.6. deep learning
+     5.7. deep learning
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="feature_selection.html">
-     5.7. feature selection
+     5.8. feature selection
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="learning_theory.html">
-     5.8. learning theory
+     5.9. learning theory
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="evaluation.html">
-     5.9. evaluation
+     5.10. evaluation
     </a>
    </li>
   </ul>
@@ -576,17 +576,17 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#nlp-basics">
-   5.1.1. nlp basics
+   5.2.1. nlp basics
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#dl-for-nlp">
-   5.1.2. dl for nlp
+   5.2.2. dl for nlp
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#attention-transformers">
-     5.1.2.1. attention / transformers
+     5.2.2.1. attention / transformers
     </a>
    </li>
   </ul>
@@ -603,10 +603,10 @@
               <div>
                 
   <div class="section" id="nlp">
-<h1>5.1. nlp<a class="headerlink" href="#nlp" title="Permalink to this headline">¶</a></h1>
+<h1>5.2. nlp<a class="headerlink" href="#nlp" title="Permalink to this headline">¶</a></h1>
 <p>Some notes on natural language processing, focused on modern improvements based on deep learning.</p>
 <div class="section" id="nlp-basics">
-<h2>5.1.1. nlp basics<a class="headerlink" href="#nlp-basics" title="Permalink to this headline">¶</a></h2>
+<h2>5.2.1. nlp basics<a class="headerlink" href="#nlp-basics" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>basics come from book “Speech and Language Processing”</p></li>
 <li><p><strong>language models</strong> - assign probabilities to sequences of words</p>
@@ -679,7 +679,7 @@
 </ul>
 </div>
 <div class="section" id="dl-for-nlp">
-<h2>5.1.2. dl for nlp<a class="headerlink" href="#dl-for-nlp" title="Permalink to this headline">¶</a></h2>
+<h2>5.2.2. dl for nlp<a class="headerlink" href="#dl-for-nlp" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>some recent topics based on <a class="reference external" href="http://jalammar.github.io/">this blog</a></p></li>
 <li><p>rnns</p>
@@ -702,7 +702,7 @@
 </li>
 </ul>
 <div class="section" id="attention-transformers">
-<h3>5.1.2.1. attention / transformers<a class="headerlink" href="#attention-transformers" title="Permalink to this headline">¶</a></h3>
+<h3>5.2.2.1. attention / transformers<a class="headerlink" href="#attention-transformers" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>self-attention layer <a class="reference external" href="https://github.com/mertensu/transformer-tutorial">implementation</a> and <a class="reference external" href="https://homes.cs.washington.edu/~thickstn/docs/transformers.pdf">mathematics</a></p></li>
 <li><p>**self-attention ** - layer that lets word learn its relation to other layers</p>
@@ -813,8 +813,8 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="ml.html" title="previous page">5. ml</a>
-    <a class='right-next' id="next-link" href="comp_vision.html" title="next page">5.2. computer vision</a>
+    <a class='left-prev' id="prev-link" href="kernels.html" title="previous page">5.1. kernels</a>
+    <a class='right-next' id="next-link" href="comp_vision.html" title="next page">5.3. computer vision</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

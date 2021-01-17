@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>5.3. structure learning</title>
+    <title>5.4. structure learning</title>
     
   <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -56,8 +56,8 @@
     <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="5.4. classification" href="classification.html" />
-    <link rel="prev" title="5.2. computer vision" href="comp_vision.html" />
+    <link rel="next" title="5.5. classification" href="classification.html" />
+    <link rel="prev" title="5.3. computer vision" href="comp_vision.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -156,11 +156,6 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_interp.html">
      1.12. interpretability
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../research_ovws/ovw_kernels.html">
-     1.13. kernels
     </a>
    </li>
   </ul>
@@ -345,48 +340,53 @@
   </a>
   <ul class="current collapse-ul">
    <li class="toctree-l2">
+    <a class="reference internal" href="kernels.html">
+     5.1. kernels
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="nlp.html">
-     5.1. nlp
+     5.2. nlp
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="comp_vision.html">
-     5.2. computer vision
+     5.3. computer vision
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     5.3. structure learning
+     5.4. structure learning
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="classification.html">
-     5.4. classification
+     5.5. classification
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="unsupervised.html">
-     5.5. unsupervised
+     5.6. unsupervised
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="deep_learning.html">
-     5.6. deep learning
+     5.7. deep learning
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="feature_selection.html">
-     5.7. feature selection
+     5.8. feature selection
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="learning_theory.html">
-     5.8. learning theory
+     5.9. learning theory
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="evaluation.html">
-     5.9. evaluation
+     5.10. evaluation
     </a>
    </li>
   </ul>
@@ -576,76 +576,76 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introduction">
-   5.3.1. introduction
+   5.4.1. introduction
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#structure">
-   5.3.2. structure
+   5.4.2. structure
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#sequential-models">
-   5.3.3. sequential models
+   5.4.3. sequential models
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#sequence-models">
-     5.3.3.1. sequence models
+     5.4.3.1. sequence models
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#conditional-models-and-local-classifiers-discriminative-model">
-     5.3.3.2. conditional models and local classifiers - discriminative model
+     5.4.3.2. conditional models and local classifiers - discriminative model
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#constrained-conditional-models">
-   5.3.4. constrained conditional models
+   5.4.4. constrained conditional models
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#consistency-of-outputs-and-the-value-of-inference">
-     5.3.4.1. consistency of outputs and the value of inference
+     5.4.4.1. consistency of outputs and the value of inference
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#hard-constraints-and-integer-programs">
-     5.3.4.2. hard constraints and integer programs
+     5.4.4.2. hard constraints and integer programs
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#soft-constraints">
-     5.3.4.3. soft constraints
+     5.4.4.3. soft constraints
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#inference">
-   5.3.5. inference
+   5.4.5. inference
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#learning-protocols">
-   5.3.6. learning protocols
+   5.4.6. learning protocols
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#structural-svm">
-     5.3.6.1. structural svm
+     5.4.6.1. structural svm
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#empirical-risk-minimization">
-     5.3.6.2. empirical risk minimization
+     5.4.6.2. empirical risk minimization
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#sgd-for-structural-svm">
-     5.3.6.3. sgd for structural svm
+     5.4.6.3. sgd for structural svm
     </a>
    </li>
   </ul>
@@ -662,9 +662,9 @@
               <div>
                 
   <div class="section" id="structure-learning">
-<h1>5.3. structure learning<a class="headerlink" href="#structure-learning" title="Permalink to this headline">¶</a></h1>
+<h1>5.4. structure learning<a class="headerlink" href="#structure-learning" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
-<h2>5.3.1. introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<h2>5.4.1. introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
 <li><p><em>structured prediction</em> - have multiple independent output variables</p></li>
 </ol>
@@ -692,7 +692,7 @@
 </ol>
 </div>
 <div class="section" id="structure">
-<h2>5.3.2. structure<a class="headerlink" href="#structure" title="Permalink to this headline">¶</a></h2>
+<h2>5.4.2. structure<a class="headerlink" href="#structure" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>structured output can be represented as a graph</p></li>
 <li><p>outputs y</p></li>
@@ -719,10 +719,10 @@
 </ul>
 </div>
 <div class="section" id="sequential-models">
-<h2>5.3.3. sequential models<a class="headerlink" href="#sequential-models" title="Permalink to this headline">¶</a></h2>
+<h2>5.4.3. sequential models<a class="headerlink" href="#sequential-models" title="Permalink to this headline">¶</a></h2>
 <p><img alt="" src="../../_images/hmm_vs_condition.png" /></p>
 <div class="section" id="sequence-models">
-<h3>5.3.3.1. sequence models<a class="headerlink" href="#sequence-models" title="Permalink to this headline">¶</a></h3>
+<h3>5.4.3.1. sequence models<a class="headerlink" href="#sequence-models" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>goal: learn distribution <span class="math notranslate nohighlight">\(P(x_1,...,x_n)\)</span> for sequences <span class="math notranslate nohighlight">\(x_1,...,x_n\)</span></p>
 <ul>
@@ -745,7 +745,7 @@
 </ul>
 </div>
 <div class="section" id="conditional-models-and-local-classifiers-discriminative-model">
-<h3>5.3.3.2. conditional models and local classifiers - discriminative model<a class="headerlink" href="#conditional-models-and-local-classifiers-discriminative-model" title="Permalink to this headline">¶</a></h3>
+<h3>5.4.3.2. conditional models and local classifiers - discriminative model<a class="headerlink" href="#conditional-models-and-local-classifiers-discriminative-model" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>conditional models = discriminative models</p>
 <ul>
@@ -815,9 +815,9 @@
 </div>
 </div>
 <div class="section" id="constrained-conditional-models">
-<h2>5.3.4. constrained conditional models<a class="headerlink" href="#constrained-conditional-models" title="Permalink to this headline">¶</a></h2>
+<h2>5.4.4. constrained conditional models<a class="headerlink" href="#constrained-conditional-models" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="consistency-of-outputs-and-the-value-of-inference">
-<h3>5.3.4.1. consistency of outputs and the value of inference<a class="headerlink" href="#consistency-of-outputs-and-the-value-of-inference" title="Permalink to this headline">¶</a></h3>
+<h3>5.4.4.1. consistency of outputs and the value of inference<a class="headerlink" href="#consistency-of-outputs-and-the-value-of-inference" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p>ex. POS tagging - sentence shouldn’t have more than 1 verb</p></li>
 <li><p><em>inference</em></p>
@@ -837,20 +837,20 @@
 </ul>
 </div>
 <div class="section" id="hard-constraints-and-integer-programs">
-<h3>5.3.4.2. hard constraints and integer programs<a class="headerlink" href="#hard-constraints-and-integer-programs" title="Permalink to this headline">¶</a></h3>
+<h3>5.4.4.2. hard constraints and integer programs<a class="headerlink" href="#hard-constraints-and-integer-programs" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><img alt="" src="../../_images/8_hard_constraints.png" /></p></li>
 </ul>
 </div>
 <div class="section" id="soft-constraints">
-<h3>5.3.4.3. soft constraints<a class="headerlink" href="#soft-constraints" title="Permalink to this headline">¶</a></h3>
+<h3>5.4.4.3. soft constraints<a class="headerlink" href="#soft-constraints" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><img alt="" src="../../_images/8_1.png" /></p></li>
 </ul>
 </div>
 </div>
 <div class="section" id="inference">
-<h2>5.3.5. inference<a class="headerlink" href="#inference" title="Permalink to this headline">¶</a></h2>
+<h2>5.4.5. inference<a class="headerlink" href="#inference" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p>inference constructs the output given the model</p></li>
 <li><p>goal: find highest scoring state sequence</p>
@@ -923,15 +923,15 @@
 </ul>
 </div>
 <div class="section" id="learning-protocols">
-<h2>5.3.6. learning protocols<a class="headerlink" href="#learning-protocols" title="Permalink to this headline">¶</a></h2>
+<h2>5.4.6. learning protocols<a class="headerlink" href="#learning-protocols" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="structural-svm">
-<h3>5.3.6.1. structural svm<a class="headerlink" href="#structural-svm" title="Permalink to this headline">¶</a></h3>
+<h3>5.4.6.1. structural svm<a class="headerlink" href="#structural-svm" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\underset{w}{min} \: \frac{1}{2} w^T w + C \sum_i \underset{y}{max} (w^T \phi (x_i,y)+ \Delta(y,y_i) - w^T \phi(x_i,y_i) )\)</span></p></li>
 </ul>
 </div>
 <div class="section" id="empirical-risk-minimization">
-<h3>5.3.6.2. empirical risk minimization<a class="headerlink" href="#empirical-risk-minimization" title="Permalink to this headline">¶</a></h3>
+<h3>5.4.6.2. empirical risk minimization<a class="headerlink" href="#empirical-risk-minimization" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>subgradients</p>
 <ul>
@@ -941,7 +941,7 @@
 </ul>
 </div>
 <div class="section" id="sgd-for-structural-svm">
-<h3>5.3.6.3. sgd for structural svm<a class="headerlink" href="#sgd-for-structural-svm" title="Permalink to this headline">¶</a></h3>
+<h3>5.4.6.3. sgd for structural svm<a class="headerlink" href="#sgd-for-structural-svm" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>highest scoring assignment to some of the output random variables for a given input?</p></li>
 <li><p><em>loss-augmented inference</em> - which structure most violates the margin for a given scoring function?</p></li>
@@ -979,8 +979,8 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="comp_vision.html" title="previous page">5.2. computer vision</a>
-    <a class='right-next' id="next-link" href="classification.html" title="next page">5.4. classification</a>
+    <a class='left-prev' id="prev-link" href="comp_vision.html" title="previous page">5.3. computer vision</a>
+    <a class='right-next' id="next-link" href="classification.html" title="next page">5.5. classification</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

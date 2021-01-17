@@ -259,7 +259,9 @@ typora-copy-images-to: ../assets
 
 - [Essays: Cybersecurity for the Public Interest - Schneier on Security](https://www.schneier.com/essays/archives/2019/02/public-interest_tech.html)
 
-
+- [Machine Learning that Matters](https://arxiv.org/abs/1206.4656) (wagstaff, 2021)
+  - doesn't make sense to compare the same metrics across different dsets (e.g. AUC over entire domain doesn't matter)
+  - classification / regr. are overemphasized ([langley, 2011](https://link.springer.com/content/pdf/10.1007/s10994-011-5242-y.pdf))
 
 # concrete ai harms
 
