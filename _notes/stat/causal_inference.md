@@ -736,6 +736,7 @@ M --> Y
 ### check ignorability: use auxilary outcome
 
 - **negative outcome** - assume we have a secondary informative outcome $Y'$
+  
   - $Y'$ is similar to $Y$ in terms of confounding: if we believe $T \perp Y(t) \mid X$ we also think $T \perp Y'(t) \mid X$
   
   - we know the expected effect of $T$ on $Y'$ (ex. it should be 0)

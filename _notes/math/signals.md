@@ -87,7 +87,7 @@ typora-copy-images-to: ../assets
     - starts from multiresolution analysis (mallat, 1989)
   - continuous wavelet transform: $a > 0, b$ (still a point-by-point, digita transformation)
   - orthonormal
-  - biorthogonal - more relaxed, still enables perfect reconstruction
+    - biorthogonal - more relaxed, still enables perfect reconstruction
   - undecimated - highly overparameterized, exists at every location
 - website to [explore different wavelets](http://wavelets.pybytes.com/)
   - ex. **Haar wavelet** (step function on [0, 1]
