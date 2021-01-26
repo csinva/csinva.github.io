@@ -557,7 +557,7 @@ M --> Y
     - can use this result to check for covariate balance in design stage
     - can view $h(X)$ as psuedo outcome and estimtate ATE
       - if we specify it to something like $h(X)=X$, then it should be close to 0
-- $\hat \tau_{ht} = \frac 1 n \sum_i \frac{T_iY_i}{\hat e(X_i)} - \frac 1 n \sum_i \frac{(1-T_i)Y_i}{1-\hat e(X_i)} $  = **inverse propensity score weighting estimator = horvitz-thompson estimator** (horvitz & thompson 1952)
+- $\hat \tau_{ht} = \frac 1 n \sum_i \frac{T_iY_i}{\hat e(X_i)} - \frac 1 n \sum_i \frac{(1-T_i)Y_i}{1-\hat e(X_i)} $  = **inverse propensity score weighting estimator = horvitz-thompson estimator** (horvitz & thompson, 1952)
   - weight outcomes by $1/e(X)$ for treated individuals and $1/(1-e(X))$ for untreated
   - *Based on Thm.* if $\underbrace{T \perp \{ Y^{T=1}, Y^{T=0}\} | X}_{\text{strong ignorability on X}}$, then:
     - $E\{Y^{T=1}\} = E \left \{ \frac{TY}{e(X)} \right \}$
@@ -671,7 +671,6 @@ M --> Y
     - ex. Felton (2018), *Chernozhukov et al. on Double / Debiased Machine Learning*
     - ex. Syrgkanis (2019), *Orthogonal/Double Machine Learning*
     - ex. Foster and Syrgkanis (2019), *Orthogonal Statistical Learning*
-- causal trees/forests
 
 # assumptions
 
@@ -743,7 +742,7 @@ M --> Y
     
   - $\tau(T \to Y') = E\{Y'^{T=1} - Y'^{T=0})\}$
   
-- ex. cornfield et al. 1959 - effect of smoking on car accident
+- ex. [cornfield et al. 1959](https://academic.oup.com/ije/article/38/5/1175/666926) - effect of smoking on car accident
 - ```mermaid
   graph LR
   X(X) -->Y'(Y')
@@ -754,7 +753,7 @@ M --> Y
 - **negative exposure** - assume we have a secondary informative treatment $T'$
   - $T'$ is similar to $T$ in terms of confounding: if we believe $T \perp Y(t) \mid X$ we also think $T' \perp Y(t) \mid X$
   - we know the expected effect of $T'$ on $Y$ (ex. it should be 0)
-    - $\tau(T' \to Y) = E\{Y^{T'=1} - Y^{T'=0})\}$
+    - $\tau(T' \to Y) = E\{Y^{T'=1} - Y^{T'=0}\}$
   - ex. maternal exposure $T$ and parental exposure $T'$
 - ```mermaid
   graph LR
@@ -767,40 +766,53 @@ M --> Y
 
 ### check ignorability impact: sensitivity analysis wrt unmeasured confounding
 
-- broadly, sensitivity analysis measures how “sensitive” a model is to changes in the value of the parameters of the model and to changes in the structure of the model
-- here, we focus on sensitivity analyses *wrt unmeasured confounding* - how strong the effects of an unobserved covariate $U$ on the exposure and/or the outcome would have to be to change the study inference (estimated effect of $T$ on $Y$)
+- sensitivity analysis measures how “sensitive” a model is to changes in the value of the parameters / structure / assumptions of the model
+
+- we focus on sensitivity analyses *wrt unmeasured confounding* - how strong the effects of an unobserved covariate $U$ on the exposure and/or the outcome would have to be to change the study inference (estimated effect of $T$ on $Y$)
+
 - there are many types of such analyses (for a review, see [liu et al. 2013](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3800481/pdf/nihms470690.pdf))
-  - ex. **rosenbaum-type**
-    - interested in finding thresholds of the following association(s) that would render test statistic of the study inference insignificant (e.g. true odds-ratio of outcome and treatment, adjusted for $X$ and $U$):
-      - unobserved confounder and the treatment (odds-ratio $OR_{\text{UT}}$)
-      - and/or unobserved confounder and the outcome (odds-ratio $OR_{\text{UY}}$)
-    - usually used after matching
-    - 3 types
-      - primal sensitivity analysis: vary $OR_{\text{UT}}$ with $OR_{\text{UY}} = \infty$
-      - dual sensitivity analysis: vary $OR_{\text{UY}}$ with $OR_{\text{UT}}=\infty$ 
-      - simultaneous sensitivity analysis: vary both vary $OR_{\text{UT}}$ and $OR_{\text{UY}}$
-	- ex. **confidence-interval methods**
-    - quantify unobserved confounder under specifications then arrive at target of interest + confidence interval, adjusted for $U$
-    - first approach: use association between $T, Y, U$ to create data as if $U$ was observed
-      - specifications: $P(U|T=0$), $P(U|T=1)$ ([greenland, 1996](https://academic.oup.com/ije/article/25/6/1107/672425))
-      - specifications: $OR_{\text{UY}}$ and $OR_{\text{UT}}$,  $U$ evenly distributed ([harding, 2003](https://www.journals.uchicago.edu/doi/abs/10.1086/379217?casa_token=LEDms9TVjrEAAAAA:Zg7CU9s6InCHOR4o9N9MTrrmOWRS80iJLw_vjDHrcF5KYCsWgYfE1--tyaKMNbvChjmsirT6eQvD))
-      - given either of these specifications, can fill out the table of $X, Y|U$, then use these weights to re-create data and fit weighted logistic regression
-    - second approach: use association between $T, Y, U$ to compute adjustment
-      - this approach can relax some assumptions, such as the no-three-way-interaction assumption
-      - specifications: $P(U|T=1), P(U|T=0), OR_{\text{UY|T=1}}, OR_{\text{UY|T=0}}$([lin et al. 1998](https://www.jstor.org/stable/2533848?casa_token=VUsEU1I6EgIAAAAA:RZQhdfGYtwlSb2GO_PQvR68CM-mx-RmOcoKMNImxX8-sMxd_M7nmVwWSn6CqVHs6ai0tqBWr54PvUfj--zqGtUFVEw-2Muw8y9HIXBQUoWYosF77m4-f))
-      - specifications: $P(U|T=1), P(U|T=0), OR_{\text{UY}}$ ([vanderweele & arah, 2011](https://www.jstor.org/stable/29764679?casa_token=4Gd4twU75G8AAAAA%3AZw_K4QbIK3-VKJMKOzYICbDbW-YASmvJYLfMwyhWISXvnH-3u9S1F_vss66QYrlHpVEfcJar94PaKGKgPLheaTp2-KGD9CHDLLv4cGBkvn7igRzdlpoy&seq=1#metadata_info_tab_contents))
-  - ex. **cornfield-type** ([cornfield et al. 1959](https://academic.oup.com/jnci/article-abstract/22/1/173/912572)) - seminal work
-    - ignorability does not hold $T \not \perp \{ Y^{T=1}, Y^{T=0}\} | X $
-    - latent ignorability holds $T \perp \{ Y^{T=1}, Y^{T=0}\} | (X, U) $
-    - true causal effect (risk ratio): $\mathrm{RR}_{x}^{\text {true }}=\frac{\operatorname{pr}\{Y^{T=1}=1 \mid X=x\}}{\operatorname{pr}\{Y^{T=0}=1 \mid X=x\}}$
-    - observed: $\mathrm{RR}_{x}^{\mathrm{obs}}=\frac{\operatorname{pr}(Y=1 \mid T=1, X=x)}{\operatorname{pr}(Y=1 \mid T=0, X=x)}$
-    - we can ask how strong functions of U, T, Y all given X must be to explain away an observed association
-      - $\mathrm{RR}_{T U \mid x}=\frac{\operatorname{pr}(U=1 \mid T=1, X=x)}{\operatorname{pr}(U=1 \mid T=0, X=x)}$
-      - $\mathrm{RR}_{U Y \mid x}=\frac{\operatorname{pr}(Y=1 \mid U=1, X=x)}{\operatorname{pr}(Y=1 \mid U=0, X=x)}$
-      - *Thm*: under latent ignorability, $\mathrm{RR}_{x}^{\mathrm{obs}} \leq \frac{\mathrm{R} \mathrm{R}_{T U \mid x} \mathrm{RR}_{U Y \mid x}}{\mathrm{RR}_{T U \mid x}+\mathrm{RR}_{U Y \mid x}-1}$
-  - ex. bounds on direct effects with confounded intermediate variables ([Cai et al. 2008](https://onlinelibrary.wiley.com/doi/full/10.1111/j.1541-0420.2007.00949.x?casa_token=WdtSDtKM_zsAAAAA%3AyEmvyHkEBk5qtvcj4p8r5ewrI5npbTts9J9IKRQyc4XmbpDvsmtIDy28sbOU2m32oT31ol2VM4Kb5w))
+
+- ex. **rosenbaum-type**: interested in finding thresholds of the following association(s) that would render test statistic of the study inference insignificant
+
+  - e.g. true odds-ratio of outcome and treatment, adjusted for $X$ and $U$
+    - unobserved confounder and the treatment (odds-ratio $OR_{\text{UT}}$)
+    - and/or unobserved confounder and the outcome (odds-ratio $OR_{\text{UY}}$)
+
+  - usually used after matching
+  - 3 types
+    - primal sensitivity analysis: vary $OR_{\text{UT}}$ with $OR_{\text{UY}} = \infty$
+    - dual sensitivity analysis: vary $OR_{\text{UY}}$ with $OR_{\text{UT}}=\infty$ 
+    - simultaneous sensitivity analysis: vary both vary $OR_{\text{UT}}$ and $OR_{\text{UY}}$
+
+- ex. **confidence-interval methods**: quantify unobserved confounder under specifications then arrive at target of interest + confidence interval, adjusted for $U$
+  - first approach: use association between $T, Y, U$ to create data as if $U$ was observed
+    - specifications: $P(U|T=0$), $P(U|T=1)$ ([greenland, 1996](https://academic.oup.com/ije/article/25/6/1107/672425))
+    - specifications: $OR_{\text{UY}}$ and $OR_{\text{UT}}$,  $U$ evenly distributed ([harding, 2003](https://www.journals.uchicago.edu/doi/abs/10.1086/379217?casa_token=LEDms9TVjrEAAAAA:Zg7CU9s6InCHOR4o9N9MTrrmOWRS80iJLw_vjDHrcF5KYCsWgYfE1--tyaKMNbvChjmsirT6eQvD))
+    - given either of these specifications, can fill out the table of $X, Y|U$, then use these weights to re-create data and fit weighted logistic regression
+  - second approach: use association between $T, Y, U$ to compute adjustment
+    - this approach can relax some assumptions, such as the no-three-way-interaction assumption
+    - specifications: $P(U|T=1), P(U|T=0), OR_{\text{UY|T=1}}, OR_{\text{UY|T=0}}$([lin et al. 1998](https://www.jstor.org/stable/2533848?casa_token=VUsEU1I6EgIAAAAA:RZQhdfGYtwlSb2GO_PQvR68CM-mx-RmOcoKMNImxX8-sMxd_M7nmVwWSn6CqVHs6ai0tqBWr54PvUfj--zqGtUFVEw-2Muw8y9HIXBQUoWYosF77m4-f))
+    - specifications: $P(U|T=1), P(U|T=0), OR_{\text{UY}}$ ([vanderweele & arah, 2011](https://www.jstor.org/stable/29764679?casa_token=4Gd4twU75G8AAAAA%3AZw_K4QbIK3-VKJMKOzYICbDbW-YASmvJYLfMwyhWISXvnH-3u9S1F_vss66QYrlHpVEfcJar94PaKGKgPLheaTp2-KGD9CHDLLv4cGBkvn7igRzdlpoy&seq=1#metadata_info_tab_contents))
+
+- ex. **cornfield-type** ([cornfield et al. 1959](https://academic.oup.com/jnci/article-abstract/22/1/173/912572)) - seminal work
+  - ignorability does not hold $T \not \perp \{ Y^{T=1}, Y^{T=0}\} | X $
+  - latent ignorability holds $T \perp \{ Y^{T=1}, Y^{T=0}\} | (X, U) $
+  - true causal effect (risk ratio): $\mathrm{RR}_{x}^{\text {true }}=\frac{\operatorname{pr}\{Y^{T=1}=1 \mid X=x\}}{\operatorname{pr}\{Y^{T=0}=1 \mid X=x\}}$
+  - observed: $\mathrm{RR}_{x}^{\mathrm{obs}}=\frac{\operatorname{pr}(Y=1 \mid T=1, X=x)}{\operatorname{pr}(Y=1 \mid T=0, X=x)}$
+  - we can ask how strong functions of U, T, Y all given X must be to explain away an observed association
+    - $\mathrm{RR}_{T U \mid x}=\frac{\operatorname{pr}(U=1 \mid T=1, X=x)}{\operatorname{pr}(U=1 \mid T=0, X=x)}$
+    - $\mathrm{RR}_{U Y \mid x}=\frac{\operatorname{pr}(Y=1 \mid U=1, X=x)}{\operatorname{pr}(Y=1 \mid U=0, X=x)}$
+    - *Thm*: under latent ignorability, $\mathrm{RR}_{x}^{\mathrm{obs}} \leq \frac{\mathrm{R} \mathrm{R}_{T U \mid x} \mathrm{RR}_{U Y \mid x}}{\mathrm{RR}_{T U \mid x}+\mathrm{RR}_{U Y \mid x}-1}$
+
+- ex. bounds on direct effects with confounded intermediate variables ([Cai et al. 2008](https://onlinelibrary.wiley.com/doi/full/10.1111/j.1541-0420.2007.00949.x?casa_token=WdtSDtKM_zsAAAAA%3AyEmvyHkEBk5qtvcj4p8r5ewrI5npbTts9J9IKRQyc4XmbpDvsmtIDy28sbOU2m32oT31ol2VM4Kb5w))
+
 - **bounds with no assumptions** ([manski 1990](https://www.jstor.org/stable/2006592?casa_token=5wsmh0n73ecAAAAA%3AGrmKG84ZmaGgvx7Xsadw_Gta7y59XrUMUe8IpYH-IWfN7mVx0p51Wte4H8m7zZy6l06TYQZeNHRgpz7cPAvXtrw2O6pABDcgYanESUXjuyhM7_9vAOws&seq=1#metadata_info_tab_contents))
   - worst-case bounds are very poor
   - also bounds with monotone treatment response ([manski, 1997](https://ideas.repec.org/a/ecm/emetrp/v65y1997i6p1311-1334.html))
   - bounds with optimal treatment selection (i.e. individuals always receive the treatement that is best for them) (manski, 1990, "nonparametric bounds on treatment effects")
+  
+- Sensitivity Analysis in Observational Research: Introducing the E-Value ([vanderweele & ding, 2017](https://www.acpjournals.org/doi/abs/10.7326/M16-2607))
+
+  - **E-value** = min strength of association (risk ratio) that an unmeasured confounder would require with both $T$ and $Y$ to explain away a specific treatment-outcome association, conditional on $X$
+    - higher = more causal
 

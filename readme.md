@@ -44,9 +44,9 @@ links to research code, such as these repos:
 posts on various aspects of machine learning / statistics / neuroscience advancements
 
 
-| [interpretability](https://csinva.github.io/blog/research/interp) | [connectomics](https://csinva.github.io/blog/research/connectomics) | [disentanglement](https://csinva.github.io/blog/research/disentanglement) |
+| [interpretability](https://csinva.github.io/blog/research/interp) | [connectomics](https://csinva.github.io/blog/research/connectomics) | [disentanglement](https://csinva.io/notes/research_ovws/ovw_disentanglement.html) |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-|            ![](assets/img/alexnet.png)                                                   | ![](assets/img/neuron.gif)                        | ![](assets/img/complexity.png)                        |
+| ![](assets/img/alexnet.png)                                  | ![](assets/img/neuron.gif)                                   | ![](assets/img/complexity.png)                               |
 
 
 # reference
