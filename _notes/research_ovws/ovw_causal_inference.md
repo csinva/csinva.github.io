@@ -201,6 +201,8 @@ C(Location of Car) --> B
         - remove all cells contained in another cell
         - pick one randomly, remove all points in this cell, then continue
     - stability: rerun search multiple times and look for stable cells / stable cell coverage
+- [Estimating individual treatment effect: generalization bounds and algorithms](https://arxiv.org/abs/1606.03976) (shalit, johansson, & sontag, 2017)
+  - bound the ITE estimation error using (1) generalization err of the repr. and (2) the distance between the treated and control distrs., e.g. MMD
 
 ## reinforcement (policy) learning
 

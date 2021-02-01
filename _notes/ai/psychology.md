@@ -476,6 +476,76 @@ Some notes on papers / books surrounding psychology, especially evolutionary psy
 - *Manichaeism* - polarization, believing one side only
 - imagine world with no countries, religion -> would probably be chaos
 
+
+
+# homo deus
+
+## old problems: famine, war, plague
+
+- famine, war, plague are less common now -- what will take their place?
+  - if these + ecological equilibrium are solved, do we need more?
+- plague
+  - black death in 1330s - killed between 75-200 mil
+  - smallpox plague in 1500s along with other diseases from Europe tothe Americas
+  - spanish flu 1918 infectedabout 500 mil (1/3 of world population)
+    - 50-100 mil died
+  - covid19 (as of jan 2021)
+    - ~1/2 mil dead
+  - since 1980s, >30 mil AIDS death
+  - "in the arms race between doctors and germs, doctors run faster"
+- war kills many fewer people these days
+  - mutually assured destruction
+  - made things like information / knoweldge more important (e.g. can't loot tech)
+  - Anton Chekhov famously said that a gun appearing in the first act of a play will inevitably be fired in the third ("chekhov's law")
+    - nowadays in real world, may note be the case
+  - terrorism generally works more by evoking outrage
+
+## new goals: immortality, happiness and divinity
+
+- immortality
+  - ex. Ray Kurzweil at Google trying to "solve death"
+  - in 20th century, life expectancy went from forty to seventy
+  - no clear line separates healing from upgrading
+- happiness
+  - epicurus - happiness is goal of life
+  - bentham/mill - happiness is pleasure - pain
+  - suicide rates are ~25x higher in developed nations
+  - 2 levels
+    - psychological level: happiness depends on expectations rather than objective conditions
+    - biological level: both our expectations and our happiness are determined by our biochemistry
+  - new drugs are constantly being developed and societal standards around them shift
+- divinity
+  - biological engineering - rewriting genetic code
+  - cyborg engineering - adding thinkgs like bionic hands, artificial eyes
+  - engineering of non-organic beings - AIs
+  - many of the the powers classical gods had are now possible through engineering
+- Knowledge that does not change behaviour is useless. But knowledge that changes behaviour quickly loses its relevance
+- the study of history aims above all to make us aware of possibilities we don’t normally consider. Historians study the past not in order to repeat it, but in order to be liberated from it.
+  - ex. capitalism, feminism, civil rights
+  - ex. lawns
+  - ppl thought living without pharoahs was inconceivable
+
+
+
+## PART I -- *Homo sapiens* Conquers the World
+
+- emotions are algorithms imbued by genes
+- religions sprung up w agriculture justifying animal cruelty
+- the founding idea of humanist religions such as liberalism, communism and Nazism is that *Homo sapiens* has some unique and sacred essence that is the source of all meaning and authority in the universe
+- no clear distinction between human and animals
+  - evolution implies there is no eternal soul
+- literal meaning of the word ‘individual’ is ‘something that cannot be divided’
+- what happens in the mind that doesn't happen in the brain?
+- possible that the sensations of consciousness / emotion are an unnecessary byproduct
+- clever hans (math horse)
+- *Homo sapiens* is the only species on earth capable of co-operating flexibly in large numbers
+- individuals favor fairness (ex. ultimatum game) but societies tolerate inequality
+- things can have subjective, objective, or intersubjective meaning (e.g. we agree money has value so it does)
+
+## PART II *Homo Sapiens* Gives Meaning to the World
+
+
+
 # Predictably Irrational
 
 **by Dan Ariely, 2008**

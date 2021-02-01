@@ -763,7 +763,6 @@ M --> Y
   T --> Y
   ```
 
-
 ### check ignorability impact: sensitivity analysis wrt unmeasured confounding
 
 - sensitivity analysis measures how “sensitive” a model is to changes in the value of the parameters / structure / assumptions of the model

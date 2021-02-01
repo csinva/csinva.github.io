@@ -47,6 +47,25 @@ See also notes on causal inference for some close connections.
 - adversarial discriminative domain adaptation (ADDA [tzeng et al. 2017](https://arxiv.org/abs/1702.05464))
 - balancing with [importance weighting](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.370.4921&rep=rep1&type=pdf)
 
+## dynamic selection
+
+*Dynamic Selection (DS) refers to techniques in which, for a new test point, pre-trained classifiers are selected/combined from a pool at test time  [review paper](https://www.etsmtl.ca/Unites-de-recherche/LIVIA/Recherche-et-innovation/Publications/Publications-2017/RCruz_InfoFusion.pdf) (cruz et al. 2018), [python package](https://github.com/scikit-learn-contrib/DESlib)*
+
+1. define region of competence
+   1. clustering
+   2. kNN - more refined than clustering
+   3. decision space - e.g. a model's classification boundary, internal splits in a model
+   4. potential function - weight all the points (e.g. by their distance to the query point)
+2. criteria for selection
+   1. individual scores: acc, prob. behavior, rank, meta-learning, complexity
+   2. group: data handling, ambiguity, diversity
+3. combination
+   1. non-trainable: mean, majority vote, product, median, etc.
+   2. trainable: learn the combination of models
+      1. related: in mixture of experts models + combination are trained jointly
+   3. dynamic weighting: combine using local competence of base classifiers
+   4. Oracle baseline - selects classifier predicts correct label, if such a classifier exists 
+
 ## test-time adaptation
 
 - test-time adaptation

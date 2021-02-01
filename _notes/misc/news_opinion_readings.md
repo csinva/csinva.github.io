@@ -2,6 +2,10 @@
 
 # 2021
 
+- [Opinion | The Science of Changing Someone's Mind - The New York Times](https://www.nytimes.com/2021/01/31/opinion/change-someones-mind.html?action=click&module=Opinion&pgtype=Homepage) - ask and listen rather than debate
+  - [asking](https://journals.sagepub.com/doi/full/10.1177/0956797612464058?casa_token=cefd_5VQuooAAAAA%3AncFeYFAiwWY4DfmdD2jZeGQfv2qymipAyzWhH3-BleGod6oqR6kIRp7-7RSCgLzgzsmFhT1UWGBP) people *how* their preferred political policies might work in practice, rather than asking *why* they favor those approaches, was more effective in opening their minds
+- [The Stock Traders of Reddit and TikTok - The New York Times](https://www.nytimes.com/2021/01/29/technology/stock-traders-reddit-tiktok-youtube.html?action=click&module=Spotlight&pgtype=Homepage)
+- [Opinion | Children Need to Be Back in School Tomorrow - The New York Times](https://www.nytimes.com/2021/01/28/opinion/coronavirus-schools-unions.html?action=click&module=Opinion&pgtype=Homepage)
 - [Opinion | What Kamala Harris Means For Girls - The New York Times](https://www.nytimes.com/2021/01/22/opinion/kamala-harris-girls.html?action=click&module=Opinion&pgtype=Homepage)
 - [Opinion | The Extraordinary Courage of Aleksei Navalny - The New York Times](https://www.nytimes.com/2021/01/17/opinion/aleksei-navalny-russia.html?action=click&module=Opinion&pgtype=Homepage)
 - [Why Eric Lander’s Controversial Paper “The Heroes of CRISPR” Is Not Solid Historical Research | American Scientist](https://www.americanscientist.org/blog/macroscope/why-eric-lander%E2%80%99s-controversial-paper-%E2%80%9Cthe-heroes-of-crispr%E2%80%9D-is-not-solid-historical)

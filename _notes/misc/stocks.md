@@ -11,7 +11,13 @@
   - bull market - stock prices are rising
   - S & P averages 7% / year
 
+# individual events
 
+- [The GameStop Game Never Stops - Bloomberg](https://www.bloomberg.com/opinion/articles/2021-01-25/the-game-never-stops)
+  - 3 explanations: stock fundamentals, short squeeze + gamma trap make feedback loop, meme
+  - **focal point** (or **Schelling point**) is a solution that people tend to choose by default in the absence of communication
+  - there is a mass of retail buyers who like to all buy the same stock, and Musk’s tweet gave them a [Schelling point](https://en.wikipedia.org/wiki/Focal_point_(game_theory)) to coordinate around
+  - SEC shut down Hertz selling shares after bankruptcy (stocks would become worthless)
 
 # ml in stock market
 
