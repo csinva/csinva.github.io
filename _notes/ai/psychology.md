@@ -544,7 +544,8 @@ Some notes on papers / books surrounding psychology, especially evolutionary psy
 
 ## PART II *Homo Sapiens* Gives Meaning to the World
 
-
+- Religion is *anything* that confers superhuman legitimacy on human social structures. It legitimises human norms and values by arguing that they reflect superhuman laws.
+- 
 
 # Predictably Irrational
 

@@ -1,3 +1,7 @@
+{:toc}
+
+
+
 # stock basics
 
 - stock basics
@@ -181,3 +185,17 @@
 
 
 ## LIBOR market model
+
+
+
+# private equity
+
+*[Private Equity](https://www.investopedia.com/terms/p/privateequity.asp#:~:text=Private%20equity%20is%20an%20alternative,the%20delisting%20of%20public%20equity.) is an alternative investment class of capital for things not on public exchange (e.g. private companies, or buyouts of public companies). Can be nicer for entrepeneurs*  
+
+- private equity firms make money by charging management and performance fees from investors in a fund
+  - like a hedge fund, managing partners take basic fees + profit percentage
+  - differs in that private equity invests directly in companies or buys a controlling interest (usually more long-term, lower risk)
+- types
+  - **venture capital** is a type of private equity
+  - leveraged buyouts - most popular  - buy company to improve it then resell it (to individual or in IPO)
+  - distressed funding - money given to struggling company to turn it around

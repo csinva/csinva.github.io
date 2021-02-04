@@ -2,6 +2,7 @@
 layout: notes
 title: interesting science
 category: research
+typora-copy-images-to: ../assets
 ---
 
 {:toc}
@@ -36,3 +37,5 @@ Some interesting papers in science and statistics.
 - [Unpaired Image-To-Image Translation Using Cycle-Consistent Adversarial Networks](http://openaccess.thecvf.com/content_iccv_2017/html/Zhu_Unpaired_Image-To-Image_Translation_ICCV_2017_paper.html) (zhu et al. 2017)
 - [cyclegan 17](http://openaccess.thecvf.com/content_iccv_2017/html/Zhu_Unpaired_Image-To-Image_Translation_ICCV_2017_paper.html)
 - [oregan 01 vision philosophy](https://www.cambridge.org/core/journals/behavioral-and-brain-sciences/article/sensorimotor-account-of-vision-and-visual-consciousness/BA1638CB7389102A12B336CE687EC270)
+- [The Association Between Income and Life Expectancy in the United States, 2001-2014](https://jamanetwork.com/journals/jama/article-abstract/2513561)
+  - ![income_vs_lifespan](../assets/income_vs_lifespan-2221629.png)
