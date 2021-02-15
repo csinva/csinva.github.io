@@ -402,11 +402,24 @@ C(Location of Car) --> B
 
 # different assumptions / experimental designs
 
+- unconfoundedness $T_i \perp (Y_i(0), Y_i(1)) | X_i$ is strong
+  - sometimes we may perfer $T_i \perp (Y_i(0), Y_i(1)) | X_i, Z_i$ for some unobserved $Z_i$ that we need to figure out
 - [The Blessings of Multiple Causes](https://arxiv.org/abs/1805.06826) (wang & blei, 2019) - having multiple causes can help construct / find all the confounders
-  - instead of ignorability, require that any missing confounder affects multiple observed variables
-  - *deconfounder algorithm* - infers a latent variable as a substitute for unobserved confounders and then uses that substitute to perform causal inference
-    - replaces an uncheckable search for possible confounders with the checkable goal of building a good factor model of observed casts.
+  - **deconfounder algorithm** 
+    - fit a factor model of causes
+    - estimate a repr $Z_i$ of data point $A_i$ - $Z_i$ renders the causes conditionally independent
+    - now, $Z_i$ is a substitute for unobserved confounders
+  - assumptions
+    - no causal arrows among causes $A_i$
+    - no unobserved single-cause confounders: any missing confounder affects multiple observed variables
+      - --> can check the fit of the factor model, but won't check perfectly
+    - the substitute confounder: there is enough information in the data to learn the variable $Z$ which renders causes conditionally independent
+      - strong assumption!
+  - thm
+    - with observed covariates X, weak unconfoundedness: $A_1, ...A_m \perp Y(a) | Z, X$ (i.e. $Z$ contains all multi-cause confounders, $X$ contains all single-cause confounders)
+  - replaces an uncheckable search for possible confounders with the checkable goal of building a good factor model of observed casts.
   - controversial whether this works in general
+  - [Towards Clarifying the Theory of the Deconfounder](https://arxiv.org/abs/2003.04948) (wang & blei, 2020)
   - [On Multi-Cause Causal Inference with Unobserved Confounding: Counterexamples, Impossibility, and Alternatives](https://arxiv.org/abs/1902.10286) (d'amour 2019)
 
 # solutions to basic problems

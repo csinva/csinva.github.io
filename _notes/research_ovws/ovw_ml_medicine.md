@@ -25,6 +25,8 @@ category: research
   - algorithms / data can be biased
   - correlation / causation get confused
 - healthcare is 20% of US GDP
+- **prognosis** is a guess as to the outcome of **treatment**
+- **diagnosis** is actually identifying the problem and giving it a name, such as depression or obsessive-compulsive disorder
 
 ## high-level
 

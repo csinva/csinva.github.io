@@ -37,7 +37,7 @@ links to research code, such as these repos:
 | :----------------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [imodels](https://github.com/csinva/interpretability-implementations-demos): transparent model fitting, [DAC](https://github.com/csinva/disentangled_attribution_curves): disentangled attribution curves | [ACD](https://github.com/csinva/hierarchical-dnn-interpretations): hierarchical interpretations, [TRIM](https://github.com/csinva/transformation-importance): interpreting transformations, [CDEP](https://github.com/laura-rieger/deep-explanation-penalization): penalizing explanations | [GAN/VAE](https://github.com/csinva/pytorch_gan_pretrained): demo models, [paper-title generator](https://github.com/csinva/gpt2-paper-title-generator) with gpt2 |
 
-![acd_intro](https://csinva.io/hierarchical-dnn-interpretations/reproduce_figs/figs/intro.svg?sanitize=True)
+![acd_intro](https://csinva.io/hierarchical-dnn-interpretations/intro.svg?sanitize=True)
 
 ## posts
 
