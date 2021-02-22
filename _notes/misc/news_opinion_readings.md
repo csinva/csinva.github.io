@@ -2,6 +2,9 @@
 
 # 2021
 
+- [Opinion | Texas, Land of Wind and Lies - The New York Times](https://www.nytimes.com/2021/02/18/opinion/texas-storm-power.html?action=click&module=Opinion&pgtype=Homepage)
+  - Republican politicians and right-wing media, not content with run-of-the-mill blame-shifting, have coalesced around a malicious falsehood instead — the claim that wind and solar power caused the collapse of the Texas power grid, and that radical environmentalists are somehow responsible for the fact that millions of people are freezing in the dark, even though conservative Republicans have run the state for a generation.
+- [Opinion | The Plot to Help America’s Children - The New York Times](https://www.nytimes.com/2021/02/15/opinion/child-tax-credit.html?action=click&module=Opinion&pgtype=Homepage)
 - [Lionel Messi, Barcelona and the Crippling Cost of Success - The New York Times](https://www.nytimes.com/2021/02/12/sports/soccer/barcelona-messi-contract.html?action=click&module=Top%20Stories&pgtype=Homepage)
 - [Opinion | The Science of Changing Someone's Mind - The New York Times](https://www.nytimes.com/2021/01/31/opinion/change-someones-mind.html?action=click&module=Opinion&pgtype=Homepage) - ask and listen rather than debate
   - [asking](https://journals.sagepub.com/doi/full/10.1177/0956797612464058?casa_token=cefd_5VQuooAAAAA%3AncFeYFAiwWY4DfmdD2jZeGQfv2qymipAyzWhH3-BleGod6oqR6kIRp7-7RSCgLzgzsmFhT1UWGBP) people *how* their preferred political policies might work in practice, rather than asking *why* they favor those approaches, was more effective in opening their minds

@@ -15,3 +15,5 @@ title: databases
   - **NoSQL databases.** A [NoSQL](https://www.oracle.com/database/nosql-cloud.html), or nonrelational database, allows unstructured and semistructured data to be stored and manipulated (in contrast to a relational database, which defines how all data inserted into the database must be composed). NoSQL databases grew popular as web applications became more common and more complex.
   - **Graph databases.** A graph database stores data in terms of entities and the relationships between entities.
   - **OLTP databases.** An OLTP database is a speedy, analytic database designed for large numbers of transactions performed by multiple users.
+- examples
+  - MySQL - simplesr

@@ -544,8 +544,34 @@ Some notes on papers / books surrounding psychology, especially evolutionary psy
 
 ## PART II *Homo Sapiens* Gives Meaning to the World
 
-- Religion is *anything* that confers superhuman legitimacy on human social structures. It legitimises human norms and values by arguing that they reflect superhuman laws.
-- 
+- **Religion** is *anything* that confers superhuman legitimacy on human social structures. It legitimises human norms and values by arguing that they reflect superhuman laws
+  - in theory, both science and religion are interested above all in the truth, and are destined to clash
+    - in reality, neither cares much about the truth and thus they can coexist
+  - religion is interested above all in order. It aims to create and maintain the social structure. Science is interested above all in in power.
+    - engineers could still build a hi-tech Noah's Ark for the upper caste, while leaving billions of others to drown
+- we have no scientific definition or measurement of happiness
+- not only do we possess far more power than ever before, but against all expectations, God's death did not lead to social collapse
+  - central religious revolution of modernity was not losing faith in God; rather, it was gaining faith in humanity
+- at least in the West, God has become an abstract idea that some accept and others reject, but it makes little difference either way
+  - modern people have differing ideas about extramarital affairs, but no matter what their position is, they tend to justify it in the name of human feelings rather than in the name of holy scriptures and divine commandments
+- my current political views, my likes and dislikes, and my hobbies and ambitions do not relfect my authentic self. Rather, they reflect my upbringing and social surrounding
+- liberal humanism, socalist humanism, evolutionary humanism
+- "under liberalism, everyone is free to starve"
+
+- papal infallibility (in which Pope can never err in matters of faith) became Catholic dogma only in 1870
+- before marx, people defined and divided themselves according to their views about God, not production methods
+
+## PART III *Homo Sapiens* Loses Control
+
+- can people choose their desires in the first place?
+  - ask yourself why do you think a particular though
+- do we value experiences or memories: ex. pick between dream vacation w/ no memories or decent vacation
+- liberal habitats such as democratic elections will become obsolete, bc Google can represent even my own political opinions better than myself
+- once AI agents evolve from oracles to agents, they can speak directly with each other (e.g. to schedule meetings etc.)
+- defenders of human individuality stand guard against the tyranny of the collective without realising it is now threatened from the opposite direction - losing meaning in a deluge of biological/electronic personalization
+- **dataism** says that the universe consists of data flows, and the value of any phenomenon or entity is determined by its contribution to data processing
+  - dataism worships data
+- "what will happen to scoeity, politics and daily life when non-conscious but highly intelligent algorithms know us better than we know ourselves?"
 
 # Predictably Irrational
 

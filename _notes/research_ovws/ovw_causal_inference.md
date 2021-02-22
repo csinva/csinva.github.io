@@ -422,6 +422,14 @@ C(Location of Car) --> B
   - [Towards Clarifying the Theory of the Deconfounder](https://arxiv.org/abs/2003.04948) (wang & blei, 2020)
   - [On Multi-Cause Causal Inference with Unobserved Confounding: Counterexamples, Impossibility, and Alternatives](https://arxiv.org/abs/1902.10286) (d'amour 2019)
 
+## synthetic control/interventions
+
+- synthetic control
+  - treatment occurs at time t0 on multiple units
+  - impute treatment by learning weights on observed outcomes
+  - The Economic Costs of Conflict: A Case Study of the Basque Country ([Abadie & G, 2003](https://economics.mit.edu/files/11870))
+  - Synthetic Control Methods for Comparative Case Studies: Estimating the Effect of California's Tobacco Control Program ([abadie et al. 2010](https://economics.mit.edu/files/11859))
+
 # solutions to basic problems
 
 ## learning "causal representations"

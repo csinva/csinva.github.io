@@ -703,6 +703,7 @@ M --> Y
     - when $e(X)=$0 or 1, potential outcomes are not even well-defined ([king & zeng, 2006](https://www.cambridge.org/core/journals/political-analysis/article/dangers-of-extreme-counterfactuals/2E70ACE0D50C6D51A1E042DFBB1BC335))
   - things can be matched
   - overlap and unconfoundedness trade off (e.g. see [amour et al. 2020](https://www.sciencedirect.com/science/article/pii/S0304407620302694))
+    - strong overlap also implies moment bounds for covariate balance
 - treatment assumptions
   - treatment is not ambiguous
   - **no interference**: my outcome is unaffected by anyone else's treatment
