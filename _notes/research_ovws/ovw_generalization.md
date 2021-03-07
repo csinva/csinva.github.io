@@ -8,6 +8,7 @@ category: research
 
 {:toc}
 
+# uniform stability
 - Risk: $R\left(A_{S}\right)=\mathbb{E}_{(X, Y) \sim P} \ell\left(A_{S}(X), Y\right)$
 - Empirical risk: $R_{\mathrm{emp}}\left(A_{S}\right)=\frac{1}{n} \sum_{i=1}^{n} \ell\left(A_{S}\left(X_{i}\right), Y_{i}\right)$
 - Generalization error: $R\left(A_{S}\right)-R_{\mathrm{emp}}\left(A_{S}\right)$

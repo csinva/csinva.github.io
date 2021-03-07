@@ -174,7 +174,48 @@ category: ml
   - spatial transformers: https://papers.nips.cc/paper/5854-spatial-transformer-networks.pdf 
 - http://colah.github.io/posts/2014-03-NN-Manifolds-Topology/
 
+# graph neural networks
 
+- [Theoretical Foundations of Graph Neural Networks](https://www.youtube.com/watch?v=uF53xsT7mjc)
+  - inputs are graphs
+  - e.g. molecule input to classification
+    - one big study: "a deep learning appraoch to antibiotic discovery" - using GNN classification of antibiotic resistance, came up with 100 candidate antibiotics and were able to test them
+  - e.g. traffic maps - nodes are intersections
+  - invariances in CNNs: translational, neighbor pixels relate a lot more
+  - simplest setup: no edges, each node $i$ has a feature vector $x_i$ (really a set not a graph)
+    - X is a matrix where each row is a feature vector
+    - note that permuting rows of X shouldn't change anything
+    - **permutation invariant**: $f(PX) = f(X)$ for all permutation matrices $P$
+      - e.g. $\mathbf{P}_{(2,4,1,3)} \mathbf{X}=\left[\begin{array}{llll}0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 1 & 0 & 0 & 0 \\ 0 & 0 & 1 & 0\end{array}\right]\left[\begin{array}{lll}- & \mathbf{x}_{1} & - \\ - & \mathbf{x}_{2} & - \\ - & \mathbf{x}_{3} & - \\ - & \mathbf{x}_{4} & -\end{array}\right]=\left[\begin{array}{lll}- & \mathbf{x}_{2} & - \\ - & \mathbf{x}_{4} & - \\ - & \mathbf{x}_{1} & - \\ - & \mathbf{x}_{3} & -\end{array}\right]$
+      - ex. *Deep Sets* model (zaheer et al. '17): $f(X) = \phi \left (\sum_k \psi(x_i) \right)$
+    - **permutation equivariant**: $f(PX) = P f(X)$ - useful for when we want answers at the node level
+  - graph: augment set of nodes with edges between them (store as an adjacency matrix)
+    - permuting permutation matrix to A requires operating on both rows and cols: $PAP^T$
+    - permutation invariance: $ f\left(\mathbf{P X}, \mathbf{P A P}^{\top}\right)=f(\mathbf{X}, \mathbf{A})$
+    - permutation equivariance: $f\left(\mathbf{P X}, \mathbf{P A P}^{\top}\right)=\mathbf{P} f(\mathbf{X}, \mathbf{A})$
+    - can now write an equivariant function that is extracts features not only of X, but also its neighbors: $g(x_b, X_{\mathcal N_b})$
+      - tasks: node classification, graph classification, link (edge) prediction)
+    - 3 flavors of GNN layers for extracting features from nodes / neighbors: simplest to most complex
+      - message-passing actually passes vectors to be sent across edges
+      - ![gnn_layers](../assets/gnn_layers.png)
+  - previous approaches map on to gnns well
+    - GNNs explicitly construct local features, much like previous works
+      - local objectives: features of nodes i and j should predict existence of edge $(i, j)$
+      - random-walk objectives: features should be similar if i and j co-occur on a short random walk (e.g. deepwalk, node2vec, line)
+    - similarities to NLP if we think of words as nodes and sentences as walks
+      - we can think of transformers as fully-connect graph networks with attentional form of GNN layers
+        - one big difference: positional embeddings often used, making the input not clearly a graph
+          - these postitional embeddings often take the form of sin/cos - very similar to DFT eigenvectors of a graph
+    - spectral gnns 
+      - operate on graph laplacian matrix $L = D - A$ where $D$ is degree matrix and $A$ is adjacency matrix - more mathematically convenient
+    - probabilistic modeling - e.g. assome markov random field and try to learn parameters
+      - this connects well to a message-passing GNN
+- GNN limitations
+  - ex. can we tell whether 2 graphs are isomorphic - often no?
+  - cank make GNNs more powerful by adding positional features, etc.
+  - can also embed sugraphs together
+  - things are more difficult in continuous case...
+- geometric deep learning: invariances and equivariances can be appllied generally to get a large calss of architectures between convolutions and graphs
 
 # misc
 

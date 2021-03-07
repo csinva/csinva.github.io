@@ -8,6 +8,7 @@ category: research
 
 {:toc}
 
+
 # general
 
 - 3 types
@@ -17,6 +18,7 @@ category: research
 - philosophy
   - want to focus on problems doctors can't do
   - alternatively, focus on automating problems parents can do to screen people at home in cost-effective way
+- **pathology** - branch of medicine where you take some tissue from a patient (e.g. tumor), look at it under a microscope, and make an assesment of what the disease is
 - websites are often easier than apps for patients
 - [The clinical artificial intelligence department: a prerequisite for success](https://informatics.bmj.com/content/27/1/e100183) (cosgriff et al. 2020) - we need designated departments for clinical ai so we don't have to rely on 3rd-party vendors and can test for things like distr. shift
 - [challenges in ai healthcare (news)](https://www.statnews.com/2019/06/19/what-if-ai-in-health-care-is-next-asbestos/)
@@ -27,6 +29,11 @@ category: research
 - healthcare is 20% of US GDP
 - **prognosis** is a guess as to the outcome of **treatment**
 - **diagnosis** is actually identifying the problem and giving it a name, such as depression or obsessive-compulsive disorder
+- AI is a technology, but it's not a product
+- fda clearance for paige prostate product (2019) - got ce mark
+  - helps pathologists identify cancers (less misses)
+- health economics incentives align with health incentives: catching tumor early is cheaper for hospitals
+- digital slide viewer also got CE mark
 
 ## high-level
 
@@ -152,6 +159,11 @@ category: research
 - mammogram: kerlikowske, karla, et al. 2018
 
 
+
+# medical imaging
+
+- [Medical Imaging and Machine Learning](https://arxiv.org/pdf/2103.01938.pdf)
+  - medical images often have multiple channels / are 3d - closer to video than images
 
 # improving medical studies
 

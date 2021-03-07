@@ -259,6 +259,15 @@ For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
     - uses a novel class-supervised disentanglement algorithm
   - entities represented by the class capsule overlap
     - adds additional regularizer
+- [How to represent part-whole hierarchies in a neural network](https://arxiv.org/abs/2102.12627) (hinton, 2021)
+  - The idea is simply to use islands of identical vectors to represent the nodes in the parse tree (parse tree would be things like wheel-> cabin -> car)
+  - each patch / pixel gets representations at different levels (e.g. texture, parrt of wheel, part of cabin, etc.)
+    - each repr. is a vector - vector fo high-level stuff (e.g. car) will agree for different pixels but low level (e.g. wheel) will differ
+    - during training, each layer at each location gets information from nearby levels
+      - hinton assumes weights are shared between locations (maybe don't need to be)
+      - also attention mechanism across other locations in same layer
+    - each location also takes in its positional location (x, y)
+    - could have the lowest-level repr start w/ a convnet
 - [WILDCAT: Weakly Supervised Learning of Deep ConvNets for Image Classification, Pointwise Localization and Segmentation](https://openaccess.thecvf.com/content_cvpr_2017/html/Durand_WILDCAT_Weakly_Supervised_CVPR_2017_paper.html) (durand et al. 2017) - constrains architecture
   - after extracting conv features, replace linear layers with special pooling layers, which helps with spatial localization
     - each class gets a pooling map
@@ -630,17 +639,20 @@ How interactions are defined and summarized is a very difficult thing to specify
        2. saliency map = sum of masks weighted by the produced predictions
 - gradient-based methods - visualize what in image would change class label
   - gradient * input
-  - [integrated gradients](http://proceedings.mlr.press/v70/sundararajan17a/sundararajan17a.pdf) (sundararajan et al. 2017) - just sum up the gradients from some baseline to the image (in 1d, this is just $f(x) - f(baseline))$
+  - [integrated gradients](http://proceedings.mlr.press/v70/sundararajan17a/sundararajan17a.pdf) (sundararajan et al. 2017) - just sum up the gradients from some baseline to the image times the differ  (in 1d, this is just $\int_{x'=baseline}^{x'=x} (x-x') \cdot (f(x) - f(x'))$
     - in higher dimensions, such as images, we pick the path to integrate by starting at some baseline (e.g. all zero) and then get gradients as we interpolate between the zero image and the real image
     - if we picture 2 features, we can see that integrating the gradients will not just yield $f(x) - f(baseline)$, because each time we evaluate the gradient we change both features
     - [explanation distill article](https://distill.pub/2020/attribution-baselines/) 
       - ex. any pixels which are same in original image and modified image will be given 0 importance
       - lots of different possible choices for baseline (e.g. random Gaussian image, blurred image, random image from the training set)
-      - could also average over distributions of baseline (this yields **expected gradients**)
+      - multiplying by $x-x'$ is strange, instead can multiply by distr. weight for $x'$
+        - 
+        - could also average over distributions of baseline (this yields **expected gradients**)
       - when we do a Gaussian distr., this is very similar to smoothgrad
   - lrp
   - taylor decomposition
   - deeplift
+  - smoothgrad - average gradients around local perturbations of a point
   - guided backpropagation - springenberg et al
   - lets you better create maximally specific image
   - selvaraju 17 - *grad-CAM*
@@ -650,6 +662,9 @@ How interactions are defined and summarized is a very difficult thing to specify
   - final saliency map consists of scores assigned by the chosen label to each pixel it won, with the map containing a score 0 for any pixel it did not win.
   - can be applied to any method which satisfies completeness (sum of pixel scores is exactly the logit value)
   - [Saliency Methods for Explaining Adversarial Attacks](https://arxiv.org/abs/1908.08413)
+- critiques
+    - [Do Input Gradients Highlight Discriminative Features?](https://arxiv.org/abs/2102.12781) (shah et a. 2021) - input gradients often don't highlight relevant features (they work better for adv. robust models)
+        - prove/demonstrate this in synthetic dataset where $x=ye_i$ for standard basis vector $e_i$, $y=\{\pm 1\}$
 - newer methods
     - [Score-CAM:Improved Visual Explanations Via Score-Weighted Class Activation Mapping](https://arxiv.org/abs/1910.01279)
     - [Removing input features via a generative model to explain their attributions to classifier's decisions](https://arxiv.org/abs/1910.04256)

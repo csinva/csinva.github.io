@@ -87,7 +87,10 @@ Some notes on natural language processing, focused on modern improvements based 
   - encoder reads input and ouputs context vector after each word
   - decoder at each step uses a different weighted combination of these context vectors
     - specifically, at each step, decoder concatenates its hidden state w/ the attention vector (the weighted combination of the context vectors)
-    - this is fed to a feedforward net to output a word![Screen Shot 2019-04-11 at 7.57.14 PM](../assets/nmt.png)
+    - this is fed to a feedforward net to output a word
+    - ![Screen Shot 2019-04-11 at 7.57.14 PM](../assets/nmt.png)
+  - at a high level we have $Q, K, V$ and compute $softmax(QK^T)V$
+    - instead could simplify it and do $softmax(XX^T)V$ - this would then be based on kernel
 - **transformer**
   - uses many self-attention layers
   - many stacked layers in encoder + decoder (not rnn: self-attention + feed forward)

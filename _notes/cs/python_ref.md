@@ -150,3 +150,15 @@ class MyClass:
 - .groupby returns a dict
 - merging
   - pd.merge(df1, df2, how='left', on='x1')
+
+# pytorch
+
+- `model = nn.DataParallel(model)`
+  
+  - automatically runs multiple batches from dataset at same time
+  
+  - `nn.DistributedDataParallel` is often faster - replicates model on each gpu and gives some data to each one (less data transferes)
+- dataset has `__init__, __getitem__, & __len__`
+  
+  - rather than storing images, can load image from filename in `__getitem__`
+- there's a `torch.nn.Flatten` module

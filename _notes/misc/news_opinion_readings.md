@@ -2,6 +2,12 @@
 
 # 2021
 
+- [Where Have All the Houses Gone? - The New York Times](https://www.nytimes.com/2021/02/26/upshot/where-have-all-the-houses-gone.html?action=click&module=Spotlight&pgtype=Homepage)
+  - way fewer houses for sale during pandemic (less houses for sale = less houses for )
+  - government-backed loans prevented some foreclosures (and corresponded to less houses for sale)
+  - since housing crash, less housing has been built relative to historical averages
+- [Opinion | What This Wave of Anti-Asian Violence Reveals About America - The New York Times](https://www.nytimes.com/2021/02/21/opinion/anti-asian-violence.html?action=click&module=Opinion&pgtype=Homepage)
+  - some Asian-Americans were outraged by recent incidents of anti-Asian violence, but since the perpetrators in these cases were Black, many others felt deeply uncomfortable with contributing to the criminalization of African-Americans
 - [Opinion | Texas, Land of Wind and Lies - The New York Times](https://www.nytimes.com/2021/02/18/opinion/texas-storm-power.html?action=click&module=Opinion&pgtype=Homepage)
   - Republican politicians and right-wing media, not content with run-of-the-mill blame-shifting, have coalesced around a malicious falsehood instead — the claim that wind and solar power caused the collapse of the Texas power grid, and that radical environmentalists are somehow responsible for the fact that millions of people are freezing in the dark, even though conservative Republicans have run the state for a generation.
 - [Opinion | The Plot to Help America’s Children - The New York Times](https://www.nytimes.com/2021/02/15/opinion/child-tax-credit.html?action=click&module=Opinion&pgtype=Homepage)
