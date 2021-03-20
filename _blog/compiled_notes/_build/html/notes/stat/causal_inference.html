@@ -158,6 +158,11 @@
      1.12. interpretability
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_generalization.html">
+     1.13. generalization
+    </a>
+   </li>
   </ul>
   <i class="fas fa-chevron-down">
   </i>
@@ -453,38 +458,43 @@
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/disease.html">
+     7.1. disease
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../neuro/brain_basics.html">
-     7.1. brain basics
+     7.2. brain basics
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../neuro/vissci.html">
-     7.2. vision
+     7.3. vision
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../neuro/comp_neuro.html">
-     7.3. comp neuro
+     7.4. comp neuro
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../neuro/sensory_input.html">
-     7.4. sensory input
+     7.5. sensory input
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../neuro/memory.html">
-     7.5. memory
+     7.6. memory
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../neuro/motor.html">
-     7.6. motor system
+     7.7. motor system
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../neuro/development.html">
-     7.7. development
+     7.8. development
     </a>
    </li>
   </ul>
@@ -872,7 +882,7 @@
 <li><p><strong>epistemology</strong> - theory of knowledge</p></li>
 </ul>
 </li>
-<li><p>clear distinction between identification and estimation</p>
+<li><p>clear distinction between <em>identification</em> and <em>estimation</em> (and third problem is <em>discovery</em> - what is the structure?)</p>
 <ul>
 <li><p>a causal quantity is <strong>identifiable</strong> if we can compute it from a purely statistical quantity</p></li>
 <li><p><img alt="identification_estimation_flowchart" src="../../_images/identification_estimation_flowchart.png" /></p></li>
@@ -1745,7 +1755,7 @@ U2 --&gt; Y
 </li>
 </ul>
 </li>
-<li><p><span class="math notranslate nohighlight">\(\hat \tau_{ht} = \frac 1 n \sum_i \frac{T_iY_i}{\hat e(X_i)} - \frac 1 n \sum_i \frac{(1-T_i)Y_i}{1-\hat e(X_i)} \)</span>  = <strong>inverse propensity score weighting estimator = horvitz-thompson estimator</strong> (horvitz &amp; thompson 1952)</p>
+<li><p><span class="math notranslate nohighlight">\(\hat \tau_{ht} = \frac 1 n \sum_i \frac{T_iY_i}{\hat e(X_i)} - \frac 1 n \sum_i \frac{(1-T_i)Y_i}{1-\hat e(X_i)} \)</span>  = <strong>inverse propensity score weighting estimator = horvitz-thompson estimator</strong> (horvitz &amp; thompson, 1952)</p>
 <ul>
 <li><p>weight outcomes by <span class="math notranslate nohighlight">\(1/e(X)\)</span> for treated individuals and <span class="math notranslate nohighlight">\(1/(1-e(X))\)</span> for untreated</p></li>
 <li><p><em>Based on Thm.</em> if <span class="math notranslate nohighlight">\(\underbrace{T \perp \{ Y^{T=1}, Y^{T=0}\} | X}_{\text{strong ignorability on X}}\)</span>, then:</p>
@@ -1945,7 +1955,6 @@ U2 --&gt; Y
 </li>
 </ul>
 </li>
-<li><p>causal trees/forests</p></li>
 </ul>
 </div>
 </div>
@@ -2008,7 +2017,11 @@ U2 --&gt; Y
 </ul>
 </li>
 <li><p>things can be matched</p></li>
-<li><p>overlap and unconfoundedness trade off (e.g. see <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0304407620302694">amour et al. 2020</a>)</p></li>
+<li><p>overlap and unconfoundedness trade off (e.g. see <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0304407620302694">amour et al. 2020</a>)</p>
+<ul>
+<li><p>strong overlap also implies moment bounds for covariate balance</p></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><p>treatment assumptions</p>
@@ -2076,7 +2089,7 @@ U2 --&gt; Y
 <li><p><span class="math notranslate nohighlight">\(\tau(T \to Y') = E\{Y'^{T=1} - Y'^{T=0})\}\)</span></p></li>
 </ul>
 </li>
-<li><p>ex. cornfield et al. 1959 - effect of smoking on car accident</p></li>
+<li><p>ex. <a class="reference external" href="https://academic.oup.com/ije/article/38/5/1175/666926">cornfield et al. 1959</a> - effect of smoking on car accident</p></li>
 <li><div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>graph LR
 X(X) --&gt;Y&#39;(Y&#39;)
   X --&gt; Y
@@ -2090,7 +2103,7 @@ X(X) --&gt;Y&#39;(Y&#39;)
 <li><p><span class="math notranslate nohighlight">\(T'\)</span> is similar to <span class="math notranslate nohighlight">\(T\)</span> in terms of confounding: if we believe <span class="math notranslate nohighlight">\(T \perp Y(t) \mid X\)</span> we also think <span class="math notranslate nohighlight">\(T' \perp Y(t) \mid X\)</span></p></li>
 <li><p>we know the expected effect of <span class="math notranslate nohighlight">\(T'\)</span> on <span class="math notranslate nohighlight">\(Y\)</span> (ex. it should be 0)</p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\(\tau(T' \to Y) = E\{Y^{T'=1} - Y^{T'=0})\}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\tau(T' \to Y) = E\{Y^{T'=1} - Y^{T'=0}\}\)</span></p></li>
 </ul>
 </li>
 <li><p>ex. maternal exposure <span class="math notranslate nohighlight">\(T\)</span> and parental exposure <span class="math notranslate nohighlight">\(T'\)</span></p></li>
@@ -2109,13 +2122,12 @@ T --&gt; Y
 <div class="section" id="check-ignorability-impact-sensitivity-analysis-wrt-unmeasured-confounding">
 <h4>4.4.6.2.2. check ignorability impact: sensitivity analysis wrt unmeasured confounding<a class="headerlink" href="#check-ignorability-impact-sensitivity-analysis-wrt-unmeasured-confounding" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
-<li><p>broadly, sensitivity analysis measures how “sensitive” a model is to changes in the value of the parameters of the model and to changes in the structure of the model</p></li>
-<li><p>here, we focus on sensitivity analyses <em>wrt unmeasured confounding</em> - how strong the effects of an unobserved covariate <span class="math notranslate nohighlight">\(U\)</span> on the exposure and/or the outcome would have to be to change the study inference (estimated effect of <span class="math notranslate nohighlight">\(T\)</span> on <span class="math notranslate nohighlight">\(Y\)</span>)</p></li>
-<li><p>there are many types of such analyses (for a review, see <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3800481/pdf/nihms470690.pdf">liu et al. 2013</a>)</p>
+<li><p>sensitivity analysis measures how “sensitive” a model is to changes in the value of the parameters / structure / assumptions of the model</p></li>
+<li><p>we focus on sensitivity analyses <em>wrt unmeasured confounding</em> - how strong the effects of an unobserved covariate <span class="math notranslate nohighlight">\(U\)</span> on the exposure and/or the outcome would have to be to change the study inference (estimated effect of <span class="math notranslate nohighlight">\(T\)</span> on <span class="math notranslate nohighlight">\(Y\)</span>)</p></li>
+<li><p>there are many types of such analyses (for a review, see <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3800481/pdf/nihms470690.pdf">liu et al. 2013</a>)</p></li>
+<li><p>ex. <strong>rosenbaum-type</strong>: interested in finding thresholds of the following association(s) that would render test statistic of the study inference insignificant</p>
 <ul>
-<li><p>ex. <strong>rosenbaum-type</strong></p>
-<ul>
-<li><p>interested in finding thresholds of the following association(s) that would render test statistic of the study inference insignificant (e.g. true odds-ratio of outcome and treatment, adjusted for <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(U\)</span>):</p>
+<li><p>e.g. true odds-ratio of outcome and treatment, adjusted for <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(U\)</span></p>
 <ul>
 <li><p>unobserved confounder and the treatment (odds-ratio <span class="math notranslate nohighlight">\(OR_{\text{UT}}\)</span>)</p></li>
 <li><p>and/or unobserved confounder and the outcome (odds-ratio <span class="math notranslate nohighlight">\(OR_{\text{UY}}\)</span>)</p></li>
@@ -2129,8 +2141,10 @@ T --&gt; Y
 <li><p>simultaneous sensitivity analysis: vary both vary <span class="math notranslate nohighlight">\(OR_{\text{UT}}\)</span> and <span class="math notranslate nohighlight">\(OR_{\text{UY}}\)</span></p></li>
 </ul>
 </li>
-<li><p>ex. <strong>confidence-interval methods</strong></p></li>
-<li><p>quantify unobserved confounder under specifications then arrive at target of interest + confidence interval, adjusted for <span class="math notranslate nohighlight">\(U\)</span></p></li>
+</ul>
+</li>
+<li><p>ex. <strong>confidence-interval methods</strong>: quantify unobserved confounder under specifications then arrive at target of interest + confidence interval, adjusted for <span class="math notranslate nohighlight">\(U\)</span></p>
+<ul>
 <li><p>first approach: use association between <span class="math notranslate nohighlight">\(T, Y, U\)</span> to create data as if <span class="math notranslate nohighlight">\(U\)</span> was observed</p>
 <ul>
 <li><p>specifications: <span class="math notranslate nohighlight">\(P(U|T=0\)</span>), <span class="math notranslate nohighlight">\(P(U|T=1)\)</span> (<a class="reference external" href="https://academic.oup.com/ije/article/25/6/1107/672425">greenland, 1996</a>)</p></li>
@@ -2163,13 +2177,20 @@ T --&gt; Y
 </ul>
 </li>
 <li><p>ex. bounds on direct effects with confounded intermediate variables (<a class="reference external" href="https://onlinelibrary.wiley.com/doi/full/10.1111/j.1541-0420.2007.00949.x?casa_token=WdtSDtKM_zsAAAAA%3AyEmvyHkEBk5qtvcj4p8r5ewrI5npbTts9J9IKRQyc4XmbpDvsmtIDy28sbOU2m32oT31ol2VM4Kb5w">Cai et al. 2008</a>)</p></li>
-</ul>
-</li>
 <li><p><strong>bounds with no assumptions</strong> (<a class="reference external" href="https://www.jstor.org/stable/2006592?casa_token=5wsmh0n73ecAAAAA%3AGrmKG84ZmaGgvx7Xsadw_Gta7y59XrUMUe8IpYH-IWfN7mVx0p51Wte4H8m7zZy6l06TYQZeNHRgpz7cPAvXtrw2O6pABDcgYanESUXjuyhM7_9vAOws&amp;seq=1#metadata_info_tab_contents">manski 1990</a>)</p>
 <ul>
 <li><p>worst-case bounds are very poor</p></li>
 <li><p>also bounds with monotone treatment response (<a class="reference external" href="https://ideas.repec.org/a/ecm/emetrp/v65y1997i6p1311-1334.html">manski, 1997</a>)</p></li>
 <li><p>bounds with optimal treatment selection (i.e. individuals always receive the treatement that is best for them) (manski, 1990, “nonparametric bounds on treatment effects”)</p></li>
+</ul>
+</li>
+<li><p>Sensitivity Analysis in Observational Research: Introducing the E-Value (<a class="reference external" href="https://www.acpjournals.org/doi/abs/10.7326/M16-2607">vanderweele &amp; ding, 2017</a>)</p>
+<ul>
+<li><p><strong>E-value</strong> = min strength of association (risk ratio) that an unmeasured confounder would require with both <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> to explain away a specific treatment-outcome association, conditional on <span class="math notranslate nohighlight">\(X\)</span></p>
+<ul>
+<li><p>higher = more causal</p></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

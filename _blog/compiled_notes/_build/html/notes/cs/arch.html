@@ -158,6 +158,11 @@
      1.12. interpretability
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_generalization.html">
+     1.13. generalization
+    </a>
+   </li>
   </ul>
   <i class="fas fa-chevron-down">
   </i>
@@ -453,38 +458,43 @@
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/disease.html">
+     7.1. disease
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../neuro/brain_basics.html">
-     7.1. brain basics
+     7.2. brain basics
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../neuro/vissci.html">
-     7.2. vision
+     7.3. vision
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../neuro/comp_neuro.html">
-     7.3. comp neuro
+     7.4. comp neuro
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../neuro/sensory_input.html">
-     7.4. sensory input
+     7.5. sensory input
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../neuro/memory.html">
-     7.5. memory
+     7.6. memory
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../neuro/motor.html">
-     7.6. motor system
+     7.7. motor system
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../neuro/development.html">
-     7.7. development
+     7.8. development
     </a>
    </li>
   </ul>
@@ -1207,22 +1217,22 @@ ret
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">all</span> <span class="n">C</span> <span class="n">is</span> <span class="n">valid</span> <span class="n">C</span><span class="o">++</span>
 <span class="c1">// doesn&#39;t work</span>
 <span class="n">always</span> <span class="n">use</span> <span class="o">+=</span><span class="mi">1</span> <span class="n">not</span> <span class="o">++</span>
-<span class="n">compile</span> <span class="n">with</span> <span class="n">gcc</span> <span class="o">-</span><span class="n">ansi</span> <span class="o">-</span><span class="n">pedantic</span> <span class="o">-</span><span class="n">Wall</span> <span class="o">-</span><span class="n">Werror</span> <span class="n">program</span><span class="o">.</span><span class="na">c</span>
+<span class="n">compile</span> <span class="n">with</span> <span class="n">gcc</span> <span class="o">-</span><span class="n">ansi</span> <span class="o">-</span><span class="n">pedantic</span> <span class="o">-</span><span class="n">Wall</span> <span class="o">-</span><span class="n">Werror</span> <span class="n">program</span><span class="p">.</span><span class="na">c</span>
 	<span class="o">-</span><span class="n">Werror</span> <span class="n">will</span> <span class="n">stop</span> <span class="n">the</span> <span class="n">program</span> <span class="n">from</span> <span class="n">compiling</span>
 <span class="n">all</span> <span class="n">variables</span> <span class="n">have</span> <span class="n">to</span> <span class="n">be</span> <span class="n">declared</span> <span class="n">at</span> <span class="n">the</span> <span class="n">top</span>
-	<span class="kt">int</span> <span class="nf">main</span><span class="o">(</span><span class="kt">int</span> <span class="n">argc</span><span class="o">,</span> <span class="kt">char</span><span class="o">*</span><span class="n">argv</span><span class="o">[]){</span>
-		<span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
-		<span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">34</span><span class="o">;</span>
-		<span class="kt">int</span> <span class="n">z</span> <span class="o">=</span> <span class="n">y</span><span class="o">*</span><span class="n">y</span><span class="o">/</span><span class="n">x</span><span class="o">;</span>
-		<span class="n">x</span> <span class="o">=</span> <span class="mi">13</span><span class="o">;</span>
-		<span class="kt">int</span> <span class="n">w</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="o">&lt;-</span> <span class="k">this</span> <span class="n">will</span> <span class="n">not</span> <span class="n">work</span>
-	<span class="n">label_name</span><span class="o">:</span>
-		<span class="n">printf</span><span class="o">(</span><span class="s">&quot;omg!&quot;</span><span class="o">);</span>
-		<span class="k">goto</span> <span class="n">label_name</span><span class="o">;</span> <span class="cm">/*this goes to the label_name line - don&#39;t do this, but assembly only has this*/</span>
-		<span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
-	<span class="o">}</span>
-<span class="n">printf</span><span class="o">(</span><span class="kd">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">format</span><span class="o">,</span> <span class="o">...)</span>
-	<span class="n">printf</span><span class="o">(</span><span class="s">&quot;%d %f %g %s\n&quot;</span><span class="o">,);</span> <span class="cm">/* int, double (these must be explicitly doubles), double (as small as possible), string */</span>
+	<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span><span class="n">argv</span><span class="o">[]</span><span class="p">){</span>
+		<span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+		<span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">34</span><span class="p">;</span>
+		<span class="kt">int</span> <span class="n">z</span> <span class="o">=</span> <span class="n">y</span><span class="o">*</span><span class="n">y</span><span class="o">/</span><span class="n">x</span><span class="p">;</span>
+		<span class="n">x</span> <span class="o">=</span> <span class="mi">13</span><span class="p">;</span>
+		<span class="kt">int</span> <span class="n">w</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="o">&lt;-</span> <span class="k">this</span> <span class="n">will</span> <span class="n">not</span> <span class="n">work</span>
+	<span class="n">label_name</span><span class="p">:</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&quot;omg!&quot;</span><span class="p">);</span>
+		<span class="k">goto</span> <span class="n">label_name</span><span class="p">;</span> <span class="cm">/*this goes to the label_name line - don&#39;t do this, but assembly only has this*/</span>
+		<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="n">printf</span><span class="p">(</span><span class="kd">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">format</span><span class="p">,</span> <span class="p">...)</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d %f %g %s\n&quot;</span><span class="p">,);</span> <span class="cm">/* int, double (these must be explicitly doubles), double (as small as possible), string */</span>
 </pre></div>
 </div>
 </div>
@@ -1265,17 +1275,17 @@ ret
 8 | byte | 64 | quad word</p></li>
 </ul>
 <p>theoretically would work:</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">Void</span> <span class="o">*</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">(</span><span class="n">address</span> <span class="mi">3</span><span class="o">)</span>
-<span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="mh">0x3a</span> <span class="o">(</span><span class="n">value</span> <span class="mi">3</span><span class="n">a</span><span class="o">)</span>
-<span class="n">p</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="mh">0x3a</span> <span class="o">(</span><span class="n">value</span> <span class="mi">3</span><span class="n">a</span><span class="o">)</span>
-<span class="n">p</span><span class="o">[</span><span class="mi">3</span><span class="o">]</span> <span class="n">is</span> <span class="n">same</span> <span class="n">as</span> <span class="o">*(</span><span class="n">p</span><span class="o">+</span><span class="mi">3</span><span class="o">)</span> <span class="o">-</span> <span class="n">can</span> <span class="n">even</span> <span class="n">use</span> <span class="n">negative</span> <span class="n">addresses</span><span class="o">,</span> <span class="o">(</span><span class="n">at</span> <span class="n">end</span> <span class="n">wraps</span> <span class="n">around</span> <span class="o">-</span> <span class="n">overflows</span><span class="o">)</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">Void</span> <span class="o">*</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">3</span> <span class="p">(</span><span class="n">address</span> <span class="mi">3</span><span class="p">)</span>
+<span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="mh">0x3a</span> <span class="p">(</span><span class="n">value</span> <span class="mi">3</span><span class="n">a</span><span class="p">)</span>
+<span class="n">p</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="mh">0x3a</span> <span class="p">(</span><span class="n">value</span> <span class="mi">3</span><span class="n">a</span><span class="p">)</span>
+<span class="n">p</span><span class="o">[</span><span class="mi">3</span><span class="o">]</span> <span class="n">is</span> <span class="n">same</span> <span class="n">as</span> <span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span> <span class="o">-</span> <span class="n">can</span> <span class="n">even</span> <span class="n">use</span> <span class="n">negative</span> <span class="n">addresses</span><span class="p">,</span> <span class="p">(</span><span class="n">at</span> <span class="n">end</span> <span class="n">wraps</span> <span class="n">around</span> <span class="o">-</span> <span class="n">overflows</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>in practice:</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="o">*</span> <span class="n">p</span>
-<span class="nf">sizeof</span><span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="o">==</span> <span class="mi">4</span><span class="o">,</span> <span class="n">but</span> <span class="n">all</span> <span class="n">pointers</span> <span class="n">are</span> <span class="n">just</span> <span class="n">one</span> <span class="kt">byte</span> <span class="o">-</span> <span class="n">points</span> <span class="n">to</span> <span class="n">location</span> <span class="n">of</span> <span class="n">four</span> <span class="n">consecutive</span> <span class="n">bytes</span> <span class="n">that</span> <span class="n">are</span> <span class="kt">int</span>
+<span class="nf">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">,</span> <span class="n">but</span> <span class="n">all</span> <span class="n">pointers</span> <span class="n">are</span> <span class="n">just</span> <span class="n">one</span> <span class="kt">byte</span> <span class="o">-</span> <span class="n">points</span> <span class="n">to</span> <span class="n">location</span> <span class="n">of</span> <span class="n">four</span> <span class="n">consecutive</span> <span class="n">bytes</span> <span class="n">that</span> <span class="n">are</span> <span class="kt">int</span>
 <span class="n">indexing</span> <span class="k">this</span> <span class="n">pointer</span> <span class="n">will</span> <span class="n">tell</span> <span class="n">you</span> <span class="n">how</span> <span class="n">much</span> <span class="n">to</span> <span class="n">offset</span> <span class="n">memory</span> <span class="n">by</span>
-<span class="n">address</span> <span class="n">must</span> <span class="n">be</span> <span class="mi">4</span><span class="o">-</span><span class="n">bytes</span> <span class="nf">aligned</span> <span class="o">(</span><span class="n">means</span> <span class="n">it</span> <span class="n">will</span> <span class="n">be</span> <span class="n">a</span> <span class="n">multiple</span> <span class="n">of</span> <span class="mi">4</span><span class="o">)</span>
+<span class="n">address</span> <span class="n">must</span> <span class="n">be</span> <span class="mi">4</span><span class="o">-</span><span class="n">bytes</span> <span class="nf">aligned</span> <span class="p">(</span><span class="n">means</span> <span class="n">it</span> <span class="n">will</span> <span class="n">be</span> <span class="n">a</span> <span class="n">multiple</span> <span class="n">of</span> <span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -1672,7 +1682,7 @@ icode = i10bytes[4..8] - little endian values, one byte at a time - this grabs B
 <li><p>assume icode was b (in reality, this must be picked with a mux)</p></li>
 </ul>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span>	<span class="n">valA</span> 	<span class="o">&lt;-</span> <span class="n">R</span><span class="o">[</span><span class="mi">4</span><span class="o">]</span> 		<span class="c1">// gets %rsp - rsp is 4th register</span>
-	<span class="n">rA</span><span class="o">:</span><span class="n">rB</span>	<span class="o">&lt;-</span> <span class="n">M_1</span><span class="o">[</span><span class="n">PC</span><span class="o">+</span><span class="mi">1</span><span class="o">]</span>	<span class="c1">// book&#39;s notation - splits up a byte into 2 halves, 1 byte in rA, 1 byte in rB, PC+1 because we want second byte</span>
+	<span class="n">rA</span><span class="p">:</span><span class="n">rB</span>	<span class="o">&lt;-</span> <span class="n">M_1</span><span class="o">[</span><span class="n">PC</span><span class="o">+</span><span class="mi">1</span><span class="o">]</span>	<span class="c1">// book&#39;s notation - splits up a byte into 2 halves, 1 byte in rA, 1 byte in rB, PC+1 because we want second byte</span>
 							<span class="c1">// 3 is loaded into rA, F is loaded into rB</span>
 	<span class="n">valE</span> 	<span class="o">&lt;-</span> <span class="n">valE</span><span class="o">+</span><span class="mi">8</span>		<span class="c1">// inc rsp by 8</span>
 	<span class="n">valM</span> 	<span class="o">&lt;-</span> <span class="n">M_8</span><span class="o">[</span><span class="n">valA</span><span class="o">]</span> 	<span class="c1">// send %rsp to </span>
@@ -1834,8 +1844,8 @@ q_pc = valP;
 <li><p>stalling a pipeline = stalling a stage</p></li>
 <li><p>bubbling a pipeline - bubble all stages</p></li>
 </ul>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">irmovq</span>	 	<span class="n">$31</span><span class="o">,</span> <span class="o">%</span><span class="n">rax</span>
-<span class="n">addq</span> 		<span class="n">$rax</span><span class="o">,%</span><span class="n">rax</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">irmovq</span>	 	<span class="n">$31</span><span class="p">,</span> <span class="o">%</span><span class="n">rax</span>
+<span class="n">addq</span> 		<span class="n">$rax</span><span class="p">,</span><span class="o">%</span><span class="n">rax</span>
 <span class="n">jle</span>
 </pre></div>
 </div>
@@ -1895,7 +1905,7 @@ bubble_E = 1;   //completes and then starts a nop, gives it time to write values
 </ul>
 </li>
 </ol>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">subq</span> <span class="o">%</span><span class="n">rax</span><span class="o">,%</span><span class="n">rbx</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">subq</span> <span class="o">%</span><span class="n">rax</span><span class="p">,</span><span class="o">%</span><span class="n">rbx</span>
 <span class="n">jge</span> <span class="n">bazzle</span>
 </pre></div>
 </div>
@@ -2158,40 +2168,40 @@ bubble_E = 1;   //completes and then starts a nop, gives it time to write values
 <li><p>some things can’t be optimized because you could pass in the same pointer twice as an argument</p></li>
 <li><p>loop unrolling - often dependencies accross iterations</p></li>
 </ul>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="o">;</span><span class="n">i</span><span class="o">++){</span> <span class="c1">//this line is bookkeeping overhead - want to reduce this</span>
-	<span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]+=</span><span class="mi">1</span><span class="o">;</span> <span class="c1">//has temporal locality because you add and then store back to same address, obviously spatial locality</span>
-<span class="o">}</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span> <span class="c1">//this line is bookkeeping overhead - want to reduce this</span>
+	<span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]+=</span><span class="mi">1</span><span class="p">;</span> <span class="c1">//has temporal locality because you add and then store back to same address, obviously spatial locality</span>
+<span class="p">}</span>
 <span class="c1">// unrolled</span>
-<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="o">;</span><span class="n">i</span><span class="o">+=</span><span class="mi">3</span><span class="o">){</span> <span class="c1">//reduced number of comparisons, can also get benefits from vectorization (complicated)</span>
-	<span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]+=</span><span class="mi">1</span><span class="o">;</span>
-	<span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">]+=</span><span class="mi">1</span><span class="o">;</span>
-	<span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="o">]+=</span><span class="mi">1</span><span class="o">;</span>
-<span class="o">}</span>
-<span class="k">if</span><span class="o">(</span><span class="n">n</span><span class="o">%</span><span class="mi">3</span><span class="o">&gt;=</span><span class="mi">1</span><span class="o">)</span> <span class="n">a</span><span class="o">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="o">]+=</span><span class="mi">1</span><span class="o">;</span>
-<span class="k">if</span><span class="o">(</span><span class="n">n</span><span class="o">%</span><span class="mi">2</span><span class="o">&gt;=</span><span class="mi">2</span><span class="o">)</span> <span class="n">a</span><span class="o">[</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="o">]+=</span><span class="mi">1</span><span class="o">;</span>
+<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">;</span><span class="n">i</span><span class="o">+=</span><span class="mi">3</span><span class="p">){</span> <span class="c1">//reduced number of comparisons, can also get benefits from vectorization (complicated)</span>
+	<span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]+=</span><span class="mi">1</span><span class="p">;</span>
+	<span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">]+=</span><span class="mi">1</span><span class="p">;</span>
+	<span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="o">]+=</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">if</span><span class="p">(</span><span class="n">n</span><span class="o">%</span><span class="mi">3</span><span class="o">&gt;=</span><span class="mi">1</span><span class="p">)</span> <span class="n">a</span><span class="o">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="o">]+=</span><span class="mi">1</span><span class="p">;</span>
+<span class="k">if</span><span class="p">(</span><span class="n">n</span><span class="o">%</span><span class="mi">2</span><span class="o">&gt;=</span><span class="mi">2</span><span class="p">)</span> <span class="n">a</span><span class="o">[</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="o">]+=</span><span class="mi">1</span><span class="p">;</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>n%4 = n&amp;3</p></li>
 <li><p>n%8 = n&amp;7s</p></li>
 </ul>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span>	<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="o">;</span><span class="n">i</span><span class="o">+=</span><span class="mi">1</span><span class="o">){</span> <span class="c1">//this can be slower, data dependency between lines might not allow full parallelism (more stalling)</span>
-		<span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]+=</span><span class="mi">1</span><span class="o">;</span>
-		<span class="n">i</span><span class="o">+=</span><span class="mi">1</span><span class="o">;</span>
-		<span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]+=</span><span class="mi">1</span><span class="o">;</span>
-		<span class="n">i</span><span class="o">+=</span><span class="mi">1</span><span class="o">;</span>
-		<span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]+=</span><span class="mi">1</span><span class="o">;</span>
-		<span class="n">i</span><span class="o">+=</span><span class="mi">1</span><span class="o">;</span>
-	<span class="o">}</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span>	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">+=</span><span class="mi">1</span><span class="p">){</span> <span class="c1">//this can be slower, data dependency between lines might not allow full parallelism (more stalling)</span>
+		<span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]+=</span><span class="mi">1</span><span class="p">;</span>
+		<span class="n">i</span><span class="o">+=</span><span class="mi">1</span><span class="p">;</span>
+		<span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]+=</span><span class="mi">1</span><span class="p">;</span>
+		<span class="n">i</span><span class="o">+=</span><span class="mi">1</span><span class="p">;</span>
+		<span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]+=</span><span class="mi">1</span><span class="p">;</span>
+		<span class="n">i</span><span class="o">+=</span><span class="mi">1</span><span class="p">;</span>
+	<span class="p">}</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>loop order</p></li>
 <li><p>the order of loops can make this way faster</p></li>
 </ul>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="o">(</span><span class="n">i</span><span class="o">...)</span>
-	<span class="k">for</span><span class="o">(</span><span class="n">j</span><span class="o">...)</span>
-		<span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]+=</span><span class="mi">1</span><span class="o">;</span> <span class="c1">//two memory accesses</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="p">...)</span>
+	<span class="k">for</span><span class="p">(</span><span class="n">j</span><span class="p">...)</span>
+		<span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]+=</span><span class="mi">1</span><span class="p">;</span> <span class="c1">//two memory accesses</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -2203,9 +2213,9 @@ bubble_E = 1;   //completes and then starts a nop, gives it time to write values
 </li>
 <li><p>problem - loop can’t be picked</p></li>
 </ul>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span>	<span class="k">for</span><span class="o">(</span><span class="n">i</span><span class="o">..)</span>
-		<span class="k">for</span><span class="o">(</span><span class="n">j</span><span class="o">...)</span>
-			<span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]=</span><span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">][</span><span class="n">i</span><span class="o">];</span> 
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span>	<span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="p">..)</span>
+		<span class="k">for</span><span class="p">(</span><span class="n">j</span><span class="p">...)</span>
+			<span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]=</span><span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">][</span><span class="n">i</span><span class="o">]</span><span class="p">;</span> 
 </pre></div>
 </div>
 <ul class="simple">
@@ -2217,12 +2227,12 @@ bubble_E = 1;   //completes and then starts a nop, gives it time to write values
 </ul>
 </li>
 </ul>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span>	<span class="kt">int</span> <span class="n">bs</span><span class="o">=</span><span class="mi">8</span><span class="o">;</span>
-	<span class="k">for</span> <span class="o">(</span><span class="n">bx</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">bx</span><span class="o">&lt;</span><span class="n">N</span><span class="o">;</span><span class="n">bx</span><span class="o">+=</span><span class="n">bs</span><span class="o">)</span> <span class="c1">// for each block</span>
-		<span class="k">for</span><span class="o">(</span><span class="n">by</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span><span class="n">by</span><span class="o">&lt;</span><span class="n">N</span><span class="o">;</span><span class="n">by</span><span class="o">+=</span><span class="n">bs</span><span class="o">)</span>
-			<span class="k">for</span><span class="o">(</span><span class="n">x</span><span class="o">=</span><span class="n">bx</span><span class="o">;</span><span class="n">x</span><span class="o">&lt;</span><span class="n">bx</span><span class="o">+</span><span class="n">bs</span><span class="o">;</span><span class="n">x</span><span class="o">+=</span><span class="mi">1</span><span class="o">)</span> <span class="c1">// for each element of block</span>
-				<span class="k">for</span><span class="o">(</span><span class="n">y</span><span class="o">=</span><span class="n">by</span><span class="o">;</span><span class="n">y</span><span class="o">&lt;</span><span class="n">by</span><span class="o">+</span><span class="n">bs</span><span class="o">;</span><span class="n">y</span><span class="o">+=</span><span class="mi">1</span><span class="o">)</span>
-					<span class="n">swap</span><span class="o">(</span><span class="n">a</span><span class="o">[</span><span class="n">x</span><span class="o">][</span><span class="n">y</span><span class="o">],</span><span class="n">a</span><span class="o">[</span><span class="n">y</span><span class="o">][</span><span class="n">x</span><span class="o">]);</span> <span class="c1">// do stuff</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span>	<span class="kt">int</span> <span class="n">bs</span><span class="o">=</span><span class="mi">8</span><span class="p">;</span>
+	<span class="k">for</span> <span class="p">(</span><span class="n">bx</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">bx</span><span class="o">&lt;</span><span class="n">N</span><span class="p">;</span><span class="n">bx</span><span class="o">+=</span><span class="n">bs</span><span class="p">)</span> <span class="c1">// for each block</span>
+		<span class="k">for</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">by</span><span class="o">&lt;</span><span class="n">N</span><span class="p">;</span><span class="n">by</span><span class="o">+=</span><span class="n">bs</span><span class="p">)</span>
+			<span class="k">for</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">bx</span><span class="p">;</span><span class="n">x</span><span class="o">&lt;</span><span class="n">bx</span><span class="o">+</span><span class="n">bs</span><span class="p">;</span><span class="n">x</span><span class="o">+=</span><span class="mi">1</span><span class="p">)</span> <span class="c1">// for each element of block</span>
+				<span class="k">for</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">by</span><span class="p">;</span><span class="n">y</span><span class="o">&lt;</span><span class="n">by</span><span class="o">+</span><span class="n">bs</span><span class="p">;</span><span class="n">y</span><span class="o">+=</span><span class="mi">1</span><span class="p">)</span>
+					<span class="n">swap</span><span class="p">(</span><span class="n">a</span><span class="o">[</span><span class="n">x</span><span class="o">][</span><span class="n">y</span><span class="o">]</span><span class="p">,</span><span class="n">a</span><span class="o">[</span><span class="n">y</span><span class="o">][</span><span class="n">x</span><span class="o">]</span><span class="p">);</span> <span class="c1">// do stuff</span>
 </pre></div>
 </div>
 <ul>
@@ -2691,31 +2701,31 @@ val at 0xb6</p>
 <h2>2.9.29. labs<a class="headerlink" href="#labs" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="strlen">
 <h3>2.9.29.1. strlen<a class="headerlink" href="#strlen" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">unsigned</span> <span class="kt">int</span> <span class="nf">strlen</span><span class="o">(</span> <span class="kd">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">s</span> <span class="o">){</span>
-	<span class="n">unsigned</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> 
-	<span class="k">while</span><span class="o">(</span><span class="n">s</span><span class="o">[</span><span class="n">i</span><span class="o">])</span> 
-		<span class="n">i</span><span class="o">++;</span> 
-	<span class="k">return</span> <span class="n">i</span><span class="o">;</span>
-<span class="o">}</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">unsigned</span> <span class="kt">int</span> <span class="nf">strlen</span><span class="p">(</span> <span class="kd">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">s</span> <span class="p">){</span>
+	<span class="n">unsigned</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> 
+	<span class="k">while</span><span class="p">(</span><span class="n">s</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">)</span> 
+		<span class="n">i</span><span class="o">++</span><span class="p">;</span> 
+	<span class="k">return</span> <span class="n">i</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="strsep">
 <h3>2.9.29.2. strsep<a class="headerlink" href="#strsep" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span> <span class="o">*</span><span class="n">strsep</span><span class="o">(</span> <span class="kt">char</span> <span class="o">**</span><span class="n">stringp</span><span class="o">,</span> <span class="kt">char</span> <span class="n">delim</span> <span class="o">){</span>
-	<span class="kt">char</span> <span class="o">*</span><span class="n">ans</span> <span class="o">=</span> <span class="o">*</span><span class="n">stringp</span><span class="o">;</span>
-	<span class="k">if</span> <span class="o">(*</span><span class="n">stringp</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> 
-		<span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
-	<span class="k">while</span> <span class="o">(**</span><span class="n">stringp</span> <span class="o">!=</span> <span class="n">delim</span> <span class="o">&amp;&amp;</span> <span class="o">**</span><span class="n">stringp</span> <span class="o">!=</span> <span class="mi">0</span><span class="o">)</span> <span class="cm">/* don&#39;t need this 0 check, 0 is same as &#39;\0&#39; */</span>
-		<span class="o">*</span><span class="n">stringp</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">;</span>
-	<span class="k">if</span> <span class="o">(**</span><span class="n">stringp</span> <span class="o">==</span> <span class="n">delim</span><span class="o">){</span> 
-		<span class="o">**</span><span class="n">stringp</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-		<span class="o">*</span><span class="n">stringp</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">;</span> 
-	<span class="o">}</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span> <span class="o">*</span><span class="n">strsep</span><span class="p">(</span> <span class="kt">char</span> <span class="o">**</span><span class="n">stringp</span><span class="p">,</span> <span class="kt">char</span> <span class="n">delim</span> <span class="p">){</span>
+	<span class="kt">char</span> <span class="o">*</span><span class="n">ans</span> <span class="o">=</span> <span class="o">*</span><span class="n">stringp</span><span class="p">;</span>
+	<span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="n">stringp</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> 
+		<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="k">while</span> <span class="p">(</span><span class="o">**</span><span class="n">stringp</span> <span class="o">!=</span> <span class="n">delim</span> <span class="o">&amp;&amp;</span> <span class="o">**</span><span class="n">stringp</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="cm">/* don&#39;t need this 0 check, 0 is same as &#39;\0&#39; */</span>
+		<span class="o">*</span><span class="n">stringp</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+	<span class="k">if</span> <span class="p">(</span><span class="o">**</span><span class="n">stringp</span> <span class="o">==</span> <span class="n">delim</span><span class="p">){</span> 
+		<span class="o">**</span><span class="n">stringp</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+		<span class="o">*</span><span class="n">stringp</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span> 
+	<span class="p">}</span>
 	<span class="k">else</span> 
-		<span class="o">*</span><span class="n">stringp</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> 
-	<span class="k">return</span> <span class="n">ans</span><span class="o">;</span>
-<span class="o">}</span>
+		<span class="o">*</span><span class="n">stringp</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> 
+	<span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>###lists</p>
@@ -2749,27 +2759,27 @@ ans.length = length;</p></li>
 <div class="section" id="bit-puzzles">
 <h3>2.9.29.3. bit puzzles<a class="headerlink" href="#bit-puzzles" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// leastBitPos - return a mask that marks the position of the least significant 1 bit</span>
-<span class="kt">int</span> <span class="nf">leastBitPos</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">)</span> <span class="o">{</span>
-    <span class="k">return</span> <span class="n">x</span> <span class="o">&amp;</span> <span class="o">(~</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="o">);</span>
-<span class="o">}</span>
-<span class="kt">int</span> <span class="nf">bitMask</span><span class="o">(</span><span class="kt">int</span> <span class="n">highbit</span><span class="o">,</span> <span class="kt">int</span> <span class="n">lowbit</span><span class="o">)</span> <span class="o">{</span>
-    <span class="kt">int</span> <span class="n">zeros</span> <span class="o">=</span> <span class="o">~</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">highbit</span><span class="o">;</span> <span class="cm">/* 1100 0000 */</span>
-    <span class="kt">int</span> <span class="n">ones</span> <span class="o">=</span> <span class="o">~</span><span class="mi">0</span> <span class="o">&lt;&lt;</span> <span class="n">lowbit</span><span class="o">;</span>   <span class="cm">/* 1111 1000 */</span>
-    <span class="k">return</span> <span class="o">~</span><span class="n">zeros</span> <span class="o">&amp;</span> <span class="n">ones</span><span class="o">;</span>      <span class="cm">/* 0011 1000 */</span>
-<span class="o">}</span>
+<span class="kt">int</span> <span class="nf">leastBitPos</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">&amp;</span> <span class="p">(</span><span class="o">~</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="nf">bitMask</span><span class="p">(</span><span class="kt">int</span> <span class="n">highbit</span><span class="p">,</span> <span class="kt">int</span> <span class="n">lowbit</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">zeros</span> <span class="o">=</span> <span class="o">~</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">highbit</span><span class="p">;</span> <span class="cm">/* 1100 0000 */</span>
+    <span class="kt">int</span> <span class="n">ones</span> <span class="o">=</span> <span class="o">~</span><span class="mi">0</span> <span class="o">&lt;&lt;</span> <span class="n">lowbit</span><span class="p">;</span>   <span class="cm">/* 1111 1000 */</span>
+    <span class="k">return</span> <span class="o">~</span><span class="n">zeros</span> <span class="o">&amp;</span> <span class="n">ones</span><span class="p">;</span>      <span class="cm">/* 0011 1000 */</span>
+<span class="p">}</span>
 <span class="cm">/* satAdd - adds two numbers but when positive overflow occurs, returns maximum possible value, and when negative overflow occurs, it returns minimum positive value. */</span>
 <span class="c1">// soln - overflow when operands have same sign and sum and operands have different sign</span>
-<span class="kt">int</span> <span class="nf">satAdd</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
-	<span class="kt">int</span> <span class="n">x_is_neg</span> <span class="o">=</span> <span class="n">x</span> <span class="o">&gt;&gt;</span> <span class="mi">31</span><span class="o">;</span>
-	<span class="kt">int</span> <span class="n">y_is_neg</span> <span class="o">=</span> <span class="n">y</span> <span class="o">&gt;&gt;</span> <span class="mi">31</span><span class="o">;</span>
-	<span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">;</span>
-	<span class="kt">int</span> <span class="n">same_sign</span> <span class="o">=</span> <span class="o">(</span><span class="n">x_is_neg</span> <span class="o">&amp;</span> <span class="n">y_is_neg</span>  <span class="o">|</span>  <span class="o">~</span><span class="n">x_is_neg</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">y_is_neg</span><span class="o">);</span>
-	<span class="kt">int</span> <span class="n">overflow</span> <span class="o">=</span> <span class="n">same_sign</span> <span class="o">&amp;</span> <span class="o">(</span><span class="n">x_is_neg</span> <span class="o">^</span> <span class="o">(</span><span class="n">sum</span> <span class="o">&gt;&gt;</span> <span class="mi">31</span><span class="o">));</span>
-	<span class="kt">int</span> <span class="n">pos_overflow</span> <span class="o">=</span> <span class="n">overflow</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">x_is_neg</span><span class="o">;</span>
-	<span class="kt">int</span> <span class="n">neg</span> <span class="o">=</span> <span class="mh">0x1</span> <span class="o">&lt;&lt;</span> <span class="mi">31</span><span class="o">;</span>
-	<span class="kt">int</span> <span class="n">ans</span> <span class="o">=</span> <span class="o">~</span><span class="n">overflow</span><span class="o">&amp;</span><span class="n">sum</span> <span class="o">|</span> <span class="n">overflow</span> <span class="o">&amp;</span> <span class="o">(</span><span class="n">pos_overflow</span><span class="o">&amp;~</span><span class="n">neg</span> <span class="o">|</span> <span class="o">~</span><span class="n">pos_overflow</span><span class="o">&amp;</span><span class="n">neg</span><span class="o">);</span>
-	<span class="k">return</span> <span class="n">ans</span><span class="o">;</span>
-<span class="o">}</span>
+<span class="kt">int</span> <span class="nf">satAdd</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+	<span class="kt">int</span> <span class="n">x_is_neg</span> <span class="o">=</span> <span class="n">x</span> <span class="o">&gt;&gt;</span> <span class="mi">31</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">y_is_neg</span> <span class="o">=</span> <span class="n">y</span> <span class="o">&gt;&gt;</span> <span class="mi">31</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">same_sign</span> <span class="o">=</span> <span class="p">(</span><span class="n">x_is_neg</span> <span class="o">&amp;</span> <span class="n">y_is_neg</span>  <span class="o">|</span>  <span class="o">~</span><span class="n">x_is_neg</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">y_is_neg</span><span class="p">);</span>
+	<span class="kt">int</span> <span class="n">overflow</span> <span class="o">=</span> <span class="n">same_sign</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x_is_neg</span> <span class="o">^</span> <span class="p">(</span><span class="n">sum</span> <span class="o">&gt;&gt;</span> <span class="mi">31</span><span class="p">));</span>
+	<span class="kt">int</span> <span class="n">pos_overflow</span> <span class="o">=</span> <span class="n">overflow</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">x_is_neg</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">neg</span> <span class="o">=</span> <span class="mh">0x1</span> <span class="o">&lt;&lt;</span> <span class="mi">31</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">ans</span> <span class="o">=</span> <span class="o">~</span><span class="n">overflow</span><span class="o">&amp;</span><span class="n">sum</span> <span class="o">|</span> <span class="n">overflow</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">pos_overflow</span><span class="o">&amp;~</span><span class="n">neg</span> <span class="o">|</span> <span class="o">~</span><span class="n">pos_overflow</span><span class="o">&amp;</span><span class="n">neg</span><span class="p">);</span>
+	<span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>

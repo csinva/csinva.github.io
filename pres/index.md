@@ -41,8 +41,11 @@ Links to many of my presentations
     - [acd white-theme slides for bin](https://docs.google.com/presentation/d/1GjL0IJWft3IpdWxAwprXNiZkAG4Jl5mU6FNT2t0DGkQ/edit#slide=id.g5d6ee59cb4_0_0)
     - [acd bavrd](https://docs.google.com/presentation/d/1IVeb5ibe561VR5PAQEN5hdnwmpAHquK4JLb1vzT9fd8/present) (3 min pres. given at bavrd 2019)
 - [cdep-focused slides 40 min](https://docs.google.com/presentation/d/1F9spZOwKbxtXqpCiKv2V332v4Vs-UV6mQ_7Xs_cnrLg/edit#slide=id.p)    
-- [transform interp](https://docs.google.com/presentation/d/1mH1uG38qJg-ar0G-LiVPZWNKPO_2GiD-uayWM5AI-bo/present?slide=id.p)
+- [trim_cosmology_group_meeting (03/17/21)](https://docs.google.com/presentation/d/1sDtuaZt7bnAzvEB6tEv04rhVifnGSvyA1o6qUA-Z4ys/edit#slide=id.p)
+    - [transform interp](https://docs.google.com/presentation/d/1mH1uG38qJg-ar0G-LiVPZWNKPO_2GiD-uayWM5AI-bo/present?slide=id.p)
 - [pdr](https://docs.google.com/presentation/d/18Tdiym7hDeu0c4tj5XezrznIDfbltR4QQJJZjaHi7tk/present?slide=id.p)
+- [auxilin prediction](https://docs.google.com/presentation/d/1sQXbFUTSEyrmDkovV8g759Wj8E9LBpATAVV1iweKeGo/edit#slide=id.gc0f646bcee_0_0)
+    
 
 ### dnn misc individual presentations
 - [faces final pres](https://docs.google.com/presentation/d/19Z4TnHCDkNENutyKmE_kZBSJX4jMUam6DoH3HckkMrI/present?slide=id.p)

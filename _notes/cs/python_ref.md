@@ -162,3 +162,33 @@ class MyClass:
   
   - rather than storing images, can load image from filename in `__getitem__`
 - there's a `torch.nn.Flatten` module
+
+
+
+# parallelization
+
+- cores = cpus = processors - inividual processing units available on a single node
+- node - different computers with distinc memory
+- processes - instances of a program executing on a machine
+  - shouldn't have more user processes than cores on a node
+- more...
+  - threads - multiple paths of execution within a single process
+    - like a process, but more lightweight
+- passing messages between nodes (e.g. for distributed memory) often use protocol known as MPI
+  - packages such as Dask do this for you, without MPI
+- python packages
+  - dask: parallelizing tasks, distributed datasets, one or more machines
+  - ray: parallelizing tasks, building distributed applications, one or more machines
+- dask
+  - separate code from code to parallelize things
+  - some limitations on pure python code, but np/pandas etc. parallelize better
+  - configuration: specify sequential ('synchronous'), threads within current session ('threaded') paralell ('processes') multiprocessing - this creates copies of objects, multi-node or not ('distributed')
+  - need to wrap functions with `delayed()` or `map()`
+    - alternatively can tag functions
+  - map() operation does caching
+  - dask dataframes
+  - ssh setup
+    - can connecto to other workers locally (ssh-dask or SSHCluster)
+    - when using slurm, must run dask-scheduler on cluster node
+      - then run dask-worker many times (as many tasks as there are)
+    - can also directly submit slurm jobs from dask

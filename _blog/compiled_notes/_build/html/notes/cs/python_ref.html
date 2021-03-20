@@ -158,6 +158,11 @@
      1.12. interpretability
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_generalization.html">
+     1.13. generalization
+    </a>
+   </li>
   </ul>
   <i class="fas fa-chevron-down">
   </i>
@@ -453,38 +458,43 @@
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/disease.html">
+     7.1. disease
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../neuro/brain_basics.html">
-     7.1. brain basics
+     7.2. brain basics
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../neuro/vissci.html">
-     7.2. vision
+     7.3. vision
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../neuro/comp_neuro.html">
-     7.3. comp neuro
+     7.4. comp neuro
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../neuro/sensory_input.html">
-     7.4. sensory input
+     7.5. sensory input
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../neuro/memory.html">
-     7.5. memory
+     7.6. memory
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../neuro/motor.html">
-     7.6. motor system
+     7.7. motor system
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../neuro/development.html">
-     7.7. development
+     7.8. development
     </a>
    </li>
   </ul>
@@ -604,6 +614,16 @@
    2.2.6. numpy/pandas
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pytorch">
+   2.2.7. pytorch
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#parallelization">
+   2.2.8. parallelization
+  </a>
+ </li>
 </ul>
 
         </nav>
@@ -649,7 +669,7 @@
     <span class="o">-</span> <span class="n">l</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">element</span><span class="p">)</span>
   <span class="o">-</span> <span class="n">l</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
   <span class="o">-</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">]</span>
-  <span class="o">-</span> <span class="p">[</span><span class="bp">True</span><span class="p">]</span> <span class="o">*</span> <span class="mi">5</span>
+  <span class="o">-</span> <span class="p">[</span><span class="kc">True</span><span class="p">]</span> <span class="o">*</span> <span class="mi">5</span>
 <span class="o">-</span> <span class="n">queue</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span> <span class="c1">## implemented as doubly linked list</span>
       <span class="o">-</span> <span class="n">q</span> <span class="o">=</span> <span class="n">deque</span><span class="p">()</span>
       <span class="o">-</span> <span class="n">q</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -694,9 +714,9 @@
 	<span class="o">-</span> <span class="s2">&quot;</span><span class="si">%05d</span><span class="s2">&quot;</span>	<span class="o">//</span><span class="n">pad</span> <span class="n">to</span> <span class="n">fill</span> <span class="mi">5</span> <span class="n">spaces</span>
 	<span class="o">-</span> <span class="s2">&quot;</span><span class="si">%8.3f</span><span class="s2">&quot;</span> <span class="o">//</span><span class="nb">max</span> <span class="n">number</span> <span class="n">of</span> <span class="n">digits</span>
 	<span class="o">-</span> <span class="s2">&quot;</span><span class="si">%-d</span><span class="s2">&quot;</span>	<span class="o">//</span><span class="n">left</span> <span class="n">justify</span>
-	<span class="o">-</span> <span class="s2">&quot;%,d&quot;</span> 	<span class="o">//</span><span class="k">print</span> <span class="n">commas</span> <span class="n">ex</span><span class="o">.</span> <span class="s2">&quot;1,000,000&quot;</span>
+	<span class="o">-</span> <span class="s2">&quot;%,d&quot;</span> 	<span class="o">//</span><span class="nb">print</span> <span class="n">commas</span> <span class="n">ex</span><span class="o">.</span> <span class="s2">&quot;1,000,000&quot;</span>
   <span class="o">-</span> <span class="n">d</span> <span class="p">(</span><span class="nb">int</span><span class="p">),</span> <span class="n">f</span> <span class="p">(</span><span class="nb">float</span><span class="p">),</span> <span class="n">s</span> <span class="p">(</span><span class="nb">str</span><span class="p">)</span>
-	<span class="o">-</span> <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;{x:05d}&quot;</span><span class="p">)</span> <span class="c1">## new in 3.6</span>
+	<span class="o">-</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">05d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1">## new in 3.6</span>
 <span class="o">-</span> <span class="nb">int</span><span class="p">(</span><span class="s2">&quot;3&quot;</span><span class="p">)</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="o">-</span> <span class="nb">bin</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">=</span> <span class="s1">&#39;0b1010&#39;</span>
 <span class="o">-</span> <span class="nb">hex</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="o">=</span> <span class="s1">&#39;0x64&#39;</span>
@@ -706,19 +726,19 @@
 </div>
 <p><em>sorting</em></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="s1">&#39;ccc&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;bb&#39;</span><span class="p">]</span>
-<span class="o">-</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">)</span> <span class="c1">## decreasing order</span>
+<span class="o">-</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">)</span> <span class="c1">## decreasing order</span>
 	<span class="o">-</span> <span class="n">key</span> <span class="n">examples</span><span class="p">:</span> <span class="nb">str</span><span class="o">.</span><span class="n">lower</span><span class="p">,</span> <span class="n">func_name</span>
     <span class="o">-</span> <span class="n">key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
     <span class="o">-</span> <span class="k">def</span> <span class="nf">func_name</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
      	 <span class="k">return</span> <span class="n">s</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="o">-</span> <span class="n">l</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">reverse</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">)</span> <span class="c1">## sorts in place</span>
+<span class="o">-</span> <span class="n">l</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">reverse</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">)</span> <span class="c1">## sorts in place</span>
 </pre></div>
 </div>
 <p><em>exceptions</em></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
     <span class="n">something</span><span class="o">...</span>
 <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;error!&#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;error!&#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
 
 <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;spam&#39;</span><span class="p">,</span> <span class="s1">&#39;eggs&#39;</span><span class="p">)</span>
 <span class="k">assert</span><span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span>
@@ -781,6 +801,80 @@
 <li><p>merging</p>
 <ul>
 <li><p>pd.merge(df1, df2, how=’left’, on=’x1’)</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="pytorch">
+<h2>2.2.7. pytorch<a class="headerlink" href="#pytorch" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">model</span> <span class="pre">=</span> <span class="pre">nn.DataParallel(model)</span></code></p>
+<ul>
+<li><p>automatically runs multiple batches from dataset at same time</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nn.DistributedDataParallel</span></code> is often faster - replicates model on each gpu and gives some data to each one (less data transferes)</p></li>
+</ul>
+</li>
+<li><p>dataset has <code class="docutils literal notranslate"><span class="pre">__init__,</span> <span class="pre">__getitem__,</span> <span class="pre">&amp;</span> <span class="pre">__len__</span></code></p>
+<ul>
+<li><p>rather than storing images, can load image from filename in <code class="docutils literal notranslate"><span class="pre">__getitem__</span></code></p></li>
+</ul>
+</li>
+<li><p>there’s a <code class="docutils literal notranslate"><span class="pre">torch.nn.Flatten</span></code> module</p></li>
+</ul>
+</div>
+<div class="section" id="parallelization">
+<h2>2.2.8. parallelization<a class="headerlink" href="#parallelization" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>cores = cpus = processors - inividual processing units available on a single node</p></li>
+<li><p>node - different computers with distinc memory</p></li>
+<li><p>processes - instances of a program executing on a machine</p>
+<ul>
+<li><p>shouldn’t have more user processes than cores on a node</p></li>
+</ul>
+</li>
+<li><p>more…</p>
+<ul>
+<li><p>threads - multiple paths of execution within a single process</p>
+<ul>
+<li><p>like a process, but more lightweight</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>passing messages between nodes (e.g. for distributed memory) often use protocol known as MPI</p>
+<ul>
+<li><p>packages such as Dask do this for you, without MPI</p></li>
+</ul>
+</li>
+<li><p>python packages</p>
+<ul>
+<li><p>dask: parallelizing tasks, distributed datasets, one or more machines</p></li>
+<li><p>ray: parallelizing tasks, building distributed applications, one or more machines</p></li>
+</ul>
+</li>
+<li><p>dask</p>
+<ul>
+<li><p>separate code from code to parallelize things</p></li>
+<li><p>some limitations on pure python code, but np/pandas etc. parallelize better</p></li>
+<li><p>configuration: specify sequential (‘synchronous’), threads within current session (‘threaded’) paralell (‘processes’) multiprocessing - this creates copies of objects, multi-node or not (‘distributed’)</p></li>
+<li><p>need to wrap functions with <code class="docutils literal notranslate"><span class="pre">delayed()</span></code> or <code class="docutils literal notranslate"><span class="pre">map()</span></code></p>
+<ul>
+<li><p>alternatively can tag functions</p></li>
+</ul>
+</li>
+<li><p>map() operation does caching</p></li>
+<li><p>dask dataframes</p></li>
+<li><p>ssh setup</p>
+<ul>
+<li><p>can connecto to other workers locally (ssh-dask or SSHCluster)</p></li>
+<li><p>when using slurm, must run dask-scheduler on cluster node</p>
+<ul>
+<li><p>then run dask-worker many times (as many tasks as there are)</p></li>
+</ul>
+</li>
+<li><p>can also directly submit slurm jobs from dask</p></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

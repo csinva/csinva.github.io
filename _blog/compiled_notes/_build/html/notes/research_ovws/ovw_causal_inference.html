@@ -158,6 +158,11 @@
      1.12. interpretability
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ovw_generalization.html">
+     1.13. generalization
+    </a>
+   </li>
   </ul>
   <i class="fas fa-chevron-down">
   </i>
@@ -453,38 +458,43 @@
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/disease.html">
+     7.1. disease
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../neuro/brain_basics.html">
-     7.1. brain basics
+     7.2. brain basics
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../neuro/vissci.html">
-     7.2. vision
+     7.3. vision
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../neuro/comp_neuro.html">
-     7.3. comp neuro
+     7.4. comp neuro
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../neuro/sensory_input.html">
-     7.4. sensory input
+     7.5. sensory input
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../neuro/memory.html">
-     7.5. memory
+     7.6. memory
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../neuro/motor.html">
-     7.6. motor system
+     7.7. motor system
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../neuro/development.html">
-     7.7. development
+     7.8. development
     </a>
    </li>
   </ul>
@@ -666,6 +676,13 @@
   <a class="reference internal nav-link" href="#different-assumptions-experimental-designs">
    1.9.3. different assumptions / experimental designs
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#synthetic-control-interventions">
+     1.9.3.1. synthetic control/interventions
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#solutions-to-basic-problems">
@@ -1003,6 +1020,11 @@ C(Location of Car) --&gt; B
 </li>
 </ul>
 </li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1606.03976">Estimating individual treatment effect: generalization bounds and algorithms</a> (shalit, johansson, &amp; sontag, 2017)</p>
+<ul>
+<li><p>bound the ITE estimation error using (1) generalization err of the repr. and (2) the distance between the treated and control distrs., e.g. MMD</p></li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="section" id="reinforcement-policy-learning">
@@ -1016,16 +1038,19 @@ C(Location of Car) --&gt; B
 <h3>1.9.2.4. causal discovery<a class="headerlink" href="#causal-discovery" title="Permalink to this headline">¶</a></h3>
 <p><em>Causal discovery aims to identify causal relationships (sometimes under some smoothness / independence assumptions. This is often impossible in general. Also called causal relation learning, causal search.</em></p>
 <ul class="simple">
-<li><p>overview</p>
+<li><p>a lot of our science does not actually rest on experiments (e.g. physics, geology)</p>
 <ul>
+<li><p>hume (1739) - all we can observe is association, never actual counterfactuals or causes (“necesary connexion”)</p></li>
+<li><p>requires careful model selection</p></li>
+</ul>
+</li>
+<li><p>overview</p></li>
 <li><p><strong>constraint-based algorithms</strong> - conditional indep. checks can only determine graphs up to markov equivalence</p>
 <ul>
 <li><p><em>faithfulness</em> means the statistical dependence between variables estimated from the data does not violate the independence defined by any causal graph which generates the data</p></li>
 <li><p>ex. peter-clark (PC) algorithm - first learns undirected graph, then detects edge directions and returns an equivalent class</p></li>
 <li><p>some work tries to work on more general distrs.</p></li>
 <li><p>some work tries to extend to seeting with unobserved confounders</p></li>
-</ul>
-</li>
 <li><p><strong>score-based algorithms</strong> - replace conditional indep. tests with godness of fit tests (e.g. BIC)</p>
 <ul>
 <li><p>still can only determine graphs up to markov equivalence</p></li>
@@ -1354,6 +1379,19 @@ $<span class="math notranslate nohighlight">\(
 </ul>
 </li>
 <li><p><strong>causal transportability</strong> - seeks to identify conditions under which causal knowledge learned from experiments can be reused in different domains with observational data only</p></li>
+<li><p><a class="reference external" href="https://ftp.cs.ucla.edu/pub/stat_ser/r502.pdf">Radical Empiricism and Machine Learning Research</a> (pearl 2021)</p>
+<ul>
+<li><p>contrast the “data fitting” vs. “data interpreting” approaches to data-science</p></li>
+<li><p>current research is too empiricist (data-fitting based) - should include man-made models of how data are generated</p></li>
+<li><p>3 reasons: expediency, transparency, explainability</p>
+<ul>
+<li><p>expediency: we often have to ask fast (e.g. covid) and use our knowledge to guide future experiments</p></li>
+<li><p>transparency: need repr.d with right level off abstraction</p></li>
+<li><p>explainability: humans must understand inferences</p></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="section" id="transferring-out-of-sample">
@@ -1372,19 +1410,73 @@ $<span class="math notranslate nohighlight">\(
 <div class="section" id="different-assumptions-experimental-designs">
 <h2>1.9.3. different assumptions / experimental designs<a class="headerlink" href="#different-assumptions-experimental-designs" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://arxiv.org/abs/1805.06826">The Blessings of Multiple Causes</a> (wang &amp; blei, 2019) - having multiple causes can help construct / find all the confounders</p>
+<li><p>unconfoundedness <span class="math notranslate nohighlight">\(T_i \perp (Y_i(0), Y_i(1)) | X_i\)</span> is strong</p>
 <ul>
-<li><p>instead of ignorability, require that any missing confounder affects multiple observed variables</p></li>
-<li><p><em>deconfounder algorithm</em> - infers a latent variable as a substitute for unobserved confounders and then uses that substitute to perform causal inference</p>
-<ul>
-<li><p>replaces an uncheckable search for possible confounders with the checkable goal of building a good factor model of observed casts.</p></li>
+<li><p>sometimes we may perfer <span class="math notranslate nohighlight">\(T_i \perp (Y_i(0), Y_i(1)) | X_i, Z_i\)</span> for some unobserved <span class="math notranslate nohighlight">\(Z_i\)</span> that we need to figure out</p></li>
 </ul>
 </li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1805.06826">The Blessings of Multiple Causes</a> (wang &amp; blei, 2019) - having multiple causes can help construct / find all the confounders</p>
+<ul>
+<li><p><strong>deconfounder algorithm</strong></p>
+<ul>
+<li><p>fit a factor model of causes</p></li>
+<li><p>estimate a repr <span class="math notranslate nohighlight">\(Z_i\)</span> of data point <span class="math notranslate nohighlight">\(A_i\)</span> - <span class="math notranslate nohighlight">\(Z_i\)</span> renders the causes conditionally independent</p></li>
+<li><p>now, <span class="math notranslate nohighlight">\(Z_i\)</span> is a substitute for unobserved confounders</p></li>
+</ul>
+</li>
+<li><p>assumptions</p>
+<ul>
+<li><p>no causal arrows among causes <span class="math notranslate nohighlight">\(A_i\)</span></p></li>
+<li><p>no unobserved single-cause confounders: any missing confounder affects multiple observed variables</p>
+<ul>
+<li><p>–&gt; can check the fit of the factor model, but won’t check perfectly</p></li>
+</ul>
+</li>
+<li><p>the substitute confounder: there is enough information in the data to learn the variable <span class="math notranslate nohighlight">\(Z\)</span> which renders causes conditionally independent</p>
+<ul>
+<li><p>strong assumption!</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>thm</p>
+<ul>
+<li><p>with observed covariates X, weak unconfoundedness: <span class="math notranslate nohighlight">\(A_1, ...A_m \perp Y(a) | Z, X\)</span> (i.e. <span class="math notranslate nohighlight">\(Z\)</span> contains all multi-cause confounders, <span class="math notranslate nohighlight">\(X\)</span> contains all single-cause confounders)</p></li>
+</ul>
+</li>
+<li><p>replaces an uncheckable search for possible confounders with the checkable goal of building a good factor model of observed casts.</p></li>
 <li><p>controversial whether this works in general</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2003.04948">Towards Clarifying the Theory of the Deconfounder</a> (wang &amp; blei, 2020)</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1902.10286">On Multi-Cause Causal Inference with Unobserved Confounding: Counterexamples, Impossibility, and Alternatives</a> (d’amour 2019)</p></li>
 </ul>
 </li>
 </ul>
+<div class="section" id="synthetic-control-interventions">
+<h3>1.9.3.1. synthetic control/interventions<a class="headerlink" href="#synthetic-control-interventions" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>synthetic control</p>
+<ul>
+<li><p>Using Synthetic Controls rvw paper (<a class="reference external" href="https://economics.mit.edu/files/17847">abadie 2020</a>)</p>
+<ul>
+<li><p>setting: treatment occurs at time t0 on multiple units (e.g. policy in california)</p></li>
+<li><p>goal: estimate effect of treatment (e.g. effect of policy in california)</p></li>
+<li><p>approach: impute counterfactual (california time-series without policy) by weighted combination on observed outcomes for other observations (e.g. average other “similar” states)</p>
+<ul>
+<li><p>per-observation weights are learned during pre-intervention period with cross-validation procedure</p>
+<ul>
+<li><p>per-feature weights are also learned (bc matching on some features is more important than others)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>The Economic Costs of Conflict: A Case Study of the Basque Country (<a class="reference external" href="https://economics.mit.edu/files/11870">Abadie &amp; G, 2003</a>)</p></li>
+<li><p>Synthetic Control Methods for Comparative Case Studies: Estimating the Effect of California’s Tobacco Control Program (<a class="reference external" href="https://economics.mit.edu/files/11859">abadie et al. 2010</a>)</p></li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div class="section" id="solutions-to-basic-problems">
 <h2>1.9.4. solutions to basic problems<a class="headerlink" href="#solutions-to-basic-problems" title="Permalink to this headline">¶</a></h2>

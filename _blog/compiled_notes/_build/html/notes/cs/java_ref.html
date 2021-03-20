@@ -158,6 +158,11 @@
      1.12. interpretability
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_generalization.html">
+     1.13. generalization
+    </a>
+   </li>
   </ul>
   <i class="fas fa-chevron-down">
   </i>
@@ -453,38 +458,43 @@
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/disease.html">
+     7.1. disease
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../neuro/brain_basics.html">
-     7.1. brain basics
+     7.2. brain basics
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../neuro/vissci.html">
-     7.2. vision
+     7.3. vision
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../neuro/comp_neuro.html">
-     7.3. comp neuro
+     7.4. comp neuro
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../neuro/sensory_input.html">
-     7.4. sensory input
+     7.5. sensory input
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../neuro/memory.html">
-     7.5. memory
+     7.6. memory
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../neuro/motor.html">
-     7.6. motor system
+     7.7. motor system
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../neuro/development.html">
-     7.7. development
+     7.8. development
     </a>
    </li>
   </ul>
@@ -643,23 +653,23 @@
 <div class="section" id="useful">
 <h2>2.10.2. useful<a class="headerlink" href="#useful" title="Permalink to this headline">¶</a></h2>
 <p><em>iterator</em></p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">it</span><span class="o">.</span><span class="na">next</span><span class="o">()</span> <span class="o">-</span> <span class="n">returns</span> <span class="n">value</span>
-<span class="o">-</span> <span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">()</span> <span class="o">-</span> <span class="n">returns</span> <span class="kt">boolean</span>
-<span class="o">-</span> <span class="n">it</span><span class="o">.</span><span class="na">remove</span><span class="o">()</span> <span class="o">-</span> <span class="n">removes</span> <span class="n">last</span> <span class="n">returned</span> <span class="n">value</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">it</span><span class="p">.</span><span class="na">next</span><span class="p">()</span> <span class="o">-</span> <span class="n">returns</span> <span class="n">value</span>
+<span class="o">-</span> <span class="n">it</span><span class="p">.</span><span class="na">hasNext</span><span class="p">()</span> <span class="o">-</span> <span class="n">returns</span> <span class="kt">boolean</span>
+<span class="o">-</span> <span class="n">it</span><span class="p">.</span><span class="na">remove</span><span class="p">()</span> <span class="o">-</span> <span class="n">removes</span> <span class="n">last</span> <span class="n">returned</span> <span class="n">value</span>
 </pre></div>
 </div>
 <p><em>strings</em></p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">String</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">&quot; |\\.|\\?&quot;</span><span class="o">)</span> <span class="c1">//split on space, ., and ?</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">String</span><span class="p">.</span><span class="na">split</span><span class="p">(</span><span class="s">&quot; |\\.|\\?&quot;</span><span class="p">)</span> <span class="c1">//split on space, ., and ?</span>
 <span class="o">-</span> <span class="n">StringBuilder</span>
 	<span class="o">-</span> <span class="n">much</span> <span class="n">faster</span> <span class="n">at</span> <span class="n">concatenating</span> <span class="n">strings</span>
-	<span class="o">-</span> <span class="n">thread</span> <span class="n">safe</span><span class="o">,</span> <span class="n">but</span> <span class="n">slower</span>
-	<span class="o">-</span> <span class="n">StringBuilder</span> <span class="n">s</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="o">(</span><span class="n">CharSequence</span> <span class="n">seq</span><span class="o">)();</span>
-	<span class="o">-</span> <span class="n">s</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&quot;cs3v&quot;</span><span class="o">);</span>
-	<span class="o">-</span> <span class="n">s</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">),</span> <span class="n">s</span><span class="o">.</span><span class="na">deleteCharAt</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">),</span> <span class="n">substring</span>
-	<span class="o">-</span> <span class="n">s</span><span class="o">.</span><span class="na">reverse</span><span class="o">()</span>
+	<span class="o">-</span> <span class="n">thread</span> <span class="n">safe</span><span class="p">,</span> <span class="n">but</span> <span class="n">slower</span>
+	<span class="o">-</span> <span class="n">StringBuilder</span> <span class="n">s</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="p">(</span><span class="n">CharSequence</span> <span class="n">seq</span><span class="p">)();</span>
+	<span class="o">-</span> <span class="n">s</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;cs3v&quot;</span><span class="p">);</span>
+	<span class="o">-</span> <span class="n">s</span><span class="p">.</span><span class="na">charAt</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">),</span> <span class="n">s</span><span class="p">.</span><span class="na">deleteCharAt</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">),</span> <span class="n">substring</span>
+	<span class="o">-</span> <span class="n">s</span><span class="p">.</span><span class="na">reverse</span><span class="p">()</span>
 	<span class="o">-</span> <span class="n">Since</span> <span class="n">String</span> <span class="n">is</span> <span class="n">immutable</span> <span class="n">it</span> <span class="n">can</span> <span class="n">safely</span> <span class="n">be</span> <span class="n">shared</span> <span class="n">between</span> <span class="n">many</span> <span class="n">threads</span>
 <span class="o">-</span> <span class="n">formatting</span>
-	<span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&quot;%d&quot;</span><span class="o">,</span> <span class="mi">3</span><span class="o">);</span>
+	<span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="n">String</span><span class="p">.</span><span class="na">format</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
 	<span class="s">&quot;%05d&quot;</span>	<span class="c1">//pad to fill 5 spaces</span>
 	<span class="s">&quot;%8.3f&quot;</span> <span class="c1">//max number of digits</span>
 	<span class="s">&quot;%-d&quot;</span>	<span class="c1">//left justify</span>
@@ -667,25 +677,25 @@
 	<span class="o">|</span> <span class="kt">int</span> <span class="o">|</span> <span class="kt">double</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
 	<span class="o">|-----|--------|--------|</span>
 	<span class="o">|</span> <span class="n">d</span>   <span class="o">|</span> <span class="n">f</span>      <span class="o">|</span> <span class="n">s</span>      <span class="o">|</span>
-	<span class="k">new</span> <span class="n">StringBuilder</span><span class="o">(</span><span class="n">s</span><span class="o">).</span><span class="na">reverse</span><span class="o">().</span><span class="na">toString</span><span class="o">()</span>
-	<span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="n">StringUtils</span><span class="o">.</span><span class="na">countMatches</span><span class="o">(</span><span class="n">s</span><span class="o">,</span> <span class="n">something</span><span class="o">);</span>
+	<span class="k">new</span> <span class="n">StringBuilder</span><span class="p">(</span><span class="n">s</span><span class="p">).</span><span class="na">reverse</span><span class="p">().</span><span class="na">toString</span><span class="p">()</span>
+	<span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="n">StringUtils</span><span class="p">.</span><span class="na">countMatches</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">something</span><span class="p">);</span>
 <span class="o">-</span> <span class="n">integer</span>
-	<span class="o">-</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">,</span> <span class="kt">int</span> <span class="n">base</span><span class="o">)</span>
-	<span class="o">-</span> <span class="kt">int</span> <span class="nf">parseInt</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">,</span> <span class="kt">int</span> <span class="n">base</span><span class="o">)</span>
+	<span class="o">-</span> <span class="n">String</span> <span class="nf">toString</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="kt">int</span> <span class="n">base</span><span class="p">)</span>
+	<span class="o">-</span> <span class="kt">int</span> <span class="nf">parseInt</span><span class="p">(</span><span class="n">String</span> <span class="n">s</span><span class="p">,</span> <span class="kt">int</span> <span class="n">base</span><span class="p">)</span>
 <span class="o">-</span> <span class="n">array</span>
-	<span class="kt">char</span><span class="o">[]</span> <span class="n">data</span> <span class="o">=</span> <span class="o">{</span><span class="sc">&#39;a&#39;</span><span class="o">,</span> <span class="sc">&#39;b&#39;</span><span class="o">,</span> <span class="sc">&#39;c&#39;</span><span class="o">};</span>
-	<span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="n">data</span><span class="o">);</span>
+	<span class="kt">char</span><span class="o">[]</span> <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="sc">&#39;a&#39;</span><span class="p">,</span> <span class="sc">&#39;b&#39;</span><span class="p">,</span> <span class="sc">&#39;c&#39;</span><span class="p">};</span>
+	<span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
 </pre></div>
 </div>
 <p><em>sorting</em></p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">Array</span> <span class="n">a</span><span class="o">)</span>
-<span class="o">-</span> <span class="n">Collections</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">Collection</span> <span class="n">c</span><span class="o">),</span> <span class="n">Collections</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">Collection</span> <span class="n">l</span><span class="o">,</span> <span class="n">Comparator</span> <span class="n">c</span><span class="o">)</span>
-	<span class="o">-</span> <span class="n">use</span> <span class="nf">mergeSort</span> <span class="o">(</span><span class="n">with</span> <span class="n">insertion</span> <span class="n">sort</span> <span class="k">if</span> <span class="n">very</span> <span class="n">small</span><span class="o">)</span>
-<span class="o">-</span> <span class="n">Collections</span><span class="o">.</span><span class="na">reverseOrder</span><span class="o">()</span> <span class="n">returns</span> <span class="n">comparator</span> <span class="n">opposite</span> <span class="n">of</span> <span class="k">default</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">Arrays</span><span class="p">.</span><span class="na">sort</span><span class="p">(</span><span class="n">Array</span> <span class="n">a</span><span class="p">)</span>
+<span class="o">-</span> <span class="n">Collections</span><span class="p">.</span><span class="na">sort</span><span class="p">(</span><span class="n">Collection</span> <span class="n">c</span><span class="p">),</span> <span class="n">Collections</span><span class="p">.</span><span class="na">sort</span><span class="p">(</span><span class="n">Collection</span> <span class="n">l</span><span class="p">,</span> <span class="n">Comparator</span> <span class="n">c</span><span class="p">)</span>
+	<span class="o">-</span> <span class="n">use</span> <span class="nf">mergeSort</span> <span class="p">(</span><span class="n">with</span> <span class="n">insertion</span> <span class="n">sort</span> <span class="k">if</span> <span class="n">very</span> <span class="n">small</span><span class="p">)</span>
+<span class="o">-</span> <span class="n">Collections</span><span class="p">.</span><span class="na">reverseOrder</span><span class="p">()</span> <span class="n">returns</span> <span class="n">comparator</span> <span class="n">opposite</span> <span class="n">of</span> <span class="k">default</span>
 <span class="kd">class</span> <span class="nc">ComparatorTest</span> <span class="kd">implements</span> <span class="n">Comparator</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span>
-	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">compare</span><span class="o">(</span><span class="n">String</span> <span class="n">one</span><span class="o">,</span> <span class="n">String</span> <span class="n">two</span><span class="o">)</span> <span class="c1">//if negative, one comes first</span>
+	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">compare</span><span class="p">(</span><span class="n">String</span> <span class="n">one</span><span class="p">,</span> <span class="n">String</span> <span class="n">two</span><span class="p">)</span> <span class="c1">//if negative, one comes first</span>
 <span class="kd">class</span> <span class="nc">Test</span> <span class="kd">implements</span> <span class="n">Comparable</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span>
-	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">compareTo</span><span class="o">(</span><span class="n">Object</span> <span class="n">two</span><span class="o">)</span>
+	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">compareTo</span><span class="p">(</span><span class="n">Object</span> <span class="n">two</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><em>exceptions</em></p>

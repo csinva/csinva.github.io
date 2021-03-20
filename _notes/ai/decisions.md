@@ -155,6 +155,8 @@ Some notes on decision theory based on Berkeley's CS 188 course and  "Artificial
 - expected utility executing $\pi$: $U^\pi (s) = \mathbb E_{s_1,...,s_t}\left[\sum_t \gamma^t R(s_t)\right]$
   - when we use discounted utilities, $\pi$ is independent of starting state
   - $\pi^*(s) = \underset{\pi}{argmax} \: U^\pi (s) = \underset{a}{argmax} \sum_{s'} P(s' \vert s,a) U'(s)$
+- experience replay: instead of learning from samples one by one, want to reduce correlation between subsequent samples
+  - take a large batch of samples and sample randomly from it, rather than going sequentially
 
 ## value iteration
 

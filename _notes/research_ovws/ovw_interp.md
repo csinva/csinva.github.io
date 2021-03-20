@@ -109,7 +109,7 @@ Evaluating interpretability can be very difficult (largely because it rarely mak
 
 # intrinsic interpretability (i.e. how can we fit simpler models)
 
-For an implementation of many of these models, see the python [imodels package](https://github.com/csinva/imodels). 
+For an implementation of many of these models, see the python [imodels package](https://github.com/csinva/imodels)
 
 ## decision rules
 
@@ -395,6 +395,15 @@ How interactions are defined and summarized is a very difficult thing to specify
   - want to find beta which is positive when a variable is important
   - idea: maximize difference between (distances for interclass) and (distances for intraclass)
   - using an L1 distance yields better gradients than an L2 distance
+- ANOVA - factorial method to detect feature interactions based on differences among group means in a dataset
+- Automatic Interaction Detection (AID) - detects interactions by subdividing data into disjoint exhaustive subsets to model an outcome based on categorical features
+- Shapley Taylor Interaction Index (STI) (Dhamdhere et al., 2019) - extends shap to all interactions
+- retraining
+  - Additive groves (Sorokina et al. 2008) proposed use random forest with and without an interaction (forcibly removed) to detect feature interactions - very slow
+- gradient-based methods (originally Friedman and Popescu, 2008 then later used with many models such as logit)
+  - test if partial derivatives for some subset (e.g. $x_1, ..., x_p$) are nonzero $\mathbb{E}_{\mathbf{x}}\left[\frac{\partial^p f(\mathbf{x})}{\partial x_{i_{1}} \partial x_{i_{2}} \ldots \partial x_{i_p}}\right]^{2}>0$ 
+  - doesn't work well for piecewise functions (e.g. Relu) and computationally expensive
+- include interactions explicitly then run lasso (e.g. bien et al. 2013)
 - methods for finding frequent item sets
   - [random intersection trees](https://arxiv.org/pdf/1303.6223.pdf)
   - [fp-growth](https://www.softwaretestinghelp.com/fp-growth-algorithm-data-mining/)
@@ -678,16 +687,25 @@ How interactions are defined and summarized is a very difficult thing to specify
     - [Gradient Weighted Superpixels for Interpretability in CNNs](https://arxiv.org/abs/1908.08997)
     - [Decision Explanation and Feature Importance for Invertible Networks](https://arxiv.org/abs/1910.00406) (mundhenk et al. 2019)
     - [Efficient Saliency Maps for Explainable AI](https://deepai.org/publication/efficient-saliency-maps-for-explainable-ai) 
-- interactions
-    - [hierarchical interpretations for neural network predictions](https://arxiv.org/abs/1806.05337) (singh et al. 2019)
-      - [contextual decomposition](https://arxiv.org/abs/1801.05453) (murdoch et al. 2018)
-      - ACD followup work
-        - [Towards Hierarchical Importance Attribution: Explaining Compositional Semantics for Neural Sequence Models](https://openreview.net/forum?id=BkxRRkSKwr)
-    - [Detecting Statistical Interactions from Neural Network Weights](https://arxiv.org/abs/1705.04977) - interacting inputs must follow strongly weighted connections to a common hidden unit before the final output
-      - [Neural interaction transparency (NIT)](https://dl.acm.org/citation.cfm?id=3327482) (tsang et al. 2017)
-    - [Recovering Pairwise Interactions Using Neural Networks](https://arxiv.org/pdf/1901.08361.pdf)
 
-### textual explanations
+
+
+### dnn feature interactions
+
+- [hierarchical interpretations for neural network predictions](https://arxiv.org/abs/1806.05337) (singh et al. 2019)
+  - [contextual decomposition](https://arxiv.org/abs/1801.05453) (murdoch et al. 2018)
+  - ACD followup work
+    - [Towards Hierarchical Importance Attribution: Explaining Compositional Semantics for Neural Sequence Models](https://openreview.net/forum?id=BkxRRkSKwr)
+- [Detecting Statistical Interactions from Neural Network Weights](https://arxiv.org/abs/1705.04977) - interacting inputs must follow strongly weighted connections to a common hidden unit before the final output
+  - [Neural interaction transparency (NIT)](https://dl.acm.org/citation.cfm?id=3327482) (tsang et al. 2017)
+- [Explaining Explanations: Axiomatic Feature Interactions for Deep Networks](https://arxiv.org/abs/2002.04138) (janizek et al. 2020) - integrated hessians
+    - not clear the distinction between main and interaction effects
+- [Interpretable Artificial Intelligence through the Lens of Feature Interaction](https://arxiv.org/abs/2103.03103) (tsang et al. 2021)
+    - feature interaction- any non-additive effect between multiple features on an outcome (i.e. cannot be decomposed into a sum of subfunctions of individual variables)
+- [Learning Global Pairwise Interactions with Bayesian Neural Networks](https://arxiv.org/abs/1901.08361) (cui et al. 2020) - Bayesian Group Expected Hessian (GEH) - train bayesian neural net and analyze hessian to understand interactions
+- [Sparse Epistatic Regularization of Deep Neural Networks for Inferring Fitness Functions](https://www.biorxiv.org/content/10.1101/2020.11.24.396994v1) (aghazadeh et al. 2020) - penalize DNNs spectral representation to limit learning noisy high-order interactions
+
+### dnn textual explanations
 
 - [Adversarial Inference for Multi-Sentence Video Description](https://arxiv.org/pdf/1812.05634.pdf) - adversarial techniques during inference for a better multi-sentence video description
 - [Object Hallucination in Image Captioning](https://aclweb.org/anthology/D18-1437) - image relevance metric - asses rate of object hallucination

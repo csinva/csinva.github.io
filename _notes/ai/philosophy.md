@@ -13,8 +13,6 @@ category: ai
 
 - try to understand what principles underly all phenomena
 
-interpretable ml
-
 - [Machine Learning and the Future of Realism](https://arxiv.org/pdf/1704.04688.pdf) (hooker & hooker, 2017)
   - lack of interpretability in DNNs is part of what makes them powerful
   - *naked predictions* - numbers with no real interpretation

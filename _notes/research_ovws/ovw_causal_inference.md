@@ -215,9 +215,11 @@ C(Location of Car) --> B
 
 *Causal discovery aims to identify causal relationships (sometimes under some smoothness / independence assumptions. This is often impossible in general. Also called causal relation learning, causal search.*
 
+- a lot of our science does not actually rest on experiments (e.g. physics, geology)
+  - hume (1739) - all we can observe is association, never actual counterfactuals or causes ("necesary connexion")
+  - requires careful model selection
 - overview
-
-  - **constraint-based algorithms** - conditional indep. checks can only determine graphs up to markov equivalence
+- **constraint-based algorithms** - conditional indep. checks can only determine graphs up to markov equivalence
     - *faithfulness* means the statistical dependence between variables estimated from the data does not violate the independence defined by any causal graph which generates the data
     - ex. peter-clark (PC) algorithm - first learns undirected graph, then detects edge directions and returns an equivalent class
     - some work tries to work on more general distrs.
@@ -391,7 +393,17 @@ C(Location of Car) --> B
     $$
     \mathrm{PN}=\underbrace{\frac{P(y \mid t)-P\left(y \mid t^{\prime}\right)}{P(y \mid t)}}_{\text{excess risk ratio}}+\underbrace{\frac{P\left(y \mid t^{\prime}\right)-P\left(y \mid d o\left(t^{\prime}\right)\right)}{P(t, y)}}_{\text{confounding adjustment}}
     $$
+  
 - **causal transportability** - seeks to identify conditions under which causal knowledge learned from experiments can be reused in different domains with observational data only
+
+- [Radical Empiricism and Machine Learning Research](https://ftp.cs.ucla.edu/pub/stat_ser/r502.pdf) (pearl 2021)
+
+  - contrast the “data fitting” vs. “data interpreting” approaches to data-science
+  - current research is too empiricist (data-fitting based) - should include man-made models of how data are generated
+  - 3 reasons: expediency, transparency, explainability
+    - expediency: we often have to ask fast (e.g. covid) and use our knowledge to guide future experiments
+    - transparency: need repr.d with right level off abstraction
+    - explainability: humans must understand inferences
 
 ## transferring out-of-sample
 
@@ -425,8 +437,12 @@ C(Location of Car) --> B
 ## synthetic control/interventions
 
 - synthetic control
-  - treatment occurs at time t0 on multiple units
-  - impute treatment by learning weights on observed outcomes
+  - Using Synthetic Controls rvw paper ([abadie 2020](https://economics.mit.edu/files/17847 ))
+    - setting: treatment occurs at time t0 on multiple units (e.g. policy in california)
+    - goal: estimate effect of treatment (e.g. effect of policy in california)
+    - approach: impute counterfactual (california time-series without policy) by weighted combination on observed outcomes for other observations (e.g. average other "similar" states)
+      - per-observation weights are learned during pre-intervention period with cross-validation procedure
+        - per-feature weights are also learned (bc matching on some features is more important than others)
   - The Economic Costs of Conflict: A Case Study of the Basque Country ([Abadie & G, 2003](https://economics.mit.edu/files/11870))
   - Synthetic Control Methods for Comparative Case Studies: Estimating the Effect of California's Tobacco Control Program ([abadie et al. 2010](https://economics.mit.edu/files/11859))
 

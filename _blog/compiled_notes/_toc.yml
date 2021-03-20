@@ -14,6 +14,7 @@
   - file: notes/research_ovws/ovw_dl_for_neuro.md
   - file: notes/research_ovws/ovw_uncertainty.md
   - file: notes/research_ovws/ovw_interp.md
+  - file: notes/research_ovws/ovw_generalization.md
 - file: notes/cs/cs.md
   sections:
   - file: notes/cs/retrieval.md
@@ -75,6 +76,7 @@
   - file: notes/ai/decisions.md
 - file: notes/neuro/neuro.md
   sections:
+  - file: notes/neuro/disease.md
   - file: notes/neuro/brain_basics.md
   - file: notes/neuro/vissci.md
   - file: notes/neuro/comp_neuro.md

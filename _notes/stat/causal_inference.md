@@ -48,7 +48,7 @@ category: stat
       - world changes over time
       - "looping effect" - social categories (like race) are constantly chainging because people who putatively fall into such categories to change their behavior in possibly unexpected ways
   - **epistemology** - theory of knowledge
-- clear distinction between identification and estimation
+- clear distinction between *identification* and *estimation* (and third problem is *discovery* - what is the structure?)
   - a causal quantity is **identifiable** if we can compute it from a purely statistical quantity
   - ![identification_estimation_flowchart](../assets/identification_estimation_flowchart.png)
 

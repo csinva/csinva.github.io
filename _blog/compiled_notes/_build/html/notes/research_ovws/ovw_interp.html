@@ -56,7 +56,7 @@
     <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="2. cs" href="../cs/cs.html" />
+    <link rel="next" title="1.13. generalization" href="ovw_generalization.html" />
     <link rel="prev" title="1.11. uncertainty" href="ovw_uncertainty.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -156,6 +156,11 @@
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      1.12. interpretability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ovw_generalization.html">
+     1.13. generalization
     </a>
    </li>
   </ul>
@@ -453,38 +458,43 @@
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/disease.html">
+     7.1. disease
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../neuro/brain_basics.html">
-     7.1. brain basics
+     7.2. brain basics
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../neuro/vissci.html">
-     7.2. vision
+     7.3. vision
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../neuro/comp_neuro.html">
-     7.3. comp neuro
+     7.4. comp neuro
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../neuro/sensory_input.html">
-     7.4. sensory input
+     7.5. sensory input
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../neuro/memory.html">
-     7.5. memory
+     7.6. memory
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../neuro/motor.html">
-     7.6. motor system
+     7.7. motor system
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../neuro/development.html">
-     7.7. development
+     7.8. development
     </a>
    </li>
   </ul>
@@ -750,55 +760,74 @@
        1.12.4.4.3. dnn feature importance
       </a>
      </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#textual-explanations">
-       1.12.4.4.4. textual explanations
-      </a>
-     </li>
     </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multiplying-by-x-x-is-strange-instead-can-multiply-by-distr-weight-for-x">
+   1.12.5. multiplying by
+   <span class="math notranslate nohighlight">
+    \(x-x'\)
+   </span>
+   is strange, instead can multiply by distr. weight for
+   <span class="math notranslate nohighlight">
+    \(x'\)
+   </span>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dnn-feature-interactions">
+     1.12.5.1. dnn feature interactions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dnn-textual-explanations">
+     1.12.5.2. dnn textual explanations
+    </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#model-summarization-distillation">
-     1.12.4.5. model summarization / distillation
+     1.12.5.3. model summarization / distillation
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#different-problems-perspectives">
-   1.12.5. different problems / perspectives
+   1.12.6. different problems / perspectives
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#improving-models">
-     1.12.5.1. improving models
+     1.12.6.1. improving models
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#recourse">
-     1.12.5.2. recourse
+     1.12.6.2. recourse
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#interp-for-rl">
-     1.12.5.3. interp for rl
+     1.12.6.3. interp for rl
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#differential-privacy">
-     1.12.5.4. differential privacy
+     1.12.6.4. differential privacy
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#interpretation-over-sets-perturbations">
-     1.12.5.5. interpretation over sets / perturbations
+     1.12.6.5. interpretation over sets / perturbations
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#misc-new-papers">
-   1.12.6. misc new papers
+   1.12.7. misc new papers
   </a>
  </li>
 </ul>
@@ -815,6 +844,7 @@
   <p><strong>some interesting papers on interpretable machine learning, largely organized based on this <a class="reference external" href="https://arxiv.org/abs/1901.04592">interpretable ml review</a> (murdoch et al. 2019) and notes from this <a class="reference external" href="https://christophm.github.io/interpretable-ml-book/">interpretable ml book</a> (molnar 2019)</strong></p>
 <div class="section" id="interpretability">
 <h1>1.12. interpretability<a class="headerlink" href="#interpretability" title="Permalink to this headline">¶</a></h1>
+<p><img alt="" src="https://csinva.io/notes/cheat_sheets/interp.svg" /></p>
 <div class="section" id="reviews">
 <h2>1.12.1. reviews<a class="headerlink" href="#reviews" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="definitions">
@@ -890,8 +920,11 @@
 </ul>
 </li>
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1904.03867.pdf">Quantifying Interpretability of Arbitrary Machine Learning Models Through Functional Decomposition</a> (molnar 2019)</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/pdf/1902.00006.pdf">An Evaluation of the Human-Interpretability of Explanation</a> (lage et al. 2019)</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/1902.00006.pdf">An Evaluation of the Human-Interpretability of Explanation</a> (lage et al. 2019)</p>
+<ul>
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1802.00682.pdf">How do Humans Understand Explanations from Machine Learning Systems?: An Evaluation of the Human-Interpretability of Explanation</a> (narayanan et al. 2018)</p></li>
+</ul>
+</li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1901.09392">On the (In)fidelity and Sensitivity for Explanations</a></p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1907.09701">Benchmarking Attribution Methods with Relative Feature Importance</a> (yang &amp; kim 2019)</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1910.07387">Do Explanations Reflect Decisions? A Machine-centric Strategy to Quantify the Performance of Explainability Algorithms</a></p></li>
@@ -920,6 +953,12 @@
 <li><p><a class="reference external" href="https://papers.nips.cc/paper/8160-sanity-checks-for-saliency-maps.pdf">Sanity Checks for Saliency Maps</a> (adebayo et al. 2018)</p>
 <ul>
 <li><p><strong>Model Parameter Randomization Test</strong> - attributions should be different for trained vs random model, but they aren’t for many attribution methods</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://openreview.net/forum?id=dYeAHXnpWJ4">Rethinking the Role of Gradient-based Attribution Methods for Model Interpretability</a> (srinivas &amp; fleuret, 2021)</p>
+<ul>
+<li><p>logits can be arbitrarily shifted without affecting preds / gradient-based explanations</p></li>
+<li><p>gradient-based explanations then, don’t necessarily capture info about <span class="math notranslate nohighlight">\(p_\theta(y|x)\)</span></p></li>
 </ul>
 </li>
 <li><p><a class="reference external" href="https://www.medrxiv.org/content/10.1101/2020.07.28.20163899v1.full.pdf">Assessing the (Un)Trustworthiness of Saliency Maps for Localizing Abnormalities in Medical Imaging</a> (arun et al. 2020) - CXR images from SIIM-ACR Pneumothorax Segmentation + RSNA Pneumonia Detection</p>
@@ -966,7 +1005,7 @@
 </div>
 <div class="section" id="intrinsic-interpretability-i-e-how-can-we-fit-simpler-models">
 <h2>1.12.3. intrinsic interpretability (i.e. how can we fit simpler models)<a class="headerlink" href="#intrinsic-interpretability-i-e-how-can-we-fit-simpler-models" title="Permalink to this headline">¶</a></h2>
-<p>For an implementation of many of these models, see the python <a class="reference external" href="https://github.com/csinva/imodels">imodels package</a>.</p>
+<p>For an implementation of many of these models, see the python <a class="reference external" href="https://github.com/csinva/imodels">imodels package</a></p>
 <div class="section" id="decision-rules">
 <h3>1.12.3.1. decision rules<a class="headerlink" href="#decision-rules" title="Permalink to this headline">¶</a></h3>
 <p>For more on rules, see <strong><a class="reference external" href="https://csinva.io/notes/ai/logic.html">logic notes</a></strong>.</p>
@@ -1099,6 +1138,7 @@
 </ul>
 </li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/0806.3286">BART: Bayesian additive regression trees</a> (chipman et al. 2008) - learns an ensemble of tree models using MCMC on a distr. imbued with a prior</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2101.01576">On the price of explainability for some clustering problems</a> (laber et al. 2021) - trees for clustering</p></li>
 </ul>
 </div>
 </div>
@@ -1211,6 +1251,24 @@
 <li><p>entities represented by the class capsule overlap</p>
 <ul>
 <li><p>adds additional regularizer</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2102.12627">How to represent part-whole hierarchies in a neural network</a> (hinton, 2021)</p>
+<ul>
+<li><p>The idea is simply to use islands of identical vectors to represent the nodes in the parse tree (parse tree would be things like wheel-&gt; cabin -&gt; car)</p></li>
+<li><p>each patch / pixel gets representations at different levels (e.g. texture, parrt of wheel, part of cabin, etc.)</p>
+<ul>
+<li><p>each repr. is a vector - vector fo high-level stuff (e.g. car) will agree for different pixels but low level (e.g. wheel) will differ</p></li>
+<li><p>during training, each layer at each location gets information from nearby levels</p>
+<ul>
+<li><p>hinton assumes weights are shared between locations (maybe don’t need to be)</p></li>
+<li><p>also attention mechanism across other locations in same layer</p></li>
+</ul>
+</li>
+<li><p>each location also takes in its positional location (x, y)</p></li>
+<li><p>could have the lowest-level repr start w/ a convnet</p></li>
 </ul>
 </li>
 </ul>
@@ -1423,6 +1481,21 @@ instances (PDP problem)</p></li>
 <li><p>using an L1 distance yields better gradients than an L2 distance</p></li>
 </ul>
 </li>
+<li><p>ANOVA - factorial method to detect feature interactions based on differences among group means in a dataset</p></li>
+<li><p>Automatic Interaction Detection (AID) - detects interactions by subdividing data into disjoint exhaustive subsets to model an outcome based on categorical features</p></li>
+<li><p>Shapley Taylor Interaction Index (STI) (Dhamdhere et al., 2019) - extends shap to all interactions</p></li>
+<li><p>retraining</p>
+<ul>
+<li><p>Additive groves (Sorokina et al. 2008) proposed use random forest with and without an interaction (forcibly removed) to detect feature interactions - very slow</p></li>
+</ul>
+</li>
+<li><p>gradient-based methods (originally Friedman and Popescu, 2008 then later used with many models such as logit)</p>
+<ul>
+<li><p>test if partial derivatives for some subset (e.g. <span class="math notranslate nohighlight">\(x_1, ..., x_p\)</span>) are nonzero <span class="math notranslate nohighlight">\(\mathbb{E}_{\mathbf{x}}\left[\frac{\partial^p f(\mathbf{x})}{\partial x_{i_{1}} \partial x_{i_{2}} \ldots \partial x_{i_p}}\right]^{2}&gt;0\)</span></p></li>
+<li><p>doesn’t work well for piecewise functions (e.g. Relu) and computationally expensive</p></li>
+</ul>
+</li>
+<li><p>include interactions explicitly then run lasso (e.g. bien et al. 2013)</p></li>
 <li><p>methods for finding frequent item sets</p>
 <ul>
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1303.6223.pdf">random intersection trees</a></p></li>
@@ -1876,7 +1949,7 @@ a concept’s examples and examples in any layer</p></li>
 <li><p>gradient-based methods - visualize what in image would change class label</p>
 <ul class="simple">
 <li><p>gradient * input</p></li>
-<li><p><a class="reference external" href="http://proceedings.mlr.press/v70/sundararajan17a/sundararajan17a.pdf">integrated gradients</a> (sundararajan et al. 2017) - just sum up the gradients from some baseline to the image (in 1d, this is just <span class="math notranslate nohighlight">\(f(x) - f(baseline))\)</span></p>
+<li><p><a class="reference external" href="http://proceedings.mlr.press/v70/sundararajan17a/sundararajan17a.pdf">integrated gradients</a> (sundararajan et al. 2017) - just sum up the gradients from some baseline to the image times the differ  (in 1d, this is just <span class="math notranslate nohighlight">\(\int_{x'=baseline}^{x'=x} (x-x') \cdot (f(x) - f(x'))\)</span></p>
 <ul>
 <li><p>in higher dimensions, such as images, we pick the path to integrate by starting at some baseline (e.g. all zero) and then get gradients as we interpolate between the zero image and the real image</p></li>
 <li><p>if we picture 2 features, we can see that integrating the gradients will not just yield <span class="math notranslate nohighlight">\(f(x) - f(baseline)\)</span>, because each time we evaluate the gradient we change both features</p></li>
@@ -1884,7 +1957,7 @@ a concept’s examples and examples in any layer</p></li>
 <ul>
 <li><p>ex. any pixels which are same in original image and modified image will be given 0 importance</p></li>
 <li><p>lots of different possible choices for baseline (e.g. random Gaussian image, blurred image, random image from the training set)</p></li>
-<li><p>could also average over distributions of baseline (this yields <strong>expected gradients</strong>)</p></li>
+<li></li>
 <li><p>when we do a Gaussian distr., this is very similar to smoothgrad</p></li>
 </ul>
 </li>
@@ -1893,6 +1966,7 @@ a concept’s examples and examples in any layer</p></li>
 <li><p>lrp</p></li>
 <li><p>taylor decomposition</p></li>
 <li><p>deeplift</p></li>
+<li><p>smoothgrad - average gradients around local perturbations of a point</p></li>
 <li><p>guided backpropagation - springenberg et al</p></li>
 <li><p>lets you better create maximally specific image</p></li>
 <li><p>selvaraju 17 - <em>grad-CAM</em></p></li>
@@ -1902,6 +1976,15 @@ a concept’s examples and examples in any layer</p></li>
 <li><p>final saliency map consists of scores assigned by the chosen label to each pixel it won, with the map containing a score 0 for any pixel it did not win.</p></li>
 <li><p>can be applied to any method which satisfies completeness (sum of pixel scores is exactly the logit value)</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1908.08413">Saliency Methods for Explaining Adversarial Attacks</a></p></li>
+</ul>
+</li>
+<li><p>critiques</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://arxiv.org/abs/2102.12781">Do Input Gradients Highlight Discriminative Features?</a> (shah et a. 2021) - input gradients often don’t highlight relevant features (they work better for adv. robust models)</p>
+<ul>
+<li><p>prove/demonstrate this in synthetic dataset where <span class="math notranslate nohighlight">\(x=ye_i\)</span> for standard basis vector <span class="math notranslate nohighlight">\(e_i\)</span>, <span class="math notranslate nohighlight">\(y=\{\pm 1\}\)</span></p></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><p>newer methods</p>
@@ -1923,7 +2006,17 @@ a concept’s examples and examples in any layer</p></li>
 <li><p><a class="reference external" href="https://deepai.org/publication/efficient-saliency-maps-for-explainable-ai">Efficient Saliency Maps for Explainable AI</a></p></li>
 </ul>
 </li>
-<li><p>interactions</p>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="multiplying-by-x-x-is-strange-instead-can-multiply-by-distr-weight-for-x">
+<h2>1.12.5. multiplying by <span class="math notranslate nohighlight">\(x-x'\)</span> is strange, instead can multiply by distr. weight for <span class="math notranslate nohighlight">\(x'\)</span><a class="headerlink" href="#multiplying-by-x-x-is-strange-instead-can-multiply-by-distr-weight-for-x" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>could also average over distributions of baseline (this yields <strong>expected gradients</strong>)</p></li>
+</ul>
+<div class="section" id="dnn-feature-interactions">
+<h3>1.12.5.1. dnn feature interactions<a class="headerlink" href="#dnn-feature-interactions" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/1806.05337">hierarchical interpretations for neural network predictions</a> (singh et al. 2019)</p>
 <ul>
@@ -1940,13 +2033,22 @@ a concept’s examples and examples in any layer</p></li>
 <li><p><a class="reference external" href="https://dl.acm.org/citation.cfm?id=3327482">Neural interaction transparency (NIT)</a> (tsang et al. 2017)</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://arxiv.org/pdf/1901.08361.pdf">Recovering Pairwise Interactions Using Neural Networks</a></p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2002.04138">Explaining Explanations: Axiomatic Feature Interactions for Deep Networks</a> (janizek et al. 2020) - integrated hessians</p>
+<ul>
+<li><p>not clear the distinction between main and interaction effects</p></li>
 </ul>
 </li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2103.03103">Interpretable Artificial Intelligence through the Lens of Feature Interaction</a> (tsang et al. 2021)</p>
+<ul>
+<li><p>feature interaction- any non-additive effect between multiple features on an outcome (i.e. cannot be decomposed into a sum of subfunctions of individual variables)</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1901.08361">Learning Global Pairwise Interactions with Bayesian Neural Networks</a> (cui et al. 2020) - Bayesian Group Expected Hessian (GEH) - train bayesian neural net and analyze hessian to understand interactions</p></li>
+<li><p><a class="reference external" href="https://www.biorxiv.org/content/10.1101/2020.11.24.396994v1">Sparse Epistatic Regularization of Deep Neural Networks for Inferring Fitness Functions</a> (aghazadeh et al. 2020) - penalize DNNs spectral representation to limit learning noisy high-order interactions</p></li>
 </ul>
 </div>
-<div class="section" id="textual-explanations">
-<h4>1.12.4.4.4. textual explanations<a class="headerlink" href="#textual-explanations" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="dnn-textual-explanations">
+<h3>1.12.5.2. dnn textual explanations<a class="headerlink" href="#dnn-textual-explanations" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1812.05634.pdf">Adversarial Inference for Multi-Sentence Video Description</a> - adversarial techniques during inference for a better multi-sentence video description</p></li>
 <li><p><a class="reference external" href="https://aclweb.org/anthology/D18-1437">Object Hallucination in Image Captioning</a> - image relevance metric - asses rate of object hallucination</p>
@@ -1960,9 +2062,8 @@ a concept’s examples and examples in any layer</p></li>
 <li><p><a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/8791710">Natural Language Explanations of Classifier Behavior</a></p></li>
 </ul>
 </div>
-</div>
 <div class="section" id="model-summarization-distillation">
-<h3>1.12.4.5. model summarization / distillation<a class="headerlink" href="#model-summarization-distillation" title="Permalink to this headline">¶</a></h3>
+<h3>1.12.5.3. model summarization / distillation<a class="headerlink" href="#model-summarization-distillation" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1806.10270.pdf">piecewise linear interp</a></p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1908.06214">Computing Linear Restrictions of Neural Networks</a> - calculate function of neural network restricting its points to lie on a line</p></li>
@@ -1977,9 +2078,9 @@ a concept’s examples and examples in any layer</p></li>
 </div>
 </div>
 <div class="section" id="different-problems-perspectives">
-<h2>1.12.5. different problems / perspectives<a class="headerlink" href="#different-problems-perspectives" title="Permalink to this headline">¶</a></h2>
+<h2>1.12.6. different problems / perspectives<a class="headerlink" href="#different-problems-perspectives" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="improving-models">
-<h3>1.12.5.1. improving models<a class="headerlink" href="#improving-models" title="Permalink to this headline">¶</a></h3>
+<h3>1.12.6.1. improving models<a class="headerlink" href="#improving-models" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/1909.13584">Interpretations are useful: penalizing explanations to align neural networks with prior knowledge</a> (rieger et al. 2020)</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1703.03717">Right for the Right Reasons: Training Differentiable Models by Constraining their Explanations</a></p></li>
@@ -2003,7 +2104,7 @@ a concept’s examples and examples in any layer</p></li>
 </ul>
 </div>
 <div class="section" id="recourse">
-<h3>1.12.5.2. recourse<a class="headerlink" href="#recourse" title="Permalink to this headline">¶</a></h3>
+<h3>1.12.6.2. recourse<a class="headerlink" href="#recourse" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1809.06514.pdf">actionable recourse in linear classification</a> (ustun et al. 2019)</p>
 <ul>
@@ -2018,7 +2119,7 @@ a concept’s examples and examples in any layer</p></li>
 </ul>
 </div>
 <div class="section" id="interp-for-rl">
-<h3>1.12.5.3. interp for rl<a class="headerlink" href="#interp-for-rl" title="Permalink to this headline">¶</a></h3>
+<h3>1.12.6.3. interp for rl<a class="headerlink" href="#interp-for-rl" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>heatmaps</p></li>
 <li><p>visualize most interesting states / rollouts</p></li>
@@ -2028,13 +2129,13 @@ a concept’s examples and examples in any layer</p></li>
 </ul>
 </div>
 <div class="section" id="differential-privacy">
-<h3>1.12.5.4. differential privacy<a class="headerlink" href="#differential-privacy" title="Permalink to this headline">¶</a></h3>
+<h3>1.12.6.4. differential privacy<a class="headerlink" href="#differential-privacy" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>differential private if the outputs of the model do not change (within some epsilon tolerance) if you remove a single datapoint</p></li>
 </ul>
 </div>
 <div class="section" id="interpretation-over-sets-perturbations">
-<h3>1.12.5.5. interpretation over sets / perturbations<a class="headerlink" href="#interpretation-over-sets-perturbations" title="Permalink to this headline">¶</a></h3>
+<h3>1.12.6.5. interpretation over sets / perturbations<a class="headerlink" href="#interpretation-over-sets-perturbations" title="Permalink to this headline">¶</a></h3>
 <p>These papers don’t quite connect to prediction, but are generally about finding stable interpretations across a set of models / choices.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.nature.com/articles/s42256-020-00264-0">Exploring the cloud of variable importance for the set of all good models</a> (dong &amp; rudin, 2020)</p></li>
@@ -2152,7 +2253,7 @@ a concept’s examples and examples in any layer</p></li>
 </div>
 </div>
 <div class="section" id="misc-new-papers">
-<h2>1.12.6. misc new papers<a class="headerlink" href="#misc-new-papers" title="Permalink to this headline">¶</a></h2>
+<h2>1.12.7. misc new papers<a class="headerlink" href="#misc-new-papers" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/1808.04260">iNNvestigate neural nets</a> - provides a common interface and out-of-thebox implementation</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1807.10875">tensorfuzz</a> - debugging</p></li>
@@ -2268,7 +2369,7 @@ a concept’s examples and examples in any layer</p></li>
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="ovw_uncertainty.html" title="previous page">1.11. uncertainty</a>
-    <a class='right-next' id="next-link" href="../cs/cs.html" title="next page">2. cs</a>
+    <a class='right-next' id="next-link" href="ovw_generalization.html" title="next page">1.13. generalization</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

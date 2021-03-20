@@ -10,6 +10,43 @@ Some notes on papers / books surrounding psychology, especially evolutionary psy
 
 # explanations
 
+## psychology of xai ([miller, 2006](https://www.sciencedirect.com/science/article/abs/pii/S0004370218305988))
+
+- people employ certain biases (kahneman, 2011) and social expectations (hilton, 1990) when they generate and evaluate explanation
+- 4 properties
+  - **Explanations are contrastive** — they are sought in response to particular counter- factual cases -- people do not ask why event P happened, but rather why event P happened instead of some event Q
+  - **Explanation are selected (in a biased manner)** — people use cognitive biases to expect and give specific causes rather than all the possible real causes
+  - **Probabilities probably don’t matter** — while truth and likelihood are important in explanation and probabilities really do matter, referring to probabilities or statistical relationships in explanation is not as effective as referring to causes
+  - Explanations are social — they are a transfer of knowledge, presented as part of a conversation or interaction, and are thus presented relative to the explainer’s beliefs about the explainee’s beliefs.
+- philosophical foundations
+  - "To explain an event is to provide some information about its causal history..."
+  - 2 types of causal definitions: dependence (e.g. probabilistic model) or transference (physical causation)
+  - 2 types of (perceived) causes: internal (due to an actor) vs external (due to situation / environment)
+- explanation is an answer to a *why-question*
+- *abductive reasoning* - deriving a hypothesis to explain observed phenomenon
+  - "inference to the best explanation" (harman)
+  - contrasts with *inductive reasoning* - accepting a hypothesis via scientific experiments
+- contrasts - lots of possible contrasts given a question, often communicated using tone
+- overton gives 5 categories and 4 relations that define building blocks for any scientific explanation
+- social attribution - big emphasis on intentionality
+  - folk psychology does not describe how we think; it describes how we think we think
+  - while people attribute less intentionality to aggregate groups than to individuals, they attribute more intention- ality to jointly acting groups than to individuals (o'laughlin & malle)
+  - side-effect effect = knobe effect - asymmetry of responses of side effects in harm/help scenarios - moral character of consequences influences how non-moral aspects (e.g. intentionality) are judged
+    - cause could be the same as "morally or institutionally responsible"
+- cognitive processes used in explanation
+  - ![behaviour_explanation](../assets/behaviour_explanation.png)
+  - *causal connection* - process people use to identify the causes of events
+    - explaining (which forces people to think more systematically about the abduction process) is good for fostering generalisations, but this comes at a cost of over-generalisation (williams et al.)
+    - “Identifying something as an instance of a kind and explaining some of its properties in terms of its being the kind of thing it is are not two distinct activities, but a single cognitive activity.” (prasada)
+    - people tend to focus more on abnormal causes and also differ based on their perspective (kahneman & tversky)
+  - *explanation selection* - process people use to select a small subset of identified causes as the explanation
+    - contrastive, abnormality, intentionality, functionality, necessity, sufficienty, robustness, responsibility, blame
+  - *explanation evaluation* - processes an explainee uses to evaluate the quality of an explanation
+    -  probability, simplicity, generalizability, and coherence with prior beliefs.
+- explanation is social - often is conversational
+  - Grice’s maxims of conversation: quality, quantity, relation, and manner
+    - only say what you believe; only say as much as is necessary; only say what is relevant; and say it in a nice way
+
 ## [The structure and function of explanations](https://www.sciencedirect.com/science/article/abs/pii/S1364661306002117) (lombrozo 2006)
 
 - explanation structures
@@ -590,9 +627,88 @@ Some notes on papers / books surrounding psychology, especially evolutionary psy
 	- Pepsi wins blind taste tests, coke wins shown ones
 - [“dollar auction”](http://www.smbc-comics.com/index.php?id=3594)
 
+
+
+# maybe you should talk to someone
+
+**by Lori Gottlieb, 2019**
+
+- happiness is statistically abnormal
+
+- “There’s something likable in everyone”
+
+- surfing the internet etc. are just ways to distract ourselves
+
+- *presenting problem* - the issue that sends a person into therapy
+
+- “avoidant”
+
+- Will you spot the insecurities that I’m so skillful at hiding?
+
+- high-functioning = verbal, motivated, open, and responsible
+
+- “the therapeutic *act,* not the therapeutic word.”
+
+- In idiot compassion, you avoid rocking the boat to spare people’s feelings, even though the boat needs rocking and your compassion ends up being more harmful than your honesty
+
+- creativity - the ability to grasp the essence of one thing and the essence of some very different thing and smash them together to create some entirely new thing
+
+- Your feelings don’t have to mesh with what you think they should be
+
+- There is a continuing decision to be made as to whether to evade pain, or to tolerate it and therefore modify it
+
+- [personality disorders](https://en.wikipedia.org/wiki/Personality_disorder)
+  - Cluster A (odd, bizarre, eccentric):
+    - Paranoid PD, Schizoid PD, Schizotypal PD
+  - Cluster B (dramatic, erratic):
+    - Antisocial PD, Borderline PD, Histrionic PD, Narcissistic PD
+  - Cluster C (anxious, fearful):
+    - Avoidant PD, Dependent PD, **Obsessive-Compulsive PD**
+  
+- When I see couples in therapy, often one or the other will complain, not “You don’t love me” but “You don’t understand me.”
+
+- there’s a difference between a criticism and a complaint: the former contains judgment while the latter contains a request
+
+- Follow your envy—it shows you what you want.
+
+- most of us aren’t aware of how we actually spend our time or what we really do all day until we break it down hour by hour and say it out loud
+
+- In projection, a patient attributes his beliefs to another person; in projective identification, he sends them into another person
+
+- Did the patient feel understood?
+
+- conversion disorder = a person’s anxiety is “converted” into neurologic conditions such as paralysis, balance issues, incontinence, blindness, deafness, tremors, or seizures
+
+- alexithymia = doesn’t know what their feeling or don’t have the words to express it
+
+- Sometimes people can’t identify their feelings because they were talked out of them as children
+
+- Almost every woman I see apologizes for her feelings, especially her tears. I remember apologizing in Wendell’s office too. Perhaps men apologize preemptively, by holding their tears back.
+
+- “Modern man thinks he loses something—time—when he does not do things quickly; yet he does not know what to do with the time he gains except kill it.”
+
+- “Avoidance is a simple way of coping by not having to cope.”
+
+- Reacting vs. responding = reflexive vs. chosen
+
+- what would we therapists do without the word wonder to broach a sensitive topic?
+
+- Are you sorry for what you’ve done or are you simply trying to placate the other person who believes you should be sorry for the thing you feel completely justified in having done?
+
+-  Her inner critic serves her: I don’t have to take any action because I’m worthless
+
+- You can’t get through your pain by diminishing it
+
+- privacy (spaces in people’s psyches that everyone needs in healthy relationships) and secrecy (which stems from shame and tends to be corrosive)
+
+- In the best goodbyes, there’s always the feeling that there’s something more to say
+
+  
+
 # freud
 
 - Id – set of instinctual trends
   - "contrary impulses exist side by side, without cancelling each other out. ... There is nothing in the id that could be compared with negation ... nothing in the id which corresponds to the idea of time."
 - Ego – organized and realistic
 - Super-ego – analyzes and moralizes – mediates between id and ego
+- "The goal of therapy is to turn neurotic misery into everyday unhappiness" (attributed to freud)
