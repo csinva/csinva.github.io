@@ -126,6 +126,12 @@ displays
 - vim extensive
   - ! ls
 
+### packaging projects
+
+- [good reference](https://realpython.com/pypi-publish-python-package/)
+  - `python setup.py sdist bdist_wheel`
+  - `twine upload dist/*`
+
 ### misc services
 
 - google buckets: just type gsutil and then can type a linux command (e.g. ls, du)

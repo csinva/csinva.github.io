@@ -3,8 +3,7 @@ layout: notes
 title: presentations
 ---
 
-
-Links to many of my presentations
+*Links to many of my presentations*
 
 ### in progress
 - [interpretation to causation](https://docs.google.com/presentation/d/1vwgpNp36ssspO5LcUgnohtm9JT-PeSwsX47LpZjvono/edit#slide=id.g9d8da641c4_0_36)
@@ -45,7 +44,7 @@ Links to many of my presentations
     - [transform interp](https://docs.google.com/presentation/d/1mH1uG38qJg-ar0G-LiVPZWNKPO_2GiD-uayWM5AI-bo/present?slide=id.p)
 - [pdr](https://docs.google.com/presentation/d/18Tdiym7hDeu0c4tj5XezrznIDfbltR4QQJJZjaHi7tk/present?slide=id.p)
 - [auxilin prediction](https://docs.google.com/presentation/d/1sQXbFUTSEyrmDkovV8g759Wj8E9LBpATAVV1iweKeGo/edit#slide=id.gc0f646bcee_0_0)
-    
+  
 
 ### dnn misc individual presentations
 - [faces final pres](https://docs.google.com/presentation/d/19Z4TnHCDkNENutyKmE_kZBSJX4jMUam6DoH3HckkMrI/present?slide=id.p)
