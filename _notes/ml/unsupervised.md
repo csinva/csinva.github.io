@@ -89,8 +89,9 @@ graph LR;
     - $p(y|x, \theta_i) = \underbrace{\pi_i (x, \xi)}_{\text{mixing prop.}} \cdot \underbrace{\mu(\theta_i^Tx)^y\cdot[1-\mu(\theta_i^Tx)]^{1-y}}_{\text{mixture comp.}}$ where $\mu$ is the logistic function
 - also, nonlinear optimization for this (including EM)
 
-
 # dim reduction
+
+In general there is some tension between preserving global properties (e.g. PCA) and local peroperties (e.g. nearest neighborhoods)
 
 | Method              | Analysis objective | Temporal smoothing | Explicit noise model | Notes |
 |---------------------|--------------------|--------------------|----------------------|---------------------|

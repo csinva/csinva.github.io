@@ -730,18 +730,30 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#nn-optimization">
-   3.6.7. nn optimization
+  <a class="reference internal nav-link" href="#misc">
+   3.6.7. misc
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#why-is-it-hard">
-     3.6.7.1. why is it hard?
+    <a class="reference internal nav-link" href="#nn-optimization">
+     3.6.7.1. nn optimization
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#why-is-it-hard">
+       3.6.7.1.1. why is it hard?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#complicated-is-simpler">
+       3.6.7.1.2. complicated is simpler
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#complicated-is-simpler">
-     3.6.7.2. complicated is simpler
+    <a class="reference internal nav-link" href="#mixed-integer-programming-mip">
+     3.6.7.2. mixed integer programming (mip)
     </a>
    </li>
   </ul>
@@ -769,12 +781,12 @@
 <li><p><em>affine hull</em>: aff C = {<span class="math notranslate nohighlight">\(\sum \theta_i x_i | x_i \in C, \sum \theta_i =1 \)</span>}</p></li>
 </ul>
 </li>
-<li><p><em>convex set</em>: <span class="math notranslate nohighlight">\(x_1, x_2 \in C, 0 \leq \theta \leq 1 \implies \theta x_1 + (1 - \theta) x_2 ​\)</span></p>
+<li><p><em>convex set</em>: <span class="math notranslate nohighlight">\(x_1, x_2 \in C, 0 \leq \theta \leq 1 \implies \theta x_1 + (1 - \theta) x_2 \)</span></p>
 <ul>
 <li><p><em>convex hull</em>: conv C = {<span class="math notranslate nohighlight">\(\sum \theta_i x_i \: | x_i \in C, \theta_i \geq 0, \sum \theta_i = 1\)</span>}</p></li>
 </ul>
 </li>
-<li><p><em>cone</em>: <span class="math notranslate nohighlight">\(\theta \geq 0 \implies \theta x \in C​\)</span></p></li>
+<li><p><em>cone</em>: <span class="math notranslate nohighlight">\(\theta \geq 0 \implies \theta x \in C\)</span></p></li>
 <li><p>operations that preserve convexity</p>
 <ul>
 <li><p>intersection (finite intersection of half-spaces)</p></li>
@@ -1167,7 +1179,7 @@
 </li>
 </ul>
 </li>
-<li><p>cond(<em>C</em>) = <span class="math notranslate nohighlight">\(W_{\max}^2 / W_{\min}^2​\)</span></p>
+<li><p>cond(<em>C</em>) = <span class="math notranslate nohighlight">\(W_{\max}^2 / W_{\min}^2\)</span></p>
 <ul>
 <li><p><em>width</em> of convex set <span class="math notranslate nohighlight">\(C \subset \mathbb{R}^n\)</span> in direction q with <span class="math notranslate nohighlight">\(||q||_2=1\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(W(C, q) = \underset{z \in C}{\sup} \: q^Tz - \underset{z \in C}{\inf} \: q^Tz\)</span></p></li>
@@ -1246,7 +1258,7 @@
 <li><p><em>Newton’s method</em></p>
 <ol class="simple">
 <li><p>compute the newton step <span class="math notranslate nohighlight">\(\Delta x_{nt}\)</span> and decrement <span class="math notranslate nohighlight">\(\lambda^2 = \nabla f(x)^T \nabla^2 f(x)^{-1} \nabla f(x)\)</span></p></li>
-<li><p>stopping criterion: quit if <span class="math notranslate nohighlight">\(\lambda^2 / 2 \leq \epsilon​\)</span></p></li>
+<li><p>stopping criterion: quit if <span class="math notranslate nohighlight">\(\lambda^2 / 2 \leq \epsilon\)</span></p></li>
 <li><p>line search: choose step size t w/ backtracking line search</p></li>
 <li><p>update: <span class="math notranslate nohighlight">\(x += t \Delta x_{nt}\)</span></p></li>
 </ol>
@@ -1347,10 +1359,12 @@
 <li><p>alternatively, can look at kl-divergences</p></li>
 </ul>
 </div>
+<div class="section" id="misc">
+<h2>3.6.7. misc<a class="headerlink" href="#misc" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="nn-optimization">
-<h2>3.6.7. nn optimization<a class="headerlink" href="#nn-optimization" title="Permalink to this headline">¶</a></h2>
+<h3>3.6.7.1. nn optimization<a class="headerlink" href="#nn-optimization" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="why-is-it-hard">
-<h3>3.6.7.1. why is it hard?<a class="headerlink" href="#why-is-it-hard" title="Permalink to this headline">¶</a></h3>
+<h4>3.6.7.1.1. why is it hard?<a class="headerlink" href="#why-is-it-hard" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>plateaus</p></li>
 <li><p>winding canyons</p></li>
@@ -1396,10 +1410,40 @@
 </ul>
 </div>
 <div class="section" id="complicated-is-simpler">
-<h3>3.6.7.2. complicated is simpler<a class="headerlink" href="#complicated-is-simpler" title="Permalink to this headline">¶</a></h3>
+<h4>3.6.7.1.2. complicated is simpler<a class="headerlink" href="#complicated-is-simpler" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>ex. <span class="math notranslate nohighlight">\(x^3 \sin(x)\)</span> is simpler than just <span class="math notranslate nohighlight">\(x\)</span> on the domain [−0.01, 0.01]</p></li>
 <li><p>dropout is like ridge</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="mixed-integer-programming-mip">
+<h3>3.6.7.2. mixed integer programming (mip)<a class="headerlink" href="#mixed-integer-programming-mip" title="Permalink to this headline">¶</a></h3>
+<p>Notes from this <a class="reference external" href="https://www.gurobi.com/resource/mip-basics/">overview</a></p>
+<ul class="simple">
+<li><p>ex: minimize <span class="math notranslate nohighlight">\(c^{\top} x\)</span> s.t.</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\mathrm{A} \mathrm{x}=\mathrm{b}\)</span> (linear constraints)</p></li>
+<li><p><span class="math notranslate nohighlight">\(l\leq x \leq u\)</span> (bound constraints)</p></li>
+<li><p>some or all <span class="math notranslate nohighlight">\(x_j\)</span> must take integer values (integrality
+constraints)</p></li>
+</ul>
+</li>
+<li><p>solving: branch-and-bound</p>
+<ul>
+<li><p>integer constraints make this difficult so start by solving the relaxation without integer constraints</p></li>
+<li><p>pick one of the variables <span class="math notranslate nohighlight">\(x_b\)</span> that was not integer to be our <em>branching variable</em></p>
+<ul>
+<li><p>say it’s value was 5.7, now solve 2 MIPS, one with constraint <span class="math notranslate nohighlight">\(x_b \leq 5\)</span> an <span class="math notranslate nohighlight">\(x_b \geq 6\)</span></p>
+<ul>
+<li><p>return better solution of these two</p></li>
+</ul>
+</li>
+<li><p>iterate by solving relaxation and then adding more branching constraints</p></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>

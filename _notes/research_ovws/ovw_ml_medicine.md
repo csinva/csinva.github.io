@@ -164,6 +164,7 @@ category: research
 
 - [Medical Imaging and Machine Learning](https://arxiv.org/pdf/2103.01938.pdf)
   - medical images often have multiple channels / are 3d - closer to video than images
+- [Human-interpretable image features derived from densely mapped cancer pathology slides predict diverse molecular phenotypes](https://www.nature.com/articles/s41467-021-21896-9) (diao et al. 21)
 
 # improving medical studies
 

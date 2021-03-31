@@ -614,6 +614,7 @@ M --> Y
   - hard moment-matching conditions (Li & Fu, 2017; entropy balancing from [Hainmueller, 2012](https://www.cambridge.org/core/journals/political-analysis/article/entropy-balancing-for-causal-effects-a-multivariate-reweighting-method-to-produce-balanced-samples-in-observational-studies/220E4FC838066552B53128E647E4FAA7); Imai & Ratkovic, 2014)
   - soft moment-matching conditions  (Zubizarreta, 2015)
 - approximate residual balancing (athey, imbens, & wager, 2018) - combines balancing weights with a regularized regression adjustment for learning ATE from high-dimensional data
+- [Learning Causal Effects via Weighted Empirical Risk Minimization](https://causalai.net/r62.pdf) (jung et al. 2020) - estimate any computation (which usually requires actually modeling individual conditional probabilities) using weighted empirical risk minimization
 
 ## stratification / matching
 
@@ -815,4 +816,5 @@ M --> Y
 
   - **E-value** = min strength of association (risk ratio) that an unmeasured confounder would require with both $T$ and $Y$ to explain away a specific treatment-outcome association, conditional on $X$
     - higher = more causal
+- [Interpretable Sensitivity Analysis for Balancing Weights](https://arxiv.org/abs/2102.13218) (soriano et al. 2021) - percentile bootstrap procedure applied to balancing weights estimators
 
