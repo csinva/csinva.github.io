@@ -873,7 +873,7 @@ category: neuro
   - during day, calculate expectation over data via Hebbian learning (in Hopfield net this would store minima)
   - during night, would run anit hebbian by doing random walk over network (in Hopfield ne this would remove spurious local minima)
 - learn via gibs sampling (prob for one node conditioned on others is sigmoid)
-- can add hiddent units to allow for learning higher-order interactions (not just pairwise)
+- can add hidden units to allow for learning higher-order interactions (not just pairwise)
   - restricted boltzmann machine: no connections between "visible" units and no connections between "hidden units"
   - computationally easier (sampling is independent) but less rich
 - stacked rbm: hinton & salakhutdinov (hinton argues this is first paper to launch deep learning)

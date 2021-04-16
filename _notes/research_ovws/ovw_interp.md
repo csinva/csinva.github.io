@@ -112,7 +112,7 @@ Evaluating interpretability can be very difficult (largely because it rarely mak
 
 For an implementation of many of these models, see the python [imodels package](https://github.com/csinva/imodels).
 
-## decision rules overv
+## decision rules overview
 
 For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
 
@@ -630,6 +630,7 @@ How interactions are defined and summarized is a very difficult thing to specify
       - criticism = data instances that is not well represented by the set of prototypes
       - examples: k-medoids or MMD-critic
         - selects prototypes that minimize the discrepancy between the data + prototype distributions
+- [Architecture Disentanglement for Deep Neural Networks](https://arxiv.org/abs/2003.13268) (hu et al. 2021) - "NAD learns to disentangle a pre-trained DNN into sub-architectures according to independent tasks"
 - [Explaining Deep Learning Models with Constrained Adversarial Examples](https://arxiv.org/abs/1906.10671)
 - [Understanding Deep Architectures by Visual Summaries](http://bmvc2018.org/papers/0794.pdf)
 - [Semantics for Global and Local Interpretation of Deep Neural Networks](https://arxiv.org/abs/1910.09085)
@@ -650,9 +651,24 @@ How interactions are defined and summarized is a very difficult thing to specify
         - CAV - vector orthogonal to the classification boundary
         - TCAV uses the derivative of the CAV direction wrt input
     - [automated concept activation vectors](https://arxiv.org/abs/1902.03129) - Given a set of concept discovery images, each image is segmented with different resolutions to find concepts that are captured best at different sizes. (b) After removing duplicate segments, each segment is resized tothe original input size resulting in a pool of resized segments of the discovery images. (c) Resized segments are mapped to a model’s activation space at a bottleneck layer. To discover the concepts associated with the target class, clustering with outlier removal is performed. (d) The output of our method is a set of discovered concepts for each class, sorted by their importance in prediction
-- [Explaining The Behavior Of Black-Box Prediction Algorithms With Causal Learning](https://arxiv.org/abs/2006.02482) - specify some interpretable features and learn a causal graph of how the classifier uses these features
 - [On Completeness-aware Concept-Based Explanations in Deep Neural Networks](https://arxiv.org/abs/1910.07969)
 - [Interpretable Basis Decomposition for Visual Explanation](https://openaccess.thecvf.com/content_ECCV_2018/html/Antonio_Torralba_Interpretable_Basis_Decomposition_ECCV_2018_paper.html) (zhou et al. 2018) - decompose activations of the input image into semantically interpretable components pre-trained from a large concept corpus
+
+### dnn causal-motivated attribution
+
+- [Explaining The Behavior Of Black-Box Prediction Algorithms With Causal Learning](https://arxiv.org/abs/2006.02482) - specify some interpretable features and learn a causal graph of how the classifier uses these features
+  - **partial ancestral graph (PAG)** ([zhang 08](https://www.jmlr.org/papers/volume9/zhang08a/zhang08a.pdf)) is a graphical representation which includes
+    - directed edges (X $\to$ Y means X is a causal ancestor of Y)
+    - bidirected edges (X $\leftrightarrow$ Y means X and Y are both caused by some unmeasured common factor(s), e.g., X ← U → Y )
+    - partially directed edges (X $\circ \to$ Y or X $\circ-\circ$ Y ) where the circle marks indicate ambiguity about whether the endpoints are arrows or tails
+    - PAGs may also include additional edge types to represent selection bias
+  - given a model's predictions $\hat Y$ and some potential causes $Z$, learn a PAGE among them all
+    - assume $\hat Y$ is a causal non-ancestor of $Z$ (there is no directed path from $\hat Y$ into any element of $Z$)
+    - search for a PAG and not DAG bc $Z$ might not include all possibly relevant variables
+- [Neural Network Attributions: A Causal Perspective](http://proceedings.mlr.press/v97/chattopadhyay19a.html) (Chattopadhyay et al. 2019)
+  - the neural network architecture is viewed as a Structural Causal Model, and a methodology to compute the causal effect of each feature on the output is presented
+- [CXPlain: Causal Explanations for Model Interpretation under Uncertainty](https://arxiv.org/abs/1910.12336) (schwab & karlen, 2019)
+  - model-agnostic - efficiently query model to figure out which inputs are most important
 
 ### dnn feature importance
 

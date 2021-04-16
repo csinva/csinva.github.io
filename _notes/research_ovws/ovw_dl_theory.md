@@ -158,7 +158,7 @@ some more concrete questions:
   - infinitely wide nets and only top layer is trained
   - corresponds to kernel $\text{ker}(x, x') = \mathbb E_{\theta \sim W}[f(\theta, x) \cdot f(\theta, x')]$, where $W$ is an intialization distr. over $\theta$
 - [neural tangent kernel](https://arxiv.org/abs/1806.07572) (jacot et al. 2018)
-  - $\text{ker}(x, x') = \mathbb E_{\theta \sim W}[\left < \frac{f(\theta, x)}{\partial \theta} \cdot \frac{f(\theta, x')}{\partial \theta} \right> ]$ - evolution of weights over time follows this kernel
+  - $\text{ker}(x, x') = \mathbb E_{\theta \sim W} \left[\left < \frac{f(\theta, x)}{\partial \theta} \cdot \frac{f(\theta, x')}{\partial \theta} \right> \right]$ - evolution of weights over time follows this kernel
     - with very large width, this kernel is the NTK at initialization
     - stays stable during training (since weights don't change much)
   - at initialization, artificial neural networks (ANNs) are equivalent to Gaussian processes in the infinite-width limit

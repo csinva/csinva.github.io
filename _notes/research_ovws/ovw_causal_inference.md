@@ -218,26 +218,31 @@ C(Location of Car) --> B
 - a lot of our science does not actually rest on experiments (e.g. physics, geology)
   - hume (1739) - all we can observe is association, never actual counterfactuals or causes ("necesary connexion")
   - requires careful model selection
-- overview
-- **constraint-based algorithms** - conditional indep. checks can only determine graphs up to markov equivalence
+  - rvw: [Review of Causal Discovery Methods Based on Graphical Models](https://www.frontiersin.org/articles/10.3389/fgene.2019.00524/full)
+- **constraint-based algorithms** - use conditional indep. checks to determine graphs up to markov equivalence
     - *faithfulness* means the statistical dependence between variables estimated from the data does not violate the independence defined by any causal graph which generates the data
-    - ex. peter-clark (PC) algorithm - first learns undirected graph, then detects edge directions and returns an equivalent class
-    - some work tries to work on more general distrs.
-    - some work tries to extend to seeting with unobserved confounders
-  - **score-based algorithms** - replace conditional indep. tests with godness of fit tests (e.g. BIC)
-    - still can only determine graphs up to markov equivalence
-    - optimizing goodness of fit is NP-hard, so often use heuristics such as greedy equivalence search ([chickering, 2002](https://www.jmlr.org/papers/v3/chickering02b.html))
-  - **functional causal models** - assumpe a variable can be written as a function of its direct causes and some noise term
-    - e.g. (hyavarinen & zhang, 2016) assume additive noise and that $p(E|C)$ can be modeled while $P(C|E)$ cannot
-    - e.g. LiNGAM (Shimizu et al., 2006), ICA-LINGAM - linear relations between different variables and noise
-    - additive noise models ANM (Hoyer et al., 2009) relax the linear restirction
-      - ANM-MM (Hu et al., 2018)
-    - post-nonlinear models PNL (Zhang and Hyvarinen, 2009) expand the functional space with non-linear relations between the variables and the noise
-  - many models assume the generating cause distribution $p(C)$ is in som sense "independent" to the mechanism $P(E|C)$
-    - e.g. IGCI (Janzing et al., 2012) uses orthogonality in information space to express the independence between the two distributions
-    - e.g. KCDC (Mitrovic et al., 2018) uses  invariance of Kolmogorov complexity of conditional distribution
-    - e.g. RECI (Blobaum et al., 2018) extends IGCI to the setting with small noise, and proceeds by comparing the regression errors in both possible directions
-  - check variables which reduce entropy the most
+    - extensions to more general distrs., unobserved confounders
+    - **peter-clark (PC) algorithm** - first learns undirected graph, then detects edge directions and returns equivalence class
+      - assumes that there is no confounder (unobserved direct common cause of two measured variables)
+  - fast causal inference (FCI) (spirtes et al. 200)
+    - can deal with confounders - instead of edge/no edge have 3 possibilities: edge, no edge, confounding by unobserved missing common cause (+possibly another possibility for "unknown")
+- **score-based algorithms** - replace conditional indep. tests with godness of fit tests (e.g. BIC)
+  - assume there are no confounders
+  - still can only determine graphs up to markov equivalence
+  - optimizing goodness of fit is NP-hard, so often use heuristics such as greedy equivalence search (GES) ([chickering, 2002](https://www.jmlr.org/papers/v3/chickering02b.html))
+- **functional causal models** - assume a variable can be written as a function of its direct causes and some noise term
+  - can distinguish between different DAGs in same equivalence class
+  - e.g. (hyavarinen & zhang, 2016) assume additive noise and that $p(E|C)$ can be modeled while $P(C|E)$ cannot
+  - e.g. LiNGAM (Shimizu et al., 2006), ICA-LINGAM - linear relations between different variables and noise
+  - additive noise models ANM (Hoyer et al., 2009) relax the linear restriction
+    - ANM-MM (Hu et al., 2018)
+  - post-nonlinear models PNL (Zhang and Hyvarinen, 2009) expand the functional space with non-linear relations between the variables and the noise
+- many models assume the generating cause distribution $p(C)$ is in some sense "independent" to the mechanism $P(E|C)$
+  - e.g. IGCI (Janzing et al., 2012) uses orthogonality in information space to express the independence between the two distributions
+  - e.g. KCDC (Mitrovic et al., 2018) uses  invariance of Kolmogorov complexity of conditional distribution
+  - e.g. RECI (Blobaum et al., 2018) extends IGCI to the setting with small noise, and proceeds by comparing the regression errors in both possible directions
+- check variables which reduce entropy the most
+    - [Origo : causal inference by compression](https://link.springer.com/article/10.1007/s10115-017-1130-5) (budhathoki & vreekan, 2017) - similar intuition as ICM: causal directions are more easily compressible
 - [Learning and Testing Causal Models with Interventions](https://proceedings.neurips.cc/paper/2018/hash/78631a4bb5303be54fa1cfdcb958c00a-Abstract.html) (acharya et al. 2018)
   
   - given DAG, want to learn distribution on interventions with minimum number of interventions, variables intevened on, numper of samples draw per intervention
@@ -256,7 +261,7 @@ C(Location of Car) --> B
     - can turn this into binary classification and learn w/ network: given X, Y, does X->Y or Y-X?
   - on images, they get scores for different objects (w/ bounding boxes)
     - eval - when one thing is erased, does the other also get erased?
-- [Origo : causal inference by compression](https://link.springer.com/article/10.1007/s10115-017-1130-5) (budhathoki & vreekan, 2017) - similar intuition as ICM: causal directions are more easily compressible
+  - [link to iclr talk](https://www.technologyreview.com/s/613502/deep-learning-could-reveal-why-the-world-works-the-way-it-does/?fbclid=IwAR3LF2dc_3EvWXzEHhtrsqtH9Vs-4pjPALfuqKCOma9_gqLXMKDeCWrcdrQ) (bottou 2019)
 - [Visual Causal Feature Learning](https://arxiv.org/abs/1412.2309) (chalupka, perona, & eberhardt, 2015)
   - assume the behavior $T$ is a function of some hidden causes $H_i$ and the image
     - ![Screen Shot 2020-02-03 at 2.27.27 PM](../assets/hidden_graphical_node.png)
@@ -283,8 +288,7 @@ C(Location of Car) --> B
     - genetic programming is the most pervalent method here
     - alternatives: sparse regression, dimensional function synthesis
 - Causal Mosaic: Cause-Effect Inference via Nonlinear ICA and Ensemble Method ([wu & fukumizu, 2020](https://arxiv.org/abs/2001.01894))
-  - focus on bivariate case, 
-- [link to iclr talk](https://www.technologyreview.com/s/613502/deep-learning-could-reveal-why-the-world-works-the-way-it-does/?fbclid=IwAR3LF2dc_3EvWXzEHhtrsqtH9Vs-4pjPALfuqKCOma9_gqLXMKDeCWrcdrQ) (bottou 2019)
+  - focus on bivariate case
 
 ## stable/invariant predictors
 

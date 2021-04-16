@@ -2,6 +2,13 @@
 
 # 2021
 
+- [How to Answer the ‘Trap Question’ - WSJ](https://www.wsj.com/articles/how-to-answer-the-trap-question-11617559915?mod=hp_opin_pos_1)
+  - “the social purpose of a company is to find profitable solutions to the challenges of people and planet,”
+  - “Driving broad economic growth is perhaps the biggest thing that a company can do,” Mr. Nadella added.
+  - “In order to have the pie distributed evenly, the pie should first grow.”
+- [What I Wouldn’t Give for a Shave That Isn’t Woke - WSJ](https://www.wsj.com/articles/what-i-wouldnt-give-for-a-shave-that-isnt-woke-11617567413?mod=hp_opin_pos_2)
+  - "Many companies take Republican customers for granted. Perhaps they’re right."
+- [Google, Facebook, Amazon, Apple and Microsoft. Call Them Tech Frenemies for Life. - WSJ](https://www.wsj.com/articles/tech-giants-cooperate-while-competing-frenemies-for-life-11617293819)
 - [Where Have All the Houses Gone? - The New York Times](https://www.nytimes.com/2021/02/26/upshot/where-have-all-the-houses-gone.html?action=click&module=Spotlight&pgtype=Homepage)
   - way fewer houses for sale during pandemic (less houses for sale = less houses for )
   - government-backed loans prevented some foreclosures (and corresponded to less houses for sale)

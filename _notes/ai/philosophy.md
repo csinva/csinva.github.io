@@ -131,6 +131,20 @@ category: ai
 - more focus on whethery expalanations capture our intuitive judgements and more on the issue of why the info they convey is valuable + relates to our goals
 - to what extent does a single model work across sciences (e.g. biologists claim to be interested in mechanisms whereas physicists in laws)
 
+
+
+# philosophy of science
+
+## [thomas kuhn](https://plato.stanford.edu/entries/thomas-kuhn/)
+
+- science enjoys periods of stable growth punctuated by revisionary revolutions
+  - the development of science is driven, in normal periods of science, by adherence to what Kuhn called a ‘paradigm’
+    - The functions of a paradigm are to supply puzzles for scientists to solve and to provide the tools for their solution
+  - A crisis in science arises when confidence is lost in the ability of the paradigm to solve particularly worrying puzzles called ‘anomalies’
+    - scientific revolutions involve a revision to existing scientific belief or practice
+- ‘incommensurability thesis’ -  theories from differing periods suffer from certain deep kinds of failure of comparability
+  - controversial - goes against the idea that science constantly builds
+
 # the story of philosophy
 
 **book by will durant**
