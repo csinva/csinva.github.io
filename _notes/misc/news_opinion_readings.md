@@ -2,8 +2,10 @@
 
 # 2021
 
+- [An American Epidemic of ‘Covid Mania’ - WSJ](https://www.wsj.com/articles/an-american-epidemic-of-covid-mania-11618871457?mod=opinion_lead_pos7)
+- [Opinion | There Could Never Be a Female Andrew Yang - The New York Times](https://www.nytimes.com/2021/04/19/opinion/nyc-mayor-andrew-yang.html?action=click&module=Opinion&pgtype=Homepage) - "Male candidates can embody possibility and run as repositories for people’s diffuse hopes. Women usually have to pay their dues"
 - [How to Answer the ‘Trap Question’ - WSJ](https://www.wsj.com/articles/how-to-answer-the-trap-question-11617559915?mod=hp_opin_pos_1)
-  - “the social purpose of a company is to find profitable solutions to the challenges of people and planet,”
+  - “the social purpose of a company is to find profitable solutions to the challenges of people and planet”
   - “Driving broad economic growth is perhaps the biggest thing that a company can do,” Mr. Nadella added.
   - “In order to have the pie distributed evenly, the pie should first grow.”
 - [What I Wouldn’t Give for a Shave That Isn’t Woke - WSJ](https://www.wsj.com/articles/what-i-wouldnt-give-for-a-shave-that-isnt-woke-11617567413?mod=hp_opin_pos_2)

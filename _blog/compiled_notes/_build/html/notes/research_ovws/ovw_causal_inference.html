@@ -1042,26 +1042,38 @@ C(Location of Car) --&gt; B
 <ul>
 <li><p>hume (1739) - all we can observe is association, never actual counterfactuals or causes (“necesary connexion”)</p></li>
 <li><p>requires careful model selection</p></li>
+<li><p>rvw: <a class="reference external" href="https://www.frontiersin.org/articles/10.3389/fgene.2019.00524/full">Review of Causal Discovery Methods Based on Graphical Models</a></p></li>
 </ul>
 </li>
-<li><p>overview</p></li>
-<li><p><strong>constraint-based algorithms</strong> - conditional indep. checks can only determine graphs up to markov equivalence</p>
+<li><p><strong>constraint-based algorithms</strong> - use conditional indep. checks to determine graphs up to markov equivalence</p>
 <ul>
 <li><p><em>faithfulness</em> means the statistical dependence between variables estimated from the data does not violate the independence defined by any causal graph which generates the data</p></li>
-<li><p>ex. peter-clark (PC) algorithm - first learns undirected graph, then detects edge directions and returns an equivalent class</p></li>
-<li><p>some work tries to work on more general distrs.</p></li>
-<li><p>some work tries to extend to seeting with unobserved confounders</p></li>
-<li><p><strong>score-based algorithms</strong> - replace conditional indep. tests with godness of fit tests (e.g. BIC)</p>
+<li><p>extensions to more general distrs., unobserved confounders</p></li>
+<li><p><strong>peter-clark (PC) algorithm</strong> - first learns undirected graph, then detects edge directions and returns equivalence class</p>
 <ul>
-<li><p>still can only determine graphs up to markov equivalence</p></li>
-<li><p>optimizing goodness of fit is NP-hard, so often use heuristics such as greedy equivalence search (<a class="reference external" href="https://www.jmlr.org/papers/v3/chickering02b.html">chickering, 2002</a>)</p></li>
+<li><p>assumes that there is no confounder (unobserved direct common cause of two measured variables)</p></li>
 </ul>
 </li>
-<li><p><strong>functional causal models</strong> - assumpe a variable can be written as a function of its direct causes and some noise term</p>
+<li><p>fast causal inference (FCI) (spirtes et al. 200)</p>
 <ul>
+<li><p>can deal with confounders - instead of edge/no edge have 3 possibilities: edge, no edge, confounding by unobserved missing common cause (+possibly another possibility for “unknown”)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>score-based algorithms</strong> - replace conditional indep. tests with godness of fit tests (e.g. BIC)</p>
+<ul>
+<li><p>assume there are no confounders</p></li>
+<li><p>still can only determine graphs up to markov equivalence</p></li>
+<li><p>optimizing goodness of fit is NP-hard, so often use heuristics such as greedy equivalence search (GES) (<a class="reference external" href="https://www.jmlr.org/papers/v3/chickering02b.html">chickering, 2002</a>)</p></li>
+</ul>
+</li>
+<li><p><strong>functional causal models</strong> - assume a variable can be written as a function of its direct causes and some noise term</p>
+<ul>
+<li><p>can distinguish between different DAGs in same equivalence class</p></li>
 <li><p>e.g. (hyavarinen &amp; zhang, 2016) assume additive noise and that <span class="math notranslate nohighlight">\(p(E|C)\)</span> can be modeled while <span class="math notranslate nohighlight">\(P(C|E)\)</span> cannot</p></li>
 <li><p>e.g. LiNGAM (Shimizu et al., 2006), ICA-LINGAM - linear relations between different variables and noise</p></li>
-<li><p>additive noise models ANM (Hoyer et al., 2009) relax the linear restirction</p>
+<li><p>additive noise models ANM (Hoyer et al., 2009) relax the linear restriction</p>
 <ul>
 <li><p>ANM-MM (Hu et al., 2018)</p></li>
 </ul>
@@ -1069,14 +1081,16 @@ C(Location of Car) --&gt; B
 <li><p>post-nonlinear models PNL (Zhang and Hyvarinen, 2009) expand the functional space with non-linear relations between the variables and the noise</p></li>
 </ul>
 </li>
-<li><p>many models assume the generating cause distribution <span class="math notranslate nohighlight">\(p(C)\)</span> is in som sense “independent” to the mechanism <span class="math notranslate nohighlight">\(P(E|C)\)</span></p>
+<li><p>many models assume the generating cause distribution <span class="math notranslate nohighlight">\(p(C)\)</span> is in some sense “independent” to the mechanism <span class="math notranslate nohighlight">\(P(E|C)\)</span></p>
 <ul>
 <li><p>e.g. IGCI (Janzing et al., 2012) uses orthogonality in information space to express the independence between the two distributions</p></li>
 <li><p>e.g. KCDC (Mitrovic et al., 2018) uses  invariance of Kolmogorov complexity of conditional distribution</p></li>
 <li><p>e.g. RECI (Blobaum et al., 2018) extends IGCI to the setting with small noise, and proceeds by comparing the regression errors in both possible directions</p></li>
 </ul>
 </li>
-<li><p>check variables which reduce entropy the most</p></li>
+<li><p>check variables which reduce entropy the most</p>
+<ul>
+<li><p><a class="reference external" href="https://link.springer.com/article/10.1007/s10115-017-1130-5">Origo : causal inference by compression</a> (budhathoki &amp; vreekan, 2017) - similar intuition as ICM: causal directions are more easily compressible</p></li>
 </ul>
 </li>
 <li><p><a class="reference external" href="https://proceedings.neurips.cc/paper/2018/hash/78631a4bb5303be54fa1cfdcb958c00a-Abstract.html">Learning and Testing Causal Models with Interventions</a> (acharya et al. 2018)</p>
@@ -1115,9 +1129,9 @@ C(Location of Car) --&gt; B
 <li><p>eval - when one thing is erased, does the other also get erased?</p></li>
 </ul>
 </li>
+<li><p><a class="reference external" href="https://www.technologyreview.com/s/613502/deep-learning-could-reveal-why-the-world-works-the-way-it-does/?fbclid=IwAR3LF2dc_3EvWXzEHhtrsqtH9Vs-4pjPALfuqKCOma9_gqLXMKDeCWrcdrQ">link to iclr talk</a> (bottou 2019)</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://link.springer.com/article/10.1007/s10115-017-1130-5">Origo : causal inference by compression</a> (budhathoki &amp; vreekan, 2017) - similar intuition as ICM: causal directions are more easily compressible</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1412.2309">Visual Causal Feature Learning</a> (chalupka, perona, &amp; eberhardt, 2015)</p>
 <ul>
 <li><p>assume the behavior <span class="math notranslate nohighlight">\(T\)</span> is a function of some hidden causes <span class="math notranslate nohighlight">\(H_i\)</span> and the image</p>
@@ -1178,10 +1192,9 @@ C(Location of Car) --&gt; B
 </li>
 <li><p>Causal Mosaic: Cause-Effect Inference via Nonlinear ICA and Ensemble Method (<a class="reference external" href="https://arxiv.org/abs/2001.01894">wu &amp; fukumizu, 2020</a>)</p>
 <ul>
-<li><p>focus on bivariate case,</p></li>
+<li><p>focus on bivariate case</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://www.technologyreview.com/s/613502/deep-learning-could-reveal-why-the-world-works-the-way-it-does/?fbclid=IwAR3LF2dc_3EvWXzEHhtrsqtH9Vs-4pjPALfuqKCOma9_gqLXMKDeCWrcdrQ">link to iclr talk</a> (bottou 2019)</p></li>
 </ul>
 </div>
 <div class="section" id="stable-invariant-predictors">

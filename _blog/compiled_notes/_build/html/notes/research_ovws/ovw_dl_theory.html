@@ -958,7 +958,7 @@ neural network smoothness</a></p></li>
 </li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1806.07572">neural tangent kernel</a> (jacot et al. 2018)</p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\(\text{ker}(x, x') = \mathbb E_{\theta \sim W}[\left &lt; \frac{f(\theta, x)}{\partial \theta} \cdot \frac{f(\theta, x')}{\partial \theta} \right&gt; ]\)</span> - evolution of weights over time follows this kernel</p>
+<li><p><span class="math notranslate nohighlight">\(\text{ker}(x, x') = \mathbb E_{\theta \sim W} \left[\left &lt; \frac{f(\theta, x)}{\partial \theta} \cdot \frac{f(\theta, x')}{\partial \theta} \right&gt; \right]\)</span> - evolution of weights over time follows this kernel</p>
 <ul>
 <li><p>with very large width, this kernel is the NTK at initialization</p></li>
 <li><p>stays stable during training (since weights don’t change much)</p></li>

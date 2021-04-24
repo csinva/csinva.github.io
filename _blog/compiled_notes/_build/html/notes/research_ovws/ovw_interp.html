@@ -624,8 +624,8 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#decision-rules-overv">
-     1.12.3.1. decision rules overv
+    <a class="reference internal nav-link" href="#decision-rules-overview">
+     1.12.3.1. decision rules overview
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
@@ -756,8 +756,13 @@
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#dnn-causal-motivated-attribution">
+       1.12.4.5.3. dnn causal-motivated attribution
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#dnn-feature-importance">
-       1.12.4.5.3. dnn feature importance
+       1.12.4.5.4. dnn feature importance
       </a>
      </li>
     </ul>
@@ -1007,8 +1012,8 @@
 <div class="section" id="intrinsic-interpretability-i-e-how-can-we-fit-simpler-models">
 <h2>1.12.3. intrinsic interpretability (i.e. how can we fit simpler models)<a class="headerlink" href="#intrinsic-interpretability-i-e-how-can-we-fit-simpler-models" title="Permalink to this headline">¶</a></h2>
 <p>For an implementation of many of these models, see the python <a class="reference external" href="https://github.com/csinva/imodels">imodels package</a>.</p>
-<div class="section" id="decision-rules-overv">
-<h3>1.12.3.1. decision rules overv<a class="headerlink" href="#decision-rules-overv" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="decision-rules-overview">
+<h3>1.12.3.1. decision rules overview<a class="headerlink" href="#decision-rules-overview" title="Permalink to this headline">¶</a></h3>
 <p>For more on rules, see <strong><a class="reference external" href="https://csinva.io/notes/ai/logic.html">logic notes</a></strong>.</p>
 <ul class="simple">
 <li><p>2 basic concepts for a rule</p>
@@ -1924,6 +1929,7 @@ instances (PDP problem)</p></li>
 </li>
 </ul>
 </li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2003.13268">Architecture Disentanglement for Deep Neural Networks</a> (hu et al. 2021) - “NAD learns to disentangle a pre-trained DNN into sub-architectures according to independent tasks”</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1906.10671">Explaining Deep Learning Models with Constrained Adversarial Examples</a></p></li>
 <li><p><a class="reference external" href="http://bmvc2018.org/papers/0794.pdf">Understanding Deep Architectures by Visual Summaries</a></p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1910.09085">Semantics for Global and Local Interpretation of Deep Neural Networks</a></p></li>
@@ -1955,13 +1961,45 @@ a concept’s examples and examples in any layer</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1902.03129">automated concept activation vectors</a> - Given a set of concept discovery images, each image is segmented with different resolutions to find concepts that are captured best at different sizes. (b) After removing duplicate segments, each segment is resized tothe original input size resulting in a pool of resized segments of the discovery images. (c) Resized segments are mapped to a model’s activation space at a bottleneck layer. To discover the concepts associated with the target class, clustering with outlier removal is performed. (d) The output of our method is a set of discovered concepts for each class, sorted by their importance in prediction</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/2006.02482">Explaining The Behavior Of Black-Box Prediction Algorithms With Causal Learning</a> - specify some interpretable features and learn a causal graph of how the classifier uses these features</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1910.07969">On Completeness-aware Concept-Based Explanations in Deep Neural Networks</a></p></li>
 <li><p><a class="reference external" href="https://openaccess.thecvf.com/content_ECCV_2018/html/Antonio_Torralba_Interpretable_Basis_Decomposition_ECCV_2018_paper.html">Interpretable Basis Decomposition for Visual Explanation</a> (zhou et al. 2018) - decompose activations of the input image into semantically interpretable components pre-trained from a large concept corpus</p></li>
 </ul>
 </div>
+<div class="section" id="dnn-causal-motivated-attribution">
+<h4>1.12.4.5.3. dnn causal-motivated attribution<a class="headerlink" href="#dnn-causal-motivated-attribution" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><a class="reference external" href="https://arxiv.org/abs/2006.02482">Explaining The Behavior Of Black-Box Prediction Algorithms With Causal Learning</a> - specify some interpretable features and learn a causal graph of how the classifier uses these features</p>
+<ul>
+<li><p><strong>partial ancestral graph (PAG)</strong> (<a class="reference external" href="https://www.jmlr.org/papers/volume9/zhang08a/zhang08a.pdf">zhang 08</a>) is a graphical representation which includes</p>
+<ul>
+<li><p>directed edges (X <span class="math notranslate nohighlight">\(\to\)</span> Y means X is a causal ancestor of Y)</p></li>
+<li><p>bidirected edges (X <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> Y means X and Y are both caused by some unmeasured common factor(s), e.g., X ← U → Y )</p></li>
+<li><p>partially directed edges (X <span class="math notranslate nohighlight">\(\circ \to\)</span> Y or X <span class="math notranslate nohighlight">\(\circ-\circ\)</span> Y ) where the circle marks indicate ambiguity about whether the endpoints are arrows or tails</p></li>
+<li><p>PAGs may also include additional edge types to represent selection bias</p></li>
+</ul>
+</li>
+<li><p>given a model’s predictions <span class="math notranslate nohighlight">\(\hat Y\)</span> and some potential causes <span class="math notranslate nohighlight">\(Z\)</span>, learn a PAGE among them all</p>
+<ul>
+<li><p>assume <span class="math notranslate nohighlight">\(\hat Y\)</span> is a causal non-ancestor of <span class="math notranslate nohighlight">\(Z\)</span> (there is no directed path from <span class="math notranslate nohighlight">\(\hat Y\)</span> into any element of <span class="math notranslate nohighlight">\(Z\)</span>)</p></li>
+<li><p>search for a PAG and not DAG bc <span class="math notranslate nohighlight">\(Z\)</span> might not include all possibly relevant variables</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="http://proceedings.mlr.press/v97/chattopadhyay19a.html">Neural Network Attributions: A Causal Perspective</a> (Chattopadhyay et al. 2019)</p>
+<ul>
+<li><p>the neural network architecture is viewed as a Structural Causal Model, and a methodology to compute the causal effect of each feature on the output is presented</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1910.12336">CXPlain: Causal Explanations for Model Interpretation under Uncertainty</a> (schwab &amp; karlen, 2019)</p>
+<ul>
+<li><p>model-agnostic - efficiently query model to figure out which inputs are most important</p></li>
+</ul>
+</li>
+</ul>
+</div>
 <div class="section" id="dnn-feature-importance">
-<h4>1.12.4.5.3. dnn feature importance<a class="headerlink" href="#dnn-feature-importance" title="Permalink to this headline">¶</a></h4>
+<h4>1.12.4.5.4. dnn feature importance<a class="headerlink" href="#dnn-feature-importance" title="Permalink to this headline">¶</a></h4>
 <ul>
 <li><p>saliency maps</p>
 <ol class="simple">

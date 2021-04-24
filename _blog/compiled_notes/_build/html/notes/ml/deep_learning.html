@@ -1052,6 +1052,20 @@
 <h2>5.7.10. misc<a class="headerlink" href="#misc" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>adaptive pooling can help deal with different sizes</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2003.08934">NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis</a></p>
+<ul>
+<li><p>given multiple views, generate depth map + continuous volumetric repr.</p></li>
+<li><p>dnn is overfit to only one scene</p></li>
+<li><p>inputs: a position and viewing direction</p></li>
+<li><p>output: for that position, density (is there smth at this location) + color (if there is smth at this location)</p></li>
+<li><p>then, given new location / angle, send a ray through for each pixel and see color when it hits smth</p></li>
+<li><p><a class="reference external" href="https://vsitzmann.github.io/siren/">Implicit Neural Representations with Periodic Activation Functions</a></p>
+<ul>
+<li><p>similar paper</p></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
