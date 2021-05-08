@@ -2,6 +2,7 @@
 
 # 2021
 
+- [Stop talking about AI ethics. It’s time to talk about power. | MIT Technology Review](https://www.technologyreview.com/2021/04/23/1023549/kate-crawford-atlas-of-ai-review/?utm_medium=tr_social&utm_campaign=site_visitor.unpaid.engagement&utm_source=Twitter#Echobox=1619548322)
 - [An American Epidemic of ‘Covid Mania’ - WSJ](https://www.wsj.com/articles/an-american-epidemic-of-covid-mania-11618871457?mod=opinion_lead_pos7)
 - [Opinion | There Could Never Be a Female Andrew Yang - The New York Times](https://www.nytimes.com/2021/04/19/opinion/nyc-mayor-andrew-yang.html?action=click&module=Opinion&pgtype=Homepage) - "Male candidates can embody possibility and run as repositories for people’s diffuse hopes. Women usually have to pay their dues"
 - [How to Answer the ‘Trap Question’ - WSJ](https://www.wsj.com/articles/how-to-answer-the-trap-question-11617559915?mod=hp_opin_pos_1)

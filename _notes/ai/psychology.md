@@ -387,7 +387,6 @@ Some notes on papers / books surrounding psychology, especially evolutionary psy
 	1. power to religion makers
 	2. mutual benefits for leaders and people
 	3. we came to empathize with all people
-	
 ### general tips
 1. distinguish between behavior and mental organ governing it
 2. remember that mental organ, not behavior, is what was actually designed by natural selection
@@ -433,7 +432,6 @@ Some notes on papers / books surrounding psychology, especially evolutionary psy
 - *intuitionism* - calls  reasoning *rider* and intution *elephant*
 	- rider developed to help elephant
 	- *social intuitionism* - other people can alter intuitions
-	
 ### elephants rule
 - brain can make snap judgements in 1/10 second
 	- can predict 2/3 outcomes of senate / house elections based on attractiveness in this time
@@ -712,3 +710,7 @@ Some notes on papers / books surrounding psychology, especially evolutionary psy
 - Ego – organized and realistic
 - Super-ego – analyzes and moralizes – mediates between id and ego
 - "The goal of therapy is to turn neurotic misery into everyday unhappiness" (attributed to freud)
+
+# misc
+
+- [Feeling Blah During the Pandemic? It's Called Languishing - The New York Times](https://www.nytimes.com/2021/04/19/well/mind/covid-mental-health-languishing.html?action=click&algo=identity&block=editors_picks_recirc&fellback=false&imp_id=508025631&impression_id=e587de31-ac2b-11eb-b303-61e8deb00e32&index=1&pgtype=Article&pool=editors-picks-ls&region=ccolumn&req_id=656302536&surface=home-featured&variant=holdout_home-featured&action=click&module=editorContent&pgtype=Article&region=CompanionColumn&contentCollection=Trending)

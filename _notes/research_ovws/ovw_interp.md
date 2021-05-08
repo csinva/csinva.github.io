@@ -230,6 +230,7 @@ For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
 ### symbolic regression
 
 - learn form of the equation using priors on what kinds of thinngs are more difficult
+- [Logic Regression](https://amstat.tandfonline.com/doi/abs/10.1198/1061860032238?casa_token=WVNXGYsNPLsAAAAA:eCjYgsRw_WZ6g0GPG9x3CMyHyEV9kwcXvWCC1S0TTbLc7SDBiiyHiKLNtYsuC6WYOpto7xAi6tQ5eQ#.YJB3bGZKjzc) (ruczinski, kooperberg & leblanc, 2012) - given binary input variables, automatically construct interaction terms and linear model (fit using simulated annealing)
 - [Building and Evaluating Interpretable Models using Symbolic Regression and Generalized Additive Models](https://openreview.net/pdf?id=BkgyvQzmW)
   - gams - assume model form is additive combination of some funcs, then solve via GD
   - however, if we don't know the form of the model we must generate it
@@ -656,7 +657,7 @@ How interactions are defined and summarized is a very difficult thing to specify
 
 ### dnn causal-motivated attribution
 
-- [Explaining The Behavior Of Black-Box Prediction Algorithms With Causal Learning](https://arxiv.org/abs/2006.02482) - specify some interpretable features and learn a causal graph of how the classifier uses these features
+- [Explaining The Behavior Of Black-Box Prediction Algorithms With Causal Learning](https://arxiv.org/abs/2006.02482) - specify some interpretable features and learn a causal graph of how the classifier uses these features (sani et al. 2021)
   - **partial ancestral graph (PAG)** ([zhang 08](https://www.jmlr.org/papers/volume9/zhang08a/zhang08a.pdf)) is a graphical representation which includes
     - directed edges (X $\to$ Y means X is a causal ancestor of Y)
     - bidirected edges (X $\leftrightarrow$ Y means X and Y are both caused by some unmeasured common factor(s), e.g., X ← U → Y )
@@ -669,6 +670,7 @@ How interactions are defined and summarized is a very difficult thing to specify
   - the neural network architecture is viewed as a Structural Causal Model, and a methodology to compute the causal effect of each feature on the output is presented
 - [CXPlain: Causal Explanations for Model Interpretation under Uncertainty](https://arxiv.org/abs/1910.12336) (schwab & karlen, 2019)
   - model-agnostic - efficiently query model to figure out which inputs are most important
+  - pixel-level attributions
 
 ### dnn feature importance
 
@@ -938,4 +940,4 @@ These papers don't quite connect to prediction, but are generally about finding 
 - [Cyclic Boosting - An Explainable Supervised Machine Learning Algorithm - IEEE Conference Publication](https://ieeexplore.ieee.org/abstract/document/8999347)
 - [A Causality Analysis for Nonlinear Classification Model with Self-Organizing Map and Locally Approximation to Linear Model](https://www.semanticscholar.org/paper/A-Causality-Analysis-for-Nonlinear-Classification-Kirihata-Maekawa/4b76830be36ae14d878f7c0a7ff2508bfe172f64)
 - [Black-Box Saliency Map Generation Using Bayesian Optimisation](https://arxiv.org/abs/2001.11366)
-- [ON NETWORK SCIENCE AND MUTUAL INFORMATION FOR EXPLAINING DEEP NEURAL NETWORKS Brian Davis1∗](https://umangsbhatt.github.io/reports/icassp_2020.pdf)
+- [ON NETWORK SCIENCE AND MUTUAL INFORMATION FOR EXPLAINING DEEP NEURAL NETWORKS Brian Davis1∗](https://umangsbhatt.github.io/reports/icassp_2020.pdf)s
