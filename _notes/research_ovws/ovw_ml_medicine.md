@@ -2,6 +2,7 @@
 layout: notes
 title: ml in medicine
 category: research
+typora-copy-images-to: ../assets
 ---
 
 **some rough notes on ml in medicine**
@@ -30,10 +31,7 @@ category: research
 - **prognosis** is a guess as to the outcome of **treatment**
 - **diagnosis** is actually identifying the problem and giving it a name, such as depression or obsessive-compulsive disorder
 - AI is a technology, but it's not a product
-- fda clearance for paige prostate product (2019) - got ce mark
-  - helps pathologists identify cancers (less misses)
 - health economics incentives align with health incentives: catching tumor early is cheaper for hospitals
-- digital slide viewer also got CE mark
 
 ## high-level
 
@@ -164,7 +162,6 @@ category: research
 
 - [Medical Imaging and Machine Learning](https://arxiv.org/pdf/2103.01938.pdf)
   - medical images often have multiple channels / are 3d - closer to video than images
-- [Human-interpretable image features derived from densely mapped cancer pathology slides predict diverse molecular phenotypes](https://www.nature.com/articles/s41467-021-21896-9) (diao et al. 21)
 
 # improving medical studies
 
@@ -177,3 +174,113 @@ category: research
       - alternatively, can look for natural experiment / instrumental variable / discontinuity analysis
       - has many benefits
     - modeling: should use ensemble methods rather than individual models
+
+# pathology
+
+## basics
+
+- **pathologists** work with tissue samples either visually or chemically
+   - *anatomic* pathology relies on the microscope whereas *clinical* pathology does not
+- pathologists convert from tissue image into written report
+- when case is challenging, may require a second opinion (v rare)
+- steps (process takes 9-12 hrs): ![tissue_prep](/Users/chandan.singh/Desktop/csinva.github.io/_notes/assets/tissue_prep.png)
+   - tissue is surgically removed
+      - more tissue collected is generally better (gives more context)
+      - this procedure is called a *biopsy*
+      - much is written down at this step (e.g. race, gender, locations in organ, different tumors in an organ) that can't be seen in slide alone
+   - fixation: keeps the tissue stable (preserves dna also) - basicallly just soak in formalin
+   - dissection: remove the relevant part of the tissue
+   - tissue processor - removes water in tissue and substitute with wax (parafin) - hardens it and makes it easy to cut into thin strips
+   - microtone - cuts very thin slices of the tissue (2-3 microns)
+   - staining
+      - **H & E** - hematoxylin and eosin stain - most popular (~80%) - colors the cells in a specific way, bc cells are usually pretty transparent
+         - hematoxylin stains nucleic acids blue
+         - eosin stains proteins / cytoplasm pink/red
+      - **immunohistochemistry (IHC)** - tries to identify cell lineage: 10-15%
+         - identifies targets
+         - use antibodies tagged with chromophores to tag tissues
+      - gram stain - highlights bacteria
+      - giemsa - microorganisms
+      - others...for muscle, fungi
+   - viewing
+      - usually analog - put slide on something that can move / rotate
+      - with paige: put slide through digital scanner (only 5% or so of slides are currently digital)
+   - later on, board meets to decide on treatment (based on pathology report)
+      - usually some discussion betweeon original imaging (pre-biopsy) and pathologist's interpretation
+   - resection - after initial diagnosis, often entire tumor is removed (**resection**)
+- how can ai help?
+	- can help identify small things in large images
+	- can help with conflict resolution
+- after (successful) neoadjuvant chemotherapy, problem becomes more difficult
+   - very few remaining cancer cells
+   - cancer/non-cancer cells become harder to distinguish (esp. for prostate)
+   - tumor bed is patchily filled with cancer cells - need to better clarify presence of cancer
+
+
+## papers
+
+- [Deep Learning Models for Digital Pathology](https://arxiv.org/abs/1910.12329) (BenTaieb & Hamarneh, 2019)
+   - note: alternative to histopathology are more expensive / slower (e.g. molecular profiling)
+   - to promote consistency and objective inter-observer agreement, most pathologists are trained to follow simple algorithmic decision rules that sufficiently stratify patients into reproducible groups based on tumor type and aggressiveness
+   - magnification usually given in microns per pixel
+   - WSI files are much larger than other digital images (e.g. for radiology)
+   - DNNs can be used for many tasks: beyond just classification, there are subtasks (e.g. count histological primitives, like nuclei) and preprocessing tasks (e.g. stain normalization)
+   - challenge: multi-magnification + **high dimensions** (i.e. millions of pixels)
+      - people usually extract smaller patches and train on these
+         - this loses larger context
+         - one soln: pyramid representation: extract patches at different magnification levels
+         - one soln: stacked CNN - train fully-conv net, then remove linear layer, freeze, and train another fully-conv net on the activations (so it now has larger receptive field)
+         - one soln: use 2D LSTM to aggregate patch reprs.
+      - challenge: annotations only at the entire-slide level, but must figure out how to train individual patches
+         - e.g. use aggregation techniques on patches - extract patch-wise features then do smth simple, like random forest
+         - e.g. treat as weak labels or do multiple-instance learning
+            - could just give slide-level label to all patches then vote
+      - can use transfer learning from related domains with more labels
+   - challenge: class imbalance
+      - can use boosting approach to increase the likelihood of sampling patches that were originally incorrectly classified by the model
+   - challenge: need to integrate in other info, such as genomics
+   - when predicting histological primitives, often predict pixel-wise probability maps, then look for local maxima
+      - can also integrated domain-knowledge features
+      - can also have 2 paths, one making bounding-box proposals and another predicting the probability of a class
+      - alternatively, can formulate as a regression task, where pixelwise prediction tells distance to nearest centroid of object
+      - could also just directly predict the count
+   - can also predict survival analysis 
+- [Clinical-grade computational pathology using weakly supervised deep learning on whole slide images](https://www.nature.com/articles/s41591-019-0508-1) (campanella et al. 2019)
+   - use slide-level diagnosis as "weak supervision" for all contained patches
+   - 1st step: train patch-level CNNs using MIL
+      - if label is 0, then all patches should be 0
+      - if label is 1, then only pass gradients to the top-k predicted patches
+   - 2nd step: use RNN (or another net) to combine info across *S* most suspicious tiles
+- [Human-interpretable image features derived from densely mapped cancer pathology slides predict diverse molecular phenotypes](https://www.nature.com/articles/s41467-021-21896-9) (diao et al. 21)
+
+
+
+# cancer
+
+- **tumor** = neoplasm - a mass formation from an uncontrolled growth of cells
+   - benign tumor - typically stays confined to the organ where it is present and does not cause functional damage
+   - malignant tumor = cancer - comprises organ function and can spread to other organs (**metastasis**)
+- relation network based aggregator on patches
+- lymphatic system drains fluids (non-blood) from organs into *lymph nodes*
+   - cancer often mestastasize through these
+- elements of staging pTNM
+   - size / depth of tumor "T"
+   - number of lymph nodes / how many had cancer "T"
+   - number of metastatic foci in non-lymph node organ "M"
+
+
+
+## treatments
+
+- chemo
+   - traditional chemotherapy disrupts cell replication
+      - hair loss and gastrointestinal symptoms occur bc these cells also rapidly replicate
+   - *adjuvant* chemotherapy - after cancer is removed, most common
+   - *neoadjuvant* chemo - after biopsy, but before resection (when very hard to remove)
+- targeted therapies
+   - ex. address genetic aberration found in cancer cells
+   - immunotherapy - enhance body's immune response to cancer cells (so body will attack these cells on its own)
+      - want the antigens on the tumor to be as different as possible (so they will be characterized as foreign)
+      - to measure this, can conduct total mutational burden (TMB) or miscrosatellite instability (MSI) test
+         - genetic tests - hard to do by looking at glass slide
+      - some tumors express receptors (e.g. CTLA4, PD1) that shut off immune cells - some drugs try to block these receptors
