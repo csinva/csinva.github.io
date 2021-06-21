@@ -54,10 +54,16 @@ category: ml
   - precision-recall curve
   - summarizing curves
     - AUC: area under (either one) of these curves - usually roc
+- **concordance** = inter-rate reliability
+   - exact concordance - percentage where cohort is in total agreement (i.e. accuracy)
+   - Cohen's kappa coefficient - 0 is uncorrelated, 1 is perfect, negative is inverse correlation
+      - $\kappa \equiv \frac{p_{o}-p_{e}}{1-p_{e}}=1-\frac{1-p_{o}}{1-p_{e}}$
+      - $p_o$ is relative observed agreement and $p_e$ is chance expected agreement
+   - weighted kappa coefficient - used when ordering for predicted labels (being off by more is given bigger weight)
 
 # comparing two things
 
-- odds: p1 : not p1
+- odds: $p : \text{not }p$
 - odds ratio is a ratio of odds
 
 # cv

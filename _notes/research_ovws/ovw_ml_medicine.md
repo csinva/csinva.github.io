@@ -183,7 +183,7 @@ typora-copy-images-to: ../assets
    - *anatomic* pathology relies on the microscope whereas *clinical* pathology does not
 - pathologists convert from tissue image into written report
 - when case is challenging, may require a second opinion (v rare)
-- steps (process takes 9-12 hrs): ![tissue_prep](/Users/chandan.singh/Desktop/csinva.github.io/_notes/assets/tissue_prep.png)
+- steps (process takes 9-12 hrs): ![tissue_prep](../assets/tissue_prep.png)
    - tissue is surgically removed
       - more tissue collected is generally better (gives more context)
       - this procedure is called a *biopsy*
@@ -204,6 +204,8 @@ typora-copy-images-to: ../assets
       - others...for muscle, fungi
    - viewing
       - usually analog - put slide on something that can move / rotate
+      - whole-slide image (WSI) - resulting entire slide
+         - tissue microarray (TMA) - smaller, fits many samples onto the same slide
       - with paige: put slide through digital scanner (only 5% or so of slides are currently digital)
    - later on, board meets to decide on treatment (based on pathology report)
       - usually some discussion betweeon original imaging (pre-biopsy) and pathologist's interpretation
@@ -252,10 +254,21 @@ typora-copy-images-to: ../assets
       - if label is 1, then only pass gradients to the top-k predicted patches
    - 2nd step: use RNN (or another net) to combine info across *S* most suspicious tiles
 - [Human-interpretable image features derived from densely mapped cancer pathology slides predict diverse molecular phenotypes](https://www.nature.com/articles/s41467-021-21896-9) (diao et al. 21)
+- [An artificial intelligence algorithm for prostate cancer diagnosis in whole slide images of core needle biopsies: a blinded clinical validation and deployment study](https://www.thelancet.com/journals/landig/article/PIIS2589-7500(20)30159-X/fulltext) (pantanowitz et al. 2020 - ibex)
+   - 549 train, 2501 internal test slides, 1627 external validation
+   - predict cancer prob., gleason score 7-10, gleason pattern 5, perneural invasion, cancer percentage
+   - algorithm
+      - GB classifies background / non-background / blurry using hand-extracted features for each tile
+      - each tile gets predicted probability for 18 pre-defined classes (e.g. GP 3)
+         - ensemble of 3 CNNs that operate at different magnifications
+      - aggregation: 18-probability heatmaps are combined to calculate slide-level scores
+         - ex (for predicting cancer): sum the cancer-related channels in the heatmap , apply 2x2 local averaging, then take max
 
 
 
 # cancer
+
+## overview
 
 - **tumor** = neoplasm - a mass formation from an uncontrolled growth of cells
    - benign tumor - typically stays confined to the organ where it is present and does not cause functional damage
@@ -263,14 +276,16 @@ typora-copy-images-to: ../assets
 - relation network based aggregator on patches
 - lymphatic system drains fluids (non-blood) from organs into *lymph nodes*
    - cancer often mestastasize through these
-- elements of staging pTNM
-   - size / depth of tumor "T"
-   - number of lymph nodes / how many had cancer "T"
-   - number of metastatic foci in non-lymph node organ "M"
+- **staging** - describes where cancer is located and where it has spread
+   - **clinical staging** - based on non-tissue things
+   - **pathological staging** - elements of staging pTNM
+      - size / depth of *tumor* "T"
+      - number of lymph *nodes* / how many had cancer "N"
+      - number of *metastatic* foci in non-lymph node organ "M"
+      - these are combined to determine the cancer stage (0-4)
+- **prognosis** - chance of recovery
 
-
-
-## treatments
+### treatments
 
 - chemo
    - traditional chemotherapy disrupts cell replication
@@ -284,3 +299,85 @@ typora-copy-images-to: ../assets
       - to measure this, can conduct total mutational burden (TMB) or miscrosatellite instability (MSI) test
          - genetic tests - hard to do by looking at glass slide
       - some tumors express receptors (e.g. CTLA4, PD1) that shut off immune cells - some drugs try to block these receptors
+
+## prostate cancer
+
+- tests
+   - feel with finger
+   - antigen test - blood test
+   - ultrasound - probe inserted
+   - biopsy - needle inserted to take out tissue
+- grading
+   - stages (they have subdivisions, e.g. IIA, IIB, IIC)
+      - I - early, slow-growing
+      - II - small, but risky
+      - III - likely to spread
+      - IV - has spread beyond the prostate
+      - recurrent - has come back after treatment
+   - in addition to stages 0-4, prostate cancer is also given **Gleason score**
+      - look at 2 biggest cancer regions and give them each a score from 3 (best) to 5 (worst)
+      - this results in a sum (e.g. 5+4, 3+4) - note 3+4 is not same as 4+3
+- treatments
+   - prostatectomy - remove the prostate
+   - radiation therapy - kills specifically cancer cells
+   - radiative seed implants - implated into prostate to kill cancer cells
+   - cryotherapy - kill prostate cancer cells by freezing them
+   - hormone therapy - block hormone which grows prostate cancer cells
+   - chemotherapy
+- human benchmarks
+
+   - [Interobserver Variation in Prostate Cancer Gleason Scoring: Are There Implications for the Design of Clinical Trials and Treatment Strategies?](https://www.clinicaloncologyonline.net/article/S0936-6555(97)80005-2/pdf)
+      - 71 patients, 213 scored observations, 3 pathologists
+      - weighted pairwise kappas: 0.16, 0.29, 0.23
+      - (unweighted): 0.15, 0.29, 0.24
+   - [Interobserver reproducibility of Gleason grading of prostatic carcinoma: General pathologists](https://www.sciencedirect.com/science/article/abs/pii/S0046817701974568)
+      - 38 biopsies, 41 pathologists
+      - consensus grade groups: [2-4, 5-6, 7, 8-10]
+      - overall kappa: 0.435
+   - [Interobserver variability in Gleason histological grading of prostate cancer](https://pubmed.ncbi.nlm.nih.gov/27416104/)
+      - 407 slides, 2 pathologists
+      - primary gleason: k=0.34
+      - secondary gleason: k=0.37
+      - sum: k=0.43
+- ai papers
+   - [Learning Whole-Slide Segmentation from Inexact and Incomplete Labels using Tissue Graphs](https://arxiv.org/abs/2103.03129) (anklin et al. 2021)
+      - SegGini, a weakly supervised segmentation method using graphs
+         - constructs a tissue-graph for WSI (node is tissue region)
+         - weakly-supervised segmentation via node classification
+      - data
+         - [UZH dataset](https://www.nature.com/articles/sdata201714) - 5 five TMAs with 886 spots (each 3100×3100 pixels) with complete pixel-level annotations and inexact image-level gradess
+         - [SICAPv2 dataset](https://www.sciencedirect.com/science/article/abs/pii/S016926072031470X) - 155 WSIs and 18,783 tiles of size 512×512 with complete pixel annotations
+
+## bladder cancer
+
+- tests
+   - urinalysis - look for things like blood in urine
+   - urine cytology - use microscope to look for cancer cells in urine
+   - urine tests for specific tumor parkers
+   - cystoscopy - invasive lens takes image of bladder
+   - tests lead to a biopsy
+- grading
+   - invasiveness: can be non-invasive, invasive (grows into deeper layers of bladder)
+      - superficial = non-muscle invasive - hasn't grown into main muscle layer of bladder
+   - grade: again asigned stages 0 - IV based on TNM
+      - low-grade = well-differentiated
+      - high-grade (worse) = poorly differentiated, undifferentiated
+- human benchmark
+   - [The reliability of staging and grading of bladder tumours. Impact of misinformation on the pathologist's diagnosis](https://pubmed.ncbi.nlm.nih.gov/8290915/) (olsen et al. 1993)
+      - 4 consultant pathologists
+      - 40 biopsy specimens of bladder tumours staging invasion
+         - grading using Bergkvist classification
+      - kappa < 0.50
+- ai papers
+   - [Bladder cancer in the time of machine learning: Intelligent tools for diagnosis and management](https://journals.sagepub.com/doi/abs/10.1177/0391560320987169) (2021)
+      - bladder cancel ranks tenth in worldwide absolute cancer incidence
+   - non-pathology
+      - [Integrating Diagnosis Rules into Deep Neural Networks for Bladder Cancer Staging](https://dl.acm.org/doi/abs/10.1145/3340531.3412122) - bladder cancer staging from MR images
+      - [Deep Learning Approach for Assessment of Bladder Cancer Treatment Response](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6403041/) - bladder cancer treatment assessment from CT scans
+   - cystoscopy - few DNN papers here
+   - pathology
+      - [Urinary Bladder Tumor Grade Diagnosis Using On-line Trained Neural Networks](https://link.springer.com/chapter/10.1007/978-3-540-45224-9_29) (2003)
+         - 92 patients with BC
+         - 90%, 94.9%, and 97.3%, for Grade I, II, and III respectively
+         - builds on [Neural network-based segmentation and classification system for automated grading of histologic sections of bladder carcinoma](https://europepmc.org/article/med/12508689) (2002)
+      - [Deep Learning Predicts Molecular Subtype of Muscle-invasive Bladder Cancer from Conventional Histopathological Slides](https://pubmed.ncbi.nlm.nih.gov/32354610/) (woerl et al. 2020) - predict *molecular subtype* using histopathology images in Cancer Genome Atlas Urothelial Bladder Carcinoma dataset

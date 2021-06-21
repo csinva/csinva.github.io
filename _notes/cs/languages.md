@@ -1,24 +1,214 @@
 ---
 layout: notes
-title: C/C++ ref
+title: languages
 category: cs
 ---
 
 * TOC
 {:toc}
 
+# python
+
+## basic
+
+- from math import log, log2, floor, ceil
+- % is modulus
+- from random import random
+  - `random.random() ## [0, 1.0)`
+- copying: x.copy() for list, dict, numpy
+  - this is still shallow (won't recursively copy things like a list in a list)
+    - this does work for basic things though (the copy is not exactly the same as the original) 
+  - for generic objects, need to do from copy import deepcopy
+
+## data structures
+
+```python
+- list l (use this for stack as well) ## implemented like an arraylist
+	- l.append(x)
+    - l.insert(index, element)
+  - l.pop()
+  - ['x'] + ['y'] = ['x', 'y']
+  - [True] * 5
+- queue: from collections import deque ## implemented as doubly linked list
+      - q = deque()
+      - q.append(x)
+      - q.pop()
+      - q.popleft()
+      - q.appendleft(x)
+      - index like normal
+      - len(q)
+- class Node: ## this implements a linkedlist
+		def __init__(self, val, next):
+			self.val = val
+			self.next = next
+- set()
+	- add(x)
+  - remove(x)
+  - intersection(set2)
+- dict {'key': 3}
+	- keys()
+	- values()
+    - del m['key']
+- PriorityQueue
+	- from queue import PriorityQueue
+	- q = PriorityQueue()
+    - q.put(x)
+    - q.get()
+- from collections import Counter
+	- Counter(Y_train) ## this counts unique values and makes it into a dict of counts
+```
+## useful
+
+*strings*
+
+```python
+- s = 'test', 
+- s.upper() ## convert to all upper case
+- s[::-1] ## reverse the str
+- "_".join([s, s]) ## fastest way to join lots of strings (with _ between them)
+- s.split("e") ## split into a list wherever there is an e
+- s.replace("e", "new_str") ## replaces all instances
+- s.find("t") ## returns first index, otherwise -1
+- formatting
+	- "%05d"	//pad to fill 5 spaces
+	- "%8.3f" //max number of digits
+	- "%-d"	//left justify
+	- "%,d" 	//print commas ex. "1,000,000"
+  - d (int), f (float), s (str)
+	- print(f"{x:05d}") ## new in 3.6
+- int("3") = 3
+- bin(10) = '0b1010'
+- hex(100) = '0x64'
+- ord('a') = 97
+- 'x' * 3 = 'xxx'
+```
+
+*sorting*
+
+```python
+l = ['abc', 'ccc', 'd', 'bb']
+- sorted(l, reverse=False, key=len) ## decreasing order
+	- key examples: str.lower, func_name
+    - key = lambda x: x[1]
+    - def func_name(s):
+     	 return s[-1]
+- l.sort(reverse=False, key=len) ## sorts in place
+```
+
+*exceptions*
+```python
+try:
+    something...
+except ValueError as e:
+    print('error!', e)
+
+raise Exception('spam', 'eggs')
+assert(x == 3)
+```
+
+## higher level
+
+- *primitives*: `int, float, bool, str`
+- only primitive and reference *types*
+  - when you assign primitives to each other, it's fine
+  - when you pass in a primitive, its value is copied
+  - when you pass in an object, its reference is copied
+    - you can modify the object through the reference, but can't change the object's address
+
+## object-oriented
+
+```python
+## example of a class
+class Document:
+    def __init__(self, name):    
+        self.name = name
+ 
+    def show(self):             
+        raise NotImplementedError("Subclass must implement abstract method")
+
+## example of inheritance
+class Pdf(Document):
+    def show(self):
+        return 'Show pdf contents!'
+
+## example of different types of methods
+class MyClass:
+    def method(self): ## can modify self (and class)
+        return 'instance method called', self
+
+    @classmethod
+    def classmethod(cls): ## can only modify class
+        return 'class method called', cls
+
+    @staticmethod
+    def staticmethod(): #can't modify anything
+        return 'static method called'
+```
+
+## numpy/pandas
+
+- loc indexes by val
+- iloc indexes by index position
+- .groupby returns a dict
+- merging
+  - pd.merge(df1, df2, how='left', on='x1')
+
+## pytorch
+
+- `model = nn.DataParallel(model)`
+  
+  - automatically runs multiple batches from dataset at same time
+  
+  - `nn.DistributedDataParallel` is often faster - replicates model on each gpu and gives some data to each one (less data transferes)
+- dataset has `__init__, __getitem__, & __len__`
+  
+  - rather than storing images, can load image from filename in `__getitem__`
+- there's a `torch.nn.Flatten` module
+
+
+
+## parallelization
+
+- cores = cpus = processors - inividual processing units available on a single node
+- node - different computers with distinc memory
+- processes - instances of a program executing on a machine
+  - shouldn't have more user processes than cores on a node
+- more...
+  - threads - multiple paths of execution within a single process
+    - like a process, but more lightweight
+- passing messages between nodes (e.g. for distributed memory) often use protocol known as MPI
+  - packages such as Dask do this for you, without MPI
+- python packages
+  - dask: parallelizing tasks, distributed datasets, one or more machines
+  - ray: parallelizing tasks, building distributed applications, one or more machines
+- dask
+  - separate code from code to parallelize things
+  - some limitations on pure python code, but np/pandas etc. parallelize better
+  - configuration: specify sequential ('synchronous'), threads within current session ('threaded') paralell ('processes') multiprocessing - this creates copies of objects, multi-node or not ('distributed')
+  - need to wrap functions with `delayed()` or `map()`
+    - alternatively can tag functions
+  - map() operation does caching
+  - dask dataframes
+  - ssh setup
+    - can connecto to other workers locally (ssh-dask or SSHCluster)
+    - when using slurm, must run dask-scheduler on cluster node
+      - then run dask-worker many times (as many tasks as there are)
+    - can also directly submit slurm jobs from dask
+
+# c/c++
+
 - The C memory model: global, local, and heap variables. Where they are stored, their properties, etc.
 - Variable scope
 - Using pointers, pointer arithmetic, etc.
 - Managing the heap: malloc/free, new/delete
 
-# C basic
+## C basic
 - #include <stdio.h>
 - printf("the variable 'i' is: %d", i);
 - can only use /* */ for comments
 - for constants: ```#define MAX_LEN 1024```
 
-# malloc
+## malloc
 - malloc ex. 
 - There is no bool keyword in C
 
@@ -37,12 +227,12 @@ category: cs
 - it's disastrous to free a piece of memory that's already been freed
 - variables must be declared at the beginning of a function and must be declared before any other code
 
-# memory
+## memory
 - heap variables stay - they are allocated with malloc
 - local variables are stored on the stack
 - global variables are stored in an initialized data segment
 
-# structs
+## structs
 ```c
   struct point {
     int x;
@@ -54,11 +244,11 @@ category: cs
  p->y = 0;
 ```
 
-# strings
+## strings
 - array with extra null character at end '\0'
 - strLen doesn't include null character
 
-# pointers
+## pointers
 ```c
 int fake = NULL;
 int val = 20;
@@ -448,4 +638,140 @@ Types of multiple inheritance
         b[0] = new Integer (1);
 
 
-​    
+# java
+
+## data structures
+
+```java
+- LinkedList, ArrayList
+	- add(Element e), add(int idx, Element e), get(int idx)
+	- remove(int index)
+	- remove(Object o)
+- Stack
+	- push(E item)
+	- peek()
+	- pop()
+- PriorityQueue
+	- peek()
+	- poll()
+	- default is min-heap
+	- PriorityQueue(int initialCapacity, Comparator<? super E> comparator)
+	- PriorityQueue(Collection<? extends E> c)
+- HashSet, TreeSet
+	- add, remove
+- HashMap
+	- put(K key, V value)
+	- get(Object key)
+	- keySet()
+	- if you try to get something that's not there, will return null
+```
+- default init capacities all 10-20
+- clone() has to be cast from Object
+
+## useful
+*iterator*
+
+```java
+- it.next() - returns value
+- it.hasNext() - returns boolean
+- it.remove() - removes last returned value
+```
+
+*strings*
+
+```java
+- String.split(" |\\.|\\?") //split on space, ., and ?
+- StringBuilder
+	- much faster at concatenating strings
+	- thread safe, but slower
+	- StringBuilder s = new StringBuilder(CharSequence seq)();
+	- s.append("cs3v");
+	- s.charAt(int x), s.deleteCharAt(int x), substring
+	- s.reverse()
+	- Since String is immutable it can safely be shared between many threads
+- formatting
+	String s = String.format("%d", 3);
+	"%05d"	//pad to fill 5 spaces
+	"%8.3f" //max number of digits
+	"%-d"	//left justify
+	"%,d" 	//print commas ex. 1,000,000
+	| int | double | string |
+	|-----|--------|--------|
+	| d   | f      | s      |
+	new StringBuilder(s).reverse().toString()
+	int count = StringUtils.countMatches(s, something);
+- integer
+	- String toString(int i, int base)
+	- int parseInt(String s, int base)
+- array
+	char[] data = {'a', 'b', 'c'};
+	String str = new String(data);
+```
+
+*sorting*
+
+```java
+- Arrays.sort(Array a)
+- Collections.sort(Collection c), Collections.sort(Collection l, Comparator c)
+	- use mergeSort (with insertion sort if very small)
+- Collections.reverseOrder() returns comparator opposite of default
+class ComparatorTest implements Comparator<String>
+	public int compare(String one, String two) //if negative, one comes first
+class Test implements Comparable<Object>
+	public int compareTo(Object two)
+```
+
+*exceptions*
+- ArrayIndexOutOfBoundsException
+- `throw new Exception("Chandan type")`
+
+## higher level
+- *primitives* - `byte, short, char, int, long, float, double`
+- java only has primitive and reference *types*
+  - when you assign primitives to each other, it's fine
+  - when you pass in a primitive, its value is copied
+  - when you pass in an object, its reference is copied
+    - you can modify the object through the reference, but can't change the object's address
+- *garbage collection*
+  - once an object no longer referenced, gc removes it and reclaims memory
+  - jvm intermittently runs a mark-and-sweep algorithm
+    - runs when short-term stuff gets full
+    - older stuff moves to different part
+    - eventually older stuff is cleared
+
+## object-oriented
+| declare | instantiate | initialize |
+| ------- | ----------- | ---------- |
+| Robot k | new         | Robot()    |
+- *class method* = *static*
+  - called with Foo.DoIt()
+  - initialized before constructor
+  - class shares one copy, can't refer to non-static
+- *instance method* - invoked on specific instance of the class
+  -  called with f.DoIt()
+- *protected* member is accessible within its class and subclasses
+
+# R
+
+```r
+x %%2 # modulus
+x <- 3 # assignment
+class(x) checks the class of x
+rm(list=ls())
+```
+- *vectors*
+	- numeric_vector <- c(1, 2, 3)
+	- poker_vector <- c(140, -50, 20, -120, 240)
+	- names(poker_vector) <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday")
+		- assigns names to elements of poker vector
+- *matrices*
+	- matrix(1:9, byrow = TRUE, nrow = 3)
+	- can name the rows / cols
+	- 1-indexed
+	- has slicing
+	- dim(m) prints dimensions
+- *factor* - data type for storing categorical variable
+- *data frame* - when you want different types of data
+	- columns are variables, rows are observations
+- *lists* - ordered, can hold any data type
+	- length(list)

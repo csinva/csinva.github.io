@@ -3,6 +3,10 @@ layout: notes
 title: databases
 ---
 
+
+
+# overview
+
 - notes from [here](https://www.oracle.com/database/what-is-database/)
 - a database is an organized collection of structured information, or data
 -  typically modeled in rows and columns in a series of tables
@@ -16,4 +20,11 @@ title: databases
   - **Graph databases.** A graph database stores data in terms of entities and the relationships between entities.
   - **OLTP databases.** An OLTP database is a speedy, analytic database designed for large numbers of transactions performed by multiple users.
 - examples
-  - MySQL - simplesr
+  - MySQL - simplest
+
+
+
+# sql
+
+- the major commands:   `SELECT`, `UPDATE`, `DELETE`, `INSERT`, `WHERE`
+- SQL keywords are NOT case sensitive (i.e. can write `select`)
