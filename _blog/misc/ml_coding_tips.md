@@ -22,6 +22,7 @@ displays
 ```
 
 - [h5py](http://docs.h5py.org/en/stable/): a great way to read/write to arrays which are too big to store in memory, as if they were in memory
+   - [pyarrow](https://arrow.apache.org/docs/python/index.html#): good for storing metadata as well (like dataframes)
 - [slurmpy](https://github.com/brentp/slurmpy): lets you submit jobs to slurm using just python, so you never need to write bash scripts.
 - [pandas](https://pandas.pydata.org/): provides dataframes to python - often overlooked for big data which might not fit into DataFrames that fit into memory. Still very useful for comparing results of models, particularly with many hyperparameters.
   - [modin](https://github.com/modin-project/modin) - drop in pandas replacement to speed up operations
@@ -144,7 +145,7 @@ displays
 
 ### installation
 
-- pip use `--user`
+- pip install `--user`
 
 ### sharing
 

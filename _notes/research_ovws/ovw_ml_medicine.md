@@ -315,7 +315,7 @@ typora-copy-images-to: ../assets
       - IV - has spread beyond the prostate
       - recurrent - has come back after treatment
    - in addition to stages 0-4, prostate cancer is also given **Gleason score**
-      - look at 2 biggest cancer regions and give them each a score from 3 (best) to 5 (worst)
+      - look at 2 biggest cancer regions and identifies them as a **Gleason pattern** from 3 (best) to 5 (worst)
       - this results in a sum (e.g. 5+4, 3+4) - note 3+4 is not same as 4+3
 - treatments
    - prostatectomy - remove the prostate
@@ -356,18 +356,21 @@ typora-copy-images-to: ../assets
    - urine tests for specific tumor parkers
    - cystoscopy - invasive lens takes image of bladder
    - tests lead to a biopsy
+   
 - grading
    - invasiveness: can be non-invasive, invasive (grows into deeper layers of bladder)
       - superficial = non-muscle invasive - hasn't grown into main muscle layer of bladder
    - grade: again asigned stages 0 - IV based on TNM
       - low-grade = well-differentiated
       - high-grade (worse) = poorly differentiated, undifferentiated
+   
 - human benchmark
    - [The reliability of staging and grading of bladder tumours. Impact of misinformation on the pathologist's diagnosis](https://pubmed.ncbi.nlm.nih.gov/8290915/) (olsen et al. 1993)
       - 4 consultant pathologists
       - 40 biopsy specimens of bladder tumours staging invasion
          - grading using Bergkvist classification
       - kappa < 0.50
+   
 - ai papers
    - [Bladder cancer in the time of machine learning: Intelligent tools for diagnosis and management](https://journals.sagepub.com/doi/abs/10.1177/0391560320987169) (2021)
       - bladder cancel ranks tenth in worldwide absolute cancer incidence
@@ -376,8 +379,44 @@ typora-copy-images-to: ../assets
       - [Deep Learning Approach for Assessment of Bladder Cancer Treatment Response](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6403041/) - bladder cancer treatment assessment from CT scans
    - cystoscopy - few DNN papers here
    - pathology
-      - [Urinary Bladder Tumor Grade Diagnosis Using On-line Trained Neural Networks](https://link.springer.com/chapter/10.1007/978-3-540-45224-9_29) (2003)
+      - [Urinary Bladder Tumor Grade Diagnosis Using Online Trained Neural Networks](https://link.springer.com/chapter/10.1007/978-3-540-45224-9_29) (2003)
          - 92 patients with BC
          - 90%, 94.9%, and 97.3%, for Grade I, II, and III respectively
          - builds on [Neural network-based segmentation and classification system for automated grading of histologic sections of bladder carcinoma](https://europepmc.org/article/med/12508689) (2002)
       - [Deep Learning Predicts Molecular Subtype of Muscle-invasive Bladder Cancer from Conventional Histopathological Slides](https://pubmed.ncbi.nlm.nih.gov/32354610/) (woerl et al. 2020) - predict *molecular subtype* using histopathology images in Cancer Genome Atlas Urothelial Bladder Carcinoma dataset
+   
+- bladder basics
+
+   - muscles in bladder contract and force urine out
+
+      - *urethelium* - inner layer that is able to stretch (has many layers) - this is where cancer originates
+
+         - in situ - cancer only here
+         - invasive - goes into the muscle
+            - if it goes into the urine, can easily test (also usually triggers blood in the urine)
+      - biopsy usually looks mostly at urethelium and vessels right next to it (will not go all the way to the muscle, as this could puncture the bladder)
+      
+         - very targeted (unlike prostate biopsy), slide will come with some tag like "in area with redness" from scopy
+            - 4 possibilities
+               - big mass - should see cancer
+               - inflammation - could be cancer or many other things (e.g. atypia vs carcinoma)
+         - get many parts / sites of biopsies
+
+**H & E slide**
+
+- shape:
+
+| papillary                                   | flat                                          | can also have a combo |
+| ------------------------------------------- | --------------------------------------------- | --------------------- |
+| ![pap_blad](../assets/pap_blad-5625041.png) | ![flat_blad](../assets/flat_blad-5625041.png) |                       |
+
+- grade: 
+
+| low  | high |
+| ---- | ---- |
+|   ![low_grade_blad](../assets/low_grade_blad-5625041.png)   |  ![high_grade_blad](../assets/high_grade_blad-5625041.png)    |
+
+- when shape is flat, grade often can't be determined reliably
+   - lots of names for uncertain (e.g. upump - uncertain malignant potential, or atypia)
+- much easier to decide shape than grade
+- once you find high grade, look for invasiveness (and deeper layers are worse)

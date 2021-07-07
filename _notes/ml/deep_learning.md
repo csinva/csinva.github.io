@@ -57,6 +57,18 @@ category: ml
 - *softmax* - takes vector z and returns vector of the same length
   - makes it so output sums to 1 (like probabilities of classes)
 
+
+
+# tricks to squeeze out performance
+
+- ensemble models
+- (stochastic) weight averaging can help a lot
+- test-time augmentation
+   - this could just be averaging over dropout resamples as well
+- gradient checkpointing ([2016 paper](https://arxiv.org/pdf/1604.06174.pdf))
+  - 10x larger DNNs into memory with 20% increase in comp. time
+  - save gradients for a carefully chosen layer to let you easily recompute
+
 # CNNs
 - kernel here means filter
 - convolution G- takes a windowed average of an image F with a filter H where the filter is flipped horizontally and vertically before being applied
