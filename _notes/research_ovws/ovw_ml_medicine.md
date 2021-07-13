@@ -264,7 +264,9 @@ typora-copy-images-to: ../assets
       - aggregation: 18-probability heatmaps are combined to calculate slide-level scores
          - ex (for predicting cancer): sum the cancer-related channels in the heatmap , apply 2x2 local averaging, then take max
 
+## datasets
 
+- [ARCH](https://warwick.ac.uk/fac/cross_fac/tia/data/arch) - multiple instance captioning dataset to facilitate dense supervision of CP tasks
 
 # cancer
 

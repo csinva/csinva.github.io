@@ -223,9 +223,11 @@ For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
   - traditional way to fit - backfitting: each $f_i$ is fitted sequentially to the residuals of the previously fitted $f_0,...,f_{i-1}$ (hastie & tibshirani, 199)
   - boosting - fit all $f$ simultaneously, e.g. one tree for each $f_i$  on each iteration
   - can make this more interpretable by (1) making the $f$ functions smoother or (2) sparsity in the number of functions
+  - could also add in interaction terms...
 - [Demystifying Black-box Models with Symbolic Metamodels](https://papers.nips.cc/paper/9308-demystifying-black-box-models-with-symbolic-metamodels.pdf)
   - GAM parameterized with Meijer G-functions (rather than pre-specifying some forms, as is done with symbolic regression)
 - [Neural Additive Models: Interpretable Machine Learning with Neural Nets](https://arxiv.org/abs/2004.13912) - GAM where we learn $f$ with a neural net
+- [Accuracy, Interpretability, and Differential Privacy via Explainable Boosting](https://arxiv.org/abs/2106.09680) (nori, caruana et al. 2021)
 
 ### symbolic regression
 
@@ -235,6 +237,7 @@ For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
   - gams - assume model form is additive combination of some funcs, then solve via GD
   - however, if we don't know the form of the model we must generate it
 - [Bridging the Gap: Providing Post-Hoc Symbolic Explanations for Sequential Decision-Making Problems with Black Box Simulators](https://arxiv.org/abs/2002.01080)
+- [Model Learning with Personalized Interpretability Estimation (ML-PIE)](https://arxiv.org/abs/2104.06060) - use human feedback in the loop to decide which symbolic functions are most interpretable
 
 ## example-based = case-based (e.g. prototypes, nearest neighbor)
 
@@ -299,7 +302,7 @@ For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
 - [Towards Robust Interpretability with Self-Explaining Neural Networks](https://arxiv.org/pdf/1806.07538.pdf) (alvarez-melis & jaakkola 2018) - building architectures that explain their predictions
 - [Harnessing Deep Neural Networks with Logic Rules](https://arxiv.org/pdf/1603.06318.pdf)
 
-### connecting dnns with tree-models
+### connecting dnns with rule-based models
 
 - [Distilling a Neural Network Into a Soft Decision Tree](https://arxiv.org/pdf/1711.09784.pdf) (frosst & hinton 2017) - distills DNN into DNN-like tree which uses sigmoid neuron decides which path to follow
   - training on distilled DNN predictions outperforms training on original labels
@@ -317,6 +320,18 @@ For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
   - neurons use sigmoid function
 - [Gradient Boosted Decision Tree Neural Network](https://arxiv.org/abs/1910.09340) - build DNN based on decision tree ensemble - basically the same but with gradient-boosted trees
 - [Neural Decision Trees](https://arxiv.org/abs/1702.07360) - treat each neural net like a node in a tree
+- [Controlling Neural Networks with Rule Representations](https://arxiv.org/abs/2106.07804) (seo, ..., pfister, 21)
+  - DEEPCTRL - encodes rules into DNN
+    - one encoder for rules, one for data
+      - both are concatenated with stochastic parameter $\alpha$ (which also weights the loss)
+      - at test-time, can select $\alpha$ to vary contribution of rule part can be varied (e.g. if rule doesn't apply to a certain point)
+    - training
+      - normalize losses initially to ensure they are on the same scale
+      - some rules can be made differentiable in a straightforward way: $r(x, \hat y) \leq \tau \to \max (r(x, \hat y ) - \tau, 0)$, but can't do this for everything e.g. decision tree rules
+      - rule-based loss is defined by looking at predictions fo perturbations of the input
+    - evaluation
+      - `verification ratio` - fraction of samples that satisfy the rule
+    - see also [Lagrangian Duality for Constrained Deep Learning](https://arxiv.org/abs/2001.09394) (fioretto et al. 2020)
 
 
 ## misc models
@@ -671,6 +686,14 @@ How interactions are defined and summarized is a very difficult thing to specify
 - [CXPlain: Causal Explanations for Model Interpretation under Uncertainty](https://arxiv.org/abs/1910.12336) (schwab & karlen, 2019)
   - model-agnostic - efficiently query model to figure out which inputs are most important
   - pixel-level attributions
+- [Amnesic Probing: Behavioral Explanation with Amnesic Counterfactuals](https://arxiv.org/abs/2006.00995) (elezar...goldberg, 2020)
+  - instead of simple probing, generate counterfactuals in representations and see how final prediction changes
+    - remove a property (e.g. part of speech) from the repr. at a layer using Iterative Nullspace Projection (INLP) ([Ravfogel et al., 2020](https://arxiv.org/abs/2004.07667))
+      - iteratively tries to predict the property linearly, then removes these directions
+- [Bayesian Interpolants as Explanations for Neural Inferences](https://arxiv.org/abs/2004.04198) (mcmillan 20)
+  - if $A \implies B$, *interpolant* $I$ satisfies $A\implies I$, $I \implies B$ and $I$ expressed only using variables common to $A$ and $B$
+    - here, $A$ is model input, $B$ is prediction, $I$ is activation of some hidden layer
+  - *Bayesian interpolant* show $P(A|B) \geq \alpha^2$ when $P(I|A) \geq \alpha$ and $P(B|I) \geq \alpha$
 
 ### dnn feature importance
 
@@ -778,7 +801,6 @@ How interactions are defined and summarized is a very difficult thing to specify
 - [Interpretations are useful: penalizing explanations to align neural networks with prior knowledge](https://arxiv.org/abs/1909.13584) (rieger et al. 2020)
   - [Refining Neural Networks with Compositional Explanations](https://arxiv.org/abs/2103.10415) (yao et al. 21) - human looks at saliency maps of interactions, gives natural language explanation, this is converted back to interactions (defined using IG), and then regularized
 - [Right for the Right Reasons: Training Differentiable Models by Constraining their Explanations](https://arxiv.org/abs/1703.03717)
-- 
 - [Explain to Fix: A Framework to Interpret and Correct DNN Object Detector Predictions](https://arxiv.org/pdf/1811.08011.pdf)
 - [Understanding Misclassifications by Attributes](https://arxiv.org/abs/1910.07416)
 - [Improving VQA and its Explanations by Comparing Competing Explanations](https://arxiv.org/abs/2006.15631) (wu et al. 2020)

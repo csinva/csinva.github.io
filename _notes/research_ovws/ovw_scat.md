@@ -69,7 +69,13 @@ category: research
 
 - [Photorealistic Style Transfer via Wavelet Transforms>](https://arxiv.org/pdf/1903.09760v1.pdf)
 
-# helmut lab papers
+# adaptive wavelet papers
+
+- [Parameterized Wavelets for Convolutional Neural Networks](https://ieeexplore-ieee-org.libproxy.berkeley.edu/stamp/stamp.jsp?tp=&arnumber=9096125&tag=1) (2020) - a discrete wavelet CNN
+- [An End-to-End Multi-Level Wavelet Convolutional Neural Networks for heart diseases diagnosis ](https://www.sciencedirect.com/science/article/abs/pii/S0925231220311644) (el bouny et al. 2020) - stationary wavelet CNN
+- [Fully Learnable Deep Wavelet Transform for Unsupervised Monitoring of High-Frequency Time Series](https://arxiv.org/abs/2105.00899) (michau et al. 2021)
+
+## helmut lab papers
 
 - [Deep Convolutional Neural Networks Based on Semi-Discrete Frames](https://arxiv.org/abs/1504.05487) (wiatowski et al. 2015)
   - allowing for different and, most importantly, general semidiscrete frames (such as, e.g., Gabor frames, wavelets, curvelets, shearlets, ridgelets) in distinct network layers

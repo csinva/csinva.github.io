@@ -1,7 +1,22 @@
-
+[toc]
 
 # 2021
 
+- [Opinion | Post-Covid Happiness Comes in Groups - The New York Times](https://www.nytimes.com/2021/07/10/opinion/sunday/covid-group-emotions-happiness.html?action=click&module=Opinion&pgtype=Homepage)
+  - Peak happiness lies mostly in collective activity.
+- [How Indian Americans Came to Love the Spelling Bee - The New York Times](https://www.nytimes.com/2021/07/03/style/spelling-bee-south-asian-americans.html?campaign_id=9&emc=edit_nn_20210706&instance_id=34635&nl=the-morning&regi_id=103626597&segment_id=62679&te=1&user_id=c9a9cfdf6428d67bbc338d1a6b98bbd2)
+- [Big Tech and Big Finance Breed Hubris - WSJ](https://www.wsj.com/articles/big-tech-and-big-finance-breed-hubris-11625520108?mod=hp_opin_pos_3)
+  - [BlackRock](https://www.wsj.com/market-data/quotes/BLK) has ~$9 trillion under management (along w/ 2 closest rivals, exerts around 25% voting control over most publicly traded companies)
+  - this allows it to impose its beliefs on economy
+- [The Tech Cold War’s ‘Most Complicated Machine’ That’s Out of China’s Reach - The New York Times](https://www.nytimes.com/2021/07/04/technology/tech-cold-war-chips.html?action=click&module=Top%20Stories&pgtype=Homepage)
+- [These Chinese Millennials Are ‘Chilling,’ and Beijing Isn’t Happy - The New York Times](https://www.nytimes.com/2021/07/03/world/asia/china-slackers-tangping.html?campaign_id=9&emc=edit_nn_20210704&instance_id=34567&nl=the-morning&regi_id=103626597&segment_id=62589&te=1&user_id=c9a9cfdf6428d67bbc338d1a6b98bbd2)
+- [Hahaha vs. Hehehe | The New Yorker](https://www.newyorker.com/culture/cultural-comment/hahaha-vs-hehehe)
+- [Opinion | The Jeff Bezos Paradox - The New York Times](https://www.nytimes.com/2021/07/03/opinion/jeff-bezos-space-amazon.html?action=click&module=Opinion&pgtype=Homepage) - As the fortunes of the company and its founder have increased, their public images have taken a beating
+- [Opinion | Maybe Trump Wasn’t the Worst President Ever? - The New York Times](https://www.nytimes.com/2021/07/01/opinion/trump-worst-presidents.html?action=click&module=Opinion&pgtype=Homepage)
+- [Opinion | Why Is It OK to Be Mean to the Ugly? - The New York Times](https://www.nytimes.com/2021/06/24/opinion/why-is-it-ok-to-be-mean-to-the-ugly.html)
+- [Opinion | Google’s Privacy Backpedal Shows Why It’s So Hard Not to Be Evil - The New York Times](https://www.nytimes.com/2021/06/14/opinion/google-privacy-big-tech.html?action=click&module=Opinion&pgtype=Homepage)
+  - "So it was that Google executives were dismayed over a most inconvenient discovery: When they made it simpler to halt digital location tracking, far too many customers did so."
+- [Placebo pills can help treat people in pain. But how? - Vox](https://www.vox.com/unexplainable/22405880/placebo-mystery-open-label-pain-medicine)
 - [Stop talking about AI ethics. It’s time to talk about power. | MIT Technology Review](https://www.technologyreview.com/2021/04/23/1023549/kate-crawford-atlas-of-ai-review/?utm_medium=tr_social&utm_campaign=site_visitor.unpaid.engagement&utm_source=Twitter#Echobox=1619548322)
 - [An American Epidemic of ‘Covid Mania’ - WSJ](https://www.wsj.com/articles/an-american-epidemic-of-covid-mania-11618871457?mod=opinion_lead_pos7)
 - [Opinion | There Could Never Be a Female Andrew Yang - The New York Times](https://www.nytimes.com/2021/04/19/opinion/nyc-mayor-andrew-yang.html?action=click&module=Opinion&pgtype=Homepage) - "Male candidates can embody possibility and run as repositories for people’s diffuse hopes. Women usually have to pay their dues"
