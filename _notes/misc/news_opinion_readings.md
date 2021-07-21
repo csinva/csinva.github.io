@@ -2,6 +2,10 @@
 
 # 2021
 
+- [Opinion | Can Religion Guide the Ethics of A.I.? - The New York Times](https://www.nytimes.com/interactive/2021/07/16/opinion/ai-ethics-religion.html?action=click&module=Opinion&pgtype=Homepage)
+- [The Climate-Change Agenda Goes Out With a Bang - WSJ](https://www.wsj.com/articles/climate-change-summit-cop26-cost-esg-carbon-11626297240?mod=hp_opin_pos_2)
+- [The Movies Are Back. But What Are Movies Now? - The New York Times](https://www.nytimes.com/2021/07/15/movies/streaming-theater-hollywood.html?action=click&module=Top%20Stories&pgtype=Homepage)
+  - Global blockbusters, engineered to appeal to the widest possible mass audience, are conversation-stoppers by definition, offering vague themes and superficially complex plots
 - [Opinion | Post-Covid Happiness Comes in Groups - The New York Times](https://www.nytimes.com/2021/07/10/opinion/sunday/covid-group-emotions-happiness.html?action=click&module=Opinion&pgtype=Homepage)
   - Peak happiness lies mostly in collective activity.
 - [How Indian Americans Came to Love the Spelling Bee - The New York Times](https://www.nytimes.com/2021/07/03/style/spelling-bee-south-asian-americans.html?campaign_id=9&emc=edit_nn_20210706&instance_id=34635&nl=the-morning&regi_id=103626597&segment_id=62679&te=1&user_id=c9a9cfdf6428d67bbc338d1a6b98bbd2)
