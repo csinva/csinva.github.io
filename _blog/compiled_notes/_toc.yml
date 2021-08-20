@@ -18,8 +18,8 @@
 - file: notes/cs/cs.md
   sections:
   - file: notes/cs/retrieval.md
-  - file: notes/cs/python_ref.md
   - file: notes/cs/data_structures.md
+  - file: notes/cs/languages.md
   - file: notes/cs/software.md
   - file: notes/cs/quantum.md
   - file: notes/cs/algo.md
@@ -27,9 +27,8 @@
   - file: notes/cs/databases.md
   - file: notes/cs/os.md
   - file: notes/cs/arch.md
-  - file: notes/cs/java_ref.md
+  - file: notes/cs/reproducibility.md
   - file: notes/cs/comp_theory.md
-  - file: notes/cs/cpp_ref.md
 - file: notes/math/math.md
   sections:
   - file: notes/math/differential_equations.md

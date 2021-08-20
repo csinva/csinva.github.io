@@ -2,6 +2,13 @@
 
 # 2021
 
+- [How to escape the 'productivity trap' - BBC Worklife](https://www.bbc.com/worklife/article/20210805-how-to-escape-the-productivity-trap)
+  - humankind’s peculiar preoccupation with time – and, in particular, whether we spend it “productively” – became much greater with the common usage of the clock and the emergence of the Industrial Revolution
+- [Ezra Klein’s Why We’re Polarized excerpt: The media’s role - Vox](https://www.vox.com/2020/1/28/21077888/why-were-polarized-media-book-ezra-news)
+  - “News emerges not from individuals seeking to improve the functioning of democracy but from readers seeking diversion, reporters forging careers, and owners searching for profits.”
+- [Opinion | What We Are Not Teaching Boys About Being Human - The New York Times](https://www.nytimes.com/2021/08/06/opinion/boys-gender-books-culture.html)
+- [More Is More: The End of Minimalism | The Walrus](https://thewalrus.ca/more-is-more-the-end-of-minimalism/)
+  - Marie Kondo's decluttering dominance is over. Make way for maximalism, where the more stuff, the merrier
 - [Opinion | Can Religion Guide the Ethics of A.I.? - The New York Times](https://www.nytimes.com/interactive/2021/07/16/opinion/ai-ethics-religion.html?action=click&module=Opinion&pgtype=Homepage)
 - [The Climate-Change Agenda Goes Out With a Bang - WSJ](https://www.wsj.com/articles/climate-change-summit-cop26-cost-esg-carbon-11626297240?mod=hp_opin_pos_2)
 - [The Movies Are Back. But What Are Movies Now? - The New York Times](https://www.nytimes.com/2021/07/15/movies/streaming-theater-hollywood.html?action=click&module=Top%20Stories&pgtype=Homepage)

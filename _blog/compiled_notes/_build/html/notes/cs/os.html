@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>2.8. os</title>
+    <title>2.10. os</title>
     
   <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -56,8 +56,8 @@
     <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="2.9. architecture" href="arch.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="databases.html" />
+    <link rel="next" title="2.11. architecture" href="arch.html" />
+    <link rel="prev" title="2.8. overview" href="databases.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -178,13 +178,13 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="python_ref.html">
-     2.2. python ref
+    <a class="reference internal" href="data_structures.html">
+     2.2. data structures
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="data_structures.html">
-     2.3. data structures
+    <a class="reference internal" href="languages.html">
+     2.3. languages
     </a>
    </li>
    <li class="toctree-l2">
@@ -207,29 +207,34 @@
      2.7. graphs
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="databases.html">
+     2.8. overview
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="databases.html#sql">
+     2.9. sql
+    </a>
+   </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     2.8. os
+     2.10. os
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="arch.html">
-     2.9. architecture
+     2.11. architecture
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="java_ref.html">
-     2.10. java ref
+    <a class="reference internal" href="reproducibility.html">
+     2.12. reproducibility
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="comp_theory.html">
-     2.11. cs theory
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="cpp_ref.html">
-     2.12. c/c++ ref
+     2.13. cs theory
     </a>
    </li>
   </ul>
@@ -586,360 +591,360 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introduction">
-   2.8.1. 1 - introduction
+   2.10.1. 1 - introduction
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#what-operating-systems-do">
-     2.8.1.1. 1.1 what operating systems do
+     2.10.1.1. 1.1 what operating systems do
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#computer-system-organization">
-     2.8.1.2. 1.2 computer-system organization
+     2.10.1.2. 1.2 computer-system organization
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#computer-system-architecture">
-     2.8.1.3. 1.3 computer-system architecture
+     2.10.1.3. 1.3 computer-system architecture
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#operating-system-structure">
-     2.8.1.4. 1.4 operating-system structure
+     2.10.1.4. 1.4 operating-system structure
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#operating-system-operations">
-     2.8.1.5. 1.5 operating-system operations
+     2.10.1.5. 1.5 operating-system operations
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#process-management">
-     2.8.1.6. 1.6 process management
+     2.10.1.6. 1.6 process management
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#memory-management">
-     2.8.1.7. 1.7 memory management
+     2.10.1.7. 1.7 memory management
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#storage-management">
-     2.8.1.8. 1.8 storage management
+     2.10.1.8. 1.8 storage management
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#protection-security">
-     2.8.1.9. 1.9 protection &amp; security
+     2.10.1.9. 1.9 protection &amp; security
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#basic-data-structures">
-     2.8.1.10. 1.10 basic data structures
+     2.10.1.10. 1.10 basic data structures
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#computing-environments">
-     2.8.1.11. 1.11 computing environments
+     2.10.1.11. 1.11 computing environments
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#os-structures">
-   2.8.2. 2 - OS Structures
+   2.10.2. 2 - OS Structures
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#os-services">
-     2.8.2.1. 2.1 os services
+     2.10.2.1. 2.1 os services
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#user-and-os-interface">
-     2.8.2.2. 2.2 user and os interface
+     2.10.2.2. 2.2 user and os interface
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#system-calls">
-     2.8.2.3. 2.3 system calls
+     2.10.2.3. 2.3 system calls
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#system-call-types">
-     2.8.2.4. 2.4 system call types
+     2.10.2.4. 2.4 system call types
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#system-programs">
-     2.8.2.5. 2.5 system programs
+     2.10.2.5. 2.5 system programs
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#os-design-and-implementation">
-     2.8.2.6. 2.6 os design and implementation
+     2.10.2.6. 2.6 os design and implementation
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#os-structure">
-     2.8.2.7. 2.7 os structure
+     2.10.2.7. 2.7 os structure
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#os-debugging">
-     2.8.2.8. 2.8 os debugging
+     2.10.2.8. 2.8 os debugging
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#generation">
-     2.8.2.9. 2.9 generation
+     2.10.2.9. 2.9 generation
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#system-boot">
-     2.8.2.10. 2.10 system boot
+     2.10.2.10. 2.10 system boot
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#processes">
-   2.8.3. 3 - processes
+   2.10.3. 3 - processes
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#process-concept">
-     2.8.3.1. 3.1 process concept
+     2.10.3.1. 3.1 process concept
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#process-scheduling">
-     2.8.3.2. 3.2 process scheduling
+     2.10.3.2. 3.2 process scheduling
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#operations-on-processes">
-     2.8.3.3. 3.3 operations on processes
+     2.10.3.3. 3.3 operations on processes
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#interprocess-communication">
-     2.8.3.4. 3.4 interprocess communication
+     2.10.3.4. 3.4 interprocess communication
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#examples-of-ipc-systems">
-     2.8.3.5. 3.5 examples of IPC systems
+     2.10.3.5. 3.5 examples of IPC systems
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#communication-in-client-server-systems">
-     2.8.3.6. 3.6 communication in client-server systems
+     2.10.3.6. 3.6 communication in client-server systems
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#threads">
-   2.8.4. 4 - threads
+   2.10.4. 4 - threads
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#multicore-programming-skipped">
-     2.8.4.1. 4.2 - multicore programming (skipped)
+     2.10.4.1. 4.2 - multicore programming (skipped)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#multithreading-models">
-     2.8.4.2. 4.3 - multithreading models
+     2.10.4.2. 4.3 - multithreading models
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#thread-libraries">
-     2.8.4.3. 4.4 - thread libraries
+     2.10.4.3. 4.4 - thread libraries
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#implicit-threading-skipped">
-     2.8.4.4. 4.5 - implicit threading (skipped)
+     2.10.4.4. 4.5 - implicit threading (skipped)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#threading-issues">
-     2.8.4.5. 4.6 - threading issues
+     2.10.4.5. 4.6 - threading issues
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#linux-skipped">
-     2.8.4.6. 4.7 - linux (skipped)
+     2.10.4.6. 4.7 - linux (skipped)
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#process-synchronization">
-   2.8.5. 5 - process synchronization
+   2.10.5. 5 - process synchronization
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#critical-section-problem">
-     2.8.5.1. 5.2 - critical-section problem
+     2.10.5.1. 5.2 - critical-section problem
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#peterson-s-solution">
-     2.8.5.2. 5.3 - peterson’s solution
+     2.10.5.2. 5.3 - peterson’s solution
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#synchronization-hardware">
-     2.8.5.3. 5.4  - synchronization hardware
+     2.10.5.3. 5.4  - synchronization hardware
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#mutex-locks">
-     2.8.5.4. 5.5 - mutex locks
+     2.10.5.4. 5.5 - mutex locks
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#semaphores">
-       2.8.5.4.1. 5.6 - semaphores
+       2.10.5.4.1. 5.6 - semaphores
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#classic-synchronization-problems">
-     2.8.5.5. 5.7 - classic synchronization problems
+     2.10.5.5. 5.7 - classic synchronization problems
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#monitors">
-       2.8.5.5.1. 5.8 - monitors
+       2.10.5.5.1. 5.8 - monitors
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#pthreads-synchronization">
-     2.8.5.6. 5.9.4 - pthreads synchronization
+     2.10.5.6. 5.9.4 - pthreads synchronization
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#alternative-approaches-skip">
-     2.8.5.7. 5.10 - alternative approaches (skip)
+     2.10.5.7. 5.10 - alternative approaches (skip)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#deadlocks">
-     2.8.5.8. 5.11 - deadlocks
+     2.10.5.8. 5.11 - deadlocks
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#main-memory">
-   2.8.6. 7 - main memory
+   2.10.6. 7 - main memory
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#background">
-     2.8.6.1. 7.1 - background
+     2.10.6.1. 7.1 - background
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#skipped">
-     2.8.6.2. 7.2 (skipped)
+     2.10.6.2. 7.2 (skipped)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#contiguous-memory-allocation">
-     2.8.6.3. 7.3 - contiguous memory allocation
+     2.10.6.3. 7.3 - contiguous memory allocation
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#segmentation-skip">
-     2.8.6.4. 7.4 - segmentation (skip)
+     2.10.6.4. 7.4 - segmentation (skip)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#paging-skip">
-     2.8.6.5. 7.5 - paging (skip)
+     2.10.6.5. 7.5 - paging (skip)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#page-table-structure-skip">
-     2.8.6.6. 7.6 - page table structure (skip)
+     2.10.6.6. 7.6 - page table structure (skip)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id1">
-     2.8.6.7. 7.7-9 (skipped)
+     2.10.6.7. 7.7-9 (skipped)
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#cpu-scheduling">
-   2.8.7. 6 - cpu scheduling
+   2.10.7. 6 - cpu scheduling
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#algorithms">
-     2.8.7.1. 6.3 - algorithms
+     2.10.7.1. 6.3 - algorithms
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#thread-scheduling">
-     2.8.7.2. 6.4 - thread scheduling
+     2.10.7.2. 6.4 - thread scheduling
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#multiple-processor-scheduling">
-     2.8.7.3. 6.5 - multiple-processor scheduling
+     2.10.7.3. 6.5 - multiple-processor scheduling
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#real-time-systems">
-     2.8.7.4. 6.6 - real-time systems
+     2.10.7.4. 6.6 - real-time systems
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#skip">
-     2.8.7.5. 6.7 - SKIP
+     2.10.7.5. 6.7 - SKIP
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#virtual-memory">
-   2.8.8. 8 - virtual memory
+   2.10.8. 8 - virtual memory
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id2">
-     2.8.8.1. 8.1 - background
+     2.10.8.1. 8.1 - background
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#demand-paging">
-     2.8.8.2. 8.2 - demand paging
+     2.10.8.2. 8.2 - demand paging
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#copy-on-write">
-     2.8.8.3. 8.3 - copy-on-write
+     2.10.8.3. 8.3 - copy-on-write
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#page-replacement-select-which-frames-to-replace">
-     2.8.8.4. 8.4 - page replacement - select which frames to replace
+     2.10.8.4. 8.4 - page replacement - select which frames to replace
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#frame-allocation-algorithms-how-many-frames-to-allocate-to-teach-process-in-memory-skipped">
-     2.8.8.5. 8.5
+     2.10.8.5. 8.5
      <em>
       frame-allocation algorithms
      </em>
@@ -948,80 +953,80 @@
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#thrashing">
-     2.8.8.6. 8.6 - thrashing
+     2.10.8.6. 8.6 - thrashing
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#buddy-system">
-     2.8.8.7. 8.8.1 - buddy system
+     2.10.8.7. 8.8.1 - buddy system
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#mass-storage-structure">
-   2.8.9. 9 - mass-storage structure
+   2.10.9. 9 - mass-storage structure
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#disk-scheduling">
-     2.8.9.1. 9.4 - disk scheduling
+     2.10.9.1. 9.4 - disk scheduling
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#disk-management">
-     2.8.9.2. 9.5 - disk management
+     2.10.9.2. 9.5 - disk management
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#file-system-interface">
-   2.8.10. 10 - file-system interface
+   2.10.10. 10 - file-system interface
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id3">
-     2.8.10.1. 10.1
+     2.10.10.1. 10.1
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#access-methods">
-     2.8.10.2. 10.2 - access methods
+     2.10.10.2. 10.2 - access methods
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id4">
-     2.8.10.3. 10.3
+     2.10.10.3. 10.3
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#file-system-implementation">
-   2.8.11. 11 - file-system implementation
+   2.10.11. 11 - file-system implementation
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id5">
-     2.8.11.1. 11.1
+     2.10.11.1. 11.1
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id6">
-     2.8.11.2. 11.4
+     2.10.11.2. 11.4
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id7">
-   2.8.12. 11.5
+   2.10.12. 11.5
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#i-o-systems">
-   2.8.13. 12 - i/o systems
+   2.10.13. 12 - i/o systems
   </a>
  </li>
 </ul>
@@ -1039,11 +1044,11 @@
 <li><p>TOC</p></li>
 </ul>
 <div class="section" id="os">
-<h1>2.8. os<a class="headerlink" href="#os" title="Permalink to this headline">¶</a></h1>
+<h1>2.10. os<a class="headerlink" href="#os" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
-<h2>2.8.1. 1 - introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<h2>2.10.1. 1 - introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="what-operating-systems-do">
-<h3>2.8.1.1. 1.1 what operating systems do<a class="headerlink" href="#what-operating-systems-do" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.1.1. 1.1 what operating systems do<a class="headerlink" href="#what-operating-systems-do" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><em>computer system</em> - hierarchical approach = layered approach</p>
 <ol class="simple">
@@ -1079,7 +1084,7 @@
 </ul>
 </div>
 <div class="section" id="computer-system-organization">
-<h3>2.8.1.2. 1.2 computer-system organization<a class="headerlink" href="#computer-system-organization" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.1.2. 1.2 computer-system organization<a class="headerlink" href="#computer-system-organization" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>when computer is booted, needs <em>bootstrap program</em></p>
 <ul>
@@ -1137,7 +1142,7 @@
 </ul>
 </div>
 <div class="section" id="computer-system-architecture">
-<h3>2.8.1.3. 1.3 computer-system architecture<a class="headerlink" href="#computer-system-architecture" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.1.3. 1.3 computer-system architecture<a class="headerlink" href="#computer-system-architecture" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
 <li><p>single-processor system - one main cpu</p>
 <ul class="simple">
@@ -1192,7 +1197,7 @@
 </ol>
 </div>
 <div class="section" id="operating-system-structure">
-<h3>2.8.1.4. 1.4 operating-system structure<a class="headerlink" href="#operating-system-structure" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.1.4. 1.4 operating-system structure<a class="headerlink" href="#operating-system-structure" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><em>multiprogramming</em> - increases CPU utilization so CPU is always doing something</p>
 <ul>
@@ -1220,7 +1225,7 @@
 </ul>
 </div>
 <div class="section" id="operating-system-operations">
-<h3>2.8.1.5. 1.5 operating-system operations<a class="headerlink" href="#operating-system-operations" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.1.5. 1.5 operating-system operations<a class="headerlink" href="#operating-system-operations" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><em>trap / exception</em> - software-generated <em>interrupt</em></p></li>
 <li><p><em>user-mode</em> and <em>kernel mode</em> (also called system mode)</p>
@@ -1234,7 +1239,7 @@
 </ul>
 </div>
 <div class="section" id="process-management">
-<h3>2.8.1.6. 1.6 process management<a class="headerlink" href="#process-management" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.1.6. 1.6 process management<a class="headerlink" href="#process-management" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>program is passive, process is active</p></li>
 <li><p>process needs resources</p>
@@ -1246,7 +1251,7 @@
 </ul>
 </div>
 <div class="section" id="memory-management">
-<h3>2.8.1.7. 1.7 memory management<a class="headerlink" href="#memory-management" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.1.7. 1.7 memory management<a class="headerlink" href="#memory-management" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>cpu can only directly read from main memory</p></li>
 <li><p>computers must keep several programs in memory</p>
@@ -1257,7 +1262,7 @@
 </ul>
 </div>
 <div class="section" id="storage-management">
-<h3>2.8.1.8. 1.8 storage management<a class="headerlink" href="#storage-management" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.1.8. 1.8 storage management<a class="headerlink" href="#storage-management" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>defines <em>file</em> as logical storage unit</p></li>
 <li><p>most programs stored on disk until loaded</p></li>
@@ -1270,7 +1275,7 @@
 </ul>
 </div>
 <div class="section" id="protection-security">
-<h3>2.8.1.9. 1.9 protection &amp; security<a class="headerlink" href="#protection-security" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.1.9. 1.9 protection &amp; security<a class="headerlink" href="#protection-security" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>process can execute only within its address space</p></li>
 <li><p><em>protection</em> - controlling access to resources</p></li>
@@ -1283,13 +1288,13 @@
 </ul>
 </div>
 <div class="section" id="basic-data-structures">
-<h3>2.8.1.10. 1.10 basic data structures<a class="headerlink" href="#basic-data-structures" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.1.10. 1.10 basic data structures<a class="headerlink" href="#basic-data-structures" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><em>bitmap</em> - string of n binary digits</p></li>
 </ul>
 </div>
 <div class="section" id="computing-environments">
-<h3>2.8.1.11. 1.11 computing environments<a class="headerlink" href="#computing-environments" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.1.11. 1.11 computing environments<a class="headerlink" href="#computing-environments" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><em>network computers</em> - are essentially terminals that understand web-based computing</p></li>
 <li><p><em>distributed system</em> - shares resources among separate computer systems</p>
@@ -1351,9 +1356,9 @@
 </div>
 </div>
 <div class="section" id="os-structures">
-<h2>2.8.2. 2 - OS Structures<a class="headerlink" href="#os-structures" title="Permalink to this headline">¶</a></h2>
+<h2>2.10.2. 2 - OS Structures<a class="headerlink" href="#os-structures" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="os-services">
-<h3>2.8.2.1. 2.1 os services<a class="headerlink" href="#os-services" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.2.1. 2.1 os services<a class="headerlink" href="#os-services" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>for the user</p>
 <ul>
@@ -1375,7 +1380,7 @@
 </ul>
 </div>
 <div class="section" id="user-and-os-interface">
-<h3>2.8.2.2. 2.2 user and os interface<a class="headerlink" href="#user-and-os-interface" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.2.2. 2.2 user and os interface<a class="headerlink" href="#user-and-os-interface" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
 <li><p><em>command interpreter</em> = <em>shell</em> - gets and executes next user-specified command</p>
 <ul class="simple">
@@ -1388,7 +1393,7 @@
 </ol>
 </div>
 <div class="section" id="system-calls">
-<h3>2.8.2.3. 2.3 system calls<a class="headerlink" href="#system-calls" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.2.3. 2.3 system calls<a class="headerlink" href="#system-calls" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><em>system calls</em> - provide an interface to os services</p></li>
 <li><p>API usually wraps system calls (ex. java)</p>
@@ -1407,7 +1412,7 @@
 </ul>
 </div>
 <div class="section" id="system-call-types">
-<h3>2.8.2.4. 2.4 system call types<a class="headerlink" href="#system-call-types" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.2.4. 2.4 system call types<a class="headerlink" href="#system-call-types" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
 <li><p>process control - halting, ending</p>
 <ul class="simple">
@@ -1441,7 +1446,7 @@
 </ol>
 </div>
 <div class="section" id="system-programs">
-<h3>2.8.2.5. 2.5 system programs<a class="headerlink" href="#system-programs" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.2.5. 2.5 system programs<a class="headerlink" href="#system-programs" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><em>system programs</em> = <em>system utilities</em></p></li>
 <li><p>some provide interfaces for system calls</p></li>
@@ -1459,7 +1464,7 @@
 </ul>
 </div>
 <div class="section" id="os-design-and-implementation">
-<h3>2.8.2.6. 2.6 os design and implementation<a class="headerlink" href="#os-design-and-implementation" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.2.6. 2.6 os design and implementation<a class="headerlink" href="#os-design-and-implementation" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><em>mechanism</em> - how to do something</p>
 <ul>
@@ -1475,7 +1480,7 @@
 </ul>
 </div>
 <div class="section" id="os-structure">
-<h3>2.8.2.7. 2.7 os structure<a class="headerlink" href="#os-structure" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.2.7. 2.7 os structure<a class="headerlink" href="#os-structure" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>want modules but current models aren’t very modularized</p>
 <ul>
@@ -1506,7 +1511,7 @@
 </ul>
 </div>
 <div class="section" id="os-debugging">
-<h3>2.8.2.8. 2.8 os debugging<a class="headerlink" href="#os-debugging" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.2.8. 2.8 os debugging<a class="headerlink" href="#os-debugging" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>errors are written to <em>log file</em> and <em>core dump</em> (memory snapshot) is written to file</p></li>
 <li><p>if kernel crashes, must save its dump to s special area</p></li>
@@ -1520,7 +1525,7 @@
 </ul>
 </div>
 <div class="section" id="generation">
-<h3>2.8.2.9. 2.9 generation<a class="headerlink" href="#generation" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.2.9. 2.9 generation<a class="headerlink" href="#generation" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><em>system generation</em> - configuring os on a computer</p>
 <ul>
@@ -1531,16 +1536,16 @@
 </ul>
 </div>
 <div class="section" id="system-boot">
-<h3>2.8.2.10. 2.10 system boot<a class="headerlink" href="#system-boot" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.2.10. 2.10 system boot<a class="headerlink" href="#system-boot" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>bootstrap program</p></li>
 </ul>
 </div>
 </div>
 <div class="section" id="processes">
-<h2>2.8.3. 3 - processes<a class="headerlink" href="#processes" title="Permalink to this headline">¶</a></h2>
+<h2>2.10.3. 3 - processes<a class="headerlink" href="#processes" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="process-concept">
-<h3>2.8.3.1. 3.1 process concept<a class="headerlink" href="#process-concept" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.3.1. 3.1 process concept<a class="headerlink" href="#process-concept" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><em>process</em> - program in execution</p>
 <ul>
@@ -1586,7 +1591,7 @@
 </ul>
 </div>
 <div class="section" id="process-scheduling">
-<h3>2.8.3.2. 3.2 process scheduling<a class="headerlink" href="#process-scheduling" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.3.2. 3.2 process scheduling<a class="headerlink" href="#process-scheduling" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><em>process scheduler</em> - selects available process for multi-tasking</p>
 <ul>
@@ -1630,7 +1635,7 @@
 </ul>
 </div>
 <div class="section" id="operations-on-processes">
-<h3>2.8.3.3. 3.3 operations on processes<a class="headerlink" href="#operations-on-processes" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.3.3. 3.3 operations on processes<a class="headerlink" href="#operations-on-processes" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>usually each process has unique process identifier (<em>pid</em>)</p></li>
 <li><p>linux everything starts with init process (pid=1)</p></li>
@@ -1689,7 +1694,7 @@
 </ul>
 </div>
 <div class="section" id="interprocess-communication">
-<h3>2.8.3.4. 3.4 interprocess communication<a class="headerlink" href="#interprocess-communication" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.3.4. 3.4 interprocess communication<a class="headerlink" href="#interprocess-communication" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p>process <em>cooperation</em></p>
 <ul class="simple">
@@ -1765,7 +1770,7 @@
 </ul>
 </div>
 <div class="section" id="examples-of-ipc-systems">
-<h3>2.8.3.5. 3.5 examples of IPC systems<a class="headerlink" href="#examples-of-ipc-systems" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.3.5. 3.5 examples of IPC systems<a class="headerlink" href="#examples-of-ipc-systems" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
 <li><p>POSIX - shared memory</p></li>
 <li><p>Mach - message passing</p></li>
@@ -1773,7 +1778,7 @@
 </ol>
 </div>
 <div class="section" id="communication-in-client-server-systems">
-<h3>2.8.3.6. 3.6 communication in client-server systems<a class="headerlink" href="#communication-in-client-server-systems" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.3.6. 3.6 communication in client-server systems<a class="headerlink" href="#communication-in-client-server-systems" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
 <li><p><em>sockets</em> - endpoint for communication</p>
 <ul class="simple">
@@ -1864,7 +1869,7 @@
 </div>
 </div>
 <div class="section" id="threads">
-<h2>2.8.4. 4 - threads<a class="headerlink" href="#threads" title="Permalink to this headline">¶</a></h2>
+<h2>2.10.4. 4 - threads<a class="headerlink" href="#threads" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><em>thread</em> - basic unit of CPU utilization</p>
 <ol class="simple">
@@ -1885,7 +1890,7 @@
 </li>
 </ul>
 <div class="section" id="multicore-programming-skipped">
-<h3>2.8.4.1. 4.2 - multicore programming (skipped)<a class="headerlink" href="#multicore-programming-skipped" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.4.1. 4.2 - multicore programming (skipped)<a class="headerlink" href="#multicore-programming-skipped" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><em>amdahl’s law</em>: <span class="math notranslate nohighlight">\(speedup \leq \frac{1}{S+(1-S)/N_{cores}}\)</span></p>
 <ul>
@@ -1901,7 +1906,7 @@
 </ul>
 </div>
 <div class="section" id="multithreading-models">
-<h3>2.8.4.2. 4.3 - multithreading models<a class="headerlink" href="#multithreading-models" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.4.2. 4.3 - multithreading models<a class="headerlink" href="#multithreading-models" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>need relationship between <em>user threads</em> and <em>kernel threads</em></p>
 <ol class="simple">
@@ -1928,7 +1933,7 @@
 </ul>
 </div>
 <div class="section" id="thread-libraries">
-<h3>2.8.4.3. 4.4 - thread libraries<a class="headerlink" href="#thread-libraries" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.4.3. 4.4 - thread libraries<a class="headerlink" href="#thread-libraries" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><em>thread library</em> - provides programmer with an API for creating/managing threads</p></li>
 <li><p><em>asynchronous</em> v. <em>synchronous</em> threading</p></li>
@@ -1950,7 +1955,7 @@
 - uses Runnable interface</p>
 </div>
 <div class="section" id="implicit-threading-skipped">
-<h3>2.8.4.4. 4.5 - implicit threading (skipped)<a class="headerlink" href="#implicit-threading-skipped" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.4.4. 4.5 - implicit threading (skipped)<a class="headerlink" href="#implicit-threading-skipped" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><em>implicit threading</em> - handle threading in run-time libraries and compilers</p>
 <ol class="simple">
@@ -1971,7 +1976,7 @@
 </ul>
 </div>
 <div class="section" id="threading-issues">
-<h3>2.8.4.5. 4.6 - threading issues<a class="headerlink" href="#threading-issues" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.4.5. 4.6 - threading issues<a class="headerlink" href="#threading-issues" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p>fork/exec need to know if should fork all threads / when to replace program</p></li>
 <li><p><em>signal</em> notifies a process that a particular event has occurred</p>
@@ -2008,7 +2013,7 @@
 </ul>
 </div>
 <div class="section" id="linux-skipped">
-<h3>2.8.4.6. 4.7 - linux (skipped)<a class="headerlink" href="#linux-skipped" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.4.6. 4.7 - linux (skipped)<a class="headerlink" href="#linux-skipped" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>linux process / thread are same = task</p></li>
 <li><p>uses clone() system call</p></li>
@@ -2016,7 +2021,7 @@
 </div>
 </div>
 <div class="section" id="process-synchronization">
-<h2>2.8.5. 5 - process synchronization<a class="headerlink" href="#process-synchronization" title="Permalink to this headline">¶</a></h2>
+<h2>2.10.5. 5 - process synchronization<a class="headerlink" href="#process-synchronization" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><em>cooperating process</em> can effect or be affected by other executing processes</p></li>
 <li><p>ex. consumer/producer</p>
@@ -2027,7 +2032,7 @@
 </li>
 </ul>
 <div class="section" id="critical-section-problem">
-<h3>2.8.5.1. 5.2 - critical-section problem<a class="headerlink" href="#critical-section-problem" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.5.1. 5.2 - critical-section problem<a class="headerlink" href="#critical-section-problem" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>each process has <em>critical section</em> where it updates common variables</p></li>
 <li><p>3 requirements</p>
@@ -2054,7 +2059,7 @@
 </ul>
 </div>
 <div class="section" id="peterson-s-solution">
-<h3>2.8.5.2. 5.3 - peterson’s solution<a class="headerlink" href="#peterson-s-solution" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.5.2. 5.3 - peterson’s solution<a class="headerlink" href="#peterson-s-solution" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><em>peterson’s solution</em></p>
 <ul>
@@ -2064,7 +2069,7 @@
 </ul>
 </div>
 <div class="section" id="synchronization-hardware">
-<h3>2.8.5.3. 5.4  - synchronization hardware<a class="headerlink" href="#synchronization-hardware" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.5.3. 5.4  - synchronization hardware<a class="headerlink" href="#synchronization-hardware" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><em>locking</em> - protecting critical regions using locks</p></li>
 <li><p>single-processor solution</p>
@@ -2082,7 +2087,7 @@
 </ul>
 </div>
 <div class="section" id="mutex-locks">
-<h3>2.8.5.4. 5.5 - mutex locks<a class="headerlink" href="#mutex-locks" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.5.4. 5.5 - mutex locks<a class="headerlink" href="#mutex-locks" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><em>mutex</em></p>
 <ul>
@@ -2093,7 +2098,7 @@
 </li>
 </ul>
 <div class="section" id="semaphores">
-<h4>2.8.5.4.1. 5.6 - semaphores<a class="headerlink" href="#semaphores" title="Permalink to this headline">¶</a></h4>
+<h4>2.10.5.4.1. 5.6 - semaphores<a class="headerlink" href="#semaphores" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p><em>semaphore</em> S - integer variable accessed through <em>wait()</em> (like trying to execute) and <em>signal()</em> (like releasing)</p>
 <ul>
@@ -2159,7 +2164,7 @@
 </div>
 </div>
 <div class="section" id="classic-synchronization-problems">
-<h3>2.8.5.5. 5.7 - classic synchronization problems<a class="headerlink" href="#classic-synchronization-problems" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.5.5. 5.7 - classic synchronization problems<a class="headerlink" href="#classic-synchronization-problems" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
 <li><p>bounded-buffer problem</p></li>
 <li><p>readers-writers problem</p>
@@ -2171,7 +2176,7 @@
 <li><p>dining-philosophers problem</p></li>
 </ol>
 <div class="section" id="monitors">
-<h4>2.8.5.5.1. 5.8 - monitors<a class="headerlink" href="#monitors" title="Permalink to this headline">¶</a></h4>
+<h4>2.10.5.5.1. 5.8 - monitors<a class="headerlink" href="#monitors" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p><em>monitor</em> - highl-level synchronization construct</p>
 <ul>
@@ -2219,7 +2224,7 @@
 </div>
 </div>
 <div class="section" id="pthreads-synchronization">
-<h3>2.8.5.6. 5.9.4 - pthreads synchronization<a class="headerlink" href="#pthreads-synchronization" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.5.6. 5.9.4 - pthreads synchronization<a class="headerlink" href="#pthreads-synchronization" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &lt;pthread.h&gt; </span>
 <span class="n">pthread</span> <span class="n">mutex</span> <span class="n">t</span> <span class="n">mutex</span><span class="p">;</span>
 
@@ -2253,10 +2258,10 @@
 </div>
 </div>
 <div class="section" id="alternative-approaches-skip">
-<h3>2.8.5.7. 5.10 - alternative approaches (skip)<a class="headerlink" href="#alternative-approaches-skip" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.5.7. 5.10 - alternative approaches (skip)<a class="headerlink" href="#alternative-approaches-skip" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="deadlocks">
-<h3>2.8.5.8. 5.11 - deadlocks<a class="headerlink" href="#deadlocks" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.5.8. 5.11 - deadlocks<a class="headerlink" href="#deadlocks" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>resource utilization</p>
 <ol class="simple">
@@ -2296,9 +2301,9 @@
 </div>
 </div>
 <div class="section" id="main-memory">
-<h2>2.8.6. 7 - main memory<a class="headerlink" href="#main-memory" title="Permalink to this headline">¶</a></h2>
+<h2>2.10.6. 7 - main memory<a class="headerlink" href="#main-memory" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="background">
-<h3>2.8.6.1. 7.1 - background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.6.1. 7.1 - background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p>CPU can only directly access main memory and registers</p></li>
 <li><p>accessing memory is slower than registers</p>
@@ -2340,10 +2345,10 @@
 </ul>
 </div>
 <div class="section" id="skipped">
-<h3>2.8.6.2. 7.2 (skipped)<a class="headerlink" href="#skipped" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.6.2. 7.2 (skipped)<a class="headerlink" href="#skipped" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="contiguous-memory-allocation">
-<h3>2.8.6.3. 7.3 - contiguous memory allocation<a class="headerlink" href="#contiguous-memory-allocation" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.6.3. 7.3 - contiguous memory allocation<a class="headerlink" href="#contiguous-memory-allocation" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><em>contiguous memory allocation</em> - each process has a section</p>
 <ul>
@@ -2398,7 +2403,7 @@
 </ul>
 </div>
 <div class="section" id="segmentation-skip">
-<h3>2.8.6.4. 7.4 - segmentation (skip)<a class="headerlink" href="#segmentation-skip" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.6.4. 7.4 - segmentation (skip)<a class="headerlink" href="#segmentation-skip" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><em>segments</em> make up logical address space</p>
 <ul>
@@ -2420,7 +2425,7 @@
 </ul>
 </div>
 <div class="section" id="paging-skip">
-<h3>2.8.6.5. 7.5 - paging (skip)<a class="headerlink" href="#paging-skip" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.6.5. 7.5 - paging (skip)<a class="headerlink" href="#paging-skip" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>break physical mem into fixed-size <em>frames</em> and logical mem into corresponding <em>pages</em></p></li>
 <li><p>CPU address = [<em>page number</em>|<em>page offset</em>]</p>
@@ -2463,7 +2468,7 @@
 </ul>
 </div>
 <div class="section" id="page-table-structure-skip">
-<h3>2.8.6.6. 7.6 - page table structure (skip)<a class="headerlink" href="#page-table-structure-skip" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.6.6. 7.6 - page table structure (skip)<a class="headerlink" href="#page-table-structure-skip" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>page tables can get quite large (total mem / page size)</p></li>
 </ul>
@@ -2497,16 +2502,16 @@
 </ol>
 </div>
 <div class="section" id="id1">
-<h3>2.8.6.7. 7.7-9 (skipped)<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.6.7. 7.7-9 (skipped)<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 </div>
 </div>
 <div class="section" id="cpu-scheduling">
-<h2>2.8.7. 6 - cpu scheduling<a class="headerlink" href="#cpu-scheduling" title="Permalink to this headline">¶</a></h2>
+<h2>2.10.7. 6 - cpu scheduling<a class="headerlink" href="#cpu-scheduling" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><em>preemptive</em> - can stop and switch a process that is currently running</p></li>
 </ul>
 <div class="section" id="algorithms">
-<h3>2.8.7.1. 6.3 - algorithms<a class="headerlink" href="#algorithms" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.7.1. 6.3 - algorithms<a class="headerlink" href="#algorithms" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
 <li><p>first-come, first-served</p></li>
 <li><p>shortest-job-first</p>
@@ -2537,7 +2542,7 @@
 </ol>
 </div>
 <div class="section" id="thread-scheduling">
-<h3>2.8.7.2. 6.4 - thread scheduling<a class="headerlink" href="#thread-scheduling" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.7.2. 6.4 - thread scheduling<a class="headerlink" href="#thread-scheduling" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><em>process contention scope</em> - competition for CPU takes place among threads belonging to same process</p>
 <ul>
@@ -2548,7 +2553,7 @@
 </ul>
 </div>
 <div class="section" id="multiple-processor-scheduling">
-<h3>2.8.7.3. 6.5 - multiple-processor scheduling<a class="headerlink" href="#multiple-processor-scheduling" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.7.3. 6.5 - multiple-processor scheduling<a class="headerlink" href="#multiple-processor-scheduling" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>asymmetric vs. symmetric</p>
 <ul>
@@ -2566,7 +2571,7 @@
 </ul>
 </div>
 <div class="section" id="real-time-systems">
-<h3>2.8.7.4. 6.6 - real-time systems<a class="headerlink" href="#real-time-systems" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.7.4. 6.6 - real-time systems<a class="headerlink" href="#real-time-systems" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><em>event latency</em> - amount of time that elapses from when an event occurs to when it is serviced</p></li>
 </ul>
@@ -2584,13 +2589,13 @@
 </ul>
 </div>
 <div class="section" id="skip">
-<h3>2.8.7.5. 6.7 - SKIP<a class="headerlink" href="#skip" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.7.5. 6.7 - SKIP<a class="headerlink" href="#skip" title="Permalink to this headline">¶</a></h3>
 </div>
 </div>
 <div class="section" id="virtual-memory">
-<h2>2.8.8. 8 - virtual memory<a class="headerlink" href="#virtual-memory" title="Permalink to this headline">¶</a></h2>
+<h2>2.10.8. 8 - virtual memory<a class="headerlink" href="#virtual-memory" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id2">
-<h3>2.8.8.1. 8.1 - background<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.8.1. 8.1 - background<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>lots of code is seldom used</p></li>
 <li><p>virtual mem allows the execution of processes that are not completely in</p></li>
@@ -2605,7 +2610,7 @@
 </ul>
 </div>
 <div class="section" id="demand-paging">
-<h3>2.8.8.2. 8.2 - demand paging<a class="headerlink" href="#demand-paging" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.8.2. 8.2 - demand paging<a class="headerlink" href="#demand-paging" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p><em>demand paging</em> - load pages only when they are needed</p>
 <ul class="simple">
@@ -2643,7 +2648,7 @@
 </ul>
 </div>
 <div class="section" id="copy-on-write">
-<h3>2.8.8.3. 8.3 - copy-on-write<a class="headerlink" href="#copy-on-write" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.8.3. 8.3 - copy-on-write<a class="headerlink" href="#copy-on-write" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><em>copy-on-write</em> - allows parent and child processes intially to share the same pages</p>
 <ul>
@@ -2662,7 +2667,7 @@
 </ul>
 </div>
 <div class="section" id="page-replacement-select-which-frames-to-replace">
-<h3>2.8.8.4. 8.4 - page replacement - select which frames to replace<a class="headerlink" href="#page-replacement-select-which-frames-to-replace" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.8.4. 8.4 - page replacement - select which frames to replace<a class="headerlink" href="#page-replacement-select-which-frames-to-replace" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p>multiprogramming might <em>over-allocate</em> memory</p>
 <ul class="simple">
@@ -2737,10 +2742,10 @@
 </ul>
 </div>
 <div class="section" id="frame-allocation-algorithms-how-many-frames-to-allocate-to-teach-process-in-memory-skipped">
-<h3>2.8.8.5. 8.5 <em>frame-allocation algorithms</em> - how many frames to allocate to teach process in memory (skipped)<a class="headerlink" href="#frame-allocation-algorithms-how-many-frames-to-allocate-to-teach-process-in-memory-skipped" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.8.5. 8.5 <em>frame-allocation algorithms</em> - how many frames to allocate to teach process in memory (skipped)<a class="headerlink" href="#frame-allocation-algorithms-how-many-frames-to-allocate-to-teach-process-in-memory-skipped" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="thrashing">
-<h3>2.8.8.6. 8.6 - thrashing<a class="headerlink" href="#thrashing" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.8.6. 8.6 - thrashing<a class="headerlink" href="#thrashing" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>if low-priority process gets too few frames, swap it out</p>
 <ul>
@@ -2769,7 +2774,7 @@
 </ul>
 </div>
 <div class="section" id="buddy-system">
-<h3>2.8.8.7. 8.8.1 - buddy system<a class="headerlink" href="#buddy-system" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.8.7. 8.8.1 - buddy system<a class="headerlink" href="#buddy-system" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>memory allocated with <em>power-of-2 allocator</em> - requests are given powers of 2</p>
 <ul>
@@ -2781,9 +2786,9 @@
 </div>
 </div>
 <div class="section" id="mass-storage-structure">
-<h2>2.8.9. 9 - mass-storage structure<a class="headerlink" href="#mass-storage-structure" title="Permalink to this headline">¶</a></h2>
+<h2>2.10.9. 9 - mass-storage structure<a class="headerlink" href="#mass-storage-structure" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="disk-scheduling">
-<h3>2.8.9.1. 9.4 - disk scheduling<a class="headerlink" href="#disk-scheduling" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.9.1. 9.4 - disk scheduling<a class="headerlink" href="#disk-scheduling" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><em>bandwidth</em> - total number of bytes transferred, divided by time</p></li>
 <li><p>first-come first-served</p></li>
@@ -2797,7 +2802,7 @@
 </ul>
 </div>
 <div class="section" id="disk-management">
-<h3>2.8.9.2. 9.5 - disk management<a class="headerlink" href="#disk-management" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.9.2. 9.5 - disk management<a class="headerlink" href="#disk-management" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><em>low-level formatting</em> - dividing disk into sectors that <em>controller</em> can read/write</p>
 <ul>
@@ -2813,9 +2818,9 @@
 </div>
 </div>
 <div class="section" id="file-system-interface">
-<h2>2.8.10. 10 - file-system interface<a class="headerlink" href="#file-system-interface" title="Permalink to this headline">¶</a></h2>
+<h2>2.10.10. 10 - file-system interface<a class="headerlink" href="#file-system-interface" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id3">
-<h3>2.8.10.1. 10.1<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.10.1. 10.1<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>os maintains <em>open-file table</em></p></li>
 <li><p>might require file locking</p></li>
@@ -2823,7 +2828,7 @@
 </ul>
 </div>
 <div class="section" id="access-methods">
-<h3>2.8.10.2. 10.2 - access methods<a class="headerlink" href="#access-methods" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.10.2. 10.2 - access methods<a class="headerlink" href="#access-methods" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>simplest - <em>sequential</em></p></li>
 <li><p><em>direct access</em> = <em>relative access</em></p>
@@ -2834,7 +2839,7 @@
 </ul>
 </div>
 <div class="section" id="id4">
-<h3>2.8.10.3. 10.3<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.10.3. 10.3<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>disk can be partitioned</p></li>
 <li><p>two-level directory</p>
@@ -2854,15 +2859,15 @@
 </div>
 </div>
 <div class="section" id="file-system-implementation">
-<h2>2.8.11. 11 - file-system implementation<a class="headerlink" href="#file-system-implementation" title="Permalink to this headline">¶</a></h2>
+<h2>2.10.11. 11 - file-system implementation<a class="headerlink" href="#file-system-implementation" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id5">
-<h3>2.8.11.1. 11.1<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.11.1. 11.1<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><em>file-control block (FCB)</em> contains info about file ownership, etc.</p></li>
 </ul>
 </div>
 <div class="section" id="id6">
-<h3>2.8.11.2. 11.4<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<h3>2.10.11.2. 11.4<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>contiguous allocation</p></li>
 <li><p>linked allocation</p>
@@ -2875,7 +2880,7 @@
 </div>
 </div>
 <div class="section" id="id7">
-<h2>2.8.12. 11.5<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<h2>2.10.12. 11.5<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>keep track of <em>free-space list</em></p>
 <ul>
@@ -2888,7 +2893,7 @@
 </ul>
 </div>
 <div class="section" id="i-o-systems">
-<h2>2.8.13. 12 - i/o systems<a class="headerlink" href="#i-o-systems" title="Permalink to this headline">¶</a></h2>
+<h2>2.10.13. 12 - i/o systems<a class="headerlink" href="#i-o-systems" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><em>bus</em> - shared set of wires</p></li>
 <li><p>registers</p>
@@ -2936,8 +2941,8 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="databases.html" title="previous page">&lt;no title&gt;</a>
-    <a class='right-next' id="next-link" href="arch.html" title="next page">2.9. architecture</a>
+    <a class='left-prev' id="prev-link" href="databases.html" title="previous page">2.8. overview</a>
+    <a class='right-next' id="next-link" href="arch.html" title="next page">2.11. architecture</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

@@ -632,29 +632,17 @@ Some notes on papers / books surrounding psychology, especially evolutionary psy
 **by Lori Gottlieb, 2019**
 
 - happiness is statistically abnormal
-
 - “There’s something likable in everyone”
-
 - surfing the internet etc. are just ways to distract ourselves
-
 - *presenting problem* - the issue that sends a person into therapy
-
 - “avoidant”
-
 - Will you spot the insecurities that I’m so skillful at hiding?
-
 - high-functioning = verbal, motivated, open, and responsible
-
 - “the therapeutic *act,* not the therapeutic word.”
-
 - In idiot compassion, you avoid rocking the boat to spare people’s feelings, even though the boat needs rocking and your compassion ends up being more harmful than your honesty
-
 - creativity - the ability to grasp the essence of one thing and the essence of some very different thing and smash them together to create some entirely new thing
-
 - Your feelings don’t have to mesh with what you think they should be
-
 - There is a continuing decision to be made as to whether to evade pain, or to tolerate it and therefore modify it
-
 - [personality disorders](https://en.wikipedia.org/wiki/Personality_disorder)
   - Cluster A (odd, bizarre, eccentric):
     - Paranoid PD, Schizoid PD, Schizotypal PD
@@ -662,46 +650,101 @@ Some notes on papers / books surrounding psychology, especially evolutionary psy
     - Antisocial PD, Borderline PD, Histrionic PD, Narcissistic PD
   - Cluster C (anxious, fearful):
     - Avoidant PD, Dependent PD, **Obsessive-Compulsive PD**
-  
 - When I see couples in therapy, often one or the other will complain, not “You don’t love me” but “You don’t understand me.”
-
 - there’s a difference between a criticism and a complaint: the former contains judgment while the latter contains a request
-
 - Follow your envy—it shows you what you want.
-
 - most of us aren’t aware of how we actually spend our time or what we really do all day until we break it down hour by hour and say it out loud
-
 - In projection, a patient attributes his beliefs to another person; in projective identification, he sends them into another person
-
 - Did the patient feel understood?
-
 - conversion disorder = a person’s anxiety is “converted” into neurologic conditions such as paralysis, balance issues, incontinence, blindness, deafness, tremors, or seizures
-
 - alexithymia = doesn’t know what their feeling or don’t have the words to express it
-
 - Sometimes people can’t identify their feelings because they were talked out of them as children
-
 - Almost every woman I see apologizes for her feelings, especially her tears. I remember apologizing in Wendell’s office too. Perhaps men apologize preemptively, by holding their tears back.
-
 - “Modern man thinks he loses something—time—when he does not do things quickly; yet he does not know what to do with the time he gains except kill it.”
-
 - “Avoidance is a simple way of coping by not having to cope.”
-
 - Reacting vs. responding = reflexive vs. chosen
-
 - what would we therapists do without the word wonder to broach a sensitive topic?
-
 - Are you sorry for what you’ve done or are you simply trying to placate the other person who believes you should be sorry for the thing you feel completely justified in having done?
-
--  Her inner critic serves her: I don’t have to take any action because I’m worthless
-
+- Her inner critic serves her: I don’t have to take any action because I’m worthless
 - You can’t get through your pain by diminishing it
-
 - privacy (spaces in people’s psyches that everyone needs in healthy relationships) and secrecy (which stems from shame and tends to be corrosive)
-
 - In the best goodbyes, there’s always the feeling that there’s something more to say
 
-  
+
+
+# polarization (ezra klein)
+
+Central thesis is that all politics is *identity politics* (i.e. based on group membership) rather than based on ideology. The separation of parties and people's groups (+media consumption) are a positive-feedback cycle which reinforces further polarization.
+
+- Most people who voted chose the same party in 2016 that they’d chosen in 2012.
+  white voters without college educations swung sharply toward Trump, and their overrepresentation in electorally key states won him the election. - true even after pandemic
+  - Everything had happened, and politically nothing had mattered. Opinions about Trump had barely budged.
+  - “When someone shows you who they are, believe them.”
+- core argument of this book is that everyone engaged in American politics is engaged in identity politics.
+- As political institutions and actors become more polarized, they further polarize the public. This sets off a feedback cycle: to appeal to a yet more polarized public, institutions must polarize further; when faced with yet more polarized institutions, the public polarizes further, and so on.
+  - We don’t just use politics for our own ends. Politics uses us for its own ends.
+  - Systems thinking, “is about understanding how accidents can happen when no parts are broken, or no parts are seen as broken.”
+- history
+  - But then race became an area of disagreement. Democrats didn’t just want to redistribute from rich northern whites to poor southern whites. They also wanted to redistribute from richer whites to poorer blacks. Furthermore, beginning in 1948, with President Harry Truman’s military desegregation orders, the Democratic Party became a vehicle for civil rights, betraying its fundamental compact with the South.
+  - the American political system was most calm and least polarized when America itself seemed to be on the verge of cracking apart.
+- Polarization is not extremism, but it is sorting
+	- When polarization is driven by allegiance to political parties, it can be moderating.
+	- “negative partisanship”: partisan behavior driven not by positive feelings toward the party you support but negative feelings toward the party you oppose.
+- psychology
+	- Evolutionarily, the power is in the mix of outlooks, not in one outlook—that’s why this psychological diversity has survived.
+	- people preferred to give their group less so long as it meant the gap between what they got and what the out-group got was bigger.
+	- To Hate Like This Is to Be Happy Forever.
+		- “The living and dying through one’s allegiance to either Duke or Carolina is no less real for being enacted through play and fandom,”
+	- “anywhere in the world where people describe being lonely, they will also—throughout their sleep—experience more of something called ‘micro-awakenings.’
+	- Partisanship can now be thought of as a mega-identity, with all the psychological and behavioral magnifications that implies.
+	- people with a lot of crosscutting identities tended to be more tolerant of outsiders than people with highly aligned identities.
+	- One reason policy is not the driver of political disagreement is most people don’t have very strong views about policy.
+	- when awarding a college scholarship—a task that should be completely nonpolitical—Republicans and Democrats cared more about the political party of the student than the student’s GPA.
+	belief that many of our most bitter political battles, and most of our worst political thinking, are mere misunderstandings. The cause of these misunderstandings? Too little information—be
+	- Being better at math didn’t just fail to help partisans converge on the right answer. It actually drove them further apart.
+	- “the cost to her of making a mistake on the science is zero,” but “the cost of being out of synch with her peers potentially catastrophic,” making it “individually rational” to put group dynamics first when thinking about issues like climate change.
+- demographics
+  - A useful rule of thumb is that political power runs a decade behind demographics, with older, whiter, more Christian voters turning out at higher rates.
+  - But cultural power runs a decade or more ahead of demography,
+  - “In the past five years, white liberals have moved so far to the left on questions of race and racism that they are now, on these issues, to the left of even the typical black voter,” writes
+  Interlude
+- media
+  - almost no one is forced to follow politics.
+  - Netflix’s CEO Reed Hastings famously said his biggest competitor is sleep.
+  - For much of American history, most newspapers were explicitly partisan, often including “Democrat” or “Republican” in the name
+  - transition to a news industry that prized independence from party and ideology was driven by technological advances that changed the business model of newspapers.
+  - The explosion of choice and competition carried by digital news upended this calculation again.
+    To be interested in politics is to choose a side.
+  - Ahler and Sood observe that the intensity of partisan feeling is increasing as the parties become more demographically different from each other, but the level of animosity seems to far outpace the level of difference.
+  - The more interested in politics people were, the more political media they consumed, the more mistaken they were about the other party (the
+  - “What if instead of telling people the things they need to know, we tell them what they want to know?” (Anchorman 2)
+  - politically, it’s much easier to organize people against something than it is to unite them in an affirmative vision.
+  - identity, once adopted, is harder to change than an opinion. An identity that binds you into a community you care about is costly and painful to abandon,
+  - “The defining characteristic of our moment is that parties are weak while partisanship is strong,”
+    share of Americans who can name their governor has been declining, even as the share that can name the vice president has held steady.
+  - as we give more to national candidates and less to local candidates, that creates incentives for candidates to nationalize themselves, focusing on the polarizing issues that energize donors in every zip code rather than the local issues that specifically matter in their states and districts.
+    parties, and particularly the Republican Party, are losing control of whom they nominate. But once a party nominates someone—once it nominates anyone—that person is guaranteed the support of both the party’s elites and its voters.
+  - “vast majority of the stable democracies” in the world were parliamentary regimes, where whoever wins legislative power also wins executive power.
+  - But a system like this can also encourage crisis—crises where, in other countries, “the armed forces were often tempted to intervene as a mediating power.”10 This is why there are no long-standing presidential democracies save for the United States.
+  - The system works not through formal mechanisms that ensure the settlement of intractable disputes but through informal norms of compromise,
+  - We became disgusted with the ways that local politics played out nationally.
+  - This asymmetry between the parties, which journalists and scholars often brush aside or whitewash in a quest for “balance,” constitutes a huge obstacle to effective governance.
+- party differences
+  - Democrats have an immune system of diversity and democracy.
+  - as of January 2019, conservatives still lead, 35–26. Three-quarters of Republicans identify as conservative, while only half of Democrats call themselves liberals—and for Democrats, that’s a historic high point.
+  - Democrats have lost two of the last five presidential elections due to the electoral college—the only times that’s happened in American history
+  - By a margin of 57–37, Republicans wanted their party to become more conservative; by a margin of 54–41, Democrats wanted their party to become more moderate
+- solutions: bombproofing, democratizing, and balancing.
+  - bombproofing: where congressional inaction can do great damage, we should ask ourselves whether the upside of congressional deliberation truly outweighs the risk of unnecessary disaster.
+    - A quick survey of Europe, where multiparty democracy is common and plenty of countries are undergoing their own political crises, is enough to curb expectations.
+  - balancing: rather than balacing things between states, balance between parties
+    - Supreme Court so it has fifteen justices: each party gets to appoint five, and then the ten partisan justices must unanimously appoint the remaining five.
+  - democratizing
+    - we give too much attention to national politics, which we can do very little to change, and too little attention to state and local politics,
+    - For all our problems, we have been a worse and uglier country at almost every other point in our history.
+    - The Varieties of Democracy Project, which has been surveying experts on the state of global democracies since 1900, gave the US political system a 48 on a 1 to 100 scale in 1945 and a 59 in 1965. It was only after the civil rights movement that America began scoring in the ’70s and ’80s, marking it as a largely successful democracy.
+
+
 
 # freud
 

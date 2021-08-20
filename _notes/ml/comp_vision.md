@@ -6,6 +6,10 @@ category: ml
 
 {:toc}
 
+# useful packages
+
+- https://www.cellpose.org/ - cell segmentation
+
 # what's in an image?
 
 - vision doesn't exist in isolation - movement

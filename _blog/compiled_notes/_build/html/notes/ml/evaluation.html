@@ -178,13 +178,13 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../cs/python_ref.html">
-     2.2. python ref
+    <a class="reference internal" href="../cs/data_structures.html">
+     2.2. data structures
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../cs/data_structures.html">
-     2.3. data structures
+    <a class="reference internal" href="../cs/languages.html">
+     2.3. languages
     </a>
    </li>
    <li class="toctree-l2">
@@ -208,28 +208,33 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../cs/databases.html">
+     2.8. overview
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/databases.html#sql">
+     2.9. sql
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../cs/os.html">
-     2.8. os
+     2.10. os
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../cs/arch.html">
-     2.9. architecture
+     2.11. architecture
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../cs/java_ref.html">
-     2.10. java ref
+    <a class="reference internal" href="../cs/reproducibility.html">
+     2.12. reproducibility
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../cs/comp_theory.html">
-     2.11. cs theory
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cs/cpp_ref.html">
-     2.12. c/c++ ref
+     2.13. cs theory
     </a>
    </li>
   </ul>
@@ -722,12 +727,24 @@
 </li>
 </ul>
 </li>
+<li><p><strong>concordance</strong> = inter-rate reliability</p>
+<ul>
+<li><p>exact concordance - percentage where cohort is in total agreement (i.e. accuracy)</p></li>
+<li><p>Cohen’s kappa coefficient - 0 is uncorrelated, 1 is perfect, negative is inverse correlation</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\kappa \equiv \frac{p_{o}-p_{e}}{1-p_{e}}=1-\frac{1-p_{o}}{1-p_{e}}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(p_o\)</span> is relative observed agreement and <span class="math notranslate nohighlight">\(p_e\)</span> is chance expected agreement</p></li>
+</ul>
+</li>
+<li><p>weighted kappa coefficient - used when ordering for predicted labels (being off by more is given bigger weight)</p></li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="section" id="comparing-two-things">
 <h2>5.10.3. comparing two things<a class="headerlink" href="#comparing-two-things" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>odds: p1 : not p1</p></li>
+<li><p>odds: <span class="math notranslate nohighlight">\(p : \text{not }p\)</span></p></li>
 <li><p>odds ratio is a ratio of odds</p></li>
 </ul>
 </div>

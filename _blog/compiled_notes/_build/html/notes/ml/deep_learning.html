@@ -178,13 +178,13 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../cs/python_ref.html">
-     2.2. python ref
+    <a class="reference internal" href="../cs/data_structures.html">
+     2.2. data structures
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../cs/data_structures.html">
-     2.3. data structures
+    <a class="reference internal" href="../cs/languages.html">
+     2.3. languages
     </a>
    </li>
    <li class="toctree-l2">
@@ -208,28 +208,33 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../cs/databases.html">
+     2.8. overview
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/databases.html#sql">
+     2.9. sql
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../cs/os.html">
-     2.8. os
+     2.10. os
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../cs/arch.html">
-     2.9. architecture
+     2.11. architecture
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../cs/java_ref.html">
-     2.10. java ref
+    <a class="reference internal" href="../cs/reproducibility.html">
+     2.12. reproducibility
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../cs/comp_theory.html">
-     2.11. cs theory
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cs/cpp_ref.html">
-     2.12. c/c++ ref
+     2.13. cs theory
     </a>
    </li>
   </ul>
@@ -595,50 +600,55 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tricks-to-squeeze-out-performance">
+   5.7.3. tricks to squeeze out performance
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#cnns">
-   5.7.3. CNNs
+   5.7.4. CNNs
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#architectural-components">
-   5.7.4. architectural components
+   5.7.5. architectural components
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#recent-trends">
-   5.7.5. recent trends
+   5.7.6. recent trends
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#rnns">
-   5.7.6. RNNs
+   5.7.7. RNNs
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#lstms">
-     5.7.6.1. LSTMs
+     5.7.7.1. LSTMs
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#adversarial-attacks">
-   5.7.7. adversarial attacks
+   5.7.8. adversarial attacks
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#transformers">
-   5.7.8. transformers
+   5.7.9. transformers
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#graph-neural-networks">
-   5.7.9. graph neural networks
+   5.7.10. graph neural networks
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#misc">
-   5.7.10. misc
+   5.7.11. misc
   </a>
  </li>
 </ul>
@@ -754,8 +764,26 @@
 </li>
 </ul>
 </div>
+<div class="section" id="tricks-to-squeeze-out-performance">
+<h2>5.7.3. tricks to squeeze out performance<a class="headerlink" href="#tricks-to-squeeze-out-performance" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>ensemble models</p></li>
+<li><p>(stochastic) weight averaging can help a lot</p></li>
+<li><p>test-time augmentation</p>
+<ul>
+<li><p>this could just be averaging over dropout resamples as well</p></li>
+</ul>
+</li>
+<li><p>gradient checkpointing (<a class="reference external" href="https://arxiv.org/pdf/1604.06174.pdf">2016 paper</a>)</p>
+<ul>
+<li><p>10x larger DNNs into memory with 20% increase in comp. time</p></li>
+<li><p>save gradients for a carefully chosen layer to let you easily recompute</p></li>
+</ul>
+</li>
+</ul>
+</div>
 <div class="section" id="cnns">
-<h2>5.7.3. CNNs<a class="headerlink" href="#cnns" title="Permalink to this headline">¶</a></h2>
+<h2>5.7.4. CNNs<a class="headerlink" href="#cnns" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>kernel here means filter</p></li>
 <li><p>convolution G- takes a windowed average of an image F with a filter H where the filter is flipped horizontally and vertically before being applied</p></li>
@@ -881,7 +909,7 @@
 </ul>
 </div>
 <div class="section" id="architectural-components">
-<h2>5.7.4. architectural components<a class="headerlink" href="#architectural-components" title="Permalink to this headline">¶</a></h2>
+<h2>5.7.5. architectural components<a class="headerlink" href="#architectural-components" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><strong>coordconv</strong> - break translation equivariance by passing in i, j coords as extra filters</p></li>
 <li><p><strong>deconvolution</strong> = transposed convolution = fractionally-strided convolution - like upsampling</p></li>
@@ -895,7 +923,7 @@
 </ul>
 </div>
 <div class="section" id="recent-trends">
-<h2>5.7.5. recent trends<a class="headerlink" href="#recent-trends" title="Permalink to this headline">¶</a></h2>
+<h2>5.7.6. recent trends<a class="headerlink" href="#recent-trends" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>architecture search: learning to learn</p></li>
 <li><p><em>optimal brain damage</em> - starts with fully connected and weeds out connections (Lecun)</p></li>
@@ -903,7 +931,7 @@
 </ul>
 </div>
 <div class="section" id="rnns">
-<h2>5.7.6. RNNs<a class="headerlink" href="#rnns" title="Permalink to this headline">¶</a></h2>
+<h2>5.7.7. RNNs<a class="headerlink" href="#rnns" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>feedforward NNs have no memory so we introduce recurrent NNs</p></li>
 <li><p>able to have memory</p></li>
@@ -919,7 +947,7 @@
 <li><p>error gradients vanish exponentially quickly with time lag</p></li>
 </ul>
 <div class="section" id="lstms">
-<h3>5.7.6.1. LSTMs<a class="headerlink" href="#lstms" title="Permalink to this headline">¶</a></h3>
+<h3>5.7.7.1. LSTMs<a class="headerlink" href="#lstms" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>have gates for forgetting, input, output</p></li>
 <li><p>easy to let hidden state flow through time, unchanged</p></li>
@@ -937,7 +965,7 @@
 </div>
 </div>
 <div class="section" id="adversarial-attacks">
-<h2>5.7.7. adversarial attacks<a class="headerlink" href="#adversarial-attacks" title="Permalink to this headline">¶</a></h2>
+<h2>5.7.8. adversarial attacks<a class="headerlink" href="#adversarial-attacks" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><strong>adversarial attack</strong> - designing an input to get the wrong result from the model</p>
 <ul>
@@ -948,7 +976,7 @@
 </ul>
 </div>
 <div class="section" id="transformers">
-<h2>5.7.8. transformers<a class="headerlink" href="#transformers" title="Permalink to this headline">¶</a></h2>
+<h2>5.7.9. transformers<a class="headerlink" href="#transformers" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>transformers: https://arxiv.org/pdf/1706.03762.pdf</p>
 <ul>
@@ -959,7 +987,7 @@
 </ul>
 </div>
 <div class="section" id="graph-neural-networks">
-<h2>5.7.9. graph neural networks<a class="headerlink" href="#graph-neural-networks" title="Permalink to this headline">¶</a></h2>
+<h2>5.7.10. graph neural networks<a class="headerlink" href="#graph-neural-networks" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.youtube.com/watch?v=uF53xsT7mjc">Theoretical Foundations of Graph Neural Networks</a></p>
 <ul>
@@ -1049,7 +1077,7 @@
 </ul>
 </div>
 <div class="section" id="misc">
-<h2>5.7.10. misc<a class="headerlink" href="#misc" title="Permalink to this headline">¶</a></h2>
+<h2>5.7.11. misc<a class="headerlink" href="#misc" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>adaptive pooling can help deal with different sizes</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2003.08934">NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis</a></p>

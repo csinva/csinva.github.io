@@ -178,13 +178,13 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../cs/python_ref.html">
-     2.2. python ref
+    <a class="reference internal" href="../cs/data_structures.html">
+     2.2. data structures
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../cs/data_structures.html">
-     2.3. data structures
+    <a class="reference internal" href="../cs/languages.html">
+     2.3. languages
     </a>
    </li>
    <li class="toctree-l2">
@@ -208,28 +208,33 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../cs/databases.html">
+     2.8. overview
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cs/databases.html#sql">
+     2.9. sql
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../cs/os.html">
-     2.8. os
+     2.10. os
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../cs/arch.html">
-     2.9. architecture
+     2.11. architecture
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../cs/java_ref.html">
-     2.10. java ref
+    <a class="reference internal" href="../cs/reproducibility.html">
+     2.12. reproducibility
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../cs/comp_theory.html">
-     2.11. cs theory
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cs/cpp_ref.html">
-     2.12. c/c++ ref
+     2.13. cs theory
     </a>
    </li>
   </ul>
@@ -678,8 +683,8 @@
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#connecting-dnns-with-tree-models">
-       1.12.3.4.1. connecting dnns with tree-models
+      <a class="reference internal nav-link" href="#connecting-dnns-with-rule-based-models">
+       1.12.3.4.1. connecting dnns with rule-based models
       </a>
      </li>
     </ul>
@@ -1198,6 +1203,7 @@
 <li><p>traditional way to fit - backfitting: each <span class="math notranslate nohighlight">\(f_i\)</span> is fitted sequentially to the residuals of the previously fitted <span class="math notranslate nohighlight">\(f_0,...,f_{i-1}\)</span> (hastie &amp; tibshirani, 199)</p></li>
 <li><p>boosting - fit all <span class="math notranslate nohighlight">\(f\)</span> simultaneously, e.g. one tree for each <span class="math notranslate nohighlight">\(f_i\)</span>  on each iteration</p></li>
 <li><p>can make this more interpretable by (1) making the <span class="math notranslate nohighlight">\(f\)</span> functions smoother or (2) sparsity in the number of functions</p></li>
+<li><p>could also add in interaction terms…</p></li>
 </ul>
 </li>
 <li><p><a class="reference external" href="https://papers.nips.cc/paper/9308-demystifying-black-box-models-with-symbolic-metamodels.pdf">Demystifying Black-box Models with Symbolic Metamodels</a></p>
@@ -1206,12 +1212,14 @@
 </ul>
 </li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2004.13912">Neural Additive Models: Interpretable Machine Learning with Neural Nets</a> - GAM where we learn <span class="math notranslate nohighlight">\(f\)</span> with a neural net</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2106.09680">Accuracy, Interpretability, and Differential Privacy via Explainable Boosting</a> (nori, caruana et al. 2021)</p></li>
 </ul>
 </div>
 <div class="section" id="symbolic-regression">
 <h4>1.12.3.2.3. symbolic regression<a class="headerlink" href="#symbolic-regression" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>learn form of the equation using priors on what kinds of thinngs are more difficult</p></li>
+<li><p><a class="reference external" href="https://amstat.tandfonline.com/doi/abs/10.1198/1061860032238?casa_token=WVNXGYsNPLsAAAAA:eCjYgsRw_WZ6g0GPG9x3CMyHyEV9kwcXvWCC1S0TTbLc7SDBiiyHiKLNtYsuC6WYOpto7xAi6tQ5eQ#.YJB3bGZKjzc">Logic Regression</a> (ruczinski, kooperberg &amp; leblanc, 2012) - given binary input variables, automatically construct interaction terms and linear model (fit using simulated annealing)</p></li>
 <li><p><a class="reference external" href="https://openreview.net/pdf?id=BkgyvQzmW">Building and Evaluating Interpretable Models using Symbolic Regression and Generalized Additive Models</a></p>
 <ul>
 <li><p>gams - assume model form is additive combination of some funcs, then solve via GD</p></li>
@@ -1219,6 +1227,7 @@
 </ul>
 </li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2002.01080">Bridging the Gap: Providing Post-Hoc Symbolic Explanations for Sequential Decision-Making Problems with Black Box Simulators</a></p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2104.06060">Model Learning with Personalized Interpretability Estimation (ML-PIE)</a> - use human feedback in the loop to decide which symbolic functions are most interpretable</p></li>
 </ul>
 </div>
 </div>
@@ -1332,8 +1341,8 @@
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1806.07538.pdf">Towards Robust Interpretability with Self-Explaining Neural Networks</a> (alvarez-melis &amp; jaakkola 2018) - building architectures that explain their predictions</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1603.06318.pdf">Harnessing Deep Neural Networks with Logic Rules</a></p></li>
 </ul>
-<div class="section" id="connecting-dnns-with-tree-models">
-<h4>1.12.3.4.1. connecting dnns with tree-models<a class="headerlink" href="#connecting-dnns-with-tree-models" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="connecting-dnns-with-rule-based-models">
+<h4>1.12.3.4.1. connecting dnns with rule-based models<a class="headerlink" href="#connecting-dnns-with-rule-based-models" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1711.09784.pdf">Distilling a Neural Network Into a Soft Decision Tree</a> (frosst &amp; hinton 2017) - distills DNN into DNN-like tree which uses sigmoid neuron decides which path to follow</p>
 <ul>
@@ -1360,6 +1369,33 @@
 </li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1910.09340">Gradient Boosted Decision Tree Neural Network</a> - build DNN based on decision tree ensemble - basically the same but with gradient-boosted trees</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1702.07360">Neural Decision Trees</a> - treat each neural net like a node in a tree</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2106.07804">Controlling Neural Networks with Rule Representations</a> (seo, …, pfister, 21)</p>
+<ul>
+<li><p>DEEPCTRL - encodes rules into DNN</p>
+<ul>
+<li><p>one encoder for rules, one for data</p>
+<ul>
+<li><p>both are concatenated with stochastic parameter <span class="math notranslate nohighlight">\(\alpha\)</span> (which also weights the loss)</p></li>
+<li><p>at test-time, can select <span class="math notranslate nohighlight">\(\alpha\)</span> to vary contribution of rule part can be varied (e.g. if rule doesn’t apply to a certain point)</p></li>
+</ul>
+</li>
+<li><p>training</p>
+<ul>
+<li><p>normalize losses initially to ensure they are on the same scale</p></li>
+<li><p>some rules can be made differentiable in a straightforward way: <span class="math notranslate nohighlight">\(r(x, \hat y) \leq \tau \to \max (r(x, \hat y ) - \tau, 0)\)</span>, but can’t do this for everything e.g. decision tree rules</p></li>
+<li><p>rule-based loss is defined by looking at predictions fo perturbations of the input</p></li>
+</ul>
+</li>
+<li><p>evaluation</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">verification</span> <span class="pre">ratio</span></code> - fraction of samples that satisfy the rule</p></li>
+</ul>
+</li>
+<li><p>see also <a class="reference external" href="https://arxiv.org/abs/2001.09394">Lagrangian Duality for Constrained Deep Learning</a> (fioretto et al. 2020)</p></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -1968,7 +2004,7 @@ a concept’s examples and examples in any layer</p></li>
 <div class="section" id="dnn-causal-motivated-attribution">
 <h4>1.12.4.5.3. dnn causal-motivated attribution<a class="headerlink" href="#dnn-causal-motivated-attribution" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
-<li><p><a class="reference external" href="https://arxiv.org/abs/2006.02482">Explaining The Behavior Of Black-Box Prediction Algorithms With Causal Learning</a> - specify some interpretable features and learn a causal graph of how the classifier uses these features</p>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2006.02482">Explaining The Behavior Of Black-Box Prediction Algorithms With Causal Learning</a> - specify some interpretable features and learn a causal graph of how the classifier uses these features (sani et al. 2021)</p>
 <ul>
 <li><p><strong>partial ancestral graph (PAG)</strong> (<a class="reference external" href="https://www.jmlr.org/papers/volume9/zhang08a/zhang08a.pdf">zhang 08</a>) is a graphical representation which includes</p>
 <ul>
@@ -1994,6 +2030,30 @@ a concept’s examples and examples in any layer</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1910.12336">CXPlain: Causal Explanations for Model Interpretation under Uncertainty</a> (schwab &amp; karlen, 2019)</p>
 <ul>
 <li><p>model-agnostic - efficiently query model to figure out which inputs are most important</p></li>
+<li><p>pixel-level attributions</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2006.00995">Amnesic Probing: Behavioral Explanation with Amnesic Counterfactuals</a> (elezar…goldberg, 2020)</p>
+<ul>
+<li><p>instead of simple probing, generate counterfactuals in representations and see how final prediction changes</p>
+<ul>
+<li><p>remove a property (e.g. part of speech) from the repr. at a layer using Iterative Nullspace Projection (INLP) (<a class="reference external" href="https://arxiv.org/abs/2004.07667">Ravfogel et al., 2020</a>)</p>
+<ul>
+<li><p>iteratively tries to predict the property linearly, then removes these directions</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2004.04198">Bayesian Interpolants as Explanations for Neural Inferences</a> (mcmillan 20)</p>
+<ul>
+<li><p>if <span class="math notranslate nohighlight">\(A \implies B\)</span>, <em>interpolant</em> <span class="math notranslate nohighlight">\(I\)</span> satisfies <span class="math notranslate nohighlight">\(A\implies I\)</span>, <span class="math notranslate nohighlight">\(I \implies B\)</span> and <span class="math notranslate nohighlight">\(I\)</span> expressed only using variables common to <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span></p>
+<ul>
+<li><p>here, <span class="math notranslate nohighlight">\(A\)</span> is model input, <span class="math notranslate nohighlight">\(B\)</span> is prediction, <span class="math notranslate nohighlight">\(I\)</span> is activation of some hidden layer</p></li>
+</ul>
+</li>
+<li><p><em>Bayesian interpolant</em> show <span class="math notranslate nohighlight">\(P(A|B) \geq \alpha^2\)</span> when <span class="math notranslate nohighlight">\(P(I|A) \geq \alpha\)</span> and <span class="math notranslate nohighlight">\(P(B|I) \geq \alpha\)</span></p></li>
 </ul>
 </li>
 </ul>
@@ -2176,7 +2236,6 @@ a concept’s examples and examples in any layer</p></li>
 </ul>
 </li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1703.03717">Right for the Right Reasons: Training Differentiable Models by Constraining their Explanations</a></p></li>
-<li></li>
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1811.08011.pdf">Explain to Fix: A Framework to Interpret and Correct DNN Object Detector Predictions</a></p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1910.07416">Understanding Misclassifications by Attributes</a></p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2006.15631">Improving VQA and its Explanations by Comparing Competing Explanations</a> (wu et al. 2020)</p>
@@ -2429,7 +2488,7 @@ a concept’s examples and examples in any layer</p></li>
 <li><p><a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/8999347">Cyclic Boosting - An Explainable Supervised Machine Learning Algorithm - IEEE Conference Publication</a></p></li>
 <li><p><a class="reference external" href="https://www.semanticscholar.org/paper/A-Causality-Analysis-for-Nonlinear-Classification-Kirihata-Maekawa/4b76830be36ae14d878f7c0a7ff2508bfe172f64">A Causality Analysis for Nonlinear Classification Model with Self-Organizing Map and Locally Approximation to Linear Model</a></p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2001.11366">Black-Box Saliency Map Generation Using Bayesian Optimisation</a></p></li>
-<li><p><a class="reference external" href="https://umangsbhatt.github.io/reports/icassp_2020.pdf">ON NETWORK SCIENCE AND MUTUAL INFORMATION FOR EXPLAINING DEEP NEURAL NETWORKS Brian Davis1∗</a></p></li>
+<li><p><a class="reference external" href="https://umangsbhatt.github.io/reports/icassp_2020.pdf">ON NETWORK SCIENCE AND MUTUAL INFORMATION FOR EXPLAINING DEEP NEURAL NETWORKS Brian Davis1∗</a>s</p></li>
 </ul>
 </div>
 </div>

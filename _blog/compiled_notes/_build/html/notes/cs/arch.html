@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>2.9. architecture</title>
+    <title>2.11. architecture</title>
     
   <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -56,8 +56,8 @@
     <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="2.10. java ref" href="java_ref.html" />
-    <link rel="prev" title="2.8. os" href="os.html" />
+    <link rel="next" title="2.12. reproducibility" href="reproducibility.html" />
+    <link rel="prev" title="2.10. os" href="os.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -178,13 +178,13 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="python_ref.html">
-     2.2. python ref
+    <a class="reference internal" href="data_structures.html">
+     2.2. data structures
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="data_structures.html">
-     2.3. data structures
+    <a class="reference internal" href="languages.html">
+     2.3. languages
     </a>
    </li>
    <li class="toctree-l2">
@@ -208,28 +208,33 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="databases.html">
+     2.8. overview
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="databases.html#sql">
+     2.9. sql
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="os.html">
-     2.8. os
+     2.10. os
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     2.9. architecture
+     2.11. architecture
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="java_ref.html">
-     2.10. java ref
+    <a class="reference internal" href="reproducibility.html">
+     2.12. reproducibility
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="comp_theory.html">
-     2.11. cs theory
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="cpp_ref.html">
-     2.12. c/c++ ref
+     2.13. cs theory
     </a>
    </li>
   </ul>
@@ -586,273 +591,273 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#units">
-   2.9.1. units
+   2.11.1. units
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#numbers">
-   2.9.2. numbers
+   2.11.2. numbers
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#x86">
-   2.9.3. x86
+   2.11.3. x86
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#intro-to-c-we-use-ansi-standard">
-   2.9.4. intro to C - we use ANSI standard
+   2.11.4. intro to C - we use ANSI standard
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#compile-steps">
-   2.9.5. compile steps
+   2.11.5. compile steps
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#strings">
-   2.9.6. strings
+   2.11.6. strings
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#memory-in-c">
-   2.9.7. memory in C
+   2.11.7. memory in C
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#call-stack">
-   2.9.8. call stack
+   2.11.8. call stack
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#types">
-   2.9.9. types
+   2.11.9. types
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#boolean-operators">
-   2.9.10. boolean operators
+   2.11.10. boolean operators
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#att-x86-assembly">
-   2.9.11. ATT x86 assembly
+   2.11.11. ATT x86 assembly
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#y86-all-we-use">
-   2.9.12. y86 - all we use
+   2.11.12. y86 - all we use
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#hardware">
-   2.9.13. hardware
+   2.11.13. hardware
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#executing-instructions">
-   2.9.14. executing instructions
+   2.11.14. executing instructions
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#hardware-wires-opq-example">
-   2.9.15. hardware wires - opq example
+   2.11.15. hardware wires - opq example
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#pipelining">
-   2.9.16. pipelining
+   2.11.16. pipelining
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#problems">
-     2.9.16.1. problems
+     2.11.16.1. problems
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#solutions">
-     2.9.16.2. solutions
+     2.11.16.2. solutions
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#real-processors">
-     2.9.16.3. real processors
+     2.11.16.3. real processors
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#memory">
-   2.9.17. memory
+   2.11.17. memory
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#writing">
-     2.9.17.1. writing
+     2.11.17.1. writing
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#cache-anatomy">
-     2.9.17.2. cache anatomy
+     2.11.17.2. cache anatomy
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#optimization">
-   2.9.18. optimization
+   2.11.18. optimization
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exceptions">
-   2.9.19. exceptions
+   2.11.19. exceptions
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#processes">
-   2.9.20. processes
+   2.11.20. processes
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#threads">
-   2.9.21. threads
+   2.11.21. threads
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#system-calls">
-   2.9.22. system calls
+   2.11.22. system calls
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#software-exceptions">
-   2.9.23. software exceptions
+   2.11.23. software exceptions
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#signals-setjmps">
-   2.9.24. signals, setjmps
+   2.11.24. signals, setjmps
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#virtual-memory">
-   2.9.25. virtual memory
+   2.11.25. virtual memory
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#overview">
-   2.9.26. overview
+   2.11.26. overview
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#segments">
-   2.9.27. segments
+   2.11.27. segments
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#quiz-rvw">
-   2.9.28. quiz rvw
+   2.11.28. quiz rvw
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#labs">
-   2.9.29. labs
+   2.11.29. labs
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#strlen">
-     2.9.29.1. strlen
+     2.11.29.1. strlen
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#strsep">
-     2.9.29.2. strsep
+     2.11.29.2. strsep
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#bit-puzzles">
-     2.9.29.3. bit puzzles
+     2.11.29.3. bit puzzles
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#reading">
-   2.9.30. reading
+   2.11.30. reading
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#ch-1-1-7-1-9">
-     2.9.30.1. ch 1 (1.7, 1.9)
+     2.11.30.1. ch 1 (1.7, 1.9)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#ch-2-2-1-2-4-2-2-4-4">
-     2.9.30.2. ch 2 (2.1, 2.4.2, 2.4.4)
+     2.11.30.2. ch 2 (2.1, 2.4.2, 2.4.4)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#ch-3-3-6-3-7">
-     2.9.30.3. ch 3 (3.6, 3.7)
+     2.11.30.3. ch 3 (3.6, 3.7)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id1">
-     2.9.30.4. 4.1,4.2
+     2.11.30.4. 4.1,4.2
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id2">
-     2.9.30.5. 4.3.1-4
+     2.11.30.5. 4.3.1-4
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id3">
-     2.9.30.6. 4.4 pipelining
+     2.11.30.6. 4.4 pipelining
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id4">
-     2.9.30.7. 4.5.3, 4.5.8
+     2.11.30.7. 4.5.3, 4.5.8
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id5">
-     2.9.30.8. 5 - optimization
+     2.11.30.8. 5 - optimization
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id6">
-     2.9.30.9. 6.1.1, 6.2, 6.3
+     2.11.30.9. 6.1.1, 6.2, 6.3
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#cache-memories-writing-cache-friendly-code">
-     2.9.30.10. 6.4, 6.5 - cache memories &amp; writing cache-friendly code
+     2.11.30.10. 6.4, 6.5 - cache memories &amp; writing cache-friendly code
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id7">
-     2.9.30.11. 8.1 Exceptions
+     2.11.30.11. 8.1 Exceptions
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id8">
-     2.9.30.12. 8.2 Processes
+     2.11.30.12. 8.2 Processes
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#system-call-error-handling">
-     2.9.30.13. 8.3 System Call Error Handling
+     2.11.30.13. 8.3 System Call Error Handling
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id9">
-     2.9.30.14. 9-9.5 Virtual Memory
+     2.11.30.14. 9-9.5 Virtual Memory
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#address-translation">
-     2.9.30.15. 9.6 Address Translation
+     2.11.30.15. 9.6 Address Translation
     </a>
    </li>
   </ul>
@@ -872,9 +877,9 @@
 <li><p>TOC</p></li>
 </ul>
 <div class="section" id="architecture">
-<h1>2.9. architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h1>
+<h1>2.11. architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="units">
-<h2>2.9.1. units<a class="headerlink" href="#units" title="Permalink to this headline">¶</a></h2>
+<h2>2.11.1. units<a class="headerlink" href="#units" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>we will use only the i versions (don’t have to write i):</p>
 <ul>
@@ -896,7 +901,7 @@ if you really want performance increase in java, allocate a very large array, th
 </ul>
 </div>
 <div class="section" id="numbers">
-<h2>2.9.2. numbers<a class="headerlink" href="#numbers" title="Permalink to this headline">¶</a></h2>
+<h2>2.11.2. numbers<a class="headerlink" href="#numbers" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p>0x means hexadecimal</p></li>
 <li><p>0 means octal</p></li>
@@ -1011,7 +1016,7 @@ Cowlishaw encoding: use 3 bits to store a binary digit - inefficient</p>
 <p>​</p>
 </div>
 <div class="section" id="x86">
-<h2>2.9.3. x86<a class="headerlink" href="#x86" title="Permalink to this headline">¶</a></h2>
+<h2>2.11.3. x86<a class="headerlink" href="#x86" title="Permalink to this headline">¶</a></h2>
 <p>Assembly Language - assembler translates text into machine code
 x86 is the type of chip
 8 registers, although you can’t use 2 (stack pointer and base pointer)
@@ -1213,7 +1218,7 @@ ret
 </div>
 </div>
 <div class="section" id="intro-to-c-we-use-ansi-standard">
-<h2>2.9.4. intro to C - we use ANSI standard<a class="headerlink" href="#intro-to-c-we-use-ansi-standard" title="Permalink to this headline">¶</a></h2>
+<h2>2.11.4. intro to C - we use ANSI standard<a class="headerlink" href="#intro-to-c-we-use-ansi-standard" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">all</span> <span class="n">C</span> <span class="n">is</span> <span class="n">valid</span> <span class="n">C</span><span class="o">++</span>
 <span class="c1">// doesn&#39;t work</span>
 <span class="n">always</span> <span class="n">use</span> <span class="o">+=</span><span class="mi">1</span> <span class="n">not</span> <span class="o">++</span>
@@ -1237,7 +1242,7 @@ ret
 </div>
 </div>
 <div class="section" id="compile-steps">
-<h2>2.9.5. compile steps<a class="headerlink" href="#compile-steps" title="Permalink to this headline">¶</a></h2>
+<h2>2.11.5. compile steps<a class="headerlink" href="#compile-steps" title="Permalink to this headline">¶</a></h2>
 <p>source (text) -&gt; pre-processor -&gt; modified source (text) -&gt; compiler -&gt; assembly (text) -&gt; assembler -&gt; binary program -&gt; linker -&gt; executable</p>
 <ol class="simple">
 <li><p>pre-processing - deals with hashtags - sets up line numbers for errors, includes external definitions, normal defines (.i)</p></li>
@@ -1251,7 +1256,7 @@ ret
 </ol>
 </div>
 <div class="section" id="strings">
-<h2>2.9.6. strings<a class="headerlink" href="#strings" title="Permalink to this headline">¶</a></h2>
+<h2>2.11.6. strings<a class="headerlink" href="#strings" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>char - number that fits in 1 byte</p></li>
 <li><p>string is an array of chars: char*</p></li>
@@ -1263,7 +1268,7 @@ ret
 10|.|.|.|.|15</p>
 </div>
 <div class="section" id="memory-in-c">
-<h2>2.9.7. memory in C<a class="headerlink" href="#memory-in-c" title="Permalink to this headline">¶</a></h2>
+<h2>2.11.7. memory in C<a class="headerlink" href="#memory-in-c" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>byte is smallest accessible memory unit - 2 hex digits (ex: 0x3a)</p></li>
 </ul>
@@ -1298,7 +1303,7 @@ ret
 </ul>
 </div>
 <div class="section" id="call-stack">
-<h2>2.9.8. call stack<a class="headerlink" href="#call-stack" title="Permalink to this headline">¶</a></h2>
+<h2>2.11.8. call stack<a class="headerlink" href="#call-stack" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
 <li><p>return address</p></li>
 <li><p>local variables</p></li>
@@ -1329,7 +1334,7 @@ ret
 </ul>
 </div>
 <div class="section" id="types">
-<h2>2.9.9. types<a class="headerlink" href="#types" title="Permalink to this headline">¶</a></h2>
+<h2>2.11.9. types<a class="headerlink" href="#types" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>2’s complement: positive normal, negative subtract 1 more than biggest number you can do</p>
 <ul>
@@ -1351,7 +1356,7 @@ long long | signed | 64</p></li>
 </ul>
 </div>
 <div class="section" id="boolean-operators">
-<h2>2.9.10. boolean operators<a class="headerlink" href="#boolean-operators" title="Permalink to this headline">¶</a></h2>
+<h2>2.11.10. boolean operators<a class="headerlink" href="#boolean-operators" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p>9 = 1001 = 1.001 x 2^3</p></li>
 <li><p>x &amp;&amp; y -&gt; {0,1}</p></li>
@@ -1381,7 +1386,7 @@ x &amp; ~((1 &lt;&lt; 3 )-1)	gives us x1x2…..000</p></li>
 </ul>
 </div>
 <div class="section" id="att-x86-assembly">
-<h2>2.9.11. ATT x86 assembly<a class="headerlink" href="#att-x86-assembly" title="Permalink to this headline">¶</a></h2>
+<h2>2.11.11. ATT x86 assembly<a class="headerlink" href="#att-x86-assembly" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>there are 2 hardwares</p>
 <ul>
@@ -1485,7 +1490,7 @@ cmp</p></li>
 </ul>
 </div>
 <div class="section" id="y86-all-we-use">
-<h2>2.9.12. y86 - all we use<a class="headerlink" href="#y86-all-we-use" title="Permalink to this headline">¶</a></h2>
+<h2>2.11.12. y86 - all we use<a class="headerlink" href="#y86-all-we-use" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
 <li><p>halt - stops the chip</p></li>
 <li><p>nop - do nothing</p></li>
@@ -1620,7 +1625,7 @@ cmp</p></li>
 </ul>
 </div>
 <div class="section" id="hardware">
-<h2>2.9.13. hardware<a class="headerlink" href="#hardware" title="Permalink to this headline">¶</a></h2>
+<h2>2.11.13. hardware<a class="headerlink" href="#hardware" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>flows when control is high</p></li>
 <li><p>power - everything loses power by creating heat (every gate consumes power)</p>
@@ -1650,7 +1655,7 @@ guard:value;
 </ul>
 </div>
 <div class="section" id="executing-instructions">
-<h2>2.9.14. executing instructions<a class="headerlink" href="#executing-instructions" title="Permalink to this headline">¶</a></h2>
+<h2>2.11.14. executing instructions<a class="headerlink" href="#executing-instructions" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>we have wires</p></li>
 </ul>
@@ -1729,7 +1734,7 @@ push
 </div>
 </div>
 <div class="section" id="hardware-wires-opq-example">
-<h2>2.9.15. hardware wires - opq example<a class="headerlink" href="#hardware-wires-opq-example" title="Permalink to this headline">¶</a></h2>
+<h2>2.11.15. hardware wires - opq example<a class="headerlink" href="#hardware-wires-opq-example" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span>## fetch
 ## 1. set pc
 ## 1.a. make a register to store the next PC
@@ -1813,7 +1818,7 @@ q_pc = valP;
 </div>
 </div>
 <div class="section" id="pipelining">
-<h2>2.9.16. pipelining<a class="headerlink" href="#pipelining" title="Permalink to this headline">¶</a></h2>
+<h2>2.11.16. pipelining<a class="headerlink" href="#pipelining" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>nonuniform partitioning - stages don’t all take same amount of time</p></li>
 <li><p>register - changes on the clock</p>
@@ -1860,7 +1865,7 @@ q_pc = valP;
 <li><p>look at online notes - save everything in register that needs to be used later</p></li>
 </ul>
 <div class="section" id="problems">
-<h3>2.9.16.1. problems<a class="headerlink" href="#problems" title="Permalink to this headline">¶</a></h3>
+<h3>2.11.16.1. problems<a class="headerlink" href="#problems" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
 <li><p>dependencies - outcome of one instruction depends on the outcome of another - in the software</p>
 <ol class="simple">
@@ -1881,7 +1886,7 @@ q_pc = valP;
 </ol>
 </div>
 <div class="section" id="solutions">
-<h3>2.9.16.2. solutions<a class="headerlink" href="#solutions" title="Permalink to this headline">¶</a></h3>
+<h3>2.11.16.2. solutions<a class="headerlink" href="#solutions" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>P is PC, then FDEMW</p></li>
 </ul>
@@ -1942,7 +1947,7 @@ bubble_E = 1;   //completes and then starts a nop, gives it time to write values
 </ul>
 </div>
 <div class="section" id="real-processors">
-<h3>2.9.16.3. real processors<a class="headerlink" href="#real-processors" title="Permalink to this headline">¶</a></h3>
+<h3>2.11.16.3. real processors<a class="headerlink" href="#real-processors" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
 <li><p>memory is slow and unpredictably slow (10-100 cycles is reasonable)</p></li>
 <li><p>pipelines are generally 10-15 stages (Pentium 4 had 30 stages)</p></li>
@@ -1982,7 +1987,7 @@ bubble_E = 1;   //completes and then starts a nop, gives it time to write values
 </div>
 </div>
 <div class="section" id="memory">
-<h2>2.9.17. memory<a class="headerlink" href="#memory" title="Permalink to this headline">¶</a></h2>
+<h2>2.11.17. memory<a class="headerlink" href="#memory" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p>we want highest speed at lowest cost (higher speeds correspond to higher costs)</p></li>
 <li><p>fastest to slowest</p>
@@ -2096,7 +2101,7 @@ bubble_E = 1;   //completes and then starts a nop, gives it time to write values
 </li>
 </ul>
 <div class="section" id="writing">
-<h3>2.9.17.1. writing<a class="headerlink" href="#writing" title="Permalink to this headline">¶</a></h3>
+<h3>2.11.17.1. writing<a class="headerlink" href="#writing" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>assume write-back, write-allocate cache</p></li>
 </ul>
@@ -2143,7 +2148,7 @@ bubble_E = 1;   //completes and then starts a nop, gives it time to write values
 </ul>
 </div>
 <div class="section" id="cache-anatomy">
-<h3>2.9.17.2. cache anatomy<a class="headerlink" href="#cache-anatomy" title="Permalink to this headline">¶</a></h3>
+<h3>2.11.17.2. cache anatomy<a class="headerlink" href="#cache-anatomy" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>i-cache - holds instructions</p>
 <ul>
@@ -2157,7 +2162,7 @@ bubble_E = 1;   //completes and then starts a nop, gives it time to write values
 </div>
 </div>
 <div class="section" id="optimization">
-<h2>2.9.18. optimization<a class="headerlink" href="#optimization" title="Permalink to this headline">¶</a></h2>
+<h2>2.11.18. optimization<a class="headerlink" href="#optimization" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>only need to worry about locality for accessing memory</p>
 <ul>
@@ -2255,7 +2260,7 @@ bubble_E = 1;   //completes and then starts a nop, gives it time to write values
 </ul>
 </div>
 <div class="section" id="exceptions">
-<h2>2.9.19. exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h2>
+<h2>2.11.19. exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p>processor is connected to I/O Bridge which is connected to Memory Bus and I/O Bus</p>
 <ul class="simple">
@@ -2350,7 +2355,7 @@ fault,		based on what failed	failing user-mode instruction</p></li>
 </ul>
 </div>
 <div class="section" id="processes">
-<h2>2.9.20. processes<a class="headerlink" href="#processes" title="Permalink to this headline">¶</a></h2>
+<h2>2.11.20. processes<a class="headerlink" href="#processes" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p>(user) read file -&gt; (kernel) send request to disk, wait, clean up -&gt; (user) resume</p>
 <ul class="simple">
@@ -2386,7 +2391,7 @@ if(increased a lot) contextSwitches++</p></li>
 </ul>
 </div>
 <div class="section" id="threads">
-<h2>2.9.21. threads<a class="headerlink" href="#threads" title="Permalink to this headline">¶</a></h2>
+<h2>2.11.21. threads<a class="headerlink" href="#threads" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>threads are like processes that user code manages, not the kernel</p>
 <ul>
@@ -2404,7 +2409,7 @@ python threads don’t run in parallel</p></li>
 </ul>
 </div>
 <div class="section" id="system-calls">
-<h2>2.9.22. system calls<a class="headerlink" href="#system-calls" title="Permalink to this headline">¶</a></h2>
+<h2>2.11.22. system calls<a class="headerlink" href="#system-calls" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>how user code asks the kernel to do stuff</p>
 <ul>
@@ -2422,7 +2427,7 @@ python threads don’t run in parallel</p></li>
 </ul>
 </div>
 <div class="section" id="software-exceptions">
-<h2>2.9.23. software exceptions<a class="headerlink" href="#software-exceptions" title="Permalink to this headline">¶</a></h2>
+<h2>2.11.23. software exceptions<a class="headerlink" href="#software-exceptions" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>you can throw an exception and then you want to return to something several method calls before you</p></li>
 <li><p>nonlocal jump</p>
@@ -2438,7 +2443,7 @@ python threads don’t run in parallel</p></li>
 </ul>
 </div>
 <div class="section" id="signals-setjmps">
-<h2>2.9.24. signals, setjmps<a class="headerlink" href="#signals-setjmps" title="Permalink to this headline">¶</a></h2>
+<h2>2.11.24. signals, setjmps<a class="headerlink" href="#signals-setjmps" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>exceptions - caused by hardware (mostly), handled by kernel</p></li>
 <li><p>signal - caused by kernel, handled by user code (or kernel)</p>
@@ -2473,7 +2478,7 @@ python threads don’t run in parallel</p></li>
 </ul>
 </div>
 <div class="section" id="virtual-memory">
-<h2>2.9.25. virtual memory<a class="headerlink" href="#virtual-memory" title="Permalink to this headline">¶</a></h2>
+<h2>2.11.25. virtual memory<a class="headerlink" href="#virtual-memory" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p>2 address spaces</p>
 <ol class="simple">
@@ -2617,7 +2622,7 @@ python threads don’t run in parallel</p></li>
 </ul>
 </div>
 <div class="section" id="overview">
-<h2>2.9.26. overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<h2>2.11.26. overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>CPU -&gt; creates virtual address</p></li>
 <li><p>virtual address: 36 bits (VPN), 12 bits (PO) //other bits are disregarded</p></li>
@@ -2641,7 +2646,7 @@ python threads don’t run in parallel</p></li>
 </ul>
 </div>
 <div class="section" id="segments">
-<h2>2.9.27. segments<a class="headerlink" href="#segments" title="Permalink to this headline">¶</a></h2>
+<h2>2.11.27. segments<a class="headerlink" href="#segments" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>memory block</p>
 <ul>
@@ -2669,7 +2674,7 @@ val at 0xb6</p>
 <p>[TOC]</p>
 </div>
 <div class="section" id="quiz-rvw">
-<h2>2.9.28. quiz rvw<a class="headerlink" href="#quiz-rvw" title="Permalink to this headline">¶</a></h2>
+<h2>2.11.28. quiz rvw<a class="headerlink" href="#quiz-rvw" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>commands</p></li>
 <li><p>floats</p></li>
@@ -2698,9 +2703,9 @@ val at 0xb6</p>
 </ul>
 </div>
 <div class="section" id="labs">
-<h2>2.9.29. labs<a class="headerlink" href="#labs" title="Permalink to this headline">¶</a></h2>
+<h2>2.11.29. labs<a class="headerlink" href="#labs" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="strlen">
-<h3>2.9.29.1. strlen<a class="headerlink" href="#strlen" title="Permalink to this headline">¶</a></h3>
+<h3>2.11.29.1. strlen<a class="headerlink" href="#strlen" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">unsigned</span> <span class="kt">int</span> <span class="nf">strlen</span><span class="p">(</span> <span class="kd">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">s</span> <span class="p">){</span>
 	<span class="n">unsigned</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> 
 	<span class="k">while</span><span class="p">(</span><span class="n">s</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">)</span> 
@@ -2711,7 +2716,7 @@ val at 0xb6</p>
 </div>
 </div>
 <div class="section" id="strsep">
-<h3>2.9.29.2. strsep<a class="headerlink" href="#strsep" title="Permalink to this headline">¶</a></h3>
+<h3>2.11.29.2. strsep<a class="headerlink" href="#strsep" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span> <span class="o">*</span><span class="n">strsep</span><span class="p">(</span> <span class="kt">char</span> <span class="o">**</span><span class="n">stringp</span><span class="p">,</span> <span class="kt">char</span> <span class="n">delim</span> <span class="p">){</span>
 	<span class="kt">char</span> <span class="o">*</span><span class="n">ans</span> <span class="o">=</span> <span class="o">*</span><span class="n">stringp</span><span class="p">;</span>
 	<span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="n">stringp</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> 
@@ -2757,7 +2762,7 @@ ans.length = length;</p></li>
 </ul>
 </div>
 <div class="section" id="bit-puzzles">
-<h3>2.9.29.3. bit puzzles<a class="headerlink" href="#bit-puzzles" title="Permalink to this headline">¶</a></h3>
+<h3>2.11.29.3. bit puzzles<a class="headerlink" href="#bit-puzzles" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// leastBitPos - return a mask that marks the position of the least significant 1 bit</span>
 <span class="kt">int</span> <span class="nf">leastBitPos</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="n">x</span> <span class="o">&amp;</span> <span class="p">(</span><span class="o">~</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
@@ -2785,9 +2790,9 @@ ans.length = length;</p></li>
 </div>
 </div>
 <div class="section" id="reading">
-<h2>2.9.30. reading<a class="headerlink" href="#reading" title="Permalink to this headline">¶</a></h2>
+<h2>2.11.30. reading<a class="headerlink" href="#reading" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="ch-1-1-7-1-9">
-<h3>2.9.30.1. ch 1 (1.7, 1.9)<a class="headerlink" href="#ch-1-1-7-1-9" title="Permalink to this headline">¶</a></h3>
+<h3>2.11.30.1. ch 1 (1.7, 1.9)<a class="headerlink" href="#ch-1-1-7-1-9" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>files are stored as bytes, most in ascii</p></li>
 <li><p>all files are either text files or binary files</p></li>
@@ -2813,7 +2818,7 @@ ans.length = length;</p></li>
 </ul>
 </div>
 <div class="section" id="ch-2-2-1-2-4-2-2-4-4">
-<h3>2.9.30.2. ch 2 (2.1, 2.4.2, 2.4.4)<a class="headerlink" href="#ch-2-2-1-2-4-2-2-4-4" title="Permalink to this headline">¶</a></h3>
+<h3>2.11.30.2. ch 2 (2.1, 2.4.2, 2.4.4)<a class="headerlink" href="#ch-2-2-1-2-4-2-2-4-4" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>floating points (float, double)</p>
 <ul>
@@ -2853,7 +2858,7 @@ exponent = exp-Bias, mantissa = 1.mantissa</p></li>
 </ul>
 </div>
 <div class="section" id="ch-3-3-6-3-7">
-<h3>2.9.30.3. ch 3 (3.6, 3.7)<a class="headerlink" href="#ch-3-3-6-3-7" title="Permalink to this headline">¶</a></h3>
+<h3>2.11.30.3. ch 3 (3.6, 3.7)<a class="headerlink" href="#ch-3-3-6-3-7" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>computers execute machine code</p></li>
 <li><p>intel processors are all back-compatible</p></li>
@@ -2875,7 +2880,7 @@ exponent = exp-Bias, mantissa = 1.mantissa</p></li>
 </ul>
 </div>
 <div class="section" id="id1">
-<h3>2.9.30.4. 4.1,4.2<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<h3>2.11.30.4. 4.1,4.2<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>eight registers</p>
 <ul>
@@ -2924,7 +2929,7 @@ s: A;
 </ul>
 </div>
 <div class="section" id="id2">
-<h3>2.9.30.5. 4.3.1-4<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<h3>2.11.30.5. 4.3.1-4<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>SEQ - sequential processor</p></li>
 <li><p>stages</p>
@@ -2979,7 +2984,7 @@ components: combinational logic, clocked registers (the program counter and cond
 </ul>
 </div>
 <div class="section" id="id3">
-<h3>2.9.30.6. 4.4 pipelining<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<h3>2.11.30.6. 4.4 pipelining<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>the task to be performed is divided into a series of discrete stages</p></li>
 <li><p>increases the throughput - ## customers served per unit time</p></li>
@@ -2996,7 +3001,7 @@ components: combinational logic, clocked registers (the program counter and cond
 </ul>
 </div>
 <div class="section" id="id4">
-<h3>2.9.30.7. 4.5.3, 4.5.8<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<h3>2.11.30.7. 4.5.3, 4.5.8<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>several copies of values such as valC, srcA</p></li>
 <li><p>registers dD, eD, mM, wW - lowercase letter is input, uppercase is output</p></li>
@@ -3007,7 +3012,7 @@ components: combinational logic, clocked registers (the program counter and cond
 </ul>
 </div>
 <div class="section" id="id5">
-<h3>2.9.30.8. 5 - optimization<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<h3>2.11.30.8. 5 - optimization<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>eliminate unnecessary calls, tests, memory references</p></li>
 <li><p>instruction-level parallelism</p></li>
@@ -3040,7 +3045,7 @@ components: combinational logic, clocked registers (the program counter and cond
 </ul>
 </div>
 <div class="section" id="id6">
-<h3>2.9.30.9. 6.1.1, 6.2, 6.3<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<h3>2.11.30.9. 6.1.1, 6.2, 6.3<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>SRAM is bistable as long as power is on - will fall into one of 2 positions</p></li>
 <li><p>DRAM loses its value ~10-100 ms</p>
@@ -3097,7 +3102,7 @@ capacity misses - the cache just can’t hold enough</p></li>
 </ul>
 </div>
 <div class="section" id="cache-memories-writing-cache-friendly-code">
-<h3>2.9.30.10. 6.4, 6.5 - cache memories &amp; writing cache-friendly code<a class="headerlink" href="#cache-memories-writing-cache-friendly-code" title="Permalink to this headline">¶</a></h3>
+<h3>2.11.30.10. 6.4, 6.5 - cache memories &amp; writing cache-friendly code<a class="headerlink" href="#cache-memories-writing-cache-friendly-code" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Miss rate. The fraction of memory references during the execution of a program, or a part of a program, that miss. It is computed as #misses/#references.</p></li>
 <li><p>Hit rate. The fraction of memory references that hit. It is computed as 1 − miss rate.</p></li>
@@ -3108,7 +3113,7 @@ capacity misses - the cache just can’t hold enough</p></li>
 </ul>
 </div>
 <div class="section" id="id7">
-<h3>2.9.30.11. 8.1 Exceptions<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<h3>2.11.30.11. 8.1 Exceptions<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>exceptions - partly hardware, partly OS</p></li>
 <li><p>when an event occurs, indirect procedure call (the exception) through a jump table called exception table to OS subroutine (exception handler).</p></li>
@@ -3154,7 +3159,7 @@ capacity misses - the cache just can’t hold enough</p></li>
 </ul>
 </div>
 <div class="section" id="id8">
-<h3>2.9.30.12. 8.2 Processes<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<h3>2.11.30.12. 8.2 Processes<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>process - instance of program in execution</p>
 <ul>
@@ -3179,7 +3184,7 @@ capacity misses - the cache just can’t hold enough</p></li>
 </ol>
 </div>
 <div class="section" id="system-call-error-handling">
-<h3>2.9.30.13. 8.3 System Call Error Handling<a class="headerlink" href="#system-call-error-handling" title="Permalink to this headline">¶</a></h3>
+<h3>2.11.30.13. 8.3 System Call Error Handling<a class="headerlink" href="#system-call-error-handling" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>system level calls return -1, set the global integer variable errno</p>
 <ul>
@@ -3189,7 +3194,7 @@ capacity misses - the cache just can’t hold enough</p></li>
 </ul>
 </div>
 <div class="section" id="id9">
-<h3>2.9.30.14. 9-9.5 Virtual Memory<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<h3>2.11.30.14. 9-9.5 Virtual Memory<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>address translation - converts virtual to physical address</p>
 <ul>
@@ -3271,7 +3276,7 @@ capacity misses - the cache just can’t hold enough</p></li>
 </ul>
 </div>
 <div class="section" id="address-translation">
-<h3>2.9.30.15. 9.6 Address Translation<a class="headerlink" href="#address-translation" title="Permalink to this headline">¶</a></h3>
+<h3>2.11.30.15. 9.6 Address Translation<a class="headerlink" href="#address-translation" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>low order 4 bits serve
 2,3 - fault
@@ -3310,8 +3315,8 @@ b6</p></li>
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="os.html" title="previous page">2.8. os</a>
-    <a class='right-next' id="next-link" href="java_ref.html" title="next page">2.10. java ref</a>
+    <a class='left-prev' id="prev-link" href="os.html" title="previous page">2.10. os</a>
+    <a class='right-next' id="next-link" href="reproducibility.html" title="next page">2.12. reproducibility</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

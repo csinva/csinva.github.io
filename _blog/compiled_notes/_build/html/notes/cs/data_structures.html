@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>2.3. data structures</title>
+    <title>2.2. data structures</title>
     
   <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -56,8 +56,8 @@
     <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="2.4. software engineering" href="software.html" />
-    <link rel="prev" title="2.2. python ref" href="python_ref.html" />
+    <link rel="next" title="2.3. languages" href="languages.html" />
+    <link rel="prev" title="2.1. info retrieval" href="retrieval.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -177,14 +177,14 @@
      2.1. info retrieval
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="python_ref.html">
-     2.2. python ref
-    </a>
-   </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     2.3. data structures
+     2.2. data structures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="languages.html">
+     2.3. languages
     </a>
    </li>
    <li class="toctree-l2">
@@ -208,28 +208,33 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="databases.html">
+     2.8. overview
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="databases.html#sql">
+     2.9. sql
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="os.html">
-     2.8. os
+     2.10. os
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="arch.html">
-     2.9. architecture
+     2.11. architecture
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="java_ref.html">
-     2.10. java ref
+    <a class="reference internal" href="reproducibility.html">
+     2.12. reproducibility
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="comp_theory.html">
-     2.11. cs theory
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="cpp_ref.html">
-     2.12. c/c++ ref
+     2.13. cs theory
     </a>
    </li>
   </ul>
@@ -586,61 +591,61 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#lists">
-   2.3.1. lists
+   2.2.1. lists
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#arrays-and-strings">
-     2.3.1.1. arrays and strings
+     2.2.1.1. arrays and strings
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#queue-linkedlist">
-     2.3.1.2. queue - linkedlist
+     2.2.1.2. queue - linkedlist
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#stack">
-     2.3.1.3. stack
+     2.2.1.3. stack
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#trees">
-   2.3.2. trees
+   2.2.2. trees
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#avl-tree">
-     2.3.2.1. AVL Tree
+     2.2.2.1. AVL Tree
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#red-black-trees">
-     2.3.2.2. Red-Black Trees
+     2.2.2.2. Red-Black Trees
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#splay-trees">
-     2.3.2.3. Splay Trees
+     2.2.2.3. Splay Trees
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#other-trees">
-     2.3.2.4. other trees
+     2.2.2.4. other trees
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#heaps">
-   2.3.3. heaps
+   2.2.3. heaps
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#hash-tables">
-   2.3.4. Hash tables
+   2.2.4. Hash tables
   </a>
  </li>
 </ul>
@@ -655,19 +660,19 @@
               <div>
                 
   <div class="section" id="data-structures">
-<h1>2.3. data structures<a class="headerlink" href="#data-structures" title="Permalink to this headline">¶</a></h1>
+<h1>2.2. data structures<a class="headerlink" href="#data-structures" title="Permalink to this headline">¶</a></h1>
 <p>Some notes on advanced data structures, based on UVA’s “Program and Data Representation” course.</p>
 <div class="section" id="lists">
-<h2>2.3.1. lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h2>
+<h2>2.2.1. lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="arrays-and-strings">
-<h3>2.3.1.1. arrays and strings<a class="headerlink" href="#arrays-and-strings" title="Permalink to this headline">¶</a></h3>
+<h3>2.2.1.1. arrays and strings<a class="headerlink" href="#arrays-and-strings" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>start by checking for null, length 0</p></li>
 <li><p><em>ascii</em> is 128, extended is 256</p></li>
 </ul>
 </div>
 <div class="section" id="queue-linkedlist">
-<h3>2.3.1.2. queue - linkedlist<a class="headerlink" href="#queue-linkedlist" title="Permalink to this headline">¶</a></h3>
+<h3>2.2.1.2. queue - linkedlist<a class="headerlink" href="#queue-linkedlist" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>has insert at back (enqueue) and remove from front (dequeue)</p></li>
 </ul>
@@ -689,7 +694,7 @@
 </ul>
 </div>
 <div class="section" id="stack">
-<h3>2.3.1.3. stack<a class="headerlink" href="#stack" title="Permalink to this headline">¶</a></h3>
+<h3>2.2.1.3. stack<a class="headerlink" href="#stack" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">Stack</span> <span class="p">{</span> 
 	<span class="n">Node</span> <span class="n">top</span><span class="p">;</span>
 	<span class="n">Node</span> <span class="nf">pop</span><span class="p">()</span> <span class="p">{</span>
@@ -724,7 +729,7 @@
 </div>
 </div>
 <div class="section" id="trees">
-<h2>2.3.2. trees<a class="headerlink" href="#trees" title="Permalink to this headline">¶</a></h2>
+<h2>2.2.2. trees<a class="headerlink" href="#trees" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Balanced binary trees are generally logarithmic</p>
 <ul>
@@ -785,7 +790,7 @@
 </li>
 </ul>
 <div class="section" id="avl-tree">
-<h3>2.3.2.1. AVL Tree<a class="headerlink" href="#avl-tree" title="Permalink to this headline">¶</a></h3>
+<h3>2.2.2.1. AVL Tree<a class="headerlink" href="#avl-tree" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>For every node in the tree, the height of the left and right sub-trees differs at most by 1</p>
 <ul>
@@ -805,7 +810,7 @@
 </ul>
 </div>
 <div class="section" id="red-black-trees">
-<h3>2.3.2.2. Red-Black Trees<a class="headerlink" href="#red-black-trees" title="Permalink to this headline">¶</a></h3>
+<h3>2.2.2.2. Red-Black Trees<a class="headerlink" href="#red-black-trees" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>definition</p>
 <ol class="simple">
@@ -853,7 +858,7 @@ Therefore, a black node is the only possible parent for a red node</p></li>
 </ul>
 </div>
 <div class="section" id="splay-trees">
-<h3>2.3.2.3. Splay Trees<a class="headerlink" href="#splay-trees" title="Permalink to this headline">¶</a></h3>
+<h3>2.2.2.3. Splay Trees<a class="headerlink" href="#splay-trees" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>A self-balancing tree that keeps “recently” used nodes close to the top</p>
 <ul>
@@ -877,7 +882,7 @@ Therefore, a black node is the only possible parent for a red node</p></li>
 </ul>
 </div>
 <div class="section" id="other-trees">
-<h3>2.3.2.4. other trees<a class="headerlink" href="#other-trees" title="Permalink to this headline">¶</a></h3>
+<h3>2.2.2.4. other trees<a class="headerlink" href="#other-trees" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>to go through <em>bst (without recursion) in order</em>, use stacks</p>
 <ul>
@@ -919,7 +924,7 @@ Therefore, a black node is the only possible parent for a red node</p></li>
 </div>
 </div>
 <div class="section" id="heaps">
-<h2>2.3.3. heaps<a class="headerlink" href="#heaps" title="Permalink to this headline">¶</a></h2>
+<h2>2.2.3. heaps<a class="headerlink" href="#heaps" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>used for <em>priority queue</em></p></li>
 <li><p>peek(): just look at the root node</p></li>
@@ -1058,7 +1063,7 @@ Therefore, a black node is the only possible parent for a red node</p></li>
 </ul>
 </div>
 <div class="section" id="hash-tables">
-<h2>2.3.4. Hash tables<a class="headerlink" href="#hash-tables" title="Permalink to this headline">¶</a></h2>
+<h2>2.2.4. Hash tables<a class="headerlink" href="#hash-tables" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p>java: load factor = .75, default init capacity: 16, uses buckets</p></li>
 <li><p>string hash function: s[0]*31^(n-1) + s[1]*31^(n-2) + … + s[n-1] where n is length mod (table_size)</p>
@@ -1308,8 +1313,8 @@ Therefore, a black node is the only possible parent for a red node</p></li>
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="python_ref.html" title="previous page">2.2. python ref</a>
-    <a class='right-next' id="next-link" href="software.html" title="next page">2.4. software engineering</a>
+    <a class='left-prev' id="prev-link" href="retrieval.html" title="previous page">2.1. info retrieval</a>
+    <a class='right-next' id="next-link" href="languages.html" title="next page">2.3. languages</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

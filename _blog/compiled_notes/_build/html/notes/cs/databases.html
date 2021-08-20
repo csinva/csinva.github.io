@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>&lt;no title&gt;</title>
+    <title>2.8. overview</title>
     
   <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -56,7 +56,7 @@
     <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="2.8. os" href="os.html" />
+    <link rel="next" title="2.10. os" href="os.html" />
     <link rel="prev" title="2.7. graphs" href="graphs.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -92,7 +92,7 @@
   </a>
  </li>
 </ul>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../research_ovws/research_ovws.html">
    1. research_ovws
@@ -167,24 +167,24 @@
   <i class="fas fa-chevron-down">
   </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 current active collapsible-parent">
   <a class="reference internal" href="cs.html">
    2. cs
   </a>
-  <ul class="collapse-ul">
+  <ul class="current collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="retrieval.html">
      2.1. info retrieval
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="python_ref.html">
-     2.2. python ref
+    <a class="reference internal" href="data_structures.html">
+     2.2. data structures
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="data_structures.html">
-     2.3. data structures
+    <a class="reference internal" href="languages.html">
+     2.3. languages
     </a>
    </li>
    <li class="toctree-l2">
@@ -207,29 +207,34 @@
      2.7. graphs
     </a>
    </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2.8. overview
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="#sql">
+     2.9. sql
+    </a>
+   </li>
    <li class="toctree-l2">
     <a class="reference internal" href="os.html">
-     2.8. os
+     2.10. os
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="arch.html">
-     2.9. architecture
+     2.11. architecture
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="java_ref.html">
-     2.10. java ref
+    <a class="reference internal" href="reproducibility.html">
+     2.12. reproducibility
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="comp_theory.html">
-     2.11. cs theory
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="cpp_ref.html">
-     2.12. c/c++ ref
+     2.13. cs theory
     </a>
    </li>
   </ul>
@@ -583,7 +588,17 @@
             <i class="fas fa-list"></i> Contents
         </div>
         <nav id="bd-toc-nav">
-            <ul class="simple nav section-nav flex-column">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   2.8. overview
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sql">
+   2.9. sql
+  </a>
+ </li>
 </ul>
 
         </nav>
@@ -595,7 +610,9 @@
         
               <div>
                 
-  <ul class="simple">
+  <div class="section" id="overview">
+<h1>2.8. overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
 <li><p>notes from <a class="reference external" href="https://www.oracle.com/database/what-is-database/">here</a></p></li>
 <li><p>a database is an organized collection of structured information, or data</p></li>
 <li><p>typically modeled in rows and columns in a series of tables</p></li>
@@ -613,10 +630,18 @@
 </li>
 <li><p>examples</p>
 <ul>
-<li><p>MySQL - simplesr</p></li>
+<li><p>MySQL - simplest</p></li>
 </ul>
 </li>
 </ul>
+</div>
+<div class="section" id="sql">
+<h1>2.9. sql<a class="headerlink" href="#sql" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>the major commands:   <code class="docutils literal notranslate"><span class="pre">SELECT</span></code>, <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code>, <code class="docutils literal notranslate"><span class="pre">DELETE</span></code>, <code class="docutils literal notranslate"><span class="pre">INSERT</span></code>, <code class="docutils literal notranslate"><span class="pre">WHERE</span></code></p></li>
+<li><p>SQL keywords are NOT case sensitive (i.e. can write <code class="docutils literal notranslate"><span class="pre">select</span></code>)</p></li>
+</ul>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -647,7 +672,7 @@
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="graphs.html" title="previous page">2.7. graphs</a>
-    <a class='right-next' id="next-link" href="os.html" title="next page">2.8. os</a>
+    <a class='right-next' id="next-link" href="os.html" title="next page">2.10. os</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

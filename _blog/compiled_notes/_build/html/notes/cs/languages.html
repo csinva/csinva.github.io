@@ -1,0 +1,1663 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>2.3. languages</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../_static/togglebutton.js"></script>
+    <script type="text/javascript" src="../../_static/clipboard.min.js"></script>
+    <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    <script type="text/javascript">var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script type="text/javascript" src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" type="text/javascript" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script type="text/javascript">
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2.4. software engineering" href="software.html" />
+    <link rel="prev" title="2.2. data structures" href="data_structures.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   welcome 👋
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../research_ovws/research_ovws.html">
+   1. research_ovws
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_comp_neuro.html">
+     1.1. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">
+     1.2. transfer learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_disentanglement.html">
+     1.3. disentanglement
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_complexity.html">
+     1.4. complexity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_interesting_science.html">
+     1.5. interesting science
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_dl_theory.html">
+     1.6. dl theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_scat.html">
+     1.7. scattering transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">
+     1.8. ml in medicine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_causal_inference.html">
+     1.9. causal inference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_dl_for_neuro.html">
+     1.10. dl for neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_uncertainty.html">
+     1.11. uncertainty
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_interp.html">
+     1.12. interpretability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_generalization.html">
+     1.13. generalization
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="cs.html">
+   2. cs
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="retrieval.html">
+     2.1. info retrieval
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="data_structures.html">
+     2.2. data structures
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2.3. languages
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="software.html">
+     2.4. software engineering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="quantum.html">
+     2.5. quantum
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="algo.html">
+     2.6. algorithms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="graphs.html">
+     2.7. graphs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="databases.html">
+     2.8. overview
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="databases.html#sql">
+     2.9. sql
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="os.html">
+     2.10. os
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="arch.html">
+     2.11. architecture
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="reproducibility.html">
+     2.12. reproducibility
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="comp_theory.html">
+     2.13. cs theory
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../math/math.html">
+   3. math
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/differential_equations.html">
+     3.1. differential equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/proofs.html">
+     3.2. proofs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/analysis.html">
+     3.3. real analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/linear_algebra.html">
+     3.4. linear algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/signals.html">
+     3.5. signals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/optimization.html">
+     3.6. optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/calculus.html">
+     3.7. calculus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/chaos.html">
+     3.8. chaos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../math/math_basics.html">
+     3.9. math basics
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../stat/stat.html">
+   4. stat
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/graphical_models.html">
+     4.1. graphical models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/data_analysis.html">
+     4.2. data analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/testing.html">
+     4.3. testing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/causal_inference.html">
+     4.4. causal inference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/info_theory.html">
+     4.5. info theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/linear_models.html">
+     4.6. linear models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/time_series.html">
+     4.7. time series
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../stat/game_theory.html">
+     4.8. game theory
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ml/ml.html">
+   5. ml
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/kernels.html">
+     5.1. kernels
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/nlp.html">
+     5.2. nlp
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/comp_vision.html">
+     5.3. computer vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/structure_ml.html">
+     5.4. structure learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/classification.html">
+     5.5. classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/unsupervised.html">
+     5.6. unsupervised
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/deep_learning.html">
+     5.7. deep learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/feature_selection.html">
+     5.8. feature selection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/learning_theory.html">
+     5.9. learning theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ml/evaluation.html">
+     5.10. evaluation
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ai/ai.html">
+   6. ai
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/search.html">
+     6.1. search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/fairness_sts.html">
+     6.2. fairness, sts
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/cogsci.html">
+     6.3. cogsci
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/ai_futures.html">
+     6.4. ai futures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/logic.html">
+     6.5. logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/philosophy.html">
+     6.6. philosophy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/psychology.html">
+     6.7. psychology
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/knowledge_rep.html">
+     6.8. representations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ai/decisions.html">
+     6.9. decisions
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../neuro/neuro.html">
+   7. neuro
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/disease.html">
+     7.1. disease
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/brain_basics.html">
+     7.2. brain basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/vissci.html">
+     7.3. vision
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/comp_neuro.html">
+     7.4. comp neuro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/sensory_input.html">
+     7.5. sensory input
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/memory.html">
+     7.6. memory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/motor.html">
+     7.7. motor system
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../neuro/development.html">
+     7.8. development
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/notes/cs/languages.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/csinva/csinva.github.io"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python">
+   2.3.1. python
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#basic">
+     2.3.1.1. basic
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-structures">
+     2.3.1.2. data structures
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#useful">
+     2.3.1.3. useful
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#higher-level">
+     2.3.1.4. higher level
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#object-oriented">
+     2.3.1.5. object-oriented
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#numpy-pandas">
+     2.3.1.6. numpy/pandas
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pytorch">
+     2.3.1.7. pytorch
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#parallelization">
+     2.3.1.8. parallelization
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c-c">
+   2.3.2. c/c++
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#c-basic">
+     2.3.2.1. C basic
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#malloc">
+     2.3.2.2. malloc
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#memory">
+     2.3.2.3. memory
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#structs">
+     2.3.2.4. structs
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#strings">
+     2.3.2.5. strings
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pointers">
+     2.3.2.6. pointers
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#java">
+   2.3.3. java
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     2.3.3.1. data structures
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     2.3.3.2. useful
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     2.3.3.3. higher level
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     2.3.3.4. object-oriented
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#r">
+   2.3.4. R
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <ul class="simple">
+<li><p>TOC</p></li>
+</ul>
+<div class="section" id="languages">
+<h1>2.3. languages<a class="headerlink" href="#languages" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="python">
+<h2>2.3.1. python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="basic">
+<h3>2.3.1.1. basic<a class="headerlink" href="#basic" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>from math import log, log2, floor, ceil</p></li>
+<li></li>
+<li><p>from random import random</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">random.random()</span> <span class="pre">###</span> <span class="pre">[0,</span> <span class="pre">1.0)</span></code></p></li>
+</ul>
+</li>
+<li><p>copying: x.copy() for list, dict, numpy</p>
+<ul>
+<li><p>this is still shallow (won’t recursively copy things like a list in a list)</p>
+<ul>
+<li><p>this does work for basic things though (the copy is not exactly the same as the original)</p></li>
+</ul>
+</li>
+<li><p>for generic objects, need to do from copy import deepcopy</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="data-structures">
+<h3>2.3.1.2. data structures<a class="headerlink" href="#data-structures" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="nb">list</span> <span class="n">l</span> <span class="p">(</span><span class="n">use</span> <span class="n">this</span> <span class="k">for</span> <span class="n">stack</span> <span class="k">as</span> <span class="n">well</span><span class="p">)</span> <span class="c1">### implemented like an arraylist</span>
+	<span class="o">-</span> <span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="o">-</span> <span class="n">l</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">element</span><span class="p">)</span>
+  <span class="o">-</span> <span class="n">l</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+  <span class="o">-</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">]</span>
+  <span class="o">-</span> <span class="p">[</span><span class="kc">True</span><span class="p">]</span> <span class="o">*</span> <span class="mi">5</span>
+<span class="o">-</span> <span class="n">queue</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span> <span class="c1">### implemented as doubly linked list</span>
+      <span class="o">-</span> <span class="n">q</span> <span class="o">=</span> <span class="n">deque</span><span class="p">()</span>
+      <span class="o">-</span> <span class="n">q</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+      <span class="o">-</span> <span class="n">q</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+      <span class="o">-</span> <span class="n">q</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>
+      <span class="o">-</span> <span class="n">q</span><span class="o">.</span><span class="n">appendleft</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+      <span class="o">-</span> <span class="n">index</span> <span class="n">like</span> <span class="n">normal</span>
+      <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+<span class="o">-</span> <span class="k">class</span> <span class="nc">Node</span><span class="p">:</span> <span class="c1">### this implements a linkedlist</span>
+		<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="nb">next</span><span class="p">):</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">val</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="nb">next</span>
+<span class="o">-</span> <span class="nb">set</span><span class="p">()</span>
+	<span class="o">-</span> <span class="n">add</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+  <span class="o">-</span> <span class="n">remove</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+  <span class="o">-</span> <span class="n">intersection</span><span class="p">(</span><span class="n">set2</span><span class="p">)</span>
+<span class="o">-</span> <span class="nb">dict</span> <span class="p">{</span><span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+	<span class="o">-</span> <span class="n">keys</span><span class="p">()</span>
+	<span class="o">-</span> <span class="n">values</span><span class="p">()</span>
+    <span class="o">-</span> <span class="k">del</span> <span class="n">m</span><span class="p">[</span><span class="s1">&#39;key&#39;</span><span class="p">]</span>
+<span class="o">-</span> <span class="n">PriorityQueue</span>
+	<span class="o">-</span> <span class="kn">from</span> <span class="nn">queue</span> <span class="kn">import</span> <span class="n">PriorityQueue</span>
+	<span class="o">-</span> <span class="n">q</span> <span class="o">=</span> <span class="n">PriorityQueue</span><span class="p">()</span>
+    <span class="o">-</span> <span class="n">q</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="o">-</span> <span class="n">q</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="o">-</span> <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+	<span class="o">-</span> <span class="n">Counter</span><span class="p">(</span><span class="n">Y_train</span><span class="p">)</span> <span class="c1">### this counts unique values and makes it into a dict of counts</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="useful">
+<h3>2.3.1.3. useful<a class="headerlink" href="#useful" title="Permalink to this headline">¶</a></h3>
+<p><em>strings</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span> 
+<span class="o">-</span> <span class="n">s</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="c1">### convert to all upper case</span>
+<span class="o">-</span> <span class="n">s</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1">### reverse the str</span>
+<span class="o">-</span> <span class="s2">&quot;_&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">s</span><span class="p">,</span> <span class="n">s</span><span class="p">])</span> <span class="c1">### fastest way to join lots of strings (with _ between them)</span>
+<span class="o">-</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;e&quot;</span><span class="p">)</span> <span class="c1">### split into a list wherever there is an e</span>
+<span class="o">-</span> <span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;e&quot;</span><span class="p">,</span> <span class="s2">&quot;new_str&quot;</span><span class="p">)</span> <span class="c1">### replaces all instances</span>
+<span class="o">-</span> <span class="n">s</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">)</span> <span class="c1">### returns first index, otherwise -1</span>
+<span class="o">-</span> <span class="n">formatting</span>
+	<span class="o">-</span> <span class="s2">&quot;</span><span class="si">%05d</span><span class="s2">&quot;</span>	<span class="o">//</span><span class="n">pad</span> <span class="n">to</span> <span class="n">fill</span> <span class="mi">5</span> <span class="n">spaces</span>
+	<span class="o">-</span> <span class="s2">&quot;</span><span class="si">%8.3f</span><span class="s2">&quot;</span> <span class="o">//</span><span class="nb">max</span> <span class="n">number</span> <span class="n">of</span> <span class="n">digits</span>
+	<span class="o">-</span> <span class="s2">&quot;</span><span class="si">%-d</span><span class="s2">&quot;</span>	<span class="o">//</span><span class="n">left</span> <span class="n">justify</span>
+	<span class="o">-</span> <span class="s2">&quot;%,d&quot;</span> 	<span class="o">//</span><span class="nb">print</span> <span class="n">commas</span> <span class="n">ex</span><span class="o">.</span> <span class="s2">&quot;1,000,000&quot;</span>
+  <span class="o">-</span> <span class="n">d</span> <span class="p">(</span><span class="nb">int</span><span class="p">),</span> <span class="n">f</span> <span class="p">(</span><span class="nb">float</span><span class="p">),</span> <span class="n">s</span> <span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+	<span class="o">-</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">05d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1">### new in 3.6</span>
+<span class="o">-</span> <span class="nb">int</span><span class="p">(</span><span class="s2">&quot;3&quot;</span><span class="p">)</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="o">-</span> <span class="nb">bin</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">=</span> <span class="s1">&#39;0b1010&#39;</span>
+<span class="o">-</span> <span class="nb">hex</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="o">=</span> <span class="s1">&#39;0x64&#39;</span>
+<span class="o">-</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="o">=</span> <span class="mi">97</span>
+<span class="o">-</span> <span class="s1">&#39;x&#39;</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">=</span> <span class="s1">&#39;xxx&#39;</span>
+</pre></div>
+</div>
+<p><em>sorting</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="s1">&#39;ccc&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;bb&#39;</span><span class="p">]</span>
+<span class="o">-</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">)</span> <span class="c1">### decreasing order</span>
+	<span class="o">-</span> <span class="n">key</span> <span class="n">examples</span><span class="p">:</span> <span class="nb">str</span><span class="o">.</span><span class="n">lower</span><span class="p">,</span> <span class="n">func_name</span>
+    <span class="o">-</span> <span class="n">key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="o">-</span> <span class="k">def</span> <span class="nf">func_name</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+     	 <span class="k">return</span> <span class="n">s</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="o">-</span> <span class="n">l</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">reverse</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">)</span> <span class="c1">### sorts in place</span>
+</pre></div>
+</div>
+<p><em>exceptions</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">something</span><span class="o">...</span>
+<span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;error!&#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+
+<span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;spam&#39;</span><span class="p">,</span> <span class="s1">&#39;eggs&#39;</span><span class="p">)</span>
+<span class="k">assert</span><span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="higher-level">
+<h3>2.3.1.4. higher level<a class="headerlink" href="#higher-level" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>primitives</em>: <code class="docutils literal notranslate"><span class="pre">int,</span> <span class="pre">float,</span> <span class="pre">bool,</span> <span class="pre">str</span></code></p></li>
+<li><p>only primitive and reference <em>types</em></p>
+<ul>
+<li><p>when you assign primitives to each other, it’s fine</p></li>
+<li><p>when you pass in a primitive, its value is copied</p></li>
+<li><p>when you pass in an object, its reference is copied</p>
+<ul>
+<li><p>you can modify the object through the reference, but can’t change the object’s address</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="object-oriented">
+<h3>2.3.1.5. object-oriented<a class="headerlink" href="#object-oriented" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">### example of a class</span>
+<span class="k">class</span> <span class="nc">Document</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>    
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+ 
+    <span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>             
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Subclass must implement abstract method&quot;</span><span class="p">)</span>
+
+<span class="c1">### example of inheritance</span>
+<span class="k">class</span> <span class="nc">Pdf</span><span class="p">(</span><span class="n">Document</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;Show pdf contents!&#39;</span>
+
+<span class="c1">### example of different types of methods</span>
+<span class="k">class</span> <span class="nc">MyClass</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="c1">### can modify self (and class)</span>
+        <span class="k">return</span> <span class="s1">&#39;instance method called&#39;</span><span class="p">,</span> <span class="bp">self</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">classmethod</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span> <span class="c1">### can only modify class</span>
+        <span class="k">return</span> <span class="s1">&#39;class method called&#39;</span><span class="p">,</span> <span class="bp">cls</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">staticmethod</span><span class="p">():</span> <span class="c1">#can&#39;t modify anything</span>
+        <span class="k">return</span> <span class="s1">&#39;static method called&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="numpy-pandas">
+<h3>2.3.1.6. numpy/pandas<a class="headerlink" href="#numpy-pandas" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>loc indexes by val</p></li>
+<li><p>iloc indexes by index position</p></li>
+<li><p>.groupby returns a dict</p></li>
+<li><p>merging</p>
+<ul>
+<li><p>pd.merge(df1, df2, how=’left’, on=’x1’)</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="pytorch">
+<h3>2.3.1.7. pytorch<a class="headerlink" href="#pytorch" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">model</span> <span class="pre">=</span> <span class="pre">nn.DataParallel(model)</span></code></p>
+<ul>
+<li><p>automatically runs multiple batches from dataset at same time</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nn.DistributedDataParallel</span></code> is often faster - replicates model on each gpu and gives some data to each one (less data transferes)</p></li>
+</ul>
+</li>
+<li><p>dataset has <code class="docutils literal notranslate"><span class="pre">__init__,</span> <span class="pre">__getitem__,</span> <span class="pre">&amp;</span> <span class="pre">__len__</span></code></p>
+<ul>
+<li><p>rather than storing images, can load image from filename in <code class="docutils literal notranslate"><span class="pre">__getitem__</span></code></p></li>
+</ul>
+</li>
+<li><p>there’s a <code class="docutils literal notranslate"><span class="pre">torch.nn.Flatten</span></code> module</p></li>
+</ul>
+</div>
+<div class="section" id="parallelization">
+<h3>2.3.1.8. parallelization<a class="headerlink" href="#parallelization" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>cores = cpus = processors - inividual processing units available on a single node</p></li>
+<li><p>node - different computers with distinc memory</p></li>
+<li><p>processes - instances of a program executing on a machine</p>
+<ul>
+<li><p>shouldn’t have more user processes than cores on a node</p></li>
+</ul>
+</li>
+<li><p>more…</p>
+<ul>
+<li><p>threads - multiple paths of execution within a single process</p>
+<ul>
+<li><p>like a process, but more lightweight</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>passing messages between nodes (e.g. for distributed memory) often use protocol known as MPI</p>
+<ul>
+<li><p>packages such as Dask do this for you, without MPI</p></li>
+</ul>
+</li>
+<li><p>python packages</p>
+<ul>
+<li><p>dask: parallelizing tasks, distributed datasets, one or more machines</p></li>
+<li><p>ray: parallelizing tasks, building distributed applications, one or more machines</p></li>
+</ul>
+</li>
+<li><p>dask</p>
+<ul>
+<li><p>separate code from code to parallelize things</p></li>
+<li><p>some limitations on pure python code, but np/pandas etc. parallelize better</p></li>
+<li><p>configuration: specify sequential (‘synchronous’), threads within current session (‘threaded’) paralell (‘processes’) multiprocessing - this creates copies of objects, multi-node or not (‘distributed’)</p></li>
+<li><p>need to wrap functions with <code class="docutils literal notranslate"><span class="pre">delayed()</span></code> or <code class="docutils literal notranslate"><span class="pre">map()</span></code></p>
+<ul>
+<li><p>alternatively can tag functions</p></li>
+</ul>
+</li>
+<li><p>map() operation does caching</p></li>
+<li><p>dask dataframes</p></li>
+<li><p>ssh setup</p>
+<ul>
+<li><p>can connecto to other workers locally (ssh-dask or SSHCluster)</p></li>
+<li><p>when using slurm, must run dask-scheduler on cluster node</p>
+<ul>
+<li><p>then run dask-worker many times (as many tasks as there are)</p></li>
+</ul>
+</li>
+<li><p>can also directly submit slurm jobs from dask</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="c-c">
+<h2>2.3.2. c/c++<a class="headerlink" href="#c-c" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>The C memory model: global, local, and heap variables. Where they are stored, their properties, etc.</p></li>
+<li><p>Variable scope</p></li>
+<li><p>Using pointers, pointer arithmetic, etc.</p></li>
+<li><p>Managing the heap: malloc/free, new/delete</p></li>
+</ul>
+<div class="section" id="c-basic">
+<h3>2.3.2.1. C basic<a class="headerlink" href="#c-basic" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>#include &lt;stdio.h&gt;</p></li>
+<li><p>printf(“the variable ‘i’ is: %d”, i);</p></li>
+<li><p>can only use /* */ for comments</p></li>
+<li><p>for constants: <code class="docutils literal notranslate"><span class="pre">#define</span> <span class="pre">MAX_LEN</span> <span class="pre">1024</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="malloc">
+<h3>2.3.2.2. malloc<a class="headerlink" href="#malloc" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>malloc ex.</p></li>
+<li><p>There is no bool keyword in C</p></li>
+</ul>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>  <span class="cm">/* We&#39;re going to allocate enough space for an integer </span>
+<span class="cm">     and assign 5 to that memory location */</span>
+  <span class="kt">int</span> <span class="o">*</span><span class="n">foo</span><span class="p">;</span>
+  <span class="cm">/* malloc call: note the cast of the return value</span>
+<span class="cm">     from a void * to the appropriate pointer type */</span>
+  <span class="n">foo</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>  
+  <span class="o">*</span><span class="n">foo</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+   <span class="n">free</span><span class="p">(</span><span class="n">foo</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">char</span> <span class="pre">*some_memory</span> <span class="pre">=</span> <span class="pre">&quot;Hello</span> <span class="pre">World&quot;;</span></code></p></li>
+<li><p>this creates a pointer to a read-only part of memory</p></li>
+<li><p>it’s disastrous to free a piece of memory that’s already been freed</p></li>
+<li><p>variables must be declared at the beginning of a function and must be declared before any other code</p></li>
+</ul>
+</div>
+<div class="section" id="memory">
+<h3>2.3.2.3. memory<a class="headerlink" href="#memory" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>heap variables stay - they are allocated with malloc</p></li>
+<li><p>local variables are stored on the stack</p></li>
+<li><p>global variables are stored in an initialized data segment</p></li>
+</ul>
+</div>
+<div class="section" id="structs">
+<h3>2.3.2.4. structs<a class="headerlink" href="#structs" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>  <span class="k">struct</span> <span class="nc">point</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">x</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">y</span><span class="p">;</span>
+  <span class="p">};</span>
+ <span class="k">struct</span> <span class="nc">point</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
+ <span class="n">p</span> <span class="o">=</span> <span class="p">(</span><span class="k">struct</span> <span class="nc">point</span> <span class="o">*</span><span class="p">)</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="nc">point</span><span class="p">));</span>
+ <span class="n">p</span><span class="o">-&gt;</span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+ <span class="n">p</span><span class="o">-&gt;</span><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="strings">
+<h3>2.3.2.5. strings<a class="headerlink" href="#strings" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>array with extra null character at end ‘\0’</p></li>
+<li><p>strLen doesn’t include null character</p></li>
+</ul>
+</div>
+<div class="section" id="pointers">
+<h3>2.3.2.6. pointers<a class="headerlink" href="#pointers" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">fake</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">val</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+<span class="kt">int</span> <span class="o">*</span> <span class="n">x</span><span class="p">;</span> <span class="c1">// declare a pointer</span>
+<span class="n">x</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">val</span><span class="p">;</span> <span class="c1">//take address of a variable</span>
+<span class="o">-</span> <span class="n">can</span> <span class="n">use</span> <span class="n">pointer</span> <span class="o">++</span> <span class="n">and</span> <span class="n">pointer</span> <span class="o">--</span> <span class="n">to</span> <span class="n">get</span> <span class="n">next</span> <span class="n">values</span>
+</pre></div>
+</div>
+<p>//Hello World
+#include <iostream>
+using namespace std; //always comes after the includes, like a weaker version of packages
+//everything needs to be in a namespace otherwise you have to writed std::cout to look in iostream - you would use this for very long programs
+int main(){ //main function, not part of a class, must return an int
+cout &lt;&lt; “Hello World” &lt;&lt; endl;
+return 0; //always return this, means it didn’t crash
+}</p>
+<p>Preprocessor
+#include <iostream> //System file - angle brackets
+#include “ListNode.h” //user file - inserts the contents of the file in this place
+#ifndef - “if not defined”
+#define - defines a macro (direct text replacement)
+#define TRUE 0 //like a final int, we usually put it in all caps
+if(TRUE ==0)
+#define MY_OBJECT_H //doesn’t give it a value - all it does is make #ifdef true and #ifndef false
+#if/#ifdef needs to be closed with #endif
+if 2 files include each other, we get into an include loop
+we can solve this with the header of the .h files - everything is only defined once
+odd.h:
+#ifndef ODD_H
+#define ODD_H
+#include “even.h”
+bool odd (int x);
+#endif
+even.h:
+#ifndef EVEN_H
+#define EVEN_H
+#include “odd.h”
+bool even (int x);
+#endif</p>
+<p>I/O
+#include <iostream>
+using namespace std;
+int main(){
+int x;
+cout &lt;&lt; “Enter a value for x: “; //the arrows show you which way the data is flowing
+cin &gt;&gt; x;
+return 0;
+}</p>
+<p>C++ Primitive Types
+int
+can be 16,32,64 bits depending on the platform
+double better than char</p>
+<p>If statement can take an int, if (0) then false.  Otherwise true.
+//don’t do single equals instead of double equals, will return false</p>
+<p>Compiler: clang++</p>
+<p>Functions - you can only call methods that are above you in the file
+function prototype - to compile mutually recursive functions, you need to declare the function with a semicolon instead of brackets and no body.
+bool even(int x); //called forward declaration / function prototype
+bool odd(int x){
+if(x==0)
+return false;
+return even(x-1);
+}
+bool even(int x){
+if(x==0)
+return true;
+return odd(x-1);
+}
+Classes
+Need 3 Separate files:
+1. Header file that contains class definition - like an interface - IntCell.h
+#ifndef INTCELL_H //all .h files start w/ these
+#define INTCELL_H
+class IntCell{
+public: //visibility blocks, everything in this block is public
+IntCell(int initialValue=0); //if you don’t provide a parameter, it assumes it is 0.  You can call it with 1 or no parameters.
+~IntCell(); //destructor, takes no parameters<br />
+int getValue() const; //the const keyword when placed here means the method doesn’t modify the object
+void setValue(int val);
+private:
+int storedvalue;
+int max(int m);
+};
+#endif //all .h files end w/ these
+2. C++ file that contains class implementation -IntCell.cpp
+#include “IntCell.h”
+using namespace std; // (not really necessary, but…)
+IntCell::IntCell( int initialValue ) :  //default value only listed in .h file
+storedValue( initialValue ) { //put in all the fieldname(value), this is shorthand
+}
+int IntCell::getValue( ) const {
+return storedValue;
+}
+void IntCell::setValue( int val ) { //this is how you define the body of a method
+storedValue = val;
+}
+int IntCell::max(int m){
+return 1;
+}
+3. C++ file that contains a main() - TestIntCell.cpp
+#include <iostream>
+#include “IntCell.h”
+using namespace std;
+int main(){
+IntCell m1; //calls default constructor - we don’t use parentheses!
+IntCell m2(37);
+cout &lt;&lt; m1.getValue() &lt;&lt; ” ” &lt;&lt; m2.getValue() &lt;&lt; endl;
+m1 = m2; //there are no references - copies the bits in m2 into m1
+m2.setValue(40);
+cout &lt;&lt; m1.getValue() &lt;&lt; ” ” &lt;&lt; m2.getValue() &lt;&lt; endl;
+return 0;
+}</p>
+<p>Pointers
+Stores a memory address of another object //we will assume everyhing is 32 bit
+Can be a primitive type or a class type
+int * x;
+pointer to int
+char *y;
+pointer to char
+Rational * rPointer;
+pointer to Rational
+all pointers are 32 bits in size because they are just addresses
+in a definition, * defines pointer type: int * x;
+in an expression, * dereferences: *x=2; (this sets a value for what the pointer points to)
+in a definition, &amp; defines a reference type
+&amp;x means get the address of x
+int x = 1;              //Address 1000, value 1 - don’t forget to make the pointee
+int y = 5;              //Address 1004, value 5
+int * x_pointer = &amp;x;   //Address 1008, value 1000
+cout &lt;&lt; x_pointer;      //prints the address 1000
+cout &lt;&lt; *x_pointer;     //prints the value at the address
+*x_pointer = 2;         //this changes the value of x to 2
+x_pointer = &amp;y;         //this means x_pointer now stores the address of y
+*x_pointer = 3;         //this changes the value of y to 3</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>int n = 30;
+int * p;                //variables are not initialized to any value
+*p = n;                 //this throws an error because you have not requested enough memory, unless it happens to be pointing to memory that you have allocated
+int *p = NULL;          //this will still crash, but it is a better way to initialize
+           
+void swap(int * x, int * y) {
+    int temp = *x;      //temp takes the value x is pointing to
+    *x = *y;            //x points to the value that y was pointing to
+    *y = temp;          //y points to the value 3
+}                       //at the end, x and y still are the same addresses
+          
+int main() {
+    int a=0;
+    int b=3;
+    cout &lt;&lt; &quot;Before swap(): a: &quot; &lt;&lt; a &lt;&lt; &quot;b: &quot; 
+         &lt;&lt; b &lt;&lt; endl;
+    swap(&amp;b,&amp;a);
+    cout &lt;&lt; &quot;After swap(): a: &quot; &lt;&lt; a &lt;&lt; &quot;b: &quot; 
+         &lt;&lt; b &lt;&lt; endl;
+    return 0;
+}
+</pre></div>
+</div>
+<p>Dynamic Memory Allocation   //not very efficient
+Static Memory Allocation - the compiler knows at compile time how much memory is needed
+int someArray[10];  //declare array of 10 elements
+int *value1_address = &amp;someArray[3]; // declare a pointer to int
+new keyword
+returns a pointer to newly created “thing”
+int main() {
+int n;
+cout &lt;&lt; “Please enter an integer value: ” ;         // read in a value from the user
+cin &gt;&gt; n;
+int * ages = new int [n];// use the user’s input to create an array of int using new
+for (int i=0; i &lt; n; i++) {                // use a loop to prompt the user to initialize array
+cout &lt;&lt; “Enter a value for ages[ ” &lt;&lt; i &lt;&lt; ” ]: “;
+cin &gt;&gt; ages[i];
+}
+for(int i=0; i&lt;n; i++) {            // print out the contents of the array
+cout &lt;&lt; “ages[ ” &lt;&lt; i &lt;&lt; ” ]: ” &lt;&lt; ages[i];
+delete [] ages;  //finished with the array - clean up the memory used by calling delete
+return 0;        //everything you allocate with new needs to be deleted, this is faster than java
+}
+Generally, SomeTypePtr = new SomeType;
+int * intPointer = new int;
+delete intPointer; //for array, delete [] ages; -this only deals with the pointee, not the pointer
+Accessing parts of an object
+regular object:
+Rational r;
+r.num = 3;
+for a pointer, dereference it:
+Rational *r = new Rational();
+(<em>r).num=4; //or r-&gt;num = 4; (shorthand)
+char</em> x,y; //y is not a pointer!  Write like char *x,y;
+Linked Lists
+List object keeps track of size, pointers to head, tail
+head and tail are dummy nodes
+ListNode holds a value, previous, and next
+ListItr has pointer to current ListNode
+Friend
+class ListNode {
+public:
+ListNode();                //Constructor
+private:                       //only this class can modify these fields
+int value;
+ListNode <em>next, <em>previous; //for doubly linked lists
+friend class List;         //these classes can bypass private visibility
+friend class ListItr;
+};
+Constructor - just has to initialize fields
+Foo() {
+ListNode</em> head = new ListNode(); //because we put the class type ListNode</em>, then we are creating a new local variable and not modifying the field
+//head = new Listnode() - this works
+}
+Foo() {
+ListNode temp;
+head = &amp;temp;                 //this ListNode is deallocated after the constructor ends, doesn’t work
+}
+Assume int <em>x has been declared
+And int y is from user input
+Consider these separate C++ lines of code:
+x = new int[10]; // 40 bytes
+x = new int;     // 4 bytes
+x = new int[y];  // y</em>4 bytes
+sizeof(int) -&gt; tells you how big an integer is (4 bytes)
+References - like a pointer holds an address, with 3 main differences
+1. Its address cannot change (its address is constant)
+2. It MUST be initialized upon declaration
+Cannot (easily) be initialized to NULL
+3. Has implicit dereferencing
+If you try to change the value of the reference, it automatically assumes you mean the value that the reference is pointing to
+//can’t use it when you need to change ex. ListItr has current pointer that changes a lot
+Declaration
+List sampleList
+List &amp; theList = sampleList;//references has to be initialized to the object, not the address
+void swap(int &amp; x, int &amp; y) {   //this passes in references
+int temp = x;
+x = y;
+y = temp;
+}
+int main() {                    //easier to call, references are nice when dealing with parameters
+int a=0;
+int b=3;
+cout &lt;&lt; “Before swap(): a: ” &lt;&lt; a &lt;&lt; “b: “
+&lt;&lt; b &lt;&lt; endl;
+swap(b,a);
+cout &lt;&lt; “After swap(): a: ” &lt;&lt; a &lt;&lt; “b: “
+&lt;&lt; b &lt;&lt; endl;
+return 0;
+}
+You can access its value with just a period
+Location	       *	           &amp;
+Definition	“pointer to”	“reference to”
+Statement	“dereference”	“address of”
+subroutines
+methods are in a class
+functions are outside a class
+Parameter passing
+Call by value - actual parameter is copied into formal parameter
+This is what Java always does - can be slow if it has to copy a lot
+-actual object can’t be modified
+Call by reference - pass references as parameters
+Use when formal parameter should be able to change the value of the actual argument
+void swap (int &amp;x, int &amp;y);
+Call by constant reference - parameters are constant and are passed by reference
+Both efficient and safe
+bool compare(const Rational &amp; left, const Rational &amp; right);
+Can also return by different ways
+C++ default class
+1. Destructor                                           //this will do nothing
+Frees up any resources allocated during the use of an object
+2. Copy Constructor                                     //copies something over
+Creates a new object based on an old object
+IntCell copy = original;                         //or Intcell copy(original)
+automatically called when object is passed by value into a subroutine
+automatically called when object is returned by value from a subroutine
+3. operator=()
+also known as the copy assignment operator
+intended to copy the state of original into copy
+called when = is applied to two objects after both have been previously constructed
+IntCell original;   //constructor called
+IntCell copy;
+copy = original;    //operator called
+overrides the = operator    //operator overrides only work on objects, not pointers
+(and a default constructor, if you don’t supply one) //this will do nothing</p>
+<p>C++ has visibility on the inheritance</p>
+<p>class Name {
+public:
+Name(void) : myName(“”) { }
+~Name(void) {  }
+void SetName(string theName) {
+myName = theName;
+}
+void print(void) {
+cout &lt;&lt; myName &lt;&lt; endl;
+}</p>
+<p>private:
+string myName;
+};</p>
+<p>class Contact: public Name { //this is like contact extends name
+public:
+Contact(void) {
+myAddress = “”;
+}
+~Contact(void) { }
+void SetAddress(string theAddress) {
+myAddress = theAddress;
+}
+void print(void) {
+Name::print();  //this can’t access private fields in Name, needs to call print from super class
+cout &lt;&lt; myAddress &lt;&lt; endl;
+}
+private:
+string myAddress;
+};</p>
+<p>C++ has multiple inheritance - you can have as many parent classes as you want
+class Sphere : public Shape, public Comparable, public Serializable {
+};</p>
+<p>Dispatch
+Static - Decision on which member function to invoke made using compile-time type of an object
+when you have a pointer
+Person *p;
+p = new Student();
+p.print();  //will alway call the Person print method - uses type of the pointer
+Dynamic - Decision on which member function to invoke made using run-time type of an object
+Incurs runtime overhead
+Program must maintain extra information
+Compiler must generate code to determine which member function to invoke
+Syntax in C++: virtual keyword
+(Java does this by default, i.e. everything is virtual)
+Example
+class A
+virtual void foo()<br />
+class B : public A
+virtual void foo()
+void main ()
+int which = rand() % 2;
+A *bar;
+if ( which )
+bar = new A();
+else
+bar = new B();
+bar-&gt;foo();
+return 0;</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    Virtual method tables - stores the virtual methods in an array
+        Each object contains a pointer to the virtual method table
+            In addition to any other fields
+        That table has the addresses of the methods
+            Any virtual method must follow the pointer to the object... (one pointer dereference)
+            Then follow the virtual method table pointer... (second pointer dereference)
+            Then lookup the method pointer
+                In Java default is Dynamic
+                In C++, default is Static - this is faster
+        When creating a subclass object, the constructor of each subclass overwrites the appropriate pointers in the virtual method table with the overridden method pointers
+</pre></div>
+</div>
+<p>Abstract Classes
+class foo {
+public:
+virtual void bar() = 0;
+};</p>
+<p>Types of multiple inheritance
+1. Shared
+What Person is in the diagram on the previous slide
+2. Replicated (or repeated)
+What gp_list_node is in the diagram on the previous slide
+3. Non-replicated (or non-repeated)
+A language that does not allow shared or replicated (i.e. no common ancestors allowed)
+4. Mix-in
+What Java (and others) use to fake multiple inheritance through the use of interfaces</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>In C++, replicated is the default
+    Shared can be done by specifying that a base class is virtual:
+        class student: public virtual person, public gp_list_node {
+        class professor: public virtual person, public gp_list_node {
+            
+Java has ArrayStoreException - makes sure the thing you are adding to the array is of the correct type
+    String[] a = new String[1];
+    Object[] b = a;
+    b[0] = new Integer (1);
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="java">
+<h2>2.3.3. java<a class="headerlink" href="#java" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>2.3.3.1. data structures<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span>- LinkedList, ArrayList
+	- add(Element e), add(int idx, Element e), get(int idx)
+	- remove(int index)
+	- remove(Object o)
+- Stack
+	- push(E item)
+	- peek()
+	- pop()
+- PriorityQueue
+	- peek()
+	- poll()
+	- default is min-heap
+	- PriorityQueue(int initialCapacity, Comparator&lt;? super E&gt; comparator)
+	- PriorityQueue(Collection&lt;? extends E&gt; c)
+- HashSet, TreeSet
+	- add, remove
+- HashMap
+	- put(K key, V value)
+	- get(Object key)
+	- keySet()
+	- if you try to get something that&#39;s not there, will return null
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>default init capacities all 10-20</p></li>
+<li><p>clone() has to be cast from Object</p></li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h3>2.3.3.2. useful<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p><em>iterator</em></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">it</span><span class="p">.</span><span class="na">next</span><span class="p">()</span> <span class="o">-</span> <span class="n">returns</span> <span class="n">value</span>
+<span class="o">-</span> <span class="n">it</span><span class="p">.</span><span class="na">hasNext</span><span class="p">()</span> <span class="o">-</span> <span class="n">returns</span> <span class="kt">boolean</span>
+<span class="o">-</span> <span class="n">it</span><span class="p">.</span><span class="na">remove</span><span class="p">()</span> <span class="o">-</span> <span class="n">removes</span> <span class="n">last</span> <span class="n">returned</span> <span class="n">value</span>
+</pre></div>
+</div>
+<p><em>strings</em></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">String</span><span class="p">.</span><span class="na">split</span><span class="p">(</span><span class="s">&quot; |\\.|\\?&quot;</span><span class="p">)</span> <span class="c1">//split on space, ., and ?</span>
+<span class="o">-</span> <span class="n">StringBuilder</span>
+	<span class="o">-</span> <span class="n">much</span> <span class="n">faster</span> <span class="n">at</span> <span class="n">concatenating</span> <span class="n">strings</span>
+	<span class="o">-</span> <span class="n">thread</span> <span class="n">safe</span><span class="p">,</span> <span class="n">but</span> <span class="n">slower</span>
+	<span class="o">-</span> <span class="n">StringBuilder</span> <span class="n">s</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="p">(</span><span class="n">CharSequence</span> <span class="n">seq</span><span class="p">)();</span>
+	<span class="o">-</span> <span class="n">s</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;cs3v&quot;</span><span class="p">);</span>
+	<span class="o">-</span> <span class="n">s</span><span class="p">.</span><span class="na">charAt</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">),</span> <span class="n">s</span><span class="p">.</span><span class="na">deleteCharAt</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">),</span> <span class="n">substring</span>
+	<span class="o">-</span> <span class="n">s</span><span class="p">.</span><span class="na">reverse</span><span class="p">()</span>
+	<span class="o">-</span> <span class="n">Since</span> <span class="n">String</span> <span class="n">is</span> <span class="n">immutable</span> <span class="n">it</span> <span class="n">can</span> <span class="n">safely</span> <span class="n">be</span> <span class="n">shared</span> <span class="n">between</span> <span class="n">many</span> <span class="n">threads</span>
+<span class="o">-</span> <span class="n">formatting</span>
+	<span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="n">String</span><span class="p">.</span><span class="na">format</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+	<span class="s">&quot;%05d&quot;</span>	<span class="c1">//pad to fill 5 spaces</span>
+	<span class="s">&quot;%8.3f&quot;</span> <span class="c1">//max number of digits</span>
+	<span class="s">&quot;%-d&quot;</span>	<span class="c1">//left justify</span>
+	<span class="s">&quot;%,d&quot;</span> 	<span class="c1">//print commas ex. 1,000,000</span>
+	<span class="o">|</span> <span class="kt">int</span> <span class="o">|</span> <span class="kt">double</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
+	<span class="o">|-----|--------|--------|</span>
+	<span class="o">|</span> <span class="n">d</span>   <span class="o">|</span> <span class="n">f</span>      <span class="o">|</span> <span class="n">s</span>      <span class="o">|</span>
+	<span class="k">new</span> <span class="n">StringBuilder</span><span class="p">(</span><span class="n">s</span><span class="p">).</span><span class="na">reverse</span><span class="p">().</span><span class="na">toString</span><span class="p">()</span>
+	<span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="n">StringUtils</span><span class="p">.</span><span class="na">countMatches</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">something</span><span class="p">);</span>
+<span class="o">-</span> <span class="n">integer</span>
+	<span class="o">-</span> <span class="n">String</span> <span class="nf">toString</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="kt">int</span> <span class="n">base</span><span class="p">)</span>
+	<span class="o">-</span> <span class="kt">int</span> <span class="nf">parseInt</span><span class="p">(</span><span class="n">String</span> <span class="n">s</span><span class="p">,</span> <span class="kt">int</span> <span class="n">base</span><span class="p">)</span>
+<span class="o">-</span> <span class="n">array</span>
+	<span class="kt">char</span><span class="o">[]</span> <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="sc">&#39;a&#39;</span><span class="p">,</span> <span class="sc">&#39;b&#39;</span><span class="p">,</span> <span class="sc">&#39;c&#39;</span><span class="p">};</span>
+	<span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><em>sorting</em></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">Arrays</span><span class="p">.</span><span class="na">sort</span><span class="p">(</span><span class="n">Array</span> <span class="n">a</span><span class="p">)</span>
+<span class="o">-</span> <span class="n">Collections</span><span class="p">.</span><span class="na">sort</span><span class="p">(</span><span class="n">Collection</span> <span class="n">c</span><span class="p">),</span> <span class="n">Collections</span><span class="p">.</span><span class="na">sort</span><span class="p">(</span><span class="n">Collection</span> <span class="n">l</span><span class="p">,</span> <span class="n">Comparator</span> <span class="n">c</span><span class="p">)</span>
+	<span class="o">-</span> <span class="n">use</span> <span class="nf">mergeSort</span> <span class="p">(</span><span class="n">with</span> <span class="n">insertion</span> <span class="n">sort</span> <span class="k">if</span> <span class="n">very</span> <span class="n">small</span><span class="p">)</span>
+<span class="o">-</span> <span class="n">Collections</span><span class="p">.</span><span class="na">reverseOrder</span><span class="p">()</span> <span class="n">returns</span> <span class="n">comparator</span> <span class="n">opposite</span> <span class="n">of</span> <span class="k">default</span>
+<span class="kd">class</span> <span class="nc">ComparatorTest</span> <span class="kd">implements</span> <span class="n">Comparator</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span>
+	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">compare</span><span class="p">(</span><span class="n">String</span> <span class="n">one</span><span class="p">,</span> <span class="n">String</span> <span class="n">two</span><span class="p">)</span> <span class="c1">//if negative, one comes first</span>
+<span class="kd">class</span> <span class="nc">Test</span> <span class="kd">implements</span> <span class="n">Comparable</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span>
+	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">compareTo</span><span class="p">(</span><span class="n">Object</span> <span class="n">two</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>exceptions</em></p>
+<ul class="simple">
+<li><p>ArrayIndexOutOfBoundsException</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">throw</span> <span class="pre">new</span> <span class="pre">Exception(&quot;Chandan</span> <span class="pre">type&quot;)</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h3>2.3.3.3. higher level<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><em>primitives</em> - <code class="docutils literal notranslate"><span class="pre">byte,</span> <span class="pre">short,</span> <span class="pre">char,</span> <span class="pre">int,</span> <span class="pre">long,</span> <span class="pre">float,</span> <span class="pre">double</span></code></p></li>
+<li><p>java only has primitive and reference <em>types</em></p>
+<ul>
+<li><p>when you assign primitives to each other, it’s fine</p></li>
+<li><p>when you pass in a primitive, its value is copied</p></li>
+<li><p>when you pass in an object, its reference is copied</p>
+<ul>
+<li><p>you can modify the object through the reference, but can’t change the object’s address</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><em>garbage collection</em></p>
+<ul>
+<li><p>once an object no longer referenced, gc removes it and reclaims memory</p></li>
+<li><p>jvm intermittently runs a mark-and-sweep algorithm</p>
+<ul>
+<li><p>runs when short-term stuff gets full</p></li>
+<li><p>older stuff moves to different part</p></li>
+<li><p>eventually older stuff is cleared</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h3>2.3.3.4. object-oriented<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>declare</p></th>
+<th class="head"><p>instantiate</p></th>
+<th class="head"><p>initialize</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Robot k</p></td>
+<td><p>new</p></td>
+<td><p>Robot()</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p><em>class method</em> = <em>static</em></p>
+<ul>
+<li><p>called with Foo.DoIt()</p></li>
+<li><p>initialized before constructor</p></li>
+<li><p>class shares one copy, can’t refer to non-static</p></li>
+</ul>
+</li>
+<li><p><em>instance method</em> - invoked on specific instance of the class</p>
+<ul>
+<li><p>called with f.DoIt()</p></li>
+</ul>
+</li>
+<li><p><em>protected</em> member is accessible within its class and subclasses</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="r">
+<h2>2.3.4. R<a class="headerlink" href="#r" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">%%</span><span class="m">2</span> <span class="c1">## modulus</span>
+<span class="n">x</span> <span class="o">&lt;-</span> <span class="m">3</span> <span class="c1">## assignment</span>
+<span class="nf">class</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="n">checks</span> <span class="n">the</span> <span class="n">class</span> <span class="n">of</span> <span class="n">x</span>
+<span class="nf">rm</span><span class="p">(</span><span class="n">list</span><span class="o">=</span><span class="nf">ls</span><span class="p">())</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>vectors</em></p>
+<ul>
+<li><p>numeric_vector &lt;- c(1, 2, 3)</p></li>
+<li><p>poker_vector &lt;- c(140, -50, 20, -120, 240)</p></li>
+<li><p>names(poker_vector) &lt;- c(“Monday”, “Tuesday”, “Wednesday”, “Thursday”, “Friday”)</p>
+<ul>
+<li><p>assigns names to elements of poker vector</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><em>matrices</em></p>
+<ul>
+<li><p>matrix(1:9, byrow = TRUE, nrow = 3)</p></li>
+<li><p>can name the rows / cols</p></li>
+<li><p>1-indexed</p></li>
+<li><p>has slicing</p></li>
+<li><p>dim(m) prints dimensions</p></li>
+</ul>
+</li>
+<li><p><em>factor</em> - data type for storing categorical variable</p></li>
+<li><p><em>data frame</em> - when you want different types of data</p>
+<ul>
+<li><p>columns are variables, rows are observations</p></li>
+</ul>
+</li>
+<li><p><em>lists</em> - ordered, can hold any data type</p>
+<ul>
+<li><p>length(list)</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes/cs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="data_structures.html" title="previous page">2.2. data structures</a>
+    <a class='right-next' id="next-link" href="software.html" title="next page">2.4. software engineering</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Chandan Singh<br/>
+        
+            &copy; Copyright None.<br/>
+          <div class="extra_footer">
+            <p>
+Many of these images are taken from resources on the web.
+</p>
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
