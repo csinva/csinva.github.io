@@ -9,6 +9,7 @@ category: ml
 # useful packages
 
 - https://www.cellpose.org/ - cell segmentation
+- [Active shape model - Wikipedia](https://en.wikipedia.org/wiki/Active_shape_model)
 
 # what's in an image?
 

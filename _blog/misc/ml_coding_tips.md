@@ -107,6 +107,11 @@ displays
 - [dalex](https://github.com/pbiecek/DALEX) 
 - [microsoft-interpret](https://github.com/microsoft/interpret)
 
+### presenting
+
+- reveal-md
+- [manim](https://docs.manim.community/en/stable/installation/versions.html?highlight=OpenGL#which-version-to-use)
+
 ### vim shortcuts
 
 - remap esc -> jk

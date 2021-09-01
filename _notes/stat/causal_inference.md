@@ -459,6 +459,10 @@ M --> Y
   
   -   sometimes this is satisfied even when back-door criterion is not
 
+## proximal algorithms
+
+- [The Proximal ID Algorithm](https://arxiv.org/abs/2108.06818)
+
 ## synthetic data experiments
 
 - [Towards causal benchmarking of bias in face analysis algorithms](https://arxiv.org/abs/2007.06570) (balakrishnan et al. 2020) - use GANs to generate synthetic data where only attribute varies
@@ -467,6 +471,7 @@ M --> Y
     - learn autoencoders for different domains that all map to a shared latent space
     - this allows to translate between different domains, by using one encoder and then a different decoder
   - [Causal Imputation via Synthetic Interventions](https://arxiv.org/abs/2011.03127) (squires, ..., uhler 2020)
+  - [Matched sample selection with GANs for mitigating attribute confounding](https://arxiv.org/abs/2103.13455) (singh et al. 2021)
 
 # observational analysis
 
