@@ -273,7 +273,7 @@ For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
 - [How to represent part-whole hierarchies in a neural network](https://arxiv.org/abs/2102.12627) (hinton, 2021)
   - The idea is simply to use islands of identical vectors to represent the nodes in the parse tree (parse tree would be things like wheel-> cabin -> car)
   - each patch / pixel gets representations at different levels (e.g. texture, parrt of wheel, part of cabin, etc.)
-    - each repr. is a vector - vector fo high-level stuff (e.g. car) will agree for different pixels but low level (e.g. wheel) will differ
+    - each repr. is a vector - vector for high-level stuff (e.g. car) will agree for different pixels but low level (e.g. wheel) will differ
     - during training, each layer at each location gets information from nearby levels
       - hinton assumes weights are shared between locations (maybe don't need to be)
       - also attention mechanism across other locations in same layer
@@ -332,6 +332,9 @@ For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
     - evaluation
       - `verification ratio` - fraction of samples that satisfy the rule
     - see also [Lagrangian Duality for Constrained Deep Learning](https://arxiv.org/abs/2001.09394) (fioretto et al. 2020)
+- [RRL: A Scalable Classifier for Interpretable Rule-Based Representation Learning](https://openreview.net/forum?id=UwOMufsTqCy) (wang et al. 2020)
+  - Rule-based Representation Learner (RRL) - automatically learns interpretable non-fuzzy rules for data representation
+  - project RRL it to a continuous space and propose a novel training method, called Gradient Grafting, that can directly optimize the discrete model using gradient descent
 
 
 ## misc models
@@ -709,7 +712,10 @@ How interactions are defined and summarized is a very difficult thing to specify
         - influence = pred with a word - pred with a word masked
           - attention corresponds to this kind of influence
       - deceptive attention - we can successfully train a model to make similar predictions but have different attention
-    3. class-activation map - sum the activations across channels (weighted by their weight for a particular class)
+    3. class-activation map (CAM) ([zhou et al. 2016](https://openaccess.thecvf.com/content_cvpr_2016/html/Zhou_Learning_Deep_Features_CVPR_2016_paper.html))
+       1. sum the activations across channels (weighted by their weight for a particular class)
+       2. weirdness: drop negative activations (can be okay if using relu), normalize to 0-1 range
+          1. CALM ([kim et al. 2021](https://arxiv.org/pdf/2106.07861.pdf)) - fix issues with normalization before by introducing a latent variable on the activations
     4. [RISE](https://arxiv.org/pdf/1806.07421.pdf) (Petsiuk et al. 2018) - randomized input sampling
        1. randomly mask the images, get prediction
        2. saliency map = sum of masks weighted by the produced predictions

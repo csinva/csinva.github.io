@@ -190,7 +190,7 @@ category: research
 
 # dynamic routing between capsules
 
-- hinton 1981 - reference frames requires structured representations
+- hinton 1981 - reference frames require structured representations
   - mapping units vote for different orientations, sizes, positions based on basic units
   - mapping units **gate the activity** from other types of units - weight is dependent on if mapping is activated
   - top-down activations give info back to mapping units
@@ -198,7 +198,7 @@ category: research
   - reference frame is a key part of how we see - need to vote for transformations
 - olshausen, anderson, & van essen 1993 - dynamic routing circuits
   - ran simulations of such things (hinton said it was hard to get simulations to work)
-  - we learn things in object-based reference frames
+  - learn things in object-based reference frames
   - inputs -> outputs has weight matrix gated by control
 - zeiler & fergus 2013 - visualizing things at intermediate layers - deconv (by dynamic routing)
   - save indexes of max pooling (these would be the control neurons)
@@ -219,7 +219,7 @@ category: research
   - **capsule** - vector specifying the features of an object (e.g. position, size, orientation, hue texture) and its likelihood
     - ex. an "eye" capsule could specify the probability it exists, its position, and its size
     - magnitude (i.e. length) of vector represents probability it exists (e.g. there is an eye)
-    - direction of vector represents the instatntiation parameters (e.g. position, size)
+    - direction of vector represents the instantiation parameters (e.g. position, size)
   - hierarchy
     - capsules in later layers are functions of the capsules in lower layers, and since capsule has extra properties can ask questions like "are both eyes similarly sized?"
       - equivariance = we can ensure our net is invariant to viewpoints by checking for all similar rotations/transformations in the same amount/direction

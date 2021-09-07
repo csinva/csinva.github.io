@@ -799,15 +799,15 @@ category: neuro
 - Computational Theory of Mind
 - Classical associationism
 - Connectionism
-  -Situated cognition
-  -Memory-prediction framework
-  -Fractal Theory: https://www.youtube.com/watch?v=axaH4HFzA24
-  -Brain sheets are made of cortical columns (about .3mm diameter, 1000 neurons / column)
-  -Have ~6 layers
+- Situated cognition
+- Memory-prediction framework
+- Fractal Theory: https://www.youtube.com/watch?v=axaH4HFzA24
+- Brain sheets are made of cortical columns (about .3mm diameter, 1000 neurons / column)
+- Have ~6 layers
 
 ## brain as a computer
 -	Brain as a Computer – Analog VLSI and Neural Systems by Mead (VLSI – very large scale integration)
-  -Brain Computer Analogy
+-	Brain Computer Analogy
   -Process info
   -Signals represented by potential
   -Signals are amplified = gain
@@ -896,6 +896,4 @@ category: neuro
   - learn the distribution of pixels in 3x3 patches
   - then maximize this distribution - can yield textures
 - reducing the dimensionality of data with neural networks
-
-
 
