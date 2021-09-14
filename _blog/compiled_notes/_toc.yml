@@ -65,6 +65,7 @@
 - file: notes/ai/ai.md
   sections:
   - file: notes/ai/search.md
+  - file: notes/ai/decisions_rl.md
   - file: notes/ai/fairness_sts.md
   - file: notes/ai/cogsci.md
   - file: notes/ai/ai_futures.md
@@ -72,7 +73,6 @@
   - file: notes/ai/philosophy.md
   - file: notes/ai/psychology.md
   - file: notes/ai/knowledge_rep.md
-  - file: notes/ai/decisions.md
 - file: notes/neuro/neuro.md
   sections:
   - file: notes/neuro/disease.md

@@ -142,3 +142,7 @@ typora-copy-images-to: ../assets
 - [Wavelet families of increasing order in arbitrary dimensions](https://ieeexplore.ieee.org/abstract/document/826784)
 - [Parametrizing smooth compactly supported wavelets](https://www.ams.org/journals/tran/1993-338-02/S0002-9947-1993-1107031-8/)
   - just for daubuchet
+- [shearlets](https://en.wikipedia.org/wiki/Shearlet) - extension of wavelets for finding anisotropic features
+  - constructed by parabolic [scaling](https://en.wikipedia.org/wiki/Scaling_(geometry)), shearing, and [translation](https://en.wikipedia.org/wiki/Translation_(geometry)) applied to a few [generating functions](https://en.wikipedia.org/wiki/Generating_function)
+  - allows for things like stretching an ellipsoid in one direction rather than always having the same size
+- [curvelets](https://en.wikipedia.org/wiki/Curvelet) - degree of localisation in orientation varies with scale. In particular, fine-scale basis functions are long ridges

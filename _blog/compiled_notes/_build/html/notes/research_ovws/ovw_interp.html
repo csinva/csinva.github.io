@@ -414,43 +414,43 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../ai/decisions_rl.html">
+     6.2. decisions, rl
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../ai/fairness_sts.html">
-     6.2. fairness, sts
+     6.3. fairness, sts
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/cogsci.html">
-     6.3. cogsci
+     6.4. cogsci
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/ai_futures.html">
-     6.4. ai futures
+     6.5. ai futures
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/logic.html">
-     6.5. logic
+     6.6. logic
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/philosophy.html">
-     6.6. philosophy
+     6.7. philosophy
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/psychology.html">
-     6.7. psychology
+     6.8. psychology
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/knowledge_rep.html">
-     6.8. representations
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ai/decisions.html">
-     6.9. decisions
+     6.9. representations
     </a>
    </li>
   </ul>
@@ -1284,7 +1284,7 @@
 <li><p>The idea is simply to use islands of identical vectors to represent the nodes in the parse tree (parse tree would be things like wheel-&gt; cabin -&gt; car)</p></li>
 <li><p>each patch / pixel gets representations at different levels (e.g. texture, parrt of wheel, part of cabin, etc.)</p>
 <ul>
-<li><p>each repr. is a vector - vector fo high-level stuff (e.g. car) will agree for different pixels but low level (e.g. wheel) will differ</p></li>
+<li><p>each repr. is a vector - vector for high-level stuff (e.g. car) will agree for different pixels but low level (e.g. wheel) will differ</p></li>
 <li><p>during training, each layer at each location gets information from nearby levels</p>
 <ul>
 <li><p>hinton assumes weights are shared between locations (maybe don’t need to be)</p></li>
@@ -1394,6 +1394,18 @@
 <li><p>see also <a class="reference external" href="https://arxiv.org/abs/2001.09394">Lagrangian Duality for Constrained Deep Learning</a> (fioretto et al. 2020)</p></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://openreview.net/forum?id=UwOMufsTqCy">RRL: A Scalable Classifier for Interpretable Rule-Based Representation Learning</a> (wang et al. 2020)</p>
+<ul>
+<li><p>Rule-based Representation Learner (RRL) - automatically learns interpretable non-fuzzy rules for data representation</p></li>
+<li><p>project RRL it to a continuous space and propose a novel training method, called Gradient Grafting, that can directly optimize the discrete model using gradient descent</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="http://eda.mmci.uni-saarland.de/pubs/2021/binaps-fischer,vreeken.pdf">Differentiable Pattern Set Mining</a> (fischer &amp; vreeken, 2021)</p>
+<ul>
+<li><p>use neural autoencoder with binary activations + binarizing weights</p></li>
+<li><p>optimizing a data-sparsity aware reconstruction loss, continuous versions of the weights are learned in small, noisy steps</p></li>
 </ul>
 </li>
 </ul>
@@ -2084,7 +2096,16 @@ a concept’s examples and examples in any layer</p></li>
 </pre></div>
 </div>
 <ol class="simple">
-<li><p>class-activation map - sum the activations across channels (weighted by their weight for a particular class)</p></li>
+<li><p>class-activation map (CAM) (<a class="reference external" href="https://openaccess.thecvf.com/content_cvpr_2016/html/Zhou_Learning_Deep_Features_CVPR_2016_paper.html">zhou et al. 2016</a>)</p>
+<ol class="simple">
+<li><p>sum the activations across channels (weighted by their weight for a particular class)</p></li>
+<li><p>weirdness: drop negative activations (can be okay if using relu), normalize to 0-1 range</p>
+<ol class="simple">
+<li><p>CALM (<a class="reference external" href="https://arxiv.org/pdf/2106.07861.pdf">kim et al. 2021</a>) - fix issues with normalization before by introducing a latent variable on the activations</p></li>
+</ol>
+</li>
+</ol>
+</li>
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1806.07421.pdf">RISE</a> (Petsiuk et al. 2018) - randomized input sampling</p>
 <ol class="simple">
 <li><p>randomly mask the images, get prediction</p></li>

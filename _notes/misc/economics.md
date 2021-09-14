@@ -199,3 +199,54 @@
   - **venture capital** is a type of private equity
   - leveraged buyouts - most popular  - buy company to improve it then resell it (to individual or in IPO)
   - distressed funding - money given to struggling company to turn it around
+
+# bullshit jobs (by david graeber)
+
+- "In the year 1930, John Maynard Keynes predicted that, by century's end, technology would have adavanced sufficiently that counties like the US would have achieved a fifteen-hour work week"
+- "layoffs and speed-ups invariably fall on that class of people who are actually making, moving, fixing, and maintaining things"
+- "If 1 percent of the population controls most of the displosable wealth, what we call "the market" reflects what they think is useful or important"
+- defining bullshit jobs
+  - "what would happen were this entire class of people to simply disappear?"
+  - survey question: "does your job 'make a meaningful contribution to the world'? Astonishingly, more than a third--37 percent--said they believed that it did not"
+  - "a bullshit job is a form of paid employment that is so completely pointless, unnecessary, or pernicious that even the employee cannot justify its existence even though, as part of the conditions of employment, the employee feels obliged to pretend that this is not the case"
+- bullshit jobs categorization
+  - flunkies - exist only or primarily to make someone else look or feel important
+    - e.g. unneeded doorman, receptionist, administrative assistants
+    - higher-ups' importance will almost invariably be measured by total num employees working upder them
+  - goons - people whose jobs have an aggressive element but exist only bc other people employ them
+    - if no one had an army, armies would not be needed: same for lobbyists, PR specialists, telemarketers, corporate lawyers
+  - duct tapers - jobs exist only bc of a fault in the organization - solve a problem which shouldn't exist
+    - ex. software dev for internal unused software
+  - box tickers - allow an organization to claim it is doing something it is not
+    - ex. fact-finding commision, gov. bureaucracy, making nice-looking reports
+  - taskmasters
+    - type 1 - assign work to others
+    - type 2 - create fake tasks for others to do
+    - managerialist ideologies in complex organizations require staff to keep the managerialist plates spinning
+- misc
+  - one ex. "this is all just greed propped up by inflated prices of necessities"
+  - "most people who do a great deal of harm in the world are protected against the knowledge that they do so"
+  - at least in the traditional workplace, there was someone against whom you could direct your rage
+  - like Olympic endurance boredom for its own sake
+- psychology
+  - when in a bullshit job, hard not to feel you're being pressured/manipulated, with the added indignity that you're also betraying the trust of someone whose side you should be on
+    - people who win lotteries rarely quit their jobs, and if they do regret it
+    - in priosns where inmates are not required to work, denying them work is often used as punishment
+  - childeren learn largely by understanding they can cause things to happen
+    - when causality is taken away in simple experiments, children become very upset
+    - schiller argued that the desire to create art is simply a manifestation of the urge to play as the exercise of freedom for its own sake as well
+  - **scriptlessness** - like guilt - people who had unrequited love during adolescence usually got overt it, but people who were the object of unrequited love often didn't
+- moral logic
+  - idleness is not dangerous - idleness is theft
+  - **in places without clocks, time is measured by actions rather than action being measured by time**
+  - The Nuer have no expression equivalent to "time" in our language, and they cannot speak of time as though it were something actual
+  - the discipline of economics itself emerged out of moral philosophy (Adam Smith was a professor of moral philisophy) + moral philosophy came from theology
+- politics
+  - "The main political reaction to our awareness that half the time we are engaged in utterly meaningless or even counterproductive activities--usually under the orders of a person we dislike--is to rankle with resentment over the fact there might be others out there who are not in the same trap"
+    - "as a result, hatred resentment, and suspicion have become the glue that holds society together"
+  - **rights-scolding**
+    - right-wing: criticize others for thinking the world owes them a living, medical treatment, maternity leave
+    - left-wing: check your privilege
+  - frightening monsters in popular do not simply threaten to hurt you but to turn you into a monster yourself (e.g. vampire, zombie)
+  - the joke under the soviet union was "we pretend to work; they pretend to pay us"
+  - "Puratinanism: the haunting fear that someone, somewhere, may be happy. -- H.L. Menchken"

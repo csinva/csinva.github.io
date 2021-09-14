@@ -414,43 +414,43 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../ai/decisions_rl.html">
+     6.2. decisions, rl
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../ai/fairness_sts.html">
-     6.2. fairness, sts
+     6.3. fairness, sts
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/cogsci.html">
-     6.3. cogsci
+     6.4. cogsci
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/ai_futures.html">
-     6.4. ai futures
+     6.5. ai futures
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/logic.html">
-     6.5. logic
+     6.6. logic
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/philosophy.html">
-     6.6. philosophy
+     6.7. philosophy
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/psychology.html">
-     6.7. psychology
+     6.8. psychology
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/knowledge_rep.html">
-     6.8. representations
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ai/decisions.html">
-     6.9. decisions
+     6.9. representations
     </a>
    </li>
   </ul>
@@ -787,6 +787,11 @@
      5.3.6.5. single-view 3d construction
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#unsupervised-keypoint-learning">
+     5.3.6.6. unsupervised keypoint learning
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -806,6 +811,36 @@
 <h2>5.3.1. useful packages<a class="headerlink" href="#useful-packages" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>https://www.cellpose.org/ - cell segmentation</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Active_shape_model">Active shape model - Wikipedia</a></p>
+<ul>
+<li><p>intro (<a class="reference external" href="https://people.cs.clemson.edu/~ekp/courses/cpsc9500/assets/IntroASM.pdf">cootes 2000</a>)</p></li>
+<li><p>Model-based methods make use of a prior model of what is expected in the image, and typically attempt to find the best match of the model to the data in a new image</p></li>
+<li><p>model</p>
+<ul>
+<li><p>requires user-specified landmarks <span class="math notranslate nohighlight">\(x\)</span> (e.g. points for eyes/nose on a face)</p></li>
+<li><p>simplest model -  use a typical example as a prototype + compare others using correlation</p></li>
+<li><p>invariances: given a set of image coordinates, for all rotations / scales / translations - try them all so that the sum of distances of <strong>each shape to the mean</strong> is minimized (called Procrustes analysis)</p></li>
+<li><p>shape model learns low-dim model of <span class="math notranslate nohighlight">\(x\)</span>, maybe using <span class="math notranslate nohighlight">\(k\)</span> top bases of PCA</p></li>
+</ul>
+</li>
+<li><p>inference</p>
+<ul>
+<li><p>nearest neighbor: iteratively find transformation + shape model parameters to represent landmarks</p></li>
+<li><p>classification: non-trivial to define a goodness of fit measure for the landmarks - something like distance between points and strongest nearby edges</p></li>
+<li><p>active shape model - for each landmark, look for nearby groundtruth, adapt PCA values, apply reasonable constraints, then iterate</p>
+<ul>
+<li><p>improve speed by doing this at large scales before going to more detailed scales</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://idp.springer.com/authorize/casa?redirect_uri=https://link.springer.com/content/pdf/10.1007/BF00133570.pdf&amp;casa_token=fbscwBB1K_cAAAAA:Qw7Ch9Aa1yKyRFheBNT81ZANMWpjSDwrG1P-_sgL8KkoKAlfgifi36SGO-iFLvb7l5B2HqF4m7b7UZIdXg">snakes - active contour models</a> (kass et al. 1988)</p>
+<ul>
+<li><p>deformable spline - pulled towards object contours while internal forces resist deformation</p></li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="section" id="what-s-in-an-image">
@@ -2103,6 +2138,24 @@
 <li><p>collect data + labels (ex. sensors)</p></li>
 <li><p>train + predict</p></li>
 <li><p>supervision from annotation can be wrong</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="unsupervised-keypoint-learning">
+<h3>5.3.6.6. unsupervised keypoint learning<a class="headerlink" href="#unsupervised-keypoint-learning" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://arxiv.org/abs/2106.07643">Unsupervised Learning of Visual 3D Keypoints for Control</a> (chen, abbeel, &amp; pathak, 2021) - learn keypoints unsupervised from video</p></li>
+<li><p><a class="reference external" href="https://tomasjakab.github.io/KeypointDeformer/">KeypointDeformer: Unsupervised 3D Keypoint Discovery for Shape Control</a> (jakab…kanazawa, 2021) - learn to predict keypoints completely unsupervised</p>
+<ul>
+<li><p>can also manipulate keypoints and generate new shape</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://openaccess.thecvf.com/content_cvpr_2018/html/Zuffi_Lions_and_Tigers_CVPR_2018_paper.html">Lions and Tigers and Bears: Capturing Non-Rigid, 3D, Articulated Shape From Images</a> (zuffi, kanazawa, &amp; black, 2018) - capture 3d shape of animals using 2d images alone</p></li>
+<li><p><a class="reference external" href="https://openaccess.thecvf.com/content_CVPR_2020/html/Jakab_Self-Supervised_Learning_of_Interpretable_Keypoints_From_Unlabelled_Videos_CVPR_2020_paper.html">Self-Supervised Learning of Interpretable Keypoints From Unlabelled Videos</a> (jakab et al. 2020 cvpr) - recognize pose uses unlabelled videos + weak empirical prior on the object poses</p></li>
+<li><p><a class="reference external" href="https://openreview.net/forum?id=GJwMHetHc73">Unsupervised Object Keypoint Learning using Local Spatial Predictability</a> (gopalakrishnan…schmidhuber, 2021) - identifies salient regions by trying to predict local image regions from spatial neighborhoods</p>
+<ul>
+<li><p>applications to Atari</p></li>
 </ul>
 </li>
 </ul>

@@ -38,8 +38,10 @@ category: research
 ## scat_conv
 
 - [Deep roto-translation scattering for object classification](https://arxiv.org/abs/1412.8659) (oyallan & mallat 2014)
+    - use 1x1 conv on top of scattering coefs (only 1 layer)
     - can capture rounded figures
     - can further impose robustness to rotation variability (although not full rotation invariance)
+    - [Deep learning in the wavelet domain](https://arxiv.org/pdf/1811.06115.pdf) (cotter & kingbury, 2017)- each conv layer is replaced by scattering transform + 1x1 conv
 - [Visualizing and improving scattering networks](https://arxiv.org/pdf/1709.01355.pdf) (cotter et al. 2017)
   - add deconvnet to visualize
 - [Scattering Networks for Hybrid Representation Learning](https://hal.inria.fr/hal-01837587/document) (oyallon et al. 2018)
@@ -50,6 +52,7 @@ category: research
 - jacobsen_17 "Hierarchical Attribute CNNs"
     - modularity
 - cheng_16 "Deep Haar scattering networks"
+- [Deep Network Classification by Scattering and Homotopy Dictionary Learning](https://arxiv.org/abs/1910.03561) (zarka et al. 2019) - scat followed by sparse coding then linear
 
 ## neuro style
 
@@ -63,7 +66,6 @@ category: research
   - look at interpretability
 - bietti_17 "[Invariance and stability of deep convolutional representations](http://papers.nips.cc/paper/7201-invariance-and-stability-of-deep-convolutional-representations)"
   - theory paper
-- cotter_18 "[Deep learning in the wavelet domain](https://arxiv.org/pdf/1811.06115.pdf)"
 
 ## wavelet style transfer
 

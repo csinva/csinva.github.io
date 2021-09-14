@@ -414,43 +414,43 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../ai/decisions_rl.html">
+     6.2. decisions, rl
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../ai/fairness_sts.html">
-     6.2. fairness, sts
+     6.3. fairness, sts
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/cogsci.html">
-     6.3. cogsci
+     6.4. cogsci
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/ai_futures.html">
-     6.4. ai futures
+     6.5. ai futures
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/logic.html">
-     6.5. logic
+     6.6. logic
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/philosophy.html">
-     6.6. philosophy
+     6.7. philosophy
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/psychology.html">
-     6.7. psychology
+     6.8. psychology
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/knowledge_rep.html">
-     6.8. representations
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ai/decisions.html">
-     6.9. decisions
+     6.9. representations
     </a>
    </li>
   </ul>
@@ -725,8 +725,10 @@
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/1412.8659">Deep roto-translation scattering for object classification</a> (oyallan &amp; mallat 2014)</p>
 <ul>
+<li><p>use 1x1 conv on top of scattering coefs (only 1 layer)</p></li>
 <li><p>can capture rounded figures</p></li>
 <li><p>can further impose robustness to rotation variability (although not full rotation invariance)</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/1811.06115.pdf">Deep learning in the wavelet domain</a> (cotter &amp; kingbury, 2017)- each conv layer is replaced by scattering transform + 1x1 conv</p></li>
 </ul>
 </li>
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1709.01355.pdf">Visualizing and improving scattering networks</a> (cotter et al. 2017)</p>
@@ -751,6 +753,7 @@
 </ul>
 </li>
 <li><p>cheng_16 “Deep Haar scattering networks”</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1910.03561">Deep Network Classification by Scattering and Homotopy Dictionary Learning</a> (zarka et al. 2019) - scat followed by sparse coding then linear</p></li>
 </ul>
 </div>
 <div class="section" id="neuro-style">
@@ -777,7 +780,6 @@
 <li><p>theory paper</p></li>
 </ul>
 </li>
-<li><p>cotter_18 “<a class="reference external" href="https://arxiv.org/pdf/1811.06115.pdf">Deep learning in the wavelet domain</a>”</p></li>
 </ul>
 </div>
 <div class="section" id="wavelet-style-transfer">

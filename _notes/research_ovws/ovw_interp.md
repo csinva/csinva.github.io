@@ -335,7 +335,9 @@ For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
 - [RRL: A Scalable Classifier for Interpretable Rule-Based Representation Learning](https://openreview.net/forum?id=UwOMufsTqCy) (wang et al. 2020)
   - Rule-based Representation Learner (RRL) - automatically learns interpretable non-fuzzy rules for data representation
   - project RRL it to a continuous space and propose a novel training method, called Gradient Grafting, that can directly optimize the discrete model using gradient descent
-
+- [Differentiable Pattern Set Mining](http://eda.mmci.uni-saarland.de/pubs/2021/binaps-fischer,vreeken.pdf) (fischer & vreeken, 2021)
+  - use neural autoencoder with binary activations + binarizing weights
+  - optimizing a data-sparsity aware reconstruction loss, continuous versions of the weights are learned in small, noisy steps
 
 ## misc models
 

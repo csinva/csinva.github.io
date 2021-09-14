@@ -414,43 +414,43 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../ai/decisions_rl.html">
+     6.2. decisions, rl
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../ai/fairness_sts.html">
-     6.2. fairness, sts
+     6.3. fairness, sts
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/cogsci.html">
-     6.3. cogsci
+     6.4. cogsci
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/ai_futures.html">
-     6.4. ai futures
+     6.5. ai futures
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/logic.html">
-     6.5. logic
+     6.6. logic
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/philosophy.html">
-     6.6. philosophy
+     6.7. philosophy
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/psychology.html">
-     6.7. psychology
+     6.8. psychology
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/knowledge_rep.html">
-     6.8. representations
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ai/decisions.html">
-     6.9. decisions
+     6.9. representations
     </a>
    </li>
   </ul>
@@ -604,6 +604,57 @@
    7.1.3. parkinson’s
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pathology">
+   7.1.4. pathology
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#basics">
+     7.1.4.1. basics
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#papers">
+     7.1.4.2. papers
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#datasets">
+     7.1.4.3. datasets
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cancer">
+   7.1.5. cancer
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#overview">
+     7.1.5.1. overview
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#treatments">
+       7.1.5.1.1. treatments
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#prostate-cancer">
+     7.1.5.2. prostate cancer
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bladder-cancer">
+     7.1.5.3. bladder cancer
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
         </nav>
@@ -733,6 +784,478 @@
 <li><p><em>PTP/ pesticides</em> can induce Parkinson’s in test animals</p></li>
 <li><p>1/500 people</p></li>
 </ul>
+</div>
+<div class="section" id="pathology">
+<h2>7.1.4. pathology<a class="headerlink" href="#pathology" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="basics">
+<h3>7.1.4.1. basics<a class="headerlink" href="#basics" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>pathologists</strong> work with tissue samples either visually or chemically</p>
+<ul>
+<li><p><em>anatomic</em> pathology relies on the microscope whereas <em>clinical</em> pathology does not</p></li>
+</ul>
+</li>
+<li><p>pathologists convert from tissue image into written report</p></li>
+<li><p>when case is challenging, may require a second opinion (v rare)</p></li>
+<li><p>steps (process takes 9-12 hrs): <img alt="tissue_prep" src="../../_images/tissue_prep.png" /></p>
+<ul>
+<li><p>tissue is surgically removed</p>
+<ul>
+<li><p>more tissue collected is generally better (gives more context)</p></li>
+<li><p>this procedure is called a <em>biopsy</em></p></li>
+<li><p>much is written down at this step (e.g. race, gender, locations in organ, different tumors in an organ) that can’t be seen in slide alone</p></li>
+</ul>
+</li>
+<li><p>fixation: keeps the tissue stable (preserves dna also) - basicallly just soak in formalin</p></li>
+<li><p>dissection: remove the relevant part of the tissue</p></li>
+<li><p>tissue processor - removes water in tissue and substitute with wax (parafin) - hardens it and makes it easy to cut into thin strips</p></li>
+<li><p>microtone - cuts very thin slices of the tissue (2-3 microns)</p></li>
+<li><p>staining</p>
+<ul>
+<li><p><strong>H &amp; E</strong> - hematoxylin and eosin stain - most popular (~80%) - colors the cells in a specific way, bc cells are usually pretty transparent</p>
+<ul>
+<li><p>hematoxylin stains nucleic acids blue</p></li>
+<li><p>eosin stains proteins / cytoplasm pink/red</p></li>
+</ul>
+</li>
+<li><p><strong>immunohistochemistry (IHC)</strong> - tries to identify cell lineage: 10-15%</p>
+<ul>
+<li><p>identifies targets</p></li>
+<li><p>use antibodies tagged with chromophores to tag tissues</p></li>
+</ul>
+</li>
+<li><p>gram stain - highlights bacteria</p></li>
+<li><p>giemsa - microorganisms</p></li>
+<li><p>others…for muscle, fungi</p></li>
+</ul>
+</li>
+<li><p>viewing</p>
+<ul>
+<li><p>usually analog - put slide on something that can move / rotate</p></li>
+<li><p>whole-slide image (WSI) - resulting entire slide</p>
+<ul>
+<li><p>tissue microarray (TMA) - smaller, fits many samples onto the same slide</p></li>
+</ul>
+</li>
+<li><p>with paige: put slide through digital scanner (only 5% or so of slides are currently digital)</p></li>
+</ul>
+</li>
+<li><p>later on, board meets to decide on treatment (based on pathology report)</p>
+<ul>
+<li><p>usually some discussion betweeon original imaging (pre-biopsy) and pathologist’s interpretation</p></li>
+</ul>
+</li>
+<li><p>resection - after initial diagnosis, often entire tumor is removed (<strong>resection</strong>)</p></li>
+</ul>
+</li>
+<li><p>how can ai help?</p>
+<ul>
+<li><p>can help identify small things in large images</p></li>
+<li><p>can help with conflict resolution</p></li>
+</ul>
+</li>
+<li><p>after (successful) neoadjuvant chemotherapy, problem becomes more difficult</p>
+<ul>
+<li><p>very few remaining cancer cells</p></li>
+<li><p>cancer/non-cancer cells become harder to distinguish (esp. for prostate)</p></li>
+<li><p>tumor bed is patchily filled with cancer cells - need to better clarify presence of cancer</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="papers">
+<h3>7.1.4.2. papers<a class="headerlink" href="#papers" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://arxiv.org/abs/1910.12329">Deep Learning Models for Digital Pathology</a> (BenTaieb &amp; Hamarneh, 2019)</p>
+<ul>
+<li><p>note: alternative to histopathology are more expensive / slower (e.g. molecular profiling)</p></li>
+<li><p>to promote consistency and objective inter-observer agreement, most pathologists are trained to follow simple algorithmic decision rules that sufficiently stratify patients into reproducible groups based on tumor type and aggressiveness</p></li>
+<li><p>magnification usually given in microns per pixel</p></li>
+<li><p>WSI files are much larger than other digital images (e.g. for radiology)</p></li>
+<li><p>DNNs can be used for many tasks: beyond just classification, there are subtasks (e.g. count histological primitives, like nuclei) and preprocessing tasks (e.g. stain normalization)</p></li>
+<li><p>challenge: multi-magnification + <strong>high dimensions</strong> (i.e. millions of pixels)</p>
+<ul>
+<li><p>people usually extract smaller patches and train on these</p>
+<ul>
+<li><p>this loses larger context</p></li>
+<li><p>one soln: pyramid representation: extract patches at different magnification levels</p></li>
+<li><p>one soln: stacked CNN - train fully-conv net, then remove linear layer, freeze, and train another fully-conv net on the activations (so it now has larger receptive field)</p></li>
+<li><p>one soln: use 2D LSTM to aggregate patch reprs.</p></li>
+</ul>
+</li>
+<li><p>challenge: annotations only at the entire-slide level, but must figure out how to train individual patches</p>
+<ul>
+<li><p>e.g. use aggregation techniques on patches - extract patch-wise features then do smth simple, like random forest</p></li>
+<li><p>e.g. treat as weak labels or do multiple-instance learning</p>
+<ul>
+<li><p>could just give slide-level label to all patches then vote</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>can use transfer learning from related domains with more labels</p></li>
+</ul>
+</li>
+<li><p>challenge: class imbalance</p>
+<ul>
+<li><p>can use boosting approach to increase the likelihood of sampling patches that were originally incorrectly classified by the model</p></li>
+</ul>
+</li>
+<li><p>challenge: need to integrate in other info, such as genomics</p></li>
+<li><p>when predicting histological primitives, often predict pixel-wise probability maps, then look for local maxima</p>
+<ul>
+<li><p>can also integrated domain-knowledge features</p></li>
+<li><p>can also have 2 paths, one making bounding-box proposals and another predicting the probability of a class</p></li>
+<li><p>alternatively, can formulate as a regression task, where pixelwise prediction tells distance to nearest centroid of object</p></li>
+<li><p>could also just directly predict the count</p></li>
+</ul>
+</li>
+<li><p>can also predict survival analysis</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://www.nature.com/articles/s41591-019-0508-1">Clinical-grade computational pathology using weakly supervised deep learning on whole slide images</a> (campanella et al. 2019)</p>
+<ul>
+<li><p>use slide-level diagnosis as “weak supervision” for all contained patches</p></li>
+<li><p>1st step: train patch-level CNNs using MIL</p>
+<ul>
+<li><p>if label is 0, then all patches should be 0</p></li>
+<li><p>if label is 1, then only pass gradients to the top-k predicted patches</p></li>
+</ul>
+</li>
+<li><p>2nd step: use RNN (or another net) to combine info across <em>S</em> most suspicious tiles</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://www.nature.com/articles/s41467-021-21896-9">Human-interpretable image features derived from densely mapped cancer pathology slides predict diverse molecular phenotypes</a> (diao et al. 21)</p></li>
+<li><p><a class="reference external" href="https://www.thelancet.com/journals/landig/article/PIIS2589-7500(20)30159-X/fulltext">An artificial intelligence algorithm for prostate cancer diagnosis in whole slide images of core needle biopsies: a blinded clinical validation and deployment study</a> (pantanowitz et al. 2020 - ibex)</p>
+<ul>
+<li><p>549 train, 2501 internal test slides, 1627 external validation</p></li>
+<li><p>predict cancer prob., gleason score 7-10, gleason pattern 5, perneural invasion, cancer percentage</p></li>
+<li><p>algorithm</p>
+<ul>
+<li><p>GB classifies background / non-background / blurry using hand-extracted features for each tile</p></li>
+<li><p>each tile gets predicted probability for 18 pre-defined classes (e.g. GP 3)</p>
+<ul>
+<li><p>ensemble of 3 CNNs that operate at different magnifications</p></li>
+</ul>
+</li>
+<li><p>aggregation: 18-probability heatmaps are combined to calculate slide-level scores</p>
+<ul>
+<li><p>ex (for predicting cancer): sum the cancer-related channels in the heatmap , apply 2x2 local averaging, then take max</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="datasets">
+<h3>7.1.4.3. datasets<a class="headerlink" href="#datasets" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://warwick.ac.uk/fac/cross_fac/tia/data/arch">ARCH</a> - multiple instance captioning dataset to facilitate dense supervision of CP tasks</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="cancer">
+<h2>7.1.5. cancer<a class="headerlink" href="#cancer" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="overview">
+<h3>7.1.5.1. overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>tumor</strong> = neoplasm - a mass formation from an uncontrolled growth of cells</p>
+<ul>
+<li><p>benign tumor - typically stays confined to the organ where it is present and does not cause functional damage</p></li>
+<li><p>malignant tumor = cancer - comprises organ function and can spread to other organs (<strong>metastasis</strong>)</p></li>
+</ul>
+</li>
+<li><p>relation network based aggregator on patches</p></li>
+<li><p>lymphatic system drains fluids (non-blood) from organs into <em>lymph nodes</em></p>
+<ul>
+<li><p>cancer often mestastasize through these</p></li>
+</ul>
+</li>
+<li><p><strong>staging</strong> - describes where cancer is located and where it has spread</p>
+<ul>
+<li><p><strong>clinical staging</strong> - based on non-tissue things</p></li>
+<li><p><strong>pathological staging</strong> - elements of staging pTNM</p>
+<ul>
+<li><p>size / depth of <em>tumor</em> “T”</p></li>
+<li><p>number of lymph <em>nodes</em> / how many had cancer “N”</p></li>
+<li><p>number of <em>metastatic</em> foci in non-lymph node organ “M”</p></li>
+<li><p>these are combined to determine the cancer stage (0-4)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>prognosis</strong> - chance of recovery</p></li>
+</ul>
+<div class="section" id="treatments">
+<h4>7.1.5.1.1. treatments<a class="headerlink" href="#treatments" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>chemo</p>
+<ul>
+<li><p>traditional chemotherapy disrupts cell replication</p>
+<ul>
+<li><p>hair loss and gastrointestinal symptoms occur bc these cells also rapidly replicate</p></li>
+</ul>
+</li>
+<li><p><em>adjuvant</em> chemotherapy - after cancer is removed, most common</p></li>
+<li><p><em>neoadjuvant</em> chemo - after biopsy, but before resection (when very hard to remove)</p></li>
+</ul>
+</li>
+<li><p>targeted therapies</p>
+<ul>
+<li><p>ex. address genetic aberration found in cancer cells</p></li>
+<li><p>immunotherapy - enhance body’s immune response to cancer cells (so body will attack these cells on its own)</p>
+<ul>
+<li><p>want the antigens on the tumor to be as different as possible (so they will be characterized as foreign)</p></li>
+<li><p>to measure this, can conduct total mutational burden (TMB) or miscrosatellite instability (MSI) test</p>
+<ul>
+<li><p>genetic tests - hard to do by looking at glass slide</p></li>
+</ul>
+</li>
+<li><p>some tumors express receptors (e.g. CTLA4, PD1) that shut off immune cells - some drugs try to block these receptors</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="prostate-cancer">
+<h3>7.1.5.2. prostate cancer<a class="headerlink" href="#prostate-cancer" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>tests</p>
+<ul>
+<li><p>feel with finger</p></li>
+<li><p>antigen test - blood test</p></li>
+<li><p>ultrasound - probe inserted</p></li>
+<li><p>biopsy - needle inserted to take out tissue</p></li>
+</ul>
+</li>
+<li><p>grading</p>
+<ul>
+<li><p>stages (they have subdivisions, e.g. IIA, IIB, IIC)</p>
+<ul>
+<li><p>I - early, slow-growing</p></li>
+<li><p>II - small, but risky</p></li>
+<li><p>III - likely to spread</p></li>
+<li><p>IV - has spread beyond the prostate</p></li>
+<li><p>recurrent - has come back after treatment</p></li>
+</ul>
+</li>
+<li><p>in addition to stages 0-4, prostate cancer is also given <strong>Gleason score</strong></p>
+<ul>
+<li><p>look at 2 biggest cancer regions and identifies them as a <strong>Gleason pattern</strong> from 3 (best) to 5 (worst)</p></li>
+<li><p>this results in a sum (e.g. 5+4, 3+4) - note 3+4 is not same as 4+3</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>treatments</p>
+<ul>
+<li><p>prostatectomy - remove the prostate</p></li>
+<li><p>radiation therapy - kills specifically cancer cells</p></li>
+<li><p>radiative seed implants - implated into prostate to kill cancer cells</p></li>
+<li><p>cryotherapy - kill prostate cancer cells by freezing them</p></li>
+<li><p>hormone therapy - block hormone which grows prostate cancer cells</p></li>
+<li><p>chemotherapy</p></li>
+</ul>
+</li>
+<li><p>human benchmarks</p>
+<ul>
+<li><p><a class="reference external" href="https://www.clinicaloncologyonline.net/article/S0936-6555(97)80005-2/pdf">Interobserver Variation in Prostate Cancer Gleason Scoring: Are There Implications for the Design of Clinical Trials and Treatment Strategies?</a></p>
+<ul>
+<li><p>71 patients, 213 scored observations, 3 pathologists</p></li>
+<li><p>weighted pairwise kappas: 0.16, 0.29, 0.23</p></li>
+<li><p>(unweighted): 0.15, 0.29, 0.24</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://www.sciencedirect.com/science/article/abs/pii/S0046817701974568">Interobserver reproducibility of Gleason grading of prostatic carcinoma: General pathologists</a></p>
+<ul>
+<li><p>38 biopsies, 41 pathologists</p></li>
+<li><p>consensus grade groups: [2-4, 5-6, 7, 8-10]</p></li>
+<li><p>overall kappa: 0.435</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/27416104/">Interobserver variability in Gleason histological grading of prostate cancer</a></p>
+<ul>
+<li><p>407 slides, 2 pathologists</p></li>
+<li><p>primary gleason: k=0.34</p></li>
+<li><p>secondary gleason: k=0.37</p></li>
+<li><p>sum: k=0.43</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ai papers</p>
+<ul>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2103.03129">Learning Whole-Slide Segmentation from Inexact and Incomplete Labels using Tissue Graphs</a> (anklin et al. 2021)</p>
+<ul>
+<li><p>SegGini, a weakly supervised segmentation method using graphs</p>
+<ul>
+<li><p>constructs a tissue-graph for WSI (node is tissue region)</p></li>
+<li><p>weakly-supervised segmentation via node classification</p></li>
+</ul>
+</li>
+<li><p>data</p>
+<ul>
+<li><p><a class="reference external" href="https://www.nature.com/articles/sdata201714">UZH dataset</a> - 5 five TMAs with 886 spots (each 3100×3100 pixels) with complete pixel-level annotations and inexact image-level gradess</p></li>
+<li><p><a class="reference external" href="https://www.sciencedirect.com/science/article/abs/pii/S016926072031470X">SICAPv2 dataset</a> - 155 WSIs and 18,783 tiles of size 512×512 with complete pixel annotations</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="bladder-cancer">
+<h3>7.1.5.3. bladder cancer<a class="headerlink" href="#bladder-cancer" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>tests</p>
+<ul>
+<li><p>urinalysis - look for things like blood in urine</p></li>
+<li><p>urine cytology - use microscope to look for cancer cells in urine</p></li>
+<li><p>urine tests for specific tumor parkers</p></li>
+<li><p>cystoscopy - invasive lens takes image of bladder</p></li>
+<li><p>tests lead to a biopsy</p></li>
+</ul>
+</li>
+<li><p>grading</p>
+<ul>
+<li><p>invasiveness: can be non-invasive, invasive (grows into deeper layers of bladder)</p>
+<ul>
+<li><p>superficial = non-muscle invasive - hasn’t grown into main muscle layer of bladder</p></li>
+</ul>
+</li>
+<li><p>grade: again asigned stages 0 - IV based on TNM</p>
+<ul>
+<li><p>low-grade = well-differentiated</p></li>
+<li><p>high-grade (worse) = poorly differentiated, undifferentiated</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>human benchmark</p>
+<ul>
+<li><p><a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/8290915/">The reliability of staging and grading of bladder tumours. Impact of misinformation on the pathologist’s diagnosis</a> (olsen et al. 1993)</p>
+<ul>
+<li><p>4 consultant pathologists</p></li>
+<li><p>40 biopsy specimens of bladder tumours staging invasion</p>
+<ul>
+<li><p>grading using Bergkvist classification</p></li>
+</ul>
+</li>
+<li><p>kappa &lt; 0.50</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ai papers</p>
+<ul>
+<li><p><a class="reference external" href="https://journals.sagepub.com/doi/abs/10.1177/0391560320987169">Bladder cancer in the time of machine learning: Intelligent tools for diagnosis and management</a> (2021)</p>
+<ul>
+<li><p>bladder cancel ranks tenth in worldwide absolute cancer incidence</p></li>
+</ul>
+</li>
+<li><p>non-pathology</p>
+<ul>
+<li><p><a class="reference external" href="https://dl.acm.org/doi/abs/10.1145/3340531.3412122">Integrating Diagnosis Rules into Deep Neural Networks for Bladder Cancer Staging</a> - bladder cancer staging from MR images</p></li>
+<li><p><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6403041/">Deep Learning Approach for Assessment of Bladder Cancer Treatment Response</a> - bladder cancer treatment assessment from CT scans</p></li>
+</ul>
+</li>
+<li><p>cystoscopy - few DNN papers here</p></li>
+<li><p>pathology</p>
+<ul>
+<li><p><a class="reference external" href="https://link.springer.com/chapter/10.1007/978-3-540-45224-9_29">Urinary Bladder Tumor Grade Diagnosis Using Online Trained Neural Networks</a> (2003)</p>
+<ul>
+<li><p>92 patients with BC</p></li>
+<li><p>90%, 94.9%, and 97.3%, for Grade I, II, and III respectively</p></li>
+<li><p>builds on <a class="reference external" href="https://europepmc.org/article/med/12508689">Neural network-based segmentation and classification system for automated grading of histologic sections of bladder carcinoma</a> (2002)</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/32354610/">Deep Learning Predicts Molecular Subtype of Muscle-invasive Bladder Cancer from Conventional Histopathological Slides</a> (woerl et al. 2020) - predict <em>molecular subtype</em> using histopathology images in Cancer Genome Atlas Urothelial Bladder Carcinoma dataset</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>bladder basics</p>
+<ul>
+<li><p>muscles in bladder contract and force urine out</p>
+<ul>
+<li><p><em>urethelium</em> - inner layer that is able to stretch (has many layers) - this is where cancer originates</p>
+<ul>
+<li><p>in situ - cancer only here</p></li>
+<li><p>invasive - goes into the muscle</p>
+<ul>
+<li><p>if it goes into the urine, can easily test (also usually triggers blood in the urine)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>biopsy usually looks mostly at urethelium and vessels right next to it (will not go all the way to the muscle, as this could puncture the bladder)</p>
+<ul>
+<li><p>very targeted (unlike prostate biopsy), slide will come with some tag like “in area with redness” from scopy</p>
+<ul>
+<li><p>4 possibilities</p>
+<ul>
+<li><p>big mass - should see cancer</p></li>
+<li><p>inflammation - could be cancer or many other things (e.g. atypia vs carcinoma)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>get many parts / sites of biopsies</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>H &amp; E slide</strong></p>
+<ul class="simple">
+<li><p>shape:</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>papillary</p></th>
+<th class="head"><p>flat</p></th>
+<th class="head"><p>can also have a combo</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><img alt="pap_blad" src="../../_images/pap_blad-5625041.png" /></p></td>
+<td><p><img alt="flat_blad" src="../../_images/flat_blad-5625041.png" /></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>grade:</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>low</p></th>
+<th class="head"><p>high</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><img alt="low_grade_blad" src="../../_images/low_grade_blad-5625041.png" /></p></td>
+<td><p><img alt="high_grade_blad" src="../../_images/high_grade_blad-5625041.png" /></p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>when shape is flat, grade often can’t be determined reliably</p>
+<ul>
+<li><p>lots of names for uncertain (e.g. upump - uncertain malignant potential, or atypia)</p></li>
+</ul>
+</li>
+<li><p>much easier to decide shape than grade</p></li>
+<li><p>once you find high grade, look for invasiveness (and deeper layers are worse)</p></li>
+</ul>
+</div>
 </div>
 </div>
 
