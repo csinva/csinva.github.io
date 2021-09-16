@@ -13,6 +13,7 @@ category: research
 # reviews
 
 ## definitions
+
 The definition of interpretability I find most useful is that given in [murdoch et al. 2019](https://arxiv.org/abs/1901.04592): basically that interpretability requires a pragmatic approach in order to be useful. As such, interpretability is only defined with respect to a specific audience + problem and an interpretation should be evaluated in terms of how well it benefits a specific context. It has been defined and studied more broadly in a variety of works:
 
 - [Explore, Explain and Examine Predictive Models](https://pbiecek.github.io/ema/) (biecek & burzykowski, in progress) - another book on exploratory analysis with interpretability
@@ -179,7 +180,18 @@ For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
 
 *Trees suffer from the fact that they have to cover the entire decision space and often we end up with replicated subtrees.*
 
-- [optimal classification trees methodology paper](https://link.springer.com/content/pdf/10.1007%2Fs10994-017-5633-9.pdf) (bertsimas & dunn 2017) - globally optimal decision tree with expensive optimization
+- [Generalized and Scalable Optimal Sparse Decision Trees](https://arxiv.org/abs/2006.08690) (lin et al. 2020)
+  - optimize for $\min L(X, y) + \lambda \cdot (numLeaves)$ 
+  - can optimize many different losses (e.g. accuracy, AUC)
+  - use dynamic programming, prune the search-space with bounds (e.g. if know best loss so far, know we shouldn't add too many more leaves since each adds $\lambda$ to the total loss), represent problem with bit-vectors for each leaf enabling fast computation
+  - [optimal sparse decision trees](https://arxiv.org/abs/1904.12847) (hu et al. 2019) - previous paper, slower
+- [optimal classification trees methodology paper](https://link.springer.com/content/pdf/10.1007%2Fs10994-017-5633-9.pdf) (bertsimas & dunn, 2017) - globally optimal decision tree with expensive optimization (solved with mixed-integer optimization) - realistically, usually too slow
+  - $\begin{array}{cl}
+    \min & \overbrace{R_{x y}(T)}^{\text{misclassification err}}+\alpha|T| \\
+    \text { s.t. } & N_{x}(l) \geq N_{\min } \quad \forall l \in \text { leaves }(T)
+    \end{array}$
+    - $|T|$ is the number of branch nodes in tree $T$
+    - $N_x(l)$ is the number of training points contained in leaf node $l$
   - [optimal classification trees vs PECARN](https://jamanetwork.com/journals/jamapediatrics/article-abstract/2733157) (bertsimas et al. 2019)
   - [supplemental tables](https://cdn-jamanetwork-com.libproxy.berkeley.edu/ama/content_public/journal/peds/0/poi190021supp1_prod.pdf?Expires=2147483647&Signature=EnVKjyPUrh7o2GVSU7Bxr4ZYL~5T27-sPKh14TANiL5mpXfj3YPTnUetEBPc~njVrg2VKY5TqqXCFxtR4xr6DfGLgobA~Kl92A1Jubmj9XgSL3U3so1~4O~YKob1WcS5uFI3HBpq9J-o-IkAsRq1qsnTFFzlvH7zlkwO9TW-dxnU9vtvU-QzhPNJ0cdAX-c7rrnZV0p0Fg~gzaEz5lvPP30Nort4kDTxd-FNDW5OYJFqusWF9e~3QK2S6Y4nRjv~IavQ10fQ24fSvEK5Nd1qetME8j2one0LA~KZjOk7avp76aV5os9msn-2hdPcEM7YWtLTUq12a9oVaD6pXKe3ZA__&Key-Pair-Id=APKAIE5G5CRDK6RD3PGA)
 - [Building more accurate decision trees with the additive tree](https://www.pnas.org/content/116/40/19887) (luna et al. 2019)
@@ -188,7 +200,6 @@ For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
     - can rewrite boosted stumps as a tree very easily
     - previous work: can grow tree based on Adaboost idea = AdaTree
   - ![Screen Shot 2020-03-11 at 11.10.13 PM](../assets/additive_trees.png)
-- [optimal sparse decision trees](https://arxiv.org/abs/1904.12847) (hu et al. 2019) - optimal decision trees for binary variables
 - extremely randomized trees - randomness goes further, not only feature is selected randomly but also split has some randomness
 - issues: replicated subtree problem (Pagallo & Haussler, 1990)
 - [Bayesian Treed Models](http://www-stat.wharton.upenn.edu/~edgeorge/Research_papers/treed-models.pdf) (chipman et al. 2001) - impose priors on tree parameters
@@ -799,6 +810,8 @@ How interactions are defined and summarized is a very difficult thing to specify
 - model distillation (model-agnostic)
   - Trepan - approximate model w/ a decision tree
   - [BETA](https://arxiv.org/abs/1707.01154) (lakkaraju et al. 2017) - approximate model by a rule list
+- exact distillation
+  - [Born-again tree ensembles](https://arxiv.org/pdf/2003.11132.pdf) (vidal et al. 2020) - efficient algorithm to exactly find a minimal tree which reproduces the predictions of a tree ensemble
 
 
 
