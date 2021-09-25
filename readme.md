@@ -43,10 +43,7 @@ The source is in markdown (<a href="https://csinva.io/blog/misc/reveal_md_enhanc
 </ul>
 </details>
 
-
-![notes](https://csinva.io/notes/cheat_sheets/interp.svg?sanitize=True)
-
-
+![interp](assets/img/notes_screenshot.jpg)
 
 <details>
 <summary>The <a href="_notes">_notes</a> folder contains markdown notes and <a href="_notes/cheat_sheets">cheat-sheets</a> for many different courses and areas between computer science, statistics, and neuroscience</summary>
@@ -62,8 +59,8 @@ The source is in markdown (<a href="https://csinva.io/blog/misc/reveal_md_enhanc
 </ul>
 </details>
 
+![notes](https://csinva.io/notes/cheat_sheets/interp.svg?sanitize=True)
 
-![interp](assets/img/notes_screenshot.jpg)
 
 ## Code
 
