@@ -152,6 +152,8 @@ For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
   - [interpretable decision set](https://dl.acm.org/citation.cfm?id=2939874) (lakkaraju et al. 2016) - set of if then rules
     - short, accurate, and non-overlapping rules that cover the whole feature space and pay attention to small but important classes
   - [A Bayesian Framework for Learning Rule Sets for Interpretable Classification](http://www.jmlr.org/papers/volume18/16-003/16-003.pdf) (wang et al. 2017) - rules are a bunch of clauses OR'd together (e.g. if (X1>0 AND X2<1) OR (X2<1 AND X3>1) OR ... then Y=1)
+    - they call this method "Bayesian Rule Sets"
+    - [Or's of And's for Interpretable Classification, with Application to Context-Aware Recommender Systems](https://arxiv.org/abs/1504.07614) (wang et al. 2015) - BOA - Bayesian Or's of And's
 - when learning sequentially, often useful to prune at each step (Furnkranz, 1997)
 
 ### rule lists
@@ -170,8 +172,10 @@ For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
     - sample new lists by adding/removing/moving a rule
     - at the end, return the list that had the highest probability
   - [scalable bayesian rule lists](https://dl.acm.org/citation.cfm?id=3306086) (yang et al. 2017) - faster algorithm for computing
-- [learning certifiably optimal rules lists](https://dl.acm.org/citation.cfm?id=3098047) (angelino et al. 2017) - optimization for categorical feature space
-  - can get upper / lower bounds for loss = risk + $\lambda$ * listLength
+    - doesn't return entire posterior
+  - [learning certifiably optimal rules lists](https://dl.acm.org/citation.cfm?id=3098047) (angelino et al. 2017) - even faster optimization for categorical feature space
+    - can get upper / lower bounds for loss = risk + $\lambda$ * listLength
+    - doesn't return entire posterior
 - [Expert-augmented machine learning](https://arxiv.org/abs/1903.09731) (gennatas et al. 2019)
   - make rule lists, then compare the outcomes for each rule with what clinicians think should be outcome for each rule
   - look at rules with biggest disagreement and engineer/improve rules or penalize unreliable rules

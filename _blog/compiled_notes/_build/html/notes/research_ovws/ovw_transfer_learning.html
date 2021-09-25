@@ -737,34 +737,34 @@
 </div>
 <div class="section" id="adv-attacks">
 <h2>1.2.2. adv attacks<a class="headerlink" href="#adv-attacks" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
+<ul>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1909.08072">Adversarial Attacks and Defenses in Images, Graphs and Text: A Review</a> (xu et al. 2019)</p></li>
 <li><p>attacks</p>
-<ul>
+<ul class="simple">
 <li><p><a class="reference external" href="http://openaccess.thecvf.com/content_CVPR_2019/papers/Raff_Barrage_of_Random_Transforms_for_Adversarially_Robust_Defense_CVPR_2019_paper.pdf">Barrage of Random Transforms for Adversarially Robust Defense</a> (raff et al. 2019)</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1511.04599">DeepFool: a simple and accurate method to fool deep neural networks</a> (Moosavi-Dezfooli et. al 2016)</p></li>
 </ul>
 </li>
 <li><p>defenses</p>
-<ul>
+<ul class="simple">
 <li><p>a possible defense against adversarial attacks is to solve the anticausal classification problem by modeling the causal generative direction, a method which in vision is referred to as <em>analysis by synthesis</em> (<a class="reference external" href="https://arxiv.org/abs/1805.09190">Schott et al., 2019</a>)</p></li>
 </ul>
 </li>
 <li><p>robustness vs accuracy</p>
-<ul>
+<ul class="simple">
 <li><p><a class="reference external" href="https://openreview.net/pdf?id=SyxAb30cY7">robustness may be at odds with accuracy</a> (tsipiras…madry, 2019)</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1901.08573">Theoretically Principled Trade-off between Robustness and Accuracy</a> (Zhang, Jordan, et. al. 2019)</p></li>
 </ul>
 </li>
 <li><p>adversarial examples</p>
-<ul>
+<ul class="simple">
 <li><p><a class="reference external" href="https://pdfs.semanticscholar.org/08c5/88465b7d801ad912ef3e9107fa511ea0e403.pdf">Decision Boundary Analysis of Adversarial Examples </a>(He, Li, &amp; Song 2019)</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1907.07174">Natural Adversarial Examples</a> (Hendrycks, Zhao, Basart, Steinhardt, &amp; Song 2020)</p></li>
 <li><p><a class="reference external" href="https://openreview.net/pdf?id=Bygh9j09KX">Image-Net-Trained CNNs Are Biased Towards Texture</a> (Geirhos et al. 2019)</p></li>
 </ul>
 </li>
 <li><p>transferability</p>
-<ul>
+<ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/1605.07277">Transferability in Machine Learning: from Phenomena to Black-Box Attacks using Adversarial Samples</a> (papernot, mcdaniel, &amp; goodfellow, 2016)</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1705.07204.pdf">Ensemble Adversarial Training: Attacks and Defenses</a> (tramer et al. 2018)</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1901.08846.pdf">Improving Adversarial Robustness via Promoting Ensemble Diversity</a> (pang et al. 2019)</p>
@@ -775,8 +775,20 @@
 </ul>
 </li>
 <li><p>ranking</p>
-<ul>
+<ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/pdf/2002.05714.pdf">Automatically Discovering and Learning New Visual Categories with Ranking Statistics</a></p></li>
+</ul>
+</li>
+<li><p>adversarial training: $<span class="math notranslate nohighlight">\(\min _{\boldsymbol{\theta}} \frac{1}{N} \sum_{n=1}^{N} \operatorname{Loss}\left(f_{\theta}\left(x_{n}\right), y_{n}\right)+\lambda\left[\max _{\|\delta\|_{\infty} \leq \epsilon} \operatorname{Loss}\left(f_{\theta}\left(x_{n}+\delta\right), y_{n}\right)\right]\)</span>$</p></li>
+<li><p>robustness as a constraint not a loss (<a class="reference external" href="https://arxiv.org/abs/2103.05134">Constrained Learning with Non-Convex Losses</a> (chamon et al. 2021))</p>
+<ul>
+<li><div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+    \min _{\boldsymbol{\theta}} &amp; \frac{1}{N} \sum_{n=1}^{N} \operatorname{Loss}\left(f_{\theta}\left(x_{n}\right), y_{n}\right) \\
+    \text { subject to } &amp; \frac{1}{N} \sum_{n=1}^{N}\left[\max _{\|\delta\|_{\infty} \leq \epsilon} \operatorname{Loss}\left(f_{\theta}\left(\boldsymbol{x}_{n}+\delta\right), y_{n}\right)\right] \leq c
+    \end{aligned}\end{split}\]</div>
+</li>
+<li><p>when penalty is convex, these 2 problems are the same</p></li>
 </ul>
 </li>
 </ul>

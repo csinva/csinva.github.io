@@ -77,7 +77,7 @@ displays
 
 ### general tips
 
-- **installing things**: using pip/conda is generally the best way to install things. If you're running into permission errors `pip install --user` tends to fix a lot of common problems
+- **installing things**: using pip/conda is generally the best way to install things. If you're running into permission errors `pip install --user` tends to fix a lot of common problems (best practice is to use a separate `virtualenv` or `pipenv` for each project)
 - **make classes for datasets/dataloaders**: wrapping data loading/preprocessing allows your code to be much cleaner and more modular. It also lets your models easily be adapted to different datasets. Pytorch has a good [tutorial](https://pytorch.org/tutorials/beginner/data_loading_tutorial.html) on how to do this (although the same principles apply without using pytorch.
 - **store hyperparameters**: when you test many different sets of hyperparameters, it is difficult to easily map which hyperparameters correspond to which results. It's important to store hyperparameters in a easily readable way, such as saving an [argparse object](https://docs.python.org/3/library/argparse.html), or storing/saving parameters in a class you define yourself.
 
@@ -136,6 +136,7 @@ displays
 
 - [good reference](https://realpython.com/pypi-publish-python-package/)
   - `python setup.py sdist bdist_wheel`
+  - `twine check dist/*`
   - `twine upload dist/*`
 
 ### misc services

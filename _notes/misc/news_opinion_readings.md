@@ -2,6 +2,9 @@
 
 # 2021
 
+- [Opinion | Why Sex-Positive Feminism Is Falling Out of Fashion - The New York Times](https://www.nytimes.com/2021/09/24/opinion/sex-positivity-feminism.html)
+  - “demisexual” refers to those attracted only to people with whom they share an emotional connection
+  - Somehow, as sex positivity went mainstream and fused with a culture shaped by pornography, attention to emotion got lost
 - [Ezra Klein’s Why We’re Polarized excerpt: The media’s role - Vox](https://www.vox.com/2020/1/28/21077888/why-were-polarized-media-book-ezra-news)
   - “News emerges not from individuals seeking to improve the functioning of democracy but from readers seeking diversion, reporters forging careers, and owners searching for profits.”
 - [Opinion | What We Are Not Teaching Boys About Being Human - The New York Times](https://www.nytimes.com/2021/08/06/opinion/boys-gender-books-culture.html)
@@ -86,6 +89,10 @@
 
 - [Opinion | 'Lying Flat': Tired Workers Are Opting Out of Careers and Capitalism - The New York Times](https://www.nytimes.com/2021/08/22/opinion/lying-flat-work-rest.html?referringSource=articleShare) (cassady rosenblum, 2021)
   - [These Chinese Millennials Are ‘Chilling,’ and Beijing Isn’t Happy - The New York Times](https://www.nytimes.com/2021/07/03/world/asia/china-slackers-tangping.html) (elsie chen, 2021)
+  - [‘Lie Flat’ If You Want, But Be Ready to Pay the Price - Bloomberg](https://www.bloomberg.com/opinion/articles/2021-09-13/-lie-flat-if-you-want-but-be-ready-to-pay-the-price?sref=2o0rZsF1&utm_medium=social&utm_content=view&utm_campaign=socialflow-organic&utm_source=twitter&cmpid%3D=socialflow-twitter-view) (schrager, 2021)
+    - people in the developed world have never [worked so little](https://ourworldindata.org/working-hours)
+    - one [study estimates](https://www.nber.org/papers/w12082) that between 1965 and 2003, American men gained an extra six to eight hours of leisure time a week; women gained four to eight
+    - since 2003, leisure time [has increased further](https://data.bls.gov/pdq/SurveyOutputServlet)
 - [How to escape the 'productivity trap' - BBC Worklife](https://www.bbc.com/worklife/article/20210805-how-to-escape-the-productivity-trap)
   - humankind’s peculiar preoccupation with time – and, in particular, whether we spend it “productively” – became much greater with the common usage of the clock and the emergence of the Industrial Revolution
 - **[The Religion of Workism Is Making Americans Miserable - The Atlantic](https://www.theatlantic.com/ideas/archive/2019/02/religion-workism-making-americans-miserable/583441/) **(derek thompson, 2019)
@@ -118,6 +125,8 @@
 
 # tech
 
+- [Kids who grew up with search engines could change STEM education forever - The Verge](https://www.theverge.com/22684730/students-file-folder-directory-structure-education-gen-z)
+  - some students don't understand the concept of directories, likely bc they are used to the search-engine model
 - [Opinion | Google’s Privacy Backpedal Shows Why It’s So Hard Not to Be Evil - The New York Times](https://www.nytimes.com/2021/06/14/opinion/google-privacy-big-tech.html?action=click&module=Opinion&pgtype=Homepage)
   - "So it was that Google executives were dismayed over a most inconvenient discovery: When they made it simpler to halt digital location tracking, far too many customers did so."
 - [Google, Facebook, Amazon, Apple and Microsoft. Call Them Tech Frenemies for Life. - WSJ](https://www.wsj.com/articles/tech-giants-cooperate-while-competing-frenemies-for-life-11617293819)
@@ -128,6 +137,7 @@
 
 # economy
 
+
 - [Where Have All the Houses Gone? - The New York Times](https://www.nytimes.com/2021/02/26/upshot/where-have-all-the-houses-gone.html?action=click&module=Spotlight&pgtype=Homepage)
   - way fewer houses for sale during pandemic (less houses for sale = less houses for )
   - government-backed loans prevented some foreclosures (and corresponded to less houses for sale)
@@ -135,3 +145,7 @@
 - [Big Tech and Big Finance Breed Hubris - WSJ](https://www.wsj.com/articles/big-tech-and-big-finance-breed-hubris-11625520108?mod=hp_opin_pos_3)
   - [BlackRock](https://www.wsj.com/market-data/quotes/BLK) has ~$9 trillion under management (along w/ 2 closest rivals, exerts around 25% voting control over most publicly traded companies)
   - this allows it to impose its beliefs on economy
+
+# sports
+
+- [Opinion | The N.F.L. Bets on Betting - The New York Times](https://www.nytimes.com/2021/09/18/opinion/NFL-gambling-bets.html)
