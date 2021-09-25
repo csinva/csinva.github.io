@@ -12,6 +12,7 @@
   <br>
   <a href="https://twitter.com/csinva_">@csinva_</a>
 </p>
+
 ## Slides
 
 <details>
@@ -41,6 +42,12 @@ The source is in markdown (<a href="https://csinva.io/blog/misc/reveal_md_enhanc
 <li><a href="https://github.com/csinva/csinva.github.io/blob/master/_notes/research_ovws/ovw_dl_for_neuro.md">DL in neuroscience</a></li>
 </ul>
 </details>
+
+
+![notes](https://csinva.io/notes/cheat_sheets/interp.svg?sanitize=True)
+
+
+
 <details>
 <summary>The <a href="_notes">_notes</a> folder contains markdown notes and <a href="_notes/cheat_sheets">cheat-sheets</a> for many different courses and areas between computer science, statistics, and neuroscience</summary>
 <ul>
@@ -56,7 +63,7 @@ The source is in markdown (<a href="https://csinva.io/blog/misc/reveal_md_enhanc
 </details>
 
 
-![interp](https://csinva.io/notes/cheat_sheets/interp.svg?sanitize=True)
+![interp](assets/img/notes_screenshot.jpg)
 
 ## Code
 
