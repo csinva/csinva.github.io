@@ -21,6 +21,7 @@ Some notes on knowledge representation based on Berkeley's CS 188 course and  "A
 - *turing test* - is human mind deterministic { turing1950computing }
 - *chinese room argument* - rebuts turing test { cite searle1980minds }
 - *china brain* - what if different people hit buttons to fire individual neurons
+- Polanyi's paradox: "we can know more than we can tell"
 
 # symbol search
 

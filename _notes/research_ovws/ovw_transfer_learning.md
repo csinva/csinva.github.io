@@ -109,3 +109,9 @@ See also notes on causal inference for some close connections.
     \text { subject to } & \frac{1}{N} \sum_{n=1}^{N}\left[\max _{\|\delta\|_{\infty} \leq \epsilon} \operatorname{Loss}\left(f_{\theta}\left(\boldsymbol{x}_{n}+\delta\right), y_{n}\right)\right] \leq c
     \end{aligned}$$
   - when penalty is convex, these 2 problems are the same
+
+
+
+# overviews
+
+![transfer_taxonomy](../assets/transfer_taxonomy.png) (from [this paper](https://arxiv.org/pdf/2109.14501v1.pdf))

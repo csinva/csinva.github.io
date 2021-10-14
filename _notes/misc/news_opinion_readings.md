@@ -2,6 +2,7 @@
 
 # 2021
 
+- [A ‘Pacemaker for the Brain’: No Treatment Helped Her Depression — Until This - The New York Times](https://www.nytimes.com/2021/10/04/health/depression-treatment-deep-brain-stimulation.html?campaign_id=9&emc=edit_nn_20211005&instance_id=42042&nl=the-morning&regi_id=103626597&segment_id=70676&te=1&user_id=c9a9cfdf6428d67bbc338d1a6b98bbd2)
 - [Opinion | Why Sex-Positive Feminism Is Falling Out of Fashion - The New York Times](https://www.nytimes.com/2021/09/24/opinion/sex-positivity-feminism.html)
   - “demisexual” refers to those attracted only to people with whom they share an emotional connection
   - Somehow, as sex positivity went mainstream and fused with a culture shaped by pornography, attention to emotion got lost

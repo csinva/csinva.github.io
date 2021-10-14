@@ -250,6 +250,8 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
   - optimization - for optimization purposes, this can be decomposed into attractive/repulsive forces 
 - **umap**: Uniform Manifold Approximation and Projection for Dimension Reduction
 	- [umap tutorial](https://umap-learn.readthedocs.io/en/latest/how_umap_works.html) 
+- **pacmap**
+  - ![pacmap](../assets/pacmap.png)
 
 # generative models
 
