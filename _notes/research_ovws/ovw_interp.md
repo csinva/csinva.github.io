@@ -155,6 +155,7 @@ For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
   - [A Bayesian Framework for Learning Rule Sets for Interpretable Classification](http://www.jmlr.org/papers/volume18/16-003/16-003.pdf) (wang et al. 2017) - rules are a bunch of clauses OR'd together (e.g. if (X1>0 AND X2<1) OR (X2<1 AND X3>1) OR ... then Y=1)
     - they call this method "Bayesian Rule Sets"
     - [Or's of And's for Interpretable Classification, with Application to Context-Aware Recommender Systems](https://arxiv.org/abs/1504.07614) (wang et al. 2015) - BOA - Bayesian Or's of And's
+  - [Vanishing boosted weights: A consistent algorithm to learn interpretable rules](https://www.sciencedirect.com/science/article/abs/pii/S0167865521003081) (sokolovska et al. 2021) - simple efficient fine-tuning procedure for decision stumps
 - when learning sequentially, often useful to prune at each step (Furnkranz, 1997)
 
 ### rule lists
@@ -291,6 +292,9 @@ For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
   - merge "similar" prototypes, where similarity is measured as dist of all training patches in repr. space
 - [Towards Explainable Deep Neural Networks (xDNN)](https://arxiv.org/abs/1912.02523) (angelov & soares 2019) - more complex version of using prototypes
 - [Case-Based Reasoning for Assisting Domain Experts in Processing Fraud Alerts of Black-Box Machine Learning Models](https://arxiv.org/abs/1907.03334)
+- [Explaining Latent Representations with a Corpus of Examples](https://arxiv.org/pdf/2110.15355.pdf) (crabbe, ..., van der schaar 2021) - for an individual prediction,
+  1. Which corpus examples explain the prediction issued for a given test example?
+  2. What features of these corpus examples are relevant for the model to relate them to the test example?
 
 ## interpretable neural nets
 
@@ -544,6 +548,8 @@ How interactions are defined and summarized is a very difficult thing to specify
   - e.g. scatter plot, meta-model plot, regional VIMs, parametric VIMs
   - CSM - relative change of model ouput mean when range of $X_i$ is reduced to any subregion
   - CSV - same thing for variance
+- [A Simple and Effective Model-Based Variable Importance Measure](https://arxiv.org/pdf/1805.04755.pdf)
+    - measures the feature importance (defined as the variance of the 1D partial dependence function) of one feature conditional on different, fixed points of the other feature. When the variance is high, then the features interact with each other, if it is zero, they don’t interact.
 
 ### importance curves
 
@@ -841,6 +847,16 @@ How interactions are defined and summarized is a very difficult thing to specify
   - [BETA](https://arxiv.org/abs/1707.01154) (lakkaraju et al. 2017) - approximate model by a rule list
 - exact distillation
   - [Born-again tree ensembles](https://arxiv.org/pdf/2003.11132.pdf) (vidal et al. 2020) - efficient algorithm to exactly find a minimal tree which reproduces the predictions of a tree ensemble
+- [Knowledge Distillation as Semiparametric Inference](https://arxiv.org/abs/2104.09732) (dao...mackey, 2021
+  - background on when kd should succeed
+    - probabilities more informative than labels (hinton, vinyals, & dean, 2015)
+    - linear students exactly mimic linear teachers (phuong & lampert, 2019)
+    - students can learn at a faster rate given knowledge of datapoint difficulty (lopez-paz et al. 2015)
+    - [regularization for kernel ridge regression](https://arxiv.org/pdf/2002.05715.pdf) (mobahi farajtabar, & bartlett, 2020)
+    - teacher class probabilities are proxies for the true bayes class probabilities $\mathbb E [Y|x]$
+  - adjustments
+    - teacher underfitting $\to$ loss correction
+    - teacher overfitting $\to$ cross-fitting (chernozhukov et al. 2018) - like cross-validation, fit student only to held-out predictions
 
 
 
@@ -966,8 +982,7 @@ These papers don't quite connect to prediction, but are generally about finding 
 - [How Important Is a Neuron?](https://arxiv.org/abs/1805.12233)
 - [symbolic execution for dnns](https://arxiv.org/pdf/1807.10439.pdf)
 - [L-shapley abd C-shapley](https://arxiv.org/pdf/1808.02610.pdf)
-- [A Simple and Effective Model-Based Variable Importance Measure](https://arxiv.org/pdf/1805.04755.pdf)
-  - measures the feature importance (defined as the variance of the 1D partial dependence function) of one feature conditional on different, fixed points of the other feature. When the variance is high, then the features interact with each other, if it is zero, they don’t interact.
+- - 
 - [Interpreting Neural Network Judgments via Minimal, Stable, and Symbolic Corrections](https://arxiv.org/pdf/1802.07384.pdf)
 - [DeepPINK: reproducible feature selection in deep neural networks](https://arxiv.org/pdf/1809.01185.pdf)
 - "Explaining Deep Learning Models -- A Bayesian Non-parametric Approach"
@@ -1012,4 +1027,4 @@ These papers don't quite connect to prediction, but are generally about finding 
 - [Cyclic Boosting - An Explainable Supervised Machine Learning Algorithm - IEEE Conference Publication](https://ieeexplore.ieee.org/abstract/document/8999347)
 - [A Causality Analysis for Nonlinear Classification Model with Self-Organizing Map and Locally Approximation to Linear Model](https://www.semanticscholar.org/paper/A-Causality-Analysis-for-Nonlinear-Classification-Kirihata-Maekawa/4b76830be36ae14d878f7c0a7ff2508bfe172f64)
 - [Black-Box Saliency Map Generation Using Bayesian Optimisation](https://arxiv.org/abs/2001.11366)
-- [ON NETWORK SCIENCE AND MUTUAL INFORMATION FOR EXPLAINING DEEP NEURAL NETWORKS Brian Davis1∗](https://umangsbhatt.github.io/reports/icassp_2020.pdf)s
+- [ON NETWORK SCIENCE AND MUTUAL INFORMATION FOR EXPLAINING DEEP NEURAL NETWORKS ](https://umangsbhatt.github.io/reports/icassp_2020.pdf)

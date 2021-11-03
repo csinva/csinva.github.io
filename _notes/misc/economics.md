@@ -2,6 +2,10 @@
 
 
 
+# misc fun
+
+- [winner's curse](https://en.wikipedia.org/wiki/Winner%27s_curse) - a phenomenon that may occur in [common value auctions](https://en.wikipedia.org/wiki/Common_value_auction), where all bidders have the same (*[ex post](https://en.wikipedia.org/wiki/Ex_post)*) value for an item but receive different private (*[ex ante](https://en.wikipedia.org/wiki/Ex-ante)*) signals about this value and wherein the winner is the bidder with the most optimistic evaluation of the asset and therefore will tend to overestimate and overpay
+
 # stock basics
 
 - stock basics

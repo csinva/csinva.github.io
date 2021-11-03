@@ -2,6 +2,10 @@
 
 # 2021
 
+- [The 37-Year-Olds Are Afraid of the 23-Year-Olds Who Work for Them - The New York Times](https://www.nytimes.com/2021/10/28/business/gen-z-workplace-culture.html?campaign_id=9&emc=edit_nn_20211029&instance_id=44078&nl=the-morning&regi_id=103626597&segment_id=72968&te=1&user_id=c9a9cfdf6428d67bbc338d1a6b98bbd2)
+- [Opinion | Why ‘Evangelical’ Is Becoming Another Word for ‘Republican’ - The New York Times](https://www.nytimes.com/2021/10/26/opinion/evangelical-republican.html)
+- [The True Cost of Upgrading Your Phone - The New York Times](https://www.nytimes.com/2021/10/20/technology/personaltech/iphone-upgrades-cost.html)
+- [Opinion | Chappelle's Netflix Show Just Isn't Funny - The New York Times](https://www.nytimes.com/2021/10/15/opinion/chappelle-netflix-trans.html)
 - [A ‘Pacemaker for the Brain’: No Treatment Helped Her Depression — Until This - The New York Times](https://www.nytimes.com/2021/10/04/health/depression-treatment-deep-brain-stimulation.html?campaign_id=9&emc=edit_nn_20211005&instance_id=42042&nl=the-morning&regi_id=103626597&segment_id=70676&te=1&user_id=c9a9cfdf6428d67bbc338d1a6b98bbd2)
 - [Opinion | Why Sex-Positive Feminism Is Falling Out of Fashion - The New York Times](https://www.nytimes.com/2021/09/24/opinion/sex-positivity-feminism.html)
   - “demisexual” refers to those attracted only to people with whom they share an emotional connection

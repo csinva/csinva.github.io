@@ -978,16 +978,18 @@
 <div class="section" id="transformers">
 <h2>5.7.9. transformers<a class="headerlink" href="#transformers" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>transformers: https://arxiv.org/pdf/1706.03762.pdf</p>
+<li><p>transformers <a class="reference external" href="https://arxiv.org/pdf/1706.03762.pdf">original paper</a></p>
 <ul>
-<li><p>spatial transformers: https://papers.nips.cc/paper/5854-spatial-transformer-networks.pdf</p></li>
+<li><p><a class="reference external" href="https://papers.nips.cc/paper/5854-spatial-transformer-networks.pdf">spatial transformers</a></p></li>
 </ul>
 </li>
 <li><p>http://colah.github.io/posts/2014-03-NN-Manifolds-Topology/</p></li>
 <li><p><a class="reference external" href="https://www.nature.com/articles/s41586-021-03819-2">Highly accurate protein structure prediction with AlphaFold | Nature</a> (2021)</p>
 <ul>
 <li><p><a class="reference external" href="https://static-content.springer.com/esm/art%3A10.1038%2Fs41586-021-03819-2/MediaObjects/41586_2021_3819_MOESM1_ESM.pdf">supp</a></p></li>
-<li><p><a class="reference external" href="https://towardsdatascience.com/unfolding-alphafold-683d576a54a3">blog post</a></p></li>
+<li><p><a class="reference external" href="https://www.blopig.com/blog/2021/07/alphafold-2-is-here-whats-behind-the-structure-prediction-miracle/">best blog post</a> (<a class="reference external" href="https://towardsdatascience.com/unfolding-alphafold-683d576a54a3">other blog post</a>)</p></li>
+<li><p>background</p>
+<ul>
 <li><p>the standard way to obtain the 3D structure of a protein is X-ray crystallography. It takes about a year and costs about $120,000 to obtain the structure of a single protein through X-ray crystallography [<a class="reference external" href="https://fortune.com/2020/11/30/deepmind-protein-folding-breakthrough/">source</a>]</p></li>
 <li><p>on average, a protein is composed of 300 amino acids (residues)</p>
 <ul>
@@ -995,11 +997,28 @@
 <li><p>the first residue is fixed</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://www.sciencedirect.com/topics/medicine-and-dentistry/multiple-sequence-alignment">multiple-sequence-alignment</a> (MSA) - alignment of 3 or more amino acid (or nucleic acid) sequences, which show conserved regions within a protein family which are of structural and functional importance.</p></li>
-<li><p>model</p>
+</ul>
+</li>
+<li><p>model overview</p>
 <ul>
 <li><p><img alt="alphafold" src="../../_images/alphafold.png" /></p></li>
+</ul>
+</li>
+<li><p>preprocessing</p>
+<ul>
+<li><p><a class="reference external" href="https://www.sciencedirect.com/topics/medicine-and-dentistry/multiple-sequence-alignment">multiple-sequence-alignment</a> (MSA) - alignment of 3 or more amino acid (or nucleic acid) sequences, which show conserved regions within a protein family which are of structural and functional importance.</p></li>
+<li><p>finding templates - find similar proteins to model “pairs of residues” - which residues are likely to interact with each other</p></li>
+</ul>
+</li>
+<li><p>evoformer</p>
+<ul>
 <li><p>uses attention on graph network</p></li>
+<li><p>iterative</p></li>
+</ul>
+</li>
+<li><p>structure model - converts msa/pair representations into set of (x,y,z) coordinates</p>
+<ul>
+<li><p>“invariant point attention” - invariance to translations and rotations</p></li>
 </ul>
 </li>
 </ul>
