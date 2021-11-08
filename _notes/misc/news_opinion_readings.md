@@ -111,6 +111,9 @@
 
 # racism
 
+- [The Casteism I See in America - The Atlantic](https://www.theatlantic.com/ideas/archive/2021/11/india-america-caste/620583/)
+  - A 2016 [study](https://www.equalitylabs.org/castesurvey) by Equality Labs, an American civil-rights organization focused on caste, found that 41 percent of South-Asian Americans who identify as lower-caste reported facing caste discrimination in U.S. schools and universities, compared with 3 percent of upper-caste respondents
+  - In July 2020, [California regulators sued](https://www.latimes.com/business/story/2020-07-02/california-sues-cisco-bias-indian-caste-system) the tech company Cisco Systems over alleged discrimination toward an Indian engineer by his Indian colleagues while all of them were working in the state
 - [Opinion | Can Religion Guide the Ethics of A.I.? - The New York Times](https://www.nytimes.com/interactive/2021/07/16/opinion/ai-ethics-religion.html?action=click&module=Opinion&pgtype=Homepage)
 - [Officer who stood by as George Floyd died highlights complex Asian American, black relations](https://www.nbcnews.com/news/asian-america/officer-who-stood-george-floyd-died-asian-american-we-need-n1221311)	
 - [Opinion | What This Wave of Anti-Asian Violence Reveals About America - The New York Times](https://www.nytimes.com/2021/02/21/opinion/anti-asian-violence.html?action=click&module=Opinion&pgtype=Homepage)

@@ -254,3 +254,8 @@
   - frightening monsters in popular do not simply threaten to hurt you but to turn you into a monster yourself (e.g. vampire, zombie)
   - the joke under the soviet union was "we pretend to work; they pretend to pay us"
   - "Puratinanism: the haunting fear that someone, somewhere, may be happy. -- H.L. Menchken"
+
+# cryptography
+
+## crypto arbitrage
+

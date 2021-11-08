@@ -44,6 +44,8 @@ title: presentations
     - [transform interp](https://docs.google.com/presentation/d/1mH1uG38qJg-ar0G-LiVPZWNKPO_2GiD-uayWM5AI-bo/present?slide=id.p)
 - [pdr](https://docs.google.com/presentation/d/18Tdiym7hDeu0c4tj5XezrznIDfbltR4QQJJZjaHi7tk/present?slide=id.p)
 - [auxilin prediction](https://docs.google.com/presentation/d/1sQXbFUTSEyrmDkovV8g759Wj8E9LBpATAVV1iweKeGo/edit#slide=id.gc0f646bcee_0_0)
+- [iai_rules](https://docs.google.com/presentation/d/19liiotfBKNPm2lli6U1ZOPd8jCHEL8Y99HcEZFHOSsQ/edit#slide=id.gc6d28d5565_0_0)
+    - [general rules ovw](https://docs.google.com/presentation/u/1/d/1Ui-NWeJobJ4MhcK-1RG20q8PSyQq4harjOsZ-ml8K4s/edit#slide=id.gc6d28d5565_0_0) 
   
 
 ### dnn misc individual presentations
