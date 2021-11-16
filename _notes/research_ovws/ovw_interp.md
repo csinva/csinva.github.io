@@ -149,6 +149,8 @@ For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
       - with large number of columns, can be intractable even to enumerate rules - CG avoids this by fitting a subset and using it to construct most promising next column
     - also propose a non-CG algorithm using only 1st-degree rules
     - note: from every pair of complementary singleton rules (e.g., $X_j \leq1$, $X_j > 1$), they remove one member as otherwise the pair together is collinear
+  - [Multivariate Adaptive Regression Splines (MARS)](https://www.jstor.org/stable/2241837?casa_token=15XQTGF9ItgAAAAA%3A3dmi0WboPsb0TMDj6d0yefz1YUWUrQmKzh21NvMgpyQ_gbuveUibjIQY2Gq6J8C9-9HJ70QZns9x2MfB70dEGlll5RIgZ_VS3qPhRbbBMsrLwuD8H-0wmQ&seq=1#metadata_info_tab_contents) (friedman, 1991) - sequentially learn weighted linear sum of ReLus (or products of ReLus)
+    - do backward deletion procedure at the end
 - more recent global versions of learning rule sets
   - [interpretable decision set](https://dl.acm.org/citation.cfm?id=2939874) (lakkaraju et al. 2016) - set of if then rules
     - short, accurate, and non-overlapping rules that cover the whole feature space and pay attention to small but important classes
@@ -268,6 +270,10 @@ For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
 - [Bridging the Gap: Providing Post-Hoc Symbolic Explanations for Sequential Decision-Making Problems with Black Box Simulators](https://arxiv.org/abs/2002.01080)
 - [Model Learning with Personalized Interpretability Estimation (ML-PIE)](https://arxiv.org/abs/2104.06060) - use human feedback in the loop to decide which symbolic functions are most interpretable
 
+## misc
+
+- [Coefficient tree regression: fast, accurate and interpretable predictive modeling](https://link-springer-com.libproxy.berkeley.edu/article/10.1007/s10994-021-06091-7) (surer, apley, & malthouse, 2021) - iteratively group linear terms with similar coefficients into a bigger term
+
 ## example-based = case-based (e.g. prototypes, nearest neighbor)
 
 - ["this looks like that" prototypes II](https://arxiv.org/abs/1806.10574) (chen et al. 2018)
@@ -295,6 +301,15 @@ For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
 - [Explaining Latent Representations with a Corpus of Examples](https://arxiv.org/pdf/2110.15355.pdf) (crabbe, ..., van der schaar 2021) - for an individual prediction,
   1. Which corpus examples explain the prediction issued for a given test example?
   2. What features of these corpus examples are relevant for the model to relate them to the test example?
+- [Self-Interpretable Model with Transformation Equivariant Interpretation](https://arxiv.org/abs/2111.04927) (wang & wang, 2021)
+  - generate data-dependent prototypes for each class and formulate the prediction as the inner product between each prototype and the extracted features
+    - interpretation is hadamard product of prototype and extracted features (prediction is sum of this product)
+  - interpretations can be easily visualized by upsampling from the prototype space to the input data space
+  - regularization
+    - reconstruction regularizer - regularizes the interpretations to be meaningful and comprehensible
+      - for each image, enforce each prototype to be similar to its corresponding class's latent repr.
+    - transformation regularizer - constrains the interpretations to be transformation equivariant
+  - *self-consistency score* quantifies the robustness of interpretation by measuring the consistency of interpretations to geometric transformations.
 
 ## interpretable neural nets
 
@@ -933,7 +948,7 @@ These papers don't quite connect to prediction, but are generally about finding 
       - for MLE, equivalent to profile likelihood confidence intervals
       - ex. SVM distance from point to boundary, Kernel regression prediction for a specific new point, feature selection
       - ex. linear regression ATE, individual treatment effect
-    - PCS intervals could be seen as slightly broder, including data cleaning and problem translations
+    - PCS intervals could be seen as slightly broader, including data cleaning and problem translations
   - different theories of inference have different counterfactual worlds
     - p-values - data from a superpopulation
     - Fisher’s exact p-values - fix the data and randomize counterfactual treatment assignments
@@ -957,6 +972,7 @@ These papers don't quite connect to prediction, but are generally about finding 
     - need criteria to select among good models (e.g. explanations)
 - [Predictive Multiplicity in Classification](https://arxiv.org/pdf/1909.06677.pdf) (marx et al. 2020)
   - predictive multiplicity = ability of a prediction problem to admit competing models with conflicting predictions
+- [A general framework for inference on algorithm-agnostic variable importance](https://www-tandfonline-com.libproxy.berkeley.edu/doi/full/10.1080/01621459.2021.2003200?needAccess=true) (williamson et al. 2021)
 
 # misc new papers
 

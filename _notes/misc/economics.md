@@ -27,6 +27,23 @@
   - there is a mass of retail buyers who like to all buy the same stock, and Musk’s tweet gave them a [Schelling point](https://en.wikipedia.org/wiki/Focal_point_(game_theory)) to coordinate around
   - SEC shut down Hertz selling shares after bankruptcy (stocks would become worthless)
 
+# economic measures
+
+- [The Case For Degrowth - Current Affairs](https://www.currentaffairs.org/2020/08/the-case-for-degrowth)
+
+  - GDP Is Not a Measure of Human Well-Being
+  - if people are unusually healthy, the market value of medical services will go down
+  - even incredibly destructive pollution can improve GDP
+  - doesn't measure inequality, or non-revenue value (e.g. firefighters)
+  - mainstream economics is premised on the idea that we all have “unlimited wants”
+  - *Defending the Undefendable* (Walter Block ) - there’s a market for what they do, therefore what they do is good - slumlords, blackmailers, corrupt cops, and drug pusher
+  - Hickel asks us to think of the growth of economies the way we would think of the growth of a human - a human needs to grow, but “growth” is not treated as the end goal
+
+## progress
+
+- [The World’s Most Annoying Man | Current Affairs](https://www.currentaffairs.org/2019/05/the-worlds-most-annoying-man)
+  - Steven pinker's enlightment now argues that much progress has been made technologically to better mankind
+
 # ml in stock market
 
 - [Uncertainty-Aware Lookahead Factor Models for Quantitative Investing](https://arxiv.org/abs/2007.04082) (chauhan, alberg, & lipton 2020)
@@ -259,3 +276,20 @@
 
 ## crypto arbitrage
 
+- nice ref: [What is Crypto Arbitrage and How Does It Work? (2021) - Decrypt](https://decrypt.co/resources/what-is-crypto-arbitrage-and-how-does-it-work)
+- **arbitrage** - buy in one market and immediately sell in another for profit
+  - crypto arbitrage takes advantage of the fact that cryptocurrencies can be priced differently on different exchanges
+- different crypto arbitrage types
+  - spatial arbitrage - buy from one exchange, immediately sell on another
+  - convergence arbitrage - buy on one exchange and sell on another
+  - [triangular arbitrage](https://www.coygo.app/blog/posts/cryptocurrency-triangular-arbitrage-how-does-it-work/): trade difference between 3 cryptos on same exchange
+    - may convert $X \to Y$, then $Y \to Z$ , then $Z \to X$, and potentially end up with more $X$
+    - simple ex. is with exchange rates for different countries
+  - statistical arbitrage....use data models of arbitrage
+- risks: include slippage, price movement and transfer fees
+  - slippage - order is larger than cheapest offer on order book, so order 'slips' and costs more than expected
+  - price movement - must take advantage of spreads before they disappear
+    - spreads usually exist only for seconds but transferring between exchanges can take minutes (soln: hold currency on both exchanges + simultaneously buy and sell)
+  - transferral/transaction fees - must make more than this on a trade
+- pricing
+  - each crypto exchange sets price based on most recent trade (e.g. buy+sell)

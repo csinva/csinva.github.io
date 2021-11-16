@@ -672,6 +672,25 @@ Some notes on papers / books surrounding psychology, especially evolutionary psy
 
 
 
+# attached (amir levine & rachel heller)
+
+- 3 main attachment styles
+  - secure - comfortable with intimacy
+  - anxious - crave intimacy, preoccupied / worried
+  - avoidant - equate initimacy with loss in independence, minimize closeness
+- standard preach: "your happiness is something that should come from within and should not be dependent on your lover or mate. Your well-being is not their responsibility and theirs is not yours."
+- science
+  - in prehistoric times, closeness with a partner had evolutionary benefits (secure)
+    - in dangerous environment, less attached an quickly moving on is useful (avoidant)
+    - in separate harsh environment, being intensely persistent and hypervigilant also makes sense (anxious)
+  - studies
+    - connection between infant and caretaker was as essential for child's survival as food/water
+    - fmri study - fmri hypothalamus fear response was much lower when partner was holding hand
+    - strange situation test - babies happily explore new room with mother there, otherwise get upset and scared
+    - being around good/partner in marriage can lower/raise blood pressure(baker)
+    - people with anxious attachment style noticed emotion changes in synthetic faces faster
+- most people are only as needy as their unmet needs
+
 # polarization (ezra klein)
 
 Central thesis is that all politics is *identity politics* (i.e. based on group membership) rather than based on ideology. The separation of parties and people's groups (+media consumption) are a positive-feedback cycle which reinforces further polarization.

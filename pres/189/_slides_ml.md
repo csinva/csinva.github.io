@@ -1011,7 +1011,8 @@ sequentially train many *weak learners* to approximate a function
   - for squared loss, just the residual
 - models need not be differentiable
 
-## xgboost
+## xgboost (extreme gradient boosting)
 
 - very popular implementation of gradient boosting
-- fast and efficient
+- uses 2nd order derivative of the loss function, L1/L2 regularization
+- can be parallelized
