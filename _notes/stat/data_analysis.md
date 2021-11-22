@@ -162,6 +162,15 @@ First 5 parts here are based on the book [storytelling with data](http://www.sto
 
 
 
+# whitening
+
+- get decorrelated features $Z$ from inputs $X$
+- $W=$ whitening matrix , selected based on problem goals:
+  - PCA: Maximal compression of $\mathbf{X}$ in $\mathbf{Z}$
+  - ZCA: Maximal similarity between $\mathbf{X}$ and $\mathbf{Z}$
+  - Cholesky: Inducing structure: $\operatorname{Cov}(X, Z)$ is lower-triangular with positive diagonal elements
+  - $W$ is constrained as to enforce $\Sigma_{Z}=I$
+
 # missing-data imputation
 
 - [Missing value imputation: a review and analysis of the literature](https://link.springer.com/article/10.1007/s10462-019-09709-4) (lin & tsai 2019)

@@ -2,6 +2,18 @@
 
 # 2021
 
+- [Opinion | Here’s a Fact: We’re Routinely Asked to Use Leftist Fictions - The New York Times](https://www.nytimes.com/2021/11/19/opinion/heres-a-fact-were-routinely-asked-to-use-leftist-fictions.html)
+  - That selective schools regularly admit Black students with adjusted standards is undeniable
+
+- [Opinion | ‘Woke’ Went the Way of ‘P.C.’ and ‘Liberal’ - The New York Times](https://www.nytimes.com/2021/11/16/opinion/woke-progressive-liberal.html?action=click&block=associated_collection_recirc&impression_id=3a831030-4a5b-11ec-b19b-93fbdbccdf8d&index=0&pgtype=Article&region=footer)
+  - “Politically correct,” unsurprisingly, went from describing a way of seeing the world to describing the people who saw the world that way to describing the way other people felt about the people who saw the world that way
+
+- [Opinion | The Suburbs Are Poorer and More Diverse Than We Realize - The New York Times](https://www.nytimes.com/2021/11/18/opinion/suburbs-poor-diverse.html)
+  - in the 1990s, over [80 percent of Loudoun County’s students were white](https://www.nytimes.com/2021/11/14/us/loudoun-county-school-board-va.html)
+  - today that number has dropped to 43 percent
+- [What Is Critical Race Theory, and Why Is It Under Attack?](https://www.edweek.org/leadership/what-is-critical-race-theory-and-why-is-it-under-attack/2021/05)
+  - core idea is that race is a social construct, and that racism is not merely the product of individual bias or prejudice, but also something embedded in legal systems and policies
+  - Some critics claim that the theory advocates discriminating against white people in order to achieve equity
 - [The 37-Year-Olds Are Afraid of the 23-Year-Olds Who Work for Them - The New York Times](https://www.nytimes.com/2021/10/28/business/gen-z-workplace-culture.html?campaign_id=9&emc=edit_nn_20211029&instance_id=44078&nl=the-morning&regi_id=103626597&segment_id=72968&te=1&user_id=c9a9cfdf6428d67bbc338d1a6b98bbd2)
 - [Opinion | Why ‘Evangelical’ Is Becoming Another Word for ‘Republican’ - The New York Times](https://www.nytimes.com/2021/10/26/opinion/evangelical-republican.html)
 - [The True Cost of Upgrading Your Phone - The New York Times](https://www.nytimes.com/2021/10/20/technology/personaltech/iphone-upgrades-cost.html)

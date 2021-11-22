@@ -140,21 +140,20 @@ typora-copy-images-to: ../assets
     - disparate outcomes mus be justified by reference to a legitimate "business necessity" (e.g. for hiring, this would be a required job-related skill)
   - **biased proxy** - do proxy variables (e.g. weight/height) properly capture the legitimate target variable?
     - problematic "redundant encodings" - a proxy variable can be predictive of a legitimate target variable and membership in a protected group
-
 - **input accountability test - captures these questions w/ basic statistics**
-    - intuition: exclude input variables which are potentially problematic
-      - in this context, easier to define fairness without tradeoffs
-      - even in unbiased approach, still need things like subsidies to address systemic issues
-    - the test
-      - look at correlations between proxy and legitimate target, proxy and different groups - proxy should not systematically penalize members of a protected group
-      - **regression form**
-        - predict legitimate target from proxy: $Height_i = \alpha \cdot Strength_i + \epsilon_i$
-        - measure if residuals are correlated with protected groups: $\epsilon_i \perp gender$
-        - if they are correlated, exclude the feature
-    - difficulties
-      - target is often unobservable / has measurement err
-      - have to define a threshold for testing residual correaltions (maybe 0.05 p-vaues)
-      - there might exist nonlinear interactions
+  - intuition: exclude input variables which are potentially problematic
+    - in this context, easier to define fairness without tradeoffs
+    - even in unbiased approach, still need things like subsidies to address systemic issues
+  - the test
+    - look at correlations between proxy and legitimate target, proxy and different groups - proxy should not systematically penalize members of a protected group
+    - **regression form**
+      - predict legitimate target from proxy: $Height_i = \alpha \cdot Strength_i + \epsilon_i$
+      - measure if residuals are correlated with protected groups: $\epsilon_i \perp gender$
+      - if they are correlated, exclude the feature
+  - difficulties
+    - target is often unobservable / has measurement err
+    - have to define a threshold for testing residual correaltions (maybe 0.05 p-vaues)
+    - there might exist nonlinear interactions
   - major issues
     - even if features are independently okay, when you combine them in a model the outputs can be problematic
 - related approaches
@@ -163,6 +162,10 @@ typora-copy-images-to: ../assets
   - some propose using bst predictive model alone
     - some have argued that a test for fairness is that there is no other algorithm that is as accurate and have less of an adverse impact (skanderson and ritter)
   - HUD's mere predictive test - only requires that prediction is good and that inputs are not subsitutes for a protected characteristic
+- In a [2007 U.S. Supreme Court school-assignment case](https://www.edweek.org/policy-politics/districts-face-uncertainty-in-maintaining-racially-diverse-schools/2007/06) on whether race could be a factor in maintaining diversity in K-12 schools
+    - Chief Justice John Roberts’ opinion famously concluded: “The way to stop discrimination on the basis of race is to stop discriminating on the basis of race.”
+    - then-justice Ruth Bader Ginsburg said: “It’s very hard for me to see how you can have a racial objective but a nonracial means to get there.”
+
 
 ## misc papers
 

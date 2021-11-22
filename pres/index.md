@@ -10,19 +10,33 @@ title: presentations
 - [deep learning trends 2020](https://docs.google.com/presentation/d/15NRwGfKyGkcDIDKYwoq82PXdJrkJeRmSQfUbk5oQvuM/edit#slide=id.g8da3737a00_0_24)
 
 ### phd research overview
+
 - [research overview](https://docs.google.com/presentation/d/19fTICv0pyRiwGE39mqE_eGTq0Arn3OtVnDSrURFbPMA/present?slide=id.p)
+- [thesis slides](https://docs.google.com/presentation/d/1IyxCrB5Ol8RsvFBTTy4Y5DQH3TxS9Wgl7Pxt1thrBBY/edit)
 - [qual slides](https://docs.google.com/presentation/d/1cdzZsyRYRs9GiR9s2-V7OO8oIcaabT5TVJFGR9qk_HY/edit#slide=id.p)
     - [acd paige slides](https://docs.google.com/presentation/d/1aZvpZVk6pMmcUkQD0MaBQrmoecU835x6bqi1cbQNXeU/edit#slide=id.g51955b76d5_0_7)
         - Title: Disentangled interpretations for deep learning
-        - Abstract: Deep learning models have achieved impressive predictive performance by learning complex functions of many variables, often at the cost of interpretability. I will discuss a recent line of work aiming to interpret neural networks by attributing importance to features and feature interactions for individual predictions. Importantly, the proposed methods disentangle the importance of features in isolation and the interactions between groups of features. These attributions significantly enhance interpretability and can be used to directly improve generalization in interesting ways. I will showcase how we have worked with domain experts to make these attributions useful in different computer vision settings, including in bioimaging and cosmology.
+        - <details>
+          <summary>Abstract</summary>
+          Deep learning models have achieved impressive predictive performance by learning complex functions of many variables, often at the cost of interpretability. I will discuss a recent line of work aiming to interpret neural networks by attributing importance to features and feature interactions for individual predictions. Importantly, the proposed methods disentangle the importance of features in isolation and the interactions between groups of features. These attributions significantly enhance interpretability and can be used to directly improve generalization in interesting ways. I will showcase how we have worked with domain experts to make these attributions useful in different computer vision settings, including in bioimaging and cosmology.
+          </details>
     - [dl joint reading group slides](https://docs.google.com/presentation/d/1MNEtfdD1ng8o_s75FYTZPbUDSmAf7smIc8jJnZ2FbO0/edit?usp=sharing)
         - Title: Disentangled interpretations for deep learning with ACD
-        - Abstract: Deep learning models have achieved impressive predictive performance by learning complex functions of many variables, often at the cost of interpretability. I will discuss our recent works aiming to interpret neural networks by attributing importance to features and feature interactions for individual predictions. Importantly, the proposed method (named agglomerative contextual decomposition, or ACD) disentangles the importance of features in isolation and the interactions between groups of features. These attributions yield insights across domains, including in NLP/computer vision and can be used to directly improve generalization in interesting ways.
-    - We focus on a problem in cosmology, where it is crucial to interpret how a model trained on simulations predicts fundamental cosmological parameters. By extending ACD to interpret transformations of input features, we vet the model by analyzing attributions in the frequency domain. Finally, we discuss ongoing work using ACD to develop simple transformations (e.g. adaptive wavelets) which can be both predictive and interpretable for cosmological parameter prediction.
+        - <details>
+          <summary>Abstract</summary>
+          Deep learning models have achieved impressive predictive performance by learning complex functions of many variables, often at the cost of interpretability. I will discuss our recent works aiming to interpret neural networks by attributing importance to features and feature interactions for individual predictions. Importantly, the proposed method (named agglomerative contextual decomposition, or ACD) disentangles the importance of features in isolation and the interactions between groups of features. These attributions yield insights across domains, including in NLP/computer vision and can be used to directly improve generalization in interesting ways.
+          </details>
+    - <details>
+      <summary>Summary</summary>
+      We focus on a problem in cosmology, where it is crucial to interpret how a model trained on simulations predicts fundamental cosmological parameters. By extending ACD to interpret transformations of input features, we vet the model by analyzing attributions in the frequency domain. Finally, we discuss ongoing work using ACD to develop simple transformations (e.g. adaptive wavelets) which can be both predictive and interpretable for cosmological parameter prediction.
+      </details>
         - Paper links: hierarchical interpretations [(ICLR 2019)](https://openreview.net/pdf?id=SkEqro0ctQ), interpreting transformations in cosmology [(ICLR workshop 2020)](https://arxiv.org/abs/2003.01926), penalizing explanations [(ICML 2020)](https://github.com/laura-rieger/deep-explanation-penalization)
     - [bair sem slides](https://docs.google.com/presentation/d/1vpunbuggj1sHxz3g_20pj2vtesHxJNUQoPbsHMMfz3A/edit#slide=id.p)
         - Title: Interpreting and Improving Neural Networks via Disentangled Attributions
-        - Abstract: Machine learning models have achieved impressive predictive performance by learning complex functions of many variables. However, the inability to effectively interpret these functions has limited their use across many fields, such as science and medicine. This talk will cover a recent line of work aiming to interpret models by attributing importance to features / feature groups for a single prediction. Importantly, the proposed attributions disentangle the importance of features in isolation and the interactions between groups of features. These attributions are shown to yield insights across domains, including an NLP classification task and in understanding cosmological models. Moreover, these attributions can be used during training to improve generalization in interesting ways, such as forcing an image classification model to focus on shape instead of texture. The talk will place a large emphasis on rigorously evaluating and testing the proposed attributions to assure they are properly describing the model.
+        - <details>
+      <summary>Abstract</summary>
+      Machine learning models have achieved impressive predictive performance by learning complex functions of many variables. However, the inability to effectively interpret these functions has limited their use across many fields, such as science and medicine. This talk will cover a recent line of work aiming to interpret models by attributing importance to features / feature groups for a single prediction. Importantly, the proposed attributions disentangle the importance of features in isolation and the interactions between groups of features. These attributions are shown to yield insights across domains, including an NLP classification task and in understanding cosmological models. Moreover, these attributions can be used during training to improve generalization in interesting ways, such as forcing an image classification model to focus on shape instead of texture. The talk will place a large emphasis on rigorously evaluating and testing the proposed attributions to assure they are properly describing the model.
+      </details>
     - [acd + interpretable ml talk](https://docs.google.com/presentation/d/1x4zzugqu1kMhUKdM94MWrfB9Y6-YfrnHsv5MDFvzfmE/edit#slide=id.p)
         - [nlp version](https://docs.google.com/presentation/d/1bFIdoarqhZdwyXmvNKgqfbhKXByfgPW9h27HYGDXKGM/edit)
         - [interpretable ml](https://docs.google.com/presentation/d/13jbgFyYSSDaMUd2w4RY9GHteTcWJj1drS6_2sOkvnv4/present?slide=id.p) (discussion slides for group meeting)
@@ -32,9 +46,12 @@ title: presentations
     - [dudoit group meeting](https://docs.google.com/presentation/d/1xA4aaBXKV4cO5_iXZZcUnheFpcMsT1U5fJZdaE7FwME/edit#slide=id.p)
     - [simons 2020 talk](https://docs.google.com/presentation/d/1OW4LxoKd6qxPaTP6XXH_gTLfrDV9DVfO7Wa00oznJv4/edit#slide=id.p) ([announcement](https://simons.berkeley.edu/events/disentangled-interpretations-and-how-we-can-use-them))
         - Title: Disentangled interpretations and how we can use them
-        - Abstract: Recent machine learning models have achieved impressive predictive performance by learning complex functions of many variables, often at the cost of interpretability. This talk will cover recent work aiming to interpret models by attributing importance to features / feature groups for a single prediction. Importantly, the proposed attributions disentangle the importance of features in isolation and the interactions between groups of features. These attributions are shown to yield insights across domains, including an NLP classification task and in understanding cosmological models. Moreover, these attributions can be used during training to directly improve generalization in interesting ways. The talk will place a large emphasis on how to cogently define and evauate the proposed interpretations.
+        - <details>
+      <summary>Abstract</summary>
+      Recent machine learning models have achieved impressive predictive performance by learning complex functions of many variables, often at the cost of interpretability. This talk will cover recent work aiming to interpret models by attributing importance to features / feature groups for a single prediction. Importantly, the proposed attributions disentangle the importance of features in isolation and the interactions between groups of features. These attributions are shown to yield insights across domains, including an NLP classification task and in understanding cosmological models. Moreover, these attributions can be used during training to directly improve generalization in interesting ways. The talk will place a large emphasis on how to cogently define and evauate the proposed interpretations.
+      </details>
 
-### dnn interp individual presentations
+### interp individual presentations
 
 - [cogsci acd slides](https://docs.google.com/presentation/d/1I6djTqVn6YGKqxvQk59-4C39LbE68mNQbX1Go5pzTH4/present?slide=id.p)
     - [acd white-theme slides for bin](https://docs.google.com/presentation/d/1GjL0IJWft3IpdWxAwprXNiZkAG4Jl5mU6FNT2t0DGkQ/edit#slide=id.g5d6ee59cb4_0_0)
@@ -42,11 +59,22 @@ title: presentations
 - [cdep-focused slides 40 min](https://docs.google.com/presentation/d/1F9spZOwKbxtXqpCiKv2V332v4Vs-UV6mQ_7Xs_cnrLg/edit#slide=id.p)    
 - [trim_cosmology_group_meeting (03/17/21)](https://docs.google.com/presentation/d/1sDtuaZt7bnAzvEB6tEv04rhVifnGSvyA1o6qUA-Z4ys/edit#slide=id.p)
     - [transform interp](https://docs.google.com/presentation/d/1mH1uG38qJg-ar0G-LiVPZWNKPO_2GiD-uayWM5AI-bo/present?slide=id.p)
+- [awd](https://docs.google.com/presentation/d/1YrzAir94D0KWewau34dZAXXPdATRuqeVf8Jt-o_wqG8/edit#slide=id.p) (neurips recording)
 - [pdr](https://docs.google.com/presentation/d/18Tdiym7hDeu0c4tj5XezrznIDfbltR4QQJJZjaHi7tk/present?slide=id.p)
 - [auxilin prediction](https://docs.google.com/presentation/d/1sQXbFUTSEyrmDkovV8g759Wj8E9LBpATAVV1iweKeGo/edit#slide=id.gc0f646bcee_0_0)
-- [iai_rules](https://docs.google.com/presentation/d/19liiotfBKNPm2lli6U1ZOPd8jCHEL8Y99HcEZFHOSsQ/edit#slide=id.gc6d28d5565_0_0)
-    - [general rules ovw](https://docs.google.com/presentation/u/1/d/1Ui-NWeJobJ4MhcK-1RG20q8PSyQq4harjOsZ-ml8K4s/edit#slide=id.gc6d28d5565_0_0) 
-  
+
+    
+
+## rules / software individual presentations
+
+- [yu-group software](https://docs.google.com/presentation/d/1phLaC8n8iKG68RQtm99BE3gDkOj-NQhiO2AtJGjBFkM/edit#slide=id.gfc50a11ff5_0_0)
+- [vflow](https://docs.google.com/presentation/d/1bcrdF5TozKNLdvxvRK63wsDHS8qRDvg2MgsAZYUy2jw/edit)
+- [stablerules preliminary](https://docs.google.com/presentation/d/1KSUncdizsQ3cmpsZE0uGGWudQuewMKnukI8V3uManHc/edit#slide=id.gd4a2e647f0_0_0)
+- [saps](https://docs.google.com/presentation/d/1hMF3kMoQDdrM6BHDq1CWVYsibgVyaOVtz0l2WEIbsy0/edit?usp=sharing)
+- [iai](https://docs.google.com/presentation/d/19liiotfBKNPm2lli6U1ZOPd8jCHEL8Y99HcEZFHOSsQ/edit#slide=id.gc6d28d5565_0_0)
+  - [iai-rulevetting](https://docs.google.com/presentation/d/1Ui-NWeJobJ4MhcK-1RG20q8PSyQq4harjOsZ-ml8K4s/edit#slide=id.gc6d28d5565_0_0) (215A presentation)
+  - [general rules ovw](https://docs.google.com/presentation/u/1/d/1Ui-NWeJobJ4MhcK-1RG20q8PSyQq4harjOsZ-ml8K4s/edit#slide=id.gc6d28d5565_0_0)
+
 
 ### dnn misc individual presentations
 - [faces final pres](https://docs.google.com/presentation/d/19Z4TnHCDkNENutyKmE_kZBSJX4jMUam6DoH3HckkMrI/present?slide=id.p)
@@ -89,8 +117,8 @@ title: presentations
   - [covid coe article](https://engineering.berkeley.edu/news/2020/04/getting-the-right-equipment-to-the-right-people/)
     - [berkeley science rvw blurb](https://berkeleysciencereview.com/article/ppe-to-the-ppeople-2/) 
   - [bids iml piece](https://bids.berkeley.edu/publications/definitions-methods-and-applications-interpretable-machine-learning)
-  - https://uvacsnews.wordpress.com/2017/05/04/chandansingh/
-    - https://uvacsnews.wordpress.com/2017/05/12/congratulations-to-our-cs-award-winners/
-    - https://twitter.com/CS_UVA/status/860155364347715584
+  - [uvacsnews](https://uvacsnews.wordpress.com/2017/05/04/chandansingh/)
+    - [uvacsnews2](https://uvacsnews.wordpress.com/2017/05/12/congratulations-to-our-cs-award-winners/)
+    - [uvacsnewstweet](https://twitter.com/CS_UVA/status/860155364347715584)
   
   

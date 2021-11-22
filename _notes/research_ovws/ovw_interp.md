@@ -216,6 +216,10 @@ For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
   - values in terminal nodes coditioned on tree structure
   - residual noise's standard deviation
 - [BART: Bayesian additive regression trees](https://arxiv.org/abs/0806.3286) (chipman et al. 2008) - learns an ensemble of tree models using MCMC on a distr. imbued with a prior
+  - pre-specify number of trees in ensemble
+  - MCMC step: add split, remove split, switch split
+  - cycles through the trees one at a time
+
 - [On the price of explainability for some clustering problems](https://arxiv.org/abs/2101.01576) (laber et al. 2021) - trees for clustering
 - history
   - automatic interaction detection (AID) regression trees (Morgan & Sonquist, 1963)

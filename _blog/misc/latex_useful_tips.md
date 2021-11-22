@@ -7,6 +7,12 @@ category: blog
 
 *Contains simple instructions for common issues with writing in latex*
 
+## introduction
+
+- really good introduction [here](https://www.overleaf.com/learn/latex/Free_online_introduction_to_LaTeX_(part_1))
+
+
+
 ## diffing complex latex files
 
 **Pipeline for finding the differences between 2 versions of complex latex projects.**
