@@ -26,6 +26,7 @@ displays
 - [slurmpy](https://github.com/brentp/slurmpy): lets you submit jobs to slurm using just python, so you never need to write bash scripts.
 - [pandas](https://pandas.pydata.org/): provides dataframes to python - often overlooked for big data which might not fit into DataFrames that fit into memory. Still very useful for comparing results of models, particularly with many hyperparameters.
   - [modin](https://github.com/modin-project/modin) - drop in pandas replacement to speed up operations
+  - `df.to_latex()`
 - [pandas-profiling](https://github.com/pandas-profiling/pandas-profiling) - very quick data overviews
 - [pandas bamboolib](https://bamboolib.8080labs.com/) - ui for pandas, in development
 - [dovpanda](https://github.com/dovpanda-dev/dovpanda) - helpful hints for using pandas

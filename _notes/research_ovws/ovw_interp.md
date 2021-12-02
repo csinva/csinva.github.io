@@ -22,6 +22,7 @@ The definition of interpretability I find most useful is that given in [murdoch 
 - [Interpretable Deep Learning in Drug Discovery](https://arxiv.org/abs/1903.02788)
 - [Explainable AI: A Brief Survey on History, Research Areas, Approaches and Challenges](https://link.springer.com/chapter/10.1007/978-3-030-32236-6_51)
 - [Explainable Artificial Intelligence (XAI): Concepts, Taxonomies, Opportunities and Challenges toward Responsible AI](https://arxiv.org/abs/1910.10045)
+- [Against Interpretability: a Critical Examination of the Interpretability Problem in Machine Learning](https://link.springer.com/article/10.1007/s13347-019-00372-9) - "where possible, discussion should be reformulated in terms of the ends of interpretability"
 
 
 
@@ -66,6 +67,8 @@ Evaluating interpretability can be very difficult (largely because it rarely mak
 - [Quantifying Interpretability of Arbitrary Machine Learning Models Through Functional Decomposition](https://arxiv.org/pdf/1904.03867.pdf) (molnar 2019)
 - [An Evaluation of the Human-Interpretability of Explanation](https://arxiv.org/pdf/1902.00006.pdf) (lage et al. 2019)
   - [How do Humans Understand Explanations from Machine Learning Systems?: An Evaluation of the Human-Interpretability of Explanation](https://arxiv.org/pdf/1802.00682.pdf) (narayanan et al. 2018)
+- Multi-value Rule Sets for Interpretable Classification with Feature-Efficient Representations ([wang, 2018](https://proceedings.neurips.cc/paper/2018/file/32bbf7b2bc4ed14eb1e9c2580056a989-Paper.pdf))
+  - measure how long it takes for people to calculate predictions from different rule-based models
 - [On the (In)fidelity and Sensitivity for Explanations](https://arxiv.org/abs/1901.09392)
 - [Benchmarking Attribution Methods with Relative Feature Importance](https://arxiv.org/abs/1907.09701) (yang & kim 2019)
 - [Do Explanations Reflect Decisions? A Machine-centric Strategy to Quantify the Performance of Explainability Algorithms](https://arxiv.org/abs/1910.07387)
@@ -123,6 +126,9 @@ For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
   - accuracy = confidence = consistency
     - measures for rules: precision, info gain, correlation, m-estimate, Laplace estimate
 - these algorithms usually don't support regression, but you can get regression by cutting the outcome into intervals
+- why might these be useful?
+  - [The Magical Mystery Four: How is Working Memory Capacity Limited, and Why?](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2864034/) (cowan, 2010) - a central memory store limited to 3 to 5 meaningful items in young adults
+
 - connections
   - every decision list is a (one-sided) decision tree
   - every decision tree can be expressed as an equivalent decision list (by listing each path to a leaf as a decision rule)
@@ -190,19 +196,39 @@ For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
 *Trees suffer from the fact that they have to cover the entire decision space and often we end up with replicated subtrees.*
 
 - [Generalized and Scalable Optimal Sparse Decision Trees](https://arxiv.org/abs/2006.08690) (lin et al. 2020)
-  - optimize for $\min L(X, y) + \lambda \cdot (numLeaves)$ 
+  - optimize for $\min L(X, y) + \lambda \cdot (\text{numLeaves})$ 
+  - full decision tree optimization is NP-hard [(Laurent & Rivest, 1976)](https://people.csail.mit.edu/rivest/HyafilRivest-ConstructingOptimalBinaryDecisionTreesIsNPComplete.pdf)
   - can optimize many different losses (e.g. accuracy, AUC)
-  - use dynamic programming, prune the search-space with bounds (e.g. if know best loss so far, know we shouldn't add too many more leaves since each adds $\lambda$ to the total loss), represent problem with bit-vectors for each leaf enabling fast computation
+  - speedups: use dynamic programming, prune the search-space with bounds
+    -  if know best loss so far, know we shouldn't add too many more leaves since each adds $\lambda$ to the total loss
+    - similar-support bound - if two features are similar, then bounds for splitting on the first can be used to obtain bounds for the second
+    - hash trees with bit-vectors that represent similar trees using shared subtrees
+      - tree is a *set* of *leaves*
+  - bounds
+    - OSDT
+      - Upper Bound on Number of Leaves
+      - Leaf Permutation Bound
+    - GOSDT
+      - Hierarchical Objective Lower Bound
+      - Incremental Progress Bound to Determine Splitting
+      - Lower Bound on Incremental Progress
+      - Equivalent Points Bound
+      - Similar Support Bound
+      - Incremental Similar Support Bound
+      - Subset Bound
   - [optimal sparse decision trees](https://arxiv.org/abs/1904.12847) (hu et al. 2019) - previous paper, slower
-- [optimal classification trees methodology paper](https://link.springer.com/content/pdf/10.1007%2Fs10994-017-5633-9.pdf) (bertsimas & dunn, 2017) - globally optimal decision tree with expensive optimization (solved with mixed-integer optimization) - realistically, usually too slow
-  - $\begin{array}{cl}
-    \min & \overbrace{R_{x y}(T)}^{\text{misclassification err}}+\alpha|T| \\
-    \text { s.t. } & N_{x}(l) \geq N_{\min } \quad \forall l \in \text { leaves }(T)
-    \end{array}$
+  - cost-complexity pruning ([breiman et al. 1984](https://www.taylorfrancis.com/books/mono/10.1201/9781315139470/classification-regression-trees-leo-breiman-jerome-friedman-richard-olshen-charles-stone) ch 3) - greedily prune while minimizing loss function of loss + $\lambda \cdot (\text{numLeaves})$
+  - [optimal classification trees methodology paper](https://link.springer.com/content/pdf/10.1007%2Fs10994-017-5633-9.pdf) (bertsimas & dunn, 2017) - globally optimal decision tree with expensive optimization (solved with mixed-integer optimization) - realistically, usually too slow
+    - $\begin{array}{cl}
+      \min & \overbrace{R_{x y}(T)}^{\text{misclassification err}}+\alpha|T| \\
+      \text { s.t. } & N_{x}(l) \geq N_{\min } \quad \forall l \in \text { leaves }(T)
+      \end{array}$
     - $|T|$ is the number of branch nodes in tree $T$
     - $N_x(l)$ is the number of training points contained in leaf node $l$
-  - [optimal classification trees vs PECARN](https://jamanetwork.com/journals/jamapediatrics/article-abstract/2733157) (bertsimas et al. 2019)
-  - [supplemental tables](https://cdn-jamanetwork-com.libproxy.berkeley.edu/ama/content_public/journal/peds/0/poi190021supp1_prod.pdf?Expires=2147483647&Signature=EnVKjyPUrh7o2GVSU7Bxr4ZYL~5T27-sPKh14TANiL5mpXfj3YPTnUetEBPc~njVrg2VKY5TqqXCFxtR4xr6DfGLgobA~Kl92A1Jubmj9XgSL3U3so1~4O~YKob1WcS5uFI3HBpq9J-o-IkAsRq1qsnTFFzlvH7zlkwO9TW-dxnU9vtvU-QzhPNJ0cdAX-c7rrnZV0p0Fg~gzaEz5lvPP30Nort4kDTxd-FNDW5OYJFqusWF9e~3QK2S6Y4nRjv~IavQ10fQ24fSvEK5Nd1qetME8j2one0LA~KZjOk7avp76aV5os9msn-2hdPcEM7YWtLTUq12a9oVaD6pXKe3ZA__&Key-Pair-Id=APKAIE5G5CRDK6RD3PGA)
+    - [optimal classification trees vs PECARN](https://jamanetwork.com/journals/jamapediatrics/article-abstract/2733157) (bertsimas et al. 2019)
+    - [supplemental tables](https://cdn-jamanetwork-com.libproxy.berkeley.edu/ama/content_public/journal/peds/0/poi190021supp1_prod.pdf?Expires=2147483647&Signature=EnVKjyPUrh7o2GVSU7Bxr4ZYL~5T27-sPKh14TANiL5mpXfj3YPTnUetEBPc~njVrg2VKY5TqqXCFxtR4xr6DfGLgobA~Kl92A1Jubmj9XgSL3U3so1~4O~YKob1WcS5uFI3HBpq9J-o-IkAsRq1qsnTFFzlvH7zlkwO9TW-dxnU9vtvU-QzhPNJ0cdAX-c7rrnZV0p0Fg~gzaEz5lvPP30Nort4kDTxd-FNDW5OYJFqusWF9e~3QK2S6Y4nRjv~IavQ10fQ24fSvEK5Nd1qetME8j2one0LA~KZjOk7avp76aV5os9msn-2hdPcEM7YWtLTUq12a9oVaD6pXKe3ZA__&Key-Pair-Id=APKAIE5G5CRDK6RD3PGA)
+  - replicated subtree problem ([Bagallo & Haussler, 1990](https://link.springer.com/content/pdf/10.1007/BF00115895.pdf))
+    - use iterative algorithms to try to overcome it
 - [Building more accurate decision trees with the additive tree](https://www.pnas.org/content/116/40/19887) (luna et al. 2019)
   - present additive tree (AddTree), which builds a single decision tree, which is between a single CART tree and boosted decision stumps
   - cart can be seen as a boosting algorithm on stumps
@@ -210,8 +236,8 @@ For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
     - previous work: can grow tree based on Adaboost idea = AdaTree
   - ![Screen Shot 2020-03-11 at 11.10.13 PM](../assets/additive_trees.png)
 - extremely randomized trees - randomness goes further, not only feature is selected randomly but also split has some randomness
-- issues: replicated subtree problem (Pagallo & Haussler, 1990)
 - [Bayesian Treed Models](http://www-stat.wharton.upenn.edu/~edgeorge/Research_papers/treed-models.pdf) (chipman et al. 2001) - impose priors on tree parameters
+  - treed models - fit a model (e.g. linear regression) in leaf nodes
   - tree structure e.g. depth, splitting criteria
   - values in terminal nodes coditioned on tree structure
   - residual noise's standard deviation
@@ -219,7 +245,6 @@ For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
   - pre-specify number of trees in ensemble
   - MCMC step: add split, remove split, switch split
   - cycles through the trees one at a time
-
 - [On the price of explainability for some clustering problems](https://arxiv.org/abs/2101.01576) (laber et al. 2021) - trees for clustering
 - history
   - automatic interaction detection (AID) regression trees (Morgan & Sonquist, 1963)
@@ -273,10 +298,6 @@ For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
   - however, if we don't know the form of the model we must generate it
 - [Bridging the Gap: Providing Post-Hoc Symbolic Explanations for Sequential Decision-Making Problems with Black Box Simulators](https://arxiv.org/abs/2002.01080)
 - [Model Learning with Personalized Interpretability Estimation (ML-PIE)](https://arxiv.org/abs/2104.06060) - use human feedback in the loop to decide which symbolic functions are most interpretable
-
-## misc
-
-- [Coefficient tree regression: fast, accurate and interpretable predictive modeling](https://link-springer-com.libproxy.berkeley.edu/article/10.1007/s10994-021-06091-7) (surer, apley, & malthouse, 2021) - iteratively group linear terms with similar coefficients into a bigger term
 
 ## example-based = case-based (e.g. prototypes, nearest neighbor)
 
@@ -404,6 +425,7 @@ For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
   - regularize so that deep model can be closely modeled by tree w/ few nodes
 - [Tensor networks](https://www.perimeterinstitute.ca/research/research-initiatives/tensor-networks-initiative) - like DNN that only takes boolean inputs and deals with interactions explicitly
   - widely used in physics
+- [Coefficient tree regression: fast, accurate and interpretable predictive modeling](https://link-springer-com.libproxy.berkeley.edu/article/10.1007/s10994-021-06091-7) (surer, apley, & malthouse, 2021) - iteratively group linear terms with similar coefficients into a bigger term
 
 ### bayesian models
 
@@ -1002,7 +1024,6 @@ These papers don't quite connect to prediction, but are generally about finding 
 - [How Important Is a Neuron?](https://arxiv.org/abs/1805.12233)
 - [symbolic execution for dnns](https://arxiv.org/pdf/1807.10439.pdf)
 - [L-shapley abd C-shapley](https://arxiv.org/pdf/1808.02610.pdf)
-- - 
 - [Interpreting Neural Network Judgments via Minimal, Stable, and Symbolic Corrections](https://arxiv.org/pdf/1802.07384.pdf)
 - [DeepPINK: reproducible feature selection in deep neural networks](https://arxiv.org/pdf/1809.01185.pdf)
 - "Explaining Deep Learning Models -- A Bayesian Non-parametric Approach"

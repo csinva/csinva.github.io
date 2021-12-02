@@ -37,13 +37,16 @@ category: research
 - **complementarity** - ML should focus on points hard for humans + seek human input on points hard for ML
     - note: goal of perception isn't to learn categories but learn things that are associated with actions
 - [Predict Responsibly: Improving Fairness and Accuracy by Learning to Defer](http://papers.nips.cc/paper/7853-predict-responsibly-improving-fairness-and-accuracy-by-learning-to-defer) (madras et al. 2018) - adaptive rejection learning - build on rejection learning considering the strengths/weaknesses of humans
-- [Learning to Complement Humans](https://arxiv.org/abs/2005.00582) (wilder et al. 2020) - 2 approaches for how to incorporate human input:
+- [Learning to Complement Humans](https://arxiv.org/abs/2005.00582) (wilder et al. 2020) - 2 approaches for how to incorporate human input
     - discriminative approach - jointly train predictive model and policy for deferring to human (witha cost for deferring)
     - decision-theroetic approach - train predictive model + policy jointly based on value of information (VOI)
     - do real-world experiments w/ humans to validate:  scientific discovery (a galaxy classification task) and medical diagnosis (detection of breast cancer metastasis)
 - [Gaining Free or Low-Cost Transparency with Interpretable Partial Substitute](https://arxiv.org/pdf/1802.04346.pdf) (wang, 2019) - given a black-box model, find a subset of the data for which predictions can be made using a simple rule-list ([tong wang](https://scholar.google.com/citations?hl=en&user=KB6A0esAAAAJ&view_op=list_works&sortby=pubdate) has a few papers like this)
     - [Interpretable Companions for Black-Box Models](https://arxiv.org/abs/2002.03494) (pan, wang, et al. 2020) - offer an interpretable, but slightly less acurate model for each decision
       - human experiment evaluates how much humans are able to tolerate
+- [Partially Interpretable Estimators (PIE): Black-Box-Refined Interpretable Machine Learning](https://arxiv.org/abs/2105.02410) (wang eta al. 2021)
+    - interpretable model for individual features and black-box model captures feature interactions (on residuals)
+
 
 
 # outlier-detection

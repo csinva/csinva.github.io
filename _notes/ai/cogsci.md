@@ -262,3 +262,23 @@ Some notes on a computational perspective on cognitive science.
   - is acquired in an extended series of developmental accomplishments
   - encompasses several basic insights that are acquired world-wide on a roughly similar trajectory (but not timetable), (4) requires considerable learning and development based on an infant set of specialized abilities to attend to and represent persons,  (5) is severely impaired in autism, (6) is severely delayed in deaf children of hearing parents, and (6) results from but also contributes to specialized neural substrates associated with reasoning about agency, experience, and mind
 - Preschool Theory of Mind, Part 1:  Universal Belief-Desire Understanding 
+
+
+
+# lesswrong
+
+- [biases](https://www.lesswrong.com/s/5g5TkQTe9rmPS5vvM/p/ptxnyfLWqRZ98wnYi)
+  - cognitive bias can be thought of like statistical bias
+  - *base rate neglect*: grounding one’s judgments in how well sets of characteristics feel like they fit together, and neglecting how common each characteristic is in the population at large
+    - e.g. if you meet a shy person, are they more likely to be a salesperson or a librarian?
+  - *sunk cost fallacy*
+  - *scope neglect* - the number of birds saved—the *scope* of the altruistic action—had little effect on willingness to pay ([post](https://www.lesswrong.com/s/5g5TkQTe9rmPS5vvM/p/2ftJ38y9SRBCBsCzy))
+  - *availability heuristic* - judging the frequency or probability of an event by the ease with which examples of the event come to mind.
+    - [absurdity bias](https://www.lesswrong.com/lw/j4/absurdity_heuristic_absurdity_bias/); events that have never happened are not recalled, and hence deemed to have probability zero.
+  - *conjunction fallacy* - humans assign a higher probability to a proposition of the form “A and B” than to one of the propositions “A” or “B” in isolation
+    - The implausibility of one claim is compensated by the plausibility of the other; they “average out.”
+  - *planning fallacy* - people think they can plan e.g. "best guess" scenarios are same as "best case" scenarios
+- rationality
+  - **epistemic rationality** - systematically improving the accuracy of your beliefs.
+  - **instrumental rationality** - systematically achieving your values.
+- *probability theory*, and *decision theory*.

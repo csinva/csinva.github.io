@@ -10,17 +10,6 @@ category: neuro
 
 
 
-# TIPs - using viruses for treatment
-
-- [Leor Weinberger: Can we create vaccines that mutate and spread? | TED Talk](https://www.ted.com/talks/leor_weinberger_can_we_create_vaccines_that_mutate_and_spread?language=en#t-798841)
-  - viruses mutate, our drugs don't
-  - adherence / deployment - hard to give certain the drugs
-  - idea: uses viruses as treatment
-    - than superspreaders will spread treatment to others
-    - replaces hiv instruction set with amputated instruction set which is not harmful
-    - "therapeutic interfering particles" or "TIPs" are engineered deletion mutants designed to piggyback on a virus and deprive the virus of replication material
-
-
 
 # alzheimer's
 

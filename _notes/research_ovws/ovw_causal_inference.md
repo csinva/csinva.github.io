@@ -6,6 +6,8 @@ category: research
 
 {:toc}
 
+Some good packages: msft [econML](https://github.com/microsoft/EconML), uber [causalml](https://github.com/uber/causalml), msft [dowhy](https://github.com/microsoft/dowhy)
+
 # classic studies
 
 - [Descriptive Representation and Judicial Outcomes in Multiethnic Societies](https://onlinelibrary.wiley.com/doi/full/10.1111/ajps.12187) (Grossman et al. 2016)

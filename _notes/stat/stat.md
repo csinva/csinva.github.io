@@ -122,6 +122,7 @@ category: stat
 - *point estimator* $\hat{\theta}$ - statistic that predicts a parameter
   - *point estimate* - single number prediction
 - **bias**: $E(\hat{\theta}) - \theta$
+  - [really nice example](https://www.lesswrong.com/s/5g5TkQTe9rmPS5vvM/p/ptxnyfLWqRZ98wnYi)
   - more complex models (more nonzero parameters) have lower bias, higher variance
     - if high bias, train and test error will be very close (model isn't complex enough)
   - after unbiased we want MVUE (minimum variance unbiased estimator)

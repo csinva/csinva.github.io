@@ -185,24 +185,6 @@ category: ml
 - transformers [original paper](https://arxiv.org/pdf/1706.03762.pdf)
   - [spatial transformers](https://papers.nips.cc/paper/5854-spatial-transformer-networks.pdf )
 - http://colah.github.io/posts/2014-03-NN-Manifolds-Topology/
-- [Highly accurate protein structure prediction with AlphaFold | Nature](https://www.nature.com/articles/s41586-021-03819-2) (2021)
-  - [supp](https://static-content.springer.com/esm/art%3A10.1038%2Fs41586-021-03819-2/MediaObjects/41586_2021_3819_MOESM1_ESM.pdf)
-  - [best blog post](https://www.blopig.com/blog/2021/07/alphafold-2-is-here-whats-behind-the-structure-prediction-miracle/) ([other blog post](https://towardsdatascience.com/unfolding-alphafold-683d576a54a3))
-  - background
-    - the standard way to obtain the 3D structure of a protein is X-ray crystallography. It takes about a year and costs about $120,000 to obtain the structure of a single protein through X-ray crystallography [[source](https://fortune.com/2020/11/30/deepmind-protein-folding-breakthrough/)]
-    - on average, a protein is composed of 300 amino acids (residues)
-      - 21 amino acid types
-      - the first residue is fixed
-  - model overview
-    - ![alphafold](../assets/alphafold.png)
-  - preprocessing
-    - [multiple-sequence-alignment](https://www.sciencedirect.com/topics/medicine-and-dentistry/multiple-sequence-alignment) (MSA) - alignment of 3 or more amino acid (or nucleic acid) sequences, which show conserved regions within a protein family which are of structural and functional importance.
-    - finding templates - find similar proteins to model "pairs of residues" - which residues are likely to interact with each other
-  - evoformer
-    - uses attention on graph network
-    - iterative
-  - structure model - converts msa/pair representations into set of (x,y,z) coordinates
-    - "invariant point attention" - invariance to translations and rotations
 
 # graph neural networks
 

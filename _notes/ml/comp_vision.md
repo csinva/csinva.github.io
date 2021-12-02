@@ -324,6 +324,7 @@ category: ml
   - $t_z / Z$ is time to impact for a point
 - translational component of flow fields is more important - tells us $Z(x, y)$ and translation $t$
 - we can compute the time to contact
+- this is a key to what is used in [video compression](https://www.maketecheasier.com/how-video-compression-works/)
 
 
 # cogsci / neuro
