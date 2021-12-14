@@ -41,12 +41,13 @@ title: presentations
         - [nlp version](https://docs.google.com/presentation/d/1bFIdoarqhZdwyXmvNKgqfbhKXByfgPW9h27HYGDXKGM/edit)
         - [interpretable ml](https://docs.google.com/presentation/d/13jbgFyYSSDaMUd2w4RY9GHteTcWJj1drS6_2sOkvnv4/present?slide=id.p) (discussion slides for group meeting)
     - [15 min overall talk](https://docs.google.com/presentation/d/16u_23-P7uvouNo_HvpLCgG1Um3ZDu5c3d76YBhQsjjI/edit#slide=id.gc5100c8fb5_0_519)
-    - [cd + acd + cdep 5 min talk](https://docs.google.com/presentation/d/1qWor5d7AXVQfcLtQmFdMPUDPHeBkN1wWZid_pfxZjVQ/edit#slide=id.g51955b76d5_0_7)
-    - [biohub meeting](https://docs.google.com/presentation/d/1-VadvMFR9UutmjGFXASMTdPLAiuU_6nzqKvPsEjKkW0/edit?usp=sharing) (w/ wooseok)
-    - [dudoit group meeting](https://docs.google.com/presentation/d/1xA4aaBXKV4cO5_iXZZcUnheFpcMsT1U5fJZdaE7FwME/edit#slide=id.p)
+    
+        - [cd + acd + cdep 5 min talk](https://docs.google.com/presentation/d/1qWor5d7AXVQfcLtQmFdMPUDPHeBkN1wWZid_pfxZjVQ/edit#slide=id.g51955b76d5_0_7)
+        - [biohub meeting](https://docs.google.com/presentation/d/1-VadvMFR9UutmjGFXASMTdPLAiuU_6nzqKvPsEjKkW0/edit?usp=sharing) (w/ wooseok)
+        - [dudoit group meeting](https://docs.google.com/presentation/d/1xA4aaBXKV4cO5_iXZZcUnheFpcMsT1U5fJZdaE7FwME/edit#slide=id.p)
     - [simons 2020 talk](https://docs.google.com/presentation/d/1OW4LxoKd6qxPaTP6XXH_gTLfrDV9DVfO7Wa00oznJv4/edit#slide=id.p) ([announcement](https://simons.berkeley.edu/events/disentangled-interpretations-and-how-we-can-use-them))
-        - Title: Disentangled interpretations and how we can use them
-        - <details>
+      - Title: Disentangled interpretations and how we can use them
+      - <details>
       <summary>Abstract</summary>
       Recent machine learning models have achieved impressive predictive performance by learning complex functions of many variables, often at the cost of interpretability. This talk will cover recent work aiming to interpret models by attributing importance to features / feature groups for a single prediction. Importantly, the proposed attributions disentangle the importance of features in isolation and the interactions between groups of features. These attributions are shown to yield insights across domains, including an NLP classification task and in understanding cosmological models. Moreover, these attributions can be used during training to directly improve generalization in interesting ways. The talk will place a large emphasis on how to cogently define and evauate the proposed interpretations.
       </details>

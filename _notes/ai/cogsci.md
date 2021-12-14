@@ -281,4 +281,5 @@ Some notes on a computational perspective on cognitive science.
 - rationality
   - **epistemic rationality** - systematically improving the accuracy of your beliefs.
   - **instrumental rationality** - systematically achieving your values.
-- *probability theory*, and *decision theory*.
+- *probability theory*, and *decision theory*
+- System 1 and System 2—fast perceptual judgments versus slow deliberative judgments. System 2’s deliberative judgments aren’t always true, and System 1’s perceptual judgments aren’t always false; so it is very important to distinguish that dichotomy from “rationality.”

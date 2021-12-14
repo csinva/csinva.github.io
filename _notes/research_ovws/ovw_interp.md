@@ -216,6 +216,7 @@ For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
       - Similar Support Bound
       - Incremental Similar Support Bound
       - Subset Bound
+  - [How Smart Guessing Strategies Can Yield Massive Scalability Improvements for Sparse Decision Tree Optimization](https://arxiv.org/abs/2112.00798) (mctavish...rudin, seltzer, 2021) - optimization improvements
   - [optimal sparse decision trees](https://arxiv.org/abs/1904.12847) (hu et al. 2019) - previous paper, slower
   - cost-complexity pruning ([breiman et al. 1984](https://www.taylorfrancis.com/books/mono/10.1201/9781315139470/classification-regression-trees-leo-breiman-jerome-friedman-richard-olshen-charles-stone) ch 3) - greedily prune while minimizing loss function of loss + $\lambda \cdot (\text{numLeaves})$
   - [optimal classification trees methodology paper](https://link.springer.com/content/pdf/10.1007%2Fs10994-017-5633-9.pdf) (bertsimas & dunn, 2017) - globally optimal decision tree with expensive optimization (solved with mixed-integer optimization) - realistically, usually too slow
@@ -432,15 +433,15 @@ For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
 - e.g. naive bayes
 - [Making Bayesian Predictive Models Interpretable: A Decision Theoretic Approach](https://arxiv.org/abs/1910.09358)
 
-# posthoc interpretability (i.e. how can we interpret a fitted model)
-
-*Note that in this section we also include importances that work directly on the data (e.g. we do not first fit a model, rather we do nonparametric calculations of importance)*
-
 ### programs
 
 - **program synthesis** - automatically find a program in an underlying programming language that satisfies some user intent
   - **ex. program induction** - given a dataset consisting of input/output pairs, generate a (simple?) program that produces the same pairs
 - [probabilistic programming](https://en.wikipedia.org/wiki/Probabilistic_programming) - specify graphical models via a programming language
+
+# posthoc interpretability (i.e. how can we interpret a fitted model)
+
+*Note that in this section we also include importances that work directly on the data (e.g. we do not first fit a model, rather we do nonparametric calculations of importance)*
 
 
 ## model-agnostic
@@ -509,7 +510,7 @@ How interactions are defined and summarized is a very difficult thing to specify
 - alternatives
   - variable interaction networks (Hooker, 2004) - decompose pred into main effects + feature interactions
   - PDP-based feature interaction (greenwell et al. 2018)
-- feature-screening (feng ruan's work)
+- feature-screening ([feng ruan's work](https://arxiv.org/abs/2011.12215))
   - want to find beta which is positive when a variable is important
   - idea: maximize difference between (distances for interclass) and (distances for intraclass)
   - using an L1 distance yields better gradients than an L2 distance
@@ -517,7 +518,7 @@ How interactions are defined and summarized is a very difficult thing to specify
 - Automatic Interaction Detection (AID) - detects interactions by subdividing data into disjoint exhaustive subsets to model an outcome based on categorical features
 - Shapley Taylor Interaction Index (STI) (Dhamdhere et al., 2019) - extends shap to all interactions
 - retraining
-  - Additive groves (Sorokina et al. 2008) proposed use random forest with and without an interaction (forcibly removed) to detect feature interactions - very slow
+  - [Additive groves](https://link.springer.com/chapter/10.1007/978-3-540-74958-5_31) (Sorokina, carauna, & riedewald 2007) proposed use random forest with and without an interaction (forcibly removed) to detect feature interactions - very slow
 - gradient-based methods (originally Friedman and Popescu, 2008 then later used with many models such as logit)
   - test if partial derivatives for some subset (e.g. $x_1, ..., x_p$) are nonzero $\mathbb{E}_{\mathbf{x}}\left[\frac{\partial^p f(\mathbf{x})}{\partial x_{i_{1}} \partial x_{i_{2}} \ldots \partial x_{i_p}}\right]^{2}>0$ 
   - doesn't work well for piecewise functions (e.g. Relu) and computationally expensive
@@ -672,9 +673,11 @@ How interactions are defined and summarized is a very difficult thing to specify
   - asymptotically, randomized trees might actually be better
 - [Actionable Interpretability through Optimizable Counterfactual Explanations for Tree Ensembles](https://arxiv.org/pdf/1911.12199v1.pdf) (lucic et al. 2019)
 - [iterative random forest](https://www.pnas.org/content/115/8/1943) (basu et al. 2018)
-  - fit RF and get MDI importances
-  - iteratively refit RF, weighting probability of feature being selected by its previous MDI
-  - find interactions as features which co-occur on paths (using RIT algorithm)
+  - interaction scoring - find interactions as features which co-occur on paths (using RIT algorithm)
+    - [signed iterative Random Forests](https://arxiv.org/abs/1810.07287) (kumbier et al. 2018) - 
+  - repeated refitting
+    - fit RF and get MDI importances
+    - iteratively refit RF, weighting probability of feature being selected by its previous MDI
 
 ## neural nets (dnns)
 
@@ -883,9 +886,16 @@ How interactions are defined and summarized is a very difficult thing to specify
 - [piecewise linear interp](https://arxiv.org/pdf/1806.10270.pdf)
 - [Computing Linear Restrictions of Neural Networks](https://arxiv.org/abs/1908.06214) - calculate function of neural network restricting its points to lie on a line
 - [Interpreting CNN Knowledge via an Explanatory Graph](https://arxiv.org/abs/1708.01785) (zhang et al. 2017) - create a graph that responds better to things like objects than individual neurons
+
+
+
+## distillation
+
+- usually distillation refers to training a surrogate model on the predictions of the original model, but here I use it looser
 - model distillation (model-agnostic)
   - Trepan - approximate model w/ a decision tree
   - [BETA](https://arxiv.org/abs/1707.01154) (lakkaraju et al. 2017) - approximate model by a rule list
+- [set of methods](https://github.com/mateoespinosa/remix) for extracting rules from DNNN
 - exact distillation
   - [Born-again tree ensembles](https://arxiv.org/pdf/2003.11132.pdf) (vidal et al. 2020) - efficient algorithm to exactly find a minimal tree which reproduces the predictions of a tree ensemble
 - [Knowledge Distillation as Semiparametric Inference](https://arxiv.org/abs/2104.09732) (dao...mackey, 2021
@@ -999,6 +1009,10 @@ These papers don't quite connect to prediction, but are generally about finding 
 - [Predictive Multiplicity in Classification](https://arxiv.org/pdf/1909.06677.pdf) (marx et al. 2020)
   - predictive multiplicity = ability of a prediction problem to admit competing models with conflicting predictions
 - [A general framework for inference on algorithm-agnostic variable importance](https://www-tandfonline-com.libproxy.berkeley.edu/doi/full/10.1080/01621459.2021.2003200?needAccess=true) (williamson et al. 2021)
+- [An Automatic Finite-Sample Robustness Metric: When Can Dropping a Little Data Make a Big Difference?](https://arxiv.org/abs/2011.14999) (broderick et al. 2021)
+  - Approximate Maximum Influence Perturbation -  method to assess the sensitivity of econometric analyses to the removal of a small fraction of the data
+  - results of several economics papers can be overturned by removing less than 1% of the sample
+
 
 # misc new papers
 

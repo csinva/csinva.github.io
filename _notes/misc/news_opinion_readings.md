@@ -2,12 +2,19 @@
 
 # 2021
 
+- [Web3 is Bullshit](https://www.stephendiehl.com/blog/web3-bullshit.html)
+  - three technical issues of the narrative are:
+    1. Compute Problem - blockchain networks don't scale
+    2. Bandwidth Problem
+       1. Who will pay for the global data centers to serve content?
+       2. Whose lawyers will respond to the DMCA requests?
+    3. Storage Problem - who owns / can edit the data?
+
+- [Opinion | The End of Roe Is Coming, and It Is Coming Soon - The New York Times](https://www.nytimes.com/2021/12/01/opinion/supreme-court-abortion-mississippi-law.html)
 - [Opinion | Here’s a Fact: We’re Routinely Asked to Use Leftist Fictions - The New York Times](https://www.nytimes.com/2021/11/19/opinion/heres-a-fact-were-routinely-asked-to-use-leftist-fictions.html)
   - That selective schools regularly admit Black students with adjusted standards is undeniable
-
 - [Opinion | ‘Woke’ Went the Way of ‘P.C.’ and ‘Liberal’ - The New York Times](https://www.nytimes.com/2021/11/16/opinion/woke-progressive-liberal.html?action=click&block=associated_collection_recirc&impression_id=3a831030-4a5b-11ec-b19b-93fbdbccdf8d&index=0&pgtype=Article&region=footer)
   - “Politically correct,” unsurprisingly, went from describing a way of seeing the world to describing the people who saw the world that way to describing the way other people felt about the people who saw the world that way
-
 - [Opinion | The Suburbs Are Poorer and More Diverse Than We Realize - The New York Times](https://www.nytimes.com/2021/11/18/opinion/suburbs-poor-diverse.html)
   - in the 1990s, over [80 percent of Loudoun County’s students were white](https://www.nytimes.com/2021/11/14/us/loudoun-county-school-board-va.html)
   - today that number has dropped to 43 percent
@@ -169,3 +176,29 @@
 # sports
 
 - [Opinion | The N.F.L. Bets on Betting - The New York Times](https://www.nytimes.com/2021/09/18/opinion/NFL-gambling-bets.html)
+
+
+
+# humor
+
+- [Learning the Ropes | The New Yorker](https://www.newyorker.com/humor/daily-shouts/learning-the-ropes)
+
+
+
+# emotions
+
+- [attending to the other](https://jasminewang.substack.com/p/attending-to-the-other)
+  - “attention is the rarest and purest form of generosity”
+  - Wittgenstein said that “you cannot enter worlds for which you do not have the language.”
+  - Hartmut Rosa calls a similar mode of relating *resonance.* Instead of viewing ourselves as closed off, independent systems bent on controlling the other, we should leave ourselves open to being affected by the world
+
+
+
+# speeches
+
+- [This Is Water by David Foster Wallace Full Speech - YouTube](https://www.youtube.com/watch?v=PhhC_N6Bm_s)
+  - learning how to think is about reconsidering your default believes and deciding how you see things
+  - everything you experience has you at the center of it
+  - everyone worships something (e.g. money, success)
+    - the problem with many of these are that they are unconscious
+  - One way to practice attention is to notice the non-logical aspects of communication
