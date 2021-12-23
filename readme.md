@@ -76,9 +76,9 @@ Links/explanations of research code, such as these repos:
 Posts on various aspects of machine learning / statistics / neuroscience advancements
 
 
-| [Interpretability](https://csinva.github.io/blog/research/interp) | [Connectomics](https://csinva.github.io/blog/research/connectomics) | [Disentanglement](https://csinva.io/notes/research_ovws/ovw_disentanglement.html) |
+| [Interpretability](https://bair.berkeley.edu/blog/2021/09/28/wavelet/) | [Connectomics](https://csinva.github.io/blog/research/connectomics) | [Disentanglement](https://csinva.io/notes/research_ovws/ovw_disentanglement.html) |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ![](assets/img/alexnet.png)                                  | ![](assets/img/neuron.gif)                                   | ![](assets/img/complexity.png)                               |
+| [![](assets/img/alexnet.png)](https://bair.berkeley.edu/blog/2021/09/28/wavelet/)                                  | ![](assets/img/neuron.gif)                                   | [![](assets/img/complexity.png)](https://csinva.io/notes/research_ovws/ovw_disentanglement.html)                               |
 
 # Reference
 
