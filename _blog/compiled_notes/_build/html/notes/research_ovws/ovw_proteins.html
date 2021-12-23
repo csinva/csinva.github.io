@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>1.2. transfer learning</title>
+    <title>1.7. proteins</title>
     
   <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -56,8 +56,8 @@
     <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="1.3. disentanglement" href="ovw_disentanglement.html" />
-    <link rel="prev" title="1.1. comp neuro" href="ovw_comp_neuro.html" />
+    <link rel="next" title="1.8. scattering transform" href="ovw_scat.html" />
+    <link rel="prev" title="1.6. dl theory" href="ovw_dl_theory.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -103,8 +103,8 @@
      1.1. comp neuro
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="ovw_transfer_learning.html">
      1.2. transfer learning
     </a>
    </li>
@@ -128,8 +128,8 @@
      1.6. dl theory
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ovw_proteins.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      1.7. proteins
     </a>
    </li>
@@ -551,7 +551,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/notes/research_ovws/ovw_transfer_learning.md"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/notes/research_ovws/ovw_proteins.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -595,35 +595,72 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#domain-adaptation-algorithms">
-   1.2.1. domain adaptation algorithms
+  <a class="reference internal nav-link" href="#tips-using-viruses-for-treatment">
+   1.7.1. TIPs - using viruses for treatment
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rna-structure-prediction">
+   1.7.2. rna structure prediction
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#domain-invariance">
-     1.2.1.1. domain invariance
+    <a class="reference internal nav-link" href="#rna-basics">
+     1.7.2.1. rna basics
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#dynamic-selection">
-     1.2.1.2. dynamic selection
+    <a class="reference internal nav-link" href="#code">
+     1.7.2.2. code
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#test-time-adaptation">
-     1.2.1.3. test-time adaptation
+    <a class="reference internal nav-link" href="#data">
+     1.7.2.3. data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#algorithms">
+     1.7.2.4. algorithms
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#d-rna-structure-prediction">
+     1.7.2.5. 3d rna structure prediction
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#adv-attacks">
-   1.2.2. adv attacks
+  <a class="reference internal nav-link" href="#protein-structure-prediction-dna">
+   1.7.3. protein structure prediction (dna)
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#protein-basics">
+     1.7.3.1. protein basics
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#algorithm-basics">
+     1.7.3.2. algorithm basics
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#deep-learning-papers">
+     1.7.3.3. deep-learning papers
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#covid">
+     1.7.3.4. covid
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#overviews">
-   1.2.3. overviews
+  <a class="reference internal nav-link" href="#bin-random-papers">
+   1.7.4. bin random papers
   </a>
  </li>
 </ul>
@@ -637,189 +674,353 @@
         
               <div>
                 
-  <div class="section" id="transfer-learning">
-<h1>1.2. transfer learning<a class="headerlink" href="#transfer-learning" title="Permalink to this headline">¶</a></h1>
-<p>See also notes on causal inference for some close connections.</p>
-<div class="section" id="domain-adaptation-algorithms">
-<h2>1.2.1. domain adaptation algorithms<a class="headerlink" href="#domain-adaptation-algorithms" title="Permalink to this headline">¶</a></h2>
-<p><em>Domain test bed available <a class="reference external" href="https://github.com/facebookresearch/DomainBed">here</a>, for generalizating to new domains (i.e. performing well on domains that differ from previous seen data)</em></p>
+  <div class="section" id="proteins">
+<h1>1.7. proteins<a class="headerlink" href="#proteins" title="Permalink to this headline">¶</a></h1>
+<p><strong>some papers involving proteins and ml, especially predicting protein structure from dna/rna</strong></p>
+<div class="section" id="tips-using-viruses-for-treatment">
+<h2>1.7.1. TIPs - using viruses for treatment<a class="headerlink" href="#tips-using-viruses-for-treatment" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Empirical Risk Minimization (ERM, <a class="reference external" href="https://www.wiley.com/en-fr/Statistical+Learning+Theory-p-9780471030034">Vapnik, 1998</a>) - standard training</p></li>
-<li><p>Invariant Risk Minimization (IRM, <a class="reference external" href="https://arxiv.org/abs/1907.02893">Arjovsky et al., 2019</a>) - learns a feature representation such that the optimal linear classifier on top of that representation matches across domains.</p></li>
-<li><p>Group Distributionally Robust Optimization (GroupDRO, <a class="reference external" href="https://arxiv.org/abs/1911.08731">Sagawa et al., 2020</a>) - ERM + increase importance of domains with larger errors (see also papers from Sugiyama group e.g. <a class="reference external" href="http://papers.neurips.cc/paper/3019-mixture-regression-for-covariate-shift.pdf">1</a>, <a class="reference external" href="https://arxiv.org/abs/1611.02041">2</a>)</p>
+<li><p>videos</p>
 <ul>
-<li><p>Variance Risk Extrapolation (VREx, <a class="reference external" href="https://arxiv.org/abs/2003.00688">Krueger et al., 2020</a>) - encourages robustness over affine combinations of training risks, by encouraging strict equality between training risks</p></li>
+<li><p><a class="reference external" href="https://www.ted.com/talks/leor_weinberger_can_we_create_vaccines_that_mutate_and_spread?language=en#t-798841">Leor Weinberger: Can we create vaccines that mutate and spread? | TED Talk</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=Dh0RbiAf2jY">Engineering Viruses - Leor Weinberger - Gladstone Institutes 2016 Fall Symposium - YouTube</a></p></li>
 </ul>
 </li>
-<li><p>Interdomain Mixup (Mixup, <a class="reference external" href="https://arxiv.org/abs/2001.00677">Yan et al., 2020</a>) - ERM on linear interpolations of examples from random pairs of domains + their labels</p></li>
-<li><p>Marginal Transfer Learning (MTL, <a class="reference external" href="https://arxiv.org/abs/1711.07910">Blanchard et al., 2011-2020</a>) - augment original feature space with feature vector marginal distributions and then treat as a supervised learning problem</p></li>
-<li><p>Meta Learning Domain Generalization (MLDG, <a class="reference external" href="https://arxiv.org/abs/1710.03463">Li et al., 2017</a>) - use MAML to meta-learn how to generalize across domains</p></li>
-<li><p>learning more diverse predictors</p>
+<li><p>2 issues</p>
 <ul>
-<li><p>Representation Self-Challenging (RSC, <a class="reference external" href="https://arxiv.org/abs/2007.02454">Huang et al., 2020</a>) - adds dropout-like regularization to important features, forcing model to depend on many features</p></li>
-<li><p>Spectral Decoupling (SD, <a class="reference external" href="https://arxiv.org/abs/2011.09468">Pezeshki et al., 2020</a>) - regularization which forces model to learn more predictive features, even when only a few suffice</p></li>
+<li><p>mutation - viruses mutate, our drugs don’t</p></li>
+<li><p>transmission - adherence / deployment - hard to give certain the drugs</p></li>
 </ul>
 </li>
-<li><p>embedding prior knowledge</p>
+<li><p>solution: use modified versions of viruses as treatment</p>
 <ul>
-<li><p>Style Agnostic Networks (SagNet, <a class="reference external" href="https://arxiv.org/abs/1910.11645">Nam et al., 2020</a>) - penalize style features (assumed to be spurious)</p></li>
-<li><p>Penalizing explanations (<a class="reference external" href="https://arxiv.org/abs/1909.13584">Rieger et al. 2020</a>) - penalize spurious features using prior knowledge</p></li>
-</ul>
-</li>
-<li><p>Domain adaptation under structural causal models (<span class="xref myst">chen &amp; buhlmann, 2020</span>)</p>
+<li><p><em>therapeutic interfering particles</em> or <em>TIPs</em> are engineered deletion mutants designed to piggyback on a virus and deprive the virus of replication material</p>
 <ul>
-<li><p>make clearer assumptions for domain adaptation to work</p></li>
-<li><p>introduce CIRM, which works better when both covariates and labels are perturbed in target data</p></li>
-</ul>
-</li>
-<li><p>kernel approach (<a class="reference external" href="https://papers.nips.cc/paper/2011/file/b571ecea16a9824023ee1af16897a582-Paper.pdf">blanchard, lee &amp; scott, 2011</a>) - find an appropriate RKHS and optimize a regularized empirical risk over the space</p></li>
-</ul>
-<div class="section" id="domain-invariance">
-<h3>1.2.1.1. domain invariance<a class="headerlink" href="#domain-invariance" title="Permalink to this headline">¶</a></h3>
-<p><em>key idea: want repr. to be invariant to domain label</em></p>
-<ul class="simple">
-<li><p><img alt="Screen Shot 2020-11-10 at 12.05.12 PM" src="../../_images/domain_adv_training.png" /></p></li>
-<li><p>same idea is used to <a class="reference external" href="https://www.cs.toronto.edu/~toni/Papers/icml-final.pdf">learn fair representations</a>, but domain label is replaced with sensitive attribute</p></li>
-<li><p>Domain Adversarial Neural Network (DANN, <a class="reference external" href="https://arxiv.org/abs/1505.07818">Ganin et al., 2015</a>)</p></li>
-<li><p>Conditional Domain Adversarial Neural Network (CDANN, <a class="reference external" href="https://arxiv.org/abs/1807.08479">Li et al., 2018</a>) - variant of DANN matching the conditional distributions  across domains, for all labels</p></li>
-<li><p>Deep CORAL (CORAL, <a class="reference external" href="https://arxiv.org/abs/1607.01719">Sun and Saenko, 2016</a>) - match mean / covariance of feature distrs</p></li>
-<li><p>Maximum Mean Discrepancy (MMD, <a class="reference external" href="https://openaccess.thecvf.com/content_cvpr_2018/papers/Li_Domain_Generalization_With_CVPR_2018_paper.pdf">Li et al., 2018</a>)</p></li>
-<li><p>adversarial discriminative domain adaptation (ADDA <a class="reference external" href="https://arxiv.org/abs/1702.05464">tzeng et al. 2017</a>)</p></li>
-<li><p>balancing with <a class="reference external" href="https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.370.4921&amp;rep=rep1&amp;type=pdf">importance weighting</a></p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1903.06256">Learning Robust Representations by Projecting Superficial Statistics Out</a> (wang et al. 2019)</p></li>
-</ul>
-</div>
-<div class="section" id="dynamic-selection">
-<h3>1.2.1.2. dynamic selection<a class="headerlink" href="#dynamic-selection" title="Permalink to this headline">¶</a></h3>
-<p><em>Dynamic Selection (DS) refers to techniques in which, for a new test point, pre-trained classifiers are selected/combined from a pool at test time  <a class="reference external" href="https://www.etsmtl.ca/Unites-de-recherche/LIVIA/Recherche-et-innovation/Publications/Publications-2017/RCruz_InfoFusion.pdf">review paper</a> (cruz et al. 2018), <a class="reference external" href="https://github.com/scikit-learn-contrib/DESlib">python package</a></em></p>
-<ol class="simple">
-<li><p>define region of competence</p>
-<ol class="simple">
-<li><p>clustering</p></li>
-<li><p>kNN - more refined than clustering</p></li>
-<li><p>decision space - e.g. a model’s classification boundary, internal splits in a model</p></li>
-<li><p>potential function - weight all the points (e.g. by their distance to the query point)</p></li>
-</ol>
-</li>
-<li><p>criteria for selection</p>
-<ol class="simple">
-<li><p>individual scores: acc, prob. behavior, rank, meta-learning, complexity</p></li>
-<li><p>group: data handling, ambiguity, diversity</p></li>
-</ol>
-</li>
-<li><p>combination</p>
-<ol class="simple">
-<li><p>non-trainable: mean, majority vote, product, median, etc.</p></li>
-<li><p>trainable: learn the combination of models</p>
-<ol class="simple">
-<li><p>related: in mixture of experts models + combination are trained jointly</p></li>
-</ol>
-</li>
-<li><p>dynamic weighting: combine using local competence of base classifiers</p></li>
-<li><p>Oracle baseline - selects classifier predicts correct label, if such a classifier exists</p></li>
-</ol>
-</li>
-</ol>
-</div>
-<div class="section" id="test-time-adaptation">
-<h3>1.2.1.3. test-time adaptation<a class="headerlink" href="#test-time-adaptation" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>test-time adaptation</p>
+<li><p>TIP is like a parasite of the virus - it clips off some of the virus DNA (via genetic engineering)</p>
 <ul>
-<li><p>test-time augmentation</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1603.04779">batch normalization</a> (AdaBN)</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1802.03916">label shift estimation</a> (BBSE) - <span class="math notranslate nohighlight">\(p(y)\)</span> shifts but <span class="math notranslate nohighlight">\(P(x|y)\)</span> does not</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1909.13231">rotation prediction</a> (sun et al. 2020)</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/2006.10726">entropy minimization</a> (test-time entropy minimization, TENT, wang et al. 2020) - optimize for model confidence (entropy of predictions), using only norm. statistics and channel-wise affine transformations</p></li>
+<li><p>it doesn’t contain the code for replication, just for getting into the cell</p></li>
+<li><p>since it’s shorter, it’s made more efficiently - thus it outcompetes the virus</p></li>
 </ul>
 </li>
-<li><p>combining train-time and test-time adaptation</p>
-<ul>
-<li><p>Adaptive Risk Minimization (ARM, <a class="reference external" href="https://arxiv.org/abs/2007.02931">Zhang et al., 2020</a>) - combines groups at training time + <em>batches at test-time</em></p>
-<ul>
-<li><p><em>meta-train</em> the model using simulated distribution shifts, which is enabled by the training groups, such that it exhibits strong <em>post-adaptation</em> performance on each shift</p></li>
 </ul>
 </li>
+<li><p>how do TIPs spread?</p>
+<ul>
+<li><p>mutations happen because the “copy machine” within a cell makes a particular mutation</p>
+<ul>
+<li><p>when a new virus comes along, it makes some of the mutated parts</p></li>
+<li><p>TIPs can’t replicate, so they take some of the mutated parts made by the new virus</p></li>
+<li><p>then, the TIP gets copied with the same mutation as the virus and this now spreads</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>effect</p>
+<ul>
+<li><p>viral load will immediately be lower</p></li>
+<li><p>superspreaders can spread treatment to others</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0092867421013192?dgcid=coauthor">Identification of a therapeutic interfering particle—A single-dose SARS-CoV-2 antiviral intervention with a high barrier to resistance</a> (chaturvedi…weinberger, 2021)</p>
+<ul>
+<li><p>DIP = defective interfering particle = wild-type virus</p></li>
+<li><p>single administration of TIP RNA inhibits SARS-CoV-2 sustainably in continuous cultures</p></li>
+<li><p>in hamsters, both prophylactic and therapeutic intranasal administration of lipid-nanoparticle TIPs durably suppressed SARS-CoV-2 by 100-fold in the lungs, reduced pro-inflammatory cytokine expression, and prevented severe pulmonary edema</p></li>
 </ul>
 </li>
 </ul>
 </div>
-</div>
-<div class="section" id="adv-attacks">
-<h2>1.2.2. adv attacks<a class="headerlink" href="#adv-attacks" title="Permalink to this headline">¶</a></h2>
-<ul>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1909.08072">Adversarial Attacks and Defenses in Images, Graphs and Text: A Review</a> (xu et al. 2019)</p></li>
-<li><p>attacks</p>
+<div class="section" id="rna-structure-prediction">
+<h2>1.7.2. rna structure prediction<a class="headerlink" href="#rna-structure-prediction" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="rna-basics">
+<h3>1.7.2.1. rna basics<a class="headerlink" href="#rna-basics" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p><a class="reference external" href="http://openaccess.thecvf.com/content_CVPR_2019/papers/Raff_Barrage_of_Random_Transforms_for_Adversarially_Robust_Defense_CVPR_2019_paper.pdf">Barrage of Random Transforms for Adversarially Robust Defense</a> (raff et al. 2019)</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1511.04599">DeepFool: a simple and accurate method to fool deep neural networks</a> (Moosavi-Dezfooli et. al 2016)</p></li>
-</ul>
-</li>
-<li><p>defenses</p>
+<li><p>rna does many things</p>
 <ul>
-<li><p>Adversarial training -  training data is augmented with adv examples (Szegedy et al., 2014b; Madry et al., 2017; Tram`er et al., 2017; Yu et al., 2019)</p>
+<li><p>certain structures of RNA lend themselves to catalytic activities</p></li>
+<li><p>tRNA/mRNA convert DNA into proteins</p></li>
+<li><p>RNA also serves as the information storage and replication agent in some viruses</p></li>
+</ul>
+</li>
+<li><p>rna components</p>
 <ul>
-<li><div class="math notranslate nohighlight">
-\[\min _{\boldsymbol{\theta}} \frac{1}{N} \sum_{n=1}^{N} \operatorname{Loss}\left(f_{\theta}\left(x_{n}\right), y_{n}\right)+\lambda\left[\max _{\|\delta\|_{\infty} \leq \epsilon} \operatorname{Loss}\left(f_{\theta}\left(x_{n}+\delta\right), y_{n}\right)\right]\]</div>
-</li>
+<li><p>4 bases: adenine-uracil (instead of dna’s thymine), cytosine-guanine</p></li>
+<li><p>ribose sugar in RNA is more flexible than DNA</p></li>
 </ul>
 </li>
-<li><p>Stochasticity: certain inputs or hidden activations are shuffled or randomized (Xie et al., 2017; Prakash et al., 2018; Dhillon et al., 2018)</p></li>
-<li><p>Preprocessing: inputs or hidden activations are quantized, projected into a different representation or are otherwise preprocessed (Guo et al., 2017; Buckman et al., 2018; Kabilan et al., 2018)</p></li>
-<li><p>Manifold projections: an input sample is projected in a lower dimensional space in which the neural network has been trained to be particularly robust (Ilyas et al., 2017; Lamb et al., 2018)</p></li>
-<li><p>Regularization in the loss function: an additional penalty term is added to the optimized objective function to upper bound or to approximate the adversarial loss (Hein and Andriushchenko, 2017; Yan et al., 2018)</p></li>
-<li><p>constraint</p>
+<li><p>RNA World Hypothesis (Walter Gilbert, 1986) - suggests RNA was precursor to modern life</p>
 <ul>
-<li><p>robustness as a constraint not a loss (<a class="reference external" href="https://arxiv.org/abs/2103.05134">Constrained Learning with Non-Convex Losses</a> (chamon et al. 2021))</p>
+<li><p>later dna stepped in for info storage (more stable) and proteins took over for catalyzing reactions</p></li>
+</ul>
+</li>
+<li><p>rna structure</p>
 <ul>
-<li><div class="math notranslate nohighlight">
-\[\begin{split}\begin{aligned}
-        \min _{\boldsymbol{\theta}} &amp; \frac{1}{N} \sum_{n=1}^{N} \operatorname{Loss}\left(f_{\theta}\left(x_{n}\right), y_{n}\right) \\
-        \text { subject to } &amp; \frac{1}{N} \sum_{n=1}^{N}\left[\max _{\|\delta\|_{\infty} \leq \epsilon} \operatorname{Loss}\left(f_{\theta}\left(\boldsymbol{x}_{n}+\delta\right), y_{n}\right)\right] \leq c
-        \end{aligned}\end{split}\]</div>
-</li>
-<li><p>when penalty is convex, these 2 problems are the same</p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>a possible defense against adversarial attacks is to solve the anticausal classification problem by modeling the causal generative direction, a method which in vision is referred to as <em>analysis by synthesis</em> (<a class="reference external" href="https://arxiv.org/abs/1805.09190">Schott et al., 2019</a>)</p></li>
-</ul>
-</li>
-<li><p>robustness vs accuracy</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://openreview.net/pdf?id=SyxAb30cY7">robustness may be at odds with accuracy</a> (tsipiras…madry, 2019)</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1901.08573">Theoretically Principled Trade-off between Robustness and Accuracy</a> (Zhang, Jordan, et. al. 2019)</p></li>
-</ul>
-</li>
-<li><p>adversarial examples</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://pdfs.semanticscholar.org/08c5/88465b7d801ad912ef3e9107fa511ea0e403.pdf">Decision Boundary Analysis of Adversarial Examples </a>(He, Li, &amp; Song 2019)</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1907.07174">Natural Adversarial Examples</a> (Hendrycks, Zhao, Basart, Steinhardt, &amp; Song 2020)</p></li>
-<li><p><a class="reference external" href="https://openreview.net/pdf?id=Bygh9j09KX">Image-Net-Trained CNNs Are Biased Towards Texture</a> (Geirhos et al. 2019)</p></li>
-</ul>
-</li>
-<li><p>transferability</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://arxiv.org/abs/1605.07277">Transferability in Machine Learning: from Phenomena to Black-Box Attacks using Adversarial Samples</a> (papernot, mcdaniel, &amp; goodfellow, 2016)</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/pdf/1705.07204.pdf">Ensemble Adversarial Training: Attacks and Defenses</a> (tramer et al. 2018)</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/pdf/1901.08846.pdf">Improving Adversarial Robustness via Promoting Ensemble Diversity</a> (pang et al. 2019)</p>
+<li><p><img alt="rna_structure" src="../../_images/rna_structure.png" /></p>
 <ul>
-<li><p>encourage diversity in non-maximal predictions</p></li>
+<li><p>primary - sequence in which the bases are aligned - relatively simple, comes from sequencing</p></li>
+<li><p><strong>secondary</strong> - 2d analysis of hydrogen bonds between rna parts (double-strands, hairpins, loops) - most of stabilizing free energy comes from here (unlike proteins, where tertiary is most important)</p>
+<ul>
+<li><p>most work on “RNA folding” predicts secondary structure from primary structure</p></li>
+<li><p>a lot of this comes from hydrogen bonds between pairs (watson-crick edge)</p>
+<ul>
+<li><p>other parts of the pairs (e.g. the Hoogsteen- / CH-edge and the sugar edge) can also form bonds</p></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>ranking</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://arxiv.org/pdf/2002.05714.pdf">Automatically Discovering and Learning New Visual Categories with Ranking Statistics</a></p></li>
+<li><p>tertiary - complete 3d structure (e.g. bends, twists)</p></li>
+</ul>
+</li>
+<li><p><img alt="Screen Shot 2021-12-01 at 6.33.41 PM" src="notes/research_ovws/../assets/Screen%20Shot%202021-12-01%20at%206.33.41%20PM.png" /></p></li>
 </ul>
 </li>
 </ul>
 </div>
-<div class="section" id="overviews">
-<h2>1.2.3. overviews<a class="headerlink" href="#overviews" title="Permalink to this headline">¶</a></h2>
-<p><img alt="transfer_taxonomy" src="../../_images/transfer_taxonomy.png" /> (from <a class="reference external" href="https://arxiv.org/pdf/2109.14501v1.pdf">this paper</a>)</p>
+<div class="section" id="code">
+<h3>1.7.2.2. code<a class="headerlink" href="#code" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/bgruening/galaxy-rna-workbench">Galaxy RNA workbench</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ViennaRNA/ViennaRNA">viennaRNA</a> - incorporating constraints into predictions</p></li>
+<li><p>neural nets</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/jaswindersingh2/SPOT-RNA">spot rna</a> / <a class="reference external" href="https://github.com/jaswindersingh2/SPOT-RNA2">spot rna2</a></p>
+<ul>
+<li><p>uses an Ensemble of Two-dimensional Deep Neural Networks and Transfer Learning</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/keio-bioinformatics/mxfold2/">mxfold2</a> (sato et al. 2021)</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="data">
+<h3>1.7.2.3. data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.pnas.org/content/106/1/97">Accurate SHAPE-directed RNA structure determination | PNAS</a> - chemical probing</p></li>
+</ul>
+</div>
+<div class="section" id="algorithms">
+<h3>1.7.2.4. algorithms<a class="headerlink" href="#algorithms" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://ocw.mit.edu/ans7870/6/6.047/f15/MIT6_047F15_Compiled.pdf">computational bio book ch 10</a> (kellis, 2016)</p>
+<ul>
+<li><p>2 main approaches to rna folding (i.e. predicting rna structure):</p>
+<ul>
+<li><p>(1) thermodynamic stability of the molecule</p></li>
+<li><p>(2) probabilistic models</p></li>
+<li><p>note: can use evolutionary (i.e. phylogenetic) data to improve either of these</p>
+<ul>
+<li><p>some RNA changes still result in similar structures</p></li>
+<li><p>consistent mutations - something mutates but structure doesn’t change (e.g. AU -&gt; G)</p></li>
+<li><p>compensatory mutations - two mutations but structure doesn’t change (e.g. AU -&gt; CU -&gt; CG)</p></li>
+<li><p>incorporate similarities to other RNAs along with something like zuker algorithm</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>thermodynamic stability - uses more domain knowledge</p>
+<ul>
+<li><p>dynamic programming approach: given energy value for each pair, minimize total energy by pairing up appropriate base pairs</p>
+<ul>
+<li><p><strong>assumption</strong>: no crossings - given a subsequence <span class="math notranslate nohighlight">\([i,j]\)</span>, there is either no edge connecting to the ith base (meaning it is unpaired) or there is some edge connecting the ith base to the kth base where <span class="math notranslate nohighlight">\(i &lt; k \leq j\)</span> (meaning the ith base is paired to the kth base)</p>
+<ul>
+<li><p>this induces a tree-structure to theh problem</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://www.pnas.org/content/77/11/6309.short">nussinov algorithm</a> (1978)</p>
+<ul>
+<li><p>ignores stacking interactions between neighboring pairs (i.e. assumes there are no pseudo-knots)</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://academic.oup.com/nar/article-abstract/9/1/133/1043226">zuker algorithm</a> (1981) - includes stacking energies</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>probabilistic approach - uses more statistical likelihood</p>
+<ul>
+<li><p>stochastic context-free grammer (SCFG) is like an extension of HMM that incorporates some RNA constraints (e.g. bonds must happen between pairs)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0168165617315195">Recent advances in RNA folding - ScienceDirect</a> (fallmann et al. 2017)</p>
+<ul>
+<li><p>algorithmic advances</p>
+<ul>
+<li><p>algorithmic constraints</p>
+<ul>
+<li><p>locality - restrict maximal span of base pairs</p></li>
+<li><p>add in bonus energies as hard or soft constraints</p></li>
+</ul>
+</li>
+<li><p>rna-rna and rna-protein interactions - there are different algorithms for telling how 2 things will interact</p></li>
+<li><p>newer algorithms take into account some aspects of tertiary structure to predict secondary structure (e.g. motifs, nonstandard base pairs, pseudo-knots)</p></li>
+</ul>
+</li>
+<li><p>representation</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">...((((((((...)).</span> <span class="pre">.)).</span> <span class="pre">.((.((...)).</span> <span class="pre">)))))).</span></code> “dot-parenthesis” notation - opening and closing represent bonded pairs</p></li>
+</ul>
+</li>
+<li><p>evaluation</p>
+<ul>
+<li><p>computing alignments is non-obvious in these representations</p></li>
+<li><p>centroids - structures with a minimum distance to all other structures in the ensemble of possible structures</p></li>
+<li><p>consensus structures - given a good alignment of a collection of related RNA structures, can compute their consensus structure, (i.e., a set of base pairs at corresponding alignment positions)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2982177/">Folding and Finding RNA Secondary Structure</a> (matthews et al. 2010)</p></li>
+<li><p>loosing the assumption of no knots (e.g. crossings)</p>
+<ul>
+<li><p>project to topology (e.g. low/high genus) - e.g. projecting to a torus can remove crossings</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://www.nature.com/articles/s41467-021-21194-4">RNA secondary structure prediction using deep learning with thermodynamic integration | Nature Communications</a> (sato et al. 2021)</p>
+<ul>
+<li><p>RNA-folding scores learnt using a DNN are integrated together with Turner’s nearest-neighbor free energy parameters</p>
+<ul>
+<li><p>DNN predicts scores that are fed into zuker-style dynamic programming</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="d-rna-structure-prediction">
+<h3>1.7.2.5. 3d rna structure prediction<a class="headerlink" href="#d-rna-structure-prediction" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>startup <a class="reference external" href="https://atomic.ai/">atomic ai</a> works on this</p></li>
+<li><p><a class="reference external" href="https://www.science.org/doi/10.1126/science.abe5650">Geometric deep learning of RNA structure | science</a> (townshend, …, dror 2021)</p>
+<ul>
+<li><p>scoring model - gives energy function for (primary sequence, structure) pair</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://www.frontiersin.org/articles/10.3389/fmolb.2021.720937/full">Frontiers | RNA 3D Structure Prediction Using Coarse-Grained Models | Molecular Biosciences</a> (li &amp; chen, 2021)</p></li>
+<li><p>older</p>
+<ul>
+<li><p><a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/18579566/">iFoldRNA: three-dimensional RNA structure prediction and folding - PubMed</a> (sharma et al. 2008)</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="protein-structure-prediction-dna">
+<h2>1.7.3. protein structure prediction (dna)<a class="headerlink" href="#protein-structure-prediction-dna" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="protein-basics">
+<h3>1.7.3.1. protein basics<a class="headerlink" href="#protein-basics" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>the standard way to obtain the 3D structure of a protein is X-ray crystallography. It takes about a year and costs about $120,000 to obtain the structure of a single protein through X-ray crystallography [<a class="reference external" href="https://fortune.com/2020/11/30/deepmind-protein-folding-breakthrough/">source</a>]</p></li>
+<li><p>on average, a protein is composed of 300 amino acids (residues)</p>
+<ul>
+<li><p>21 amino acid types</p></li>
+<li><p>the first residue is fixed</p></li>
+</ul>
+</li>
+<li><p>proteins evolved via mutations (e.g. additions, substitutions)</p>
+<ul>
+<li><p>fitness selects the best one</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="algorithm-basics">
+<h3>1.7.3.2. algorithm basics<a class="headerlink" href="#algorithm-basics" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.sciencedirect.com/topics/medicine-and-dentistry/multiple-sequence-alignment">multiple-sequence-alignment</a> (MSA) - alignment of 3 or more amino acid (or nucleic acid) sequences, which show conserved regions within a protein family which are of structural and functional importance</p>
+<ul>
+<li><p>matrix is (n_proteins x n_amino_acids)</p></li>
+<li><p>independent model (PSSM) - model likelihood for each column independently</p></li>
+<li><p>pairwise sites (potts model) - model likelihood for pairs of positions</p></li>
+</ul>
+</li>
+<li><p>prediction problems</p>
+<ul>
+<li><p>contact prediction - binary map for physical contacts in the final protein</p>
+<ul>
+<li><p>common to predict this, evaluation uses binary metrics</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1906.08230">Evaluating Protein Transfer Learning with TAPE</a> - given embeddings, five tasks to measure downstream performance (rao et al. 2019)</p>
+<ul>
+<li><p>structure (SS + contact), evolutionary (homology), engineering (fluorescence + stability)</p></li>
+</ul>
+</li>
+<li><p>future: interactions between molecules (e.g. protein-protein, environment, highly designed proteins)</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="deep-learning-papers">
+<h3>1.7.3.3. deep-learning papers<a class="headerlink" href="#deep-learning-papers" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.nature.com/articles/s41586-021-04184-w">De novo protein design by deep network hallucination | Nature</a> (anishchenko…baker, 2021)</p>
+<ul>
+<li><p>deep networks trained to predict native protein structures from their sequences can be inverted to design new proteins, and such networks and methods should contribute alongside traditional physics-based models to the de novo design of proteins with new functions.</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://www.nature.com/articles/s41586-021-03819-2">Highly accurate protein structure prediction with AlphaFold | Nature</a> (jumper, …, hassabis, 2021)</p>
+<ul>
+<li><p><a class="reference external" href="https://static-content.springer.com/esm/art%3A10.1038%2Fs41586-021-03819-2/MediaObjects/41586_2021_3819_MOESM1_ESM.pdf">supp</a></p></li>
+<li><p><a class="reference external" href="https://www.blopig.com/blog/2021/07/alphafold-2-is-here-whats-behind-the-structure-prediction-miracle/">best blog post</a> (<a class="reference external" href="https://towardsdatascience.com/unfolding-alphafold-683d576a54a3">other blog post</a>)</p></li>
+<li><p>model overview</p>
+<ul>
+<li><p><img alt="alphafold" src="../../_images/alphafold.png" /></p></li>
+</ul>
+</li>
+<li><p>preprocessing</p>
+<ul>
+<li><p>MSA</p></li>
+<li><p>finding templates - find similar proteins to model “pairs of residues” - which residues are likely to interact with each other</p></li>
+</ul>
+</li>
+<li><p>evoformer</p>
+<ul>
+<li><p>uses attention on graph network</p></li>
+<li><p>iterative</p></li>
+</ul>
+</li>
+<li><p>structure model - converts msa/pair representations into set of (x,y,z) coordinates</p>
+<ul>
+<li><p>“invariant point attention” - invariance to translations and rotations</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://proceedings.mlr.press/v139/rao21a.html">MSA Transformer</a> (rao et al. 2021) - predicts contact prediction</p>
+<ul>
+<li><p>train via masking</p></li>
+<li><p>output (contact prediction) is just linear combination of attention heads finetuned on relatively little data</p></li>
+<li><p>some architecture tricks</p>
+<ul>
+<li><p>attention is axial - applied to rows / columns rather than entire input</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="covid">
+<h3>1.7.3.4. covid<a class="headerlink" href="#covid" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4147684/">The Coronavirus Nucleocapsid Is a Multifunctional Protein</a></p>
+<ul>
+<li><p>coronavirus nucleocapsid = N protein</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="bin-random-papers">
+<h2>1.7.4. bin random papers<a class="headerlink" href="#bin-random-papers" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.nature.com/articles/d41586-021-03697-8?utm_source=Nature+Briefing&amp;utm_campaign=b0bda6ba48-briefing-dy-20211210&amp;utm_medium=email&amp;utm_term=0_c9dfd39373-b0bda6ba48-45837550">DeepMind AI tackles one of chemistry’s most valuable techniques</a></p></li>
+<li><p><a class="reference external" href="https://www.nature.com/articles/d41586-021-03593-1?utm_source=Nature+Briefing&amp;utm_campaign=b0bda6ba48-briefing-dy-20211210&amp;utm_medium=email&amp;utm_term=0_c9dfd39373-b0bda6ba48-45837550">DeepMind’s AI helps untangle the mathematics of knots</a></p></li>
+</ul>
 </div>
 </div>
 
@@ -851,8 +1052,8 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="ovw_comp_neuro.html" title="previous page">1.1. comp neuro</a>
-    <a class='right-next' id="next-link" href="ovw_disentanglement.html" title="next page">1.3. disentanglement</a>
+    <a class='left-prev' id="prev-link" href="ovw_dl_theory.html" title="previous page">1.6. dl theory</a>
+    <a class='right-next' id="next-link" href="ovw_scat.html" title="next page">1.8. scattering transform</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

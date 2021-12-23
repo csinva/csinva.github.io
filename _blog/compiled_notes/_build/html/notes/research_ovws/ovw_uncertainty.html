@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>1.11. uncertainty</title>
+    <title>1.12. uncertainty</title>
     
   <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -56,8 +56,8 @@
     <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="1.12. interpretability" href="ovw_interp.html" />
-    <link rel="prev" title="1.10. dl for neuro" href="ovw_dl_for_neuro.html" />
+    <link rel="next" title="1.13. interpretability" href="ovw_interp.html" />
+    <link rel="prev" title="1.11. dl for neuro" href="ovw_dl_for_neuro.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -88,7 +88,7 @@
     <ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../../intro.html">
-   welcome 👋
+   overview 👋
   </a>
  </li>
 </ul>
@@ -129,38 +129,43 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="ovw_proteins.html">
+     1.7. proteins
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="ovw_scat.html">
-     1.7. scattering transform
+     1.8. scattering transform
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_ml_medicine.html">
-     1.8. ml in medicine
+     1.9. ml in medicine
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_causal_inference.html">
-     1.9. causal inference
+     1.10. causal inference
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_dl_for_neuro.html">
-     1.10. dl for neuro
+     1.11. dl for neuro
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     1.11. uncertainty
+     1.12. uncertainty
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_interp.html">
-     1.12. interpretability
+     1.13. interpretability
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_generalization.html">
-     1.13. generalization
+     1.14. generalization
     </a>
    </li>
   </ul>
@@ -591,59 +596,59 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#basics">
-   1.11.1. basics
+   1.12.1. basics
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#complementarity">
-   1.11.2. complementarity
+   1.12.2. complementarity
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#rejection-learning">
-     1.11.2.1. rejection learning
+     1.12.2.1. rejection learning
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id1">
-     1.11.2.2. complementarity
+     1.12.2.2. complementarity
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#outlier-detection">
-   1.11.3. outlier-detection
+   1.12.3. outlier-detection
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#bayesian-approaches">
-   1.11.4. bayesian approaches
+   1.12.4. bayesian approaches
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#neural-networks">
-   1.11.5. neural networks
+   1.12.5. neural networks
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#directly-predict-uncertainty">
-     1.11.5.1. directly predict uncertainty
+     1.12.5.1. directly predict uncertainty
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#nearest-neighbor-methods">
-     1.11.5.2. nearest-neighbor methods
+     1.12.5.2. nearest-neighbor methods
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#ensemble-approaches">
-     1.11.5.3. ensemble approaches
+     1.12.5.3. ensemble approaches
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#bayesian-neural-networks">
-     1.11.5.4. bayesian neural networks
+     1.12.5.4. bayesian neural networks
     </a>
    </li>
   </ul>
@@ -661,9 +666,9 @@
                 
   <p><strong>some notes on uncertainty in machine learning, particularly deep learning</strong></p>
 <div class="section" id="uncertainty">
-<h1>1.11. uncertainty<a class="headerlink" href="#uncertainty" title="Permalink to this headline">¶</a></h1>
+<h1>1.12. uncertainty<a class="headerlink" href="#uncertainty" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="basics">
-<h2>1.11.1. basics<a class="headerlink" href="#basics" title="Permalink to this headline">¶</a></h2>
+<h2>1.12.1. basics<a class="headerlink" href="#basics" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><strong>calibration</strong> - predicted probabilities should match real probabilities</p>
 <ul>
@@ -692,9 +697,9 @@
 </ul>
 </div>
 <div class="section" id="complementarity">
-<h2>1.11.2. complementarity<a class="headerlink" href="#complementarity" title="Permalink to this headline">¶</a></h2>
+<h2>1.12.2. complementarity<a class="headerlink" href="#complementarity" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="rejection-learning">
-<h3>1.11.2.1. rejection learning<a class="headerlink" href="#rejection-learning" title="Permalink to this headline">¶</a></h3>
+<h3>1.12.2.1. rejection learning<a class="headerlink" href="#rejection-learning" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><strong>rejection learning</strong> - allow models to <em>reject</em> (not make a prediction) when they are not confidently accurate (<a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/5222035/?casa_token=UiIdn8AjFjYAAAAA:XvnZPA7rJlvwxD-bIh2dNG4SPfnHtDYWcBUmAFYRxD6Xk8QE5osnKLs8tAlib_doL8OxqYjMLDE">chow 1957</a>, <a class="reference external" href="https://link.springer.com/chapter/10.1007/978-3-319-46379-7_5">cortes et al. 2016</a>)</p></li>
 <li><p><a class="reference external" href="http://papers.nips.cc/paper/7798-to-trust-or-not-to-trust-a-classifier.pdf">To Trust Or Not To Trust A Classifier</a> (jiang, kim et al 2018) - find a trusted region of points based on nearest neighbor density (in some embedding space)</p>
@@ -706,7 +711,7 @@
 </ul>
 </div>
 <div class="section" id="id1">
-<h3>1.11.2.2. complementarity<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<h3>1.12.2.2. complementarity<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><strong>complementarity</strong> - ML should focus on points hard for humans + seek human input on points hard for ML</p>
 <ul>
@@ -714,7 +719,7 @@
 </ul>
 </li>
 <li><p><a class="reference external" href="http://papers.nips.cc/paper/7853-predict-responsibly-improving-fairness-and-accuracy-by-learning-to-defer">Predict Responsibly: Improving Fairness and Accuracy by Learning to Defer</a> (madras et al. 2018) - adaptive rejection learning - build on rejection learning considering the strengths/weaknesses of humans</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/2005.00582">Learning to Complement Humans</a> (wilder et al. 2020) - 2 approaches for how to incorporate human input:</p>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2005.00582">Learning to Complement Humans</a> (wilder et al. 2020) - 2 approaches for how to incorporate human input</p>
 <ul>
 <li><p>discriminative approach - jointly train predictive model and policy for deferring to human (witha cost for deferring)</p></li>
 <li><p>decision-theroetic approach - train predictive model + policy jointly based on value of information (VOI)</p></li>
@@ -730,11 +735,16 @@
 </li>
 </ul>
 </li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2105.02410">Partially Interpretable Estimators (PIE): Black-Box-Refined Interpretable Machine Learning</a> (wang eta al. 2021)</p>
+<ul>
+<li><p>interpretable model for individual features and black-box model captures feature interactions (on residuals)</p></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 <div class="section" id="outlier-detection">
-<h2>1.11.3. outlier-detection<a class="headerlink" href="#outlier-detection" title="Permalink to this headline">¶</a></h2>
+<h2>1.12.3. outlier-detection<a class="headerlink" href="#outlier-detection" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>overview from <a class="reference external" href="https://scikit-learn.org/stable/modules/outlier_detection.html">sklearn</a></p></li>
 <li><p><strong>elliptic envelope</strong> - assume data is Gaussian and fit elliptic envelop (maybe robustly) to tell when data is an outlier</p></li>
@@ -759,7 +769,7 @@
 </ul>
 </div>
 <div class="section" id="bayesian-approaches">
-<h2>1.11.4. bayesian approaches<a class="headerlink" href="#bayesian-approaches" title="Permalink to this headline">¶</a></h2>
+<h2>1.12.4. bayesian approaches<a class="headerlink" href="#bayesian-approaches" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><strong>epistemic uncertainty</strong> - uncertainty in the DNN model parameters</p>
 <ul>
@@ -777,9 +787,9 @@
 </ul>
 </div>
 <div class="section" id="neural-networks">
-<h2>1.11.5. neural networks<a class="headerlink" href="#neural-networks" title="Permalink to this headline">¶</a></h2>
+<h2>1.12.5. neural networks<a class="headerlink" href="#neural-networks" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="directly-predict-uncertainty">
-<h3>1.11.5.1. directly predict uncertainty<a class="headerlink" href="#directly-predict-uncertainty" title="Permalink to this headline">¶</a></h3>
+<h3>1.12.5.1. directly predict uncertainty<a class="headerlink" href="#directly-predict-uncertainty" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/1810.01861">Inhibited Softmax for Uncertainty Estimation in Neural Networks</a> (mozejko et al. 2019) - directly predict uncertainty by adding an extra output during training</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1802.04865.pdf">Learning Confidence for Out-of-Distribution Detection in Neural Networks</a> (devries et al. 2018) - predict both prediction <em>p</em> and confidence <em>c</em></p>
@@ -799,7 +809,7 @@
 </ul>
 </div>
 <div class="section" id="nearest-neighbor-methods">
-<h3>1.11.5.2. nearest-neighbor methods<a class="headerlink" href="#nearest-neighbor-methods" title="Permalink to this headline">¶</a></h3>
+<h3>1.12.5.2. nearest-neighbor methods<a class="headerlink" href="#nearest-neighbor-methods" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1803.04765.pdf">Deep k-Nearest Neighbors: Towards Confident, Interpretable and Robust Deep Learning</a> (papernot &amp; mcdaniel, 2018)</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1709.09844.pdf">distance-based confidence scores</a> (mandelbaum et al. 2017) - use either distance in embedding space or adversarial training to get uncertainties for DNNs</p></li>
@@ -811,7 +821,7 @@
 </ul>
 </div>
 <div class="section" id="ensemble-approaches">
-<h3>1.11.5.3. ensemble approaches<a class="headerlink" href="#ensemble-approaches" title="Permalink to this headline">¶</a></h3>
+<h3>1.12.5.3. ensemble approaches<a class="headerlink" href="#ensemble-approaches" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="http://papers.nips.cc/paper/7219-simple-and-scalable-predictive-uncertainty-estimation-using-deep-ensembles">DNN ensemble uncertainty works</a> - predict mean and variance w/ each network then ensemble (don’t need to do bagging, random init is enough)</p></li>
 <li><p>can also use ensemble of <a class="reference external" href="https://arxiv.org/abs/1704.00109">snapshots during training</a> (huang et al. 2017)</p></li>
@@ -827,7 +837,7 @@
 </ul>
 </div>
 <div class="section" id="bayesian-neural-networks">
-<h3>1.11.5.4. bayesian neural networks<a class="headerlink" href="#bayesian-neural-networks" title="Permalink to this headline">¶</a></h3>
+<h3>1.12.5.4. bayesian neural networks<a class="headerlink" href="#bayesian-neural-networks" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://medium.com/neuralspace/probabilistic-deep-learning-bayes-by-backprop-c4a3de0d9743">blog posts on basics</a></p>
 <ul>
@@ -891,8 +901,8 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="ovw_dl_for_neuro.html" title="previous page">1.10. dl for neuro</a>
-    <a class='right-next' id="next-link" href="ovw_interp.html" title="next page">1.12. interpretability</a>
+    <a class='left-prev' id="prev-link" href="ovw_dl_for_neuro.html" title="previous page">1.11. dl for neuro</a>
+    <a class='right-next' id="next-link" href="ovw_interp.html" title="next page">1.13. interpretability</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

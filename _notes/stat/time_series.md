@@ -19,6 +19,7 @@ category: stat
 - stationarity - mean, variance, and autocorrelation structure do not change over time
 - **endogenous variable = x** = independent variable
 - **exogenous variable = y** = dependent variable
+- changepointe detection / [Change detection ](https://en.wikipedia.org/wiki/Change_detection) - tries to identify times when the probability distribution of a stochastic process or time series changes
 
 ## libraries
 

@@ -71,7 +71,7 @@ category: ml
 - *cross validation* - don't have enough data for a test set
   - properties
     - not good when n < complexity of predictor
-    - because summands are correlated
+      - because summands are correlated
     - assume data units are exchangeable
     - can sometimes use this to pick k for k-means
     - data is reused

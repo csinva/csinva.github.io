@@ -88,7 +88,7 @@
     <ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../../intro.html">
-   welcome 👋
+   overview 👋
   </a>
  </li>
 </ul>
@@ -129,38 +129,43 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_proteins.html">
+     1.7. proteins
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_scat.html">
-     1.7. scattering transform
+     1.8. scattering transform
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">
-     1.8. ml in medicine
+     1.9. ml in medicine
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_causal_inference.html">
-     1.9. causal inference
+     1.10. causal inference
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_dl_for_neuro.html">
-     1.10. dl for neuro
+     1.11. dl for neuro
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_uncertainty.html">
-     1.11. uncertainty
+     1.12. uncertainty
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_interp.html">
-     1.12. interpretability
+     1.13. interpretability
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_generalization.html">
-     1.13. generalization
+     1.14. generalization
     </a>
    </li>
   </ul>
@@ -637,38 +642,43 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#whitening">
+   4.2.4. whitening
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#missing-data-imputation">
-   4.2.4. missing-data imputation
+   4.2.5. missing-data imputation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#feature-engineering">
-   4.2.5. feature engineering
+   4.2.6. feature engineering
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#principles">
-   4.2.6. principles
+   4.2.7. principles
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#breiman">
-     4.2.6.1. breiman
+     4.2.7.1. breiman
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#box-tukey">
-     4.2.6.2. box + tukey
+     4.2.7.2. box + tukey
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#models">
-     4.2.6.3. models
+     4.2.7.3. models
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exaggerated-claims">
-     4.2.6.4. exaggerated claims
+     4.2.7.4. exaggerated claims
     </a>
    </li>
   </ul>
@@ -962,8 +972,22 @@
 <li><p>log-spline - doesn’t scale</p></li>
 </ol>
 </div>
+<div class="section" id="whitening">
+<h2>4.2.4. whitening<a class="headerlink" href="#whitening" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>get decorrelated features <span class="math notranslate nohighlight">\(Z\)</span> from inputs <span class="math notranslate nohighlight">\(X\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(W=\)</span> whitening matrix , selected based on problem goals:</p>
+<ul>
+<li><p>PCA: Maximal compression of <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> in <span class="math notranslate nohighlight">\(\mathbf{Z}\)</span></p></li>
+<li><p>ZCA: Maximal similarity between <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{Z}\)</span></p></li>
+<li><p>Cholesky: Inducing structure: <span class="math notranslate nohighlight">\(\operatorname{Cov}(X, Z)\)</span> is lower-triangular with positive diagonal elements</p></li>
+<li><p><span class="math notranslate nohighlight">\(W\)</span> is constrained as to enforce <span class="math notranslate nohighlight">\(\Sigma_{Z}=I\)</span></p></li>
+</ul>
+</li>
+</ul>
+</div>
 <div class="section" id="missing-data-imputation">
-<h2>4.2.4. missing-data imputation<a class="headerlink" href="#missing-data-imputation" title="Permalink to this headline">¶</a></h2>
+<h2>4.2.5. missing-data imputation<a class="headerlink" href="#missing-data-imputation" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://link.springer.com/article/10.1007/s10462-019-09709-4">Missing value imputation: a review and analysis of the literature</a> (lin &amp; tsai 2019)</p></li>
 <li><p><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3744188/">Purposeful Variable Selection and Stratification to Impute Missing FAST Data in Trauma Research</a> (fuchs et al. 2014)</p></li>
@@ -1018,7 +1042,7 @@
 </ul>
 </div>
 <div class="section" id="feature-engineering">
-<h2>4.2.5. feature engineering<a class="headerlink" href="#feature-engineering" title="Permalink to this headline">¶</a></h2>
+<h2>4.2.6. feature engineering<a class="headerlink" href="#feature-engineering" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>often good to discretize/binarize features</p>
 <ul>
@@ -1028,9 +1052,9 @@
 </ul>
 </div>
 <div class="section" id="principles">
-<h2>4.2.6. principles<a class="headerlink" href="#principles" title="Permalink to this headline">¶</a></h2>
+<h2>4.2.7. principles<a class="headerlink" href="#principles" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="breiman">
-<h3>4.2.6.1. breiman<a class="headerlink" href="#breiman" title="Permalink to this headline">¶</a></h3>
+<h3>4.2.7.1. breiman<a class="headerlink" href="#breiman" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p>conversation</p>
 <ul class="simple">
@@ -1082,7 +1106,7 @@
 </ul>
 </div>
 <div class="section" id="box-tukey">
-<h3>4.2.6.2. box + tukey<a class="headerlink" href="#box-tukey" title="Permalink to this headline">¶</a></h3>
+<h3>4.2.7.2. box + tukey<a class="headerlink" href="#box-tukey" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p>questions</p>
 <ol class="simple">
@@ -1219,7 +1243,7 @@
 </ul>
 </div>
 <div class="section" id="models">
-<h3>4.2.6.3. models<a class="headerlink" href="#models" title="Permalink to this headline">¶</a></h3>
+<h3>4.2.7.3. models<a class="headerlink" href="#models" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>normative - fully interpretable + modelled</p>
 <ul>
@@ -1236,7 +1260,7 @@
 </ul>
 </div>
 <div class="section" id="exaggerated-claims">
-<h3>4.2.6.4. exaggerated claims<a class="headerlink" href="#exaggerated-claims" title="Permalink to this headline">¶</a></h3>
+<h3>4.2.7.4. exaggerated claims<a class="headerlink" href="#exaggerated-claims" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.youtube.com/watch?time_continue=4&amp;v=PwCyvSDkUCY&amp;feature=emb_logo">video</a> by Rob Kass</p></li>
 <li><p>concepts are ambiguous and have many mathematical instantiations</p>
