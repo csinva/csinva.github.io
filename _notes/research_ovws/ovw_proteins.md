@@ -179,7 +179,7 @@ category: research
 
 ## covid
 
-- [The Coronavirus Nucleocapsid Is a Multifunctional Protein](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4147684/)
+- [The Coronavirus Nucleocapsid Is a Multifunctional Protein](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4147684/) (mcbride et al. 2014)
   - coronavirus nucleocapsid = N protein
 
 

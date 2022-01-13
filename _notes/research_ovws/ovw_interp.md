@@ -373,7 +373,7 @@ For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
 - [MonoNet: Towards Interpretable Models by Learning Monotonic Features](https://arxiv.org/abs/1909.13611) - enforce output to be a monotonic function of individuaul features
 - [Improved Deep Fuzzy Clustering for Accurate and Interpretable Classifiers](https://ieeexplore.ieee.org/abstract/document/8858809) - extract features with a DNN then do fuzzy clustering on this
 - [Towards Robust Interpretability with Self-Explaining Neural Networks](https://arxiv.org/pdf/1806.07538.pdf) (alvarez-melis & jaakkola 2018) - building architectures that explain their predictions
-- [Harnessing Deep Neural Networks with Logic Rules](https://arxiv.org/pdf/1603.06318.pdf)
+- [Two Instances of Interpretable Neural Network for Universal Approximations](https://arxiv.org/abs/2112.15026) (tjoa & cuntai, 2021) - each neuron responds to a training point
 
 ### connecting dnns with rule-based models
 
@@ -411,6 +411,7 @@ For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
 - [Differentiable Pattern Set Mining](http://eda.mmci.uni-saarland.de/pubs/2021/binaps-fischer,vreeken.pdf) (fischer & vreeken, 2021)
   - use neural autoencoder with binary activations + binarizing weights
   - optimizing a data-sparsity aware reconstruction loss, continuous versions of the weights are learned in small, noisy steps
+- [Harnessing Deep Neural Networks with Logic Rules](https://arxiv.org/pdf/1603.06318.pdf)
 
 ## misc models
 
@@ -519,6 +520,7 @@ How interactions are defined and summarized is a very difficult thing to specify
 - Shapley Taylor Interaction Index (STI) (Dhamdhere et al., 2019) - extends shap to all interactions
 - retraining
   - [Additive groves](https://link.springer.com/chapter/10.1007/978-3-540-74958-5_31) (Sorokina, carauna, & riedewald 2007) proposed use random forest with and without an interaction (forcibly removed) to detect feature interactions - very slow
+    - [additive groves interaction followup](https://www.ccs.neu.edu/home/mirek/papers/2008-ICML-Interactions.pdf)
 - gradient-based methods (originally Friedman and Popescu, 2008 then later used with many models such as logit)
   - test if partial derivatives for some subset (e.g. $x_1, ..., x_p$) are nonzero $\mathbb{E}_{\mathbf{x}}\left[\frac{\partial^p f(\mathbf{x})}{\partial x_{i_{1}} \partial x_{i_{2}} \ldots \partial x_{i_p}}\right]^{2}>0$ 
   - doesn't work well for piecewise functions (e.g. Relu) and computationally expensive

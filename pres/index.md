@@ -69,7 +69,9 @@ title: presentations
 ## rules / software individual presentations
 
 - [yu-group software](https://docs.google.com/presentation/d/1phLaC8n8iKG68RQtm99BE3gDkOj-NQhiO2AtJGjBFkM/edit#slide=id.gfc50a11ff5_0_0)
-- [vflow](https://docs.google.com/presentation/d/1bcrdF5TozKNLdvxvRK63wsDHS8qRDvg2MgsAZYUy2jw/edit)
+  - [imodels gasp 7-min talk](https://docs.google.com/presentation/d/1fpHo-MtIJntlIrYlQj0yK3spJ7Unf10CNTH-PG9LQ_A/edit?usp=sharing)
+  - [vflow group meeting](https://docs.google.com/presentation/d/1ReJ3Lqh4VZqpu6X6sP47f6Re6PvLIX9ZRAdjb8ZhFXE/edit#slide=id.g1047cb8ef63_0_0)
+  - [vflow (white, outdated)](https://docs.google.com/presentation/d/1bcrdF5TozKNLdvxvRK63wsDHS8qRDvg2MgsAZYUy2jw/edit)
 - [stablerules preliminary](https://docs.google.com/presentation/d/1KSUncdizsQ3cmpsZE0uGGWudQuewMKnukI8V3uManHc/edit#slide=id.gd4a2e647f0_0_0)
 - [saps](https://docs.google.com/presentation/d/1hMF3kMoQDdrM6BHDq1CWVYsibgVyaOVtz0l2WEIbsy0/edit?usp=sharing)
 - [iai](https://docs.google.com/presentation/d/19liiotfBKNPm2lli6U1ZOPd8jCHEL8Y99HcEZFHOSsQ/edit#slide=id.gc6d28d5565_0_0)

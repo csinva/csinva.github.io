@@ -1,5 +1,9 @@
 [toc]
 
+# 2022
+
+- [Opinion | You Know What Would Help Exhausted Doctors and Nurses? More Money. - The New York Times](https://www.nytimes.com/2022/01/08/opinion/hazard-pay-covid-nurse-doctor.html)
+
 # 2021
 
 - [Web3 is Bullshit](https://www.stephendiehl.com/blog/web3-bullshit.html)
@@ -9,7 +13,6 @@
        1. Who will pay for the global data centers to serve content?
        2. Whose lawyers will respond to the DMCA requests?
     3. Storage Problem - who owns / can edit the data?
-
 - [Opinion | The End of Roe Is Coming, and It Is Coming Soon - The New York Times](https://www.nytimes.com/2021/12/01/opinion/supreme-court-abortion-mississippi-law.html)
 - [Opinion | Here’s a Fact: We’re Routinely Asked to Use Leftist Fictions - The New York Times](https://www.nytimes.com/2021/11/19/opinion/heres-a-fact-were-routinely-asked-to-use-leftist-fictions.html)
   - That selective schools regularly admit Black students with adjusted standards is undeniable

@@ -33,7 +33,7 @@ td {
     /* background-image: radial-gradient(blue, black); */
     /* background-image: linear-gradient(red, yellow); */
     background: #000000;
-    background-size: cover /* background-image: radial-gradient(circle, blue 0.00001%, black 99.9999%); /* Standard syntax (must be last) */ */
+    sbackground-size: cover; /* background-image: radial-gradient(circle, blue 0.00001%, black 99.9999%); /* Standard syntax (must be last) */
 }
 
 .iframe-box {
