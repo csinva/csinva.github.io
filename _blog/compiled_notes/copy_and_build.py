@@ -81,8 +81,9 @@ for i in range(len(fnames)):
         G.add_edge(fnames[i], fnames[j], weight=np.square(pairwise_similarity[i, j] * 3))
 
 pos = nx.spring_layout(G, seed=7, k=10 / np.sqrt(len(fnames)))  # positions for all nodes - seed for reproducibility
-nx.draw_networkx_nodes(G, pos, node_size=700)
+nx.draw_networkx_nodes(G, pos, node_size=700, alpha=0.25)
 # nx.draw_networkx_edges(G, pos, edgelist=G.edges, alpha=0.1)
+print('making graph viz...')
 for (u, v, d) in tqdm(G.edges(data=True)):
     nx.draw_networkx_edges(G, pos, edgelist=[(u, v)], width=1.7 * d['weight'], alpha=0.35)
 

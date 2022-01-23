@@ -231,6 +231,7 @@ category: ml
 
 # misc
 
+- [Deep Learning Interviews: Hundreds of fully solved job interview questions from a wide range of key topics in AI](https://arxiv.org/abs/2201.00650)
 - adaptive pooling can help deal with different sizes
 - [NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis](https://arxiv.org/abs/2003.08934)
   - given multiple views, generate depth map + continuous volumetric repr.

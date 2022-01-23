@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>1.4. complexity</title>
+    <title>1.5. complexity</title>
     
   <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -56,8 +56,8 @@
     <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="1.5. interesting science" href="ovw_interesting_science.html" />
-    <link rel="prev" title="1.3. disentanglement" href="ovw_disentanglement.html" />
+    <link rel="next" title="1.6. interesting science" href="ovw_interesting_science.html" />
+    <link rel="prev" title="1.4. omics" href="ovw_omics.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -113,24 +113,24 @@
      1.3. disentanglement
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ovw_omics.html">
+     1.4. omics
+    </a>
+   </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     1.4. complexity
+     1.5. complexity
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_interesting_science.html">
-     1.5. interesting science
+     1.6. interesting science
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_dl_theory.html">
-     1.6. dl theory
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ovw_proteins.html">
-     1.7. proteins
+     1.7. dl theory
     </a>
    </li>
    <li class="toctree-l2">
@@ -596,64 +596,64 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#philosophy">
-   1.4.1. philosophy
+   1.5.1. philosophy
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#computational-complexity">
-   1.4.2. computational complexity
+   1.5.2. computational complexity
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#bayesian-model-complexity">
-   1.4.3. bayesian model complexity
+   1.5.3. bayesian model complexity
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#statistical-learning-theory">
-   1.4.4. statistical learning theory
+   1.5.4. statistical learning theory
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#misc">
-   1.4.5. misc
+   1.5.5. misc
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#estimated">
-   1.4.6. estimated
+   1.5.6. estimated
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#entropy-characterizations">
-   1.4.7. entropy characterizations
+   1.5.7. entropy characterizations
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#deep-learning-complexity">
-   1.4.8. deep learning complexity
+   1.5.8. deep learning complexity
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#double-descent">
-   1.4.9. double descent
+   1.5.9. double descent
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#linear-models">
-     1.4.9.1. linear models
+     1.5.9.1. linear models
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#minimum-description-length">
-   1.4.10. minimum description length
+   1.5.10. minimum description length
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#mdl-in-non-linear-models">
-     1.4.10.1. mdl in non-linear models
+     1.5.10.1. mdl in non-linear models
     </a>
    </li>
   </ul>
@@ -670,7 +670,7 @@
               <div>
                 
   <div class="section" id="complexity">
-<h1>1.4. complexity<a class="headerlink" href="#complexity" title="Permalink to this headline">¶</a></h1>
+<h1>1.5. complexity<a class="headerlink" href="#complexity" title="Permalink to this headline">¶</a></h1>
 <p>Complexity can be a useful notion for many things in statistical models. It can help answer the following questions:</p>
 <ul class="simple">
 <li><p>can I interpret this model?</p></li>
@@ -680,7 +680,7 @@
 <li><p>set an err threshold and then look at stability</p></li>
 </ul>
 <div class="section" id="philosophy">
-<h2>1.4.1. philosophy<a class="headerlink" href="#philosophy" title="Permalink to this headline">¶</a></h2>
+<h2>1.5.1. philosophy<a class="headerlink" href="#philosophy" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="http://cogprints.org/357/4/evolcomp.pdf">What is complexity?</a> (edmonds 95)</p>
 <ul>
@@ -770,7 +770,7 @@
 </ul>
 </div>
 <div class="section" id="computational-complexity">
-<h2>1.4.2. computational complexity<a class="headerlink" href="#computational-complexity" title="Permalink to this headline">¶</a></h2>
+<h2>1.5.2. computational complexity<a class="headerlink" href="#computational-complexity" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>amount of computational resource that it takes to solve a class of problem</p></li>
 <li><p><a class="reference external" href="https://dl.acm.org/citation.cfm?id=1074233">Computational complexity</a> (Papadimitriou)</p>
@@ -786,7 +786,7 @@
 </ul>
 </div>
 <div class="section" id="bayesian-model-complexity">
-<h2>1.4.3. bayesian model complexity<a class="headerlink" href="#bayesian-model-complexity" title="Permalink to this headline">¶</a></h2>
+<h2>1.5.3. bayesian model complexity<a class="headerlink" href="#bayesian-model-complexity" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://rss.onlinelibrary.wiley.com/doi/full/10.1111/1467-9868.00353">Bayesian measures of model complexity and fit</a> (spiegelhalter et al.)</p></li>
 <li><p>AIC</p></li>
@@ -795,7 +795,7 @@
 </ul>
 </div>
 <div class="section" id="statistical-learning-theory">
-<h2>1.4.4. statistical learning theory<a class="headerlink" href="#statistical-learning-theory" title="Permalink to this headline">¶</a></h2>
+<h2>1.5.4. statistical learning theory<a class="headerlink" href="#statistical-learning-theory" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>VC-dimension - measure of capacity of a function class that can be learned</p>
 <ul>
@@ -805,7 +805,7 @@
 </ul>
 </div>
 <div class="section" id="misc">
-<h2>1.4.5. misc<a class="headerlink" href="#misc" title="Permalink to this headline">¶</a></h2>
+<h2>1.5.5. misc<a class="headerlink" href="#misc" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/1908.01755">rashomon curves</a> (semenova &amp; rudin, 2019)</p>
 <ul>
@@ -840,13 +840,13 @@
 </ul>
 </div>
 <div class="section" id="estimated">
-<h2>1.4.6. estimated<a class="headerlink" href="#estimated" title="Permalink to this headline">¶</a></h2>
+<h2>1.5.6. estimated<a class="headerlink" href="#estimated" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.pnas.org/content/110/36/14563">optimal m estimation in high dimensions</a> optimal loss function (optimize over different loss functions, but evaluate with L2)assumes unbiased (so variance is the mse)</p></li>
 </ul>
 </div>
 <div class="section" id="entropy-characterizations">
-<h2>1.4.7. entropy characterizations<a class="headerlink" href="#entropy-characterizations" title="Permalink to this headline">¶</a></h2>
+<h2>1.5.7. entropy characterizations<a class="headerlink" href="#entropy-characterizations" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>try to characterize functions in the prediction space</p></li>
 <li><p><strong>metric entropy</strong> - want functions to be close (within epsilon)</p>
@@ -866,7 +866,7 @@
 </ul>
 </div>
 <div class="section" id="deep-learning-complexity">
-<h2>1.4.8. deep learning complexity<a class="headerlink" href="#deep-learning-complexity" title="Permalink to this headline">¶</a></h2>
+<h2>1.5.8. deep learning complexity<a class="headerlink" href="#deep-learning-complexity" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/1905.11639">a hessian-based complexity measure for dnns</a>with generalization and computation to a different form of stability</p>
 <ul>
@@ -877,7 +877,7 @@
 </ul>
 </div>
 <div class="section" id="double-descent">
-<h2>1.4.9. double descent<a class="headerlink" href="#double-descent" title="Permalink to this headline">¶</a></h2>
+<h2>1.5.9. double descent<a class="headerlink" href="#double-descent" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/1812.11118">Reconciling modern machine learning and the bias-variance trade-off</a> (belkin et al. 2018)</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1903.08560">Surprises in High-Dimensional Ridgeless Least Squares Interpolation</a></p>
@@ -899,7 +899,7 @@
 <li><p><a class="reference external" href="https://arxiv.org/abs/1912.02292">Deep Double Descent: Where Bigger Models and More Data Hurt</a> (nakkiran et al. 2019)</p></li>
 </ul>
 <div class="section" id="linear-models">
-<h3>1.4.9.1. linear models<a class="headerlink" href="#linear-models" title="Permalink to this headline">¶</a></h3>
+<h3>1.5.9.1. linear models<a class="headerlink" href="#linear-models" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/1402.1920">Degrees of Freedom and Model Search</a> (tibshirani 2014)</p>
 <ul>
@@ -911,7 +911,7 @@
 </div>
 </div>
 <div class="section" id="minimum-description-length">
-<h2>1.4.10. minimum description length<a class="headerlink" href="#minimum-description-length" title="Permalink to this headline">¶</a></h2>
+<h2>1.5.10. minimum description length<a class="headerlink" href="#minimum-description-length" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>mdl in linear regression: want to send y over, X is known to both sides, theta is also sent (used to pick a decoder for y)</p>
 <ul>
@@ -1021,7 +1021,7 @@
 <li><p><a class="reference external" href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=54897">Information-Theoretic Asymptotics of Bayes Methods</a> (Clarke &amp; Barron 90)</p></li>
 </ul>
 <div class="section" id="mdl-in-non-linear-models">
-<h3>1.4.10.1. mdl in non-linear models<a class="headerlink" href="#mdl-in-non-linear-models" title="Permalink to this headline">¶</a></h3>
+<h3>1.5.10.1. mdl in non-linear models<a class="headerlink" href="#mdl-in-non-linear-models" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.aaai.org/Papers/KDD/1995/KDD95-025.pdf">MDL-based Decision Tree Pruning</a> (mehta et al. 95)</p></li>
 <li><p>deep learning</p>
@@ -1086,8 +1086,8 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="ovw_disentanglement.html" title="previous page">1.3. disentanglement</a>
-    <a class='right-next' id="next-link" href="ovw_interesting_science.html" title="next page">1.5. interesting science</a>
+    <a class='left-prev' id="prev-link" href="ovw_omics.html" title="previous page">1.4. omics</a>
+    <a class='right-next' id="next-link" href="ovw_interesting_science.html" title="next page">1.6. interesting science</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

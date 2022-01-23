@@ -114,23 +114,23 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="ovw_omics.html">
+     1.4. omics
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="ovw_complexity.html">
-     1.4. complexity
+     1.5. complexity
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_interesting_science.html">
-     1.5. interesting science
+     1.6. interesting science
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_dl_theory.html">
-     1.6. dl theory
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ovw_proteins.html">
-     1.7. proteins
+     1.7. dl theory
     </a>
    </li>
    <li class="toctree-l2">
@@ -609,11 +609,6 @@
      1.12.2.1. rejection learning
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     1.12.2.2. complementarity
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -649,6 +644,11 @@
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#bayesian-neural-networks">
      1.12.5.4. bayesian neural networks
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     1.12.5.5. complementarity
     </a>
    </li>
   </ul>
@@ -706,38 +706,6 @@
 <ul>
 <li><p>trust score uses density over some set of nearest neighbors</p></li>
 <li><p>do clustering for each class - trust score = distance to once class’s cluster vs the other classes</p></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="section" id="id1">
-<h3>1.12.2.2. complementarity<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p><strong>complementarity</strong> - ML should focus on points hard for humans + seek human input on points hard for ML</p>
-<ul>
-<li><p>note: goal of perception isn’t to learn categories but learn things that are associated with actions</p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="http://papers.nips.cc/paper/7853-predict-responsibly-improving-fairness-and-accuracy-by-learning-to-defer">Predict Responsibly: Improving Fairness and Accuracy by Learning to Defer</a> (madras et al. 2018) - adaptive rejection learning - build on rejection learning considering the strengths/weaknesses of humans</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/2005.00582">Learning to Complement Humans</a> (wilder et al. 2020) - 2 approaches for how to incorporate human input</p>
-<ul>
-<li><p>discriminative approach - jointly train predictive model and policy for deferring to human (witha cost for deferring)</p></li>
-<li><p>decision-theroetic approach - train predictive model + policy jointly based on value of information (VOI)</p></li>
-<li><p>do real-world experiments w/ humans to validate:  scientific discovery (a galaxy classification task) and medical diagnosis (detection of breast cancer metastasis)</p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="https://arxiv.org/pdf/1802.04346.pdf">Gaining Free or Low-Cost Transparency with Interpretable Partial Substitute</a> (wang, 2019) - given a black-box model, find a subset of the data for which predictions can be made using a simple rule-list (<a class="reference external" href="https://scholar.google.com/citations?hl=en&amp;user=KB6A0esAAAAJ&amp;view_op=list_works&amp;sortby=pubdate">tong wang</a> has a few papers like this)</p>
-<ul>
-<li><p><a class="reference external" href="https://arxiv.org/abs/2002.03494">Interpretable Companions for Black-Box Models</a> (pan, wang, et al. 2020) - offer an interpretable, but slightly less acurate model for each decision</p>
-<ul>
-<li><p>human experiment evaluates how much humans are able to tolerate</p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/2105.02410">Partially Interpretable Estimators (PIE): Black-Box-Refined Interpretable Machine Learning</a> (wang eta al. 2021)</p>
-<ul>
-<li><p>interpretable model for individual features and black-box model captures feature interactions (on residuals)</p></li>
 </ul>
 </li>
 </ul>
@@ -868,6 +836,38 @@
 </li>
 <li><p><a class="reference external" href="https://papers.nips.cc/paper/9472-a-simple-baseline-for-bayesian-uncertainty-in-deep-learning.pdf">SWAG</a> (maddox et al. 2019) - start with pre-trained net then get Gaussian distr. over weights by training with large constant setp-size</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2005.07186">Efficient and Scalable Bayesian Neural Nets with Rank-1 Factors</a> (dusenberry, jerfel et al. 2020) - BNNs scale to SGD-level with better calibration</p></li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h3>1.12.5.5. complementarity<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>complementarity</strong> - ML should focus on points hard for humans + seek human input on points hard for ML</p>
+<ul>
+<li><p>note: goal of perception isn’t to learn categories but learn things that are associated with actions</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="http://papers.nips.cc/paper/7853-predict-responsibly-improving-fairness-and-accuracy-by-learning-to-defer">Predict Responsibly: Improving Fairness and Accuracy by Learning to Defer</a> (madras et al. 2018) - adaptive rejection learning - build on rejection learning considering the strengths/weaknesses of humans</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2005.00582">Learning to Complement Humans</a> (wilder et al. 2020) - 2 approaches for how to incorporate human input</p>
+<ul>
+<li><p>discriminative approach - jointly train predictive model and policy for deferring to human (witha cost for deferring)</p></li>
+<li><p>decision-theroetic approach - train predictive model + policy jointly based on value of information (VOI)</p></li>
+<li><p>do real-world experiments w/ humans to validate:  scientific discovery (a galaxy classification task) and medical diagnosis (detection of breast cancer metastasis)</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/1802.04346.pdf">Gaining Free or Low-Cost Transparency with Interpretable Partial Substitute</a> (wang, 2019) - given a black-box model, find a subset of the data for which predictions can be made using a simple rule-list (<a class="reference external" href="https://scholar.google.com/citations?hl=en&amp;user=KB6A0esAAAAJ&amp;view_op=list_works&amp;sortby=pubdate">tong wang</a> has a few papers like this)</p>
+<ul>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2002.03494">Interpretable Companions for Black-Box Models</a> (pan, wang, et al. 2020) - offer an interpretable, but slightly less acurate model for each decision</p>
+<ul>
+<li><p>human experiment evaluates how much humans are able to tolerate</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2105.02410">Partially Interpretable Estimators (PIE): Black-Box-Refined Interpretable Machine Learning</a> (wang eta al. 2021)</p>
+<ul>
+<li><p>interpretable model for individual features and black-box model captures feature interactions (on residuals)</p></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>

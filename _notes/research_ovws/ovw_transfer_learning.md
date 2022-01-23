@@ -7,8 +7,17 @@ category: research
 
 {:toc}
 
-
 See also notes on causal inference for some close connections. 
+
+# overviews
+
+![transfer_taxonomy](../assets/transfer_taxonomy.png) (from [this paper](https://arxiv.org/pdf/2109.14501v1.pdf))
+
+- for neural networks the basic options for transfer-learning are:
+  - finetuning the entire model
+  - learn a linear layer from features extracted from a single layer (i.e. linear probing)
+    - this includes just finetuning the final layer
+  - [Head2Toe: Utilizing Intermediate Representations for Better Transfer Learning](https://arxiv.org/abs/2201.03529) (evci, et al. 2022) - learn linear layer (using group-lasso) on features extracted from all layers
 
 # domain adaptation algorithms
 
@@ -116,6 +125,3 @@ See also notes on causal inference for some close connections.
 - ranking
   - [Automatically Discovering and Learning New Visual Categories with Ranking Statistics](https://arxiv.org/pdf/2002.05714.pdf)
 
-# overviews
-
-![transfer_taxonomy](../assets/transfer_taxonomy.png) (from [this paper](https://arxiv.org/pdf/2109.14501v1.pdf))

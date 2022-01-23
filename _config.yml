@@ -14,5 +14,6 @@ collections:
     documentation: https://github.com/Shopify/liquid/wiki/Liquid-for-Designers
     output: true
 markdown: kramdown
+
 highlighter: rouge
 exclude: ["Rakefile", "LICENSE", "readme.md"]

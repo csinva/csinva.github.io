@@ -1,6 +1,6 @@
 ---
 layout: notes
-title: proteins
+title: omics
 category: research
 ---
 
@@ -8,36 +8,31 @@ category: research
 
 **some papers involving proteins and ml, especially predicting protein structure from dna/rna**
 
+# overview
+
+## vocabulary
+
+- *oligonucleotide* = *oligo* = short single strands of synthetic DNA or *RNA*
+
+## data
+
+- [nucleic acid database](http://ndbserver.rutgers.edu/) (NDB) 
+- [protein databank](https://www.rcsb.org/) (PDB)
+- rna
+  - ~~[RNABase: an annotated database of RNA structures](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC165459/)~~ (2003) - no longer maintained
+  - [Accurate SHAPE-directed RNA structure determination | PNAS](https://www.pnas.org/content/106/1/97) (deigan et al. 2009) - chemical probing
 
 
-# TIPs - using viruses for treatment
+## code
 
-- videos
-  - [Leor Weinberger: Can we create vaccines that mutate and spread? | TED Talk](https://www.ted.com/talks/leor_weinberger_can_we_create_vaccines_that_mutate_and_spread?language=en#t-798841)
-  - [Engineering Viruses - Leor Weinberger - Gladstone Institutes 2016 Fall Symposium - YouTube](https://www.youtube.com/watch?v=Dh0RbiAf2jY)
-- 2 issues
-  - mutation - viruses mutate, our drugs don't
-  - transmission - adherence / deployment - hard to give certain the drugs
-- solution: use modified versions of viruses as treatment
-  - *therapeutic interfering particles* or *TIPs* are engineered deletion mutants designed to piggyback on a virus and deprive the virus of replication material
-    - TIP is like a parasite of the virus - it clips off some of the virus DNA (via genetic engineering)
-      - it doesn't contain the code for replication, just for getting into the cell
-      - since it's shorter, it's made more efficiently - thus it outcompetes the virus
-  - how do TIPs spread?
-    - mutations happen because the "copy machine" within a cell makes a particular mutation
-      - when a new virus comes along, it makes some of the mutated parts
-      - TIPs can't replicate, so they take some of the mutated parts made by the new virus
-      - then, the TIP gets copied with the same mutation as the virus and this now spreads
-- effect
-  - viral load will immediately be lower
-  - superspreaders can spread treatment to others
+- rna
+  - [Galaxy RNA workbench](https://github.com/bgruening/galaxy-rna-workbench) - many tools including alignment, annotation, interaction
+  - [viennaRNA](https://github.com/ViennaRNA/ViennaRNA) - incorporating constraints into predictions
+  - neural nets
+    - [spot rna](https://github.com/jaswindersingh2/SPOT-RNA) / [spot rna2](https://github.com/jaswindersingh2/SPOT-RNA2)
+      - uses an Ensemble of Two-dimensional Deep Neural Networks and Transfer Learning
 
-- [Identification of a therapeutic interfering particle—A single-dose SARS-CoV-2 antiviral intervention with a high barrier to resistance](https://www.sciencedirect.com/science/article/pii/S0092867421013192?dgcid=coauthor) (chaturvedi...weinberger, 2021)
-  - DIP = defective interfering particle = wild-type virus
-  - single administration of TIP RNA inhibits SARS-CoV-2 sustainably in continuous cultures
-  - in hamsters, both prophylactic and therapeutic intranasal administration of lipid-nanoparticle TIPs durably suppressed SARS-CoV-2 by 100-fold in the lungs, reduced pro-inflammatory cytokine expression, and prevented severe pulmonary edema
-
-
+    - [mxfold2](https://github.com/keio-bioinformatics/mxfold2/) (sato et al. 2021)
 
 
 # rna structure prediction
@@ -62,21 +57,7 @@ category: research
         - other parts of the pairs (e.g. the Hoogsteen- / CH-edge and the sugar edge) can also form bonds
     - tertiary - complete 3d structure (e.g. bends, twists)
   - ![Screen Shot 2021-12-01 at 6.33.41 PM](../assets/Screen%20Shot%202021-12-01%20at%206.33.41%20PM.png)
-
-
-
-## code
-
-- [Galaxy RNA workbench](https://github.com/bgruening/galaxy-rna-workbench)
-- [viennaRNA](https://github.com/ViennaRNA/ViennaRNA) - incorporating constraints into predictions
-- neural nets
-  - [spot rna](https://github.com/jaswindersingh2/SPOT-RNA) / [spot rna2](https://github.com/jaswindersingh2/SPOT-RNA2)
-    - uses an Ensemble of Two-dimensional Deep Neural Networks and Transfer Learning
-  - [mxfold2](https://github.com/keio-bioinformatics/mxfold2/) (sato et al. 2021)
-
-## data
-
-- [Accurate SHAPE-directed RNA structure determination | PNAS](https://www.pnas.org/content/106/1/97) - chemical probing
+- [RNA-Seq - Wikipedia](https://en.wikipedia.org/wiki/RNA-Seq) - RNA-Seq uses next-generation sequencing (NGS) to reveal the presence and quantity of RNA in a biological sample at a given moment, analyzing the continuously changing cellular transcriptome
 
 ## algorithms
 
@@ -112,10 +93,10 @@ category: research
     - centroids - structures with a minimum distance to all other structures in the ensemble of possible structures
     - consensus structures - given a good alignment of a collection of related RNA structures, can compute their consensus structure, (i.e., a set of base pairs at corresponding alignment positions)
 - [Folding and Finding RNA Secondary Structure](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2982177/) (matthews et al. 2010)
-- loosing the assumption of no knots (e.g. crossings)
-  - project to topology (e.g. low/high genus) - e.g. projecting to a torus can remove crossings
+- new work drops the assumption of no knots (e.g. crossings)
+  - project to topology (e.g. low/high genus) - e.g. projecting to a torus can remove crossings but still allow us to use dynamic programming
 
-- [RNA secondary structure prediction using deep learning with thermodynamic integration | Nature Communications](https://www.nature.com/articles/s41467-021-21194-4) (sato et al. 2021)
+- [RNA secondary structure prediction using deep learning with thermodynamic integration](https://www.nature.com/articles/s41467-021-21194-4) (sato et al. 2021)
   - RNA-folding scores learnt using a DNN are integrated together with Turner’s nearest-neighbor free energy parameters
     - DNN predicts scores that are fed into zuker-style dynamic programming
 
@@ -124,6 +105,7 @@ category: research
 - startup [atomic ai](https://atomic.ai/) works on this
 - [Geometric deep learning of RNA structure | science](https://www.science.org/doi/10.1126/science.abe5650) (townshend, ..., dror 2021)
   - scoring model - gives energy function for (primary sequence, structure) pair
+  - townshend is at atomic ai
 - [Frontiers | RNA 3D Structure Prediction Using Coarse-Grained Models | Molecular Biosciences](https://www.frontiersin.org/articles/10.3389/fmolb.2021.720937/full) (li & chen, 2021)
 - older
   - [iFoldRNA: three-dimensional RNA structure prediction and folding - PubMed](https://pubmed.ncbi.nlm.nih.gov/18579566/) (sharma et al. 2008)
@@ -132,7 +114,9 @@ category: research
 
 ## protein basics
 
-- the standard way to obtain the 3D structure of a protein is X-ray crystallography. It takes about a year and costs about $120,000 to obtain the structure of a single protein through X-ray crystallography [[source](https://fortune.com/2020/11/30/deepmind-protein-folding-breakthrough/)]
+- the standard way to obtain the 3D structure of a protein is X-ray crystallography
+  - takes ~1 year &  $120k to obtain the structure of a single protein through X-ray crystallography ([source](https://fortune.com/2020/11/30/deepmind-protein-folding-breakthrough/))
+
 - on average, a protein is composed of 300 amino acids (residues)
   - 21 amino acid types
   - the first residue is fixed
@@ -148,14 +132,14 @@ category: research
 - prediction problems
   - contact prediction - binary map for physical contacts in the final protein
     - common to predict this, evaluation uses binary metrics
-  - [Evaluating Protein Transfer Learning with TAPE](https://arxiv.org/abs/1906.08230) - given embeddings, five tasks to measure downstream performance (rao et al. 2019)
-    - structure (SS + contact), evolutionary (homology), engineering (fluorescence + stability)
+  - [Evaluating Protein Transfer Learning with TAPE](https://arxiv.org/abs/1906.08230) - given embeddings, 5 tasks to measure downstream performance (rao et al. 2019)
+    - tasks: structure (SS + contact), evolutionary (homology), engineering (fluorescence + stability)
   - future: interactions between molecules (e.g. protein-protein, environment, highly designed proteins)
 
 ## deep-learning papers
 
 - [De novo protein design by deep network hallucination | Nature](https://www.nature.com/articles/s41586-021-04184-w) (anishchenko...baker, 2021)
-  - deep networks trained to predict native protein structures from their sequences can be inverted to design new proteins, and such networks and methods should contribute alongside traditional physics-based models to the de novo design of proteins with new functions.
+  - deep networks trained to predict native protein structures from their sequences can be inverted to design new proteins
 - [Highly accurate protein structure prediction with AlphaFold | Nature](https://www.nature.com/articles/s41586-021-03819-2) (jumper, ..., hassabis, 2021)
   - [supp](https://static-content.springer.com/esm/art%3A10.1038%2Fs41586-021-03819-2/MediaObjects/41586_2021_3819_MOESM1_ESM.pdf)
   - [best blog post](https://www.blopig.com/blog/2021/07/alphafold-2-is-here-whats-behind-the-structure-prediction-miracle/) ([other blog post](https://towardsdatascience.com/unfolding-alphafold-683d576a54a3))
@@ -183,6 +167,35 @@ category: research
   - coronavirus nucleocapsid = N protein
 
 
+
+# TIPs - using viruses for treatment
+
+- videos
+  - [Leor Weinberger: Can we create vaccines that mutate and spread? | TED Talk](https://www.ted.com/talks/leor_weinberger_can_we_create_vaccines_that_mutate_and_spread?language=en#t-798841)
+  - [Engineering Viruses - Leor Weinberger - Gladstone Institutes 2016 Fall Symposium - YouTube](https://www.youtube.com/watch?v=Dh0RbiAf2jY)
+- 2 issues
+  - mutation - viruses mutate, our drugs don't
+  - transmission - adherence / deployment - hard to give certain the drugs
+- solution: use modified versions of viruses as treatment
+  - *therapeutic interfering particles* or *TIPs* are engineered deletion mutants designed to piggyback on a virus and deprive the virus of replication material
+    - TIP is like a parasite of the virus - it clips off some of the virus DNA (via genetic engineering)
+      - it doesn't contain the code for replication, just for getting into the cell
+      - since it's shorter, it's made more efficiently - thus it outcompetes the virus
+  - how do TIPs spread?
+    - mutations happen because the "copy machine" within a cell makes a particular mutation
+      - when a new virus comes along, it makes some of the mutated parts
+      - TIPs can't replicate, so they take some of the mutated parts made by the new virus
+      - then, the TIP gets copied with the same mutation as the virus and this now spreads
+- effect
+  - viral load will immediately be lower
+  - superspreaders can spread treatment to others
+
+- [Identification of a therapeutic interfering particle—A single-dose SARS-CoV-2 antiviral intervention with a high barrier to resistance](https://www.sciencedirect.com/science/article/pii/S0092867421013192?dgcid=coauthor) (chaturvedi...weinberger, 2021)
+  - DIP = defective interfering particle = wild-type virus
+  - single administration of TIP RNA inhibits SARS-CoV-2 sustainably in continuous cultures
+  - in hamsters, both prophylactic and therapeutic intranasal administration of lipid-nanoparticle TIPs durably suppressed SARS-CoV-2 by 100-fold in the lungs, reduced pro-inflammatory cytokine expression, and prevented severe pulmonary edema
+  - TIP consists 1k - 2k bases
+  - hard to actually look at structure here (requires cryoEM)
 
 
 # bin random papers

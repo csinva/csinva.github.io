@@ -11,6 +11,11 @@ title: presentations
 
 ### phd research overview
 
+<details>
+<summary>Abstract</summary>
+Deep learning models have achieved impressive predictive performance by learning complex functions of many variables, often at the cost of interpretability. I will discuss a recent line of work aiming to interpret neural networks by attributing importance to features and feature interactions for individual predictions. Importantly, the proposed methods disentangle the importance of features in isolation and the interactions between groups of features. These attributions significantly enhance interpretability and can be used to directly improve generalization in interesting ways. I will showcase how we have worked with domain experts to make these attributions useful in different computer vision settings, including in bioimaging and cosmology.
+</details>
+
 - [research overview](https://docs.google.com/presentation/d/19fTICv0pyRiwGE39mqE_eGTq0Arn3OtVnDSrURFbPMA/present?slide=id.p)
 - [thesis slides](https://docs.google.com/presentation/d/1IyxCrB5Ol8RsvFBTTy4Y5DQH3TxS9Wgl7Pxt1thrBBY/edit)
 - [qual slides](https://docs.google.com/presentation/d/1cdzZsyRYRs9GiR9s2-V7OO8oIcaabT5TVJFGR9qk_HY/edit#slide=id.p)

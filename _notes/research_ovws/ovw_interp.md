@@ -56,6 +56,11 @@ Evaluating interpretability can be very difficult (largely because it rarely mak
 
 - [Towards A Rigorous Science of Interpretable Machine Learning](https://arxiv.org/pdf/1702.08608.pdf) (doshi-velez & kim 2017)
   - ![Screen Shot 2020-08-03 at 10.58.13 PM](../assets/interp_eval_table.png)
+- Interpreting Interpretability: Understanding Data Scientists’ Use of Interpretability Tools for Machine Learning ([kaur, ..., caruana, wallach, vaughan, 2020](https://dl.acm.org/doi/pdf/10.1145/3313831.3376219))
+  - used contextual inquiry + survey of data scientists (SHAP & InterpretML GAMs)
+  - results indicate that data scientists over-trust and misuse interpretability tools 
+  - few of our participants were able to accurately describe the visualizations output by these tools
+
 - [Benchmarking Attribution Methods with Relative Feature Importance](https://arxiv.org/abs/1907.09701) (yang & kim 2019)
   - train a classifier, add random stuff (like dogs) to the image, classifier should assign them little importance
 - [Visualizing the Impact of Feature Attribution Baselines](https://distill.pub/2020/attribution-baselines/)
@@ -119,7 +124,7 @@ For an implementation of many of these models, see the python [imodels package](
 
 ## decision rules overview
 
-For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
+*📌 see also notes on [logic](https://csinva.io/notes/ai/logic.html)*
 
 - 2 basic concepts for a rule
   - converage = support
@@ -281,18 +286,34 @@ For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
 
 - gam takes form $g(\mu) = b + f_0(x_0) + f_1(x_1) + f_2(x_2) + ...$
   - usually assume some basis for the $f$, like splines or polynomials (and we select how many either manually or with some complexity penalty)
-  - traditional way to fit - backfitting: each $f_i$ is fitted sequentially to the residuals of the previously fitted $f_0,...,f_{i-1}$ (hastie & tibshirani, 199)
-  - boosting - fit all $f$ simultaneously, e.g. one tree for each $f_i$  on each iteration
-  - can make this more interpretable by (1) making the $f$ functions smoother or (2) sparsity in the number of functions
-  - could also add in interaction terms...
-- [Demystifying Black-box Models with Symbolic Metamodels](https://papers.nips.cc/paper/9308-demystifying-black-box-models-with-symbolic-metamodels.pdf)
-  - GAM parameterized with Meijer G-functions (rather than pre-specifying some forms, as is done with symbolic regression)
-- [Neural Additive Models: Interpretable Machine Learning with Neural Nets](https://arxiv.org/abs/2004.13912) - GAM where we learn $f$ with a neural net
-- [Accuracy, Interpretability, and Differential Privacy via Explainable Boosting](https://arxiv.org/abs/2106.09680) (nori, caruana et al. 2021)
+  - *backfitting* - traditional way to fit - each $f_i$ is fitted sequentially to the residuals of the previously fitted $f_0,...,f_{i-1}$ ([hastie & tibshirani, 1989](https://www.jstor.org/stable/2241560?seq=1#metadata_info_tab_contents))
+  - *boosting* - fit all $f$ simultaneously, e.g. one tree for each $f_i$  on each iteration
+  - interpretability depends on (1) transparency of $f_i$ and (2) number of terms
+  - can also add in interaction terms (e.g. $f_i(x_1, x_2)$), but need a way to rank which interactions to add (see notes on interactions)
+- [NODE-GAM: Neural Generalized Additive Model for Interpretable Deep Learning](https://arxiv.org/abs/2106.01613) (chang, caruana, & goldenberg, 2021)
+  - includes interaction terms (all features are used initially and backprop decides which are kept) - they call this $GA^2M$
+  - [Creating Powerful and Interpretable Models with Regression Networks](https://arxiv.org/abs/2107.14417) (2021) - generalizes neural GAM to include interaction terms
+    - train first-order functions
+    - fix them and predict residuals with next order (and repeat for as many orders as desired)
+  - [Neural Additive Models: Interpretable Machine Learning with Neural Nets](https://arxiv.org/abs/2004.13912) - GAM where we learn $f$ with a neural net
+    - no interaction terms
+- [InterpretML: A Unified Framework for Machine Learning Interpretability](https://arxiv.org/abs/1909.09223) (nori...caruana 2019)  - software package mostly focused on explainable boosting machine (EBM)
+  - EBM - GAM which uses boosted decision trees as $f_i$
+  - [Accuracy, Interpretability, and Differential Privacy via Explainable Boosting](https://arxiv.org/abs/2106.09680) (nori, caruana et al. 2021)
+    - added differential privacy to explainable boosting
+- misc improvements
+  - [GAM Changer: Editing Generalized Additive Models with Interactive Visualization](https://arxiv.org/abs/2112.03245) (wang...caruana et al. 2021) - really nice gui
+  - [Axiomatic Interpretability for Multiclass Additive Models](https://dl.acm.org/doi/abs/10.1145/3292500.3330898) (zhang, tan, ... caruana, 2019)
+  - extend GAM to multiclass and improve visualizations in that setting
+  - [Sparse Partially Linear Additive Models](https://www.tandfonline.com/doi/full/10.1080/10618600.2015.1089775) (lou, bien, caruana & gehrke, 2015) - some terms are linear and some use $f_i(x_i)$
+
 
 ### symbolic regression
 
-- learn form of the equation using priors on what kinds of thinngs are more difficult
+Symbolic regression learns a symbolic (e.g. a mathematical formula) for a function from data  priors on what kinds of symboles (e.g. `sin`, `exp`) are more "difficult"
+
+- [Demystifying Black-box Models with Symbolic Metamodels](https://papers.nips.cc/paper/9308-demystifying-black-box-models-with-symbolic-metamodels.pdf)
+  - GAM parameterized with Meijer G-functions (rather than pre-specifying some forms, as is done with symbolic regression)
 - [Logic Regression](https://amstat.tandfonline.com/doi/abs/10.1198/1061860032238?casa_token=WVNXGYsNPLsAAAAA:eCjYgsRw_WZ6g0GPG9x3CMyHyEV9kwcXvWCC1S0TTbLc7SDBiiyHiKLNtYsuC6WYOpto7xAi6tQ5eQ#.YJB3bGZKjzc) (ruczinski, kooperberg & leblanc, 2012) - given binary input variables, automatically construct interaction terms and linear model (fit using simulated annealing)
 - [Building and Evaluating Interpretable Models using Symbolic Regression and Generalized Additive Models](https://openreview.net/pdf?id=BkgyvQzmW)
   - gams - assume model form is additive combination of some funcs, then solve via GD
@@ -368,9 +389,11 @@ For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
     - [learn shapes not texture](https://openreview.net/pdf?id=Bygh9j09KX)
     - [code](https://github.com/wielandbrendel/bag-of-local-features-models)
   - [Symbolic Semantic Segmentation and Interpretation of COVID-19 Lung Infections in Chest CT volumes based on Emergent Languages](https://arxiv.org/pdf/2008.09866v1.pdf) (chowdhury et al. 2020) - combine some segmentation with the classifier
-- [Sparse Epistatic Regularization of Deep Neural Networks for Inferring Fitness Functions](https://www.biorxiv.org/content/10.1101/2020.11.24.396994v1) (aghazadeh et al. 2020) - directly regularize interactions / high-order freqs in DNNs
+- regularization / constraints
+  - [Sparse Epistatic Regularization of Deep Neural Networks for Inferring Fitness Functions](https://www.biorxiv.org/content/10.1101/2020.11.24.396994v1) (aghazadeh et al. 2020) - directly regularize interactions / high-order freqs in DNNs
+  - [MonoNet: Towards Interpretable Models by Learning Monotonic Features](https://arxiv.org/abs/1909.13611) - enforce output to be a monotonic function of individuaul features
+
 - [Physics-informed neural networks: A deep learning framework for solving forward and inverse problems involving nonlinear partial differential equations](https://www.sciencedirect.com/science/article/pii/S0021999118307125) (raissi et al. 2019) - PINN - solve PDEs by constraining neural net to predict specific parameters / derivatives
-- [MonoNet: Towards Interpretable Models by Learning Monotonic Features](https://arxiv.org/abs/1909.13611) - enforce output to be a monotonic function of individuaul features
 - [Improved Deep Fuzzy Clustering for Accurate and Interpretable Classifiers](https://ieeexplore.ieee.org/abstract/document/8858809) - extract features with a DNN then do fuzzy clustering on this
 - [Towards Robust Interpretability with Self-Explaining Neural Networks](https://arxiv.org/pdf/1806.07538.pdf) (alvarez-melis & jaakkola 2018) - building architectures that explain their predictions
 - [Two Instances of Interpretable Neural Network for Universal Approximations](https://arxiv.org/abs/2112.15026) (tjoa & cuntai, 2021) - each neuron responds to a training point
@@ -391,6 +414,7 @@ For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
   - dnn learns small intermediate representation, which outputs all possible splits in a tree
   - these splits are forced into a tree-structure and optimized via SGD
   - neurons use sigmoid function
+- [Optimizing for Interpretability in Deep Neural Networks with Tree Regularization | Journal of Artificial Intelligence Research](https://www.jair.org/index.php/jair/article/view/12558) (wu...doshi-velez, 2021) - regularize DNN prediction function towards tree (potentially only for some region)
 - [Gradient Boosted Decision Tree Neural Network](https://arxiv.org/abs/1910.09340) - build DNN based on decision tree ensemble - basically the same but with gradient-boosted trees
 - [Neural Decision Trees](https://arxiv.org/abs/1702.07360) - treat each neural net like a node in a tree
 - [Controlling Neural Networks with Rule Representations](https://arxiv.org/abs/2106.07804) (seo, ..., pfister, 21)
@@ -412,6 +436,19 @@ For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
   - use neural autoencoder with binary activations + binarizing weights
   - optimizing a data-sparsity aware reconstruction loss, continuous versions of the weights are learned in small, noisy steps
 - [Harnessing Deep Neural Networks with Logic Rules](https://arxiv.org/pdf/1603.06318.pdf)
+
+## constrained models
+
+- different constraints in [tensorflow lattice](https://www.tensorflow.org/lattice/overview)
+  - e.g. monoticity, convexity, unimodality (unique peak), pairwise trust (model has higher slope for one feature when another feature is in particular value range)
+  - e.g. regularizers = laplacian (flatter), hessian (linear), wrinkle (smoother), torsion (independence between feature contributions)
+  - lattice regression ([garcia & gupta, 2009](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.215.849&rep=rep1&type=pdf)) - learn keypoints of look-up table and at inference time interpolate the table
+    - to learn, view as kernel method and then learn linear function in the kernel space
+
+  - Monotonic Calibrated Interpolated Look-Up Tables ([gupta et al. 2016](https://www.jmlr.org/papers/volume17/15-243/15-243.pdf))
+    - speed up $D$-dimensional interpolation to $O(D \log D)$
+    - follow-up work: Deep Lattice Networks and Partial Monotonic Functions ([you,...,gupta, 2017](https://proceedings.neurips.cc//paper/2017/file/464d828b85b0bed98e80ade0a5c43b0f-Paper.pdf)) - use many layers
+
 
 ## misc models
 
@@ -438,6 +475,7 @@ For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
 
 - **program synthesis** - automatically find a program in an underlying programming language that satisfies some user intent
   - **ex. program induction** - given a dataset consisting of input/output pairs, generate a (simple?) program that produces the same pairs
+- [Programs as Black-Box Explanations](https://arxiv.org/pdf/1611.07579.pdf) (singh et al. 2016)
 - [probabilistic programming](https://en.wikipedia.org/wiki/Probabilistic_programming) - specify graphical models via a programming language
 
 # posthoc interpretability (i.e. how can we interpret a fitted model)
@@ -497,7 +535,7 @@ For more on rules, see **[logic notes](https://csinva.io/notes/ai/logic.html)**.
 - [All Models are Wrong, but Many are Useful: Learning a Variable's Importance by Studying an Entire Class of Prediction Models Simultaneously](https://arxiv.org/abs/1801.01489) (Aaron, Rudin, & Dominici 2018)
 - [Interpreting Black Box Models via Hypothesis Testing](https://arxiv.org/abs/1904.00045)
 
-### feature interactions
+### interactions
 
 How interactions are defined and summarized is a very difficult thing to specify. For example, interactions can change based on monotonic transformations of features (e.g. $y= a \cdot b$, $\log y = \log a + \log b$). Nevertheless, when one has a specific question it can make sense to pursue finding and understanding interactions.
 
@@ -516,6 +554,10 @@ How interactions are defined and summarized is a very difficult thing to specify
   - idea: maximize difference between (distances for interclass) and (distances for intraclass)
   - using an L1 distance yields better gradients than an L2 distance
 - ANOVA - factorial method to detect feature interactions based on differences among group means in a dataset
+  - [Purifying Interaction Effects with the Functional ANOVA: An Efficient Algorithm for Recovering Identifiable Additive Models](http://proceedings.mlr.press/v108/lengerich20a.html) (lengerich, tan, ..., hooker, caruana, 2020)
+    - *pure interaction effects* - variance in the outcome which cannot be represented by any subset of features
+      - has an equivalence with the Functional ANOVA decomposition
+
 - Automatic Interaction Detection (AID) - detects interactions by subdividing data into disjoint exhaustive subsets to model an outcome based on categorical features
 - Shapley Taylor Interaction Index (STI) (Dhamdhere et al., 2019) - extends shap to all interactions
 - retraining
@@ -871,7 +913,6 @@ How interactions are defined and summarized is a very difficult thing to specify
 - [Interpretable Artificial Intelligence through the Lens of Feature Interaction](https://arxiv.org/abs/2103.03103) (tsang et al. 2021)
     - feature interaction- any non-additive effect between multiple features on an outcome (i.e. cannot be decomposed into a sum of subfunctions of individual variables)
 - [Learning Global Pairwise Interactions with Bayesian Neural Networks](https://arxiv.org/abs/1901.08361) (cui et al. 2020) - Bayesian Group Expected Hessian (GEH) - train bayesian neural net and analyze hessian to understand interactions
-- [Sparse Epistatic Regularization of Deep Neural Networks for Inferring Fitness Functions](https://www.biorxiv.org/content/10.1101/2020.11.24.396994v1) (aghazadeh et al. 2020) - penalize DNNs spectral representation to limit learning noisy high-order interactions
 
 ### dnn textual explanations
 
@@ -883,11 +924,18 @@ How interactions are defined and summarized is a very difficult thing to specify
 - [Grounding of Textual Phrases in Images by Reconstruction](https://arxiv.org/pdf/1511.03745.pdf) - given text and image provide a bounding box (supervised problem w/ attention)
 - [Natural Language Explanations of Classifier Behavior](https://ieeexplore.ieee.org/abstract/document/8791710)
 
-## model summarization / distillation
+## model summarization
 
 - [piecewise linear interp](https://arxiv.org/pdf/1806.10270.pdf)
 - [Computing Linear Restrictions of Neural Networks](https://arxiv.org/abs/1908.06214) - calculate function of neural network restricting its points to lie on a line
 - [Interpreting CNN Knowledge via an Explanatory Graph](https://arxiv.org/abs/1708.01785) (zhang et al. 2017) - create a graph that responds better to things like objects than individual neurons
+- [Considerations When Learning Additive Explanations for Black-Box Models](https://arxiv.org/abs/1801.08640)
+  - when we have a nonlinear model or correlated components, impossible to uniquely distill it into an additive surrogate model
+  - 4 potential additive surrogate models:
+    - distilled additive- tend to be the most faithful
+    - partial-dependence
+    - Shapley explanations (averaged)
+    - gradient-based
 
 
 
@@ -915,11 +963,17 @@ How interactions are defined and summarized is a very difficult thing to specify
 
 # different problems / perspectives
 
-## improving models
+## improving models (possibly w/ human-in-the-loop)
+
+*📌 see also notes on [complementarity](https://csinva.io/notes/research_ovws/ovw_uncertainty.html#complementarity)*
 
 - [Interpretations are useful: penalizing explanations to align neural networks with prior knowledge](https://arxiv.org/abs/1909.13584) (rieger et al. 2020)
   - [Refining Neural Networks with Compositional Explanations](https://arxiv.org/abs/2103.10415) (yao et al. 21) - human looks at saliency maps of interactions, gives natural language explanation, this is converted back to interactions (defined using IG), and then regularized
-- [Right for the Right Reasons: Training Differentiable Models by Constraining their Explanations](https://arxiv.org/abs/1703.03717)
+  - [Dropout as a Regularizer of Interaction Effects](https://arxiv.org/abs/2007.00823) (lengerich...caruana, 21) - dropout regularizes interaction effects
+  - [Sparse Epistatic Regularization of Deep Neural Networks for Inferring Fitness Functions](https://www.biorxiv.org/content/10.1101/2020.11.24.396994v1) (aghazadeh ... listgarten, ramchandran, 2020) - penalize DNNs spectral representation to limit learning noisy high-order interactions
+- [Right for the Right Reasons: Training Differentiable Models by Constraining their Explanations](https://arxiv.org/abs/1703.03717) (ross et al. 2017)
+- [Explain and improve: LRP-inference fine-tuning for image captioning models ](https://www.sciencedirect.com/science/article/pii/S1566253521001494) (sun et al. 2022)
+  - [Pruning by explaining: A novel criterion for deep neural network pruning](https://www.sciencedirect.com/science/article/pii/S0031320321000868) (yeom et al. 2021) - use LRP-based score to prune DNN
 - [Explain to Fix: A Framework to Interpret and Correct DNN Object Detector Predictions](https://arxiv.org/pdf/1811.08011.pdf)
 - [Understanding Misclassifications by Attributes](https://arxiv.org/abs/1910.07416)
 - [Improving VQA and its Explanations by Comparing Competing Explanations](https://arxiv.org/abs/2006.15631) (wu et al. 2020)
@@ -931,6 +985,8 @@ How interactions are defined and summarized is a very difficult thing to specify
   - generated explanations are rated higher by humans
   - [VQA-E: Explaining, Elaborating, and Enhancing Your Answers for Visual Questions](https://arxiv.org/abs/1803.07464) (li et al. 2018) - train to jointly predict answer + generate an explanation
   - [Self-Critical Reasoning for Robust Visual Question Answering](https://proceedings.neurips.cc/paper/2019/hash/33b879e7ab79f56af1e88359f9314a10-Abstract.html) (wu & mooney, 2019) - use textual explanations to extract a set of important visual objects
+- human in-the-loop
+  - [Making deep neural networks right for the right scientific reasons by interacting with their explanations](https://www.nature.com/articles/s42256-020-0212-3) (schramowski, ... kersting, 2020) - scientist iteratively provides feedback on DNN's explanation
 
 ## recourse
 

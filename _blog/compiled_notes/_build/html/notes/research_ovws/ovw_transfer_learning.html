@@ -114,23 +114,23 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="ovw_omics.html">
+     1.4. omics
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="ovw_complexity.html">
-     1.4. complexity
+     1.5. complexity
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_interesting_science.html">
-     1.5. interesting science
+     1.6. interesting science
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_dl_theory.html">
-     1.6. dl theory
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ovw_proteins.html">
-     1.7. proteins
+     1.7. dl theory
     </a>
    </li>
    <li class="toctree-l2">
@@ -595,35 +595,35 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overviews">
+   1.2.1. overviews
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#domain-adaptation-algorithms">
-   1.2.1. domain adaptation algorithms
+   1.2.2. domain adaptation algorithms
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#domain-invariance">
-     1.2.1.1. domain invariance
+     1.2.2.1. domain invariance
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#dynamic-selection">
-     1.2.1.2. dynamic selection
+     1.2.2.2. dynamic selection
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#test-time-adaptation">
-     1.2.1.3. test-time adaptation
+     1.2.2.3. test-time adaptation
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#adv-attacks">
-   1.2.2. adv attacks
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#overviews">
-   1.2.3. overviews
+   1.2.3. adv attacks
   </a>
  </li>
 </ul>
@@ -640,8 +640,25 @@
   <div class="section" id="transfer-learning">
 <h1>1.2. transfer learning<a class="headerlink" href="#transfer-learning" title="Permalink to this headline">¶</a></h1>
 <p>See also notes on causal inference for some close connections.</p>
+<div class="section" id="overviews">
+<h2>1.2.1. overviews<a class="headerlink" href="#overviews" title="Permalink to this headline">¶</a></h2>
+<p><img alt="transfer_taxonomy" src="../../_images/transfer_taxonomy.png" /> (from <a class="reference external" href="https://arxiv.org/pdf/2109.14501v1.pdf">this paper</a>)</p>
+<ul class="simple">
+<li><p>for neural networks the basic options for transfer-learning are:</p>
+<ul>
+<li><p>finetuning the entire model</p></li>
+<li><p>learn a linear layer from features extracted from a single layer (i.e. linear probing)</p>
+<ul>
+<li><p>this includes just finetuning the final layer</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2201.03529">Head2Toe: Utilizing Intermediate Representations for Better Transfer Learning</a> (evci, et al. 2022) - learn linear layer (using group-lasso) on features extracted from all layers</p></li>
+</ul>
+</li>
+</ul>
+</div>
 <div class="section" id="domain-adaptation-algorithms">
-<h2>1.2.1. domain adaptation algorithms<a class="headerlink" href="#domain-adaptation-algorithms" title="Permalink to this headline">¶</a></h2>
+<h2>1.2.2. domain adaptation algorithms<a class="headerlink" href="#domain-adaptation-algorithms" title="Permalink to this headline">¶</a></h2>
 <p><em>Domain test bed available <a class="reference external" href="https://github.com/facebookresearch/DomainBed">here</a>, for generalizating to new domains (i.e. performing well on domains that differ from previous seen data)</em></p>
 <ul class="simple">
 <li><p>Empirical Risk Minimization (ERM, <a class="reference external" href="https://www.wiley.com/en-fr/Statistical+Learning+Theory-p-9780471030034">Vapnik, 1998</a>) - standard training</p></li>
@@ -675,7 +692,7 @@
 <li><p>kernel approach (<a class="reference external" href="https://papers.nips.cc/paper/2011/file/b571ecea16a9824023ee1af16897a582-Paper.pdf">blanchard, lee &amp; scott, 2011</a>) - find an appropriate RKHS and optimize a regularized empirical risk over the space</p></li>
 </ul>
 <div class="section" id="domain-invariance">
-<h3>1.2.1.1. domain invariance<a class="headerlink" href="#domain-invariance" title="Permalink to this headline">¶</a></h3>
+<h3>1.2.2.1. domain invariance<a class="headerlink" href="#domain-invariance" title="Permalink to this headline">¶</a></h3>
 <p><em>key idea: want repr. to be invariant to domain label</em></p>
 <ul class="simple">
 <li><p><img alt="Screen Shot 2020-11-10 at 12.05.12 PM" src="../../_images/domain_adv_training.png" /></p></li>
@@ -690,7 +707,7 @@
 </ul>
 </div>
 <div class="section" id="dynamic-selection">
-<h3>1.2.1.2. dynamic selection<a class="headerlink" href="#dynamic-selection" title="Permalink to this headline">¶</a></h3>
+<h3>1.2.2.2. dynamic selection<a class="headerlink" href="#dynamic-selection" title="Permalink to this headline">¶</a></h3>
 <p><em>Dynamic Selection (DS) refers to techniques in which, for a new test point, pre-trained classifiers are selected/combined from a pool at test time  <a class="reference external" href="https://www.etsmtl.ca/Unites-de-recherche/LIVIA/Recherche-et-innovation/Publications/Publications-2017/RCruz_InfoFusion.pdf">review paper</a> (cruz et al. 2018), <a class="reference external" href="https://github.com/scikit-learn-contrib/DESlib">python package</a></em></p>
 <ol class="simple">
 <li><p>define region of competence</p>
@@ -722,7 +739,7 @@
 </ol>
 </div>
 <div class="section" id="test-time-adaptation">
-<h3>1.2.1.3. test-time adaptation<a class="headerlink" href="#test-time-adaptation" title="Permalink to this headline">¶</a></h3>
+<h3>1.2.2.3. test-time adaptation<a class="headerlink" href="#test-time-adaptation" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>test-time adaptation</p>
 <ul>
@@ -746,7 +763,7 @@
 </div>
 </div>
 <div class="section" id="adv-attacks">
-<h2>1.2.2. adv attacks<a class="headerlink" href="#adv-attacks" title="Permalink to this headline">¶</a></h2>
+<h2>1.2.3. adv attacks<a class="headerlink" href="#adv-attacks" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1909.08072">Adversarial Attacks and Defenses in Images, Graphs and Text: A Review</a> (xu et al. 2019)</p></li>
 <li><p>attacks</p>
@@ -816,10 +833,6 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="overviews">
-<h2>1.2.3. overviews<a class="headerlink" href="#overviews" title="Permalink to this headline">¶</a></h2>
-<p><img alt="transfer_taxonomy" src="../../_images/transfer_taxonomy.png" /> (from <a class="reference external" href="https://arxiv.org/pdf/2109.14501v1.pdf">this paper</a>)</p>
 </div>
 </div>
 

@@ -2,6 +2,9 @@
 
 # 2022
 
+- [Opinion | When I Applied to College, I Didn’t Want to ‘Sell My Pain’ - The New York Times](https://www.nytimes.com/2021/05/09/opinion/college-admissions-essays-trauma.html)
+- [The myth of the "great resignation" - Slow Boring](https://www.slowboring.com/p/the-myth-of-the-great-resignation)
+  - "The quits rate is unusually high, but the hires rate is also unusually high, and the ratio of hires to quits is very normal."
 - [Opinion | You Know What Would Help Exhausted Doctors and Nurses? More Money. - The New York Times](https://www.nytimes.com/2022/01/08/opinion/hazard-pay-covid-nurse-doctor.html)
 
 # 2021
@@ -75,8 +78,11 @@
 
 # 2020
 
+- [Opinion | Yes, We Mean Literally Abolish the Police - The New York Times](https://www.nytimes.com/2020/06/12/opinion/sunday/floyd-abolish-defund-police.html)
+  - a better term for "abolish the police" would be "make the police obsolete"
+
 - [China is What Orwell Feared](https://www.theatlantic.com/magazine/archive/2020/09/china-ai-surveillance/614197/) (The Atlantic)
-  - China's surveillance is very far along.
+  - China's surveillance is very far along
 - [Think Cancel Culture Doesn’t Exist? My Own ‘Lived Experience’ Says Otherwise](https://quillette.com/2020/07/30/think-cancel-culture-doesnt-exist-my-own-lived-experience-says-otherwise/	) (Quillete)
 - [Fake News Comes to Academia](https://www.wsj.com/articles/fake-news-comes-to-academia-1538520950)
   - Liberal-leaning PC studies got through peer review bc no one wanted to question them.

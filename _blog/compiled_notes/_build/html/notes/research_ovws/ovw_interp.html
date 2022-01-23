@@ -114,23 +114,23 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="ovw_omics.html">
+     1.4. omics
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="ovw_complexity.html">
-     1.4. complexity
+     1.5. complexity
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_interesting_science.html">
-     1.5. interesting science
+     1.6. interesting science
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_dl_theory.html">
-     1.6. dl theory
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ovw_proteins.html">
-     1.7. proteins
+     1.7. dl theory
     </a>
    </li>
    <li class="toctree-l2">
@@ -724,8 +724,8 @@
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#feature-interactions">
-       1.13.4.1.1. feature interactions
+      <a class="reference internal nav-link" href="#interactions">
+       1.13.4.1.1. interactions
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
@@ -802,8 +802,8 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#model-summarization-distillation">
-     1.13.5.3. model summarization / distillation
+    <a class="reference internal nav-link" href="#model-summarization">
+     1.13.5.3. model summarization
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -819,8 +819,8 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#improving-models">
-     1.13.6.1. improving models
+    <a class="reference internal nav-link" href="#improving-models-possibly-w-human-in-the-loop">
+     1.13.6.1. improving models (possibly w/ human-in-the-loop)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -922,6 +922,13 @@
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1702.08608.pdf">Towards A Rigorous Science of Interpretable Machine Learning</a> (doshi-velez &amp; kim 2017)</p>
 <ul>
 <li><p><img alt="Screen Shot 2020-08-03 at 10.58.13 PM" src="../../_images/interp_eval_table.png" /></p></li>
+</ul>
+</li>
+<li><p>Interpreting Interpretability: Understanding Data Scientists’ Use of Interpretability Tools for Machine Learning (<a class="reference external" href="https://dl.acm.org/doi/pdf/10.1145/3313831.3376219">kaur, …, caruana, wallach, vaughan, 2020</a>)</p>
+<ul>
+<li><p>used contextual inquiry + survey of data scientists (SHAP &amp; InterpretML GAMs)</p></li>
+<li><p>results indicate that data scientists over-trust and misuse interpretability tools</p></li>
+<li><p>few of our participants were able to accurately describe the visualizations output by these tools</p></li>
 </ul>
 </li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1907.09701">Benchmarking Attribution Methods with Relative Feature Importance</a> (yang &amp; kim 2019)</p>
@@ -1314,25 +1321,57 @@
 <li><p>gam takes form <span class="math notranslate nohighlight">\(g(\mu) = b + f_0(x_0) + f_1(x_1) + f_2(x_2) + ...\)</span></p>
 <ul>
 <li><p>usually assume some basis for the <span class="math notranslate nohighlight">\(f\)</span>, like splines or polynomials (and we select how many either manually or with some complexity penalty)</p></li>
-<li><p>traditional way to fit - backfitting: each <span class="math notranslate nohighlight">\(f_i\)</span> is fitted sequentially to the residuals of the previously fitted <span class="math notranslate nohighlight">\(f_0,...,f_{i-1}\)</span> (hastie &amp; tibshirani, 199)</p></li>
-<li><p>boosting - fit all <span class="math notranslate nohighlight">\(f\)</span> simultaneously, e.g. one tree for each <span class="math notranslate nohighlight">\(f_i\)</span>  on each iteration</p></li>
-<li><p>can make this more interpretable by (1) making the <span class="math notranslate nohighlight">\(f\)</span> functions smoother or (2) sparsity in the number of functions</p></li>
-<li><p>could also add in interaction terms…</p></li>
+<li><p><em>backfitting</em> - traditional way to fit - each <span class="math notranslate nohighlight">\(f_i\)</span> is fitted sequentially to the residuals of the previously fitted <span class="math notranslate nohighlight">\(f_0,...,f_{i-1}\)</span> (<a class="reference external" href="https://www.jstor.org/stable/2241560?seq=1#metadata_info_tab_contents">hastie &amp; tibshirani, 1989</a>)</p></li>
+<li><p><em>boosting</em> - fit all <span class="math notranslate nohighlight">\(f\)</span> simultaneously, e.g. one tree for each <span class="math notranslate nohighlight">\(f_i\)</span>  on each iteration</p></li>
+<li><p>interpretability depends on (1) transparency of <span class="math notranslate nohighlight">\(f_i\)</span> and (2) number of terms</p></li>
+<li><p>can also add in interaction terms (e.g. <span class="math notranslate nohighlight">\(f_i(x_1, x_2)\)</span>), but need a way to rank which interactions to add (see notes on interactions)</p></li>
 </ul>
 </li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2106.01613">NODE-GAM: Neural Generalized Additive Model for Interpretable Deep Learning</a> (chang, caruana, &amp; goldenberg, 2021)</p>
+<ul>
+<li><p>includes interaction terms (all features are used initially and backprop decides which are kept) - they call this <span class="math notranslate nohighlight">\(GA^2M\)</span></p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2107.14417">Creating Powerful and Interpretable Models with Regression Networks</a> (2021) - generalizes neural GAM to include interaction terms</p>
+<ul>
+<li><p>train first-order functions</p></li>
+<li><p>fix them and predict residuals with next order (and repeat for as many orders as desired)</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2004.13912">Neural Additive Models: Interpretable Machine Learning with Neural Nets</a> - GAM where we learn <span class="math notranslate nohighlight">\(f\)</span> with a neural net</p>
+<ul>
+<li><p>no interaction terms</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1909.09223">InterpretML: A Unified Framework for Machine Learning Interpretability</a> (nori…caruana 2019)  - software package mostly focused on explainable boosting machine (EBM)</p>
+<ul>
+<li><p>EBM - GAM which uses boosted decision trees as <span class="math notranslate nohighlight">\(f_i\)</span></p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2106.09680">Accuracy, Interpretability, and Differential Privacy via Explainable Boosting</a> (nori, caruana et al. 2021)</p>
+<ul>
+<li><p>added differential privacy to explainable boosting</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>misc improvements</p>
+<ul>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2112.03245">GAM Changer: Editing Generalized Additive Models with Interactive Visualization</a> (wang…caruana et al. 2021) - really nice gui</p></li>
+<li><p><a class="reference external" href="https://dl.acm.org/doi/abs/10.1145/3292500.3330898">Axiomatic Interpretability for Multiclass Additive Models</a> (zhang, tan, … caruana, 2019)</p></li>
+<li><p>extend GAM to multiclass and improve visualizations in that setting</p></li>
+<li><p><a class="reference external" href="https://www.tandfonline.com/doi/full/10.1080/10618600.2015.1089775">Sparse Partially Linear Additive Models</a> (lou, bien, caruana &amp; gehrke, 2015) - some terms are linear and some use <span class="math notranslate nohighlight">\(f_i(x_i)\)</span></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="symbolic-regression">
+<h4>1.13.3.2.3. symbolic regression<a class="headerlink" href="#symbolic-regression" title="Permalink to this headline">¶</a></h4>
+<p>Symbolic regression learns a symbolic (e.g. a mathematical formula) for a function from data  priors on what kinds of symboles (e.g. <code class="docutils literal notranslate"><span class="pre">sin</span></code>, <code class="docutils literal notranslate"><span class="pre">exp</span></code>) are more “difficult”</p>
+<ul class="simple">
 <li><p><a class="reference external" href="https://papers.nips.cc/paper/9308-demystifying-black-box-models-with-symbolic-metamodels.pdf">Demystifying Black-box Models with Symbolic Metamodels</a></p>
 <ul>
 <li><p>GAM parameterized with Meijer G-functions (rather than pre-specifying some forms, as is done with symbolic regression)</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/2004.13912">Neural Additive Models: Interpretable Machine Learning with Neural Nets</a> - GAM where we learn <span class="math notranslate nohighlight">\(f\)</span> with a neural net</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/2106.09680">Accuracy, Interpretability, and Differential Privacy via Explainable Boosting</a> (nori, caruana et al. 2021)</p></li>
-</ul>
-</div>
-<div class="section" id="symbolic-regression">
-<h4>1.13.3.2.3. symbolic regression<a class="headerlink" href="#symbolic-regression" title="Permalink to this headline">¶</a></h4>
-<ul class="simple">
-<li><p>learn form of the equation using priors on what kinds of thinngs are more difficult</p></li>
 <li><p><a class="reference external" href="https://amstat.tandfonline.com/doi/abs/10.1198/1061860032238?casa_token=WVNXGYsNPLsAAAAA:eCjYgsRw_WZ6g0GPG9x3CMyHyEV9kwcXvWCC1S0TTbLc7SDBiiyHiKLNtYsuC6WYOpto7xAi6tQ5eQ#.YJB3bGZKjzc">Logic Regression</a> (ruczinski, kooperberg &amp; leblanc, 2012) - given binary input variables, automatically construct interaction terms and linear model (fit using simulated annealing)</p></li>
 <li><p><a class="reference external" href="https://openreview.net/pdf?id=BkgyvQzmW">Building and Evaluating Interpretable Models using Symbolic Regression and Generalized Additive Models</a></p>
 <ul>
@@ -1480,7 +1519,7 @@
 <li><p><a class="reference external" href="https://arxiv.org/abs/1909.13611">MonoNet: Towards Interpretable Models by Learning Monotonic Features</a> - enforce output to be a monotonic function of individuaul features</p></li>
 <li><p><a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/8858809">Improved Deep Fuzzy Clustering for Accurate and Interpretable Classifiers</a> - extract features with a DNN then do fuzzy clustering on this</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1806.07538.pdf">Towards Robust Interpretability with Self-Explaining Neural Networks</a> (alvarez-melis &amp; jaakkola 2018) - building architectures that explain their predictions</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/pdf/1603.06318.pdf">Harnessing Deep Neural Networks with Logic Rules</a></p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2112.15026">Two Instances of Interpretable Neural Network for Universal Approximations</a> (tjoa &amp; cuntai, 2021) - each neuron responds to a training point</p></li>
 </ul>
 <div class="section" id="connecting-dnns-with-rule-based-models">
 <h4>1.13.3.4.1. connecting dnns with rule-based models<a class="headerlink" href="#connecting-dnns-with-rule-based-models" title="Permalink to this headline">¶</a></h4>
@@ -1508,6 +1547,7 @@
 <li><p>neurons use sigmoid function</p></li>
 </ul>
 </li>
+<li><p><a class="reference external" href="https://www.jair.org/index.php/jair/article/view/12558">Optimizing for Interpretability in Deep Neural Networks with Tree Regularization | Journal of Artificial Intelligence Research</a> (wu…doshi-velez, 2021) - regularize DNN prediction function towards tree (potentially only for some region)</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1910.09340">Gradient Boosted Decision Tree Neural Network</a> - build DNN based on decision tree ensemble - basically the same but with gradient-boosted trees</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1702.07360">Neural Decision Trees</a> - treat each neural net like a node in a tree</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2106.07804">Controlling Neural Networks with Rule Representations</a> (seo, …, pfister, 21)</p>
@@ -1549,6 +1589,7 @@
 <li><p>optimizing a data-sparsity aware reconstruction loss, continuous versions of the weights are learned in small, noisy steps</p></li>
 </ul>
 </li>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/1603.06318.pdf">Harnessing Deep Neural Networks with Logic Rules</a></p></li>
 </ul>
 </div>
 </div>
@@ -1690,8 +1731,8 @@ instances (PDP problem)</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1801.01489">All Models are Wrong, but Many are Useful: Learning a Variable’s Importance by Studying an Entire Class of Prediction Models Simultaneously</a> (Aaron, Rudin, &amp; Dominici 2018)</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1904.00045">Interpreting Black Box Models via Hypothesis Testing</a></p></li>
 </ul>
-<div class="section" id="feature-interactions">
-<h4>1.13.4.1.1. feature interactions<a class="headerlink" href="#feature-interactions" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="interactions">
+<h4>1.13.4.1.1. interactions<a class="headerlink" href="#interactions" title="Permalink to this headline">¶</a></h4>
 <p>How interactions are defined and summarized is a very difficult thing to specify. For example, interactions can change based on monotonic transformations of features (e.g. <span class="math notranslate nohighlight">\(y= a \cdot b\)</span>, <span class="math notranslate nohighlight">\(\log y = \log a + \log b\)</span>). Nevertheless, when one has a specific question it can make sense to pursue finding and understanding interactions.</p>
 <ul class="simple">
 <li><p>build-up = context-free, less faithful: score is contribution of only variable of interest ignoring other variables</p></li>
@@ -1717,12 +1758,28 @@ instances (PDP problem)</p></li>
 <li><p>using an L1 distance yields better gradients than an L2 distance</p></li>
 </ul>
 </li>
-<li><p>ANOVA - factorial method to detect feature interactions based on differences among group means in a dataset</p></li>
+<li><p>ANOVA - factorial method to detect feature interactions based on differences among group means in a dataset</p>
+<ul>
+<li><p><a class="reference external" href="http://proceedings.mlr.press/v108/lengerich20a.html">Purifying Interaction Effects with the Functional ANOVA: An Efficient Algorithm for Recovering Identifiable Additive Models</a> (lengerich, tan, …, hooker, caruana, 2020)</p>
+<ul>
+<li><p><em>pure interaction effects</em> - variance in the outcome which cannot be represented by any subset of features</p>
+<ul>
+<li><p>has an equivalence with the Functional ANOVA decomposition</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 <li><p>Automatic Interaction Detection (AID) - detects interactions by subdividing data into disjoint exhaustive subsets to model an outcome based on categorical features</p></li>
 <li><p>Shapley Taylor Interaction Index (STI) (Dhamdhere et al., 2019) - extends shap to all interactions</p></li>
 <li><p>retraining</p>
 <ul>
-<li><p><a class="reference external" href="https://link.springer.com/chapter/10.1007/978-3-540-74958-5_31">Additive groves</a> (Sorokina, carauna, &amp; riedewald 2007) proposed use random forest with and without an interaction (forcibly removed) to detect feature interactions - very slow</p></li>
+<li><p><a class="reference external" href="https://link.springer.com/chapter/10.1007/978-3-540-74958-5_31">Additive groves</a> (Sorokina, carauna, &amp; riedewald 2007) proposed use random forest with and without an interaction (forcibly removed) to detect feature interactions - very slow</p>
+<ul>
+<li><p><a class="reference external" href="https://www.ccs.neu.edu/home/mirek/papers/2008-ICML-Interactions.pdf">additive groves interaction followup</a></p></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><p>gradient-based methods (originally Friedman and Popescu, 2008 then later used with many models such as logit)</p>
@@ -2392,7 +2449,6 @@ a concept’s examples and examples in any layer</p></li>
 </ul>
 </li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1901.08361">Learning Global Pairwise Interactions with Bayesian Neural Networks</a> (cui et al. 2020) - Bayesian Group Expected Hessian (GEH) - train bayesian neural net and analyze hessian to understand interactions</p></li>
-<li><p><a class="reference external" href="https://www.biorxiv.org/content/10.1101/2020.11.24.396994v1">Sparse Epistatic Regularization of Deep Neural Networks for Inferring Fitness Functions</a> (aghazadeh et al. 2020) - penalize DNNs spectral representation to limit learning noisy high-order interactions</p></li>
 </ul>
 </div>
 <div class="section" id="dnn-textual-explanations">
@@ -2410,12 +2466,25 @@ a concept’s examples and examples in any layer</p></li>
 <li><p><a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/8791710">Natural Language Explanations of Classifier Behavior</a></p></li>
 </ul>
 </div>
-<div class="section" id="model-summarization-distillation">
-<h3>1.13.5.3. model summarization / distillation<a class="headerlink" href="#model-summarization-distillation" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="model-summarization">
+<h3>1.13.5.3. model summarization<a class="headerlink" href="#model-summarization" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1806.10270.pdf">piecewise linear interp</a></p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1908.06214">Computing Linear Restrictions of Neural Networks</a> - calculate function of neural network restricting its points to lie on a line</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1708.01785">Interpreting CNN Knowledge via an Explanatory Graph</a> (zhang et al. 2017) - create a graph that responds better to things like objects than individual neurons</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1801.08640">Considerations When Learning Additive Explanations for Black-Box Models</a></p>
+<ul>
+<li><p>when we have a nonlinear model or correlated components, impossible to uniquely distill it into an additive surrogate model</p></li>
+<li><p>4 potential additive surrogate models:</p>
+<ul>
+<li><p>distilled additive- tend to be the most faithful</p></li>
+<li><p>partial-dependence</p></li>
+<li><p>Shapley explanations (averaged)</p></li>
+<li><p>gradient-based</p></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="section" id="distillation">
@@ -2458,12 +2527,14 @@ a concept’s examples and examples in any layer</p></li>
 </div>
 <div class="section" id="different-problems-perspectives">
 <h2>1.13.6. different problems / perspectives<a class="headerlink" href="#different-problems-perspectives" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="improving-models">
-<h3>1.13.6.1. improving models<a class="headerlink" href="#improving-models" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="improving-models-possibly-w-human-in-the-loop">
+<h3>1.13.6.1. improving models (possibly w/ human-in-the-loop)<a class="headerlink" href="#improving-models-possibly-w-human-in-the-loop" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/1909.13584">Interpretations are useful: penalizing explanations to align neural networks with prior knowledge</a> (rieger et al. 2020)</p>
 <ul>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2103.10415">Refining Neural Networks with Compositional Explanations</a> (yao et al. 21) - human looks at saliency maps of interactions, gives natural language explanation, this is converted back to interactions (defined using IG), and then regularized</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2007.00823">Dropout as a Regularizer of Interaction Effects</a> (lengerich…caruana, 21) - dropout regularizes interaction effects</p></li>
+<li><p><a class="reference external" href="https://www.biorxiv.org/content/10.1101/2020.11.24.396994v1">Sparse Epistatic Regularization of Deep Neural Networks for Inferring Fitness Functions</a> (aghazadeh … listgarten, ramchandran, 2020) - penalize DNNs spectral representation to limit learning noisy high-order interactions</p></li>
 </ul>
 </li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1703.03717">Right for the Right Reasons: Training Differentiable Models by Constraining their Explanations</a></p></li>
@@ -2484,6 +2555,7 @@ a concept’s examples and examples in any layer</p></li>
 <li><p><a class="reference external" href="https://proceedings.neurips.cc/paper/2019/hash/33b879e7ab79f56af1e88359f9314a10-Abstract.html">Self-Critical Reasoning for Robust Visual Question Answering</a> (wu &amp; mooney, 2019) - use textual explanations to extract a set of important visual objects</p></li>
 </ul>
 </li>
+<li><p><a class="reference external" href="https://www.nature.com/articles/s42256-020-0212-3">Making deep neural networks right for the right scientific reasons by interacting with their explanations | Nature Machine Intelligence</a></p></li>
 </ul>
 </div>
 <div class="section" id="recourse">
