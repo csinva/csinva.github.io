@@ -1,7 +1,7 @@
 .title {
     font-size: 70px;
-    margin: -10;
-    padding: -10;jek
+    /*margin: -10;*/
+    /*padding: -10;jek*/
 }
 
 .sidenav {
@@ -18,7 +18,7 @@
 
 .sidenav a {
     text-decoration: none;
-    color:#5bc0de
+    color:#5bc0de;
     display: block;
 }
 

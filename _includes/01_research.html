@@ -37,6 +37,64 @@
 
 <!--<br/>-->
 
+<script>
+    $(document).ready(function () {
+        $('#research_table').DataTable({
+            "order": [[0, "desc"]],
+            "aLengthMenu": [[15, -1], [15, "All"]],
+            "pageLength": "15",
+            dom: 'Bfrtip',
+            buttons: [
+                {
+                    text: '🔎 Interpretability',
+                    action: function (e, dt, node, config) {
+                        $(".dataTables_wrapper input").val(function () {
+                            return this.value + "🔎";
+                        });
+                        // $(".dataTables_wrapper input").submit();
+                    }
+                },
+                {
+                    text: '🌀 Deep learning',
+                    action: function (e, dt, node, config) {
+                        $(".dataTables_wrapper input").val(function () {
+                            return this.value + "🌀";
+                        });
+                        // $(".dataTables_wrapper input").val("🌀");
+                    }
+                },
+                {
+                    text: '🌳 Interpretable models',
+                    action: function (e, dt, node, config) {
+                        $(".dataTables_wrapper input").val(function () {
+                            return this.value + "🌳";
+                        });
+                        // $(".dataTables_wrapper input").val("🌳");
+                    }
+                },
+                {
+                    text: '💻 Open-source ML',
+                    action: function (e, dt, node, config) {
+                        $(".dataTables_wrapper input").val(function () {
+                            return this.value + "💻";
+                        });
+                        // $(".dataTables_wrapper input").val("💻");
+                    }
+                },
+                {
+                    text: '🧠',
+                    action: function (e, dt, node, config) {
+                        $(".dataTables_wrapper input").val(function () {
+                            return this.value + "🧠";
+                        });
+                        // $(".dataTables_wrapper input").val("🧠");
+                    }
+                },
+            ]
+        });
+    });
+</script>
+
 <table id="research_table" class="display" style="width:100%">
     <thead>
     <tr>
@@ -52,9 +110,67 @@
     <tbody>
     <tr>
         <td class="center">'22</td>
+        <td>developing reliable clinical decision rules: a case study in identifying blunt abdominal trauma in
+            children
+        </td>
+        <td>kornblith*, singh* et al.</td>
+        <td class="med">🔎🌳💊</td>
+        <td class="center"><a href="https://www.saem.org/annual-meeting/saem21">SAEM abstract</a></td>
+        <td class="big"><a href="https://github.com/csinva/iai-clinical-decision-rule"><i
+                class="fa fa-github fa-fw"></i></a></td>
+        <td class="med">
+            <a href="https://docs.google.com/presentation/d/1mxzGE0MkNZnzbIimDP8Kyq8oLfVSmHrOCKDPhiBPMz4/present?slide=id.p"><i
+                    class="fa fa-desktop fa-fw"></i></a>
+        </td>
+    </tr>
+    <tr>
+        <td class="center">'22</td>
+        <td>Interpretable deep learning for accurate molecular partner prediction in clathrin-mediated endocytosis</td>
+        <td>singh*, li*, et al.</td>
+        <td class="med">🔎🌀🦠</td>
+        <td class="center">in prep</td>
+        <td class="big"><a href="https://github.com/Yu-Group/auxilin-prediction"><i class="fa fa-github fa-fw"></i></a>
+        </td>
+        <td class="med">
+            <a href="https://docs.google.com/presentation/d/1sQXbFUTSEyrmDkovV8g759Wj8E9LBpATAVV1iweKeGo/present?slide=id.p"><i
+                    class="fa fa-desktop fa-fw"></i></a>
+        </td>
+    </tr>
+    <tr>
+        <td class="center">'22</td>
+        <td>Fast Interpretable Greedy-Tree Sums (FIGS)</td>
+        <td>tan*, singh*, nasseri, agarwal, & yu</td>
+        <td class="med">🔎🌳</td>
+        <td class="center">arxiv</td>
+        <!--            <td></td>-->
+        <td class="big"><a href="https://github.com/Yu-Group/veridical-flow"><i class="fa fa-github fa-fw"></i></a>
+        </td>
+        <td class="med">
+            <!--            <a href="https://docs.google.com/presentation/d/1ReJ3Lqh4VZqpu6X6sP47f6Re6PvLIX9ZRAdjb8ZhFXE/present?slide=id.p"><i-->
+            <!--                    class="fa fa-desktop fa-fw"></i></a>-->
+            <a href="https://demos.csinva.io/figs/"><i class="fa fa-home fa-fw"></i></a>
+        </td>
+    </tr>
+    <tr>
+        <td class="center">'22</td>
+        <td>Hierarchical shrinkage: improving accuracy and interpretability of tree-based methods</td>
+        <td>agarwal*, tan*, singh, ronen, & yu</td>
+        <td class="med">🔎🌳</td>
+        <td class="center">arxiv</td>
+        <!--            <td></td>-->
+        <td class="big"><a href="https://github.com/csinva/imodels"><i class="fa fa-github fa-fw"></i></a>
+        </td>
+        <td class="med">
+            <a href="https://demos.csinva.io/shrinkage/"><i class="fa fa-home fa-fw"></i></a>
+            <!--            <a href="https://docs.google.com/presentation/d/1ReJ3Lqh4VZqpu6X6sP47f6Re6PvLIX9ZRAdjb8ZhFXE/present?slide=id.p"><i-->
+            <!--                    class="fa fa-desktop fa-fw"></i></a>-->
+        </td>
+    </tr>
+    <tr>
+        <td class="center">'22</td>
         <td>VeridicalFlow: a Python package for building trustworthy data science pipelines with PCS</td>
         <td>duncan*, kapoor*, agarwal*, singh*, & yu</td>
-        <td class="med">🔎 ml</td>
+        <td class="med">💻🔍</td>
         <td class="center"><a href="https://joss.theoj.org/papers/10.21105/joss.03895">joss</a></td>
         <!--            <td></td>-->
         <td class="big"><a href="https://github.com/Yu-Group/veridical-flow"><i class="fa fa-github fa-fw"></i></a>
@@ -68,10 +184,11 @@
         <td class="center">'21</td>
         <td>Adaptive wavelet distillation from neural networks through interpretations</td>
         <td>ha, singh, et al.</td>
-        <td class="med">🔎 ml</td>
+        <td class="med">🔍🌀🌳</td>
         <td class="center"><a href="https://arxiv.org/abs/2107.09145">neurips</a></td>
         <!--            <td></td>-->
-        <td class="big"><a href="https://github.com/Yu-Group/adaptive-wavelet-distillation"><i class="fa fa-github fa-fw"></i></a>
+        <td class="big"><a href="https://github.com/Yu-Group/adaptive-wavelet-distillation"><i
+                class="fa fa-github fa-fw"></i></a>
         </td>
         <td class="med">
             <a href="https://docs.google.com/presentation/d/1YrzAir94D0KWewau34dZAXXPdATRuqeVf8Jt-o_wqG8/present?slide=id.p"><i
@@ -83,7 +200,7 @@
         <td class="center">'21</td>
         <td>imodels: a python package for fitting interpretable models</td>
         <td>singh*, nasseri*, et al.</td>
-        <td class="med">🔎 ml</td>
+        <td class="med">💻🔍🌳</td>
         <td class="center"><a href="https://joss.theoj.org/papers/10.21105/joss.03192">joss</a></td>
         <!--            <td></td>-->
         <td class="big"><a href="https://github.com/csinva/imodels"><i class="fa fa-github fa-fw"></i></a>
@@ -97,7 +214,7 @@
         <td class="center">'21</td>
         <td>Matched sample selection with GANs for mitigating attribute confounding</td>
         <td>singh, balakrishnan, & perona</td>
-        <td class="med">ml</td>
+        <td class="med">🌀</td>
         <td class="center"><a href="https://arxiv.org/abs/2103.13455">cvpr workshop</a></td>
         <!--            <td></td>-->
         <td class="big"><a href="https://github.com/csinva/matching-with-gans"><i class="fa fa-github fa-fw"></i></a>
@@ -111,7 +228,7 @@
         <td class="center">'21</td>
         <td>Revisiting complexity and the bias-variance tradeoff</td>
         <td>dwivedi*, singh*, yu & wainwright</td>
-        <td class="med">ml</td>
+        <td class="med">🌀</td>
         <td class="center"><a href="https://arxiv.org/abs/2006.10189">topml workshop</a></td>
         <td class="big"><a href="https://github.com/csinva/mdl-complexity"><i class="fa fa-github fa-fw"></i></a></td>
         <td class="med">
@@ -120,38 +237,10 @@
         </td>
     </tr>
     <tr>
-        <td class="center">'21</td>
-        <td>developing reliable clinical decision rules: a case study in identifying blunt abdominal trauma in
-            children
-        </td>
-        <td>kornblith*, singh* et al.</td>
-        <td class="med">📊 🔎 💊</td>
-        <td class="center"><a href="https://www.saem.org/annual-meeting/saem21">SAEM abstract</a></td>
-        <td class="big"><a href="https://github.com/csinva/iai-clinical-decision-rule"><i
-                class="fa fa-github fa-fw"></i></a></td>
-        <td class="med">
-            <a href="https://docs.google.com/presentation/d/1mxzGE0MkNZnzbIimDP8Kyq8oLfVSmHrOCKDPhiBPMz4/present?slide=id.p"><i
-                    class="fa fa-desktop fa-fw"></i></a>
-        </td>
-    </tr>
-    <tr>
-        <td class="center">'21</td>
-        <td>Interpretable deep learning for accurate molecular partner prediction in clathrin-mediated endocytosis</td>
-        <td>singh*, li*, et al.</td>
-        <td class="med">📊 🦠</td>
-        <td class="center">in prep</td>
-        <td class="big"><a href="https://github.com/Yu-Group/auxilin-prediction"><i class="fa fa-github fa-fw"></i></a>
-        </td>
-        <td class="med">
-            <a href="https://docs.google.com/presentation/d/1sQXbFUTSEyrmDkovV8g759Wj8E9LBpATAVV1iweKeGo/present?slide=id.p"><i
-                    class="fa fa-desktop fa-fw"></i></a>
-        </td>
-    </tr>
-    <tr>
         <td class="center">'20</td>
         <td>Curating a COVID-19 data repository and forecasting county-level death counts in the United States</td>
         <td>altieri et al.</td>
-        <td class="med">📊 🦠</td>
+        <td class="med">🔎🦠</td>
         <td class="center"><a href="https://arxiv.org/abs/2005.07882">hdsr</a></td>
         <td class="big"><a href="https://github.com/Yu-Group/covid19-severity-prediction"><i
                 class="fa fa-github fa-fw"></i></a></td>
@@ -163,20 +252,9 @@
     </tr>
     <tr>
         <td class="center">'20</td>
-        <td>interpretations are useful: penalizing explanations to align neural networks with prior knowledge</td>
-        <td>rieger, singh, murdoch & yu</td>
-        <td class="med">🔎 ml</td>
-        <td class="center"><a href="http://proceedings.mlr.press/v119/rieger20a.html">icml</a>
-        </td>
-        <td class="big"><a href="https://github.com/laura-rieger/deep-explanation-penalization"><i
-                class="fa fa-github fa-fw"></i></a></td>
-        <td class="med"><a href="https://icml.cc/virtual/2020/poster/5914"><i class="fa fa-desktop fa-fw"></i></a></td>
-    </tr>
-    <tr>
-        <td class="center">'20</td>
         <td>transformation importance with applications to cosmology</td>
         <td>singh*, ha*, lanusse, boehm, liu & yu</td>
-        <td class="med">🔎 🌌 ml</td>
+        <td class="med">🔎🌀🌌</td>
         <td class="center"><a href="https://arxiv.org/abs/2003.01926">iclr workshop (spotlight)</a></td>
         <td class="big"><a href="https://github.com/csinva/transformation-importance"><i class="fa fa-github fa-fw"></i></a>
         </td>
@@ -185,20 +263,34 @@
                 class="fa fa-desktop fa-fw"></i></a></td>
     </tr>
     <tr>
-        <td class="center">'19</td>
-        <td>disentangled attribution curves for interpreting random forests and boosted trees</td>
-        <td>devlin, singh, murdoch & yu</td>
-        <td class="med">🔎 ml</td>
-        <td class="center"><a href="https://arxiv.org/abs/1905.07631">arxiv</a></td>
-        <td class="big"><a href="https://github.com/csinva/disentangled_attribution_curves"><i
+        <td class="center">'20</td>
+        <td>interpretations are useful: penalizing explanations to align neural networks with prior knowledge</td>
+        <td>rieger, singh, murdoch & yu</td>
+        <td class="med">🔎🌀</td>
+        <td class="center"><a href="http://proceedings.mlr.press/v119/rieger20a.html">icml</a>
+        </td>
+        <td class="big"><a href="https://github.com/laura-rieger/deep-explanation-penalization"><i
                 class="fa fa-github fa-fw"></i></a></td>
-        <td></td>
+        <td class="med"><a href="https://icml.cc/virtual/2020/poster/5914"><i class="fa fa-desktop fa-fw"></i></a></td>
+    </tr>
+    <tr>
+        <td class="center">'19</td>
+        <td>hierarchical interpretations for neural network predictions</td>
+        <td>Singh*, Murdoch*, & Yu</td>
+        <td class="med">🔍🌀</td>
+        <td class="center"><a href="https://arxiv.org/abs/1806.05337">ICLR</a></td>
+        <td class="big"><a href="https://github.com/csinva/acd"><i class="fa fa-github fa-fw"></i></a></td>
+        <td class="med"><a
+                href="https://docs.google.com/presentation/d/1I6djTqVn6YGKqxvQk59-4C39LbE68mNQbX1Go5pzTH4/present?slide=id.p"><i
+                class="fa fa-desktop fa-fw"></i></a> <a
+                href="{{site.baseurl}}/assets/write_ups/acd_18_bairday_poster.pdf"><i class="fa fa-picture-o fa-fw"></i></a>
+        </td>
     </tr>
     <tr>
         <td class="center">'19</td>
         <td>interpretable machine learning: definitions, methods, and applications</td>
         <td>Murdoch*, Singh*, et al.</td>
-        <td class="med">🔎 ml</td>
+        <td class="med">🔍🌳🌀</td>
         <td class="center"><a href="https://arxiv.org/abs/1901.04592">pnas</a></td>
         <td></td>
         <td class="med"><a
@@ -209,22 +301,19 @@
     </tr>
     <tr>
         <td class="center">'19</td>
-        <td>hierarchical interpretations for neural network predictions</td>
-        <td>Singh*, Murdoch*, & Yu</td>
-        <td class="med">🔎 ml</td>
-        <td class="center"><a href="https://arxiv.org/abs/1806.05337">ICLR</a></td>
-        <td class="big"><a href="https://github.com/csinva/acd"><i class="fa fa-github fa-fw"></i></a></td>
-        <td class="med"><a
-                href="https://docs.google.com/presentation/d/1I6djTqVn6YGKqxvQk59-4C39LbE68mNQbX1Go5pzTH4/present?slide=id.p"><i
-                class="fa fa-desktop fa-fw"></i></a> <a
-                href="{{site.baseurl}}/assets/write_ups/acd_18_bairday_poster.pdf"><i class="fa fa-picture-o fa-fw"></i></a>
-        </td>
+        <td>disentangled attribution curves for interpreting random forests and boosted trees</td>
+        <td>devlin, singh, murdoch & yu</td>
+        <td class="med">🔍🌳</td>
+        <td class="center"><a href="https://arxiv.org/abs/1905.07631">arxiv</a></td>
+        <td class="big"><a href="https://github.com/csinva/disentangled_attribution_curves"><i
+                class="fa fa-github fa-fw"></i></a></td>
+        <td></td>
     </tr>
     <tr>
         <td class="center">'18</td>
         <td>large scale image segmentation with structured loss based deep learning for connectome reconstruction</td>
         <td>Funke*, Tschopp*, et al.</td>
-        <td class="med">ml 🧠</td>
+        <td class="med">🧠🌀</td>
         <td class="center"><a href="https://ieeexplore.ieee.org/abstract/document/8364622/">TPAMI</a></td>
         <td class="big"><a href="https://github.com/funkey/mala"><i class="fa fa-github fa-fw"></i></a></td>
         <td class="med"><a href="{{site.baseurl}}/assets/write_ups/singh_15_rf_segmentation.pdf"><i
@@ -261,7 +350,7 @@
             graphs
         </td>
         <td>Singh, Wang, & Qi</td>
-        <td class="med">ml 🧠</td>
+        <td class="med">🧠</td>
         <td class="center"><a href="https://arxiv.org/abs/1709.04090">neurips Workshop</a></td>
         <td class="big"><a href="https://cran.r-project.org/web/packages/simule/index.html"><i
                 class="fa fa-github fa-fw"></i></a></td>
@@ -294,5 +383,9 @@
         text-align: center;
     }
 
-</style>
+    .dt-button span {
+        color: white;
+        font-family: Lora, "Helvetica Neue", Helvetica, Arial, sans-serif;
 
+    }
+</style>

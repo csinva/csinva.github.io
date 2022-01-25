@@ -1,29 +1,13 @@
-<!-- jQuery -->
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
-<script src="{{ site.baseurl }}/assets/js/jquery.js"></script>
 
-<!-- Bootstrap Core JavaScript -->
-<script src="{{ site.baseurl }}/assets/js/bootstrap.min.js"></script>
-
-<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>-->
-
-<!-- Plugin JavaScript -->
-<script src="{{ site.baseurl }}/assets/js/jquery.easing.min.js"></script>
-
-<!-- Custom Theme JavaScript -->
-<script src="{{ site.baseurl }}/assets/js/grayscale.js"></script>
-
+<script src="{{ site.baseurl }}/assets/js/jquery.js"></script> <!-- jQuery -->
+<script src="{{ site.baseurl }}/assets/js/bootstrap.min.js"></script><!-- Bootstrap Core JavaScript -->
+<script src="{{ site.baseurl }}/assets/js/jquery.easing.min.js"></script> <!-- Plugin JavaScript -->
+<script src="{{ site.baseurl }}/assets/js/grayscale.js"></script> <!-- Custom Theme JavaScript -->
 <script src="{{ site.baseurl }}/assets/js/jquery.dataTables.min.js"></script>
+<link href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css" rel="stylesheet">
+<script src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
 
-<script>
-    $(document).ready(function () {
-        $('#research_table').DataTable({
-            "order": [[0, "desc"]],
-            "aLengthMenu": [[15, 11, -1], [15, 11, "All"]],
-            "pageLength": "15"
-        });
-    });
-</script>
+
 
 
 <script src="{{ site.baseurl }}/assets/js/scrollreveal.min.js"></script>

@@ -172,6 +172,7 @@ displays
 - [paper js](http://paperjs.org/about/)
 - [anime js](https://animejs.com/)
 - [chart js](https://www.chartjs.org/docs/latest/)
+- [svg js](https://github.com/svgdotjs/svg.js)
 
 ### reference
 

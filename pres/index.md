@@ -6,18 +6,19 @@ title: presentations
 *Links to many of my presentations*
 
 ### in progress
-- [interpretation to causation](https://docs.google.com/presentation/d/1vwgpNp36ssspO5LcUgnohtm9JT-PeSwsX47LpZjvono/edit#slide=id.g9d8da641c4_0_36)
-- [deep learning trends 2020](https://docs.google.com/presentation/d/15NRwGfKyGkcDIDKYwoq82PXdJrkJeRmSQfUbk5oQvuM/edit#slide=id.g8da3737a00_0_24)
+- [research overview](https://docs.google.com/presentation/d/19fTICv0pyRiwGE39mqE_eGTq0Arn3OtVnDSrURFbPMA/present?slide=id.p)
+- [thesis slides](https://docs.google.com/presentation/d/1IyxCrB5Ol8RsvFBTTy4Y5DQH3TxS9Wgl7Pxt1thrBBY/edit)
+- [overview slide](https://docs.google.com/presentation/d/1gvYfUkb-7yCXUUerBbgsOhGT82lj2ZPTYPop1qvSVzE/edit#slide=id.ga03c02da4e_0_126)
+- [title slide](https://docs.google.com/presentation/d/1gvYfUkb-7yCXUUerBbgsOhGT82lj2ZPTYPop1qvSVzE/edit#slide=id.ga03c02da4e_0_126)
+  - [title slide old](https://docs.google.com/presentation/d/13GyKciZZ1zZWmWqCSksvZtGpydAkDjOL0lYVr75kpAU/edit)
 
-### phd research overview
+### phd dnn-interp overview talks
 
 <details>
 <summary>Abstract</summary>
 Deep learning models have achieved impressive predictive performance by learning complex functions of many variables, often at the cost of interpretability. I will discuss a recent line of work aiming to interpret neural networks by attributing importance to features and feature interactions for individual predictions. Importantly, the proposed methods disentangle the importance of features in isolation and the interactions between groups of features. These attributions significantly enhance interpretability and can be used to directly improve generalization in interesting ways. I will showcase how we have worked with domain experts to make these attributions useful in different computer vision settings, including in bioimaging and cosmology.
 </details>
 
-- [research overview](https://docs.google.com/presentation/d/19fTICv0pyRiwGE39mqE_eGTq0Arn3OtVnDSrURFbPMA/present?slide=id.p)
-- [thesis slides](https://docs.google.com/presentation/d/1IyxCrB5Ol8RsvFBTTy4Y5DQH3TxS9Wgl7Pxt1thrBBY/edit)
 - [qual slides](https://docs.google.com/presentation/d/1cdzZsyRYRs9GiR9s2-V7OO8oIcaabT5TVJFGR9qk_HY/edit#slide=id.p)
     - [acd paige slides](https://docs.google.com/presentation/d/1aZvpZVk6pMmcUkQD0MaBQrmoecU835x6bqi1cbQNXeU/edit#slide=id.g51955b76d5_0_7)
         - Title: Disentangled interpretations for deep learning
@@ -46,7 +47,6 @@ Deep learning models have achieved impressive predictive performance by learning
         - [nlp version](https://docs.google.com/presentation/d/1bFIdoarqhZdwyXmvNKgqfbhKXByfgPW9h27HYGDXKGM/edit)
         - [interpretable ml](https://docs.google.com/presentation/d/13jbgFyYSSDaMUd2w4RY9GHteTcWJj1drS6_2sOkvnv4/present?slide=id.p) (discussion slides for group meeting)
     - [15 min overall talk](https://docs.google.com/presentation/d/16u_23-P7uvouNo_HvpLCgG1Um3ZDu5c3d76YBhQsjjI/edit#slide=id.gc5100c8fb5_0_519)
-    
         - [cd + acd + cdep 5 min talk](https://docs.google.com/presentation/d/1qWor5d7AXVQfcLtQmFdMPUDPHeBkN1wWZid_pfxZjVQ/edit#slide=id.g51955b76d5_0_7)
         - [biohub meeting](https://docs.google.com/presentation/d/1-VadvMFR9UutmjGFXASMTdPLAiuU_6nzqKvPsEjKkW0/edit?usp=sharing) (w/ wooseok)
         - [dudoit group meeting](https://docs.google.com/presentation/d/1xA4aaBXKV4cO5_iXZZcUnheFpcMsT1U5fJZdaE7FwME/edit#slide=id.p)
@@ -68,7 +68,7 @@ Deep learning models have achieved impressive predictive performance by learning
 - [awd](https://docs.google.com/presentation/d/1YrzAir94D0KWewau34dZAXXPdATRuqeVf8Jt-o_wqG8/edit#slide=id.p) (neurips recording)
 - [pdr](https://docs.google.com/presentation/d/18Tdiym7hDeu0c4tj5XezrznIDfbltR4QQJJZjaHi7tk/present?slide=id.p)
 - [auxilin prediction](https://docs.google.com/presentation/d/1sQXbFUTSEyrmDkovV8g759Wj8E9LBpATAVV1iweKeGo/edit#slide=id.gc0f646bcee_0_0)
-
+- [interpretation to causation](https://docs.google.com/presentation/d/1vwgpNp36ssspO5LcUgnohtm9JT-PeSwsX47LpZjvono/edit#slide=id.g9d8da641c4_0_36)
     
 
 ## rules / software individual presentations
@@ -90,6 +90,7 @@ Deep learning models have achieved impressive predictive performance by learning
     - [faces lit rvw](https://docs.google.com/presentation/d/1C6l4qq0O_-SosHswPwqo3ixJweMI8gkNku9crzZMw80/present?slide=id.p)
 - [sensible local interpretations](https://docs.google.com/presentation/d/1tKVgg2bo7jSgE8TMyt15VAOkGhDPncFpMnZ-mmtoMNI/edit#slide=id.p) (5 min update for pacmed internship)
 - [dnn experiments](http://csinva.github.io/pres/dnn_experiments/#/)
+- - [deep learning trends 2020](https://docs.google.com/presentation/d/15NRwGfKyGkcDIDKYwoq82PXdJrkJeRmSQfUbk5oQvuM/edit#slide=id.g8da3737a00_0_24)
 
 ### teaching
 - [machine learning (cs 189)](https://csinva.github.io/pres/189/#/)
@@ -129,4 +130,8 @@ Deep learning models have achieved impressive predictive performance by learning
     - [uvacsnews2](https://uvacsnews.wordpress.com/2017/05/12/congratulations-to-our-cs-award-winners/)
     - [uvacsnewstweet](https://twitter.com/CS_UVA/status/860155364347715584)
   
-  
+### bios
+<details>
+<summary>One-paragraph bio (jan 2022)</summary>
+Deep learning models have achieved impressive predictive performance by learning complex functions of many variables, often at the cost of interpretability. I will discuss a recent line of work aiming to interpret neural networks by attributing importance to features and feature interactions for individual predictions. Importantly, the proposed methods disentangle the importance of features in isolation and the interactions between groups of features. These attributions significantly enhance interpretability and can be used to directly improve generalization in interesting ways. I will showcase how we have worked with domain experts to make these attributions useful in different computer vision settings, including in bioimaging and cosmology.
+</details>
