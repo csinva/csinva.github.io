@@ -2,6 +2,7 @@
 
 # 2022
 
+- [China's Covid-Era Controls May Outlast the Coronavirus - The New York Times](https://www.nytimes.com/2022/01/30/world/asia/covid-restrictions-china-lockdown.html)
 - [Opinion | When I Applied to College, I Didn’t Want to ‘Sell My Pain’ - The New York Times](https://www.nytimes.com/2021/05/09/opinion/college-admissions-essays-trauma.html)
 - [The myth of the "great resignation" - Slow Boring](https://www.slowboring.com/p/the-myth-of-the-great-resignation)
   - "The quits rate is unusually high, but the hires rate is also unusually high, and the ratio of hires to quits is very normal."
