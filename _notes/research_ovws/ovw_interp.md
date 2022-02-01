@@ -200,31 +200,35 @@ For an implementation of many of these models, see the python [imodels package](
 
 *Trees suffer from the fact that they have to cover the entire decision space and often we end up with replicated subtrees.*
 
-- [Generalized and Scalable Optimal Sparse Decision Trees](https://arxiv.org/abs/2006.08690) (lin et al. 2020)
-  - optimize for $\min L(X, y) + \lambda \cdot (\text{numLeaves})$ 
-  - full decision tree optimization is NP-hard [(Laurent & Rivest, 1976)](https://people.csail.mit.edu/rivest/HyafilRivest-ConstructingOptimalBinaryDecisionTreesIsNPComplete.pdf)
-  - can optimize many different losses (e.g. accuracy, AUC)
-  - speedups: use dynamic programming, prune the search-space with bounds
-    -  if know best loss so far, know we shouldn't add too many more leaves since each adds $\lambda$ to the total loss
-    - similar-support bound - if two features are similar, then bounds for splitting on the first can be used to obtain bounds for the second
-    - hash trees with bit-vectors that represent similar trees using shared subtrees
-      - tree is a *set* of *leaves*
-  - bounds
-    - OSDT
-      - Upper Bound on Number of Leaves
-      - Leaf Permutation Bound
-    - GOSDT
-      - Hierarchical Objective Lower Bound
-      - Incremental Progress Bound to Determine Splitting
-      - Lower Bound on Incremental Progress
-      - Equivalent Points Bound
-      - Similar Support Bound
-      - Incremental Similar Support Bound
-      - Subset Bound
-  - [How Smart Guessing Strategies Can Yield Massive Scalability Improvements for Sparse Decision Tree Optimization](https://arxiv.org/abs/2112.00798) (mctavish...rudin, seltzer, 2021) - optimization improvements
-  - [optimal sparse decision trees](https://arxiv.org/abs/1904.12847) (hu et al. 2019) - previous paper, slower
-  - cost-complexity pruning ([breiman et al. 1984](https://www.taylorfrancis.com/books/mono/10.1201/9781315139470/classification-regression-trees-leo-breiman-jerome-friedman-richard-olshen-charles-stone) ch 3) - greedily prune while minimizing loss function of loss + $\lambda \cdot (\text{numLeaves})$
-  - [optimal classification trees methodology paper](https://link.springer.com/content/pdf/10.1007%2Fs10994-017-5633-9.pdf) (bertsimas & dunn, 2017) - globally optimal decision tree with expensive optimization (solved with mixed-integer optimization) - realistically, usually too slow
+- **optimal trees**
+
+  - motivation
+
+    - cost-complexity pruning ([breiman et al. 1984](https://www.taylorfrancis.com/books/mono/10.1201/9781315139470/classification-regression-trees-leo-breiman-jerome-friedman-richard-olshen-charles-stone) ch 3) - greedily prune while minimizing loss function of loss + $\lambda \cdot (\text{numLeaves})$
+    - replicated subtree problem ([Bagallo & Haussler, 1990](https://link.springer.com/content/pdf/10.1007/BF00115895.pdf)) - they propose iterative algorithms to try to overcome it
+
+  - Generalized and Scalable Optimal Sparse Decision Trees ([lin...rudin, seltzer, 2020](https://arxiv.org/abs/2006.08690))
+
+    - optimize for $\min L(X, y) + \lambda \cdot (\text{numLeaves})$ 
+
+    - full decision tree optimization is NP-hard [(Laurent & Rivest, 1976)](https://people.csail.mit.edu/rivest/HyafilRivest-ConstructingOptimalBinaryDecisionTreesIsNPComplete.pdf)
+
+    - can optimize many different losses (e.g. accuracy, AUC)
+
+    - speedups: use dynamic programming, prune the search-space with bounds
+
+      - How Smart Guessing Strategies Can Yield Massive Scalability Improvements for Sparse Decision Tree Optimization ([mctavish...rudin, seltzer, 2021](https://arxiv.org/abs/2112.00798))
+      - hash trees with bit-vectors that represent similar trees using shared subtrees
+        - tree is a *set* of *leaves*
+      - derive many bounds
+        - e.g. if know best loss so far, know shouldn't add too many leaves since each adds $\lambda$ to the total loss
+        - e.g. similar-support bound - if two features are similar, then bounds for splitting on the first can be used to obtain bounds for the second
+    - [optimal sparse decision trees](https://arxiv.org/abs/1904.12847) (hu et al. 2019) - previous paper, slower
+    
+      - bounds: Upper Bound on Number of Leaves, Leaf Permutation Bound
+
+  - [optimal classification trees methodology paper](https://link.springer.com/content/pdf/10.1007%2Fs10994-017-5633-9.pdf) (bertsimas & dunn, 2017) - solve optimal tree with expensive, mixed-integer optimization - realistically, usually too slow
+
     - $\begin{array}{cl}
       \min & \overbrace{R_{x y}(T)}^{\text{misclassification err}}+\alpha|T| \\
       \text { s.t. } & N_{x}(l) \geq N_{\min } \quad \forall l \in \text { leaves }(T)
@@ -232,38 +236,67 @@ For an implementation of many of these models, see the python [imodels package](
     - $|T|$ is the number of branch nodes in tree $T$
     - $N_x(l)$ is the number of training points contained in leaf node $l$
     - [optimal classification trees vs PECARN](https://jamanetwork.com/journals/jamapediatrics/article-abstract/2733157) (bertsimas et al. 2019)
-    - [supplemental tables](https://cdn-jamanetwork-com.libproxy.berkeley.edu/ama/content_public/journal/peds/0/poi190021supp1_prod.pdf?Expires=2147483647&Signature=EnVKjyPUrh7o2GVSU7Bxr4ZYL~5T27-sPKh14TANiL5mpXfj3YPTnUetEBPc~njVrg2VKY5TqqXCFxtR4xr6DfGLgobA~Kl92A1Jubmj9XgSL3U3so1~4O~YKob1WcS5uFI3HBpq9J-o-IkAsRq1qsnTFFzlvH7zlkwO9TW-dxnU9vtvU-QzhPNJ0cdAX-c7rrnZV0p0Fg~gzaEz5lvPP30Nort4kDTxd-FNDW5OYJFqusWF9e~3QK2S6Y4nRjv~IavQ10fQ24fSvEK5Nd1qetME8j2one0LA~KZjOk7avp76aV5os9msn-2hdPcEM7YWtLTUq12a9oVaD6pXKe3ZA__&Key-Pair-Id=APKAIE5G5CRDK6RD3PGA)
-  - replicated subtree problem ([Bagallo & Haussler, 1990](https://link.springer.com/content/pdf/10.1007/BF00115895.pdf))
-    - use iterative algorithms to try to overcome it
+
   - [Learning Optimal Fair Classification Trees](https://arxiv.org/pdf/2201.09932.pdf) (jo et al. 2022)
-- [Building more accurate decision trees with the additive tree](https://www.pnas.org/content/116/40/19887) (luna et al. 2019)
-  - present additive tree (AddTree), which builds a single decision tree, which is between a single CART tree and boosted decision stumps
-  - cart can be seen as a boosting algorithm on stumps
-    - can rewrite boosted stumps as a tree very easily
-    - previous work: can grow tree based on Adaboost idea = AdaTree
-  - ![Screen Shot 2020-03-11 at 11.10.13 PM](../assets/additive_trees.png)
-- extremely randomized trees - randomness goes further, not only feature is selected randomly but also split has some randomness
-- [Bayesian Treed Models](http://www-stat.wharton.upenn.edu/~edgeorge/Research_papers/treed-models.pdf) (chipman et al. 2001) - impose priors on tree parameters
-  - treed models - fit a model (e.g. linear regression) in leaf nodes
-  - tree structure e.g. depth, splitting criteria
-  - values in terminal nodes coditioned on tree structure
-  - residual noise's standard deviation
-- [BART: Bayesian additive regression trees](https://arxiv.org/abs/0806.3286) (chipman et al. 2008) - learns an ensemble of tree models using MCMC on a distr. imbued with a prior
-  - pre-specify number of trees in ensemble
-  - MCMC step: add split, remove split, switch split
-  - cycles through the trees one at a time
-- [On the price of explainability for some clustering problems](https://arxiv.org/abs/2101.01576) (laber et al. 2021) - trees for clustering
-- history
+
+  - Better Short than Greedy: Interpretable Models through Optimal Rule Boosting ([boley, ..., webb, 2021](https://epubs.siam.org/doi/pdf/10.1137/1.9781611976700.40)) - find optimal tree **ensemble** (only works for very small data)
+
+- **connections with boosting**
+
+  - Fast Interpretable Greedy-Tree Sums (FIGS) ([tan et al. 2022](https://arxiv.org/abs/2201.11931)) - extend cart to learn concise tree ensembles 🌳 ➡️ 🌱+🌱
+    - very nice results for generalization + disentanglement
+  - AdaTree - learn Adaboost stumps then rewrite as a tree ([grossmann, 2004](https://ieeexplore.ieee.org/abstract/document/1384899/)) 🌱+🌱 ➡️ 🌳
+    - note: easy to rewrite boosted stumps as tree (just repeat each stump for each node at a given depth) 
+  - MediBoost - again, learn boosted stumps then rewrite as a tree ([valdes...solberg 2016](https://www.nature.com/articles/srep37854.pdf)) 🌱+🌱 ➡️ 🌳 but with 2 tweaks:
+    - shrinkage: use membership function that accelerates convergence to a decision (basically shrinkage during boosting)
+    - prune the tree in a manner that does not affect the tree’s predictions
+      - prunes branches that are impossible to reach by tracking the valid domain for every attribute (during training)
+      - post-prune the tree bottom-up by recursively eliminating the parent nodes of leaves with identical predictions
+  - AddTree = additive tree - learn single tree, but rather than only current node's data to decide the next split, also allow the remaining data to also influence this split, although with a potentially differing weight ([luna, ..., friedman, solberg, valdes, 2019](https://www.pnas.org/content/116/40/19887))
+    - the weight is chosen as a hyperparameter
+
+- **bayesian trees**
+
+  - [Bayesian Treed Models](http://www-stat.wharton.upenn.edu/~edgeorge/Research_papers/treed-models.pdf) (chipman et al. 2001) - impose priors on tree parameters
+    - treed models - fit a model (e.g. linear regression) in leaf nodes
+    - tree structure e.g. depth, splitting criteria
+    - values in terminal nodes coditioned on tree structure
+    - residual noise's standard deviation
+  - [BART: Bayesian additive regression trees](https://arxiv.org/abs/0806.3286) (chipman et al. 2008) - learns an ensemble of tree models using MCMC on a distr. imbued with a prior (not interpretable)
+    - pre-specify number of trees in ensemble
+    - MCMC step: add split, remove split, switch split
+    - cycles through the trees one at a time
+
+- **history**
+
   - automatic interaction detection (AID) regression trees (Morgan & Sonquist, 1963)
   - THeta Automatic Interaction Detection (THAID) classification trees (Messenger & Mandell, 1972)
   - Chi-squared Automatic Interaction Detector (CHAID) (Kass, 1980)
-  - Classification And Regression Trees (CART) (Breiman et al. 1984)
+  - CART: Classification And Regression Trees  ([Breiman et al. 1984](https://www.taylorfrancis.com/books/mono/10.1201/9781315139470/classification-regression-trees-leo-breiman-jerome-friedman-richard-olshen-charles-stone))
   - ID3 (Quinlan, 1986) / C4.5 (Quinlan, 1993)
-  - new directions
-    - ensemble methods: Random Forest, GBDT, BART
-    - global trees: Bennet, Street, Mangasarian (e.g. Global Tree Optimization, 1994)
-    - improvements in splitting criteria, missing variables
-    - other problems: longitudinal data, survival curves
+
+- **open problems**
+
+  - ensemble methods
+  - improvements in splitting criteria, missing variables
+  - longitudinal data, survival curves
+
+- misc
+
+  - counterfactuals
+    - [Counterfactual Explanations for Oblique Decision Trees: Exact, Efficient Algorithms](https://arxiv.org/abs/2103.01096) (2021)
+    - [Optimal Counterfactual Explanations in Tree Ensembles](https://arxiv.org/abs/2106.06631)
+    - [Desiderata for Interpretability: Explaining Decision Tree Predictions with Counterfactuals](https://ojs.aaai.org//index.php/AAAI/article/view/5154)
+    
+  - regularization
+    - Hierarchical Shrinkage: improving accuracy and interpretability of tree-based methods (agarwal et al. 2021) - post-hoc shrinkage improves trees
+    - [Connecting Interpretability and Robustness in Decision Trees through Separation](https://arxiv.org/abs/2102.07048) (moshkovitz et al. 2021)
+    - [Efficient Training of Robust Decision Trees Against Adversarial Examples](https://arxiv.org/abs/2012.10438)
+    - [Robust Decision Trees Against Adversarial Examples](https://arxiv.org/abs/1902.10660) (2019)
+    
+  - [On the price of explainability for some clustering problems](https://arxiv.org/abs/2101.01576) (laber et al. 2021) - trees for clustering
+  - extremely randomized trees ([geurts et al. 2006](https://link.springer.com/article/10.1007/s10994-006-6226-1)) - randomness goes further than Random Forest - randomly select not only the feature but also the split thresholds (and select the best out of some random set)
+
 
 
 
@@ -401,6 +434,7 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
 
 ### connecting dnns with rule-based models
 
+- oblique decision tree - splits are allowed to be weighted linear combinations
 - [Distilling a Neural Network Into a Soft Decision Tree](https://arxiv.org/pdf/1711.09784.pdf) (frosst & hinton 2017) - distills DNN into DNN-like tree which uses sigmoid neuron decides which path to follow
   - training on distilled DNN predictions outperforms training on original labels
   - to make the decision closer to a hard cut, can multiply by a large scalar before applying sigmoid
@@ -418,6 +452,12 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
 - [Optimizing for Interpretability in Deep Neural Networks with Tree Regularization | Journal of Artificial Intelligence Research](https://www.jair.org/index.php/jair/article/view/12558) (wu...doshi-velez, 2021) - regularize DNN prediction function towards tree (potentially only for some region)
 - [Gradient Boosted Decision Tree Neural Network](https://arxiv.org/abs/1910.09340) - build DNN based on decision tree ensemble - basically the same but with gradient-boosted trees
 - [Neural Decision Trees](https://arxiv.org/abs/1702.07360) - treat each neural net like a node in a tree
+- [Learning Binary Decision Trees by Argmin Differentiation](https://arxiv.org/abs/2010.04627) (zantedeschi et al. 2021)
+  - argmin differentiation - solving an optimization problem as a differentiable module within a parent problem tackled with gradient-based optimization methods
+  - relax hard splits into soft ones and learn via gradient descent
+- [Oblique Decision Trees from Derivatives of ReLU Networks](https://arxiv.org/abs/1909.13488) (lee & jaakkola, 2020)
+  - locally constant networks (which are derivatives of relu networks) are equivalent to trees
+  - they perform well and can use DNN tools e.g. Dropconnect on them
 - [Controlling Neural Networks with Rule Representations](https://arxiv.org/abs/2106.07804) (seo, ..., pfister, 21)
   - DEEPCTRL - encodes rules into DNN
     - one encoder for rules, one for data
@@ -437,6 +477,9 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
   - use neural autoencoder with binary activations + binarizing weights
   - optimizing a data-sparsity aware reconstruction loss, continuous versions of the weights are learned in small, noisy steps
 - [Harnessing Deep Neural Networks with Logic Rules](https://arxiv.org/pdf/1603.06318.pdf)
+- [End-to-End Learning of Decision Trees and Forests](https://link.springer.com/article/10.1007/s11263-019-01237-6)
+  - this is like backprop for trees, where splits are smoothed during training
+
 
 ## constrained models
 
@@ -482,7 +525,6 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
 # posthoc interpretability (i.e. how can we interpret a fitted model)
 
 *Note that in this section we also include importances that work directly on the data (e.g. we do not first fit a model, rather we do nonparametric calculations of importance)*
-
 
 ## model-agnostic
 
@@ -536,43 +578,6 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
 - [Variable Importance Clouds: A Way to Explore Variable Importance for the Set of Good Models](https://arxiv.org/pdf/1901.03209.pdf) 
 - [All Models are Wrong, but Many are Useful: Learning a Variable's Importance by Studying an Entire Class of Prediction Models Simultaneously](https://arxiv.org/abs/1801.01489) (Aaron, Rudin, & Dominici 2018)
 - [Interpreting Black Box Models via Hypothesis Testing](https://arxiv.org/abs/1904.00045)
-
-### interactions
-
-How interactions are defined and summarized is a very difficult thing to specify. For example, interactions can change based on monotonic transformations of features (e.g. $y= a \cdot b$, $\log y = \log a + \log b$). Nevertheless, when one has a specific question it can make sense to pursue finding and understanding interactions.
-
-- build-up = context-free, less faithful: score is contribution of only variable of interest ignoring other variables
-- break-down = occlusion = context-dependent, more faithful: score is contribution of variable of interest given all other variables (e.g. permutation test - randomize var of interest from right distr.)
-- *H-statistic*: 0 for no interaction, 1 for complete interaction
-  - how much of the variance of the output of the joint partial dependence is explained by the interaction instead of the individuals
-  - $H^2_{jk} = \underbrace{\sum_i [\overbrace{PD(x_j^{(i)}, x_k^{(i)})}^{\text{interaction}} \overbrace{- PD(x_j^{(i)}) - PD(x_k^{(i)})}^{\text{individual}}]^2}_{\text{sum over data points}} \: / \: \underbrace{\sum_i [PD(x_j^{(i)}, x_k^{(i)})}_{\text{normalization}}]^2$
-  - alternatively, using ANOVA decomp: $H_{jk}^2 = \sum_i g_{ij}^2 / \sum_i (\mathbb E [Y \vert X_i, X_j])^2$
-  - same assumptions as PDP: features need to be independent
-- alternatives
-  - variable interaction networks (Hooker, 2004) - decompose pred into main effects + feature interactions
-  - PDP-based feature interaction (greenwell et al. 2018)
-- feature-screening ([feng ruan's work](https://arxiv.org/abs/2011.12215))
-  - want to find beta which is positive when a variable is important
-  - idea: maximize difference between (distances for interclass) and (distances for intraclass)
-  - using an L1 distance yields better gradients than an L2 distance
-- ANOVA - factorial method to detect feature interactions based on differences among group means in a dataset
-  - [Purifying Interaction Effects with the Functional ANOVA: An Efficient Algorithm for Recovering Identifiable Additive Models](http://proceedings.mlr.press/v108/lengerich20a.html) (lengerich, tan, ..., hooker, caruana, 2020)
-    - *pure interaction effects* - variance in the outcome which cannot be represented by any subset of features
-      - has an equivalence with the Functional ANOVA decomposition
-
-- Automatic Interaction Detection (AID) - detects interactions by subdividing data into disjoint exhaustive subsets to model an outcome based on categorical features
-- Shapley Taylor Interaction Index (STI) (Dhamdhere et al., 2019) - extends shap to all interactions
-- retraining
-  - [Additive groves](https://link.springer.com/chapter/10.1007/978-3-540-74958-5_31) (Sorokina, carauna, & riedewald 2007) proposed use random forest with and without an interaction (forcibly removed) to detect feature interactions - very slow
-    - [additive groves interaction followup](https://www.ccs.neu.edu/home/mirek/papers/2008-ICML-Interactions.pdf)
-- gradient-based methods (originally Friedman and Popescu, 2008 then later used with many models such as logit)
-  - test if partial derivatives for some subset (e.g. $x_1, ..., x_p$) are nonzero $\mathbb{E}_{\mathbf{x}}\left[\frac{\partial^p f(\mathbf{x})}{\partial x_{i_{1}} \partial x_{i_{2}} \ldots \partial x_{i_p}}\right]^{2}>0$ 
-  - doesn't work well for piecewise functions (e.g. Relu) and computationally expensive
-- include interactions explicitly then run lasso (e.g. bien et al. 2013)
-- methods for finding frequent item sets
-  - [random intersection trees](https://arxiv.org/pdf/1303.6223.pdf)
-  - [fp-growth](https://www.softwaretestinghelp.com/fp-growth-algorithm-data-mining/)
-  - eclat
 
 ### vim (variable importance measure) framework
 
@@ -661,19 +666,6 @@ How interactions are defined and summarized is a very difficult thing to specify
 - M-Plots: “Let me show you what the model predicts on average for data instances that have values close to v for that feature. The effect could be due to that feature, but also due to correlated features.” 
   - ALE plots: “Let me show you how the model predictions change in a small “window” of the feature around v for data instances in that window.” 
 
-## example-based explanations
-
-- influential instances - want to find important data points
-- deletion diagnostics - delete a point and see how much it changed
-- [influence funcs](https://arxiv.org/abs/1703.04730) (koh & liang, 2017): use **Hessian** ($\theta x \theta$) to give effect of upweighting a point
-  - influence functions = inifinitesimal approach - upweight one person by infinitesimally small weight and see how much estimate changes (e.g. calculate first derivative)
-  - influential instance - when data point removed, has a strong effect on the model (not necessarily same as an outlier)
-  - requires access to gradient (e.g. nn, logistic regression)
-  - take single step with Newton's method after upweighting loss
-  - yield change in parameters by removing one point
-  - yield change in loss at one point by removing a different point (by multiplying above by cahin rule)
-  - yield change in parameters by modifying one point
-
 ## tree ensembles
 
 - **mean decrease impurity** = MDI = Gini importance
@@ -718,12 +710,6 @@ How interactions are defined and summarized is a very difficult thing to specify
   - real trees are harder: correlated vars and stuff mask results of other vars lower down
   - asymptotically, randomized trees might actually be better
 - [Actionable Interpretability through Optimizable Counterfactual Explanations for Tree Ensembles](https://arxiv.org/pdf/1911.12199v1.pdf) (lucic et al. 2019)
-- [iterative random forest](https://www.pnas.org/content/115/8/1943) (basu et al. 2018)
-  - interaction scoring - find interactions as features which co-occur on paths (using RIT algorithm)
-    - [signed iterative Random Forests](https://arxiv.org/abs/1810.07287) (kumbier et al. 2018) - 
-  - repeated refitting
-    - fit RF and get MDI importances
-    - iteratively refit RF, weighting probability of feature being selected by its previous MDI
 
 ## neural nets (dnns)
 
@@ -902,21 +888,6 @@ How interactions are defined and summarized is a very difficult thing to specify
 
 
 
-### dnn feature interactions
-
-- [hierarchical interpretations for neural network predictions](https://arxiv.org/abs/1806.05337) (singh et al. 2019)
-  - [contextual decomposition](https://arxiv.org/abs/1801.05453) (murdoch et al. 2018)
-  - ACD followup work
-    - [Towards Hierarchical Importance Attribution: Explaining Compositional Semantics for Neural Sequence Models](https://openreview.net/forum?id=BkxRRkSKwr)
-  - [Compositional Explanations for Image Classifiers](https://arxiv.org/abs/2103.03622) (chockler et al. 21) - use perturbation-based interpretations to greedily search for pixels which increase prediction the most (simpler version of ACD)
-- [Detecting Statistical Interactions from Neural Network Weights](https://arxiv.org/abs/1705.04977) - interacting inputs must follow strongly weighted connections to a common hidden unit before the final output
-  - [Neural interaction transparency (NIT)](https://dl.acm.org/citation.cfm?id=3327482) (tsang et al. 2017)
-- [Explaining Explanations: Axiomatic Feature Interactions for Deep Networks](https://arxiv.org/abs/2002.04138) (janizek et al. 2020) - integrated hessians
-    - not clear the distinction between main and interaction effects
-- [Interpretable Artificial Intelligence through the Lens of Feature Interaction](https://arxiv.org/abs/2103.03103) (tsang et al. 2021)
-    - feature interaction- any non-additive effect between multiple features on an outcome (i.e. cannot be decomposed into a sum of subfunctions of individual variables)
-- [Learning Global Pairwise Interactions with Bayesian Neural Networks](https://arxiv.org/abs/1901.08361) (cui et al. 2020) - Bayesian Group Expected Hessian (GEH) - train bayesian neural net and analyze hessian to understand interactions
-
 ### dnn textual explanations
 
 - [Adversarial Inference for Multi-Sentence Video Description](https://arxiv.org/pdf/1812.05634.pdf) - adversarial techniques during inference for a better multi-sentence video description
@@ -926,6 +897,83 @@ How interactions are defined and summarized is a very difficult thing to specify
 - [Fooling Vision and Language Models Despite Localization and Attention Mechanism](http://openaccess.thecvf.com/content_cvpr_2018/papers/Xu_Fooling_Vision_and_CVPR_2018_paper.pdf) -  can do adversarial attacks on captioning and VQA
 - [Grounding of Textual Phrases in Images by Reconstruction](https://arxiv.org/pdf/1511.03745.pdf) - given text and image provide a bounding box (supervised problem w/ attention)
 - [Natural Language Explanations of Classifier Behavior](https://ieeexplore.ieee.org/abstract/document/8791710)
+
+
+
+## interactions
+
+### model-agnostic interactions
+
+How interactions are defined and summarized is a very difficult thing to specify. For example, interactions can change based on monotonic transformations of features (e.g. $y= a \cdot b$, $\log y = \log a + \log b$). Nevertheless, when one has a specific question it can make sense to pursue finding and understanding interactions.
+
+- build-up = context-free, less faithful: score is contribution of only variable of interest ignoring other variables
+- break-down = occlusion = context-dependent, more faithful: score is contribution of variable of interest given all other variables (e.g. permutation test - randomize var of interest from right distr.)
+- *H-statistic*: 0 for no interaction, 1 for complete interaction
+  - how much of the variance of the output of the joint partial dependence is explained by the interaction instead of the individuals
+  - $H^2_{jk} = \underbrace{\sum_i [\overbrace{PD(x_j^{(i)}, x_k^{(i)})}^{\text{interaction}} \overbrace{- PD(x_j^{(i)}) - PD(x_k^{(i)})}^{\text{individual}}]^2}_{\text{sum over data points}} \: / \: \underbrace{\sum_i [PD(x_j^{(i)}, x_k^{(i)})}_{\text{normalization}}]^2$
+  - alternatively, using ANOVA decomp: $H_{jk}^2 = \sum_i g_{ij}^2 / \sum_i (\mathbb E [Y \vert X_i, X_j])^2$
+  - same assumptions as PDP: features need to be independent
+- alternatives
+  - variable interaction networks (Hooker, 2004) - decompose pred into main effects + feature interactions
+  - PDP-based feature interaction (greenwell et al. 2018)
+- feature-screening ([feng ruan's work](https://arxiv.org/abs/2011.12215))
+  - want to find beta which is positive when a variable is important
+  - idea: maximize difference between (distances for interclass) and (distances for intraclass)
+  - using an L1 distance yields better gradients than an L2 distance
+- ANOVA - factorial method to detect feature interactions based on differences among group means in a dataset
+  - [Purifying Interaction Effects with the Functional ANOVA: An Efficient Algorithm for Recovering Identifiable Additive Models](http://proceedings.mlr.press/v108/lengerich20a.html) (lengerich, tan, ..., hooker, caruana, 2020)
+    - *pure interaction effects* - variance in the outcome which cannot be represented by any subset of features
+      - has an equivalence with the Functional ANOVA decomposition
+- Automatic Interaction Detection (AID) - detects interactions by subdividing data into disjoint exhaustive subsets to model an outcome based on categorical features
+- Shapley Taylor Interaction Index (STI) (Dhamdhere et al., 2019) - extends shap to all interactions
+- gradient-based methods (originally Friedman and Popescu, 2008 then later used with many models such as logit)
+  - test if partial derivatives for some subset (e.g. $x_1, ..., x_p$) are nonzero $\mathbb{E}_{\mathbf{x}}\left[\frac{\partial^p f(\mathbf{x})}{\partial x_{i_{1}} \partial x_{i_{2}} \ldots \partial x_{i_p}}\right]^{2}>0$ 
+  - doesn't work well for piecewise functions (e.g. Relu) and computationally expensive
+- include interactions explicitly then run lasso (e.g. bien et al. 2013)
+- methods for finding frequent item sets
+  - [random intersection trees](https://arxiv.org/pdf/1303.6223.pdf)
+  - [fp-growth](https://www.softwaretestinghelp.com/fp-growth-algorithm-data-mining/)
+  - eclat
+
+## tree-based interactions
+
+- [iterative random forest](https://www.pnas.org/content/115/8/1943) (basu et al. 2018)
+  - interaction scoring - find interactions as features which co-occur on paths (using RIT algorithm)
+    - [signed iterative Random Forests](https://arxiv.org/abs/1810.07287) (kumbier et al. 2018) - 
+  - repeated refitting
+    - fit RF and get MDI importances
+    - iteratively refit RF, weighting probability of feature being selected by its previous MDI
+- [Additive groves](https://link.springer.com/chapter/10.1007/978-3-540-74958-5_31) (Sorokina, carauna, & riedewald 2007) proposed use random forest with and without an interaction (forcibly removed) to detect feature interactions - very slow
+  - [additive groves interaction followup](https://www.ccs.neu.edu/home/mirek/papers/2008-ICML-Interactions.pdf)
+- [bayesian decision tree ensembles for interaction detection](https://arxiv.org/abs/1809.08524) (du & linero, 2018) - Dirichlet process forests (DP-Forests) leverage the presence of low-order interactions by clustering the trees so that trees within the same cluster focus on detecting a specific interaction
+
+### dnn interactions
+
+- [hierarchical interpretations for neural network predictions](https://arxiv.org/abs/1806.05337) (singh et al. 2019)
+  - [contextual decomposition](https://arxiv.org/abs/1801.05453) (murdoch et al. 2018)
+  - ACD followup work
+    - [Towards Hierarchical Importance Attribution: Explaining Compositional Semantics for Neural Sequence Models](https://openreview.net/forum?id=BkxRRkSKwr)
+  - [Compositional Explanations for Image Classifiers](https://arxiv.org/abs/2103.03622) (chockler et al. 21) - use perturbation-based interpretations to greedily search for pixels which increase prediction the most (simpler version of ACD)
+- [Detecting Statistical Interactions from Neural Network Weights](https://arxiv.org/abs/1705.04977) - interacting inputs must follow strongly weighted connections to a common hidden unit before the final output
+  - [Neural interaction transparency (NIT)](https://dl.acm.org/citation.cfm?id=3327482) (tsang et al. 2017)
+- [Explaining Explanations: Axiomatic Feature Interactions for Deep Networks](https://arxiv.org/abs/2002.04138) (janizek et al. 2020) - integrated hessians
+  - not clear the distinction between main and interaction effects
+- [Interpretable Artificial Intelligence through the Lens of Feature Interaction](https://arxiv.org/abs/2103.03103) (tsang et al. 2021)
+  - feature interaction- any non-additive effect between multiple features on an outcome (i.e. cannot be decomposed into a sum of subfunctions of individual variables)
+- [Learning Global Pairwise Interactions with Bayesian Neural Networks](https://arxiv.org/abs/1901.08361) (cui et al. 2020) - Bayesian Group Expected Hessian (GEH) - train bayesian neural net and analyze hessian to understand interactions
+
+## example-based explanations
+
+- influential instances - want to find important data points
+- deletion diagnostics - delete a point and see how much it changed
+- [influence funcs](https://arxiv.org/abs/1703.04730) (koh & liang, 2017): use **Hessian** ($\theta x \theta$) to give effect of upweighting a point
+  - influence functions = inifinitesimal approach - upweight one person by infinitesimally small weight and see how much estimate changes (e.g. calculate first derivative)
+  - influential instance - when data point removed, has a strong effect on the model (not necessarily same as an outlier)
+  - requires access to gradient (e.g. nn, logistic regression)
+  - take single step with Newton's method after upweighting loss
+  - yield change in parameters by removing one point
+  - yield change in loss at one point by removing a different point (by multiplying above by cahin rule)
+  - yield change in parameters by modifying one point
 
 ## model summarization
 
