@@ -272,8 +272,9 @@ For an implementation of many of these models, see the python [imodels package](
   - automatic interaction detection (AID) regression trees (Morgan & Sonquist, 1963)
   - THeta Automatic Interaction Detection (THAID) classification trees (Messenger & Mandell, 1972)
   - Chi-squared Automatic Interaction Detector (CHAID) (Kass, 1980)
-  - CART: Classification And Regression Trees  ([Breiman et al. 1984](https://www.taylorfrancis.com/books/mono/10.1201/9781315139470/classification-regression-trees-leo-breiman-jerome-friedman-richard-olshen-charles-stone))
-  - ID3 (Quinlan, 1986) / C4.5 (Quinlan, 1993)
+  - CART: Classification And Regression Trees  ([Breiman et al. 1984](https://www.taylorfrancis.com/books/mono/10.1201/9781315139470/classification-regression-trees-leo-breiman-jerome-friedman-richard-olshen-charles-stone)) - splits on GINI
+  - ID3 (Quinlan, 1986)
+  - C4.5 (Quinlan, 1993) - splits on binary entropy instead of GINI
 
 - **open problems**
 
@@ -910,7 +911,7 @@ How interactions are defined and summarized is a very difficult thing to specify
 - break-down = occlusion = context-dependent, more faithful: score is contribution of variable of interest given all other variables (e.g. permutation test - randomize var of interest from right distr.)
 - *H-statistic*: 0 for no interaction, 1 for complete interaction
   - how much of the variance of the output of the joint partial dependence is explained by the interaction instead of the individuals
-  - $H^2_{jk} = \underbrace{\sum_i [\overbrace{PD(x_j^{(i)}, x_k^{(i)})}^{\text{interaction}} \overbrace{- PD(x_j^{(i)}) - PD(x_k^{(i)})}^{\text{individual}}]^2}_{\text{sum over data points}} \: / \: \underbrace{\sum_i [PD(x_j^{(i)}, x_k^{(i)})}_{\text{normalization}}]^2$
+  - $$H^2_{jk} = \underbrace{\sum_i [\overbrace{PD(x_j^{(i)}, x_k^{(i)})}^{\text{interaction}} \overbrace{- PD(x_j^{(i)}) - PD(x_k^{(i)})}^{\text{individual}}]^2}_{\text{sum over data points}} \: / \: \underbrace{\sum_i [PD(x_j^{(i)}, x_k^{(i)})}_{\text{normalization}}]^2$$
   - alternatively, using ANOVA decomp: $H_{jk}^2 = \sum_i g_{ij}^2 / \sum_i (\mathbb E [Y \vert X_i, X_j])^2$
   - same assumptions as PDP: features need to be independent
 - alternatives
@@ -927,7 +928,7 @@ How interactions are defined and summarized is a very difficult thing to specify
 - Automatic Interaction Detection (AID) - detects interactions by subdividing data into disjoint exhaustive subsets to model an outcome based on categorical features
 - Shapley Taylor Interaction Index (STI) (Dhamdhere et al., 2019) - extends shap to all interactions
 - gradient-based methods (originally Friedman and Popescu, 2008 then later used with many models such as logit)
-  - test if partial derivatives for some subset (e.g. $x_1, ..., x_p$) are nonzero $\mathbb{E}_{\mathbf{x}}\left[\frac{\partial^p f(\mathbf{x})}{\partial x_{i_{1}} \partial x_{i_{2}} \ldots \partial x_{i_p}}\right]^{2}>0$ 
+  - test if partial derivatives for some subset (e.g. $x_1, ..., x_p$) are nonzero $$\mathbb{E}_{\mathbf{x}}\left[\frac{\partial^p f(\mathbf{x})}{\partial x_{i_{1}} \partial x_{i_{2}} \ldots \partial x_{i_p}}\right]^{2}>0$$
   - doesn't work well for piecewise functions (e.g. Relu) and computationally expensive
 - include interactions explicitly then run lasso (e.g. bien et al. 2013)
 - methods for finding frequent item sets

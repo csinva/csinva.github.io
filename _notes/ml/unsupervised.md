@@ -377,6 +377,17 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
 - training algorithm
   - in the beginning, since G is bad, only train  my minimizing G loss function
 
+## diffusion / energy-based models
+
+- [blog post](https://benanne.github.io/2022/01/31/diffusion.html)
+- seminal paper: [Generative Modeling by Estimating Gradients of the Data Distribution](https://arxiv.org/abs/1907.05600) (song & ermon, 2019)
+  - first describe a procedure for gradually turning data into noise
+  - then training a DNN to invert this procedure step-by-step
+    - single model handles many different noise levels with shared parameters
+- really started earlier: [Deep Unsupervised Learning using Nonequilibrium Thermodynamics](https://arxiv.org/abs/1503.03585) (sohl-dickstein, ..., ganguli, 2015)
+
+
+
 ## self-supervised
 
 - basics: predict some part of the input (e.g. present from past, bottom from top, etc.)
