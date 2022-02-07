@@ -600,55 +600,45 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#complementarity">
-   1.12.2. complementarity
+  <a class="reference internal nav-link" href="#outlier-detection">
+   1.12.2. outlier-detection
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#uncertainty-detection">
+   1.12.3. uncertainty detection
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#rejection-learning">
-     1.12.2.1. rejection learning
+    <a class="reference internal nav-link" href="#bayesian-approaches">
+     1.12.3.1. bayesian approaches
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#outlier-detection">
-   1.12.3. outlier-detection
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bayesian-approaches">
-   1.12.4. bayesian approaches
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#neural-networks">
-   1.12.5. neural networks
+   1.12.4. neural networks
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#directly-predict-uncertainty">
-     1.12.5.1. directly predict uncertainty
+     1.12.4.1. directly predict uncertainty
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#nearest-neighbor-methods">
-     1.12.5.2. nearest-neighbor methods
+     1.12.4.2. nearest-neighbor methods
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#ensemble-approaches">
-     1.12.5.3. ensemble approaches
+     1.12.4.3. ensemble approaches
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#bayesian-neural-networks">
-     1.12.5.4. bayesian neural networks
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     1.12.5.5. complementarity
+     1.12.4.4. bayesian neural networks
     </a>
    </li>
   </ul>
@@ -696,25 +686,12 @@
 </li>
 </ul>
 </div>
-<div class="section" id="complementarity">
-<h2>1.12.2. complementarity<a class="headerlink" href="#complementarity" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="rejection-learning">
-<h3>1.12.2.1. rejection learning<a class="headerlink" href="#rejection-learning" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p><strong>rejection learning</strong> - allow models to <em>reject</em> (not make a prediction) when they are not confidently accurate (<a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/5222035/?casa_token=UiIdn8AjFjYAAAAA:XvnZPA7rJlvwxD-bIh2dNG4SPfnHtDYWcBUmAFYRxD6Xk8QE5osnKLs8tAlib_doL8OxqYjMLDE">chow 1957</a>, <a class="reference external" href="https://link.springer.com/chapter/10.1007/978-3-319-46379-7_5">cortes et al. 2016</a>)</p></li>
-<li><p><a class="reference external" href="http://papers.nips.cc/paper/7798-to-trust-or-not-to-trust-a-classifier.pdf">To Trust Or Not To Trust A Classifier</a> (jiang, kim et al 2018) - find a trusted region of points based on nearest neighbor density (in some embedding space)</p>
-<ul>
-<li><p>trust score uses density over some set of nearest neighbors</p></li>
-<li><p>do clustering for each class - trust score = distance to once class’s cluster vs the other classes</p></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
 <div class="section" id="outlier-detection">
-<h2>1.12.3. outlier-detection<a class="headerlink" href="#outlier-detection" title="Permalink to this headline">¶</a></h2>
+<h2>1.12.2. outlier-detection<a class="headerlink" href="#outlier-detection" title="Permalink to this headline">¶</a></h2>
+<p><em>Note: outlier detection uses information only about X to find points “far away” from the main distribution</em></p>
 <ul class="simple">
-<li><p>overview from <a class="reference external" href="https://scikit-learn.org/stable/modules/outlier_detection.html">sklearn</a></p></li>
+<li><p>overview from <a class="reference external" href="https://scikit-learn.org/stable/modules/outlier_detection.html">sklearn</a></p>
+<ul>
 <li><p><strong>elliptic envelope</strong> - assume data is Gaussian and fit elliptic envelop (maybe robustly) to tell when data is an outlier</p></li>
 <li><p><strong>local outlier factor</strong> (breunig et al. 2000) - score based on nearest neighbor density</p></li>
 <li><p>idea: gradients should be larger if you are on the image manifold</p></li>
@@ -723,6 +700,8 @@
 <ul>
 <li><p>separate the data from the origin (with max margin between origin and points) (scholkopf et al. 2000)</p></li>
 <li><p>find a sphere boundary around a dataset with the volume of the sphere minimized (<a class="reference external" href="https://link.springer.com/article/10.1023/B:MACH.0000008084.60811.49">tax &amp; duin 2004</a>)</p></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><p><a class="reference external" href="https://escholarship.org/uc/item/9d34m0wz">detachment index</a> (kuenzel 2019) - based on random forest</p>
@@ -736,8 +715,20 @@
 </li>
 </ul>
 </div>
+<div class="section" id="uncertainty-detection">
+<h2>1.12.3. uncertainty detection<a class="headerlink" href="#uncertainty-detection" title="Permalink to this headline">¶</a></h2>
+<p><em>Note: uncertainty detection uses information about X / <span class="math notranslate nohighlight">\(\phi(X)\)</span> and Y,  to find points for which a particular prediction may be uncertain. This is similar to the predicted probability output by many popular classifiers, such as logistic regression.</em></p>
+<ul class="simple">
+<li><p><strong>rejection learning</strong> - allow models to <em>reject</em> (not make a prediction) when they are not confidently accurate (<a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/5222035/?casa_token=UiIdn8AjFjYAAAAA:XvnZPA7rJlvwxD-bIh2dNG4SPfnHtDYWcBUmAFYRxD6Xk8QE5osnKLs8tAlib_doL8OxqYjMLDE">chow 1957</a>, <a class="reference external" href="https://link.springer.com/chapter/10.1007/978-3-319-46379-7_5">cortes et al. 2016</a>)</p></li>
+<li><p><a class="reference external" href="http://papers.nips.cc/paper/7798-to-trust-or-not-to-trust-a-classifier.pdf">To Trust Or Not To Trust A Classifier</a> (jiang, kim et al 2018) - find a trusted region of points based on nearest neighbor density (in some embedding space)</p>
+<ul>
+<li><p>trust score uses density over some set of nearest neighbors</p></li>
+<li><p>do clustering for each class - trust score = distance to once class’s cluster vs the other classes</p></li>
+</ul>
+</li>
+</ul>
 <div class="section" id="bayesian-approaches">
-<h2>1.12.4. bayesian approaches<a class="headerlink" href="#bayesian-approaches" title="Permalink to this headline">¶</a></h2>
+<h3>1.12.3.1. bayesian approaches<a class="headerlink" href="#bayesian-approaches" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><strong>epistemic uncertainty</strong> - uncertainty in the DNN model parameters</p>
 <ul>
@@ -754,10 +745,11 @@
 <li><p><a class="reference external" href="https://distill.pub/2019/visual-exploration-gaussian-processes/">gaussian processes</a></p></li>
 </ul>
 </div>
+</div>
 <div class="section" id="neural-networks">
-<h2>1.12.5. neural networks<a class="headerlink" href="#neural-networks" title="Permalink to this headline">¶</a></h2>
+<h2>1.12.4. neural networks<a class="headerlink" href="#neural-networks" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="directly-predict-uncertainty">
-<h3>1.12.5.1. directly predict uncertainty<a class="headerlink" href="#directly-predict-uncertainty" title="Permalink to this headline">¶</a></h3>
+<h3>1.12.4.1. directly predict uncertainty<a class="headerlink" href="#directly-predict-uncertainty" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/1810.01861">Inhibited Softmax for Uncertainty Estimation in Neural Networks</a> (mozejko et al. 2019) - directly predict uncertainty by adding an extra output during training</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1802.04865.pdf">Learning Confidence for Out-of-Distribution Detection in Neural Networks</a> (devries et al. 2018) - predict both prediction <em>p</em> and confidence <em>c</em></p>
@@ -771,13 +763,16 @@
 <li><p>estimate uncertainty of highly confident points using earlier snapshots of the trained model</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1711.10589">Contextual Outlier Interpretation</a> (liu et al. 2018) - describe outliers with 3 things: outlierness score, attributes that contribute to the abnormality, and contextual description of its neighborhoods</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/2010.03759">Energy-based Out-of-distribution Detection</a></p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1711.10589">Contextual Outlier Interpretation</a> (liu et al. 2018) - describe outliers with 3 things: outlierness score, attributes that contribute to the abnormality, and contextual description of its neighborhoods</p>
+<ul>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2010.03759">Energy-based Out-of-distribution Detection</a> (liu et al. 2021)</p></li>
+</ul>
+</li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2006.06848">Getting a CLUE: A Method for Explaining Uncertainty Estimates</a></p></li>
 </ul>
 </div>
 <div class="section" id="nearest-neighbor-methods">
-<h3>1.12.5.2. nearest-neighbor methods<a class="headerlink" href="#nearest-neighbor-methods" title="Permalink to this headline">¶</a></h3>
+<h3>1.12.4.2. nearest-neighbor methods<a class="headerlink" href="#nearest-neighbor-methods" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1803.04765.pdf">Deep k-Nearest Neighbors: Towards Confident, Interpretable and Robust Deep Learning</a> (papernot &amp; mcdaniel, 2018)</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1709.09844.pdf">distance-based confidence scores</a> (mandelbaum et al. 2017) - use either distance in embedding space or adversarial training to get uncertainties for DNNs</p></li>
@@ -789,7 +784,7 @@
 </ul>
 </div>
 <div class="section" id="ensemble-approaches">
-<h3>1.12.5.3. ensemble approaches<a class="headerlink" href="#ensemble-approaches" title="Permalink to this headline">¶</a></h3>
+<h3>1.12.4.3. ensemble approaches<a class="headerlink" href="#ensemble-approaches" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="http://papers.nips.cc/paper/7219-simple-and-scalable-predictive-uncertainty-estimation-using-deep-ensembles">DNN ensemble uncertainty works</a> - predict mean and variance w/ each network then ensemble (don’t need to do bagging, random init is enough)</p></li>
 <li><p>can also use ensemble of <a class="reference external" href="https://arxiv.org/abs/1704.00109">snapshots during training</a> (huang et al. 2017)</p></li>
@@ -805,7 +800,7 @@
 </ul>
 </div>
 <div class="section" id="bayesian-neural-networks">
-<h3>1.12.5.4. bayesian neural networks<a class="headerlink" href="#bayesian-neural-networks" title="Permalink to this headline">¶</a></h3>
+<h3>1.12.4.4. bayesian neural networks<a class="headerlink" href="#bayesian-neural-networks" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://medium.com/neuralspace/probabilistic-deep-learning-bayes-by-backprop-c4a3de0d9743">blog posts on basics</a></p>
 <ul>
@@ -836,38 +831,6 @@
 </li>
 <li><p><a class="reference external" href="https://papers.nips.cc/paper/9472-a-simple-baseline-for-bayesian-uncertainty-in-deep-learning.pdf">SWAG</a> (maddox et al. 2019) - start with pre-trained net then get Gaussian distr. over weights by training with large constant setp-size</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2005.07186">Efficient and Scalable Bayesian Neural Nets with Rank-1 Factors</a> (dusenberry, jerfel et al. 2020) - BNNs scale to SGD-level with better calibration</p></li>
-</ul>
-</div>
-<div class="section" id="id1">
-<h3>1.12.5.5. complementarity<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p><strong>complementarity</strong> - ML should focus on points hard for humans + seek human input on points hard for ML</p>
-<ul>
-<li><p>note: goal of perception isn’t to learn categories but learn things that are associated with actions</p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="http://papers.nips.cc/paper/7853-predict-responsibly-improving-fairness-and-accuracy-by-learning-to-defer">Predict Responsibly: Improving Fairness and Accuracy by Learning to Defer</a> (madras et al. 2018) - adaptive rejection learning - build on rejection learning considering the strengths/weaknesses of humans</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/2005.00582">Learning to Complement Humans</a> (wilder et al. 2020) - 2 approaches for how to incorporate human input</p>
-<ul>
-<li><p>discriminative approach - jointly train predictive model and policy for deferring to human (witha cost for deferring)</p></li>
-<li><p>decision-theroetic approach - train predictive model + policy jointly based on value of information (VOI)</p></li>
-<li><p>do real-world experiments w/ humans to validate:  scientific discovery (a galaxy classification task) and medical diagnosis (detection of breast cancer metastasis)</p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="https://arxiv.org/pdf/1802.04346.pdf">Gaining Free or Low-Cost Transparency with Interpretable Partial Substitute</a> (wang, 2019) - given a black-box model, find a subset of the data for which predictions can be made using a simple rule-list (<a class="reference external" href="https://scholar.google.com/citations?hl=en&amp;user=KB6A0esAAAAJ&amp;view_op=list_works&amp;sortby=pubdate">tong wang</a> has a few papers like this)</p>
-<ul>
-<li><p><a class="reference external" href="https://arxiv.org/abs/2002.03494">Interpretable Companions for Black-Box Models</a> (pan, wang, et al. 2020) - offer an interpretable, but slightly less acurate model for each decision</p>
-<ul>
-<li><p>human experiment evaluates how much humans are able to tolerate</p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/2105.02410">Partially Interpretable Estimators (PIE): Black-Box-Refined Interpretable Machine Learning</a> (wang eta al. 2021)</p>
-<ul>
-<li><p>interpretable model for individual features and black-box model captures feature interactions (on residuals)</p></li>
-</ul>
-</li>
 </ul>
 </div>
 </div>

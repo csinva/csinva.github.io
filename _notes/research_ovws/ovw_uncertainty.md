@@ -23,30 +23,35 @@ category: research
     - ![Screen Shot 2019-06-26 at 10.06.11 AM](../assets/quantile_losses.png)
   - [Single-Model Uncertainties for Deep Learning](https://arxiv.org/abs/1811.00908) (tagovska & lopez-paz 2019) - use simultaneous quantile regression
 
-# complementarity
 
-## rejection learning
-
-- **rejection learning** - allow models to *reject* (not make a prediction) when they are not confidently accurate ([chow 1957](https://ieeexplore.ieee.org/abstract/document/5222035/?casa_token=UiIdn8AjFjYAAAAA:XvnZPA7rJlvwxD-bIh2dNG4SPfnHtDYWcBUmAFYRxD6Xk8QE5osnKLs8tAlib_doL8OxqYjMLDE), [cortes et al. 2016](https://link.springer.com/chapter/10.1007/978-3-319-46379-7_5))
-- [To Trust Or Not To Trust A Classifier](http://papers.nips.cc/paper/7798-to-trust-or-not-to-trust-a-classifier.pdf) (jiang, kim et al 2018) - find a trusted region of points based on nearest neighbor density (in some embedding space)
-    - trust score uses density over some set of nearest neighbors
-    - do clustering for each class - trust score = distance to once class's cluster vs the other classes
 
 # outlier-detection
 
+*Note: outlier detection uses information only about X to find points "far away" from the main distribution*
+
 - overview from [sklearn](https://scikit-learn.org/stable/modules/outlier_detection.html)
-- **elliptic envelope** - assume data is Gaussian and fit elliptic envelop (maybe robustly) to tell when data is an outlier
-- **local outlier factor** (breunig et al. 2000) - score based on nearest neighbor density
-- idea: gradients should be larger if you are on the image manifold
-- [isolation forest](https://ieeexplore.ieee.org/abstract/document/4781136) (liu et al. 2008) - lower average number of random splits required to isolate a sample means more outlier
-- [one-class svm](https://scikit-learn.org/stable/modules/generated/sklearn.svm.OneClassSVM.html#sklearn.svm.OneClassSVM) - estimates the support of a high-dimensional distribution using a kernel (2 approaches:)
-  - separate the data from the origin (with max margin between origin and points) (scholkopf et al. 2000)
-  - find a sphere boundary around a dataset with the volume of the sphere minimized ([tax & duin 2004](https://link.springer.com/article/10.1023/B:MACH.0000008084.60811.49))
+  - **elliptic envelope** - assume data is Gaussian and fit elliptic envelop (maybe robustly) to tell when data is an outlier
+  - **local outlier factor** (breunig et al. 2000) - score based on nearest neighbor density
+  - idea: gradients should be larger if you are on the image manifold
+  - [isolation forest](https://ieeexplore.ieee.org/abstract/document/4781136) (liu et al. 2008) - lower average number of random splits required to isolate a sample means more outlier
+  - [one-class svm](https://scikit-learn.org/stable/modules/generated/sklearn.svm.OneClassSVM.html#sklearn.svm.OneClassSVM) - estimates the support of a high-dimensional distribution using a kernel (2 approaches:)
+    - separate the data from the origin (with max margin between origin and points) (scholkopf et al. 2000)
+    - find a sphere boundary around a dataset with the volume of the sphere minimized ([tax & duin 2004](https://link.springer.com/article/10.1023/B:MACH.0000008084.60811.49))
+
 - [detachment index](https://escholarship.org/uc/item/9d34m0wz) (kuenzel 2019) - based on random forest
   - for covariate $j$, detachment index $d^j(x) = \sum_i^n w (x, X_i) \vert X_i^j - x^j \vert$
     - $w(x, X_i) = \underbrace{1 / T\sum_{t=1}^{T}}_{\text{average over T trees}} \frac{\overbrace{1\{ X_i \in L_t(x) \}}^{\text{is }   X_i \text{ in the same leaf?}}}{\underbrace{\vert L_t(x) \vert}_{\text{num points in leaf}}}$ is $X_i$ relevant to the point $x$?
 
-# bayesian approaches
+# uncertainty detection
+
+*Note: uncertainty detection uses information about X / $\phi(X)$ and Y,  to find points for which a particular prediction may be uncertain. This is similar to the predicted probability output by many popular classifiers, such as logistic regression.*
+
+- **rejection learning** - allow models to *reject* (not make a prediction) when they are not confidently accurate ([chow 1957](https://ieeexplore.ieee.org/abstract/document/5222035/?casa_token=UiIdn8AjFjYAAAAA:XvnZPA7rJlvwxD-bIh2dNG4SPfnHtDYWcBUmAFYRxD6Xk8QE5osnKLs8tAlib_doL8OxqYjMLDE), [cortes et al. 2016](https://link.springer.com/chapter/10.1007/978-3-319-46379-7_5))
+- [To Trust Or Not To Trust A Classifier](http://papers.nips.cc/paper/7798-to-trust-or-not-to-trust-a-classifier.pdf) (jiang, kim et al 2018) - find a trusted region of points based on nearest neighbor density (in some embedding space)
+  - trust score uses density over some set of nearest neighbors
+  - do clustering for each class - trust score = distance to once class's cluster vs the other classes
+
+## bayesian approaches
 
 - **epistemic uncertainty** - uncertainty in the DNN model parameters
   - without good estimates of this, often get aleatoric uncertainty wrong (since $p(y\vert x) = \int p(y \vert x, \theta) p(\theta \vert data) d\theta$
@@ -69,7 +74,8 @@ category: research
     - just predicting uncertainty is biased
     - estimate uncertainty of highly confident points using earlier snapshots of the trained model
 - [Contextual Outlier Interpretation](https://arxiv.org/abs/1711.10589) (liu et al. 2018) - describe outliers with 3 things: outlierness score, attributes that contribute to the abnormality, and contextual description of its neighborhoods
-- [Energy-based Out-of-distribution Detection](https://arxiv.org/abs/2010.03759)
+    - [Energy-based Out-of-distribution Detection](https://arxiv.org/abs/2010.03759) (liu et al. 2021)
+
 - [Getting a CLUE: A Method for Explaining Uncertainty Estimates](https://arxiv.org/abs/2006.06848) 
 
 ## nearest-neighbor methods
@@ -106,18 +112,3 @@ category: research
   - dropout at test time gives you uncertainty
 - [SWAG](https://papers.nips.cc/paper/9472-a-simple-baseline-for-bayesian-uncertainty-in-deep-learning.pdf) (maddox et al. 2019) - start with pre-trained net then get Gaussian distr. over weights by training with large constant setp-size
 - [Efficient and Scalable Bayesian Neural Nets with Rank-1 Factors](https://arxiv.org/abs/2005.07186) (dusenberry, jerfel et al. 2020) - BNNs scale to SGD-level with better calibration
-
-## complementarity
-
-- **complementarity** - ML should focus on points hard for humans + seek human input on points hard for ML
-    - note: goal of perception isn't to learn categories but learn things that are associated with actions
-- [Predict Responsibly: Improving Fairness and Accuracy by Learning to Defer](http://papers.nips.cc/paper/7853-predict-responsibly-improving-fairness-and-accuracy-by-learning-to-defer) (madras et al. 2018) - adaptive rejection learning - build on rejection learning considering the strengths/weaknesses of humans
-- [Learning to Complement Humans](https://arxiv.org/abs/2005.00582) (wilder et al. 2020) - 2 approaches for how to incorporate human input
-    - discriminative approach - jointly train predictive model and policy for deferring to human (witha cost for deferring)
-    - decision-theroetic approach - train predictive model + policy jointly based on value of information (VOI)
-    - do real-world experiments w/ humans to validate:  scientific discovery (a galaxy classification task) and medical diagnosis (detection of breast cancer metastasis)
-- [Gaining Free or Low-Cost Transparency with Interpretable Partial Substitute](https://arxiv.org/pdf/1802.04346.pdf) (wang, 2019) - given a black-box model, find a subset of the data for which predictions can be made using a simple rule-list ([tong wang](https://scholar.google.com/citations?hl=en&user=KB6A0esAAAAJ&view_op=list_works&sortby=pubdate) has a few papers like this)
-    - [Interpretable Companions for Black-Box Models](https://arxiv.org/abs/2002.03494) (pan, wang, et al. 2020) - offer an interpretable, but slightly less acurate model for each decision
-      - human experiment evaluates how much humans are able to tolerate
-- [Partially Interpretable Estimators (PIE): Black-Box-Refined Interpretable Machine Learning](https://arxiv.org/abs/2105.02410) (wang eta al. 2021)
-    - interpretable model for individual features and black-box model captures feature interactions (on residuals)

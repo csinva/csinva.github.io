@@ -4,7 +4,7 @@ title: interpretability
 category: research
 ---
 
-**some interesting papers on interpretable machine learning, largely organized based on this [interpretable ml review](https://arxiv.org/abs/1901.04592) (murdoch et al. 2019) and notes from this [interpretable ml book](https://christophm.github.io/interpretable-ml-book/) (molnar 2019)**
+**some interesting papers on interpretable machine learning, largely organized based on this [interpretable ml review](https://arxiv.org/abs/1901.04592) (murdoch et al. 2019) and notes from this [interpretable ml book](https://christophm.github.io/interpretable-ml-book/) (molnar 2019).**
 
 {:toc}
 
@@ -104,11 +104,11 @@ Evaluating interpretability can be very difficult (largely because it rarely mak
 
 ## adv. vulnerabilities
 
-- [How can we fool LIME and SHAP? Adversarial Attacks on Post hoc Explanation Methods](https://arxiv.org/abs/1911.02508)
-  - we can build classifiers which use important features (such as race) but explanations will not reflect that
-  - basically classifier is different on X which is OOD (and used by LIME and SHAP)
 - [Interpretation of Neural Networks is Fragile](https://arxiv.org/abs/1710.10547) (ghorbani et al. 2018)
   - minor perturbations to inputs can drastically change DNN interpretations
+- [How can we fool LIME and SHAP? Adversarial Attacks on Post hoc Explanation Methods](https://arxiv.org/abs/1911.02508) (slack, ..., singh, lakkaraju, 2020)
+  - we can build classifiers which use important features (such as race) but explanations will not reflect that
+  - basically classifier is different on X which is OOD (and used by LIME and SHAP)
 - [Fooling Neural Network Interpretations via Adversarial Model Manipulation](https://arxiv.org/abs/1902.02041) (heo, joo, & moon 2019) - can change model weights so that it keeps predictive accuracy but changes its interpretation
   - motivation: could falsely look like a model is "fair" because it places little saliency on sensitive attributes
     - output of model can still be checked regardless
@@ -117,8 +117,9 @@ Evaluating interpretability can be very difficult (largely because it rarely mak
     - passive fooling - highlighting uninformative pixels of the image
     - active fooling - highlighting a completely different object, the firetruck
   - **model does not actually change that much** - predictions when manipulating pixels in order of saliency remains similar, very different from random (fig 4)
+- [Counterfactual Explanations Can Be Manipulated](https://arxiv.org/abs/2106.02666) (slack,...,singh, 2021) - minor changes in the training objective can drastically change counterfactual explanations
 
-# intrinsic interpretability (i.e. how can we fit simpler models)
+# intrinsic interpretability (i.e. how can we fit a simpler model)
 
 For an implementation of many of these models, see the python [imodels package](https://github.com/csinva/imodels).
 
@@ -162,6 +163,8 @@ For an implementation of many of these models, see the python [imodels package](
     - note: from every pair of complementary singleton rules (e.g., $X_j \leq1$, $X_j > 1$), they remove one member as otherwise the pair together is collinear
   - [Multivariate Adaptive Regression Splines (MARS)](https://www.jstor.org/stable/2241837?casa_token=15XQTGF9ItgAAAAA%3A3dmi0WboPsb0TMDj6d0yefz1YUWUrQmKzh21NvMgpyQ_gbuveUibjIQY2Gq6J8C9-9HJ70QZns9x2MfB70dEGlll5RIgZ_VS3qPhRbbBMsrLwuD8H-0wmQ&seq=1#metadata_info_tab_contents) (friedman, 1991) - sequentially learn weighted linear sum of ReLus (or products of ReLus)
     - do backward deletion procedure at the end
+    - [MARS via LASSO](https://arxiv.org/pdf/2111.11694.pdf) (ki, fang, & guntuboyina, 2021) - MARS but use LASSO
+  - [Hardy-Krause denoising](https://arxiv.org/abs/1903.01395) (fang, guntuboyina, & sen, 2020) - builds additive models of piecewise constant functions along with interactions and then does LASSO on them
 - more recent global versions of learning rule sets
   - [interpretable decision set](https://dl.acm.org/citation.cfm?id=2939874) (lakkaraju et al. 2016) - set of if then rules
     - short, accurate, and non-overlapping rules that cover the whole feature space and pay attention to small but important classes
@@ -433,9 +436,9 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
 - [Towards Robust Interpretability with Self-Explaining Neural Networks](https://arxiv.org/pdf/1806.07538.pdf) (alvarez-melis & jaakkola 2018) - building architectures that explain their predictions
 - [Two Instances of Interpretable Neural Network for Universal Approximations](https://arxiv.org/abs/2112.15026) (tjoa & cuntai, 2021) - each neuron responds to a training point
 
-### connecting dnns with rule-based models
+### connecting dnns and rules
 
-- oblique decision tree - splits are allowed to be weighted linear combinations
+- 
 - [Distilling a Neural Network Into a Soft Decision Tree](https://arxiv.org/pdf/1711.09784.pdf) (frosst & hinton 2017) - distills DNN into DNN-like tree which uses sigmoid neuron decides which path to follow
   - training on distilled DNN predictions outperforms training on original labels
   - to make the decision closer to a hard cut, can multiply by a large scalar before applying sigmoid
@@ -493,6 +496,7 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
   - Monotonic Calibrated Interpolated Look-Up Tables ([gupta et al. 2016](https://www.jmlr.org/papers/volume17/15-243/15-243.pdf))
     - speed up $D$-dimensional interpolation to $O(D \log D)$
     - follow-up work: Deep Lattice Networks and Partial Monotonic Functions ([you,...,gupta, 2017](https://proceedings.neurips.cc//paper/2017/file/464d828b85b0bed98e80ade0a5c43b0f-Paper.pdf)) - use many layers
+- monotonicity constrainits in histogram-based gradient boosting ([see sklearn](https://scikit-learn.org/stable/modules/ensemble.html#histogram-based-gradient-boosting))
 
 
 ## misc models
@@ -936,7 +940,7 @@ How interactions are defined and summarized is a very difficult thing to specify
   - [fp-growth](https://www.softwaretestinghelp.com/fp-growth-algorithm-data-mining/)
   - eclat
 
-## tree-based interactions
+### tree-based interactions
 
 - [iterative random forest](https://www.pnas.org/content/115/8/1943) (basu et al. 2018)
   - interaction scoring - find interactions as features which co-occur on paths (using RIT algorithm)
@@ -1015,15 +1019,13 @@ How interactions are defined and summarized is a very difficult thing to specify
 
 # different problems / perspectives
 
-## improving models (possibly w/ human-in-the-loop)
-
-*📌 see also notes on [complementarity](https://csinva.io/notes/research_ovws/ovw_uncertainty.html#complementarity)*
+## improving models
 
 - [Interpretations are useful: penalizing explanations to align neural networks with prior knowledge](https://arxiv.org/abs/1909.13584) (rieger et al. 2020)
   - [Refining Neural Networks with Compositional Explanations](https://arxiv.org/abs/2103.10415) (yao et al. 21) - human looks at saliency maps of interactions, gives natural language explanation, this is converted back to interactions (defined using IG), and then regularized
   - [Dropout as a Regularizer of Interaction Effects](https://arxiv.org/abs/2007.00823) (lengerich...caruana, 21) - dropout regularizes interaction effects
   - [Sparse Epistatic Regularization of Deep Neural Networks for Inferring Fitness Functions](https://www.biorxiv.org/content/10.1101/2020.11.24.396994v1) (aghazadeh ... listgarten, ramchandran, 2020) - penalize DNNs spectral representation to limit learning noisy high-order interactions
-- [Right for the Right Reasons: Training Differentiable Models by Constraining their Explanations](https://arxiv.org/abs/1703.03717) (ross et al. 2017)
+- [Right for the Right Reasons: Training Differentiable Models by Constraining their Explanations](https://arxiv.org/abs/1703.03717) (ross et al. 2017) - selectively penalize input gradients
 - [Explain and improve: LRP-inference fine-tuning for image captioning models ](https://www.sciencedirect.com/science/article/pii/S1566253521001494) (sun et al. 2022)
   - [Pruning by explaining: A novel criterion for deep neural network pruning](https://www.sciencedirect.com/science/article/pii/S0031320321000868) (yeom et al. 2021) - use LRP-based score to prune DNN
 - [Explain to Fix: A Framework to Interpret and Correct DNN Object Detector Predictions](https://arxiv.org/pdf/1811.08011.pdf)
@@ -1037,15 +1039,39 @@ How interactions are defined and summarized is a very difficult thing to specify
   - generated explanations are rated higher by humans
   - [VQA-E: Explaining, Elaborating, and Enhancing Your Answers for Visual Questions](https://arxiv.org/abs/1803.07464) (li et al. 2018) - train to jointly predict answer + generate an explanation
   - [Self-Critical Reasoning for Robust Visual Question Answering](https://proceedings.neurips.cc/paper/2019/hash/33b879e7ab79f56af1e88359f9314a10-Abstract.html) (wu & mooney, 2019) - use textual explanations to extract a set of important visual objects
-- human in-the-loop
-  - [Making deep neural networks right for the right scientific reasons by interacting with their explanations](https://www.nature.com/articles/s42256-020-0212-3) (schramowski, ... kersting, 2020) - scientist iteratively provides feedback on DNN's explanation
+
+## complementarity / human-in-the-loop
+
+**complementarity** - ML should focus on points hard for humans + seek human input on points hard for ML
+
+- note: goal of ML isn't to learn categories but learn things that are associated with actions
+- [Predict Responsibly: Improving Fairness and Accuracy by Learning to Defer](http://papers.nips.cc/paper/7853-predict-responsibly-improving-fairness-and-accuracy-by-learning-to-defer) (madras et al. 2018) - adaptive rejection learning - build on rejection learning considering the strengths/weaknesses of humans
+- [Learning to Complement Humans](https://arxiv.org/abs/2005.00582) (wilder et al. 2020) - 2 approaches for how to incorporate human input
+  - discriminative approach - jointly train predictive model and policy for deferring to human (with a cost for deferring)
+  - decision-theroetic approach - train predictive model + policy jointly based on value of information (VOI)
+  - do real-world experiments w/ humans to validate:  scientific discovery (a galaxy classification task) & medical diagnosis (detection of breast cancer metastasis)
+- Gaining Free or Low-Cost Transparency with Interpretable Partial Substitute ([wang, 2019](https://arxiv.org/pdf/1802.04346.pdf)) - given a black-box model, find a subset of the data for which predictions can be made using a simple rule-list ([tong wang](https://scholar.google.com/citations?hl=en&user=KB6A0esAAAAJ&view_op=list_works&sortby=pubdate) has a few papers like this)
+  - Interpretable Companions for Black-Box Models ([pan, wang, et al. 2020](https://arxiv.org/abs/2002.03494) ) - offer an interpretable, but slightly less acurate model for each decision
+    - human experiment evaluates how much humans are able to tolerate
+  - Hybrid Predictive Models: When an Interpretable Model Collaborates with a Black-box Model ([wang & lin, 2021](https://www.jmlr.org/papers/volume22/19-325/19-325.pdf)) - use interpretable model on subset where it works
+    - objective function considers predictive accuracy, model interpretability, and model transparency (defined as the percentage of data processed by the interpretable substitute)
+  - Partially Interpretable Estimators (PIE): Black-Box-Refined Interpretable Machine Learning ([wang et al. 2021](https://arxiv.org/abs/2105.02410)) - interpretable model for individual features and black-box model captures feature interactions (on residuals)
+- human in-the-loop (HITL)
+  - Making deep neural networks right for the right scientific reasons by interacting with their explanations ([schramowski, ... kersting, 2020](https://www.nature.com/articles/s42256-020-0212-3) ) - scientist iteratively provides feedback on DNN's explanation
+  - [POTATO: exPlainable infOrmation exTrAcTion framewOrk](https://arxiv.org/abs/2201.13230) (kovacs et al. 2022) - humans select rules using graph-based feature for text classification
+  - [A Survey of Human-in-the-loop for Machine Learning](https://arxiv.org/abs/2108.00941) (wu...he, 2021)
+    - HITL data processing
+      - ex. identify key examples to annotate to improve performance / reduce discriminatory bias
+      - ex. [   ](https://link.springer.com/chapter/10.1007/978-3-030-34770-3_10)
+    - HITL training
 
 ## recourse
+
+**recourse** - can a person obtain desired prediction from fixed mode by changing actionable input variables (not just standard explainability)
 
 - [actionable recourse in linear classification](https://arxiv.org/pdf/1809.06514.pdf) (ustun et al. 2019)
   - want model to provide actionable inputs (e.g. income) rather than immutable variables (e.g. age, marital status)
     - drastic changes in actionable inputs are basically immutable
-  - **recourse** - can person obtain desired prediction from fixed mode by changing actionable input variables (not just standard explainability)
 
 ## interp for rl
 

@@ -595,8 +595,8 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#neural-networks">
-   5.7.1. neural networks
+  <a class="reference internal nav-link" href="#basics">
+   5.7.1. basics
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -605,55 +605,33 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#tricks-to-squeeze-out-performance">
-   5.7.3. tricks to squeeze out performance
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#cnns">
-   5.7.4. CNNs
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#architectural-components">
-   5.7.5. architectural components
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#recent-trends">
-   5.7.6. recent trends
+   5.7.3. CNNs
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#rnns">
-   5.7.7. RNNs
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#lstms">
-     5.7.7.1. LSTMs
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#adversarial-attacks">
-   5.7.8. adversarial attacks
+   5.7.4. RNNs
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#transformers">
-   5.7.9. transformers
+   5.7.5. transformers
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#graph-neural-networks">
-   5.7.10. graph neural networks
+   5.7.6. graph neural networks
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#misc-architectural-components">
+   5.7.7. misc architectural components
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#misc">
-   5.7.11. misc
+   5.7.8. misc
   </a>
  </li>
 </ul>
@@ -669,8 +647,10 @@
                 
   <div class="section" id="deep-learning">
 <h1>5.7. deep learning<a class="headerlink" href="#deep-learning" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="neural-networks">
-<h2>5.7.1. neural networks<a class="headerlink" href="#neural-networks" title="Permalink to this headline">¶</a></h2>
+<p>This note covers miscellaneous deep learning, with an emphasis on different architectures + empirical tricks.</p>
+<p>See also notes in <a class="reference external" href="https://csinva.io/notes/ml/unsupervised.html">📌 unsupervised learning</a>, <a class="reference external" href="https://csinva.io/notes/research_ovws/ovw_disentanglement.html">📌 disentanglement</a>, <a class="reference external" href="https://csinva.io/notes/ml/nlp.html">📌 nlp</a></p>
+<div class="section" id="basics">
+<h2>5.7.1. basics<a class="headerlink" href="#basics" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>basic perceptron update rule</p>
 <ul>
@@ -767,11 +747,8 @@
 <li><p>makes it so output sums to 1 (like probabilities of classes)</p></li>
 </ul>
 </li>
-</ul>
-</div>
-<div class="section" id="tricks-to-squeeze-out-performance">
-<h2>5.7.3. tricks to squeeze out performance<a class="headerlink" href="#tricks-to-squeeze-out-performance" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
+<li><p><strong>tricks to squeeze out performance</strong></p>
+<ul>
 <li><p>ensemble models</p></li>
 <li><p>(stochastic) weight averaging can help a lot</p></li>
 <li><p>test-time augmentation</p>
@@ -786,9 +763,11 @@
 </ul>
 </li>
 </ul>
+</li>
+</ul>
 </div>
 <div class="section" id="cnns">
-<h2>5.7.4. CNNs<a class="headerlink" href="#cnns" title="Permalink to this headline">¶</a></h2>
+<h2>5.7.3. CNNs<a class="headerlink" href="#cnns" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>kernel here means filter</p></li>
 <li><p>convolution G- takes a windowed average of an image F with a filter H where the filter is flipped horizontally and vertically before being applied</p></li>
@@ -913,30 +892,8 @@
 </li>
 </ul>
 </div>
-<div class="section" id="architectural-components">
-<h2>5.7.5. architectural components<a class="headerlink" href="#architectural-components" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p><strong>coordconv</strong> - break translation equivariance by passing in i, j coords as extra filters</p></li>
-<li><p><strong>deconvolution</strong> = transposed convolution = fractionally-strided convolution - like upsampling</p></li>
-<li><p><strong>attention</strong></p>
-<ul>
-<li><p>attention ovw: https://lilianweng.github.io/lil-log/2018/06/24/attention-attention.html</p></li>
-<li><p>vector of importance weights: in order to predict or infer one element, such as a pixel in an image or a word in a sentence, we estimate using the attention vector how strongly it is correlated with (or “<em>attends to</em>” as you may have read in many papers) other elements and take the sum of their values weighted by the attention vector as the approximation of the target.</p></li>
-<li><p>attention <a class="reference external" href="https://arxiv.org/pdf/1409.0473.pdf">born</a> to solve problem of going from arbitrary length -&gt; fixed length encoding -&gt; arbitrary length output</p></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="section" id="recent-trends">
-<h2>5.7.6. recent trends<a class="headerlink" href="#recent-trends" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>architecture search: learning to learn</p></li>
-<li><p><em>optimal brain damage</em> - starts with fully connected and weeds out connections (Lecun)</p></li>
-<li><p><em>tiling</em> - train networks on the error of previous networks</p></li>
-</ul>
-</div>
 <div class="section" id="rnns">
-<h2>5.7.7. RNNs<a class="headerlink" href="#rnns" title="Permalink to this headline">¶</a></h2>
+<h2>5.7.4. RNNs<a class="headerlink" href="#rnns" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>feedforward NNs have no memory so we introduce recurrent NNs</p></li>
 <li><p>able to have memory</p></li>
@@ -950,10 +907,8 @@
 </ul>
 </li>
 <li><p>error gradients vanish exponentially quickly with time lag</p></li>
-</ul>
-<div class="section" id="lstms">
-<h3>5.7.7.1. LSTMs<a class="headerlink" href="#lstms" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
+<li><p><strong>LSTMS</strong></p>
+<ul>
 <li><p>have gates for forgetting, input, output</p></li>
 <li><p>easy to let hidden state flow through time, unchanged</p></li>
 <li><p>gate <span class="math notranslate nohighlight">\(\sigma\)</span> - pointwise multiplication</p>
@@ -965,23 +920,13 @@
 <li><p>forget gate - conditionally discard previously remembered info</p></li>
 <li><p>input gate - conditionally remember new info</p></li>
 <li><p>output gate - conditionally output a relevant part of memory</p></li>
-<li><p>GRUs - similar, merge input / forget units into a single update unit \vert</p></li>
-</ul>
-</div>
-</div>
-<div class="section" id="adversarial-attacks">
-<h2>5.7.8. adversarial attacks<a class="headerlink" href="#adversarial-attacks" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p><strong>adversarial attack</strong> - designing an input to get the wrong result from the model</p>
-<ul>
-<li><p><strong>targeted</strong> - try to get specific wrong class</p></li>
+<li><p>GRUs - similar, merge input / forget units into a single update unit</p></li>
 </ul>
 </li>
-<li><p>fast gradient step method - keep adding gradient to maximize noise (limit amplitude of pixel’s channel to stay imperceptible)</p></li>
 </ul>
 </div>
 <div class="section" id="transformers">
-<h2>5.7.9. transformers<a class="headerlink" href="#transformers" title="Permalink to this headline">¶</a></h2>
+<h2>5.7.5. transformers<a class="headerlink" href="#transformers" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>transformers <a class="reference external" href="https://arxiv.org/pdf/1706.03762.pdf">original paper</a></p>
 <ul>
@@ -992,7 +937,7 @@
 </ul>
 </div>
 <div class="section" id="graph-neural-networks">
-<h2>5.7.10. graph neural networks<a class="headerlink" href="#graph-neural-networks" title="Permalink to this headline">¶</a></h2>
+<h2>5.7.6. graph neural networks<a class="headerlink" href="#graph-neural-networks" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.youtube.com/watch?v=uF53xsT7mjc">Theoretical Foundations of Graph Neural Networks</a></p>
 <ul>
@@ -1081,8 +1026,16 @@
 <li><p>geometric deep learning: invariances and equivariances can be appllied generally to get a large calss of architectures between convolutions and graphs</p></li>
 </ul>
 </div>
+<div class="section" id="misc-architectural-components">
+<h2>5.7.7. misc architectural components<a class="headerlink" href="#misc-architectural-components" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>coordconv</strong> - break translation equivariance by passing in i, j coords as extra filters</p></li>
+<li><p><strong>deconvolution</strong> = transposed convolution = fractionally-strided convolution - like upsampling</p></li>
+<li><p><strong>attention</strong> = vector of importance weights: in order to predict or infer one element, such as a pixel in an image or a word in a sentence, we estimate using the attention vector how strongly it is correlated with (or “<em>attends to</em>” as you may have read in many papers) other elements and take the sum of their values weighted by the attention vector as the approximation of the target</p></li>
+</ul>
+</div>
 <div class="section" id="misc">
-<h2>5.7.11. misc<a class="headerlink" href="#misc" title="Permalink to this headline">¶</a></h2>
+<h2>5.7.8. misc<a class="headerlink" href="#misc" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/2201.00650">Deep Learning Interviews: Hundreds of fully solved job interview questions from a wide range of key topics in AI</a></p></li>
 <li><p>adaptive pooling can help deal with different sizes</p></li>
@@ -1100,6 +1053,9 @@
 </li>
 </ul>
 </li>
+<li><p>architecture search: learning to learn</p></li>
+<li><p><em>optimal brain damage</em> - starts with fully connected and weeds out connections (Lecun)</p></li>
+<li><p><em>tiling</em> - train networks on the error of previous networks</p></li>
 </ul>
 </div>
 </div>

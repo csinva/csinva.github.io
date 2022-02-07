@@ -197,8 +197,7 @@ category: research
   - TIP consists 1k - 2k bases
   - hard to actually look at structure here (requires cryoEM)
 
-
-# bin random papers
+# random papers
 
 - [DeepMind AI tackles one of chemistry’s most valuable techniques](https://www.nature.com/articles/d41586-021-03697-8?utm_source=Nature+Briefing&utm_campaign=b0bda6ba48-briefing-dy-20211210&utm_medium=email&utm_term=0_c9dfd39373-b0bda6ba48-45837550)
 - [DeepMind’s AI helps untangle the mathematics of knots](https://www.nature.com/articles/d41586-021-03593-1?utm_source=Nature+Briefing&utm_campaign=b0bda6ba48-briefing-dy-20211210&utm_medium=email&utm_term=0_c9dfd39373-b0bda6ba48-45837550)

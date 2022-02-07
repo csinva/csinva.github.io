@@ -6,7 +6,11 @@ category: ml
 
 {:toc}
 
-# neural networks
+This note covers miscellaneous deep learning, with an emphasis on different architectures + empirical tricks.
+
+See also notes in [📌 unsupervised learning](https://csinva.io/notes/ml/unsupervised.html), [📌 disentanglement](https://csinva.io/notes/research_ovws/ovw_disentanglement.html), [📌 nlp](https://csinva.io/notes/ml/nlp.html)
+
+# basics
 
 - basic perceptron update rule
     - if output is 0 but should be 1: raise weights on active connections by d
@@ -56,18 +60,14 @@ category: ml
     2. during training divide all neurons' outputs by p
 - *softmax* - takes vector z and returns vector of the same length
   - makes it so output sums to 1 (like probabilities of classes)
-
-
-
-# tricks to squeeze out performance
-
-- ensemble models
-- (stochastic) weight averaging can help a lot
-- test-time augmentation
-   - this could just be averaging over dropout resamples as well
-- gradient checkpointing ([2016 paper](https://arxiv.org/pdf/1604.06174.pdf))
-  - 10x larger DNNs into memory with 20% increase in comp. time
-  - save gradients for a carefully chosen layer to let you easily recompute
+- **tricks to squeeze out performance**
+  - ensemble models
+  - (stochastic) weight averaging can help a lot
+  - test-time augmentation
+     - this could just be averaging over dropout resamples as well
+  - gradient checkpointing ([2016 paper](https://arxiv.org/pdf/1604.06174.pdf))
+    - 10x larger DNNs into memory with 20% increase in comp. time
+    - save gradients for a carefully chosen layer to let you easily recompute
 
 # CNNs
 - kernel here means filter
@@ -137,20 +137,6 @@ category: ml
 
 
 
-# architectural components
-
-- **coordconv** - break translation equivariance by passing in i, j coords as extra filters
-- **deconvolution** = transposed convolution = fractionally-strided convolution - like upsampling
-- **attention**
-    - attention ovw: https://lilianweng.github.io/lil-log/2018/06/24/attention-attention.html
-    - vector of importance weights: in order to predict or infer one element, such as a pixel in an image or a word in a sentence, we estimate using the attention vector how strongly it is correlated with (or “*attends to*” as you may have read in many papers) other elements and take the sum of their values weighted by the attention vector as the approximation of the target.
-    - attention [born](https://arxiv.org/pdf/1409.0473.pdf) to solve problem of going from arbitrary length -> fixed length encoding -> arbitrary length output
-
-# recent trends
-- architecture search: learning to learn
-- *optimal brain damage* - starts with fully connected and weeds out connections (Lecun)
-- *tiling* - train networks on the error of previous networks
-
 # RNNs
 
 - feedforward NNs have no memory so we introduce recurrent NNs
@@ -160,31 +146,28 @@ category: ml
 - $state_{new} = f(state_{old},input_t)$
 - ex. $h_t = tanh(W h_{t-1}+W_2 x_t)$
 - train with backpropagation through time (unfold through time)
-    - truncated backprop through time - only run every k time steps
+  - truncated backprop through time - only run every k time steps
 - error gradients vanish exponentially quickly with time lag
-
-## LSTMs
-- have gates for forgetting, input, output
-- easy to let hidden state flow through time, unchanged
-- gate $\sigma$ - pointwise multiplication
+- **LSTMS**
+  - have gates for forgetting, input, output
+  - easy to let hidden state flow through time, unchanged
+  - gate $\sigma$ - pointwise multiplication
     - multiply by 0 - let nothing through
     - multiply by 1 - let everything through
-- forget gate - conditionally discard previously remembered info
-- input gate - conditionally remember new info
-- output gate - conditionally output a relevant part of memory
-- GRUs - similar, merge input / forget units into a single update unit \vert 
+  - forget gate - conditionally discard previously remembered info
+  - input gate - conditionally remember new info
+  - output gate - conditionally output a relevant part of memory
+  - GRUs - similar, merge input / forget units into a single update unit
 
-# adversarial attacks
 
-- **adversarial attack** - designing an input to get the wrong result from the model
-  - **targeted** - try to get specific wrong class
-- fast gradient step method - keep adding gradient to maximize noise (limit amplitude of pixel's channel to stay imperceptible)
 
 # transformers
 
 - transformers [original paper](https://arxiv.org/pdf/1706.03762.pdf)
   - [spatial transformers](https://papers.nips.cc/paper/5854-spatial-transformer-networks.pdf )
 - http://colah.github.io/posts/2014-03-NN-Manifolds-Topology/
+
+
 
 # graph neural networks
 
@@ -229,6 +212,14 @@ category: ml
   - things are more difficult in continuous case...
 - geometric deep learning: invariances and equivariances can be appllied generally to get a large calss of architectures between convolutions and graphs
 
+# misc architectural components
+
+- **coordconv** - break translation equivariance by passing in i, j coords as extra filters
+- **deconvolution** = transposed convolution = fractionally-strided convolution - like upsampling
+- **attention** = vector of importance weights: in order to predict or infer one element, such as a pixel in an image or a word in a sentence, we estimate using the attention vector how strongly it is correlated with (or “*attends to*” as you may have read in many papers) other elements and take the sum of their values weighted by the attention vector as the approximation of the target
+
+
+
 # misc
 
 - [Deep Learning Interviews: Hundreds of fully solved job interview questions from a wide range of key topics in AI](https://arxiv.org/abs/2201.00650)
@@ -241,3 +232,6 @@ category: ml
   - then, given new location / angle, send a ray through for each pixel and see color when it hits smth
   - [Implicit Neural Representations with Periodic Activation Functions](https://vsitzmann.github.io/siren/)
     - similar paper
+- architecture search: learning to learn
+- *optimal brain damage* - starts with fully connected and weeds out connections (Lecun)
+- *tiling* - train networks on the error of previous networks

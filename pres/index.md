@@ -7,8 +7,9 @@ title: presentations
 
 ### in progress
 
-- [research overview](https://docs.google.com/presentation/d/19fTICv0pyRiwGE39mqE_eGTq0Arn3OtVnDSrURFbPMA/present?slide=id.p)
+- [animated thesis](https://docs.google.com/presentation/d/1TGTwvh1qOUDcSmn4xlFDK5D-j54PUs3IMAxsRL19LYA/edit#slide=id.g11022bc8220_0_8)
 - [thesis slides](https://docs.google.com/presentation/d/1IyxCrB5Ol8RsvFBTTy4Y5DQH3TxS9Wgl7Pxt1thrBBY/edit)
+- [research overview](https://docs.google.com/presentation/d/19fTICv0pyRiwGE39mqE_eGTq0Arn3OtVnDSrURFbPMA/present?slide=id.p) 
 - [overview slide](https://docs.google.com/presentation/d/1gvYfUkb-7yCXUUerBbgsOhGT82lj2ZPTYPop1qvSVzE/edit#slide=id.ga03c02da4e_0_126)
 - [title slide](https://docs.google.com/presentation/d/1gvYfUkb-7yCXUUerBbgsOhGT82lj2ZPTYPop1qvSVzE/edit#slide=id.ga03c02da4e_0_126)
   - [title slide old](https://docs.google.com/presentation/d/13GyKciZZ1zZWmWqCSksvZtGpydAkDjOL0lYVr75kpAU/edit)

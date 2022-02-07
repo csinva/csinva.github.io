@@ -656,6 +656,11 @@
      5.6.2.6. topological
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#misc">
+     5.6.2.7. misc
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -686,35 +691,35 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#self-supervised">
-     5.6.3.4. self-supervised
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#semi-supervised">
-     5.6.3.5. semi-supervised
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#projecting-into-gan-latent-space-gan-inversion">
-     5.6.3.6. projecting into gan latent space (=gan inversion)
+    <a class="reference internal nav-link" href="#diffusion-energy-based-models">
+     5.6.3.4. diffusion / energy-based models
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#compression">
-   5.6.4. compression
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#contrastive-learning">
-   5.6.5. contrastive learning
+  <a class="reference internal nav-link" href="#self-semi-supervised">
+   5.6.4. self/semi-supervised
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#supervised-contrastive-learning">
-     5.6.5.1. supervised contrastive learning
+    <a class="reference internal nav-link" href="#self-supervised">
+     5.6.4.1. self-supervised
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#semi-supervised">
+     5.6.4.2. semi-supervised
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#compression">
+     5.6.4.3. compression
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#contrastive-learning">
+     5.6.4.4. contrastive learning
     </a>
    </li>
   </ul>
@@ -1207,6 +1212,22 @@
 </li>
 </ul>
 </div>
+<div class="section" id="misc">
+<h3>5.6.2.7. misc<a class="headerlink" href="#misc" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://arxiv.org/abs/2110.08212">NNK-Means: Dictionary Learning using Non-Negative Kernel regression</a> (shekkizhar &amp; ortega, 2021)</p>
+<ul>
+<li><p>data summarization - represent large datasets by a small set of elements (e.g. k-means)</p></li>
+<li><p>here, use dictionary learning instead of k-means to summarize data</p>
+<ul>
+<li><p>each dictionary element is a sparse combination of inputs</p></li>
+<li><p>use non-negative kernel regesion (NNK) to measure distances when designing the dictionary (<a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/9054425/">shekkizar &amp; ortega, 2020</a>)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div class="section" id="generative-models">
 <h2>5.6.3. generative models<a class="headerlink" href="#generative-models" title="Permalink to this headline">¶</a></h2>
@@ -1370,9 +1391,9 @@
 </div>
 <div class="section" id="gans">
 <h3>5.6.3.3. gans<a class="headerlink" href="#gans" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>evaluating gans</p>
 <ul>
+<li><p>evaluating gans</p>
+<ul class="simple">
 <li><p>don’t have explicit objective like likelihood anymore</p></li>
 <li><p>kernel density = parzen-window density based on samples yields likelihood</p></li>
 <li><p>inception score <span class="math notranslate nohighlight">\(IS(\mathbf x) = \exp(\underbrace{H(\mathbf y)}_{\text{want to generate diversity of classes}} - \underbrace{H(\mathbf y|\mathbf x)}_{\text{each image should be distinctly recognizable}})\)</span></p></li>
@@ -1385,12 +1406,12 @@
 </ul>
 </li>
 <li><p>infogan</p>
-<ul>
+<ul class="simple">
 <li><p><img alt="infogan" src="../../_images/infogan.png" /></p></li>
 </ul>
 </li>
 <li><p>problems</p>
-<ul>
+<ul class="simple">
 <li><p>mode collapse - pick just one mode in the distr.</p></li>
 </ul>
 </li>
@@ -1398,18 +1419,18 @@
 <li><p>original gan paper (2014)</p></li>
 <li><p><em>generative adversarial network</em></p></li>
 <li><p>goal: want G to generate distribution that follows data</p>
-<ul>
+<ul class="simple">
 <li><p>ex. generate good images</p></li>
 </ul>
 </li>
 <li><p>two models</p>
-<ul>
+<ul class="simple">
 <li><p><em>G</em> - generative</p></li>
 <li><p><em>D</em> - discriminative</p></li>
 </ul>
 </li>
 <li><p>G generates adversarial sample x for D</p>
-<ul>
+<ul class="simple">
 <li><p>G has prior z</p></li>
 <li><p>D gives probability p that x comes from data, not G</p>
 <ul>
@@ -1420,7 +1441,7 @@
 </ul>
 </li>
 <li><p>training goals</p>
-<ul>
+<ul class="simple">
 <li><p>G wants D(G(z)) = 1</p></li>
 <li><p>D wants D(G(z)) = 0</p>
 <ul>
@@ -1433,14 +1454,61 @@
 </ul>
 </li>
 <li><p>training algorithm</p>
-<ul>
+<ul class="simple">
 <li><p>in the beginning, since G is bad, only train  my minimizing G loss function</p></li>
 </ul>
 </li>
+<li><p><strong>projecting into gan latent space (=gan inversion)</strong></p>
+<ul class="simple">
+<li><p>2 general approaches</p>
+<ol class="simple">
+<li><p>learn an encoder to go image -&gt; latent space</p>
+<ul>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/2004.00049.pdf">In-Domain GAN Inversion for Real Image Editing</a> (zhu et al. 2020)</p></li>
+<li><p>learn encoder to project image into latent space, with regularizer to make sure it follows the right distr.</p></li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<ol class="simple">
+<li><p>optimize latent code wrt image directly</p>
+<ol class="simple">
+<li><p>can also learn an encoder to initialize this optimization</p></li>
+</ol>
+</li>
+<li><p>some work designing GANs that are intrinsically invertible</p></li>
+<li><p>stylegan-specific - some works which exploit layer-wise noises</p>
+<ol class="simple">
+<li><p>stylegan2 paper: optimize w along with noise maps - need to make sure noise maps don’t include signal</p></li>
+</ol>
+</li>
+</ol>
+</li>
 </ul>
 </div>
+<div class="section" id="diffusion-energy-based-models">
+<h3>5.6.3.4. diffusion / energy-based models<a class="headerlink" href="#diffusion-energy-based-models" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://benanne.github.io/2022/01/31/diffusion.html">blog post</a></p></li>
+<li><p>seminal paper: <a class="reference external" href="https://arxiv.org/abs/1907.05600">Generative Modeling by Estimating Gradients of the Data Distribution</a> (song &amp; ermon, 2019)</p>
+<ul>
+<li><p>first describe a procedure for gradually turning data into noise</p></li>
+<li><p>then training a DNN to invert this procedure step-by-step</p>
+<ul>
+<li><p>single model handles many different noise levels with shared parameters</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>really started earlier: <a class="reference external" href="https://arxiv.org/abs/1503.03585">Deep Unsupervised Learning using Nonequilibrium Thermodynamics</a> (sohl-dickstein, …, ganguli, 2015)</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="self-semi-supervised">
+<h2>5.6.4. self/semi-supervised<a class="headerlink" href="#self-semi-supervised" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="self-supervised">
-<h3>5.6.3.4. self-supervised<a class="headerlink" href="#self-supervised" title="Permalink to this headline">¶</a></h3>
+<h3>5.6.4.1. self-supervised<a class="headerlink" href="#self-supervised" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>basics: predict some part of the input (e.g. present from past, bottom from top, etc.)</p>
 <ul>
@@ -1473,6 +1541,11 @@
 <li><p>similar idea as memory bank</p></li>
 </ul>
 </li>
+<li><p><a class="reference external" href="https://www.cv-foundation.org/openaccess/content_iccv_2015/html/Doersch_Unsupervised_Visual_Representation_ICCV_2015_paper.html">Unsupervised Visual Representation Learning by Context Prediction</a> (efros 15)</p>
+<ul>
+<li><p>predict relative location of different patches</p></li>
+</ul>
+</li>
 <li><p><strong>SimCLR</strong> (<a class="reference external" href="https://arxiv.org/abs/2002.05709">Chen et al, 2020</a>)</p>
 <ul>
 <li><p>maximize agreement for different points after some augmentation (contrastive loss)</p></li>
@@ -1481,7 +1554,7 @@
 </ul>
 </div>
 <div class="section" id="semi-supervised">
-<h3>5.6.3.5. semi-supervised<a class="headerlink" href="#semi-supervised" title="Permalink to this headline">¶</a></h3>
+<h3>5.6.4.2. semi-supervised<a class="headerlink" href="#semi-supervised" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>make the classifier more confident</p>
 <ul>
@@ -1490,6 +1563,11 @@
 </ul>
 </li>
 <li><p>label consistency with data augmentation</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/1905.00546.pdf">Billion-scale semi-supervised learning for image classification</a> (fair 19)</p>
+<ul>
+<li><p>unsupervised learning + model distillation succeeds on imagenet</p></li>
+</ul>
+</li>
 <li><p>ensembling</p>
 <ul>
 <li><p>temporal ensembling - ensemble multiple models at different training epochs</p></li>
@@ -1504,36 +1582,8 @@
 </li>
 </ul>
 </div>
-<div class="section" id="projecting-into-gan-latent-space-gan-inversion">
-<h3>5.6.3.6. projecting into gan latent space (=gan inversion)<a class="headerlink" href="#projecting-into-gan-latent-space-gan-inversion" title="Permalink to this headline">¶</a></h3>
-<ul>
-<li><p>2 general approaches</p>
-<ol class="simple">
-<li><p>learn an encoder to go image -&gt; latent space</p></li>
-</ol>
-<ul class="simple">
-<li><p><a class="reference external" href="https://arxiv.org/pdf/2004.00049.pdf">In-Domain GAN Inversion for Real Image Editing</a> (zhu et al. 2020)</p></li>
-<li><p>learn encoder to project image into latent space, with regularizer to make sure it follows the right distr.</p></li>
-</ul>
-</li>
-</ul>
-<ol class="simple">
-<li><p>optimize latent code wrt image directly</p>
-<ol class="simple">
-<li><p>can also learn an encoder to initialize this optimization</p></li>
-</ol>
-</li>
-<li><p>some work designing GANs that are intrinsically invertible</p></li>
-<li><p>stylegan-specific - some works which exploit layer-wise noises</p>
-<ol class="simple">
-<li><p>stylegan2 paper: optimize w along with noise maps - need to make sure noise maps don’t include signal</p></li>
-</ol>
-</li>
-</ol>
-</div>
-</div>
 <div class="section" id="compression">
-<h2>5.6.4. compression<a class="headerlink" href="#compression" title="Permalink to this headline">¶</a></h2>
+<h3>5.6.4.3. compression<a class="headerlink" href="#compression" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>simplest - fixed-length code</p></li>
 <li><p>variable-length code</p>
@@ -1557,9 +1607,7 @@
 </ul>
 </div>
 <div class="section" id="contrastive-learning">
-<h2>5.6.5. contrastive learning<a class="headerlink" href="#contrastive-learning" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="supervised-contrastive-learning">
-<h3>5.6.5.1. supervised contrastive learning<a class="headerlink" href="#supervised-contrastive-learning" title="Permalink to this headline">¶</a></h3>
+<h3>5.6.4.4. contrastive learning<a class="headerlink" href="#contrastive-learning" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/2005.10243">What makes for good views for contrastive learning</a> (tian et al. 2020)</p>
 <ul>
@@ -1568,6 +1616,11 @@
 </ul>
 </li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2004.11362">Supervised Contrastive Learning</a> (khosla et al. 2020)</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/1905.09272.pdf">Data-Efficient Image Recognition with Contrastive Predictive Coding</a></p>
+<ul>
+<li><p>pre-training with CPC on ImageNet yields super good results</p></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>

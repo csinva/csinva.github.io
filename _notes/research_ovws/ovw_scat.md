@@ -117,12 +117,3 @@ category: research
 
 - [arora reversibility](https://arxiv.org/pdf/1511.05653.pdf)
 - iResNet
-
-# unsupervised learning
-
-- [Data-Efficient Image Recognition with Contrastive Predictive Coding](https://arxiv.org/pdf/1905.09272.pdf)
-  - pre-training with CPC on ImageNet yields super good results
-- [Unsupervised Visual Representation Learning by Context Prediction](https://www.cv-foundation.org/openaccess/content_iccv_2015/html/Doersch_Unsupervised_Visual_Representation_ICCV_2015_paper.html) (efros 15)
-  - predict relative location of different patches
-- [Billion-scale semi-supervised learning for image classification](https://arxiv.org/pdf/1905.00546.pdf) (fair 19)
-  - unsupervised learning + model distillation succeeds on imagenet

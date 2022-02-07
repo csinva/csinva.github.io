@@ -253,6 +253,15 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
 - **pacmap**
   - ![pacmap](../assets/pacmap.png)
 
+## misc
+- [NNK-Means: Dictionary Learning using Non-Negative Kernel regression](https://arxiv.org/abs/2110.08212) (shekkizhar & ortega, 2021)
+  - data summarization - represent large datasets by a small set of elements (e.g. k-means)
+  - here, use dictionary learning instead of k-means to summarize data
+    - each dictionary element is a sparse combination of inputs
+    - use non-negative kernel regesion (NNK) to measure distances when designing the dictionary ([shekkizar & ortega, 2020](https://ieeexplore.ieee.org/abstract/document/9054425/))
+
+
+
 # generative models
 
 - overview: https://blog.openai.com/generative-models/
@@ -350,23 +359,32 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
   - **FID** - Frechet inception score works directly on embedded features from inception v3 model
     - embed population of images and calculate mean + variance in embedding space
     - measure distance between these means / variances for real/synthetic images using Frechet distance = Wasseterstein-2 distance
+
 - infogan
   - ![infogan](../assets/infogan.png)
+
 - problems
   - mode collapse - pick just one mode in the distr.
+
 - train network to be loss function
+
 - original gan paper (2014)
+
 - *generative adversarial network*
+
 - goal: want G to generate distribution that follows data
   - ex. generate good images
+
 - two models
   - *G* - generative
   - *D* - discriminative
+
 - G generates adversarial sample x for D
   - G has prior z
   - D gives probability p that x comes from data, not G
     - like a binary classifier: 1 if from data, 0 from G
   - *adversarial sample* - from G, but tricks D to predicting 1
+
 - training goals
   - G wants D(G(z)) = 1
   - D wants D(G(z)) = 0
@@ -374,8 +392,22 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
   - converge when D(G(z)) = 1/2
   - G loss function: $G = argmin_G log(1-D(G(Z))$
   - overall $\min_g \max_D$ log(1-D(G(Z))
+
 - training algorithm
   - in the beginning, since G is bad, only train  my minimizing G loss function
+
+- **projecting into gan latent space (=gan inversion)**
+
+  - 2 general approaches
+    1. learn an encoder to go image -> latent space
+       - [In-Domain GAN Inversion for Real Image Editing](https://arxiv.org/pdf/2004.00049.pdf) (zhu et al. 2020) 
+       - learn encoder to project image into latent space, with regularizer to make sure it follows the right distr.
+
+  2. optimize latent code wrt image directly
+     1. can also learn an encoder to initialize this optimization
+    3. some work designing GANs that are intrinsically invertible
+    4. stylegan-specific - some works which exploit layer-wise noises
+       1. stylegan2 paper: optimize w along with noise maps - need to make sure noise maps don't include signal
 
 ## diffusion / energy-based models
 
@@ -387,6 +419,8 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
 - really started earlier: [Deep Unsupervised Learning using Nonequilibrium Thermodynamics](https://arxiv.org/abs/1503.03585) (sohl-dickstein, ..., ganguli, 2015)
 
 
+
+# self/semi-supervised
 
 ## self-supervised
 
@@ -406,6 +440,8 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
 - momentum contrast - queue of previous embeddings are "keys"
   - match new embedding (query) against keys and use contrastive loss
   - similar idea as memory bank
+- [Unsupervised Visual Representation Learning by Context Prediction](https://www.cv-foundation.org/openaccess/content_iccv_2015/html/Doersch_Unsupervised_Visual_Representation_ICCV_2015_paper.html) (efros 15)
+  - predict relative location of different patches
 - **SimCLR** ([Chen et al, 2020](https://arxiv.org/abs/2002.05709))
   - maximize agreement for different points after some augmentation (contrastive loss)
 
@@ -417,6 +453,8 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
   - entropy minimization - try to minimize the entropy of output predictions (like making confident predictions labels)
   - pseudo labeling - just take argmax pred as if it were the label
 - label consistency with data augmentation
+- [Billion-scale semi-supervised learning for image classification](https://arxiv.org/pdf/1905.00546.pdf) (fair 19)
+  - unsupervised learning + model distillation succeeds on imagenet
 - ensembling
   - temporal ensembling - ensemble multiple models at different training epochs
   - mean teachers - learn from exponential moving average of students
@@ -424,19 +462,7 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
 - distribution alignment - ex. cyclegan - enforce  cycle consistency = dual learning = back translation
   - simpler is marginal matching
 
-## projecting into gan latent space (=gan inversion)
-
-- 2 general approaches
-  1. learn an encoder to go image -> latent space
-  	- [In-Domain GAN Inversion for Real Image Editing](https://arxiv.org/pdf/2004.00049.pdf) (zhu et al. 2020) 
-  	- learn encoder to project image into latent space, with regularizer to make sure it follows the right distr.
-2. optimize latent code wrt image directly
-     1. can also learn an encoder to initialize this optimization
-  3. some work designing GANs that are intrinsically invertible
-  4. stylegan-specific - some works which exploit layer-wise noises
-       1. stylegan2 paper: optimize w along with noise maps - need to make sure noise maps don't include signal
-
-# compression
+## compression
 
 - simplest - fixed-length code
 - variable-length code
@@ -449,13 +475,11 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
   - motivation: coding one symbol at a time incurs penalty of +1 per symbol - more efficient to encode groups of things
   - can be improved with good autoregressive model
 
-
-
-# contrastive learning
-
-## supervised contrastive learning
+## contrastive learning
 
 - [What makes for good views for contrastive learning](https://arxiv.org/abs/2005.10243) (tian et al. 2020)
   - how to select views (e.g. transformations we want to be invariant to)?
   - reduce the mutual information (MI) between views while keeping task-relevant information intact
 - [Supervised Contrastive Learning](https://arxiv.org/abs/2004.11362) (khosla et al. 2020)
+- [Data-Efficient Image Recognition with Contrastive Predictive Coding](https://arxiv.org/pdf/1905.09272.pdf)
+  - pre-training with CPC on ImageNet yields super good results
