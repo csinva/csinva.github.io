@@ -294,6 +294,7 @@ For an implementation of many of these models, see the python [imodels package](
     
   - regularization
     - Hierarchical Shrinkage: improving accuracy and interpretability of tree-based methods (agarwal et al. 2021) - post-hoc shrinkage improves trees
+    - [Hierarchical priors for Bayesian CART shrinkage](https://link.springer.com/article/10.1023/A:1008980332240) (chipman & mcculloch, 2000)
     - [Connecting Interpretability and Robustness in Decision Trees through Separation](https://arxiv.org/abs/2102.07048) (moshkovitz et al. 2021)
     - [Efficient Training of Robust Decision Trees Against Adversarial Examples](https://arxiv.org/abs/2012.10438)
     - [Robust Decision Trees Against Adversarial Examples](https://arxiv.org/abs/1902.10660) (2019)
@@ -361,31 +362,45 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
 
 ## example-based = case-based (e.g. prototypes, nearest neighbor)
 
-- ["this looks like that" prototypes II](https://arxiv.org/abs/1806.10574) (chen et al. 2018)
-  - can have prototypes smaller than original input size
-  - l2 distance
-  - require the filters to be identical to the latent representation of some training image patch
-  - cluster image patches of a particular class around the prototypes of the same class, while separating image patches of different classes
-  - maxpool class prototypes so spatial size doesn't matter
-  - also get heatmap of where prototype was activated (only max really matters)
+- ProtoPNet: This looks like that (2nd paper) ([chen, ..., rudin, 2018](https://arxiv.org/abs/1806.10574)) - learn convolutional prototypes that are smaller than the original input size
+  - use L2 distance in repr space to measure distance between patches and prototypes
+
+  - loss function
+    - require the filters to be identical to the latent representation of some training image patch
+    - cluster image patches of a particular class around the prototypes of the same class, while separating image patches of different classes
+  - maxpool class prototypes so spatial location doesn't matter
+    - also get heatmap of where prototype was activated (only max really matters)
   - train in 3 steps
     - train everything: classification + clustering around intraclass prototypes + separation between interclass prototypes (last layer fixed to 1s / -0.5s)
     - project prototypes to data patches
-    - learn last layer
-  - [original prototypes paper](https://arxiv.org/pdf/1710.04806.pdf) (li et al. 2017)
+    - learn last (linear) layer
+  - ProtoNets: original prototypes paper ([li, ..., rudin, 2017](https://arxiv.org/pdf/1710.04806.pdf))
     - uses encoder/decoder setup
     - encourage every prototype to be similar to at least one encoded input
-    - learned prototypes in fact look like digits
-    - correct class prototypes go to correct classes
+    - results: learned prototypes in fact look like digits
+      - correct class prototypes go to correct classes
     - loss: classification + reconstruction + distance to a training point
-- [ProtoPShare: Prototype Sharing for Interpretable Image Classification and Similarity Discovery](https://arxiv.org/abs/2011.14340) - share some prototypes between classes with data-dependent merge pruning
+
+- This Looks Like That, Because ... Explaining Prototypes for Interpretable Image Recognition ([nauta et al. 2020](https://arxiv.org/abs/2011.02863))
+  - add textual quantitative information about visual characteristics deemed important by the classification model e.g. colour hue, shape, texture, contrast and saturation
+
+- Neural Prototype Trees for Interpretable Fine-Grained Image Recognition ([nauta et al. 2021](https://openaccess.thecvf.com/content/CVPR2021/html/Nauta_Neural_Prototype_Trees_for_Interpretable_Fine-Grained_Image_Recognition_CVPR_2021_paper.html)) - build decision trees on top of prototypes
+
+- XProtoNet: Diagnosis in Chest Radiography With Global and Local Explanations ([kim et al. 2021](https://openaccess.thecvf.com/content/CVPR2021/html/Kim_XProtoNet_Diagnosis_in_Chest_Radiography_With_Global_and_Local_Explanations_CVPR_2021_paper.html))
+  - alter ProtoPNet to use dynamically sized patches for prototype matching rather than fixed-size patches
+
+- TesNet: Interpretable Image Recognition by Constructing Transparent Embedding Space ([wang et al. 2021](https://openaccess.thecvf.com/content/ICCV2021/html/Wang_Interpretable_Image_Recognition_by_Constructing_Transparent_Embedding_Space_ICCV_2021_paper.html)) - alter ProtoPNet to get "orthogonal" basis concepts
+
+- ProtoPShare: Prototype Sharing for Interpretable Image Classification and Similarity Discovery ([Rymarczyk et al. 2020](https://arxiv.org/abs/2011.14340)),- share some prototypes between classes with data-dependent merge pruning
 
   - merge "similar" prototypes, where similarity is measured as dist of all training patches in repr. space
+  - ProtoMIL: Multiple Instance Learning with Prototypical Parts for Fine-Grained Interpretability ([Rymarczyk et al. 2021](https://arxiv.org/abs/2108.10612))
+  - Interpretable Image Classification with Differentiable Prototypes Assignment ([rmyarczyk et al. 2021](https://arxiv.org/abs/2112.02902))
+
+- These *do not* Look Like Those: An Interpretable Deep Learning Model for Image Recognition ([singh & yow, 2021](https://ieeexplore.ieee.org/abstract/document/9373404)) - all weights for prototypes are either 1 or -1
+
 - [Towards Explainable Deep Neural Networks (xDNN)](https://arxiv.org/abs/1912.02523) (angelov & soares 2019) - more complex version of using prototypes
-- [Case-Based Reasoning for Assisting Domain Experts in Processing Fraud Alerts of Black-Box Machine Learning Models](https://arxiv.org/abs/1907.03334)
-- [Explaining Latent Representations with a Corpus of Examples](https://arxiv.org/pdf/2110.15355.pdf) (crabbe, ..., van der schaar 2021) - for an individual prediction,
-  1. Which corpus examples explain the prediction issued for a given test example?
-  2. What features of these corpus examples are relevant for the model to relate them to the test example?
+
 - [Self-Interpretable Model with Transformation Equivariant Interpretation](https://arxiv.org/abs/2111.04927) (wang & wang, 2021)
   - generate data-dependent prototypes for each class and formulate the prediction as the inner product between each prototype and the extracted features
     - interpretation is hadamard product of prototype and extracted features (prediction is sum of this product)
@@ -394,7 +409,15 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
     - reconstruction regularizer - regularizes the interpretations to be meaningful and comprehensible
       - for each image, enforce each prototype to be similar to its corresponding class's latent repr.
     - transformation regularizer - constrains the interpretations to be transformation equivariant
-  - *self-consistency score* quantifies the robustness of interpretation by measuring the consistency of interpretations to geometric transformations.
+  - *self-consistency score* quantifies the robustness of interpretation by measuring the consistency of interpretations to geometric transformations
+
+- [Case-Based Reasoning for Assisting Domain Experts in Processing Fraud Alerts of Black-Box Machine Learning Models](https://arxiv.org/abs/1907.03334)
+
+- ProtoAttend: Attention-Based Prototypical Learning ([arik & pfister, 2020](https://www.jmlr.org/papers/volume21/20-042/20-042.pdf)) - unlike ProtoPNet, each prediction is made as a weighted combination of similar rinput samples (like nearest-neighbor)
+
+- [Explaining Latent Representations with a Corpus of Examples](https://arxiv.org/pdf/2110.15355.pdf) (crabbe, ..., van der schaar 2021) - for an individual prediction,
+  1. Which corpus examples explain the prediction issued for a given test example?
+  2. What features of these corpus examples are relevant for the model to relate them to the test example?
 
 ## interpretable neural nets
 
@@ -438,7 +461,6 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
 
 ### connecting dnns and rules
 
-- 
 - [Distilling a Neural Network Into a Soft Decision Tree](https://arxiv.org/pdf/1711.09784.pdf) (frosst & hinton 2017) - distills DNN into DNN-like tree which uses sigmoid neuron decides which path to follow
   - training on distilled DNN predictions outperforms training on original labels
   - to make the decision closer to a hard cut, can multiply by a large scalar before applying sigmoid
@@ -648,6 +670,7 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
   - CSV - same thing for variance
 - [A Simple and Effective Model-Based Variable Importance Measure](https://arxiv.org/pdf/1805.04755.pdf)
     - measures the feature importance (defined as the variance of the 1D partial dependence function) of one feature conditional on different, fixed points of the other feature. When the variance is high, then the features interact with each other, if it is zero, they don’t interact.
+- [Learning to Explain: Generating Stable Explanations Fast - ACL Anthology](https://aclanthology.org/2021.acl-long.415/) (situ et al. 2021) - train a model on "teacher" importance scores (e.g. SHAP) and then use it to quickly predict importance scores on new examples
 
 ### importance curves
 
@@ -992,6 +1015,7 @@ How interactions are defined and summarized is a very difficult thing to specify
     - partial-dependence
     - Shapley explanations (averaged)
     - gradient-based
+- [Interpreting Deep Neural Networks through Prototype Factorization](https://ieeexplore.ieee.org/abstract/document/9346401) - posthoc convert DNN into having different factors
 
 
 
@@ -1040,7 +1064,7 @@ How interactions are defined and summarized is a very difficult thing to specify
   - [VQA-E: Explaining, Elaborating, and Enhancing Your Answers for Visual Questions](https://arxiv.org/abs/1803.07464) (li et al. 2018) - train to jointly predict answer + generate an explanation
   - [Self-Critical Reasoning for Robust Visual Question Answering](https://proceedings.neurips.cc/paper/2019/hash/33b879e7ab79f56af1e88359f9314a10-Abstract.html) (wu & mooney, 2019) - use textual explanations to extract a set of important visual objects
 
-## complementarity / human-in-the-loop
+## complementarity
 
 **complementarity** - ML should focus on points hard for humans + seek human input on points hard for ML
 
@@ -1056,14 +1080,20 @@ How interactions are defined and summarized is a very difficult thing to specify
   - Hybrid Predictive Models: When an Interpretable Model Collaborates with a Black-box Model ([wang & lin, 2021](https://www.jmlr.org/papers/volume22/19-325/19-325.pdf)) - use interpretable model on subset where it works
     - objective function considers predictive accuracy, model interpretability, and model transparency (defined as the percentage of data processed by the interpretable substitute)
   - Partially Interpretable Estimators (PIE): Black-Box-Refined Interpretable Machine Learning ([wang et al. 2021](https://arxiv.org/abs/2105.02410)) - interpretable model for individual features and black-box model captures feature interactions (on residuals)
-- human in-the-loop (HITL)
-  - Making deep neural networks right for the right scientific reasons by interacting with their explanations ([schramowski, ... kersting, 2020](https://www.nature.com/articles/s42256-020-0212-3) ) - scientist iteratively provides feedback on DNN's explanation
-  - [POTATO: exPlainable infOrmation exTrAcTion framewOrk](https://arxiv.org/abs/2201.13230) (kovacs et al. 2022) - humans select rules using graph-based feature for text classification
-  - [A Survey of Human-in-the-loop for Machine Learning](https://arxiv.org/abs/2108.00941) (wu...he, 2021)
-    - HITL data processing
-      - ex. identify key examples to annotate to improve performance / reduce discriminatory bias
-      - ex. [   ](https://link.springer.com/chapter/10.1007/978-3-030-34770-3_10)
-    - HITL training
+
+## human-in-the-loop (HITL)
+
+- Making deep neural networks right for the right scientific reasons by interacting with their explanations ([schramowski, ... kersting, 2020](https://www.nature.com/articles/s42256-020-0212-3) ) - scientist iteratively provides feedback on DNN's explanation
+- [POTATO: exPlainable infOrmation exTrAcTion framewOrk](https://arxiv.org/abs/2201.13230) (kovacs et al. 2022) - humans select rules using graph-based feature for text classification
+- [A Survey of Human-in-the-loop for Machine Learning](https://arxiv.org/abs/2108.00941) (wu...he, 2021)
+  - HITL data processing
+    - ex. identify key examples to annotate to improve performance / reduce discriminatory bias
+  - HITL during training
+- Interactive Disentanglement: Learning Concepts by Interacting with their Prototype Representations ([stammer...scharmowski, kersting, 2021](https://arxiv.org/abs/2112.02290))
+  - humans provide weak supervision, tested on toy datasets
+- [Human-in-the-loop Extraction of Interpretable Concepts in Deep Learning Models](https://ieeexplore.ieee.org/abstract/document/9552218) (zhao et al. 2021)
+  - human knowledge and feedback are combined to train a concept extractor
+  - by identifying visual concepts that negatively affect model performance, we develop the corresponding data augmentation strategy that consistently improves model performance
 
 ## recourse
 

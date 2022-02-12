@@ -483,3 +483,4 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
 - [Supervised Contrastive Learning](https://arxiv.org/abs/2004.11362) (khosla et al. 2020)
 - [Data-Efficient Image Recognition with Contrastive Predictive Coding](https://arxiv.org/pdf/1905.09272.pdf)
   - pre-training with CPC on ImageNet yields super good results
+- [Automatically Discovering and Learning New Visual Categories with Ranking Statistics](https://arxiv.org/pdf/2002.05714.pdf)

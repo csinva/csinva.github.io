@@ -17,7 +17,9 @@ See also notes on causal inference for some close connections.
   - finetuning the entire model
   - learn a linear layer from features extracted from a single layer (i.e. linear probing)
     - this includes just finetuning the final layer
-  - [Head2Toe: Utilizing Intermediate Representations for Better Transfer Learning](https://arxiv.org/abs/2201.03529) (evci, et al. 2022) - learn linear layer (using group-lasso) on features extracted from all layers
+  - finetune on all the layers
+    - [Head2Toe: Utilizing Intermediate Representations for Better Transfer Learning](https://arxiv.org/abs/2201.03529) (evci, et al. 2022) - learn linear layer (using group-lasso) on features extracted from all layers
+    - Adapters provide a parameter-efficient alternative to full finetuning in which we can only finetune lightweight neural network layers on top of pretrained weights. [Parameter-Efficient Transfer Learning for NLP](http://proceedings.mlr.press/v97/houlsby19a.html), [AdapterHub: A Framework for Adapting Transformers](https://arxiv.org/abs/2007.07779)
 
 # domain adaptation algorithms
 
@@ -25,7 +27,10 @@ See also notes on causal inference for some close connections.
 
 - Empirical Risk Minimization (ERM, [Vapnik, 1998](https://www.wiley.com/en-fr/Statistical+Learning+Theory-p-9780471030034)) - standard training
 - Invariant Risk Minimization (IRM, [Arjovsky et al., 2019](https://arxiv.org/abs/1907.02893)) - learns a feature representation such that the optimal linear classifier on top of that representation matches across domains.
-- Group Distributionally Robust Optimization (GroupDRO, [Sagawa et al., 2020](https://arxiv.org/abs/1911.08731)) - ERM + increase importance of domains with larger errors (see also papers from Sugiyama group e.g. [1](http://papers.neurips.cc/paper/3019-mixture-regression-for-covariate-shift.pdf), [2](https://arxiv.org/abs/1611.02041))
+- distributional robust optimization
+  - instead of minimizing training err, minimize maximum training err over different perturbations
+  - Group Distributionally Robust Optimization (GroupDRO, [Sagawa et al., 2020](https://arxiv.org/abs/1911.08731)) - ERM + increase importance of domains with larger errors (see also papers from Sugiyama group e.g. [1](http://papers.neurips.cc/paper/3019-mixture-regression-for-covariate-shift.pdf), [2](https://arxiv.org/abs/1611.02041))
+    - minimize error for worst group
   - Variance Risk Extrapolation (VREx, [Krueger et al., 2020](https://arxiv.org/abs/2003.00688)) - encourages robustness over affine combinations of training risks, by encouraging strict equality between training risks
 - Interdomain Mixup (Mixup, [Yan et al., 2020](https://arxiv.org/abs/2001.00677)) - ERM on linear interpolations of examples from random pairs of domains + their labels
 - Marginal Transfer Learning (MTL, [Blanchard et al., 2011-2020](https://arxiv.org/abs/1711.07910)) - augment original feature space with feature vector marginal distributions and then treat as a supervised learning problem
@@ -40,6 +45,7 @@ See also notes on causal inference for some close connections.
   - make clearer assumptions for domain adaptation to work
   - introduce CIRM, which works better when both covariates and labels are perturbed in target data
 - kernel approach ([blanchard, lee & scott, 2011](https://papers.nips.cc/paper/2011/file/b571ecea16a9824023ee1af16897a582-Paper.pdf)) - find an appropriate RKHS and optimize a regularized empirical risk over the space
+- In-N-Out ([xie...lang, 2020](https://arxiv.org/abs/2012.04550)) - if we have many features, rather than using them all as features, can use some as features and some as targets when we shift, to learn the domain shift
 
 
 
@@ -96,10 +102,12 @@ See also notes on causal inference for some close connections.
   - fast gradient step method - keep adding gradient to maximize noise (limit amplitude of pixel's channel to stay imperceptible)
   - [Barrage of Random Transforms for Adversarially Robust Defense](http://openaccess.thecvf.com/content_CVPR_2019/papers/Raff_Barrage_of_Random_Transforms_for_Adversarially_Robust_Defense_CVPR_2019_paper.pdf) (raff et al. 2019) 
   - [DeepFool: a simple and accurate method to fool deep neural networks](https://arxiv.org/abs/1511.04599) (Moosavi-Dezfooli et. al 2016)
-  
 - defenses
-  - Adversarial training -  training data is augmented with adv examples (Szegedy et al., 2014b; Madry et al., 2017; Tram`er et al., 2017; Yu et al., 2019)
+  - Adversarial training -  training data is augmented with adv examples (Szegedy et al., 2014b; Madry et al., 2017; Tramer et al., 2017; Yu et al., 2019)
     - $$\min _{\boldsymbol{\theta}} \frac{1}{N} \sum_{n=1}^{N} \operatorname{Loss}\left(f_{\theta}\left(x_{n}\right), y_{n}\right)+\lambda\left[\max _{\|\delta\|_{\infty} \leq \epsilon} \operatorname{Loss}\left(f_{\theta}\left(x_{n}+\delta\right), y_{n}\right)\right]$$
+    - this perspective differs from "robust statistics" which is usually robustness against some kind of model misspecification/assumptions, not to distr. shift
+      - robust stat usually assumes a generative distr. as well
+      - still often ends up with the same soln (e.g. ridge regr. corresponds to certain robusteness)
   - Stochasticity: certain inputs or hidden activations are shuffled or randomized (Xie et al., 2017; Prakash et al., 2018; Dhillon et al., 2018)
   - Preprocessing: inputs or hidden activations are quantized, projected into a different representation or are otherwise preprocessed (Guo et al., 2017; Buckman et al., 2018; Kabilan et al., 2018)
   - Manifold projections: an input sample is projected in a lower dimensional space in which the neural network has been trained to be particularly robust (Ilyas et al., 2017; Lamb et al., 2018)
@@ -114,16 +122,20 @@ See also notes on causal inference for some close connections.
   - a possible defense against adversarial attacks is to solve the anticausal classification problem by modeling the causal generative direction, a method which in vision is referred to as *analysis by synthesis* ([Schott et al., 2019](https://arxiv.org/abs/1805.09190))
 - robustness vs accuracy
   - [robustness may be at odds with accuracy](https://openreview.net/pdf?id=SyxAb30cY7) (tsipiras...madry, 2019)
-  - [Theoretically Principled Trade-off between Robustness and Accuracy](https://arxiv.org/abs/1901.08573) (Zhang, Jordan, et. al. 2019)
+  - [Precise Tradeoffs in Adversarial Training for Linear Regression](https://arxiv.org/abs/2002.10477) (javanmard et al. 2020) - linear regression with gaussian features
+    - use adv. training formula above
+  - [Theoretically Principled Trade-off between Robustness and Accuracy](https://arxiv.org/abs/1901.08573) (Zhang, ..., el ghaoui, Jordan, 2019)
 - adversarial examples
   - [Decision Boundary Analysis of Adversarial Examples ](https://pdfs.semanticscholar.org/08c5/88465b7d801ad912ef3e9107fa511ea0e403.pdf)(He, Li, & Song 2019)
   - [Natural Adversarial Examples](https://arxiv.org/abs/1907.07174) (Hendrycks, Zhao, Basart, Steinhardt, & Song 2020)
   - [Image-Net-Trained CNNs Are Biased Towards Texture](https://openreview.net/pdf?id=Bygh9j09KX) (Geirhos et al. 2019)
-- transferability
+- adversarial transferability
   - [Transferability in Machine Learning: from Phenomena to Black-Box Attacks using Adversarial Samples](https://arxiv.org/abs/1605.07277) (papernot, mcdaniel, & goodfellow, 2016)
   - [Ensemble Adversarial Training: Attacks and Defenses](https://arxiv.org/pdf/1705.07204.pdf) (tramer et al. 2018)
   - [Improving Adversarial Robustness via Promoting Ensemble Diversity](https://arxiv.org/pdf/1901.08846.pdf) (pang et al. 2019)
     - encourage diversity in non-maximal predictions
-- ranking
-  - [Automatically Discovering and Learning New Visual Categories with Ranking Statistics](https://arxiv.org/pdf/2002.05714.pdf)
+- robustness
+  - smoothness yields robustness (but can be robust without smoothness)
+  - margin idea - data points close to the boundary are not robust
+    - we want our boundary to go through regions where data is scarce
 

@@ -22,7 +22,7 @@
     - selective classification
     - feature noise
     - removing spurious features
-  - group DRO (sagawa et al. 2020) - maximize error for worst group
+  - group DRO (sagawa et al. 2020) - minimize error for worst group
     - need to add regularization to keep errors from going to 0
     - training overparameterized models makes this problem worse
   - abstain from classifying based on confidence (jones et al. 2020)

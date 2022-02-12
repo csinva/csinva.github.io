@@ -102,13 +102,31 @@ category: research
 
 ## 3d rna structure prediction
 
-- startup [atomic ai](https://atomic.ai/) works on this
-- [Geometric deep learning of RNA structure | science](https://www.science.org/doi/10.1126/science.abe5650) (townshend, ..., dror 2021)
-  - scoring model - gives energy function for (primary sequence, structure) pair
-  - townshend is at atomic ai
-- [Frontiers | RNA 3D Structure Prediction Using Coarse-Grained Models | Molecular Biosciences](https://www.frontiersin.org/articles/10.3389/fmolb.2021.720937/full) (li & chen, 2021)
-- older
-  - [iFoldRNA: three-dimensional RNA structure prediction and folding - PubMed](https://pubmed.ncbi.nlm.nih.gov/18579566/) (sharma et al. 2008)
+- Geometric deep learning of RNA structure  ([townshend, ..., dror 2021](https://www.science.org/doi/10.1126/science.abe5650) - atomic ai + stanford, *science*)
+  - uses neural network as scoring mode (called ARES = Atomic Rotationally Equivariant Scorer)
+    - this gives energy function for (primary sequence, structure) pair
+  - architecture
+    - captures rotational + translational symmetries
+  - startup [atomic ai](https://atomic.ai/) works on this
+  -  trained with only 18 known RNA structures
+  - uses only atomic coordinates as inputs and incorporates no RNA-specific information
+- Review: RNA 3D Structure Prediction Using Coarse-Grained Model ([li & chen, 2021](https://www.frontiersin.org/articles/10.3389/fmolb.2021.720937/full))
+  - all-atom - more precise, each nucleotide models ~20 heavy atoms + ~10 hydrogen atoms - relatively rare
+  - coarse-grained - less precise
+  - steps
+    1. input - RNA sequence + optinal secondary structure + more (e.g. distance between some atom pairs)
+    2. sampling - includes discriminator (=scoring function = (potential) energy function = force field) and generator
+      - generator proposes new structures (e.g. MCMC)
+      - discriminator decides which is the most stable - 3 types of energy to consider
+    3. output - sometimes pick lowest energy structure, somestimes cluster low-energy clusters and pick centroid
+    4. all-atom structure reconstruction - the fragment matching algorithm ([Jonikas et al., 2009a](https://academic.oup.com/bioinformatics/article-abstract/25/24/3259/235032)) is often used, followed by structure refinement to remove steric clashes and chain breaks
+  - 12 papers that differ slightly in these steps
+    - ex. graph-based: 2d structure mapped to a graph
+    - three open-source papers that yield all-atom structure
+      - **IsRNA1**: *De Novo* Prediction and Blind Screening of RNA 3D Structures ([zhang et al. 2021](https://pubs.acs.org/doi/abs/10.1021/acs.jctc.0c01148))
+        - origina IsRNA ([zhang & chen, 2018](https://pubs.acs.org/doi/abs/10.1021/acs.jctc.7b01228))
+      - **iFoldRNA**: three-dimensional RNA structure prediction and folding ([sharma et al. 2008](https://pubmed.ncbi.nlm.nih.gov/18579566/) )
+      - **SimRNA** ([boiecki et al. 2016](https://academic.oup.com/nar/article-abstract/44/7/e63/2467805))
 
 # protein structure prediction (dna)
 
@@ -116,7 +134,8 @@ category: research
 
 - the standard way to obtain the 3D structure of a protein is X-ray crystallography
   - takes ~1 year &  $120k to obtain the structure of a single protein through X-ray crystallography ([source](https://fortune.com/2020/11/30/deepmind-protein-folding-breakthrough/))
-
+  - alternative: nuclear magnetic resonance (NMR) spectroscopy
+  
 - on average, a protein is composed of 300 amino acids (residues)
   - 21 amino acid types
   - the first residue is fixed
@@ -158,6 +177,7 @@ category: research
   - output (contact prediction) is just linear combination of attention heads finetuned on relatively little data
   - some architecture tricks
     - attention is axial - applied to rows / columns rather than entire input
+- [EquiBind: Geometric Deep Learning for Drug Binding Structure Prediction](https://arxiv.org/abs/2202.05146)
 
 
 
