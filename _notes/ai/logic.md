@@ -230,6 +230,15 @@ Some notes on logic based on Berkeley's CS 188 course and  "Artificial Intellige
 - decomposition
   - requires subgoal independence
 
+# fuzzy logic (lofti zadeh)
+
+- ex [blog post](https://towardsdatascience.com/a-very-brief-introduction-to-fuzzy-logic-and-fuzzy-systems-d68d14b3a3b8)
+- fuzzy sets - instead of binary membership, can have partial membership $\in [0, 1]$
+  - intersection of sets - usually take min over memberships
+  - union of sets - usually take max over memberships
+
+
+
 # [foundations of rule learning](https://dl.acm.org/citation.cfm?id=2788240) (furnkranz et al. 2014)
 
 - terminology - rule has a condition (conjunctive of binary features) + a conclusion = implication

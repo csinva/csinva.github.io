@@ -209,6 +209,9 @@ category: research
 - effect
   - viral load will immediately be lower
   - superspreaders can spread treatment to others
+  - can take before exposure as well (although harder to get approval for this)
+- note: HIV mutates very fast so a TIP in a single person sees a lot of variants
+  - HIP also enters the genome (so corresponding TIP does this as well)
 
 - [Identification of a therapeutic interfering particle—A single-dose SARS-CoV-2 antiviral intervention with a high barrier to resistance](https://www.sciencedirect.com/science/article/pii/S0092867421013192?dgcid=coauthor) (chaturvedi...weinberger, 2021)
   - DIP = defective interfering particle = wild-type virus

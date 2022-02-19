@@ -811,6 +811,11 @@
        1.13.5.2.3. dnn interactions
       </a>
      </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#linear-interactions">
+       1.13.5.2.4. linear interactions
+      </a>
+     </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -841,28 +846,33 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#complementarity-human-in-the-loop">
-     1.13.6.2. complementarity / human-in-the-loop
+    <a class="reference internal nav-link" href="#complementarity">
+     1.13.6.2. complementarity
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#human-in-the-loop-hitl">
+     1.13.6.3. human-in-the-loop (HITL)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#recourse">
-     1.13.6.3. recourse
+     1.13.6.4. recourse
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#interp-for-rl">
-     1.13.6.4. interp for rl
+     1.13.6.5. interp for rl
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#differential-privacy">
-     1.13.6.5. differential privacy
+     1.13.6.6. differential privacy
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#interpretation-over-sets-perturbations">
-     1.13.6.6. interpretation over sets / perturbations
+     1.13.6.7. interpretation over sets / perturbations
     </a>
    </li>
   </ul>
@@ -1333,10 +1343,15 @@
 </li>
 <li><p>regularization</p>
 <ul>
-<li><p>Hierarchical Shrinkage: improving accuracy and interpretability of tree-based methods (agarwal et al. 2021) - post-hoc shrinkage improves trees</p></li>
+<li><p>Hierarchical Shrinkage: improving accuracy and interpretability of tree-based methods (<a class="reference external" href="https://arxiv.org/abs/2202.00858">agarwal et al. 2021</a>) - post-hoc shrinkage improves trees</p></li>
+<li><p>Hierarchical priors for Bayesian CART shrinkage (<a class="reference external" href="https://link.springer.com/article/10.1023/A:1008980332240">chipman &amp; mcculloch, 2000</a>)</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2102.07048">Connecting Interpretability and Robustness in Decision Trees through Separation</a> (moshkovitz et al. 2021)</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2012.10438">Efficient Training of Robust Decision Trees Against Adversarial Examples</a></p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1902.10660">Robust Decision Trees Against Adversarial Examples</a> (2019)</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1902.10660">Robust Decision Trees Against Adversarial Examples</a> (chen, …, hsieh, 2019)</p>
+<ul>
+<li><p>optimize tree performance under worst-case input-feature perturbation</p></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2101.01576">On the price of explainability for some clustering problems</a> (laber et al. 2021) - trees for clustering</p></li>
@@ -1445,45 +1460,66 @@
 <div class="section" id="example-based-case-based-e-g-prototypes-nearest-neighbor">
 <h3>1.13.3.3. example-based = case-based (e.g. prototypes, nearest neighbor)<a class="headerlink" href="#example-based-case-based-e-g-prototypes-nearest-neighbor" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p><a class="reference external" href="https://arxiv.org/abs/1806.10574">“this looks like that” prototypes II</a> (chen et al. 2018)</p>
+<li><p>ProtoPNet: This looks like that (2nd paper) (<a class="reference external" href="https://arxiv.org/abs/1806.10574">chen, …, rudin, 2018</a>) - learn convolutional prototypes that are smaller than the original input size</p>
 <ul>
-<li><p>can have prototypes smaller than original input size</p></li>
-<li><p>l2 distance</p></li>
+<li><p>use L2 distance in repr space to measure distance between patches and prototypes</p></li>
+<li><p>loss function</p>
+<ul>
 <li><p>require the filters to be identical to the latent representation of some training image patch</p></li>
 <li><p>cluster image patches of a particular class around the prototypes of the same class, while separating image patches of different classes</p></li>
-<li><p>maxpool class prototypes so spatial size doesn’t matter</p></li>
+</ul>
+</li>
+<li><p>maxpool class prototypes so spatial location doesn’t matter</p>
+<ul>
 <li><p>also get heatmap of where prototype was activated (only max really matters)</p></li>
+</ul>
+</li>
 <li><p>train in 3 steps</p>
 <ul>
 <li><p>train everything: classification + clustering around intraclass prototypes + separation between interclass prototypes (last layer fixed to 1s / -0.5s)</p></li>
 <li><p>project prototypes to data patches</p></li>
-<li><p>learn last layer</p></li>
+<li><p>learn last (linear) layer</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://arxiv.org/pdf/1710.04806.pdf">original prototypes paper</a> (li et al. 2017)</p>
+<li><p>ProtoNets: original prototypes paper (<a class="reference external" href="https://arxiv.org/pdf/1710.04806.pdf">li, …, rudin, 2017</a>)</p>
 <ul>
 <li><p>uses encoder/decoder setup</p></li>
 <li><p>encourage every prototype to be similar to at least one encoded input</p></li>
-<li><p>learned prototypes in fact look like digits</p></li>
+<li><p>results: learned prototypes in fact look like digits</p>
+<ul>
 <li><p>correct class prototypes go to correct classes</p></li>
+</ul>
+</li>
 <li><p>loss: classification + reconstruction + distance to a training point</p></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/2011.14340">ProtoPShare: Prototype Sharing for Interpretable Image Classification and Similarity Discovery</a> - share some prototypes between classes with data-dependent merge pruning</p>
+<li><p>This Looks Like That, Because … Explaining Prototypes for Interpretable Image Recognition (<a class="reference external" href="https://arxiv.org/abs/2011.02863">nauta et al. 2020</a>)</p>
 <ul>
-<li><p>merge “similar” prototypes, where similarity is measured as dist of all training patches in repr. space</p></li>
+<li><p>add textual quantitative information about visual characteristics deemed important by the classification model e.g. colour hue, shape, texture, contrast and saturation</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1912.02523">Towards Explainable Deep Neural Networks (xDNN)</a> (angelov &amp; soares 2019) - more complex version of using prototypes</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1907.03334">Case-Based Reasoning for Assisting Domain Experts in Processing Fraud Alerts of Black-Box Machine Learning Models</a></p></li>
-<li><p><a class="reference external" href="https://arxiv.org/pdf/2110.15355.pdf">Explaining Latent Representations with a Corpus of Examples</a> (crabbe, …, van der schaar 2021) - for an individual prediction,</p>
-<ol class="simple">
-<li><p>Which corpus examples explain the prediction issued for a given test example?</p></li>
-<li><p>What features of these corpus examples are relevant for the model to relate them to the test example?</p></li>
-</ol>
+<li><p>Neural Prototype Trees for Interpretable Fine-Grained Image Recognition (<a class="reference external" href="https://openaccess.thecvf.com/content/CVPR2021/html/Nauta_Neural_Prototype_Trees_for_Interpretable_Fine-Grained_Image_Recognition_CVPR_2021_paper.html">nauta et al. 2021</a>) - build decision trees on top of prototypes</p>
+<ul>
+<li><p>performance is slightly poor until they use ensembles</p></li>
+</ul>
 </li>
+<li><p>XProtoNet: Diagnosis in Chest Radiography With Global and Local Explanations (<a class="reference external" href="https://openaccess.thecvf.com/content/CVPR2021/html/Kim_XProtoNet_Diagnosis_in_Chest_Radiography_With_Global_and_Local_Explanations_CVPR_2021_paper.html">kim et al. 2021</a>)</p>
+<ul>
+<li><p>alter ProtoPNet to use dynamically sized patches for prototype matching rather than fixed-size patches</p></li>
+</ul>
+</li>
+<li><p>TesNet: Interpretable Image Recognition by Constructing Transparent Embedding Space (<a class="reference external" href="https://openaccess.thecvf.com/content/ICCV2021/html/Wang_Interpretable_Image_Recognition_by_Constructing_Transparent_Embedding_Space_ICCV_2021_paper.html">wang et al. 2021</a>) - alter ProtoPNet to get “orthogonal” basis concepts</p></li>
+<li><p>ProtoPShare: Prototype Sharing for Interpretable Image Classification and Similarity Discovery (<a class="reference external" href="https://arxiv.org/abs/2011.14340">Rymarczyk et al. 2020</a>),- share some prototypes between classes with data-dependent merge pruning</p>
+<ul>
+<li><p>merge “similar” prototypes, where similarity is measured as dist of all training patches in repr. space</p></li>
+<li><p>ProtoMIL: Multiple Instance Learning with Prototypical Parts for Fine-Grained Interpretability (<a class="reference external" href="https://arxiv.org/abs/2108.10612">Rymarczyk et al. 2021</a>)</p></li>
+<li><p>Interpretable Image Classification with Differentiable Prototypes Assignment (<a class="reference external" href="https://arxiv.org/abs/2112.02902">rmyarczyk et al. 2021</a>)</p></li>
+</ul>
+</li>
+<li><p>These <em>do not</em> Look Like Those: An Interpretable Deep Learning Model for Image Recognition (<a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/9373404">singh &amp; yow, 2021</a>) - all weights for prototypes are either 1 or -1</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1912.02523">Towards Explainable Deep Neural Networks (xDNN)</a> (angelov &amp; soares 2019) - more complex version of using prototypes</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2111.04927">Self-Interpretable Model with Transformation Equivariant Interpretation</a> (wang &amp; wang, 2021)</p>
 <ul>
 <li><p>generate data-dependent prototypes for each class and formulate the prediction as the inner product between each prototype and the extracted features</p>
@@ -1502,8 +1538,16 @@
 <li><p>transformation regularizer - constrains the interpretations to be transformation equivariant</p></li>
 </ul>
 </li>
-<li><p><em>self-consistency score</em> quantifies the robustness of interpretation by measuring the consistency of interpretations to geometric transformations.</p></li>
+<li><p><em>self-consistency score</em> quantifies the robustness of interpretation by measuring the consistency of interpretations to geometric transformations</p></li>
 </ul>
+</li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1907.03334">Case-Based Reasoning for Assisting Domain Experts in Processing Fraud Alerts of Black-Box Machine Learning Models</a></p></li>
+<li><p>ProtoAttend: Attention-Based Prototypical Learning (<a class="reference external" href="https://www.jmlr.org/papers/volume21/20-042/20-042.pdf">arik &amp; pfister, 2020</a>) - unlike ProtoPNet, each prediction is made as a weighted combination of similar rinput samples (like nearest-neighbor)</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/2110.15355.pdf">Explaining Latent Representations with a Corpus of Examples</a> (crabbe, …, van der schaar 2021) - for an individual prediction,</p>
+<ol class="simple">
+<li><p>Which corpus examples explain the prediction issued for a given test example?</p></li>
+<li><p>What features of these corpus examples are relevant for the model to relate them to the test example?</p></li>
+</ol>
 </li>
 </ul>
 </div>
@@ -1586,7 +1630,8 @@
 <div class="section" id="connecting-dnns-and-rules">
 <h4>1.13.3.4.1. connecting dnns and rules<a class="headerlink" href="#connecting-dnns-and-rules" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
-<li></li>
+<li><p>interpretable</p>
+<ul>
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1711.09784.pdf">Distilling a Neural Network Into a Soft Decision Tree</a> (frosst &amp; hinton 2017) - distills DNN into DNN-like tree which uses sigmoid neuron decides which path to follow</p>
 <ul>
 <li><p>training on distilled DNN predictions outperforms training on original labels</p></li>
@@ -1595,36 +1640,29 @@
 <li><p>regularization to ensure that all paths are taken equally likely</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://link.springer.com/article/10.1007/s13171-018-0133-y">Neural Random Forests</a> (biau et al. 2018) - convert DNN to RF</p>
-<ul>
-<li><p>first layer learns a node for each split</p></li>
-<li><p>second layer learns a node for each leaf (by only connecting to nodes on leaves in the path)</p></li>
-<li><p>finally map each leaf to a value</p></li>
-<li><p>relax + retrain</p></li>
-</ul>
-</li>
-<li><p>[Deep Neural Decision Forests](https://openaccess.thecvf.com/content_iccv_2015/papers /Kontschieder_Deep_Neural_Decision_ICCV_2015_paper.pdf) (2015)</p>
-<ul>
-<li><p>dnn learns small intermediate representation, which outputs all possible splits in a tree</p></li>
-<li><p>these splits are forced into a tree-structure and optimized via SGD</p></li>
-<li><p>neurons use sigmoid function</p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="https://www.jair.org/index.php/jair/article/view/12558">Optimizing for Interpretability in Deep Neural Networks with Tree Regularization | Journal of Artificial Intelligence Research</a> (wu…doshi-velez, 2021) - regularize DNN prediction function towards tree (potentially only for some region)</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1910.09340">Gradient Boosted Decision Tree Neural Network</a> - build DNN based on decision tree ensemble - basically the same but with gradient-boosted trees</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1702.07360">Neural Decision Trees</a> - treat each neural net like a node in a tree</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2010.04627">Learning Binary Decision Trees by Argmin Differentiation</a> (zantedeschi et al. 2021)</p>
 <ul>
 <li><p>argmin differentiation - solving an optimization problem as a differentiable module within a parent problem tackled with gradient-based optimization methods</p></li>
 <li><p>relax hard splits into soft ones and learn via gradient descent</p></li>
 </ul>
 </li>
+<li><p><a class="reference external" href="https://www.jair.org/index.php/jair/article/view/12558">Optimizing for Interpretability in Deep Neural Networks with Tree Regularization | Journal of Artificial Intelligence Research</a> (wu…doshi-velez, 2021) - regularize DNN prediction function towards tree (potentially only for some region)</p></li>
+<li><p><a class="reference external" href="http://proceedings.mlr.press/v97/tanno19a.html?utm_campaign=piqcy&amp;utm_medium=email&amp;utm_source=Revue%20newsletter">Adaptive Neural Trees</a> (tanno et al. 2019) - adaptive neural tree mechanism with trainable nodes, edges, and leaves</p></li>
+</ul>
+</li>
+<li><p>loosely interpretable</p>
+<ul>
+<li><p><a class="reference external" href="https://openaccess.thecvf.com/content_CVPR_2020/html/Ji_Attention_Convolutional_Binary_Neural_Tree_for_Fine-Grained_Visual_Categorization_CVPR_2020_paper.html">Attention Convolutional Binary Neural Tree for Fine-Grained Visual Categorization</a> (ji et al. 2020)</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1909.13488">Oblique Decision Trees from Derivatives of ReLU Networks</a> (lee &amp; jaakkola, 2020)</p>
 <ul>
 <li><p>locally constant networks (which are derivatives of relu networks) are equivalent to trees</p></li>
 <li><p>they perform well and can use DNN tools e.g. Dropconnect on them</p></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><p>incorporating prior knowledge</p>
+<ul>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2106.07804">Controlling Neural Networks with Rule Representations</a> (seo, …, pfister, 21)</p>
 <ul>
 <li><p>DEEPCTRL - encodes rules into DNN</p>
@@ -1658,16 +1696,43 @@
 <li><p>project RRL it to a continuous space and propose a novel training method, called Gradient Grafting, that can directly optimize the discrete model using gradient descent</p></li>
 </ul>
 </li>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/1603.06318.pdf">Harnessing Deep Neural Networks with Logic Rules</a> (hu, …, xing, 2020) - iterative distillation method that transfers the structured information of logic rules into the weights of neural networks</p></li>
+</ul>
+</li>
+<li><p>just trying to improve performance</p>
+<ul>
+<li><p><a class="reference external" href="https://link.springer.com/article/10.1007/s13171-018-0133-y">Neural Random Forests</a> (biau et al. 2018) - convert DNN to RF</p>
+<ul>
+<li><p>first layer learns a node for each split</p></li>
+<li><p>second layer learns a node for each leaf (by only connecting to nodes on leaves in the path)</p></li>
+<li><p>finally map each leaf to a value</p></li>
+<li><p>relax + retrain</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1910.09340">Gradient Boosted Decision Tree Neural Network</a> - build DNN based on decision tree ensemble - basically the same but with gradient-boosted trees</p></li>
+</ul>
+</li>
+<li><p>these papers are basically learning trees via backprop, where splits are “smoothed” during training</p>
+<ul>
+<li><p><a class="reference external" href="https://link.springer.com/article/10.1007/s11263-019-01237-6">End-to-End Learning of Decision Trees and Forests</a></p></li>
+<li><p><a class="reference external" href="https://ieeexplore.ieee.org/document/9393908">SDTR: Soft Decision Tree Regressor for Tabular Data</a></p></li>
+</ul>
+</li>
+<li><p>[Deep Neural Decision Forests](https://openaccess.thecvf.com/content_iccv_2015/papers /Kontschieder_Deep_Neural_Decision_ICCV_2015_paper.pdf) (2015)</p>
+<ul>
+<li><p>dnn learns small intermediate representation, which outputs all possible splits in a tree</p></li>
+<li><p>these splits are forced into a tree-structure and optimized via SGD</p>
+<ul>
+<li><p>neurons use sigmoid function</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1702.07360">Neural Decision Trees</a> - treat each neural net like a node in a tree</p></li>
 <li><p><a class="reference external" href="http://eda.mmci.uni-saarland.de/pubs/2021/binaps-fischer,vreeken.pdf">Differentiable Pattern Set Mining</a> (fischer &amp; vreeken, 2021)</p>
 <ul>
 <li><p>use neural autoencoder with binary activations + binarizing weights</p></li>
 <li><p>optimizing a data-sparsity aware reconstruction loss, continuous versions of the weights are learned in small, noisy steps</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://arxiv.org/pdf/1603.06318.pdf">Harnessing Deep Neural Networks with Logic Rules</a></p></li>
-<li><p><a class="reference external" href="https://link.springer.com/article/10.1007/s11263-019-01237-6">End-to-End Learning of Decision Trees and Forests</a></p>
-<ul>
-<li><p>this is like backprop for trees, where splits are smoothed during training</p></li>
 </ul>
 </li>
 </ul>
@@ -1970,6 +2035,7 @@ instances (PDP problem)</p></li>
 <li><p>measures the feature importance (defined as the variance of the 1D partial dependence function) of one feature conditional on different, fixed points of the other feature. When the variance is high, then the features interact with each other, if it is zero, they don’t interact.</p></li>
 </ul>
 </li>
+<li><p><a class="reference external" href="https://aclanthology.org/2021.acl-long.415/">Learning to Explain: Generating Stable Explanations Fast - ACL Anthology</a> (situ et al. 2021) - train a model on “teacher” importance scores (e.g. SHAP) and then use it to quickly predict importance scores on new examples</p></li>
 </ul>
 </div>
 <div class="section" id="importance-curves">
@@ -2037,7 +2103,7 @@ instances (PDP problem)</p></li>
 </li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/2103.02191">Extracting Optimal Explanations for Ensemble Trees via Logical Reasoning</a> (zhang et al. ‘21) - OptExplain - extracts global explanation of tree ensembles using logical reasoning, sampling, + optimization</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2103.02191">Extracting Optimal Explanations for Ensemble Trees via Logical Reasoning</a> (zhang et al. ‘21) - OptExplain: extracts global explanation of tree ensembles using logical reasoning, sampling, + optimization</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1802.03888">treeshap</a> (lundberg, erion &amp; lee, 2019): prediction-level</p>
 <ul>
 <li><p>individual feature attribution: want to decompose prediction into sum of attributions for each feature</p>
@@ -2399,6 +2465,7 @@ a concept’s examples and examples in any layer</p></li>
 </li>
 <li><p>newer methods</p>
 <ul class="simple">
+<li><p><a class="reference external" href="https://arxiv.org/abs/2005.00928">Quantifying Attention Flow in Transformers</a> (abnar &amp; zuidema) - solves the problem where the attention of the previous layer is  combined nonlinearly with the attention of the next layer by introducing <strong>attention rollout</strong> - combining attention maps and assuming linearity</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1910.01279">Score-CAM:Improved Visual Explanations Via Score-Weighted Class Activation Mapping</a></p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1910.04256">Removing input features via a generative model to explain their attributions to classifier’s decisions</a></p></li>
 <li><p><a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/8784063">NeuroMask: Explaining Predictions of Deep Neural Networks through Mask Learning</a></p></li>
@@ -2525,20 +2592,33 @@ a concept’s examples and examples in any layer</p></li>
 <li><p><a class="reference external" href="https://www.ccs.neu.edu/home/mirek/papers/2008-ICML-Interactions.pdf">additive groves interaction followup</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1809.08524">bayesian decision tree ensembles for interaction detection</a> (du &amp; linero, 2018) - Dirichlet process forests (DP-Forests) leverage the presence of low-order interactions by clustering the trees so that trees within the same cluster focus on detecting a specific interaction</p></li>
+<li><p>SBART: Bayesian regression tree ensembles that adapt to smoothness and sparsity (<a class="reference external" href="https://rss.onlinelibrary.wiley.com/doi/full/10.1111/rssb.12293?casa_token=Pj1jdf_Cdy0AAAAA%3AWLdBFv0Y9oC5i8CUfAFDWuXR9WCww4Vne9pQazuUhIq7cFiaUZhUe8g3NlzydWch1WHtMtcSa95Q66lqGw">linero &amp; yang, 2018</a>) - adapts BART to sparsity</p></li>
+<li><p>DP-Forests: <a class="reference external" href="https://arxiv.org/abs/1809.08524">bayesian decision tree ensembles for interaction detection</a> (du &amp; linero, 2018)</p>
+<ul>
+<li><p>Bayesian tree ensembles (e.g. BART) generally detect too many (high-order) interactions</p></li>
+<li><p>Dirichlet-process forests (DP-Forests) emphasize low-order interactions</p>
+<ul>
+<li><p>create groups of trees which each use non-overlapping features</p></li>
+<li><p>hopefully, each group learns a single low-order interaction</p></li>
+<li><p>dirichlet process prior is used to pick the number of groups</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\alpha\)</span> parameter for Dirichlet process describes how strongly to enforce this grouping</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>interaction definition: <span class="math notranslate nohighlight">\(x_{j}\)</span> and <span class="math notranslate nohighlight">\(x_{k}\)</span> are interact if <span class="math notranslate nohighlight">\(f_{0}(x)\)</span> cannot be written as <span class="math notranslate nohighlight">\(f_{0}(x)=f_{0 \backslash j}(x)+f_{0 \backslash k}(x)\)</span> where <span class="math notranslate nohighlight">\(f_{0 \backslash j}\)</span> and <span class="math notranslate nohighlight">\(f_{0 \backslash k}\)</span> do not depend on <span class="math notranslate nohighlight">\(x_{j}\)</span> and <span class="math notranslate nohighlight">\(x_{k}\)</span> respectively</p></li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="section" id="dnn-interactions">
 <h4>1.13.5.2.3. dnn interactions<a class="headerlink" href="#dnn-interactions" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
-<li><p><a class="reference external" href="https://arxiv.org/abs/1806.05337">hierarchical interpretations for neural network predictions</a> (singh et al. 2019)</p>
+<li><p>ACD: hierarchical interpretations for neural network predictions (<a class="reference external" href="https://arxiv.org/abs/1806.05337">singh et al. 2019</a>)</p>
 <ul>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1801.05453">contextual decomposition</a> (murdoch et al. 2018)</p></li>
-<li><p>ACD followup work</p>
-<ul>
 <li><p><a class="reference external" href="https://openreview.net/forum?id=BkxRRkSKwr">Towards Hierarchical Importance Attribution: Explaining Compositional Semantics for Neural Sequence Models</a></p></li>
-</ul>
-</li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2103.03622">Compositional Explanations for Image Classifiers</a> (chockler et al. 21) - use perturbation-based interpretations to greedily search for pixels which increase prediction the most (simpler version of ACD)</p></li>
 </ul>
 </li>
@@ -2558,6 +2638,22 @@ a concept’s examples and examples in any layer</p></li>
 </ul>
 </li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1901.08361">Learning Global Pairwise Interactions with Bayesian Neural Networks</a> (cui et al. 2020) - Bayesian Group Expected Hessian (GEH) - train bayesian neural net and analyze hessian to understand interactions</p></li>
+</ul>
+</div>
+<div class="section" id="linear-interactions">
+<h4>1.13.5.2.4. linear interactions<a class="headerlink" href="#linear-interactions" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>often use “hierarchy” or “heredity” constraint - means interaction term is only added when both main effects are also included</p></li>
+<li><p>hierarchical group lasso (<a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/26759522/">lim &amp; hastie, 2015</a>) - learns pairwise interactions in a linear model</p>
+<ul>
+<li><p>uses hierarchy constraint</p></li>
+</ul>
+</li>
+<li><p>VANISH: <a class="reference external" href="https://www.tandfonline.com/doi/abs/10.1198/jasa.2010.tm10130?casa_token=HhKY3HXj0fYAAAAA:vTRgqAqWy3DZ9r9vXEinQOZbWuctLPA3J9bACTbrnKIkUPV19yqaDV5zr9dD6IiTrYXsj6HT_kDYNN8">Variable Selection Using Adaptive Nonlinear Interaction Structures in High Dimensions</a> (radchenko &amp; james, 2012) - learns pairwise interactions via basis function expansions</p>
+<ul>
+<li><p>uses hierarchiy constraint</p></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -2598,6 +2694,7 @@ a concept’s examples and examples in any layer</p></li>
 </li>
 </ul>
 </li>
+<li><p><a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/9346401">Interpreting Deep Neural Networks through Prototype Factorization</a> - posthoc convert DNN into having different factors</p></li>
 </ul>
 </div>
 <div class="section" id="distillation">
@@ -2675,8 +2772,8 @@ a concept’s examples and examples in any layer</p></li>
 </li>
 </ul>
 </div>
-<div class="section" id="complementarity-human-in-the-loop">
-<h3>1.13.6.2. complementarity / human-in-the-loop<a class="headerlink" href="#complementarity-human-in-the-loop" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="complementarity">
+<h3>1.13.6.2. complementarity<a class="headerlink" href="#complementarity" title="Permalink to this headline">¶</a></h3>
 <p><strong>complementarity</strong> - ML should focus on points hard for humans + seek human input on points hard for ML</p>
 <ul class="simple">
 <li><p>note: goal of ML isn’t to learn categories but learn things that are associated with actions</p></li>
@@ -2703,8 +2800,11 @@ a concept’s examples and examples in any layer</p></li>
 <li><p>Partially Interpretable Estimators (PIE): Black-Box-Refined Interpretable Machine Learning (<a class="reference external" href="https://arxiv.org/abs/2105.02410">wang et al. 2021</a>) - interpretable model for individual features and black-box model captures feature interactions (on residuals)</p></li>
 </ul>
 </li>
-<li><p>human in-the-loop (HITL)</p>
-<ul>
+</ul>
+</div>
+<div class="section" id="human-in-the-loop-hitl">
+<h3>1.13.6.3. human-in-the-loop (HITL)<a class="headerlink" href="#human-in-the-loop-hitl" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
 <li><p>Making deep neural networks right for the right scientific reasons by interacting with their explanations (<a class="reference external" href="https://www.nature.com/articles/s42256-020-0212-3">schramowski, … kersting, 2020</a> ) - scientist iteratively provides feedback on DNN’s explanation</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2201.13230">POTATO: exPlainable infOrmation exTrAcTion framewOrk</a> (kovacs et al. 2022) - humans select rules using graph-based feature for text classification</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2108.00941">A Survey of Human-in-the-loop for Machine Learning</a> (wu…he, 2021)</p>
@@ -2712,18 +2812,26 @@ a concept’s examples and examples in any layer</p></li>
 <li><p>HITL data processing</p>
 <ul>
 <li><p>ex. identify key examples to annotate to improve performance / reduce discriminatory bias</p></li>
-<li><p>ex. <a class="reference external" href="https://link.springer.com/chapter/10.1007/978-3-030-34770-3_10">   </a></p></li>
 </ul>
 </li>
-<li><p>HITL training</p></li>
+<li><p>HITL during training</p></li>
 </ul>
 </li>
+<li><p>Interactive Disentanglement: Learning Concepts by Interacting with their Prototype Representations (<a class="reference external" href="https://arxiv.org/abs/2112.02290">stammer…scharmowski, kersting, 2021</a>)</p>
+<ul>
+<li><p>humans provide weak supervision, tested on toy datasets</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/9552218">Human-in-the-loop Extraction of Interpretable Concepts in Deep Learning Models</a> (zhao et al. 2021)</p>
+<ul>
+<li><p>human knowledge and feedback are combined to train a concept extractor</p></li>
+<li><p>by identifying visual concepts that negatively affect model performance, we develop the corresponding data augmentation strategy that consistently improves model performance</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="recourse">
-<h3>1.13.6.3. recourse<a class="headerlink" href="#recourse" title="Permalink to this headline">¶</a></h3>
+<h3>1.13.6.4. recourse<a class="headerlink" href="#recourse" title="Permalink to this headline">¶</a></h3>
 <p><strong>recourse</strong> - can a person obtain desired prediction from fixed mode by changing actionable input variables (not just standard explainability)</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1809.06514.pdf">actionable recourse in linear classification</a> (ustun et al. 2019)</p>
@@ -2738,7 +2846,7 @@ a concept’s examples and examples in any layer</p></li>
 </ul>
 </div>
 <div class="section" id="interp-for-rl">
-<h3>1.13.6.4. interp for rl<a class="headerlink" href="#interp-for-rl" title="Permalink to this headline">¶</a></h3>
+<h3>1.13.6.5. interp for rl<a class="headerlink" href="#interp-for-rl" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>heatmaps</p></li>
 <li><p>visualize most interesting states / rollouts</p></li>
@@ -2748,13 +2856,13 @@ a concept’s examples and examples in any layer</p></li>
 </ul>
 </div>
 <div class="section" id="differential-privacy">
-<h3>1.13.6.5. differential privacy<a class="headerlink" href="#differential-privacy" title="Permalink to this headline">¶</a></h3>
+<h3>1.13.6.6. differential privacy<a class="headerlink" href="#differential-privacy" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>differential private if the outputs of the model do not change (within some epsilon tolerance) if you remove a single datapoint</p></li>
 </ul>
 </div>
 <div class="section" id="interpretation-over-sets-perturbations">
-<h3>1.13.6.6. interpretation over sets / perturbations<a class="headerlink" href="#interpretation-over-sets-perturbations" title="Permalink to this headline">¶</a></h3>
+<h3>1.13.6.7. interpretation over sets / perturbations<a class="headerlink" href="#interpretation-over-sets-perturbations" title="Permalink to this headline">¶</a></h3>
 <p>These papers don’t quite connect to prediction, but are generally about finding stable interpretations across a set of models / choices.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.nature.com/articles/s42256-020-00264-0">Exploring the cloud of variable importance for the set of all good models</a> (dong &amp; rudin, 2020)</p></li>

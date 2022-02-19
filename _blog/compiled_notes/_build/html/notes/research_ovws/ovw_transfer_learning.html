@@ -652,7 +652,12 @@
 <li><p>this includes just finetuning the final layer</p></li>
 </ul>
 </li>
+<li><p>finetune on all the layers</p>
+<ul>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2201.03529">Head2Toe: Utilizing Intermediate Representations for Better Transfer Learning</a> (evci, et al. 2022) - learn linear layer (using group-lasso) on features extracted from all layers</p></li>
+<li><p>Adapters provide a parameter-efficient alternative to full finetuning in which we can only finetune lightweight neural network layers on top of pretrained weights. <a class="reference external" href="http://proceedings.mlr.press/v97/houlsby19a.html">Parameter-Efficient Transfer Learning for NLP</a>, <a class="reference external" href="https://arxiv.org/abs/2007.07779">AdapterHub: A Framework for Adapting Transformers</a></p></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -663,8 +668,14 @@
 <ul class="simple">
 <li><p>Empirical Risk Minimization (ERM, <a class="reference external" href="https://www.wiley.com/en-fr/Statistical+Learning+Theory-p-9780471030034">Vapnik, 1998</a>) - standard training</p></li>
 <li><p>Invariant Risk Minimization (IRM, <a class="reference external" href="https://arxiv.org/abs/1907.02893">Arjovsky et al., 2019</a>) - learns a feature representation such that the optimal linear classifier on top of that representation matches across domains.</p></li>
+<li><p>distributional robust optimization</p>
+<ul>
+<li><p>instead of minimizing training err, minimize maximum training err over different perturbations</p></li>
 <li><p>Group Distributionally Robust Optimization (GroupDRO, <a class="reference external" href="https://arxiv.org/abs/1911.08731">Sagawa et al., 2020</a>) - ERM + increase importance of domains with larger errors (see also papers from Sugiyama group e.g. <a class="reference external" href="http://papers.neurips.cc/paper/3019-mixture-regression-for-covariate-shift.pdf">1</a>, <a class="reference external" href="https://arxiv.org/abs/1611.02041">2</a>)</p>
 <ul>
+<li><p>minimize error for worst group</p></li>
+</ul>
+</li>
 <li><p>Variance Risk Extrapolation (VREx, <a class="reference external" href="https://arxiv.org/abs/2003.00688">Krueger et al., 2020</a>) - encourages robustness over affine combinations of training risks, by encouraging strict equality between training risks</p></li>
 </ul>
 </li>
@@ -690,6 +701,7 @@
 </ul>
 </li>
 <li><p>kernel approach (<a class="reference external" href="https://papers.nips.cc/paper/2011/file/b571ecea16a9824023ee1af16897a582-Paper.pdf">blanchard, lee &amp; scott, 2011</a>) - find an appropriate RKHS and optimize a regularized empirical risk over the space</p></li>
+<li><p>In-N-Out (<a class="reference external" href="https://arxiv.org/abs/2012.04550">xie…lang, 2020</a>) - if we have many features, rather than using them all as features, can use some as features and some as targets when we shift, to learn the domain shift</p></li>
 </ul>
 <div class="section" id="domain-invariance">
 <h3>1.2.2.1. domain invariance<a class="headerlink" href="#domain-invariance" title="Permalink to this headline">¶</a></h3>
@@ -775,10 +787,16 @@
 </li>
 <li><p>defenses</p>
 <ul>
-<li><p>Adversarial training -  training data is augmented with adv examples (Szegedy et al., 2014b; Madry et al., 2017; Tram`er et al., 2017; Yu et al., 2019)</p>
+<li><p>Adversarial training -  training data is augmented with adv examples (Szegedy et al., 2014b; Madry et al., 2017; Tramer et al., 2017; Yu et al., 2019)</p>
 <ul>
 <li><div class="math notranslate nohighlight">
 \[\min _{\boldsymbol{\theta}} \frac{1}{N} \sum_{n=1}^{N} \operatorname{Loss}\left(f_{\theta}\left(x_{n}\right), y_{n}\right)+\lambda\left[\max _{\|\delta\|_{\infty} \leq \epsilon} \operatorname{Loss}\left(f_{\theta}\left(x_{n}+\delta\right), y_{n}\right)\right]\]</div>
+</li>
+<li><p>this perspective differs from “robust statistics” which is usually robustness against some kind of model misspecification/assumptions, not to distr. shift</p>
+<ul class="simple">
+<li><p>robust stat usually assumes a generative distr. as well</p></li>
+<li><p>still often ends up with the same soln (e.g. ridge regr. corresponds to certain robusteness)</p></li>
+</ul>
 </li>
 </ul>
 </li>
@@ -807,7 +825,12 @@
 <li><p>robustness vs accuracy</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://openreview.net/pdf?id=SyxAb30cY7">robustness may be at odds with accuracy</a> (tsipiras…madry, 2019)</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1901.08573">Theoretically Principled Trade-off between Robustness and Accuracy</a> (Zhang, Jordan, et. al. 2019)</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2002.10477">Precise Tradeoffs in Adversarial Training for Linear Regression</a> (javanmard et al. 2020) - linear regression with gaussian features</p>
+<ul>
+<li><p>use adv. training formula above</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1901.08573">Theoretically Principled Trade-off between Robustness and Accuracy</a> (Zhang, …, el ghaoui, Jordan, 2019)</p></li>
 </ul>
 </li>
 <li><p>adversarial examples</p>
@@ -817,7 +840,7 @@
 <li><p><a class="reference external" href="https://openreview.net/pdf?id=Bygh9j09KX">Image-Net-Trained CNNs Are Biased Towards Texture</a> (Geirhos et al. 2019)</p></li>
 </ul>
 </li>
-<li><p>transferability</p>
+<li><p>adversarial transferability</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/1605.07277">Transferability in Machine Learning: from Phenomena to Black-Box Attacks using Adversarial Samples</a> (papernot, mcdaniel, &amp; goodfellow, 2016)</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1705.07204.pdf">Ensemble Adversarial Training: Attacks and Defenses</a> (tramer et al. 2018)</p></li>
@@ -828,9 +851,14 @@
 </li>
 </ul>
 </li>
-<li><p>ranking</p>
+<li><p>robustness</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://arxiv.org/pdf/2002.05714.pdf">Automatically Discovering and Learning New Visual Categories with Ranking Statistics</a></p></li>
+<li><p>smoothness yields robustness (but can be robust without smoothness)</p></li>
+<li><p>margin idea - data points close to the boundary are not robust</p>
+<ul>
+<li><p>we want our boundary to go through regions where data is scarce</p></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

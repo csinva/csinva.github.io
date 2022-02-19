@@ -121,9 +121,9 @@ Deep learning models have achieved impressive predictive performance by learning
 ### recordings
 - talks
     - [bair sem feb 2020 best vid](https://www.youtube.com/watch?v=avrnelFZSS4&feature=youtu.be)
-	    - [bair sem feb 2020 livestream](https://www.youtube.com/watch?v=x6AHX-VrcdM&feature=youtu.be)
-	- [grad slam 2019](https://www.youtube.com/watch?v=6VVppY-uUgE&feature=youtu.be&t=5600)
-	- [textxd 2019](https://berkeley-haas.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=276daa74-7298-40b1-9503-ab17014b5863)
+        - [bair sem feb 2020 livestream](https://www.youtube.com/watch?v=x6AHX-VrcdM&feature=youtu.be)
+    - [grad slam 2019](https://www.youtube.com/watch?v=6VVppY-uUgE&feature=youtu.be&t=5600)
+    - [textxd 2019](https://berkeley-haas.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=276daa74-7298-40b1-9503-ab17014b5863)
 - misc releases
   - [covid coe article](https://engineering.berkeley.edu/news/2020/04/getting-the-right-equipment-to-the-right-people/)
     - [berkeley science rvw blurb](https://berkeleysciencereview.com/article/ppe-to-the-ppeople-2/) 
@@ -131,6 +131,9 @@ Deep learning models have achieved impressive predictive performance by learning
   - [uvacsnews](https://uvacsnews.wordpress.com/2017/05/04/chandansingh/)
     - [uvacsnews2](https://uvacsnews.wordpress.com/2017/05/12/congratulations-to-our-cs-award-winners/)
     - [uvacsnewstweet](https://twitter.com/CS_UVA/status/860155364347715584)
+  - imodels
+    - [UC Berkeley Researchers Introduce 'imodels: A Python Package For Fitting Interpretable Machine Learning Models - MarkTechPost](https://www.marktechpost.com/2022/02/10/uc-berkeley-researchers-introduce-imodels-a-python-package-for-fitting-interpretable-machine-learning-models/)
+    - [UC Berkeley researchers develop a Python library for predictive modelling](https://analyticsindiamag.com/uc-berkeley-researchers-develop-a-python-library-for-predictive-modelling/)
   
 ### bios
 <details>

@@ -293,11 +293,12 @@ For an implementation of many of these models, see the python [imodels package](
     - [Desiderata for Interpretability: Explaining Decision Tree Predictions with Counterfactuals](https://ojs.aaai.org//index.php/AAAI/article/view/5154)
     
   - regularization
-    - Hierarchical Shrinkage: improving accuracy and interpretability of tree-based methods (agarwal et al. 2021) - post-hoc shrinkage improves trees
-    - [Hierarchical priors for Bayesian CART shrinkage](https://link.springer.com/article/10.1023/A:1008980332240) (chipman & mcculloch, 2000)
+    - Hierarchical Shrinkage: improving accuracy and interpretability of tree-based methods ([agarwal et al. 2021](https://arxiv.org/abs/2202.00858)) - post-hoc shrinkage improves trees
+    - Hierarchical priors for Bayesian CART shrinkage ([chipman & mcculloch, 2000](https://link.springer.com/article/10.1023/A:1008980332240))
     - [Connecting Interpretability and Robustness in Decision Trees through Separation](https://arxiv.org/abs/2102.07048) (moshkovitz et al. 2021)
     - [Efficient Training of Robust Decision Trees Against Adversarial Examples](https://arxiv.org/abs/2012.10438)
-    - [Robust Decision Trees Against Adversarial Examples](https://arxiv.org/abs/1902.10660) (2019)
+    - [Robust Decision Trees Against Adversarial Examples](https://arxiv.org/abs/1902.10660) (chen, ..., hsieh, 2019)
+      - optimize tree performance under worst-case input-feature perturbation
     
   - [On the price of explainability for some clustering problems](https://arxiv.org/abs/2101.01576) (laber et al. 2021) - trees for clustering
   - extremely randomized trees ([geurts et al. 2006](https://link.springer.com/article/10.1007/s10994-006-6226-1)) - randomness goes further than Random Forest - randomly select not only the feature but also the split thresholds (and select the best out of some random set)
@@ -380,27 +381,21 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
     - results: learned prototypes in fact look like digits
       - correct class prototypes go to correct classes
     - loss: classification + reconstruction + distance to a training point
-
 - This Looks Like That, Because ... Explaining Prototypes for Interpretable Image Recognition ([nauta et al. 2020](https://arxiv.org/abs/2011.02863))
   - add textual quantitative information about visual characteristics deemed important by the classification model e.g. colour hue, shape, texture, contrast and saturation
-
 - Neural Prototype Trees for Interpretable Fine-Grained Image Recognition ([nauta et al. 2021](https://openaccess.thecvf.com/content/CVPR2021/html/Nauta_Neural_Prototype_Trees_for_Interpretable_Fine-Grained_Image_Recognition_CVPR_2021_paper.html)) - build decision trees on top of prototypes
+  - performance is slightly poor until they use ensembles
 
 - XProtoNet: Diagnosis in Chest Radiography With Global and Local Explanations ([kim et al. 2021](https://openaccess.thecvf.com/content/CVPR2021/html/Kim_XProtoNet_Diagnosis_in_Chest_Radiography_With_Global_and_Local_Explanations_CVPR_2021_paper.html))
   - alter ProtoPNet to use dynamically sized patches for prototype matching rather than fixed-size patches
-
 - TesNet: Interpretable Image Recognition by Constructing Transparent Embedding Space ([wang et al. 2021](https://openaccess.thecvf.com/content/ICCV2021/html/Wang_Interpretable_Image_Recognition_by_Constructing_Transparent_Embedding_Space_ICCV_2021_paper.html)) - alter ProtoPNet to get "orthogonal" basis concepts
-
 - ProtoPShare: Prototype Sharing for Interpretable Image Classification and Similarity Discovery ([Rymarczyk et al. 2020](https://arxiv.org/abs/2011.14340)),- share some prototypes between classes with data-dependent merge pruning
 
   - merge "similar" prototypes, where similarity is measured as dist of all training patches in repr. space
   - ProtoMIL: Multiple Instance Learning with Prototypical Parts for Fine-Grained Interpretability ([Rymarczyk et al. 2021](https://arxiv.org/abs/2108.10612))
   - Interpretable Image Classification with Differentiable Prototypes Assignment ([rmyarczyk et al. 2021](https://arxiv.org/abs/2112.02902))
-
 - These *do not* Look Like Those: An Interpretable Deep Learning Model for Image Recognition ([singh & yow, 2021](https://ieeexplore.ieee.org/abstract/document/9373404)) - all weights for prototypes are either 1 or -1
-
 - [Towards Explainable Deep Neural Networks (xDNN)](https://arxiv.org/abs/1912.02523) (angelov & soares 2019) - more complex version of using prototypes
-
 - [Self-Interpretable Model with Transformation Equivariant Interpretation](https://arxiv.org/abs/2111.04927) (wang & wang, 2021)
   - generate data-dependent prototypes for each class and formulate the prediction as the inner product between each prototype and the extracted features
     - interpretation is hadamard product of prototype and extracted features (prediction is sum of this product)
@@ -410,11 +405,8 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
       - for each image, enforce each prototype to be similar to its corresponding class's latent repr.
     - transformation regularizer - constrains the interpretations to be transformation equivariant
   - *self-consistency score* quantifies the robustness of interpretation by measuring the consistency of interpretations to geometric transformations
-
 - [Case-Based Reasoning for Assisting Domain Experts in Processing Fraud Alerts of Black-Box Machine Learning Models](https://arxiv.org/abs/1907.03334)
-
 - ProtoAttend: Attention-Based Prototypical Learning ([arik & pfister, 2020](https://www.jmlr.org/papers/volume21/20-042/20-042.pdf)) - unlike ProtoPNet, each prediction is made as a weighted combination of similar rinput samples (like nearest-neighbor)
-
 - [Explaining Latent Representations with a Corpus of Examples](https://arxiv.org/pdf/2110.15355.pdf) (crabbe, ..., van der schaar 2021) - for an individual prediction,
   1. Which corpus examples explain the prediction issued for a given test example?
   2. What features of these corpus examples are relevant for the model to relate them to the test example?
@@ -461,50 +453,58 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
 
 ### connecting dnns and rules
 
-- [Distilling a Neural Network Into a Soft Decision Tree](https://arxiv.org/pdf/1711.09784.pdf) (frosst & hinton 2017) - distills DNN into DNN-like tree which uses sigmoid neuron decides which path to follow
-  - training on distilled DNN predictions outperforms training on original labels
-  - to make the decision closer to a hard cut, can multiply by a large scalar before applying sigmoid
-  - parameters updated with backprop
-  - regularization to ensure that all paths are taken equally likely
-- [Neural Random Forests](https://link.springer.com/article/10.1007/s13171-018-0133-y) (biau et al. 2018) - convert DNN to RF
-  - first layer learns a node for each split
-  - second layer learns a node for each leaf (by only connecting to nodes on leaves in the path)
-  - finally map each leaf to a value
-  - relax + retrain
-- [Deep Neural Decision Forests](https://openaccess.thecvf.com/content_iccv_2015/papers /Kontschieder_Deep_Neural_Decision_ICCV_2015_paper.pdf) (2015)
-  - dnn learns small intermediate representation, which outputs all possible splits in a tree
-  - these splits are forced into a tree-structure and optimized via SGD
-  - neurons use sigmoid function
-- [Optimizing for Interpretability in Deep Neural Networks with Tree Regularization | Journal of Artificial Intelligence Research](https://www.jair.org/index.php/jair/article/view/12558) (wu...doshi-velez, 2021) - regularize DNN prediction function towards tree (potentially only for some region)
-- [Gradient Boosted Decision Tree Neural Network](https://arxiv.org/abs/1910.09340) - build DNN based on decision tree ensemble - basically the same but with gradient-boosted trees
-- [Neural Decision Trees](https://arxiv.org/abs/1702.07360) - treat each neural net like a node in a tree
-- [Learning Binary Decision Trees by Argmin Differentiation](https://arxiv.org/abs/2010.04627) (zantedeschi et al. 2021)
-  - argmin differentiation - solving an optimization problem as a differentiable module within a parent problem tackled with gradient-based optimization methods
-  - relax hard splits into soft ones and learn via gradient descent
-- [Oblique Decision Trees from Derivatives of ReLU Networks](https://arxiv.org/abs/1909.13488) (lee & jaakkola, 2020)
-  - locally constant networks (which are derivatives of relu networks) are equivalent to trees
-  - they perform well and can use DNN tools e.g. Dropconnect on them
-- [Controlling Neural Networks with Rule Representations](https://arxiv.org/abs/2106.07804) (seo, ..., pfister, 21)
-  - DEEPCTRL - encodes rules into DNN
-    - one encoder for rules, one for data
-      - both are concatenated with stochastic parameter $\alpha$ (which also weights the loss)
-      - at test-time, can select $\alpha$ to vary contribution of rule part can be varied (e.g. if rule doesn't apply to a certain point)
-    - training
-      - normalize losses initially to ensure they are on the same scale
-      - some rules can be made differentiable in a straightforward way: $r(x, \hat y) \leq \tau \to \max (r(x, \hat y ) - \tau, 0)$, but can't do this for everything e.g. decision tree rules
-      - rule-based loss is defined by looking at predictions fo perturbations of the input
-    - evaluation
-      - `verification ratio` - fraction of samples that satisfy the rule
-    - see also [Lagrangian Duality for Constrained Deep Learning](https://arxiv.org/abs/2001.09394) (fioretto et al. 2020)
-- [RRL: A Scalable Classifier for Interpretable Rule-Based Representation Learning](https://openreview.net/forum?id=UwOMufsTqCy) (wang et al. 2020)
-  - Rule-based Representation Learner (RRL) - automatically learns interpretable non-fuzzy rules for data representation
-  - project RRL it to a continuous space and propose a novel training method, called Gradient Grafting, that can directly optimize the discrete model using gradient descent
-- [Differentiable Pattern Set Mining](http://eda.mmci.uni-saarland.de/pubs/2021/binaps-fischer,vreeken.pdf) (fischer & vreeken, 2021)
-  - use neural autoencoder with binary activations + binarizing weights
-  - optimizing a data-sparsity aware reconstruction loss, continuous versions of the weights are learned in small, noisy steps
-- [Harnessing Deep Neural Networks with Logic Rules](https://arxiv.org/pdf/1603.06318.pdf)
-- [End-to-End Learning of Decision Trees and Forests](https://link.springer.com/article/10.1007/s11263-019-01237-6)
-  - this is like backprop for trees, where splits are smoothed during training
+- interpretable
+  - [Distilling a Neural Network Into a Soft Decision Tree](https://arxiv.org/pdf/1711.09784.pdf) (frosst & hinton 2017) - distills DNN into DNN-like tree which uses sigmoid neuron decides which path to follow
+    - training on distilled DNN predictions outperforms training on original labels
+    - to make the decision closer to a hard cut, can multiply by a large scalar before applying sigmoid
+    - parameters updated with backprop
+    - regularization to ensure that all paths are taken equally likely
+  - [Learning Binary Decision Trees by Argmin Differentiation](https://arxiv.org/abs/2010.04627) (zantedeschi et al. 2021)
+    - argmin differentiation - solving an optimization problem as a differentiable module within a parent problem tackled with gradient-based optimization methods
+    - relax hard splits into soft ones and learn via gradient descent
+  - [Optimizing for Interpretability in Deep Neural Networks with Tree Regularization | Journal of Artificial Intelligence Research](https://www.jair.org/index.php/jair/article/view/12558) (wu...doshi-velez, 2021) - regularize DNN prediction function towards tree (potentially only for some region)
+  - [Adaptive Neural Trees](http://proceedings.mlr.press/v97/tanno19a.html?utm_campaign=piqcy&utm_medium=email&utm_source=Revue%20newsletter) (tanno et al. 2019) - adaptive neural tree mechanism with trainable nodes, edges, and leaves
+- loosely interpretable
+  - [Attention Convolutional Binary Neural Tree for Fine-Grained Visual Categorization](https://openaccess.thecvf.com/content_CVPR_2020/html/Ji_Attention_Convolutional_Binary_Neural_Tree_for_Fine-Grained_Visual_Categorization_CVPR_2020_paper.html) (ji et al. 2020)
+  - [Oblique Decision Trees from Derivatives of ReLU Networks](https://arxiv.org/abs/1909.13488) (lee & jaakkola, 2020)
+    - locally constant networks (which are derivatives of relu networks) are equivalent to trees
+    - they perform well and can use DNN tools e.g. Dropconnect on them
+- incorporating prior knowledge
+  - [Controlling Neural Networks with Rule Representations](https://arxiv.org/abs/2106.07804) (seo, ..., pfister, 21)
+    - DEEPCTRL - encodes rules into DNN
+      - one encoder for rules, one for data
+        - both are concatenated with stochastic parameter $\alpha$ (which also weights the loss)
+        - at test-time, can select $\alpha$ to vary contribution of rule part can be varied (e.g. if rule doesn't apply to a certain point)
+      - training
+        - normalize losses initially to ensure they are on the same scale
+        - some rules can be made differentiable in a straightforward way: $r(x, \hat y) \leq \tau \to \max (r(x, \hat y ) - \tau, 0)$, but can't do this for everything e.g. decision tree rules
+        - rule-based loss is defined by looking at predictions fo perturbations of the input
+      - evaluation
+        - `verification ratio` - fraction of samples that satisfy the rule
+      - see also [Lagrangian Duality for Constrained Deep Learning](https://arxiv.org/abs/2001.09394) (fioretto et al. 2020)
+  - [RRL: A Scalable Classifier for Interpretable Rule-Based Representation Learning](https://openreview.net/forum?id=UwOMufsTqCy) (wang et al. 2020)
+    - Rule-based Representation Learner (RRL) - automatically learns interpretable non-fuzzy rules for data representation
+    - project RRL it to a continuous space and propose a novel training method, called Gradient Grafting, that can directly optimize the discrete model using gradient descent
+  - [Harnessing Deep Neural Networks with Logic Rules](https://arxiv.org/pdf/1603.06318.pdf) (hu, ..., xing, 2020) - iterative distillation method that transfers the structured information of logic rules into the weights of neural networks
+- just trying to improve performance
+  - [Neural Random Forests](https://link.springer.com/article/10.1007/s13171-018-0133-y) (biau et al. 2018) - convert DNN to RF
+    - first layer learns a node for each split
+    - second layer learns a node for each leaf (by only connecting to nodes on leaves in the path)
+    - finally map each leaf to a value
+    - relax + retrain
+    - [Gradient Boosted Decision Tree Neural Network](https://arxiv.org/abs/1910.09340) - build DNN based on decision tree ensemble - basically the same but with gradient-boosted trees
+  - these papers are basically learning trees via backprop, where splits are "smoothed" during training
+    - [End-to-End Learning of Decision Trees and Forests](https://link.springer.com/article/10.1007/s11263-019-01237-6)
+    - [SDTR: Soft Decision Tree Regressor for Tabular Data](https://ieeexplore.ieee.org/document/9393908)
+  - [Deep Neural Decision Forests](https://openaccess.thecvf.com/content_iccv_2015/papers /Kontschieder_Deep_Neural_Decision_ICCV_2015_paper.pdf) (2015)
+    - dnn learns small intermediate representation, which outputs all possible splits in a tree
+    - these splits are forced into a tree-structure and optimized via SGD
+      - neurons use sigmoid function
+  - [Neural Decision Trees](https://arxiv.org/abs/1702.07360) - treat each neural net like a node in a tree
+  - [Differentiable Pattern Set Mining](http://eda.mmci.uni-saarland.de/pubs/2021/binaps-fischer,vreeken.pdf) (fischer & vreeken, 2021)
+    - use neural autoencoder with binary activations + binarizing weights
+    - optimizing a data-sparsity aware reconstruction loss, continuous versions of the weights are learned in small, noisy steps
+
 
 
 ## constrained models
@@ -703,7 +703,7 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
       - to find region in which to permute, define the grid within which the values of $X_j$ are permuted for each tree by means of the partition of the feature space induced by that tree
     - many scores (such as MDI, MDA) measure marginal importance, not conditional importance
       - as a result, correlated variables get importances which are too high
-- [Extracting Optimal Explanations for Ensemble Trees via Logical Reasoning](https://arxiv.org/abs/2103.02191) (zhang et al. '21) - OptExplain - extracts global explanation of tree ensembles using logical reasoning, sampling, + optimization
+- [Extracting Optimal Explanations for Ensemble Trees via Logical Reasoning](https://arxiv.org/abs/2103.02191) (zhang et al. '21) - OptExplain: extracts global explanation of tree ensembles using logical reasoning, sampling, + optimization
 - [treeshap](https://arxiv.org/abs/1802.03888) (lundberg, erion & lee, 2019): prediction-level
   - individual feature attribution: want to decompose prediction into sum of attributions for each feature
     - each thing can depend on all features
@@ -901,6 +901,7 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
     - [Do Input Gradients Highlight Discriminative Features?](https://arxiv.org/abs/2102.12781) (shah et a. 2021) - input gradients often don't highlight relevant features (they work better for adv. robust models)
         - prove/demonstrate this in synthetic dataset where $x=ye_i$ for standard basis vector $e_i$, $y=\{\pm 1\}$
 - newer methods
+    - [Quantifying Attention Flow in Transformers](https://arxiv.org/abs/2005.00928) (abnar & zuidema) - solves the problem where the attention of the previous layer is  combined nonlinearly with the attention of the next layer by introducing **attention rollout** - combining attention maps and assuming linearity
     - [Score-CAM:Improved Visual Explanations Via Score-Weighted Class Activation Mapping](https://arxiv.org/abs/1910.01279)
     - [Removing input features via a generative model to explain their attributions to classifier's decisions](https://arxiv.org/abs/1910.04256)
     - [NeuroMask: Explaining Predictions of Deep Neural Networks through Mask Learning](https://ieeexplore.ieee.org/abstract/document/8784063)
@@ -913,6 +914,7 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
     - [Gradient Weighted Superpixels for Interpretability in CNNs](https://arxiv.org/abs/1908.08997)
     - [Decision Explanation and Feature Importance for Invertible Networks](https://arxiv.org/abs/1910.00406) (mundhenk et al. 2019)
     - [Efficient Saliency Maps for Explainable AI](https://deepai.org/publication/efficient-saliency-maps-for-explainable-ai) 
+    
 
 
 
@@ -973,14 +975,23 @@ How interactions are defined and summarized is a very difficult thing to specify
     - iteratively refit RF, weighting probability of feature being selected by its previous MDI
 - [Additive groves](https://link.springer.com/chapter/10.1007/978-3-540-74958-5_31) (Sorokina, carauna, & riedewald 2007) proposed use random forest with and without an interaction (forcibly removed) to detect feature interactions - very slow
   - [additive groves interaction followup](https://www.ccs.neu.edu/home/mirek/papers/2008-ICML-Interactions.pdf)
-- [bayesian decision tree ensembles for interaction detection](https://arxiv.org/abs/1809.08524) (du & linero, 2018) - Dirichlet process forests (DP-Forests) leverage the presence of low-order interactions by clustering the trees so that trees within the same cluster focus on detecting a specific interaction
+- SBART: Bayesian regression tree ensembles that adapt to smoothness and sparsity ([linero & yang, 2018](https://rss.onlinelibrary.wiley.com/doi/full/10.1111/rssb.12293?casa_token=Pj1jdf_Cdy0AAAAA%3AWLdBFv0Y9oC5i8CUfAFDWuXR9WCww4Vne9pQazuUhIq7cFiaUZhUe8g3NlzydWch1WHtMtcSa95Q66lqGw)) - adapts BART to sparsity
+- DP-Forests: [bayesian decision tree ensembles for interaction detection](https://arxiv.org/abs/1809.08524) (du & linero, 2018)
+  - Bayesian tree ensembles (e.g. BART) generally detect too many (high-order) interactions
+  - Dirichlet-process forests (DP-Forests) emphasize low-order interactions
+    - create groups of trees which each use non-overlapping features
+    - hopefully, each group learns a single low-order interaction
+    - dirichlet process prior is used to pick the number of groups
+      - $\alpha$ parameter for Dirichlet process describes how strongly to enforce this grouping
+  - interaction definition: $x_{j}$ and $x_{k}$ are interact if $f_{0}(x)$ cannot be written as $f_{0}(x)=f_{0 \backslash j}(x)+f_{0 \backslash k}(x)$ where $f_{0 \backslash j}$ and $f_{0 \backslash k}$ do not depend on $x_{j}$ and $x_{k}$ respectively
+
+
 
 ### dnn interactions
 
-- [hierarchical interpretations for neural network predictions](https://arxiv.org/abs/1806.05337) (singh et al. 2019)
+- ACD: hierarchical interpretations for neural network predictions ([singh et al. 2019](https://arxiv.org/abs/1806.05337))
   - [contextual decomposition](https://arxiv.org/abs/1801.05453) (murdoch et al. 2018)
-  - ACD followup work
-    - [Towards Hierarchical Importance Attribution: Explaining Compositional Semantics for Neural Sequence Models](https://openreview.net/forum?id=BkxRRkSKwr)
+  - [Towards Hierarchical Importance Attribution: Explaining Compositional Semantics for Neural Sequence Models](https://openreview.net/forum?id=BkxRRkSKwr)
   - [Compositional Explanations for Image Classifiers](https://arxiv.org/abs/2103.03622) (chockler et al. 21) - use perturbation-based interpretations to greedily search for pixels which increase prediction the most (simpler version of ACD)
 - [Detecting Statistical Interactions from Neural Network Weights](https://arxiv.org/abs/1705.04977) - interacting inputs must follow strongly weighted connections to a common hidden unit before the final output
   - [Neural interaction transparency (NIT)](https://dl.acm.org/citation.cfm?id=3327482) (tsang et al. 2017)
@@ -989,6 +1000,15 @@ How interactions are defined and summarized is a very difficult thing to specify
 - [Interpretable Artificial Intelligence through the Lens of Feature Interaction](https://arxiv.org/abs/2103.03103) (tsang et al. 2021)
   - feature interaction- any non-additive effect between multiple features on an outcome (i.e. cannot be decomposed into a sum of subfunctions of individual variables)
 - [Learning Global Pairwise Interactions with Bayesian Neural Networks](https://arxiv.org/abs/1901.08361) (cui et al. 2020) - Bayesian Group Expected Hessian (GEH) - train bayesian neural net and analyze hessian to understand interactions
+
+### linear interactions
+
+- often use "hierarchy" or "heredity" constraint - means interaction term is only added when both main effects are also included
+- hierarchical group lasso ([lim & hastie, 2015](https://pubmed.ncbi.nlm.nih.gov/26759522/)) - learns pairwise interactions in a linear model
+  - uses hierarchy constraint
+- VANISH: [Variable Selection Using Adaptive Nonlinear Interaction Structures in High Dimensions](https://www.tandfonline.com/doi/abs/10.1198/jasa.2010.tm10130?casa_token=HhKY3HXj0fYAAAAA:vTRgqAqWy3DZ9r9vXEinQOZbWuctLPA3J9bACTbrnKIkUPV19yqaDV5zr9dD6IiTrYXsj6HT_kDYNN8) (radchenko & james, 2012) - learns pairwise interactions via basis function expansions
+  - uses hierarchiy constraint
+
 
 ## example-based explanations
 

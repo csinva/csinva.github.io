@@ -75,8 +75,8 @@ category: research
     - estimate uncertainty of highly confident points using earlier snapshots of the trained model
 - [Contextual Outlier Interpretation](https://arxiv.org/abs/1711.10589) (liu et al. 2018) - describe outliers with 3 things: outlierness score, attributes that contribute to the abnormality, and contextual description of its neighborhoods
     - [Energy-based Out-of-distribution Detection](https://arxiv.org/abs/2010.03759) (liu et al. 2021)
-
 - [Getting a CLUE: A Method for Explaining Uncertainty Estimates](https://arxiv.org/abs/2006.06848) 
+- [The Right Tool for the Job: Matching Model and Instance Complexities - ACL Anthology](https://aclanthology.org/2020.acl-main.593/) - at each layer, model outputs a prediction - if it's confident enough it returns, otherwise it continues on to the next layer
 
 ## nearest-neighbor methods
 
@@ -112,3 +112,17 @@ category: research
   - dropout at test time gives you uncertainty
 - [SWAG](https://papers.nips.cc/paper/9472-a-simple-baseline-for-bayesian-uncertainty-in-deep-learning.pdf) (maddox et al. 2019) - start with pre-trained net then get Gaussian distr. over weights by training with large constant setp-size
 - [Efficient and Scalable Bayesian Neural Nets with Rank-1 Factors](https://arxiv.org/abs/2005.07186) (dusenberry, jerfel et al. 2020) - BNNs scale to SGD-level with better calibration
+
+
+
+# conformal inference
+
+- conformal inference constructs valid (wrt coverage error) prediction bands for individual forecasts
+  - relies on few parametric assumptions
+  - holds in finite samples for any distribution of (X, Y) and any algorithm $\hat f$
+  - starts with vovk et al. '90
+- simple example: construct a 95% interval for a new sample (not mean) by just looking at percentiles of the empirical data
+  - empirical data tends to undercover (since empirical residuals tend to underestimate variance) - conformal inference aims to rectify this
+- [Uncertainty Sets for Image Classifiers using Conformal Prediction](https://arxiv.org/abs/2009.14193)
+  - Image-to-Image Regression with Distribution-Free Uncertainty Quantification and Applications in Imaging ([Angelopoulos, ...jordan, malik, upadhyayula, roman, '22](https://arxiv.org/pdf/2202.05265.pdf))
+    - pixel-level uncertainties

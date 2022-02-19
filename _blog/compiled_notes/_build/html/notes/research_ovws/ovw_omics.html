@@ -871,18 +871,58 @@
 </div>
 <div class="section" id="d-rna-structure-prediction">
 <h3>1.4.2.3. 3d rna structure prediction<a class="headerlink" href="#d-rna-structure-prediction" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>startup <a class="reference external" href="https://atomic.ai/">atomic ai</a> works on this</p></li>
-<li><p><a class="reference external" href="https://www.science.org/doi/10.1126/science.abe5650">Geometric deep learning of RNA structure | science</a> (townshend, …, dror 2021)</p>
 <ul>
-<li><p>scoring model - gives energy function for (primary sequence, structure) pair</p></li>
-<li><p>townshend is at atomic ai</p></li>
+<li><p>Geometric deep learning of RNA structure  (<a class="reference external" href="https://www.science.org/doi/10.1126/science.abe5650">townshend, …, dror 2021</a> - atomic ai + stanford, <em>science</em>)</p>
+<ul class="simple">
+<li><p>uses neural network as scoring mode (called ARES = Atomic Rotationally Equivariant Scorer)</p>
+<ul>
+<li><p>this gives energy function for (primary sequence, structure) pair</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://www.frontiersin.org/articles/10.3389/fmolb.2021.720937/full">Frontiers | RNA 3D Structure Prediction Using Coarse-Grained Models | Molecular Biosciences</a> (li &amp; chen, 2021)</p></li>
-<li><p>older</p>
+<li><p>architecture</p>
 <ul>
-<li><p><a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/18579566/">iFoldRNA: three-dimensional RNA structure prediction and folding - PubMed</a> (sharma et al. 2008)</p></li>
+<li><p>captures rotational + translational symmetries</p></li>
+</ul>
+</li>
+<li><p>startup <a class="reference external" href="https://atomic.ai/">atomic ai</a> works on this</p></li>
+<li><p>trained with only 18 known RNA structures</p></li>
+<li><p>uses only atomic coordinates as inputs and incorporates no RNA-specific information</p></li>
+</ul>
+</li>
+<li><p>Review: RNA 3D Structure Prediction Using Coarse-Grained Model (<a class="reference external" href="https://www.frontiersin.org/articles/10.3389/fmolb.2021.720937/full">li &amp; chen, 2021</a>)</p>
+<ul>
+<li><p>all-atom - more precise, each nucleotide models ~20 heavy atoms + ~10 hydrogen atoms - relatively rare</p></li>
+<li><p>coarse-grained - less precise</p></li>
+<li><p>steps</p>
+<ol class="simple">
+<li><p>input - RNA sequence + optinal secondary structure + more (e.g. distance between some atom pairs)</p></li>
+<li><p>sampling - includes discriminator (=scoring function = (potential) energy function = force field) and generator</p></li>
+</ol>
+<ul class="simple">
+<li><p>generator proposes new structures (e.g. MCMC)</p></li>
+<li><p>discriminator decides which is the most stable - 3 types of energy to consider</p></li>
+</ul>
+<ol class="simple">
+<li><p>output - sometimes pick lowest energy structure, somestimes cluster low-energy clusters and pick centroid</p></li>
+<li><p>all-atom structure reconstruction - the fragment matching algorithm (<a class="reference external" href="https://academic.oup.com/bioinformatics/article-abstract/25/24/3259/235032">Jonikas et al., 2009a</a>) is often used, followed by structure refinement to remove steric clashes and chain breaks</p></li>
+</ol>
+</li>
+<li><p>12 papers that differ slightly in these steps</p>
+<ul class="simple">
+<li><p>ex. graph-based: 2d structure mapped to a graph</p></li>
+<li><p>three open-source papers that yield all-atom structure</p>
+<ul>
+<li><p><strong>IsRNA1</strong>: <em>De Novo</em> Prediction and Blind Screening of RNA 3D Structures (<a class="reference external" href="https://pubs.acs.org/doi/abs/10.1021/acs.jctc.0c01148">zhang et al. 2021</a>)</p>
+<ul>
+<li><p>origina IsRNA (<a class="reference external" href="https://pubs.acs.org/doi/abs/10.1021/acs.jctc.7b01228">zhang &amp; chen, 2018</a>)</p></li>
+</ul>
+</li>
+<li><p><strong>iFoldRNA</strong>: three-dimensional RNA structure prediction and folding (<a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/18579566/">sharma et al. 2008</a> )</p></li>
+<li><p><strong>SimRNA</strong> (<a class="reference external" href="https://academic.oup.com/nar/article-abstract/44/7/e63/2467805">boiecki et al. 2016</a>)</p></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -896,6 +936,7 @@
 <li><p>the standard way to obtain the 3D structure of a protein is X-ray crystallography</p>
 <ul>
 <li><p>takes ~1 year &amp;  $120k to obtain the structure of a single protein through X-ray crystallography (<a class="reference external" href="https://fortune.com/2020/11/30/deepmind-protein-folding-breakthrough/">source</a>)</p></li>
+<li><p>alternative: nuclear magnetic resonance (NMR) spectroscopy</p></li>
 </ul>
 </li>
 <li><p>on average, a protein is composed of 300 amino acids (residues)</p>
@@ -985,6 +1026,7 @@
 </li>
 </ul>
 </li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2202.05146">EquiBind: Geometric Deep Learning for Drug Binding Structure Prediction</a></p></li>
 </ul>
 </div>
 <div class="section" id="covid">
@@ -1042,6 +1084,12 @@
 <ul>
 <li><p>viral load will immediately be lower</p></li>
 <li><p>superspreaders can spread treatment to others</p></li>
+<li><p>can take before exposure as well (although harder to get approval for this)</p></li>
+</ul>
+</li>
+<li><p>note: HIV mutates very fast so a TIP in a single person sees a lot of variants</p>
+<ul>
+<li><p>HIP also enters the genome (so corresponding TIP does this as well)</p></li>
 </ul>
 </li>
 <li><p><a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0092867421013192?dgcid=coauthor">Identification of a therapeutic interfering particle—A single-dose SARS-CoV-2 antiviral intervention with a high barrier to resistance</a> (chaturvedi…weinberger, 2021)</p>

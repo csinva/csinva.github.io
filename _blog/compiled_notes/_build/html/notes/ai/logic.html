@@ -634,38 +634,43 @@
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fuzzy-logic-lofti-zadeh">
+   6.6.5. fuzzy logic (lofti zadeh)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#foundations-of-rule-learning-furnkranz-et-al-2014">
-   6.6.5. foundations of rule learning (furnkranz et al. 2014)
+   6.6.6. foundations of rule learning (furnkranz et al. 2014)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#categorization-of-tasks-ch-1">
-     6.6.5.1. categorization of tasks (ch 1)
+     6.6.6.1. categorization of tasks (ch 1)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#basics-of-learning-rules-ch-2">
-     6.6.5.2. basics of learning rules (ch 2)
+     6.6.6.2. basics of learning rules (ch 2)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#binary-split-features-ch-4">
-     6.6.5.3. (binary split) features (ch 4)
+     6.6.6.3. (binary split) features (ch 4)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#relational-features-ch-5">
-     6.6.5.4. relational features (ch 5)
+     6.6.6.4. relational features (ch 5)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#learning-single-rules-ch-6">
-     6.6.5.5. learning single rules (ch 6)
+     6.6.6.5. learning single rules (ch 6)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#rule-evaluation-measures-ch-7">
-     6.6.5.6. rule evaluation measures (ch 7)
+     6.6.6.6. rule evaluation measures (ch 7)
     </a>
    </li>
   </ul>
@@ -1117,8 +1122,20 @@
 </ul>
 </div>
 </div>
+<div class="section" id="fuzzy-logic-lofti-zadeh">
+<h2>6.6.5. fuzzy logic (lofti zadeh)<a class="headerlink" href="#fuzzy-logic-lofti-zadeh" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>ex <a class="reference external" href="https://towardsdatascience.com/a-very-brief-introduction-to-fuzzy-logic-and-fuzzy-systems-d68d14b3a3b8">blog post</a></p></li>
+<li><p>fuzzy sets - instead of binary membership, can have partial membership <span class="math notranslate nohighlight">\(\in [0, 1]\)</span></p>
+<ul>
+<li><p>intersection of sets - usually take min over memberships</p></li>
+<li><p>union of sets - usually take max over memberships</p></li>
+</ul>
+</li>
+</ul>
+</div>
 <div class="section" id="foundations-of-rule-learning-furnkranz-et-al-2014">
-<h2>6.6.5. <a class="reference external" href="https://dl.acm.org/citation.cfm?id=2788240">foundations of rule learning</a> (furnkranz et al. 2014)<a class="headerlink" href="#foundations-of-rule-learning-furnkranz-et-al-2014" title="Permalink to this headline">¶</a></h2>
+<h2>6.6.6. <a class="reference external" href="https://dl.acm.org/citation.cfm?id=2788240">foundations of rule learning</a> (furnkranz et al. 2014)<a class="headerlink" href="#foundations-of-rule-learning-furnkranz-et-al-2014" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>terminology - rule has a condition (conjunctive of binary features) + a conclusion = implication</p>
 <ul>
@@ -1139,7 +1156,7 @@
 </li>
 </ul>
 <div class="section" id="categorization-of-tasks-ch-1">
-<h3>6.6.5.1. categorization of tasks (ch 1)<a class="headerlink" href="#categorization-of-tasks-ch-1" title="Permalink to this headline">¶</a></h3>
+<h3>6.6.6.1. categorization of tasks (ch 1)<a class="headerlink" href="#categorization-of-tasks-ch-1" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>historically, a lot of this was developed in the data mining community and gave rise to packages such as WEKA, RAPID-I, KNIME, ORANGE</p>
 <ul>
@@ -1168,7 +1185,7 @@
 </ul>
 </div>
 <div class="section" id="basics-of-learning-rules-ch-2">
-<h3>6.6.5.2. basics of learning rules (ch 2)<a class="headerlink" href="#basics-of-learning-rules-ch-2" title="Permalink to this headline">¶</a></h3>
+<h3>6.6.6.2. basics of learning rules (ch 2)<a class="headerlink" href="#basics-of-learning-rules-ch-2" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>finding rules is basically a search problem</p>
 <ul>
@@ -1194,7 +1211,7 @@
 </ul>
 </div>
 <div class="section" id="binary-split-features-ch-4">
-<h3>6.6.5.3. (binary split) features (ch 4)<a class="headerlink" href="#binary-split-features-ch-4" title="Permalink to this headline">¶</a></h3>
+<h3>6.6.6.3. (binary split) features (ch 4)<a class="headerlink" href="#binary-split-features-ch-4" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>here, feature means something binary that we split on</p></li>
 <li><p>selector is smth of the form <span class="math notranslate nohighlight">\(A_i \sim v_{i, j}\)</span> where relation <span class="math notranslate nohighlight">\(\sim\)</span> is like <span class="math notranslate nohighlight">\(=, &gt;=, &lt;=\)</span></p>
@@ -1252,7 +1269,7 @@
 </ul>
 </div>
 <div class="section" id="relational-features-ch-5">
-<h3>6.6.5.4. relational features (ch 5)<a class="headerlink" href="#relational-features-ch-5" title="Permalink to this headline">¶</a></h3>
+<h3>6.6.6.4. relational features (ch 5)<a class="headerlink" href="#relational-features-ch-5" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>these kinds of task use relational background knowledge + databases</p>
 <ul>
@@ -1263,7 +1280,7 @@
 </ul>
 </div>
 <div class="section" id="learning-single-rules-ch-6">
-<h3>6.6.5.5. learning single rules (ch 6)<a class="headerlink" href="#learning-single-rules-ch-6" title="Permalink to this headline">¶</a></h3>
+<h3>6.6.6.5. learning single rules (ch 6)<a class="headerlink" href="#learning-single-rules-ch-6" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>search problem to maximize some criteria subject to some constraints</p>
 <ul>
@@ -1287,7 +1304,7 @@
 </ul>
 </div>
 <div class="section" id="rule-evaluation-measures-ch-7">
-<h3>6.6.5.6. rule evaluation measures (ch 7)<a class="headerlink" href="#rule-evaluation-measures-ch-7" title="Permalink to this headline">¶</a></h3>
+<h3>6.6.6.6. rule evaluation measures (ch 7)<a class="headerlink" href="#rule-evaluation-measures-ch-7" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>sometimes we only evaluate the quality of covered rules (e.g. rule list) whereas sometimes we evaluate quality of disjoint sets (e.g. both sides of decision tree split)</p></li>
 <li><p>common heuristics are rules that cover a lots of samples or rules that are simple</p></li>
