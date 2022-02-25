@@ -5,7 +5,7 @@ title: presentations
 
 *Links to many of my presentations*
 
-### in progress
+## in progress
 
 - [animated thesis](https://docs.google.com/presentation/d/1TGTwvh1qOUDcSmn4xlFDK5D-j54PUs3IMAxsRL19LYA/edit#slide=id.g11022bc8220_0_8)
 - [thesis slides](https://docs.google.com/presentation/d/1IyxCrB5Ol8RsvFBTTy4Y5DQH3TxS9Wgl7Pxt1thrBBY/edit)
@@ -14,7 +14,7 @@ title: presentations
 - [title slide](https://docs.google.com/presentation/d/1gvYfUkb-7yCXUUerBbgsOhGT82lj2ZPTYPop1qvSVzE/edit#slide=id.ga03c02da4e_0_126)
   - [title slide old](https://docs.google.com/presentation/d/13GyKciZZ1zZWmWqCSksvZtGpydAkDjOL0lYVr75kpAU/edit)
 
-### phd dnn-interp overview talks
+## phd dnn-interp overview talks
 
 <details>
 <summary>Abstract</summary>
@@ -91,8 +91,10 @@ Deep learning models have achieved impressive predictive performance by learning
     - [faces midterm pres](https://docs.google.com/presentation/d/1YxSZtsSOdQ_OZYgctFE1Cgfymv0cmBTzNDkt68d-RE0/present?slide=id.p)
     - [faces lit rvw](https://docs.google.com/presentation/d/1C6l4qq0O_-SosHswPwqo3ixJweMI8gkNku9crzZMw80/present?slide=id.p)
 - [sensible local interpretations](https://docs.google.com/presentation/d/1tKVgg2bo7jSgE8TMyt15VAOkGhDPncFpMnZ-mmtoMNI/edit#slide=id.p) (5 min update for pacmed internship)
+- [semantic segmentation (facebook pres)](https://docs.google.com/presentation/d/1n_EImcRN8_R-smL6h-Gfxa11vsUczljj/present?slide=id.p1)
 - [dnn experiments](http://csinva.github.io/pres/dnn_experiments/#/)
-- - [deep learning trends 2020](https://docs.google.com/presentation/d/15NRwGfKyGkcDIDKYwoq82PXdJrkJeRmSQfUbk5oQvuM/edit#slide=id.g8da3737a00_0_24)
+    - [deep learning trends 2020](https://docs.google.com/presentation/d/15NRwGfKyGkcDIDKYwoq82PXdJrkJeRmSQfUbk5oQvuM/edit#slide=id.g8da3737a00_0_24)
+
 
 ### teaching
 - [machine learning (cs 189)](https://csinva.github.io/pres/189/#/)
@@ -105,7 +107,7 @@ Deep learning models have achieved impressive predictive performance by learning
 - [hummingbird tracking](https://docs.google.com/presentation/d/15iygjXGLu7Ha096GwMV5t6sjP7IPcTHqimPkTDwrpPI/present?slide=id.p)
 
 ### undergrad
-- [facebook pres](https://docs.google.com/presentation/d/1n_EImcRN8_R-smL6h-Gfxa11vsUczljj/present?slide=id.p1)
+
 - [wsimule urds](https://docs.google.com/presentation/d/1GO6lN5o2idozOUdnObXGnXKFbZiJiKKKkmx73uE4BAI/present?slide=id.p) (5 min talk given at URDS 2017)
     - [wsimule tomtom](https://docs.google.com/presentation/d/1KghayB2g8u5xwVuILzT4XtalKi3rerVROaoRb6RUVBk/edit) (10 min talk given at Tom Tom 2017)
     - [wsimule slide](/assets/write_ups/wsimule_17_nips_slide.pdf) (1 min pres. given at AMLCID Neurips 2017 workshop)
@@ -135,8 +137,23 @@ Deep learning models have achieved impressive predictive performance by learning
     - [UC Berkeley Researchers Introduce 'imodels: A Python Package For Fitting Interpretable Machine Learning Models - MarkTechPost](https://www.marktechpost.com/2022/02/10/uc-berkeley-researchers-introduce-imodels-a-python-package-for-fitting-interpretable-machine-learning-models/)
     - [UC Berkeley researchers develop a Python library for predictive modelling](https://analyticsindiamag.com/uc-berkeley-researchers-develop-a-python-library-for-predictive-modelling/)
   
+
 ### bios
+
 <details>
 <summary>One-paragraph bio (jan 2022)</summary>
 Deep learning models have achieved impressive predictive performance by learning complex functions of many variables, often at the cost of interpretability. I will discuss a recent line of work aiming to interpret neural networks by attributing importance to features and feature interactions for individual predictions. Importantly, the proposed methods disentangle the importance of features in isolation and the interactions between groups of features. These attributions significantly enhance interpretability and can be used to directly improve generalization in interesting ways. I will showcase how we have worked with domain experts to make these attributions useful in different computer vision settings, including in bioimaging and cosmology.
+</details>
+
+<details>
+<summary>2-sentence bio (feb 2022)</summary>
+Chandan is a fifth and final-year PhD student in computer science. He hopes to build on recent advances in machine-learning to improve the world of healthcare.His research focuses on how to interpret machine-learning models with the goal of ensuring that they can be reliably used when someone’s health is at stake.
+</details>
+
+<details>
+<summary>4-paragraph research overview (feb 2022)</summary>
+<p>🔎 My research focuses on how we can build trustworthy machine-learning systems by making them interpretable. In my work, interpretability is grounded seriously via close collaboration with domain experts, e.g. medical doctors or cell biologists. These collaborations have given rise to useful methodology, roughly split into two areas: (1) building more effective <em>transparent models</em> and (2) improving the trustworthiness of <em>black-box models</em>. Going forward, I hope to help bridge the gap between transparent models and black-box models to improve real-world healthcare.</p>
+<p>🌳 Whever possible, building transparent models is the most effective route towards ensuring interpretability. Transparent models are interpretable by design, including models such as (concise) decision trees, rule lists, and linear models. My work in this area was largely motivated by the problem of <a href="">clinical decision-rule development</a>. Clinical decision rules (especially those used in emergency medicine), need to be extremely transparent so they can be readily audited and used by physicians making split-second decisions. To this end, we have developed methodology for enhancing decision trees. For example, replacing the standard CART algorithm with a novel <a href="https://arxiv.org/abs/2201.11931">greedy algorithm</a> for tree-sums can substantially improve predictive performance without sacrificing predictive performance. Additionally, <a href="https://arxiv.org/abs/2202.00858">hierarchical regularization</a> can improve the predictions of an already fitted model without altering its interpretability. Despite their effectiveness, transparent models such as these often get overlooked in favor of black-box models; to address thie issue, we&#39;ve spent a lot of time curating <a href="https://github.com/csinva/imodels">imodels</a>, an open-source package for fitting state-of-the-art transparent models.</p>
+<p>🌀 My second line of my work focuses on interpreting and improving black-box models, such as neural networks, for the cases when a transparent model simply can&#39;t predict well enough. Here, I work closely on real-world problems such as analyzing imaging data from <a href="">cell biology</a> and <a href="https://arxiv.org/abs/2003.01926">cosmology</a>. Interpretability in these contexts demands more nuanced information than standard notions of &quot;feature importance; common in the literature. As a result, we have developed methods to characterize and summarize the <a href="https://arxiv.org/abs/1806.05337">interactions</a> in a neural network, particularly in <a href="https://arxiv.org/abs/2003.01926">transformed domains</a> (such as the Fourier domain), where domain interpretations can be more natural. I&#39;m particularly interested in how we can ensure that these interpretations are <em>useful</em>, either by using them to <a href="http://proceedings.mlr.press/v119/rieger20a.html">embed prior knowledge</a> into a model or identify when it can be trusted.</p>
+<p>🤝 There is a lot more work to do on bridging the gap between transparent models and black-box models in the real world. One promising avenue is distillation, whereby we can use a black-box model to build a better transparent model. For example, in <a href="https://proceedings.neurips.cc/paper/2021/hash/acaa23f71f963e96c8847585e71352d6-Abstract.html">one work</a> we were able to distill state-of-the-art neural networks in cell-biology and cosmology into transparent wavelet models with &lt;40 parameters. Despite this huge size reduction, these models actually <em>improve</em> prediction performance. By incorporating close domain knowledge into models and the way we approach problems, I believe interpretability can help unlock many benefits of machine-learning for improving healthcare and science.</p>
 </details>

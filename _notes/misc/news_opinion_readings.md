@@ -2,9 +2,12 @@
 
 # 2022
 
+- [Opinion | Laundered Money Could Be Putin’s Achilles’ Heel - The New York Times](https://www.nytimes.com/2022/02/24/opinion/russia-ukraine-sanctions-offshore-accounts.html)
+  - The Europeans, unfortunately, have fecklessly allowed themselves to become [highly dependent](https://www.bruegel.org/2022/01/can-europe-survive-painlessly-without-russian-gas/) on imports of Russian natural gas.
+  - can go after the vast overseas wealth of the oligarchs who surround Putin and help him stay in power.
+  
 - [Opinion | Wealth Inequality Drives the Appeal of Crypto - The New York Times](https://www.nytimes.com/2022/01/31/opinion/crypto-nfts-inequality.html)
   - "The only way a technology that solves a problem that no one knows they have — a “disruptive” technology — becomes culturally powerful is that someone has to subsidize it until it becomes profitable"
-
 - [China's Covid-Era Controls May Outlast the Coronavirus - The New York Times](https://www.nytimes.com/2022/01/30/world/asia/covid-restrictions-china-lockdown.html)
 - [Opinion | When I Applied to College, I Didn’t Want to ‘Sell My Pain’ - The New York Times](https://www.nytimes.com/2021/05/09/opinion/college-admissions-essays-trauma.html)
 - [The myth of the "great resignation" - Slow Boring](https://www.slowboring.com/p/the-myth-of-the-great-resignation)

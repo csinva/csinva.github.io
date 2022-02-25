@@ -1,4 +1,51 @@
-<h2 style="text-align: center;"> Research </h2>
+<h2 style="text-align: center;"> Research
+<details class="research_details">
+    <summary> View research overview</summary>
+    <div class="research_details_text">
+    <p>🔎 My research focuses on how we can build trustworthy machine-learning systems by making them interpretable. In
+        my work, interpretability is grounded seriously via close collaboration with domain experts, e.g. medical
+        doctors or cell biologists. These collaborations have given rise to useful methodology, roughly split into two
+        areas: (1) building more effective <em>transparent models</em> and (2) improving the trustworthiness of <em>black-box
+            models</em>. Going forward, I hope to help bridge the gap between transparent models and black-box models to
+        improve real-world healthcare.</p>
+    <p>🌳 Whever possible, building transparent models is the most effective route towards ensuring interpretability.
+        Transparent models are interpretable by design, including models such as (concise) decision trees, rule lists,
+        and linear models. My work in this area was largely motivated by the problem of <a href="">clinical
+            decision-rule development</a>. Clinical decision rules (especially those used in emergency medicine), need
+        to be extremely transparent so they can be readily audited and used by physicians making split-second decisions.
+        To this end, we have developed methodology for enhancing decision trees. For example, replacing the standard
+        CART algorithm with a novel <a href="https://arxiv.org/abs/2201.11931">greedy algorithm</a> for tree-sums can
+        substantially improve predictive performance without sacrificing predictive performance. Additionally, <a
+                href="https://arxiv.org/abs/2202.00858">hierarchical regularization</a> can improve the predictions of
+        an already fitted model without altering its interpretability. Despite their effectiveness, transparent models
+        such as these often get overlooked in favor of black-box models; to address thie issue, we&#39;ve spent a lot of
+        time curating <a href="https://github.com/csinva/imodels">imodels</a>, an open-source package for fitting
+        state-of-the-art transparent models.</p>
+    <p>🌀 My second line of my work focuses on interpreting and improving black-box models, such as neural networks, for
+        the cases when a transparent model simply can&#39;t predict well enough. Here, I work closely on real-world
+        problems such as analyzing imaging data from <a href="">cell biology</a> and <a
+                href="https://arxiv.org/abs/2003.01926">cosmology</a>. Interpretability in these contexts demands more
+        nuanced information than standard notions of &quot;feature importance; common in the literature. As a result, we
+        have developed methods to characterize and summarize the <a
+                href="https://arxiv.org/abs/1806.05337">interactions</a> in a neural network, particularly in <a
+                href="https://arxiv.org/abs/2003.01926">transformed domains</a> (such as the Fourier domain), where
+        domain interpretations can be more natural. I&#39;m particularly interested in how we can ensure that these
+        interpretations are <em>useful</em>, either by using them to <a
+                href="http://proceedings.mlr.press/v119/rieger20a.html">embed prior knowledge</a> into a model or
+        identify when it can be trusted.</p>
+    <p>🤝 There is a lot more work to do on bridging the gap between transparent models and black-box models in the real
+        world. One promising avenue is distillation, whereby we can use a black-box model to build a better transparent
+        model. For example, in <a
+                href="https://proceedings.neurips.cc/paper/2021/hash/acaa23f71f963e96c8847585e71352d6-Abstract.html">one
+            work</a> we were able to distill state-of-the-art neural networks in cell-biology and cosmology into
+        transparent wavelet models with &lt;40 parameters. Despite this huge size reduction, these models actually <em>improve</em>
+        prediction performance. By incorporating close domain knowledge into models and the way we approach problems, I
+        believe interpretability can help unlock many benefits of machine-learning for improving healthcare and science.
+    </p>
+        </div>
+</details>
+    </h2>
+
 <div class="iframe-box" style="margin-top: -30px">
     <iframe class="iframe"
             src="https://docs.google.com/presentation/d/e/2PACX-1vSj1GlDHEk8AhlYSL9eRb0sFHDF-QqvgS9SckgeekmzTtYdNQWGalhOR5MlmfKsgyW3TtOYq-SpyPkA/embed?rm=minimal"
@@ -286,7 +333,7 @@
         <td class="med"><a
                 href="https://docs.google.com/presentation/d/1I6djTqVn6YGKqxvQk59-4C39LbE68mNQbX1Go5pzTH4/present?slide=id.p"><i
                 class="fa fa-desktop fa-fw"></i></a>
-<!--            <a href="{{site.baseurl}}/assets/write_ups/acd_18_bairday_poster.pdf"><i class="fa fa-picture-o fa-fw"></i></a>-->
+            <!--            <a href="{{site.baseurl}}/assets/write_ups/acd_18_bairday_poster.pdf"><i class="fa fa-picture-o fa-fw"></i></a>-->
         </td>
     </tr>
     <tr>
@@ -299,7 +346,7 @@
         <td class="med"><a
                 href="https://docs.google.com/presentation/d/13jbgFyYSSDaMUd2w4RY9GHteTcWJj1drS6_2sOkvnv4/present?slide=id.p"><i
                 class="fa fa-desktop fa-fw"></i></a>
-<!--            <a  href="{{site.baseurl}}/assets/write_ups/utokyo_19_interp_poster.pdf"><i  class="fa fa-picture-o fa-fw"></i></a></td>-->
+            <!--            <a  href="{{site.baseurl}}/assets/write_ups/utokyo_19_interp_poster.pdf"><i  class="fa fa-picture-o fa-fw"></i></a></td>-->
     </tr>
     <tr>
         <td class="center">'19</td>
@@ -320,7 +367,7 @@
         <td class="big"><a href="https://github.com/funkey/mala"><i class="fa fa-github fa-fw"></i></a></td>
         <td class="med">
             <a href="{{site.baseurl}}/assets/write_ups/singh_15_rf_segmentation.pdf"><i
-                class="fa fa-picture-o fa-fw"></i></a></td>
+                    class="fa fa-picture-o fa-fw"></i></a></td>
     </tr>
     <tr>
         <td class="center">'18</td>
@@ -360,9 +407,9 @@
         <td class="med"><a
                 href="https://docs.google.com/presentation/d/1GO6lN5o2idozOUdnObXGnXKFbZiJiKKKkmx73uE4BAI/present?slide=id.p4"><i
                 class="fa fa-desktop fa-fw"></i></a>,
-<!--            <a-->
-<!--                href="{{site.baseurl}}/assets/write_ups/wsimule_17_nips_poster.pdf"><i-->
-<!--                class="fa fa-picture-o fa-fw"></i></a>-->
+            <!--            <a-->
+            <!--                href="{{site.baseurl}}/assets/write_ups/wsimule_17_nips_poster.pdf"><i-->
+            <!--                class="fa fa-picture-o fa-fw"></i></a>-->
         </td>
     </tr>
     </tbody>

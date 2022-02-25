@@ -1,3 +1,29 @@
+.research_details summary::before {
+    content: ">";
+    color: ghostwhite;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.research_details[open] summary::before {
+    content: "^";
+    color: ghostwhite;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.research_details summary {
+    font-size: medium;
+    font-weight: normal;
+}
+
+.research_details_text p {
+    font-size: medium;
+    font-weight: normal;
+    text-align: left;
+    text-transform: none !important;
+}
+
 a {
     color: #5bc0de
 }
@@ -54,7 +80,7 @@ td {
 }
 
 .bullets li {
-    font-size: 18px;
+    font-size: medium;
 }
 
 .bullets {

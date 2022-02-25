@@ -1114,6 +1114,9 @@ How interactions are defined and summarized is a very difficult thing to specify
 - [Human-in-the-loop Extraction of Interpretable Concepts in Deep Learning Models](https://ieeexplore.ieee.org/abstract/document/9552218) (zhao et al. 2021)
   - human knowledge and feedback are combined to train a concept extractor
   - by identifying visual concepts that negatively affect model performance, we develop the corresponding data augmentation strategy that consistently improves model performance
+- [Fanoos: Multi-Resolution, Multi-Strength, Interactive Explanations for Learned Systems](https://arxiv.org/abs/2006.12453) (bayan & mitsch, 2022) - Fanoos, a framework for combining formal verification techniques, heuristic search, and user interaction to explore explanations at the desired level of granularity and fidelity
+  - asks questions about sets e.g. "when do you", or "what do you do when"
+
 
 ## recourse
 
