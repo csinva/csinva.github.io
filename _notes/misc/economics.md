@@ -221,7 +221,9 @@
   - leveraged buyouts - most popular  - buy company to improve it then resell it (to individual or in IPO)
   - distressed funding - money given to struggling company to turn it around
 
-# bullshit jobs (by david graeber)
+# misc books
+
+## bullshit jobs (by david graeber)
 
 - "In the year 1930, John Maynard Keynes predicted that, by century's end, technology would have adavanced sufficiently that counties like the US would have achieved a fifteen-hour work week"
 - "layoffs and speed-ups invariably fall on that class of people who are actually making, moving, fixing, and maintaining things"
@@ -271,6 +273,45 @@
   - frightening monsters in popular do not simply threaten to hurt you but to turn you into a monster yourself (e.g. vampire, zombie)
   - the joke under the soviet union was "we pretend to work; they pretend to pay us"
   - "Puratinanism: the haunting fear that someone, somewhere, may be happy. -- H.L. Menchken"
+
+## the lords of easy money: how the federal reserve broke the american economy (chrisopher leonard)
+
+### basics
+
+- what they were doing was something much more like math than like politics.
+- it is really a network of regional banks
+- Progressive vision: dont hurt savers (so keep inflation low, interest rates high)
+  - Central banks cause inflation when they keep interest rates too low for too long.
+- The basic system works like this: When the Fed raises interest rates, it slows the economy. When the Fed lowers interest rates, it speeds up the economy.
+  - this money would widen the gap between the very rich and everybody else.
+- The Fed directly bought mortgage debt to stabilize the mortgage market.
+  - This is how the Fed creates money—it buys things from the primary dealers, and it does so by simply creating money inside their reserve accounts.
+  - By announcing quantitative easing in Jackson Hole, he had raised expectations that the plan would happen. This prompted speculators to start trading as if the program were a certain thing, driving up prices for some assets. Within a few months, the market might have fallen if the Fed didn’t follow through.
+  - the ways that capitalism, democracy, and regulation might be mutually supportive.
+- historical
+  - Between 1776 and 1912, the United States twice created and then destroyed a central bank.
+  - Between 1913 and 2008, the Fed gradually increased the money supply from about 5 billion to 847 billion. This increase in the monetary base happened slowly, in a gently uprising slope. Then, between late 2008 and early 2010, the Fed printed $1.2 trillion.
+  - “You shall not crucify mankind upon a cross of gold!”
+  - Asset inflation was the force behind the dot-com crash of 2000, the housing market crash of 2008, and the unprecedented market crash of 2020, which was precipitated by the coronavirus outbreak.
+  - His verdict on the inflation of the 1970s was stark: It was monetary policy, set by the Fed, that primarily created the problem.
+  - We have a new kind of bank. It is called too big to fail.”
+  - The curious thing about these statements is that they seemed more opaque and difficult to understand than the things that Greenspan said during FOMC meetings, when he was surrounded by PhD economists.
+  - fiscal policy, which belongs to the democratically controlled institutions like Congress, the White House, and state governments. Fiscal policy involves the collection of taxes, the spending of public money, and regulation.
+  - Asset inflation, however, was out of control by 1998. But this didn’t raise much public concern. When asset inflation gets out of hand, people don’t call it inflation. They call it a boom.
+  - The fiscal authorities were exposed as slow and ineffective, while the monetary authority of the Federal Reserve emerged as robust, keenly maintained, and fast-moving.
+  - quantitative easing and 0 percent interest rates were the most important economic policy of the decade, while also being one of the least discussed.
+  - The FOMC sets a target for the short-term rates. It is the traders at the New York Fed who make that target a reality.
+  - For many decades, they did it by buying and selling securities at exactly the right amount to make the cost of money exactly what the FOMC wanted it to be.
+  - was entirely clear to senior leaders at the Fed that to achieve the wealth effect, ZIRP must first and foremost benefit the very richest people in the country. That’s because assets are not broadly owned in America,
+  - One of the unspoken rules of Wall Street, in fact, is that those who know, don’t show.
+  - company had just borrowed $1.5 billion in cheap debt, but it didn’t plan to use the cash to build a factory, invest in research, or hire workers. Instead, the company used the money to buy back shares of its own stock. This made sense because the stocks paid a dividend of 2.5 percent,
+  - “The shortcoming of most macro models is that the vast majority of them make the assumption that over time conditions will revert to a prevailing ‘norm,’ ”
+  - Carlyle specialized in buying and selling businesses that relied on government spending, and it hired former government officials to help.
+  - When it’s easier to borrow money, companies use the debt for mergers or private equity takeovers. These activities benefit the people with access to capital, but they rarely spark innovation, create new jobs, or give pay raises to working people.
+  - Investors were buying loans that they knew were crummy, but they operated on the belief that they could sell them when they needed to.
+  - Stock buybacks were made legal in 1982,
+    - Buybacks almost always increase a company’s indebtedness, which weakens it.
+- The key idea behind the Hoenig rule was breaking the riskier parts of banking away from the economically vital parts (like making business loans), so that the riskier banks could fail without taking down the rest of the system if they made bad bets.
 
 # cryptography
 

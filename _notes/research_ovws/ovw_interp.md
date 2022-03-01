@@ -265,6 +265,7 @@ For an implementation of many of these models, see the python [imodels package](
     - tree structure e.g. depth, splitting criteria
     - values in terminal nodes coditioned on tree structure
     - residual noise's standard deviation
+    - [Stochastic gradient boosting](https://www.sciencedirect.com/science/article/abs/pii/S0167947301000652) (friedman 2002) - boosting where at iteration a subsample of the training data is used
   - [BART: Bayesian additive regression trees](https://arxiv.org/abs/0806.3286) (chipman et al. 2008) - learns an ensemble of tree models using MCMC on a distr. imbued with a prior (not interpretable)
     - pre-specify number of trees in ensemble
     - MCMC step: add split, remove split, switch split
@@ -321,6 +322,7 @@ For an implementation of many of these models, see the python [imodels package](
   - ![Screen Shot 2019-06-11 at 11.17.35 AM](../assets/2helps2b.png)
   - note: scoring systems map points to a risk probability
 - [An Interpretable Model with Globally Consistent Explanations for Credit Risk](https://arxiv.org/abs/1811.12615) (chen et al. 2018) - a 2-layer linear additive model
+- [Fast Sparse Classification for Generalized Linear and Additive Models](https://arxiv.org/abs/2202.11389) (liu, ..., seltzer, rudin, 2022)
 
 ### gams (generalized additive models)
 
@@ -469,6 +471,10 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
   - [Oblique Decision Trees from Derivatives of ReLU Networks](https://arxiv.org/abs/1909.13488) (lee & jaakkola, 2020)
     - locally constant networks (which are derivatives of relu networks) are equivalent to trees
     - they perform well and can use DNN tools e.g. Dropconnect on them
+    - note: deriv wrt to input can be high-dim
+      - they define locally constant network LCN scalar prediction as derivative wrt every parameter transposed with the activations of every corresponding neuron
+      - approximately locally constant network ALCN: replace Relu $\max(0, x)$ with softplus $1+\exp(x)$
+      - ensemble locally constant net ELCN - enesemble of LCN or ALCN (they train via boosting)
 - incorporating prior knowledge
   - [Controlling Neural Networks with Rule Representations](https://arxiv.org/abs/2106.07804) (seo, ..., pfister, 21)
     - DEEPCTRL - encodes rules into DNN
@@ -1102,6 +1108,24 @@ How interactions are defined and summarized is a very difficult thing to specify
   - Partially Interpretable Estimators (PIE): Black-Box-Refined Interpretable Machine Learning ([wang et al. 2021](https://arxiv.org/abs/2105.02410)) - interpretable model for individual features and black-box model captures feature interactions (on residuals)
 
 ## human-in-the-loop (HITL)
+
+- [rethinking human-ai interaction (blog)](https://jessylin.com/2020/06/08/rethinking-human-ai-interaction/)
+  - humans-as-backup - most common hitl system - human checks prediction if it is low confidence
+    - e.g. driving, content moderation, machine translation
+    - this system can behave worse if humans (e.g. drivers, doctors) expect it to work autonomously
+      - e.g. translators in conjunction w/ google translate are worse than raw translations
+
+  - **change the loop**: *how can humans direct where / when machine aid is helpful?*
+    - e.g. instead of post-editing a machine translation, can provide auto fill-ins as a translator types
+    - e.g. restrict interacting with chat bots to a set of choices
+    - innteractive optimization procedures like [human-guided search](https://dl.acm.org/doi/abs/10.1145/1869086.1869098) - provide mechanisms for people to provide “soft” constraints and knowledge by adding constraints as the search evolves or intervening by manually modifying computer-generated solutions
+
+  - **change the inputs**: *how can we make it more natural for humans to specify what they want?*
+    - refinement tools (e.g. [Human-Centered Tools for Coping with Imperfect Algorithms during Medical Decision-Making](https://arxiv.org/abs/1902.02960)) - easily compare pathology images with images that have other similar TCAV concepts
+    - heuristics (e.g. some decision rules)
+
+  - **change the outputs**: *how can we help humans understand and solve their own problems?*
+    - e.g. use ML in agent-based modeling
 
 - Making deep neural networks right for the right scientific reasons by interacting with their explanations ([schramowski, ... kersting, 2020](https://www.nature.com/articles/s42256-020-0212-3) ) - scientist iteratively provides feedback on DNN's explanation
 - [POTATO: exPlainable infOrmation exTrAcTion framewOrk](https://arxiv.org/abs/2201.13230) (kovacs et al. 2022) - humans select rules using graph-based feature for text classification
