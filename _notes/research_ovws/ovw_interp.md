@@ -204,22 +204,14 @@ For an implementation of many of these models, see the python [imodels package](
 *Trees suffer from the fact that they have to cover the entire decision space and often we end up with replicated subtrees.*
 
 - **optimal trees**
-
   - motivation
-
     - cost-complexity pruning ([breiman et al. 1984](https://www.taylorfrancis.com/books/mono/10.1201/9781315139470/classification-regression-trees-leo-breiman-jerome-friedman-richard-olshen-charles-stone) ch 3) - greedily prune while minimizing loss function of loss + $\lambda \cdot (\text{numLeaves})$
     - replicated subtree problem ([Bagallo & Haussler, 1990](https://link.springer.com/content/pdf/10.1007/BF00115895.pdf)) - they propose iterative algorithms to try to overcome it
-
   - Generalized and Scalable Optimal Sparse Decision Trees ([lin...rudin, seltzer, 2020](https://arxiv.org/abs/2006.08690))
-
     - optimize for $\min L(X, y) + \lambda \cdot (\text{numLeaves})$ 
-
     - full decision tree optimization is NP-hard [(Laurent & Rivest, 1976)](https://people.csail.mit.edu/rivest/HyafilRivest-ConstructingOptimalBinaryDecisionTreesIsNPComplete.pdf)
-
     - can optimize many different losses (e.g. accuracy, AUC)
-
     - speedups: use dynamic programming, prune the search-space with bounds
-
       - How Smart Guessing Strategies Can Yield Massive Scalability Improvements for Sparse Decision Tree Optimization ([mctavish...rudin, seltzer, 2021](https://arxiv.org/abs/2112.00798))
       - hash trees with bit-vectors that represent similar trees using shared subtrees
         - tree is a *set* of *leaves*
@@ -227,11 +219,8 @@ For an implementation of many of these models, see the python [imodels package](
         - e.g. if know best loss so far, know shouldn't add too many leaves since each adds $\lambda$ to the total loss
         - e.g. similar-support bound - if two features are similar, then bounds for splitting on the first can be used to obtain bounds for the second
     - [optimal sparse decision trees](https://arxiv.org/abs/1904.12847) (hu et al. 2019) - previous paper, slower
-    
       - bounds: Upper Bound on Number of Leaves, Leaf Permutation Bound
-
   - [optimal classification trees methodology paper](https://link.springer.com/content/pdf/10.1007%2Fs10994-017-5633-9.pdf) (bertsimas & dunn, 2017) - solve optimal tree with expensive, mixed-integer optimization - realistically, usually too slow
-
     - $\begin{array}{cl}
       \min & \overbrace{R_{x y}(T)}^{\text{misclassification err}}+\alpha|T| \\
       \text { s.t. } & N_{x}(l) \geq N_{\min } \quad \forall l \in \text { leaves }(T)
@@ -239,13 +228,9 @@ For an implementation of many of these models, see the python [imodels package](
     - $|T|$ is the number of branch nodes in tree $T$
     - $N_x(l)$ is the number of training points contained in leaf node $l$
     - [optimal classification trees vs PECARN](https://jamanetwork.com/journals/jamapediatrics/article-abstract/2733157) (bertsimas et al. 2019)
-
   - [Learning Optimal Fair Classification Trees](https://arxiv.org/pdf/2201.09932.pdf) (jo et al. 2022)
-
   - Better Short than Greedy: Interpretable Models through Optimal Rule Boosting ([boley, ..., webb, 2021](https://epubs.siam.org/doi/pdf/10.1137/1.9781611976700.40)) - find optimal tree **ensemble** (only works for very small data)
-
 - **connections with boosting**
-
   - Fast Interpretable Greedy-Tree Sums (FIGS) ([tan et al. 2022](https://arxiv.org/abs/2201.11931)) - extend cart to learn concise tree ensembles 🌳 ➡️ 🌱+🌱
     - very nice results for generalization + disentanglement
   - AdaTree - learn Adaboost stumps then rewrite as a tree ([grossmann, 2004](https://ieeexplore.ieee.org/abstract/document/1384899/)) 🌱+🌱 ➡️ 🌳
@@ -257,9 +242,7 @@ For an implementation of many of these models, see the python [imodels package](
       - post-prune the tree bottom-up by recursively eliminating the parent nodes of leaves with identical predictions
   - AddTree = additive tree - learn single tree, but rather than only current node's data to decide the next split, also allow the remaining data to also influence this split, although with a potentially differing weight ([luna, ..., friedman, solberg, valdes, 2019](https://www.pnas.org/content/116/40/19887))
     - the weight is chosen as a hyperparameter
-
 - **bayesian trees**
-
   - [Bayesian Treed Models](http://www-stat.wharton.upenn.edu/~edgeorge/Research_papers/treed-models.pdf) (chipman et al. 2001) - impose priors on tree parameters
     - treed models - fit a model (e.g. linear regression) in leaf nodes
     - tree structure e.g. depth, splitting criteria
@@ -270,29 +253,22 @@ For an implementation of many of these models, see the python [imodels package](
     - pre-specify number of trees in ensemble
     - MCMC step: add split, remove split, switch split
     - cycles through the trees one at a time
-
 - **history**
-
   - automatic interaction detection (AID) regression trees (Morgan & Sonquist, 1963)
   - THeta Automatic Interaction Detection (THAID) classification trees (Messenger & Mandell, 1972)
   - Chi-squared Automatic Interaction Detector (CHAID) (Kass, 1980)
   - CART: Classification And Regression Trees  ([Breiman et al. 1984](https://www.taylorfrancis.com/books/mono/10.1201/9781315139470/classification-regression-trees-leo-breiman-jerome-friedman-richard-olshen-charles-stone)) - splits on GINI
   - ID3 (Quinlan, 1986)
   - C4.5 (Quinlan, 1993) - splits on binary entropy instead of GINI
-
 - **open problems**
-
   - ensemble methods
   - improvements in splitting criteria, missing variables
   - longitudinal data, survival curves
-
 - misc
-
   - counterfactuals
     - [Counterfactual Explanations for Oblique Decision Trees: Exact, Efficient Algorithms](https://arxiv.org/abs/2103.01096) (2021)
     - [Optimal Counterfactual Explanations in Tree Ensembles](https://arxiv.org/abs/2106.06631)
     - [Desiderata for Interpretability: Explaining Decision Tree Predictions with Counterfactuals](https://ojs.aaai.org//index.php/AAAI/article/view/5154)
-    
   - regularization
     - Hierarchical Shrinkage: improving accuracy and interpretability of tree-based methods ([agarwal et al. 2021](https://arxiv.org/abs/2202.00858)) - post-hoc shrinkage improves trees
     - Hierarchical priors for Bayesian CART shrinkage ([chipman & mcculloch, 2000](https://link.springer.com/article/10.1023/A:1008980332240))
@@ -300,11 +276,8 @@ For an implementation of many of these models, see the python [imodels package](
     - [Efficient Training of Robust Decision Trees Against Adversarial Examples](https://arxiv.org/abs/2012.10438)
     - [Robust Decision Trees Against Adversarial Examples](https://arxiv.org/abs/1902.10660) (chen, ..., hsieh, 2019)
       - optimize tree performance under worst-case input-feature perturbation
-    
   - [On the price of explainability for some clustering problems](https://arxiv.org/abs/2101.01576) (laber et al. 2021) - trees for clustering
   - extremely randomized trees ([geurts et al. 2006](https://link.springer.com/article/10.1007/s10994-006-6226-1)) - randomness goes further than Random Forest - randomly select not only the feature but also the split thresholds (and select the best out of some random set)
-
-
 
 
 ## linear (+algebraic) models
@@ -339,6 +312,7 @@ For an implementation of many of these models, see the python [imodels package](
     - fix them and predict residuals with next order (and repeat for as many orders as desired)
   - [Neural Additive Models: Interpretable Machine Learning with Neural Nets](https://arxiv.org/abs/2004.13912) - GAM where we learn $f$ with a neural net
     - no interaction terms
+    - [Sparse Neural Additive Model: Interpretable Deep Learning with Feature Selection via Group Sparsity](https://arxiv.org/abs/2202.12482)
 - [InterpretML: A Unified Framework for Machine Learning Interpretability](https://arxiv.org/abs/1909.09223) (nori...caruana 2019)  - software package mostly focused on explainable boosting machine (EBM)
   - EBM - GAM which uses boosted decision trees as $f_i$
   - [Accuracy, Interpretability, and Differential Privacy via Explainable Boosting](https://arxiv.org/abs/2106.09680) (nori, caruana et al. 2021)
@@ -475,6 +449,17 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
       - they define locally constant network LCN scalar prediction as derivative wrt every parameter transposed with the activations of every corresponding neuron
       - approximately locally constant network ALCN: replace Relu $\max(0, x)$ with softplus $1+\exp(x)$
       - ensemble locally constant net ELCN - enesemble of LCN or ALCN (they train via boosting)
+  - TAO: Alternating optimization of decision trees, with application to learning sparse oblique trees ([carreira-perpinan, tavallali, 2018](https://proceedings.neurips.cc/paper/2018/hash/185c29dc24325934ee377cfda20e414c-Abstract.html))
+    - Minimize loss function with sparsity of features at each node + predictive performance
+    - Algorithm: update each node one at a time while keeping all others fixed (finds a local optimum of loss)
+    - Fast for 2 reasons
+      - separability - nodes which aren't on same path from root-to-leaf can be optimized separately
+      - reduced problem - for any given node, *we only solve a binary classification* where the labels are the predictions that a point would be given if it were sent left/right
+        - in this work, solve binary classification by approximating it with sparse logistic regression
+    - TAO trees with boosting performs well + works for regression ([Zharmagambetov and Carreira-Perpinan, 2020](https://faculty.ucmerced.edu/mcarreira-perpinan/papers/icml20.pdf))
+    - TAO trees with bagging performs well ([Carreira-Perpiñán & Zharmagambetov, 2020](http://graduatestudents.ucmerced.edu/azharmagambetov/files/papers/fods20.pdf))
+    - Learning a Tree of Neural Nets ([Zharmagambetov and Carreira-Perpinan, 2020](https://ieeexplore.ieee.org/abstract/document/9413718)) - use neural net rather than binary classification at each node
+    - Also use TAO trained on neural net features do speed-up/improve the network
 - incorporating prior knowledge
   - [Controlling Neural Networks with Rule Representations](https://arxiv.org/abs/2106.07804) (seo, ..., pfister, 21)
     - DEEPCTRL - encodes rules into DNN
@@ -962,6 +947,10 @@ How interactions are defined and summarized is a very difficult thing to specify
       - has an equivalence with the Functional ANOVA decomposition
 - Automatic Interaction Detection (AID) - detects interactions by subdividing data into disjoint exhaustive subsets to model an outcome based on categorical features
 - Shapley Taylor Interaction Index (STI) (Dhamdhere et al., 2019) - extends shap to all interactions
+- Faith-Shap: The Faithful Shapley Shapley Interaction Index ([tsai, yeh, & ravikumar, 2019](https://arxiv.org/abs/2203.00870#:~:text=Shapley%20values%2C%20which%20were%20originally,black%2Dbox%20machine%20learning%20models.))
+  - SHAP axioms for interactions no longer specify a unique interaction index
+  - here, adopt the viewpoint of Shapley values as coefficients of the most faithful linear approximation to the pseudo-Boolean coalition game value function
+
 - gradient-based methods (originally Friedman and Popescu, 2008 then later used with many models such as logit)
   - test if partial derivatives for some subset (e.g. $x_1, ..., x_p$) are nonzero $$\mathbb{E}_{\mathbf{x}}\left[\frac{\partial^p f(\mathbf{x})}{\partial x_{i_{1}} \partial x_{i_{2}} \ldots \partial x_{i_p}}\right]^{2}>0$$
   - doesn't work well for piecewise functions (e.g. Relu) and computationally expensive
