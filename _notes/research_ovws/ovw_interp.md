@@ -351,12 +351,13 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
     - train everything: classification + clustering around intraclass prototypes + separation between interclass prototypes (last layer fixed to 1s / -0.5s)
     - project prototypes to data patches
     - learn last (linear) layer
-  - ProtoNets: original prototypes paper ([li, ..., rudin, 2017](https://arxiv.org/pdf/1710.04806.pdf))
+  - ProtoNets: original prototypes paper ([li, ..., rudin, 2017](https://arxiv.org/pdf/1710.04806.pdf)) - older paper
     - uses encoder/decoder setup
     - encourage every prototype to be similar to at least one encoded input
     - results: learned prototypes in fact look like digits
       - correct class prototypes go to correct classes
     - loss: classification + reconstruction + distance to a training point
+- IAIA-BL: A Case-based Interpretable Deep Learning Model for Classification of Mass Lesions in Digital Mammography ([barnet...rudin, 2021](https://arxiv.org/abs/2103.12308)) - improve algorithm specifically for mammography
 - This Looks Like That, Because ... Explaining Prototypes for Interpretable Image Recognition ([nauta et al. 2020](https://arxiv.org/abs/2011.02863))
   - add textual quantitative information about visual characteristics deemed important by the classification model e.g. colour hue, shape, texture, contrast and saturation
 - Neural Prototype Trees for Interpretable Fine-Grained Image Recognition ([nauta et al. 2021](https://openaccess.thecvf.com/content/CVPR2021/html/Nauta_Neural_Prototype_Trees_for_Interpretable_Fine-Grained_Image_Recognition_CVPR_2021_paper.html)) - build decision trees on top of prototypes
@@ -546,6 +547,7 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
 
 ## model-agnostic
 
+- Feature Removal Is a Unifying Principle for Model Explanation Methods ([cover, lundberg, & lee, 2020](https://arxiv.org/abs/2011.03623)) - many different methods, e.g. SHAP, LIME, meaningful perturbations, permutation tests, RISE can be viewed through feature removal
 - local surrogate ([LIME](https://arxiv.org/abs/1602.04938)) - fit a simple model locally to on point and interpret that
    - select data perturbations and get new predictions
      - for tabular data, this is just varying the values around the prediction
@@ -851,11 +853,6 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
     2. text usually uses attention maps
       - ex. karpathy et al LSTMs
       - ex. lei et al. - most relevant sentences in sentiment prediction
-      - [attention is not explanation](https://arxiv.org/abs/1902.10186) (jain & wallace, 2019)
-      - [attention is not **not** explanation](https://arxiv.org/abs/1908.04626) (wiegreffe & pinter, 2019)
-        - influence = pred with a word - pred with a word masked
-          - attention corresponds to this kind of influence
-      - deceptive attention - we can successfully train a model to make similar predictions but have different attention
     3. class-activation map (CAM) ([zhou et al. 2016](https://openaccess.thecvf.com/content_cvpr_2016/html/Zhou_Learning_Deep_Features_CVPR_2016_paper.html))
        1. sum the activations across channels (weighted by their weight for a particular class)
        2. weirdness: drop negative activations (can be okay if using relu), normalize to 0-1 range
@@ -906,7 +903,13 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
     - [Decision Explanation and Feature Importance for Invertible Networks](https://arxiv.org/abs/1910.00406) (mundhenk et al. 2019)
     - [Efficient Saliency Maps for Explainable AI](https://deepai.org/publication/efficient-saliency-maps-for-explainable-ai) 
     
-
+### dnn attention
+- [Staying True to Your Word: (How) Can Attention Become Explanation?](https://arxiv.org/abs/2005.09379)
+- [attention is not explanation](https://arxiv.org/abs/1902.10186) (jain & wallace, 2019)
+- [attention is not **not** explanation](https://arxiv.org/abs/1908.04626) (wiegreffe & pinter, 2019)
+- influence = pred with a word - pred with a word masked
+- attention corresponds to this kind of influence
+- deceptive attention - we can successfully train a model to make similar predictions but have different attention
 
 
 ### dnn textual explanations
@@ -1146,6 +1149,24 @@ How interactions are defined and summarized is a very difficult thing to specify
 - language explanations
 - interpretable intermediate representations (e.g. bounding boxes for autonomous driving)
 - policy extraction - distill a simple model from a bigger model (e.g. neural net -> tree)
+
+- [Toward Interpretable Deep Reinforcement Learning with Linear Model U-Trees](https://link.springer.com/chapter/10.1007/978-3-030-10928-8_25)
+  - Linear Model tree allows leaf nodes to contain a linear model, rather than simple constants
+    - introduce novel on-line learning algo for this which uses SGD to update the linear models
+  - [U-tree](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.46.3832&rep=rep1&type=pdf) is a classic online reinforcement learning method which represents a Q function using a tree structure
+- [Programmatically Interpretable Reinforcement Learning](http://proceedings.mlr.press/v80/verma18a.html) (verma et al. 2018) - represent policies as interpretable programs
+  - first learn neural policy DRL, then performing a local search over programmatic policies that seeks to minimize a distance from this neural “oracle”
+- [IQL: Implicit Q-learning](https://arxiv.org/abs/2110.06169) (ashvin’s paper, 2021)
+  - offline RL issue: want policy that improves over the training policy, but can’t deviate from the training policy due to distr. shift
+  - IQL - foregoes need to evaluate unseen actions
+- [Neural-to-Tree Policy Distillation with Policy Improvement Criterion](https://arxiv.org/abs/2108.06898) (li et al. 2021)
+  - typical policy distillation that clones model behaviors with even a small error could bring a data distribution shift
+  - propose DPIC - changes distillation objective from behavior cloning to maximizing an advantage evaluation (maximizes an approximated cumulative reward)
+    - hard to apply policy optimization because no gradients
+  - initialize by modifying criterion to optimize the policy improvement criterion
+  - then, use viper imitation-learning approach
+- [Towards Generalization and Simplicity in Continuous Control](https://arxiv.org/abs/1703.02660) (rajeswaran, .., kakade, 2018) - simple policies (e.g. linear or RBF kernel) - work fairly well for many continuous control tasks 
+
 
 ## differential privacy
 

@@ -127,6 +127,7 @@ Deep learning models have achieved impressive predictive performance by learning
     - [grad slam 2019](https://www.youtube.com/watch?v=6VVppY-uUgE&feature=youtu.be&t=5600)
     - [textxd 2019](https://berkeley-haas.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=276daa74-7298-40b1-9503-ab17014b5863)
 - misc releases
+  - [grad slam 2022](https://eecs.berkeley.edu/news/2022/03/chandan-singh-2022-berkeley-grad-slam-competition-semi-finalist)
   - [covid coe article](https://engineering.berkeley.edu/news/2020/04/getting-the-right-equipment-to-the-right-people/)
     - [berkeley science rvw blurb](https://berkeleysciencereview.com/article/ppe-to-the-ppeople-2/) 
   - [bids iml piece](https://bids.berkeley.edu/publications/definitions-methods-and-applications-interpretable-machine-learning)

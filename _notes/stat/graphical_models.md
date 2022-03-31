@@ -370,8 +370,6 @@ typora-copy-images-to: ../assets
 - type of nodes (real-valued vectors) and prob model (linear-Gaussian) changes from HMM
 - 1d example: *random walk*
 - state nodes: $x_{t+1} = Ax_t + Gw_t$
-
-
 - output nodes: $y_t = Cx_t+v_t$
   - x is linear Gaussian
   - w is noise Gaussian

@@ -303,7 +303,8 @@ Some notes on decision theory based on Berkeley's CS 188 course and  "Artificial
     2. REINFORCE algorithm - could approximate gradient at $\theta$ by just sampling at $\theta$: $\nabla_\theta p(\theta) \approx \frac{1}{N} \sum_{j=1}^N \frac{(\nabla_\theta \pi_\theta (s, a_j)) R_j (s)}{\pi_\theta (s, a_j)}$
     3. PEGASUS - *correlated sampling* - ex. 2 blackjack programs would both be dealt same hands -  want to see different policies on same things
     
-# planning
+
+# planninglove
 
 - [Efficient Learning in Cellular Simultaneous Recurrent Neural Networks - The Case of Maze Navigation Problem](https://ieeexplore.ieee.org/abstract/document/4220851?casa_token=Nw_d05ju8VcAAAAA:iXvxp_PDrMHtsoIk1_g2CnPPGFdMZcu_PqcyeyFUXsGrQWoQFRz8JvRmzjgofdwlQKYdsfpvK-g) (ilin et al. 2007) - explored connections between planning algorithms and recurrent NNs
 - [Value Iteration Networks](https://arxiv.org/abs/1602.02867) (tamar...levine, & abbeel, 2017)
