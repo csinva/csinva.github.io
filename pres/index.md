@@ -9,6 +9,11 @@ title: presentations
 
 - [animated thesis](https://docs.google.com/presentation/d/1TGTwvh1qOUDcSmn4xlFDK5D-j54PUs3IMAxsRL19LYA/edit#slide=id.g11022bc8220_0_8)
 - [thesis slides](https://docs.google.com/presentation/d/1IyxCrB5Ol8RsvFBTTy4Y5DQH3TxS9Wgl7Pxt1thrBBY/edit)
+	- Title: Useful interpretations for machine learning in science & medicine
+	- <details>
+    <summary>Abstract</summary>
+    Machine-learning models have achieved impressive predictive performance by learning complex functions of many variables. However, this increase in complexity has often come at the cost of interpretability, a crucial consideration in many domains, such as science and medicine. In this talk, I will discuss recent work that extracts useful interpretations from machine-learning models by scoring and distilling interactions. Then, I will showcase how we have worked with domain experts to improve models using these interpretations in different computer vision settings, including bioimaging and cosmology.
+    </details>
 - [research overview](https://docs.google.com/presentation/d/19fTICv0pyRiwGE39mqE_eGTq0Arn3OtVnDSrURFbPMA/present?slide=id.p) 
 - [overview slide](https://docs.google.com/presentation/d/1gvYfUkb-7yCXUUerBbgsOhGT82lj2ZPTYPop1qvSVzE/edit#slide=id.ga03c02da4e_0_126)
 - [title slide](https://docs.google.com/presentation/d/1gvYfUkb-7yCXUUerBbgsOhGT82lj2ZPTYPop1qvSVzE/edit#slide=id.ga03c02da4e_0_126)
@@ -67,11 +72,12 @@ Deep learning models have achieved impressive predictive performance by learning
 - [cdep-focused slides 40 min](https://docs.google.com/presentation/d/1F9spZOwKbxtXqpCiKv2V332v4Vs-UV6mQ_7Xs_cnrLg/edit#slide=id.p)    
 - [trim_cosmology_group_meeting (03/17/21)](https://docs.google.com/presentation/d/1sDtuaZt7bnAzvEB6tEv04rhVifnGSvyA1o6qUA-Z4ys/edit#slide=id.p)
     - [transform interp](https://docs.google.com/presentation/d/1mH1uG38qJg-ar0G-LiVPZWNKPO_2GiD-uayWM5AI-bo/present?slide=id.p)
-- [awd](https://docs.google.com/presentation/d/1YrzAir94D0KWewau34dZAXXPdATRuqeVf8Jt-o_wqG8/edit#slide=id.p) (neurips recording)
+- [awd (neurips 15 min)](https://docs.google.com/presentation/d/1YrzAir94D0KWewau34dZAXXPdATRuqeVf8Jt-o_wqG8/edit#slide=id.p)
+  - [awd (cnls 30 min)](https://docs.google.com/presentation/d/1TuYEzCZrUX_EbjlQId8dig9lmCC0iw68sPxLqXwd-PM/edit#slide=id.p)
 - [pdr](https://docs.google.com/presentation/d/18Tdiym7hDeu0c4tj5XezrznIDfbltR4QQJJZjaHi7tk/present?slide=id.p)
 - [auxilin prediction](https://docs.google.com/presentation/d/1sQXbFUTSEyrmDkovV8g759Wj8E9LBpATAVV1iweKeGo/edit#slide=id.gc0f646bcee_0_0)
 - [interpretation to causation](https://docs.google.com/presentation/d/1vwgpNp36ssspO5LcUgnohtm9JT-PeSwsX47LpZjvono/edit#slide=id.g9d8da641c4_0_36)
-  
+- [covid-forecasting](https://docs.google.com/presentation/d/1nAYfBHj9qP-Qzpjho4dyMTx2Bc5Pccxu1VqIFiEaeYg/edit)
 
 ## rules / software individual presentations
 
@@ -80,7 +86,10 @@ Deep learning models have achieved impressive predictive performance by learning
   - [vflow group meeting](https://docs.google.com/presentation/d/1ReJ3Lqh4VZqpu6X6sP47f6Re6PvLIX9ZRAdjb8ZhFXE/edit#slide=id.g1047cb8ef63_0_0)
   - [vflow (white, outdated)](https://docs.google.com/presentation/d/1bcrdF5TozKNLdvxvRK63wsDHS8qRDvg2MgsAZYUy2jw/edit)
 - [stablerules preliminary](https://docs.google.com/presentation/d/1KSUncdizsQ3cmpsZE0uGGWudQuewMKnukI8V3uManHc/edit#slide=id.gd4a2e647f0_0_0)
-- [figs](https://docs.google.com/presentation/d/1hMF3kMoQDdrM6BHDq1CWVYsibgVyaOVtz0l2WEIbsy0/edit?usp=sharing)
+- [figs](https://docs.google.com/presentation/d/1Gk5mEcSp6uePS72q-oF-GhXgLSbHfq2jWqMTKfwDaJw/present?slide=id.g112865da5f6_0_0)
+  - [figs old](https://docs.google.com/presentation/d/1hMF3kMoQDdrM6BHDq1CWVYsibgVyaOVtz0l2WEIbsy0/edit?usp=sharing)
+
+- [HS](https://docs.google.com/presentation/d/1inyZnryrs6dNO6VCn7ng6Rjc-XCkuagxx9YVHKJWqrM/present?slide=id.g1154243f54b_2_372)
 - [iai](https://docs.google.com/presentation/d/19liiotfBKNPm2lli6U1ZOPd8jCHEL8Y99HcEZFHOSsQ/edit#slide=id.gc6d28d5565_0_0)
   - [iai-rulevetting](https://docs.google.com/presentation/d/1Ui-NWeJobJ4MhcK-1RG20q8PSyQq4harjOsZ-ml8K4s/edit#slide=id.gc6d28d5565_0_0) (215A presentation)
   - [general rules ovw](https://docs.google.com/presentation/u/1/d/1Ui-NWeJobJ4MhcK-1RG20q8PSyQq4harjOsZ-ml8K4s/edit#slide=id.gc6d28d5565_0_0)
@@ -102,6 +111,7 @@ Deep learning models have achieved impressive predictive performance by learning
 - [interpretability workshop](https://docs.google.com/presentation/d/1RIdbV279r20marRrN0b1bu2z9STkrivsMDa_Dauk8kE/present?slide=id.p)
 
 ### coursework
+- [alphafold 2](https://docs.google.com/presentation/d/1-MjMAgO2F7RH842BcuKjBlmuf5UA9IPsYADhQ56mkuE/edit#slide=id.p)
 - [vissci ovw](https://docs.google.com/presentation/d/1d2prZlhmG72whCTzfGJ_pk-Pgv9Sx-bGG0e503whYvw/present?slide=id.p)
 - [harms of ai](https://docs.google.com/presentation/d/1yZkEkDU-ELvh_Od3xvhd8Lsu70U7Cjs5QJnpNIVLgII/present) (1 hr talk given in possible minds course 2019)
 - [hummingbird tracking](https://docs.google.com/presentation/d/15iygjXGLu7Ha096GwMV5t6sjP7IPcTHqimPkTDwrpPI/present?slide=id.p)

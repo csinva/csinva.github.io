@@ -88,8 +88,10 @@ category: cs
 ```python
 l = ['abc', 'ccc', 'd', 'bb']
 - sorted(l, reverse=False, key=len) ## decreasing order
-	- key examples: str.lower, func_name
-    - key = lambda x: x[1]
+	- example keys: values for key
+  	- key=str.lower
+    - key=func_name
+    - key=lambda x: x[1]
     - def func_name(s):
      	 return s[-1]
 - l.sort(reverse=False, key=len) ## sorts in place

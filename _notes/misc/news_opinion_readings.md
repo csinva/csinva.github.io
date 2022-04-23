@@ -2,6 +2,18 @@
 
 # 2022
 
+- [Opinion | How to Make Friends After a Pandemic — and Why You Should - The New York Times](https://www.nytimes.com/2022/04/17/opinion/culture/making-friends-covid.html)
+  
+- [The Latecomer’s Guide to Crypto - The New York Times](https://www.nytimes.com/interactive/2022/03/18/technology/cryptocurrency-crypto-guide.html)
+  - Crypto can also be a kind of generational skeleton key — maybe the single fastest way to freshen your cultural awareness and decipher the beliefs and actions of today’s young people
+  
+  - people are using crypto to [send cross-border remittances](https://www.pymnts.com/cryptocurrency/2021/new-study-crypto-emerging-as-favored-form-for-cross-border-remittances/) to family members abroad and Wall Street banks [using blockchains](https://www.yahoo.com/now/wells-fargo-hsbc-settle-forex-104550015.html) to settle foreign transactions.
+  
+- [Is Crypto Re-Creating the 2008 Financial Crisis?](https://newsletters.theatlantic.com/galaxy-brain/624cb2ebdc551a00208c1524/crypto-bubble-web3-decentralized-finance/)
+  - a growing critique of much of the Web3 movement is that a lot of blockchain-based apps and tools are [not actually decentralized](https://www.theatlantic.com/technology/archive/2022/02/future-internet-blockchain-investment-banking/621480/)
+    - ex. for NFTs to work, you need a centralized marketplace like OpenSea
+
+- [Opinion | California’s Drought Is Worse Than We Thought - The New York Times](https://www.nytimes.com/2022/04/04/opinion/environment/california-drought-wildfires.html)
 - [Opinion | I Came to College Eager to Debate. I Found Self-Censorship Instead. - The New York Times](https://www.nytimes.com/2022/03/07/opinion/campus-speech-cancel-culture.html)
 - [Opinion | Laundered Money Could Be Putin’s Achilles’ Heel - The New York Times](https://www.nytimes.com/2022/02/24/opinion/russia-ukraine-sanctions-offshore-accounts.html)
   - The Europeans, unfortunately, have fecklessly allowed themselves to become [highly dependent](https://www.bruegel.org/2022/01/can-europe-survive-painlessly-without-russian-gas/) on imports of Russian natural gas.

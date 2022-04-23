@@ -365,6 +365,10 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
 
 - XProtoNet: Diagnosis in Chest Radiography With Global and Local Explanations ([kim et al. 2021](https://openaccess.thecvf.com/content/CVPR2021/html/Kim_XProtoNet_Diagnosis_in_Chest_Radiography_With_Global_and_Local_Explanations_CVPR_2021_paper.html))
   - alter ProtoPNet to use dynamically sized patches for prototype matching rather than fixed-size patches
+- [AutoProtoNet: Interpretability for Prototypical Networks](https://arxiv.org/abs/2204.00929) (sandoval-segura & lawson, 2022)
+  - builds interpretability into Prototypical Networks by training an embedding space suitable for reconstructing inputs
+  - also devise a prototype refinement method, which allows a human to debug inadequate classification parameters
+
 - TesNet: Interpretable Image Recognition by Constructing Transparent Embedding Space ([wang et al. 2021](https://openaccess.thecvf.com/content/ICCV2021/html/Wang_Interpretable_Image_Recognition_by_Constructing_Transparent_Embedding_Space_ICCV_2021_paper.html)) - alter ProtoPNet to get "orthogonal" basis concepts
 - ProtoPShare: Prototype Sharing for Interpretable Image Classification and Similarity Discovery ([Rymarczyk et al. 2020](https://arxiv.org/abs/2011.14340)),- share some prototypes between classes with data-dependent merge pruning
 
@@ -1165,7 +1169,10 @@ How interactions are defined and summarized is a very difficult thing to specify
     - hard to apply policy optimization because no gradients
   - initialize by modifying criterion to optimize the policy improvement criterion
   - then, use viper imitation-learning approach
-- [Towards Generalization and Simplicity in Continuous Control](https://arxiv.org/abs/1703.02660) (rajeswaran, .., kakade, 2018) - simple policies (e.g. linear or RBF kernel) - work fairly well for many continuous control tasks 
+- [Towards Generalization and Simplicity in Continuous Control](https://arxiv.org/abs/1703.02660) (rajeswaran, .., kakade, 2018) - simple policies (e.g. linear or RBF kernel) - work fairly well for many continuous control tasks
+- historical
+  - [Tree-Based Batch Mode Reinforcement Learning](https://www.jmlr.org/papers/volume6/ernst05a/ernst05a.pdf) (ernst et al. 2005) - one of the first fitted Q iteration papers actually used trees
+
 
 
 ## differential privacy

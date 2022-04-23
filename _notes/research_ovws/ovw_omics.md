@@ -151,6 +151,7 @@ category: research
 - prediction problems
   - contact prediction - binary map for physical contacts in the final protein
     - common to predict this, evaluation uses binary metrics
+  - protein folding - predict 3d positions of all amino acids in the output structure
   - [Evaluating Protein Transfer Learning with TAPE](https://arxiv.org/abs/1906.08230) - given embeddings, 5 tasks to measure downstream performance (rao et al. 2019)
     - tasks: structure (SS + contact), evolutionary (homology), engineering (fluorescence + stability)
   - future: interactions between molecules (e.g. protein-protein, environment, highly designed proteins)
@@ -165,13 +166,17 @@ category: research
   - model overview
     - ![alphafold](../assets/alphafold.png)
   - preprocessing
-    - MSA
-    - finding templates - find similar proteins to model "pairs of residues" - which residues are likely to interact with each other
+    - MSA ($N_{seq} \times N_{res}$)
+      - uses evolutionary information
+    - pair representation ($N_{res} \times N_{res}$)
+      - finding templates - find similar proteins to model "pairs of residues" - which residues are likely to interact with each other
+      - residue is the same as an amino acid
   - evoformer
     - uses attention on graph network
     - iterative
   - structure model - converts msa/pair representations into set of (x,y,z) coordinates
     - "invariant point attention" - invariance to translations and rotations
+    - predicts a global frame (residue gas)
 - [MSA Transformer](https://proceedings.mlr.press/v139/rao21a.html) (rao et al. 2021) - predicts contact prediction
   - train via masking
   - output (contact prediction) is just linear combination of attention heads finetuned on relatively little data
