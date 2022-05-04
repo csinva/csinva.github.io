@@ -188,7 +188,7 @@ See also notes in [📌 unsupervised learning](https://csinva.io/notes/ml/unsupe
     - permuting permutation matrix to A requires operating on both rows and cols: $PAP^T$
     - permutation invariance: $ f\left(\mathbf{P X}, \mathbf{P A P}^{\top}\right)=f(\mathbf{X}, \mathbf{A})$
     - permutation equivariance: $f\left(\mathbf{P X}, \mathbf{P A P}^{\top}\right)=\mathbf{P} f(\mathbf{X}, \mathbf{A})$
-    - can now write an equivariant function that is extracts features not only of X, but also its neighbors: $g(x_b, X_{\mathcal N_b})$
+    - can now write an equivariant function that extracts features not only of X, but also its neighbors: $g(x_b, X_{\mathcal N_b})$
       - tasks: node classification, graph classification, link (edge) prediction)
     - 3 flavors of GNN layers for extracting features from nodes / neighbors: simplest to most complex
       - message-passing actually passes vectors to be sent across edges

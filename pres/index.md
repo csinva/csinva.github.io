@@ -79,20 +79,23 @@ Deep learning models have achieved impressive predictive performance by learning
 - [interpretation to causation](https://docs.google.com/presentation/d/1vwgpNp36ssspO5LcUgnohtm9JT-PeSwsX47LpZjvono/edit#slide=id.g9d8da641c4_0_36)
 - [covid-forecasting](https://docs.google.com/presentation/d/1nAYfBHj9qP-Qzpjho4dyMTx2Bc5Pccxu1VqIFiEaeYg/edit)
 
-## rules / software individual presentations
+## rules (generally white background)
 
-- [yu-group software](https://docs.google.com/presentation/d/1phLaC8n8iKG68RQtm99BE3gDkOj-NQhiO2AtJGjBFkM/edit#slide=id.gfc50a11ff5_0_0)
-  - [imodels gasp 7-min talk](https://docs.google.com/presentation/d/1fpHo-MtIJntlIrYlQj0yK3spJ7Unf10CNTH-PG9LQ_A/edit?usp=sharing)
-  - [vflow group meeting](https://docs.google.com/presentation/d/1ReJ3Lqh4VZqpu6X6sP47f6Re6PvLIX9ZRAdjb8ZhFXE/edit#slide=id.g1047cb8ef63_0_0)
-  - [vflow (white, outdated)](https://docs.google.com/presentation/d/1bcrdF5TozKNLdvxvRK63wsDHS8qRDvg2MgsAZYUy2jw/edit)
-- [stablerules preliminary](https://docs.google.com/presentation/d/1KSUncdizsQ3cmpsZE0uGGWudQuewMKnukI8V3uManHc/edit#slide=id.gd4a2e647f0_0_0)
 - [figs](https://docs.google.com/presentation/d/1Gk5mEcSp6uePS72q-oF-GhXgLSbHfq2jWqMTKfwDaJw/present?slide=id.g112865da5f6_0_0)
   - [figs old](https://docs.google.com/presentation/d/1hMF3kMoQDdrM6BHDq1CWVYsibgVyaOVtz0l2WEIbsy0/edit?usp=sharing)
-
-- [HS](https://docs.google.com/presentation/d/1inyZnryrs6dNO6VCn7ng6Rjc-XCkuagxx9YVHKJWqrM/present?slide=id.g1154243f54b_2_372)
-- [iai](https://docs.google.com/presentation/d/19liiotfBKNPm2lli6U1ZOPd8jCHEL8Y99HcEZFHOSsQ/edit#slide=id.gc6d28d5565_0_0)
+- [hierarchical shrinkage](https://docs.google.com/presentation/d/1inyZnryrs6dNO6VCn7ng6Rjc-XCkuagxx9YVHKJWqrM/present?slide=id.g1154243f54b_2_372)
+- [iai](https://docs.google.com/presentation/d/19liiotfBKNPm2lli6U1ZOPd8jCHEL8Y99HcEZFHOSsQ/edit#slide=id.gc6d28d5565_0_0) (group meeting)
   - [iai-rulevetting](https://docs.google.com/presentation/d/1Ui-NWeJobJ4MhcK-1RG20q8PSyQq4harjOsZ-ml8K4s/edit#slide=id.gc6d28d5565_0_0) (215A presentation)
-  - [general rules ovw](https://docs.google.com/presentation/u/1/d/1Ui-NWeJobJ4MhcK-1RG20q8PSyQq4harjOsZ-ml8K4s/edit#slide=id.gc6d28d5565_0_0)
+- [stablerules preliminary](https://docs.google.com/presentation/d/1KSUncdizsQ3cmpsZE0uGGWudQuewMKnukI8V3uManHc/edit#slide=id.gd4a2e647f0_0_0)
+
+## [yu-group software](https://docs.google.com/presentation/d/1phLaC8n8iKG68RQtm99BE3gDkOj-NQhiO2AtJGjBFkM/edit#slide=id.gfc50a11ff5_0_0)
+
+- [yu-group python software](https://docs.google.com/presentation/d/1fKBsTGe8hjbxxk2HbV38dhMiboPhPsVeZlnTE47P5nk/edit)
+- [imodels gasp 7-min talk](https://docs.google.com/presentation/d/1fpHo-MtIJntlIrYlQj0yK3spJ7Unf10CNTH-PG9LQ_A/edit?usp=sharing)
+- [vflow group meeting](https://docs.google.com/presentation/d/1ReJ3Lqh4VZqpu6X6sP47f6Re6PvLIX9ZRAdjb8ZhFXE/edit#slide=id.g1047cb8ef63_0_0)
+- [vflow (white, outdated)](https://docs.google.com/presentation/d/1bcrdF5TozKNLdvxvRK63wsDHS8qRDvg2MgsAZYUy2jw/edit)
+
+
 
 
 ### dnn misc individual presentations
@@ -132,6 +135,8 @@ Deep learning models have achieved impressive predictive performance by learning
 
 ### recordings
 - talks
+    - [thesis 2022](https://drive.google.com/file/d/1h9M29xcMB0LMHQx8DFi-aJjtIPqJG8Cv/view)
+    - [grad slam 2022](https://www.youtube.com/watch?v=1JahZhczriY)
     - [bair sem feb 2020 best vid](https://www.youtube.com/watch?v=avrnelFZSS4&feature=youtu.be)
         - [bair sem feb 2020 livestream](https://www.youtube.com/watch?v=x6AHX-VrcdM&feature=youtu.be)
     - [grad slam 2019](https://www.youtube.com/watch?v=6VVppY-uUgE&feature=youtu.be&t=5600)

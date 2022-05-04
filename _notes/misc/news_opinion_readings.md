@@ -2,6 +2,8 @@
 
 # 2022
 
+- [Wrist-Size Fitness Gadgets Make for Great Gifts But Beware of the Nocebo Effect - Bloomberg](https://www.bloomberg.com/opinion/articles/2021-12-15/wrist-size-fitness-gadgets-make-for-great-gifts-but-beware-of-the-nocebo-effect)
+  
 - [Opinion | How to Make Friends After a Pandemic — and Why You Should - The New York Times](https://www.nytimes.com/2022/04/17/opinion/culture/making-friends-covid.html)
   
 - [The Latecomer’s Guide to Crypto - The New York Times](https://www.nytimes.com/interactive/2022/03/18/technology/cryptocurrency-crypto-guide.html)

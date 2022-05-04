@@ -81,6 +81,7 @@ category: cs
 - hex(100) = '0x64'
 - ord('a') = 97
 - 'x' * 3 = 'xxx'
+- 'B' = chr(ord('A') + 1)
 ```
 
 *sorting*

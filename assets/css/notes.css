@@ -49,6 +49,11 @@ img {
     width: 35%;
 }
 
+.noninverted {
+    width: 100%;
+    filter: none;
+}
+
 .medium_image {
     align: center;
     width: 60%;
