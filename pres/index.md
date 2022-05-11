@@ -141,6 +141,11 @@ Deep learning models have achieved impressive predictive performance by learning
         - [bair sem feb 2020 livestream](https://www.youtube.com/watch?v=x6AHX-VrcdM&feature=youtu.be)
     - [grad slam 2019](https://www.youtube.com/watch?v=6VVppY-uUgE&feature=youtu.be&t=5600)
     - [textxd 2019](https://berkeley-haas.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=276daa74-7298-40b1-9503-ab17014b5863)
+- other talks list
+    - [cnls physics-informed ml conference](https://web.cvent.com/event/ead9c1d8-c632-4896-ba9e-d5f3fec81e86/websitePage:a9dfad1e-e21c-46b6-bf79-eee883bd1448) (2022)
+    - disentangled interpretations and how we can use them ([simons workshop](https://simons.berkeley.edu/events/disentangled-interpretations-and-how-we-can-use-them))
+    - tom tom founder's ml conference (2017)
+
 - misc releases
   - [grad slam 2022](https://eecs.berkeley.edu/news/2022/03/chandan-singh-2022-berkeley-grad-slam-competition-semi-finalist)
   - [covid coe article](https://engineering.berkeley.edu/news/2020/04/getting-the-right-equipment-to-the-right-people/)
@@ -152,7 +157,7 @@ Deep learning models have achieved impressive predictive performance by learning
   - imodels
     - [UC Berkeley Researchers Introduce 'imodels: A Python Package For Fitting Interpretable Machine Learning Models - MarkTechPost](https://www.marktechpost.com/2022/02/10/uc-berkeley-researchers-introduce-imodels-a-python-package-for-fitting-interpretable-machine-learning-models/)
     - [UC Berkeley researchers develop a Python library for predictive modelling](https://analyticsindiamag.com/uc-berkeley-researchers-develop-a-python-library-for-predictive-modelling/)
-  
+
 
 ### bios
 

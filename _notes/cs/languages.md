@@ -29,6 +29,7 @@ category: cs
   - l.pop()
   - ['x'] + ['y'] = ['x', 'y']
   - [True] * 5
+  - l.index('dog') # index of element, throws err if not found
 - queue: from collections import deque ## implemented as doubly linked list
       - q = deque()
       - q.append(x)
@@ -68,14 +69,15 @@ category: cs
 - "_".join([s, s]) ## fastest way to join lots of strings (with _ between them)
 - s.split("e") ## split into a list wherever there is an e
 - s.replace("e", "new_str") ## replaces all instances
+- s.index("t") ## list index function
 - s.find("t") ## returns first index, otherwise -1
 - formatting
-	- "%05d"	//pad to fill 5 spaces
-	- "%8.3f" //max number of digits
-	- "%-d"	//left justify
-	- "%,d" 	//print commas ex. "1,000,000"
+	- f"{x:05d}" # f-string
+	- "05d"	# pad to fill 5 spaces
+	- "8.3f" # max number of digits
+	- "-d"	# left justify
+	- ",d" # print commas ex. "1,000,000"
   - d (int), f (float), s (str)
-	- print(f"{x:05d}") ## new in 3.6
 - int("3") = 3
 - bin(10) = '0b1010'
 - hex(100) = '0x64'
@@ -150,11 +152,14 @@ class MyClass:
 
 ## numpy/pandas
 
-- loc indexes by val
-- iloc indexes by index position
-- .groupby returns a dict
-- merging
-  - pd.merge(df1, df2, how='left', on='x1')
+```python
+df.loc indexes by val
+df.iloc indexes by index position
+df.groupby returns a dict
+
+merging
+pd.merge(df1, df2, how='left', on='x1')
+```
 
 ## pytorch
 

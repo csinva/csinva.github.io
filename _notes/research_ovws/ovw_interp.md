@@ -336,6 +336,7 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
   - however, if we don't know the form of the model we must generate it
 - [Bridging the Gap: Providing Post-Hoc Symbolic Explanations for Sequential Decision-Making Problems with Black Box Simulators](https://arxiv.org/abs/2002.01080)
 - [Model Learning with Personalized Interpretability Estimation (ML-PIE)](https://arxiv.org/abs/2104.06060) - use human feedback in the loop to decide which symbolic functions are most interpretable
+- [End-to-end symbolic regression with transformers](https://arxiv.org/abs/2204.10532)
 
 ## example-based = case-based (e.g. prototypes, nearest neighbor)
 
