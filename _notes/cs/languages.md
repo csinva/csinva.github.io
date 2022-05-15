@@ -29,6 +29,7 @@ category: cs
   - l.pop()
   - ['x'] + ['y'] = ['x', 'y']
   - [True] * 5
+  - l.extend(l2) # add all elements of l2 to l1
   - l.index('dog') # index of element, throws err if not found
 - queue: from collections import deque ## implemented as doubly linked list
       - q = deque()
@@ -48,7 +49,7 @@ category: cs
   - intersection(set2)
 - dict {'key': 3}
 	- keys()
-	- values()
+	- values() - returns values as a list
     - del m['key']
 - PriorityQueue
 	- from queue import PriorityQueue

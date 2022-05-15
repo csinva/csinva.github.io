@@ -73,7 +73,7 @@ Deep learning models have achieved impressive predictive performance by learning
 - [trim_cosmology_group_meeting (03/17/21)](https://docs.google.com/presentation/d/1sDtuaZt7bnAzvEB6tEv04rhVifnGSvyA1o6qUA-Z4ys/edit#slide=id.p)
     - [transform interp](https://docs.google.com/presentation/d/1mH1uG38qJg-ar0G-LiVPZWNKPO_2GiD-uayWM5AI-bo/present?slide=id.p)
 - [awd (neurips 15 min)](https://docs.google.com/presentation/d/1YrzAir94D0KWewau34dZAXXPdATRuqeVf8Jt-o_wqG8/edit#slide=id.p)
-  - [awd (cnls 30 min)](https://docs.google.com/presentation/d/1TuYEzCZrUX_EbjlQId8dig9lmCC0iw68sPxLqXwd-PM/edit#slide=id.p)
+  - [awd (cnls 20 min)](https://docs.google.com/presentation/d/1TuYEzCZrUX_EbjlQId8dig9lmCC0iw68sPxLqXwd-PM/edit#slide=id.p)
 - [pdr](https://docs.google.com/presentation/d/18Tdiym7hDeu0c4tj5XezrznIDfbltR4QQJJZjaHi7tk/present?slide=id.p)
 - [auxilin prediction](https://docs.google.com/presentation/d/1sQXbFUTSEyrmDkovV8g759Wj8E9LBpATAVV1iweKeGo/edit#slide=id.gc0f646bcee_0_0)
 - [interpretation to causation](https://docs.google.com/presentation/d/1vwgpNp36ssspO5LcUgnohtm9JT-PeSwsX47LpZjvono/edit#slide=id.g9d8da641c4_0_36)
