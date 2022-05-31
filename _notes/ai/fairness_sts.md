@@ -257,6 +257,15 @@ typora-copy-images-to: ../assets
     - [80k hours AI careers](https://80000hours.org/problem-profiles/positively-shaping-artificial-intelligence/)
 - [givewell cost-effective calculations](https://www.givewell.org/how-we-work/our-criteria/cost-effectiveness)
     - charities often exaggerate their "cost to save a life"
+- [The case for reducing existential risks - 80,000 Hours](https://80000hours.org/articles/existential-risks/)
+    - life-ending asteroid: 1 in 5000 per century
+        - supervolcanoes
+
+    - nuclear weapons
+    - biochemical weapons
+    - runaway climate change
+    - unknown unknowns
+
 
 # tech for "good"
 
