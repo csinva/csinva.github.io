@@ -8,8 +8,8 @@ category: ml
 
 # overview
 
-- regressor doesn't classify well
-  - even in binary case, outliers skew fit
+- regressors don't classify well
+  - e.g. outliers skew fit
 - asymptotic classifier - assumes infinite data
 - linear classifer $\implies$ boundaries are hyperplanes
 - *discriminative* - model $P(Y\vert X)$ directly ![](../assets/j7_10.png)
@@ -19,13 +19,13 @@ category: ml
   - usually higher bias $\implies$ can handle missing data
     - this is because we assume some underlying X
   - fast convergence ~ $O[\log(p)]$
-- *decision theory* - models don't require finding $p(y\|x)$ at all
+  - *decision theory* - models don't require finding $p(y \vert x)$ at all
 
 
 # binary classification
 
 - $\hat{y} = \text{sign}(\theta^T x)$
-- usually $\theta^Tx$ includes b term, but generally we don't want to regularize b
+- usually $\theta^Tx$ includes bias term, but generally we don't want to regularize bias
 
 | Model               | $\mathbf{\hat{\theta}}$ objective (minimize)                 |
 | ------------------- | ------------------------------------------------------------ |
@@ -97,85 +97,12 @@ category: ml
   - $p(Y=1|x, \theta) = 1-e^{-\theta^Tx}$ but x doesn't have to be binary
   - *complementary log-log model*: $p(Y=1|x, \theta) = 1-\text{exp}[e^{-\theta^Tx}]$
 
-## decision trees / rfs - R&N 18.3; HTF 9.2.1-9.2.3
-
-- **importance scores**
-  - dataset-level
-    - for all splits where the feature was used, measure how much variance reduced (either summed or averaged over splits)
-    - the sum of importances is scaled to 1
-  - prediction-level: go through the splits and add up the changes (one change per each split) for each features
-    - note: this bakes in interactions of other variables
-    - ours: only apply rules based on this variable (all else constant)
-    - why not perturbation based?
-  - trees group things, which can be nice
-  - trees are unstsable
-- follow rules: predict based on prob distr. of points in same leaf you end up in
-- *inductive bias*
-  - prefer small trees
-  - prefer tres with high IG near root
-- good for certain types of problems
-  - instances are attribute-value pairs
-  - target function has discrete output values
-  - disjunctive descriptions may be required
-  - training data may have errors
-  - training data may have missing attributes
-- greedy - use statistical test to figure out which attribute is best
-  - split on this attribute then repeat
-- growing algorithm
-  1. *information gain* - decrease in entropy
-     - weight resulting branches by their probs
-     - biased towards attributes with many values
-     - use *GainRatio* = Gain/SplitInformation
-       - can incorporate *SplitInformation* - discourages selection of attributes with many uniformly distributed values
-       - sometimes SplitInformation is very low (when almost all attributes are in one category)
-         - might want to filter using Gain then use GainRatio
-  2. regression tree
-     - must decide when to stop splitting and start applying linear regression
-     - must *minimize SSE* 
-- can get stuck in local optima
-- avoid overfitting 
-  - don't grow too deep
-  - early stopping doesn't see combinations of useful attributes
-  - overfit then prune - proven more succesful
-    - *reduced-error pruning* - prune only if doesn't decrease error on validation set
-    - *$\chi^2$ pruning* - test if each split is statistically significant with $\chi^2$ test
-    - *rule post-pruning* = *cost-complexity pruning*
-      1. infer the decision tree from the training set, growing the tree until the training data is fit as well as possible and allowing overfitting to occur.
-      2. convert the learned tree into an equivalent set of rules by creating one rule for each path from the root node to a leaf node.
-         - these rules are easier to work with, have no structure
-      3. prune (generalize) each rule by removing any preconditions that result in improving its estimated accuracy.
-      4. sort the pruned rules by their estimated accuracy, and consider them in this sequence when classifying subsequent instances.
-- incorporating continuous-valued attributes
-  - choose candidate thresholds which separate examples that differ in their target classification
-  - just evaluate them all
-- missing values
-  - could just fill in most common value
-  - also could assign values probabilistically
-- differing costs
-  - can bias the tree to favor low-cost attributes
-    - ex. divide gain by the cost of the attribute
-- high variance - instability - small changes in data yield changes to tree
-- many trees
-  - *bagging* = bootstrap aggregation - an ensemble method
-    - *bootstrap* - resampling with replacement
-    - training multiple models by randomly drawing new training data
-    - bootstrap with replacement can keep the sampling size the same as the original size
-  - *random forest* - for each split of each tree, choose from only m of the p possible features
-    - smaller m decorrelates trees, reduces variance
-    - RF with m=p $\implies$ bagging
-  - voting
-    - consensus: take the majority vote
-    - average: take average of distribution of votes
-      - reduces variance, better for improving more variable (unstable) models
-    - *adaboost* - weight models based on their performance
-- [optimal classification trees](https://link.springer.com/content/pdf/10.1007%2Fs10994-017-5633-9.pdf) - simultaneously optimize all splits, not one at a time
-
 ## svms
 
 - svm benefits
   1. *maximum margin separator* generalizes well
   2. *kernel trick* makes it very nonlinear
-  3. nonparametric - can retain training examples, although often get rid of many
+  3. nonparametric - retains training examples (although often get rid of many)
      1. at test time, can't just store w - have to store support vectors
 - ![](../assets/svm_margin.png)
 - $\hat{y} =\begin{cases}   1 &\text{if } w^Tx +b \geq 0 \\ -1 &\text{otherwise}\end{cases}$
@@ -190,7 +117,7 @@ category: ml
     - difficult to solve, especially because of $\vert \vert w\vert \vert =1$ constraint
     - assume $\hat{\gamma}=1$ ~ just a scaling factor
     - now we are maximizing $1/\vert \vert w\vert \vert $
-- *soft margin* classifier - lets examples fall on wrong side of decision boundary
+- *soft margin* classifier - allows misclassifications
   - assigns them penalty proportional to distance required to move them back to correct side
   - min $\frac{1}{2}||\theta||^2 \textcolor{blue}{ + C \sum_i^n \epsilon_i} \\s.t. y^{(i)} (\theta^T x^{(i)} + b) \geq 1 \textcolor{blue}{- \epsilon_i}, i=1:m \\ \textcolor{blue}{\epsilon_i \geq0, 1:m}$
   - large C can lead to overfitting
@@ -210,6 +137,102 @@ category: ml
   - fill in missing values
   - start with RBF
   - valid kernel: kernel matrix is Psd
+
+## decision trees / rfs - R&N 18.3; HTF 9.2.1-9.2.3
+
+- follow rules: predict based on prob distr. of points in same leaf you end up in
+
+- *inductive bias*
+
+  - prefer small trees
+  - prefer tres with high IG near root
+
+- good for certain types of problems
+
+  - instances are attribute-value pairs
+  - target function has discrete output values
+  - disjunctive descriptions may be required
+  - training data may have errors
+  - training data may have missing attributes
+
+- greedy - use statistical test to figure out which attribute is best
+
+  - split on this attribute then repeat
+
+- growing algorithm
+
+  1. *information gain* - decrease in entropy
+     - weight resulting branches by their probs
+     - biased towards attributes with many values
+     - use *GainRatio* = Gain/SplitInformation
+       - can incorporate *SplitInformation* - discourages selection of attributes with many uniformly distributed values
+       - sometimes SplitInformation is very low (when almost all attributes are in one category)
+         - might want to filter using Gain then use GainRatio
+  2. regression tree
+     - must decide when to stop splitting and start applying linear regression
+     - must *minimize SSE* 
+
+- can get stuck in local optima
+
+- avoid overfitting 
+
+  - empirically, early stopping is worse than overfitting then pruning (bc it doesn't see combinations of useful attributes)
+
+  - overfit then prune - proven more succesful
+    - *reduced-error pruning* - prune only if doesn't decrease error on validation set
+    - *$\chi^2$ pruning* - test if each split is statistically significant with $\chi^2$ test
+    - *rule post-pruning* = *cost-complexity pruning*
+      1. infer the decision tree from the training set, growing the tree until the training data is fit as well as possible and allowing overfitting to occur.
+      2. convert the learned tree into an equivalent set of rules by creating one rule for each path from the root node to a leaf node.
+         - these rules are easier to work with, have no structure
+      3. prune (generalize) each rule by removing any preconditions that result in improving its estimated accuracy.
+      4. sort the pruned rules by their estimated accuracy, and consider them in this sequence when classifying subsequent instances.
+
+- incorporating continuous-valued attributes
+
+  - choose candidate thresholds which separate examples that differ in their target classification
+  - just evaluate them all
+
+- missing values
+
+  - could fill in most common value
+  - could assign values probabilistically
+
+- differing costs
+
+  - can bias the tree to favor low-cost attributes
+    - ex. divide gain by the cost of the attribute
+
+- high variance - instability - small changes in data yield changes to tree
+
+- many trees
+
+  - *bagging* = bootstrap aggregation - an ensemble method
+    - *bootstrap* - resampling with replacement
+    - train multiple models by randomly drawing new training data
+    - bootstrap with replacement can keep the sampling size the same as the original size
+  - *random forest* - for each split of each tree, choose from only m of the p possible features
+    - smaller m decorrelates trees, reduces variance
+    - RF with m=p $\implies$ bagging
+  - voting
+    - consensus: take the majority vote
+    - average: take average of distribution of votes
+      - reduces variance, better for improving more variable (unstable) models
+    - *adaboost* - weight models based on their performance
+
+- [optimal classification trees](https://link.springer.com/content/pdf/10.1007%2Fs10994-017-5633-9.pdf) - simultaneously optimize all splits, not one at a time
+
+- **importance scores**
+
+  - dataset-level
+    - for all splits where the feature was used, measure how much variance reduced (either summed or averaged over splits)
+    - the sum of importances is scaled to 1
+  - prediction-level: go through the splits and add up the changes (one change per each split) for each features
+    - note: this bakes in interactions of other variables
+    - ours: only apply rules based on this variable (all else constant)
+    - why not perturbation based?
+  - trees group things, which can be nice
+  - trees are unstable
 
 ## decision rules
 
@@ -293,9 +316,9 @@ category: ml
 - implementation
   - have symbol for unknown words
   - underflow prevention - take logs of all probabilities so we don't get 0
-  - $y = \text{argmax }log \:P(y) + \sum_i log \: P(X_i\vert y)$
+  - $y = \text{argmax }\log \:P(y) + \sum_i \log \: P(X_i\vert y)$
 
-# instance-based (nearest neighbors) - really discriminative
+# instance-based (nearest neighbors)
 
 - also called lazy learners = nonparametric models
 - make Voronoi diagrams

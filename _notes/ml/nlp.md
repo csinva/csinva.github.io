@@ -11,9 +11,10 @@ Some notes on natural language processing, focused on modern improvements based 
 
 # nlp basics
 
-- basics come from book "Speech and Language Processing"
+*basics come from book "Speech and Language Processing"*
+
 - **language models** - assign probabilities to sequences of words
-  - ex. **n-gram model** - assigns probs to shorts sequences of words, known as n-grams
+  - ex. **n-gram model** - assigns probs to short sequences of words, known as n-grams
     - for full sentence, use markov assumption
   - eval: **perplexity (PP)** - inverse probability of the test set, normalized by the number of words (want to minimize it)
     - $PP(W_{test}) = P(w_1, ..., w_N)^{-1/N}$
@@ -25,6 +26,7 @@ Some notes on natural language processing, focused on modern improvements based 
 - **topic models (e.g. LDA)** - apply unsupervised learning on large sets of text to learn sets of associated words
 - **embeddings** - vectors for representing words
   - ex. **tf-idf** - defined as counts of nearby words (big + sparse)
+    - TF * IDF = [ (Number of times term t appears in a document) / (Total number of terms in the document) ] * log(Total number of documents / Number of documents with term t in it).
     - pointwise mutual info - instead of counts, consider whether 2 words co-occur more than we would have expected by chance
   - ex. **word2vec** - short, dense vectors
     - intuition: train classifier on binary prediction: is word $w$ likely to show up near this word? (algorithm also called skip-gram)
@@ -58,7 +60,7 @@ Some notes on natural language processing, focused on modern improvements based 
   - encoder reads input and outputs context vector (the hidden state)
   - decoder (rnn) takes this context vector and generates a sequence
 - misc papers
-  - [Deal or No Deal? End-to-End Learning for Negotiation Dialogues](https://arxiv.org/abs/1706.05125) - controversial FB paper where agents "make up their own language"
+  - [Deal or No Deal? End-to-End Learning for Negotiation Dialogues](https://arxiv.org/abs/1706.05125) (2017) - controversial FB paper where agents "make up their own language"
 
 
 
@@ -102,9 +104,9 @@ Some notes on natural language processing, focused on modern improvements based 
 - recent papers
   - [attention is all you need paper](<https://arxiv.org/abs/1706.03762>) - proposes transformer
   - [Semi-supervised Sequence Learning](https://arxiv.org/abs/1511.01432) (by [Andrew Dai](https://twitter.com/iamandrewdai) and [Quoc Le](https://twitter.com/quocleix))
-  -  [ELMo](https://arxiv.org/abs/1802.05365) (by [Matthew Peters](https://twitter.com/mattthemathman) and researchers from [AI2](https://allenai.org/) and [UW CSE](https://www.engr.washington.edu/about/bldgs/cse)) - no word embeddings - train embeddings w/ bidirectional lstm (on language modelling)
+  -  [ELMo](https://arxiv.org/abs/1802.05365) (by [Matthew Peters](https://twitter.com/mattthemathman) and researchers from [AI2](https://allenai.org/) and [UW CSE](https://www.engr.washington.edu/about/bldgs/cse)) - no word embeddings - train embeddings w/ bidirectional lstm (on language modeling)
     - context vector is weighted sum of context vector at each word
-  - [ULMFiT](https://arxiv.org/abs/1801.06146) (by fast.ai founder [Jeremy Howard](https://twitter.com/jeremyphoward) and [Sebastian Ruder](https://twitter.com/seb_ruder)), the
+  - [ULMFiT](https://arxiv.org/abs/1801.06146) ([Jeremy Howard](https://twitter.com/jeremyphoward) and [Sebastian Ruder](https://twitter.com/seb_ruder))
   - [OpenAI transformer](https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf) (by OpenAI researchers [Radford](https://twitter.com/alecrad), [Narasimhan](https://twitter.com/karthik_r_n), [Salimans](https://twitter.com/timsalimans), and [Sutskever](https://twitter.com/ilyasut))
   - [BERT](BERT) - semi-supervised learning (predict masked word - this is bidirectional) + supervised finetuning
   - [GPT-2](https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf) (small released model, full trained model, even larger model from Nvidia)

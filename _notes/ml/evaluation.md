@@ -10,17 +10,17 @@ category: ml
 
 - define a loss function $\mathcal{L}$
   - 0-1 loss: $\vert C-f(X)\vert$  - hard to minimize (combinatorial)
-  - $L_2$ loss: $[C-f(X)[^2$
+  - $L_2$ loss: $[C-f(X)]^2$
 - *risk* = $E_{(x,y)\sim D}[\mathcal L(f(X), y) ]$
 - optimal classifiers
-  - Bayes classifier minimizes 0-1 loss: $\hat{f}(X)=C_i$ if $P(C_i\vert X)=max_f P(f\vert X)$
+  - Bayes classifier minimizes 0-1 loss: $\hat{f}(X)=C_i$ if $P(C_i\vert X)=\max_f P(f\vert X)$
   - KNN minimizes $L_2$ loss: $\hat{f}(X)=E(Y\vert X)$ 
 - classification cost functions
   1. misclassification error - not differentiable
   2. Gini index: $\sum_{i != j} p_i q_j$
   3. cross-entropy: $-\sum_x p(x)\: \log \: \hat p(x) $, where $p(x)$ are usually labels and $\hat p(x)$ are softmax outputs
      1. only penalizes target class (others penalized implicitly because of softmax)
-     2. for binary, $- (p \log \hat p + (1-p) \log (1-\hat p)$
+     2. for binary, $- p \log \hat p - (1-p) \log (1-\hat p)$
 
 # measures
 
@@ -86,9 +86,8 @@ category: ml
     3. random split - shuffle and repeat
     4. *one-way CV* = *prequential analysis* - keep testing on next data point, updating model
     5. ESCV - penalize variance between folds
-- *regularization path* of a regression - plot each coeff v. $\lambda$
-  
-  - tells you which features get pushed to 0 and when
+- *regularization path* of a regression - plot each coeff vs. $\lambda$
+  - shows when features get pushed to 0
 - for OLS (and maybe other linear models), [can compute leave-one-out CV without training separate models](https://robjhyndman.com/hyndsight/crossvalidation/)
 
 # stability
@@ -116,3 +115,7 @@ category: ml
   - *$AIC_p$*
   - *$BIC_p$*
   - PRESS
+
+# nlp
+
+- [BLEU (**B**i**L**ingual **E**valuation **U**nderstudy)](https://en.wikipedia.org/wiki/BLEU) is a metric for automatically evaluating machine-translated text. The BLEU score is a number between zero and one that measures the similarity of the machine-translated text to a set of high quality reference translations

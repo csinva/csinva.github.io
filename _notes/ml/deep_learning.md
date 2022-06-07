@@ -13,28 +13,28 @@ See also notes in [📌 unsupervised learning](https://csinva.io/notes/ml/unsupe
 # basics
 
 - basic perceptron update rule
-    - if output is 0 but should be 1: raise weights on active connections by d
-    - if output is 1 but should be 0: lower weights on active connections by d
+    - if output is 0, label is 1: increase active weights
+    - if output is 1, label is 0: decrease active weights
 - *perceptron convergence thm* - if data is linearly separable, perceptron learning algorithm wiil converge
 - transfer / activation functions
     - sigmoid(z) = $\frac{1}{1+e^{-z}}$
     - Binary step
-    - TanH (always preferred to sigmoid)
+    - TanH (preferred to sigmoid)
     - Rectifier = ReLU
          - Leaky ReLU - still has some negative slope when <0
          - rectifying in electronics converts analog -> digital
     - rare to mix and match neuron types
 - *deep* - more than 1 hidden layer
 - regression loss = $\frac{1}{2}(y-\hat{y})^2$
-- classification loss = $-y log (\hat{y}) - (1-y) log(1-\hat{y})$ 
+- classification loss = $-y \log (\hat{y}) - (1-y) \log(1-\hat{y})$ 
     - can't use SSE because not convex here
-- multiclass classification loss $=-\sum_j y_j ln \hat{y}_j$
+- multiclass classification loss $=-\sum_j y_j \ln \hat{y}_j$
 - **backpropagation** - application of *reverse mode automatic differentiation* to neural networks's loss
   - apply the chain rule from the end of the program back towards the beginning
-    - $\frac{dL}{dx_i} = \frac{dL}{dz} \frac{\partial z}{\partial x_i}$
+    - $\frac{dL}{d \theta_i} = \frac{dL}{dz} \frac{\partial z}{\partial \theta_i}$
     - sum $\frac{dL}{dz}$ if neuron has multiple outputs z
     - L is output
-  - $\frac{\partial z}{\partial x_i}$ is actually a Jacobian (deriv each $z_i$ wrt each $x_i$ - these are vectors)
+  - $\frac{\partial z}{\partial \theta_i}$ is actually a Jacobian (deriv each $z_i$ wrt each $\theta_i$ - these are vectors)
     - each gate usually has some sparsity structure so you don't compute whole Jacobian
 - pipeline
   - initialize weights, and final derivative ($\frac{dL}{dL}=1$)
@@ -77,7 +77,7 @@ See also notes in [📌 unsupervised learning](https://csinva.io/notes/ml/unsupe
     - you can basically always pad with zeros as long as you keep 1 in middle
     - can use these to detect edges with small convolutions
     - can do Guassian filters
-- convolutions typically sum over all color channels
+- 1st-layer convolution typically sum over all color channels
 - 1x1 conv - still convolves over channels
 - pooling - usually max - doesn't pool over depth
   - people trying to move away from this - larger strides in conversation layers
@@ -141,7 +141,6 @@ See also notes in [📌 unsupervised learning](https://csinva.io/notes/ml/unsupe
 
 - feedforward NNs have no memory so we introduce recurrent NNs
 - able to have memory
-- could theoretically unfold the network and train with backprop
 - truncated - limit number of times you unfold
 - $state_{new} = f(state_{old},input_t)$
 - ex. $h_t = tanh(W h_{t-1}+W_2 x_t)$
@@ -159,22 +158,35 @@ See also notes in [📌 unsupervised learning](https://csinva.io/notes/ml/unsupe
   - output gate - conditionally output a relevant part of memory
   - GRUs - similar, merge input / forget units into a single update unit
 
-
-
 # transformers
 
 - transformers [original paper](https://arxiv.org/pdf/1706.03762.pdf)
   - [spatial transformers](https://papers.nips.cc/paper/5854-spatial-transformer-networks.pdf )
 - http://colah.github.io/posts/2014-03-NN-Manifolds-Topology/
+- [A Survey of Transformers](https://arxiv.org/abs/2106.04554)
+  - vanilla transformer: multihead attention, add + norm, position-wise ffn, add + norm
+    - decoder blocks use cross-attention with inputs from embedding blocks
+  - masked self-attention = causal attention = autoregressive attention
 
+## really big models
 
+- [PaLM: Scaling Language Modeling with Pathways](https://arxiv.org/abs/2204.02311) (2022)
+  - 540 Billion
+  - pathways hardware center allows for fast/efficient training
+  - discontinuous improvements - at some point large model improves
+  - prompt engineering: "Explain yourself" - lets it explain jokes
+- [dall-e 2](https://openai.com/dall-e-2/) (2022)
+  - clip is foundation as generative model
+    - generates text + image embeddings
+    - "prior network" maps text embedding to image embedding
+  - adds diffusion model
 
 # graph neural networks
 
 - [Theoretical Foundations of Graph Neural Networks](https://www.youtube.com/watch?v=uF53xsT7mjc)
   - inputs are graphs
   - e.g. molecule input to classification
-    - one big study: "a deep learning appraoch to antibiotic discovery" - using GNN classification of antibiotic resistance, came up with 100 candidate antibiotics and were able to test them
+    - one big study: [a deep learning appraoch to antibiotic discovery](https://www.sciencedirect.com/science/article/pii/S0092867420301021) (stokes et al. 2020) - using GNN classification of antibiotic resistance, came up with 100 candidate antibiotics and were able to test them
   - e.g. traffic maps - nodes are intersections
   - invariances in CNNs: translational, neighbor pixels relate a lot more
   - simplest setup: no edges, each node $i$ has a feature vector $x_i$ (really a set not a graph)
@@ -207,16 +219,18 @@ See also notes in [📌 unsupervised learning](https://csinva.io/notes/ml/unsupe
       - this connects well to a message-passing GNN
 - GNN limitations
   - ex. can we tell whether 2 graphs are isomorphic - often no?
-  - cank make GNNs more powerful by adding positional features, etc.
+  - can make GNNs more powerful by adding positional features, etc.
   - can also embed sugraphs together
-  - things are more difficult in continuous case...
-- geometric deep learning: invariances and equivariances can be appllied generally to get a large calss of architectures between convolutions and graphs
+  - continuous case is more difficult
+- geometric deep learning: invariances and equivariances can be applied generally to get a large calss of architectures between convolutions and graphs
 
 # misc architectural components
 
 - **coordconv** - break translation equivariance by passing in i, j coords as extra filters
 - **deconvolution** = transposed convolution = fractionally-strided convolution - like upsampling
-- **attention** = vector of importance weights: in order to predict or infer one element, such as a pixel in an image or a word in a sentence, we estimate using the attention vector how strongly it is correlated with (or “*attends to*” as you may have read in many papers) other elements and take the sum of their values weighted by the attention vector as the approximation of the target
+- **attention** = vector of importance weights
+  - to predict or infer one element, such as a pixel in an image or a word in a sentence, we estimate using the attention vector how strongly it is correlated with (or “*attends to*” other elements and take the sum of their values weighted by the attention vector as the approximation of the target
+
 
 
 

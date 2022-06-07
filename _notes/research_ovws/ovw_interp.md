@@ -279,6 +279,27 @@ For an implementation of many of these models, see the python [imodels package](
   - [On the price of explainability for some clustering problems](https://arxiv.org/abs/2101.01576) (laber et al. 2021) - trees for clustering
   - extremely randomized trees ([geurts et al. 2006](https://link.springer.com/article/10.1007/s10994-006-6226-1)) - randomness goes further than Random Forest - randomly select not only the feature but also the split thresholds (and select the best out of some random set)
 
+### decision diagrams
+
+*=decision graphs / decision streams*
+
+- Many algorithms for learning diagrams, usually by postprocessing a given tree (and taking an MDL perspective)
+- Decision diagrams for model compression
+  - [Simplifying decision trees: A survey](https://www.cambridge.org/core/journals/knowledge-engineering-review/article/abs/simplifying-decision-trees-a-survey/CEE7A6994E66E821DB4A12DD83DC3810) (breslow & aha, 1997)
+  - [Large Random Forests: Optimisation for Rapid Evaluation](https://arxiv.org/abs/1912.10934) (gossen & steffen, 2019)
+- [Optimal Decision Diagrams for Classification](https://arxiv.org/pdf/2205.14500.pdf) (florio...vidal 2022) - decision diagrams are like trees but paths can rejoin
+- Extracting rules from neural networks as decision diagrams [(Chorowski, J., J.M. Zurada. 2011](https://pubmed.ncbi.nlm.nih.gov/21335310/))
+- [Decision Jungles: Compact and Rich Models for Classification](https://proceedings.neurips.cc/paper/2013/hash/69adc1e107f7f7d035d7baf04342e1ca-Abstract.html) (shotton et al. 2013) - ensembles of decision diagrams
+- [Decision Stream: Cultivating Deep Decision Trees](https://ieeexplore.ieee.org/abstract/document/8372043) (ignatov & ignatov, 2017)
+  - merge nodes from different branches based on their similarity that is estimated with two-sample test statistics
+  - nothing to do with deep learning
+
+- recent interpretability
+  - [Optimizing Binary Decision Diagrams for Interpretable Machine Learning Classification](https://ieeexplore.ieee.org/abstract/document/9474083) (cabodi et al. 2021)
+  - proposing a SAT-based model for computing a decision tree as the smallest Reduced Ordered Binary Decision Diagram
+  - exploring heuristic approaches for deriving sub-optimal (i.e., not minimal) ROBDDs, in order to improve the scalability of the proposed technique.
+  - [Optimizing Binary Decision Diagrams with MaxSAT for classification](https://arxiv.org/abs/2203.11386) (hu et al. 2022)
+
 
 ## linear (+algebraic) models
 
@@ -322,6 +343,8 @@ For an implementation of many of these models, see the python [imodels package](
   - [Axiomatic Interpretability for Multiclass Additive Models](https://dl.acm.org/doi/abs/10.1145/3292500.3330898) (zhang, tan, ... caruana, 2019)
   - extend GAM to multiclass and improve visualizations in that setting
   - [Sparse Partially Linear Additive Models](https://www.tandfonline.com/doi/full/10.1080/10618600.2015.1089775) (lou, bien, caruana & gehrke, 2015) - some terms are linear and some use $f_i(x_i)$
+  - [Neural Basis Models for Interpretability](https://arxiv.org/abs/2205.14120) (2022)
+  - [Scalable Interpretability via Polynomials](https://arxiv.org/abs/2205.14108) (2022)
 
 
 ### symbolic regression
@@ -397,6 +420,7 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
 
 - concepts
   - [Concept Bottleneck Models](https://arxiv.org/pdf/2007.04612.pdf) (koh et al. 2020) - predict concepts before making final prediction
+    - [Post-hoc Concept Bottleneck Models](https://arxiv.org/abs/2205.15480) (...zou, 2022)
   - [Concept Whitening for Interpretable Image Recognition](https://arxiv.org/pdf/2002.01650.pdf) (chen et al. 2020) - force network to separate "concepts" (like in TCAV) along different axes
   - [Interpretability Beyond Classification Output: Semantic Bottleneck Networks](https://arxiv.org/abs/1907.10882) - add an interpretable intermediate bottleneck representation
 - [How to represent part-whole hierarchies in a neural network](https://arxiv.org/abs/2102.12627) (hinton, 2021)
@@ -1244,6 +1268,42 @@ These papers don't quite connect to prediction, but are generally about finding 
   - Approximate Maximum Influence Perturbation -  method to assess the sensitivity of econometric analyses to the removal of a small fraction of the data
   - results of several economics papers can be overturned by removing less than 1% of the sample
 
+## symbolic reasoning
+
+- [Large Language Models are Zero-Shot Reasoners](https://arxiv.org/abs/2205.11916) - Simply adding “Let’s think step by step” before each answer increases the accuracy on MultiArith from 17.7% to 78.7% and GSM8K from 10.4% to 40.7% with GPT-3
+- [Neurocompositional computing: From the Central Paradox of Cognition to a new generation of AI systems](https://arxiv.org/abs/2205.01128) (smolensky et al. 2022)
+  - Compositionality
+  - Continuity - the encoding and processing of information is formalized with real numbers that vary continuously
+  - neural space vs symbolic space (many different things (e.g. sentences) can mean the same thing)
+  - want to move from symbolic repr. to neural repr. while keeping interpretability
+    - system should output intermediate steps in addition to answer
+    - thinking fast + slow (system 1: fast, intuitive) (system 2: slower, logical, derivative)
+- [Enhancing the Transformer with Explicit Relational Encoding for Math Problem Solving - Microsoft Research](https://www.microsoft.com/en-us/research/publication/enhancing-the-transformer-with-explicit-relational-encoding-for-math-problem-solving/) (schlag, ..., gao, 2019)
+  - TP-attention
+  - beat soa on free-form math word-problems
+  - [Tensor product variable binding and the representation of symbolic structures in connectionist systems - ScienceDirect](https://www.sciencedirect.com/science/article/abs/pii/000437029090007M?via%3Dihub) (paul smolensky, 1990) - activation patterns are "symbols" and internal structure allows them to be processed like symbols
+    - tensor product representation = TPR
+    - [TPR slides](https://www.mit.edu/~jda/teaching/6.884/slides/oct_02.pdf)
+    - TPR of a structure is the sum of the TPR of its constituents
+      - tensor product operation allows constiuents to be uniquely identified, even after the sum (if roles are linearly independent)
+  - in addition to K, Q, V, also add a role-vector
+    - do element-wise multiplication of outputted vector with role-vector
+  - TPR built as tensor product of 2 vectors:
+    - **filler** - one vector that embeds the content of the constituent -- here, the vector returned by attention
+      - ex. one head learns "second-argument-of"
+    - **role** - second vector that embeds the structural role it fills — here, a relation conceptually labeling an edge of the attention graph
+- [TP-N2F: Tensor Product Representation for Natural To Formal Language Generation - Microsoft Research](https://www.microsoft.com/en-us/research/publication/natural-to-formal-language-generation-using-tensor-product-representations/) (chen...gao, 2019)
+
+
+
+## ai safety
+
+- [Concrete Problems in AI Safety](https://arxiv.org/abs/1606.06565)
+  - **Robustness to distributional shift.** *Can ML be robust to changes in the data distribution, or at least fail gracefully?* For example, can we build [image classifiers](https://www.tensorflow.org/versions/r0.9/tutorials/deep_cnn/index.html) that indicate appropriate uncertainty when shown new kinds of images, instead of confidently trying to use its [potentially inapplicable](http://arxiv.org/abs/1412.6572) learned model?
+  - **Safe exploration.** *Can RL agents learn about their environment without executing catastrophic actions?* For example, can an RL agent learn to navigate an environment without ever falling off a ledge?
+  - **Avoiding negative side effects.** *Can we transform an RL agent’s [reward function](https://webdocs.cs.ualberta.ca/~sutton/book/ebook/node9.html) to avoid undesired effects on the environment?* For example, can we build a robot that will move an object while avoiding knocking anything over or breaking anything, without manually programming a separate penalty for each possible bad behavior?
+  - **Avoiding “reward hacking” and “[wireheading](http://www.agroparistech.fr/mmip/maths/laurent_orseau/papers/ring-orseau-AGI-2011-delusion.pdf)”.** *Can we prevent agents from “gaming” their reward functions, such as by distorting their observations?* For example, can we train an RL agent to minimize the number of dirty surfaces in a building, without causing it to avoid looking for dirty surfaces or to create new dirty surfaces to clean up?
+  - **Scalable oversight.** *Can RL agents efficiently achieve goals for which feedback is very expensive?* For example, can we build an agent that tries to clean a room in the way the user would be happiest with, even though feedback from the user is very rare and we have to use cheap approximations (like the presence of visible dirt) during training? The divergence between cheap approximations and what we actually care about is an important source of accident risk.
 
 # misc new papers
 

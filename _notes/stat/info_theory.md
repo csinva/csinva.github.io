@@ -56,8 +56,7 @@ category: stat
     - not symmetric
 
 - *mutual info I(X; Y)*: how much you can predict about one given the other
-  
-  - $I(X; Y) = \sum_X \sum_y p(x,y) log \frac{p(x,y)}{p(x) p(y)} = D(p(x,y)\|\|p(x) p(y))$
+  - $I(X; Y) = \sum_X \sum_y p(x,y) \log \frac{p(x,y)}{p(x) p(y)} = D(p(x,y)\|\|p(x) p(y))$
   - $I(X; Y) =  -H(X,Y) + H(X) + H(Y))$
     - $=I(Y|X)$
   - $I(X; X) = H(X)$ so entropy sometimes called *self-information*
@@ -65,13 +64,13 @@ category: stat
 
 ![entropy-venn-diagram](../assets/entropy-venn-diagram.png)
 
-- cross-entropy: $H_q(p) = -\sum_x p(x) \: log \: q(x)$
+- cross-entropy: $H_q(p) = -\sum_x p(x) \: \log \: q(x)$
   
   ![Screen Shot 2018-07-02 at 11.26.42 AM](../assets/cross_entropy.png)
 
 ## chain rules
 
-- *entropy* - $H(X_1, ..., X_n) = \sum_i H(X_i \| X_{i-1}, ..., X_1) = H(X_n \| X_{n-1}, ..., X_1) + ... + H(X_1)$
+- *entropy* $H(X_1, ..., X_n) = \sum_i H(X_i \| X_{i-1}, ..., X_1) = H(X_n \| X_{n-1}, ..., X_1) + ... + H(X_1)$
 - *conditional mutual info* $I(X; Y\|Z) = H(X\|Z) - H(X\|Y,Z)$
   - $I(X_1, ..., X_n; Y) = \sum_i I(X_i; Y\|X_{i-1}, ... , X_1)$
 - *conditional relative entropy* $D(p(y\|x) \|\| q(y\|x)) = \sum_x p(x) \sum_y p(y\|x) log \frac{p(y\|x)}{q(y\|x)}$

@@ -26,7 +26,7 @@ category: cs
 - list l (use this for stack as well) ## implemented like an arraylist
 	- l.append(x)
     - l.insert(index, element)
-  - l.pop()
+  - l.pop(idx) # by default, idx=-1
   - ['x'] + ['y'] = ['x', 'y']
   - [True] * 5
   - l.extend(l2) # add all elements of l2 to l1
@@ -164,13 +164,24 @@ pd.merge(df1, df2, how='left', on='x1')
 
 ## pytorch
 
-- `model = nn.DataParallel(model)`
-  
-  - automatically runs multiple batches from dataset at same time
-  
-  - `nn.DistributedDataParallel` is often faster - replicates model on each gpu and gives some data to each one (less data transferes)
+- new in 1.11: TorchData, functorch (e.g. vmap), DistributedDataParallel - now stable
+- as of 1.6.0
+  - `nn.DistributedDataParallel` is often faster
+    - replicates model on each gpu and gives some data to each one (less data transfers)
+
+    - requires calling `init_process_group`
+
+  - `model = nn.DataParallel(model)`
+    - automatically runs multiple batches from dataset at same time
+
+    - usually a little slower
+
+    - replicates model in every forward pass
+
+  - rpc parallel
+
 - dataset has `__init__, __getitem__, & __len__`
-  
+
   - rather than storing images, can load image from filename in `__getitem__`
 - there's a `torch.nn.Flatten` module
 
@@ -212,6 +223,7 @@ pd.merge(df1, df2, how='left', on='x1')
 - Managing the heap: malloc/free, new/delete
 
 ## C basic
+
 - #include <stdio.h>
 - printf("the variable 'i' is: %d", i);
 - can only use /* */ for comments

@@ -65,11 +65,11 @@ category: ml
 
 ## radiometry
 
-- *irradiance* - how much light (photons) are captured in some time interval
+- *irradiance* - how much light (photons) is captured in some time interval
   - radiant power / unit area ($W/m^2$)
   - *radiance* - power in given direction / unit area / unit solid angle
     - L = directional quantity (measured perpendicular to direction of travel)
-    - $L = Power / (dA cos \theta \cdot d\Omega)$  where $d\Omega$ is a solid angle (in steradians)
+    - $L = Power / (dA \cos \theta \cdot d\Omega)$  where $d\Omega$ is a solid angle (in steradians)
 - irradiance $\propto$ radiance in direction of the camera
 - outgoing radiance of a patch has 3 factors
   - incoming radiance from light source
@@ -534,7 +534,7 @@ category: ml
     - count *inliers* (how many things agree with this match)
       - 8-point algorithm / homography check 
       - $x^TEx < \epsilon $ for 8-point algorithm or $x^THx < \epsilon$ for homography
-  - ate end could recompute least squares H or F on all inliers
+  - finally, could recompute least squares H or F on all inliers
 
 ## correspondence for sfm / instance retrieval
 
@@ -590,7 +590,7 @@ category: ml
   - a lot like blurring / downsampling
   - everyone now uses maxpooling
 - history: lenet 1998 
-  - neurocognition (fukushima 1980) - unsupervised
+  - neocognitron (fukushima 1980) - unsupervised
   - convolutional neural nets (lecun et al) - supervised
   - alexnet 2012
     - used norm layers (still common?)

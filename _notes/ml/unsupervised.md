@@ -15,7 +15,7 @@ typora-copy-images-to: ../assets
   - symmetric D(A,B)=D(B,A)
   - self-similarity D(A,A)=0
   - positivity separation D(A,B)=0 iff A=B
-  - triangular inequality D(A,B) <= D(A,C)+D(B,C)
+  - triangular inequality D(A,B) <$\leq$ D(A,C)+D(B,C)
   - ex. Minkowski Metrics $d(x,y)=\sqrt[r]{\sum \vert x_i-y_i\vert ^r}$
     - r=1 Manhattan distance
     - r=1 when y is binary -> Hamming distance
@@ -107,15 +107,6 @@ In general there is some tension between preserving global properties (e.g. PCA)
 
 - NMF - $\min_{D \geq 0, A \geq 0} \|\|X-DA\|\|_F^2$
   - SEQNMF
-- ICA
-  - remove correlations and higher order dependence
-  - all components are equally important
-  - like PCA, but instead of the dot product between components being 0, the mutual info between components is 0
-  - goals
-    - minimize statistical dependence between components
-    - maximize information transferred in a network of non-linear units
-    - uses information theoretic unsupervised learning rules for neural networks
-  - problem - doesn't rank features for us
 - LDA/QDA - finds basis that separates classes
   - reduced to axes which separate classes (perpendicular to the boundaries)
 - K-means - can be viewed as a linear decomposition
@@ -188,20 +179,29 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
 
 ## ica
 
+- overview
+  - remove correlations and higher order dependence
+  - all components are equally important
+  - like PCA, but instead of the dot product between components being 0, the mutual info between components is 0
+  - goals
+    - minimize statistical dependence between components
+    - maximize information transferred in a network of non-linear units
+    - uses information theoretic unsupervised learning rules for neural networks
+  - problem - doesn't rank features for us
 - goal: want to decompose $X$ into $z$, where we assume $X = Az$
   - assumptions
     - independence: $P(z) = \prod_i P(z_i)$
     - non-gaussianity of $z$
-  - 2 ways to get $z$ which matches these assumptions
+  - 2 ways to get $z$ that matches these assumptions
     1. maximize non-gaussianity of $z$ - use kurtosis, negentropy
     2. minimize mutual info between components of $z$ - use KL, max entropy
        1. often equivalent
-  - identifiability: $z$ is identifiable up to a permutation ans scaling of sources when
+  - identifiability: $z$ is identifiable up to a permutation and scaling of sources when
     - at most one of the sources $z_k$ is gaussian
     - $A$ is full-rank
 - ICA learns components which are completely independent, whereas PCA learns orthogonal components
-- **non-linear ica**: $X \approx f(z)$, where assumptions on $s$ are the same, and $f$ can be nonlinear
-  - to obtain identifiability, we need to restrict $f$ and/or constrain the distr of the sources $s$
+- **non-linear ica**: $X \approx f(z)$, where assumptions on $z$ are the same, but $f$ can be nonlinear
+  - to obtain identifiability, we need to restrict $f$ and/or constrain the distr of the sources $z$
 - bell & sejnowski 1995 original formulation (slightly different)
   - entropy maximization - try to find a nonlinear function $g(x)$ which lets you map that distr $f(x)$ to uniform
     - then, that function $g(x)$ is the cdf of $f(x)$
@@ -277,7 +277,7 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
   - all conditional distrs. can be given by neural net
 - can model using an RNN: e.g. char-rnn (karpathy, 2015): $\log p(x) - \sum_i \log p(x_i | x_{1:i-1})$, where each $x_i$ is a character
 - can also use masks
-  - masked autoencoder for distr. estimation - mask some weights so that autoencoder output is a factorized distr
+  - masked autoencoder for distr. estimation - mask some weights so that autoencoder output is a factorized distr.
     - pick an odering for the pixels to be conditioned on
   - ex. 1d masked convolution on wavenet (use past points to predict future points)
   - ex. pixelcnn - use masking for pixels to the topleft
@@ -341,7 +341,7 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
   - want large evidence $\log p_\theta (\mathbf x)$ (means model is a good fit to the data)
   - want good fit to the posterior $q_\phi(z|x)$
 - just an autoencoder where the middle hidden layer is supposed to be unit gaussian
-  - add a kl loss to measure how well it maches a unit gaussian
+  - add a kl loss to measure how well it matches a unit gaussian
     - for calculation purposes, encoder actually produces means / vars of gaussians in hidden layer rather than the continuous values....
   - this kl loss is not too complicated...https://web.stanford.edu/class/cs294a/sparseAutoencoder.pdf
 - generally less sharp than GANs
@@ -390,7 +390,7 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
   - D wants D(G(z)) = 0
     - D(x) = 1
   - converge when D(G(z)) = 1/2
-  - G loss function: $G = argmin_G log(1-D(G(Z))$
+  - G loss function: $G = \text{argmin}_G \log(1-D(G(Z))$
   - overall $\min_g \max_D$ log(1-D(G(Z))
 
 - training algorithm
@@ -411,18 +411,29 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
 
 ## diffusion / energy-based models
 
+- first describe a procedure for gradually turning data into noise
+- then train a DNN to invert this procedure step-by-step
+  - single model handles many different noise levels with shared parameters
 - [blog post](https://benanne.github.io/2022/01/31/diffusion.html)
 - seminal paper: [Generative Modeling by Estimating Gradients of the Data Distribution](https://arxiv.org/abs/1907.05600) (song & ermon, 2019)
-  - first describe a procedure for gradually turning data into noise
-  - then training a DNN to invert this procedure step-by-step
-    - single model handles many different noise levels with shared parameters
-- really started earlier: [Deep Unsupervised Learning using Nonequilibrium Thermodynamics](https://arxiv.org/abs/1503.03585) (sohl-dickstein, ..., ganguli, 2015)
+  - really started earlier: [Deep Unsupervised Learning using Nonequilibrium Thermodynamics](https://arxiv.org/abs/1503.03585) (sohl-dickstein, ..., ganguli, 2015)
+
+- [Improved Denoising Diffusion Probabilistic Models](https://arxiv.org/abs/2102.0 9672) (2021)
+  - can make this class-conditionnal by incorporating classifier into the model which inverts the noise
+  - [Diffusion Models Beat GANs on Image Synthesis](https://arxiv.org/abs/2105.05233) (2021)
+
 
 
 
 # self/semi-supervised
 
 ## self-supervised
+
+- blog: https://dawn.cs.stanford.edu/2017/07/16/weak-supervision/
+  - training data is hard to get
+- related paper: https://www.biorxiv.org/content/early/2018/06/16/339630
+
+ ![semi](../assets/semi.png)
 
 - basics: predict some part of the input (e.g. present from past, bottom from top, etc.)
   - ex. denoising autoencoder
@@ -435,14 +446,14 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
     - word2vec
     - bert - predict blank word
 - contrastive predictive coding - translates generative modeling into classification
-  - *contrastive loss* = *InfoNCE loss* uses cross-entropy loss to measure how well the model can classify the “future” representation amongst a set of unrelated “negative” samples
+  - *contrastive loss* = *InfoNCE loss* uses cross-entropy loss to measure how well the model can classify the “future” representation among a set of unrelated “negative” samples
   - negative samples may be from other batches or other parts of the input
 - momentum contrast - queue of previous embeddings are "keys"
   - match new embedding (query) against keys and use contrastive loss
   - similar idea as memory bank
 - [Unsupervised Visual Representation Learning by Context Prediction](https://www.cv-foundation.org/openaccess/content_iccv_2015/html/Doersch_Unsupervised_Visual_Representation_ICCV_2015_paper.html) (efros 15)
   - predict relative location of different patches
-- **SimCLR** ([Chen et al, 2020](https://arxiv.org/abs/2002.05709))
+- SimCLR ([Chen et al, 2020](https://arxiv.org/abs/2002.05709))
   - maximize agreement for different points after some augmentation (contrastive loss)
 
 
@@ -453,7 +464,7 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
   - entropy minimization - try to minimize the entropy of output predictions (like making confident predictions labels)
   - pseudo labeling - just take argmax pred as if it were the label
 - label consistency with data augmentation
-- [Billion-scale semi-supervised learning for image classification](https://arxiv.org/pdf/1905.00546.pdf) (fair 19)
+- [Billion-scale semi-supervised learning for image classification](https://arxiv.org/pdf/1905.00546.pdf) (FAIR, 19)
   - unsupervised learning + model distillation succeeds on imagenet
 - ensembling
   - temporal ensembling - ensemble multiple models at different training epochs
@@ -482,5 +493,5 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
   - reduce the mutual information (MI) between views while keeping task-relevant information intact
 - [Supervised Contrastive Learning](https://arxiv.org/abs/2004.11362) (khosla et al. 2020)
 - [Data-Efficient Image Recognition with Contrastive Predictive Coding](https://arxiv.org/pdf/1905.09272.pdf)
-  - pre-training with CPC on ImageNet yields super good results
+  - pre-training with CPC on ImageNet improves accuracy
 - [Automatically Discovering and Learning New Visual Categories with Ranking Statistics](https://arxiv.org/pdf/2002.05714.pdf)
