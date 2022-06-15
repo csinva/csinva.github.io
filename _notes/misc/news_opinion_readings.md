@@ -2,6 +2,8 @@
 
 # 2022
 
+- https://www.washingtonpost.com/technology/2022/06/11/google-ai-lamda-blake-lemoine/
+  
 - [Punctuality Is Having a Moment - The New York Times](https://www.nytimes.com/2022/06/06/style/punctuality-is-having-a-moment.html)
   
 - [Opinion | We’ve Got to Stop Requiring Parking Everywhere - The New York Times](https://www.nytimes.com/2022/06/02/opinion/california-parking.html)

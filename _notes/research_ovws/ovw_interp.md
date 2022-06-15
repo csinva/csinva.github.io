@@ -456,6 +456,7 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
 - [Improved Deep Fuzzy Clustering for Accurate and Interpretable Classifiers](https://ieeexplore.ieee.org/abstract/document/8858809) - extract features with a DNN then do fuzzy clustering on this
 - [Towards Robust Interpretability with Self-Explaining Neural Networks](https://arxiv.org/pdf/1806.07538.pdf) (alvarez-melis & jaakkola 2018) - building architectures that explain their predictions
 - [Two Instances of Interpretable Neural Network for Universal Approximations](https://arxiv.org/abs/2112.15026) (tjoa & cuntai, 2021) - each neuron responds to a training point
+- [B-Cos Networks: Alignment Is All We Need for Interpretability](https://openaccess.thecvf.com/content/CVPR2022/html/Bohle_B-Cos_Networks_Alignment_Is_All_We_Need_for_Interpretability_CVPR_2022_paper.html)
 
 ### connecting dnns and rules
 
@@ -471,6 +472,7 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
   - [Optimizing for Interpretability in Deep Neural Networks with Tree Regularization | Journal of Artificial Intelligence Research](https://www.jair.org/index.php/jair/article/view/12558) (wu...doshi-velez, 2021) - regularize DNN prediction function towards tree (potentially only for some region)
   - [Adaptive Neural Trees](http://proceedings.mlr.press/v97/tanno19a.html?utm_campaign=piqcy&utm_medium=email&utm_source=Revue%20newsletter) (tanno et al. 2019) - adaptive neural tree mechanism with trainable nodes, edges, and leaves
 - loosely interpretable
+  - mixture of experts (MOE) / hierarchical MOE
   - [Attention Convolutional Binary Neural Tree for Fine-Grained Visual Categorization](https://openaccess.thecvf.com/content_CVPR_2020/html/Ji_Attention_Convolutional_Binary_Neural_Tree_for_Fine-Grained_Visual_Categorization_CVPR_2020_paper.html) (ji et al. 2020)
   - [Oblique Decision Trees from Derivatives of ReLU Networks](https://arxiv.org/abs/1909.13488) (lee & jaakkola, 2020)
     - locally constant networks (which are derivatives of relu networks) are equivalent to trees
@@ -490,6 +492,7 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
     - TAO trees with bagging performs well ([Carreira-Perpiñán & Zharmagambetov, 2020](http://graduatestudents.ucmerced.edu/azharmagambetov/files/papers/fods20.pdf))
     - Learning a Tree of Neural Nets ([Zharmagambetov and Carreira-Perpinan, 2020](https://ieeexplore.ieee.org/abstract/document/9413718)) - use neural net rather than binary classification at each node
     - Also use TAO trained on neural net features do speed-up/improve the network
+  
 - incorporating prior knowledge
   - [Controlling Neural Networks with Rule Representations](https://arxiv.org/abs/2106.07804) (seo, ..., pfister, 21)
     - DEEPCTRL - encodes rules into DNN
@@ -940,7 +943,6 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
 - attention corresponds to this kind of influence
 - deceptive attention - we can successfully train a model to make similar predictions but have different attention
 
-
 ### dnn textual explanations
 
 - [Adversarial Inference for Multi-Sentence Video Description](https://arxiv.org/pdf/1812.05634.pdf) - adversarial techniques during inference for a better multi-sentence video description
@@ -950,6 +952,14 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
 - [Fooling Vision and Language Models Despite Localization and Attention Mechanism](http://openaccess.thecvf.com/content_cvpr_2018/papers/Xu_Fooling_Vision_and_CVPR_2018_paper.pdf) -  can do adversarial attacks on captioning and VQA
 - [Grounding of Textual Phrases in Images by Reconstruction](https://arxiv.org/pdf/1511.03745.pdf) - given text and image provide a bounding box (supervised problem w/ attention)
 - [Natural Language Explanations of Classifier Behavior](https://ieeexplore.ieee.org/abstract/document/8791710)
+
+### self-explaining llms
+
+- [Chain of Thought Prompting Elicits Reasoning in Large Language Models](https://arxiv.org/abs/2201.11903) (2022)
+- [Selection-Inference: Exploiting Large Language Models for Interpretable Logical Reasoning](https://arxiv.org/abs/2205.09712) (2022)
+  - selection step - takes in concatenated [context, question, selection]×𝑘 for k-shot prompting, followed by [context, question] and is asked to select a subset of facts from the context to support a single step of reasoning.
+  - inference step - takes in [selection, inference]×𝑘 for k-shot prompting, followed by the selection produced by the Selection module to produce a new fact (the inference) to be added to the context
+  - the reasoning trace produced by our system is causal, in the sense that each step follows from, and depends on, the previous step
 
 
 

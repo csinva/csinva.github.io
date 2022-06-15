@@ -147,8 +147,9 @@ category: stat
       - $L(\theta)=P(X_1...X_n\vert\theta)=\prod_{i=1}^n P(X_i\vert\theta)$
       - $log \: L(\theta)= \ell(\theta) = \sum log P(X_i\vert\theta)$
       - to maximize, set $\frac{\partial \ell (\theta)}{\partial \theta} = 0$
-  - **fisher information** $I(\theta)=V[\frac{\partial}{\partial\theta}ln(f[x;\theta])]$ (for n samples, multiply by n)
+  - **fisher information** $I(\theta)=V[\frac{\partial^2}{\partial\theta^2} \overbrace{\ln(f[x;\theta])}^{\text{Fisher score function}} ]$ (for n samples, multiply by n)
       - higher info $\implies$ lower estimation error
+      - $\overbrace{\ln(f[x;\theta])}^{\text{Fisher score function}}$
 
 # overview - J. 5
 
@@ -160,7 +161,7 @@ category: stat
      - prior probability $p(\theta)$= *statistician's uncertainty*
        - *posterior* $p(\theta|x)$ is what you don't observe
      - $\hat{\theta}_{Bayes} = \int \theta \: p(\theta \vert x) d\theta$ ~ mean of the posterior
-     - $\hat{\theta}_{MAP} = \underset{\theta}{argmax} \: p(\theta\vert x) = \underset{\theta}{argmax} \: p(x\vert \theta) p(\theta)  \\\ = \underset{\theta}{argmax} \: [ log \: p(x\vert\theta) + log \: p(\theta) ]$
+     - $\hat{\theta}_{MAP} = \underset{\theta}{argmax} \: p(\theta\vert x) = \underset{\theta}{argmax} \: p(x\vert \theta) p(\theta)  \\\ = \underset{\theta}{argmax} \: [ \log \: p(x\vert\theta) + \log \: p(\theta) ]$
        - like *penalized likelihood*
      - bayesians prefer whole distr. rather than parameter estimates
   2. frequentist - use estimators (ex. MLE)

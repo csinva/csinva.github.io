@@ -247,5 +247,7 @@ See also notes in [📌 unsupervised learning](https://csinva.io/notes/ml/unsupe
   - [Implicit Neural Representations with Periodic Activation Functions](https://vsitzmann.github.io/siren/)
     - similar paper
 - architecture search: learning to learn
+  - [A Deeper Look at Zero-Cost Proxies for Lightweight NAS · The ICLR Blog Track](https://iclr-blog-track.github.io/2022/03/25/zero-cost-proxies/)
+    - tl;dr A single minibatch of data is used to score neural networks for NAS instead of performing full training.
 - *optimal brain damage* - starts with fully connected and weeds out connections (Lecun)
 - *tiling* - train networks on the error of previous networks
