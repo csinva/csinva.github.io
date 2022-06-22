@@ -1,12 +1,16 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>2.6. algorithms</title>
     
-  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -16,88 +20,110 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-  <link rel="stylesheet"
-    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
-
-    
-    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
-    <script type="text/javascript" src="../../_static/togglebutton.js"></script>
-    <script type="text/javascript" src="../../_static/clipboard.min.js"></script>
-    <script type="text/javascript" src="../../_static/copybutton.js"></script>
-    <script type="text/javascript">var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script type="text/javascript" src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-    <script async="async" type="text/javascript" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script type="text/javascript">
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="2.7. graphs" href="graphs.html" />
     <link rel="prev" title="2.5. quantum" href="quantum.html" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
 
-
-
+    <!-- Google Analytics -->
+    
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="../../index.html">
-  
-  <img src="../../_static/logo.png" class="logo" alt="logo">
-  
-  
-</a>
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+    </a>
 </div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../intro.html">
-   overview 👋
-  </a>
- </li>
-</ul>
-<ul class="current nav sidenav_l1">
- <li class="toctree-l1 collapsible-parent">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    overview 👋
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../research_ovws/research_ovws.html">
    1. research_ovws
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_comp_neuro.html">
      1.1. comp neuro
@@ -169,14 +195,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 current active collapsible-parent">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="cs.html">
    2. cs
   </a>
-  <ul class="current collapse-ul">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="retrieval.html">
      2.1. info retrieval
@@ -213,44 +242,37 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="databases.html">
-     2.8. overview
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="databases.html#sql">
-     2.9. sql
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="os.html">
-     2.10. os
+     2.8. os
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="arch.html">
-     2.11. architecture
+     2.9. architecture
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="reproducibility.html">
-     2.12. reproducibility
+     2.10. reproducibility
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="comp_theory.html">
-     2.13. cs theory
+     2.11. cs theory
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../math/math.html">
    3. math
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../math/differential_equations.html">
      3.1. differential equations
@@ -297,14 +319,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../stat/stat.html">
    4. stat
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../stat/graphical_models.html">
      4.1. graphical models
@@ -346,14 +371,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../ml/ml.html">
    5. ml
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/kernels.html">
      5.1. kernels
@@ -405,14 +433,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../ai/ai.html">
    6. ai
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/search.html">
      6.1. search
@@ -459,14 +490,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../neuro/neuro.html">
    7. neuro
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../neuro/disease.html">
      7.1. disease
@@ -508,92 +542,152 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
 </ul>
 
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
     </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/notes/cs/algo.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-        <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/csinva/csinva.github.io"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        
-        
-    </div>
-</div>
-
-
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                title="Fullscreen mode"><i
-                    class="fas fa-expand"></i></button></a>
-
-        <!-- Launch buttons -->
-
-    </div>
-
-    <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
-        
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
         </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/csinva/csinva.github.io"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/notes/cs/algo.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#asymptotics">
    2.6.1. asymptotics
@@ -727,20 +821,169 @@
  </li>
 </ul>
 
-        </nav>
-        
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>algorithms</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#asymptotics">
+   2.6.1. asymptotics
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#recursion">
+   2.6.2. recursion
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dynamic-programming">
+   2.6.3. dynamic programming
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#min-cut-max-cut">
+   2.6.4. min-cut / max-cut
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hungarian">
+   2.6.5. hungarian
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#max-flow">
+   2.6.6. max-flow
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sorting">
+   2.6.7. sorting
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#comparised-based">
+     2.6.7.1. comparised-based
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#bubble-sort">
+       2.6.7.1.1. bubble sort
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#odd-even-sort">
+       2.6.7.1.2. odd-even sort
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#selection-sort">
+       2.6.7.1.3. selection sort
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#insertion-sort">
+       2.6.7.1.4. insertion sort
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#heap-sort">
+       2.6.7.1.5. heap sort
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#smooth-sort">
+       2.6.7.1.6. smooth sort
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#merge-sort">
+       2.6.7.1.7. merge sort
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#quicksort">
+       2.6.7.1.8. quicksort
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#shell-sort">
+       2.6.7.1.9. shell sort
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#not-comparison-based">
+     2.6.7.2. not comparison-based
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#counting-sort">
+       2.6.7.2.1. counting sort
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#bucket-sort">
+       2.6.7.2.2. bucket sort
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#radix-sort">
+       2.6.7.2.3. radix sort
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#meta-sort">
+       2.6.7.2.4. meta sort
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sorting-overview">
+     2.6.7.3. sorting overview
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#searching">
+   2.6.8. searching
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computational-geometry">
+   2.6.9. computational geometry
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="section" id="algorithms">
-<h1>2.6. algorithms<a class="headerlink" href="#algorithms" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="algorithms">
+<h1><span class="section-number">2.6. </span>algorithms<a class="headerlink" href="#algorithms" title="Permalink to this headline">#</a></h1>
 <p>Some notes on algorithms following the book <a class="reference external" href="https://en.wikipedia.org/wiki/Introduction_to_Algorithms">Introduction to algorithms</a> and based on UVA’s course.</p>
-<div class="section" id="asymptotics">
-<h2>2.6.1. asymptotics<a class="headerlink" href="#asymptotics" title="Permalink to this headline">¶</a></h2>
+<section id="asymptotics">
+<h2><span class="section-number">2.6.1. </span>asymptotics<a class="headerlink" href="#asymptotics" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Big-O</p>
 <ul>
@@ -791,9 +1034,9 @@
 </li>
 <li><p>over bounded number of elements, almost everything is constant time</p></li>
 </ul>
-</div>
-<div class="section" id="recursion">
-<h2>2.6.2. recursion<a class="headerlink" href="#recursion" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="recursion">
+<h2><span class="section-number">2.6.2. </span>recursion<a class="headerlink" href="#recursion" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>moving down/right on an NxN grid - each path has length (N-1)+(N-1)</p>
 <ul>
@@ -811,9 +1054,9 @@
 </li>
 <li><p>n-queens - one array of length n, go row by row</p></li>
 </ul>
-</div>
-<div class="section" id="dynamic-programming">
-<h2>2.6.3. dynamic programming<a class="headerlink" href="#dynamic-programming" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="dynamic-programming">
+<h2><span class="section-number">2.6.3. </span>dynamic programming<a class="headerlink" href="#dynamic-programming" title="Permalink to this headline">#</a></h2>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span>//returns max value for knapsack of capacity W, weights wt, vals val
 int knapSack(int W, int wt[], int val[])
 int n = wt.length;
@@ -830,24 +1073,24 @@ for (int i = 0; i &lt;= n; i++)
 return K[n][W];
 </pre></div>
 </div>
-</div>
-<div class="section" id="min-cut-max-cut">
-<h2>2.6.4. min-cut / max-cut<a class="headerlink" href="#min-cut-max-cut" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="hungarian">
-<h2>2.6.5. hungarian<a class="headerlink" href="#hungarian" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="min-cut-max-cut">
+<h2><span class="section-number">2.6.4. </span>min-cut / max-cut<a class="headerlink" href="#min-cut-max-cut" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="hungarian">
+<h2><span class="section-number">2.6.5. </span>hungarian<a class="headerlink" href="#hungarian" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>assign N things to N targets, each with an associated cost</p></li>
 </ul>
-</div>
-<div class="section" id="max-flow">
-<h2>2.6.6. max-flow<a class="headerlink" href="#max-flow" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="max-flow">
+<h2><span class="section-number">2.6.6. </span>max-flow<a class="headerlink" href="#max-flow" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>A list of pipes is given, with different flow-capacities. These pipes are connected at their endpoints. What is the maximum amount of water that you can route from a given starting point to a given ending point?</p></li>
 </ul>
-</div>
-<div class="section" id="sorting">
-<h2>2.6.7. sorting<a class="headerlink" href="#sorting" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="sorting">
+<h2><span class="section-number">2.6.7. </span>sorting<a class="headerlink" href="#sorting" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>you can assume w.l.o.g. all input numbers are unique</p></li>
 <li><p>sorting requires Ω(nlog n) (proof w/ tree)</p>
@@ -857,16 +1100,16 @@ return K[n][W];
 </li>
 <li><p>adaptive - changes its behavior based on input (ex. bubble sort will stop)</p></li>
 </ul>
-<div class="section" id="comparised-based">
-<h3>2.6.7.1. comparised-based<a class="headerlink" href="#comparised-based" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="bubble-sort">
-<h4>2.6.7.1.1. bubble sort<a class="headerlink" href="#bubble-sort" title="Permalink to this headline">¶</a></h4>
+<section id="comparised-based">
+<h3><span class="section-number">2.6.7.1. </span>comparised-based<a class="headerlink" href="#comparised-based" title="Permalink to this headline">#</a></h3>
+<section id="bubble-sort">
+<h4><span class="section-number">2.6.7.1.1. </span>bubble sort<a class="headerlink" href="#bubble-sort" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>keep swapping adjacent pairs</p></li>
 </ul>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span>
-	<span class="k">if</span> <span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">]&lt;</span><span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]</span>
-		<span class="nf">swap</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="w"></span>
+<span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">]&lt;</span><span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"></span>
+<span class="w">		</span><span class="nf">swap</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -874,17 +1117,17 @@ return K[n][W];
 <li><p>number of passes ~ how far elements are from their final positions</p></li>
 <li><p>O(n^2)</p></li>
 </ul>
-</div>
-<div class="section" id="odd-even-sort">
-<h4>2.6.7.1.2. odd-even sort<a class="headerlink" href="#odd-even-sort" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="odd-even-sort">
+<h4><span class="section-number">2.6.7.1.2. </span>odd-even sort<a class="headerlink" href="#odd-even-sort" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>swap even pairs</p></li>
 <li><p>then swap odd pairs</p></li>
 <li><p>parallelizable</p></li>
 </ul>
-</div>
-<div class="section" id="selection-sort">
-<h4>2.6.7.1.3. selection sort<a class="headerlink" href="#selection-sort" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="selection-sort">
+<h4><span class="section-number">2.6.7.1.3. </span>selection sort<a class="headerlink" href="#selection-sort" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>move largest to current position
 for i=1:n-1
@@ -894,9 +1137,9 @@ jmax = j
 swap(a,i,j)</p></li>
 <li><p>0(n^2)</p></li>
 </ul>
-</div>
-<div class="section" id="insertion-sort">
-<h4>2.6.7.1.4. insertion sort<a class="headerlink" href="#insertion-sort" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="insertion-sort">
+<h4><span class="section-number">2.6.7.1.4. </span>insertion sort<a class="headerlink" href="#insertion-sort" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>insert each item into lists
 for i=2:n
@@ -905,9 +1148,9 @@ shift</p></li>
 <li><p>O(n^2), O(nk) where k is max dist from final position</p></li>
 <li><p>best when alsmost sorted</p></li>
 </ul>
-</div>
-<div class="section" id="heap-sort">
-<h4>2.6.7.1.5. heap sort<a class="headerlink" href="#heap-sort" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="heap-sort">
+<h4><span class="section-number">2.6.7.1.5. </span>heap sort<a class="headerlink" href="#heap-sort" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>insert everything into heap</p></li>
 <li><p>kepp remove max</p></li>
@@ -920,33 +1163,33 @@ shift</p></li>
 </li>
 <li><p>0(n log n)</p></li>
 </ul>
-</div>
-<div class="section" id="smooth-sort">
-<h4>2.6.7.1.6. smooth sort<a class="headerlink" href="#smooth-sort" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="smooth-sort">
+<h4><span class="section-number">2.6.7.1.6. </span>smooth sort<a class="headerlink" href="#smooth-sort" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>adaptive heapsort</p></li>
 <li><p>collection of heaps (each one is a factor larger than the one before)</p></li>
 <li><p>can add and remove in essentially constant time if data is in order</p></li>
 </ul>
-</div>
-<div class="section" id="merge-sort">
-<h4>2.6.7.1.7. merge sort<a class="headerlink" href="#merge-sort" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="merge-sort">
+<h4><span class="section-number">2.6.7.1.7. </span>merge sort<a class="headerlink" href="#merge-sort" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>split into smaller arrays, sort, merge</p></li>
 <li><p>T(n) = 2T(n/2) + n = 0(n log n)</p></li>
 <li><p>stable, parallelizable (if parallel, not in place)</p></li>
 </ul>
-</div>
-<div class="section" id="quicksort">
-<h4>2.6.7.1.8. quicksort<a class="headerlink" href="#quicksort" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="quicksort">
+<h4><span class="section-number">2.6.7.1.8. </span>quicksort<a class="headerlink" href="#quicksort" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>split on pivot, put smaller elements on left, larger on right</p></li>
 <li><p>O(n log n) average, O(n^2) worst</p></li>
 <li><p>O(log n) space</p></li>
 </ul>
-</div>
-<div class="section" id="shell-sort">
-<h4>2.6.7.1.9. shell sort<a class="headerlink" href="#shell-sort" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="shell-sort">
+<h4><span class="section-number">2.6.7.1.9. </span>shell sort<a class="headerlink" href="#shell-sort" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>generalize insertion sort</p></li>
 <li><p>insertion-sort all items i apart where i starts big and then becomes small</p>
@@ -961,30 +1204,30 @@ shift</p></li>
 </li>
 <li><p>not used much in practice</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="not-comparison-based">
-<h3>2.6.7.2. not comparison-based<a class="headerlink" href="#not-comparison-based" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="counting-sort">
-<h4>2.6.7.2.1. counting sort<a class="headerlink" href="#counting-sort" title="Permalink to this headline">¶</a></h4>
+</section>
+</section>
+<section id="not-comparison-based">
+<h3><span class="section-number">2.6.7.2. </span>not comparison-based<a class="headerlink" href="#not-comparison-based" title="Permalink to this headline">#</a></h3>
+<section id="counting-sort">
+<h4><span class="section-number">2.6.7.2.1. </span>counting sort<a class="headerlink" href="#counting-sort" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>use values as array indices in new sort</p></li>
 <li><p>keep count of number of times at each index</p></li>
 <li><p>for specialized data only, need small values</p></li>
 <li><p>0(n) time, 0(k) space</p></li>
 </ul>
-</div>
-<div class="section" id="bucket-sort">
-<h4>2.6.7.2.2. bucket sort<a class="headerlink" href="#bucket-sort" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="bucket-sort">
+<h4><span class="section-number">2.6.7.2.2. </span>bucket sort<a class="headerlink" href="#bucket-sort" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>spread data into buckets based on value</p></li>
 <li><p>sort the buckets</p></li>
 <li><p>O(n+k) time</p></li>
 <li><p>buckets could be trees</p></li>
 </ul>
-</div>
-<div class="section" id="radix-sort">
-<h4>2.6.7.2.3. radix sort<a class="headerlink" href="#radix-sort" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="radix-sort">
+<h4><span class="section-number">2.6.7.2.3. </span>radix sort<a class="headerlink" href="#radix-sort" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>sort each digit in turn</p></li>
 <li><p>stable sort on each digit</p>
@@ -994,9 +1237,9 @@ shift</p></li>
 </li>
 <li><p>0(d*n time), 0(k+n) space</p></li>
 </ul>
-</div>
-<div class="section" id="meta-sort">
-<h4>2.6.7.2.4. meta sort<a class="headerlink" href="#meta-sort" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="meta-sort">
+<h4><span class="section-number">2.6.7.2.4. </span>meta sort<a class="headerlink" href="#meta-sort" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>like quicksort, but 0(nlogn) worst case</p></li>
 <li><p>run quicksort, mergesort in parallel</p>
@@ -1007,18 +1250,18 @@ shift</p></li>
 <li><p>there is an overhead but doesn’t affect big-oh analysis</p></li>
 <li><p>ave, worst-cast = O(n log n)</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="sorting-overview">
-<h3>2.6.7.3. sorting overview<a class="headerlink" href="#sorting-overview" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="sorting-overview">
+<h3><span class="section-number">2.6.7.3. </span>sorting overview<a class="headerlink" href="#sorting-overview" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>in exceptional cases insertion-sort or radix-sort are much better than the generic QuickSort / MergeSort / HeapSort answers.</p></li>
 <li><p>merge a and b sorted - start from the back</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="searching">
-<h2>2.6.8. searching<a class="headerlink" href="#searching" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="searching">
+<h2><span class="section-number">2.6.8. </span>searching<a class="headerlink" href="#searching" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>binary sort can’t do better than linear if there are duplicates</p></li>
 <li><p>if data is too large, we need to do external sort (sort parts of it and write them back to file)</p></li>
@@ -1115,9 +1358,9 @@ shift</p></li>
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="computational-geometry">
-<h2>2.6.9. computational geometry<a class="headerlink" href="#computational-geometry" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="computational-geometry">
+<h2><span class="section-number">2.6.9. </span>computational geometry<a class="headerlink" href="#computational-geometry" title="Permalink to this headline">#</a></h2>
 <ul>
 <li><p>range queries</p>
 <ul class="simple">
@@ -1322,8 +1565,8 @@ shift</p></li>
 </ul>
 </li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1347,41 +1590,53 @@ shift</p></li>
 
               </div>
               
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="quantum.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">2.5. </span>quantum</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="graphs.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">2.7. </span>graphs</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
         </div>
     </div>
-    
-    
-    <div class='prev-next-bottom'>
-        
-    <a class='left-prev' id="prev-link" href="quantum.html" title="previous page">2.5. quantum</a>
-    <a class='right-next' id="next-link" href="graphs.html" title="next page">2.7. graphs</a>
-
-    </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Chandan Singh<br/>
+  
+      &copy; Copyright None.<br/>
+    <div class="extra_footer">
       <p>
-        
-          By Chandan Singh<br/>
-        
-            &copy; Copyright None.<br/>
-          <div class="extra_footer">
-            <p>
 Many of these images are taken from resources on the web.
 </p>
-          </div>
-      </p>
     </div>
-  </footer>
-</main>
+</p>
+        </footer>
+    </div>
+    
+</div>
 
 
       </div>
     </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-    
-  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
 
-
-    
   </body>
 </html>

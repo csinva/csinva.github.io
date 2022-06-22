@@ -552,7 +552,8 @@ pthread join(tid,NULL);
 	- this type of mutex lock is called *spinlock* because requires *busy waiting* - processes not in critical section are continuously looping
 	- good when locks are short
 	
-### 5.6 - semaphores
+## 5.6 - semaphores
+
 - *semaphore* S - integer variable accessed through *wait()* (like trying to execute) and *signal()* (like releasing)
 	- *counting semaphore* - unrestricted domain
 	- *binary sempahore* - 0 and 1
@@ -606,7 +607,8 @@ signal(semaphore *S) {
 	- readers can read concurrently
 3. dining-philosophers problem
 
-### 5.8 - monitors
+## 5.8 - monitors
+
 - *monitor* - highl-level synchronization construct
 	- only 1 process can run at a time
 	- *abstract data type* which includes a set of programmer-defined operations with mutual exlusion
@@ -791,7 +793,8 @@ sem post(&sem);
 # 6 - cpu scheduling
 - *preemptive* - can stop and switch a process that is currently running
 
-### 6.3 - algorithms
+## 6.3 - algorithms
+
 1. first-come, first-served
 2. shortest-job-first
 	- can be preemptive or non preemptive
@@ -804,12 +807,12 @@ sem post(&sem);
 6. multilevel feedback queues
 	- allows processes to move between queues
 	
-### 6.4 - thread scheduling
+## 6.4 - thread scheduling
 - *process contention scope* - competition for CPU takes place among threads belonging to same process
 	- PTHREAD_SCOPE_PROCESS - user-level threads onto available LWPs
 	- PTHREAD_SCOPE_SYSTEM - binds LWP for each user-level thread
 	
-### 6.5 - multiple-processor scheduling
+## 6.5 - multiple-processor scheduling
 - asymmetric vs. symmetric
 	- almost everything is symmetric (SMP)
 	- *processor affinity* - try to not switch too much
@@ -818,7 +821,7 @@ sem post(&sem);
 		1. coarse-grained - thread executes until long-latency event, such as memory stall
 		2. fine-grained - switches between instruction cycle
 		
-### 6.6 - real-time systems
+## 6.6 - real-time systems
 - *event latency* - amount of time that elapses from when an event occurs to when it is serviced
 1. *interrupt latency* - period of time from the arrival of an interrupt at the CPU to the start of the routine that services the interrupt
 2. *dispatch latency*
@@ -953,6 +956,7 @@ sem post(&sem);
 - must support different file types
 
 ## 10.2 - access methods
+
 - simplest - *sequential*
 - *direct access* = *relative access*
 	- uses relative block numbers
@@ -978,7 +982,7 @@ sem post(&sem);
 	- FAT
 - indexed allocation - all the pointers in 1 block
 
-# 11.5	
+## 11.5
 
 - keep track of *free-space list*
 	- implemented as bit map

@@ -15,7 +15,8 @@ from tqdm import tqdm
 # source / dest
 src = '/Users/chandan/website/_notes/'
 dest = 'notes'
-dests_extraneous = ['_build/html/_sources/', '_build/.doctrees', '_build/html/.buildinfo', '_build/html/notes/readme.html']
+dests_extraneous = ['_build/html/_sources/', '_build/.doctrees', '_build/html/.buildinfo',
+                    '_build/html/notes/readme.html']
 
 # copy stuff
 try:
@@ -27,10 +28,7 @@ shutil.rmtree(f'{dest}/talks/')  # rm
 shutil.rmtree(f'{dest}/misc/')  # rm
 
 # toc
-toc = \
-'''- file: intro
-  numbered: true
-'''
+toc = '''- file: intro\n  numbered: true\n'''
 
 # process the files
 contents = []
@@ -56,6 +54,8 @@ for folder in os.listdir(dest):
                 contents.append(content)
                 fnames.append(fname[:-3])
 open('_toc.yml', 'w').write(toc)
+os.system(
+    'jupyter-book toc migrate /Users/chandan/website/_blog/compiled_notes/_toc.yml -o /Users/chandan/website/_blog/compiled_notes/_toc.yml')
 
 # make visualization
 fnames = [x.replace('_', ' ').replace('ovw ', '*') for x in fnames]
@@ -70,10 +70,9 @@ plt.ylim((-0.5, 70))
 plt.colorbar(label='Similarity (tf-idf)')
 plt.savefig('area_similarities.svg')
 
-
 # make graph visualization
 pairwise_similarity = (pairwise_similarity - pairwise_similarity.min()) / (
-            pairwise_similarity.max() - pairwise_similarity.min())
+        pairwise_similarity.max() - pairwise_similarity.min())
 plt.figure(figsize=(14, 10))
 G = nx.Graph()
 for i in range(len(fnames)):
@@ -99,10 +98,12 @@ subprocess.run(['jb', 'build', '.'])
 # jb build . --builder pdfhtml # make pdf
 
 # rm notes
-shutil.rmtree(dest)  # rm
-for dest_extraneous in dests_extraneous:
-    shutil.rmtree(dest_extraneous)  # rm
-
+try:
+    shutil.rmtree(dest)  # rm
+    for dest_extraneous in dests_extraneous:
+        shutil.rmtree(dest_extraneous)  # rm
+except:
+    pass
 
 """
 

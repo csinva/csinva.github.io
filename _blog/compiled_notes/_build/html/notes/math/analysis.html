@@ -1,12 +1,16 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>3.3. real analysis</title>
     
-  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -16,88 +20,110 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-  <link rel="stylesheet"
-    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
-
-    
-    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
-    <script type="text/javascript" src="../../_static/togglebutton.js"></script>
-    <script type="text/javascript" src="../../_static/clipboard.min.js"></script>
-    <script type="text/javascript" src="../../_static/copybutton.js"></script>
-    <script type="text/javascript">var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script type="text/javascript" src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-    <script async="async" type="text/javascript" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script type="text/javascript">
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="3.4. linear algebra" href="linear_algebra.html" />
     <link rel="prev" title="3.2. proofs" href="proofs.html" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
 
-
-
+    <!-- Google Analytics -->
+    
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="../../index.html">
-  
-  <img src="../../_static/logo.png" class="logo" alt="logo">
-  
-  
-</a>
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+    </a>
 </div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../intro.html">
-   overview 👋
-  </a>
- </li>
-</ul>
-<ul class="current nav sidenav_l1">
- <li class="toctree-l1 collapsible-parent">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    overview 👋
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../research_ovws/research_ovws.html">
    1. research_ovws
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_comp_neuro.html">
      1.1. comp neuro
@@ -169,14 +195,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../cs/cs.html">
    2. cs
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../cs/retrieval.html">
      2.1. info retrieval
@@ -213,44 +242,37 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../cs/databases.html">
-     2.8. overview
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cs/databases.html#sql">
-     2.9. sql
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../cs/os.html">
-     2.10. os
+     2.8. os
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../cs/arch.html">
-     2.11. architecture
+     2.9. architecture
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../cs/reproducibility.html">
-     2.12. reproducibility
+     2.10. reproducibility
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../cs/comp_theory.html">
-     2.13. cs theory
+     2.11. cs theory
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 current active collapsible-parent">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="math.html">
    3. math
   </a>
-  <ul class="current collapse-ul">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="differential_equations.html">
      3.1. differential equations
@@ -297,14 +319,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../stat/stat.html">
    4. stat
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../stat/graphical_models.html">
      4.1. graphical models
@@ -346,14 +371,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../ml/ml.html">
    5. ml
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/kernels.html">
      5.1. kernels
@@ -405,14 +433,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../ai/ai.html">
    6. ai
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/search.html">
      6.1. search
@@ -459,14 +490,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../neuro/neuro.html">
    7. neuro
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../neuro/disease.html">
      7.1. disease
@@ -508,92 +542,152 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
 </ul>
 
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
     </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/notes/math/analysis.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-        <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/csinva/csinva.github.io"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        
-        
-    </div>
-</div>
-
-
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                title="Fullscreen mode"><i
-                    class="fas fa-expand"></i></button></a>
-
-        <!-- Launch buttons -->
-
-    </div>
-
-    <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
-        
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
         </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/csinva/csinva.github.io"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/notes/math/analysis.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#ch-1-the-real-numbers">
    3.3.1. ch 1 - the real numbers
@@ -758,20 +852,200 @@
  </li>
 </ul>
 
-        </nav>
-        
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>real analysis</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ch-1-the-real-numbers">
+   3.3.1. ch 1 - the real numbers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ch-2-sequences-and-series">
+   3.3.2. ch 2 - sequences and series
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     3.3.2.1. 2.5
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     3.3.2.2. 2.6
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     3.3.2.3. 2.7
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ch-3-basic-topology-of-r">
+   3.3.3. ch 3 - basic topology of R
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cantor-set">
+     3.3.3.1. 3.1 cantor set
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#open-closed-sets">
+     3.3.3.2. 3.2 open/closed sets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     3.3.3.3. 3.3
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ch-4-functional-limits-and-continuity">
+   3.3.4. ch 4	- functional limits and continuity
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     3.3.4.1. 4.1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#functional-limits">
+     3.3.4.2. 4.2 functional limits
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#continuous-functions">
+     3.3.4.3. 4.3 continuous functions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#continuous-functions-on-compact-sets">
+     3.3.4.4. 4.4 continuous functions on compact sets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#intermediate-value-theorem">
+     3.3.4.5. 4.5 intermediate value theorem
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ch-5-the-derivative">
+   3.3.5. ch 5 - the derivative
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#derivatives-and-the-intermediate-value-property">
+     3.3.5.1. 5.2 derivatives and the intermediate value property
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mean-value-theorems">
+     3.3.5.2. 5.3 mean value theorems
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ch-6-sequences-and-series-of-function">
+   3.3.6. ch 6 - sequences and series of function
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#uniform-convergence-of-a-sequence-of-functions">
+     3.3.6.1. 6.2 uniform convergence of a sequence of functions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#uniform-convergence-and-differentiation">
+     3.3.6.2. 6.3 uniform convergence and differentiation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#series-of-functions">
+     3.3.6.3. 6.4 series of functions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#power-series">
+     3.3.6.4. 6.5 power series
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#taylor-series">
+     3.3.6.5. 6.6 taylor series
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ch-7-the-riemann-integral">
+   3.3.7. ch 7 - the Riemann Integral
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#def-of-riemann-integral">
+     3.3.7.1. 7.2 def of Riemann integral
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#integrating-functions-with-discontinuities">
+     3.3.7.2. 7.3 integrating functions with discontinuities
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#properties-of-integral">
+     3.3.7.3. 7.4 properties of Integral
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fundamental-theorem-of-calculus">
+     3.3.7.4. 7.5 fundamental theorem of calculus
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview">
+   3.3.8. overview
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="section" id="real-analysis">
-<h1>3.3. real analysis<a class="headerlink" href="#real-analysis" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="real-analysis">
+<h1><span class="section-number">3.3. </span>real analysis<a class="headerlink" href="#real-analysis" title="Permalink to this headline">#</a></h1>
 <p>Some notes on real analysis, following the textbook <a class="reference external" href="https://link.springer.com/book/10.1007/978-1-4939-2712-8">Understanding analysis</a></p>
-<div class="section" id="ch-1-the-real-numbers">
-<h2>3.3.1. ch 1 - the real numbers<a class="headerlink" href="#ch-1-the-real-numbers" title="Permalink to this headline">¶</a></h2>
+<section id="ch-1-the-real-numbers">
+<h2><span class="section-number">3.3.1. </span>ch 1 - the real numbers<a class="headerlink" href="#ch-1-the-real-numbers" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>there is no rational number whose square is 2 (proof by contradiction)</p></li>
 <li><p><em>contrapositive</em>: $<span class="math notranslate nohighlight">\(-q \to -p\)</span>$ - logically equivalent</p></li>
@@ -846,9 +1120,9 @@ use AoC with x = sup{<span class="math notranslate nohighlight">\(a_n: n \in \ma
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="ch-2-sequences-and-series">
-<h2>3.3.2. ch 2 - sequences and series<a class="headerlink" href="#ch-2-sequences-and-series" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="ch-2-sequences-and-series">
+<h2><span class="section-number">3.3.2. </span>ch 2 - sequences and series<a class="headerlink" href="#ch-2-sequences-and-series" title="Permalink to this headline">#</a></h2>
 <ul>
 <li><p>a sequence <span class="math notranslate nohighlight">\((a_n)\)</span> <em>converges</em> to a real number if <span class="math notranslate nohighlight">\(\forall \epsilon &gt; 0, \exists N \in \mathbb{N}\)</span> such that <span class="math notranslate nohighlight">\(\forall n\geq N, \|a_n-a\| &lt; \epsilon\)</span></p>
 <ul class="simple">
@@ -897,8 +1171,8 @@ use AoC with x = sup{<span class="math notranslate nohighlight">\(a_n: n \in \ma
 </ul>
 </li>
 </ul>
-<div class="section" id="id1">
-<h3>3.3.2.1. 2.5<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<section id="id1">
+<h3><span class="section-number">3.3.2.1. </span>2.5<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>let <span class="math notranslate nohighlight">\((a_n)\)</span> be a sequence and <span class="math notranslate nohighlight">\(n_1&lt;n_2&lt;...\)</span> be an increasing sequence of natural numbers.  Then <span class="math notranslate nohighlight">\((a_{n_1},a_{n_2},...)\)</span> is a <em>subsequence</em> of <span class="math notranslate nohighlight">\((a_n)\)</span></p></li>
 <li><p>subsequences of a convergent sequence converge to the same limit as the original sequence</p>
@@ -912,9 +1186,9 @@ use AoC with x = sup{<span class="math notranslate nohighlight">\(a_n: n \in \ma
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="id2">
-<h3>3.3.2.2. 2.6<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id2">
+<h3><span class="section-number">3.3.2.2. </span>2.6<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\((a_n)\)</span> is a <em>cauchy sequence</em> if <span class="math notranslate nohighlight">\(\forall \epsilon &gt; 0, \exists N \in \mathbb{N}\)</span> such that <span class="math notranslate nohighlight">\(\forall m,n\geq N, \|a_n-a_m\| &lt; \epsilon\)</span></p></li>
 <li><p><em>cauchy criterion</em> - a sequence converges <span class="math notranslate nohighlight">\(\iff\)</span> it is a cauchy sequence</p>
@@ -924,9 +1198,9 @@ use AoC with x = sup{<span class="math notranslate nohighlight">\(a_n: n \in \ma
 </li>
 <li><p>overview: AoC <span class="math notranslate nohighlight">\(\iff\)</span> NIP <span class="math notranslate nohighlight">\(\iff\)</span> MCT <span class="math notranslate nohighlight">\(\iff\)</span> BW <span class="math notranslate nohighlight">\(\iff\)</span> CC</p></li>
 </ul>
-</div>
-<div class="section" id="id3">
-<h3>3.3.2.3. 2.7<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id3">
+<h3><span class="section-number">3.3.2.3. </span>2.7<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><em>algebraic limit thm</em> - let <span class="math notranslate nohighlight">\(\sum_{n=1}^\infty a_n\)</span> = A, <span class="math notranslate nohighlight">\(\sum_{n=1}^\infty b_n\)</span> = B</p>
 <ol class="simple">
@@ -963,12 +1237,12 @@ use AoC with x = sup{<span class="math notranslate nohighlight">\(a_n: n \in \ma
 <li><p>rearrangements: there exists one-to-one correspondence</p></li>
 <li><p>if a series converges absolutely, any rearrangement converges to same limit</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="ch-3-basic-topology-of-r">
-<h2>3.3.3. ch 3 - basic topology of R<a class="headerlink" href="#ch-3-basic-topology-of-r" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="cantor-set">
-<h3>3.3.3.1. 3.1 cantor set<a class="headerlink" href="#cantor-set" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="ch-3-basic-topology-of-r">
+<h2><span class="section-number">3.3.3. </span>ch 3 - basic topology of R<a class="headerlink" href="#ch-3-basic-topology-of-r" title="Permalink to this headline">#</a></h2>
+<section id="cantor-set">
+<h3><span class="section-number">3.3.3.1. </span>3.1 cantor set<a class="headerlink" href="#cantor-set" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>C has small length, but its cardinality is uncountable</p></li>
 <li><p>discussion of dimensions, doubling sizes leads to 2^dimension sizes</p>
@@ -977,9 +1251,9 @@ use AoC with x = sup{<span class="math notranslate nohighlight">\(a_n: n \in \ma
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="open-closed-sets">
-<h3>3.3.3.2. 3.2 open/closed sets<a class="headerlink" href="#open-closed-sets" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="open-closed-sets">
+<h3><span class="section-number">3.3.3.2. </span>3.2 open/closed sets<a class="headerlink" href="#open-closed-sets" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>A set O <span class="math notranslate nohighlight">\(\subseteq \mathbb{R}\)</span> is <em>open</em> if for all points a <span class="math notranslate nohighlight">\(\in\)</span> O there exists an <span class="math notranslate nohighlight">\(\epsilon\)</span>-neighborhood <span class="math notranslate nohighlight">\(V_{\epsilon}(a) \subseteq O\)</span></p>
 <ul>
@@ -1016,9 +1290,9 @@ use AoC with x = sup{<span class="math notranslate nohighlight">\(a_n: n \in \ma
 <li><p>the union of a finite collection of closed sets is closed</p></li>
 <li><p>the intersection of an arbitrary collection of closed sets is closed</p></li>
 </ol>
-</div>
-<div class="section" id="id4">
-<h3>3.3.3.3. 3.3<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id4">
+<h3><span class="section-number">3.3.3.3. </span>3.3<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>a set K <span class="math notranslate nohighlight">\(\subseteq \mathbb{R}\)</span> is <em>compact</em> if every sequence in K has a subsequence that converges to a limit that is also in K</p></li>
 <li><p><em>Nested Compact Set Property</em> - intersection of nested sequence of nonempty compact sets is not empty</p></li>
@@ -1032,18 +1306,18 @@ use AoC with x = sup{<span class="math notranslate nohighlight">\(a_n: n \in \ma
 </ol>
 </li>
 </ul>
-</div>
-</div>
-<div class="section" id="ch-4-functional-limits-and-continuity">
-<h2>3.3.4. ch 4	- functional limits and continuity<a class="headerlink" href="#ch-4-functional-limits-and-continuity" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id5">
-<h3>3.3.4.1. 4.1<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="ch-4-functional-limits-and-continuity">
+<h2><span class="section-number">3.3.4. </span>ch 4	- functional limits and continuity<a class="headerlink" href="#ch-4-functional-limits-and-continuity" title="Permalink to this headline">#</a></h2>
+<section id="id5">
+<h3><span class="section-number">3.3.4.1. </span>4.1<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>dirichlet function: 1 if r <span class="math notranslate nohighlight">\(\in \mathbb{Q}\)</span> 0 otherwise</p></li>
 </ul>
-</div>
-<div class="section" id="functional-limits">
-<h3>3.3.4.2. 4.2 functional limits<a class="headerlink" href="#functional-limits" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="functional-limits">
+<h3><span class="section-number">3.3.4.2. </span>4.2 functional limits<a class="headerlink" href="#functional-limits" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>def 1. Let f:<span class="math notranslate nohighlight">\(A \to R\)</span>, and let c be a limit point of the domain A.  We say that <em><span class="math notranslate nohighlight">\(lim_{x \to c} f(x) = L\)</span></em> provided that for all <span class="math notranslate nohighlight">\(\epsilon\)</span> &gt; 0, there exists a <span class="math notranslate nohighlight">\(\delta\)</span> &gt; 0 s.t. whenever 0 &lt; |x-c| &lt; <span class="math notranslate nohighlight">\(\delta\)</span> (and x <span class="math notranslate nohighlight">\(\in\)</span> A) it follows that |f(x)-L|&lt; <span class="math notranslate nohighlight">\(\epsilon\)</span></p></li>
 <li><p>def 2. Let f:<span class="math notranslate nohighlight">\(A \to R\)</span>, and let c be a limit point of the domain A. We say that <span class="math notranslate nohighlight">\(lim_{x \to c} f(x) = L\)</span> provided that for every <span class="math notranslate nohighlight">\(\epsilon\)</span>-neighborhood <span class="math notranslate nohighlight">\(V_{\epsilon}(L)\)</span> of L, there exists a <span class="math notranslate nohighlight">\(\delta\)</span>-neighborhood <span class="math notranslate nohighlight">\(V_{\delta}(\)</span>c) around c with the property that for all x <span class="math notranslate nohighlight">\(\in V_{\delta}(\)</span>c) different from c (with x <span class="math notranslate nohighlight">\(\in\)</span> A) it follows that f(x) <span class="math notranslate nohighlight">\(\in V_{\epsilon}(L)\)</span>.</p></li>
@@ -1056,9 +1330,9 @@ use AoC with x = sup{<span class="math notranslate nohighlight">\(a_n: n \in \ma
 <li><p><em>algebraic limit thm for functional limits</em></p></li>
 <li><p><em>divergence criterion for functional limits</em></p></li>
 </ul>
-</div>
-<div class="section" id="continuous-functions">
-<h3>3.3.4.3. 4.3 continuous functions<a class="headerlink" href="#continuous-functions" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="continuous-functions">
+<h3><span class="section-number">3.3.4.3. </span>4.3 continuous functions<a class="headerlink" href="#continuous-functions" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>a function f:<span class="math notranslate nohighlight">\(A \to R\)</span> is <em>continuous at a point</em> c <span class="math notranslate nohighlight">\(\in\)</span> A if, for all <span class="math notranslate nohighlight">\(\epsilon\)</span>&gt;0, there exists a <span class="math notranslate nohighlight">\(\delta\)</span>&gt;0 such that whenever |x-c|&lt;<span class="math notranslate nohighlight">\(\delta\)</span> (and x<span class="math notranslate nohighlight">\(\in\)</span> A) it follows that <span class="math notranslate nohighlight">\(\|f(x)-f( c)\|&lt;\epsilon\)</span>.  F is <em>continous</em> if it is continuous at every point in the domain A</p></li>
 <li><p>characterizations of continuouty</p></li>
@@ -1066,9 +1340,9 @@ use AoC with x = sup{<span class="math notranslate nohighlight">\(a_n: n \in \ma
 <li><p>algebraic continuity theorem</p></li>
 <li><p>if f is continuous at c and g is continous at f( c) then g <span class="math notranslate nohighlight">\(\circ\)</span> f is continuous at c</p></li>
 </ul>
-</div>
-<div class="section" id="continuous-functions-on-compact-sets">
-<h3>3.3.4.4. 4.4 continuous functions on compact sets<a class="headerlink" href="#continuous-functions-on-compact-sets" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="continuous-functions-on-compact-sets">
+<h3><span class="section-number">3.3.4.4. </span>4.4 continuous functions on compact sets<a class="headerlink" href="#continuous-functions-on-compact-sets" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><em>preservation of compact sets</em> - if f continuous and K compact, then f(K) is compact as well</p></li>
 <li><p><em>extreme value theorem</em> - if f if continuous on a compact set K, then f attains a maximum and minimum value.  In other words, there exist <span class="math notranslate nohighlight">\(x_0,x_1 \in K\)</span> such that <span class="math notranslate nohighlight">\(f(x_0) \leq f(x) \leq f(x_1)\)</span> for all x <span class="math notranslate nohighlight">\(\in\)</span> K</p></li>
@@ -1079,19 +1353,19 @@ use AoC with x = sup{<span class="math notranslate nohighlight">\(a_n: n \in \ma
 </li>
 <li><p>a function that is continuous on a compact set K is <em>uniformly continuous on K</em></p></li>
 </ul>
-</div>
-<div class="section" id="intermediate-value-theorem">
-<h3>3.3.4.5. 4.5 intermediate value theorem<a class="headerlink" href="#intermediate-value-theorem" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="intermediate-value-theorem">
+<h3><span class="section-number">3.3.4.5. </span>4.5 intermediate value theorem<a class="headerlink" href="#intermediate-value-theorem" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><em>intermediate value theorem</em> - Let f:[a,b]<span class="math notranslate nohighlight">\( \to R\)</span> be continuous.  If L is a real number satisfying f(a) &lt; L &lt; f(b) or f(a) &gt; L &gt; f(b), then there exists a point c <span class="math notranslate nohighlight">\(\in (a,b)\)</span> where f( c) = L</p></li>
 <li><p>a function f has the <em>intermediate value property</em> on an inverval [a,b] if for all x &lt; y in [a,n] and all L between f(x) and f(y), it is always possible to find a point c <span class="math notranslate nohighlight">\(\in (x,y)\)</span> where f( c)=L.</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="ch-5-the-derivative">
-<h2>3.3.5. ch 5 - the derivative<a class="headerlink" href="#ch-5-the-derivative" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="derivatives-and-the-intermediate-value-property">
-<h3>3.3.5.1. 5.2 derivatives and the intermediate value property<a class="headerlink" href="#derivatives-and-the-intermediate-value-property" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="ch-5-the-derivative">
+<h2><span class="section-number">3.3.5. </span>ch 5 - the derivative<a class="headerlink" href="#ch-5-the-derivative" title="Permalink to this headline">#</a></h2>
+<section id="derivatives-and-the-intermediate-value-property">
+<h3><span class="section-number">3.3.5.1. </span>5.2 derivatives and the intermediate value property<a class="headerlink" href="#derivatives-and-the-intermediate-value-property" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>let g: A -&gt; R be a function defined on an interval A.  Given c <span class="math notranslate nohighlight">\(\in\)</span> A, the <em>derivative of g at c</em> is defined by g’( c) = <span class="math notranslate nohighlight">\(\lim_{x \to c} \frac{g(x) - g( c)}{x-c}\)</span>, provided this limit exists.  Then g is differentiable at c.  If g’ exists for all points in A, we say g is <em>differentiable</em> on A</p></li>
 <li><p>identity: <span class="math notranslate nohighlight">\(x^n-c^n = (x-c)(x^{n-1}+cx^{n-2}+c^2x^{n-3}+...+c^{n-1}\)</span>)</p></li>
@@ -1112,9 +1386,9 @@ use AoC with x = sup{<span class="math notranslate nohighlight">\(a_n: n \in \ma
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="mean-value-theorems">
-<h3>3.3.5.2. 5.3 mean value theorems<a class="headerlink" href="#mean-value-theorems" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="mean-value-theorems">
+<h3><span class="section-number">3.3.5.2. </span>5.3 mean value theorems<a class="headerlink" href="#mean-value-theorems" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><em>mean value theorem</em> - if f:[a,b] -&gt; R is continuous on [a,b] and differentiable on (a,b), then there exists a point c <span class="math notranslate nohighlight">\(\in\)</span> (a,b) where <span class="math notranslate nohighlight">\(f'( c) = \frac{f(b)-f(a)}{b-a}\)</span></p>
 <ul>
@@ -1128,12 +1402,12 @@ use AoC with x = sup{<span class="math notranslate nohighlight">\(a_n: n \in \ma
 <li><p><em>L’Hospital’s Rule: 0/0</em> - let f and g be continuous on an interval containing a, and assume f and g are differentiable on this interval with the possible exception of the point a.  If f(a) = g(a) = 0 and g’(x) ≠ 0 for all x ≠ a, then <span class="math notranslate nohighlight">\(lim_{x \to a} \frac{f'(x)}{g'(x)} = L \implies lim_{x \to a} \frac{f'(x)}{g'(x)} = L\)</span></p></li>
 <li><p><em>L’Hospital’s Rule: <span class="math notranslate nohighlight">\(\infty / \infty\)</span></em> - assume f and g are differentiable on (a,b)  and g’(x) ≠ 0 for all x in (a,b).  If <span class="math notranslate nohighlight">\(lim_{x \to a} g(x) = \infty \)</span>, then <span class="math notranslate nohighlight">\(lim_{x \to a} \frac{f'(x)}{g'(x)} = L \implies lim_{x \to a} \frac{f'(x)}{g'(x)} = L\)</span></p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="ch-6-sequences-and-series-of-function">
-<h2>3.3.6. ch 6 - sequences and series of function<a class="headerlink" href="#ch-6-sequences-and-series-of-function" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="uniform-convergence-of-a-sequence-of-functions">
-<h3>3.3.6.1. 6.2 uniform convergence of a sequence of functions<a class="headerlink" href="#uniform-convergence-of-a-sequence-of-functions" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="ch-6-sequences-and-series-of-function">
+<h2><span class="section-number">3.3.6. </span>ch 6 - sequences and series of function<a class="headerlink" href="#ch-6-sequences-and-series-of-function" title="Permalink to this headline">#</a></h2>
+<section id="uniform-convergence-of-a-sequence-of-functions">
+<h3><span class="section-number">3.3.6.1. </span>6.2 uniform convergence of a sequence of functions<a class="headerlink" href="#uniform-convergence-of-a-sequence-of-functions" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>for each n <span class="math notranslate nohighlight">\(\in \mathbb{N}\)</span> let <span class="math notranslate nohighlight">\(f_n\)</span> be a function defined on a set A<span class="math notranslate nohighlight">\(\subseteq R\)</span>.  The sequence (<span class="math notranslate nohighlight">\(f_n\)</span>) of functions <em>converges pointwise</em> on A to a function f if, for all x in A, the sequence of real numbers <span class="math notranslate nohighlight">\(f_n(x)\)</span> converges to f(x)</p></li>
 <li><p>let (<span class="math notranslate nohighlight">\(f_n\)</span>) be a sequence of functions defined on a set A<span class="math notranslate nohighlight">\(\subseteq\)</span>R.  Then (<span class="math notranslate nohighlight">\(f_n\)</span>) <em>converges unformly</em> on A to a limit function f defined on A if, for every <span class="math notranslate nohighlight">\(\epsilon\)</span>&gt;0, there exists an N in <span class="math notranslate nohighlight">\(\mathbb{N}\)</span> such that <span class="math notranslate nohighlight">\(\forall n ≥N,  x \in A , \|f_n(x)-f(x)\|&lt;\epsilon\)</span></p>
@@ -1143,16 +1417,16 @@ use AoC with x = sup{<span class="math notranslate nohighlight">\(a_n: n \in \ma
 </li>
 <li><p><em>continuous limit thm</em> - Let (<span class="math notranslate nohighlight">\(f_n\)</span>) be a sequence of functions defined on A that converges uniformly on A to a function f.  If each <span class="math notranslate nohighlight">\(f_n\)</span> is continuous at c in A, then f is continuous at c</p></li>
 </ul>
-</div>
-<div class="section" id="uniform-convergence-and-differentiation">
-<h3>3.3.6.2. 6.3 uniform convergence and differentiation<a class="headerlink" href="#uniform-convergence-and-differentiation" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="uniform-convergence-and-differentiation">
+<h3><span class="section-number">3.3.6.2. </span>6.3 uniform convergence and differentiation<a class="headerlink" href="#uniform-convergence-and-differentiation" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><em>differentiable limit theorem</em> - let <span class="math notranslate nohighlight">\(f_n \to f\)</span> pointwise on the closed interval [a,b], and assume that each <span class="math notranslate nohighlight">\(f_n\)</span> is differentiable.  If <span class="math notranslate nohighlight">\((f'_n)\)</span> converges uniformly on [a,b] to a function g, then the function f is differentiable and f’=g</p></li>
 <li><p>let (<span class="math notranslate nohighlight">\(f_n\)</span>) be a sequence of differentiable functions defined on the closed interval [a,b], and assume <span class="math notranslate nohighlight">\((f'_n)\)</span> converges uniformly to a function g on [a,b].  If there exists a point <span class="math notranslate nohighlight">\(x_0 \in [a,b]\)</span> for which <span class="math notranslate nohighlight">\(f_n(x_0)\)</span> is convergent, then (<span class="math notranslate nohighlight">\(f_n\)</span>) converges uniformly.  Moreover, the limit function f = lim <span class="math notranslate nohighlight">\(f_n\)</span> is differentiable and satisfies f’ = g</p></li>
 </ul>
-</div>
-<div class="section" id="series-of-functions">
-<h3>3.3.6.3. 6.4 series of functions<a class="headerlink" href="#series-of-functions" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="series-of-functions">
+<h3><span class="section-number">3.3.6.3. </span>6.4 series of functions<a class="headerlink" href="#series-of-functions" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><em>term-by-term continuity thm</em> - let <span class="math notranslate nohighlight">\(f_n\)</span> be continuous functions defined on a set A <span class="math notranslate nohighlight">\(\subseteq\)</span> R and assume <span class="math notranslate nohighlight">\(\sum f_n\)</span> converges uniformly on A to a function f.  Then, f is continuous on A.</p></li>
 <li><p><em>term-by-term differentiability thm</em> - let <span class="math notranslate nohighlight">\(f_n\)</span> be differentiable functions defined on an interval A, and assume <span class="math notranslate nohighlight">\(\sum f'_n(x)\)</span> converges uniformly to a limit g(x) on A.  If there exists a point <span class="math notranslate nohighlight">\(x_0 \in [a,b]\)</span> where <span class="math notranslate nohighlight">\(\sum f_n(x_0)\)</span> converges, then the series <span class="math notranslate nohighlight">\(\sum f_n(x)\)</span> converges uniformly to a differentiable function f(x) satisfying f’(x) = g(x) on A.  In other words, <span class="math notranslate nohighlight">\(f(x) = \sum f_n(x)\)</span> and <span class="math notranslate nohighlight">\(f'(x) = \sum f'_n(x)\)</span></p></li>
@@ -1162,9 +1436,9 @@ use AoC with x = sup{<span class="math notranslate nohighlight">\(a_n: n \in \ma
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="power-series">
-<h3>3.3.6.4. 6.5 power series<a class="headerlink" href="#power-series" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="power-series">
+<h3><span class="section-number">3.3.6.4. </span>6.5 power series<a class="headerlink" href="#power-series" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>power series f(x) = <span class="math notranslate nohighlight">\(\sum_{n=0}^\infty a_n x^n = a_0 + a_1 x_1 + a_2 x^2 + a_3 x^3 + ...\)</span></p></li>
 <li><p>if a power series converges at some point <span class="math notranslate nohighlight">\(x_0 \in \mathbb{R}\)</span>, then it converges absolutely for any x satisfying |x|&lt;|<span class="math notranslate nohighlight">\(x_0\)</span>|</p></li>
@@ -1180,9 +1454,9 @@ use AoC with x = sup{<span class="math notranslate nohighlight">\(a_n: n \in \ma
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="taylor-series">
-<h3>3.3.6.5. 6.6 taylor series<a class="headerlink" href="#taylor-series" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="taylor-series">
+<h3><span class="section-number">3.3.6.5. </span>6.6 taylor series<a class="headerlink" href="#taylor-series" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><em>Taylor’s Formula</em> <span class="math notranslate nohighlight">\(\sum_{n=0}^\infty a_n x^n = a_0 + a_1 x_1 + a_2 x^2 + a_3 x^3 + ...\)</span></p>
 <ul>
@@ -1192,12 +1466,12 @@ use AoC with x = sup{<span class="math notranslate nohighlight">\(a_n: n \in \ma
 <li><p><em>Lagrange’s Remainder thm</em> - Let f be differentiable N+1 times on (-R,R), define <span class="math notranslate nohighlight">\(a_n = \frac{f^{(n)}(0)}{n!}.....\)</span></p></li>
 <li><p>not every infinitely differentiable function can be represented by its Taylor series (radius of convergence zero)</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="ch-7-the-riemann-integral">
-<h2>3.3.7. ch 7 - the Riemann Integral<a class="headerlink" href="#ch-7-the-riemann-integral" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="def-of-riemann-integral">
-<h3>3.3.7.1. 7.2 def of Riemann integral<a class="headerlink" href="#def-of-riemann-integral" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="ch-7-the-riemann-integral">
+<h2><span class="section-number">3.3.7. </span>ch 7 - the Riemann Integral<a class="headerlink" href="#ch-7-the-riemann-integral" title="Permalink to this headline">#</a></h2>
+<section id="def-of-riemann-integral">
+<h3><span class="section-number">3.3.7.1. </span>7.2 def of Riemann integral<a class="headerlink" href="#def-of-riemann-integral" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><em>partition</em> of [a,b] is a finite set of points from [a,b] that includes both a and b</p></li>
 <li><p><em>lower sum</em> - sum all the possible smallest rectangles</p></li>
@@ -1211,30 +1485,30 @@ use AoC with x = sup{<span class="math notranslate nohighlight">\(a_n: n \in \ma
 </li>
 <li><p>if f is continuous on [a,b] then it is integrable</p></li>
 </ul>
-</div>
-<div class="section" id="integrating-functions-with-discontinuities">
-<h3>3.3.7.2. 7.3 integrating functions with discontinuities<a class="headerlink" href="#integrating-functions-with-discontinuities" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="integrating-functions-with-discontinuities">
+<h3><span class="section-number">3.3.7.2. </span>7.3 integrating functions with discontinuities<a class="headerlink" href="#integrating-functions-with-discontinuities" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>if f:[a,b]-&gt;R is bounded and f is integrable on [c,b] for all c in (a,b), then f is integrable on [a,b]</p></li>
 </ul>
-</div>
-<div class="section" id="properties-of-integral">
-<h3>3.3.7.3. 7.4 properties of Integral<a class="headerlink" href="#properties-of-integral" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="properties-of-integral">
+<h3><span class="section-number">3.3.7.3. </span>7.4 properties of Integral<a class="headerlink" href="#properties-of-integral" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>assume f: [a,b]-&gt;R is bounded and let c in (a,b).  Then, f is integrable on [a,b] iff f is integrable on [a,c] and [c,b].  In this case we have <span class="math notranslate nohighlight">\(\int_a^b f = \int_a^c f + \int_c^b f.\)</span>F</p></li>
 <li><p><em>integrable limit thm</em> - Assume that <span class="math notranslate nohighlight">\(f_n \to f\)</span> uniformly on [a,b] and that each <span class="math notranslate nohighlight">\(f_n\)</span> is integarble.  Then, f is integrable and <span class="math notranslate nohighlight">\(lim_{n \to \infty} \int_a^b f_n = \int_a^b f\)</span>.</p></li>
 </ul>
-</div>
-<div class="section" id="fundamental-theorem-of-calculus">
-<h3>3.3.7.4. 7.5 fundamental theorem of calculus<a class="headerlink" href="#fundamental-theorem-of-calculus" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="fundamental-theorem-of-calculus">
+<h3><span class="section-number">3.3.7.4. </span>7.5 fundamental theorem of calculus<a class="headerlink" href="#fundamental-theorem-of-calculus" title="Permalink to this headline">#</a></h3>
 <ol class="simple">
 <li><p>If f:[a,b] -&gt; R is integrable, and F:[a,b]-&gt;R satisfies F’(x) = f(x) for all x <span class="math notranslate nohighlight">\(\in\)</span> [a,b], then <span class="math notranslate nohighlight">\(\int_a^b f = F(b) - F(a)\)</span></p></li>
 <li><p>Let f: [a,b]-&gt; R be integrable and for x <span class="math notranslate nohighlight">\(\in\)</span> [a,b] define G(x) = <span class="math notranslate nohighlight">\(\int_a^x g\)</span>.  Then G is continuous on [a,b]. If g is continuous at some point <span class="math notranslate nohighlight">\(c \in [a,b]\)</span> then G is differentiable at c and G’(c) = g(c).</p></li>
 </ol>
-</div>
-</div>
-<div class="section" id="overview">
-<h2>3.3.8. overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="overview">
+<h2><span class="section-number">3.3.8. </span>overview<a class="headerlink" href="#overview" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>convergence</p>
 <ol class="simple">
@@ -1294,8 +1568,8 @@ use AoC with x = sup{<span class="math notranslate nohighlight">\(a_n: n \in \ma
 <li><p>derivative doesn’t have to be continuous</p></li>
 <li><p>integrable if finite amount of discontinuities and bounded</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1319,41 +1593,53 @@ use AoC with x = sup{<span class="math notranslate nohighlight">\(a_n: n \in \ma
 
               </div>
               
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="proofs.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">3.2. </span>proofs</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="linear_algebra.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3.4. </span>linear algebra</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
         </div>
     </div>
-    
-    
-    <div class='prev-next-bottom'>
-        
-    <a class='left-prev' id="prev-link" href="proofs.html" title="previous page">3.2. proofs</a>
-    <a class='right-next' id="next-link" href="linear_algebra.html" title="next page">3.4. linear algebra</a>
-
-    </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Chandan Singh<br/>
+  
+      &copy; Copyright None.<br/>
+    <div class="extra_footer">
       <p>
-        
-          By Chandan Singh<br/>
-        
-            &copy; Copyright None.<br/>
-          <div class="extra_footer">
-            <p>
 Many of these images are taken from resources on the web.
 </p>
-          </div>
-      </p>
     </div>
-  </footer>
-</main>
+</p>
+        </footer>
+    </div>
+    
+</div>
 
 
       </div>
     </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-    
-  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
 
-
-    
   </body>
 </html>

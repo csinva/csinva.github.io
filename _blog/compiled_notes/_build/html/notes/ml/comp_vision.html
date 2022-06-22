@@ -1,12 +1,16 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>5.3. computer vision</title>
     
-  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -16,88 +20,110 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-  <link rel="stylesheet"
-    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
-
-    
-    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
-    <script type="text/javascript" src="../../_static/togglebutton.js"></script>
-    <script type="text/javascript" src="../../_static/clipboard.min.js"></script>
-    <script type="text/javascript" src="../../_static/copybutton.js"></script>
-    <script type="text/javascript">var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script type="text/javascript" src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-    <script async="async" type="text/javascript" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script type="text/javascript">
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="5.4. structure learning" href="structure_ml.html" />
     <link rel="prev" title="5.2. nlp" href="nlp.html" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
 
-
-
+    <!-- Google Analytics -->
+    
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="../../index.html">
-  
-  <img src="../../_static/logo.png" class="logo" alt="logo">
-  
-  
-</a>
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+    </a>
 </div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../intro.html">
-   overview 👋
-  </a>
- </li>
-</ul>
-<ul class="current nav sidenav_l1">
- <li class="toctree-l1 collapsible-parent">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    overview 👋
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../research_ovws/research_ovws.html">
    1. research_ovws
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_comp_neuro.html">
      1.1. comp neuro
@@ -169,14 +195,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../cs/cs.html">
    2. cs
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../cs/retrieval.html">
      2.1. info retrieval
@@ -213,44 +242,37 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../cs/databases.html">
-     2.8. overview
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cs/databases.html#sql">
-     2.9. sql
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../cs/os.html">
-     2.10. os
+     2.8. os
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../cs/arch.html">
-     2.11. architecture
+     2.9. architecture
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../cs/reproducibility.html">
-     2.12. reproducibility
+     2.10. reproducibility
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../cs/comp_theory.html">
-     2.13. cs theory
+     2.11. cs theory
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../math/math.html">
    3. math
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../math/differential_equations.html">
      3.1. differential equations
@@ -297,14 +319,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../stat/stat.html">
    4. stat
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../stat/graphical_models.html">
      4.1. graphical models
@@ -346,14 +371,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 current active collapsible-parent">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="ml.html">
    5. ml
   </a>
-  <ul class="current collapse-ul">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="kernels.html">
      5.1. kernels
@@ -405,14 +433,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../ai/ai.html">
    6. ai
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/search.html">
      6.1. search
@@ -459,14 +490,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../neuro/neuro.html">
    7. neuro
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../neuro/disease.html">
      7.1. disease
@@ -508,92 +542,152 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
 </ul>
 
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
     </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/notes/ml/comp_vision.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-        <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/csinva/csinva.github.io"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        
-        
-    </div>
-</div>
-
-
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                title="Fullscreen mode"><i
-                    class="fas fa-expand"></i></button></a>
-
-        <!-- Launch buttons -->
-
-    </div>
-
-    <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
-        
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
         </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/csinva/csinva.github.io"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/notes/ml/comp_vision.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#useful-packages">
    5.3.1. useful packages
@@ -801,21 +895,244 @@
  </li>
 </ul>
 
-        </nav>
-        
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>computer vision</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#useful-packages">
+   5.3.1. useful packages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-s-in-an-image">
+   5.3.2. what’s in an image?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fundamentals-of-image-formation">
+     5.3.2.1. fundamentals of image formation
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#projections">
+       5.3.2.1.1. projections
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#phenomena-from-perspective-projection">
+       5.3.2.1.2. phenomena from perspective projection
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#radiometry">
+     5.3.2.2. radiometry
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#frequencies-and-colors">
+     5.3.2.3. frequencies and colors
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#image-processing">
+   5.3.3. image processing
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#transformations">
+     5.3.3.1. transformations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#image-preprocessing">
+     5.3.3.2. image preprocessing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#edges-templates">
+     5.3.3.3. edges + templates
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#texture">
+     5.3.3.4. texture
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#optical-flow">
+     5.3.3.5. optical flow
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cogsci-neuro">
+   5.3.4. cogsci / neuro
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#psychophysics">
+     5.3.4.1. psychophysics
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#neurophysiology">
+     5.3.4.2. neurophysiology
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#perceptual-organization">
+     5.3.4.3. perceptual organization
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#correspondence-applications-steropsis-optical-flow-sfm">
+   5.3.5. correspondence + applications (steropsis, optical flow, sfm)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#binocular-steropsis">
+     5.3.5.1. binocular steropsis
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#single-point-of-fixation-common-in-eyes">
+       5.3.5.1.1. single point of fixation (common in eyes)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#optical-axes-parallel-common-in-robots">
+       5.3.5.1.2. optical axes parallel (common in robots)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#general-case-ex-reconstruct-from-lots-of-photos">
+       5.3.5.1.3. general case (ex. reconstruct from lots of photos)
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solving-for-stereo-correspondence">
+     5.3.5.2. solving for stereo correspondence
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#optical-flow-ii">
+       5.3.5.2.1. optical flow II
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#general-correspondence-interest-points">
+     5.3.5.3. general correspondence + interest points
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#detection-identify-key-points">
+       5.3.5.3.1. detection - identify key points
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#description-extract-vector-feature-for-each-key-point">
+       5.3.5.3.2. description - extract vector feature for each key point
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#matching-determine-correspondence-between-2-views">
+       5.3.5.3.3. matching - determine correspondence between 2 views
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#correspondence-for-sfm-instance-retrieval">
+     5.3.5.4. correspondence for sfm / instance retrieval
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#deep-learning">
+   5.3.6. deep learning
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cnns">
+     5.3.6.1. cnns
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#image-segmentation">
+     5.3.6.2. image segmentation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#classification-localization">
+     5.3.6.3. classification + localization
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#learning-detection">
+     5.3.6.4. learning detection
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#modeling-figure-ground">
+       5.3.6.4.1. modeling figure-ground
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#single-view-3d-construction">
+     5.3.6.5. single-view 3d construction
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#unsupervised-keypoint-learning">
+     5.3.6.6. unsupervised keypoint learning
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="section" id="computer-vision">
-<h1>5.3. computer vision<a class="headerlink" href="#computer-vision" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="useful-packages">
-<h2>5.3.1. useful packages<a class="headerlink" href="#useful-packages" title="Permalink to this headline">¶</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="computer-vision">
+<h1><span class="section-number">5.3. </span>computer vision<a class="headerlink" href="#computer-vision" title="Permalink to this headline">#</a></h1>
+<section id="useful-packages">
+<h2><span class="section-number">5.3.1. </span>useful packages<a class="headerlink" href="#useful-packages" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
-<li><p>https://www.cellpose.org/ - cell segmentation</p></li>
+<li><p><a class="reference external" href="https://www.cellpose.org/">https://www.cellpose.org/</a> - cell segmentation</p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Active_shape_model">Active shape model - Wikipedia</a></p>
 <ul>
 <li><p>intro (<a class="reference external" href="https://people.cs.clemson.edu/~ekp/courses/cpsc9500/assets/IntroASM.pdf">cootes 2000</a>)</p></li>
@@ -847,17 +1164,17 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="what-s-in-an-image">
-<h2>5.3.2. what’s in an image?<a class="headerlink" href="#what-s-in-an-image" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="what-s-in-an-image">
+<h2><span class="section-number">5.3.2. </span>what’s in an image?<a class="headerlink" href="#what-s-in-an-image" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>vision doesn’t exist in isolation - movement</p></li>
 <li><p>three R’s: recognition, reconstruction, reorganization</p></li>
 </ul>
-<div class="section" id="fundamentals-of-image-formation">
-<h3>5.3.2.1. fundamentals of image formation<a class="headerlink" href="#fundamentals-of-image-formation" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="projections">
-<h4>5.3.2.1.1. projections<a class="headerlink" href="#projections" title="Permalink to this headline">¶</a></h4>
+<section id="fundamentals-of-image-formation">
+<h3><span class="section-number">5.3.2.1. </span>fundamentals of image formation<a class="headerlink" href="#fundamentals-of-image-formation" title="Permalink to this headline">#</a></h3>
+<section id="projections">
+<h4><span class="section-number">5.3.2.1.1. </span>projections<a class="headerlink" href="#projections" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>image I(x,y) projects scene(X, Y, Z)</p>
 <ul>
@@ -885,9 +1202,9 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="phenomena-from-perspective-projection">
-<h4>5.3.2.1.2. phenomena from perspective projection<a class="headerlink" href="#phenomena-from-perspective-projection" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="phenomena-from-perspective-projection">
+<h4><span class="section-number">5.3.2.1.2. </span>phenomena from perspective projection<a class="headerlink" href="#phenomena-from-perspective-projection" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>parallel lines converge to vanishing point (each family has its own vanishing point)</p>
 <ul>
@@ -908,18 +1225,18 @@
 <li><p>nearer objects look bigger</p></li>
 <li><p><em>foreshortening</em> - objects slanted w.r.t line of sight become smaller w/ scaling factor cos <span class="math notranslate nohighlight">\(\sigma\)</span> ~ <span class="math notranslate nohighlight">\(\sigma\)</span> is angle between line of sight and the surface normal</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="radiometry">
-<h3>5.3.2.2. radiometry<a class="headerlink" href="#radiometry" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="radiometry">
+<h3><span class="section-number">5.3.2.2. </span>radiometry<a class="headerlink" href="#radiometry" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
-<li><p><em>irradiance</em> - how much light (photons) are captured in some time interval</p>
+<li><p><em>irradiance</em> - how much light (photons) is captured in some time interval</p>
 <ul>
 <li><p>radiant power / unit area (<span class="math notranslate nohighlight">\(W/m^2\)</span>)</p></li>
 <li><p><em>radiance</em> - power in given direction / unit area / unit solid angle</p>
 <ul>
 <li><p>L = directional quantity (measured perpendicular to direction of travel)</p></li>
-<li><p><span class="math notranslate nohighlight">\(L = Power / (dA cos \theta \cdot d\Omega)\)</span>  where <span class="math notranslate nohighlight">\(d\Omega\)</span> is a solid angle (in steradians)</p></li>
+<li><p><span class="math notranslate nohighlight">\(L = Power / (dA \cos \theta \cdot d\Omega)\)</span>  where <span class="math notranslate nohighlight">\(d\Omega\)</span> is a solid angle (in steradians)</p></li>
 </ul>
 </li>
 </ul>
@@ -946,9 +1263,9 @@
 <li><p>also illuminated by reflections of other objects (ray tracing / radiosity)</p></li>
 <li><p><em>shape-from-shading</em> (SFS) goes from irradiance <span class="math notranslate nohighlight">\(\to\)</span> geometry, reflectances, illumination</p></li>
 </ul>
-</div>
-<div class="section" id="frequencies-and-colors">
-<h3>5.3.2.3. frequencies and colors<a class="headerlink" href="#frequencies-and-colors" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="frequencies-and-colors">
+<h3><span class="section-number">5.3.2.3. </span>frequencies and colors<a class="headerlink" href="#frequencies-and-colors" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>contrast sensitivity depends on frequency + color</p></li>
 <li><p>band-pass filtering - use gaussian pyramid</p>
@@ -990,12 +1307,12 @@
 </ul>
 </li>
 </ul>
-</div>
-</div>
-<div class="section" id="image-processing">
-<h2>5.3.3. image processing<a class="headerlink" href="#image-processing" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="transformations">
-<h3>5.3.3.1. transformations<a class="headerlink" href="#transformations" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="image-processing">
+<h2><span class="section-number">5.3.3. </span>image processing<a class="headerlink" href="#image-processing" title="Permalink to this headline">#</a></h2>
+<section id="transformations">
+<h3><span class="section-number">5.3.3.1. </span>transformations<a class="headerlink" href="#transformations" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>2 object properties</p>
 <ul>
@@ -1159,9 +1476,9 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="image-preprocessing">
-<h3>5.3.3.2. image preprocessing<a class="headerlink" href="#image-preprocessing" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="image-preprocessing">
+<h3><span class="section-number">5.3.3.2. </span>image preprocessing<a class="headerlink" href="#image-preprocessing" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>image is a function from <span class="math notranslate nohighlight">\(R^2 \to R\)</span></p>
 <ul>
@@ -1249,9 +1566,9 @@
 </li>
 <li><p>sharpening - add back the high frequencies you remove by blurring (laplacian pyramid): <img alt="" src="../../_images/laplacian.png" /></p></li>
 </ul>
-</div>
-<div class="section" id="edges-templates">
-<h3>5.3.3.3. edges + templates<a class="headerlink" href="#edges-templates" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="edges-templates">
+<h3><span class="section-number">5.3.3.3. </span>edges + templates<a class="headerlink" href="#edges-templates" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><strong>edge</strong> - place of rapid change in the image intensity function</p></li>
 <li><p>solns</p>
@@ -1329,9 +1646,9 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="texture">
-<h3>5.3.3.4. texture<a class="headerlink" href="#texture" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="texture">
+<h3><span class="section-number">5.3.3.4. </span>texture<a class="headerlink" href="#texture" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><em>texture</em> - non-countable stuff</p>
 <ul>
@@ -1392,9 +1709,9 @@
 </li>
 <li><p>why these filters - sparse coding (data driven find filters)</p></li>
 </ul>
-</div>
-<div class="section" id="optical-flow">
-<h3>5.3.3.5. optical flow<a class="headerlink" href="#optical-flow" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="optical-flow">
+<h3><span class="section-number">5.3.3.5. </span>optical flow<a class="headerlink" href="#optical-flow" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>simplifying assumption - world doesn’t move, camera moves</p>
 <ul>
@@ -1432,12 +1749,12 @@
 <li><p>we can compute the time to contact</p></li>
 <li><p>this is a key to what is used in <a class="reference external" href="https://www.maketecheasier.com/how-video-compression-works/">video compression</a></p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="cogsci-neuro">
-<h2>5.3.4. cogsci / neuro<a class="headerlink" href="#cogsci-neuro" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="psychophysics">
-<h3>5.3.4.1. psychophysics<a class="headerlink" href="#psychophysics" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="cogsci-neuro">
+<h2><span class="section-number">5.3.4. </span>cogsci / neuro<a class="headerlink" href="#cogsci-neuro" title="Permalink to this headline">#</a></h2>
+<section id="psychophysics">
+<h3><span class="section-number">5.3.4.1. </span>psychophysics<a class="headerlink" href="#psychophysics" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>julesz search experiment</p>
 <ul>
@@ -1472,9 +1789,9 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="neurophysiology">
-<h3>5.3.4.2. neurophysiology<a class="headerlink" href="#neurophysiology" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="neurophysiology">
+<h3><span class="section-number">5.3.4.2. </span>neurophysiology<a class="headerlink" href="#neurophysiology" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>on-center off-surround - looks like Laplacian of a Gaussian</p>
 <ul>
@@ -1502,21 +1819,21 @@
 <li><p><em>retinotopy</em> - radiation stain on retina maintained radiation image</p></li>
 <li><p><em>hypercolumn</em> - cells of different orientations, scales grouped close together for a location</p></li>
 </ul>
-</div>
-<div class="section" id="perceptual-organization">
-<h3>5.3.4.3. perceptual organization<a class="headerlink" href="#perceptual-organization" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="perceptual-organization">
+<h3><span class="section-number">5.3.4.3. </span>perceptual organization<a class="headerlink" href="#perceptual-organization" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>max werthermian - we perceive things not numbers</p></li>
 <li><p>principles: grouping, element connectedness</p></li>
 <li><p>figure-ground organization: surroundedness, size, orientation, contrast, symmetry, convexity</p></li>
 <li><p>gestalt - we see based on context</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="correspondence-applications-steropsis-optical-flow-sfm">
-<h2>5.3.5. correspondence + applications (steropsis, optical flow, sfm)<a class="headerlink" href="#correspondence-applications-steropsis-optical-flow-sfm" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="binocular-steropsis">
-<h3>5.3.5.1. binocular steropsis<a class="headerlink" href="#binocular-steropsis" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="correspondence-applications-steropsis-optical-flow-sfm">
+<h2><span class="section-number">5.3.5. </span>correspondence + applications (steropsis, optical flow, sfm)<a class="headerlink" href="#correspondence-applications-steropsis-optical-flow-sfm" title="Permalink to this headline">#</a></h2>
+<section id="binocular-steropsis">
+<h3><span class="section-number">5.3.5.1. </span>binocular steropsis<a class="headerlink" href="#binocular-steropsis" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><strong>stereopsis</strong> - perception of depth</p></li>
 <li><p><strong>disparity</strong> - difference in image between eyes</p>
@@ -1539,8 +1856,8 @@
 </li>
 <li><p>3 types of 2-camera configurations: single point, parallel axes, general case</p></li>
 </ul>
-<div class="section" id="single-point-of-fixation-common-in-eyes">
-<h4>5.3.5.1.1. single point of fixation (common in eyes)<a class="headerlink" href="#single-point-of-fixation-common-in-eyes" title="Permalink to this headline">¶</a></h4>
+<section id="single-point-of-fixation-common-in-eyes">
+<h4><span class="section-number">5.3.5.1.1. </span>single point of fixation (common in eyes)<a class="headerlink" href="#single-point-of-fixation-common-in-eyes" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>fixation point has 0 disparity</p>
 <ul>
@@ -1574,18 +1891,18 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="optical-axes-parallel-common-in-robots">
-<h4>5.3.5.1.2. optical axes parallel (common in robots)<a class="headerlink" href="#optical-axes-parallel-common-in-robots" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="optical-axes-parallel-common-in-robots">
+<h4><span class="section-number">5.3.5.1.2. </span>optical axes parallel (common in robots)<a class="headerlink" href="#optical-axes-parallel-common-in-robots" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p><img alt="isparity_paralle" src="../../_images/disparity_parallel.png" /></p></li>
 <li><p><em>disparity</em> <span class="math notranslate nohighlight">\(d = x_l - x_r = bf/Z\)</span></p></li>
 <li><p><em>error</em> <span class="math notranslate nohighlight">\(|\delta Z| = \frac{Z^2 |\delta d|}{bf}\)</span></p></li>
 <li><p><strong>parallax</strong> - effect where near objects move when you move but far don’t</p></li>
 </ul>
-</div>
-<div class="section" id="general-case-ex-reconstruct-from-lots-of-photos">
-<h4>5.3.5.1.3. general case (ex. reconstruct from lots of photos)<a class="headerlink" href="#general-case-ex-reconstruct-from-lots-of-photos" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="general-case-ex-reconstruct-from-lots-of-photos">
+<h4><span class="section-number">5.3.5.1.3. </span>general case (ex. reconstruct from lots of photos)<a class="headerlink" href="#general-case-ex-reconstruct-from-lots-of-photos" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>given n point correspondences, estimate rotation matrix R, translation t, and depths at the n points</p>
 <ul>
@@ -1631,10 +1948,10 @@
 </ul>
 </li>
 </ul>
-</div>
-</div>
-<div class="section" id="solving-for-stereo-correspondence">
-<h3>5.3.5.2. solving for stereo correspondence<a class="headerlink" href="#solving-for-stereo-correspondence" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="solving-for-stereo-correspondence">
+<h3><span class="section-number">5.3.5.2. </span>solving for stereo correspondence<a class="headerlink" href="#solving-for-stereo-correspondence" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><strong>stereo correspondence</strong> = stereo matching: given point in one image, find corresponding point in 2nd image</p></li>
 <li><p><strong>basic stereo matching algorithm</strong></p>
@@ -1688,8 +2005,8 @@
 </ul>
 </li>
 </ul>
-<div class="section" id="optical-flow-ii">
-<h4>5.3.5.2.1. optical flow II<a class="headerlink" href="#optical-flow-ii" title="Permalink to this headline">¶</a></h4>
+<section id="optical-flow-ii">
+<h4><span class="section-number">5.3.5.2.1. </span>optical flow II<a class="headerlink" href="#optical-flow-ii" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>related to stereo disparity except moving one camera over time</p></li>
 <li><p><em>aperture problem</em> - looking through certain hole can change perception (ex. see movement in wrong directions)</p></li>
@@ -1713,10 +2030,10 @@
 </ul>
 </li>
 </ul>
-</div>
-</div>
-<div class="section" id="general-correspondence-interest-points">
-<h3>5.3.5.3. general correspondence + interest points<a class="headerlink" href="#general-correspondence-interest-points" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="general-correspondence-interest-points">
+<h3><span class="section-number">5.3.5.3. </span>general correspondence + interest points<a class="headerlink" href="#general-correspondence-interest-points" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>more general <strong>correspondence</strong> - matching points, patches, edges, or regions across images (not in the same basic image)</p>
 <ul>
@@ -1731,8 +2048,8 @@
 </li>
 <li><p>3 steps to kepoint matching: detection, description, matching</p></li>
 </ul>
-<div class="section" id="detection-identify-key-points">
-<h4>5.3.5.3.1. detection - identify key points<a class="headerlink" href="#detection-identify-key-points" title="Permalink to this headline">¶</a></h4>
+<section id="detection-identify-key-points">
+<h4><span class="section-number">5.3.5.3.1. </span>detection - identify key points<a class="headerlink" href="#detection-identify-key-points" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>find ‘corners’ with Harris corner detector</p></li>
 <li><p>shift small window and look for large intensity change in multiple directions</p>
@@ -1771,9 +2088,9 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="description-extract-vector-feature-for-each-key-point">
-<h4>5.3.5.3.2. description - extract vector feature for each key point<a class="headerlink" href="#description-extract-vector-feature-for-each-key-point" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="description-extract-vector-feature-for-each-key-point">
+<h4><span class="section-number">5.3.5.3.2. </span>description - extract vector feature for each key point<a class="headerlink" href="#description-extract-vector-feature-for-each-key-point" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>lots of ways - ex. SIFT, image patches wrt gradient</p></li>
 <li><p>simpler: MOPS</p>
@@ -1784,9 +2101,9 @@
 </li>
 <li><p>invariant to things like shape / lighting changes</p></li>
 </ul>
-</div>
-<div class="section" id="matching-determine-correspondence-between-2-views">
-<h4>5.3.5.3.3. matching - determine correspondence between 2 views<a class="headerlink" href="#matching-determine-correspondence-between-2-views" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="matching-determine-correspondence-between-2-views">
+<h4><span class="section-number">5.3.5.3.3. </span>matching - determine correspondence between 2 views<a class="headerlink" href="#matching-determine-correspondence-between-2-views" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>not all key points will match - only match above some threshold</p>
 <ul>
@@ -1809,14 +2126,14 @@
 </li>
 </ul>
 </li>
-<li><p>ate end could recompute least squares H or F on all inliers</p></li>
+<li><p>finally, could recompute least squares H or F on all inliers</p></li>
 </ul>
 </li>
 </ul>
-</div>
-</div>
-<div class="section" id="correspondence-for-sfm-instance-retrieval">
-<h3>5.3.5.4. correspondence for sfm / instance retrieval<a class="headerlink" href="#correspondence-for-sfm-instance-retrieval" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="correspondence-for-sfm-instance-retrieval">
+<h3><span class="section-number">5.3.5.4. </span>correspondence for sfm / instance retrieval<a class="headerlink" href="#correspondence-for-sfm-instance-retrieval" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>sfm (structure for motion) - given many images, simultaneously do 2 things</p>
 <ul>
@@ -1895,12 +2212,12 @@
 </ul>
 </li>
 </ul>
-</div>
-</div>
-<div class="section" id="deep-learning">
-<h2>5.3.6. deep learning<a class="headerlink" href="#deep-learning" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="cnns">
-<h3>5.3.6.1. cnns<a class="headerlink" href="#cnns" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="deep-learning">
+<h2><span class="section-number">5.3.6. </span>deep learning<a class="headerlink" href="#deep-learning" title="Permalink to this headline">#</a></h2>
+<section id="cnns">
+<h3><span class="section-number">5.3.6.1. </span>cnns<a class="headerlink" href="#cnns" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><em>object recognition</em> - visual similarity via labels</p></li>
 <li><p>classification</p>
@@ -1924,7 +2241,7 @@
 </li>
 <li><p>history: lenet 1998</p>
 <ul>
-<li><p>neurocognition (fukushima 1980) - unsupervised</p></li>
+<li><p>neocognitron (fukushima 1980) - unsupervised</p></li>
 <li><p>convolutional neural nets (lecun et al) - supervised</p></li>
 <li><p>alexnet 2012</p>
 <ul>
@@ -1991,9 +2308,9 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="image-segmentation">
-<h3>5.3.6.2. image segmentation<a class="headerlink" href="#image-segmentation" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="image-segmentation">
+<h3><span class="section-number">5.3.6.2. </span>image segmentation<a class="headerlink" href="#image-segmentation" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><strong>consistency</strong> - 2 segmentations consistent when they can be explained by same segmentation tree</p>
 <ul>
@@ -2039,9 +2356,9 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="classification-localization">
-<h3>5.3.6.3. classification + localization<a class="headerlink" href="#classification-localization" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="classification-localization">
+<h3><span class="section-number">5.3.6.3. </span>classification + localization<a class="headerlink" href="#classification-localization" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>goal: coords (x, y, w, h) for each object + class</p></li>
 <li><p>simple: sliding window and use classifier each time - computationally expensive!</p></li>
@@ -2064,9 +2381,9 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="learning-detection">
-<h3>5.3.6.4. learning detection<a class="headerlink" href="#learning-detection" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="learning-detection">
+<h3><span class="section-number">5.3.6.4. </span>learning detection<a class="headerlink" href="#learning-detection" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>countour detection - predict contour after every conv (at different scales) then interpolate up to get one final output (ICCV 2015)</p>
 <ul>
@@ -2091,8 +2408,8 @@
 </ul>
 </li>
 </ul>
-<div class="section" id="modeling-figure-ground">
-<h4>5.3.6.4.1. modeling figure-ground<a class="headerlink" href="#modeling-figure-ground" title="Permalink to this headline">¶</a></h4>
+<section id="modeling-figure-ground">
+<h4><span class="section-number">5.3.6.4.1. </span>modeling figure-ground<a class="headerlink" href="#modeling-figure-ground" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>figure is closer, ground background - affects perception</p></li>
 <li><p>figure/ground datasets</p></li>
@@ -2115,10 +2432,10 @@
 </ul>
 </li>
 </ul>
-</div>
-</div>
-<div class="section" id="single-view-3d-construction">
-<h3>5.3.6.5. single-view 3d construction<a class="headerlink" href="#single-view-3d-construction" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="single-view-3d-construction">
+<h3><span class="section-number">5.3.6.5. </span>single-view 3d construction<a class="headerlink" href="#single-view-3d-construction" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>useful for planning, depth, etc.</p></li>
 <li><p>different levels of output (increasing complexity)</p>
@@ -2147,9 +2464,9 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="unsupervised-keypoint-learning">
-<h3>5.3.6.6. unsupervised keypoint learning<a class="headerlink" href="#unsupervised-keypoint-learning" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="unsupervised-keypoint-learning">
+<h3><span class="section-number">5.3.6.6. </span>unsupervised keypoint learning<a class="headerlink" href="#unsupervised-keypoint-learning" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/2106.07643">Unsupervised Learning of Visual 3D Keypoints for Control</a> (chen, abbeel, &amp; pathak, 2021) - learn keypoints unsupervised from video</p></li>
 <li><p><a class="reference external" href="https://tomasjakab.github.io/KeypointDeformer/">KeypointDeformer: Unsupervised 3D Keypoint Discovery for Shape Control</a> (jakab…kanazawa, 2021) - learn to predict keypoints completely unsupervised</p>
@@ -2165,9 +2482,9 @@
 </ul>
 </li>
 </ul>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -2191,41 +2508,53 @@
 
               </div>
               
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="nlp.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">5.2. </span>nlp</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="structure_ml.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">5.4. </span>structure learning</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
         </div>
     </div>
-    
-    
-    <div class='prev-next-bottom'>
-        
-    <a class='left-prev' id="prev-link" href="nlp.html" title="previous page">5.2. nlp</a>
-    <a class='right-next' id="next-link" href="structure_ml.html" title="next page">5.4. structure learning</a>
-
-    </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Chandan Singh<br/>
+  
+      &copy; Copyright None.<br/>
+    <div class="extra_footer">
       <p>
-        
-          By Chandan Singh<br/>
-        
-            &copy; Copyright None.<br/>
-          <div class="extra_footer">
-            <p>
 Many of these images are taken from resources on the web.
 </p>
-          </div>
-      </p>
     </div>
-  </footer>
-</main>
+</p>
+        </footer>
+    </div>
+    
+</div>
 
 
       </div>
     </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-    
-  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
 
-
-    
   </body>
 </html>

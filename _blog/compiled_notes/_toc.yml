@@ -1,5 +1,8 @@
-- file: intro
+format: jb-article
+root: intro
+options:
   numbered: true
+sections:
 - file: notes/research_ovws/research_ovws.md
   sections:
   - file: notes/research_ovws/ovw_comp_neuro.md

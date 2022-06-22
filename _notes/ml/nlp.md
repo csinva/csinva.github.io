@@ -113,3 +113,32 @@ Some notes on natural language processing, focused on modern improvements based 
   - [XLNet](https://arxiv.org/abs/1906.08237)
   - [roberta](https://arxiv.org/abs/1907.11692)
 - these ideas are [starting to be applied to vision cnns](https://arxiv.org/abs/1904.09925)
+
+
+
+# interpretable nlp
+
+- [skip-gram model](https://arxiv.org/abs/1301.3781) (mikolov et al. 2013) - simplifies neural language models for efficient training of word embeddings
+  - maximizing the probabilities of words being predicted by their context words
+- [Neural Bag-of-Ngrams](https://www.aaai.org/ocs/index.php/AAAI/AAAI17/paper/download/14513/14079) (li et al. 2017) - learn ngram repr. via deep version of skip-gram
+- [fasttext](https://www.ijcai.org/Proceedings/16/Papers/401.pdf) (jin et al. 2016)
+- [Improving N-gram Language Models with Pre-trained Deep Transformer](https://arxiv.org/abs/1911.10235) (wang et al. 2019) - use transformer to generate synthetic data for n-gram model
+
+# huggingface tutorial
+
+Broadly, models can be grouped into three categories:
+
+- GPT-like (also called *auto-regressive* Transformer models)
+- BERT-like (also called *auto-encoding* Transformer models)
+- BART/T5-like (also called *sequence-to-sequence* Transformer models)
+
+- [Tokenizers - Hugging Face Course](https://huggingface.co/course/chapter2/4?fw=pt)
+  - word-based
+    - punctuation splitting
+    - need to do stemming (e.g. "dog" and "dogs")
+    - unknown token [UNK] for anything not seen - to reduce the amount of this, can get character-based tokens
+  - subword-based - break apart meaningful subparts of words
+  - character-based - very little prior
+  - many more (e.g. byte-level BPE, used in GPT-2)
+- [Handling multiple sequences - Hugging Face Course](https://huggingface.co/course/chapter2/5?fw=pt)
+  - pad sequences to have the same length (need to modify attention masks to ignore the padded values)

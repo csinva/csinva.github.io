@@ -1,12 +1,16 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>4.1. graphical models</title>
     
-  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -16,88 +20,110 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-  <link rel="stylesheet"
-    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
-
-    
-    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
-    <script type="text/javascript" src="../../_static/togglebutton.js"></script>
-    <script type="text/javascript" src="../../_static/clipboard.min.js"></script>
-    <script type="text/javascript" src="../../_static/copybutton.js"></script>
-    <script type="text/javascript">var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script type="text/javascript" src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-    <script async="async" type="text/javascript" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script type="text/javascript">
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="4.2. data analysis" href="data_analysis.html" />
     <link rel="prev" title="4. stat" href="stat.html" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
 
-
-
+    <!-- Google Analytics -->
+    
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="../../index.html">
-  
-  <img src="../../_static/logo.png" class="logo" alt="logo">
-  
-  
-</a>
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+    </a>
 </div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../intro.html">
-   overview 👋
-  </a>
- </li>
-</ul>
-<ul class="current nav sidenav_l1">
- <li class="toctree-l1 collapsible-parent">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    overview 👋
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../research_ovws/research_ovws.html">
    1. research_ovws
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_comp_neuro.html">
      1.1. comp neuro
@@ -169,14 +195,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../cs/cs.html">
    2. cs
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../cs/retrieval.html">
      2.1. info retrieval
@@ -213,44 +242,37 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../cs/databases.html">
-     2.8. overview
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cs/databases.html#sql">
-     2.9. sql
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../cs/os.html">
-     2.10. os
+     2.8. os
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../cs/arch.html">
-     2.11. architecture
+     2.9. architecture
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../cs/reproducibility.html">
-     2.12. reproducibility
+     2.10. reproducibility
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../cs/comp_theory.html">
-     2.13. cs theory
+     2.11. cs theory
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../math/math.html">
    3. math
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../math/differential_equations.html">
      3.1. differential equations
@@ -297,14 +319,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 current active collapsible-parent">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="stat.html">
    4. stat
   </a>
-  <ul class="current collapse-ul">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      4.1. graphical models
@@ -346,14 +371,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../ml/ml.html">
    5. ml
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/kernels.html">
      5.1. kernels
@@ -405,14 +433,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../ai/ai.html">
    6. ai
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/search.html">
      6.1. search
@@ -459,14 +490,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../neuro/neuro.html">
    7. neuro
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../neuro/disease.html">
      7.1. disease
@@ -508,92 +542,152 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
 </ul>
 
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
     </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/notes/stat/graphical_models.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-        <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/csinva/csinva.github.io"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        
-        
-    </div>
-</div>
-
-
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                title="Fullscreen mode"><i
-                    class="fas fa-expand"></i></button></a>
-
-        <!-- Launch buttons -->
-
-    </div>
-
-    <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
-        
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
         </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/csinva/csinva.github.io"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/notes/stat/graphical_models.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#overview">
    4.1.1. overview
@@ -692,20 +786,134 @@
  </li>
 </ul>
 
-        </nav>
-        
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>graphical models</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview">
+   4.1.1. overview
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bayesian-networks-r-n-14-1-5-j-2">
+   4.1.2. bayesian networks - R &amp; N 14.1-5 + J 2
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hybrid-bn-both-continuous-discrete-vars">
+     4.1.2.1. hybrid BN (both continuous &amp; discrete vars)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exact-inference">
+     4.1.2.2. exact inference
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#approximate-inferences-in-bns">
+     4.1.2.3. approximate inferences in BNs
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conditional-independence-properties">
+     4.1.2.4. conditional independence properties
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#undirected">
+   4.1.3. undirected
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#elimination-j-3">
+   4.1.4. elimination - J 3
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#propagation-factor-graphs-j-4">
+   4.1.5. propagation factor graphs - J 4
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#probabilistic-inference-on-trees">
+     4.1.5.1. probabilistic inference on trees
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#factor-graphs">
+     4.1.5.2. factor graphs
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#maximum-a-posteriori-map">
+     4.1.5.3. maximum a posteriori (MAP)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dynamic-bayesian-nets">
+   4.1.6. dynamic bayesian nets
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#state-space-model">
+     4.1.6.1. state space model
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hmm">
+     4.1.6.2. hmm
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#kalman-filtering">
+     4.1.6.3. kalman filtering
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#general-dbns">
+     4.1.6.4. general dbns
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#structure-learning">
+   4.1.7. structure learning
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="section" id="graphical-models">
-<h1>4.1. graphical models<a class="headerlink" href="#graphical-models" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="graphical-models">
+<h1><span class="section-number">4.1. </span>graphical models<a class="headerlink" href="#graphical-models" title="Permalink to this headline">#</a></h1>
 <p><em>Material from Russell and Norvig “Artifical Intelligence” 3rd Edition</em> and <em>Jordan “Graphical Models”</em></p>
-<div class="section" id="overview">
-<h2>4.1.1. overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<section id="overview">
+<h2><span class="section-number">4.1.1. </span>overview<a class="headerlink" href="#overview" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>network types</p>
 <ol class="simple">
@@ -734,9 +942,9 @@
 <ul class="simple">
 <li><p>dark is observed for HMMs, for other things unclear what it means</p></li>
 </ul>
-</div>
-<div class="section" id="bayesian-networks-r-n-14-1-5-j-2">
-<h2>4.1.2. bayesian networks - R &amp; N 14.1-5 + J 2<a class="headerlink" href="#bayesian-networks-r-n-14-1-5-j-2" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="bayesian-networks-r-n-14-1-5-j-2">
+<h2><span class="section-number">4.1.2. </span>bayesian networks - R &amp; N 14.1-5 + J 2<a class="headerlink" href="#bayesian-networks-r-n-14-1-5-j-2" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>examples</p>
 <ol class="simple">
@@ -777,8 +985,8 @@
 </ul>
 </li>
 </ul>
-<div class="section" id="hybrid-bn-both-continuous-discrete-vars">
-<h3>4.1.2.1. hybrid BN (both continuous &amp; discrete vars)<a class="headerlink" href="#hybrid-bn-both-continuous-discrete-vars" title="Permalink to this headline">¶</a></h3>
+<section id="hybrid-bn-both-continuous-discrete-vars">
+<h3><span class="section-number">4.1.2.1. </span>hybrid BN (both continuous &amp; discrete vars)<a class="headerlink" href="#hybrid-bn-both-continuous-discrete-vars" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>for continuous variables can sometimes discretize</p></li>
 </ul>
@@ -802,9 +1010,9 @@
 <li><p><em>logit distr.</em> - <span class="math notranslate nohighlight">\(P(buys|Cost=c) =s\left(\frac{-2 (\mu - c)}\sigma \right)\)</span>
 - logistic function (sigmoid s) produces thresh</p></li>
 </ol>
-</div>
-<div class="section" id="exact-inference">
-<h3>4.1.2.2. exact inference<a class="headerlink" href="#exact-inference" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="exact-inference">
+<h3><span class="section-number">4.1.2.2. </span>exact inference<a class="headerlink" href="#exact-inference" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>given assignment to <em>evidence variables</em> E, find probs of <em>query variables</em> X</p>
 <ul>
@@ -873,9 +1081,9 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="approximate-inferences-in-bns">
-<h3>4.1.2.3. approximate inferences in BNs<a class="headerlink" href="#approximate-inferences-in-bns" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="approximate-inferences-in-bns">
+<h3><span class="section-number">4.1.2.3. </span>approximate inferences in BNs<a class="headerlink" href="#approximate-inferences-in-bns" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>randomized sampling algorithms = <em>monte carlo</em> algorithms</p></li>
 </ul>
@@ -981,9 +1189,9 @@
 </ul>
 </li>
 </ol>
-</div>
-<div class="section" id="conditional-independence-properties">
-<h3>4.1.2.4. conditional independence properties<a class="headerlink" href="#conditional-independence-properties" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="conditional-independence-properties">
+<h3><span class="section-number">4.1.2.4. </span>conditional independence properties<a class="headerlink" href="#conditional-independence-properties" title="Permalink to this headline">#</a></h3>
 <ul>
 <li><p>multiple, competing explanations (“explaining-away”)</p>
 <p><img alt="" src="../../_images/j2_1.png" /></p>
@@ -1011,10 +1219,10 @@
 </li>
 <li><p><img alt="Screen Shot 2018-09-16 at 7.12.22 PM" src="../../_images/triples.png" /></p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="undirected">
-<h2>4.1.3. undirected<a class="headerlink" href="#undirected" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="undirected">
+<h2><span class="section-number">4.1.3. </span>undirected<a class="headerlink" href="#undirected" title="Permalink to this headline">#</a></h2>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(X_A \perp X_C | X_B\)</span> if the set of nodes <span class="math notranslate nohighlight">\(X_B\)</span> separates the nodes <span class="math notranslate nohighlight">\(X_A\)</span> from <span class="math notranslate nohighlight">\(X_C\)</span></p>
 <p><img alt="Screen Shot 2018-07-24 at 11.16.29 PM" src="../../_images/graph_separation.png" /></p>
@@ -1048,9 +1256,9 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="elimination-j-3">
-<h2>4.1.4. elimination - J 3<a class="headerlink" href="#elimination-j-3" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="elimination-j-3">
+<h2><span class="section-number">4.1.4. </span>elimination - J 3<a class="headerlink" href="#elimination-j-3" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>the elimination algorithm is for <em>probabilistic inference</em></p>
 <ul>
@@ -1125,9 +1333,9 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="propagation-factor-graphs-j-4">
-<h2>4.1.5. propagation factor graphs - J 4<a class="headerlink" href="#propagation-factor-graphs-j-4" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="propagation-factor-graphs-j-4">
+<h2><span class="section-number">4.1.5. </span>propagation factor graphs - J 4<a class="headerlink" href="#propagation-factor-graphs-j-4" title="Permalink to this headline">#</a></h2>
 <ul>
 <li><p><em>tree</em> - undirected graph in which there is exactly one path between any pair of nodes</p>
 <ul>
@@ -1144,8 +1352,8 @@
 </ul>
 </li>
 </ul>
-<div class="section" id="probabilistic-inference-on-trees">
-<h3>4.1.5.1. probabilistic inference on trees<a class="headerlink" href="#probabilistic-inference-on-trees" title="Permalink to this headline">¶</a></h3>
+<section id="probabilistic-inference-on-trees">
+<h3><span class="section-number">4.1.5.1. </span>probabilistic inference on trees<a class="headerlink" href="#probabilistic-inference-on-trees" title="Permalink to this headline">#</a></h3>
 <ul>
 <li><p>eliminate algorithm through message-passing</p>
 <ul class="simple">
@@ -1185,9 +1393,9 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="factor-graphs">
-<h3>4.1.5.2. factor graphs<a class="headerlink" href="#factor-graphs" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="factor-graphs">
+<h3><span class="section-number">4.1.5.2. </span>factor graphs<a class="headerlink" href="#factor-graphs" title="Permalink to this headline">#</a></h3>
 <ul>
 <li><p><em>factor graphs</em> capture factorizations, not conditional independence statements</p>
 <ul>
@@ -1224,9 +1432,9 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="maximum-a-posteriori-map">
-<h3>4.1.5.3. maximum a posteriori (MAP)<a class="headerlink" href="#maximum-a-posteriori-map" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="maximum-a-posteriori-map">
+<h3><span class="section-number">4.1.5.3. </span>maximum a posteriori (MAP)<a class="headerlink" href="#maximum-a-posteriori-map" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>want <span class="math notranslate nohighlight">\(\max_{x_F} p(x_F | \bar{x}_E)\)</span></p></li>
 <li><p>MAP-eliminate algorithm is very similar to before</p>
@@ -1247,15 +1455,15 @@
 </ul>
 </li>
 </ol>
-</div>
-</div>
-<div class="section" id="dynamic-bayesian-nets">
-<h2>4.1.6. dynamic bayesian nets<a class="headerlink" href="#dynamic-bayesian-nets" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="dynamic-bayesian-nets">
+<h2><span class="section-number">4.1.6. </span>dynamic bayesian nets<a class="headerlink" href="#dynamic-bayesian-nets" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p><em>dynamic bayesian nets</em> - represents a temporal prob. model</p></li>
 </ul>
-<div class="section" id="state-space-model">
-<h3>4.1.6.1. state space model<a class="headerlink" href="#state-space-model" title="Permalink to this headline">¶</a></h3>
+<section id="state-space-model">
+<h3><span class="section-number">4.1.6.1. </span>state space model<a class="headerlink" href="#state-space-model" title="Permalink to this headline">#</a></h3>
 <ul>
 <li><p>state space model <img alt="" src="../../_images/j15_1.png" /></p></li>
 <li><p><span class="math notranslate nohighlight">\(P(X_{0:t}, E_{1:t}) = P(X_0) \prod_{i} \underbrace{P(X_i | X_{i-1}) }_{\text{transition model}}  \: \underbrace{P(E_i|X_i)}_{\text{sensor model}}\)</span></p>
@@ -1319,18 +1527,18 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="hmm">
-<h3>4.1.6.2. hmm<a class="headerlink" href="#hmm" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="hmm">
+<h3><span class="section-number">4.1.6.2. </span>hmm<a class="headerlink" href="#hmm" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><strong>state is a single discrete process</strong></p></li>
 <li><p>transitions are all matrices (and no zeros in sensor model)<span class="math notranslate nohighlight">\(\implies\)</span> forward pass is invertible so can use constant space</p></li>
 <li><p><em><strong>online smoothing (with lag)</strong></em></p></li>
 <li><p>ex. robot localization</p></li>
 </ul>
-</div>
-<div class="section" id="kalman-filtering">
-<h3>4.1.6.3. kalman filtering<a class="headerlink" href="#kalman-filtering" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="kalman-filtering">
+<h3><span class="section-number">4.1.6.3. </span>kalman filtering<a class="headerlink" href="#kalman-filtering" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><strong>state is continuous</strong></p></li>
 <li><p>ex. <img alt="" src="../../_images/r15_9.png" /></p></li>
@@ -1367,9 +1575,9 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="general-dbns">
-<h3>4.1.6.4. general dbns<a class="headerlink" href="#general-dbns" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="general-dbns">
+<h3><span class="section-number">4.1.6.4. </span>general dbns<a class="headerlink" href="#general-dbns" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>can be better to decompose state variable into multiple vars</p>
 <ul>
@@ -1398,10 +1606,10 @@
 </ul>
 </li>
 </ul>
-</div>
-</div>
-<div class="section" id="structure-learning">
-<h2>4.1.7. structure learning<a class="headerlink" href="#structure-learning" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="structure-learning">
+<h2><span class="section-number">4.1.7. </span>structure learning<a class="headerlink" href="#structure-learning" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>conditional correlation - inverse covariance matrix = precision matrix</p>
 <ul>
@@ -1414,8 +1622,8 @@
 </ul>
 </li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1439,41 +1647,53 @@
 
               </div>
               
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="stat.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">4. </span>stat</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="data_analysis.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">4.2. </span>data analysis</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
         </div>
     </div>
-    
-    
-    <div class='prev-next-bottom'>
-        
-    <a class='left-prev' id="prev-link" href="stat.html" title="previous page">4. stat</a>
-    <a class='right-next' id="next-link" href="data_analysis.html" title="next page">4.2. data analysis</a>
-
-    </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Chandan Singh<br/>
+  
+      &copy; Copyright None.<br/>
+    <div class="extra_footer">
       <p>
-        
-          By Chandan Singh<br/>
-        
-            &copy; Copyright None.<br/>
-          <div class="extra_footer">
-            <p>
 Many of these images are taken from resources on the web.
 </p>
-          </div>
-      </p>
     </div>
-  </footer>
-</main>
+</p>
+        </footer>
+    </div>
+    
+</div>
 
 
       </div>
     </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-    
-  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
 
-
-    
   </body>
 </html>

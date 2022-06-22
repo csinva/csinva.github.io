@@ -56,7 +56,7 @@ category: research
       - a lot of this comes from hydrogen bonds between pairs (watson-crick edge)
         - other parts of the pairs (e.g. the Hoogsteen- / CH-edge and the sugar edge) can also form bonds
     - tertiary - complete 3d structure (e.g. bends, twists)
-  - ![Screen Shot 2021-12-01 at 6.33.41 PM](../assets/Screen%20Shot%202021-12-01%20at%206.33.41%20PM.png)
+  - ![](../assets/rna_secondary.png)
 - [RNA-Seq - Wikipedia](https://en.wikipedia.org/wiki/RNA-Seq) - RNA-Seq uses next-generation sequencing (NGS) to reveal the presence and quantity of RNA in a biological sample at a given moment, analyzing the continuously changing cellular transcriptome
 
 ## algorithms

@@ -1,12 +1,16 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
-    <title>2.11. architecture</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>2.9. architecture</title>
     
-  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -16,88 +20,110 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-  <link rel="stylesheet"
-    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
-
-    
-    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
-    <script type="text/javascript" src="../../_static/togglebutton.js"></script>
-    <script type="text/javascript" src="../../_static/clipboard.min.js"></script>
-    <script type="text/javascript" src="../../_static/copybutton.js"></script>
-    <script type="text/javascript">var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script type="text/javascript" src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-    <script async="async" type="text/javascript" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script type="text/javascript">
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="2.12. reproducibility" href="reproducibility.html" />
-    <link rel="prev" title="2.10. os" href="os.html" />
-
+    <link rel="next" title="2.10. reproducibility" href="reproducibility.html" />
+    <link rel="prev" title="2.8. os" href="os.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
 
-
-
+    <!-- Google Analytics -->
+    
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="../../index.html">
-  
-  <img src="../../_static/logo.png" class="logo" alt="logo">
-  
-  
-</a>
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+    </a>
 </div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../intro.html">
-   overview 👋
-  </a>
- </li>
-</ul>
-<ul class="current nav sidenav_l1">
- <li class="toctree-l1 collapsible-parent">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    overview 👋
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../research_ovws/research_ovws.html">
    1. research_ovws
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_comp_neuro.html">
      1.1. comp neuro
@@ -169,14 +195,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 current active collapsible-parent">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="cs.html">
    2. cs
   </a>
-  <ul class="current collapse-ul">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="retrieval.html">
      2.1. info retrieval
@@ -213,44 +242,37 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="databases.html">
-     2.8. overview
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="databases.html#sql">
-     2.9. sql
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="os.html">
-     2.10. os
+     2.8. os
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     2.11. architecture
+     2.9. architecture
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="reproducibility.html">
-     2.12. reproducibility
+     2.10. reproducibility
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="comp_theory.html">
-     2.13. cs theory
+     2.11. cs theory
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../math/math.html">
    3. math
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../math/differential_equations.html">
      3.1. differential equations
@@ -297,14 +319,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../stat/stat.html">
    4. stat
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../stat/graphical_models.html">
      4.1. graphical models
@@ -346,14 +371,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../ml/ml.html">
    5. ml
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/kernels.html">
      5.1. kernels
@@ -405,14 +433,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../ai/ai.html">
    6. ai
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/search.html">
      6.1. search
@@ -459,14 +490,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../neuro/neuro.html">
    7. neuro
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../neuro/disease.html">
      7.1. disease
@@ -508,383 +542,734 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
 </ul>
 
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
     </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/notes/cs/arch.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-        <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/csinva/csinva.github.io"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        
-        
-    </div>
-</div>
-
-
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                title="Fullscreen mode"><i
-                    class="fas fa-expand"></i></button></a>
-
-        <!-- Launch buttons -->
-
-    </div>
-
-    <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
-        
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
         </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/csinva/csinva.github.io"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/notes/cs/arch.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#units">
-   2.11.1. units
+   2.9.1. units
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#numbers">
-   2.11.2. numbers
+   2.9.2. numbers
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#x86">
-   2.11.3. x86
+   2.9.3. x86
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#intro-to-c-we-use-ansi-standard">
-   2.11.4. intro to C - we use ANSI standard
+   2.9.4. intro to C - we use ANSI standard
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#compile-steps">
-   2.11.5. compile steps
+   2.9.5. compile steps
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#strings">
-   2.11.6. strings
+   2.9.6. strings
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#memory-in-c">
-   2.11.7. memory in C
+   2.9.7. memory in C
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#call-stack">
-   2.11.8. call stack
+   2.9.8. call stack
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#types">
-   2.11.9. types
+   2.9.9. types
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#boolean-operators">
-   2.11.10. boolean operators
+   2.9.10. boolean operators
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#att-x86-assembly">
-   2.11.11. ATT x86 assembly
+   2.9.11. ATT x86 assembly
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#y86-all-we-use">
-   2.11.12. y86 - all we use
+   2.9.12. y86 - all we use
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#hardware">
-   2.11.13. hardware
+   2.9.13. hardware
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#executing-instructions">
-   2.11.14. executing instructions
+   2.9.14. executing instructions
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#hardware-wires-opq-example">
-   2.11.15. hardware wires - opq example
+   2.9.15. hardware wires - opq example
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#pipelining">
-   2.11.16. pipelining
+   2.9.16. pipelining
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#problems">
-     2.11.16.1. problems
+     2.9.16.1. problems
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#solutions">
-     2.11.16.2. solutions
+     2.9.16.2. solutions
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#real-processors">
-     2.11.16.3. real processors
+     2.9.16.3. real processors
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#memory">
-   2.11.17. memory
+   2.9.17. memory
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#writing">
-     2.11.17.1. writing
+     2.9.17.1. writing
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#cache-anatomy">
-     2.11.17.2. cache anatomy
+     2.9.17.2. cache anatomy
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#optimization">
-   2.11.18. optimization
+   2.9.18. optimization
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exceptions">
-   2.11.19. exceptions
+   2.9.19. exceptions
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#processes">
-   2.11.20. processes
+   2.9.20. processes
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#threads">
-   2.11.21. threads
+   2.9.21. threads
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#system-calls">
-   2.11.22. system calls
+   2.9.22. system calls
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#software-exceptions">
-   2.11.23. software exceptions
+   2.9.23. software exceptions
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#signals-setjmps">
-   2.11.24. signals, setjmps
+   2.9.24. signals, setjmps
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#virtual-memory">
-   2.11.25. virtual memory
+   2.9.25. virtual memory
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#overview">
-   2.11.26. overview
+   2.9.26. overview
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#segments">
-   2.11.27. segments
+   2.9.27. segments
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#quiz-rvw">
-   2.11.28. quiz rvw
+   2.9.28. quiz rvw
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#labs">
-   2.11.29. labs
+   2.9.29. labs
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#strlen">
-     2.11.29.1. strlen
+     2.9.29.1. strlen
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#strsep">
-     2.11.29.2. strsep
+     2.9.29.2. strsep
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#bit-puzzles">
-     2.11.29.3. bit puzzles
+     2.9.29.3. bit puzzles
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#reading">
-   2.11.30. reading
+   2.9.30. reading
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#ch-1-1-7-1-9">
-     2.11.30.1. ch 1 (1.7, 1.9)
+     2.9.30.1. ch 1 (1.7, 1.9)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#ch-2-2-1-2-4-2-2-4-4">
-     2.11.30.2. ch 2 (2.1, 2.4.2, 2.4.4)
+     2.9.30.2. ch 2 (2.1, 2.4.2, 2.4.4)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#ch-3-3-6-3-7">
-     2.11.30.3. ch 3 (3.6, 3.7)
+     2.9.30.3. ch 3 (3.6, 3.7)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id1">
-     2.11.30.4. 4.1,4.2
+     2.9.30.4. 4.1,4.2
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id2">
-     2.11.30.5. 4.3.1-4
+     2.9.30.5. 4.3.1-4
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id3">
-     2.11.30.6. 4.4 pipelining
+     2.9.30.6. 4.4 pipelining
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id4">
-     2.11.30.7. 4.5.3, 4.5.8
+     2.9.30.7. 4.5.3, 4.5.8
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id5">
-     2.11.30.8. 5 - optimization
+     2.9.30.8. 5 - optimization
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id6">
-     2.11.30.9. 6.1.1, 6.2, 6.3
+     2.9.30.9. 6.1.1, 6.2, 6.3
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#cache-memories-writing-cache-friendly-code">
-     2.11.30.10. 6.4, 6.5 - cache memories &amp; writing cache-friendly code
+     2.9.30.10. 6.4, 6.5 - cache memories &amp; writing cache-friendly code
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id7">
-     2.11.30.11. 8.1 Exceptions
+     2.9.30.11. 8.1 Exceptions
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id8">
-     2.11.30.12. 8.2 Processes
+     2.9.30.12. 8.2 Processes
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#system-call-error-handling">
-     2.11.30.13. 8.3 System Call Error Handling
+     2.9.30.13. 8.3 System Call Error Handling
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id9">
-     2.11.30.14. 9-9.5 Virtual Memory
+     2.9.30.14. 9-9.5 Virtual Memory
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#address-translation">
-     2.11.30.15. 9.6 Address Translation
+     2.9.30.15. 9.6 Address Translation
     </a>
    </li>
   </ul>
  </li>
 </ul>
 
-        </nav>
-        
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>architecture</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#units">
+   2.9.1. units
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#numbers">
+   2.9.2. numbers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#x86">
+   2.9.3. x86
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#intro-to-c-we-use-ansi-standard">
+   2.9.4. intro to C - we use ANSI standard
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#compile-steps">
+   2.9.5. compile steps
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#strings">
+   2.9.6. strings
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#memory-in-c">
+   2.9.7. memory in C
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#call-stack">
+   2.9.8. call stack
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#types">
+   2.9.9. types
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#boolean-operators">
+   2.9.10. boolean operators
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#att-x86-assembly">
+   2.9.11. ATT x86 assembly
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#y86-all-we-use">
+   2.9.12. y86 - all we use
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hardware">
+   2.9.13. hardware
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#executing-instructions">
+   2.9.14. executing instructions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hardware-wires-opq-example">
+   2.9.15. hardware wires - opq example
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pipelining">
+   2.9.16. pipelining
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#problems">
+     2.9.16.1. problems
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solutions">
+     2.9.16.2. solutions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#real-processors">
+     2.9.16.3. real processors
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#memory">
+   2.9.17. memory
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#writing">
+     2.9.17.1. writing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cache-anatomy">
+     2.9.17.2. cache anatomy
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#optimization">
+   2.9.18. optimization
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exceptions">
+   2.9.19. exceptions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#processes">
+   2.9.20. processes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#threads">
+   2.9.21. threads
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#system-calls">
+   2.9.22. system calls
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#software-exceptions">
+   2.9.23. software exceptions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#signals-setjmps">
+   2.9.24. signals, setjmps
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#virtual-memory">
+   2.9.25. virtual memory
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview">
+   2.9.26. overview
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#segments">
+   2.9.27. segments
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quiz-rvw">
+   2.9.28. quiz rvw
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#labs">
+   2.9.29. labs
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#strlen">
+     2.9.29.1. strlen
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#strsep">
+     2.9.29.2. strsep
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bit-puzzles">
+     2.9.29.3. bit puzzles
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reading">
+   2.9.30. reading
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ch-1-1-7-1-9">
+     2.9.30.1. ch 1 (1.7, 1.9)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ch-2-2-1-2-4-2-2-4-4">
+     2.9.30.2. ch 2 (2.1, 2.4.2, 2.4.4)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ch-3-3-6-3-7">
+     2.9.30.3. ch 3 (3.6, 3.7)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     2.9.30.4. 4.1,4.2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     2.9.30.5. 4.3.1-4
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     2.9.30.6. 4.4 pipelining
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     2.9.30.7. 4.5.3, 4.5.8
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     2.9.30.8. 5 - optimization
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     2.9.30.9. 6.1.1, 6.2, 6.3
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cache-memories-writing-cache-friendly-code">
+     2.9.30.10. 6.4, 6.5 - cache memories &amp; writing cache-friendly code
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     2.9.30.11. 8.1 Exceptions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     2.9.30.12. 8.2 Processes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#system-call-error-handling">
+     2.9.30.13. 8.3 System Call Error Handling
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     2.9.30.14. 9-9.5 Virtual Memory
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#address-translation">
+     2.9.30.15. 9.6 Address Translation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
   <ul class="simple">
 <li><p>TOC</p></li>
 </ul>
-<div class="section" id="architecture">
-<h1>2.11. architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="units">
-<h2>2.11.1. units<a class="headerlink" href="#units" title="Permalink to this headline">¶</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="architecture">
+<h1><span class="section-number">2.9. </span>architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">#</a></h1>
+<section id="units">
+<h2><span class="section-number">2.9.1. </span>units<a class="headerlink" href="#units" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>we will use only the i versions (don’t have to write i):</p>
 <ul>
@@ -904,9 +1289,9 @@ if you really want performance increase in java, allocate a very large array, th
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="numbers">
-<h2>2.11.2. numbers<a class="headerlink" href="#numbers" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="numbers">
+<h2><span class="section-number">2.9.2. </span>numbers<a class="headerlink" href="#numbers" title="Permalink to this headline">#</a></h2>
 <ul>
 <li><p>0x means hexadecimal</p></li>
 <li><p>0 means octal</p></li>
@@ -1019,9 +1404,9 @@ Cowlishaw encoding: use 3 bits to store a binary digit - inefficient</p>
 </li>
 </ul>
 <p>​</p>
-</div>
-<div class="section" id="x86">
-<h2>2.11.3. x86<a class="headerlink" href="#x86" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="x86">
+<h2><span class="section-number">2.9.3. </span>x86<a class="headerlink" href="#x86" title="Permalink to this headline">#</a></h2>
 <p>Assembly Language - assembler translates text into machine code
 x86 is the type of chip
 8 registers, although you can’t use 2 (stack pointer and base pointer)
@@ -1221,33 +1606,33 @@ pop ebp
 ret
 </pre></div>
 </div>
-</div>
-<div class="section" id="intro-to-c-we-use-ansi-standard">
-<h2>2.11.4. intro to C - we use ANSI standard<a class="headerlink" href="#intro-to-c-we-use-ansi-standard" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">all</span> <span class="n">C</span> <span class="n">is</span> <span class="n">valid</span> <span class="n">C</span><span class="o">++</span>
-<span class="c1">// doesn&#39;t work</span>
-<span class="n">always</span> <span class="n">use</span> <span class="o">+=</span><span class="mi">1</span> <span class="n">not</span> <span class="o">++</span>
-<span class="n">compile</span> <span class="n">with</span> <span class="n">gcc</span> <span class="o">-</span><span class="n">ansi</span> <span class="o">-</span><span class="n">pedantic</span> <span class="o">-</span><span class="n">Wall</span> <span class="o">-</span><span class="n">Werror</span> <span class="n">program</span><span class="p">.</span><span class="na">c</span>
-	<span class="o">-</span><span class="n">Werror</span> <span class="n">will</span> <span class="n">stop</span> <span class="n">the</span> <span class="n">program</span> <span class="n">from</span> <span class="n">compiling</span>
-<span class="n">all</span> <span class="n">variables</span> <span class="n">have</span> <span class="n">to</span> <span class="n">be</span> <span class="n">declared</span> <span class="n">at</span> <span class="n">the</span> <span class="n">top</span>
-	<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span><span class="n">argv</span><span class="o">[]</span><span class="p">){</span>
-		<span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-		<span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">34</span><span class="p">;</span>
-		<span class="kt">int</span> <span class="n">z</span> <span class="o">=</span> <span class="n">y</span><span class="o">*</span><span class="n">y</span><span class="o">/</span><span class="n">x</span><span class="p">;</span>
-		<span class="n">x</span> <span class="o">=</span> <span class="mi">13</span><span class="p">;</span>
-		<span class="kt">int</span> <span class="n">w</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="o">&lt;-</span> <span class="k">this</span> <span class="n">will</span> <span class="n">not</span> <span class="n">work</span>
-	<span class="n">label_name</span><span class="p">:</span>
-		<span class="n">printf</span><span class="p">(</span><span class="s">&quot;omg!&quot;</span><span class="p">);</span>
-		<span class="k">goto</span> <span class="n">label_name</span><span class="p">;</span> <span class="cm">/*this goes to the label_name line - don&#39;t do this, but assembly only has this*/</span>
-		<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-	<span class="p">}</span>
-<span class="n">printf</span><span class="p">(</span><span class="kd">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">format</span><span class="p">,</span> <span class="p">...)</span>
-	<span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d %f %g %s\n&quot;</span><span class="p">,);</span> <span class="cm">/* int, double (these must be explicitly doubles), double (as small as possible), string */</span>
+</section>
+<section id="intro-to-c-we-use-ansi-standard">
+<h2><span class="section-number">2.9.4. </span>intro to C - we use ANSI standard<a class="headerlink" href="#intro-to-c-we-use-ansi-standard" title="Permalink to this headline">#</a></h2>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">all</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">valid</span><span class="w"> </span><span class="n">C</span><span class="o">++</span><span class="w"></span>
+<span class="c1">// doesn&#39;t work</span><span class="w"></span>
+<span class="n">always</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="o">+=</span><span class="mi">1</span><span class="w"> </span><span class="n">not</span><span class="w"> </span><span class="o">++</span><span class="w"></span>
+<span class="n">compile</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">gcc</span><span class="w"> </span><span class="o">-</span><span class="n">ansi</span><span class="w"> </span><span class="o">-</span><span class="n">pedantic</span><span class="w"> </span><span class="o">-</span><span class="n">Wall</span><span class="w"> </span><span class="o">-</span><span class="n">Werror</span><span class="w"> </span><span class="n">program</span><span class="p">.</span><span class="na">c</span><span class="w"></span>
+<span class="w">	</span><span class="o">-</span><span class="n">Werror</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">stop</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">program</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">compiling</span><span class="w"></span>
+<span class="n">all</span><span class="w"> </span><span class="n">variables</span><span class="w"> </span><span class="n">have</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">declared</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">top</span><span class="w"></span>
+<span class="w">	</span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="n">argv</span><span class="o">[]</span><span class="p">){</span><span class="w"></span>
+<span class="w">		</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">		</span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">34</span><span class="p">;</span><span class="w"></span>
+<span class="w">		</span><span class="kt">int</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="o">*</span><span class="n">y</span><span class="o">/</span><span class="n">x</span><span class="p">;</span><span class="w"></span>
+<span class="w">		</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">13</span><span class="p">;</span><span class="w"></span>
+<span class="w">		</span><span class="kt">int</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">not</span><span class="w"> </span><span class="n">work</span><span class="w"></span>
+<span class="w">	</span><span class="n">label_name</span><span class="p">:</span><span class="w"></span>
+<span class="w">		</span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;omg!&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">		</span><span class="k">goto</span><span class="w"> </span><span class="n">label_name</span><span class="p">;</span><span class="w"> </span><span class="cm">/*this goes to the label_name line - don&#39;t do this, but assembly only has this*/</span><span class="w"></span>
+<span class="w">		</span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="p">}</span><span class="w"></span>
+<span class="n">printf</span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">format</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span><span class="w"></span>
+<span class="w">	</span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d %f %g %s\n&quot;</span><span class="p">,);</span><span class="w"> </span><span class="cm">/* int, double (these must be explicitly doubles), double (as small as possible), string */</span><span class="w"></span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="compile-steps">
-<h2>2.11.5. compile steps<a class="headerlink" href="#compile-steps" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="compile-steps">
+<h2><span class="section-number">2.9.5. </span>compile steps<a class="headerlink" href="#compile-steps" title="Permalink to this headline">#</a></h2>
 <p>source (text) -&gt; pre-processor -&gt; modified source (text) -&gt; compiler -&gt; assembly (text) -&gt; assembler -&gt; binary program -&gt; linker -&gt; executable</p>
 <ol class="simple">
 <li><p>pre-processing - deals with hashtags - sets up line numbers for errors, includes external definitions, normal defines (.i)</p></li>
@@ -1259,9 +1644,9 @@ ret
 <li><p>assemble - turns assembly into binary with a lot of wrappers (.o)</p></li>
 <li><p>link - makes the file executable, gets the code from includes together (a.out)</p></li>
 </ol>
-</div>
-<div class="section" id="strings">
-<h2>2.11.6. strings<a class="headerlink" href="#strings" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="strings">
+<h2><span class="section-number">2.9.6. </span>strings<a class="headerlink" href="#strings" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>char - number that fits in 1 byte</p></li>
 <li><p>string is an array of chars: char*</p></li>
@@ -1271,9 +1656,9 @@ ret
 <p>h|e|l|l|o|\0
 -|
 10|.|.|.|.|15</p>
-</div>
-<div class="section" id="memory-in-c">
-<h2>2.11.7. memory in C<a class="headerlink" href="#memory-in-c" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="memory-in-c">
+<h2><span class="section-number">2.9.7. </span>memory in C<a class="headerlink" href="#memory-in-c" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>byte is smallest accessible memory unit - 2 hex digits (ex: 0x3a)</p></li>
 </ul>
@@ -1285,17 +1670,17 @@ ret
 8 | byte | 64 | quad word</p></li>
 </ul>
 <p>theoretically would work:</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">Void</span> <span class="o">*</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">3</span> <span class="p">(</span><span class="n">address</span> <span class="mi">3</span><span class="p">)</span>
-<span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="mh">0x3a</span> <span class="p">(</span><span class="n">value</span> <span class="mi">3</span><span class="n">a</span><span class="p">)</span>
-<span class="n">p</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="mh">0x3a</span> <span class="p">(</span><span class="n">value</span> <span class="mi">3</span><span class="n">a</span><span class="p">)</span>
-<span class="n">p</span><span class="o">[</span><span class="mi">3</span><span class="o">]</span> <span class="n">is</span> <span class="n">same</span> <span class="n">as</span> <span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span> <span class="o">-</span> <span class="n">can</span> <span class="n">even</span> <span class="n">use</span> <span class="n">negative</span> <span class="n">addresses</span><span class="p">,</span> <span class="p">(</span><span class="n">at</span> <span class="n">end</span> <span class="n">wraps</span> <span class="n">around</span> <span class="o">-</span> <span class="n">overflows</span><span class="p">)</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">Void</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">(</span><span class="n">address</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"></span>
+<span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x3a</span><span class="w"> </span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="mi">3</span><span class="n">a</span><span class="p">)</span><span class="w"></span>
+<span class="n">p</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x3a</span><span class="w"> </span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="mi">3</span><span class="n">a</span><span class="p">)</span><span class="w"></span>
+<span class="n">p</span><span class="o">[</span><span class="mi">3</span><span class="o">]</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">same</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">even</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">negative</span><span class="w"> </span><span class="n">addresses</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">at</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="n">wraps</span><span class="w"> </span><span class="n">around</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">overflows</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
 <p>in practice:</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="o">*</span> <span class="n">p</span>
-<span class="nf">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">,</span> <span class="n">but</span> <span class="n">all</span> <span class="n">pointers</span> <span class="n">are</span> <span class="n">just</span> <span class="n">one</span> <span class="kt">byte</span> <span class="o">-</span> <span class="n">points</span> <span class="n">to</span> <span class="n">location</span> <span class="n">of</span> <span class="n">four</span> <span class="n">consecutive</span> <span class="n">bytes</span> <span class="n">that</span> <span class="n">are</span> <span class="kt">int</span>
-<span class="n">indexing</span> <span class="k">this</span> <span class="n">pointer</span> <span class="n">will</span> <span class="n">tell</span> <span class="n">you</span> <span class="n">how</span> <span class="n">much</span> <span class="n">to</span> <span class="n">offset</span> <span class="n">memory</span> <span class="n">by</span>
-<span class="n">address</span> <span class="n">must</span> <span class="n">be</span> <span class="mi">4</span><span class="o">-</span><span class="n">bytes</span> <span class="nf">aligned</span> <span class="p">(</span><span class="n">means</span> <span class="n">it</span> <span class="n">will</span> <span class="n">be</span> <span class="n">a</span> <span class="n">multiple</span> <span class="n">of</span> <span class="mi">4</span><span class="p">)</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">p</span><span class="w"></span>
+<span class="nf">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="n">but</span><span class="w"> </span><span class="n">all</span><span class="w"> </span><span class="n">pointers</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">just</span><span class="w"> </span><span class="n">one</span><span class="w"> </span><span class="kt">byte</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">points</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">location</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">four</span><span class="w"> </span><span class="n">consecutive</span><span class="w"> </span><span class="n">bytes</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="kt">int</span><span class="w"></span>
+<span class="n">indexing</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="n">pointer</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">tell</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">how</span><span class="w"> </span><span class="n">much</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">offset</span><span class="w"> </span><span class="n">memory</span><span class="w"> </span><span class="n">by</span><span class="w"></span>
+<span class="n">address</span><span class="w"> </span><span class="n">must</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="mi">4</span><span class="o">-</span><span class="n">bytes</span><span class="w"> </span><span class="nf">aligned</span><span class="w"> </span><span class="p">(</span><span class="n">means</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">multiple</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -1306,9 +1691,9 @@ ret
 <li><p>top has the os - will throw error if accessed</p></li>
 <li><p>contains heap, stack, code globals, shared stuff</p></li>
 </ul>
-</div>
-<div class="section" id="call-stack">
-<h2>2.11.8. call stack<a class="headerlink" href="#call-stack" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="call-stack">
+<h2><span class="section-number">2.9.8. </span>call stack<a class="headerlink" href="#call-stack" title="Permalink to this headline">#</a></h2>
 <ol class="simple">
 <li><p>return address</p></li>
 <li><p>local variables</p></li>
@@ -1337,9 +1722,9 @@ ret
 <ul class="simple">
 <li><p>in practice, most parameters and return values are put in registers</p></li>
 </ul>
-</div>
-<div class="section" id="types">
-<h2>2.11.9. types<a class="headerlink" href="#types" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="types">
+<h2><span class="section-number">2.9.9. </span>types<a class="headerlink" href="#types" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>2’s complement: positive normal, negative subtract 1 more than biggest number you can do</p>
 <ul>
@@ -1359,9 +1744,9 @@ long long | signed | 64</p></li>
 <li><p>everything can have an unsigned / signed in front of the type</p></li>
 <li><p>C will cast things without throwing error</p></li>
 </ul>
-</div>
-<div class="section" id="boolean-operators">
-<h2>2.11.10. boolean operators<a class="headerlink" href="#boolean-operators" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="boolean-operators">
+<h2><span class="section-number">2.9.10. </span>boolean operators<a class="headerlink" href="#boolean-operators" title="Permalink to this headline">#</a></h2>
 <ul>
 <li><p>9 = 1001 = 1.001 x 2^3</p></li>
 <li><p>x &amp;&amp; y -&gt; {0,1}</p></li>
@@ -1389,9 +1774,9 @@ x &amp; ~((1 &lt;&lt; 3 )-1)	gives us x1x2…..000</p></li>
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="att-x86-assembly">
-<h2>2.11.11. ATT x86 assembly<a class="headerlink" href="#att-x86-assembly" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="att-x86-assembly">
+<h2><span class="section-number">2.9.11. </span>ATT x86 assembly<a class="headerlink" href="#att-x86-assembly" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>there are 2 hardwares</p>
 <ul>
@@ -1493,9 +1878,9 @@ cmp</p></li>
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="y86-all-we-use">
-<h2>2.11.12. y86 - all we use<a class="headerlink" href="#y86-all-we-use" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="y86-all-we-use">
+<h2><span class="section-number">2.9.12. </span>y86 - all we use<a class="headerlink" href="#y86-all-we-use" title="Permalink to this headline">#</a></h2>
 <ol class="simple">
 <li><p>halt - stops the chip</p></li>
 <li><p>nop - do nothing</p></li>
@@ -1628,9 +2013,9 @@ cmp</p></li>
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="hardware">
-<h2>2.11.13. hardware<a class="headerlink" href="#hardware" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="hardware">
+<h2><span class="section-number">2.9.13. </span>hardware<a class="headerlink" href="#hardware" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>flows when control is high</p></li>
 <li><p>power - everything loses power by creating heat (every gate consumes power)</p>
@@ -1658,9 +2043,9 @@ guard:value;
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="executing-instructions">
-<h2>2.11.14. executing instructions<a class="headerlink" href="#executing-instructions" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="executing-instructions">
+<h2><span class="section-number">2.9.14. </span>executing instructions<a class="headerlink" href="#executing-instructions" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>we have wires</p></li>
 </ul>
@@ -1691,14 +2076,14 @@ icode = i10bytes[4..8] - little endian values, one byte at a time - this grabs B
 </li>
 <li><p>assume icode was b (in reality, this must be picked with a mux)</p></li>
 </ul>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span>	<span class="n">valA</span> 	<span class="o">&lt;-</span> <span class="n">R</span><span class="o">[</span><span class="mi">4</span><span class="o">]</span> 		<span class="c1">// gets %rsp - rsp is 4th register</span>
-	<span class="n">rA</span><span class="p">:</span><span class="n">rB</span>	<span class="o">&lt;-</span> <span class="n">M_1</span><span class="o">[</span><span class="n">PC</span><span class="o">+</span><span class="mi">1</span><span class="o">]</span>	<span class="c1">// book&#39;s notation - splits up a byte into 2 halves, 1 byte in rA, 1 byte in rB, PC+1 because we want second byte</span>
-							<span class="c1">// 3 is loaded into rA, F is loaded into rB</span>
-	<span class="n">valE</span> 	<span class="o">&lt;-</span> <span class="n">valE</span><span class="o">+</span><span class="mi">8</span>		<span class="c1">// inc rsp by 8</span>
-	<span class="n">valM</span> 	<span class="o">&lt;-</span> <span class="n">M_8</span><span class="o">[</span><span class="n">valA</span><span class="o">]</span> 	<span class="c1">// send %rsp to </span>
-	<span class="n">R</span><span class="o">[</span><span class="n">rA</span><span class="o">]</span> 	<span class="o">&lt;-</span> <span class="n">valM</span>			<span class="c1">// writes to %rbx </span>
-	<span class="n">R</span><span class="o">[</span><span class="mi">4</span><span class="o">]</span>	<span class="o">&lt;-</span> <span class="n">valE</span>			<span class="c1">// writes to %rsp</span>
-	<span class="n">p_pc</span>	<span class="o">=</span>  <span class="n">P_pc</span><span class="o">+</span><span class="mi">2</span>		<span class="c1">// increment PC	by 2 because popq is 2-byte instruction	</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="w">	</span><span class="n">valA</span><span class="w"> 	</span><span class="o">&lt;-</span><span class="w"> </span><span class="n">R</span><span class="o">[</span><span class="mi">4</span><span class="o">]</span><span class="w"> 		</span><span class="c1">// gets %rsp - rsp is 4th register</span><span class="w"></span>
+<span class="w">	</span><span class="n">rA</span><span class="p">:</span><span class="n">rB</span><span class="w">	</span><span class="o">&lt;-</span><span class="w"> </span><span class="n">M_1</span><span class="o">[</span><span class="n">PC</span><span class="o">+</span><span class="mi">1</span><span class="o">]</span><span class="w">	</span><span class="c1">// book&#39;s notation - splits up a byte into 2 halves, 1 byte in rA, 1 byte in rB, PC+1 because we want second byte</span><span class="w"></span>
+<span class="w">							</span><span class="c1">// 3 is loaded into rA, F is loaded into rB</span><span class="w"></span>
+<span class="w">	</span><span class="n">valE</span><span class="w"> 	</span><span class="o">&lt;-</span><span class="w"> </span><span class="n">valE</span><span class="o">+</span><span class="mi">8</span><span class="w">		</span><span class="c1">// inc rsp by 8</span><span class="w"></span>
+<span class="w">	</span><span class="n">valM</span><span class="w"> 	</span><span class="o">&lt;-</span><span class="w"> </span><span class="n">M_8</span><span class="o">[</span><span class="n">valA</span><span class="o">]</span><span class="w"> 	</span><span class="c1">// send %rsp to </span><span class="w"></span>
+<span class="w">	</span><span class="n">R</span><span class="o">[</span><span class="n">rA</span><span class="o">]</span><span class="w"> 	</span><span class="o">&lt;-</span><span class="w"> </span><span class="n">valM</span><span class="w">			</span><span class="c1">// writes to %rbx </span><span class="w"></span>
+<span class="w">	</span><span class="n">R</span><span class="o">[</span><span class="mi">4</span><span class="o">]</span><span class="w">	</span><span class="o">&lt;-</span><span class="w"> </span><span class="n">valE</span><span class="w">			</span><span class="c1">// writes to %rsp</span><span class="w"></span>
+<span class="w">	</span><span class="n">p_pc</span><span class="w">	</span><span class="o">=</span><span class="w">  </span><span class="n">P_pc</span><span class="o">+</span><span class="mi">2</span><span class="w">		</span><span class="c1">// increment PC	by 2 because popq is 2-byte instruction	</span><span class="w"></span>
 </pre></div>
 </div>
 </li>
@@ -1737,9 +2122,9 @@ push
 - writes read value to new rsp address
 </pre></div>
 </div>
-</div>
-<div class="section" id="hardware-wires-opq-example">
-<h2>2.11.15. hardware wires - opq example<a class="headerlink" href="#hardware-wires-opq-example" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="hardware-wires-opq-example">
+<h2><span class="section-number">2.9.15. </span>hardware wires - opq example<a class="headerlink" href="#hardware-wires-opq-example" title="Permalink to this headline">#</a></h2>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span>## fetch
 ## 1. set pc
 ## 1.a. make a register to store the next PC
@@ -1821,9 +2206,9 @@ wvalE = [
 q_pc = valP; 
 </pre></div>
 </div>
-</div>
-<div class="section" id="pipelining">
-<h2>2.11.16. pipelining<a class="headerlink" href="#pipelining" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="pipelining">
+<h2><span class="section-number">2.9.16. </span>pipelining<a class="headerlink" href="#pipelining" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>nonuniform partitioning - stages don’t all take same amount of time</p></li>
 <li><p>register - changes on the clock</p>
@@ -1854,9 +2239,9 @@ q_pc = valP;
 <li><p>stalling a pipeline = stalling a stage</p></li>
 <li><p>bubbling a pipeline - bubble all stages</p></li>
 </ul>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">irmovq</span>	 	<span class="n">$31</span><span class="p">,</span> <span class="o">%</span><span class="n">rax</span>
-<span class="n">addq</span> 		<span class="n">$rax</span><span class="p">,</span><span class="o">%</span><span class="n">rax</span>
-<span class="n">jle</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">irmovq</span><span class="w">	 	</span><span class="n">$31</span><span class="p">,</span><span class="w"> </span><span class="o">%</span><span class="n">rax</span><span class="w"></span>
+<span class="n">addq</span><span class="w"> 		</span><span class="n">$rax</span><span class="p">,</span><span class="o">%</span><span class="n">rax</span><span class="w"></span>
+<span class="n">jle</span><span class="w"></span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -1869,8 +2254,8 @@ q_pc = valP;
 </li>
 <li><p>look at online notes - save everything in register that needs to be used later</p></li>
 </ul>
-<div class="section" id="problems">
-<h3>2.11.16.1. problems<a class="headerlink" href="#problems" title="Permalink to this headline">¶</a></h3>
+<section id="problems">
+<h3><span class="section-number">2.9.16.1. </span>problems<a class="headerlink" href="#problems" title="Permalink to this headline">#</a></h3>
 <ol class="simple">
 <li><p>dependencies - outcome of one instruction depends on the outcome of another - in the software</p>
 <ol class="simple">
@@ -1889,9 +2274,9 @@ q_pc = valP;
 </ul>
 </li>
 </ol>
-</div>
-<div class="section" id="solutions">
-<h3>2.11.16.2. solutions<a class="headerlink" href="#solutions" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="solutions">
+<h3><span class="section-number">2.9.16.2. </span>solutions<a class="headerlink" href="#solutions" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>P is PC, then FDEMW</p></li>
 </ul>
@@ -1915,8 +2300,8 @@ bubble_E = 1;   //completes and then starts a nop, gives it time to write values
 </ul>
 </li>
 </ol>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">subq</span> <span class="o">%</span><span class="n">rax</span><span class="p">,</span><span class="o">%</span><span class="n">rbx</span>
-<span class="n">jge</span> <span class="n">bazzle</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">subq</span><span class="w"> </span><span class="o">%</span><span class="n">rax</span><span class="p">,</span><span class="o">%</span><span class="n">rbx</span><span class="w"></span>
+<span class="n">jge</span><span class="w"> </span><span class="n">bazzle</span><span class="w"></span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -1934,10 +2319,10 @@ bubble_E = 1;   //completes and then starts a nop, gives it time to write values
 <ul class="simple">
 <li><p>Example:</p></li>
 </ul>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>	<span class="n">subq</span>
-<span class="mi">2</span>	<span class="n">jge</span> <span class="mi">4</span>
-<span class="mi">3</span>	<span class="n">ir</span>
-<span class="mi">4</span>	<span class="n">rm</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="w">	</span><span class="n">subq</span><span class="w"></span>
+<span class="mi">2</span><span class="w">	</span><span class="n">jge</span><span class="w"> </span><span class="mi">4</span><span class="w"></span>
+<span class="mi">3</span><span class="w">	</span><span class="n">ir</span><span class="w"></span>
+<span class="mi">4</span><span class="w">	</span><span class="n">rm</span><span class="w"></span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -1950,9 +2335,9 @@ bubble_E = 1;   //completes and then starts a nop, gives it time to write values
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="real-processors">
-<h3>2.11.16.3. real processors<a class="headerlink" href="#real-processors" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="real-processors">
+<h3><span class="section-number">2.9.16.3. </span>real processors<a class="headerlink" href="#real-processors" title="Permalink to this headline">#</a></h3>
 <ol class="simple">
 <li><p>memory is slow and unpredictably slow (10-100 cycles is reasonable)</p></li>
 <li><p>pipelines are generally 10-15 stages (Pentium 4 had 30 stages)</p></li>
@@ -1989,10 +2374,10 @@ bubble_E = 1;   //completes and then starts a nop, gives it time to write values
 </ul>
 </li>
 </ul>
-</div>
-</div>
-<div class="section" id="memory">
-<h2>2.11.17. memory<a class="headerlink" href="#memory" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="memory">
+<h2><span class="section-number">2.9.17. </span>memory<a class="headerlink" href="#memory" title="Permalink to this headline">#</a></h2>
 <ul>
 <li><p>we want highest speed at lowest cost (higher speeds correspond to higher costs)</p></li>
 <li><p>fastest to slowest</p>
@@ -2105,8 +2490,8 @@ bubble_E = 1;   //completes and then starts a nop, gives it time to write values
 </ul>
 </li>
 </ul>
-<div class="section" id="writing">
-<h3>2.11.17.1. writing<a class="headerlink" href="#writing" title="Permalink to this headline">¶</a></h3>
+<section id="writing">
+<h3><span class="section-number">2.9.17.1. </span>writing<a class="headerlink" href="#writing" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>assume write-back, write-allocate cache</p></li>
 </ul>
@@ -2151,9 +2536,9 @@ bubble_E = 1;   //completes and then starts a nop, gives it time to write values
 </ol>
 </li>
 </ul>
-</div>
-<div class="section" id="cache-anatomy">
-<h3>2.11.17.2. cache anatomy<a class="headerlink" href="#cache-anatomy" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="cache-anatomy">
+<h3><span class="section-number">2.9.17.2. </span>cache anatomy<a class="headerlink" href="#cache-anatomy" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>i-cache - holds instructions</p>
 <ul>
@@ -2164,10 +2549,10 @@ bubble_E = 1;   //completes and then starts a nop, gives it time to write values
 <li><p>unified cache - holds both</p></li>
 <li><p>associativity - number of cache lines per set</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="optimization">
-<h2>2.11.18. optimization<a class="headerlink" href="#optimization" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="optimization">
+<h2><span class="section-number">2.9.18. </span>optimization<a class="headerlink" href="#optimization" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>only need to worry about locality for accessing memory</p>
 <ul>
@@ -2178,40 +2563,40 @@ bubble_E = 1;   //completes and then starts a nop, gives it time to write values
 <li><p>some things can’t be optimized because you could pass in the same pointer twice as an argument</p></li>
 <li><p>loop unrolling - often dependencies accross iterations</p></li>
 </ul>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span> <span class="c1">//this line is bookkeeping overhead - want to reduce this</span>
-	<span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]+=</span><span class="mi">1</span><span class="p">;</span> <span class="c1">//has temporal locality because you add and then store back to same address, obviously spatial locality</span>
-<span class="p">}</span>
-<span class="c1">// unrolled</span>
-<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">;</span><span class="n">i</span><span class="o">+=</span><span class="mi">3</span><span class="p">){</span> <span class="c1">//reduced number of comparisons, can also get benefits from vectorization (complicated)</span>
-	<span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]+=</span><span class="mi">1</span><span class="p">;</span>
-	<span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">]+=</span><span class="mi">1</span><span class="p">;</span>
-	<span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="o">]+=</span><span class="mi">1</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="k">if</span><span class="p">(</span><span class="n">n</span><span class="o">%</span><span class="mi">3</span><span class="o">&gt;=</span><span class="mi">1</span><span class="p">)</span> <span class="n">a</span><span class="o">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="o">]+=</span><span class="mi">1</span><span class="p">;</span>
-<span class="k">if</span><span class="p">(</span><span class="n">n</span><span class="o">%</span><span class="mi">2</span><span class="o">&gt;=</span><span class="mi">2</span><span class="p">)</span> <span class="n">a</span><span class="o">[</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="o">]+=</span><span class="mi">1</span><span class="p">;</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span><span class="w"> </span><span class="c1">//this line is bookkeeping overhead - want to reduce this</span><span class="w"></span>
+<span class="w">	</span><span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]+=</span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">//has temporal locality because you add and then store back to same address, obviously spatial locality</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="c1">// unrolled</span><span class="w"></span>
+<span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">;</span><span class="n">i</span><span class="o">+=</span><span class="mi">3</span><span class="p">){</span><span class="w"> </span><span class="c1">//reduced number of comparisons, can also get benefits from vectorization (complicated)</span><span class="w"></span>
+<span class="w">	</span><span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]+=</span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">]+=</span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="o">]+=</span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="k">if</span><span class="p">(</span><span class="n">n</span><span class="o">%</span><span class="mi">3</span><span class="o">&gt;=</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="n">a</span><span class="o">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="o">]+=</span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="k">if</span><span class="p">(</span><span class="n">n</span><span class="o">%</span><span class="mi">2</span><span class="o">&gt;=</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="n">a</span><span class="o">[</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="o">]+=</span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>n%4 = n&amp;3</p></li>
 <li><p>n%8 = n&amp;7s</p></li>
 </ul>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span>	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">+=</span><span class="mi">1</span><span class="p">){</span> <span class="c1">//this can be slower, data dependency between lines might not allow full parallelism (more stalling)</span>
-		<span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]+=</span><span class="mi">1</span><span class="p">;</span>
-		<span class="n">i</span><span class="o">+=</span><span class="mi">1</span><span class="p">;</span>
-		<span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]+=</span><span class="mi">1</span><span class="p">;</span>
-		<span class="n">i</span><span class="o">+=</span><span class="mi">1</span><span class="p">;</span>
-		<span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]+=</span><span class="mi">1</span><span class="p">;</span>
-		<span class="n">i</span><span class="o">+=</span><span class="mi">1</span><span class="p">;</span>
-	<span class="p">}</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="w">	</span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">+=</span><span class="mi">1</span><span class="p">){</span><span class="w"> </span><span class="c1">//this can be slower, data dependency between lines might not allow full parallelism (more stalling)</span><span class="w"></span>
+<span class="w">		</span><span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]+=</span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">		</span><span class="n">i</span><span class="o">+=</span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">		</span><span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]+=</span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">		</span><span class="n">i</span><span class="o">+=</span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">		</span><span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]+=</span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">		</span><span class="n">i</span><span class="o">+=</span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>loop order</p></li>
 <li><p>the order of loops can make this way faster</p></li>
 </ul>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="p">...)</span>
-	<span class="k">for</span><span class="p">(</span><span class="n">j</span><span class="p">...)</span>
-		<span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]+=</span><span class="mi">1</span><span class="p">;</span> <span class="c1">//two memory accesses</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="p">...)</span><span class="w"></span>
+<span class="w">	</span><span class="k">for</span><span class="p">(</span><span class="n">j</span><span class="p">...)</span><span class="w"></span>
+<span class="w">		</span><span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]+=</span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">//two memory accesses</span><span class="w"></span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -2223,9 +2608,9 @@ bubble_E = 1;   //completes and then starts a nop, gives it time to write values
 </li>
 <li><p>problem - loop can’t be picked</p></li>
 </ul>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span>	<span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="p">..)</span>
-		<span class="k">for</span><span class="p">(</span><span class="n">j</span><span class="p">...)</span>
-			<span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]=</span><span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">][</span><span class="n">i</span><span class="o">]</span><span class="p">;</span> 
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="w">	</span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="p">..)</span><span class="w"></span>
+<span class="w">		</span><span class="k">for</span><span class="p">(</span><span class="n">j</span><span class="p">...)</span><span class="w"></span>
+<span class="w">			</span><span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]=</span><span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">][</span><span class="n">i</span><span class="o">]</span><span class="p">;</span><span class="w"> </span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -2237,12 +2622,12 @@ bubble_E = 1;   //completes and then starts a nop, gives it time to write values
 </ul>
 </li>
 </ul>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span>	<span class="kt">int</span> <span class="n">bs</span><span class="o">=</span><span class="mi">8</span><span class="p">;</span>
-	<span class="k">for</span> <span class="p">(</span><span class="n">bx</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">bx</span><span class="o">&lt;</span><span class="n">N</span><span class="p">;</span><span class="n">bx</span><span class="o">+=</span><span class="n">bs</span><span class="p">)</span> <span class="c1">// for each block</span>
-		<span class="k">for</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">by</span><span class="o">&lt;</span><span class="n">N</span><span class="p">;</span><span class="n">by</span><span class="o">+=</span><span class="n">bs</span><span class="p">)</span>
-			<span class="k">for</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">bx</span><span class="p">;</span><span class="n">x</span><span class="o">&lt;</span><span class="n">bx</span><span class="o">+</span><span class="n">bs</span><span class="p">;</span><span class="n">x</span><span class="o">+=</span><span class="mi">1</span><span class="p">)</span> <span class="c1">// for each element of block</span>
-				<span class="k">for</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">by</span><span class="p">;</span><span class="n">y</span><span class="o">&lt;</span><span class="n">by</span><span class="o">+</span><span class="n">bs</span><span class="p">;</span><span class="n">y</span><span class="o">+=</span><span class="mi">1</span><span class="p">)</span>
-					<span class="n">swap</span><span class="p">(</span><span class="n">a</span><span class="o">[</span><span class="n">x</span><span class="o">][</span><span class="n">y</span><span class="o">]</span><span class="p">,</span><span class="n">a</span><span class="o">[</span><span class="n">y</span><span class="o">][</span><span class="n">x</span><span class="o">]</span><span class="p">);</span> <span class="c1">// do stuff</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="w">	</span><span class="kt">int</span><span class="w"> </span><span class="n">bs</span><span class="o">=</span><span class="mi">8</span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">bx</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">bx</span><span class="o">&lt;</span><span class="n">N</span><span class="p">;</span><span class="n">bx</span><span class="o">+=</span><span class="n">bs</span><span class="p">)</span><span class="w"> </span><span class="c1">// for each block</span><span class="w"></span>
+<span class="w">		</span><span class="k">for</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">by</span><span class="o">&lt;</span><span class="n">N</span><span class="p">;</span><span class="n">by</span><span class="o">+=</span><span class="n">bs</span><span class="p">)</span><span class="w"></span>
+<span class="w">			</span><span class="k">for</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">bx</span><span class="p">;</span><span class="n">x</span><span class="o">&lt;</span><span class="n">bx</span><span class="o">+</span><span class="n">bs</span><span class="p">;</span><span class="n">x</span><span class="o">+=</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="c1">// for each element of block</span><span class="w"></span>
+<span class="w">				</span><span class="k">for</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">by</span><span class="p">;</span><span class="n">y</span><span class="o">&lt;</span><span class="n">by</span><span class="o">+</span><span class="n">bs</span><span class="p">;</span><span class="n">y</span><span class="o">+=</span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+<span class="w">					</span><span class="n">swap</span><span class="p">(</span><span class="n">a</span><span class="o">[</span><span class="n">x</span><span class="o">][</span><span class="n">y</span><span class="o">]</span><span class="p">,</span><span class="n">a</span><span class="o">[</span><span class="n">y</span><span class="o">][</span><span class="n">x</span><span class="o">]</span><span class="p">);</span><span class="w"> </span><span class="c1">// do stuff</span><span class="w"></span>
 </pre></div>
 </div>
 <ul>
@@ -2263,9 +2648,9 @@ bubble_E = 1;   //completes and then starts a nop, gives it time to write values
 </li>
 <li><p>using methods can increase your instruction cache hit rate</p></li>
 </ul>
-</div>
-<div class="section" id="exceptions">
-<h2>2.11.19. exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="exceptions">
+<h2><span class="section-number">2.9.19. </span>exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">#</a></h2>
 <ul>
 <li><p>processor is connected to I/O Bridge which is connected to Memory Bus and I/O Bus</p>
 <ul class="simple">
@@ -2358,9 +2743,9 @@ fault,		based on what failed	failing user-mode instruction</p></li>
 </ol>
 </li>
 </ul>
-</div>
-<div class="section" id="processes">
-<h2>2.11.20. processes<a class="headerlink" href="#processes" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="processes">
+<h2><span class="section-number">2.9.20. </span>processes<a class="headerlink" href="#processes" title="Permalink to this headline">#</a></h2>
 <ul>
 <li><p>(user) read file -&gt; (kernel) send request to disk, wait, clean up -&gt; (user) resume</p>
 <ul class="simple">
@@ -2394,9 +2779,9 @@ if(increased a lot) contextSwitches++</p></li>
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="threads">
-<h2>2.11.21. threads<a class="headerlink" href="#threads" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="threads">
+<h2><span class="section-number">2.9.21. </span>threads<a class="headerlink" href="#threads" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>threads are like processes that user code manages, not the kernel</p>
 <ul>
@@ -2412,9 +2797,9 @@ python threads don’t run in parallel</p></li>
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="system-calls">
-<h2>2.11.22. system calls<a class="headerlink" href="#system-calls" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="system-calls">
+<h2><span class="section-number">2.9.22. </span>system calls<a class="headerlink" href="#system-calls" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>how user code asks the kernel to do stuff</p>
 <ul>
@@ -2430,9 +2815,9 @@ python threads don’t run in parallel</p></li>
 </li>
 <li><p>you can write assembly in C code</p></li>
 </ul>
-</div>
-<div class="section" id="software-exceptions">
-<h2>2.11.23. software exceptions<a class="headerlink" href="#software-exceptions" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="software-exceptions">
+<h2><span class="section-number">2.9.23. </span>software exceptions<a class="headerlink" href="#software-exceptions" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>you can throw an exception and then you want to return to something several method calls before you</p></li>
 <li><p>nonlocal jump</p>
@@ -2446,9 +2831,9 @@ python threads don’t run in parallel</p></li>
 <li><p>throw{} - resume</p></li>
 <li><p>hardware exception can freeze state</p></li>
 </ul>
-</div>
-<div class="section" id="signals-setjmps">
-<h2>2.11.24. signals, setjmps<a class="headerlink" href="#signals-setjmps" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="signals-setjmps">
+<h2><span class="section-number">2.9.24. </span>signals, setjmps<a class="headerlink" href="#signals-setjmps" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>exceptions - caused by hardware (mostly), handled by kernel</p></li>
 <li><p>signal - caused by kernel, handled by user code (or kernel)</p>
@@ -2481,9 +2866,9 @@ python threads don’t run in parallel</p></li>
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="virtual-memory">
-<h2>2.11.25. virtual memory<a class="headerlink" href="#virtual-memory" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="virtual-memory">
+<h2><span class="section-number">2.9.25. </span>virtual memory<a class="headerlink" href="#virtual-memory" title="Permalink to this headline">#</a></h2>
 <ul>
 <li><p>2 address spaces</p>
 <ol class="simple">
@@ -2625,9 +3010,9 @@ python threads don’t run in parallel</p></li>
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="overview">
-<h2>2.11.26. overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="overview">
+<h2><span class="section-number">2.9.26. </span>overview<a class="headerlink" href="#overview" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>CPU -&gt; creates virtual address</p></li>
 <li><p>virtual address: 36 bits (VPN), 12 bits (PO) //other bits are disregarded</p></li>
@@ -2649,9 +3034,9 @@ python threads don’t run in parallel</p></li>
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="segments">
-<h2>2.11.27. segments<a class="headerlink" href="#segments" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="segments">
+<h2><span class="section-number">2.9.27. </span>segments<a class="headerlink" href="#segments" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>memory block</p>
 <ul>
@@ -2677,9 +3062,9 @@ val at 0xd3 -&gt; 0x0f
 val at 0xfa -&gt; 0x6b
 val at 0xb6</p>
 <p>[TOC]</p>
-</div>
-<div class="section" id="quiz-rvw">
-<h2>2.11.28. quiz rvw<a class="headerlink" href="#quiz-rvw" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="quiz-rvw">
+<h2><span class="section-number">2.9.28. </span>quiz rvw<a class="headerlink" href="#quiz-rvw" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>commands</p></li>
 <li><p>floats</p></li>
@@ -2706,36 +3091,36 @@ val at 0xb6</p>
 <li><p>fetch determines what the next PC will be</p></li>
 <li><p>fetch reads rA,rB,icode,ifun - decode reads values from these</p></li>
 </ul>
-</div>
-<div class="section" id="labs">
-<h2>2.11.29. labs<a class="headerlink" href="#labs" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="strlen">
-<h3>2.11.29.1. strlen<a class="headerlink" href="#strlen" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">unsigned</span> <span class="kt">int</span> <span class="nf">strlen</span><span class="p">(</span> <span class="kd">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">s</span> <span class="p">){</span>
-	<span class="n">unsigned</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> 
-	<span class="k">while</span><span class="p">(</span><span class="n">s</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">)</span> 
-		<span class="n">i</span><span class="o">++</span><span class="p">;</span> 
-	<span class="k">return</span> <span class="n">i</span><span class="p">;</span>
-<span class="p">}</span>
+</section>
+<section id="labs">
+<h2><span class="section-number">2.9.29. </span>labs<a class="headerlink" href="#labs" title="Permalink to this headline">#</a></h2>
+<section id="strlen">
+<h3><span class="section-number">2.9.29.1. </span>strlen<a class="headerlink" href="#strlen" title="Permalink to this headline">#</a></h3>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">strlen</span><span class="p">(</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="p">){</span><span class="w"></span>
+<span class="w">	</span><span class="n">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span>
+<span class="w">	</span><span class="k">while</span><span class="p">(</span><span class="n">s</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">)</span><span class="w"> </span>
+<span class="w">		</span><span class="n">i</span><span class="o">++</span><span class="p">;</span><span class="w"> </span>
+<span class="w">	</span><span class="k">return</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="strsep">
-<h3>2.11.29.2. strsep<a class="headerlink" href="#strsep" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span> <span class="o">*</span><span class="n">strsep</span><span class="p">(</span> <span class="kt">char</span> <span class="o">**</span><span class="n">stringp</span><span class="p">,</span> <span class="kt">char</span> <span class="n">delim</span> <span class="p">){</span>
-	<span class="kt">char</span> <span class="o">*</span><span class="n">ans</span> <span class="o">=</span> <span class="o">*</span><span class="n">stringp</span><span class="p">;</span>
-	<span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="n">stringp</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> 
-		<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-	<span class="k">while</span> <span class="p">(</span><span class="o">**</span><span class="n">stringp</span> <span class="o">!=</span> <span class="n">delim</span> <span class="o">&amp;&amp;</span> <span class="o">**</span><span class="n">stringp</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="cm">/* don&#39;t need this 0 check, 0 is same as &#39;\0&#39; */</span>
-		<span class="o">*</span><span class="n">stringp</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
-	<span class="k">if</span> <span class="p">(</span><span class="o">**</span><span class="n">stringp</span> <span class="o">==</span> <span class="n">delim</span><span class="p">){</span> 
-		<span class="o">**</span><span class="n">stringp</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-		<span class="o">*</span><span class="n">stringp</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span> 
-	<span class="p">}</span>
-	<span class="k">else</span> 
-		<span class="o">*</span><span class="n">stringp</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> 
-	<span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
-<span class="p">}</span>
+</section>
+<section id="strsep">
+<h3><span class="section-number">2.9.29.2. </span>strsep<a class="headerlink" href="#strsep" title="Permalink to this headline">#</a></h3>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">strsep</span><span class="p">(</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">stringp</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">delim</span><span class="w"> </span><span class="p">){</span><span class="w"></span>
+<span class="w">	</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">ans</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">stringp</span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">stringp</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span>
+<span class="w">		</span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">**</span><span class="n">stringp</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">delim</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">**</span><span class="n">stringp</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="cm">/* don&#39;t need this 0 check, 0 is same as &#39;\0&#39; */</span><span class="w"></span>
+<span class="w">		</span><span class="o">*</span><span class="n">stringp</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">**</span><span class="n">stringp</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">delim</span><span class="p">){</span><span class="w"> </span>
+<span class="w">		</span><span class="o">**</span><span class="n">stringp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">		</span><span class="o">*</span><span class="n">stringp</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span>
+<span class="w">	</span><span class="p">}</span><span class="w"></span>
+<span class="w">	</span><span class="k">else</span><span class="w"> </span>
+<span class="w">		</span><span class="o">*</span><span class="n">stringp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span>
+<span class="w">	</span><span class="k">return</span><span class="w"> </span><span class="n">ans</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>###lists</p>
@@ -2765,39 +3150,39 @@ ans.length = length;</p></li>
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="bit-puzzles">
-<h3>2.11.29.3. bit puzzles<a class="headerlink" href="#bit-puzzles" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// leastBitPos - return a mask that marks the position of the least significant 1 bit</span>
-<span class="kt">int</span> <span class="nf">leastBitPos</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="n">x</span> <span class="o">&amp;</span> <span class="p">(</span><span class="o">~</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="kt">int</span> <span class="nf">bitMask</span><span class="p">(</span><span class="kt">int</span> <span class="n">highbit</span><span class="p">,</span> <span class="kt">int</span> <span class="n">lowbit</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">zeros</span> <span class="o">=</span> <span class="o">~</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">highbit</span><span class="p">;</span> <span class="cm">/* 1100 0000 */</span>
-    <span class="kt">int</span> <span class="n">ones</span> <span class="o">=</span> <span class="o">~</span><span class="mi">0</span> <span class="o">&lt;&lt;</span> <span class="n">lowbit</span><span class="p">;</span>   <span class="cm">/* 1111 1000 */</span>
-    <span class="k">return</span> <span class="o">~</span><span class="n">zeros</span> <span class="o">&amp;</span> <span class="n">ones</span><span class="p">;</span>      <span class="cm">/* 0011 1000 */</span>
-<span class="p">}</span>
-<span class="cm">/* satAdd - adds two numbers but when positive overflow occurs, returns maximum possible value, and when negative overflow occurs, it returns minimum positive value. */</span>
-<span class="c1">// soln - overflow when operands have same sign and sum and operands have different sign</span>
-<span class="kt">int</span> <span class="nf">satAdd</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
-	<span class="kt">int</span> <span class="n">x_is_neg</span> <span class="o">=</span> <span class="n">x</span> <span class="o">&gt;&gt;</span> <span class="mi">31</span><span class="p">;</span>
-	<span class="kt">int</span> <span class="n">y_is_neg</span> <span class="o">=</span> <span class="n">y</span> <span class="o">&gt;&gt;</span> <span class="mi">31</span><span class="p">;</span>
-	<span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">;</span>
-	<span class="kt">int</span> <span class="n">same_sign</span> <span class="o">=</span> <span class="p">(</span><span class="n">x_is_neg</span> <span class="o">&amp;</span> <span class="n">y_is_neg</span>  <span class="o">|</span>  <span class="o">~</span><span class="n">x_is_neg</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">y_is_neg</span><span class="p">);</span>
-	<span class="kt">int</span> <span class="n">overflow</span> <span class="o">=</span> <span class="n">same_sign</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x_is_neg</span> <span class="o">^</span> <span class="p">(</span><span class="n">sum</span> <span class="o">&gt;&gt;</span> <span class="mi">31</span><span class="p">));</span>
-	<span class="kt">int</span> <span class="n">pos_overflow</span> <span class="o">=</span> <span class="n">overflow</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">x_is_neg</span><span class="p">;</span>
-	<span class="kt">int</span> <span class="n">neg</span> <span class="o">=</span> <span class="mh">0x1</span> <span class="o">&lt;&lt;</span> <span class="mi">31</span><span class="p">;</span>
-	<span class="kt">int</span> <span class="n">ans</span> <span class="o">=</span> <span class="o">~</span><span class="n">overflow</span><span class="o">&amp;</span><span class="n">sum</span> <span class="o">|</span> <span class="n">overflow</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">pos_overflow</span><span class="o">&amp;~</span><span class="n">neg</span> <span class="o">|</span> <span class="o">~</span><span class="n">pos_overflow</span><span class="o">&amp;</span><span class="n">neg</span><span class="p">);</span>
-	<span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
-<span class="p">}</span>
+</section>
+<section id="bit-puzzles">
+<h3><span class="section-number">2.9.29.3. </span>bit puzzles<a class="headerlink" href="#bit-puzzles" title="Permalink to this headline">#</a></h3>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// leastBitPos - return a mask that marks the position of the least significant 1 bit</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">leastBitPos</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="o">~</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">bitMask</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">highbit</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">lowbit</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">zeros</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">~</span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">highbit</span><span class="p">;</span><span class="w"> </span><span class="cm">/* 1100 0000 */</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">ones</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">~</span><span class="mi">0</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">lowbit</span><span class="p">;</span><span class="w">   </span><span class="cm">/* 1111 1000 */</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">~</span><span class="n">zeros</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">ones</span><span class="p">;</span><span class="w">      </span><span class="cm">/* 0011 1000 */</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="cm">/* satAdd - adds two numbers but when positive overflow occurs, returns maximum possible value, and when negative overflow occurs, it returns minimum positive value. */</span><span class="w"></span>
+<span class="c1">// soln - overflow when operands have same sign and sum and operands have different sign</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">satAdd</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">	</span><span class="kt">int</span><span class="w"> </span><span class="n">x_is_neg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">31</span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="kt">int</span><span class="w"> </span><span class="n">y_is_neg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">31</span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="kt">int</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="kt">int</span><span class="w"> </span><span class="n">same_sign</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">x_is_neg</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">y_is_neg</span><span class="w">  </span><span class="o">|</span><span class="w">  </span><span class="o">~</span><span class="n">x_is_neg</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">~</span><span class="n">y_is_neg</span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="kt">int</span><span class="w"> </span><span class="n">overflow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">same_sign</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">x_is_neg</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="p">(</span><span class="n">sum</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">31</span><span class="p">));</span><span class="w"></span>
+<span class="w">	</span><span class="kt">int</span><span class="w"> </span><span class="n">pos_overflow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">overflow</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">~</span><span class="n">x_is_neg</span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="kt">int</span><span class="w"> </span><span class="n">neg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">31</span><span class="p">;</span><span class="w"></span>
+<span class="w">	</span><span class="kt">int</span><span class="w"> </span><span class="n">ans</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">~</span><span class="n">overflow</span><span class="o">&amp;</span><span class="n">sum</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">overflow</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">pos_overflow</span><span class="o">&amp;~</span><span class="n">neg</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">~</span><span class="n">pos_overflow</span><span class="o">&amp;</span><span class="n">neg</span><span class="p">);</span><span class="w"></span>
+<span class="w">	</span><span class="k">return</span><span class="w"> </span><span class="n">ans</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="reading">
-<h2>2.11.30. reading<a class="headerlink" href="#reading" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="ch-1-1-7-1-9">
-<h3>2.11.30.1. ch 1 (1.7, 1.9)<a class="headerlink" href="#ch-1-1-7-1-9" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="reading">
+<h2><span class="section-number">2.9.30. </span>reading<a class="headerlink" href="#reading" title="Permalink to this headline">#</a></h2>
+<section id="ch-1-1-7-1-9">
+<h3><span class="section-number">2.9.30.1. </span>ch 1 (1.7, 1.9)<a class="headerlink" href="#ch-1-1-7-1-9" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>files are stored as bytes, most in ascii</p></li>
 <li><p>all files are either text files or binary files</p></li>
@@ -2821,9 +3206,9 @@ ans.length = length;</p></li>
 <li><p>processors can do several instructions per clock cycle</p></li>
 <li><p>Single-Instruction, Multiple-Data (SIMD) - ex. add four floats</p></li>
 </ul>
-</div>
-<div class="section" id="ch-2-2-1-2-4-2-2-4-4">
-<h3>2.11.30.2. ch 2 (2.1, 2.4.2, 2.4.4)<a class="headerlink" href="#ch-2-2-1-2-4-2-2-4-4" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="ch-2-2-1-2-4-2-2-4-4">
+<h3><span class="section-number">2.9.30.2. </span>ch 2 (2.1, 2.4.2, 2.4.4)<a class="headerlink" href="#ch-2-2-1-2-4-2-2-4-4" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>floating points (float, double)</p>
 <ul>
@@ -2861,9 +3246,9 @@ exponent = exp-Bias, mantissa = 1.mantissa</p></li>
 <li><p>leading 0x specifies hex</p></li>
 <li><p>leading 0b specifies binary</p></li>
 </ul>
-</div>
-<div class="section" id="ch-3-3-6-3-7">
-<h3>2.11.30.3. ch 3 (3.6, 3.7)<a class="headerlink" href="#ch-3-3-6-3-7" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="ch-3-3-6-3-7">
+<h3><span class="section-number">2.9.30.3. </span>ch 3 (3.6, 3.7)<a class="headerlink" href="#ch-3-3-6-3-7" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>computers execute machine code</p></li>
 <li><p>intel processors are all back-compatible</p></li>
@@ -2883,9 +3268,9 @@ exponent = exp-Bias, mantissa = 1.mantissa</p></li>
 <li><p>all instructions change the program counter</p></li>
 <li><p>call instruction only changes the stack pointer</p></li>
 </ul>
-</div>
-<div class="section" id="id1">
-<h3>2.11.30.4. 4.1,4.2<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id1">
+<h3><span class="section-number">2.9.30.4. </span>4.1,4.2<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>eight registers</p>
 <ul>
@@ -2932,9 +3317,9 @@ s: A;
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="id2">
-<h3>2.11.30.5. 4.3.1-4<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id2">
+<h3><span class="section-number">2.9.30.5. </span>4.3.1-4<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>SEQ - sequential processor</p></li>
 <li><p>stages</p>
@@ -2987,9 +3372,9 @@ components: combinational logic, clocked registers (the program counter and cond
 </ol>
 </li>
 </ul>
-</div>
-<div class="section" id="id3">
-<h3>2.11.30.6. 4.4 pipelining<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id3">
+<h3><span class="section-number">2.9.30.6. </span>4.4 pipelining<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>the task to be performed is divided into a series of discrete stages</p></li>
 <li><p>increases the throughput - ## customers served per unit time</p></li>
@@ -3004,9 +3389,9 @@ components: combinational logic, clocked registers (the program counter and cond
 </li>
 <li><p>we need to deal with dependencies between the stages</p></li>
 </ul>
-</div>
-<div class="section" id="id4">
-<h3>2.11.30.7. 4.5.3, 4.5.8<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id4">
+<h3><span class="section-number">2.9.30.7. </span>4.5.3, 4.5.8<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>several copies of values such as valC, srcA</p></li>
 <li><p>registers dD, eD, mM, wW - lowercase letter is input, uppercase is output</p></li>
@@ -3015,9 +3400,9 @@ components: combinational logic, clocked registers (the program counter and cond
 <li><p>load/use hazard - (try using before loaded) one instruction reads a value from memory while the next instruction needs this value as a source operand</p></li>
 <li><p>we can stop this by stalling and forwarding (the use of a stall here is called a load interlock)</p></li>
 </ul>
-</div>
-<div class="section" id="id5">
-<h3>2.11.30.8. 5 - optimization<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id5">
+<h3><span class="section-number">2.9.30.8. </span>5 - optimization<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>eliminate unnecessary calls, tests, memory references</p></li>
 <li><p>instruction-level parallelism</p></li>
@@ -3048,9 +3433,9 @@ components: combinational logic, clocked registers (the program counter and cond
 <li><p>understand memory performance</p></li>
 <li><p>using macros lets compiler optimizem more, lessens bookkeeping</p></li>
 </ul>
-</div>
-<div class="section" id="id6">
-<h3>2.11.30.9. 6.1.1, 6.2, 6.3<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id6">
+<h3><span class="section-number">2.9.30.9. </span>6.1.1, 6.2, 6.3<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>SRAM is bistable as long as power is on - will fall into one of 2 positions</p></li>
 <li><p>DRAM loses its value ~10-100 ms</p>
@@ -3105,9 +3490,9 @@ capacity misses - the cache just can’t hold enough</p></li>
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="cache-memories-writing-cache-friendly-code">
-<h3>2.11.30.10. 6.4, 6.5 - cache memories &amp; writing cache-friendly code<a class="headerlink" href="#cache-memories-writing-cache-friendly-code" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="cache-memories-writing-cache-friendly-code">
+<h3><span class="section-number">2.9.30.10. </span>6.4, 6.5 - cache memories &amp; writing cache-friendly code<a class="headerlink" href="#cache-memories-writing-cache-friendly-code" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Miss rate. The fraction of memory references during the execution of a program, or a part of a program, that miss. It is computed as #misses/#references.</p></li>
 <li><p>Hit rate. The fraction of memory references that hit. It is computed as 1 − miss rate.</p></li>
@@ -3116,9 +3501,9 @@ capacity misses - the cache just can’t hold enough</p></li>
 <li><p>Traditionally, high-performance systems that pushed the clock rates would opt for smaller associativity for L1 caches (where the miss penalty is only a few cycles) and a higher degree of associativity for the lower levels, where the miss penalty is higher</p></li>
 <li><p>In general, caches further down the hierarchy are more likely to use write-back than write-through</p></li>
 </ul>
-</div>
-<div class="section" id="id7">
-<h3>2.11.30.11. 8.1 Exceptions<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id7">
+<h3><span class="section-number">2.9.30.11. </span>8.1 Exceptions<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>exceptions - partly hardware, partly OS</p></li>
 <li><p>when an event occurs, indirect procedure call (the exception) through a jump table called exception table to OS subroutine (exception handler).</p></li>
@@ -3162,9 +3547,9 @@ capacity misses - the cache just can’t hold enough</p></li>
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="id8">
-<h3>2.11.30.12. 8.2 Processes<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id8">
+<h3><span class="section-number">2.9.30.12. </span>8.2 Processes<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>process - instance of program in execution</p>
 <ul>
@@ -3187,9 +3572,9 @@ capacity misses - the cache just can’t hold enough</p></li>
 </ul>
 </li>
 </ol>
-</div>
-<div class="section" id="system-call-error-handling">
-<h3>2.11.30.13. 8.3 System Call Error Handling<a class="headerlink" href="#system-call-error-handling" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="system-call-error-handling">
+<h3><span class="section-number">2.9.30.13. </span>8.3 System Call Error Handling<a class="headerlink" href="#system-call-error-handling" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>system level calls return -1, set the global integer variable errno</p>
 <ul>
@@ -3197,9 +3582,9 @@ capacity misses - the cache just can’t hold enough</p></li>
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="id9">
-<h3>2.11.30.14. 9-9.5 Virtual Memory<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id9">
+<h3><span class="section-number">2.9.30.14. </span>9-9.5 Virtual Memory<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>address translation - converts virtual to physical address</p>
 <ul>
@@ -3279,18 +3664,18 @@ capacity misses - the cache just can’t hold enough</p></li>
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="address-translation">
-<h3>2.11.30.15. 9.6 Address Translation<a class="headerlink" href="#address-translation" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="address-translation">
+<h3><span class="section-number">2.9.30.15. </span>9.6 Address Translation<a class="headerlink" href="#address-translation" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>low order 4 bits serve
 2,3 - fault
 8c: 1000 1100
 b6</p></li>
 </ul>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -3314,41 +3699,53 @@ b6</p></li>
 
               </div>
               
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="os.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">2.8. </span>os</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="reproducibility.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">2.10. </span>reproducibility</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
         </div>
     </div>
-    
-    
-    <div class='prev-next-bottom'>
-        
-    <a class='left-prev' id="prev-link" href="os.html" title="previous page">2.10. os</a>
-    <a class='right-next' id="next-link" href="reproducibility.html" title="next page">2.12. reproducibility</a>
-
-    </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Chandan Singh<br/>
+  
+      &copy; Copyright None.<br/>
+    <div class="extra_footer">
       <p>
-        
-          By Chandan Singh<br/>
-        
-            &copy; Copyright None.<br/>
-          <div class="extra_footer">
-            <p>
 Many of these images are taken from resources on the web.
 </p>
-          </div>
-      </p>
     </div>
-  </footer>
-</main>
+</p>
+        </footer>
+    </div>
+    
+</div>
 
 
       </div>
     </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-    
-  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
 
-
-    
   </body>
 </html>

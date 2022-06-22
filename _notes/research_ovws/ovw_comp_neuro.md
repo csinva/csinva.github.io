@@ -24,6 +24,7 @@ category: research
 
 # high-dimensional computing
 
+- [new talk](https://www.youtube.com/watch?v=82syi1BH_YY) (has slide with related references)
 - high-level overview
   - current inspiration has all come from single neurons at a time - hd computing is going past this
   - the brain's circuits are high-dimensional
@@ -50,6 +51,7 @@ category: research
   - ex. 10k vectors A, B of +1/-1 (also extends to real / complex vectors)
 - 3 operations
   - **addition**: A + B = (0, 0, 2, 0, 2,-2, 0,  ....)
+    - alternatively, could take mean
   - **multiplication**: A * B =  (-1, -1, -1, 1, 1, -1, 1, ...) - this is **XOR**
     - want this to be invertible, dsitribute over addition, preserve distance, and be dissimilar to the vectors being multiplied
     - number of ones after multiplication is the distance between the two original vectors
@@ -72,7 +74,7 @@ category: research
     - for non-binary vectors, scalar weight
 - data structures
 - these operations allow for encoding all normal data structures: sets, sequences, lists, databases
-  - set - can represent with a sum (since the sum is similar to all the vectors)
+  - set - can be represented with a sum (since the sum is similar to all the vectors)
     - can find a stored set using any element
     - if we don't store the sum, can probe with the sum and keep subtracting the vectors we find
   - multiset = bag (stores set with frequency counts) - can store things with order by adding them multiple times, but hard to actually retrieve frequencies
@@ -98,6 +100,12 @@ category: research
       - **can also do this randomness for the rows (so the number of rows < the number of words)**
       - can still get semantic vector for a row/column by adding together the rows/columns which are activated by that row/column
       - this examples still only uses bag-of-words (but can be extended to more)
+  - context vectors 2 (like word2vec)
+    - each word in vocab is given 2 vectors
+      - random-indexing vector - fixed random from the beginning
+      - semantic vector - starts at 0
+    - as we traverse sequence, for each word, add random-indexing vector from words right before/after it to its semantic vector
+      - can also permute them before adding to preserve word order
   - learning rules by example
     - particular instance of a rule is a rule (e.g mother-son-baby $\to$ grandmother)
       - as we get more examples and average them, the rule gets better

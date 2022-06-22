@@ -1,12 +1,16 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>7.4. comp neuro</title>
     
-  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -16,88 +20,110 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-  <link rel="stylesheet"
-    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
-
-    
-    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
-    <script type="text/javascript" src="../../_static/togglebutton.js"></script>
-    <script type="text/javascript" src="../../_static/clipboard.min.js"></script>
-    <script type="text/javascript" src="../../_static/copybutton.js"></script>
-    <script type="text/javascript">var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script type="text/javascript" src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-    <script async="async" type="text/javascript" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script type="text/javascript">
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="7.5. sensory input" href="sensory_input.html" />
     <link rel="prev" title="7.3. vision" href="vissci.html" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
 
-
-
+    <!-- Google Analytics -->
+    
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="../../index.html">
-  
-  <img src="../../_static/logo.png" class="logo" alt="logo">
-  
-  
-</a>
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+    </a>
 </div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../intro.html">
-   overview 👋
-  </a>
- </li>
-</ul>
-<ul class="current nav sidenav_l1">
- <li class="toctree-l1 collapsible-parent">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    overview 👋
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../research_ovws/research_ovws.html">
    1. research_ovws
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_comp_neuro.html">
      1.1. comp neuro
@@ -169,14 +195,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../cs/cs.html">
    2. cs
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../cs/retrieval.html">
      2.1. info retrieval
@@ -213,44 +242,37 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../cs/databases.html">
-     2.8. overview
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cs/databases.html#sql">
-     2.9. sql
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../cs/os.html">
-     2.10. os
+     2.8. os
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../cs/arch.html">
-     2.11. architecture
+     2.9. architecture
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../cs/reproducibility.html">
-     2.12. reproducibility
+     2.10. reproducibility
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../cs/comp_theory.html">
-     2.13. cs theory
+     2.11. cs theory
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../math/math.html">
    3. math
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../math/differential_equations.html">
      3.1. differential equations
@@ -297,14 +319,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../stat/stat.html">
    4. stat
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../stat/graphical_models.html">
      4.1. graphical models
@@ -346,14 +371,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../ml/ml.html">
    5. ml
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/kernels.html">
      5.1. kernels
@@ -405,14 +433,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../ai/ai.html">
    6. ai
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/search.html">
      6.1. search
@@ -459,14 +490,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 current active collapsible-parent">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="neuro.html">
    7. neuro
   </a>
-  <ul class="current collapse-ul">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="disease.html">
      7.1. disease
@@ -508,92 +542,152 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
 </ul>
 
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
     </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/notes/neuro/comp_neuro.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-        <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/csinva/csinva.github.io"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        
-        
-    </div>
-</div>
-
-
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                title="Fullscreen mode"><i
-                    class="fas fa-expand"></i></button></a>
-
-        <!-- Launch buttons -->
-
-    </div>
-
-    <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
-        
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
         </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/csinva/csinva.github.io"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/notes/neuro/comp_neuro.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introduction">
    7.4.1. introduction
@@ -855,21 +949,298 @@
  </li>
 </ul>
 
-        </nav>
-        
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>comp neuro</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   7.4.1. introduction
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#overview">
+     7.4.1.1. overview
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#historical-ai">
+     7.4.1.2. historical ai
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#historical-cybernetics-nns">
+     7.4.1.3. historical cybernetics/nns
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#types-of-models">
+     7.4.1.4. types of models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#biophysical-models">
+   7.4.2. biophysical models
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#modeling-neurons">
+     7.4.2.1. modeling neurons
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#simplified-model-neurons">
+     7.4.2.2. simplified model neurons
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-forest-of-dendrites">
+     7.4.2.3. a forest of dendrites
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#circuit-modeling-basics">
+     7.4.2.4. circuit-modeling basics
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#action-potentials">
+     7.4.2.5. action potentials
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#physics-of-computation">
+     7.4.2.6. physics of computation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#spiking-neurons">
+     7.4.2.7. spiking neurons
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#neural-coding">
+   7.4.3. neural coding
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#neural-encoding">
+     7.4.3.1. neural encoding
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#defining-neural-code">
+       7.4.3.1.1. defining neural code
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#simple-encoding">
+       7.4.3.1.2. simple encoding
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#feature-selection">
+       7.4.3.1.3. feature selection
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#variability">
+       7.4.3.1.4. variability
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#neural-decoding">
+     7.4.3.2. neural decoding
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#neural-decoding-and-signal-detection">
+       7.4.3.2.1. neural decoding and signal detection
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#population-coding-and-bayesian-estimation">
+       7.4.3.2.2. population coding and bayesian estimation
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#stimulus-reconstruction">
+       7.4.3.2.3. stimulus reconstruction
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#information-theory">
+     7.4.3.3. information theory
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#information-and-entropy">
+       7.4.3.3.1. information and entropy
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#information-in-spike-trains">
+       7.4.3.3.2. information in spike trains
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#coding-principles">
+       7.4.3.3.3. coding principles
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computing-with-networks">
+   7.4.4. computing with networks
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#modeling-connections-between-neurons">
+     7.4.4.1. modeling connections between neurons
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#intro-to-network-models">
+     7.4.4.2. intro to network models
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#recurrent-networks">
+     7.4.4.3. recurrent networks
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#hopfield-nets">
+       7.4.4.3.1. hopfield nets
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning">
+   7.4.5. learning
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#supervised-learning">
+     7.4.5.1. supervised learning
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#unsupervised-learning">
+     7.4.5.2. unsupervised learning
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#hebbian-learning-and-pca">
+       7.4.5.2.1. hebbian learning and pca
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#synaptic-plasticity-hebb-s-rule-and-statistical-learning">
+     7.4.5.3. synaptic plasticity, hebb’s rule, and statistical learning
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#intro-to-unsupervised-learning">
+     7.4.5.4. intro to unsupervised learning
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sparse-coding-and-predictive-coding">
+     7.4.5.5. sparse coding and predictive coding
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sparse-distributed-coding">
+     7.4.5.6. sparse, distributed coding
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#self-organizing-maps">
+     7.4.5.7. self-organizing maps
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ml-analogies">
+   7.4.6. ml analogies
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#brain-theories">
+     7.4.6.1. Brain theories
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#brain-as-a-computer">
+     7.4.6.2. brain as a computer
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#brain-v-deep-learning">
+     7.4.6.3. Brain v. Deep Learning
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#probabilistic-models-inference">
+   7.4.7. probabilistic models + inference
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#boltzmann-machines">
+     7.4.7.1. boltzmann machines
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="section" id="comp-neuro">
-<h1>7.4. comp neuro<a class="headerlink" href="#comp-neuro" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="introduction">
-<h2>7.4.1. introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="overview">
-<h3>7.4.1.1. overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h3>
+  <section class="tex2jax_ignore mathjax_ignore" id="comp-neuro">
+<h1><span class="section-number">7.4. </span>comp neuro<a class="headerlink" href="#comp-neuro" title="Permalink to this headline">#</a></h1>
+<section id="introduction">
+<h2><span class="section-number">7.4.1. </span>introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+<section id="overview">
+<h3><span class="section-number">7.4.1.1. </span>overview<a class="headerlink" href="#overview" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>does biology have a cutoff level (likecutoffs in computers below which fluctuations don’t matter)</p></li>
 <li><p>core principles underlying these two questions</p>
@@ -901,9 +1272,9 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="historical-ai">
-<h3>7.4.1.2. historical ai<a class="headerlink" href="#historical-ai" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="historical-ai">
+<h3><span class="section-number">7.4.1.2. </span>historical ai<a class="headerlink" href="#historical-ai" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>people: turing, von neumman, marvin minsky, mccarthy…</p></li>
 <li><p>ai: birth at 1956 conference</p>
@@ -915,9 +1286,9 @@
 <li><p>intelligence tends to be developed by young children…</p></li>
 <li><p>cortex grew very rapidly</p></li>
 </ul>
-</div>
-<div class="section" id="historical-cybernetics-nns">
-<h3>7.4.1.3. historical cybernetics/nns<a class="headerlink" href="#historical-cybernetics-nns" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="historical-cybernetics-nns">
+<h3><span class="section-number">7.4.1.3. </span>historical cybernetics/nns<a class="headerlink" href="#historical-cybernetics-nns" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>people: norbert weiner, mcculloch &amp; pitts, rosenblatt</p></li>
 <li><p>neuro</p>
@@ -928,9 +1299,9 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="types-of-models">
-<h3>7.4.1.4. types of models<a class="headerlink" href="#types-of-models" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="types-of-models">
+<h3><span class="section-number">7.4.1.4. </span>types of models<a class="headerlink" href="#types-of-models" title="Permalink to this headline">#</a></h3>
 <ul>
 <li><p>three types</p>
 <ol class="simple">
@@ -957,12 +1328,12 @@
 </ul>
 </li>
 </ul>
-</div>
-</div>
-<div class="section" id="biophysical-models">
-<h2>7.4.2. biophysical models<a class="headerlink" href="#biophysical-models" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="modeling-neurons">
-<h3>7.4.2.1. modeling neurons<a class="headerlink" href="#modeling-neurons" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="biophysical-models">
+<h2><span class="section-number">7.4.2. </span>biophysical models<a class="headerlink" href="#biophysical-models" title="Permalink to this headline">#</a></h2>
+<section id="modeling-neurons">
+<h3><span class="section-number">7.4.2.1. </span>modeling neurons<a class="headerlink" href="#modeling-neurons" title="Permalink to this headline">#</a></h3>
 <ul>
 <li><p><img alt="" src="../../_images/5_1_1.png" /></p></li>
 <li><p>nernst battery</p>
@@ -985,9 +1356,9 @@
 </li>
 <li><p><img alt="" src="../../_images/5_1_2.png" /></p></li>
 </ul>
-</div>
-<div class="section" id="simplified-model-neurons">
-<h3>7.4.2.2. simplified model neurons<a class="headerlink" href="#simplified-model-neurons" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="simplified-model-neurons">
+<h3><span class="section-number">7.4.2.2. </span>simplified model neurons<a class="headerlink" href="#simplified-model-neurons" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><em>integrate-and-fire</em> neuron</p>
 <ul>
@@ -1016,9 +1387,9 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="a-forest-of-dendrites">
-<h3>7.4.2.3. a forest of dendrites<a class="headerlink" href="#a-forest-of-dendrites" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="a-forest-of-dendrites">
+<h3><span class="section-number">7.4.2.3. </span>a forest of dendrites<a class="headerlink" href="#a-forest-of-dendrites" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>cable theory - Kelvin</p></li>
 <li><p>voltage V is a function of both x and t</p></li>
@@ -1047,9 +1418,9 @@
 <li><p>ex. <em>Jeffress model</em>  - sound localized based on timing difference between ears</p></li>
 <li><p>ex. direction selectivity in retinal ganglion cells - if events arive at dendrite far -&gt; close, all get to soma at same time and add</p></li>
 </ul>
-</div>
-<div class="section" id="circuit-modeling-basics">
-<h3>7.4.2.4. circuit-modeling basics<a class="headerlink" href="#circuit-modeling-basics" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="circuit-modeling-basics">
+<h3><span class="section-number">7.4.2.4. </span>circuit-modeling basics<a class="headerlink" href="#circuit-modeling-basics" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>membrane has capacitance <span class="math notranslate nohighlight">\(C_m\)</span></p></li>
 <li><p>force for diffusion, force for drift</p></li>
@@ -1067,9 +1438,9 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="action-potentials">
-<h3>7.4.2.5. action potentials<a class="headerlink" href="#action-potentials" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="action-potentials">
+<h3><span class="section-number">7.4.2.5. </span>action potentials<a class="headerlink" href="#action-potentials" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>channel/receptor types</p>
 <ul>
@@ -1093,9 +1464,9 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="physics-of-computation">
-<h3>7.4.2.6. physics of computation<a class="headerlink" href="#physics-of-computation" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="physics-of-computation">
+<h3><span class="section-number">7.4.2.6. </span>physics of computation<a class="headerlink" href="#physics-of-computation" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>based on carver mead: drift and diffusion are at the heart of everything</p></li>
 <li><p>different things realted by the <strong>Boltzmann distr.</strong> (ex. distr of air molecules vs elevation. Subject to gravity and diffusion upwards since they’re colliding)</p>
@@ -1144,9 +1515,9 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="spiking-neurons">
-<h3>7.4.2.7. spiking neurons<a class="headerlink" href="#spiking-neurons" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="spiking-neurons">
+<h3><span class="section-number">7.4.2.7. </span>spiking neurons<a class="headerlink" href="#spiking-neurons" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>passive membrane model was leaky integrator</p></li>
 <li><p>voltage-gaed channels were more complicated</p></li>
@@ -1198,14 +1569,14 @@
 </ul>
 </li>
 </ul>
-</div>
-</div>
-<div class="section" id="neural-coding">
-<h2>7.4.3. neural coding<a class="headerlink" href="#neural-coding" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="neural-encoding">
-<h3>7.4.3.1. neural encoding<a class="headerlink" href="#neural-encoding" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="defining-neural-code">
-<h4>7.4.3.1.1. defining neural code<a class="headerlink" href="#defining-neural-code" title="Permalink to this headline">¶</a></h4>
+</section>
+</section>
+<section id="neural-coding">
+<h2><span class="section-number">7.4.3. </span>neural coding<a class="headerlink" href="#neural-coding" title="Permalink to this headline">#</a></h2>
+<section id="neural-encoding">
+<h3><span class="section-number">7.4.3.1. </span>neural encoding<a class="headerlink" href="#neural-encoding" title="Permalink to this headline">#</a></h3>
+<section id="defining-neural-code">
+<h4><span class="section-number">7.4.3.1.1. </span>defining neural code<a class="headerlink" href="#defining-neural-code" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>extracellular</p>
 <ul>
@@ -1250,9 +1621,9 @@
 </li>
 <li><p><em>decoding</em>: P(stimulus | response)</p></li>
 </ul>
-</div>
-<div class="section" id="simple-encoding">
-<h4>7.4.3.1.2. simple encoding<a class="headerlink" href="#simple-encoding" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="simple-encoding">
+<h4><span class="section-number">7.4.3.1.2. </span>simple encoding<a class="headerlink" href="#simple-encoding" title="Permalink to this headline">#</a></h4>
 <ul>
 <li><p>want P(response | stimulus)</p>
 <ul class="simple">
@@ -1306,9 +1677,9 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="feature-selection">
-<h4>7.4.3.1.3. feature selection<a class="headerlink" href="#feature-selection" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="feature-selection">
+<h4><span class="section-number">7.4.3.1.3. </span>feature selection<a class="headerlink" href="#feature-selection" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>P(response|stimulus) is very hard to get</p>
 <ul>
@@ -1355,9 +1726,9 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="variability">
-<h4>7.4.3.1.4. variability<a class="headerlink" href="#variability" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="variability">
+<h4><span class="section-number">7.4.3.1.4. </span>variability<a class="headerlink" href="#variability" title="Permalink to this headline">#</a></h4>
 <ul>
 <li><p>hidden assumptions about time-varying firing rate and single spikes</p>
 <ul class="simple">
@@ -1427,12 +1798,12 @@
 </ul>
 </li>
 </ul>
-</div>
-</div>
-<div class="section" id="neural-decoding">
-<h3>7.4.3.2. neural decoding<a class="headerlink" href="#neural-decoding" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="neural-decoding-and-signal-detection">
-<h4>7.4.3.2.1. neural decoding and signal detection<a class="headerlink" href="#neural-decoding-and-signal-detection" title="Permalink to this headline">¶</a></h4>
+</section>
+</section>
+<section id="neural-decoding">
+<h3><span class="section-number">7.4.3.2. </span>neural decoding<a class="headerlink" href="#neural-decoding" title="Permalink to this headline">#</a></h3>
+<section id="neural-decoding-and-signal-detection">
+<h4><span class="section-number">7.4.3.2.1. </span>neural decoding and signal detection<a class="headerlink" href="#neural-decoding-and-signal-detection" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>decoding: P(stimulus | response) - ex. you hear noise and want to tell what it is</p>
 <ul>
@@ -1507,9 +1878,9 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="population-coding-and-bayesian-estimation">
-<h4>7.4.3.2.2. population coding and bayesian estimation<a class="headerlink" href="#population-coding-and-bayesian-estimation" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="population-coding-and-bayesian-estimation">
+<h4><span class="section-number">7.4.3.2.2. </span>population coding and bayesian estimation<a class="headerlink" href="#population-coding-and-bayesian-estimation" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p><em>population vector</em> - sums vectors for cells that point in different directions weighted by their firing rates</p>
 <ul>
@@ -1568,9 +1939,9 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="stimulus-reconstruction">
-<h4>7.4.3.2.3. stimulus reconstruction<a class="headerlink" href="#stimulus-reconstruction" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="stimulus-reconstruction">
+<h4><span class="section-number">7.4.3.2.3. </span>stimulus reconstruction<a class="headerlink" href="#stimulus-reconstruction" title="Permalink to this headline">#</a></h4>
 <ul>
 <li><p>decoding s -&gt; <span class="math notranslate nohighlight">\(s^*\)</span></p></li>
 <li><p>want an estimator <span class="math notranslate nohighlight">\(s_{Bayes}=s_B\)</span> given some response r</p>
@@ -1607,12 +1978,12 @@
 </ul>
 </li>
 </ul>
-</div>
-</div>
-<div class="section" id="information-theory">
-<h3>7.4.3.3. information theory<a class="headerlink" href="#information-theory" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="information-and-entropy">
-<h4>7.4.3.3.1. information and entropy<a class="headerlink" href="#information-and-entropy" title="Permalink to this headline">¶</a></h4>
+</section>
+</section>
+<section id="information-theory">
+<h3><span class="section-number">7.4.3.3. </span>information theory<a class="headerlink" href="#information-theory" title="Permalink to this headline">#</a></h3>
+<section id="information-and-entropy">
+<h4><span class="section-number">7.4.3.3.1. </span>information and entropy<a class="headerlink" href="#information-and-entropy" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>surprise for seeing a spike h(p) = <span class="math notranslate nohighlight">\(-log_2 (p)\)</span></p></li>
 <li><p>entropy = average information</p></li>
@@ -1648,9 +2019,9 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="information-in-spike-trains">
-<h4>7.4.3.3.2. information in spike trains<a class="headerlink" href="#information-in-spike-trains" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="information-in-spike-trains">
+<h4><span class="section-number">7.4.3.3.2. </span>information in spike trains<a class="headerlink" href="#information-in-spike-trains" title="Permalink to this headline">#</a></h4>
 <ol class="simple">
 <li><p>information in spike patterns</p></li>
 </ol>
@@ -1708,9 +2079,9 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="coding-principles">
-<h4>7.4.3.3.3. coding principles<a class="headerlink" href="#coding-principles" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="coding-principles">
+<h4><span class="section-number">7.4.3.3.3. </span>coding principles<a class="headerlink" href="#coding-principles" title="Permalink to this headline">#</a></h4>
 <ul>
 <li><p>natural stimuli</p>
 <ul class="simple">
@@ -1761,13 +2132,13 @@
 </li>
 <li><p>we ignored the behavioral feedback loop</p></li>
 </ul>
-</div>
-</div>
-</div>
-<div class="section" id="computing-with-networks">
-<h2>7.4.4. computing with networks<a class="headerlink" href="#computing-with-networks" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="modeling-connections-between-neurons">
-<h3>7.4.4.1. modeling connections between neurons<a class="headerlink" href="#modeling-connections-between-neurons" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+</section>
+<section id="computing-with-networks">
+<h2><span class="section-number">7.4.4. </span>computing with networks<a class="headerlink" href="#computing-with-networks" title="Permalink to this headline">#</a></h2>
+<section id="modeling-connections-between-neurons">
+<h3><span class="section-number">7.4.4.1. </span>modeling connections between neurons<a class="headerlink" href="#modeling-connections-between-neurons" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>model effects of synapse by using synaptic conductance <span class="math notranslate nohighlight">\(g_s\)</span> with reversal potential <span class="math notranslate nohighlight">\(E_s\)</span></p>
 <ul>
@@ -1810,9 +2181,9 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="intro-to-network-models">
-<h3>7.4.4.2. intro to network models<a class="headerlink" href="#intro-to-network-models" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="intro-to-network-models">
+<h3><span class="section-number">7.4.4.2. </span>intro to network models<a class="headerlink" href="#intro-to-network-models" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>comparing spiking models to firing-rate models</p>
 <ul>
@@ -1876,9 +2247,9 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="recurrent-networks">
-<h3>7.4.4.3. recurrent networks<a class="headerlink" href="#recurrent-networks" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="recurrent-networks">
+<h3><span class="section-number">7.4.4.3. </span>recurrent networks<a class="headerlink" href="#recurrent-networks" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>linear recurrent network: <span class="math notranslate nohighlight">\(\tau \frac{d\mathbf{v}}{dt} = -\mathbf{v} + W\mathbf{u} + M \mathbf{v}\)</span></p>
 <ul>
@@ -1954,8 +2325,8 @@
 </ul>
 </li>
 </ul>
-<div class="section" id="hopfield-nets">
-<h4>7.4.4.3.1. hopfield nets<a class="headerlink" href="#hopfield-nets" title="Permalink to this headline">¶</a></h4>
+<section id="hopfield-nets">
+<h4><span class="section-number">7.4.4.3.1. </span>hopfield nets<a class="headerlink" href="#hopfield-nets" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>hopfield nets can store / retrieve memories</p></li>
 <li><p>fully connected (no input/output) - activations are what matter</p>
@@ -1990,13 +2361,13 @@
 </ul>
 </li>
 </ul>
-</div>
-</div>
-</div>
-<div class="section" id="learning">
-<h2>7.4.5. learning<a class="headerlink" href="#learning" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="supervised-learning">
-<h3>7.4.5.1. supervised learning<a class="headerlink" href="#supervised-learning" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+</section>
+<section id="learning">
+<h2><span class="section-number">7.4.5. </span>learning<a class="headerlink" href="#learning" title="Permalink to this headline">#</a></h2>
+<section id="supervised-learning">
+<h3><span class="section-number">7.4.5.1. </span>supervised learning<a class="headerlink" href="#supervised-learning" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>net talk was major breakthrough (words -&gt; audio) Sejnowski &amp; Rosenberg 1987</p></li>
 <li><p>people looked for world-centric receptive fields (so neurons responded to things not relative to retina but relative to body) but didn’t find them</p>
@@ -2028,9 +2399,9 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="unsupervised-learning">
-<h3>7.4.5.2. unsupervised learning<a class="headerlink" href="#unsupervised-learning" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="unsupervised-learning">
+<h3><span class="section-number">7.4.5.2. </span>unsupervised learning<a class="headerlink" href="#unsupervised-learning" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>born w/ extremely strong priors on weights in different areas</p></li>
 <li><p>barlow 1961, attneave 1954: efficient coding hypothesis = redundancy reduction hypothesis</p>
@@ -2041,8 +2412,8 @@
 </ul>
 </li>
 </ul>
-<div class="section" id="hebbian-learning-and-pca">
-<h4>7.4.5.2.1. hebbian learning and pca<a class="headerlink" href="#hebbian-learning-and-pca" title="Permalink to this headline">¶</a></h4>
+<section id="hebbian-learning-and-pca">
+<h4><span class="section-number">7.4.5.2.1. </span>hebbian learning and pca<a class="headerlink" href="#hebbian-learning-and-pca" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>pca can also be thought of as a tool for decorrelation (in pc dimension, tends to be less correlated)</p></li>
 <li><p>hebbian learning = fire together, wire together: <span class="math notranslate nohighlight">\(\Delta w_{ab} \propto &lt;a, b&gt;\)</span> note: <span class="math notranslate nohighlight">\(&lt;a, b&gt;\)</span> is correlation of a and b (average over time)</p></li>
@@ -2084,10 +2455,10 @@
 </ul>
 </li>
 </ul>
-</div>
-</div>
-<div class="section" id="synaptic-plasticity-hebb-s-rule-and-statistical-learning">
-<h3>7.4.5.3. synaptic plasticity, hebb’s rule, and statistical learning<a class="headerlink" href="#synaptic-plasticity-hebb-s-rule-and-statistical-learning" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="synaptic-plasticity-hebb-s-rule-and-statistical-learning">
+<h3><span class="section-number">7.4.5.3. </span>synaptic plasticity, hebb’s rule, and statistical learning<a class="headerlink" href="#synaptic-plasticity-hebb-s-rule-and-statistical-learning" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>if 2 spikes keep firing at same time, get LTP - long-term potentiation</p>
 <ul>
@@ -2133,9 +2504,9 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="intro-to-unsupervised-learning">
-<h3>7.4.5.4. intro to unsupervised learning<a class="headerlink" href="#intro-to-unsupervised-learning" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="intro-to-unsupervised-learning">
+<h3><span class="section-number">7.4.5.4. </span>intro to unsupervised learning<a class="headerlink" href="#intro-to-unsupervised-learning" title="Permalink to this headline">#</a></h3>
 <ul>
 <li><p><img alt="" src="../../_images/7_2_1.png" /></p>
 <ul class="simple">
@@ -2164,9 +2535,9 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="sparse-coding-and-predictive-coding">
-<h3>7.4.5.5. sparse coding and predictive coding<a class="headerlink" href="#sparse-coding-and-predictive-coding" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="sparse-coding-and-predictive-coding">
+<h3><span class="section-number">7.4.5.5. </span>sparse coding and predictive coding<a class="headerlink" href="#sparse-coding-and-predictive-coding" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>eigenface - Turk and Pentland 1991</p>
 <ul>
@@ -2215,9 +2586,9 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="sparse-distributed-coding">
-<h3>7.4.5.6. sparse, distributed coding<a class="headerlink" href="#sparse-distributed-coding" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="sparse-distributed-coding">
+<h3><span class="section-number">7.4.5.6. </span>sparse, distributed coding<a class="headerlink" href="#sparse-distributed-coding" title="Permalink to this headline">#</a></h3>
 <ul>
 <li><div class="math notranslate nohighlight">
 \[\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{h^{(t)}}} \min ||\mathbf{x^{(t)}} - \mathbf{Dh^{(t)}}||_2^2 + \lambda ||\mathbf{h^{(t)}}||_1\]</div>
@@ -2341,9 +2712,9 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="self-organizing-maps">
-<h3>7.4.5.7. self-organizing maps<a class="headerlink" href="#self-organizing-maps" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="self-organizing-maps">
+<h3><span class="section-number">7.4.5.7. </span>self-organizing maps<a class="headerlink" href="#self-organizing-maps" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>homunculus - 3d map corresponds to map in cortex (sensory + motor)</p></li>
 <li><p>visual cortex</p>
@@ -2361,25 +2732,25 @@
 </ul>
 </li>
 </ul>
-</div>
-</div>
-<div class="section" id="ml-analogies">
-<h2>7.4.6. ml analogies<a class="headerlink" href="#ml-analogies" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="brain-theories">
-<h3>7.4.6.1. Brain theories<a class="headerlink" href="#brain-theories" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="ml-analogies">
+<h2><span class="section-number">7.4.6. </span>ml analogies<a class="headerlink" href="#ml-analogies" title="Permalink to this headline">#</a></h2>
+<section id="brain-theories">
+<h3><span class="section-number">7.4.6.1. </span>Brain theories<a class="headerlink" href="#brain-theories" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Computational Theory of Mind</p></li>
 <li><p>Classical associationism</p></li>
 <li><p>Connectionism</p></li>
 <li><p>Situated cognition</p></li>
 <li><p>Memory-prediction framework</p></li>
-<li><p>Fractal Theory: https://www.youtube.com/watch?v=axaH4HFzA24</p></li>
+<li><p>Fractal Theory: <a class="reference external" href="https://www.youtube.com/watch?v=axaH4HFzA24">https://www.youtube.com/watch?v=axaH4HFzA24</a></p></li>
 <li><p>Brain sheets are made of cortical columns (about .3mm diameter, 1000 neurons / column)</p></li>
 <li><p>Have ~6 layers</p></li>
 </ul>
-</div>
-<div class="section" id="brain-as-a-computer">
-<h3>7.4.6.2. brain as a computer<a class="headerlink" href="#brain-as-a-computer" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="brain-as-a-computer">
+<h3><span class="section-number">7.4.6.2. </span>brain as a computer<a class="headerlink" href="#brain-as-a-computer" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Brain as a Computer – Analog VLSI and Neural Systems by Mead (VLSI – very large scale integration)</p></li>
 <li><p>Brain Computer Analogy
@@ -2389,8 +2760,8 @@
 -Power supply
 -Knowledge is not stored in knowledge of the parts, but in their connections
 -Based on electrically charged entities interacting with energy barriers
--http://en.wikipedia.org/wiki/Computational_theory_of_mind
--http://scienceblogs.com/developingintelligence/2007/03/27/why-the-brain-is-not-like-a-co/
+-<a class="reference external" href="http://en.wikipedia.org/wiki/Computational_theory_of_mind">http://en.wikipedia.org/wiki/Computational_theory_of_mind</a>
+-<a class="reference external" href="http://scienceblogs.com/developingintelligence/2007/03/27/why-the-brain-is-not-like-a-co/">http://scienceblogs.com/developingintelligence/2007/03/27/why-the-brain-is-not-like-a-co/</a>
 -Brain’ storage capacity is about 2.5 petabytes (Scientific American, 2005)
 -Electronics
 -Voltage can be thought of as water in a reservoir at a height
@@ -2400,7 +2771,7 @@
 -Capacitance – electrical charge required to raise the potential by 1 volt
 -Conductance = 1/ resistance = mho, siemens
 -We could also say the word is a computer with individuals being the processors – with all the wasted thoughts we have – the solution is probably to identify global problems and channel people’s focus towards working on them
--Brain chip: http://www.research.ibm.com/articles/brain-chip.shtml
+-Brain chip: <a class="reference external" href="http://www.research.ibm.com/articles/brain-chip.shtml">http://www.research.ibm.com/articles/brain-chip.shtml</a>
 -Differences: What Can AI Get from Neuroscience?
 -Brains are not digital
 -Brains don’t have a CPU
@@ -2414,11 +2785,11 @@
 -NI uses lots of parallelism
 -Delays are part of the computation</p></li>
 </ul>
-</div>
-<div class="section" id="brain-v-deep-learning">
-<h3>7.4.6.3. Brain v. Deep Learning<a class="headerlink" href="#brain-v-deep-learning" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="brain-v-deep-learning">
+<h3><span class="section-number">7.4.6.3. </span>Brain v. Deep Learning<a class="headerlink" href="#brain-v-deep-learning" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
-<li><p>http://timdettmers.com/</p></li>
+<li><p><a class="reference external" href="http://timdettmers.com/">http://timdettmers.com/</a></p></li>
 <li><p>problems with brain simulations:</p>
 <ul>
 <li><p>Not possible to test specific scientific hypotheses (compare this to the large hadron collider project with its perfectly defined hypotheses)</p></li>
@@ -2430,15 +2801,15 @@
 <ul>
 <li><p>Dendritic spikes are like first layer of conv net</p></li>
 <li><p>Neurons will typically have a genome that is different from the original genome that you were assigned to at birth. Neurons may have additional or fewer chromosomes and have sequences of information removed or added from certain chromosomes.</p></li>
-<li><p>http://timdettmers.com/2015/03/26/convolution-deep-learning/</p></li>
+<li><p><a class="reference external" href="http://timdettmers.com/2015/03/26/convolution-deep-learning/">http://timdettmers.com/2015/03/26/convolution-deep-learning/</a></p></li>
 <li><p>The adult brain has 86 billion neurons, about 10 trillion synapse, and about 300 billion dendrites (tree-like structures with synapses on them</p></li>
 </ul>
 </li>
 </ul>
-</div>
-</div>
-<div class="section" id="probabilistic-models-inference">
-<h2>7.4.7. probabilistic models + inference<a class="headerlink" href="#probabilistic-models-inference" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="probabilistic-models-inference">
+<h2><span class="section-number">7.4.7. </span>probabilistic models + inference<a class="headerlink" href="#probabilistic-models-inference" title="Permalink to this headline">#</a></h2>
 <details>
   <summary>Wiener filter</summary>
   has Gaussian prior + likelihood
@@ -2447,8 +2818,8 @@
 <ul class="simple">
 <li><p>for gaussian function, <span class="math notranslate nohighlight">\(d/dx f(x) = -x f(x)\)</span></p></li>
 </ul>
-<div class="section" id="boltzmann-machines">
-<h3>7.4.7.1. boltzmann machines<a class="headerlink" href="#boltzmann-machines" title="Permalink to this headline">¶</a></h3>
+<section id="boltzmann-machines">
+<h3><span class="section-number">7.4.7.1. </span>boltzmann machines<a class="headerlink" href="#boltzmann-machines" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>hinton &amp; sejnowski 1983</p></li>
 <li><p>starts with a hopfield net (states <span class="math notranslate nohighlight">\(s_i\)</span> weights <span class="math notranslate nohighlight">\(\lambda_{ij}\)</span>) where states are <span class="math notranslate nohighlight">\(\pm 1\)</span></p></li>
@@ -2507,9 +2878,9 @@
 </li>
 <li><p>reducing the dimensionality of data with neural networks</p></li>
 </ul>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -2533,41 +2904,53 @@
 
               </div>
               
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="vissci.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">7.3. </span>vision</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="sensory_input.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">7.5. </span>sensory input</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
         </div>
     </div>
-    
-    
-    <div class='prev-next-bottom'>
-        
-    <a class='left-prev' id="prev-link" href="vissci.html" title="previous page">7.3. vision</a>
-    <a class='right-next' id="next-link" href="sensory_input.html" title="next page">7.5. sensory input</a>
-
-    </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Chandan Singh<br/>
+  
+      &copy; Copyright None.<br/>
+    <div class="extra_footer">
       <p>
-        
-          By Chandan Singh<br/>
-        
-            &copy; Copyright None.<br/>
-          <div class="extra_footer">
-            <p>
 Many of these images are taken from resources on the web.
 </p>
-          </div>
-      </p>
     </div>
-  </footer>
-</main>
+</p>
+        </footer>
+    </div>
+    
+</div>
 
 
       </div>
     </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-    
-  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
 
-
-    
   </body>
 </html>

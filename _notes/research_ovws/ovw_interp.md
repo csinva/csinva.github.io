@@ -55,7 +55,7 @@ The definition of interpretability I find most useful is that given in [murdoch 
 Evaluating interpretability can be very difficult (largely because it rarely makes sense to talk about interpretability outside of a specific context). The best possible evaluation of interpretability requires benchmarking it with respect to the relevant audience in a context. For example, if an interpretation claims to help understand radiology models, it should be tested based on how well it helps radiologists when actually making diagnoses. The papers here try to find more generic alternative ways to evaluate interp methods (or just define desiderata to do so).
 
 - [Towards A Rigorous Science of Interpretable Machine Learning](https://arxiv.org/pdf/1702.08608.pdf) (doshi-velez & kim 2017)
-  - ![Screen Shot 2020-08-03 at 10.58.13 PM](../assets/interp_eval_table.png)
+  - ![](../assets/interp_eval_table.png)
 - Interpreting Interpretability: Understanding Data Scientists’ Use of Interpretability Tools for Machine Learning ([kaur, ..., caruana, wallach, vaughan, 2020](https://dl.acm.org/doi/pdf/10.1145/3313831.3376219))
   - used contextual inquiry + survey of data scientists (SHAP & InterpretML GAMs)
   - results indicate that data scientists over-trust and misuse interpretability tools 
@@ -313,7 +313,7 @@ For an implementation of many of these models, see the python [imodels package](
   4. computeraided exploration techniques
 - [Supersparse linear integer models for optimized medical scoring systems](https://link.springer.com/content/pdf/10.1007/s10994-015-5528-6.pdf) (ustun & rudin 2016)
   - [2helps2b paper](https://www.ncbi.nlm.nih.gov/pubmed/29052706)
-  - ![Screen Shot 2019-06-11 at 11.17.35 AM](../assets/2helps2b.png)
+  - ![](../assets/2helps2b.png)
   - note: scoring systems map points to a risk probability
 - [An Interpretable Model with Globally Consistent Explanations for Credit Risk](https://arxiv.org/abs/1811.12615) (chen et al. 2018) - a 2-layer linear additive model
 - [Fast Sparse Classification for Generalized Linear and Additive Models](https://arxiv.org/abs/2202.11389) (liu, ..., seltzer, rudin, 2022)
@@ -612,6 +612,8 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
   - recalculate via sampling other features in expectation
   - followup [propagating shapley values](https://arxiv.org/pdf/1911.11888.pdf) (chen, lundberg, & lee 2019) - can work with stacks of different models
   - averaging these across dataset can be misleading ([okeson et al. 2021](https://aokeson.github.io/files/global_feature_attributions.pdf))
+  - [Understanding Global Feature Contributions Through Additive Importance Measures](https://arxiv.org/abs/2004.00668) (covert, lundberg, & lee 2020)
+		- SAGE score looks at reduction in predictive accuracy due to subsets of features
 - [probes](https://nlp.stanford.edu/~johnhew/interpreting-probes.html) - check if a representation (e.g. BERT embeddings) learned a certain property (e.g. POS tagging) by seeing if we can predict this property (maybe linearly) directly from the representation
     - problem: if the post-hoc probe is a complex model (e.g. MLP), it can accurately predict a property even if that property isn't really contained in the representation
     - potential solution: benchmark against control tasks, where we construct a new random task to predict given a representation, and see how well the post-hoc probe can do on that task
@@ -812,7 +814,7 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
 - [curve-detectors](https://distill.pub/2020/circuits/curve-detectors/#visualizing-attribution) (cammarata et al. 2020)
 - [curve-circuits](https://distill.pub/2020/circuits/curve-circuits/) (cammarata et al. 2021)
     - engineering curve circuit from scratch
-    - ![Screen Shot 2021-10-01 at 10.54.49 AM](../assets/Screen%20Shot%202021-10-01%20at%2010.54.49%20AM.png)
+    - ![](../assets/curves.png)
 - [posthoc prototypes](https://openreview.net/forum?id=r1xyx3R9tQ)
     - **counterfactual explanations** - like adversarial, counterfactual explanation describes smallest change to feature vals that changes the prediction to a predefined output
       - maybe change fewest number of variables not their values
@@ -834,7 +836,7 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
 - [explaining image classifiers by counterfactual generation](https://arxiv.org/pdf/1807.08024.pdf) 
     - generate changes (e.g. with GAN in-filling) and see if pred actually changes
     - can search for smallest sufficient region and smallest destructive region
-    - ![Screen Shot 2020-01-20 at 9.14.44 PM](../assets/fido.png)
+    - ![](../assets/fido.png)
 
 ### dnn concept-based explanations
 
@@ -901,7 +903,6 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
       - ex. any pixels which are same in original image and modified image will be given 0 importance
       - lots of different possible choices for baseline (e.g. random Gaussian image, blurred image, random image from the training set)
       - multiplying by $x-x'$ is strange, instead can multiply by distr. weight for $x'$
-        - 
         - could also average over distributions of baseline (this yields **expected gradients**)
       - when we do a Gaussian distr., this is very similar to smoothgrad
   - lrp
@@ -1314,73 +1315,3 @@ These papers don't quite connect to prediction, but are generally about finding 
   - **Avoiding negative side effects.** *Can we transform an RL agent’s [reward function](https://webdocs.cs.ualberta.ca/~sutton/book/ebook/node9.html) to avoid undesired effects on the environment?* For example, can we build a robot that will move an object while avoiding knocking anything over or breaking anything, without manually programming a separate penalty for each possible bad behavior?
   - **Avoiding “reward hacking” and “[wireheading](http://www.agroparistech.fr/mmip/maths/laurent_orseau/papers/ring-orseau-AGI-2011-delusion.pdf)”.** *Can we prevent agents from “gaming” their reward functions, such as by distorting their observations?* For example, can we train an RL agent to minimize the number of dirty surfaces in a building, without causing it to avoid looking for dirty surfaces or to create new dirty surfaces to clean up?
   - **Scalable oversight.** *Can RL agents efficiently achieve goals for which feedback is very expensive?* For example, can we build an agent that tries to clean a room in the way the user would be happiest with, even though feedback from the user is very rare and we have to use cheap approximations (like the presence of visible dirt) during training? The divergence between cheap approximations and what we actually care about is an important source of accident risk.
-
-# misc new papers
-
-- [iNNvestigate neural nets](https://arxiv.org/abs/1808.04260) - provides a common interface and out-of-thebox implementation
-- [tensorfuzz](https://arxiv.org/abs/1807.10875) - debugging
-- [ICIE 1.0: A Novel Tool for Interactive Contextual Interaction Explanations](https://link.springer.com/chapter/10.1007/978-3-030-13463-1_6)
-- [ConvNets and ImageNet Beyond Accuracy: Understanding Mistakes and Uncovering Biases](https://arxiv.org/abs/1711.11443)
-  - cnns are more accurate, robust, and biased then we might expect on imagenet
-- [Bridging Adversarial Robustness and Gradient Interpretability](https://arxiv.org/abs/1903.11626)
-- [explaining a black-box w/ deep variational bottleneck](https://arxiv.org/abs/1902.06918)
-- [Global Explanations of Neural Networks: Mapping the Landscape of Predictions](https://arxiv.org/abs/1902.02384)
-- [neural stethoscopes](https://arxiv.org/pdf/1806.05502.pdf) 
-- [xGEMs](https://arxiv.org/pdf/1806.08867.pdf) 
-- [maximally invariant data perturbation](https://arxiv.org/pdf/1806.07004.pdf)
-- hard coding
-  - [SSIM layer](https://arxiv.org/abs/1806.09152)
-  - Inverting Supervised Representations with Autoregressive Neural Density Models 
-- [nonparametric var importance](http://proceedings.mlr.press/v80/feng18a/feng18a.pdf)
-- [supervised local modeling](https://arxiv.org/abs/1807.02910 ) 
-- [detect adversarial cnn attacks w/ feature maps](https://digitalcollection.zhaw.ch/handle/11475/8027) 
-- [adaptive dropout](https://arxiv.org/abs/1807.08024)
-- [lesion detection saliency](https://arxiv.org/pdf/1807.07784.pdf) 
-- [How Important Is a Neuron?](https://arxiv.org/abs/1805.12233)
-- [symbolic execution for dnns](https://arxiv.org/pdf/1807.10439.pdf)
-- [L-shapley abd C-shapley](https://arxiv.org/pdf/1808.02610.pdf)
-- [Interpreting Neural Network Judgments via Minimal, Stable, and Symbolic Corrections](https://arxiv.org/pdf/1802.07384.pdf)
-- [DeepPINK: reproducible feature selection in deep neural networks](https://arxiv.org/pdf/1809.01185.pdf)
-- "Explaining Deep Learning Models -- A Bayesian Non-parametric Approach"
-- [Detecting Potential Local Adversarial Examples for Human-Interpretable Defense](https://arxiv.org/pdf/1809.02397.pdf)
-- [Interpreting Layered Neural Networks via Hierarchical Modular Representation](https://arxiv.org/pdf/1810.01588.pdf)
-- [Entropic Variable Boosting for Explainability & Interpretability in Machine Learning](https://arxiv.org/abs/1810.07924)
-- [Understanding Individual Decisions of CNNs via Contrastive Backpropagation](https://arxiv.org/abs/1812.02100v1)
-- [Understanding Impacts of High-Order Loss Approximations and Features in Deep Learning Interpretation](https://arxiv.org/abs/1902.00407)
-- [A Game Theoretic Approach to Class-wise Selective Rationalization](https://arxiv.org/abs/1910.12853)
-- [Additive Explanations for Anomalies Detected from Multivariate Temporal Data](https://dl.acm.org/citation.cfm?id=3358121)
-- [Asymmetric Shapley values: incorporating causal knowledge into model-agnostic explainability](https://arxiv.org/abs/1910.06358)
-- [Consistent Regression using Data-Dependent Coverings](https://arxiv.org/abs/1907.02306)
-- [Contextual Local Explanation for Black Box Classifiers](https://arxiv.org/abs/1910.00768)
-- [Contextual Prediction Difference Analysis](https://arxiv.org/abs/1910.09086)
-- [Contrastive Relevance Propagation for Interpreting Predictions by a Single-Shot Object Detector](https://ieeexplore.ieee.org/abstract/document/8851770)
-- [CXPlain: Causal Explanations for Model Interpretation under Uncertainty](https://arxiv.org/abs/1910.12336)
-- [Ensembles of Locally Independent Prediction Models](https://arxiv.org/abs/1911.01291)
-- [Explaining Black-Box Models Using Interpretable Surrogates](https://link.springer.com/chapter/10.1007/978-3-030-29908-8_1)
-- [Explaining Classifiers with Causal Concept Effect (CaCE)](https://arxiv.org/abs/1907.07165)
-- [Generative Counterfactual Introspection for Explainable Deep Learning](https://arxiv.org/abs/1907.03077)
-- [Grid Saliency for Context Explanations of Semantic Segmentation](https://arxiv.org/abs/1907.13054)
-- [Optimal Explanations of Linear Models](https://arxiv.org/abs/1907.04669)
-- [Privacy Risks of Explaining Machine Learning Models](https://arxiv.org/abs/1907.00164)
-- [RL-LIM: Reinforcement Learning-based Locally Interpretable Modeling](https://arxiv.org/abs/1909.12367)
-- [The many Shapley values for model explanation](https://arxiv.org/abs/1908.08474)
-- [XDeep: An Interpretation Tool for Deep Neural Networks](https://arxiv.org/abs/1911.01005)
-- [Shapley Decomposition of R-Squared in Machine Learning Models](https://arxiv.org/abs/1908.09718)
-- [Understanding Global Feature Contributions Through Additive Importance Measures](https://arxiv.org/abs/2004.00668) (covert, lundberg, & lee 2020)
-  - SAGE score looks at reduction in predictive accuracy due to subsets of features
-- [Personal insights for altering decisions of tree-based ensembles over time](https://dl.acm.org/doi/abs/10.14778/3380750.3380752)
-- [Gradient-Adjusted Neuron Activation Profiles for Comprehensive Introspection of Convolutional Speech Recognition Models](https://arxiv.org/abs/2002.08125)[
-- [Learning Global Transparent Models from Local Contrastive Explanations](https://arxiv.org/abs/2002.08247)
-- [Boosting Algorithms for Estimating Optimal Individualized Treatment Rules](https://arxiv.org/abs/2002.00079)
-- [Explaining Knowledge Distillation by Quantifying the Knowledge](https://arxiv.org/abs/2003.03622)
-- [Adversarial TCAV -- Robust and Effective Interpretation of Intermediate Layers in Neural Networks](https://arxiv.org/abs/2002.03549)
-- [Problems with Shapley-value-based explanations as feature importance measures](https://arxiv.org/abs/2002.11097)*
-- [When Explanations Lie: Why Many Modified BP Attributions Fail](https://www.researchgate.net/profile/Leon_Sixt/publication/338115768_When_Explanations_Lie_Why_Many_Modified_BP_Attributions_Fail/links/5e4e226292851c7f7f48becb/When-Explanations-Lie-Why-Many-Modified-BP-Attributions-Fail.pdf)
-- [Estimating Training Data Influence by Tracking Gradient Descent](https://arxiv.org/abs/2002.08484)
-- [Interpreting Interpretations: Organizing Attribution Methods by Criteria](https://arxiv.org/abs/2002.07985)
-- [Explaining Groups of Points in Low-Dimensional Representations](https://arxiv.org/abs/2003.01640)
-- [Causal Interpretability for Machine Learning -- Problems, Methods and Evaluation](https://arxiv.org/abs/2003.03934)
-- [Cyclic Boosting - An Explainable Supervised Machine Learning Algorithm - IEEE Conference Publication](https://ieeexplore.ieee.org/abstract/document/8999347)
-- [A Causality Analysis for Nonlinear Classification Model with Self-Organizing Map and Locally Approximation to Linear Model](https://www.semanticscholar.org/paper/A-Causality-Analysis-for-Nonlinear-Classification-Kirihata-Maekawa/4b76830be36ae14d878f7c0a7ff2508bfe172f64)
-- [Black-Box Saliency Map Generation Using Bayesian Optimisation](https://arxiv.org/abs/2001.11366)
-- [ON NETWORK SCIENCE AND MUTUAL INFORMATION FOR EXPLAINING DEEP NEURAL NETWORKS ](https://umangsbhatt.github.io/reports/icassp_2020.pdf)

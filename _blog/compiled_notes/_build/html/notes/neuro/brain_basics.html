@@ -1,12 +1,16 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>7.2. brain basics</title>
     
-  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -16,88 +20,110 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-  <link rel="stylesheet"
-    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
-
-    
-    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
-    <script type="text/javascript" src="../../_static/togglebutton.js"></script>
-    <script type="text/javascript" src="../../_static/clipboard.min.js"></script>
-    <script type="text/javascript" src="../../_static/copybutton.js"></script>
-    <script type="text/javascript">var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script type="text/javascript" src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-    <script async="async" type="text/javascript" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script type="text/javascript">
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" type="text/javascript" src="../../_static/sphinx-thebe.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="7.3. vision" href="vissci.html" />
     <link rel="prev" title="7.1. disease" href="disease.html" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
 
-
-
+    <!-- Google Analytics -->
+    
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="../../index.html">
-  
-  <img src="../../_static/logo.png" class="logo" alt="logo">
-  
-  
-</a>
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+    </a>
 </div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../intro.html">
-   overview 👋
-  </a>
- </li>
-</ul>
-<ul class="current nav sidenav_l1">
- <li class="toctree-l1 collapsible-parent">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    overview 👋
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../research_ovws/research_ovws.html">
    1. research_ovws
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_comp_neuro.html">
      1.1. comp neuro
@@ -169,14 +195,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../cs/cs.html">
    2. cs
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../cs/retrieval.html">
      2.1. info retrieval
@@ -213,44 +242,37 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../cs/databases.html">
-     2.8. overview
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cs/databases.html#sql">
-     2.9. sql
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../cs/os.html">
-     2.10. os
+     2.8. os
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../cs/arch.html">
-     2.11. architecture
+     2.9. architecture
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../cs/reproducibility.html">
-     2.12. reproducibility
+     2.10. reproducibility
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../cs/comp_theory.html">
-     2.13. cs theory
+     2.11. cs theory
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../math/math.html">
    3. math
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../math/differential_equations.html">
      3.1. differential equations
@@ -297,14 +319,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../stat/stat.html">
    4. stat
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../stat/graphical_models.html">
      4.1. graphical models
@@ -346,14 +371,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../ml/ml.html">
    5. ml
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../ml/kernels.html">
      5.1. kernels
@@ -405,14 +433,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../ai/ai.html">
    6. ai
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../ai/search.html">
      6.1. search
@@ -459,14 +490,17 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 current active collapsible-parent">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="neuro.html">
    7. neuro
   </a>
-  <ul class="current collapse-ul">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="disease.html">
      7.1. disease
@@ -508,92 +542,152 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
 </ul>
 
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
     </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/notes/neuro/brain_basics.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-        <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/csinva/csinva.github.io"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        
-        
-    </div>
-</div>
-
-
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                title="Fullscreen mode"><i
-                    class="fas fa-expand"></i></button></a>
-
-        <!-- Launch buttons -->
-
-    </div>
-
-    <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
-        
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
         </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/csinva/csinva.github.io"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/notes/neuro/brain_basics.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#delineations">
    7.2.1. delineations
@@ -798,19 +892,239 @@
  </li>
 </ul>
 
-        </nav>
-        
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>brain basics</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#delineations">
+   7.2.1. delineations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#numbers">
+   7.2.2. numbers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#whole-brain">
+   7.2.3. whole brain
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#thalamocortical-system">
+     7.2.3.1. thalamocortical system
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#limbic-system">
+     7.2.3.2. limbic system
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#brain-stem">
+     7.2.3.3. brain stem
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   7.2.4. 1 - introduction
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#genomics">
+     7.2.4.1. genomics
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cellular-components">
+     7.2.4.2. cellular components
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cellular-diversity">
+     7.2.4.3. cellular diversity
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#neural-circuits">
+     7.2.4.4. neural circuits
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#organization-of-the-human-nervous-system">
+     7.2.4.5. organization of the human nervous system
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#neural-systems">
+     7.2.4.6. neural systems
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#structural-analysis">
+     7.2.4.7. structural analysis
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#functional-analysis-of-neural-systems">
+     7.2.4.8. functional analysis of neural systems
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#analyzing-complex-behavior">
+     7.2.4.9. analyzing complex behavior
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#electrical-signals-of-nerve-cells">
+   7.2.5. 2 - electrical signals of nerve cells
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#voltage-dependent-membranes">
+   7.2.6. 3 - voltage-dependent membranes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ion-channel-transporters">
+   7.2.7. 4 - ion channel transporters
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#synapses">
+   7.2.8. 5 - synapses
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#synapse-types">
+     7.2.8.1. synapse types
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#neurotransmitter-types">
+     7.2.8.2. neurotransmitter types
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#discovery">
+     7.2.8.3. discovery
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#synaptic-transmission">
+     7.2.8.4. synaptic transmission
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#neurotransmitters">
+   7.2.9. 6 - neurotransmitters
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#receptors">
+     7.2.9.1. receptors
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#excitatory">
+     7.2.9.2. excitatory
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#inhibitory">
+     7.2.9.3. inhibitory
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#neuromodulators">
+     7.2.9.4. neuromodulators
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#molecular-signaling">
+   7.2.10. 7 - molecular signaling
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#localization">
+     7.2.10.1. localization
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#celllular-receptors">
+     7.2.10.2. celllular receptors
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#second-messengers">
+     7.2.10.3. second messengers
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#protein-control">
+     7.2.10.4. protein control
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#long-term-alteration">
+     7.2.10.5. long-term alteration
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#synaptic-plasticity">
+   7.2.11. 8 - synaptic plasticity
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#short-term">
+     7.2.11.1. short-term
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#long-term">
+     7.2.11.2. long-term
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="section" id="brain-basics">
-<h1>7.2. brain basics<a class="headerlink" href="#brain-basics" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="delineations">
-<h2>7.2.1. delineations<a class="headerlink" href="#delineations" title="Permalink to this headline">¶</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="brain-basics">
+<h1><span class="section-number">7.2. </span>brain basics<a class="headerlink" href="#brain-basics" title="Permalink to this headline">#</a></h1>
+<section id="delineations">
+<h2><span class="section-number">7.2.1. </span>delineations<a class="headerlink" href="#delineations" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>3 things</p>
 <ul>
@@ -830,9 +1144,9 @@
 </li>
 <li><p>cerebellum?? (has 60% of neurons)</p></li>
 </ul>
-</div>
-<div class="section" id="numbers">
-<h2>7.2.2. numbers<a class="headerlink" href="#numbers" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="numbers">
+<h2><span class="section-number">7.2.2. </span>numbers<a class="headerlink" href="#numbers" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>human brain</p>
 <ul>
@@ -844,9 +1158,9 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="whole-brain">
-<h2>7.2.3. whole brain<a class="headerlink" href="#whole-brain" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="whole-brain">
+<h2><span class="section-number">7.2.3. </span>whole brain<a class="headerlink" href="#whole-brain" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p><em>Cerebrum</em> - The cerebrum is the largest portion of the brain, and contains tools which are responsible for most of the brain’s function. It is divided into four sections:</p>
 <ul>
@@ -881,8 +1195,8 @@
 </ul>
 </li>
 </ul>
-<div class="section" id="thalamocortical-system">
-<h3>7.2.3.1. thalamocortical system<a class="headerlink" href="#thalamocortical-system" title="Permalink to this headline">¶</a></h3>
+<section id="thalamocortical-system">
+<h3><span class="section-number">7.2.3.1. </span>thalamocortical system<a class="headerlink" href="#thalamocortical-system" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>cortex has layers that are connected in columns through 5 layers</p>
 <ul>
@@ -891,9 +1205,9 @@
 </li>
 <li><p>thalamus has lots of connections - gates what goes into cortex</p></li>
 </ul>
-</div>
-<div class="section" id="limbic-system">
-<h3>7.2.3.2. limbic system<a class="headerlink" href="#limbic-system" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="limbic-system">
+<h3><span class="section-number">7.2.3.2. </span>limbic system<a class="headerlink" href="#limbic-system" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>The limbic system contains glands which help relay emotions. Many hormonal responses that the body generates are initiated in this area. The limbic system includes the amygdala, hippocampus, hypothalamus and thalamus.</p></li>
 <li><p>Amygdala:The amygdala helps the body respond to emotions, memories and fear. It is a large portion of the telencephalon, located within the temporal lobe which can be seen from the surface of the brain. This visible bulge is known as the uncus.</p></li>
@@ -901,24 +1215,24 @@
 <li><p>Hypothalamus:The hypothalamus region of the brain controls mood, thirst, hunger and temperature. It also contains glands which control the hormonal processes throughout the body.</p></li>
 <li><p>Thalamus:The Thalamus is located in the center of the brain. It helps to control the attention span, sensing pain and monitors input that moves in and out of the brain to keep track of the sensations the body is feeling.</p></li>
 </ul>
-</div>
-<div class="section" id="brain-stem">
-<h3>7.2.3.3. brain stem<a class="headerlink" href="#brain-stem" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="brain-stem">
+<h3><span class="section-number">7.2.3.3. </span>brain stem<a class="headerlink" href="#brain-stem" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>All basic life functions originate in the brain stem, including heartbeat, blood pressure and breathing. In humans, this area contains the medulla, midbrain and pons. This is commonly referred to as the simplest part of the brain, as most creatures on the evolutionary scale have some form of brain creation that resembles the brain stem. The brain stem consists of midbrain, pons and medulla.</p></li>
 <li><p>Midbrain:The midbrain, also known as the mesencephalon is made up of the tegmentum and tectum. These parts of the brain help regulate body movement, vision and hearing. The anterior portion of the midbrain contains the cerebral peduncle which contains the axons that transfer messages from the cerebral cortex down the brain stem, which allows voluntary motor function to take place.</p></li>
 <li><p>Pons: This portion of the metencephalon is located in the hindbrain, and links to the cerebellum to help with posture and movement. It interprets information that is used in sensory analysis or motor control. The pons also creates the level of consciousness necessary for sleep.</p></li>
 <li><p>Medulla: The medulla or medulla oblongata is an essential portion of the brain stem which maintains vital body functions such as the heart rate and breathing.</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="introduction">
-<h2>7.2.4. 1 - introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="introduction">
+<h2><span class="section-number">7.2.4. </span>1 - introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p><img alt="" src="../../_images/map.png" /></p></li>
 </ul>
-<div class="section" id="genomics">
-<h3>7.2.4.1. genomics<a class="headerlink" href="#genomics" title="Permalink to this headline">¶</a></h3>
+<section id="genomics">
+<h3><span class="section-number">7.2.4.1. </span>genomics<a class="headerlink" href="#genomics" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>male Drosophila uses body position and environment to add rhythmic notes to song</p>
 <ul>
@@ -957,9 +1271,9 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="cellular-components">
-<h3>7.2.4.2. cellular components<a class="headerlink" href="#cellular-components" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="cellular-components">
+<h3><span class="section-number">7.2.4.2. </span>cellular components<a class="headerlink" href="#cellular-components" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><em>neuron doctrine</em> by Ramon y Cajal / Sherrington replaces Golgi’s <em>reticular theory</em></p>
 <ul>
@@ -994,9 +1308,9 @@
 <ul class="simple">
 <li><p>glial stem cells - make more glia and sometimes neurons</p></li>
 </ul>
-</div>
-<div class="section" id="cellular-diversity">
-<h3>7.2.4.3. cellular diversity<a class="headerlink" href="#cellular-diversity" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="cellular-diversity">
+<h3><span class="section-number">7.2.4.3. </span>cellular diversity<a class="headerlink" href="#cellular-diversity" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>~10^11 neurons, more glia</p></li>
 <li><p>histology - microscopic analysis of cells</p></li>
@@ -1008,18 +1322,18 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="neural-circuits">
-<h3>7.2.4.4. neural circuits<a class="headerlink" href="#neural-circuits" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="neural-circuits">
+<h3><span class="section-number">7.2.4.4. </span>neural circuits<a class="headerlink" href="#neural-circuits" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><em>neuropil</em> - bundle of dendrites/axons/glia - where synaptic connectivity occurs</p></li>
 <li><p><em>afferent</em> neuron - carries info toward the brain</p></li>
 <li><p><em>efferent</em> neuron - carries info away</p></li>
 <li><p><em>myotatic reflex</em> example - knee-jerk</p></li>
 </ul>
-</div>
-<div class="section" id="organization-of-the-human-nervous-system">
-<h3>7.2.4.5. organization of the human nervous system<a class="headerlink" href="#organization-of-the-human-nervous-system" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="organization-of-the-human-nervous-system">
+<h3><span class="section-number">7.2.4.5. </span>organization of the human nervous system<a class="headerlink" href="#organization-of-the-human-nervous-system" title="Permalink to this headline">#</a></h3>
 <ol class="simple">
 <li><p>sensory systems</p></li>
 <li><p>motor systems</p></li>
@@ -1059,25 +1373,25 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="neural-systems">
-<h3>7.2.4.6. neural systems<a class="headerlink" href="#neural-systems" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="neural-systems">
+<h3><span class="section-number">7.2.4.6. </span>neural systems<a class="headerlink" href="#neural-systems" title="Permalink to this headline">#</a></h3>
 <ol class="simple">
 <li><p>unity of function - divide things into different systems - ex. visual</p></li>
 <li><p>representation of information - ex. vision can be <em>topographic map</em>, taste can be <em>computational map</em></p></li>
 <li><p>subdivision into subsystems - ex. vision has color, form, motion, all in parallel</p></li>
 </ol>
-</div>
-<div class="section" id="structural-analysis">
-<h3>7.2.4.7. structural analysis<a class="headerlink" href="#structural-analysis" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="structural-analysis">
+<h3><span class="section-number">7.2.4.7. </span>structural analysis<a class="headerlink" href="#structural-analysis" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>often-used <em>lesion studies</em></p></li>
 <li><p><em>anterograde</em> - source to termination</p></li>
 <li><p>vs <em>retrograde</em> - terminus to source</p></li>
 </ul>
-</div>
-<div class="section" id="functional-analysis-of-neural-systems">
-<h3>7.2.4.8. functional analysis of neural systems<a class="headerlink" href="#functional-analysis-of-neural-systems" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="functional-analysis-of-neural-systems">
+<h3><span class="section-number">7.2.4.8. </span>functional analysis of neural systems<a class="headerlink" href="#functional-analysis-of-neural-systems" title="Permalink to this headline">#</a></h3>
 <ol class="simple">
 <li><p><em>electrophysiological recording</em> - uses electrodes, neuron-level</p></li>
 </ol>
@@ -1090,17 +1404,17 @@
 <ul class="simple">
 <li><p>computerized tomography (CT), magnetic resonance imaging (MRI), diffusion tensor imaging (DTI), PET, SPECT, fMRI, MEG, MSI</p></li>
 </ul>
-</div>
-<div class="section" id="analyzing-complex-behavior">
-<h3>7.2.4.9. analyzing complex behavior<a class="headerlink" href="#analyzing-complex-behavior" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="analyzing-complex-behavior">
+<h3><span class="section-number">7.2.4.9. </span>analyzing complex behavior<a class="headerlink" href="#analyzing-complex-behavior" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><em>cognitive neuroscience</em> - understanding higher-order functions</p></li>
 <li><p><em>neuroethology</em> - complex behaviors of animals</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="electrical-signals-of-nerve-cells">
-<h2>7.2.5. 2 - electrical signals of nerve cells<a class="headerlink" href="#electrical-signals-of-nerve-cells" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="electrical-signals-of-nerve-cells">
+<h2><span class="section-number">7.2.5. </span>2 - electrical signals of nerve cells<a class="headerlink" href="#electrical-signals-of-nerve-cells" title="Permalink to this headline">#</a></h2>
 <ul>
 <li><p><em>microelectrode</em> - fine glass tubing filled with good conductor</p></li>
 <li><p>all cells have a voltage difference across them</p>
@@ -1159,9 +1473,9 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="voltage-dependent-membranes">
-<h2>7.2.6. 3 - voltage-dependent membranes<a class="headerlink" href="#voltage-dependent-membranes" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="voltage-dependent-membranes">
+<h2><span class="section-number">7.2.6. </span>3 - voltage-dependent membranes<a class="headerlink" href="#voltage-dependent-membranes" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>voltage clamp - one electrode outside, one inside</p>
 <ul>
@@ -1213,9 +1527,9 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="ion-channel-transporters">
-<h2>7.2.7. 4 - ion channel transporters<a class="headerlink" href="#ion-channel-transporters" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="ion-channel-transporters">
+<h2><span class="section-number">7.2.7. </span>4 - ion channel transporters<a class="headerlink" href="#ion-channel-transporters" title="Permalink to this headline">#</a></h2>
 <ul>
 <li><p>patch electrode - pull a piece of membrane out <img alt="" src="../../_images/4_A.png" /></p>
 <ol class="simple">
@@ -1287,11 +1601,11 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="synapses">
-<h2>7.2.8. 5 - synapses<a class="headerlink" href="#synapses" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="synapse-types">
-<h3>7.2.8.1. synapse types<a class="headerlink" href="#synapse-types" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="synapses">
+<h2><span class="section-number">7.2.8. </span>5 - synapses<a class="headerlink" href="#synapses" title="Permalink to this headline">#</a></h2>
+<section id="synapse-types">
+<h3><span class="section-number">7.2.8.1. </span>synapse types<a class="headerlink" href="#synapse-types" title="Permalink to this headline">#</a></h3>
 <ol class="simple">
 <li><p>electrical synapses</p></li>
 </ol>
@@ -1318,9 +1632,9 @@
 </li>
 <li><p>pumps get rid of neurotransmitters quickly</p></li>
 </ul>
-</div>
-<div class="section" id="neurotransmitter-types">
-<h3>7.2.8.2. neurotransmitter types<a class="headerlink" href="#neurotransmitter-types" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="neurotransmitter-types">
+<h3><span class="section-number">7.2.8.2. </span>neurotransmitter types<a class="headerlink" href="#neurotransmitter-types" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>released when Ca comes in due to depolarization</p></li>
 </ul>
@@ -1342,9 +1656,9 @@
 <li><p>loaded into vesicles in bouton</p></li>
 <li><p>presynaptic cell takes these back up</p></li>
 </ul>
-</div>
-<div class="section" id="discovery">
-<h3>7.2.8.3. discovery<a class="headerlink" href="#discovery" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="discovery">
+<h3><span class="section-number">7.2.8.3. </span>discovery<a class="headerlink" href="#discovery" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>neurotransmitter lifecycle</p>
 <ul>
@@ -1355,9 +1669,9 @@
 </li>
 <li><p>Loewi’s experiment showed that neurotransmitters can flow through solution to synchronize heart</p></li>
 </ul>
-</div>
-<div class="section" id="synaptic-transmission">
-<h3>7.2.8.4. synaptic transmission<a class="headerlink" href="#synaptic-transmission" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="synaptic-transmission">
+<h3><span class="section-number">7.2.8.4. </span>synaptic transmission<a class="headerlink" href="#synaptic-transmission" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><em>minis</em> = <em>MEPP</em> - not big enough to fire the neuron</p>
 <ul>
@@ -1391,12 +1705,12 @@
 </li>
 <li><p>can measure single ligand-gated channel by clamping it alone</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="neurotransmitters">
-<h2>7.2.9. 6 - neurotransmitters<a class="headerlink" href="#neurotransmitters" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="receptors">
-<h3>7.2.9.1. receptors<a class="headerlink" href="#receptors" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="neurotransmitters">
+<h2><span class="section-number">7.2.9. </span>6 - neurotransmitters<a class="headerlink" href="#neurotransmitters" title="Permalink to this headline">#</a></h2>
+<section id="receptors">
+<h3><span class="section-number">7.2.9.1. </span>receptors<a class="headerlink" href="#receptors" title="Permalink to this headline">#</a></h3>
 <ul>
 <li><p>ionotropic</p>
 <table class="colwidths-auto table">
@@ -1477,9 +1791,9 @@
 <li><p><img alt="" src="../../_images/6_1.png" /></p></li>
 <li><p><img alt="" src="../../_images/6_4.png" /></p></li>
 </ul>
-</div>
-<div class="section" id="excitatory">
-<h3>7.2.9.2. excitatory<a class="headerlink" href="#excitatory" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="excitatory">
+<h3><span class="section-number">7.2.9.2. </span>excitatory<a class="headerlink" href="#excitatory" title="Permalink to this headline">#</a></h3>
 <ol class="simple">
 <li><p><em>Acetylcholine</em> - excites muscle cells</p></li>
 </ol>
@@ -1508,9 +1822,9 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="inhibitory">
-<h3>7.2.9.3. inhibitory<a class="headerlink" href="#inhibitory" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="inhibitory">
+<h3><span class="section-number">7.2.9.3. </span>inhibitory<a class="headerlink" href="#inhibitory" title="Permalink to this headline">#</a></h3>
 <ol class="simple">
 <li><p>,4. <em>GABA</em>/<em>glycine</em></p></li>
 </ol>
@@ -1524,9 +1838,9 @@
 </li>
 <li><p>immature neurons have high intracellular Cl - people don’t know why</p></li>
 </ul>
-</div>
-<div class="section" id="neuromodulators">
-<h3>7.2.9.4. neuromodulators<a class="headerlink" href="#neuromodulators" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="neuromodulators">
+<h3><span class="section-number">7.2.9.4. </span>neuromodulators<a class="headerlink" href="#neuromodulators" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>lifecycle molecules</p>
 <ul>
@@ -1595,12 +1909,12 @@
 <ul class="simple">
 <li><p>binds to guanylyl cyclase</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="molecular-signaling">
-<h2>7.2.10. 7 - molecular signaling<a class="headerlink" href="#molecular-signaling" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="localization">
-<h3>7.2.10.1. localization<a class="headerlink" href="#localization" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="molecular-signaling">
+<h2><span class="section-number">7.2.10. </span>7 - molecular signaling<a class="headerlink" href="#molecular-signaling" title="Permalink to this headline">#</a></h2>
+<section id="localization">
+<h3><span class="section-number">7.2.10.1. </span>localization<a class="headerlink" href="#localization" title="Permalink to this headline">#</a></h3>
 <ul>
 <li><p>chemical signaling mechanisms</p>
 <ol class="simple">
@@ -1655,9 +1969,9 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="celllular-receptors">
-<h3>7.2.10.2. celllular receptors<a class="headerlink" href="#celllular-receptors" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="celllular-receptors">
+<h3><span class="section-number">7.2.10.2. </span>celllular receptors<a class="headerlink" href="#celllular-receptors" title="Permalink to this headline">#</a></h3>
 <ol class="simple">
 <li><p><strong>ionotropic</strong> - channel-linked receptors</p></li>
 </ol>
@@ -1709,9 +2023,9 @@
 <li><p>ex. estrogen receptors</p></li>
 <li><p>activates intracellular transcription factors</p></li>
 </ul>
-</div>
-<div class="section" id="second-messengers">
-<h3>7.2.10.3. second messengers<a class="headerlink" href="#second-messengers" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="second-messengers">
+<h3><span class="section-number">7.2.10.3. </span>second messengers<a class="headerlink" href="#second-messengers" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Ca must be pumped out of neuron or</p></li>
 <li><p>Ca can be stored into internal stores in ER</p></li>
@@ -1723,9 +2037,9 @@
 </li>
 <li><p>Phospholipase C -&gt; PKC -&gt; IP3 lets Ca out of ER (usually kills cell)</p></li>
 </ul>
-</div>
-<div class="section" id="protein-control">
-<h3>7.2.10.4. protein control<a class="headerlink" href="#protein-control" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="protein-control">
+<h3><span class="section-number">7.2.10.4. </span>protein control<a class="headerlink" href="#protein-control" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>kinases (on switch) add phosphate to protein and makes them active</p>
 <ul>
@@ -1748,9 +2062,9 @@
 </li>
 <li><p>phosphatases (off switch) remove phosphates</p></li>
 </ul>
-</div>
-<div class="section" id="long-term-alteration">
-<h3>7.2.10.5. long-term alteration<a class="headerlink" href="#long-term-alteration" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="long-term-alteration">
+<h3><span class="section-number">7.2.10.5. </span>long-term alteration<a class="headerlink" href="#long-term-alteration" title="Permalink to this headline">#</a></h3>
 <ul>
 <li><p>long-term alteration requires epigenetic changes (change transcription factors)</p></li>
 <li><p>transcription factor <em>CREB</em> requires three things at once</p>
@@ -1794,12 +2108,12 @@
 </ul>
 </li>
 </ul>
-</div>
-</div>
-<div class="section" id="synaptic-plasticity">
-<h2>7.2.11. 8 - synaptic plasticity<a class="headerlink" href="#synaptic-plasticity" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="short-term">
-<h3>7.2.11.1. short-term<a class="headerlink" href="#short-term" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="synaptic-plasticity">
+<h2><span class="section-number">7.2.11. </span>8 - synaptic plasticity<a class="headerlink" href="#synaptic-plasticity" title="Permalink to this headline">#</a></h2>
+<section id="short-term">
+<h3><span class="section-number">7.2.11.1. </span>short-term<a class="headerlink" href="#short-term" title="Permalink to this headline">#</a></h3>
 <ul>
 <li><p>measured by firing neuron before muscle and recording response</p>
 <ol class="simple">
@@ -1850,9 +2164,9 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="long-term">
-<h3>7.2.11.2. long-term<a class="headerlink" href="#long-term" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="long-term">
+<h3><span class="section-number">7.2.11.2. </span>long-term<a class="headerlink" href="#long-term" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>HM lost his memory w/out hippocampus</p>
 <ul>
@@ -1891,9 +2205,9 @@
 </li>
 <li><p>epilepsy - neurons fire together and wire together</p></li>
 </ul>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1917,41 +2231,53 @@
 
               </div>
               
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="disease.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">7.1. </span>disease</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="vissci.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">7.3. </span>vision</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
         </div>
     </div>
-    
-    
-    <div class='prev-next-bottom'>
-        
-    <a class='left-prev' id="prev-link" href="disease.html" title="previous page">7.1. disease</a>
-    <a class='right-next' id="next-link" href="vissci.html" title="next page">7.3. vision</a>
-
-    </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Chandan Singh<br/>
+  
+      &copy; Copyright None.<br/>
+    <div class="extra_footer">
       <p>
-        
-          By Chandan Singh<br/>
-        
-            &copy; Copyright None.<br/>
-          <div class="extra_footer">
-            <p>
 Many of these images are taken from resources on the web.
 </p>
-          </div>
-      </p>
     </div>
-  </footer>
-</main>
+</p>
+        </footer>
+    </div>
+    
+</div>
 
 
       </div>
     </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-    
-  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
 
-
-    
   </body>
 </html>
