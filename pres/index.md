@@ -83,7 +83,9 @@ Deep learning models have achieved impressive predictive performance by learning
 
 - [figs](https://docs.google.com/presentation/d/1Gk5mEcSp6uePS72q-oF-GhXgLSbHfq2jWqMTKfwDaJw/present?slide=id.g112865da5f6_0_0)
   - [figs old](https://docs.google.com/presentation/d/1hMF3kMoQDdrM6BHDq1CWVYsibgVyaOVtz0l2WEIbsy0/edit?usp=sharing)
-- [hierarchical shrinkage](https://docs.google.com/presentation/d/1inyZnryrs6dNO6VCn7ng6Rjc-XCkuagxx9YVHKJWqrM/present?slide=id.g1154243f54b_2_372)
+- [HS ICML pres](https://docs.google.com/presentation/d/1z8CzmEWWsAq3-QvlLST4RA9JKpZd5ELtkf5vx6ysXCQ/edit?usp=sharing)
+  - [hierarchical shrinkage](https://docs.google.com/presentation/d/1inyZnryrs6dNO6VCn7ng6Rjc-XCkuagxx9YVHKJWqrM/present?slide=id.g1154243f54b_2_372) (group meeting)
+
 - [iai](https://docs.google.com/presentation/d/19liiotfBKNPm2lli6U1ZOPd8jCHEL8Y99HcEZFHOSsQ/edit#slide=id.gc6d28d5565_0_0) (group meeting)
   - [iai-rulevetting](https://docs.google.com/presentation/d/1Ui-NWeJobJ4MhcK-1RG20q8PSyQq4harjOsZ-ml8K4s/edit#slide=id.gc6d28d5565_0_0) (215A presentation)
 - [stablerules preliminary](https://docs.google.com/presentation/d/1KSUncdizsQ3cmpsZE0uGGWudQuewMKnukI8V3uManHc/edit#slide=id.gd4a2e647f0_0_0)
@@ -129,7 +131,7 @@ Deep learning models have achieved impressive predictive performance by learning
 
 ### posters
 - [acd poster](/assets/write_ups/acd_18_bairday_poster.pdf)
-    - [acd + interp poster](/assets/write_ups/utokyo_19_interp_poster.pdf)
+	- [acd + interp poster](/assets/write_ups/utokyo_19_interp_poster.pdf)
 - [random forest image segmentation](/assets/write_ups/singh_15_rf_segmentation.pdf)
 - [wsimule poster](/assets/write_ups/wsimule_17_nips_poster.pdf)
 
@@ -145,7 +147,6 @@ Deep learning models have achieved impressive predictive performance by learning
     - [cnls physics-informed ml conference](https://web.cvent.com/event/ead9c1d8-c632-4896-ba9e-d5f3fec81e86/websitePage:a9dfad1e-e21c-46b6-bf79-eee883bd1448) (2022)
     - disentangled interpretations and how we can use them ([simons workshop](https://simons.berkeley.edu/events/disentangled-interpretations-and-how-we-can-use-them))
     - tom tom founder's ml conference (2017)
-
 - misc releases
   - [grad slam 2022](https://eecs.berkeley.edu/news/2022/03/chandan-singh-2022-berkeley-grad-slam-competition-semi-finalist)
   - [covid coe article](https://engineering.berkeley.edu/news/2020/04/getting-the-right-equipment-to-the-right-people/)

@@ -139,7 +139,7 @@ Some notes on decision theory based on Berkeley's CS 188 course and  "Artificial
   - set of states s
   - set of actions a
   - stochastic transition model $P(s' \vert s,a)$
-  - reward function R(s)
+  - reward function $R(s)$
     - utility aggregates rewards, for models more complex than mdps reward can be a function of past sequences of actions / observations
 - want policy $\pi (s)$ - what action to do in state s
   - optimal policy yields highest expected utlity
@@ -154,8 +154,8 @@ Some notes on decision theory based on Berkeley's CS 188 course and  "Artificial
     - ex. agent is guaranteed to get to terminal state eventually - *proper policy*
 - expected utility executing $\pi$: $U^\pi (s) = \mathbb E_{s_1,...,s_t}\left[\sum_t \gamma^t R(s_t)\right]$
   - when we use discounted utilities, $\pi$ is independent of starting state
-  - $\pi^*(s) = \underset{\pi}{argmax} \: U^\pi (s) = \underset{a}{argmax} \sum_{s'} P(s' \vert s,a) U'(s)$
-- experience replay: instead of learning from samples one by one, want to reduce correlation between subsequent samples
+  - $\pi^*(s) = \underset{\pi}{\text{argmax}} \: U^\pi (s) = \underset{a}{\text{argmax}} \sum_{s'} P(s' \vert s,a) U(s')$
+- *experience replay* - instead of learning from samples one by one, want to reduce correlation between subsequent samples
   - take a large batch of samples and sample randomly from it, rather than going sequentially
 
 ## value iteration
@@ -169,7 +169,7 @@ Some notes on decision theory based on Berkeley's CS 188 course and  "Artificial
     - contraction only has 1 fixed point
     - Bellman update is a contraction on the space of utility vectors and therefore converges
     - error is reduced by factor of $\gamma$ each iteration
-  - also, terminating condition -  if $ \vert  \vert U_{i+1}-U_i \vert  \vert  < \epsilon (1-\gamma) / \gamma$ then $ \vert  \vert U_{i+1}-U \vert  \vert <\epsilon$
+  - also, terminating condition: if $ \vert  \vert U_{i+1}-U_i \vert  \vert  < \epsilon (1-\gamma) / \gamma$ then $ \vert  \vert U_{i+1}-U \vert  \vert <\epsilon$
   - what actually matters is *policy loss* $ \vert  \vert U^{\pi_i}-U \vert  \vert $ - the most the agent can lose by executing $\pi_i$ instead of the optimal policy $\pi^*$
     - if $ \vert  \vert U_i -U \vert  \vert  < \epsilon$ then $ \vert  \vert U^{\pi_i} - U \vert  \vert  < 2\epsilon \gamma / (1-\gamma)$
 
@@ -181,7 +181,7 @@ Some notes on decision theory based on Berkeley's CS 188 course and  "Artificial
       - $U_i(s) = R(s) + \gamma \: \sum_{s'} P(s' \vert s, \pi_i(s)) U_i(s')$
       - can solve exactly for small spaces, or approximate (set of lin. eqs.)
   2. *policy improvement* - calculate a new MEU policy $\pi_{i+1}$ using $U_i$
-    - same as above, just $\pi^*(s) = \underset{\pi}{argmax} \: U^\pi (s) = \underset{a}{argmax} \sum_{s'} P(s' \vert s,a) U'(s)$
+    - same as above, just $\pi^*(s) = \underset{\pi}{\text{argmax}} \: U^\pi (s) = \underset{a}{\text{argmax}} \sum_{s'} P(s' \vert s,a) U'(s)$
 - *asynchronous policy iteration* - don't have to update all states at once
 
 ## partially observable markov decision processes (POMDP)
@@ -212,19 +212,19 @@ Some notes on decision theory based on Berkeley's CS 188 course and  "Artificial
 # reinforcement learning -- R&N 21.1-21.6
 
 - *reinforcement learning* - use observed rewards to learn optimal policy for the environment
-  - in ch 17, agent had model of environment (P(s'|s, a) and R(s))
+  - in ch 17, agent had model of environment ($P(s'|s, a)$ and $R(s)$)
 - 2 problems
   - *passive* - given $\pi$, learn $U^\pi (s)$
   - *active* - *explore* states to find utilities and *exploit* to get highest reward
 - 2 model types, 3 agent designs
   - model-based: can predict next state/reward before taking action (for MDP, requires learning $P(s'|s,a)$)
-    - *utility-based agent* - learns utility function on states
+    - *utility-based agent* - learns $U(S)$ - utility function on states
       - requires model of the environment
   - model-free 
-    - *Q-learning agent*: learns *action-utility function* = *Q-function* maps actions $\to$ utility
-    - *reflex agent*: learns policy that maps directly from states to actions
+    - *Q-learning agent*: learns $Q(s, a)$ - *action-utility function* = *Q-function* maps actions $\to$ utility
+    - *reflex agent*: learns $Q(s)$ - policy that maps directly from states to actions
 
-## passive reinforcement learning
+## passive reinforcement learning (estimate value function given policy)
 
 - given policy $\pi$, learn $U^\pi (s) = \mathbb E\left[ \sum_{t=0}^{\infty} \gamma^t R(S_t)\right]$
   
@@ -232,19 +232,22 @@ Some notes on decision theory based on Berkeley's CS 188 course and  "Artificial
 - **direct utility estimation**: treat states independently
   - run trials to sample utility
   - average to get expected total reward for each state = expected total reward from each state
-- **adaptive dynamic programming** (ADP) - sample to estimate transition model $P(s'|s, a)$ and rewards $R(s)$, then plug into Bellman eqn to find $U^\pi(s)$ (plug in at each step)
+- **adaptive dynamic programming** (ADP) - 2 steps
+  - sample to estimate transition model $P(s'|s, a)$ and rewards $R(s)$
+  - find $U^\pi(s)$ with the Bellman eqn (plug in at each step)
   - we might want to enforce a prior on the model (two ways)
     1. *Bayesian reinforcement learning* - assume a prior $P(h)$ on transition model h
       - use prior to calculate $P(h \vert e)$
       - use $P(h|e)$ to calculate optimal policy: $\pi^* = \underset{\pi}{argmax} \sum_h P(h \vert e) u_h^\pi$
         - $u_h^\pi$= expected utility over all possible start states, obtained by executing policy $\pi$ in model h
-    2. give best outcome in the worst case over H (from *robust control theory*)
+    2. *robust control theory* - give best outcome in the worst case over H
       - $\pi^* = \underset{\pi}{argmax}\:  \underset{h}{\min} \: u_h^\pi$
+  
 - **temporal-difference learning** - adjust utility estimates towards local equilibrium for correct utilities
   - like an approximation of ADP
   - when we transition $s \to s'$, update $U^\pi(s) = U^\pi (s) + \alpha \left[R(s) - U^\pi (s) + \gamma \:U^\pi (s') \right]$
     - $\alpha$ should decrease over time to converge
-  - *prioritized sweeping* - prefers to make adjustments to states whose likely successors have just undergone a large adjustment in their own utility estimates
+  - *prioritized sweeping* - prefer adjustments to states whose likely successors have just undergone a large adjustment in their own utility estimates
     - speeds things up
 
 ## active reinforcement learning
@@ -256,10 +259,9 @@ Some notes on decision theory based on Berkeley's CS 188 course and  "Artificial
   - must explore all actions, not just those in the policy
 
 - *bandit* problems - determining exploration policy
-
   - *n-armed bandit* - pulling n levelers on a slot machine, each with different distr.
   - *Gittins index* - function of number of pulls / payoff
-
+  
 - coorect schemes should be *GLIE* - greedy in the limit of infinite exploration - visits all states infinitely, but eventually become greedy
 
 ### agent examples
@@ -273,17 +275,15 @@ Some notes on decision theory based on Berkeley's CS 188 course and  "Artificial
   - now must learn transitions (same as adp)
   - update rule same as passive TD
 
-### learning action-utility function
+### learning action-utility function $Q(s, a)$
 
 - $U(s) = \underset{a}{\max} \: Q(s,a)$
   - ADP version: $Q(s, a) = R(s) + \gamma \sum_{s'} P(s'|s, a) \underset{a'}{\max} Q(s', a')$
   - TD version: $Q(s,a) = Q(s,a) + \alpha [R(s) - Q(s,a) + \gamma \: \underset{a'}{\max} Q(s', a')]$ - **this is what is usually referred to as Q-learning**
+  - this is *off-policy* (only uses best Q-value, doesn't pay attention to actualy policy being followed) - more flexible
 - *SARSA* (state-action-reward-state-action) is related: $Q(s,a) = Q(s,a) + \alpha [R(s) + \gamma \: Q(s', a') - Q(s,a) ]$
-  - here, a' is action actually taken
-- Q-learning is *off-policy* (only uses best Q-value)
-  - more flexible
-- SARSA is *on-policy* (pays attention to actual policy being followed) 
-
+  - here, $a'$ is action actually taken
+  - SARSA is *on-policy* (pays attention to actual policy being followed) 
 - can approximate Q-function with something other than a lookup table
   - ex. linear function of parameters $\hat{U}_\theta(s) = \theta_1f_1(s) + ... + \theta_n f_n(s)$
     - can learn params online with *delta rule* = *wildrow-hoff rule*: $\theta_i = \theta - \alpha \: \frac{\partial Loss}{\partial \theta_i}$
@@ -301,11 +301,94 @@ Some notes on decision theory based on Berkeley's CS 188 course and  "Artificial
   - when environment/policy is stochastic, more difficult
     1. could sample mutiple times to compute gradient
     2. REINFORCE algorithm - could approximate gradient at $\theta$ by just sampling at $\theta$: $\nabla_\theta p(\theta) \approx \frac{1}{N} \sum_{j=1}^N \frac{(\nabla_\theta \pi_\theta (s, a_j)) R_j (s)}{\pi_\theta (s, a_j)}$
-    3. PEGASUS - *correlated sampling* - ex. 2 blackjack programs would both be dealt same hands -  want to see different policies on same things
+    3. PEGASUS - *correlated sampling* - ex. 2 blackjack programs would both be dealt same hands - want to see different policies on same things
     
 
-# planninglove
+# deep rl course
+
+**[berkeley (sergey levine)](https://rail.eecs.berkeley.edu/deeprlcourse/)**
+
+## "supervised rl" (imitation learning)
+
+- imitation learning / behavioral cloning -- given pairs of observations / actions, learn policy to take action given observation $\pi_\theta(a_t|o_t)$
+  - basic example: cost function is 0 when action is same as human's in data and 1 otherwise
+  - usually inefficient / insufficient
+- one improvement: DAgger (ross et al. 2011) - use learned policy to generate synthetic observations and have humans label those
+  - we can query observations when deviate slightly from expert trajectory
+- goal-conditioned behavioral cloning - subdivides data based on different goals - learn $\pi_\theta(a|s, g)$
+  - example - given a goal location, take actions to move a robot there
+- [Learning to Reach Goals via Iterated Supervised Learning](https://arxiv.org/abs/1912.06088) (ghosh ... levine, 2020)
+  - move robot arm based on policy (initially random)
+  - see which random goals are met
+  - use this as goal-conditioned behavioral cloning
+  - update policy and repeat
+
+## rl algorithms overview
+
+- 3 general steps (iterated)
+  - fit a model / estimate the return
+  - improve the policy
+  - generate samples (i.e. run the policy)
+- $\theta^{\star}=\arg \max _{\theta} E_{\tau \sim p_{\theta}(\tau)}\left[\sum_{t} r\left(\mathbf{s}_{t}, \mathbf{a}_{t}\right)\right]$
+  - *Value-based*: estimate value function or $Q$-function of the optimal policy (no explicit policy)
+  - *Policy gradients*: directly differentiate the above objective
+    - policy network $\pi_\theta(a|s)$
+    - gradients are extremely noisy compared to supervised learning
+  - *Actor-critic*: estimate value function or Q-function of the current policy (critic), use it to improve policy (actor)
+  - *Model-based RL*: estimate the transition model, and then...
+    - just use the model to plan (no plicy)
+      - trajectory optimization/optimal control (continuous space) - optimize over actions
+      - discrete planning - e.g. monte carlo tree search
+    - backpropagate gradients into the policy
+    - use the model to learn a value function
+
+|                           | fit model / estimate return                    | improve policy                                               |
+| ------------------------- | ---------------------------------------------- | ------------------------------------------------------------ |
+| value-based               | fit $V(s)$ or $Q(s, a)$                        | $\pi(s) = \text{argmax}_a Q(s, a)$                           |
+| (direct) policy gradients | evaluate returns $R_\tau = \sum_t r(s_t, a_t)$ | $\theta = \theta + \alpha \nabla_\theta E[\sum_t r(s_t, a_t)]$ |
+| actor-critic              | fit $V(s)$ or $Q(s, a)$                        | $\theta = \theta + \alpha \nabla_\theta E[Q(s, a)]$          |
+| model-based               | maybe model $P(s'|s, a)$                       |                                                              |
+
+- sample efficiency
+  - on policy - must generate new samples each time the policy is changed
+  - off policy - can improve policy without generating new samples from it (so look at a bunch of samples then update)
+  - offline rl - data collected only once with any policy, then want to learn good policy from that
+
+![rl_sample_efficiency](../assets/rl_sample_efficiency.png)
+
+
+
+## other problems
+
+### inverse rl
+
+Inverse RL - learning reward functions from example
+
+- ai should be uncertain about utitilies
+- utilties should be inferred from human preferences
+- in systems that interact, need to express preferences in terms of game theory
+- can solve it with a GAN: e.g. [A Connection between Generative Adversarial Networks, Inverse Reinforcement Learning, and Energy-Based Models](https://arxiv.org/abs/1611.03852) (finn et al. 2016)
+- [Apprenticeship learning via inverse reinforcement learning | Proceedings of the twenty-first international conference on Machine learning](https://dl.acm.org/doi/abs/10.1145/1015330.1015430?casa_token=inLo77c-zqAAAAAA:JirDplyZ_94a7A0WXavY3V5napVOxdJ5Qjkzin02K4bapip6D5bQNuPAefmkYeYAb9OSVyqkEKRcCJs) (abbeel & ng, 2004) - good intro to inverse RL
+
+### planning
 
 - [Efficient Learning in Cellular Simultaneous Recurrent Neural Networks - The Case of Maze Navigation Problem](https://ieeexplore.ieee.org/abstract/document/4220851?casa_token=Nw_d05ju8VcAAAAA:iXvxp_PDrMHtsoIk1_g2CnPPGFdMZcu_PqcyeyFUXsGrQWoQFRz8JvRmzjgofdwlQKYdsfpvK-g) (ilin et al. 2007) - explored connections between planning algorithms and recurrent NNs
 - [Value Iteration Networks](https://arxiv.org/abs/1602.02867) (tamar...levine, & abbeel, 2017)
   - represent value iteration as a fully differentiable DNN using recurrence
+
+### metalearning
+
+- learning to learn (very close to multi-task learning)
+  - e.g. learn optimizer, representation
+  - e.g. learn how to explore
+  - e.g. learn how to do RL for various different walking tasks and then generalize to new walking task with few samples
+  - [Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks](https://proceedings.mlr.press/v70/finn17a.html) (finn, levine, & abbeel, 2017) - treat metalearner itself as an RL algorithm
+- multitask learning
+  - sometimes have the ability to decide which new tasks to add (e.g. by changing simulator)
+
+### offline rl
+
+- core issue with offline RL: want policy that improves over the training policy, but can’t deviate from the training policy due to distr. shift
+- one idea: instead of collecting new samples with policy, reweight samples using importance sampling based on policy
+- [IQL: Implicit Q-learning](https://arxiv.org/abs/2110.06169) (ashvin’s paper, 2021)
+  - IQL - foregoes need to evaluate unseen actions

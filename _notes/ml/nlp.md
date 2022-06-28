@@ -123,6 +123,7 @@ Some notes on natural language processing, focused on modern improvements based 
 - [Neural Bag-of-Ngrams](https://www.aaai.org/ocs/index.php/AAAI/AAAI17/paper/download/14513/14079) (li et al. 2017) - learn ngram repr. via deep version of skip-gram
 - [fasttext](https://www.ijcai.org/Proceedings/16/Papers/401.pdf) (jin et al. 2016)
 - [Improving N-gram Language Models with Pre-trained Deep Transformer](https://arxiv.org/abs/1911.10235) (wang et al. 2019) - use transformer to generate synthetic data for n-gram model
+- [(DirtyCat): Encoding High-Cardinality String Categorical Variables](https://ieeexplore.ieee.org/abstract/document/9086128) (cerda & varoquax, 2020) - use embedding model to improve string categorical variables
 
 # huggingface tutorial
 
