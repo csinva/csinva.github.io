@@ -2,6 +2,8 @@
 
 # 2022
 
+- [I Am Very Tall - The Atlantic](https://www.theatlantic.com/ideas/archive/2022/06/tall-people-height-psychology/661381/)
+  
 - [Shtetl-Optimized » Blog Archive » OpenAI!](https://scottaaronson.blog/?p=6484)
   - When you start reading about AI safety, it’s striking how there are two separate communities—the one mostly worried about machine learning perpetuating racial and gender biases, and the one mostly worried about superhuman AI turning the planet into goo—who not only don’t work together, but are *at each other’s throats*, with each accusing the other of totally missing the point. I persist, however, in the possibly-naïve belief that these are merely two extremes along a single continuum of AI worries
   

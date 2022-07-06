@@ -118,8 +118,15 @@ Some notes on natural language processing, focused on modern improvements based 
 
 # interpretable nlp
 
-- [skip-gram model](https://arxiv.org/abs/1301.3781) (mikolov et al. 2013) - simplifies neural language models for efficient training of word embeddings
-  - maximizing the probabilities of words being predicted by their context words
+- word2vec - 2 papers
+  - [initial word2vec](https://arxiv.org/abs/1301.3781) (mikolov et al. 2013) - simplifies neural language models for efficient training of word embeddings
+    - maximizing the probabilities of words being predicted by their context words (with a DNN)
+    - continuous bag-of-words (CBOW) - predict current word from window (order doesn't matter)
+    - skipgram - use current word to predict surrounding window -- nearby context words weighted more heavily
+
+  - [Distributed Representations of Words and Phrases and their Compositionality](https://arxiv.org/abs/1310.4546) (mikolov et al. 2013) - word2vec improvements
+    - identify key ngrams and give them their own vecs
+
 - [Neural Bag-of-Ngrams](https://www.aaai.org/ocs/index.php/AAAI/AAAI17/paper/download/14513/14079) (li et al. 2017) - learn ngram repr. via deep version of skip-gram
 - [fasttext](https://www.ijcai.org/Proceedings/16/Papers/401.pdf) (jin et al. 2016)
 - [Improving N-gram Language Models with Pre-trained Deep Transformer](https://arxiv.org/abs/1911.10235) (wang et al. 2019) - use transformer to generate synthetic data for n-gram model
