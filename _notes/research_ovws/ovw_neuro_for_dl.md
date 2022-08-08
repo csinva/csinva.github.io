@@ -52,6 +52,8 @@ For more information, see a very good review on modeling individual neurons<dt-c
 
  Questions at this level bear on population coding, or how groups of neurons jointly represent information.
 
+**engram** - unit of [cognitive](https://en.wikipedia.org/wiki/Cognition) information imprinted in a physical substance, theorized to be the means by which [memories](https://en.wikipedia.org/wiki/Memory) are stored
+
 # High-level concepts
 
  Key concepts differentiate the learning process. Online,

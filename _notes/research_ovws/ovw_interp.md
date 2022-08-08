@@ -326,14 +326,16 @@ For an implementation of many of these models, see the python [imodels package](
   - *boosting* - fit all $f$ simultaneously, e.g. one tree for each $f_i$  on each iteration
   - interpretability depends on (1) transparency of $f_i$ and (2) number of terms
   - can also add in interaction terms (e.g. $f_i(x_1, x_2)$), but need a way to rank which interactions to add (see notes on interactions)
-- [NODE-GAM: Neural Generalized Additive Model for Interpretable Deep Learning](https://arxiv.org/abs/2106.01613) (chang, caruana, & goldenberg, 2021)
-  - includes interaction terms (all features are used initially and backprop decides which are kept) - they call this $GA^2M$
+- [Neural Additive Models: Interpretable Machine Learning with Neural Nets](https://arxiv.org/abs/2004.13912) (agarwal, ..., caruana, & hinton, 2021) - GAM where we learn $f$ with a neural net
+  - no interaction terms
+  - [Sparse Neural Additive Model: Interpretable Deep Learning with Feature Selection via Group Sparsity](https://arxiv.org/abs/2202.12482)
   - [Creating Powerful and Interpretable Models with Regression Networks](https://arxiv.org/abs/2107.14417) (2021) - generalizes neural GAM to include interaction terms
     - train first-order functions
     - fix them and predict residuals with next order (and repeat for as many orders as desired)
-  - [Neural Additive Models: Interpretable Machine Learning with Neural Nets](https://arxiv.org/abs/2004.13912) - GAM where we learn $f$ with a neural net
-    - no interaction terms
-    - [Sparse Neural Additive Model: Interpretable Deep Learning with Feature Selection via Group Sparsity](https://arxiv.org/abs/2202.12482)
+- [NODE-GAM: Neural Generalized Additive Model for Interpretable Deep Learning](https://arxiv.org/abs/2106.01613) (chang, caruana, & goldenberg, 2021)
+  - includes interaction terms (all features are used initially and backprop decides which are kept) - they call this $GA^2M$
+  - uses neural oblivious trees rather than standard DNN
+  - idea dates back to [Generalized Additive Neural Networks](https://dl.acm.org/doi/pdf/10.1145/312129.312228) (potts, 1999)
 - [InterpretML: A Unified Framework for Machine Learning Interpretability](https://arxiv.org/abs/1909.09223) (nori...caruana 2019)  - software package mostly focused on explainable boosting machine (EBM)
   - EBM - GAM which uses boosted decision trees as $f_i$
   - [Accuracy, Interpretability, and Differential Privacy via Explainable Boosting](https://arxiv.org/abs/2106.09680) (nori, caruana et al. 2021)
@@ -1052,14 +1054,32 @@ How interactions are defined and summarized is a very difficult thing to specify
 
 - influential instances - want to find important data points
 - deletion diagnostics - delete a point and see how much it changed
-- [influence funcs](https://arxiv.org/abs/1703.04730) (koh & liang, 2017): use **Hessian** ($\theta x \theta$) to give effect of upweighting a point
-  - influence functions = inifinitesimal approach - upweight one person by infinitesimally small weight and see how much estimate changes (e.g. calculate first derivative)
+- [influence funcs](https://arxiv.org/abs/1703.04730) (koh & liang, 2017): use **Hessian** ($\in \mathbb{R}^{\theta   \times \theta}$) to give effect of upweighting a point
+  - influence functions = inifinitesimal approach - upweight one point by infinitesimally small weight and see how much estimate changes (e.g. calculate first derivative)
   - influential instance - when data point removed, has a strong effect on the model (not necessarily same as an outlier)
   - requires access to gradient (e.g. nn, logistic regression)
   - take single step with Newton's method after upweighting loss
   - yield change in parameters by removing one point
-  - yield change in loss at one point by removing a different point (by multiplying above by cahin rule)
+  - yield change in loss at one point by removing a different point (by multiplying above by chain rule)
   - yield change in parameters by modifying one point
+- [Representer Point Selection for Explaining Deep Neural Networks](https://arxiv.org/abs/1811.09720) (yeh, ... , ravikumar, 2018)
+  - **representer values** - decomposes pre-activation single prediction of a DNN into linear combinations of training points -- weights are the representer values
+    - much faster than influence funcs
+    - gives signed values
+
+  - a **representer theorem** is any of several related results stating that a minimizer $f^*$ of a regularized [empirical risk functional](https://en.wikipedia.org/wiki/Empirical_risk_minimization) defined over a reproducing kernel Hilbert space can be represented as a finite linear combination of kernel products evaluated on the input points in the training set data
+
+- Revisiting Methods for Finding Influential Examples ([k & sogaard, 2021](https://arxiv.org/pdf/2111.04683.pdf))
+  - argue that influence should be estimated relative to model states and data samples -- *expected* influence scores
+  - different ways to compute the influence of a training example $x_{train}$ on a test example $x_{test}$
+  - *leave-one-out*: calculate loss on $x_{test}$ when trained on all points except x_train - loss when trained on all points
+  - *influence functions*: $I\left(x_{\text {train }}, x_{\text {test }}\right)=$ $\nabla_{\theta} L\left(x_{\text {test }}, \hat{\theta}\right)^{T} H_{\hat{\theta}}^{-1} \nabla_{\theta} L\left(x_{\text {train }}, \hat{\theta}\right)$, where $\hat{\theta}$ is the weights of the trained model and $H_{\hat{\theta}}=\frac{1}{n} \sum_{i=1}^{n} \nabla_{\theta}^{2} L\left(x_{i}, \hat{\theta}\right)$
+  - *TraceInIdeal* (pruthi et al. 2020): train with batch size 1, measure change in loss of $x_{test}$ after taking a training step with $x_{train}$
+    - *TraceInCP* approximates this using larger batch sizes
+
+  - *representer point selection*: $I\left(x_{\text {train }}, x_{\text {test }}\right)=\frac{-1}{2 \lambda n} \frac{\partial L\left(x_{\text {train }}, \hat{\theta}\right)}{\partial \Phi\left(x_{\text {train }}, \hat{\theta}\right)} f\left(x_{\text {train }}\right)^{T} f\left(x_{\text {test }}\right)$
+  - *Grad-dot*: $I\left(x_{\text {train }}, x_{t e s t}\right)=\nabla_{\theta} L\left(x_{\text {train }}, \hat{\theta}\right)^{T} \nabla_{\theta} L\left(x_{\text {test }}, \hat{\theta}\right) .$
+
 
 ## model summarization
 

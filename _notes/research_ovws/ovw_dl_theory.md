@@ -25,6 +25,9 @@ some more concrete questions:
 - what is happening when training err stops going down but val err keeps going down (interpolation regime)?
 - what are good statistical markers of an effectively trained DNN?
 - how far apart are 2 nets?
+- *verification* - does dnn satisfy a specification (e.g $l_p$ robustness)
+  - *convex barrier* - limitation in the tightness of the bounds obtainable by the convex relaxation of the output of a neural network
+
 
 
 

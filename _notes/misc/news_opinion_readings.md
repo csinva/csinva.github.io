@@ -2,11 +2,14 @@
 
 # 2022
 
+- [Your Book Review: Progress And Poverty - by Scott Alexander](https://astralcodexten.substack.com/p/your-book-review-progress-and-poverty)
+  - "Poverty and wealth disparity appear to be perversely linked with progress, The Rent is Too Damn High, and it's all because of land."
+
 - [I Am Very Tall - The Atlantic](https://www.theatlantic.com/ideas/archive/2022/06/tall-people-height-psychology/661381/)
-  
+
 - [Shtetl-Optimized » Blog Archive » OpenAI!](https://scottaaronson.blog/?p=6484)
   - When you start reading about AI safety, it’s striking how there are two separate communities—the one mostly worried about machine learning perpetuating racial and gender biases, and the one mostly worried about superhuman AI turning the planet into goo—who not only don’t work together, but are *at each other’s throats*, with each accusing the other of totally missing the point. I persist, however, in the possibly-naïve belief that these are merely two extremes along a single continuum of AI worries
-  
+
 - https://www.washingtonpost.com/technology/2022/06/11/google-ai-lamda-blake-lemoine/
 - [Punctuality Is Having a Moment - The New York Times](https://www.nytimes.com/2022/06/06/style/punctuality-is-having-a-moment.html)
 - [Opinion | We’ve Got to Stop Requiring Parking Everywhere - The New York Times](https://www.nytimes.com/2022/06/02/opinion/california-parking.html)
@@ -145,6 +148,8 @@
 
 # workism
 
+- [The perfectionism trap | The Economist](https://www.economist.com/1843/2021/08/10/the-perfectionism-trap?utm_campaign=a.coronavirus-special-edition&utm_medium=email.internal-newsletter.np&utm_source=salesforce-marketing-cloud&utm_term=20220730&utm_content=ed-picks-article-link-5&etear=nl_special_5&utm_campaign=a.coronavirus-special-edition&utm_medium=email.internal-newsletter.np&utm_source=salesforce-marketing-cloud&utm_term=7/30/2022&utm_id=1258967) (josh cohen, 2022)
+  - "For centuries [Religion] was the primary means through which we came to terms with being fallen and flawed"
 - [Opinion | 'Lying Flat': Tired Workers Are Opting Out of Careers and Capitalism - The New York Times](https://www.nytimes.com/2021/08/22/opinion/lying-flat-work-rest.html?referringSource=articleShare) (cassady rosenblum, 2021)
   - [These Chinese Millennials Are ‘Chilling,’ and Beijing Isn’t Happy - The New York Times](https://www.nytimes.com/2021/07/03/world/asia/china-slackers-tangping.html) (elsie chen, 2021)
   - [‘Lie Flat’ If You Want, But Be Ready to Pay the Price - Bloomberg](https://www.bloomberg.com/opinion/articles/2021-09-13/-lie-flat-if-you-want-but-be-ready-to-pay-the-price?sref=2o0rZsF1&utm_medium=social&utm_content=view&utm_campaign=socialflow-organic&utm_source=twitter&cmpid%3D=socialflow-twitter-view) (schrager, 2021)

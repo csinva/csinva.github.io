@@ -181,6 +181,25 @@ See also notes in [📌 unsupervised learning](https://csinva.io/notes/ml/unsupe
     - "prior network" maps text embedding to image embedding
   - adds diffusion model
 
+## chaining models together
+
+- https://twitter.com/iraphas13/status/1551959289023016967
+
+## transformer circuits
+
+- [thread](https://transformer-circuits.pub/2021/framework/index.html) (elhage...olah, 2021)
+  - The original transformer paper had a special encoder-decoder structure to support translation, but many modern language models don't include this
+  - residual stream has a lot of linearity
+  - Although they’re parameterized as separate matrices, $W_O W_V$ and $W_Q^T W_K$ can always be thought of as individual, low-rank matrices
+  - if we have a 0-layer net (e.g. predict next token with linear layer given current token), we just learn bigram log-likelihood
+  - tensor/kronecker product $\bigotimes$:
+    - Left-right multiplying: Multiplying $x$ by a tensor product $A \otimes W$ is equivalent to simultaneously left and right multiplying: $(A \otimes W) x=A x W^{T}$
+    - When we add them, it is equivalent to adding the results of this multiplication: $\left(A_{1} \otimes W_{1}+A_{2} \otimes W_{2}\right) x=A_{1} x W_{1}^{T}+A_{2} x W_{2}^{T}$ 
+  - 2 circuits
+    - OV circuit sets things up so that tokens, if attended to by the head, increase the probability of that token, and to a lesser extent, similar tokens
+    - QK circuit then only attends back to tokens which could plausibly be the next token.
+  -  if a single head increases the probability of both `keep… in mind` and `keep… at bay`, it *must* also increase the probability of `keep… in bay` and `keep… at mind`
+
 # graph neural networks
 
 - [Theoretical Foundations of Graph Neural Networks](https://www.youtube.com/watch?v=uF53xsT7mjc)

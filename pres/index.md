@@ -150,7 +150,8 @@ Deep learning models have achieved impressive predictive performance by learning
 - misc releases
   - [grad slam 2022](https://eecs.berkeley.edu/news/2022/03/chandan-singh-2022-berkeley-grad-slam-competition-semi-finalist)
   - [covid coe article](https://engineering.berkeley.edu/news/2020/04/getting-the-right-equipment-to-the-right-people/)
-    - [berkeley science rvw blurb](https://berkeleysciencereview.com/article/ppe-to-the-ppeople-2/) 
+    - [berkeley science rvw blurb](https://berkeleysciencereview.com/article/ppe-to-the-ppeople-2/)
+    - [berkeley data blurb](https://data.berkeley.edu/news/statistics-computer-sciences-team-reflects-tackling-covid-outbreaks)
   - [bids iml piece](https://bids.berkeley.edu/publications/definitions-methods-and-applications-interpretable-machine-learning)
   - [uvacsnews](https://uvacsnews.wordpress.com/2017/05/04/chandansingh/)
     - [uvacsnews2](https://uvacsnews.wordpress.com/2017/05/12/congratulations-to-our-cs-award-winners/)
