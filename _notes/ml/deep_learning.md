@@ -127,7 +127,7 @@ See also notes in [📌 unsupervised learning](https://csinva.io/notes/ml/unsupe
 		- Ronneberger - applies to biomedical segmentation
 	- Pixelnet (2017)
         - predicts pixel-level for different tasks with the same architecture
-        - convolutional layers then 3 FC layers which use outputs from all convolutional layrs together
+        - convolutional layers then 3 FC layers which use outputs from all convolutional layers together
 	- Squeezenet
 	- Yolonet
 	- Wavenet
@@ -158,47 +158,6 @@ See also notes in [📌 unsupervised learning](https://csinva.io/notes/ml/unsupe
   - output gate - conditionally output a relevant part of memory
   - GRUs - similar, merge input / forget units into a single update unit
 
-# transformers
-
-- transformers [original paper](https://arxiv.org/pdf/1706.03762.pdf)
-  - [spatial transformers](https://papers.nips.cc/paper/5854-spatial-transformer-networks.pdf )
-- http://colah.github.io/posts/2014-03-NN-Manifolds-Topology/
-- [A Survey of Transformers](https://arxiv.org/abs/2106.04554)
-  - vanilla transformer: multihead attention, add + norm, position-wise ffn, add + norm
-    - decoder blocks use cross-attention with inputs from embedding blocks
-  - masked self-attention = causal attention = autoregressive attention
-
-## really big models
-
-- [PaLM: Scaling Language Modeling with Pathways](https://arxiv.org/abs/2204.02311) (2022)
-  - 540 Billion
-  - pathways hardware center allows for fast/efficient training
-  - discontinuous improvements - at some point large model improves
-  - prompt engineering: "Explain yourself" - lets it explain jokes
-- [dall-e 2](https://openai.com/dall-e-2/) (2022)
-  - clip is foundation as generative model
-    - generates text + image embeddings
-    - "prior network" maps text embedding to image embedding
-  - adds diffusion model
-
-## chaining models together
-
-- https://twitter.com/iraphas13/status/1551959289023016967
-
-## transformer circuits
-
-- [thread](https://transformer-circuits.pub/2021/framework/index.html) (elhage...olah, 2021)
-  - The original transformer paper had a special encoder-decoder structure to support translation, but many modern language models don't include this
-  - residual stream has a lot of linearity
-  - Although they’re parameterized as separate matrices, $W_O W_V$ and $W_Q^T W_K$ can always be thought of as individual, low-rank matrices
-  - if we have a 0-layer net (e.g. predict next token with linear layer given current token), we just learn bigram log-likelihood
-  - tensor/kronecker product $\bigotimes$:
-    - Left-right multiplying: Multiplying $x$ by a tensor product $A \otimes W$ is equivalent to simultaneously left and right multiplying: $(A \otimes W) x=A x W^{T}$
-    - When we add them, it is equivalent to adding the results of this multiplication: $\left(A_{1} \otimes W_{1}+A_{2} \otimes W_{2}\right) x=A_{1} x W_{1}^{T}+A_{2} x W_{2}^{T}$ 
-  - 2 circuits
-    - OV circuit sets things up so that tokens, if attended to by the head, increase the probability of that token, and to a lesser extent, similar tokens
-    - QK circuit then only attends back to tokens which could plausibly be the next token.
-  -  if a single head increases the probability of both `keep… in mind` and `keep… at bay`, it *must* also increase the probability of `keep… in bay` and `keep… at mind`
 
 # graph neural networks
 
@@ -247,8 +206,6 @@ See also notes in [📌 unsupervised learning](https://csinva.io/notes/ml/unsupe
 
 - **coordconv** - break translation equivariance by passing in i, j coords as extra filters
 - **deconvolution** = transposed convolution = fractionally-strided convolution - like upsampling
-- **attention** = vector of importance weights
-  - to predict or infer one element, such as a pixel in an image or a word in a sentence, we estimate using the attention vector how strongly it is correlated with (or “*attends to*” other elements and take the sum of their values weighted by the attention vector as the approximation of the target
 
 # top-down feedback
 
