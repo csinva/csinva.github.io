@@ -170,28 +170,33 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_transformers.html">
+     1.10. transformers
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_causal_inference.html">
-     1.10. causal inference
+     1.11. causal inference
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_dl_for_neuro.html">
-     1.11. dl for neuro
+     1.12. dl for neuro
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_uncertainty.html">
-     1.12. uncertainty
+     1.13. uncertainty
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_interp.html">
-     1.13. interpretability
+     1.14. interpretability
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_generalization.html">
-     1.14. generalization
+     1.15. generalization
     </a>
    </li>
   </ul>
@@ -692,18 +697,18 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#nlp-basics">
    5.2.1. nlp basics
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#grammars">
+     5.2.1.1. grammars
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#dl-for-nlp">
    5.2.2. dl for nlp
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#attention-transformers">
-     5.2.2.1. attention / transformers
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#interpretable-nlp">
@@ -738,18 +743,18 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#nlp-basics">
    5.2.1. nlp basics
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#grammars">
+     5.2.1.1. grammars
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#dl-for-nlp">
    5.2.2. dl for nlp
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#attention-transformers">
-     5.2.2.1. attention / transformers
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#interpretable-nlp">
@@ -847,6 +852,78 @@ title="Print to PDF"
 </li>
 <li><p><a class="reference external" href="https://eli5.readthedocs.io/en/latest/libraries/sklearn.html#library-scikit-learn">eli5</a> has nice text highlighting for interp</p></li>
 </ul>
+<section id="grammars">
+<h3><span class="section-number">5.2.1.1. </span>grammars<a class="headerlink" href="#grammars" title="Permalink to this headline">#</a></h3>
+<p><em>notes/figures from <a class="reference external" href="https://www.nltk.org/book/">nltk book ch 8/9</a></em></p>
+<ul class="simple">
+<li><p>language -  set of all grammatical sentences</p></li>
+<li><p>grammar - formal notation that can be used for “generating” the members of this set</p></li>
+<li><p>phrases</p>
+<ul>
+<li><p>noun phrases</p></li>
+<li><p>adjective phrase</p></li>
+</ul>
+</li>
+<li><p>structures</p>
+<ul>
+<li><p><strong>constituent structure</strong> - words combine with other words to form units which are substitutable</p>
+<ul>
+<li><p>e.g.  the fact that we can substitute <em>He</em> for <em>The little bear</em> indicates that the latter sequence is a unit</p></li>
+</ul>
+</li>
+<li><p>coordinate structure: if <span class="math notranslate nohighlight">\(v_{1}\)</span> and <span class="math notranslate nohighlight">\(v_{2}\)</span> are both phrases of grammatical category <span class="math notranslate nohighlight">\(X\)</span>, then <span class="math notranslate nohighlight">\(v_{1}\)</span> and <span class="math notranslate nohighlight">\(v_{2}\)</span> is also a phrase of category <span class="math notranslate nohighlight">\(X\)</span></p></li>
+</ul>
+</li>
+<li><p><strong>context-free grammar</strong> - set  of grammar rules that define a gramm</p>
+<ul>
+<li><p>e.g. <span class="math notranslate nohighlight">\(S \to NP\; VP\)</span></p></li>
+<li><p>rules can be probabilities (so we search for the most probable parse tree, rather than returning all)</p></li>
+</ul>
+</li>
+<li><p>phrase tree</p>
+<ul>
+<li><p><img alt="phrase_tree" src="../../_images/phrase_tree.png" /></p></li>
+<li><p><span class="math notranslate nohighlight">\(\begin{array}{lll}\text { Symbol } &amp; \text { Meaning } &amp; \text { Example } \\ \text { S } &amp; \text { sentence } &amp; \text { the man walked } \\ \text { NP } &amp; \text { noun phrase } &amp; \text { a dog } \\ \text { VP } &amp; \text { verb phrase } &amp; \text { saw a park } \\ \text { PP } &amp; \text { prepositional phrase } &amp; \text { with a telescope } \\ \text { Det } &amp; \text { determiner } &amp; \text { the } \\ \text { N }&amp; \text { noun } &amp; \text { dog } \\ \text { V } &amp; \text { verb } &amp; \text { walked } \\ \text{ P} &amp; \text { preposition } &amp; \text { in }\end{array}\)</span></p></li>
+<li><p>note: chunking yields a similar partition of a sequence rather than a tree</p></li>
+</ul>
+</li>
+<li><p>algorithms</p>
+<ul>
+<li><p>top-down parsing (e.g. recursive descent parsing) - starts from <span class="math notranslate nohighlight">\(S\)</span> , and keep expanding the grammar rules until finding a match</p>
+<ul>
+<li><p>RecursiveDescentParser is unable to handle <strong>left-recursive</strong> productions of the form X -&gt; X Y</p></li>
+</ul>
+</li>
+<li><p>bottom-up parsing - can be faster; find sequences that correspond to the righthand side of a grammar rule and replace them with the left</p>
+<ul>
+<li><p>ex. shift-reduce parser</p></li>
+</ul>
+</li>
+<li><p>backtracking ensures we find a parse if one exists (and can find multiple if we choose)</p></li>
+</ul>
+</li>
+<li><p><strong>dependency grammar</strong> focuses on how words relate to other words</p>
+<ul>
+<li><p>relation between <em>head</em> (usually tensed verb) and its <em>dependents</em> (rest of the words)</p></li>
+<li><p><img alt="dep_grammar" src="../../_images/dep_grammar.png" /></p></li>
+<li><p>A dependency graph is <strong>projective</strong> if, when all the words are written in order, the edges can be drawn above the words without crossing</p>
+<ul>
+<li><p>equivalent to saying that a word and all its descendants (dependents and dependents of its dependents, etc.) form a contiguous sequence of words within the sentence</p></li>
+<li><p>above graph is projective</p></li>
+</ul>
+</li>
+<li><p><strong>valencies</strong> - sometimes certain things in a class are allowed buothers are not</p>
+<ul>
+<li><p>e.g. “Buster was frightened” ✅ but “Buster saw frightened” :x:</p></li>
+<li><p>need subcategories of things (e.g. intransitive verb vs transitive verb vs dative verb) to know what symbols are allowed in rules</p></li>
+<li><p>verbs specifically have <strong>complements</strong> associated with them – unlike <strong>modifiers</strong> (like the word “really”), complemetes are not optional and usually not selected in the same way by the head</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>feature-based grammars</strong> - add things to word representations (e.g. plurality) and use these in the grammar rules</p></li>
+</ul>
+</section>
 </section>
 <section id="dl-for-nlp">
 <h2><span class="section-number">5.2.2. </span>dl for nlp<a class="headerlink" href="#dl-for-nlp" title="Permalink to this headline">#</a></h2>
@@ -871,105 +948,30 @@ title="Print to PDF"
 </ul>
 </li>
 </ul>
-<section id="attention-transformers">
-<h3><span class="section-number">5.2.2.1. </span>attention / transformers<a class="headerlink" href="#attention-transformers" title="Permalink to this headline">#</a></h3>
-<ul class="simple">
-<li><p>self-attention layer <a class="reference external" href="https://github.com/mertensu/transformer-tutorial">implementation</a> and <a class="reference external" href="https://homes.cs.washington.edu/~thickstn/docs/transformers.pdf">mathematics</a></p></li>
-<li><p>**self-attention ** - layer that lets word learn its relation to other layers</p>
-<ul>
-<li><p>for each word, want score telling how much importance to place on each other word (queries <span class="math notranslate nohighlight">\(\cdot\)</span> keys)</p></li>
-<li><p>we get an encoding for each word</p>
-<ul>
-<li><p>the encoding of each word returns a weighted sum of the values of the words (the current word gets the highest weight)</p></li>
-<li><p>softmax this and use it to do weighted sum of values<img alt="Screen Shot 2019-08-17 at 2.51.53 PM" src="../../_images/attention.png" /></p></li>
-</ul>
-</li>
-<li><p>(optional) implementation details</p>
-<ul>
-<li><p><strong>multi-headed attention</strong> - just like having many filters, get many encodings for each word</p>
-<ul>
-<li><p>each one can take input as the embedding from the previous attention layer</p></li>
-</ul>
-</li>
-<li><p><strong>position vector</strong> - add this into the embedding of each word (so words know how far apart they are) - usually use sin/cos rather than actual position number</p></li>
-<li><p><strong>padding mask</strong> - add zeros to the end of the sequence</p></li>
-<li><p><strong>look-ahead mask</strong> - might want to mask to only use previous words (e.g. if our final task is decoding)</p></li>
-<li><p><strong>residual + normalize</strong> - after self-attention layer, often have residual connection to previous input, which gets added then normalized</p></li>
-</ul>
-</li>
-<li><p>decoder - each word only allowed to attend to previous positions</p></li>
-<li><p>3 components</p>
-<ul>
-<li><p>queries</p></li>
-<li><p>keys</p></li>
-<li><p>values</p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>attention</strong></p>
-<ul>
-<li><p>encoder reads input and ouputs context vector after each word</p></li>
-<li><p>decoder at each step uses a different weighted combination of these context vectors</p>
-<ul>
-<li><p>specifically, at each step, decoder concatenates its hidden state w/ the attention vector (the weighted combination of the context vectors)</p></li>
-<li><p>this is fed to a feedforward net to output a word</p></li>
-<li><p><img alt="Screen Shot 2019-04-11 at 7.57.14 PM" src="../../_images/nmt.png" /></p></li>
-</ul>
-</li>
-<li><p>at a high level we have <span class="math notranslate nohighlight">\(Q, K, V\)</span> and compute <span class="math notranslate nohighlight">\(softmax(QK^T)V\)</span></p>
-<ul>
-<li><p>instead could simplify it and do <span class="math notranslate nohighlight">\(softmax(XX^T)V\)</span> - this would then be based on kernel</p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>transformer</strong></p>
-<ul>
-<li><p>uses many self-attention layers</p></li>
-<li><p>many stacked layers in encoder + decoder (not rnn: self-attention + feed forward)</p></li>
-<li><p>details</p>
-<ul>
-<li><p>initial encoding: each word -&gt; vector</p></li>
-<li><p>each layer takes a list of fixed size (hyperparameter e.g. length of longest sentence) and outputs a list of that same fixed size (so one output for each word)</p>
-<ul>
-<li><p>can easily train with a masked word to predict the word at the predicted position in the encoding</p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>multi-headed attention has several of each of these (then just concat them)</p></li>
-</ul>
-</li>
-<li><p>recent papers</p>
-<ul>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1706.03762">attention is all you need paper</a> - proposes transformer</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1511.01432">Semi-supervised Sequence Learning</a> (by <a class="reference external" href="https://twitter.com/iamandrewdai">Andrew Dai</a> and <a class="reference external" href="https://twitter.com/quocleix">Quoc Le</a>)</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1802.05365">ELMo</a> (by <a class="reference external" href="https://twitter.com/mattthemathman">Matthew Peters</a> and researchers from <a class="reference external" href="https://allenai.org/">AI2</a> and <a class="reference external" href="https://www.engr.washington.edu/about/bldgs/cse">UW CSE</a>) - no word embeddings - train embeddings w/ bidirectional lstm (on language modeling)</p></li>
-<li><p>context vector is weighted sum of context vector at each word</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1801.06146">ULMFiT</a> (<a class="reference external" href="https://twitter.com/jeremyphoward">Jeremy Howard</a> and <a class="reference external" href="https://twitter.com/seb_ruder">Sebastian Ruder</a>)</p></li>
-<li><p><a class="reference external" href="https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf">OpenAI transformer</a> (by OpenAI researchers <a class="reference external" href="https://twitter.com/alecrad">Radford</a>, <a class="reference external" href="https://twitter.com/karthik_r_n">Narasimhan</a>, <a class="reference external" href="https://twitter.com/timsalimans">Salimans</a>, and <a class="reference external" href="https://twitter.com/ilyasut">Sutskever</a>)</p></li>
-<li><p><span class="xref myst">BERT</span> - semi-supervised learning (predict masked word - this is bidirectional) + supervised finetuning</p></li>
-<li><p><a class="reference external" href="https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf">GPT-2</a> (small released model, full trained model, even larger model from Nvidia)</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1906.08237">XLNet</a></p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1907.11692">roberta</a></p></li>
-</ul>
-</li>
-<li><p>these ideas are <a class="reference external" href="https://arxiv.org/abs/1904.09925">starting to be applied to vision cnns</a></p></li>
-</ul>
-</section>
 </section>
 <section id="interpretable-nlp">
 <h2><span class="section-number">5.2.3. </span>interpretable nlp<a class="headerlink" href="#interpretable-nlp" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://arxiv.org/abs/1301.3781">skip-gram model</a> (mikolov et al. 2013) - simplifies neural language models for efficient training of word embeddings</p>
+<li><p>word2vec - 2 papers</p>
 <ul>
-<li><p>maximizing the probabilities of words being predicted by their context words</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1301.3781">initial word2vec</a> (mikolov et al. 2013) - simplifies neural language models for efficient training of word embeddings</p>
+<ul>
+<li><p>maximizing the probabilities of words being predicted by their context words (with a DNN)</p></li>
+<li><p>continuous bag-of-words (CBOW) - predict current word from window (order doesn’t matter)</p></li>
+<li><p>skipgram - use current word to predict surrounding window – nearby context words weighted more heavily</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://www.aaai.org/ocs/index.php/AAAI/AAAI17/paper/download/14513/14079">Neural Bag-of-Ngrams</a> (li et al. 2017) - learn ngram repr. via deep version of skip-gram</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1310.4546">Distributed Representations of Words and Phrases and their Compositionality</a> (mikolov et al. 2013) - word2vec improvements</p>
+<ul>
+<li><p>identify key ngrams and give them their own vecs</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://ojs.aaai.org/index.php/AAAI/article/view/10954">Neural Bag-of-Ngrams</a> (li et al. 2017) - learn ngram repr. via deep version of skip-gram</p></li>
 <li><p><a class="reference external" href="https://www.ijcai.org/Proceedings/16/Papers/401.pdf">fasttext</a> (jin et al. 2016)</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1911.10235">Improving N-gram Language Models with Pre-trained Deep Transformer</a> (wang et al. 2019) - use transformer to generate synthetic data for n-gram model</p></li>
+<li><p><a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/9086128">(DirtyCat): Encoding High-Cardinality String Categorical Variables</a> (cerda &amp; varoquax, 2020) - use embedding model to improve string categorical variables</p></li>
 </ul>
 </section>
 <section id="huggingface-tutorial">
@@ -986,11 +988,15 @@ title="Print to PDF"
 <li><p>punctuation splitting</p></li>
 <li><p>need to do stemming (e.g. “dog” and “dogs”)</p></li>
 <li><p>unknown token [UNK] for anything not seen - to reduce the amount of this, can get character-based tokens</p></li>
+<li><p>vocab tends to be too bug</p></li>
 </ul>
 </li>
-<li><p>subword-based - break apart meaningful subparts of words</p></li>
-<li><p>character-based - very little prior</p></li>
+<li><p><strong>subword-based</strong> - break apart meaningful subparts of words, most popular (2022)</p>
+<ul>
 <li><p>many more (e.g. byte-level BPE, used in GPT-2)</p></li>
+</ul>
+</li>
+<li><p>character-based - very little prior, generally sequences are too long</p></li>
 </ul>
 </li>
 <li><p><a class="reference external" href="https://huggingface.co/course/chapter2/5?fw=pt">Handling multiple sequences - Hugging Face Course</a></p>

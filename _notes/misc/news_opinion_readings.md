@@ -183,6 +183,7 @@
 
 # ai
 
+- [Deep Learning Alone Isn’t Getting Us To Human-Like AI](https://www.noemamag.com/deep-learning-alone-isnt-getting-us-to-human-like-ai/)
 - [Timnit Gebru was critical of Google’s approach to ethical AI](https://www.washingtonpost.com/technology/2020/12/23/google-timnit-gebru-ai-ethics/)
 - [Disembodied Machine Learning: On the Illusion of Objectivity in NLP](https://openreview.net/pdf?id=fkAxTMzy3fs	)
 - [Stop talking about AI ethics. It’s time to talk about power. | MIT Technology Review](https://www.technologyreview.com/2021/04/23/1023549/kate-crawford-atlas-of-ai-review/?utm_medium=tr_social&utm_campaign=site_visitor.unpaid.engagement&utm_source=Twitter#Echobox=1619548322)

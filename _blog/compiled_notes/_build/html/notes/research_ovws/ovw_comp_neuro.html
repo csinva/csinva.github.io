@@ -170,28 +170,33 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="ovw_transformers.html">
+     1.10. transformers
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="ovw_causal_inference.html">
-     1.10. causal inference
+     1.11. causal inference
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_dl_for_neuro.html">
-     1.11. dl for neuro
+     1.12. dl for neuro
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_uncertainty.html">
-     1.12. uncertainty
+     1.13. uncertainty
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_interp.html">
-     1.13. interpretability
+     1.14. interpretability
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_generalization.html">
-     1.14. generalization
+     1.15. generalization
     </a>
    </li>
   </ul>
@@ -689,92 +694,99 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#navigation">
-   1.1.1. navigation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#high-dimensional-computing">
-   1.1.2. high-dimensional computing
+  <a class="reference internal nav-link" href="#high-dimensional-hyperdimensional-computing">
+   1.1.1. high-dimensional (hyperdimensional) computing
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#definitions">
-     1.1.2.1. definitions
+    <a class="reference internal nav-link" href="#motivation">
+     1.1.1.1. motivation
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#ex-identify-the-language">
-     1.1.2.2. ex. identify the language
+    <a class="reference internal nav-link" href="#operations">
+     1.1.1.2. operations
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#data-structures">
+       1.1.1.2.1. data structures
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#examples">
+       1.1.1.2.2. examples
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#details">
-     1.1.2.3. details
+     1.1.1.3. details
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#papers">
-     1.1.2.4. papers
+     1.1.1.4. papers
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dnns-with-memory">
-   1.1.3. dnns with memory
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#visual-sampling">
-   1.1.4. visual sampling
+   1.1.2. visual sampling
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#dynamic-routing-between-capsules">
-   1.1.5. dynamic routing between capsules
+   1.1.3. dynamic routing between capsules
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#hierarchical-temporal-memory-htm">
-   1.1.6. hierarchical temporal memory (htm)
+   1.1.4. hierarchical temporal memory (htm)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#necortical-structure">
-     1.1.6.1. necortical structure
+     1.1.4.1. necortical structure
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#principles">
-     1.1.6.2. principles
+     1.1.4.2. principles
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id1">
-     1.1.6.3. papers
+     1.1.4.3. papers
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#forgetting">
-   1.1.7. forgetting
+   1.1.5. forgetting
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#deeptune-style">
-   1.1.8. deeptune-style
+   1.1.6. deeptune-style
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#population-coding">
-   1.1.9. population coding
+   1.1.7. population coding
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#interesting-misc-papers">
-   1.1.10. interesting misc papers
+   1.1.8. interesting misc papers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#navigation">
+   1.1.9. navigation
   </a>
  </li>
 </ul>
@@ -797,92 +809,99 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#navigation">
-   1.1.1. navigation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#high-dimensional-computing">
-   1.1.2. high-dimensional computing
+  <a class="reference internal nav-link" href="#high-dimensional-hyperdimensional-computing">
+   1.1.1. high-dimensional (hyperdimensional) computing
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#definitions">
-     1.1.2.1. definitions
+    <a class="reference internal nav-link" href="#motivation">
+     1.1.1.1. motivation
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#ex-identify-the-language">
-     1.1.2.2. ex. identify the language
+    <a class="reference internal nav-link" href="#operations">
+     1.1.1.2. operations
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#data-structures">
+       1.1.1.2.1. data structures
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#examples">
+       1.1.1.2.2. examples
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#details">
-     1.1.2.3. details
+     1.1.1.3. details
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#papers">
-     1.1.2.4. papers
+     1.1.1.4. papers
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dnns-with-memory">
-   1.1.3. dnns with memory
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#visual-sampling">
-   1.1.4. visual sampling
+   1.1.2. visual sampling
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#dynamic-routing-between-capsules">
-   1.1.5. dynamic routing between capsules
+   1.1.3. dynamic routing between capsules
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#hierarchical-temporal-memory-htm">
-   1.1.6. hierarchical temporal memory (htm)
+   1.1.4. hierarchical temporal memory (htm)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#necortical-structure">
-     1.1.6.1. necortical structure
+     1.1.4.1. necortical structure
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#principles">
-     1.1.6.2. principles
+     1.1.4.2. principles
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id1">
-     1.1.6.3. papers
+     1.1.4.3. papers
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#forgetting">
-   1.1.7. forgetting
+   1.1.5. forgetting
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#deeptune-style">
-   1.1.8. deeptune-style
+   1.1.6. deeptune-style
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#population-coding">
-   1.1.9. population coding
+   1.1.7. population coding
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#interesting-misc-papers">
-   1.1.10. interesting misc papers
+   1.1.8. interesting misc papers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#navigation">
+   1.1.9. navigation
   </a>
  </li>
 </ul>
@@ -897,34 +916,25 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="comp-neuro">
 <h1><span class="section-number">1.1. </span>comp neuro<a class="headerlink" href="#comp-neuro" title="Permalink to this headline">#</a></h1>
-<section id="navigation">
-<h2><span class="section-number">1.1.1. </span>navigation<a class="headerlink" href="#navigation" title="Permalink to this headline">#</a></h2>
+<section id="high-dimensional-hyperdimensional-computing">
+<h2><span class="section-number">1.1.1. </span>high-dimensional (hyperdimensional) computing<a class="headerlink" href="#high-dimensional-hyperdimensional-computing" title="Permalink to this headline">#</a></h2>
+<p><em>computing with random high-dim vectors (also known as vector-symbolic architectures)</em></p>
 <ul class="simple">
-<li><p>cognitive maps (tolman 1940s) - idea that rats in mazes learn spatial maps</p></li>
-<li><p><strong>place cells</strong> (o’keefe 1971) - in the hippocampus - fire to indicate one’s current location</p></li>
-<li><p>remap to new locations</p></li>
-<li><p><strong>grid cells</strong> (moser &amp; moser 2005) - in the entorhinal cotex (provides inputs to the hippocampus) - not particular locations but rather hexagonal coordinate system</p></li>
-<li><p>grid cells fire if the mouse is in any location at the vertex (or center) of one of the hexagons</p></li>
-<li><p><img alt="Screen Shot 2019-05-10 at 1.25.02 PM" src="../../_images/mouse.png" /></p></li>
-<li><p>there are grid cells with larger/smaller hexagons, different orientations, different offsets</p></li>
-<li><p>can look for grid cells signature in fmri: <a class="reference external" href="https://www.nature.com/articles/nature08704">https://www.nature.com/articles/nature08704</a></p></li>
-<li><p>other places with grid cell-like behavior</p></li>
-<li><p>eye movement task</p></li>
-<li><p>some evidence for “time cells” like place cells for time</p></li>
-<li><p>sound frequency task <a class="reference external" href="https://www.nature.com/articles/nature21692">https://www.nature.com/articles/nature21692</a></p></li>
-<li><p>2d “bird space” <a class="reference external" href="https://science.sciencemag.org/content/352/6292/1464.full?ijkey=sXaWNaNjkIcik&amp;keytype=ref&amp;siteid=sci">task</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=82syi1BH_YY">ovw talk</a> (kanerva, 2022)</p>
+<ul>
+<li><p>has slide with related references</p></li>
 </ul>
-</section>
-<section id="high-dimensional-computing">
-<h2><span class="section-number">1.1.2. </span>high-dimensional computing<a class="headerlink" href="#high-dimensional-computing" title="Permalink to this headline">#</a></h2>
+</li>
+<li><p><a class="reference external" href="https://link.springer.com/article/10.1007/s10462-021-10110-3">A comparison of vector symbolic architectures</a> (schlegel et al. 2021)</p></li>
+</ul>
+<section id="motivation">
+<h3><span class="section-number">1.1.1.1. </span>motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
-<li><p><a class="reference external" href="https://www.youtube.com/watch?v=82syi1BH_YY">new talk</a> (has slide with related references)</p></li>
 <li><p>high-level overview</p>
 <ul>
-<li><p>current inspiration has all come from single neurons at a time - hd computing is going past this</p></li>
+<li><p>draw inspiration from circuits not single neurons</p></li>
 <li><p>the brain’s circuits are high-dimensional</p></li>
 <li><p>elements are stochastic not deterministic</p></li>
-<li><p>can learn from experience</p></li>
 <li><p>no 2 brains are alike yet they exhibit the same behavior</p></li>
 </ul>
 </li>
@@ -936,48 +946,31 @@ title="Print to PDF"
 <li><p>communicating with language</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://link.springer.com/content/pdf/10.1007/s12559-009-9009-8.pdf">HD computing overview paper</a></p>
+</ul>
+</section>
+<section id="operations">
+<h3><span class="section-number">1.1.1.2. </span>operations<a class="headerlink" href="#operations" title="Permalink to this headline">#</a></h3>
 <ul>
-<li><p>in these high dimensions, most points are close to equidistant from one another (L1 distance), and are approximately orthogonal (dot product is 0)</p></li>
-<li><p>memory</p>
-<ul>
-<li><p><em>heteroassociative</em> - can return stored <em>X</em> based on its address <em>A</em></p></li>
-<li><p><em>autoassociative</em> - can return stored <em>X</em> based on a noisy version of <em>X</em> (since it is a point attractor), maybe with some iteration</p>
-<ul>
-<li><p>this adds robustness to the memory</p></li>
-<li><p>this also removes the need for addresses altogether</p></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<section id="definitions">
-<h3><span class="section-number">1.1.2.1. </span>definitions<a class="headerlink" href="#definitions" title="Permalink to this headline">#</a></h3>
-<ul class="simple">
-<li><p>what is hd computing?</p>
-<ul>
-<li><p>compute with random high-dim vectors</p></li>
-<li><p>ex. 10k vectors A, B of +1/-1 (also extends to real / complex vectors)</p></li>
-</ul>
-</li>
+<li><p>ex. vectors <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B\)</span> both <span class="math notranslate nohighlight">\(\in \{ +1, -1\}^{10,000}\)</span> (also extends to real / complex vectors)</p></li>
 <li><p>3 operations</p>
-<ul>
-<li><p><strong>addition</strong>: A + B = (0, 0, 2, 0, 2,-2, 0,  ….)</p>
-<ul>
+<ol class="simple">
+<li><p><strong>addition</strong>: A + B = (0, 0, 2, 0, 2,-2, 0,  ….)</p></li>
+</ol>
+<ul class="simple">
 <li><p>alternatively, could take mean</p></li>
 </ul>
-</li>
-<li><p><strong>multiplication</strong>: A * B =  (-1, -1, -1, 1, 1, -1, 1, …) - this is <strong>XOR</strong></p>
-<ul>
+<ol class="simple">
+<li><p><strong>multiplication</strong>: A * B =  (-1, -1, -1, 1, 1, -1, 1, …) - this is <strong>XOR</strong></p></li>
+</ol>
+<ul class="simple">
 <li><p>want this to be invertible, dsitribute over addition, preserve distance, and be dissimilar to the vectors being multiplied</p></li>
 <li><p>number of ones after multiplication is the distance between the two original vectors</p></li>
 <li><p>can represent a dissimilar set vector by using multiplication</p></li>
 </ul>
-</li>
-<li><p>permutation: shuffles values</p>
-<ul>
+<ol class="simple">
+<li><p><strong>permutation</strong>: shuffles values (like bit-shift)</p></li>
+</ol>
+<ul class="simple">
 <li><p>ex. rotate (bit shift with wrapping around)</p></li>
 <li><p>multiply by rotation matrix (where each row and col contain exactly one 1)</p></li>
 <li><p>can think of permutation as a list of numbers 1, 2, …, n in permuted order</p></li>
@@ -985,10 +978,8 @@ title="Print to PDF"
 <li><p>random permutation randomizes</p></li>
 </ul>
 </li>
-</ul>
-</li>
-<li><p>basic operations</p>
-<ul>
+<li><p>secondary operations</p>
+<ul class="simple">
 <li><p>weighting by a scalar</p></li>
 <li><p>similarity = dot product (sometimes normalized)</p>
 <ul>
@@ -1004,20 +995,25 @@ title="Print to PDF"
 <li><p>for non-binary vectors, scalar weight</p></li>
 </ul>
 </li>
+<li><p>fractional binding - can bind different amounts rather than binary similar / dissimilar</p></li>
 </ul>
 </li>
-<li><p>data structures</p></li>
-<li><p>these operations allow for encoding all normal data structures: sets, sequences, lists, databases</p>
-<ul>
-<li><p>set - can be represented with a sum (since the sum is similar to all the vectors)</p>
-<ul>
+</ul>
+<section id="data-structures">
+<h4><span class="section-number">1.1.1.2.1. </span>data structures<a class="headerlink" href="#data-structures" title="Permalink to this headline">#</a></h4>
+<p>the operations above allow for encoding many normal data structures into a single vector</p>
+<ol class="simple">
+<li><p><strong>set</strong> - can be represented with a sum (since the sum is similar to all the vectors)</p></li>
+</ol>
+<ul class="simple">
 <li><p>can find a stored set using any element</p></li>
 <li><p>if we don’t store the sum, can probe with the sum and keep subtracting the vectors we find</p></li>
 </ul>
-</li>
-<li><p>multiset = bag (stores set with frequency counts) - can store things with order by adding them multiple times, but hard to actually retrieve frequencies</p></li>
-<li><p>sequence - could have each element be an address pointing to the next element</p>
-<ul>
+<ol class="simple">
+<li><p><strong>multiset</strong> = bag (stores set with frequency counts) - can store things with order by adding them multiple times, but hard to actually retrieve frequencies</p></li>
+<li><p><strong>sequence</strong> - could have each element be an address pointing to the next element</p></li>
+</ol>
+<ul class="simple">
 <li><p>problem - hard to represent sequences that share a subsequence (could have pointers which skip over the subsquence)</p></li>
 <li><p>soln: index elements based on permuted sums</p>
 <ul>
@@ -1026,21 +1022,21 @@ title="Print to PDF"
 </li>
 <li><p>could do some kind of weighting also</p></li>
 </ul>
-</li>
-<li><p>pairs - could just multiply (XOR), but then get some weird things, e.g. A * A = <strong>0</strong></p>
-<ul>
+<ol class="simple">
+<li><p><strong>pairs</strong> - could just multiply (XOR), but then get some weird things, e.g. A * A = <strong>0</strong></p></li>
+</ol>
+<ul class="simple">
 <li><p>instead, permute then multiply</p></li>
 <li><p>can use these to index (address, value) pairs and make more complex data structures</p></li>
 </ul>
-</li>
-<li><p>named tuples - have smth like (name: x, date: m, age: y)  and store as holistic vector <span class="math notranslate nohighlight">\(H = N*X + D *  M + A * Y\)</span></p>
-<ul>
+<ol class="simple">
+<li><p><strong>named tuples</strong> - have smth like (name: x, date: m, age: y)  and store as holistic vector <span class="math notranslate nohighlight">\(H = N*X + D *  M + A * Y\)</span></p></li>
+</ol>
+<ul class="simple">
 <li><p>individual attribute value can be retrieved using vector for individual key</p></li>
-</ul>
-</li>
 <li><p>representation substituting is a little trickier….</p>
 <ul>
-<li><p>we blur what is a value and whit is a variable</p></li>
+<li><p>we blur what is a value and what is a variable</p></li>
 <li><p>can do this for a pair or for a named tuple with new values</p>
 <ul>
 <li><p>this doesn’t always work</p></li>
@@ -1049,23 +1045,29 @@ title="Print to PDF"
 </ul>
 </li>
 </ul>
+</section>
+<section id="examples">
+<h4><span class="section-number">1.1.1.2.2. </span>examples<a class="headerlink" href="#examples" title="Permalink to this headline">#</a></h4>
+<ul class="simple">
+<li><p>ex. semantic word vectors</p>
+<ul>
+<li><p>goal: get good semantic vectors for words</p>
+<ul>
+<li><p>baseline (e.g. latent-semantic analysis LSA): make matrix of word counts, where each row is a word, and each column is a document</p></li>
+<li><p>add counts to each column – row vector becomes semantic vector</p></li>
+</ul>
 </li>
-<li><p>examples</p>
-<ul>
-<li><p>context vectors</p>
-<ul>
-<li><p>standard practice (e.g. LSA): make matrix of word counts, where each row is a word, and each column is a document</p></li>
 <li><p>HD computing alternative: each row is a word, but each document is assigned a few ~10 columns at random</p>
 <ul>
 <li><p>thus, the number of columns doesn’t scale with the number of documents</p></li>
-<li><p><strong>can also do this randomness for the rows (so the number of rows &lt; the number of words)</strong></p></li>
+<li><p>can also do this randomness for the rows (so the number of rows &lt; the number of words)</p></li>
 <li><p>can still get semantic vector for a row/column by adding together the rows/columns which are activated by that row/column</p></li>
 <li><p>this examples still only uses bag-of-words (but can be extended to more)</p></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>context vectors 2 (like word2vec)</p>
+<li><p>ex. semantic word vectors 2 (like word2vec)</p>
 <ul>
 <li><p>each word in vocab is given 2 vectors</p>
 <ul>
@@ -1075,12 +1077,16 @@ title="Print to PDF"
 </li>
 <li><p>as we traverse sequence, for each word, add random-indexing vector from words right before/after it to its semantic vector</p>
 <ul>
-<li><p>can also permute them before adding to preserve word order</p></li>
+<li><p>can also permute them before adding to preserve word order (e.g. “<a class="reference external" href="https://www.diva-portal.org/smash/record.jsf?pid=diva2:1042478">Permutations as a means to encode order in word space</a>” (2008))</p>
+<ul>
+<li><p>can instead use placeholder vector to help bring in word order (e.g. BEAGLE - <a class="reference external" href="https://cseweb.ucsd.edu//~gary/PAPER-SUGGESTIONS/jones-mewhort-psych-rev-2007.pdf">Jones &amp; Mewhort, 2007</a>)</p></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>learning rules by example</p>
+</ul>
+</li>
+<li><p>ex. learning rules by example</p>
 <ul>
 <li><p>particular instance of a rule is a rule (e.g mother-son-baby <span class="math notranslate nohighlight">\(\to\)</span> grandmother)</p>
 <ul>
@@ -1090,24 +1096,17 @@ title="Print to PDF"
 </li>
 </ul>
 </li>
-<li><p>analogies from pairs</p>
+<li><p>ex. what is the dollar of mexico? (<a class="reference external" href="https://redwood.berkeley.edu/wp-content/uploads/2020/05/kanerva2010what.pdf">kanerva, 2010</a>)</p>
 <ul>
-<li><p>ex. what is the dollar of mexico?</p></li>
+<li><p>initialize US = (NAME * USA) + (MONEY * DOLLAR)</p></li>
+<li><p>initialize MEXICO = (NAME * MEXICO) + (MONEY * PESO)</p></li>
+<li><p>query: “Dollar of Mexico”? = DOLLAR * US * MEXICO = PESO</p></li>
 </ul>
 </li>
-</ul>
-</li>
-</ul>
-</section>
-<section id="ex-identify-the-language">
-<h3><span class="section-number">1.1.2.2. </span>ex. identify the language<a class="headerlink" href="#ex-identify-the-language" title="Permalink to this headline">#</a></h3>
-<ul class="simple">
-<li><p>paper: <a class="reference external" href="https://arxiv.org/pdf/1412.7026.pdf">LANGUAGE RECOGNITION USING RANDOM INDEXING</a> (joshi et al. 2015)</p></li>
-<li><p>benefits - very simple and scalable - only go through data once</p>
+<li><p>ex. <a class="reference external" href="https://iis-people.ee.ethz.ch/~arahimi/papers/DATE16_HD.pdf">text classification</a> (najafabadi et al. 2016)</p></li>
+<li><p>ex. language classification - “Language Recognition using Random Indexing” (<a class="reference external" href="https://arxiv.org/abs/1412.7026">joshi et al. 2015</a>)</p>
 <ul>
-<li><p>equally easy to use 4-grams vs. 5-grams</p></li>
-</ul>
-</li>
+<li><p>scalable, easily us any-order ngrams</p></li>
 <li><p>data</p>
 <ul>
 <li><p>train: given million bytes of text per language (in the same alphabet)</p></li>
@@ -1116,7 +1115,7 @@ title="Print to PDF"
 </li>
 <li><p>training: compute a 10k profile vector for each language and for each test sentence</p>
 <ul>
-<li><p>could encode each letter wih a seed vector which is 10k</p></li>
+<li><p>could encode each letter with a seed vector which is 10k</p></li>
 <li><p>instead encode trigrams with <strong>rotate and multiply</strong></p>
 <ul>
 <li><p>1st letter vec rotated by 2 * 2nd letter vec rotated by 1 * 3rd letter vec</p></li>
@@ -1136,21 +1135,24 @@ title="Print to PDF"
 <ul>
 <li><p>compare each test sentence to profiles via dot product</p></li>
 <li><p>clusters similar languages - cool!</p></li>
-<li><p>gets 97% test acc</p></li>
-<li><p>can query the letter most likely to follor “TH”</p>
+<li><p>can query the letter most likely to follow “TH”</p>
 <ul>
 <li><p>form query vector <span class="math notranslate nohighlight">\(Q = r(r(T)) * r(H)\)</span></p></li>
-<li><p>query by using multiply X + Q * english-profile-vec</p></li>
-<li><p>find closest letter vecs to X - yields “e”</p></li>
+<li><p>query by using multiply <span class="math notranslate nohighlight">\(X = Q\)</span> * english-profile-vec</p></li>
+<li><p>find closest letter vecs to <span class="math notranslate nohighlight">\(X\)</span>: yields “e”</p></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </section>
+</section>
 <section id="details">
-<h3><span class="section-number">1.1.2.3. </span>details<a class="headerlink" href="#details" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.1.1.3. </span>details<a class="headerlink" href="#details" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
+<li><p>frequent “stopwords” should be ignored</p></li>
 <li><p>mathematical background</p>
 <ul>
 <li><p>randomly chosen vecs are dissimilar</p></li>
@@ -1167,12 +1169,51 @@ title="Print to PDF"
 <li><p>both do statistical learning from data</p></li>
 <li><p>data can be noisy</p></li>
 <li><p>both use high-dim vecs although DNNs get bad with him dims (e.g. 100k)</p></li>
-<li><p>HD is founded on rich mathematical theory</p></li>
 <li><p>new codewords are made from existing ones</p></li>
 <li><p>HD memory is a separate func</p></li>
 <li><p>HD algos are transparent, incremental (on-line), scalable</p></li>
 <li><p>somewhat closer to the brain…cerebellum anatomy seems to be match HD</p></li>
 <li><p>HD: holistic (distributed repr.) is robust</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="papers">
+<h3><span class="section-number">1.1.1.4. </span>papers<a class="headerlink" href="#papers" title="Permalink to this headline">#</a></h3>
+<p><a class="reference external" href="https://github.com/HyperdimensionalComputing/collection">HDComputing Github Repos</a> (see <a class="reference external" href="https://github.com/hyperdimensional-computing/torchhd">torchhd</a>)</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://link.springer.com/content/pdf/10.1007/s12559-009-9009-8.pdf">HD computing overview paper</a> (Kanerva, 2009)</p>
+<ul>
+<li><p>in these high dimensions, most points are close to equidistant from one another (L1 distance), and are approximately orthogonal (dot product is 0)</p></li>
+<li><p>memory</p>
+<ul>
+<li><p><em>heteroassociative</em> - can return stored <em>X</em> based on its address <em>A</em></p></li>
+<li><p><em>autoassociative</em> - can return stored <em>X</em> based on a noisy version of <em>X</em> (since it is a point attractor), maybe with some iteration</p>
+<ul>
+<li><p>this adds robustness to the memory</p></li>
+<li><p>this also removes the need for addresses altogether</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/8331890?casa_token=FbderL4T3RgAAAAA:LfP2kRSJwhY5z4OHMqvNDrxmSpyIMLzGs80vGj_IdBXVhVVDwZg1tfIeD2nj0S5N7T2YsRrOcg">Classification and Recall With Binary Hyperdimensional Computing: Tradeoffs in Choice of Density and Mapping Characteristics</a></p>
+<ul>
+<li><p>note: for sparse vectors, might need some threshold before computing mean (otherwise will have too many zeros)</p></li>
+</ul>
+</li>
+<li><p>Neural Statistician (<a class="reference external" href="https://arxiv.org/abs/1606.02185">Edwards &amp; Storkey, 2016</a>) summarises a dataset by averaging over their embeddings</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/1804.01756.pdf">kanerva machine </a>(yu…lillicrap, 2018)</p>
+<ul>
+<li><p>like a VAE where the prior is derived from an adaptive memory store</p></li>
+</ul>
+</li>
+<li><p>theory of sequence indexing and working memory in RNNs</p>
+<ul>
+<li><p>trying to make key-value pairs</p></li>
+<li><p>VSA as a structured approach for understanding neural networks</p></li>
+<li><p>reservoir computing = state-dependent network = echos-state network = liquid state machine - try to represen sequential temporal data - builds representations on the fly</p></li>
 </ul>
 </li>
 <li><p>different names</p>
@@ -1185,40 +1226,11 @@ title="Print to PDF"
 <li><p>…many more names</p></li>
 </ul>
 </li>
-<li><p>theory of sequence indexing and working memory in RNNs</p>
-<ul>
-<li><p>trying to make key-value pairs</p></li>
-<li><p>VSA as a structured approach for understanding neural networks</p></li>
-<li><p>reservoir computing = state-dependent network = echos-state network = liquid state machine - try to represen sequential temporal data - builds representations on the fly</p></li>
-</ul>
-</li>
 </ul>
 </section>
-<section id="papers">
-<h3><span class="section-number">1.1.2.4. </span>papers<a class="headerlink" href="#papers" title="Permalink to this headline">#</a></h3>
-<ul class="simple">
-<li><p><a class="reference external" href="https://iis-people.ee.ethz.ch/~arahimi/papers/DATE16_HD.pdf">text classification</a> (najafabadi et al. 2016)</p></li>
-<li><p><a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/8331890?casa_token=FbderL4T3RgAAAAA:LfP2kRSJwhY5z4OHMqvNDrxmSpyIMLzGs80vGj_IdBXVhVVDwZg1tfIeD2nj0S5N7T2YsRrOcg">Classification and Recall With Binary Hyperdimensional Computing: Tradeoffs in Choice of Density and Mapping Characteristics</a></p>
-<ul>
-<li><p>note: for sparse vectors, might need some threshold before computing mean (otherwise will have too many zeros)</p></li>
-</ul>
-</li>
-</ul>
-</section>
-</section>
-<section id="dnns-with-memory">
-<h2><span class="section-number">1.1.3. </span>dnns with memory<a class="headerlink" href="#dnns-with-memory" title="Permalink to this headline">#</a></h2>
-<ul class="simple">
-<li><p>Neural Statistician (Edwards &amp; Storkey, 2016) summarises a dataset by averaging over their embeddings</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/pdf/1804.01756.pdf">kanerva machine</a></p>
-<ul>
-<li><p>like a VAE where the prior is derived from an adaptive memory store</p></li>
-</ul>
-</li>
-</ul>
 </section>
 <section id="visual-sampling">
-<h2><span class="section-number">1.1.4. </span>visual sampling<a class="headerlink" href="#visual-sampling" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.1.2. </span>visual sampling<a class="headerlink" href="#visual-sampling" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/1611.09430">Emergence of foveal image sampling from learning to attend in visual scenes</a> (cheung, weiss, &amp; olshausen, 2017) - using neural attention model, learn a retinal sampling lattice</p>
 <ul>
@@ -1228,7 +1240,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="dynamic-routing-between-capsules">
-<h2><span class="section-number">1.1.5. </span>dynamic routing between capsules<a class="headerlink" href="#dynamic-routing-between-capsules" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.1.3. </span>dynamic routing between capsules<a class="headerlink" href="#dynamic-routing-between-capsules" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>hinton 1981 - reference frames require structured representations</p>
 <ul>
@@ -1314,13 +1326,13 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="hierarchical-temporal-memory-htm">
-<h2><span class="section-number">1.1.6. </span>hierarchical temporal memory (htm)<a class="headerlink" href="#hierarchical-temporal-memory-htm" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.1.4. </span>hierarchical temporal memory (htm)<a class="headerlink" href="#hierarchical-temporal-memory-htm" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>binary synapses and learns by modeling the growth of new synapses and the decay of unused synapses</p></li>
 <li><p>separate aspects of brains and neurons that are essential for intelligence from those that depend on brain implementation</p></li>
 </ul>
 <section id="necortical-structure">
-<h3><span class="section-number">1.1.6.1. </span>necortical structure<a class="headerlink" href="#necortical-structure" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.1.4.1. </span>necortical structure<a class="headerlink" href="#necortical-structure" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>evolution leads to physical/logical hierarchy of brain regions</p></li>
 <li><p>neocortex is like a flat sheet</p></li>
@@ -1335,7 +1347,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="principles">
-<h3><span class="section-number">1.1.6.2. </span>principles<a class="headerlink" href="#principles" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.1.4.2. </span>principles<a class="headerlink" href="#principles" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>common algorithims accross neocortex</p></li>
 <li><p>hierarchy</p></li>
@@ -1384,7 +1396,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="id1">
-<h3><span class="section-number">1.1.6.3. </span>papers<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.1.4.3. </span>papers<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>“A Theory of How Columns in the Neocortex Enable Learning the Structure of the World”</p>
 <ul>
@@ -1416,7 +1428,7 @@ title="Print to PDF"
 </section>
 </section>
 <section id="forgetting">
-<h2><span class="section-number">1.1.7. </span>forgetting<a class="headerlink" href="#forgetting" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.1.5. </span>forgetting<a class="headerlink" href="#forgetting" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1802.07569.pdf">Continual Lifelong Learning with Neural Networks: A Review</a></p>
 <ul>
@@ -1434,7 +1446,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="deeptune-style">
-<h2><span class="section-number">1.1.8. </span>deeptune-style<a class="headerlink" href="#deeptune-style" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.1.6. </span>deeptune-style<a class="headerlink" href="#deeptune-style" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>ponce_19_evolving_stimuli: <a class="reference external" href="https://www.cell.com/action/showPdf?pii=S0092-8674(19)30391-5">https://www.cell.com/action/showPdf?pii=S0092-8674%2819%2930391-5</a></p></li>
 <li><p>bashivan_18_ann_synthesis</p></li>
@@ -1473,7 +1485,7 @@ stimulus</p></li>
 </ul>
 </section>
 <section id="population-coding">
-<h2><span class="section-number">1.1.9. </span>population coding<a class="headerlink" href="#population-coding" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.1.7. </span>population coding<a class="headerlink" href="#population-coding" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>saxena_19_pop_cunningham: “Towards the neural population doctrine”</p>
 <ul>
@@ -1521,7 +1533,7 @@ stimulus</p></li>
 </ul>
 </section>
 <section id="interesting-misc-papers">
-<h2><span class="section-number">1.1.10. </span>interesting misc papers<a class="headerlink" href="#interesting-misc-papers" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.1.8. </span>interesting misc papers<a class="headerlink" href="#interesting-misc-papers" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>berardino 17 eigendistortions</p>
 <ul>
@@ -1558,6 +1570,30 @@ stimulus</p></li>
 <li><p><img alt="friston_free_energy" src="../../_images/friston_free_energy.png" /></p></li>
 </ul>
 </li>
+</ul>
+</section>
+<section id="navigation">
+<h2><span class="section-number">1.1.9. </span>navigation<a class="headerlink" href="#navigation" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>cognitive maps (tolman 1940s) - idea that rats in mazes learn spatial maps</p></li>
+<li><p><strong>place cells</strong> (o’keefe 1971) - in the hippocampus - fire to indicate one’s current location</p>
+<ul>
+<li><p>remap to new locations</p></li>
+</ul>
+</li>
+<li><p><strong>grid cells</strong> (moser &amp; moser 2005) - in the entorhinal cotex (provides inputs to the hippocampus) - not particular locations but rather hexagonal coordinate system</p>
+<ul>
+<li><p>grid cells fire if the mouse is in any location at the vertex (or center) of one of the hexagons</p></li>
+</ul>
+</li>
+<li><p><img alt="Screen Shot 2019-05-10 at 1.25.02 PM" src="../../_images/mouse.png" /></p></li>
+<li><p>there are grid cells with larger/smaller hexagons, different orientations, different offsets</p></li>
+<li><p>can look for grid cells signature in fmri: <a class="reference external" href="https://www.nature.com/articles/nature08704">https://www.nature.com/articles/nature08704</a></p></li>
+<li><p>other places with grid cell-like behavior</p></li>
+<li><p>eye movement task</p></li>
+<li><p>some evidence for “time cells” like place cells for time</p></li>
+<li><p>sound frequency task <a class="reference external" href="https://www.nature.com/articles/nature21692">https://www.nature.com/articles/nature21692</a></p></li>
+<li><p>2d “bird space” <a class="reference external" href="https://science.sciencemag.org/content/352/6292/1464.full?ijkey=sXaWNaNjkIcik&amp;keytype=ref&amp;siteid=sci">task</a></p></li>
 </ul>
 </section>
 </section>

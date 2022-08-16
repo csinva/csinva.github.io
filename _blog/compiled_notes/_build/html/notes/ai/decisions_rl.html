@@ -170,28 +170,33 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../research_ovws/ovw_transformers.html">
+     1.10. transformers
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_causal_inference.html">
-     1.10. causal inference
+     1.11. causal inference
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_dl_for_neuro.html">
-     1.11. dl for neuro
+     1.12. dl for neuro
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_uncertainty.html">
-     1.12. uncertainty
+     1.13. uncertainty
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_interp.html">
-     1.13. interpretability
+     1.14. interpretability
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_generalization.html">
-     1.14. generalization
+     1.15. generalization
     </a>
    </li>
   </ul>
@@ -745,8 +750,8 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#passive-reinforcement-learning">
-     6.2.4.1. passive reinforcement learning
+    <a class="reference internal nav-link" href="#passive-reinforcement-learning-estimate-value-function-given-policy">
+     6.2.4.1. passive reinforcement learning (estimate value function given policy)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -760,8 +765,11 @@ title="Print to PDF"
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#learning-action-utility-function">
+      <a class="reference internal nav-link" href="#learning-action-utility-function-q-s-a">
        6.2.4.2.2. learning action-utility function
+       <span class="math notranslate nohighlight">
+        \(Q(s, a)\)
+       </span>
       </a>
      </li>
     </ul>
@@ -774,9 +782,48 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#planninglove">
-   6.2.5. planninglove
+  <a class="reference internal nav-link" href="#deep-rl-course">
+   6.2.5. deep rl course
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#supervised-rl-imitation-learning">
+     6.2.5.1. “supervised rl” (imitation learning)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rl-algorithms-overview">
+     6.2.5.2. rl algorithms overview
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#other-problems">
+     6.2.5.3. other problems
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#inverse-rl">
+       6.2.5.3.1. inverse rl
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#planning">
+       6.2.5.3.2. planning
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#metalearning">
+       6.2.5.3.3. metalearning
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#offline-rl">
+       6.2.5.3.4. offline rl
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -854,8 +901,8 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#passive-reinforcement-learning">
-     6.2.4.1. passive reinforcement learning
+    <a class="reference internal nav-link" href="#passive-reinforcement-learning-estimate-value-function-given-policy">
+     6.2.4.1. passive reinforcement learning (estimate value function given policy)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -869,8 +916,11 @@ title="Print to PDF"
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#learning-action-utility-function">
+      <a class="reference internal nav-link" href="#learning-action-utility-function-q-s-a">
        6.2.4.2.2. learning action-utility function
+       <span class="math notranslate nohighlight">
+        \(Q(s, a)\)
+       </span>
       </a>
      </li>
     </ul>
@@ -883,9 +933,48 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#planninglove">
-   6.2.5. planninglove
+  <a class="reference internal nav-link" href="#deep-rl-course">
+   6.2.5. deep rl course
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#supervised-rl-imitation-learning">
+     6.2.5.1. “supervised rl” (imitation learning)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rl-algorithms-overview">
+     6.2.5.2. rl algorithms overview
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#other-problems">
+     6.2.5.3. other problems
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#inverse-rl">
+       6.2.5.3.1. inverse rl
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#planning">
+       6.2.5.3.2. planning
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#metalearning">
+       6.2.5.3.3. metalearning
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#offline-rl">
+       6.2.5.3.4. offline rl
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -1130,7 +1219,7 @@ title="Print to PDF"
 <li><p>set of states s</p></li>
 <li><p>set of actions a</p></li>
 <li><p>stochastic transition model <span class="math notranslate nohighlight">\(P(s' \vert s,a)\)</span></p></li>
-<li><p>reward function R(s)</p>
+<li><p>reward function <span class="math notranslate nohighlight">\(R(s)\)</span></p>
 <ul>
 <li><p>utility aggregates rewards, for models more complex than mdps reward can be a function of past sequences of actions / observations</p></li>
 </ul>
@@ -1166,10 +1255,10 @@ title="Print to PDF"
 <li><p>expected utility executing <span class="math notranslate nohighlight">\(\pi\)</span>: <span class="math notranslate nohighlight">\(U^\pi (s) = \mathbb E_{s_1,...,s_t}\left[\sum_t \gamma^t R(s_t)\right]\)</span></p>
 <ul>
 <li><p>when we use discounted utilities, <span class="math notranslate nohighlight">\(\pi\)</span> is independent of starting state</p></li>
-<li><p><span class="math notranslate nohighlight">\(\pi^*(s) = \underset{\pi}{argmax} \: U^\pi (s) = \underset{a}{argmax} \sum_{s'} P(s' \vert s,a) U'(s)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\pi^*(s) = \underset{\pi}{\text{argmax}} \: U^\pi (s) = \underset{a}{\text{argmax}} \sum_{s'} P(s' \vert s,a) U(s')\)</span></p></li>
 </ul>
 </li>
-<li><p>experience replay: instead of learning from samples one by one, want to reduce correlation between subsequent samples</p>
+<li><p><em>experience replay</em> - instead of learning from samples one by one, want to reduce correlation between subsequent samples</p>
 <ul>
 <li><p>take a large batch of samples and sample randomly from it, rather than going sequentially</p></li>
 </ul>
@@ -1194,7 +1283,7 @@ title="Print to PDF"
 <li><p>error is reduced by factor of <span class="math notranslate nohighlight">\(\gamma\)</span> each iteration</p></li>
 </ul>
 </li>
-<li><p>also, terminating condition -  if <span class="math notranslate nohighlight">\( \vert  \vert U_{i+1}-U_i \vert  \vert  &lt; \epsilon (1-\gamma) / \gamma\)</span> then <span class="math notranslate nohighlight">\( \vert  \vert U_{i+1}-U \vert  \vert &lt;\epsilon\)</span></p></li>
+<li><p>also, terminating condition: if <span class="math notranslate nohighlight">\( \vert  \vert U_{i+1}-U_i \vert  \vert  &lt; \epsilon (1-\gamma) / \gamma\)</span> then <span class="math notranslate nohighlight">\( \vert  \vert U_{i+1}-U \vert  \vert &lt;\epsilon\)</span></p></li>
 <li><p>what actually matters is <em>policy loss</em> <span class="math notranslate nohighlight">\( \vert  \vert U^{\pi_i}-U \vert  \vert \)</span> - the most the agent can lose by executing <span class="math notranslate nohighlight">\(\pi_i\)</span> instead of the optimal policy <span class="math notranslate nohighlight">\(\pi^*\)</span></p>
 <ul>
 <li><p>if <span class="math notranslate nohighlight">\( \vert  \vert U_i -U \vert  \vert  &lt; \epsilon\)</span> then <span class="math notranslate nohighlight">\( \vert  \vert U^{\pi_i} - U \vert  \vert  &lt; 2\epsilon \gamma / (1-\gamma)\)</span></p></li>
@@ -1223,7 +1312,7 @@ title="Print to PDF"
 <li><p><em>policy improvement</em> - calculate a new MEU policy <span class="math notranslate nohighlight">\(\pi_{i+1}\)</span> using <span class="math notranslate nohighlight">\(U_i\)</span></p></li>
 </ol>
 <ul class="simple">
-<li><p>same as above, just <span class="math notranslate nohighlight">\(\pi^*(s) = \underset{\pi}{argmax} \: U^\pi (s) = \underset{a}{argmax} \sum_{s'} P(s' \vert s,a) U'(s)\)</span></p></li>
+<li><p>same as above, just <span class="math notranslate nohighlight">\(\pi^*(s) = \underset{\pi}{\text{argmax}} \: U^\pi (s) = \underset{a}{\text{argmax}} \sum_{s'} P(s' \vert s,a) U'(s)\)</span></p></li>
 </ul>
 </li>
 <li><p><em>asynchronous policy iteration</em> - don’t have to update all states at once</p></li>
@@ -1273,7 +1362,7 @@ title="Print to PDF"
 <ul class="simple">
 <li><p><em>reinforcement learning</em> - use observed rewards to learn optimal policy for the environment</p>
 <ul>
-<li><p>in ch 17, agent had model of environment (P(s’|s, a) and R(s))</p></li>
+<li><p>in ch 17, agent had model of environment (<span class="math notranslate nohighlight">\(P(s'|s, a)\)</span> and <span class="math notranslate nohighlight">\(R(s)\)</span>)</p></li>
 </ul>
 </li>
 <li><p>2 problems</p>
@@ -1286,7 +1375,7 @@ title="Print to PDF"
 <ul>
 <li><p>model-based: can predict next state/reward before taking action (for MDP, requires learning <span class="math notranslate nohighlight">\(P(s'|s,a)\)</span>)</p>
 <ul>
-<li><p><em>utility-based agent</em> - learns utility function on states</p>
+<li><p><em>utility-based agent</em> - learns <span class="math notranslate nohighlight">\(U(S)\)</span> - utility function on states</p>
 <ul>
 <li><p>requires model of the environment</p></li>
 </ul>
@@ -1295,15 +1384,15 @@ title="Print to PDF"
 </li>
 <li><p>model-free</p>
 <ul>
-<li><p><em>Q-learning agent</em>: learns <em>action-utility function</em> = <em>Q-function</em> maps actions <span class="math notranslate nohighlight">\(\to\)</span> utility</p></li>
-<li><p><em>reflex agent</em>: learns policy that maps directly from states to actions</p></li>
+<li><p><em>Q-learning agent</em>: learns <span class="math notranslate nohighlight">\(Q(s, a)\)</span> - <em>action-utility function</em> = <em>Q-function</em> maps actions <span class="math notranslate nohighlight">\(\to\)</span> utility</p></li>
+<li><p><em>reflex agent</em>: learns <span class="math notranslate nohighlight">\(Q(s)\)</span> - policy that maps directly from states to actions</p></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-<section id="passive-reinforcement-learning">
-<h3><span class="section-number">6.2.4.1. </span>passive reinforcement learning<a class="headerlink" href="#passive-reinforcement-learning" title="Permalink to this headline">#</a></h3>
+<section id="passive-reinforcement-learning-estimate-value-function-given-policy">
+<h3><span class="section-number">6.2.4.1. </span>passive reinforcement learning (estimate value function given policy)<a class="headerlink" href="#passive-reinforcement-learning-estimate-value-function-given-policy" title="Permalink to this headline">#</a></h3>
 <ul>
 <li><p>given policy <span class="math notranslate nohighlight">\(\pi\)</span>, learn <span class="math notranslate nohighlight">\(U^\pi (s) = \mathbb E\left[ \sum_{t=0}^{\infty} \gamma^t R(S_t)\right]\)</span></p>
 <ul class="simple">
@@ -1316,8 +1405,10 @@ title="Print to PDF"
 <li><p>average to get expected total reward for each state = expected total reward from each state</p></li>
 </ul>
 </li>
-<li><p><strong>adaptive dynamic programming</strong> (ADP) - sample to estimate transition model <span class="math notranslate nohighlight">\(P(s'|s, a)\)</span> and rewards <span class="math notranslate nohighlight">\(R(s)\)</span>, then plug into Bellman eqn to find <span class="math notranslate nohighlight">\(U^\pi(s)\)</span> (plug in at each step)</p>
+<li><p><strong>adaptive dynamic programming</strong> (ADP) - 2 steps</p>
 <ul>
+<li><p>sample to estimate transition model <span class="math notranslate nohighlight">\(P(s'|s, a)\)</span> and rewards <span class="math notranslate nohighlight">\(R(s)\)</span></p></li>
+<li><p>find <span class="math notranslate nohighlight">\(U^\pi(s)\)</span> with the Bellman eqn (plug in at each step)</p></li>
 <li><p>we might want to enforce a prior on the model (two ways)</p>
 <ol class="simple">
 <li><p><em>Bayesian reinforcement learning</em> - assume a prior <span class="math notranslate nohighlight">\(P(h)\)</span> on transition model h</p></li>
@@ -1331,7 +1422,7 @@ title="Print to PDF"
 </li>
 </ul>
 <ol class="simple">
-<li><p>give best outcome in the worst case over H (from <em>robust control theory</em>)</p></li>
+<li><p><em>robust control theory</em> - give best outcome in the worst case over H</p></li>
 </ol>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\pi^* = \underset{\pi}{argmax}\:  \underset{h}{\min} \: u_h^\pi\)</span></p></li>
@@ -1347,7 +1438,7 @@ title="Print to PDF"
 <li><p><span class="math notranslate nohighlight">\(\alpha\)</span> should decrease over time to converge</p></li>
 </ul>
 </li>
-<li><p><em>prioritized sweeping</em> - prefers to make adjustments to states whose likely successors have just undergone a large adjustment in their own utility estimates</p>
+<li><p><em>prioritized sweeping</em> - prefer adjustments to states whose likely successors have just undergone a large adjustment in their own utility estimates</p>
 <ul>
 <li><p>speeds things up</p></li>
 </ul>
@@ -1395,26 +1486,22 @@ title="Print to PDF"
 </li>
 </ul>
 </section>
-<section id="learning-action-utility-function">
-<h4><span class="section-number">6.2.4.2.2. </span>learning action-utility function<a class="headerlink" href="#learning-action-utility-function" title="Permalink to this headline">#</a></h4>
+<section id="learning-action-utility-function-q-s-a">
+<h4><span class="section-number">6.2.4.2.2. </span>learning action-utility function <span class="math notranslate nohighlight">\(Q(s, a)\)</span><a class="headerlink" href="#learning-action-utility-function-q-s-a" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(U(s) = \underset{a}{\max} \: Q(s,a)\)</span></p>
 <ul>
 <li><p>ADP version: <span class="math notranslate nohighlight">\(Q(s, a) = R(s) + \gamma \sum_{s'} P(s'|s, a) \underset{a'}{\max} Q(s', a')\)</span></p></li>
 <li><p>TD version: <span class="math notranslate nohighlight">\(Q(s,a) = Q(s,a) + \alpha [R(s) - Q(s,a) + \gamma \: \underset{a'}{\max} Q(s', a')]\)</span> - <strong>this is what is usually referred to as Q-learning</strong></p></li>
+<li><p>this is <em>off-policy</em> (only uses best Q-value, doesn’t pay attention to actualy policy being followed) - more flexible</p></li>
 </ul>
 </li>
 <li><p><em>SARSA</em> (state-action-reward-state-action) is related: <span class="math notranslate nohighlight">\(Q(s,a) = Q(s,a) + \alpha [R(s) + \gamma \: Q(s', a') - Q(s,a) ]\)</span></p>
 <ul>
-<li><p>here, a’ is action actually taken</p></li>
-</ul>
-</li>
-<li><p>Q-learning is <em>off-policy</em> (only uses best Q-value)</p>
-<ul>
-<li><p>more flexible</p></li>
-</ul>
-</li>
+<li><p>here, <span class="math notranslate nohighlight">\(a'\)</span> is action actually taken</p></li>
 <li><p>SARSA is <em>on-policy</em> (pays attention to actual policy being followed)</p></li>
+</ul>
+</li>
 <li><p>can approximate Q-function with something other than a lookup table</p>
 <ul>
 <li><p>ex. linear function of parameters <span class="math notranslate nohighlight">\(\hat{U}_\theta(s) = \theta_1f_1(s) + ... + \theta_n f_n(s)\)</span></p>
@@ -1452,7 +1539,7 @@ title="Print to PDF"
 <ol class="simple">
 <li><p>could sample mutiple times to compute gradient</p></li>
 <li><p>REINFORCE algorithm - could approximate gradient at <span class="math notranslate nohighlight">\(\theta\)</span> by just sampling at <span class="math notranslate nohighlight">\(\theta\)</span>: <span class="math notranslate nohighlight">\(\nabla_\theta p(\theta) \approx \frac{1}{N} \sum_{j=1}^N \frac{(\nabla_\theta \pi_\theta (s, a_j)) R_j (s)}{\pi_\theta (s, a_j)}\)</span></p></li>
-<li><p>PEGASUS - <em>correlated sampling</em> - ex. 2 blackjack programs would both be dealt same hands -  want to see different policies on same things</p></li>
+<li><p>PEGASUS - <em>correlated sampling</em> - ex. 2 blackjack programs would both be dealt same hands - want to see different policies on same things</p></li>
 </ol>
 </li>
 </ul>
@@ -1460,8 +1547,125 @@ title="Print to PDF"
 </ul>
 </section>
 </section>
-<section id="planninglove">
-<h2><span class="section-number">6.2.5. </span>planninglove<a class="headerlink" href="#planninglove" title="Permalink to this headline">#</a></h2>
+<section id="deep-rl-course">
+<h2><span class="section-number">6.2.5. </span>deep rl course<a class="headerlink" href="#deep-rl-course" title="Permalink to this headline">#</a></h2>
+<p><strong><a class="reference external" href="https://rail.eecs.berkeley.edu/deeprlcourse/">berkeley (sergey levine)</a></strong></p>
+<section id="supervised-rl-imitation-learning">
+<h3><span class="section-number">6.2.5.1. </span>“supervised rl” (imitation learning)<a class="headerlink" href="#supervised-rl-imitation-learning" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>imitation learning / behavioral cloning – given pairs of observations / actions, learn policy to take action given observation <span class="math notranslate nohighlight">\(\pi_\theta(a_t|o_t)\)</span></p>
+<ul>
+<li><p>basic example: cost function is 0 when action is same as human’s in data and 1 otherwise</p></li>
+<li><p>usually inefficient / insufficient</p></li>
+</ul>
+</li>
+<li><p>one improvement: DAgger (ross et al. 2011) - use learned policy to generate synthetic observations and have humans label those</p>
+<ul>
+<li><p>we can query observations when deviate slightly from expert trajectory</p></li>
+</ul>
+</li>
+<li><p>goal-conditioned behavioral cloning - subdivides data based on different goals - learn <span class="math notranslate nohighlight">\(\pi_\theta(a|s, g)\)</span></p>
+<ul>
+<li><p>example - given a goal location, take actions to move a robot there</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1912.06088">Learning to Reach Goals via Iterated Supervised Learning</a> (ghosh … levine, 2020)</p>
+<ul>
+<li><p>move robot arm based on policy (initially random)</p></li>
+<li><p>see which random goals are met</p></li>
+<li><p>use this as goal-conditioned behavioral cloning</p></li>
+<li><p>update policy and repeat</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="rl-algorithms-overview">
+<h3><span class="section-number">6.2.5.2. </span>rl algorithms overview<a class="headerlink" href="#rl-algorithms-overview" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>3 general steps (iterated)</p>
+<ul>
+<li><p>fit a model / estimate the return</p></li>
+<li><p>improve the policy</p></li>
+<li><p>generate samples (i.e. run the policy)</p></li>
+</ul>
+</li>
+<li><p><span class="math notranslate nohighlight">\(\theta^{\star}=\arg \max _{\theta} E_{\tau \sim p_{\theta}(\tau)}\left[\sum_{t} r\left(\mathbf{s}_{t}, \mathbf{a}_{t}\right)\right]\)</span></p>
+<ul>
+<li><p><em>Value-based</em>: estimate value function or <span class="math notranslate nohighlight">\(Q\)</span>-function of the optimal policy (no explicit policy)</p></li>
+<li><p><em>Policy gradients</em>: directly differentiate the above objective</p>
+<ul>
+<li><p>policy network <span class="math notranslate nohighlight">\(\pi_\theta(a|s)\)</span></p></li>
+<li><p>gradients are extremely noisy compared to supervised learning</p></li>
+</ul>
+</li>
+<li><p><em>Actor-critic</em>: estimate value function or Q-function of the current policy (critic), use it to improve policy (actor)</p></li>
+<li><p><em>Model-based RL</em>: estimate the transition model, and then…</p>
+<ul>
+<li><p>just use the model to plan (no plicy)</p>
+<ul>
+<li><p>trajectory optimization/optimal control (continuous space) - optimize over actions</p></li>
+<li><p>discrete planning - e.g. monte carlo tree search</p></li>
+</ul>
+</li>
+<li><p>backpropagate gradients into the policy</p></li>
+<li><p>use the model to learn a value function</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>fit model / estimate return</p></th>
+<th class="head"><p>improve policy</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>value-based</p></td>
+<td><p>fit <span class="math notranslate nohighlight">\(V(s)\)</span> or <span class="math notranslate nohighlight">\(Q(s, a)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\pi(s) = \text{argmax}_a Q(s, a)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>(direct) policy gradients</p></td>
+<td><p>evaluate returns <span class="math notranslate nohighlight">\(R_\tau = \sum_t r(s_t, a_t)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\theta = \theta + \alpha \nabla_\theta E[\sum_t r(s_t, a_t)]\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>actor-critic</p></td>
+<td><p>fit <span class="math notranslate nohighlight">\(V(s)\)</span> or <span class="math notranslate nohighlight">\(Q(s, a)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\theta = \theta + \alpha \nabla_\theta E[Q(s, a)]\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>model-based</p></td>
+<td><p>maybe model $P(s’</p></td>
+<td><p>s, a)$</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>sample efficiency</p>
+<ul>
+<li><p>on policy - must generate new samples each time the policy is changed</p></li>
+<li><p>off policy - can improve policy without generating new samples from it (so look at a bunch of samples then update)</p></li>
+<li><p>offline rl - data collected only once with any policy, then want to learn good policy from that</p></li>
+</ul>
+</li>
+</ul>
+<p><img alt="rl_sample_efficiency" src="../../_images/rl_sample_efficiency.png" /></p>
+</section>
+<section id="other-problems">
+<h3><span class="section-number">6.2.5.3. </span>other problems<a class="headerlink" href="#other-problems" title="Permalink to this headline">#</a></h3>
+<section id="inverse-rl">
+<h4><span class="section-number">6.2.5.3.1. </span>inverse rl<a class="headerlink" href="#inverse-rl" title="Permalink to this headline">#</a></h4>
+<p>Inverse RL - learning reward functions from example</p>
+<ul class="simple">
+<li><p>ai should be uncertain about utitilies</p></li>
+<li><p>utilties should be inferred from human preferences</p></li>
+<li><p>in systems that interact, need to express preferences in terms of game theory</p></li>
+<li><p>can solve it with a GAN: e.g. <a class="reference external" href="https://arxiv.org/abs/1611.03852">A Connection between Generative Adversarial Networks, Inverse Reinforcement Learning, and Energy-Based Models</a> (finn et al. 2016)</p></li>
+<li><p><a class="reference external" href="https://dl.acm.org/doi/abs/10.1145/1015330.1015430?casa_token=inLo77c-zqAAAAAA:JirDplyZ_94a7A0WXavY3V5napVOxdJ5Qjkzin02K4bapip6D5bQNuPAefmkYeYAb9OSVyqkEKRcCJs">Apprenticeship learning via inverse reinforcement learning | Proceedings of the twenty-first international conference on Machine learning</a> (abbeel &amp; ng, 2004) - good intro to inverse RL</p></li>
+</ul>
+</section>
+<section id="planning">
+<h4><span class="section-number">6.2.5.3.2. </span>planning<a class="headerlink" href="#planning" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p><a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/4220851?casa_token=Nw_d05ju8VcAAAAA:iXvxp_PDrMHtsoIk1_g2CnPPGFdMZcu_PqcyeyFUXsGrQWoQFRz8JvRmzjgofdwlQKYdsfpvK-g">Efficient Learning in Cellular Simultaneous Recurrent Neural Networks - The Case of Maze Navigation Problem</a> (ilin et al. 2007) - explored connections between planning algorithms and recurrent NNs</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1602.02867">Value Iteration Networks</a> (tamar…levine, &amp; abbeel, 2017)</p>
@@ -1470,6 +1674,38 @@ title="Print to PDF"
 </ul>
 </li>
 </ul>
+</section>
+<section id="metalearning">
+<h4><span class="section-number">6.2.5.3.3. </span>metalearning<a class="headerlink" href="#metalearning" title="Permalink to this headline">#</a></h4>
+<ul class="simple">
+<li><p>learning to learn (very close to multi-task learning)</p>
+<ul>
+<li><p>e.g. learn optimizer, representation</p></li>
+<li><p>e.g. learn how to explore</p></li>
+<li><p>e.g. learn how to do RL for various different walking tasks and then generalize to new walking task with few samples</p></li>
+<li><p><a class="reference external" href="https://proceedings.mlr.press/v70/finn17a.html">Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks</a> (finn, levine, &amp; abbeel, 2017) - treat metalearner itself as an RL algorithm</p></li>
+</ul>
+</li>
+<li><p>multitask learning</p>
+<ul>
+<li><p>sometimes have the ability to decide which new tasks to add (e.g. by changing simulator)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="offline-rl">
+<h4><span class="section-number">6.2.5.3.4. </span>offline rl<a class="headerlink" href="#offline-rl" title="Permalink to this headline">#</a></h4>
+<ul class="simple">
+<li><p>core issue with offline RL: want policy that improves over the training policy, but can’t deviate from the training policy due to distr. shift</p></li>
+<li><p>one idea: instead of collecting new samples with policy, reweight samples using importance sampling based on policy</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2110.06169">IQL: Implicit Q-learning</a> (ashvin’s paper, 2021)</p>
+<ul>
+<li><p>IQL - foregoes need to evaluate unseen actions</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
 </section>
 </section>
 

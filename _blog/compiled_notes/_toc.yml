@@ -14,6 +14,7 @@ sections:
   - file: notes/research_ovws/ovw_dl_theory.md
   - file: notes/research_ovws/ovw_scat.md
   - file: notes/research_ovws/ovw_ml_medicine.md
+  - file: notes/research_ovws/ovw_transformers.md
   - file: notes/research_ovws/ovw_causal_inference.md
   - file: notes/research_ovws/ovw_dl_for_neuro.md
   - file: notes/research_ovws/ovw_uncertainty.md

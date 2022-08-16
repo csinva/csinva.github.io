@@ -11,6 +11,7 @@ category: research
 
 - attention is all you need ([vaswani et al. 2017](https://arxiv.org/abs/1706.03762)) - initial transformer
   - encoder-decoder transformer for seq-to-seq
+  - though this paper had a special encoder-decoder structure to support translation, many modern language models no longer have this
   - [Semi-supervised Sequence Learning](https://arxiv.org/abs/1511.01432) (by [Andrew Dai](https://twitter.com/iamandrewdai) and [Quoc Le](https://twitter.com/quocleix))
     - context vector is weighted sum of context vector at each word
 - NLP
@@ -102,18 +103,32 @@ category: research
 
 ## transformer circuits
 
-- [thread](https://transformer-circuits.pub/2021/framework/index.html) (elhage...olah, 2021)
-  - The original transformer paper had a special encoder-decoder structure to support translation, but many modern language models don't include this
-  - residual stream has a lot of linearity
-  - Although they’re parameterized as separate matrices, $W_O W_V$ and $W_Q^T W_K$ can always be thought of as individual, low-rank matrices
-  - if we have a 0-layer net (e.g. predict next token with linear layer given current token), we just learn bigram log-likelihood
-  - tensor/kronecker product $\bigotimes$:
-    - Left-right multiplying: Multiplying $x$ by a tensor product $A \otimes W$ is equivalent to simultaneously left and right multiplying: $(A \otimes W) x=A x W^{T}$
-    - When we add them, it is equivalent to adding the results of this multiplication: $\left(A_{1} \otimes W_{1}+A_{2} \otimes W_{2}\right) x=A_{1} x W_{1}^{T}+A_{2} x W_{2}^{T}$ 
-  - 2 circuits
-    - OV circuit sets things up so that tokens, if attended to by the head, increase the probability of that token, and to a lesser extent, similar tokens
-    - QK circuit then only attends back to tokens which could plausibly be the next token.
-  - if a single head increases the probability of both `keep… in mind` and `keep… at bay`, it *must* also increase the probability of `keep… in bay` and `keep… at mind`
+[thread](https://transformer-circuits.pub/2021/framework/index.html) (elhage...olah, 2021)
+
+- all layers are same dimension and each attention block **adds** a vector to it
+- Although they’re parameterized as separate matrices, $W_O W_V$ and $W_Q^T W_K$ can always be thought of as individual, low-rank matrices
+  - $x \in \mathbb R^{d_{embed} \times d_{sequence}}$: $d_{embed}$ can be hundreds - tens of thousands 
+  - $W_Q, W_K, W_V \in \mathbb R^{d_{attn} \times d_{embed}}$
+    - $W_Q^TW_k \in \mathbb R ^{d_{embed} \times d_{embed}}$
+  - $W_O \in \mathbb R^{d_{embed} \times d_{attn}}$: projects attention values back to embedding dimention
+    - $W_O W_V \in \mathbb R ^{d_{embed} \times d_{embed}}$
+  - $W_E \in \mathbb R^{d_{embed} \times d_{vocab}}$ embeds initial tokens and $W_U \in \mathbb R^{d_{vocab} \times d_{embed}}$ undoes the embedding
+    - $d_{vocab}$ can be very large, e.g. 50k
+  - $A = \text{softmax}(x^TW_Q^TW_kx) \in \mathbb R^{d_{sequence} \times d_{sequence}}$
+- if we have a 0-layer net (e.g. predict next token with linear layer given current token), we just learn bigram log-likelihood
+- 2 circuits
+  - QK circuit determines which "source" token the present "destination" token attends back to and copies information from
+    - $W_{E}^{T} W_{Q}^{T} W_{K} W_{E} \in \mathbb R ^{d_{vocab} \times d_{vocab}}$
+  - OV circuit describes what the resulting effect on the "out" predictions for the next token is
+    - $W_{U} W_{O} W_{V} W_{E} \in \mathbb R ^{d_{vocab} \times d_{vocab}}$
+- if a single head increases the probability of both `keep… in mind` and `keep… at bay`, it *must* also increase the probability of `keep… in bay` and `keep… at mind`
+- **induction heads** search previous examples of present token
+  - If they don't find it, they attend to the first token and do nothing
+  - if they do find it, they then look at the *next* token and copy it. This allows them to repeat previous sequences of tokens, both exactly and approximately
+  - sometimes can do some kind of "fuzzy" matching
+- tensor/kronecker product $\bigotimes$:
+  - Left-right multiplying: Multiplying $x$ by a tensor product $A \otimes W$ is equivalent to simultaneously left and right multiplying: $(A \otimes W) x=A x W^{T}$
+  - When we add them, it is equivalent to adding the results of this multiplication: $\left(A_{1} \otimes W_{1}+A_{2} \otimes W_{2}\right) x=A_{1} x W_{1}^{T}+A_{2} x W_{2}^{T}$ 
 
 ## mixture of experts (MoE)
 
