@@ -88,15 +88,18 @@ Some notes on natural language processing, focused on modern improvements based 
 - **dependency grammar** focuses on how words relate to other words
   - relation between *head* (usually tensed verb) and its *dependents* (rest of the words)
   - ![dep_grammar](../assets/dep_grammar.png)
-  - A dependency graph is **projective** if, when all the words are written in order, the edges can be drawn above the words without crossing
+  - this can also be displayed as a tree
+    - ![dep_tree](../assets/dep_tree.png)
+    
+  - a dependency graph is **projective** if, when all the words are written in order, the edges can be drawn above the words without crossing
     - equivalent to saying that a word and all its descendants (dependents and dependents of its dependents, etc.) form a contiguous sequence of words within the sentence
     - above graph is projective
-
+  
   - **valencies** - sometimes certain things in a class are allowed buothers are not
     - e.g. "Buster was frightened" ✅ but "Buster saw frightened" :x:
     - need subcategories of things (e.g. intransitive verb vs transitive verb vs dative verb) to know what symbols are allowed in rules
     - verbs specifically have **complements** associated with them -- unlike **modifiers** (like the word "really"), complemetes are not optional and usually not selected in the same way by the head
-
+  
 - **feature-based grammars** - add things to word representations (e.g. plurality) and use these in the grammar rules
 
 # dl for nlp

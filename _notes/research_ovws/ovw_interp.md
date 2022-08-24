@@ -546,9 +546,9 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
     - follow-up work: Deep Lattice Networks and Partial Monotonic Functions ([you,...,gupta, 2017](https://proceedings.neurips.cc//paper/2017/file/464d828b85b0bed98e80ade0a5c43b0f-Paper.pdf)) - use many layers
 - monotonicity constrainits in histogram-based gradient boosting ([see sklearn](https://scikit-learn.org/stable/modules/ensemble.html#histogram-based-gradient-boosting))
 
-
 ## misc models
 
+- [AdaAX: Explaining Recurrent Neural Networks by Learning Automata with Adaptive States](https://dl.acm.org/doi/abs/10.1145/3534678.3539356) (hong...wang, 2022)
 - learning AND-OR Templates for Object Recognition and Detection (zhu_13)
 - ross et al. - constraing model during training
 - scat transform idea (mallat_16 rvw, oyallan_17)
@@ -1116,6 +1116,12 @@ How interactions are defined and summarized is a very difficult thing to specify
   - adjustments
     - teacher underfitting $\to$ loss correction
     - teacher overfitting $\to$ cross-fitting (chernozhukov et al. 2018) - like cross-validation, fit student only to held-out predictions
+
+## transformers
+
+- [Locating and Editing Factual Associations in GPT](https://arxiv.org/abs/2202.05262) (meng et al. 2022)
+  - causal intervention for identifying neuron activations that are decisive in a model’s factual predictions
+  - modify feedforward weights to update specific factual associations using Rank-One Model Editing (ROME)
 
 
 

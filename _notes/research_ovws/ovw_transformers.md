@@ -30,6 +30,7 @@ category: research
     - prompt engineering: "Explain yourself" - lets it explain jokes
   - [Chinichilla: Training Compute-Optimal Large Language Models](https://arxiv.org/abs/2203.15556)
     - for compute-optimal training, the model size and the number of training tokens should be scaled equally
+  - T0 ([sanh...rush, 2022](https://arxiv.org/pdf/2110.08207.pdf)) - multitask training enables better zero-shot generalization
 - text-vision models
   - CLIP ([radford et al. 2021](https://cdn.openai.com/papers/Learning_Transferable_Visual_Models_From_Natural_Language.pdf)) - jointly train text/images
     - batch-based loss: encodings from same image/text pair should be close while encodings across different examples in the batch should be different
@@ -60,29 +61,29 @@ category: research
       - PPLs extend probabilistic graphical models to support more complex joint distributions whose size and “shape” can itself be stochastic
         - e.g., a graph unrolled for a random number of iterations, until a data-dependent stopping criterion is met
         - variables are all text: questions $Q$, answers $A$, and intermediate thoughts $T$
-  - basic
+  - posthoc
     - [Chain of Thought Prompting Elicits Reasoning in Large Language Models](https://arxiv.org/abs/2201.11903) (wei et al. 2022)
       - in few-shot prompts, don't just provide answer but also reasoning
       - model output then provides reasoning + answer
     - Scratchpads [Show Your Work: Scratchpads for Intermediate Computation with Language Models](https://arxiv.org/abs/2112.00114) (nye et al. 2021)
-  - selection inference [https://arxiv.org/abs/2205.09712](https://t.co/rWtxZMryRv)
-    - generate set of facts
-    - then iteratively generate inferences from the facts to yield the final answer
-  - verifiers ([cobbe et al. 2021](https://arxiv.org/abs/2110.14168))
-    - train model to judge whether an answer and thought are likely to be “valid”
-  - natural language feedback ([scheurer et al. 2022]())
-    - human feedback for learning makes it much more efficient
-  - least to most prompting [https://arxiv.org/abs/2205.10625](https://t.co/5LyAfEe1vn)
-  - maieutic prompting [https://arxiv.org/abs/2205.11822](https://t.co/dqpk1yX0Wa)
-  - subgoal search ([czechowski et al. 2021](https://t.co/PCR4yexHti))
-  - [STaR](https://arxiv.org/abs/2203.14465) 
-    - first, finetune on observed $(Q, T, A)$ triplets
-    - then, impute unknown $T_i$ given dataset of pairs $(Q_i, A_i)$ by sampling until finding a $T_i$ which leads to the correct answer
+    - selection inference ([creswell et al. 2022](https://arxiv.org/abs/2205.09712)) - generate set of facts, then iteratively generate inferences from the facts to yield the final answer
+    - least-to-most prompting ([zhou...quoc le et al. 2022](https://arxiv.org/abs/2205.10625)) - prompt LLM with context showing how to reduce into subproblems; then LLM sequentially solves the subproblems, using the previous answers
+  - training
+    - verifiers ([cobbe et al. 2021](https://arxiv.org/abs/2110.14168)) - train model to judge whether an answer and thought are likely to be “valid”
+    - maieutic prompting ([jung et al. 2022](https://arxiv.org/abs/2205.11822)) - generate a tree of all explanation of the form "True, because...", "False, because..." then query LLM with these as prompts
+      - then use Max-SAT to try to satisfy as many relations between the model explanations as possible to come up with the true answer
+    - subgoal search ([czechowski et al. 2021](https://t.co/PCR4yexHti)) - train model to generate subgoals then solve them in a graph
+    - STaR ([zelikman...goodman, 2022](https://arxiv.org/abs/2203.14465))
+      - first, finetune on observed $(Q, T, A)$ triplets
+      - then, impute unknown $T_i$ given dataset of pairs $(Q_i, A_i)$ by sampling until finding a $T_i$ which leads to the correct answer
   - robotics-specific
     - zero-shot planning [arxiv.org/abs/2201.07207](https://arxiv.org/abs/2201.07207)
     - socratic models [arxiv.org/abs/2204.00598](https://arxiv.org/abs/2204.00598)
     - Inner Monologue [arxiv.org/abs/2207.05608](https://arxiv.org/abs/2207.05608)
     - [global workspace](https://arxiv.org/abs/2103.01197)
+- more efficient training
+  - natural language feedback ([scheurer et al. 2022]())
+    - human feedback for learning makes it much more efficient
 - augmenting
   - add retrieved data to context
     - [A Neural Corpus Indexer for Document Retrieval](https://arxiv.org/abs/2206.02743) - train model to directly spit out document IDs given queries
@@ -101,9 +102,15 @@ category: research
   - autoformalization [arxiv.org/abs/2205.12615](https://arxiv.org/abs/2205.12615) - translating from natural language math to formal language
   - program synthesis [arxiv.org/abs/2108.07732](https://arxiv.org/abs/2108.07732) - formalize natural language into runnable code
 
+## autoprompting
+- [Meta-learning via Language Model In-context Tuning](https://arxiv.org/abs/2110.07814) (Chen et al. 2022)
+    - Given new task with new instruction
+- [Prompt Programming for Large Language Models: Beyond the Few-Shot Paradigm](https://arxiv.org/abs/2102.07350) (Reynolds & McDonell, 2021)
+    - Define metaprompts as general wrappers around tasks e.g. “This problem asks us to”
+
 ## transformer circuits
 
-[thread](https://transformer-circuits.pub/2021/framework/index.html) (elhage...olah, 2021)
+**[thread](https://transformer-circuits.pub/2021/framework/index.html) (elhage...olah, 2021)**
 
 - all layers are same dimension and each attention block **adds** a vector to it
 - Although they’re parameterized as separate matrices, $W_O W_V$ and $W_Q^T W_K$ can always be thought of as individual, low-rank matrices
@@ -130,8 +137,26 @@ category: research
   - Left-right multiplying: Multiplying $x$ by a tensor product $A \otimes W$ is equivalent to simultaneously left and right multiplying: $(A \otimes W) x=A x W^{T}$
   - When we add them, it is equivalent to adding the results of this multiplication: $\left(A_{1} \otimes W_{1}+A_{2} \otimes W_{2}\right) x=A_{1} x W_{1}^{T}+A_{2} x W_{2}^{T}$ 
 
+**[Softmax Linear Units](https://transformer-circuits.pub/2022/solu/index.html)**
+
+- replacing activation function with softmax linear unit increases fraction of MLP neurons which are "interpretable", i.e. correspond to meaningful features
+  - however, may “hide” some non-neuron-aligned features by decreasing their magnitude and then later recovering it with LayerNorm
+- the presence of nonlinear activation functions createse an incentive for features to align with this basis and not get superposed
+  - if the gains to sparse coding are large enough, this incentive will get overwhelmed
+- ways to combat polysemanticity
+  - activation sparsity
+  - lateral inhibition / co-occurrence sparsity
+  - weight sparsity
+  - superlinear activation functions
+  - increase neurons per param
+- $\text{SoLU}(x) = x \cdot \text{softmax}(x)$
+  - adds lateral inhibition, superlinearity, approximate sparsity
+  - changes GeLU, which is approximately $\text{sigmoid}(1.7x) \cdot x$
+  - just changing to SoLU decrease performance, had to add LayerNorm afterwards
+
 ## mixture of experts (MoE)
 
+- note: nowadays often the "experts" are different MLPs following the self-attention layers
 - non-specialized experts
   - Early versions ([Jacobs et al., 1991](https://ieeexplore.ieee.org/abstract/document/6797059)) had independent feed-forward networks serving as experts
   - Recent MoE models ([Shazeer et al., 2017](https://arxiv.org/abs/1701.06538)) have been studied with token-based routing with backprop
