@@ -9,28 +9,35 @@ category: research
 
 # papers
 
+## high-performing
+
+**nlp**
+
 - attention is all you need ([vaswani et al. 2017](https://arxiv.org/abs/1706.03762)) - initial transformer
   - encoder-decoder transformer for seq-to-seq
-  - though this paper had a special encoder-decoder structure to support translation, many modern language models no longer have this
+  - this paper has special encoder-decoder structure for translation (most new models don't)
   - [Semi-supervised Sequence Learning](https://arxiv.org/abs/1511.01432) (by [Andrew Dai](https://twitter.com/iamandrewdai) and [Quoc Le](https://twitter.com/quocleix))
     - context vector is weighted sum of context vector at each word
-- NLP
-  - [ULMFiT](https://arxiv.org/abs/1801.06146) ([Jeremy Howard](https://twitter.com/jeremyphoward) and [Sebastian Ruder](https://twitter.com/seb_ruder))
-  - BERT ([devlin et al. 2018](https://arxiv.org/abs/1810.04805)) - semi-supervised learning (predict masked word - this is bidirectional) + supervised finetuning
-    - [roberta](https://arxiv.org/abs/1907.11692)
-  - [ELMo](https://arxiv.org/abs/1802.05365) (by [Matthew Peters](https://twitter.com/mattthemathman) and researchers from [AI2](https://allenai.org/) and [UW CSE](https://www.engr.washington.edu/about/bldgs/cse)) - no word embeddings - train embeddings w/ bidirectional lstm (on language modeling)
-  - [XLNet](https://arxiv.org/abs/1906.08237)
-  - GPT-3 ([brown et al. 2020](https://arxiv.org/abs/2005.14165?2)) - identitical to GPT-2 except larger and replaces dense attention with sparse attention
-    - GPT-2 ([radford et al. 2018](https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf))
-    - GPT ([radford et al. 2018](https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf))
-  - gopher - basically gpt-3 with slight mods (replace layernorm by RMSnorm, different positional embeddings)
-  - [PaLM: Scaling Language Modeling with Pathways](https://arxiv.org/abs/2204.02311) (2022) - 540 Billion params
-    - pathways hardware center allows for fast/efficient training
-    - discontinuous improvements - at some point large model improves
-    - prompt engineering: "Explain yourself" - lets it explain jokes
-  - [Chinichilla: Training Compute-Optimal Large Language Models](https://arxiv.org/abs/2203.15556)
-    - for compute-optimal training, the model size and the number of training tokens should be scaled equally
-  - T0 ([sanh...rush, 2022](https://arxiv.org/pdf/2110.08207.pdf)) - multitask training enables better zero-shot generalization
+- [ULMFiT](https://arxiv.org/abs/1801.06146) ([Jeremy Howard](https://twitter.com/jeremyphoward) and [Sebastian Ruder](https://twitter.com/seb_ruder))
+- BERT ([devlin et al. 2018](https://arxiv.org/abs/1810.04805)) - semi-supervised learning (predict masked word - this is bidirectional) + supervised finetuning
+  - [roberta](https://arxiv.org/abs/1907.11692)
+- [ELMo](https://arxiv.org/abs/1802.05365) (by [Matthew Peters](https://twitter.com/mattthemathman) and researchers from [AI2](https://allenai.org/) and [UW CSE](https://www.engr.washington.edu/about/bldgs/cse)) - no word embeddings - train embeddings w/ bidirectional lstm (on language modeling)
+- [XLNet](https://arxiv.org/abs/1906.08237)
+- GPT-3 ([brown et al. 2020](https://arxiv.org/abs/2005.14165?2)) - identitical to GPT-2 except larger and replaces dense attention with sparse attention
+  - GPT-2 ([radford et al. 2018](https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf))
+  - GPT ([radford et al. 2018](https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf))
+- gopher - basically gpt-3 with slight mods (replace layernorm by RMSnorm, different positional embeddings)
+- [PaLM: Scaling Language Modeling with Pathways](https://arxiv.org/abs/2204.02311) (2022) - 540 Billion params
+  - pathways hardware center allows for fast/efficient training
+  - discontinuous improvements - at some point large model improves
+  - prompt engineering: "Explain yourself" - lets it explain jokes
+- [Chinichilla: Training Compute-Optimal Large Language Models](https://arxiv.org/abs/2203.15556)
+  - for compute-optimal training, the model size and the number of training tokens should be scaled equally
+- T0 ([sanh...rush, 2022](https://arxiv.org/pdf/2110.08207.pdf)) - multitask training enables better zero-shot generalization
+  - [T5](https://jmlr.org/papers/volume21/20-074/20-074.pdf) (raffel...liu, 2020) -- text-to-text transfer transformer
+
+**other**
+
 - text-vision models
   - CLIP ([radford et al. 2021](https://cdn.openai.com/papers/Learning_Transferable_Visual_Models_From_Natural_Language.pdf)) - jointly train text/images
     - batch-based loss: encodings from same image/text pair should be close while encodings across different examples in the batch should be different
@@ -41,11 +48,11 @@ category: research
     - "prior network" maps text embedding to image embedding
     - adds diffusion model
 - vision
-  - vision
-    -  [attention augmentation to resnet](https://arxiv.org/abs/1904.09925) for vision  (2020)
+  -  [attention augmentation to resnet](https://arxiv.org/abs/1904.09925) for vision  (2020)
+- multimodal
+  - BEiT-3 ([2022](https://arxiv.org/abs/2208.10442)) - treat vision as language and large-scale multimodal training
 - GATO: [A Generalist Agent](https://arxiv.org/abs/2205.06175) (2022) - single agent plays many different video games
   - different modalities are converted to tokens differently (e.g. image patches are fed through resnet)
-
 - [spatial transformers](https://papers.nips.cc/paper/5854-spatial-transformer-networks.pdf )
 
 ## model chaining
@@ -73,7 +80,7 @@ category: research
     - maieutic prompting ([jung et al. 2022](https://arxiv.org/abs/2205.11822)) - generate a tree of all explanation of the form "True, because...", "False, because..." then query LLM with these as prompts
       - then use Max-SAT to try to satisfy as many relations between the model explanations as possible to come up with the true answer
     - subgoal search ([czechowski et al. 2021](https://t.co/PCR4yexHti)) - train model to generate subgoals then solve them in a graph
-    - STaR ([zelikman...goodman, 2022](https://arxiv.org/abs/2203.14465))
+    - STaR “Self-taught reasoner” ([zelikman...goodman, 2022](https://arxiv.org/abs/2203.14465))
       - first, finetune on observed $(Q, T, A)$ triplets
       - then, impute unknown $T_i$ given dataset of pairs $(Q_i, A_i)$ by sampling until finding a $T_i$ which leads to the correct answer
   - robotics-specific
@@ -87,12 +94,12 @@ category: research
 - augmenting
   - add retrieved data to context
     - [A Neural Corpus Indexer for Document Retrieval](https://arxiv.org/abs/2206.02743) - train model to directly spit out document IDs given queries
-    - lamda [arxiv.org/abs/2201.08239](https://arxiv.org/abs/2201.08239) - allows google search to add world info (in a dialog model)
+    - [lamda](https://arxiv.org/abs/2201.08239) - allows google search to add world info (in a dialog model)
       - this was the model that sparked the controversy about consciousness 🤔
-    - webgpt [arxiv.org/abs/2112.09332](https://arxiv.org/abs/2112.09332) - allows google search to add world info
-    - RLPG [arxiv.org/abs/2206.12839](https://arxiv.org/abs/2206.12839) - retrieves functions from the repo, for code-completion
-    - REALM [arxiv.org/abs/2002.08909](https://arxiv.org/abs/2002.08909) - retrieves document chunks from corpus and adds them to context, for open-domain QA
-    - memory-assisted prompt-editing [arxiv.org/abs/2201.06009](https://arxiv.org/abs/2201.06009) - allows model to "save things to memory" that get added to prompt when needed
+    - [webgpt](https://arxiv.org/abs/2112.09332) - allows google search to add world info
+    - [RLPG](https://arxiv.org/abs/2206.12839) - retrieves functions from the repo, for code-completion
+    - [REALM](arxiv.org/abs/2002.08909) - retrieves document chunks from corpus and adds them to context, for open-domain QA
+    - [memory-assisted prompt-editing](https://arxiv.org/abs/2201.06009) - allows model to "save things to memory" that get added to prompt when needed
   - increasing attendable context size with augmented models
     - RETRO [arxiv.org/abs/2112.04426](https://arxiv.org/abs/2112.04426) - nearest neighbors to model's input are retrieved, encoded, and conditioned on with chunked cross-attention 
     - memorizing transformers [arxiv.org/abs/2203.08913](https://arxiv.org/abs/2203.08913) - knn-based learned indexing + retrieval at training time. at input time, you just need to index the entire context and the model will be able to use it
@@ -102,11 +109,45 @@ category: research
   - autoformalization [arxiv.org/abs/2205.12615](https://arxiv.org/abs/2205.12615) - translating from natural language math to formal language
   - program synthesis [arxiv.org/abs/2108.07732](https://arxiv.org/abs/2108.07732) - formalize natural language into runnable code
 
+##  adaptation / transfer
+
+- basic approaches
+  - **finetuning** ([peters et al. 2018](https://aclanthology.org/N18-1202/)) - train linear model on the embedding of the first token (usually an added `[CLS]` token)
+  - finetune all parameters
+  - adapter - between finetuning all layers, and just finetuning a new layer
+    - add some new layers and retrain some specific things (all human choices)
+  - prompting = few-shot learning = priming = contextual learning (starts with GPT)
+- few-shot papers
+  - PatternExploiting Training (PET) -- Exploiting Cloze Questions for Few Shot Text Classification and Natural Language Inference ([schick & schutze, 2021](https://aclanthology.org/2021.eacl-main.20.pdf))
+    - **cloze questions** - same as masked language modeling: task is to replace some missing words
+    - use cloze-question templates (e.g. it was "good" or "bad") to get soft labels for unlabeled data and then finetune on theses
+  - LM-BFF [Making Pre-trained Language Models Better Few-shot Learners](https://arxiv.org/abs/2012.15723) (gao et al. 2020)
+    - uses T5 to generate (i) template for the task (which might include a whole example or two) + (i) appropropriate label tokens in the vocabulary for the task (suffers from computationally intensive search + sub-optimal discrete space search)
+  - [Cutting Down on Prompts and Parameters: Simple Few-Shot Learning with Language Models](https://arxiv.org/abs/2106.13353) (logan...sameer singh, eidel, 2021) -- finetuning in the few-shot setting can allow for much simpler prompts later (e.g. even null prompts)
+  - [Adapting Language Models for Zero-shot Learning by Meta-tuning on Dataset and Prompt Collections](https://arxiv.org/abs/2104.04670) (zhong...dan klein, 2021)
+
 ## autoprompting
-- [Meta-learning via Language Model In-context Tuning](https://arxiv.org/abs/2110.07814) (Chen et al. 2022)
-    - Given new task with new instruction
-- [Prompt Programming for Large Language Models: Beyond the Few-Shot Paradigm](https://arxiv.org/abs/2102.07350) (Reynolds & McDonell, 2021)
-    - Define metaprompts as general wrappers around tasks e.g. “This problem asks us to”
+
+- [AutoPrompt: Eliciting Knowledge from Language Models with Automatically Generated Prompts](https://aclanthology.org/2020.emnlp-main.346/) (shin...sameer singh, 2020) - extract info from prompts, but focus on MLMs and have a fixed set of tokens to choose from (resulting prompts are not interpretable)
+
+- [Differentiable Prompt Makes Pre-trained Language Models Better Few-shot Learners](https://arxiv.org/abs/2108.13161) (zhang...chen, 2022);  [github](https://github.com/zjunlp/DART) 
+  - reformulating NLP task into differentially optimizing the prompt template + target label (given a pre-trained model)
+  - focus on smaller models (Roberta-large + GPT-2) + few training shots
+  - fluency constraint to ensure association among prompt embeddings
+- [Prefix-Tuning: Optimizing Continuous Prompts for Generation](https://arxiv.org/abs/2101.00190) (li & percy liang, 2021); [github](https://github.com/XiangLi1999/PrefixTuning)
+- P-Tuning -- [GPT Understands, Too](https://arxiv.org/abs/2103.10385) (liu et al. 2021) -- use LSTM to generate prompt embeddings (don't map to tokens)
+- [Knowledgeable Prompt-tuning: Incorporating Knowledge into Prompt Verbalizer for Text Classification](https://arxiv.org/abs/2108.02035) (hu et al. 2021) -- add knowledge-base info into the prompt search
+- [PTR: Prompt Tuning with Rules for Text Classification](https://arxiv.org/abs/2105.11259) (han et al. 2021) -- use logic rules to construct prompts with sub-prompts for many-class text classification
+- [Learning How to Ask: Querying LMs with Mixtures of Soft Prompts](https://arxiv.org/abs/2104.06599) (qin & eisner, 2021); [github](https://github.com/hiaoxui/soft-prompts)
+  - use continuous tokens and ensemble (don't map back to words)
+- [WARP: Word-level Adversarial ReProgramming](https://arxiv.org/abs/2101.00121) (Hambardzumyan et al. 2021) - add continous tokens (don't map back to words) + some task-specific parameters for better generalization
+- [KnowPrompt: Knowledge-aware Prompt-tuning with Synergistic Optimization for Relation Extraction](https://arxiv.org/abs/2104.07650) (chen et al. 2021) -- incorporate relations, visualize learned prompt vectors with t-SNE
+- misc
+  - [SentiPrompt: Sentiment Knowledge Enhanced Prompt-Tuning for Aspect-Based Sentiment Analysis](https://arxiv.org/abs/2109.08306) -- use sentiment knowledge penalties in the prompt
+  - [Meta-learning via Language Model In-context Tuning](https://arxiv.org/abs/2110.07814) (Chen et al. 2022) -- Given new task with new instruction
+  - [Prompt Programming for Large Language Models: Beyond the Few-Shot Paradigm](https://arxiv.org/abs/2102.07350) (Reynolds & McDonell, 2021) -- define metaprompts as general wrappers around tasks e.g. “This problem asks us to”
+- critiques of prompting
+  - [Do Prompt-Based Models Really Understand the Meaning of their Prompts?](https://arxiv.org/abs/2109.01247) (webson & pavlick, 2022) -- - models can learn fine with prompts that are intentionally irrelevant
 
 ## transformer circuits
 
@@ -173,8 +214,11 @@ category: research
     - each  can be added/removed, ensembled, or parameter-averaged at any time for efficient scaling and rapid customization
     - improves perplexities, when controlling for training cost
       - require expert domain specialization
-- adapter - between finetuning all layers, and just finetuning a new layer
-  - add some new layers and retrain some specific things (all human choices)
+
+## causal inference
+
+- [InferBERT: A Transformer-Based Causal Inference Framework for Enhancing Pharmacovigilance](https://www.frontiersin.org/articles/10.3389/frai.2021.659622/full) (2021) - learn + test feature relationships from attention weights
+- [CausaLM: Causal Model Explanation Through Counterfactual Language Models | Computational Linguistics](https://direct.mit.edu/coli/article/47/2/333/98518/CausaLM-Causal-Model-Explanation-Through) (2021) - produce example-level causal model explanations using models finetuned on auxiliary adversarial tasks derived from the causal graph of the problem
 
 # basics
 
