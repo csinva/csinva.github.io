@@ -55,6 +55,57 @@ category: research
   - different modalities are converted to tokens differently (e.g. image patches are fed through resnet)
 - [spatial transformers](https://papers.nips.cc/paper/5854-spatial-transformer-networks.pdf )
 
+##  adaptation / transfer
+
+- basic approaches
+  - **finetuning** ([peters et al. 2018](https://aclanthology.org/N18-1202/)) - train linear model on the embedding of the first token (usually an added `[CLS]` token)
+  - finetune all parameters
+  - adapter - between finetuning all layers, and just finetuning a new layer
+    - add some new layers and retrain some specific things (all human choices)
+  - prompting = few-shot learning = priming = in-context learning (starts with GPT)
+    - limitation: can't exploit sets longer than the training window
+  - misc
+    - ablate some model weights by training a binary mask over model parameters (Zhao et al., 2020; Radiya-Dixit and Wang, 2020)
+    - Zhang et al. (2020a) trains a “side” network that is fused with the pretrained model via summation
+- few-shot papers
+  - PatternExploiting Training (PET) -- Exploiting Cloze Questions for Few Shot Text Classification and Natural Language Inference ([schick & schutze, 2021](https://aclanthology.org/2021.eacl-main.20.pdf))
+    - **cloze questions** - same as masked language modeling: task is to replace some missing words
+    - use cloze-question templates (e.g. it was "good" or "bad") to get soft labels for unlabeled data and then finetune on theses
+  - LM-BFF [Making Pre-trained Language Models Better Few-shot Learners](https://arxiv.org/abs/2012.15723) (gao et al. 2020)
+    - uses T5 to generate (i) template for the task (which might include a whole example or two) + (i) appropropriate label tokens in the vocabulary for the task (suffers from computationally intensive search + sub-optimal discrete space search)
+  - [Cutting Down on Prompts and Parameters: Simple Few-Shot Learning with Language Models](https://arxiv.org/abs/2106.13353) (logan...sameer singh, eidel, 2021) -- finetuning in the few-shot setting can allow for much simpler prompts later (e.g. even null prompts)
+  - [Adapting Language Models for Zero-shot Learning by Meta-tuning on Dataset and Prompt Collections](https://arxiv.org/abs/2104.04670) (zhong...dan klein, 2021)
+
+## autoprompting
+
+- [AutoPrompt: Eliciting Knowledge from Language Models with Automatically Generated Prompts](https://aclanthology.org/2020.emnlp-main.346/) (shin...sameer singh, 2020)
+  - select prompts from a fixed set of tokens (resulting prompts are not coherent)
+  - only work on MLM
+  - elicit sentiment / factual knowledge
+  - [Universal Adversarial Triggers for Attacking and Analyzing NLP](https://arxiv.org/abs/1908.07125) (wallace...sameer singh, 2022) - find input-agnostic sequences of tokens that trigger a model to produce a specific prediction when concatenated to any input from a dataset
+  
+- [Prefix-Tuning: Optimizing Continuous Prompts for Generation](https://arxiv.org/abs/2101.00190) (li & percy liang, 2021) -- optimizes in continuous space for language generation tasks
+  - learn to map some parameters $\theta$ through and MLP to generate a starting hidden state $h_i$ -- never actually sends the prefix through the network 
+  - [Control Prefixes for Parameter-Efficient Text Generation](https://arxiv.org/abs/2110.08329) (clive, cao, & rei, 2022) - allow for adapting the prefix to each input example
+  
+- DART [Differentiable Prompt Makes Pre-trained Language Models Better Few-shot Learners](https://arxiv.org/abs/2108.13161) (zhang...chen, 2022)
+  - reformulating NLP task into differentially optimizing the prompt template + target label (given a pre-trained model)
+  - focus on smaller models (Roberta-large + GPT-2) + few training shots
+  - fluency constraint to ensure association among prompt embeddings
+  - P-Tuning -- [GPT Understands, Too](https://arxiv.org/abs/2103.10385) (liu et al. 2021) -- use LSTM to generate prompt embeddings (don't map to tokens)
+- [Knowledgeable Prompt-tuning: Incorporating Knowledge into Prompt Verbalizer for Text Classification](https://arxiv.org/abs/2108.02035) (hu et al. 2021) -- add knowledge-base info into the prompt search
+- [PTR: Prompt Tuning with Rules for Text Classification](https://arxiv.org/abs/2105.11259) (han et al. 2021) -- use logic rules to construct prompts with sub-prompts for many-class text classification
+- [Learning How to Ask: Querying LMs with Mixtures of Soft Prompts](https://arxiv.org/abs/2104.06599) (qin & eisner, 2021); [github](https://github.com/hiaoxui/soft-prompts)
+  - use continuous tokens and ensemble (don't map back to words)
+- [WARP: Word-level Adversarial ReProgramming](https://arxiv.org/abs/2101.00121) (Hambardzumyan et al. 2021) - add continous tokens (don't map back to words) + some task-specific parameters for better generalization
+- [KnowPrompt: Knowledge-aware Prompt-tuning with Synergistic Optimization for Relation Extraction](https://arxiv.org/abs/2104.07650) (chen et al. 2021) -- incorporate relations, visualize learned prompt vectors with t-SNE
+- misc
+  - [SentiPrompt: Sentiment Knowledge Enhanced Prompt-Tuning for Aspect-Based Sentiment Analysis](https://arxiv.org/abs/2109.08306) -- use sentiment knowledge penalties in the prompt
+  - [Meta-learning via Language Model In-context Tuning](https://arxiv.org/abs/2110.07814) (Chen et al. 2022) -- Given new task with new instruction
+  - [Prompt Programming for Large Language Models: Beyond the Few-Shot Paradigm](https://arxiv.org/abs/2102.07350) (Reynolds & McDonell, 2021) -- define metaprompts as general wrappers around tasks e.g. “This problem asks us to”
+- critiques of prompting
+  - [Do Prompt-Based Models Really Understand the Meaning of their Prompts?](https://arxiv.org/abs/2109.01247) (webson & pavlick, 2022) -- - models can learn fine with prompts that are intentionally irrelevant
+
 ## model chaining
 
 **notes from this [thread](https://twitter.com/iraphas13/status/1551959289023016967) on chaining models together**:
@@ -109,45 +160,11 @@ category: research
   - autoformalization [arxiv.org/abs/2205.12615](https://arxiv.org/abs/2205.12615) - translating from natural language math to formal language
   - program synthesis [arxiv.org/abs/2108.07732](https://arxiv.org/abs/2108.07732) - formalize natural language into runnable code
 
-##  adaptation / transfer
+## model editing
 
-- basic approaches
-  - **finetuning** ([peters et al. 2018](https://aclanthology.org/N18-1202/)) - train linear model on the embedding of the first token (usually an added `[CLS]` token)
-  - finetune all parameters
-  - adapter - between finetuning all layers, and just finetuning a new layer
-    - add some new layers and retrain some specific things (all human choices)
-  - prompting = few-shot learning = priming = contextual learning (starts with GPT)
-- few-shot papers
-  - PatternExploiting Training (PET) -- Exploiting Cloze Questions for Few Shot Text Classification and Natural Language Inference ([schick & schutze, 2021](https://aclanthology.org/2021.eacl-main.20.pdf))
-    - **cloze questions** - same as masked language modeling: task is to replace some missing words
-    - use cloze-question templates (e.g. it was "good" or "bad") to get soft labels for unlabeled data and then finetune on theses
-  - LM-BFF [Making Pre-trained Language Models Better Few-shot Learners](https://arxiv.org/abs/2012.15723) (gao et al. 2020)
-    - uses T5 to generate (i) template for the task (which might include a whole example or two) + (i) appropropriate label tokens in the vocabulary for the task (suffers from computationally intensive search + sub-optimal discrete space search)
-  - [Cutting Down on Prompts and Parameters: Simple Few-Shot Learning with Language Models](https://arxiv.org/abs/2106.13353) (logan...sameer singh, eidel, 2021) -- finetuning in the few-shot setting can allow for much simpler prompts later (e.g. even null prompts)
-  - [Adapting Language Models for Zero-shot Learning by Meta-tuning on Dataset and Prompt Collections](https://arxiv.org/abs/2104.04670) (zhong...dan klein, 2021)
-
-## autoprompting
-
-- [AutoPrompt: Eliciting Knowledge from Language Models with Automatically Generated Prompts](https://aclanthology.org/2020.emnlp-main.346/) (shin...sameer singh, 2020) - extract info from prompts, but focus on MLMs and have a fixed set of tokens to choose from (resulting prompts are not interpretable)
-
-- [Differentiable Prompt Makes Pre-trained Language Models Better Few-shot Learners](https://arxiv.org/abs/2108.13161) (zhang...chen, 2022);  [github](https://github.com/zjunlp/DART) 
-  - reformulating NLP task into differentially optimizing the prompt template + target label (given a pre-trained model)
-  - focus on smaller models (Roberta-large + GPT-2) + few training shots
-  - fluency constraint to ensure association among prompt embeddings
-- [Prefix-Tuning: Optimizing Continuous Prompts for Generation](https://arxiv.org/abs/2101.00190) (li & percy liang, 2021); [github](https://github.com/XiangLi1999/PrefixTuning)
-- P-Tuning -- [GPT Understands, Too](https://arxiv.org/abs/2103.10385) (liu et al. 2021) -- use LSTM to generate prompt embeddings (don't map to tokens)
-- [Knowledgeable Prompt-tuning: Incorporating Knowledge into Prompt Verbalizer for Text Classification](https://arxiv.org/abs/2108.02035) (hu et al. 2021) -- add knowledge-base info into the prompt search
-- [PTR: Prompt Tuning with Rules for Text Classification](https://arxiv.org/abs/2105.11259) (han et al. 2021) -- use logic rules to construct prompts with sub-prompts for many-class text classification
-- [Learning How to Ask: Querying LMs with Mixtures of Soft Prompts](https://arxiv.org/abs/2104.06599) (qin & eisner, 2021); [github](https://github.com/hiaoxui/soft-prompts)
-  - use continuous tokens and ensemble (don't map back to words)
-- [WARP: Word-level Adversarial ReProgramming](https://arxiv.org/abs/2101.00121) (Hambardzumyan et al. 2021) - add continous tokens (don't map back to words) + some task-specific parameters for better generalization
-- [KnowPrompt: Knowledge-aware Prompt-tuning with Synergistic Optimization for Relation Extraction](https://arxiv.org/abs/2104.07650) (chen et al. 2021) -- incorporate relations, visualize learned prompt vectors with t-SNE
-- misc
-  - [SentiPrompt: Sentiment Knowledge Enhanced Prompt-Tuning for Aspect-Based Sentiment Analysis](https://arxiv.org/abs/2109.08306) -- use sentiment knowledge penalties in the prompt
-  - [Meta-learning via Language Model In-context Tuning](https://arxiv.org/abs/2110.07814) (Chen et al. 2022) -- Given new task with new instruction
-  - [Prompt Programming for Large Language Models: Beyond the Few-Shot Paradigm](https://arxiv.org/abs/2102.07350) (Reynolds & McDonell, 2021) -- define metaprompts as general wrappers around tasks e.g. “This problem asks us to”
-- critiques of prompting
-  - [Do Prompt-Based Models Really Understand the Meaning of their Prompts?](https://arxiv.org/abs/2109.01247) (webson & pavlick, 2022) -- - models can learn fine with prompts that are intentionally irrelevant
+- [Locating and Editing Factual Associations in GPT](https://arxiv.org/abs/2202.05262) (meng et al. 2022)
+  - causal intervention for identifying neuron activations that are decisive in a model’s factual predictions
+  - modify feedforward weights to update specific factual associations using Rank-One Model Editing (ROME)
 
 ## transformer circuits
 
@@ -211,7 +228,7 @@ category: research
   - task-level MoE [Kudugunta et al. (2021](https://arxiv.org/abs/2110.03742)) -- multi-task expert model with task-specific routing
   - ELMS -- Branch-Train-Merge ([li et al. 2022](https://arxiv.org/abs/2208.03306))
     - parallel language model of smaller expert LMs
-    - each  can be added/removed, ensembled, or parameter-averaged at any time for efficient scaling and rapid customization
+    - each can be added/removed, ensembled, or parameter-averaged at any time for efficient scaling and rapid customization
     - improves perplexities, when controlling for training cost
       - require expert domain specialization
 
@@ -224,7 +241,6 @@ category: research
 
 - **attention** = vector of importance weights
   - to predict or infer one element, such as a pixel in an image or a word in a sentence, we estimate using the attention vector how strongly it is correlated with (or “*attends to*” other elements and take the sum of their values weighted by the attention vector as the approximation of the target
-
 - vanilla transformer: multihead attention, add + norm, position-wise ffn, add + norm
 - self-attention layer [implementation](https://github.com/mertensu/transformer-tutorial) and [mathematics](https://homes.cs.washington.edu/~thickstn/docs/transformers.pdf)
 
@@ -246,6 +262,10 @@ category: research
 - unembedding
   - linear layer (with softmax) that outputs size of original vocab
     - sometimes fixed to be transpose of the embedding matrix
+- predictions
+  - predict next word using single linear layer on hidden state from previous word
+  - finetune classification head often only using linear layer on first token from sequence
+
 - architectures
   - initially, encoder-decoder was common, but now often no decoder
 

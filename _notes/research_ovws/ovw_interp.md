@@ -1117,12 +1117,6 @@ How interactions are defined and summarized is a very difficult thing to specify
     - teacher underfitting $\to$ loss correction
     - teacher overfitting $\to$ cross-fitting (chernozhukov et al. 2018) - like cross-validation, fit student only to held-out predictions
 
-## transformers
-
-- [Locating and Editing Factual Associations in GPT](https://arxiv.org/abs/2202.05262) (meng et al. 2022)
-  - causal intervention for identifying neuron activations that are decisive in a model’s factual predictions
-  - modify feedforward weights to update specific factual associations using Rank-One Model Editing (ROME)
-
 
 
 # different problems / perspectives
