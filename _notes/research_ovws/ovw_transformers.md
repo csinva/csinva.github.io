@@ -16,25 +16,30 @@ category: research
 - attention is all you need ([vaswani et al. 2017](https://arxiv.org/abs/1706.03762)) - initial transformer
   - encoder-decoder transformer for seq-to-seq
   - this paper has special encoder-decoder structure for translation (most new models don't)
-  - [Semi-supervised Sequence Learning](https://arxiv.org/abs/1511.01432) (by [Andrew Dai](https://twitter.com/iamandrewdai) and [Quoc Le](https://twitter.com/quocleix))
+  - [Semi-supervised Sequence Learning](https://arxiv.org/abs/1511.01432) (dai & quoc le, 2015)
     - context vector is weighted sum of context vector at each word
 - [ULMFiT](https://arxiv.org/abs/1801.06146) ([Jeremy Howard](https://twitter.com/jeremyphoward) and [Sebastian Ruder](https://twitter.com/seb_ruder))
 - BERT ([devlin et al. 2018](https://arxiv.org/abs/1810.04805)) - semi-supervised learning (predict masked word - this is bidirectional) + supervised finetuning
   - [roberta](https://arxiv.org/abs/1907.11692)
 - [ELMo](https://arxiv.org/abs/1802.05365) (by [Matthew Peters](https://twitter.com/mattthemathman) and researchers from [AI2](https://allenai.org/) and [UW CSE](https://www.engr.washington.edu/about/bldgs/cse)) - no word embeddings - train embeddings w/ bidirectional lstm (on language modeling)
-- [XLNet](https://arxiv.org/abs/1906.08237)
+- XLNet ([yang...quoc le, 2020](https://arxiv.org/abs/1906.08237))
+- ELECTRA: Pre-training Text Encoders as Discriminators Rather Than Generators ([clark...quoc le, chris manning, 2020](https://arxiv.org/abs/2003.10555))
+  - more efficient: instead of standard masked training, have generator-discriminator setup for "token detection"
+  - generator replaces many masked tokens with plausible samples (all in one forward pass)
+  - discriminator tries to guess which tokens were the masked ones
+
 - GPT-3 ([brown et al. 2020](https://arxiv.org/abs/2005.14165?2)) - identitical to GPT-2 except larger and replaces dense attention with sparse attention
   - GPT-2 ([radford et al. 2018](https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf))
   - GPT ([radford et al. 2018](https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf))
-- gopher - basically gpt-3 with slight mods (replace layernorm by RMSnorm, different positional embeddings)
-- [PaLM: Scaling Language Modeling with Pathways](https://arxiv.org/abs/2204.02311) (2022) - 540 Billion params
+- [Gopher](https://arxiv.org/abs/2112.11446) - basically gpt-3 with slight mods (replace layernorm by RMSnorm, different positional embeddings)
+- [PaLM: Scaling Language Modeling with Pathways](https://arxiv.org/abs/2204.02311) (google, 2022) - 540 Billion params
   - pathways hardware center allows for fast/efficient training
   - discontinuous improvements - at some point large model improves
   - prompt engineering: "Explain yourself" - lets it explain jokes
-- [Chinichilla: Training Compute-Optimal Large Language Models](https://arxiv.org/abs/2203.15556)
+- [Chinchilla: Training Compute-Optimal Large Language Models](https://arxiv.org/abs/2203.15556)
   - for compute-optimal training, the model size and the number of training tokens should be scaled equally
 - T0 ([sanh...rush, 2022](https://arxiv.org/pdf/2110.08207.pdf)) - multitask training enables better zero-shot generalization
-  - [T5](https://jmlr.org/papers/volume21/20-074/20-074.pdf) (raffel...liu, 2020) -- text-to-text transfer transformer
+  - T5 ([raffel...liu, 2020](https://jmlr.org/papers/volume21/20-074/20-074.pdf)) -- text-to-text transfer transformer
 
 **other**
 
@@ -47,10 +52,10 @@ category: research
     - generates text + image embeddings
     - "prior network" maps text embedding to image embedding
     - adds diffusion model
+  - BEiT-3 ([2022](https://arxiv.org/abs/2208.10442)) - treat vision as language and large-scale multimodal training
+    - outperforms [Flamingo: a Visual Language Model for Few-Shot Learning](https://arxiv.org/abs/2204.14198) (2022), which uses more domain knowledge to connect vision & language
 - vision
   -  [attention augmentation to resnet](https://arxiv.org/abs/1904.09925) for vision  (2020)
-- multimodal
-  - BEiT-3 ([2022](https://arxiv.org/abs/2208.10442)) - treat vision as language and large-scale multimodal training
 - GATO: [A Generalist Agent](https://arxiv.org/abs/2205.06175) (2022) - single agent plays many different video games
   - different modalities are converted to tokens differently (e.g. image patches are fed through resnet)
 - [spatial transformers](https://papers.nips.cc/paper/5854-spatial-transformer-networks.pdf )
@@ -67,6 +72,7 @@ category: research
   - misc
     - ablate some model weights by training a binary mask over model parameters (Zhao et al., 2020; Radiya-Dixit and Wang, 2020)
     - Zhang et al. (2020a) trains a “side” network that is fused with the pretrained model via summation
+    - [Cutting Down on Prompts and Parameters: Simple Few-Shot Learning with Language Models](https://arxiv.org/abs/2106.13353) (logan...sameer singh, riedel, 2021) - finetuning only the bias terms can achieve comparable or better accuracy than standard finetuning while only updating 0.1% of the parameters
 - few-shot papers
   - PatternExploiting Training (PET) -- Exploiting Cloze Questions for Few Shot Text Classification and Natural Language Inference ([schick & schutze, 2021](https://aclanthology.org/2021.eacl-main.20.pdf))
     - **cloze questions** - same as masked language modeling: task is to replace some missing words
@@ -106,9 +112,9 @@ category: research
 - critiques of prompting
   - [Do Prompt-Based Models Really Understand the Meaning of their Prompts?](https://arxiv.org/abs/2109.01247) (webson & pavlick, 2022) -- - models can learn fine with prompts that are intentionally irrelevant
 
-## model chaining
+## llm chaining
 
-**notes from this [thread](https://twitter.com/iraphas13/status/1551959289023016967) on chaining models together**:
+**notes from this [thread](https://twitter.com/iraphas13/status/1551959289023016967) on chaining models together**
 
 - steering
   - overviews
@@ -160,11 +166,13 @@ category: research
   - autoformalization [arxiv.org/abs/2205.12615](https://arxiv.org/abs/2205.12615) - translating from natural language math to formal language
   - program synthesis [arxiv.org/abs/2108.07732](https://arxiv.org/abs/2108.07732) - formalize natural language into runnable code
 
-## model editing
+## llm editing
 
 - [Locating and Editing Factual Associations in GPT](https://arxiv.org/abs/2202.05262) (meng et al. 2022)
-  - causal intervention for identifying neuron activations that are decisive in a model’s factual predictions
-  - modify feedforward weights to update specific factual associations using Rank-One Model Editing (ROME)
+  - *localize factual associations* - causal intervention for identifying neuron activations that are decisive in a model’s factual predictions
+    - "causal traces" - run net multiple times, introducing corroptuions and then restoring states from original non-corrupted forward pass to see which states can restore the original results
+    - a small number of states contain info that can flip the model from one state to another
+  - *change factual associations* - modify feedforward weights to update specific factual associations using Rank-One Model Editing (ROME)
 
 ## transformer circuits
 
@@ -232,10 +240,22 @@ category: research
     - improves perplexities, when controlling for training cost
       - require expert domain specialization
 
-## causal inference
+## causal inference / llm querying
 
 - [InferBERT: A Transformer-Based Causal Inference Framework for Enhancing Pharmacovigilance](https://www.frontiersin.org/articles/10.3389/frai.2021.659622/full) (2021) - learn + test feature relationships from attention weights
 - [CausaLM: Causal Model Explanation Through Counterfactual Language Models | Computational Linguistics](https://direct.mit.edu/coli/article/47/2/333/98518/CausaLM-Causal-Model-Explanation-Through) (2021) - produce example-level causal model explanations using models finetuned on auxiliary adversarial tasks derived from the causal graph of the problem
+- [Language Models as Knowledge Bases?](https://arxiv.org/abs/1909.01066) (petroni...riedel, 2019) - Proposes using fill-in-the-blank prompts for extracting knowledge from large language models
+  - create LAMA probe - dataset of (subject, relation, object) triplets with templates -- find that BERT can recall these relations
+  - [How to Query Language Models?](https://arxiv.org/abs/2108.01928) (adolphs et al. 2021) - query LLMs by example (e.g. "Ronaldo plays for Portugal. Who does Neuer play for?")
+  - [How Can We Know What Language Models Know?](https://arxiv.org/abs/1911.12543) (jiang ... neubig, 2020)
+    - mining-based and paraphrasing-based methods to automatically generate high-quality diverse prompts
+    - ensemble methods to combine answers from different prompts (e.g. avg logits and more)
+
+- [Jesse Vig, Sebastian Gehrmann, Yonatan Belinkov, Sharon Qian, Daniel Nevo, Yaron Singer, Stuart Shieber. Investigating Gender Bias in Language Models Using Causal Mediation Analysis. NeurIPS 2020.](https://proceedings.neurips.cc/paper/2020/file/92650b2e92217715fe312e6fa7b90d82-Paper.pdf)
+  - Applies causal mediation analysis to identify decisive neurons and attention heads responsible for gender bias in large language models
+  - Identifies a small handful of decisive attention heads in this case
+
+- [Yanai Elazar, Shauli Ravfogel, Alon Jacovi, Yoav Goldberg. Amnesic Probing: Behavioral Explanation with Amnesic Counterfactuals. TACL 2021.](https://arxiv.org/pdf/2006.00995.pdf) - Proposes measuring the importance of specific information within a model by introducing a causal intervention to erase that information, then observing the causal effects.
 
 # basics
 

@@ -1158,6 +1158,11 @@ How interactions are defined and summarized is a very difficult thing to specify
   - Hybrid Predictive Models: When an Interpretable Model Collaborates with a Black-box Model ([wang & lin, 2021](https://www.jmlr.org/papers/volume22/19-325/19-325.pdf)) - use interpretable model on subset where it works
     - objective function considers predictive accuracy, model interpretability, and model transparency (defined as the percentage of data processed by the interpretable substitute)
   - Partially Interpretable Estimators (PIE): Black-Box-Refined Interpretable Machine Learning ([wang et al. 2021](https://arxiv.org/abs/2105.02410)) - interpretable model for individual features and black-box model captures feature interactions (on residuals)
+- [Three Maxims for Developing Human-Centered AI for Decision Making](https://www.proquest.com/docview/2628490400?pq-origsite=gscholar&fromopenview=true) (2022) - [‪Gagan Bansal‬](https://scholar.google.com/citations?user=eCSI4pMAAAAJ&hl=en&oi=ao) has more papers like this
+  - help users understand *when to trust* AI recommendations
+  - *preserve user’s mental model of AI’s trustworthiness*
+  - train AI to *optimize for team performance*.
+
 
 ## human-in-the-loop (HITL)
 
@@ -1312,7 +1317,7 @@ These papers don't quite connect to prediction, but are generally about finding 
     - tensor product representation = TPR
     - [TPR slides](https://www.mit.edu/~jda/teaching/6.884/slides/oct_02.pdf)
     - TPR of a structure is the sum of the TPR of its constituents
-      - tensor product operation allows constiuents to be uniquely identified, even after the sum (if roles are linearly independent)
+      - tensor product operation allows constituents to be uniquely identified, even after the sum (if roles are linearly independent)
   - in addition to K, Q, V, also add a role-vector
     - do element-wise multiplication of outputted vector with role-vector
   - TPR built as tensor product of 2 vectors:

@@ -177,7 +177,8 @@ the operations above allow for encoding many normal data structures into a singl
   - VSA as a structured approach for understanding neural networks
   - reservoir computing = state-dependent network = echos-state network = liquid state machine - try to represen sequential temporal data - builds representations on the fly
 - different names
-  - Tony plate: holographic reduced representation
+  - Tony plate: [holographic reduced representation](https://ieeexplore.ieee.org/abstract/document/377968?casa_token=L3jgIZw7e5QAAAAA:m7VbqpNlZkL3kPU1faJe6XDVIxi5N55iToDKMndnknmBFFP7Boi2HZMI2ODCkzX0oXbanAqsZBg) (1995)
+    - related to TPR by paul smolensky
   - ross gayler: multiply-add-permute arch
   - gayler & levi: vector-symbolic arch
   - gallant & okaywe: matrix binding with additive termps
