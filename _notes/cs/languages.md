@@ -6,7 +6,6 @@ category: cs
 
 * TOC
 {:toc}
-
 # python
 
 ## basic
@@ -165,7 +164,7 @@ pd.merge(df1, df2, how='left', on='x1')
 ## pytorch
 
 - new in 1.11: TorchData, functorch (e.g. vmap), DistributedDataParallel - now stable
-- as of 1.6.0
+- as of 1.6.0 (there is also RPC-based training and Collective Communication)
   - `nn.DistributedDataParallel` is often faster
     - replicates model on each gpu and gives some data to each one (less data transfers)
 
@@ -189,20 +188,26 @@ pd.merge(df1, df2, how='left', on='x1')
 
 ## parallelization
 
-- cores = cpus = processors - inividual processing units available on a single node
-- node - different computers with distinc memory
-- processes - instances of a program executing on a machine
+- **cores** = cpus = processors - individual processing units available on a single node
+
+- **node** - different computers with distinct memory
+
+- **processes** - instances of a program executing on a machine
+  
   - shouldn't have more user processes than cores on a node
-- more...
-  - threads - multiple paths of execution within a single process
+  
+  - **threads** - multiple paths of execution within a single process
     - like a process, but more lightweight
+  
 - passing messages between nodes (e.g. for distributed memory) often use protocol known as MPI
   - packages such as Dask do this for you, without MPI
+  
 - python packages
-  - dask: parallelizing tasks, distributed datasets, one or more machines
-  - ray: parallelizing tasks, building distributed applications, one or more machines
+  - *dask*: parallelizing tasks, distributed datasets, one or more machines
+  - *ray*: parallelizing tasks, building distributed applications, one or more machines
+  
 - dask
-  - separate code from code to parallelize things
+  - separate code from parallelization
   - some limitations on pure python code, but np/pandas etc. parallelize better
   - configuration: specify sequential ('synchronous'), threads within current session ('threaded') paralell ('processes') multiprocessing - this creates copies of objects, multi-node or not ('distributed')
   - need to wrap functions with `delayed()` or `map()`

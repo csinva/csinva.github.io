@@ -21,16 +21,14 @@ category: research
 - [ULMFiT](https://arxiv.org/abs/1801.06146) ([Jeremy Howard](https://twitter.com/jeremyphoward) and [Sebastian Ruder](https://twitter.com/seb_ruder))
 - BERT ([devlin et al. 2018](https://arxiv.org/abs/1810.04805)) - semi-supervised learning (predict masked word - this is bidirectional) + supervised finetuning
   - [roberta](https://arxiv.org/abs/1907.11692)
+- [BART: Denoising sequence-to-sequence pre-training](https://arxiv.org/abs/1910.13461) (lewis et al. 2019) - generalizes BERT - train by (1) corrupting text then (2) reconstruct the original text
 - [ELMo](https://arxiv.org/abs/1802.05365) (by [Matthew Peters](https://twitter.com/mattthemathman) and researchers from [AI2](https://allenai.org/) and [UW CSE](https://www.engr.washington.edu/about/bldgs/cse)) - no word embeddings - train embeddings w/ bidirectional lstm (on language modeling)
 - XLNet ([yang...quoc le, 2020](https://arxiv.org/abs/1906.08237))
-- ELECTRA: Pre-training Text Encoders as Discriminators Rather Than Generators ([clark...quoc le, chris manning, 2020](https://arxiv.org/abs/2003.10555))
-  - more efficient: instead of standard masked training, have generator-discriminator setup for "token detection"
-  - generator replaces many masked tokens with plausible samples (all in one forward pass)
-  - discriminator tries to guess which tokens were the masked ones
-
 - GPT-3 ([brown et al. 2020](https://arxiv.org/abs/2005.14165?2)) - identitical to GPT-2 except larger and replaces dense attention with sparse attention
+  - sizes: largest ha 175B params, 96 layers, 96 heads in each layer, head with dim 128, vocab size ~50k
   - GPT-2 ([radford et al. 2018](https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf))
   - GPT ([radford et al. 2018](https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf))
+
 - [Gopher](https://arxiv.org/abs/2112.11446) - basically gpt-3 with slight mods (replace layernorm by RMSnorm, different positional embeddings)
 - [PaLM: Scaling Language Modeling with Pathways](https://arxiv.org/abs/2204.02311) (google, 2022) - 540 Billion params
   - pathways hardware center allows for fast/efficient training
@@ -40,6 +38,14 @@ category: research
   - for compute-optimal training, the model size and the number of training tokens should be scaled equally
 - T0 ([sanh...rush, 2022](https://arxiv.org/pdf/2110.08207.pdf)) - multitask training enables better zero-shot generalization
   - T5 ([raffel...liu, 2020](https://jmlr.org/papers/volume21/20-074/20-074.pdf)) -- text-to-text transfer transformer
+- more efficient training
+  - natural language feedback ([scheurer et al. 2022]())
+    - human feedback for learning makes it much more efficient
+  - [instructGPT](https://arxiv.org/abs/2203.02155) / [FLAN](https://arxiv.org/abs/2109.01652) - finetune on instructions to follows instructions
+  - ELECTRA: Pre-training Text Encoders as Discriminators Rather Than Generators ([clark...quoc le, chris manning, 2020](https://arxiv.org/abs/2003.10555))
+    - more efficient: instead of standard masked training, have generator-discriminator setup for "token detection"
+    - generator replaces many masked tokens with plausible samples (all in one forward pass)
+    - discriminator tries to guess which tokens were the masked ones
 
 **other**
 
@@ -58,6 +64,27 @@ category: research
   -  [attention augmentation to resnet](https://arxiv.org/abs/1904.09925) for vision  (2020)
 - GATO: [A Generalist Agent](https://arxiv.org/abs/2205.06175) (2022) - single agent plays many different video games
   - different modalities are converted to tokens differently (e.g. image patches are fed through resnet)
+- [MINERVA: Solving Quantitative Reasoning Problems with Language Models](https://arxiv.org/abs/2206.14858) - train on well-parsed, domain-specific data (math arxiv) to solve math-reasoning problems
+
+- CODEX [Evaluating Large Language Models Trained on Code](https://arxiv.org/abs/2107.03374) (2021)
+
+  - [Repair Is Nearly Generation: Multilingual Program Repair with LLMs](https://arxiv.org/abs/2208.11640) (joshi et al. 2022) - 
+
+  - [Improving automatically generated code from Codex via Automated Program Repair](https://arxiv.org/abs/2205.10583) (fan et al. 2022) - use automated program repair to tweak codex outputs to make them better
+
+  - [Automatic Program Repair with OpenAI's Codex: Evaluating QuixBugs](https://arxiv.org/abs/2111.03922) (prenner & robbes, 2021)
+
+    - use prompt like:
+      ```python
+      ### fix the bug in the following function
+      <buggy function and/or docstring here>
+      ### fixed function
+      ```
+
+- autoformalization [arxiv.org/abs/2205.12615](https://arxiv.org/abs/2205.12615) - translating from natural language math to formal language
+
+- program synthesis [arxiv.org/abs/2108.07732](https://arxiv.org/abs/2108.07732) - formalize natural language into runnable code
+
 - [spatial transformers](https://papers.nips.cc/paper/5854-spatial-transformer-networks.pdf )
 
 ##  adaptation / transfer
@@ -69,18 +96,21 @@ category: research
     - add some new layers and retrain some specific things (all human choices)
   - prompting = few-shot learning = priming = in-context learning (starts with GPT)
     - limitation: can't exploit sets longer than the training window
-  - misc
-    - ablate some model weights by training a binary mask over model parameters (Zhao et al., 2020; Radiya-Dixit and Wang, 2020)
-    - Zhang et al. (2020a) trains a “side” network that is fused with the pretrained model via summation
-    - [Cutting Down on Prompts and Parameters: Simple Few-Shot Learning with Language Models](https://arxiv.org/abs/2106.13353) (logan...sameer singh, riedel, 2021) - finetuning only the bias terms can achieve comparable or better accuracy than standard finetuning while only updating 0.1% of the parameters
+  - prompt-tuning
+    - [Attentional Mixtures of Soft Prompt Tuning for Parameter-efficient Multi-task Knowledge Sharing](https://arxiv.org/abs/2205.11961)
+  - metalearning
+- misc approaches
+  - ablate some model weights by training a binary mask over model parameters (Zhao et al., 2020; Radiya-Dixit and Wang, 2020)
+  - Zhang et al. (2020a) trains a “side” network that is fused with the pretrained model via summation
+  - [Cutting Down on Prompts and Parameters: Simple Few-Shot Learning with Language Models](https://arxiv.org/abs/2106.13353) (logan...sameer singh, riedel, 2021) - finetuning only the bias terms can achieve comparable or better accuracy than standard finetuning while only updating 0.1% of the parameters; this works even with null prompts
 - few-shot papers
   - PatternExploiting Training (PET) -- Exploiting Cloze Questions for Few Shot Text Classification and Natural Language Inference ([schick & schutze, 2021](https://aclanthology.org/2021.eacl-main.20.pdf))
     - **cloze questions** - same as masked language modeling: task is to replace some missing words
     - use cloze-question templates (e.g. it was "good" or "bad") to get soft labels for unlabeled data and then finetune on theses
   - LM-BFF [Making Pre-trained Language Models Better Few-shot Learners](https://arxiv.org/abs/2012.15723) (gao et al. 2020)
     - uses T5 to generate (i) template for the task (which might include a whole example or two) + (i) appropropriate label tokens in the vocabulary for the task (suffers from computationally intensive search + sub-optimal discrete space search)
-  - [Cutting Down on Prompts and Parameters: Simple Few-Shot Learning with Language Models](https://arxiv.org/abs/2106.13353) (logan...sameer singh, eidel, 2021) -- finetuning in the few-shot setting can allow for much simpler prompts later (e.g. even null prompts)
   - [Adapting Language Models for Zero-shot Learning by Meta-tuning on Dataset and Prompt Collections](https://arxiv.org/abs/2104.04670) (zhong...dan klein, 2021)
+  - [MetaICL: Learning to Learn In Context](https://arxiv.org/abs/2110.15943) (min et al. 2022) - tune LLM to do in-context learning on a large set of training tasks (few-show prompting and training time and at test-time)
 
 ## autoprompting
 
@@ -114,24 +144,25 @@ category: research
 
 ## llm chaining
 
-**notes from this [thread](https://twitter.com/iraphas13/status/1551959289023016967) on chaining models together**
+**many notes are from this [thread](https://twitter.com/iraphas13/status/1551959289023016967) on chaining models together**
 
 - steering
   - overviews
     - [AI Chains: Transparent and Controllable Human-AI Interaction by Chaining Large Language Model Prompts](https://arxiv.org/abs/2110.01691) (wu et al. 2022) - chaining LLM steps together: output of one step becomes the input for the next
       - interactive system where users can modify chains + their intermediate results
-    - [Language Model Cascades](https://arxiv.org/abs/2207.10342) - treat chaining models as probabilistic programs
+    - [Language Model Cascades](https://arxiv.org/abs/2207.10342) (dohan...sutton, 2022) - treat chaining models as probabilistic programs
       - use a probabilistic-programming language (PPL) to define a joint probability model on string-valued random variables, parameterized using LMs, and then condition this model on string-valued observations in order to compute a posterior over string-valued unknowns
       - PPLs extend probabilistic graphical models to support more complex joint distributions whose size and “shape” can itself be stochastic
         - e.g., a graph unrolled for a random number of iterations, until a data-dependent stopping criterion is met
         - variables are all text: questions $Q$, answers $A$, and intermediate thoughts $T$
   - posthoc
-    - [Chain of Thought Prompting Elicits Reasoning in Large Language Models](https://arxiv.org/abs/2201.11903) (wei et al. 2022)
+    - Chain of Thought Prompting ([wei et al. 2022](https://arxiv.org/abs/2201.11903))
       - in few-shot prompts, don't just provide answer but also reasoning
       - model output then provides reasoning + answer
-    - Scratchpads [Show Your Work: Scratchpads for Intermediate Computation with Language Models](https://arxiv.org/abs/2112.00114) (nye et al. 2021)
+    - scratchpads [Show Your Work: Scratchpads for Intermediate Computation with Language Models](https://arxiv.org/abs/2112.00114) (nye et al. 2021)
     - selection inference ([creswell et al. 2022](https://arxiv.org/abs/2205.09712)) - generate set of facts, then iteratively generate inferences from the facts to yield the final answer
     - least-to-most prompting ([zhou...quoc le et al. 2022](https://arxiv.org/abs/2205.10625)) - prompt LLM with context showing how to reduce into subproblems; then LLM sequentially solves the subproblems, using the previous answers
+    - Generated Knowledge Prompting for Commonsense Reasoning ([liu...hasjishirzi, 2021](https://arxiv.org/abs/2110.08387)) - generate knowledge from an LLM then prvide it as additional input when answering a question
   - training
     - verifiers ([cobbe et al. 2021](https://arxiv.org/abs/2110.14168)) - train model to judge whether an answer and thought are likely to be “valid”
     - maieutic prompting ([jung et al. 2022](https://arxiv.org/abs/2205.11822)) - generate a tree of all explanation of the form "True, because...", "False, because..." then query LLM with these as prompts
@@ -141,13 +172,10 @@ category: research
       - first, finetune on observed $(Q, T, A)$ triplets
       - then, impute unknown $T_i$ given dataset of pairs $(Q_i, A_i)$ by sampling until finding a $T_i$ which leads to the correct answer
   - robotics-specific
-    - zero-shot planning [arxiv.org/abs/2201.07207](https://arxiv.org/abs/2201.07207)
+    - zero-shot planning ([huang, abbeel, pathak, & mordatch, 2022](https://arxiv.org/abs/2201.07207))
     - socratic models [arxiv.org/abs/2204.00598](https://arxiv.org/abs/2204.00598)
     - Inner Monologue [arxiv.org/abs/2207.05608](https://arxiv.org/abs/2207.05608)
     - [global workspace](https://arxiv.org/abs/2103.01197)
-- more efficient training
-  - natural language feedback ([scheurer et al. 2022]())
-    - human feedback for learning makes it much more efficient
 - augmenting
   - add retrieved data to context
     - [A Neural Corpus Indexer for Document Retrieval](https://arxiv.org/abs/2206.02743) - train model to directly spit out document IDs given queries
@@ -158,13 +186,9 @@ category: research
     - [REALM](arxiv.org/abs/2002.08909) - retrieves document chunks from corpus and adds them to context, for open-domain QA
     - [memory-assisted prompt-editing](https://arxiv.org/abs/2201.06009) - allows model to "save things to memory" that get added to prompt when needed
   - increasing attendable context size with augmented models
-    - RETRO [arxiv.org/abs/2112.04426](https://arxiv.org/abs/2112.04426) - nearest neighbors to model's input are retrieved, encoded, and conditioned on with chunked cross-attention 
-    - memorizing transformers [arxiv.org/abs/2203.08913](https://arxiv.org/abs/2203.08913) - knn-based learned indexing + retrieval at training time. at input time, you just need to index the entire context and the model will be able to use it
-- task-specific
-  - [instructGPT](https://arxiv.org/abs/2203.02155) / [FLAN](https://arxiv.org/abs/2109.01652) - finetune on instructions to follows instructions
-  - [MINERVA: Solving Quantitative Reasoning Problems with Language Models](https://arxiv.org/abs/2206.14858) - train on well-parsed, domain-specific data (math arxiv) to solve math-reasoning problems
-  - autoformalization [arxiv.org/abs/2205.12615](https://arxiv.org/abs/2205.12615) - translating from natural language math to formal language
-  - program synthesis [arxiv.org/abs/2108.07732](https://arxiv.org/abs/2108.07732) - formalize natural language into runnable code
+    - RETRO ([borgeaud et al. 2022](https://arxiv.org/abs/2112.04426)) - nearest neighbors to model's input are retrieved, encoded, and conditioned on with chunked cross-attention 
+    - memorizing transformers ([wu...szegedy, 2022](https://arxiv.org/abs/2203.08913)) - knn-based learned indexing + retrieval at training time.
+      - at test time, you just need to index the entire context and the model will be able to use it
 
 ## llm editing
 

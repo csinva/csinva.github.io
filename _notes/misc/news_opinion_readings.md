@@ -2,6 +2,8 @@
 
 # 2022
 
+- [Opinion | Why I Changed My Mind on Student Debt Forgiveness - The New York Times](https://www.nytimes.com/2022/08/30/opinion/student-loan-debt-relief-biden.html) - dropout rates are very high
+  
 - [Your Book Review: Progress And Poverty - by Scott Alexander](https://astralcodexten.substack.com/p/your-book-review-progress-and-poverty)
   - "Poverty and wealth disparity appear to be perversely linked with progress, The Rent is Too Damn High, and it's all because of land."
 

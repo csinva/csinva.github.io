@@ -1163,7 +1163,6 @@ How interactions are defined and summarized is a very difficult thing to specify
   - *preserve user’s mental model of AI’s trustworthiness*
   - train AI to *optimize for team performance*.
 
-
 ## human-in-the-loop (HITL)
 
 - [rethinking human-ai interaction (blog)](https://jessylin.com/2020/06/08/rethinking-human-ai-interaction/)
