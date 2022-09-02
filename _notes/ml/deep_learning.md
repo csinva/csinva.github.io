@@ -8,7 +8,44 @@ category: ml
 
 This note covers miscellaneous deep learning, with an emphasis on different architectures + empirical tricks.
 
-See also notes in [📌 unsupervised learning](https://csinva.io/notes/ml/unsupervised.html), [📌 disentanglement](https://csinva.io/notes/research_ovws/ovw_disentanglement.html), [📌 nlp](https://csinva.io/notes/ml/nlp.html)
+See also notes in [📌 unsupervised learning](https://csinva.io/notes/ml/unsupervised.html), [📌 disentanglement](https://csinva.io/notes/research_ovws/ovw_disentanglement.html), [📌 nlp](https://csinva.io/notes/ml/nlp.html), [📌 transformers](https://csinva.io/notes/research_ovws/ovw_transformers.html)
+
+# top-performing nets
+
+- LeNet (1998)
+  - first, used on MNIST
+- AlexNet (2012)
+  - landmark (5 conv layers, some pooling/dropout)
+- ZFNet (2013)
+  - fine tuning and deconvnet
+- VGGNet (2014)
+  - 19 layers, all 3x3 conv layers and 2x2 maxpooling
+- GoogLeNet (2015)
+  - lots of parallel elements (called *Inception module*)
+- Msft ResNet (2015)
+  - very deep - 152 layers
+    - connections straight from initial layers to end
+    - only learn "residual" from top to bottom
+  
+- Region Based CNNs (R-CNN - 2013, Fast R-CNN - 2015, Faster R-CNN - 2015)
+  - object detection
+- Generating image descriptions (Karpathy , 2014)
+  - RNN+CNN
+- Spatial transformer networks (2015)
+  - transformations within the network
+- Segnet (2015)
+  - encoder-decoder network
+- Unet (Ronneberger, 2015)
+  - applies to biomedical segmentation
+- Pixelnet (2017)
+      - predicts pixel-level for different tasks with the same architecture
+      - convolutional layers then 3 FC layers which use outputs from all convolutional layers together
+- Squeezenet
+- Yolonet
+- Wavenet
+- Densenet
+- NASNET
+- [Efficientnet (2019)](https://arxiv.org/pdf/1905.11946.pdf)
 
 # basics
 
@@ -100,40 +137,6 @@ See also notes in [📌 unsupervised learning](https://csinva.io/notes/ml/unsupe
 - data augmentation - random rotations, flips, shifts, recolorings
 - siamese networks - extract features twice with same net then put layer on top
     - ex. find how similar to representations are
-- famous cnns
-	- LeNet (1998)
-		- first, used on MNIST
-	- AlexNet (2012)
-		- landmark (5 conv layers, some pooling/dropout)
-	- ZFNet (2013)
-		- fine tuning and deconvnet
-	- VGGNet (2014)
-		- 19 layers, all 3x3 conv layers and 2x2 maxpooling
-  - GoogLeNet (2015)
-	  - lots of parallel elements (called *Inception module*)
-	- Msft ResNet (2015)
-        - very deep - 152 layers
-            - connections straight from initial layers to end
-          - only learn "residual" from top to bottom
-	- Region Based CNNs (R-CNN - 2013, Fast R-CNN - 2015, Faster R-CNN - 2015)
-		- object detection
-	- Karpathy Generating image descriptions (2014)
-		- RNN+CNN
-	- Spatial transformer networks (2015)
-		- transformations within the network
-	- Segnet (2015)
-		- encoder-decoder network
-	- Unet (2015)
-		- Ronneberger - applies to biomedical segmentation
-	- Pixelnet (2017)
-        - predicts pixel-level for different tasks with the same architecture
-        - convolutional layers then 3 FC layers which use outputs from all convolutional layers together
-	- Squeezenet
-	- Yolonet
-	- Wavenet
-	- Densenet
-	- NASNET
-	- [Efficientnet (2019)](https://arxiv.org/pdf/1905.11946.pdf)
 
 
 
@@ -207,7 +210,7 @@ See also notes in [📌 unsupervised learning](https://csinva.io/notes/ml/unsupe
 - **coordconv** - break translation equivariance by passing in i, j coords as extra filters
 - **deconvolution** = transposed convolution = fractionally-strided convolution - like upsampling
 
-# top-down feedback
+## top-down feedback
 
 - [Look and Think Twice: Capturing Top-Down Visual Attention With Feedback Convolutional Neural Networks](https://openaccess.thecvf.com/content_iccv_2015/html/Cao_Look_and_Think_ICCV_2015_paper.html) (2015)
     - neurons in the feedback hidden layers update their activation status to maximize the confidence output of the target top neuron
@@ -236,7 +239,11 @@ See also notes in [📌 unsupervised learning](https://csinva.io/notes/ml/unsupe
 - [Attentional Neural Network: Feature Selection Using Cognitive Feedback](https://proceedings.neurips.cc/paper/2014/file/1e6e0a04d20f50967c64dac2d639a577-Paper.pdf) (2014)
 - [Efficient Learning of Deep Boltzmann Machines](http://proceedings.mlr.press/v9/salakhutdinov10a/salakhutdinov10a.pdf) (2010)
 
+# neural architecture search (NAS)
 
+- [One Network Doesn't Rule Them All: Moving Beyond Handcrafted Architectures in Self-Supervised Learning](https://arxiv.org/abs/2203.08130) (girish, dey et al. 2022) - use NAS for self-supervised setting rather than supervised
+- [A Deeper Look at Zero-Cost Proxies for Lightweight NAS · The ICLR Blog Track](https://iclr-blog-track.github.io/2022/03/25/zero-cost-proxies/) (white...bubeck, dey, 2022)
+  - tl;dr A single minibatch of data is used to score neural networks for NAS instead of performing full training.
 
 
 # misc
@@ -251,8 +258,5 @@ See also notes in [📌 unsupervised learning](https://csinva.io/notes/ml/unsupe
   - then, given new location / angle, send a ray through for each pixel and see color when it hits smth
   - [Implicit Neural Representations with Periodic Activation Functions](https://vsitzmann.github.io/siren/)
     - similar paper
-- architecture search: learning to learn
-  - [A Deeper Look at Zero-Cost Proxies for Lightweight NAS · The ICLR Blog Track](https://iclr-blog-track.github.io/2022/03/25/zero-cost-proxies/)
-    - tl;dr A single minibatch of data is used to score neural networks for NAS instead of performing full training.
 - *optimal brain damage* - starts with fully connected and weeds out connections (Lecun)
 - *tiling* - train networks on the error of previous networks

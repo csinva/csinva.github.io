@@ -413,10 +413,11 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
     - transformation regularizer - constrains the interpretations to be transformation equivariant
   - *self-consistency score* quantifies the robustness of interpretation by measuring the consistency of interpretations to geometric transformations
 - [Case-Based Reasoning for Assisting Domain Experts in Processing Fraud Alerts of Black-Box Machine Learning Models](https://arxiv.org/abs/1907.03334)
-- ProtoAttend: Attention-Based Prototypical Learning ([arik & pfister, 2020](https://www.jmlr.org/papers/volume21/20-042/20-042.pdf)) - unlike ProtoPNet, each prediction is made as a weighted combination of similar rinput samples (like nearest-neighbor)
+- ProtoAttend: Attention-Based Prototypical Learning ([arik & pfister, 2020](https://www.jmlr.org/papers/volume21/20-042/20-042.pdf)) - unlike ProtoPNet, each prediction is made as a weighted combination of similar input samples (like nearest-neighbor)
 - [Explaining Latent Representations with a Corpus of Examples](https://arxiv.org/pdf/2110.15355.pdf) (crabbe, ..., van der schaar 2021) - for an individual prediction,
   1. Which corpus examples explain the prediction issued for a given test example?
   2. What features of these corpus examples are relevant for the model to relate them to the test example?
+- [ProtoPFormer: Concentrating on Prototypical Parts in Vision Transformers for Interpretable Image Recognition](https://arxiv.org/abs/2208.10431) (xue et al. 2022)
 
 ## interpretable neural nets
 
@@ -946,7 +947,9 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
 - attention corresponds to this kind of influence
 - deceptive attention - we can successfully train a model to make similar predictions but have different attention
 
-### dnn textual explanations
+### textual explanations
+
+**see also notes in ovw_transformers!**
 
 - [Adversarial Inference for Multi-Sentence Video Description](https://arxiv.org/pdf/1812.05634.pdf) - adversarial techniques during inference for a better multi-sentence video description
 - [Object Hallucination in Image Captioning](https://aclweb.org/anthology/D18-1437) - image relevance metric - asses rate of object hallucination
@@ -955,14 +958,7 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
 - [Fooling Vision and Language Models Despite Localization and Attention Mechanism](http://openaccess.thecvf.com/content_cvpr_2018/papers/Xu_Fooling_Vision_and_CVPR_2018_paper.pdf) -  can do adversarial attacks on captioning and VQA
 - [Grounding of Textual Phrases in Images by Reconstruction](https://arxiv.org/pdf/1511.03745.pdf) - given text and image provide a bounding box (supervised problem w/ attention)
 - [Natural Language Explanations of Classifier Behavior](https://ieeexplore.ieee.org/abstract/document/8791710)
-
-### self-explaining llms
-
-- [Chain of Thought Prompting Elicits Reasoning in Large Language Models](https://arxiv.org/abs/2201.11903) (2022)
-- [Selection-Inference: Exploiting Large Language Models for Interpretable Logical Reasoning](https://arxiv.org/abs/2205.09712) (2022)
-  - selection step - takes in concatenated [context, question, selection]×𝑘 for k-shot prompting, followed by [context, question] and is asked to select a subset of facts from the context to support a single step of reasoning.
-  - inference step - takes in [selection, inference]×𝑘 for k-shot prompting, followed by the selection produced by the Selection module to produce a new fact (the inference) to be added to the context
-  - the reasoning trace produced by our system is causal, in the sense that each step follows from, and depends on, the previous step
+- [eli5](https://eli5.readthedocs.io/en/latest/libraries/sklearn.html#library-scikit-learn) has nice text highlighting for interp
 
 
 

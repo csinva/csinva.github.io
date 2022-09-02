@@ -59,6 +59,8 @@ Artificial neural networks can compute in several different ways. There is some 
   - optogenetic stimulation
   - tms
     - genetically-targeted tms: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4846560/
+  - [ect - Electroconvulsive Therapy](https://www.psychiatry.org/patients-families/ect#:~:text=Learn%20about%20Electroconvulsive%2C%20therapy,the%20patient%20is%20under%20anesthesia.)
+    - [Identifying Recipients of Electroconvulsive Therapy: Data From Privately Insured Americans - PMC](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6248332/) - 100k ppl per year
   - local microstimulation with invasive electrodes
 - high-level
   - EEG/ECoG

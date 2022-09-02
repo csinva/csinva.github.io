@@ -161,23 +161,19 @@ merging
 pd.merge(df1, df2, how='left', on='x1')
 ```
 
-## pytorch
+## pytorch + pytorch parallel
 
-- new in 1.11: TorchData, functorch (e.g. vmap), DistributedDataParallel - now stable
-- as of 1.6.0 (there is also RPC-based training and Collective Communication)
-  - `nn.DistributedDataParallel` is often faster
-    - replicates model on each gpu and gives some data to each one (less data transfers)
+- new in 1.11: TorchData, functorch (e.g. vmap), DistributedDataParallel is stable
+- [pytorch parallel overview](https://pytorch.org/tutorials/beginner/dist_overview.html)
+  - single-machine multi-GPU: [DataParallel](https://pytorch.org/docs/stable/generated/torch.nn.DataParallel.html) - relatively simple
+    - just wrap model `model = nn.DataParallel(model)` (some attributes may become inaccessible)
 
-    - requires calling `init_process_group`
+  - single-machine multi-GPU: [DistributedDataParallel](https://pytorch.org/docs/stable/generated/torch.nn.parallel.DistributedDataParallel.html) - slightly faster
+    - requires also calling `init_process_group` (and setting some env vars)
 
-  - `model = nn.DataParallel(model)`
-    - automatically runs multiple batches from dataset at same time
-
-    - usually a little slower
-
-    - replicates model in every forward pass
-
-  - rpc parallel
+  - multimachine GPU:  [DistributedDataParallel](https://pytorch.org/docs/stable/generated/torch.nn.parallel.DistributedDataParallel.html) + [launching script](https://github.com/pytorch/examples/blob/master/distributed/ddp/README.md)
+  - multimachine flexible: [torch.distributed.elastic](https://pytorch.org/docs/stable/distributed.elastic.html) - handles errors better
+  - (there is also RPC-based training and Collective Communication)
 
 - dataset has `__init__, __getitem__, & __len__`
 

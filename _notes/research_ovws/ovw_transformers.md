@@ -11,7 +11,7 @@ category: research
 
 ## high-performing
 
-**nlp**
+**nlp** (see also [this link](https://medium.com/nlplanet/a-brief-timeline-of-nlp-from-bag-of-words-to-the-transformer-family-7caad8bbba56))
 
 - attention is all you need ([vaswani et al. 2017](https://arxiv.org/abs/1706.03762)) - initial transformer
   - encoder-decoder transformer for seq-to-seq
@@ -60,10 +60,18 @@ category: research
     - adds diffusion model
   - BEiT-3 ([2022](https://arxiv.org/abs/2208.10442)) - treat vision as language and large-scale multimodal training
     - outperforms [Flamingo: a Visual Language Model for Few-Shot Learning](https://arxiv.org/abs/2204.14198) (2022), which uses more domain knowledge to connect vision & language
+  
 - vision
-  -  [attention augmentation to resnet](https://arxiv.org/abs/1904.09925) for vision  (2020)
+  
+  - here, people often call image patches "tokens"
+  - [Masked Autoencoders Are Scalable Vision Learners](https://arxiv.org/abs/2111.06377) (he...dollar, girshick, 2021) - BERT-style training
+    -  speed up by not applying encoder to mask tokens + adding mask to a lot of the data (like 75%)
+    -  really good results without much data
+  - [attention augmentation to resnet](https://arxiv.org/abs/1904.09925) for vision (bello...quoc le, 2020)
+  
 - GATO: [A Generalist Agent](https://arxiv.org/abs/2205.06175) (2022) - single agent plays many different video games
   - different modalities are converted to tokens differently (e.g. image patches are fed through resnet)
+
 - [MINERVA: Solving Quantitative Reasoning Problems with Language Models](https://arxiv.org/abs/2206.14858) - train on well-parsed, domain-specific data (math arxiv) to solve math-reasoning problems
 
 - CODEX [Evaluating Large Language Models Trained on Code](https://arxiv.org/abs/2107.03374) (2021)
@@ -87,30 +95,60 @@ category: research
 
 - [spatial transformers](https://papers.nips.cc/paper/5854-spatial-transformer-networks.pdf )
 
+**pre-transformer nlp models**
+
+- rnns
+  - when training rnn, accumulate gradients over sequence and then update all at once
+  - **stacked rnns** have outputs of rnns feed into another rnn
+  - bidirectional rnn - one rnn left to right and another right to left (can concatenate, add, etc.)
+- standard seq2seq
+  - encoder reads input and outputs context vector (the hidden state)
+  - decoder (rnn) takes this context vector and generates a sequence
+- misc papers
+  - [Deal or No Deal? End-to-End Learning for Negotiation Dialogues](https://arxiv.org/abs/1706.05125) (lewis...batra, 2017) - controversial FB paper where agents "make up their own language"
+
 ##  adaptation / transfer
 
-- basic approaches
-  - **finetuning** ([peters et al. 2018](https://aclanthology.org/N18-1202/)) - train linear model on the embedding of the first token (usually an added `[CLS]` token)
+- most of these approaches can be combined with metalearning
+- **finetuning**
+  - standard - train linear model on the embedding of the first token (usually an added `[CLS]` token) [peters et al. 2018](https://aclanthology.org/N18-1202/)
   - finetune all parameters
-  - adapter - between finetuning all layers, and just finetuning a new layer
-    - add some new layers and retrain some specific things (all human choices)
-  - prompting = few-shot learning = priming = in-context learning (starts with GPT)
-    - limitation: can't exploit sets longer than the training window
-  - prompt-tuning
-    - [Attentional Mixtures of Soft Prompt Tuning for Parameter-efficient Multi-task Knowledge Sharing](https://arxiv.org/abs/2205.11961)
-  - metalearning
-- misc approaches
-  - ablate some model weights by training a binary mask over model parameters (Zhao et al., 2020; Radiya-Dixit and Wang, 2020)
+  - finetune some specific params (e.g. just the bias terms)
+    - [Cutting Down on Prompts and Parameters: Simple Few-Shot Learning with Language Models](https://arxiv.org/abs/2106.13353) (logan...sameer singh, riedel, 2021) - finetuning only the bias terms can achieve comparable or better accuracy than standard finetuning while only updating 0.1% of the parameters; this works even with null prompts
+- adapter - between finetuning all layers, and just finetuning a new layer
+  - add some new layers and retrain some specific things (all human choices)
   - Zhang et al. (2020a) trains a “side” network that is fused with the pretrained model via summation
-  - [Cutting Down on Prompts and Parameters: Simple Few-Shot Learning with Language Models](https://arxiv.org/abs/2106.13353) (logan...sameer singh, riedel, 2021) - finetuning only the bias terms can achieve comparable or better accuracy than standard finetuning while only updating 0.1% of the parameters; this works even with null prompts
-- few-shot papers
+- predict a mask
+  - ablate some model weights by training a binary mask over model parameters (Zhao et al., 2020; Radiya-Dixit and Wang, 2020)
+- prompting = few-shot learning = priming = in-context learning (starts with GPT)
+  - prompting without changing any model parameters
+    - limitation: can't exploit sets longer than the training window
+  - [MetaICL: Learning to Learn In Context](https://arxiv.org/abs/2110.15943) (min et al. 2022) - tune LLM to do in-context learning on a large set of training tasks (few-show prompting and training time and at test-time)
+- prompt-tuning (also see next section on autoprompting)
+  - [Attentional Mixtures of Soft Prompt Tuning for Parameter-efficient Multi-task Knowledge Sharing](https://arxiv.org/abs/2205.11961)
+- misc....(few shot mostly)
   - PatternExploiting Training (PET) -- Exploiting Cloze Questions for Few Shot Text Classification and Natural Language Inference ([schick & schutze, 2021](https://aclanthology.org/2021.eacl-main.20.pdf))
     - **cloze questions** - same as masked language modeling: task is to replace some missing words
     - use cloze-question templates (e.g. it was "good" or "bad") to get soft labels for unlabeled data and then finetune on theses
   - LM-BFF [Making Pre-trained Language Models Better Few-shot Learners](https://arxiv.org/abs/2012.15723) (gao et al. 2020)
     - uses T5 to generate (i) template for the task (which might include a whole example or two) + (i) appropropriate label tokens in the vocabulary for the task (suffers from computationally intensive search + sub-optimal discrete space search)
   - [Adapting Language Models for Zero-shot Learning by Meta-tuning on Dataset and Prompt Collections](https://arxiv.org/abs/2104.04670) (zhong...dan klein, 2021)
-  - [MetaICL: Learning to Learn In Context](https://arxiv.org/abs/2110.15943) (min et al. 2022) - tune LLM to do in-context learning on a large set of training tasks (few-show prompting and training time and at test-time)
+
+**mt-dnn line of work**
+
+- Multi-Task Deep Neural Networks for Natural Language Understanding ([xiaodong liu ... gao 2019](https://aclweb.org/anthology/papers/P/P19/P19-1441/)) - multi-task learning on the 9 glue tasks (first layers are shared, then some task-specific layers at top)
+- RAdam: On the Variance of the Adaptive Learning Rate and Beyond ([liyuan liu...gao, han, 2020](https://openreview.net/pdf?id=rkgz2aEKDr))
+  - usually need to do learning-rate warmup when trainin (e.g. with Adam)
+  - RAdam = add a term to rectify the variance of the adaptive learning rate in Adam
+
+- SMART: Robust and Efficient Fine-Tuning for Pre-trained Natural Language Models through Principled Regularized Optimization ([jiang...gao, zhao, 2020](https://aclanthology.org/2020.acl-main.197/))
+  1. Smoothness-inducing regularization, which effectively manages the complexity of the model
+  2. Bregman proximal point optimization to prevent aggressive updating
+
+- The Microsoft Toolkit of Multi-Task Deep Neural Networks for Natural Language Understanding ([xiaodong liu...gao, 2020](https://aclanthology.org/2020.acl-demos.16/))
+- Posterior Differential Regularization with f-divergence for Improving Model Robustness ([hao cheng, ..., gao 2021](https://aclanthology.org/2021.naacl-main.85/))
+  - regularize model posterior difference between clean + noisy inputs (e.g. adversarially attacked inputs)
+
 
 ## autoprompting
 
@@ -281,6 +319,10 @@ category: research
 
 - [Yanai Elazar, Shauli Ravfogel, Alon Jacovi, Yoav Goldberg. Amnesic Probing: Behavioral Explanation with Amnesic Counterfactuals. TACL 2021.](https://arxiv.org/pdf/2006.00995.pdf) - Proposes measuring the importance of specific information within a model by introducing a causal intervention to erase that information, then observing the causal effects.
 
+## open issues
+
+- [Shortcut Learning of Large Language Models in Natural Language Understanding: A Survey](https://arxiv.org/abs/2208.11857) (du et al. 2022)
+
 # basics
 
 - **attention** = vector of importance weights
@@ -348,3 +390,13 @@ category: research
     - each layer takes a list of fixed size (hyperparameter e.g. length of longest sentence) and outputs a list of that same fixed size (so one output for each word)
       - can easily train with a masked word to predict the word at the predicted position in the encoding
   - multi-headed attention has several of each of these (then just concat them)
+
+## huggingface tutorial
+
+Broadly, models can be grouped into three categories:
+
+- GPT-like (also called *auto-regressive* Transformer models)
+- BERT-like (also called *auto-encoding* Transformer models)
+- BART/T5-like (also called *sequence-to-sequence* Transformer models)
+- [Handling multiple sequences - Hugging Face Course](https://huggingface.co/course/chapter2/5?fw=pt)
+  - pad sequences to have the same length (need to modify attention masks to ignore the padded values)
