@@ -123,6 +123,6 @@ category: research
   - starts with vovk et al. '90
 - simple example: construct a 95% interval for a new sample (not mean) by just looking at percentiles of the empirical data
   - empirical data tends to undercover (since empirical residuals tend to underestimate variance) - conformal inference aims to rectify this
-- [Uncertainty Sets for Image Classifiers using Conformal Prediction](https://arxiv.org/abs/2009.14193)
+- [Uncertainty Sets for Image Classifiers using Conformal Prediction](https://arxiv.org/abs/2009.14193) (angelopoulos, bates, malik, jordan, 2021)
   - Image-to-Image Regression with Distribution-Free Uncertainty Quantification and Applications in Imaging ([Angelopoulos, ...jordan, malik, upadhyayula, roman, '22](https://arxiv.org/pdf/2202.05265.pdf))
     - pixel-level uncertainties

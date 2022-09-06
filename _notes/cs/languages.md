@@ -164,21 +164,32 @@ pd.merge(df1, df2, how='left', on='x1')
 ## pytorch + pytorch parallel
 
 - new in 1.11: TorchData, functorch (e.g. vmap), DistributedDataParallel is stable
+- levels of [parallelism](https://huggingface.co/docs/transformers/v4.15.0/parallelism)
+  - DP dataparallel - speeds up by replicating model and feeding it different data
+    - gpt2 & T5 models have naive PP support
+
+  - TP tensorparallel (horizontal parallelism) - allows running a large model by splitting up different parts of an input
+    - [parallelformers](https://github.com/tunib-ai/parallelformers) provides easy support for inference-only
+
+  - PP pipelineparallel (vertical parallelism)  - different layers are on different gpus
+    - naive - diff layers on diff gpus (increases mem but not speed)
+    - pipeline parallel - separates so more gpus can work at once
+
+  - Deepspeed/Megatron/Varuna/Sagemaker combines DP with PP
+
 - [pytorch parallel overview](https://pytorch.org/tutorials/beginner/dist_overview.html)
   - single-machine multi-GPU: [DataParallel](https://pytorch.org/docs/stable/generated/torch.nn.DataParallel.html) - relatively simple
     - just wrap model `model = nn.DataParallel(model)` (some attributes may become inaccessible)
-
   - single-machine multi-GPU: [DistributedDataParallel](https://pytorch.org/docs/stable/generated/torch.nn.parallel.DistributedDataParallel.html) - slightly faster
     - requires also calling `init_process_group` (and setting some env vars)
-
   - multimachine GPU:  [DistributedDataParallel](https://pytorch.org/docs/stable/generated/torch.nn.parallel.DistributedDataParallel.html) + [launching script](https://github.com/pytorch/examples/blob/master/distributed/ddp/README.md)
   - multimachine flexible: [torch.distributed.elastic](https://pytorch.org/docs/stable/distributed.elastic.html) - handles errors better
   - (there is also RPC-based training and Collective Communication)
-
 - dataset has `__init__, __getitem__, & __len__`
 
   - rather than storing images, can load image from filename in `__getitem__`
 - there's a `torch.nn.Flatten` module
+- following example [here](https://medium.com/codex/a-comprehensive-tutorial-to-pytorch-distributeddataparallel-1f4b42bb1b51)
 
 
 

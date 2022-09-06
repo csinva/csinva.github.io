@@ -7,19 +7,13 @@ category: research
 
 {:toc}
 
-See also notes on causal inference for some close connections. 
+*See also notes on [📌 causal inference](https://csinva.io/notes/research_ovws/ovw_causal_inference.html) for some close connections.*
+
+For neural-net specific transferring see [📌 adaption/transfer](https://csinva.io/notes/research_ovws/ovw_transformers.html#adaptation--transfer).
 
 # overviews
 
 ![transfer_taxonomy](../assets/transfer_taxonomy.png) (from [this paper](https://arxiv.org/pdf/2109.14501v1.pdf))
-
-- for neural networks the basic options for transfer-learning are:
-  - finetuning the entire model
-  - learn a linear layer from features extracted from a single layer (i.e. linear probing)
-    - this includes just finetuning the final layer
-  - finetune on all the layers
-    - [Head2Toe: Utilizing Intermediate Representations for Better Transfer Learning](https://arxiv.org/abs/2201.03529) (evci, et al. 2022) - learn linear layer (using group-lasso) on features extracted from all layers
-    - Adapters provide a parameter-efficient alternative to full finetuning in which we can only finetune lightweight neural network layers on top of pretrained weights. [Parameter-Efficient Transfer Learning for NLP](http://proceedings.mlr.press/v97/houlsby19a.html), [AdapterHub: A Framework for Adapting Transformers](https://arxiv.org/abs/2007.07779)
 
 # domain adaptation algorithms
 

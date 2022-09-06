@@ -42,7 +42,8 @@ Nice repo keeping track of progress [here](https://github.com/sebastianruder/NLP
 
 - [Big-bench](https://github.com/google/BIG-bench) (2022) - crowdsourced diverse (but random) NLP tasks
   - No task definitions or explanations: the “definition” is instead concatenated to each example’s input
-- [Unveiling Transformers with LEGO: a synthetic reasoning task](https://arxiv.org/abs/2206.04301) - synthetic reasoning task
+- [Unveiling Transformers with LEGO: a synthetic reasoning task](https://arxiv.org/abs/2206.04301) (zhang, ..., bubeck, ..., wagner, 2022) - synthetic reasoning task
+- [Large Language Models Still Can't Plan (A Benchmark for LLMs on Planning and Reasoning about Change)](https://arxiv.org/abs/2206.10498)
 
 **very popular**
 
@@ -148,7 +149,7 @@ Nice repo keeping track of progress [here](https://github.com/sebastianruder/NLP
 
 - [Neural Bag-of-Ngrams](https://ojs.aaai.org/index.php/AAAI/article/view/10954) (li et al. 2017) - learn embedding vectors for ngrams via deep version of skip-gram
 - [Improving N-gram Language Models with Pre-trained Deep Transformer](https://arxiv.org/abs/1911.10235) (wang et al. 2019) - use transformer to generate synthetic data for new n-gram model (language model, doesn't extend to classification)
-  - [Improvements to N-gram Language Model Using Text Generated from Neural Language Model | IEEE Conference Publication](https://ieeexplore.ieee.org/abstract/document/8683481?casa_token=7iD-YiGsHTAAAAAA:N3XmuRk27wGttURXYIYDbxdADVdhJMeUeBvVugq0EbyMst-zrm93wPZtc37uUBBtUPXKPrxvGZJC) (suzuki et al. 2019) - generate synthetic data from RNNs for new n-gram model
+  - [Improvements to N-gram Language Model Using Text Generated from Neural Language Model](https://ieeexplore.ieee.org/abstract/document/8683481?casa_token=7iD-YiGsHTAAAAAA:N3XmuRk27wGttURXYIYDbxdADVdhJMeUeBvVugq0EbyMst-zrm93wPZtc37uUBBtUPXKPrxvGZJC) (suzuki et al. 2019) - generate synthetic data from RNNs for new n-gram model
 - [fasttext](https://www.ijcai.org/Proceedings/16/Papers/401.pdf) (jin et al. 2016)
 - [(DirtyCat): Encoding High-Cardinality String Categorical Variables](https://ieeexplore.ieee.org/abstract/document/9086128) (cerda & varoquax, 2020) - use embedding model to improve string categorical variables
 

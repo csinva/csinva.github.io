@@ -843,7 +843,7 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
 
 ### dnn concept-based explanations
 
-- [concept activation vectors](https://arxiv.org/abs/1711.11279)
+- [concept activation vectors](https://arxiv.org/abs/1711.11279) (kim et al. 2018)
     - Given: a user-defined set of examples for a concept (e.g., ‘striped’), and random
             examples, labeled training-data examples for the studied class (zebras) 
         - given trained network
@@ -852,6 +852,7 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
         - CAV - vector orthogonal to the classification boundary
         - TCAV uses the derivative of the CAV direction wrt input
     - [automated concept activation vectors](https://arxiv.org/abs/1902.03129) - Given a set of concept discovery images, each image is segmented with different resolutions to find concepts that are captured best at different sizes. (b) After removing duplicate segments, each segment is resized tothe original input size resulting in a pool of resized segments of the discovery images. (c) Resized segments are mapped to a model’s activation space at a bottleneck layer. To discover the concepts associated with the target class, clustering with outlier removal is performed. (d) The output of our method is a set of discovered concepts for each class, sorted by their importance in prediction
+- Concept Gradient: Concept-based Interpretation Without Linear Assumption ([bai...ravikumar..hsieh, 2022](https://arxiv.org/pdf/2208.14966.pdf))
 - [On Completeness-aware Concept-Based Explanations in Deep Neural Networks](https://arxiv.org/abs/1910.07969)
 - [Interpretable Basis Decomposition for Visual Explanation](https://openaccess.thecvf.com/content_ECCV_2018/html/Antonio_Torralba_Interpretable_Basis_Decomposition_ECCV_2018_paper.html) (zhou et al. 2018) - decompose activations of the input image into semantically interpretable components pre-trained from a large concept corpus
 - [Explaining in Style: Training a GAN to explain a classifier in StyleSpace](https://arxiv.org/abs/2104.13369) (lang et al. 2021)
@@ -1113,8 +1114,6 @@ How interactions are defined and summarized is a very difficult thing to specify
     - teacher underfitting $\to$ loss correction
     - teacher overfitting $\to$ cross-fitting (chernozhukov et al. 2018) - like cross-validation, fit student only to held-out predictions
 
-
-
 # different problems / perspectives
 
 ## improving models
@@ -1158,6 +1157,12 @@ How interactions are defined and summarized is a very difficult thing to specify
   - help users understand *when to trust* AI recommendations
   - *preserve user’s mental model of AI’s trustworthiness*
   - train AI to *optimize for team performance*.
+
+## dataset interpretability (automatic data viz)
+
+- similar to causality, we may want to use interpretability just to understand our data rather than to get any form of model
+- [Visualization by Example](https://arxiv.org/abs/1911.09668) (chenglong wang...dillig, 2019) - automatically synthesize a program to visual data based on user "sketches" = partial visualization of a subset of the data by the user
+  - [Falx: Synthesis-Powered Visualization Authoring](https://arxiv.org/abs/2102.01024) (chenglong wang...ko, 2021)
 
 ## human-in-the-loop (HITL)
 
