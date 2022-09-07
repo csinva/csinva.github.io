@@ -65,6 +65,15 @@ category: research
 
 # neural networks
 
+## ensembles
+
+- [DNN ensemble uncertainty works](http://papers.nips.cc/paper/7219-simple-and-scalable-predictive-uncertainty-estimation-using-deep-ensembles) - predict mean and variance w/ each network then ensemble (don't need to do bagging, random init is enough)
+- [Deep Ensembles: A Loss Landscape Perspective](https://arxiv.org/abs/1912.02757v1) (fort, hu, & lakshminarayanan, 2020)
+  - different random initializations provide most diversity
+  - samples along one path have varying weights but similar predictions
+  - ![deep_ensembles](../assets/deep_ensembles.png)
+- [Pitfalls of In-Domain Uncertainty Estimation and Ensembling in Deep Learning](https://github.com/bayesgroup/pytorch-ensembles) - many complex ensemble approaches are similar to just an ensemble of a few randomly initialized DNNs
+
 ## directly predict uncertainty
 
 - [Inhibited Softmax for Uncertainty Estimation in Neural Networks](https://arxiv.org/abs/1810.01861) (mozejko et al. 2019) - directly predict uncertainty by adding an extra output during training
@@ -84,17 +93,6 @@ category: research
 - [distance-based confidence scores](https://arxiv.org/pdf/1709.09844.pdf) (mandelbaum et al. 2017) - use either distance in embedding space or adversarial training to get uncertainties for DNNs
 - [deep kernel knn](https://arxiv.org/pdf/1811.02579.pdf) (card et al. 2019) - predict labels based on weighted sum of training instances, where weights are given by distance in embedding space
     - add an uncertainty based on conformal methods
-
-## ensemble approaches
-
-- [DNN ensemble uncertainty works](http://papers.nips.cc/paper/7219-simple-and-scalable-predictive-uncertainty-estimation-using-deep-ensembles) - predict mean and variance w/ each network then ensemble (don't need to do bagging, random init is enough)
-- can also use ensemble of [snapshots during training](https://arxiv.org/abs/1704.00109) (huang et al. 2017)
-- alternatively [batch ensemble](https://arxiv.org/pdf/2002.06715.pdf) (wen et al. 2020) - have several rank-1 keys that index different weights hidden within one neural net
-- [Deep Ensembles: A Loss Landscape Perspective](https://arxiv.org/abs/1912.02757v1) (fort, hu, & lakshminarayanan, 2020)
-  - different random initializations provide most diversity
-  - samples along one path have varying weights but similar predictions
-  - ![deep_ensembles](../assets/deep_ensembles.png)
-- [Pitfalls of In-Domain Uncertainty Estimation and Ensembling in Deep Learning](https://github.com/bayesgroup/pytorch-ensembles) - many complex ensemble approaches are similar to just an ensemble of a few randomly initialized DNNs
 
 ## bayesian neural networks
 

@@ -30,6 +30,7 @@ category: research
   - GPT ([radford et al. 2018](https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf))
 
 - [Gopher](https://arxiv.org/abs/2112.11446) - basically gpt-3 with slight mods (replace layernorm by RMSnorm, different positional embeddings)
+- [Longformer: The Long-Document Transformer](https://arxiv.org/abs/2004.05150) (beltagy, peters, & cohan, 2020) - processes very long contexts
 - [PaLM: Scaling Language Modeling with Pathways](https://arxiv.org/abs/2204.02311) (google, 2022) - 540 Billion params
   - pathways hardware center allows for fast/efficient training
   - discontinuous improvements - at some point large model improves
@@ -59,7 +60,7 @@ category: research
   - CLIP ([radford et al. 2021](https://cdn.openai.com/papers/Learning_Transferable_Visual_Models_From_Natural_Language.pdf)) - jointly train text/images
     - batch-based loss: encodings from same image/text pair should be close while encodings across different examples in the batch should be different
     - note: empirically works better with very large batch size
-  - [dall-e 2](https://openai.com/dall-e-2/) (2022)
+  - DALL-E 2 ([OpenAI, 2022](https://openai.com/dall-e-2/))
     - clip is foundation as generative model
     - generates text + image embeddings
     - "prior network" maps text embedding to image embedding
@@ -77,7 +78,7 @@ category: research
   - different modalities are converted to tokens differently (e.g. image patches are fed through resnet)
 - [MINERVA: Solving Quantitative Reasoning Problems with Language Models](https://arxiv.org/abs/2206.14858) - train on well-parsed, domain-specific data (math arxiv) to solve math-reasoning problems
 - CODEX [Evaluating Large Language Models Trained on Code](https://arxiv.org/abs/2107.03374) (2021)
-  - [Repair Is Nearly Generation: Multilingual Program Repair with LLMs](https://arxiv.org/abs/2208.11640) (joshi et al. 2022) - 
+  - [Repair Is Nearly Generation: Multilingual Program Repair with LLMs](https://arxiv.org/abs/2208.11640) (joshi et al. 2022) 
   - [Improving automatically generated code from Codex via Automated Program Repair](https://arxiv.org/abs/2205.10583) (fan et al. 2022) - use automated program repair to tweak codex outputs to make them better
   - [Automatic Program Repair with OpenAI's Codex: Evaluating QuixBugs](https://arxiv.org/abs/2111.03922) (prenner & robbes, 2021)
     - use prompt like:
@@ -284,7 +285,7 @@ category: research
     - a small number of states contain info that can flip the model from one state to another
   - *change factual associations* - modify feedforward weights to update specific factual associations using Rank-One Model Editing (ROME)
 
-## mixture of experts (MoE)
+## ensembles / mixture of experts (MoE)
 
 - note: nowadays often the "experts" are different MLPs following the self-attention layers
 - non-specialized experts
@@ -298,6 +299,15 @@ category: research
   - DEmix Layers [Gururangan et al.](https://arxiv.org/abs/2108.05036) (2022) --  DEMix layers – placed in the feedforward layers of the Transformer – contain experts which specialize on specific domains. Routing at train time is determined only by the domain label, but all experts are activated at inference time and mixed according to weights estimated from a validation set
   - [Pfeiffer et al. (2022)](https://arxiv.org/abs/2205.06266) - multilingual expert model with language-specific routing
   - task-level MoE [Kudugunta et al. (2021](https://arxiv.org/abs/2110.03742)) -- multi-task expert model with task-specific routing
+- ensembles (some of these are non-transformer papers)
+  - model soups ([wortsman...schmidt, 20221](https://proceedings.mlr.press/v162/wortsman22a.html)) - average weights of finetuned models
+    - snapshot ensembles - average different checkpoints during training ([huang et al. 2017](https://arxiv.org/abs/1704.00109))
+    - stochastic weight averaging ([izmailov, ..., wilson, 2019](https://arxiv.org/abs/1803.05407v3)) - average multiple checkpoints during training
+    - batch ensemble ([wen et al. 2020](https://arxiv.org/pdf/2002.06715.pdf)) - have several rank-1 keys that index different weights hidden within one neural net
+  - fit many models into one
+    - superposition of many models into one ([cheung...olshausen, 2019](https://proceedings.neurips.cc/paper/2019/hash/4c7a167bb329bd92580a99ce422d6fa6-Abstract.html)) - both during training/testing models are indexed via a high-dim key for each task
+    - supermasks in superposition ([wortsman, ..., yosinski, farhadi, 2020](https://proceedings.neurips.cc/paper/2020/hash/ad1f8bb9b51f023cdc80cf94bb615aa9-Abstract.html)) - randomly fixed based net + for each task finds subnet that chieves good performance
+      - if task identity not given, correct subnet inferred by minimizing output entropy
   - ELMS -- Branch-Train-Merge ([li et al. 2022](https://arxiv.org/abs/2208.03306))
     - parallel language model of smaller expert LMs
     - each can be added/removed, ensembled, or parameter-averaged at any time for efficient scaling and rapid customization
