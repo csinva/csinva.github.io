@@ -326,7 +326,7 @@ For an implementation of many of these models, see the python [imodels package](
   - *boosting* - fit all $f$ simultaneously, e.g. one tree for each $f_i$  on each iteration
   - interpretability depends on (1) transparency of $f_i$ and (2) number of terms
   - can also add in interaction terms (e.g. $f_i(x_1, x_2)$), but need a way to rank which interactions to add (see notes on interactions)
-- [Neural Additive Models: Interpretable Machine Learning with Neural Nets](https://arxiv.org/abs/2004.13912) (agarwal, ..., caruana, & hinton, 2021) - GAM where we learn $f$ with a neural net
+- [Neural Additive Models: Interpretable Machine Learning with Neural Nets](https://arxiv.org/abs/2004.13912) (agarwal, ..., caruana, & hinton, 2021) - GAM where we learn $f$ with a neural net (also use ExU activation instead of ReLU to model sharp bumps)
   - no interaction terms
   - [Sparse Neural Additive Model: Interpretable Deep Learning with Feature Selection via Group Sparsity](https://arxiv.org/abs/2202.12482)
   - [Creating Powerful and Interpretable Models with Regression Networks](https://arxiv.org/abs/2107.14417) (2021) - generalizes neural GAM to include interaction terms
@@ -1118,6 +1118,8 @@ How interactions are defined and summarized is a very difficult thing to specify
 
 ## improving models
 
+Nice overview [here](https://github.com/stefanoteso/awesome-explanatory-supervision).
+
 - [Interpretations are useful: penalizing explanations to align neural networks with prior knowledge](https://arxiv.org/abs/1909.13584) (rieger et al. 2020)
   - [Refining Neural Networks with Compositional Explanations](https://arxiv.org/abs/2103.10415) (yao et al. 21) - human looks at saliency maps of interactions, gives natural language explanation, this is converted back to interactions (defined using IG), and then regularized
   - [Dropout as a Regularizer of Interaction Effects](https://arxiv.org/abs/2007.00823) (lengerich...caruana, 21) - dropout regularizes interaction effects
@@ -1299,34 +1301,6 @@ These papers don't quite connect to prediction, but are generally about finding 
 - [An Automatic Finite-Sample Robustness Metric: When Can Dropping a Little Data Make a Big Difference?](https://arxiv.org/abs/2011.14999) (broderick et al. 2021)
   - Approximate Maximum Influence Perturbation -  method to assess the sensitivity of econometric analyses to the removal of a small fraction of the data
   - results of several economics papers can be overturned by removing less than 1% of the sample
-
-## symbolic reasoning
-
-- [Large Language Models are Zero-Shot Reasoners](https://arxiv.org/abs/2205.11916) - Simply adding “Let’s think step by step” before each answer increases the accuracy on MultiArith from 17.7% to 78.7% and GSM8K from 10.4% to 40.7% with GPT-3
-- [Neurocompositional computing: From the Central Paradox of Cognition to a new generation of AI systems](https://arxiv.org/abs/2205.01128) (smolensky et al. 2022)
-  - Compositionality
-  - Continuity - the encoding and processing of information is formalized with real numbers that vary continuously
-  - neural space vs symbolic space (many different things (e.g. sentences) can mean the same thing)
-  - want to move from symbolic repr. to neural repr. while keeping interpretability
-    - system should output intermediate steps in addition to answer
-    - thinking fast + slow (system 1: fast, intuitive) (system 2: slower, logical, derivative)
-- [Enhancing the Transformer with Explicit Relational Encoding for Math Problem Solving - Microsoft Research](https://www.microsoft.com/en-us/research/publication/enhancing-the-transformer-with-explicit-relational-encoding-for-math-problem-solving/) (schlag, ..., gao, 2019)
-  - TP-attention
-  - beat soa on free-form math word-problems
-  - [Tensor product variable binding and the representation of symbolic structures in connectionist systems - ScienceDirect](https://www.sciencedirect.com/science/article/abs/pii/000437029090007M?via%3Dihub) (paul smolensky, 1990) - activation patterns are "symbols" and internal structure allows them to be processed like symbols
-    - tensor product representation = TPR
-    - [TPR slides](https://www.mit.edu/~jda/teaching/6.884/slides/oct_02.pdf)
-    - TPR of a structure is the sum of the TPR of its constituents
-      - tensor product operation allows constituents to be uniquely identified, even after the sum (if roles are linearly independent)
-  - in addition to K, Q, V, also add a role-vector
-    - do element-wise multiplication of outputted vector with role-vector
-  - TPR built as tensor product of 2 vectors:
-    - **filler** - one vector that embeds the content of the constituent -- here, the vector returned by attention
-      - ex. one head learns "second-argument-of"
-    - **role** - second vector that embeds the structural role it fills — here, a relation conceptually labeling an edge of the attention graph
-- [TP-N2F: Tensor Product Representation for Natural To Formal Language Generation - Microsoft Research](https://www.microsoft.com/en-us/research/publication/natural-to-formal-language-generation-using-tensor-product-representations/) (chen...gao, 2019)
-
-
 
 ## ai safety
 

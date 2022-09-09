@@ -196,7 +196,7 @@ category: neuro
 
 ## neural encoding
 
-### defining neural code
+**defining neural code**
 
 - extracellular
   - fMRI
@@ -220,7 +220,7 @@ category: neuro
   - also massive feedback
 - *decoding*: P(stimulus \| response)
 
-### simple encoding
+**simple encoding**
 
 - want P(response \| stimulus)
   - response := firing rate r(t)
@@ -248,7 +248,7 @@ category: neuro
   - can combine above to make *spatiotemporal filtering*
     - filtering = convolution = projection
 
-### feature selection
+**feature selection**
 
 - P(response\|stimulus) is very hard to get
   - stimulus can be high-dimensional (e.g. video)
@@ -274,14 +274,16 @@ category: neuro
   - could use *PCA* - discovers low-dimensional structure in high-dimensional data
   - each f represents a feature (maybe a curve over time) that fires the neuron
 
-### variability
+**variability**
 
 - hidden assumptions about time-varying firing rate and single spikes
 
   - smooth function RFT can miss some stimuli
+  
 - statistics of stimulus can effect P(spike\|stimulus)
 
   - Gaussian white noise is nice because no way to filter it to get structure
+  
 - identifying good filter
   - want $P(s_f\|spike)$ to differ from $P(s_f)$ where $s_f$ is calculated via the filter
   - instead of PCA, could look for f that directly maximizes this difference (Sharpee & Bialek, 2004)
@@ -291,6 +293,7 @@ category: neuro
     - this is because we are looking for most informative feature
     - this technique doesn't require that our stimulus is white noise, so can use natural stimuli
     - maximization isn't guaranteed to uniquely converge
+  
 - modeling the noise
   - need to go from r(t) -> spike times
   - divide time T into n bins with p = probability of firing per bin
@@ -303,20 +306,23 @@ category: neuro
       - var = $\lambda$
     1. can test if distr is Poisson with *Fano factor*=mean/var=1
       2. interspike intervals have exponential distribution	- if fires a lot, this can be bad assumption (due to refractory period)
+  
 - generalized linear model adds explicit spike-generation / post-spike filter (Pillow et al. 2008)
-  - ![](../assets/2_4_1.png)
+  
+  - $P(\text{spike at }t)\sim\exp((f_1*s + h_1*r)) $
   - post-spike filter models refractory period
   - *Paninski* showed that using exponential nonlinearity allows this to be optimized
   - could add in firing of other neurons
   - *time-rescaling theorem* - tests how well we have captured influences on spiking (Brown et al 2001)
     - scaled ISIs ($t_{i-1}-t_i$) r(t) should be exponential
+  
 
 ## neural decoding
 
-### neural decoding and signal detection
+**neural decoding and signal detection**
 
 - decoding: P(stimulus \| response) - ex. you hear noise and want to tell what it is
-  - here r = response = firing rate
+  - here $r$ = response = firing rate
 - monkey is trained to move eyes in same direction as dot pattern (Britten et al. 92)
   - when dots all move in same direction (100% coherence), easy
     - neuron recorded in MT - tracks dots
@@ -349,7 +355,7 @@ category: neuro
     - $\frac{p(r\|+)}{p(r\|-)}> L_+ \cdot P[-] / L_- \cdot P[+]$
     - here the loss term replaces the 1 in the Neyman-Pearson lemma
 
-### population coding and bayesian estimation
+**population coding and bayesian estimation**
 
 - *population vector* - sums vectors for cells that point in different directions weighted by their firing rates
   - ex. cricket cercal cells sense wind in different directions
@@ -359,9 +365,8 @@ category: neuro
   - not *optimal* - making use of all information in the stimulus/response distributions
 - *bayesian inference*
   - $p(s\|r) = \frac{p(r\|s)p(s)}{p( r)}$
-  - ![](../assets/3_2_1.png)
   - maximum likelihood: s* which maximizes p(r\|s)
-  - MAP = maximum $a\:posteriori$: s* which mazimizes p(s\|r)
+  - MAP = maximum a posteriori: s* which mazimizes p(s\|r)
 - simple continuous stimulus example
   - setup
     - s - orientation of an edge
@@ -370,7 +375,8 @@ category: neuro
     - assume receptive fields of neurons span s: $\sum r_a (s)$ is const
     - ![](../assets/3_2_2.png)
   - solving
-    - maximizing log-likelihood with respect to s			- take derivative and set to 0
+    - maximizing log-likelihood with respect to s			-
+    - take derivative and set to 0
       - soln $s^* = \frac{\sum r_a s_a / \sigma_a^2}{\sum r_a / \sigma_a^2}$
       - if all the $\sigma$ are same, $s^* = \frac{\sum r_a s_a}{\sum r_a}$
         - this is the population vector
@@ -381,7 +387,7 @@ category: neuro
         - narrow prior makes it matter more
     - doesn't incorporate correlations in the population
 
-### stimulus reconstruction
+**stimulus reconstruction**
 
 - decoding s -> $s^*$
 - want an estimator $s_{Bayes}=s_B$ given some response r
@@ -405,7 +411,7 @@ category: neuro
 
 ## information theory
 
-### information and entropy
+**information and entropy**
 
 - surprise for seeing a spike h(p) = $-log_2 (p)$
 - entropy = average information
@@ -426,7 +432,7 @@ category: neuro
   - $H(R\|S)=\sum_s P(s) H(R\|s)$
   - $H(R ) $ calculated using $P(R ) = \sum_s P(s) P(R\|s)$
 
-### information in spike trains
+**info in spike trains**
 
 1. information in spike patterns
   - divide pattern into time bins of 0 (no spike) and 1 (spike)
@@ -440,6 +446,7 @@ category: neuro
     - there's some limit to dt at which information stops increasing
       - this represents temporal resolution at which jitter doesn't stop response from identifying info about the stimulus
     - corrections for finite sample size (Panzeri, Nemenman,...)
+  
 2. information in single spikes - how much info does single spike tell us about stimulus
   - don't have to know encoding, mutual info doesn't care
   1. calculate entropy for random stimulus
@@ -449,14 +456,13 @@ category: neuro
   - let $P(r=0\|s) = 1 - r(t) \Delta t$
   - get r(t) by having simulus on for long time
   - *ergodicity* - a time average is equivalent to averging over the s ensemble
-  - ![](../assets/4_2_1.png)
   - info per spike $I(r,s) = \frac{1}{T} \int_0^T dt \frac{r(t)}{\bar{r}} log \frac{r(t)}{\bar{r}}$
     - timing precision reduces r(t)
     - low mean spike rate -> high info per spike
   - ex. rat runs through place field and only fires when it's in place field
     - spikes can be sharper, more / less frequent
 
-### coding principles
+**coding principles**
 
 - natural stimuli
   - huge dynamic range - variations over many orders of magnitude (ex. brightness)
@@ -464,7 +470,7 @@ category: neuro
 - *efficient coding* - in order to have maximum entropy output, a good encoder should match its outputs to the distribution of its inputs
   - want to use each of our "symbols" (ex. different firing rates) equally often
   - should assign equal areas of input stimulus PDF to each symbol
-- adaptataion to stimulus statistics
+- adaptation to stimulus statistics
   - ![](../assets/4_3_1.png)
   - feature adaptation (Atick and Redlich)
     - spatial filtering properties in retina / LGN change with varying light levels
@@ -575,7 +581,7 @@ category: neuro
   - linear stability analysis - find fixed points and take partial derivatives
     - use eigenvalues to determine dynamics of the nonlinear network near a fixed point
 
-### hopfield nets
+**hopfield nets**
 
 - hopfield nets can store / retrieve memories
 - fully connected (no input/output) - activations are what matter
@@ -897,3 +903,682 @@ category: neuro
   - then maximize this distribution - can yield textures
 - reducing the dimensionality of data with neural networks
 
+
+
+
+
+# Ideas for neuroscience using deep learning
+
+list of comparisons: https://docs.google.com/document/d/1qil2ylAnw6XrHPymYjKKYNDJn2qZQYA_Qg2_ijl-MaQ/edit
+
+Modern deep learning evokes many parallels with the human brain. Here, we explore how these two concepts are related and how deep learning can help understand neural systems using big data.
+
+- https://medium.com/the-spike/a-neural-data-science-how-and-why-d7e3969086f2
+
+## Brief history
+
+The history of deep learning is intimately linked with neuroscience, with the modern idea of convolutional neural networks dates back to the necognitron<dt-cite key="fukushima1982neocognitron"></dt-cite>.
+
+### pro big-data
+
+Artificial neural networks can compute in several different ways. There is some evidence in the visual system that neurons in higher layers of visual areas can, to some extent, be predicted linearly by higher layers of deep networks<dt-cite key="yamins2014performance"></dt-cite>. However, this certainly isn't true in general.
+
+- when comparing energy-efficiency, must normalize network performance by energy / number of computations / parameters
+
+### anti big-data
+
+- could neuroscientist  understand microprocessor
+- no canonical microcircuit
+
+## Data types
+
+|              | EEG      | ECoG              | Local Field potential (LFP) -> microelectrode array | single-unit | calcium imaging | fMRI     |
+| ------------ | -------- | ----------------- | --------------------------------------------------- | ----------- | --------------- | -------- |
+| scale        | high     | high              | low                                                 | tiny        | low             | high     |
+| spatial res  | very low | low               | mid-low                                             | x           | low             | mid-low  |
+| temporal res | mid-high | high              | high                                                | super high  | high            | very low |
+| invasiveness | non      | yes (under skull) | very                                                | very        | non             | non      |
+
+- [ovw of advancements in neuroengineering](https://medium.com/neurotechx/timeline-of-global-highlights-in-neuroengineering-2005-2018-75e4637b9e38)
+- cellular
+  - extracellular microeelectrodes
+  - intracellular microelectrode
+  - **neuropixels**
+- optical
+  - calcium imaging / fluorescence imaging
+  - whole-brain light sheet imaging
+  - voltage-sensitive dyes / voltage imaging
+  - **adaptive optics**
+  - fNRIS - like fMRI but cheaper, allows more immobility, slightly worse spatial res
+  - **oct** - noninvasive - can look at retina (maybe find biomarkers of alzheimer's)
+  - fiber photometry - optical fiber implanted delivers excitation light
+- alteration
+  - optogenetic stimulation
+  - tms
+    - genetically-targeted tms: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4846560/
+  - [ect - Electroconvulsive Therapy](https://www.psychiatry.org/patients-families/ect#:~:text=Learn%20about%20Electroconvulsive%2C%20therapy,the%20patient%20is%20under%20anesthesia.)
+    - [Identifying Recipients of Electroconvulsive Therapy: Data From Privately Insured Americans - PMC](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6248332/) - 100k ppl per year
+  - local microstimulation with invasive electrodes
+- high-level
+  - EEG/ECoG
+  - MEG
+  - fMRI/PET
+    - molecular fmri (bartelle)
+  - MRS
+  - event-related optical signal = near-infrared spectroscopy
+- implantable
+  - neural dust
+
+## general projects
+
+- could a neuroscientist understand a deep neural network? - use neural tracing to build up wiring diagram / function
+- prediction-driven dimensionality reduction
+- deep heuristic for model-building
+- joint prediction of different input/output relationships
+- joint prediction of neurons from other areas
+
+## datasets
+
+- [non-human primate optogenetics datasets](https://osf.io/mknfu/)
+- [vision dsets](https://www.visualdata.io/)
+  - MRNet: knee MRI diagnosis
+- [datalad lots of stuff](http://datalad.org/datasets.html)
+- springer 10k calcium imaging recording: https://figshare.com/articles/Recordings_of_ten_thousand_neurons_in_visual_cortex_during_spontaneous_behaviors/6163622 
+
+  - springer 2: 10k neurons with 2800 images
+
+  - stringer et al. data
+
+  - 10000 neurons from visual cortex
+- neuropixels probes
+  - [10k neurons visual coding](https://portal.brain-map.org/explore/circuits/visual-coding-neuropixels) from allen institute
+  - this probe has also been used in [macaques](https://www.cell.com/neuron/pdf/S0896-6273(19)30428-3.pdf)
+- [allen institute calcium imaging](http://observatory.brain-map.org/visualcoding)
+  - An experiment is the unique combination of one mouse, one imaging depth (e.g. 175 um from surface of cortex), and one visual area (e.g. “Anterolateral visual area” or “VISal”)
+- predicting running, facial cues
+  - dimensionality reduction
+    - enforcing bottleneck in the deep model
+    - how else to do dim reduction?
+- responses to 2800 images
+- overview: http://www.scholarpedia.org/article/Encyclopedia_of_computational_neuroscience
+- keeping up to date: https://sanjayankur31.github.io/planet-neuroscience/
+- *lots of good data*: http://home.earthlink.net/~perlewitz/index.html
+- connectome
+
+  - fly brain: http://temca2data.org/
+- *models*
+  - senseLab: https://senselab.med.yale.edu/
+    - modelDB - has NEURON code
+  - model databases: http://www.cnsorg.org/model-database 
+  - comp neuro databases: http://home.earthlink.net/~perlewitz/database.html
+- *raw misc data*
+  - crcns data: http://crcns.org/
+    - visual cortex data (gallant)
+    - hippocampus spike trains
+  - allen brain atlas: http://www.brain-map.org/
+    - includes calcium-imaging dataset: http://help.brain-map.org/display/observatory/Data+-+Visual+Coding
+  - wikipedia page: https://en.wikipedia.org/wiki/List_of_neuroscience_databases
+- *human fMRI datasets*: https://docs.google.com/document/d/1bRqfcJOV7U4f-aa3h8yPBjYQoLXYLLgeY6_af_N2CTM/edit
+- Kay et al 2008 has data on responses to images
+- *calcium imaging* for spike sorting: http://spikefinder.codeneuro.org/
+
+  - spikes: http://www2.le.ac.uk/departments/engineering/research/bioengineering/neuroengineering-lab/software
+
+
+
+
+<script type="text/bibliography">
+@article{hubel1962receptive,
+  title={Receptive fields, binocular interaction and functional architecture in the cat's visual cortex},
+  author={Hubel, David H and Wiesel, Torsten N},
+  journal={The Journal of physiology},
+  volume={160},
+  number={1},
+  pages={106--154},
+  year={1962},
+  publisher={Wiley Online Library},
+  url={http://onlinelibrary.wiley.com/wol1/doi/10.1113/jphysiol.1962.sp006837/abstract}
+}
+
+
+@article{singh2017consensus,
+  title={A consensus layer V pyramidal neuron can sustain interpulse-interval coding},
+  author={Singh, Chandan and Levy, William B},
+  journal={PloS one},
+  volume={12},
+  number={7},
+  pages={e0180839},
+  year={2017},
+  publisher={Public Library of Science},
+  url={http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0180839}
+}
+
+@article{herz2006modeling,
+  title={Modeling single-neuron dynamics and computations: a balance of detail and abstraction},
+  author={Herz, Andreas VM and Gollisch, Tim and Machens, Christian K and Jaeger, Dieter},
+  journal={science},
+  volume={314},
+  number={5796},
+  pages={80--85},
+  year={2006},
+  publisher={American Association for the Advancement of Science},
+  url={http://science.sciencemag.org/content/314/5796/80.long}
+}
+
+@article{carandini2004amplification,
+  title={Amplification of trial-to-trial response variability by neurons in visual cortex},
+  author={Carandini, Matteo},
+  journal={PLoS biology},
+  volume={2},
+  number={9},
+  pages={e264},
+  year={2004},
+  publisher={Public Library of Science},
+  url={http://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.0020264}
+}
+
+@article{yamins2014performance,
+  title={Performance-optimized hierarchical models predict neural responses in higher visual cortex},
+  author={Yamins, Daniel LK and Hong, Ha and Cadieu, Charles F and Solomon, Ethan A and Seibert, Darren and DiCarlo, James J},
+  journal={Proceedings of the National Academy of Sciences},
+  volume={111},
+  number={23},
+  pages={8619--8624},
+  year={2014},
+  publisher={National Acad Sciences},
+  url={http://www.pnas.org/content/111/23/8619}
+}
+
+@incollection{fukushima1982neocognitron,
+  title={Neocognitron: A self-organizing neural network model for a mechanism of visual pattern recognition},
+  author={Fukushima, Kunihiko and Miyake, Sei},
+  booktitle={Competition and cooperation in neural nets},
+  pages={267--285},
+  year={1982},
+  publisher={Springer}
+}
+
+@article{marr1976understanding,
+  title={From understanding computation to understanding neural circuitry},
+  author={Marr, David and Poggio, Tomaso},
+  year={1976},
+  url={https://dspace.mit.edu/handle/1721.1/5782}
+}
+
+@article{schuman2017survey,
+  title={A survey of neuromorphic computing and neural networks in hardware},
+  author={Schuman, Catherine D and Potok, Thomas E and Patton, Robert M and Birdwell, J Douglas and Dean, Mark E and Rose, Garrett S and Plank, James S},
+  journal={arXiv preprint arXiv:1705.06963},
+  year={2017},
+  url={https://arxiv.org/abs/1705.06963}
+}
+</script>
+
+
+# Ideas for deep learning from neuroscience
+
+This aims to be a primer on aspects of neuroscience which could be relevant to deep learning researchers. These two communities are becoming more intertwined, and could benefit greatly from each other. However, current literature in neuroscience has a steep learning curve, requiring learning much about biology. This primer aims to equip deep learning researchers with the basic computational principles of the brain, to draw inspiration and provide a new perspective on neural computation.
+
+### Explaining concepts from neuroscience to inform deep learning
+
+Modern deep learning evokes many parallels with the human brain. Here, we explore how these two concepts are related and how neuroscience can inform deep learning going forward <dt-fn>Note that this post largely ignores the important reverse question: how can deep learning inform neuroscience?</dt-fn>
+
+The brain currently outperforms deep learning in a number of different ways: efficiency, parallel computation, not forgetting, robustness. Thus, in these areas and others, the brain can offer high-level inspiration as well as more detailed algorithmic ideas on how to solve complex problems.
+
+We begin with some history and perspective before further exploring these concepts at 3 levels: (1) the neuron level, (2) the network level, and (3) high-level concepts.
+
+### Brief history
+The history of deep learning is intimately linked with neuroscience. In vision, the idea of hierarchical processing dates back to Hubel and Weisel <dt-cite key="hubel1962receptive"></dt-cite> and the modern idea of convolutional neural networks dates back to the necognitron<dt-cite key="fukushima1982neocognitron"></dt-cite>.
+
+Ranges from neurally-inspired -> biologically plausible
+
+Computational neuroscientists often discuss understanding computation at Marr's 3 levels of understanding: (1) computational, (2) algorithmic, and (3) mechanistic<dt-cite key="marr1976understanding"></dt-cite>. The first two levels are most crucial to understanding here, while the third may yield insights for the field of neuromorphic computing <dt-cite key="schuman2017survey"></dt-cite>.
+
+### Cautionary notes
+
+There are dangers in deep learning researchers constraining themselves to biologically plausible algorithms. First, the underlying hardware of the brain and modern von Neumman-based architectures is drastically different and one should not assume that the same algorithms will work on both systems. Several examples, such as backpropagation, were derived by deviating from the mindset of mimicking biology.
+
+Second, the brain does not solve probleDangers for going too far.... One wouldn't want to draw inspiration from the retina to put a hole in the camera.
+
+
+<img width="50%" src="figs/retina.png"></img>
+Gallery of brain failures. Example, inside-out retina, V1 at back...
+
+
+## Neuron level
+
+The fundamental unit of the brain is the neuron, which takes inputs from other neurons and then provides an output.
+
+Individual neurons perform varying computations. Some neurons have been show to linearly sum their inputs <dt-cite key="singh2017consensus"></dt-cite>
+
+ - neurons are complicated (perceptron -> ... -> detailed comparmental model)
+
+For more information, see a very good review on modeling individual neurons<dt-cite key="herz2006modeling"></dt-cite>.
+
+ - converting to spikes introduces noise <dt-cite key="carandini2004amplification"></dt-cite>- perhaps just price of long-distance communication
+
+## Network level
+
+ Artificial neural networks can compute in several different ways. There is some evidence in the visual system that neurons in higher layers of visual areas can, to some extent, be predicted linearly by higher layers of deep networks<dt-cite key="yamins2014performance"></dt-cite>. However, this certainly isn't true in general. Key factors
+
+ For the simplest intuition, here we provide an example of a canonical circuit for computing the maximum of a number of elements: the winner-take-all circuit.
+
+ Other network structures, such as that of the hippocampus are surely useful as well.
+
+ Questions at this level bear on population coding, or how groups of neurons jointly represent information.
+
+**engram** - unit of [cognitive](https://en.wikipedia.org/wiki/Cognition) information imprinted in a physical substance, theorized to be the means by which [memories](https://en.wikipedia.org/wiki/Memory) are stored
+
+## High-level concepts
+
+ Key concepts differentiate the learning process. Online,
+- learning
+- high-level
+  - attention
+  - memory
+  - robustness
+  - recurrence
+  - topology
+  - glial cells
+- inspirations
+  - canonical cortical microcircuits
+  - nested loop architectures
+  - avoiding catostrophic forgetting through synaptic complexity
+  - learning asymmetric recurrent generative models
+- spiking networks ([bindsnet](https://github.com/Hananel-Hazan/bindsnet))
+- neural priors
+  - cox...
+
+
+# advanced topics
+
+## high-dimensional (hyperdimensional) computing
+
+*computing with random high-dim vectors (also known as vector-symbolic architectures)*
+
+- [ovw talk](https://www.youtube.com/watch?v=82syi1BH_YY) (kanerva, 2022)
+  - has slide with related references
+- [A comparison of vector symbolic architectures](https://link.springer.com/article/10.1007/s10462-021-10110-3) (schlegel et al. 2021)
+
+### motivation
+
+- high-level overview
+  - draw inspiration from circuits not single neurons
+  - the brain's circuits are high-dimensional
+  - elements are stochastic not deterministic
+  - no 2 brains are alike yet they exhibit the same behavior
+- basic question of comp neuro: what kind of computing can explain behavior produced by spike trains?
+  - recognizing ppl by how they look, sound, or behave
+  - learning from examples
+  - remembering things going back to childhood
+  - communicating with language
+
+### operations
+
+- ex. vectors $A$, $B$ both $\in \{ +1, -1\}^{10,000}$ (also extends to real / complex vectors)
+- 3 operations
+  1. **addition**: A + B = (0, 0, 2, 0, 2,-2, 0,  ....)
+    - alternatively, could take mean
+  1. **multiplication**: A * B =  (-1, -1, -1, 1, 1, -1, 1, ...) - this is **XOR**
+    - want this to be invertible, dsitribute over addition, preserve distance, and be dissimilar to the vectors being multiplied
+    - number of ones after multiplication is the distance between the two original vectors
+    - can represent a dissimilar set vector by using multiplication
+  1. **permutation**: shuffles values (like bit-shift)
+    - ex. rotate (bit shift with wrapping around)
+    - multiply by rotation matrix (where each row and col contain exactly one 1)
+    - can think of permutation as a list of numbers 1, 2, ..., n in permuted order
+    - many properties similar to multiplication
+    - random permutation randomizes
+- secondary operations
+  - weighting by a scalar
+  - similarity = dot product (sometimes normalized)
+    - A $\cdot$ A = 10k
+    - A $\cdot$ A = 0 (orthogonal)
+    - in high-dim spaces, almost all pairs of vectors are dissimilar A $\cdot$ B = 0
+    - goal: similar meanings should have large similarity
+  - normalization
+    - for binary vectors, just take the sign
+    - for non-binary vectors, scalar weight
+  - fractional binding - can bind different amounts rather than binary similar / dissimilar
+
+#### data structures
+
+the operations above allow for encoding many normal data structures into a single vector
+
+1. **set** - can be represented with a sum (since the sum is similar to all the vectors)
+  - can find a stored set using any element
+  - if we don't store the sum, can probe with the sum and keep subtracting the vectors we find
+1. **multiset** = bag (stores set with frequency counts) - can store things with order by adding them multiple times, but hard to actually retrieve frequencies
+1. **sequence** - could have each element be an address pointing to the next element
+  - problem - hard to represent sequences that share a subsequence (could have pointers which skip over the subsquence)
+  - soln: index elements based on permuted sums
+    - can look up an element based on previous element or previous string of elements
+  - could do some kind of weighting also
+1. **pairs** - could just multiply (XOR), but then get some weird things, e.g. A * A = **0**
+  - instead, permute then multiply
+  - can use these to index (address, value) pairs and make more complex data structures
+1. **named tuples** - have smth like (name: x, date: m, age: y)  and store as holistic vector $H = N*X + D *  M + A * Y$
+  - individual attribute value can be retrieved using vector for individual key
+  - representation substituting is a little trickier....
+    - we blur what is a value and what is a variable
+    - can do this for a pair or for a named tuple with new values
+      - this doesn't always work
+
+#### examples
+
+- ex. semantic word vectors
+  - goal: get good semantic vectors for words
+    - baseline (e.g. latent-semantic analysis LSA): make matrix of word counts, where each row is a word, and each column is a document
+    - add counts to each column -- row vector becomes semantic vector
+
+  - HD computing alternative: each row is a word, but each document is assigned a few ~10 columns at random
+    - thus, the number of columns doesn't scale with the number of documents
+    - can also do this randomness for the rows (so the number of rows < the number of words)
+    - can still get semantic vector for a row/column by adding together the rows/columns which are activated by that row/column
+    - this examples still only uses bag-of-words (but can be extended to more)
+- ex. semantic word vectors 2 (like word2vec)
+  - each word in vocab is given 2 vectors
+    - random-indexing vector - fixed random from the beginning
+    - semantic vector - starts at 0
+  - as we traverse sequence, for each word, add random-indexing vector from words right before/after it to its semantic vector
+    - can also permute them before adding to preserve word order (e.g. "[Permutations as a means to encode order in word space](https://www.diva-portal.org/smash/record.jsf?pid=diva2:1042478)" (2008))
+      - can instead use placeholder vector to help bring in word order (e.g. BEAGLE - [Jones & Mewhort, 2007](https://cseweb.ucsd.edu//~gary/PAPER-SUGGESTIONS/jones-mewhort-psych-rev-2007.pdf))
+- ex. learning rules by example
+  - particular instance of a rule is a rule (e.g mother-son-baby $\to$ grandmother)
+    - as we get more examples and average them, the rule gets better
+    - doesn't always work (especially when things collapse to identity rule)
+- ex. what is the dollar of mexico? ([kanerva, 2010](https://redwood.berkeley.edu/wp-content/uploads/2020/05/kanerva2010what.pdf))
+  - initialize US = (NAME * USA) + (MONEY * DOLLAR)
+  - initialize MEXICO = (NAME * MEXICO) + (MONEY * PESO)
+  - query: "Dollar of Mexico"? = DOLLAR * US * MEXICO = PESO
+- ex. [text classification](https://iis-people.ee.ethz.ch/~arahimi/papers/DATE16_HD.pdf) (najafabadi et al. 2016)
+- ex. language classification - "Language Recognition using Random Indexing" ([joshi et al. 2015](https://arxiv.org/abs/1412.7026))
+  - scalable, easily us any-order ngrams
+  - data
+    - train: given million bytes of text per language (in the same alphabet)
+    - test: new sentences for each language
+
+  - training: compute a 10k profile vector for each language and for each test sentence
+    - could encode each letter with a seed vector which is 10k
+    - instead encode trigrams with **rotate and multiply**
+      - 1st letter vec rotated by 2 * 2nd letter vec rotated by 1 * 3rd letter vec
+      - ex. THE = r(r(T)) * r(H) * r(E)
+      - approximately orthogonal to all the letter vectors and all the other possible trigram vectors...
+
+    - profile = sum of all trigram vectors (taken sliding)
+      - ex. banana = ban + ana + nan + ana
+      - profile is like a histogram of trigrams
+
+  - testing
+    - compare each test sentence to profiles via dot product
+    - clusters similar languages - cool!
+    - can query the letter most likely to follow "TH"
+      - form query vector $Q = r(r(T)) * r(H)$
+      - query by using multiply $X = Q$ * english-profile-vec
+      - find closest letter vecs to $X$: yields "e"
+
+
+### details
+
+- frequent "stopwords" should be ignored
+- mathematical background
+  - randomly chosen vecs are dissimilar
+  - sum vector is similar to its argument vectors
+  - product vector and permuted vector are dissimilar to their argument vectors
+  - multiplication distibutes over addition
+  - permutation distributes over both additions and multiplication
+  - multiplication and permutations are invertible
+  - addition is approximately invertible
+- comparison to DNNs
+  - both do statistical learning from data
+  - data can be noisy
+  - both use high-dim vecs although DNNs get bad with him dims (e.g. 100k)
+  - new codewords are made from existing ones
+  - HD memory is a separate func
+  - HD algos are transparent, incremental (on-line), scalable
+  - somewhat closer to the brain...cerebellum anatomy seems to be match HD
+  - HD: holistic (distributed repr.) is robust
+
+
+
+### papers
+
+[HDComputing Github Repos](https://github.com/HyperdimensionalComputing/collection) (see [torchhd](https://github.com/hyperdimensional-computing/torchhd))
+
+- [HD computing overview paper](https://link.springer.com/content/pdf/10.1007/s12559-009-9009-8.pdf) (Kanerva, 2009)
+  - in these high dimensions, most points are close to equidistant from one another (L1 distance), and are approximately orthogonal (dot product is 0)
+  - memory
+    - *heteroassociative* - can return stored *X* based on its address *A*
+    - *autoassociative* - can return stored *X* based on a noisy version of *X* (since it is a point attractor), maybe with some iteration
+      - this adds robustness to the memory
+      - this also removes the need for addresses altogether
+- [Classification and Recall With Binary Hyperdimensional Computing: Tradeoffs in Choice of Density and Mapping Characteristics](https://ieeexplore.ieee.org/abstract/document/8331890?casa_token=FbderL4T3RgAAAAA:LfP2kRSJwhY5z4OHMqvNDrxmSpyIMLzGs80vGj_IdBXVhVVDwZg1tfIeD2nj0S5N7T2YsRrOcg)
+  - note: for sparse vectors, might need some threshold before computing mean (otherwise will have too many zeros)
+
+- Neural Statistician ([Edwards & Storkey, 2016](https://arxiv.org/abs/1606.02185)) summarises a dataset by averaging over their embeddings
+- [kanerva machine ](https://arxiv.org/pdf/1804.01756.pdf)(yu...lillicrap, 2018)
+  - like a VAE where the prior is derived from an adaptive memory store
+- theory of sequence indexing and working memory in RNNs
+  - trying to make key-value pairs
+  - VSA as a structured approach for understanding neural networks
+  - reservoir computing = state-dependent network = echos-state network = liquid state machine - try to represen sequential temporal data - builds representations on the fly
+- different names
+  - Tony plate: [holographic reduced representation](https://ieeexplore.ieee.org/abstract/document/377968?casa_token=L3jgIZw7e5QAAAAA:m7VbqpNlZkL3kPU1faJe6XDVIxi5N55iToDKMndnknmBFFP7Boi2HZMI2ODCkzX0oXbanAqsZBg) (1995)
+    - related to TPR by paul smolensky
+  - ross gayler: multiply-add-permute arch
+  - gayler & levi: vector-symbolic arch
+  - gallant & okaywe: matrix binding with additive termps
+  - fourier holographic reduced reprsentations (FHRR; Plate)
+  - ...many more names
+
+
+
+## visual sampling
+
+- [Emergence of foveal image sampling from learning to attend in visual scenes](https://arxiv.org/abs/1611.09430) (cheung, weiss, & olshausen, 2017) - using neural attention model, learn a retinal sampling lattice
+  - can figure out what parts of the input the model focuses on
+
+
+
+## dynamic routing between capsules
+
+- hinton 1981 - reference frames require structured representations
+  - mapping units vote for different orientations, sizes, positions based on basic units
+  - mapping units **gate the activity** from other types of units - weight is dependent on if mapping is activated
+  - top-down activations give info back to mapping units
+  - this is a hopfield net with three-way connections (between input units, output units, mapping units)
+  - reference frame is a key part of how we see - need to vote for transformations
+- olshausen, anderson, & van essen 1993 - dynamic routing circuits
+  - ran simulations of such things (hinton said it was hard to get simulations to work)
+  - learn things in object-based reference frames
+  - inputs -> outputs has weight matrix gated by control
+- zeiler & fergus 2013 - visualizing things at intermediate layers - deconv (by dynamic routing)
+  - save indexes of max pooling (these would be the control neurons)
+  - when you do deconv, assign max value to these indexes
+- arathom 02 - map-seeking circuits
+- tenenbaum & freeman 2000 - bilinear models
+  - trying to separate content + style
+- hinton et al 2011 - transforming autoencoders - trained neural net to learn to shift imge
+- sabour et al 2017 - dynamic routing between capsules
+  - units output a vector (represents info about reference frame)
+  - matrix transforms reference frames between units
+  - recurrent control units settle on some transformation to identify reference frame
+- notes from this [blog post](https://towardsdatascience.com/capsule-neural-networks-part-2-what-is-a-capsule-846d5418929f)
+  - problems with cnns
+    - pooling loses info
+    - don't account for spatial relations between image parts
+    - can't transfer info to new viewpoints
+  - **capsule** - vector specifying the features of an object (e.g. position, size, orientation, hue texture) and its likelihood
+    - ex. an "eye" capsule could specify the probability it exists, its position, and its size
+    - magnitude (i.e. length) of vector represents probability it exists (e.g. there is an eye)
+    - direction of vector represents the instantiation parameters (e.g. position, size)
+  - hierarchy
+    - capsules in later layers are functions of the capsules in lower layers, and since capsule has extra properties can ask questions like "are both eyes similarly sized?"
+      - equivariance = we can ensure our net is invariant to viewpoints by checking for all similar rotations/transformations in the same amount/direction
+    - active capsules at one level make predictions for the instantiation parameters of higher-level capsules
+      - when multiple predictions agree, a higher-level capsule is activated
+  - steps in a capsule (e.g. one that recognizes faces)
+    - receives an input vector (e.g. representing eye)
+    - apply affine transformation - encodes spatial relationships (e.g. between eye and where the face should be)
+    - applying weighted sum by the C weights, learned by the routing algorithm
+      - these weights are learned to group similar outputs to make higher-level capsules
+    - vectors are squashed so their magnitudes are between 0 and 1
+    - outputs a vector
+
+## hierarchical temporal memory (htm)
+
+- binary synapses and learns by modeling the growth of new synapses and the decay of unused synapses
+- separate aspects of brains and neurons that are essential for intelligence from those that depend on brain implementation
+
+### necortical structure
+
+- evolution leads to physical/logical hierarchy of brain regions
+- neocortex is like a flat sheet
+- neocortex regions are similar and do similar computation
+  - Mountcastle 1978: vision regions are vision becase they receive visual input
+  - number of regions / connectivity seems to be genetic
+- before necortex, brain regions were homogenous: spinal cord, brain stem, basal ganglia, ...
+- ![cortical_columns](../assets/cortical_columns.png)
+
+### principles
+
+- common algorithims accross neocortex
+- hierarchy
+- **sparse distributed representations (SDR)** - vectors with thousands of bits, mostly 0s
+  - bits of representation encode semantic properties
+- inputs
+  - data from the sense
+  - copy of the motor commands
+    - "sensory-motor" integration - perception is stable while the eyes move
+- patterns are constantly changing
+- necortex tries to control old brain regions which control muscles
+- **learning**: region accepts stream of sensory data + motor commands
+  - learns of changes in inputs
+  - ouputs motor commands
+  - only knows how its output changes its input
+  - must learn how to control behavior via *associative linking*
+- sensory encoders - takes input and turnes it into an SDR
+  - engineered systems can use non-human senses
+- behavior needs to be incorporated fully
+- temporal memory - is a memory of sequences
+  - everything the neocortex does is based on memory and recall of sequences of patterns
+- on-line learning
+  - prediction is compared to what actually happens and forms the basis of learning
+  - minimize the error of predictions
+
+
+### papers
+
+- "A Theory of How Columns in the Neocortex Enable Learning the Structure of the World"
+  - network model that learns the structure of objects through movement
+  - object recognition
+    - over time individual columns integrate changing inputs to recognize complete objects
+    - through existing lateral connections
+  - within each column, neocortex is calculating a location representation
+    - locations relative to each other = **allocentric**
+  - much more motion involved
+  - multiple columns - integrate spatial inputs - make things fast
+  - single column - integrate touches over time - represent objects properly
+- "Why Neurons Have Thousands of Synapses, A Theory of Sequence Memory in Neocortex"
+  - learning and recalling sequences of patterns
+  - neuron with lots of synapses can learn transitions of patterns
+  - network of these can form robust memory
+
+## forgetting
+- [Continual Lifelong Learning with Neural Networks: A Review](https://arxiv.org/pdf/1802.07569.pdf)
+  - main issues is *catastrophic forgetting* / *stability-plasticity dilemma*
+  - ![Screen Shot 2020-01-01 at 11.49.32 AM](../assets/forgetting.png)
+  - 2 types of plasticity
+    - Hebbian plasticity (Hebb 1949) for positive feedback instability
+    - compensatory homeostatic plasticity which stabilizes neural activity
+  - approaches: regularization, dynamic architectures (e.g. add more nodes after each task), memory replay
+
+## deeptune-style
+
+- ponce_19_evolving_stimuli: [https://www.cell.com/action/showPdf?pii=S0092-8674%2819%2930391-5](https://www.cell.com/action/showPdf?pii=S0092-8674(19)30391-5)
+- bashivan_18_ann_synthesis
+- [adept paper](https://papers.nips.cc/paper/6738-adaptive-stimulus-selection-for-optimizing-neural-population-responses.pdf)
+  - use kernel regression from CNN embedding to calculate distances between preset images
+  - select preset images
+  - verified with macaque v4 recording
+  - currently only study that optimizes firing rates of multiple neurons
+	- pick next stimulus in closed-loop ("adaptive sampling" = "optimal experimental design")
+- J. Benda, T. Gollisch, C. K. Machens, and A. V. Herz, “From response to stimulus: adaptive sampling in sensory physiology”
+  - find the smallest number of stimuli needed to fit parameters of a model that predicts the recorded neuron’s activity from the
+    stimulus
+
+  - maximizing firing rates via genetic algorithms
+
+  - maximizing firing rate via gradient ascent
+- C. DiMattina and K. Zhang,“Adaptive stimulus optimization for sensory systems neuroscience"](https://www.frontiersin.org/articles/10.3389/fncir.2013.00101/full)
+
+  - 2 general approaches: gradient-based approaches + genetic algorithms
+  - can put constraints on stimulus space
+  - stimulus adaptation
+  - might want iso-response surfaces
+  - maximally informative stimulus ensembles (Machens, 2002)
+  - model-fitting: pick to maximize info-gain w/ model params
+  - using fixed stimulus sets like white noise may be deeply problematic for efforts to identify non-linear hierarchical network models due to continuous parameter confounding (DiMattina and Zhang, 2010) 
+  - use for model selection
+
+
+## population coding
+
+- saxena_19_pop_cunningham: "Towards the neural population doctrine"
+  - correlated trial-to-trial variability
+    - Ni et al. showed that the correlated variability in V4 neurons during attention and learning — processes that have inherently different timescales — robustly decreases
+    - ‘choice’ decoder built on neural activity in the first PC performs as well as one built on the full dataset, suggesting that the relationship of neural variability to behavior lies in a relatively small subspace of the state space.
+  - decoding
+    - more neurons only helps if neuron doesn't lie in span of previous neurons
+  - encoding
+    - can train dnn goal-driven or train dnn on the neural responses directly
+  - testing
+    - important to be able to test population structure directly
+- *population vector coding* - ex. neurons coded for direction sum to get final direction
+- reduces uncertainty
+- *correlation coding* - correlations betweeen spikes carries extra info
+- *independent-spike coding* - each spike is independent of other spikes within the spike train
+- *position coding* - want to represent a position
+  - for grid cells, very efficient
+- *sparse coding*
+- hard when noise between neurons is correlated
+- measures of information
+- eda
+  - plot neuron responses
+  - calc neuron covariances
+
+## interesting misc papers
+
+- berardino 17 eigendistortions
+  - **Fisher info matrix** under certain assumptions = $Jacob^TJacob$ (pixels x pixels) where *Jacob* is the Jacobian matrix for the function f action on the pixels x
+  - most and least noticeable distortion directions corresponding to the eigenvectors of the Fisher info matrix
+- gao_19_v1_repr
+  - don't learn from images - v1 repr should come from motion like it does in the real world
+  - repr
+    - vector of local content
+    - matrix of local displacement
+  - why is this repr nice?
+    - separate reps of static image content and change due to motion
+    - disentangled rotations
+  - learning
+    - predict next image given current image + displacement field
+    - predict next image vector given current frame vectors + displacement
+- kietzmann_18_dnn_in_neuro_rvw
+- friston_10_free_energy
+  - ![friston_free_energy](../assets/friston_free_energy.png)
+
+## navigation
+
+- cognitive maps (tolman 1940s) - idea that rats in mazes learn spatial maps
+- **place cells** (o'keefe 1971) - in the hippocampus - fire to indicate one's current location
+  - remap to new locations
+- **grid cells** (moser & moser 2005) - in the entorhinal cotex (provides inputs to the hippocampus) - not particular locations but rather hexagonal coordinate system
+  - grid cells fire if the mouse is in any location at the vertex (or center) of one of the hexagons
+- ![Screen Shot 2019-05-10 at 1.25.02 PM](../assets/mouse.png)
+- there are grid cells with larger/smaller hexagons, different orientations, different offsets
+- can look for grid cells signature in fmri: https://www.nature.com/articles/nature08704
+- other places with grid cell-like behavior
+- eye movement task
+- some evidence for "time cells" like place cells for time
+- sound frequency task https://www.nature.com/articles/nature21692
+- 2d "bird space" [task](https://science.sciencemag.org/content/352/6292/1464.full?ijkey=sXaWNaNjkIcik&keytype=ref&siteid=sci)

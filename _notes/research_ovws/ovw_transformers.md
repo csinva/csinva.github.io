@@ -46,8 +46,8 @@ category: research
   - [instructGPT](https://arxiv.org/abs/2203.02155) / [FLAN](https://arxiv.org/abs/2109.01652) - finetune on instructions to follows instructions
   - ELECTRA: Pre-training Text Encoders as Discriminators Rather Than Generators ([clark...quoc le, chris manning, 2020](https://arxiv.org/abs/2003.10555))
     - more efficient: instead of standard masked training, have generator-discriminator setup for "token detection"
-    - generator replaces many masked tokens with plausible samples (all in one forward pass)
-    - discriminator tries to guess which tokens were the masked ones
+    - generator replaces many masked tokens with plausible samples (all in one forward pass) - train with MLM
+    - discriminator tries to guess which tokens were the masked ones - this is the main model that gets used
 - dialog
   - [GODEL: Large-Scale Pre-Training for Goal-Directed Dialog](https://arxiv.org/abs/2206.11309) (baolin peng, galley, ..., gao , 2022) - add grounded pre-training
   - [Deal or No Deal? End-to-End Learning for Negotiation Dialogues](https://arxiv.org/abs/1706.05125) (lewis...batra, 2017) - controversial FB paper where agents "make up their own language"
@@ -117,6 +117,7 @@ category: research
 - adapter - finetune lightweight layers on top of pre-trained layers (between finetuning all layers, and just finetuning a new layer)
   - add some new layers and retrain some specific things (all human choices)
   - side-tuning ([zhang, sax...malik, 2020](https://link.springer.com/chapter/10.1007/978-3-030-58580-8_41)) - train a “side” network that is fused with the pretrained model via summation
+  - Combining Modular Skills in Multitask Learning ([ponti, sordoni, bengio, & reddy, 2022](https://arxiv.org/pdf/2202.13914.pdf)) - learn adaptor with disentangled inventory of skills
   - [Parameter-Efficient Transfer Learning for NLP](http://proceedings.mlr.press/v97/houlsby19a.html)
   - [AdapterHub: A Framework for Adapting Transformers](https://arxiv.org/abs/2007.07779)
 - predict a mask
@@ -127,13 +128,13 @@ category: research
     - limitation: can't exploit sets longer than the training window
   - [MetaICL: Learning to Learn In Context](https://arxiv.org/abs/2110.15943) (min et al. 2022) - tune LLM to do in-context learning on a large set of training tasks (few-show prompting and training time and at test-time)
   - [Visual Prompting via Image Inpainting](https://arxiv.org/abs/2209.00647) (bar...darrell, globerson, efros, 2022)
+  - PatternExploiting Training (PET) -- Exploiting Cloze Questions for Few Shot Text Classification and Natural Language Inference ([schick & schutze, 2021](https://aclanthology.org/2021.eacl-main.20.pdf))
+    - **cloze questions** - same as masked language modeling: task is to replace some missing words
+    - use cloze-question templates (e.g. it was "good" or "bad") to get soft labels for unlabeled data and then finetune on theses
 - prompt-tuning (also see next section on autoprompting)
   - [Attentional Mixtures of Soft Prompt Tuning for Parameter-efficient Multi-task Knowledge Sharing](https://arxiv.org/abs/2205.11961)
   - [STT: Soft Template Tuning for Few-Shot Adaptation](https://arxiv.org/abs/2207.08408)
 - misc....(few shot mostly)
-  - PatternExploiting Training (PET) -- Exploiting Cloze Questions for Few Shot Text Classification and Natural Language Inference ([schick & schutze, 2021](https://aclanthology.org/2021.eacl-main.20.pdf))
-    - **cloze questions** - same as masked language modeling: task is to replace some missing words
-    - use cloze-question templates (e.g. it was "good" or "bad") to get soft labels for unlabeled data and then finetune on theses
   - LM-BFF [Making Pre-trained Language Models Better Few-shot Learners](https://arxiv.org/abs/2012.15723) (gao et al. 2020)
     - uses T5 to generate (i) template for the task (which might include a whole example or two) + (i) appropropriate label tokens in the vocabulary for the task (suffers from computationally intensive search + sub-optimal discrete space search)
   - [Adapting Language Models for Zero-shot Learning by Meta-tuning on Dataset and Prompt Collections](https://arxiv.org/abs/2104.04670) (zhong...dan klein, 2021)
@@ -153,6 +154,22 @@ category: research
 - Posterior Differential Regularization with f-divergence for Improving Model Robustness ([hao cheng, ..., gao 2021](https://aclanthology.org/2021.naacl-main.85/))
   - regularize model posterior difference between clean + noisy inputs (e.g. adversarially attacked inputs)
 
+
+
+# prompting
+
+- Pre-train, Prompt, and Predict: A Systematic Survey of Prompting Methods in Natural Language Processing ([liu...neubig, 2021](https://arxiv.org/pdf/2107.13586.pdf))
+  - from *feature-engineering* -> *architecture engineering* -> *prompt engineering*
+  - ![prompting_typology](../assets/prompting_typology.png)
+  
+- LAMA [Language Models as Knowledge Bases?](https://arxiv.org/abs/1909.01066) (petroni...riedel, 2019) - Proposes using fill-in-the-blank (cloze) prompts for extracting knowledge from large language models
+  - create LAMA probe - dataset of (subject, relation, object) triplets with templates -- find that BERT can recall these relations
+  - [How to Query Language Models?](https://arxiv.org/abs/2108.01928) (adolphs et al. 2021) - query LLMs by example (e.g. "Ronaldo plays for Portugal. Who does Neuer play for?")
+  - [How Can We Know What Language Models Know?](https://arxiv.org/abs/1911.12543) (jiang ... neubig, 2020)
+    - mining-based and paraphrasing-based methods to automatically generate high-quality diverse prompts
+    - ensemble methods to combine answers from different prompts (e.g. avg logits and more)
+  - Noisy Channel Language Model Prompting for Few-Shot Text Classification ([min et al. 2022](https://arxiv.org/pdf/2108.04106.pdf))
+    - Querying $P(question|answer)$ with Bayes rule outperforms standard querying $P(answer|question)$
 
 ## autoprompting
 
@@ -194,13 +211,14 @@ category: research
       - interactive system where users can modify chains + their intermediate results
     - [Language Model Cascades](https://arxiv.org/abs/2207.10342) (dohan...sutton, 2022) - treat chaining models as probabilistic programs
       - use a probabilistic-programming language (PPL) to define a joint probability model on string-valued random variables, parameterized using LMs, and then condition this model on string-valued observations in order to compute a posterior over string-valued unknowns
-      - PPLs extend probabilistic graphical models to support more complex joint distributions whose size and “shape” can itself be stochastic
+      - self-PPLs extend probabilistic graphical models to support more complex joint distributions whose size and “shape” can itself be stochastic
         - e.g., a graph unrolled for a random number of iterations, until a data-dependent stopping criterion is met
         - variables are all text: questions $Q$, answers $A$, and intermediate thoughts $T$
   - posthoc
     - Chain of Thought Prompting ([wei et al. 2022](https://arxiv.org/abs/2201.11903))
       - in few-shot prompts, don't just provide answer but also reasoning
       - model output then provides reasoning + answer
+      - Self-Consistency Improves Chain of Thought Reasoning in Language Models ([wang, wei, schuurmans, quoc le, ... zhou, 2022](https://arxiv.org/abs/2203.11171)) - sample a diverse set of reasoning paths from a language model via chain of thought prompting then return the most consistent final answer in the set
     - scratchpads [Show Your Work: Scratchpads for Intermediate Computation with Language Models](https://arxiv.org/abs/2112.00114) (nye et al. 2021)
     - selection inference ([creswell et al. 2022](https://arxiv.org/abs/2205.09712)) - generate set of facts, then iteratively generate inferences from the facts to yield the final answer
     - least-to-most prompting ([zhou...quoc le et al. 2022](https://arxiv.org/abs/2205.10625)) - prompt LLM with context showing how to reduce into subproblems; then LLM sequentially solves the subproblems, using the previous answers
@@ -209,7 +227,6 @@ category: research
     - verifiers ([cobbe et al. 2021](https://arxiv.org/abs/2110.14168)) - train model to judge whether an answer and thought are likely to be “valid”
     - maieutic prompting ([jung et al. 2022](https://arxiv.org/abs/2205.11822)) - generate a tree of all explanation of the form "True, because...", "False, because..." then query LLM with these as prompts
       - then use Max-SAT to try to satisfy as many relations between the model explanations as possible to come up with the true answer
-    - Self-Consistency Improves Chain of Thought Reasoning in Language Models ([wang, wei, schuurmans, quoc le, ... zhou, 2022](https://arxiv.org/abs/2203.11171))
     - subgoal search ([czechowski et al. 2021](https://t.co/PCR4yexHti)) - train model to generate subgoals then solve them in a graph
     - STaR “Self-taught reasoner” ([zelikman...goodman, 2022](https://arxiv.org/abs/2203.14465))
       - first, finetune on observed $(Q, T, A)$ triplets
@@ -232,6 +249,8 @@ category: research
     - RETRO ([borgeaud et al. 2022](https://arxiv.org/abs/2112.04426)) - nearest neighbors to model's input are retrieved, encoded, and conditioned on with chunked cross-attention 
     - memorizing transformers ([wu...szegedy, 2022](https://arxiv.org/abs/2203.08913)) - knn-based learned indexing + retrieval at training time.
       - at test time, you just need to index the entire context and the model will be able to use it
+
+# misc
 
 ## transformer circuits / reverse-engineering / editing
 
@@ -285,6 +304,36 @@ category: research
     - a small number of states contain info that can flip the model from one state to another
   - *change factual associations* - modify feedforward weights to update specific factual associations using Rank-One Model Editing (ROME)
 
+## symbolic reasoning
+
+*See also notes on [📌 comp neuro](https://csinva.io/notes/research_ovws/ovw_comp_neuro.html).*
+
+- GPT-3 [Large Language Models are Zero-Shot Reasoners](https://arxiv.org/abs/2205.11916) - Simply adding “Let’s think step by step” before each answer increases the accuracy on MultiArith from 17.7% to 78.7% and GSM8K from 10.4% to 40.7% with GPT-3
+- [Neurocompositional computing: From the Central Paradox of Cognition to a new generation of AI systems](https://arxiv.org/abs/2205.01128) (smolensky et al. 2022)
+  - Compositionality
+  - Continuity - the encoding and processing of information is formalized with real numbers that vary continuously
+  - neural space vs symbolic space (many different things (e.g. sentences) can mean the same thing)
+  - want to move from symbolic repr. to neural repr. while keeping interpretability
+    - system should output intermediate steps in addition to answer
+    - thinking fast + slow (system 1: fast, intuitive) (system 2: slower, logical, derivative)
+- [Enhancing the Transformer with Explicit Relational Encoding for Math Problem Solving - Microsoft Research](https://www.microsoft.com/en-us/research/publication/enhancing-the-transformer-with-explicit-relational-encoding-for-math-problem-solving/) (schlag, ..., gao, 2019)
+  - TP-attention
+  - beat soa on free-form math word-problems
+  - [Tensor product variable binding and the representation of symbolic structures in connectionist systems - ScienceDirect](https://www.sciencedirect.com/science/article/abs/pii/000437029090007M?via%3Dihub) (paul smolensky, 1990) - activation patterns are "symbols" and internal structure allows them to be processed like symbols
+    - tensor product representation = TPR
+    - [TPR slides](https://www.mit.edu/~jda/teaching/6.884/slides/oct_02.pdf)
+    - TPR of a structure is the sum of the TPR of its constituents
+      - tensor product operation allows constituents to be uniquely identified, even after the sum (if roles are linearly independent)
+  - in addition to K, Q, V, also add a role-vector
+    - do element-wise multiplication of outputted vector with role-vector
+  - TPR built as tensor product of 2 vectors:
+    - **filler** - one vector that embeds the content of the constituent -- here, the vector returned by attention
+      - ex. one head learns "second-argument-of"
+    - **role** - second vector that embeds the structural role it fills — here, a relation conceptually labeling an edge of the attention graph
+- [TP-N2F: Tensor Product Representation for Natural To Formal Language Generation - Microsoft Research](https://www.microsoft.com/en-us/research/publication/natural-to-formal-language-generation-using-tensor-product-representations/) (chen...gao, 2019)
+
+
+
 ## ensembles / mixture of experts (MoE)
 
 - note: nowadays often the "experts" are different MLPs following the self-attention layers
@@ -318,19 +367,9 @@ category: research
 
 - [InferBERT: A Transformer-Based Causal Inference Framework for Enhancing Pharmacovigilance](https://www.frontiersin.org/articles/10.3389/frai.2021.659622/full) (2021) - learn + test feature relationships from attention weights
 - [CausaLM: Causal Model Explanation Through Counterfactual Language Models | Computational Linguistics](https://direct.mit.edu/coli/article/47/2/333/98518/CausaLM-Causal-Model-Explanation-Through) (2021) - produce example-level causal model explanations using models finetuned on auxiliary adversarial tasks derived from the causal graph of the problem
-- [Language Models as Knowledge Bases?](https://arxiv.org/abs/1909.01066) (petroni...riedel, 2019) - Proposes using fill-in-the-blank prompts for extracting knowledge from large language models
-  - create LAMA probe - dataset of (subject, relation, object) triplets with templates -- find that BERT can recall these relations
-  - [How to Query Language Models?](https://arxiv.org/abs/2108.01928) (adolphs et al. 2021) - query LLMs by example (e.g. "Ronaldo plays for Portugal. Who does Neuer play for?")
-  - [How Can We Know What Language Models Know?](https://arxiv.org/abs/1911.12543) (jiang ... neubig, 2020)
-    - mining-based and paraphrasing-based methods to automatically generate high-quality diverse prompts
-    - ensemble methods to combine answers from different prompts (e.g. avg logits and more)
-  - Noisy Channel Language Model Prompting for Few-Shot Text Classification ([min et al. 2022](https://arxiv.org/pdf/2108.04106.pdf))
-    - Querying $P(question|answer)$ with Bayes rule outperforms standard querying $P(answer|question)$
-  
 - [Jesse Vig, Sebastian Gehrmann, Yonatan Belinkov, Sharon Qian, Daniel Nevo, Yaron Singer, Stuart Shieber. Investigating Gender Bias in Language Models Using Causal Mediation Analysis. NeurIPS 2020.](https://proceedings.neurips.cc/paper/2020/file/92650b2e92217715fe312e6fa7b90d82-Paper.pdf)
   - Applies causal mediation analysis to identify decisive neurons and attention heads responsible for gender bias in large language models
   - Identifies a small handful of decisive attention heads in this case
-
 - [Yanai Elazar, Shauli Ravfogel, Alon Jacovi, Yoav Goldberg. Amnesic Probing: Behavioral Explanation with Amnesic Counterfactuals. TACL 2021.](https://arxiv.org/pdf/2006.00995.pdf) - Proposes measuring the importance of specific information within a model by introducing a causal intervention to erase that information, then observing the causal effects.
 
 ## open issues
