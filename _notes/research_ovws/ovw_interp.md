@@ -960,6 +960,7 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
 - [Grounding of Textual Phrases in Images by Reconstruction](https://arxiv.org/pdf/1511.03745.pdf) - given text and image provide a bounding box (supervised problem w/ attention)
 - [Natural Language Explanations of Classifier Behavior](https://ieeexplore.ieee.org/abstract/document/8791710)
 - [eli5](https://eli5.readthedocs.io/en/latest/libraries/sklearn.html#library-scikit-learn) has nice text highlighting for interp
+- [TalkToModel: Understanding Machine Learning Models With Open Ended Dialogues](https://arxiv.org/abs/2207.04154) (slack...lakkaraju, sameer singh, 2022)
 
 
 

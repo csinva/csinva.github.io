@@ -260,3 +260,6 @@ See also notes in [📌 unsupervised learning](https://csinva.io/notes/ml/unsupe
     - similar paper
 - *optimal brain damage* - starts with fully connected and weeds out connections (Lecun)
 - *tiling* - train networks on the error of previous networks
+- Language model compression with weighted low-rank factorization ([hsu et al. 2022](https://arxiv.org/abs/2207.00112)) \- incorporate fisher info of weights when compressing via SVD (this helps preserve the weights which are important for prediction)
+  - can represent a full-rank weight matrix as a product of low-rank matrices, e.g. to get rank *r* repr of 10x10 matrix, make it a product of a 10xr and an rx10 matrix
+  - people often use SVD to posthoc compress a DNN

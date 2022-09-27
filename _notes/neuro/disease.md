@@ -8,7 +8,7 @@ category: neuro
 
 {:toc}
 
-
+- ECT - shock therapy given to brain when patient is struggling with severe mental illness (~100k patients in the US / year)
 
 
 # alzheimer's

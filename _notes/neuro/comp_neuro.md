@@ -907,30 +907,28 @@ category: neuro
 
 
 
-# Ideas for neuroscience using deep learning
+# data-driven neuroscience
 
-list of comparisons: https://docs.google.com/document/d/1qil2ylAnw6XrHPymYjKKYNDJn2qZQYA_Qg2_ijl-MaQ/edit
-
-Modern deep learning evokes many parallels with the human brain. Here, we explore how these two concepts are related and how deep learning can help understand neural systems using big data.
+- [list of comparisons](https://docs.google.com/document/d/1qil2ylAnw6XrHPymYjKKYNDJn2qZQYA_Qg2_ijl-MaQ/edit)
 
 - https://medium.com/the-spike/a-neural-data-science-how-and-why-d7e3969086f2
 
-## Brief history
+**history**
 
-The history of deep learning is intimately linked with neuroscience, with the modern idea of convolutional neural networks dates back to the necognitron<dt-cite key="fukushima1982neocognitron"></dt-cite>.
+The history of deep learning is intimately linked with neuroscience, with the modern idea of convolutional neural networks dates back to the necognitron (fukushima1982neocognitron)
 
-### pro big-data
+**pro big-data**
 
-Artificial neural networks can compute in several different ways. There is some evidence in the visual system that neurons in higher layers of visual areas can, to some extent, be predicted linearly by higher layers of deep networks<dt-cite key="yamins2014performance"></dt-cite>. However, this certainly isn't true in general.
+Artificial neural networks can compute in several different ways. There is some evidence in the visual system that neurons in higher layers of visual areas can, to some extent, be predicted linearly by higher layers of deep networks (yamins2014performance)
 
 - when comparing energy-efficiency, must normalize network performance by energy / number of computations / parameters
 
-### anti big-data
+**anti big-data**
 
 - could neuroscientist  understand microprocessor
 - no canonical microcircuit
 
-## Data types
+## data types
 
 |              | EEG      | ECoG              | Local Field potential (LFP) -> microelectrode array | single-unit | calcium imaging | fMRI     |
 | ------------ | -------- | ----------------- | --------------------------------------------------- | ----------- | --------------- | -------- |
@@ -968,14 +966,6 @@ Artificial neural networks can compute in several different ways. There is some 
   - event-related optical signal = near-infrared spectroscopy
 - implantable
   - neural dust
-
-## general projects
-
-- could a neuroscientist understand a deep neural network? - use neural tracing to build up wiring diagram / function
-- prediction-driven dimensionality reduction
-- deep heuristic for model-building
-- joint prediction of different input/output relationships
-- joint prediction of neurons from other areas
 
 ## datasets
 
@@ -1026,100 +1016,19 @@ Artificial neural networks can compute in several different ways. There is some 
 
 
 
+**misc ideas**
 
-<script type="text/bibliography">
-@article{hubel1962receptive,
-  title={Receptive fields, binocular interaction and functional architecture in the cat's visual cortex},
-  author={Hubel, David H and Wiesel, Torsten N},
-  journal={The Journal of physiology},
-  volume={160},
-  number={1},
-  pages={106--154},
-  year={1962},
-  publisher={Wiley Online Library},
-  url={http://onlinelibrary.wiley.com/wol1/doi/10.1113/jphysiol.1962.sp006837/abstract}
-}
+- could a neuroscientist understand a deep neural network? - use neural tracing to build up wiring diagram / function
+- prediction-driven dimensionality reduction
+- deep heuristic for model-building
+- joint prediction of different input/output relationships
+- joint prediction of neurons from other areas
 
-
-@article{singh2017consensus,
-  title={A consensus layer V pyramidal neuron can sustain interpulse-interval coding},
-  author={Singh, Chandan and Levy, William B},
-  journal={PloS one},
-  volume={12},
-  number={7},
-  pages={e0180839},
-  year={2017},
-  publisher={Public Library of Science},
-  url={http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0180839}
-}
-
-@article{herz2006modeling,
-  title={Modeling single-neuron dynamics and computations: a balance of detail and abstraction},
-  author={Herz, Andreas VM and Gollisch, Tim and Machens, Christian K and Jaeger, Dieter},
-  journal={science},
-  volume={314},
-  number={5796},
-  pages={80--85},
-  year={2006},
-  publisher={American Association for the Advancement of Science},
-  url={http://science.sciencemag.org/content/314/5796/80.long}
-}
-
-@article{carandini2004amplification,
-  title={Amplification of trial-to-trial response variability by neurons in visual cortex},
-  author={Carandini, Matteo},
-  journal={PLoS biology},
-  volume={2},
-  number={9},
-  pages={e264},
-  year={2004},
-  publisher={Public Library of Science},
-  url={http://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.0020264}
-}
-
-@article{yamins2014performance,
-  title={Performance-optimized hierarchical models predict neural responses in higher visual cortex},
-  author={Yamins, Daniel LK and Hong, Ha and Cadieu, Charles F and Solomon, Ethan A and Seibert, Darren and DiCarlo, James J},
-  journal={Proceedings of the National Academy of Sciences},
-  volume={111},
-  number={23},
-  pages={8619--8624},
-  year={2014},
-  publisher={National Acad Sciences},
-  url={http://www.pnas.org/content/111/23/8619}
-}
-
-@incollection{fukushima1982neocognitron,
-  title={Neocognitron: A self-organizing neural network model for a mechanism of visual pattern recognition},
-  author={Fukushima, Kunihiko and Miyake, Sei},
-  booktitle={Competition and cooperation in neural nets},
-  pages={267--285},
-  year={1982},
-  publisher={Springer}
-}
-
-@article{marr1976understanding,
-  title={From understanding computation to understanding neural circuitry},
-  author={Marr, David and Poggio, Tomaso},
-  year={1976},
-  url={https://dspace.mit.edu/handle/1721.1/5782}
-}
-
-@article{schuman2017survey,
-  title={A survey of neuromorphic computing and neural networks in hardware},
-  author={Schuman, Catherine D and Potok, Thomas E and Patton, Robert M and Birdwell, J Douglas and Dean, Mark E and Rose, Garrett S and Plank, James S},
-  journal={arXiv preprint arXiv:1705.06963},
-  year={2017},
-  url={https://arxiv.org/abs/1705.06963}
-}
-</script>
-
-
-# Ideas for deep learning from neuroscience
+# ideas for deep learning from neuroscience
 
 This aims to be a primer on aspects of neuroscience which could be relevant to deep learning researchers. These two communities are becoming more intertwined, and could benefit greatly from each other. However, current literature in neuroscience has a steep learning curve, requiring learning much about biology. This primer aims to equip deep learning researchers with the basic computational principles of the brain, to draw inspiration and provide a new perspective on neural computation.
 
-### Explaining concepts from neuroscience to inform deep learning
+**explaining concepts from neuroscience to inform deep learning**
 
 Modern deep learning evokes many parallels with the human brain. Here, we explore how these two concepts are related and how neuroscience can inform deep learning going forward <dt-fn>Note that this post largely ignores the important reverse question: how can deep learning inform neuroscience?</dt-fn>
 
@@ -1127,14 +1036,15 @@ The brain currently outperforms deep learning in a number of different ways: eff
 
 We begin with some history and perspective before further exploring these concepts at 3 levels: (1) the neuron level, (2) the network level, and (3) high-level concepts.
 
-### Brief history
+**brief history**
+
 The history of deep learning is intimately linked with neuroscience. In vision, the idea of hierarchical processing dates back to Hubel and Weisel <dt-cite key="hubel1962receptive"></dt-cite> and the modern idea of convolutional neural networks dates back to the necognitron<dt-cite key="fukushima1982neocognitron"></dt-cite>.
 
 Ranges from neurally-inspired -> biologically plausible
 
 Computational neuroscientists often discuss understanding computation at Marr's 3 levels of understanding: (1) computational, (2) algorithmic, and (3) mechanistic<dt-cite key="marr1976understanding"></dt-cite>. The first two levels are most crucial to understanding here, while the third may yield insights for the field of neuromorphic computing <dt-cite key="schuman2017survey"></dt-cite>.
 
-### Cautionary notes
+**cautionary notes**
 
 There are dangers in deep learning researchers constraining themselves to biologically plausible algorithms. First, the underlying hardware of the brain and modern von Neumman-based architectures is drastically different and one should not assume that the same algorithms will work on both systems. Several examples, such as backpropagation, were derived by deviating from the mindset of mimicking biology.
 
@@ -1144,8 +1054,7 @@ Second, the brain does not solve probleDangers for going too far.... One wouldn'
 <img width="50%" src="figs/retina.png"></img>
 Gallery of brain failures. Example, inside-out retina, V1 at back...
 
-
-## Neuron level
+**neuron-level**
 
 The fundamental unit of the brain is the neuron, which takes inputs from other neurons and then provides an output.
 
@@ -1157,7 +1066,7 @@ For more information, see a very good review on modeling individual neurons<dt-c
 
  - converting to spikes introduces noise <dt-cite key="carandini2004amplification"></dt-cite>- perhaps just price of long-distance communication
 
-## Network level
+**network-level**
 
  Artificial neural networks can compute in several different ways. There is some evidence in the visual system that neurons in higher layers of visual areas can, to some extent, be predicted linearly by higher layers of deep networks<dt-cite key="yamins2014performance"></dt-cite>. However, this certainly isn't true in general. Key factors
 
@@ -1169,7 +1078,7 @@ For more information, see a very good review on modeling individual neurons<dt-c
 
 **engram** - unit of [cognitive](https://en.wikipedia.org/wiki/Cognition) information imprinted in a physical substance, theorized to be the means by which [memories](https://en.wikipedia.org/wiki/Memory) are stored
 
-## High-level concepts
+**high-level concepts**
 
  Key concepts differentiate the learning process. Online,
 - learning
@@ -1200,7 +1109,7 @@ For more information, see a very good review on modeling individual neurons<dt-c
   - has slide with related references
 - [A comparison of vector symbolic architectures](https://link.springer.com/article/10.1007/s10462-021-10110-3) (schlegel et al. 2021)
 
-### motivation
+**motivation**
 
 - high-level overview
   - draw inspiration from circuits not single neurons
@@ -1213,7 +1122,7 @@ For more information, see a very good review on modeling individual neurons<dt-c
   - remembering things going back to childhood
   - communicating with language
 
-### operations
+**operations**
 
 - ex. vectors $A$, $B$ both $\in \{ +1, -1\}^{10,000}$ (also extends to real / complex vectors)
 - 3 operations
@@ -1241,7 +1150,7 @@ For more information, see a very good review on modeling individual neurons<dt-c
     - for non-binary vectors, scalar weight
   - fractional binding - can bind different amounts rather than binary similar / dissimilar
 
-#### data structures
+**data structures**
 
 the operations above allow for encoding many normal data structures into a single vector
 
@@ -1264,7 +1173,7 @@ the operations above allow for encoding many normal data structures into a singl
     - can do this for a pair or for a named tuple with new values
       - this doesn't always work
 
-#### examples
+**examples**
 
 - ex. semantic word vectors
   - goal: get good semantic vectors for words
@@ -1317,8 +1226,7 @@ the operations above allow for encoding many normal data structures into a singl
       - query by using multiply $X = Q$ * english-profile-vec
       - find closest letter vecs to $X$: yields "e"
 
-
-### details
+**details**
 
 - frequent "stopwords" should be ignored
 - mathematical background
@@ -1341,7 +1249,7 @@ the operations above allow for encoding many normal data structures into a singl
 
 
 
-### papers
+**HD papers**
 
 [HDComputing Github Repos](https://github.com/HyperdimensionalComputing/collection) (see [torchhd](https://github.com/hyperdimensional-computing/torchhd))
 

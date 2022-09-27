@@ -139,6 +139,8 @@ Nice repo keeping track of progress [here](https://github.com/sebastianruder/NLP
 - ex. **n-gram model** - assigns probs to short sequences of words, known as n-grams
   - for full sentence, use markov assumption
 
+- multi-token decoding for classification - regular beam search will favor shorter results over longer ones on average since a negative log-probability is added at each step, yielding lower (more negative) scores for longer sentences
+
 ## topic modeling
 
 **topic models (e.g. LDA)** - apply unsupervised learning on large sets of text to learn sets of associated words

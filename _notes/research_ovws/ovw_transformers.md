@@ -67,7 +67,11 @@ category: research
     - adds diffusion model
   - BEiT-3 ([2022](https://arxiv.org/abs/2208.10442)) - treat vision as language and large-scale multimodal training
     - outperforms [Flamingo: a Visual Language Model for Few-Shot Learning](https://arxiv.org/abs/2204.14198) (2022), which uses more domain knowledge to connect vision & language
-  
+
+- interacting with computer
+
+  - [ACT-1: Transformer for Actions](https://www.adept.ai/act)
+
 - vision
   - here, people often call image patches "tokens"
   - [Masked Autoencoders Are Scalable Vision Learners](https://arxiv.org/abs/2111.06377) (he...dollar, girshick, 2021) - BERT-style training
@@ -177,7 +181,7 @@ category: research
   - select prompts from a fixed set of tokens (resulting prompts are not coherent)
   - only work on MLM
   - elicit sentiment / factual knowledge
-  - [Universal Adversarial Triggers for Attacking and Analyzing NLP](https://arxiv.org/abs/1908.07125) (wallace...sameer singh, 2022) - find input-agnostic sequences of tokens that trigger a model to produce a specific prediction when concatenated to any input from a dataset
+  - [Universal Adversarial Triggers for Attacking and Analyzing NLP](https://arxiv.org/abs/1908.07125) (wallace...sameer singh, 2019) - find input-agnostic sequences of tokens that trigger a model to produce a specific prediction when concatenated to any input from a dataset
   
 - [Prefix-Tuning: Optimizing Continuous Prompts for Generation](https://arxiv.org/abs/2101.00190) (li & percy liang, 2021) -- optimizes in continuous space for language generation tasks
   - learn to map some parameters $\theta$ through and MLP to generate a starting hidden state $h_i$ -- never actually sends the prefix through the network 
@@ -297,57 +301,94 @@ category: research
   - adds lateral inhibition, superlinearity, approximate sparsity
   - changes GeLU, which is approximately $\text{sigmoid}(1.7x) \cdot x$
   - just changing to SoLU decrease performance, had to add LayerNorm afterwards
-- [Compositional processing emerges in neural networks solving math problems](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8491571/) (russin, roland fernandez, ..., smolensky, gao, 2021)
-- [Locating and Editing Factual Associations in GPT](https://arxiv.org/abs/2202.05262) (meng et al. 2022)
+- Locating and Editing Factual Associations in GPT ([meng et al. 2022](https://arxiv.org/abs/2202.05262) )
   - *localize factual associations* - causal intervention for identifying neuron activations that are decisive in a model’s factual predictions
     - "causal traces" - run net multiple times, introducing corroptuions and then restoring states from original non-corrupted forward pass to see which states can restore the original results
     - a small number of states contain info that can flip the model from one state to another
   - *change factual associations* - modify feedforward weights to update specific factual associations using Rank-One Model Editing (ROME)
+- Knowledge Neurons in Pretrained Transformers ([dai et al. 2021](https://arxiv.org/abs/2104.08696)) - integrated gradients wrt to each neuron in BERT
 
 ## symbolic reasoning
 
 *See also notes on [📌 comp neuro](https://csinva.io/notes/research_ovws/ovw_comp_neuro.html).*
 
-- GPT-3 [Large Language Models are Zero-Shot Reasoners](https://arxiv.org/abs/2205.11916) - Simply adding “Let’s think step by step” before each answer increases the accuracy on MultiArith from 17.7% to 78.7% and GSM8K from 10.4% to 40.7% with GPT-3
-- [Neurocompositional computing: From the Central Paradox of Cognition to a new generation of AI systems](https://arxiv.org/abs/2205.01128) (smolensky et al. 2022)
-  - Compositionality
-  - Continuity - the encoding and processing of information is formalized with real numbers that vary continuously
+- GPT-3 [Large Language Models are Zero-Shot Reasoners](https://arxiv.org/abs/2205.11916) - simply adding “Let’s think step by step” before each answer increases the accuracy on MultiArith from 17.7% to 78.7% and GSM8K from 10.4% to 40.7% with GPT-3
+- [Compositional processing emerges in neural networks solving math problems](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8491571/) (russin, roland fernandez, ..., smolensky, gao, 2021)
+- neurocompositional computing ([smolensky…gao, 2022](https://arxiv.org/abs/2205.01128))
+  - longer tutorial ([smolensky, …, gao, 2022](https://www.microsoft.com/en-us/research/uploads/prod/2022/04/Neurocompositional_computing__tutorial.pdf))
+  
+  - *central paradox of cognition* is that brain both uses continuous neural symbols but is compositional ([smolensky et al. 1992](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.20.4352&rep=rep1&type=pdf))
+    - Compositionality
+    - Continuity - the encoding and processing of information is formalized with real numbers that vary continuously
+  
+  - 3 challenges
+    - compositional generalization
+    - data efficiency
+    - comprehensibility
+  - solution - NECST: Neurally-Encoded Compositionally-Structured Tensor computing ([smolensky & legendre, 2006](https://psycnet.apa.org/record/2006-07970-000)) - basically leverages TPR
+    - TPR roles and fillers can both be made continuous
+  
   - neural space vs symbolic space (many different things (e.g. sentences) can mean the same thing)
+    - word vectors can be thought of as “soft symbols”
   - want to move from symbolic repr. to neural repr. while keeping interpretability
     - system should output intermediate steps in addition to answer
-    - thinking fast + slow (system 1: fast, intuitive) (system 2: slower, logical, derivative)
-- [Enhancing the Transformer with Explicit Relational Encoding for Math Problem Solving - Microsoft Research](https://www.microsoft.com/en-us/research/publication/enhancing-the-transformer-with-explicit-relational-encoding-for-math-problem-solving/) (schlag, ..., gao, 2019)
+    - thinking fast (system 1: fast, intuitive) + slow (system 2: slower, logical, derivative)
+  - concrete proposals
+    - transformer activation vector should encode graph of flow through the network
+      - ex. task: regurgitate a sequence
+  
+- TPR: Tensor product variable binding and the representation of symbolic structures in connectionist systems ([paul smolensky, 1990](https://www.sciencedirect.com/science/article/abs/pii/000437029090007M?via%3Dihub)) - activation patterns are "symbols" and internal structure allows them to be processed like symbols
+  - tensor product representation = TPR
+  - [TPR slides](https://www.mit.edu/~jda/teaching/6.884/slides/oct_02.pdf)
+  - TPR of a structure is the sum of the TPR of its constituents
+    - tensor product operation allows constituents to be uniquely identified, even after the sum (if roles are linearly independent)
+  - **filler** - one vector that embeds the content of the constituent
+  - **role** - second vector that embeds the structural role it fills
+-  NECSTransformer: [Enhancing the Transformer with Explicit Relational Encoding for Math Problem Solving](https://www.microsoft.com/en-us/research/publication/enhancing-the-transformer-with-explicit-relational-encoding-for-math-problem-solving/) (schlag, ..., gao, 2019)
   - TP-attention
-  - beat soa on free-form math word-problems
-  - [Tensor product variable binding and the representation of symbolic structures in connectionist systems - ScienceDirect](https://www.sciencedirect.com/science/article/abs/pii/000437029090007M?via%3Dihub) (paul smolensky, 1990) - activation patterns are "symbols" and internal structure allows them to be processed like symbols
-    - tensor product representation = TPR
-    - [TPR slides](https://www.mit.edu/~jda/teaching/6.884/slides/oct_02.pdf)
-    - TPR of a structure is the sum of the TPR of its constituents
-      - tensor product operation allows constituents to be uniquely identified, even after the sum (if roles are linearly independent)
+  - beat SOAon free-form math word-problems
   - in addition to K, Q, V, also add a role-vector
     - do element-wise multiplication of outputted vector with role-vector
   - TPR built as tensor product of 2 vectors:
-    - **filler** - one vector that embeds the content of the constituent -- here, the vector returned by attention
+    - filler - the vector returned by attention
       - ex. one head learns "second-argument-of"
-    - **role** - second vector that embeds the structural role it fills — here, a relation conceptually labeling an edge of the attention graph
+    - role - a relation conceptually labeling an edge of the attention graph
 - [TP-N2F: Tensor Product Representation for Natural To Formal Language Generation - Microsoft Research](https://www.microsoft.com/en-us/research/publication/natural-to-formal-language-generation-using-tensor-product-representations/) (chen...gao, 2019)
 
+## neuro-inspired
 
+- recurrent sparse reconstruction ([shi...joshi, darrel, wang, 2022](https://arxiv.org/pdf/2204.10962.pdf)) - sparse reconstruction (of a single image) learns a layer that does better than self-attention
 
-## ensembles / mixture of experts (MoE)
+## sparse experts / ensembles / mixture of experts (MoE)
 
 - note: nowadays often the "experts" are different MLPs following the self-attention layers
+- A Review of Sparse Expert Models in Deep Learning ([fedus, jeff dean, zoph, 2022](https://arxiv.org/abs/2209.01667))
+  - sparsity decouples the parameter count from the compute per example allowing for extremely large, but efficient models
+  - routing algorithm - determines where to send examples
+    - discreteness makes it difficult
+      - some works use RL to learn routing
+      - standard approach uses gumbel-softmax
+      - usually get matrix of similarities between input tokens and experts and route based on these
+        - sometimes route to topk experts rather than top1
+    - load balancing - usually add an auxiliary loss to encourage equal tokens being sent to different experts
 - non-specialized experts
-  - Early versions ([Jacobs et al., 1991](https://ieeexplore.ieee.org/abstract/document/6797059)) had independent feed-forward networks serving as experts
-  - Recent MoE models ([Shazeer et al., 2017](https://arxiv.org/abs/1701.06538)) have been studied with token-based routing with backprop
-  - GShard [Lepikhin et al. (2021)](https://arxiv.org/abs/2006.16668), which appplies this concept to machine translation
-  - Switch transformers [Fedus et al. (2022)](https://www.jmlr.org/papers/volume23/21-0998/21-0998.pdf) simplifies the architecture to activation of only one expert per layer
-  - Base Layers [Lewis et al. (2021)](https://proceedings.mlr.press/v139/lewis21a.html) - find an alternative approach to routing by formulating it as a linear assignment problem
+  - Early versions ([Jacobs, michael jordan, nowlan, & hinton, 1991](https://ieeexplore.ieee.org/abstract/document/6797059)) had independent feed-forward networks serving as experts
+  - Sparsely-gated MOE layer ([Shazeer...quoc le, hinton, dean, 2017](https://arxiv.org/abs/1701.06538)) have been studied with token-based routing with backprop
+  - replace FFN in transformers with expert layers
+    - GShard [Lepikhin et al. (2021)](https://arxiv.org/abs/2006.16668), which appplies this concept to machine translation
+    - Switch transformers [Fedus et al. (2022)](https://www.jmlr.org/papers/volume23/21-0998/21-0998.pdf) simplifies the architecture to activation of only one expert per layer
+  - BASE Layers [Lewis et al. (2021)](https://proceedings.mlr.press/v139/lewis21a.html) - find an alternative approach to routing by formulating it as a linear assignment problem
   - Hash layers [Roller et al. (2021)](https://arxiv.org/abs/2106.04426) use a fixed hash as the gating function
-- specialized experts
+- specialized experts as fully independent models (sometimes for multi-task learning)
   - DEmix Layers [Gururangan et al.](https://arxiv.org/abs/2108.05036) (2022) --  DEMix layers – placed in the feedforward layers of the Transformer – contain experts which specialize on specific domains. Routing at train time is determined only by the domain label, but all experts are activated at inference time and mixed according to weights estimated from a validation set
+  - [Sparsely Activated Mixture-of-Experts are Robust Multi-Task Learners](https://arxiv.org/abs/2204.07689) (gupta...awadallah, gao, 2022) - use task description to improve routing
   - [Pfeiffer et al. (2022)](https://arxiv.org/abs/2205.06266) - multilingual expert model with language-specific routing
   - task-level MoE [Kudugunta et al. (2021](https://arxiv.org/abs/2110.03742)) -- multi-task expert model with task-specific routing
+  - ELMS -- Branch-Train-Merge ([li et al. 2022](https://arxiv.org/abs/2208.03306))
+    - parallel language model of smaller expert LMs
+    - each can be added/removed, ensembled, or parameter-averaged at any time for efficient scaling and rapid customization
+    - improves perplexities, when controlling for training cost
+      - require expert domain specialization
 - ensembles (some of these are non-transformer papers)
   - model soups ([wortsman...schmidt, 20221](https://proceedings.mlr.press/v162/wortsman22a.html)) - average weights of finetuned models
     - snapshot ensembles - average different checkpoints during training ([huang et al. 2017](https://arxiv.org/abs/1704.00109))
@@ -357,24 +398,27 @@ category: research
     - superposition of many models into one ([cheung...olshausen, 2019](https://proceedings.neurips.cc/paper/2019/hash/4c7a167bb329bd92580a99ce422d6fa6-Abstract.html)) - both during training/testing models are indexed via a high-dim key for each task
     - supermasks in superposition ([wortsman, ..., yosinski, farhadi, 2020](https://proceedings.neurips.cc/paper/2020/hash/ad1f8bb9b51f023cdc80cf94bb615aa9-Abstract.html)) - randomly fixed based net + for each task finds subnet that chieves good performance
       - if task identity not given, correct subnet inferred by minimizing output entropy
-  - ELMS -- Branch-Train-Merge ([li et al. 2022](https://arxiv.org/abs/2208.03306))
-    - parallel language model of smaller expert LMs
-    - each can be added/removed, ensembled, or parameter-averaged at any time for efficient scaling and rapid customization
-    - improves perplexities, when controlling for training cost
-      - require expert domain specialization
+    - Git Re-Basin: Merging Models modulo Permutation Symmetries ([ainsworth, hayase, & srinivasa, 2022](https://arxiv.org/abs/2209.04836)) - algo to merge models even when they haven't been pretrained together
 
 ## causal inference / llm querying
 
-- [InferBERT: A Transformer-Based Causal Inference Framework for Enhancing Pharmacovigilance](https://www.frontiersin.org/articles/10.3389/frai.2021.659622/full) (2021) - learn + test feature relationships from attention weights
+- [InferBERT: A Transformer-Based Causal Inference Framework for Enhancing Pharmacovigilance](https://www.frontiersin.org/articles/10.3389/frai.2021.659622/full) (wang...liu, 2021) - learn + test feature relationships from attention weights
 - [CausaLM: Causal Model Explanation Through Counterfactual Language Models | Computational Linguistics](https://direct.mit.edu/coli/article/47/2/333/98518/CausaLM-Causal-Model-Explanation-Through) (2021) - produce example-level causal model explanations using models finetuned on auxiliary adversarial tasks derived from the causal graph of the problem
 - [Jesse Vig, Sebastian Gehrmann, Yonatan Belinkov, Sharon Qian, Daniel Nevo, Yaron Singer, Stuart Shieber. Investigating Gender Bias in Language Models Using Causal Mediation Analysis. NeurIPS 2020.](https://proceedings.neurips.cc/paper/2020/file/92650b2e92217715fe312e6fa7b90d82-Paper.pdf)
   - Applies causal mediation analysis to identify decisive neurons and attention heads responsible for gender bias in large language models
   - Identifies a small handful of decisive attention heads in this case
 - [Yanai Elazar, Shauli Ravfogel, Alon Jacovi, Yoav Goldberg. Amnesic Probing: Behavioral Explanation with Amnesic Counterfactuals. TACL 2021.](https://arxiv.org/pdf/2006.00995.pdf) - Proposes measuring the importance of specific information within a model by introducing a causal intervention to erase that information, then observing the causal effects.
+- nucleus sampling: [The Curious Case of Neural Text Degeneration](https://arxiv.org/abs/1904.09751) (holtzman...choi, 2019)
+- applications
+  - [AI-based language models powering drug discovery and development - ScienceDirect](https://www.sciencedirect.com/science/article/pii/S1359644621002816) (liu et al. 2021)
 
 ## open issues
 
 - [Shortcut Learning of Large Language Models in Natural Language Understanding: A Survey](https://arxiv.org/abs/2208.11857) (du et al. 2022)
+
+## cool tasks
+
+- [Forecasting Future World Events with Neural Networks](https://arxiv.org/abs/2206.15474) (zou...hendrycks, 2022)
 
 # basics
 

@@ -82,9 +82,11 @@ For neural-net specific transferring see [📌 adaption/transfer](https://csinva
   - test-time augmentation
   - [batch normalization](https://arxiv.org/abs/1603.04779) (AdaBN)
   - [label shift estimation](https://arxiv.org/abs/1802.03916) (BBSE) - $p(y)$ shifts but $P(x|y)$ does not
-  - [rotation prediction](https://arxiv.org/abs/1909.13231) (sun et al. 2020)
   - [entropy minimization](https://arxiv.org/abs/2006.10726) (test-time entropy minimization, TENT, wang et al. 2020) - optimize for model confidence (entropy of predictions), using only norm. statistics and channel-wise affine transformations
-
+- test-time learning with [rotation prediction](https://arxiv.org/abs/1909.13231) (sun et al. 2020) - at test-time, update parameters for self-supervised rotation prediction task then use for classification
+  - [masked autoencoders](https://arxiv.org/abs/2209.07522) (gandelsman, sun, ..., efros, 2022) - use reconstructed with masked autoencoder and improve performance on robustness tasks
+  - test-time learning for [Reading Comprehension](https://arxiv.org/abs/2103.11263) (banerjee et al. 2021) - uses self-supervision to train models on synthetically generated question-answer pairs, and then infers answers to unseen human-authored questions for this context
+  - [TTT++: When Does Self-Supervised Test-Time Training Fail or Thrive?](https://proceedings.neurips.cc/paper/2021/hash/b618c3210e934362ac261db280128c22-Abstract.html) (liu et al. 2021) - explore different test-time adaptation methods and combine Test-time feature alignment with Test-time contrastive learning
 - combining train-time and test-time adaptation
   - Adaptive Risk Minimization (ARM, [Zhang et al., 2020](https://arxiv.org/abs/2007.02931)) - combines groups at training time + *batches at test-time*
     - *meta-train* the model using simulated distribution shifts, which is enabled by the training groups, such that it exhibits strong *post-adaptation* performance on each shift

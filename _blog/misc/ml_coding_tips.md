@@ -142,6 +142,7 @@ displays
 
 ### misc services
 
+- [magic wormhole](https://magic-wormhole.readthedocs.io/en/latest/): easily send files between computers
 - google buckets: just type gsutil and then can type a linux command (e.g. ls, du)
 
 ### tmux shortcuts
