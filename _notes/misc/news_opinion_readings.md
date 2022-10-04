@@ -2,6 +2,8 @@
 
 # 2022
 
+- [Opinion | A Strong Dollar Is Hurting Other Countries. Should the Fed Care? - The New York Times](https://www.nytimes.com/2022/09/30/opinion/us-dollar-global-impact.html)
+  
 - [Opinion | Why I Changed My Mind on Student Debt Forgiveness - The New York Times](https://www.nytimes.com/2022/08/30/opinion/student-loan-debt-relief-biden.html) - dropout rates are very high
   
 - [Your Book Review: Progress And Poverty - by Scott Alexander](https://astralcodexten.substack.com/p/your-book-review-progress-and-poverty)

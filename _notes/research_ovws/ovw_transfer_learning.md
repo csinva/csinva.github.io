@@ -83,6 +83,7 @@ For neural-net specific transferring see [📌 adaption/transfer](https://csinva
   - [batch normalization](https://arxiv.org/abs/1603.04779) (AdaBN)
   - [label shift estimation](https://arxiv.org/abs/1802.03916) (BBSE) - $p(y)$ shifts but $P(x|y)$ does not
   - [entropy minimization](https://arxiv.org/abs/2006.10726) (test-time entropy minimization, TENT, wang et al. 2020) - optimize for model confidence (entropy of predictions), using only norm. statistics and channel-wise affine transformations
+    - [Test-Time Prompt Tuning for Zero-Shot Generalization in Vision-Language Models](https://arxiv.org/abs/2209.07511) (shu...anandkumar, xiao, 2022) - optimize prompt to minimize the entropy with confidence selection so that the model has consistent predictions across different augmented views of each test sample
 - test-time learning with [rotation prediction](https://arxiv.org/abs/1909.13231) (sun et al. 2020) - at test-time, update parameters for self-supervised rotation prediction task then use for classification
   - [masked autoencoders](https://arxiv.org/abs/2209.07522) (gandelsman, sun, ..., efros, 2022) - use reconstructed with masked autoencoder and improve performance on robustness tasks
   - test-time learning for [Reading Comprehension](https://arxiv.org/abs/2103.11263) (banerjee et al. 2021) - uses self-supervision to train models on synthetically generated question-answer pairs, and then infers answers to unseen human-authored questions for this context

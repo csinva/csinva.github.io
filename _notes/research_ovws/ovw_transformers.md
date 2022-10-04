@@ -45,7 +45,7 @@ category: research
     - [Can language models learn from explanations in context?](https://arxiv.org/abs/2204.02329) (lampinen et al. 2022)
   - [instructGPT](https://arxiv.org/abs/2203.02155) / [FLAN](https://arxiv.org/abs/2109.01652) - finetune on instructions to follows instructions
   - ELECTRA: Pre-training Text Encoders as Discriminators Rather Than Generators ([clark...quoc le, chris manning, 2020](https://arxiv.org/abs/2003.10555))
-    - more efficient: instead of standard masked training, have generator-discriminator setup for "token detection"
+    - more efficient: rather than standard masked training, have generator-discriminator setup for "token detection"
     - generator replaces many masked tokens with plausible samples (all in one forward pass) - train with MLM
     - discriminator tries to guess which tokens were the masked ones - this is the main model that gets used
 - dialog
@@ -118,6 +118,7 @@ category: research
       - e.g. [evci, et al. 2022](https://arxiv.org/abs/2201.03529) - learn linear layer (using group-lasso) on features extracted from all layers
   - finetune specific DNN params (e.g. just the bias terms)
     - Cutting Down on Prompts and Parameters ([logan...sameer singh, riedel, 2021](https://arxiv.org/abs/2106.13353)) - finetune only the bias terms; works even with null prompts
+    - BitFit: Simple Parameter-efficient Fine-tuning for Transformer-based Masked Language-models ([zaken, ravfogel, & goldberg, 2021](https://arxiv.org/abs/2106.10199)) - finetune only bias terms
 - adapter - finetune lightweight layers on top of pre-trained layers (between finetuning all layers, and just finetuning a new layer)
   - add some new layers and retrain some specific things (all human choices)
   - side-tuning ([zhang, sax...malik, 2020](https://link.springer.com/chapter/10.1007/978-3-030-58580-8_41)) - train a “side” network that is fused with the pretrained model via summation

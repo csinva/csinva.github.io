@@ -16,6 +16,10 @@ Complexity can be a useful notion for many things in statistical models. It can 
 
 # philosophy
 
+- the architecture of complexity ([herbert simon, 1962](https://www2.econ.iastate.edu/tesfatsi/ArchitectureOfComplexity.HSimon1962.pdf))
+  - complexity takes the form of hierarchy
+  - simon, 1981: complex systems are “made up of a large number of parts that have many interactions.”
+
 - [What is complexity?](http://cogprints.org/357/4/evolcomp.pdf) (edmonds 95)
   - complexity is only really useful for comparisons
   - properties
@@ -48,7 +52,6 @@ Complexity can be a useful notion for many things in statistical models. It can 
 - [complexity](http://www.scholarpedia.org/article/Complexity) (Sporns 07)
   - complexity = degree to which **components** engage in organized structured **interactions**
   - High complexity -> mixture of order and disorder (randomness and regularity) + have a high capacity to generate **emergent** phenomena.
-  - (simon 1981): complex systems are “made up of a large number of parts that have many interactions.”
   - 2 categories
     - algorithmic / mdl
     - natural complexity (e.g. physical complexity)
