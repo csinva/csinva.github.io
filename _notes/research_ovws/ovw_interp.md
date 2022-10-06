@@ -474,6 +474,8 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
     - relax hard splits into soft ones and learn via gradient descent
   - [Optimizing for Interpretability in Deep Neural Networks with Tree Regularization | Journal of Artificial Intelligence Research](https://www.jair.org/index.php/jair/article/view/12558) (wu...doshi-velez, 2021) - regularize DNN prediction function towards tree (potentially only for some region)
   - [Adaptive Neural Trees](http://proceedings.mlr.press/v97/tanno19a.html?utm_campaign=piqcy&utm_medium=email&utm_source=Revue%20newsletter) (tanno et al. 2019) - adaptive neural tree mechanism with trainable nodes, edges, and leaves
+  - [Automatic Rule Extraction from Long Short Term Memory Networks](https://arxiv.org/abs/1702.02540) (murdoch & szlam, 2017) - extract out phrases using feature importance
+    - [A Comparative Study of Rule Extraction for Recurrent Neural Networks](https://arxiv.org/abs/1801.05420) (wang...giles, 2018) - create automata based on interpretable states to track RNNs
 - loosely interpretable
   - mixture of experts (MOE) / hierarchical MOE
   - [Attention Convolutional Binary Neural Tree for Fine-Grained Visual Categorization](https://openaccess.thecvf.com/content_CVPR_2020/html/Ji_Attention_Convolutional_Binary_Neural_Tree_for_Fine-Grained_Visual_Categorization_CVPR_2020_paper.html) (ji et al. 2020)
