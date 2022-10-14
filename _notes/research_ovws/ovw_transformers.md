@@ -183,11 +183,10 @@ category: research
   - only work on MLM
   - elicit sentiment / factual knowledge
   - [Universal Adversarial Triggers for Attacking and Analyzing NLP](https://arxiv.org/abs/1908.07125) (wallace...sameer singh, 2019) - find input-agnostic sequences of tokens that trigger a model to produce a specific prediction when concatenated to any input from a dataset
-  
+- [iPrompt: Explaining Patterns in Data with Language Models via Interpretable Autoprompting](https://arxiv.org/abs/2210.01848) (singh, morris, ...gao, 2022)
 - [Prefix-Tuning: Optimizing Continuous Prompts for Generation](https://arxiv.org/abs/2101.00190) (li & percy liang, 2021) -- optimizes in continuous space for language generation tasks
   - learn to map some parameters $\theta$ through and MLP to generate a starting hidden state $h_i$ -- never actually sends the prefix through the network 
   - [Control Prefixes for Parameter-Efficient Text Generation](https://arxiv.org/abs/2110.08329) (clive, cao, & rei, 2022) - allow for adapting the prefix to each input example
-  
 - DART [Differentiable Prompt Makes Pre-trained Language Models Better Few-shot Learners](https://arxiv.org/abs/2108.13161) (zhang...chen, 2022)
   - reformulating NLP task into differentially optimizing the prompt template + target label (given a pre-trained model)
   - focus on smaller models (Roberta-large + GPT-2) + few training shots
@@ -377,7 +376,7 @@ category: research
   - Sparsely-gated MOE layer ([Shazeer...quoc le, hinton, dean, 2017](https://arxiv.org/abs/1701.06538)) have been studied with token-based routing with backprop
   - replace FFN in transformers with expert layers
     - GShard [Lepikhin et al. (2021)](https://arxiv.org/abs/2006.16668), which appplies this concept to machine translation
-    - Switch transformers [Fedus et al. (2022)](https://www.jmlr.org/papers/volume23/21-0998/21-0998.pdf) simplifies the architecture to activation of only one expert per layer
+    - Switch transformers ([Fedus et al. (2022)](https://www.jmlr.org/papers/volume23/21-0998/21-0998.pdf)) simplifies the architecture to activation of only one expert per layer
   - BASE Layers [Lewis et al. (2021)](https://proceedings.mlr.press/v139/lewis21a.html) - find an alternative approach to routing by formulating it as a linear assignment problem
   - Hash layers [Roller et al. (2021)](https://arxiv.org/abs/2106.04426) use a fixed hash as the gating function
 - specialized experts as fully independent models (sometimes for multi-task learning)
@@ -390,6 +389,8 @@ category: research
     - each can be added/removed, ensembled, or parameter-averaged at any time for efficient scaling and rapid customization
     - improves perplexities, when controlling for training cost
       - require expert domain specialization
+  - scaling up
+    - OPT-MOE ([artetxe et al. 2021](https://arxiv.org/abs/2112.10684))
 - [Towards Understanding Mixture of Experts in Deep Learning](https://arxiv.org/abs/2208.02813) (chen...gu, li, 2022)
 - ensembles (some of these are non-transformer papers)
   - model soups ([wortsman...schmidt, 20221](https://proceedings.mlr.press/v162/wortsman22a.html)) - average weights of finetuned models

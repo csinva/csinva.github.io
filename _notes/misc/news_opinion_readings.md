@@ -2,10 +2,13 @@
 
 # 2022
 
+- [Why I Think More NLP Researchers Should Engage with AI Safety Concerns – NYU Alignment Research Group](https://wp.nyu.edu/arg/why-ai-safety/)
+  - [AI Safety and Neighboring Communities: A Quick-Start Guide, as of Summer 2022 - AI Alignment Forum](https://www.alignmentforum.org/posts/EFpQcBmfm2bFfM4zM/ai-safety-and-neighboring-communities-a-quick-start-guide-as)
+  
 - [Opinion | A Strong Dollar Is Hurting Other Countries. Should the Fed Care? - The New York Times](https://www.nytimes.com/2022/09/30/opinion/us-dollar-global-impact.html)
-  
+
 - [Opinion | Why I Changed My Mind on Student Debt Forgiveness - The New York Times](https://www.nytimes.com/2022/08/30/opinion/student-loan-debt-relief-biden.html) - dropout rates are very high
-  
+
 - [Your Book Review: Progress And Poverty - by Scott Alexander](https://astralcodexten.substack.com/p/your-book-review-progress-and-poverty)
   - "Poverty and wealth disparity appear to be perversely linked with progress, The Rent is Too Damn High, and it's all because of land."
 

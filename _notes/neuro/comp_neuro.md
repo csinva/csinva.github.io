@@ -961,6 +961,7 @@ Artificial neural networks can compute in several different ways. There is some 
   - EEG/ECoG
   - MEG
   - fMRI/PET
+    - MRI with [millisecond temporal precision](https://www.biorxiv.org/content/10.1101/2021.05.21.444581v2)
     - molecular fmri (bartelle)
   - MRS
   - event-related optical signal = near-infrared spectroscopy
@@ -1013,6 +1014,16 @@ Artificial neural networks can compute in several different ways. There is some 
 - *calcium imaging* for spike sorting: http://spikefinder.codeneuro.org/
 
   - spikes: http://www2.le.ac.uk/departments/engineering/research/bioengineering/neuroengineering-lab/software
+
+**fmri responses to language++**
+
+- [A natural language fMRI dataset for voxelwise encoding models](https://www.biorxiv.org/content/10.1101/2022.09.22.509104v1.abstract?%3Fcollection=) (lebel, … huth, 2022)
+    - 8 participants listening to ~6 hours each of the moth radio hour
+- [Narratives Dataset](http://fcon_1000.projects.nitrc.org/indi/retro/Narratives.html) (Nastase et al. 2019) - more subjects, less data per subject
+    - 345 subjects, 891 functional scans, and 27 diverse stories of varying duration totaling ~4.6 hours of unique stimuli (~43,000 words) and total collection time is ~6.4 days
+- [Huth et al. 2016](https://www.nature.com/articles/nature17637) released data from [one subject](https://github.com/HuthLab/speechmodeltutorial)
+- [Visual and linguistic semantic representations are aligned at the border of human visual cortex](https://www.nature.com/articles/s41593-021-00921-6#data-availability) (popham, huth et al. 2021) - compared semantic maps obtained from two functional magnetic resonance imaging experiments in the same participants: one that used silent movies as stimuli and another that used narrative stories ([data link](https://berkeley.app.box.com/s/l95gie5xtv56zocsgugmb7fs12nujpog))
+- More datasets available at [openneuro](https://openneuro.org/search/modality/mri) and visual cortex data on [crcns](https://crcns.org/data-sets/vc)
 
 
 
@@ -1474,6 +1485,66 @@ the operations above allow for encoding many normal data structures into a singl
 - kietzmann_18_dnn_in_neuro_rvw
 - friston_10_free_energy
   - ![friston_free_energy](../assets/friston_free_energy.png)
+
+## biological constraints for DNNs
+
+- Aligning DNN with brain responses
+
+  - haven’t found anything like this for NLP
+
+  - Aligning Model and Macaque Inferior Temporal Cortex Representations Improves Model-to-Human Behavioral Alignment and Adversarial Robustness ([dapello, kar, shrimpf…cox, dicarlo, 2022](https://www.biorxiv.org/content/10.1101/2022.07.01.498495v1.abstract)) - finetune CNN embedding to match monkey brain (IT electrode recordings) before making classifications
+
+  - [Towards robust vision by multi-task learning on monkey visual cortex](https://proceedings.neurips.cc/paper/2021/hash/06a9d51e04213572ef0720dd27a84792-Abstract.html) (safarani…sinz, 2021) - simultaneously predict monkey v1 (electrode data) and imagenet
+
+  - [Improved object recognition using neural networks trained to mimic the brain’s statistical properties - ScienceDirect](https://www.sciencedirect.com/science/article/pii/S0893608020302549?casa_token=UBMLt-J8JvgAAAAA:kWdL43r-oYZUUn4Mh41Z2XrMk7FU2WNJKXAvAdWmUjxKCgmTflUfV1tugLFLvQuUX9231x-6) (federer et al. 2020) - simultaneously train CNN to classify objects + have similar reprs to monkey electrode data
+
+  - [Learning from brains how to regularize machines](https://proceedings.neurips.cc/paper/2019/hash/70117ee3c0b15a2950f1e82a215e812b-Abstract.html) (li …, tolias 2019) - regularize intermediate representations using mouse v1 data (optical imaging) for image classification
+
+  - A Neurobiological Evaluation Metric for Neural Network Model Search ([blanchard, …, bashivan, scheirer, 2019](https://openaccess.thecvf.com/content_CVPR_2019/html/Blanchard_A_Neurobiological_Evaluation_Metric_for_Neural_Network_Model_Search_CVPR_2019_paper.html)) - compare fMRI kernel matrix to DNN kernel matrix - find that the closer it is, the better a network is (and use this metric to perform early stopping)
+
+- Biologically-inspired DNNs (not data-driven)
+
+  - [Simulating a Primary Visual Cortex at the Front of CNNs Improves Robustness to Image Perturbations](https://proceedings.neurips.cc/paper/2020/hash/98b17f068d5d9b7668e19fb8ae470841-Abstract.html) (dapello…cox, dicarlo, 2020) - biologically inspired early neural-network layers (gabors etc.) improve robustness of CNNs
+      - [Brain-Like Object Recognition with High-Performing Shallow Recurrent ANNs](https://proceedings.neurips.cc/paper/2019/hash/7813d1590d28a7dd372ad54b5d29d033-Abstract.html) (kubilius, schrimpt, kar, …, yamins, dicarlo, 2019)
+      - [Combining Different V1 Brain Model Variants to Improve Robustness to Image Corruptions in CNNs](https://arxiv.org/abs/2110.10645) (baidya, dapello, dicarlo, & marques, 2021)
+
+  - [Surround Modulation: A Bio-inspired Connectivity Structure for Convolutional Neural Networks](https://proceedings.neurips.cc/paper/2019/hash/c535e3a7f97daf1c4b1eb03cc8e31623-Abstract.html) (hasani, …, aghajan, 2019) - add inhibitory lateral connections in CNNs
+
+  - [Engineering a Less Artificial Intelligence](https://www.sciencedirect.com/science/article/pii/S0896627319307408) (sinz…tolias, 2019) - overview of ideas to make DNNs more brain-like
+
+  - [Biologically inspired protection of deep networks from adversarial attacks](https://arxiv.org/abs/1703.09202) (nayebi & ganguli, 2017) - change training to get highly nonlinear, saturated neural nets
+
+  - [Biological constraints on neural network models of cognitive function](https://www.nature.com/articles/s41583-021-00473-5) (pulvermuller, …, wennekers, 2021) - review on biological constraints
+
+  - [Disentangling with Biological Constraints: A Theory of Functional Cell Types](https://arxiv.org/abs/2210.01768)
+
+
+- encoding models
+
+  - Seminal language-semantics fMRI study ([Huth…Gallant, 2016](https://www.nature.com/articles/nature17637)) - build mapping of semantic concepts across cortex using word vecs
+    - [(caucheteux, gramfort, & king, facebook, 2022)](https://www.nature.com/articles/s41598-022-20460-9) - predicts fMRI with gpt-2 on the narratives dataset
+      - GPT‐2 representations predict fMRI response + extent to which subjects understand corresponding narratives
+      - compared different encoding features: phoneme, word, gpt-2 layers, gpt-2 attention sizes
+      - brain mapping finding: auditory cortices integrate information over short time windows, and the fronto-parietal areas combine supra-lexical information over long time windows
+      - gpt2 models predict brain responses well [(caucheteux & king, 2021)](https://www.biorxiv.org/content/10.1101/2020.07.03.186288v2.abstract)
+      - [Disentangling syntax and semantics in the brain with deep networks](https://proceedings.mlr.press/v139/caucheteux21a.html) (caucheteux, gramfort, & king, 2021) - identify which brain networks are involved in syntax, semantics, compositionality
+
+
+  - [Blackbox meets blackbox: Representational Similarity and Stability Analysis of Neural Language Models and Brains](https://arxiv.org/abs/1906.01539) (abnar, … zuidema, emnlp workshop, 2019) - use RSA to compare representations from language models with fMRI data from Wehbe et al. 2014
+
+  - [Incorporating Context into Language Encoding Models for fMRI](https://proceedings.neurips.cc/paper/2018/hash/f471223d1a1614b58a7dc45c9d01df19-Abstract.html) (jain & huth, 2018) - LSTMs improve encoding model
+
+  - [The neural architecture of language: Integrative modeling converges on predictive processing](https://www.pnas.org/doi/abs/10.1073/pnas.2105646118) (schrimpf, .., tenenbaum, fedorenko, 2021)- transformers better predict brain responses to natural language
+
+  - also ([anderson…lalor, 2021](https://www.jneurosci.org/content/41/18/4100)) and ([sun et al. 2021](https://ieeexplore.ieee.org/document/9223750/))
+
+- decoding models
+
+  - [Semantic reconstruction of continuous language from non-invasive brain recordings](https://www.biorxiv.org/content/10.1101/2022.09.29.509744v1) (lebel, jain, & huth, 2022) - reconstruct continuous natural language from fMRI
+
+  - [Reconstructing Visual Experiences from Brain Activity Evoked by Natural Movies](https://www.sciencedirect.com/science/article/pii/S0960982211009377) (nishimoto, …, gallant, 2011)
+
+
 
 ## navigation
 

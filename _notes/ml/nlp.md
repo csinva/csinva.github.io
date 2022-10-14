@@ -54,9 +54,9 @@ Nice repo keeping track of progress [here](https://github.com/sebastianruder/NLP
   - [COPA](https://people.ict.usc.edu/~gordon/copa.html) (Choice of Plausible Alternatives) - given a premise sentence and two possible choices, the system must determine either the cause or effect of the premise from two possible choices
   - [MultiRC](https://cogcomp.org/multirc/) (Multi-sentence Reading Comprehension) - given a context paragraph, a question about that paragraph, and a list of possible answers, the system must predict which answers are true and which are false
   - [ReCoRD](https://sheng-z.github.io/ReCoRD-explorer/) (Reading Comprehension with Commonsense Reasoning Dataset) - multiple-choice QA task (news article + [Cloze-style multiple-choice question](https://docs.moodle.org/310/en/Embedded_Answers_(Cloze)_question_type))
-  - ***[RTE](https://aclweb.org/aclwiki/Recognizing_Textual_Entailment) (Recognizing Textual Entailment) - determine if a sentence entails a given hypothesis or not.
+  - $^\dagger$[RTE](https://aclweb.org/aclwiki/Recognizing_Textual_Entailment) (Recognizing Textual Entailment) - determine if a sentence entails a given hypothesis or not.
   - [WiC](https://pilehvar.github.io/wic/) (Word-in-Context) - word sense disambiguation task cast as binary classification of sentence pairs. Given two text snippets and a polysemous word that appears in both sentences, the task is to determine whether the word is used with the same sense in both sentences
-  - ***[WSC](https://cs.nyu.edu/~davise/papers/WinogradSchemas/WS.html) (Winograd Schema Challenge) - coreference resolution task in which examples consist of a sentence with a pronoun and a list of noun phrases from the sentence. The system must determine the correct referent of the pronoun from among the provided choices.
+  - $^\dagger$[WSC](https://cs.nyu.edu/~davise/papers/WinogradSchemas/WS.html) (Winograd Schema Challenge) - coreference resolution task in which examples consist of a sentence with a pronoun and a list of noun phrases from the sentence. The system must determine the correct referent of the pronoun from among the provided choices.
 
 - [GLUE Benchmark](https://gluebenchmark.com/) (2019) = General language understanding evaluation
   - 9 NLU tasks including question answering, sentiment analysis, text similarity and textual entailment
@@ -138,7 +138,6 @@ Nice repo keeping track of progress [here](https://github.com/sebastianruder/NLP
 
 - ex. **n-gram model** - assigns probs to short sequences of words, known as n-grams
   - for full sentence, use markov assumption
-
 - multi-token decoding for classification - regular beam search will favor shorter results over longer ones on average since a negative log-probability is added at each step, yielding lower (more negative) scores for longer sentences
 
 ## topic modeling

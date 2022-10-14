@@ -9,8 +9,27 @@ typora-copy-images-to: ../assets
 
 {:toc}
 
+# datasets
 
-# general
+- [physionet](https://physionet.org/about/database/)
+  - mimic-iv
+- [nih datasets](https://nda.nih.gov/)
+- [mdcalc datasets](https://www.mdcalc.com/)
+- [pecarn](https://pecarn.org/datasets/)
+- [openneuro](https://openneuro.org/)
+- Evaluation
+  - MedNLI - NLI task grounded in patient history ([romanov & shivade, 2018](https://arxiv.org/abs/1808.06752))
+    - derived from Mimic, but expertly annotated
+  - i2b2 named entity recognition tasks
+    - i2b2 2006, 2010, 2012, 2014
+
+## ucsf de-id data
+
+- black-box
+  - predict [postoperative delirium prediction](https://bmcanesthesiol.biomedcentral.com/articles/10.1186/s12871-021-01543-y) (bishara, ..., donovan, 2022)
+- intrepretable
+  - predict multiple sceloris by incorporating domain knowledge into biomedical knowledge graph ([nelson, ..., baranzini, 2022](https://academic.oup.com/jamia/article/29/3/424/6463510))
+  - predict mayo endoscopic subscores from colonoscopy reports ([silverman, ..., 2022](https://www.medrxiv.org/content/10.1101/2022.06.19.22276606.abstract))
 
 - 3 types
 	- disease and patient categorization (e.g. classification)

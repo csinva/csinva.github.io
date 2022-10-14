@@ -332,6 +332,7 @@ For an implementation of many of these models, see the python [imodels package](
   - [Creating Powerful and Interpretable Models with Regression Networks](https://arxiv.org/abs/2107.14417) (2021) - generalizes neural GAM to include interaction terms
     - train first-order functions
     - fix them and predict residuals with next order (and repeat for as many orders as desired)
+- Emb-GAM: an Interpretable and Efficient Predictor using Pre-trained Language Models ([singh & gao, 2022](https://arxiv.org/abs/2209.11799)) - use language model to extract embeddings which are then used to fit a better GAM (focuses on NLP)
 - [NODE-GAM: Neural Generalized Additive Model for Interpretable Deep Learning](https://arxiv.org/abs/2106.01613) (chang, caruana, & goldenberg, 2021)
   - includes interaction terms (all features are used initially and backprop decides which are kept) - they call this $GA^2M$
   - uses neural oblivious trees rather than standard DNN
@@ -1143,8 +1144,11 @@ Nice overview [here](https://github.com/stefanoteso/awesome-explanatory-supervis
   - generated explanations are rated higher by humans
   - [VQA-E: Explaining, Elaborating, and Enhancing Your Answers for Visual Questions](https://arxiv.org/abs/1803.07464) (li et al. 2018) - train to jointly predict answer + generate an explanation
   - [Self-Critical Reasoning for Robust Visual Question Answering](https://proceedings.neurips.cc/paper/2019/hash/33b879e7ab79f56af1e88359f9314a10-Abstract.html) (wu & mooney, 2019) - use textual explanations to extract a set of important visual objects
-
-## complementarity
+- Memory-Based Model Editing at Scale ([mitchell...manning, finn, 2022](https://proceedings.mlr.press/v162/mitchell22a/mitchell22a.pdf))
+  - keep track of list of edits in external memory and use them as appropriate context at test time (don't finetune the model)
+  - Fast model editing at scale ([mitchell...finn, manning, 2022](https://arxiv.org/abs/2110.11309))
+    -  a collection of small auxiliary editing networks that use a single desired input-output pair to edit a pre-trained model
+    - MEND learns to transform the gradient obtained by standard fine-tuning, using a low-rank decomposition of the gradient
 
 **complementarity** - ML should focus on points hard for humans + seek human input on points hard for ML
 
@@ -1309,9 +1313,25 @@ These papers don't quite connect to prediction, but are generally about finding 
 
 ## ai safety
 
+- Chandan's evolving views
+  - AI risk by deliberate human actors (i.e. concentrating power) is a greater risk than unintended use (i.e. loss of control)
+- AGI definitions
+  - Advanced capability: they outperform the best humans on some set of tasks which when performed at advanced levels grant significant power in today’s world (tasks like scientific research, business/military/political strategy, engineering, and persuasion/manipulation)
+  - Agentic planning: they make and execute plans, in pursuit of objectives, on the basis of models of the world
+  - Strategic awareness: the models they use in making plans represent with reasonable accuracy the causal upshot of gaining and maintaining power over humans and the real-world environment.
 - [Concrete Problems in AI Safety](https://arxiv.org/abs/1606.06565)
   - **Robustness to distributional shift.** *Can ML be robust to changes in the data distribution, or at least fail gracefully?* For example, can we build [image classifiers](https://www.tensorflow.org/versions/r0.9/tutorials/deep_cnn/index.html) that indicate appropriate uncertainty when shown new kinds of images, instead of confidently trying to use its [potentially inapplicable](http://arxiv.org/abs/1412.6572) learned model?
   - **Safe exploration.** *Can RL agents learn about their environment without executing catastrophic actions?* For example, can an RL agent learn to navigate an environment without ever falling off a ledge?
   - **Avoiding negative side effects.** *Can we transform an RL agent’s [reward function](https://webdocs.cs.ualberta.ca/~sutton/book/ebook/node9.html) to avoid undesired effects on the environment?* For example, can we build a robot that will move an object while avoiding knocking anything over or breaking anything, without manually programming a separate penalty for each possible bad behavior?
   - **Avoiding “reward hacking” and “[wireheading](http://www.agroparistech.fr/mmip/maths/laurent_orseau/papers/ring-orseau-AGI-2011-delusion.pdf)”.** *Can we prevent agents from “gaming” their reward functions, such as by distorting their observations?* For example, can we train an RL agent to minimize the number of dirty surfaces in a building, without causing it to avoid looking for dirty surfaces or to create new dirty surfaces to clean up?
   - **Scalable oversight.** *Can RL agents efficiently achieve goals for which feedback is very expensive?* For example, can we build an agent that tries to clean a room in the way the user would be happiest with, even though feedback from the user is very rare and we have to use cheap approximations (like the presence of visible dirt) during training? The divergence between cheap approximations and what we actually care about is an important source of accident risk.
+- When will [AGI be developed]([Announcing the Future Fund’s AI Worldview Prize – Future Fund](https://ftxfuturefund.org/announcing-the-future-funds-ai-worldview-prize/)) (future fund competition)
+  - [Is Power-Seeking AI an Existential Risk?](https://arxiv.org/abs/2206.13353) (carlsmith, 2022)
+    1. it will become possible and financially feasible to build relevantly powerful and agentic AI systems
+    2. there will be strong incentives to do so
+    3. it will be much harder to build aligned (and relevantly powerful/agentic) AI systems than to build misaligned (and relevantly powerful/agentic) AI systems that are still superficially attractive to deploy
+    4. some such misaligned systems will seek power over humans in high-impact ways
+    5. this problem will scale to the full disempowerment of humanity
+    6. such disempowerment will constitute an existential catastrophe
+- [Why I Think More NLP Researchers Should Engage with AI Safety Concerns – NYU Alignment Research Group](https://wp.nyu.edu/arg/why-ai-safety/) (sam bowman, 2022)
+  - [AI Safety and Neighboring Communities: A Quick-Start Guide, as of Summer 2022 - AI Alignment Forum](https://www.alignmentforum.org/posts/EFpQcBmfm2bFfM4zM/ai-safety-and-neighboring-communities-a-quick-start-guide-as) (sam bowman, 2022)
