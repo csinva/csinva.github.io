@@ -1313,25 +1313,39 @@ These papers don't quite connect to prediction, but are generally about finding 
 
 ## ai safety
 
-- Chandan's evolving views
-  - AI risk by deliberate human actors (i.e. concentrating power) is a greater risk than unintended use (i.e. loss of control)
-- AGI definitions
-  - Advanced capability: they outperform the best humans on some set of tasks which when performed at advanced levels grant significant power in today’s world (tasks like scientific research, business/military/political strategy, engineering, and persuasion/manipulation)
-  - Agentic planning: they make and execute plans, in pursuit of objectives, on the basis of models of the world
-  - Strategic awareness: the models they use in making plans represent with reasonable accuracy the causal upshot of gaining and maintaining power over humans and the real-world environment.
-- [Concrete Problems in AI Safety](https://arxiv.org/abs/1606.06565)
-  - **Robustness to distributional shift.** *Can ML be robust to changes in the data distribution, or at least fail gracefully?* For example, can we build [image classifiers](https://www.tensorflow.org/versions/r0.9/tutorials/deep_cnn/index.html) that indicate appropriate uncertainty when shown new kinds of images, instead of confidently trying to use its [potentially inapplicable](http://arxiv.org/abs/1412.6572) learned model?
-  - **Safe exploration.** *Can RL agents learn about their environment without executing catastrophic actions?* For example, can an RL agent learn to navigate an environment without ever falling off a ledge?
-  - **Avoiding negative side effects.** *Can we transform an RL agent’s [reward function](https://webdocs.cs.ualberta.ca/~sutton/book/ebook/node9.html) to avoid undesired effects on the environment?* For example, can we build a robot that will move an object while avoiding knocking anything over or breaking anything, without manually programming a separate penalty for each possible bad behavior?
-  - **Avoiding “reward hacking” and “[wireheading](http://www.agroparistech.fr/mmip/maths/laurent_orseau/papers/ring-orseau-AGI-2011-delusion.pdf)”.** *Can we prevent agents from “gaming” their reward functions, such as by distorting their observations?* For example, can we train an RL agent to minimize the number of dirty surfaces in a building, without causing it to avoid looking for dirty surfaces or to create new dirty surfaces to clean up?
-  - **Scalable oversight.** *Can RL agents efficiently achieve goals for which feedback is very expensive?* For example, can we build an agent that tries to clean a room in the way the user would be happiest with, even though feedback from the user is very rare and we have to use cheap approximations (like the presence of visible dirt) during training? The divergence between cheap approximations and what we actually care about is an important source of accident risk.
-- When will [AGI be developed]([Announcing the Future Fund’s AI Worldview Prize – Future Fund](https://ftxfuturefund.org/announcing-the-future-funds-ai-worldview-prize/)) (future fund competition)
-  - [Is Power-Seeking AI an Existential Risk?](https://arxiv.org/abs/2206.13353) (carlsmith, 2022)
+**agi definitions**
+
+-  AI systems are fully substitutable for human labor (or have a comparably large impact (from Future Fund prize)
+-  APS properties (carlsmith, 2022)
+
+   -  Advanced capability: they outperform the best humans on some set of tasks which when performed at advanced levels grant significant power in today’s world (tasks like scientific research, business/military/political strategy, engineering, and persuasion/manipulation)
+
+
+   -  Agentic planning: they make and execute plans, in pursuit of objectives, on the basis of models of the world
+
+
+   -  Strategic awareness: the models they use in making plans represent with reasonable accuracy the causal upshot of gaining and maintaining power over humans and the real-world environment.
+
+**papers**
+
+-  [Concrete Problems in AI Safety](https://arxiv.org/abs/1606.06565)
+  - **Robustness to distributional shift.** *Can ML be robust to changes in the data distribution, or at least fail gracefully?*
+  - **Safe exploration.** *Can RL agents learn about their environment without executing catastrophic actions?*
+  - **Avoiding negative side effects.** *Can we transform an RL agent’s [reward function](https://webdocs.cs.ualberta.ca/~sutton/book/ebook/node9.html) to avoid undesired effects on the environment?*
+  - **Avoiding “reward hacking” and “[wireheading](http://www.agroparistech.fr/mmip/maths/laurent_orseau/papers/ring-orseau-AGI-2011-delusion.pdf)”.** *Can we prevent agents from “gaming” their reward functions, such as by distorting their observations?*
+  - **Scalable oversight.** *Can RL agents efficiently achieve goals for which feedback is very expensive?*
+
+-  When will [AGI be developed]([Announcing the Future Fund’s AI Worldview Prize – Future Fund](https://ftxfuturefund.org/announcing-the-future-funds-ai-worldview-prize/)) (future fund competition)
+-  [Is Power-Seeking AI an Existential Risk?](https://arxiv.org/abs/2206.13353) (carlsmith, 2022)
+  - 6 points
     1. it will become possible and financially feasible to build relevantly powerful and agentic AI systems
     2. there will be strong incentives to do so
     3. it will be much harder to build aligned (and relevantly powerful/agentic) AI systems than to build misaligned (and relevantly powerful/agentic) AI systems that are still superficially attractive to deploy
     4. some such misaligned systems will seek power over humans in high-impact ways
     5. this problem will scale to the full disempowerment of humanity
     6. such disempowerment will constitute an existential catastrophe
-- [Why I Think More NLP Researchers Should Engage with AI Safety Concerns – NYU Alignment Research Group](https://wp.nyu.edu/arg/why-ai-safety/) (sam bowman, 2022)
+  - backdrop
+    - no reason to believe brain is anywhere near a hard limit (e.g. limitations on speed, memory)
+    - AI systems that don’t seek to gain or maintain power may cause a lot of harm, but this harm is more easily limited by the power they already have (so wouldn't count as existential risk)
+-  [Why I Think More NLP Researchers Should Engage with AI Safety Concerns – NYU Alignment Research Group](https://wp.nyu.edu/arg/why-ai-safety/) (sam bowman, 2022)
   - [AI Safety and Neighboring Communities: A Quick-Start Guide, as of Summer 2022 - AI Alignment Forum](https://www.alignmentforum.org/posts/EFpQcBmfm2bFfM4zM/ai-safety-and-neighboring-communities-a-quick-start-guide-as) (sam bowman, 2022)

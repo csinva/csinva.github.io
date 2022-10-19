@@ -22,6 +22,7 @@ title: presentations
 ## msft talks
 - [emb-gam](https://docs.google.com/presentation/d/1ctUCnboHFtEsgJm8J7k66PtPn6xDLH-Y3aq_pNTFPBo/edit#slide=id.p)
 - [iprompt](https://docs.google.com/presentation/d/1_4X1IZMm6B621H5_81QZ5DuK9n4E-Vj8sVryVm1kjSE/edit#slide=id.p)
+  - [iprompt 5-min](https://docs.google.com/presentation/d/1rbnnV5RNb9OkmoR9go0OWi0Jb5a7uiEFCBGOobH5USI/edit?usp=sharing)
 
 ## phd dnn-interp overview talks
 
