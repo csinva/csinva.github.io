@@ -149,8 +149,10 @@ Deep learning models have achieved impressive predictive performance by learning
     - [grad slam 2019](https://www.youtube.com/watch?v=6VVppY-uUgE&feature=youtu.be&t=5600)
     - [textxd 2019](https://berkeley-haas.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=276daa74-7298-40b1-9503-ab17014b5863)
 - other talks list
+    - trustml symposium talk ([2022](https://www.trustworthyml.org/symposium))
+    - frontiers in deep learning workshop (msr, 2022)
     - [cnls physics-informed ml conference](https://web.cvent.com/event/ead9c1d8-c632-4896-ba9e-d5f3fec81e86/websitePage:a9dfad1e-e21c-46b6-bf79-eee883bd1448) (2022)
-    - disentangled interpretations and how we can use them ([simons workshop](https://simons.berkeley.edu/events/disentangled-interpretations-and-how-we-can-use-them))
+    - disentangled interpretations and how we can use them ([simons workshop, 2020](https://simons.berkeley.edu/events/disentangled-interpretations-and-how-we-can-use-them))
     - tom tom founder's ml conference (2017)
 - misc releases
   - [grad slam 2022](https://eecs.berkeley.edu/news/2022/03/chandan-singh-2022-berkeley-grad-slam-competition-semi-finalist)

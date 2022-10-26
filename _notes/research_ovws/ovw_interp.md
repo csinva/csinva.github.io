@@ -943,13 +943,19 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
     - [Decision Explanation and Feature Importance for Invertible Networks](https://arxiv.org/abs/1910.00406) (mundhenk et al. 2019)
     - [Efficient Saliency Maps for Explainable AI](https://deepai.org/publication/efficient-saliency-maps-for-explainable-ai) 
     
-### dnn attention
+
+### dnn language models / transformers
+
 - [Staying True to Your Word: (How) Can Attention Become Explanation?](https://arxiv.org/abs/2005.09379)
 - [attention is not explanation](https://arxiv.org/abs/1902.10186) (jain & wallace, 2019)
 - [attention is not **not** explanation](https://arxiv.org/abs/1908.04626) (wiegreffe & pinter, 2019)
 - influence = pred with a word - pred with a word masked
 - attention corresponds to this kind of influence
 - deceptive attention - we can successfully train a model to make similar predictions but have different attention
+- An Empirical Examination of Local Composition in Language Models ([liu & neubig, 2022](https://arxiv.org/pdf/2210.03575.pdf))
+  - predict phrase embedding given embeddings of children
+  - phrase embedding accuracy isn't correlated with actual semantic compositionality
+
 
 ### textual explanations
 
@@ -965,6 +971,7 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
 - [eli5](https://eli5.readthedocs.io/en/latest/libraries/sklearn.html#library-scikit-learn) has nice text highlighting for interp
 - [TalkToModel: Understanding Machine Learning Models With Open Ended Dialogues](https://arxiv.org/abs/2207.04154) (slack...lakkaraju, sameer singh, 2022) - natural language interface to query model (by converting to commands such as filtering the data / calculating importance)
    - [Rethinking Explainability as a Dialogue: A Practitioner's Perspective](https://arxiv.org/abs/2202.01875) (lakkaraju, slack, ..., sameer singh, 2022) - interviews with high-stakes users suggest they would like to be able to interact with systems via dialog
+- [The Unreliability of Explanations in Few-shot Prompting for Textual Reasoning](https://arxiv.org/abs/2205.03401?context=cs) (ye & durrett, 2022)
 
 
 
@@ -1174,6 +1181,7 @@ Nice overview [here](https://github.com/stefanoteso/awesome-explanatory-supervis
 - similar to causality, we may want to use interpretability just to understand our data rather than to get any form of model
 - [Visualization by Example](https://arxiv.org/abs/1911.09668) (chenglong wang...dillig, 2019) - automatically synthesize a program to visual data based on user "sketches" = partial visualization of a subset of the data by the user
   - [Falx: Synthesis-Powered Visualization Authoring](https://arxiv.org/abs/2102.01024) (chenglong wang...ko, 2021)
+- see also things in [imodelsX](https://github.com/csinva/imodelsX)
 
 ## human-in-the-loop (HITL)
 

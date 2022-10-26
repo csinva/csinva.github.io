@@ -34,12 +34,13 @@ Nice repo keeping track of progress [here](https://github.com/sebastianruder/NLP
 
 **open-ended**
 
+- [MMLU](https://arxiv.org/abs/2009.03300): Measuring Massive Multitask Language Understanding (hendrycks, ..., song, steinhardt, 2021) - 57 tasks such as elementary math, clinical knowledge, global facts
+
 - [NLI: allenai natural language instructions](https://github.com/allenai/natural-instructions) (v1: mishra et al. 2022; v2: wang et al. 2022) - 1600+ diverse NLP tasks
-
   - Definition which describes the task
-
+  
   - For each example: (input text, output (varies), explanation*) - explanation only for some tasks
-
+  
 - [Big-bench](https://github.com/google/BIG-bench) (2022) - crowdsourced diverse (but random) NLP tasks
   - No task definitions or explanations: the “definition” is instead concatenated to each example’s input
 - [Unveiling Transformers with LEGO: a synthetic reasoning task](https://arxiv.org/abs/2206.04301) (zhang, ..., bubeck, ..., wagner, 2022) - synthetic reasoning task
