@@ -276,6 +276,7 @@ For an implementation of many of these models, see the python [imodels package](
     - [Efficient Training of Robust Decision Trees Against Adversarial Examples](https://arxiv.org/abs/2012.10438)
     - [Robust Decision Trees Against Adversarial Examples](https://arxiv.org/abs/1902.10660) (chen, ..., hsieh, 2019)
       - optimize tree performance under worst-case input-feature perturbation
+  - [Human knowledge models: Learning applied knowledge from the data | PLOS ONE](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0275814) (dudyrev...pianykh, 2022) - very concise logic model
   - [On the price of explainability for some clustering problems](https://arxiv.org/abs/2101.01576) (laber et al. 2021) - trees for clustering
   - extremely randomized trees ([geurts et al. 2006](https://link.springer.com/article/10.1007/s10994-006-6226-1)) - randomness goes further than Random Forest - randomly select not only the feature but also the split thresholds (and select the best out of some random set)
 

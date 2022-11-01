@@ -76,6 +76,7 @@ category: research
 
 - vision
   - here, people often call image patches "tokens"
+  - DNIO [Emerging Properties in Self-Supervised Vision Transformers](https://arxiv.org/abs/2104.14294) (caron...joulin, 2021)
   - [Masked Autoencoders Are Scalable Vision Learners](https://arxiv.org/abs/2111.06377) (he...dollar, girshick, 2021) - BERT-style training
     -  speed up by not applying encoder to mask tokens + adding mask to a lot of the data (like 75%)
     -  really good results without much data
@@ -84,7 +85,8 @@ category: research
   - different modalities are converted to tokens differently (e.g. image patches are fed through resnet)
 - metalearning
 
-  - [TabPFN: A Transformer That Solves Small Tabular Classification Problems in a Second](https://arxiv.org/abs/2207.01848) (hollman, ..., hutter, 2022) - transformer takes in train + test dataset then outputs predictions
+  - TabPFN: A Transformer That Solves Small Tabular Classification Problems in a Second ([hollman, ..., hutter, 2022](https://arxiv.org/abs/2207.01848)) - transformer takes in train + test dataset then outputs predictions
+    - builds on prior-data fitted networks (PFNs) ([muller, ..., hutter, 2021](https://arxiv.org/abs/2112.10510))
 
 - [MINERVA: Solving Quantitative Reasoning Problems with Language Models](https://arxiv.org/abs/2206.14858) - train on well-parsed, domain-specific data (math arxiv) to solve math-reasoning problems
 - CODEX [Evaluating Large Language Models Trained on Code](https://arxiv.org/abs/2107.03374) (2021)
@@ -149,7 +151,6 @@ category: research
 - misc....(few shot mostly)
   - LM-BFF [Making Pre-trained Language Models Better Few-shot Learners](https://arxiv.org/abs/2012.15723) (gao et al. 2020)
     - uses T5 to generate (i) template for the task (which might include a whole example or two) + (i) appropropriate label tokens in the vocabulary for the task (suffers from computationally intensive search + sub-optimal discrete space search)
-  - [Adapting Language Models for Zero-shot Learning by Meta-tuning on Dataset and Prompt Collections](https://arxiv.org/abs/2104.04670) (zhong...dan klein, 2021)
 
 **mt-dnn line of work**
 
@@ -191,7 +192,9 @@ category: research
   - elicit sentiment / factual knowledge
   - [Universal Adversarial Triggers for Attacking and Analyzing NLP](https://arxiv.org/abs/1908.07125) (wallace...sameer singh, 2019) - find input-agnostic sequences of tokens that trigger a model to produce a specific prediction when concatenated to any input from a dataset
 - [iPrompt: Explaining Patterns in Data with Language Models via Interpretable Autoprompting](https://arxiv.org/abs/2210.01848) (singh, morris, ...gao, 2022)
+  - [GSCLIP : A Framework for Explaining Distribution Shifts in Natural Language](https://arxiv.org/abs/2206.15007) (zhu...james zou, 2022)
   - [RLPrompt: Optimizing Discrete Text Prompts with Reinforcement Learning](https://arxiv.org/abs/2205.12548) (deng...hu, 2022)
+  
 - [Prefix-Tuning: Optimizing Continuous Prompts for Generation](https://arxiv.org/abs/2101.00190) (li & percy liang, 2021) -- optimizes in continuous space for language generation tasks
   - learn to map some parameters $\theta$ through and MLP to generate a starting hidden state $h_i$ -- never actually sends the prefix through the network 
   - [Control Prefixes for Parameter-Efficient Text Generation](https://arxiv.org/abs/2110.08329) (clive, cao, & rei, 2022) - allow for adapting the prefix to each input example
@@ -210,8 +213,13 @@ category: research
   - [SentiPrompt: Sentiment Knowledge Enhanced Prompt-Tuning for Aspect-Based Sentiment Analysis](https://arxiv.org/abs/2109.08306) -- use sentiment knowledge penalties in the prompt
   - [Meta-learning via Language Model In-context Tuning](https://arxiv.org/abs/2110.07814) (Chen et al. 2022) -- Given new task with new instruction
   - [Prompt Programming for Large Language Models: Beyond the Few-Shot Paradigm](https://arxiv.org/abs/2102.07350) (Reynolds & McDonell, 2021) -- define metaprompts as general wrappers around tasks e.g. “This problem asks us to”
+  - [Re3: Generating Longer Stories With Recursive Reprompting and Revision](https://arxiv.org/abs/2210.06774) (yang, ..., klein, 2022) - generate summaries, then expand and revise with prompts
 - critiques of prompting
   - [Do Prompt-Based Models Really Understand the Meaning of their Prompts?](https://arxiv.org/abs/2109.01247) (webson & pavlick, 2022) - models can learn fine with prompts that are intentionally irrelevant
+- can benefit from training for promptability
+  - [Adapting Language Models for Zero-shot Learning by Meta-tuning on Dataset and Prompt Collections](https://arxiv.org/abs/2104.04670) (zhong...klein, 2021)
+  - [Continued Pretraining for Better Zero- and Few-Shot Promptability](https://arxiv.org/abs/2210.10258) (wu...sameer singh, beltagy, 2022)
+
 
 ## llm chaining
 
@@ -318,6 +326,7 @@ category: research
     - "causal traces" - run net multiple times, introducing corroptuions and then restoring states from original non-corrupted forward pass to see which states can restore the original results
     - a small number of states contain info that can flip the model from one state to another
   - *change factual associations* - modify feedforward weights to update specific factual associations using Rank-One Model Editing (ROME)
+  - [Mass Editing Memory in a Transformer](https://memit.baulab.info/) (meng..., bau, 2022)
 - Knowledge Neurons in Pretrained Transformers ([dai et al. 2021](https://arxiv.org/abs/2104.08696)) - integrated gradients wrt to each neuron in BERT
 
 ## symbolic reasoning
@@ -432,14 +441,27 @@ category: research
 - [Yanai Elazar, Shauli Ravfogel, Alon Jacovi, Yoav Goldberg. Amnesic Probing: Behavioral Explanation with Amnesic Counterfactuals. TACL 2021.](https://arxiv.org/pdf/2006.00995.pdf) - Proposes measuring the importance of specific information within a model by introducing a causal intervention to erase that information, then observing the causal effects.
 - nucleus sampling: [The Curious Case of Neural Text Degeneration](https://arxiv.org/abs/1904.09751) (holtzman...choi, 2019)
 - [Neurosymbolic Programming for Science](https://arxiv.org/abs/2210.05050) (sun...costilla-reyes, 2022)
-- Describing Differences between Text Distributions with Natural Language ([zhong, snell, klein, & steinhardt, 2022](https://arxiv.org/abs/2201.12323))
-  - finetune a model to directly describe difference between 2 distrs
-  - method
-    - proposer network generates hypotheses
-    - verifier networks looks at all samples in the dataset (since proposer couldn't fit them all in context) and returns how accurate the hypotheses were
-
 - applications
   - [AI-based language models powering drug discovery and development - ScienceDirect](https://www.sciencedirect.com/science/article/pii/S1359644621002816) (liu et al. 2021)
+
+## dataset explanation
+
+- Describing Differences between Text Distributions with Natural Language ([zhong, snell, klein, & steinhardt, 2022](https://arxiv.org/abs/2201.12323))
+
+  - finetune a model to directly describe difference between 2 distrs
+
+  - technically this is just learning a classifier, where the classifier is a natural-language string
+
+  - method
+    - proposer network generates hypotheses
+      - verifier networks looks at all samples in the dataset (since proposer couldn't fit them all in context) and returns how accurate the hypotheses were
+      - some tricks
+        - select samples which are "representative" of a class by predicting with another LLM
+        - have a pool of 302 manual hypotheses they used for seeding
+
+- [iPrompt: Explaining Patterns in Data with Language Models via Interpretable Autoprompting](https://arxiv.org/abs/2210.01848) (singh, morris, ...gao, 2022)
+
+  - [GSCLIP : A Framework for Explaining Distribution Shifts in Natural Language](https://arxiv.org/abs/2206.15007) (zhu...james zou, 2022)
 
 ## open issues
 
@@ -448,6 +470,7 @@ category: research
 ## cool tasks
 
 - [Forecasting Future World Events with Neural Networks](https://arxiv.org/abs/2206.15474) (zou...hendrycks, 2022)
+- forecasting paper titles ([blog post](https://csinva.io/gpt-paper-title-generator/))
 
 # basics
 

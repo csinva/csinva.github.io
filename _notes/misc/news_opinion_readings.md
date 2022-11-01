@@ -2,6 +2,8 @@
 
 # 2022
 
+- [Opinion | Science Has a Nasty Photoshopping Problem - The New York Times](https://www.nytimes.com/interactive/2022/10/29/opinion/science-fraud-image-manipulation-photoshop.html)
+  
 - [Why I Think More NLP Researchers Should Engage with AI Safety Concerns – NYU Alignment Research Group](https://wp.nyu.edu/arg/why-ai-safety/)
   - [AI Safety and Neighboring Communities: A Quick-Start Guide, as of Summer 2022 - AI Alignment Forum](https://www.alignmentforum.org/posts/EFpQcBmfm2bFfM4zM/ai-safety-and-neighboring-communities-a-quick-start-guide-as)
   
