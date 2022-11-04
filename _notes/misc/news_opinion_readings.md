@@ -2,6 +2,8 @@
 
 # 2022
 
+- [Invasive Diffusion: How one unwilling illustrator found herself turned into an AI model - Waxy.org](https://waxy.org/2022/11/invasive-diffusion-how-one-unwilling-illustrator-found-herself-turned-into-an-ai-model/)
+  
 - [Opinion | Science Has a Nasty Photoshopping Problem - The New York Times](https://www.nytimes.com/interactive/2022/10/29/opinion/science-fraud-image-manipulation-photoshop.html)
   
 - [Why I Think More NLP Researchers Should Engage with AI Safety Concerns – NYU Alignment Research Group](https://wp.nyu.edu/arg/why-ai-safety/)

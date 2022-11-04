@@ -973,6 +973,23 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
 - [TalkToModel: Understanding Machine Learning Models With Open Ended Dialogues](https://arxiv.org/abs/2207.04154) (slack...lakkaraju, sameer singh, 2022) - natural language interface to query model (by converting to commands such as filtering the data / calculating importance)
    - [Rethinking Explainability as a Dialogue: A Practitioner's Perspective](https://arxiv.org/abs/2202.01875) (lakkaraju, slack, ..., sameer singh, 2022) - interviews with high-stakes users suggest they would like to be able to interact with systems via dialog
 - [The Unreliability of Explanations in Few-shot Prompting for Textual Reasoning](https://arxiv.org/abs/2205.03401?context=cs) (ye & durrett, 2022)
+- AdaTest [Adaptive Testing and Debugging of NLP Models](https://aclanthology.org/2022.acl-long.230/) (ribeiro & lundberg, 2022)
+   - goal: easily specify, discover, and fix undesirable behaviors in an NLP model
+   - 2-step iterative algorithm
+      1. LLM generates many tests targeting the model's failures
+
+         - example of a test: `f(“I am a black woman”) ≠ neg`
+
+         - user selects and oganizes the tests and reprompts the LLM to find more
+      2. User fixes the tests (e.g. via finetuning)
+
+   - Checklist [Beyond Accuracy: Behavioral Testing of NLP models with CheckList](https://arxiv.org/abs/2005.04118) (ribeiro...sameer singh, 2020)
+
+- [Fixing Model Bugs with Natural Language Patches](https://openreview.net/forum?id=B6wzhbPhsZ9) (murty, manning, lundberg, & ribeiro 2022)
+   - specify patches with natural language rather than hard rule, allowing them to better handle text
+   - finetune a model to combine original model output with output from a patch-conditioned interpreter head
+
+
 
 
 
@@ -1152,11 +1169,6 @@ Nice overview [here](https://github.com/stefanoteso/awesome-explanatory-supervis
   - generated explanations are rated higher by humans
   - [VQA-E: Explaining, Elaborating, and Enhancing Your Answers for Visual Questions](https://arxiv.org/abs/1803.07464) (li et al. 2018) - train to jointly predict answer + generate an explanation
   - [Self-Critical Reasoning for Robust Visual Question Answering](https://proceedings.neurips.cc/paper/2019/hash/33b879e7ab79f56af1e88359f9314a10-Abstract.html) (wu & mooney, 2019) - use textual explanations to extract a set of important visual objects
-- Memory-Based Model Editing at Scale ([mitchell...manning, finn, 2022](https://proceedings.mlr.press/v162/mitchell22a/mitchell22a.pdf))
-  - keep track of list of edits in external memory and use them as appropriate context at test time (don't finetune the model)
-  - Fast model editing at scale ([mitchell...finn, manning, 2022](https://arxiv.org/abs/2110.11309))
-    -  a collection of small auxiliary editing networks that use a single desired input-output pair to edit a pre-trained model
-    - MEND learns to transform the gradient obtained by standard fine-tuning, using a low-rank decomposition of the gradient
 
 **complementarity** - ML should focus on points hard for humans + seek human input on points hard for ML
 

@@ -18,17 +18,16 @@ category: research
   - this paper has special encoder-decoder structure for translation (most new models don't)
   - [Semi-supervised Sequence Learning](https://arxiv.org/abs/1511.01432) (dai & quoc le, 2015)
     - context vector is weighted sum of context vector at each word
-- [ULMFiT](https://arxiv.org/abs/1801.06146) ([Jeremy Howard](https://twitter.com/jeremyphoward) and [Sebastian Ruder](https://twitter.com/seb_ruder))
+- [ULMFiT](https://arxiv.org/abs/1801.06146) ([Jeremy Howard](https://twitter.com/jeremyphoward) and [Sebastian Ruder](https://twitter.com/seb_ruder), 2018)
 - BERT ([devlin et al. 2018](https://arxiv.org/abs/1810.04805)) - semi-supervised learning (predict masked word - this is bidirectional) + supervised finetuning
   - [roberta](https://arxiv.org/abs/1907.11692)
-- [BART: Denoising sequence-to-sequence pre-training](https://arxiv.org/abs/1910.13461) (lewis et al. 2019) - generalizes BERT - train by (1) corrupting text then (2) reconstruct the original text
-- [ELMo](https://arxiv.org/abs/1802.05365) (by [Matthew Peters](https://twitter.com/mattthemathman) and researchers from [AI2](https://allenai.org/) and [UW CSE](https://www.engr.washington.edu/about/bldgs/cse)) - no word embeddings - train embeddings w/ bidirectional lstm (on language modeling)
-- XLNet ([yang...quoc le, 2020](https://arxiv.org/abs/1906.08237))
+  - [BART: Denoising sequence-to-sequence pre-training](https://arxiv.org/abs/1910.13461) (lewis et al. 2019) - generalizes BERT - train by (1) corrupting text then (2) reconstruct the original text
+  - [ELMo](https://arxiv.org/abs/1802.05365) (by [Matthew Peters](https://twitter.com/mattthemathman) and researchers from [AI2](https://allenai.org/) and [UW CSE](https://www.engr.washington.edu/about/bldgs/cse)) - no word embeddings - train embeddings w/ bidirectional lstm (on language modeling)
+  - XLNet ([yang...quoc le, 2020](https://arxiv.org/abs/1906.08237))
 - GPT-3 ([brown et al. 2020](https://arxiv.org/abs/2005.14165?2)) - identitical to GPT-2 except larger and replaces dense attention with sparse attention
   - sizes: largest ha 175B params, 96 layers, 96 heads in each layer, head with dim 128, vocab size ~50k
   - GPT-2 ([radford et al. 2018](https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf))
   - GPT ([radford et al. 2018](https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf))
-
 - [Gopher](https://arxiv.org/abs/2112.11446) - basically gpt-3 with slight mods (replace layernorm by RMSnorm, different positional embeddings)
 - [Longformer: The Long-Document Transformer](https://arxiv.org/abs/2004.05150) (beltagy, peters, & cohan, 2020) - processes very long contexts
 - [PaLM: Scaling Language Modeling with Pathways](https://arxiv.org/abs/2204.02311) (google, 2022) - 540 Billion params
@@ -40,12 +39,12 @@ category: research
 - T0 ([sanh...rush, 2022](https://arxiv.org/pdf/2110.08207.pdf)) - multitask training enables better zero-shot generalization
   - T5 ([raffel...liu, 2020](https://jmlr.org/papers/volume21/20-074/20-074.pdf)) -- text-to-text transfer transformer
 - [UL2: Unifying Language Learning Paradigms](https://arxiv.org/abs/2205.05131) (tay...metzler, 2022) - open-source 20B model, beats GPT-3 at zero-shot
-- FLAN: [Scaling Instruction-Finetuned Language Models](https://arxiv.org/abs/2210.11416) (chung, ..., quoc le, jason wei, 2022) - finetune with datasets phrased as instructions
-- more efficient training
+- more effective training
+  - FLAN-PaLM: [Scaling Instruction-Finetuned Language Models](https://arxiv.org/abs/2210.11416) (chung, ..., quoc le, jason wei, 2022) - finetune with datasets phrased as instructions
+    - [instructGPT](https://arxiv.org/abs/2203.02155) / [FLAN](https://arxiv.org/abs/2109.01652) - finetune on instructions to follows instructions
   - natural language feedback ([scheurer et al. 2022]())
     - human feedback for learning makes it much more efficient
     - [Can language models learn from explanations in context?](https://arxiv.org/abs/2204.02329) (lampinen et al. 2022)
-  - [instructGPT](https://arxiv.org/abs/2203.02155) / [FLAN](https://arxiv.org/abs/2109.01652) - finetune on instructions to follows instructions
   - ELECTRA: Pre-training Text Encoders as Discriminators Rather Than Generators ([clark...quoc le, chris manning, 2020](https://arxiv.org/abs/2003.10555))
     - more efficient: rather than standard masked training, have generator-discriminator setup for "token detection"
     - generator replaces many masked tokens with plausible samples (all in one forward pass) - train with MLM
@@ -70,26 +69,38 @@ category: research
   - BEiT-3 ([2022](https://arxiv.org/abs/2208.10442)) - treat vision as language and large-scale multimodal training
     - outperforms [Flamingo: a Visual Language Model for Few-Shot Learning](https://arxiv.org/abs/2204.14198) (2022), which uses more domain knowledge to connect vision & language
 
-- interacting with computer
-
-  - [ACT-1: Transformer for Actions](https://www.adept.ai/act)
-
 - vision
   - here, people often call image patches "tokens"
-  - DNIO [Emerging Properties in Self-Supervised Vision Transformers](https://arxiv.org/abs/2104.14294) (caron...joulin, 2021)
+  - DINO [Emerging Properties in Self-Supervised Vision Transformers](https://arxiv.org/abs/2104.14294) (caron...joulin, 2021)
   - [Masked Autoencoders Are Scalable Vision Learners](https://arxiv.org/abs/2111.06377) (he...dollar, girshick, 2021) - BERT-style training
     -  speed up by not applying encoder to mask tokens + adding mask to a lot of the data (like 75%)
     -  really good results without much data
   - [attention augmentation to resnet](https://arxiv.org/abs/1904.09925) for vision (bello...quoc le, 2020)
-- GATO: [A Generalist Agent](https://arxiv.org/abs/2205.06175) (2022) - single agent plays many different video games
-  - different modalities are converted to tokens differently (e.g. image patches are fed through resnet)
-- metalearning
+
+- rl
+
+  - GATO: [A Generalist Agent](https://arxiv.org/abs/2205.06175) (2022) - single agent plays many different video games
+    - different modalities are converted to tokens differently (e.g. image patches are fed through resnet)
+
+  - In-context Reinforcement Learning with Algorithm Distillation ([laskin, wang, ..., sahni, satinder singh, mnih, 2022](https://arxiv.org/abs/2210.14215)) - learn to improve an RL algorithm
+    - put history of (observation, action, reward) sequences into context and then use them to predict new action given new observation
+
+- interacting with computer
+
+  - [ACT-1: Transformer for Actions](https://www.adept.ai/act)
+
+- metalearning (Tabular)
 
   - TabPFN: A Transformer That Solves Small Tabular Classification Problems in a Second ([hollman, ..., hutter, 2022](https://arxiv.org/abs/2207.01848)) - transformer takes in train + test dataset then outputs predictions
     - builds on prior-data fitted networks (PFNs) ([muller, ..., hutter, 2021](https://arxiv.org/abs/2112.10510))
+  - What Can Transformers Learn In-Context? A Case Study of Simple Function Classes ([garg, tsipras, liang, & valiant, 2022](https://arxiv.org/abs/2208.01066)) - models can succesfully metalearn functions like OLS
+    - e.g. during training, learn inputs-outputs from different linear functions
+    - during testing, have to predict outputs for inputs from a different linear function
+    - also test on slightly harder functions, like decision trees and 2-layer nets
 
 - [MINERVA: Solving Quantitative Reasoning Problems with Language Models](https://arxiv.org/abs/2206.14858) - train on well-parsed, domain-specific data (math arxiv) to solve math-reasoning problems
-- CODEX [Evaluating Large Language Models Trained on Code](https://arxiv.org/abs/2107.03374) (2021)
+
+- CODEX: [Evaluating Large Language Models Trained on Code](https://arxiv.org/abs/2107.03374) (2021)
   - [Repair Is Nearly Generation: Multilingual Program Repair with LLMs](https://arxiv.org/abs/2208.11640) (joshi et al. 2022) 
   - [Improving automatically generated code from Codex via Automated Program Repair](https://arxiv.org/abs/2205.10583) (fan et al. 2022) - use automated program repair to tweak codex outputs to make them better
   - [Generating Question Titles for Stack Overflow from Mined Code Snippets | ACM Transactions on Software Engineering and Methodology](https://dl.acm.org/doi/abs/10.1145/3401026?casa_token=FEWYSo9ZmNIAAAAA:-_ZIkXQVUR3xYaB3NtrzBv0jZU6IZ6O4f_W_ZDtb6TipLBV4YHB-0lbO1JU8T9wwIl_jLBS3ts0) (gao et al. 2020)
@@ -100,9 +111,13 @@ category: research
       <buggy function and/or docstring here>
       ### fixed function
       ```
+
 - autoformalization [arxiv.org/abs/2205.12615](https://arxiv.org/abs/2205.12615) - translating from natural language math to formal language
+
 - program synthesis [arxiv.org/abs/2108.07732](https://arxiv.org/abs/2108.07732) - formalize natural language into runnable code
+
 - [spatial transformers](https://papers.nips.cc/paper/5854-spatial-transformer-networks.pdf )
+
 - speculative [foundation models paper](https://arxiv.org/abs/2108.07258) (stanford, 2022)
 
 **pre-transformer nlp models**
@@ -186,6 +201,8 @@ category: research
 
 ## autoprompting
 
+![prompting_hierarchy](../assets/prompting_hierarchy.png)
+
 - [AutoPrompt: Eliciting Knowledge from Language Models with Automatically Generated Prompts](https://aclanthology.org/2020.emnlp-main.346/) (shin...sameer singh, 2020)
   - select prompts from a fixed set of tokens (resulting prompts are not coherent)
   - only work on MLM
@@ -194,7 +211,7 @@ category: research
 - [iPrompt: Explaining Patterns in Data with Language Models via Interpretable Autoprompting](https://arxiv.org/abs/2210.01848) (singh, morris, ...gao, 2022)
   - [GSCLIP : A Framework for Explaining Distribution Shifts in Natural Language](https://arxiv.org/abs/2206.15007) (zhu...james zou, 2022)
   - [RLPrompt: Optimizing Discrete Text Prompts with Reinforcement Learning](https://arxiv.org/abs/2205.12548) (deng...hu, 2022)
-  
+
 - [Prefix-Tuning: Optimizing Continuous Prompts for Generation](https://arxiv.org/abs/2101.00190) (li & percy liang, 2021) -- optimizes in continuous space for language generation tasks
   - learn to map some parameters $\theta$ through and MLP to generate a starting hidden state $h_i$ -- never actually sends the prefix through the network 
   - [Control Prefixes for Parameter-Efficient Text Generation](https://arxiv.org/abs/2110.08329) (clive, cao, & rei, 2022) - allow for adapting the prefix to each input example
@@ -220,8 +237,7 @@ category: research
   - [Adapting Language Models for Zero-shot Learning by Meta-tuning on Dataset and Prompt Collections](https://arxiv.org/abs/2104.04670) (zhong...klein, 2021)
   - [Continued Pretraining for Better Zero- and Few-Shot Promptability](https://arxiv.org/abs/2210.10258) (wu...sameer singh, beltagy, 2022)
 
-
-## llm chaining
+## llm chaining / decoding
 
 **many notes are from this [thread](https://twitter.com/iraphas13/status/1551959289023016967) on chaining models together**
 
@@ -271,10 +287,15 @@ category: research
     - RETRO ([borgeaud et al. 2022](https://arxiv.org/abs/2112.04426)) - nearest neighbors to model's input are retrieved, encoded, and conditioned on with chunked cross-attention 
     - memorizing transformers ([wu...szegedy, 2022](https://arxiv.org/abs/2203.08913)) - knn-based learned indexing + retrieval at training time.
       - at test time, you just need to index the entire context and the model will be able to use it
+- decoding: greedy, nucleus sampling
+  - contrastive decoding ([li et al. 2022](https://arxiv.org/abs/2210.15097)) - decode based on the difference between a large and small LLM
+
 
 # misc
 
-## transformer circuits / reverse-engineering / editing
+## direct weight inspection
+
+### transformer circuits
 
 - nice paper list [here](https://www.neelnanda.io/mechanistic-interpretability/favourite-papers)
 
@@ -321,13 +342,21 @@ category: research
   - adds lateral inhibition, superlinearity, approximate sparsity
   - changes GeLU, which is approximately $\text{sigmoid}(1.7x) \cdot x$
   - just changing to SoLU decrease performance, had to add LayerNorm afterwards
-- Locating and Editing Factual Associations in GPT ([meng et al. 2022](https://arxiv.org/abs/2202.05262) )
+
+### editing
+
+- Locating and Editing Factual Associations in GPT ([meng, bau et al. 2022](https://arxiv.org/abs/2202.05262) )
   - *localize factual associations* - causal intervention for identifying neuron activations that are decisive in a model’s factual predictions
     - "causal traces" - run net multiple times, introducing corroptuions and then restoring states from original non-corrupted forward pass to see which states can restore the original results
     - a small number of states contain info that can flip the model from one state to another
   - *change factual associations* - modify feedforward weights to update specific factual associations using Rank-One Model Editing (ROME)
   - [Mass Editing Memory in a Transformer](https://memit.baulab.info/) (meng..., bau, 2022)
 - Knowledge Neurons in Pretrained Transformers ([dai et al. 2021](https://arxiv.org/abs/2104.08696)) - integrated gradients wrt to each neuron in BERT
+- Memory-Based Model Editing at Scale ([mitchell...manning, finn, 2022](https://proceedings.mlr.press/v162/mitchell22a/mitchell22a.pdf))
+  - keep track of list of edits in external memory and use them as appropriate context at test time (don't finetune the model)
+  - Fast model editing at scale ([mitchell...finn, manning, 2022](https://arxiv.org/abs/2110.11309))
+    -  a collection of small auxiliary editing networks that use a single desired input-output pair to edit a pre-trained model
+    -  MEND learns to transform the gradient obtained by standard fine-tuning, using a low-rank decomposition of the gradient
 
 ## symbolic reasoning
 
@@ -434,43 +463,42 @@ category: research
 ## causal inference / llm querying
 
 - [InferBERT: A Transformer-Based Causal Inference Framework for Enhancing Pharmacovigilance](https://www.frontiersin.org/articles/10.3389/frai.2021.659622/full) (wang...liu, 2021) - learn + test feature relationships from attention weights
-- [CausaLM: Causal Model Explanation Through Counterfactual Language Models | Computational Linguistics](https://direct.mit.edu/coli/article/47/2/333/98518/CausaLM-Causal-Model-Explanation-Through) (2021) - produce example-level causal model explanations using models finetuned on auxiliary adversarial tasks derived from the causal graph of the problem
-- [Jesse Vig, Sebastian Gehrmann, Yonatan Belinkov, Sharon Qian, Daniel Nevo, Yaron Singer, Stuart Shieber. Investigating Gender Bias in Language Models Using Causal Mediation Analysis. NeurIPS 2020.](https://proceedings.neurips.cc/paper/2020/file/92650b2e92217715fe312e6fa7b90d82-Paper.pdf)
+- [CausaLM: Causal Model Explanation Through Counterfactual Language Models](https://direct.mit.edu/coli/article/47/2/333/98518/CausaLM-Causal-Model-Explanation-Through) (2021) - produce example-level causal model explanations using models finetuned on auxiliary adversarial tasks derived from the causal graph of the problem
+- [Jesse Vig, Sebastian Gehrmann, Yonatan Belinkov, Sharon Qian, Daniel Nevo, Yaron Singer, Stuart Shieber. Investigating Gender Bias in Language Models Using Causal Mediation Analysis](https://proceedings.neurips.cc/paper/2020/file/92650b2e92217715fe312e6fa7b90d82-Paper.pdf)
   - Applies causal mediation analysis to identify decisive neurons and attention heads responsible for gender bias in large language models
   - Identifies a small handful of decisive attention heads in this case
 - [Yanai Elazar, Shauli Ravfogel, Alon Jacovi, Yoav Goldberg. Amnesic Probing: Behavioral Explanation with Amnesic Counterfactuals. TACL 2021.](https://arxiv.org/pdf/2006.00995.pdf) - Proposes measuring the importance of specific information within a model by introducing a causal intervention to erase that information, then observing the causal effects.
 - nucleus sampling: [The Curious Case of Neural Text Degeneration](https://arxiv.org/abs/1904.09751) (holtzman...choi, 2019)
 - [Neurosymbolic Programming for Science](https://arxiv.org/abs/2210.05050) (sun...costilla-reyes, 2022)
 - applications
-  - [AI-based language models powering drug discovery and development - ScienceDirect](https://www.sciencedirect.com/science/article/pii/S1359644621002816) (liu et al. 2021)
+  - [AI-based language models powering drug discovery and development](https://www.sciencedirect.com/science/article/pii/S1359644621002816) (liu et al. 2021)
 
 ## dataset explanation
 
 - Describing Differences between Text Distributions with Natural Language ([zhong, snell, klein, & steinhardt, 2022](https://arxiv.org/abs/2201.12323))
 
   - finetune a model to directly describe difference between 2 distrs
-
   - technically this is just learning a classifier, where the classifier is a natural-language string
-
   - method
     - proposer network generates hypotheses
       - verifier networks looks at all samples in the dataset (since proposer couldn't fit them all in context) and returns how accurate the hypotheses were
       - some tricks
         - select samples which are "representative" of a class by predicting with another LLM
         - have a pool of 302 manual hypotheses they used for seeding
-
 - [iPrompt: Explaining Patterns in Data with Language Models via Interpretable Autoprompting](https://arxiv.org/abs/2210.01848) (singh, morris, ...gao, 2022)
-
   - [GSCLIP : A Framework for Explaining Distribution Shifts in Natural Language](https://arxiv.org/abs/2206.15007) (zhu...james zou, 2022)
+- APE: [Large Language Models Are Human-Level Prompt Engineers](https://arxiv.org/abs/2211.01910) (zhou...ba, 2022) - automatic prompt engineering, similar to iPrompt but without iteration
+  - measure accuracy when using prompt on another LLM
 
-## open issues
+- [Instruction Induction: From Few Examples to Natural Language Task Descriptions](https://arxiv.org/abs/2205.10782) (honovich...bowman, levy 2022) - directly query model with prompt to search for task description
+  - measure accuracy with underlying task description
 
-- [Shortcut Learning of Large Language Models in Natural Language Understanding: A Survey](https://arxiv.org/abs/2208.11857) (du et al. 2022)
 
 ## cool tasks
 
 - [Forecasting Future World Events with Neural Networks](https://arxiv.org/abs/2206.15474) (zou...hendrycks, 2022)
 - forecasting paper titles ([blog post](https://csinva.io/gpt-paper-title-generator/))
+- [Shortcut Learning of Large Language Models in Natural Language Understanding: A Survey](https://arxiv.org/abs/2208.11857) (du et al. 2022)
 
 # basics
 
