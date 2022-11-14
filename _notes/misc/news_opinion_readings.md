@@ -2,6 +2,10 @@
 
 # 2022
 
+- [Opinion | Republicans Did Not Read the Room - The New York Times](https://www.nytimes.com/2022/11/09/opinion/republicans-midterms-abortion.html)
+  
+- [Dear Artists: Do Not Fear AI Image Generators | WIRED](https://www.wired.com/story/artists-do-not-fear-ai-image-generators/)
+  
 - [Invasive Diffusion: How one unwilling illustrator found herself turned into an AI model - Waxy.org](https://waxy.org/2022/11/invasive-diffusion-how-one-unwilling-illustrator-found-herself-turned-into-an-ai-model/)
   
 - [Opinion | Science Has a Nasty Photoshopping Problem - The New York Times](https://www.nytimes.com/interactive/2022/10/29/opinion/science-fraud-image-manipulation-photoshop.html)

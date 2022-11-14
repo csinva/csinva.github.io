@@ -131,7 +131,8 @@ Nice repo keeping track of progress [here](https://github.com/sebastianruder/NLP
     - skipgram - use current word to predict surrounding window -- nearby context words weighted more heavily
   - word2vec paper II: [Distributed Representations of Words and Phrases and their Compositionality](https://arxiv.org/abs/1310.4546) (mikolov et al. 2013) - word2vec improvements
     - identify key ngrams and give them their own vecs
-- ex. **GloVe**, which is based on ratios of word co-occurrence probs
+- ex. **GloVe** ([pennington, socher, & manning, 2014](https://aclanthology.org/D14-1162.pdf)), which is based on ratios of word co-occurrence probs
+- ex. ELMO ([peters...zettlemoyer, 2022](https://arxiv.org/pdf/1802.05365.pdf)) - use LSTM for word embeddings
 
 ## language modeling
 

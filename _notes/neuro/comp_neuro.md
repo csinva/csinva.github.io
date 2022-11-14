@@ -1486,7 +1486,7 @@ the operations above allow for encoding many normal data structures into a singl
 - friston_10_free_energy
   - ![friston_free_energy](../assets/friston_free_energy.png)
 
-## biological constraints for DNNs
+## biological constraints for DNNs / fMRI language
 
 - Aligning DNN with brain responses
 
@@ -1529,16 +1529,14 @@ the operations above allow for encoding many normal data structures into a singl
     - brain mapping finding: auditory cortices integrate information over short time windows, and the fronto-parietal areas combine supra-lexical information over long time windows
     - gpt2 models predict brain responses well [(caucheteux & king, 2021)](https://www.biorxiv.org/content/10.1101/2020.07.03.186288v2.abstract)
     - [Disentangling syntax and semantics in the brain with deep networks](https://proceedings.mlr.press/v139/caucheteux21a.html) (caucheteux, gramfort, & king, 2021) - identify which brain networks are involved in syntax, semantics, compositionality
+  - [Incorporating Context into Language Encoding Models for fMRI](https://proceedings.neurips.cc/paper/2018/hash/f471223d1a1614b58a7dc45c9d01df19-Abstract.html) (jain & huth, 2018) - LSTMs improve encoding model
+    - [The neural architecture of language: Integrative modeling converges on predictive processing](https://www.pnas.org/doi/abs/10.1073/pnas.2105646118) (schrimpf, .., tenenbaum, fedorenko, 2021)- transformers better predict brain responses to natural language (and larger transformers predict better)
+    - [Predictive Coding or Just Feature Discovery? An Alternative Account of Why Language Models Fit Brain Data | Neurobiology of Language](https://direct.mit.edu/nol/article/doi/10.1162/nol_a_00087/113632/Predictive-Coding-or-Just-Feature-Discovery-An) (antonello & huth, 2022)
+      - LLM brain encoding performance correlates not only with their perplexity, but also generality (skill at many different tasks) and translation performance
 
 
   - [Blackbox meets blackbox: Representational Similarity and Stability Analysis of Neural Language Models and Brains](https://arxiv.org/abs/1906.01539) (abnar, … zuidema, emnlp workshop, 2019) - use RSA to compare representations from language models with fMRI data from Wehbe et al. 2014
-
-  - [Incorporating Context into Language Encoding Models for fMRI](https://proceedings.neurips.cc/paper/2018/hash/f471223d1a1614b58a7dc45c9d01df19-Abstract.html) (jain & huth, 2018) - LSTMs improve encoding model
-
-  - [The neural architecture of language: Integrative modeling converges on predictive processing](https://www.pnas.org/doi/abs/10.1073/pnas.2105646118) (schrimpf, .., tenenbaum, fedorenko, 2021)- transformers better predict brain responses to natural language
-
   - also ([anderson…lalor, 2021](https://www.jneurosci.org/content/41/18/4100)) and ([sun et al. 2021](https://ieeexplore.ieee.org/document/9223750/))
-
 - decoding models
 
   - [Semantic reconstruction of continuous language from non-invasive brain recordings](https://www.biorxiv.org/content/10.1101/2022.09.29.509744v1) (lebel, jain, & huth, 2022) - reconstruct continuous natural language from fMRI

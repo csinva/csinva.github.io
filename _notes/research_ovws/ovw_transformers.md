@@ -49,10 +49,6 @@ category: research
     - more efficient: rather than standard masked training, have generator-discriminator setup for "token detection"
     - generator replaces many masked tokens with plausible samples (all in one forward pass) - train with MLM
     - discriminator tries to guess which tokens were the masked ones - this is the main model that gets used
-- dialog
-  - [GODEL: Large-Scale Pre-Training for Goal-Directed Dialog](https://arxiv.org/abs/2206.11309) (baolin peng, galley, ..., gao , 2022) - add grounded pre-training
-  - [Deal or No Deal? End-to-End Learning for Negotiation Dialogues](https://arxiv.org/abs/1706.05125) (lewis...batra, 2017) - controversial FB paper where agents "make up their own language"
-    - this is pre-transformers
 
 
 **other**
@@ -98,7 +94,15 @@ category: research
     - during testing, have to predict outputs for inputs from a different linear function
     - also test on slightly harder functions, like decision trees and 2-layer nets
 
+- dialog
+
+  - [GODEL: Large-Scale Pre-Training for Goal-Directed Dialog](https://arxiv.org/abs/2206.11309) (baolin peng, galley, ..., gao , 2022) - add grounded pre-training
+  - [Deal or No Deal? End-to-End Learning for Negotiation Dialogues](https://arxiv.org/abs/1706.05125) (lewis...batra, 2017) - controversial FB paper where agents "make up their own language"
+    - this is pre-transformers
+
 - [MINERVA: Solving Quantitative Reasoning Problems with Language Models](https://arxiv.org/abs/2206.14858) - train on well-parsed, domain-specific data (math arxiv) to solve math-reasoning problems
+
+  - autoformalization [arxiv.org/abs/2205.12615](https://arxiv.org/abs/2205.12615) - translating from natural language math to formal language
 
 - CODEX: [Evaluating Large Language Models Trained on Code](https://arxiv.org/abs/2107.03374) (2021)
   - [Repair Is Nearly Generation: Multilingual Program Repair with LLMs](https://arxiv.org/abs/2208.11640) (joshi et al. 2022) 
@@ -112,9 +116,7 @@ category: research
       ### fixed function
       ```
 
-- autoformalization [arxiv.org/abs/2205.12615](https://arxiv.org/abs/2205.12615) - translating from natural language math to formal language
-
-- program synthesis [arxiv.org/abs/2108.07732](https://arxiv.org/abs/2108.07732) - formalize natural language into runnable code
+  - program synthesis [arxiv.org/abs/2108.07732](https://arxiv.org/abs/2108.07732) - formalize natural language into runnable code
 
 - [spatial transformers](https://papers.nips.cc/paper/5854-spatial-transformer-networks.pdf )
 
@@ -347,7 +349,7 @@ category: research
 
 - Locating and Editing Factual Associations in GPT ([meng, bau et al. 2022](https://arxiv.org/abs/2202.05262) )
   - *localize factual associations* - causal intervention for identifying neuron activations that are decisive in a model’s factual predictions
-    - "causal traces" - run net multiple times, introducing corroptuions and then restoring states from original non-corrupted forward pass to see which states can restore the original results
+    - "causal traces" - run net multiple times, introducing corruptions and then restore states from original non-corrupted forward pass to see which states can restore the original results
     - a small number of states contain info that can flip the model from one state to another
   - *change factual associations* - modify feedforward weights to update specific factual associations using Rank-One Model Editing (ROME)
   - [Mass Editing Memory in a Transformer](https://memit.baulab.info/) (meng..., bau, 2022)
@@ -485,13 +487,13 @@ category: research
       - some tricks
         - select samples which are "representative" of a class by predicting with another LLM
         - have a pool of 302 manual hypotheses they used for seeding
-- [iPrompt: Explaining Patterns in Data with Language Models via Interpretable Autoprompting](https://arxiv.org/abs/2210.01848) (singh, morris, ...gao, 2022)
   - [GSCLIP : A Framework for Explaining Distribution Shifts in Natural Language](https://arxiv.org/abs/2206.15007) (zhu...james zou, 2022)
-- APE: [Large Language Models Are Human-Level Prompt Engineers](https://arxiv.org/abs/2211.01910) (zhou...ba, 2022) - automatic prompt engineering, similar to iPrompt but without iteration
+- natural-language prompting approach
+  - [iPrompt: Explaining Patterns in Data with Language Models via Interpretable Autoprompting](https://arxiv.org/abs/2210.01848) (singh, morris, ...gao, 2022)
+  - APE: [Large Language Models Are Human-Level Prompt Engineers](https://arxiv.org/abs/2211.01910) (zhou...ba, 2022) - automatic prompt engineering, similar to iPrompt but without iteration
   - measure accuracy when using prompt on another LLM
+  - [Instruction Induction: From Few Examples to Natural Language Task Descriptions](https://arxiv.org/abs/2205.10782) (honovich...bowman, levy 2022) - directly query model with prompt to search for task description
 
-- [Instruction Induction: From Few Examples to Natural Language Task Descriptions](https://arxiv.org/abs/2205.10782) (honovich...bowman, levy 2022) - directly query model with prompt to search for task description
-  - measure accuracy with underlying task description
 
 
 ## cool tasks
