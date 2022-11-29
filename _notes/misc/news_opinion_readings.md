@@ -2,17 +2,21 @@
 
 # 2022
 
+- [Opinion | How ‘Instagram Therapy’ Creates a Moral Vortex - The New York Times](https://www.nytimes.com/2022/11/12/opinion/mental-health-therapy-instagram.html)
+  - In 1966, the sociologist Philip Rieff published “The Triumph of the Therapeutic,” a critique of what he saw as a culture obsessed with self-actualization and personal fulfillment at the expense of concepts like duty, virtue and collective obligation
+  - distinction between validating a patient’s feelings — making the person feel listened to with compassion and care — and affirming a false reality
+  
 - [Opinion | Republicans Did Not Read the Room - The New York Times](https://www.nytimes.com/2022/11/09/opinion/republicans-midterms-abortion.html)
-  
+
 - [Dear Artists: Do Not Fear AI Image Generators | WIRED](https://www.wired.com/story/artists-do-not-fear-ai-image-generators/)
-  
+
 - [Invasive Diffusion: How one unwilling illustrator found herself turned into an AI model - Waxy.org](https://waxy.org/2022/11/invasive-diffusion-how-one-unwilling-illustrator-found-herself-turned-into-an-ai-model/)
-  
+
 - [Opinion | Science Has a Nasty Photoshopping Problem - The New York Times](https://www.nytimes.com/interactive/2022/10/29/opinion/science-fraud-image-manipulation-photoshop.html)
-  
+
 - [Why I Think More NLP Researchers Should Engage with AI Safety Concerns – NYU Alignment Research Group](https://wp.nyu.edu/arg/why-ai-safety/)
   - [AI Safety and Neighboring Communities: A Quick-Start Guide, as of Summer 2022 - AI Alignment Forum](https://www.alignmentforum.org/posts/EFpQcBmfm2bFfM4zM/ai-safety-and-neighboring-communities-a-quick-start-guide-as)
-  
+
 - [Opinion | A Strong Dollar Is Hurting Other Countries. Should the Fed Care? - The New York Times](https://www.nytimes.com/2022/09/30/opinion/us-dollar-global-impact.html)
 
 - [Opinion | Why I Changed My Mind on Student Debt Forgiveness - The New York Times](https://www.nytimes.com/2022/08/30/opinion/student-loan-debt-relief-biden.html) - dropout rates are very high

@@ -4,7 +4,7 @@ title: interpretability
 category: research
 ---
 
-**some interesting papers on interpretable machine learning, largely organized based on this [interpretable ml review](https://arxiv.org/abs/1901.04592) (murdoch et al. 2019) and notes from this [interpretable ml book](https://christophm.github.io/interpretable-ml-book/) (molnar 2019).**
+**Some interesting papers on interpretable machine learning, largely organized based on this [interpretable ml review](https://arxiv.org/abs/1901.04592) (murdoch et al. 2019) and notes from this [interpretable ml book](https://christophm.github.io/interpretable-ml-book/) (molnar 2019). For interpretability specific to transformers, see [here](https://csinva.io/notes/research_ovws/ovw_transformers.html)**.
 
 {:toc}
 
@@ -980,18 +980,15 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
 
          - example of a test: `f(“I am a black woman”) ≠ neg`
 
-         - user selects and oganizes the tests and reprompts the LLM to find more
+         - user selects and organizes the tests and reprompts the LLM to find more
       2. User fixes the tests (e.g. via finetuning)
 
    - Checklist [Beyond Accuracy: Behavioral Testing of NLP models with CheckList](https://arxiv.org/abs/2005.04118) (ribeiro...sameer singh, 2020)
-
+      - matrix of general linguistic capabilities + test types
+   
 - [Fixing Model Bugs with Natural Language Patches](https://openreview.net/forum?id=B6wzhbPhsZ9) (murty, manning, lundberg, & ribeiro 2022)
    - specify patches with natural language rather than hard rule, allowing them to better handle text
    - finetune a model to combine original model output with output from a patch-conditioned interpreter head
-
-
-
-
 
 
 ## interactions
@@ -1122,6 +1119,7 @@ How interactions are defined and summarized is a very difficult thing to specify
     - Shapley explanations (averaged)
     - gradient-based
 - [Interpreting Deep Neural Networks through Prototype Factorization](https://ieeexplore.ieee.org/abstract/document/9346401) - posthoc convert DNN into having different factors
+- [ModelDiff: A Framework for Comparing Learning Algorithms](https://arxiv.org/abs/2211.12491) (shah, ..., ilyas, madry, 2022) - find the difference between 2 learned models (by searching for feature transformations where they differ)
 
 
 
@@ -1189,12 +1187,18 @@ Nice overview [here](https://github.com/stefanoteso/awesome-explanatory-supervis
   - *preserve user’s mental model of AI’s trustworthiness*
   - train AI to *optimize for team performance*.
 
-## dataset interpretability (automatic data viz)
+## dataset interpretability (data mining, automatic data viz)
 
 - similar to causality, we may want to use interpretability just to understand our data rather than to get any form of model
 - [Visualization by Example](https://arxiv.org/abs/1911.09668) (chenglong wang...dillig, 2019) - automatically synthesize a program to visual data based on user "sketches" = partial visualization of a subset of the data by the user
   - [Falx: Synthesis-Powered Visualization Authoring](https://arxiv.org/abs/2102.01024) (chenglong wang...ko, 2021)
 - see also things in [imodelsX](https://github.com/csinva/imodelsX)
+- **Coreset algorithms** - summarize datasets smaller datasets that
+  accurately represent the full dataset on
+  downstream tasks
+  - [Introduction to Coresets: Accurate Coresets](https://arxiv.org/abs/1910.08707)
+  - [Efficient Dataset Distillation Using Random Feature Approximation](https://arxiv.org/abs/2210.12067) (2022)
+
 
 ## human-in-the-loop (HITL)
 

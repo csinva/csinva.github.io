@@ -13,42 +13,43 @@ category: research
 
 **nlp** (see also [this link](https://medium.com/nlplanet/a-brief-timeline-of-nlp-from-bag-of-words-to-the-transformer-family-7caad8bbba56))
 
-- attention is all you need ([vaswani et al. 2017](https://arxiv.org/abs/1706.03762)) - initial transformer
-  - encoder-decoder transformer for seq-to-seq
-  - this paper has special encoder-decoder structure for translation (most new models don't)
-  - [Semi-supervised Sequence Learning](https://arxiv.org/abs/1511.01432) (dai & quoc le, 2015)
-    - context vector is weighted sum of context vector at each word
-- [ULMFiT](https://arxiv.org/abs/1801.06146) ([Jeremy Howard](https://twitter.com/jeremyphoward) and [Sebastian Ruder](https://twitter.com/seb_ruder), 2018)
+- early papers
+  - attention is all you need ([vaswani et al. 2017](https://arxiv.org/abs/1706.03762)) - initial transformer
+    - encoder-decoder transformer for seq-to-seq (most new models don't have  special encoder-decoder structure for translation)
+    - [Semi-supervised Sequence Learning](https://arxiv.org/abs/1511.01432) (dai & quoc le, 2015)
+      - context vector is weighted sum of context vector at each word
+
+  - [ULMFiT](https://arxiv.org/abs/1801.06146) (howard & ruder, 2018)
+
 - BERT ([devlin et al. 2018](https://arxiv.org/abs/1810.04805)) - semi-supervised learning (predict masked word - this is bidirectional) + supervised finetuning
-  - [roberta](https://arxiv.org/abs/1907.11692)
-  - [BART: Denoising sequence-to-sequence pre-training](https://arxiv.org/abs/1910.13461) (lewis et al. 2019) - generalizes BERT - train by (1) corrupting text then (2) reconstruct the original text
-  - [ELMo](https://arxiv.org/abs/1802.05365) (by [Matthew Peters](https://twitter.com/mattthemathman) and researchers from [AI2](https://allenai.org/) and [UW CSE](https://www.engr.washington.edu/about/bldgs/cse)) - no word embeddings - train embeddings w/ bidirectional lstm (on language modeling)
+  - [roberta](https://arxiv.org/abs/1907.11692) (liu et al. 2019)
+  - [BART](https://arxiv.org/abs/1910.13461) (lewis et al. 2019) - generalizes BERT with sequence-to-squence training: train by (1) corrupting text then (2) reconstruct the original text
+  - [ELMo](https://arxiv.org/abs/1802.05365) (peters...zettlemoyer, 2018) - no word embeddings - train embeddings w/ bidirectional lstm (on language modeling)
   - XLNet ([yang...quoc le, 2020](https://arxiv.org/abs/1906.08237))
 - GPT-3 ([brown et al. 2020](https://arxiv.org/abs/2005.14165?2)) - identitical to GPT-2 except larger and replaces dense attention with sparse attention
   - sizes: largest ha 175B params, 96 layers, 96 heads in each layer, head with dim 128, vocab size ~50k
+  - InstructGPT ([ouyang...lowe, 2022](https://arxiv.org/abs/2203.02155))
   - GPT-2 ([radford et al. 2018](https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf))
   - GPT ([radford et al. 2018](https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf))
-- [Gopher](https://arxiv.org/abs/2112.11446) - basically gpt-3 with slight mods (replace layernorm by RMSnorm, different positional embeddings)
+  - [Gopher](https://arxiv.org/abs/2112.11446) (deepmind, 2021) - basically gpt-3 with slight mods (replace layernorm by RMSnorm, different positional embeddings)
 - [Longformer: The Long-Document Transformer](https://arxiv.org/abs/2004.05150) (beltagy, peters, & cohan, 2020) - processes very long contexts
 - [PaLM: Scaling Language Modeling with Pathways](https://arxiv.org/abs/2204.02311) (google, 2022) - 540 Billion params
   - pathways hardware center allows for fast/efficient training
   - discontinuous improvements - at some point large model improves
   - prompt engineering: "Explain yourself" - lets it explain jokes
-- [Chinchilla: Training Compute-Optimal Large Language Models](https://arxiv.org/abs/2203.15556)
-  - for compute-optimal training, the model size and the number of training tokens should be scaled equally
+  - [Chinchilla: Training Compute-Optimal Large Language Models](https://arxiv.org/abs/2203.15556) (deepmind, 2022)
+    - "chinchilla scaling laws" - for compute-optimal training, the model size and the number of training tokens should be scaled equally
 - T0 ([sanh...rush, 2022](https://arxiv.org/pdf/2110.08207.pdf)) - multitask training enables better zero-shot generalization
   - T5 ([raffel...liu, 2020](https://jmlr.org/papers/volume21/20-074/20-074.pdf)) -- text-to-text transfer transformer
-- [UL2: Unifying Language Learning Paradigms](https://arxiv.org/abs/2205.05131) (tay...metzler, 2022) - open-source 20B model, beats GPT-3 at zero-shot
+  - [UL2: Unifying Language Learning Paradigms](https://arxiv.org/abs/2205.05131) (tay...metzler, 2022) - open-source 20B model, beats GPT-3 at zero-shot
+- Galactica: A Large Language Model for Science ([taylor..., stojnic, 2022, meta ai](https://galactica.org/static/paper.pdf)) - trained on mostly papers + some knowledge bases (e.g. DNA)
 - more effective training
   - FLAN-PaLM: [Scaling Instruction-Finetuned Language Models](https://arxiv.org/abs/2210.11416) (chung, ..., quoc le, jason wei, 2022) - finetune with datasets phrased as instructions
     - [instructGPT](https://arxiv.org/abs/2203.02155) / [FLAN](https://arxiv.org/abs/2109.01652) - finetune on instructions to follows instructions
-  - natural language feedback ([scheurer et al. 2022]())
-    - human feedback for learning makes it much more efficient
-    - [Can language models learn from explanations in context?](https://arxiv.org/abs/2204.02329) (lampinen et al. 2022)
   - ELECTRA: Pre-training Text Encoders as Discriminators Rather Than Generators ([clark...quoc le, chris manning, 2020](https://arxiv.org/abs/2003.10555))
-    - more efficient: rather than standard masked training, have generator-discriminator setup for "token detection"
-    - generator replaces many masked tokens with plausible samples (all in one forward pass) - train with MLM
-    - discriminator tries to guess which tokens were the masked ones - this is the main model that gets used
+    - more efficient: rather than standard masked training, use generator-discriminator setup for "token detection"
+      - generator replaces many masked tokens with plausible samples - train with MLM
+      - discriminator tries to guess which tokens were the masked ones - this is the main model that gets used
 
 
 **other**
@@ -85,6 +86,10 @@ category: research
 
   - [ACT-1: Transformer for Actions](https://www.adept.ai/act)
 
+- question-answering (now just done with generic LLMs)
+
+  - [UnifiedQA: Crossing Format Boundaries With a Single QA System](https://arxiv.org/abs/2005.00700) (khashabi...hajishirzi, 2020)
+
 - metalearning (Tabular)
 
   - TabPFN: A Transformer That Solves Small Tabular Classification Problems in a Second ([hollman, ..., hutter, 2022](https://arxiv.org/abs/2207.01848)) - transformer takes in train + test dataset then outputs predictions
@@ -117,6 +122,11 @@ category: research
       ```
 
   - program synthesis [arxiv.org/abs/2108.07732](https://arxiv.org/abs/2108.07732) - formalize natural language into runnable code
+
+- natural language feedback ([scheurer et al. 2022]())
+
+  - human feedback for learning makes it much more efficient
+  - [Can language models learn from explanations in context?](https://arxiv.org/abs/2204.02329) (lampinen et al. 2022)
 
 - [spatial transformers](https://papers.nips.cc/paper/5854-spatial-transformer-networks.pdf )
 
@@ -165,9 +175,6 @@ category: research
 - prompt-tuning (also see next section on autoprompting)
   - [Attentional Mixtures of Soft Prompt Tuning for Parameter-efficient Multi-task Knowledge Sharing](https://arxiv.org/abs/2205.11961)
   - [STT: Soft Template Tuning for Few-Shot Adaptation](https://arxiv.org/abs/2207.08408)
-- misc....(few shot mostly)
-  - LM-BFF [Making Pre-trained Language Models Better Few-shot Learners](https://arxiv.org/abs/2012.15723) (gao et al. 2020)
-    - uses T5 to generate (i) template for the task (which might include a whole example or two) + (i) appropropriate label tokens in the vocabulary for the task (suffers from computationally intensive search + sub-optimal discrete space search)
 
 **mt-dnn line of work**
 
@@ -183,8 +190,6 @@ category: research
 - The Microsoft Toolkit of Multi-Task Deep Neural Networks for Natural Language Understanding ([xiaodong liu...gao, 2020](https://aclanthology.org/2020.acl-demos.16/))
 - Posterior Differential Regularization with f-divergence for Improving Model Robustness ([hao cheng, ..., gao 2021](https://aclanthology.org/2021.naacl-main.85/))
   - regularize model posterior difference between clean + noisy inputs (e.g. adversarially attacked inputs)
-
-
 
 # prompting
 
@@ -205,14 +210,23 @@ category: research
 
 ![prompting_hierarchy](../assets/prompting_hierarchy.png)
 
-- [AutoPrompt: Eliciting Knowledge from Language Models with Automatically Generated Prompts](https://aclanthology.org/2020.emnlp-main.346/) (shin...sameer singh, 2020)
-  - select prompts from a fixed set of tokens (resulting prompts are not coherent)
-  - only work on MLM
-  - elicit sentiment / factual knowledge
-  - [Universal Adversarial Triggers for Attacking and Analyzing NLP](https://arxiv.org/abs/1908.07125) (wallace...sameer singh, 2019) - find input-agnostic sequences of tokens that trigger a model to produce a specific prediction when concatenated to any input from a dataset
-- [iPrompt: Explaining Patterns in Data with Language Models via Interpretable Autoprompting](https://arxiv.org/abs/2210.01848) (singh, morris, ...gao, 2022)
+- natural-language prompting
+  - [iPrompt: Explaining Patterns in Data with Language Models via Interpretable Autoprompting](https://arxiv.org/abs/2210.01848) (singh, morris, ...gao, 2022)
+  - APE: [Large Language Models Are Human-Level Prompt Engineers](https://arxiv.org/abs/2211.01910) (zhou...ba, 2022)
+    - similar to iPrompt, (1) propose prompt candidates with an LLM, (2) score the prompts by the accuracy they yield when using another LLM and (3) regenerate similar prompt candidates
+    - experiments on instruction induction datasets + truthful QA
+
+- discrete prompting
+  - [AutoPrompt: Eliciting Knowledge from Language Models with Automatically Generated Prompts](https://aclanthology.org/2020.emnlp-main.346/) (shin...sameer singh, 2020)
+    - select prompts from a fixed set of tokens (resulting prompts are not coherent)
+    - only work on MLM
+    - elicit sentiment / factual knowledge
+    - [Universal Adversarial Triggers for Attacking and Analyzing NLP](https://arxiv.org/abs/1908.07125) (wallace...sameer singh, 2019) - find input-agnostic sequences of tokens that trigger a model to produce a specific prediction when concatenated to any input from a dataset
   - [GSCLIP : A Framework for Explaining Distribution Shifts in Natural Language](https://arxiv.org/abs/2206.15007) (zhu...james zou, 2022)
   - [RLPrompt: Optimizing Discrete Text Prompts with Reinforcement Learning](https://arxiv.org/abs/2205.12548) (deng...hu, 2022)
+  - LM-BFF: [Making Pre-trained Language Models Better Few-shot Learners](https://arxiv.org/abs/2012.15723) (gao et al. 2020)
+    - uses T5 to generate (i) template for the task (which might include a whole example or two) + (i) appropropriate label tokens in the vocabulary for the task (suffers from computationally intensive search + sub-optimal discrete space search)
+  - [PADA: Example-based Prompt Learning for on-the-fly Adaptation to Unseen Domains](https://arxiv.org/abs/2102.12206) (ben-david, ..., reichart, 2022)
 
 - [Prefix-Tuning: Optimizing Continuous Prompts for Generation](https://arxiv.org/abs/2101.00190) (li & percy liang, 2021) -- optimizes in continuous space for language generation tasks
   - learn to map some parameters $\theta$ through and MLP to generate a starting hidden state $h_i$ -- never actually sends the prefix through the network 
@@ -344,6 +358,7 @@ category: research
   - adds lateral inhibition, superlinearity, approximate sparsity
   - changes GeLU, which is approximately $\text{sigmoid}(1.7x) \cdot x$
   - just changing to SoLU decrease performance, had to add LayerNorm afterwards
+- [Finding Skill Neurons in Pre-trained Transformer-based Language Models](https://arxiv.org/abs/2211.07349) - some individual neurons are predictive of the final task (dubbed "skill neurons')
 
 ### editing
 
@@ -488,12 +503,8 @@ category: research
         - select samples which are "representative" of a class by predicting with another LLM
         - have a pool of 302 manual hypotheses they used for seeding
   - [GSCLIP : A Framework for Explaining Distribution Shifts in Natural Language](https://arxiv.org/abs/2206.15007) (zhu...james zou, 2022)
-- natural-language prompting approach
-  - [iPrompt: Explaining Patterns in Data with Language Models via Interpretable Autoprompting](https://arxiv.org/abs/2210.01848) (singh, morris, ...gao, 2022)
-  - APE: [Large Language Models Are Human-Level Prompt Engineers](https://arxiv.org/abs/2211.01910) (zhou...ba, 2022) - automatic prompt engineering, similar to iPrompt but without iteration
-  - measure accuracy when using prompt on another LLM
+- [iPrompt: Explaining Patterns in Data with Language Models via Interpretable Autoprompting](https://arxiv.org/abs/2210.01848) (singh, morris, ...gao, 2022) - prompting approach
   - [Instruction Induction: From Few Examples to Natural Language Task Descriptions](https://arxiv.org/abs/2205.10782) (honovich...bowman, levy 2022) - directly query model with prompt to search for task description
-
 
 
 ## cool tasks
@@ -501,6 +512,23 @@ category: research
 - [Forecasting Future World Events with Neural Networks](https://arxiv.org/abs/2206.15474) (zou...hendrycks, 2022)
 - forecasting paper titles ([blog post](https://csinva.io/gpt-paper-title-generator/))
 - [Shortcut Learning of Large Language Models in Natural Language Understanding: A Survey](https://arxiv.org/abs/2208.11857) (du et al. 2022)
+- scientific organization ([galactica](https://galactica.org/static/paper.pdf))
+  - all data is processed in a common markdown format
+  - task-specific tokens to support different types of knowledge (e.g. citations, step-by-step reasoning, different modalities, e.g. proteins)
+  - formulate drug discovery tasks as text prompts and show performance scales in a weakly supervised setup
+  - chemical compounds (train on 2 mil / 110 mil from PubChem Compound, authors still want it to focus on text)
+    - predict IUPAC name from SMILES formula e.g. `CC(C)(C)C(=O)N(CC1=NC(=CS1)C(=O)OC)C2CCCCC2` -> `methyl 2-[[cyclohexyl-(2,2-dimethylpropanoyl)]amino] methyl]thiazole-4- `
+    - moleculenet ([wu et al. 2017](https://arxiv.org/abs/1703.00564)) classification benchmark
+      - training set examples are trained as text during fitting
+  - protein sequences
+    - from 227 million in UniProt, look at only 0.5 million subset (called Swiss-Prot)
+    - evaluate protein sequence perplexity
+    - protein keyword prediction (predict keywords in UniProt, like "ATP-Binding", "Cell membrane")
+    - protein function description - compare free-form description to GT UniProt function description
+  - see related but smaller models
+    - SciBERT ([beltagy...cohan, 2019](https://arxiv.org/abs/1903.10676))
+    - BioLM ([lewis...stoyanov, 2020](https://aclanthology.org/2020.clinicalnlp-1.17/))
+    - ScholarBERT ([hong...foster, 2022](https://arxiv.org/abs/2205.11342)) - large dataset, 770M-param model
 
 # basics
 
@@ -559,8 +587,8 @@ category: research
     - specifically, at each step, decoder concatenates its hidden state w/ the attention vector (the weighted combination of the context vectors)
     - this is fed to a feedforward net to output a word
     - ![Screen Shot 2019-04-11 at 7.57.14 PM](../assets/nmt.png)
-  - at a high level we have $Q, K, V$ and compute $softmax(QK^T)V$
-    - instead could simplify it and do $softmax(XX^T)V$ - this would then be based on kernel
+  - at a high level we have $Q, K, V$ and compute $\text{softmax}(QK^T)V$
+    - instead could simplify it and do $\text{softmax}(XX^T)V$ - this would then be based on kernel
 - **transformer**
   - uses many self-attention layers
   - many stacked layers in encoder + decoder (not rnn: self-attention + feed forward)
