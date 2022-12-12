@@ -2,10 +2,13 @@
 
 # 2022
 
+- [Curse Words Around the World Have Something in Common (We Swear) - The New York Times](https://www.nytimes.com/2022/12/06/science/swear-words-sounds.html)
+  - They’re less likely than other words to include the consonant sounds L, R, W or Y. And more family-friendly versions of curses often have these sounds added, just like the R in “shirt” or “fork.”
+  
 - [Opinion | How ‘Instagram Therapy’ Creates a Moral Vortex - The New York Times](https://www.nytimes.com/2022/11/12/opinion/mental-health-therapy-instagram.html)
   - In 1966, the sociologist Philip Rieff published “The Triumph of the Therapeutic,” a critique of what he saw as a culture obsessed with self-actualization and personal fulfillment at the expense of concepts like duty, virtue and collective obligation
   - distinction between validating a patient’s feelings — making the person feel listened to with compassion and care — and affirming a false reality
-  
+
 - [Opinion | Republicans Did Not Read the Room - The New York Times](https://www.nytimes.com/2022/11/09/opinion/republicans-midterms-abortion.html)
 
 - [Dear Artists: Do Not Fear AI Image Generators | WIRED](https://www.wired.com/story/artists-do-not-fear-ai-image-generators/)

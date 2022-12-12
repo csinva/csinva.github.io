@@ -705,18 +705,19 @@ category: neuro
   - causes 
   - likelihood P(X=x\|C=c)
     - Gaussian
-    - proportional to $exp(x-Gc)$
+    - proportional to $\exp(x-Gc)$
   - want posterior P(C\|X)
   - prior p(C )
     - assume priors causes are independent
     - want sparse distribution
       - has heavy tail (super-Gaussian distribution)
-    - then P(C ) = $k \cdot \prod exp(g(C_i))$
+    - then P(C ) = $k\prod \exp(g(C_i))$
   - can implement sparse coding in a recurrent neural network
   - Olshausen & Field, 1996 - learns receptive fields in V1
 - sparse coding is a special case of *predicive coding*
   - ![](../assets/7_3_1.png)
   - there is usually a feedback connection for every feedforward connection (Rao & Ballard, 1999)
+- recurrent sparse reconstruction ([shi...joshi, darrel, wang, 2022](https://arxiv.org/pdf/2204.10962.pdf)) - sparse reconstruction (of a single image) learns a layer that does better than self-attention
 
 ## sparse, distributed coding
 

@@ -318,6 +318,7 @@ For an implementation of many of these models, see the python [imodels package](
   - note: scoring systems map points to a risk probability
 - [An Interpretable Model with Globally Consistent Explanations for Credit Risk](https://arxiv.org/abs/1811.12615) (chen et al. 2018) - a 2-layer linear additive model
 - [Fast Sparse Classification for Generalized Linear and Additive Models](https://arxiv.org/abs/2202.11389) (liu, ..., seltzer, rudin, 2022)
+- [Naive Feature Selection: Sparsity in Naive Bayes](http://proceedings.mlr.press/v108/askari20a.html) (askari,,,el ghaoui, 2020) - sparse naive bayes feature selection is on par with lasso but much faster
 
 ### gams (generalized additive models)
 
@@ -960,7 +961,7 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
 
 ### textual explanations
 
-**see also notes in ovw_transformers!**
+**see also notes in [ovw_transformers](https://csinva.io/notes/research_ovws/ovw_transformers.html)!**
 
 - [Adversarial Inference for Multi-Sentence Video Description](https://arxiv.org/pdf/1812.05634.pdf) - adversarial techniques during inference for a better multi-sentence video description
 - [Object Hallucination in Image Captioning](https://aclweb.org/anthology/D18-1437) - image relevance metric - asses rate of object hallucination
@@ -970,25 +971,6 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
 - [Grounding of Textual Phrases in Images by Reconstruction](https://arxiv.org/pdf/1511.03745.pdf) - given text and image provide a bounding box (supervised problem w/ attention)
 - [Natural Language Explanations of Classifier Behavior](https://ieeexplore.ieee.org/abstract/document/8791710)
 - [eli5](https://eli5.readthedocs.io/en/latest/libraries/sklearn.html#library-scikit-learn) has nice text highlighting for interp
-- [TalkToModel: Understanding Machine Learning Models With Open Ended Dialogues](https://arxiv.org/abs/2207.04154) (slack...lakkaraju, sameer singh, 2022) - natural language interface to query model (by converting to commands such as filtering the data / calculating importance)
-   - [Rethinking Explainability as a Dialogue: A Practitioner's Perspective](https://arxiv.org/abs/2202.01875) (lakkaraju, slack, ..., sameer singh, 2022) - interviews with high-stakes users suggest they would like to be able to interact with systems via dialog
-- [The Unreliability of Explanations in Few-shot Prompting for Textual Reasoning](https://arxiv.org/abs/2205.03401?context=cs) (ye & durrett, 2022)
-- AdaTest [Adaptive Testing and Debugging of NLP Models](https://aclanthology.org/2022.acl-long.230/) (ribeiro & lundberg, 2022)
-   - goal: easily specify, discover, and fix undesirable behaviors in an NLP model
-   - 2-step iterative algorithm
-      1. LLM generates many tests targeting the model's failures
-
-         - example of a test: `f(“I am a black woman”) ≠ neg`
-
-         - user selects and organizes the tests and reprompts the LLM to find more
-      2. User fixes the tests (e.g. via finetuning)
-
-   - Checklist [Beyond Accuracy: Behavioral Testing of NLP models with CheckList](https://arxiv.org/abs/2005.04118) (ribeiro...sameer singh, 2020)
-      - matrix of general linguistic capabilities + test types
-   
-- [Fixing Model Bugs with Natural Language Patches](https://openreview.net/forum?id=B6wzhbPhsZ9) (murty, manning, lundberg, & ribeiro 2022)
-   - specify patches with natural language rather than hard rule, allowing them to better handle text
-   - finetune a model to combine original model output with output from a patch-conditioned interpreter head
 
 
 ## interactions
@@ -1193,9 +1175,7 @@ Nice overview [here](https://github.com/stefanoteso/awesome-explanatory-supervis
 - [Visualization by Example](https://arxiv.org/abs/1911.09668) (chenglong wang...dillig, 2019) - automatically synthesize a program to visual data based on user "sketches" = partial visualization of a subset of the data by the user
   - [Falx: Synthesis-Powered Visualization Authoring](https://arxiv.org/abs/2102.01024) (chenglong wang...ko, 2021)
 - see also things in [imodelsX](https://github.com/csinva/imodelsX)
-- **Coreset algorithms** - summarize datasets smaller datasets that
-  accurately represent the full dataset on
-  downstream tasks
+- **Coreset algorithms** - summarize datasets with smaller dataset that accurately represent the full dataset on downstream tasks
   - [Introduction to Coresets: Accurate Coresets](https://arxiv.org/abs/1910.08707)
   - [Efficient Dataset Distillation Using Random Feature Approximation](https://arxiv.org/abs/2210.12067) (2022)
 
