@@ -40,3 +40,4 @@ Some interesting papers in science and statistics.
 - [The Association Between Income and Life Expectancy in the United States, 2001-2014](https://jamanetwork.com/journals/jama/article-abstract/2513561)
   - ![income_vs_lifespan](../assets/income_vs_lifespan-2221629.png)
 - [aztecs, mayans predicted eclipses with data](https://www.statesman.com/story/news/2017/08/19/aztecs-mayans-marveled-at-eclipses-and-predicted-them-with-precision/10122181007/)
+  - [Pigeons as Trainable Observers of Pathology and Radiology Breast Cancer Images](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0141357)

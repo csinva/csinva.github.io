@@ -1,5 +1,11 @@
 [toc]
 
+# 2023
+
+- https://www.nytimes.com/2022/12/28/opinion/jack-dorseys-twitter-signal-privacy.html
+  - argues against individual privacy (e.g. signal)
+- https://www.nytimes.com/2023/01/06/arts/television/kaleidoscope-netflix-streaming.html
+
 # 2022
 
 - [Curse Words Around the World Have Something in Common (We Swear) - The New York Times](https://www.nytimes.com/2022/12/06/science/swear-words-sounds.html)
@@ -19,7 +25,9 @@
 
 - [Why I Think More NLP Researchers Should Engage with AI Safety Concerns – NYU Alignment Research Group](https://wp.nyu.edu/arg/why-ai-safety/)
   - [AI Safety and Neighboring Communities: A Quick-Start Guide, as of Summer 2022 - AI Alignment Forum](https://www.alignmentforum.org/posts/EFpQcBmfm2bFfM4zM/ai-safety-and-neighboring-communities-a-quick-start-guide-as)
-
+  - https://aeon.co/essays/why-longtermism-is-the-worlds-most-dangerous-secular-credo
+    - elevating the fulfilment of humanity’s supposed potential above all else could nontrivially increase the probability that actual people – those alive today and in the near future – suffer extreme harms, even death
+  
 - [Opinion | A Strong Dollar Is Hurting Other Countries. Should the Fed Care? - The New York Times](https://www.nytimes.com/2022/09/30/opinion/us-dollar-global-impact.html)
 
 - [Opinion | Why I Changed My Mind on Student Debt Forgiveness - The New York Times](https://www.nytimes.com/2022/08/30/opinion/student-loan-debt-relief-biden.html) - dropout rates are very high

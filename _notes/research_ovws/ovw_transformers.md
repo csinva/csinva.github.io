@@ -41,10 +41,10 @@ category: research
     - "chinchilla scaling laws" - for compute-optimal training, the model size and the number of training tokens should be scaled equally
 - T0 ([sanh...rush, 2022](https://arxiv.org/pdf/2110.08207.pdf)) - multitask training enables better zero-shot generalization
   - T5 ([raffel...liu, 2020](https://jmlr.org/papers/volume21/20-074/20-074.pdf)) -- text-to-text transfer transformer
-  - [UL2: Unifying Language Learning Paradigms](https://arxiv.org/abs/2205.05131) (tay...metzler, 2022) - open-source 20B model, beats GPT-3 at zero-shot
+  - UL2: Unifying Language Learning Paradigms ([tay...metzler, 2022](https://arxiv.org/abs/2205.05131)) - open-source 20B model, beats GPT-3 at zero-shot
 - Galactica: A Large Language Model for Science ([taylor..., stojnic, 2022, meta ai](https://galactica.org/static/paper.pdf)) - trained on mostly papers + some knowledge bases (e.g. DNA)
 - more effective training
-  - FLAN-PaLM: [Scaling Instruction-Finetuned Language Models](https://arxiv.org/abs/2210.11416) (chung, ..., quoc le, jason wei, 2022) - finetune with datasets phrased as instructions
+  - FLAN-PaLM: Scaling Instruction-Finetuned Language Models ([chung, ..., quoc le, jason wei, 2022](https://arxiv.org/abs/2210.11416)) - finetune with datasets phrased as instructions
     - [instructGPT](https://arxiv.org/abs/2203.02155) / [FLAN](https://arxiv.org/abs/2109.01652) - finetune on instructions to follows instructions
   - ELECTRA: Pre-training Text Encoders as Discriminators Rather Than Generators ([clark...quoc le, chris manning, 2020](https://arxiv.org/abs/2003.10555))
     - more efficient: rather than standard masked training, use generator-discriminator setup for "token detection"
@@ -63,37 +63,45 @@ category: research
     - generates text + image embeddings
     - "prior network" maps text embedding to image embedding
     - adds diffusion model
+    - Stable diffusion ([stability.ai, 2022](https://stability.ai/blog/stable-diffusion-public-release)) - open-source recreation, now highly optimized for speed
   - BEiT-3 ([2022](https://arxiv.org/abs/2208.10442)) - treat vision as language and large-scale multimodal training
     - outperforms [Flamingo: a Visual Language Model for Few-Shot Learning](https://arxiv.org/abs/2204.14198) (2022), which uses more domain knowledge to connect vision & language
-
+  
 - vision
   - VIT: An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale ([dosoviskiy, ..., houlsby, 2020](https://arxiv.org/abs/2010.11929))
     - [attention augmentation to resnet](https://arxiv.org/abs/1904.09925) for vision (bello...quoc le, 2020)
     - here, people call image patches "tokens"
   - DINO [Emerging Properties in Self-Supervised Vision Transformers](https://arxiv.org/abs/2104.14294) (caron...joulin, 2021)
-  - [Masked Autoencoders Are Scalable Vision Learners](https://arxiv.org/abs/2111.06377) (he...dollar, girshick, 2021) - BERT-style training
+  - Masked Autoencoders Are Scalable Vision Learners ([he...dollar, girshick, 2021](https://arxiv.org/abs/2111.06377)) - BERT-style training
     -  speed up by not applying encoder to mask tokens + adding mask to a lot of the data (like 75%)
     -  really good results without much data
 
 - rl
 
-  - GATO: [A Generalist Agent](https://arxiv.org/abs/2205.06175) (2022) - single agent plays many different video games
+  - GATO: [A Generalist Agent](https://arxiv.org/abs/2205.06175) (deepmind, 2022) - single agent plays many different video games
     - different modalities are converted to tokens differently (e.g. image patches are fed through resnet)
 
-  - In-context Reinforcement Learning with Algorithm Distillation ([laskin, wang, ..., sahni, satinder singh, mnih, 2022](https://arxiv.org/abs/2210.14215)) - learn to improve an RL algorithm
+  - In-context Reinforcement Learning with Algorithm Distillation ([laskin, wang, ..., sahni, satinder singh, mnih, 2022, deepmind](https://arxiv.org/abs/2210.14215)) - learn to improve an RL algorithm
     - put history of (observation, action, reward) sequences into context and then use them to predict new action given new observation
+  - Decision Transformer: Reinforcement Learning via Sequence Modeling ([chen, lu, ...abbeel, srinivas, mordatch, 2021](https://arxiv.org/pdf/2106.01345.pdf)) - transformer that predicts what the next highest reward step is instead of the next word
 
 - biomedical
 
-  - [BioGPT: generative pre-trained transformer for biomedical text generation and mining](https://academic.oup.com/bib/article-abstract/23/6/bbac409/6713511) (luo...poon, liu, 2022)
-    - [BioBERT: a pre-trained biomedical language representation model for biomedical text mining](https://arxiv.org/abs/1901.08746) (2019)
+  - BioGPT: [Generative pre-trained transformer for biomedical text generation and mining](https://academic.oup.com/bib/article-abstract/23/6/bbac409/6713511) (luo...poon, liu, 2022)
+    - PubMedGPT (2.7B): ([bolton, hall, ..., manning, liang, 2022](https://crfm.stanford.edu/2022/12/15/pubmedgpt.html))
+    - BioBERT: [A pre-trained biomedical language representation model for biomedical text mining](https://arxiv.org/abs/1901.08746) (2019)
     - PubMedBERT: [Domain-Specific Language Model Pretraining for Biomedical Natural Language Processing](https://arxiv.org/abs/2007.15779) (gu...gao, poon, 2021)
+    - Large Language Models Encode Clinical Knowledge ([singhal, ..., natarajan, 2022, google/deepmind](https://arxiv.org/abs/2212.13138)) - introduce MultiMedQA dataset + derive Med-PaLM, a prompt-tuned version of PaLM
 
 - question-answering (now just done with generic LLMs)
 
   - [UnifiedQA: Crossing Format Boundaries With a Single QA System](https://arxiv.org/abs/2005.00700) (khashabi...hajishirzi, 2020)
 
-- metalearning (Tabular)
+- tabular
+
+  - TabLLM: Few-shot Classification of Tabular Data with Large Language Models  ([hegelsmann..., sontag, 2022](https://arxiv.org/abs/2210.10723))
+
+- metalearning
 
   - TabPFN: A Transformer That Solves Small Tabular Classification Problems in a Second ([hollman, ..., hutter, 2022](https://arxiv.org/abs/2207.01848)) - transformer takes in train + test dataset then outputs predictions
     - builds on prior-data fitted networks (PFNs) ([muller, ..., hutter, 2021](https://arxiv.org/abs/2112.10510))
@@ -140,6 +148,7 @@ category: research
 ## external knowledge / tool use / grounding
 
 - https://www.perplexity.ai/ - nice demo adding citation to each fact
+- DRAGON: Deep Bidirectional Language-Knowledge Graph Pretraining ([yasanaga, ..., manning, liang, leskovec, 2022](https://arxiv.org/abs/2210.09338))
 - LaMDA ([thoppilan, ..., quoc le, 2022, google](https://arxiv.org/abs/2201.08239)) - allows google search to add world info (in a dialog model)
   - this was the model that sparked the controversy about consciousness 🤔
   - A Neural Corpus Indexer for Document Retrieval ([wang...yang, 2022](https://arxiv.org/abs/2206.02743)) - train model to directly spit out document IDs given queries
@@ -200,6 +209,11 @@ category: research
 - Posterior Differential Regularization with f-divergence for Improving Model Robustness ([hao cheng, ..., gao 2021](https://aclanthology.org/2021.naacl-main.85/))
   - regularize model posterior difference between clean + noisy inputs (e.g. adversarially attacked inputs)
 
+## pruning
+
+- SparseGPT: Massive Language Models Can Be Accurately Pruned in One-Shot ([frantar & alistarh, 2023](https://arxiv.org/abs/2301.00774)) - prune GPT-style models to atleast 50% sparsity in one-shot, without any retraining, at minimal loss of accuracy
+- Cramming: Training a Language Model on a Single GPU in One Day ([geiping & goldstein, 2022](https://arxiv.org/abs/2212.14034)) - tricks for training BERT
+
 # prompting
 
 - Pre-train, Prompt, and Predict: A Systematic Survey of Prompting Methods in Natural Language Processing ([liu...neubig, 2021](https://arxiv.org/pdf/2107.13586.pdf))
@@ -215,6 +229,7 @@ category: research
   - Noisy Channel Language Model Prompting for Few-Shot Text Classification ([min et al. 2022](https://arxiv.org/pdf/2108.04106.pdf))
     - Querying $P(question|answer)$ with Bayes rule outperforms standard querying $P(answer|question)$
 - [memory-assisted prompt-editing](https://arxiv.org/abs/2201.06009) (madaan...yang, 2022) - allows model to "save things to memory" that get added to prompt when needed
+- Prompting Is Programming: A Query Language For Large Language Models ([Beurer-Kellner, Fischer, & Vechev, 2022](https://arxiv.org/abs/2212.06094))
 
 ## autoprompting
 
@@ -225,6 +240,8 @@ category: research
   - APE: [Large Language Models Are Human-Level Prompt Engineers](https://arxiv.org/abs/2211.01910) (zhou...ba, 2022)
     - similar to iPrompt, (1) propose prompt candidates with an LLM, (2) score the prompts by the accuracy they yield when using another LLM and (3) regenerate similar prompt candidates
     - experiments on instruction induction datasets + truthful QA
+  - FluentPrompt: Toward Human Readable Prompt Tuning ([shi, ..., zettlemoyer, 2022](https://arxiv.org/abs/2212.10539)) - use langevin sampling + fluency constraint to generate prompt
+    - experiments relatively weak: 3 sentiment datasets + autoprompt is the only baseline
 - discrete prompting
   - [AutoPrompt: Eliciting Knowledge from Language Models with Automatically Generated Prompts](https://aclanthology.org/2020.emnlp-main.346/) (shin...sameer singh, 2020)
     - select prompts from a fixed set of tokens (resulting prompts are not coherent)
@@ -356,8 +373,20 @@ category: research
 - Transformer visualization via dictionary learning: contextualized embedding as a linear superposition of transformer factors ([yun, chen, olshausen, lecun, 2021](https://arxiv.org/abs/2103.15949)) - investigate LLM embeddings of different words using dictionary learning
   - LLMs produce interesting contextualized word embeddings
   - dictionary elements (of activations across layers) correspond to meaningful things
+- A Circuit for Indirect Object Identification in GPT-2 small ([wang, ..., steinhardt, 2022](https://arxiv.org/abs/2211.00593))
+  - explanation encompasses 26 attention heads grouped into 7 main classes
+  - task: indirect object identification - “When Mary and John went to the store, John gave a drink to ___” should be "Mary"
+  - circuit
+    - identify all previous names
+    - remove duplicated names
+    - output remaining name
+  
 - [Finding Skill Neurons in Pre-trained Transformer-based Language Models](https://arxiv.org/abs/2211.07349) - some individual neurons are predictive of the final task (dubbed "skill neurons')
 
+## attention variants
+
+- Tree Transformer: Integrating Tree Structures into Self-Attention ([wang, .., chen, 2019](https://arxiv.org/pdf/1909.06639.pdf))
+- Waveformer: Linear-Time Attention with Forward and Backward Wavelet Transform ([zhuang...shang, 2022](https://arxiv.org/abs/2210.01989))
 
 ## editing
 
@@ -469,6 +498,12 @@ mixture of experts models have become popular because of the need for (1) fast s
     - Switch transformers ([Fedus et al. (2022)](https://www.jmlr.org/papers/volume23/21-0998/21-0998.pdf)) simplifies the architecture to activation of only one expert per layer
   - BASE Layers [Lewis et al. (2021)](https://proceedings.mlr.press/v139/lewis21a.html) - find an alternative approach to routing by formulating it as a linear assignment problem
   - Hash layers [Roller et al. (2021)](https://arxiv.org/abs/2106.04426) use a fixed hash as the gating function
+- [routing notes](https://www.sscardapane.it/assets/files/nnds2022/Lecture_8_Dynamic_NNs.pdf) - make hard decision but still want to learn probabilities
+  - straight-through estimator (STE) - take the argmax during the forward pass, while considering the orig- inal probabilities in the backward pass
+    - highly biased
+
+  - gumbel-softmax- allows for better sampling
+
 - specialized experts as fully independent models (sometimes for multi-task learning)
   - DEmix Layers [Gururangan et al.](https://arxiv.org/abs/2108.05036) (2022) --  DEMix layers – placed in the feedforward layers of the Transformer – contain experts which specialize on specific domains. Routing at train time is determined only by the domain label, but all experts are activated at inference time and mixed according to weights estimated from a validation set
   - [Sparsely Activated Mixture-of-Experts are Robust Multi-Task Learners](https://arxiv.org/abs/2204.07689) (gupta...awadallah, gao, 2022) - use task description to improve routing
@@ -488,11 +523,20 @@ mixture of experts models have become popular because of the need for (1) fast s
     - snapshot ensembles - average different checkpoints during training ([huang et al. 2017](https://arxiv.org/abs/1704.00109))
     - stochastic weight averaging ([izmailov, ..., wilson, 2019](https://arxiv.org/abs/1803.05407v3)) - average multiple checkpoints during training
     - batch ensemble ([wen et al. 2020](https://arxiv.org/pdf/2002.06715.pdf)) - have several rank-1 keys that index different weights hidden within one neural net
+    - Editing Models with Task Arithmetic ([ilharco, rebeiro, wortsman...farhadi, 2022](https://arxiv.org/abs/2212.04089)) - add task vectors (difference between weights before/after finetuning on a task) for different tasks to induce different multi-task behaviors
   - fit many models into one
     - superposition of many models into one ([cheung...olshausen, 2019](https://proceedings.neurips.cc/paper/2019/hash/4c7a167bb329bd92580a99ce422d6fa6-Abstract.html)) - both during training/testing models are indexed via a high-dim key for each task
     - supermasks in superposition ([wortsman, ..., yosinski, farhadi, 2020](https://proceedings.neurips.cc/paper/2020/hash/ad1f8bb9b51f023cdc80cf94bb615aa9-Abstract.html)) - randomly fixed based net + for each task finds subnet that chieves good performance
       - if task identity not given, correct subnet inferred by minimizing output entropy
     - Git Re-Basin: Merging Models modulo Permutation Symmetries ([ainsworth, hayase, & srinivasa, 2022](https://arxiv.org/abs/2209.04836)) - algo to merge models even when they haven't been pretrained together
+
+  - early exit - popular way to speed up inference
+
+    - Multi-exit vision transformer for dynamic inference ([Bakhtiarnia, A., Zhang, Q. and Iosifidis, A., 2021](https://arxiv.org/abs/2106.15183))
+
+      - early layers have large activation map so early exist classifier must be complex
+      - solution: ViT class token allows early-exit classifier to have constant complexity
+    - DeeBERT: Dynamic early exiting for accelerating BERT inference ([xin...lin, 2020](https://arxiv.org/abs/2004.12993))
 
 ## llm querying / causal inference
 
@@ -545,12 +589,34 @@ mixture of experts models have become popular because of the need for (1) fast s
   
   
   - all data is processed in a common markdown format
-  - task-specific tokens to support different types of knowledge (e.g. citations, step-by-step reasoning, different modalities, e.g. proteins)
-  - formulate drug discovery tasks as text prompts and show performance scales in a weakly supervised setup
+  
+  
+    - task-specific tokens to support different types of knowledge (e.g. citations, step-by-step reasoning, different modalities, e.g. proteins)
+  
   - chemical compounds (train on 2 mil / 110 mil from PubChem Compound, authors still want it to focus on text)
     - predict IUPAC name from SMILES formula e.g. `CC(C)(C)C(=O)N(CC1=NC(=CS1)C(=O)OC)C2CCCCC2` -> `methyl 2-[[cyclohexyl-(2,2-dimethylpropanoyl)]amino] methyl]thiazole-4- `
-    - moleculenet ([wu et al. 2017](https://arxiv.org/abs/1703.00564)) classification benchmark
+  
+    - [moleculenet](https://moleculenet.org/datasets-1) ([wu et al. 2017](https://arxiv.org/abs/1703.00564)) classification benchmark (6 tasks)
+      
       - training set examples are trained as text during fitting
+      
+        - HIV - classify whether comopund inhibits HIV replication
+        - BACE C - binding results (classification + regression) for BACE
+        - BBBP - blood-brain barrier penetration(permeability) (binary classification)
+        - Tox21 - qualitative toxicity on 12 targets (12-class multilabel binary)
+        - SIDER - 27-class multi-class disorders in different organ systems
+        - ClinTox - binary toxicity classification
+      
+      - ex. for BBBP (one of the 6 tasks) - question is posed in different ways during training
+      
+        ```
+        Here is a SMILES formula:   
+           [START_I_SMILES]O=C(O)CCCC1=CC=C(N(CCCl)CCCl)C=C1[END_I_SMILES]
+           
+        Question: Will the chemical compound penetrate the blood-brain barrier?
+        Answer: No
+        ```
+  
   - protein sequences
     - from 227 million in UniProt, look at only 0.5 million subset (called Swiss-Prot)
     - evaluate protein sequence perplexity

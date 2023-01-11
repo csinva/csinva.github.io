@@ -13,11 +13,33 @@ typora-copy-images-to: ../assets
 
 - [physionet](https://physionet.org/about/database/)
   - mimic-iv
+- mimic-iv-benchmark ([xie...liu, 2022](https://www.nature.com/articles/s41597-022-01782-9))
+  - 3 tabular datasets derived from MIMIC-IV ED EHR
+    - *hospitalization* (versus discharged) -  met with an inpatient care site admission immediately following an ED visit
+    - *critical* - inpatient portality / transfer to an ICU within 12 hours
+    - *reattendance* - patient's return visit to ED within 72 hours
+
+  - preprocessing for outliers / missing values (extended descriptions of variables [here](https://static-content.springer.com/esm/art%3A10.1038%2Fs41597-022-01782-9/MediaObjects/41597_2022_1782_MOESM1_ESM.pdf))
+    - patient history
+      - past ed visits, hospitalizations, icu admissions, comorbidities
+      - ICD codes give patients comorbidities (CCI charlson comorbitidy index, ECI elixhauser comorbidity index)
+
+    - info at triage
+      - temp., heart rate, pain scale, ESI, ...
+      - Emergency severity index (ESI) - 5-level triage system assigned by nurse based on clinical judgments (1 is highest priority)
+      - top 10 chief complaints
+      - No neurological features (e.g. GCS)
+
+    - info before discharge
+      - vitalsigns
+      - edstays
+      - medication prescription
+
 - [nih datasets](https://nda.nih.gov/)
 - [mdcalc datasets](https://www.mdcalc.com/)
 - [pecarn](https://pecarn.org/datasets/)
 - [openneuro](https://openneuro.org/)
-- Evaluation
+- NLP
   - MedNLI - NLI task grounded in patient history ([romanov & shivade, 2018](https://arxiv.org/abs/1808.06752))
     - derived from Mimic, but expertly annotated
   - i2b2 named entity recognition tasks

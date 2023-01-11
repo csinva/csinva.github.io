@@ -810,7 +810,8 @@ category: neuro
 - Memory-prediction framework
 - Fractal Theory: https://www.youtube.com/watch?v=axaH4HFzA24
 - Brain sheets are made of cortical columns (about .3mm diameter, 1000 neurons / column)
-- Have ~6 layers
+  - Have ~6 layers
+
 
 ## brain as a computer
 -	Brain as a Computer – Analog VLSI and Neural Systems by Mead (VLSI – very large scale integration)
@@ -1117,6 +1118,8 @@ For more information, see a very good review on modeling individual neurons<dt-c
 
 *computing with random high-dim vectors (also known as vector-symbolic architectures)*
 
+Good overview website: https://www.hd-computing.com
+
 - [ovw talk](https://www.youtube.com/watch?v=82syi1BH_YY) (kanerva, 2022)
   - has slide with related references
 - [A comparison of vector symbolic architectures](https://link.springer.com/article/10.1007/s10462-021-10110-3) (schlegel et al. 2021)
@@ -1290,6 +1293,9 @@ the operations above allow for encoding many normal data structures into a singl
   - gallant & okaywe: matrix binding with additive termps
   - fourier holographic reduced reprsentations (FHRR; Plate)
   - ...many more names
+- connecting to DNNs
+  - Attention Approximates Sparse Distributed Memory https://arxiv.org/pdf/2111.05498.pdf
+
 
 
 
@@ -1487,7 +1493,7 @@ the operations above allow for encoding many normal data structures into a singl
 - friston_10_free_energy
   - ![friston_free_energy](../assets/friston_free_energy.png)
 
-## biological constraints for DNNs / fMRI language
+## biological constraints for DNNs
 
 - Aligning DNN with brain responses
 
@@ -1515,6 +1521,8 @@ the operations above allow for encoding many normal data structures into a singl
 
   - [Disentangling with Biological Constraints: A Theory of Functional Cell Types](https://arxiv.org/abs/2210.01768)
 
+## nlp / fMRI
+
 - interpreting brain encoding models
   - [Brains and algorithms partially converge in natural language processing](https://www.nature.com/articles/s42003-022-03036-1#Sec9) (caucheteux & king, 2022)
     - best brain-mapping are obtained from the middle layers of DL models
@@ -1522,7 +1530,6 @@ the operations above allow for encoding many normal data structures into a singl
     - average ROIs across many subjects
     - test "compositionality" of features
   - [Tracking the online construction of linguistic meaning through negation](https://www.biorxiv.org/content/10.1101/2022.10.14.512299.abstract) (zuanazzi, ..., remi-king, poeppel, 2022)
-
 - encoding models
 
   - Seminal language-semantics fMRI study ([Huth…Gallant, 2016](https://www.nature.com/articles/nature17637)) - build mapping of semantic concepts across cortex using word vecs
@@ -1533,7 +1540,7 @@ the operations above allow for encoding many normal data structures into a singl
     - gpt2 models predict brain responses well [(caucheteux & king, 2021)](https://www.biorxiv.org/content/10.1101/2020.07.03.186288v2.abstract)
     - [Disentangling syntax and semantics in the brain with deep networks](https://proceedings.mlr.press/v139/caucheteux21a.html) (caucheteux, gramfort, & king, 2021) - identify which brain networks are involved in syntax, semantics, compositionality
   - [Incorporating Context into Language Encoding Models for fMRI](https://proceedings.neurips.cc/paper/2018/hash/f471223d1a1614b58a7dc45c9d01df19-Abstract.html) (jain & huth, 2018) - LSTMs improve encoding model
-    - [The neural architecture of language: Integrative modeling converges on predictive processing](https://www.pnas.org/doi/abs/10.1073/pnas.2105646118) (schrimpf, .., tenenbaum, fedorenko, 2021)- transformers better predict brain responses to natural language (and larger transformers predict better)
+    - [The neural architecture of language: Integrative modeling converges on predictive processing](https://www.pnas.org/doi/abs/10.1073/pnas.2105646118) (schrimpf, .., tenenbaum, fedorenko, 2021) - transformers better predict brain responses to natural language (and larger transformers predict better)
     - [Predictive Coding or Just Feature Discovery? An Alternative Account of Why Language Models Fit Brain Data | Neurobiology of Language](https://direct.mit.edu/nol/article/doi/10.1162/nol_a_00087/113632/Predictive-Coding-or-Just-Feature-Discovery-An) (antonello & huth, 2022)
       - LLM brain encoding performance correlates not only with their perplexity, but also generality (skill at many different tasks) and translation performance
 

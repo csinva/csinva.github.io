@@ -41,8 +41,6 @@ For neural-net specific transferring see [📌 adaption/transfer](https://csinva
 - kernel approach ([blanchard, lee & scott, 2011](https://papers.nips.cc/paper/2011/file/b571ecea16a9824023ee1af16897a582-Paper.pdf)) - find an appropriate RKHS and optimize a regularized empirical risk over the space
 - In-N-Out ([xie...lang, 2020](https://arxiv.org/abs/2012.04550)) - if we have many features, rather than using them all as features, can use some as features and some as targets when we shift, to learn the domain shift
 
-
-
 ## domain invariance
 
 *key idea: want repr. to be invariant to domain label*
@@ -56,6 +54,10 @@ For neural-net specific transferring see [📌 adaption/transfer](https://csinva
 - adversarial discriminative domain adaptation (ADDA [tzeng et al. 2017](https://arxiv.org/abs/1702.05464))
 - balancing with [importance weighting](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.370.4921&rep=rep1&type=pdf)
 - [Learning Robust Representations by Projecting Superficial Statistics Out](https://arxiv.org/abs/1903.06256) (wang et al. 2019)
+
+## feature learning
+
+- https://arxiv.org/pdf/2212.07346.pdf (zhang & bottou, 2022) - during training, concatenate the representations obtained with different random seeds
 
 ## dynamic selection
 

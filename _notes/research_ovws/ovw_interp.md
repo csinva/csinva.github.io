@@ -300,6 +300,7 @@ For an implementation of many of these models, see the python [imodels package](
   - proposing a SAT-based model for computing a decision tree as the smallest Reduced Ordered Binary Decision Diagram
   - exploring heuristic approaches for deriving sub-optimal (i.e., not minimal) ROBDDs, in order to improve the scalability of the proposed technique.
   - [Optimizing Binary Decision Diagrams with MaxSAT for classification](https://arxiv.org/abs/2203.11386) (hu et al. 2022)
+  - Deep Differentiable Logic Gate Networks ([peterson, ..., deussen, 2022](https://arxiv.org/pdf/2210.08277.pdf))
 
 
 ## linear (+algebraic) models
@@ -391,13 +392,11 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
   - add textual quantitative information about visual characteristics deemed important by the classification model e.g. colour hue, shape, texture, contrast and saturation
 - Neural Prototype Trees for Interpretable Fine-Grained Image Recognition ([nauta et al. 2021](https://openaccess.thecvf.com/content/CVPR2021/html/Nauta_Neural_Prototype_Trees_for_Interpretable_Fine-Grained_Image_Recognition_CVPR_2021_paper.html)) - build decision trees on top of prototypes
   - performance is slightly poor until they use ensembles
-
 - XProtoNet: Diagnosis in Chest Radiography With Global and Local Explanations ([kim et al. 2021](https://openaccess.thecvf.com/content/CVPR2021/html/Kim_XProtoNet_Diagnosis_in_Chest_Radiography_With_Global_and_Local_Explanations_CVPR_2021_paper.html))
   - alter ProtoPNet to use dynamically sized patches for prototype matching rather than fixed-size patches
 - [AutoProtoNet: Interpretability for Prototypical Networks](https://arxiv.org/abs/2204.00929) (sandoval-segura & lawson, 2022)
   - builds interpretability into Prototypical Networks by training an embedding space suitable for reconstructing inputs
   - also devise a prototype refinement method, which allows a human to debug inadequate classification parameters
-
 - TesNet: Interpretable Image Recognition by Constructing Transparent Embedding Space ([wang et al. 2021](https://openaccess.thecvf.com/content/ICCV2021/html/Wang_Interpretable_Image_Recognition_by_Constructing_Transparent_Embedding_Space_ICCV_2021_paper.html)) - alter ProtoPNet to get "orthogonal" basis concepts
 - ProtoPShare: Prototype Sharing for Interpretable Image Classification and Similarity Discovery ([Rymarczyk et al. 2020](https://arxiv.org/abs/2011.14340)),- share some prototypes between classes with data-dependent merge pruning
 
@@ -886,6 +885,9 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
   - if $A \implies B$, *interpolant* $I$ satisfies $A\implies I$, $I \implies B$ and $I$ expressed only using variables common to $A$ and $B$
     - here, $A$ is model input, $B$ is prediction, $I$ is activation of some hidden layer
   - *Bayesian interpolant* show $P(A|B) \geq \alpha^2$ when $P(I|A) \geq \alpha$ and $P(B|I) \geq \alpha$
+- [Towards Axiomatic, Hierarchical, and Symbolic Explanation for Deep Models](https://arxiv.org/abs/2111.06206) (ren...zhang, 2021) - summarize DNN predictions as a DAG
+  - DAG can be further summarized into set of AND nodes followed by OR nodes
+
 
 ### dnn feature importance
 
