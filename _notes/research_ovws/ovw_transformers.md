@@ -117,7 +117,7 @@ category: research
   - [Deal or No Deal? End-to-End Learning for Negotiation Dialogues](https://arxiv.org/abs/1706.05125) (lewis...batra, 2017, Meta) - controversial paper where agents "make up their own language"
     - this is pre-transformers
 
-- [MINERVA: Solving Quantitative Reasoning Problems with Language Models](https://arxiv.org/abs/2206.14858) - train on well-parsed, domain-specific data (math arxiv) to solve math-reasoning problems
+- [MINERVA: Solving Quantitative Reasoning Problems with Language Models](https://arxiv.org/abs/2206.14858) (google, 2022) - train on well-parsed, domain-specific data (math arxiv) to solve math-reasoning problems
 
   - autoformalization ([wu..., szegedy, 2022](https://arxiv.org/abs/2205.12615)) - translating from natural language math to formal language
   - produce sql/python that then finds an answer ([cheng...zettlemoyer, smith, yu, 2022](https://arxiv.org/abs/2210.02875))
@@ -274,10 +274,13 @@ category: research
   - [Re3: Generating Longer Stories With Recursive Reprompting and Revision](https://arxiv.org/abs/2210.06774) (yang, ..., klein, 2022) - generate summaries, then expand and revise with prompts
 - critiques of prompting
   - [Do Prompt-Based Models Really Understand the Meaning of their Prompts?](https://arxiv.org/abs/2109.01247) (webson & pavlick, 2022) - models can learn fine with prompts that are intentionally irrelevant
+    - Are Language Models Worse than Humans at Following Prompts? It's Complicated ([webson, ..., pavlick, 2023](https://arxiv.org/abs/2301.07085))
 - can benefit from training for promptability
   - [Adapting Language Models for Zero-shot Learning by Meta-tuning on Dataset and Prompt Collections](https://arxiv.org/abs/2104.04670) (zhong...klein, 2021)
   - [Continued Pretraining for Better Zero- and Few-Shot Promptability](https://arxiv.org/abs/2210.10258) (wu...sameer singh, beltagy, 2022)
 - [What learning algorithm is in-context learning? Investigations with linear models](https://arxiv.org/abs/2211.15661) - investigate prompting through synthetic experiments with transformers trained for linear regression
+  - [Transformers as Algorithms: Generalization and Implicit Model Selection in In-context Learning](https://arxiv.org/pdf/2301.07067.pdf) (li, ..., oymak, 2023) - generalization bounds for in-context learning when the input prompt is (1) a sequence of i.i.d. (input, label) pairs or (2) a trajectory arising from a dynamical system
+
 
 ## llm chaining / decoding
 
