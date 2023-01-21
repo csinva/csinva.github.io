@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>1.14. interpretability</title>
+    <title>1.12. interpretability</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -54,8 +54,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="1.15. generalization" href="ovw_generalization.html" />
-    <link rel="prev" title="1.13. uncertainty" href="ovw_uncertainty.html" />
+    <link rel="next" title="1.13. generalization" href="ovw_generalization.html" />
+    <link rel="prev" title="1.11. uncertainty" href="ovw_uncertainty.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -125,78 +125,68 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="ovw_comp_neuro.html">
-     1.1. comp neuro
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="ovw_transfer_learning.html">
-     1.2. transfer learning
+     1.1. transfer learning
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_disentanglement.html">
-     1.3. disentanglement
+     1.2. disentanglement
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_omics.html">
-     1.4. omics
+     1.3. omics
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_complexity.html">
-     1.5. complexity
+     1.4. complexity
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_interesting_science.html">
-     1.6. interesting science
+     1.5. interesting science
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_dl_theory.html">
-     1.7. dl theory
+     1.6. dl theory
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_scat.html">
-     1.8. scattering transform
+     1.7. scattering transform
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_ml_medicine.html">
-     1.9. ml in medicine
+     1.8. ml in medicine
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_transformers.html">
-     1.10. transformers
+     1.9. transformers
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_causal_inference.html">
-     1.11. causal inference
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ovw_dl_for_neuro.html">
-     1.12. dl for neuro
+     1.10. causal inference
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_uncertainty.html">
-     1.13. uncertainty
+     1.11. uncertainty
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     1.14. interpretability
+     1.12. interpretability
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_generalization.html">
-     1.15. generalization
+     1.13. generalization
     </a>
    </li>
   </ul>
@@ -695,127 +685,127 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#reviews">
-   1.14.1. reviews
+   1.12.1. reviews
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#definitions">
-     1.14.1.1. definitions
+     1.12.1.1. definitions
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#overviews">
-     1.14.1.2. overviews
+     1.12.1.2. overviews
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#evaluating-interpretability">
-   1.14.2. evaluating interpretability
+   1.12.2. evaluating interpretability
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#basic-failures">
-     1.14.2.1. basic failures
+     1.12.2.1. basic failures
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#adv-vulnerabilities">
-     1.14.2.2. adv. vulnerabilities
+     1.12.2.2. adv. vulnerabilities
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#intrinsic-interpretability-i-e-how-can-we-fit-a-simpler-model">
-   1.14.3. intrinsic interpretability (i.e. how can we fit a simpler model)
+   1.12.3. intrinsic interpretability (i.e. how can we fit a simpler model)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#decision-rules-overview">
-     1.14.3.1. decision rules overview
+     1.12.3.1. decision rules overview
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#rule-sets">
-       1.14.3.1.1. rule sets
+       1.12.3.1.1. rule sets
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#rule-lists">
-       1.14.3.1.2. rule lists
+       1.12.3.1.2. rule lists
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#trees">
-       1.14.3.1.3. trees
+       1.12.3.1.3. trees
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#decision-diagrams">
-       1.14.3.1.4. decision diagrams
+       1.12.3.1.4. decision diagrams
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#linear-algebraic-models">
-     1.14.3.2. linear (+algebraic) models
+     1.12.3.2. linear (+algebraic) models
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#supersparse-models">
-       1.14.3.2.1. supersparse models
+       1.12.3.2.1. supersparse models
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#gams-generalized-additive-models">
-       1.14.3.2.2. gams (generalized additive models)
+       1.12.3.2.2. gams (generalized additive models)
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#symbolic-regression">
-       1.14.3.2.3. symbolic regression
+       1.12.3.2.3. symbolic regression
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example-based-case-based-e-g-prototypes-nearest-neighbor">
-     1.14.3.3. example-based = case-based (e.g. prototypes, nearest neighbor)
+     1.12.3.3. example-based = case-based (e.g. prototypes, nearest neighbor)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#interpretable-neural-nets">
-     1.14.3.4. interpretable neural nets
+     1.12.3.4. interpretable neural nets
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#connecting-dnns-and-rules">
-       1.14.3.4.1. connecting dnns and rules
+       1.12.3.4.1. connecting dnns and rules
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#constrained-models">
-     1.14.3.5. constrained models
+     1.12.3.5. constrained models
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#misc-models">
-     1.14.3.6. misc models
+     1.12.3.6. misc models
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#bayesian-models">
-       1.14.3.6.1. bayesian models
+       1.12.3.6.1. bayesian models
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#programs">
-       1.14.3.6.2. programs
+       1.12.3.6.2. programs
       </a>
      </li>
     </ul>
@@ -824,165 +814,155 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#posthoc-interpretability-i-e-how-can-we-interpret-a-fitted-model">
-   1.14.4. posthoc interpretability (i.e. how can we interpret a fitted model)
+   1.12.4. posthoc interpretability (i.e. how can we interpret a fitted model)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#model-agnostic">
-     1.14.4.1. model-agnostic
+     1.12.4.1. model-agnostic
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#vim-variable-importance-measure-framework">
-       1.14.4.1.1. vim (variable importance measure) framework
+       1.12.4.1.1. vim (variable importance measure) framework
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#importance-curves">
-       1.14.4.1.2. importance curves
+       1.12.4.1.2. importance curves
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#tree-ensembles">
-     1.14.4.2. tree ensembles
+     1.12.4.2. tree ensembles
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#neural-nets-dnns">
-     1.14.4.3. neural nets (dnns)
+     1.12.4.3. neural nets (dnns)
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#dnn-visualization">
-       1.14.4.3.1. dnn visualization
+       1.12.4.3.1. dnn visualization
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#dnn-concept-based-explanations">
-       1.14.4.3.2. dnn concept-based explanations
+       1.12.4.3.2. dnn concept-based explanations
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#dnn-causal-motivated-attribution">
-       1.14.4.3.3. dnn causal-motivated attribution
+       1.12.4.3.3. dnn causal-motivated attribution
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#dnn-feature-importance">
-       1.14.4.3.4. dnn feature importance
+       1.12.4.3.4. dnn feature importance
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#dnn-attention">
-       1.14.4.3.5. dnn attention
+      <a class="reference internal nav-link" href="#dnn-language-models-transformers">
+       1.12.4.3.5. dnn language models / transformers
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#dnn-textual-explanations">
-       1.14.4.3.6. dnn textual explanations
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#self-explaining-llms">
-       1.14.4.3.7. self-explaining llms
+      <a class="reference internal nav-link" href="#textual-explanations">
+       1.12.4.3.6. textual explanations
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#interactions">
-     1.14.4.4. interactions
+     1.12.4.4. interactions
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#model-agnostic-interactions">
-       1.14.4.4.1. model-agnostic interactions
+       1.12.4.4.1. model-agnostic interactions
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#tree-based-interactions">
-       1.14.4.4.2. tree-based interactions
+       1.12.4.4.2. tree-based interactions
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#dnn-interactions">
-       1.14.4.4.3. dnn interactions
+       1.12.4.4.3. dnn interactions
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#linear-interactions">
-       1.14.4.4.4. linear interactions
+       1.12.4.4.4. linear interactions
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example-based-explanations">
-     1.14.4.5. example-based explanations
+     1.12.4.5. example-based explanations
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#model-summarization">
-     1.14.4.6. model summarization
+     1.12.4.6. model summarization
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#distillation">
-     1.14.4.7. distillation
+     1.12.4.7. distillation
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#different-problems-perspectives">
-   1.14.5. different problems / perspectives
+   1.12.5. different problems / perspectives
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#improving-models">
-     1.14.5.1. improving models
+     1.12.5.1. improving models
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#complementarity">
-     1.14.5.2. complementarity
+    <a class="reference internal nav-link" href="#dataset-interpretability-data-mining-automatic-data-viz">
+     1.12.5.2. dataset interpretability (data mining, automatic data viz)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#human-in-the-loop-hitl">
-     1.14.5.3. human-in-the-loop (HITL)
+     1.12.5.3. human-in-the-loop (HITL)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#recourse">
-     1.14.5.4. recourse
+     1.12.5.4. recourse
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#interp-for-rl">
-     1.14.5.5. interp for rl
+     1.12.5.5. interp for rl
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#differential-privacy">
-     1.14.5.6. differential privacy
+     1.12.5.6. differential privacy
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#interpretation-over-sets-perturbations">
-     1.14.5.7. interpretation over sets / perturbations
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#symbolic-reasoning">
-     1.14.5.8. symbolic reasoning
+     1.12.5.7. interpretation over sets / perturbations
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#ai-safety">
-     1.14.5.9. ai safety
+     1.12.5.8. ai safety
     </a>
    </li>
   </ul>
@@ -1008,127 +988,127 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#reviews">
-   1.14.1. reviews
+   1.12.1. reviews
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#definitions">
-     1.14.1.1. definitions
+     1.12.1.1. definitions
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#overviews">
-     1.14.1.2. overviews
+     1.12.1.2. overviews
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#evaluating-interpretability">
-   1.14.2. evaluating interpretability
+   1.12.2. evaluating interpretability
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#basic-failures">
-     1.14.2.1. basic failures
+     1.12.2.1. basic failures
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#adv-vulnerabilities">
-     1.14.2.2. adv. vulnerabilities
+     1.12.2.2. adv. vulnerabilities
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#intrinsic-interpretability-i-e-how-can-we-fit-a-simpler-model">
-   1.14.3. intrinsic interpretability (i.e. how can we fit a simpler model)
+   1.12.3. intrinsic interpretability (i.e. how can we fit a simpler model)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#decision-rules-overview">
-     1.14.3.1. decision rules overview
+     1.12.3.1. decision rules overview
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#rule-sets">
-       1.14.3.1.1. rule sets
+       1.12.3.1.1. rule sets
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#rule-lists">
-       1.14.3.1.2. rule lists
+       1.12.3.1.2. rule lists
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#trees">
-       1.14.3.1.3. trees
+       1.12.3.1.3. trees
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#decision-diagrams">
-       1.14.3.1.4. decision diagrams
+       1.12.3.1.4. decision diagrams
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#linear-algebraic-models">
-     1.14.3.2. linear (+algebraic) models
+     1.12.3.2. linear (+algebraic) models
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#supersparse-models">
-       1.14.3.2.1. supersparse models
+       1.12.3.2.1. supersparse models
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#gams-generalized-additive-models">
-       1.14.3.2.2. gams (generalized additive models)
+       1.12.3.2.2. gams (generalized additive models)
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#symbolic-regression">
-       1.14.3.2.3. symbolic regression
+       1.12.3.2.3. symbolic regression
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example-based-case-based-e-g-prototypes-nearest-neighbor">
-     1.14.3.3. example-based = case-based (e.g. prototypes, nearest neighbor)
+     1.12.3.3. example-based = case-based (e.g. prototypes, nearest neighbor)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#interpretable-neural-nets">
-     1.14.3.4. interpretable neural nets
+     1.12.3.4. interpretable neural nets
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#connecting-dnns-and-rules">
-       1.14.3.4.1. connecting dnns and rules
+       1.12.3.4.1. connecting dnns and rules
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#constrained-models">
-     1.14.3.5. constrained models
+     1.12.3.5. constrained models
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#misc-models">
-     1.14.3.6. misc models
+     1.12.3.6. misc models
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#bayesian-models">
-       1.14.3.6.1. bayesian models
+       1.12.3.6.1. bayesian models
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#programs">
-       1.14.3.6.2. programs
+       1.12.3.6.2. programs
       </a>
      </li>
     </ul>
@@ -1137,165 +1117,155 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#posthoc-interpretability-i-e-how-can-we-interpret-a-fitted-model">
-   1.14.4. posthoc interpretability (i.e. how can we interpret a fitted model)
+   1.12.4. posthoc interpretability (i.e. how can we interpret a fitted model)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#model-agnostic">
-     1.14.4.1. model-agnostic
+     1.12.4.1. model-agnostic
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#vim-variable-importance-measure-framework">
-       1.14.4.1.1. vim (variable importance measure) framework
+       1.12.4.1.1. vim (variable importance measure) framework
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#importance-curves">
-       1.14.4.1.2. importance curves
+       1.12.4.1.2. importance curves
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#tree-ensembles">
-     1.14.4.2. tree ensembles
+     1.12.4.2. tree ensembles
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#neural-nets-dnns">
-     1.14.4.3. neural nets (dnns)
+     1.12.4.3. neural nets (dnns)
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#dnn-visualization">
-       1.14.4.3.1. dnn visualization
+       1.12.4.3.1. dnn visualization
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#dnn-concept-based-explanations">
-       1.14.4.3.2. dnn concept-based explanations
+       1.12.4.3.2. dnn concept-based explanations
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#dnn-causal-motivated-attribution">
-       1.14.4.3.3. dnn causal-motivated attribution
+       1.12.4.3.3. dnn causal-motivated attribution
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#dnn-feature-importance">
-       1.14.4.3.4. dnn feature importance
+       1.12.4.3.4. dnn feature importance
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#dnn-attention">
-       1.14.4.3.5. dnn attention
+      <a class="reference internal nav-link" href="#dnn-language-models-transformers">
+       1.12.4.3.5. dnn language models / transformers
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#dnn-textual-explanations">
-       1.14.4.3.6. dnn textual explanations
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#self-explaining-llms">
-       1.14.4.3.7. self-explaining llms
+      <a class="reference internal nav-link" href="#textual-explanations">
+       1.12.4.3.6. textual explanations
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#interactions">
-     1.14.4.4. interactions
+     1.12.4.4. interactions
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#model-agnostic-interactions">
-       1.14.4.4.1. model-agnostic interactions
+       1.12.4.4.1. model-agnostic interactions
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#tree-based-interactions">
-       1.14.4.4.2. tree-based interactions
+       1.12.4.4.2. tree-based interactions
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#dnn-interactions">
-       1.14.4.4.3. dnn interactions
+       1.12.4.4.3. dnn interactions
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#linear-interactions">
-       1.14.4.4.4. linear interactions
+       1.12.4.4.4. linear interactions
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example-based-explanations">
-     1.14.4.5. example-based explanations
+     1.12.4.5. example-based explanations
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#model-summarization">
-     1.14.4.6. model summarization
+     1.12.4.6. model summarization
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#distillation">
-     1.14.4.7. distillation
+     1.12.4.7. distillation
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#different-problems-perspectives">
-   1.14.5. different problems / perspectives
+   1.12.5. different problems / perspectives
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#improving-models">
-     1.14.5.1. improving models
+     1.12.5.1. improving models
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#complementarity">
-     1.14.5.2. complementarity
+    <a class="reference internal nav-link" href="#dataset-interpretability-data-mining-automatic-data-viz">
+     1.12.5.2. dataset interpretability (data mining, automatic data viz)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#human-in-the-loop-hitl">
-     1.14.5.3. human-in-the-loop (HITL)
+     1.12.5.3. human-in-the-loop (HITL)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#recourse">
-     1.14.5.4. recourse
+     1.12.5.4. recourse
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#interp-for-rl">
-     1.14.5.5. interp for rl
+     1.12.5.5. interp for rl
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#differential-privacy">
-     1.14.5.6. differential privacy
+     1.12.5.6. differential privacy
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#interpretation-over-sets-perturbations">
-     1.14.5.7. interpretation over sets / perturbations
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#symbolic-reasoning">
-     1.14.5.8. symbolic reasoning
+     1.12.5.7. interpretation over sets / perturbations
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#ai-safety">
-     1.14.5.9. ai safety
+     1.12.5.8. ai safety
     </a>
    </li>
   </ul>
@@ -1310,14 +1280,14 @@ title="Print to PDF"
                 
               <div>
                 
-  <p><strong>some interesting papers on interpretable machine learning, largely organized based on this <a class="reference external" href="https://arxiv.org/abs/1901.04592">interpretable ml review</a> (murdoch et al. 2019) and notes from this <a class="reference external" href="https://christophm.github.io/interpretable-ml-book/">interpretable ml book</a> (molnar 2019).</strong></p>
+  <p><strong>Some interesting papers on interpretable machine learning, largely organized based on this <a class="reference external" href="https://arxiv.org/abs/1901.04592">interpretable ml review</a> (murdoch et al. 2019) and notes from this <a class="reference external" href="https://christophm.github.io/interpretable-ml-book/">interpretable ml book</a> (molnar 2019). For interpretability specific to transformers, see <a class="reference external" href="https://csinva.io/notes/research_ovws/ovw_transformers.html">here</a></strong>.</p>
 <section class="tex2jax_ignore mathjax_ignore" id="interpretability">
-<h1><span class="section-number">1.14. </span>interpretability<a class="headerlink" href="#interpretability" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">1.12. </span>interpretability<a class="headerlink" href="#interpretability" title="Permalink to this headline">#</a></h1>
 <p><img alt="" src="https://csinva.io/notes/cheat_sheets/interp.svg" /></p>
 <section id="reviews">
-<h2><span class="section-number">1.14.1. </span>reviews<a class="headerlink" href="#reviews" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.12.1. </span>reviews<a class="headerlink" href="#reviews" title="Permalink to this headline">#</a></h2>
 <section id="definitions">
-<h3><span class="section-number">1.14.1.1. </span>definitions<a class="headerlink" href="#definitions" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.12.1.1. </span>definitions<a class="headerlink" href="#definitions" title="Permalink to this headline">#</a></h3>
 <p>The definition of interpretability I find most useful is that given in <a class="reference external" href="https://arxiv.org/abs/1901.04592">murdoch et al. 2019</a>: basically that interpretability requires a pragmatic approach in order to be useful. As such, interpretability is only defined with respect to a specific audience + problem and an interpretation should be evaluated in terms of how well it benefits a specific context. It has been defined and studied more broadly in a variety of works:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://pbiecek.github.io/ema/">Explore, Explain and Examine Predictive Models</a> (biecek &amp; burzykowski, in progress) - another book on exploratory analysis with interpretability</p></li>
@@ -1330,7 +1300,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="overviews">
-<h3><span class="section-number">1.14.1.2. </span>overviews<a class="headerlink" href="#overviews" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.12.1.2. </span>overviews<a class="headerlink" href="#overviews" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://hal.inria.fr/hal-02131174v2/document">Towards a Generic Framework for Black-box Explanation Methods</a> (henin &amp; metayer 2019)</p>
 <ul>
@@ -1365,7 +1335,7 @@ title="Print to PDF"
 </section>
 </section>
 <section id="evaluating-interpretability">
-<h2><span class="section-number">1.14.2. </span>evaluating interpretability<a class="headerlink" href="#evaluating-interpretability" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.12.2. </span>evaluating interpretability<a class="headerlink" href="#evaluating-interpretability" title="Permalink to this headline">#</a></h2>
 <p>Evaluating interpretability can be very difficult (largely because it rarely makes sense to talk about interpretability outside of a specific context). The best possible evaluation of interpretability requires benchmarking it with respect to the relevant audience in a context. For example, if an interpretation claims to help understand radiology models, it should be tested based on how well it helps radiologists when actually making diagnoses. The papers here try to find more generic alternative ways to evaluate interp methods (or just define desiderata to do so).</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1702.08608.pdf">Towards A Rigorous Science of Interpretable Machine Learning</a> (doshi-velez &amp; kim 2017)</p>
@@ -1431,7 +1401,7 @@ title="Print to PDF"
 </li>
 </ul>
 <section id="basic-failures">
-<h3><span class="section-number">1.14.2.1. </span>basic failures<a class="headerlink" href="#basic-failures" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.12.2.1. </span>basic failures<a class="headerlink" href="#basic-failures" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://papers.nips.cc/paper/8160-sanity-checks-for-saliency-maps.pdf">Sanity Checks for Saliency Maps</a> (adebayo et al. 2018)</p>
 <ul>
@@ -1454,7 +1424,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="adv-vulnerabilities">
-<h3><span class="section-number">1.14.2.2. </span>adv. vulnerabilities<a class="headerlink" href="#adv-vulnerabilities" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.12.2.2. </span>adv. vulnerabilities<a class="headerlink" href="#adv-vulnerabilities" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/1710.10547">Interpretation of Neural Networks is Fragile</a> (ghorbani et al. 2018)</p>
 <ul>
@@ -1489,10 +1459,10 @@ title="Print to PDF"
 </section>
 </section>
 <section id="intrinsic-interpretability-i-e-how-can-we-fit-a-simpler-model">
-<h2><span class="section-number">1.14.3. </span>intrinsic interpretability (i.e. how can we fit a simpler model)<a class="headerlink" href="#intrinsic-interpretability-i-e-how-can-we-fit-a-simpler-model" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.12.3. </span>intrinsic interpretability (i.e. how can we fit a simpler model)<a class="headerlink" href="#intrinsic-interpretability-i-e-how-can-we-fit-a-simpler-model" title="Permalink to this headline">#</a></h2>
 <p>For an implementation of many of these models, see the python <a class="reference external" href="https://github.com/csinva/imodels">imodels package</a>.</p>
 <section id="decision-rules-overview">
-<h3><span class="section-number">1.14.3.1. </span>decision rules overview<a class="headerlink" href="#decision-rules-overview" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.12.3.1. </span>decision rules overview<a class="headerlink" href="#decision-rules-overview" title="Permalink to this headline">#</a></h3>
 <p><em>📌 see also notes on <a class="reference external" href="https://csinva.io/notes/ai/logic.html">logic</a></em></p>
 <ul class="simple">
 <li><p>2 basic concepts for a rule</p>
@@ -1528,7 +1498,7 @@ title="Print to PDF"
 </ul>
 <p><img alt="rule_models" src="../../_images/rule_models-6174107.png" /></p>
 <section id="rule-sets">
-<h4><span class="section-number">1.14.3.1.1. </span>rule sets<a class="headerlink" href="#rule-sets" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">1.12.3.1.1. </span>rule sets<a class="headerlink" href="#rule-sets" title="Permalink to this headline">#</a></h4>
 <p><em>Rule sets commonly look like a series of independent if-then rules. Unlike trees / lists, these rules can be overlapping and might not cover the whole space. Final predictions can be made via majority vote, using most accurate rule, or averaging predictions. Sometimes also called rule ensembles.</em></p>
 <ul class="simple">
 <li><p>popular ways to learn rule sets</p>
@@ -1581,7 +1551,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="rule-lists">
-<h4><span class="section-number">1.14.3.1.2. </span>rule lists<a class="headerlink" href="#rule-lists" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">1.12.3.1.2. </span>rule lists<a class="headerlink" href="#rule-lists" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>oneR algorithm - select feature that carries most information about the outcome and then split multiple times on that feature</p></li>
 <li><p><strong>sequential covering</strong> - keep trying to cover more points sequentially</p></li>
@@ -1629,7 +1599,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="trees">
-<h4><span class="section-number">1.14.3.1.3. </span>trees<a class="headerlink" href="#trees" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">1.12.3.1.3. </span>trees<a class="headerlink" href="#trees" title="Permalink to this headline">#</a></h4>
 <p><em>Trees suffer from the fact that they have to cover the entire decision space and often we end up with replicated subtrees.</em></p>
 <ul class="simple">
 <li><p><strong>optimal trees</strong></p>
@@ -1772,6 +1742,7 @@ title="Print to PDF"
 </li>
 </ul>
 </li>
+<li><p><a class="reference external" href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0275814">Human knowledge models: Learning applied knowledge from the data | PLOS ONE</a> (dudyrev…pianykh, 2022) - very concise logic model</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2101.01576">On the price of explainability for some clustering problems</a> (laber et al. 2021) - trees for clustering</p></li>
 <li><p>extremely randomized trees (<a class="reference external" href="https://link.springer.com/article/10.1007/s10994-006-6226-1">geurts et al. 2006</a>) - randomness goes further than Random Forest - randomly select not only the feature but also the split thresholds (and select the best out of some random set)</p></li>
 </ul>
@@ -1779,7 +1750,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="decision-diagrams">
-<h4><span class="section-number">1.14.3.1.4. </span>decision diagrams<a class="headerlink" href="#decision-diagrams" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">1.12.3.1.4. </span>decision diagrams<a class="headerlink" href="#decision-diagrams" title="Permalink to this headline">#</a></h4>
 <p><em>=decision graphs / decision streams</em></p>
 <ul class="simple">
 <li><p>Many algorithms for learning diagrams, usually by postprocessing a given tree (and taking an MDL perspective)</p></li>
@@ -1804,15 +1775,16 @@ title="Print to PDF"
 <li><p>proposing a SAT-based model for computing a decision tree as the smallest Reduced Ordered Binary Decision Diagram</p></li>
 <li><p>exploring heuristic approaches for deriving sub-optimal (i.e., not minimal) ROBDDs, in order to improve the scalability of the proposed technique.</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2203.11386">Optimizing Binary Decision Diagrams with MaxSAT for classification</a> (hu et al. 2022)</p></li>
+<li><p>Deep Differentiable Logic Gate Networks (<a class="reference external" href="https://arxiv.org/pdf/2210.08277.pdf">peterson, …, deussen, 2022</a>)</p></li>
 </ul>
 </li>
 </ul>
 </section>
 </section>
 <section id="linear-algebraic-models">
-<h3><span class="section-number">1.14.3.2. </span>linear (+algebraic) models<a class="headerlink" href="#linear-algebraic-models" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.12.3.2. </span>linear (+algebraic) models<a class="headerlink" href="#linear-algebraic-models" title="Permalink to this headline">#</a></h3>
 <section id="supersparse-models">
-<h4><span class="section-number">1.14.3.2.1. </span>supersparse models<a class="headerlink" href="#supersparse-models" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">1.12.3.2.1. </span>supersparse models<a class="headerlink" href="#supersparse-models" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>four main types of approaches to building scoring systems</p>
 <ol class="simple">
@@ -1835,10 +1807,11 @@ title="Print to PDF"
 </li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1811.12615">An Interpretable Model with Globally Consistent Explanations for Credit Risk</a> (chen et al. 2018) - a 2-layer linear additive model</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2202.11389">Fast Sparse Classification for Generalized Linear and Additive Models</a> (liu, …, seltzer, rudin, 2022)</p></li>
+<li><p><a class="reference external" href="http://proceedings.mlr.press/v108/askari20a.html">Naive Feature Selection: Sparsity in Naive Bayes</a> (askari,,,el ghaoui, 2020) - sparse naive bayes feature selection is on par with lasso but much faster</p></li>
 </ul>
 </section>
 <section id="gams-generalized-additive-models">
-<h4><span class="section-number">1.14.3.2.2. </span>gams (generalized additive models)<a class="headerlink" href="#gams-generalized-additive-models" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">1.12.3.2.2. </span>gams (generalized additive models)<a class="headerlink" href="#gams-generalized-additive-models" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>gam takes form <span class="math notranslate nohighlight">\(g(\mu) = b + f_0(x_0) + f_1(x_1) + f_2(x_2) + ...\)</span></p>
 <ul>
@@ -1849,7 +1822,7 @@ title="Print to PDF"
 <li><p>can also add in interaction terms (e.g. <span class="math notranslate nohighlight">\(f_i(x_1, x_2)\)</span>), but need a way to rank which interactions to add (see notes on interactions)</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/2004.13912">Neural Additive Models: Interpretable Machine Learning with Neural Nets</a> (agarwal, …, caruana, &amp; hinton, 2021) - GAM where we learn <span class="math notranslate nohighlight">\(f\)</span> with a neural net</p>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2004.13912">Neural Additive Models: Interpretable Machine Learning with Neural Nets</a> (agarwal, …, caruana, &amp; hinton, 2021) - GAM where we learn <span class="math notranslate nohighlight">\(f\)</span> with a neural net (also use ExU activation instead of ReLU to model sharp bumps)</p>
 <ul>
 <li><p>no interaction terms</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2202.12482">Sparse Neural Additive Model: Interpretable Deep Learning with Feature Selection via Group Sparsity</a></p></li>
@@ -1861,6 +1834,7 @@ title="Print to PDF"
 </li>
 </ul>
 </li>
+<li><p>Emb-GAM: an Interpretable and Efficient Predictor using Pre-trained Language Models (<a class="reference external" href="https://arxiv.org/abs/2209.11799">singh &amp; gao, 2022</a>) - use language model to extract embeddings which are then used to fit a better GAM (focuses on NLP)</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2106.01613">NODE-GAM: Neural Generalized Additive Model for Interpretable Deep Learning</a> (chang, caruana, &amp; goldenberg, 2021)</p>
 <ul>
 <li><p>includes interaction terms (all features are used initially and backprop decides which are kept) - they call this <span class="math notranslate nohighlight">\(GA^2M\)</span></p></li>
@@ -1891,7 +1865,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="symbolic-regression">
-<h4><span class="section-number">1.14.3.2.3. </span>symbolic regression<a class="headerlink" href="#symbolic-regression" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">1.12.3.2.3. </span>symbolic regression<a class="headerlink" href="#symbolic-regression" title="Permalink to this headline">#</a></h4>
 <p>Symbolic regression learns a symbolic (e.g. a mathematical formula) for a function from data  priors on what kinds of symboles (e.g. <code class="docutils literal notranslate"><span class="pre">sin</span></code>, <code class="docutils literal notranslate"><span class="pre">exp</span></code>) are more “difficult”</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://papers.nips.cc/paper/9308-demystifying-black-box-models-with-symbolic-metamodels.pdf">Demystifying Black-box Models with Symbolic Metamodels</a></p>
@@ -1913,7 +1887,7 @@ title="Print to PDF"
 </section>
 </section>
 <section id="example-based-case-based-e-g-prototypes-nearest-neighbor">
-<h3><span class="section-number">1.14.3.3. </span>example-based = case-based (e.g. prototypes, nearest neighbor)<a class="headerlink" href="#example-based-case-based-e-g-prototypes-nearest-neighbor" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.12.3.3. </span>example-based = case-based (e.g. prototypes, nearest neighbor)<a class="headerlink" href="#example-based-case-based-e-g-prototypes-nearest-neighbor" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>ProtoPNet: This looks like that (2nd paper) (<a class="reference external" href="https://arxiv.org/abs/1806.10574">chen, …, rudin, 2018</a>) - learn convolutional prototypes that are smaller than the original input size</p>
 <ul>
@@ -2004,17 +1978,18 @@ title="Print to PDF"
 </ul>
 </li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1907.03334">Case-Based Reasoning for Assisting Domain Experts in Processing Fraud Alerts of Black-Box Machine Learning Models</a></p></li>
-<li><p>ProtoAttend: Attention-Based Prototypical Learning (<a class="reference external" href="https://www.jmlr.org/papers/volume21/20-042/20-042.pdf">arik &amp; pfister, 2020</a>) - unlike ProtoPNet, each prediction is made as a weighted combination of similar rinput samples (like nearest-neighbor)</p></li>
+<li><p>ProtoAttend: Attention-Based Prototypical Learning (<a class="reference external" href="https://www.jmlr.org/papers/volume21/20-042/20-042.pdf">arik &amp; pfister, 2020</a>) - unlike ProtoPNet, each prediction is made as a weighted combination of similar input samples (like nearest-neighbor)</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/pdf/2110.15355.pdf">Explaining Latent Representations with a Corpus of Examples</a> (crabbe, …, van der schaar 2021) - for an individual prediction,</p>
 <ol class="simple">
 <li><p>Which corpus examples explain the prediction issued for a given test example?</p></li>
 <li><p>What features of these corpus examples are relevant for the model to relate them to the test example?</p></li>
 </ol>
 </li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2208.10431">ProtoPFormer: Concentrating on Prototypical Parts in Vision Transformers for Interpretable Image Recognition</a> (xue et al. 2022)</p></li>
 </ul>
 </section>
 <section id="interpretable-neural-nets">
-<h3><span class="section-number">1.14.3.4. </span>interpretable neural nets<a class="headerlink" href="#interpretable-neural-nets" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.12.3.4. </span>interpretable neural nets<a class="headerlink" href="#interpretable-neural-nets" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>concepts</p>
 <ul>
@@ -2095,7 +2070,7 @@ title="Print to PDF"
 <li><p><a class="reference external" href="https://openaccess.thecvf.com/content/CVPR2022/html/Bohle_B-Cos_Networks_Alignment_Is_All_We_Need_for_Interpretability_CVPR_2022_paper.html">B-Cos Networks: Alignment Is All We Need for Interpretability</a></p></li>
 </ul>
 <section id="connecting-dnns-and-rules">
-<h4><span class="section-number">1.14.3.4.1. </span>connecting dnns and rules<a class="headerlink" href="#connecting-dnns-and-rules" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">1.12.3.4.1. </span>connecting dnns and rules<a class="headerlink" href="#connecting-dnns-and-rules" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>interpretable</p>
 <ul>
@@ -2115,6 +2090,11 @@ title="Print to PDF"
 </li>
 <li><p><a class="reference external" href="https://www.jair.org/index.php/jair/article/view/12558">Optimizing for Interpretability in Deep Neural Networks with Tree Regularization | Journal of Artificial Intelligence Research</a> (wu…doshi-velez, 2021) - regularize DNN prediction function towards tree (potentially only for some region)</p></li>
 <li><p><a class="reference external" href="http://proceedings.mlr.press/v97/tanno19a.html?utm_campaign=piqcy&amp;utm_medium=email&amp;utm_source=Revue%20newsletter">Adaptive Neural Trees</a> (tanno et al. 2019) - adaptive neural tree mechanism with trainable nodes, edges, and leaves</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1702.02540">Automatic Rule Extraction from Long Short Term Memory Networks</a> (murdoch &amp; szlam, 2017) - extract out phrases using feature importance</p>
+<ul>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1801.05420">A Comparative Study of Rule Extraction for Recurrent Neural Networks</a> (wang…giles, 2018) - create automata based on interpretable states to track RNNs</p></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><p>loosely interpretable</p>
@@ -2234,7 +2214,7 @@ title="Print to PDF"
 </section>
 </section>
 <section id="constrained-models">
-<h3><span class="section-number">1.14.3.5. </span>constrained models<a class="headerlink" href="#constrained-models" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.12.3.5. </span>constrained models<a class="headerlink" href="#constrained-models" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>different constraints in <a class="reference external" href="https://www.tensorflow.org/lattice/overview">tensorflow lattice</a></p>
 <ul>
@@ -2257,8 +2237,9 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="misc-models">
-<h3><span class="section-number">1.14.3.6. </span>misc models<a class="headerlink" href="#misc-models" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.12.3.6. </span>misc models<a class="headerlink" href="#misc-models" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
+<li><p><a class="reference external" href="https://dl.acm.org/doi/abs/10.1145/3534678.3539356">AdaAX: Explaining Recurrent Neural Networks by Learning Automata with Adaptive States</a> (hong…wang, 2022)</p></li>
 <li><p>learning AND-OR Templates for Object Recognition and Detection (zhu_13)</p></li>
 <li><p>ross et al. - constraing model during training</p></li>
 <li><p>scat transform idea (mallat_16 rvw, oyallan_17)</p></li>
@@ -2283,14 +2264,14 @@ title="Print to PDF"
 <li><p><a class="reference external" href="https://link-springer-com.libproxy.berkeley.edu/article/10.1007/s10994-021-06091-7">Coefficient tree regression: fast, accurate and interpretable predictive modeling</a> (surer, apley, &amp; malthouse, 2021) - iteratively group linear terms with similar coefficients into a bigger term</p></li>
 </ul>
 <section id="bayesian-models">
-<h4><span class="section-number">1.14.3.6.1. </span>bayesian models<a class="headerlink" href="#bayesian-models" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">1.12.3.6.1. </span>bayesian models<a class="headerlink" href="#bayesian-models" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>e.g. naive bayes</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1910.09358">Making Bayesian Predictive Models Interpretable: A Decision Theoretic Approach</a></p></li>
 </ul>
 </section>
 <section id="programs">
-<h4><span class="section-number">1.14.3.6.2. </span>programs<a class="headerlink" href="#programs" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">1.12.3.6.2. </span>programs<a class="headerlink" href="#programs" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p><strong>program synthesis</strong> - automatically find a program in an underlying programming language that satisfies some user intent</p>
 <ul>
@@ -2304,10 +2285,10 @@ title="Print to PDF"
 </section>
 </section>
 <section id="posthoc-interpretability-i-e-how-can-we-interpret-a-fitted-model">
-<h2><span class="section-number">1.14.4. </span>posthoc interpretability (i.e. how can we interpret a fitted model)<a class="headerlink" href="#posthoc-interpretability-i-e-how-can-we-interpret-a-fitted-model" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.12.4. </span>posthoc interpretability (i.e. how can we interpret a fitted model)<a class="headerlink" href="#posthoc-interpretability-i-e-how-can-we-interpret-a-fitted-model" title="Permalink to this headline">#</a></h2>
 <p><em>Note that in this section we also include importances that work directly on the data (e.g. we do not first fit a model, rather we do nonparametric calculations of importance)</em></p>
 <section id="model-agnostic">
-<h3><span class="section-number">1.14.4.1. </span>model-agnostic<a class="headerlink" href="#model-agnostic" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.12.4.1. </span>model-agnostic<a class="headerlink" href="#model-agnostic" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Feature Removal Is a Unifying Principle for Model Explanation Methods (<a class="reference external" href="https://arxiv.org/abs/2011.03623">cover, lundberg, &amp; lee, 2020</a>) - many different methods, e.g. SHAP, LIME, meaningful perturbations, permutation tests, RISE can be viewed through feature removal</p></li>
 <li><p>local surrogate (<a class="reference external" href="https://arxiv.org/abs/1602.04938">LIME</a>) - fit a simple model locally to on point and interpret that</p>
@@ -2400,7 +2381,7 @@ instances (PDP problem)</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1904.00045">Interpreting Black Box Models via Hypothesis Testing</a></p></li>
 </ul>
 <section id="vim-variable-importance-measure-framework">
-<h4><span class="section-number">1.14.4.1.1. </span>vim (variable importance measure) framework<a class="headerlink" href="#vim-variable-importance-measure-framework" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">1.12.4.1.1. </span>vim (variable importance measure) framework<a class="headerlink" href="#vim-variable-importance-measure-framework" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>VIM</p>
 <ol class="simple">
@@ -2537,7 +2518,7 @@ instances (PDP problem)</p></li>
 </ul>
 </section>
 <section id="importance-curves">
-<h4><span class="section-number">1.14.4.1.2. </span>importance curves<a class="headerlink" href="#importance-curves" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">1.12.4.1.2. </span>importance curves<a class="headerlink" href="#importance-curves" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p><strong>pdp plots</strong> - marginals (force value of plotted var to be what you want it to be)</p>
 <ul>
@@ -2580,7 +2561,7 @@ instances (PDP problem)</p></li>
 </section>
 </section>
 <section id="tree-ensembles">
-<h3><span class="section-number">1.14.4.2. </span>tree ensembles<a class="headerlink" href="#tree-ensembles" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.12.4.2. </span>tree ensembles<a class="headerlink" href="#tree-ensembles" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><strong>mean decrease impurity</strong> = MDI = Gini importance</p></li>
 <li><p>Breiman proposes <strong>permutation tests</strong> = MDA: Breiman, Leo. 2001. “Random Forests.” Machine Learning 45 (1). Springer: 5–32</p>
@@ -2672,9 +2653,9 @@ instances (PDP problem)</p></li>
 </ul>
 </section>
 <section id="neural-nets-dnns">
-<h3><span class="section-number">1.14.4.3. </span>neural nets (dnns)<a class="headerlink" href="#neural-nets-dnns" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.12.4.3. </span>neural nets (dnns)<a class="headerlink" href="#neural-nets-dnns" title="Permalink to this headline">#</a></h3>
 <section id="dnn-visualization">
-<h4><span class="section-number">1.14.4.3.1. </span>dnn visualization<a class="headerlink" href="#dnn-visualization" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">1.12.4.3.1. </span>dnn visualization<a class="headerlink" href="#dnn-visualization" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p><a class="reference external" href="https://distill.pub/2017/feature-visualization/">good summary on distill</a></p></li>
 <li><p><strong>visualize intermediate features</strong></p>
@@ -2797,9 +2778,9 @@ instances (PDP problem)</p></li>
 </ul>
 </section>
 <section id="dnn-concept-based-explanations">
-<h4><span class="section-number">1.14.4.3.2. </span>dnn concept-based explanations<a class="headerlink" href="#dnn-concept-based-explanations" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">1.12.4.3.2. </span>dnn concept-based explanations<a class="headerlink" href="#dnn-concept-based-explanations" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
-<li><p><a class="reference external" href="https://arxiv.org/abs/1711.11279">concept activation vectors</a></p>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1711.11279">concept activation vectors</a> (kim et al. 2018)</p>
 <ul>
 <li><p>Given: a user-defined set of examples for a concept (e.g., ‘striped’), and random
 examples, labeled training-data examples for the studied class (zebras)</p>
@@ -2814,13 +2795,14 @@ a concept’s examples and examples in any layer</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1902.03129">automated concept activation vectors</a> - Given a set of concept discovery images, each image is segmented with different resolutions to find concepts that are captured best at different sizes. (b) After removing duplicate segments, each segment is resized tothe original input size resulting in a pool of resized segments of the discovery images. (c) Resized segments are mapped to a model’s activation space at a bottleneck layer. To discover the concepts associated with the target class, clustering with outlier removal is performed. (d) The output of our method is a set of discovered concepts for each class, sorted by their importance in prediction</p></li>
 </ul>
 </li>
+<li><p>Concept Gradient: Concept-based Interpretation Without Linear Assumption (<a class="reference external" href="https://arxiv.org/pdf/2208.14966.pdf">bai…ravikumar..hsieh, 2022</a>)</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1910.07969">On Completeness-aware Concept-Based Explanations in Deep Neural Networks</a></p></li>
 <li><p><a class="reference external" href="https://openaccess.thecvf.com/content_ECCV_2018/html/Antonio_Torralba_Interpretable_Basis_Decomposition_ECCV_2018_paper.html">Interpretable Basis Decomposition for Visual Explanation</a> (zhou et al. 2018) - decompose activations of the input image into semantically interpretable components pre-trained from a large concept corpus</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2104.13369">Explaining in Style: Training a GAN to explain a classifier in StyleSpace</a> (lang et al. 2021)</p></li>
 </ul>
 </section>
 <section id="dnn-causal-motivated-attribution">
-<h4><span class="section-number">1.14.4.3.3. </span>dnn causal-motivated attribution<a class="headerlink" href="#dnn-causal-motivated-attribution" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">1.12.4.3.3. </span>dnn causal-motivated attribution<a class="headerlink" href="#dnn-causal-motivated-attribution" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/2006.02482">Explaining The Behavior Of Black-Box Prediction Algorithms With Causal Learning</a> - specify some interpretable features and learn a causal graph of how the classifier uses these features (sani et al. 2021)</p>
 <ul>
@@ -2874,10 +2856,15 @@ a concept’s examples and examples in any layer</p></li>
 <li><p><em>Bayesian interpolant</em> show <span class="math notranslate nohighlight">\(P(A|B) \geq \alpha^2\)</span> when <span class="math notranslate nohighlight">\(P(I|A) \geq \alpha\)</span> and <span class="math notranslate nohighlight">\(P(B|I) \geq \alpha\)</span></p></li>
 </ul>
 </li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2111.06206">Towards Axiomatic, Hierarchical, and Symbolic Explanation for Deep Models</a> (ren…zhang, 2021) - summarize DNN predictions as a DAG</p>
+<ul>
+<li><p>DAG can be further summarized into set of AND nodes followed by OR nodes</p></li>
+</ul>
+</li>
 </ul>
 </section>
 <section id="dnn-feature-importance">
-<h4><span class="section-number">1.14.4.3.4. </span>dnn feature importance<a class="headerlink" href="#dnn-feature-importance" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">1.12.4.3.4. </span>dnn feature importance<a class="headerlink" href="#dnn-feature-importance" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>saliency maps</p>
 <ol class="simple">
@@ -2972,8 +2959,8 @@ a concept’s examples and examples in any layer</p></li>
 </li>
 </ul>
 </section>
-<section id="dnn-attention">
-<h4><span class="section-number">1.14.4.3.5. </span>dnn attention<a class="headerlink" href="#dnn-attention" title="Permalink to this headline">#</a></h4>
+<section id="dnn-language-models-transformers">
+<h4><span class="section-number">1.12.4.3.5. </span>dnn language models / transformers<a class="headerlink" href="#dnn-language-models-transformers" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/2005.09379">Staying True to Your Word: (How) Can Attention Become Explanation?</a></p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1902.10186">attention is not explanation</a> (jain &amp; wallace, 2019)</p></li>
@@ -2981,10 +2968,17 @@ a concept’s examples and examples in any layer</p></li>
 <li><p>influence = pred with a word - pred with a word masked</p></li>
 <li><p>attention corresponds to this kind of influence</p></li>
 <li><p>deceptive attention - we can successfully train a model to make similar predictions but have different attention</p></li>
+<li><p>An Empirical Examination of Local Composition in Language Models (<a class="reference external" href="https://arxiv.org/pdf/2210.03575.pdf">liu &amp; neubig, 2022</a>)</p>
+<ul>
+<li><p>predict phrase embedding given embeddings of children</p></li>
+<li><p>phrase embedding accuracy isn’t correlated with actual semantic compositionality</p></li>
+</ul>
+</li>
 </ul>
 </section>
-<section id="dnn-textual-explanations">
-<h4><span class="section-number">1.14.4.3.6. </span>dnn textual explanations<a class="headerlink" href="#dnn-textual-explanations" title="Permalink to this headline">#</a></h4>
+<section id="textual-explanations">
+<h4><span class="section-number">1.12.4.3.6. </span>textual explanations<a class="headerlink" href="#textual-explanations" title="Permalink to this headline">#</a></h4>
+<p><strong>see also notes in <a class="reference external" href="https://csinva.io/notes/research_ovws/ovw_transformers.html">ovw_transformers</a>!</strong></p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1812.05634.pdf">Adversarial Inference for Multi-Sentence Video Description</a> - adversarial techniques during inference for a better multi-sentence video description</p></li>
 <li><p><a class="reference external" href="https://aclweb.org/anthology/D18-1437">Object Hallucination in Image Captioning</a> - image relevance metric - asses rate of object hallucination</p>
@@ -2996,26 +2990,14 @@ a concept’s examples and examples in any layer</p></li>
 <li><p><a class="reference external" href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Xu_Fooling_Vision_and_CVPR_2018_paper.pdf">Fooling Vision and Language Models Despite Localization and Attention Mechanism</a> -  can do adversarial attacks on captioning and VQA</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1511.03745.pdf">Grounding of Textual Phrases in Images by Reconstruction</a> - given text and image provide a bounding box (supervised problem w/ attention)</p></li>
 <li><p><a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/8791710">Natural Language Explanations of Classifier Behavior</a></p></li>
-</ul>
-</section>
-<section id="self-explaining-llms">
-<h4><span class="section-number">1.14.4.3.7. </span>self-explaining llms<a class="headerlink" href="#self-explaining-llms" title="Permalink to this headline">#</a></h4>
-<ul class="simple">
-<li><p><a class="reference external" href="https://arxiv.org/abs/2201.11903">Chain of Thought Prompting Elicits Reasoning in Large Language Models</a> (2022)</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/2205.09712">Selection-Inference: Exploiting Large Language Models for Interpretable Logical Reasoning</a> (2022)</p>
-<ul>
-<li><p>selection step - takes in concatenated [context, question, selection]×𝑘 for k-shot prompting, followed by [context, question] and is asked to select a subset of facts from the context to support a single step of reasoning.</p></li>
-<li><p>inference step - takes in [selection, inference]×𝑘 for k-shot prompting, followed by the selection produced by the Selection module to produce a new fact (the inference) to be added to the context</p></li>
-<li><p>the reasoning trace produced by our system is causal, in the sense that each step follows from, and depends on, the previous step</p></li>
-</ul>
-</li>
+<li><p><a class="reference external" href="https://eli5.readthedocs.io/en/latest/libraries/sklearn.html#library-scikit-learn">eli5</a> has nice text highlighting for interp</p></li>
 </ul>
 </section>
 </section>
 <section id="interactions">
-<h3><span class="section-number">1.14.4.4. </span>interactions<a class="headerlink" href="#interactions" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.12.4.4. </span>interactions<a class="headerlink" href="#interactions" title="Permalink to this headline">#</a></h3>
 <section id="model-agnostic-interactions">
-<h4><span class="section-number">1.14.4.4.1. </span>model-agnostic interactions<a class="headerlink" href="#model-agnostic-interactions" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">1.12.4.4.1. </span>model-agnostic interactions<a class="headerlink" href="#model-agnostic-interactions" title="Permalink to this headline">#</a></h4>
 <p>How interactions are defined and summarized is a very difficult thing to specify. For example, interactions can change based on monotonic transformations of features (e.g. <span class="math notranslate nohighlight">\(y= a \cdot b\)</span>, <span class="math notranslate nohighlight">\(\log y = \log a + \log b\)</span>). Nevertheless, when one has a specific question it can make sense to pursue finding and understanding interactions.</p>
 <ul>
 <li><p>build-up = context-free, less faithful: score is contribution of only variable of interest ignoring other variables</p></li>
@@ -3081,7 +3063,7 @@ a concept’s examples and examples in any layer</p></li>
 </ul>
 </section>
 <section id="tree-based-interactions">
-<h4><span class="section-number">1.14.4.4.2. </span>tree-based interactions<a class="headerlink" href="#tree-based-interactions" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">1.12.4.4.2. </span>tree-based interactions<a class="headerlink" href="#tree-based-interactions" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.pnas.org/content/115/8/1943">iterative random forest</a> (basu et al. 2018)</p>
 <ul>
@@ -3124,7 +3106,7 @@ a concept’s examples and examples in any layer</p></li>
 </ul>
 </section>
 <section id="dnn-interactions">
-<h4><span class="section-number">1.14.4.4.3. </span>dnn interactions<a class="headerlink" href="#dnn-interactions" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">1.12.4.4.3. </span>dnn interactions<a class="headerlink" href="#dnn-interactions" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>ACD: hierarchical interpretations for neural network predictions (<a class="reference external" href="https://arxiv.org/abs/1806.05337">singh et al. 2019</a>)</p>
 <ul>
@@ -3152,7 +3134,7 @@ a concept’s examples and examples in any layer</p></li>
 </ul>
 </section>
 <section id="linear-interactions">
-<h4><span class="section-number">1.14.4.4.4. </span>linear interactions<a class="headerlink" href="#linear-interactions" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">1.12.4.4.4. </span>linear interactions<a class="headerlink" href="#linear-interactions" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>often use “hierarchy” or “heredity” constraint - means interaction term is only added when both main effects are also included</p></li>
 <li><p>hierarchical group lasso (<a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/26759522/">lim &amp; hastie, 2015</a>) - learns pairwise interactions in a linear model</p>
@@ -3169,7 +3151,7 @@ a concept’s examples and examples in any layer</p></li>
 </section>
 </section>
 <section id="example-based-explanations">
-<h3><span class="section-number">1.14.4.5. </span>example-based explanations<a class="headerlink" href="#example-based-explanations" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.12.4.5. </span>example-based explanations<a class="headerlink" href="#example-based-explanations" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>influential instances - want to find important data points</p></li>
 <li><p>deletion diagnostics - delete a point and see how much it changed</p></li>
@@ -3213,7 +3195,7 @@ a concept’s examples and examples in any layer</p></li>
 </ul>
 </section>
 <section id="model-summarization">
-<h3><span class="section-number">1.14.4.6. </span>model summarization<a class="headerlink" href="#model-summarization" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.12.4.6. </span>model summarization<a class="headerlink" href="#model-summarization" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1806.10270.pdf">piecewise linear interp</a></p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1908.06214">Computing Linear Restrictions of Neural Networks</a> - calculate function of neural network restricting its points to lie on a line</p></li>
@@ -3232,10 +3214,11 @@ a concept’s examples and examples in any layer</p></li>
 </ul>
 </li>
 <li><p><a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/9346401">Interpreting Deep Neural Networks through Prototype Factorization</a> - posthoc convert DNN into having different factors</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2211.12491">ModelDiff: A Framework for Comparing Learning Algorithms</a> (shah, …, ilyas, madry, 2022) - find the difference between 2 learned models (by searching for feature transformations where they differ)</p></li>
 </ul>
 </section>
 <section id="distillation">
-<h3><span class="section-number">1.14.4.7. </span>distillation<a class="headerlink" href="#distillation" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.12.4.7. </span>distillation<a class="headerlink" href="#distillation" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>usually distillation refers to training a surrogate model on the predictions of the original model, but here I use it looser</p></li>
 <li><p>model distillation (model-agnostic)</p>
@@ -3273,9 +3256,10 @@ a concept’s examples and examples in any layer</p></li>
 </section>
 </section>
 <section id="different-problems-perspectives">
-<h2><span class="section-number">1.14.5. </span>different problems / perspectives<a class="headerlink" href="#different-problems-perspectives" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.12.5. </span>different problems / perspectives<a class="headerlink" href="#different-problems-perspectives" title="Permalink to this headline">#</a></h2>
 <section id="improving-models">
-<h3><span class="section-number">1.14.5.1. </span>improving models<a class="headerlink" href="#improving-models" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.12.5.1. </span>improving models<a class="headerlink" href="#improving-models" title="Permalink to this headline">#</a></h3>
+<p>Nice overview <a class="reference external" href="https://github.com/stefanoteso/awesome-explanatory-supervision">here</a>.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/1909.13584">Interpretations are useful: penalizing explanations to align neural networks with prior knowledge</a> (rieger et al. 2020)</p>
 <ul>
@@ -3308,9 +3292,6 @@ a concept’s examples and examples in any layer</p></li>
 </ul>
 </li>
 </ul>
-</section>
-<section id="complementarity">
-<h3><span class="section-number">1.14.5.2. </span>complementarity<a class="headerlink" href="#complementarity" title="Permalink to this headline">#</a></h3>
 <p><strong>complementarity</strong> - ML should focus on points hard for humans + seek human input on points hard for ML</p>
 <ul class="simple">
 <li><p>note: goal of ML isn’t to learn categories but learn things that are associated with actions</p></li>
@@ -3337,10 +3318,35 @@ a concept’s examples and examples in any layer</p></li>
 <li><p>Partially Interpretable Estimators (PIE): Black-Box-Refined Interpretable Machine Learning (<a class="reference external" href="https://arxiv.org/abs/2105.02410">wang et al. 2021</a>) - interpretable model for individual features and black-box model captures feature interactions (on residuals)</p></li>
 </ul>
 </li>
+<li><p><a class="reference external" href="https://www.proquest.com/docview/2628490400?pq-origsite=gscholar&amp;fromopenview=true">Three Maxims for Developing Human-Centered AI for Decision Making</a> (2022) - <a class="reference external" href="https://scholar.google.com/citations?user=eCSI4pMAAAAJ&amp;hl=en&amp;oi=ao">‪Gagan Bansal‬</a> has more papers like this</p>
+<ul>
+<li><p>help users understand <em>when to trust</em> AI recommendations</p></li>
+<li><p><em>preserve user’s mental model of AI’s trustworthiness</em></p></li>
+<li><p>train AI to <em>optimize for team performance</em>.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="dataset-interpretability-data-mining-automatic-data-viz">
+<h3><span class="section-number">1.12.5.2. </span>dataset interpretability (data mining, automatic data viz)<a class="headerlink" href="#dataset-interpretability-data-mining-automatic-data-viz" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>similar to causality, we may want to use interpretability just to understand our data rather than to get any form of model</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1911.09668">Visualization by Example</a> (chenglong wang…dillig, 2019) - automatically synthesize a program to visual data based on user “sketches” = partial visualization of a subset of the data by the user</p>
+<ul>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2102.01024">Falx: Synthesis-Powered Visualization Authoring</a> (chenglong wang…ko, 2021)</p></li>
+</ul>
+</li>
+<li><p>see also things in <a class="reference external" href="https://github.com/csinva/imodelsX">imodelsX</a></p></li>
+<li><p><strong>Coreset algorithms</strong> - summarize datasets with smaller dataset that accurately represent the full dataset on downstream tasks</p>
+<ul>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1910.08707">Introduction to Coresets: Accurate Coresets</a></p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2210.12067">Efficient Dataset Distillation Using Random Feature Approximation</a> (2022)</p></li>
+</ul>
+</li>
 </ul>
 </section>
 <section id="human-in-the-loop-hitl">
-<h3><span class="section-number">1.14.5.3. </span>human-in-the-loop (HITL)<a class="headerlink" href="#human-in-the-loop-hitl" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.12.5.3. </span>human-in-the-loop (HITL)<a class="headerlink" href="#human-in-the-loop-hitl" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://jessylin.com/2020/06/08/rethinking-human-ai-interaction/">rethinking human-ai interaction (blog)</a></p>
 <ul>
@@ -3405,7 +3411,7 @@ a concept’s examples and examples in any layer</p></li>
 </ul>
 </section>
 <section id="recourse">
-<h3><span class="section-number">1.14.5.4. </span>recourse<a class="headerlink" href="#recourse" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.12.5.4. </span>recourse<a class="headerlink" href="#recourse" title="Permalink to this headline">#</a></h3>
 <p><strong>recourse</strong> - can a person obtain desired prediction from fixed mode by changing actionable input variables (not just standard explainability)</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1809.06514.pdf">actionable recourse in linear classification</a> (ustun et al. 2019)</p>
@@ -3420,7 +3426,7 @@ a concept’s examples and examples in any layer</p></li>
 </ul>
 </section>
 <section id="interp-for-rl">
-<h3><span class="section-number">1.14.5.5. </span>interp for rl<a class="headerlink" href="#interp-for-rl" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.12.5.5. </span>interp for rl<a class="headerlink" href="#interp-for-rl" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>heatmaps</p></li>
 <li><p>visualize most interesting states / rollouts</p></li>
@@ -3463,13 +3469,13 @@ a concept’s examples and examples in any layer</p></li>
 </ul>
 </section>
 <section id="differential-privacy">
-<h3><span class="section-number">1.14.5.6. </span>differential privacy<a class="headerlink" href="#differential-privacy" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.12.5.6. </span>differential privacy<a class="headerlink" href="#differential-privacy" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>differential private if the outputs of the model do not change (within some epsilon tolerance) if you remove a single datapoint</p></li>
 </ul>
 </section>
 <section id="interpretation-over-sets-perturbations">
-<h3><span class="section-number">1.14.5.7. </span>interpretation over sets / perturbations<a class="headerlink" href="#interpretation-over-sets-perturbations" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.12.5.7. </span>interpretation over sets / perturbations<a class="headerlink" href="#interpretation-over-sets-perturbations" title="Permalink to this headline">#</a></h3>
 <p>These papers don’t quite connect to prediction, but are generally about finding stable interpretations across a set of models / choices.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.nature.com/articles/s42256-020-00264-0">Exploring the cloud of variable importance for the set of all good models</a> (dong &amp; rudin, 2020)</p></li>
@@ -3593,70 +3599,50 @@ a concept’s examples and examples in any layer</p></li>
 </li>
 </ul>
 </section>
-<section id="symbolic-reasoning">
-<h3><span class="section-number">1.14.5.8. </span>symbolic reasoning<a class="headerlink" href="#symbolic-reasoning" title="Permalink to this headline">#</a></h3>
-<ul class="simple">
-<li><p><a class="reference external" href="https://arxiv.org/abs/2205.11916">Large Language Models are Zero-Shot Reasoners</a> - Simply adding “Let’s think step by step” before each answer increases the accuracy on MultiArith from 17.7% to 78.7% and GSM8K from 10.4% to 40.7% with GPT-3</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/2205.01128">Neurocompositional computing: From the Central Paradox of Cognition to a new generation of AI systems</a> (smolensky et al. 2022)</p>
-<ul>
-<li><p>Compositionality</p></li>
-<li><p>Continuity - the encoding and processing of information is formalized with real numbers that vary continuously</p></li>
-<li><p>neural space vs symbolic space (many different things (e.g. sentences) can mean the same thing)</p></li>
-<li><p>want to move from symbolic repr. to neural repr. while keeping interpretability</p>
-<ul>
-<li><p>system should output intermediate steps in addition to answer</p></li>
-<li><p>thinking fast + slow (system 1: fast, intuitive) (system 2: slower, logical, derivative)</p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><a class="reference external" href="https://www.microsoft.com/en-us/research/publication/enhancing-the-transformer-with-explicit-relational-encoding-for-math-problem-solving/">Enhancing the Transformer with Explicit Relational Encoding for Math Problem Solving - Microsoft Research</a> (schlag, …, gao, 2019)</p>
-<ul>
-<li><p>TP-attention</p></li>
-<li><p>beat soa on free-form math word-problems</p></li>
-<li><p><a class="reference external" href="https://www.sciencedirect.com/science/article/abs/pii/000437029090007M?via%3Dihub">Tensor product variable binding and the representation of symbolic structures in connectionist systems - ScienceDirect</a> (paul smolensky, 1990) - activation patterns are “symbols” and internal structure allows them to be processed like symbols</p>
-<ul>
-<li><p>tensor product representation = TPR</p></li>
-<li><p><a class="reference external" href="https://www.mit.edu/~jda/teaching/6.884/slides/oct_02.pdf">TPR slides</a></p></li>
-<li><p>TPR of a structure is the sum of the TPR of its constituents</p>
-<ul>
-<li><p>tensor product operation allows constiuents to be uniquely identified, even after the sum (if roles are linearly independent)</p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>in addition to K, Q, V, also add a role-vector</p>
-<ul>
-<li><p>do element-wise multiplication of outputted vector with role-vector</p></li>
-</ul>
-</li>
-<li><p>TPR built as tensor product of 2 vectors:</p>
-<ul>
-<li><p><strong>filler</strong> - one vector that embeds the content of the constituent – here, the vector returned by attention</p>
-<ul>
-<li><p>ex. one head learns “second-argument-of”</p></li>
-</ul>
-</li>
-<li><p><strong>role</strong> - second vector that embeds the structural role it fills — here, a relation conceptually labeling an edge of the attention graph</p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><a class="reference external" href="https://www.microsoft.com/en-us/research/publication/natural-to-formal-language-generation-using-tensor-product-representations/">TP-N2F: Tensor Product Representation for Natural To Formal Language Generation - Microsoft Research</a> (chen…gao, 2019)</p></li>
-</ul>
-</section>
 <section id="ai-safety">
-<h3><span class="section-number">1.14.5.9. </span>ai safety<a class="headerlink" href="#ai-safety" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.12.5.8. </span>ai safety<a class="headerlink" href="#ai-safety" title="Permalink to this headline">#</a></h3>
+<p><strong>agi definitions</strong></p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://arxiv.org/abs/1606.06565">Concrete Problems in AI Safety</a></p>
+<li><p>AI systems are fully substitutable for human labor, or have a comparably large impact (from Future Fund prize)</p></li>
+<li><p>APS properties (carlsmith, 2022)</p>
 <ul>
-<li><p><strong>Robustness to distributional shift.</strong> <em>Can ML be robust to changes in the data distribution, or at least fail gracefully?</em> For example, can we build <a class="reference external" href="https://www.tensorflow.org/versions/r0.9/tutorials/deep_cnn/index.html">image classifiers</a> that indicate appropriate uncertainty when shown new kinds of images, instead of confidently trying to use its <a class="reference external" href="http://arxiv.org/abs/1412.6572">potentially inapplicable</a> learned model?</p></li>
-<li><p><strong>Safe exploration.</strong> <em>Can RL agents learn about their environment without executing catastrophic actions?</em> For example, can an RL agent learn to navigate an environment without ever falling off a ledge?</p></li>
-<li><p><strong>Avoiding negative side effects.</strong> <em>Can we transform an RL agent’s <a class="reference external" href="https://webdocs.cs.ualberta.ca/~sutton/book/ebook/node9.html">reward function</a> to avoid undesired effects on the environment?</em> For example, can we build a robot that will move an object while avoiding knocking anything over or breaking anything, without manually programming a separate penalty for each possible bad behavior?</p></li>
-<li><p><strong>Avoiding “reward hacking” and “<a class="reference external" href="http://www.agroparistech.fr/mmip/maths/laurent_orseau/papers/ring-orseau-AGI-2011-delusion.pdf">wireheading</a>”.</strong> <em>Can we prevent agents from “gaming” their reward functions, such as by distorting their observations?</em> For example, can we train an RL agent to minimize the number of dirty surfaces in a building, without causing it to avoid looking for dirty surfaces or to create new dirty surfaces to clean up?</p></li>
-<li><p><strong>Scalable oversight.</strong> <em>Can RL agents efficiently achieve goals for which feedback is very expensive?</em> For example, can we build an agent that tries to clean a room in the way the user would be happiest with, even though feedback from the user is very rare and we have to use cheap approximations (like the presence of visible dirt) during training? The divergence between cheap approximations and what we actually care about is an important source of accident risk.</p></li>
+<li><p><strong>A</strong>dvanced capability: they outperform the best humans on some set of tasks which when performed at advanced levels grant significant power in today’s world (tasks like scientific research, business/military/political strategy, engineering, and persuasion/manipulation)</p>
+<ul>
+<li><p>Agentic <strong>p</strong>lanning: they make and execute plans, in pursuit of objectives, on the basis of models of the world</p></li>
+<li><p><strong>S</strong>trategic awareness: the models they use in making plans represent with reasonable accuracy the causal upshot of gaining and maintaining power over humans and the real-world environment.</p></li>
 </ul>
 </li>
+</ul>
+</li>
+</ul>
+<p><strong>papers</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://arxiv.org/abs/1606.06565">Concrete Problems in AI Safety</a></p></li>
+<li><p><strong>Robustness to distributional shift.</strong> <em>Can ML be robust to changes in the data distribution, or at least fail gracefully?</em></p></li>
+<li><p><strong>Safe exploration.</strong> <em>Can RL agents learn about their environment without executing catastrophic actions?</em></p></li>
+<li><p><strong>Avoiding negative side effects.</strong> <em>Can we transform an RL agent’s <a class="reference external" href="https://webdocs.cs.ualberta.ca/~sutton/book/ebook/node9.html">reward function</a> to avoid undesired effects on the environment?</em></p></li>
+<li><p><strong>Avoiding “reward hacking” and “<a class="reference external" href="http://www.agroparistech.fr/mmip/maths/laurent_orseau/papers/ring-orseau-AGI-2011-delusion.pdf">wireheading</a>”.</strong> <em>Can we prevent agents from “gaming” their reward functions, such as by distorting their observations?</em></p></li>
+<li><p><strong>Scalable oversight.</strong> <em>Can RL agents efficiently achieve goals for which feedback is very expensive?</em></p></li>
+<li><p>When will [AGI be developed](<a class="reference external" href="https://ftxfuturefund.org/announcing-the-future-funds-ai-worldview-prize/">Announcing the Future Fund’s AI Worldview Prize – Future Fund</a>) (future fund competition)</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2206.13353">Is Power-Seeking AI an Existential Risk?</a> (carlsmith, 2022)</p></li>
+<li><p>6 points</p>
+<ol class="simple">
+<li><p>it will become possible and financially feasible to build relevantly powerful and agentic AI systems</p></li>
+<li><p>there will be strong incentives to do so</p></li>
+<li><p>it will be much harder to build aligned (and relevantly powerful/agentic) AI systems than to build misaligned (and relevantly powerful/agentic) AI systems that are still superficially attractive to deploy</p></li>
+<li><p>some such misaligned systems will seek power over humans in high-impact ways</p></li>
+<li><p>this problem will scale to the full disempowerment of humanity</p></li>
+<li><p>such disempowerment will constitute an existential catastrophe</p></li>
+</ol>
+</li>
+<li><p>backdrop</p>
+<ul>
+<li><p>no reason to believe brain is anywhere near a hard limit (e.g. limitations on speed, memory)</p></li>
+<li><p>AI systems that don’t seek to gain or maintain power may cause a lot of harm, but this harm is more easily limited by the power they already have (so wouldn’t count as existential risk)</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://wp.nyu.edu/arg/why-ai-safety/">Why I Think More NLP Researchers Should Engage with AI Safety Concerns – NYU Alignment Research Group</a> (sam bowman, 2022)</p></li>
+<li><p><a class="reference external" href="https://www.alignmentforum.org/posts/EFpQcBmfm2bFfM4zM/ai-safety-and-neighboring-communities-a-quick-start-guide-as">AI Safety and Neighboring Communities: A Quick-Start Guide, as of Summer 2022 - AI Alignment Forum</a> (sam bowman, 2022)</p></li>
 </ul>
 </section>
 </section>
@@ -3693,13 +3679,13 @@ a concept’s examples and examples in any layer</p></li>
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">1.13. </span>uncertainty</p>
+            <p class="prev-next-title"><span class="section-number">1.11. </span>uncertainty</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="ovw_generalization.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1.15. </span>generalization</p>
+        <p class="prev-next-title"><span class="section-number">1.13. </span>generalization</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -1322,16 +1322,17 @@ These papers don't quite connect to prediction, but are generally about finding 
 
 **agi definitions**
 
--  AI systems are fully substitutable for human labor (or have a comparably large impact (from Future Fund prize)
+-  AI systems are fully substitutable for human labor, or have a comparably large impact (from Future Fund prize)
 -  APS properties (carlsmith, 2022)
 
-   -  Advanced capability: they outperform the best humans on some set of tasks which when performed at advanced levels grant significant power in today’s world (tasks like scientific research, business/military/political strategy, engineering, and persuasion/manipulation)
-
-
-   -  Agentic planning: they make and execute plans, in pursuit of objectives, on the basis of models of the world
-
-
-   -  Strategic awareness: the models they use in making plans represent with reasonable accuracy the causal upshot of gaining and maintaining power over humans and the real-world environment.
+   -  **A**dvanced capability: they outperform the best humans on some set of tasks which when performed at advanced levels grant significant power in today’s world (tasks like scientific research, business/military/political strategy, engineering, and persuasion/manipulation)
+   
+   
+      -  Agentic **p**lanning: they make and execute plans, in pursuit of objectives, on the basis of models of the world
+   
+   
+      -  **S**trategic awareness: the models they use in making plans represent with reasonable accuracy the causal upshot of gaining and maintaining power over humans and the real-world environment.
+   
 
 **papers**
 

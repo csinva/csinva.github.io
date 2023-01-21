@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>1.9. ml in medicine</title>
+    <title>1.8. ml in medicine</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="1.10. transformers" href="ovw_transformers.html" />
-    <link rel="prev" title="1.8. scattering transform" href="ovw_scat.html" />
+    <link rel="next" title="1.9. transformers" href="ovw_transformers.html" />
+    <link rel="prev" title="1.7. scattering transform" href="ovw_scat.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -123,78 +123,68 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="ovw_comp_neuro.html">
-     1.1. comp neuro
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="ovw_transfer_learning.html">
-     1.2. transfer learning
+     1.1. transfer learning
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_disentanglement.html">
-     1.3. disentanglement
+     1.2. disentanglement
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_omics.html">
-     1.4. omics
+     1.3. omics
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_complexity.html">
-     1.5. complexity
+     1.4. complexity
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_interesting_science.html">
-     1.6. interesting science
+     1.5. interesting science
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_dl_theory.html">
-     1.7. dl theory
+     1.6. dl theory
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_scat.html">
-     1.8. scattering transform
+     1.7. scattering transform
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     1.9. ml in medicine
+     1.8. ml in medicine
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_transformers.html">
-     1.10. transformers
+     1.9. transformers
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_causal_inference.html">
-     1.11. causal inference
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ovw_dl_for_neuro.html">
-     1.12. dl for neuro
+     1.10. causal inference
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_uncertainty.html">
-     1.13. uncertainty
+     1.11. uncertainty
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_interp.html">
-     1.14. interpretability
+     1.12. interpretability
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_generalization.html">
-     1.15. generalization
+     1.13. generalization
     </a>
    </li>
   </ul>
@@ -692,91 +682,96 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#general">
-   1.9.1. general
+  <a class="reference internal nav-link" href="#datasets">
+   1.8.1. datasets
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ucsf-de-id-data">
+     1.8.1.1. ucsf de-id data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#high-level">
-     1.9.1.1. high-level
+     1.8.1.2. high-level
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#criticisms">
-     1.9.1.2. criticisms
+     1.8.1.3. criticisms
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#medical-system">
-   1.9.2. medical system
+   1.8.2. medical system
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#evaluation">
-     1.9.2.1. evaluation
+     1.8.2.1. evaluation
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#medical-education">
-     1.9.2.2. medical education
+     1.8.2.2. medical education
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#political-elements">
-     1.9.2.3. political elements
+     1.8.2.3. political elements
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#medical-communication">
-   1.9.3. medical communication
+   1.8.3. medical communication
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#how-do-doctors-think">
-     1.9.3.1. “how do doctors think?”
+     1.8.3.1. “how do doctors think?”
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#communicating-findings">
-     1.9.3.2. communicating findings
+     1.8.3.2. communicating findings
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#examples">
-   1.9.4. examples
+   1.8.4. examples
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#succesful-examples-of-ai-in-medicine">
-     1.9.4.1. succesful examples of ai in medicine
+     1.8.4.1. succesful examples of ai in medicine
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#icu-interpretability-example">
-     1.9.4.2. icu interpretability example
+     1.8.4.2. icu interpretability example
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#high-performance-ai-studies">
-     1.9.4.3. high-performance ai studies
+     1.8.4.3. high-performance ai studies
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#medical-imaging">
-   1.9.5. medical imaging
+   1.8.5. medical imaging
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#improving-medical-studies">
-   1.9.6. improving medical studies
+   1.8.6. improving medical studies
   </a>
  </li>
 </ul>
@@ -799,91 +794,96 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#general">
-   1.9.1. general
+  <a class="reference internal nav-link" href="#datasets">
+   1.8.1. datasets
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ucsf-de-id-data">
+     1.8.1.1. ucsf de-id data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#high-level">
-     1.9.1.1. high-level
+     1.8.1.2. high-level
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#criticisms">
-     1.9.1.2. criticisms
+     1.8.1.3. criticisms
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#medical-system">
-   1.9.2. medical system
+   1.8.2. medical system
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#evaluation">
-     1.9.2.1. evaluation
+     1.8.2.1. evaluation
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#medical-education">
-     1.9.2.2. medical education
+     1.8.2.2. medical education
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#political-elements">
-     1.9.2.3. political elements
+     1.8.2.3. political elements
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#medical-communication">
-   1.9.3. medical communication
+   1.8.3. medical communication
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#how-do-doctors-think">
-     1.9.3.1. “how do doctors think?”
+     1.8.3.1. “how do doctors think?”
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#communicating-findings">
-     1.9.3.2. communicating findings
+     1.8.3.2. communicating findings
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#examples">
-   1.9.4. examples
+   1.8.4. examples
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#succesful-examples-of-ai-in-medicine">
-     1.9.4.1. succesful examples of ai in medicine
+     1.8.4.1. succesful examples of ai in medicine
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#icu-interpretability-example">
-     1.9.4.2. icu interpretability example
+     1.8.4.2. icu interpretability example
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#high-performance-ai-studies">
-     1.9.4.3. high-performance ai studies
+     1.8.4.3. high-performance ai studies
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#medical-imaging">
-   1.9.5. medical imaging
+   1.8.5. medical imaging
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#improving-medical-studies">
-   1.9.6. improving medical studies
+   1.8.6. improving medical studies
   </a>
  </li>
 </ul>
@@ -898,10 +898,84 @@ title="Print to PDF"
                 
   <p><strong>some rough notes on ml in medicine</strong></p>
 <section class="tex2jax_ignore mathjax_ignore" id="ml-in-medicine">
-<h1><span class="section-number">1.9. </span>ml in medicine<a class="headerlink" href="#ml-in-medicine" title="Permalink to this headline">#</a></h1>
-<section id="general">
-<h2><span class="section-number">1.9.1. </span>general<a class="headerlink" href="#general" title="Permalink to this headline">#</a></h2>
+<h1><span class="section-number">1.8. </span>ml in medicine<a class="headerlink" href="#ml-in-medicine" title="Permalink to this headline">#</a></h1>
+<section id="datasets">
+<h2><span class="section-number">1.8.1. </span>datasets<a class="headerlink" href="#datasets" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
+<li><p><a class="reference external" href="https://physionet.org/about/database/">physionet</a></p>
+<ul>
+<li><p>mimic-iv</p></li>
+</ul>
+</li>
+<li><p>mimic-iv-benchmark (<a class="reference external" href="https://www.nature.com/articles/s41597-022-01782-9">xie…liu, 2022</a>)</p>
+<ul>
+<li><p>3 tabular datasets derived from MIMIC-IV ED EHR</p>
+<ul>
+<li><p><em>hospitalization</em> (versus discharged) -  met with an inpatient care site admission immediately following an ED visit</p></li>
+<li><p><em>critical</em> - inpatient portality / transfer to an ICU within 12 hours</p></li>
+<li><p><em>reattendance</em> - patient’s return visit to ED within 72 hours</p></li>
+</ul>
+</li>
+<li><p>preprocessing for outliers / missing values (extended descriptions of variables <a class="reference external" href="https://static-content.springer.com/esm/art%3A10.1038%2Fs41597-022-01782-9/MediaObjects/41597_2022_1782_MOESM1_ESM.pdf">here</a>)</p>
+<ul>
+<li><p>patient history</p>
+<ul>
+<li><p>past ed visits, hospitalizations, icu admissions, comorbidities</p></li>
+<li><p>ICD codes give patients comorbidities (CCI charlson comorbitidy index, ECI elixhauser comorbidity index)</p></li>
+</ul>
+</li>
+<li><p>info at triage</p>
+<ul>
+<li><p>temp., heart rate, pain scale, ESI, …</p></li>
+<li><p>Emergency severity index (ESI) - 5-level triage system assigned by nurse based on clinical judgments (1 is highest priority)</p></li>
+<li><p>top 10 chief complaints</p></li>
+<li><p>No neurological features (e.g. GCS)</p></li>
+</ul>
+</li>
+<li><p>info before discharge</p>
+<ul>
+<li><p>vitalsigns</p></li>
+<li><p>edstays</p></li>
+<li><p>medication prescription</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://nda.nih.gov/">nih datasets</a></p></li>
+<li><p><a class="reference external" href="https://www.mdcalc.com/">mdcalc datasets</a></p></li>
+<li><p><a class="reference external" href="https://pecarn.org/datasets/">pecarn</a></p></li>
+<li><p><a class="reference external" href="https://openneuro.org/">openneuro</a></p></li>
+<li><p>NLP</p>
+<ul>
+<li><p>MedNLI - NLI task grounded in patient history (<a class="reference external" href="https://arxiv.org/abs/1808.06752">romanov &amp; shivade, 2018</a>)</p>
+<ul>
+<li><p>derived from Mimic, but expertly annotated</p></li>
+</ul>
+</li>
+<li><p>i2b2 named entity recognition tasks</p>
+<ul>
+<li><p>i2b2 2006, 2010, 2012, 2014</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<section id="ucsf-de-id-data">
+<h3><span class="section-number">1.8.1.1. </span>ucsf de-id data<a class="headerlink" href="#ucsf-de-id-data" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>black-box</p>
+<ul>
+<li><p>predict <a class="reference external" href="https://bmcanesthesiol.biomedcentral.com/articles/10.1186/s12871-021-01543-y">postoperative delirium prediction</a> (bishara, …, donovan, 2022)</p></li>
+</ul>
+</li>
+<li><p>intrepretable</p>
+<ul>
+<li><p>predict multiple sceloris by incorporating domain knowledge into biomedical knowledge graph (<a class="reference external" href="https://academic.oup.com/jamia/article/29/3/424/6463510">nelson, …, baranzini, 2022</a>)</p></li>
+<li><p>predict mayo endoscopic subscores from colonoscopy reports (<a class="reference external" href="https://www.medrxiv.org/content/10.1101/2022.06.19.22276606.abstract">silverman, …, 2022</a>)</p></li>
+</ul>
+</li>
 <li><p>3 types</p>
 <ul>
 <li><p>disease and patient categorization (e.g. classification)</p></li>
@@ -932,8 +1006,9 @@ title="Print to PDF"
 <li><p>AI is a technology, but it’s not a product</p></li>
 <li><p>health economics incentives align with health incentives: catching tumor early is cheaper for hospitals</p></li>
 </ul>
+</section>
 <section id="high-level">
-<h3><span class="section-number">1.9.1.1. </span>high-level<a class="headerlink" href="#high-level" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.8.1.2. </span>high-level<a class="headerlink" href="#high-level" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>focus on building something you want to deploy</p>
 <ul>
@@ -956,16 +1031,16 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="criticisms">
-<h3><span class="section-number">1.9.1.2. </span>criticisms<a class="headerlink" href="#criticisms" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.8.1.3. </span>criticisms<a class="headerlink" href="#criticisms" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://science.sciencemag.org/content/366/6464/447">Dissecting racial bias in an algorithm used to manage the health of populations </a>(obermeyer et al. 2019)</p></li>
 </ul>
 </section>
 </section>
 <section id="medical-system">
-<h2><span class="section-number">1.9.2. </span>medical system<a class="headerlink" href="#medical-system" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.8.2. </span>medical system<a class="headerlink" href="#medical-system" title="Permalink to this headline">#</a></h2>
 <section id="evaluation">
-<h3><span class="section-number">1.9.2.1. </span>evaluation<a class="headerlink" href="#evaluation" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.8.2.1. </span>evaluation<a class="headerlink" href="#evaluation" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>doctors are evaluated infrequently (and things like personal traits are often included)</p></li>
 <li><p>US has pretty good care but it is expensive per patient</p></li>
@@ -974,7 +1049,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="medical-education">
-<h3><span class="section-number">1.9.2.2. </span>medical education<a class="headerlink" href="#medical-education" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.8.2.2. </span>medical education<a class="headerlink" href="#medical-education" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>rarely textbooks (often just slides)</p></li>
 <li><p>1-2% miss rate for diagnosis can be seen as acceptable</p></li>
@@ -999,7 +1074,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="political-elements">
-<h3><span class="section-number">1.9.2.3. </span>political elements<a class="headerlink" href="#political-elements" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.8.2.3. </span>political elements<a class="headerlink" href="#political-elements" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.newyorker.com/culture/annals-of-inquiry/why-doctors-should-organize">why doctors should organize</a></p></li>
 <li><p>big pharma</p></li>
@@ -1017,9 +1092,9 @@ title="Print to PDF"
 </section>
 </section>
 <section id="medical-communication">
-<h2><span class="section-number">1.9.3. </span>medical communication<a class="headerlink" href="#medical-communication" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.8.3. </span>medical communication<a class="headerlink" href="#medical-communication" title="Permalink to this headline">#</a></h2>
 <section id="how-do-doctors-think">
-<h3><span class="section-number">1.9.3.1. </span>“how do doctors think?”<a class="headerlink" href="#how-do-doctors-think" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.8.3.1. </span>“how do doctors think?”<a class="headerlink" href="#how-do-doctors-think" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>easy to misinterpret things to be causal</p></li>
 <li><p>often no intuition for even relatively simple engineered features, such as averages</p></li>
@@ -1064,7 +1139,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="communicating-findings">
-<h3><span class="section-number">1.9.3.2. </span>communicating findings<a class="headerlink" href="#communicating-findings" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.8.3.2. </span>communicating findings<a class="headerlink" href="#communicating-findings" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://modelplot.github.io/intro_modelplotpy.html">don’t use ROC curves, use deciles</a></p></li>
 <li><p><a class="reference external" href="https://jamanetwork.com/journals/jama/fullarticle/2748179">need to evaluate use, not just metric</a></p></li>
@@ -1077,9 +1152,9 @@ title="Print to PDF"
 </section>
 </section>
 <section id="examples">
-<h2><span class="section-number">1.9.4. </span>examples<a class="headerlink" href="#examples" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.8.4. </span>examples<a class="headerlink" href="#examples" title="Permalink to this headline">#</a></h2>
 <section id="succesful-examples-of-ai-in-medicine">
-<h3><span class="section-number">1.9.4.1. </span>succesful examples of ai in medicine<a class="headerlink" href="#succesful-examples-of-ai-in-medicine" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.8.4.1. </span>succesful examples of ai in medicine<a class="headerlink" href="#succesful-examples-of-ai-in-medicine" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.nejm.org/doi/full/10.1056/NEJM199112193252503">ECG</a> (NEJM, 1991)</p></li>
 <li><p>EKG has a small interpretation on it</p></li>
@@ -1087,7 +1162,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="icu-interpretability-example">
-<h3><span class="section-number">1.9.4.2. </span>icu interpretability example<a class="headerlink" href="#icu-interpretability-example" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.8.4.2. </span>icu interpretability example<a class="headerlink" href="#icu-interpretability-example" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>goal: explain the model not the patient (that is the doctor’s job)</p></li>
 <li><p>want to know interactions between features</p></li>
@@ -1102,7 +1177,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="high-performance-ai-studies">
-<h3><span class="section-number">1.9.4.3. </span>high-performance ai studies<a class="headerlink" href="#high-performance-ai-studies" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.8.4.3. </span>high-performance ai studies<a class="headerlink" href="#high-performance-ai-studies" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>chest-xray: chexnet</p></li>
 <li><p>echocardiograms: madani, ali, et al. 2018</p></li>
@@ -1113,7 +1188,7 @@ title="Print to PDF"
 </section>
 </section>
 <section id="medical-imaging">
-<h2><span class="section-number">1.9.5. </span>medical imaging<a class="headerlink" href="#medical-imaging" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.8.5. </span>medical imaging<a class="headerlink" href="#medical-imaging" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/pdf/2103.01938.pdf">Medical Imaging and Machine Learning</a></p>
 <ul>
@@ -1123,7 +1198,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="improving-medical-studies">
-<h2><span class="section-number">1.9.6. </span>improving medical studies<a class="headerlink" href="#improving-medical-studies" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.8.6. </span>improving medical studies<a class="headerlink" href="#improving-medical-studies" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Machine learning methods for developing precision treatment rules with observational data (Kessler et al. 2019)</p>
 <ul>
@@ -1178,13 +1253,13 @@ title="Print to PDF"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">1.8. </span>scattering transform</p>
+            <p class="prev-next-title"><span class="section-number">1.7. </span>scattering transform</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="ovw_transformers.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1.10. </span>transformers</p>
+        <p class="prev-next-title"><span class="section-number">1.9. </span>transformers</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

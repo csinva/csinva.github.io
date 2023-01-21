@@ -18,9 +18,7 @@ category: research
     - encoder-decoder transformer for seq-to-seq (most new models don't have  special encoder-decoder structure for translation)
     - [Semi-supervised Sequence Learning](https://arxiv.org/abs/1511.01432) (dai & quoc le, 2015)
       - context vector is weighted sum of context vector at each word
-
   - [ULMFiT](https://arxiv.org/abs/1801.06146) (howard & ruder, 2018)
-
 - BERT ([devlin et al. 2018](https://arxiv.org/abs/1810.04805)) - semi-supervised learning (predict masked word - this is bidirectional) + supervised finetuning
   - [roberta](https://arxiv.org/abs/1907.11692) (liu et al. 2019)
   - [BART](https://arxiv.org/abs/1910.13461) (lewis et al. 2019) - generalizes BERT with sequence-to-squence training: train by (1) corrupting text then (2) reconstruct the original text
@@ -75,18 +73,14 @@ category: research
   - Masked Autoencoders Are Scalable Vision Learners ([he...dollar, girshick, 2021](https://arxiv.org/abs/2111.06377)) - BERT-style training
     -  speed up by not applying encoder to mask tokens + adding mask to a lot of the data (like 75%)
     -  really good results without much data
-
 - rl
-
+  - AdA: Human-Timescale Adaptation in an Open-Ended Task Space ([deepmind, 2023](https://arxiv.org/abs/2301.07608))
   - GATO: [A Generalist Agent](https://arxiv.org/abs/2205.06175) (deepmind, 2022) - single agent plays many different video games
     - different modalities are converted to tokens differently (e.g. image patches are fed through resnet)
-
   - In-context Reinforcement Learning with Algorithm Distillation ([laskin, wang, ..., sahni, satinder singh, mnih, 2022, deepmind](https://arxiv.org/abs/2210.14215)) - learn to improve an RL algorithm
     - put history of (observation, action, reward) sequences into context and then use them to predict new action given new observation
   - Decision Transformer: Reinforcement Learning via Sequence Modeling ([chen, lu, ...abbeel, srinivas, mordatch, 2021](https://arxiv.org/pdf/2106.01345.pdf)) - transformer that predicts what the next highest reward step is instead of the next word
-
 - biomedical
-
   - BioGPT: [Generative pre-trained transformer for biomedical text generation and mining](https://academic.oup.com/bib/article-abstract/23/6/bbac409/6713511) (luo...poon, liu, 2022)
     - PubMedGPT (2.7B): ([bolton, hall, ..., manning, liang, 2022](https://crfm.stanford.edu/2022/12/15/pubmedgpt.html))
     - BioBERT: [A pre-trained biomedical language representation model for biomedical text mining](https://arxiv.org/abs/1901.08746) (2019)
@@ -140,16 +134,15 @@ category: research
 
   - human feedback for learning makes it much more efficient
   - [Can language models learn from explanations in context?](https://arxiv.org/abs/2204.02329) (lampinen et al. 2022)
-
+  
 - [spatial transformers](https://papers.nips.cc/paper/5854-spatial-transformer-networks.pdf )
-
-- speculative [foundation models paper](https://arxiv.org/abs/2108.07258) (stanford, 2022)
 
 ## external knowledge / tool use / grounding
 
 - https://www.perplexity.ai/ - nice demo adding citation to each fact
+- implementations in [langchain](https://github.com/hwchase17/langchain) library
 - DRAGON: Deep Bidirectional Language-Knowledge Graph Pretraining ([yasanaga, ..., manning, liang, leskovec, 2022](https://arxiv.org/abs/2210.09338))
-- LaMDA ([thoppilan, ..., quoc le, 2022, google](https://arxiv.org/abs/2201.08239)) - allows google search to add world info (in a dialog model)
+- LaMDA ([thoppilan, ..., quoc le, 2022, google](https://arxiv.org/abs/2201.08239)) - allows goxogle search to add world info (in a dialog model)
   - this was the model that sparked the controversy about consciousness 🤔
   - A Neural Corpus Indexer for Document Retrieval ([wang...yang, 2022](https://arxiv.org/abs/2206.02743)) - train model to directly spit out document IDs given queries
 - webgpt ([nakano, ..., schulman, 2022, OpenAI](https://arxiv.org/abs/2112.09332)) - allows google search to add world info
@@ -625,6 +618,33 @@ mixture of experts models have become popular because of the need for (1) fast s
     - evaluate protein sequence perplexity
     - protein keyword prediction (predict keywords in UniProt, like "ATP-Binding", "Cell membrane")
     - protein function description - compare free-form description to GT UniProt function description
+
+## llm limitations / perspectives
+
+- Dissociating language and thought in large language models: a cognitive perspective ([mahowald, ..., tenenbaum, fedorenko, 2023](https://arxiv.org/pdf/2301.06627.pdf))
+
+  - 2 competences
+
+    1. formal linguistic competence - knowledge of rules and patterns of a given language
+
+    2. functional linguistic competence - cognitive abilities required for language understanding and use in the real world, e.g. formal reasoning, world knowledge, situation modeling, communicative intent
+       - much of world knowledge is implied: people are much more likely to communicate new or unusual information rather than commonly known facts
+    - language and thought are robustly dissociable in the brain
+      - aphasia studies: despite the nearly complete loss of linguistic abilities, some individuals with severe aphasia have intact non-linguistic cognitive abilities: they can play chess, compose music, solve arithmetic problems and logic puzzles, ...
+      - fMRI studies: the language network is extremely selective for language processing: it responds robustly and reliably when people listen to, read, or generate sentences , but not when they perform arithmetic tasks, engage in logical reasoning, understand computer programs, listen to music, ...
+  - [Merrill et al. [2022]](https://arxiv.org/abs/2209.12407) - semantic information is in-principle learnable from language data
+
+  - [Piantadosi and Hill [2022]](https://arxiv.org/abs/2208.02957) - an argument that models can genuinely learn meaning
+
+  - Structured, flexible, and robust: benchmarking and improving large language models towards more human-like behavior in out-of-distribution reasoning tasks ([collins...tenebaum, 2022](http://arxiv.org/abs/2205.05718))
+
+    - as situation gets more OOD, LLM gets worse compared to human, e.g. `Get your sofa onto the roof of your house, without using a pulley, a ladder, a crane...`
+
+  - recommendations
+
+    - modularity, curated data / diverse objectives, new benchmarks
+
+- speculative [foundation models paper](https://arxiv.org/abs/2108.07258) (stanford, 2022)
 
 # basics
 

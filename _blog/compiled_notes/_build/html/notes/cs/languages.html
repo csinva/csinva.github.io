@@ -123,78 +123,68 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../research_ovws/ovw_comp_neuro.html">
-     1.1. comp neuro
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">
-     1.2. transfer learning
+     1.1. transfer learning
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_disentanglement.html">
-     1.3. disentanglement
+     1.2. disentanglement
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_omics.html">
-     1.4. omics
+     1.3. omics
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_complexity.html">
-     1.5. complexity
+     1.4. complexity
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_interesting_science.html">
-     1.6. interesting science
+     1.5. interesting science
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_dl_theory.html">
-     1.7. dl theory
+     1.6. dl theory
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_scat.html">
-     1.8. scattering transform
+     1.7. scattering transform
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">
-     1.9. ml in medicine
+     1.8. ml in medicine
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_transformers.html">
-     1.10. transformers
+     1.9. transformers
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_causal_inference.html">
-     1.11. causal inference
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../research_ovws/ovw_dl_for_neuro.html">
-     1.12. dl for neuro
+     1.10. causal inference
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_uncertainty.html">
-     1.13. uncertainty
+     1.11. uncertainty
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_interp.html">
-     1.14. interpretability
+     1.12. interpretability
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../research_ovws/ovw_generalization.html">
-     1.15. generalization
+     1.13. generalization
     </a>
    </li>
   </ul>
@@ -727,8 +717,8 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pytorch">
-     2.3.1.7. pytorch
+    <a class="reference internal nav-link" href="#pytorch-pytorch-parallel">
+     2.3.1.7. pytorch + pytorch parallel
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -862,8 +852,8 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pytorch">
-     2.3.1.7. pytorch
+    <a class="reference internal nav-link" href="#pytorch-pytorch-parallel">
+     2.3.1.7. pytorch + pytorch parallel
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -1128,26 +1118,46 @@ title="Print to PDF"
 </pre></div>
 </div>
 </section>
-<section id="pytorch">
-<h3><span class="section-number">2.3.1.7. </span>pytorch<a class="headerlink" href="#pytorch" title="Permalink to this headline">#</a></h3>
+<section id="pytorch-pytorch-parallel">
+<h3><span class="section-number">2.3.1.7. </span>pytorch + pytorch parallel<a class="headerlink" href="#pytorch-pytorch-parallel" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
-<li><p>new in 1.11: TorchData, functorch (e.g. vmap), DistributedDataParallel - now stable</p></li>
-<li><p>as of 1.6.0</p>
+<li><p>new in 1.11: TorchData, functorch (e.g. vmap), DistributedDataParallel is stable</p></li>
+<li><p>levels of <a class="reference external" href="https://huggingface.co/docs/transformers/v4.15.0/parallelism">parallelism</a></p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">nn.DistributedDataParallel</span></code> is often faster</p>
+<li><p>DP dataparallel - speeds up by replicating model and feeding it different data</p>
 <ul>
-<li><p>replicates model on each gpu and gives some data to each one (less data transfers)</p></li>
-<li><p>requires calling <code class="docutils literal notranslate"><span class="pre">init_process_group</span></code></p></li>
+<li><p>gpt2 &amp; T5 models have naive PP support</p></li>
 </ul>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">model</span> <span class="pre">=</span> <span class="pre">nn.DataParallel(model)</span></code></p>
+<li><p>TP tensorparallel (horizontal parallelism) - allows running a large model by splitting up different parts of an input</p>
 <ul>
-<li><p>automatically runs multiple batches from dataset at same time</p></li>
-<li><p>usually a little slower</p></li>
-<li><p>replicates model in every forward pass</p></li>
+<li><p><a class="reference external" href="https://github.com/tunib-ai/parallelformers">parallelformers</a> provides easy support for inference-only</p></li>
 </ul>
 </li>
-<li><p>rpc parallel</p></li>
+<li><p>PP pipelineparallel (vertical parallelism)  - different layers are on different gpus</p>
+<ul>
+<li><p>naive - diff layers on diff gpus (increases mem but not speed)</p></li>
+<li><p>pipeline parallel - separates so more gpus can work at once</p></li>
+</ul>
+</li>
+<li><p>Deepspeed/Megatron/Varuna/Sagemaker combines DP with PP</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://pytorch.org/tutorials/beginner/dist_overview.html">pytorch parallel overview</a></p>
+<ul>
+<li><p>single-machine multi-GPU: <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.DataParallel.html">DataParallel</a> - relatively simple</p>
+<ul>
+<li><p>just wrap model <code class="docutils literal notranslate"><span class="pre">model</span> <span class="pre">=</span> <span class="pre">nn.DataParallel(model)</span></code> (some attributes may become inaccessible)</p></li>
+</ul>
+</li>
+<li><p>single-machine multi-GPU: <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.parallel.DistributedDataParallel.html">DistributedDataParallel</a> - slightly faster</p>
+<ul>
+<li><p>requires also calling <code class="docutils literal notranslate"><span class="pre">init_process_group</span></code> (and setting some env vars)</p></li>
+</ul>
+</li>
+<li><p>multimachine GPU:  <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.parallel.DistributedDataParallel.html">DistributedDataParallel</a> + <a class="reference external" href="https://github.com/pytorch/examples/blob/master/distributed/ddp/README.md">launching script</a></p></li>
+<li><p>multimachine flexible: <a class="reference external" href="https://pytorch.org/docs/stable/distributed.elastic.html">torch.distributed.elastic</a> - handles errors better</p></li>
+<li><p>(there is also RPC-based training and Collective Communication)</p></li>
 </ul>
 </li>
 <li><p>dataset has <code class="docutils literal notranslate"><span class="pre">__init__,</span> <span class="pre">__getitem__,</span> <span class="pre">&amp;</span> <span class="pre">__len__</span></code></p>
@@ -1156,21 +1166,18 @@ title="Print to PDF"
 </ul>
 </li>
 <li><p>there’s a <code class="docutils literal notranslate"><span class="pre">torch.nn.Flatten</span></code> module</p></li>
+<li><p>following example <a class="reference external" href="https://medium.com/codex/a-comprehensive-tutorial-to-pytorch-distributeddataparallel-1f4b42bb1b51">here</a></p></li>
 </ul>
 </section>
 <section id="parallelization">
 <h3><span class="section-number">2.3.1.8. </span>parallelization<a class="headerlink" href="#parallelization" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
-<li><p>cores = cpus = processors - inividual processing units available on a single node</p></li>
-<li><p>node - different computers with distinc memory</p></li>
-<li><p>processes - instances of a program executing on a machine</p>
+<li><p><strong>cores</strong> = cpus = processors - individual processing units available on a single node</p></li>
+<li><p><strong>node</strong> - different computers with distinct memory</p></li>
+<li><p><strong>processes</strong> - instances of a program executing on a machine</p>
 <ul>
 <li><p>shouldn’t have more user processes than cores on a node</p></li>
-</ul>
-</li>
-<li><p>more…</p>
-<ul>
-<li><p>threads - multiple paths of execution within a single process</p>
+<li><p><strong>threads</strong> - multiple paths of execution within a single process</p>
 <ul>
 <li><p>like a process, but more lightweight</p></li>
 </ul>
@@ -1184,13 +1191,13 @@ title="Print to PDF"
 </li>
 <li><p>python packages</p>
 <ul>
-<li><p>dask: parallelizing tasks, distributed datasets, one or more machines</p></li>
-<li><p>ray: parallelizing tasks, building distributed applications, one or more machines</p></li>
+<li><p><em>dask</em>: parallelizing tasks, distributed datasets, one or more machines</p></li>
+<li><p><em>ray</em>: parallelizing tasks, building distributed applications, one or more machines</p></li>
 </ul>
 </li>
 <li><p>dask</p>
 <ul>
-<li><p>separate code from code to parallelize things</p></li>
+<li><p>separate code from parallelization</p></li>
 <li><p>some limitations on pure python code, but np/pandas etc. parallelize better</p></li>
 <li><p>configuration: specify sequential (‘synchronous’), threads within current session (‘threaded’) paralell (‘processes’) multiprocessing - this creates copies of objects, multi-node or not (‘distributed’)</p></li>
 <li><p>need to wrap functions with <code class="docutils literal notranslate"><span class="pre">delayed()</span></code> or <code class="docutils literal notranslate"><span class="pre">map()</span></code></p>

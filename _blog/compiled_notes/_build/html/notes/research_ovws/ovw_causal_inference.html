@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>1.11. causal inference</title>
+    <title>1.10. causal inference</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -54,8 +54,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="1.12. dl for neuro" href="ovw_dl_for_neuro.html" />
-    <link rel="prev" title="1.10. transformers" href="ovw_transformers.html" />
+    <link rel="next" title="1.11. uncertainty" href="ovw_uncertainty.html" />
+    <link rel="prev" title="1.9. transformers" href="ovw_transformers.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -125,78 +125,68 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="ovw_comp_neuro.html">
-     1.1. comp neuro
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="ovw_transfer_learning.html">
-     1.2. transfer learning
+     1.1. transfer learning
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_disentanglement.html">
-     1.3. disentanglement
+     1.2. disentanglement
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_omics.html">
-     1.4. omics
+     1.3. omics
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_complexity.html">
-     1.5. complexity
+     1.4. complexity
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_interesting_science.html">
-     1.6. interesting science
+     1.5. interesting science
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_dl_theory.html">
-     1.7. dl theory
+     1.6. dl theory
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_scat.html">
-     1.8. scattering transform
+     1.7. scattering transform
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_ml_medicine.html">
-     1.9. ml in medicine
+     1.8. ml in medicine
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_transformers.html">
-     1.10. transformers
+     1.9. transformers
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     1.11. causal inference
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ovw_dl_for_neuro.html">
-     1.12. dl for neuro
+     1.10. causal inference
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_uncertainty.html">
-     1.13. uncertainty
+     1.11. uncertainty
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_interp.html">
-     1.14. interpretability
+     1.12. interpretability
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_generalization.html">
-     1.15. generalization
+     1.13. generalization
     </a>
    </li>
   </ul>
@@ -695,117 +685,117 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#classic-studies">
-   1.11.1. classic studies
+   1.10.1. classic studies
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#natural-experiments">
-     1.11.1.1. natural experiments
+     1.10.1.1. natural experiments
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#instrumental-variables">
-     1.11.1.2. instrumental variables
+     1.10.1.2. instrumental variables
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#matching">
-     1.11.1.3. matching
+     1.10.1.3. matching
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#paradoxes">
-     1.11.1.4. “paradoxes”
+     1.10.1.4. “paradoxes”
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#problems-beyond-ate">
-   1.11.2. problems beyond ATE
+   1.10.2. problems beyond ATE
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#causal-mechanisms">
-     1.11.2.1. causal mechanisms
+     1.10.2.1. causal mechanisms
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#mediation-analysis">
-       1.11.2.1.1. mediation analysis
+       1.10.2.1.1. mediation analysis
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#heterogenous-treatment-effects">
-     1.11.2.2. heterogenous treatment effects
+     1.10.2.2. heterogenous treatment effects
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#reinforcement-policy-learning">
-     1.11.2.3. reinforcement (policy) learning
+     1.10.2.3. reinforcement (policy) learning
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#causal-discovery">
-     1.11.2.4. causal discovery
+     1.10.2.4. causal discovery
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#stable-invariant-predictors">
-     1.11.2.5. stable/invariant predictors
+     1.10.2.5. stable/invariant predictors
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#invariance-hierarchies">
-       1.11.2.5.1. invariance hierarchies
+       1.10.2.5.1. invariance hierarchies
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#invariance-algorithms">
-       1.11.2.5.2. invariance algorithms
+       1.10.2.5.2. invariance algorithms
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#misc-problems">
-     1.11.2.6. misc problems
+     1.10.2.6. misc problems
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#transferring-out-of-sample">
-     1.11.2.7. transferring out-of-sample
+     1.10.2.7. transferring out-of-sample
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#different-assumptions-experimental-designs">
-   1.11.3. different assumptions / experimental designs
+   1.10.3. different assumptions / experimental designs
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#synthetic-control-interventions">
-     1.11.3.1. synthetic control/interventions
+     1.10.3.1. synthetic control/interventions
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#solutions-to-basic-problems">
-   1.11.4. solutions to basic problems
+   1.10.4. solutions to basic problems
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#learning-causal-representations">
-     1.11.4.1. learning “causal representations”
+     1.10.4.1. learning “causal representations”
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#limitations">
-     1.11.4.2. limitations
+     1.10.4.2. limitations
     </a>
    </li>
   </ul>
@@ -831,117 +821,117 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#classic-studies">
-   1.11.1. classic studies
+   1.10.1. classic studies
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#natural-experiments">
-     1.11.1.1. natural experiments
+     1.10.1.1. natural experiments
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#instrumental-variables">
-     1.11.1.2. instrumental variables
+     1.10.1.2. instrumental variables
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#matching">
-     1.11.1.3. matching
+     1.10.1.3. matching
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#paradoxes">
-     1.11.1.4. “paradoxes”
+     1.10.1.4. “paradoxes”
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#problems-beyond-ate">
-   1.11.2. problems beyond ATE
+   1.10.2. problems beyond ATE
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#causal-mechanisms">
-     1.11.2.1. causal mechanisms
+     1.10.2.1. causal mechanisms
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#mediation-analysis">
-       1.11.2.1.1. mediation analysis
+       1.10.2.1.1. mediation analysis
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#heterogenous-treatment-effects">
-     1.11.2.2. heterogenous treatment effects
+     1.10.2.2. heterogenous treatment effects
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#reinforcement-policy-learning">
-     1.11.2.3. reinforcement (policy) learning
+     1.10.2.3. reinforcement (policy) learning
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#causal-discovery">
-     1.11.2.4. causal discovery
+     1.10.2.4. causal discovery
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#stable-invariant-predictors">
-     1.11.2.5. stable/invariant predictors
+     1.10.2.5. stable/invariant predictors
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#invariance-hierarchies">
-       1.11.2.5.1. invariance hierarchies
+       1.10.2.5.1. invariance hierarchies
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#invariance-algorithms">
-       1.11.2.5.2. invariance algorithms
+       1.10.2.5.2. invariance algorithms
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#misc-problems">
-     1.11.2.6. misc problems
+     1.10.2.6. misc problems
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#transferring-out-of-sample">
-     1.11.2.7. transferring out-of-sample
+     1.10.2.7. transferring out-of-sample
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#different-assumptions-experimental-designs">
-   1.11.3. different assumptions / experimental designs
+   1.10.3. different assumptions / experimental designs
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#synthetic-control-interventions">
-     1.11.3.1. synthetic control/interventions
+     1.10.3.1. synthetic control/interventions
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#solutions-to-basic-problems">
-   1.11.4. solutions to basic problems
+   1.10.4. solutions to basic problems
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#learning-causal-representations">
-     1.11.4.1. learning “causal representations”
+     1.10.4.1. learning “causal representations”
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#limitations">
-     1.11.4.2. limitations
+     1.10.4.2. limitations
     </a>
    </li>
   </ul>
@@ -957,10 +947,10 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="causal-inference">
-<h1><span class="section-number">1.11. </span>causal inference<a class="headerlink" href="#causal-inference" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">1.10. </span>causal inference<a class="headerlink" href="#causal-inference" title="Permalink to this headline">#</a></h1>
 <p>Some good packages: msft <a class="reference external" href="https://github.com/microsoft/EconML">econML</a>, uber <a class="reference external" href="https://github.com/uber/causalml">causalml</a>, msft <a class="reference external" href="https://github.com/microsoft/dowhy">dowhy</a></p>
 <section id="classic-studies">
-<h2><span class="section-number">1.11.1. </span>classic studies<a class="headerlink" href="#classic-studies" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.10.1. </span>classic studies<a class="headerlink" href="#classic-studies" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://onlinelibrary.wiley.com/doi/full/10.1111/ajps.12187">Descriptive Representation and Judicial Outcomes in Multiethnic Societies</a> (Grossman et al. 2016)</p>
 <ul>
@@ -990,7 +980,7 @@ title="Print to PDF"
 </li>
 </ul>
 <section id="natural-experiments">
-<h3><span class="section-number">1.11.1.1. </span>natural experiments<a class="headerlink" href="#natural-experiments" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.10.1.1. </span>natural experiments<a class="headerlink" href="#natural-experiments" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://alondoninheritance.com/london-characters/john-snow-soho-cholera-outbreak-1864/">John Snow on cholera</a> - natural experiment - change of water pollution allowed for computing effect of the water pollution on cholera</p></li>
 <li><p><a class="reference external" href="http://www.hangartner.net/files/passportapsr.pdf">Who Gets a Swiss Passport? A Natural Experiment in Immigrant Discrimination</a> (Hainmueller &amp; Hangartner 2013)</p>
@@ -1008,7 +998,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="instrumental-variables">
-<h3><span class="section-number">1.11.1.2. </span>instrumental variables<a class="headerlink" href="#instrumental-variables" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.10.1.2. </span>instrumental variables<a class="headerlink" href="#instrumental-variables" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.jstor.org/stable/2291629?seq=1#metadata_info_tab_contents">Identification of Causal Effects Using Instrumental Variables</a> (angrist, imbens, &amp; rubin 1996)</p>
 <ul>
@@ -1022,7 +1012,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="matching">
-<h3><span class="section-number">1.11.1.3. </span>matching<a class="headerlink" href="#matching" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.10.1.3. </span>matching<a class="headerlink" href="#matching" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pubmed/12933551">Matching and thick description in an observational study of mortality after surgery.</a> (rosenbaum &amp; silber 2001)</p>
 <ul>
@@ -1033,7 +1023,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="paradoxes">
-<h3><span class="section-number">1.11.1.4. </span>“paradoxes”<a class="headerlink" href="#paradoxes" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.10.1.4. </span>“paradoxes”<a class="headerlink" href="#paradoxes" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><strong>simpson’s paradox</strong> = <strong>yule-simpson paradox</strong> - trend appears in several different groups but disappears/reverses when groups are combined</p>
 <ul>
@@ -1066,16 +1056,16 @@ C(Location of Car) --&gt; B
 </section>
 </section>
 <section id="problems-beyond-ate">
-<h2><span class="section-number">1.11.2. </span>problems beyond ATE<a class="headerlink" href="#problems-beyond-ate" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.10.2. </span>problems beyond ATE<a class="headerlink" href="#problems-beyond-ate" title="Permalink to this headline">#</a></h2>
 <section id="causal-mechanisms">
-<h3><span class="section-number">1.11.2.1. </span>causal mechanisms<a class="headerlink" href="#causal-mechanisms" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.10.2.1. </span>causal mechanisms<a class="headerlink" href="#causal-mechanisms" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>treatment effect variation?</p></li>
 <li><p>principal stratification</p></li>
 <li><p>interference</p></li>
 </ul>
 <section id="mediation-analysis">
-<h4><span class="section-number">1.11.2.1.1. </span>mediation analysis<a class="headerlink" href="#mediation-analysis" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">1.10.2.1.1. </span>mediation analysis<a class="headerlink" href="#mediation-analysis" title="Permalink to this headline">#</a></h4>
 <p><em>Mediation analysis aims to identify a mechanism through which a cause has an effect. Direct effects measure when the treatment varies as mediators are held constant.</em></p>
 <ul class="simple">
 <li><p>if there are multiple possible paths by which a variable can exert influence, can figure out which path does what, even with just observational data</p></li>
@@ -1149,7 +1139,7 @@ C(Location of Car) --&gt; B
 </section>
 </section>
 <section id="heterogenous-treatment-effects">
-<h3><span class="section-number">1.11.2.2. </span>heterogenous treatment effects<a class="headerlink" href="#heterogenous-treatment-effects" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.10.2.2. </span>heterogenous treatment effects<a class="headerlink" href="#heterogenous-treatment-effects" title="Permalink to this headline">#</a></h3>
 <p><em>Heterogenous treatment effects refer to effects which differ for different subgroups / individuals in a population and requires more refined modeling.</em></p>
 <ul class="simple">
 <li><p><strong>conditional average treatment effect (CATE)</strong> - get treatment effect for each individual conditioned on its covariates <span class="math notranslate nohighlight">\(\mathbb E [y|x, t=1] - \mathbb E[y|x, t=0]\)</span> (different from ITE <span class="math notranslate nohighlight">\(Y^{T=1}_i - Y^{T=0}_i\)</span>)</p>
@@ -1273,14 +1263,14 @@ C(Location of Car) --&gt; B
 </ul>
 </section>
 <section id="reinforcement-policy-learning">
-<h3><span class="section-number">1.11.2.3. </span>reinforcement (policy) learning<a class="headerlink" href="#reinforcement-policy-learning" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.10.2.3. </span>reinforcement (policy) learning<a class="headerlink" href="#reinforcement-policy-learning" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>rather than estimating a treatment effect, find a policy that maximizes some expected utility (e.g. can define utility as the potential outcome <span class="math notranslate nohighlight">\(\mathbb E[Y_i(\pi(X_i))]\)</span>)</p></li>
 <li><p>in this case, policy is like an intervention</p></li>
 </ul>
 </section>
 <section id="causal-discovery">
-<h3><span class="section-number">1.11.2.4. </span>causal discovery<a class="headerlink" href="#causal-discovery" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.10.2.4. </span>causal discovery<a class="headerlink" href="#causal-discovery" title="Permalink to this headline">#</a></h3>
 <p><em>Causal discovery aims to identify causal relationships (sometimes under some smoothness / independence assumptions. This is often impossible in general. Also called causal relation learning, causal search.</em></p>
 <ul class="simple">
 <li><p>a lot of our science does not actually rest on experiments (e.g. physics, geology)</p>
@@ -1443,10 +1433,10 @@ C(Location of Car) --&gt; B
 </ul>
 </section>
 <section id="stable-invariant-predictors">
-<h3><span class="section-number">1.11.2.5. </span>stable/invariant predictors<a class="headerlink" href="#stable-invariant-predictors" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.10.2.5. </span>stable/invariant predictors<a class="headerlink" href="#stable-invariant-predictors" title="Permalink to this headline">#</a></h3>
 <p><em>Under certain assumptions, invariance to data perturbations (i.e. interventions) can help us identify causal effects.</em></p>
 <section id="invariance-hierarchies">
-<h4><span class="section-number">1.11.2.5.1. </span>invariance hierarchies<a class="headerlink" href="#invariance-hierarchies" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">1.10.2.5.1. </span>invariance hierarchies<a class="headerlink" href="#invariance-hierarchies" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/1905.11374">The Hierarchy of Stable Distributions and Operators to Trade Off Stability and Performance</a> (subbaswamy, chen, &amp; saria 2019)</p>
 <ul>
@@ -1478,7 +1468,7 @@ C(Location of Car) --&gt; B
 </ul>
 </section>
 <section id="invariance-algorithms">
-<h4><span class="section-number">1.11.2.5.2. </span>invariance algorithms<a class="headerlink" href="#invariance-algorithms" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">1.10.2.5.2. </span>invariance algorithms<a class="headerlink" href="#invariance-algorithms" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>algorithms overview (see papers for more details) + <a class="reference external" href="https://github.com/facebookresearch/InvarianceUnitTests">implementations</a></p>
 <ul>
@@ -1615,7 +1605,7 @@ C(Location of Car) --&gt; B
 </section>
 </section>
 <section id="misc-problems">
-<h3><span class="section-number">1.11.2.6. </span>misc problems<a class="headerlink" href="#misc-problems" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.10.2.6. </span>misc problems<a class="headerlink" href="#misc-problems" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/1907.13258">Incremental causal effects</a> (rothenhausler &amp; yu, 2019)</p>
 <ul>
@@ -1653,7 +1643,7 @@ $<span class="math notranslate nohighlight">\(
 </ul>
 </section>
 <section id="transferring-out-of-sample">
-<h3><span class="section-number">1.11.2.7. </span>transferring out-of-sample<a class="headerlink" href="#transferring-out-of-sample" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.10.2.7. </span>transferring out-of-sample<a class="headerlink" href="#transferring-out-of-sample" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://naokiegami.com/paper/external_full.pdf">Elements of External Validity: Framework, Design, and Analysis</a></p>
 <ul>
@@ -1666,7 +1656,7 @@ $<span class="math notranslate nohighlight">\(
 </section>
 </section>
 <section id="different-assumptions-experimental-designs">
-<h2><span class="section-number">1.11.3. </span>different assumptions / experimental designs<a class="headerlink" href="#different-assumptions-experimental-designs" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.10.3. </span>different assumptions / experimental designs<a class="headerlink" href="#different-assumptions-experimental-designs" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>unconfoundedness <span class="math notranslate nohighlight">\(T_i \perp (Y_i(0), Y_i(1)) | X_i\)</span> is strong</p>
 <ul>
@@ -1710,7 +1700,7 @@ $<span class="math notranslate nohighlight">\(
 </li>
 </ul>
 <section id="synthetic-control-interventions">
-<h3><span class="section-number">1.11.3.1. </span>synthetic control/interventions<a class="headerlink" href="#synthetic-control-interventions" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.10.3.1. </span>synthetic control/interventions<a class="headerlink" href="#synthetic-control-interventions" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>synthetic control</p>
 <ul>
@@ -1737,9 +1727,9 @@ $<span class="math notranslate nohighlight">\(
 </section>
 </section>
 <section id="solutions-to-basic-problems">
-<h2><span class="section-number">1.11.4. </span>solutions to basic problems<a class="headerlink" href="#solutions-to-basic-problems" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.10.4. </span>solutions to basic problems<a class="headerlink" href="#solutions-to-basic-problems" title="Permalink to this headline">#</a></h2>
 <section id="learning-causal-representations">
-<h3><span class="section-number">1.11.4.1. </span>learning “causal representations”<a class="headerlink" href="#learning-causal-representations" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.10.4.1. </span>learning “causal representations”<a class="headerlink" href="#learning-causal-representations" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/1605.03661">Learning Representations for Counterfactual Inference</a> (johansson et al. 2016)</p>
 <ul>
@@ -1802,7 +1792,7 @@ $<span class="math notranslate nohighlight">\(
 </ul>
 </section>
 <section id="limitations">
-<h3><span class="section-number">1.11.4.2. </span>limitations<a class="headerlink" href="#limitations" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.10.4.2. </span>limitations<a class="headerlink" href="#limitations" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="http://proceedings.mlr.press/v80/alaa18a.html">Limits of Estimating Heterogeneous Treatment Effects: Guidelines for Practical Algorithm Design</a> (alaa &amp; van der schaar, 2018)</p>
 <ul>
@@ -1856,13 +1846,13 @@ $<span class="math notranslate nohighlight">\(
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">1.10. </span>transformers</p>
+            <p class="prev-next-title"><span class="section-number">1.9. </span>transformers</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="ovw_dl_for_neuro.html" title="next page">
+    <a class='right-next' id="next-link" href="ovw_uncertainty.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1.12. </span>dl for neuro</p>
+        <p class="prev-next-title"><span class="section-number">1.11. </span>uncertainty</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

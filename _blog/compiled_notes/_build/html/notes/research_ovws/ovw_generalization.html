@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>1.15. generalization</title>
+    <title>1.13. generalization</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="2. cs" href="../cs/cs.html" />
-    <link rel="prev" title="1.14. interpretability" href="ovw_interp.html" />
+    <link rel="prev" title="1.12. interpretability" href="ovw_interp.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -125,78 +125,68 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="ovw_comp_neuro.html">
-     1.1. comp neuro
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="ovw_transfer_learning.html">
-     1.2. transfer learning
+     1.1. transfer learning
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_disentanglement.html">
-     1.3. disentanglement
+     1.2. disentanglement
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_omics.html">
-     1.4. omics
+     1.3. omics
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_complexity.html">
-     1.5. complexity
+     1.4. complexity
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_interesting_science.html">
-     1.6. interesting science
+     1.5. interesting science
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_dl_theory.html">
-     1.7. dl theory
+     1.6. dl theory
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_scat.html">
-     1.8. scattering transform
+     1.7. scattering transform
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_ml_medicine.html">
-     1.9. ml in medicine
+     1.8. ml in medicine
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_transformers.html">
-     1.10. transformers
+     1.9. transformers
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_causal_inference.html">
-     1.11. causal inference
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ovw_dl_for_neuro.html">
-     1.12. dl for neuro
+     1.10. causal inference
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_uncertainty.html">
-     1.13. uncertainty
+     1.11. uncertainty
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_interp.html">
-     1.14. interpretability
+     1.12. interpretability
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     1.15. generalization
+     1.13. generalization
     </a>
    </li>
   </ul>
@@ -695,17 +685,17 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#basics">
-   1.15.1. basics
+   1.13.1. basics
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#uniform-stability">
-   1.15.2. uniform stability
+   1.13.2. uniform stability
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#trees">
-   1.15.3. trees
+   1.13.3. trees
   </a>
  </li>
 </ul>
@@ -729,17 +719,17 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#basics">
-   1.15.1. basics
+   1.13.1. basics
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#uniform-stability">
-   1.15.2. uniform stability
+   1.13.2. uniform stability
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#trees">
-   1.15.3. trees
+   1.13.3. trees
   </a>
  </li>
 </ul>
@@ -754,9 +744,9 @@ title="Print to PDF"
                 
   <p><strong>some notes on generalization bounds in machine learning with an emphasis on stability</strong></p>
 <section class="tex2jax_ignore mathjax_ignore" id="generalization">
-<h1><span class="section-number">1.15. </span>generalization<a class="headerlink" href="#generalization" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">1.13. </span>generalization<a class="headerlink" href="#generalization" title="Permalink to this headline">#</a></h1>
 <section id="basics">
-<h2><span class="section-number">1.15.1. </span>basics<a class="headerlink" href="#basics" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.13.1. </span>basics<a class="headerlink" href="#basics" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Risk: <span class="math notranslate nohighlight">\(R\left(A_{S}\right)=\mathbb{E}_{(X, Y) \sim P} \ell\left(A_{S}(X), Y\right)\)</span></p></li>
 <li><p>Empirical risk: <span class="math notranslate nohighlight">\(R_{\mathrm{emp}}\left(A_{S}\right)=\frac{1}{n} \sum_{i=1}^{n} \ell\left(A_{S}\left(X_{i}\right), Y_{i}\right)\)</span></p></li>
@@ -764,7 +754,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="uniform-stability">
-<h2><span class="section-number">1.15.2. </span>uniform stability<a class="headerlink" href="#uniform-stability" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.13.2. </span>uniform stability<a class="headerlink" href="#uniform-stability" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="http://proceedings.mlr.press/v125/bousquet20b.html">Sharper Bounds for Uniformly Stable Algorithms</a></p>
 <ul>
@@ -780,7 +770,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="trees">
-<h2><span class="section-number">1.15.3. </span>trees<a class="headerlink" href="#trees" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.13.3. </span>trees<a class="headerlink" href="#trees" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/2110.09626">A cautionary tale on fitting decision trees to data from additive models: generalization lower bounds</a> (tan, agarwal, &amp; yu, 2021)</p>
 <ul>
@@ -839,7 +829,7 @@ title="Print to PDF"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">1.14. </span>interpretability</p>
+            <p class="prev-next-title"><span class="section-number">1.12. </span>interpretability</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../cs/cs.html" title="next page">

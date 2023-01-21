@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>1.2. transfer learning</title>
+    <title>1.1. transfer learning</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -54,8 +54,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="1.3. disentanglement" href="ovw_disentanglement.html" />
-    <link rel="prev" title="1.1. comp neuro" href="ovw_comp_neuro.html" />
+    <link rel="next" title="1.2. disentanglement" href="ovw_disentanglement.html" />
+    <link rel="prev" title="1. research_ovws" href="research_ovws.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -124,79 +124,69 @@ const thebe_selector_output = ".output, .cell_output"
    </i>
   </label>
   <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="ovw_comp_neuro.html">
-     1.1. comp neuro
-    </a>
-   </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     1.2. transfer learning
+     1.1. transfer learning
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_disentanglement.html">
-     1.3. disentanglement
+     1.2. disentanglement
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_omics.html">
-     1.4. omics
+     1.3. omics
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_complexity.html">
-     1.5. complexity
+     1.4. complexity
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_interesting_science.html">
-     1.6. interesting science
+     1.5. interesting science
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_dl_theory.html">
-     1.7. dl theory
+     1.6. dl theory
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_scat.html">
-     1.8. scattering transform
+     1.7. scattering transform
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_ml_medicine.html">
-     1.9. ml in medicine
+     1.8. ml in medicine
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_transformers.html">
-     1.10. transformers
+     1.9. transformers
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_causal_inference.html">
-     1.11. causal inference
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ovw_dl_for_neuro.html">
-     1.12. dl for neuro
+     1.10. causal inference
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_uncertainty.html">
-     1.13. uncertainty
+     1.11. uncertainty
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_interp.html">
-     1.14. interpretability
+     1.12. interpretability
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_generalization.html">
-     1.15. generalization
+     1.13. generalization
     </a>
    </li>
   </ul>
@@ -695,35 +685,47 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#overviews">
-   1.2.1. overviews
+   1.1.1. overviews
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#domain-adaptation-algorithms">
-   1.2.2. domain adaptation algorithms
+   1.1.2. domain adaptation algorithms
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#domain-invariance">
-     1.2.2.1. domain invariance
+     1.1.2.1. domain invariance
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#feature-learning">
+     1.1.2.2. feature learning
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#dynamic-selection">
-     1.2.2.2. dynamic selection
+     1.1.2.3. dynamic selection
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#test-time-adaptation">
-     1.2.2.3. test-time adaptation
+     1.1.2.4. test-time adaptation
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#adv-attacks">
-   1.2.3. adv attacks
+   1.1.3. adv attacks
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nlp">
+     1.1.3.1. nlp
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -746,35 +748,47 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#overviews">
-   1.2.1. overviews
+   1.1.1. overviews
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#domain-adaptation-algorithms">
-   1.2.2. domain adaptation algorithms
+   1.1.2. domain adaptation algorithms
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#domain-invariance">
-     1.2.2.1. domain invariance
+     1.1.2.1. domain invariance
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#feature-learning">
+     1.1.2.2. feature learning
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#dynamic-selection">
-     1.2.2.2. dynamic selection
+     1.1.2.3. dynamic selection
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#test-time-adaptation">
-     1.2.2.3. test-time adaptation
+     1.1.2.4. test-time adaptation
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#adv-attacks">
-   1.2.3. adv attacks
+   1.1.3. adv attacks
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nlp">
+     1.1.3.1. nlp
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -787,32 +801,15 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="transfer-learning">
-<h1><span class="section-number">1.2. </span>transfer learning<a class="headerlink" href="#transfer-learning" title="Permalink to this headline">#</a></h1>
-<p>See also notes on causal inference for some close connections.</p>
+<h1><span class="section-number">1.1. </span>transfer learning<a class="headerlink" href="#transfer-learning" title="Permalink to this headline">#</a></h1>
+<p><em>See also notes on <a class="reference external" href="https://csinva.io/notes/research_ovws/ovw_causal_inference.html">📌 causal inference</a> for some close connections.</em></p>
+<p>For neural-net specific transferring see <a class="reference external" href="https://csinva.io/notes/research_ovws/ovw_transformers.html#adaptation--transfer">📌 adaption/transfer</a>.</p>
 <section id="overviews">
-<h2><span class="section-number">1.2.1. </span>overviews<a class="headerlink" href="#overviews" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.1.1. </span>overviews<a class="headerlink" href="#overviews" title="Permalink to this headline">#</a></h2>
 <p><img alt="transfer_taxonomy" src="../../_images/transfer_taxonomy.png" /> (from <a class="reference external" href="https://arxiv.org/pdf/2109.14501v1.pdf">this paper</a>)</p>
-<ul class="simple">
-<li><p>for neural networks the basic options for transfer-learning are:</p>
-<ul>
-<li><p>finetuning the entire model</p></li>
-<li><p>learn a linear layer from features extracted from a single layer (i.e. linear probing)</p>
-<ul>
-<li><p>this includes just finetuning the final layer</p></li>
-</ul>
-</li>
-<li><p>finetune on all the layers</p>
-<ul>
-<li><p><a class="reference external" href="https://arxiv.org/abs/2201.03529">Head2Toe: Utilizing Intermediate Representations for Better Transfer Learning</a> (evci, et al. 2022) - learn linear layer (using group-lasso) on features extracted from all layers</p></li>
-<li><p>Adapters provide a parameter-efficient alternative to full finetuning in which we can only finetune lightweight neural network layers on top of pretrained weights. <a class="reference external" href="http://proceedings.mlr.press/v97/houlsby19a.html">Parameter-Efficient Transfer Learning for NLP</a>, <a class="reference external" href="https://arxiv.org/abs/2007.07779">AdapterHub: A Framework for Adapting Transformers</a></p></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
 </section>
 <section id="domain-adaptation-algorithms">
-<h2><span class="section-number">1.2.2. </span>domain adaptation algorithms<a class="headerlink" href="#domain-adaptation-algorithms" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.1.2. </span>domain adaptation algorithms<a class="headerlink" href="#domain-adaptation-algorithms" title="Permalink to this headline">#</a></h2>
 <p><em>Domain test bed available <a class="reference external" href="https://github.com/facebookresearch/DomainBed">here</a>, for generalizating to new domains (i.e. performing well on domains that differ from previous seen data)</em></p>
 <ul class="simple">
 <li><p>Empirical Risk Minimization (ERM, <a class="reference external" href="https://www.wiley.com/en-fr/Statistical+Learning+Theory-p-9780471030034">Vapnik, 1998</a>) - standard training</p></li>
@@ -853,7 +850,7 @@ title="Print to PDF"
 <li><p>In-N-Out (<a class="reference external" href="https://arxiv.org/abs/2012.04550">xie…lang, 2020</a>) - if we have many features, rather than using them all as features, can use some as features and some as targets when we shift, to learn the domain shift</p></li>
 </ul>
 <section id="domain-invariance">
-<h3><span class="section-number">1.2.2.1. </span>domain invariance<a class="headerlink" href="#domain-invariance" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.1.2.1. </span>domain invariance<a class="headerlink" href="#domain-invariance" title="Permalink to this headline">#</a></h3>
 <p><em>key idea: want repr. to be invariant to domain label</em></p>
 <ul class="simple">
 <li><p><img alt="Screen Shot 2020-11-10 at 12.05.12 PM" src="../../_images/domain_adv_training.png" /></p></li>
@@ -867,8 +864,14 @@ title="Print to PDF"
 <li><p><a class="reference external" href="https://arxiv.org/abs/1903.06256">Learning Robust Representations by Projecting Superficial Statistics Out</a> (wang et al. 2019)</p></li>
 </ul>
 </section>
+<section id="feature-learning">
+<h3><span class="section-number">1.1.2.2. </span>feature learning<a class="headerlink" href="#feature-learning" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://arxiv.org/pdf/2212.07346.pdf">https://arxiv.org/pdf/2212.07346.pdf</a> (zhang &amp; bottou, 2022) - during training, concatenate the representations obtained with different random seeds</p></li>
+</ul>
+</section>
 <section id="dynamic-selection">
-<h3><span class="section-number">1.2.2.2. </span>dynamic selection<a class="headerlink" href="#dynamic-selection" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.1.2.3. </span>dynamic selection<a class="headerlink" href="#dynamic-selection" title="Permalink to this headline">#</a></h3>
 <p><em>Dynamic Selection (DS) refers to techniques in which, for a new test point, pre-trained classifiers are selected/combined from a pool at test time  <a class="reference external" href="https://www.etsmtl.ca/Unites-de-recherche/LIVIA/Recherche-et-innovation/Publications/Publications-2017/RCruz_InfoFusion.pdf">review paper</a> (cruz et al. 2018), <a class="reference external" href="https://github.com/scikit-learn-contrib/DESlib">python package</a></em></p>
 <ol class="simple">
 <li><p>define region of competence</p>
@@ -900,15 +903,25 @@ title="Print to PDF"
 </ol>
 </section>
 <section id="test-time-adaptation">
-<h3><span class="section-number">1.2.2.3. </span>test-time adaptation<a class="headerlink" href="#test-time-adaptation" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.1.2.4. </span>test-time adaptation<a class="headerlink" href="#test-time-adaptation" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>test-time adaptation</p>
 <ul>
 <li><p>test-time augmentation</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1603.04779">batch normalization</a> (AdaBN)</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1802.03916">label shift estimation</a> (BBSE) - <span class="math notranslate nohighlight">\(p(y)\)</span> shifts but <span class="math notranslate nohighlight">\(P(x|y)\)</span> does not</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1909.13231">rotation prediction</a> (sun et al. 2020)</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/2006.10726">entropy minimization</a> (test-time entropy minimization, TENT, wang et al. 2020) - optimize for model confidence (entropy of predictions), using only norm. statistics and channel-wise affine transformations</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2006.10726">entropy minimization</a> (test-time entropy minimization, TENT, wang et al. 2020) - optimize for model confidence (entropy of predictions), using only norm. statistics and channel-wise affine transformations</p>
+<ul>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2209.07511">Test-Time Prompt Tuning for Zero-Shot Generalization in Vision-Language Models</a> (shu…anandkumar, xiao, 2022) - optimize prompt to minimize the entropy with confidence selection so that the model has consistent predictions across different augmented views of each test sample</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>test-time learning with <a class="reference external" href="https://arxiv.org/abs/1909.13231">rotation prediction</a> (sun et al. 2020) - at test-time, update parameters for self-supervised rotation prediction task then use for classification</p>
+<ul>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2209.07522">masked autoencoders</a> (gandelsman, sun, …, efros, 2022) - use reconstructed with masked autoencoder and improve performance on robustness tasks</p></li>
+<li><p>test-time learning for <a class="reference external" href="https://arxiv.org/abs/2103.11263">Reading Comprehension</a> (banerjee et al. 2021) - uses self-supervision to train models on synthetically generated question-answer pairs, and then infers answers to unseen human-authored questions for this context</p></li>
+<li><p><a class="reference external" href="https://proceedings.neurips.cc/paper/2021/hash/b618c3210e934362ac261db280128c22-Abstract.html">TTT++: When Does Self-Supervised Test-Time Training Fail or Thrive?</a> (liu et al. 2021) - explore different test-time adaptation methods and combine Test-time feature alignment with Test-time contrastive learning</p></li>
 </ul>
 </li>
 <li><p>combining train-time and test-time adaptation</p>
@@ -924,7 +937,7 @@ title="Print to PDF"
 </section>
 </section>
 <section id="adv-attacks">
-<h2><span class="section-number">1.2.3. </span>adv attacks<a class="headerlink" href="#adv-attacks" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.1.3. </span>adv attacks<a class="headerlink" href="#adv-attacks" title="Permalink to this headline">#</a></h2>
 <ul>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1909.08072">Adversarial Attacks and Defenses in Images, Graphs and Text: A Review</a> (xu et al. 2019)</p></li>
 <li><p>attacks</p>
@@ -1011,6 +1024,162 @@ title="Print to PDF"
 </ul>
 </li>
 </ul>
+<section id="nlp">
+<h3><span class="section-number">1.1.3.1. </span>nlp<a class="headerlink" href="#nlp" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/QData/TextAttack">QData/TextAttack: TextAttack 🐙 is a Python framework for adversarial attacks, data augmentation, and model training in NLP https://textattack.readthedocs.io/en/master/</a> (only the attacks on classification tasks, like sentiment classification and entailment)</p></li>
+</ul>
+<table  style="width:100%" border="1">
+<thead>
+<tr class="header">
+<th><strong>Attack Recipe Name</strong></th>
+<th><strong>Goal Function</strong></th>
+<th><strong>ConstraintsEnforced</strong></th>
+<th><strong>Transformation</strong></th>
+<th><strong>Search Method</strong></th>
+<th><strong>Main Idea</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>a2t</code> 
+<span class="citation" data-cites="yoo2021a2t"></span></td>
+<td><sub>Untargeted {Classification, Entailment}</sub></td>
+<td><sub>Percentage of words perturbed, Word embedding distance, DistilBERT sentence encoding cosine similarity, part-of-speech consistency</sub></td>
+<td><sub>Counter-fitted word embedding swap (or) BERT Masked Token Prediction</sub></td>
+<td><sub>Greedy-WIR (gradient)</sub></td>
+<td ><sub>from "Towards Improving Adversarial Training of NLP Models" (<a href="https://arxiv.org/abs/2109.00544">Yoo et al., 2021)</a></sub></td>
+</tr>
+<tr>
+<td><code>alzantot</code>  <span class="citation" data-cites="Alzantot2018GeneratingNL Jia2019CertifiedRT"></span></td>
+<td><sub>Untargeted {Classification, Entailment}</sub></td>
+<td><sub>Percentage of words perturbed, Language Model perplexity, Word embedding distance</sub></td>
+<td><sub>Counter-fitted word embedding swap</sub></td>
+<td><sub>Genetic Algorithm</sub></td>
+<td ><sub>from "Generating Natural Language Adversarial Examples" (<a href="https://arxiv.org/abs/1804.07998">Alzantot et al., 2018</a>)</sub></td>
+</tr>
+<tr>
+<td><code>bae</code> <span class="citation" data-cites="garg2020bae"></span></td>
+<td><sub>Untargeted Classification</sub></td>
+<td><sub>USE sentence encoding cosine similarity</sub></td>
+<td><sub>BERT Masked Token Prediction</sub></td>
+<td><sub>Greedy-WIR</sub></td>
+<td ><sub>BERT masked language model transformation attack from ("BAE: BERT-based Adversarial Examples for Text Classification" (<a href="https://arxiv.org/abs/2004.01970">Garg & Ramakrishnan, 2019</a>)). </td>
+</tr>
+<tr>
+<td><code>bert-attack</code> <span class="citation" data-cites="li2020bertattack"></span></td>
+<td><sub>Untargeted Classification</td>
+<td><sub>USE sentence encoding cosine similarity, Maximum number of words perturbed</td>
+<td><sub>BERT Masked Token Prediction (with subword expansion)</td>
+<td><sub>Greedy-WIR</sub></td>
+<td ><sub> ("BERT-ATTACK: Adversarial Attack Against BERT Using BERT" (<a href="https://arxiv.org/abs/2004.09984">Li et al., 2020</a>))</sub></td>
+</tr>
+<tr>
+<td><code>checklist</code> <span class="citation" data-cites="Gao2018BlackBoxGO"></span></td>
+<td><sub>{Untargeted, Targeted} Classification</sub></td>
+<td><sub>checklist distance</sub></td>
+<td><sub>contract, extend, and substitutes name entities</sub></td>
+<td><sub>Greedy-WIR</sub></td>
+<td ><sub>Invariance testing implemented in CheckList . ("Beyond Accuracy: Behavioral Testing of NLP models with CheckList" (<a href="https://arxiv.org/abs/2005.04118">Ribeiro et al., 2020</a>))</sub></td>
+</tr>
+<tr>
+<td> <code>clare</code> <span class="citation" data-cites="Alzantot2018GeneratingNL Jia2019CertifiedRT"></span></td>
+<td><sub>Untargeted {Classification, Entailment}</sub></td>
+<td><sub>USE sentence encoding cosine similarity</sub></td>
+<td><sub>RoBERTa Masked Prediction for token swap, insert and merge</sub></td>
+<td><sub>Greedy</sub></td>
+<td ><sub>["Contextualized Perturbation for Textual Adversarial Attack" (Li et al., 2020)](https://arxiv.org/abs/2009.07502))</sub></td>
+</tr>
+<tr>
+<td><code>deepwordbug</code> <span class="citation" data-cites="Gao2018BlackBoxGO"></span></td>
+<td><sub>{Untargeted, Targeted} Classification</sub></td>
+<td><sub>Levenshtein edit distance</sub></td>
+<td><sub>{Character Insertion, Character Deletion, Neighboring Character Swap, Character Substitution}</sub></td>
+<td><sub>Greedy-WIR</sub></td>
+<td ><sub>Greedy replace-1 scoring and multi-transformation character-swap attack (["Black-box Generation of Adversarial Text Sequences to Evade Deep Learning Classifiers" (Gao et al., 2018)](https://arxiv.org/abs/1801.04354)</sub></td>
+</tr>
+<tr>
+<td> <code>fast-alzantot</code> <span class="citation" data-cites="Alzantot2018GeneratingNL Jia2019CertifiedRT"></span></td>
+<td><sub>Untargeted {Classification, Entailment}</sub></td>
+<td><sub>Percentage of words perturbed, Language Model perplexity, Word embedding distance</sub></td>
+<td><sub>Counter-fitted word embedding swap</sub></td>
+<td><sub>Genetic Algorithm</sub></td>
+<td ><sub>Modified, faster version of the Alzantot et al. genetic algorithm, from (["Certified Robustness to Adversarial Word Substitutions" (Jia et al., 2019)](https://arxiv.org/abs/1909.00986))</sub></td>
+</tr>
+<tr>
+<td><code>hotflip</code> (word swap) <span class="citation" data-cites="Ebrahimi2017HotFlipWA"></span></td>
+<td><sub>Untargeted Classification</sub></td>
+<td><sub>Word Embedding Cosine Similarity, Part-of-speech match, Number of words perturbed</sub></td>
+<td><sub>Gradient-Based Word Swap</sub></td>
+<td><sub>Beam search</sub></td>
+<td ><sub> (["HotFlip: White-Box Adversarial Examples for Text Classification" (Ebrahimi et al., 2017)](https://arxiv.org/abs/1712.06751))</sub></td>
+</tr>
+<tr>
+<td><code>iga</code> <span class="citation" data-cites="iga-wang2019natural"></span></td>
+<td><sub>Untargeted {Classification, Entailment}</sub></td>
+<td><sub>Percentage of words perturbed, Word embedding distance</sub></td>
+<td><sub>Counter-fitted word embedding swap</sub></td>
+<td><sub>Genetic Algorithm</sub></td>
+<td ><sub>Improved genetic algorithm -based word substitution from (["Natural Language Adversarial Attacks and Defenses in Word Level (Wang et al., 2019)"](https://arxiv.org/abs/1909.06723)</sub></td>
+</tr>
+<tr>
+<td><code>input-reduction</code> <span class="citation" data-cites="feng2018pathologies"></span></td>
+<td><sub>Input Reduction</sub></td>
+<td></td>
+<td><sub>Word deletion</sub></td>
+<td><sub>Greedy-WIR</sub></td>
+<td ><sub>Greedy attack with word importance ranking , Reducing the input while maintaining the prediction through word importance ranking (["Pathologies of Neural Models Make Interpretation Difficult" (Feng et al., 2018)](https://arxiv.org/pdf/1804.07781.pdf))</sub></td>
+</tr>
+<tr>
+<td><code>kuleshov</code> <span class="citation" data-cites="Kuleshov2018AdversarialEF"></span></td>
+<td><sub>Untargeted Classification</sub></td>
+<td><sub>Thought vector encoding cosine similarity, Language model similarity probability</sub></td>
+<td><sub>Counter-fitted word embedding swap</sub></td>
+<td><sub>Greedy word swap</sub></td>
+<td ><sub>(["Adversarial Examples for Natural Language Classification Problems" (Kuleshov et al., 2018)](https://openreview.net/pdf?id=r1QZ3zbAZ)) </sub></td>
+</tr>
+<tr>
+<td><code>pruthi</code> <span class="citation" data-cites="pruthi2019combating"></span></td>
+<td><sub>Untargeted Classification</sub></td>
+<td><sub>Minimum word length, Maximum number of words perturbed</sub></td>
+<td><sub>{Neighboring Character Swap, Character Deletion, Character Insertion, Keyboard-Based Character Swap}</sub></td>
+<td><sub>Greedy search</sub></td>
+<td ><sub>simulates common typos (["Combating Adversarial Misspellings with Robust Word Recognition" (Pruthi et al., 2019)](https://arxiv.org/abs/1905.11268) </sub></td>
+</tr>
+<tr>
+<td><code>pso</code> <span class="citation" data-cites="pso-zang-etal-2020-word"></span></td>
+<td><sub>Untargeted Classification</sub></td>
+<td></td>
+<td><sub>HowNet Word Swap</sub></td>
+<td><sub>Particle Swarm Optimization</sub></td>
+<td ><sub>(["Word-level Textual Adversarial Attacking as Combinatorial Optimization" (Zang et al., 2020)](https://www.aclweb.org/anthology/2020.acl-main.540/)) </sub></td>
+</tr>
+<tr>
+<td><code>pwws</code> <span class="citation" data-cites="pwws-ren-etal-2019-generating"></span></td>
+<td><sub>Untargeted Classification</sub></td>
+<td></td>
+<td><sub>WordNet-based synonym swap</sub></td>
+<td><sub>Greedy-WIR (saliency)</sub></td>
+<td ><sub>Greedy attack with word importance ranking based on word saliency and synonym swap scores (["Generating Natural Language Adversarial Examples through Probability Weighted Word Saliency" (Ren et al., 2019)](https://www.aclweb.org/anthology/P19-1103/))</sub> </td>
+</tr>
+<tr>
+<td><code>textbugger</code> : (black-box) <span class="citation" data-cites="Li2019TextBuggerGA"></span></td>
+<td><sub>Untargeted Classification</sub></td>
+<td><sub>USE sentence encoding cosine similarity</sub></td>
+<td><sub>{Character Insertion, Character Deletion, Neighboring Character Swap, Character Substitution}</sub></td>
+<td><sub>Greedy-WIR</sub></td>
+<td ><sub>([(["TextBugger: Generating Adversarial Text Against Real-world Applications" (Li et al., 2018)](https://arxiv.org/abs/1812.05271)).</sub></td>
+</tr>
+<tr>
+<td><code>textfooler</code> <span class="citation" data-cites="Jin2019TextFooler"></span></td>
+<td><sub>Untargeted {Classification, Entailment}</sub></td>
+<td><sub>Word Embedding Distance, Part-of-speech match, USE sentence encoding cosine similarity</sub></td>
+<td><sub>Counter-fitted word embedding swap</sub></td>
+<td><sub>Greedy-WIR</sub></td>
+<td ><sub>Greedy attack with word importance ranking  (["Is Bert Really Robust?" (Jin et al., 2019)](https://arxiv.org/abs/1907.11932))</sub> </td>
+</tr>
+</table>
+</section>
 </section>
 </section>
 
@@ -1041,17 +1210,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="ovw_comp_neuro.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="research_ovws.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">1.1. </span>comp neuro</p>
+            <p class="prev-next-title"><span class="section-number">1. </span>research_ovws</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="ovw_disentanglement.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1.3. </span>disentanglement</p>
+        <p class="prev-next-title"><span class="section-number">1.2. </span>disentanglement</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -1553,6 +1553,8 @@ the operations above allow for encoding many normal data structures into a singl
     - [Decoding speech from non-invasive brain recordings](https://arxiv.org/abs/2208.12266) (defossez, caucheteux, ..., remi-king, 2022)
   
   - [Reconstructing Visual Experiences from Brain Activity Evoked by Natural Movies](https://www.sciencedirect.com/science/article/pii/S0960982211009377) (nishimoto, …, gallant, 2011)
+    - Seeing Beyond the Brain: Conditional Diffusion Model with Sparse Masked Modeling for Vision Decoding ([chen et al. 2022](https://arxiv.org/pdf/2211.06956.pdf))
+  
 
 
 

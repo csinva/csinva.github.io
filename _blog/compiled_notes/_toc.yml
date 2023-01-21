@@ -5,7 +5,6 @@ options:
 sections:
 - file: notes/research_ovws/research_ovws.md
   sections:
-  - file: notes/research_ovws/ovw_comp_neuro.md
   - file: notes/research_ovws/ovw_transfer_learning.md
   - file: notes/research_ovws/ovw_disentanglement.md
   - file: notes/research_ovws/ovw_omics.md
@@ -16,7 +15,6 @@ sections:
   - file: notes/research_ovws/ovw_ml_medicine.md
   - file: notes/research_ovws/ovw_transformers.md
   - file: notes/research_ovws/ovw_causal_inference.md
-  - file: notes/research_ovws/ovw_dl_for_neuro.md
   - file: notes/research_ovws/ovw_uncertainty.md
   - file: notes/research_ovws/ovw_interp.md
   - file: notes/research_ovws/ovw_generalization.md

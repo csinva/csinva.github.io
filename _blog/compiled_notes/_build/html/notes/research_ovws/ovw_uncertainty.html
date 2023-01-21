@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>1.13. uncertainty</title>
+    <title>1.11. uncertainty</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -54,8 +54,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="1.14. interpretability" href="ovw_interp.html" />
-    <link rel="prev" title="1.12. dl for neuro" href="ovw_dl_for_neuro.html" />
+    <link rel="next" title="1.12. interpretability" href="ovw_interp.html" />
+    <link rel="prev" title="1.10. causal inference" href="ovw_causal_inference.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -125,78 +125,68 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="ovw_comp_neuro.html">
-     1.1. comp neuro
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="ovw_transfer_learning.html">
-     1.2. transfer learning
+     1.1. transfer learning
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_disentanglement.html">
-     1.3. disentanglement
+     1.2. disentanglement
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_omics.html">
-     1.4. omics
+     1.3. omics
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_complexity.html">
-     1.5. complexity
+     1.4. complexity
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_interesting_science.html">
-     1.6. interesting science
+     1.5. interesting science
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_dl_theory.html">
-     1.7. dl theory
+     1.6. dl theory
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_scat.html">
-     1.8. scattering transform
+     1.7. scattering transform
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_ml_medicine.html">
-     1.9. ml in medicine
+     1.8. ml in medicine
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_transformers.html">
-     1.10. transformers
+     1.9. transformers
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_causal_inference.html">
-     1.11. causal inference
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ovw_dl_for_neuro.html">
-     1.12. dl for neuro
+     1.10. causal inference
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     1.13. uncertainty
+     1.11. uncertainty
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_interp.html">
-     1.14. interpretability
+     1.12. interpretability
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="ovw_generalization.html">
-     1.15. generalization
+     1.13. generalization
     </a>
    </li>
   </ul>
@@ -695,56 +685,56 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#basics">
-   1.13.1. basics
+   1.11.1. basics
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#outlier-detection">
-   1.13.2. outlier-detection
+   1.11.2. outlier-detection
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#uncertainty-detection">
-   1.13.3. uncertainty detection
+   1.11.3. uncertainty detection
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#bayesian-approaches">
-     1.13.3.1. bayesian approaches
+     1.11.3.1. bayesian approaches
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#neural-networks">
-   1.13.4. neural networks
+   1.11.4. neural networks
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ensembles">
+     1.11.4.1. ensembles
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#directly-predict-uncertainty">
-     1.13.4.1. directly predict uncertainty
+     1.11.4.2. directly predict uncertainty
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#nearest-neighbor-methods">
-     1.13.4.2. nearest-neighbor methods
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#ensemble-approaches">
-     1.13.4.3. ensemble approaches
+     1.11.4.3. nearest-neighbor methods
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#bayesian-neural-networks">
-     1.13.4.4. bayesian neural networks
+     1.11.4.4. bayesian neural networks
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#conformal-inference">
-   1.13.5. conformal inference
+   1.11.5. conformal inference
   </a>
  </li>
 </ul>
@@ -768,56 +758,56 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#basics">
-   1.13.1. basics
+   1.11.1. basics
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#outlier-detection">
-   1.13.2. outlier-detection
+   1.11.2. outlier-detection
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#uncertainty-detection">
-   1.13.3. uncertainty detection
+   1.11.3. uncertainty detection
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#bayesian-approaches">
-     1.13.3.1. bayesian approaches
+     1.11.3.1. bayesian approaches
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#neural-networks">
-   1.13.4. neural networks
+   1.11.4. neural networks
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ensembles">
+     1.11.4.1. ensembles
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#directly-predict-uncertainty">
-     1.13.4.1. directly predict uncertainty
+     1.11.4.2. directly predict uncertainty
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#nearest-neighbor-methods">
-     1.13.4.2. nearest-neighbor methods
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#ensemble-approaches">
-     1.13.4.3. ensemble approaches
+     1.11.4.3. nearest-neighbor methods
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#bayesian-neural-networks">
-     1.13.4.4. bayesian neural networks
+     1.11.4.4. bayesian neural networks
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#conformal-inference">
-   1.13.5. conformal inference
+   1.11.5. conformal inference
   </a>
  </li>
 </ul>
@@ -832,9 +822,9 @@ title="Print to PDF"
                 
   <p><strong>some notes on uncertainty in machine learning, particularly deep learning</strong></p>
 <section class="tex2jax_ignore mathjax_ignore" id="uncertainty">
-<h1><span class="section-number">1.13. </span>uncertainty<a class="headerlink" href="#uncertainty" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">1.11. </span>uncertainty<a class="headerlink" href="#uncertainty" title="Permalink to this headline">#</a></h1>
 <section id="basics">
-<h2><span class="section-number">1.13.1. </span>basics<a class="headerlink" href="#basics" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.11.1. </span>basics<a class="headerlink" href="#basics" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p><strong>calibration</strong> - predicted probabilities should match real probabilities</p>
 <ul>
@@ -863,7 +853,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="outlier-detection">
-<h2><span class="section-number">1.13.2. </span>outlier-detection<a class="headerlink" href="#outlier-detection" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.11.2. </span>outlier-detection<a class="headerlink" href="#outlier-detection" title="Permalink to this headline">#</a></h2>
 <p><em>Note: outlier detection uses information only about X to find points “far away” from the main distribution</em></p>
 <ul class="simple">
 <li><p>overview from <a class="reference external" href="https://scikit-learn.org/stable/modules/outlier_detection.html">sklearn</a></p>
@@ -892,7 +882,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="uncertainty-detection">
-<h2><span class="section-number">1.13.3. </span>uncertainty detection<a class="headerlink" href="#uncertainty-detection" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.11.3. </span>uncertainty detection<a class="headerlink" href="#uncertainty-detection" title="Permalink to this headline">#</a></h2>
 <p><em>Note: uncertainty detection uses information about X / <span class="math notranslate nohighlight">\(\phi(X)\)</span> and Y,  to find points for which a particular prediction may be uncertain. This is similar to the predicted probability output by many popular classifiers, such as logistic regression.</em></p>
 <ul class="simple">
 <li><p><strong>rejection learning</strong> - allow models to <em>reject</em> (not make a prediction) when they are not confidently accurate (<a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/5222035/?casa_token=UiIdn8AjFjYAAAAA:XvnZPA7rJlvwxD-bIh2dNG4SPfnHtDYWcBUmAFYRxD6Xk8QE5osnKLs8tAlib_doL8OxqYjMLDE">chow 1957</a>, <a class="reference external" href="https://link.springer.com/chapter/10.1007/978-3-319-46379-7_5">cortes et al. 2016</a>)</p></li>
@@ -904,7 +894,7 @@ title="Print to PDF"
 </li>
 </ul>
 <section id="bayesian-approaches">
-<h3><span class="section-number">1.13.3.1. </span>bayesian approaches<a class="headerlink" href="#bayesian-approaches" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.11.3.1. </span>bayesian approaches<a class="headerlink" href="#bayesian-approaches" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><strong>epistemic uncertainty</strong> - uncertainty in the DNN model parameters</p>
 <ul>
@@ -923,9 +913,23 @@ title="Print to PDF"
 </section>
 </section>
 <section id="neural-networks">
-<h2><span class="section-number">1.13.4. </span>neural networks<a class="headerlink" href="#neural-networks" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.11.4. </span>neural networks<a class="headerlink" href="#neural-networks" title="Permalink to this headline">#</a></h2>
+<section id="ensembles">
+<h3><span class="section-number">1.11.4.1. </span>ensembles<a class="headerlink" href="#ensembles" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="http://papers.nips.cc/paper/7219-simple-and-scalable-predictive-uncertainty-estimation-using-deep-ensembles">DNN ensemble uncertainty works</a> - predict mean and variance w/ each network then ensemble (don’t need to do bagging, random init is enough)</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1912.02757v1">Deep Ensembles: A Loss Landscape Perspective</a> (fort, hu, &amp; lakshminarayanan, 2020)</p>
+<ul>
+<li><p>different random initializations provide most diversity</p></li>
+<li><p>samples along one path have varying weights but similar predictions</p></li>
+<li><p><img alt="deep_ensembles" src="../../_images/deep_ensembles.png" /></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/bayesgroup/pytorch-ensembles">Pitfalls of In-Domain Uncertainty Estimation and Ensembling in Deep Learning</a> - many complex ensemble approaches are similar to just an ensemble of a few randomly initialized DNNs</p></li>
+</ul>
+</section>
 <section id="directly-predict-uncertainty">
-<h3><span class="section-number">1.13.4.1. </span>directly predict uncertainty<a class="headerlink" href="#directly-predict-uncertainty" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.11.4.2. </span>directly predict uncertainty<a class="headerlink" href="#directly-predict-uncertainty" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/1810.01861">Inhibited Softmax for Uncertainty Estimation in Neural Networks</a> (mozejko et al. 2019) - directly predict uncertainty by adding an extra output during training</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1802.04865.pdf">Learning Confidence for Out-of-Distribution Detection in Neural Networks</a> (devries et al. 2018) - predict both prediction <em>p</em> and confidence <em>c</em></p>
@@ -949,7 +953,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="nearest-neighbor-methods">
-<h3><span class="section-number">1.13.4.2. </span>nearest-neighbor methods<a class="headerlink" href="#nearest-neighbor-methods" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.11.4.3. </span>nearest-neighbor methods<a class="headerlink" href="#nearest-neighbor-methods" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1803.04765.pdf">Deep k-Nearest Neighbors: Towards Confident, Interpretable and Robust Deep Learning</a> (papernot &amp; mcdaniel, 2018)</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1709.09844.pdf">distance-based confidence scores</a> (mandelbaum et al. 2017) - use either distance in embedding space or adversarial training to get uncertainties for DNNs</p></li>
@@ -960,24 +964,8 @@ title="Print to PDF"
 </li>
 </ul>
 </section>
-<section id="ensemble-approaches">
-<h3><span class="section-number">1.13.4.3. </span>ensemble approaches<a class="headerlink" href="#ensemble-approaches" title="Permalink to this headline">#</a></h3>
-<ul class="simple">
-<li><p><a class="reference external" href="http://papers.nips.cc/paper/7219-simple-and-scalable-predictive-uncertainty-estimation-using-deep-ensembles">DNN ensemble uncertainty works</a> - predict mean and variance w/ each network then ensemble (don’t need to do bagging, random init is enough)</p></li>
-<li><p>can also use ensemble of <a class="reference external" href="https://arxiv.org/abs/1704.00109">snapshots during training</a> (huang et al. 2017)</p></li>
-<li><p>alternatively <a class="reference external" href="https://arxiv.org/pdf/2002.06715.pdf">batch ensemble</a> (wen et al. 2020) - have several rank-1 keys that index different weights hidden within one neural net</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1912.02757v1">Deep Ensembles: A Loss Landscape Perspective</a> (fort, hu, &amp; lakshminarayanan, 2020)</p>
-<ul>
-<li><p>different random initializations provide most diversity</p></li>
-<li><p>samples along one path have varying weights but similar predictions</p></li>
-<li><p><img alt="deep_ensembles" src="../../_images/deep_ensembles.png" /></p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="https://github.com/bayesgroup/pytorch-ensembles">Pitfalls of In-Domain Uncertainty Estimation and Ensembling in Deep Learning</a> - many complex ensemble approaches are similar to just an ensemble of a few randomly initialized DNNs</p></li>
-</ul>
-</section>
 <section id="bayesian-neural-networks">
-<h3><span class="section-number">1.13.4.4. </span>bayesian neural networks<a class="headerlink" href="#bayesian-neural-networks" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.11.4.4. </span>bayesian neural networks<a class="headerlink" href="#bayesian-neural-networks" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://medium.com/neuralspace/probabilistic-deep-learning-bayes-by-backprop-c4a3de0d9743">blog posts on basics</a></p>
 <ul>
@@ -1012,7 +1000,7 @@ title="Print to PDF"
 </section>
 </section>
 <section id="conformal-inference">
-<h2><span class="section-number">1.13.5. </span>conformal inference<a class="headerlink" href="#conformal-inference" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.11.5. </span>conformal inference<a class="headerlink" href="#conformal-inference" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>conformal inference constructs valid (wrt coverage error) prediction bands for individual forecasts</p>
 <ul>
@@ -1026,7 +1014,7 @@ title="Print to PDF"
 <li><p>empirical data tends to undercover (since empirical residuals tend to underestimate variance) - conformal inference aims to rectify this</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/2009.14193">Uncertainty Sets for Image Classifiers using Conformal Prediction</a></p>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2009.14193">Uncertainty Sets for Image Classifiers using Conformal Prediction</a> (angelopoulos, bates, malik, jordan, 2021)</p>
 <ul>
 <li><p>Image-to-Image Regression with Distribution-Free Uncertainty Quantification and Applications in Imaging (<a class="reference external" href="https://arxiv.org/pdf/2202.05265.pdf">Angelopoulos, …jordan, malik, upadhyayula, roman, ‘22</a>)</p>
 <ul>
@@ -1066,17 +1054,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="ovw_dl_for_neuro.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="ovw_causal_inference.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">1.12. </span>dl for neuro</p>
+            <p class="prev-next-title"><span class="section-number">1.10. </span>causal inference</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="ovw_interp.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1.14. </span>interpretability</p>
+        <p class="prev-next-title"><span class="section-number">1.12. </span>interpretability</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
