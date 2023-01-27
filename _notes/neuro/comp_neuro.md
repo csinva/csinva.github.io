@@ -800,66 +800,6 @@ category: neuro
 - maps are plastic - cortex devoted to particular tasks expands (not passive, needs to be active)
   - kids therapy with tone-tracking video games at higher and higher frequencies
 
-# ml analogies
-
-## Brain theories
-- Computational Theory of Mind
-- Classical associationism
-- Connectionism
-- Situated cognition
-- Memory-prediction framework
-- Fractal Theory: https://www.youtube.com/watch?v=axaH4HFzA24
-- Brain sheets are made of cortical columns (about .3mm diameter, 1000 neurons / column)
-  - Have ~6 layers
-
-
-## brain as a computer
--	Brain as a Computer – Analog VLSI and Neural Systems by Mead (VLSI – very large scale integration)
--	Brain Computer Analogy
-  -Process info
-  -Signals represented by potential
-  -Signals are amplified = gain
-  -Power supply
-  -Knowledge is not stored in knowledge of the parts, but in their connections
-  -Based on electrically charged entities interacting with energy barriers
-  -http://en.wikipedia.org/wiki/Computational_theory_of_mind
-  -http://scienceblogs.com/developingintelligence/2007/03/27/why-the-brain-is-not-like-a-co/
-  -Brain’ storage capacity is about 2.5 petabytes (Scientific American, 2005)
-  -Electronics
-  -Voltage can be thought of as water in a reservoir at a height
-  -It can flow down, but the water will never reach above the initial voltage
-  -A capacitor is like a tank that collects the water under the reservoir
-  -The capacitance is the cross-sectional area of the tank
-  -Capacitance – electrical charge required to raise the potential by 1 volt
-  -Conductance = 1/ resistance = mho, siemens
-  -We could also say the word is a computer with individuals being the processors – with all the wasted thoughts we have – the solution is probably to identify global problems and channel people’s focus towards working on them
-  -Brain chip: http://www.research.ibm.com/articles/brain-chip.shtml
-  -Differences: What Can AI Get from Neuroscience? 
-  -Brains are not digital
-  -Brains don’t have a CPU
-  -Memories are not separable from processing
-  -Asynchronous and continuous
-  -Details of brain substrate matter
-  -Feedback and Circular Causality
-  -Asking questions
-  -Brains has lots of sensors
-  -Lots of cellular diversity
-  -NI uses lots of parallelism
-  -Delays are part of the computation
-
-## Brain v. Deep Learning
-
--	http://timdettmers.com/
-  -	problems with brain simulations:
-    -	Not possible to test specific scientific hypotheses (compare this to the large hadron collider project with its perfectly defined hypotheses)
-    -	Does not simulate real brain processing (no firing connections, no biological interactions)
-    -	Does not give any insight into the functionality of brain processing (the meaning of the simulated activity is not assessed)
-  -	Neuron information processing parts
-    -	Dendritic spikes are like first layer of conv net
-    -	Neurons will typically have a genome that is different from the original genome that you were assigned to at birth. Neurons may have additional or fewer chromosomes and have sequences of information removed or added from certain chromosomes.
-    -	http://timdettmers.com/2015/03/26/convolution-deep-learning/
-    -	The adult brain has 86 billion neurons, about 10 trillion synapse, and about 300 billion dendrites (tree-like structures with synapses on them
-
 # probabilistic models + inference
 
 <details>
@@ -915,21 +855,6 @@ category: neuro
 
 - https://medium.com/the-spike/a-neural-data-science-how-and-why-d7e3969086f2
 
-**history**
-
-The history of deep learning is intimately linked with neuroscience, with the modern idea of convolutional neural networks dates back to the necognitron (fukushima1982neocognitron)
-
-**pro big-data**
-
-Artificial neural networks can compute in several different ways. There is some evidence in the visual system that neurons in higher layers of visual areas can, to some extent, be predicted linearly by higher layers of deep networks (yamins2014performance)
-
-- when comparing energy-efficiency, must normalize network performance by energy / number of computations / parameters
-
-**anti big-data**
-
-- could neuroscientist  understand microprocessor
-- no canonical microcircuit
-
 ## data types
 
 |              | EEG      | ECoG              | Local Field potential (LFP) -> microelectrode array | single-unit | calcium imaging | fMRI     |
@@ -940,6 +865,16 @@ Artificial neural networks can compute in several different ways. There is some 
 | invasiveness | non      | yes (under skull) | very                                                | very        | non             | non      |
 
 - [ovw of advancements in neuroengineering](https://medium.com/neurotechx/timeline-of-global-highlights-in-neuroengineering-2005-2018-75e4637b9e38)
+- **pro big-data**
+
+  Artificial neural networks can compute in several different ways. There is some evidence in the visual system that neurons in higher layers of visual areas can, to some extent, be predicted linearly by higher layers of deep networks (yamins2014performance)
+
+  - when comparing energy-efficiency, must normalize network performance by energy / number of computations / parameters
+
+  **anti big-data**
+
+  - could neuroscientist  understand microprocessor
+  - no canonical microcircuit
 - cellular
   - extracellular microeelectrodes
   - intracellular microelectrode
@@ -1036,81 +971,6 @@ Artificial neural networks can compute in several different ways. There is some 
 - deep heuristic for model-building
 - joint prediction of different input/output relationships
 - joint prediction of neurons from other areas
-
-# ideas for deep learning from neuroscience
-
-This aims to be a primer on aspects of neuroscience which could be relevant to deep learning researchers. These two communities are becoming more intertwined, and could benefit greatly from each other. However, current literature in neuroscience has a steep learning curve, requiring learning much about biology. This primer aims to equip deep learning researchers with the basic computational principles of the brain, to draw inspiration and provide a new perspective on neural computation.
-
-**explaining concepts from neuroscience to inform deep learning**
-
-Modern deep learning evokes many parallels with the human brain. Here, we explore how these two concepts are related and how neuroscience can inform deep learning going forward <dt-fn>Note that this post largely ignores the important reverse question: how can deep learning inform neuroscience?</dt-fn>
-
-The brain currently outperforms deep learning in a number of different ways: efficiency, parallel computation, not forgetting, robustness. Thus, in these areas and others, the brain can offer high-level inspiration as well as more detailed algorithmic ideas on how to solve complex problems.
-
-We begin with some history and perspective before further exploring these concepts at 3 levels: (1) the neuron level, (2) the network level, and (3) high-level concepts.
-
-**brief history**
-
-The history of deep learning is intimately linked with neuroscience. In vision, the idea of hierarchical processing dates back to Hubel and Weisel <dt-cite key="hubel1962receptive"></dt-cite> and the modern idea of convolutional neural networks dates back to the necognitron<dt-cite key="fukushima1982neocognitron"></dt-cite>.
-
-Ranges from neurally-inspired -> biologically plausible
-
-Computational neuroscientists often discuss understanding computation at Marr's 3 levels of understanding: (1) computational, (2) algorithmic, and (3) mechanistic<dt-cite key="marr1976understanding"></dt-cite>. The first two levels are most crucial to understanding here, while the third may yield insights for the field of neuromorphic computing <dt-cite key="schuman2017survey"></dt-cite>.
-
-**cautionary notes**
-
-There are dangers in deep learning researchers constraining themselves to biologically plausible algorithms. First, the underlying hardware of the brain and modern von Neumman-based architectures is drastically different and one should not assume that the same algorithms will work on both systems. Several examples, such as backpropagation, were derived by deviating from the mindset of mimicking biology.
-
-Second, the brain does not solve probleDangers for going too far.... One wouldn't want to draw inspiration from the retina to put a hole in the camera.
-
-
-<img width="50%" src="figs/retina.png"></img>
-Gallery of brain failures. Example, inside-out retina, V1 at back...
-
-**neuron-level**
-
-The fundamental unit of the brain is the neuron, which takes inputs from other neurons and then provides an output.
-
-Individual neurons perform varying computations. Some neurons have been show to linearly sum their inputs <dt-cite key="singh2017consensus"></dt-cite>
-
- - neurons are complicated (perceptron -> ... -> detailed comparmental model)
-
-For more information, see a very good review on modeling individual neurons<dt-cite key="herz2006modeling"></dt-cite>.
-
- - converting to spikes introduces noise <dt-cite key="carandini2004amplification"></dt-cite>- perhaps just price of long-distance communication
-
-**network-level**
-
- Artificial neural networks can compute in several different ways. There is some evidence in the visual system that neurons in higher layers of visual areas can, to some extent, be predicted linearly by higher layers of deep networks<dt-cite key="yamins2014performance"></dt-cite>. However, this certainly isn't true in general. Key factors
-
- For the simplest intuition, here we provide an example of a canonical circuit for computing the maximum of a number of elements: the winner-take-all circuit.
-
- Other network structures, such as that of the hippocampus are surely useful as well.
-
- Questions at this level bear on population coding, or how groups of neurons jointly represent information.
-
-**engram** - unit of [cognitive](https://en.wikipedia.org/wiki/Cognition) information imprinted in a physical substance, theorized to be the means by which [memories](https://en.wikipedia.org/wiki/Memory) are stored
-
-**high-level concepts**
-
- Key concepts differentiate the learning process. Online,
-- learning
-- high-level
-  - attention
-  - memory
-  - robustness
-  - recurrence
-  - topology
-  - glial cells
-- inspirations
-  - canonical cortical microcircuits
-  - nested loop architectures
-  - avoiding catostrophic forgetting through synaptic complexity
-  - learning asymmetric recurrent generative models
-- spiking networks ([bindsnet](https://github.com/Hananel-Hazan/bindsnet))
-- neural priors
-  - cox...
-
 
 # advanced topics
 
@@ -1419,24 +1279,33 @@ the operations above allow for encoding many normal data structures into a singl
     - compensatory homeostatic plasticity which stabilizes neural activity
   - approaches: regularization, dynamic architectures (e.g. add more nodes after each task), memory replay
 
-## deeptune-style
+## deeptune-related
 
-- ponce_19_evolving_stimuli: [https://www.cell.com/action/showPdf?pii=S0092-8674%2819%2930391-5](https://www.cell.com/action/showPdf?pii=S0092-8674(19)30391-5)
-- bashivan_18_ann_synthesis
-- [adept paper](https://papers.nips.cc/paper/6738-adaptive-stimulus-selection-for-optimizing-neural-population-responses.pdf)
+- Neural population control via deep image synthesis ([bashivan, kar, & dicarlo, 2019](https://www.science.org/doi/abs/10.1126/science.aav9436))
+
+- [Evolving images for visual neurons using a deep generative network reveals coding principles and neuronal preferences](https://www.sciencedirect.com/science/article/pii/S0092867419303915) (ponce et al. 2019)
+
+- [XDream: Finding preferred stimuli for visual neurons using generative networks and gradient-free optimization](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007973) (2020)
+
+- [Synthesizing optimal visual stimuli for EEG-SSVEPs with deep generative networks](https://cns.iisc.ac.in/sridhar/assets/publications/ACCS 2022 Posterv21_shankha.pdf)
+- [Inception in visual cortex: in vivo-silico loops reveal most exciting images](https://www.biorxiv.org/content/10.1101/506956.abstract) (2018)
+- Adept: Adaptive stimulus selection for optimizing neural population responses ([cowley...byron yu, 2017](https://papers.nips.cc/paper/6738-adaptive-stimulus-selection-for-optimizing-neural-population-responses.pdf))
   - use kernel regression from CNN embedding to calculate distances between preset images
   - select preset images
   - verified with macaque v4 recording
   - currently only study that optimizes firing rates of multiple neurons
 	- pick next stimulus in closed-loop ("adaptive sampling" = "optimal experimental design")
-- J. Benda, T. Gollisch, C. K. Machens, and A. V. Herz, “From response to stimulus: adaptive sampling in sensory physiology”
+	
+- [From response to stimulus: adaptive sampling in sensory physiology](https://www.sciencedirect.com/science/article/pii/S095943880700092X) (2007)
+  
   - find the smallest number of stimuli needed to fit parameters of a model that predicts the recorded neuron’s activity from the
     stimulus
-
+  
   - maximizing firing rates via genetic algorithms
-
+  
   - maximizing firing rate via gradient ascent
-- C. DiMattina and K. Zhang,“Adaptive stimulus optimization for sensory systems neuroscience"](https://www.frontiersin.org/articles/10.3389/fncir.2013.00101/full)
+  
+- [Adaptive stimulus optimization for sensory systems neuroscience"](https://www.frontiersin.org/articles/10.3389/fncir.2013.00101/full)
 
   - 2 general approaches: gradient-based approaches + genetic algorithms
   - can put constraints on stimulus space
@@ -1493,69 +1362,6 @@ the operations above allow for encoding many normal data structures into a singl
 - friston_10_free_energy
   - ![friston_free_energy](../assets/friston_free_energy.png)
 
-## biological constraints for DNNs
-
-- Aligning DNN with brain responses
-
-  - haven’t found anything like this for NLP
-  - Aligning Model and Macaque Inferior Temporal Cortex Representations Improves Model-to-Human Behavioral Alignment and Adversarial Robustness ([dapello, kar, shrimpf…cox, dicarlo, 2022](https://www.biorxiv.org/content/10.1101/2022.07.01.498495v1.abstract)) - finetune CNN embedding to match monkey brain (IT electrode recordings) before making classifications
-  - [Towards robust vision by multi-task learning on monkey visual cortex](https://proceedings.neurips.cc/paper/2021/hash/06a9d51e04213572ef0720dd27a84792-Abstract.html) (safarani…sinz, 2021) - simultaneously predict monkey v1 (electrode data) and imagenet
-  - [Improved object recognition using neural networks trained to mimic the brain’s statistical properties - ScienceDirect](https://www.sciencedirect.com/science/article/pii/S0893608020302549?casa_token=UBMLt-J8JvgAAAAA:kWdL43r-oYZUUn4Mh41Z2XrMk7FU2WNJKXAvAdWmUjxKCgmTflUfV1tugLFLvQuUX9231x-6) (federer et al. 2020) - simultaneously train CNN to classify objects + have similar reprs to monkey electrode data
-  - [Learning from brains how to regularize machines](https://proceedings.neurips.cc/paper/2019/hash/70117ee3c0b15a2950f1e82a215e812b-Abstract.html) (li …, tolias 2019) - regularize intermediate representations using mouse v1 data (optical imaging) for image classification
-  - A Neurobiological Evaluation Metric for Neural Network Model Search ([blanchard, …, bashivan, scheirer, 2019](https://openaccess.thecvf.com/content_CVPR_2019/html/Blanchard_A_Neurobiological_Evaluation_Metric_for_Neural_Network_Model_Search_CVPR_2019_paper.html)) - compare fMRI kernel matrix to DNN kernel matrix - find that the closer it is, the better a network is (and use this metric to perform early stopping)
-  - aligning with experimental/psychological data
-    - [How Well Do Unsupervised Learning Algorithms Model Human Real-time and Life-long Learning? | OpenReview](https://openreview.net/forum?id=c0l2YolqD2T) (zhuang...dicarlo, yamins, 2022)
-- Biologically-inspired DNNs (not data-driven)
-
-  - [Simulating a Primary Visual Cortex at the Front of CNNs Improves Robustness to Image Perturbations](https://proceedings.neurips.cc/paper/2020/hash/98b17f068d5d9b7668e19fb8ae470841-Abstract.html) (dapello…cox, dicarlo, 2020) - biologically inspired early neural-network layers (gabors etc.) improve robustness of CNNs
-      - [Brain-Like Object Recognition with High-Performing Shallow Recurrent ANNs](https://proceedings.neurips.cc/paper/2019/hash/7813d1590d28a7dd372ad54b5d29d033-Abstract.html) (kubilius, schrimpt, kar, …, yamins, dicarlo, 2019)
-      - [Combining Different V1 Brain Model Variants to Improve Robustness to Image Corruptions in CNNs](https://arxiv.org/abs/2110.10645) (baidya, dapello, dicarlo, & marques, 2021)
-
-  - [Surround Modulation: A Bio-inspired Connectivity Structure for Convolutional Neural Networks](https://proceedings.neurips.cc/paper/2019/hash/c535e3a7f97daf1c4b1eb03cc8e31623-Abstract.html) (hasani, …, aghajan, 2019) - add inhibitory lateral connections in CNNs
-
-  - [Engineering a Less Artificial Intelligence](https://www.sciencedirect.com/science/article/pii/S0896627319307408) (sinz…tolias, 2019) - overview of ideas to make DNNs more brain-like
-
-  - [Biologically inspired protection of deep networks from adversarial attacks](https://arxiv.org/abs/1703.09202) (nayebi & ganguli, 2017) - change training to get highly nonlinear, saturated neural nets
-
-  - [Biological constraints on neural network models of cognitive function](https://www.nature.com/articles/s41583-021-00473-5) (pulvermuller, …, wennekers, 2021) - review on biological constraints
-
-  - [Disentangling with Biological Constraints: A Theory of Functional Cell Types](https://arxiv.org/abs/2210.01768)
-
-## nlp / fMRI
-
-- interpreting brain encoding models
-  - [Brains and algorithms partially converge in natural language processing](https://www.nature.com/articles/s42003-022-03036-1#Sec9) (caucheteux & king, 2022)
-    - best brain-mapping are obtained from the middle layers of DL models
-    - whether an algorithm maps onto the brain primarily depends on its ability to predict words context
-    - average ROIs across many subjects
-    - test "compositionality" of features
-  - [Tracking the online construction of linguistic meaning through negation](https://www.biorxiv.org/content/10.1101/2022.10.14.512299.abstract) (zuanazzi, ..., remi-king, poeppel, 2022)
-- encoding models
-
-  - Seminal language-semantics fMRI study ([Huth…Gallant, 2016](https://www.nature.com/articles/nature17637)) - build mapping of semantic concepts across cortex using word vecs
-  - [(caucheteux, gramfort, & king, facebook, 2022)](https://www.nature.com/articles/s41598-022-20460-9) - predicts fMRI with gpt-2 on the narratives dataset
-    - GPT‐2 representations predict fMRI response + extent to which subjects understand corresponding narratives
-    - compared different encoding features: phoneme, word, gpt-2 layers, gpt-2 attention sizes
-    - brain mapping finding: auditory cortices integrate information over short time windows, and the fronto-parietal areas combine supra-lexical information over long time windows
-    - gpt2 models predict brain responses well [(caucheteux & king, 2021)](https://www.biorxiv.org/content/10.1101/2020.07.03.186288v2.abstract)
-    - [Disentangling syntax and semantics in the brain with deep networks](https://proceedings.mlr.press/v139/caucheteux21a.html) (caucheteux, gramfort, & king, 2021) - identify which brain networks are involved in syntax, semantics, compositionality
-  - [Incorporating Context into Language Encoding Models for fMRI](https://proceedings.neurips.cc/paper/2018/hash/f471223d1a1614b58a7dc45c9d01df19-Abstract.html) (jain & huth, 2018) - LSTMs improve encoding model
-    - [The neural architecture of language: Integrative modeling converges on predictive processing](https://www.pnas.org/doi/abs/10.1073/pnas.2105646118) (schrimpf, .., tenenbaum, fedorenko, 2021) - transformers better predict brain responses to natural language (and larger transformers predict better)
-    - [Predictive Coding or Just Feature Discovery? An Alternative Account of Why Language Models Fit Brain Data | Neurobiology of Language](https://direct.mit.edu/nol/article/doi/10.1162/nol_a_00087/113632/Predictive-Coding-or-Just-Feature-Discovery-An) (antonello & huth, 2022)
-      - LLM brain encoding performance correlates not only with their perplexity, but also generality (skill at many different tasks) and translation performance
-
-
-  - [Blackbox meets blackbox: Representational Similarity and Stability Analysis of Neural Language Models and Brains](https://arxiv.org/abs/1906.01539) (abnar, … zuidema, emnlp workshop, 2019) - use RSA to compare representations from language models with fMRI data from Wehbe et al. 2014
-  - also ([anderson…lalor, 2021](https://www.jneurosci.org/content/41/18/4100)) and ([sun et al. 2021](https://ieeexplore.ieee.org/document/9223750/))
-- decoding models
-
-  - [Semantic reconstruction of continuous language from non-invasive brain recordings](https://www.biorxiv.org/content/10.1101/2022.09.29.509744v1) (lebel, jain, & huth, 2022) - reconstruct continuous natural language from fMRI
-    - [Decoding speech from non-invasive brain recordings](https://arxiv.org/abs/2208.12266) (defossez, caucheteux, ..., remi-king, 2022)
-  
-  - [Reconstructing Visual Experiences from Brain Activity Evoked by Natural Movies](https://www.sciencedirect.com/science/article/pii/S0960982211009377) (nishimoto, …, gallant, 2011)
-    - Seeing Beyond the Brain: Conditional Diffusion Model with Sparse Masked Modeling for Vision Decoding ([chen et al. 2022](https://arxiv.org/pdf/2211.06956.pdf))
-  
-
 
 
 ## navigation
@@ -1573,3 +1379,217 @@ the operations above allow for encoding many normal data structures into a singl
 - some evidence for "time cells" like place cells for time
 - sound frequency task https://www.nature.com/articles/nature21692
 - 2d "bird space" [task](https://science.sciencemag.org/content/352/6292/1464.full?ijkey=sXaWNaNjkIcik&keytype=ref&siteid=sci)
+
+# neuro-inspired ai (niAI)
+
+## neuro-dl reviews
+
+- [Neuroscience-Inspired Artificial Intelligence](https://www.cell.com/neuron/pdf/S0896-6273(17)30509-3.pdf) (hassabis et al. 2017)
+- [Toward next-generation artificial intelligence: catalyzing the NeuroAI revolution](https://arxiv.org/abs/2210.08340) (zador, ...bengio, dicarlo, lecun, ...sejnowski, tsao, 2022)
+- [Dissociating language and thought in large language models](https://arxiv.org/abs/2301.06627) (mahowald, ..., tenebaum, fedorenko, 2023)
+
+  - 2 competences
+
+    1. formal linguistic competence - knowledge of rules and patterns of a given language
+
+    2. functional linguistic competence - cognitive abilities required for language understanding and use in the real world, e.g. formal reasoning, world knowledge, situation modeling, communicative intent
+       - much of world knowledge is implied: people are much more likely to communicate new or unusual information rather than commonly known facts
+
+    - language and thought are robustly dissociable in the brain
+      - aphasia studies: despite the nearly complete loss of linguistic abilities, some individuals with severe aphasia have intact non-linguistic cognitive abilities: they can play chess, compose music, solve arithmetic problems and logic puzzles, ...
+      - fMRI studies: the language network is extremely selective for language processing: it responds robustly and reliably when people listen to, read, or generate sentences , but not when they perform arithmetic tasks, engage in logical reasoning, understand computer programs, listen to music, ...
+  - [Merrill et al. [2022]](https://arxiv.org/abs/2209.12407) - semantic information is in-principle learnable from language data
+  - [Piantadosi and Hill [2022]](https://arxiv.org/abs/2208.02957) - an argument that models can genuinely learn meaning
+
+  - Structured, flexible, and robust: benchmarking and improving large language models towards more human-like behavior in out-of-distribution reasoning tasks ([collins...tenebaum, 2022](http://arxiv.org/abs/2205.05718))
+
+    - as situation gets more OOD, LLM gets worse compared to human, e.g. `Get your sofa onto the roof of your house, without using a pulley, a ladder, a crane...`
+
+  - recommendations
+
+    - modularity, curated data / diverse objectives, new benchmarks
+
+- [Neurocompositional computing: From the Central Paradox of Cognition to a new generation of AI systems](https://ojs.aaai.org/index.php/aimagazine/article/view/18599) (smolensky, ..., gao, 2022)
+- [Towards NeuroAI: Introducing Neuronal Diversity into Artificial Neural Networks](https://www.semanticscholar.org/paper/Towards-NeuroAI%3A-Introducing-Neuronal-Diversity-Fan-Li/c0aae24f2e250c7d4b5aab608622dbb933f43a4d) (2023)
+- [Designing Ecosystems of Intelligence from First Principles](https://www.semanticscholar.org/paper/Designing-Ecosystems-of-Intelligence-from-First-Friston-Ramstead/98fcb39694d628788b555932f96134280f6a008e) (friston et al. 2022)
+- [NeuroAI - A strategic opportunity for Norway and Europe](https://www.semanticscholar.org/paper/NeuroAI-A-strategic-opportunity-for-Norway-and-Nichele-Sæbø/b5e7bacfdd6d080fce402a27b36757f6246eef4d) (2022)
+- [Perceptual Inference, Learning, and Attention in a Multisensory World](https://www.annualreviews.org/doi/abs/10.1146/annurev-neuro-100120-085519) (nopponey, 2021)
+- [Engineering a Less Artificial Intelligence](https://www.sciencedirect.com/science/article/pii/S0896627319307408) (sinz…tolias, 2019) - overview of ideas to make DNNs more brain-like
+
+## biological constraints for DNNs
+
+- Aligning DNN with brain responses
+
+  - haven’t found anything like this for NLP
+  - Aligning Model and Macaque Inferior Temporal Cortex Representations Improves Model-to-Human Behavioral Alignment and Adversarial Robustness ([dapello, kar, shrimpf…cox, dicarlo, 2022](https://www.biorxiv.org/content/10.1101/2022.07.01.498495v1.abstract)) - finetune CNN embedding to match monkey brain (IT electrode recordings) before making classifications
+  - [Towards robust vision by multi-task learning on monkey visual cortex](https://proceedings.neurips.cc/paper/2021/hash/06a9d51e04213572ef0720dd27a84792-Abstract.html) (safarani…sinz, 2021) - simultaneously predict monkey v1 (electrode data) and imagenet
+  - [Improved object recognition using neural networks trained to mimic the brain’s statistical properties - ScienceDirect](https://www.sciencedirect.com/science/article/pii/S0893608020302549?casa_token=UBMLt-J8JvgAAAAA:kWdL43r-oYZUUn4Mh41Z2XrMk7FU2WNJKXAvAdWmUjxKCgmTflUfV1tugLFLvQuUX9231x-6) (federer et al. 2020) - simultaneously train CNN to classify objects + have similar reprs to monkey electrode data
+  - [Learning from brains how to regularize machines](https://proceedings.neurips.cc/paper/2019/hash/70117ee3c0b15a2950f1e82a215e812b-Abstract.html) (li …, tolias 2019) - regularize intermediate representations using mouse v1 data (optical imaging) for image classification
+  - A Neurobiological Evaluation Metric for Neural Network Model Search ([blanchard, …, bashivan, scheirer, 2019](https://openaccess.thecvf.com/content_CVPR_2019/html/Blanchard_A_Neurobiological_Evaluation_Metric_for_Neural_Network_Model_Search_CVPR_2019_paper.html)) - compare fMRI kernel matrix to DNN kernel matrix - find that the closer it is, the better a network is (and use this metric to perform early stopping)
+  - aligning with experimental/psychological data
+    - [How Well Do Unsupervised Learning Algorithms Model Human Real-time and Life-long Learning? | OpenReview](https://openreview.net/forum?id=c0l2YolqD2T) (zhuang...dicarlo, yamins, 2022)
+- Biologically-inspired DNNs (not data-driven)
+
+  - [Simulating a Primary Visual Cortex at the Front of CNNs Improves Robustness to Image Perturbations](https://proceedings.neurips.cc/paper/2020/hash/98b17f068d5d9b7668e19fb8ae470841-Abstract.html) (dapello…cox, dicarlo, 2020) - biologically inspired early neural-network layers (gabors etc.) improve robustness of CNNs
+      - [Brain-Like Object Recognition with High-Performing Shallow Recurrent ANNs](https://proceedings.neurips.cc/paper/2019/hash/7813d1590d28a7dd372ad54b5d29d033-Abstract.html) (kubilius, schrimpt, kar, …, yamins, dicarlo, 2019)
+      - [Combining Different V1 Brain Model Variants to Improve Robustness to Image Corruptions in CNNs](https://arxiv.org/abs/2110.10645) (baidya, dapello, dicarlo, & marques, 2021)
+  - [Surround Modulation: A Bio-inspired Connectivity Structure for Convolutional Neural Networks](https://proceedings.neurips.cc/paper/2019/hash/c535e3a7f97daf1c4b1eb03cc8e31623-Abstract.html) (hasani, …, aghajan, 2019) - add inhibitory lateral connections in CNNs
+  - [Biologically inspired protection of deep networks from adversarial attacks](https://arxiv.org/abs/1703.09202) (nayebi & ganguli, 2017) - change training to get highly nonlinear, saturated neural nets
+  - [Biological constraints on neural network models of cognitive function](https://www.nature.com/articles/s41583-021-00473-5) (pulvermuller, …, wennekers, 2021) - review on biological constraints
+  - [Disentangling with Biological Constraints: A Theory of Functional Cell Types](https://arxiv.org/abs/2210.01768)
+
+## nlp / fMRI
+
+- interpreting brain encoding models
+  - [Brains and algorithms partially converge in natural language processing](https://www.nature.com/articles/s42003-022-03036-1#Sec9) (caucheteux & king, 2022)
+    - best brain-mapping are obtained from the middle layers of DL models
+    - whether an algorithm maps onto the brain primarily depends on its ability to predict words context
+    - average ROIs across many subjects
+    - test "compositionality" of features
+  - [Tracking the online construction of linguistic meaning through negation](https://www.biorxiv.org/content/10.1101/2022.10.14.512299.abstract) (zuanazzi, ..., remi-king, poeppel, 2022)
+  - [Blackbox meets blackbox: Representational Similarity and Stability Analysis of Neural Language Models and Brains](https://arxiv.org/abs/1906.01539) (abnar, … zuidema, emnlp workshop, 2019) - use RSA to compare representations from language models with fMRI data from Wehbe et al. 2014
+- encoding models
+
+  - Seminal language-semantics fMRI study ([Huth…Gallant, 2016](https://www.nature.com/articles/nature17637)) - build mapping of semantic concepts across cortex using word vecs
+  - [(caucheteux, gramfort, & king, facebook, 2022)](https://www.nature.com/articles/s41598-022-20460-9) - predicts fMRI with gpt-2 on the narratives dataset
+    - GPT‐2 representations predict fMRI response + extent to which subjects understand corresponding narratives
+    - compared different encoding features: phoneme, word, gpt-2 layers, gpt-2 attention sizes
+    - brain mapping finding: auditory cortices integrate information over short time windows, and the fronto-parietal areas combine supra-lexical information over long time windows
+    - gpt2 models predict brain responses well [(caucheteux & king, 2021)](https://www.biorxiv.org/content/10.1101/2020.07.03.186288v2.abstract)
+    - [Disentangling syntax and semantics in the brain with deep networks](https://proceedings.mlr.press/v139/caucheteux21a.html) (caucheteux, gramfort, & king, 2021) - identify which brain networks are involved in syntax, semantics, compositionality
+  - [Incorporating Context into Language Encoding Models for fMRI](https://proceedings.neurips.cc/paper/2018/hash/f471223d1a1614b58a7dc45c9d01df19-Abstract.html) (jain & huth, 2018) - LSTMs improve encoding model
+    - [The neural architecture of language: Integrative modeling converges on predictive processing](https://www.pnas.org/doi/abs/10.1073/pnas.2105646118) (schrimpf, .., tenenbaum, fedorenko, 2021) - transformers better predict brain responses to natural language (and larger transformers predict better)
+    - [Predictive Coding or Just Feature Discovery? An Alternative Account of Why Language Models Fit Brain Data | Neurobiology of Language](https://direct.mit.edu/nol/article/doi/10.1162/nol_a_00087/113632/Predictive-Coding-or-Just-Feature-Discovery-An) (antonello & huth, 2022)
+      - LLM brain encoding performance correlates not only with their perplexity, but also generality (skill at many different tasks) and translation performance
+  
+  
+    - Prediction with RNN beats ngram models on individual-sentence fMRI prediction ([anderson…lalor, 2021](https://www.jneurosci.org/content/41/18/4100))
+    - Interpret transformer-based models and find top predictions in specific regions, like left middle temporal gyrus (LMTG) and left occipital complex (LOC) ([sun et al. 2021](https://ieeexplore.ieee.org/document/9223750/))
+
+
+- decoding models
+
+  - Seeing Beyond the Brain: Conditional Diffusion Model with Sparse Masked Modeling for Vision Decoding ([chen et al. 2022](https://arxiv.org/pdf/2211.06956.pdf))
+
+  - [Semantic reconstruction of continuous language from non-invasive brain recordings](https://www.biorxiv.org/content/10.1101/2022.09.29.509744v1) (lebel, jain, & huth, 2022) - reconstruct continuous natural language from fMRI
+    - [Decoding speech from non-invasive brain recordings](https://arxiv.org/abs/2208.12266) (defossez, caucheteux, ..., remi-king, 2022)
+
+  - [Reconstructing Visual Experiences from Brain Activity Evoked by Natural Movies](https://www.sciencedirect.com/science/article/pii/S0960982211009377) (nishimoto, …, gallant, 2011)
+
+## overview
+
+**explaining concepts from neuroscience to inform deep learning**
+
+The brain currently outperforms deep learning in a number of different ways: efficiency, parallel computation, not forgetting, robustness. Thus, in these areas and others, the brain can offer high-level inspiration as well as more detailed algorithmic ideas on how to solve complex problems.
+
+We begin with some history and perspective before further exploring these concepts at 3 levels: (1) the neuron level, (2) the network level, and (3) high-level concepts.
+
+**brief history**
+
+The history of deep learning is intimately linked with neuroscience. In vision, the idea of hierarchical processing dates back to Hubel and Weisel <dt-cite key="hubel1962receptive"></dt-cite> and the modern idea of convolutional neural networks dates back to the necognitron<dt-cite key="fukushima1982neocognitron"></dt-cite>.
+
+Ranges from neurally-inspired -> biologically plausible
+
+Computational neuroscientists often discuss understanding computation at Marr's 3 levels of understanding: (1) computational, (2) algorithmic, and (3) mechanistic<dt-cite key="marr1976understanding"></dt-cite>. The first two levels are most crucial to understanding here, while the third may yield insights for the field of neuromorphic computing <dt-cite key="schuman2017survey"></dt-cite>.
+
+**cautionary notes**
+
+There are dangers in deep learning researchers constraining themselves to biologically plausible algorithms. First, the underlying hardware of the brain and modern von Neumman-based architectures is drastically different and one should not assume that the same algorithms will work on both systems. Several examples, such as backpropagation, were derived by deviating from the mindset of mimicking biology.
+
+Second, the brain does not solve probleDangers for going too far.... One wouldn't want to draw inspiration from the retina to put a hole in the camera.
+
+
+<img width="50%" src="figs/retina.png"></img>
+Gallery of brain failures. Example, inside-out retina, V1 at back...
+
+**neuron-level**
+
+The fundamental unit of the brain is the neuron, which takes inputs from other neurons and then provides an output.
+
+Individual neurons perform varying computations. Some neurons have been show to linearly sum their inputs <dt-cite key="singh2017consensus"></dt-cite>
+
+ - neurons are complicated (perceptron -> ... -> detailed comparmental model)
+
+For more information, see a very good review on modeling individual neurons<dt-cite key="herz2006modeling"></dt-cite>.
+
+ - converting to spikes introduces noise <dt-cite key="carandini2004amplification"></dt-cite>- perhaps just price of long-distance communication
+
+**network-level**
+
+ Artificial neural networks can compute in several different ways. There is some evidence in the visual system that neurons in higher layers of visual areas can, to some extent, be predicted linearly by higher layers of deep networks<dt-cite key="yamins2014performance"></dt-cite>. However, this certainly isn't true in general. Key factors
+
+ For the simplest intuition, here we provide an example of a canonical circuit for computing the maximum of a number of elements: the winner-take-all circuit.
+
+ Other network structures, such as that of the hippocampus are surely useful as well.
+
+ Questions at this level bear on population coding, or how groups of neurons jointly represent information.
+
+**engram** - unit of [cognitive](https://en.wikipedia.org/wiki/Cognition) information imprinted in a physical substance, theorized to be the means by which [memories](https://en.wikipedia.org/wiki/Memory) are stored
+
+**high-level concepts**
+
+ Key concepts differentiate the learning process. Online,
+
+- learning
+- high-level
+  - attention
+  - memory
+  - robustness
+  - recurrence
+  - topology
+  - glial cells
+- inspirations
+  - canonical cortical microcircuits
+  - nested loop architectures
+  - avoiding catostrophic forgetting through synaptic complexity
+  - learning asymmetric recurrent generative models
+- spiking networks ([bindsnet](https://github.com/Hananel-Hazan/bindsnet))
+
+- Computational Theory of Mind
+  - Classical associationism
+  - Connectionism
+  - Situated cognition
+  - Memory-prediction framework
+  - Fractal Theory: https://www.youtube.com/watch?v=axaH4HFzA24
+  - Brain sheets are made of cortical columns (about .3mm diameter, 1000 neurons / column)
+    - Have ~6 layers
+- Brain as a Computer – Analog VLSI and Neural Systems by Mead (VLSI – very large scale integration)
+- Process info
+- Signals represented by potential
+  - Signals are amplified = gain
+  - Power supply
+  - Knowledge is not stored in knowledge of the parts, but in their connections
+  - Based on electrically charged entities interacting with energy barriers
+  - http://en.wikipedia.org/wiki/Computational_theory_of_mind
+  - http://scienceblogs.com/developingintelligence/2007/03/27/why-the-brain-is-not-like-a-co/
+  - Brain’ storage capacity is about 2.5 petabytes (Scientific American, 2005)
+  - Electronics
+  - Voltage can be thought of as water in a reservoir at a height
+  - It can flow down, but the water will never reach above the initial voltage
+  - A capacitor is like a tank that collects the water under the reservoir
+  - The capacitance is the cross-sectional area of the tank
+  - Capacitance – electrical charge required to raise the potential by 1 volt
+  - Conductance = 1/ resistance = mho, siemens
+  - We could also say the word is a computer with individuals being the processors – with all the wasted thoughts we have – the solution is probably to identify global problems and channel people’s focus towards working on them
+  - Brain chip: http://www.research.ibm.com/articles/brain-chip.shtml
+  - Brains are not digital
+  - Brains don’t have a CPU
+  - Memories are not separable from processing
+  - Asynchronous and continuous
+  - Details of brain substrate matter
+  - Feedback and Circular Causality
+  - Asking questions
+  - Brains has lots of sensors
+  - Lots of cellular diversity
+  - NI uses lots of parallelism
+  - Delays are part of the computation
+- http://timdettmers.com/
+  -	problems with brain simulations:
+  -	Not possible to test specific scientific hypotheses (compare this to the large hadron collider project with its perfectly defined hypotheses)
+    -	Does not simulate real brain processing (no firing connections, no biological interactions)
+    -	Does not give any insight into the functionality of brain processing (the meaning of the simulated activity is not assessed)
+  -	Neuron information processing parts
+    -	Dendritic spikes are like first layer of conv net
+    -	Neurons will typically have a genome that is different from the original genome that you were assigned to at birth. Neurons may have additional or fewer chromosomes and have sequences of information removed or added from certain chromosomes.
+    -	http://timdettmers.com/2015/03/26/convolution-deep-learning/
+    -	The adult brain has 86 billion neurons, about 10 trillion synapse, and about 300 billion dendrites (tree-like structures with synapses on them

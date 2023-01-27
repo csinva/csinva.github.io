@@ -96,6 +96,8 @@ Nice repo keeping track of progress [here](https://github.com/sebastianruder/NLP
   - $PP(W_{test}) = P(w_1, ..., w_N)^{-1/N}$
   - can think of this as the weighted average branching factor of a language
   - should only be compared across models w/ same vocab
+- BLEU
+- bert-score: https://github.com/Tiiiger/bert_score
 
 # individual tasks
 
@@ -115,7 +117,7 @@ Nice repo keeping track of progress [here](https://github.com/sebastianruder/NLP
   - sometimes closed, otherwise have unkown words, which we assign its own symbol
   - can fix training vocab, or just choose the top words and have the rest be unkown
 
-## token/word embeddings
+## token / word embeddings
 
 **embeddings** - vectors for representing words
 

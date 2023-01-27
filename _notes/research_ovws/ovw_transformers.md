@@ -16,7 +16,7 @@ category: research
 - early papers
   - attention is all you need ([vaswani et al. 2017](https://arxiv.org/abs/1706.03762)) - initial transformer
     - encoder-decoder transformer for seq-to-seq (most new models don't have  special encoder-decoder structure for translation)
-    - [Semi-supervised Sequence Learning](https://arxiv.org/abs/1511.01432) (dai & quoc le, 2015)
+    - Semi-supervised Sequence Learning ([dai & quoc le, 2015](https://arxiv.org/abs/1511.01432))
       - context vector is weighted sum of context vector at each word
   - [ULMFiT](https://arxiv.org/abs/1801.06146) (howard & ruder, 2018)
 - BERT ([devlin et al. 2018](https://arxiv.org/abs/1810.04805)) - semi-supervised learning (predict masked word - this is bidirectional) + supervised finetuning
@@ -40,7 +40,6 @@ category: research
 - T0 ([sanh...rush, 2022](https://arxiv.org/pdf/2110.08207.pdf)) - multitask training enables better zero-shot generalization
   - T5 ([raffel...liu, 2020](https://jmlr.org/papers/volume21/20-074/20-074.pdf)) -- text-to-text transfer transformer
   - UL2: Unifying Language Learning Paradigms ([tay...metzler, 2022](https://arxiv.org/abs/2205.05131)) - open-source 20B model, beats GPT-3 at zero-shot
-- Galactica: A Large Language Model for Science ([taylor..., stojnic, 2022, meta ai](https://galactica.org/static/paper.pdf)) - trained on mostly papers + some knowledge bases (e.g. DNA)
 - more effective training
   - FLAN-PaLM: Scaling Instruction-Finetuned Language Models ([chung, ..., quoc le, jason wei, 2022](https://arxiv.org/abs/2210.11416)) - finetune with datasets phrased as instructions
     - [instructGPT](https://arxiv.org/abs/2203.02155) / [FLAN](https://arxiv.org/abs/2109.01652) - finetune on instructions to follows instructions
@@ -48,6 +47,8 @@ category: research
     - more efficient: rather than standard masked training, use generator-discriminator setup for "token detection"
       - generator replaces many masked tokens with plausible samples - train with MLM
       - discriminator tries to guess which tokens were the masked ones - this is the main model that gets used
+  - natural language feedback ([scheurer et al. 2022]()) - makes training more efficient
+    - [Can language models learn from explanations in context?](https://arxiv.org/abs/2204.02329) (lampinen et al. 2022)
 
 
 **other**
@@ -64,7 +65,7 @@ category: research
     - Stable diffusion ([stability.ai, 2022](https://stability.ai/blog/stable-diffusion-public-release)) - open-source recreation, now highly optimized for speed
   - BEiT-3 ([2022](https://arxiv.org/abs/2208.10442)) - treat vision as language and large-scale multimodal training
     - outperforms [Flamingo: a Visual Language Model for Few-Shot Learning](https://arxiv.org/abs/2204.14198) (2022), which uses more domain knowledge to connect vision & language
-  
+
 - vision
   - VIT: An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale ([dosoviskiy, ..., houlsby, 2020](https://arxiv.org/abs/2010.11929))
     - [attention augmentation to resnet](https://arxiv.org/abs/1904.09925) for vision (bello...quoc le, 2020)
@@ -73,6 +74,8 @@ category: research
   - Masked Autoencoders Are Scalable Vision Learners ([he...dollar, girshick, 2021](https://arxiv.org/abs/2111.06377)) - BERT-style training
     -  speed up by not applying encoder to mask tokens + adding mask to a lot of the data (like 75%)
     -  really good results without much data
+  - spatial transformers networks ([deepmind, 2015](https://papers.nips.cc/paper/5854-spatial-transformer-networks.pdf ))
+
 - rl
   - AdA: Human-Timescale Adaptation in an Open-Ended Task Space ([deepmind, 2023](https://arxiv.org/abs/2301.07608))
   - GATO: [A Generalist Agent](https://arxiv.org/abs/2205.06175) (deepmind, 2022) - single agent plays many different video games
@@ -80,6 +83,7 @@ category: research
   - In-context Reinforcement Learning with Algorithm Distillation ([laskin, wang, ..., sahni, satinder singh, mnih, 2022, deepmind](https://arxiv.org/abs/2210.14215)) - learn to improve an RL algorithm
     - put history of (observation, action, reward) sequences into context and then use them to predict new action given new observation
   - Decision Transformer: Reinforcement Learning via Sequence Modeling ([chen, lu, ...abbeel, srinivas, mordatch, 2021](https://arxiv.org/pdf/2106.01345.pdf)) - transformer that predicts what the next highest reward step is instead of the next word
+
 - biomedical
   - BioGPT: [Generative pre-trained transformer for biomedical text generation and mining](https://academic.oup.com/bib/article-abstract/23/6/bbac409/6713511) (luo...poon, liu, 2022)
     - PubMedGPT (2.7B): ([bolton, hall, ..., manning, liang, 2022](https://crfm.stanford.edu/2022/12/15/pubmedgpt.html))
@@ -130,27 +134,40 @@ category: research
 
   - program synthesis [arxiv.org/abs/2108.07732](https://arxiv.org/abs/2108.07732) - formalize natural language into runnable code
 
-- natural language feedback ([scheurer et al. 2022]())
+- embeddings
+  - Instructor: One Embedder, Any Task: Instruction-Finetuned Text Embeddings ([su, ..., smith, zettlemoyer, yu, 2022](https://instructor-embedding.github.io)) - embedding is contextualized to eaach task
 
-  - human feedback for learning makes it much more efficient
-  - [Can language models learn from explanations in context?](https://arxiv.org/abs/2204.02329) (lampinen et al. 2022)
-  
-- [spatial transformers](https://papers.nips.cc/paper/5854-spatial-transformer-networks.pdf )
+- science
+
+  - Galactica: A Large Language Model for Science ([taylor..., stojnic, 2022, meta ai](https://galactica.org/static/paper.pdf)) - trained on mostly papers + some knowledge bases (e.g. proteins)
+
+- music
+  - MusicLM: Generating Music From Text ([google, 2023](https://arxiv.org/abs/2301.11325))
+  - Jukebox: A Generative Model for Music ([openai, 2020](https://arxiv.org/abs/2005.00341))
+
+- summarization / keywords
+
+  - KeyBERT: Minimal keyword extraction with BERT ([grootendorst, 2020](https://github.com/MaartenGr/KeyBERT))
+
 
 ## external knowledge / tool use / grounding
 
 - https://www.perplexity.ai/ - nice demo adding citation to each fact
 - implementations in [langchain](https://github.com/hwchase17/langchain) library
+- Atlas: Few-shot Learning with Retrieval Augmented Language Models ([meta, 2022](https://arxiv.org/abs/2208.03299))
+- RETRO ([deepmind, 2022](https://arxiv.org/abs/2112.04426)) - nearest neighbors to model's input are retrieved, encoded, and conditioned on with chunked cross-attention 
+- Relational Memory-Augmented Language Models ([liu, yogatama, & blunsom, 2022](https://direct.mit.edu/tacl/article/doi/10.1162/tacl_a_00476/110997/Relational-Memory-Augmented-Language-Models)) - integrate knowledge base triplets with LLM
+  - REALM ([guu, ..., chang, 2020](https://arxiv.org/abs/2002.08909)) - retrieves document chunks from corpus and adds them to context, for open-domain QA
 - DRAGON: Deep Bidirectional Language-Knowledge Graph Pretraining ([yasanaga, ..., manning, liang, leskovec, 2022](https://arxiv.org/abs/2210.09338))
-- LaMDA ([thoppilan, ..., quoc le, 2022, google](https://arxiv.org/abs/2201.08239)) - allows goxogle search to add world info (in a dialog model)
+- LaMDA ([thoppilan, ..., quoc le, 2022, google](https://arxiv.org/abs/2201.08239)) - allows google search to add world info (in a dialog model)
   - this was the model that sparked the controversy about consciousness 🤔
   - A Neural Corpus Indexer for Document Retrieval ([wang...yang, 2022](https://arxiv.org/abs/2206.02743)) - train model to directly spit out document IDs given queries
 - webgpt ([nakano, ..., schulman, 2022, OpenAI](https://arxiv.org/abs/2112.09332)) - allows google search to add world info
 
   - GopherCite ([menick, ..., mcaleese, 2022, Deepmind](https://arxiv.org/abs/2203.11147)) - generate answers + link/relevant snippet when making predictions (trained with RL from human preferences )
 - RLPG ([shrivastava, larochelle, & tarlow, 2022](https://arxiv.org/abs/2206.12839)) - for code-completion, retrieves functions from a repo
-- REALM ([guu, ..., chang, 2020](https://arxiv.org/abs/2002.08909)) - retrieves document chunks from corpus and adds them to context, for open-domain QA
-- Relational Memory-Augmented Language Models ([liu, yogatama, & blunsom, 2022](https://direct.mit.edu/tacl/article/doi/10.1162/tacl_a_00476/110997/Relational-Memory-Augmented-Language-Models)) - integrate knowledge base triplets with LLM
+- memorizing transformers ([wu...szegedy, 2022](https://arxiv.org/abs/2203.08913)) - knn-based learned indexing + retrieval at training time.
+  - at test time, you just need to index the entire context and the model will be able to use it
 - ACT-1: Transformer for Actions ([2022, Adept](https://www.adept.ai/act)) - transformer directly interacts with computer
 
 ##  adaptation / transfer
@@ -243,9 +260,11 @@ category: research
     - [Universal Adversarial Triggers for Attacking and Analyzing NLP](https://arxiv.org/abs/1908.07125) (wallace...sameer singh, 2019) - find input-agnostic sequences of tokens that trigger a model to produce a specific prediction when concatenated to any input from a dataset
   - [GSCLIP : A Framework for Explaining Distribution Shifts in Natural Language](https://arxiv.org/abs/2206.15007) (zhu...james zou, 2022)
   - [RLPrompt: Optimizing Discrete Text Prompts with Reinforcement Learning](https://arxiv.org/abs/2205.12548) (deng...hu, 2022)
-  - LM-BFF: [Making Pre-trained Language Models Better Few-shot Learners](https://arxiv.org/abs/2012.15723) (gao et al. 2020)
-    - uses T5 to generate (i) template for the task (which might include a whole example or two) + (i) appropropriate label tokens in the vocabulary for the task (suffers from computationally intensive search + sub-optimal discrete space search)
+  - LM-BFF: Making Pre-trained Language Models Better Few-shot Learners ([gao et al. 2020](https://arxiv.org/abs/2012.15723)) - uses T5 to generate (i) template for the task (which might include a whole example or two) + (i) appropropriate label tokens in the vocabulary for the task (suffers from computationally intensive search + sub-optimal discrete space search)
   - [PADA: Example-based Prompt Learning for on-the-fly Adaptation to Unseen Domains](https://arxiv.org/abs/2102.12206) (ben-david, ..., reichart, 2022)
+  - PromptBoosting: Black-Box Text Classification with Ten Forward Passes ([hou, ..., jacob andreas, ..., zhang, 2022](https://arxiv.org/abs/2212.09257)) - get a small pool of prompts, learn a verbalizer (final classification layer) for each, then ensemble them with AdaBoost on LLM output
+  
+    - people have studied many works on prompt ensembling (e.g. [lester et al. 2021](https://arxiv.org/abs/2104.08691))
 - [Prefix-Tuning: Optimizing Continuous Prompts for Generation](https://arxiv.org/abs/2101.00190) (li & percy liang, 2021) -- optimizes in continuous space for language generation tasks
   - learn to map some parameters $\theta$ through and MLP to generate a starting hidden state $h_i$ -- never actually sends the prefix through the network 
   - [Control Prefixes for Parameter-Efficient Text Generation](https://arxiv.org/abs/2110.08329) (clive, cao, & rei, 2022) - allow for adapting the prefix to each input example
@@ -281,8 +300,8 @@ category: research
 
 - steering
   - overviews
-    - [AI Chains: Transparent and Controllable Human-AI Interaction by Chaining Large Language Model Prompts](https://arxiv.org/abs/2110.01691) (wu et al. 2022) - chaining LLM steps together: output of one step becomes the input for the next
-      - interactive system where users can modify chains + their intermediate results
+    - Ai chains: Transparent and controllable human-ai interaction by chaining large language model prompts ([wu, terry, & cai, 2022](https://dl.acm.org/doi/abs/10.1145/3491102.3517582)) - chaining LLM steps together: output of one step becomes the input for the next
+      - interactive system where users can modify chains + their intermediate results -- improves performance + human experience
     - [Language Model Cascades](https://arxiv.org/abs/2207.10342) (dohan...sutton, 2022) - treat chaining models as probabilistic programs
       - use a probabilistic-programming language (PPL) to define a joint probability model on string-valued random variables, parameterized using LMs, and then condition this model on string-valued observations in order to compute a posterior over string-valued unknowns
       - self-PPLs extend probabilistic graphical models to support more complex joint distributions whose size and “shape” can itself be stochastic
@@ -311,10 +330,6 @@ category: research
     - [socratic models](https://arxiv.org/abs/2204.00598)
     - [Inner Monologue](https://arxiv.org/abs/2207.05608)
     - [global workspace](https://arxiv.org/abs/2103.01197)
-- increasing attendable context size with augmented models
-  - RETRO ([borgeaud et al. 2022](https://arxiv.org/abs/2112.04426)) - nearest neighbors to model's input are retrieved, encoded, and conditioned on with chunked cross-attention 
-  - memorizing transformers ([wu...szegedy, 2022](https://arxiv.org/abs/2203.08913)) - knn-based learned indexing + retrieval at training time.
-    - at test time, you just need to index the entire context and the model will be able to use it
 
 
 # misc
@@ -563,6 +578,10 @@ mixture of experts models have become popular because of the need for (1) fast s
         - have a pool of 302 manual hypotheses they used for seeding
   - [GSCLIP : A Framework for Explaining Distribution Shifts in Natural Language](https://arxiv.org/abs/2206.15007) (zhu...james zou, 2022)
 
+## connecting with rules
+
+- Automatic Rule Extraction from Long Short Term Memory Networks ([murdoch & szlam, 2017](https://arxiv.org/abs/1702.02540)) - extract out phrases using feature importance
+- A Comparative Study of Rule Extraction for Recurrent Neural Networks ([wang et al. 2018](https://arxiv.org/abs/1801.05420)) - create automata based on interpretable states to track RNNs
 
 ## cool tasks
 
@@ -574,24 +593,27 @@ mixture of experts models have become popular because of the need for (1) fast s
 
 - [Neurosymbolic Programming for Science](https://arxiv.org/abs/2210.05050) (sun...costilla-reyes, 2022)
 
-- [AI-based language models powering drug discovery and development](https://www.sciencedirect.com/science/article/pii/S1359644621002816) (liu et al. 2021)
+- Learning from learning machines: a new generation of AI technology to meet the needs of science ([berkeley+lbnl+, 2021](https://arxiv.org/pdf/2111.13786.pdf))
+
+  - do more than predict what will happen, they attempt to offer insight into how or why
+  - [AI-based language models powering drug discovery and development](https://www.sciencedirect.com/science/article/pii/S1359644621002816) (liu et al. 2021)
 
 - scientific organization ([galactica](https://galactica.org/static/paper.pdf))
-  
+
   - related but smaller models
     - SciBERT ([beltagy...cohan, 2019](https://arxiv.org/abs/1903.10676))
     - BioLM ([lewis...stoyanov, 2020](https://aclanthology.org/2020.clinicalnlp-1.17/))
     - ScholarBERT ([hong...foster, 2022](https://arxiv.org/abs/2205.11342)) - large dataset, 770M-param model
-  
-  
+
+
   - all data is processed in a common markdown format
-  
-  
+
+
     - task-specific tokens to support different types of knowledge (e.g. citations, step-by-step reasoning, different modalities, e.g. proteins)
-  
+
   - chemical compounds (train on 2 mil / 110 mil from PubChem Compound, authors still want it to focus on text)
     - predict IUPAC name from SMILES formula e.g. `CC(C)(C)C(=O)N(CC1=NC(=CS1)C(=O)OC)C2CCCCC2` -> `methyl 2-[[cyclohexyl-(2,2-dimethylpropanoyl)]amino] methyl]thiazole-4- `
-  
+
     - [moleculenet](https://moleculenet.org/datasets-1) ([wu et al. 2017](https://arxiv.org/abs/1703.00564)) classification benchmark (6 tasks)
       
       - training set examples are trained as text during fitting
@@ -612,37 +634,19 @@ mixture of experts models have become popular because of the need for (1) fast s
         Question: Will the chemical compound penetrate the blood-brain barrier?
         Answer: No
         ```
-  
+
   - protein sequences
     - from 227 million in UniProt, look at only 0.5 million subset (called Swiss-Prot)
     - evaluate protein sequence perplexity
     - protein keyword prediction (predict keywords in UniProt, like "ATP-Binding", "Cell membrane")
     - protein function description - compare free-form description to GT UniProt function description
 
+
 ## llm limitations / perspectives
 
 - Dissociating language and thought in large language models: a cognitive perspective ([mahowald, ..., tenenbaum, fedorenko, 2023](https://arxiv.org/pdf/2301.06627.pdf))
 
-  - 2 competences
-
-    1. formal linguistic competence - knowledge of rules and patterns of a given language
-
-    2. functional linguistic competence - cognitive abilities required for language understanding and use in the real world, e.g. formal reasoning, world knowledge, situation modeling, communicative intent
-       - much of world knowledge is implied: people are much more likely to communicate new or unusual information rather than commonly known facts
-    - language and thought are robustly dissociable in the brain
-      - aphasia studies: despite the nearly complete loss of linguistic abilities, some individuals with severe aphasia have intact non-linguistic cognitive abilities: they can play chess, compose music, solve arithmetic problems and logic puzzles, ...
-      - fMRI studies: the language network is extremely selective for language processing: it responds robustly and reliably when people listen to, read, or generate sentences , but not when they perform arithmetic tasks, engage in logical reasoning, understand computer programs, listen to music, ...
-  - [Merrill et al. [2022]](https://arxiv.org/abs/2209.12407) - semantic information is in-principle learnable from language data
-
-  - [Piantadosi and Hill [2022]](https://arxiv.org/abs/2208.02957) - an argument that models can genuinely learn meaning
-
-  - Structured, flexible, and robust: benchmarking and improving large language models towards more human-like behavior in out-of-distribution reasoning tasks ([collins...tenebaum, 2022](http://arxiv.org/abs/2205.05718))
-
-    - as situation gets more OOD, LLM gets worse compared to human, e.g. `Get your sofa onto the roof of your house, without using a pulley, a ladder, a crane...`
-
-  - recommendations
-
-    - modularity, curated data / diverse objectives, new benchmarks
+  - 2 competences: (1) formal & (2) functional linguistic competence
 
 - speculative [foundation models paper](https://arxiv.org/abs/2108.07258) (stanford, 2022)
 
