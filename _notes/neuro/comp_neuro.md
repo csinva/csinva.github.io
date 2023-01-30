@@ -1358,7 +1358,6 @@ the operations above allow for encoding many normal data structures into a singl
   - learning
     - predict next image given current image + displacement field
     - predict next image vector given current frame vectors + displacement
-- kietzmann_18_dnn_in_neuro_rvw
 - friston_10_free_energy
   - ![friston_free_energy](../assets/friston_free_energy.png)
 
@@ -1584,8 +1583,8 @@ For more information, see a very good review on modeling individual neurons<dt-c
   - NI uses lots of parallelism
   - Delays are part of the computation
 - http://timdettmers.com/
-  -	problems with brain simulations:
-  -	Not possible to test specific scientific hypotheses (compare this to the large hadron collider project with its perfectly defined hypotheses)
+  -	problems with brain simulations
+    -	Not possible to test specific scientific hypotheses (compare this to the large hadron collider project with its perfectly defined hypotheses)
     -	Does not simulate real brain processing (no firing connections, no biological interactions)
     -	Does not give any insight into the functionality of brain processing (the meaning of the simulated activity is not assessed)
   -	Neuron information processing parts

@@ -427,7 +427,8 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
   - [Concept Bottleneck Models](https://arxiv.org/pdf/2007.04612.pdf) (koh et al. 2020) - predict concepts before making final prediction
     - [Post-hoc Concept Bottleneck Models](https://arxiv.org/abs/2205.15480) (...zou, 2022)
   - [Concept Whitening for Interpretable Image Recognition](https://arxiv.org/pdf/2002.01650.pdf) (chen et al. 2020) - force network to separate "concepts" (like in TCAV) along different axes
-  - [Interpretability Beyond Classification Output: Semantic Bottleneck Networks](https://arxiv.org/abs/1907.10882) - add an interpretable intermediate bottleneck representation
+  - [Interpretability Beyond Classification Output: Semantic Bottleneck Networks](https://arxiv.org/abs/1907.10882) - add an interpretable intermediate bottleneck representation'
+  - [Holistically Explainable Vision Transformers](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwiQgrKbsu38AhVsBDQIHXHaD-AQFnoECA0QAQ&url=https%3A%2F%2Fopenreview.net%2Fforum%3Fid%3Djw37FUa_Aw9&usg=AOvVaw3hmaKQBDgw70khvc4gmQWc) 
 - [How to represent part-whole hierarchies in a neural network](https://arxiv.org/abs/2102.12627) (hinton, 2021)
   - The idea is simply to use islands of identical vectors to represent the nodes in the parse tree (parse tree would be things like wheel-> cabin -> car)
   - each patch / pixel gets representations at different levels (e.g. texture, parrt of wheel, part of cabin, etc.)

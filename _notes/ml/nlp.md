@@ -107,15 +107,20 @@ Nice repo keeping track of progress [here](https://github.com/sebastianruder/NLP
 
 - word-based
   - punctuation splitting
-  - need to do stemming (e.g. "dog" and "dogs")
   - unknown token [UNK] for anything not seen - to reduce the amount of this, can get character-based tokens
-  - vocab tends to be too bug
+  - vocab tends to be too big
 - **subword-based** - break apart meaningful subparts of words, most popular (2022)
   - many more (e.g. byte-level BPE, used in GPT-2)
 - character-based - very little prior, generally sequences are too long
 - vocabulary
   - sometimes closed, otherwise have unkown words, which we assign its own symbol
   - can fix training vocab, or just choose the top words and have the rest be unkown
+- [preprocessing](https://nlp.stanford.edu/IR-book/html/htmledition/stemming-and-lemmatization-1.html)
+  - stemming - maps words to a common root, usually by just chopping off the ending (e.g. "dogs" -> "dog")
+    - most common way to do this is Porter's algorithm, which has 5 phrases of rule-based word reductions
+
+  - lemmatization - smarter version that takes into account vocab / morphological analysis (e.g. "am, are, is" -> "be")
+
 
 ## token / word embeddings
 
