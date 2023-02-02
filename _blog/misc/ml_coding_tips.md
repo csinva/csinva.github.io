@@ -37,6 +37,7 @@ displays
 - [napari](https://github.com/napari/napari) - image viewer
 - [python-fire](https://github.com/google/python-fire) - passing cmd line args
 - [auto-sklearn](https://github.com/automl/auto-sklearn) - automatically select hyperparams / classifiers using bayesian optimization
+- [venv](https://docs.python.org/3/library/venv.html) - manage your python packages (or something similar like pipenv)
 
 
 
@@ -85,15 +86,16 @@ displays
 
 ### environment
 
-- it's hard to pick a good ide for data science. [jupyter](https://jupyter.org/) notebooks are great for exploratory analysis, while more fully built ides like [pycharm](https://www.jetbrains.com/pycharm/) are better for large-scale projects
+- it's hard to pick a good ide for data science. [jupyter](https://jupyter.org/) notebooks are great for exploratory analysis, while more fully built ides like [pycharm](https://www.jetbrains.com/pycharm/) or [vscode](https://code.visualstudio.com) are better for large-scale projects
   - ~~using [atom](https://atom.io/) with the [hydrogen](https://atom.io/packages/hydrogen) plugin often strikes a nice balance~~ (sadly no longer maintained 😢)
+- [github copilot](https://github.com/features/copilot) is a nice add-in
 - [jupytertext](https://github.com/mwouts/jupytext) offers a nice way to use version control with jupyter
 - when working on AWS, this command is useful for starting remote jupyterlab sessions `screen jupyter lab --certfile=~/ssl/mycert.pem --keyfile ~/ssl/mykey.key`
 
 ### hyperparameter tracking
 
 - it can often be messy to keep track of ml experiments
-- often I like to create a class which is basically a dictionary for params I want to vary / save and then save those to a dict (ex [here](https://github.com/csinva/dnn-experiments/tree/master/vision_fit)), but this only works for relatively small projects
+- often I like to create a class which is basically a dictionary for params I want to vary / save and then save those to a dict (ex [here](https://github.com/csinva/cookiecutter-ml-research)), but this only works for relatively small projects
 - [trains](https://github.com/allegroai/trains) by allegroai seems to be a promising experiment manager
 - [reddit thread](https://www.reddit.com/r/MachineLearning/comments/bx0apm/d_how_do_you_manage_your_machine_learning/) detailing different tracking frameworks
 

@@ -19,37 +19,50 @@ category: research
     - Semi-supervised Sequence Learning ([dai & quoc le, 2015](https://arxiv.org/abs/1511.01432))
       - context vector is weighted sum of context vector at each word
   - [ULMFiT](https://arxiv.org/abs/1801.06146) (howard & ruder, 2018)
+
 - BERT ([devlin et al. 2018](https://arxiv.org/abs/1810.04805)) - semi-supervised learning (predict masked word - this is bidirectional) + supervised finetuning
   - [roberta](https://arxiv.org/abs/1907.11692) (liu et al. 2019)
   - [BART](https://arxiv.org/abs/1910.13461) (lewis et al. 2019) - generalizes BERT with sequence-to-squence training: train by (1) corrupting text then (2) reconstruct the original text
   - [ELMo](https://arxiv.org/abs/1802.05365) (peters...zettlemoyer, 2018) - no word embeddings - train embeddings w/ bidirectional lstm (on language modeling)
   - XLNet ([yang...quoc le, 2020](https://arxiv.org/abs/1906.08237))
+
 - GPT-3 ([brown et al. 2020](https://arxiv.org/abs/2005.14165?2)) - identitical to GPT-2 except larger and replaces dense attention with sparse attention
   - sizes: largest ha 175B params, 96 layers, 96 heads in each layer, head with dim 128, vocab size ~50k
   - InstructGPT ([ouyang...lowe, 2022](https://arxiv.org/abs/2203.02155))
   - GPT-2 ([radford et al. 2018](https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf))
   - GPT ([radford et al. 2018](https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf))
   - [Gopher](https://arxiv.org/abs/2112.11446) (deepmind, 2021) - basically gpt-3 with slight mods (replace layernorm by RMSnorm, different positional embeddings)
+
+- ELECTRA: Pre-training Text Encoders as Discriminators Rather Than Generators ([clark...quoc le, chris manning, 2020](https://arxiv.org/abs/2003.10555))
+
+  - more efficient: rather than standard masked training, use generator-discriminator setup for "token detection"
+    - generator replaces many masked tokens with plausible samples - train with MLM
+    - discriminator tries to guess which tokens were the masked ones - this is the main model that gets used
+
 - [Longformer: The Long-Document Transformer](https://arxiv.org/abs/2004.05150) (beltagy, peters, & cohan, 2020) - processes very long contexts
+
 - [PaLM: Scaling Language Modeling with Pathways](https://arxiv.org/abs/2204.02311) (google, 2022) - 540 Billion params
   - pathways hardware center allows for fast/efficient training
   - discontinuous improvements - at some point large model improves
   - prompt engineering: "Explain yourself" - lets it explain jokes
   - [Chinchilla: Training Compute-Optimal Large Language Models](https://arxiv.org/abs/2203.15556) (deepmind, 2022)
     - "chinchilla scaling laws" - for compute-optimal training, the model size and the number of training tokens should be scaled equally
+
 - T0 ([sanh...rush, 2022](https://arxiv.org/pdf/2110.08207.pdf)) - multitask training enables better zero-shot generalization
   - T5 ([raffel...liu, 2020](https://jmlr.org/papers/volume21/20-074/20-074.pdf)) -- text-to-text transfer transformer
   - UL2: Unifying Language Learning Paradigms ([tay...metzler, 2022](https://arxiv.org/abs/2205.05131)) - open-source 20B model, beats GPT-3 at zero-shot
-- more effective training
-  - FLAN-PaLM: Scaling Instruction-Finetuned Language Models ([chung, ..., quoc le, jason wei, 2022](https://arxiv.org/abs/2210.11416)) - finetune with datasets phrased as instructions
-    - [instructGPT](https://arxiv.org/abs/2203.02155) / [FLAN](https://arxiv.org/abs/2109.01652) - finetune on instructions to follows instructions
-  - ELECTRA: Pre-training Text Encoders as Discriminators Rather Than Generators ([clark...quoc le, chris manning, 2020](https://arxiv.org/abs/2003.10555))
-    - more efficient: rather than standard masked training, use generator-discriminator setup for "token detection"
-      - generator replaces many masked tokens with plausible samples - train with MLM
-      - discriminator tries to guess which tokens were the masked ones - this is the main model that gets used
-  - natural language feedback ([scheurer et al. 2022]()) - makes training more efficient
-    - [Can language models learn from explanations in context?](https://arxiv.org/abs/2204.02329) (lampinen et al. 2022)
 
+- more effective training
+
+  - instruction following
+
+    - FLAN-PaLM: Scaling Instruction-Finetuned Language Models ([chung, ..., quoc le, jason wei, 2022](https://arxiv.org/abs/2210.11416)) - finetune with datasets phrased as instructions
+      - [instructGPT](https://arxiv.org/abs/2203.02155) / [FLAN](https://arxiv.org/abs/2109.01652) - finetune on instructions to follows instructions
+
+  - human feedback
+    - Learning to summarize with human feedback ([OpenAI, 2020](https://proceedings.neurips.cc/paper/2020/hash/1f89885d556929e98d3ef9b86448f951-Abstract.html))
+    - [Can language models learn from explanations in context?](https://arxiv.org/abs/2204.02329) (lampinen et al. 2022)
+    - natural language feedback ([scheurer et al. 2022](https://arxiv.org/abs/2204.14146)) - makes training more efficient
 
 **other**
 
@@ -110,9 +123,8 @@ category: research
     - e.g. during training, learn inputs-outputs from different linear functions
     - during testing, have to predict outputs for inputs from a different linear function
     - also test on slightly harder functions, like decision trees and 2-layer nets
-
+  - Looped Transformers as Programmable Computers ([giannou, ..., jason lee, papailiopoulos, 2023](https://arxiv.org/abs/2301.13196) - use transformers as universal computers by programming them with specific weights
 - dialog
-
   - ChatGPT
   - [GODEL: Large-Scale Pre-Training for Goal-Directed Dialog](https://arxiv.org/abs/2206.11309) (baolin peng, galley, ..., gao , 2022) - add grounded pre-training
   - [Deal or No Deal? End-to-End Learning for Negotiation Dialogues](https://arxiv.org/abs/1706.05125) (lewis...batra, 2017, Meta) - controversial paper where agents "make up their own language"
@@ -339,10 +351,31 @@ category: research
 
 ## direct weight inspection
 
-- nice paper list [here](https://www.neelnanda.io/mechanistic-interpretability/favourite-papers)
+nice paper list [here](https://www.neelnanda.io/mechanistic-interpretability/favourite-papers)
 
-**[thread](https://transformer-circuits.pub/2021/framework/index.html) (elhage...olah, 2021)**
-
+- Transformer visualization via dictionary learning: contextualized embedding as a linear superposition of transformer factors ([yun, chen, olshausen, lecun, 2021](https://arxiv.org/abs/2103.15949)) - investigate LLM embeddings of different words using dictionary learning
+  - LLMs produce interesting contextualized word embeddings
+  - dictionary elements (of activations across layers) correspond to meaningful things
+- Neuron-level Interpretation of Deep NLP Models: A Survey ([sajjad et al. 2022](https://direct.mit.edu/tacl/article/doi/10.1162/tacl_a_00519/113852/Neuron-level-Interpretation-of-Deep-NLP-Models-A))
+  - previous works generally use pre-specified concepts, and focus on
+    - concept search - given a neuron find its concept(s)
+    - neuron search - (ii) given a concept find its matching neuron(s)
+  - concept search
+    - visualization, e.g. [karpathy, johnson, fei-fei li, 2015](https://www.semanticscholar.org/paper/Visualizing-and-Understanding-Recurrent-Networks-Karpathy-Johnson/40be3888daa5c2e5af4d36ae22f690bcc8caf600) visualize LSTM head response in text
+    - elicit top-k ngram responses on a corpus, which are then labelled manually ([kadar et al. 2017]([Representation of Linguistic Form and Function in Recurrent Neural Networks](https://www.semanticscholar.org/paper/Representation-of-Linguistic-Form-and-Function-in-Kádár-Chrupała/9462eee3e5eff15df5e97c38e24072c65e581cee)))
+    - elicit top-k activating sentences from a corpus, which are then summarized using a parse tree into a synthetic explanation ([na...kim, 2019](https://arxiv.org/pdf/1902.07249.pdf))
+      - limitation: the explanation may be ungrammatical and biased towards something arbitrary (like reptition)
+    - input maximization (e.g. textattack, [poerner et al. 2018](https://www.semanticscholar.org/paper/Interpretable-Textual-Neuron-Representations-for-Poerner-Roth/36fc119ce631c3ec66866ce31918978824d05f78))
+  - Evaluating Neuron Interpretation Methods of NLP Models ([fan...sajjad, 2023](https://arxiv.org/abs/2301.12608)) - metric is how well evaluation from one method matches the other ones
+- A Circuit for Indirect Object Identification in GPT-2 small ([wang, ..., steinhardt, 2022](https://arxiv.org/abs/2211.00593))
+  - explanation encompasses 26 attention heads grouped into 7 main classes
+  - task: indirect object identification - “When Mary and John went to the store, John gave a drink to ___” should be "Mary"
+  - circuit
+    - identify all previous names
+    - remove duplicated names
+    - output remaining name
+- [Finding Skill Neurons in Pre-trained Transformer-based Language Models](https://arxiv.org/abs/2211.07349) - some individual neurons are predictive of the final task (dubbed "skill neurons')
+- **[thread](https://transformer-circuits.pub/2021/framework/index.html) (elhage...olah, 2021)**
 - all layers are same dimension and each attention block **adds** a vector to it
 - Although they’re parameterized as separate matrices, $W_O W_V$ and $W_Q^T W_K$ can always be thought of as individual, low-rank matrices
   - $x \in \mathbb R^{d_{embed} \times d_{sequence}}$: $d_{embed}$ can be hundreds - tens of thousands 
@@ -367,9 +400,7 @@ category: research
 - tensor/kronecker product $\bigotimes$:
   - Left-right multiplying: Multiplying $x$ by a tensor product $A \otimes W$ is equivalent to simultaneously left and right multiplying: $(A \otimes W) x=A x W^{T}$
   - When we add them, it is equivalent to adding the results of this multiplication: $\left(A_{1} \otimes W_{1}+A_{2} \otimes W_{2}\right) x=A_{1} x W_{1}^{T}+A_{2} x W_{2}^{T}$ 
-
-**[Softmax Linear Units](https://transformer-circuits.pub/2022/solu/index.html)**
-
+  **[Softmax Linear Units](https://transformer-circuits.pub/2022/solu/index.html)**
 - replacing activation function with softmax linear unit increases fraction of MLP neurons which are "interpretable", i.e. correspond to meaningful features
   - however, may “hide” some non-neuron-aligned features by decreasing their magnitude and then later recovering it with LayerNorm
 - the presence of nonlinear activation functions createse an incentive for features to align with this basis and not get superposed
@@ -384,18 +415,6 @@ category: research
   - adds lateral inhibition, superlinearity, approximate sparsity
   - changes GeLU, which is approximately $\text{sigmoid}(1.7x) \cdot x$
   - just changing to SoLU decrease performance, had to add LayerNorm afterwards
-- Transformer visualization via dictionary learning: contextualized embedding as a linear superposition of transformer factors ([yun, chen, olshausen, lecun, 2021](https://arxiv.org/abs/2103.15949)) - investigate LLM embeddings of different words using dictionary learning
-  - LLMs produce interesting contextualized word embeddings
-  - dictionary elements (of activations across layers) correspond to meaningful things
-- A Circuit for Indirect Object Identification in GPT-2 small ([wang, ..., steinhardt, 2022](https://arxiv.org/abs/2211.00593))
-  - explanation encompasses 26 attention heads grouped into 7 main classes
-  - task: indirect object identification - “When Mary and John went to the store, John gave a drink to ___” should be "Mary"
-  - circuit
-    - identify all previous names
-    - remove duplicated names
-    - output remaining name
-  
-- [Finding Skill Neurons in Pre-trained Transformer-based Language Models](https://arxiv.org/abs/2211.07349) - some individual neurons are predictive of the final task (dubbed "skill neurons')
 
 ## attention variants
 
