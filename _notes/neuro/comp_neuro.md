@@ -1383,8 +1383,19 @@ the operations above allow for encoding many normal data structures into a singl
 
 ## neuro-dl reviews
 
+- https://xcorr.net/2023/01/01/2022-in-review-neuroai-comes-of-age/
+
 - [Neuroscience-Inspired Artificial Intelligence](https://www.cell.com/neuron/pdf/S0896-6273(17)30509-3.pdf) (hassabis et al. 2017)
+
 - [Toward next-generation artificial intelligence: catalyzing the NeuroAI revolution](https://arxiv.org/abs/2210.08340) (zador, ...bengio, dicarlo, lecun, ...sejnowski, tsao, 2022)
+
+- Computational language modeling and the promise of in silico experimentation ([jain, vo, wehbe, & huth, 2023](https://direct.mit.edu/nol/article/doi/10.1162/nol_a_00101/114613/Computational-language-modeling-and-the-promise-of)) - 4 experimental design exampmles
+
+  - compare concrete & abstract words [(binder et al. 2005](https://direct.mit.edu/jocn/article-abstract/17/6/905/4017/Distinct-Brain-Systems-for-Processing-Concrete-and))
+  - contrast-based study of composition in 2-word phrase ([Bemis & Pylkkanen, 2011](https://www.jneurosci.org/content/31/8/2801.short))
+  - checks for effects between group and individual ([lerner et al. 2011](https://www.jneurosci.org/content/31/8/2906))
+  - forgetting behavior using controlled manipulations ([chien & honey, 2020](https://www.sciencedirect.com/science/article/pii/S0896627320301367))
+
 - [Dissociating language and thought in large language models](https://arxiv.org/abs/2301.06627) (mahowald, ..., tenebaum, fedorenko, 2023)
 
   - 2 competences
@@ -1409,10 +1420,15 @@ the operations above allow for encoding many normal data structures into a singl
     - modularity, curated data / diverse objectives, new benchmarks
 
 - [Neurocompositional computing: From the Central Paradox of Cognition to a new generation of AI systems](https://ojs.aaai.org/index.php/aimagazine/article/view/18599) (smolensky, ..., gao, 2022)
+
 - [Towards NeuroAI: Introducing Neuronal Diversity into Artificial Neural Networks](https://www.semanticscholar.org/paper/Towards-NeuroAI%3A-Introducing-Neuronal-Diversity-Fan-Li/c0aae24f2e250c7d4b5aab608622dbb933f43a4d) (2023)
+
 - [Designing Ecosystems of Intelligence from First Principles](https://www.semanticscholar.org/paper/Designing-Ecosystems-of-Intelligence-from-First-Friston-Ramstead/98fcb39694d628788b555932f96134280f6a008e) (friston et al. 2022)
+
 - [NeuroAI - A strategic opportunity for Norway and Europe](https://www.semanticscholar.org/paper/NeuroAI-A-strategic-opportunity-for-Norway-and-Nichele-Sæbø/b5e7bacfdd6d080fce402a27b36757f6246eef4d) (2022)
+
 - [Perceptual Inference, Learning, and Attention in a Multisensory World](https://www.annualreviews.org/doi/abs/10.1146/annurev-neuro-100120-085519) (nopponey, 2021)
+
 - [Engineering a Less Artificial Intelligence](https://www.sciencedirect.com/science/article/pii/S0896627319307408) (sinz…tolias, 2019) - overview of ideas to make DNNs more brain-like
 
 ## biological constraints for DNNs
@@ -1441,7 +1457,6 @@ the operations above allow for encoding many normal data structures into a singl
 
 - interpreting brain encoding models
   
-  - Computational language modeling and the promise of in silico experimentation [jain, vo, wehbe, & huth, 2023](https://direct.mit.edu/nol/article/doi/10.1162/nol_a_00101/114613/Computational-language-modeling-and-the-promise-of)
   - [Brains and algorithms partially converge in natural language processing](https://www.nature.com/articles/s42003-022-03036-1#Sec9) (caucheteux & king, 2022)
     - best brain-mapping are obtained from the middle layers of DL models
     - whether an algorithm maps onto the brain primarily depends on its ability to predict words context

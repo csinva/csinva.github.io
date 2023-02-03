@@ -862,6 +862,9 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
 - [On Completeness-aware Concept-Based Explanations in Deep Neural Networks](https://arxiv.org/abs/1910.07969)
 - [Interpretable Basis Decomposition for Visual Explanation](https://openaccess.thecvf.com/content_ECCV_2018/html/Antonio_Torralba_Interpretable_Basis_Decomposition_ECCV_2018_paper.html) (zhou et al. 2018) - decompose activations of the input image into semantically interpretable components pre-trained from a large concept corpus
 - [Explaining in Style: Training a GAN to explain a classifier in StyleSpace](https://arxiv.org/abs/2104.13369) (lang et al. 2021)
+- Language in a Bottle: Language Model Guided Concept Bottlenecks for Interpretable Image Classification ([yang...yatskar, 2022](https://arxiv.org/abs/2211.11158)) - use GPT-3 to generate intermediate concepts for image classification
+    - linear probe on the concept bottleneck models has better performance
+
 
 ### dnn causal-motivated attribution
 
@@ -968,6 +971,7 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
 **see also notes in [ovw_transformers](https://csinva.io/notes/research_ovws/ovw_transformers.html)!**
 
 - iPrompt: [Explaining Patterns in Data with Language Models via Interpretable Autoprompting](https://arxiv.org/abs/2210.01848) (singh, morris, ...gao, 2022)
+- WT5?! Training Text-to-Text Models to Explain their Predictions ([narang, raffel, ..., malkan, 2020](https://arxiv.org/pdf/2004.14546.pdf))
 - [Adversarial Inference for Multi-Sentence Video Description](https://arxiv.org/pdf/1812.05634.pdf) - adversarial techniques during inference for a better multi-sentence video description
 - [Object Hallucination in Image Captioning](https://aclweb.org/anthology/D18-1437) - image relevance metric - asses rate of object hallucination
    - CHAIR metric - what proportion of words generated are actually in the image according to gt sentences and object segmentations
