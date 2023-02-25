@@ -1456,7 +1456,7 @@ the operations above allow for encoding many normal data structures into a singl
 ## nlp / fMRI
 
 - interpreting brain encoding models
-  
+
   - [Brains and algorithms partially converge in natural language processing](https://www.nature.com/articles/s42003-022-03036-1#Sec9) (caucheteux & king, 2022)
     - best brain-mapping are obtained from the middle layers of DL models
     - whether an algorithm maps onto the brain primarily depends on its ability to predict words context
@@ -1464,7 +1464,7 @@ the operations above allow for encoding many normal data structures into a singl
     - test "compositionality" of features
   - [Tracking the online construction of linguistic meaning through negation](https://www.biorxiv.org/content/10.1101/2022.10.14.512299.abstract) (zuanazzi, ..., remi-king, poeppel, 2022)
   - [Blackbox meets blackbox: Representational Similarity and Stability Analysis of Neural Language Models and Brains](https://arxiv.org/abs/1906.01539) (abnar, … zuidema, emnlp workshop, 2019) - use RSA to compare representations from language models with fMRI data from Wehbe et al. 2014
-  
+
 - encoding models
 
   - Seminal language-semantics fMRI study ([Huth…Gallant, 2016](https://www.nature.com/articles/nature17637)) - build mapping of semantic concepts across cortex using word vecs
@@ -1478,14 +1478,11 @@ the operations above allow for encoding many normal data structures into a singl
     - [The neural architecture of language: Integrative modeling converges on predictive processing](https://www.pnas.org/doi/abs/10.1073/pnas.2105646118) (schrimpf, .., tenenbaum, fedorenko, 2021) - transformers better predict brain responses to natural language (and larger transformers predict better)
     - [Predictive Coding or Just Feature Discovery? An Alternative Account of Why Language Models Fit Brain Data | Neurobiology of Language](https://direct.mit.edu/nol/article/doi/10.1162/nol_a_00087/113632/Predictive-Coding-or-Just-Feature-Discovery-An) (antonello & huth, 2022)
       - LLM brain encoding performance correlates not only with their perplexity, but also generality (skill at many different tasks) and translation performance
-
-
     - Prediction with RNN beats ngram models on individual-sentence fMRI prediction ([anderson…lalor, 2021](https://www.jneurosci.org/content/41/18/4100))
     - Interpret transformer-based models and find top predictions in specific regions, like left middle temporal gyrus (LMTG) and left occipital complex (LOC) ([sun et al. 2021](https://ieeexplore.ieee.org/document/9223750/))
-
-
+- Semantic representations during language comprehension are affected by context (i.e. how langauge is presented) ([deniz...gallant, 2021](https://www.biorxiv.org/content/10.1101/2021.12.15.472839v1.full.pdf)) - stimuli with more context (stories, sentences) evoke better responses than stimuli with little context (Semantic Blocks, Single Words)
+- Combining computational controls with natural text reveals new aspects of meaning composition ([toneva, mitchell, & wehbe, 2022](https://www.biorxiv.org/content/biorxiv/early/2022/08/09/2020.09.28.316935.full.pdf)) - study word interactions by using encoding vector emb(phrase) - emb(word1) - emb(word2)...
 - decoding models
-
   - Seeing Beyond the Brain: Conditional Diffusion Model with Sparse Masked Modeling for Vision Decoding ([chen et al. 2022](https://arxiv.org/pdf/2211.06956.pdf))
 
   - [Semantic reconstruction of continuous language from non-invasive brain recordings](https://www.biorxiv.org/content/10.1101/2022.09.29.509744v1) (lebel, jain, & huth, 2022) - reconstruct continuous natural language from fMRI

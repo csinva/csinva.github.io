@@ -171,7 +171,7 @@ typora-copy-images-to: ../assets
 
 - [Large image datasets: A pyrrhic win for computer vision?](https://openreview.net/pdf?id=s-e2zaAlG3I) - bias in imagenet / tiny images
 - http://positivelysemidefinite.com/2020/06/160k-students.html
-
+- [How AI fails us](https://www.ethics.harvard.edu/files/center-for-ethics/files/howai_fails_us_2.pdf) (2021) - alternative to AEAI is not a singular, narrow focus on a specific goal (e.g. AGI), but support for a plurality of complementary and dispersed approaches to developing technology to support the plurality and plasticity of human goals that exist inside the boundaries of a human rights framework
 
 
 # ethics

@@ -98,6 +98,7 @@ typora-copy-images-to: ../assets
 - US has pretty good care but it is expensive per patient
 - expensive things (e.g. Da Vinci robot)
 - even if ml is not perfect, it may still outperform some doctors
+- The impact of inconsistent human annotations on AI driven clinical decision making ([sylolypavan...sim, 2023](https://www.nature.com/articles/s41746-023-00773-3)) - labels / majority vote are often very inconsistent
 
 ## medical education
 
