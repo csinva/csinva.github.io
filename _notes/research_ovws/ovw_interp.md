@@ -203,7 +203,7 @@ For an implementation of many of these models, see the python [imodels package](
 
 *Trees suffer from the fact that they have to cover the entire decision space and often we end up with replicated subtrees.*
 
-- **optimal trees**
+- optimal trees
   - motivation
     - cost-complexity pruning ([breiman et al. 1984](https://www.taylorfrancis.com/books/mono/10.1201/9781315139470/classification-regression-trees-leo-breiman-jerome-friedman-richard-olshen-charles-stone) ch 3) - greedily prune while minimizing loss function of loss + $\lambda \cdot (\text{numLeaves})$
     - replicated subtree problem ([Bagallo & Haussler, 1990](https://link.springer.com/content/pdf/10.1007/BF00115895.pdf)) - they propose iterative algorithms to try to overcome it
@@ -230,7 +230,7 @@ For an implementation of many of these models, see the python [imodels package](
     - [optimal classification trees vs PECARN](https://jamanetwork.com/journals/jamapediatrics/article-abstract/2733157) (bertsimas et al. 2019)
   - [Learning Optimal Fair Classification Trees](https://arxiv.org/pdf/2201.09932.pdf) (jo et al. 2022)
   - Better Short than Greedy: Interpretable Models through Optimal Rule Boosting ([boley, ..., webb, 2021](https://epubs.siam.org/doi/pdf/10.1137/1.9781611976700.40)) - find optimal tree **ensemble** (only works for very small data)
-- **connections with boosting**
+- connections with boosting
   - Fast Interpretable Greedy-Tree Sums (FIGS) ([tan et al. 2022](https://arxiv.org/abs/2201.11931)) - extend cart to learn concise tree ensembles 🌳 ➡️ 🌱+🌱
     - very nice results for generalization + disentanglement
   - AdaTree - learn Adaboost stumps then rewrite as a tree ([grossmann, 2004](https://ieeexplore.ieee.org/abstract/document/1384899/)) 🌱+🌱 ➡️ 🌳
@@ -242,7 +242,7 @@ For an implementation of many of these models, see the python [imodels package](
       - post-prune the tree bottom-up by recursively eliminating the parent nodes of leaves with identical predictions
   - AddTree = additive tree - learn single tree, but rather than only current node's data to decide the next split, also allow the remaining data to also influence this split, although with a potentially differing weight ([luna, ..., friedman, solberg, valdes, 2019](https://www.pnas.org/content/116/40/19887))
     - the weight is chosen as a hyperparameter
-- **bayesian trees**
+- bayesian trees
   - [Bayesian Treed Models](http://www-stat.wharton.upenn.edu/~edgeorge/Research_papers/treed-models.pdf) (chipman et al. 2001) - impose priors on tree parameters
     - treed models - fit a model (e.g. linear regression) in leaf nodes
     - tree structure e.g. depth, splitting criteria
@@ -253,14 +253,14 @@ For an implementation of many of these models, see the python [imodels package](
     - pre-specify number of trees in ensemble
     - MCMC step: add split, remove split, switch split
     - cycles through the trees one at a time
-- **history**
+- history
   - automatic interaction detection (AID) regression trees (Morgan & Sonquist, 1963)
   - THeta Automatic Interaction Detection (THAID) classification trees (Messenger & Mandell, 1972)
   - Chi-squared Automatic Interaction Detector (CHAID) (Kass, 1980)
   - CART: Classification And Regression Trees  ([Breiman et al. 1984](https://www.taylorfrancis.com/books/mono/10.1201/9781315139470/classification-regression-trees-leo-breiman-jerome-friedman-richard-olshen-charles-stone)) - splits on GINI
   - ID3 (Quinlan, 1986)
   - C4.5 (Quinlan, 1993) - splits on binary entropy instead of GINI
-- **open problems**
+- open problems
   - ensemble methods
   - improvements in splitting criteria, missing variables
   - longitudinal data, survival curves
@@ -279,6 +279,13 @@ For an implementation of many of these models, see the python [imodels package](
   - [Human knowledge models: Learning applied knowledge from the data | PLOS ONE](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0275814) (dudyrev...pianykh, 2022) - very concise logic model
   - [On the price of explainability for some clustering problems](https://arxiv.org/abs/2101.01576) (laber et al. 2021) - trees for clustering
   - extremely randomized trees ([geurts et al. 2006](https://link.springer.com/article/10.1007/s10994-006-6226-1)) - randomness goes further than Random Forest - randomly select not only the feature but also the split thresholds (and select the best out of some random set)
+- Analysis of Boolean functions ([wiki](https://en.wikipedia.org/wiki/Analysis_of_Boolean_functions))
+
+  - Every real-valued function $f:\{-1,1\}^n \rightarrow \mathbb{R}$ has a unique expansion as a multilinear polynomial:
+    $$
+    f(x)=\sum_{S \subseteq[n]} \hat{f}(S) \chi_S(x), \quad \overbrace{\chi_S(x)=\prod_{i \in S} x_i}^{\text{Interactions}}
+    $$
+
 
 ### decision diagrams
 

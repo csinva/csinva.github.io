@@ -1602,7 +1602,7 @@ title="Print to PDF"
 <h4><span class="section-number">1.12.3.1.3. </span>trees<a class="headerlink" href="#trees" title="Permalink to this headline">#</a></h4>
 <p><em>Trees suffer from the fact that they have to cover the entire decision space and often we end up with replicated subtrees.</em></p>
 <ul class="simple">
-<li><p><strong>optimal trees</strong></p>
+<li><p>optimal trees</p>
 <ul>
 <li><p>motivation</p>
 <ul>
@@ -1653,7 +1653,7 @@ title="Print to PDF"
 <li><p>Better Short than Greedy: Interpretable Models through Optimal Rule Boosting (<a class="reference external" href="https://epubs.siam.org/doi/pdf/10.1137/1.9781611976700.40">boley, …, webb, 2021</a>) - find optimal tree <strong>ensemble</strong> (only works for very small data)</p></li>
 </ul>
 </li>
-<li><p><strong>connections with boosting</strong></p>
+<li><p>connections with boosting</p>
 <ul>
 <li><p>Fast Interpretable Greedy-Tree Sums (FIGS) (<a class="reference external" href="https://arxiv.org/abs/2201.11931">tan et al. 2022</a>) - extend cart to learn concise tree ensembles 🌳 ➡️ 🌱+🌱</p>
 <ul>
@@ -1683,7 +1683,7 @@ title="Print to PDF"
 </li>
 </ul>
 </li>
-<li><p><strong>bayesian trees</strong></p>
+<li><p>bayesian trees</p>
 <ul>
 <li><p><a class="reference external" href="http://www-stat.wharton.upenn.edu/~edgeorge/Research_papers/treed-models.pdf">Bayesian Treed Models</a> (chipman et al. 2001) - impose priors on tree parameters</p>
 <ul>
@@ -1703,7 +1703,7 @@ title="Print to PDF"
 </li>
 </ul>
 </li>
-<li><p><strong>history</strong></p>
+<li><p>history</p>
 <ul>
 <li><p>automatic interaction detection (AID) regression trees (Morgan &amp; Sonquist, 1963)</p></li>
 <li><p>THeta Automatic Interaction Detection (THAID) classification trees (Messenger &amp; Mandell, 1972)</p></li>
@@ -1713,7 +1713,7 @@ title="Print to PDF"
 <li><p>C4.5 (Quinlan, 1993) - splits on binary entropy instead of GINI</p></li>
 </ul>
 </li>
-<li><p><strong>open problems</strong></p>
+<li><p>open problems</p>
 <ul>
 <li><p>ensemble methods</p></li>
 <li><p>improvements in splitting criteria, missing variables</p></li>
@@ -1745,6 +1745,14 @@ title="Print to PDF"
 <li><p><a class="reference external" href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0275814">Human knowledge models: Learning applied knowledge from the data | PLOS ONE</a> (dudyrev…pianykh, 2022) - very concise logic model</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2101.01576">On the price of explainability for some clustering problems</a> (laber et al. 2021) - trees for clustering</p></li>
 <li><p>extremely randomized trees (<a class="reference external" href="https://link.springer.com/article/10.1007/s10994-006-6226-1">geurts et al. 2006</a>) - randomness goes further than Random Forest - randomly select not only the feature but also the split thresholds (and select the best out of some random set)</p></li>
+</ul>
+</li>
+<li><p>Analysis of Boolean functions (<a class="reference external" href="https://en.wikipedia.org/wiki/Analysis_of_Boolean_functions">wiki</a>)</p>
+<ul>
+<li><p>Every real-valued function <span class="math notranslate nohighlight">\(f:\{-1,1\}^n \rightarrow \mathbb{R}\)</span> has a unique expansion as a multilinear polynomial:
+$<span class="math notranslate nohighlight">\(
+f(x)=\sum_{S \subseteq[n]} \hat{f}(S) \chi_S(x), \quad \overbrace{\chi_S(x)=\prod_{i \in S} x_i}^{\text{Interactions}}
+\)</span>$</p></li>
 </ul>
 </li>
 </ul>
@@ -1999,7 +2007,8 @@ title="Print to PDF"
 </ul>
 </li>
 <li><p><a class="reference external" href="https://arxiv.org/pdf/2002.01650.pdf">Concept Whitening for Interpretable Image Recognition</a> (chen et al. 2020) - force network to separate “concepts” (like in TCAV) along different axes</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1907.10882">Interpretability Beyond Classification Output: Semantic Bottleneck Networks</a> - add an interpretable intermediate bottleneck representation</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1907.10882">Interpretability Beyond Classification Output: Semantic Bottleneck Networks</a> - add an interpretable intermediate bottleneck representation’</p></li>
+<li><p><a class="reference external" href="https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=&amp;ved=2ahUKEwiQgrKbsu38AhVsBDQIHXHaD-AQFnoECA0QAQ&amp;url=https%3A%2F%2Fopenreview.net%2Fforum%3Fid%3Djw37FUa_Aw9&amp;usg=AOvVaw3hmaKQBDgw70khvc4gmQWc">Holistically Explainable Vision Transformers</a></p></li>
 </ul>
 </li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2102.12627">How to represent part-whole hierarchies in a neural network</a> (hinton, 2021)</p>
@@ -2800,6 +2809,11 @@ a concept’s examples and examples in any layer</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1910.07969">On Completeness-aware Concept-Based Explanations in Deep Neural Networks</a></p></li>
 <li><p><a class="reference external" href="https://openaccess.thecvf.com/content_ECCV_2018/html/Antonio_Torralba_Interpretable_Basis_Decomposition_ECCV_2018_paper.html">Interpretable Basis Decomposition for Visual Explanation</a> (zhou et al. 2018) - decompose activations of the input image into semantically interpretable components pre-trained from a large concept corpus</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2104.13369">Explaining in Style: Training a GAN to explain a classifier in StyleSpace</a> (lang et al. 2021)</p></li>
+<li><p>Language in a Bottle: Language Model Guided Concept Bottlenecks for Interpretable Image Classification (<a class="reference external" href="https://arxiv.org/abs/2211.11158">yang…yatskar, 2022</a>) - use GPT-3 to generate intermediate concepts for image classification</p>
+<ul>
+<li><p>linear probe on the concept bottleneck models has better performance</p></li>
+</ul>
+</li>
 </ul>
 </section>
 <section id="dnn-causal-motivated-attribution">
@@ -2982,6 +2996,7 @@ a concept’s examples and examples in any layer</p></li>
 <p><strong>see also notes in <a class="reference external" href="https://csinva.io/notes/research_ovws/ovw_transformers.html">ovw_transformers</a>!</strong></p>
 <ul class="simple">
 <li><p>iPrompt: <a class="reference external" href="https://arxiv.org/abs/2210.01848">Explaining Patterns in Data with Language Models via Interpretable Autoprompting</a> (singh, morris, …gao, 2022)</p></li>
+<li><p>WT5?! Training Text-to-Text Models to Explain their Predictions (<a class="reference external" href="https://arxiv.org/pdf/2004.14546.pdf">narang, raffel, …, malkan, 2020</a>)</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1812.05634.pdf">Adversarial Inference for Multi-Sentence Video Description</a> - adversarial techniques during inference for a better multi-sentence video description</p></li>
 <li><p><a class="reference external" href="https://aclweb.org/anthology/D18-1437">Object Hallucination in Image Captioning</a> - image relevance metric - asses rate of object hallucination</p>
 <ul>

@@ -1013,13 +1013,28 @@ title="Print to PDF"
 <li><p>XLNet (<a class="reference external" href="https://arxiv.org/abs/1906.08237">yang…quoc le, 2020</a>)</p></li>
 </ul>
 </li>
+<li><p>GPT-4 (<a class="reference external" href="https://cdn.openai.com/papers/gpt-4.pdf">openai, 2023</a>) - adds multimodal understanding + boosts context length to 32k</p>
+<ul>
 <li><p>GPT-3 (<a class="reference external" href="https://arxiv.org/abs/2005.14165?2">brown et al. 2020</a>) - identitical to GPT-2 except larger and replaces dense attention with sparse attention</p>
 <ul>
-<li><p>sizes: largest ha 175B params, 96 layers, 96 heads in each layer, head with dim 128, vocab size ~50k</p></li>
+<li><p>sizes: largest has 175B params, 96 layers, 96 heads in each layer, head with dim 128, vocab size ~50k</p></li>
+</ul>
+</li>
 <li><p>InstructGPT (<a class="reference external" href="https://arxiv.org/abs/2203.02155">ouyang…lowe, 2022</a>)</p></li>
 <li><p>GPT-2 (<a class="reference external" href="https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf">radford et al. 2018</a>)</p></li>
 <li><p>GPT (<a class="reference external" href="https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf">radford et al. 2018</a>)</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/2112.11446">Gopher</a> (deepmind, 2021) - basically gpt-3 with slight mods (replace layernorm by RMSnorm, different positional embeddings)</p></li>
+<li><p>Gopher (<a class="reference external" href="https://arxiv.org/abs/2112.11446">deepmind, 2021</a>) - basically gpt-3 with slight mods (replace layernorm by RMSnorm, different positional embeddings)</p></li>
+<li><p>open-source (from meta ai): <a class="reference external" href="https://scontent-sea1-1.xx.fbcdn.net/v/t39.8562-6/333078981_693988129081760_4712707815225756708_n.pdf?_nc_cat=108&amp;ccb=1-7&amp;_nc_sid=ad8a9d&amp;_nc_ohc=0JlbsRuMCfYAX89GkW5&amp;_nc_ht=scontent-sea1-1.xx&amp;oh=00_AfAKI4SBnQesKWtXsUVxzF9w_IT_qOgOTTKNpeZRptOBuw&amp;oe=63FDD562">LLaMa</a>, <a class="reference external" href="https://arxiv.org/abs/2212.12017">OPT-IML</a>, <a class="reference external" href="https://arxiv.org/abs/2205.01068">OPT</a></p></li>
+</ul>
+</li>
+<li><p>ELECTRA: Pre-training Text Encoders as Discriminators Rather Than Generators (<a class="reference external" href="https://arxiv.org/abs/2003.10555">clark…quoc le, chris manning, 2020</a>)</p>
+<ul>
+<li><p>more efficient: rather than standard masked training, use generator-discriminator setup for “token detection”</p>
+<ul>
+<li><p>generator replaces many masked tokens with plausible samples - train with MLM</p></li>
+<li><p>discriminator tries to guess which tokens were the masked ones - this is the main model that gets used</p></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2004.05150">Longformer: The Long-Document Transformer</a> (beltagy, peters, &amp; cohan, 2020) - processes very long contexts</p></li>
@@ -1043,24 +1058,20 @@ title="Print to PDF"
 </li>
 <li><p>more effective training</p>
 <ul>
+<li><p>instruction following</p>
+<ul>
 <li><p>FLAN-PaLM: Scaling Instruction-Finetuned Language Models (<a class="reference external" href="https://arxiv.org/abs/2210.11416">chung, …, quoc le, jason wei, 2022</a>) - finetune with datasets phrased as instructions</p>
 <ul>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2203.02155">instructGPT</a> / <a class="reference external" href="https://arxiv.org/abs/2109.01652">FLAN</a> - finetune on instructions to follows instructions</p></li>
 </ul>
 </li>
-<li><p>ELECTRA: Pre-training Text Encoders as Discriminators Rather Than Generators (<a class="reference external" href="https://arxiv.org/abs/2003.10555">clark…quoc le, chris manning, 2020</a>)</p>
-<ul>
-<li><p>more efficient: rather than standard masked training, use generator-discriminator setup for “token detection”</p>
-<ul>
-<li><p>generator replaces many masked tokens with plausible samples - train with MLM</p></li>
-<li><p>discriminator tries to guess which tokens were the masked ones - this is the main model that gets used</p></li>
 </ul>
 </li>
-</ul>
-</li>
-<li><p>natural language feedback (<span class="xref myst">scheurer et al. 2022</span>) - makes training more efficient</p>
+<li><p>human feedback</p>
 <ul>
+<li><p>Learning to summarize with human feedback (<a class="reference external" href="https://proceedings.neurips.cc/paper/2020/hash/1f89885d556929e98d3ef9b86448f951-Abstract.html">OpenAI, 2020</a>)</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2204.02329">Can language models learn from explanations in context?</a> (lampinen et al. 2022)</p></li>
+<li><p>natural language feedback (<a class="reference external" href="https://arxiv.org/abs/2204.14146">scheurer et al. 2022</a>) - makes training more efficient</p></li>
 </ul>
 </li>
 </ul>
@@ -1086,8 +1097,9 @@ title="Print to PDF"
 <li><p>Imagen (<a class="reference external" href="https://arxiv.org/abs/2205.11487">google, 2022</a>)</p></li>
 </ul>
 </li>
-<li><p>BEiT-3 (<a class="reference external" href="https://arxiv.org/abs/2208.10442">2022</a>) - treat vision as language and large-scale multimodal training</p>
+<li><p>BLIP-2 (<a class="reference external" href="https://arxiv.org/abs/2301.12597">salesforce, 2023</a>) - Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models</p>
 <ul>
+<li><p>BEiT-3 (<a class="reference external" href="https://arxiv.org/abs/2208.10442">2022</a>) - treat vision as language and large-scale multimodal training</p></li>
 <li><p>outperforms <a class="reference external" href="https://arxiv.org/abs/2204.14198">Flamingo: a Visual Language Model for Few-Shot Learning</a> (2022), which uses more domain knowledge to connect vision &amp; language</p></li>
 </ul>
 </li>
@@ -1168,6 +1180,7 @@ title="Print to PDF"
 <li><p>also test on slightly harder functions, like decision trees and 2-layer nets</p></li>
 </ul>
 </li>
+<li><p>Looped Transformers as Programmable Computers (<a class="reference external" href="https://arxiv.org/abs/2301.13196">giannou, …, jason lee, papailiopoulos, 2023</a> - use transformers as universal computers by programming them with specific weights</p></li>
 </ul>
 </li>
 <li><p>dialog</p>
@@ -1232,34 +1245,72 @@ title="Print to PDF"
 <section id="external-knowledge-tool-use-grounding">
 <h3><span class="section-number">1.9.1.2. </span>external knowledge / tool use / grounding<a class="headerlink" href="#external-knowledge-tool-use-grounding" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
-<li><p><a class="reference external" href="https://www.perplexity.ai/">https://www.perplexity.ai/</a> - nice demo adding citation to each fact</p></li>
-<li><p>implementations in <a class="reference external" href="https://github.com/hwchase17/langchain">langchain</a> library</p></li>
-<li><p>Atlas: Few-shot Learning with Retrieval Augmented Language Models (<a class="reference external" href="https://arxiv.org/abs/2208.03299">meta, 2022</a>)</p></li>
-<li><p>RETRO (<a class="reference external" href="https://arxiv.org/abs/2112.04426">deepmind, 2022</a>) - nearest neighbors to model’s input are retrieved, encoded, and conditioned on with chunked cross-attention</p></li>
-<li><p>Relational Memory-Augmented Language Models (<a class="reference external" href="https://direct.mit.edu/tacl/article/doi/10.1162/tacl_a_00476/110997/Relational-Memory-Augmented-Language-Models">liu, yogatama, &amp; blunsom, 2022</a>) - integrate knowledge base triplets with LLM</p>
+<li><p>private</p>
 <ul>
-<li><p>REALM (<a class="reference external" href="https://arxiv.org/abs/2002.08909">guu, …, chang, 2020</a>) - retrieves document chunks from corpus and adds them to context, for open-domain QA</p></li>
+<li><p><a class="reference external" href="https://www.perplexity.ai/">https://www.perplexity.ai/</a> - nice demo adding citation to each fact</p></li>
+<li><p><a class="reference external" href="https://you.com">https://you.com</a></p></li>
+<li><p><a class="reference external" href="https://github.com/hwchase17/langchain">langchain</a> library</p></li>
+<li><p><a class="reference external" href="https://www.fixie.ai/">https://www.fixie.ai/</a> - provide tools for wrapping APIs in LLM + interaction through router (also default modules for stateful storage, user identity, etc.)</p></li>
 </ul>
 </li>
+<li><p>review</p>
+<ul>
+<li><p>Augmented Language Models: a Survey (<a class="reference external" href="https://arxiv.org/abs/2302.07842">meta, 2023</a>) – 3 categories: reasoning, tools, action</p></li>
+</ul>
+</li>
+<li><p>Demonstrate-Search-Predict: Composing retrieval and language models for knowledge-intensive NLP (<a class="reference external" href="https://arxiv.org/abs/2212.14024">khattab, …, liang, potts, &amp; zaharia, 2022</a>) - use high-level programs to use multiple steps between retrieving and reading</p></li>
+<li><p>Toolformer: Language Models Can Teach Themselves to Use Tools (<a class="reference external" href="https://arxiv.org/abs/2302.04761">meta, 2023</a>) - model trained to decide which APIs to call, when to call them, what arguments to pass, and how to best incorporate the results into future token prediction</p>
+<ul>
+<li><p>Given input, sample position and API call candidates, try them all, and filter out ones which do not reduce next-token loss</p>
+<ul>
+<li><p>put correct API calls into prompt, e.g. Pittsburgh is also known as <code class="docutils literal notranslate"><span class="pre">[QA(What</span> <span class="pre">...?→</span> <span class="pre">Steel</span> <span class="pre">City)]</span></code> the Steel City.</p></li>
+</ul>
+</li>
+<li><p>Training</p>
+<ul>
+<li><p>start with few human-written examples of API use</p></li>
+<li><p>LLM generates more uses</p></li>
+<li><p>self-supervised loss determines which calls help with future-token prediction</p></li>
+</ul>
+</li>
+<li><p>Atlas: Few-shot Learning with Retrieval Augmented Language Models (<a class="reference external" href="https://arxiv.org/abs/2208.03299">meta, 2022</a>)</p></li>
+</ul>
+</li>
+<li><p>retreival-augmented in-context learning (put retrieved into into context, or something very similar)</p>
+<ul>
+<li><p>REALM (<a class="reference external" href="https://arxiv.org/abs/2002.08909">guu, …, chang, 2020</a>) - retrieves document chunks from corpus and adds them to context, for open-domain QA</p></li>
+<li><p>RETRO (<a class="reference external" href="https://arxiv.org/abs/2112.04426">deepmind, 2022</a>) - nearest neighbors to model’s input are retrieved, encoded, and conditioned on with chunked cross-attention</p></li>
+<li><p>Decomposed prompting (<a class="reference external" href="https://arxiv.org/pdf/2210.02406.pdf">khot et al., 2022</a>) - decompose tasks via prompting which are delegated to a shared library of prompting-based LLMs dedicated to these sub-tasks</p></li>
+</ul>
+</li>
+<li><p>knowledge base triplets</p>
+<ul>
+<li><p>Relational Memory-Augmented Language Models (<a class="reference external" href="https://direct.mit.edu/tacl/article/doi/10.1162/tacl_a_00476/110997/Relational-Memory-Augmented-Language-Models">liu, yogatama, &amp; blunsom, 2022</a>) - integrate knowledge base triplets with LLM</p></li>
 <li><p>DRAGON: Deep Bidirectional Language-Knowledge Graph Pretraining (<a class="reference external" href="https://arxiv.org/abs/2210.09338">yasanaga, …, manning, liang, leskovec, 2022</a>)</p></li>
+</ul>
+</li>
+<li><p>webgpt (<a class="reference external" href="https://arxiv.org/abs/2112.09332">nakano, …, schulman, 2022, OpenAI</a>) - allows google search to add world info</p>
+<ul>
+<li><p>Internet-augmented language models <a class="reference external" href="https://arxiv.org/pdf/2203.05115.pdf">Lazaridou et al., 2022</a></p></li>
+<li><p>GopherCite (<a class="reference external" href="https://arxiv.org/abs/2203.11147">menick, …, mcaleese, 2022, Deepmind</a>) - generate answers + link/relevant snippet when making predictions (trained with RL from human preferences )</p></li>
 <li><p>LaMDA (<a class="reference external" href="https://arxiv.org/abs/2201.08239">thoppilan, …, quoc le, 2022, google</a>) - allows google search to add world info (in a dialog model)</p>
 <ul>
 <li><p>this was the model that sparked the controversy about consciousness 🤔</p></li>
 <li><p>A Neural Corpus Indexer for Document Retrieval (<a class="reference external" href="https://arxiv.org/abs/2206.02743">wang…yang, 2022</a>) - train model to directly spit out document IDs given queries</p></li>
 </ul>
 </li>
-<li><p>webgpt (<a class="reference external" href="https://arxiv.org/abs/2112.09332">nakano, …, schulman, 2022, OpenAI</a>) - allows google search to add world info</p>
-<ul>
-<li><p>GopherCite (<a class="reference external" href="https://arxiv.org/abs/2203.11147">menick, …, mcaleese, 2022, Deepmind</a>) - generate answers + link/relevant snippet when making predictions (trained with RL from human preferences )</p></li>
 </ul>
 </li>
 <li><p>RLPG (<a class="reference external" href="https://arxiv.org/abs/2206.12839">shrivastava, larochelle, &amp; tarlow, 2022</a>) - for code-completion, retrieves functions from a repo</p></li>
-<li><p>memorizing transformers (<a class="reference external" href="https://arxiv.org/abs/2203.08913">wu…szegedy, 2022</a>) - knn-based learned indexing + retrieval at training time.</p>
+<li><p>memorizing transformers (<a class="reference external" href="https://arxiv.org/abs/2203.08913">wu…szegedy, 2022</a>) - knn-based learned indexing + retrieval at training time</p>
 <ul>
 <li><p>at test time, you just need to index the entire context and the model will be able to use it</p></li>
+<li><p>kNN Prompting: Learning Beyond the Context with Nearest Neighbor Inference (<a class="reference external" href="https://openreview.net/forum?id=fe2S7736sNS">xu…zhang, 2023</a>)</p></li>
+<li><p>kNN-Prompt: Nearest Neighbor Zero-Shot Inference (<a class="reference external" href="https://arxiv.org/pdf/2205.13792.pdf">shi…zettlemoyer, 2022</a>)</p></li>
 </ul>
 </li>
 <li><p>ACT-1: Transformer for Actions (<a class="reference external" href="https://www.adept.ai/act">2022, Adept</a>) - transformer directly interacts with computer</p></li>
+<li><p>ReAct: Synergizing Reasoning and Acting in Language Models (<a class="reference external" href="https://arxiv.org/abs/2210.03629">yao…cao, 2022</a>) - use LLMs to generate reasoning traces + task-specific actions in interleaved manner</p></li>
 </ul>
 </section>
 <section id="adaptation-transfer">
@@ -1323,6 +1374,7 @@ title="Print to PDF"
 <ul>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2205.11961">Attentional Mixtures of Soft Prompt Tuning for Parameter-efficient Multi-task Knowledge Sharing</a></p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2207.08408">STT: Soft Template Tuning for Few-Shot Adaptation</a></p></li>
+<li><p>Mixture of Soft Prompts for Controllable Data Generation (<a class="reference external" href="https://arxiv.org/abs/2303.01580">chen, … yu, 203</a>) - LLMs as Synthetic Data Generators for Training Smaller Models</p></li>
 </ul>
 </li>
 </ul>
@@ -1360,6 +1412,7 @@ title="Print to PDF"
 <section id="prompting">
 <h2><span class="section-number">1.9.2. </span>prompting<a class="headerlink" href="#prompting" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
+<li><p><a class="reference external" href="https://github.com/dair-ai/Prompt-Engineering-Guide">https://github.com/dair-ai/Prompt-Engineering-Guide</a></p></li>
 <li><p>Pre-train, Prompt, and Predict: A Systematic Survey of Prompting Methods in Natural Language Processing (<a class="reference external" href="https://arxiv.org/pdf/2107.13586.pdf">liu…neubig, 2021</a>)</p>
 <ul>
 <li><p>from <em>feature-engineering</em> -&gt; <em>architecture engineering</em> -&gt; <em>prompt engineering</em></p></li>
@@ -1416,23 +1469,37 @@ title="Print to PDF"
 <li><p><a class="reference external" href="https://arxiv.org/abs/1908.07125">Universal Adversarial Triggers for Attacking and Analyzing NLP</a> (wallace…sameer singh, 2019) - find input-agnostic sequences of tokens that trigger a model to produce a specific prediction when concatenated to any input from a dataset</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/2206.15007">GSCLIP : A Framework for Explaining Distribution Shifts in Natural Language</a> (zhu…james zou, 2022)</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2205.12548">RLPrompt: Optimizing Discrete Text Prompts with Reinforcement Learning</a> (deng…hu, 2022)</p></li>
 <li><p>LM-BFF: Making Pre-trained Language Models Better Few-shot Learners (<a class="reference external" href="https://arxiv.org/abs/2012.15723">gao et al. 2020</a>) - uses T5 to generate (i) template for the task (which might include a whole example or two) + (i) appropropriate label tokens in the vocabulary for the task (suffers from computationally intensive search + sub-optimal discrete space search)</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2102.12206">PADA: Example-based Prompt Learning for on-the-fly Adaptation to Unseen Domains</a> (ben-david, …, reichart, 2022)</p></li>
+</ul>
+</li>
+<li><p>prompt ensembles</p>
+<ul>
 <li><p>PromptBoosting: Black-Box Text Classification with Ten Forward Passes (<a class="reference external" href="https://arxiv.org/abs/2212.09257">hou, …, jacob andreas, …, zhang, 2022</a>) - get a small pool of prompts, learn a verbalizer (final classification layer) for each, then ensemble them with AdaBoost on LLM output</p>
 <ul>
 <li><p>people have studied many works on prompt ensembling (e.g. <a class="reference external" href="https://arxiv.org/abs/2104.08691">lester et al. 2021</a>)</p></li>
 </ul>
 </li>
+<li><p>PRBOOST: Prompt-Based Rule Discovery and Boosting for Interactive Weakly-Supervised Learning (<a class="reference external" href="https://arxiv.org/abs/2203.09735">zhang…zhang, 2022</a>) - iteratively (1) select high-error examples, (2) have human label them as rules, and (3) use boosting to train model on the new rules + ensemble</p>
+<ul>
+<li><p>typical rule generation</p>
+<ul>
+<li><p>Snuba (<a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/31777681/">Varma and Ré, 2018</a>) generates heuristics based on a small labeled dataset with pre-defined rule types</p></li>
+<li><p>TALLOR (<a class="reference external" href="https://arxiv.org/pdf/2107.02282.pdf">Li et al. 2021a</a>) &amp; GLaRA (<a class="reference external" href="https://arxiv.org/pdf/2104.06230.pdf">Zhao et al. 2021</a>) study rule expansion for NER problem based on lexical information and then select rules based on a hand-tuned threshold</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>PTR: Prompt Tuning with Rules for Text Classification (<a class="reference external" href="https://arxiv.org/abs/2105.11259">han et al. 2021</a>) – use logic rules to construct prompts with sub-prompts for many-class text classification (prompt is constructed hierarchically, but only one call is made to the LLM for inference)</p></li>
 </ul>
 </li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2101.00190">Prefix-Tuning: Optimizing Continuous Prompts for Generation</a> (li &amp; percy liang, 2021) – optimizes in continuous space for language generation tasks</p>
 <ul>
 <li><p>learn to map some parameters <span class="math notranslate nohighlight">\(\theta\)</span> through and MLP to generate a starting hidden state <span class="math notranslate nohighlight">\(h_i\)</span> – never actually sends the prefix through the network</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/2110.08329">Control Prefixes for Parameter-Efficient Text Generation</a> (clive, cao, &amp; rei, 2022) - allow for adapting the prefix to each input example</p></li>
 </ul>
 </li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2110.08329">Control Prefixes for Parameter-Efficient Text Generation</a> (clive, cao, &amp; rei, 2022) - allow for adapting the prefix to each input example</p></li>
 <li><p>DART <a class="reference external" href="https://arxiv.org/abs/2108.13161">Differentiable Prompt Makes Pre-trained Language Models Better Few-shot Learners</a> (zhang…chen, 2022)</p>
 <ul>
 <li><p>reformulating NLP task into differentially optimizing the prompt template + target label (given a pre-trained model)</p></li>
@@ -1442,7 +1509,6 @@ title="Print to PDF"
 </ul>
 </li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2108.02035">Knowledgeable Prompt-tuning: Incorporating Knowledge into Prompt Verbalizer for Text Classification</a> (hu et al. 2021) – add knowledge-base info into the prompt search</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/2105.11259">PTR: Prompt Tuning with Rules for Text Classification</a> (han et al. 2021) – use logic rules to construct prompts with sub-prompts for many-class text classification</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2104.06599">Learning How to Ask: Querying LMs with Mixtures of Soft Prompts</a> (qin &amp; eisner, 2021); <a class="reference external" href="https://github.com/hiaoxui/soft-prompts">github</a></p>
 <ul>
 <li><p>use continuous tokens and ensemble (don’t map back to words)</p></li>
@@ -1450,12 +1516,14 @@ title="Print to PDF"
 </li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2101.00121">WARP: Word-level Adversarial ReProgramming</a> (Hambardzumyan et al. 2021) - add continous tokens (don’t map back to words) + some task-specific parameters for better generalization</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2104.07650">KnowPrompt: Knowledge-aware Prompt-tuning with Synergistic Optimization for Relation Extraction</a> (chen et al. 2021) – incorporate relations, visualize learned prompt vectors with t-SNE</p></li>
+<li><p>Calibrate Before Use: Improving Few-Shot Performance of Language Models (<a class="reference external" href="https://arxiv.org/abs/2102.09690">zhao, …, dan klein, sameer singh, 2021</a>) - in order to make prompting easier, first calibrate output distr by making it uniform when given null inputs, e.g. “N/A”</p></li>
 <li><p>misc</p>
 <ul>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2109.08306">SentiPrompt: Sentiment Knowledge Enhanced Prompt-Tuning for Aspect-Based Sentiment Analysis</a> – use sentiment knowledge penalties in the prompt</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2110.07814">Meta-learning via Language Model In-context Tuning</a> (Chen et al. 2022) – Given new task with new instruction</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2102.07350">Prompt Programming for Large Language Models: Beyond the Few-Shot Paradigm</a> (Reynolds &amp; McDonell, 2021) – define metaprompts as general wrappers around tasks e.g. “This problem asks us to”</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2210.06774">Re3: Generating Longer Stories With Recursive Reprompting and Revision</a> (yang, …, klein, 2022) - generate summaries, then expand and revise with prompts</p></li>
+<li><p>Directional Stimulus Prompting (<a class="reference external" href="https://arxiv.org/abs/2302.11520">li, baoling peng, …jianfeng gao, xifeng yan, 2023</a>) - generate hint keywords using small LLM that are put into the prompt when calling large LLM</p></li>
 </ul>
 </li>
 <li><p>critiques of prompting</p>
@@ -1483,11 +1551,11 @@ title="Print to PDF"
 <section id="llm-chaining-decoding">
 <h3><span class="section-number">1.9.2.2. </span>llm chaining / decoding<a class="headerlink" href="#llm-chaining-decoding" title="Permalink to this headline">#</a></h3>
 <p><strong>many notes are from this <a class="reference external" href="https://twitter.com/iraphas13/status/1551959289023016967">thread</a> on chaining models together</strong></p>
-<ul class="simple">
+<ul>
 <li><p>steering</p>
 <ul>
 <li><p>overviews</p>
-<ul>
+<ul class="simple">
 <li><p>Ai chains: Transparent and controllable human-ai interaction by chaining large language model prompts (<a class="reference external" href="https://dl.acm.org/doi/abs/10.1145/3491102.3517582">wu, terry, &amp; cai, 2022</a>) - chaining LLM steps together: output of one step becomes the input for the next</p>
 <ul>
 <li><p>interactive system where users can modify chains + their intermediate results – improves performance + human experience</p></li>
@@ -1508,12 +1576,21 @@ title="Print to PDF"
 </li>
 <li><p>posthoc</p>
 <ul>
-<li><p>Chain of Thought Prompting (<a class="reference external" href="https://arxiv.org/abs/2201.11903">wei et al. 2022</a>)</p>
+<li><p>2023</p>
 <ul>
+<li><p>Faithful Chain-of-Thought Reasoning (<a class="reference external" href="https://arxiv.org/abs/2301.13379">lyu et al. 2023</a>)</p></li>
+<li><p>Program of Thoughts Prompting: Disentangling Computation from Reasoning for Numerical Reasoning Tasks (<a class="reference external" href="https://arxiv.org/abs/2211.12588">chen et al. 2022</a>)</p>
+<p>PAL: Program-aided Language Models (<a class="reference external" href="https://arxiv.org/abs/2211.10435">gao…neubig, 2023</a>)</p>
+</li>
+</ul>
+</li>
+<li><p>Chain of Thought Prompting (<a class="reference external" href="https://arxiv.org/abs/2201.11903">wei et al. 2022</a>)</p>
+<ul class="simple">
 <li><p>in few-shot prompts, don’t just provide answer but also reasoning</p></li>
 <li><p>model output then provides reasoning + answer</p></li>
-<li><p>Self-Consistency Improves Chain of Thought Reasoning in Language Models (<a class="reference external" href="https://arxiv.org/abs/2203.11171">wang, wei, schuurmans, quoc le, … zhou, 2022</a>) - sample a diverse set of reasoning paths from a language model via chain of thought prompting then return the most consistent final answer in the set</p></li>
+<li><p>Self-Consistency Improves Chain of Thought Reasoning in Language Models (<a class="reference external" href="https://arxiv.org/abs/2203.11171">wang, wei, schuurmans, quoc le, … zhou, 2022</a>) - use output samples rather than greedy and return the most consistent final answer in the set</p></li>
 <li><p>Challenging BIG-Bench Tasks and Whether Chain-of-Thought Can Solve Them (<a class="reference external" href="https://arxiv.org/abs/2210.09261">suzgun, …, quoc le, …, jason wei, 2022</a>)</p></li>
+<li><p><em>self-ask</em> (<a class="reference external" href="https://arxiv.org/pdf/2210.03350.pdf">Press et al., 2022</a>) - LLM asks itself (and then answers) follow-up questions before answering the initial question</p></li>
 </ul>
 </li>
 <li><p>scratchpads <a class="reference external" href="https://arxiv.org/abs/2112.00114">Show Your Work: Scratchpads for Intermediate Computation with Language Models</a> (nye et al. 2021)</p></li>
@@ -1521,26 +1598,26 @@ title="Print to PDF"
 <li><p>least-to-most prompting (<a class="reference external" href="https://arxiv.org/abs/2205.10625">zhou…quoc le et al. 2022</a>) - prompt LLM with context showing how to reduce into subproblems; then LLM sequentially solves the subproblems, using the previous answers</p></li>
 <li><p>Generated Knowledge Prompting for Commonsense Reasoning (<a class="reference external" href="https://arxiv.org/abs/2110.08387">liu…hasjishirzi, 2021</a>) - generate knowledge from an LLM then provide it as additional input when answering a question</p></li>
 <li><p>maieutic prompting (<a class="reference external" href="https://arxiv.org/abs/2205.11822">jung et al. 2022</a>) - generate a tree of all explanation of the form “True, because…”, “False, because…” then query LLM with these as prompts</p>
-<ul>
+<ul class="simple">
 <li><p>then use Max-SAT to try to satisfy as many relations between the model explanations as possible to come up with the true answer</p></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><p>training</p>
-<ul>
+<ul class="simple">
 <li><p>verifiers (<a class="reference external" href="https://arxiv.org/abs/2110.14168">cobbe et al. 2021</a>) - train model to judge whether an answer and thought are likely to be “valid”</p></li>
 <li><p>subgoal search (<a class="reference external" href="https://t.co/PCR4yexHti">czechowski et al. 2021</a>) - train model to generate subgoals then solve them in a graph</p></li>
 <li><p>STaR “Self-taught reasoner” (<a class="reference external" href="https://arxiv.org/abs/2203.14465">zelikman…goodman, 2022</a>)</p>
 <ul>
-<li><p>first, finetune on observed <span class="math notranslate nohighlight">\((Q, T, A)\)</span> triplets</p></li>
+<li><p>first, finetune on observed <span class="math notranslate nohighlight">\((Q, T, A)\)</span> triplets, where <span class="math notranslate nohighlight">\(T\)</span> is a rationale</p></li>
 <li><p>then, impute unknown <span class="math notranslate nohighlight">\(T_i\)</span> given dataset of pairs <span class="math notranslate nohighlight">\((Q_i, A_i)\)</span> by sampling until finding a <span class="math notranslate nohighlight">\(T_i\)</span> which leads to the correct answer</p></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><p>robotics-specific</p>
-<ul>
+<ul class="simple">
 <li><p>zero-shot planning (<a class="reference external" href="https://arxiv.org/abs/2201.07207">huang, abbeel, pathak, &amp; mordatch, 2022</a>)</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2204.00598">socratic models</a></p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2207.05608">Inner Monologue</a></p></li>
@@ -1556,11 +1633,59 @@ title="Print to PDF"
 <h2><span class="section-number">1.9.3. </span>misc<a class="headerlink" href="#misc" title="Permalink to this headline">#</a></h2>
 <section id="direct-weight-inspection">
 <h3><span class="section-number">1.9.3.1. </span>direct weight inspection<a class="headerlink" href="#direct-weight-inspection" title="Permalink to this headline">#</a></h3>
+<p>nice paper list <a class="reference external" href="https://www.neelnanda.io/mechanistic-interpretability/favourite-papers">here</a></p>
 <ul class="simple">
-<li><p>nice paper list <a class="reference external" href="https://www.neelnanda.io/mechanistic-interpretability/favourite-papers">here</a></p></li>
+<li><p>Transformer visualization via dictionary learning: contextualized embedding as a linear superposition of transformer factors (<a class="reference external" href="https://arxiv.org/abs/2103.15949">yun, chen, olshausen, lecun, 2021</a>) - investigate LLM embeddings of different words using dictionary learning</p>
+<ul>
+<li><p>LLMs produce interesting contextualized word embeddings</p></li>
+<li><p>dictionary elements (of activations across layers) correspond to meaningful things</p></li>
+<li><p>dictionary element has size <span class="math notranslate nohighlight">\(d\)</span>, the embedding size</p>
+<ul>
+<li><p>given list of sentences <span class="math notranslate nohighlight">\(S\)</span>, training matrix has size <span class="math notranslate nohighlight">\(\left(\underbrace{\text{num\_layers}}_{\text{12 for BERT}} \cdot \sum_{s \in S} \text{len(s)}\right) \times \underbrace{d}_{\text{768 for BERT}}\)</span></p></li>
+<li><p>dictionary coefficient is for a specific position: maps (text, sequence_index, layer) <span class="math notranslate nohighlight">\(\to\)</span> coefficient</p></li>
 </ul>
-<p><strong><a class="reference external" href="https://transformer-circuits.pub/2021/framework/index.html">thread</a> (elhage…olah, 2021)</strong></p>
-<ul class="simple">
+</li>
+</ul>
+</li>
+<li><p>Neuron-level Interpretation of Deep NLP Models: A Survey (<a class="reference external" href="https://direct.mit.edu/tacl/article/doi/10.1162/tacl_a_00519/113852/Neuron-level-Interpretation-of-Deep-NLP-Models-A">sajjad et al. 2022</a>)</p>
+<ul>
+<li><p>previous works generally use pre-specified concepts, and focus on</p>
+<ul>
+<li><p>concept search - given a neuron find its concept(s)</p></li>
+<li><p>neuron search - (ii) given a concept find its matching neuron(s)</p></li>
+</ul>
+</li>
+<li><p>concept search</p>
+<ul>
+<li><p>visualization, e.g. <a class="reference external" href="https://www.semanticscholar.org/paper/Visualizing-and-Understanding-Recurrent-Networks-Karpathy-Johnson/40be3888daa5c2e5af4d36ae22f690bcc8caf600">karpathy, johnson, fei-fei li, 2015</a> visualize LSTM head response in text</p></li>
+<li><p>elicit top-k ngram responses on a corpus, which are then labelled manually (<a class="reference external" href="https://www.semanticscholar.org/paper/Representation-of-Linguistic-Form-and-Function-in-K%C3%A1d%C3%A1r-Chrupa%C5%82a/9462eee3e5eff15df5e97c38e24072c65e581cee">kadar et al. 2017</a>)</p></li>
+<li><p>elicit top-k activating sentences from a corpus, which are then summarized using a parse tree into a synthetic explanation (<a class="reference external" href="https://arxiv.org/pdf/1902.07249.pdf">na…kim, 2019</a>)</p>
+<ul>
+<li><p>limitation: the explanation may be ungrammatical and biased towards something arbitrary (like reptition)</p></li>
+</ul>
+</li>
+<li><p>input maximization (e.g. textattack, <a class="reference external" href="https://www.semanticscholar.org/paper/Interpretable-Textual-Neuron-Representations-for-Poerner-Roth/36fc119ce631c3ec66866ce31918978824d05f78">poerner et al. 2018</a>)</p></li>
+</ul>
+</li>
+<li><p>Evaluating Neuron Interpretation Methods of NLP Models (<a class="reference external" href="https://arxiv.org/abs/2301.12608">fan…sajjad, 2023</a>) - metric is how well evaluation from one method matches the other ones</p></li>
+</ul>
+</li>
+<li><p>A Circuit for Indirect Object Identification in GPT-2 small (<a class="reference external" href="https://arxiv.org/abs/2211.00593">wang, …, steinhardt, 2022</a>)</p>
+<ul>
+<li><p>explanation encompasses 26 attention heads grouped into 7 main classes</p></li>
+<li><p>task: indirect object identification - “When Mary and John went to the store, John gave a drink to ___” should be “Mary”</p></li>
+<li><p>circuit</p>
+<ul>
+<li><p>identify all previous names</p></li>
+<li><p>remove duplicated names</p></li>
+<li><p>output remaining name</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>MILAN: Natural Language Descriptions of Deep Visual Features (<a class="reference external" href="https://openreview.net/forum?id=NudBMY-tzDr">hernandez…david bau…torallba, andreas, 2022</a>) - given a neuron, generates a natural-language string that maximizes pointwise mutual information with the image regions in which the neuron is active</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2211.07349">Finding Skill Neurons in Pre-trained Transformer-based Language Models</a> - some individual neurons are predictive of the final task (dubbed “skill neurons’)</p></li>
+<li><p><strong><a class="reference external" href="https://transformer-circuits.pub/2021/framework/index.html">thread</a> (elhage…olah, 2021)</strong></p></li>
 <li><p>all layers are same dimension and each attention block <strong>adds</strong> a vector to it</p></li>
 <li><p>Although they’re parameterized as separate matrices, <span class="math notranslate nohighlight">\(W_O W_V\)</span> and <span class="math notranslate nohighlight">\(W_Q^T W_K\)</span> can always be thought of as individual, low-rank matrices</p>
 <ul>
@@ -1609,12 +1734,10 @@ title="Print to PDF"
 <li><p>tensor/kronecker product <span class="math notranslate nohighlight">\(\bigotimes\)</span>:</p>
 <ul>
 <li><p>Left-right multiplying: Multiplying <span class="math notranslate nohighlight">\(x\)</span> by a tensor product <span class="math notranslate nohighlight">\(A \otimes W\)</span> is equivalent to simultaneously left and right multiplying: <span class="math notranslate nohighlight">\((A \otimes W) x=A x W^{T}\)</span></p></li>
-<li><p>When we add them, it is equivalent to adding the results of this multiplication: <span class="math notranslate nohighlight">\(\left(A_{1} \otimes W_{1}+A_{2} \otimes W_{2}\right) x=A_{1} x W_{1}^{T}+A_{2} x W_{2}^{T}\)</span></p></li>
+<li><p>When we add them, it is equivalent to adding the results of this multiplication: <span class="math notranslate nohighlight">\(\left(A_{1} \otimes W_{1}+A_{2} \otimes W_{2}\right) x=A_{1} x W_{1}^{T}+A_{2} x W_{2}^{T}\)</span>
+<strong><a class="reference external" href="https://transformer-circuits.pub/2022/solu/index.html">Softmax Linear Units</a></strong></p></li>
 </ul>
 </li>
-</ul>
-<p><strong><a class="reference external" href="https://transformer-circuits.pub/2022/solu/index.html">Softmax Linear Units</a></strong></p>
-<ul class="simple">
 <li><p>replacing activation function with softmax linear unit increases fraction of MLP neurons which are “interpretable”, i.e. correspond to meaningful features</p>
 <ul>
 <li><p>however, may “hide” some non-neuron-aligned features by decreasing their magnitude and then later recovering it with LayerNorm</p></li>
@@ -1641,26 +1764,6 @@ title="Print to PDF"
 <li><p>just changing to SoLU decrease performance, had to add LayerNorm afterwards</p></li>
 </ul>
 </li>
-<li><p>Transformer visualization via dictionary learning: contextualized embedding as a linear superposition of transformer factors (<a class="reference external" href="https://arxiv.org/abs/2103.15949">yun, chen, olshausen, lecun, 2021</a>) - investigate LLM embeddings of different words using dictionary learning</p>
-<ul>
-<li><p>LLMs produce interesting contextualized word embeddings</p></li>
-<li><p>dictionary elements (of activations across layers) correspond to meaningful things</p></li>
-</ul>
-</li>
-<li><p>A Circuit for Indirect Object Identification in GPT-2 small (<a class="reference external" href="https://arxiv.org/abs/2211.00593">wang, …, steinhardt, 2022</a>)</p>
-<ul>
-<li><p>explanation encompasses 26 attention heads grouped into 7 main classes</p></li>
-<li><p>task: indirect object identification - “When Mary and John went to the store, John gave a drink to ___” should be “Mary”</p></li>
-<li><p>circuit</p>
-<ul>
-<li><p>identify all previous names</p></li>
-<li><p>remove duplicated names</p></li>
-<li><p>output remaining name</p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/2211.07349">Finding Skill Neurons in Pre-trained Transformer-based Language Models</a> - some individual neurons are predictive of the final task (dubbed “skill neurons’)</p></li>
 </ul>
 </section>
 <section id="attention-variants">
@@ -1735,6 +1838,20 @@ title="Print to PDF"
 <li><p>finetune a model to combine original model output with output from a patch-conditioned interpreter head</p></li>
 </ul>
 </li>
+<li><p>augmenting interpretable models</p>
+<ul>
+<li><p>Emb-GAM: an Interpretable and Efficient Predictor using Pre-trained Language Models (<a class="reference external" href="https://arxiv.org/abs/2209.11799">singh &amp; gao, 2022</a>)</p>
+<ul>
+<li><p>use language model to extract embeddings which are then used to fit a better GAM (focuses on NLP)</p></li>
+</ul>
+</li>
+<li><p>CHiLL: Zero-shot Custom Interpretable Feature Extraction from Clinical Notes with Large Language Models (<a class="reference external" href="https://arxiv.org/abs/2302.12343">mcinerney, ..wallace, 2023</a>)</p>
+<ul>
+<li><p>extract interpretable feature (e.g. “Does this patient have a chronic illness?”) and use in a linear model</p></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </section>
 <section id="symbolic-reasoning">
@@ -1743,6 +1860,7 @@ title="Print to PDF"
 <ul class="simple">
 <li><p>GPT-3 <a class="reference external" href="https://arxiv.org/abs/2205.11916">Large Language Models are Zero-Shot Reasoners</a> - simply adding “Let’s think step by step” before each answer increases the accuracy on MultiArith from 17.7% to 78.7% and GSM8K from 10.4% to 40.7% with GPT-3</p></li>
 <li><p><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8491571/">Compositional processing emerges in neural networks solving math problems</a> (russin, roland fernandez, …, smolensky, gao, 2021)</p></li>
+<li><p>Modular Deep Learning (<a class="reference external" href="https://arxiv.org/pdf/2302.11529.pdf">pfeiffer, ruder, .., ponti, 2023)</a> - overview of different modular architectures</p></li>
 <li><p>neurocompositional computing (<a class="reference external" href="https://arxiv.org/abs/2205.01128">smolensky…gao, 2022</a>)</p>
 <ul>
 <li><p>longer tutorial (<a class="reference external" href="https://www.microsoft.com/en-us/research/uploads/prod/2022/04/Neurocompositional_computing__tutorial.pdf">smolensky, …, gao, 2022</a>)</p></li>
@@ -1891,6 +2009,7 @@ title="Print to PDF"
 <ul>
 <li><p>OPT-MOE (<a class="reference external" href="https://arxiv.org/abs/2112.10684">artetxe et al. 2021</a>)</p></li>
 <li><p>AutoMoE (<a class="reference external" href="https://arxiv.org/abs/2210.07535">jawahar, mukherjee, liu…gao, 2022</a>)</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2005.00147">Interpretable entity representations through large-scale typing</a> (onoe &amp; durrett, 2020) - embedding is interpretable predictions for different entities/</p></li>
 </ul>
 </li>
 </ul>
@@ -1940,6 +2059,7 @@ title="Print to PDF"
 <li><p>greedy - iteratively pick highest-probability token</p></li>
 <li><p>nucleus sampling: <a class="reference external" href="https://arxiv.org/abs/1904.09751">The Curious Case of Neural Text Degeneration</a> (holtzman…choi, 2019)</p></li>
 <li><p>contrastive decoding (<a class="reference external" href="https://arxiv.org/abs/2210.15097">li et al. 2022</a>) - decode based on the difference between a large and small LLM</p></li>
+<li><p>Semantic Uncertainty (<a class="reference external" href="https://arxiv.org/abs/2302.09664">kuhn, gal, &amp; farquhar, 2023</a>) - yields uncertainties by incorporating linguistic invariances created by shared meanings</p></li>
 </ul>
 </li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2212.03827">Discovering Latent Knowledge in Language Models Without Supervision</a> (burns, ye, klein, &amp; steinhardt, 2022) - identify whether text is true or false directly from a model’s <em>unlabeled activations</em></p></li>
@@ -1957,11 +2077,11 @@ title="Print to PDF"
 <section id="dataset-explanation">
 <h3><span class="section-number">1.9.3.8. </span>dataset explanation<a class="headerlink" href="#dataset-explanation" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
-<li><p><a class="reference external" href="https://arxiv.org/abs/2210.01848">iPrompt: Explaining Patterns in Data with Language Models via Interpretable Autoprompting</a> (singh, morris, …gao, 2022) - prompting approach</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/2205.10782">Instruction Induction: From Few Examples to Natural Language Task Descriptions</a> (honovich…bowman, levy 2022) - directly query model with prompt to search for task description</p></li>
-<li><p>Describing Differences between Text Distributions with Natural Language (<a class="reference external" href="https://arxiv.org/abs/2201.12323">zhong, snell, klein, &amp; steinhardt, 2022</a>)</p>
+<li><p>iPrompt: Explaining Patterns in Data with Language Models via Interpretable Autoprompting (<a class="reference external" href="https://arxiv.org/abs/2210.01848">singh, morris, …gao, 2022</a> ) - prompting approach</p></li>
+<li><p>Instruction Induction: From Few Examples to Natural Language Task Descriptions (<a class="reference external" href="https://arxiv.org/abs/2205.10782">honovich…bowman, levy 2022</a>) - directly query model with prompt to search for task description</p></li>
+<li><p>D3: Describing Differences between Text Distributions with Natural Language (<a class="reference external" href="https://arxiv.org/abs/2201.12323">zhong, snell, klein, &amp; steinhardt, 2022</a>) - finetune an LLM to directly describe difference between 2 text distrs</p>
 <ul>
-<li><p>finetune a model to directly describe difference between 2 distrs</p></li>
+<li><p>D5: Goal Driven Discovery of Distributional Differences via Language Descriptions (<a class="reference external" href="https://arxiv.org/abs/2302.14233">zhong, zhang, …, klein, &amp; steinhardt, 2023</a>) - add dataset-specific prompt + evaluation on larger set of 675 datasets</p></li>
 <li><p>technically this is just learning a classifier, where the classifier is a natural-language string</p></li>
 <li><p>method</p>
 <ul>
@@ -1971,14 +2091,14 @@ title="Print to PDF"
 <li><p>some tricks</p>
 <ul>
 <li><p>select samples which are “representative” of a class by predicting with another LLM</p></li>
-<li><p>have a pool of 302 manual hypotheses they used for seeding</p></li>
+<li><p>have a pool of 302 manual hypotheses they usefor seeding</p></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/2206.15007">GSCLIP : A Framework for Explaining Distribution Shifts in Natural Language</a> (zhu…james zou, 2022)</p></li>
+<li><p>GSCLIP : A Framework for Explaining Distribution Shifts in Natural Language (<a class="reference external" href="https://arxiv.org/abs/2206.15007">zhu…james zou, 2022</a>) - automatically explain dataset-level distribution shifts (in image datasets) with natural language</p></li>
 </ul>
 </li>
 </ul>
@@ -2001,6 +2121,12 @@ title="Print to PDF"
 <ul class="simple">
 <li><p>do more than predict what will happen, they attempt to offer insight into how or why</p></li>
 <li><p><a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S1359644621002816">AI-based language models powering drug discovery and development</a> (liu et al. 2021)</p></li>
+<li><p>BioTranslator: Multilingual translation for zero-shot biomedical classification (<a class="reference external" href="https://www.nature.com/articles/s41467-023-36476-2">xu, woicik, poon, altman, &amp; wang, 2023</a>) - takes a user- written textual description of a new concept and then translates this description to a non-text biological data instance</p>
+<ul>
+<li><p>results for biological data, e.g. genes, proteins</p></li>
+<li><p>enables the identification of novel cell types using only a textual description</p></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><p>scientific organization (<a class="reference external" href="https://galactica.org/static/paper.pdf">galactica</a>)</p>
