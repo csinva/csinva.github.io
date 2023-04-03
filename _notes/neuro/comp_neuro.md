@@ -755,7 +755,7 @@ category: neuro
   - can think about difference between $L_1$ and $L_2$ as having preferred directions (for the same length of vector) - prefer directions which some zeros
   - in terms of optimization, smooth near zero
   - there is a network implementation
-  - $a_i$are calculated by solvin optimization for each image, $\phi$ is learned more slowly
+  - $a_i$are calculated by solving optimization for each image, $\phi$ is learned more slowly
   - **can you get $a_i$ closed form soln?** 
 - wavelets invented in 1980s/1990s for sparsity + compression
 - these tuning curves match those of real v1 neurons
@@ -1389,7 +1389,7 @@ the operations above allow for encoding many normal data structures into a singl
 
 - [Toward next-generation artificial intelligence: catalyzing the NeuroAI revolution](https://arxiv.org/abs/2210.08340) (zador, ...bengio, dicarlo, lecun, ...sejnowski, tsao, 2022)
 
-- Computational language modeling and the promise of in silico experimentation ([jain, vo, wehbe, & huth, 2023](https://direct.mit.edu/nol/article/doi/10.1162/nol_a_00101/114613/Computational-language-modeling-and-the-promise-of)) - 4 experimental design exampmles
+- Computational language modeling and the promise of in silico experimentation ([jain, vo, wehbe, & huth, 2023](https://direct.mit.edu/nol/article/doi/10.1162/nol_a_00101/114613/Computational-language-modeling-and-the-promise-of)) - 4 experimental design examples
 
   - compare concrete & abstract words [(binder et al. 2005](https://direct.mit.edu/jocn/article-abstract/17/6/905/4017/Distinct-Brain-Systems-for-Processing-Concrete-and))
   - contrast-based study of composition in 2-word phrase ([Bemis & Pylkkanen, 2011](https://www.jneurosci.org/content/31/8/2801.short))
@@ -1464,6 +1464,7 @@ the operations above allow for encoding many normal data structures into a singl
     - test "compositionality" of features
   - [Tracking the online construction of linguistic meaning through negation](https://www.biorxiv.org/content/10.1101/2022.10.14.512299.abstract) (zuanazzi, ..., remi-king, poeppel, 2022)
   - [Blackbox meets blackbox: Representational Similarity and Stability Analysis of Neural Language Models and Brains](https://arxiv.org/abs/1906.01539) (abnar, … zuidema, emnlp workshop, 2019) - use RSA to compare representations from language models with fMRI data from Wehbe et al. 2014
+  - [Evidence of a predictive coding hierarchy in the human brain listening to speech](https://www.nature.com/articles/s41562-022-01516-2) (caucheteux, gramfot, & king, 2023)
 
 - encoding models
 

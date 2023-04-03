@@ -432,7 +432,9 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
 
 - concepts
   - [Concept Bottleneck Models](https://arxiv.org/pdf/2007.04612.pdf) (koh et al. 2020) - predict concepts before making final prediction
-    - [Post-hoc Concept Bottleneck Models](https://arxiv.org/abs/2205.15480) (...zou, 2022)
+    - PCBM [Post-hoc Concept Bottleneck Models](https://arxiv.org/abs/2205.15480) (yuksekgonul...zou, 2022) - automatically project embeddings to concepts and train linear model on those
+    - LaBO: Language in a Bottle: Language Model Guided Concept Bottlenecks for Interpretable Image Classification ([yang...yatskar, 2022](https://arxiv.org/pdf/2211.11158.pdf)) - generate prompt-based features using GPT-3 (e.g. "brown head with white stripes") and use CLIP to check for the presence of those features, all before learning simple linear model
+    - MoIE: Route, Interpret, Repeat: Blurring the Line Between Post hoc Explainability and Interpretable Models ([ghosh, ..., batmangehelich, 2023](https://arxiv.org/abs/2302.10289#)) - mixture of different interpretable models, with black-box routing
   - [Concept Whitening for Interpretable Image Recognition](https://arxiv.org/pdf/2002.01650.pdf) (chen et al. 2020) - force network to separate "concepts" (like in TCAV) along different axes
   - [Interpretability Beyond Classification Output: Semantic Bottleneck Networks](https://arxiv.org/abs/1907.10882) - add an interpretable intermediate bottleneck representation'
   - [Holistically Explainable Vision Transformers](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwiQgrKbsu38AhVsBDQIHXHaD-AQFnoECA0QAQ&url=https%3A%2F%2Fopenreview.net%2Fforum%3Fid%3Djw37FUa_Aw9&usg=AOvVaw3hmaKQBDgw70khvc4gmQWc) 
@@ -464,7 +466,6 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
 - regularization / constraints
   - [Sparse Epistatic Regularization of Deep Neural Networks for Inferring Fitness Functions](https://www.biorxiv.org/content/10.1101/2020.11.24.396994v1) (aghazadeh et al. 2020) - directly regularize interactions / high-order freqs in DNNs
   - [MonoNet: Towards Interpretable Models by Learning Monotonic Features](https://arxiv.org/abs/1909.13611) - enforce output to be a monotonic function of individuaul features
-
 - [Physics-informed neural networks: A deep learning framework for solving forward and inverse problems involving nonlinear partial differential equations](https://www.sciencedirect.com/science/article/pii/S0021999118307125) (raissi et al. 2019) - PINN - solve PDEs by constraining neural net to predict specific parameters / derivatives
 - [Improved Deep Fuzzy Clustering for Accurate and Interpretable Classifiers](https://ieeexplore.ieee.org/abstract/document/8858809) - extract features with a DNN then do fuzzy clustering on this
 - [Towards Robust Interpretability with Self-Explaining Neural Networks](https://arxiv.org/pdf/1806.07538.pdf) (alvarez-melis & jaakkola 2018) - building architectures that explain their predictions
@@ -869,8 +870,6 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
 - [On Completeness-aware Concept-Based Explanations in Deep Neural Networks](https://arxiv.org/abs/1910.07969)
 - [Interpretable Basis Decomposition for Visual Explanation](https://openaccess.thecvf.com/content_ECCV_2018/html/Antonio_Torralba_Interpretable_Basis_Decomposition_ECCV_2018_paper.html) (zhou et al. 2018) - decompose activations of the input image into semantically interpretable components pre-trained from a large concept corpus
 - [Explaining in Style: Training a GAN to explain a classifier in StyleSpace](https://arxiv.org/abs/2104.13369) (lang et al. 2021)
-- Language in a Bottle: Language Model Guided Concept Bottlenecks for Interpretable Image Classification ([yang...yatskar, 2022](https://arxiv.org/abs/2211.11158)) - use GPT-3 to generate intermediate concepts for image classification
-    - linear probe on the concept bottleneck models has better performance
 
 
 ### dnn causal-motivated attribution
