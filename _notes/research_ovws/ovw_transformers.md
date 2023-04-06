@@ -67,6 +67,7 @@ category: research
     - Learning to summarize with human feedback ([OpenAI, 2020](https://proceedings.neurips.cc/paper/2020/hash/1f89885d556929e98d3ef9b86448f951-Abstract.html))
     - [Can language models learn from explanations in context?](https://arxiv.org/abs/2204.02329) (lampinen et al. 2022)
     - natural language feedback ([scheurer et al. 2022](https://arxiv.org/abs/2204.14146)) - makes training more efficient
+      - Training Language Models with Language Feedback at Scale ([scheurer et al. 2023](https://arxiv.org/pdf/2303.16755.pdf))
 
 **other**
 
@@ -117,19 +118,14 @@ category: research
 
   - [UnifiedQA: Crossing Format Boundaries With a Single QA System](https://arxiv.org/abs/2005.00700) (khashabi...hajishirzi, 2020)
 
-- tabular
-
-  - TabLLM: Few-shot Classification of Tabular Data with Large Language Models  ([hegelsmann..., sontag, 2022](https://arxiv.org/abs/2210.10723))
-
 - metalearning
 
-  - TabPFN: A Transformer That Solves Small Tabular Classification Problems in a Second ([hollman, ..., hutter, 2022](https://arxiv.org/abs/2207.01848)) - transformer takes in train + test dataset then outputs predictions
-    - builds on prior-data fitted networks (PFNs) ([muller, ..., hutter, 2021](https://arxiv.org/abs/2112.10510))
   - What Can Transformers Learn In-Context? A Case Study of Simple Function Classes ([garg, tsipras, liang, & valiant, 2022](https://arxiv.org/abs/2208.01066)) - models can succesfully metalearn functions like OLS
     - e.g. during training, learn inputs-outputs from different linear functions
     - during testing, have to predict outputs for inputs from a different linear function
     - also test on slightly harder functions, like decision trees and 2-layer nets
   - Looped Transformers as Programmable Computers ([giannou, ..., jason lee, papailiopoulos, 2023](https://arxiv.org/abs/2301.13196) - use transformers as universal computers by programming them with specific weights
+  
 - dialog
   - ChatGPT
   - [GODEL: Large-Scale Pre-Training for Goal-Directed Dialog](https://arxiv.org/abs/2206.11309) (baolin peng, galley, ..., gao , 2022) - add grounded pre-training
@@ -206,7 +202,7 @@ category: research
 - RLPG ([shrivastava, larochelle, & tarlow, 2022](https://arxiv.org/abs/2206.12839)) - for code-completion, retrieves functions from a repo
 - memorizing transformers ([wu...szegedy, 2022](https://arxiv.org/abs/2203.08913)) - knn-based learned indexing + retrieval at training time
   - at test time, you just need to index the entire context and the model will be able to use it
-  - kNN Prompting: Learning Beyond the Context with Nearest Neighbor Inference ([xu...zhang, 2023](https://openreview.net/forum?id=fe2S7736sNS))
+  - kNN Prompting: Learning Beyond the Context with Nearest Neighbor Inference ([xu...zhang, 2023](https://openreview.net/forum?id=fe2S7736sNS)) - instead of verbalizer, use nearest-neighbor
   - kNN-Prompt: Nearest Neighbor Zero-Shot Inference ([shi...zettlemoyer, 2022](https://arxiv.org/pdf/2205.13792.pdf))
 - ACT-1: Transformer for Actions ([2022, Adept](https://www.adept.ai/act)) - transformer directly interacts with computer
 - ReAct: Synergizing Reasoning and Acting in Language Models ([yao...cao, 2022](https://arxiv.org/abs/2210.03629)) - use LLMs to generate reasoning traces + task-specific actions in interleaved manner
@@ -483,6 +479,7 @@ nice paper list [here](https://www.neelnanda.io/mechanistic-interpretability/fav
   - *change factual associations* - modify feedforward weights to update specific factual associations using Rank-One Model Editing (ROME)
   - [Mass Editing Memory in a Transformer](https://memit.baulab.info/) (meng..., bau, 2022)
 - Knowledge Neurons in Pretrained Transformers ([dai et al. 2021](https://arxiv.org/abs/2104.08696)) - integrated gradients wrt to each neuron in BERT
+- REMEDI ([hernandez, li, & andreas, 2023](https://arxiv.org/pdf/2304.00740.pdf)) - pass facts through LLM to get embedding vectors, then use that embedding vector combined with a new prompt to edit the output
 - Memory-Based Model Editing at Scale ([mitchell...manning, finn, 2022](https://proceedings.mlr.press/v162/mitchell22a/mitchell22a.pdf))
   - keep track of list of edits in external memory and use them as appropriate context at test time (don't finetune the model)
   - Fast model editing at scale ([mitchell...finn, manning, 2022](https://arxiv.org/abs/2110.11309))
@@ -669,6 +666,48 @@ mixture of experts models have become popular because of the need for (1) fast s
 
 - Automatic Rule Extraction from Long Short Term Memory Networks ([murdoch & szlam, 2017](https://arxiv.org/abs/1702.02540)) - extract out phrases using feature importance
 - A Comparative Study of Rule Extraction for Recurrent Neural Networks ([wang et al. 2018](https://arxiv.org/abs/1801.05420)) - create automata based on interpretable states to track RNNs
+
+## tabular data
+
+- tabular pre-training
+
+  - TabPFN: A Transformer That Solves Small Tabular Classification Problems in a Second ([hollman, ..., hutter, 2022](https://arxiv.org/abs/2207.01848))
+    - transformer takes in train + test dataset then outputs predictions
+    - each row (data example) is treated as a token and test points attend only to training t
+      - takes fixed-size 100 columns, with zero-padded columns at the end (during training, randomly subsample columns)
+    - builds on prior-data fitted networks (PFNs) ([muller, ..., hutter, 2021](https://arxiv.org/abs/2112.10510))
+    - trained on synthetic data
+  - TabDDPM: Modelling Tabular Data with Diffusion Models ([2022](https://arxiv.org/abs/2209.15421))
+  - TabLLM: Few-shot Classification of Tabular Data with Large Language Models  ([hegelsmann..., sontag, 2022](https://arxiv.org/abs/2210.10723))
+  - [TabRet: Pre-training Transformer-based Tabular Models for Unseen Columns](https://www.semanticscholar.org/paper/TabRet%3A-Pre-training-Transformer-based-Tabular-for-Onishi-Oono/667b708db00c89eef062d8bc4a68f5364bf70648)
+  - TABBIE ([Iida, ..., Iyyer, 2021](https://arxiv.org/abs/2105.02584)) - average row/column embeddings
+  - (not using transformers): transform a relation table in a graph and perform random walks on the latter to produce node embeddings ([Cappuzzo et al., 2020](https://dl.acm.org/doi/10.1145/3318464.3389742))
+- input representation
+
+  - baseline methods: usually flatten tables, maybe with special character for starting each row/col
+    - could combine output from rows/cols with using element-wise product, average pooling and concatenation ([TABULARNET](https://dl.acm.org/doi/10.1145/3447548.3467228))
+    - sometimes add column headers to cell content
+    - also popular is converting the table-to-text with finetuned models before processing
+- older
+
+  - [TaBERT: Pretraining for Joint Understanding of Textual and Tabular Data](https://www.semanticscholar.org/paper/TaBERT%3A-Pretraining-for-Joint-Understanding-of-and-Yin-Neubig/a5b1d1cab073cb746a990b37d42dc7b67763f881) (yin, neubig, ..., riedel, 2020)
+- one-off tasks
+
+  - LLMS are realistic tabular data generators ([borisov et al. 2022](https://arxiv.org/abs/2210.06280))
+  - Can Foundation Models Wrangle Your Data? ([narayan...re, 2022](https://arxiv.org/abs/2205.09911))
+- reviews
+
+  - Transformers for Tabular Data Representation: A Survey of Models and Applications ([badaro...papotti, 2023](https://direct.mit.edu/tacl/article/doi/10.1162/tacl_a_00544/115239/Transformers-for-Tabular-Data-Representation-A))
+    - common data sources: Wikipedia tables for QA (e.g. 3.2M tables in [this paper](https://www.semanticscholar.org/paper/TabEL%3A-Entity-Linking-in-Web-Tables-Bhagavatula-Noraset/8ffcad9346c4978a211566fde6807d6fb4bfa5ed)) or WDC web table corpus (233M tables from [lehmberg et al. 2016](https://dl.acm.org/doi/10.1145/2872518.2889386))
+    - modifications
+      - positional embeddings based on rows + cols
+      - attention variants: add row-wise, sparse attention allows for adding more context
+
+
+  - [Table Pre-training: A Survey on Model Architectures, Pretraining Objectives, and Downstream Tasks](https://www.semanticscholar.org/paper/Table-Pre-training%3A-A-Survey-on-Model-Pretraining-Dong-Cheng/49f4b4ca86e574c7ec688cfd45d2e17ff079c313) (2022)
+  - [Embeddings for Tabular Data: A Survey](https://arxiv.org/abs/2302.11777) (singh & bedathur, 2023)
+  - [Deep neural networks and tabular data: A survey](https://ieeexplore.ieee.org/abstract/document/9998482/) (2022) - mostly compares performance on standard tasks (e.g. classification)
+
 
 ## cool tasks
 
