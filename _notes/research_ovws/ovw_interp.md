@@ -1369,4 +1369,4 @@ These papers don't quite connect to prediction, but are generally about finding 
     - no reason to believe brain is anywhere near a hard limit (e.g. limitations on speed, memory)
     - AI systems that don’t seek to gain or maintain power may cause a lot of harm, but this harm is more easily limited by the power they already have (so wouldn't count as existential risk)
 -  [Why I Think More NLP Researchers Should Engage with AI Safety Concerns – NYU Alignment Research Group](https://wp.nyu.edu/arg/why-ai-safety/) (sam bowman, 2022)
-  - [AI Safety and Neighboring Communities: A Quick-Start Guide, as of Summer 2022 - AI Alignment Forum](https://www.alignmentforum.org/posts/EFpQcBmfm2bFfM4zM/ai-safety-and-neighboring-communities-a-quick-start-guide-as) (sam bowman, 2022)
+  - AI Safety and Neighboring Communities: A Quick-Start Guide, as of Summer 2022 - AI Alignment Forum (sam bowman, 2022)
