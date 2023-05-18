@@ -112,7 +112,14 @@ category: research
     - PubMedGPT (2.7B): ([bolton, hall, ..., manning, liang, 2022](https://crfm.stanford.edu/2022/12/15/pubmedgpt.html)) -> renamed to *BioMedLM*
     - BioBERT: [A pre-trained biomedical language representation model for biomedical text mining](https://arxiv.org/abs/1901.08746) (2019)
     - PubMedBERT: [Domain-Specific Language Model Pretraining for Biomedical Natural Language Processing](https://arxiv.org/abs/2007.15779) (gu...gao, poon, 2021)
-    - Large Language Models Encode Clinical Knowledge ([singhal, ..., natarajan, 2022, google/deepmind](https://arxiv.org/abs/2212.13138)) - introduce MultiMedQA dataset + derive Med-PaLM, a prompt-tuned version of PaLM
+    - Med-PaLM 2 ([google, 2023](https://arxiv.org/abs/2305.09617)) - state of the art QA
+      - Large Language Models Encode Clinical Knowledge ([singhal, ..., natarajan, 2022, google/deepmind](https://arxiv.org/abs/2212.13138)) - introduce MultiMedQA dataset + derive Med-PaLM, a prompt-tuned version of PaLM
+    - GPT4 in medicine book ([lee, goldberg, & kohane, 2023](https://www.amazon.com/AI-Revolution-Medicine-GPT-4-Beyond/dp/0138200130))
+      - For summaries: "Can you check the proposed note and identify any facts in it that don't appear explicitly in the transcript?"
+        - gpt often better at reviewing text than writing it
+      - evaluation
+        - hard to run gpt clinical trial, although can be used to identify candidates, e.g. biomarkers for followup tests
+      - paperwork - replace patient intake form, medical encounter note, prior authorization note (to insurance), universal translator for health info / formatting
   
 - question-answering (now just done with generic LLMs)
 
@@ -204,6 +211,7 @@ category: research
 - memorizing transformers ([wu...szegedy, 2022](https://arxiv.org/abs/2203.08913)) - knn-based learned indexing + retrieval at training time
   - at test time, you just need to index the entire context and the model will be able to use it
   - kNN Prompting: Learning Beyond the Context with Nearest Neighbor Inference ([xu...zhang, 2023](https://openreview.net/forum?id=fe2S7736sNS)) - instead of verbalizer, use nearest-neighbor
+    - has dbpedia results
   - kNN-Prompt: Nearest Neighbor Zero-Shot Inference ([shi...zettlemoyer, 2022](https://arxiv.org/pdf/2205.13792.pdf))
 - ACT-1: Transformer for Actions ([2022, Adept](https://www.adept.ai/act)) - transformer directly interacts with computer
 - ReAct: Synergizing Reasoning and Acting in Language Models ([yao...cao, 2022](https://arxiv.org/abs/2210.03629)) - use LLMs to generate reasoning traces + task-specific actions in interleaved manner
@@ -423,7 +431,11 @@ nice paper list [here](https://www.neelnanda.io/mechanistic-interpretability/fav
     - identify all previous names
     - remove duplicated names
     - output remaining name
-- MILAN: Natural Language Descriptions of Deep Visual Features ([hernandez...david bau...torallba, andreas, 2022](https://openreview.net/forum?id=NudBMY-tzDr)) - given a neuron, generates a natural-language string that maximizes pointwise mutual information with the image regions in which the neuron is active
+- Interpretability at Scale: Identifying Causal Mechanisms in Alpaca ([wu..., potts, goodman, 2023](https://arxiv.org/pdf/2305.08809.pdf))
+- activation vector editing ([turner, ..., mini, 2023](https://www.alignmentforum.org/posts/5spBue2z2tw4JuDCx/steering-gpt-2-xl-by-adding-an-activation-vector#6__The_Eiffel_Tower_is_in_Rome))
+  - obtain "steering vector" by embedding a phrase (e.g. *love*) and adding that vector to the llm embedding during generation
+
+- N2G: A Scalable Approach for Quantifying Interpretable Neuron Representations in Large Language Models ([foote, nanda, ..., barez, 2023](https://arxiv.org/abs/2304.12918)) - explain each neuron in a graph
 - [Finding Skill Neurons in Pre-trained Transformer-based Language Models](https://arxiv.org/abs/2211.07349) - some individual neurons are predictive of the final task (dubbed "skill neurons')
 - **[thread](https://transformer-circuits.pub/2021/framework/index.html) (elhage...olah, 2021)**
 - all layers are same dimension and each attention block **adds** a vector to it
@@ -513,7 +525,9 @@ nice paper list [here](https://www.neelnanda.io/mechanistic-interpretability/fav
     - use language model to extract embeddings which are then used to fit a better GAM (focuses on NLP)
 
   - CHiLL: Zero-shot Custom Interpretable Feature Extraction from Clinical Notes with Large Language Models ([mcinerney, ..wallace, 2023](https://arxiv.org/abs/2302.12343))
-    - extract interpretable feature (e.g. "Does this patient have a chronic illness?") and use in a linear model
+    - extract interpretable feature (e.g. "Does this patient have a chronic illness?") and use in a linear model (use Flan-T5)
+    - interpretable features: 10 ICD codes + (1) Does the patient have a chronic illness? (2) Is the condition life-threatening?
+    - Large Language Models are Few-Shot Clinical Information Extractors ([agrawal...sontag, 2022](https://arxiv.org/abs/2205.12689)) - use GPT3
 
 
 ## symbolic reasoning
@@ -647,21 +661,34 @@ mixture of experts models have become popular because of the need for (1) fast s
   - Identifies a small handful of decisive attention heads in this case
 - Amnesic Probing: Behavioral Explanation with Amnesic Counterfactuals ([elazar, ..., goldberg, 2021](https://arxiv.org/pdf/2006.00995.pdf)) - measure the importance of specific info within a model by introducing a causal intervention to erase that information, then observing the causal effects
 
-## dataset explanation
+## dataset / module explanation
 
-- iPrompt: Explaining Patterns in Data with Language Models via Interpretable Autoprompting ([singh, morris, ...gao, 2022](https://arxiv.org/abs/2210.01848) ) - prompting approach
-- Instruction Induction: From Few Examples to Natural Language Task Descriptions ([honovich...bowman, levy 2022](https://arxiv.org/abs/2205.10782)) - directly query model with prompt to search for task description
-- D3: Describing Differences between Text Distributions with Natural Language ([zhong, snell, klein, & steinhardt, 2022](https://arxiv.org/abs/2201.12323)) - finetune an LLM to directly describe difference between 2 text distrs
-  - D5: Goal Driven Discovery of Distributional Differences via Language Descriptions ([zhong, zhang, ..., klein, & steinhardt, 2023](https://arxiv.org/abs/2302.14233)) - add dataset-specific prompt + evaluation on larger set of 675 datasets
-  - technically this is just learning a classifier, where the classifier is a natural-language string
-  - method
-    - proposer network generates hypotheses
+- dataset explanation
+  - iPrompt: Explaining Patterns in Data with Language Models via Interpretable Autoprompting ([singh, morris, ...gao, 2022](https://arxiv.org/abs/2210.01848) ) - prompting approach
+  - Instruction Induction: From Few Examples to Natural Language Task Descriptions ([honovich...bowman, levy 2022](https://arxiv.org/abs/2205.10782)) - directly query model with prompt to search for task description
+  - D3: Describing Differences between Text Distributions with Natural Language ([zhong, snell, klein, & steinhardt, 2022](https://arxiv.org/abs/2201.12323)) - finetune an LLM to directly describe difference between 2 text distrs
+    - D5: Goal Driven Discovery of Distributional Differences via Language Descriptions ([zhong, zhang, ..., klein, & steinhardt, 2023](https://arxiv.org/abs/2302.14233)) - add dataset-specific prompt + evaluation on larger set of 675 datasets
+    - technically this is just learning a classifier, where the classifier is a natural-language string
+    - method
+      - proposer network generates hypotheses
       - verifier networks looks at all samples in the dataset (since proposer couldn't fit them all in context) and returns how accurate the hypotheses were
       - some tricks
         - select samples which are "representative" of a class by predicting with another LLM
         - have a pool of 302 manual hypotheses they usefor seeding
-  - GSCLIP : A Framework for Explaining Distribution Shifts in Natural Language ([zhu...james zou, 2022](https://arxiv.org/abs/2206.15007)) - automatically explain dataset-level distribution shifts (in image datasets) with natural language
-  
+
+    - GSCLIP : A Framework for Explaining Distribution Shifts in Natural Language ([zhu...james zou, 2022](https://arxiv.org/abs/2206.15007)) - automatically explain dataset-level distribution shifts (in image datasets) with natural language
+
+- module explanation
+  - Language models can explain neurons in language models ([bills, cammarata, ...saunders, 2023, openai](https://openaipublic.blob.core.windows.net/neuron-explainer/paper/index.html))
+    - goal: explain a neuron
+      - step 1: summarize (token, activation) pairs into an explanation
+      - step 2: create simulated neuron that outputs activations given tokens
+      - step 3: check correlation of simulated neuron outputs with real neuron outputs
+    - their [unigram baseline](https://openaipublic.blob.core.windows.net/neuron-explainer/paper/index.html) summarizes top unigrams into a string
+    - they use synthetic generated data to revise the explanation
+    - they also do some recovery tests on "neuron puzzles"
+  - MILAN: Natural Language Descriptions of Deep Visual Features ([hernandez...david bau...torallba, andreas, 2022](https://openreview.net/forum?id=NudBMY-tzDr)) - given a neuron, generates a natural-language string that maximizes pointwise mutual information with the image regions in which the neuron is active
+
 
 ## connecting with rules
 
@@ -708,7 +735,6 @@ mixture of experts models have become popular because of the need for (1) fast s
   - [Table Pre-training: A Survey on Model Architectures, Pretraining Objectives, and Downstream Tasks](https://www.semanticscholar.org/paper/Table-Pre-training%3A-A-Survey-on-Model-Pretraining-Dong-Cheng/49f4b4ca86e574c7ec688cfd45d2e17ff079c313) (2022)
   - [Embeddings for Tabular Data: A Survey](https://arxiv.org/abs/2302.11777) (singh & bedathur, 2023)
   - [Deep neural networks and tabular data: A survey](https://ieeexplore.ieee.org/abstract/document/9998482/) (2022) - mostly compares performance on standard tasks (e.g. classification)
-
 
 ## cool tasks
 

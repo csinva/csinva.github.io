@@ -13,6 +13,24 @@ typora-copy-images-to: ../assets
 
 - [physionet](https://physionet.org/about/database/)
   - mimic-iv
+- [nih datasets](https://nda.nih.gov/)
+- [mdcalc datasets](https://www.mdcalc.com/)
+- [pecarn](https://pecarn.org/datasets/)
+- [openneuro](https://openneuro.org/)
+
+## nlp
+
+- [n2c2 tasks](https://portal.dbmi.hms.harvard.edu/projects/n2c2-nlp/)
+  - MedNLI - NLI task grounded in patient history ([romanov & shivade, 2018](https://arxiv.org/abs/1808.06752))
+    - derived from Mimic, but expertly annotated
+  - [i2b2](https://www.i2b2.org/NLP/DataSets/) named entity recognition tasks
+    - i2b2 2006, 2010, 2012, 2014
+- [CASI dataset](https://conservancy.umn.edu/handle/11299/137703) - collection of abbreviations and acronyms (short forms) with their possible senses (long forms), along with other corresponding information about these terms
+  - some extra annotations by [agrawal...sontag, 2022](https://arxiv.org/abs/2205.12689)
+- [PMC-Patients](https://arxiv.org/abs/2202.13876) - open-source patient snippets, but no groundtruth labels besides age, gender
+- [EBM-NLP](https://github.com/bepnye/EBM-NLP) - annotates PICO (Participants, Interventions, Comparisons and Outcomes) spans in clinical trial abstracts
+  - task - identify the spans that describe the respective PICO elements.
+
 - mimic-iv-benchmark ([xie...liu, 2022](https://www.nature.com/articles/s41597-022-01782-9))
   - 3 tabular datasets derived from MIMIC-IV ED EHR
     - *hospitalization* (versus discharged) -  met with an inpatient care site admission immediately following an ED visit
@@ -34,16 +52,6 @@ typora-copy-images-to: ../assets
       - vitalsigns
       - edstays
       - medication prescription
-
-- [nih datasets](https://nda.nih.gov/)
-- [mdcalc datasets](https://www.mdcalc.com/)
-- [pecarn](https://pecarn.org/datasets/)
-- [openneuro](https://openneuro.org/)
-- NLP
-  - MedNLI - NLI task grounded in patient history ([romanov & shivade, 2018](https://arxiv.org/abs/1808.06752))
-    - derived from Mimic, but expertly annotated
-  - i2b2 named entity recognition tasks
-    - i2b2 2006, 2010, 2012, 2014
 
 ## ucsf de-id data
 
