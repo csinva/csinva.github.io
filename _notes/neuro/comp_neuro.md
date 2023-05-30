@@ -1279,34 +1279,33 @@ the operations above allow for encoding many normal data structures into a singl
     - compensatory homeostatic plasticity which stabilizes neural activity
   - approaches: regularization, dynamic architectures (e.g. add more nodes after each task), memory replay
 
-## deeptune-related
+## maximal exciting inputs
 
-- Neural population control via deep image synthesis ([bashivan, kar, & dicarlo, 2019](https://www.science.org/doi/abs/10.1126/science.aav9436))
+- single-neuron (macaque)
+  - Neural population control via deep image synthesis ([bashivan, kar, & dicarlo, 2019](https://www.science.org/doi/abs/10.1126/science.aav9436))
 
-- [Evolving images for visual neurons using a deep generative network reveals coding principles and neuronal preferences](https://www.sciencedirect.com/science/article/pii/S0092867419303915) (ponce et al. 2019)
+  - Energy Guided Diffusion for Generating Neurally Exciting Images ([pierzchlewicz, ..., tolias, sinz, 2023](https://www.biorxiv.org/content/10.1101/2023.05.18.541176v1))
+
+  - [Evolving images for visual neurons using a deep generative network reveals coding principles and neuronal preferences](https://www.sciencedirect.com/science/article/pii/S0092867419303915) (ponce...livingstone, 2019)
+
+  - The DeepTune framework for modeling and characterizing neurons in visual cortex area V4 ([abbasi-asl, ..., yu, 2018](https://www.biorxiv.org/content/10.1101/465534v1.abstract))
 
 - [XDream: Finding preferred stimuli for visual neurons using generative networks and gradient-free optimization](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007973) (2020)
+- real-time mouse v1
+  - [Inception in visual cortex: in vivo-silico loops reveal most exciting images](https://www.biorxiv.org/content/10.1101/506956.abstract) (2018)
 
-- [Synthesizing optimal visual stimuli for EEG-SSVEPs with deep generative networks](https://cns.iisc.ac.in/sridhar/assets/publications/ACCS 2022 Posterv21_shankha.pdf)
-- [Inception in visual cortex: in vivo-silico loops reveal most exciting images](https://www.biorxiv.org/content/10.1101/506956.abstract) (2018)
 - Adept: Adaptive stimulus selection for optimizing neural population responses ([cowley...byron yu, 2017](https://papers.nips.cc/paper/6738-adaptive-stimulus-selection-for-optimizing-neural-population-responses.pdf))
-  - use kernel regression from CNN embedding to calculate distances between preset images
-  - select preset images
-  - verified with macaque v4 recording
-  - currently only study that optimizes firing rates of multiple neurons
-	- pick next stimulus in closed-loop ("adaptive sampling" = "optimal experimental design")
-	
+  - select next image using kernel regression from CNN embeddings
+  - pick next stimulus in closed-loop ("adaptive sampling" = "optimal experimental design") for macaque v4
 - [From response to stimulus: adaptive sampling in sensory physiology](https://www.sciencedirect.com/science/article/pii/S095943880700092X) (2007)
-  
+
   - find the smallest number of stimuli needed to fit parameters of a model that predicts the recorded neuron’s activity from the
     stimulus
-  
-  - maximizing firing rates via genetic algorithms
-  
-  - maximizing firing rate via gradient ascent
-  
-- [Adaptive stimulus optimization for sensory systems neuroscience"](https://www.frontiersin.org/articles/10.3389/fncir.2013.00101/full)
 
+  - maximizing firing rates via genetic algorithms
+
+  - maximizing firing rate via gradient ascent
+- [Adaptive stimulus optimization for sensory systems neuroscience"](https://www.frontiersin.org/articles/10.3389/fncir.2013.00101/full)
   - 2 general approaches: gradient-based approaches + genetic algorithms
   - can put constraints on stimulus space
   - stimulus adaptation
@@ -1481,8 +1480,11 @@ the operations above allow for encoding many normal data structures into a singl
       - LLM brain encoding performance correlates not only with their perplexity, but also generality (skill at many different tasks) and translation performance
     - Prediction with RNN beats ngram models on individual-sentence fMRI prediction ([anderson…lalor, 2021](https://www.jneurosci.org/content/41/18/4100))
     - Interpret transformer-based models and find top predictions in specific regions, like left middle temporal gyrus (LMTG) and left occipital complex (LOC) ([sun et al. 2021](https://ieeexplore.ieee.org/document/9223750/))
-- Semantic representations during language comprehension are affected by context (i.e. how langauge is presented) ([deniz...gallant, 2021](https://www.biorxiv.org/content/10.1101/2021.12.15.472839v1.full.pdf)) - stimuli with more context (stories, sentences) evoke better responses than stimuli with little context (Semantic Blocks, Single Words)
-- Combining computational controls with natural text reveals new aspects of meaning composition ([toneva, mitchell, & wehbe, 2022](https://www.biorxiv.org/content/biorxiv/early/2022/08/09/2020.09.28.316935.full.pdf)) - study word interactions by using encoding vector emb(phrase) - emb(word1) - emb(word2)...
+- changing experimental design
+  - Semantic representations during language comprehension are affected by context (i.e. how langauge is presented) ([deniz...gallant, 2021](https://www.biorxiv.org/content/10.1101/2021.12.15.472839v1.full.pdf)) - stimuli with more context (stories, sentences) evoke better responses than stimuli with little context (Semantic Blocks, Single Words)
+  - Combining computational controls with natural text reveals new aspects of meaning composition ([toneva, mitchell, & wehbe, 2022](https://www.biorxiv.org/content/biorxiv/early/2022/08/09/2020.09.28.316935.full.pdf)) - study word interactions by using encoding vector emb(phrase) - emb(word1) - emb(word2)...
+  - Driving and suppressing the human language network using large language models ([tuckute, ..., shrimpf, kay, & fedorenko, 2023](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10120732/))
+
 - decoding models
   - Seeing Beyond the Brain: Conditional Diffusion Model with Sparse Masked Modeling for Vision Decoding ([chen et al. 2022](https://arxiv.org/pdf/2211.06956.pdf))
 

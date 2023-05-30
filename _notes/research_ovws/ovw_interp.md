@@ -426,15 +426,17 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
 - [Explaining Latent Representations with a Corpus of Examples](https://arxiv.org/pdf/2110.15355.pdf) (crabbe, ..., van der schaar 2021) - for an individual prediction,
   1. Which corpus examples explain the prediction issued for a given test example?
   2. What features of these corpus examples are relevant for the model to relate them to the test example?
-- [ProtoPFormer: Concentrating on Prototypical Parts in Vision Transformers for Interpretable Image Recognition](https://arxiv.org/abs/2208.10431) (xue et al. 2022)
+- ProtoPFormer: Concentrating on Prototypical Parts in Vision Transformers for Interpretable Image Recognition ([xue et al. 2022](https://arxiv.org/abs/2208.10431))
 
 ## interpretable neural nets
 
 - concepts
-  - [Concept Bottleneck Models](https://arxiv.org/pdf/2007.04612.pdf) (koh et al. 2020) - predict concepts before making final prediction
-    - PCBM [Post-hoc Concept Bottleneck Models](https://arxiv.org/abs/2205.15480) (yuksekgonul...zou, 2022) - automatically project embeddings to concepts and train linear model on those
+  - Concept Bottleneck Models ([koh et al. 2020](https://arxiv.org/pdf/2007.04612.pdf)) - predict concepts before making final prediction
+    - PCBM Post-hoc Concept Bottleneck Models ([yuksekgonul...zou, 2022](https://arxiv.org/abs/2205.15480)) - automatically project embeddings to concepts and train linear model on those
     - LaBO: Language in a Bottle: Language Model Guided Concept Bottlenecks for Interpretable Image Classification ([yang...yatskar, 2022](https://arxiv.org/pdf/2211.11158.pdf)) - generate prompt-based features using GPT-3 (e.g. "brown head with white stripes") and use CLIP to check for the presence of those features, all before learning simple linear model
     - MoIE: Route, Interpret, Repeat: Blurring the Line Between Post hoc Explainability and Interpretable Models ([ghosh, ..., batmangehelich, 2023](https://arxiv.org/abs/2302.10289#)) - mixture of different interpretable models, with black-box routing
+    - SASC - learn factors from BERT using dictionary learning, assign each factor a natural-language explanation, then build a sparse linear model of these factors ([singh, ..., gao, 2023](https://arxiv.org/abs/2305.09863))
+    - Concept transformers ([rigotti, ... scotton, 2022](https://openreview.net/pdf?id=kAa9eDS0RdO)) - use human-given concepts and explain predictions as a function of these concepts
   - [Concept Whitening for Interpretable Image Recognition](https://arxiv.org/pdf/2002.01650.pdf) (chen et al. 2020) - force network to separate "concepts" (like in TCAV) along different axes
   - [Interpretability Beyond Classification Output: Semantic Bottleneck Networks](https://arxiv.org/abs/1907.10882) - add an interpretable intermediate bottleneck representation'
   - [Holistically Explainable Vision Transformers](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwiQgrKbsu38AhVsBDQIHXHaD-AQFnoECA0QAQ&url=https%3A%2F%2Fopenreview.net%2Fforum%3Fid%3Djw37FUa_Aw9&usg=AOvVaw3hmaKQBDgw70khvc4gmQWc) 
@@ -866,6 +868,7 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
         - CAV - vector orthogonal to the classification boundary
         - TCAV uses the derivative of the CAV direction wrt input
     - [automated concept activation vectors](https://arxiv.org/abs/1902.03129) - Given a set of concept discovery images, each image is segmented with different resolutions to find concepts that are captured best at different sizes. (b) After removing duplicate segments, each segment is resized tothe original input size resulting in a pool of resized segments of the discovery images. (c) Resized segments are mapped to a model’s activation space at a bottleneck layer. To discover the concepts associated with the target class, clustering with outlier removal is performed. (d) The output of our method is a set of discovered concepts for each class, sorted by their importance in prediction
+    - Discover and Cure: Concept-aware Mitigation of Spurious Correlation ([wu...zou, 2023](https://www.semanticscholar.org/reader/6f0d9e2aa3f40aee571c7e35958598d4f82cdab5))
 - Concept Gradient: Concept-based Interpretation Without Linear Assumption ([bai...ravikumar..hsieh, 2022](https://arxiv.org/pdf/2208.14966.pdf))
 - [On Completeness-aware Concept-Based Explanations in Deep Neural Networks](https://arxiv.org/abs/1910.07969)
 - [Interpretable Basis Decomposition for Visual Explanation](https://openaccess.thecvf.com/content_ECCV_2018/html/Antonio_Torralba_Interpretable_Basis_Decomposition_ECCV_2018_paper.html) (zhou et al. 2018) - decompose activations of the input image into semantically interpretable components pre-trained from a large concept corpus
