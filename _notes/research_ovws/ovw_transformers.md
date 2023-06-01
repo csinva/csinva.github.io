@@ -296,7 +296,7 @@ category: research
 ![prompting_hierarchy](../assets/prompting_hierarchy.png)
 
 - natural-language prompting
-  - iPrompt: [Explaining Patterns in Data with Language Models via Interpretable Autoprompting](https://arxiv.org/abs/2210.01848) (singh, morris, ...gao, 2022)
+  - iPrompt: Explaining Patterns in Data with Language Models via Interpretable Autoprompting ([singh, morris, ...gao, 2022](https://arxiv.org/abs/2210.01848))
   - APE: [Large Language Models Are Human-Level Prompt Engineers](https://arxiv.org/abs/2211.01910) (zhou...ba, 2022)
     - similar to iPrompt, (1) propose prompt candidates with an LLM, (2) score the prompts by the accuracy they yield when using another LLM and (3) regenerate similar prompt candidates
     - experiments on instruction induction datasets + truthful QA
@@ -389,6 +389,7 @@ category: research
       - then use Max-SAT to try to satisfy as many relations between the model explanations as possible to come up with the true answer
       - tree of thoughts ([yao et al. 2023](https://arxiv.org/abs/2305.10601)) - LLM generates a tree of intermediate answers and preform steps such as backtracking
       - LM vs LM: Detecting Factual Errors via Cross Examination ([cohen et al. 2023](https://arxiv.org/abs/2305.13281))
+        - [Thread](https://twitter.com/ChengleiSi/status/1664023767373299715) of papers combating hallucination
     
   - training
     - verifiers ([cobbe et al. 2021](https://arxiv.org/abs/2110.14168)) - train model to judge whether an answer and thought are likely to be “valid”
@@ -437,10 +438,6 @@ Overview of mechanistic interpretability ([nanda, 2022+](https://www.neelnanda.i
     - output remaining name
 - Interpretability at Scale: Identifying Causal Mechanisms in Alpaca ([wu..., potts, goodman, 2023](https://arxiv.org/pdf/2305.08809.pdf)) - propose boundless DAS and automatically identify a circuit for math
   - builds on DAS ([geiger, ...goodman, 2023](https://arxiv.org/abs/2303.02536))
-
-- Steering GPT-2-XL by adding an activation vector ([turner, ..., mini, 2023](https://www.alignmentforum.org/posts/5spBue2z2tw4JuDCx/steering-gpt-2-xl-by-adding-an-activation-vector#6__The_Eiffel_Tower_is_in_Rome))
-  - obtain "steering vector" by embedding a phrase (e.g. *love*) and adding that vector to the llm embedding during generation
-
 - N2G: A Scalable Approach for Quantifying Interpretable Neuron Representations in Large Language Models ([foote, nanda, ..., barez, 2023](https://arxiv.org/abs/2304.12918)) - explain each neuron in a graph
 - [Finding Skill Neurons in Pre-trained Transformer-based Language Models](https://arxiv.org/abs/2211.07349) - some individual neurons are predictive of the final task (dubbed "skill neurons')
 - **[thread](https://transformer-circuits.pub/2021/framework/index.html) (elhage...olah, 2021)**
@@ -495,9 +492,21 @@ Overview of mechanistic interpretability ([nanda, 2022+](https://www.neelnanda.i
 
 ## editing
 
+- REMEDI ([hernandez, li, & andreas, 2023](https://arxiv.org/pdf/2304.00740.pdf)) - 
+  - get "edit vectors" by obtaining embeddings when passing attributes through LLM
+  - perform edit by by adding linear transformation of edit vector to prompt embedding
+    - then, perform generation with latent embedding
+    - learn linear transformation given a dataset of examples with attributes and desired completions
+      - (also regularize the model to not change *too much* on other stuff)
+  - activation engineering: Steering GPT-2-XL by adding an activation vector ([turner, ..., mini, 2023](https://www.alignmentforum.org/posts/5spBue2z2tw4JuDCx/steering-gpt-2-xl-by-adding-an-activation-vector#6__The_Eiffel_Tower_is_in_Rome))
+    - obtain "steering vector" by embedding a phrase (e.g. *love*) and adding that vector to the llm embedding during generation
+      - they only add the embedding for some layers for some tokens
+
+  - Extracting Latent Steering Vectors from Pretrained Language Models ([subramani, ..., peters, 2022](https://arxiv.org/abs/2205.05124)) - find latent vectors via optimization that cause an LLM to output a particular sequence
+    - then, use these vectors to do things like transfer to new tasks / compute textual similarity
+  
 - Editing Models with Task Arithmetic ([ilharco, ribeiro, ..., farhadi, 2022](https://arxiv.org/abs/2212.04089)) - task vector is model weights after task finetuning - model weights before finetuning
   - can use this direction to alter model behavior
-
 - Locating and Editing Factual Associations in GPT ([meng, bau et al. 2022](https://arxiv.org/abs/2202.05262) )
   - *localize factual associations* - causal intervention for identifying neuron activations that are decisive in a model’s factual predictions
     - "causal traces" - run net multiple times, introducing corruptions and then restore states from original non-corrupted forward pass to see which states can restore the original results
@@ -505,7 +514,6 @@ Overview of mechanistic interpretability ([nanda, 2022+](https://www.neelnanda.i
   - *change factual associations* - modify feedforward weights to update specific factual associations using Rank-One Model Editing (ROME)
   - Mass Editing Memory in a Transformer ([meng..., bau, 2022](https://memit.baulab.info/))
 - Knowledge Neurons in Pretrained Transformers ([dai et al. 2021](https://arxiv.org/abs/2104.08696)) - integrated gradients wrt to each neuron in BERT
-- REMEDI ([hernandez, li, & andreas, 2023](https://arxiv.org/pdf/2304.00740.pdf)) - pass facts through LLM to get embedding vectors, then use that embedding vector combined with a new prompt to edit the output
 - Memory-Based Model Editing at Scale ([mitchell...manning, finn, 2022](https://proceedings.mlr.press/v162/mitchell22a/mitchell22a.pdf))
   - keep track of list of edits in external memory and use them as appropriate context at test time (don't finetune the model)
   - Fast model editing at scale ([mitchell...finn, manning, 2022](https://arxiv.org/abs/2110.11309))
@@ -670,13 +678,17 @@ mixture of experts models have become popular because of the need for (1) fast s
   - Semantic Uncertainty ([kuhn, gal, & farquhar, 2023](https://arxiv.org/abs/2302.09664)) - yields uncertainties by incorporating linguistic invariances created by shared meanings
   - Minimum Bayes Risk Decoding ([suzgun, ..., jurafsky, 2022](https://arxiv.org/abs/2211.07634)) or ([freitag et al. 2022](https://arxiv.org/pdf/2111.09388.pdf))
   
-- [Discovering Latent Knowledge in Language Models Without Supervision](https://arxiv.org/abs/2212.03827) (burns, ye, klein, & steinhardt, 2022) - identify whether text is true or false directly from a model’s *unlabeled activations*
+- Discovering Latent Knowledge in Language Models Without Supervision ([burns, ye, klein, & steinhardt, 2022](https://arxiv.org/abs/2212.03827)) - identify whether text is true or false directly from a model’s *unlabeled activations*
 - [InferBERT: A Transformer-Based Causal Inference Framework for Enhancing Pharmacovigilance](https://www.frontiersin.org/articles/10.3389/frai.2021.659622/full) (wang...liu, 2021) - learn + test feature relationships from attention weights
 - [CausaLM: Causal Model Explanation Through Counterfactual Language Models](https://direct.mit.edu/coli/article/47/2/333/98518/CausaLM-Causal-Model-Explanation-Through) (2021) - produce example-level causal model explanations using models finetuned on auxiliary adversarial tasks derived from the causal graph of the problem
 - Investigating Gender Bias in Language Models Using Causal Mediation Analysis ([vig, ..., shieber, 2020](https://proceedings.neurips.cc/paper/2020/file/92650b2e92217715fe312e6fa7b90d82-Paper.pdf))
   - Applies causal mediation analysis to identify decisive neurons and attention heads responsible for gender bias in large language models
   - Identifies a small handful of decisive attention heads in this case
 - Amnesic Probing: Behavioral Explanation with Amnesic Counterfactuals ([elazar, ..., goldberg, 2021](https://arxiv.org/pdf/2006.00995.pdf)) - measure the importance of specific info within a model by introducing a causal intervention to erase that information, then observing the causal effects
+- Causal Reasoning and Large Language Models: Opening a New Frontier for Causality ([kiciman...tan, 2023](https://arxiv.org/abs/2305.00050))
+  - LLMs to be used alongside existing causal methods, as a proxy for human domain knowledge and to reduce human effort in setting up a causal analysis
+    - cause-effect pairs, LLM has to discover from graph (tubingen benchmark, neuropathic pain, etc.)
+
 
 ## dataset / module explanation
 
@@ -710,6 +722,63 @@ mixture of experts models have become popular because of the need for (1) fast s
   - MILAN: Natural Language Descriptions of Deep Visual Features ([hernandez...david bau...torallba, andreas, 2022](https://openreview.net/forum?id=NudBMY-tzDr)) - given a neuron, generates a natural-language string that maximizes pointwise mutual information with the image regions in which the neuron is active
   
 
+## cool tasks
+
+- [Forecasting Future World Events with Neural Networks](https://arxiv.org/abs/2206.15474) (zou...hendrycks, 2022) - takes tasks from metaculus
+- [Shortcut Learning of Large Language Models in Natural Language Understanding: A Survey](https://arxiv.org/abs/2208.11857) (du et al. 2022)
+- Neurosymbolic Programming for Science ([sun...costilla-reyes, 2022](https://arxiv.org/abs/2210.05050))
+- Discovering New Interpretable Conservation Laws as Sparse Invariants ([liu...tegmark, 2023](https://arxiv.org/abs/2305.19525)) - does not use transformers
+- Learning from learning machines: a new generation of AI technology to meet the needs of science ([berkeley+lbnl+, 2021](https://arxiv.org/pdf/2111.13786.pdf))
+
+  - do more than predict what will happen, they attempt to offer insight into how or why
+  - [AI-based language models powering drug discovery and development](https://www.sciencedirect.com/science/article/pii/S1359644621002816) (liu et al. 2021)
+  - BioTranslator: Multilingual translation for zero-shot biomedical classification ([xu, woicik, poon, altman, & wang, 2023](https://www.nature.com/articles/s41467-023-36476-2)) - takes a user- written textual description of a new concept and then translates this description to a non-text biological data instance
+    - results for biological data, e.g. genes, proteins
+    - enables the identification of novel cell types using only a textual description
+- Learning to Generate Novel Scientific Directions with Contextualized Literature-based Discovery ([wang...hope, 2023](https://arxiv.org/abs/2305.14259))
+  - literature-based discovery ([swanson, 1986](https://www.journals.uchicago.edu/doi/abs/10.1086/601720)) - focus on predicting pairwise links between concepts from papers (e.g. drug-disease links)
+    - task 1: idea-sentence generation -- given sentences describing background context + a seed term, generate a sentence describing an idea
+    - task 2: idea-node prediction -- given the background context, predict new links between existing concepts (and generate new concepts)
+  - forecasting paper titles ([blog post](https://csinva.io/gpt-paper-title-generator/))
+- scientific organization ([galactica](https://galactica.org/static/paper.pdf))
+  - related but smaller models
+    - SciBERT ([beltagy...cohan, 2019](https://arxiv.org/abs/1903.10676))
+    - BioLM ([lewis...stoyanov, 2020](https://aclanthology.org/2020.clinicalnlp-1.17/))
+    - ScholarBERT ([hong...foster, 2022](https://arxiv.org/abs/2205.11342)) - large dataset, 770M-param model
+  - all data is processed in a common markdown format
+
+
+    - task-specific tokens to support different types of knowledge (e.g. citations, step-by-step reasoning, different modalities, e.g. proteins)
+
+  - chemical compounds (train on 2 mil / 110 mil from PubChem Compound, authors still want it to focus on text)
+    - predict IUPAC name from SMILES formula e.g. `CC(C)(C)C(=O)N(CC1=NC(=CS1)C(=O)OC)C2CCCCC2` -> `methyl 2-[[cyclohexyl-(2,2-dimethylpropanoyl)]amino] methyl]thiazole-4- `
+
+    - [moleculenet](https://moleculenet.org/datasets-1) ([wu et al. 2017](https://arxiv.org/abs/1703.00564)) classification benchmark (6 tasks)
+      
+      - training set examples are trained as text during fitting
+      
+        - HIV - classify whether comopund inhibits HIV replication
+        - BACE C - binding results (classification + regression) for BACE
+        - BBBP - blood-brain barrier penetration(permeability) (binary classification)
+        - Tox21 - qualitative toxicity on 12 targets (12-class multilabel binary)
+        - SIDER - 27-class multi-class disorders in different organ systems
+        - ClinTox - binary toxicity classification
+      
+      - ex. for BBBP (one of the 6 tasks) - question is posed in different ways during training
+      
+        ```
+        Here is a SMILES formula:   
+           [START_I_SMILES]O=C(O)CCCC1=CC=C(N(CCCl)CCCl)C=C1[END_I_SMILES]
+           
+        Question: Will the chemical compound penetrate the blood-brain barrier?
+        Answer: No
+        ```
+
+  - protein sequences
+    - from 227 million in UniProt, look at only 0.5 million subset (called Swiss-Prot)
+    - evaluate protein sequence perplexity
+    - protein keyword prediction (predict keywords in UniProt, like "ATP-Binding", "Cell membrane")
+    - protein function description - compare free-form description to GT UniProt function description
 
 ## connecting with rules
 
@@ -757,67 +826,6 @@ mixture of experts models have become popular because of the need for (1) fast s
   - [Table Pre-training: A Survey on Model Architectures, Pretraining Objectives, and Downstream Tasks](https://www.semanticscholar.org/paper/Table-Pre-training%3A-A-Survey-on-Model-Pretraining-Dong-Cheng/49f4b4ca86e574c7ec688cfd45d2e17ff079c313) (2022)
   - [Embeddings for Tabular Data: A Survey](https://arxiv.org/abs/2302.11777) (singh & bedathur, 2023)
   - [Deep neural networks and tabular data: A survey](https://ieeexplore.ieee.org/abstract/document/9998482/) (2022) - mostly compares performance on standard tasks (e.g. classification)
-
-## cool tasks
-
-- [Forecasting Future World Events with Neural Networks](https://arxiv.org/abs/2206.15474) (zou...hendrycks, 2022) - takes tasks from metaculus
-
-- forecasting paper titles ([blog post](https://csinva.io/gpt-paper-title-generator/))
-
-- [Shortcut Learning of Large Language Models in Natural Language Understanding: A Survey](https://arxiv.org/abs/2208.11857) (du et al. 2022)
-
-- [Neurosymbolic Programming for Science](https://arxiv.org/abs/2210.05050) (sun...costilla-reyes, 2022)
-
-- Learning from learning machines: a new generation of AI technology to meet the needs of science ([berkeley+lbnl+, 2021](https://arxiv.org/pdf/2111.13786.pdf))
-
-  - do more than predict what will happen, they attempt to offer insight into how or why
-  - [AI-based language models powering drug discovery and development](https://www.sciencedirect.com/science/article/pii/S1359644621002816) (liu et al. 2021)
-  - BioTranslator: Multilingual translation for zero-shot biomedical classification ([xu, woicik, poon, altman, & wang, 2023](https://www.nature.com/articles/s41467-023-36476-2)) - takes a user- written textual description of a new concept and then translates this description to a non-text biological data instance
-    - results for biological data, e.g. genes, proteins
-    - enables the identification of novel cell types using only a textual description
-- scientific organization ([galactica](https://galactica.org/static/paper.pdf))
-
-  - related but smaller models
-    - SciBERT ([beltagy...cohan, 2019](https://arxiv.org/abs/1903.10676))
-    - BioLM ([lewis...stoyanov, 2020](https://aclanthology.org/2020.clinicalnlp-1.17/))
-    - ScholarBERT ([hong...foster, 2022](https://arxiv.org/abs/2205.11342)) - large dataset, 770M-param model
-
-
-  - all data is processed in a common markdown format
-
-
-    - task-specific tokens to support different types of knowledge (e.g. citations, step-by-step reasoning, different modalities, e.g. proteins)
-
-  - chemical compounds (train on 2 mil / 110 mil from PubChem Compound, authors still want it to focus on text)
-    - predict IUPAC name from SMILES formula e.g. `CC(C)(C)C(=O)N(CC1=NC(=CS1)C(=O)OC)C2CCCCC2` -> `methyl 2-[[cyclohexyl-(2,2-dimethylpropanoyl)]amino] methyl]thiazole-4- `
-
-    - [moleculenet](https://moleculenet.org/datasets-1) ([wu et al. 2017](https://arxiv.org/abs/1703.00564)) classification benchmark (6 tasks)
-      
-      - training set examples are trained as text during fitting
-      
-        - HIV - classify whether comopund inhibits HIV replication
-        - BACE C - binding results (classification + regression) for BACE
-        - BBBP - blood-brain barrier penetration(permeability) (binary classification)
-        - Tox21 - qualitative toxicity on 12 targets (12-class multilabel binary)
-        - SIDER - 27-class multi-class disorders in different organ systems
-        - ClinTox - binary toxicity classification
-      
-      - ex. for BBBP (one of the 6 tasks) - question is posed in different ways during training
-      
-        ```
-        Here is a SMILES formula:   
-           [START_I_SMILES]O=C(O)CCCC1=CC=C(N(CCCl)CCCl)C=C1[END_I_SMILES]
-           
-        Question: Will the chemical compound penetrate the blood-brain barrier?
-        Answer: No
-        ```
-
-  - protein sequences
-    - from 227 million in UniProt, look at only 0.5 million subset (called Swiss-Prot)
-    - evaluate protein sequence perplexity
-    - protein keyword prediction (predict keywords in UniProt, like "ATP-Binding", "Cell membrane")
-    - protein function description - compare free-form description to GT UniProt function description
-
 
 ## llm limitations / perspectives
 
