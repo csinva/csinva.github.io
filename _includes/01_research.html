@@ -1,57 +1,83 @@
 <h2 style="text-align: center; margin-top: -150px;"> Research
-<details class="research_details">
-    <summary> Read research overview</summary>
-    <div class="research_details_text">
-    <p>🔎 My research focuses on how we can build trustworthy machine-learning systems by making them interpretable. In
-        my work, interpretability is grounded seriously via close collaboration with domain experts, e.g. medical
-        doctors or cell biologists. These collaborations have given rise to useful methodology, roughly split into two
-        areas: (1) building more effective <em>transparent models</em> and (2) improving the trustworthiness of <em>black-box
-            models</em>. Going forward, I hope to help bridge the gap between transparent models and black-box models to
-        improve real-world healthcare.</p>
-    <p>🌳 Whenever possible, building transparent models is the most effective route towards ensuring interpretability.
-        Transparent models are interpretable by design, including models such as (concise) decision trees, rule lists,
-        and linear models. My work in this area was largely motivated by the problem of
-        <a href="https://journals.plos.org/digitalhealth/article?id=10.1371/journal.pdig.0000076">clinical
-            decision-rule development</a>. Clinical decision rules (especially those used in emergency medicine), need
-        to be extremely transparent so they can be readily audited and used by physicians making split-second decisions.
-        To this end, we have developed methodology for enhancing decision trees. For example, replacing the standard
-        CART algorithm with a novel <a href="https://arxiv.org/abs/2201.11931">greedy algorithm</a> for tree-sums can
-        substantially improve predictive performance without sacrificing predictive performance. Additionally, <a
-                href="https://arxiv.org/abs/2202.00858">hierarchical regularization</a> can improve the predictions of
-        an already fitted model without altering its interpretability. Despite their effectiveness, transparent models
-        such as these often get overlooked in favor of black-box models; to address this issue, we&#39;ve spent a lot of
-        time curating <a href="https://github.com/csinva/imodels">imodels</a>, an open-source package for fitting
-        state-of-the-art transparent models.</p>
-    <p>🌀 My second line of my work focuses on interpreting and improving black-box models, such as neural networks, for
-        the cases when a transparent model simply can&#39;t predict well enough. Here, I work closely on real-world
-        problems such as analyzing imaging data from <a href="">cell biology</a> and <a
-                href="https://arxiv.org/abs/2003.01926">cosmology</a>. Interpretability in these contexts demands more
-        nuanced information than standard notions of &quot;feature importance&quot; common in the literature. As a result, we
-        have developed methods to characterize and summarize the <a
-                href="https://arxiv.org/abs/1806.05337">interactions</a> in a neural network, particularly in <a
-                href="https://arxiv.org/abs/2003.01926">transformed domains</a> (such as the Fourier domain), where
-        domain interpretations can be more natural. I&#39;m particularly interested in how we can ensure that these
-        interpretations are <em>useful</em>, either by using them to <a
-                href="http://proceedings.mlr.press/v119/rieger20a.html">embed prior knowledge</a> into a model or
-        identify when it can be trusted.</p>
-    <p>🤝 There is a lot more work to do on bridging the gap between transparent models and black-box models in the real
-        world. One promising avenue is distillation, whereby we can use a black-box model to build a better transparent
-        model. For example, in <a
-                href="https://proceedings.neurips.cc/paper/2021/hash/acaa23f71f963e96c8847585e71352d6-Abstract.html">one
-            work</a> we were able to distill state-of-the-art neural networks in cell-biology and cosmology into
-        transparent wavelet models with &lt;40 parameters. Despite this huge size reduction, these models actually <em>improve</em>
-        prediction performance. By incorporating close domain knowledge into models and the way we approach problems, I
-        believe interpretability can help unlock many benefits of machine-learning for improving healthcare and science.
-    </p>
+    <details class="research_details">
+        <summary> Read research overview</summary>
+        <div class="research_details_text">
+            <p>🔎 My research focuses on how we can build trustworthy machine-learning systems by making them
+                interpretable. In
+                my work, interpretability is grounded seriously via close collaboration with domain experts, e.g.
+                medical
+                doctors or cell biologists. These collaborations have given rise to useful methodology, roughly split
+                into two
+                areas: (1) building more effective <em>transparent models</em> and (2) improving the trustworthiness of
+                <em>black-box
+                    models</em>. Going forward, I hope to help bridge the gap between transparent models and black-box
+                models to
+                improve real-world healthcare.</p>
+            <p>🌳 Whenever possible, building transparent models is the most effective route towards ensuring
+                interpretability.
+                Transparent models are interpretable by design, including models such as (concise) decision trees, rule
+                lists,
+                and linear models. My work in this area was largely motivated by the problem of
+                <a href="https://journals.plos.org/digitalhealth/article?id=10.1371/journal.pdig.0000076">clinical
+                    decision-rule development</a>. Clinical decision rules (especially those used in emergency
+                medicine), need
+                to be extremely transparent so they can be readily audited and used by physicians making split-second
+                decisions.
+                To this end, we have developed methodology for enhancing decision trees. For example, replacing the
+                standard
+                CART algorithm with a novel <a href="https://arxiv.org/abs/2201.11931">greedy algorithm</a> for
+                tree-sums can
+                substantially improve predictive performance without sacrificing predictive performance. Additionally,
+                <a href="https://arxiv.org/abs/2202.00858">hierarchical regularization</a> can improve the predictions
+                of
+                an already fitted model without altering its interpretability. Despite their effectiveness, transparent
+                models
+                such as these often get overlooked in favor of black-box models; to address this issue, we&#39;ve spent
+                a lot of
+                time curating <a href="https://github.com/csinva/imodels">imodels</a>, an open-source package for
+                fitting
+                state-of-the-art transparent models.
+            </p>
+            <p>🌀 My second line of my work focuses on interpreting and improving black-box models, such as neural
+                networks, for
+                the cases when a transparent model simply can&#39;t predict well enough. Here, I work closely on
+                real-world
+                problems such as analyzing imaging data from <a href="">cell biology</a> and <a
+                    href="https://arxiv.org/abs/2003.01926">cosmology</a>. Interpretability in these contexts demands
+                more
+                nuanced information than standard notions of &quot;feature importance&quot; common in the literature. As
+                a result, we
+                have developed methods to characterize and summarize the <a
+                    href="https://arxiv.org/abs/1806.05337">interactions</a> in a neural network, particularly in <a
+                    href="https://arxiv.org/abs/2003.01926">transformed domains</a> (such as the Fourier domain), where
+                domain interpretations can be more natural. I&#39;m particularly interested in how we can ensure that
+                these
+                interpretations are <em>useful</em>, either by using them to <a
+                    href="http://proceedings.mlr.press/v119/rieger20a.html">embed prior knowledge</a> into a model or
+                identify when it can be trusted.</p>
+            <p>🤝 There is a lot more work to do on bridging the gap between transparent models and black-box models in
+                the real
+                world. One promising avenue is distillation, whereby we can use a black-box model to build a better
+                transparent
+                model. For example, in <a
+                    href="https://proceedings.neurips.cc/paper/2021/hash/acaa23f71f963e96c8847585e71352d6-Abstract.html">one
+                    work</a> we were able to distill state-of-the-art neural networks in cell-biology and cosmology into
+                transparent wavelet models with &lt;40 parameters. Despite this huge size reduction, these models
+                actually <em>improve</em>
+                prediction performance. By incorporating close domain knowledge into models and the way we approach
+                problems, I
+                believe interpretability can help unlock many benefits of machine-learning for improving healthcare and
+                science.
+            </p>
         </div>
-</details>
-    </h2>
+    </details>
+</h2>
 
 <div class="iframe-box" style="margin-top: -30px">
     <iframe class="iframe"
-            src="https://docs.google.com/presentation/d/e/2PACX-1vSj1GlDHEk8AhlYSL9eRb0sFHDF-QqvgS9SckgeekmzTtYdNQWGalhOR5MlmfKsgyW3TtOYq-SpyPkA/embed?rm=minimal"
-            frameborder="0" width="100%" height="auto" allowfullscreen="true" mozallowfullscreen="true"
-            webkitallowfullscreen="true">
+        src="https://docs.google.com/presentation/d/e/2PACX-1vSj1GlDHEk8AhlYSL9eRb0sFHDF-QqvgS9SckgeekmzTtYdNQWGalhOR5MlmfKsgyW3TtOYq-SpyPkA/embed?rm=minimal"
+        frameborder="0" width="100%" height="auto" allowfullscreen="true" mozallowfullscreen="true"
+        webkitallowfullscreen="true">
     </iframe>
 </div>
 
@@ -145,15 +171,15 @@
 
 <table id="research_table" class="display" style="width:100%">
     <thead>
-    <tr>
-        <th>year</th>
-        <th>title</th>
-        <th>authors</th>
-        <th>tags</th>
-        <th>paper</th>
-        <th>code</th>
-        <th>misc</th>
-    </tr>
+        <tr>
+            <th>year</th>
+            <th>title</th>
+            <th>authors</th>
+            <th>tags</th>
+            <th>paper</th>
+            <th>code</th>
+            <th>misc</th>
+        </tr>
     </thead>
     <tbody>
         <tr>
@@ -164,306 +190,341 @@
             <td class="med">🔎🌀</td>
             <td class="center"><a href="https://arxiv.org/abs/2305.09863">arXiv</a></td>
             <td class="big"><a href="https://github.com/microsoft/automated-explanations"><i
-                    class="fa fa-github fa-fw"></i></a></td>
+                        class="fa fa-github fa-fw"></i></a></td>
             <td class="med">
             </td>
         </tr>
-    <tr>
-        <td class="center">'23</td>
-        <td>Augmenting Interpretable Models with LLMs during Training
-        </td>
-        <td>singh, askari, caruana, & gao</td>
-        <td class="med">🔎🌀🌳</td>
-        <td class="center"><a href="https://arxiv.org/abs/2209.11799">arXiv</a></td>
-        <td class="big"><a href="https://github.com/microsoft/augmented-interpretable-models"><i
-                class="fa fa-github fa-fw"></i></a></td>
-        <td class="med">
-            <a href="https://docs.google.com/presentation/d/1ctUCnboHFtEsgJm8J7k66PtPn6xDLH-Y3aq_pNTFPBo/present?slide=id.p"><i
-                class="fa fa-desktop fa-fw"></i></a>
-        </td>
-    </tr>
-    <tr>
-        <td class="center">'22</td>
-        <td>Explaining patterns in data with language models via interpretable autoprompting
-        </td>
-        <td>singh*, morris*, aneja, rush, & gao</td>
-        <td class="med">🔎🌀</td>
-        <td class="center"><a href="https://arxiv.org/abs/2210.01848">arXiv</a></td>
-        <td class="big"><a href="https://github.com/csinva/interpretable-autoprompting"><i
-                class="fa fa-github fa-fw"></i></a></td>
-        <td class="med">
-            <a href="https://docs.google.com/presentation/d/1_4X1IZMm6B621H5_81QZ5DuK9n4E-Vj8sVryVm1kjSE/present?id.g1630e6f12b6_0_27"><i
-                class="fa fa-desktop fa-fw"></i></a>
-        </td>
-    </tr>
-    <tr>
-        <td class="center">'22</td>
-        <td>Interpretable deep learning for accurate molecular partner prediction in clathrin-mediated endocytosis</td>
-        <td>singh*, li*, et al.</td>
-        <td class="med">🔎🌀🦠</td>
-        <td class="center">in prep</td>
-        <td class="big"><a href="https://github.com/Yu-Group/auxilin-prediction"><i class="fa fa-github fa-fw"></i></a>
-        </td>
-        <td class="med">
-            <a href="https://docs.google.com/presentation/d/1sQXbFUTSEyrmDkovV8g759Wj8E9LBpATAVV1iweKeGo/present?slide=id.p"><i
-                    class="fa fa-desktop fa-fw"></i></a>
-        </td>
-    </tr>
-<!--    <tr>-->
-<!--        <td class="center">'22</td>-->
-<!--        <td>Group Probability-Weighted Tree Sums for Interpretable Modeling of Heterogeneous Data-->
-<!--        </td>-->
-<!--        <td>nasseri, singh, duncan, kornblith, & yu</td>-->
-<!--        <td class="med">🔎🌳💊</td>-->
-<!--        <td class="center"><a href="https://arxiv.org/abs/2205.15135">arXiv</a></td>-->
-<!--        <td class="big"><a href="https://github.com/Yu-Group/imodels-experiments"><i-->
-<!--                class="fa fa-github fa-fw"></i></a></td>-->
-<!--        <td class="med">-->
-<!--        </td>-->
-<!--    </tr>-->
-    <tr>
-        <td class="center">'22</td>
-        <td>Predictability and stability testing to assess clinical decision instrument performance for children after blunt torso trauma
-        </td>
-        <td>kornblith*, singh* et al.</td>
-        <td class="med">🔎🌳💊</td>
-        <td class="center"><a href="https://journals.plos.org/digitalhealth/article?id=10.1371/journal.pdig.0000076">PLOS digital health</a></td>
-        <td class="big"><a href="https://github.com/csinva/iai-clinical-decision-rule"><i
-                class="fa fa-github fa-fw"></i></a></td>
-        <td class="med">
-            <a href="https://docs.google.com/presentation/d/1mxzGE0MkNZnzbIimDP8Kyq8oLfVSmHrOCKDPhiBPMz4/present?slide=id.p"><i
-                    class="fa fa-desktop fa-fw"></i></a>
-        </td>
-    </tr>
-    <tr>
-        <td class="center">'22</td>
-        <td>Fast interpretable greedy-tree sums (FIGS)</td>
-        <td>tan*, singh*, nasseri, agarwal, & yu</td>
-        <td class="med">🔎🌳</td>
-        <td class="center"><a href="https://arxiv.org/abs/2201.11931">arxiv</a></td>
-        <!--            <td></td>-->
-        <td class="big"><a href="https://github.com/csinva/imodels"><i class="fa fa-github fa-fw"></i></a>
-        </td>
-        <td class="med">
-            <a href="https://docs.google.com/presentation/d/1Gk5mEcSp6uePS72q-oF-GhXgLSbHfq2jWqMTKfwDaJw/present?slide=id.p"><i
-                    class="fa fa-desktop fa-fw"></i></a>
-            <a href="https://csinva.io/imodels/figs.html"><i class="fa fa-home fa-fw"></i></a>
-        </td>
-    </tr>
-    <tr>
-        <td class="center">'22</td>
-        <td>Hierarchical shrinkage for trees: improving accuracy and interpretability of tree-based methods</td>
-        <td>agarwal*, tan*, ronen, singh, & yu</td>
-        <td class="med">🔎🌳</td>
-        <td class="center"><a href="https://arxiv.org/abs/2202.00858">icml (spotlight)</a></td>
-        <!--            <td></td>-->
-        <td class="big"><a href="https://github.com/csinva/imodels"><i class="fa fa-github fa-fw"></i></a>
-        </td>
-        <td class="med">
-            <a href="https://docs.google.com/presentation/d/1inyZnryrs6dNO6VCn7ng6Rjc-XCkuagxx9YVHKJWqrM/present?slide=id.p"><i
-                    class="fa fa-desktop fa-fw"></i></a>
-            <a href="https://csinva.io/imodels/shrinkage.html"><i class="fa fa-home fa-fw"></i></a>
-            <!--            <a href="https://docs.google.com/presentation/d/1ReJ3Lqh4VZqpu6X6sP47f6Re6PvLIX9ZRAdjb8ZhFXE/present?slide=id.p"><i-->
-            <!--                    class="fa fa-desktop fa-fw"></i></a>-->
-        </td>
-    </tr>
-    <tr>
-        <td class="center">'22</td>
-        <td>VeridicalFlow: a python package for building trustworthy data science pipelines with PCS</td>
-        <td>duncan*, kapoor*, agarwal*, singh*, & yu</td>
-        <td class="med">💻🔍</td>
-        <td class="center"><a href="https://joss.theoj.org/papers/10.21105/joss.03895">joss</a></td>
-        <!--            <td></td>-->
-        <td class="big"><a href="https://github.com/Yu-Group/veridical-flow"><i class="fa fa-github fa-fw"></i></a>
-        </td>
-        <td class="med">
-            <a href="https://docs.google.com/presentation/d/1ReJ3Lqh4VZqpu6X6sP47f6Re6PvLIX9ZRAdjb8ZhFXE/present?slide=id.p"><i
-                    class="fa fa-desktop fa-fw"></i></a>
-        </td>
-    </tr>
-    <tr>
-        <td class="center">'21</td>
-        <td>imodels: a python package for fitting interpretable models</td>
-        <td>singh*, nasseri*, et al.</td>
-        <td class="med">💻🔍🌳</td>
-        <td class="center"><a href="https://joss.theoj.org/papers/10.21105/joss.03192">joss</a></td>
-        <!--            <td></td>-->
-        <td class="big"><a href="https://github.com/csinva/imodels"><i class="fa fa-github fa-fw"></i></a>
-        </td>
-        <td class="med">
-            <a href="https://docs.google.com/presentation/d/1fpHo-MtIJntlIrYlQj0yK3spJ7Unf10CNTH-PG9LQ_A/present?slide=id.gd4a2e647f0_0_0"><i
-                    class="fa fa-desktop fa-fw"></i></a>
-            <a href="https://bair.berkeley.edu/blog/2022/02/02/imodels/"><i class="fa fa-home fa-fw"></i></a>
-        </td>
-    </tr>
-    <tr>
-        <td class="center">'21</td>
-        <td>Adaptive wavelet distillation from neural networks through interpretations</td>
-        <td>ha, singh, et al.</td>
-        <td class="med">🔍🌀🌳</td>
-        <td class="center"><a href="https://arxiv.org/abs/2107.09145">neurips</a></td>
-        <!--            <td></td>-->
-        <td class="big"><a href="https://github.com/Yu-Group/adaptive-wavelet-distillation"><i
-                class="fa fa-github fa-fw"></i></a>
-        </td>
-        <td class="med">
-            <a href="https://docs.google.com/presentation/d/1YrzAir94D0KWewau34dZAXXPdATRuqeVf8Jt-o_wqG8/present?slide=id.p"><i
-                    class="fa fa-desktop fa-fw"></i></a>
-            <a href="https://bair.berkeley.edu/blog/2021/09/28/wavelet/"><i class="fa fa-home fa-fw"></i></a>
-        </td>
-    </tr>
-    <tr>
-        <td class="center">'21</td>
-        <td>Matched sample selection with GANs for mitigating attribute confounding</td>
-        <td>singh, balakrishnan, & perona</td>
-        <td class="med">🌀</td>
-        <td class="center"><a href="https://arxiv.org/abs/2103.13455">cvpr workshop</a></td>
-        <!--            <td></td>-->
-        <td class="big"><a href="https://github.com/csinva/matching-with-gans"><i class="fa fa-github fa-fw"></i></a>
-        </td>
-        <td class="med">
-            <a href="https://docs.google.com/presentation/d/19Z4TnHCDkNENutyKmE_kZBSJX4jMUam6DoH3HckkMrI/present?slide=id.p"><i
-                    class="fa fa-desktop fa-fw"></i></a>
-        </td>
-    </tr>
-    <tr>
-        <td class="center">'21</td>
-        <td>Revisiting complexity and the bias-variance tradeoff</td>
-        <td>dwivedi*, singh*, yu & wainwright</td>
-        <td class="med">🌀</td>
-        <td class="center"><a href="https://arxiv.org/abs/2006.10189">jmlr</a></td>
-        <td class="big"><a href="https://github.com/csinva/mdl-complexity"><i class="fa fa-github fa-fw"></i></a></td>
-        <td class="med">
-            <a href="https://drive.google.com/file/d/15hzAndJYNO3YsflL_RyB-4nQb2_KypK-/view?usp=sharing"><i
-                    class="fa fa-desktop fa-fw"></i></a>
-        </td>
-    </tr>
-    <tr>
-        <td class="center">'20</td>
-        <td>Curating a COVID-19 data repository and forecasting county-level death counts in the United States</td>
-        <td>altieri et al.</td>
-        <td class="med">🔎🦠</td>
-        <td class="center"><a href="https://arxiv.org/abs/2005.07882">hdsr</a></td>
-        <td class="big"><a href="https://github.com/Yu-Group/covid19-severity-prediction"><i
-                class="fa fa-github fa-fw"></i></a></td>
-        <td class="med">
-            <a href="https://docs.google.com/presentation/d/1nAYfBHj9qP-Qzpjho4dyMTx2Bc5Pccxu1VqIFiEaeYg/present?slide=id.p"><i
-                    class="fa fa-desktop fa-fw"></i></a>
-            <a href="https://covidseverity.com/"><i class="fa fa-home fa-fw"></i></a>
-        </td>
-    </tr>
-    <tr>
-        <td class="center">'20</td>
-        <td>Transformation importance with applications to cosmology</td>
-        <td>singh*, ha*, lanusse, boehm, liu & yu</td>
-        <td class="med">🔎🌀🌌</td>
-        <td class="center"><a href="https://arxiv.org/abs/2003.01926">iclr workshop (spotlight)</a></td>
-        <td class="big"><a href="https://github.com/csinva/transformation-importance"><i class="fa fa-github fa-fw"></i></a>
-        </td>
-        <td class="med"><a
-                href="https://docs.google.com/presentation/d/1mH1uG38qJg-ar0G-LiVPZWNKPO_2GiD-uayWM5AI-bo/present?slide=id.p"><i
-                class="fa fa-desktop fa-fw"></i></a></td>
-    </tr>
-    <tr>
-        <td class="center">'20</td>
-        <td>Interpretations are useful: penalizing explanations to align neural networks with prior knowledge</td>
-        <td>rieger, singh, murdoch & yu</td>
-        <td class="med">🔎🌀</td>
-        <td class="center"><a href="http://proceedings.mlr.press/v119/rieger20a.html">icml</a>
-        </td>
-        <td class="big"><a href="https://github.com/laura-rieger/deep-explanation-penalization"><i
-                class="fa fa-github fa-fw"></i></a></td>
-        <td class="med"><a href="https://icml.cc/virtual/2020/poster/5914"><i class="fa fa-desktop fa-fw"></i></a></td>
-    </tr>
-    <tr>
-        <td class="center">'19</td>
-        <td>Hierarchical interpretations for neural network predictions</td>
-        <td>Singh*, Murdoch*, & Yu</td>
-        <td class="med">🔍🌀</td>
-        <td class="center"><a href="https://arxiv.org/abs/1806.05337">ICLR</a></td>
-        <td class="big"><a href="https://github.com/csinva/acd"><i class="fa fa-github fa-fw"></i></a></td>
-        <td class="med"><a
-                href="https://docs.google.com/presentation/d/1I6djTqVn6YGKqxvQk59-4C39LbE68mNQbX1Go5pzTH4/present?slide=id.p"><i
-                class="fa fa-desktop fa-fw"></i></a>
-            <!--            <a href="{{site.baseurl}}/assets/write_ups/acd_18_bairday_poster.pdf"><i class="fa fa-picture-o fa-fw"></i></a>-->
-        </td>
-    </tr>
-    <tr>
-        <td class="center">'19</td>
-        <td>interpretable machine learning: definitions, methods, and applications</td>
-        <td>Murdoch*, Singh*, et al.</td>
-        <td class="med">🔍🌳🌀</td>
-        <td class="center"><a href="https://arxiv.org/abs/1901.04592">pnas</a></td>
-        <td></td>
-        <td class="med"><a
-                href="https://docs.google.com/presentation/d/13jbgFyYSSDaMUd2w4RY9GHteTcWJj1drS6_2sOkvnv4/present?slide=id.p"><i
-                class="fa fa-desktop fa-fw"></i></a>
-            <!--            <a  href="{{site.baseurl}}/assets/write_ups/utokyo_19_interp_poster.pdf"><i  class="fa fa-picture-o fa-fw"></i></a></td>-->
-    </tr>
-    <tr>
-        <td class="center">'19</td>
-        <td>disentangled attribution curves for interpreting random forests and boosted trees</td>
-        <td>devlin, singh, murdoch & yu</td>
-        <td class="med">🔍🌳</td>
-        <td class="center"><a href="https://arxiv.org/abs/1905.07631">arxiv</a></td>
-        <td class="big"><a href="https://github.com/csinva/disentangled_attribution_curves"><i
-                class="fa fa-github fa-fw"></i></a></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td class="center">'18</td>
-        <td>large scale image segmentation with structured loss based deep learning for connectome reconstruction</td>
-        <td>Funke*, Tschopp*, et al.</td>
-        <td class="med">🧠🌀</td>
-        <td class="center"><a href="https://ieeexplore.ieee.org/abstract/document/8364622/">TPAMI</a></td>
-        <td class="big"><a href="https://github.com/funkey/mala"><i class="fa fa-github fa-fw"></i></a></td>
-        <td class="med">
-            <a href="{{site.baseurl}}/assets/write_ups/singh_15_rf_segmentation.pdf"><i
-                    class="fa fa-picture-o fa-fw"></i></a></td>
-    </tr>
-    <tr>
-        <td class="center">'18</td>
-        <td>linearization of excitatory synaptic integration at no extra cost</td>
-        <td>Morel, Singh, & Levy</td>
-        <td class="med">🧠</td>
-        <td class="center"><a href="http://rdcu.be/FDUo">J Comp Neuro</a></td>
-        <td class="big"><a href="https://senselab.med.yale.edu/modeldb/ShowModel.cshtml?model=237594"><i
-                class="fa fa-github fa-fw"></i></a></td>
-        <td class="med"><a
-                href="https://docs.google.com/presentation/d/1JriXXofysuXyfU4CeyNHJUTYSfa18R9Q3EhkCwFwh4g/present?slide=id.p"><i
-                class="fa fa-desktop fa-fw"></i></a></td>
-    </tr>
-    <tr>
-        <td class="center">'17</td>
-        <td>a consensus layer V pyramidal neuron can sustain interpulse-interval coding</td>
-        <td>Singh & Levy</td>
-        <td class="med">🧠</td>
-        <td class="center"><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0180839">Plos
-            One</a></td>
-        <td class="big"><a href="https://senselab.med.yale.edu/modeldb/ShowModel.cshtml?model=237594"><i
-                class="fa fa-github fa-fw"></i></a></td>
-        <td class="med"><a
-                href="https://docs.google.com/presentation/d/1JriXXofysuXyfU4CeyNHJUTYSfa18R9Q3EhkCwFwh4g/present?slide=id.p"><i
-                class="fa fa-desktop fa-fw"></i></a></td>
-    </tr>
-    <tr>
-        <td class="center">'17</td>
-        <td>a constrained, weighted-l1 minimization approach for joint discovery of heterogeneous neural connectivity
-            graphs
-        </td>
-        <td>Singh, Wang, & Qi</td>
-        <td class="med">🧠</td>
-        <td class="center"><a href="https://arxiv.org/abs/1709.04090">neurips Workshop</a></td>
-        <td class="big"><a href="https://cran.r-project.org/web/packages/simule/index.html"><i
-                class="fa fa-github fa-fw"></i></a></td>
-        <td class="med"><a
-                href="https://docs.google.com/presentation/d/1GO6lN5o2idozOUdnObXGnXKFbZiJiKKKkmx73uE4BAI/present?slide=id.p4"><i
-                class="fa fa-desktop fa-fw"></i></a>,
-            <!--            <a-->
-            <!--                href="{{site.baseurl}}/assets/write_ups/wsimule_17_nips_poster.pdf"><i-->
-            <!--                class="fa fa-picture-o fa-fw"></i></a>-->
-        </td>
-    </tr>
+        <tr>
+            <td class="center">'23</td>
+            <td>Augmenting Interpretable Models with LLMs during Training
+            </td>
+            <td>singh, askari, caruana, & gao</td>
+            <td class="med">🔎🌀🌳</td>
+            <td class="center"><a href="https://arxiv.org/abs/2209.11799">arXiv</a></td>
+            <td class="big"><a href="https://github.com/microsoft/augmented-interpretable-models"><i
+                        class="fa fa-github fa-fw"></i></a></td>
+            <td class="med">
+                <a
+                    href="https://docs.google.com/presentation/d/1ctUCnboHFtEsgJm8J7k66PtPn6xDLH-Y3aq_pNTFPBo/present?slide=id.p"><i
+                        class="fa fa-desktop fa-fw"></i></a>
+            </td>
+        </tr>
+        <tr>
+            <td class="center">'23</td>
+            <td>Self-Verification Improves Few-Shot Clinical Information Extraction
+            </td>
+            <td>gero*, singh*, cheng, naumann, galley, gao, & poon</td>
+            <td class="med">🔎🌀💊</td>
+            <td class="center"><a href="https://arxiv.org/abs/2306.00024">arXiv</a></td>
+            <td class="big"><a href="https://github.com/microsoft/clinical-self-verification"><i
+                        class="fa fa-github fa-fw"></i></a></td>
+            <td class="med">
+            </td>
+        </tr>
+        <tr>
+            <td class="center">'22</td>
+            <td>Explaining patterns in data with language models via interpretable autoprompting
+            </td>
+            <td>singh*, morris*, aneja, rush, & gao</td>
+            <td class="med">🔎🌀</td>
+            <td class="center"><a href="https://arxiv.org/abs/2210.01848">arXiv</a></td>
+            <td class="big"><a href="https://github.com/csinva/interpretable-autoprompting"><i
+                        class="fa fa-github fa-fw"></i></a></td>
+            <td class="med">
+                <a
+                    href="https://docs.google.com/presentation/d/1_4X1IZMm6B621H5_81QZ5DuK9n4E-Vj8sVryVm1kjSE/present?id.g1630e6f12b6_0_27"><i
+                        class="fa fa-desktop fa-fw"></i></a>
+            </td>
+        </tr>
+        <tr>
+            <td class="center">'22</td>
+            <td>Interpretable deep learning for accurate molecular partner prediction in clathrin-mediated endocytosis
+            </td>
+            <td>singh*, li*, et al.</td>
+            <td class="med">🔎🌀🦠</td>
+            <td class="center">in prep</td>
+            <td class="big"><a href="https://github.com/Yu-Group/auxilin-prediction"><i
+                        class="fa fa-github fa-fw"></i></a>
+            </td>
+            <td class="med">
+                <a
+                    href="https://docs.google.com/presentation/d/1sQXbFUTSEyrmDkovV8g759Wj8E9LBpATAVV1iweKeGo/present?slide=id.p"><i
+                        class="fa fa-desktop fa-fw"></i></a>
+            </td>
+        </tr>
+        <!--    <tr>-->
+        <!--        <td class="center">'22</td>-->
+        <!--        <td>Group Probability-Weighted Tree Sums for Interpretable Modeling of Heterogeneous Data-->
+        <!--        </td>-->
+        <!--        <td>nasseri, singh, duncan, kornblith, & yu</td>-->
+        <!--        <td class="med">🔎🌳💊</td>-->
+        <!--        <td class="center"><a href="https://arxiv.org/abs/2205.15135">arXiv</a></td>-->
+        <!--        <td class="big"><a href="https://github.com/Yu-Group/imodels-experiments"><i-->
+        <!--                class="fa fa-github fa-fw"></i></a></td>-->
+        <!--        <td class="med">-->
+        <!--        </td>-->
+        <!--    </tr>-->
+        <tr>
+            <td class="center">'22</td>
+            <td>Predictability and stability testing to assess clinical decision instrument performance for children
+                after blunt torso trauma
+            </td>
+            <td>kornblith*, singh* et al.</td>
+            <td class="med">🔎🌳💊</td>
+            <td class="center"><a
+                    href="https://journals.plos.org/digitalhealth/article?id=10.1371/journal.pdig.0000076">PLOS digital
+                    health</a></td>
+            <td class="big"><a href="https://github.com/csinva/iai-clinical-decision-rule"><i
+                        class="fa fa-github fa-fw"></i></a></td>
+            <td class="med">
+                <a
+                    href="https://docs.google.com/presentation/d/1mxzGE0MkNZnzbIimDP8Kyq8oLfVSmHrOCKDPhiBPMz4/present?slide=id.p"><i
+                        class="fa fa-desktop fa-fw"></i></a>
+            </td>
+        </tr>
+        <tr>
+            <td class="center">'22</td>
+            <td>Fast interpretable greedy-tree sums (FIGS)</td>
+            <td>tan*, singh*, nasseri, agarwal, & yu</td>
+            <td class="med">🔎🌳</td>
+            <td class="center"><a href="https://arxiv.org/abs/2201.11931">arxiv</a></td>
+            <!--            <td></td>-->
+            <td class="big"><a href="https://github.com/csinva/imodels"><i class="fa fa-github fa-fw"></i></a>
+            </td>
+            <td class="med">
+                <a
+                    href="https://docs.google.com/presentation/d/1Gk5mEcSp6uePS72q-oF-GhXgLSbHfq2jWqMTKfwDaJw/present?slide=id.p"><i
+                        class="fa fa-desktop fa-fw"></i></a>
+                <a href="https://csinva.io/imodels/figs.html"><i class="fa fa-home fa-fw"></i></a>
+            </td>
+        </tr>
+        <tr>
+            <td class="center">'22</td>
+            <td>Hierarchical shrinkage for trees: improving accuracy and interpretability of tree-based methods</td>
+            <td>agarwal*, tan*, ronen, singh, & yu</td>
+            <td class="med">🔎🌳</td>
+            <td class="center"><a href="https://arxiv.org/abs/2202.00858">icml (spotlight)</a></td>
+            <!--            <td></td>-->
+            <td class="big"><a href="https://github.com/csinva/imodels"><i class="fa fa-github fa-fw"></i></a>
+            </td>
+            <td class="med">
+                <a
+                    href="https://docs.google.com/presentation/d/1inyZnryrs6dNO6VCn7ng6Rjc-XCkuagxx9YVHKJWqrM/present?slide=id.p"><i
+                        class="fa fa-desktop fa-fw"></i></a>
+                <a href="https://csinva.io/imodels/shrinkage.html"><i class="fa fa-home fa-fw"></i></a>
+                <!--            <a href="https://docs.google.com/presentation/d/1ReJ3Lqh4VZqpu6X6sP47f6Re6PvLIX9ZRAdjb8ZhFXE/present?slide=id.p"><i-->
+                <!--                    class="fa fa-desktop fa-fw"></i></a>-->
+            </td>
+        </tr>
+        <tr>
+            <td class="center">'22</td>
+            <td>VeridicalFlow: a python package for building trustworthy data science pipelines with PCS</td>
+            <td>duncan*, kapoor*, agarwal*, singh*, & yu</td>
+            <td class="med">💻🔍</td>
+            <td class="center"><a href="https://joss.theoj.org/papers/10.21105/joss.03895">joss</a></td>
+            <!--            <td></td>-->
+            <td class="big"><a href="https://github.com/Yu-Group/veridical-flow"><i class="fa fa-github fa-fw"></i></a>
+            </td>
+            <td class="med">
+                <a
+                    href="https://docs.google.com/presentation/d/1ReJ3Lqh4VZqpu6X6sP47f6Re6PvLIX9ZRAdjb8ZhFXE/present?slide=id.p"><i
+                        class="fa fa-desktop fa-fw"></i></a>
+            </td>
+        </tr>
+        <tr>
+            <td class="center">'21</td>
+            <td>imodels: a python package for fitting interpretable models</td>
+            <td>singh*, nasseri*, et al.</td>
+            <td class="med">💻🔍🌳</td>
+            <td class="center"><a href="https://joss.theoj.org/papers/10.21105/joss.03192">joss</a></td>
+            <!--            <td></td>-->
+            <td class="big"><a href="https://github.com/csinva/imodels"><i class="fa fa-github fa-fw"></i></a>
+            </td>
+            <td class="med">
+                <a
+                    href="https://docs.google.com/presentation/d/1fpHo-MtIJntlIrYlQj0yK3spJ7Unf10CNTH-PG9LQ_A/present?slide=id.gd4a2e647f0_0_0"><i
+                        class="fa fa-desktop fa-fw"></i></a>
+                <a href="https://bair.berkeley.edu/blog/2022/02/02/imodels/"><i class="fa fa-home fa-fw"></i></a>
+            </td>
+        </tr>
+        <tr>
+            <td class="center">'21</td>
+            <td>Adaptive wavelet distillation from neural networks through interpretations</td>
+            <td>ha, singh, et al.</td>
+            <td class="med">🔍🌀🌳</td>
+            <td class="center"><a href="https://arxiv.org/abs/2107.09145">neurips</a></td>
+            <!--            <td></td>-->
+            <td class="big"><a href="https://github.com/Yu-Group/adaptive-wavelet-distillation"><i
+                        class="fa fa-github fa-fw"></i></a>
+            </td>
+            <td class="med">
+                <a
+                    href="https://docs.google.com/presentation/d/1YrzAir94D0KWewau34dZAXXPdATRuqeVf8Jt-o_wqG8/present?slide=id.p"><i
+                        class="fa fa-desktop fa-fw"></i></a>
+                <a href="https://bair.berkeley.edu/blog/2021/09/28/wavelet/"><i class="fa fa-home fa-fw"></i></a>
+            </td>
+        </tr>
+        <tr>
+            <td class="center">'21</td>
+            <td>Matched sample selection with GANs for mitigating attribute confounding</td>
+            <td>singh, balakrishnan, & perona</td>
+            <td class="med">🌀</td>
+            <td class="center"><a href="https://arxiv.org/abs/2103.13455">cvpr workshop</a></td>
+            <!--            <td></td>-->
+            <td class="big"><a href="https://github.com/csinva/matching-with-gans"><i
+                        class="fa fa-github fa-fw"></i></a>
+            </td>
+            <td class="med">
+                <a
+                    href="https://docs.google.com/presentation/d/19Z4TnHCDkNENutyKmE_kZBSJX4jMUam6DoH3HckkMrI/present?slide=id.p"><i
+                        class="fa fa-desktop fa-fw"></i></a>
+            </td>
+        </tr>
+        <tr>
+            <td class="center">'21</td>
+            <td>Revisiting complexity and the bias-variance tradeoff</td>
+            <td>dwivedi*, singh*, yu & wainwright</td>
+            <td class="med">🌀</td>
+            <td class="center"><a href="https://arxiv.org/abs/2006.10189">jmlr</a></td>
+            <td class="big"><a href="https://github.com/csinva/mdl-complexity"><i class="fa fa-github fa-fw"></i></a>
+            </td>
+            <td class="med">
+                <a href="https://drive.google.com/file/d/15hzAndJYNO3YsflL_RyB-4nQb2_KypK-/view?usp=sharing"><i
+                        class="fa fa-desktop fa-fw"></i></a>
+            </td>
+        </tr>
+        <tr>
+            <td class="center">'20</td>
+            <td>Curating a COVID-19 data repository and forecasting county-level death counts in the United States</td>
+            <td>altieri et al.</td>
+            <td class="med">🔎🦠</td>
+            <td class="center"><a href="https://arxiv.org/abs/2005.07882">hdsr</a></td>
+            <td class="big"><a href="https://github.com/Yu-Group/covid19-severity-prediction"><i
+                        class="fa fa-github fa-fw"></i></a></td>
+            <td class="med">
+                <a
+                    href="https://docs.google.com/presentation/d/1nAYfBHj9qP-Qzpjho4dyMTx2Bc5Pccxu1VqIFiEaeYg/present?slide=id.p"><i
+                        class="fa fa-desktop fa-fw"></i></a>
+                <a href="https://covidseverity.com/"><i class="fa fa-home fa-fw"></i></a>
+            </td>
+        </tr>
+        <tr>
+            <td class="center">'20</td>
+            <td>Transformation importance with applications to cosmology</td>
+            <td>singh*, ha*, lanusse, boehm, liu & yu</td>
+            <td class="med">🔎🌀🌌</td>
+            <td class="center"><a href="https://arxiv.org/abs/2003.01926">iclr workshop (spotlight)</a></td>
+            <td class="big"><a href="https://github.com/csinva/transformation-importance"><i
+                        class="fa fa-github fa-fw"></i></a>
+            </td>
+            <td class="med"><a
+                    href="https://docs.google.com/presentation/d/1mH1uG38qJg-ar0G-LiVPZWNKPO_2GiD-uayWM5AI-bo/present?slide=id.p"><i
+                        class="fa fa-desktop fa-fw"></i></a></td>
+        </tr>
+        <tr>
+            <td class="center">'20</td>
+            <td>Interpretations are useful: penalizing explanations to align neural networks with prior knowledge</td>
+            <td>rieger, singh, murdoch & yu</td>
+            <td class="med">🔎🌀</td>
+            <td class="center"><a href="http://proceedings.mlr.press/v119/rieger20a.html">icml</a>
+            </td>
+            <td class="big"><a href="https://github.com/laura-rieger/deep-explanation-penalization"><i
+                        class="fa fa-github fa-fw"></i></a></td>
+            <td class="med"><a href="https://icml.cc/virtual/2020/poster/5914"><i class="fa fa-desktop fa-fw"></i></a>
+            </td>
+        </tr>
+        <tr>
+            <td class="center">'19</td>
+            <td>Hierarchical interpretations for neural network predictions</td>
+            <td>Singh*, Murdoch*, & Yu</td>
+            <td class="med">🔍🌀</td>
+            <td class="center"><a href="https://arxiv.org/abs/1806.05337">ICLR</a></td>
+            <td class="big"><a href="https://github.com/csinva/acd"><i class="fa fa-github fa-fw"></i></a></td>
+            <td class="med"><a
+                    href="https://docs.google.com/presentation/d/1I6djTqVn6YGKqxvQk59-4C39LbE68mNQbX1Go5pzTH4/present?slide=id.p"><i
+                        class="fa fa-desktop fa-fw"></i></a>
+                <!--            <a href="{{site.baseurl}}/assets/write_ups/acd_18_bairday_poster.pdf"><i class="fa fa-picture-o fa-fw"></i></a>-->
+            </td>
+        </tr>
+        <tr>
+            <td class="center">'19</td>
+            <td>interpretable machine learning: definitions, methods, and applications</td>
+            <td>Murdoch*, Singh*, et al.</td>
+            <td class="med">🔍🌳🌀</td>
+            <td class="center"><a href="https://arxiv.org/abs/1901.04592">pnas</a></td>
+            <td></td>
+            <td class="med"><a
+                    href="https://docs.google.com/presentation/d/13jbgFyYSSDaMUd2w4RY9GHteTcWJj1drS6_2sOkvnv4/present?slide=id.p"><i
+                        class="fa fa-desktop fa-fw"></i></a>
+                <!--            <a  href="{{site.baseurl}}/assets/write_ups/utokyo_19_interp_poster.pdf"><i  class="fa fa-picture-o fa-fw"></i></a></td>-->
+        </tr>
+        <tr>
+            <td class="center">'19</td>
+            <td>disentangled attribution curves for interpreting random forests and boosted trees</td>
+            <td>devlin, singh, murdoch & yu</td>
+            <td class="med">🔍🌳</td>
+            <td class="center"><a href="https://arxiv.org/abs/1905.07631">arxiv</a></td>
+            <td class="big"><a href="https://github.com/csinva/disentangled_attribution_curves"><i
+                        class="fa fa-github fa-fw"></i></a></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="center">'18</td>
+            <td>large scale image segmentation with structured loss based deep learning for connectome reconstruction
+            </td>
+            <td>Funke*, Tschopp*, et al.</td>
+            <td class="med">🧠🌀</td>
+            <td class="center"><a href="https://ieeexplore.ieee.org/abstract/document/8364622/">TPAMI</a></td>
+            <td class="big"><a href="https://github.com/funkey/mala"><i class="fa fa-github fa-fw"></i></a></td>
+            <td class="med">
+                <a href="{{site.baseurl}}/assets/write_ups/singh_15_rf_segmentation.pdf"><i
+                        class="fa fa-picture-o fa-fw"></i></a>
+            </td>
+        </tr>
+        <tr>
+            <td class="center">'18</td>
+            <td>linearization of excitatory synaptic integration at no extra cost</td>
+            <td>Morel, Singh, & Levy</td>
+            <td class="med">🧠</td>
+            <td class="center"><a href="http://rdcu.be/FDUo">J Comp Neuro</a></td>
+            <td class="big"><a href="https://senselab.med.yale.edu/modeldb/ShowModel.cshtml?model=237594"><i
+                        class="fa fa-github fa-fw"></i></a></td>
+            <td class="med"><a
+                    href="https://docs.google.com/presentation/d/1JriXXofysuXyfU4CeyNHJUTYSfa18R9Q3EhkCwFwh4g/present?slide=id.p"><i
+                        class="fa fa-desktop fa-fw"></i></a></td>
+        </tr>
+        <tr>
+            <td class="center">'17</td>
+            <td>a consensus layer V pyramidal neuron can sustain interpulse-interval coding</td>
+            <td>Singh & Levy</td>
+            <td class="med">🧠</td>
+            <td class="center"><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0180839">Plos
+                    One</a></td>
+            <td class="big"><a href="https://senselab.med.yale.edu/modeldb/ShowModel.cshtml?model=237594"><i
+                        class="fa fa-github fa-fw"></i></a></td>
+            <td class="med"><a
+                    href="https://docs.google.com/presentation/d/1JriXXofysuXyfU4CeyNHJUTYSfa18R9Q3EhkCwFwh4g/present?slide=id.p"><i
+                        class="fa fa-desktop fa-fw"></i></a></td>
+        </tr>
+        <tr>
+            <td class="center">'17</td>
+            <td>a constrained, weighted-l1 minimization approach for joint discovery of heterogeneous neural
+                connectivity
+                graphs
+            </td>
+            <td>Singh, Wang, & Qi</td>
+            <td class="med">🧠</td>
+            <td class="center"><a href="https://arxiv.org/abs/1709.04090">neurips Workshop</a></td>
+            <td class="big"><a href="https://cran.r-project.org/web/packages/simule/index.html"><i
+                        class="fa fa-github fa-fw"></i></a></td>
+            <td class="med"><a
+                    href="https://docs.google.com/presentation/d/1GO6lN5o2idozOUdnObXGnXKFbZiJiKKKkmx73uE4BAI/present?slide=id.p4"><i
+                        class="fa fa-desktop fa-fw"></i></a>,
+                <!--            <a-->
+                <!--                href="{{site.baseurl}}/assets/write_ups/wsimule_17_nips_poster.pdf"><i-->
+                <!--                class="fa fa-picture-o fa-fw"></i></a>-->
+            </td>
+        </tr>
     </tbody>
 
 </table>
