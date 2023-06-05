@@ -342,7 +342,7 @@ For an implementation of many of these models, see the python [imodels package](
   - [Creating Powerful and Interpretable Models with Regression Networks](https://arxiv.org/abs/2107.14417) (2021) - generalizes neural GAM to include interaction terms
     - train first-order functions
     - fix them and predict residuals with next order (and repeat for as many orders as desired)
-- Emb-GAM: an Interpretable and Efficient Predictor using Pre-trained Language Models ([singh & gao, 2022](https://arxiv.org/abs/2209.11799)) - use language model to extract embeddings which are then used to fit a better GAM (focuses on NLP)
+- Aug-GAM ([singh, askari, caruana & gao, 2022](https://arxiv.org/abs/2209.11799)) - use language model to extract embeddings which are then used to fit a better GAM (focuses on NLP)
 - [NODE-GAM: Neural Generalized Additive Model for Interpretable Deep Learning](https://arxiv.org/abs/2106.01613) (chang, caruana, & goldenberg, 2021)
   - includes interaction terms (all features are used initially and backprop decides which are kept) - they call this $GA^2M$
   - uses neural oblivious trees rather than standard DNN
@@ -374,11 +374,42 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
 - [Model Learning with Personalized Interpretability Estimation (ML-PIE)](https://arxiv.org/abs/2104.06060) - use human feedback in the loop to decide which symbolic functions are most interpretable
 - [End-to-end symbolic regression with transformers](https://arxiv.org/abs/2204.10532)
 
-## example-based = case-based (e.g. prototypes, nearest neighbor)
+## interpretable neural nets
+
+- [Physics-informed neural networks: A deep learning framework for solving forward and inverse problems involving nonlinear partial differential equations](https://www.sciencedirect.com/science/article/pii/S0021999118307125) (raissi et al. 2019) - PINN - solve PDEs by constraining neural net to predict specific parameters / derivatives
+- Adaptive wavelet distillation from neural networks through interpretations" ([Ha et al. 2021](https://arxiv.org/abs/2107.09145))
+- [Improved Deep Fuzzy Clustering for Accurate and Interpretable Classifiers](https://ieeexplore.ieee.org/abstract/document/8858809) - extract features with a DNN then do fuzzy clustering on this
+- [Two Instances of Interpretable Neural Network for Universal Approximations](https://arxiv.org/abs/2112.15026) (tjoa & cuntai, 2021) - each neuron responds to a training point
+- [B-Cos Networks: Alignment Is All We Need for Interpretability](https://openaccess.thecvf.com/content/CVPR2022/html/Bohle_B-Cos_Networks_Alignment_Is_All_We_Need_for_Interpretability_CVPR_2022_paper.html) - promotes weight-input alignment during training
+
+### concepts
+
+- Concept Bottleneck Models ([koh et al. 2020](https://arxiv.org/pdf/2007.04612.pdf)) - predict concepts before making final prediction
+- PCBM Post-hoc Concept Bottleneck Models ([yuksekgonul...zou, 2022](https://arxiv.org/abs/2205.15480)) - automatically project embeddings to concepts and train linear model on those
+- LaBO: Language in a Bottle: Language Model Guided Concept Bottlenecks for Interpretable Image Classification ([yang...yatskar, 2022](https://arxiv.org/pdf/2211.11158.pdf)) - generate prompt-based features using GPT-3 (e.g. "brown head with white stripes") and use CLIP to check for the presence of those features, all before learning simple linear model
+- MoIE: Route, Interpret, Repeat: Blurring the Line Between Post hoc Explainability and Interpretable Models ([ghosh, ..., batmangehelich, 2023](https://arxiv.org/abs/2302.10289#)) - mixture of different interpretable models, with black-box routing
+- SASC - learn factors from BERT using dictionary learning, assign each factor a natural-language explanation, then build a sparse linear model of these factors ([singh, ..., gao, 2023](https://arxiv.org/abs/2305.09863))
+- Concept transformers ([rigotti, ... scotton, 2022](https://openreview.net/pdf?id=kAa9eDS0RdO)) - use human-given concepts and explain predictions as a function of these concepts
+- [Concept Whitening for Interpretable Image Recognition](https://arxiv.org/pdf/2002.01650.pdf) (chen et al. 2020) - force network to separate "concepts" (like in TCAV) along different axes
+- [Interpretability Beyond Classification Output: Semantic Bottleneck Networks](https://arxiv.org/abs/1907.10882) - add an interpretable intermediate bottleneck representation
+- [Towards Robust Interpretability with Self-Explaining Neural Networks](https://arxiv.org/pdf/1806.07538.pdf) (alvarez-melis & jaakkola 2018) - use regularization to ensure model is aligned with concepts
+
+### localization
+
+- [WILDCAT: Weakly Supervised Learning of Deep ConvNets for Image Classification, Pointwise Localization and Segmentation](https://openaccess.thecvf.com/content_cvpr_2017/html/Durand_WILDCAT_Weakly_Supervised_CVPR_2017_paper.html) (durand et al. 2017) - constrains architecture
+  - after extracting conv features, replace linear layers with special pooling layers, which helps with spatial localization
+    - each class gets a pooling map
+    - prediction for a class is based on top-k spatial regions for a class
+    - finally, can combine the predictions for each class
+- [Approximating CNNs with Bag-of-local-Features models works surprisingly well on ImageNet](https://arxiv.org/abs/1904.00760)
+  - CNN is restricted to look at very local features only and still does well (and produces an inbuilt saliency measure)
+  - [learn shapes not texture](https://openreview.net/pdf?id=Bygh9j09KX)
+- [Symbolic Semantic Segmentation and Interpretation of COVID-19 Lung Infections in Chest CT volumes based on Emergent Languages](https://arxiv.org/pdf/2008.09866v1.pdf) (chowdhury et al. 2020) - combine some segmentation with the classifier
+
+### example-based = case-based (e.g. prototypes, nearest neighbor)
 
 - ProtoPNet: This looks like that (2nd paper) ([chen, ..., rudin, 2018](https://arxiv.org/abs/1806.10574)) - learn convolutional prototypes that are smaller than the original input size
   - use L2 distance in repr space to measure distance between patches and prototypes
-
   - loss function
     - require the filters to be identical to the latent representation of some training image patch
     - cluster image patches of a particular class around the prototypes of the same class, while separating image patches of different classes
@@ -428,51 +459,15 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
   2. What features of these corpus examples are relevant for the model to relate them to the test example?
 - ProtoPFormer: Concentrating on Prototypical Parts in Vision Transformers for Interpretable Image Recognition ([xue et al. 2022](https://arxiv.org/abs/2208.10431))
 
-## interpretable neural nets
+### transformers
 
-- concepts
-  - Concept Bottleneck Models ([koh et al. 2020](https://arxiv.org/pdf/2007.04612.pdf)) - predict concepts before making final prediction
-    - PCBM Post-hoc Concept Bottleneck Models ([yuksekgonul...zou, 2022](https://arxiv.org/abs/2205.15480)) - automatically project embeddings to concepts and train linear model on those
-    - LaBO: Language in a Bottle: Language Model Guided Concept Bottlenecks for Interpretable Image Classification ([yang...yatskar, 2022](https://arxiv.org/pdf/2211.11158.pdf)) - generate prompt-based features using GPT-3 (e.g. "brown head with white stripes") and use CLIP to check for the presence of those features, all before learning simple linear model
-    - MoIE: Route, Interpret, Repeat: Blurring the Line Between Post hoc Explainability and Interpretable Models ([ghosh, ..., batmangehelich, 2023](https://arxiv.org/abs/2302.10289#)) - mixture of different interpretable models, with black-box routing
-    - SASC - learn factors from BERT using dictionary learning, assign each factor a natural-language explanation, then build a sparse linear model of these factors ([singh, ..., gao, 2023](https://arxiv.org/abs/2305.09863))
-    - Concept transformers ([rigotti, ... scotton, 2022](https://openreview.net/pdf?id=kAa9eDS0RdO)) - use human-given concepts and explain predictions as a function of these concepts
-  - [Concept Whitening for Interpretable Image Recognition](https://arxiv.org/pdf/2002.01650.pdf) (chen et al. 2020) - force network to separate "concepts" (like in TCAV) along different axes
-  - [Interpretability Beyond Classification Output: Semantic Bottleneck Networks](https://arxiv.org/abs/1907.10882) - add an interpretable intermediate bottleneck representation'
-  - [Holistically Explainable Vision Transformers](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwiQgrKbsu38AhVsBDQIHXHaD-AQFnoECA0QAQ&url=https%3A%2F%2Fopenreview.net%2Fforum%3Fid%3Djw37FUa_Aw9&usg=AOvVaw3hmaKQBDgw70khvc4gmQWc) 
-- [How to represent part-whole hierarchies in a neural network](https://arxiv.org/abs/2102.12627) (hinton, 2021)
-  - The idea is simply to use islands of identical vectors to represent the nodes in the parse tree (parse tree would be things like wheel-> cabin -> car)
-  - each patch / pixel gets representations at different levels (e.g. texture, parrt of wheel, part of cabin, etc.)
-    - each repr. is a vector - vector for high-level stuff (e.g. car) will agree for different pixels but low level (e.g. wheel) will differ
-    - during training, each layer at each location gets information from nearby levels
-      - hinton assumes weights are shared between locations (maybe don't need to be)
-      - also attention mechanism across other locations in same layer
-    - each location also takes in its positional location (x, y)
-    - could have the lowest-level repr start w/ a convnet
-  - [iCaps: An Interpretable Classifier via Disentangled Capsule Networks](https://arxiv.org/abs/2008.08756) (jung et al. 2020)
-    - the class capsule also includes classification-irrelevant information
-      - uses a novel class-supervised disentanglement algorithm
-    - entities represented by the class capsule overlap
-      - adds additional regularizer
-- localization
-  - [WILDCAT: Weakly Supervised Learning of Deep ConvNets for Image Classification, Pointwise Localization and Segmentation](https://openaccess.thecvf.com/content_cvpr_2017/html/Durand_WILDCAT_Weakly_Supervised_CVPR_2017_paper.html) (durand et al. 2017) - constrains architecture
-    - after extracting conv features, replace linear layers with special pooling layers, which helps with spatial localization
-      - each class gets a pooling map
-      - prediction for a class is based on top-k spatial regions for a class
-      - finally, can combine the predictions for each class
-  - [Approximating CNNs with Bag-of-local-Features models works surprisingly well on ImageNet](https://arxiv.org/abs/1904.00760)
-    - CNN is restricted to look at very local features only and still does well (and produces an inbuilt saliency measure)
-    - [learn shapes not texture](https://openreview.net/pdf?id=Bygh9j09KX)
-    - [code](https://github.com/wielandbrendel/bag-of-local-features-models)
-  - [Symbolic Semantic Segmentation and Interpretation of COVID-19 Lung Infections in Chest CT volumes based on Emergent Languages](https://arxiv.org/pdf/2008.09866v1.pdf) (chowdhury et al. 2020) - combine some segmentation with the classifier
-- regularization / constraints
-  - [Sparse Epistatic Regularization of Deep Neural Networks for Inferring Fitness Functions](https://www.biorxiv.org/content/10.1101/2020.11.24.396994v1) (aghazadeh et al. 2020) - directly regularize interactions / high-order freqs in DNNs
-  - [MonoNet: Towards Interpretable Models by Learning Monotonic Features](https://arxiv.org/abs/1909.13611) - enforce output to be a monotonic function of individuaul features
-- [Physics-informed neural networks: A deep learning framework for solving forward and inverse problems involving nonlinear partial differential equations](https://www.sciencedirect.com/science/article/pii/S0021999118307125) (raissi et al. 2019) - PINN - solve PDEs by constraining neural net to predict specific parameters / derivatives
-- [Improved Deep Fuzzy Clustering for Accurate and Interpretable Classifiers](https://ieeexplore.ieee.org/abstract/document/8858809) - extract features with a DNN then do fuzzy clustering on this
-- [Towards Robust Interpretability with Self-Explaining Neural Networks](https://arxiv.org/pdf/1806.07538.pdf) (alvarez-melis & jaakkola 2018) - building architectures that explain their predictions
-- [Two Instances of Interpretable Neural Network for Universal Approximations](https://arxiv.org/abs/2112.15026) (tjoa & cuntai, 2021) - each neuron responds to a training point
-- [B-Cos Networks: Alignment Is All We Need for Interpretability](https://openaccess.thecvf.com/content/CVPR2022/html/Bohle_B-Cos_Networks_Alignment_Is_All_We_Need_for_Interpretability_CVPR_2022_paper.html)
+- Augmenting Interpretable Models with LLMs during Training ([singh, askari, caruana & gao, 2023](https://arxiv.org/abs/2209.11799))
+  - use language model to extract embeddings which are then used to fit a better GAM or better tree (focuses on NLP)
+- CHiLL: Zero-shot Custom Interpretable Feature Extraction from Clinical Notes with Large Language Models ([mcinerney, ..wallace, 2023](https://arxiv.org/abs/2302.12343))
+  - extract interpretable feature (e.g. "Does this patient have a chronic illness?") and use in a linear model (use Flan-T5)
+  - interpretable features: 10 ICD codes + (1) Does the patient have a chronic illness? (2) Is the condition life-threatening?
+- Learning Transformer Programs ([friedman, wettig, & chen, 2023](https://arxiv.org/abs/2306.01128)) - place strong constraints on transformer architecture that allow it to be written as a [RASP]([https://arxiv.org/abs/2106.06981) program
+- Backpack Language Models ([hewit, thickstun, manning, & liang, 2023](https://arxiv.org/abs/2305.16765)) - change transformer layers to represent each word as a context-dependent, non-negative linear combination of sem-interpretable sense vectors
 
 ### connecting dnns and rules
 
@@ -487,9 +482,6 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
     - relax hard splits into soft ones and learn via gradient descent
   - [Optimizing for Interpretability in Deep Neural Networks with Tree Regularization](https://www.jair.org/index.php/jair/article/view/12558) (wu...doshi-velez, 2021) - regularize DNN prediction function towards tree (potentially only for some region)
   - [Adaptive Neural Trees](http://proceedings.mlr.press/v97/tanno19a.html?utm_campaign=piqcy&utm_medium=email&utm_source=Revue%20newsletter) (tanno et al. 2019) - adaptive neural tree mechanism with trainable nodes, edges, and leaves
-- nlp
-  - Automatic Rule Extraction from Long Short Term Memory Networks ([murdoch & szlam, 2017](https://arxiv.org/abs/1702.02540)) - extract out phrases using feature importance
-  - A Comparative Study of Rule Extraction for Recurrent Neural Networks ([wang et al. 2018](https://arxiv.org/abs/1801.05420)) - create automata based on interpretable states to track RNNs
 - loosely interpretable
   - mixture of experts (MOE) / hierarchical MOE
   - [Attention Convolutional Binary Neural Tree for Fine-Grained Visual Categorization](https://openaccess.thecvf.com/content_CVPR_2020/html/Ji_Attention_Convolutional_Binary_Neural_Tree_for_Fine-Grained_Visual_Categorization_CVPR_2020_paper.html) (ji et al. 2020)
@@ -511,7 +503,9 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
     - TAO trees with bagging performs well ([Carreira-Perpiñán & Zharmagambetov, 2020](http://graduatestudents.ucmerced.edu/azharmagambetov/files/papers/fods20.pdf))
     - Learning a Tree of Neural Nets ([Zharmagambetov and Carreira-Perpinan, 2020](https://ieeexplore.ieee.org/abstract/document/9413718)) - use neural net rather than binary classification at each node
     - Also use TAO trained on neural net features do speed-up/improve the network
-
+- recurrent neural nets
+  - Automatic Rule Extraction from Long Short Term Memory Networks ([murdoch & szlam, 2017](https://arxiv.org/abs/1702.02540)) - extract out phrases using feature importance
+  - A Comparative Study of Rule Extraction for Recurrent Neural Networks ([wang et al. 2018](https://arxiv.org/abs/1801.05420)) - create automata based on interpretable states to track RNNs
 - incorporating prior knowledge
   - [Controlling Neural Networks with Rule Representations](https://arxiv.org/abs/2106.07804) (seo, ..., pfister, 21)
     - DEEPCTRL - encodes rules into DNN
@@ -548,9 +542,7 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
     - use neural autoencoder with binary activations + binarizing weights
     - optimizing a data-sparsity aware reconstruction loss, continuous versions of the weights are learned in small, noisy steps
 
-
-
-## constrained models
+## constrained outputs (e.g. monotonicity)
 
 - different constraints in [tensorflow lattice](https://www.tensorflow.org/lattice/overview)
   - e.g. monoticity, convexity, unimodality (unique peak), pairwise trust (model has higher slope for one feature when another feature is in particular value range)
@@ -561,7 +553,24 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
   - Monotonic Calibrated Interpolated Look-Up Tables ([gupta et al. 2016](https://www.jmlr.org/papers/volume17/15-243/15-243.pdf))
     - speed up $D$-dimensional interpolation to $O(D \log D)$
     - follow-up work: Deep Lattice Networks and Partial Monotonic Functions ([you,...,gupta, 2017](https://proceedings.neurips.cc//paper/2017/file/464d828b85b0bed98e80ade0a5c43b0f-Paper.pdf)) - use many layers
+- neural nets
+  - [Sparse Epistatic Regularization of Deep Neural Networks for Inferring Fitness Functions](https://www.biorxiv.org/content/10.1101/2020.11.24.396994v1) (aghazadeh et al. 2020) - directly regularize interactions / high-order freqs in DNNs
+  - [MonoNet: Towards Interpretable Models by Learning Monotonic Features](https://arxiv.org/abs/1909.13611) - enforce output to be a monotonic function of individuaul features
 - monotonicity constrainits in histogram-based gradient boosting ([see sklearn](https://scikit-learn.org/stable/modules/ensemble.html#histogram-based-gradient-boosting))
+- [How to represent part-whole hierarchies in a neural network](https://arxiv.org/abs/2102.12627) (hinton, 2021)
+  - The idea is simply to use islands of identical vectors to represent the nodes in the parse tree (parse tree would be things like wheel-> cabin -> car)
+  - each patch / pixel gets representations at different levels (e.g. texture, parrt of wheel, part of cabin, etc.)
+    - each repr. is a vector - vector for high-level stuff (e.g. car) will agree for different pixels but low level (e.g. wheel) will differ
+    - during training, each layer at each location gets information from nearby levels
+      - hinton assumes weights are shared between locations (maybe don't need to be)
+      - also attention mechanism across other locations in same layer
+    - each location also takes in its positional location (x, y)
+    - could have the lowest-level repr start w/ a convnet
+  - [iCaps: An Interpretable Classifier via Disentangled Capsule Networks](https://arxiv.org/abs/2008.08756) (jung et al. 2020)
+    - the class capsule also includes classification-irrelevant information
+      - uses a novel class-supervised disentanglement algorithm
+    - entities represented by the class capsule overlap
+      - adds additional regularizer
 
 ## misc models
 

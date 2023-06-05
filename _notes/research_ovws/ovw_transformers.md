@@ -9,6 +9,8 @@ category: research
 
 # papers
 
+See related papers in the [📌 interpretability](https://csinva.io/notes/research_ovws/ovw_interp.html) page.
+
 ## high-performing
 
 **nlp** (see also [this link](https://medium.com/nlplanet/a-brief-timeline-of-nlp-from-bag-of-words-to-the-transformer-family-7caad8bbba56))
@@ -19,17 +21,14 @@ category: research
     - Semi-supervised Sequence Learning ([dai & quoc le, 2015](https://arxiv.org/abs/1511.01432))
       - context vector is weighted sum of context vector at each word
   - [ULMFiT](https://arxiv.org/abs/1801.06146) (howard & ruder, 2018)
-
 - BERT ([devlin et al. 2018](https://arxiv.org/abs/1810.04805)) - semi-supervised learning (predict masked word - this is bidirectional) + supervised finetuning
   - [roberta](https://arxiv.org/abs/1907.11692) (liu et al. 2019)
   - [BART](https://arxiv.org/abs/1910.13461) (lewis et al. 2019) - generalizes BERT with sequence-to-squence training: train by (1) corrupting text then (2) reconstruct the original text
   - [ELMo](https://arxiv.org/abs/1802.05365) (peters...zettlemoyer, 2018) - no word embeddings - train embeddings w/ bidirectional lstm (on language modeling)
   - XLNet ([yang...quoc le, 2020](https://arxiv.org/abs/1906.08237))
-
 - GPT-4 (openai, 2023) - adds multimodal understanding + boosts context length to 32k
   - GPT-3 ([brown et al. 2020](https://arxiv.org/abs/2005.14165?2)) - identitical to GPT-2 except larger and replaces dense attention with sparse attention
     - sizes: largest has 175B params, 96 layers, 96 heads in each layer, head with dim 128, vocab size ~50k
-  
   - InstructGPT ([ouyang...lowe, 2022](https://arxiv.org/abs/2203.02155))
   - GPT-2 ([radford et al. 2018](https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf))
   - GPT ([radford et al. 2018](https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf))
@@ -43,13 +42,13 @@ category: research
     - generator replaces many masked tokens with plausible samples - train with MLM
     - discriminator tries to guess which tokens were the masked ones - this is the main model that gets used
 
-- [Longformer: The Long-Document Transformer](https://arxiv.org/abs/2004.05150) (beltagy, peters, & cohan, 2020) - processes very long contexts
+- Longformer: The Long-Document Transformer ([Beltagy, Peters, & Cohan 2020](https://arxiv.org/abs/2004.05150)) - processes very long contexts
 
-- [PaLM: Scaling Language Modeling with Pathways](https://arxiv.org/abs/2204.02311) (google, 2022) - 540 Billion params
+- PaLM: Scaling Language Modeling with Pathways ([Google 2022](https://arxiv.org/abs/2204.02311)) - 540 Billion params
   - pathways hardware center allows for fast/efficient training
   - discontinuous improvements - at some point large model improves
   - prompt engineering: "Explain yourself" - lets it explain jokes
-  - [Chinchilla: Training Compute-Optimal Large Language Models](https://arxiv.org/abs/2203.15556) (deepmind, 2022)
+  - Chinchilla: Training Compute-Optimal Large Language Models ([DeepMind 2022](https://arxiv.org/abs/2203.15556))
     - "chinchilla scaling laws" - for compute-optimal training, the model size and the number of training tokens should be scaled equally
 
 - T0 ([sanh...rush, 2022](https://arxiv.org/pdf/2110.08207.pdf)) - multitask training enables better zero-shot generalization
@@ -146,19 +145,19 @@ category: research
   - produce sql/python that then finds an answer ([cheng...zettlemoyer, smith, yu, 2022](https://arxiv.org/abs/2210.02875))
 
 - CODEX: [Evaluating Large Language Models Trained on Code](https://arxiv.org/abs/2107.03374) (2021, openai)
-  - [Repair Is Nearly Generation: Multilingual Program Repair with LLMs](https://arxiv.org/abs/2208.11640) (joshi et al. 2022) 
-  - [Improving automatically generated code from Codex via Automated Program Repair](https://arxiv.org/abs/2205.10583) (fan et al. 2022) - use automated program repair to tweak codex outputs to make them better
-  - Generating Question Titles for Stack Overflow from Mined Code Snippets ([gao et al. 2020](https://dl.acm.org/doi/abs/10.1145/3401026?casa_token=FEWYSo9ZmNIAAAAA:-_ZIkXQVUR3xYaB3NtrzBv0jZU6IZ6O4f_W_ZDtb6TipLBV4YHB-0lbO1JU8T9wwIl_jLBS3ts0))
-  - [Automatic Program Repair with OpenAI's Codex: Evaluating QuixBugs](https://arxiv.org/abs/2111.03922) (prenner & robbes, 2021)
+  - Repair Is Nearly Generation: Multilingual Program Repair with LLMs ([Joshi et al. 2022](https://arxiv.org/abs/2208.11640))
+  - Improving automatically generated code from Codex via Automated Program Repair ([Fan et al. 2022](https://arxiv.org/abs/2205.10583)) - use automated program repair to tweak codex outputs to make them better
+  - Generating Question Titles for Stack Overflow from Mined Code Snippets ([Gao et al. 2020](https://dl.acm.org/doi/abs/10.1145/3401026?casa_token=FEWYSo9ZmNIAAAAA:-_ZIkXQVUR3xYaB3NtrzBv0jZU6IZ6O4f_W_ZDtb6TipLBV4YHB-0lbO1JU8T9wwIl_jLBS3ts0))
+  - Automatic Program Repair with OpenAI's Codex: Evaluating QuixBugs ([Prenner & Robbes, 2021](https://arxiv.org/abs/2111.03922))
     - use prompt like:
       ```python
       ### fix the bug in the following function
       <buggy function and/or docstring here>
       ### fixed function
       ```
-
+    
   - program synthesis [arxiv.org/abs/2108.07732](https://arxiv.org/abs/2108.07732) - formalize natural language into runnable code
-
+  
 - embeddings
   - Instructor: One Embedder, Any Task: Instruction-Finetuned Text Embeddings ([su, ..., smith, zettlemoyer, yu, 2022](https://instructor-embedding.github.io)) - embedding is contextualized to eaach task
 
@@ -214,6 +213,10 @@ category: research
   - kNN Prompting: Learning Beyond the Context with Nearest Neighbor Inference ([xu...zhang, 2023](https://openreview.net/forum?id=fe2S7736sNS)) - instead of verbalizer, use nearest-neighbor
     - has dbpedia results
   - kNN-Prompt: Nearest Neighbor Zero-Shot Inference ([shi...zettlemoyer, 2022](https://arxiv.org/pdf/2205.13792.pdf))
+- self-verification
+  - Self-Refine: Iterative Refinement with Self-Feedback ([madaan, ..., clark, 2023](https://arxiv.org/abs/2303.17651))
+  - Self-Verification Improves Few-Shot Clinical Information Extraction ([gero et al. 2023](https://arxiv.org/abs/2306.00024))
+
 - ACT-1: Transformer for Actions ([2022, Adept](https://www.adept.ai/act)) - transformer directly interacts with computer
 - ReAct: Synergizing Reasoning and Acting in Language Models ([yao...cao, 2022](https://arxiv.org/abs/2210.03629)) - use LLMs to generate reasoning traces + task-specific actions in interleaved manner
 
@@ -302,6 +305,7 @@ category: research
     - experiments on instruction induction datasets + truthful QA
   - FluentPrompt: Toward Human Readable Prompt Tuning ([shi, ..., zettlemoyer, 2022](https://arxiv.org/abs/2212.10539)) - use langevin sampling + fluency constraint to generate prompt
     - experiments relatively weak: 3 sentiment datasets + autoprompt is the only baseline
+  
 - discrete prompting
   - [AutoPrompt: Eliciting Knowledge from Language Models with Automatically Generated Prompts](https://aclanthology.org/2020.emnlp-main.346/) (shin...sameer singh, 2020)
     - select prompts from a fixed set of tokens (resulting prompts are not coherent)
@@ -311,6 +315,7 @@ category: research
   - [RLPrompt: Optimizing Discrete Text Prompts with Reinforcement Learning](https://arxiv.org/abs/2205.12548) (deng...hu, 2022)
   - LM-BFF: Making Pre-trained Language Models Better Few-shot Learners ([gao et al. 2020](https://arxiv.org/abs/2012.15723)) - uses T5 to generate (i) template for the task (which might include a whole example or two) + (i) appropropriate label tokens in the vocabulary for the task (suffers from computationally intensive search + sub-optimal discrete space search)
   - [PADA: Example-based Prompt Learning for on-the-fly Adaptation to Unseen Domains](https://arxiv.org/abs/2102.12206) (ben-david, ..., reichart, 2022)
+  
 - prompt ensembles
   - PromptBoosting: Black-Box Text Classification with Ten Forward Passes ([hou, ..., jacob andreas, ..., zhang, 2022](https://arxiv.org/abs/2212.09257)) - get a small pool of prompts, learn a verbalizer (final classification layer) for each, then ensemble them with AdaBoost on LLM output
 
@@ -320,10 +325,10 @@ category: research
       - Snuba ([Varma and Ré, 2018](https://pubmed.ncbi.nlm.nih.gov/31777681/)) generates heuristics based on a small labeled dataset with pre-defined rule types
       - TALLOR ([Li et al. 2021a](https://arxiv.org/pdf/2107.02282.pdf)) & GLaRA ([Zhao et al. 2021](https://arxiv.org/pdf/2104.06230.pdf)) study rule expansion for NER problem based on lexical information and then select rules based on a hand-tuned threshold
   - PTR: Prompt Tuning with Rules for Text Classification ([han et al. 2021](https://arxiv.org/abs/2105.11259)) -- use logic rules to construct prompts with sub-prompts for many-class text classification (prompt is constructed hierarchically, but only one call is made to the LLM for inference)
-
+  
 - [Prefix-Tuning: Optimizing Continuous Prompts for Generation](https://arxiv.org/abs/2101.00190) (li & percy liang, 2021) -- optimizes in continuous space for language generation tasks
   - learn to map some parameters $\theta$ through and MLP to generate a starting hidden state $h_i$ -- never actually sends the prefix through the network 
-
+  
 - [Control Prefixes for Parameter-Efficient Text Generation](https://arxiv.org/abs/2110.08329) (clive, cao, & rei, 2022) - allow for adapting the prefix to each input example
 
 - DART [Differentiable Prompt Makes Pre-trained Language Models Better Few-shot Learners](https://arxiv.org/abs/2108.13161) (zhang...chen, 2022)
@@ -331,24 +336,35 @@ category: research
   - focus on smaller models (Roberta-large + GPT-2) + few training shots
   - fluency constraint to ensure association among prompt embeddings
   - P-Tuning -- [GPT Understands, Too](https://arxiv.org/abs/2103.10385) (liu et al. 2021) -- use LSTM to generate prompt embeddings (don't map to tokens)
-- [Knowledgeable Prompt-tuning: Incorporating Knowledge into Prompt Verbalizer for Text Classification](https://arxiv.org/abs/2108.02035) (hu et al. 2021) -- add knowledge-base info into the prompt search
-- [Learning How to Ask: Querying LMs with Mixtures of Soft Prompts](https://arxiv.org/abs/2104.06599) (qin & eisner, 2021); [github](https://github.com/hiaoxui/soft-prompts)
+  
+- Knowledgeable Prompt-tuning: Incorporating Knowledge into Prompt Verbalizer for Text Classification ([Hu et al. 2021](https://arxiv.org/abs/2108.02035)) -- add knowledge-base info into the prompt search
+
+- Learning How to Ask: Querying LMs with Mixtures of Soft Prompts ([Qin & Eisner, 2021](https://arxiv.org/abs/2104.06599))
   - use continuous tokens and ensemble (don't map back to words)
-- [WARP: Word-level Adversarial ReProgramming](https://arxiv.org/abs/2101.00121) (Hambardzumyan et al. 2021) - add continous tokens (don't map back to words) + some task-specific parameters for better generalization
-- [KnowPrompt: Knowledge-aware Prompt-tuning with Synergistic Optimization for Relation Extraction](https://arxiv.org/abs/2104.07650) (chen et al. 2021) -- incorporate relations, visualize learned prompt vectors with t-SNE
+  
+- WARP: Word-level Adversarial ReProgramming ([Hambardzumyan et al. 2021](https://arxiv.org/abs/2101.00121)) - add continous tokens (don't map back to words) + some task-specific parameters for better generalization
+
+- KnowPrompt: Knowledge-aware Prompt-tuning with Synergistic Optimization for Relation Extraction ([Chen et al. 2021](https://arxiv.org/abs/2104.07650)) -- incorporate relations, visualize learned prompt vectors with t-SNE
+
 - Calibrate Before Use: Improving Few-Shot Performance of Language Models ([zhao, ..., dan klein, sameer singh, 2021](https://arxiv.org/abs/2102.09690)) - in order to make prompting easier, first calibrate output distr by making it uniform when given null inputs, e.g. "N/A"
+
 - misc
-  - [SentiPrompt: Sentiment Knowledge Enhanced Prompt-Tuning for Aspect-Based Sentiment Analysis](https://arxiv.org/abs/2109.08306) -- use sentiment knowledge penalties in the prompt
-  - [Meta-learning via Language Model In-context Tuning](https://arxiv.org/abs/2110.07814) (Chen et al. 2022) -- Given new task with new instruction
-  - [Prompt Programming for Large Language Models: Beyond the Few-Shot Paradigm](https://arxiv.org/abs/2102.07350) (Reynolds & McDonell, 2021) -- define metaprompts as general wrappers around tasks e.g. “This problem asks us to”
-  - [Re3: Generating Longer Stories With Recursive Reprompting and Revision](https://arxiv.org/abs/2210.06774) (yang, ..., klein, 2022) - generate summaries, then expand and revise with prompts
+
+  - SentiPrompt: Sentiment Knowledge Enhanced Prompt-Tuning for Aspect-Based Sentiment Analysis ([Zhang et al. 2021](https://arxiv.org/abs/2109.08306)) -- use sentiment knowledge penalties in the prompt
+  - Meta-learning via Language Model In-context Tuning ([Chen et al. 2022](https://arxiv.org/abs/2110.07814)) -- Given new task with new instruction
+  - Prompt Programming for Large Language Models: Beyond the Few-Shot Paradigm ([Reynolds & McDonell, 2021](https://arxiv.org/abs/2102.07350)) -- define metaprompts as general wrappers around tasks e.g. “This problem asks us to”
+  - Re3: Generating Longer Stories With Recursive Reprompting and Revision ([Yang et al. 2022](https://arxiv.org/abs/2210.06774)) - generate summaries, then expand and revise with prompts
+
   - Directional Stimulus Prompting ([li, baoling peng, ...jianfeng gao, xifeng yan, 2023](https://arxiv.org/abs/2302.11520)) - generate hint keywords using small LLM that are put into the prompt when calling large LLM
+
 - critiques of prompting
   - [Do Prompt-Based Models Really Understand the Meaning of their Prompts?](https://arxiv.org/abs/2109.01247) (webson & pavlick, 2022) - models can learn fine with prompts that are intentionally irrelevant
     - Are Language Models Worse than Humans at Following Prompts? It's Complicated ([webson, ..., pavlick, 2023](https://arxiv.org/abs/2301.07085))
+
 - can benefit from training for promptability
   - [Adapting Language Models for Zero-shot Learning by Meta-tuning on Dataset and Prompt Collections](https://arxiv.org/abs/2104.04670) (zhong...klein, 2021)
   - [Continued Pretraining for Better Zero- and Few-Shot Promptability](https://arxiv.org/abs/2210.10258) (wu...sameer singh, beltagy, 2022)
+
 - [What learning algorithm is in-context learning? Investigations with linear models](https://arxiv.org/abs/2211.15661) - investigate prompting through synthetic experiments with transformers trained for linear regression
   - [Transformers as Algorithms: Generalization and Implicit Model Selection in In-context Learning](https://arxiv.org/pdf/2301.07067.pdf) (li, ..., oymak, 2023) - generalization bounds for in-context learning when the input prompt is (1) a sequence of i.i.d. (input, label) pairs or (2) a trajectory arising from a dynamical system
 
@@ -403,7 +419,6 @@ category: research
     - [socratic models](https://arxiv.org/abs/2204.00598)
     - [Inner Monologue](https://arxiv.org/abs/2207.05608)
     - [global workspace](https://arxiv.org/abs/2103.01197)
-
 
 # misc
 
@@ -504,7 +519,7 @@ Overview of mechanistic interpretability ([nanda, 2022+](https://www.neelnanda.i
 
   - Extracting Latent Steering Vectors from Pretrained Language Models ([subramani, ..., peters, 2022](https://arxiv.org/abs/2205.05124)) - find latent vectors via optimization that cause an LLM to output a particular sequence
     - then, use these vectors to do things like transfer to new tasks / compute textual similarity
-  
+
 - Editing Models with Task Arithmetic ([ilharco, ribeiro, ..., farhadi, 2022](https://arxiv.org/abs/2212.04089)) - task vector is model weights after task finetuning - model weights before finetuning
   - can use this direction to alter model behavior
 - Locating and Editing Factual Associations in GPT ([meng, bau et al. 2022](https://arxiv.org/abs/2202.05262) )
@@ -519,13 +534,16 @@ Overview of mechanistic interpretability ([nanda, 2022+](https://www.neelnanda.i
   - Fast model editing at scale ([mitchell...finn, manning, 2022](https://arxiv.org/abs/2110.11309))
     -  a collection of small auxiliary editing networks that use a single desired input-output pair to edit a pre-trained model
     -  MEND learns to transform the gradient obtained by standard fine-tuning, using a low-rank decomposition of the gradient
+- Editing Factual Knowledge in Language Models ([de cao, aziz, & titov, 2021](https://arxiv.org/pdf/2104.08164.pdf))
+  - train a network that takes in input, output, edit and predicts a weight update to the model
+
 - PURR: Efficiently Editing Language Model Hallucinations by Denoising Language Model Corruptions ([chen...sameer singh...kelvin guu, 2023](https://drive.google.com/file/d/1CXSUii4w8Y2uj-zLm8zRl63SYh45FaZL/view))
 - MQUAKE: Assessing Knowledge Editing in Language Models via Multi-Hop Questions ([zhong...manning, potts, chen, 2023](https://www.cs.princeton.edu/~zzhong/papers/MQuAKE.pdf)) - introduces benchmark MQUAKE + method MeLLo, which stores edited facts externally while prompting the language model iteratively to generate answers that are consistent with the edited facts
 
 ## debugging / interpretation
 
-- [TalkToModel: Understanding Machine Learning Models With Open Ended Dialogues](https://arxiv.org/abs/2207.04154) (slack...lakkaraju, sameer singh, 2022) - natural language interface to query model (by converting to commands such as filtering the data / calculating importance)
-  - [Rethinking Explainability as a Dialogue: A Practitioner's Perspective](https://arxiv.org/abs/2202.01875) (lakkaraju, slack, ..., sameer singh, 2022) - interviews with high-stakes users suggest they would like to be able to interact with systems via dialog
+- TalkToModel: Understanding Machine Learning Models With Open Ended Dialogues ([slack...lakkaraju, sameer singh, 2022](https://arxiv.org/abs/2207.04154)) - natural language interface to query model (by converting to commands such as filtering the data / calculating importance)
+  - Rethinking Explainability as a Dialogue: A Practitioner's Perspective ([lakkaraju, slack, ..., sameer singh, 2022](https://arxiv.org/abs/2202.01875)) - interviews with high-stakes users suggest they would like to be able to interact with systems via dialog
 - [The Unreliability of Explanations in Few-shot Prompting for Textual Reasoning](https://arxiv.org/abs/2205.03401?context=cs) (ye & durrett, 2022)
 - AdaTest [Adaptive Testing and Debugging of NLP Models](https://aclanthology.org/2022.acl-long.230/) (ribeiro & lundberg, 2022)
   - goal: easily specify, discover, and fix undesirable behaviors in an NLP model
@@ -539,18 +557,9 @@ Overview of mechanistic interpretability ([nanda, 2022+](https://www.neelnanda.i
 
   - Checklist [Beyond Accuracy: Behavioral Testing of NLP models with CheckList](https://arxiv.org/abs/2005.04118) (ribeiro...sameer singh, 2020)
     - matrix of general linguistic capabilities + test types
-
 - [Fixing Model Bugs with Natural Language Patches](https://openreview.net/forum?id=B6wzhbPhsZ9) (murty, manning, lundberg, & ribeiro 2022)
   - specify patches with natural language rather than hard rule, allowing them to better handle text
   - finetune a model to combine original model output with output from a patch-conditioned interpreter head
-- augmenting interpretable models
-  - Augmenting Interpretable Models with LLMs during Training ([singh, askari, caruana & gao, 2023](https://arxiv.org/abs/2209.11799))
-    - use language model to extract embeddings which are then used to fit a better GAM (focuses on NLP)
-
-  - CHiLL: Zero-shot Custom Interpretable Feature Extraction from Clinical Notes with Large Language Models ([mcinerney, ..wallace, 2023](https://arxiv.org/abs/2302.12343))
-    - extract interpretable feature (e.g. "Does this patient have a chronic illness?") and use in a linear model (use Flan-T5)
-    - interpretable features: 10 ICD codes + (1) Does the patient have a chronic illness? (2) Is the condition life-threatening?
-    - Large Language Models are Few-Shot Clinical Information Extractors ([agrawal...sontag, 2022](https://arxiv.org/abs/2205.12689)) - use GPT3
 
 
 ## symbolic reasoning
@@ -780,11 +789,6 @@ mixture of experts models have become popular because of the need for (1) fast s
     - protein keyword prediction (predict keywords in UniProt, like "ATP-Binding", "Cell membrane")
     - protein function description - compare free-form description to GT UniProt function description
 
-## connecting with rules
-
-- Automatic Rule Extraction from Long Short Term Memory Networks ([murdoch & szlam, 2017](https://arxiv.org/abs/1702.02540)) - extract out phrases using feature importance
-- A Comparative Study of Rule Extraction for Recurrent Neural Networks ([wang et al. 2018](https://arxiv.org/abs/1801.05420)) - create automata based on interpretable states to track RNNs
-
 ## tabular data
 
 - tabular pre-training
@@ -834,6 +838,11 @@ mixture of experts models have become popular because of the need for (1) fast s
   - 2 competences: (1) formal & (2) functional linguistic competence
 
 - speculative [foundation models paper](https://arxiv.org/abs/2108.07258) (stanford, 2022)
+
+## clinical papers
+
+- Self-Verification Improves Few-Shot Clinical Information Extraction ([gero et al. 2023](https://arxiv.org/abs/2306.00024))
+- Large Language Models are Few-Shot Clinical Information Extractors ([agrawal...sontag, 2022](https://arxiv.org/abs/2205.12689)) - use GPT3
 
 # basics
 
@@ -913,7 +922,7 @@ Broadly, models can be grouped into three categories:
 - [Handling multiple sequences - Hugging Face Course](https://huggingface.co/course/chapter2/5?fw=pt)
   - pad sequences to have the same length (need to modify attention masks to ignore the padded values)
 
-###  pre-transformer nlp models
+## pre-transformer nlp models
 
 - rnns
   - when training rnn, accumulate gradients over sequence and then update all at once
