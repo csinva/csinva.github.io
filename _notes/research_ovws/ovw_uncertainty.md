@@ -124,3 +124,9 @@ category: research
 - [Uncertainty Sets for Image Classifiers using Conformal Prediction](https://arxiv.org/abs/2009.14193) (angelopoulos, bates, malik, jordan, 2021)
   - Image-to-Image Regression with Distribution-Free Uncertainty Quantification and Applications in Imaging ([Angelopoulos, ...jordan, malik, upadhyayula, roman, '22](https://arxiv.org/pdf/2202.05265.pdf))
     - pixel-level uncertainties
+
+
+
+# large language models (llms)
+
+- Teaching Models to Express Their Uncertainty in Words ([Lin et al., 2022](https://arxiv.org/abs/2205.14334)) - GPT3 can  generate both an answer and a level of confidence (e.g. "90% confidence")

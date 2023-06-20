@@ -86,7 +86,7 @@ See related papers in the [📌 interpretability](https://csinva.io/notes/resear
     - outperforms [Flamingo: a Visual Language Model for Few-Shot Learning](https://arxiv.org/abs/2204.14198) (2022), which uses more domain knowledge to connect vision & language
   - video
     - Text-To-4D Dynamic Scene Generation ([meta, 2023](https://arxiv.org/abs/2301.11280v1))
-  
+
 - vision
   - VIT: An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale ([dosoviskiy, ..., houlsby, 2020](https://arxiv.org/abs/2010.11929))
     - [attention augmentation to resnet](https://arxiv.org/abs/1904.09925) for vision (bello...quoc le, 2020)
@@ -106,6 +106,7 @@ See related papers in the [📌 interpretability](https://csinva.io/notes/resear
   - Decision Transformer: Reinforcement Learning via Sequence Modeling ([chen, lu, ...abbeel, srinivas, mordatch, 2021](https://arxiv.org/pdf/2106.01345.pdf)) - transformer that predicts what the next highest reward step is instead of the next word
 
 - biomedical
+  - ClinicalGPT: Large Language Models Finetuned with Diverse Medical Data and Comprehensive Evaluation ([wang, ..., li, 2023](https://arxiv.org/abs/2306.09968))
   - BioGPT: [Generative pre-trained transformer for biomedical text generation and mining](https://academic.oup.com/bib/article-abstract/23/6/bbac409/6713511) (luo...poon, liu, 2022)
     - ChatDoctor (finetuned LLAMA) ([yunxiang, ..., you, 2023](https://arxiv.org/abs/2303.14070))
     - PubMedGPT (2.7B): ([bolton, hall, ..., manning, liang, 2022](https://crfm.stanford.edu/2022/12/15/pubmedgpt.html)) -> renamed to *BioMedLM*
@@ -132,7 +133,7 @@ See related papers in the [📌 interpretability](https://csinva.io/notes/resear
     - during testing, have to predict outputs for inputs from a different linear function
     - also test on slightly harder functions, like decision trees and 2-layer nets
   - Looped Transformers as Programmable Computers ([giannou, ..., jason lee, papailiopoulos, 2023](https://arxiv.org/abs/2301.13196) - use transformers as universal computers by programming them with specific weights
-  
+
 - dialog
   - ChatGPT
   - [GODEL: Large-Scale Pre-Training for Goal-Directed Dialog](https://arxiv.org/abs/2206.11309) (baolin peng, galley, ..., gao , 2022) - add grounded pre-training
@@ -157,7 +158,7 @@ See related papers in the [📌 interpretability](https://csinva.io/notes/resear
       ```
     
   - program synthesis [arxiv.org/abs/2108.07732](https://arxiv.org/abs/2108.07732) - formalize natural language into runnable code
-  
+
 - embeddings
   - Instructor: One Embedder, Any Task: Instruction-Finetuned Text Embeddings ([su, ..., smith, zettlemoyer, yu, 2022](https://instructor-embedding.github.io)) - embedding is contextualized to eaach task
 
@@ -172,6 +173,11 @@ See related papers in the [📌 interpretability](https://csinva.io/notes/resear
 - summarization / keywords
 
   - KeyBERT: Minimal keyword extraction with BERT ([grootendorst, 2020](https://github.com/MaartenGr/KeyBERT))
+
+- text-to-speech
+
+  - Voicebox: Text-Guided Multilingual Universal Speech Generation at Scale ([meta, 2023](https://research.facebook.com/publications/voicebox-text-guided-multilingual-universal-speech-generation-at-scale/))
+
 
 ## external knowledge / tool use / grounding
 
@@ -294,7 +300,7 @@ See related papers in the [📌 interpretability](https://csinva.io/notes/resear
 - [memory-assisted prompt-editing](https://arxiv.org/abs/2201.06009) (madaan...yang, 2022) - allows model to "save things to memory" that get added to prompt when needed
 - Prompting Is Programming: A Query Language For Large Language Models ([Beurer-Kellner, Fischer, & Vechev, 2022](https://arxiv.org/abs/2212.06094))
 
-## autoprompting
+## (auto)prompting
 
 ![prompting_hierarchy](../assets/prompting_hierarchy.png)
 
@@ -305,7 +311,6 @@ See related papers in the [📌 interpretability](https://csinva.io/notes/resear
     - experiments on instruction induction datasets + truthful QA
   - FluentPrompt: Toward Human Readable Prompt Tuning ([shi, ..., zettlemoyer, 2022](https://arxiv.org/abs/2212.10539)) - use langevin sampling + fluency constraint to generate prompt
     - experiments relatively weak: 3 sentiment datasets + autoprompt is the only baseline
-  
 - discrete prompting
   - [AutoPrompt: Eliciting Knowledge from Language Models with Automatically Generated Prompts](https://aclanthology.org/2020.emnlp-main.346/) (shin...sameer singh, 2020)
     - select prompts from a fixed set of tokens (resulting prompts are not coherent)
@@ -315,7 +320,6 @@ See related papers in the [📌 interpretability](https://csinva.io/notes/resear
   - [RLPrompt: Optimizing Discrete Text Prompts with Reinforcement Learning](https://arxiv.org/abs/2205.12548) (deng...hu, 2022)
   - LM-BFF: Making Pre-trained Language Models Better Few-shot Learners ([gao et al. 2020](https://arxiv.org/abs/2012.15723)) - uses T5 to generate (i) template for the task (which might include a whole example or two) + (i) appropropriate label tokens in the vocabulary for the task (suffers from computationally intensive search + sub-optimal discrete space search)
   - [PADA: Example-based Prompt Learning for on-the-fly Adaptation to Unseen Domains](https://arxiv.org/abs/2102.12206) (ben-david, ..., reichart, 2022)
-  
 - prompt ensembles
   - PromptBoosting: Black-Box Text Classification with Ten Forward Passes ([hou, ..., jacob andreas, ..., zhang, 2022](https://arxiv.org/abs/2212.09257)) - get a small pool of prompts, learn a verbalizer (final classification layer) for each, then ensemble them with AdaBoost on LLM output
 
@@ -325,29 +329,20 @@ See related papers in the [📌 interpretability](https://csinva.io/notes/resear
       - Snuba ([Varma and Ré, 2018](https://pubmed.ncbi.nlm.nih.gov/31777681/)) generates heuristics based on a small labeled dataset with pre-defined rule types
       - TALLOR ([Li et al. 2021a](https://arxiv.org/pdf/2107.02282.pdf)) & GLaRA ([Zhao et al. 2021](https://arxiv.org/pdf/2104.06230.pdf)) study rule expansion for NER problem based on lexical information and then select rules based on a hand-tuned threshold
   - PTR: Prompt Tuning with Rules for Text Classification ([han et al. 2021](https://arxiv.org/abs/2105.11259)) -- use logic rules to construct prompts with sub-prompts for many-class text classification (prompt is constructed hierarchically, but only one call is made to the LLM for inference)
-  
 - [Prefix-Tuning: Optimizing Continuous Prompts for Generation](https://arxiv.org/abs/2101.00190) (li & percy liang, 2021) -- optimizes in continuous space for language generation tasks
   - learn to map some parameters $\theta$ through and MLP to generate a starting hidden state $h_i$ -- never actually sends the prefix through the network 
-  
 - [Control Prefixes for Parameter-Efficient Text Generation](https://arxiv.org/abs/2110.08329) (clive, cao, & rei, 2022) - allow for adapting the prefix to each input example
-
 - DART [Differentiable Prompt Makes Pre-trained Language Models Better Few-shot Learners](https://arxiv.org/abs/2108.13161) (zhang...chen, 2022)
   - reformulating NLP task into differentially optimizing the prompt template + target label (given a pre-trained model)
   - focus on smaller models (Roberta-large + GPT-2) + few training shots
   - fluency constraint to ensure association among prompt embeddings
   - P-Tuning -- [GPT Understands, Too](https://arxiv.org/abs/2103.10385) (liu et al. 2021) -- use LSTM to generate prompt embeddings (don't map to tokens)
-  
 - Knowledgeable Prompt-tuning: Incorporating Knowledge into Prompt Verbalizer for Text Classification ([Hu et al. 2021](https://arxiv.org/abs/2108.02035)) -- add knowledge-base info into the prompt search
-
 - Learning How to Ask: Querying LMs with Mixtures of Soft Prompts ([Qin & Eisner, 2021](https://arxiv.org/abs/2104.06599))
   - use continuous tokens and ensemble (don't map back to words)
-  
 - WARP: Word-level Adversarial ReProgramming ([Hambardzumyan et al. 2021](https://arxiv.org/abs/2101.00121)) - add continous tokens (don't map back to words) + some task-specific parameters for better generalization
-
 - KnowPrompt: Knowledge-aware Prompt-tuning with Synergistic Optimization for Relation Extraction ([Chen et al. 2021](https://arxiv.org/abs/2104.07650)) -- incorporate relations, visualize learned prompt vectors with t-SNE
-
 - Calibrate Before Use: Improving Few-Shot Performance of Language Models ([zhao, ..., dan klein, sameer singh, 2021](https://arxiv.org/abs/2102.09690)) - in order to make prompting easier, first calibrate output distr by making it uniform when given null inputs, e.g. "N/A"
-
 - misc
 
   - SentiPrompt: Sentiment Knowledge Enhanced Prompt-Tuning for Aspect-Based Sentiment Analysis ([Zhang et al. 2021](https://arxiv.org/abs/2109.08306)) -- use sentiment knowledge penalties in the prompt
@@ -356,17 +351,15 @@ See related papers in the [📌 interpretability](https://csinva.io/notes/resear
   - Re3: Generating Longer Stories With Recursive Reprompting and Revision ([Yang et al. 2022](https://arxiv.org/abs/2210.06774)) - generate summaries, then expand and revise with prompts
 
   - Directional Stimulus Prompting ([li, baoling peng, ...jianfeng gao, xifeng yan, 2023](https://arxiv.org/abs/2302.11520)) - generate hint keywords using small LLM that are put into the prompt when calling large LLM
-
 - critiques of prompting
   - [Do Prompt-Based Models Really Understand the Meaning of their Prompts?](https://arxiv.org/abs/2109.01247) (webson & pavlick, 2022) - models can learn fine with prompts that are intentionally irrelevant
     - Are Language Models Worse than Humans at Following Prompts? It's Complicated ([webson, ..., pavlick, 2023](https://arxiv.org/abs/2301.07085))
-
 - can benefit from training for promptability
   - [Adapting Language Models for Zero-shot Learning by Meta-tuning on Dataset and Prompt Collections](https://arxiv.org/abs/2104.04670) (zhong...klein, 2021)
   - [Continued Pretraining for Better Zero- and Few-Shot Promptability](https://arxiv.org/abs/2210.10258) (wu...sameer singh, beltagy, 2022)
-
 - [What learning algorithm is in-context learning? Investigations with linear models](https://arxiv.org/abs/2211.15661) - investigate prompting through synthetic experiments with transformers trained for linear regression
-  - [Transformers as Algorithms: Generalization and Implicit Model Selection in In-context Learning](https://arxiv.org/pdf/2301.07067.pdf) (li, ..., oymak, 2023) - generalization bounds for in-context learning when the input prompt is (1) a sequence of i.i.d. (input, label) pairs or (2) a trajectory arising from a dynamical system
+  - Transformers as Algorithms: Generalization and Implicit Model Selection in In-context Learning ([li, ..., oymak, 2023](https://arxiv.org/pdf/2301.07067.pdf)) - generalization bounds for in-context learning when the input prompt is (1) a sequence of i.i.d. (input, label) pairs or (2) a trajectory arising from a dynamical system
+  - Trained Transformers Learn Linear Models In-Context ([zhang, frei, & bartlett, 2023](https://arxiv.org/pdf/2306.09927.pdf))
 
 ## llm chaining / decoding
 
@@ -498,6 +491,7 @@ Overview of mechanistic interpretability ([nanda, 2022+](https://www.neelnanda.i
 - logit lens ([2020](https://www.alignmentforum.org/posts/AcKRB8wDpdaN6v6ru/interpreting-gpt-the-logit-lens)) - apply unembedding matrix to outputs of each transformer layer
   - tuned-lens ([belrose...steinhardt, 2023](https://arxiv.org/abs/2303.08112)) - train linear model for each layer to decode vocab
   - Analyzing Transformers in Embedding Space ([dar, ..., berant, 2022](https://arxiv.org/pdf/2209.02535.pdf)) - apply unembeddix matrix to weights, etc. to interpret transformers
+- Rosetta Neurons: Mining the Common Units in a Model Zoo (dravid, ..., efros, shocher, 2023)
 
 
 ## attention variants
@@ -507,7 +501,31 @@ Overview of mechanistic interpretability ([nanda, 2022+](https://www.neelnanda.i
 
 ## editing
 
-- REMEDI ([hernandez, li, & andreas, 2023](https://arxiv.org/pdf/2304.00740.pdf)) - 
+- Editing Large Language Models: Problems, Methods, and Opportunities ([yao, ..., zhang, 2023](https://arxiv.org/pdf/2305.13172.pdf))
+  - model-editing = data-efficient alterations to a model
+
+- memory-based
+  - SERAC: Memory-Based Model Editing at Scale ([mitchell...manning, finn, 2022](https://proceedings.mlr.press/v162/mitchell22a/mitchell22a.pdf))
+    - keep track of list of edits in external memory and use them as appropriate context at test time (don't finetune the model)
+
+  - T-Patcher (Huang et al., 2023) and CaliNET (Dong et al., 2022) introduce extra trainable parameters into the feed- forward module of PLMs
+
+- weight updates
+  - Knowledge Neurons in Pretrained Transformers ([dai et al. 2021](https://arxiv.org/abs/2104.08696)) - integrated gradients wrt to each neuron in BERT, then selectively udpate these neurons
+  - ROME: Locating and Editing Factual Associations in GPT ([meng, bau et al. 2022](https://arxiv.org/abs/2202.05262) )
+    - *localize factual associations* - causal intervention for identifying neuron activations that are decisive in a model’s factual predictions
+      - "causal traces" - run net multiple times, introducing corruptions and then restore states from original non-corrupted forward pass to see which states can restore the original results
+      - a small number of states contain info that can flip the model from one state to another
+    - *change factual associations* - modify feedforward weights to update specific factual associations using Rank-One Model Editing (ROME)
+    - MEMIT: Mass Editing Memory in a Transformer ([meng..., bau, 2022](https://memit.baulab.info/))
+    - Aging with GRACE: Lifelong Model Editing with Discrete Key-Value Adapters ([hartvigsen, ..., palangi, ..., ghassemi, 2023](https://arxiv.org/abs/2211.11031v3))
+  - meta-learning
+    - KnowledgeEditor: Editing Factual Knowledge in Language Models ([de cao, aziz, & titov, 2021](https://arxiv.org/pdf/2104.08164.pdf)) - train a network that takes in input, output, edit and predicts a weight update to the model
+    - MEND: Fast model editing at scale ([mitchell...finn, manning, 2022](https://arxiv.org/abs/2110.11309))
+      -  a collection of small auxiliary editing networks that use a single desired input-output pair to edit a pre-trained model
+      -  MEND learns to transform the gradient obtained by standard fine-tuning, using a low-rank decomposition of the gradient
+  
+- REMEDI ([hernandez, li, & andreas, 2023](https://arxiv.org/pdf/2304.00740.pdf)) and related activation engineering
   - get "edit vectors" by obtaining embeddings when passing attributes through LLM
   - perform edit by by adding linear transformation of edit vector to prompt embedding
     - then, perform generation with latent embedding
@@ -519,26 +537,13 @@ Overview of mechanistic interpretability ([nanda, 2022+](https://www.neelnanda.i
 
   - Extracting Latent Steering Vectors from Pretrained Language Models ([subramani, ..., peters, 2022](https://arxiv.org/abs/2205.05124)) - find latent vectors via optimization that cause an LLM to output a particular sequence
     - then, use these vectors to do things like transfer to new tasks / compute textual similarity
-
 - Editing Models with Task Arithmetic ([ilharco, ribeiro, ..., farhadi, 2022](https://arxiv.org/abs/2212.04089)) - task vector is model weights after task finetuning - model weights before finetuning
   - can use this direction to alter model behavior
-- Locating and Editing Factual Associations in GPT ([meng, bau et al. 2022](https://arxiv.org/abs/2202.05262) )
-  - *localize factual associations* - causal intervention for identifying neuron activations that are decisive in a model’s factual predictions
-    - "causal traces" - run net multiple times, introducing corruptions and then restore states from original non-corrupted forward pass to see which states can restore the original results
-    - a small number of states contain info that can flip the model from one state to another
-  - *change factual associations* - modify feedforward weights to update specific factual associations using Rank-One Model Editing (ROME)
-  - Mass Editing Memory in a Transformer ([meng..., bau, 2022](https://memit.baulab.info/))
-- Knowledge Neurons in Pretrained Transformers ([dai et al. 2021](https://arxiv.org/abs/2104.08696)) - integrated gradients wrt to each neuron in BERT
-- Memory-Based Model Editing at Scale ([mitchell...manning, finn, 2022](https://proceedings.mlr.press/v162/mitchell22a/mitchell22a.pdf))
-  - keep track of list of edits in external memory and use them as appropriate context at test time (don't finetune the model)
-  - Fast model editing at scale ([mitchell...finn, manning, 2022](https://arxiv.org/abs/2110.11309))
-    -  a collection of small auxiliary editing networks that use a single desired input-output pair to edit a pre-trained model
-    -  MEND learns to transform the gradient obtained by standard fine-tuning, using a low-rank decomposition of the gradient
-- Editing Factual Knowledge in Language Models ([de cao, aziz, & titov, 2021](https://arxiv.org/pdf/2104.08164.pdf))
-  - train a network that takes in input, output, edit and predicts a weight update to the model
-
 - PURR: Efficiently Editing Language Model Hallucinations by Denoising Language Model Corruptions ([chen...sameer singh...kelvin guu, 2023](https://drive.google.com/file/d/1CXSUii4w8Y2uj-zLm8zRl63SYh45FaZL/view))
-- MQUAKE: Assessing Knowledge Editing in Language Models via Multi-Hop Questions ([zhong...manning, potts, chen, 2023](https://www.cs.princeton.edu/~zzhong/papers/MQuAKE.pdf)) - introduces benchmark MQUAKE + method MeLLo, which stores edited facts externally while prompting the language model iteratively to generate answers that are consistent with the edited facts
+- new datasets
+  - MQUAKE: Assessing Knowledge Editing in Language Models via Multi-Hop Questions ([zhong...manning, potts, chen, 2023](https://www.cs.princeton.edu/~zzhong/papers/MQuAKE.pdf)) - introduces benchmark MQUAKE + method MeLLo, which stores edited facts externally while prompting the language model iteratively to generate answers that are consistent with the edited facts
+  - [COUNTERFACT+ benchmark](https://arxiv.org/pdf/2305.17553.pdf) - checks that edits don’t affect existing info
+
 
 ## debugging / interpretation
 
@@ -686,7 +691,10 @@ mixture of experts models have become popular because of the need for (1) fast s
   - contrastive decoding ([li et al. 2022](https://arxiv.org/abs/2210.15097)) - decode based on the difference between a large and small LLM
   - Semantic Uncertainty ([kuhn, gal, & farquhar, 2023](https://arxiv.org/abs/2302.09664)) - yields uncertainties by incorporating linguistic invariances created by shared meanings
   - Minimum Bayes Risk Decoding ([suzgun, ..., jurafsky, 2022](https://arxiv.org/abs/2211.07634)) or ([freitag et al. 2022](https://arxiv.org/pdf/2111.09388.pdf))
-  
+- Can Large Language Models Infer Causation from Correlation? ([jin...scholkopf, 2023](https://arxiv.org/abs/2306.05836)) - introduce Corr2Cause dataset (must infer causal graph from correlational statements), doesn't test pre-existing knowledge
+- Causal Reasoning and Large Language Models: Opening a New Frontier for Causality ([kiciman...tan, 2023](https://arxiv.org/abs/2305.00050))
+  - LLMs to be used alongside existing causal methods, as a proxy for human domain knowledge and to reduce human effort in setting up a causal analysis
+    - cause-effect pairs, LLM has to discover from graph (tubingen benchmark, neuropathic pain, etc.)
 - Discovering Latent Knowledge in Language Models Without Supervision ([burns, ye, klein, & steinhardt, 2022](https://arxiv.org/abs/2212.03827)) - identify whether text is true or false directly from a model’s *unlabeled activations*
 - [InferBERT: A Transformer-Based Causal Inference Framework for Enhancing Pharmacovigilance](https://www.frontiersin.org/articles/10.3389/frai.2021.659622/full) (wang...liu, 2021) - learn + test feature relationships from attention weights
 - [CausaLM: Causal Model Explanation Through Counterfactual Language Models](https://direct.mit.edu/coli/article/47/2/333/98518/CausaLM-Causal-Model-Explanation-Through) (2021) - produce example-level causal model explanations using models finetuned on auxiliary adversarial tasks derived from the causal graph of the problem
@@ -694,9 +702,6 @@ mixture of experts models have become popular because of the need for (1) fast s
   - Applies causal mediation analysis to identify decisive neurons and attention heads responsible for gender bias in large language models
   - Identifies a small handful of decisive attention heads in this case
 - Amnesic Probing: Behavioral Explanation with Amnesic Counterfactuals ([elazar, ..., goldberg, 2021](https://arxiv.org/pdf/2006.00995.pdf)) - measure the importance of specific info within a model by introducing a causal intervention to erase that information, then observing the causal effects
-- Causal Reasoning and Large Language Models: Opening a New Frontier for Causality ([kiciman...tan, 2023](https://arxiv.org/abs/2305.00050))
-  - LLMs to be used alongside existing causal methods, as a proxy for human domain knowledge and to reduce human effort in setting up a causal analysis
-    - cause-effect pairs, LLM has to discover from graph (tubingen benchmark, neuropathic pain, etc.)
 
 
 ## dataset / module explanation
@@ -839,10 +844,45 @@ mixture of experts models have become popular because of the need for (1) fast s
 
 - speculative [foundation models paper](https://arxiv.org/abs/2108.07258) (stanford, 2022)
 
+## text explanations
+
+- Language Models Don't Always Say What They Think: Unfaithful Explanations in Chain-of-Thought Prompting ([turpin, ..., bowman, 2023](https://arxiv.org/abs/2305.04388))
+
+  - CoT explanations can be heavily influenced by biasing the model towards certain answers, thereby yielding invalid explanations
+  - try biasing in 2 ways: answer is always (A), or setting where prompt suggests a certain answer
+
+- Two Failures of Self-Consistency in the Multi-Step Reasoning of LLMs ([chen, ..., bowman, cho, 2023](https://arxiv.org/abs/2305.14279)) - models fail at these 2 tasks:
+
+  - hypothetical consistency (the ability for a model to predict what its output would be in a hypothetical other context)
+  - compositional consistency (consistency of a model's outputs for a compositional task even when an intermediate step is replaced with the model's output for that step)
+
+- iPrompt ([singh, morris, ...gao, 2022](https://arxiv.org/abs/2210.01848))
+
+- WT5?! Training Text-to-Text Models to Explain their Predictions ([narang, raffel, ..., malkan, 2020](https://arxiv.org/pdf/2004.14546.pdf))
+
+- [Adversarial Inference for Multi-Sentence Video Description](https://arxiv.org/pdf/1812.05634.pdf) - adversarial techniques during inference for a better multi-sentence video description
+
+- [Object Hallucination in Image Captioning](https://aclweb.org/anthology/D18-1437) - image relevance metric - asses rate of object hallucination
+
+  - CHAIR metric - what proportion of words generated are actually in the image according to gt sentences and object segmentations
+
+- [women also snowboard](https://arxiv.org/pdf/1803.09797.pdf) - force caption models to look at people when making gender-specific predictions
+
+- [Fooling Vision and Language Models Despite Localization and Attention Mechanism](http://openaccess.thecvf.com/content_cvpr_2018/papers/Xu_Fooling_Vision_and_CVPR_2018_paper.pdf) -  can do adversarial attacks on captioning and VQA
+
+- [Grounding of Textual Phrases in Images by Reconstruction](https://arxiv.org/pdf/1511.03745.pdf) - given text and image provide a bounding box (supervised problem w/ attention)
+
+- [Natural Language Explanations of Classifier Behavior](https://ieeexplore.ieee.org/abstract/document/8791710)
+
+- [eli5](https://eli5.readthedocs.io/en/latest/libraries/sklearn.html#library-scikit-learn) has nice text highlighting for interp
+
+  
+
 ## clinical papers
 
 - Self-Verification Improves Few-Shot Clinical Information Extraction ([gero et al. 2023](https://arxiv.org/abs/2306.00024))
 - Large Language Models are Few-Shot Clinical Information Extractors ([agrawal...sontag, 2022](https://arxiv.org/abs/2205.12689)) - use GPT3
+- Health system-scale language models are all-purpose prediction engines ([NYU 2023](https://www.nature.com/articles/s41586-023-06160-y))
 
 # basics
 

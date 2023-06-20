@@ -1454,8 +1454,9 @@ the operations above allow for encoding many normal data structures into a singl
 
 ## nlp / fMRI
 
-- interpreting brain encoding models
+- Mapping Brains with Language Models: A Survey ([Karamolegkou et al. 2023](https://arxiv.org/abs/2306.05126))
 
+- interpreting brain encoding models
   - [Brains and algorithms partially converge in natural language processing](https://www.nature.com/articles/s42003-022-03036-1#Sec9) (caucheteux & king, 2022)
     - best brain-mapping are obtained from the middle layers of DL models
     - whether an algorithm maps onto the brain primarily depends on its ability to predict words context
@@ -1464,7 +1465,7 @@ the operations above allow for encoding many normal data structures into a singl
   - [Tracking the online construction of linguistic meaning through negation](https://www.biorxiv.org/content/10.1101/2022.10.14.512299.abstract) (zuanazzi, ..., remi-king, poeppel, 2022)
   - [Blackbox meets blackbox: Representational Similarity and Stability Analysis of Neural Language Models and Brains](https://arxiv.org/abs/1906.01539) (abnar, … zuidema, emnlp workshop, 2019) - use RSA to compare representations from language models with fMRI data from Wehbe et al. 2014
   - [Evidence of a predictive coding hierarchy in the human brain listening to speech](https://www.nature.com/articles/s41562-022-01516-2) (caucheteux, gramfot, & king, 2023)
-
+  
 - encoding models
 
   - Seminal language-semantics fMRI study ([Huth…Gallant, 2016](https://www.nature.com/articles/nature17637)) - build mapping of semantic concepts across cortex using word vecs
@@ -1484,7 +1485,10 @@ the operations above allow for encoding many normal data structures into a singl
   - Semantic representations during language comprehension are affected by context (i.e. how langauge is presented) ([deniz...gallant, 2021](https://www.biorxiv.org/content/10.1101/2021.12.15.472839v1.full.pdf)) - stimuli with more context (stories, sentences) evoke better responses than stimuli with little context (Semantic Blocks, Single Words)
   - Combining computational controls with natural text reveals new aspects of meaning composition ([toneva, mitchell, & wehbe, 2022](https://www.biorxiv.org/content/biorxiv/early/2022/08/09/2020.09.28.316935.full.pdf)) - study word interactions by using encoding vector emb(phrase) - emb(word1) - emb(word2)...
   - Driving and suppressing the human language network using large language models ([tuckute, ..., shrimpf, kay, & fedorenko, 2023](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10120732/))
-
+    - use encoding models to sort thousands of sentences and then show them
+      - alternatively, use gradient-based modifications to transform a random sentence to elicit larger responses, but this works worse
+    - surprisal and well- formedness of linguistic input are key determinants of response strength in the language network
+  
 - decoding models
   - Seeing Beyond the Brain: Conditional Diffusion Model with Sparse Masked Modeling for Vision Decoding ([chen et al. 2022](https://arxiv.org/pdf/2211.06956.pdf))
 

@@ -463,11 +463,15 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
 
 - Augmenting Interpretable Models with LLMs during Training ([singh, askari, caruana & gao, 2023](https://arxiv.org/abs/2209.11799))
   - use language model to extract embeddings which are then used to fit a better GAM or better tree (focuses on NLP)
+  - Backpack Language Models ([hewit, thickstun, manning, & liang, 2023](https://arxiv.org/abs/2305.16765)) - change transformer layers to represent each word ass
 - CHiLL: Zero-shot Custom Interpretable Feature Extraction from Clinical Notes with Large Language Models ([mcinerney, ..wallace, 2023](https://arxiv.org/abs/2302.12343))
   - extract interpretable feature (e.g. "Does this patient have a chronic illness?") and use in a linear model (use Flan-T5)
   - interpretable features: 10 ICD codes + (1) Does the patient have a chronic illness? (2) Is the condition life-threatening?
-- Learning Transformer Programs ([friedman, wettig, & chen, 2023](https://arxiv.org/abs/2306.01128)) - place strong constraints on transformer architecture that allow it to be written as a [RASP]([https://arxiv.org/abs/2106.06981) program
-- Backpack Language Models ([hewit, thickstun, manning, & liang, 2023](https://arxiv.org/abs/2305.16765)) - change transformer layers to represent each word as a context-dependent, non-negative linear combination of sem-interpretable sense vectors
+- Learning Transformer Programs ([friedman, wettig, & chen, 2023](https://arxiv.org/abs/2306.01128)) - place strong constraints on transformer architecture that allow it to be written as a [RASP]([https://arxiv.org/abs/2106.06981) program compiled with [Tracr](https://arxiv.org/abs/2301.05062)
+  - 2 contraints
+    - disentangled residual stream - attention head inputs K/Q/V are one-hot, ouputs are concatenated at each layer
+    - each module implements rule-based mapping: attention is onehot
+
 
 ### connecting dnns and rules
 
@@ -982,22 +986,6 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
 - An Empirical Examination of Local Composition in Language Models ([liu & neubig, 2022](https://arxiv.org/pdf/2210.03575.pdf))
   - predict phrase embedding given embeddings of children
   - phrase embedding accuracy isn't correlated with actual semantic compositionality
-
-
-### textual explanations
-
-**see also notes in [ovw_transformers](https://csinva.io/notes/research_ovws/ovw_transformers.html)!**
-
-- iPrompt: [Explaining Patterns in Data with Language Models via Interpretable Autoprompting](https://arxiv.org/abs/2210.01848) (singh, morris, ...gao, 2022)
-- WT5?! Training Text-to-Text Models to Explain their Predictions ([narang, raffel, ..., malkan, 2020](https://arxiv.org/pdf/2004.14546.pdf))
-- [Adversarial Inference for Multi-Sentence Video Description](https://arxiv.org/pdf/1812.05634.pdf) - adversarial techniques during inference for a better multi-sentence video description
-- [Object Hallucination in Image Captioning](https://aclweb.org/anthology/D18-1437) - image relevance metric - asses rate of object hallucination
-   - CHAIR metric - what proportion of words generated are actually in the image according to gt sentences and object segmentations
-- [women also snowboard](https://arxiv.org/pdf/1803.09797.pdf) - force caption models to look at people when making gender-specific predictions
-- [Fooling Vision and Language Models Despite Localization and Attention Mechanism](http://openaccess.thecvf.com/content_cvpr_2018/papers/Xu_Fooling_Vision_and_CVPR_2018_paper.pdf) -  can do adversarial attacks on captioning and VQA
-- [Grounding of Textual Phrases in Images by Reconstruction](https://arxiv.org/pdf/1511.03745.pdf) - given text and image provide a bounding box (supervised problem w/ attention)
-- [Natural Language Explanations of Classifier Behavior](https://ieeexplore.ieee.org/abstract/document/8791710)
-- [eli5](https://eli5.readthedocs.io/en/latest/libraries/sklearn.html#library-scikit-learn) has nice text highlighting for interp
 
 
 ## interactions
