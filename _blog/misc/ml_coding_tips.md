@@ -86,9 +86,11 @@ displays
 
 ### environment
 
-- it's hard to pick a good ide for data science. [jupyter](https://jupyter.org/) notebooks are great for exploratory analysis, while more fully built ides like [pycharm](https://www.jetbrains.com/pycharm/) or [vscode](https://code.visualstudio.com) are better for large-scale projects
+- [vscode](https://code.visualstudio.com) (with jupyter support) is the best ide for data science
+  - ~~it's hard to pick a good ide for data science. [jupyter](https://jupyter.org/) notebooks are great for exploratory analysis, while more fully built ides like [pycharm](https://www.jetbrains.com/pycharm/) or [vscode](https://code.visualstudio.com) are better for large-scale projects~~
   - ~~using [atom](https://atom.io/) with the [hydrogen](https://atom.io/packages/hydrogen) plugin often strikes a nice balance~~ (sadly no longer maintained 😢)
-- [github copilot](https://github.com/features/copilot) is a nice add-in
+  
+- [github copilot](https://github.com/features/copilot) is a ~~nice~~ critical add-in
 - [jupytertext](https://github.com/mwouts/jupytext) offers a nice way to use version control with jupyter
 - when working on AWS, this command is useful for starting remote jupyterlab sessions `screen jupyter lab --certfile=~/ssl/mycert.pem --keyfile ~/ssl/mykey.key`
 

@@ -1062,6 +1062,7 @@ How interactions are defined and summarized is a very difficult thing to specify
 - [Interpretable Artificial Intelligence through the Lens of Feature Interaction](https://arxiv.org/abs/2103.03103) (tsang et al. 2021)
   - feature interaction- any non-additive effect between multiple features on an outcome (i.e. cannot be decomposed into a sum of subfunctions of individual variables)
 - [Learning Global Pairwise Interactions with Bayesian Neural Networks](https://arxiv.org/abs/1901.08361) (cui et al. 2020) - Bayesian Group Expected Hessian (GEH) - train bayesian neural net and analyze hessian to understand interactions
+- Feature Interactions Reveal Linguistic Structure in Language Models ([jumelet & zuidema, 2023](https://arxiv.org/pdf/2306.12181.pdf)) - evaluate ability to find interactions using synthetic data / models
 
 ### linear interactions
 

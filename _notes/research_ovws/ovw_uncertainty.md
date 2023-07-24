@@ -130,3 +130,4 @@ category: research
 # large language models (llms)
 
 - Teaching Models to Express Their Uncertainty in Words ([Lin et al., 2022](https://arxiv.org/abs/2205.14334)) - GPT3 can  generate both an answer and a level of confidence (e.g. "90% confidence")
+- Can LLMs Express Their Uncertainty? An Empirical Evaluation of Confidence Elicitation in LLMs ([xiong et al. 2023](https://arxiv.org/abs/2306.13063))

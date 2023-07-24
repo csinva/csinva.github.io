@@ -17,6 +17,7 @@ typora-copy-images-to: ../assets
 - [mdcalc datasets](https://www.mdcalc.com/)
 - [pecarn](https://pecarn.org/datasets/)
 - [openneuro](https://openneuro.org/)
+- [clinicaltrials.gov](http://clinicaltrials.gov/) - has thousands of active trials with long plain text description
 
 ## nlp
 
@@ -52,6 +53,32 @@ typora-copy-images-to: ../assets
       - vitalsigns
       - edstays
       - medication prescription
+
+## CDI bias
+
+- Race/sex overviews
+  - Hidden in Plain Sight — Reconsidering the Use of Race Correction in Clinical Algorithms ([vyas, eisenstein, & jones, 2020](https://www.nejm.org/doi/full/10.1056/NEJMms2004740))
+    - Now is the Time for a Postracial Medicine: Biomedical Research, the National Institutes of Health, and the Perpetuation of Scientific Racism ([2017](https://www.tandfonline.com/doi/abs/10.1080/15265161.2017.1353165))
+  - A Systematic Review of Barriers and Facilitators to Minority Research Participation Among African Americans, Latinos, Asian Americans, and Pacific Islanders ([george, duran, & norris, 2014](https://ajph.aphapublications.org/doi/full/10.2105/AJPH.2013.301706))
+  - Field Synopsis of Sex in Clinical Prediction Models for Cardiovascular Disease ([paulus...kent, 2016](https://www.ahajournals.org/doi/full/10.1161/CIRCOUTCOMES.115.002473)) - supports the use of sex in predicting CVD, but not all CDIs use it
+  - Race Corrections in Clinical Models: Examining Family History and Cancer Risk ([zink, obermeyer, & pierson, 2023](https://www.medrxiv.org/content/10.1101/2023.03.31.23287926v1)) - family history variables mean different things for different groups depending on how much healthcare history their family had
+- ML papers
+  - When Personalization Harms Performance: Reconsidering the Use of Group Attributes in Prediction ([suriyakumar, ghassemi, & ustun, 2023](https://www.berkustun.com/docs/suriyakumar_2023_fairuse.pdf)) - group attributes to improve performance at a *population level* but often hurt at a *group level*
+- CDI guidelines
+  - Reporting and Methods in Clinical Prediction Research: A Systematic Review ([Bouwmeester...moons, 2012](https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1001221)) - review publications in 2008, mostly about algorithmic methodology
+  - Transparent reporting of a multivariable prediction model for individual prognosis or diagnosis (TRIPOD): the TRIPOD Statement ([collins...moons, 2015](https://bmcmedicine.biomedcentral.com/articles/10.1186/s12916-014-0241-z))
+  - Framework for the impact analysis and implementation of Clinical Prediction Rules (CPRs) ([IDAPP group, 2011](https://bmcmedinformdecismak.biomedcentral.com/articles/10.1186/1472-6947-11-62)) - stress validating old rules
+  - Predictability and stability testing to assess clinical decision instrument performance for children after blunt torso trauma ([kornblith...yu, 2022](https://journals.plos.org/digitalhealth/article?id=10.1371/journal.pdig.0000076)) - stress the use of stability, application to IAI
+  - Methodological standards for the development and evaluation of clinical prediction rules: a review of the literature ([cowley...kemp, 2019](https://link.springer.com/article/10.1186/s41512-019-0060-y))
+  - Predictably unequal: understanding and addressing concerns that algorithmic clinical prediction may increase health disparities ([paulus & kent, 2020](https://www.nature.com/articles/s41746-020-0304-9))
+  - Translating Clinical Research into Clinical Practice: Impact of Using Prediction Rules To Make Decisions ([reilly & evans, 2006](https://www.acpjournals.org/doi/10.7326/0003-4819-144-3-200602070-00009))
+
+- Individual CDIs
+  - Reconsidering the Consequences of Using Race to Estimate Kidney Function. ([eneanya, yang, & reese, 2019](http://www.nephjc.com/news/raceandegfr))
+  - Dissecting racial bias in an algorithm used to manage the health of populations ([obermeyer et al. 2019](https://www.science.org/doi/abs/10.1126/science.aax2342)) - for one algorithm, at a given risk score, Black patients are considerably sicker than White patients, as evidenced by signs of uncontrolled illnesses
+  - Race, Genetic Ancestry, and Estimating Kidney Function in CKD ([CRIC, 2021](https://www.nejm.org/doi/full/10.1056/NEJMoa2103753))
+  - Prediction of vaginal birth after cesarean delivery in term gestations: a calculator without race and ethnicity ([grobman et al. 2021](https://www.sciencedirect.com/science/article/abs/pii/S0002937821005871))
+
 
 ## ucsf de-id data
 
@@ -93,10 +120,6 @@ typora-copy-images-to: ../assets
   - Europe: CE (more convoluted)
 - intended use
   - very specific and well-defined
-
-## criticisms
-
-- [Dissecting racial bias in an algorithm used to manage the health of populations ](https://science.sciencemag.org/content/366/6464/447)(obermeyer et al. 2019)
 
 # medical system
 
@@ -215,7 +238,7 @@ typora-copy-images-to: ../assets
 
 # improving medical studies
 
-- Machine learning methods for developing precision treatment rules with observational data (Kessler et al. 2019)
+- Machine learning methods for developing precision treatment rules with observational data ([Kessler et al. 2019](https://pubmed.ncbi.nlm.nih.gov/31233922/))
   - goal: find precision treatment rules
   - problem: need large sample sizes but can't obtain them in RCTs
   - recommendations
