@@ -362,17 +362,28 @@ For an implementation of many of these models, see the python [imodels package](
 
 ### symbolic regression
 
-Symbolic regression learns a symbolic (e.g. a mathematical formula) for a function from data  priors on what kinds of symboles (e.g. `sin`, `exp`) are more "difficult"
+Symbolic regression learns a symbolic (e.g. a mathematical formula) for a function from data priors on what kinds of symbols (e.g. `sin`, `exp`) are more "difficult"
 
-- [Demystifying Black-box Models with Symbolic Metamodels](https://papers.nips.cc/paper/9308-demystifying-black-box-models-with-symbolic-metamodels.pdf)
-  - GAM parameterized with Meijer G-functions (rather than pre-specifying some forms, as is done with symbolic regression)
-- [Logic Regression](https://amstat.tandfonline.com/doi/abs/10.1198/1061860032238?casa_token=WVNXGYsNPLsAAAAA:eCjYgsRw_WZ6g0GPG9x3CMyHyEV9kwcXvWCC1S0TTbLc7SDBiiyHiKLNtYsuC6WYOpto7xAi6tQ5eQ#.YJB3bGZKjzc) (ruczinski, kooperberg & leblanc, 2012) - given binary input variables, automatically construct interaction terms and linear model (fit using simulated annealing)
-- [Building and Evaluating Interpretable Models using Symbolic Regression and Generalized Additive Models](https://openreview.net/pdf?id=BkgyvQzmW)
-  - gams - assume model form is additive combination of some funcs, then solve via GD
-  - however, if we don't know the form of the model we must generate it
-- [Bridging the Gap: Providing Post-Hoc Symbolic Explanations for Sequential Decision-Making Problems with Black Box Simulators](https://arxiv.org/abs/2002.01080)
-- [Model Learning with Personalized Interpretability Estimation (ML-PIE)](https://arxiv.org/abs/2104.06060) - use human feedback in the loop to decide which symbolic functions are most interpretable
-- [End-to-end symbolic regression with transformers](https://arxiv.org/abs/2204.10532)
+- Interpretable Scientific Discovery with Symbolic Regression: A Review ([makke & chawla, 2022](https://arxiv.org/abs/2211.10873))
+- Post-hoc distillation
+  - Demystifying Black-box Models with Symbolic Metamodels ([alaa, van der schaar, 2019](https://papers.nips.cc/paper/9308-demystifying-black-box-models-with-symbolic-metamodels.pdf)) - distill black-box model with Meijer G-functions (rather than pre-specifying some forms, as is done with symbolic regression)
+    - Symbolic Metamodels for Interpreting Black-boxes Using Primitive Functions ([abroshan...khalili, 2023](https://arxiv.org/abs/2302.04791)) - use GP approach
+    - Neural Symbolic Regression using Control Variables ([chu...shao, 2023](https://arxiv.org/abs/2306.04718))
+  - Discovering Symbolic Models from Deep Learning with Inductive Biases ([cranmer...ho, 2020](https://arxiv.org/abs/2006.11287)) - focused on GNNs
+  - Bridging the Gap: Providing Post-Hoc Symbolic Explanations for Sequential Decision-Making Problems with Black Box Simulators ([sreedharan et al. 2020](https://arxiv.org/abs/2002.01080))
+- neural networks
+  - 2-step symbolic regr: First generate equation skeleton, then optimize constants with GD
+    - Neural Symbolic Regression that Scales ([biggio et al. 2021](https://arxiv.org/abs/2106.06427)) - use large pretraining set
+    - SymbolicGPT ([valipour...ghodsi, 2021](https://arxiv.org/abs/2106.14131)) - similar but use point cloud rather than attention
+    - Deep symbolic regression ([petersen...kim, 2021](https://arxiv.org/pdf/1912.04871.pdf)) - RL-based
+  - End-to-End symbolic regression (still use final refinement step)
+    - AI Feynman: A physics-inspired method for symbolic regression ([udresku & tegmark, 2020](https://www.science.org/doi/10.1126/sciadv.aay2631)) - use a loop with many if-then checks to decompose the equations
+    - End-to-end symbolic regression with transformers ([kamienny...charton, 2022](https://arxiv.org/abs/2204.10532))
+    - SymFormer ([vastl...babuska, 2022](https://arxiv.org/abs/2205.15764))
+    - Deep Generative Symbolic Regression ([holt...van der schaar, 2023](https://openreview.net/forum?id=o7koEEMA1bR)) - use RL
+  - Building and Evaluating Interpretable Models using Symbolic Regression and Generalized Additive Models ([sharif, 2017](https://openreview.net/pdf?id=BkgyvQzmW))
+- Logic Regression ([ruczinski, kooperberg & leblanc, 2012](https://amstat.tandfonline.com/doi/abs/10.1198/1061860032238?casa_token=WVNXGYsNPLsAAAAA:eCjYgsRw_WZ6g0GPG9x3CMyHyEV9kwcXvWCC1S0TTbLc7SDBiiyHiKLNtYsuC6WYOpto7xAi6tQ5eQ#.YJB3bGZKjzc)) - given binary input variables, automatically construct interaction terms and linear model (fit using simulated annealing)
+- Model Learning with Personalized Interpretability Estimation ([ML-PIE](https://arxiv.org/abs/2104.06060)) - use human feedback in the loop to decide which symbolic functions are most interpretable
 
 ## interpretable neural nets
 
@@ -507,6 +518,7 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
     - TAO trees with bagging performs well ([Carreira-Perpiñán & Zharmagambetov, 2020](http://graduatestudents.ucmerced.edu/azharmagambetov/files/papers/fods20.pdf))
     - Learning a Tree of Neural Nets ([Zharmagambetov and Carreira-Perpinan, 2020](https://ieeexplore.ieee.org/abstract/document/9413718)) - use neural net rather than binary classification at each node
     - Also use TAO trained on neural net features do speed-up/improve the network
+  - Efficient Decompositional Rule Extraction for Deep Neural Networks ([zarlenga...jamnik, 2021](https://arxiv.org/abs/2111.12628))
 - recurrent neural nets
   - Automatic Rule Extraction from Long Short Term Memory Networks ([murdoch & szlam, 2017](https://arxiv.org/abs/1702.02540)) - extract out phrases using feature importance
   - A Comparative Study of Rule Extraction for Recurrent Neural Networks ([wang et al. 2018](https://arxiv.org/abs/1801.05420)) - create automata based on interpretable states to track RNNs
@@ -1055,8 +1067,8 @@ How interactions are defined and summarized is a very difficult thing to specify
   - [contextual decomposition](https://arxiv.org/abs/1801.05453) (murdoch et al. 2018)
   - [Towards Hierarchical Importance Attribution: Explaining Compositional Semantics for Neural Sequence Models](https://openreview.net/forum?id=BkxRRkSKwr)
   - [Compositional Explanations for Image Classifiers](https://arxiv.org/abs/2103.03622) (chockler et al. 21) - use perturbation-based interpretations to greedily search for pixels which increase prediction the most (simpler version of ACD)
-- [Detecting Statistical Interactions from Neural Network Weights](https://arxiv.org/abs/1705.04977) - interacting inputs must follow strongly weighted connections to a common hidden unit before the final output
-  - [Neural interaction transparency (NIT)](https://dl.acm.org/citation.cfm?id=3327482) (tsang et al. 2017)
+- Detecting Statistical Interactions from Neural Network Weights ([tsang et al. 2018](https://arxiv.org/abs/1705.04977)) - interacting inputs must follow strongly weighted connections to a common hidden unit before the final output
+  - Neural interaction transparency (NIT) ([tsang et al. 2017](https://dl.acm.org/citation.cfm?id=3327482))
 - [Explaining Explanations: Axiomatic Feature Interactions for Deep Networks](https://arxiv.org/abs/2002.04138) (janizek et al. 2020) - integrated hessians
   - not clear the distinction between main and interaction effects
 - [Interpretable Artificial Intelligence through the Lens of Feature Interaction](https://arxiv.org/abs/2103.03103) (tsang et al. 2021)
