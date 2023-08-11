@@ -30,8 +30,9 @@ typora-copy-images-to: ../assets
   - some extra annotations by [agrawal...sontag, 2022](https://arxiv.org/abs/2205.12689)
 - [PMC-Patients](https://arxiv.org/abs/2202.13876) - open-source patient snippets, but no groundtruth labels besides age, gender
 - [EBM-NLP](https://github.com/bepnye/EBM-NLP) - annotates PICO (Participants, Interventions, Comparisons and Outcomes) spans in clinical trial abstracts
-  - task - identify the spans that describe the respective PICO elements.
+  - task - identify the spans that describe the respective PICO elements
 
+- review paper on clinical IE ([wang...liu, 2017](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5771858/))
 - mimic-iv-benchmark ([xie...liu, 2022](https://www.nature.com/articles/s41597-022-01782-9))
   - 3 tabular datasets derived from MIMIC-IV ED EHR
     - *hospitalization* (versus discharged) -  met with an inpatient care site admission immediately following an ED visit
@@ -60,6 +61,7 @@ typora-copy-images-to: ../assets
   - Hidden in Plain Sight — Reconsidering the Use of Race Correction in Clinical Algorithms ([vyas, eisenstein, & jones, 2020](https://www.nejm.org/doi/full/10.1056/NEJMms2004740))
     - Now is the Time for a Postracial Medicine: Biomedical Research, the National Institutes of Health, and the Perpetuation of Scientific Racism ([2017](https://www.tandfonline.com/doi/abs/10.1080/15265161.2017.1353165))
   - A Systematic Review of Barriers and Facilitators to Minority Research Participation Among African Americans, Latinos, Asian Americans, and Pacific Islanders ([george, duran, & norris, 2014](https://ajph.aphapublications.org/doi/full/10.2105/AJPH.2013.301706))
+  - The Use of Racial Categories in Precision Medicine Research ([callier, 2019](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6919973/))
   - Field Synopsis of Sex in Clinical Prediction Models for Cardiovascular Disease ([paulus...kent, 2016](https://www.ahajournals.org/doi/full/10.1161/CIRCOUTCOMES.115.002473)) - supports the use of sex in predicting CVD, but not all CDIs use it
   - Race Corrections in Clinical Models: Examining Family History and Cancer Risk ([zink, obermeyer, & pierson, 2023](https://www.medrxiv.org/content/10.1101/2023.03.31.23287926v1)) - family history variables mean different things for different groups depending on how much healthcare history their family had
 - ML papers
@@ -78,6 +80,9 @@ typora-copy-images-to: ../assets
   - Dissecting racial bias in an algorithm used to manage the health of populations ([obermeyer et al. 2019](https://www.science.org/doi/abs/10.1126/science.aax2342)) - for one algorithm, at a given risk score, Black patients are considerably sicker than White patients, as evidenced by signs of uncontrolled illnesses
   - Race, Genetic Ancestry, and Estimating Kidney Function in CKD ([CRIC, 2021](https://www.nejm.org/doi/full/10.1056/NEJMoa2103753))
   - Prediction of vaginal birth after cesarean delivery in term gestations: a calculator without race and ethnicity ([grobman et al. 2021](https://www.sciencedirect.com/science/article/abs/pii/S0002937821005871))
+- LLM bias
+  - Coding Inequity: Assessing GPT-4’s Potential for Perpetuating Racial and Gender Biases in Healthcare ([zack...butte, alsentzer, 2023](https://www.medrxiv.org/content/10.1101/2023.07.13.23292577v2))
+
 
 
 ## ucsf de-id data

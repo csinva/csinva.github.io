@@ -2,6 +2,7 @@
 
 # 2023
 
+- https://time.com/6297403/india-ai-karya-startup/
 - https://www.nytimes.com/2022/12/28/opinion/jack-dorseys-twitter-signal-privacy.html
   - argues against individual privacy (e.g. signal)
 - https://www.nytimes.com/2023/01/06/arts/television/kaleidoscope-netflix-streaming.html
@@ -178,6 +179,7 @@
 
 # workism
 
+- Is Following Your Work Passion Overrated? ([tugend, 2023](https://www.nytimes.com/2023/08/03/business/work-passion-overrated.html?smid=nytcore-ios-share&referringSource=articleShare))
 - [The perfectionism trap | The Economist](https://www.economist.com/1843/2021/08/10/the-perfectionism-trap?utm_campaign=a.coronavirus-special-edition&utm_medium=email.internal-newsletter.np&utm_source=salesforce-marketing-cloud&utm_term=20220730&utm_content=ed-picks-article-link-5&etear=nl_special_5&utm_campaign=a.coronavirus-special-edition&utm_medium=email.internal-newsletter.np&utm_source=salesforce-marketing-cloud&utm_term=7/30/2022&utm_id=1258967) (josh cohen, 2022)
   - "For centuries [Religion] was the primary means through which we came to terms with being fallen and flawed"
 - [Opinion | 'Lying Flat': Tired Workers Are Opting Out of Careers and Capitalism - The New York Times](https://www.nytimes.com/2021/08/22/opinion/lying-flat-work-rest.html?referringSource=articleShare) (cassady rosenblum, 2021)
@@ -188,7 +190,7 @@
     - since 2003, leisure time [has increased further](https://data.bls.gov/pdq/SurveyOutputServlet)
 - [How to escape the 'productivity trap' - BBC Worklife](https://www.bbc.com/worklife/article/20210805-how-to-escape-the-productivity-trap)
   - humankind’s peculiar preoccupation with time – and, in particular, whether we spend it “productively” – became much greater with the common usage of the clock and the emergence of the Industrial Revolution
-- **[The Religion of Workism Is Making Americans Miserable - The Atlantic](https://www.theatlantic.com/ideas/archive/2019/02/religion-workism-making-americans-miserable/583441/) **(derek thompson, 2019)
+- [The Religion of Workism Is Making Americans Miserable - The Atlantic](https://www.theatlantic.com/ideas/archive/2019/02/religion-workism-making-americans-miserable/583441/) (derek thompson, 2019)
   - For the college-educated elite, work has morphed into a religious identity—promising transcendence and community, but failing to deliver.
   - "In a 1957 [article](https://timesmachine.nytimes.com/timesmachine/1957/09/22/96028167.html?action=click&contentCollection=Archives&module=ArticleEndCTA&region=ArchiveBody&pgtype=article&pageNumber=315) in *The New York Times*, the writer Erik Barnouw [predicted](http://timesmachine.nytimes.com/timesmachine/1957/09/22/issue.html?action=click&contentCollection=Archives&module=ArticleEndCTA&region=ArchiveBody&pgtype=article) that, as work became easier, our identity would be defined by our hobbies, or our family life."
   - the American conception of work has shifted from *jobs* to *careers* to *callings*

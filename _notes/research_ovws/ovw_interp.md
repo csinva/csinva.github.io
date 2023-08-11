@@ -277,7 +277,8 @@ For an implementation of many of these models, see the python [imodels package](
     - [Robust Decision Trees Against Adversarial Examples](https://arxiv.org/abs/1902.10660) (chen, ..., hsieh, 2019)
       - optimize tree performance under worst-case input-feature perturbation
   - [Human knowledge models: Learning applied knowledge from the data | PLOS ONE](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0275814) (dudyrev...pianykh, 2022) - very concise logic model
-  - [On the price of explainability for some clustering problems](https://arxiv.org/abs/2101.01576) (laber et al. 2021) - trees for clustering
+  - On the price of explainability for some clustering problems ([laber et al. 2021](https://arxiv.org/abs/2101.01576)) - trees for clustering
+  - Interpretable clustering: an optimization approach ([bertsimas…wilberg, 2020](https://link.springer.com/article/10.1007/s10994-020-05896-2))
   - extremely randomized trees ([geurts et al. 2006](https://link.springer.com/article/10.1007/s10994-006-6226-1)) - randomness goes further than Random Forest - randomly select not only the feature but also the split thresholds (and select the best out of some random set)
 - Analysis of Boolean functions ([wiki](https://en.wikipedia.org/wiki/Analysis_of_Boolean_functions))
 
@@ -441,6 +442,9 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
   - add textual quantitative information about visual characteristics deemed important by the classification model e.g. colour hue, shape, texture, contrast and saturation
 - Neural Prototype Trees for Interpretable Fine-Grained Image Recognition ([nauta et al. 2021](https://openaccess.thecvf.com/content/CVPR2021/html/Nauta_Neural_Prototype_Trees_for_Interpretable_Fine-Grained_Image_Recognition_CVPR_2021_paper.html)) - build decision trees on top of prototypes
   - performance is slightly poor until they use ensembles
+- PIP-NET ([nauta...seifert, 2023](https://arxiv.org/pdf/2307.10404.pdf)) - applying prototypes to medical image classification
+  - http://openaccess.thecvf.com/content/CVPR2023/html/Nauta_PIP-Net_Patch-Based_Intuitive_Prototypes_for_Interpretable_Image_Classification_CVPR_2023_paper.html
+
 - XProtoNet: Diagnosis in Chest Radiography With Global and Local Explanations ([kim et al. 2021](https://openaccess.thecvf.com/content/CVPR2021/html/Kim_XProtoNet_Diagnosis_in_Chest_Radiography_With_Global_and_Local_Explanations_CVPR_2021_paper.html))
   - alter ProtoPNet to use dynamically sized patches for prototype matching rather than fixed-size patches
 - [AutoProtoNet: Interpretability for Prototypical Networks](https://arxiv.org/abs/2204.00929) (sandoval-segura & lawson, 2022)
@@ -474,7 +478,7 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
 
 - Augmenting Interpretable Models with LLMs during Training ([singh, askari, caruana & gao, 2023](https://arxiv.org/abs/2209.11799))
   - use language model to extract embeddings which are then used to fit a better GAM or better tree (focuses on NLP)
-  - Backpack Language Models ([hewit, thickstun, manning, & liang, 2023](https://arxiv.org/abs/2305.16765)) - change transformer layers to represent each word ass
+  - Backpack Language Models ([hewit, thickstun, manning, & liang, 2023](https://arxiv.org/abs/2305.16765)) - change transformer layers to represent each word
 - CHiLL: Zero-shot Custom Interpretable Feature Extraction from Clinical Notes with Large Language Models ([mcinerney, ..wallace, 2023](https://arxiv.org/abs/2302.12343))
   - extract interpretable feature (e.g. "Does this patient have a chronic illness?") and use in a linear model (use Flan-T5)
   - interpretable features: 10 ICD codes + (1) Does the patient have a chronic illness? (2) Is the condition life-threatening?
@@ -892,7 +896,7 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
             a concept’s examples and examples in any layer
         - CAV - vector orthogonal to the classification boundary
         - TCAV uses the derivative of the CAV direction wrt input
-    - [automated concept activation vectors](https://arxiv.org/abs/1902.03129) - Given a set of concept discovery images, each image is segmented with different resolutions to find concepts that are captured best at different sizes. (b) After removing duplicate segments, each segment is resized tothe original input size resulting in a pool of resized segments of the discovery images. (c) Resized segments are mapped to a model’s activation space at a bottleneck layer. To discover the concepts associated with the target class, clustering with outlier removal is performed. (d) The output of our method is a set of discovered concepts for each class, sorted by their importance in prediction
+    - automated concept activation vectors ([ghorbani, ..., zhou, kim, 2019](https://arxiv.org/abs/1902.03129)) - Given a set of concept discovery images, each image is segmented with different resolutions to find concepts that are captured best at different sizes. (b) After removing duplicate segments, each segment is resized tothe original input size resulting in a pool of resized segments of the discovery images. (c) Resized segments are mapped to a model’s activation space at a bottleneck layer. To discover the concepts associated with the target class, clustering with outlier removal is performed. (d) The output of our method is a set of discovered concepts for each class, sorted by their importance in prediction
     - Discover and Cure: Concept-aware Mitigation of Spurious Correlation ([wu...zou, 2023](https://www.semanticscholar.org/reader/6f0d9e2aa3f40aee571c7e35958598d4f82cdab5))
 - Concept Gradient: Concept-based Interpretation Without Linear Assumption ([bai...ravikumar..hsieh, 2022](https://arxiv.org/pdf/2208.14966.pdf))
 - [On Completeness-aware Concept-Based Explanations in Deep Neural Networks](https://arxiv.org/abs/1910.07969)
@@ -1159,11 +1163,11 @@ How interactions are defined and summarized is a very difficult thing to specify
 
 Nice overview [here](https://github.com/stefanoteso/awesome-explanatory-supervision).
 
-- [Interpretations are useful: penalizing explanations to align neural networks with prior knowledge](https://arxiv.org/abs/1909.13584) (rieger et al. 2020)
+- Interpretations are useful: penalizing explanations to align neural networks with prior knowledge ([rieger et al. 2020](https://arxiv.org/abs/1909.13584))
   - [Refining Neural Networks with Compositional Explanations](https://arxiv.org/abs/2103.10415) (yao et al. 21) - human looks at saliency maps of interactions, gives natural language explanation, this is converted back to interactions (defined using IG), and then regularized
   - [Dropout as a Regularizer of Interaction Effects](https://arxiv.org/abs/2007.00823) (lengerich...caruana, 21) - dropout regularizes interaction effects
   - [Sparse Epistatic Regularization of Deep Neural Networks for Inferring Fitness Functions](https://www.biorxiv.org/content/10.1101/2020.11.24.396994v1) (aghazadeh ... listgarten, ramchandran, 2020) - penalize DNNs spectral representation to limit learning noisy high-order interactions
-- [Right for the Right Reasons: Training Differentiable Models by Constraining their Explanations](https://arxiv.org/abs/1703.03717) (ross et al. 2017) - selectively penalize input gradients
+- Right for the Right Reasons: Training Differentiable Models by Constraining their Explanations ([ross et al. 2017](https://arxiv.org/abs/1703.03717)) - selectively penalize input gradients
 - [Explain and improve: LRP-inference fine-tuning for image captioning models ](https://www.sciencedirect.com/science/article/pii/S1566253521001494) (sun et al. 2022)
   - [Pruning by explaining: A novel criterion for deep neural network pruning](https://www.sciencedirect.com/science/article/pii/S0031320321000868) (yeom et al. 2021) - use LRP-based score to prune DNN
 - [Explain to Fix: A Framework to Interpret and Correct DNN Object Detector Predictions](https://arxiv.org/pdf/1811.08011.pdf)

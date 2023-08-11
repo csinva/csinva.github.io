@@ -19,25 +19,34 @@ category: blog
 
 *Note: this assumes that style files for the two do not change (only changes to .tex files).*
 
-1. Download all files for the original version and the new version into folders
+1. Download all files for the original version and the new version into folders named `old` and `new`
 
 2. "Flatten" the tex files by replacing `\input{fname.tex}` with the contents of the file `fname.tex`
   - simple python code to do this [here](https://github.com/johnjosephhorton/flatex)
   - installing (locally): 
   ```bash
-      git clone git@github.com:johnjosephhorton/flatex.git
-      cd flatex
-      pip install --editable . 
+  git clone https://github.com/johnjosephhorton/flatex.git
+  cd flatex
+  pip install --editable . 
   ```
-  - running: ```flatex --include_bbl inputfile.tex outputfile.tex```
-
-
-3. Copy the non-tex files (.cls, .bib, .sty, .bst, figs) you want to use to a new directory
-
-4. From this directory run [latexdiff](https://github.com/ftilmann/latexdiff/) on the flattened files - this should produce the desired diff!
-  - running: `latexdiff file1_flattened.tex file2_flattened.tex > diff.tex`
-
-
+   ```bash
+   cd old
+   flatex --include_bbl _main.tex old.tex
+   cd ..
+   cd new
+   flatex --include_bbl _main.tex new.tex
+   cd ..
+   ```
+  
+3. Copy the non-tex files (.cls, .bib, .sty, .bst, figs) you want to use to a new directory. Then From this directory download and run [latexdiff](https://github.com/ftilmann/latexdiff/) on the flattened files - this should produce the desired diff!
+   ```bash
+	 mkdir diff
+	 cp -r new/* diff/
+	 cp old/old.tex diff/
+    
+   cd diff
+   latexdiff old.tex new.tex > diff.tex
+   ```
 
 
 ## toggling documents with a simple boolean
