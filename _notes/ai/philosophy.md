@@ -245,4 +245,6 @@ category: ai
 - [To Explain or to Predict](https://projecteuclid.org/download/pdfview_1/euclid.ss/1294167961)? (Shmueli, 2010)
   - explanatory modeling as the use of statistical models for testing causal explanations
   - many philosophies view explanation and prediction as distinct (but not incompatible)
+  - 4 major aspects: causation-association, theory-data, retrospective-prospective, bias-variance
+  - (causal) explanation is often more about picking the right class of models (which minimizes bias) rather than fitting  their parameters
 

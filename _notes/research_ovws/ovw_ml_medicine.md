@@ -66,6 +66,7 @@ typora-copy-images-to: ../assets
   - Race Corrections in Clinical Models: Examining Family History and Cancer Risk ([zink, obermeyer, & pierson, 2023](https://www.medrxiv.org/content/10.1101/2023.03.31.23287926v1)) - family history variables mean different things for different groups depending on how much healthcare history their family had
 - ML papers
   - When Personalization Harms Performance: Reconsidering the Use of Group Attributes in Prediction ([suriyakumar, ghassemi, & ustun, 2023](https://www.berkustun.com/docs/suriyakumar_2023_fairuse.pdf)) - group attributes to improve performance at a *population level* but often hurt at a *group level*
+  - Coarse race data conceals disparities in clinical risk score performance ([movva...pierson, 2023](https://arxiv.org/abs/2304.09270))
 - CDI guidelines
   - Reporting and Methods in Clinical Prediction Research: A Systematic Review ([Bouwmeester...moons, 2012](https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1001221)) - review publications in 2008, mostly about algorithmic methodology
   - Transparent reporting of a multivariable prediction model for individual prognosis or diagnosis (TRIPOD): the TRIPOD Statement ([collins...moons, 2015](https://bmcmedicine.biomedcentral.com/articles/10.1186/s12916-014-0241-z))

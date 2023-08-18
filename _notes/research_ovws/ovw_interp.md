@@ -242,6 +242,7 @@ For an implementation of many of these models, see the python [imodels package](
       - post-prune the tree bottom-up by recursively eliminating the parent nodes of leaves with identical predictions
   - AddTree = additive tree - learn single tree, but rather than only current node's data to decide the next split, also allow the remaining data to also influence this split, although with a potentially differing weight ([luna, ..., friedman, solberg, valdes, 2019](https://www.pnas.org/content/116/40/19887))
     - the weight is chosen as a hyperparameter
+  - Additive groves ([sorokina, carauna, & riedewald 2007](https://link.springer.com/chapter/10.1007/978-3-540-74958-5_31)) - additive model of a few deep trees (gradually increase number and size of trees)
 - bayesian trees
   - [Bayesian Treed Models](http://www-stat.wharton.upenn.edu/~edgeorge/Research_papers/treed-models.pdf) (chipman et al. 2001) - impose priors on tree parameters
     - treed models - fit a model (e.g. linear regression) in leaf nodes
@@ -332,33 +333,46 @@ For an implementation of many of these models, see the python [imodels package](
 ### gams (generalized additive models)
 
 - gam takes form $g(\mu) = b + f_0(x_0) + f_1(x_1) + f_2(x_2) + ...$
-  - usually assume some basis for the $f$, like splines or polynomials (and we select how many either manually or with some complexity penalty)
+  - usually assume some basis for the shape functions $f$, like splines or polynomials (and we select how many either manually or with some complexity penalty)
   - *backfitting* - traditional way to fit - each $f_i$ is fitted sequentially to the residuals of the previously fitted $f_0,...,f_{i-1}$ ([hastie & tibshirani, 1989](https://www.jstor.org/stable/2241560?seq=1#metadata_info_tab_contents))
-  - *boosting* - fit all $f$ simultaneously, e.g. one tree for each $f_i$  on each iteration
+    - once all are fit, discard each shape function and re-fit to the residuals of all others one at a time
+  - *boosting* - fit all $f$ simultaneously, e.g. one tree for each $f_i$ on each iteration
   - interpretability depends on (1) transparency of $f_i$ and (2) number of terms
   - can also add in interaction terms (e.g. $f_i(x_1, x_2)$), but need a way to rank which interactions to add (see notes on interactions)
-- [Neural Additive Models: Interpretable Machine Learning with Neural Nets](https://arxiv.org/abs/2004.13912) (agarwal, ..., caruana, & hinton, 2021) - GAM where we learn $f$ with a neural net (also use ExU activation instead of ReLU to model sharp bumps)
+- Explainable boosting machine: tree-based shape functions trained with cyclical boosting
+  - Intelligible models for classification and regression ([lou, caruana, & gehrke, 2012](https://dl.acm.org/doi/abs/10.1145/2339530.2339556)) - find that gradient boosting with shallow trees outperforms other models for $f_i$
+  - $GA^2M$ ([lou, caruana, gehrke, & hooker, 2013](https://dl.acm.org/doi/abs/10.1145/2487575.2487579)) - select interactions using algorithm called FAST
+  - Pneumonia risk ([caruana, lou, gehrke, koch, sturm, & elhadad, 2015](https://www.microsoft.com/en-us/research/wp-content/uploads/2017/06/KDD2015FinalDraftIntelligibleModels4HealthCare_igt143e-caruanaA.pdf)) - application of GA2M finds interesting patterns (e.g. asthma decreases pneumonia risk)
+  - InterpretML: A Unified Framework for Machine Learning Interpretability ([nori...caruana 2019](https://arxiv.org/abs/1909.09223)) - software package mostly for EBM
+  - Adding differential privacy to EBM ([nori, caruana et al. 2021](https://arxiv.org/abs/2106.09680))
+- Neural Additive Models: Interpretable Machine Learning with Neural Nets ([agarwal, ..., caruana, & hinton, 2021](https://arxiv.org/abs/2004.13912)) - shape functions are a DNN (also use ExU activation instead of ReLU to model sharp bumps)
   - no interaction terms
+  - NODE-GAM: Neural Generalized Additive Model for Interpretable Deep Learning ([chang, caruana, & goldenberg, 2021](https://arxiv.org/abs/2106.01613))
+    - $NODE-GA^2M$: include interaction terms by initializing with all interaction terms and backprop decides which are kept
+    - uses neural oblivious trees rather than standard DNN
+    - idea dates back to [Generalized Additive Neural Networks](https://dl.acm.org/doi/pdf/10.1145/312129.312228) (potts, 1999)
   - [Sparse Neural Additive Model: Interpretable Deep Learning with Feature Selection via Group Sparsity](https://arxiv.org/abs/2202.12482)
   - [Creating Powerful and Interpretable Models with Regression Networks](https://arxiv.org/abs/2107.14417) (2021) - generalizes neural GAM to include interaction terms
     - train first-order functions
     - fix them and predict residuals with next order (and repeat for as many orders as desired)
+- Spline-based models
+  - Fast Stable Direct Fitting and Smoothness Selection for Generalized Additive Models ([wood, 2008](https://academic.oup.com/jrsssb/article/70/3/495/7109556))
+
+- Other models
+  - Additive Models with Trend Filtering ([sadhanala & tibshirani, 2018](https://arxiv.org/abs/1702.05037)) - piecewise polynomial components with total variation regularization
+  - Fused Lasso Additive Model ([petersen, weitten & simon, 2014](https://www.tandfonline.com/doi/abs/10.1080/10618600.2015.1073155)) - shape functions are piecewise constant with a small number of knots
+
 - Aug-GAM ([singh, askari, caruana & gao, 2022](https://arxiv.org/abs/2209.11799)) - use language model to extract embeddings which are then used to fit a better GAM (focuses on NLP)
-- [NODE-GAM: Neural Generalized Additive Model for Interpretable Deep Learning](https://arxiv.org/abs/2106.01613) (chang, caruana, & goldenberg, 2021)
-  - includes interaction terms (all features are used initially and backprop decides which are kept) - they call this $GA^2M$
-  - uses neural oblivious trees rather than standard DNN
-  - idea dates back to [Generalized Additive Neural Networks](https://dl.acm.org/doi/pdf/10.1145/312129.312228) (potts, 1999)
-- [InterpretML: A Unified Framework for Machine Learning Interpretability](https://arxiv.org/abs/1909.09223) (nori...caruana 2019)  - software package mostly focused on explainable boosting machine (EBM)
-  - EBM - GAM which uses boosted decision trees as $f_i$
-  - [Accuracy, Interpretability, and Differential Privacy via Explainable Boosting](https://arxiv.org/abs/2106.09680) (nori, caruana et al. 2021)
-    - added differential privacy to explainable boosting
 - misc improvements
-  - [GAM Changer: Editing Generalized Additive Models with Interactive Visualization](https://arxiv.org/abs/2112.03245) (wang...caruana et al. 2021) - really nice gui
-  - [Axiomatic Interpretability for Multiclass Additive Models](https://dl.acm.org/doi/abs/10.1145/3292500.3330898) (zhang, tan, ... caruana, 2019)
-  - extend GAM to multiclass and improve visualizations in that setting
+  - GAM Changer: Editing Generalized Additive Models with Interactive Visualization ([wang...caruana 2021](https://arxiv.org/abs/2112.03245)) - really nice gui
+  - Axiomatic Interpretability for Multiclass Additive Models ([zhang, tan, ... caruana, 2019](https://dl.acm.org/doi/abs/10.1145/3292500.3330898)) - extend GAM to multiclass and improve visualizations in that setting
   - [Sparse Partially Linear Additive Models](https://www.tandfonline.com/doi/full/10.1080/10618600.2015.1089775) (lou, bien, caruana & gehrke, 2015) - some terms are linear and some use $f_i(x_i)$
   - [Neural Basis Models for Interpretability](https://arxiv.org/abs/2205.14120) (2022)
   - [Scalable Interpretability via Polynomials](https://arxiv.org/abs/2205.14108) (2022)
+  - How Interpretable and Trustworthy are GAMs? ([chang, tan, lengerich, goldenberg, & caruana, 2021](https://arxiv.org/abs/2006.06466)) - different GAM algorithms provide different interpretations, tree-based GAMs appear best
+    - GAMs that use sparse features may perform worse on som data subsets
+    - GAMs with too much smoothing may miss important sharp jumps
+    - bias-variance decomposition of different GAM algorithms (based on multiple refits and predictions) shows that some have less bias whereas others less variance
 
 
 ### symbolic regression
@@ -1020,12 +1034,12 @@ How interactions are defined and summarized is a very difficult thing to specify
 - alternatives
   - variable interaction networks (Hooker, 2004) - decompose pred into main effects + feature interactions
   - PDP-based feature interaction (greenwell et al. 2018)
-- feature-screening ([feng ruan's work](https://arxiv.org/abs/2011.12215))
+- feature-screening ([li, feng ruan, 2020](https://arxiv.org/abs/2011.12215))
   - want to find beta which is positive when a variable is important
   - idea: maximize difference between (distances for interclass) and (distances for intraclass)
   - using an L1 distance yields better gradients than an L2 distance
 - ANOVA - factorial method to detect feature interactions based on differences among group means in a dataset
-  - [Purifying Interaction Effects with the Functional ANOVA: An Efficient Algorithm for Recovering Identifiable Additive Models](http://proceedings.mlr.press/v108/lengerich20a.html) (lengerich, tan, ..., hooker, caruana, 2020)
+  - Purifying Interaction Effects with the Functional ANOVA: An Efficient Algorithm for Recovering Identifiable Additive Models ([lengerich, tan, ..., hooker, caruana, 2020](http://proceedings.mlr.press/v108/lengerich20a.html))
     - *pure interaction effects* - variance in the outcome which cannot be represented by any subset of features
       - has an equivalence with the Functional ANOVA decomposition
 - Automatic Interaction Detection (AID) - detects interactions by subdividing data into disjoint exhaustive subsets to model an outcome based on categorical features
@@ -1047,12 +1061,13 @@ How interactions are defined and summarized is a very difficult thing to specify
 
 - [iterative random forest](https://www.pnas.org/content/115/8/1943) (basu et al. 2018)
   - interaction scoring - find interactions as features which co-occur on paths (using RIT algorithm)
-    - [signed iterative Random Forests](https://arxiv.org/abs/1810.07287) (kumbier et al. 2018) - 
+    - [signed iterative Random Forests](https://arxiv.org/abs/1810.07287) (kumbier et al. 2018) 
   - repeated refitting
     - fit RF and get MDI importances
     - iteratively refit RF, weighting probability of feature being selected by its previous MDI
-- [Additive groves](https://link.springer.com/chapter/10.1007/978-3-540-74958-5_31) (Sorokina, carauna, & riedewald 2007) proposed use random forest with and without an interaction (forcibly removed) to detect feature interactions - very slow
-  - [additive groves interaction followup](https://www.ccs.neu.edu/home/mirek/papers/2008-ICML-Interactions.pdf)
+- detecting interactions with additive groves ([sorokina, caruana, riedewald, & fink, 2008](https://www.ccs.neu.edu/home/mirek/papers/2008-ICML-Interactions.pdf)) - use random forest with and without an interaction (forcibly removed) to detect feature interactions - very slow
+- GUIDE: Regression trees with unbiased variable selection and interaction detection ([loh, 2002](https://www.jstor.org/stable/24306967?casa_token=c5imnuT3UTcAAAAA%3ARq78kxZpxxwcqL4DyuMwb5PHsQmDgQcsEnOlTwzvvS7xRCJGrcr-ABWR9XDuoP_d3D2puv7HwzEBZCibKyytW4iwuYFXIaBGEnrY4gKT90E3aavH0w)) - tests pairwise interactions based on the $\chi^2$ test
+- FAST ([lou, caruana, gehrke, & hooker, 2013](https://dl.acm.org/doi/abs/10.1145/2487575.2487579)) - given model of marginal curves, test adding a pairwise interaction using a restricted tree that makes exacttly one split on each of the two interacting features
 - SBART: Bayesian regression tree ensembles that adapt to smoothness and sparsity ([linero & yang, 2018](https://rss.onlinelibrary.wiley.com/doi/full/10.1111/rssb.12293?casa_token=Pj1jdf_Cdy0AAAAA%3AWLdBFv0Y9oC5i8CUfAFDWuXR9WCww4Vne9pQazuUhIq7cFiaUZhUe8g3NlzydWch1WHtMtcSa95Q66lqGw)) - adapts BART to sparsity
 - DP-Forests: [bayesian decision tree ensembles for interaction detection](https://arxiv.org/abs/1809.08524) (du & linero, 2018)
   - Bayesian tree ensembles (e.g. BART) generally detect too many (high-order) interactions
