@@ -868,8 +868,13 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interventions">
+     7.4.7.2. interventions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#datasets">
-     7.4.7.2. datasets
+     7.4.7.3. datasets
     </a>
    </li>
   </ul>
@@ -922,8 +927,8 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#deeptune-related">
-     7.4.8.6. deeptune-related
+    <a class="reference internal nav-link" href="#maximal-exciting-inputs">
+     7.4.8.6. maximal exciting inputs
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -1174,8 +1179,13 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interventions">
+     7.4.7.2. interventions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#datasets">
-     7.4.7.2. datasets
+     7.4.7.3. datasets
     </a>
    </li>
   </ul>
@@ -1228,8 +1238,8 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#deeptune-related">
-     7.4.8.6. deeptune-related
+    <a class="reference internal nav-link" href="#maximal-exciting-inputs">
+     7.4.8.6. maximal exciting inputs
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -2682,7 +2692,7 @@ title="Print to PDF"
 <li><p>can think about difference between <span class="math notranslate nohighlight">\(L_1\)</span> and <span class="math notranslate nohighlight">\(L_2\)</span> as having preferred directions (for the same length of vector) - prefer directions which some zeros</p></li>
 <li><p>in terms of optimization, smooth near zero</p></li>
 <li><p>there is a network implementation</p></li>
-<li><p><span class="math notranslate nohighlight">\(a_i\)</span>are calculated by solvin optimization for each image, <span class="math notranslate nohighlight">\(\phi\)</span> is learned more slowly</p></li>
+<li><p><span class="math notranslate nohighlight">\(a_i\)</span>are calculated by solving optimization for each image, <span class="math notranslate nohighlight">\(\phi\)</span> is learned more slowly</p></li>
 <li><p><strong>can you get <span class="math notranslate nohighlight">\(a_i\)</span> closed form soln?</strong></p></li>
 </ul>
 </li>
@@ -2920,22 +2930,6 @@ title="Print to PDF"
 <li><p>fiber photometry - optical fiber implanted delivers excitation light</p></li>
 </ul>
 </li>
-<li><p>alteration</p>
-<ul class="simple">
-<li><p>optogenetic stimulation</p></li>
-<li><p>tms</p>
-<ul>
-<li><p>genetically-targeted tms: <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4846560/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4846560/</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="https://www.psychiatry.org/patients-families/ect#:~:text=Learn%20about%20Electroconvulsive%2C%20therapy,the%20patient%20is%20under%20anesthesia.">ect - Electroconvulsive Therapy</a></p>
-<ul>
-<li><p><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6248332/">Identifying Recipients of Electroconvulsive Therapy: Data From Privately Insured Americans - PMC</a> - 100k ppl per year</p></li>
-</ul>
-</li>
-<li><p>local microstimulation with invasive electrodes</p></li>
-</ul>
-</li>
 <li><p>high-level</p>
 <ul class="simple">
 <li><p>EEG/ECoG</p></li>
@@ -2957,8 +2951,54 @@ title="Print to PDF"
 </li>
 </ul>
 </section>
+<section id="interventions">
+<h3><span class="section-number">7.4.7.2. </span>interventions<a class="headerlink" href="#interventions" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>optogenetic stimulation</p></li>
+<li><p>tms</p>
+<ul>
+<li><p>genetically-targeted tms: <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4846560/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4846560/</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://www.psychiatry.org/patients-families/ect#:~:text=Learn%20about%20Electroconvulsive%2C%20therapy,the%20patient%20is%20under%20anesthesia.">ect - Electroconvulsive Therapy</a>  (sometimes also called electroshock therapy)</p>
+<ul>
+<li><p><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6248332/">Identifying Recipients of Electroconvulsive Therapy: Data From Privately Insured Americans - PMC</a> - 100k ppl per year</p></li>
+<li><p>can differ in its application in three ways</p>
+<ul>
+<li><p>electrode placement</p>
+<ul>
+<li><p>used to be bilateral, now unilateral is more popular</p></li>
+</ul>
+</li>
+<li><p>electrical waveform of the stimulus</p>
+<ul>
+<li><p>used to be sinusoid, now brief pulse is more popular (has gotten briefer over time)</p></li>
+</ul>
+</li>
+<li><p>treatment frequency</p></li>
+</ul>
+</li>
+<li><p>public perception is largely negative (owing in large part to its portrayal in <em>One flew over the Cuckoo’s nest</em>)</p></li>
+<li><p>research</p>
+<ul>
+<li><p>How Does Electroconvulsive Therapy Work? Theories on its Mechanism (<a class="reference external" href="https://journals.sagepub.com/doi/10.1177/070674371105600104">bolwig, 2011</a>)</p>
+<ul>
+<li><p>generalized seizures</p></li>
+<li><p>normalization of neuroendocrine dysfunction in melancholic depression</p></li>
+<li><p>increased hippocampal neurogenesis and synaptogenesis</p></li>
+</ul>
+</li>
+<li><p>Electroconvulsive therapy: How modern techniques improve patient outcomes (<a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4193538/pdf/nihms497537.pdf">tirmizi, 2012)</a></p></li>
+<li><p>The neurobiological effects of electroconvulsive therapy studied through magnetic resonance – what have we learnt and where do we go? (<a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8630079/pdf/nihms-1710166.pdf">ousdal et al. 2022</a>)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>local microstimulation with invasive electrodes</p></li>
+</ul>
+</section>
 <section id="datasets">
-<h3><span class="section-number">7.4.7.2. </span>datasets<a class="headerlink" href="#datasets" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.4.7.3. </span>datasets<a class="headerlink" href="#datasets" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://osf.io/mknfu/">non-human primate optogenetics datasets</a></p></li>
 <li><p><a class="reference external" href="https://www.visualdata.io/">vision dsets</a></p>
@@ -3594,24 +3634,27 @@ title="Print to PDF"
 </li>
 </ul>
 </section>
-<section id="deeptune-related">
-<h3><span class="section-number">7.4.8.6. </span>deeptune-related<a class="headerlink" href="#deeptune-related" title="Permalink to this headline">#</a></h3>
+<section id="maximal-exciting-inputs">
+<h3><span class="section-number">7.4.8.6. </span>maximal exciting inputs<a class="headerlink" href="#maximal-exciting-inputs" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
+<li><p>single-neuron (macaque)</p>
+<ul>
 <li><p>Neural population control via deep image synthesis (<a class="reference external" href="https://www.science.org/doi/abs/10.1126/science.aav9436">bashivan, kar, &amp; dicarlo, 2019</a>)</p></li>
-<li><p><a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0092867419303915">Evolving images for visual neurons using a deep generative network reveals coding principles and neuronal preferences</a> (ponce et al. 2019)</p></li>
-<li><p><a class="reference external" href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007973">XDream: Finding preferred stimuli for visual neurons using generative networks and gradient-free optimization</a> (2020)</p></li>
-<li><p>[Synthesizing optimal visual stimuli for EEG-SSVEPs with deep generative networks](<a class="reference external" href="https://cns.iisc.ac.in/sridhar/assets/publications/ACCS">https://cns.iisc.ac.in/sridhar/assets/publications/ACCS</a> 2022 Posterv21_shankha.pdf)</p></li>
-<li><p><a class="reference external" href="https://www.biorxiv.org/content/10.1101/506956.abstract">Inception in visual cortex: in vivo-silico loops reveal most exciting images</a> (2018)</p></li>
-<li><p>Adept: Adaptive stimulus selection for optimizing neural population responses (<a class="reference external" href="https://papers.nips.cc/paper/6738-adaptive-stimulus-selection-for-optimizing-neural-population-responses.pdf">cowley…byron yu, 2017</a>)</p>
-<ul>
-<li><p>use kernel regression from CNN embedding to calculate distances between preset images</p></li>
-<li><p>select preset images</p></li>
-<li><p>verified with macaque v4 recording</p></li>
-<li><p>currently only study that optimizes firing rates of multiple neurons</p>
-<ul>
-<li><p>pick next stimulus in closed-loop (“adaptive sampling” = “optimal experimental design”)</p></li>
+<li><p>Energy Guided Diffusion for Generating Neurally Exciting Images (<a class="reference external" href="https://www.biorxiv.org/content/10.1101/2023.05.18.541176v1">pierzchlewicz, …, tolias, sinz, 2023</a>)</p></li>
+<li><p><a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0092867419303915">Evolving images for visual neurons using a deep generative network reveals coding principles and neuronal preferences</a> (ponce…livingstone, 2019)</p></li>
+<li><p>The DeepTune framework for modeling and characterizing neurons in visual cortex area V4 (<a class="reference external" href="https://www.biorxiv.org/content/10.1101/465534v1.abstract">abbasi-asl, …, yu, 2018</a>)</p></li>
 </ul>
 </li>
+<li><p><a class="reference external" href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007973">XDream: Finding preferred stimuli for visual neurons using generative networks and gradient-free optimization</a> (2020)</p></li>
+<li><p>real-time mouse v1</p>
+<ul>
+<li><p><a class="reference external" href="https://www.biorxiv.org/content/10.1101/506956.abstract">Inception in visual cortex: in vivo-silico loops reveal most exciting images</a> (2018)</p></li>
+</ul>
+</li>
+<li><p>Adept: Adaptive stimulus selection for optimizing neural population responses (<a class="reference external" href="https://papers.nips.cc/paper/6738-adaptive-stimulus-selection-for-optimizing-neural-population-responses.pdf">cowley…byron yu, 2017</a>)</p>
+<ul>
+<li><p>select next image using kernel regression from CNN embeddings</p></li>
+<li><p>pick next stimulus in closed-loop (“adaptive sampling” = “optimal experimental design”) for macaque v4</p></li>
 </ul>
 </li>
 <li><p><a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S095943880700092X">From response to stimulus: adaptive sampling in sensory physiology</a> (2007)</p>
@@ -3756,7 +3799,7 @@ stimulus</p></li>
 <li><p><a class="reference external" href="https://xcorr.net/2023/01/01/2022-in-review-neuroai-comes-of-age/">https://xcorr.net/2023/01/01/2022-in-review-neuroai-comes-of-age/</a></p></li>
 <li><p><a class="reference external" href="https://www.cell.com/neuron/pdf/S0896-6273(17)30509-3.pdf">Neuroscience-Inspired Artificial Intelligence</a> (hassabis et al. 2017)</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2210.08340">Toward next-generation artificial intelligence: catalyzing the NeuroAI revolution</a> (zador, …bengio, dicarlo, lecun, …sejnowski, tsao, 2022)</p></li>
-<li><p>Computational language modeling and the promise of in silico experimentation (<a class="reference external" href="https://direct.mit.edu/nol/article/doi/10.1162/nol_a_00101/114613/Computational-language-modeling-and-the-promise-of">jain, vo, wehbe, &amp; huth, 2023</a>) - 4 experimental design exampmles</p>
+<li><p>Computational language modeling and the promise of in silico experimentation (<a class="reference external" href="https://direct.mit.edu/nol/article/doi/10.1162/nol_a_00101/114613/Computational-language-modeling-and-the-promise-of">jain, vo, wehbe, &amp; huth, 2023</a>) - 4 experimental design examples</p>
 <ul class="simple">
 <li><p>compare concrete &amp; abstract words <a class="reference external" href="https://direct.mit.edu/jocn/article-abstract/17/6/905/4017/Distinct-Brain-Systems-for-Processing-Concrete-and">(binder et al. 2005</a>)</p></li>
 <li><p>contrast-based study of composition in 2-word phrase (<a class="reference external" href="https://www.jneurosci.org/content/31/8/2801.short">Bemis &amp; Pylkkanen, 2011</a>)</p></li>
@@ -3843,6 +3886,7 @@ stimulus</p></li>
 <section id="nlp-fmri">
 <h3><span class="section-number">7.4.9.3. </span>nlp / fMRI<a class="headerlink" href="#nlp-fmri" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
+<li><p>Mapping Brains with Language Models: A Survey (<a class="reference external" href="https://arxiv.org/abs/2306.05126">Karamolegkou et al. 2023</a>)</p></li>
 <li><p>interpreting brain encoding models</p>
 <ul>
 <li><p><a class="reference external" href="https://www.nature.com/articles/s42003-022-03036-1#Sec9">Brains and algorithms partially converge in natural language processing</a> (caucheteux &amp; king, 2022)</p>
@@ -3855,6 +3899,7 @@ stimulus</p></li>
 </li>
 <li><p><a class="reference external" href="https://www.biorxiv.org/content/10.1101/2022.10.14.512299.abstract">Tracking the online construction of linguistic meaning through negation</a> (zuanazzi, …, remi-king, poeppel, 2022)</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1906.01539">Blackbox meets blackbox: Representational Similarity and Stability Analysis of Neural Language Models and Brains</a> (abnar, … zuidema, emnlp workshop, 2019) - use RSA to compare representations from language models with fMRI data from Wehbe et al. 2014</p></li>
+<li><p><a class="reference external" href="https://www.nature.com/articles/s41562-022-01516-2">Evidence of a predictive coding hierarchy in the human brain listening to speech</a> (caucheteux, gramfot, &amp; king, 2023)</p></li>
 </ul>
 </li>
 <li><p>encoding models</p>
@@ -3883,8 +3928,22 @@ stimulus</p></li>
 </li>
 </ul>
 </li>
+<li><p>changing experimental design</p>
+<ul>
 <li><p>Semantic representations during language comprehension are affected by context (i.e. how langauge is presented) (<a class="reference external" href="https://www.biorxiv.org/content/10.1101/2021.12.15.472839v1.full.pdf">deniz…gallant, 2021</a>) - stimuli with more context (stories, sentences) evoke better responses than stimuli with little context (Semantic Blocks, Single Words)</p></li>
 <li><p>Combining computational controls with natural text reveals new aspects of meaning composition (<a class="reference external" href="https://www.biorxiv.org/content/biorxiv/early/2022/08/09/2020.09.28.316935.full.pdf">toneva, mitchell, &amp; wehbe, 2022</a>) - study word interactions by using encoding vector emb(phrase) - emb(word1) - emb(word2)…</p></li>
+<li><p>Driving and suppressing the human language network using large language models (<a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10120732/">tuckute, …, shrimpf, kay, &amp; fedorenko, 2023</a>)</p>
+<ul>
+<li><p>use encoding models to sort thousands of sentences and then show them</p>
+<ul>
+<li><p>alternatively, use gradient-based modifications to transform a random sentence to elicit larger responses, but this works worse</p></li>
+</ul>
+</li>
+<li><p>surprisal and well- formedness of linguistic input are key determinants of response strength in the language network</p></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><p>decoding models</p>
 <ul>
 <li><p>Seeing Beyond the Brain: Conditional Diffusion Model with Sparse Masked Modeling for Vision Decoding (<a class="reference external" href="https://arxiv.org/pdf/2211.06956.pdf">chen et al. 2022</a>)</p></li>

@@ -5,7 +5,10 @@ title: presentations
 
 *Links to many of my presentations*
 
-## in progress
+## 2023
+- [explanations from text data](https://docs.google.com/presentation/d/1qL_cATZWiwOg4EjgrQ93m2zEpNMYYdIUUqqMO1REbIk/edit#slide=id.g21b26013510_0_4)
+
+## 2022
 
 - [animated thesis](https://docs.google.com/presentation/d/1TGTwvh1qOUDcSmn4xlFDK5D-j54PUs3IMAxsRL19LYA/edit#slide=id.g11022bc8220_0_8)
 - [thesis slides](https://docs.google.com/presentation/d/1IyxCrB5Ol8RsvFBTTy4Y5DQH3TxS9Wgl7Pxt1thrBBY/edit)

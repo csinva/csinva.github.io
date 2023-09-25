@@ -689,8 +689,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#recent-notes">
-   4.6.2. recent notes
+  <a class="reference internal nav-link" href="#freedman-notes">
+   4.6.2. freedman notes
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -758,6 +758,11 @@ title="Print to PDF"
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#gam-generalized-additive-model">
      4.6.3.9. GAM = generalized additive model
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multicollinearity">
+     4.6.3.10. multicollinearity
     </a>
    </li>
   </ul>
@@ -814,8 +819,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#recent-notes">
-   4.6.2. recent notes
+  <a class="reference internal nav-link" href="#freedman-notes">
+   4.6.2. freedman notes
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -883,6 +888,11 @@ title="Print to PDF"
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#gam-generalized-additive-model">
      4.6.3.9. GAM = generalized additive model
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multicollinearity">
+     4.6.3.10. multicollinearity
     </a>
    </li>
   </ul>
@@ -974,7 +984,7 @@ title="Print to PDF"
 <li><p>define projection (hat) matrix <span class="math notranslate nohighlight">\(H = X(X^TX)^{-1} X^T\)</span></p>
 <ul>
 <li><p>show <span class="math notranslate nohighlight">\(\|\|Y-X \theta\|\|^2 \geq \|\|Y - HY\|\|^2\)</span></p></li>
-<li><p>key idea: subtract and add HY</p></li>
+<li><p>key idea: subtract and add <span class="math notranslate nohighlight">\(HY\)</span></p></li>
 </ul>
 </li>
 </ul>
@@ -983,23 +993,18 @@ title="Print to PDF"
 <ul class="simple">
 <li><p>if feature correlated, weights aren’t stable / can’t be interpreted</p></li>
 <li><p>curvature inverse <span class="math notranslate nohighlight">\((X^TX)^{-1}\)</span> - dictates stability</p></li>
-<li><p>importance: weight * feature value</p></li>
+<li><p>feature importance = weight * feature value</p></li>
 </ul>
 </li>
 <li><p>LS doesn’t work when p &gt;&gt; n because of colinearity of X columns</p></li>
 <li><p>assumptions</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\epsilon \sim N(X\beta,\sigma^2)\)</span></p></li>
-<li><p><em>homoscedasticity</em>: <span class="math notranslate nohighlight">\(var(Y_i\|X)\)</span> is the same for all i</p>
+<li><p><em>homoscedasticity</em>: <span class="math notranslate nohighlight">\(\text{var}(Y_i\|X)\)</span> is the same for all i</p>
 <ul>
-<li><p>opposite of <em>heteroscedasticity</em></p></li>
+<li><p>opposite is <em>heteroscedasticity</em></p></li>
 </ul>
 </li>
-</ul>
-</li>
-<li><p><em>multicollinearity</em> - predictors highly correlated</p>
-<ul class="simple">
-<li><p><em>variance inflation factor (VIF)</em> - measure how much the variances of the estimated regression coefficients are inflated as compared to when the predictors are not linearly related</p></li>
 </ul>
 </li>
 <li><p>normal linear regression</p>
@@ -1035,8 +1040,8 @@ title="Print to PDF"
 </li>
 </ul>
 </section>
-<section id="recent-notes">
-<h2><span class="section-number">4.6.2. </span>recent notes<a class="headerlink" href="#recent-notes" title="Permalink to this headline">#</a></h2>
+<section id="freedman-notes">
+<h2><span class="section-number">4.6.2. </span>freedman notes<a class="headerlink" href="#freedman-notes" title="Permalink to this headline">#</a></h2>
 <section id="regularization">
 <h3><span class="section-number">4.6.2.1. </span>regularization<a class="headerlink" href="#regularization" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
@@ -1057,7 +1062,7 @@ title="Print to PDF"
 <li><p><em>ridge</em> regression (L2)</p></li>
 </ol>
 <ul class="simple">
-<li><p>if (X^T X) not invertible, add a small element to diagonal</p></li>
+<li><p>if <span class="math notranslate nohighlight">\(X^T X\)</span> is not invertible, add a small element to diagonal</p></li>
 <li><p>then it becomes invertible</p></li>
 <li><p>small lambda -&gt; numerical solution is unstable</p></li>
 <li><p>proof of why it’s invertible is difficult</p></li>
@@ -1073,7 +1078,6 @@ title="Print to PDF"
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\sum_i (y_i - \hat{y_i})^2+\lambda  \vert \vert \beta\vert \vert _1 \)</span></p></li>
 <li><p>equivalent to minimizing <span class="math notranslate nohighlight">\(\sum_i (y_i - \hat{y_i})^2\)</span> s.t. <span class="math notranslate nohighlight">\(\sum_j \vert \beta_j\vert  \leq t\)</span></p></li>
-<li><p>“least absolute shrinkage and selection operator”</p></li>
 <li><p>lasso - least absolute shrinkage and selection operator - L1</p></li>
 <li><p>acts in a nonlinear manner on the outcome y</p></li>
 <li><p>keep the same SSE loss function, but add constraint of L1 norm</p></li>
@@ -1081,10 +1085,10 @@ title="Print to PDF"
 <ul>
 <li><p>because of the absolute value, gradient doesn’t exist</p></li>
 <li><p>can use directional derivatives</p></li>
-<li><p>best solver is <em>LARS</em> - least angle regression</p></li>
+<li><p>good solver is <em>LARS</em> - least angle regression</p></li>
 </ul>
 </li>
-<li><p>if tuning parameter is chose well, will set lots of coordinates to 0</p></li>
+<li><p>if tuning parameter is chosen well, will set lots of coordinates to 0</p></li>
 <li><p>convex functions / convex sets (like circle) are easier to solve</p></li>
 <li><p>disadvantages</p>
 <ul>
@@ -1285,7 +1289,7 @@ title="Print to PDF"
 <li><p>can have nonlinear basis functions (ex. polynomial regression)</p></li>
 <li><p>radial basis function - ex. kernel function (Gaussian RBF)</p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\(exp(-(x-r)^2 /  (2 \lambda ^2))\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\exp(-(x-r)^2 /  (2 \lambda ^2))\)</span></p></li>
 </ul>
 </li>
 <li><p>non-parametric algorithm - don’t get any parameters theta; must keep data</p></li>
@@ -1303,7 +1307,7 @@ title="Print to PDF"
 <ul>
 <li><p>nonparametric method</p></li>
 <li><p><span class="math notranslate nohighlight">\(\operatorname{E}(Y | X=x) = \int y f(y|x) dy = \int y \frac{f(x,y)}{f(x)} dy\)</span></p>
-<p>Using the [[kernel density estimation]] for the joint distribution ‘’f(x,y)’’ and ‘’f(x)’’ with a kernel ‘’’’’K’’’’’,</p>
+<p>Using the kernel density estimation for the joint distribution ‘’f(x,y)’’ and ‘’f(x)’’ with a kernel ‘’’’’K’’’’’,</p>
 <p><span class="math notranslate nohighlight">\(\hat{f}(x,y) = \frac{1}{n}\sum_{i=1}^{n} K_h\left(x-x_i\right) K_h\left(y-y_i\right)\)</span>
 <span class="math notranslate nohighlight">\(\hat{f}(x) = \frac{1}{n} \sum_{i=1}^{n} K_h\left(x-x_i\right)\)</span></p>
 <p>we get</p>
@@ -1321,6 +1325,68 @@ title="Print to PDF"
 </li>
 <li><p><span class="math notranslate nohighlight">\(g(\mu) = b + f(x_0) + f(x_1) + f(x_2) + ...\)</span></p></li>
 <li><p>can also add some interaction terms (e.g. <span class="math notranslate nohighlight">\(f(x_0, x_1)\)</span>)</p></li>
+</ul>
+</section>
+<section id="multicollinearity">
+<h3><span class="section-number">4.6.3.10. </span>multicollinearity<a class="headerlink" href="#multicollinearity" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p><em>multicollinearity</em> - predictors highly correlated</p>
+<ul>
+<li><p>this affects fitted coefficients, potentially changing their values and even flipping their sign</p></li>
+</ul>
+</li>
+<li><p><em>variance inflation factor (VIF)</em> for a feature <span class="math notranslate nohighlight">\(X_j\)</span> is <span class="math notranslate nohighlight">\(\frac{1}{1-R_j^2}\)</span>, where <span class="math notranslate nohighlight">\(R_j^2\)</span> is obtained by predicting <span class="math notranslate nohighlight">\(X_j\)</span> from all features excluding <span class="math notranslate nohighlight">\(X_j\)</span></p>
+<ul>
+<li><p>this measures the impact of multicollinearity on a feature coefficient</p></li>
+</ul>
+</li>
+<li><p>Studying</p>
+<ul>
+<li><p>Variable Selection via Nonconcave Penalized Likelihood and Its Oracle Properties (<a class="reference external" href="https://www.jstor.org/stable/3085904">fan &amp; li, 2001</a>) - frame an estimator as “oracle” if:</p>
+<ul>
+<li><p>it can correctly select the nonzero coefficients in a model with prob converging to one</p></li>
+<li><p>and if the nonzero coefficients are asymptotically normal</p></li>
+</ul>
+</li>
+<li><p>AdaLasso: The Adaptive Lasso and Its Oracle Properties (<a class="reference external" href="http://users.stat.umn.edu/~zouxx019/Papers/adalasso.pdf">zou, 2006</a>)</p>
+<ul>
+<li><p>can make lasso “”oracle” in the sense above by weighting each coef in the optimization</p>
+<ul>
+<li><p>appropriate weight for each feature <span class="math notranslate nohighlight">\(X_j\)</span> is simply <span class="math notranslate nohighlight">\(1/ \hat{\beta_j}\)</span>, where we attain <span class="math notranslate nohighlight">\(\beta_j\)</span> from fitting OLS with no weights</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>using marginal regression</p>
+<ul>
+<li><p>A Comparison of the Lasso and Marginal Regression (<a class="reference external" href="https://www.stat.cmu.edu/~jiashun/Research/Area/Marginal.pdf">genovese…yao, 2011</a>)</p></li>
+<li><p>Revisiting Marginal Regression (<a class="reference external" href="https://arxiv.org/abs/0911.4080">genovese, jin, &amp; wasserman, 2009</a>)</p></li>
+<li><p>Exact Post Model Selection Inference for Marginal Screening (<a class="reference external" href="https://proceedings.neurips.cc/paper/2014/hash/a0a080f42e6f13b3a2df133f073095dd-Abstract.html">jason lee &amp; taylor, 2014</a>)</p></li>
+</ul>
+</li>
+<li><p>SIS: Sure independence screening for ultrahigh dimensional feature space (<a class="reference external" href="https://rss.onlinelibrary.wiley.com/doi/10.1111/j.1467-9868.2008.00674.x">fan &amp; lv, 2008</a>, 2k+ citations)</p>
+<ul>
+<li><p>2 steps (sometimes iterate these)</p>
+<ol class="simple">
+<li><p>Feature selection - select marginal features with largest absolute coefs (pick some threshold)</p></li>
+<li><p>Fit Lasso on selected features</p></li>
+</ol>
+</li>
+<li><p>Followups</p>
+<ul>
+<li><p>Sure independence screening in generalized linear models with NP-dimensionality (<a class="reference external" href="https://projecteuclid.org/journals/annals-of-statistics/volume-38/issue-6/Sure-independence-screening-in-generalized-linear-models-with-NP-dimensionality/10.1214/10-AOS798.full">fan &amp; song, 2010</a>)</p></li>
+<li><p>Nonparametric independence screening in sparse ultra-high-dimensional additive models (<a class="reference external" href="https://www.tandfonline.com/doi/abs/10.1198/jasa.2011.tm09779">fan, feng, &amp; song, 2011</a>)</p></li>
+</ul>
+</li>
+<li><p>RAR: Regularization after retention in ultrahigh dimensional linear regression models (<a class="reference external" href="https://arxiv.org/abs/1311.5625">weng, feng, &amp; qiao, 2017</a>) - only apply regularization on features not identified to be marginally important</p>
+<ul>
+<li><p>Regularization After Marginal Learning for Ultra-High Dimensional Regression Models (<a class="reference external" href="https://yangfeng.hosting.nyu.edu/publication/feng-2017-regularization/feng-2017-regularization.pdf">feng &amp; yu, 2017</a>) - introduces 3-step procedure using a retention set, noise set, and undetermined set</p></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </section>
 </section>

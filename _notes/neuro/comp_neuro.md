@@ -865,6 +865,7 @@ category: neuro
 | invasiveness | non      | yes (under skull) | very                                                | very        | non             | non      |
 
 - [ovw of advancements in neuroengineering](https://medium.com/neurotechx/timeline-of-global-highlights-in-neuroengineering-2005-2018-75e4637b9e38)
+
 - **pro big-data**
 
   Artificial neural networks can compute in several different ways. There is some evidence in the visual system that neurons in higher layers of visual areas can, to some extent, be predicted linearly by higher layers of deep networks (yamins2014performance)
@@ -875,10 +876,12 @@ category: neuro
 
   - could neuroscientist  understand microprocessor
   - no canonical microcircuit
+  
 - cellular
   - extracellular microeelectrodes
   - intracellular microelectrode
   - **neuropixels**
+  
 - optical
   - calcium imaging / fluorescence imaging
   - whole-brain light sheet imaging
@@ -887,13 +890,7 @@ category: neuro
   - fNRIS - like fMRI but cheaper, allows more immobility, slightly worse spatial res
   - **oct** - noninvasive - can look at retina (maybe find biomarkers of alzheimer's)
   - fiber photometry - optical fiber implanted delivers excitation light
-- alteration
-  - optogenetic stimulation
-  - tms
-    - genetically-targeted tms: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4846560/
-  - [ect - Electroconvulsive Therapy](https://www.psychiatry.org/patients-families/ect#:~:text=Learn%20about%20Electroconvulsive%2C%20therapy,the%20patient%20is%20under%20anesthesia.)
-    - [Identifying Recipients of Electroconvulsive Therapy: Data From Privately Insured Americans - PMC](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6248332/) - 100k ppl per year
-  - local microstimulation with invasive electrodes
+  
 - high-level
   - EEG/ECoG
   - MEG
@@ -902,8 +899,34 @@ category: neuro
     - molecular fmri (bartelle)
   - MRS
   - event-related optical signal = near-infrared spectroscopy
+  
 - implantable
   - neural dust
+
+## interventions
+
+- optogenetic stimulation
+- tms
+  - genetically-targeted tms: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4846560/
+- [ect - Electroconvulsive Therapy](https://www.psychiatry.org/patients-families/ect#:~:text=Learn%20about%20Electroconvulsive%2C%20therapy,the%20patient%20is%20under%20anesthesia.)  (sometimes also called electroshock therapy)
+  - [Identifying Recipients of Electroconvulsive Therapy: Data From Privately Insured Americans - PMC](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6248332/) - 100k ppl per year
+  - can differ in its application in three ways
+    - electrode placement
+      - used to be bilateral, now unilateral is more popular
+    - electrical waveform of the stimulus
+      - used to be sinusoid, now brief pulse is more popular (has gotten briefer over time)
+    - treatment frequency
+  - public perception is largely negative (owing in large part to its portrayal in *One flew over the Cuckoo's nest*)
+  - research
+    - How Does Electroconvulsive Therapy Work? Theories on its Mechanism ([bolwig, 2011](https://journals.sagepub.com/doi/10.1177/070674371105600104))
+      - generalized seizures
+      - normalization of neuroendocrine dysfunction in melancholic depression
+      - increased hippocampal neurogenesis and synaptogenesis
+    - Electroconvulsive therapy: How modern techniques improve patient outcomes ([tirmizi, 2012)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4193538/pdf/nihms497537.pdf)
+    - The neurobiological effects of electroconvulsive therapy studied through magnetic resonance – what have we learnt and where do we go? ([ousdal et al. 2022](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8630079/pdf/nihms-1710166.pdf))
+- local microstimulation with invasive electrodes
+
+
 
 ## datasets
 

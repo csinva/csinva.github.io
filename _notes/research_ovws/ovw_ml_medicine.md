@@ -18,6 +18,10 @@ typora-copy-images-to: ../assets
 - [pecarn](https://pecarn.org/datasets/)
 - [openneuro](https://openneuro.org/)
 - [clinicaltrials.gov](http://clinicaltrials.gov/) - has thousands of active trials with long plain text description
+- [fairhealth](https://www.fairhealth.org/who-we-serve/research) - (paid) custom datasets that can include elements such as patients’ age and gender distribution, ICD-9 and ICD-10 procedure codes, geographic locations, professionals’ specialties and more
+  - other claims data is available but not clean
+- [prospero](https://www.crd.york.ac.uk/Prospero/#aboutpage) - website for registering systematic reviews / meta-analyses
+
 
 ## nlp
 
@@ -83,6 +87,12 @@ typora-copy-images-to: ../assets
   - Prediction of vaginal birth after cesarean delivery in term gestations: a calculator without race and ethnicity ([grobman et al. 2021](https://www.sciencedirect.com/science/article/abs/pii/S0002937821005871))
 - LLM bias
   - Coding Inequity: Assessing GPT-4’s Potential for Perpetuating Racial and Gender Biases in Healthcare ([zack...butte, alsentzer, 2023](https://www.medrxiv.org/content/10.1101/2023.07.13.23292577v2))
+- biased outcomes
+  - On the Inequity of Predicting A While Hoping for B ([mullainathan & obermeyer, 2021](https://ziadobermeyer.com/wp-content/uploads/2021/08/Predicting-A-While-Hoping-for-B.pdf))
+    - Algorithm was specifically trained to predict health-care costs
+      - Because of structural biases and differential treatment, Black patients with similar needs to white patients have long been known to have lower costs
+    - real goal was to “determine which individuals are in need of specialized intervention programs and which intervention programs are likely to have an impact on the quality of individuals’ health.”
+
 
 
 

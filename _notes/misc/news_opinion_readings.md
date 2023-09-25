@@ -179,6 +179,7 @@
 
 # workism
 
+- “I don’t have a dream job because i don’t dream of labor”
 - Is Following Your Work Passion Overrated? ([tugend, 2023](https://www.nytimes.com/2023/08/03/business/work-passion-overrated.html?smid=nytcore-ios-share&referringSource=articleShare))
 - [The perfectionism trap | The Economist](https://www.economist.com/1843/2021/08/10/the-perfectionism-trap?utm_campaign=a.coronavirus-special-edition&utm_medium=email.internal-newsletter.np&utm_source=salesforce-marketing-cloud&utm_term=20220730&utm_content=ed-picks-article-link-5&etear=nl_special_5&utm_campaign=a.coronavirus-special-edition&utm_medium=email.internal-newsletter.np&utm_source=salesforce-marketing-cloud&utm_term=7/30/2022&utm_id=1258967) (josh cohen, 2022)
   - "For centuries [Religion] was the primary means through which we came to terms with being fallen and flawed"

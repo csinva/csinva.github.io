@@ -6,6 +6,13 @@ category: ai
 
 {:toc}
 
+# 🤖 AGI thoughts
+- nice AGI definition:  AI systems are fully substitutable for human labor (or have a comparably large impact)
+- AI risk by deliberate human actors (i.e. concentrating power) is a greater risk than unintended use (i.e. loss of control)
+- Caveat: AGI risk is probably still underrated - nefarious use is likely worse than accidental misuse
+    - alignment research is technically more interesting than safety research…
+- Data limitations (e.g. in medicine) will limit rapid general advancements
+
 # human compatible
 **A set of notes based on the book human compatible, by Stuart Russell 2019**
 
@@ -80,7 +87,7 @@ category: ai
 
 # possible minds
 
-**edited by John Brockman, 2019)**
+**edited by John Brockman, 2019**
 
 ## intro (brockman)
 

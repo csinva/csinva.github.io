@@ -687,18 +687,23 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nlp">
+     1.8.1.1. nlp
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cdi-bias">
+     1.8.1.2. CDI bias
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#ucsf-de-id-data">
-     1.8.1.1. ucsf de-id data
+     1.8.1.3. ucsf de-id data
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#high-level">
-     1.8.1.2. high-level
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#criticisms">
-     1.8.1.3. criticisms
+     1.8.1.4. high-level
     </a>
    </li>
   </ul>
@@ -799,18 +804,23 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nlp">
+     1.8.1.1. nlp
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cdi-bias">
+     1.8.1.2. CDI bias
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#ucsf-de-id-data">
-     1.8.1.1. ucsf de-id data
+     1.8.1.3. ucsf de-id data
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#high-level">
-     1.8.1.2. high-level
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#criticisms">
-     1.8.1.3. criticisms
+     1.8.1.4. high-level
     </a>
    </li>
   </ul>
@@ -907,6 +917,47 @@ title="Print to PDF"
 <li><p>mimic-iv</p></li>
 </ul>
 </li>
+<li><p><a class="reference external" href="https://nda.nih.gov/">nih datasets</a></p></li>
+<li><p><a class="reference external" href="https://www.mdcalc.com/">mdcalc datasets</a></p></li>
+<li><p><a class="reference external" href="https://pecarn.org/datasets/">pecarn</a></p></li>
+<li><p><a class="reference external" href="https://openneuro.org/">openneuro</a></p></li>
+<li><p><a class="reference external" href="http://clinicaltrials.gov/">clinicaltrials.gov</a> - has thousands of active trials with long plain text description</p></li>
+<li><p><a class="reference external" href="https://www.fairhealth.org/who-we-serve/research">fairhealth</a> - (paid) custom datasets that can include elements such as patients’ age and gender distribution, ICD-9 and ICD-10 procedure codes, geographic locations, professionals’ specialties and more</p>
+<ul>
+<li><p>other claims data is available but not clean</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://www.crd.york.ac.uk/Prospero/#aboutpage">prospero</a> - website for registering systematic reviews / meta-analyses</p></li>
+</ul>
+<section id="nlp">
+<h3><span class="section-number">1.8.1.1. </span>nlp<a class="headerlink" href="#nlp" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://portal.dbmi.hms.harvard.edu/projects/n2c2-nlp/">n2c2 tasks</a></p>
+<ul>
+<li><p>MedNLI - NLI task grounded in patient history (<a class="reference external" href="https://arxiv.org/abs/1808.06752">romanov &amp; shivade, 2018</a>)</p>
+<ul>
+<li><p>derived from Mimic, but expertly annotated</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://www.i2b2.org/NLP/DataSets/">i2b2</a> named entity recognition tasks</p>
+<ul>
+<li><p>i2b2 2006, 2010, 2012, 2014</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://conservancy.umn.edu/handle/11299/137703">CASI dataset</a> - collection of abbreviations and acronyms (short forms) with their possible senses (long forms), along with other corresponding information about these terms</p>
+<ul>
+<li><p>some extra annotations by <a class="reference external" href="https://arxiv.org/abs/2205.12689">agrawal…sontag, 2022</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2202.13876">PMC-Patients</a> - open-source patient snippets, but no groundtruth labels besides age, gender</p></li>
+<li><p><a class="reference external" href="https://github.com/bepnye/EBM-NLP">EBM-NLP</a> - annotates PICO (Participants, Interventions, Comparisons and Outcomes) spans in clinical trial abstracts</p>
+<ul>
+<li><p>task - identify the spans that describe the respective PICO elements</p></li>
+</ul>
+</li>
+<li><p>review paper on clinical IE (<a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5771858/">wang…liu, 2017</a>)</p></li>
 <li><p>mimic-iv-benchmark (<a class="reference external" href="https://www.nature.com/articles/s41597-022-01782-9">xie…liu, 2022</a>)</p>
 <ul>
 <li><p>3 tabular datasets derived from MIMIC-IV ED EHR</p>
@@ -943,27 +994,72 @@ title="Print to PDF"
 </li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://nda.nih.gov/">nih datasets</a></p></li>
-<li><p><a class="reference external" href="https://www.mdcalc.com/">mdcalc datasets</a></p></li>
-<li><p><a class="reference external" href="https://pecarn.org/datasets/">pecarn</a></p></li>
-<li><p><a class="reference external" href="https://openneuro.org/">openneuro</a></p></li>
-<li><p>NLP</p>
+</ul>
+</section>
+<section id="cdi-bias">
+<h3><span class="section-number">1.8.1.2. </span>CDI bias<a class="headerlink" href="#cdi-bias" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Race/sex overviews</p>
 <ul>
-<li><p>MedNLI - NLI task grounded in patient history (<a class="reference external" href="https://arxiv.org/abs/1808.06752">romanov &amp; shivade, 2018</a>)</p>
+<li><p>Hidden in Plain Sight — Reconsidering the Use of Race Correction in Clinical Algorithms (<a class="reference external" href="https://www.nejm.org/doi/full/10.1056/NEJMms2004740">vyas, eisenstein, &amp; jones, 2020</a>)</p>
 <ul>
-<li><p>derived from Mimic, but expertly annotated</p></li>
+<li><p>Now is the Time for a Postracial Medicine: Biomedical Research, the National Institutes of Health, and the Perpetuation of Scientific Racism (<a class="reference external" href="https://www.tandfonline.com/doi/abs/10.1080/15265161.2017.1353165">2017</a>)</p></li>
 </ul>
 </li>
-<li><p>i2b2 named entity recognition tasks</p>
+<li><p>A Systematic Review of Barriers and Facilitators to Minority Research Participation Among African Americans, Latinos, Asian Americans, and Pacific Islanders (<a class="reference external" href="https://ajph.aphapublications.org/doi/full/10.2105/AJPH.2013.301706">george, duran, &amp; norris, 2014</a>)</p></li>
+<li><p>The Use of Racial Categories in Precision Medicine Research (<a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6919973/">callier, 2019</a>)</p></li>
+<li><p>Field Synopsis of Sex in Clinical Prediction Models for Cardiovascular Disease (<a class="reference external" href="https://www.ahajournals.org/doi/full/10.1161/CIRCOUTCOMES.115.002473">paulus…kent, 2016</a>) - supports the use of sex in predicting CVD, but not all CDIs use it</p></li>
+<li><p>Race Corrections in Clinical Models: Examining Family History and Cancer Risk (<a class="reference external" href="https://www.medrxiv.org/content/10.1101/2023.03.31.23287926v1">zink, obermeyer, &amp; pierson, 2023</a>) - family history variables mean different things for different groups depending on how much healthcare history their family had</p></li>
+</ul>
+</li>
+<li><p>ML papers</p>
 <ul>
-<li><p>i2b2 2006, 2010, 2012, 2014</p></li>
+<li><p>When Personalization Harms Performance: Reconsidering the Use of Group Attributes in Prediction (<a class="reference external" href="https://www.berkustun.com/docs/suriyakumar_2023_fairuse.pdf">suriyakumar, ghassemi, &amp; ustun, 2023</a>) - group attributes to improve performance at a <em>population level</em> but often hurt at a <em>group level</em></p></li>
+<li><p>Coarse race data conceals disparities in clinical risk score performance (<a class="reference external" href="https://arxiv.org/abs/2304.09270">movva…pierson, 2023</a>)</p></li>
+</ul>
+</li>
+<li><p>CDI guidelines</p>
+<ul>
+<li><p>Reporting and Methods in Clinical Prediction Research: A Systematic Review (<a class="reference external" href="https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1001221">Bouwmeester…moons, 2012</a>) - review publications in 2008, mostly about algorithmic methodology</p></li>
+<li><p>Transparent reporting of a multivariable prediction model for individual prognosis or diagnosis (TRIPOD): the TRIPOD Statement (<a class="reference external" href="https://bmcmedicine.biomedcentral.com/articles/10.1186/s12916-014-0241-z">collins…moons, 2015</a>)</p></li>
+<li><p>Framework for the impact analysis and implementation of Clinical Prediction Rules (CPRs) (<a class="reference external" href="https://bmcmedinformdecismak.biomedcentral.com/articles/10.1186/1472-6947-11-62">IDAPP group, 2011</a>) - stress validating old rules</p></li>
+<li><p>Predictability and stability testing to assess clinical decision instrument performance for children after blunt torso trauma (<a class="reference external" href="https://journals.plos.org/digitalhealth/article?id=10.1371/journal.pdig.0000076">kornblith…yu, 2022</a>) - stress the use of stability, application to IAI</p></li>
+<li><p>Methodological standards for the development and evaluation of clinical prediction rules: a review of the literature (<a class="reference external" href="https://link.springer.com/article/10.1186/s41512-019-0060-y">cowley…kemp, 2019</a>)</p></li>
+<li><p>Predictably unequal: understanding and addressing concerns that algorithmic clinical prediction may increase health disparities (<a class="reference external" href="https://www.nature.com/articles/s41746-020-0304-9">paulus &amp; kent, 2020</a>)</p></li>
+<li><p>Translating Clinical Research into Clinical Practice: Impact of Using Prediction Rules To Make Decisions (<a class="reference external" href="https://www.acpjournals.org/doi/10.7326/0003-4819-144-3-200602070-00009">reilly &amp; evans, 2006</a>)</p></li>
+</ul>
+</li>
+<li><p>Individual CDIs</p>
+<ul>
+<li><p>Reconsidering the Consequences of Using Race to Estimate Kidney Function. (<a class="reference external" href="http://www.nephjc.com/news/raceandegfr">eneanya, yang, &amp; reese, 2019</a>)</p></li>
+<li><p>Dissecting racial bias in an algorithm used to manage the health of populations (<a class="reference external" href="https://www.science.org/doi/abs/10.1126/science.aax2342">obermeyer et al. 2019</a>) - for one algorithm, at a given risk score, Black patients are considerably sicker than White patients, as evidenced by signs of uncontrolled illnesses</p></li>
+<li><p>Race, Genetic Ancestry, and Estimating Kidney Function in CKD (<a class="reference external" href="https://www.nejm.org/doi/full/10.1056/NEJMoa2103753">CRIC, 2021</a>)</p></li>
+<li><p>Prediction of vaginal birth after cesarean delivery in term gestations: a calculator without race and ethnicity (<a class="reference external" href="https://www.sciencedirect.com/science/article/abs/pii/S0002937821005871">grobman et al. 2021</a>)</p></li>
+</ul>
+</li>
+<li><p>LLM bias</p>
+<ul>
+<li><p>Coding Inequity: Assessing GPT-4’s Potential for Perpetuating Racial and Gender Biases in Healthcare (<a class="reference external" href="https://www.medrxiv.org/content/10.1101/2023.07.13.23292577v2">zack…butte, alsentzer, 2023</a>)</p></li>
+</ul>
+</li>
+<li><p>biased outcomes</p>
+<ul>
+<li><p>On the Inequity of Predicting A While Hoping for B (<a class="reference external" href="https://ziadobermeyer.com/wp-content/uploads/2021/08/Predicting-A-While-Hoping-for-B.pdf">mullainathan &amp; obermeyer, 2021</a>)</p>
+<ul>
+<li><p>Algorithm was specifically trained to predict health-care costs</p>
+<ul>
+<li><p>Because of structural biases and differential treatment, Black patients with similar needs to white patients have long been known to have lower costs</p></li>
+</ul>
+</li>
+<li><p>real goal was to “determine which individuals are in need of specialized intervention programs and which intervention programs are likely to have an impact on the quality of individuals’ health.”</p></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
+</section>
 <section id="ucsf-de-id-data">
-<h3><span class="section-number">1.8.1.1. </span>ucsf de-id data<a class="headerlink" href="#ucsf-de-id-data" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.8.1.3. </span>ucsf de-id data<a class="headerlink" href="#ucsf-de-id-data" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>black-box</p>
 <ul>
@@ -1008,7 +1104,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="high-level">
-<h3><span class="section-number">1.8.1.2. </span>high-level<a class="headerlink" href="#high-level" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.8.1.4. </span>high-level<a class="headerlink" href="#high-level" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>focus on building something you want to deploy</p>
 <ul>
@@ -1028,12 +1124,6 @@ title="Print to PDF"
 <li><p>very specific and well-defined</p></li>
 </ul>
 </li>
-</ul>
-</section>
-<section id="criticisms">
-<h3><span class="section-number">1.8.1.3. </span>criticisms<a class="headerlink" href="#criticisms" title="Permalink to this headline">#</a></h3>
-<ul class="simple">
-<li><p><a class="reference external" href="https://science.sciencemag.org/content/366/6464/447">Dissecting racial bias in an algorithm used to manage the health of populations </a>(obermeyer et al. 2019)</p></li>
 </ul>
 </section>
 </section>
@@ -1201,7 +1291,7 @@ title="Print to PDF"
 <section id="improving-medical-studies">
 <h2><span class="section-number">1.8.6. </span>improving medical studies<a class="headerlink" href="#improving-medical-studies" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
-<li><p>Machine learning methods for developing precision treatment rules with observational data (Kessler et al. 2019)</p>
+<li><p>Machine learning methods for developing precision treatment rules with observational data (<a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/31233922/">Kessler et al. 2019</a>)</p>
 <ul>
 <li><p>goal: find precision treatment rules</p></li>
 <li><p>problem: need large sample sizes but can’t obtain them in RCTs</p></li>

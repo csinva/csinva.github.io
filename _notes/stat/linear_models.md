@@ -8,7 +8,6 @@ category: stat
 
 - *Material from "Statistical Models Theory and Practice" - David Freedman*
 
-
 # introduction
 
 - $Y = X \beta + \epsilon$
@@ -32,20 +31,18 @@ category: stat
 
   - define projection (hat) matrix $H = X(X^TX)^{-1} X^T$
     - show $\|\|Y-X \theta\|\|^2 \geq \|\|Y - HY\|\|^2$
-    - key idea: subtract and add HY
+    - key idea: subtract and add $HY$
 
 
 - interpretation
   - if feature correlated, weights aren't stable / can't be interpreted
   - curvature inverse $(X^TX)^{-1}$ - dictates stability
-  - importance: weight * feature value
+  - feature importance = weight * feature value
 - LS doesn't work when p >> n because of colinearity of X columns
 - assumptions
   - $\epsilon \sim N(X\beta,\sigma^2)$
-  - *homoscedasticity*: $var(Y_i\|X)$ is the same for all i
-    - opposite of *heteroscedasticity*
-- *multicollinearity* - predictors highly correlated
-  - *variance inflation factor (VIF)* - measure how much the variances of the estimated regression coefficients are inflated as compared to when the predictors are not linearly related
+  - *homoscedasticity*: $\text{var}(Y_i\|X)$ is the same for all i
+    - opposite is *heteroscedasticity*
 - normal linear regression
   - variance MLE $\hat{\sigma}^2 = \sum (y_i - \hat{\theta}^T x_i)^2 / n$
     - in unbiased estimator, we divide by n-p
@@ -60,7 +57,7 @@ category: stat
 - *LAD (least absolute deviation)* fit
   - MLE estimator when error is Laplacian
 
-# recent notes
+# freedman notes
 
 ## regularization
 
@@ -72,7 +69,7 @@ category: stat
   - conventionally don't regularize the intercept term
 
 1. *ridge* regression (L2)
-  - if (X^T X) not invertible, add a small element to diagonal
+  - if $X^T X$ is not invertible, add a small element to diagonal
   - then it becomes invertible
   - small lambda -> numerical solution is unstable
   - proof of why it's invertible is difficult
@@ -84,15 +81,14 @@ category: stat
 2. *lasso* regression (L1)
   - $\sum_i (y_i - \hat{y_i})^2+\lambda  \vert \vert \beta\vert \vert _1 $ 
   - equivalent to minimizing $\sum_i (y_i - \hat{y_i})^2$ s.t. $\sum_j \vert \beta_j\vert  \leq t$
-  - "least absolute shrinkage and selection operator"
   - lasso - least absolute shrinkage and selection operator - L1
   - acts in a nonlinear manner on the outcome y
   - keep the same SSE loss function, but add constraint of L1 norm
   - doesn't have closed form for Beta
     - because of the absolute value, gradient doesn't exist
     - can use directional derivatives
-    - best solver is *LARS* - least angle regression
-  - if tuning parameter is chose well, will set lots of coordinates to 0
+    - good solver is *LARS* - least angle regression
+  - if tuning parameter is chosen well, will set lots of coordinates to 0
   - convex functions / convex sets (like circle) are easier to solve
   - disadvantages
     - if p>n, lasso selects at most n variables
@@ -204,7 +200,7 @@ category: stat
 
 - can have nonlinear basis functions (ex. polynomial regression)
 - radial basis function - ex. kernel function (Gaussian RBF)
-  - $exp(-(x-r)^2 /  (2 \lambda ^2))$
+  - $\exp(-(x-r)^2 /  (2 \lambda ^2))$
 - non-parametric algorithm - don't get any parameters theta; must keep data
 
 ## locally weighted LR (lowess)
@@ -218,7 +214,7 @@ category: stat
 
 - $\operatorname{E}(Y | X=x) = \int y f(y|x) dy = \int y \frac{f(x,y)}{f(x)} dy$
 
-  Using the [[kernel density estimation]] for the joint distribution ''f(x,y)'' and ''f(x)'' with a kernel '''''K''''',
+  Using the kernel density estimation for the joint distribution ''f(x,y)'' and ''f(x)'' with a kernel '''''K''''',
 
   $\hat{f}(x,y) = \frac{1}{n}\sum_{i=1}^{n} K_h\left(x-x_i\right) K_h\left(y-y_i\right)$
   $\hat{f}(x) = \frac{1}{n} \sum_{i=1}^{n} K_h\left(x-x_i\right)$
@@ -234,6 +230,34 @@ category: stat
   - learn individual functions using splines
 - $g(\mu) = b + f(x_0) + f(x_1) + f(x_2) + ...$
 - can also add some interaction terms (e.g. $f(x_0, x_1)$)
+
+## multicollinearity
+
+- *multicollinearity* - predictors highly correlated
+  - this affects fitted coefficients, potentially changing their values and even flipping their sign
+- *variance inflation factor (VIF)* for a feature $X_j$ is $\frac{1}{1-R_j^2}$, where $R_j^2$ is obtained by predicting $X_j$ from all features excluding $X_j$
+  - this measures the impact of multicollinearity on a feature coefficient
+- Studying 
+  - Variable Selection via Nonconcave Penalized Likelihood and Its Oracle Properties ([fan & li, 2001](https://www.jstor.org/stable/3085904)) - frame an estimator as "oracle" if:
+    - it can correctly select the nonzero coefficients in a model with prob converging to one
+    - and if the nonzero coefficients are asymptotically normal
+  - AdaLasso: The Adaptive Lasso and Its Oracle Properties ([zou, 2006](http://users.stat.umn.edu/~zouxx019/Papers/adalasso.pdf))
+    - can make lasso ""oracle" in the sense above by weighting each coef in the optimization
+      - appropriate weight for each feature $X_j$ is simply $1/ \hat{\beta_j}$, where we attain $\beta_j$ from fitting OLS with no weights
+- using marginal regression
+  - A Comparison of the Lasso and Marginal Regression ([genovese...yao, 2011](https://www.stat.cmu.edu/~jiashun/Research/Area/Marginal.pdf))
+  - Revisiting Marginal Regression ([genovese, jin, & wasserman, 2009](https://arxiv.org/abs/0911.4080))
+  - Exact Post Model Selection Inference for Marginal Screening ([jason lee & taylor, 2014](https://proceedings.neurips.cc/paper/2014/hash/a0a080f42e6f13b3a2df133f073095dd-Abstract.html))
+  
+- SIS: Sure independence screening for ultrahigh dimensional feature space ([fan & lv, 2008](https://rss.onlinelibrary.wiley.com/doi/10.1111/j.1467-9868.2008.00674.x), 2k+ citations)
+  - 2 steps (sometimes iterate these)
+    1. Feature selection - select marginal features with largest absolute coefs (pick some threshold)
+    2. Fit Lasso on selected features
+  - Followups
+    - Sure independence screening in generalized linear models with NP-dimensionality ([fan & song, 2010](https://projecteuclid.org/journals/annals-of-statistics/volume-38/issue-6/Sure-independence-screening-in-generalized-linear-models-with-NP-dimensionality/10.1214/10-AOS798.full))
+    - Nonparametric independence screening in sparse ultra-high-dimensional additive models ([fan, feng, & song, 2011](https://www.tandfonline.com/doi/abs/10.1198/jasa.2011.tm09779))
+  - RAR: Regularization after retention in ultrahigh dimensional linear regression models ([weng, feng, & qiao, 2017](https://arxiv.org/abs/1311.5625)) - only apply regularization on features not identified to be marginally important
+    - Regularization After Marginal Learning for Ultra-High Dimensional Regression Models ([feng & yu, 2017](https://yangfeng.hosting.nyu.edu/publication/feng-2017-regularization/feng-2017-regularization.pdf)) - introduces 3-step procedure using a retention set, noise set, and undetermined set
 
 # sums interpretation
 

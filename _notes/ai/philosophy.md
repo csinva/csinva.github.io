@@ -133,6 +133,51 @@ category: ai
 
 
 
+# the beggining of infinity (david deutsch, 2011)
+
+- all progress has resulted from the quest for good explanations
+  - *good explanation* - hard to vary while still acocounting for what it purports to account for
+  - the *reach* of an explanation is something we find out only after the fact (though we strive for explanations with good reach)
+  - seek "an idea so simple...that...we sill all say to each other, how could it have been otherwise"?
+- tenets
+  - problems are inevitable
+  - problems are soluble
+  - optimisim = the proposition that all evils are due to a lack of knowledge, and that knowledge is attainable by the methods of reason and science
+    - e.g. the distence between a 'natural' disaster andone brought about by ignorance is parochial (e.g. famine)
+- theories
+  - empiricism - we "derive" all our knowledge from sensory experience (deutsch argues that evidence is not used to generate theories but rather to choose between theories that have already been guessed)
+  - inductivisim - idea that theories are obtained by generalizing repeated experiences
+  - instrumentalism - science cannot describe reality, only predict outcomes of observations
+- evolution
+  - evolution (darwinian) - creation of knowledge through alternating variation & selection
+  - lamarckism - mistaken evolutionary theory that adaptations are acquired by organisms during their lifetime then passed down
+  - fine-tuning - if the constants or laws of physics were slightly different, there would be no life
+  - meme - explanations must spread both by being replicated and enacted in the brains of others
+  - a substantial proportion of all evolution on our planet to date has occured in human brains
+  - only 2 basic strategies of meme replication
+    - help holders (rational)
+    - distable holder's critical faculties (anti-rational)
+  - creativity developed as a way to better emulate ordinary things for mate selection, but proved to have much greater reach
+- morality
+  - moral philosophy addresses the problem of what sort of life to want
+  - reductionism - misocnception that mus always explain things by analyzing them into components
+  - 'you can't derive an ought from an is' (paraphrase from David Hume)
+- politics
+  - just as science seeks explanations that are experimentally testable, a rational political system makes it as easy as possible to detect + persuade others that a leader or policy is bad, and to remove them without violence if they are (popper's criterion)
+  - the moral imperative not to destroy the means of correcting mistakes could be the only moral imperative
+  - arguments against the problem of apportioning representatives -- argues instead for plularity voting system
+  - a culture is a set of ideas that cause their holders to behave alike in some ways
+- aesthetics
+  - when a piece of music has the attribute 'displace one note and there would be diminishment', there is an explanation (one day it may be expressible in words)
+- jump to universality - gradually improving systems undergo a sudden large increase in functionality
+  - e.g. numbering systems failed a couple times before becoming universal
+  - e.g. genetic code
+  - many theories for sustaining may be too limiting (e.g. propose studying carbon capture rather than limiting carbon production)
+- minor
+  - people in 1900 did not consider the internet or nuclear power unlikely: they did not conceive of them at all
+  - the original sources of scientific theories are almost nevery good - weird that philiosophy places such an emphasis on original texts
+  - most people believe that an income of about twice their own should be sufficient to satisfy any reasonable person (hard to imagine what it would be like to have twice as much) - David Friedman
+
 # philosophy of science
 
 ## [thomas kuhn](https://plato.stanford.edu/entries/thomas-kuhn/)

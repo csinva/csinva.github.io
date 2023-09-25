@@ -11,9 +11,8 @@ Some notes on a computational perspective on cognitive science.
 # nativism, empiricism
 
 - cogsci "inverse problem" - give world, how do we form representations
-  
-  - like cv, given pixels, how do we understand world?
-- historical cognitive dev: how do we form representations?
+  - e.g. given pixels, how do we understand world?
+- historical cognitive development: how do we form representations?
   - **nativism** - plato - representation w/out learning
   - **empiricism** - aristotle - learning w/out representation
   - **constructivism** - jean piaget - cognitive development
@@ -64,7 +63,7 @@ Some notes on a computational perspective on cognitive science.
 
   - e.g. If kangaroos had no tails, they would topple over
 
-# probabalistic causal models
+# probabilistic causal models
 
 - abstract representations that provide computational accounts of causal inference
   - at marr's highest level: computation
@@ -88,7 +87,7 @@ Some notes on a computational perspective on cognitive science.
 - what does an NN do?
   - universal function approximator
   - feature learning view - learn features that separate classes linearly
-- saxe....ng 2010 compared statistics of primary cortical receptive fields and receptive field plasticity
+- [bhand...saxe, ng 2010](https://proceedings.neurips.cc/paper_files/paper/2011/hash/e19347e1c3ca0c0b97de5fb3b690855a-Abstract.html) compared statistics of primary cortical receptive fields and receptive field plasticity
   - vision + audio + somatosensory - statistics seem to line up with neuroscience
 - a single algorithm?
   - ex. seeing with your tongue
@@ -221,14 +220,15 @@ Some notes on a computational perspective on cognitive science.
 
 # language development
 
-- language is interesting problem, lots of children have language difficulties, language might be unique to humans
+- lots of children have language difficulties
+- language might be unique to humans
 - language is somewhat instinctual
   - learned via association (John Locke) or by reading people's intentions (St. Augustine)
 - behaviorist approach (Skinner) - conditioning, children learn because of adult reinforcement
   - ex. bird turning to get reward
   - "meaning" - an association between stimulus and response
   - progressilve taught more complex utterances
-- noam chomsky's ciritique of skinner review (1959)
+- noam chomsky's critique of skinner review (1959)
   - parents correct truth of utterance, not its grammar
   - stimulus doesn't completely determine response
   - children say things they've never heard (e.g. mommy eated the apple)
