@@ -55,11 +55,17 @@ img {
 }
 
 .medium_image {
-    align: center;
     width: 60%;
 }
 
 .big_image {
-    align: center;
     width: 80%;
+}
+
+.full_image {
+    width: 100%;
+}
+
+.title, title, h1, h2, h3, h4, h5 {
+    text-transform: none;
 }

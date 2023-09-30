@@ -1303,6 +1303,7 @@ Nice overview [here](https://github.com/stefanoteso/awesome-explanatory-supervis
   - Visualization by Example ([chenglong wang...dillig, 2019](https://arxiv.org/abs/1911.09668)) - automatically synthesize a program to visual data based on user "sketches" = partial visualization of a subset of the data by the user
     - Falx: Synthesis-Powered Visualization Authoring ([chenglong wang...ko, 2021](https://arxiv.org/abs/2102.01024))
   - see also things in [imodelsX](https://github.com/csinva/imodelsX)
+- LLMs for Semi-Automated Data Science: Introducing CAAFE for Context-Aware Automated Feature Engineering ([hollmann, muller & hutter, 2023](https://arxiv.org/abs/2305.03403))
 - **Coreset algorithms** - summarize datasets with smaller dataset that accurately represent the full dataset on downstream tasks
   - [Introduction to Coresets: Accurate Coresets](https://arxiv.org/abs/1910.08707)
   - [Efficient Dataset Distillation Using Random Feature Approximation](https://arxiv.org/abs/2210.12067) (2022)
@@ -1454,3 +1455,8 @@ These papers don't quite connect to prediction, but are generally about finding 
     - AI systems that don’t seek to gain or maintain power may cause a lot of harm, but this harm is more easily limited by the power they already have (so wouldn't count as existential risk)
 -  [Why I Think More NLP Researchers Should Engage with AI Safety Concerns – NYU Alignment Research Group](https://wp.nyu.edu/arg/why-ai-safety/) (sam bowman, 2022)
   - AI Safety and Neighboring Communities: A Quick-Start Guide, as of Summer 2022 - AI Alignment Forum (sam bowman, 2022)
+-  Large Language Model Alignment: A Survey ([shen...xiong, 2023](https://arxiv.org/pdf/2309.15025.pdf))
+   -  **Outer Alignment**  - choose the right loss functions or reward fuctions and ensure that the training objectives of AI systems match human values.
+      -  In other words, outer alignment attempts to align the specified training objective to the goal of its designer
+   -  **Inner Alignment** - This is to ensure that AI systems are actually trained to achieve the goals set by their designers.
+      -  Once we have specified training objectives, we need to ensure that the behaviors of AI systems actually align with those specifications (e.g. they don't use shortcuts)
