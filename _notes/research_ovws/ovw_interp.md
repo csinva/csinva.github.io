@@ -258,6 +258,7 @@ For an implementation of many of these models, see the python [imodels package](
   - AddTree = additive tree - learn single tree, but rather than only current node's data to decide the next split, also allow the remaining data to also influence this split, although with a potentially differing weight ([luna, ..., friedman, solberg, valdes, 2019](https://www.pnas.org/content/116/40/19887))
     - the weight is chosen as a hyperparameter
   - Additive groves ([sorokina, carauna, & riedewald 2007](https://link.springer.com/chapter/10.1007/978-3-540-74958-5_31)) - additive model of a few deep trees (gradually increase number and size of trees)
+  - Random Planted Forest: a directly interpretable tree ensemble ([hiabu, mammen, & meyer, 2023](https://arxiv.org/abs/2012.14563)) - propose a planted tree very similar to FIGS, but use it in a randomized ensemble that restricts the number of interactions in a tree (similar to GAMs)
   
 - bayesian trees
   - Bayesian Treed Models ([chipman et al. 2001](http://www-stat.wharton.upenn.edu/~edgeorge/Research_papers/treed-models.pdf)) - impose priors on tree parameters
@@ -1306,7 +1307,7 @@ Nice overview [here](https://github.com/stefanoteso/awesome-explanatory-supervis
 - LLMs for Semi-Automated Data Science: Introducing CAAFE for Context-Aware Automated Feature Engineering ([hollmann, muller & hutter, 2023](https://arxiv.org/abs/2305.03403))
 - **Coreset algorithms** - summarize datasets with smaller dataset that accurately represent the full dataset on downstream tasks
   - [Introduction to Coresets: Accurate Coresets](https://arxiv.org/abs/1910.08707)
-  - [Efficient Dataset Distillation Using Random Feature Approximation](https://arxiv.org/abs/2210.12067) (2022)
+  - [Efficient Dataset Distillation Using Random Feature Approximation](https://arxiv.org/abs/2210.12067) (loo...rus, 2022)
 
 ### AutoML
 
