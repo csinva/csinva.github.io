@@ -1277,7 +1277,7 @@ Nice overview [here](https://github.com/stefanoteso/awesome-explanatory-supervis
 - Human-in-the-loop Extraction of Interpretable Concepts in Deep Learning Models ([zhao et al. 2021](https://ieeexplore.ieee.org/abstract/document/9552218))
   - human knowledge and feedback are combined to train a concept extractor
   - by identifying visual concepts that negatively affect model performance, we develop the corresponding data augmentation strategy that consistently improves model performance
-- Making deep neural networks right for the right scientific reasons by interacting with their explanations ([schramowski, ... kersting, 2020](https://www.nature.com/articles/s42256-020-0212-3) ) - scientist iteratively provides feedback on DNN's explanation
+- Making deep neural networks right for the right scientific reasons by interacting with their explanations ([schramowski, ... kersting, 2020](https://www.nature.com/articles/s42256-020-0212-3)) - scientist iteratively provides feedback on DNN's explanation
 - POTATO: exPlainable infOrmation exTrAcTion framewOrk ([kovacs et al. 2022](https://arxiv.org/abs/2201.13230)) - humans select rules using graph-based feature for text classification
 - Interactive Disentanglement: Learning Concepts by Interacting with their Prototype Representations ([stammer...scharmowski, kersting, 2021](https://arxiv.org/abs/2112.02290)) - humans provide weak supervision, tested on toy datasets
 - Fanoos: Multi-Resolution, Multi-Strength, Interactive Explanations for Learned Systems ([bayan & mitsch, 2022](https://arxiv.org/abs/2006.12453)) - a framework for combining formal verification techniques, heuristic search, and user interaction to explore explanations at the desired level of granularity and fidelity
@@ -1289,37 +1289,21 @@ Nice overview [here](https://github.com/stefanoteso/awesome-explanatory-supervis
 - TalkToEBM: LLMs Understand Glass-Box Models, Discover Surprises, and Suggest Repairs ([lengerich...caruana, 2023](https://arxiv.org/abs/2308.01157)) - use LLMs to analyze tabular data and make suggestions for EBMs
   - GAM Changer: Editing Generalized Additive Models with Interactive Visualization ([wang...caruana, 2021](https://arxiv.org/abs/2112.03245)) - gui for editing GAMs
 
-## Automated assistants
+## (interpretable) Automl
 
-### Dataset interpretability (data mining, automatic data viz)
-
-- similar to causality, we may want to use interpretability just to understand our data rather than to get any form of model
-- Lux: Always-on Visualization Recommendations for Exploratory Dataframe Workflows ([lee...hearts, parameswaram, 2021](https://arxiv.org/abs/2105.00121))
-  - high-level language for recommendations (e.g. `df.intent = ["AvgLifeexpetancy", "Inequality"]`) -> Lux automatically creates relevant visualizations
-
-- Tisane: Authoring Statistical Models via Formal Reasoning from Conceptual and Data Relationships ([jun, seo, heer, & just, 2022](https://eunicemjun.com/assets/files/jun2022tisane.pdf)) - language to better specify assumptions when fitting GLMs / GLMMs
-- LIDA: A Tool for Automatic Generation of Grammar-Agnostic Visualizations and Infographics using Large Language Models ([dibia, 2023](https://arxiv.org/abs/2303.02927))
-  - Execution-based Evaluation for Data Science Code Generation Models ([huang…gao, 2022](https://arxiv.org/abs/2211.09374))
-  - On the Design of AI-powered Code Assistants for Notebooks ([mcnutt, wang, deline, & drucker, 2023](https://dl.acm.org/doi/abs/10.1145/3544548.3580940))
-  - Visualization by Example ([chenglong wang...dillig, 2019](https://arxiv.org/abs/1911.09668)) - automatically synthesize a program to visual data based on user "sketches" = partial visualization of a subset of the data by the user
-    - Falx: Synthesis-Powered Visualization Authoring ([chenglong wang...ko, 2021](https://arxiv.org/abs/2102.01024))
-  - see also things in [imodelsX](https://github.com/csinva/imodelsX)
-- LLMs for Semi-Automated Data Science: Introducing CAAFE for Context-Aware Automated Feature Engineering ([hollmann, muller & hutter, 2023](https://arxiv.org/abs/2305.03403))
-- **Coreset algorithms** - summarize datasets with smaller dataset that accurately represent the full dataset on downstream tasks
-  - [Introduction to Coresets: Accurate Coresets](https://arxiv.org/abs/1910.08707)
-  - [Efficient Dataset Distillation Using Random Feature Approximation](https://arxiv.org/abs/2210.12067) (loo...rus, 2022)
-
-### AutoML
-
+- [imodels_automl](https://github.com/csinva/imodels/blob/master/notebooks/imodels_automl.ipynb)
 - Responsible AI toolbox ([github](https://github.com/microsoft/responsible-ai-toolbox))
 - auto-sklearn interpretability subset ([link](https://automl.github.io/auto-sklearn/master/examples/40_advanced/example_interpretable_models.html))
 - Automatic Componentwise Boosting: An Interpretable AutoML System ([coors...rugamer, 2021](https://arxiv.org/abs/2109.05583)) - restrict AutoML to GAMs
+- **Coreset algorithms** - summarize datasets with smaller dataset that accurately represent the full dataset on downstream tasks
+  - [Introduction to Coresets: Accurate Coresets](https://arxiv.org/abs/1910.08707)
+  - Efficient Dataset Distillation Using Random Feature Approximation ([loo...rus, 2022](https://arxiv.org/abs/2210.12067))
 
 ## recourse
 
 **recourse** - can a person obtain desired prediction from fixed mode by changing actionable input variables (not just standard explainability)
 
-- [actionable recourse in linear classification](https://arxiv.org/pdf/1809.06514.pdf) (ustun et al. 2019)
+- actionable recourse in linear classification ([ustun et al. 2019](https://arxiv.org/pdf/1809.06514.pdf))
   - want model to provide actionable inputs (e.g. income) rather than immutable variables (e.g. age, marital status)
     - drastic changes in actionable inputs are basically immutable
 

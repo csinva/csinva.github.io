@@ -322,13 +322,17 @@ See related papers in the [📌 interpretability](https://csinva.io/notes/resear
 
       - Logical Satisfiability of Counterfactuals for Faithful Explanations in NLI ([sia...zettlemoyer, mathias, 2023](https://ojs.aaai.org/index.php/AAAI/article/view/26174))
 
+    - Faithful Explanations of Black-box NLP Models Using LLM-generated Counterfactuals ([gat…reichart, 2023](https://arxiv.org/abs/2310.00603))
+
     - Causal Proxy Models for Concept-based Model Explanations ([wu...potts, 2023](https://proceedings.mlr.press/v202/wu23b.html))
 
     - Two Failures of Self-Consistency in the Multi-Step Reasoning of LLMs ([chen, ..., bowman, cho, 2023](https://arxiv.org/abs/2305.14279)) - models fail at these 2 tasks:
-
+  
       - hypothetical consistency (the ability for a model to predict what its output would be in a hypothetical other context)
       - compositional consistency (consistency of a model's outputs for a compositional task even when an intermediate step is replaced with the model's output for that step)
-
+  
+    - Are Large Language Models Post Hoc Explainers? ([kroeger...lakkaraju, 2023](https://arxiv.org/abs/2310.05797))
+  
   - Chain of Thought Prompting ([wei et al. 2022](https://arxiv.org/abs/2201.11903))
     - in few-shot prompts, don't just provide answer but also reasoning
     - model output then provides reasoning + answer
@@ -527,7 +531,8 @@ See related papers in the [📌 interpretability](https://csinva.io/notes/resear
   - Analyzing Transformers in Embedding Space ([dar, ..., berant, 2022](https://arxiv.org/pdf/2209.02535.pdf)) - apply unembeddix matrix to weights, etc. to interpret transformers
 - Rosetta Neurons: Mining the Common Units in a Model Zoo (dravid, ..., efros, shocher, 2023)
   - Multimodal Neurons in Pretrained Text-Only Transformers ([schwettmann...torralba, 2023](https://arxiv.org/pdf/2308.01544.pdf))
-
+  - Interpreting CLIP's Image Representation via Text-Based Decomposition ([gandelsman, efros, & steinhardt, 2023](https://arxiv.org/abs/2310.05916))
+  
 - The Hydra Effect: Emergent Self-repair in Language Model Computations ([mcgrath...legg, 2023](https://arxiv.org/abs/2307.15771)) - ablations atone attention layer of an LLM cause another layer to compensate
 
 - Neurons in Large Language Models: Dead, N-gram, Positional ([voita, ferrando, & nalmpantis, 2023](https://arxiv.org/pdf/2309.04827.pdf))
@@ -837,6 +842,7 @@ mixture of experts models have become popular because of the need for (1) fast s
     - their [unigram baseline](https://openaipublic.blob.core.windows.net/neuron-explainer/paper/index.html) summarizes top unigrams into a string
     - they use synthetic generated data to revise the explanation
     - they also do some recovery tests on "neuron puzzles"
+    - The Importance of Prompt Tuning for Automated Neuron Explanations ([lee...weng, 2023](https://arxiv.org/abs/2310.06200))
   - MILAN: Natural Language Descriptions of Deep Visual Features ([hernandez...david bau...torallba, andreas, 2022](https://openreview.net/forum?id=NudBMY-tzDr)) - given a neuron, generates a natural-language string that maximizes pointwise mutual information with the image regions in which the neuron is active
     - Scale Alone Does not Improve Mechanistic Interpretability in Vision Models ([zimmermann, klein, & brendel, 2023](https://arxiv.org/abs/2307.05471)) - perform human eval of interpretability of different units (show human top-activating patches and ask them to decide which of 2 patches will be top-activating)
   - A Function Interpretation Benchmark for Evaluating Interpretability Methods ([schwettmann, ..., andreas, bau, & torralba, 2023](https://arxiv.org/abs/2309.03886))
@@ -932,6 +938,22 @@ mixture of experts models have become popular because of the need for (1) fast s
     - protein keyword prediction (predict keywords in UniProt, like "ATP-Binding", "Cell membrane")
     - protein function description - compare free-form description to GT UniProt function description
 
+## automated assistants
+
+- similar to causality, we may want to use interpretability just to understand our data rather than to get any form of model
+- Benchmarking Large Language Models As AI Research Agents ([huang, vora, liang, & leskovec, 2023](https://arxiv.org/abs/2310.03302v1)) - formulate concrete ml tasks (like improve accuracy on a kaggle task) and see how well LLMs can do at them
+- Lux: Always-on Visualization Recommendations for Exploratory Dataframe Workflows ([lee...hearts, parameswaram, 2021](https://arxiv.org/abs/2105.00121))
+  - high-level language for recommendations (e.g. `df.intent = ["AvgLifeexpetancy", "Inequality"]`) -> Lux automatically creates relevant visualizations
+
+- Tisane: Authoring Statistical Models via Formal Reasoning from Conceptual and Data Relationships ([jun, seo, heer, & just, 2022](https://eunicemjun.com/assets/files/jun2022tisane.pdf)) - language to better specify assumptions when fitting GLMs / GLMMs
+- LIDA: A Tool for Automatic Generation of Grammar-Agnostic Visualizations and Infographics using Large Language Models ([dibia, 2023](https://arxiv.org/abs/2303.02927))
+  - Execution-based Evaluation for Data Science Code Generation Models ([huang…gao, 2022](https://arxiv.org/abs/2211.09374))
+  - On the Design of AI-powered Code Assistants for Notebooks ([mcnutt, wang, deline, & drucker, 2023](https://dl.acm.org/doi/abs/10.1145/3544548.3580940))
+  - Visualization by Example ([chenglong wang...dillig, 2019](https://arxiv.org/abs/1911.09668)) - automatically synthesize a program to visual data based on user "sketches" = partial visualization of a subset of the data by the user
+    - Falx: Synthesis-Powered Visualization Authoring ([chenglong wang...ko, 2021](https://arxiv.org/abs/2102.01024))
+  - see also things in [imodelsX](https://github.com/csinva/imodelsX)
+- LLMs for Semi-Automated Data Science: Introducing CAAFE for Context-Aware Automated Feature Engineering ([hollmann, muller & hutter, 2023](https://arxiv.org/abs/2305.03403))
+
 ## tabular data
 
 - tabular pre-training
@@ -943,12 +965,14 @@ mixture of experts models have become popular because of the need for (1) fast s
     - builds on prior-data fitted networks (PFNs) ([muller, ..., hutter, 2021](https://arxiv.org/abs/2112.10510))
     - trained on synthetic data
   - GPT for Semi-Automated Data Science: Introducing CAAFE for Context-Aware Automated Feature Engineering ([hollman, ..., hutter, 2023](https://arxiv.org/abs/2305.03403))
-  - TabDDPM: Modelling Tabular Data with Diffusion Models ([2022](https://arxiv.org/abs/2209.15421))
+  - TabDDPM: Modelling Tabular Data with Diffusion Models ([kotelnikove et al. 2022](https://arxiv.org/abs/2209.15421))
   - TabLLM: Few-shot Classification of Tabular Data with Large Language Models  ([hegelsmann..., sontag, 2022](https://arxiv.org/abs/2210.10723))
-  - [TabRet: Pre-training Transformer-based Tabular Models for Unseen Columns](https://www.semanticscholar.org/paper/TabRet%3A-Pre-training-Transformer-based-Tabular-for-Onishi-Oono/667b708db00c89eef062d8bc4a68f5364bf70648)
+  - TabRet: Pre-training Transformer-based Tabular Models for Unseen Columns ([onishi...hayashi, 2023](https://arxiv.org/abs/2303.15747))
+    - Scaling Experiments in Self-Supervised Cross-Table Representation Learning ([schambach...otterbach, 2023](https://arxiv.org/pdf/2309.17339.pdf))
   - TABBIE ([Iida, ..., Iyyer, 2021](https://arxiv.org/abs/2105.02584)) - average row/column embeddings
-  - (not using transformers): transform a relation table in a graph and perform random walks on the latter to produce node embeddings ([Cappuzzo et al., 2020](https://dl.acm.org/doi/10.1145/3318464.3389742))
+  - (not using transformers): transform a relation table in a graph and perform random walks on the latter to produce node embeddings ([cappuzzo et al., 2020](https://dl.acm.org/doi/10.1145/3318464.3389742))
   - Language models are weak learners ([manikandan, jian, & kolter, 2023](https://arxiv.org/abs/2306.14101)) - use prompted LLMs as weak learners in boosting algorithm for tabular data
+  - Simple, fast, and flexible framework for matrix completion with infinite width neural networks ([radhakrishnan...belkin, uhler, 2022](https://www.pnas.org/doi/10.1073/pnas.2115064119)) - use NTK
 - input representation
 
   - baseline methods: usually flatten tables, maybe with special character for starting each row/col
@@ -957,10 +981,10 @@ mixture of experts models have become popular because of the need for (1) fast s
     - also popular is converting the table-to-text with finetuned models before processing
 - older
 
-  - [TaBERT: Pretraining for Joint Understanding of Textual and Tabular Data](https://www.semanticscholar.org/paper/TaBERT%3A-Pretraining-for-Joint-Understanding-of-and-Yin-Neubig/a5b1d1cab073cb746a990b37d42dc7b67763f881) (yin, neubig, ..., riedel, 2020)
+  - TaBERT: Pretraining for Joint Understanding of Textual and Tabular Data ([yin, neubig, ..., riedel, 2020](https://www.semanticscholar.org/paper/TaBERT%3A-Pretraining-for-Joint-Understanding-of-and-Yin-Neubig/a5b1d1cab073cb746a990b37d42dc7b67763f881))
 - one-off tasks
 
-  - LLMS are realistic tabular data generators ([borisov et al. 2022](https://arxiv.org/abs/2210.06280))
+  - LLMs are realistic tabular data generators ([borisov et al. 2022](https://arxiv.org/abs/2210.06280))
   - Can Foundation Models Wrangle Your Data? ([narayan...re, 2022](https://arxiv.org/abs/2205.09911))
 - reviews
 
@@ -971,9 +995,9 @@ mixture of experts models have become popular because of the need for (1) fast s
       - attention variants: add row-wise, sparse attention allows for adding more context
 
 
-  - [Table Pre-training: A Survey on Model Architectures, Pretraining Objectives, and Downstream Tasks](https://www.semanticscholar.org/paper/Table-Pre-training%3A-A-Survey-on-Model-Pretraining-Dong-Cheng/49f4b4ca86e574c7ec688cfd45d2e17ff079c313) (2022)
-  - [Embeddings for Tabular Data: A Survey](https://arxiv.org/abs/2302.11777) (singh & bedathur, 2023)
-  - [Deep neural networks and tabular data: A survey](https://ieeexplore.ieee.org/abstract/document/9998482/) (2022) - mostly compares performance on standard tasks (e.g. classification)
+  - Table Pre-training: A Survey on Model Architectures, Pretraining Objectives, and Downstream Tasks ([dong et al. 2022](https://www.semanticscholar.org/paper/Table-Pre-training%3A-A-Survey-on-Model-Pretraining-Dong-Cheng/49f4b4ca86e574c7ec688cfd45d2e17ff079c313))
+  - Embeddings for Tabular Data: A Survey ([singh & bedathur, 2023](https://arxiv.org/abs/2302.11777))
+  - Deep neural networks and tabular data: A survey ([borisov et al. 2022]()) - mostly compares performance on standard tasks (e.g. classification)
 
 ## llm limitations / perspectives
 
