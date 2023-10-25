@@ -11,7 +11,7 @@ Hi 👋 I'm Chandan, a Senior Researcher at Microsoft Research working on interp
   <a href="_blog">Blog posts</a> •
   <a href="https://scholar.google.com/citations?hl=en&user=XpttKK8AAAAJ&view_op=list_works&sortby=pubdate">Personal info</a>
   <br>
-  <a href="https://twitter.com/csinva_">@csinva_</a>
+  <a href="https://twitter.com/csinva">@csinva</a>
 </p>
 
 ## Slides
@@ -72,6 +72,6 @@ Posts on various aspects of machine learning / statistics / neuroscience advance
 
 ## Reference
 
-- For updates, star the repo or follow [@csinva_](https://twitter.com/csinva_)
+- For updates, star the repo or follow [@csinva](https://twitter.com/csinva)
 - Feel free to use openly!
 - Built with [jekyll](https://jekyllrb.com/) | [github pages](https://pages.github.com/) | [timeline theme](http://kirbyt.github.io/timeline-jekyll-theme) | [particles.js](https://vincentgarreau.com/particles.js/) | [jupyterbook](https://jupyterbook.org/intro.html)
