@@ -160,27 +160,15 @@ First 5 parts here are based on the book [storytelling with data](http://www.sto
    4. sample majority class w/ density (to get best samples)
    5. log-spline - doesn't scale
 
-
-
-# whitening
-
-- get decorrelated features $Z$ from inputs $X$
-- $W=$ whitening matrix , selected based on problem goals:
-  - PCA: Maximal compression of $\mathbf{X}$ in $\mathbf{Z}$
-  - ZCA: Maximal similarity between $\mathbf{X}$ and $\mathbf{Z}$
-  - Cholesky: Inducing structure: $\operatorname{Cov}(X, Z)$ is lower-triangular with positive diagonal elements
-  - $W$ is constrained as to enforce $\Sigma_{Z}=I$
-
 # missing-data imputation
 
-- [Missing value imputation: a review and analysis of the literature](https://link.springer.com/article/10.1007/s10462-019-09709-4) (lin & tsai 2019)
-- [Purposeful Variable Selection and Stratification to Impute Missing FAST Data in Trauma Research](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3744188/) (fuchs et al. 2014)
-- [Causal Inference: A Missing Data Perspective](https://arxiv.org/abs/1712.06170) (ding & li, 2018)
-- different missingness mechanisms (little & rubin, 1987)
-  - **MCAR** - missing completely at random - no relationship between the missingness of the data and any values, observed or missing
-  - **MAR** - missing at random - propensity of missing values depends on *observed* data, but *not* the missing data
+- Missing value imputation: a review and analysis of the literature ([lin & tsai 2019](https://link.springer.com/article/10.1007/s10462-019-09709-4))
+- Causal Inference: A Missing Data Perspective ([ding & li, 2018](https://arxiv.org/abs/1712.06170))
+- different missingness mechanisms ([little & rubin, 1987](https://www.jstor.org/stable/1165119))
+  - MCAR = missing completely at random - no relationship between the missingness of the data and any values, observed or missing
+  - MAR = missing at random - propensity of missing values depends on *observed* data, but *not* the missing data
     - can easily test for this vs MCAR
-  - **MNAR** - missing not at random - propensity of missing values depends both on observed and unobserved data
+  - MNAR = missing not at random - propensity of missing values depends both on observed and unobserved data
   - connections to causal: MCAR is much like randomization, MAR like ignorability (although slightly more general), and MNAR like unmeasured unconfounding
 - imputation problem: propensity of missing values depends on the unobserved values themselves (not ignorable)
   - simplest approach: drop rows with missing vals
@@ -190,8 +178,8 @@ First 5 parts here are based on the book [storytelling with data](http://www.sto
   - matrix completion: low-rank, PCA, SVD
   - nearest-neighbor / matching: hot-deck
   - (weighted) prediction approaches
-    - linear regr, LDA, naive bayes, regr. trees, LDA
-    - can do weighting using something similar to inverse propensities, although less common to check things  like covariate balance
+    - linear regr, LDA, naive bayes, regr. trees
+    - can do weighting using something similar to inverse propensities, although less common to check things like covariate balance
   - multiple imputation: impute multiple times to get better estimates
     - MICE (passes / imputes data multiple times sequentially)
 - can perform sensitivity analysis to evaluate the assumption that things are not MNAR
@@ -199,13 +187,57 @@ First 5 parts here are based on the book [storytelling with data](http://www.sto
 - performance evaluation
   - acc at finding missing vals
   - acc in downstream task
+- applications
+  - Purposeful Variable Selection and Stratification to Impute Missing FAST Data in Trauma Research ([fuchs et al. 2014](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3744188/))
 
 
+## matrix completion
 
-# feature engineering
+- A Survey on Matrix Completion: Perspective of Signal Processing ([li...zhao, 2019](https://arxiv.org/pdf/1901.10885.pdf))
+
+  - formulations
+    - Exact matrix completion via convex optimization ([candes & recht, 2012](https://dl.acm.org/doi/abs/10.1145/2184319.2184343))
+      - $\min _{\boldsymbol{M}} \operatorname{rank}(\boldsymbol{M})$, s.t. $\left\|\boldsymbol{M}_{\Omega}-\boldsymbol{X}_{\Omega}\right\|_F \leq \delta$: - this is NP-hard
+    - nuclear norm approxmiation
+      - $\min _{\boldsymbol{M}}\|\boldsymbol{M}\|_*$, s.t. $||\boldsymbol{M}_{\Omega}-\boldsymbol{X}_{\Omega}||_F \leq \delta$
+      - this has be formulated as semidefinite programming, nuclear norm relaxation, or robust PCA
+    - minimum rank approximation helps with the assumption that the data are corrupted by noise (e.g. ADMiRA ([lee & bresler, 2010](https://ieeexplore.ieee.org/abstract/document/5550497/)))
+      - $\min _{\boldsymbol{M}}\left\|(\boldsymbol{M})_{\Omega}-\boldsymbol{X}_{\Omega}\right\|_F^2$, s.t. $\operatorname{rank}(\boldsymbol{M}) \leq r$
+    - matrix factorization is a faster but non-convex approximation (e.g. LMaFit ([wen, yin, & zhang, 2012](https://link.springer.com/article/10.1007/s12532-012-0044-1)))
+      - $\min _{\boldsymbol{U}, \boldsymbol{V}, \boldsymbol{Z}}\left\|\boldsymbol{U} \boldsymbol{V}^T-\boldsymbol{Z}\right\|_F^2$, s.t. $\boldsymbol{Z}_{\Omega}=\boldsymbol{X}_{\Omega}$
+    - $\ell_p$-Norm minimization - use a different norm than Frobenius to handle specific types of noise
+    - Adaptive outlier pruning ([yan, yang, & osher, 2013](https://link.springer.com/article/10.1007/s10915-013-9682-3)) - better handles outliers
+  - algorithms
+    - gradient-based
+      - gradient descent
+      - accelerated proximal descent
+      - bregman iteration
+    - non-gradient
+      - block coordinate descent
+      - ADMM: alterntating direction method of multipliers
+
+- Newer approaches
+
+  - Simple, Fast, and Flexible Framework for Matrix Completion with Infinite Width Neural Networks ([radhakrishnan...belkin, uhler, 2022](https://arxiv.org/abs/2108.00131)) - use NTK for FCN/CNN to do matrix completion
+  - Graph Convolutional Matrix Completion ([van den berg, kipf, & welling, 2017](https://arxiv.org/abs/1706.02263))
+  - Transformer methods for image inpainting (e.g. mask-aware tranfsormer, [2022]())
+
+  
+
+# preprocessing
 
 - often good to discretize/binarize features
   - e.g. [from genomics](http://cis.jhu.edu/people/faculty/geman/publications/pdf/Digitizing_omics_profiles_by_divergence_from_a_baseline.pdf)
+
+- whitening
+
+  - get decorrelated features $Z$ from inputs $X$
+
+  - $W=$ whitening matrix , selected based on problem goals:
+    - PCA: Maximal compression of $\mathbf{X}$ in $\mathbf{Z}$
+      - ZCA: Maximal similarity between $\mathbf{X}$ and $\mathbf{Z}$
+      - Cholesky: Inducing structure: $\operatorname{Cov}(X, Z)$ is lower-triangular with positive diagonal elements
+      - $W$ is constrained as to enforce $\Sigma_{Z}=I$
 
 # principles
 

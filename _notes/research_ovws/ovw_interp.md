@@ -1283,12 +1283,6 @@ Nice overview [here](https://github.com/stefanoteso/awesome-explanatory-supervis
 - Fanoos: Multi-Resolution, Multi-Strength, Interactive Explanations for Learned Systems ([bayan & mitsch, 2022](https://arxiv.org/abs/2006.12453)) - a framework for combining formal verification techniques, heuristic search, and user interaction to explore explanations at the desired level of granularity and fidelity
   - asks questions about sets e.g. "when do you", or "what do you do when"
 
-### HITL with LLMs
-
-- TalkToModel: Explaining Machine Learning Models with Interactive Natural Language Conversations ([slack, krishna, lakkaraju, & singh, 2023](https://arxiv.org/abs/2207.04154)) - train model to translate human queries into API calls (~30 calls, things like feature importance, filter data, counterfactual explanation)
-- TalkToEBM: LLMs Understand Glass-Box Models, Discover Surprises, and Suggest Repairs ([lengerich...caruana, 2023](https://arxiv.org/abs/2308.01157)) - use LLMs to analyze tabular data and make suggestions for EBMs
-  - GAM Changer: Editing Generalized Additive Models with Interactive Visualization ([wang...caruana, 2021](https://arxiv.org/abs/2112.03245)) - gui for editing GAMs
-
 ## (interpretable) Automl
 
 - [imodels_automl](https://github.com/csinva/imodels/blob/master/notebooks/imodels_automl.ipynb)

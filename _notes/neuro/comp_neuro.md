@@ -1519,6 +1519,8 @@ the operations above allow for encoding many normal data structures into a singl
     - [Decoding speech from non-invasive brain recordings](https://arxiv.org/abs/2208.12266) (defossez, caucheteux, ..., remi-king, 2022)
 
   - [Reconstructing Visual Experiences from Brain Activity Evoked by Natural Movies](https://www.sciencedirect.com/science/article/pii/S0960982211009377) (nishimoto, …, gallant, 2011)
+  
+  - Brain Decoding: Toward Real Time Reconstruction of Visual Perception ([Benchetrit...king, 2023](https://ai.meta.com/static-resource/image-decoding)) - use MEG to do visual reconstruction
 
 ## overview
 
