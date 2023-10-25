@@ -959,6 +959,7 @@ mixture of experts models have become popular because of the need for (1) fast s
   - Lux: Always-on Visualization Recommendations for Exploratory Dataframe Workflows ([lee...hearts, parameswaram, 2021](https://arxiv.org/abs/2105.00121))
     - high-level language for recommendations (e.g. `df.intent = ["AvgLifeexpetancy", "Inequality"]`) -> Lux automatically creates relevant visualizations
   - see also things in [imodelsX](https://github.com/csinva/imodelsX)
+  - Can Foundation Models Wrangle Your Data? ([narayan...re, 2022](https://arxiv.org/abs/2205.09911))
 
 - modeling
 
@@ -971,36 +972,51 @@ mixture of experts models have become popular because of the need for (1) fast s
 
 ## tabular data
 
-- tabular pre-training
+- matrix completion
+  - value string methods - directly treating numerical values as strings and finetune GPT on them (everything is represented as text)
+    - GreaT ([Borisov et al., 2022a](https://arxiv.org/abs/2110.01889))
+    - TapTap ([Zhang et al., 2023](https://arxiv.org/abs/2305.09696))
+    - Table-GPT ([li...chaudhuri, 2023](https://arxiv.org/pdf/2310.09263.pdf))
+    - TabFMs: Towards Foundation Models for Learning on Tabular Data ([zhang...bian, 2023](https://arxiv.org/abs/2310.07338)) - unified text
+  - value-multiplied feature name embeddings
+    - CT-BERT ([Ye et al., 2023](https://arxiv.org/abs/2307.04308))
+    - FT-Transformer ([Gorishniy et al., 2021](https://proceedings.neurips.cc/paper_files/paper/2021/hash/9d86d83f925f2149e9edb0ac3b49229c-Abstract.html))
+    - TransTab ([Wang & Sun, 2022](https://proceedings.neurips.cc/paper_files/paper/2022/hash/1377f76686d56439a2bd7a91859972f5-Abstract-Conference.html)) - focus on clinical trial tables
+      - XTab: Cross-table Pretraining for Tabular Transformers ([zhu...shoaran, 2023](https://openreview.net/forum?id=uGORNDmIdr))
+    - TabDDPM: Modelling Tabular Data with Diffusion Models ([kotelnikove et al. 2022](https://arxiv.org/abs/2209.15421))
+    - *TP-BERTa*: Making Pre-trained Language Models Great on Tabular Prediction ([2023](https://openreview.net/forum?id=anzIzGZuLi))
+      - adds *relative magnitude tokenization* -  converts scalar numerical feature values to discrete tokens
+      -  *intra-feature attention* approach integrates feature values with the corresponding feature names
+  - jointly encode text and table
+    - UniPredict: Large Language Models are Universal Tabular Predictors ([wang, wang, & sun, 2023](https://aps.arxiv.org/abs/2310.03266)) - use text and prompt descriptions
+    - Trompt: Towards a Better Deep Neural Network for Tabular Data ([chen...chang, 2023](https://openreview.net/forum?id=0yNmeyteuS)) - use a prompting-style approach
+    - TaBERT: Pretraining for Joint Understanding of Textual and Tabular Data ([yin, neubig, ..., riedel, 2020](https://www.semanticscholar.org/paper/TaBERT%3A-Pretraining-for-Joint-Understanding-of-and-Yin-Neubig/a5b1d1cab073cb746a990b37d42dc7b67763f881))
+    - Scaling Experiments in Self-Supervised Cross-Table Representation Learning ([schambach...otterbach, 2023](https://arxiv.org/pdf/2309.17339.pdf))
 
+- classification / predictions
   - TabPFN: A Transformer That Solves Small Tabular Classification Problems in a Second ([hollman, ..., hutter, 2022](https://arxiv.org/abs/2207.01848))
     - transformer takes in train + test dataset then outputs predictions
     - each row (data example) is treated as a token and test points attend only to training t
       - takes fixed-size 100 columns, with zero-padded columns at the end (during training, randomly subsample columns)
     - builds on prior-data fitted networks (PFNs) ([muller, ..., hutter, 2021](https://arxiv.org/abs/2112.10510))
     - trained on synthetic data
-  - GPT for Semi-Automated Data Science: Introducing CAAFE for Context-Aware Automated Feature Engineering ([hollman, ..., hutter, 2023](https://arxiv.org/abs/2305.03403))
-  - TabDDPM: Modelling Tabular Data with Diffusion Models ([kotelnikove et al. 2022](https://arxiv.org/abs/2209.15421))
   - TabLLM: Few-shot Classification of Tabular Data with Large Language Models  ([hegelsmann..., sontag, 2022](https://arxiv.org/abs/2210.10723))
-  - TabRet: Pre-training Transformer-based Tabular Models for Unseen Columns ([onishi...hayashi, 2023](https://arxiv.org/abs/2303.15747))
-    - Scaling Experiments in Self-Supervised Cross-Table Representation Learning ([schambach...otterbach, 2023](https://arxiv.org/pdf/2309.17339.pdf))
-  - TABBIE ([Iida, ..., Iyyer, 2021](https://arxiv.org/abs/2105.02584)) - average row/column embeddings
-  - (not using transformers): transform a relation table in a graph and perform random walks on the latter to produce node embeddings ([cappuzzo et al., 2020](https://dl.acm.org/doi/10.1145/3318464.3389742))
   - Language models are weak learners ([manikandan, jian, & kolter, 2023](https://arxiv.org/abs/2306.14101)) - use prompted LLMs as weak learners in boosting algorithm for tabular data
-  - Simple, fast, and flexible framework for matrix completion with infinite width neural networks ([radhakrishnan...belkin, uhler, 2022](https://www.pnas.org/doi/10.1073/pnas.2115064119)) - use NTK
-- input representation
+  - AnyPredict: A Universal Tabular Prediction System Based on Large Language Models https://openreview.net/forum?id=icuV4s8f2c - converting tabular data into machine-understandable prompts and fine-tuning LLMs to perform accurate predictions
 
-  - baseline methods: usually flatten tables, maybe with special character for starting each row/col
-    - could combine output from rows/cols with using element-wise product, average pooling and concatenation ([TABULARNET](https://dl.acm.org/doi/10.1145/3447548.3467228))
-    - sometimes add column headers to cell content
-    - also popular is converting the table-to-text with finetuned models before processing
 - older
 
-  - TaBERT: Pretraining for Joint Understanding of Textual and Tabular Data ([yin, neubig, ..., riedel, 2020](https://www.semanticscholar.org/paper/TaBERT%3A-Pretraining-for-Joint-Understanding-of-and-Yin-Neubig/a5b1d1cab073cb746a990b37d42dc7b67763f881))
+  - (not using transformers): transform a relation table in a graph and perform random walks on the latter to produce node embeddings ([cappuzzo et al., 2020](https://dl.acm.org/doi/10.1145/3318464.3389742))
+  - baseline methods: usually flatten tables, maybe with special character for starting each row/col
+    - could combine output from rows/cols with using element-wise product, average pooling and concatenation ([tabularnet, 2021](https://dl.acm.org/doi/10.1145/3447548.3467228))
+    - sometimes add column headers to cell content
+    - also popular is converting the table-to-text with finetuned models before processing
+  - TABBIE ([Iida, ..., Iyyer, 2021](https://arxiv.org/abs/2105.02584)) - average row/column embeddings
 - one-off tasks
 
   - LLMs are realistic tabular data generators ([borisov et al. 2022](https://arxiv.org/abs/2210.06280))
-  - Can Foundation Models Wrangle Your Data? ([narayan...re, 2022](https://arxiv.org/abs/2205.09911))
+    - Enhanced Model-agnostic Training of Deep Tabular Generation Models https://openreview.net/forum?id=gJiOQw1fkF
+  - TabRet: Pre-training Transformer-based Tabular Models for Unseen Columns ([onishi...hayashi, 2023](https://arxiv.org/abs/2303.15747))
 - reviews
 
   - Transformers for Tabular Data Representation: A Survey of Models and Applications ([badaro...papotti, 2023](https://direct.mit.edu/tacl/article/doi/10.1162/tacl_a_00544/115239/Transformers-for-Tabular-Data-Representation-A))
@@ -1013,7 +1029,6 @@ mixture of experts models have become popular because of the need for (1) fast s
   - Table Pre-training: A Survey on Model Architectures, Pretraining Objectives, and Downstream Tasks ([dong et al. 2022](https://www.semanticscholar.org/paper/Table-Pre-training%3A-A-Survey-on-Model-Pretraining-Dong-Cheng/49f4b4ca86e574c7ec688cfd45d2e17ff079c313))
   - Embeddings for Tabular Data: A Survey ([singh & bedathur, 2023](https://arxiv.org/abs/2302.11777))
   - Deep neural networks and tabular data: A survey ([borisov et al. 2022]()) - mostly compares performance on standard tasks (e.g. classification)
-  - Table-GPT: Table-tuned GPT for Diverse Table Tasks ([li...chaudhuri, 2023](https://arxiv.org/pdf/2310.09263.pdf)) - finetune autoregressive LLMs on table data with instructions (everything is represented as text)
 
 ## llm limitations / perspectives
 
