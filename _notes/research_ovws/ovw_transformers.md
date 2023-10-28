@@ -226,7 +226,7 @@ See related papers in the [📌 interpretability](https://csinva.io/notes/resear
 ![prompting_hierarchy](../assets/prompting_hierarchy.png)
 
 - natural-language prompting
-  - iPrompt: Explaining Patterns in Data with Language Models via Interpretable Autoprompting ([singh, morris, ...gao, 2022](https://arxiv.org/abs/2210.01848))
+  - **iPrompt**: Explaining Patterns in Data with Language Models via Interpretable Autoprompting ([singh, morris, ...gao, 2022](https://arxiv.org/abs/2210.01848))
   - APE: Large Language Models Are Human-Level Prompt Engineers ([zhou...ba, 2022](https://arxiv.org/abs/2211.01910))
     - similar to iPrompt, (1) propose prompt candidates with an LLM, (2) score the prompts by the accuracy they yield when using another LLM and (3) regenerate similar prompt candidates
     - experiments on instruction induction datasets + truthful QA
@@ -236,6 +236,7 @@ See related papers in the [📌 interpretability](https://csinva.io/notes/resear
   - OPRO: Large Language Models as Optimizers ([yang...quoc le, zhou, & chen , 2023](https://arxiv.org/abs/2309.03409)) - add in past prompts with their scores during optimization
   - Promptbreeder: Self-Referential Self-Improvement Via Prompt Evolution ([fernando...rocktaschel, 2023](https://arxiv.org/abs/2309.16797)) - simultaneously improve prompts with LLM + improve the *mutation-prompts* the LLM uses to mutate the prompts
   - Connecting Large Language Models with Evolutionary Algorithms Yields Powerful Prompt Optimizers ([guo...yang, 2023](https://arxiv.org/abs/2309.08532))
+  - PromptAgent: Strategic Planning with Language Models Enables Expert-level Prompt Optimization ([wang...hu, 2023](https://arxiv.org/abs/2310.16427)) - iterate on prompt errors using MC tree search
   - Language Models as Black-Box Optimizers for Vision-Language Models ([yu...pathak, & ramanan, 2023](https://arxiv.org/pdf/2309.05950v1.pdf))
 - discrete prompting
   - AutoPrompt: Eliciting Knowledge from Language Models with Automatically Generated Prompts ([shin...sameer singh, 2020](https://aclanthology.org/2020.emnlp-main.346/))
@@ -542,6 +543,9 @@ See related papers in the [📌 interpretability](https://csinva.io/notes/resear
   - without these tokens, attention maps are sometimes very noisy, particularly for uninformative tokens
 
 - Efficient Streaming Language Models with Attention Sinks ([xiao...lewis, 2023](https://arxiv.org/pdf/2309.17453.pdf))
+
+
+- Codebook Features: Sparse and Discrete Interpretability for Neural Networks ([tamkin, taufeeque, & goodman, 2023](https://arxiv.org/abs/2310.17230))
 
 ## attention variants
 
