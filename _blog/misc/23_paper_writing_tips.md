@@ -6,7 +6,7 @@ category: blog
 
 A (growing) list of nitpicks that may help improve a paper (mostly focused on ML conference papers). This list is all opinions, but for brevity I’ll state them as facts.
 
-In general, I highly recommend the book [storytelling with data](https://github.com/Saurav6789/Books-/blob/master/storytelling-with-data-cole-nussbaumer-knaflic.pdf) (a very quick read despite being many pages).
+In general, I highly recommend the book [storytelling with data](https://github.com/Saurav6789/Books-/blob/master/storytelling-with-data-cole-nussbaumer-knaflic.pdf) (it looks long, but it's a very quick read!).
 
 
 ### Figures

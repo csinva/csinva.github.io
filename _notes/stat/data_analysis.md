@@ -190,7 +190,6 @@ First 5 parts here are based on the book [storytelling with data](http://www.sto
 - applications
   - Purposeful Variable Selection and Stratification to Impute Missing FAST Data in Trauma Research ([fuchs et al. 2014](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3744188/))
 
-
 ## matrix completion
 
 - A Survey on Matrix Completion: Perspective of Signal Processing ([li...zhao, 2019](https://arxiv.org/pdf/1901.10885.pdf))
