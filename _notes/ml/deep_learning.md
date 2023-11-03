@@ -2,11 +2,10 @@
 layout: notes
 title: Deep Learning
 category: ml
+subtitle: This note covers miscellaneous deep learning, with an emphasis on different architectures + empirical tricks.
 ---
 
 {:toc}
-
-This note covers miscellaneous deep learning, with an emphasis on different architectures + empirical tricks.
 
 See also notes in [📌 unsupervised learning](https://csinva.io/notes/ml/unsupervised.html), [📌 disentanglement](https://csinva.io/notes/research_ovws/ovw_disentanglement.html), [📌 nlp](https://csinva.io/notes/ml/nlp.html), [📌 transformers](https://csinva.io/notes/research_ovws/ovw_transformers.html)
 

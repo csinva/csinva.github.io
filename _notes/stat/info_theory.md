@@ -3,11 +3,10 @@
 layout: notes
 title: info Theory
 category: stat
+subtitle: Material from Cover "Elements of Information Theory"
 ---
 
 {:toc}
-
-- *material from* Cover "Elements of Information Theory"
 
 # overview
 

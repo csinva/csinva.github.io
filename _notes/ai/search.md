@@ -2,11 +2,10 @@
 layout: notes
 title: Search
 category: ai
+subtitle: Some notes on search based on Berkeley's CS 188 course and  "Artificial Intelligence" Russel & Norvig 3rd Edition.
 ---
 
 {:toc}
-
-Some notes on search based on Berkeley's CS 188 course and  "Artificial Intelligence" Russel & Norvig 3rd Edition.
 
 # Uninformed Search - R&N 3.1-3.4
 

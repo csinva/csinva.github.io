@@ -2,11 +2,10 @@
 layout: notes
 title: scattering transform
 category: research
+subtitle: Some papers involving the scattering transform and similar developments bringing structure to replace learned filters.
 ---
 
 {:toc}
-
-**some papers involving the scattering transform and similar developments bringing structure to replace learned filters**
 
 - some of the researchers involved
   - edouard oyallan, joan bruna, stephan mallat, Helmut Bölcskei, max welling

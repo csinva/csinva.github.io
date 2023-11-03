@@ -2,11 +2,10 @@
 layout: notes
 title: real analysis
 category: math
+subtitle: Some notes on real analysis, following the textbook <a href="https://link.springer.com/book/10.1007/978-1-4939-2712-8">Understanding analysis</a>
 ---
 
 {:toc}
-
-Some notes on real analysis, following the textbook [Understanding analysis](https://link.springer.com/book/10.1007/978-1-4939-2712-8)
 
 # ch 1 - the real numbers
 - there is no rational number whose square is 2 (proof by contradiction)

@@ -33,10 +33,6 @@ a {
     vertical-align: middle;
 }
 
-a, h1, h2, h3, h4, h5, ul, li {
-    text-transform: lowercase;
-}
-
 .research_thumb {
     width: 50%; /* 90% */
     border-radius: 50%;
@@ -59,7 +55,7 @@ td {
     /* background-image: radial-gradient(blue, black); */
     /* background-image: linear-gradient(red, yellow); */
     background: #000000;
-    sbackground-size: cover; /* background-image: radial-gradient(circle, blue 0.00001%, black 99.9999%); /* Standard syntax (must be last) */
+    background-size: cover; /* background-image: radial-gradient(circle, blue 0.00001%, black 99.9999%); /* Standard syntax (must be last) */
 }
 
 .iframe-box {

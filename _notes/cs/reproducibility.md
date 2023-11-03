@@ -2,11 +2,10 @@
 layout: notes
 title: reproducibility
 category: cs
+subtitle: Some notes on different programming techniques / frameworks for reproducibility
 ---
 
 {:toc}
-
-Some notes on different programming techniques / frameworks for reproducibility
 
 # containerization
 

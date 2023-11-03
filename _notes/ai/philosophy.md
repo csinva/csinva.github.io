@@ -2,9 +2,8 @@
 layout: notes
 title: philosophy
 category: ai
+subtitle: Notes on philosophy relevant to explanation (particularly in science)
 ---
-
-**Notes on philosophy relevant to explanation (particularly in science)**
 
 
 {:toc}

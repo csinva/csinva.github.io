@@ -2,11 +2,10 @@
 layout: notes
 title: kernels
 category: ml
+subtitle: An introduction to kernels and recent research.
 ---
 
 {:toc}
-
-An introduction to kernels and recent research.
 
 # kernel basics
 

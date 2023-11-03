@@ -1,11 +1,10 @@
 ---
 layout: notes
 title: fairness, sts
+subtitle: Some notes on algorithm fairness and STS as applied to AI
 category: ai
 typora-copy-images-to: ../assets
 ---
-
-**Some notes on algorithm fairness and STS as applied to AI**
 
 {:toc}
 

@@ -1,14 +1,13 @@
 ---
 layout: notes
 title: graphical models
+subtitle: Material from Russell and Norvig "Artifical Intelligence" 3rd Edition and Jordan "Graphical Models"
 category: stat
 typora-copy-images-to: ../assets
 ---
 
 {:toc}
 
-
-*Material from Russell and Norvig "Artifical Intelligence" 3rd Edition* and *Jordan "Graphical Models"*
 
 # overview
 

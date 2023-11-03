@@ -2,11 +2,10 @@
 layout: notes
 title: Data Structures
 category: cs
+subtitle: Some notes on advanced data structures, based on UVA's "Program and Data Representation" course.
 ---
 
 {:toc}
-
-Some notes on advanced data structures, based on UVA's "Program and Data Representation" course.
 
 # lists
 ## arrays and strings
@@ -238,7 +237,7 @@ void BST::insert(int x, BinaryNode * & curNode){    //we pass in by reference be
     - Each value has a specific key associated with it
 - fixed size array of some size, usually a prime number
 - A hash function takes in a "thing" )string, int, object, etc._
-    
+  
     - returns hash value - an unsigned integer value which is then mod'ed by the size of the hash table to yield a spot within the bounds of the hash table array
 - Three required properties
     1. Must be deterministic
@@ -252,10 +251,10 @@ void BST::insert(int x, BinaryNode * & curNode){    //we pass in by reference be
     - No collisions
 - Lookup table is at best logarithmic
 - We can't just make a very large array - we assume the key space is too large
-    
+  
     - you can't just hash by social security number
 - hash(s)=(∑k−1i=0si∗37^i) mod table_size
-    
+  
     - you would precompute the powers of 37
 - collision - putting two things into same spot in hash table
     - Two primary ways to resolve collisions:

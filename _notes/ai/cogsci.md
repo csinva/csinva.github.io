@@ -1,12 +1,11 @@
 ---
 layout: notes
-title: cogsci
+title: Cognitive science
 category: ai
+subtitle: Some notes on a computational perspective on cognitive science.
 ---
 
 {:toc}
-
-Some notes on a computational perspective on cognitive science.
 
 # nativism, empiricism
 

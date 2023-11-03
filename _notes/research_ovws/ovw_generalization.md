@@ -1,10 +1,9 @@
 ---
 layout: notes
-title: generalization
+title: Generalization
 category: research
+subtitle: Some notes on generalization bounds in machine learning with an emphasis on stability
 ---
-
-**some notes on generalization bounds in machine learning with an emphasis on stability**
 
 {:toc}
 

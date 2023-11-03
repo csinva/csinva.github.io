@@ -2,11 +2,10 @@
 layout: notes
 title: Graphs
 category: cs
+subtitle: Some notes on computer science graphs.
 ---
 
 {:toc}
-
-Some notes on computer science graphs.
 
 - Edges are of the form (v1, v2)
     - Can be ordered pair or unordered pair

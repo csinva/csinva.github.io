@@ -2,11 +2,12 @@
 layout: notes
 title: representations
 category: ai
+subtitle: Some notes on knowledge representation based on Berkeley's CS 188 course and  "Artificial Intelligence" Russel & Norvig 3rd Edition
 ---
 
 {:toc}
 
-Some notes on knowledge representation based on Berkeley's CS 188 course and  "Artificial Intelligence" Russel & Norvig 3rd Edition
+
 
 # intro
 

@@ -1,13 +1,12 @@
 ---
 layout: notes
-title: logic
+title: Logic
 category: ai
+subtitle: Some notes on logic based on Berkeley's CS 188 course and  "Artificial Intelligence" Russel & Norvig 3rd Edition + foundations of rule learning (<a href="https://dl.acm.org/citation.cfm?id=2788240">furnkranz et al. 2014</a>)
 typora-copy-images-to: ../assets
 ---
 
 {:toc}
-Some notes on logic based on Berkeley's CS 188 course and  "Artificial Intelligence" Russel & Norvig 3rd Edition + [foundations of rule learning](https://dl.acm.org/citation.cfm?id=2788240) (furnkranz et al. 2014)
-
 # logical agents - 7.1-7.7 (omitting 7.5.2)
 
 - *knowledge-based agents* - intelligence is based on *reasoning* that operates on internal *representations of knowledge*

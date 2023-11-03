@@ -1,15 +1,14 @@
 ---
 layout: notes
 title: decisions, rl
+subtitle: Some notes on decision theory based on Berkeley's CS 188 course and  "Artificial Intelligence" Russel & Norvig 3rd Edition
 category: ai
 typora-copy-images-to: ../assets
 ---
 
 {:toc}
 
-Some notes on decision theory based on Berkeley's CS 188 course and  "Artificial Intelligence" Russel & Norvig 3rd Edition
-
-# neuroscience
+# cience
 
 - [Means–ends analysis](https://en.wikipedia.org/wiki/Means%E2%80%93ends_analysis) - for planning subgoals, use the distance-to-the-goal as a continuous reward signal (and basically do greedy search with backtracking)
 - at test-time, we solve an optimization problem

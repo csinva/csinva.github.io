@@ -2,12 +2,11 @@
 layout: notes
 title: interesting science
 category: research
+subtitle: Some interesting papers in science and statistics.
 typora-copy-images-to: ../assets
 ---
 
 {:toc}
-
-Some interesting papers in science and statistics.
 
 - [Moravec's paradox](https://en.wikipedia.org/wiki/Moravec%27s_paradox)
 - [Held & Hein 1963](https://marom.net.technion.ac.il/files/2016/07/Held-1963.pdf) - moving kittens

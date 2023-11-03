@@ -2,11 +2,10 @@
 layout: notes
 title: Sensory Input
 category: neuro
+subtitle: notes from Neuroscience, 5th edition + Intro to neurobiology course at UVA
 ---
 
 {:toc}
-
-notes from Neuroscience, 5th edition + Intro to neurobiology course at UVA
 
 # 9- somatosensory
 ## cheat sheet
@@ -314,7 +313,7 @@ notes from Neuroscience, 5th edition + Intro to neurobiology course at UVA
 	- kinocilium is the tallest
 	- tall ones are in the back
 	- dying hair cells - can't be replaced
-		1. ​
+		1. 
 		2. loud sounds
 		3. certain antibiotics
 - auditory pathwayz

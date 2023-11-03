@@ -2,9 +2,8 @@
 layout: notes
 title: uncertainty
 category: research
+subtitle: Some notes on uncertainty in machine learning, particularly deep learning.
 ---
-
-**some notes on uncertainty in machine learning, particularly deep learning**
 
 {:toc}
 

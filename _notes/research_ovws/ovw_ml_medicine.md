@@ -3,9 +3,8 @@ layout: notes
 title: ml in medicine
 category: research
 typora-copy-images-to: ../assets
+subtitle: Some rough notes on ml in medicine
 ---
-
-**some rough notes on ml in medicine**
 
 {:toc}
 

@@ -2,9 +2,8 @@
 layout: notes
 title: dl theory
 category: research
+subtitle: Deep learning theory is a complex emerging field - this post contains links displaying some different interesting research directions
 ---
-
-*Deep learning theory is a complex emerging field - this post contains links displaying some different interesting research directions*
 
 
 {:toc}

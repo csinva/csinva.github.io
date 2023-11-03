@@ -3,11 +3,12 @@ layout: notes
 title: nlp
 category: ml
 typora-copy-images-to: ../assets
+subtitle: Some notes on natural language processing, focused on modern improvements based on deep learning. 
 ---
 
 {:toc}
 
-Some notes on natural language processing, focused on modern improvements based on deep learning. See also notes in [📌 transformers](https://csinva.io/notes/research_ovws/ovw_transformers.html).
+See also notes in [📌 transformers](https://csinva.io/notes/research_ovws/ovw_transformers.html).
 
 # benchmarks
 

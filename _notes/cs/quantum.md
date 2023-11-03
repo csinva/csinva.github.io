@@ -3,11 +3,10 @@ layout: notes
 title: quantum
 category: cs
 typora-copy-images-to: ../assets
+subtitle: Some <i>very limited</i> notes on quantum computing
 ---
 
 {:toc}
-
-Some *very limited* notes on quantum computing
 
 
 - what does physics tell us about the limits of computers?

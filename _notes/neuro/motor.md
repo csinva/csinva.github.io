@@ -2,11 +2,10 @@
 layout: notes
 title: Motor system
 category: neuro
+subtitle: notes from Neuroscience, 5th edition + Intro to neurobiology course at UVA
 ---
 
 {:toc}
-
-notes from Neuroscience, 5th edition + Intro to neurobiology course at UVA
 
 # 16 lower
 - sensory in dorsal spinal cord, motor in ventral

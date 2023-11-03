@@ -2,11 +2,10 @@
 layout: notes
 title: omics
 category: research
+subtitle: Some papers involving proteins and ml, especially predicting protein structure from dna/rna.
 ---
 
 {:toc}
-
-**some papers involving proteins and ml, especially predicting protein structure from dna/rna**
 
 # overview
 

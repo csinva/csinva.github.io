@@ -2,11 +2,10 @@
 layout: notes
 title: software engineering
 category: cs
+subtitle: Some notes on software engineering, based on two courses at UVA.
 ---
 
 {:toc}
-
-Some notes on software engineering, based on two courses at UVA.
 
 # ch 2 - software engineering
 - software engineering - the application of a systematic, disciplined, quantifiable approach to the development, operation, and maintenance of software; that is, the application of engineering to software
@@ -25,7 +24,7 @@ Some notes on software engineering, based on two courses at UVA.
 		- communication, planning, modeling, construction, deployment
 	- umbrella activities
 		- software project tracking and control, risk management,
-software quality assurance, technical reviews, measurement, software configuration management, reusability management, work product preparation and production
+		software quality assurance, technical reviews, measurement, software configuration management, reusability management, work product preparation and production
 4. a *quality focus* - bedrock that supports software engineering
 - every software has some business need
 
