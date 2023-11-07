@@ -45,7 +45,7 @@ In general, I highly recommend the book [storytelling with data](https://github.
     - Usually, the intro should have a compelling, easy-to-digest figure that motivates your approach; focus here on motivation rather than method details
 - Methods
     - Remove all jargon and math that is not strictly needed for your method
-    - Give your method a catchy name that is easy to remember and reference (ChatGPT is pretty good at this; [this website](https://csinva.io/acronym-generator/) may also help)
+    - Give your method a catchy name that is easy to remember and reference (ChatGPT is pretty good at coming up with these names; [this website](https://csinva.io/acronym-generator/) may also help)
 - Results
     - Start the results with a single figure/table with your key finding
     - Show ablation results with respect to each important hyperparameter/setting separately
@@ -53,6 +53,9 @@ In general, I highly recommend the book [storytelling with data](https://github.
 - Discussion
     - Don’t just recap results
     - Address limitations and directions for future work
+- General
+    - Text should move from simple to complicated, start with high-level motivation, then high-level solution before getting into detailed solution
+
 
 ### General tips
 

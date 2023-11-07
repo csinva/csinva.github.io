@@ -332,6 +332,8 @@ See related papers in the [📌 interpretability](https://csinva.io/notes/resear
       - hypothetical consistency (the ability for a model to predict what its output would be in a hypothetical other context)
       - compositional consistency (consistency of a model's outputs for a compositional task even when an intermediate step is replaced with the model's output for that step)
   
+    - Evaluating Models' Local Decision Boundaries via Contrast Sets ([gardner...zhou, 2020](https://arxiv.org/abs/2004.02709))
+  
     - Are Large Language Models Post Hoc Explainers? ([kroeger...lakkaraju, 2023](https://arxiv.org/abs/2310.05797))
   
   - Chain of Thought Prompting ([wei et al. 2022](https://arxiv.org/abs/2201.11903))
@@ -833,6 +835,8 @@ mixture of experts models have become popular because of the need for (1) fast s
       
     - Mass-Producing Failures of Multimodal Systems with Language Models ([tong, jones, & steinhardt, 2023](https://arxiv.org/abs/2306.12105))
     
+    - TopicGPT: A Prompt-based Topic Modeling Framework ([pham...iyyer, 2023](https://arxiv.org/abs/2311.01449))
+    
   - GSCLIP : A Framework for Explaining Distribution Shifts in Natural Language ([zhu...james zou, 2022](https://arxiv.org/abs/2206.15007)) - automatically explain dataset-level distribution shifts (in image datasets) with natural language
   - MaNtLE: Model-agnostic Natural Language Explainer ([menon, zaman, & srivastava, 2023](https://arxiv.org/pdf/2305.12995.pdf)) - train model to generate explanations on simple tables (they do this for classifier outputs but could easily do it directly for data labels)
   - Large Language Models for Automated Open-domain Scientific Hypotheses Discovery ([yang...cambria, 2023](https://arxiv.org/abs/2309.02726))
@@ -866,11 +870,11 @@ mixture of experts models have become popular because of the need for (1) fast s
   - e.g. during training, learn inputs-outputs from different linear functions
   - during testing, have to predict outputs for inputs from a different linear function
   - also test on slightly harder functions, like decision trees and 2-layer nets
-- What Algorithms can Transformers Learn? A Study in Length Generalization ([zhou...bengio, nakkiran, 2023](https://arxiv.org/abs/2310.16028))
+  - What Algorithms can Transformers Learn? A Study in Length Generalization ([zhou...bengio, nakkiran, 2023](https://arxiv.org/abs/2310.16028)) - Transformers tend to length generalize on a task if the task can be solved by a short RASP program which works for all input lengthsr
 - Learning a (sparse) linear model
   - The contextual lasso: Sparse linear models via deep neural networks ([thompson, …, kohn, 2023](https://arxiv.org/pdf/2302.00878.pdf)) - very rough results...
   - [Breaking the Paradox of Explainable Deep Learning](https://arxiv.org/abs/2305.13072)
-  - [Aug-imodels](https://arxiv.org/abs/2209.11799)
+  - Aug-imodels ([singh et al 2023](https://arxiv.org/abs/2209.11799))
 - What learning algorithm is in-context learning? Investigations with linear models ([aykurek, schuurmans, andreas, ma, & zhou, 2023](https://arxiv.org/abs/2211.15661)) - investigate prompting through synthetic experiments with transformers trained for linear regression
   - Transformers as Algorithms: Generalization and Implicit Model Selection in In-context Learning ([li, ..., oymak, 2023](https://arxiv.org/pdf/2301.07067.pdf)) - generalization bounds for in-context learning when the input prompt is (1) a sequence of i.i.d. (input, label) pairs or (2) a trajectory arising from a dynamical system
   - Trained Transformers Learn Linear Models In-Context ([zhang, frei, & bartlett, 2023](https://arxiv.org/pdf/2306.09927.pdf))

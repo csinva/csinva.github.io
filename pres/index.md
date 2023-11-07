@@ -7,6 +7,7 @@ title: presentations
 
 ## 2023
 - [explanations from text data](https://docs.google.com/presentation/d/1qL_cATZWiwOg4EjgrQ93m2zEpNMYYdIUUqqMO1REbIk/edit#slide=id.g21b26013510_0_4)
+- [tree-prompt](https://docs.google.com/presentation/d/17RqIjCGOaM19R_PFKTQMj5OGhmfpGccmxGW61ixzUPo/)
 
 ## 2022
 
@@ -105,10 +106,7 @@ Deep learning models have achieved impressive predictive performance by learning
 - [vflow group meeting](https://docs.google.com/presentation/d/1ReJ3Lqh4VZqpu6X6sP47f6Re6PvLIX9ZRAdjb8ZhFXE/edit#slide=id.g1047cb8ef63_0_0)
 - [vflow (white, outdated)](https://docs.google.com/presentation/d/1bcrdF5TozKNLdvxvRK63wsDHS8qRDvg2MgsAZYUy2jw/edit)
 
-
-
-
-### dnn misc individual presentations
+## dnn misc individual presentations
 - [faces final pres](https://docs.google.com/presentation/d/19Z4TnHCDkNENutyKmE_kZBSJX4jMUam6DoH3HckkMrI/present?slide=id.p)
     - [faces midterm pres](https://docs.google.com/presentation/d/1YxSZtsSOdQ_OZYgctFE1Cgfymv0cmBTzNDkt68d-RE0/present?slide=id.p)
     - [faces lit rvw](https://docs.google.com/presentation/d/1C6l4qq0O_-SosHswPwqo3ixJweMI8gkNku9crzZMw80/present?slide=id.p)
@@ -118,18 +116,18 @@ Deep learning models have achieved impressive predictive performance by learning
     - [deep learning trends 2020](https://docs.google.com/presentation/d/15NRwGfKyGkcDIDKYwoq82PXdJrkJeRmSQfUbk5oQvuM/edit#slide=id.g8da3737a00_0_24)
 
 
-### teaching
+## teaching
 - [machine learning (cs 189)](https://csinva.github.io/pres/189/#/)
 - [intro to ai (cs 188)](https://csinva.github.io/pres/188/#/)
 - [interpretability workshop](https://docs.google.com/presentation/d/1RIdbV279r20marRrN0b1bu2z9STkrivsMDa_Dauk8kE/present?slide=id.p)
 
-### coursework
+## coursework
 - [alphafold 2](https://docs.google.com/presentation/d/1-MjMAgO2F7RH842BcuKjBlmuf5UA9IPsYADhQ56mkuE/edit#slide=id.p)
 - [vissci ovw](https://docs.google.com/presentation/d/1d2prZlhmG72whCTzfGJ_pk-Pgv9Sx-bGG0e503whYvw/present?slide=id.p)
 - [harms of ai](https://docs.google.com/presentation/d/1yZkEkDU-ELvh_Od3xvhd8Lsu70U7Cjs5QJnpNIVLgII/present) (1 hr talk given in possible minds course 2019)
 - [hummingbird tracking](https://docs.google.com/presentation/d/15iygjXGLu7Ha096GwMV5t6sjP7IPcTHqimPkTDwrpPI/present?slide=id.p)
 
-### undergrad
+## undergrad
 
 - [wsimule urds](https://docs.google.com/presentation/d/1GO6lN5o2idozOUdnObXGnXKFbZiJiKKKkmx73uE4BAI/present?slide=id.p) (5 min talk given at URDS 2017)
     - [wsimule tomtom](https://docs.google.com/presentation/d/1KghayB2g8u5xwVuILzT4XtalKi3rerVROaoRb6RUVBk/edit) (10 min talk given at Tom Tom 2017)
@@ -137,13 +135,13 @@ Deep learning models have achieved impressive predictive performance by learning
 - [linearization](https://docs.google.com/presentation/d/1JriXXofysuXyfU4CeyNHJUTYSfa18R9Q3EhkCwFwh4g/present?slide=id.p) (5 min talk given at URDS 2017)
 - [sparse coding class pres](https://docs.google.com/presentation/d/199lCpVaOA6ez4QXkt9W8-fMv8rF_rGv_9rsXIwe1LKI/edit#slide=id.p)
 
-### posters
+## posters
 - [acd poster](/assets/write_ups/acd_18_bairday_poster.pdf)
 	- [acd + interp poster](/assets/write_ups/utokyo_19_interp_poster.pdf)
 - [random forest image segmentation](/assets/write_ups/singh_15_rf_segmentation.pdf)
 - [wsimule poster](/assets/write_ups/wsimule_17_nips_poster.pdf)
 
-### recordings
+## recordings
 - talks
     - [thesis 2022](https://drive.google.com/file/d/1h9M29xcMB0LMHQx8DFi-aJjtIPqJG8Cv/view)
     - [grad slam 2022](https://www.youtube.com/watch?v=1JahZhczriY)
@@ -171,7 +169,13 @@ Deep learning models have achieved impressive predictive performance by learning
     - [UC Berkeley researchers develop a Python library for predictive modelling](https://analyticsindiamag.com/uc-berkeley-researchers-develop-a-python-library-for-predictive-modelling/)
 
 
-### bios
+## bios
+
+<details>
+<summary>One-paragraph bio (nov 2023)</summary>
+Chandan is a senior researcher at Microsoft Research, where he works on interpretable machine learning with the broad goal of improving science and medicine using data. 
+ and final-year PhD student in computer science. He hopes to build on recent advances in machine-learning to improve the world of healthcare. His research focuses on how to interpret machine-learning models with the goal of ensuring that they can be reliably used when someone’s health is at stake.
+</details>
 
 <details>
 <summary>One-paragraph bio (jan 2022)</summary>
@@ -180,7 +184,7 @@ Deep learning models have achieved impressive predictive performance by learning
 
 <details>
 <summary>2-sentence bio (feb 2022)</summary>
-Chandan is a fifth and final-year PhD student in computer science. He hopes to build on recent advances in machine-learning to improve the world of healthcare.His research focuses on how to interpret machine-learning models with the goal of ensuring that they can be reliably used when someone’s health is at stake.
+Chandan is a fifth and final-year PhD student in computer science. He hopes to build on recent advances in machine-learning to improve the world of healthcare. His research focuses on how to interpret machine-learning models with the goal of ensuring that they can be reliably used when someone’s health is at stake.
 </details>
 
 <details>

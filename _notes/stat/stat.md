@@ -2,11 +2,10 @@
 layout: notes
 title: Statistics
 category: stat
+subtitle: general notes on stat
 ---
 
 {:toc}
-*some material based on probability and statistics cookbook by matthias vallentin*
-
 # basics
 
 - mutually exclusive: $P(AB)=0$
@@ -75,6 +74,8 @@ category: stat
 
 - PMF: $f_X(x) = P(X=x)$
 - PDF: $P(a \leq X \leq b) = \int_a^b f(x) dx$
+
+*these distributions are from the probability and statistics cookbook by matthias vallentin*
 
 ![distrs](../assets/distrs.png)
 
