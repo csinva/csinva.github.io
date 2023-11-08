@@ -8,6 +8,11 @@ title: presentations
 ## 2023
 - [explanations from text data](https://docs.google.com/presentation/d/1qL_cATZWiwOg4EjgrQ93m2zEpNMYYdIUUqqMO1REbIk/edit#slide=id.g21b26013510_0_4)
 - [tree-prompt](https://docs.google.com/presentation/d/17RqIjCGOaM19R_PFKTQMj5OGhmfpGccmxGW61ixzUPo/)
+	- Title: Uniting Large Language Models and Decision Trees
+	- <details>
+    <summary>Abstract</summary>
+    Decision trees are the cornerstone for a wide range of applications, especially in tabular data, where they are often used as a transparent model However, decision trees can fail to model complex interactions and dependencies, an area where modern large language models (LLMs) excel. In this talk, I will discuss recent works that unite decision trees and LLMs to bring out the best in both for NLP applications. Specifically, I will discuss how decision trees can be used to steer LLMs by structuring sequential prompted calls, and how LLMs can be used to improve transparent decision trees by augmenting individual nodes with relevant features.
+    </details>
 
 ## 2022
 
@@ -173,8 +178,7 @@ Deep learning models have achieved impressive predictive performance by learning
 
 <details>
 <summary>One-paragraph bio (nov 2023)</summary>
-Chandan is a senior researcher at Microsoft Research, where he works on interpretable machine learning with the broad goal of improving science and medicine using data. 
- and final-year PhD student in computer science. He hopes to build on recent advances in machine-learning to improve the world of healthcare. His research focuses on how to interpret machine-learning models with the goal of ensuring that they can be reliably used when someone’s health is at stake.
+Chandan is a senior researcher at Microsoft Research, where he works on interpretable machine learning with the broad goal of improving science and medicine using data. Recently, he has focused on language models and how they can be used to directly explain data or to improve transparent models. He completed his Computer Science PhD from UC Berkeley in 2022.
 </details>
 
 <details>

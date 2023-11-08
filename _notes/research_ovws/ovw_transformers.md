@@ -556,6 +556,8 @@ See related papers in the [📌 interpretability](https://csinva.io/notes/resear
 
 ## editing
 
+- Tell Your Model Where to Attend: Post-hoc Attention Steering for LLMs ([zhang, singh, liu, liu, yu, gao, zhao, 2023](https://arxiv.org/abs/2311.02262)) - upweight attention scores at specific positions to improve LLM controllability
+
 - Editing Large Language Models: Problems, Methods, and Opportunities ([yao, ..., zhang, 2023](https://arxiv.org/pdf/2305.13172.pdf))
   - model-editing = data-efficient alterations to a model
 - memory-based
