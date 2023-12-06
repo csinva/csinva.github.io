@@ -2,6 +2,7 @@
 layout: notes
 title: comp neuro
 category: neuro
+subtitle: Diverse notes on various topics in computational neuro, data-driven neuro, and neuro-inspired AI.
 ---
 
 {:toc}
@@ -10,10 +11,6 @@ category: neuro
 
 ## overview
 
-- does biology have a cutoff level (likecutoffs in computers below which fluctuations don't matter)
-- core principles underlying these two questions
-  - how do brains work?
-  - how do you build an intelligent machine?
 - lacking: insight from neuro that can help build machine
 - scales: cortex, column, neuron, synapses
 - physics: theory and practice are much closer
@@ -21,29 +18,32 @@ category: neuro
   - "god is a hacker" - francis crick
   - theorists are lazy - ramon y cajal
   - things seemed like mush but became more clear - horace barlow
-  - principles of neural design book
-- felleman & van essen 1991
-  - ascending layers (e.g. v1-> v2): goes from superficial to deep layers
-  - descending layers (e.g. v2 -> v1): deep layers to superficial
-- **solari & stoner 2011 "cognitive consilience"** - layers thicknesses change in different parts of the brain
-  - motor cortex has much smaller input (layer 4), since it is mostly output
 
-## historical ai
+## history
 
-- people: turing, von neumman, marvin minsky, mccarthy...
-- ai: birth at 1956 conference
-  - vision: marvin minsky thought it would be a summer project
-- lighthill debate 1973 - was ai worth funding?
-- intelligence tends to be developed by young children...
-- cortex grew very rapidly
+- ai
 
-## historical cybernetics/nns
+  - people: turing, von neumman, marvin minsky, mccarthy...
+  - ai: birth at 1956 conference
+    - vision: marvin minsky thought it would be a summer project
 
-- people: norbert weiner, mcculloch & pitts, rosenblatt
-- neuro
-  - hubel & weisel (1962, 1965) simple, complex, hypercomplex cells
-  - neocognitron fukushima 1980
-  - david marr: theory, representation, implementation
+  - lighthill debate 1973 - was ai worth funding?
+  - intelligence tends to be developed by young children...
+  - cortex grew very rapidly
+
+- cybernetics / artficial neurao nets
+
+  - people: norbert weiner, mcculloch & pitts, rosenblatt
+
+  - neuro
+    - hubel & weisel (1962, 1965) simple, complex, hypercomplex cells
+    - neocognitron fukushima (1980)
+    - david marr: theory, representation, implementation
+    - felleman & van essen (1991)
+      - ascending layers (e.g. v1-> v2): goes from superficial to deep layers
+      - descending layers (e.g. v2 -> v1): deep layers to superficial
+    - solari & stoner (2011) "cognitive consilience" - layers thicknesses change in different parts of the brain
+      - motor cortex has much smaller input (layer 4), since it is mostly output
 
 ## types of models
 
@@ -53,21 +53,23 @@ category: neuro
   3. *interpretive* (or normative) brain model - why do brain circuits operate how they do
 
 - *receptive field* - the things that make a neuron fire
-- retina has on-center / off-surround cells - stimulated by points
-- then, V1 has differently shaped receptive fields
+
+  - retina has on-center / off-surround cells - stimulated by points
+  - then, V1 has differently shaped receptive fields
+
 - *efficient coding hypothesis* - learns different combinations (e.g. lines) that can efficiently represent images
-  
-  1. sparse coding (Olshausen and Field 1996)
-  2. ICA (Bell and Sejnowski 1997)
-  3. Predictive Coding (Rao and Ballard 1999)
+
+  1. sparse coding (Olshausen and Field, 1996)
+  2. ICA (Bell and Sejnowski, 1997)
+  3. predictive coding (Rao and Ballard, 1999)
   - brain is trying to learn faithful and efficient representations of an animal's natural environment
-    - same goes for auditory cortex
 
 # biophysical models
 
 ## modeling neurons
 
-- ![](../assets/5_1_1.png)
+- membrane can be treated as a simple circuit, with a capacitor and resistor
+
 - nernst battery
   1. osmosis (for each ion)
   2. electrostatic forces (for each ion)
@@ -78,18 +80,19 @@ category: neuro
   - part of voltage is accounted for by nernst battery $V_{rest}$
   - yields $\tau \frac{dV}{dt} = -V + V_\infty$ where $\tau=R_mC_m=r_mc_m$
   - equivalently, $\tau_m \frac{dV}{dt} = -((V-E_L) - g_s(t)(V-E_s) r_m) + I_e R_m $
+  
 - ![](../assets/5_1_2.png)
 
 ## simplified model neurons
 
 - *integrate-and-fire* neuron
   - passive membrane (neuron charges)
-  - when V = V$_{thresh}$, a spike is fired
-  - then V = V$_{reset}$
-  - doesn't have good modeling near threshold
+  - when $V = V_{thresh}$, a spike is fired
+  - then $V = V_{reset}$
+  - approximation is poor near threshold
   - can include threshold by saying
-    - when V = V$_{max}$, a spike is fired
-    - then V = V$_{reset}$
+    - when $V = V_{max}$, a spike is fired
+    - then $V = V_{reset}$
 - modeling multiple variables
   - also model a K current
   - can capture things like resonance
@@ -97,7 +100,7 @@ category: neuro
   - ![](../assets/5_3_1.png)
   - often used for periodically firing neurons (it fires spontaneously)
 
-## a forest of dendrites
+## modeling dendrites / axons
 
 - cable theory - Kelvin
 - voltage V is a function of both x and t
@@ -122,9 +125,8 @@ category: neuro
 - $\tau = RC$
   - bigger $\tau$ is slower
   - to increase capacitance
-    - could have larger diameter
-    - $C_m \propto D$
-  - axial resistance $R_A \propto 1/D^2$ (not same as membrane lerk), thus bigger axons actually charge faster
+    - could have larger diameter $C_m \propto D$
+  - axial resistance $R_A \propto 1/D^2$ (not same as membrane leak), thus bigger axons actually charge faster
 
 ## action potentials
 
@@ -140,28 +142,12 @@ category: neuro
 
 ## physics of computation
 
-- based on carver mead: drift and diffusion are at the heart of everything
-- different things realted by the **Boltzmann distr.** (ex. distr of air molecules vs elevation. Subject to gravity and diffusion upwards since they're colliding)
+- drift and diffusion are at the heart of everything (based on carver mead)
+- Boltzmann distr. models many things (ex. distr of air molecules vs elevation. Subject to gravity and diffusion upwards since they're colliding)
   - nernst potential
   - current-voltage relation of voltage-gated channels
   - current-voltage relation of MOS transistor
-- these things are all like transistor: energy barrier that must be overcome
-- neuromorphic examples
-  - differential pair sigmoid yields sigmoid-like function
-    - can compute tanh function really simply to simulate
-  - silicon retina
-    - lateral inhibition exists (gap junctions in horizontal cells)
-    - mead & mahowald 1989 - analog VLSI retina (center-surround receptive field is very low energy)
-- computation requires energy (otherwise signals would dissipate)
-  - von neumann architecture: CPU - bus (data / address) - Memory
-    - moore's law ending (in terms of cost, clock speed, etc.)
-      - ex. errors increase as device size decreases (and can't tolerate any errors)
-  - neuromorphic computing
-    - brain ~ 20 Watts
-    - exploit intrinsic transistor physics (need extremely small amounts of current)
-    - exploit electronics laws kirchoff's law, ohm's law
-    - new materials (ex. memristor - 3d crossbar array)
-    - can't just do biological mimicry - need to understand the principles
+- these things are all like a transistor: energy barrier that must be overcome
 
 ## spiking neurons
 
@@ -169,8 +155,8 @@ category: neuro
 - voltage-gaed channels were more complicated
 - can be though of as leaky integrate-and-fire neuron (LIF)
   - this charges up and then fires a spike, has refractory period, then starts charging up again
-- rate coding hypothesis - signal conveyed is the rate of spiking (bruno thinks this is usually too simple)
-  - spiking irregulariy is largely due to noise and doesn't convey information
+- rate coding hypothesis - signal conveyed is the rate of spiking (some folks think is too simple)
+  - spiking irregularly is largely due to noise and doesn't convey information
   - some neurons (e.g. neurons in LIP) might actually just convey a rate
 - linear-nonlinear-poisson model (LNP) - sometimes called GLM (generalized linear model)
   - based on observation that variance in firing rate $\propto$ mean firing rate
@@ -181,7 +167,7 @@ category: neuro
     - constant stimulus looks very Poisson
     - moving stimulus looks very Bernoulli
 - spike timing hypothesis
-  - spiece timing can be very precise in response to time-varying signals (mainen & sejnowski 1995; bair & koch 1996)
+  - spike timing can be very precise in response to time-varying signals (mainen & sejnowski 1995; bair & koch 1996)
   - often see precise timing
 - encoding: stimulus $\to$ spikes
 - decoding: spikes $\to$ representation
@@ -198,20 +184,6 @@ category: neuro
 
 **defining neural code**
 
-- extracellular
-  - fMRI
-    - averaged over space
-    - slow, requires seconds
-  - EEG
-    - noisy
-    - averaged, but faster
-  - multielectrode array
-    - record from several individual neurons at once
-  - calcium imaging
-    - cells have calcium indicator that fluoresce when calcium enters a cell
-- intracellular - can use patch electrodes
-- raster plot
-  - replay a movie many times and record from retinal ganglion cells during movie
 - *encoding*: P(response \| stimulus)
   - *tuning curve* - neuron's response (ex. firing rate) as a function of stimulus
   - orientation / color selective cells are distributed in organized fashion
@@ -229,6 +201,7 @@ category: neuro
 
   - r(t) = c * s(t)
 - *weighted linear model* - takes into account previous states weighted by f
+  
   1. *temporal filtering*
     - r(t) = $f_0 \cdot s_0 + ... + f_t \cdot s_t =  \sum s_{t-k} f_k$ where f weights stimulus over time
     - could also make this an integral, yielding a convolution:
@@ -296,14 +269,13 @@ category: neuro
   
 - modeling the noise
   - need to go from r(t) -> spike times
+  
   - divide time T into n bins with p = probability of firing per bin
+  
   - over some chunk T, number of spikes follows binomial distribution (n, p)
-    - mean = np
-    - var = np(1-p)
+    
   - if n gets very large, binomial approximates Poisson
-    - $\lambda$ = spikes in some set time
-      - mean = $\lambda$
-      - var = $\lambda$
+    - $\lambda$ = spikes in some set time (mean = $\lambda$, var = $\lambda$)
     1. can test if distr is Poisson with *Fano factor*=mean/var=1
       2. interspike intervals have exponential distribution	- if fires a lot, this can be bad assumption (due to refractory period)
   
@@ -876,12 +848,12 @@ category: neuro
 
   - could neuroscientist  understand microprocessor
   - no canonical microcircuit
-  
+
 - cellular
   - extracellular microeelectrodes
   - intracellular microelectrode
   - **neuropixels**
-  
+
 - optical
   - calcium imaging / fluorescence imaging
   - whole-brain light sheet imaging
@@ -890,7 +862,7 @@ category: neuro
   - fNRIS - like fMRI but cheaper, allows more immobility, slightly worse spatial res
   - **oct** - noninvasive - can look at retina (maybe find biomarkers of alzheimer's)
   - fiber photometry - optical fiber implanted delivers excitation light
-  
+
 - high-level
   - EEG/ECoG
   - MEG
@@ -899,7 +871,7 @@ category: neuro
     - molecular fmri (bartelle)
   - MRS
   - event-related optical signal = near-infrared spectroscopy
-  
+
 - implantable
   - neural dust
 
@@ -1234,14 +1206,14 @@ the operations above allow for encoding many normal data structures into a singl
     - vectors are squashed so their magnitudes are between 0 and 1
     - outputs a vector
 
-## hierarchical temporal memory (htm)
+## hierarchical temporal memory (htm, numenta)
 
 - binary synapses and learns by modeling the growth of new synapses and the decay of unused synapses
-- separate aspects of brains and neurons that are essential for intelligence from those that depend on brain implementation
+- separates aspects of brains and neurons that are essential for intelligence from those that depend on brain implementation
 
 ### necortical structure
 
-- evolution leads to physical/logical hierarchy of brain regions
+- evolution yields physical/logical hierarchy of brain regions
 - neocortex is like a flat sheet
 - neocortex regions are similar and do similar computation
   - Mountcastle 1978: vision regions are vision becase they receive visual input
@@ -1251,12 +1223,12 @@ the operations above allow for encoding many normal data structures into a singl
 
 ### principles
 
-- common algorithims accross neocortex
+- common algorithms accross neocortex
 - hierarchy
 - **sparse distributed representations (SDR)** - vectors with thousands of bits, mostly 0s
   - bits of representation encode semantic properties
 - inputs
-  - data from the sense
+  - data from the senses
   - copy of the motor commands
     - "sensory-motor" integration - perception is stable while the eyes move
 - patterns are constantly changing
@@ -1277,6 +1249,9 @@ the operations above allow for encoding many normal data structures into a singl
 
 
 ### papers
+
+- A thousand brains: toward biologically constrained AI (hole & ahmad, 2021)
+  - 
 
 - "A Theory of How Columns in the Neocortex Enable Learning the Structure of the World"
   - network model that learns the structure of objects through movement
@@ -1400,6 +1375,26 @@ the operations above allow for encoding many normal data structures into a singl
 - some evidence for "time cells" like place cells for time
 - sound frequency task https://www.nature.com/articles/nature21692
 - 2d "bird space" [task](https://science.sciencemag.org/content/352/6292/1464.full?ijkey=sXaWNaNjkIcik&keytype=ref&siteid=sci)
+
+## neuromorphic computing
+
+- neuromorphic examples
+  - differential pair sigmoid yields sigmoid-like function
+    - can compute $tanh$ function really simply to simulate
+  - silicon retina
+    - lateral inhibition exists (gap junctions in horizontal cells)
+    - analog VLSI retina: center-surround receptive field is very low energy
+    - mead & mahowald 1989
+- computation requires energy (otherwise signals would dissipate)
+  - von neumann architecture: CPU - bus (data / address) - Memory
+  - moore's law ending (in terms of cost, clock speed, etc.)
+    - ex. errors increase as device size decreases (and can't tolerate any errors)
+  - neuromorphic computing
+    - brain ~ 20 Watts
+    - exploit intrinsic transistor physics (need extremely small amounts of current)
+    - exploit electronics laws kirchoff's law, ohm's law
+    - new materials (ex. memristor - 3d crossbar array)
+    - can't just do biological mimicry - need to understand the principles
 
 # neuro-inspired ai (niAI)
 

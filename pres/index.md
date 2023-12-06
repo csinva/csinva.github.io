@@ -10,9 +10,13 @@ title: presentations
 - [tree-prompt](https://docs.google.com/presentation/d/17RqIjCGOaM19R_PFKTQMj5OGhmfpGccmxGW61ixzUPo/)
 	- Title: Uniting Large Language Models and Decision Trees
 	- <details>
-    <summary>Abstract</summary>
+    <summary>Abstract 1</summary>
     Decision trees are the cornerstone for a wide range of applications, especially in tabular data, where they are often used as a transparent model However, decision trees can fail to model complex interactions and dependencies, an area where modern large language models (LLMs) excel. In this talk, I will discuss recent works that unite decision trees and LLMs to bring out the best in both for NLP applications. Specifically, I will discuss how decision trees can be used to steer LLMs by structuring sequential prompted calls, and how LLMs can be used to improve transparent decision trees by augmenting individual nodes with relevant features.
     </details>
+	- <details>
+    <summary>Abstract 2</summary>
+    Decision trees are a pillar of modern machine learning, forming a foundation for transparent, accurate decision making. However, decision trees often fail to model complex interactions, an area where modern large language models (LLMs) excel. In this talk, I will discuss our recent works that unite decision trees and LLMs to bring out the best in both for NLP applications. Specifically, I will discuss (1) how how LLMs can be used to improve transparent decision trees by augmenting individual nodes with relevant features and (2) how decision trees can be used to steer LLMs by structuring sequential prompted calls.
+    </details>    
 
 ## 2022
 

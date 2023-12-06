@@ -274,7 +274,7 @@ category: ml
 
 ## naive bayes classifier
 
-- assume multinomial Y
+- assume multinomial $Y$
 - with clever tricks, can produce $P(Y^i=1|x, \eta)$ again as a softmax
 - let $y_1,...y_l$ be the classes of Y
 - want Posterior $P(Y\vert X) = \frac{P(X\vert Y)(P(Y)}{P(X)}$ 
@@ -285,13 +285,13 @@ category: ml
 - naive assumption - assume that all input attributes are conditionally independent given y
   - $P(X_1,...,X_p\vert Y) = P(X_1\vert Y)\cdot...\cdot P(X_p\vert Y) = \prod_i P(X_i\vert Y)$ 
 - learning
-  - learn L distributions $P(y_1),P(y_2),...,P(y_l)$
+  - learn $L$ priors $P(y_1),P(y_2),...,P(y_l)$
   - for i in 1:$\vert Y \vert$
     - learn $P(X \vert y_i)$ 
     - for discrete case we store $P(X_j\vert y_i)$, otherwise we assume a prob. distr. form
 - naive: $\vert Y\vert  \cdot (\vert X_1\vert  + \vert X_2\vert  + ... + \vert X_p\vert )$ distributions
 - otherwise: $\vert Y\vert \cdot (\vert X_1\vert  \cdot \vert X_2\vert  \cdot ... \cdot \vert X_p\vert )$
-- smoothing - used to fill in 0s
+- smoothing - used to fill in $0$s
   - $P(x_i\vert y_j) = \frac{N(x_i, y_j) +1}{N(y_j)+\vert X_i\vert }$ 
   - then, $\sum_i P(x_i\vert y_j) = 1$
 
