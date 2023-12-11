@@ -629,7 +629,7 @@ See related papers in the [📌 interpretability](https://csinva.io/notes/resear
 
 *See also notes on [📌 comp neuro](https://csinva.io/notes/research_ovws/ovw_comp_neuro.html).*
 
-- GPT-3 [Large Language Models are Zero-Shot Reasoners](https://arxiv.org/abs/2205.11916) - simply adding “Let’s think step by step” before each answer increases the accuracy on MultiArith from 17.7% to 78.7% and GSM8K from 10.4% to 40.7% with GPT-3
+- CoT
 - [Compositional processing emerges in neural networks solving math problems](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8491571/) (russin, roland fernandez, ..., smolensky, gao, 2021)
 - Modular Deep Learning ([pfeiffer, ruder, .., ponti, 2023)](https://arxiv.org/pdf/2302.11529.pdf) - overview of different modular architectures
 - neurocompositional computing ([smolensky…gao, 2022](https://arxiv.org/abs/2205.01128))
@@ -654,24 +654,18 @@ See related papers in the [📌 interpretability](https://csinva.io/notes/resear
   - concrete proposals
     - transformer activation vector should encode graph of flow through the network
       - ex. task: regurgitate a sequence
-- TPR: Tensor product variable binding and the representation of symbolic structures in connectionist systems ([paul smolensky, 1990](https://www.sciencedirect.com/science/article/abs/pii/000437029090007M?via%3Dihub)) - activation patterns are "symbols" and internal structure allows them to be processed like symbols
-  - tensor product representation = TPR
-  - [TPR slides](https://www.mit.edu/~jda/teaching/6.884/slides/oct_02.pdf)
-  - TPR of a structure is the sum of the TPR of its constituents
-    - tensor product operation allows constituents to be uniquely identified, even after the sum (if roles are linearly independent)
-  - **filler** - one vector that embeds the content of the constituent
-  - **role** - second vector that embeds the structural role it fills
 -  NECSTransformer: [Enhancing the Transformer with Explicit Relational Encoding for Math Problem Solving](https://www.microsoft.com/en-us/research/publication/enhancing-the-transformer-with-explicit-relational-encoding-for-math-problem-solving/) (schlag, ..., gao, 2019)
   - TP-attention
   - beat SOAon free-form math word-problems
   - in addition to K, Q, V, also add a role-vector
     - do element-wise multiplication of outputted vector with role-vector
-  - TPR built as tensor product of 2 vectors:
+  - TPR built as outer product of 2 vectors:
     - filler - the vector returned by attention
       - ex. one head learns "second-argument-of"
     - role - a relation conceptually labeling an edge of the attention graph
 - [TP-N2F: Tensor Product Representation for Natural To Formal Language Generation - Microsoft Research](https://www.microsoft.com/en-us/research/publication/natural-to-formal-language-generation-using-tensor-product-representations/) (chen...gao, 2019)
 - Logical Transformers: Infusing Logical Structures into Pre-Trained Language Models ([wang, huang, ..., gao, 2023](https://aclanthology.org/2023.findings-acl.111/)) - use logical model to alter embeddings before feeding to LLM
+- Implicit Chain of Thought Reasoning via Knowledge Distillation ([deng...smolensky..., 2023](https://arxiv.org/abs/2311.01460))
 
 ## instruction tuning / rlhf
 
@@ -866,6 +860,7 @@ mixture of experts models have become popular because of the need for (1) fast s
     - they use synthetic generated data to revise the explanation
     - they also do some recovery tests on "neuron puzzles"
     - The Importance of Prompt Tuning for Automated Neuron Explanations ([lee...weng, 2023](https://arxiv.org/abs/2310.06200))
+    - Rigorously Assessing Natural Language Explanations of Neurons ([huang..potts, 2023](https://arxiv.org/abs/2309.10312))
   - MILAN: Natural Language Descriptions of Deep Visual Features ([hernandez...david bau...torallba, andreas, 2022](https://openreview.net/forum?id=NudBMY-tzDr)) - given a neuron, generates a natural-language string that maximizes pointwise mutual information with the image regions in which the neuron is active
     - Scale Alone Does not Improve Mechanistic Interpretability in Vision Models ([zimmermann, klein, & brendel, 2023](https://arxiv.org/abs/2307.05471)) - perform human eval of interpretability of different units (show human top-activating patches and ask them to decide which of 2 patches will be top-activating)
   - A Function Interpretation Benchmark for Evaluating Interpretability Methods ([schwettmann, ..., andreas, bau, & torralba, 2023](https://arxiv.org/abs/2309.03886))

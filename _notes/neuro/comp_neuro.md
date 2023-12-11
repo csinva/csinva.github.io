@@ -622,6 +622,24 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - gets more even outputs
   - only has ~1.5 million fibers
 
+## tensor product representation (TPR)
+
+- tensor product representation = TPR
+
+  - Tensor product variable binding and the representation of symbolic structures in connectionist systems ([paul smolensky, 1990](https://www.sciencedirect.com/science/article/abs/pii/000437029090007M?via%3Dihub)) - activation patterns are "symbols" and internal structure allows them to be processed like symbols
+  - **filler** - one vector that embeds the content of the constituent
+
+  - **role** - second vector that embeds the structural role it fills
+
+  - TPR is built by summing the outer product between roles and fillers:
+
+  - ![tpr](../assets/tpr.png)
+
+  - TPR of a structure is the sum of the TPR of its constituents
+    - tensor product operation allows constituents to be uniquely identified, even after the sum (if roles are linearly independent)
+
+- [TPR slides](https://www.mit.edu/~jda/teaching/6.884/slides/oct_02.pdf)
+
 ## synaptic plasticity, hebb's rule, and statistical learning
 
 - if 2 spikes keep firing at same time, get LTP - long-term potentiation
@@ -638,10 +656,10 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - Hebb rule - derivative of w is always positive $\implies$ w grows without bound
   - covariance rule - derivative of w is still always positive $\implies$ w grows without bound
     - could add constraint that $\|\|w\|\|=1$ and normalize w after every step
-  - Oja's rule - $\|\|w\|\| = 1/\sqrt{alpha}$, so stable
+  - Oja's rule - $\|\|w\|\| = 1/\sqrt{\alpha}$, so stable
 - solving *Hebb rule* $\tau_w \frac{d\mathbf{w}}{dt} = Q w$ where Q represents correlation matrix
   - write w(t) in terms of eigenvectors of Q
-  - lets us solve for $\mathbf{w}(t)=\sum_i c_i(0)exp(\lambda_i t / \tau_w) \mathbf{e}_i$
+  - lets us solve for $\mathbf{w}(t)=\sum_i c_i(0)\exp(\lambda_i t / \tau_w) \mathbf{e}_i$
   - when t is large, largest eigenvalue dominates
 - hebbian learning implements PCA
   - hebbian learning learns w aligned with principal eigenvector of input correlation matrix
@@ -675,11 +693,11 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 - generative model
   - images X
   - causes 
-  - likelihood P(X=x\|C=c)
+  - likelihood $P(X=x\|C=c)$
     - Gaussian
     - proportional to $\exp(x-Gc)$
-  - want posterior P(C\|X)
-  - prior p(C )
+  - want posterior $P(C\|X)$
+  - prior $p(C)$
     - assume priors causes are independent
     - want sparse distribution
       - has heavy tail (super-Gaussian distribution)
@@ -689,12 +707,12 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 - sparse coding is a special case of *predicive coding*
   - ![](../assets/7_3_1.png)
   - there is usually a feedback connection for every feedforward connection (Rao & Ballard, 1999)
-- recurrent sparse reconstruction ([shi...joshi, darrel, wang, 2022](https://arxiv.org/pdf/2204.10962.pdf)) - sparse reconstruction (of a single image) learns a layer that does better than self-attention
+- recurrent sparse reconstruction ([shi...joshi, darrell, wang, 2022](https://arxiv.org/pdf/2204.10962.pdf)) - sparse reconstruction (of a single image) learns a layer that does better than self-attention
 
 ## sparse, distributed coding
 
 - $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{h^{(t)}}} \min ||\mathbf{x^{(t)}} - \mathbf{Dh^{(t)}}||_2^2 + \lambda ||\mathbf{h^{(t)}}||_1$$
-  - D is like autoencoder output weight matrix
+  - $D$ is like autoencoder output weight matrix
   - h is more complicated - requires solving inner minimization problem
   - outer loop is not quite lasso - weights are not what is penalized
 - barlow 1972: want to represent stimulus with minimum active neurons
@@ -774,10 +792,7 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 
 # probabilistic models + inference
 
-<details>
-  <summary>Wiener filter</summary>
-  has Gaussian prior + likelihood
-</details>
+- Wiener filter: has Gaussian prior + likelihood
 - gaussians are everywhere because of CLT, max entropy (subject to power constraint)
 
   - for gaussian function, $d/dx f(x) = -x f(x)$
@@ -846,7 +861,9 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 
   **anti big-data**
 
-  - could neuroscientist  understand microprocessor
+  - could neuroscientist  understand microprocessor ([jonas & kording, 2017](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005268))
+  - System Identification of Neural Systems: If We Got It Right, Would We Know? ([han, poggio, & cheung, 2023](https://proceedings.mlr.press/v202/han23d)) - could functional similarity be a reliable predictor of architectural similarity?
+  - Can a biologist fix a radio?—Or, what I learned while studying apoptosis ([lazebnik, 2002](https://www.cell.com/fulltext/S1535-6108(02)00133-2))
   - no canonical microcircuit
 
 - cellular
@@ -902,6 +919,32 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 
 ## datasets
 
+- NLP MEG datasets
+
+  - MEG-MASC ([gwilliams...king, 2023](https://www.nature.com/articles/s41597-023-02752-5)) - 27 English-speaking subjects MEG, each ~2 hours of story listening, punctuated by random word lists and comprehension questions in the MEG scanner. Usually each subject listened to four distinct fictional stories twice
+
+  - WU-Minn human connectome project ([van Essen et al. 2013](https://www.nature.com/articles/s41597-022-01382-7)) - 72 subjects recorded with fMRI and MEG as part of the Human Connectome Project, listening to 10 minutes of short stories, no repeated session
+
+
+  - [Brennan & Hale, 2019](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0207741): 33 subjects recorded with EEG, listening to 12 min of a book chapter, no repeated session
+
+  - [Broderick et al. 2018](https://www.cell.com/current-biology/pdf/S0960-9822(18)30146-5.pdf): 9–33 subjects recorded with EEG, conducting different speech tasks, no repeated sessions
+
+  - [Schoffelen et al. 2019](https://www.nature.com/articles/s41597-019-0020-y): 100 subjects recorded with fMRI and MEG, listening to de-contextualised sentences and word lists, no repeated session
+
+  - [Armeni et al. 2022](https://www.nature.com/articles/s41597-022-01382-7): 3 subjects recorded with MEG, listening to 10 h of Sherlock Holmes, no repeated session
+
+- NLP fMRI
+
+  - A natural language fMRI dataset for voxelwise encoding models ([lebel, … huth, 2022](https://www.biorxiv.org/content/10.1101/2022.09.22.509104v1.abstract?%3Fcollection=))
+    - 8 participants listening to ~6 hours each of the moth radio hour
+    - Also ~20 sessions for UTS01-UTS03
+  - Narratives Dataset ([Nastase et al. 2019](http://fcon_1000.projects.nitrc.org/indi/retro/Narratives.html)) - more subjects, less data per subject
+    - 345 subjects, 891 functional scans, and 27 diverse stories of varying duration totaling ~4.6 hours of unique stimuli (~43,000 words) and total collection time is ~6.4 days
+  - [Schoffelen et al. 2019](https://www.nature.com/articles/s41597-019-0020-y): 100 subjects recorded with fMRI and MEG, listening to de-contextualised sentences and word lists, no repeated session
+  - [Huth et al. 2016](https://www.nature.com/articles/nature17637) released data from [one subject](https://github.com/HuthLab/speechmodeltutorial)
+  - Visual and linguistic semantic representations are aligned at the border of human visual cortex ([popham, huth et al. 2021](https://www.nature.com/articles/s41593-021-00921-6#data-availability)) - compared semantic maps obtained from two functional magnetic resonance imaging experiments in the same participants: one that used silent movies as stimuli and another that used narrative stories ([data link](https://berkeley.app.box.com/s/l95gie5xtv56zocsgugmb7fs12nujpog))
+
 - [non-human primate optogenetics datasets](https://osf.io/mknfu/)
 - [vision dsets](https://www.visualdata.io/)
   - MRNet: knee MRI diagnosis
@@ -922,7 +965,6 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - dimensionality reduction
     - enforcing bottleneck in the deep model
     - how else to do dim reduction?
-- responses to 2800 images
 - overview: http://www.scholarpedia.org/article/Encyclopedia_of_computational_neuroscience
 - keeping up to date: https://sanjayankur31.github.io/planet-neuroscience/
 - *lots of good data*: http://home.earthlink.net/~perlewitz/index.html
@@ -947,17 +989,7 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 
   - spikes: http://www2.le.ac.uk/departments/engineering/research/bioengineering/neuroengineering-lab/software
 
-**fmri responses to language++**
-
-- [A natural language fMRI dataset for voxelwise encoding models](https://www.biorxiv.org/content/10.1101/2022.09.22.509104v1.abstract?%3Fcollection=) (lebel, … huth, 2022)
-    - 8 participants listening to ~6 hours each of the moth radio hour
-- [Narratives Dataset](http://fcon_1000.projects.nitrc.org/indi/retro/Narratives.html) (Nastase et al. 2019) - more subjects, less data per subject
-    - 345 subjects, 891 functional scans, and 27 diverse stories of varying duration totaling ~4.6 hours of unique stimuli (~43,000 words) and total collection time is ~6.4 days
-- [Huth et al. 2016](https://www.nature.com/articles/nature17637) released data from [one subject](https://github.com/HuthLab/speechmodeltutorial)
-- [Visual and linguistic semantic representations are aligned at the border of human visual cortex](https://www.nature.com/articles/s41593-021-00921-6#data-availability) (popham, huth et al. 2021) - compared semantic maps obtained from two functional magnetic resonance imaging experiments in the same participants: one that used silent movies as stimuli and another that used narrative stories ([data link](https://berkeley.app.box.com/s/l95gie5xtv56zocsgugmb7fs12nujpog))
 - More datasets available at [openneuro](https://openneuro.org/search/modality/mri) and visual cortex data on [crcns](https://crcns.org/data-sets/vc)
-
-
 
 **misc ideas**
 
@@ -1049,18 +1081,16 @@ the operations above allow for encoding many normal data structures into a singl
   - goal: get good semantic vectors for words
     - baseline (e.g. latent-semantic analysis LSA): make matrix of word counts, where each row is a word, and each column is a document
     - add counts to each column -- row vector becomes semantic vector
-
   - HD computing alternative: each row is a word, but each document is assigned a few ~10 columns at random
-    - thus, the number of columns doesn't scale with the number of documents
+    - the number of columns doesn't scale with the number of documents
     - can also do this randomness for the rows (so the number of rows < the number of words)
     - can still get semantic vector for a row/column by adding together the rows/columns which are activated by that row/column
-    - this examples still only uses bag-of-words (but can be extended to more)
 - ex. semantic word vectors 2 (like word2vec)
   - each word in vocab is given 2 vectors
     - random-indexing vector - fixed random from the beginning
     - semantic vector - starts at 0
   - as we traverse sequence, for each word, add random-indexing vector from words right before/after it to its semantic vector
-    - can also permute them before adding to preserve word order (e.g. "[Permutations as a means to encode order in word space](https://www.diva-portal.org/smash/record.jsf?pid=diva2:1042478)" (2008))
+    - can also permute them before adding to preserve word order (e.g. Permutations as a means to encode order in word space ([kanerva, 2008](https://www.diva-portal.org/smash/record.jsf?pid=diva2:1042478)))
       - can instead use placeholder vector to help bring in word order (e.g. BEAGLE - [Jones & Mewhort, 2007](https://cseweb.ucsd.edu//~gary/PAPER-SUGGESTIONS/jones-mewhort-psych-rev-2007.pdf))
 - ex. learning rules by example
   - particular instance of a rule is a rule (e.g mother-son-baby $\to$ grandmother)
@@ -1090,7 +1120,7 @@ the operations above allow for encoding many normal data structures into a singl
 
   - testing
     - compare each test sentence to profiles via dot product
-    - clusters similar languages - cool!
+    - clusters similar languages
     - can query the letter most likely to follow "TH"
       - form query vector $Q = r(r(T)) * r(H)$
       - query by using multiply $X = Q$ * english-profile-vec
@@ -1114,7 +1144,7 @@ the operations above allow for encoding many normal data structures into a singl
   - new codewords are made from existing ones
   - HD memory is a separate func
   - HD algos are transparent, incremental (on-line), scalable
-  - somewhat closer to the brain...cerebellum anatomy seems to be match HD
+    - somewhat closer to the brain...cerebellum anatomy seems to better match HD
   - HD: holistic (distributed repr.) is robust
 
 
@@ -1130,11 +1160,11 @@ the operations above allow for encoding many normal data structures into a singl
     - *autoassociative* - can return stored *X* based on a noisy version of *X* (since it is a point attractor), maybe with some iteration
       - this adds robustness to the memory
       - this also removes the need for addresses altogether
-- [Classification and Recall With Binary Hyperdimensional Computing: Tradeoffs in Choice of Density and Mapping Characteristics](https://ieeexplore.ieee.org/abstract/document/8331890?casa_token=FbderL4T3RgAAAAA:LfP2kRSJwhY5z4OHMqvNDrxmSpyIMLzGs80vGj_IdBXVhVVDwZg1tfIeD2nj0S5N7T2YsRrOcg)
+- Classification and Recall With Binary Hyperdimensional Computing: Tradeoffs in Choice of Density and Mapping Characteristics ([kleyko et al. 2018](https://ieeexplore.ieee.org/abstract/document/8331890?casa_token=FbderL4T3RgAAAAA:LfP2kRSJwhY5z4OHMqvNDrxmSpyIMLzGs80vGj_IdBXVhVVDwZg1tfIeD2nj0S5N7T2YsRrOcg))
   - note: for sparse vectors, might need some threshold before computing mean (otherwise will have too many zeros)
 
 - Neural Statistician ([Edwards & Storkey, 2016](https://arxiv.org/abs/1606.02185)) summarises a dataset by averaging over their embeddings
-- [kanerva machine ](https://arxiv.org/pdf/1804.01756.pdf)(yu...lillicrap, 2018)
+- kanerva machine ([yu...lillicrap, 2018](https://arxiv.org/pdf/1804.01756.pdf))
   - like a VAE where the prior is derived from an adaptive memory store
 - theory of sequence indexing and working memory in RNNs
   - trying to make key-value pairs
@@ -1156,7 +1186,7 @@ the operations above allow for encoding many normal data structures into a singl
 
 ## visual sampling
 
-- [Emergence of foveal image sampling from learning to attend in visual scenes](https://arxiv.org/abs/1611.09430) (cheung, weiss, & olshausen, 2017) - using neural attention model, learn a retinal sampling lattice
+- Emergence of foveal image sampling from learning to attend in visual scenes ([cheung, weiss, & olshausen, 2017](https://arxiv.org/abs/1611.09430)) - using neural attention model, learn a retinal sampling lattice
   - can figure out what parts of the input the model focuses on
 
 
@@ -1269,7 +1299,7 @@ the operations above allow for encoding many normal data structures into a singl
   - network of these can form robust memory
 
 ## forgetting
-- [Continual Lifelong Learning with Neural Networks: A Review](https://arxiv.org/pdf/1802.07569.pdf)
+- Continual Lifelong Learning with Neural Networks: A Review ([parisi...kanan, wermter, 2019](https://arxiv.org/pdf/1802.07569.pdf))
   - main issues is *catastrophic forgetting* / *stability-plasticity dilemma*
   - ![Screen Shot 2020-01-01 at 11.49.32 AM](../assets/forgetting.png)
   - 2 types of plasticity
@@ -1284,26 +1314,25 @@ the operations above allow for encoding many normal data structures into a singl
 
   - Energy Guided Diffusion for Generating Neurally Exciting Images ([pierzchlewicz, ..., tolias, sinz, 2023](https://www.biorxiv.org/content/10.1101/2023.05.18.541176v1))
 
-  - [Evolving images for visual neurons using a deep generative network reveals coding principles and neuronal preferences](https://www.sciencedirect.com/science/article/pii/S0092867419303915) (ponce...livingstone, 2019)
+  - Evolving images for visual neurons using a deep generative network reveals coding principles and neuronal preferences ([ponce...livingstone, 2019](https://www.sciencedirect.com/science/article/pii/S0092867419303915))
 
   - The DeepTune framework for modeling and characterizing neurons in visual cortex area V4 ([abbasi-asl, ..., yu, 2018](https://www.biorxiv.org/content/10.1101/465534v1.abstract))
 
-- [XDream: Finding preferred stimuli for visual neurons using generative networks and gradient-free optimization](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007973) (2020)
+- XDream: Finding preferred stimuli for visual neurons using generative networks and gradient-free optimization ([2020](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007973))
 - real-time mouse v1
-  - [Inception in visual cortex: in vivo-silico loops reveal most exciting images](https://www.biorxiv.org/content/10.1101/506956.abstract) (2018)
+  - Inception in visual cortex: in vivo-silico loops reveal most exciting images ([2018](https://www.biorxiv.org/content/10.1101/506956.abstract))
 
 - Adept: Adaptive stimulus selection for optimizing neural population responses ([cowley...byron yu, 2017](https://papers.nips.cc/paper/6738-adaptive-stimulus-selection-for-optimizing-neural-population-responses.pdf))
   - select next image using kernel regression from CNN embeddings
   - pick next stimulus in closed-loop ("adaptive sampling" = "optimal experimental design") for macaque v4
-- [From response to stimulus: adaptive sampling in sensory physiology](https://www.sciencedirect.com/science/article/pii/S095943880700092X) (2007)
-
-  - find the smallest number of stimuli needed to fit parameters of a model that predicts the recorded neuron’s activity from the
+- From response to stimulus: adaptive sampling in sensory physiology ([2007](https://www.sciencedirect.com/science/article/pii/S095943880700092X))
+- find the smallest number of stimuli needed to fit parameters of a model that predicts the recorded neuron’s activity from the
     stimulus
 
-  - maximizing firing rates via genetic algorithms
+- maximizing firing rates via genetic algorithms
 
-  - maximizing firing rate via gradient ascent
-- [Adaptive stimulus optimization for sensory systems neuroscience"](https://www.frontiersin.org/articles/10.3389/fncir.2013.00101/full)
+- maximizing firing rate via gradient ascent
+- [Adaptive stimulus optimization for sensory systems neuroscience](https://www.frontiersin.org/articles/10.3389/fncir.2013.00101/full)
   - 2 general approaches: gradient-based approaches + genetic algorithms
   - can put constraints on stimulus space
   - stimulus adaptation
@@ -1312,6 +1341,7 @@ the operations above allow for encoding many normal data structures into a singl
   - model-fitting: pick to maximize info-gain w/ model params
   - using fixed stimulus sets like white noise may be deeply problematic for efforts to identify non-linear hierarchical network models due to continuous parameter confounding (DiMattina and Zhang, 2010) 
   - use for model selection
+- Brain Diffusion for Visual Exploration: Cortical Discovery using Large Scale Generative Models ([luo...wehbe, tarr, 2023](https://arxiv.org/abs/2306.03089))
 
 
 ## population coding
@@ -1396,6 +1426,53 @@ the operations above allow for encoding many normal data structures into a singl
     - new materials (ex. memristor - 3d crossbar array)
     - can't just do biological mimicry - need to understand the principles
 
+# nlp / fMRI
+
+- Mapping Brains with Language Models: A Survey ([Karamolegkou et al. 2023](https://arxiv.org/abs/2306.05126))
+
+- interpreting brain encoding models
+  - [Brains and algorithms partially converge in natural language processing](https://www.nature.com/articles/s42003-022-03036-1#Sec9) (caucheteux & king, 2022)
+    - best brain-mapping are obtained from the middle layers of DL models
+    - whether an algorithm maps onto the brain primarily depends on its ability to predict words context
+    - average ROIs across many subjects
+    - test "compositionality" of features
+  - [Tracking the online construction of linguistic meaning through negation](https://www.biorxiv.org/content/10.1101/2022.10.14.512299.abstract) (zuanazzi, ..., remi-king, poeppel, 2022)
+  - [Blackbox meets blackbox: Representational Similarity and Stability Analysis of Neural Language Models and Brains](https://arxiv.org/abs/1906.01539) (abnar, … zuidema, emnlp workshop, 2019) - use RSA to compare representations from language models with fMRI data from Wehbe et al. 2014
+  - [Evidence of a predictive coding hierarchy in the human brain listening to speech](https://www.nature.com/articles/s41562-022-01516-2) (caucheteux, gramfot, & king, 2023)
+
+- encoding models
+
+  - Seminal language-semantics fMRI study ([Huth…Gallant, 2016](https://www.nature.com/articles/nature17637)) - build mapping of semantic concepts across cortex using word vecs
+  - [(caucheteux, gramfort, & king, facebook, 2022)](https://www.nature.com/articles/s41598-022-20460-9) - predicts fMRI with gpt-2 on the narratives dataset
+    - GPT‐2 representations predict fMRI response + extent to which subjects understand corresponding narratives
+    - compared different encoding features: phoneme, word, gpt-2 layers, gpt-2 attention sizes
+    - brain mapping finding: auditory cortices integrate information over short time windows, and the fronto-parietal areas combine supra-lexical information over long time windows
+    - gpt2 models predict brain responses well [(caucheteux & king, 2021)](https://www.biorxiv.org/content/10.1101/2020.07.03.186288v2.abstract)
+    - [Disentangling syntax and semantics in the brain with deep networks](https://proceedings.mlr.press/v139/caucheteux21a.html) (caucheteux, gramfort, & king, 2021) - identify which brain networks are involved in syntax, semantics, compositionality
+  - [Incorporating Context into Language Encoding Models for fMRI](https://proceedings.neurips.cc/paper/2018/hash/f471223d1a1614b58a7dc45c9d01df19-Abstract.html) (jain & huth, 2018) - LSTMs improve encoding model
+    - [The neural architecture of language: Integrative modeling converges on predictive processing](https://www.pnas.org/doi/abs/10.1073/pnas.2105646118) (schrimpf, .., tenenbaum, fedorenko, 2021) - transformers better predict brain responses to natural language (and larger transformers predict better)
+    - [Predictive Coding or Just Feature Discovery? An Alternative Account of Why Language Models Fit Brain Data | Neurobiology of Language](https://direct.mit.edu/nol/article/doi/10.1162/nol_a_00087/113632/Predictive-Coding-or-Just-Feature-Discovery-An) (antonello & huth, 2022)
+      - LLM brain encoding performance correlates not only with their perplexity, but also generality (skill at many different tasks) and translation performance
+    - Prediction with RNN beats ngram models on individual-sentence fMRI prediction ([anderson…lalor, 2021](https://www.jneurosci.org/content/41/18/4100))
+    - Interpret transformer-based models and find top predictions in specific regions, like left middle temporal gyrus (LMTG) and left occipital complex (LOC) ([sun et al. 2021](https://ieeexplore.ieee.org/document/9223750/))
+- changing experimental design
+  - Semantic representations during language comprehension are affected by context (i.e. how langauge is presented) ([deniz...gallant, 2021](https://www.biorxiv.org/content/10.1101/2021.12.15.472839v1.full.pdf)) - stimuli with more context (stories, sentences) evoke better responses than stimuli with little context (Semantic Blocks, Single Words)
+  - Combining computational controls with natural text reveals new aspects of meaning composition ([toneva, mitchell, & wehbe, 2022](https://www.biorxiv.org/content/biorxiv/early/2022/08/09/2020.09.28.316935.full.pdf)) - study word interactions by using encoding vector emb(phrase) - emb(word1) - emb(word2)...
+  - Driving and suppressing the human language network using large language models ([tuckute, ..., shrimpf, kay, & fedorenko, 2023](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10120732/))
+    - use encoding models to sort thousands of sentences and then show them
+      - alternatively, use gradient-based modifications to transform a random sentence to elicit larger responses, but this works worse
+    - surprisal and well- formedness of linguistic input are key determinants of response strength in the language network
+
+- decoding models
+  - Seeing Beyond the Brain: Conditional Diffusion Model with Sparse Masked Modeling for Vision Decoding ([chen et al. 2022](https://arxiv.org/pdf/2211.06956.pdf))
+
+  - [Semantic reconstruction of continuous language from non-invasive brain recordings](https://www.biorxiv.org/content/10.1101/2022.09.29.509744v1) (lebel, jain, & huth, 2022) - reconstruct continuous natural language from fMRI
+    - [Decoding speech from non-invasive brain recordings](https://arxiv.org/abs/2208.12266) (defossez, caucheteux, ..., remi-king, 2022)
+
+  - [Reconstructing Visual Experiences from Brain Activity Evoked by Natural Movies](https://www.sciencedirect.com/science/article/pii/S0960982211009377) (nishimoto, …, gallant, 2011)
+
+  - Brain Decoding: Toward Real Time Reconstruction of Visual Perception ([Benchetrit...king, 2023](https://ai.meta.com/static-resource/image-decoding)) - use MEG to do visual reconstruction
+
 # neuro-inspired ai (niAI)
 
 ## neuro-dl reviews
@@ -1469,53 +1546,6 @@ the operations above allow for encoding many normal data structures into a singl
   - [Biologically inspired protection of deep networks from adversarial attacks](https://arxiv.org/abs/1703.09202) (nayebi & ganguli, 2017) - change training to get highly nonlinear, saturated neural nets
   - [Biological constraints on neural network models of cognitive function](https://www.nature.com/articles/s41583-021-00473-5) (pulvermuller, …, wennekers, 2021) - review on biological constraints
   - [Disentangling with Biological Constraints: A Theory of Functional Cell Types](https://arxiv.org/abs/2210.01768)
-
-## nlp / fMRI
-
-- Mapping Brains with Language Models: A Survey ([Karamolegkou et al. 2023](https://arxiv.org/abs/2306.05126))
-
-- interpreting brain encoding models
-  - [Brains and algorithms partially converge in natural language processing](https://www.nature.com/articles/s42003-022-03036-1#Sec9) (caucheteux & king, 2022)
-    - best brain-mapping are obtained from the middle layers of DL models
-    - whether an algorithm maps onto the brain primarily depends on its ability to predict words context
-    - average ROIs across many subjects
-    - test "compositionality" of features
-  - [Tracking the online construction of linguistic meaning through negation](https://www.biorxiv.org/content/10.1101/2022.10.14.512299.abstract) (zuanazzi, ..., remi-king, poeppel, 2022)
-  - [Blackbox meets blackbox: Representational Similarity and Stability Analysis of Neural Language Models and Brains](https://arxiv.org/abs/1906.01539) (abnar, … zuidema, emnlp workshop, 2019) - use RSA to compare representations from language models with fMRI data from Wehbe et al. 2014
-  - [Evidence of a predictive coding hierarchy in the human brain listening to speech](https://www.nature.com/articles/s41562-022-01516-2) (caucheteux, gramfot, & king, 2023)
-  
-- encoding models
-
-  - Seminal language-semantics fMRI study ([Huth…Gallant, 2016](https://www.nature.com/articles/nature17637)) - build mapping of semantic concepts across cortex using word vecs
-  - [(caucheteux, gramfort, & king, facebook, 2022)](https://www.nature.com/articles/s41598-022-20460-9) - predicts fMRI with gpt-2 on the narratives dataset
-    - GPT‐2 representations predict fMRI response + extent to which subjects understand corresponding narratives
-    - compared different encoding features: phoneme, word, gpt-2 layers, gpt-2 attention sizes
-    - brain mapping finding: auditory cortices integrate information over short time windows, and the fronto-parietal areas combine supra-lexical information over long time windows
-    - gpt2 models predict brain responses well [(caucheteux & king, 2021)](https://www.biorxiv.org/content/10.1101/2020.07.03.186288v2.abstract)
-    - [Disentangling syntax and semantics in the brain with deep networks](https://proceedings.mlr.press/v139/caucheteux21a.html) (caucheteux, gramfort, & king, 2021) - identify which brain networks are involved in syntax, semantics, compositionality
-  - [Incorporating Context into Language Encoding Models for fMRI](https://proceedings.neurips.cc/paper/2018/hash/f471223d1a1614b58a7dc45c9d01df19-Abstract.html) (jain & huth, 2018) - LSTMs improve encoding model
-    - [The neural architecture of language: Integrative modeling converges on predictive processing](https://www.pnas.org/doi/abs/10.1073/pnas.2105646118) (schrimpf, .., tenenbaum, fedorenko, 2021) - transformers better predict brain responses to natural language (and larger transformers predict better)
-    - [Predictive Coding or Just Feature Discovery? An Alternative Account of Why Language Models Fit Brain Data | Neurobiology of Language](https://direct.mit.edu/nol/article/doi/10.1162/nol_a_00087/113632/Predictive-Coding-or-Just-Feature-Discovery-An) (antonello & huth, 2022)
-      - LLM brain encoding performance correlates not only with their perplexity, but also generality (skill at many different tasks) and translation performance
-    - Prediction with RNN beats ngram models on individual-sentence fMRI prediction ([anderson…lalor, 2021](https://www.jneurosci.org/content/41/18/4100))
-    - Interpret transformer-based models and find top predictions in specific regions, like left middle temporal gyrus (LMTG) and left occipital complex (LOC) ([sun et al. 2021](https://ieeexplore.ieee.org/document/9223750/))
-- changing experimental design
-  - Semantic representations during language comprehension are affected by context (i.e. how langauge is presented) ([deniz...gallant, 2021](https://www.biorxiv.org/content/10.1101/2021.12.15.472839v1.full.pdf)) - stimuli with more context (stories, sentences) evoke better responses than stimuli with little context (Semantic Blocks, Single Words)
-  - Combining computational controls with natural text reveals new aspects of meaning composition ([toneva, mitchell, & wehbe, 2022](https://www.biorxiv.org/content/biorxiv/early/2022/08/09/2020.09.28.316935.full.pdf)) - study word interactions by using encoding vector emb(phrase) - emb(word1) - emb(word2)...
-  - Driving and suppressing the human language network using large language models ([tuckute, ..., shrimpf, kay, & fedorenko, 2023](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10120732/))
-    - use encoding models to sort thousands of sentences and then show them
-      - alternatively, use gradient-based modifications to transform a random sentence to elicit larger responses, but this works worse
-    - surprisal and well- formedness of linguistic input are key determinants of response strength in the language network
-  
-- decoding models
-  - Seeing Beyond the Brain: Conditional Diffusion Model with Sparse Masked Modeling for Vision Decoding ([chen et al. 2022](https://arxiv.org/pdf/2211.06956.pdf))
-
-  - [Semantic reconstruction of continuous language from non-invasive brain recordings](https://www.biorxiv.org/content/10.1101/2022.09.29.509744v1) (lebel, jain, & huth, 2022) - reconstruct continuous natural language from fMRI
-    - [Decoding speech from non-invasive brain recordings](https://arxiv.org/abs/2208.12266) (defossez, caucheteux, ..., remi-king, 2022)
-
-  - [Reconstructing Visual Experiences from Brain Activity Evoked by Natural Movies](https://www.sciencedirect.com/science/article/pii/S0960982211009377) (nishimoto, …, gallant, 2011)
-  
-  - Brain Decoding: Toward Real Time Reconstruction of Visual Perception ([Benchetrit...king, 2023](https://ai.meta.com/static-resource/image-decoding)) - use MEG to do visual reconstruction
 
 ## overview
 
