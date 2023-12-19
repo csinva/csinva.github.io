@@ -56,20 +56,6 @@ Evaluating interpretability can be very difficult (largely because it rarely mak
 - Towards A Rigorous Science of Interpretable Machine Learning ([doshi-velez & kim 2017](https://arxiv.org/pdf/1702.08608.pdf))
   - ![](../assets/interp_eval_table.png)
 
-- Human-centric
-
-  - An Evaluation of the Human-Interpretability of Explanation ([lage...been kim, gershman, doshi-velez 2019](https://arxiv.org/pdf/1902.00006.pdf)) - controlled human experiments as a few key aspects (explanation length, number of concepts, repeated terms) are varied
-
-  - Interpreting Interpretability: Understanding Data Scientists’ Use of Interpretability Tools for Machine Learning ([kaur, ..., caruana, wallach, vaughan, 2020](https://dl.acm.org/doi/pdf/10.1145/3313831.3376219))
-    - used contextual inquiry + survey of data scientists (SHAP & InterpretML GAMs)
-    - results indicate that data scientists over-trust and misuse interpretability tools 
-    - few of our participants were able to accurately describe the visualizations output by these tools
-
-  - Manipulating and Measuring Model Interpretability ([sangdeh ... vaughan, wallach 2019](https://arxiv.org/abs/1802.07810))
-    - participants who were shown a clear model with a small number of features were better able to simulate the model’s predictions
-    - no improvements in the degree to which participants followed the model’s predictions when it was beneficial to do so.
-    - increased transparency hampered people’s ability to detect when the model makes a sizable mistake and correct for it, seemingly due to information overload
-
 - Feature importance
 
   - Benchmarking Attribution Methods with Relative Feature Importance ([yang & kim 2019](https://arxiv.org/abs/1907.09701)) - train a classifier, add random stuff (like dogs) to the image, classifier should assign them little importance
@@ -100,8 +86,7 @@ Evaluating interpretability can be very difficult (largely because it rarely mak
   - [Towards a Framework for Validating Machine Learning Results in Medical Imaging](https://dl.acm.org/citation.cfm?id=3332193)
   - [An Integrative 3C evaluation framework for Explainable Artificial Intelligence](https://aisel.aisnet.org/amcis2019/ai_semantic_for_intelligent_info_systems/ai_semantic_for_intelligent_info_systems/10/)
 
-
-## basic failures
+## saliency maps
 
 - Sanity Checks for Saliency Maps ([adebayo et al. 2018](https://papers.nips.cc/paper/8160-sanity-checks-for-saliency-maps.pdf))
   - **Model Parameter Randomization Test** - attributions should be different for trained vs random model, but they aren't for many attribution methods
@@ -112,6 +97,22 @@ Evaluating interpretability can be very difficult (largely because it rarely mak
   - metrics: localizers (do they overlap with GT segs/bounding boxes), variation with model weight randomization, repeatable (i.e. same after retraining?), reproducibility (i.e. same after training different model?)
 - [Interpretable Deep Learning under Fire](https://arxiv.org/abs/1812.00891) (zhang et al. 2019)
 - Wittgenstein: "if a lion could speak, we could not understand him."
+- Evaluating the Utility of Model Explanations for Model Development ([im, andreas, & zhao, 2023](https://arxiv.org/abs/2312.06032))
+
+## human-centric
+
+- An Evaluation of the Human-Interpretability of Explanation ([lage...been kim, gershman, doshi-velez 2019](https://arxiv.org/pdf/1902.00006.pdf)) - controlled human experiments as a few key aspects (explanation length, number of concepts, repeated terms) are varied
+
+- Interpreting Interpretability: Understanding Data Scientists’ Use of Interpretability Tools for Machine Learning ([kaur, ..., caruana, wallach, vaughan, 2020](https://dl.acm.org/doi/pdf/10.1145/3313831.3376219))
+  - used contextual inquiry + survey of data scientists (SHAP & InterpretML GAMs)
+  - results indicate that data scientists over-trust and misuse interpretability tools 
+  - few of our participants were able to accurately describe the visualizations output by these tools
+
+- Manipulating and Measuring Model Interpretability ([sangdeh ... vaughan, wallach 2019](https://arxiv.org/abs/1802.07810))
+  - participants who were shown a clear model with a small number of features were better able to simulate the model’s predictions
+  - no improvements in the degree to which participants followed the model’s predictions when it was beneficial to do so.
+  - increased transparency hampered people’s ability to detect when the model makes a sizable mistake and correct for it, seemingly due to information overload
+- On Evaluating Explanation Utility for Human-AI Decision-Making in NLP ([chaleshtori, ghoshal, marasovic, 2023](https://openreview.net/pdf?id=8BR8EaWNTZ)) - different human evaluations of NLP explanations have succeeded in different ways (meta-analysis)
 
 ## adv. vulnerabilities
 
@@ -354,7 +355,8 @@ For an implementation of many of these models, see the python [imodels package](
   - note: scoring systems map points to a risk probability
 - [An Interpretable Model with Globally Consistent Explanations for Credit Risk](https://arxiv.org/abs/1811.12615) (chen et al. 2018) - a 2-layer linear additive model
 - [Fast Sparse Classification for Generalized Linear and Additive Models](https://arxiv.org/abs/2202.11389) (liu, ..., seltzer, rudin, 2022)
-- [Naive Feature Selection: Sparsity in Naive Bayes](http://proceedings.mlr.press/v108/askari20a.html) (askari,,,el ghaoui, 2020) - sparse naive bayes feature selection is on par with lasso but much faster
+- [Naive Feature Selection: Sparsity in Naive Bayes](http://proceedings.mlr.press/v108/askari20a.html) (askari...el ghaoui, 2020) - sparse naive bayes feature selection is on par with lasso but much faster
+- GroupFasterRisk: Fast and Interpretable Mortality Risk Scores for Critical Care Patients ([zhu...rudin, 2023](https://arxiv.org/pdf/2311.13015.pdf)) - builds linear integer model over bins of features. Group sparsity penalty penalizes number of unique features, whereas a secondary penalty controls the number of bins used per feature
 
 ### gams (generalized additive models)
 

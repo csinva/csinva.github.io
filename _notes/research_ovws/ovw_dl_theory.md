@@ -186,7 +186,6 @@ some more concrete questions:
 - [deep linear better than just linear](https://arxiv.org/pdf/1811.10495.pdf)
 - relation to bousquet - fitting random polynomials
 - [hierarchical sparse coding for images](https://pdfs.semanticscholar.org/9636/d8aedd476ef19c762923119750aec95bf8ca.pdf) (can’t just repeat sparse coding, need to include input again)
-- [random projections in the brain](https://www.biorxiv.org/content/biorxiv/early/2017/08/25/180471.full.pdf)….doing locality sensitive hashing (basically nearest neighbors)
 
 ## implicit dl + optimization
 

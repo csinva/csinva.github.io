@@ -6,7 +6,7 @@ category: blog
 
 *We taught models to write. Now can they follow instructions?*
 
-The recent success of large language models (LLMs), such as ChatGPT, has ushered in a variety of new of NLP usecases. These usecases bring new challenges regarding *model steering* and *alignment* (see this [nice review](https://arxiv.org/abs/2309.15025)). In this post, I'll discuss some of these challenges, established methods for addressing them, and a couple directions I feel are interesting in this area.
+The recent success of large language models (LLMs), such as ChatGPT, has ushered in a variety of new of NLP usecases. These usecases bring new challenges regarding *model steering* and *alignment* (see this [nice review](https://arxiv.org/abs/2309.15025)). In this post, I'll discuss some of these challenges, established methods for addressing them, and a couple directions I find interesting in this area.
 
 ## Definitions and existing methods
 
