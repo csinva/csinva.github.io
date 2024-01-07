@@ -898,7 +898,7 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 - tms
   - genetically-targeted tms: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4846560/
 - [ect - Electroconvulsive Therapy](https://www.psychiatry.org/patients-families/ect#:~:text=Learn%20about%20Electroconvulsive%2C%20therapy,the%20patient%20is%20under%20anesthesia.)  (sometimes also called electroshock therapy)
-  - [Identifying Recipients of Electroconvulsive Therapy: Data From Privately Insured Americans - PMC](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6248332/) - 100k ppl per year
+  - Identifying Recipients of Electroconvulsive Therapy: Data From Privately Insured Americans ([wilkinon...roenheck, 2018](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6248332/)) - 100k ppl per year
   - can differ in its application in three ways
     - electrode placement
       - used to be bilateral, now unilateral is more popular
@@ -913,6 +913,7 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
       - increased hippocampal neurogenesis and synaptogenesis
     - Electroconvulsive therapy: How modern techniques improve patient outcomes ([tirmizi, 2012)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4193538/pdf/nihms497537.pdf)
     - The neurobiological effects of electroconvulsive therapy studied through magnetic resonance – what have we learnt and where do we go? ([ousdal et al. 2022](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8630079/pdf/nihms-1710166.pdf))
+    - Clinical EEG slowing induced by electroconvulsive therapy is better described by increased frontal aperiodic activity ([mith...soltani, 2023](https://www.nature.com/articles/s41398-023-02634-9))
 - local microstimulation with invasive electrodes
 
 
@@ -1374,6 +1375,8 @@ the operations above allow for encoding many normal data structures into a singl
 
   - The DeepTune framework for modeling and characterizing neurons in visual cortex area V4 ([abbasi-asl, ..., yu, 2018](https://www.biorxiv.org/content/10.1101/465534v1.abstract))
 
+  - Compact deep neural network models of visual cortex ([cowley, stan, pillow, & smith, 2023](https://www.biorxiv.org/content/10.1101/2023.11.22.568315v1.abstract))
+  
 - XDream: Finding preferred stimuli for visual neurons using generative networks and gradient-free optimization ([2020](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007973))
 - CORNN: Convex optimization of recurrent neural networks for rapid inference of neural dynamics ([dinc...tanaka, 2023](https://arxiv.org/abs/2311.10200)) - mouse population control
   
@@ -1505,18 +1508,18 @@ the operations above allow for encoding many normal data structures into a singl
 
 - https://xcorr.net/2023/01/01/2022-in-review-neuroai-comes-of-age/
 
-- [Neuroscience-Inspired Artificial Intelligence](https://www.cell.com/neuron/pdf/S0896-6273(17)30509-3.pdf) (hassabis et al. 2017)
+- Neuroscience-Inspired Artificial Intelligence ([hassabis et al. 2017](https://www.cell.com/neuron/pdf/S0896-6273(17)30509-3.pdf))
 
-- [Toward next-generation artificial intelligence: catalyzing the NeuroAI revolution](https://arxiv.org/abs/2210.08340) (zador, ...bengio, dicarlo, lecun, ...sejnowski, tsao, 2022)
+- Toward next-generation artificial intelligence: catalyzing the NeuroAI revolution ([zador, ...bengio, dicarlo, lecun, ...sejnowski, tsao, 2022](https://arxiv.org/abs/2210.08340))
 
 - Computational language modeling and the promise of in silico experimentation ([jain, vo, wehbe, & huth, 2023](https://direct.mit.edu/nol/article/doi/10.1162/nol_a_00101/114613/Computational-language-modeling-and-the-promise-of)) - 4 experimental design examples
 
-  - compare concrete & abstract words [(binder et al. 2005](https://direct.mit.edu/jocn/article-abstract/17/6/905/4017/Distinct-Brain-Systems-for-Processing-Concrete-and))
+  - compare concrete & abstract words ([binder et al. 2005](https://direct.mit.edu/jocn/article-abstract/17/6/905/4017/Distinct-Brain-Systems-for-Processing-Concrete-and))
   - contrast-based study of composition in 2-word phrase ([Bemis & Pylkkanen, 2011](https://www.jneurosci.org/content/31/8/2801.short))
   - checks for effects between group and individual ([lerner et al. 2011](https://www.jneurosci.org/content/31/8/2906))
   - forgetting behavior using controlled manipulations ([chien & honey, 2020](https://www.sciencedirect.com/science/article/pii/S0896627320301367))
 
-- [Dissociating language and thought in large language models](https://arxiv.org/abs/2301.06627) (mahowald, ..., tenebaum, fedorenko, 2023)
+- Dissociating language and thought in large language models ([mahowald, ..., tenebaum, fedorenko, 2023](https://arxiv.org/abs/2301.06627))
 
   - 2 competences
 
@@ -1539,9 +1542,11 @@ the operations above allow for encoding many normal data structures into a singl
 
     - modularity, curated data / diverse objectives, new benchmarks
 
-- [Neurocompositional computing: From the Central Paradox of Cognition to a new generation of AI systems](https://ojs.aaai.org/index.php/aimagazine/article/view/18599) (smolensky, ..., gao, 2022)
+- Neurocompositional computing: From the Central Paradox of Cognition to a new generation of AI systems ([smolensky, ..., gao, 2022](https://ojs.aaai.org/index.php/aimagazine/article/view/18599))
 
 - [Towards NeuroAI: Introducing Neuronal Diversity into Artificial Neural Networks](https://www.semanticscholar.org/paper/Towards-NeuroAI%3A-Introducing-Neuronal-Diversity-Fan-Li/c0aae24f2e250c7d4b5aab608622dbb933f43a4d) (2023)
+
+- A rubric for human-like agents andNeuroAI ([momennejad, 2022](https://royalsocietypublishing.org/doi/epdf/10.1098/rstb.2021.0446)): 3 axes - human-like behavior, neural plausibility, & engineering
 
 - [Designing Ecosystems of Intelligence from First Principles](https://www.semanticscholar.org/paper/Designing-Ecosystems-of-Intelligence-from-First-Friston-Ramstead/98fcb39694d628788b555932f96134280f6a008e) (friston et al. 2022)
 
