@@ -21,7 +21,13 @@
         {% for collection in site.collections %}
         {% for doc in collection.docs %}
         {% if doc.category == "research" %}
+        <!-- bold if title is transformers or interpretability-->
+        {% if doc.title == "transformers" or doc.title == "interpretability" %}
+        <li><a href="{{ site.baseurl }}{{doc.url}}" style="font-size:medium; font-weight: bolder;"> {{ doc.title |
+                downcase }} ⭐ </a></li>
+        {% else %}
         <li><a href="{{ site.baseurl }}{{doc.url}}" style="font-size:medium"> {{ doc.title | downcase }} </a></li>
+        {% endif %}
         {% endif %}
         {% endfor %}
         {% endfor %}
@@ -44,9 +50,10 @@
                 titles </a> '22
         </li>
         <li><a href="https://bair.berkeley.edu/blog/2022/06/30/figs/" style="font-size:medium"> figs </a>(bairblog) '22
-        <li><a href="https://bair.berkeley.edu/blog/2022/02/02/imodels/" style="font-size:medium"> imodels
+        <li><a href="https://bair.berkeley.edu/blog/2022/02/02/imodels/" style="font-size:medium; font-weight: bolder;">
+                imodels
             </a>(bairblog)
-            '22
+            '22 ⭐
         <li><a href="https://bair.berkeley.edu/blog/2021/09/28/wavelet/" style="font-size:medium"> adaptive wavelet
                 distillation </a>(bairblog) '21
         <li><a href="{{ site.baseurl }}/blog/misc/20_ml_coding_tips" style="font-size:medium"> ml coding tips </a>'20
@@ -83,16 +90,16 @@
 <div class="coll3">
     <h3 align="center">slides</h3>
     <ul class="list-items">
-        <li><a href="{{ site.baseurl }}/pres/189/" style="font-size:medium"> intro ml - cs 189 </a>(<a
-                href="https://github.com/csinva/csinva.github.io/blob/master/pres/189/_slides_ml.md"><i
-                    class="fa fa-github fa-fw"></i></a>) uc berkeley
+        <li><a href="{{ site.baseurl }}/pres/189/" style="font-size:medium; font-weight: bolder;"> intro ml - cs 189
+            </a>(<a href="https://github.com/csinva/csinva.github.io/blob/master/pres/189/_slides_ml.md"><i
+                    class="fa fa-github fa-fw"></i></a>) uc berkeley ⭐
         </li>
         <li><a href="{{ site.baseurl }}/pres/188/" style="font-size:medium"> intro ai - cs 188 </a>(<a
                 href="https://github.com/csinva/csinva.github.io/blob/master/pres/188/_slides_ai.md"><i
                     class="fa fa-github fa-fw"></i></a>) uc berkeley
         </li>
         <li><a href="https://docs.google.com/presentation/d/1qL_cATZWiwOg4EjgrQ93m2zEpNMYYdIUUqqMO1REbIk/"
-                style="font-size:medium"> explanations from text data </a> '23</li>
+                style="font-size:medium; font-weight: bolder;"> explanations from text data </a> '23 ⭐</li>
         <li><a href="https://docs.google.com/presentation/d/101roPSL6AlSKf5iYcxnF9TCHOHZIBGODlQMCbEXnIeM/"
                 style="font-size:medium"> uniting trees and LLMs </a> '23</li>
         <li><a href="https://docs.google.com/presentation/d/1IyxCrB5Ol8RsvFBTTy4Y5DQH3TxS9Wgl7Pxt1thrBBY/"
