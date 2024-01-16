@@ -245,7 +245,7 @@ For an implementation of many of these models, see the python [imodels package](
     - optimal classification trees vs PECARN ([bertsimas et al. 2019](https://jamanetwork.com/journals/jamapediatrics/article-abstract/2733157))
   - Learning Optimal Fair Classification Trees ([jo et al. 2022](https://arxiv.org/pdf/2201.09932.pdf))
   - Better Short than Greedy: Interpretable Models through Optimal Rule Boosting ([boley, ..., webb, 2021](https://epubs.siam.org/doi/pdf/10.1137/1.9781611976700.40)) - find optimal tree **ensemble** (only works for very small data)
-  
+
 - connections with boosting
   - Fast Interpretable Greedy-Tree Sums (FIGS) ([tan et al. 2022](https://arxiv.org/abs/2201.11931)) - extend cart to learn concise tree ensembles 🌳 ➡️ 🌱+🌱
     - very nice results for generalization + disentanglement
@@ -260,7 +260,7 @@ For an implementation of many of these models, see the python [imodels package](
     - the weight is chosen as a hyperparameter
   - Additive groves ([sorokina, carauna, & riedewald 2007](https://link.springer.com/chapter/10.1007/978-3-540-74958-5_31)) - additive model of a few deep trees (gradually increase number and size of trees)
   - Random Planted Forest: a directly interpretable tree ensemble ([hiabu, mammen, & meyer, 2023](https://arxiv.org/abs/2012.14563)) - propose a planted tree very similar to FIGS, but use it in a randomized ensemble that restricts the number of interactions in a tree (similar to GAMs)
-  
+
 - bayesian trees
   - Bayesian Treed Models ([chipman et al. 2001](http://www-stat.wharton.upenn.edu/~edgeorge/Research_papers/treed-models.pdf)) - impose priors on tree parameters
     - treed models - fit a model (e.g. linear regression) in leaf nodes
@@ -272,7 +272,28 @@ For an implementation of many of these models, see the python [imodels package](
     - pre-specify number of trees in ensemble
     - MCMC step: add split, remove split, switch split
     - cycles through the trees one at a time
-  
+
+- tree regularization
+
+  - Hierarchical Shrinkage: improving accuracy and interpretability of tree-based methods ([agarwal et al. 2021](https://arxiv.org/abs/2202.00858)) - post-hoc shrinkage improves trees
+  - Hierarchical priors for Bayesian CART shrinkage ([chipman & mcculloch, 2000](https://link.springer.com/article/10.1023/A:1008980332240))
+  - [Connecting Interpretability and Robustness in Decision Trees through Separation](https://arxiv.org/abs/2102.07048) (moshkovitz et al. 2021)
+  - [Efficient Training of Robust Decision Trees Against Adversarial Examples](https://arxiv.org/abs/2012.10438)
+  - [Robust Decision Trees Against Adversarial Examples](https://arxiv.org/abs/1902.10660) (chen, ..., hsieh, 2019)
+    - optimize tree performance under worst-case input-feature perturbation
+
+- trees for density estimation
+
+  - in density estimation, we seek a tree $\hat{f}(\mathbf{x})$ approximating the underlying density function $f(\mathbf{x})$
+  - ideal loss function to minimize is $\mathcal{R}=\int(\hat{f}(\mathbf{x})-f(\mathbf{x}))^2 \mathrm{~d} \mathbf{x}$
+  - instead, we minimize approximation for a node t: $\mathcal{R}(t) = \frac{1}{n} \frac{n_t}{Vol_t}$
+    - $n$ is total points in dataset
+    - $n_t$ is points in node $t$
+    - $Vol_t$ is volume of the subset of the data that meets the criteria leading to that node (e.g. given 2 splits on different features, it would be area of a square bounded on one side by the split and the other side by the max
+
+  - Density Estimation Trees ([ram & gray, 2011](https://mlpack.org/papers/det.pdf))
+  - Sparse Density Trees and Lists: An Interpretable Alternative to High-Dimensional Histograms ([goh, semenova, & rudin, 2024](https://pubsonline.informs.org/doi/pdf/10.1287/ijds.2021.0001))
+
 - history
   - automatic interaction detection (AID) regression trees (Morgan & Sonquist, 1963)
   - THeta Automatic Interaction Detection (THAID) classification trees (Messenger & Mandell, 1972)
@@ -280,24 +301,17 @@ For an implementation of many of these models, see the python [imodels package](
   - CART: Classification And Regression Trees  ([Breiman et al. 1984](https://www.taylorfrancis.com/books/mono/10.1201/9781315139470/classification-regression-trees-leo-breiman-jerome-friedman-richard-olshen-charles-stone)) - splits on GINI
   - ID3 (Quinlan, 1986)
   - C4.5 (Quinlan, 1993) - splits on binary entropy instead of GINI
-  
+
 - open problems
   - ensemble methods
   - improvements in splitting criteria, missing variables
   - longitudinal data, survival curves
-  
+
 - misc
   - counterfactuals
     - [Counterfactual Explanations for Oblique Decision Trees: Exact, Efficient Algorithms](https://arxiv.org/abs/2103.01096) (2021)
     - [Optimal Counterfactual Explanations in Tree Ensembles](https://arxiv.org/abs/2106.06631)
     - [Desiderata for Interpretability: Explaining Decision Tree Predictions with Counterfactuals](https://ojs.aaai.org//index.php/AAAI/article/view/5154)
-  - regularization
-    - Hierarchical Shrinkage: improving accuracy and interpretability of tree-based methods ([agarwal et al. 2021](https://arxiv.org/abs/2202.00858)) - post-hoc shrinkage improves trees
-    - Hierarchical priors for Bayesian CART shrinkage ([chipman & mcculloch, 2000](https://link.springer.com/article/10.1023/A:1008980332240))
-    - [Connecting Interpretability and Robustness in Decision Trees through Separation](https://arxiv.org/abs/2102.07048) (moshkovitz et al. 2021)
-    - [Efficient Training of Robust Decision Trees Against Adversarial Examples](https://arxiv.org/abs/2012.10438)
-    - [Robust Decision Trees Against Adversarial Examples](https://arxiv.org/abs/1902.10660) (chen, ..., hsieh, 2019)
-      - optimize tree performance under worst-case input-feature perturbation
   - [Human knowledge models: Learning applied knowledge from the data | PLOS ONE](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0275814) (dudyrev...pianykh, 2022) - very concise logic model
   - On the price of explainability for some clustering problems ([laber et al. 2021](https://arxiv.org/abs/2101.01576)) - trees for clustering
   - Interpretable clustering: an optimization approach ([bertsimas…wilberg, 2020](https://link.springer.com/article/10.1007/s10994-020-05896-2))
@@ -307,7 +321,7 @@ For an implementation of many of these models, see the python [imodels package](
       1. feature-level: monotonicity, attribute costs, hierarchy/interaction, fairness, privacy
       2. structure-level - e.g. minimize #nodes
       3. instance-level - must (cannot) link, robust predictions
-  
+
 - Analysis of Boolean functions ([wiki](https://en.wikipedia.org/wiki/Analysis_of_Boolean_functions))
 
   - Every real-valued function $f:\{-1,1\}^n \rightarrow \mathbb{R}$ has a unique expansion as a multilinear polynomial:

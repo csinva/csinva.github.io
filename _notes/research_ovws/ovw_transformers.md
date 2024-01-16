@@ -794,9 +794,19 @@ mixture of experts models have become popular because of the need for (1) fast s
 
 ## embeddings
 
-- Instructor: One Embedder, Any Task: Instruction-Finetuned Text Embeddings ([su, ..., smith, zettlemoyer, yu, 2022](https://instructor-embedding.github.io)) - embedding is contextualized to each task
-- Text Embeddings Reveal (Almost) As Much As Text ([morris et al. 2023](https://arxiv.org/abs/2310.06816))
-- Uncovering Meanings of Embeddings via Partial Orthogonality ([jiang, aragam, & veitch, 2023](https://arxiv.org/abs/2310.17611))
+- introductory [blog post](https://osanseviero.github.io/hackerllama/blog/posts/sentence_embeddings/) on embeddings
+- top-performing models (also see [MTEB leaderboard](https://huggingface.co/spaces/mteb/leaderboard))
+  - E5-mistral-instruct: Improving Text Embeddings with Large Language Models ([wang...wei, 2023](https://arxiv.org/abs/2401.00368)) - finetune embeddings on synthetic data
+    - first prompt GPT-4 to brainstorm a list of potential retrieval tasks, and then generate *(query, positive, hard negative)* triplets for each task (GPT write the whole documents)
+
+  - Instructor: One Embedder, Any Task: Instruction-Finetuned Text Embeddings ([su, ..., smith, zettlemoyer, yu, 2022](https://instructor-embedding.github.io)) - embedding is contextualized to each task
+  - GTE: Towards General Text Embeddings with Multi-stage Contrastive Learning ([li...zhang, 2023](https://arxiv.org/abs/2308.03281))
+  - BGE ([github](https://github.com/FlagOpen/FlagEmbedding))
+
+- Probing embeddings
+  - Uncovering Meanings of Embeddings via Partial Orthogonality ([jiang, aragam, & veitch, 2023](https://arxiv.org/abs/2310.17611))
+  - Text Embeddings Reveal (Almost) As Much As Text ([morris et al. 2023](https://arxiv.org/abs/2310.06816))
+
 - Explaining embeddings
   - Computer-vision focused
     - Axiomatic Explanations for Visual Search, Retrieval, and Similarity Learning ([hamilton, lundberg…freeman, 2021](https://arxiv.org/abs/2103.00370)) - add in “second-order” methods that look at similarities between different image features in the 2 images being compared
