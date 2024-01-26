@@ -1088,7 +1088,7 @@ Good overview website: https://www.hd-computing.com
   1. **addition**: A + B = (0, 0, 2, 0, 2,-2, 0,  ....)
     - alternatively, could take mean
   1. **multiplication**: A * B =  (-1, -1, -1, 1, 1, -1, 1, ...) - this is **XOR**
-    - want this to be invertible, dsitribute over addition, preserve distance, and be dissimilar to the vectors being multiplied
+    - want this to be invertible, distribute over addition, preserve distance, and be dissimilar to the vectors being multiplied
     - number of ones after multiplication is the distance between the two original vectors
     - can represent a dissimilar set vector by using multiplication
   1. **permutation**: shuffles values (like bit-shift)
@@ -1147,7 +1147,7 @@ the operations above allow for encoding many normal data structures into a singl
     - random-indexing vector - fixed random from the beginning
     - semantic vector - starts at 0
   - as we traverse sequence, for each word, add random-indexing vector from words right before/after it to its semantic vector
-    - can also permute them before adding to preserve word order (e.g. Permutations as a means to encode order in word space ([kanerva, 2008](https://www.diva-portal.org/smash/record.jsf?pid=diva2:1042478)))
+    - can also permute them before adding to preserve word order (e.g. permutations as a means to encode order in word space ([kanerva, 2008](https://www.diva-portal.org/smash/record.jsf?pid=diva2:1042478)))
       - can instead use placeholder vector to help bring in word order (e.g. BEAGLE - [Jones & Mewhort, 2007](https://cseweb.ucsd.edu//~gary/PAPER-SUGGESTIONS/jones-mewhort-psych-rev-2007.pdf))
 - ex. learning rules by example
   - particular instance of a rule is a rule (e.g mother-son-baby $\to$ grandmother)
@@ -1159,7 +1159,7 @@ the operations above allow for encoding many normal data structures into a singl
   - query: "Dollar of Mexico"? = DOLLAR * US * MEXICO = PESO
 - ex. [text classification](https://iis-people.ee.ethz.ch/~arahimi/papers/DATE16_HD.pdf) (najafabadi et al. 2016)
 - ex. language classification - "Language Recognition using Random Indexing" ([joshi et al. 2015](https://arxiv.org/abs/1412.7026))
-  - scalable, easily us any-order ngrams
+  - scalable, easily use any-order ngrams
   - data
     - train: given million bytes of text per language (in the same alphabet)
     - test: new sentences for each language
@@ -1232,19 +1232,12 @@ the operations above allow for encoding many normal data structures into a singl
     - related to TPR by paul smolensky
   - ross gayler: multiply-add-permute arch
   - gayler & levi: vector-symbolic arch
-  - gallant & okaywe: matrix binding with additive termps
+  - gallant & okaywe: matrix binding with additive terms
   - fourier holographic reduced reprsentations (FHRR; Plate)
   - ...many more names
 - connecting to DNNs
   - Attention Approximates Sparse Distributed Memory https://arxiv.org/pdf/2111.05498.pdf
-
-
-
-
-## visual sampling
-
-- Emergence of foveal image sampling from learning to attend in visual scenes ([cheung, weiss, & olshausen, 2017](https://arxiv.org/abs/1611.09430)) - using neural attention model, learn a retinal sampling lattice
-  - can figure out what parts of the input the model focuses on
+  - The Kanerva Machine: A Generative Distributed Memory ([wu...lillicrap, 2018](https://arxiv.org/abs/1804.01756))
 
 
 
@@ -1297,6 +1290,7 @@ the operations above allow for encoding many normal data structures into a singl
 
 - binary synapses and learns by modeling the growth of new synapses and the decay of unused synapses
 - separates aspects of brains and neurons that are essential for intelligence from those that depend on brain implementation
+- terminology changed from HTM to Thousand Brains Theory
 
 ### necortical structure
 
@@ -1314,6 +1308,7 @@ the operations above allow for encoding many normal data structures into a singl
 - hierarchy
 - **sparse distributed representations (SDR)** - vectors with thousands of bits, mostly 0s
   - bits of representation encode semantic properties
+  - ex. k-winner-take-all layer (needs boosting term to favor units that are activated less frequently so that a few neurons don't take all the info)
 - inputs
   - data from the senses
   - copy of the motor commands
@@ -1333,14 +1328,15 @@ the operations above allow for encoding many normal data structures into a singl
 - on-line learning
   - prediction is compared to what actually happens and forms the basis of learning
   - minimize the error of predictions
-
+- performance works better on chips like FPGAs compared to GPUs
 
 ### papers
 
-- A thousand brains: toward biologically constrained AI (hole & ahmad, 2021)
-  - 
-
-- "A Theory of How Columns in the Neocortex Enable Learning the Structure of the World"
+- A thousand brains: toward biologically constrained AI ([hole & ahmad, 2021](https://link.springer.com/article/10.1007/s42452-021-04715-0))
+- A Theory of How Columns in the Neocortex Enable Learning the Structure of the World ([hawkins et al. 2017](https://www.frontiersin.org/articles/10.3389/fncir.2017.00081/full))
+  - single column - integrate touches over time - represent objects properly
+  - multiple columns - integrate spatial inputs - make things fast
+    - like different sensory patches (e.g. different fingers or different rods on the retina) are all simultaneously voting
   - network model that learns the structure of objects through movement
   - object recognition
     - over time individual columns integrate changing inputs to recognize complete objects
@@ -1348,12 +1344,14 @@ the operations above allow for encoding many normal data structures into a singl
   - within each column, neocortex is calculating a location representation
     - locations relative to each other = **allocentric**
   - much more motion involved
-  - multiple columns - integrate spatial inputs - make things fast
-  - single column - integrate touches over time - represent objects properly
 - "Why Neurons Have Thousands of Synapses, A Theory of Sequence Memory in Neocortex"
   - learning and recalling sequences of patterns
   - neuron with lots of synapses can learn transitions of patterns
   - network of these can form robust memory
+- How Can We Be So Dense? The Benefits of Using Highly Sparse Representations ([ahmda & scheinkman, 2019](https://arxiv.org/abs/1903.11257))
+  - high-dim sparse representations are more robust
+  - info content of sparse vectors increases with dimensionality, without introducing additional non-zeros
+
 
 ## forgetting
 - Continual Lifelong Learning with Neural Networks: A Review ([parisi...kanan, wermter, 2019](https://arxiv.org/pdf/1802.07569.pdf))
@@ -1463,6 +1461,10 @@ the operations above allow for encoding many normal data structures into a singl
 - can look for grid cells signature in fmri: https://www.nature.com/articles/nature08704
 - other places with grid cell-like behavior
 - eye movement task
+- some evidence for grid cells in cortex
+  - Constantinescu, A., O'Reilly, J., Behrens, T. (2016) Organizing Conceptual Knowledge in Humans with a Gridlike Code. Science
+  - Doeller, C. F., Barry, C., \& Burgess, N. (2010). Evidence for grid cells in a human memory network. Nature
+
 - some evidence for "time cells" like place cells for time
 - sound frequency task https://www.nature.com/articles/nature21692
 - 2d "bird space" [task](https://science.sciencemag.org/content/352/6292/1464.full?ijkey=sXaWNaNjkIcik&keytype=ref&siteid=sci)
@@ -1569,7 +1571,8 @@ the operations above allow for encoding many normal data structures into a singl
   - aligning with experimental/psychological data
     - [How Well Do Unsupervised Learning Algorithms Model Human Real-time and Life-long Learning? | OpenReview](https://openreview.net/forum?id=c0l2YolqD2T) (zhuang...dicarlo, yamins, 2022)
 - Biologically-inspired DNNs (not data-driven)
-
+  - Emergence of foveal image sampling from learning to attend in visual scenes ([cheung, weiss, & olshausen, 2017](https://arxiv.org/abs/1611.09430)) - using neural attention model, learn a retinal sampling lattice
+      - can figure out what parts of the input the model focuses on
   - [Simulating a Primary Visual Cortex at the Front of CNNs Improves Robustness to Image Perturbations](https://proceedings.neurips.cc/paper/2020/hash/98b17f068d5d9b7668e19fb8ae470841-Abstract.html) (dapello…cox, dicarlo, 2020) - biologically inspired early neural-network layers (gabors etc.) improve robustness of CNNs
       - [Brain-Like Object Recognition with High-Performing Shallow Recurrent ANNs](https://proceedings.neurips.cc/paper/2019/hash/7813d1590d28a7dd372ad54b5d29d033-Abstract.html) (kubilius, schrimpt, kar, …, yamins, dicarlo, 2019)
       - [Combining Different V1 Brain Model Variants to Improve Robustness to Image Corruptions in CNNs](https://arxiv.org/abs/2110.10645) (baidya, dapello, dicarlo, & marques, 2021)
@@ -1577,6 +1580,7 @@ the operations above allow for encoding many normal data structures into a singl
   - [Biologically inspired protection of deep networks from adversarial attacks](https://arxiv.org/abs/1703.09202) (nayebi & ganguli, 2017) - change training to get highly nonlinear, saturated neural nets
   - [Biological constraints on neural network models of cognitive function](https://www.nature.com/articles/s41583-021-00473-5) (pulvermuller, …, wennekers, 2021) - review on biological constraints
   - [Disentangling with Biological Constraints: A Theory of Functional Cell Types](https://arxiv.org/abs/2210.01768)
+  
 
 ## overview
 
