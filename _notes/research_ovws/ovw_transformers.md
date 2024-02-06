@@ -506,20 +506,22 @@ See related papers in the [📌 interpretability](https://csinva.io/notes/resear
   - can use this direction to alter model behavior
 - Overcoming Catastrophic Forgetting in Zero-Shot Cross-Lingual Generation ([vu....constant, 2022](https://arxiv.org/abs/2205.12647)) - train with prompts of some (language translation, task) pairs and show that they can generalize to new (language, task) pairs
 
-- instruction tuning / rlhf
+**instruction tuning / rlhf**
 
-  - Teach Llamas to Talk: Recent Progress in Instruction Tuning ([gao blogpost 2023](https://gaotianyu.xyz/blog/2023/11/30/instruction-tuning/))
+- Teach Llamas to Talk: Recent Progress in Instruction Tuning ([gao blogpost 2023](https://gaotianyu.xyz/blog/2023/11/30/instruction-tuning/))
 
-  - Tell Your Model Where to Attend: Post-hoc Attention Steering for LLMs ([zhang et al. 2023](https://arxiv.org/abs/2311.02262))
-  - The Truth is in There: Improving Reasoning in Language Models with Layer-Selective Rank Reduction ([sharma...misra, 2023](https://arxiv.org/abs/2312.13558))
-  - human feedback
-    - Learning to summarize with human feedback ([OpenAI, 2020](https://proceedings.neurips.cc/paper/2020/hash/1f89885d556929e98d3ef9b86448f951-Abstract.html))
-    - Can language models learn from explanations in context? ([lampinen et al. 2022](https://arxiv.org/abs/2204.02329))
-    - natural language feedback ([scheurer et al. 2022](https://arxiv.org/abs/2204.14146)) - makes training more efficient
-      - Training Language Models with Language Feedback at Scale ([scheurer et al. 2023](https://arxiv.org/pdf/2303.16755.pdf))
-    - Explanation-based Finetuning Makes Models More Robust to Spurious Cues ([ludan...callison-burch, 2023](https://arxiv.org/abs/2305.04990))
-      - Post hoc explanations of language models can improve language models ([krishna...singh, lakkaraju, 2023](https://arxiv.org/abs/2305.11426)) - use rationales as corrective signals for LLMs
-  - RLAIF: Scaling Reinforcement Learning from Human Feedback with AI Feedback ([lee...rastogi, 2023](https://arxiv.org/abs/2309.00267))
+- Tell Your Model Where to Attend: Post-hoc Attention Steering for LLMs ([zhang et al. 2023](https://arxiv.org/abs/2311.02262))
+- The Truth is in There: Improving Reasoning in Language Models with Layer-Selective Rank Reduction ([sharma...misra, 2023](https://arxiv.org/abs/2312.13558))
+- human feedback
+  - Learning to summarize with human feedback ([OpenAI, 2020](https://proceedings.neurips.cc/paper/2020/hash/1f89885d556929e98d3ef9b86448f951-Abstract.html))
+  - Can language models learn from explanations in context? ([lampinen et al. 2022](https://arxiv.org/abs/2204.02329))
+  - natural language feedback ([scheurer et al. 2022](https://arxiv.org/abs/2204.14146)) - makes training more efficient
+    - Training Language Models with Language Feedback at Scale ([scheurer et al. 2023](https://arxiv.org/pdf/2303.16755.pdf))
+  - Explanation-based Finetuning Makes Models More Robust to Spurious Cues ([ludan...callison-burch, 2023](https://arxiv.org/abs/2305.04990))
+    - Post hoc explanations of language models can improve language models ([krishna...singh, lakkaraju, 2023](https://arxiv.org/abs/2305.11426)) - use rationales as corrective signals for LLMs
+- RLAIF: Scaling Reinforcement Learning from Human Feedback with AI Feedback ([lee...rastogi, 2023](https://arxiv.org/abs/2309.00267))
+  - Tuning Language Models by Proxy ([liu...choi, smith, 2024](https://arxiv.org/abs/2401.08565))
+  - Self-Rewarding Language Models ([yuan...weston, 2024](https://arxiv.org/abs/2401.10020))
 
 ## editing
 
@@ -673,7 +675,6 @@ See related papers in the [📌 interpretability](https://csinva.io/notes/resear
 - TalkToModel: Understanding Machine Learning Models With Open Ended Dialogues ([slack...lakkaraju, sameer singh, 2022](https://arxiv.org/abs/2207.04154)) - natural language interface to query model (by converting to commands such as filtering the data / calculating importance)
 
   - Rethinking Explainability as a Dialogue: A Practitioner's Perspective ([lakkaraju, slack, ..., sameer singh, 2022](https://arxiv.org/abs/2202.01875)) - interviews with high-stakes users suggest they would like to be able to interact with systems via dialog
-
 - AdaTest: Adaptive Testing and Debugging of NLP Models ([ribeiro & lundberg, 2022](https://aclanthology.org/2022.acl-long.230/))
 
   - goal: easily specify, discover, and fix undesirable behaviors in an NLP model
@@ -687,13 +688,27 @@ See related papers in the [📌 interpretability](https://csinva.io/notes/resear
 
   - Checklist --Beyond Accuracy: Behavioral Testing of NLP models with CheckList ([ribeiro...sameer singh, 2020](https://arxiv.org/abs/2005.04118))
     - matrix of general linguistic capabilities + test types
-
 - Fixing Model Bugs with Natural Language Patches ([murty, manning, lundberg, & ribeiro 2022](https://openreview.net/forum?id=B6wzhbPhsZ9))
 
   - specify patches with natural language rather than hard rule, allowing them to better handle text
   - finetune a model to combine original model output with output from a patch-conditioned interpreter head
+- interpretable models
+  - Aug-imodels: Augmenting Interpretable Models with LLMs during Training ([singh, askari, caruana, & gao, 2023](https://arxiv.org/abs/2209.11799))
+  - Infini-gram: Scaling Unbounded n-gram Language Models to a Trillion Tokens ([liu, min, zettlemoyer, choic, & Hajishirzi, 2024](https://arxiv.org/pdf/2401.17377.pdf))
+    - motivation: hard to scale ngram models to large datasets and large data lengths
+    
+    - soln 1: backoff ([Jurafsky & Martin, 2000](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=uZg9l58AAAAJ&citation_for_view=uZg9l58AAAAJ:2osOgNQ5qMEC)) - select *n* based on the longest suffix of the prompt that has a non-zero count in the corpus
+      - counts of the next token yield the prob. of the next token
+      - Katz backoff ([Katz, 1987](https://ieeexplore.ieee.org/abstract/document/1165125)) discounts probs to yield valid prob. distr.
 
-- Aug-imodels: Augmenting Interpretable Models with LLMs during Training ([singh, askari, caruana, & gao, 2023](https://arxiv.org/abs/2209.11799))
+    - soln 2: represent prob. table in [suffix array](https://en.wikipedia.org/wiki/Suffix_array) to make things very fast
+      - suffix array stores address to each location in the training data alphabetically sorted
+        - roughly the same size
+      - this makes it fast to search for instances of an ngram (and also for what precedes/follows it)
+    
+    - results show that infinigram can considerably improve perplexities when it is linearly combined with the logits from LLMs (experiments up to llama-2 70B)
+
+
 
 ## architecture/attention variants
 
@@ -816,6 +831,7 @@ mixture of experts models have become popular because of the need for (1) fast s
 
 ## embeddings / retrieval-augmented generation
 
+- detailed overview of info retrieval ([bruch, 2024](https://arxiv.org/pdf/2401.09350.pdf))
 - introductory [blog post](https://osanseviero.github.io/hackerllama/blog/posts/sentence_embeddings/) on embeddings
 - basic training pipeline
   1. standard self-supervised pre-training, e.g. BERT
@@ -839,10 +855,8 @@ mixture of experts models have become popular because of the need for (1) fast s
       - Followed by supervised contrastive fine-tuning on datasets like MSMarco, NQ, NLI, HotpotQA, Fever, WikiAnswers, etc.
 
     - MEDI (from Instructor paper): combines 300 datasets from Super- NaturalInstructions with 30 datasets from existing collections designed for embedding training
-
 - customization
   - e.g. add prompt or prefixes like *search query*, *search document*, *classification*, *clustering* before embedding so model knows how to match things
-
 - top-performing models
   - E5-mistral-instruct: Improving Text Embeddings with Large Language Models ([wang...wei, 2023](https://arxiv.org/abs/2401.00368)) - finetune embeddings on synthetic data
     - first prompt GPT-4 to brainstorm a list of potential retrieval tasks, and then generate *(query, positive, hard negative)* triplets for each task (GPT write the whole documents)
@@ -854,9 +868,21 @@ mixture of experts models have become popular because of the need for (1) fast s
   - BGE ([github](https://github.com/FlagOpen/FlagEmbedding))
   - Nomic Embed ([nussbaum, morris, duderstadt, & mulyar, 2024](https://static.nomic.ai/reports/2024_Nomic_Embed_Text_Technical_Report.pdf)), ([blog post](https://blog.nomic.ai/posts/nomic-embed-text-v1))
   - Older: [SBERT](https://arxiv.org/abs/1908.10084), [SIMCSE](https://arxiv.org/abs/2104.08821), [SGPT](https://arxiv.org/abs/2202.08904)
+- embedding approaches [overview](https://github.com/caiyinqiong/Semantic-Retrieval-Models)
+  - 3 levels of interaction
+    - bi-encoder: separately encode query & doc
+    - cross-encoder: encode query and doc together
+    - late-interaction encoder: hybrid, separately encode, but then learn some params on how to compute similarity between them (e.g. ColBERT)
+
+  - expansion & reweighting (e.g. doc2query)
+  - sparse representation learning (e.g. UHD-BERT ([jang...seo, 2021](https://arxiv.org/abs/2104.07198)))
+  - joint learning with index
+  - prior work: query expansion, term dependency model (e.g. tf-idf), topic model, translation model
+
 - embedding search monograph ([bruch, 2024](https://arxiv.org/pdf/2401.09350.pdf))
 - Active Retrieval Augmented Generation ([jiang...neubig, 2023](https://arxiv.org/abs/2305.06983)) - introduce FLARE, a method that iteratively uses a prediction of the upcoming sentence to anticipate future content, which is then utilized as a query to retrieve relevant documents to regenerate the sentence if it contains low-confidence tokens
 - Matryoshka Representation Learning ([kusupati...kakade, jain, & farhadi, 2022](https://arxiv.org/abs/2205.13147)) - in training given an embedding of full dimensionality M (e.g. 2048), learn N different distance functions for each prefix of the embedding (e.g. l2_norm(embedding[:32]), l2_norm(embedding[:64]), l2_norm(embedding[:128]), etc). 
+- Hypothetical Document Embeddings ([gao…callan, 2022](https://arxiv.org/pdf/2212.10496.pdf)) - generate hypothetical document from query + instruction using GPT and find match for that doc
 - Probing embeddings
   - Uncovering Meanings of Embeddings via Partial Orthogonality ([jiang, aragam, & veitch, 2023](https://arxiv.org/abs/2310.17611))
     - The Linear Representation Hypothesis and the Geometry of Large Language Models ([park...veitch, 2023](https://arxiv.org/abs/2311.03658)) - concepts can be decoded linearly from representations
