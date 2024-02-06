@@ -637,8 +637,14 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 
   - TPR of a structure is the sum of the TPR of its constituents
     - tensor product operation allows constituents to be uniquely identified, even after the sum (if roles are linearly independent)
-
+- [TPR intro blog post](https://csinva.io/blog/misc/24_tensor_product_repr)
 - [TPR slides](https://www.mit.edu/~jda/teaching/6.884/slides/oct_02.pdf)
+- RNNs Implicitly Implement Tensor Product Representations ([mccoy...smolensky, 2019](https://arxiv.org/pdf/1812.08718.pdf))
+  - introduce TP Decomposition Networks (TPDNs), which use TPRs to approximate existing vector representations
+    - assumes a particular hypothesis for the relevant set of roles (e.g., sequence indexes or structural positions in a parse tree)
+
+  - TPDNs can successfully approximate linear and tree-based RNN autoencoder representations
+
 
 ## synaptic plasticity, hebb's rule, and statistical learning
 

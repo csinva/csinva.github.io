@@ -54,7 +54,7 @@ Each tensor product results in a matrix for each pair, representing a 2D plane i
 The composite tensor for the sentence "Cat chases mouse" is the sum of these individual tensor products.
 Since the roles are orthogonal, it's easy to see that the unique contribution of each role-filler pair is preserved without interference (in different rows).
 
-This example simplifies many aspects for clarity. In practice, the dimensions for roles and fillers might be much larger to capture more nuanced semantic features, and the mathematical operations might involve more sophisticated mechanisms to encode, manipulate, and decode the structured representations effectively.
+This example simplifies many aspects for clarity. In practice, the dimensions for roles and fillers might be much larger to capture more nuanced semantic features, and the mathematical operations might involve more sophisticated mechanisms to encode, manipulate, and decode the structured representations effectively. See another [example here](https://rtmccoy.com/tpdn/tpr_demo.html) (it's focused on applying TPRs to RNN representations).
 
 **Notes**
 - Learning in TPRs involves optimizing the filler and role vectors to optimize the reconstruction of input structures from their TPRs, achievable through gradient descent or other techniques
