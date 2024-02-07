@@ -767,7 +767,7 @@ mixture of experts models have become popular because of the need for (1) fast s
     - OPT-MOE ([artetxe et al. 2021](https://arxiv.org/abs/2112.10684))
     - AutoMoE ([jawahar, mukherjee, liu...gao, 2022](https://arxiv.org/abs/2210.07535))
     - [Interpretable entity representations through large-scale typing](https://arxiv.org/abs/2005.00147) (onoe & durrett, 2020) - embedding is interpretable predictions for different entities/
-- [Towards Understanding Mixture of Experts in Deep Learning](https://arxiv.org/abs/2208.02813) (chen...gu, li, 2022)
+- Towards Understanding Mixture of Experts in Deep Learning ([chen...gu, li, 2022](https://arxiv.org/abs/2208.02813))
 - model merging (some of these are non-transformer papers) = combine different models that have the same architecture
   - model soups ([wortsman...schmidt, 20221](https://proceedings.mlr.press/v162/wortsman22a.html)) - average weights of finetuned models
     - snapshot ensembles - average different checkpoints during training ([huang et al. 2017](https://arxiv.org/abs/1704.00109))

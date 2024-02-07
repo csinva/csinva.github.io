@@ -634,6 +634,7 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - TPR is built by summing the outer product between roles and fillers:
 
   - ![tpr](../assets/tpr.png)
+    - can optionally flatten the final TPR as is done in [mccoy...smolensky, 2019](https://arxiv.org/pdf/1812.08718.pdf) if we want to compare it to a vector or an embedding
 
   - TPR of a structure is the sum of the TPR of its constituents
     - tensor product operation allows constituents to be uniquely identified, even after the sum (if roles are linearly independent)
@@ -645,6 +646,9 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 
   - TPDNs can successfully approximate linear and tree-based RNN autoencoder representations
 
+  - evaluate TPDN based on how well the decoder applied to the TPDN representation produces the same output as the original RNN
+
+- Discovering the Compositional Structure of Vector Representations with Role Learning Networks ([soulos, mccoy, linzen, & smolensky, 2019](https://arxiv.org/pdf/1910.09113.pdf)) - combine learned roles/fillers with learned attention-style mechanism and compare to RNN embeddings
 
 ## synaptic plasticity, hebb's rule, and statistical learning
 
