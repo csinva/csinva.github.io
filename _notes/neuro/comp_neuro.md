@@ -647,8 +647,9 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - TPDNs can successfully approximate linear and tree-based RNN autoencoder representations
 
   - evaluate TPDN based on how well the decoder applied to the TPDN representation produces the same output as the original RNN
+- Discovering the Compositional Structure of Vector Representations with Role Learning Networks ([soulos, mccoy, linzen, & smolensky, 2019](https://arxiv.org/pdf/1910.09113.pdf)) - extend DISCOVER to learned roles with an LSTM
+  - role vector is regularized to be one-hot
 
-- Discovering the Compositional Structure of Vector Representations with Role Learning Networks ([soulos, mccoy, linzen, & smolensky, 2019](https://arxiv.org/pdf/1910.09113.pdf)) - combine learned roles/fillers with learned attention-style mechanism and compare to RNN embeddings
 
 ## synaptic plasticity, hebb's rule, and statistical learning
 
