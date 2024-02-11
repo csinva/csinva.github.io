@@ -49,6 +49,11 @@ subtitle: Some notes on uncertainty in machine learning, particularly deep learn
 - [To Trust Or Not To Trust A Classifier](http://papers.nips.cc/paper/7798-to-trust-or-not-to-trust-a-classifier.pdf) (jiang, kim et al 2018) - find a trusted region of points based on nearest neighbor density (in some embedding space)
   - trust score uses density over some set of nearest neighbors
   - do clustering for each class - trust score = distance to once class's cluster vs the other classes
+- Understanding Failures in Out-of-Distribution Detection with Deep Generative Models ([zhang...ranganath, 2021](https://arxiv.org/pdf/2107.06908.pdf)) - explicit likelihood DGMs (e.g. autoregressive models, normalizing flows) have been shown to assign higher likelihoods to unrelated inputs than even those from the training distribution
+  - OOD detection has been defined as the task of identify- ing “whether a test example is from a different distr. from the training data” ([Hendrycks & Gimpel, 2017](https://arxiv.org/abs/1610.02136))
+  - without any constraints on out-distributions, the task of OOD detection is impossible
+  - ![ood_distr](../assets/ood_distr.png)
+
 
 ## bayesian approaches
 
@@ -123,11 +128,3 @@ subtitle: Some notes on uncertainty in machine learning, particularly deep learn
 - [Uncertainty Sets for Image Classifiers using Conformal Prediction](https://arxiv.org/abs/2009.14193) (angelopoulos, bates, malik, jordan, 2021)
   - Image-to-Image Regression with Distribution-Free Uncertainty Quantification and Applications in Imaging ([Angelopoulos, ...jordan, malik, upadhyayula, roman, '22](https://arxiv.org/pdf/2202.05265.pdf))
     - pixel-level uncertainties
-
-
-
-# large language models (llms)
-
-- Teaching Models to Express Their Uncertainty in Words ([Lin et al., 2022](https://arxiv.org/abs/2205.14334)) - GPT3 can  generate both an answer and a level of confidence (e.g. "90% confidence")
-- Can LLMs Express Their Uncertainty? An Empirical Evaluation of Confidence Elicitation in LLMs ([xiong et al. 2023](https://arxiv.org/abs/2306.13063))
-- Decomposing Uncertainty for Large Language Models through Input Clarification Ensembling ([hou...zhang, 2023](https://arxiv.org/pdf/2311.08718.pdf))

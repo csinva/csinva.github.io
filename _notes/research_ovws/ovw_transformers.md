@@ -148,16 +148,16 @@ See related papers in the [📌 interpretability](https://csinva.io/notes/resear
 
   - Voicebox: Text-Guided Multilingual Universal Speech Generation at Scale ([meta, 2023](https://research.facebook.com/publications/voicebox-text-guided-multilingual-universal-speech-generation-at-scale/))
 
-## external knowledge / tool use / grounding
+## retrieval-augmented-generation (RAG) + tool use
 
 - private
   - https://www.perplexity.ai/ - nice demo adding citation to each fact
   - https://you.com
   - [langchain](https://github.com/hwchase17/langchain) library
   - https://www.fixie.ai/ - provide tools for wrapping APIs in LLM + interaction through router (also default modules for stateful storage, user identity, etc.)
-- Augmented Language Models: a Survey ([meta, 2023](https://arxiv.org/abs/2302.07842)) -- 3 categories: reasoning, tools, action
+- Augmented Language Models: a Survey ([meta, 2023](https://arxiv.org/abs/2302.07842)) - 3 categories: reasoning, tools, action
   - PAL: Program-aided Language Models ([gao...neubig, 2023](https://arxiv.org/abs/2211.10435))
-- Demonstrate-Search-Predict: Composing retrieval and language models for knowledge-intensive NLP ([khattab, ..., liang, potts, & zaharia, 2022](https://arxiv.org/abs/2212.14024)) - use high-level programs to use multiple steps between retrieving and reading
+  - Demonstrate-Search-Predict: Composing retrieval and language models for knowledge-intensive NLP ([khattab, ..., liang, potts, & zaharia, 2022](https://arxiv.org/abs/2212.14024)) - use high-level programs to use multiple steps between retrieving and reading
 - Infer–Retrieve–Rank: In-Context Learning for Extreme Multi-Label Classification ([D’Oosterlinck, ..., potts, 2024](https://arxiv.org/pdf/2401.12178.pdf))
   1. Infer: an LM processes the input document and guesses a set of applicable terms 
   2. Retrieve: a retriever relates each predicted term to the actual label space
@@ -172,34 +172,34 @@ See related papers in the [📌 interpretability](https://csinva.io/notes/resear
     - self-supervised loss determines which calls help with future-token prediction
 
   - Atlas: Few-shot Learning with Retrieval Augmented Language Models ([meta, 2022](https://arxiv.org/abs/2208.03299))
+
+- Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection ([asai...hajishirzi, 2023](https://arxiv.org/abs/2310.11511)) -  train an LM that adaptively retrieves passages on-demand, and generates and reflects on retrieved passages and its own generations using special tokens, called reflection token
+- Active RAG ([jiang...neubig, 2023](https://arxiv.org/abs/2305.06983)) -  propose FLARE, which iteratively uses a prediction of the upcoming sentence to anticipate future content, which is then utilized as a query to retrieve relevant documents to regenerate the sentence if it contains low-confidence tokens
 - retreival-augmented in-context learning (put retrieved info into context, or something very similar)
   - REALM ([guu, ..., chang, 2020](https://arxiv.org/abs/2002.08909)) - retrieves document chunks from corpus and adds them to context, for open-domain QA
   - RETRO ([deepmind, 2022](https://arxiv.org/abs/2112.04426)) - nearest neighbors to model's input are retrieved, encoded, and conditioned on with chunked cross-attention 
   - Decomposed prompting ([khot et al., 2022](https://arxiv.org/pdf/2210.02406.pdf)) - decompose tasks via prompting which are delegated to a shared library of prompting-based LLMs dedicated to these sub-tasks
   - LLM-Augmenter ([peng, galley...gao, 2023](https://arxiv.org/abs/2302.12813)) -  (1) consolidates evidence from external knowledge for the LLM to generate responses grounded in evidence, and (2) revising LLM’s (candidate) responses using automated feedback
-  - Knowledgeable Prompt-tuning ([Hu et al. 2021](https://arxiv.org/abs/2108.02035)) -- add knowledge-base info into the prompt search
-- knowledge base triplets
-  - Relational Memory-Augmented Language Models ([liu, yogatama, & blunsom, 2022](https://direct.mit.edu/tacl/article/doi/10.1162/tacl_a_00476/110997/Relational-Memory-Augmented-Language-Models)) - integrate knowledge base triplets with LLM
-  - DRAGON: Deep Bidirectional Language-Knowledge Graph Pretraining ([yasanaga, ..., manning, liang, leskovec, 2022](https://arxiv.org/abs/2210.09338))
-- webgpt ([nakano, ..., schulman, 2022, OpenAI](https://arxiv.org/abs/2112.09332)) - allows google search to add world info
-  - Internet-augmented language models [Lazaridou et al., 2022](https://arxiv.org/pdf/2203.05115.pdf)
-  - GopherCite ([menick, ..., mcaleese, 2022, Deepmind](https://arxiv.org/abs/2203.11147)) - generate answers + link/relevant snippet when making predictions (trained with RL from human preferences )
-  - LaMDA ([thoppilan, ..., quoc le, 2022, google](https://arxiv.org/abs/2201.08239)) - allows google search to add world info (in a dialog model)
-    - this was the model that sparked the controversy about consciousness 🤔
-    - A Neural Corpus Indexer for Document Retrieval ([wang...yang, 2022](https://arxiv.org/abs/2206.02743)) - train model to directly spit out document IDs given queries
-- RLPG ([shrivastava, larochelle, & tarlow, 2022](https://arxiv.org/abs/2206.12839)) - for code-completion, retrieves functions from a repo
+  - Knowledgeable Prompt-tuning ([Hu et al. 2021](https://arxiv.org/abs/2108.02035)) - add knowledge-base info into the prompt search
 - memorizing transformers ([wu...szegedy, 2022](https://arxiv.org/abs/2203.08913)) - knn-based learned indexing + retrieval at training time
   - at test time, you just need to index the entire context and the model will be able to use it
   - kNN Prompting: Learning Beyond the Context with Nearest Neighbor Inference ([xu...zhang, 2023](https://openreview.net/forum?id=fe2S7736sNS)) - instead of verbalizer, use nearest-neighbor
     - has dbpedia results
   - kNN-Prompt: Nearest Neighbor Zero-Shot Inference ([shi...zettlemoyer, 2022](https://arxiv.org/pdf/2205.13792.pdf))
-- self-verification
-  - review on self-verification ([pan...wang, 2023](https://arxiv.org/pdf/2308.03188.pdf))
-  - Self-Refine: Iterative Refinement with Self-Feedback ([madaan, ..., clark, 2023](https://arxiv.org/abs/2303.17651))
-  - Self-Verification Improves Few-Shot Clinical Information Extraction ([gero et al. 2023](https://arxiv.org/abs/2306.00024))
-  - SelfCheckGPT: Zero-Resource Black-Box Hallucination Detection for Generative Large Language Models ([manakul...gales, 2023](https://arxiv.org/abs/2303.08896))
-- ACT-1: Transformer for Actions ([2022, adept](https://www.adept.ai/act)) - transformer directly interacts with computer
-- ReAct: Synergizing Reasoning and Acting in Language Models ([yao...cao, 2022](https://arxiv.org/abs/2210.03629)) - use LLMs to generate reasoning traces + task-specific actions in interleaved manner
+- original
+  - ACT-1: Transformer for Actions ([2022, adept](https://www.adept.ai/act)) - transformer directly interacts with computer
+  - ReAct: Synergizing Reasoning and Acting in Language Models ([yao...cao, 2022](https://arxiv.org/abs/2210.03629)) - use LLMs to generate reasoning traces + task-specific actions in interleaved manner
+  - RLPG ([shrivastava, larochelle, & tarlow, 2022](https://arxiv.org/abs/2206.12839)) - for code-completion, retrieves functions from a repo
+  - knowledge base triplets
+    - Relational Memory-Augmented Language Models ([liu, yogatama, & blunsom, 2022](https://direct.mit.edu/tacl/article/doi/10.1162/tacl_a_00476/110997/Relational-Memory-Augmented-Language-Models)) - integrate knowledge base triplets with LLM
+    - DRAGON: Deep Bidirectional Language-Knowledge Graph Pretraining ([yasanaga, ..., manning, liang, leskovec, 2022](https://arxiv.org/abs/2210.09338))
+
+- webgpt ([nakano, ..., schulman, 2022, OpenAI](https://arxiv.org/abs/2112.09332)) - allows google search to add world info
+  - Internet-augmented language models ([Lazaridou et al., 2022](https://arxiv.org/pdf/2203.05115.pdf))
+  - GopherCite ([menick, ..., mcaleese, 2022, Deepmind](https://arxiv.org/abs/2203.11147)) - generate answers + link/relevant snippet when making predictions (trained with RL from human preferences )
+  - LaMDA ([thoppilan, ..., quoc le, 2022, google](https://arxiv.org/abs/2201.08239)) - allows google search to add world info (in a dialog model)
+    - this was the model that sparked the controversy about consciousness 🤔
+    - A Neural Corpus Indexer for Document Retrieval ([wang...yang, 2022](https://arxiv.org/abs/2206.02743)) - train model to directly spit out document IDs given queries
 
 # prompting
 
@@ -368,7 +368,6 @@ See related papers in the [📌 interpretability](https://csinva.io/notes/resear
           - Context-aware decoding ([shi, ...zettlemoyer, yih, 2023](https://arxiv.org/pdf/2305.14739.pdf)) - the difference between the output probabilities when a model is used with and without context
           - DoLa: Decoding by Contrasting Layers Improves Factuality in Large Language Models ([chuang...he, 2023](https://arxiv.org/abs/2309.03883)) - contasting later layers with early layers can improve truthfulness
           - Calibrate Before Use: Improving Few-Shot Performance of Language Models ([zhao, ..., dan klein, sameer singh, 2021](https://arxiv.org/abs/2102.09690)) - to make prompting easier, first calibrate output distr by making it uniform when given null inputs, e.g. "N/A"
-    - Semantic Uncertainty ([kuhn, gal, & farquhar, 2023](https://arxiv.org/abs/2302.09664)) - yields uncertainties by incorporating linguistic invariances created by shared meanings
     - Minimum Bayes Risk Decoding ([suzgun, ..., jurafsky, 2022](https://arxiv.org/abs/2211.07634)) or ([freitag et al. 2022](https://arxiv.org/pdf/2111.09388.pdf))
     - A Frustratingly Simple Decoding Method for Neural Text Generation ([yang, ..., shi, 2023](https://arxiv.org/abs/2305.12675)) - build an anti-LM based on previously generated text and use this anti-LM to penalize future generation of what has been generated
   - fast decoding
@@ -399,6 +398,11 @@ See related papers in the [📌 interpretability](https://csinva.io/notes/resear
   - Prompt ensembling / selection without labels
     - Zero-Label Prompt Selection ([liao, zheng, & yang, 2022](https://arxiv.org/abs/2211.04668)) - use prompts to label unlabeled data and then select prompts using these labels
     - A Simple Zero-shot Prompt Weighting Technique to Improve Prompt Ensembling in Text-Image Models ([alingham…lakshminarayanan, 2023](https://proceedings.mlr.press/v202/allingham23a.html)) - use confidence (max output logit) after appropriate normalization as weight
+- self-verification
+  - review on self-verification ([pan...wang, 2023](https://arxiv.org/pdf/2308.03188.pdf))
+  - Self-Refine: Iterative Refinement with Self-Feedback ([madaan, ..., clark, 2023](https://arxiv.org/abs/2303.17651))
+  - Self-Verification Improves Few-Shot Clinical Information Extraction ([gero et al. 2023](https://arxiv.org/abs/2306.00024))
+  - SelfCheckGPT: Zero-Resource Black-Box Hallucination Detection for Generative Large Language Models ([manakul...gales, 2023](https://arxiv.org/abs/2303.08896))
 
 ## llm querying / causal inference
 
@@ -410,7 +414,6 @@ See related papers in the [📌 interpretability](https://csinva.io/notes/resear
 - Zero-shot causal learning ([nilforoshan...leskovec, 2023](https://arxiv.org/abs/2301.12292))
 - Discovering Latent Knowledge in Language Models Without Supervision ([burns, ye, klein, & steinhardt, 2022](https://arxiv.org/abs/2212.03827)) - identify whether text is true or false directly from a model’s *unlabeled activations*
   - Inference-Time Intervention: Eliciting Truthful Answers from a Language Model ([li...pfister, wattenberg, 2023](https://arxiv.org/abs/2306.03341))
-
 - [InferBERT: A Transformer-Based Causal Inference Framework for Enhancing Pharmacovigilance](https://www.frontiersin.org/articles/10.3389/frai.2021.659622/full) (wang...liu, 2021) - learn + test feature relationships from attention weights
 - CausaLM: Causal Model Explanation Through Counterfactual Language Models ([2021](https://direct.mit.edu/coli/article/47/2/333/98518/CausaLM-Causal-Model-Explanation-Through)) - produce example-level causal model explanations using models finetuned on auxiliary adversarial tasks derived from the causal graph of the problem
 - Investigating Gender Bias in Language Models Using Causal Mediation Analysis ([vig, ..., shieber, 2020](https://proceedings.neurips.cc/paper/2020/file/92650b2e92217715fe312e6fa7b90d82-Paper.pdf))
@@ -420,6 +423,25 @@ See related papers in the [📌 interpretability](https://csinva.io/notes/resear
 - TrustLLM ([sun...zhao, 2024](https://arxiv.org/abs/2401.05561)) - evaluation and benchmark of many aspects of trustworthiness ([github](https://github.com/HowieHwong/TrustLLM))
 - Deductive Closure Training of Language Models for Coherence, Accuracy, and Updatability ([aykurek...andreas, 2024](https://arxiv.org/abs/2401.08574)) - LMs generate additional text implied by documents, reason about the generated text, and finetune on the correct text
   - LMs' reasoning capabilities during inference can be leveraged during training to improve their reliability
+- uncertainty
+  - Semantic Uncertainty ([kuhn, gal, & farquhar, 2023](https://arxiv.org/abs/2302.09664)) - instead of calculating entropy over tokens, first generate set of answers, then cluster them base on semantic equivalence, before computing entropy
+    - clustering is done via an LM that tests entailment e.g. E.g., “The capital of France is Paris.” entails “Paris is the capital of France.” because they mean the same thing
+
+  - Can LLMs Express Their Uncertainty? An Empirical Evaluation of Confidence Elicitation in LLMs ([xiong...hooi, 2023](https://arxiv.org/abs/2306.13063))
+    - verbalized uncertainty - model outputs its own uncertainty
+    - consistency-based uncertainty - consistency between output generations
+
+  - Quantifying Uncertainty in Natural Language Explanations of Large Language Models ([tanneru...lakkaraju, 2023](https://arxiv.org/abs/2311.03533))
+    - probing uncertainty (like consistency-based uncertainty above) - applies input perturbations (e.g., paraphrasing) and measure the consistency of the resulting explanations
+    - verbalized uncertainty of explanations often performs poorly
+
+  - Relying on the Unreliable: The Impact of Language Models' Reluctance to Express Uncertainty ([zhou...sap, 2024](https://arxiv.org/abs/2401.06730))
+    - LMs are often unable to express uncertainties
+    - LM confidences tend to be overconfident
+    - users rely heavily on LM generations, whether or not they are marked by certainty
+  - Teaching Models to Express Their Uncertainty in Words ([Lin et al., 2022](https://arxiv.org/abs/2205.14334)) - GPT3 can  generate both an answer and a level of confidence (e.g. "90% confidence")
+  - Decomposing Uncertainty for Large Language Models through Input Clarification Ensembling ([hou...zhang, 2023](https://arxiv.org/pdf/2311.08718.pdf))
+
 
 
 # misc
@@ -519,6 +541,7 @@ Model merging (some of these are non-transformer papers) = combine different mod
      1. stack layers to yield model with different size
      2. e.g. depth up-scaling creates a larger model by merging some layers and copying others (solar 10.7B, [kim...kim, 2023](https://arxiv.org/abs/2312.15166))
 - more complex posthoc methods
+  - Learning to Route Among Specialized Experts for Zero-Shot Generalization ([muqeeth, ..., raffel, 2024](https://arxiv.org/abs/2402.05859)) - PHATGOOSE routes to different LoRA model for each token and at each layer
   - Fisher-Weighted Averaging ([matena & raffel, 2022](https://arxiv.org/abs/2111.09832)) - merge models with same architecture with particular weights
   - Git Re-Basin: Merging Models modulo Permutation Symmetries ([ainsworth, hayase, & srinivasa, 2022](https://arxiv.org/abs/2209.04836)) - permute units of one model to align them with a reference model before merging; supports linear mode connectivity between ResNet models on CIFAR
     - ZipIt! Merging Models from Different Tasks without Training ([stoica...hoffman, 2023](https://arxiv.org/abs/2305.03053)) - layerwise merging & don't merge all the layers
@@ -529,6 +552,7 @@ Model merging (some of these are non-transformer papers) = combine different mod
   - AdaMerging: Adaptive Model Merging for Multi-Task Learning ([yang...tao, 2023](https://arxiv.org/abs/2310.02575)) - learn coefficients to average models by minimizing entropy on unlabeled test samples
   - Model Ratatouille: Recycling Diverse Models for Out-of-Distribution Generalization ([rame...bottou, lopez-paz, 2022](https://arxiv.org/abs/2212.10445)) - finetune many models initially trained on diverse tasks then average their weights
     - Diverse Weight Averaging for Out-of-Distribution Generalization ([rame...cord, 2023](https://arxiv.org/abs/2205.09739))
+  
 - training paradigms
   - Branch-Train-Merge: ELMS (Expert LMs) ([li...smith, zettlemoyer 2022](https://arxiv.org/abs/2208.03306))
     - parallel language model of smaller expert LMs
@@ -566,6 +590,7 @@ Model merging (some of these are non-transformer papers) = combine different mod
       - *change factual associations* - modify feedforward weights to update specific factual associations using Rank-One Model Editing (ROME)
       - MEMIT: Mass Editing Memory in a Transformer ([meng..., bau, 2022](https://memit.baulab.info/))
       - Aging with GRACE: Lifelong Model Editing with Discrete Key-Value Adapters ([hartvigsen, ..., palangi, ..., ghassemi, 2023](https://arxiv.org/abs/2211.11031v3))
+      - Flexible Model Interpretability through Natural Language Model Editing ([d'oosterlinck, ..., potts, 2023](https://arxiv.org/abs/2311.10905))
     - meta-learning
       - KnowledgeEditor: Editing Factual Knowledge in Language Models ([de cao, aziz, & titov, 2021](https://arxiv.org/pdf/2104.08164.pdf)) - train a network that takes in input, output, edit and predicts a weight update to the model
       - MEND: Fast model editing at scale ([mitchell...finn, manning, 2022](https://arxiv.org/abs/2110.11309))
@@ -674,6 +699,8 @@ Model merging (some of these are non-transformer papers) = combine different mod
   - tuned-lens ([belrose...steinhardt, 2023](https://arxiv.org/abs/2303.08112)) - train linear model for each layer to decode vocab
   - Analyzing Transformers in Embedding Space ([dar, ..., berant, 2022](https://arxiv.org/pdf/2209.02535.pdf)) - apply unembeddix matrix to weights, etc. to interpret transformers
 - In-Context Language Learning: Architectures and Algorithms ([akyurek...andreas, 2024](https://arxiv.org/pdf/2401.12973.pdf)) - find evidence for "n-gram heads", higher-order variants of previously seen "induction heads"
+  - Zoology: Measuring and Improving Recall in Efficient Language Models ([arora...rudra, & re, 2023](https://arxiv.org/pdf/2312.04927.pdf)) - also find evidence for ngram heads
+
 - A Phase Transition between Positional and Semantic Learning in a Solvable Model of Dot-Product Attention ([cui...zdeborova, 2024](https://arxiv.org/pdf/2402.03902.pdf)) - solve 1-layer attention model for histogram task and find  phase transition
 - Rosetta Neurons: Mining the Common Units in a Model Zoo ([dravid, ..., efros, shocher, 2023](https://openaccess.thecvf.com/content/ICCV2023/html/Dravid_Rosetta_Neurons_Mining_the_Common_Units_in_a_Model_Zoo_ICCV_2023_paper.html))
   - Multimodal Neurons in Pretrained Text-Only Transformers ([schwettmann...torralba, 2023](https://arxiv.org/pdf/2308.01544.pdf))
@@ -687,6 +714,7 @@ Model merging (some of these are non-transformer papers) = combine different mod
 - Efficient Streaming Language Models with Attention Sinks ([xiao...lewis, 2023](https://arxiv.org/pdf/2309.17453.pdf))
 - Codebook Features: Sparse and Discrete Interpretability for Neural Networks ([tamkin, taufeeque, & goodman, 2023](https://arxiv.org/abs/2310.17230))
 - Patchscope ([ghandeharioun...geva, 2023](https://arxiv.org/abs/2401.06102)) - decode LLM's representation of a token by asking another copy of it to decode from that same representation
+- Program synthesis via mechanistic interpretability ([michaud...tegmark](https://arxiv.org/abs/2402.05110)) - condense RNN on simple algorithmic tasks into code
 
 ## debugging / interpretation
 
@@ -721,6 +749,33 @@ Model merging (some of these are non-transformer papers) = combine different mod
       - this makes it fast to search for instances of an ngram (and also for what precedes/follows it)
     
     - results show that infinigram can considerably improve perplexities when it is linearly combined with the logits from LLMs (experiments up to llama-2 70B)
+
+## security
+
+- Interpretability and Transparency-Driven Detection and Transformation of Textual Adversarial Examples (IT-DT) ([sabir, babar, & abuadbba, 2023](https://arxiv.org/pdf/2307.01225.pdf))
+    - leverages techniques such as attention maps, integrated gradients, and model feedback to detect and then change adversarial inputs
+- datasets: [harmbench](https://www.harmbench.org) & [trustllm](https://arxiv.org/abs/2401.05561)
+- attacks from [TextAttack](https://github.com/QData/TextAttack):
+
+| Attack Recipe Name | Goal Function                           | Constraints Enforced                                         | Transformation                                               | Search Method               | Main Idea                                                    |
+| ------------------ | --------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | --------------------------- | ------------------------------------------------------------ |
+| `a2t`              | Untargeted {Classification, Entailment} | Percentage of words perturbed, Word embedding distance, DistilBERT sentence encoding cosine similarity, part-of-speech consistency | Counter-fitted word embedding swap (or) BERT Masked Token Prediction | Greedy-WIR (gradient)       | [Yoo et al., 2021](https://arxiv.org/abs/2109.00544)         |
+| `alzantot`         | Untargeted {Classification, Entailment} | Percentage of words perturbed, Language Model perplexity, Word embedding distance | Counter-fitted word embedding swap                           | Genetic Algorithm           | [Alzantot et al., 2018](https://arxiv.org/abs/1804.07998)    |
+| `bae`              | Untargeted Classification               | USE sentence encoding cosine similarity                      | BERT Masked Token Prediction                                 | Greedy-WIR                  | [Garg & Ramakrishnan, 2019](https://arxiv.org/abs/2004.01970). |
+| `bert-attack`      | Untargeted Classification               | USE sentence encoding cosine similarity, Maximum number of words perturbed | BERT Masked Token Prediction (with subword expansion)        | Greedy-WIR                  | [Li et al., 2020](https://arxiv.org/abs/2004.09984)          |
+| `checklist`        | {Untargeted, Targeted} Classification   | checklist distance                                           | contract, extend, and substitutes name entities              | Greedy-WIR                  | [Ribeiro et al., 2020](https://arxiv.org/abs/2005.04118)     |
+| `clare`            | Untargeted {Classification, Entailment} | USE sentence encoding cosine similarity                      | RoBERTa Masked Prediction for token swap, insert and merge   | Greedy                      | [Li et al., 2020](https://arxiv.org/abs/2009.07502)          |
+| `deepwordbug`      | {Untargeted, Targeted} Classification   | Levenshtein edit distance                                    | {Character Insertion, Character Deletion, Neighboring Character Swap, Character Substitution} | Greedy-WIR                  | [Gao et al., 2018](https://arxiv.org/abs/1801.04354)         |
+| `fast-alzantot`    | Untargeted {Classification, Entailment} | Percentage of words perturbed, Language Model perplexity, Word embedding distance | Counter-fitted word embedding swap                           | Genetic Algorithm           | [Jia et al., 2019](https://arxiv.org/abs/1909.00986)         |
+| `hotflip`          | Untargeted Classification               | Word Embedding Cosine Similarity, Part-of-speech match, Number of words perturbed | Gradient-Based Word Swap                                     | Beam search                 | [Ebrahimi et al., 2017](https://arxiv.org/abs/1712.06751)    |
+| `iga`              | Untargeted {Classification, Entailment} | Percentage of words perturbed, Word embedding distance       | Counter-fitted word embedding swap                           | Genetic Algorithm           | [Wang et al., 2019](https://arxiv.org/abs/1909.06723)        |
+| `input-reduction`  | Input Reduction                         |                                                              | Word deletion                                                | Greedy-WIR                  | [Feng et al., 2018](https://arxiv.org/pdf/1804.07781.pdf)    |
+| `kuleshov`         | Untargeted Classification               | Thought vector encoding cosine similarity, Language model similarity probability | Counter-fitted word embedding swap                           | Greedy word swap            | [Kuleshov et al., 2018](https://openreview.net/pdf?id=r1QZ3zbAZ) |
+| `pruthi`           | Untargeted Classification               | Minimum word length, Maximum number of words perturbed       | {Neighboring Character Swap, Character Deletion, Character Insertion, Keyboard-Based Character Swap} | Greedy search               | [Pruthi et al., 2019](https://arxiv.org/abs/1905.11268)      |
+| `pso`              | Untargeted Classification               |                                                              | HowNet Word Swap                                             | Particle Swarm Optimization | [Zang et al., 2020](https://www.aclweb.org/anthology/2020.acl-main.540/) |
+| `pwws`             | Untargeted Classification               |                                                              | WordNet-based synonym swap                                   | Greedy-WIR (saliency)       | [Ren et al., 2019](https://www.aclweb.org/anthology/P19-1103/) |
+| `textbugger`       | Untargeted Classification               | USE sentence encoding cosine similarity                      | {Character Insertion, Character Deletion, Neighboring Character Swap, Character Substitution} | Greedy-WIR                  | [Li et al., 2018](https://arxiv.org/abs/1812.05271).         |
+| `textfooler`       | Untargeted {Classification, Entailment} | Word Embedding Distance, Part-of-speech match, USE sentence encoding cosine similarity | Counter-fitted word embedding swap                           | Greedy-WIR                  | [Jin et al., 2019](https://arxiv.org/abs/1907.11932)         |
 
 
 
@@ -924,6 +979,7 @@ mixture of experts models have become popular because of the need for (1) fast s
   - GSCLIP : A Framework for Explaining Distribution Shifts in Natural Language ([zhu...james zou, 2022](https://arxiv.org/abs/2206.15007)) - automatically explain dataset-level distribution shifts (in image datasets) with natural language
   - MaNtLE: Model-agnostic Natural Language Explainer ([menon, zaman, & srivastava, 2023](https://arxiv.org/pdf/2305.12995.pdf)) - train model to generate explanations on simple tables (they do this for classifier outputs but could easily do it directly for data labels)
   - Large Language Models for Automated Open-domain Scientific Hypotheses Discovery ([yang...cambria, 2023](https://arxiv.org/abs/2309.02726))
+  - Scaling deep learning for materials discovery ([merchant...cubuk, 2023](https://www.nature.com/articles/s41586-023-06735-9))
 - module explanation in natural language
   - Explaining black box text modules in natural language with language models ([singh, hsu, ..., gao, 2023](https://arxiv.org/abs/2305.09863))
   - Language models can explain neurons in language models ([bills, cammarata, ...saunders, 2023, openai](https://openaipublic.blob.core.windows.net/neuron-explainer/paper/index.html))
@@ -942,23 +998,24 @@ mixture of experts models have become popular because of the need for (1) fast s
     - Rigorously Assessing Natural Language Explanations of Neurons ([huang..potts, 2023](https://arxiv.org/abs/2309.10312))
   
 
-## directly learning algorithms
+## directly learning algorithms / in-context
 
 - Empirical results
   - FunSearch: Mathematical discoveries from program search with large language models ([deepmind, 2023](https://www.nature.com/articles/s41586-023-06924-6))
   - Faster sorting algorithms discovered using deep reinforcement learning ([deepmind, 2023](https://www.nature.com/articles/s41586-023-06004-9))
   - Discovering faster matrix multiplication algorithms with reinforcement learning ([deepmind, 2022](https://www.nature.com/articles/s41586-022-05172-4))
   - Nuclear fusion control ([deepmind, 2022](https://www.nature.com/articles/s41586-021-04301-9))
-  - Decision tree ([zhuang...gao, 2024](https://arxiv.org/abs/2402.03774))
 - Alphafold
   - Accurate proteome-wide missense variant effect prediction with AlphaMissense ([deepmind, 2023](https://www.science.org/doi/full/10.1126/science.adg7492)) - predict effects of varying single-amino acid changes
   - Bridging the Human-AI Knowledge Gap: Concept Discovery and Transfer in AlphaZero ([schut...hessabis, paquet, & been kim, 2023](https://arxiv.org/abs/2310.16410))
-- Scaling deep learning for materials discovery ([merchant...cubuk, 2023](https://www.nature.com/articles/s41586-023-06735-9))
 - What Can Transformers Learn In-Context? A Case Study of Simple Function Classes ([garg, tsipras, liang, & valiant, 2022](https://arxiv.org/abs/2208.01066)) - models can succesfully metalearn functions like OLS
   - e.g. during training, learn inputs-outputs from different linear functions
   - during testing, have to predict outputs for inputs from a different linear function
   - also test on slightly harder functions, like decision trees and 2-layer nets
+  - Decision tree ([zhuang...gao, 2024](https://arxiv.org/abs/2402.03774)) - transformer can learn to algorithmically interpolate between CART and GOSDT
   - What Algorithms can Transformers Learn? A Study in Length Generalization ([zhou...bengio, nakkiran, 2023](https://arxiv.org/abs/2310.16028)) - Transformers tend to length generalize on a task if the task can be solved by a short RASP program which works for all input lengthsr
+  - Understanding In-Context Learning in Transformers and LLMs by Learning to Learn Discrete Functions ([bhattamishra...varun kanade, 2023](https://arxiv.org/abs/2310.03016)) - on boolean functions, transformers can learn to match optimal aglorithms for simple tasks but not on complex tasks
+    - Transformers can learn to implement two distinct algorithms to solve a single task, and can adaptively select the more sample-efficient algorithm depending on the sequence of in-context examples
 - Learning a (sparse) linear model
   - The contextual lasso: Sparse linear models via deep neural networks ([thompson, …, kohn, 2023](https://arxiv.org/pdf/2302.00878.pdf)) - very rough results...
   - [Breaking the Paradox of Explainable Deep Learning](https://arxiv.org/abs/2305.13072)
@@ -969,7 +1026,6 @@ mixture of experts models have become popular because of the need for (1) fast s
   - One Step of Gradient Descent is Provably the Optimal In-Context Learner with One Layer of Linear Self-Attention ([Mahankali, Hashimoto, Ma, 23](https://arxiv.org/pdf/2307.03576.pdf))
     - math analysis for: icl can do gradient decent on linear regression
   - Pretraining task diversity and the emergence of non-Bayesian in-context learning for regression ([raventos…ganguli, 2023]())
-  - Understanding In-Context Learning in Transformers and LLMs by Learning to Learn Discrete Functions ([bhattamishra...kanade, 2023](https://arxiv.org/abs/2310.03016))
 - Transformers Learn Higher-Order Optimization Methods for In-Context Learning: A Study with Linear Models ([fu...sharan, 2023](https://arxiv.org/abs/2310.17086))
 - Teaching Algorithmic Reasoning via In-context Learning ([zhou...sedghi, 2022](https://arxiv.org/abs/2211.09066))
 - Looped Transformers as Programmable Computers ([giannou, ..., jason lee, papailiopoulos, 2023](https://arxiv.org/abs/2301.13196)) - use transformers as universal computers by programming them with specific weights
@@ -1070,7 +1126,7 @@ mixture of experts models have become popular because of the need for (1) fast s
 
 ## tabular data
 
-- neurips 2023 [tabular workshop](https://table-representation-learning.github.io)
+- neurips 2023 [tabular workshop](https://table-representation-learning.github.io) and [review](https://arxiv.org/abs/2402.05121) from feb 4 2024
 
 - value string methods - directly treating numerical values as strings and finetune GPT on them (everything is represented as text)
   - GreaT ([Borisov et al., 2022](https://openreview.net/forum?id=cEygmQNOeI))

@@ -254,6 +254,10 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
   - ![pacmap](../assets/pacmap.png)
 
 ## misc
+- Sparse Component Analysis ([zimnik...cunningham, paninski, churchland, & glaser, 2024](https://www.biorxiv.org/content/10.1101/2024.02.05.578988v1.full.pdf))
+  - $\arg \min _{U, V}\left(\|W(X-X U V)\|_F^2+\lambda_{\text {sparse }}\|X U\|_1+\lambda_{\text {orth }}\left\|V V^{\top}-I\right\|_F^2\right)$
+    - where $U$ is encoding matrix and $V$ is decoding, the final loss term is imposing orthogonality of the columns of V
+
 - [NNK-Means: Dictionary Learning using Non-Negative Kernel regression](https://arxiv.org/abs/2110.08212) (shekkizhar & ortega, 2021)
   - data summarization - represent large datasets by a small set of elements (e.g. k-means)
   - here, use dictionary learning instead of k-means to summarize data
