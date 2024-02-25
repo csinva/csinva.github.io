@@ -148,59 +148,6 @@ See related papers in the [📌 interpretability](https://csinva.io/notes/resear
 
   - Voicebox: Text-Guided Multilingual Universal Speech Generation at Scale ([meta, 2023](https://research.facebook.com/publications/voicebox-text-guided-multilingual-universal-speech-generation-at-scale/))
 
-## retrieval-augmented-generation (RAG) + tool use
-
-- private
-  - https://www.perplexity.ai/ - nice demo adding citation to each fact
-  - https://you.com
-  - [langchain](https://github.com/hwchase17/langchain) library
-  - https://www.fixie.ai/ - provide tools for wrapping APIs in LLM + interaction through router (also default modules for stateful storage, user identity, etc.)
-- Augmented Language Models: a Survey ([meta, 2023](https://arxiv.org/abs/2302.07842)) - 3 categories: reasoning, tools, action
-  - PAL: Program-aided Language Models ([gao...neubig, 2023](https://arxiv.org/abs/2211.10435))
-  - Demonstrate-Search-Predict: Composing retrieval and language models for knowledge-intensive NLP ([khattab, ..., liang, potts, & zaharia, 2022](https://arxiv.org/abs/2212.14024)) - use high-level programs to use multiple steps between retrieving and reading
-- Infer–Retrieve–Rank: In-Context Learning for Extreme Multi-Label Classification ([D’Oosterlinck, ..., potts, 2024](https://arxiv.org/pdf/2401.12178.pdf))
-  1. Infer: an LM processes the input document and guesses a set of applicable terms 
-  2. Retrieve: a retriever relates each predicted term to the actual label space
-  3. Rank: Finally, an LM is used to rerank retrieved labels
-- Toolformer: Language Models Can Teach Themselves to Use Tools ([meta, 2023](https://arxiv.org/abs/2302.04761)) - model trained to decide which APIs to call, when to call them, what arguments to pass, and how to best incorporate the results into future token prediction
-  - Given input, sample position and API call candidates, try them all, and filter out ones which do not reduce next-token loss
-    - put correct API calls into prompt, e.g. Pittsburgh is also known as `[QA(What ...?→ Steel City)]` the Steel City.
-
-  - Training
-    - start with few human-written examples of API use
-    - LLM generates more uses
-    - self-supervised loss determines which calls help with future-token prediction
-
-  - Atlas: Few-shot Learning with Retrieval Augmented Language Models ([meta, 2022](https://arxiv.org/abs/2208.03299))
-
-- Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection ([asai...hajishirzi, 2023](https://arxiv.org/abs/2310.11511)) -  train an LM that adaptively retrieves passages on-demand, and generates and reflects on retrieved passages and its own generations using special tokens, called reflection token
-- Active RAG ([jiang...neubig, 2023](https://arxiv.org/abs/2305.06983)) -  propose FLARE, which iteratively uses a prediction of the upcoming sentence to anticipate future content, which is then utilized as a query to retrieve relevant documents to regenerate the sentence if it contains low-confidence tokens
-- retreival-augmented in-context learning (put retrieved info into context, or something very similar)
-  - REALM ([guu, ..., chang, 2020](https://arxiv.org/abs/2002.08909)) - retrieves document chunks from corpus and adds them to context, for open-domain QA
-  - RETRO ([deepmind, 2022](https://arxiv.org/abs/2112.04426)) - nearest neighbors to model's input are retrieved, encoded, and conditioned on with chunked cross-attention 
-  - Decomposed prompting ([khot et al., 2022](https://arxiv.org/pdf/2210.02406.pdf)) - decompose tasks via prompting which are delegated to a shared library of prompting-based LLMs dedicated to these sub-tasks
-  - LLM-Augmenter ([peng, galley...gao, 2023](https://arxiv.org/abs/2302.12813)) -  (1) consolidates evidence from external knowledge for the LLM to generate responses grounded in evidence, and (2) revising LLM’s (candidate) responses using automated feedback
-  - Knowledgeable Prompt-tuning ([Hu et al. 2021](https://arxiv.org/abs/2108.02035)) - add knowledge-base info into the prompt search
-- memorizing transformers ([wu...szegedy, 2022](https://arxiv.org/abs/2203.08913)) - knn-based learned indexing + retrieval at training time
-  - at test time, you just need to index the entire context and the model will be able to use it
-  - kNN Prompting: Learning Beyond the Context with Nearest Neighbor Inference ([xu...zhang, 2023](https://openreview.net/forum?id=fe2S7736sNS)) - instead of verbalizer, use nearest-neighbor
-    - has dbpedia results
-  - kNN-Prompt: Nearest Neighbor Zero-Shot Inference ([shi...zettlemoyer, 2022](https://arxiv.org/pdf/2205.13792.pdf))
-- original
-  - ACT-1: Transformer for Actions ([2022, adept](https://www.adept.ai/act)) - transformer directly interacts with computer
-  - ReAct: Synergizing Reasoning and Acting in Language Models ([yao...cao, 2022](https://arxiv.org/abs/2210.03629)) - use LLMs to generate reasoning traces + task-specific actions in interleaved manner
-  - RLPG ([shrivastava, larochelle, & tarlow, 2022](https://arxiv.org/abs/2206.12839)) - for code-completion, retrieves functions from a repo
-  - knowledge base triplets
-    - Relational Memory-Augmented Language Models ([liu, yogatama, & blunsom, 2022](https://direct.mit.edu/tacl/article/doi/10.1162/tacl_a_00476/110997/Relational-Memory-Augmented-Language-Models)) - integrate knowledge base triplets with LLM
-    - DRAGON: Deep Bidirectional Language-Knowledge Graph Pretraining ([yasanaga, ..., manning, liang, leskovec, 2022](https://arxiv.org/abs/2210.09338))
-
-- webgpt ([nakano, ..., schulman, 2022, OpenAI](https://arxiv.org/abs/2112.09332)) - allows google search to add world info
-  - Internet-augmented language models ([Lazaridou et al., 2022](https://arxiv.org/pdf/2203.05115.pdf))
-  - GopherCite ([menick, ..., mcaleese, 2022, Deepmind](https://arxiv.org/abs/2203.11147)) - generate answers + link/relevant snippet when making predictions (trained with RL from human preferences )
-  - LaMDA ([thoppilan, ..., quoc le, 2022, google](https://arxiv.org/abs/2201.08239)) - allows google search to add world info (in a dialog model)
-    - this was the model that sparked the controversy about consciousness 🤔
-    - A Neural Corpus Indexer for Document Retrieval ([wang...yang, 2022](https://arxiv.org/abs/2206.02743)) - train model to directly spit out document IDs given queries
-
 # prompting
 
 - https://github.com/dair-ai/Prompt-Engineering-Guide
@@ -446,6 +393,56 @@ See related papers in the [📌 interpretability](https://csinva.io/notes/resear
 
 # misc
 
+## retrieval-augmented-generation (RAG) + tool use
+
+- private
+  - https://www.perplexity.ai/ - nice demo adding citation to each fact
+  - https://you.com
+  - [langchain](https://github.com/hwchase17/langchain) library
+  - https://www.fixie.ai/ - provide tools for wrapping APIs in LLM + interaction through router (also default modules for stateful storage, user identity, etc.)
+- Augmented Language Models: a Survey ([meta, 2023](https://arxiv.org/abs/2302.07842)) - 3 categories: reasoning, tools, action
+  - PAL: Program-aided Language Models ([gao...neubig, 2023](https://arxiv.org/abs/2211.10435))
+  - Demonstrate-Search-Predict: Composing retrieval and language models for knowledge-intensive NLP ([khattab, ..., liang, potts, & zaharia, 2022](https://arxiv.org/abs/2212.14024)) - use high-level programs to use multiple steps between retrieving and reading
+- Infer–Retrieve–Rank: In-Context Learning for Extreme Multi-Label Classification ([D’Oosterlinck, ..., potts, 2024](https://arxiv.org/pdf/2401.12178.pdf))
+  1. Infer: an LM processes the input document and guesses a set of applicable terms 
+  2. Retrieve: a retriever relates each predicted term to the actual label space
+  3. Rank: Finally, an LM is used to rerank retrieved labels
+- Toolformer: Language Models Can Teach Themselves to Use Tools ([meta, 2023](https://arxiv.org/abs/2302.04761)) - model trained to decide which APIs to call, when to call them, what arguments to pass, and how to best incorporate the results into future token prediction
+  - Given input, sample position and API call candidates, try them all, and filter out ones which do not reduce next-token loss
+    - put correct API calls into prompt, e.g. Pittsburgh is also known as `[QA(What ...?→ Steel City)]` the Steel City.
+  - Training
+    - start with few human-written examples of API use
+    - LLM generates more uses
+    - self-supervised loss determines which calls help with future-token prediction
+  - Atlas: Few-shot Learning with Retrieval Augmented Language Models ([meta, 2022](https://arxiv.org/abs/2208.03299))
+- Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection ([asai...hajishirzi, 2023](https://arxiv.org/abs/2310.11511)) -  train an LM that adaptively retrieves passages on-demand, and generates and reflects on retrieved passages and its own generations using special tokens, called reflection token
+- Active RAG ([jiang...neubig, 2023](https://arxiv.org/abs/2305.06983)) -  propose FLARE, which iteratively uses a prediction of the upcoming sentence to anticipate future content, which is then utilized as a query to retrieve relevant documents to regenerate the sentence if it contains low-confidence tokens
+- retreival-augmented in-context learning (put retrieved info into context, or something very similar)
+  - REALM ([guu, ..., chang, 2020](https://arxiv.org/abs/2002.08909)) - retrieves document chunks from corpus and adds them to context, for open-domain QA
+  - RETRO ([deepmind, 2022](https://arxiv.org/abs/2112.04426)) - nearest neighbors to model's input are retrieved, encoded, and conditioned on with chunked cross-attention 
+  - Decomposed prompting ([khot et al., 2022](https://arxiv.org/pdf/2210.02406.pdf)) - decompose tasks via prompting which are delegated to a shared library of prompting-based LLMs dedicated to these sub-tasks
+  - LLM-Augmenter ([peng, galley...gao, 2023](https://arxiv.org/abs/2302.12813)) -  (1) consolidates evidence from external knowledge for the LLM to generate responses grounded in evidence, and (2) revising LLM’s (candidate) responses using automated feedback
+  - Knowledgeable Prompt-tuning ([Hu et al. 2021](https://arxiv.org/abs/2108.02035)) - add knowledge-base info into the prompt search
+- memorizing transformers ([wu...szegedy, 2022](https://arxiv.org/abs/2203.08913)) - knn-based learned indexing + retrieval at training time
+  - at test time, you just need to index the entire context and the model will be able to use it
+  - kNN Prompting: Learning Beyond the Context with Nearest Neighbor Inference ([xu...zhang, 2023](https://openreview.net/forum?id=fe2S7736sNS)) - instead of verbalizer, use nearest-neighbor
+    - has dbpedia results
+  - kNN-Prompt: Nearest Neighbor Zero-Shot Inference ([shi...zettlemoyer, 2022](https://arxiv.org/pdf/2205.13792.pdf))
+- original
+  - ACT-1: Transformer for Actions ([2022, adept](https://www.adept.ai/act)) - transformer directly interacts with computer
+  - ReAct: Synergizing Reasoning and Acting in Language Models ([yao...cao, 2022](https://arxiv.org/abs/2210.03629)) - use LLMs to generate reasoning traces + task-specific actions in interleaved manner
+  - RLPG ([shrivastava, larochelle, & tarlow, 2022](https://arxiv.org/abs/2206.12839)) - for code-completion, retrieves functions from a repo
+  - knowledge base triplets
+    - Relational Memory-Augmented Language Models ([liu, yogatama, & blunsom, 2022](https://direct.mit.edu/tacl/article/doi/10.1162/tacl_a_00476/110997/Relational-Memory-Augmented-Language-Models)) - integrate knowledge base triplets with LLM
+    - DRAGON: Deep Bidirectional Language-Knowledge Graph Pretraining ([yasanaga, ..., manning, liang, leskovec, 2022](https://arxiv.org/abs/2210.09338))
+
+- webgpt ([nakano, ..., schulman, 2022, OpenAI](https://arxiv.org/abs/2112.09332)) - allows google search to add world info
+  - Internet-augmented language models ([Lazaridou et al., 2022](https://arxiv.org/pdf/2203.05115.pdf))
+  - GopherCite ([menick, ..., mcaleese, 2022, Deepmind](https://arxiv.org/abs/2203.11147)) - generate answers + link/relevant snippet when making predictions (trained with RL from human preferences )
+  - LaMDA ([thoppilan, ..., quoc le, 2022, google](https://arxiv.org/abs/2201.08239)) - allows google search to add world info (in a dialog model)
+    - this was the model that sparked the controversy about consciousness 🤔
+    - A Neural Corpus Indexer for Document Retrieval ([wang...yang, 2022](https://arxiv.org/abs/2206.02743)) - train model to directly spit out document IDs given queries
+
 ## adaptation / transfer
 
 *These are transformer-specific. For more general notes, see [📌 transfer learning](https://csinva.io/notes/research_ovws/ovw_transfer_learning.html) or [📌 uncertainty](https://csinva.io/notes/research_ovws/ovw_transfer_learning.html).* Most of these approaches can be combined with metalearning.
@@ -531,7 +528,7 @@ Model merging (some of these are non-transformer papers) = combine different mod
 - standard methods (see [mergekit package](https://github.com/arcee-ai/mergekit))
   1. linear averaging, e.g. model soups ([wortsman...schmidt, 2021](https://proceedings.mlr.press/v162/wortsman22a.html))
   2. spherical linear interpolation - interpolate angle but keep norm constant
-  3. TIES: Resolving Interference When Merging Models ([yadav...raffel, bansal, 2023](https://arxiv.org/abs/2306.01708)) - 
+  3. TIES: Resolving Interference When Merging Models ([yadav...raffel, bansal, 2023](https://arxiv.org/abs/2306.01708)) 
      1. only keep top-k% most significant changes in weights
      2. vote on signs of parameters
   4. DARE ([yu...li 2023](https://arxiv.org/abs/2311.03099))
@@ -574,14 +571,16 @@ Model merging (some of these are non-transformer papers) = combine different mod
 
 ## editing
 
-  - Tell Your Model Where to Attend: Post-hoc Attention Steering for LLMs ([zhang, singh, liu, liu, yu, gao, zhao, 2023](https://arxiv.org/abs/2311.02262)) - upweight attention scores at specific positions to improve LLM controllability
-  - Editing Large Language Models: Problems, Methods, and Opportunities ([yao, ..., zhang, 2023](https://arxiv.org/pdf/2305.13172.pdf))
+Editing is generally very similar to just adaptation/finetuning. One distinction is that it tends to try to keep changes localized, in an effort not to affect performance for most of the model.
+
+- Tell Your Model Where to Attend: Post-hoc Attention Steering for LLMs ([zhang, singh, liu, liu, yu, gao, zhao, 2023](https://arxiv.org/abs/2311.02262)) - upweight attention scores at specific positions to improve LLM controllability
+- Editing Large Language Models: Problems, Methods, and Opportunities ([yao, ..., zhang, 2023](https://arxiv.org/pdf/2305.13172.pdf))
     - model-editing = data-efficient alterations to a model
-  - memory-based
+- memory-based
     - SERAC: Memory-Based Model Editing at Scale ([mitchell...manning, finn, 2022](https://proceedings.mlr.press/v162/mitchell22a/mitchell22a.pdf))
       - keep track of list of edits in external memory and use them as appropriate context at test time (don't finetune the model)    
     - T-Patcher (Huang et al., 2023) and CaliNET (Dong et al., 2022) introduce extra trainable parameters into the feed- forward module of PLMs
-  - weight updates
+- weight updates
     - Knowledge Neurons in Pretrained Transformers ([dai et al. 2021](https://arxiv.org/abs/2104.08696)) - integrated gradients wrt to each neuron in BERT, then selectively udpate these neurons
     - ROME: Locating and Editing Factual Associations in GPT ([meng, bau et al. 2022](https://arxiv.org/abs/2202.05262) )
       - *localize factual associations* - causal intervention for identifying neuron activations that are decisive in a model’s factual predictions
@@ -591,12 +590,13 @@ Model merging (some of these are non-transformer papers) = combine different mod
       - MEMIT: Mass Editing Memory in a Transformer ([meng..., bau, 2022](https://memit.baulab.info/))
       - Aging with GRACE: Lifelong Model Editing with Discrete Key-Value Adapters ([hartvigsen, ..., palangi, ..., ghassemi, 2023](https://arxiv.org/abs/2211.11031v3))
       - Flexible Model Interpretability through Natural Language Model Editing ([d'oosterlinck, ..., potts, 2023](https://arxiv.org/abs/2311.10905))
+      - Model Editing with Canonical Examples ([hewitt, ..., liang, manning, 2024](https://arxiv.org/abs/2402.06155))
     - meta-learning
       - KnowledgeEditor: Editing Factual Knowledge in Language Models ([de cao, aziz, & titov, 2021](https://arxiv.org/pdf/2104.08164.pdf)) - train a network that takes in input, output, edit and predicts a weight update to the model
       - MEND: Fast model editing at scale ([mitchell...finn, manning, 2022](https://arxiv.org/abs/2110.11309))
         -  a collection of small auxiliary editing networks that use a single desired input-output pair to edit a pre-trained model
         -  MEND learns to transform the gradient obtained by standard fine-tuning, using a low-rank decomposition of the gradient
-  - REMEDI ([hernandez, li, & andreas, 2023](https://arxiv.org/pdf/2304.00740.pdf)) and related activation engineering
+- REMEDI ([hernandez, li, & andreas, 2023](https://arxiv.org/pdf/2304.00740.pdf)) and related activation engineering
     - get "edit vectors" by obtaining embeddings when passing attributes through LLM
     - perform edit by by adding linear transformation of edit vector to prompt embedding
       - then, perform generation with latent embedding
@@ -609,12 +609,19 @@ Model merging (some of these are non-transformer papers) = combine different mod
       - Extracting Latent Steering Vectors from Pretrained Language Models ([subramani, ..., peters, 2022](https://arxiv.org/abs/2205.05124)) - find latent vectors via optimization that cause an LLM to output a particular sequence
         - then, use these vectors to do things like transfer to new tasks / compute textual similarity
       - Function Vectors in Large Language Models ([todd...wallace, bau, 2023](https://arxiv.org/pdf/2310.15213.pdf))
-  
-  - PURR: Efficiently Editing Language Model Hallucinations by Denoising Language Model Corruptions ([chen...sameer singh...kelvin guu, 2023](https://drive.google.com/file/d/1CXSUii4w8Y2uj-zLm8zRl63SYh45FaZL/view))
-  - new datasets
+
+- PURR: Efficiently Editing Language Model Hallucinations by Denoising Language Model Corruptions ([chen...sameer singh...kelvin guu, 2023](https://drive.google.com/file/d/1CXSUii4w8Y2uj-zLm8zRl63SYh45FaZL/view))
+- new datasets
     - MQUAKE: Assessing Knowledge Editing in Language Models via Multi-Hop Questions ([zhong...manning, potts, chen, 2023](https://www.cs.princeton.edu/~zzhong/papers/MQuAKE.pdf)) - introduces benchmark MQUAKE + method MeLLo, which stores edited facts externally while prompting the language model iteratively to generate answers that are consistent with the edited facts
     - [COUNTERFACT+ benchmark](https://arxiv.org/pdf/2305.17553.pdf) - checks that edits don’t affect existing info
     - [ALMANACS](https://arxiv.org/abs/2312.12747): A Simulatability Benchmark for Language Model Explainability
+- model unlearning approaches (see review Rethinking Machine Unlearning for Large Language Models, [liu et al. 2024](https://arxiv.org/abs/2402.08787))
+  - gradient ascent - worsen performance on set of examples to forget
+  - gradient descent - improve performance on examples labeled with hidden info, e.g. response "I don't know"
+  - localization-informed unlearning, e.g. ROME
+  - influence function-based methods
+  - prompt-based (e.g. only change prompt rather than model parameters)
+
 
 ## direct weight inspection
 
@@ -715,6 +722,7 @@ Model merging (some of these are non-transformer papers) = combine different mod
 - Codebook Features: Sparse and Discrete Interpretability for Neural Networks ([tamkin, taufeeque, & goodman, 2023](https://arxiv.org/abs/2310.17230))
 - Patchscope ([ghandeharioun...geva, 2023](https://arxiv.org/abs/2401.06102)) - decode LLM's representation of a token by asking another copy of it to decode from that same representation
 - Program synthesis via mechanistic interpretability ([michaud...tegmark](https://arxiv.org/abs/2402.05110)) - condense RNN on simple algorithmic tasks into code
+- Linear Representations of Sentiment in Large Language Models ([tigges...nanda, 2023](https://arxiv.org/abs/2310.15154)) - sentiment is distributed across tokens (not just at sentiment-laden words)
 
 ## debugging / interpretation
 
@@ -1016,6 +1024,8 @@ mixture of experts models have become popular because of the need for (1) fast s
   - What Algorithms can Transformers Learn? A Study in Length Generalization ([zhou...bengio, nakkiran, 2023](https://arxiv.org/abs/2310.16028)) - Transformers tend to length generalize on a task if the task can be solved by a short RASP program which works for all input lengthsr
   - Understanding In-Context Learning in Transformers and LLMs by Learning to Learn Discrete Functions ([bhattamishra...varun kanade, 2023](https://arxiv.org/abs/2310.03016)) - on boolean functions, transformers can learn to match optimal aglorithms for simple tasks but not on complex tasks
     - Transformers can learn to implement two distinct algorithms to solve a single task, and can adaptively select the more sample-efficient algorithm depending on the sequence of in-context examples
+  - Limits of Transformer Language Models on Learning Algorithmic Compositions ([thomm...scholkopf, rahimi, 2024](https://arxiv.org/pdf/2402.05785.pdf))
+  - Dissecting Chain-of-Thought: Compositionality through In-Context Filtering and Learning ([li...papailiopoulos, oymak, 2023](https://openreview.net/forum?id=xEhKwsqxMa)) - CoT helps LLMs learn MLP compositional functions in-context
 - Learning a (sparse) linear model
   - The contextual lasso: Sparse linear models via deep neural networks ([thompson, …, kohn, 2023](https://arxiv.org/pdf/2302.00878.pdf)) - very rough results...
   - [Breaking the Paradox of Explainable Deep Learning](https://arxiv.org/abs/2305.13072)
@@ -1129,12 +1139,15 @@ mixture of experts models have become popular because of the need for (1) fast s
 - neurips 2023 [tabular workshop](https://table-representation-learning.github.io) and [review](https://arxiv.org/abs/2402.05121) from feb 4 2024
 
 - value string methods - directly treating numerical values as strings and finetune GPT on them (everything is represented as text)
+  - LIFT: Language-Interfaced Fine-Tuning for Non-Language Machine Learning Tasks ([dinh...lee, 2022](https://arxiv.org/abs/2206.06565))
   - GreaT ([Borisov et al., 2022](https://openreview.net/forum?id=cEygmQNOeI))
     - augmenting a sample with copies of different feature permutations
   - TapTap ([Zhang et al., 2023](https://arxiv.org/abs/2305.09696))
   - Table-GPT ([li...chaudhuri, 2023](https://arxiv.org/pdf/2310.09263.pdf))
   - TabFMs: Towards Foundation Models for Learning on Tabular Data ([zhang...bian, 2023](https://arxiv.org/abs/2310.07338)) - unified text
   - TableLlama: Towards Open Large Generalist Models for Tables ([zhang...sun, 2023](https://arxiv.org/pdf/2311.09206.pdf))
+  - OmniPred: Language Models as Universal Regressors ([song...chen, 2024](https://arxiv.org/abs/2402.14547)) - metalearn on huge number of regression problems from Google Vizier
+  
 - do not use text tokens
   - TabDDPM: Modelling Tabular Data with Diffusion Models ([kotelnikov...babenko 2022](https://arxiv.org/abs/2209.15421))
     - main eval: downstream ML model performance
@@ -1167,7 +1180,7 @@ mixture of experts models have become popular because of the need for (1) fast s
   - Language models are weak learners ([manikandan, jian, & kolter, 2023](https://arxiv.org/abs/2306.14101)) - use prompted LLMs as weak learners in boosting algorithm for tabular data
   - TabRet: Pre-training Transformer-based Tabular Models for Unseen Columns ([onishi...hayashi, 2023](https://arxiv.org/abs/2303.15747))
   - AnyPredict: A Universal Tabular Prediction System Based on Large Language Models https://openreview.net/forum?id=icuV4s8f2c - converting tabular data into machine-understandable prompts and fine-tuning LLMs to perform accurate predictions
-  
+
 - interpretability
   - InterpreTabNet: Enhancing Interpretability of Tabular Data Using Deep Generative Models and Large Language Model ([si...krishnan, 2023](https://openreview.net/pdf?id=kzR5Cj5blw)) - make attention sparse and describe it with GPT4
 

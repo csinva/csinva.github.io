@@ -1,169 +1,130 @@
-<h2 style="text-align: center; margin-top: -150px;"> Research
-    <br />
-    <details class="research_details">
-        <summary> Read research overview (interpretable modeling)</summary>
-        <div class="research_details_text">
-            <p>🔎 My research focuses on how we can build trustworthy machine-learning systems by making them
-                interpretable. In
-                my work, interpretability is grounded seriously via close collaboration with domain experts, e.g.
-                medical
-                doctors or cell biologists. These collaborations have given rise to useful methodology, roughly split
-                into two
-                areas: (1) building more effective <em>transparent models</em> and (2) improving the trustworthiness of
-                <em>black-box
-                    models</em>. Going forward, I hope to help bridge the gap between transparent models and black-box
-                models to
-                improve real-world healthcare.
-            </p>
-            <p>🌳 Whenever possible, <b>building transparent models</b> is the most effective route towards ensuring
-                interpretability.
-                Transparent models are interpretable by design, including models such as (concise) decision trees, rule
-                lists,
-                and linear models. My work in this area was largely motivated by the problem of
-                <a href="https://journals.plos.org/digitalhealth/article?id=10.1371/journal.pdig.0000076">clinical
-                    decision-rule development</a>. Clinical decision rules (especially those used in emergency
-                medicine), need
-                to be extremely transparent so they can be readily audited and used by physicians making split-second
-                decisions.
-                To this end, we have developed methodology for enhancing decision trees. For example, replacing the
-                standard
-                CART algorithm with a novel <a href="https://arxiv.org/abs/2201.11931">greedy algorithm</a> for
-                tree-sums can
-                substantially improve predictive performance without sacrificing predictive performance. Additionally,
-                <a href="https://arxiv.org/abs/2202.00858">hierarchical regularization</a> can improve the predictions
-                of
-                an already fitted model without altering its interpretability. Despite their effectiveness, transparent
-                models
-                such as these often get overlooked in favor of black-box models; to address this issue, we&#39;ve spent
-                a lot of
-                time curating <a href="https://github.com/csinva/imodels">imodels</a>, an open-source package for
-                fitting
-                state-of-the-art transparent models.
-            </p>
-            <p>🌀 My second line of my work focuses on <b>interpreting and improving black-box models</b>, such as
-                neural
-                networks, for
-                the cases when a transparent model simply can&#39;t predict well enough. Here, I work closely on
-                real-world
-                problems such as analyzing imaging data from <a href="">cell biology</a> and <a
-                    href="https://arxiv.org/abs/2003.01926">cosmology</a>. Interpretability in these contexts demands
-                more
-                nuanced information than standard notions of &quot;feature importance&quot; common in the literature. As
-                a result, we
-                have developed methods to characterize and summarize the <a
-                    href="https://arxiv.org/abs/1806.05337">interactions</a> in a neural network, particularly in <a
-                    href="https://arxiv.org/abs/2003.01926">transformed domains</a> (such as the Fourier domain), where
-                domain interpretations can be more natural. I&#39;m particularly interested in how we can ensure that
-                these
-                interpretations are <em>useful</em>, either by using them to <a
-                    href="http://proceedings.mlr.press/v119/rieger20a.html">embed prior knowledge</a> into a model or
-                identify when it can be trusted.</p>
-            <p>🤝 There is a lot more work to do on bridging the gap between transparent models and black-box models in
-                the real
-                world. One promising avenue is distillation, whereby we can use a black-box model to build a better
-                transparent
-                model. For example, in <a
-                    href="https://proceedings.neurips.cc/paper/2021/hash/acaa23f71f963e96c8847585e71352d6-Abstract.html">one
-                    work</a> we were able to distill state-of-the-art neural networks in cell-biology and cosmology into
-                transparent wavelet models with &lt;40 parameters. Despite this huge size reduction, these models
-                actually <em>improve</em>
-                prediction performance. By incorporating close domain knowledge into models and the way we approach
-                problems, I
-                believe interpretability can help unlock many benefits of machine-learning for improving healthcare and
-                science.
-            </p>
-        </div>
-    </details>
-</h2>
-<div class="iframe-box" style="margin-top: -30px">
-    <iframe class="iframe"
-        src="https://docs.google.com/presentation/d/e/2PACX-1vSj1GlDHEk8AhlYSL9eRb0sFHDF-QqvgS9SckgeekmzTtYdNQWGalhOR5MlmfKsgyW3TtOYq-SpyPkA/embed?rm=minimal"
-        frameborder="0" width="100%" height="auto" allowfullscreen="true" mozallowfullscreen="true"
-        webkitallowfullscreen="true">
-    </iframe>
+<h2 style="text-align: center; margin-top: -150px;"> Research</h2>
+
+<style>
+    .research_box {
+        padding: 10px;
+        margin-bottom: 20px;
+        background-color: #262626;
+        width: 100%;
+        border: 3px solid #3d3c3c;
+    }
+
+    .research_box:hover {
+        border: 3px solid #5bc0de;
+        background-color: #3d3c3c;
+        /* Adjust the border width and color as needed */
+    }
+</style>
+<div style="padding-left: 5%;padding-right: 5%">
+    <div style="width: 100%;padding: 8px;margin-bottom: 20px; text-align:center; font-size: large;">
+        Here are some areas I'm currently excited about. If you want to chat about research (or
+        are interested in interning at MSR), feel free to reach out over email :)</div>
+
+    <div class="research_box"><strong>🔎
+            Interpretability.</strong> I'm interested in <a href="https://arxiv.org/abs/2402.01761">rethinking
+            interpretability</a> in the context of LLMs (collaboration with many folks, particularly <a
+            href="https://www.microsoft.com/en-us/research/people/rcaruana/">Rich Caruana</a>).
+        <br>
+        <br>
+        <a href="https://www.nature.com/articles/s41467-023-43713-1">augmented imodels</a> - use LLMs to build a
+        transparent model<br>
+        <a href="https://github.com/csinva/imodels">imodels</a> - build interpretable models in the style of
+        scikit-learn<br>
+        <a href="http://proceedings.mlr.press/v119/rieger20a.html">explanation penalization</a> - regularize
+        explanations align models with prior knowledge<br>
+        <a href="https://proceedings.neurips.cc/paper/2021/file/acaa23f71f963e96c8847585e71352d6-Paper.pdf">adaptive
+            wavelet distillation</a> - replace neural nets with simple, performant wavelet models
+    </div>
+
+    <div class="research_box">
+
+        <strong>🚗 LLM steering. </strong>Interpretability tools can provide ways to better guide and use LLMs
+        (collaboration with many folks, particularly <a href="https://jxmo.io">Jack Morris</a>).
+        <br>
+        <br>
+        <a href="https://arxiv.org/abs/2310.14034">tree prompting</a> - improve black-box few-shot text classification
+        with decision trees<br>
+        <a href="https://arxiv.org/abs/2311.02262">attention steering</a> - guide LLMs by emphasizing specific input
+        spans<br>
+        <a href="https://arxiv.org/abs/2210.01848">interpretable autoprompting</a> - automatically find fluent
+        natural-language prompts<br>
+    </div>
+
+
+    <div class="research_box">
+
+        <strong>🧠 Neuroscience. </strong> Since joining MSR, I have been focused on building and applying these methods
+        to understand how the human brain represents language (using fMRI in collaboration with the <a
+            href="https://www.cs.utexas.edu/~huth/index.html">Huth lab</a> at UT Austin).
+        <br>
+        <br>
+        <a href="https://arxiv.org/abs/2305.09863">summarize &amp; score explanations</a> - generate natural-language
+        explanations of fMRI encoding models
+    </div>
+
+    <div class="research_box"><strong>💊
+            Healthcare. </strong>I'm also actively working in how we can improve clinical decision instruments by using
+        the information contained across various sources in the medical literature (in collaboration with many folks
+        including <a href="https://profiles.ucsf.edu/aaron.kornblith">Aaron Kornblith</a> at UCSF and the MSR <a
+            href="https://www.microsoft.com/en-us/research/group/real-world-evidence/">Health Futures team</a>).
+        <br>
+        <br>
+        <a href="https://arxiv.org/abs/2306.00024">clinical self-verification</a> - self-verification improves
+        performance and interpretability of clinical information extraction<br>
+        <a href="https://journals.plos.org/digitalhealth/article?id=10.1371/journal.pdig.0000076">clinical rule
+            vetting</a> - stress testing a clinical decision instrument performance for intra-abdominal injury
+
+    </div>
 </div>
 
-<!--<table>-->
-<!--    <tr>-->
-<!--        <th>-->
-<!--            <strong style="font-size:21px;"> interpretable ml </strong> <br/>-->
-<!--            <a href="/blog/research/interp"> what is interpretability? </a> <br/>-->
-<!--            <a href="/blog/research/interp_eval"> evaluating interpretability </a>-->
-<!--        </th>-->
-<!--&lt;!&ndash;        <th><strong style="font-size:21px;"> interpretability applications </strong></th>&ndash;&gt;-->
-<!--        <th>-->
-<!--            <strong style="font-size:21px;"> science </strong> <br/>-->
-<!--            <a href="/blog/research/connectomics"> Connectomics</a> <br/>-->
-<!--            <a href="/blog/research/neural_coding" > neural coding </a>-->
-<!--        </th>-->
-<!--&lt;!&ndash;        <th>&ndash;&gt;-->
-<!--&lt;!&ndash;            <strong style="font-size:21px;"> ml theory </strong>&ndash;&gt;-->
-<!--&lt;!&ndash;        </th>&ndash;&gt;-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--        <th><br/></th>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--        <th><img src="{{ site.baseurl }}/assets/img/alexnet.png" class="research_thumb"></th>-->
-<!--&lt;!&ndash;        <th><img src="{{ site.baseurl }}/assets/img/cosmo.png" class="research_thumb"></th>&ndash;&gt;-->
-<!--        <th><img src="{{ site.baseurl }}/assets/img/neuron.gif" class="research_thumb"></th>-->
-<!--&lt;!&ndash;        <th><img src="{{ site.baseurl }}/assets/img/complexity.png" class="research_thumb"></th>&ndash;&gt;-->
-<!--    </tr>-->
-<!--</table>-->
-
-<!--<br/>-->
+<hr>
 
 <script>
     $(document).ready(function () {
         $('#research_table').DataTable({
             "order": [[0, "desc"]],
-            "aLengthMenu": [[15, -1], [15, "All"]],
-            "pageLength": "15",
+            "aLengthMenu": [[6, -1], [6, "All"]],
+            "pageLength": 6,
             dom: 'Bfrtip',
             buttons: [
                 {
                     text: '🔎 interpretability',
                     action: function (e, dt, node, config) {
-                        $(".dataTables_wrapper input").val(function () {
-                            return this.value + "🔎";
-                        });
-                        // $(".dataTables_wrapper input").submit();
+                        var current_val = $(".dataTables_wrapper input").val();
+                        var table = $('#research_table').DataTable();
+                        table.search(current_val + "🔎").draw();
                     }
                 },
                 {
                     text: '🌀 deep learning',
                     action: function (e, dt, node, config) {
-                        $(".dataTables_wrapper input").val(function () {
-                            return this.value + "🌀";
-                        });
-                        // $(".dataTables_wrapper input").val("🌀");
+                        var current_val = $(".dataTables_wrapper input").val();
+                        var table = $('#research_table').DataTable();
+                        table.search(current_val + "🌀").draw();
                     }
                 },
                 {
                     text: '🌳 interpretable models',
                     action: function (e, dt, node, config) {
-                        $(".dataTables_wrapper input").val(function () {
-                            return this.value + "🌳";
-                        });
-                        // $(".dataTables_wrapper input").val("🌳");
+                        var current_val = $(".dataTables_wrapper input").val();
+                        var table = $('#research_table').DataTable();
+                        table.search(current_val + "🌳").draw();
                     }
                 },
                 {
                     text: '💻 open-source ML',
                     action: function (e, dt, node, config) {
-                        $(".dataTables_wrapper input").val(function () {
-                            return this.value + "💻";
-                        });
-                        // $(".dataTables_wrapper input").val("💻");
+                        var current_val = $(".dataTables_wrapper input").val();
+                        var table = $('#research_table').DataTable();
+                        table.search(current_val + "💻").draw();
                     }
                 },
                 {
                     text: '🧠',
                     action: function (e, dt, node, config) {
-                        $(".dataTables_wrapper input").val(function () {
-                            return this.value + "🧠";
-                        });
-                        // $(".dataTables_wrapper input").val("🧠");
+                        var current_val = $(".dataTables_wrapper input").val();
+                        var table = $('#research_table').DataTable();
+                        table.search(current_val + "🧠").draw();
                     }
                 },
             ]
@@ -604,6 +565,13 @@
     .dt-button span {
         color: white;
         font-family: Lora, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
 
+    .dt-button {
+        border-color: rgb(141, 141, 141) !important;
+    }
+
+    .dt-button:hover {
+        border: 2px solid #5bc0de !important;
     }
 </style>

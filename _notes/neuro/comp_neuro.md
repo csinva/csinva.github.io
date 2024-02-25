@@ -57,7 +57,7 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - retina has on-center / off-surround cells - stimulated by points
   - then, V1 has differently shaped receptive fields
 
-- *efficient coding hypothesis* - learns different combinations (e.g. lines) that can efficiently represent images
+- *efficient coding hypothesis* - brain learns different combinations (e.g. lines) that can efficiently represent images
 
   1. sparse coding (Olshausen and Field, 1996)
   2. ICA (Bell and Sejnowski, 1997)
@@ -1519,11 +1519,11 @@ the operations above allow for encoding many normal data structures into a singl
 
 ## neuro-dl reviews
 
-- https://xcorr.net/2023/01/01/2022-in-review-neuroai-comes-of-age/
+- Blog post ([xcorr, 2023](https://xcorr.net/2023/01/01/2022-in-review-neuroai-comes-of-age/))
 
 - Neuroscience-Inspired Artificial Intelligence ([hassabis et al. 2017](https://www.cell.com/neuron/pdf/S0896-6273(17)30509-3.pdf))
 
-- Toward next-generation artificial intelligence: catalyzing the NeuroAI revolution ([zador, ...bengio, dicarlo, lecun, ...sejnowski, tsao, 2022](https://arxiv.org/abs/2210.08340))
+- Catalyzing next-generation Artificial Intelligence through NeuroAI ([zador, ...bengio, dicarlo, lecun, ...sejnowski, tsao, 2022](https://arxiv.org/abs/2210.08340))
 
 - Computational language modeling and the promise of in silico experimentation ([jain, vo, wehbe, & huth, 2023](https://direct.mit.edu/nol/article/doi/10.1162/nol_a_00101/114613/Computational-language-modeling-and-the-promise-of)) - 4 experimental design examples
 
@@ -1556,6 +1556,8 @@ the operations above allow for encoding many normal data structures into a singl
     - modularity, curated data / diverse objectives, new benchmarks
 
 - Neurocompositional computing: From the Central Paradox of Cognition to a new generation of AI systems ([smolensky, ..., gao, 2022](https://ojs.aaai.org/index.php/aimagazine/article/view/18599))
+
+- A Path Towards Autonomous Machine Intelligence ([lecun 2022](https://openreview.net/pdf?id=BZ5a1r-kVsf))
 
 - [Towards NeuroAI: Introducing Neuronal Diversity into Artificial Neural Networks](https://www.semanticscholar.org/paper/Towards-NeuroAI%3A-Introducing-Neuronal-Diversity-Fan-Li/c0aae24f2e250c7d4b5aab608622dbb933f43a4d) (2023)
 

@@ -809,9 +809,11 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
   - e.g. scatter plot, meta-model plot, regional VIMs, parametric VIMs
   - CSM - relative change of model ouput mean when range of $X_i$ is reduced to any subregion
   - CSV - same thing for variance
+- Sparse and Faithful Explanations Without Sparse Models ([sun...wang, rudin, 2024](https://arxiv.org/pdf/2402.09702.pdf)) - introduce sparse explanation value (SEV) - that measure the decision sparsity of a model (defined using movements over a hypercube)
 - [A Simple and Effective Model-Based Variable Importance Measure](https://arxiv.org/pdf/1805.04755.pdf)
     - measures the feature importance (defined as the variance of the 1D partial dependence function) of one feature conditional on different, fixed points of the other feature. When the variance is high, then the features interact with each other, if it is zero, they don’t interact.
 - [Learning to Explain: Generating Stable Explanations Fast - ACL Anthology](https://aclanthology.org/2021.acl-long.415/) (situ et al. 2021) - train a model on "teacher" importance scores (e.g. SHAP) and then use it to quickly predict importance scores on new examples
+- Guarantee Regions for Local Explanations ([havasi...doshi-velez, 2024](https://arxiv.org/abs/2402.12737v1)) - use anchor points to find regions for which local interp methods reliably fit the full model
 
 ### importance curves
 

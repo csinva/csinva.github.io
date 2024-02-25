@@ -195,6 +195,9 @@ Deep learning models have achieved impressive predictive performance by learning
 Chandan is a fifth and final-year PhD student in computer science. He hopes to build on recent advances in machine-learning to improve the world of healthcare. His research focuses on how to interpret machine-learning models with the goal of ensuring that they can be reliably used when someone’s health is at stake.
 </details>
 
+
+## research overviews
+
 <details>
 <summary>4-paragraph research overview (feb 2022)</summary>
 <p>🔎 My research focuses on how we can build trustworthy machine-learning systems by making them interpretable. In my work, interpretability is grounded seriously via close collaboration with domain experts, e.g. medical doctors or cell biologists. These collaborations have given rise to useful methodology, roughly split into two areas: (1) building more effective <em>transparent models</em> and (2) improving the trustworthiness of <em>black-box models</em>. Going forward, I hope to help bridge the gap between transparent models and black-box models to improve real-world healthcare.</p>
@@ -202,3 +205,117 @@ Chandan is a fifth and final-year PhD student in computer science. He hopes to b
 <p>🌀 My second line of my work focuses on interpreting and improving black-box models, such as neural networks, for the cases when a transparent model simply can&#39;t predict well enough. Here, I work closely on real-world problems such as analyzing imaging data from <a href="">cell biology</a> and <a href="https://arxiv.org/abs/2003.01926">cosmology</a>. Interpretability in these contexts demands more nuanced information than standard notions of &quot;feature importance; common in the literature. As a result, we have developed methods to characterize and summarize the <a href="https://arxiv.org/abs/1806.05337">interactions</a> in a neural network, particularly in <a href="https://arxiv.org/abs/2003.01926">transformed domains</a> (such as the Fourier domain), where domain interpretations can be more natural. I&#39;m particularly interested in how we can ensure that these interpretations are <em>useful</em>, either by using them to <a href="http://proceedings.mlr.press/v119/rieger20a.html">embed prior knowledge</a> into a model or identify when it can be trusted.</p>
 <p>🤝 There is a lot more work to do on bridging the gap between transparent models and black-box models in the real world. One promising avenue is distillation, whereby we can use a black-box model to build a better transparent model. For example, in <a href="https://proceedings.neurips.cc/paper/2021/hash/acaa23f71f963e96c8847585e71352d6-Abstract.html">one work</a> we were able to distill state-of-the-art neural networks in cell-biology and cosmology into transparent wavelet models with &lt;40 parameters. Despite this huge size reduction, these models actually <em>improve</em> prediction performance. By incorporating close domain knowledge into models and the way we approach problems, I believe interpretability can help unlock many benefits of machine-learning for improving healthcare and science.</p>
 </details>
+
+<details class="research_details">
+      <summary> Read research overview (interpretable modeling)</summary>
+      <div class="research_details_text">
+          <p>🔎 My research focuses on how we can build trustworthy machine-learning systems by making them
+              interpretable. In
+              my work, interpretability is grounded seriously via close collaboration with domain experts, e.g.
+              medical
+              doctors or cell biologists. These collaborations have given rise to useful methodology, roughly split
+              into two
+              areas: (1) building more effective <em>transparent models</em> and (2) improving the trustworthiness of
+              <em>black-box
+                  models</em>. Going forward, I hope to help bridge the gap between transparent models and black-box
+              models to
+              improve real-world healthcare.
+          </p>
+          <p>🌳 Whenever possible, <b>building transparent models</b> is the most effective route towards ensuring
+              interpretability.
+              Transparent models are interpretable by design, including models such as (concise) decision trees, rule
+              lists,
+              and linear models. My work in this area was largely motivated by the problem of
+              <a href="https://journals.plos.org/digitalhealth/article?id=10.1371/journal.pdig.0000076">clinical
+                  decision-rule development</a>. Clinical decision rules (especially those used in emergency
+              medicine), need
+              to be extremely transparent so they can be readily audited and used by physicians making split-second
+              decisions.
+              To this end, we have developed methodology for enhancing decision trees. For example, replacing the
+              standard
+              CART algorithm with a novel <a href="https://arxiv.org/abs/2201.11931">greedy algorithm</a> for
+              tree-sums can
+              substantially improve predictive performance without sacrificing predictive performance. Additionally,
+              <a href="https://arxiv.org/abs/2202.00858">hierarchical regularization</a> can improve the predictions
+              of
+              an already fitted model without altering its interpretability. Despite their effectiveness, transparent
+              models
+              such as these often get overlooked in favor of black-box models; to address this issue, we&#39;ve spent
+              a lot of
+              time curating <a href="https://github.com/csinva/imodels">imodels</a>, an open-source package for
+              fitting
+              state-of-the-art transparent models.
+          </p>
+          <p>🌀 My second line of my work focuses on <b>interpreting and improving black-box models</b>, such as
+              neural
+              networks, for
+              the cases when a transparent model simply can&#39;t predict well enough. Here, I work closely on
+              real-world
+              problems such as analyzing imaging data from <a href="">cell biology</a> and <a
+                  href="https://arxiv.org/abs/2003.01926">cosmology</a>. Interpretability in these contexts demands
+              more
+              nuanced information than standard notions of &quot;feature importance&quot; common in the literature. As
+              a result, we
+              have developed methods to characterize and summarize the <a
+                  href="https://arxiv.org/abs/1806.05337">interactions</a> in a neural network, particularly in <a
+                  href="https://arxiv.org/abs/2003.01926">transformed domains</a> (such as the Fourier domain), where
+              domain interpretations can be more natural. I&#39;m particularly interested in how we can ensure that
+              these
+              interpretations are <em>useful</em>, either by using them to <a
+                  href="http://proceedings.mlr.press/v119/rieger20a.html">embed prior knowledge</a> into a model or
+              identify when it can be trusted.</p>
+          <p>🤝 There is a lot more work to do on bridging the gap between transparent models and black-box models in
+              the real
+              world. One promising avenue is distillation, whereby we can use a black-box model to build a better
+              transparent
+              model. For example, in <a
+                  href="https://proceedings.neurips.cc/paper/2021/hash/acaa23f71f963e96c8847585e71352d6-Abstract.html">one
+                  work</a> we were able to distill state-of-the-art neural networks in cell-biology and cosmology into
+              transparent wavelet models with &lt;40 parameters. Despite this huge size reduction, these models
+              actually <em>improve</em>
+              prediction performance. By incorporating close domain knowledge into models and the way we approach
+              problems, I
+              believe interpretability can help unlock many benefits of machine-learning for improving healthcare and
+              science.
+          </p>
+      </div>
+  </details>
+
+<!-- <div class="iframe-box" style="margin-top: -30px"> -->
+<div class="iframe-box">
+    <iframe class="iframe"
+        src="https://docs.google.com/presentation/d/e/2PACX-1vSj1GlDHEk8AhlYSL9eRb0sFHDF-QqvgS9SckgeekmzTtYdNQWGalhOR5MlmfKsgyW3TtOYq-SpyPkA/embed?rm=minimal"
+        frameborder="0" width="100%" height="auto" allowfullscreen="true" mozallowfullscreen="true"
+        webkitallowfullscreen="true">
+    </iframe>
+</div>
+
+<!--<table>-->
+<!--    <tr>-->
+<!--        <th>-->
+<!--            <strong style="font-size:21px;"> interpretable ml </strong> <br/>-->
+<!--            <a href="/blog/research/interp"> what is interpretability? </a> <br/>-->
+<!--            <a href="/blog/research/interp_eval"> evaluating interpretability </a>-->
+<!--        </th>-->
+<!--&lt;!&ndash;        <th><strong style="font-size:21px;"> interpretability applications </strong></th>&ndash;&gt;-->
+<!--        <th>-->
+<!--            <strong style="font-size:21px;"> science </strong> <br/>-->
+<!--            <a href="/blog/research/connectomics"> Connectomics</a> <br/>-->
+<!--            <a href="/blog/research/neural_coding" > neural coding </a>-->
+<!--        </th>-->
+<!--&lt;!&ndash;        <th>&ndash;&gt;-->
+<!--&lt;!&ndash;            <strong style="font-size:21px;"> ml theory </strong>&ndash;&gt;-->
+<!--&lt;!&ndash;        </th>&ndash;&gt;-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--        <th><br/></th>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--        <th><img src="{{ site.baseurl }}/assets/img/alexnet.png" class="research_thumb"></th>-->
+<!--&lt;!&ndash;        <th><img src="{{ site.baseurl }}/assets/img/cosmo.png" class="research_thumb"></th>&ndash;&gt;-->
+<!--        <th><img src="{{ site.baseurl }}/assets/img/neuron.gif" class="research_thumb"></th>-->
+<!--&lt;!&ndash;        <th><img src="{{ site.baseurl }}/assets/img/complexity.png" class="research_thumb"></th>&ndash;&gt;-->
+<!--    </tr>-->
+<!--</table>-->
+
+<!--<br/>-->
