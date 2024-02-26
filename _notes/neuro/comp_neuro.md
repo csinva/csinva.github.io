@@ -649,6 +649,9 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - evaluate TPDN based on how well the decoder applied to the TPDN representation produces the same output as the original RNN
 - Discovering the Compositional Structure of Vector Representations with Role Learning Networks ([soulos, mccoy, linzen, & smolensky, 2019](https://arxiv.org/pdf/1910.09113.pdf)) - extend DISCOVER to learned roles with an LSTM
   - role vector is regularized to be one-hot
+- - Concepts and Compositionality: In Search of the Brain's Language of Thought ([frankland & greene, 2020](https://www.annualreviews.org/doi/10.1146/annurev-psych-122216-011829))
+    - Fodor’s classic language of thought hypothesis: our minds employ an amodal, language-like system for combining and recombining simple concepts to form more complex thoughts
+    - combinatorial processes engage a common set of brain regions, typically housed throughout the brain’s default mode network (DMN)
 
 
 ## synaptic plasticity, hebb's rule, and statistical learning
@@ -1584,6 +1587,8 @@ the operations above allow for encoding many normal data structures into a singl
   - aligning with experimental/psychological data
     - [How Well Do Unsupervised Learning Algorithms Model Human Real-time and Life-long Learning? | OpenReview](https://openreview.net/forum?id=c0l2YolqD2T) (zhuang...dicarlo, yamins, 2022)
 - Biologically-inspired DNNs (not data-driven)
+  - Relating transformers to models and neural representations of the hippocampal formation ([whittington, warren, & behrens, 2022](https://arxiv.org/abs/2112.04035))
+    - transformers, when equipped with recurrent position encodings, replicate the pre- cisely tuned spatial representations of the hippocampal formation; most notably place and grid cells
   - Emergence of foveal image sampling from learning to attend in visual scenes ([cheung, weiss, & olshausen, 2017](https://arxiv.org/abs/1611.09430)) - using neural attention model, learn a retinal sampling lattice
       - can figure out what parts of the input the model focuses on
   - [Simulating a Primary Visual Cortex at the Front of CNNs Improves Robustness to Image Perturbations](https://proceedings.neurips.cc/paper/2020/hash/98b17f068d5d9b7668e19fb8ae470841-Abstract.html) (dapello…cox, dicarlo, 2020) - biologically inspired early neural-network layers (gabors etc.) improve robustness of CNNs

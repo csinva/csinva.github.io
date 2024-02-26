@@ -1066,6 +1066,16 @@ mixture of experts models have become popular because of the need for (1) fast s
     - task 1: idea-sentence generation -- given sentences describing background context + a seed term, generate a sentence describing an idea
     - task 2: idea-node prediction -- given the background context, predict new links between existing concepts (and generate new concepts)
   - forecasting paper titles ([blog post](https://csinva.io/gpt-paper-title-generator/))
+- Communication with animals
+
+  - [Coller-Dolittle Prize](https://coller-dolittle-24.sites.tau.ac.il) for Inter-species Communication
+  - Cetacean Translation Initiative: a roadmap to deciphering the communication of sperm whales ([andreas, begus, …, wood, 2021](https://arxiv.org/pdf/2104.08614.pdf))
+      - sperm whale has largest brain
+      - ML outputs are  primarily a tool to constrain hypothesis space to build formal and interpretable descriptions of the sperm whale communication
+  - A Theory of Unsupervised Translation Motivated by Understanding Animal Communication ([goldwasser…paradise, 2023](https://arxiv.org/abs/2211.11081))
+  - Approaching an unknown communication system by latent space exploration and causal inference ([begus, leban, & gero, 2023](https://arxiv.org/abs/2303.10931)) - manipulate GAN latent variables in approach called causal disentanglement with extreme values (CDEV)
+  - Vowels and Diphthongs in Sperm Whales ([begus, sprous, leban, & gero, 2023](https://osf.io/preprints/osf/285cs)) - use data from the dominica sperm whale project ([gero et al. 2014](https://onlinelibrary.wiley.com/doi/abs/10.1111/mms.12086))
+
 - scientific organization ([galactica](https://galactica.org/static/paper.pdf))
   - related but smaller models
     - SciBERT ([beltagy...cohan, 2019](https://arxiv.org/abs/1903.10676))
@@ -1249,6 +1259,13 @@ mixture of experts models have become popular because of the need for (1) fast s
 - Evaluating Large Language Models on Medical Evidence Summarization ([tang...peng, 2023](https://pubmed.ncbi.nlm.nih.gov/37162998/)) - score summaries based on 6 dimensions (e.g. coherence)
   - Summarizing, Simplifying, and Synthesizing Medical Evidence Using GPT-3 (with Varying Success) ([shaib...wallace, 2023](https://arxiv.org/abs/2305.06299))
   - SummIt: Iterative Text Summarization via ChatGPT ([zhang, ..., zhang, 2023](https://arxiv.org/abs/2305.14835))
+- TRIALSCOPE: A Unifying Causal Framework for Scaling Real-World Evidence Generation with Biomedical Language Models ([gonzalez, wong, gero, …, poon, 2023](https://arxiv.org/pdf/2311.01301.pdf))
+  - extract attributes from structured & unstructured EHR to form basis for clinical trial specification / experiments
+- Scaling Clinical Trial Matching Using Large Language Models: A Case Study in Oncology ([wong, zhang, …, poon, 2023](https://proceedings.mlr.press/v219/wong23a.html))
+  - LLMs can structure eligibility criteria of clinical trials and extract complex matching logic (e.g., nested AND/OR/NOT)
+- BiomedJourney: Counterfactual Biomedical Image Generation by Instruction-Learning from Multimodal Patient Journeys ([gu, yang, usuyama, …, gao, poon, 2023](https://arxiv.org/abs/2310.10765))
+  - counterfactual biomedical image generation by instruction-learning from multimodal patient journeys
+  - specifically, learn from triplets (prior image, progression description, new image), where GPT-4 generates progression description based on the image notes
 
 
 
