@@ -28,10 +28,10 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
     - vision: marvin minsky thought it would be a summer project
 
   - lighthill debate 1973 - was ai worth funding?
-  - intelligence tends to be developed by young children...
+  - intelligence tends to be developed by young children
   - cortex grew very rapidly
 
-- cybernetics / artficial neurao nets
+- cybernetics / artficial neuro nets
 
   - people: norbert weiner, mcculloch & pitts, rosenblatt
 
@@ -520,8 +520,8 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 
 - linear recurrent network: $\tau \frac{d\mathbf{v}}{dt} = -\mathbf{v} + W\mathbf{u} + M \mathbf{v}$
   - let $\mathbf{h} = W\mathbf{u}$
-  - want to investiage different M
-- can solve eq for $\mathbf{v}$ using eigenvectors
+  - want to investigate different M
+- can solve for $\mathbf{v}$ using eigenvectors
   - suppose M (NxN) is symmetric (connections are equal in both directions)
     - $\to$ M has N orthogonal eigenvectors / eigenvalues
     - let $e_i$ be the orthonormal eigenvectors
@@ -541,7 +541,7 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - ex. memory of eye position in medial vestibular nucleus (Seung et al. 2000)
     - integrator neuron maintains persistent activity
 - nonlinear recurrent networks: $\tau \frac{d\mathbf{v}}{dt} = -\mathbf{v} + F(\mathbf{h}+ M \mathbf{v})$
-  - ex. rectification linearity F(x) = max(0,x)
+  - ex. ReLu F(x) = max(0,x)
     - ensures that firing rates never go below
   - can have eigenvalues > 1 but stable due to rectification
   - can perform selective "attention"
@@ -553,15 +553,24 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - linear stability analysis - find fixed points and take partial derivatives
     - use eigenvalues to determine dynamics of the nonlinear network near a fixed point
 
-**hopfield nets**
+## hopfield nets
 
 - hopfield nets can store / retrieve memories
-- fully connected (no input/output) - activations are what matter
-  - can memorize patterns - starting with noisy patterns can converge to these patterns
-- marr-pogio stereo algorithm
+  - marr-pogio stereo algorithm
+
+- binary Hopfield networks were introduced as associative memories that can store and retrieve patterns (Hopfield, 1982)
+  - network with dimension $d$ can store $d$ uncorrelated patterns, but fewer correlated patterns
+  - in contrast to the storage capacity, the number of energy minima (spurious states, stable states) of Hopfield networks is exponential in $d$​ (Tanaka & Edwards, 1980; Bruck & Roychowdhury, 1990; Wainrib & Touboul, 2013)
+  - energy function only has pairwise connections
+  - fully connected (no input/output) - activations are what matter
+    - can memorize patterns - starting with noisy patterns can converge to these patterns
+
 - hopfield three-way connections
   - $E = - \sum_{i, j, k} T_{i, j, k} V_i V_j V_k$ (self connections set to 0)
-    - update to $V_i$ is now bilinear
+    - update to $V_i$​ is now bilinear
+- modern hopfield network = dense associative memory (DAM) model
+  - use an energy function with interaction functions of the form $F (x) = x^n$ and achieve storage capacity $\propto d^{n-1}$ (Krotov & Hopfield, 2016; 2018)
+
 - [hopfield nets are all you need](https://arxiv.org/abs/2008.02217)
   - keys: each input has a key vector which "represents info about this input" (e.g. this is a noun)
   - queries: each input has a query vector which "asks for other inputs that would be useful context" (e.g. what adjectives describe this word)
@@ -582,13 +591,14 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - trained nn to go from pixels to head-centered coordinate frame
     - yielded gain fields
   - pouget et al. were able to find that this helped having 2 pop vectors: one for retina, one for eye, then add to account for it
-- support vector networks (vapnik et al.) - svms early inspired from nns
-- dendritic nonlinearities (hausser & mel 03)
-- example to think about neurons due this: $u = w_1 x_1 + w_2x_2 + w_{12}x_1x_2$
+- support vector networks (vapnik et al.) - svms early inspired from NNs
+- dendritic nonlinearities (hausser & mel, 2003)
+  - example to think about neurons do this: $u = w_1 x_1 + w_2x_2 + w_{12}x_1x_2$
   - $y=\sigma(u)$
   - somestimes called sigma-pi unit since it's a sum of products
   - exponential number of params...**could be fixed w/ kernel trick?**
-    - could also incorporate geometry constraint...
+    - could also incorporate geometry constraint
+
 
 ## unsupervised learning
 
@@ -600,7 +610,7 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 
 ### hebbian learning and pca
 
-- pca can also be thought of as a tool for decorrelation (in pc dimension, tends to be less correlated)
+- pca can also be thought of as a tool for decorrelation (pc coefs tend to be less correlated)
 - hebbian learning = fire together, wire together: $\Delta w_{ab} \propto <a, b>$ note: $<a, b>$ is correlation of a and b (average over time)
 - linear hebbian learning (perceptron with linear output)
 - $\dot{w}_i \propto <y, x_i> \propto \sum_j w_j <x_j, x_i>$ since weights change relatively slowly
@@ -621,37 +631,13 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - easier to build
   - gets more even outputs
   - only has ~1.5 million fibers
-
-## tensor product representation (TPR)
-
-- tensor product representation = TPR
-
-  - Tensor product variable binding and the representation of symbolic structures in connectionist systems ([paul smolensky, 1990](https://www.sciencedirect.com/science/article/abs/pii/000437029090007M?via%3Dihub)) - activation patterns are "symbols" and internal structure allows them to be processed like symbols
-  - **filler** - one vector that embeds the content of the constituent
-
-  - **role** - second vector that embeds the structural role it fills
-
-  - TPR is built by summing the outer product between roles and fillers:
-
-  - ![tpr](../assets/tpr.png)
-    - can optionally flatten the final TPR as is done in [mccoy...smolensky, 2019](https://arxiv.org/pdf/1812.08718.pdf) if we want to compare it to a vector or an embedding
-
-  - TPR of a structure is the sum of the TPR of its constituents
-    - tensor product operation allows constituents to be uniquely identified, even after the sum (if roles are linearly independent)
-- [TPR intro blog post](https://csinva.io/blog/misc/24_tensor_product_repr)
-- [TPR slides](https://www.mit.edu/~jda/teaching/6.884/slides/oct_02.pdf)
-- RNNs Implicitly Implement Tensor Product Representations ([mccoy...smolensky, 2019](https://arxiv.org/pdf/1812.08718.pdf))
-  - introduce TP Decomposition Networks (TPDNs), which use TPRs to approximate existing vector representations
-    - assumes a particular hypothesis for the relevant set of roles (e.g., sequence indexes or structural positions in a parse tree)
-
-  - TPDNs can successfully approximate linear and tree-based RNN autoencoder representations
-
-  - evaluate TPDN based on how well the decoder applied to the TPDN representation produces the same output as the original RNN
-- Discovering the Compositional Structure of Vector Representations with Role Learning Networks ([soulos, mccoy, linzen, & smolensky, 2019](https://arxiv.org/pdf/1910.09113.pdf)) - extend DISCOVER to learned roles with an LSTM
-  - role vector is regularized to be one-hot
-- - Concepts and Compositionality: In Search of the Brain's Language of Thought ([frankland & greene, 2020](https://www.annualreviews.org/doi/10.1146/annurev-psych-122216-011829))
-    - Fodor’s classic language of thought hypothesis: our minds employ an amodal, language-like system for combining and recombining simple concepts to form more complex thoughts
-    - combinatorial processes engage a common set of brain regions, typically housed throughout the brain’s default mode network (DMN)
+- ![](../assets/7_2_1.png)
+  - most active neuron is the one whose w is closest to x
+- *competitive learning*
+  - updating weights given a new input
+    1. pick a cluster (corresponds to most active neuron)
+    2. set weight vector for that cluster to running average of all inputs in that cluster
+      - $\Delta w = \epsilon \cdot (\mathbf{x} - \mathbf{w})$
 
 
 ## synaptic plasticity, hebb's rule, and statistical learning
@@ -679,20 +665,29 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - hebbian learning learns w aligned with principal eigenvector of input correlation matrix
   - this is same as PCA
 
-## intro to unsupervised learning
+## tensor product representation (TPR)
 
-- ![](../assets/7_2_1.png)
-  - most active neuron is the one whose w is closest to x
-- *competitive learning*
-  - updating weights given a new input
-    1. pick a cluster (corresponds to most active neuron)
-    2. set weight vector for that cluster to running average of all inputs in that cluster
-      - $\Delta w = \epsilon \cdot (\mathbf{x} - \mathbf{w})$
-  - related to *self-organizing maps* = kohonen maps
-    - in self-organizing maps also update other neurons in the neighborhood of the winner
-    - update winner closer
-    - update neighbors to also be closer
-    - ex. V1 has orientation preference maps that do this
+- tensor product representation = TPR
+  - Tensor product variable binding and the representation of symbolic structures in connectionist systems ([paul smolensky, 1990](https://www.sciencedirect.com/science/article/abs/pii/000437029090007M?via%3Dihub)) - activation patterns are "symbols" and internal structure allows them to be processed like symbols
+  - **filler** - one vector that embeds the content of the constituent
+  - **role** - second vector that embeds the structural role it fills
+  - TPR is built by summing the outer product between roles and fillers:
+  - ![tpr](../assets/tpr.png)
+    - can optionally flatten the final TPR as is done in [mccoy...smolensky, 2019](https://arxiv.org/pdf/1812.08718.pdf) if we want to compare it to a vector or an embedding
+  - TPR of a structure is the sum of the TPR of its constituents
+    - tensor product operation allows constituents to be uniquely identified, even after the sum (if roles are linearly independent)
+- [TPR intro blog post](https://csinva.io/blog/misc/24_tensor_product_repr)
+- [TPR slides](https://www.mit.edu/~jda/teaching/6.884/slides/oct_02.pdf)
+- RNNs Implicitly Implement Tensor Product Representations ([mccoy...smolensky, 2019](https://arxiv.org/pdf/1812.08718.pdf))
+  - introduce TP Decomposition Networks (TPDNs), which use TPRs to approximate existing vector representations
+    - assumes a particular hypothesis for the relevant set of roles (e.g., sequence indexes or structural positions in a parse tree)
+  - TPDNs can successfully approximate linear and tree-based RNN autoencoder representations
+  - evaluate TPDN based on how well the decoder applied to the TPDN representation produces the same output as the original RNN
+- Discovering the Compositional Structure of Vector Representations with Role Learning Networks ([soulos, mccoy, linzen, & smolensky, 2019](https://arxiv.org/pdf/1910.09113.pdf)) - extend DISCOVER to learned roles with an LSTM
+  - role vector is regularized to be one-hot
+- Concepts and Compositionality: In Search of the Brain's Language of Thought ([frankland & greene, 2020](https://www.annualreviews.org/doi/10.1146/annurev-psych-122216-011829))
+    - Fodor’s classic language of thought hypothesis: our minds employ an amodal, language-like system for combining and recombining simple concepts to form more complex thoughts
+    - combinatorial processes engage a common set of brain regions, typically housed throughout the brain’s default mode network (DMN)
 
 ## sparse coding and predictive coding
 
@@ -718,7 +713,7 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
     - then P(C ) = $k\prod \exp(g(C_i))$
   - can implement sparse coding in a recurrent neural network
   - Olshausen & Field, 1996 - learns receptive fields in V1
-- sparse coding is a special case of *predicive coding*
+- sparse coding is a special case of *predictive coding*
   - ![](../assets/7_3_1.png)
   - there is usually a feedback connection for every feedforward connection (Rao & Ballard, 1999)
 - recurrent sparse reconstruction ([shi...joshi, darrell, wang, 2022](https://arxiv.org/pdf/2204.10962.pdf)) - sparse reconstruction (of a single image) learns a layer that does better than self-attention
@@ -792,9 +787,14 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - now people with less biased sampling are finding more sparsity
   - in cortex anasthesia tends to lower firing rates, but opposite in hippocampus
 
-## self-organizing maps
+## self-organizing maps = kohonen maps
 
 - homunculus - 3d map corresponds to map in cortex (sensory + motor)
+- related to *self-organizing maps* = kohonen maps
+  - in self-organizing maps, update other neurons in the neighborhood of the winner
+  - update winner closer
+  - update neighbors to also be closer
+  - ex. V1 has orientation preference maps that do this
 - visual cortex
   - visual cortex mostly devoted to center
   - different neurons in same regions sensitive to different orientations (changing smoothly)
@@ -845,10 +845,6 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - learn the distribution of pixels in 3x3 patches
   - then maximize this distribution - can yield textures
 - reducing the dimensionality of data with neural networks
-
-
-
-
 
 # data-driven neuroscience
 
@@ -929,8 +925,6 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
     - The neurobiological effects of electroconvulsive therapy studied through magnetic resonance – what have we learnt and where do we go? ([ousdal et al. 2022](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8630079/pdf/nihms-1710166.pdf))
     - Clinical EEG slowing induced by electroconvulsive therapy is better described by increased frontal aperiodic activity ([mith...soltani, 2023](https://www.nature.com/articles/s41398-023-02634-9))
 - local microstimulation with invasive electrodes
-
-
 
 ## datasets
 
