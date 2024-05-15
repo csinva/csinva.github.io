@@ -557,27 +557,17 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 
 - hopfield nets can store / retrieve memories
   - marr-pogio stereo algorithm
-
 - binary Hopfield networks were introduced as associative memories that can store and retrieve patterns (Hopfield, 1982)
   - network with dimension $d$ can store $d$ uncorrelated patterns, but fewer correlated patterns
   - in contrast to the storage capacity, the number of energy minima (spurious states, stable states) of Hopfield networks is exponential in $d$​ (Tanaka & Edwards, 1980; Bruck & Roychowdhury, 1990; Wainrib & Touboul, 2013)
   - energy function only has pairwise connections
   - fully connected (no input/output) - activations are what matter
     - can memorize patterns - starting with noisy patterns can converge to these patterns
-
 - hopfield three-way connections
   - $E = - \sum_{i, j, k} T_{i, j, k} V_i V_j V_k$ (self connections set to 0)
     - update to $V_i$​ is now bilinear
 - modern hopfield network = dense associative memory (DAM) model
   - use an energy function with interaction functions of the form $F (x) = x^n$ and achieve storage capacity $\propto d^{n-1}$ (Krotov & Hopfield, 2016; 2018)
-
-- [hopfield nets are all you need](https://arxiv.org/abs/2008.02217)
-  - keys: each input has a key vector which "represents info about this input" (e.g. this is a noun)
-  - queries: each input has a query vector which "asks for other inputs that would be useful context" (e.g. what adjectives describe this word)
-    - in self-attention these queries also come from the input whereas in just regular attention they come from somewhere else (e.g. the output of a translation task)
-  - transformer finds similarity between each key with each query then takes softmax - this provides weights for each of the inputs, as context for the original input
-    - in transformer, these weights are used to weight the values but in hopfield nets we would take a weighted sum of the keys and feed it back as the input
-  - as we update becomes more skewed towards the things that match the most
 
 
 # learning
@@ -1014,6 +1004,7 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - Neuro-GPT: Developing A Foundation Model for EEG ([cui...leahy, 2023](https://arxiv.org/abs/2311.03764))
 - model frequency bands
   - EEG foundation model: Learning Topology-Agnostic EEG Representations with Geometry-Aware Modeling ([yi...dongsheng li, 2023](https://openreview.net/pdf?id=hiOUySN0ub))
+- Strong Prediction: Language Model Surprisal Explains Multiple N400 Effects  ([michaelov...coulson, 2024](https://direct.mit.edu/nol/article/5/1/107/115605/Strong-Prediction-Language-Model-Surprisal))
 
 # fMRI
 
@@ -1044,6 +1035,8 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
       - LLM brain encoding performance correlates not only with their perplexity, but also generality (skill at many different tasks) and translation performance
     - Prediction with RNN beats ngram models on individual-sentence fMRI prediction ([anderson…lalor, 2021](https://www.jneurosci.org/content/41/18/4100))
     - Interpret transformer-based models and find top predictions in specific regions, like left middle temporal gyrus (LMTG) and left occipital complex (LOC) ([sun et al. 2021](https://ieeexplore.ieee.org/document/9223750/))
+    - Lexical-Semantic Content, Not Syntactic Structure, Is the Main Contributor to ANN-Brain Similarity of fMRI Responses in the Language Network  ([kauf...andreas, fedorenko, 2024](https://direct.mit.edu/nol/article/5/1/7/116784/Lexical-Semantic-Content-Not-Syntactic-Structure)) - lexical semantic sentence content, not syntax, drive alignment.
+    - Artificial Neural Network Language Models Predict Human Brain Responses to Language Even After a Developmentally Realistic Amount of Training  ([hosseini...fedorenko, 2024](https://direct.mit.edu/nol/article/5/1/43/119156/Artificial-Neural-Network-Language-Models-Predict)) - models trained on a developmentally plausible amount of data (100M tokens) already align closely with human benchmarks
 - changing experimental design
   - Semantic representations during language comprehension are affected by context (i.e. how langauge is presented) ([deniz...gallant, 2021](https://www.biorxiv.org/content/10.1101/2021.12.15.472839v1.full.pdf)) - stimuli with more context (stories, sentences) evoke better responses than stimuli with little context (Semantic Blocks, Single Words)
   - Combining computational controls with natural text reveals new aspects of meaning composition ([toneva, mitchell, & wehbe, 2022](https://www.biorxiv.org/content/biorxiv/early/2022/08/09/2020.09.28.316935.full.pdf)) - study word interactions by using encoding vector emb(phrase) - emb(word1) - emb(word2)...

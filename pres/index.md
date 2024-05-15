@@ -281,6 +281,17 @@ Chandan is a fifth and final-year PhD student in computer science. He hopes to b
       </div>
   </details>
 
+<details>
+<summary>1000-character summary of MSR work (may 2024)</summary>
+<p><strong>LLM Interpretability/Steering</strong> I led the <a href="https://www.nature.com/articles/s41467-023-43713-1">Aug-imodels paper</a>, which leverages LLMs to build transparent models, achieving dramatic (&gt;1000x) efficiency improvements for a large set of text-classification tasks. I have additionally led efforts to steer LLMs, both for black-box models (<a href="https://aclanthology.org/2023.emnlp-main.384/">Tree-Prompt</a>) and for open-source models (<a href="https://openreview.net/pdf?id=xZDWO0oejD">Attention steering</a>, intern's paper).</p>
+
+<p><strong>Next-generation transformers [still exploratory]</strong> I have been exploring how to extract useful insights from brain representations of language (through <a href="https://arxiv.org/abs/2305.09863">SASC</a> and 2 major upcoming submissions). My current focus is on how to leverage these insights in "Hyperdimensional LMs", an architecture that heavily uses retrieval to build CPU-only LMs. Early results are showing some potential, and I'm hoping to get GPT-2 level performance in the next few months, which would be a huge cost-saving for many simple tasks that Microsoft could use in deployment.</p>
+
+<p>I have additionally been involved in broader efforts, including an ongoing collaboration with health futures on using LLMs on clinical text (which has produced a <a href="https://arxiv.org/abs/2306.00024">couple</a> <a href="https://arxiv.org/abs/2403.01002">papers</a> already) and some one-off ideas (e.g. <a href="https://arxiv.org/abs/2402.03774">learning a decision tree</a> algorithm with transformers).</p>
+
+</details>
+
+
 <!-- <div class="iframe-box" style="margin-top: -30px"> -->
 <div class="iframe-box">
     <iframe class="iframe"

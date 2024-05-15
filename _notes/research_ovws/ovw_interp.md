@@ -315,7 +315,7 @@ For an implementation of many of these models, see the python [imodels package](
   - [Human knowledge models: Learning applied knowledge from the data | PLOS ONE](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0275814) (dudyrev...pianykh, 2022) - very concise logic model
   - On the price of explainability for some clustering problems ([laber et al. 2021](https://arxiv.org/abs/2101.01576)) - trees for clustering
   - Interpretable clustering: an optimization approach ([bertsimas…wilberg, 2020](https://link.springer.com/article/10.1007/s10994-020-05896-2))
-  - extremely randomized trees ([geurts et al. 2006](https://link.springer.com/article/10.1007/s10994-006-6226-1)) - randomness goes further than Random Forest - randomly select not only the feature but also the split thresholds (and select the best out of some random set)
+  - extremely randomized trees ([geurts ernst, & wehenkel, 2006](https://link.springer.com/article/10.1007/s10994-006-6226-1)) - randomness goes further than Random Forest - randomly select not only the feature but also the split thresholds (and select the best out of some random set)
   - Constraint Enforcement on Decision Trees: A Survey ([nanfack...brenay, 2022](https://dl.acm.org/doi/pdf/10.1145/3506734))
     - 3 classes of constraints
       1. feature-level: monotonicity, attribute costs, hierarchy/interaction, fairness, privacy
@@ -460,12 +460,22 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
 
 ### concepts
 
-- Concept Bottleneck Models ([koh et al. 2020](https://arxiv.org/pdf/2007.04612.pdf)) - predict concepts before making final prediction
-- PCBM Post-hoc Concept Bottleneck Models ([yuksekgonul...zou, 2022](https://arxiv.org/abs/2205.15480)) - automatically project embeddings to concepts and train linear model on those
-- LaBO: Language in a Bottle: Language Model Guided Concept Bottlenecks for Interpretable Image Classification ([yang...yatskar, 2022](https://arxiv.org/pdf/2211.11158.pdf)) - generate prompt-based features using GPT-3 (e.g. "brown head with white stripes") and use CLIP to check for the presence of those features, all before learning simple linear model
+- CBM: Concept Bottleneck Models ([koh et al. 2020](https://arxiv.org/pdf/2007.04612.pdf)) - predict concepts before making final prediction
+  - Post-hoc CBM ([yuksekgonul...zou, 2022](https://arxiv.org/abs/2205.15480)) - automatically project embeddings to concepts and train linear model on those
+
+    - Label-Free CBM ([oikarinen...weng, 2023](https://arxiv.org/abs/2304.06129)) - extend to learn to match text concepts extracted with embeddings of any vision model
+    - uses CLIP-Dissect method ([oikarinen & weng, 2023](https://arxiv.org/abs/2204.10965))
+
+  - LaBO: Language in a Bottle: Language Model Guided Concept Bottlenecks for Interpretable Image Classification ([yang...yatskar, 2022](https://arxiv.org/pdf/2211.11158.pdf)) - generate prompt-based features using GPT-3 (e.g. "brown head with white stripes") and use CLIP to check for the presence of those features, all before learning simple linear model
+    - CB-LLM: Crafting Large Language Models for Enhanced Interpretability ([sun...weng, 2024](https://lilywenglab.github.io/WengLab_2024_CBLLM.pdf))
+      - Compute embedding similarity of concepts and input, and train layer to predict each of these similarity scores as concept bottleneck
+        - Before training bottleneck, use ChatGPT to help correct any concept scores that seem incorrect
+
+      - Human evaluation: agreement of concept scores and contribution of concept to output
+
+  - Concept transformers ([rigotti, ... scotton, 2022](https://openreview.net/pdf?id=kAa9eDS0RdO)) - use human-given concepts and explain predictions as a function of these concepts
 - MoIE: Route, Interpret, Repeat: Blurring the Line Between Post hoc Explainability and Interpretable Models ([ghosh, ..., batmangehelich, 2023](https://arxiv.org/abs/2302.10289#)) - mixture of different interpretable models, with black-box routing
 - SASC - learn factors from BERT using dictionary learning, assign each factor a natural-language explanation, then build a sparse linear model of these factors ([singh, ..., gao, 2023](https://arxiv.org/abs/2305.09863))
-- Concept transformers ([rigotti, ... scotton, 2022](https://openreview.net/pdf?id=kAa9eDS0RdO)) - use human-given concepts and explain predictions as a function of these concepts
 - [Concept Whitening for Interpretable Image Recognition](https://arxiv.org/pdf/2002.01650.pdf) (chen et al. 2020) - force network to separate "concepts" (like in TCAV) along different axes
 - [Interpretability Beyond Classification Output: Semantic Bottleneck Networks](https://arxiv.org/abs/1907.10882) - add an interpretable intermediate bottleneck representation
 - [Towards Robust Interpretability with Self-Explaining Neural Networks](https://arxiv.org/pdf/1806.07538.pdf) (alvarez-melis & jaakkola 2018) - use regularization to ensure model is aligned with concepts
@@ -538,7 +548,6 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
 - Learning Optimally Sparse Support Vector Machines ([cotter, shalev-shwartz, & srebro, 2013](http://proceedings.mlr.press/v28/cotter13.pdf)) - minimize number of support vectors 
   - Counterfactual Explanations for Support Vector Machine Models ([salazar et al. 2022](https://arxiv.org/abs/2212.07432))
 
-
 ### transformers
 
 - Augmenting Interpretable Models with LLMs during Training ([singh, askari, caruana & gao, 2023](https://arxiv.org/abs/2209.11799))
@@ -609,7 +618,7 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
     - project RRL it to a continuous space and propose a novel training method, called Gradient Grafting, that can directly optimize the discrete model using gradient descent
   - Harnessing Deep Neural Networks with Logic Rules ([hu, ..., xing, 2020](https://arxiv.org/pdf/1603.06318.pdf)) - iterative distillation method that transfers the structured information of logic rules into the weights of neural networks
 - just trying to improve performance
-  - Neural Random Forests ([biau et al. 2018](https://link.springer.com/article/10.1007/s13171-018-0133-y)) - convert DNN to RF
+  - Neural Random Forests ([biau et al. 2018](https://link.springer.com/article/10.1007/s13171-018-0133-y)) - convert RF to DNN
     - first layer learns a node for each split
     - second layer learns a node for each leaf (by only connecting to nodes on leaves in the path)
     - finally map each leaf to a value
@@ -1393,7 +1402,7 @@ These papers don't quite connect to prediction, but are generally about finding 
   - 2 approaches to replication
     - replicating studies - generally replication is very low
     - *p*-curve approach: look at distr. of p-values, check if lots of things are near 0.05
-- [A study in Rashomon curves and volumes: A new perspective on generalization and model simplicity in machine learning](https://arxiv.org/pdf/1908.01755.pdf) (semenova, rudin, & parr, 2020)
+- On the Existence of Simpler Machine Learning Models ([semenova, rudin, & parr, 2020](https://arxiv.org/pdf/1908.01755.pdf))
   - **rashomon ratio** - ratio of the volume of the set of accurate models to the volume of the hypothesis space
     - can use this to perform model selection over different hypothesis spaces using empirical risk v. rashomon ratio (*rashomon curve*)
   - **pattern Rashomon ratio** - considers unique predictions on the data (called “patterns”) rather than the count of functions themselves.
@@ -1456,4 +1465,4 @@ These papers don't quite connect to prediction, but are generally about finding 
    -  **Outer Alignment**  - choose the right loss functions or reward fuctions and ensure that the training objectives of AI systems match human values.
       -  In other words, outer alignment attempts to align the specified training objective to the goal of its designer
    -  **Inner Alignment** - This is to ensure that AI systems are actually trained to achieve the goals set by their designers.
-      -  Once we have specified training objectives, we need to ensure that the behaviors of AI systems actually align with those specifications (e.g. they don't use shortcuts)
+      -  Once we have specified training objectives, we need to ensure that the behaviors of AI systems actually align with those specifications (e.g. they don't use shortcuts)cc
