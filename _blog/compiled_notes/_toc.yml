@@ -8,12 +8,12 @@ sections:
   - file: notes/research_ovws/ovw_transfer_learning.md
   - file: notes/research_ovws/ovw_disentanglement.md
   - file: notes/research_ovws/ovw_omics.md
+  - file: notes/research_ovws/ovw_llms.md
   - file: notes/research_ovws/ovw_complexity.md
   - file: notes/research_ovws/ovw_interesting_science.md
   - file: notes/research_ovws/ovw_dl_theory.md
   - file: notes/research_ovws/ovw_scat.md
   - file: notes/research_ovws/ovw_ml_medicine.md
-  - file: notes/research_ovws/ovw_transformers.md
   - file: notes/research_ovws/ovw_causal_inference.md
   - file: notes/research_ovws/ovw_uncertainty.md
   - file: notes/research_ovws/ovw_interp.md

@@ -22,7 +22,7 @@
         {% for doc in collection.docs %}
         {% if doc.category == "research" %}
         <!-- bold if title is transformers or interpretability-->
-        {% if doc.title == "transformers" or doc.title == "interpretability" %}
+        {% if doc.title == "llms" or doc.title == "interpretability" %}
         <li><a href="{{ site.baseurl }}{{doc.url}}" style="font-size:medium; font-weight: bolder;"> {{ doc.title |
                 downcase }} ⭐ </a></li>
         {% else %}

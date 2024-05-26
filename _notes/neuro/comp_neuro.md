@@ -1047,7 +1047,7 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 - decoding models
   - [Semantic reconstruction of continuous language from non-invasive brain recordings](https://www.biorxiv.org/content/10.1101/2022.09.29.509744v1) (lebel, jain, & huth, 2022) - reconstruct continuous natural language from fMRI
     - [Decoding speech from non-invasive brain recordings](https://arxiv.org/abs/2208.12266) (defossez, caucheteux, ..., remi-king, 2022)
-  - 
+  - The generalizability crisis ([yarkoni, 2020](https://mzettersten.github.io/assets/pdf/ManyBabies_BBS_commentary.pdf)) - there is widespread difficulty in converting informal verbal hypotheses into quantitative models
 
 ## vision
 
