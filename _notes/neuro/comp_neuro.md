@@ -1056,6 +1056,7 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 - Seeing Beyond the Brain: Conditional Diffusion Model with Sparse Masked Modeling for Vision Decoding ([chen et al. 2022](https://arxiv.org/pdf/2211.06956.pdf))
 - Aligning brain functions boosts the decoding of visual semantics in novel subjects ([thual...king, 2023](https://arxiv.org/abs/2312.06467)) - align across subjects before doing decoding
 - A variational autoencoder provides novel, data-driven features that explain functional brain representations in a naturalistic navigation task ([cho, zhang, & gallant, 2023](https://jov.arvojournals.org/article.aspx?articleid=2792546))
+- What's the Opposite of a Face? Finding Shared Decodable Concepts and their Negations in the Brain ([efird...fyshe, 2024](https://arxiv.org/abs/2405.17663)) - build clustering shared across subjects in CLIP space
 
 # advanced topics
 

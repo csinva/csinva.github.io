@@ -477,6 +477,10 @@ M --> Y
 
 *The emphasis in this section is on ATE estimation, as an example of the considerations required for making causal conclusions. Observational analysis focuses on adjusting for observed confounding.*
 
+![Screenshot 2024-05-31 at 10.39.08 AM](../assets/Screenshot%202024-05-31%20at%2010.39.08%E2%80%AFAM.png)
+
+![Screenshot 2024-05-31 at 10.39.15 AM](../assets/Screenshot%202024-05-31%20at%2010.39.15%E2%80%AFAM.png)
+
 ## ATE estimation basics
 
 - assume we are given iid samples of $\{ X_i, T_i, Y_i^{T=1}, Y_i^{T=0} \}$, and drop the index $i$
