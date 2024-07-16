@@ -150,19 +150,13 @@ Nice repo keeping track of progress [here](https://github.com/sebastianruder/NLP
   - for full sentence, use markov assumption
 - multi-token decoding for classification - regular beam search will favor shorter results over longer ones on average since a negative log-probability is added at each step, yielding lower (more negative) scores for longer sentences
 
+- smoothing ngram models 
+
 ## topic modeling
 
 **topic models (e.g. LDA)** - apply unsupervised learning on large sets of text to learn sets of associated words
 
 - LDA = latent dirichlet allocation
-
-## interpretable prediction models
-
-- [Neural Bag-of-Ngrams](https://ojs.aaai.org/index.php/AAAI/article/view/10954) (li et al. 2017) - learn embedding vectors for ngrams via deep version of skip-gram
-- [Improving N-gram Language Models with Pre-trained Deep Transformer](https://arxiv.org/abs/1911.10235) (wang et al. 2019) - use transformer to generate synthetic data for new n-gram model (language model, doesn't extend to classification)
-  - [Improvements to N-gram Language Model Using Text Generated from Neural Language Model](https://ieeexplore.ieee.org/abstract/document/8683481?casa_token=7iD-YiGsHTAAAAAA:N3XmuRk27wGttURXYIYDbxdADVdhJMeUeBvVugq0EbyMst-zrm93wPZtc37uUBBtUPXKPrxvGZJC) (suzuki et al. 2019) - generate synthetic data from RNNs for new n-gram model
-- [fasttext](https://www.ijcai.org/Proceedings/16/Papers/401.pdf) (jin et al. 2016)
-- [(DirtyCat): Encoding High-Cardinality String Categorical Variables](https://ieeexplore.ieee.org/abstract/document/9086128) (cerda & varoquax, 2020) - use embedding model to improve string categorical variables
 
 ## grammar / parse-tree exraction
 

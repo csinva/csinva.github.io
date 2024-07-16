@@ -1011,6 +1011,7 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 ## nlp
 
 - Mapping Brains with Language Models: A Survey ([Karamolegkou et al. 2023](https://arxiv.org/abs/2306.05126))
+- Semantic encoding during language comprehension at single-cell resolution ([jamali...fedorenko, williams, 2024](https://www.nature.com/articles/s41586-024-07643-2))
 - interpreting brain encoding models
   - [Brains and algorithms partially converge in natural language processing](https://www.nature.com/articles/s42003-022-03036-1#Sec9) (caucheteux & king, 2022)
     - best brain-mapping are obtained from the middle layers of DL models
@@ -1047,7 +1048,16 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 - decoding models
   - [Semantic reconstruction of continuous language from non-invasive brain recordings](https://www.biorxiv.org/content/10.1101/2022.09.29.509744v1) (lebel, jain, & huth, 2022) - reconstruct continuous natural language from fMRI
     - [Decoding speech from non-invasive brain recordings](https://arxiv.org/abs/2208.12266) (defossez, caucheteux, ..., remi-king, 2022)
-  - The generalizability crisis ([yarkoni, 2020](https://mzettersten.github.io/assets/pdf/ManyBabies_BBS_commentary.pdf)) - there is widespread difficulty in converting informal verbal hypotheses into quantitative models
+- Bilingual language processing relies on shared semantic representations that are modulated by each language ([chen...klein, gallant, deniz, 2024](https://www.biorxiv.org/content/10.1101/2024.06.24.600505v1)) - shared semantic representations are modulated by each language
+
+## theories of explanation
+
+- The generalizability crisis ([yarkoni, 2020](https://mzettersten.github.io/assets/pdf/ManyBabies_BBS_commentary.pdf)) - there is widespread difficulty in converting informal verbal hypotheses into quantitative models
+- Formalising the role of behaviour in neuroscience ([piantadosi & gallistel, 2024](https://onlinelibrary.wiley.com/doi/10.1111/ejn.16372)) - can build isomorphisms between behavior and mathematical theories of representations
+- [NeuroSynth website](https://www.neurosynth.org/analyses/terms/)
+  - Large-scale automated synthesis of human functional neuroimaging data ([yarkoni, poldrack, nichols, van essen, & wager, 2011](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3146590/pdf/nihms-300972.pdf)) 
+  - NeuroQuery, comprehensive meta-analysis of human brain mapping ([dockes, poldrack, ..., yarkonig, suchanek, thirion, & varoquax](https://elifesciences.org/articles/53385)) [[website](https://neuroquery.org/query?text=checkerboard)]
+    - train on keywords to directly predict weights for each query-expanded keyword and the produce linearly combined brainmap
 
 ## vision
 
@@ -1057,6 +1067,7 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 - Aligning brain functions boosts the decoding of visual semantics in novel subjects ([thual...king, 2023](https://arxiv.org/abs/2312.06467)) - align across subjects before doing decoding
 - A variational autoencoder provides novel, data-driven features that explain functional brain representations in a naturalistic navigation task ([cho, zhang, & gallant, 2023](https://jov.arvojournals.org/article.aspx?articleid=2792546))
 - What's the Opposite of a Face? Finding Shared Decodable Concepts and their Negations in the Brain ([efird...fyshe, 2024](https://arxiv.org/abs/2405.17663)) - build clustering shared across subjects in CLIP space
+
 
 # advanced topics
 
@@ -1561,6 +1572,11 @@ the operations above allow for encoding many normal data structures into a singl
 - [Perceptual Inference, Learning, and Attention in a Multisensory World](https://www.annualreviews.org/doi/abs/10.1146/annurev-neuro-100120-085519) (nopponey, 2021)
 
 - [Engineering a Less Artificial Intelligence](https://www.sciencedirect.com/science/article/pii/S0896627319307408) (sinz…tolias, 2019) - overview of ideas to make DNNs more brain-like
+
+## credit assignment
+
+- Backpropagation and the brain ([lillicrap...hinton, 2020](https://www.nature.com/articles/s41583-020-0277-3))
+- Inferring neural activity before plasticity as a foundation for learning beyond backpropagation ([song...bogacz, 2024](https://www.nature.com/articles/s41593-023-01514-1)) - use energy minimization before updating weights to help decide which weights to update
 
 ## biological constraints for DNNs
 

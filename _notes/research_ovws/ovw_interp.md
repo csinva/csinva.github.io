@@ -147,6 +147,7 @@ For an implementation of many of these models, see the python [imodels package](
 - why might these be useful?
   - [The Magical Mystery Four: How is Working Memory Capacity Limited, and Why?](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2864034/) (cowan, 2010) - a central memory store limited to 3 to 5 meaningful items in young adults
 
+- [Feldman (2000)](https://pubmed.ncbi.nlm.nih.gov/11034211/): humans can understand logical rules with boolean complexity of up to 5–9, depending on their ability, where the boolean complexity is the length of the shortest Boolean formula logically equivalent to the concept, usually expressed in terms of the number of literals
 - connections
   - every decision list is a (one-sided) decision tree
   - every decision tree can be expressed as an equivalent decision list (by listing each path to a leaf as a decision rule)

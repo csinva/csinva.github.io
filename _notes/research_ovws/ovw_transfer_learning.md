@@ -28,10 +28,10 @@ For neural-net specific transferring see [📌 adaption/transfer](https://csinva
   - Variance Risk Extrapolation (VREx, [Krueger et al., 2020](https://arxiv.org/abs/2003.00688)) - encourages robustness over affine combinations of training risks, by encouraging strict equality between training risks
 - Interdomain Mixup (Mixup, [Yan et al., 2020](https://arxiv.org/abs/2001.00677)) - ERM on linear interpolations of examples from random pairs of domains + their labels
 - Marginal Transfer Learning (MTL, [Blanchard et al., 2011-2020](https://arxiv.org/abs/1711.07910)) - augment original feature space with feature vector marginal distributions and then treat as a supervised learning problem
-- Meta Learning Domain Generalization (MLDG, [Li et al., 2017](https://arxiv.org/abs/1710.03463)) - use MAML to meta-learn how to generalize across domains
 - MAML ([finn, abbeel, & levine, 2017](http://proceedings.mlr.press/v70/finn17a/finn17a.pdf)) - minimize parameters for metalearning including finetuning as part of the process (intuitively, find parameters that improve performance on a task after finetuning on that task)
   - $\min _\theta \underbrace{\mathbb{E}_\tau }_{\text{average over tasks }  \tau}\left[\mathcal{L}_\tau\left(\underbrace{U_\tau(\theta)}_{\text{finetuned model}}\right)\right]$​
     - compute finetuned models then take gradient wrt to held-out samples from the same tasks
+  - Meta Learning Domain Generalization (MLDG, [Li et al., 2017](https://arxiv.org/abs/1710.03463)) - use MAML to meta-learn how to generalize across domains
 
 
 - learning more diverse predictors
@@ -87,25 +87,27 @@ For neural-net specific transferring see [📌 adaption/transfer](https://csinva
 
 - test-time adaptation
   - test-time augmentation
-  - [batch normalization](https://arxiv.org/abs/1603.04779) (AdaBN)
-  - [label shift estimation](https://arxiv.org/abs/1802.03916) (BBSE) - $p(y)$ shifts but $P(x|y)$ does not
-  - [entropy minimization](https://arxiv.org/abs/2006.10726) (test-time entropy minimization, TENT, wang et al. 2020) - optimize for model confidence (entropy of predictions), using only norm. statistics and channel-wise affine transformations
-    - [Test-Time Prompt Tuning for Zero-Shot Generalization in Vision-Language Models](https://arxiv.org/abs/2209.07511) (shu...anandkumar, xiao, 2022) - optimize prompt to minimize the entropy with confidence selection so that the model has consistent predictions across different augmented views of each test sample
-- test-time learning with [rotation prediction](https://arxiv.org/abs/1909.13231) (sun et al. 2020) - at test-time, update parameters for self-supervised rotation prediction task then use for classification
-  - [masked autoencoders](https://arxiv.org/abs/2209.07522) (gandelsman, sun, ..., efros, 2022) - use reconstructed with masked autoencoder and improve performance on robustness tasks
-  - test-time learning for [Reading Comprehension](https://arxiv.org/abs/2103.11263) (banerjee et al. 2021) - uses self-supervision to train models on synthetically generated question-answer pairs, and then infers answers to unseen human-authored questions for this context
-  - [TTT++: When Does Self-Supervised Test-Time Training Fail or Thrive?](https://proceedings.neurips.cc/paper/2021/hash/b618c3210e934362ac261db280128c22-Abstract.html) (liu et al. 2021) - explore different test-time adaptation methods and combine Test-time feature alignment with Test-time contrastive learning
-- combining train-time and test-time adaptation
-  - Adaptive Risk Minimization (ARM, [Zhang et al., 2020](https://arxiv.org/abs/2007.02931)) - combines groups at training time + *batches at test-time*
+  - batch normalization (AdaBN, [li...hou, 2016](https://arxiv.org/abs/1603.04779))
+  - label shift estimation (BBSE, [lipton, wang, & smola, 2018](https://arxiv.org/abs/1802.03916)) - $p(y)$ shifts but $P(x|y)$ does not
+  - entropy minimization (test-time entropy minimization, TENT, [wang...olshausen, darrel, 2020](https://arxiv.org/abs/2006.10726)) - optimize for model confidence (entropy of predictions), using only norm. statistics and channel-wise affine transformations
+    - Test-Time Prompt Tuning for Zero-Shot Generalization in Vision-Language Models ([shu...anandkumar, xiao, 2022](https://arxiv.org/abs/2209.07511)) - optimize prompt to minimize the entropy with confidence selection so that the model has consistent predictions across different augmented views of each test sample
+  - combining train-time and test-time adaptation: Adaptive Risk Minimization (ARM, [zhang et al., 2020](https://arxiv.org/abs/2007.02931)) - combines groups at training time + *batches at test-time*
     - *meta-train* the model using simulated distribution shifts, which is enabled by the training groups, such that it exhibits strong *post-adaptation* performance on each shift
+- TTT: Test-Time Training with Self-Supervision for Generalization under Distribution Shifts ([sun...efros, hardt. 2020](https://arxiv.org/abs/1909.13231)) - at test-time, update parameters for self-supervised rotation prediction task then use for classification
+  - TTT with masked autoencoders ([gandelsman, sun, ..., efros, 2022](https://arxiv.org/abs/2209.07522)) - use reconstructed with masked autoencoder and improve performance on robustness tasks
+  - Test-Time Training on Video Streams ([wang, sun, ..., efros, wang, 2023](https://arxiv.org/abs/2307.05014)) - use masked autoencoder per-frame and incrementally update across each frame
+  - M-TTT: Learning to (Learn at Test Time) ([sun, li, dalal, ...guestrin, 2024](https://arxiv.org/pdf/2407.04620))![mttt](../assets/mttt.jpg)
+  - analysis
+    - TTT for Reading Comprehension ([banerjee et al. 2021](https://arxiv.org/abs/2103.11263)) - uses self-supervision to train models on synthetically generated question-answer pairs, and then infers answers to unseen human-authored questions for this context
+    - TTT++: When Does Self-Supervised Test-Time Training Fail or Thrive? ([liu et al. 2021](https://proceedings.neurips.cc/paper/2021/hash/b618c3210e934362ac261db280128c22-Abstract.html)) - explore different test-time adaptation methods and combine Test-time feature alignment with Test-time contrastive learning
 
 # adv attacks
 
-- [Adversarial Attacks and Defenses in Images, Graphs and Text: A Review](https://arxiv.org/abs/1909.08072) (xu et al. 2019) 
+- Adversarial Attacks and Defenses in Images, Graphs and Text: A Review ([xu et al. 2019](https://arxiv.org/abs/1909.08072)) 
 - attacks
   - fast gradient step method - keep adding gradient to maximize noise (limit amplitude of pixel's channel to stay imperceptible)
-  - [Barrage of Random Transforms for Adversarially Robust Defense](http://openaccess.thecvf.com/content_CVPR_2019/papers/Raff_Barrage_of_Random_Transforms_for_Adversarially_Robust_Defense_CVPR_2019_paper.pdf) (raff et al. 2019) 
-  - [DeepFool: a simple and accurate method to fool deep neural networks](https://arxiv.org/abs/1511.04599) (Moosavi-Dezfooli et. al 2016)
+  - Barrage of Random Transforms for Adversarially Robust Defense ([raff et al. 2019](http://openaccess.thecvf.com/content_CVPR_2019/papers/Raff_Barrage_of_Random_Transforms_for_Adversarially_Robust_Defense_CVPR_2019_paper.pdf)) 
+  - DeepFool: a simple and accurate method to fool deep neural networks ([Moosavi-Dezfooli et. al 2016](https://arxiv.org/abs/1511.04599))
 - defenses
   - Adversarial training -  training data is augmented with adv examples (Szegedy et al., 2014b; Madry et al., 2017; Tramer et al., 2017; Yu et al., 2019)
     - $$\min _{\boldsymbol{\theta}} \frac{1}{N} \sum_{n=1}^{N} \operatorname{Loss}\left(f_{\theta}\left(x_{n}\right), y_{n}\right)+\lambda\left[\max _{\|\delta\|_{\infty} \leq \epsilon} \operatorname{Loss}\left(f_{\theta}\left(x_{n}+\delta\right), y_{n}\right)\right]$$

@@ -58,6 +58,6 @@ This example simplifies many aspects for clarity. In practice, the dimensions fo
 
 **Notes**
 - Learning in TPRs involves optimizing the filler and role vectors to optimize the reconstruction of input structures from their TPRs, achievable through gradient descent or other techniques
-- The simple outer product forms a strong foundation for symbolic learning and an ind
-- TPRs continue to be a major part of ongoing research, e.g. see [this paper](https://ojs.aaai.org/aimagazine/index.php/aimagazine/article/view/18599) for a forward-looking perspective or the [TP-Transformer](https://arxiv.org/abs/1910.06611) that enhances transformers with role vectors
+- The simple outer product forms a strong foundation for symbolic learning
+- TPRs remain a major area of active research, e.g. see [this paper](https://ojs.aaai.org/aimagazine/index.php/aimagazine/article/view/18599) for a forward-looking perspective or the [TP-Transformer](https://arxiv.org/abs/1910.06611) that enhances transformers with role vectors
 
