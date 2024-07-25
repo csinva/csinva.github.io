@@ -100,6 +100,7 @@ For neural-net specific transferring see [📌 adaption/transfer](https://csinva
   - analysis
     - TTT for Reading Comprehension ([banerjee et al. 2021](https://arxiv.org/abs/2103.11263)) - uses self-supervision to train models on synthetically generated question-answer pairs, and then infers answers to unseen human-authored questions for this context
     - TTT++: When Does Self-Supervised Test-Time Training Fail or Thrive? ([liu et al. 2021](https://proceedings.neurips.cc/paper/2021/hash/b618c3210e934362ac261db280128c22-Abstract.html)) - explore different test-time adaptation methods and combine Test-time feature alignment with Test-time contrastive learning
+- Never Train from Scratch: Fair Comparison of Long-Sequence Models Requires Data-Driven Priors ([amos, berant, & gupta, 2024](https://arxiv.org/pdf/2310.02980)) - when transferring to a specific task, should first finetune the LM on the task before doing supervised finetuning
 
 # adv attacks
 

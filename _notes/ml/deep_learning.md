@@ -53,7 +53,7 @@ See also notes in [📌 unsupervised learning](https://csinva.io/notes/ml/unsupe
     - if output is 1, label is 0: decrease active weights
 - *perceptron convergence thm* - if data is linearly separable, perceptron learning algorithm wiil converge
 - transfer / activation functions
-    - sigmoid(z) = $\frac{1}{1+e^{-z}}$
+    - sigmoid(z) = $\frac{1}{1+e^{-x}} = \frac{e^x}{e^x+1}$
     - Binary step
     - TanH (preferred to sigmoid)
     - Rectifier = ReLU
@@ -61,7 +61,7 @@ See also notes in [📌 unsupervised learning](https://csinva.io/notes/ml/unsupe
          - rectifying in electronics converts analog -> digital
     - rare to mix and match neuron types
 - *deep* - more than 1 hidden layer
-- regression loss = $\frac{1}{2}(y-\hat{y})^2$
+- mean-squared error regression loss = $\frac{1}{2}(y-\hat{y})^2$
 - classification loss = $-y \log (\hat{y}) - (1-y) \log(1-\hat{y})$ 
     - can't use SSE because not convex here
 - multiclass classification loss $=-\sum_j y_j \ln \hat{y}_j$

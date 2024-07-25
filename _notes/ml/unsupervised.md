@@ -133,7 +133,7 @@ In general there is some tension between preserving global properties (e.g. PCA)
 
 - SVD: let $U D V^T = SVD(Cov(X))$
 
-    - $Cov(X) = \frac{1}{n}X^TX$, where X has been demeaned
+    - $\text{Cov}(X) = \frac{1}{n}X^TX$, where X has been demeaned
 
 - equivalently, eigenvalue decomposition of covariance matrix $\Sigma = X^TX$
   - each eigenvalue represents prop. of explained variance: $\sum \lambda_i = tr(\Sigma) = \sum Var(X_i)$
@@ -150,9 +150,9 @@ In general there is some tension between preserving global properties (e.g. PCA)
 - good PCA code: http://cs231n.github.io/neural-networks-2/
 ```python
 X -= np.mean(X, axis = 0) # zero-center data (nxd)
-cov = np.dot(X.T, X) / X.shape[0] # get cov. matrix (dxd)
+cov = (X.T @ X) / X.shape[0] # get cov. matrix (dxd)
 U, D, V = np.linalg.svd(cov) # compute svd, (all dxd)
-Xrot_reduced = np.dot(X, U[:, :2]) # project onto first 2 dimensions (n x 2)
+Xrot_reduced = X @ U[:, :2] # project onto first 2 dimensions (n x 2)
 ```
 - nonlinear pca
     - usually uses an auto-associative neural network

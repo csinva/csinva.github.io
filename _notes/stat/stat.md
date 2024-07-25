@@ -83,7 +83,7 @@ subtitle: general notes on stat
   - 2 parameterizations ($x \in \mathbb{R}^n$)
     1. *canonical parameterization*: $$p(x\vert\mu, \Sigma) = \frac{1}{(2\pi )^{n/2} \vert\Sigma\vert^{1/2}} \exp\left[ -\frac{1}{2} (x-\mu)^T \Sigma^{-1} (x-\mu) \right]$$
     2. *moment parameterization*: $$p(x\vert\eta, \Omega) = \text{exp}\left( a + \eta^T x - \frac{1}{2} x^T \Omega x\right)$$ ~ also called information parameterization
-	  		- $\Omega = \Sigma^{-1}$	
+	  		- $$\Omega = \Sigma^{-1}$	
 		    - $\eta = \Sigma^{-1} \mu$
 	- joint distr - split parameters into block matrices
 	- want to *block diagonalize* the matrix
@@ -146,7 +146,7 @@ subtitle: general notes on stat
   - MLE - maximize likelihood $L(\theta) = p(X_1,...,X_n;\theta_1,...\theta_m)$ (the agreement with a chosen distribution)
   - $\hat{\theta} = $argmax $  L(\theta)$
       - $L(\theta)=P(X_1...X_n\vert\theta)=\prod_{i=1}^n P(X_i\vert\theta)$
-      - $log \: L(\theta)= \ell(\theta) = \sum log P(X_i\vert\theta)$
+      - $\log \: L(\theta)= \ell(\theta) = \sum \log P(X_i\vert\theta)$
       - to maximize, set $\frac{\partial \ell (\theta)}{\partial \theta} = 0$
   - **fisher information** $I(\theta)=V[\frac{\partial^2}{\partial\theta^2} \overbrace{\ln(f[x;\theta])}^{\text{Fisher score function}} ]$ (for n samples, multiply by n)
       - higher info $\implies$ lower estimation error

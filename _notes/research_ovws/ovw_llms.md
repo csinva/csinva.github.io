@@ -1114,6 +1114,9 @@ mixture of experts models have become popular because of the need for (1) fast s
     - transformer finds similarity between each key with each query then takes softmax - this provides weights for each of the inputs, as context for the original input
       - in transformer, these weights are used to weight the values but in hopfield nets we would take a weighted sum of the keys and feed it back as the input
     - as we update becomes more skewed towards the things that match the most
+- pre-transformers
+    - Improving Neural Language Models with a Continuous Cache ([grave...usunier, 2016](https://arxiv.org/abs/1612.04426)) - cache previous embeddings as memory from a document to contextualize an LSTM
+
 
 ## interpretable models
 
@@ -1583,18 +1586,6 @@ mixture of experts models have become popular because of the need for (1) fast s
 
 - Nougat: Neural Optical Understanding for Academic Documents ([blecher…scialom, sojnic, 2023](https://arxiv.org/abs/2308.13418))
 - PDFTriage: Question Answering over Long, Structured Documents ([adobe, 2023](https://arxiv.org/abs/2309.08872))
-
-### multilingual llms
-
-**Multilingual stuff**
-
-- Multilingual Jailbreak Challenges in Large Language Models ([deng…bing, 2024](https://openreview.net/forum?id=vESNKdEMGp)) - jailbreaks work better in low-resource languages - propose to remedy this by safety finetuning on multilingual data
-- *Evaluating and Mitigating Linguistic Discrimination in Large Language Models* ([dong…wang, 2024](https://arxiv.org/abs/2404.18534)) - translate all queries into multiple languages and then get the response from the model, and then convert the responses to English and give the answer that has highest similarities to other answers
-- *Getting More from Less: Large Language Models are Good Spontaneous Multilingual Learners* ([zhang...huang, 2024](https://arxiv.org/pdf/2405.13816v2)) - applying logit lens finds that model internally translates to english in multilingual tasks
-- *Low-Resource Languages Jailbreak GPT-4* ([Yong...Bach 2024](https://arxiv.org/abs/2310.02446)): exact same result as the [deng…bing, 2024](https://openreview.net/forum?id=vESNKdEMGp) paper — low resource languages have much higher ASR than high resource languages. They translated AdvBench in 12 languages and did it.
-- *A Cross-Language Investigation into Jailbreak Attacks in Large Language Models* ([Li...Xue 2024](https://arxiv.org/abs/2401.16765)): Not a well written paper. Findings: GPT4 does not experience difference in ASR across languages, whereas worse models do (for the unintentional case) — similar to our finding for GPT4. They have done some attention visualization for intentional, unintensional, and multilingual case — not in a good manner. Their mitigation is finetuning Vicuna model with questions in multiple languages. This paper created its own dataset and used Microsoft Translate for translation.
-- *Comprehensive Evaluation of ChatGPT Reliability Through Multilingual Inquiries* ([Puttaparthi…Yu 2023](https://arxiv.org/abs/2312.10524)): Constructed their own multilingual dataset, 30 malicious questions translated into 121 languages (Google Translate). Show that some languages have higher ASR than others (low resources ones, but they also generate lot of invalid responses). RQ2 is the interesting study, where they parts of a single question in different languages and mandated response in that language — it increased the ASR. This is useful.
-- MindMerger: Efficient Boosting LLM Reasoning in non-English Languages ([huang…yuan, 2024](https://arxiv.org/pdf/2405.17386)) - merge capabilities across languages
 
 
 # basics
