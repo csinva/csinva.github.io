@@ -236,7 +236,7 @@ void BST::insert(int x, BinaryNode * & curNode){    //we pass in by reference be
     - Hash tables store key-value pairs
     - Each value has a specific key associated with it
 - fixed size array of some size, usually a prime number
-- A hash function takes in a "thing" )string, int, object, etc._
+- A hash function takes in a "thing" (string, int, object, etc.)
   
     - returns hash value - an unsigned integer value which is then mod'ed by the size of the hash table to yield a spot within the bounds of the hash table array
 - Three required properties
@@ -253,7 +253,7 @@ void BST::insert(int x, BinaryNode * & curNode){    //we pass in by reference be
 - We can't just make a very large array - we assume the key space is too large
   
     - you can't just hash by social security number
-- hash(s)=(∑k−1i=0si∗37^i) mod table_size
+- $hash(s)=(\sum_{i=0}^{k−1} s_i * 37^i)$ mod table_size
   
     - you would precompute the powers of 37
 - collision - putting two things into same spot in hash table

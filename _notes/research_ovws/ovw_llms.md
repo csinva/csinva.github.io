@@ -236,6 +236,7 @@ See related papers in the [📌 interpretability](https://csinva.io/notes/resear
     - self-PPLs extend probabilistic graphical models to support more complex joint distributions whose size and “shape” can itself be stochastic
       - e.g., a graph unrolled for a random number of iterations, until a data-dependent stopping criterion is met
       - variables are all text: questions $Q$, answers $A$, and intermediate thoughts $T$
+  - Prover-Verifier Games improve legibility of LLM outputs ([kirchner, chen, ... leike, mcaleese, & burda, 2024](https://arxiv.org/abs/2407.13692)) - trained strong LMs to produce text that is easy for weak LMs to verify and found that this training also made the text easier for humans to evaluate.
 - posthoc
   - understanding chain-of-thought and its faithfulness
     - Faithful Chain-of-Thought Reasoning ([yu et al. 2023](https://arxiv.org/abs/2301.13379))
@@ -850,7 +851,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
 
 mixture of experts models have become popular because of the need for (1) fast speed / low memory at test time while still (2) having a large model during training
 
-- note: nowadays often the "experts" are different MLPs following the self-attention layers
+- note: nowadays often the "experts" are different MLPs following the self-attention layers (since their computations can be computed independently)
 - A Review of Sparse Expert Models in Deep Learning ([fedus, jeff dean, zoph, 2022](https://arxiv.org/abs/2209.01667))
   - sparsity decouples the parameter count from the compute per example allowing for extremely large, but efficient models
   - routing algorithm - determines where to send examples
@@ -1590,12 +1591,16 @@ mixture of experts models have become popular because of the need for (1) fast s
 
 # basics
 
+![transformer_sizes](../assets/transformer_sizes.png)
+
+![kv_caching_diagram](../assets/kv_caching_diagram.png)
+
 - **attention** = vector of importance weights
   - to predict or infer one element, such as a pixel in an image or a word in a sentence, we estimate using the attention vector how strongly it is correlated with (or “*attends to*” other elements and take the sum of their values weighted by the attention vector as the approximation of the target
 - vanilla transformer: multihead attention, add + norm, position-wise ffn, add + norm
 - self-attention layer [implementation](https://github.com/mertensu/transformer-tutorial), [mathematics](https://homes.cs.washington.edu/~thickstn/docs/transformers.pdf), and **chandan's self-attention [cheat-sheet](https://slides.com/chandansingh-2/deck-51f404)**
 
-## mathematical overview of transformers 
+## mathematical overview of transformers
 
 - based on [Formal Algorithms for Transformers](https://arxiv.org/abs/2207.09238?utm_source=substack&utm_medium=email)
 - tasks

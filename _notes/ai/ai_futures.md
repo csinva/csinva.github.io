@@ -8,13 +8,14 @@ category: ai
 
 # 🤖 AGI thoughts
 - nice AGI definition:  AI systems are fully substitutable for human labor (or have a comparably large impact)
-- AI risk by deliberate human actors (i.e. concentrating power) is a greater risk than unintended use (i.e. loss of control)
-- Caveat: AGI risk is probably still underrated - nefarious use is likely worse than accidental misuse
-    - alignment research is technically more interesting than safety research…
+- AI risk by deliberate human actors (i.e. concentrating power) seems to be a greater risk than unintended use (i.e. loss of control) [see some thought-out risks [here](https://cdn.openai.com/openai-preparedness-framework-beta.pdf)]
+    - Caveat: AGI risk may still be high - nefarious use can easily be worse than accidental misuse
+    - alignment research seems to be technically more interesting than safety research…
+
 - Data limitations (e.g. in medicine) will limit rapid general advancements
 
 # human compatible
-**A set of notes based on the book human compatible, by Stuart Russell 2019**
+**A set of notes based on the book *human compatible*, by Stuart Russell (2019)**
 
 ## what if we succeed?
 
@@ -41,7 +42,7 @@ category: ai
   - carry out experiments and compare against all existing results easily
   - high-level goal: raise the standard of living for everyone everywhere?
   - AI tutoring
-- EU GDPR's "right to an explanation" wording is actually much weaker: "meaningful information about the logic involved, as well as the significance and the envisaged consequences of such processing for the data subject."
+- EU GDPR's "right to an explanation" wording is actually much weaker: "meaningful information about the logic involved, as well as the significance and the envisaged consequences of such processing for the data subject"
 - whataboutery - a method for deflecting questions where one always asks "what about X?" rather than engaging
 
 ## harms of ai
@@ -52,8 +53,6 @@ category: ai
 - ex. deepfakes / fake media
 - ex. automation - how to solve this? Universal basic income?
 
-
-
 ## value alignment
 
 - ex. king midas
@@ -63,11 +62,9 @@ category: ai
 - note: for an AI, it might be easier to convince of a different objective than actually solve the objective
 - basically any optimization objective will lead AI to disable its own off-switch
 
-
-
 ## possible solns
 
-- Oracle AI - can only answer yes/no/probabilistic questions,  otherwise no output to the real world
+- oracle AI - can only answer yes/no/probabilistic questions,  otherwise no output to the real world
 - inverse RL
   - ai should be uncertain about utitilies
   - utilties should be inferred from human preferences
@@ -87,7 +84,7 @@ category: ai
 
 # possible minds
 
-**edited by John Brockman, 2019**
+**notes from *possible minds*, a collection of essays edited by John Brockman (2019)**
 
 ## intro (brockman)
 
@@ -100,15 +97,12 @@ category: ai
 - ai has gone down and up for a while
 - gofai - good old-fashioned ai
 - things people thought would be hard, like chess, were easy
-- lots of physicists in this book...
 
 ## wrong but more relevant than ever (seth lloyd)
 
 - current AI is way worse than people think it is
 - wiener was very pessimistic - wwII / cold war
 - singularity is not coming...
-
-
 
 ## the limitations of opaque learning machines (judea pearl)
 
@@ -125,8 +119,7 @@ category: ai
   - something about relationship...
 - correlations, causes, explanations (moral/rational) - biologically biased towards this?
   - beliefs + desires cause actions
-- randomly picking grants above some cutoff...
-- pretty cool that different people do things because of norms (e.g. come to class at 4pm)
+- pretty cool that different people follow  norms (e.g. come to class at 4pm)
   - could you do this with ai?
 - facebook chatbot ex.
 - paperclip machine, ads on social media
@@ -325,7 +318,7 @@ category: ai
 
 ---
 
-## David Kaiser: Information for wiener, Shannon, and for Us
+## Information for wiener, Shannon, and for Us (david kaiser)
 
 - wiener: society can only be understood based on analyzing messages
   - information = semantic information
@@ -350,7 +343,7 @@ category: ai
     - cities seem to increase diversity - more people to interact with
 - dl should seek more semantic info not statistical info
 
-## Neil Gershenfield: Scaling
+## Scaling (Neil Gershenfield)
 
 - ai is more about scaling laws rathern that fashions
 - mania: success to limited domains
@@ -361,5 +354,4 @@ category: ai
 - problem 3: generalization - how to come up w/ rules for reasoning?
 - next: fabrication - how to make things?
   - ex. body uses only 20 amino acids
-
 

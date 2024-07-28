@@ -321,6 +321,7 @@ subtitle: Material from "Statistical Models Theory and Practice" - David Freedma
 - $L(\theta) = 1/2 (\theta^T X^T - y^T) (X \theta -y)$ 
 - $L(\theta) = 1/2 (\theta^T X^T X \theta - 2 \theta^T X^T y +y^T y)$ 
 - $0=\frac{\partial L}{\partial \theta} = 2X^TX\theta - 2X^T y$
+- $X^Ty=X^TX\theta$
 - $\theta = (X^TX)^{-1} X^Ty$
 
 ## ridge regression

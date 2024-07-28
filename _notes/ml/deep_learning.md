@@ -9,7 +9,7 @@ subtitle: This note covers miscellaneous deep learning, with an emphasis on diff
 
 See also notes in [📌 unsupervised learning](https://csinva.io/notes/ml/unsupervised.html), [📌 disentanglement](https://csinva.io/notes/research_ovws/ovw_disentanglement.html), [📌 nlp](https://csinva.io/notes/ml/nlp.html), [📌 transformers](https://csinva.io/notes/research_ovws/ovw_transformers.html)
 
-# top-performing nets
+# historical top-performing nets
 
 - LeNet (1998)
   - first, used on MNIST
@@ -61,10 +61,9 @@ See also notes in [📌 unsupervised learning](https://csinva.io/notes/ml/unsupe
          - rectifying in electronics converts analog -> digital
     - rare to mix and match neuron types
 - *deep* - more than 1 hidden layer
-- mean-squared error regression loss = $\frac{1}{2}(y-\hat{y})^2$
-- classification loss = $-y \log (\hat{y}) - (1-y) \log(1-\hat{y})$ 
-    - can't use SSE because not convex here
-- multiclass classification loss $=-\sum_j y_j \ln \hat{y}_j$
+- mean-squared error (regression loss) = $\frac{1}{2}(y-\hat{y})^2$
+- cross-entropy loss (classification loss) = $=-\sum_j y_j \ln \hat{p}_j$
+    - for binary classification, $y_j$ would take on 0 or 1 and $\hat y_j$ would be a probability
 - **backpropagation** - application of *reverse mode automatic differentiation* to neural networks's loss
   - apply the chain rule from the end of the program back towards the beginning
     - $\frac{dL}{d \theta_i} = \frac{dL}{dz} \frac{\partial z}{\partial \theta_i}$

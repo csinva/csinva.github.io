@@ -161,22 +161,28 @@ merging
 pd.merge(df1, df2, how='left', on='x1')
 ```
 
-## pytorch + pytorch parallel
+# gpu / parallelization
 
 - new in 1.11: TorchData, functorch (e.g. vmap), DistributedDataParallel is stable
+
+- huggingface [performance](https://huggingface.co/docs/transformers/main/en/performance) overview
+
+- overview links from [huggingface](https://huggingface.co/docs/transformers/v4.15.0/parallelism) and [pytorch](https://pytorch.org/tutorials/beginner/dist_overview.html)
+
 - levels of [parallelism](https://huggingface.co/docs/transformers/v4.15.0/parallelism)
-  - DP dataparallel - speeds up by replicating model and feeding it different data
-    - gpt2 & T5 models have naive PP support
+  1. DataParallel - split **batches** across gpus and replicate model on each gpu (model must fit on single gpu)
+     - gpt2 & T5 models have naive PP support
 
-  - TP tensorparallel (horizontal parallelism) - allows running a large model by splitting up different parts of an input
-    - [parallelformers](https://github.com/tunib-ai/parallelformers) provides easy support for inference-only
+  2. TensorParallel - split **parts of an input** across gpus
+     - [parallelformers](https://github.com/tunib-ai/parallelformers) provides easy support for inference-only
 
-  - PP pipelineparallel (vertical parallelism)  - different layers are on different gpus
-    - naive - diff layers on diff gpus (increases mem but not speed)
-    - pipeline parallel - separates so more gpus can work at once
+  3. PipelineParallel - split **different layers** across gpus
+  
+     - naive - diff layers on diff gpus (increases mem but not speed)
 
-  - Deepspeed/Megatron/Varuna/Sagemaker combines DP with PP
-
+     - pipeline parallel - separates so more gpus can work at once
+     - Deepspeed/Megatron/Varuna/Sagemaker combine dataparallel with pipeline parallel
+  
 - [pytorch parallel overview](https://pytorch.org/tutorials/beginner/dist_overview.html)
   - single-machine multi-GPU: [DataParallel](https://pytorch.org/docs/stable/generated/torch.nn.DataParallel.html) - relatively simple
     - just wrap model `model = nn.DataParallel(model)` (some attributes may become inaccessible)
@@ -185,10 +191,13 @@ pd.merge(df1, df2, how='left', on='x1')
   - multimachine GPU:  [DistributedDataParallel](https://pytorch.org/docs/stable/generated/torch.nn.parallel.DistributedDataParallel.html) + [launching script](https://github.com/pytorch/examples/blob/master/distributed/ddp/README.md)
   - multimachine flexible: [torch.distributed.elastic](https://pytorch.org/docs/stable/distributed.elastic.html) - handles errors better
   - (there is also RPC-based training and Collective Communication)
+  
 - dataset has `__init__, __getitem__, & __len__`
 
   - rather than storing images, can load image from filename in `__getitem__`
+  
 - there's a `torch.nn.Flatten` module
+
 - following example [here](https://medium.com/codex/a-comprehensive-tutorial-to-pytorch-distributeddataparallel-1f4b42bb1b51)
 
 
@@ -200,19 +209,19 @@ pd.merge(df1, df2, how='left', on='x1')
 - **node** - different computers with distinct memory
 
 - **processes** - instances of a program executing on a machine
-  
+
   - shouldn't have more user processes than cores on a node
-  
+
   - **threads** - multiple paths of execution within a single process
     - like a process, but more lightweight
-  
+
 - passing messages between nodes (e.g. for distributed memory) often use protocol known as MPI
   - packages such as Dask do this for you, without MPI
-  
+
 - python packages
   - *dask*: parallelizing tasks, distributed datasets, one or more machines
   - *ray*: parallelizing tasks, building distributed applications, one or more machines
-  
+
 - dask
   - separate code from parallelization
   - some limitations on pure python code, but np/pandas etc. parallelize better
@@ -226,6 +235,14 @@ pd.merge(df1, df2, how='left', on='x1')
     - when using slurm, must run dask-scheduler on cluster node
       - then run dask-worker many times (as many tasks as there are)
     - can also directly submit slurm jobs from dask
+
+## gpu
+
+- https://horace.io/brrr_intro.html
+  - within gpu, all operations require moving from gpu’s DRAM to GPU’s SRAM
+  - for pointwise operations the time to do the moving (memory bandwidth cost) is longer than the computation itself
+  - operator fusion allows us to do many operations at once before moving back to DRAM
+    - can lead to interesting things, e.g.  activation functions are nearly all the same cost, despite `gelu` obviously consisting of many more operations than `relu`
 
 # c/c++
 

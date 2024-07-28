@@ -70,10 +70,10 @@ subtitle: Some notes on a computational perspective on cognitive science.
   - dna can build in things that are hard to learn
   - start with nothing built in, ex. deep learning (connectionism)
   - start with best possible learning algorithm and ask what you need to build in (bayesian modeling)
-  - bayes rule Bayesian: $\overbrace{p(\theta | x)}^{\text{posterior}} = \frac{\overbrace{p(x|\theta)}^{\text{likelihood}} \overbrace{p(\theta)}^{\text{prior}}}{p(x)}$ where x is data and $\theta$ are hypotheses
+  - bayes rule: $\overbrace{p(\theta | x)}^{\text{posterior}} = \frac{\overbrace{p(x|\theta)}^{\text{likelihood}} \overbrace{p(\theta)}^{\text{prior}}}{p(x)}$ where x is data and $\theta$ are hypotheses
     - ask what priors explain people's inferences
     - humans make very causal priors - restricts hypothesis space of possible bayesian networks
-    - hierarhical model - get prior from something (e.g. know all bags contain same color)
+    - hierarchical model - get prior from something (e.g. know all bags contain same color)
 - what develops over time?
   - bayesian doesn't really tell us this - just has probabilities evolve over time
   - real life we come up with new hypotheses
@@ -272,13 +272,12 @@ subtitle: Some notes on a computational perspective on cognitive science.
     - e.g. if you meet a shy person, are they more likely to be a salesperson or a librarian?
   - *sunk cost fallacy*
   - *scope neglect* - the number of birds saved—the *scope* of the altruistic action—had little effect on willingness to pay ([post](https://www.lesswrong.com/s/5g5TkQTe9rmPS5vvM/p/2ftJ38y9SRBCBsCzy))
-  - *availability heuristic* - judging the frequency or probability of an event by the ease with which examples of the event come to mind.
+  - *availability heuristic* - judging the frequency or probability of an event by the ease with which examples of the event come to mind
     - [absurdity bias](https://www.lesswrong.com/lw/j4/absurdity_heuristic_absurdity_bias/); events that have never happened are not recalled, and hence deemed to have probability zero.
   - *conjunction fallacy* - humans assign a higher probability to a proposition of the form “A and B” than to one of the propositions “A” or “B” in isolation
-    - The implausibility of one claim is compensated by the plausibility of the other; they “average out.”
+    - the implausibility of one claim is compensated by the plausibility of the other; they “average out.”
   - *planning fallacy* - people think they can plan e.g. "best guess" scenarios are same as "best case" scenarios
 - rationality
-  - **epistemic rationality** - systematically improving the accuracy of your beliefs.
-  - **instrumental rationality** - systematically achieving your values.
-- *probability theory*, and *decision theory*
+  - **epistemic rationality** - systematically improving the accuracy of your beliefs
+  - **instrumental rationality** - systematically achieving your values
 - System 1 and System 2—fast perceptual judgments versus slow deliberative judgments. System 2’s deliberative judgments aren’t always true, and System 1’s perceptual judgments aren’t always false; so it is very important to distinguish that dichotomy from “rationality.”

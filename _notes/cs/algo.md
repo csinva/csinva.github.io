@@ -12,9 +12,9 @@ subtitle: Some notes on algorithms following the book <a href="https://en.wikipe
     - big-oh: O(g): functions that grow no faster than g - upper bound, runs in time less than g
         - $f(n) \leq c\cdot g(n)$ for some c, large n
         - set of functions s.t. there exists c,k>0, 0 ≤ f(n) ≤ c*g(n), for all n > k
-    - big-theta: Θ(g): functions that grow at the same rate as g
+    - big-theta:  $\Theta (g)$: functions that grow at the same rate as g
         - big-oh(g) and big-theta(g) - asymptotic tight bound
-    - big-omega: Ω(g): functions that grow at least as fast as g
+    - big-omega: $\Omega(g)$: functions that grow at least as fast as g
         - f(n)≥c*g(n) for some c, large n
     - Example: f = 57n+3
         - O(n^2) - or anything bigger
