@@ -243,7 +243,7 @@ For an implementation of many of these models, see the python [imodels package](
       \end{array}$
     - $|T|$ is the number of branch nodes in tree $T$
     - $N_x(l)$ is the number of training points contained in leaf node $l$
-    - optimal classification trees vs PECARN ([bertsimas et al. 2019](https://jamanetwork.com/journals/jamapediatrics/article-abstract/2733157))
+    - optimal classification trees on PECARN TBI ([bertsimas et al. 2019](https://jamanetwork.com/journals/jamapediatrics/article-abstract/2733157))
   - Learning Optimal Fair Classification Trees ([jo et al. 2022](https://arxiv.org/pdf/2201.09932.pdf))
   - Better Short than Greedy: Interpretable Models through Optimal Rule Boosting ([boley, ..., webb, 2021](https://epubs.siam.org/doi/pdf/10.1137/1.9781611976700.40)) - find optimal tree **ensemble** (only works for very small data)
 
