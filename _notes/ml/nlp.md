@@ -74,15 +74,35 @@ Nice repo keeping track of progress [here](https://github.com/sebastianruder/NLP
     - [QNLI](https://rajpurkar.github.io/SQuAD-explorer/) (Question-answering Natural Language Inference) - determine if the answer to a question is contained in a second sentence or not
     - [RTE](https://aclweb.org/aclwiki/Recognizing_Textual_Entailment) (Recognizing Textual Entailment) - determine if a sentence entails a given hypothesis or not
     - [WNLI](https://cs.nyu.edu/~davise/papers/WinogradSchemas/WS.html) (Winograd Natural Language Inference) - determine if a sentence with an anonymous pronoun and a sentence with this pronoun replaced are entailed or not
+
 - more NLI ( natural language inference)
   - ANLI: Adversarial NLI ([nie et al. 2019](https://arxiv.org/abs/1910.14599)) - harder examples found by model failures
   - SNLI Benchmark ([bowman et al. 2015](https://arxiv.org/abs/1508.05326)) = Stanford Natural Languge Inference - entailment dataset
     - 570k human-annotated sentence pairs where people ask about entailment
   - FEVER: Fact Extraction and VERification ([Thorne et al., 2018](https://aclanthology.org/N18-1074/))
   - SciTail ([khot et al. 2018](https://ojs.aaai.org/index.php/AAAI/article/view/12022)) - textual entailment derived from science-question answering
+
 - QA
   - SQuAD 2.0 ([Rajpurkar...liang, 2018](https://arxiv.org/abs/1806.03822)) - adds 50k unanswerable questions; system must know when it can't answer
   - SQuAD ([Rajpurkar...liang, 2016](https://arxiv.org/abs/1606.05250)) - Stanford Question Answering Dataset (SQuAD)  - 100k questions from 23k passages in 500 wikipedia articles
+
+- Text classification datasets (used in [Tree-Prompt](https://arxiv.org/pdf/2310.14034) and [Aug-imodels](https://www.nature.com/articles/s41467-023-43713-1))
+
+  | Dataset |                                                              | Classes |                             Text                             |     Label      |
+  | :-----: | ------------------------------------------------------------ | ------- | :----------------------------------------------------------: | :------------: |
+  |  SST2   | Movie review sentiment                                       | 2       | that loves its characters and communicates something rather beautiful about human nature |    positive    |
+  |  SUBJ   | subjective vs objective                                      | 2       | the script isn't very good; not even someone as gifted as hoffman ( the actor ) can make it work. |   subjective   |
+  |  MPQA   | question answer sentiment                                    | 2       |                     victory of democracy                     |    positive    |
+  | AGNews  | classify news titles                                         | 4       | Wall St. Bears Claw Back Into the Black (Reuters). "Reuters - Short-sellers, Wall Street's dwindling band of ultra-cynics, are seeing green again." |    business    |
+  |   CB    | given a text and a clause, predict how much the text commits to the clause | 3       | Premise: "Do you mind if I use your phone?" Ronni could see that Guido's brain was whirring. Hypothesis: Guido's brain was whirring |   entailment   |
+  |   CR    | customer review sentiment                                    | 2       | i didn 't have any major problems installing this software . |    positive    |
+  | DBPedia | Categories in wikipedia                                      | 14      | Geoffrey D. Falksen (born July 31 1982) is an American steampunk writer. |     artist     |
+  |   MR    | Movie review sentiment                                       | 2       |                      the film is flat .                      |    negative    |
+  |   RTE   | Entailment                                                   | 2       | Sentence 1: No Weapons of Mass Destruction Found in Iraq Yet. Sentence 2: "Weapons of Mass Destruction Found in Iraq. | not_entailment |
+  |  TREC   | Classifying questions                                        | 6       |            What 's known as The queen of Drinks ?            |     entity     |
+  |   FPB   | Financial phrase sentiment                                   | 3       | According to Gran, the company has no plans to move all production to Russia, although that is where the company is growing. |    neutral     |
+  |  IMDB   | Movie review sentiment                                       | 2       | would put this at the top of my list of films in the category of unwatchable trash! [...] |    negative    |
+  | Emotion | Tweet emotion classification                                 | 6       | i can go from feeling so hopeless to so damned hopeful just from being around someone who cares and is awake |    sadness     |
 
 **common data sources**
 

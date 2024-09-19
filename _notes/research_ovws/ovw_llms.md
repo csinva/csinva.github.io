@@ -448,7 +448,7 @@ See related papers in the [📌 interpretability](https://csinva.io/notes/resear
 - prompting = few-shot learning = priming = in-context learning (starts with GPT)
   - prompting without changing any model parameters
     - limitation: can't exploit sets longer than the training window
-  - MetaICL: Learning to Learn In Context ([min et al. 2022](https://arxiv.org/abs/2110.15943)) - tune LLM to do in-context learning on a large set of training tasks (few-show prompting and training time and at test-time)
+  - MetaICL: Learning to Learn In Context ([min et al. 2022](https://arxiv.org/abs/2110.15943)) - tune LLM to do in-context learning on a large set of training tasks (few-shot prompting and training time and at test-time)
   - Visual Prompting via Image Inpainting ([bar...darrell, globerson, efros, 2022](https://arxiv.org/abs/2209.00647) )
   - PatternExploiting Training (PET) -- Exploiting Cloze Questions for Few Shot Text Classification and Natural Language Inference ([schick & schutze, 2021](https://aclanthology.org/2021.eacl-main.20.pdf))
     - **cloze questions** - same as masked language modeling: task is to replace some missing words
@@ -485,7 +485,7 @@ See related papers in the [📌 interpretability](https://csinva.io/notes/resear
 
 - Teach Llamas to Talk: Recent Progress in Instruction Tuning ([gao blogpost 2023](https://gaotianyu.xyz/blog/2023/11/30/instruction-tuning/))
 
-- Tell Your Model Where to Attend: Post-hoc Attention Steering for LLMs ([zhang et al. 2023](https://arxiv.org/abs/2311.02262))
+- Tell Your Model Where to Attend: Post-hoc Attention Steering for LLMs, PASTA ([zhang et al. 2023](https://arxiv.org/abs/2311.02262))
 - The Truth is in There: Improving Reasoning in Language Models with Layer-Selective Rank Reduction ([sharma...misra, 2023](https://arxiv.org/abs/2312.13558))
 - human feedback
   - Learning to summarize with human feedback ([OpenAI, 2020](https://proceedings.neurips.cc/paper/2020/hash/1f89885d556929e98d3ef9b86448f951-Abstract.html))
@@ -581,15 +581,15 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
       - then, perform generation with latent embedding
       - learn linear transformation given a dataset of examples with attributes and desired completions
         - (also regularize the model to not change *too much* on other stuff)
-    - Activation Addition: Steering Language Models Without Optimization ([turner...macdiarmid, 2023](https://arxiv.org/abs/2308.10248))
-      - blog post: activation engineering: Steering GPT-2-XL by adding an activation vector ([turner, ..., mini, 2023](https://www.alignmentforum.org/posts/5spBue2z2tw4JuDCx/steering-gpt-2-xl-by-adding-an-activation-vector#6__The_Eiffel_Tower_is_in_Rome))
-      - obtain "steering vector" by embedding a phrase (e.g. *love*) and adding that vector to the llm embedding during generation
-        - they only add the embedding for some layers for some tokens
-      - Extracting Latent Steering Vectors from Pretrained Language Models ([subramani, ..., peters, 2022](https://arxiv.org/abs/2205.05124)) - find latent vectors via optimization that cause an LLM to output a particular sequence
-        - then, use these vectors to do things like transfer to new tasks / compute textual similarity
-      - Function Vectors in LLMs ([todd...wallace, bau, 2023](https://arxiv.org/pdf/2310.15213.pdf))
-      - In-Context Learning Creates Task Vectors ([hendel, geva, & globerson, 2023](https://arxiv.org/pdf/2310.15916))
-    
+- Activation Addition: Steering Language Models Without Optimization ([turner...macdiarmid, 2023](https://arxiv.org/abs/2308.10248))
+  - blog post: activation engineering: Steering GPT-2-XL by adding an activation vector ([turner, ..., mini, 2023](https://www.alignmentforum.org/posts/5spBue2z2tw4JuDCx/steering-gpt-2-xl-by-adding-an-activation-vector#6__The_Eiffel_Tower_is_in_Rome))
+  - obtain "steering vector" by embedding a phrase (e.g. *love*) and adding that vector to the llm embedding during generation
+    - they only add the embedding for some layers for some tokens
+  - Extracting Latent Steering Vectors from Pretrained Language Models ([subramani, ..., peters, 2022](https://arxiv.org/abs/2205.05124)) - find latent vectors via optimization that cause an LLM to output a particular sequence
+    - then, use these vectors to do things like transfer to new tasks / compute textual similarity
+  - Function Vectors in LLMs ([todd...wallace, bau, 2023](https://arxiv.org/pdf/2310.15213.pdf))
+  - In-Context Learning Creates Task Vectors ([hendel, geva, & globerson, 2023](https://arxiv.org/pdf/2310.15916))
+  - Programming Refusal with Conditional Activation Steering ([lee...dhurandhar, 2024](https://arxiv.org/abs/2409.05907))
 - PURR: Efficiently Editing Language Model Hallucinations by Denoising Language Model Corruptions ([chen...sameer singh...kelvin guu, 2023](https://drive.google.com/file/d/1CXSUii4w8Y2uj-zLm8zRl63SYh45FaZL/view))
 - new datasets
     - MQUAKE: Assessing Knowledge Editing in Language Models via Multi-Hop Questions ([zhong...manning, potts, chen, 2023](https://www.cs.princeton.edu/~zzhong/papers/MQuAKE.pdf)) - introduces benchmark MQUAKE + method MeLLo, which stores edited facts externally while prompting the language model iteratively to generate answers that are consistent with the edited facts
@@ -1200,7 +1200,9 @@ mixture of experts models have become popular because of the need for (1) fast s
 - Jailbreaking Proprietary Large Language Models using Word Substitution Cipher ([Handa…Baral 2024](https://arxiv.org/abs/2402.10601)): short nice paper! just says substitute unsafe words with safe words, provide the mapping to the model and the original question substituted with the words. Ask the LLM to reply, high ASR for ChatGPT and Gemini.
 - CodeChameleon: Personalized Encryption Framework for Jailbreaking Large Language Models ([Lv…Huang 2024](https://arxiv.org/abs/2402.16717)): In this case they ask the malicious question using code where the input sentence is encrypted using some simple coding schemes (reverse words or sort words by their length) and the code includes the decryption function. Highest ASR among all baselines which includes the CipherChat and multilingual.
 - MULTIVERSE: Exposing Large Language Model Alignment Problems in Diverse Worlds ([Jin…Zhang 2024](https://arxiv.org/abs/2402.01706)): This is not doing cipher language. It creates several layers of alternate worlds where one can put a malicious query and it bypasses model security. The deeper the layers, the higher ASR the attack has.
-- People have used other modalities like images, voice, to attack models. One can think of other modalities as a generalization of different languages.
+- Data Contamination Can Cross Language Barriers ([feng yao, yufan zhuang, ..., jingbo shang](https://arxiv.org/html/2406.13236v1)) - LLMs can overfit to benchmarks by being trained on translations of them
+  - To detect this contamination, for each question, we replace all the incorrect choices with correct choices taken from other questions
+
 
 # applications
 
@@ -1297,13 +1299,13 @@ mixture of experts models have become popular because of the need for (1) fast s
   - Pretraining task diversity and the emergence of non-Bayesian in-context learning for regression ([raventos…ganguli, 2023](https://openreview.net/forum?id=BtAz4a5xDg))
 - Transformers Learn Higher-Order Optimization Methods for In-Context Learning: A Study with Linear Models ([fu...sharan, 2023](https://arxiv.org/abs/2310.17086))
   - How Well Can Transformers Emulate In-context Newton’s Method? ([giannou...papailiopoulos, & lee, 2024](https://arxiv.org/pdf/2403.03183v1.pdf))
-
 - Teaching Algorithmic Reasoning via In-context Learning ([zhou...sedghi, 2022](https://arxiv.org/abs/2211.09066))
 - Looped Transformers as Programmable Computers ([giannou, ..., jason lee, papailiopoulos, 2023](https://arxiv.org/abs/2301.13196)) - use transformers as universal computers by programming them with specific weights
 - Learning mathematical problems ([francois charton](https://scholar.google.com/citations?hl=en&user=1tMnd-4AAAAJ&view_op=list_works&sortby=pubdate))
 - Probing the Decision Boundaries of In-context Learning in Large Language Models ([zhao, nguyen, & grover, 2024](https://arxiv.org/pdf/2406.11233v1))
 - Theory (don't directly predict algorithm)
   - Meta-learning for Mixed Linear Regression ([kong...kakade, oh, 2020](https://proceedings.mlr.press/v119/kong20a.html)) - generalization for linear regression based on which linear tasks were seen before
+  - Transformers are Universal In-context Learners ([furuya...peyre, 2024](https://arxiv.org/abs/2408.01367)) - mathetmatically show that transformers are universal and can approximate continuous in-context mappings to arbitrary precision
 - Limitations
   - Faith and Fate: Limits of Transformers on Compositionality ([dziri...choi, 2023](https://arxiv.org/abs/2305.18654)) - LLMs can't (easily) be trained well for multiplication (and similar tasks)
 
