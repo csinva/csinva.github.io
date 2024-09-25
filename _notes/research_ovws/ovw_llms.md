@@ -1222,6 +1222,8 @@ mixture of experts models have become popular because of the need for (1) fast s
       - some tricks
         - select samples which are "representative" of a class by predicting with another LLM
         - have a pool of 302 manual hypotheses they usefor seeding
+    - Explaining Datasets in Words:
+      Statistical Models with Natural Language Parameters ([zhong, wang, klein, & steinhardt, 2024](https://arxiv.org/pdf/2409.08466)) - assign labels to continuous vectors in statistical models, e.g. text label to cluster mean embedding
     - Goal-Driven Explainable Clustering via Language Descriptions ([wang..., zhong, 2023](https://arxiv.org/abs/2305.13749))
       - ClusterLLM: LLMs as a Guide for Text Clustering ([zhang...shang, 2023](https://arxiv.org/abs/2305.14871))
       - LLMs4OL: LLMs for Ontology Learning ([giglou et al. 2023](https://arxiv.org/pdf/2307.16648.pdf)) - use prompting to construct ontologies
