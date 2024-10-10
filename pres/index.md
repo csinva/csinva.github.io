@@ -5,9 +5,14 @@ title: presentations
 
 *Links to many of my presentations*
 
+## 2024
+- [Using LLMs to bridge data-driven models and scientific theories in language neuroscience](https://docs.google.com/presentation/d/1g0EPeyemIM7FW1mv8CA97fE5E7kIZJmbQbYMHuNXLWs/edit?usp=sharing)
+    - Title: Using LLMs to bridge data-driven models and scientific theories in language neuroscience
+    - Abstract: Science faces an explainability crisis: data-driven deep learning methods are proving capable of *predicting* many natural phenomena but not at *explaining* them. One emblematic field is language neuroscience, where LLMs are highly effective at predicting human brain responses to natural language, but are virtually impossible to interpret or analyze by hand. To overcome this challenge, we introduce a framework that translates deep learning models of language selectivity in the brain into concise verbal explanations, and then designs follow-up experiments to verify that these explanations are causally related to brain activity. This approach is successful at explaining selectivity both in individual voxels and cortical regions of interest, demonstrating that LLMs can be used to bridge the widening gap between data-driven models and formal scientific theories. This talk covers 2 papers: Benara et al. ([NeurIPS 2024](https://arxiv.org/abs/2405.16714v1)) & Antonello et al. ([arXiv, 2024](https://arxiv.org/abs/2410.00812)).
+
 ## 2023
 - [explanations from text data](https://docs.google.com/presentation/d/1qL_cATZWiwOg4EjgrQ93m2zEpNMYYdIUUqqMO1REbIk/edit#slide=id.g21b26013510_0_4)
-- [tree-prompt](https://docs.google.com/presentation/d/17RqIjCGOaM19R_PFKTQMj5OGhmfpGccmxGW61ixzUPo/)
+- [uniting LLMs and trees](https://docs.google.com/presentation/d/1I9OWLhrmBiBjoe6CJtxdI6qlIuvL26GZRjeO_ir3i_Y/edit)
 	- Title: Uniting Large Language Models and Decision Trees
 	- <details>
     <summary>Abstract 1</summary>
