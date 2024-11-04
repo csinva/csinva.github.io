@@ -535,6 +535,7 @@ Model merging (some of these are non-transformer papers) = combine different mod
     - improves perplexities, when controlling for training cost
       - require expert domain specialization
     - Cluster-Branch-Train-Merge ([gururangan...smith, zettlemoyer, 2023](https://arxiv.org/abs/2303.14177)) - start by clustering data to do unsupervised domain discovery
+  - LiNeS: Post-training Layer Scaling Prevents Forgetting and Enhances Model Merging ([wang...frossard, 2024](https://arxiv.org/abs/2410.17146)) - updating deeper layers more than shallow layers helps prevent forgetting across tasks
 - fit many models into one
   - superposition of many models into one ([cheung...olshausen, 2019](https://proceedings.neurips.cc/paper/2019/hash/4c7a167bb329bd92580a99ce422d6fa6-Abstract.html)) - both during training/testing models are indexed via a high-dim key for each task
   - supermasks in superposition ([wortsman, ..., yosinski, farhadi, 2020](https://proceedings.neurips.cc/paper/2020/hash/ad1f8bb9b51f023cdc80cf94bb615aa9-Abstract.html)) - randomly fixed base net + for each task finds subnet that performs well
@@ -716,6 +717,10 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
 - [transformer-debugger](https://github.com/openai/transformer-debugger) (openAI)
   - neuronpedia: visualization tool for neuron SAEs ([lin & bloom, 2024](https://www.lesswrong.com/posts/BaEQoxHhWPrkinmxd/announcing-neuronpedia-as-a-platform-to-accelerate-research))
   - Improving Dictionary Learning with Gated Sparse Autoencoders ([rajamanoharan...nanda, 2024](https://arxiv.org/pdf/2404.16014))
+  - Automatically Interpreting Millions of Features in Large Language Models ([paulo...belrose, 2024](https://arxiv.org/abs/2410.13928))
+- Fine-Tuning Enhances Existing Mechanisms: A Case Study on Entity Tracking ([prakash...belinkov, bau, 2024](https://arxiv.org/abs/2402.14811)) - finetuning does not seem to change the behavior of circuits, rather just enhances them
+  - Mechanistically analyzing the effects of fine-tuning on procedurally defined tasks ([jain...krueger, 2024](https://arxiv.org/abs/2311.12786)) - finetuning learns a fairly simple wrapper that can be reversed easily
+
 
 
 ## debugging / interpretation

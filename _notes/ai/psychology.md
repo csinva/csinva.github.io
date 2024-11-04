@@ -669,7 +669,18 @@ subtitle: Some notes on papers / books surrounding psychology, especially evolut
 - privacy (spaces in people’s psyches that everyone needs in healthy relationships) and secrecy (which stems from shame and tends to be corrosive)
 - In the best goodbyes, there’s always the feeling that there’s something more to say
 
+# the gifted child (alice miller)
 
+- "A child cannot run away from her as her own mother once did. A child can be so brought up that it becomes what she wants it to be."
+- "a child can never see through unconscious manipulation. It is like the air he breathes; he knows no other, and it appears to him to be the only normal possiblity"
+- *cathexis* - the concentration of mental energy on onen particular person, idea, or object (esp. to an unhealthy degree)
+- *grandiosity* - the person who is "grandiose" is admired everywhere and needs this admiration; indeed, he cannot live without it.
+  - "And is he noto bound to carry pent-up rage within himself, against those who have made him afraid to walk without stilts?"
+- *introjection* - the unconscious adoption of the ideas or attitudes of others
+- sisyphean - (of a task) such that it can never be completed.
+- depression ~ a possible reaction to psychic pain caused by the discrepancy between the actual and the ideal self representation
+- transference - the redicirection to a substitute, usually a therapist, of emotions that were originally felt in childhood
+  - countertransference - the emotional reaction of the analyst to the subject's contribution
 
 # attached (amir levine & rachel heller)
 
