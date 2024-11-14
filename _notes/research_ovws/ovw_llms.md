@@ -1197,6 +1197,7 @@ mixture of experts models have become popular because of the need for (1) fast s
     - Other works look at token-level tasks for language-agnostic embeddings (e.g. [gonen…goldberg, 2020](https://arxiv.org/abs/2010.08275))
 - First Align, then Predict: Understanding the Cross-Lingual Ability of Multilingual BERT ([muller…seddah, 2021](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C48&q=First+Align%2C+then+Predict%3A+Understanding+the+Cross-Lingual+Ability+of+Multilingual+BERT&btnG=))
   - the model first aligns representations of different languages together, and then (starting from the middle layers) makes them more language-specific again (to accompany the language-specific training objective)
+- The Semantic Hub Hypothesis: Language Models Share Semantic Representations Across Languages and Modalities ([wu...kim, 2024](https://arxiv.org/pdf/2411.04986))
 - Cross-lingual Similarity of Multilingual Representations Revisited ([del & fishel, 2022](https://aclanthology.org/2022.aacl-main.15.pdf))
   - measure similarity with Averaged Neuron-Wise Correlation (ANC)
 - Discovering Language-neutral Sub-networks in Multilingual Language Models ([foroutan…aberer, 2022](https://arxiv.org/abs/2205.12672))
