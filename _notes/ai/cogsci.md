@@ -253,6 +253,7 @@ subtitle: Some notes on a computational perspective on cognitive science.
 
 # theory of mind
 
+- Theory of mind = The ability to understand and take into account another individual’s mental state
 - theory of mind - human understanding of agents' mental states and how they shape actions
   - understand intentional actions - like dots, understand evil, purpose
   - we can track this month by month

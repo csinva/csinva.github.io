@@ -229,3 +229,12 @@ Nice repo keeping track of progress [here](https://github.com/sebastianruder/NLP
 
 - **feature-based grammars** - add things to word representations (e.g. plurality) and use these in the grammar rules
 
+# language
+
+- Cleaning up the Brickyard: How Theory and Methodology Shape Experiments in Cognitive Neuroscience of Language ([burght...zaccarella, 2023](https://direct.mit.edu/jocn/article/35/12/2067/117558/Cleaning-up-the-Brickyard-How-Theory-and)) - 6 categories to study languages
+  - **semantics** - study of the meaning of words / word combinations
+  - **syntax** - study of the grammatical structure of phrases/sentences
+  - **phonetics** - study of the physical aspects of sounds
+  - **phonology** - study of the organization of sounds independent of their physical realization in speech / sign language
+  - **morphology** - study of the internal structure of words in a language
+  - **pragmatics** - study of the way in which context during communication contributes to meaning

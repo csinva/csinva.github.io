@@ -945,6 +945,10 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 - NLP ECoG
 
   - Brain Treebank: Large-scale intracranial recordings from naturalistic language stimuli ([wang...barbu, 2024](https://arxiv.org/pdf/2411.08343))
+    - Some works on this dataset
+      - BrainBERT: Self-supervised representation learning for intracranial recordings ([wang…barbu, 2023](https://arxiv.org/abs/2302.14367))
+      - Revealing Vision-Language Integration in the Brain with Multimodal Networks ([subramaniam…barbu, 2024](https://arxiv.org/abs/2406.14481))
+      - Population Transformer: Learning Population-Level Representations of Neural Activity ([chau…barbu, 2024](https://pmc.ncbi.nlm.nih.gov/articles/PMC11177958/))
 
 - [non-human primate optogenetics datasets](https://osf.io/mknfu/)
 - [vision dsets](https://www.visualdata.io/)
@@ -1010,9 +1014,17 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 
 # fMRI
 
-## nlp
+## language
 
 - Mapping Brains with Language Models: A Survey ([Karamolegkou et al. 2023](https://arxiv.org/abs/2306.05126))
+- The language network as a natural kind within the broader landscape of the human brain ([fedorenko, ivanova, & regev, 2024](https://www.researchgate.net/publication/379785120_The_language_network_as_a_natural_kind_within_the_broader_landscape_of_the_human_brain))
+  - language processing involves converting linguistic stimuli (audio, vision) -> linguistic forms (words, word sequences) -> meaning and then back
+  - averaging over individuals is often infeasible - instead, localizers (which show particular contrasts to subjects) can help identify functional regions
+    - most popular localizer uses contrasts between sentences and pronounceable non-word sequences (New Method for fMRI Investigations of Language: Defining ROIs Functionally in Individual Subjects; [fedorenko...kanwisher, 2010](https://journals.physiology.org/doi/full/10.1152/jn.00032.2010))
+  - language network is generally left-localized and in lateral frontal areas & lateral temporal areas
+    - ![fedorenko_fig1](../assets/fedorenko_fig1.png)
+  - language areas engage during both comprehension and production; are input and output modality-independent
+  - damage to left-hemisphere frontal/temporal brain areas leads to aphasia (deficits in language comprehension and production)
 - Semantic encoding during language comprehension at single-cell resolution ([jamali...fedorenko, williams, 2024](https://www.nature.com/articles/s41586-024-07643-2))
 - interpreting brain encoding models
   - [Brains and algorithms partially converge in natural language processing](https://www.nature.com/articles/s42003-022-03036-1#Sec9) (caucheteux & king, 2022)
@@ -1042,6 +1054,7 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
     - Interpret transformer-based models and find top predictions in specific regions, like left middle temporal gyrus (LMTG) and left occipital complex (LOC) ([sun et al. 2021](https://ieeexplore.ieee.org/document/9223750/))
     - Lexical-Semantic Content, Not Syntactic Structure, Is the Main Contributor to ANN-Brain Similarity of fMRI Responses in the Language Network  ([kauf...andreas, fedorenko, 2024](https://direct.mit.edu/nol/article/5/1/7/116784/Lexical-Semantic-Content-Not-Syntactic-Structure)) - lexical semantic sentence content, not syntax, drive alignment.
     - Artificial Neural Network Language Models Predict Human Brain Responses to Language Even After a Developmentally Realistic Amount of Training  ([hosseini...fedorenko, 2024](https://direct.mit.edu/nol/article/5/1/43/119156/Artificial-Neural-Network-Language-Models-Predict)) - models trained on a developmentally plausible amount of data (100M tokens) already align closely with human benchmarks
+    - Improving semantic understanding in speech language models via brain-tuning ([moussa...toneva, 2024](https://arxiv.org/abs/2410.09230))
 - changing experimental design
   - Semantic representations during language comprehension are affected by context (i.e. how langauge is presented) ([deniz...gallant, 2021](https://www.biorxiv.org/content/10.1101/2021.12.15.472839v1.full.pdf)) - stimuli with more context (stories, sentences) evoke better responses than stimuli with little context (Semantic Blocks, Single Words)
   - Combining computational controls with natural text reveals new aspects of meaning composition ([toneva, mitchell, & wehbe, 2022](https://www.biorxiv.org/content/biorxiv/early/2022/08/09/2020.09.28.316935.full.pdf)) - study word interactions by using encoding vector emb(phrase) - emb(word1) - emb(word2)...
@@ -1384,6 +1397,8 @@ the operations above allow for encoding many normal data structures into a singl
 - single-neuron (macaque)
   - Neural population control via deep image synthesis ([bashivan, kar, & dicarlo, 2019](https://www.science.org/doi/abs/10.1126/science.aav9436))
 
+  - A biologically-inspired hierarchical convolutional energy model predicts V4 responses to natural videos ([oliver, winter, dupre la tour, eickenberg, & gallant, 2024](https://www.biorxiv.org/content/10.1101/2024.12.16.628781v1))
+
   - Energy Guided Diffusion for Generating Neurally Exciting Images ([pierzchlewicz, ..., tolias, sinz, 2023](https://www.biorxiv.org/content/10.1101/2023.05.18.541176v1))
 
   - Evolving images for visual neurons using a deep generative network reveals coding principles and neuronal preferences ([ponce...livingstone, 2019](https://www.sciencedirect.com/science/article/pii/S0092867419303915))
@@ -1391,22 +1406,22 @@ the operations above allow for encoding many normal data structures into a singl
   - The DeepTune framework for modeling and characterizing neurons in visual cortex area V4 ([abbasi-asl, ..., yu, 2018](https://www.biorxiv.org/content/10.1101/465534v1.abstract))
 
   - Compact deep neural network models of visual cortex ([cowley, stan, pillow, & smith, 2023](https://www.biorxiv.org/content/10.1101/2023.11.22.568315v1.abstract))
-  
+
+- differentiating stimuli
+    - Model metamers reveal divergent invariances between biological and artificial neural networks ([feather...madry, mcdermott, 2024](https://www.nature.com/articles/s41593-023-01442-0)) - studies that have used carefully designed stimuli have revealed that ANNs do not always align with humans
+    - Universality of representation in biological and artificial neural networks ([hosseini...fedorenko, 2024](https://www.biorxiv.org/content/10.1101/2024.12.26.629294v1.full.pdf)) - developed a method to identify stimuli that systematically vary the degree of inter-model representation agreement between ANNs and brains
+
 - XDream: Finding preferred stimuli for visual neurons using generative networks and gradient-free optimization ([2020](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007973))
 - CORNN: Convex optimization of recurrent neural networks for rapid inference of neural dynamics ([dinc...tanaka, 2023](https://arxiv.org/abs/2311.10200)) - mouse population control
-  
 - real-time mouse v1
   - Inception in visual cortex: in vivo-silico loops reveal most exciting images ([2018](https://www.biorxiv.org/content/10.1101/506956.abstract))
-
 - Adept: Adaptive stimulus selection for optimizing neural population responses ([cowley...byron yu, 2017](https://papers.nips.cc/paper/6738-adaptive-stimulus-selection-for-optimizing-neural-population-responses.pdf))
   - select next image using kernel regression from CNN embeddings
   - pick next stimulus in closed-loop ("adaptive sampling" = "optimal experimental design") for macaque v4
 - From response to stimulus: adaptive sampling in sensory physiology ([2007](https://www.sciencedirect.com/science/article/pii/S095943880700092X))
 - find the smallest number of stimuli needed to fit parameters of a model that predicts the recorded neuron’s activity from the
     stimulus
-
 - maximizing firing rates via genetic algorithms
-
 - maximizing firing rate via gradient ascent
 - [Adaptive stimulus optimization for sensory systems neuroscience](https://www.frontiersin.org/articles/10.3389/fncir.2013.00101/full)
   - 2 general approaches: gradient-based approaches + genetic algorithms
@@ -1422,7 +1437,8 @@ the operations above allow for encoding many normal data structures into a singl
 
 ## population coding
 
-- saxena_19_pop_cunningham: "Towards the neural population doctrine"
+- Linking neural population formatting to function ([ruff...cohen, 2025](https://www.biorxiv.org/content/10.1101/2025.01.03.631242v1.full.pdf)) - the function of a brain area is more related to how different types of information are combined (formatted) than merely whether that information is present
+- Towards the neural population doctrine (saxena...cunningham, 2019)
   - correlated trial-to-trial variability
     - Ni et al. showed that the correlated variability in V4 neurons during attention and learning — processes that have inherently different timescales — robustly decreases
     - ‘choice’ decoder built on neural activity in the first PC performs as well as one built on the full dataset, suggesting that the relationship of neural variability to behavior lies in a relatively small subspace of the state space.

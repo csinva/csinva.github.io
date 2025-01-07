@@ -470,6 +470,8 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
       - Compute embedding similarity of concepts and input, and train layer to predict each of these similarity scores as concept bottleneck
         - Before training bottleneck, use ChatGPT to help correct any concept scores that seem incorrect
       - Human evaluation: agreement of concept scores and contribution of concept to output
+    - Concept Bottleneck Large Language Models ([sun, oikarinen, ustun, & weng, 2024](https://arxiv.org/abs/2412.07992))
+      - Version 2 of this paper also has results for language modeling
   - Concept transformers ([rigotti, ... scotton, 2022](https://openreview.net/pdf?id=kAa9eDS0RdO)) - use human-given concepts and explain predictions as a function of these concepts
   - Knowledge-enhanced Bottlenecks (KnoBo) - A Textbook Remedy for Domain Shifts: Knowledge Priors for Medical Image Analysis ([yang...yatskar, 2024](https://yueyang1996.github.io/papers/knobo.pdf)) - CBMs that incorporate knowledge priors that constrain it to reason with clinically relevant factors found in medical textbooks or PubMed
   - Crafting Interpretable Embeddings by Asking LLMs Questions ([benara...gao, 2024](https://arxiv.org/pdf/2405.16714))

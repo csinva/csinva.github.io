@@ -45,6 +45,9 @@ For neural-net specific transferring see [📌 adaption/transfer](https://csinva
   - introduce CIRM, which works better when both covariates and labels are perturbed in target data
 - kernel approach ([blanchard, lee & scott, 2011](https://papers.nips.cc/paper/2011/file/b571ecea16a9824023ee1af16897a582-Paper.pdf)) - find an appropriate RKHS and optimize a regularized empirical risk over the space
 - In-N-Out ([xie...lang, 2020](https://arxiv.org/abs/2012.04550)) - if we have many features, rather than using them all as features, can use some as features and some as targets when we shift, to learn the domain shift
+- Prospective Learning: Learning for a Dynamic Future ([de silva...voelstein, chaudhari, 2024](https://openreview.net/pdf?id=XEbPJUQzs3))
+  - define *prospective learning* as setting where optimal hypothesis changes over time (like multi-task, meta-, continual, and lifelong learning)
+  - introduce prospective ERM, which is shown to be consistent (unlike standard empirical risk minimization from PAC learning) - basically, incorporates time as an input in addition to the data
 
 ## domain invariance
 
