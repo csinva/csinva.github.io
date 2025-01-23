@@ -309,6 +309,12 @@ For an implementation of many of these models, see the python [imodels package](
   - longitudinal data, survival curves
 
 - misc
+  
+  - On the Power of Decision Trees in Auto-Regressive Language Modeling ([gan, galanti, poggio, malach, 2024](https://arxiv.org/pdf/2409.19150))
+    - get token word embeddings
+    - compute exp. weighted avg of embeddings (upweights most recent tokens)
+    - predicts next embedding with XGBoost (regression loss) then finds closest token
+  
   - counterfactuals
     - [Counterfactual Explanations for Oblique Decision Trees: Exact, Efficient Algorithms](https://arxiv.org/abs/2103.01096) (2021)
     - [Optimal Counterfactual Explanations in Tree Ensembles](https://arxiv.org/abs/2106.06631)
@@ -322,7 +328,7 @@ For an implementation of many of these models, see the python [imodels package](
       1. feature-level: monotonicity, attribute costs, hierarchy/interaction, fairness, privacy
       2. structure-level - e.g. minimize #nodes
       3. instance-level - must (cannot) link, robust predictions
-
+  
 - Analysis of Boolean functions ([wiki](https://en.wikipedia.org/wiki/Analysis_of_Boolean_functions))
 
   - Every real-valued function $f:\{-1,1\}^n \rightarrow \mathbb{R}$ has a unique expansion as a multilinear polynomial:

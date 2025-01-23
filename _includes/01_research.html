@@ -21,19 +21,24 @@
         are interested in interning at MSR, feel free to reach out over email :)</div>
 
     <div class="research_box"><strong>🔎
-            Interpretability.</strong> I'm interested in <a href="https://arxiv.org/abs/2402.01761">rethinking
-            interpretability</a> in the context of LLMs
+            Interpretability methods,</strong> especially <a href="https://arxiv.org/abs/2402.01761">LLM
+            interpretability</a>.
         <br>
         <br>
         <a href="https://www.nature.com/articles/s41467-023-43713-1">augmented imodels</a> - use LLMs to build a
         transparent model<br>
+        <!-- <a href="https://arxiv.org/abs/2310.14034">tree prompting</a> - improve black-box few-shot text classification -->
+        <!-- with decision trees<br> -->
+        <a href="https://arxiv.org/abs/2311.02262">attention steering</a> - mechanistically guide LLMs by
+        emphasizing specific input
+        spans<br>
         <a href="http://proceedings.mlr.press/v119/rieger20a.html">explanation penalization</a> - regularize
         explanations to align models with prior knowledge<br>
         <a href="https://proceedings.neurips.cc/paper/2021/file/acaa23f71f963e96c8847585e71352d6-Paper.pdf">adaptive
-            wavelet distillation</a> - replace neural nets with simple, performant wavelet models
+            wavelet distillation</a> - replace neural nets with transparent wavelet models
     </div>
 
-    <div class="research_box">
+    <!-- <div class="research_box">
 
         <strong>🚗 LLM steering. </strong>Interpretability tools can provide ways to better guide and use LLMs (without
         needing gradients!)
@@ -46,43 +51,49 @@
         spans<br>
         <a href="https://arxiv.org/abs/2210.01848">interpretable autoprompting</a> - automatically find fluent
         natural-language prompts<br>
-    </div>
+    </div> -->
 
 
     <div class="research_box">
 
-        <strong>🧠 Neuroscience. </strong> Since joining MSR, I've been focused on leveraging LLM interpretability
-        to understand how the human brain represents language (using fMRI in collaboration with the <a
-            href="https://www.cs.utexas.edu/~huth/index.html">Huth lab</a> at UT Austin).
+        <strong>🧠 Semantic brain mapping, </strong> mostly using fMRI responses to language.
+        <!-- Since joining MSR, I've been focused on leveraging LLM interpretability -->
+        <!-- to understand how the human brain represents language (using fMRI in collaboration with the <a -->
+        <!-- href="https://www.cs.utexas.edu/~huth/index.html">Huth lab</a> at UT Austin). -->
         <br>
         <br>
-        <a href="https://arxiv.org/abs/2410.00812">explanation-mediated validation</a> - build and test fMRI
+        <a href="https://arxiv.org/abs/2410.00812">explanation-mediated validation</a> - test fMRI
         explanations using LLM-generated stimuli<br>
-        <a href="https://arxiv.org/abs/2405.16714">qa embeddings</a> - build interpretable fMRI encoding models by
+        <a href="https://arxiv.org/abs/2405.16714">qa embeddings</a> - predict fMRI language responses by
         asking yes/no questions to LLMs<br>
         <a href="https://arxiv.org/abs/2305.09863">summarize &amp; score explanations</a> - generate natural-language
-        explanations of fMRI encoding models
+        explanations of fMRI encoding models<br>
     </div>
 
 
     <div class="research_box"><strong>💊
-            Healthcare. </strong>I'm also actively working on how we can improve clinical decision instruments by using
-        the information contained across various sources in the medical literature (in collaboration with <a
-            href="https://profiles.ucsf.edu/aaron.kornblith">Aaron Kornblith</a> at UCSF and the MSR <a
-            href="https://www.microsoft.com/en-us/research/group/real-world-evidence/">Health Futures team</a>).
+            Clinical decision rules, </strong>can we improve them with data?
+        <!-- I'm also actively working on how we can improve clinical decision -->
+        <!-- instruments by using -->
+        <!-- the information contained across various sources in the medical literature (in collaboration with <a -->
+        <!-- href="https://profiles.ucsf.edu/aaron.kornblith">Aaron Kornblith</a> at UCSF and the MSR <a -->
+        <!-- href="https://www.microsoft.com/en-us/research/group/real-world-evidence/">Health Futures team</a>). -->
         <br>
         <br>
+        <a href="https://arxiv.org/pdf/2201.11931">greedy tree sums</a> - build accurate, compact tree-based clinical
+        models<br>
         <a href="https://arxiv.org/abs/2306.00024">clinical self-verification</a> - self-verification improves
         performance and interpretability of clinical information extraction<br>
         <a href="https://journals.plos.org/digitalhealth/article?id=10.1371/journal.pdig.0000076">clinical rule
-            vetting</a> - stress testing a clinical decision instrument performance for intra-abdominal injury
-
+            vetting</a> - stress testing a clinical decision instrument performance for intra-abdominal injury<br>
     </div>
 
     <div style="width: 100%;padding: 8px;margin-bottom: 20px; text-align:center; font-size: large;">
-        Across these areas, I'm interested in decision trees and how we can build flexible but accurate transparent
-        models. I put a lot of my code into the <a href="https://github.com/csinva/imodels">imodels</a> and <a
-            href="https://github.com/csinva/imodelsx">imodelsX</a> packages.</div>
+        <!-- Across these areas, I'm interested in decision trees and how we can build flexible but accurate transparent -->
+        <!-- models. -->
+        Note: I put a lot of my code into the <a href="https://github.com/csinva/imodels">imodels</a> and <a
+            href="https://github.com/csinva/imodelsx">imodelsX</a> packages.
+    </div>
 </div>
 
 <hr>
@@ -154,6 +165,18 @@
     </thead>
     <tbody>
         <tr>
+            <td class="center">'25</td>
+            <td>Vector-ICL: In-context Learning with Continuous Vector Representations
+            </td>
+            <td>zhuang et al.</td>
+            <td class="med">🔎🌀</td>
+            <td class="center"><a href="https://arxiv.org/abs/2410.05629">iclr</a></td>
+            <td class="big"><a href="https://github.com/EvanZhuang/vector-icl"><i class="fa fa-github fa-fw"></i></a>
+            </td>
+            <td class="med">
+            </td>
+        </tr>
+        <tr>
             <td class="center">'24</td>
             <td>Interpretable Language Modeling via Induction-head Ngram Models
             </td>
@@ -175,6 +198,8 @@
             <td class="big"><a href="https://github.com/microsoft/automated-explanations"><i
                         class="fa fa-github fa-fw"></i></a></td>
             <td class="med">
+                <a href="https://docs.google.com/presentation/d/1bFZZ8-OwwNxN3DjPdyPFKuP16yyYTP9DlaTzKOaYVWI/"><i
+                        class="fa fa-desktop fa-fw"></i></a>
             </td>
         </tr>
         <tr>
@@ -187,6 +212,8 @@
             <td class="big"><a href="https://github.com/csinva/interpretable-embeddings"><i
                         class="fa fa-github fa-fw"></i></a></td>
             <td class="med">
+                <a href="https://docs.google.com/presentation/d/1bFZZ8-OwwNxN3DjPdyPFKuP16yyYTP9DlaTzKOaYVWI/"><i
+                        class="fa fa-desktop fa-fw"></i></a>
             </td>
         </tr>
         <tr>
@@ -197,18 +224,6 @@
             <td class="med">🔎🌀</td>
             <td class="center"><a href="https://arxiv.org/abs/2402.01761">arxiv</a></td>
             <td class="big"></td>
-            <td class="med">
-            </td>
-        </tr>
-        <tr>
-            <td class="center">'24</td>
-            <td>Vector-ICL: In-context Learning with Continuous Vector Representations
-            </td>
-            <td>zhuang et al.</td>
-            <td class="med">🔎🌀</td>
-            <td class="center"><a href="https://arxiv.org/abs/2410.05629">arxiv</a></td>
-            <td class="big"><a href="https://github.com/EvanZhuang/vector-icl"><i class="fa fa-github fa-fw"></i></a>
-            </td>
             <td class="med">
             </td>
         </tr>

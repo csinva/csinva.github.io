@@ -1283,7 +1283,7 @@ mixture of experts models have become popular because of the need for (1) fast s
     - Ravel: Evaluating Interpretability Methods on Disentangling Language Model Representations ([huang, wu, potts, geva, & geiger, 2024](https://arxiv.org/pdf/2402.17700v1.pdf))
   
 
-## directly learning algorithms / in-context
+## directly learning algorithms
 
 - Empirical results
   - FunSearch: Mathematical discoveries from program search with LLMs ([deepmind, 2023](https://www.nature.com/articles/s41586-023-06924-6))
@@ -1294,6 +1294,10 @@ mixture of experts models have become popular because of the need for (1) fast s
 - Alphafold
   - Accurate proteome-wide missense variant effect prediction with AlphaMissense ([deepmind, 2023](https://www.science.org/doi/full/10.1126/science.adg7492)) - predict effects of varying single-amino acid changes
   - Bridging the Human-AI Knowledge Gap: Concept Discovery and Transfer in AlphaZero ([schut...hessabis, paquet, & been kim, 2023](https://arxiv.org/abs/2310.16410))
+- Learning a Decision Tree Algorithm with Transformers ([zhuang...gao, 2024](https://arxiv.org/abs/2402.03774))
+
+## in-context learning
+
 - What Can Transformers Learn In-Context? A Case Study of Simple Function Classes ([garg, tsipras, liang, & valiant, 2022](https://arxiv.org/abs/2208.01066)) - models can succesfully metalearn functions like OLS
   - e.g. during training, learn inputs-outputs from different linear functions
   - during testing, have to predict outputs for inputs from a different linear function
@@ -1328,6 +1332,12 @@ mixture of experts models have become popular because of the need for (1) fast s
   - Transformers are Universal In-context Learners ([furuya...peyre, 2024](https://arxiv.org/abs/2408.01367)) - mathetmatically show that transformers are universal and can approximate continuous in-context mappings to arbitrary precision
 - Limitations
   - Faith and Fate: Limits of Transformers on Compositionality ([dziri...choi, 2023](https://arxiv.org/abs/2305.18654)) - LLMs can't (easily) be trained well for multiplication (and similar tasks)
+- ICLR: In-Context Learning of Representations ([park...wattenberg, tanaka, 2024](https://arxiv.org/abs/2501.00070)) - showing pairs of words sampled from a graph can make the embeddings of those words match the structure of that graph
+- Label Words are Anchors: An Information Flow Perspective for
+  Understanding In-Context Learning ([wang...sun, 2023](https://aclanthology.org/2023.emnlp-main.609.pdf))
+- Correlation and Navigation in the Vocabulary Key Representation Space of Language Models ([peng...shang, 2024](https://arxiv.org/abs/2410.02284)) - some tokens are correlated in embedding space and wrong next-token completions  can be highly ranked if their embeddings are correlated with correct ones
+  - as we sample tokens in context, we get more diverse completions, skipping nearby wrong next tokens
+
 
 ## cool tasks
 
@@ -1483,7 +1493,8 @@ mixture of experts models have become popular because of the need for (1) fast s
   - TaBERT: Pretraining for Joint Understanding of Textual and Tabular Data ([yin, neubig, ..., riedel, 2020](https://www.semanticscholar.org/paper/TaBERT%3A-Pretraining-for-Joint-Understanding-of-and-Yin-Neubig/a5b1d1cab073cb746a990b37d42dc7b67763f881))
 
 - classification / predictions
-  - TabPFN: A Transformer That Solves Small Tabular Classification Problems in a Second ([hollman, ..., hutter, 2022](https://arxiv.org/abs/2207.01848))
+  - TabPFN v2: Accurate predictions on small data with a tabular foundation model ([hollman....hutter, 2025](https://www.nature.com/articles/s41586-024-08328-6))
+  - TabPFN v1: A Transformer That Solves Small Tabular Classification Problems in a Second ([hollman, ..., hutter, 2022](https://arxiv.org/abs/2207.01848))
     - transformer takes in train + test dataset then outputs predictions
     - each row (data example) is treated as a token and test points attend only to training t
       - takes fixed-size 100 columns, with zero-padded columns at the end (during training, randomly subsample columns)
@@ -1494,7 +1505,7 @@ mixture of experts models have become popular because of the need for (1) fast s
   - Language models are weak learners ([manikandan, jian, & kolter, 2023](https://arxiv.org/abs/2306.14101)) - use prompted LLMs as weak learners in boosting algorithm for tabular data
   - TabRet: Pre-training Transformer-based Tabular Models for Unseen Columns ([onishi...hayashi, 2023](https://arxiv.org/abs/2303.15747))
   - AnyPredict: A Universal Tabular Prediction System Based on LLMs https://openreview.net/forum?id=icuV4s8f2c - converting tabular data into machine-understandable prompts and fine-tuning LLMs to perform accurate predictions
-
+  
 - interpretability
   - InterpreTabNet: Enhancing Interpretability of Tabular Data Using Deep Generative Models and LLM ([si...krishnan, 2023](https://openreview.net/pdf?id=kzR5Cj5blw)) - make attention sparse and describe it with GPT4
 
@@ -1519,6 +1530,11 @@ mixture of experts models have become popular because of the need for (1) fast s
     - Embeddings for Tabular Data: A Survey ([singh & bedathur, 2023](https://arxiv.org/abs/2302.11777))
     - Deep neural networks and tabular data: A survey ([borisov et al. 2022]()) - mostly compares performance on standard tasks (e.g. classification)
 
+## education
+
+- Towards Responsible Development of Generative AI for Education: An Evaluation-Driven Approach ([jurenka…ibrahim, 2024](https://storage.googleapis.com/deepmind-media/LearnLM/LearnLM_paper.pdf))
+    - seven diverse educational benchmark
+- The FACTS Grounding Leaderboard: Benchmarking LLMs' Ability to Ground Response?s to Long-Form Input ([jacovi…das, 2025](https://arxiv.org/abs/2501.03200)) - benchmark evaluates whether responses are consistent with a provided document as context
 
 ## llm limitations / perspectives
 
