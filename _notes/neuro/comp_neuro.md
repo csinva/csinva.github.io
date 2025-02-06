@@ -1025,6 +1025,7 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
     - ![fedorenko_fig1](../assets/fedorenko_fig1.png)
   - language areas engage during both comprehension and production; are input and output modality-independent
   - damage to left-hemisphere frontal/temporal brain areas leads to aphasia (deficits in language comprehension and production)
+- Language is widely distributed throughout the brain ([drijvers, small, & skipper, 2025](https://www.nature.com/articles/s41583-024-00903-0)) - respond that rather than a "language network", the ‘language network’ could more simply be conceived of as a collection of hierarchically organized auditory association cortices communicating with functional connectivity hubs that coordinate a whole-brain distribution of contextually determined and, thus, highly variable ‘peripheral’ regions
 - Semantic encoding during language comprehension at single-cell resolution ([jamali...fedorenko, williams, 2024](https://www.nature.com/articles/s41586-024-07643-2))
 - interpreting brain encoding models
   - [Brains and algorithms partially converge in natural language processing](https://www.nature.com/articles/s42003-022-03036-1#Sec9) (caucheteux & king, 2022)
@@ -1040,7 +1041,7 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - Seminal language-semantics fMRI study ([huth…gallant, 2016](https://www.nature.com/articles/nature17637)) - build mapping of semantic concepts across cortex using word vecs
     - Crafting Interpretable Embeddings for Language Neuroscience by Asking LLMs Questions ([benara et al. 2024](https://openreview.net/pdf?id=mxMvWwyBWe))
     - A generative framework to bridge data-driven models and scientific theories in language neuroscience ([antonello et al. 2024](https://arxiv.org/abs/2410.00812))
-  - [(caucheteux, gramfort, & king, facebook, 2022)](https://www.nature.com/articles/s41598-022-20460-9) - predicts fMRI with gpt-2 on the narratives dataset
+  - Deep language algorithms predict semantic comprehension from brain activity [(caucheteux, gramfort, & king, facebook, 2022)](https://www.nature.com/articles/s41598-022-20460-9) - predicts fMRI with gpt-2 on the narratives dataset
     - GPT‐2 representations predict fMRI response + extent to which subjects understand corresponding narratives
     - compared different encoding features: phoneme, word, gpt-2 layers, gpt-2 attention sizes
     - brain mapping finding: auditory cortices integrate information over short time windows, and the fronto-parietal areas combine supra-lexical information over long time windows
@@ -1065,7 +1066,12 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 - decoding models
   - [Semantic reconstruction of continuous language from non-invasive brain recordings](https://www.biorxiv.org/content/10.1101/2022.09.29.509744v1) (lebel, jain, & huth, 2022) - reconstruct continuous natural language from fMRI
     - [Decoding speech from non-invasive brain recordings](https://arxiv.org/abs/2208.12266) (defossez, caucheteux, ..., remi-king, 2022)
-- Bilingual language processing relies on shared semantic representations that are modulated by each language ([chen...klein, gallant, deniz, 2024](https://www.biorxiv.org/content/10.1101/2024.06.24.600505v1)) - shared semantic representations are modulated by each language
+- multilingual stuff
+  - Bilingual language processing relies on shared semantic representations that are modulated by each language ([chen...klein, gallant, deniz, 2024](https://www.biorxiv.org/content/10.1101/2024.06.24.600505v1)) - shared semantic representations are modulated by each language
+  - An investigation across 45 languages and 12 language families reveals a universal language network ([malik-moraleda...fedorenko, 2022](https://www.nature.com/articles/s41593-022-01114-5#data-availability))
+  - Multilingual Computational Models Reveal Shared Brain Responses to 21 Languages ([gregor de varda, malik-moraleda...tuckute, fedorenko, 2025](https://www.biorxiv.org/content/10.1101/2025.02.01.636044v1))
+  - Constructed languages are processed by the same brain mechanisms as natural languages ([malik-moraleda...fedorenko, 2023](https://www.biorxiv.org/content/10.1101/2023.07.28.550667v2))
+
 
 ## theories of explanation
 

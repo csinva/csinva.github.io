@@ -420,6 +420,13 @@ See related papers in the [📌 interpretability](https://csinva.io/notes/resear
 - Diffusion-LM Improves Controllable Text Generation ([lisa li, thickstun, gulrajani, liang, & hashimoto, 2022](https://arxiv.org/abs/2205.14217))
 - Mixture of Soft Prompts for Controllable Data Generation ([chen, lee, …, yu, 2023](https://arxiv.org/pdf/2303.01580.pdf)) - trains a small model on data from a big frozen LLM that is then more controllable
 
+### test-time training
+
+- Learning to (Learn at Test Time): RNNs with Expressive Hidden States ([sun...guestrin, 2024](https://arxiv.org/abs/2407.04620))
+  - ![ttt_lm](../assets/ttt_lm.jpeg)
+- Critique Fine-Tuning: Learning to Critique is More Effective than Learning to Imitate ([wang...chen, 2025](https://arxiv.org/abs/2501.17703))
+- s1: Simple test-time scaling ([muennighof...hashimoto, 2025](https://arxiv.org/pdf/2501.19393))
+
 # misc
 
 ## adaptation / transfer
@@ -770,6 +777,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
     - Rephrase and Respond: Let Large Language Models Ask Better Questions for Themselves ([deng...gu, 2023](https://arxiv.org/abs/2311.04205))
     - SafeDecoding ([xu…poovendran, 2024](https://arxiv.org/pdf/2402.08983#page=3.89))
     - Hierarchical instruction following ([wallace..beutel, 2024](https://arxiv.org/abs/2404.13208))
+- Constitutional Classifiers: Defending against Universal Jailbreaks across Thousands of Hours of Red Teaming ([anthropic 2025](https://arxiv.org/pdf/2501.18837)) - use constitution to generate synthetic harmful/harmless texts and train classifiers on them
 
 
 **Attacks**
@@ -1571,6 +1579,7 @@ mixture of experts models have become popular because of the need for (1) fast s
 ## clinical/medical papers
 
 - Self-Verification Improves Few-Shot Clinical Information Extraction ([gero et al. 2023](https://arxiv.org/abs/2306.00024))
+- Universal Abstraction: Harnessing Frontier Models to Structure Real-World Data at Scale ([wong...poon, 2025](https://arxiv.org/abs/2502.00943)) - specialized prompt template for extracting attributes using LLM
 - MedCalc-Bench: Evaluating Large Language Models for Medical Calculations ([khandekar...lu, 2024](https://arxiv.org/abs/2406.12036)) - create examples / questions from popular MDCalc guidelines
 - LLMs are Few-Shot Clinical Information Extractors ([agrawal...sontag, 2022](https://arxiv.org/abs/2205.12689)) - use GPT3
 - Health system-scale language models are all-purpose prediction engines ([NYU 2023](https://www.nature.com/articles/s41586-023-06160-y))
