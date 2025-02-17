@@ -1072,6 +1072,11 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - Multilingual Computational Models Reveal Shared Brain Responses to 21 Languages ([gregor de varda, malik-moraleda...tuckute, fedorenko, 2025](https://www.biorxiv.org/content/10.1101/2025.02.01.636044v1))
   - Constructed languages are processed by the same brain mechanisms as natural languages ([malik-moraleda...fedorenko, 2023](https://www.biorxiv.org/content/10.1101/2023.07.28.550667v2))
 
+### language decoding
+
+- Semantic reconstruction of continuous language from non-invasive brain recordings ([tang, lebel, jain, & huth, 2023](https://www.nature.com/articles/s41593-023-01304-9))
+- Brain-to-Text Decoding: A Non-invasive Approach via Typing ([levy...king, 2025](https://scontent.fphl1-1.fna.fbcdn.net/v/t39.2365-6/475464888_600710912891423_9108680259802499048_n.pdf?_nc_cat=102&ccb=1-7&_nc_sid=3c67a6&_nc_ohc=EryvneL7DMcQ7kNvgFI6M7D&_nc_oc=Adi15_Ln_aPZ_nUY7RyiXzmEzdKu0opFDIwv3J7P55siQ-yn-FUdKQ6_H6PZBKiwBiY&_nc_zt=14&_nc_ht=scontent.fphl1-1.fna&_nc_gid=A441zcs56M0HTpo4ZEEWBSk&oh=00_AYAZ7fX4RhYWqMu2aMria3GoOB6uMNIiIciUQzU0vXy3Tw&oe=67AC0C96)) - decode characters typed from MEG/EEG
+- From Thought to Action: How a Hierarchy of Neural Dynamics Supports Language Production ([zhang, levy, ...king, 2025](https://ai.meta.com/research/publications/from-thought-to-action-how-a-hierarchy-of-neural-dynamics-supports-language-production/)) - when decoding during typing, first decode phrase, then word, then syllable, then letter
 
 ## theories of explanation
 

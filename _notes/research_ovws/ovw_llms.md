@@ -1114,6 +1114,8 @@ mixture of experts models have become popular because of the need for (1) fast s
     - End-To-End Memory Networks ([sukhbaatar, szlam, weston, & fergus, 2015](https://proceedings.neurips.cc/paper_files/paper/2015/hash/8fb21ee7a2207526da55a679f0332de2-Abstract.html)) - trained with less supervision for memory reading/writing
 - SILO Language Models: Isolating Legal Risk In a Nonparametric Datastore ([min…smith, zettlemoyer, 2023](https://arxiv.org/pdf/2308.04430.pdf))
   - Use a parametric LM on open data then one of 2 nonparametric datastores: kNN LM or retrieval in-context
+- Interpretable Language Modeling via Induction-head Ngram Models ([kim, mantena, ..., gao, 2024](https://arxiv.org/abs/2411.00066))
+- A Soft and Fast Pattern Matcher for Billion-Scale Corpus Searches ([deguchi...yokoi, 2025](https://openreview.net/pdf?id=Q6PAnqYVpo))
 - Infini-gram: Scaling Unbounded n-gram Language Models to a Trillion Tokens ([liu, min, zettlemoyer, choic, & hajishirzi, 2024](https://arxiv.org/pdf/2401.17377.pdf))
   - motivation: hard to scale ngram models to large datasets and large data lengths
   - soln 1: backoff ([Jurafsky & Martin, 2000](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=uZg9l58AAAAJ&citation_for_view=uZg9l58AAAAJ:2osOgNQ5qMEC)) - select *n* based on the longest suffix of the prompt that has a non-zero count in the corpus
@@ -1295,6 +1297,7 @@ mixture of experts models have become popular because of the need for (1) fast s
 
 - Empirical results
   - FunSearch: Mathematical discoveries from program search with LLMs ([deepmind, 2023](https://www.nature.com/articles/s41586-023-06924-6))
+    - Discovering Symbolic Cognitive Models from Human and Animal Behavior ([castro...stachenfeld, 2025](https://www.biorxiv.org/content/10.1101/2025.02.05.636732v1))
   - Faster sorting algorithms discovered using deep reinforcement learning ([deepmind, 2023](https://www.nature.com/articles/s41586-023-06004-9))
   - Discovering faster matrix multiplication algorithms with reinforcement learning ([deepmind, 2022](https://www.nature.com/articles/s41586-022-05172-4))
   - Nuclear fusion control ([deepmind, 2022](https://www.nature.com/articles/s41586-021-04301-9))
@@ -1416,20 +1419,25 @@ mixture of experts models have become popular because of the need for (1) fast s
     - protein keyword prediction (predict keywords in UniProt, like "ATP-Binding", "Cell membrane")
     - protein function description - compare free-form description to GT UniProt function description
 
-## automated assistants / HITL
+## automated assistants, teaching, HITL
 
 - similar to causality, we may want to use interpretability just to understand our data rather than to get any form of model
 - Benchmarking LLMs As AI Research Agents ([huang, vora, liang, & leskovec, 2023](https://arxiv.org/abs/2310.03302v1)) - formulate concrete ml tasks (like improve accuracy on a kaggle task) and see how well LLMs can do at them
   - Data Interpreter: An LLM Agent For Data Science ([hong, ..., wu, 2024](https://arxiv.org/pdf/2402.18679.pdf))
-	- Autonomous LLM-driven research from data to human-verifiable research papers ([ifaragan...kishony, 2024](https://arxiv.org/abs/2404.17605))
+  - Autonomous LLM-driven research from data to human-verifiable research papers ([ifaragan...kishony, 2024](https://arxiv.org/abs/2404.17605))
 - LLMs asking questions
+  - CollabLLM: From Passive Responders to Active Collaborators ([wu, galley, …, gao, 2025](https://arxiv.org/abs/2502.00640))
+    - Can Language Models Teach Weaker Agents? Teacher Explanations Improve Students via Personalization ([saha…bansal, 2023](https://arxiv.org/pdf/2306.09299))
+    - Know Thy Student: Interactive Learning with Gaussian Processes ([wang…goodman, 2022](https://arxiv.org/abs/2204.12072))
   - GATE: Eliciting Human Preferences with Language Models ([li, tamkin, goodman, & andreas, 2023](https://arxiv.org/pdf/2310.11589.pdf)) - LMs guide the task specification process (e.g. content recommendation), which is both free-form and interactive
     - Task Ambiguity in Humans and Language Models ([tamkin, .., goodman, 2023](https://arxiv.org/abs/2212.10711))
     - Bayesian Preference Elicitation with Language Models ([handa, gal, pavlick, goodman, tamkin, andreas, & li, 2024](https://arxiv.org/pdf/2403.05534v1.pdf))
     - STaR-GATE: Teaching Language Models to Ask Clarifying Questions ([andukuri...goodman, 2024](https://arxiv.org/abs/2403.19154))
     - Rephrase and Respond: Let Large Language Models Ask Better Questions for Themselves ([deng...gu, 2024](https://arxiv.org/abs/2311.04205))
-    
   - Loose LIPS Sink Ships:  Asking Questions in *Battleship* with Language-Informed Program Sampling ([grand, pepe, andreas, & tenenbaum , 2024](https://arxiv.org/pdf/2402.19471.pdf)) - language-informed program sampling (LIPS) model uses large language models (LLMs) to generate NL questions, translate them into symbolic programs, and evaluate their expected info gain
+- LLM-based game agents ([awesome repo](https://github.com/git-disl/awesome-LLM-game-agent-papers))
+  - Baba Is AI: Break the Rules to Beat the Benchmark ([cloos...barbu, cueva, 2024](https://arxiv.org/pdf/2407.13729))
+  - BALROG: Benchmarking Agentic LLM and VLM Reasoning On Games ([paglieri...rocktäschel, 2024](https://arxiv.org/abs/2411.13543))
 - visualization
 
   - LIDA: A Tool for Automatic Generation of Grammar-Agnostic Visualizations and Infographics using LLMs ([dibia, 2023](https://arxiv.org/abs/2303.02927))
@@ -1470,6 +1478,29 @@ mixture of experts models have become popular because of the need for (1) fast s
 
 - Large Language Models(LLMs) on Tabular Data: Prediction, Generation, and Understanding - A Survey ([fang...qi,...faloutsos, 2024](https://stewarthu.com/papers/LLM-on-tabular-data.pdf))
 
+- **tabPFN main works**
+  - TabPFN v2: Accurate predictions on small data with a tabular foundation model ([hollman....hutter, 2025](https://www.nature.com/articles/s41586-024-08328-6))
+    - 
+      Model is open-source on huggingface and easy to use, but training dataset is not released (it was trained only on synthetic data)
+    - Model context length is limited to datasets with 10k samples / 500 features
+    - minutia
+      - model is not quite invariant to feature order
+    
+  - TabPFN v1: A Transformer That Solves Small Tabular Classification Problems in a Second ([hollman, ..., hutter, 2022](https://arxiv.org/abs/2207.01848))
+    - transformer takes in train + test dataset then outputs predictions
+    - each row (data example) is treated as a token and test points attend only to training t
+      - takes fixed-size 100 columns, with zero-padded columns at the end (during training, randomly subsample columns)
+  
+  - PFNs: prior-data fitted networks ([muller, ..., hutter, 2021](https://arxiv.org/abs/2112.10510))
+    - trained on synthetic data
+  
+- tabPFN-related
+  - GAMformer: In-Context Learning for Generalized Additive Models ([mueller...caruana, hutter, 2024](https://arxiv.org/abs/2410.04560))
+  - Transformers Boost the Performance of Decision Trees on Tabular Data across Sample Sizes ([jayawardhana...hutter, white, goldstein, goldblum, 2025](https://arxiv.org/abs/2502.02672))
+    - learn boosted trees on top of TabPFN to extend to big datasets
+    - learn boosted trees on top of LLM-based model to build in prior knowledge
+  - Can Transformers Learn Full Bayesian Inference in Context? ([reuter...rugamer, 2025](https://arxiv.org/abs/2501.16825))
+  
 - value string methods - directly treating numerical values as strings and finetune GPT on them (everything is represented as text)
   - LIFT: Language-Interfaced Fine-Tuning for Non-Language Machine Learning Tasks ([dinh...lee, 2022](https://arxiv.org/abs/2206.06565))
   - GreaT ([Borisov et al., 2022](https://openreview.net/forum?id=cEygmQNOeI))
@@ -1479,7 +1510,7 @@ mixture of experts models have become popular because of the need for (1) fast s
   - TabFMs: Towards Foundation Models for Learning on Tabular Data ([zhang...bian, 2023](https://arxiv.org/abs/2310.07338)) - unified text
   - TableLlama: Towards Open Large Generalist Models for Tables ([zhang...sun, 2023](https://arxiv.org/pdf/2311.09206.pdf))
   - OmniPred: Language Models as Universal Regressors ([song...chen, 2024](https://arxiv.org/abs/2402.14547)) - metalearn on huge number of regression problems from Google Vizier
-  
+
 - do not use text tokens
   - TabDDPM: Modelling Tabular Data with Diffusion Models ([kotelnikov...babenko 2022](https://arxiv.org/abs/2209.15421))
     - main eval: downstream ML model performance
@@ -1501,19 +1532,12 @@ mixture of experts models have become popular because of the need for (1) fast s
   - TaBERT: Pretraining for Joint Understanding of Textual and Tabular Data ([yin, neubig, ..., riedel, 2020](https://www.semanticscholar.org/paper/TaBERT%3A-Pretraining-for-Joint-Understanding-of-and-Yin-Neubig/a5b1d1cab073cb746a990b37d42dc7b67763f881))
 
 - classification / predictions
-  - TabPFN v2: Accurate predictions on small data with a tabular foundation model ([hollman....hutter, 2025](https://www.nature.com/articles/s41586-024-08328-6))
-  - TabPFN v1: A Transformer That Solves Small Tabular Classification Problems in a Second ([hollman, ..., hutter, 2022](https://arxiv.org/abs/2207.01848))
-    - transformer takes in train + test dataset then outputs predictions
-    - each row (data example) is treated as a token and test points attend only to training t
-      - takes fixed-size 100 columns, with zero-padded columns at the end (during training, randomly subsample columns)
-    - builds on prior-data fitted networks (PFNs) ([muller, ..., hutter, 2021](https://arxiv.org/abs/2112.10510))
-    - trained on synthetic data
   - TabR: Unlocking the power of retrieval-augmented tabular deep learning ([gorishniy...babenko, 2023](https://arxiv.org/abs/2307.14338))
   - TabLLM: Few-shot Classification of Tabular Data with LLMs  ([hegelsmann..., sontag, 2022](https://arxiv.org/abs/2210.10723))
   - Language models are weak learners ([manikandan, jian, & kolter, 2023](https://arxiv.org/abs/2306.14101)) - use prompted LLMs as weak learners in boosting algorithm for tabular data
   - TabRet: Pre-training Transformer-based Tabular Models for Unseen Columns ([onishi...hayashi, 2023](https://arxiv.org/abs/2303.15747))
   - AnyPredict: A Universal Tabular Prediction System Based on LLMs https://openreview.net/forum?id=icuV4s8f2c - converting tabular data into machine-understandable prompts and fine-tuning LLMs to perform accurate predictions
-  
+
 - interpretability
   - InterpreTabNet: Enhancing Interpretability of Tabular Data Using Deep Generative Models and LLM ([si...krishnan, 2023](https://openreview.net/pdf?id=kzR5Cj5blw)) - make attention sparse and describe it with GPT4
 

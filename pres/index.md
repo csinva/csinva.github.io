@@ -7,21 +7,31 @@ title: presentations
 
 ## 2024
 - [Using LLMs to bridge data-driven models and scientific theories in language neuroscience](https://docs.google.com/presentation/d/1g0EPeyemIM7FW1mv8CA97fE5E7kIZJmbQbYMHuNXLWs/edit?usp=sharing)
-    - Title: Using LLMs to bridge data-driven models and scientific theories in language neuroscience
-    - Abstract: Science faces an explainability crisis: data-driven deep learning methods are proving capable of *predicting* many natural phenomena but not at *explaining* them. One emblematic field is language neuroscience, where LLMs are highly effective at predicting human brain responses to natural language, but are virtually impossible to interpret or analyze by hand. To overcome this challenge, we introduce a framework that translates deep learning models of language selectivity in the brain into concise verbal explanations, and then designs follow-up experiments to verify that these explanations are causally related to brain activity. This approach is successful at explaining selectivity both in individual voxels and cortical regions of interest, demonstrating that LLMs can be used to bridge the widening gap between data-driven models and formal scientific theories. This talk covers 2 papers: Benara et al. ([NeurIPS 2024](https://arxiv.org/abs/2405.16714v1)) & Antonello et al. ([arXiv, 2024](https://arxiv.org/abs/2410.00812)).
+    - <details>
+    <summary>UCSF talk</summary>
+    Title: Using LLMs to bridge data-driven models and scientific theories in language neuroscience<br/><br/>
+    Abstract: Science faces an explainability crisis: data-driven deep learning methods are proving capable of *predicting* many natural phenomena but not at *explaining* them. One emblematic field is language neuroscience, where LLMs are highly effective at predicting human brain responses to natural language, but are virtually impossible to interpret or analyze by hand. To overcome this challenge, we introduce a framework that translates deep learning models of language selectivity in the brain into concise verbal explanations, and then designs follow-up experiments to verify that these explanations are causally related to brain activity. This approach is successful at explaining selectivity both in individual voxels and cortical regions of interest, demonstrating that LLMs can be used to bridge the widening gap between data-driven models and formal scientific theories. This talk covers 2 papers: Benara et al. ([NeurIPS 2024](https://arxiv.org/abs/2405.16714v1)) & Antonello et al. ([arXiv, 2024](https://arxiv.org/abs/2410.00812)).
+    </details>
+    - <details>
+      <summary>MSR project green talk</summary>
+      Title: From Data-Driven Models to Scientific Theories: A Case Study in Language Neuroscience<br/><br/>   
+      Abstract: Modern data-driven methods are proving capable of predicting many natural phenomena, but not at explaining them. This talk will cover a case study where LLMs can be carefully used to convert predictive models of the human brain into interpretable, testable scientific theories.
+      </details>    
 
 ## 2023
-- [explanations from text data](https://docs.google.com/presentation/d/1qL_cATZWiwOg4EjgrQ93m2zEpNMYYdIUUqqMO1REbIk/edit#slide=id.g21b26013510_0_4)
+
 - [uniting LLMs and trees](https://docs.google.com/presentation/d/1I9OWLhrmBiBjoe6CJtxdI6qlIuvL26GZRjeO_ir3i_Y/edit)
-	- Title: Uniting Large Language Models and Decision Trees
-	- <details>
+  - Title: Uniting Large Language Models and Decision Trees
+  - <details>
     <summary>Abstract 1</summary>
     Decision trees are the cornerstone for a wide range of applications, especially in tabular data, where they are often used as a transparent model However, decision trees can fail to model complex interactions and dependencies, an area where modern large language models (LLMs) excel. In this talk, I will discuss recent works that unite decision trees and LLMs to bring out the best in both for NLP applications. Specifically, I will discuss how decision trees can be used to steer LLMs by structuring sequential prompted calls, and how LLMs can be used to improve transparent decision trees by augmenting individual nodes with relevant features.
     </details>
-	- <details>
+  - <details>
     <summary>Abstract 2</summary>
     Decision trees are a pillar of modern machine learning, forming a foundation for transparent, accurate decision making. However, decision trees often fail to model complex interactions, an area where modern large language models (LLMs) excel. In this talk, I will discuss our recent works that unite decision trees and LLMs to bring out the best in both for NLP applications. Specifically, I will discuss (1) how how LLMs can be used to improve transparent decision trees by augmenting individual nodes with relevant features and (2) how decision trees can be used to steer LLMs by structuring sequential prompted calls.
     </details>    
+
+- [explanations from text data](https://docs.google.com/presentation/d/1qL_cATZWiwOg4EjgrQ93m2zEpNMYYdIUUqqMO1REbIk/edit#slide=id.g21b26013510_0_4)
 
 ## 2022
 
