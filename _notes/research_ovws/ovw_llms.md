@@ -1367,11 +1367,14 @@ mixture of experts models have become popular because of the need for (1) fast s
   - BioTranslator: Multilingual translation for zero-shot biomedical classification ([xu, woicik, poon, altman, & wang, 2023](https://www.nature.com/articles/s41467-023-36476-2)) - takes a user- written textual description of a new concept and then translates this description to a non-text biological data instance
     - results for biological data, e.g. genes, proteins
     - enables the identification of novel cell types using only a textual description
-- Learning to Generate Novel Scientific Directions with Contextualized Literature-based Discovery ([wang...hope, 2023](https://arxiv.org/abs/2305.14259))
+- Towards an AI co-scientist ([gottweis...natarajan, 2025](https://storage.googleapis.com/coscientist_paper/ai_coscientist.pdf))
+
+  - Learning to Generate Novel Scientific Directions with Contextualized Literature-based Discovery ([wang...hope, 2023](https://arxiv.org/abs/2305.14259))
   - literature-based discovery ([swanson, 1986](https://www.journals.uchicago.edu/doi/abs/10.1086/601720)) - focus on predicting pairwise links between concepts from papers (e.g. drug-disease links)
     - task 1: idea-sentence generation -- given sentences describing background context + a seed term, generate a sentence describing an idea
     - task 2: idea-node prediction -- given the background context, predict new links between existing concepts (and generate new concepts)
   - forecasting paper titles ([blog post](https://csinva.io/gpt-paper-title-generator/))
+
 - Communication with animals
 
   - [Coller-Dolittle Prize](https://coller-dolittle-24.sites.tau.ac.il) for Inter-species Communication
@@ -1479,6 +1482,8 @@ mixture of experts models have become popular because of the need for (1) fast s
 - Large Language Models(LLMs) on Tabular Data: Prediction, Generation, and Understanding - A Survey ([fang...qi,...faloutsos, 2024](https://stewarthu.com/papers/LLM-on-tabular-data.pdf))
 
 - **tabPFN main works**
+  - TabICL: A Tabular Foundation Model for In-Context Learning on Large Data ([qu...varoquax, le morvan, 2025](https://www.arxiv.org/abs/2502.05564))
+    
   - TabPFN v2: Accurate predictions on small data with a tabular foundation model ([hollman....hutter, 2025](https://www.nature.com/articles/s41586-024-08328-6))
     - 
       Model is open-source on huggingface and easy to use, but training dataset is not released (it was trained only on synthetic data)
