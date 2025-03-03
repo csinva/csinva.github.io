@@ -876,7 +876,7 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - whole-brain light sheet imaging
   - voltage-sensitive dyes / voltage imaging
   - **adaptive optics**
-  - fNRIS - like fMRI but cheaper, allows more immobility, slightly worse spatial res
+  - - fNIRSlike fMRI but cheaper, allows more immobility, slightly worse spatial res
   - **oct** - noninvasive - can look at retina (maybe find biomarkers of alzheimer's)
   - fiber photometry - optical fiber implanted delivers excitation light
 
@@ -918,14 +918,13 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 
 ## datasets
 
+### language
+
 
 - EEG
-
   - [Brennan & Hale, 2019](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0207741): 33 subjects recorded with EEG, listening to 12 min of a book chapter, no repeated session
-
   - [Broderick et al. 2018](https://www.cell.com/current-biology/pdf/S0960-9822(18)30146-5.pdf): 9–33 subjects recorded with EEG, conducting different speech tasks, no repeated sessions
-- NLP fMRI
-
+- fMRI
   - A natural language fMRI dataset for voxelwise encoding models ([lebel, … huth, 2022](https://www.biorxiv.org/content/10.1101/2022.09.22.509104v1.abstract?%3Fcollection=))
     - 8 participants listening to ~6 hours each of the moth radio hour
     - 3 of the particpants have ~20 hours (~95 stories, 33k timepoints)
@@ -934,21 +933,23 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - [Schoffelen et al. 2019](https://www.nature.com/articles/s41597-019-0020-y): 100 subjects recorded with fMRI and MEG, listening to de-contextualised sentences and word lists, no repeated session
   - [Huth et al. 2016](https://www.nature.com/articles/nature17637) released data from [one subject](https://github.com/HuthLab/speechmodeltutorial)
   - Visual and linguistic semantic representations are aligned at the border of human visual cortex ([popham, huth et al. 2021](https://www.nature.com/articles/s41593-021-00921-6#data-availability)) - compared semantic maps obtained from two functional magnetic resonance imaging experiments in the same participants: one that used silent movies as stimuli and another that used narrative stories ([data link](https://berkeley.app.box.com/s/l95gie5xtv56zocsgugmb7fs12nujpog))
-- NLP MEG datasets
-
+- MEG datasets
   - MEG-MASC ([gwilliams...king, 2023](https://www.nature.com/articles/s41597-023-02752-5)) - 27 English-speaking subjects MEG, each ~2 hours of story listening, punctuated by random word lists and comprehension questions in the MEG scanner. Usually each subject listened to four distinct fictional stories twice
-
   - WU-Minn human connectome project ([van Essen et al. 2013](https://www.nature.com/articles/s41597-022-01382-7)) - 72 subjects recorded with fMRI and MEG as part of the Human Connectome Project, listening to 10 minutes of short stories, no repeated session
-
-  - [Armeni et al. 2022](https://www.nature.com/articles/s41597-022-01382-7): 3 subjects recorded with MEG, listening to 10 h of Sherlock Holmes, no repeated session
-
-- NLP ECoG
-
+  - [Armeni et al. 2022](https://www.nature.com/articles/s41597-022-01382-7): 3 subjects recorded with MEG, listening to 10 hours of Sherlock Holmes, no repeated session
+- ECoG
+  - The “Podcast” ECoG dataset for modeling neural activity during
+    natural language comprehension ([zada...hasson, 2025](https://www.biorxiv.org/content/10.1101/2025.02.14.638352v1.full.pdf)) - 9 subjects listening to the same story
+    - 30-min story (1330 total electrodes, ~5000 spoken words (non-unique)) has female interviewer/voiceover and a male speaker, occasionally background music
+    - contextual word embeddings from GPT-2 XL (middle layer) accounted for most of the variance across nearly all the electrodes tested
   - Brain Treebank: Large-scale intracranial recordings from naturalistic language stimuli ([wang...barbu, 2024](https://arxiv.org/pdf/2411.08343))
     - Some works on this dataset
       - BrainBERT: Self-supervised representation learning for intracranial recordings ([wang…barbu, 2023](https://arxiv.org/abs/2302.14367))
       - Revealing Vision-Language Integration in the Brain with Multimodal Networks ([subramaniam…barbu, 2024](https://arxiv.org/abs/2406.14481))
       - Population Transformer: Learning Population-Level Representations of Neural Activity ([chau…barbu, 2024](https://pmc.ncbi.nlm.nih.gov/articles/PMC11177958/))
+
+### misc
+
 
 - [non-human primate optogenetics datasets](https://osf.io/mknfu/)
 - [vision dsets](https://www.visualdata.io/)
@@ -961,6 +962,11 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - stringer et al. data
 
   - 10000 neurons from visual cortex
+
+- EEG + fMRI simultaneous
+
+  - NeuroBOLT data ([li...chang, 2024](https://arxiv.org/abs/2410.05341); code [link](https://drive.google.com/file/d/1s9LzdBx1afGYiGbpi3p-oFh-CnYLyYqM/view?usp=sharing))
+  - An open-access dataset of naturalistic viewing using simultaneous EEG-fMRI ([telesford...franco, 2023](https://www.nature.com/articles/s41597-023-02458-8))
 - neuropixels probes
   - [10k neurons visual coding](https://portal.brain-map.org/explore/circuits/visual-coding-neuropixels) from allen institute
   - this probe has also been used in [macaques](https://www.cell.com/neuron/pdf/S0896-6273(19)30428-3.pdf)
@@ -1012,6 +1018,12 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - EEG foundation model: Learning Topology-Agnostic EEG Representations with Geometry-Aware Modeling ([yi...dongsheng li, 2023](https://openreview.net/pdf?id=hiOUySN0ub))
 - Strong Prediction: Language Model Surprisal Explains Multiple N400 Effects  ([michaelov...coulson, 2024](https://direct.mit.edu/nol/article/5/1/107/115605/Strong-Prediction-Language-Model-Surprisal))
 
+## cross-subject modeling
+
+- Aligning Brains into a Shared Space Improves their Alignment to Large Language Models ([bhattacharjee, zaida..., hasson, goldstein, nastase, 2024](https://www.biorxiv.org/content/10.1101/2024.06.04.597448v1))
+
+
+
 # fMRI
 
 ## language
@@ -1041,6 +1053,8 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - Seminal language-semantics fMRI study ([huth…gallant, 2016](https://www.nature.com/articles/nature17637)) - build mapping of semantic concepts across cortex using word vecs
     - Crafting Interpretable Embeddings for Language Neuroscience by Asking LLMs Questions ([benara et al. 2024](https://openreview.net/pdf?id=mxMvWwyBWe))
     - A generative framework to bridge data-driven models and scientific theories in language neuroscience ([antonello et al. 2024](https://arxiv.org/abs/2410.00812))
+    - Explanations of Deep Language Models Explain Language
+      Representations in the Brain ([rahimi...daliri, 2025](https://arxiv.org/pdf/2502.14671)) - build features using attribution methods and find some small perf. improvements in early language areas
   - Deep language algorithms predict semantic comprehension from brain activity [(caucheteux, gramfort, & king, facebook, 2022)](https://www.nature.com/articles/s41598-022-20460-9) - predicts fMRI with gpt-2 on the narratives dataset
     - GPT‐2 representations predict fMRI response + extent to which subjects understand corresponding narratives
     - compared different encoding features: phoneme, word, gpt-2 layers, gpt-2 attention sizes
@@ -1063,20 +1077,38 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
     - use encoding models to sort thousands of sentences and then show them
       - alternatively, use gradient-based modifications to transform a random sentence to elicit larger responses, but this works worse
     - surprisal and well- formedness of linguistic input are key determinants of response strength in the language network
-- decoding models
-  - [Semantic reconstruction of continuous language from non-invasive brain recordings](https://www.biorxiv.org/content/10.1101/2022.09.29.509744v1) (lebel, jain, & huth, 2022) - reconstruct continuous natural language from fMRI
-    - [Decoding speech from non-invasive brain recordings](https://arxiv.org/abs/2208.12266) (defossez, caucheteux, ..., remi-king, 2022)
 - multilingual stuff
   - Bilingual language processing relies on shared semantic representations that are modulated by each language ([chen...klein, gallant, deniz, 2024](https://www.biorxiv.org/content/10.1101/2024.06.24.600505v1)) - shared semantic representations are modulated by each language
   - An investigation across 45 languages and 12 language families reveals a universal language network ([malik-moraleda...fedorenko, 2022](https://www.nature.com/articles/s41593-022-01114-5#data-availability))
   - Multilingual Computational Models Reveal Shared Brain Responses to 21 Languages ([gregor de varda, malik-moraleda...tuckute, fedorenko, 2025](https://www.biorxiv.org/content/10.1101/2025.02.01.636044v1))
   - Constructed languages are processed by the same brain mechanisms as natural languages ([malik-moraleda...fedorenko, 2023](https://www.biorxiv.org/content/10.1101/2023.07.28.550667v2))
 
-### language decoding
+## semantic decoding
 
-- Semantic reconstruction of continuous language from non-invasive brain recordings ([tang, lebel, jain, & huth, 2023](https://www.nature.com/articles/s41593-023-01304-9))
-- Brain-to-Text Decoding: A Non-invasive Approach via Typing ([levy...king, 2025](https://scontent.fphl1-1.fna.fbcdn.net/v/t39.2365-6/475464888_600710912891423_9108680259802499048_n.pdf?_nc_cat=102&ccb=1-7&_nc_sid=3c67a6&_nc_ohc=EryvneL7DMcQ7kNvgFI6M7D&_nc_oc=Adi15_Ln_aPZ_nUY7RyiXzmEzdKu0opFDIwv3J7P55siQ-yn-FUdKQ6_H6PZBKiwBiY&_nc_zt=14&_nc_ht=scontent.fphl1-1.fna&_nc_gid=A441zcs56M0HTpo4ZEEWBSk&oh=00_AYAZ7fX4RhYWqMu2aMria3GoOB6uMNIiIciUQzU0vXy3Tw&oe=67AC0C96)) - decode characters typed from MEG/EEG
-- From Thought to Action: How a Hierarchy of Neural Dynamics Supports Language Production ([zhang, levy, ...king, 2025](https://ai.meta.com/research/publications/from-thought-to-action-how-a-hierarchy-of-neural-dynamics-supports-language-production/)) - when decoding during typing, first decode phrase, then word, then syllable, then letter
+- duality between encoding and decoding (e.g. for probing smth like syntax in LLM)
+  - esp. when things are localized like in fMRI
+  - Interpreting encoding and decoding models ([kriegerskorte & douglas, 2019](https://arxiv.org/pdf/1812.00278.pdf))
+  - Encoding and decoding in fMRI ([naselaris, kay, nishimoto, & gallant, 2011](https://www.sciencedirect.com/science/article/abs/pii/S1053811910010657))
+  - Causal interpretation rules for encoding and decoding models in neuroimaging ([weichwald…grosse-wentrup, 2015](https://www.sciencedirect.com/science/article/abs/pii/S105381191500052X))
+    - experimental setup can be **stimulus-based**, if the experimental conditions precede the measured brain states (e.g. podcast listening) or **response-based** (e.g. prediction of the laterality of a movement from pre-movement brain state features)
+    - for stimulus-based experiments, encoding model is the causal direction
+- language
+  - Semantic reconstruction of continuous language from non-invasive brain recordings ([tang, lebel, jain, & huth, 2023](https://www.nature.com/articles/s41593-023-01304-9)) - reconstruct continuous natural language from fMRI, including to imagined speech
+  - Brain-to-Text Decoding: A Non-invasive Approach via Typing ([levy...king, 2025](https://scontent.fphl1-1.fna.fbcdn.net/v/t39.2365-6/475464888_600710912891423_9108680259802499048_n.pdf?_nc_cat=102&ccb=1-7&_nc_sid=3c67a6&_nc_ohc=EryvneL7DMcQ7kNvgFI6M7D&_nc_oc=Adi15_Ln_aPZ_nUY7RyiXzmEzdKu0opFDIwv3J7P55siQ-yn-FUdKQ6_H6PZBKiwBiY&_nc_zt=14&_nc_ht=scontent.fphl1-1.fna&_nc_gid=A441zcs56M0HTpo4ZEEWBSk&oh=00_AYAZ7fX4RhYWqMu2aMria3GoOB6uMNIiIciUQzU0vXy3Tw&oe=67AC0C96)) - decode characters typed from MEG/EEG
+  - From Thought to Action: How a Hierarchy of Neural Dynamics Supports Language Production ([zhang, levy, ...king, 2025](https://ai.meta.com/research/publications/from-thought-to-action-how-a-hierarchy-of-neural-dynamics-supports-language-production/)) - when decoding during typing, first decode phrase, then word, then syllable, then letter
+  - [Decoding speech from non-invasive brain recordings](https://arxiv.org/abs/2208.12266) (defossez, caucheteux, ..., remi-king, 2022)
+
+- vision
+  - Decoding the Semantic Content of Natural Movies from Human Brain Activity ([huth...gallant, 2016](https://www.frontiersin.org/journals/systems-neuroscience/articles/10.3389/fnsys.2016.00081/full)) - direct decoding of concepts from movies using hierarchical logistic regression
+    - interpreting weights from a decoding model can be tricky, even if if a concept is reflected in the voxel, it may not be uniquely reflected in the voxel and therefore assigned low weight
+
+  - Reconstructing Visual Experiences from Brain Activity Evoked by Natural Movies ([nishimoto, …, gallant, 2011](https://www.sciencedirect.com/science/article/pii/S0960982211009377))
+  - Brain Decoding: Toward Real Time Reconstruction of Visual Perception ([Benchetrit...king, 2023](https://ai.meta.com/static-resource/image-decoding)) - use MEG to do visual reconstruction
+  - Seeing Beyond the Brain: Conditional Diffusion Model with Sparse Masked Modeling for Vision Decoding ([chen et al. 2022](https://arxiv.org/pdf/2211.06956.pdf))
+  - Aligning brain functions boosts the decoding of visual semantics in novel subjects ([thual...king, 2023](https://arxiv.org/abs/2312.06467)) - align across subjects before doing decoding
+  - A variational autoencoder provides novel, data-driven features that explain functional brain representations in a naturalistic navigation task ([cho, zhang, & gallant, 2023](https://jov.arvojournals.org/article.aspx?articleid=2792546))
+  - What's the Opposite of a Face? Finding Shared Decodable Concepts and their Negations in the Brain ([efird...fyshe, 2024](https://arxiv.org/abs/2405.17663)) - build clustering shared across subjects in CLIP space
+
 
 ## theories of explanation
 
@@ -1086,15 +1118,6 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - Large-scale automated synthesis of human functional neuroimaging data ([yarkoni, poldrack, nichols, van essen, & wager, 2011](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3146590/pdf/nihms-300972.pdf)) 
   - NeuroQuery, comprehensive meta-analysis of human brain mapping ([dockes, poldrack, ..., yarkonig, suchanek, thirion, & varoquax](https://elifesciences.org/articles/53385)) [[website](https://neuroquery.org/query?text=checkerboard)]
     - train on keywords to directly predict weights for each query-expanded keyword and the produce linearly combined brainmap
-
-## vision
-
-- [Reconstructing Visual Experiences from Brain Activity Evoked by Natural Movies](https://www.sciencedirect.com/science/article/pii/S0960982211009377) (nishimoto, …, gallant, 2011)
-- Brain Decoding: Toward Real Time Reconstruction of Visual Perception ([Benchetrit...king, 2023](https://ai.meta.com/static-resource/image-decoding)) - use MEG to do visual reconstruction
-- Seeing Beyond the Brain: Conditional Diffusion Model with Sparse Masked Modeling for Vision Decoding ([chen et al. 2022](https://arxiv.org/pdf/2211.06956.pdf))
-- Aligning brain functions boosts the decoding of visual semantics in novel subjects ([thual...king, 2023](https://arxiv.org/abs/2312.06467)) - align across subjects before doing decoding
-- A variational autoencoder provides novel, data-driven features that explain functional brain representations in a naturalistic navigation task ([cho, zhang, & gallant, 2023](https://jov.arvojournals.org/article.aspx?articleid=2792546))
-- What's the Opposite of a Face? Finding Shared Decodable Concepts and their Negations in the Brain ([efird...fyshe, 2024](https://arxiv.org/abs/2405.17663)) - build clustering shared across subjects in CLIP space
 
 ## speech
 
@@ -1544,14 +1567,6 @@ the operations above allow for encoding many normal data structures into a singl
   - hash collisions are maximized, rather than minimized as they are in dictionaries
   - finding embeddings via DNNs is a sepcial case of this (e.g. might call it "semantic hashing")
 - [random projections in the brain](https://www.biorxiv.org/content/biorxiv/early/2017/08/25/180471.full.pdf)….doing locality sensitive hashing (basically nearest neighbors)
-
-## encoding vs decoding
-
-- duality between encoding and decoding (e.g. for probing smth like syntax in LLM)
-  - esp. when things are localized like in fMRI
-  - Interpreting encoding and decoding models ([kriegerskorte & douglas, 2019](https://arxiv.org/pdf/1812.00278.pdf))
-  - Encoding and decoding in fMRI ([naselaris, kay, nishimoto, & gallant, 2011](https://www.sciencedirect.com/science/article/abs/pii/S1053811910010657))
-  - Causal interpretation rules for encoding and decoding models in neuroimaging ([weichwald…grosse-wentrup, 2015](https://www.sciencedirect.com/science/article/abs/pii/S105381191500052X))
 
 # neuro-inspired ai (niAI)
 

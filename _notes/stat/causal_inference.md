@@ -373,7 +373,7 @@ M --> Y
   - allows for rank $k$ matrix, less restrictive (no longer forces parallel trends for all units)
   - can estimate with synthetic controls ([abadie, diamon, & hainmueller, 2010](https://amstat.tandfonline.com/doi/abs/10.1198/jasa.2009.ap08746))
     - artificially re-weight unexposed units (i.e. units with $T_i=0$) so their average trend matches the unweighted mean trend up to time $t_0$
-    - if the weights create thes parallel trends, they should alos balance the latent factors $A_i$
+    - if the weights create thes parallel trends, they should also balance the latent factors $A_i$
     - ![src:wager lecture notes](../assets/synth_control_did.png)
       - trends are clearly not parallel, but after reweighting they become parallel
   - many other estimators, e.g. via clustering or nuclear norm minimization

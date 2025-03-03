@@ -19,7 +19,7 @@ category: stat
 - stationarity - mean, variance, and autocorrelation structure do not change over time
 - **endogenous variable = x** = independent variable
 - **exogenous variable = y** = dependent variable
-- changepointe detection / [Change detection ](https://en.wikipedia.org/wiki/Change_detection) - tries to identify times when the probability distribution of a stochastic process or time series changes
+- changepoint detection / [Change detection ](https://en.wikipedia.org/wiki/Change_detection) - tries to identify times when the probability distribution of a stochastic process or time series changes
 
 ## libraries
 
@@ -54,7 +54,7 @@ category: stat
   - model-based measures (auto-regressive)
     - compare coefs of an AR (or ARMA) model
   - elastic measures
-    - dynamic time warping = DTW - optimallt aligns in temporal domaub ti nubunuze accumulated cost
+    - dynamic time warping = DTW - optimally align in temporal domain to minimize accumulated cost
       - can also enforce some local window around points
       - Every index from the first sequence must be matched with one or more indices from the other sequence and vice versa
       - The first index from the first sequence must be matched with the first index from the other sequence (but it does not have to be its only match)
