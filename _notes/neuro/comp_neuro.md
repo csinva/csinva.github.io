@@ -921,9 +921,6 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 ### language
 
 
-- EEG
-  - [Brennan & Hale, 2019](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0207741): 33 subjects recorded with EEG, listening to 12 min of a book chapter, no repeated session
-  - [Broderick et al. 2018](https://www.cell.com/current-biology/pdf/S0960-9822(18)30146-5.pdf): 9–33 subjects recorded with EEG, conducting different speech tasks, no repeated sessions
 - fMRI
   - A natural language fMRI dataset for voxelwise encoding models ([lebel, … huth, 2022](https://www.biorxiv.org/content/10.1101/2022.09.22.509104v1.abstract?%3Fcollection=))
     - 8 participants listening to ~6 hours each of the moth radio hour
@@ -937,6 +934,9 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - MEG-MASC ([gwilliams...king, 2023](https://www.nature.com/articles/s41597-023-02752-5)) - 27 English-speaking subjects MEG, each ~2 hours of story listening, punctuated by random word lists and comprehension questions in the MEG scanner. Usually each subject listened to four distinct fictional stories twice
   - WU-Minn human connectome project ([van Essen et al. 2013](https://www.nature.com/articles/s41597-022-01382-7)) - 72 subjects recorded with fMRI and MEG as part of the Human Connectome Project, listening to 10 minutes of short stories, no repeated session
   - [Armeni et al. 2022](https://www.nature.com/articles/s41597-022-01382-7): 3 subjects recorded with MEG, listening to 10 hours of Sherlock Holmes, no repeated session
+- EEG
+  - [Brennan & Hale, 2019](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0207741): 33 subjects recorded with EEG, listening to 12 min of a book chapter, no repeated session
+  - [Broderick et al. 2018](https://www.cell.com/current-biology/pdf/S0960-9822(18)30146-5.pdf): 9–33 subjects recorded with EEG, conducting different speech tasks, no repeated sessions
 - ECoG
   - The “Podcast” ECoG dataset for modeling neural activity during
     natural language comprehension ([zada...hasson, 2025](https://www.biorxiv.org/content/10.1101/2025.02.14.638352v1.full.pdf)) - 9 subjects listening to the same story
@@ -947,6 +947,16 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
       - BrainBERT: Self-supervised representation learning for intracranial recordings ([wang…barbu, 2023](https://arxiv.org/abs/2302.14367))
       - Revealing Vision-Language Integration in the Brain with Multimodal Networks ([subramaniam…barbu, 2024](https://arxiv.org/abs/2406.14481))
       - Population Transformer: Learning Population-Level Representations of Neural Activity ([chau…barbu, 2024](https://pmc.ncbi.nlm.nih.gov/articles/PMC11177958/))
+- single-cell
+
+  - Semantic encoding during language comprehension at single-cell resolution ([jamali...fedorenko, williams, 2024](https://www.nature.com/articles/s41586-024-07643-2)) - extremely small dataset released: mostly sentences
+
+- cross-modality (language-adjacent)
+  - language
+    - A synchronized multimodal neuroimaging dataset to study brain language processing ([wang...zong, 2023](https://openneuro.org/datasets/ds004078/versions/1.2.1))
+  - language-adjacent
+    - NeuroBOLT data ([li...chang, 2024](https://arxiv.org/abs/2410.05341); code [link](https://drive.google.com/file/d/1s9LzdBx1afGYiGbpi3p-oFh-CnYLyYqM/view?usp=sharing))
+    - An open-access dataset of naturalistic viewing using simultaneous EEG-fMRI ([telesford...franco, 2023](https://www.nature.com/articles/s41597-023-02458-8))
 
 ### misc
 
@@ -955,18 +965,10 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 - [vision dsets](https://www.visualdata.io/)
   - MRNet: knee MRI diagnosis
 - [datalad lots of stuff](http://datalad.org/datasets.html)
-- springer 10k calcium imaging recording: https://figshare.com/articles/Recordings_of_ten_thousand_neurons_in_visual_cortex_during_spontaneous_behaviors/6163622 
+- calcium imaging records in mice
 
-  - springer 2: 10k neurons with 2800 images
+  - Recordings of ten thousand neurons in visual cortex during spontaneous behaviors ([stringer et al. 2018](https://figshare.com/articles/dataset/Recordings_of_ten_thousand_neurons_in_visual_cortex_during_spontaneous_behaviors/6163622)) - 10k neuron responses to 2800 images
 
-  - stringer et al. data
-
-  - 10000 neurons from visual cortex
-
-- EEG + fMRI simultaneous
-
-  - NeuroBOLT data ([li...chang, 2024](https://arxiv.org/abs/2410.05341); code [link](https://drive.google.com/file/d/1s9LzdBx1afGYiGbpi3p-oFh-CnYLyYqM/view?usp=sharing))
-  - An open-access dataset of naturalistic viewing using simultaneous EEG-fMRI ([telesford...franco, 2023](https://www.nature.com/articles/s41597-023-02458-8))
 - neuropixels probes
   - [10k neurons visual coding](https://portal.brain-map.org/explore/circuits/visual-coding-neuropixels) from allen institute
   - this probe has also been used in [macaques](https://www.cell.com/neuron/pdf/S0896-6273(19)30428-3.pdf)
@@ -1021,8 +1023,9 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 ## cross-subject modeling
 
 - Aligning Brains into a Shared Space Improves their Alignment to Large Language Models ([bhattacharjee, zaida..., hasson, goldstein, nastase, 2024](https://www.biorxiv.org/content/10.1101/2024.06.04.597448v1))
-
-
+- while a coarse alignment exists across individual brains ([Nastase et al., 2019](https://academic.oup.com/scan/article/14/6/667/5489905); [2021](https://www.nature.com/articles/s41597-021-01033-3)), the finer cortical topographies for language representation exhibit significant idiosyncrasies among individuals ([Fedorenko et al., 2010](https://journals.physiology.org/doi/full/10.1152/jn.00032.2010); [Nieto-Castañón & Fedorenko, 2012](https://www.sciencedirect.com/science/article/abs/pii/S1053811912006817); [Braga et al., 2020](https://journals.physiology.org/doi/full/10.1152/jn.00753.2019); [Lipkin et al., 2022](https://www.nature.com/articles/s41597-022-01645-3))
+- hyperalignment techniques have been developed in fMRI research to aggregate information across subjects into a unified information space while overcoming the misalignment of functional topographies across subjects ([Haxby et al., 2011](https://www.cell.com/neuron/fulltext/S0896-6273(15)00933-2); shared response model [Chen et al., 2015](https://proceedings.neurips.cc/paper/2015/hash/b3967a0e938dc2a6340e258630febd5a-Abstract.html); [Guntupalli...Haxby, 2016](https://academic.oup.com/cercor/article/26/6/2919/1754308); [Haxby et al., 2020](https://elifesciences.org/articles/56601); [Feilong et al., 2023](https://direct.mit.edu/imag/article/doi/10.1162/imag_a_00032/117980))
+- shared response model [Chen et al., 2015](https://proceedings.neurips.cc/paper/2015/hash/b3967a0e938dc2a6340e258630febd5a-Abstract.html) - learns orthonormal, linear subject-specific transformations that map from each subject’s response  space to a shared space based on a subset of training data, then uses these learned transformations to map a subset of test data into the shared space
 
 # fMRI
 

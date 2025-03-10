@@ -599,7 +599,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - Extracting Latent Steering Vectors from Pretrained Language Models ([subramani, ..., peters, 2022](https://arxiv.org/abs/2205.05124)) - find latent vectors via optimization that cause an LLM to output a particular sequence
     - then, use these vectors to do things like transfer to new tasks / compute textual similarity
   - Function Vectors in LLMs ([todd...wallace, bau, 2023](https://arxiv.org/pdf/2310.15213.pdf))
-  - In-Context Learning Creates Task Vectors ([hendel, geva, & globerson, 2023](https://arxiv.org/pdf/2310.15916))
+    - In-Context Learning Creates Task Vectors ([hendel, geva, & globerson, 2023](https://arxiv.org/pdf/2310.15916))
   - Programming Refusal with Conditional Activation Steering ([lee...dhurandhar, 2024](https://arxiv.org/abs/2409.05907))
 - PURR: Efficiently Editing Language Model Hallucinations by Denoising Language Model Corruptions ([chen...sameer singh...kelvin guu, 2023](https://drive.google.com/file/d/1CXSUii4w8Y2uj-zLm8zRl63SYh45FaZL/view))
 - new datasets
@@ -705,7 +705,11 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - How do Language Models Bind Entities in Context? ([feng & steinhardt, 2023](https://arxiv.org/abs/2310.17191))
 - In-Context Language Learning: Architectures and Algorithms ([akyurek...andreas, 2024](https://arxiv.org/pdf/2401.12973.pdf)) - find evidence for "n-gram heads", higher-order variants of previously seen "induction heads"
   - Zoology: Measuring and Improving Recall in Efficient Language Models ([arora...rudra, & re, 2023](https://arxiv.org/pdf/2312.04927.pdf)) - also find evidence for ngram heads
+  - Does Time Have Its Place? Temporal Heads: Where Language Models Recall Time-specific Information ([park...kang, 2025](https://arxiv.org/pdf/2502.14258))
 - Iteration heads ([cabannes...charton, kempe, 2024](https://arxiv.org/pdf/2406.02128)) - when doing CoT for tokens, hypothesized iteration head (which shows up in small transformers trained on custom iterations tasks) implements attending to tokens sequentially and also the preceding CoT token
+- ICL performance depends primarily on function-vector heads rather than induction heads ([yin & steinhardt, 2025](https://arxiv.org/pdf/2502.14010))
+  - function-vector headsare a compact representation of a task extracted from specific attention heads, and they can be added to a model’s computation to recover ICL behavior without in-context demonstrations
+
 - Retrieval Head Mechanistically Explains Long-Context Factuality ([wu...fu, 2024](https://arxiv.org/abs/2404.15574))
 - A Phase Transition between Positional and Semantic Learning in a Solvable Model of Dot-Product Attention ([cui...zdeborova, 2024](https://arxiv.org/pdf/2402.03902.pdf)) - solve 1-layer attention model for histogram task and find  phase transition
 - Rosetta Neurons: Mining the Common Units in a Model Zoo ([dravid, ..., efros, shocher, 2023](https://openaccess.thecvf.com/content/ICCV2023/html/Dravid_Rosetta_Neurons_Mining_the_Common_Units_in_a_Model_Zoo_ICCV_2023_paper.html))
@@ -1015,7 +1019,9 @@ mixture of experts models have become popular because of the need for (1) fast s
 - embedding search monograph ([bruch, 2024](https://arxiv.org/pdf/2401.09350.pdf))
 - Active Retrieval Augmented Generation ([jiang...neubig, 2023](https://arxiv.org/abs/2305.06983)) - introduce FLARE, a method that iteratively uses a prediction of the upcoming sentence to anticipate future content, which is then utilized as a query to retrieve relevant documents to regenerate the sentence if it contains low-confidence tokens
 - Matryoshka Representation Learning ([kusupati...kakade, jain, & farhadi, 2022](https://arxiv.org/abs/2205.13147)) - in training given an embedding of full dimensionality M (e.g. 2048), learn N different distance functions for each prefix of the embedding (e.g. l2_norm(embedding[:32]), l2_norm(embedding[:64]), l2_norm(embedding[:128]), etc). 
+  - Beyond Matryoshka: Revisiting Sparse Coding for Adaptive Representation ([wen...you, 2025](https://arxiv.org/abs/2503.01776)) - instead learn sparse mask on top of original embedding
   - AGRAME: Any-Granularity Ranking with Multi-Vector Embeddings ([reddy...potdar, 2024](https://arxiv.org/pdf/2405.15028)) - rank at varying levels of granularity while maintaining encoding at a single (coarser) level
+  
 - Hypothetical Document Embeddings ([gao…callan, 2022](https://arxiv.org/pdf/2212.10496.pdf)) - generate hypothetical document from query + instruction using GPT and find match for that doc
 - Probing embeddings
   - Uncovering Meanings of Embeddings via Partial Orthogonality ([jiang, aragam, & veitch, 2023](https://arxiv.org/abs/2310.17611))
@@ -1666,7 +1672,7 @@ mixture of experts models have become popular because of the need for (1) fast s
   - counterfactual biomedical image generation by instruction-learning from multimodal patient journeys
   - specifically, learn from triplets (prior image, progression description, new image), where GPT-4 generates progression description based on the image notes
 
-### clinical image segmentation
+### clinical/bio image segmentation
 
 - 3D models (2D + time)
   - SAM 2 ([FAIR, 2024](https://arxiv.org/abs/2408.00714))
@@ -1678,6 +1684,21 @@ mixture of experts models have become popular because of the need for (1) fast s
   - SAM 1 ([FAIR, 2023](https://arxiv.org/abs/2304.02643)) - works only on 2D images
 - 5D models (4D image + time)
   - Semi-Supervised Echocardiography Video Segmentation via Adaptive Spatio-Temporal Tensor Semantic Awareness and Memory Flow ([li…hu, 2025](https://ieeexplore.ieee.org/abstract/document/10833843/authors#authors))
+- Cell-pose ([github](https://github.com/MouseLand/cellpose?tab=readme-ov-file))
+  - Cellpose 1: a generalist algorithm for cellular segmentation ([stringer et al. 2021](https://t.co/kBMXmPp3Yn?amp=1))
+    - note: predicts (1) vector direction pointing to center of each cell & (2) a binary probability of cell vs backgrounds
+      - vector direction is applied to find components that flow to the same center and then further refined by the binary prob. mask
+    - only takes in 2D images, in 3D computes the vectors using xy/xz/yz slices and then does segmentation on those vectors
+      - baseline stitching just does 2D segmentations then merges components whose ROI has IoU ≥ 0.25
+  - Cellpose 2: how to train your own model ([pachitariu & stringer, 2022](https://www.nature.com/articles/s41592-022-01663-4))
+  - Cellpose 3: one-click image restoration for improved segmentation ([stringer et al. 2025](https://www.nature.com/articles/s41592-025-02595-5)) - trained model to output images that are well segmented by a generalist segmentation model, while maintaining perceptual similarity to the target images
+- MaskCut / CutLER: Cut and Learn for Unsupervised Object Detection and Instance Segmentation ([wang, girdhar, yu, & misra, 2023](https://arxiv.org/pdf/2301.11320))
+  - MaskCut - gets patch-wise similarity matrix from DINO then iteratively uses normalized cuts ([shi & malik, 2000](https://ieeexplore.ieee.org/abstract/document/868688)) to identify objects (e.g. clusters)
+  - VideoCutLER: Surprisingly Simple Unsupervised Video Instance Segmentation ([wang...girdhar, darrell, 2023](https://arxiv.org/abs/2308.14710))
+    - generate masks with maskcut, then creates synthetic video tracking training data by moving these masked objects around on background images
+  - Simplifying DINO via Coding Rate Regularization ([wu...ma, 2025](https://arxiv.org/abs/2502.10385))
+
+
 
 ## evaluating with LLMs
 
