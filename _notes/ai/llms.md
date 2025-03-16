@@ -8,7 +8,7 @@ subtitle: Foundational papers in LLMs / transformer-based models
 
 {:toc}
 
-See related papers in the [📌 interpretability](https://csinva.io/notes/research_ovws/ovw_interp.html) page.
+See related papers in the [📌 llm research](https://csinva.io/notes/research_ovws/ovw_llms.html) and [📌 interpretability](https://csinva.io/notes/research_ovws/ovw_interp.html) pages.
 
 # basics
 
