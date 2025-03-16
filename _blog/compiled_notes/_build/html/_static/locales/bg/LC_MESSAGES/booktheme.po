@@ -8,26 +8,32 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "Download this page"
-msgstr "Изтеглете тази страница"
+msgid "By the"
+msgstr "По"
 
-msgid "Download notebook file"
-msgstr "Изтеглете файла на бележника"
-
-msgid "Open an issue"
-msgstr "Отворете проблем"
-
-msgid "repository"
-msgstr "хранилище"
-
-msgid "Theme by the"
-msgstr "Тема от"
+msgid "By"
+msgstr "От"
 
 msgid "Contents"
 msgstr "Съдържание"
 
-msgid "next page"
-msgstr "Следваща страница"
+msgid "Copyright"
+msgstr "Авторско право"
+
+msgid "Download notebook file"
+msgstr "Изтеглете файла на бележника"
+
+msgid "Download source file"
+msgstr "Изтеглете изходния файл"
+
+msgid "Download this page"
+msgstr "Изтеглете тази страница"
+
+msgid "Edit this page"
+msgstr "Редактирайте тази страница"
+
+msgid "Fullscreen mode"
+msgstr "Режим на цял екран"
 
 msgid "Last updated on"
 msgstr "Последна актуализация на"
@@ -35,47 +41,35 @@ msgstr "Последна актуализация на"
 msgid "Launch"
 msgstr "Стартиране"
 
-msgid "Edit this page"
-msgstr "Редактирайте тази страница"
-
-msgid "Source repository"
-msgstr "Хранилище на източника"
-
-msgid "Download source file"
-msgstr "Изтеглете изходния файл"
-
-msgid "Sphinx Book Theme"
-msgstr "Тема на книгата Sphinx"
-
-msgid "Copyright"
-msgstr "Авторско право"
-
-msgid "Fullscreen mode"
-msgstr "Режим на цял екран"
-
-msgid "Search the docs ..."
-msgstr "Търсене в документите ..."
-
-msgid "suggest edit"
-msgstr "предложи редактиране"
-
-msgid "Search this book..."
-msgstr "Търсене в тази книга ..."
-
-msgid "By"
-msgstr "От"
-
-msgid "open issue"
-msgstr "отворен брой"
+msgid "Open an issue"
+msgstr "Отворете проблем"
 
 msgid "Print to PDF"
 msgstr "Печат в PDF"
 
-msgid "previous page"
-msgstr "предишна страница"
+msgid "Source repository"
+msgstr "Хранилище на източника"
+
+msgid "Sphinx Book Theme"
+msgstr "Тема на книгата Sphinx"
+
+msgid "Theme by the"
+msgstr "Тема от"
 
 msgid "Toggle navigation"
 msgstr "Превключване на навигацията"
 
-msgid "By the"
-msgstr "По"
+msgid "next page"
+msgstr "Следваща страница"
+
+msgid "open issue"
+msgstr "отворен брой"
+
+msgid "previous page"
+msgstr "предишна страница"
+
+msgid "repository"
+msgstr "хранилище"
+
+msgid "suggest edit"
+msgstr "предложи редактиране"

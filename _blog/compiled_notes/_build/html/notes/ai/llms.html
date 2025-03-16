@@ -1,0 +1,1083 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>1.7. llms</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notes/ai/llms';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="1.8. logic" href="logic.html" />
+    <link rel="prev" title="1.6. cognitive science" href="cogsci.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    overview 👋
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="ai.html">1. ai</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="knowledge_rep.html">1.1. representations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="psychology.html">1.2. psychology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fairness_sts.html">1.3. fairness, sts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="philosophy.html">1.4. philosophy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ai_futures.html">1.5. ai futures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cogsci.html">1.6. cognitive science</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">1.7. llms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logic.html">1.8. logic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search.html">1.9. search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decisions_rl.html">1.10. decisions, rl</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math.html">2. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">2.1. linear algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">2.2. optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/differential_equations.html">2.3. differential equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">2.4. chaos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">2.5. math basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">2.6. signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">2.7. calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/proofs.html">2.8. proofs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">2.9. real analysis</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml.html">3. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">3.1. unsupervised</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/structure_ml.html">3.2. structure learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">3.3. learning theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">3.4. deep learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/comp_vision.html">3.5. computer vision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/kernels.html">3.6. kernels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/nlp.html">3.7. nlp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/feature_selection.html">3.8. feature selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">3.9. evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">3.10. classification</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.1. time series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.2. graphical models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.3. causal inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/game_theory.html">4.4. game theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.5. info theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.6. linear models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.7. data analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.8. testing</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro.html">5. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../neuro/motor.html">5.1. motor system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../neuro/memory.html">5.2. memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../neuro/development.html">5.3. development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../neuro/sensory_input.html">5.4. sensory input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../neuro/comp_neuro.html">5.5. comp neuro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../neuro/disease.html">5.6. disease</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../neuro/vissci.html">5.7. vision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../neuro/brain_basics.html">5.8. brain basics</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs.html">6. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">6.1. cs theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/graphs.html">6.2. graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval.html">6.3. info retrieval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">6.4. data structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">6.5. os</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">6.6. quantum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/software.html">6.7. software engineering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">6.8. algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">6.9. architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/languages.html">6.10. languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/reproducibility.html">6.11. reproducibility</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../research_ovws/research_ovws.html">7. research_ovws</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">7.1. disentanglement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">7.2. uncertainty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_generalization.html">7.3. generalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">7.4. causal inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_omics.html">7.5. omics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">7.6. ml in medicine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_llms.html">7.7. llms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">7.8. transfer learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interp.html">7.9. interpretability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_complexity.html">7.10. complexity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">7.11. dl theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_scat.html">7.12. scattering transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">7.13. interesting science</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/csinva/csinva.github.io" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notes/ai/llms.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>llms</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basics">1.7.1. basics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#historically-influential-transformer-based-model">1.7.2. historically influential transformer-based model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ngram-based-models">1.7.3. ngram-based models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-overview-of-transformers">1.7.4. mathematical overview of transformers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-explanation-of-self-attention">1.7.5. visual explanation of self-attention</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#huggingface-tutorial">1.7.5.1. huggingface tutorial</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-transformer-nlp-models">1.7.5.2. pre-transformer nlp models</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="llms">
+<h1><span class="section-number">1.7. </span>llms<a class="headerlink" href="#llms" title="Link to this heading">#</a></h1>
+<p>See related papers in the <a class="reference external" href="https://csinva.io/notes/research_ovws/ovw_interp.html">📌 interpretability</a> page.</p>
+<section id="basics">
+<h2><span class="section-number">1.7.1. </span>basics<a class="headerlink" href="#basics" title="Link to this heading">#</a></h2>
+<p><img alt="transformer_sizes" src="../../_images/transformer_sizes.png" /></p>
+<p><img alt="kv_caching_diagram" src="../../_images/kv_caching_diagram.png" /></p>
+<ul class="simple">
+<li><p><strong>attention</strong> = vector of importance weights</p>
+<ul>
+<li><p>to predict or infer one element, such as a pixel in an image or a word in a sentence, we estimate using the attention vector how strongly it is correlated with (or “<em>attends to</em>” other elements and take the sum of their values weighted by the attention vector as the approximation of the target</p></li>
+</ul>
+</li>
+<li><p>vanilla transformer: multihead attention, add + norm, position-wise ffn, add + norm</p></li>
+<li><p>self-attention layer <a class="reference external" href="https://github.com/mertensu/transformer-tutorial">implementation</a>, <a class="reference external" href="https://homes.cs.washington.edu/~thickstn/docs/transformers.pdf">mathematics</a>, and <strong>chandan’s self-attention <a class="reference external" href="https://slides.com/chandansingh-2/deck-51f404">cheat-sheet</a></strong></p></li>
+</ul>
+</section>
+<section id="historically-influential-transformer-based-model">
+<h2><span class="section-number">1.7.2. </span>historically influential transformer-based model<a class="headerlink" href="#historically-influential-transformer-based-model" title="Link to this heading">#</a></h2>
+<p><strong>nlp</strong> (see also <a class="reference external" href="https://medium.com/nlplanet/a-brief-timeline-of-nlp-from-bag-of-words-to-the-transformer-family-7caad8bbba56">this link</a>)</p>
+<ul class="simple">
+<li><p>early papers</p>
+<ul>
+<li><p>attention is all you need (<a class="reference external" href="https://arxiv.org/abs/1706.03762">vaswani et al. 2017</a>) - initial transformer</p>
+<ul>
+<li><p>encoder-decoder transformer for seq-to-seq (most new models don’t have  special encoder-decoder structure for translation)</p></li>
+<li><p>Semi-supervised Sequence Learning (<a class="reference external" href="https://arxiv.org/abs/1511.01432">dai &amp; quoc le, 2015</a>) - context vector is weighted sum of context vector at each word</p></li>
+</ul>
+</li>
+<li><p>ULMFiT (<a class="reference external" href="https://arxiv.org/abs/1801.06146">howard &amp; ruder, 2018</a>)</p></li>
+</ul>
+</li>
+<li><p>BERT (<a class="reference external" href="https://arxiv.org/abs/1810.04805">devlin et al. 2018</a>) - semi-supervised learning (predict masked word - this is bidirectional) + supervised finetuning</p>
+<ul>
+<li><p>RoBERTa (<a class="reference external" href="https://arxiv.org/abs/1907.11692">liu et al. 2019</a>)</p></li>
+<li><p>BART (<a class="reference external" href="https://arxiv.org/abs/1910.13461">lewis et al. 2019</a>) - generalizes BERT with sequence-to-squence training: train by (1) corrupting text then (2) reconstruct the original text</p></li>
+<li><p>ELMo (<a class="reference external" href="https://arxiv.org/abs/1802.05365">peters…zettlemoyer, 2018</a>) - no word embeddings - train embeddings w/ bidirectional lstm (on language modeling)</p></li>
+<li><p>XLNet (<a class="reference external" href="https://arxiv.org/abs/1906.08237">yang…quoc le, 2020</a>)</p></li>
+</ul>
+</li>
+<li><p>GPT-4 (openai, 2023) - adds multimodal understanding + boosts context length to 32k</p>
+<ul>
+<li><p>GPT-4o - adds more multimodality for input/output</p></li>
+<li><p>GPT-3 (<a class="reference external" href="https://arxiv.org/abs/2005.14165?2">brown et al. 2020</a>) - identical to GPT-2 except larger and replaces dense attention with sparse attention</p>
+<ul>
+<li><p>sizes: largest has 175B params, 96 layers, 96 heads in each layer, head with dim 128, vocab size ~50k</p></li>
+</ul>
+</li>
+<li><p>InstructGPT (<a class="reference external" href="https://arxiv.org/abs/2203.02155">ouyang…lowe, 2022</a>)</p></li>
+<li><p>GPT-2 (<a class="reference external" href="https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf">radford et al. 2018</a>)</p></li>
+<li><p>GPT (<a class="reference external" href="https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf">radford et al. 2018</a>)</p></li>
+<li><p>Gopher (<a class="reference external" href="https://arxiv.org/abs/2112.11446">deepmind, 2021</a>) - basically gpt-3 with slight mods (replace layernorm by RMSnorm, different positional embeddings)</p></li>
+<li><p>open-source (from meta ai): <a class="reference external" href="https://ai.meta.com/research/publications/llama-2-open-foundation-and-fine-tuned-chat-models/">LlaMa 2</a>, <a class="reference external" href="https://scontent-sea1-1.xx.fbcdn.net/v/t39.8562-6/333078981_693988129081760_4712707815225756708_n.pdf?_nc_cat=108&amp;amp;ccb=1-7&amp;amp;_nc_sid=ad8a9d&amp;amp;_nc_ohc=0JlbsRuMCfYAX89GkW5&amp;amp;_nc_ht=scontent-sea1-1.xx&amp;amp;oh=00_AfAKI4SBnQesKWtXsUVxzF9w_IT_qOgOTTKNpeZRptOBuw&amp;amp;oe=63FDD562">LLaMa</a>, <a class="reference external" href="https://arxiv.org/abs/2212.12017">OPT-IML</a>, <a class="reference external" href="https://arxiv.org/abs/2205.01068">OPT</a></p>
+<ul>
+<li><p><a class="reference external" href="https://s3.amazonaws.com/static.nomic.ai/gpt4all/2023_GPT4All_Technical_Report.pdf">GPT4All</a> (LLaMA 7B finetuned on code/stories/dialogue)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ELECTRA: Pre-training Text Encoders as Discriminators Rather Than Generators (<a class="reference external" href="https://arxiv.org/abs/2003.10555">clark…quoc le, chris manning, 2020</a>) - more efficient: rather than standard masked training, use generator-discriminator setup for “token detection”</p>
+<ul>
+<li><p>generator replaces many masked tokens with plausible samples - train with MLM</p></li>
+<li><p>discriminator tries to guess which tokens were the masked ones - this is the main model that gets used</p></li>
+</ul>
+</li>
+<li><p>LongNet: Scaling Transformers to 1,000,000,000 Tokens (<a class="reference external" href="https://arxiv.org/abs/2307.02486">ding, …, wei, 2023</a>) - multiscale attention similar to wavelets</p>
+<ul>
+<li><p>Longformer: The Long-Document Transformer (<a class="reference external" href="https://arxiv.org/abs/2004.05150">Beltagy, Peters, &amp; Cohan 2020</a>) - processes very long contexts</p></li>
+</ul>
+</li>
+<li><p>PaLM: Scaling Language Modeling with Pathways (<a class="reference external" href="https://arxiv.org/abs/2204.02311">Google 2022</a>) - 540 Billion params</p>
+<ul>
+<li><p>pathways hardware center allows for fast/efficient training</p></li>
+<li><p>discontinuous improvements - at some point large model improves</p></li>
+<li><p>Chinchilla: Training Compute-Optimal LLMs (<a class="reference external" href="https://arxiv.org/abs/2203.15556">DeepMind 2022</a>)</p>
+<ul>
+<li><p>“chinchilla scaling laws” - for compute-optimal training, the model size and the number of training tokens should be scaled equally</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>T0 (<a class="reference external" href="https://arxiv.org/pdf/2110.08207.pdf">sanh…rush, 2022</a>) - multitask training enables better zero-shot generalization</p>
+<ul>
+<li><p>T5 (<a class="reference external" href="https://jmlr.org/papers/volume21/20-074/20-074.pdf">raffel…liu, 2020</a>) – text-to-text transfer transformer</p></li>
+<li><p>UL2: Unifying Language Learning Paradigms (<a class="reference external" href="https://arxiv.org/abs/2205.05131">tay…metzler, 2022</a>) - open-source 20B model, beats GPT-3 at zero-shot</p></li>
+</ul>
+</li>
+<li><p>early instruction following</p>
+<ul>
+<li><p>FLAN-PaLM: Scaling Instruction-Finetuned Language Models (<a class="reference external" href="https://arxiv.org/abs/2210.11416">chung, …, quoc le, jason wei, 2022</a>) - finetune with datasets phrased as instructions</p>
+<ul>
+<li><p>FLAN (<a class="reference external" href="https://arxiv.org/abs/2109.01652">wei, …, le, 2021</a>) - finetune on instructions to follows instructions</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>subquadratic attention</p>
+<ul>
+<li><p>MAMBA (<a class="reference external" href="https://arxiv.org/abs/2312.00752">gu &amp; dao, 2023</a>) - state-space model</p></li>
+</ul>
+</li>
+<li><p>reasoning models</p>
+<ul>
+<li><p>O1, O3, Deepseek-R1, …</p></li>
+</ul>
+</li>
+<li><p>smaller newer models</p>
+<ul>
+<li><p>phi-1, phi-2</p></li>
+<li><p>mistral 7B, mixtral MoE</p></li>
+</ul>
+</li>
+<li><p>clinical</p>
+<ul>
+<li><p>ClinicalGPT: LLMs Finetuned with Diverse Medical Data and Comprehensive Evaluation (<a class="reference external" href="https://arxiv.org/abs/2306.09968">wang, …, li, 2023</a>)</p></li>
+<li><p>BioGPT (<a class="reference external" href="https://academic.oup.com/bib/article-abstract/23/6/bbac409/6713511">luo…poon, liu, 2022</a>)</p>
+<ul>
+<li><p>ChatDoctor (finetuned LLAMA) (<a class="reference external" href="https://arxiv.org/abs/2303.14070">yunxiang, …, you, 2023</a>)</p></li>
+<li><p>PubMedGPT (2.7B): (<a class="reference external" href="https://crfm.stanford.edu/2022/12/15/pubmedgpt.html">bolton, hall, …, manning, liang, 2022</a>) -&gt; renamed to <em>BioMedLM</em></p></li>
+<li><p>BioBERT: <a class="reference external" href="https://arxiv.org/abs/1901.08746">A pre-trained biomedical language representation model for biomedical text mining</a> (2019)</p></li>
+<li><p>PubMedBERT: <a class="reference external" href="https://arxiv.org/abs/2007.15779">Domain-Specific Language Model Pretraining for Biomedical Natural Language Processing</a> (gu…gao, poon, 2021)</p></li>
+<li><p>Med-PaLM 2 (<a class="reference external" href="https://arxiv.org/abs/2305.09617">google, 2023</a>) - state of the art QA</p>
+<ul>
+<li><p>LLMs Encode Clinical Knowledge (<a class="reference external" href="https://arxiv.org/abs/2212.13138">singhal, …, natarajan, 2022, google/deepmind</a>) - introduce MultiMedQA dataset + derive Med-PaLM, a prompt-tuned version of PaLM</p></li>
+</ul>
+</li>
+<li><p>PMC-LLaMA (<a class="reference external" href="https://arxiv.org/pdf/2304.14454.pdf">wu et al. 2023</a>)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>paper parsing</p>
+<ul>
+<li><p>Nougat: Neural Optical Understanding for Academic Documents (<a class="reference external" href="https://arxiv.org/abs/2308.13418">blecher…scialom, sojnic, 2023</a>)</p></li>
+<li><p>PDFTriage: Question Answering over Long, Structured Documents (<a class="reference external" href="https://arxiv.org/abs/2309.08872">adobe, 2023</a>)</p></li>
+</ul>
+</li>
+<li><p>information extraction / named entity recognition</p>
+<ul>
+<li><p>Some popular models: <a class="reference external" href="https://huggingface.co/dslim/bert-base-NER">bert-base-NER</a>, <a class="reference external" href="https://huggingface.co/blaze999/Medical-NER">medical-NER</a></p></li>
+<li><p>two most frequent categories of IE targets are entity and relation, which structure many IE tasks, such as named entity recognition (<a class="reference external" href="https://arxiv.org/abs/cs/0306050">Sang and Meulder, 200</a>3), relation extraction (<a class="reference external" href="https://aclanthology.org/W05-0620.pdf">Carreras and Màrquez, 2004</a>), event extraction (<a class="reference external" href="https://cir.nii.ac.jp/crid/1880865118012204544">Walker et al., 2006</a>), and others</p></li>
+<li><p>Universal NER has a good dataset for a wide variety of attribute labels (<a class="reference external" href="https://universal-ner.github.io/">https://universal-ner.github.io/</a>), could just finetune something here [they finetune a 7B model to answer one question at a time]</p>
+<ul>
+<li><p>Outperforms previous best model InstructUIE (<a class="reference external" href="https://arxiv.org/abs/2304.08085">2023</a>)</p></li>
+</ul>
+</li>
+<li><p>Cuckoo: An IE Free Rider Hatched by Massive Nutrition in LLM’s Nest (<a class="reference external" href="https://arxiv.org/pdf/2502.11275">peng, wang, yao, &amp; shang, 2025</a>)</p>
+<ul>
+<li><p>use repeated text as label</p></li>
+<li><p>filter repeated text to only include non-overlapping noun phrases from spacy</p></li>
+<li><p>BIO tags mark each token with beginning (B), inside (I), and outside (O) tagging schemes</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>other</strong></p>
+<ul>
+<li><p>text-vision models</p>
+<ul class="simple">
+<li><p>CLIP (<a class="reference external" href="https://cdn.openai.com/papers/Learning_Transferable_Visual_Models_From_Natural_Language.pdf">radford et al. 2021</a>) - jointly train text/images</p>
+<ul>
+<li><p>batch-based loss: encodings from same image/text pair should be close while encodings across different examples in the batch should be different</p></li>
+<li><p>note: empirically works better with very large batch size</p></li>
+</ul>
+</li>
+<li><p>DALL-E 2 (<a class="reference external" href="https://openai.com/dall-e-2/">OpenAI, 2022</a>)</p>
+<ul>
+<li><p>clip is foundation as generative model</p></li>
+<li><p>generates text + image embeddings</p></li>
+<li><p>“prior network” maps text embedding to image embedding</p></li>
+<li><p>adds diffusion model</p></li>
+<li><p>Stable diffusion (<a class="reference external" href="https://stability.ai/blog/stable-diffusion-public-release">stability.ai, 2022</a>) - open-source recreation, now highly optimized for speed</p></li>
+<li><p>Imagen (<a class="reference external" href="https://arxiv.org/abs/2205.11487">google, 2022</a>)</p></li>
+</ul>
+</li>
+<li><p>BLIP-2 (<a class="reference external" href="https://arxiv.org/abs/2301.12597">salesforce, 2023</a>) - Bootstrapping Language-Image Pre-training with Frozen Image Encoders and LLMs</p>
+<ul>
+<li><p>BEiT-3 (<a class="reference external" href="https://arxiv.org/abs/2208.10442">2022</a>) - treat vision as language and large-scale multimodal training</p></li>
+<li><p>outperforms <a class="reference external" href="https://arxiv.org/abs/2204.14198">Flamingo</a> (2022), which uses more domain knowledge to connect vision &amp; language</p></li>
+</ul>
+</li>
+<li><p>video</p>
+<ul>
+<li><p>Text-To-4D Dynamic Scene Generation (<a class="reference external" href="https://arxiv.org/abs/2301.11280v1">meta, 2023</a>)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>vision (rather than words, people generally use image patches as tokens)</p>
+<ul class="simple">
+<li><p>VIT: An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale (<a class="reference external" href="https://arxiv.org/abs/2010.11929">dosoviskiy, …, houlsby, 2020</a>)</p>
+<ul>
+<li><p>attention augmentation to resnet for vision (<a class="reference external" href="https://arxiv.org/abs/1904.09925">bello…quoc le, 2020</a>)</p></li>
+</ul>
+</li>
+<li><p>DINOv2 (FAIR, 2022)</p>
+<ul>
+<li><p>DINO: Emerging Properties in Self-Supervised Vision Transformers (<a class="reference external" href="https://arxiv.org/abs/2104.14294">FAIR, 2021</a>)</p></li>
+</ul>
+</li>
+<li><p>SAM 2 (<a class="reference external" href="https://arxiv.org/abs/2408.00714">FAIR, 2024</a>) - strong segmentation model (handles 2D images or 2D images + time)</p>
+<ul>
+<li><p>SAM 1 (<a class="reference external" href="https://arxiv.org/abs/2304.02643">FAIR, 2023</a>) - segmentation for 2D images</p></li>
+</ul>
+</li>
+<li><p>Masked Autoencoders Are Scalable Vision Learners (<a class="reference external" href="https://arxiv.org/abs/2111.06377">he…dollar, girshick, 2021</a>) - BERT-style training</p>
+<ul>
+<li><p>speed up by not applying encoder to mask tokens + adding mask to a lot of the data (like 75%)</p></li>
+<li><p>really good results without much data</p></li>
+</ul>
+</li>
+<li><p>spatial transformers networks (<a class="reference external" href="https://papers.nips.cc/paper/5854-spatial-transformer-networks.pdf">deepmind, 2015</a>)</p></li>
+</ul>
+</li>
+<li><p>reinforcement learning (RL)</p>
+<ul class="simple">
+<li><p>AdA: Human-Timescale Adaptation in an Open-Ended Task Space (<a class="reference external" href="https://arxiv.org/abs/2301.07608">deepmind, 2023</a>)</p></li>
+<li><p>GATO: A Generalist Agent (<a class="reference external" href="https://arxiv.org/abs/2205.06175">deepmind, 2022</a>) - single agent plays many different video games</p>
+<ul>
+<li><p>different modalities are converted to tokens differently (e.g. image patches are fed through resnet)</p></li>
+</ul>
+</li>
+<li><p>In-context Reinforcement Learning with Algorithm Distillation (<a class="reference external" href="https://arxiv.org/abs/2210.14215">laskin, wang, …, sahni, satinder singh, mnih, 2022, deepmind</a>) - learn to improve an RL algorithm</p>
+<ul>
+<li><p>put history of (observation, action, reward) sequences into context and then use them to predict new action given new observation</p></li>
+</ul>
+</li>
+<li><p>Decision Transformer: Reinforcement Learning via Sequence Modeling (<a class="reference external" href="https://arxiv.org/pdf/2106.01345.pdf">chen, lu, …abbeel, srinivas, mordatch, 2021</a>) - transformer that predicts what the next highest reward step is instead of the next word</p></li>
+</ul>
+</li>
+<li><p>agents</p>
+<ul class="simple">
+<li><p>AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation (<a class="reference external" href="https://arxiv.org/pdf/2308.08155.pdf">wu, bansal, …, wang, 2024</a>)</p></li>
+</ul>
+</li>
+<li><p>dialog</p>
+<ul class="simple">
+<li><p>ChatGPT</p></li>
+<li><p>GODEL: Large-Scale Pre-Training for Goal-Directed Dialog (<a class="reference external" href="https://arxiv.org/abs/2206.11309">baolin peng, galley, …, gao , 2022</a>) - add grounded pre-training</p></li>
+<li><p>Deal or No Deal? End-to-End Learning for Negotiation Dialogues (<a class="reference external" href="https://arxiv.org/abs/1706.05125">lewis…batra, 2017, Meta</a> ) - controversial paper where agents “make up their own language” (this is pre-transformers)</p></li>
+</ul>
+</li>
+<li><p>MINERVA: Solving Quantitative Reasoning Problems with Language Models (<a class="reference external" href="https://arxiv.org/abs/2206.14858">google, 2022</a>) - train on well-parsed, domain-specific data (math arxiv) to solve math-reasoning problems</p>
+<ul class="simple">
+<li><p>autoformalization (<a class="reference external" href="https://arxiv.org/abs/2205.12615">wu…, szegedy, 2022</a>) - translating from natural language math to formal language</p></li>
+<li><p>produce sql/python that then finds an answer (<a class="reference external" href="https://arxiv.org/abs/2210.02875">cheng…zettlemoyer, smith, yu, 2022</a>)</p></li>
+</ul>
+</li>
+<li><p>CODEX: Evaluating LLMs Trained on Code (<a class="reference external" href="https://arxiv.org/abs/2107.03374">2021, openai</a>)</p>
+<ul>
+<li><p>Repair Is Nearly Generation: Multilingual Program Repair with LLMs (<a class="reference external" href="https://arxiv.org/abs/2208.11640">Joshi et al. 2022</a>)</p></li>
+<li><p>Improving automatically generated code from Codex via Automated Program Repair (<a class="reference external" href="https://arxiv.org/abs/2205.10583">Fan et al. 2022</a>) - use automated program repair to tweak codex outputs to make them better</p></li>
+<li><p>Generating Question Titles for Stack Overflow from Mined Code Snippets (<a class="reference external" href="https://dl.acm.org/doi/abs/10.1145/3401026?casa_token=FEWYSo9ZmNIAAAAA:-_ZIkXQVUR3xYaB3NtrzBv0jZU6IZ6O4f_W_ZDtb6TipLBV4YHB-0lbO1JU8T9wwIl_jLBS3ts0">Gao et al. 2020</a>)</p></li>
+<li><p>Automatic Program Repair with OpenAI’s Codex: Evaluating QuixBugs (<a class="reference external" href="https://arxiv.org/abs/2111.03922">Prenner &amp; Robbes, 2021</a>)</p>
+<ul>
+<li><p>use prompt like:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#### fix the bug in the following function</span>
+<span class="o">&lt;</span><span class="n">buggy</span> <span class="n">function</span> <span class="ow">and</span><span class="o">/</span><span class="ow">or</span> <span class="n">docstring</span> <span class="n">here</span><span class="o">&gt;</span>
+<span class="c1">#### fixed function</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p>program synthesis <a class="reference external" href="https://arxiv.org/abs/2108.07732">arxiv.org/abs/2108.07732</a> - formalize natural language into runnable code</p></li>
+</ul>
+</li>
+<li><p>science</p>
+<ul class="simple">
+<li><p>Galactica: A LLM for Science (<a class="reference external" href="https://galactica.org/static/paper.pdf">taylor…, stojnic, 2022, meta ai</a>) - trained on mostly papers + some knowledge bases (e.g. proteins)</p></li>
+<li><p>Nougat: Neural Optical Understanding for Academic Documents (<a class="reference external" href="https://arxiv.org/abs/2308.13418">blecher…scialom, sojnic, 2023</a>)</p></li>
+</ul>
+</li>
+<li><p>audio</p>
+<ul class="simple">
+<li><p>MusicLM: Generating Music From Text (<a class="reference external" href="https://arxiv.org/abs/2301.11325">google, 2023</a>)</p></li>
+<li><p>Jukebox: A Generative Model for Music (<a class="reference external" href="https://arxiv.org/abs/2005.00341">openai, 2020</a>)</p></li>
+<li><p>Voicebox: Text-Guided Multilingual Universal Speech Generation at Scale (<a class="reference external" href="https://research.facebook.com/publications/voicebox-text-guided-multilingual-universal-speech-generation-at-scale/">meta, 2023</a>) - text-to-speech</p></li>
+</ul>
+</li>
+<li><p>summarization / keywords</p>
+<ul class="simple">
+<li><p>KeyBERT: Minimal keyword extraction with BERT ([grootendorst, 2020]</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="ngram-based-models">
+<h2><span class="section-number">1.7.3. </span>ngram-based models<a class="headerlink" href="#ngram-based-models" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Infini-gram: Scaling Unbounded n-gram Language Models to a Trillion Tokens (<a class="reference external" href="https://arxiv.org/pdf/2401.17377.pdf">liu, min, zettlemoyer, choic, &amp; hajishirzi, 2024</a>)</p>
+<ul>
+<li><p>motivation: hard to scale ngram models to large datasets and large data lengths</p></li>
+<li><p>soln 1: backoff (<a class="reference external" href="https://scholar.google.com/citations?view_op=view_citation&amp;amp;hl=en&amp;amp;user=uZg9l58AAAAJ&amp;amp;citation_for_view=uZg9l58AAAAJ:2osOgNQ5qMEC">Jurafsky &amp; Martin, 2000</a>) - select <em>n</em> based on the longest suffix of the prompt that has a non-zero count in the corpus</p>
+<ul>
+<li><p>counts of the next token yield the prob. of the next token</p></li>
+<li><p>Katz backoff (<a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/1165125">Katz, 1987</a>) discounts probs to yield valid prob. distr.</p></li>
+</ul>
+</li>
+<li><p>soln 2: represent prob. table in <a class="reference external" href="https://en.wikipedia.org/wiki/Suffix_array">suffix array</a> to make things very fast</p>
+<ul>
+<li><p>suffix array stores address to each location in the training data alphabetically sorted</p>
+<ul>
+<li><p>roughly the same size</p></li>
+</ul>
+</li>
+<li><p>this makes it fast to search for instances of an ngram (and also for what precedes/follows it)</p></li>
+</ul>
+</li>
+<li><p>results show that infinigram can considerably improve perplexities when it is linearly combined with the logits from LLMs (experiments up to llama-2 70B)</p></li>
+<li><p>Interpretable Language Modeling via Induction-head Ngram Models (<a class="reference external" href="https://arxiv.org/abs/2411.00066">kim, mantena, …, gao, 2024</a>) - extend infinigram with fuzzy-matching induction heads to improve adaptation</p></li>
+<li><p>Transformers Can Represent n-gram Language Models (<a class="reference external" href="https://arxiv.org/abs/2404.14994">svete &amp; cotterell, 2024</a>) - transformers have the computational capacity to represent ngram models</p></li>
+<li><p>Generalization through Memorization: Nearest Neighbor Language Models (<a class="reference external" href="https://arxiv.org/abs/1911.00172">khandelwal, levy, jurafsky, zettlemoyer, &amp; lewis, 2020</a>) - average over output of neighboring embeddings</p></li>
+<li><p>smoothing ngram models (<a class="reference external" href="https://arxiv.org/pdf/cmp-lg/9606011">chen &amp; goodman, 1996</a>)</p>
+<ul>
+<li><p>interpolation - e.g. linearly combine pobabilities shorter ngram sequences with larger ngram sequences (places better prior on ngrams that were not seen)</p></li>
+</ul>
+</li>
+<li><p>see also latent LM for smoothing</p></li>
+<li><p>Improving N-gram Language Models with Pre-trained Deep Transformer(<a class="reference external" href="https://arxiv.org/abs/1911.10235">wang et al. 2019</a> ) - use transformer to generate synthetic data for new n-gram model (language model, doesn’t extend to classification)</p></li>
+<li><p>Improvements to N-gram Language Model Using Text Generated from Neural Language Model (<a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/8683481?casa_token=7iD-YiGsHTAAAAAA:N3XmuRk27wGttURXYIYDbxdADVdhJMeUeBvVugq0EbyMst-zrm93wPZtc37uUBBtUPXKPrxvGZJC">suzuki et al. 2019</a>) - generate synthetic data from RNNs for new n-gram model</p></li>
+</ul>
+</li>
+<li><p>classifierss</p>
+<ul>
+<li><p>Aug-imodels: Augmenting Interpretable Models with LLMs during Training (<a class="reference external" href="https://arxiv.org/abs/2209.11799">singh, askari, caruana, &amp; gao, 2023</a>) - build fully transparent n-gram based classifiers (linear or tree) by distilling info from LLMs</p></li>
+<li><p>fasttext (<a class="reference external" href="https://www.ijcai.org/Proceedings/16/Papers/401.pdf">jin et al. 2016</a>)</p></li>
+<li><p>Neural Bag-of-Ngrams (<a class="reference external" href="https://ojs.aaai.org/index.php/AAAI/article/view/10954">li et al. 2017</a>) - learn embedding vectors for ngrams via deep version of skip-gram</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="mathematical-overview-of-transformers">
+<h2><span class="section-number">1.7.4. </span>mathematical overview of transformers<a class="headerlink" href="#mathematical-overview-of-transformers" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>based on <a class="reference external" href="https://arxiv.org/abs/2207.09238?utm_source=substack&amp;amp;utm_medium=email">Formal Algorithms for Transformers</a></p></li>
+<li><p>tasks</p>
+<ul>
+<li><p><em>sequence modeling</em>: learn <span class="math notranslate nohighlight">\(p(x)\)</span>, usually factorized as <span class="math notranslate nohighlight">\(p(x_i|x_1,...,x_{i-1})\)</span></p></li>
+<li><p><em>sequence-to-sequence</em>: learn <span class="math notranslate nohighlight">\(p(z|x)\)</span>, e.g. transalation, speech-to-text, question answering</p></li>
+</ul>
+</li>
+<li><p>preprocessing</p>
+<ul>
+<li><p>embedding matrix takes in one-hot tokens and linearly maps them to a vector</p></li>
+<li><p>positional embedding of a token is usually added to the token embedding to form a token’s initial embedding</p></li>
+</ul>
+</li>
+<li><p>attention types</p>
+<ul>
+<li><p><em>Bidirectional / unmasked self-attention</em> - primary/context vectors are the same</p></li>
+<li><p><em>Unidirectional / masked self-attention</em> - mask scores from before a given word</p></li>
+<li><p><em>Cross-attention</em> - primary/context vectors can come from different places</p></li>
+</ul>
+</li>
+<li><p>non-attention</p>
+<ul>
+<li><p>layernorm: controls mean/variance of activations</p>
+<ul>
+<li><p>RMSnorm: simpler version, sets mean/offset to zero</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>unembedding</p>
+<ul>
+<li><p>linear layer (with softmax) that outputs size of original vocab</p>
+<ul>
+<li><p>sometimes fixed to be transpose of the embedding matrix</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>predictions</p>
+<ul>
+<li><p>predict next word using single linear layer on hidden state from previous word</p></li>
+<li><p>finetune classification head often only using linear layer on first token from sequence</p></li>
+</ul>
+</li>
+<li><p>architectures</p>
+<ul>
+<li><p>initially, encoder-decoder was common, but now often no decoder</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="visual-explanation-of-self-attention">
+<h2><span class="section-number">1.7.5. </span>visual explanation of self-attention<a class="headerlink" href="#visual-explanation-of-self-attention" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>based on article by jay allamar</p></li>
+<li><p>**self-attention ** - layer that lets word learn its relation to other layers</p>
+<ul>
+<li><p>for each word, want score telling how much importance to place on each other word (queries <span class="math notranslate nohighlight">\(\cdot\)</span> keys)</p></li>
+<li><p>we get an encoding for each word</p>
+<ul>
+<li><p>the encoding of each word returns a weighted sum of the values of the words (the current word gets the highest weight)</p></li>
+<li><p>softmax this and use it to do weighted sum of values<img alt="Screen Shot 2019-08-17 at 2.51.53 PM" src="../../_images/attention.png" /></p></li>
+</ul>
+</li>
+<li><p>(optional) implementation details</p>
+<ul>
+<li><p><strong>multi-headed attention</strong> - just like having many filters, get many encodings for each word</p>
+<ul>
+<li><p>each one can take input as the embedding from the previous attention layer</p></li>
+</ul>
+</li>
+<li><p><strong>position vector</strong> - add this into the embedding of each word (so words know how far apart they are) - usually use sin/cos rather than actual position number</p></li>
+<li><p><strong>padding mask</strong> - add zeros to the end of the sequence</p></li>
+<li><p><strong>look-ahead mask</strong> - might want to mask to only use previous words (e.g. if our final task is decoding)</p></li>
+<li><p><strong>residual + normalize</strong> - after self-attention layer, often have residual connection to previous input, which gets added then normalized</p></li>
+</ul>
+</li>
+<li><p>decoder - each word only allowed to attend to previous positions</p></li>
+<li><p>3 components</p>
+<ul>
+<li><p>queries</p></li>
+<li><p>keys</p></li>
+<li><p>values</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>attention</strong></p>
+<ul>
+<li><p>encoder reads input and ouputs context vector after each word</p></li>
+<li><p>decoder at each step uses a different weighted combination of these context vectors</p>
+<ul>
+<li><p>specifically, at each step, decoder concatenates its hidden state w/ the attention vector (the weighted combination of the context vectors)</p></li>
+<li><p>this is fed to a feedforward net to output a word</p></li>
+<li><p><img alt="Screen Shot 2019-04-11 at 7.57.14 PM" src="../../_images/nmt.png" /></p></li>
+</ul>
+</li>
+<li><p>at a high level we have <span class="math notranslate nohighlight">\(Q, K, V\)</span> and compute <span class="math notranslate nohighlight">\(\text{softmax}(QK^T)V\)</span></p>
+<ul>
+<li><p>instead could simplify it and do <span class="math notranslate nohighlight">\(\text{softmax}(XX^T)V\)</span> - this would then be based on kernel</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>transformer</strong></p>
+<ul>
+<li><p>uses many self-attention layers</p></li>
+<li><p>many stacked layers in encoder + decoder (not rnn: self-attention + feed forward)</p></li>
+<li><p>details</p>
+<ul>
+<li><p>initial encoding: each word -&gt; vector</p></li>
+<li><p>each layer takes a list of fixed size (hyperparameter e.g. length of longest sentence) and outputs a list of that same fixed size (so one output for each word)</p>
+<ul>
+<li><p>can easily train with a masked word to predict the word at the predicted position in the encoding</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>multi-headed attention has several of each of these (then just concat them)</p></li>
+</ul>
+</li>
+</ul>
+<section id="huggingface-tutorial">
+<h3><span class="section-number">1.7.5.1. </span>huggingface tutorial<a class="headerlink" href="#huggingface-tutorial" title="Link to this heading">#</a></h3>
+<p>Broadly, models can be grouped into three categories:</p>
+<ul class="simple">
+<li><p>GPT-like (also called <em>auto-regressive</em> Transformer models)</p></li>
+<li><p>BERT-like (also called <em>auto-encoding</em> Transformer models)</p></li>
+<li><p>BART/T5-like (also called <em>sequence-to-sequence</em> Transformer models)</p></li>
+<li><p><a class="reference external" href="https://huggingface.co/course/chapter2/5?fw=pt">Handling multiple sequences - Hugging Face Course</a></p>
+<ul>
+<li><p>pad sequences to have the same length (need to modify attention masks to ignore the padded values)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="pre-transformer-nlp-models">
+<h3><span class="section-number">1.7.5.2. </span>pre-transformer nlp models<a class="headerlink" href="#pre-transformer-nlp-models" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>rnns</p>
+<ul>
+<li><p>when training rnn, accumulate gradients over sequence and then update all at once</p></li>
+<li><p><strong>stacked rnns</strong> have outputs of rnns feed into another rnn</p></li>
+<li><p>bidirectional rnn - one rnn left to right and another right to left (can concatenate, add, etc.)</p></li>
+</ul>
+</li>
+<li><p>standard seq2seq</p>
+<ul>
+<li><p>encoder reads input and outputs context vector (the hidden state)</p></li>
+<li><p>decoder (rnn) takes this context vector and generates a sequencefagoa</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notes/ai"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="cogsci.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">1.6. </span>cognitive science</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="logic.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1.8. </span>logic</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basics">1.7.1. basics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#historically-influential-transformer-based-model">1.7.2. historically influential transformer-based model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ngram-based-models">1.7.3. ngram-based models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-overview-of-transformers">1.7.4. mathematical overview of transformers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-explanation-of-self-attention">1.7.5. visual explanation of self-attention</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#huggingface-tutorial">1.7.5.1. huggingface tutorial</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-transformer-nlp-models">1.7.5.2. pre-transformer nlp models</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Chandan Singh
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright None.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>
+Many of these images are taken from resources on the web.
+</p>
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

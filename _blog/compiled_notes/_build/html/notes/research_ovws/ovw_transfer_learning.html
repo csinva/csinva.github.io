@@ -1,110 +1,178 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="../../" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>1.1. transfer learning</title>
-    
+    <title>7.8. transfer learning</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notes/research_ovws/ovw_transfer_learning';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="1.2. disentanglement" href="ovw_disentanglement.html" />
-    <link rel="prev" title="1. research_ovws" href="research_ovws.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+    <link rel="next" title="7.9. interpretability" href="ovw_interp.html" />
+    <link rel="prev" title="7.7. llms" href="ovw_llms.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
-    
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../../index.html">
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../../_static/logo.png" class="logo" alt="logo">
-      
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -114,702 +182,289 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="research_ovws.html">
-   1. research_ovws
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     1.1. transfer learning
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ovw_disentanglement.html">
-     1.2. disentanglement
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ovw_omics.html">
-     1.3. omics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ovw_complexity.html">
-     1.4. complexity
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ovw_interesting_science.html">
-     1.5. interesting science
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ovw_dl_theory.html">
-     1.6. dl theory
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ovw_scat.html">
-     1.7. scattering transform
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ovw_ml_medicine.html">
-     1.8. ml in medicine
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ovw_transformers.html">
-     1.9. transformers
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ovw_causal_inference.html">
-     1.10. causal inference
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ovw_uncertainty.html">
-     1.11. uncertainty
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ovw_interp.html">
-     1.12. interpretability
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ovw_generalization.html">
-     1.13. generalization
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../cs/cs.html">
-   2. cs
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cs/retrieval.html">
-     2.1. info retrieval
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cs/data_structures.html">
-     2.2. data structures
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cs/languages.html">
-     2.3. languages
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cs/software.html">
-     2.4. software engineering
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cs/quantum.html">
-     2.5. quantum
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cs/algo.html">
-     2.6. algorithms
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cs/graphs.html">
-     2.7. graphs
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cs/os.html">
-     2.8. os
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cs/arch.html">
-     2.9. architecture
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cs/reproducibility.html">
-     2.10. reproducibility
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cs/comp_theory.html">
-     2.11. cs theory
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../math/math.html">
-   3. math
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../math/differential_equations.html">
-     3.1. differential equations
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../math/proofs.html">
-     3.2. proofs
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../math/analysis.html">
-     3.3. real analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../math/linear_algebra.html">
-     3.4. linear algebra
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../math/signals.html">
-     3.5. signals
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../math/optimization.html">
-     3.6. optimization
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../math/calculus.html">
-     3.7. calculus
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../math/chaos.html">
-     3.8. chaos
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../math/math_basics.html">
-     3.9. math basics
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../stat/stat.html">
-   4. stat
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../stat/graphical_models.html">
-     4.1. graphical models
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../stat/data_analysis.html">
-     4.2. data analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../stat/testing.html">
-     4.3. testing
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../stat/causal_inference.html">
-     4.4. causal inference
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../stat/info_theory.html">
-     4.5. info theory
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../stat/linear_models.html">
-     4.6. linear models
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../stat/time_series.html">
-     4.7. time series
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../stat/game_theory.html">
-     4.8. game theory
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../ml/ml.html">
-   5. ml
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ml/kernels.html">
-     5.1. kernels
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ml/nlp.html">
-     5.2. nlp
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ml/comp_vision.html">
-     5.3. computer vision
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ml/structure_ml.html">
-     5.4. structure learning
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ml/classification.html">
-     5.5. classification
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ml/unsupervised.html">
-     5.6. unsupervised
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ml/deep_learning.html">
-     5.7. deep learning
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ml/feature_selection.html">
-     5.8. feature selection
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ml/learning_theory.html">
-     5.9. learning theory
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ml/evaluation.html">
-     5.10. evaluation
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../ai/ai.html">
-   6. ai
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ai/search.html">
-     6.1. search
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ai/decisions_rl.html">
-     6.2. decisions, rl
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ai/fairness_sts.html">
-     6.3. fairness, sts
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ai/cogsci.html">
-     6.4. cogsci
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ai/ai_futures.html">
-     6.5. ai futures
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ai/logic.html">
-     6.6. logic
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ai/philosophy.html">
-     6.7. philosophy
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ai/psychology.html">
-     6.8. psychology
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ai/knowledge_rep.html">
-     6.9. representations
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../neuro/neuro.html">
-   7. neuro
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../neuro/disease.html">
-     7.1. disease
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../neuro/brain_basics.html">
-     7.2. brain basics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../neuro/vissci.html">
-     7.3. vision
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../neuro/comp_neuro.html">
-     7.4. comp neuro
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../neuro/sensory_input.html">
-     7.5. sensory input
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../neuro/memory.html">
-     7.6. memory
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../neuro/motor.html">
-     7.7. motor system
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../neuro/development.html">
-     7.8. development
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai.html">1. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ai/knowledge_rep.html">1.1. representations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">1.2. psychology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/fairness_sts.html">1.3. fairness, sts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">1.4. philosophy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/ai_futures.html">1.5. ai futures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/cogsci.html">1.6. cognitive science</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/llms.html">1.7. llms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/logic.html">1.8. logic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">1.9. search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/decisions_rl.html">1.10. decisions, rl</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math.html">2. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">2.1. linear algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">2.2. optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/differential_equations.html">2.3. differential equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">2.4. chaos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">2.5. math basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">2.6. signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">2.7. calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/proofs.html">2.8. proofs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">2.9. real analysis</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml.html">3. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">3.1. unsupervised</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/structure_ml.html">3.2. structure learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">3.3. learning theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">3.4. deep learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/comp_vision.html">3.5. computer vision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/kernels.html">3.6. kernels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/nlp.html">3.7. nlp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/feature_selection.html">3.8. feature selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">3.9. evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">3.10. classification</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.1. time series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.2. graphical models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.3. causal inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/game_theory.html">4.4. game theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.5. info theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.6. linear models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.7. data analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.8. testing</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro.html">5. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../neuro/motor.html">5.1. motor system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../neuro/memory.html">5.2. memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../neuro/development.html">5.3. development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../neuro/sensory_input.html">5.4. sensory input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../neuro/comp_neuro.html">5.5. comp neuro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../neuro/disease.html">5.6. disease</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../neuro/vissci.html">5.7. vision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../neuro/brain_basics.html">5.8. brain basics</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs.html">6. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">6.1. cs theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/graphs.html">6.2. graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval.html">6.3. info retrieval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">6.4. data structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">6.5. os</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">6.6. quantum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/software.html">6.7. software engineering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">6.8. algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">6.9. architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/languages.html">6.10. languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/reproducibility.html">6.11. reproducibility</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="research_ovws.html">7. research_ovws</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ovw_disentanglement.html">7.1. disentanglement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ovw_uncertainty.html">7.2. uncertainty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ovw_generalization.html">7.3. generalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ovw_causal_inference.html">7.4. causal inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ovw_omics.html">7.5. omics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ovw_ml_medicine.html">7.6. ml in medicine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ovw_llms.html">7.7. llms</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">7.8. transfer learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ovw_interp.html">7.9. interpretability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ovw_complexity.html">7.10. complexity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ovw_dl_theory.html">7.11. dl theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ovw_scat.html">7.12. scattering transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ovw_interesting_science.html">7.13. interesting science</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
-          
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
 
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
 <div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
 
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
     </div>
-    <div class="header-article__right">
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/csinva/csinva.github.io" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-<a href="https://github.com/csinva/csinva.github.io"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="bottom"
-title="Source repository"
->
-  
-
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fab fa-github"></i>
   </span>
 
 </a>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../../_sources/notes/research_ovws/ovw_transfer_learning.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notes/research_ovws/ovw_transfer_learning.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.md</span>
+<span class="btn__text-container">.md</span>
 </a>
-
-      </li>
+</li>
+      
+      
+      
       
       <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file-pdf"></i>
   </span>
-<span class="headerbtn__text-container">.pdf</span>
+<span class="btn__text-container">.pdf</span>
 </button>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
   </span>
 
-</label>
+</button>
 
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#overviews">
-   1.1.1. overviews
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#domain-adaptation-algorithms">
-   1.1.2. domain adaptation algorithms
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#domain-invariance">
-     1.1.2.1. domain invariance
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#feature-learning">
-     1.1.2.2. feature learning
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#dynamic-selection">
-     1.1.2.3. dynamic selection
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#test-time-adaptation">
-     1.1.2.4. test-time adaptation
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#adv-attacks">
-   1.1.3. adv attacks
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#nlp">
-     1.1.3.1. nlp
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>transfer learning</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#overviews">
-   1.1.1. overviews
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#domain-adaptation-algorithms">
-   1.1.2. domain adaptation algorithms
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#domain-invariance">
-     1.1.2.1. domain invariance
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#feature-learning">
-     1.1.2.2. feature learning
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#dynamic-selection">
-     1.1.2.3. dynamic selection
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#test-time-adaptation">
-     1.1.2.4. test-time adaptation
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#adv-attacks">
-   1.1.3. adv attacks
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#nlp">
-     1.1.3.1. nlp
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>transfer learning</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overviews">7.8.1. overviews</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#domain-adaptation-algorithms">7.8.2. domain adaptation algorithms</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#domain-invariance">7.8.2.1. domain invariance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-learning">7.8.2.2. feature learning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-selection">7.8.2.3. dynamic selection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-time-adaptation">7.8.2.4. test-time adaptation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adv-attacks">7.8.3. adv attacks</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="transfer-learning">
-<h1><span class="section-number">1.1. </span>transfer learning<a class="headerlink" href="#transfer-learning" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">7.8. </span>transfer learning<a class="headerlink" href="#transfer-learning" title="Link to this heading">#</a></h1>
 <p><em>See also notes on <a class="reference external" href="https://csinva.io/notes/research_ovws/ovw_causal_inference.html">📌 causal inference</a> for some close connections.</em></p>
 <p>For neural-net specific transferring see <a class="reference external" href="https://csinva.io/notes/research_ovws/ovw_transformers.html#adaptation--transfer">📌 adaption/transfer</a>.</p>
 <section id="overviews">
-<h2><span class="section-number">1.1.1. </span>overviews<a class="headerlink" href="#overviews" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">7.8.1. </span>overviews<a class="headerlink" href="#overviews" title="Link to this heading">#</a></h2>
 <p><img alt="transfer_taxonomy" src="../../_images/transfer_taxonomy.png" /> (from <a class="reference external" href="https://arxiv.org/pdf/2109.14501v1.pdf">this paper</a>)</p>
 </section>
 <section id="domain-adaptation-algorithms">
-<h2><span class="section-number">1.1.2. </span>domain adaptation algorithms<a class="headerlink" href="#domain-adaptation-algorithms" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">7.8.2. </span>domain adaptation algorithms<a class="headerlink" href="#domain-adaptation-algorithms" title="Link to this heading">#</a></h2>
 <p><em>Domain test bed available <a class="reference external" href="https://github.com/facebookresearch/DomainBed">here</a>, for generalizating to new domains (i.e. performing well on domains that differ from previous seen data)</em></p>
 <ul class="simple">
 <li><p>Empirical Risk Minimization (ERM, <a class="reference external" href="https://www.wiley.com/en-fr/Statistical+Learning+Theory-p-9780471030034">Vapnik, 1998</a>) - standard training</p></li>
@@ -827,7 +482,16 @@ title="Print to PDF"
 </li>
 <li><p>Interdomain Mixup (Mixup, <a class="reference external" href="https://arxiv.org/abs/2001.00677">Yan et al., 2020</a>) - ERM on linear interpolations of examples from random pairs of domains + their labels</p></li>
 <li><p>Marginal Transfer Learning (MTL, <a class="reference external" href="https://arxiv.org/abs/1711.07910">Blanchard et al., 2011-2020</a>) - augment original feature space with feature vector marginal distributions and then treat as a supervised learning problem</p></li>
+<li><p>MAML (<a class="reference external" href="http://proceedings.mlr.press/v70/finn17a/finn17a.pdf">finn, abbeel, &amp; levine, 2017</a>) - minimize parameters for metalearning including finetuning as part of the process (intuitively, find parameters that improve performance on a task after finetuning on that task)</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\min _\theta \underbrace{\mathbb{E}_\tau }_{\text{average over tasks }  \tau}\left[\mathcal{L}_\tau\left(\underbrace{U_\tau(\theta)}_{\text{finetuned model}}\right)\right]\)</span>​</p>
+<ul>
+<li><p>compute finetuned models then take gradient wrt to held-out samples from the same tasks</p></li>
+</ul>
+</li>
 <li><p>Meta Learning Domain Generalization (MLDG, <a class="reference external" href="https://arxiv.org/abs/1710.03463">Li et al., 2017</a>) - use MAML to meta-learn how to generalize across domains</p></li>
+</ul>
+</li>
 <li><p>learning more diverse predictors</p>
 <ul>
 <li><p>Representation Self-Challenging (RSC, <a class="reference external" href="https://arxiv.org/abs/2007.02454">Huang et al., 2020</a>) - adds dropout-like regularization to important features, forcing model to depend on many features</p></li>
@@ -840,7 +504,7 @@ title="Print to PDF"
 <li><p>Penalizing explanations (<a class="reference external" href="https://arxiv.org/abs/1909.13584">Rieger et al. 2020</a>) - penalize spurious features using prior knowledge</p></li>
 </ul>
 </li>
-<li><p>Domain adaptation under structural causal models (<span class="xref myst">chen &amp; buhlmann, 2020</span>)</p>
+<li><p>Domain adaptation under structural causal models (<a class="reference internal" href="#(https://arxiv.org/abs/2010.15764)"><span class="xref myst">chen &amp; buhlmann, 2020</span></a>)</p>
 <ul>
 <li><p>make clearer assumptions for domain adaptation to work</p></li>
 <li><p>introduce CIRM, which works better when both covariates and labels are perturbed in target data</p></li>
@@ -848,9 +512,15 @@ title="Print to PDF"
 </li>
 <li><p>kernel approach (<a class="reference external" href="https://papers.nips.cc/paper/2011/file/b571ecea16a9824023ee1af16897a582-Paper.pdf">blanchard, lee &amp; scott, 2011</a>) - find an appropriate RKHS and optimize a regularized empirical risk over the space</p></li>
 <li><p>In-N-Out (<a class="reference external" href="https://arxiv.org/abs/2012.04550">xie…lang, 2020</a>) - if we have many features, rather than using them all as features, can use some as features and some as targets when we shift, to learn the domain shift</p></li>
+<li><p>Prospective Learning: Learning for a Dynamic Future (<a class="reference external" href="https://openreview.net/pdf?id=XEbPJUQzs3">de silva…voelstein, chaudhari, 2024</a>)</p>
+<ul>
+<li><p>define <em>prospective learning</em> as setting where optimal hypothesis changes over time (like multi-task, meta-, continual, and lifelong learning)</p></li>
+<li><p>introduce prospective ERM, which is shown to be consistent (unlike standard empirical risk minimization from PAC learning) - basically, incorporates time as an input in addition to the data</p></li>
+</ul>
+</li>
 </ul>
 <section id="domain-invariance">
-<h3><span class="section-number">1.1.2.1. </span>domain invariance<a class="headerlink" href="#domain-invariance" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.8.2.1. </span>domain invariance<a class="headerlink" href="#domain-invariance" title="Link to this heading">#</a></h3>
 <p><em>key idea: want repr. to be invariant to domain label</em></p>
 <ul class="simple">
 <li><p><img alt="Screen Shot 2020-11-10 at 12.05.12 PM" src="../../_images/domain_adv_training.png" /></p></li>
@@ -860,22 +530,22 @@ title="Print to PDF"
 <li><p>Deep CORAL (CORAL, <a class="reference external" href="https://arxiv.org/abs/1607.01719">Sun and Saenko, 2016</a>) - match mean / covariance of feature distrs</p></li>
 <li><p>Maximum Mean Discrepancy (MMD, <a class="reference external" href="https://openaccess.thecvf.com/content_cvpr_2018/papers/Li_Domain_Generalization_With_CVPR_2018_paper.pdf">Li et al., 2018</a>)</p></li>
 <li><p>adversarial discriminative domain adaptation (ADDA <a class="reference external" href="https://arxiv.org/abs/1702.05464">tzeng et al. 2017</a>)</p></li>
-<li><p>balancing with <a class="reference external" href="https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.370.4921&amp;rep=rep1&amp;type=pdf">importance weighting</a></p></li>
+<li><p>balancing with <a class="reference external" href="https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.370.4921&amp;amp;rep=rep1&amp;amp;type=pdf">importance weighting</a></p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1903.06256">Learning Robust Representations by Projecting Superficial Statistics Out</a> (wang et al. 2019)</p></li>
 </ul>
 </section>
 <section id="feature-learning">
-<h3><span class="section-number">1.1.2.2. </span>feature learning<a class="headerlink" href="#feature-learning" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.8.2.2. </span>feature learning<a class="headerlink" href="#feature-learning" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/pdf/2212.07346.pdf">https://arxiv.org/pdf/2212.07346.pdf</a> (zhang &amp; bottou, 2022) - during training, concatenate the representations obtained with different random seeds</p></li>
 </ul>
 </section>
 <section id="dynamic-selection">
-<h3><span class="section-number">1.1.2.3. </span>dynamic selection<a class="headerlink" href="#dynamic-selection" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.8.2.3. </span>dynamic selection<a class="headerlink" href="#dynamic-selection" title="Link to this heading">#</a></h3>
 <p><em>Dynamic Selection (DS) refers to techniques in which, for a new test point, pre-trained classifiers are selected/combined from a pool at test time  <a class="reference external" href="https://www.etsmtl.ca/Unites-de-recherche/LIVIA/Recherche-et-innovation/Publications/Publications-2017/RCruz_InfoFusion.pdf">review paper</a> (cruz et al. 2018), <a class="reference external" href="https://github.com/scikit-learn-contrib/DESlib">python package</a></em></p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>define region of competence</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>clustering</p></li>
 <li><p>kNN - more refined than clustering</p></li>
 <li><p>decision space - e.g. a model’s classification boundary, internal splits in a model</p></li>
@@ -883,16 +553,16 @@ title="Print to PDF"
 </ol>
 </li>
 <li><p>criteria for selection</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>individual scores: acc, prob. behavior, rank, meta-learning, complexity</p></li>
 <li><p>group: data handling, ambiguity, diversity</p></li>
 </ol>
 </li>
 <li><p>combination</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>non-trainable: mean, majority vote, product, median, etc.</p></li>
 <li><p>trainable: learn the combination of models</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>related: in mixture of experts models + combination are trained jointly</p></li>
 </ol>
 </li>
@@ -903,48 +573,51 @@ title="Print to PDF"
 </ol>
 </section>
 <section id="test-time-adaptation">
-<h3><span class="section-number">1.1.2.4. </span>test-time adaptation<a class="headerlink" href="#test-time-adaptation" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.8.2.4. </span>test-time adaptation<a class="headerlink" href="#test-time-adaptation" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>test-time adaptation</p>
 <ul>
 <li><p>test-time augmentation</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1603.04779">batch normalization</a> (AdaBN)</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1802.03916">label shift estimation</a> (BBSE) - <span class="math notranslate nohighlight">\(p(y)\)</span> shifts but <span class="math notranslate nohighlight">\(P(x|y)\)</span> does not</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/2006.10726">entropy minimization</a> (test-time entropy minimization, TENT, wang et al. 2020) - optimize for model confidence (entropy of predictions), using only norm. statistics and channel-wise affine transformations</p>
+<li><p>batch normalization (AdaBN, <a class="reference external" href="https://arxiv.org/abs/1603.04779">li…hou, 2016</a>)</p></li>
+<li><p>label shift estimation (BBSE, <a class="reference external" href="https://arxiv.org/abs/1802.03916">lipton, wang, &amp; smola, 2018</a>) - <span class="math notranslate nohighlight">\(p(y)\)</span> shifts but <span class="math notranslate nohighlight">\(P(x|y)\)</span> does not</p></li>
+<li><p>entropy minimization (test-time entropy minimization, TENT, <a class="reference external" href="https://arxiv.org/abs/2006.10726">wang…olshausen, darrel, 2020</a>) - optimize for model confidence (entropy of predictions), using only norm. statistics and channel-wise affine transformations</p>
 <ul>
-<li><p><a class="reference external" href="https://arxiv.org/abs/2209.07511">Test-Time Prompt Tuning for Zero-Shot Generalization in Vision-Language Models</a> (shu…anandkumar, xiao, 2022) - optimize prompt to minimize the entropy with confidence selection so that the model has consistent predictions across different augmented views of each test sample</p></li>
+<li><p>Test-Time Prompt Tuning for Zero-Shot Generalization in Vision-Language Models (<a class="reference external" href="https://arxiv.org/abs/2209.07511">shu…anandkumar, xiao, 2022</a>) - optimize prompt to minimize the entropy with confidence selection so that the model has consistent predictions across different augmented views of each test sample</p></li>
 </ul>
 </li>
-</ul>
-</li>
-<li><p>test-time learning with <a class="reference external" href="https://arxiv.org/abs/1909.13231">rotation prediction</a> (sun et al. 2020) - at test-time, update parameters for self-supervised rotation prediction task then use for classification</p>
-<ul>
-<li><p><a class="reference external" href="https://arxiv.org/abs/2209.07522">masked autoencoders</a> (gandelsman, sun, …, efros, 2022) - use reconstructed with masked autoencoder and improve performance on robustness tasks</p></li>
-<li><p>test-time learning for <a class="reference external" href="https://arxiv.org/abs/2103.11263">Reading Comprehension</a> (banerjee et al. 2021) - uses self-supervision to train models on synthetically generated question-answer pairs, and then infers answers to unseen human-authored questions for this context</p></li>
-<li><p><a class="reference external" href="https://proceedings.neurips.cc/paper/2021/hash/b618c3210e934362ac261db280128c22-Abstract.html">TTT++: When Does Self-Supervised Test-Time Training Fail or Thrive?</a> (liu et al. 2021) - explore different test-time adaptation methods and combine Test-time feature alignment with Test-time contrastive learning</p></li>
-</ul>
-</li>
-<li><p>combining train-time and test-time adaptation</p>
-<ul>
-<li><p>Adaptive Risk Minimization (ARM, <a class="reference external" href="https://arxiv.org/abs/2007.02931">Zhang et al., 2020</a>) - combines groups at training time + <em>batches at test-time</em></p>
+<li><p>combining train-time and test-time adaptation: Adaptive Risk Minimization (ARM, <a class="reference external" href="https://arxiv.org/abs/2007.02931">zhang et al., 2020</a>) - combines groups at training time + <em>batches at test-time</em></p>
 <ul>
 <li><p><em>meta-train</em> the model using simulated distribution shifts, which is enabled by the training groups, such that it exhibits strong <em>post-adaptation</em> performance on each shift</p></li>
 </ul>
 </li>
 </ul>
 </li>
+<li><p>TTT: Test-Time Training with Self-Supervision for Generalization under Distribution Shifts (<a class="reference external" href="https://arxiv.org/abs/1909.13231">sun…efros, hardt. 2020</a>) - at test-time, update parameters for self-supervised rotation prediction task then use for classification</p>
+<ul>
+<li><p>TTT with masked autoencoders (<a class="reference external" href="https://arxiv.org/abs/2209.07522">gandelsman, sun, …, efros, 2022</a>) - use reconstructed with masked autoencoder and improve performance on robustness tasks</p></li>
+<li><p>Test-Time Training on Video Streams (<a class="reference external" href="https://arxiv.org/abs/2307.05014">wang, sun, …, efros, wang, 2023</a>) - use masked autoencoder per-frame and incrementally update across each frame</p></li>
+<li><p>M-TTT: Learning to (Learn at Test Time) (<a class="reference external" href="https://arxiv.org/pdf/2407.04620">sun, li, dalal, …guestrin, 2024</a>)<img alt="mttt" src="../../_images/mttt.jpg" /></p></li>
+<li><p>analysis</p>
+<ul>
+<li><p>TTT for Reading Comprehension (<a class="reference external" href="https://arxiv.org/abs/2103.11263">banerjee et al. 2021</a>) - uses self-supervision to train models on synthetically generated question-answer pairs, and then infers answers to unseen human-authored questions for this context</p></li>
+<li><p>TTT++: When Does Self-Supervised Test-Time Training Fail or Thrive? (<a class="reference external" href="https://proceedings.neurips.cc/paper/2021/hash/b618c3210e934362ac261db280128c22-Abstract.html">liu et al. 2021</a>) - explore different test-time adaptation methods and combine Test-time feature alignment with Test-time contrastive learning</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Never Train from Scratch: Fair Comparison of Long-Sequence Models Requires Data-Driven Priors (<a class="reference external" href="https://arxiv.org/pdf/2310.02980">amos, berant, &amp; gupta, 2024</a>) - when transferring to a specific task, should first finetune the LM on the task before doing supervised finetuning</p></li>
 </ul>
 </section>
 </section>
 <section id="adv-attacks">
-<h2><span class="section-number">1.1.3. </span>adv attacks<a class="headerlink" href="#adv-attacks" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">7.8.3. </span>adv attacks<a class="headerlink" href="#adv-attacks" title="Link to this heading">#</a></h2>
 <ul>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1909.08072">Adversarial Attacks and Defenses in Images, Graphs and Text: A Review</a> (xu et al. 2019)</p></li>
+<li><p>Adversarial Attacks and Defenses in Images, Graphs and Text: A Review (<a class="reference external" href="https://arxiv.org/abs/1909.08072">xu et al. 2019</a>)</p></li>
 <li><p>attacks</p>
 <ul class="simple">
 <li><p>fast gradient step method - keep adding gradient to maximize noise (limit amplitude of pixel’s channel to stay imperceptible)</p></li>
-<li><p><a class="reference external" href="http://openaccess.thecvf.com/content_CVPR_2019/papers/Raff_Barrage_of_Random_Transforms_for_Adversarially_Robust_Defense_CVPR_2019_paper.pdf">Barrage of Random Transforms for Adversarially Robust Defense</a> (raff et al. 2019)</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1511.04599">DeepFool: a simple and accurate method to fool deep neural networks</a> (Moosavi-Dezfooli et. al 2016)</p></li>
+<li><p>Barrage of Random Transforms for Adversarially Robust Defense (<a class="reference external" href="http://openaccess.thecvf.com/content_CVPR_2019/papers/Raff_Barrage_of_Random_Transforms_for_Adversarially_Robust_Defense_CVPR_2019_paper.pdf">raff et al. 2019</a>)</p></li>
+<li><p>DeepFool: a simple and accurate method to fool deep neural networks (<a class="reference external" href="https://arxiv.org/abs/1511.04599">Moosavi-Dezfooli et. al 2016</a>)</p></li>
 </ul>
 </li>
 <li><p>defenses</p>
@@ -1024,162 +697,6 @@ title="Print to PDF"
 </ul>
 </li>
 </ul>
-<section id="nlp">
-<h3><span class="section-number">1.1.3.1. </span>nlp<a class="headerlink" href="#nlp" title="Permalink to this headline">#</a></h3>
-<ul class="simple">
-<li><p><a class="reference external" href="https://github.com/QData/TextAttack">QData/TextAttack: TextAttack 🐙 is a Python framework for adversarial attacks, data augmentation, and model training in NLP https://textattack.readthedocs.io/en/master/</a> (only the attacks on classification tasks, like sentiment classification and entailment)</p></li>
-</ul>
-<table  style="width:100%" border="1">
-<thead>
-<tr class="header">
-<th><strong>Attack Recipe Name</strong></th>
-<th><strong>Goal Function</strong></th>
-<th><strong>ConstraintsEnforced</strong></th>
-<th><strong>Transformation</strong></th>
-<th><strong>Search Method</strong></th>
-<th><strong>Main Idea</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>a2t</code> 
-<span class="citation" data-cites="yoo2021a2t"></span></td>
-<td><sub>Untargeted {Classification, Entailment}</sub></td>
-<td><sub>Percentage of words perturbed, Word embedding distance, DistilBERT sentence encoding cosine similarity, part-of-speech consistency</sub></td>
-<td><sub>Counter-fitted word embedding swap (or) BERT Masked Token Prediction</sub></td>
-<td><sub>Greedy-WIR (gradient)</sub></td>
-<td ><sub>from "Towards Improving Adversarial Training of NLP Models" (<a href="https://arxiv.org/abs/2109.00544">Yoo et al., 2021)</a></sub></td>
-</tr>
-<tr>
-<td><code>alzantot</code>  <span class="citation" data-cites="Alzantot2018GeneratingNL Jia2019CertifiedRT"></span></td>
-<td><sub>Untargeted {Classification, Entailment}</sub></td>
-<td><sub>Percentage of words perturbed, Language Model perplexity, Word embedding distance</sub></td>
-<td><sub>Counter-fitted word embedding swap</sub></td>
-<td><sub>Genetic Algorithm</sub></td>
-<td ><sub>from "Generating Natural Language Adversarial Examples" (<a href="https://arxiv.org/abs/1804.07998">Alzantot et al., 2018</a>)</sub></td>
-</tr>
-<tr>
-<td><code>bae</code> <span class="citation" data-cites="garg2020bae"></span></td>
-<td><sub>Untargeted Classification</sub></td>
-<td><sub>USE sentence encoding cosine similarity</sub></td>
-<td><sub>BERT Masked Token Prediction</sub></td>
-<td><sub>Greedy-WIR</sub></td>
-<td ><sub>BERT masked language model transformation attack from ("BAE: BERT-based Adversarial Examples for Text Classification" (<a href="https://arxiv.org/abs/2004.01970">Garg & Ramakrishnan, 2019</a>)). </td>
-</tr>
-<tr>
-<td><code>bert-attack</code> <span class="citation" data-cites="li2020bertattack"></span></td>
-<td><sub>Untargeted Classification</td>
-<td><sub>USE sentence encoding cosine similarity, Maximum number of words perturbed</td>
-<td><sub>BERT Masked Token Prediction (with subword expansion)</td>
-<td><sub>Greedy-WIR</sub></td>
-<td ><sub> ("BERT-ATTACK: Adversarial Attack Against BERT Using BERT" (<a href="https://arxiv.org/abs/2004.09984">Li et al., 2020</a>))</sub></td>
-</tr>
-<tr>
-<td><code>checklist</code> <span class="citation" data-cites="Gao2018BlackBoxGO"></span></td>
-<td><sub>{Untargeted, Targeted} Classification</sub></td>
-<td><sub>checklist distance</sub></td>
-<td><sub>contract, extend, and substitutes name entities</sub></td>
-<td><sub>Greedy-WIR</sub></td>
-<td ><sub>Invariance testing implemented in CheckList . ("Beyond Accuracy: Behavioral Testing of NLP models with CheckList" (<a href="https://arxiv.org/abs/2005.04118">Ribeiro et al., 2020</a>))</sub></td>
-</tr>
-<tr>
-<td> <code>clare</code> <span class="citation" data-cites="Alzantot2018GeneratingNL Jia2019CertifiedRT"></span></td>
-<td><sub>Untargeted {Classification, Entailment}</sub></td>
-<td><sub>USE sentence encoding cosine similarity</sub></td>
-<td><sub>RoBERTa Masked Prediction for token swap, insert and merge</sub></td>
-<td><sub>Greedy</sub></td>
-<td ><sub>["Contextualized Perturbation for Textual Adversarial Attack" (Li et al., 2020)](https://arxiv.org/abs/2009.07502))</sub></td>
-</tr>
-<tr>
-<td><code>deepwordbug</code> <span class="citation" data-cites="Gao2018BlackBoxGO"></span></td>
-<td><sub>{Untargeted, Targeted} Classification</sub></td>
-<td><sub>Levenshtein edit distance</sub></td>
-<td><sub>{Character Insertion, Character Deletion, Neighboring Character Swap, Character Substitution}</sub></td>
-<td><sub>Greedy-WIR</sub></td>
-<td ><sub>Greedy replace-1 scoring and multi-transformation character-swap attack (["Black-box Generation of Adversarial Text Sequences to Evade Deep Learning Classifiers" (Gao et al., 2018)](https://arxiv.org/abs/1801.04354)</sub></td>
-</tr>
-<tr>
-<td> <code>fast-alzantot</code> <span class="citation" data-cites="Alzantot2018GeneratingNL Jia2019CertifiedRT"></span></td>
-<td><sub>Untargeted {Classification, Entailment}</sub></td>
-<td><sub>Percentage of words perturbed, Language Model perplexity, Word embedding distance</sub></td>
-<td><sub>Counter-fitted word embedding swap</sub></td>
-<td><sub>Genetic Algorithm</sub></td>
-<td ><sub>Modified, faster version of the Alzantot et al. genetic algorithm, from (["Certified Robustness to Adversarial Word Substitutions" (Jia et al., 2019)](https://arxiv.org/abs/1909.00986))</sub></td>
-</tr>
-<tr>
-<td><code>hotflip</code> (word swap) <span class="citation" data-cites="Ebrahimi2017HotFlipWA"></span></td>
-<td><sub>Untargeted Classification</sub></td>
-<td><sub>Word Embedding Cosine Similarity, Part-of-speech match, Number of words perturbed</sub></td>
-<td><sub>Gradient-Based Word Swap</sub></td>
-<td><sub>Beam search</sub></td>
-<td ><sub> (["HotFlip: White-Box Adversarial Examples for Text Classification" (Ebrahimi et al., 2017)](https://arxiv.org/abs/1712.06751))</sub></td>
-</tr>
-<tr>
-<td><code>iga</code> <span class="citation" data-cites="iga-wang2019natural"></span></td>
-<td><sub>Untargeted {Classification, Entailment}</sub></td>
-<td><sub>Percentage of words perturbed, Word embedding distance</sub></td>
-<td><sub>Counter-fitted word embedding swap</sub></td>
-<td><sub>Genetic Algorithm</sub></td>
-<td ><sub>Improved genetic algorithm -based word substitution from (["Natural Language Adversarial Attacks and Defenses in Word Level (Wang et al., 2019)"](https://arxiv.org/abs/1909.06723)</sub></td>
-</tr>
-<tr>
-<td><code>input-reduction</code> <span class="citation" data-cites="feng2018pathologies"></span></td>
-<td><sub>Input Reduction</sub></td>
-<td></td>
-<td><sub>Word deletion</sub></td>
-<td><sub>Greedy-WIR</sub></td>
-<td ><sub>Greedy attack with word importance ranking , Reducing the input while maintaining the prediction through word importance ranking (["Pathologies of Neural Models Make Interpretation Difficult" (Feng et al., 2018)](https://arxiv.org/pdf/1804.07781.pdf))</sub></td>
-</tr>
-<tr>
-<td><code>kuleshov</code> <span class="citation" data-cites="Kuleshov2018AdversarialEF"></span></td>
-<td><sub>Untargeted Classification</sub></td>
-<td><sub>Thought vector encoding cosine similarity, Language model similarity probability</sub></td>
-<td><sub>Counter-fitted word embedding swap</sub></td>
-<td><sub>Greedy word swap</sub></td>
-<td ><sub>(["Adversarial Examples for Natural Language Classification Problems" (Kuleshov et al., 2018)](https://openreview.net/pdf?id=r1QZ3zbAZ)) </sub></td>
-</tr>
-<tr>
-<td><code>pruthi</code> <span class="citation" data-cites="pruthi2019combating"></span></td>
-<td><sub>Untargeted Classification</sub></td>
-<td><sub>Minimum word length, Maximum number of words perturbed</sub></td>
-<td><sub>{Neighboring Character Swap, Character Deletion, Character Insertion, Keyboard-Based Character Swap}</sub></td>
-<td><sub>Greedy search</sub></td>
-<td ><sub>simulates common typos (["Combating Adversarial Misspellings with Robust Word Recognition" (Pruthi et al., 2019)](https://arxiv.org/abs/1905.11268) </sub></td>
-</tr>
-<tr>
-<td><code>pso</code> <span class="citation" data-cites="pso-zang-etal-2020-word"></span></td>
-<td><sub>Untargeted Classification</sub></td>
-<td></td>
-<td><sub>HowNet Word Swap</sub></td>
-<td><sub>Particle Swarm Optimization</sub></td>
-<td ><sub>(["Word-level Textual Adversarial Attacking as Combinatorial Optimization" (Zang et al., 2020)](https://www.aclweb.org/anthology/2020.acl-main.540/)) </sub></td>
-</tr>
-<tr>
-<td><code>pwws</code> <span class="citation" data-cites="pwws-ren-etal-2019-generating"></span></td>
-<td><sub>Untargeted Classification</sub></td>
-<td></td>
-<td><sub>WordNet-based synonym swap</sub></td>
-<td><sub>Greedy-WIR (saliency)</sub></td>
-<td ><sub>Greedy attack with word importance ranking based on word saliency and synonym swap scores (["Generating Natural Language Adversarial Examples through Probability Weighted Word Saliency" (Ren et al., 2019)](https://www.aclweb.org/anthology/P19-1103/))</sub> </td>
-</tr>
-<tr>
-<td><code>textbugger</code> : (black-box) <span class="citation" data-cites="Li2019TextBuggerGA"></span></td>
-<td><sub>Untargeted Classification</sub></td>
-<td><sub>USE sentence encoding cosine similarity</sub></td>
-<td><sub>{Character Insertion, Character Deletion, Neighboring Character Swap, Character Substitution}</sub></td>
-<td><sub>Greedy-WIR</sub></td>
-<td ><sub>([(["TextBugger: Generating Adversarial Text Against Real-world Applications" (Li et al., 2018)](https://arxiv.org/abs/1812.05271)).</sub></td>
-</tr>
-<tr>
-<td><code>textfooler</code> <span class="citation" data-cites="Jin2019TextFooler"></span></td>
-<td><sub>Untargeted {Classification, Entailment}</sub></td>
-<td><sub>Word Embedding Distance, Part-of-speech match, USE sentence encoding cosine similarity</sub></td>
-<td><sub>Counter-fitted word embedding swap</sub></td>
-<td><sub>Greedy-WIR</sub></td>
-<td ><sub>Greedy attack with word importance ranking  (["Is Bert Really Robust?" (Jin et al., 2019)](https://arxiv.org/abs/1907.11932))</sub> </td>
-</tr>
-</table>
-</section>
 </section>
 </section>
 
@@ -1195,7 +712,7 @@ title="Print to PDF"
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./notes/research_ovws"
         },
         predefinedOutput: true
@@ -1203,55 +720,116 @@ title="Print to PDF"
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="research_ovws.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">1. </span>research_ovws</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="ovw_llms.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">7.7. </span>llms</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="ovw_disentanglement.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="ovw_interp.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1.2. </span>disentanglement</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+        <p class="prev-next-title"><span class="section-number">7.9. </span>interpretability</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overviews">7.8.1. overviews</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#domain-adaptation-algorithms">7.8.2. domain adaptation algorithms</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#domain-invariance">7.8.2.1. domain invariance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-learning">7.8.2.2. feature learning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-selection">7.8.2.3. dynamic selection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-time-adaptation">7.8.2.4. test-time adaptation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adv-attacks">7.8.3. adv attacks</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Chandan Singh<br/>
+  <div class="footer-item">
+    
+<p class="component-author">
+By Chandan Singh
+</p>
+
+  </div>
   
-      &copy; Copyright None.<br/>
-    <div class="extra_footer">
-      <p>
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright None.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>
 Many of these images are taken from resources on the web.
 </p>
-    </div>
-</p>
-        </footer>
-    </div>
-    
 </div>
+  </div>
+  
+</div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

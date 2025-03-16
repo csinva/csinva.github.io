@@ -8,26 +8,32 @@ msgstr ""
 "Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "Download this page"
-msgstr "Baixe esta página"
+msgid "By the"
+msgstr "Pelo"
 
-msgid "Download notebook file"
-msgstr "Baixar arquivo de notebook"
-
-msgid "Open an issue"
-msgstr "Abra um problema"
-
-msgid "repository"
-msgstr "repositório"
-
-msgid "Theme by the"
-msgstr "Tema por"
+msgid "By"
+msgstr "De"
 
 msgid "Contents"
 msgstr "Conteúdo"
 
-msgid "next page"
-msgstr "próxima página"
+msgid "Copyright"
+msgstr "direito autoral"
+
+msgid "Download notebook file"
+msgstr "Baixar arquivo de notebook"
+
+msgid "Download source file"
+msgstr "Baixar arquivo fonte"
+
+msgid "Download this page"
+msgstr "Baixe esta página"
+
+msgid "Edit this page"
+msgstr "Edite essa página"
+
+msgid "Fullscreen mode"
+msgstr "Modo tela cheia"
 
 msgid "Last updated on"
 msgstr "Última atualização em"
@@ -35,47 +41,35 @@ msgstr "Última atualização em"
 msgid "Launch"
 msgstr "Lançamento"
 
-msgid "Edit this page"
-msgstr "Edite essa página"
-
-msgid "Source repository"
-msgstr "Repositório fonte"
-
-msgid "Download source file"
-msgstr "Baixar arquivo fonte"
-
-msgid "Sphinx Book Theme"
-msgstr "Tema do livro Sphinx"
-
-msgid "Copyright"
-msgstr "direito autoral"
-
-msgid "Fullscreen mode"
-msgstr "Modo tela cheia"
-
-msgid "Search the docs ..."
-msgstr "Pesquise os documentos ..."
-
-msgid "suggest edit"
-msgstr "sugerir edição"
-
-msgid "Search this book..."
-msgstr "Pesquise este livro ..."
-
-msgid "By"
-msgstr "De"
-
-msgid "open issue"
-msgstr "questão aberta"
+msgid "Open an issue"
+msgstr "Abra um problema"
 
 msgid "Print to PDF"
 msgstr "Imprimir em PDF"
 
-msgid "previous page"
-msgstr "página anterior"
+msgid "Source repository"
+msgstr "Repositório fonte"
+
+msgid "Sphinx Book Theme"
+msgstr "Tema do livro Sphinx"
+
+msgid "Theme by the"
+msgstr "Tema por"
 
 msgid "Toggle navigation"
 msgstr "Alternar de navegação"
 
-msgid "By the"
-msgstr "Pelo"
+msgid "next page"
+msgstr "próxima página"
+
+msgid "open issue"
+msgstr "questão aberta"
+
+msgid "previous page"
+msgstr "página anterior"
+
+msgid "repository"
+msgstr "repositório"
+
+msgid "suggest edit"
+msgstr "sugerir edição"

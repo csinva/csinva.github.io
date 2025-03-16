@@ -8,26 +8,32 @@ msgstr ""
 "Language: fi\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "Download this page"
-msgstr "Lataa tämä sivu"
+msgid "By the"
+msgstr "Mukaan"
 
-msgid "Download notebook file"
-msgstr "Lataa muistikirjatiedosto"
-
-msgid "Open an issue"
-msgstr "Avaa ongelma"
-
-msgid "repository"
-msgstr "arkisto"
-
-msgid "Theme by the"
-msgstr "Teeman tekijä"
+msgid "By"
+msgstr "Tekijä"
 
 msgid "Contents"
 msgstr "Sisällys"
 
-msgid "next page"
-msgstr "seuraava sivu"
+msgid "Copyright"
+msgstr "Tekijänoikeus"
+
+msgid "Download notebook file"
+msgstr "Lataa muistikirjatiedosto"
+
+msgid "Download source file"
+msgstr "Lataa lähdetiedosto"
+
+msgid "Download this page"
+msgstr "Lataa tämä sivu"
+
+msgid "Edit this page"
+msgstr "Muokkaa tätä sivua"
+
+msgid "Fullscreen mode"
+msgstr "Koko näytön tila"
 
 msgid "Last updated on"
 msgstr "Viimeksi päivitetty"
@@ -35,47 +41,35 @@ msgstr "Viimeksi päivitetty"
 msgid "Launch"
 msgstr "Tuoda markkinoille"
 
-msgid "Edit this page"
-msgstr "Muokkaa tätä sivua"
-
-msgid "Source repository"
-msgstr "Lähteen arkisto"
-
-msgid "Download source file"
-msgstr "Lataa lähdetiedosto"
-
-msgid "Sphinx Book Theme"
-msgstr "Sphinx-kirjan teema"
-
-msgid "Copyright"
-msgstr "Tekijänoikeus"
-
-msgid "Fullscreen mode"
-msgstr "Koko näytön tila"
-
-msgid "Search the docs ..."
-msgstr "Hae dokumenteista ..."
-
-msgid "suggest edit"
-msgstr "ehdottaa muokkausta"
-
-msgid "Search this book..."
-msgstr "Hae tästä kirjasta ..."
-
-msgid "By"
-msgstr "Tekijä"
-
-msgid "open issue"
-msgstr "avoin ongelma"
+msgid "Open an issue"
+msgstr "Avaa ongelma"
 
 msgid "Print to PDF"
 msgstr "Tulosta PDF-tiedostoon"
 
-msgid "previous page"
-msgstr "Edellinen sivu"
+msgid "Source repository"
+msgstr "Lähteen arkisto"
+
+msgid "Sphinx Book Theme"
+msgstr "Sphinx-kirjan teema"
+
+msgid "Theme by the"
+msgstr "Teeman tekijä"
 
 msgid "Toggle navigation"
 msgstr "Vaihda navigointia"
 
-msgid "By the"
-msgstr "Mukaan"
+msgid "next page"
+msgstr "seuraava sivu"
+
+msgid "open issue"
+msgstr "avoin ongelma"
+
+msgid "previous page"
+msgstr "Edellinen sivu"
+
+msgid "repository"
+msgstr "arkisto"
+
+msgid "suggest edit"
+msgstr "ehdottaa muokkausta"

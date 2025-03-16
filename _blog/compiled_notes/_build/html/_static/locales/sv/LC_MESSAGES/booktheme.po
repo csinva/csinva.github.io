@@ -8,74 +8,68 @@ msgstr ""
 "Language: sv\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "Download this page"
-msgstr "Ladda ner den här sidan"
+msgid "By the"
+msgstr "Av den"
 
-msgid "Download notebook file"
-msgstr "Ladda ner anteckningsbokfilen"
-
-msgid "Open an issue"
-msgstr "Öppna ett problem"
-
-msgid "repository"
-msgstr "förvar"
-
-msgid "Theme by the"
-msgstr "Tema av"
+msgid "By"
+msgstr "Av"
 
 msgid "Contents"
 msgstr "Innehåll"
 
-msgid "next page"
-msgstr "nästa sida"
+msgid "Copyright"
+msgstr "Upphovsrätt"
+
+msgid "Download notebook file"
+msgstr "Ladda ner notebook-fil"
+
+msgid "Download source file"
+msgstr "Ladda ner källfil"
+
+msgid "Download this page"
+msgstr "Ladda ner den här sidan"
+
+msgid "Edit this page"
+msgstr "Redigera den här sidan"
+
+msgid "Fullscreen mode"
+msgstr "Fullskärmsläge"
 
 msgid "Last updated on"
 msgstr "Senast uppdaterad den"
 
 msgid "Launch"
-msgstr "Lansera"
+msgstr "Öppna"
 
-msgid "Edit this page"
-msgstr "Redigera den här sidan"
-
-msgid "Source repository"
-msgstr "Källförvar"
-
-msgid "Download source file"
-msgstr "Ladda ner källfil"
-
-msgid "Sphinx Book Theme"
-msgstr "Sphinx boktema"
-
-msgid "Copyright"
-msgstr "upphovsrätt"
-
-msgid "Fullscreen mode"
-msgstr "Fullskärmsläge"
-
-msgid "Search the docs ..."
-msgstr "Sök i dokumenten ..."
-
-msgid "suggest edit"
-msgstr "föreslå redigering"
-
-msgid "Search this book..."
-msgstr "Sök i den här boken ..."
-
-msgid "By"
-msgstr "Förbi"
-
-msgid "open issue"
-msgstr "öppet problem"
+msgid "Open an issue"
+msgstr "Öppna en problemrapport"
 
 msgid "Print to PDF"
 msgstr "Skriv ut till PDF"
 
-msgid "previous page"
-msgstr "föregående sida"
+msgid "Source repository"
+msgstr "Källkodsrepositorium"
+
+msgid "Sphinx Book Theme"
+msgstr "Sphinx Boktema"
+
+msgid "Theme by the"
+msgstr "Tema av"
 
 msgid "Toggle navigation"
 msgstr "Växla navigering"
 
-msgid "By the"
-msgstr "Vid"
+msgid "next page"
+msgstr "nästa sida"
+
+msgid "open issue"
+msgstr "öppna problemrapport"
+
+msgid "previous page"
+msgstr "föregående sida"
+
+msgid "repository"
+msgstr "repositorium"
+
+msgid "suggest edit"
+msgstr "föreslå ändring"

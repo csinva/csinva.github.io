@@ -1,110 +1,178 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="../../" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>4.2. data analysis</title>
-    
+    <title>4.7. data analysis</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notes/stat/data_analysis';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="4.3. testing" href="testing.html" />
-    <link rel="prev" title="4.1. graphical models" href="graphical_models.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+    <link rel="next" title="4.8. testing" href="testing.html" />
+    <link rel="prev" title="4.6. linear models" href="linear_models.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
-    
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../../index.html">
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../../_static/logo.png" class="logo" alt="logo">
-      
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -114,793 +182,304 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../research_ovws/research_ovws.html">
-   1. research_ovws
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">
-     1.1. transfer learning
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../research_ovws/ovw_disentanglement.html">
-     1.2. disentanglement
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../research_ovws/ovw_omics.html">
-     1.3. omics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../research_ovws/ovw_complexity.html">
-     1.4. complexity
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../research_ovws/ovw_interesting_science.html">
-     1.5. interesting science
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../research_ovws/ovw_dl_theory.html">
-     1.6. dl theory
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../research_ovws/ovw_scat.html">
-     1.7. scattering transform
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">
-     1.8. ml in medicine
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../research_ovws/ovw_transformers.html">
-     1.9. transformers
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../research_ovws/ovw_causal_inference.html">
-     1.10. causal inference
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../research_ovws/ovw_uncertainty.html">
-     1.11. uncertainty
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../research_ovws/ovw_interp.html">
-     1.12. interpretability
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../research_ovws/ovw_generalization.html">
-     1.13. generalization
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../cs/cs.html">
-   2. cs
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cs/retrieval.html">
-     2.1. info retrieval
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cs/data_structures.html">
-     2.2. data structures
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cs/languages.html">
-     2.3. languages
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cs/software.html">
-     2.4. software engineering
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cs/quantum.html">
-     2.5. quantum
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cs/algo.html">
-     2.6. algorithms
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cs/graphs.html">
-     2.7. graphs
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cs/os.html">
-     2.8. os
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cs/arch.html">
-     2.9. architecture
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cs/reproducibility.html">
-     2.10. reproducibility
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cs/comp_theory.html">
-     2.11. cs theory
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../math/math.html">
-   3. math
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../math/differential_equations.html">
-     3.1. differential equations
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../math/proofs.html">
-     3.2. proofs
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../math/analysis.html">
-     3.3. real analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../math/linear_algebra.html">
-     3.4. linear algebra
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../math/signals.html">
-     3.5. signals
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../math/optimization.html">
-     3.6. optimization
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../math/calculus.html">
-     3.7. calculus
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../math/chaos.html">
-     3.8. chaos
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../math/math_basics.html">
-     3.9. math basics
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="stat.html">
-   4. stat
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="graphical_models.html">
-     4.1. graphical models
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     4.2. data analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="testing.html">
-     4.3. testing
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="causal_inference.html">
-     4.4. causal inference
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="info_theory.html">
-     4.5. info theory
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="linear_models.html">
-     4.6. linear models
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="time_series.html">
-     4.7. time series
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="game_theory.html">
-     4.8. game theory
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../ml/ml.html">
-   5. ml
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ml/kernels.html">
-     5.1. kernels
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ml/nlp.html">
-     5.2. nlp
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ml/comp_vision.html">
-     5.3. computer vision
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ml/structure_ml.html">
-     5.4. structure learning
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ml/classification.html">
-     5.5. classification
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ml/unsupervised.html">
-     5.6. unsupervised
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ml/deep_learning.html">
-     5.7. deep learning
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ml/feature_selection.html">
-     5.8. feature selection
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ml/learning_theory.html">
-     5.9. learning theory
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ml/evaluation.html">
-     5.10. evaluation
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../ai/ai.html">
-   6. ai
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ai/search.html">
-     6.1. search
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ai/decisions_rl.html">
-     6.2. decisions, rl
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ai/fairness_sts.html">
-     6.3. fairness, sts
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ai/cogsci.html">
-     6.4. cogsci
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ai/ai_futures.html">
-     6.5. ai futures
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ai/logic.html">
-     6.6. logic
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ai/philosophy.html">
-     6.7. philosophy
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ai/psychology.html">
-     6.8. psychology
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ai/knowledge_rep.html">
-     6.9. representations
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../neuro/neuro.html">
-   7. neuro
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../neuro/disease.html">
-     7.1. disease
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../neuro/brain_basics.html">
-     7.2. brain basics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../neuro/vissci.html">
-     7.3. vision
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../neuro/comp_neuro.html">
-     7.4. comp neuro
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../neuro/sensory_input.html">
-     7.5. sensory input
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../neuro/memory.html">
-     7.6. memory
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../neuro/motor.html">
-     7.7. motor system
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../neuro/development.html">
-     7.8. development
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai.html">1. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ai/knowledge_rep.html">1.1. representations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">1.2. psychology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/fairness_sts.html">1.3. fairness, sts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">1.4. philosophy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/ai_futures.html">1.5. ai futures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/cogsci.html">1.6. cognitive science</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/llms.html">1.7. llms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/logic.html">1.8. logic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">1.9. search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/decisions_rl.html">1.10. decisions, rl</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math.html">2. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">2.1. linear algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">2.2. optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/differential_equations.html">2.3. differential equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">2.4. chaos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">2.5. math basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">2.6. signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">2.7. calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/proofs.html">2.8. proofs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">2.9. real analysis</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml.html">3. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">3.1. unsupervised</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/structure_ml.html">3.2. structure learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">3.3. learning theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">3.4. deep learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/comp_vision.html">3.5. computer vision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/kernels.html">3.6. kernels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/nlp.html">3.7. nlp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/feature_selection.html">3.8. feature selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">3.9. evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">3.10. classification</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="stat.html">4. stat</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="time_series.html">4.1. time series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphical_models.html">4.2. graphical models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="causal_inference.html">4.3. causal inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="game_theory.html">4.4. game theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="info_theory.html">4.5. info theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linear_models.html">4.6. linear models</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">4.7. data analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html">4.8. testing</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro.html">5. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../neuro/motor.html">5.1. motor system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../neuro/memory.html">5.2. memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../neuro/development.html">5.3. development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../neuro/sensory_input.html">5.4. sensory input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../neuro/comp_neuro.html">5.5. comp neuro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../neuro/disease.html">5.6. disease</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../neuro/vissci.html">5.7. vision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../neuro/brain_basics.html">5.8. brain basics</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs.html">6. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">6.1. cs theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/graphs.html">6.2. graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval.html">6.3. info retrieval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">6.4. data structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">6.5. os</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">6.6. quantum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/software.html">6.7. software engineering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">6.8. algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">6.9. architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/languages.html">6.10. languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/reproducibility.html">6.11. reproducibility</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../research_ovws/research_ovws.html">7. research_ovws</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">7.1. disentanglement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">7.2. uncertainty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_generalization.html">7.3. generalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">7.4. causal inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_omics.html">7.5. omics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">7.6. ml in medicine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_llms.html">7.7. llms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">7.8. transfer learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interp.html">7.9. interpretability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_complexity.html">7.10. complexity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">7.11. dl theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_scat.html">7.12. scattering transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">7.13. interesting science</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
-          
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
 
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
 <div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
 
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
     </div>
-    <div class="header-article__right">
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/csinva/csinva.github.io" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-<a href="https://github.com/csinva/csinva.github.io"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="bottom"
-title="Source repository"
->
-  
-
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fab fa-github"></i>
   </span>
 
 </a>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../../_sources/notes/stat/data_analysis.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notes/stat/data_analysis.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.md</span>
+<span class="btn__text-container">.md</span>
 </a>
-
-      </li>
+</li>
+      
+      
+      
       
       <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file-pdf"></i>
   </span>
-<span class="headerbtn__text-container">.pdf</span>
+<span class="btn__text-container">.pdf</span>
 </button>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
   </span>
 
-</label>
+</button>
 
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pqrs">
-   4.2.1. pqrs
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visualization">
-   4.2.2. visualization
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#understand-the-context-1">
-     4.2.2.1. understand the context (1)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#choose-an-effective-visual-2">
-     4.2.2.2. choose an effective visual (2)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#eliminate-clutter-3">
-     4.2.2.3. eliminate clutter (3)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#focus-attention-4">
-     4.2.2.4. focus attention (4)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#tell-a-story-think-like-a-designer-5">
-     4.2.2.5. tell a story / think like a designer (5)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#visual-summaries">
-     4.2.2.6. visual summaries
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#imbalanced-data">
-   4.2.3. imbalanced data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#whitening">
-   4.2.4. whitening
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#missing-data-imputation">
-   4.2.5. missing-data imputation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#feature-engineering">
-   4.2.6. feature engineering
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#principles">
-   4.2.7. principles
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#breiman">
-     4.2.7.1. breiman
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#box-tukey">
-     4.2.7.2. box + tukey
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#models">
-     4.2.7.3. models
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exaggerated-claims">
-     4.2.7.4. exaggerated claims
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>data analysis</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pqrs">
-   4.2.1. pqrs
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visualization">
-   4.2.2. visualization
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#understand-the-context-1">
-     4.2.2.1. understand the context (1)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#choose-an-effective-visual-2">
-     4.2.2.2. choose an effective visual (2)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#eliminate-clutter-3">
-     4.2.2.3. eliminate clutter (3)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#focus-attention-4">
-     4.2.2.4. focus attention (4)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#tell-a-story-think-like-a-designer-5">
-     4.2.2.5. tell a story / think like a designer (5)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#visual-summaries">
-     4.2.2.6. visual summaries
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#imbalanced-data">
-   4.2.3. imbalanced data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#whitening">
-   4.2.4. whitening
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#missing-data-imputation">
-   4.2.5. missing-data imputation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#feature-engineering">
-   4.2.6. feature engineering
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#principles">
-   4.2.7. principles
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#breiman">
-     4.2.7.1. breiman
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#box-tukey">
-     4.2.7.2. box + tukey
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#models">
-     4.2.7.3. models
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exaggerated-claims">
-     4.2.7.4. exaggerated claims
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>data analysis</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pqrs">4.7.1. pqrs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization">4.7.2. visualization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understand-the-context-1">4.7.2.1. understand the context (1)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#choose-an-effective-visual-2">4.7.2.2. choose an effective visual (2)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eliminate-clutter-3">4.7.2.3. eliminate clutter (3)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#focus-attention-4">4.7.2.4. focus attention (4)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tell-a-story-think-like-a-designer-5">4.7.2.5. tell a story / think like a designer (5)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-summaries">4.7.2.6. visual summaries</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imbalanced-data">4.7.3. imbalanced data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-data-imputation">4.7.4. missing-data imputation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-completion">4.7.4.1. matrix completion</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing">4.7.5. preprocessing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principles">4.7.6. principles</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#breiman">4.7.6.1. breiman</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#box-tukey">4.7.6.2. box + tukey</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#models">4.7.6.3. models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exaggerated-claims">4.7.6.4. exaggerated claims</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="data-analysis">
-<h1><span class="section-number">4.2. </span>data analysis<a class="headerlink" href="#data-analysis" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">4.7. </span>data analysis<a class="headerlink" href="#data-analysis" title="Link to this heading">#</a></h1>
 <section id="pqrs">
-<h2><span class="section-number">4.2.1. </span>pqrs<a class="headerlink" href="#pqrs" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.7.1. </span>pqrs<a class="headerlink" href="#pqrs" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Goal: <em>inference</em> - conclusion or opinion formed from evidence</p></li>
 <li><p><em>PQRS</em></p>
 <ul>
 <li><p>P - population</p></li>
 <li><p>Q - question - 2 types</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>hypothesis driven - does a new drug work</p></li>
 <li><p>discovery driven - find a drug that works</p></li>
 </ol>
@@ -921,13 +500,13 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="visualization">
-<h2><span class="section-number">4.2.2. </span>visualization<a class="headerlink" href="#visualization" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.7.2. </span>visualization<a class="headerlink" href="#visualization" title="Link to this heading">#</a></h2>
 <p>First 5 parts here are based on the book <a class="reference external" href="http://www.storytellingwithdata.com/">storytelling with data</a> by cole nussbaumer knaflic</p>
 <ul class="simple">
 <li><p>difference between showing data + storytelling with data</p></li>
 </ul>
 <section id="understand-the-context-1">
-<h3><span class="section-number">4.2.2.1. </span>understand the context (1)<a class="headerlink" href="#understand-the-context-1" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.7.2.1. </span>understand the context (1)<a class="headerlink" href="#understand-the-context-1" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>who is your audience? what do you need them to know/do?</p></li>
 <li><p><strong>exploratory</strong> vs <strong>explanatory</strong> analysis</p></li>
@@ -938,8 +517,8 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="choose-an-effective-visual-2">
-<h3><span class="section-number">4.2.2.2. </span>choose an effective visual (2)<a class="headerlink" href="#choose-an-effective-visual-2" title="Permalink to this headline">#</a></h3>
-<table class="colwidths-auto table">
+<h3><span class="section-number">4.7.2.2. </span>choose an effective visual (2)<a class="headerlink" href="#choose-an-effective-visual-2" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p><img alt="Screen Shot 2020-09-28 at 8.08.38 PM" src="../../_images/good_plots.png" /></p></th>
 <th class="head"><p><img alt="Screen Shot 2020-09-28 at 8.08.30 PM" src="../../_images/good_visualizations.png" /></p></th>
@@ -957,6 +536,7 @@ title="Print to PDF"
 </tr>
 </tbody>
 </table>
+</div>
 <ul class="simple">
 <li><p>generally avoid pie/donut charts, 3D charts, 2nd y-axes</p></li>
 <li><p>tables</p>
@@ -974,7 +554,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="eliminate-clutter-3">
-<h3><span class="section-number">4.2.2.3. </span>eliminate clutter (3)<a class="headerlink" href="#eliminate-clutter-3" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.7.2.3. </span>eliminate clutter (3)<a class="headerlink" href="#eliminate-clutter-3" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>gestalt principles of  vision</p>
 <ul>
@@ -996,13 +576,13 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="focus-attention-4">
-<h3><span class="section-number">4.2.2.4. </span>focus attention (4)<a class="headerlink" href="#focus-attention-4" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.7.2.4. </span>focus attention (4)<a class="headerlink" href="#focus-attention-4" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>visual hierarchy - outlines what is important</p></li>
 </ul>
 </section>
 <section id="tell-a-story-think-like-a-designer-5">
-<h3><span class="section-number">4.2.2.5. </span>tell a story / think like a designer (5)<a class="headerlink" href="#tell-a-story-think-like-a-designer-5" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.7.2.5. </span>tell a story / think like a designer (5)<a class="headerlink" href="#tell-a-story-think-like-a-designer-5" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>affordances - aspects that make it obvious how something will be used (e.g. a button affords pushing)</p></li>
 <li><p>“You know you’ve achieved perfection, not when you have nothing more to add, but when you have nothing to take away” (Saint‐Exupery, 1943)</p></li>
@@ -1018,7 +598,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="visual-summaries">
-<h3><span class="section-number">4.2.2.6. </span>visual summaries<a class="headerlink" href="#visual-summaries" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.7.2.6. </span>visual summaries<a class="headerlink" href="#visual-summaries" title="Link to this heading">#</a></h3>
 <ul>
 <li><p>numerical summaries</p>
 <ul class="simple">
@@ -1037,7 +617,7 @@ title="Print to PDF"
 </ul>
 </li>
 <li><p>plots</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>box plot / pie-chart</p></li>
 <li><p>scatter plot / q-q plot</p></li>
 </ol>
@@ -1049,7 +629,7 @@ title="Print to PDF"
 </ul>
 </li>
 </ul>
-<ol class="simple">
+<ol class="arabic simple" start="3">
 <li><p>transformations = feature engineering</p></li>
 </ol>
 <ul class="simple">
@@ -1069,7 +649,7 @@ title="Print to PDF"
 <li><p>if both problems, try y first</p></li>
 <li><p>Box-Cox: Y’ = <span class="math notranslate nohighlight">\(Y^l \: if \: l \neq 0\)</span>, else log(Y)</p></li>
 </ul>
-<ol class="simple">
+<ol class="arabic simple" start="4">
 <li><p><em>least squares</em></p></li>
 </ol>
 <ul class="simple">
@@ -1077,7 +657,7 @@ title="Print to PDF"
 <li><p>regression effect - things tend to the mean (ex. bball children are shorter)</p></li>
 <li><p>in high dims, l2 worked best</p></li>
 </ul>
-<ol class="simple">
+<ol class="arabic simple" start="5">
 <li><p>kernel smoothing + lowess</p></li>
 </ol>
 <ul class="simple">
@@ -1096,9 +676,9 @@ title="Print to PDF"
 </ul>
 </li>
 </ul>
-<ol class="simple">
+<ol class="arabic simple" start="6">
 <li><p><em>silhouette plots</em> - good clusters members are close to each other and far from other clustersf</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>popular graphic method for K selection</p></li>
 <li><p>measure of separation between clusters <span class="math notranslate nohighlight">\(s(i) = \frac{b(i) - a(i)}{max(a(i), b(i))}\)</span></p></li>
 <li><p>a(i) - ave dissimilarity of data point i with other points within same cluster</p></li>
@@ -1113,15 +693,15 @@ title="Print to PDF"
 </section>
 </section>
 <section id="imbalanced-data">
-<h2><span class="section-number">4.2.3. </span>imbalanced data<a class="headerlink" href="#imbalanced-data" title="Permalink to this headline">#</a></h2>
-<ol class="simple">
+<h2><span class="section-number">4.7.3. </span>imbalanced data<a class="headerlink" href="#imbalanced-data" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
 <li><p>randomly oversample minority class</p></li>
 <li><p>randomly undersample majority class</p></li>
 <li><p>weighting classes in the loss function - more efficient, but requires modifying model code</p></li>
 <li><p>generate synthetic minority class samples</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p><a class="reference external" href="https://jair.org/index.php/jair/article/view/10302">smote</a> (chawla et al. 2002) - interpolate betwen points and their nearest neighbors (for minority class) - some heuristics for picking which points to interpolate<img alt="smote" src="../../_images/smote.png" /></p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p><a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/4633969/">adasyn</a> (he et al. 2008) - smote, generate more synthetic data for minority examples which are harder to learn (number of samples is proportional to number of nearby samples in a different class)</p></li>
 </ol>
 </li>
@@ -1129,19 +709,19 @@ title="Print to PDF"
 </ol>
 </li>
 <li><p>selectively removing majority class samples</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p><a class="reference external" href="https://pdfs.semanticscholar.org/090a/6772a1d69f07bfe7e89f99934294a0dac1b9.pdf?_ga=2.141687734.587787484.1573518991-2102528433.1505064485">tomek links</a> (tomek 1976) - selectively remove majority examples until al lminimally distanced nearest-neighbor pairs are of the same class</p></li>
 <li><p><a class="reference external" href="https://www.site.uottawa.ca/~nat/Workshop2003/jzhang.pdf">near-miss</a> (zhang &amp; mani 2003) - select samples from the majority class which are close to the minority class. Example: select samples from the majority class for which the average distance of the N <em>closest</em> samples of a minority class is smallest</p></li>
 <li><p><a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/4309137">edited nearest neighbors</a> (wilson 1972) - “edit” the dataset by removing samples that don’t agree “enough” with their neighborhood</p></li>
 </ol>
 </li>
 <li><p>feature selection and extraction</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>minority class samples can be discarded as noise - removing irrelevant features can reduce this risk</p></li>
 <li><p>feature selection - select a subset of features and classify in this space</p></li>
 <li><p>feature extraction - extract new features and classify in this space</p></li>
 <li><p>ideas</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>use majority class to find different low dimensions to investigate</p></li>
 <li><p>in this dim, do density estimation</p></li>
 <li><p>residuals - iteratively reweight these (like in boosting) to improve performance</p></li>
@@ -1150,13 +730,13 @@ title="Print to PDF"
 </ol>
 </li>
 <li><p>incorporate sampling / class-weighting into ensemble method (e.g. treat different trees differently)</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>ex. undersampling + ensemble learning (e.g. <a class="reference external" href="https://dl.acm.org/citation.cfm?id=2467736">IFME</a>, Becca’s work)</p></li>
 </ol>
 </li>
 <li><p>algorithmic classifier modifications</p></li>
 <li><p>misc papers</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1911.06965v1.pdf">enrichment</a> (jegierski &amp; saganowski 2019) - add samples from an external dataset</p></li>
 </ol>
 </li>
@@ -1168,35 +748,20 @@ title="Print to PDF"
 <li><p>log-spline - doesn’t scale</p></li>
 </ol>
 </section>
-<section id="whitening">
-<h2><span class="section-number">4.2.4. </span>whitening<a class="headerlink" href="#whitening" title="Permalink to this headline">#</a></h2>
-<ul class="simple">
-<li><p>get decorrelated features <span class="math notranslate nohighlight">\(Z\)</span> from inputs <span class="math notranslate nohighlight">\(X\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(W=\)</span> whitening matrix , selected based on problem goals:</p>
-<ul>
-<li><p>PCA: Maximal compression of <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> in <span class="math notranslate nohighlight">\(\mathbf{Z}\)</span></p></li>
-<li><p>ZCA: Maximal similarity between <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{Z}\)</span></p></li>
-<li><p>Cholesky: Inducing structure: <span class="math notranslate nohighlight">\(\operatorname{Cov}(X, Z)\)</span> is lower-triangular with positive diagonal elements</p></li>
-<li><p><span class="math notranslate nohighlight">\(W\)</span> is constrained as to enforce <span class="math notranslate nohighlight">\(\Sigma_{Z}=I\)</span></p></li>
-</ul>
-</li>
-</ul>
-</section>
 <section id="missing-data-imputation">
-<h2><span class="section-number">4.2.5. </span>missing-data imputation<a class="headerlink" href="#missing-data-imputation" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.7.4. </span>missing-data imputation<a class="headerlink" href="#missing-data-imputation" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://link.springer.com/article/10.1007/s10462-019-09709-4">Missing value imputation: a review and analysis of the literature</a> (lin &amp; tsai 2019)</p></li>
-<li><p><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3744188/">Purposeful Variable Selection and Stratification to Impute Missing FAST Data in Trauma Research</a> (fuchs et al. 2014)</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1712.06170">Causal Inference: A Missing Data Perspective</a> (ding &amp; li, 2018)</p></li>
-<li><p>different missingness mechanisms (little &amp; rubin, 1987)</p>
+<li><p>Missing value imputation: a review and analysis of the literature (<a class="reference external" href="https://link.springer.com/article/10.1007/s10462-019-09709-4">lin &amp; tsai 2019</a>)</p></li>
+<li><p>Causal Inference: A Missing Data Perspective (<a class="reference external" href="https://arxiv.org/abs/1712.06170">ding &amp; li, 2018</a>)</p></li>
+<li><p>different missingness mechanisms (<a class="reference external" href="https://www.jstor.org/stable/1165119">little &amp; rubin, 1987</a>)</p>
 <ul>
-<li><p><strong>MCAR</strong> - missing completely at random - no relationship between the missingness of the data and any values, observed or missing</p></li>
-<li><p><strong>MAR</strong> - missing at random - propensity of missing values depends on <em>observed</em> data, but <em>not</em> the missing data</p>
+<li><p>MCAR = missing completely at random - no relationship between the missingness of the data and any values, observed or missing</p></li>
+<li><p>MAR = missing at random - propensity of missing values depends on <em>observed</em> data, but <em>not</em> the missing data</p>
 <ul>
 <li><p>can easily test for this vs MCAR</p></li>
 </ul>
 </li>
-<li><p><strong>MNAR</strong> - missing not at random - propensity of missing values depends both on observed and unobserved data</p></li>
+<li><p>MNAR = missing not at random - propensity of missing values depends both on observed and unobserved data</p></li>
 <li><p>connections to causal: MCAR is much like randomization, MAR like ignorability (although slightly more general), and MNAR like unmeasured unconfounding</p></li>
 </ul>
 </li>
@@ -1213,8 +778,8 @@ title="Print to PDF"
 <li><p>nearest-neighbor / matching: hot-deck</p></li>
 <li><p>(weighted) prediction approaches</p>
 <ul>
-<li><p>linear regr, LDA, naive bayes, regr. trees, LDA</p></li>
-<li><p>can do weighting using something similar to inverse propensities, although less common to check things  like covariate balance</p></li>
+<li><p>linear regr, LDA, naive bayes, regr. trees</p></li>
+<li><p>can do weighting using something similar to inverse propensities, although less common to check things like covariate balance</p></li>
 </ul>
 </li>
 <li><p>multiple imputation: impute multiple times to get better estimates</p>
@@ -1226,7 +791,7 @@ title="Print to PDF"
 </li>
 <li><p>can perform sensitivity analysis to evaluate the assumption that things are not MNAR</p>
 <ul>
-<li><p>two standard models for nonignorable missing data are the <em>selection</em> models and the <em>pattern-mixture</em> models (<a class="reference external" href="https://books.google.com/books?hl=en&amp;lr=&amp;id=BemMDwAAQBAJ&amp;oi=fnd&amp;pg=PR11&amp;dq=Little,+R.+J.+and+Rubin,+D.+B.+(2002).+Statistical+analysis+with+missing+data.+John+Wiley+%26+Sons.&amp;ots=FByXa-CVWU&amp;sig=jIjvaI90RNK1rNfJoKoGvGJsz-E#v=onepage&amp;q=Little%2C%20R.%20J.%20and%20Rubin%2C%20D.%20B.%20(2002).%20Statistical%20analysis%20with%20missing%20data.%20John%20Wiley%20%26%20Sons.&amp;f=false">Little and Rubin, 2002</a>, Chapter 15)</p></li>
+<li><p>two standard models for nonignorable missing data are the <em>selection</em> models and the <em>pattern-mixture</em> models (<a class="reference external" href="https://books.google.com/books?hl=en&amp;amp;lr=&amp;amp;id=BemMDwAAQBAJ&amp;amp;oi=fnd&amp;amp;pg=PR11&amp;amp;dq=Little,+R.+J.+and+Rubin,+D.+B.+(2002).+Statistical+analysis+with+missing+data.+John+Wiley+%26+Sons.&amp;amp;ots=FByXa-CVWU&amp;amp;sig=jIjvaI90RNK1rNfJoKoGvGJsz-E#v=onepage&amp;amp;q=Little%2C%20R.%20J.%20and%20Rubin%2C%20D.%20B.%20(2002).%20Statistical%20analysis%20with%20missing%20data.%20John%20Wiley%20%26%20Sons.&amp;amp;f=false">Little and Rubin, 2002</a>, Chapter 15)</p></li>
 </ul>
 </li>
 <li><p>performance evaluation</p>
@@ -1235,22 +800,103 @@ title="Print to PDF"
 <li><p>acc in downstream task</p></li>
 </ul>
 </li>
+<li><p>applications</p>
+<ul>
+<li><p>Purposeful Variable Selection and Stratification to Impute Missing FAST Data in Trauma Research (<a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3744188/">fuchs et al. 2014</a>)</p></li>
+</ul>
+</li>
+</ul>
+<section id="matrix-completion">
+<h3><span class="section-number">4.7.4.1. </span>matrix completion<a class="headerlink" href="#matrix-completion" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>A Survey on Matrix Completion: Perspective of Signal Processing (<a class="reference external" href="https://arxiv.org/pdf/1901.10885.pdf">li…zhao, 2019</a>)</p>
+<ul>
+<li><p>formulations</p>
+<ul>
+<li><p>Exact matrix completion via convex optimization (<a class="reference external" href="https://dl.acm.org/doi/abs/10.1145/2184319.2184343">candes &amp; recht, 2012</a>)</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\min _{\boldsymbol{M}} \operatorname{rank}(\boldsymbol{M})\)</span>, s.t. <span class="math notranslate nohighlight">\(\left\|\boldsymbol{M}_{\Omega}-\boldsymbol{X}_{\Omega}\right\|_F \leq \delta\)</span>: - this is NP-hard</p></li>
+</ul>
+</li>
+<li><p>nuclear norm approxmiation</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\min _{\boldsymbol{M}}\|\boldsymbol{M}\|_*\)</span>, s.t. <span class="math notranslate nohighlight">\(||\boldsymbol{M}_{\Omega}-\boldsymbol{X}_{\Omega}||_F \leq \delta\)</span></p></li>
+<li><p>this has be formulated as semidefinite programming, nuclear norm relaxation, or robust PCA</p></li>
+</ul>
+</li>
+<li><p>minimum rank approximation helps with the assumption that the data are corrupted by noise (e.g. ADMiRA (<a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/5550497/">lee &amp; bresler, 2010</a>))</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\min _{\boldsymbol{M}}\left\|(\boldsymbol{M})_{\Omega}-\boldsymbol{X}_{\Omega}\right\|_F^2\)</span>, s.t. <span class="math notranslate nohighlight">\(\operatorname{rank}(\boldsymbol{M}) \leq r\)</span></p></li>
+</ul>
+</li>
+<li><p>matrix factorization is a faster but non-convex approximation (e.g. LMaFit (<a class="reference external" href="https://link.springer.com/article/10.1007/s12532-012-0044-1">wen, yin, &amp; zhang, 2012</a>))</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\min _{\boldsymbol{U}, \boldsymbol{V}, \boldsymbol{Z}}\left\|\boldsymbol{U} \boldsymbol{V}^T-\boldsymbol{Z}\right\|_F^2\)</span>, s.t. <span class="math notranslate nohighlight">\(\boldsymbol{Z}_{\Omega}=\boldsymbol{X}_{\Omega}\)</span></p></li>
+</ul>
+</li>
+<li><p><span class="math notranslate nohighlight">\(\ell_p\)</span>-Norm minimization - use a different norm than Frobenius to handle specific types of noise</p></li>
+<li><p>Adaptive outlier pruning (<a class="reference external" href="https://link.springer.com/article/10.1007/s10915-013-9682-3">yan, yang, &amp; osher, 2013</a>) - better handles outliers</p></li>
+</ul>
+</li>
+<li><p>algorithms</p>
+<ul>
+<li><p>gradient-based</p>
+<ul>
+<li><p>gradient descent</p></li>
+<li><p>accelerated proximal descent</p></li>
+<li><p>bregman iteration</p></li>
+</ul>
+</li>
+<li><p>non-gradient</p>
+<ul>
+<li><p>block coordinate descent</p></li>
+<li><p>ADMM: alterntating direction method of multipliers</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Newer approaches</p>
+<ul>
+<li><p>Simple, Fast, and Flexible Framework for Matrix Completion with Infinite Width Neural Networks (<a class="reference external" href="https://arxiv.org/abs/2108.00131">radhakrishnan…belkin, uhler, 2022</a>) - use NTK for FCN/CNN to do matrix completion</p></li>
+<li><p>Graph Convolutional Matrix Completion (<a class="reference external" href="https://arxiv.org/abs/1706.02263">van den berg, kipf, &amp; welling, 2017</a>)</p></li>
+<li><p>Transformer methods for image inpainting (e.g. mask-aware tranfsormer, <a class="reference internal" href="#"><span class="xref myst">2022</span></a>)</p></li>
+</ul>
+</li>
 </ul>
 </section>
-<section id="feature-engineering">
-<h2><span class="section-number">4.2.6. </span>feature engineering<a class="headerlink" href="#feature-engineering" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="preprocessing">
+<h2><span class="section-number">4.7.5. </span>preprocessing<a class="headerlink" href="#preprocessing" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>often good to discretize/binarize features</p>
 <ul>
 <li><p>e.g. <a class="reference external" href="http://cis.jhu.edu/people/faculty/geman/publications/pdf/Digitizing_omics_profiles_by_divergence_from_a_baseline.pdf">from genomics</a></p></li>
 </ul>
 </li>
+<li><p>whitening</p>
+<ul>
+<li><p>get decorrelated features <span class="math notranslate nohighlight">\(Z\)</span> from inputs <span class="math notranslate nohighlight">\(X\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(W=\)</span> whitening matrix , selected based on problem goals:</p>
+<ul>
+<li><p>PCA: Maximal compression of <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> in <span class="math notranslate nohighlight">\(\mathbf{Z}\)</span></p>
+<ul>
+<li><p>ZCA: Maximal similarity between <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{Z}\)</span></p></li>
+<li><p>Cholesky: Inducing structure: <span class="math notranslate nohighlight">\(\operatorname{Cov}(X, Z)\)</span> is lower-triangular with positive diagonal elements</p></li>
+<li><p><span class="math notranslate nohighlight">\(W\)</span> is constrained as to enforce <span class="math notranslate nohighlight">\(\Sigma_{Z}=I\)</span></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </section>
 <section id="principles">
-<h2><span class="section-number">4.2.7. </span>principles<a class="headerlink" href="#principles" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.7.6. </span>principles<a class="headerlink" href="#principles" title="Link to this heading">#</a></h2>
 <section id="breiman">
-<h3><span class="section-number">4.2.7.1. </span>breiman<a class="headerlink" href="#breiman" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.7.6.1. </span>breiman<a class="headerlink" href="#breiman" title="Link to this heading">#</a></h3>
 <ul>
 <li><p>conversation</p>
 <ul class="simple">
@@ -1266,7 +912,7 @@ title="Print to PDF"
 </ul>
 </li>
 <li><p>2 cultures paper</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p><em>generative</em> - data are generated by a given stochastic model</p></li>
 </ol>
 <ul class="simple">
@@ -1274,7 +920,7 @@ title="Print to PDF"
 <li><p>ex. assume y = f(x, noise, parameters)</p></li>
 <li><p>validation: goodness-of-fit and residuals</p></li>
 </ul>
-<ol class="simple">
+<ol class="arabic simple" start="2">
 <li><p><em>predictive</em> - use algorithmic model and data mechanism unknown</p></li>
 </ol>
 <ul>
@@ -1282,14 +928,14 @@ title="Print to PDF"
 <li><p>ex. generate P(x, y) with neural net</p></li>
 <li><p>validation: prediction accuracy</p></li>
 <li><p>axioms</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Occam</p></li>
 <li><p><em>Rashomon</em> - lots of different good models, which explains best?</p></li>
 </ol>
 <ul class="simple">
 <li><p>ex. rf is not robust at all</p></li>
 </ul>
-<ol class="simple">
+<ol class="arabic simple" start="3">
 <li><p><em>Bellman</em> - curse of dimensionality</p></li>
 </ol>
 <ul class="simple">
@@ -1302,10 +948,10 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="box-tukey">
-<h3><span class="section-number">4.2.7.2. </span>box + tukey<a class="headerlink" href="#box-tukey" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.7.6.2. </span>box + tukey<a class="headerlink" href="#box-tukey" title="Link to this heading">#</a></h3>
 <ul>
 <li><p>questions</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>what points are relevant and irrelevant today in both papers?</p></li>
 </ol>
 <ul class="simple">
@@ -1336,7 +982,7 @@ title="Print to PDF"
 </ul>
 </li>
 </ul>
-<ol class="simple">
+<ol class="arabic simple" start="2">
 <li><p>how do you think the personal traits of Tukey and Box relate to the scientific opinions expressed in their papers?</p></li>
 </ol>
 <ul class="simple">
@@ -1344,7 +990,7 @@ title="Print to PDF"
 <li><p>box - great respect for Fisher</p></li>
 <li><p>both very curious in different fields of science</p></li>
 </ul>
-<ol class="simple">
+<ol class="arabic simple" start="3">
 <li><p>what is the most valuable msg that you get from each paper?</p></li>
 </ol>
 <ul class="simple">
@@ -1418,7 +1064,7 @@ title="Print to PDF"
 <li><p>understudied except for factor analysis</p></li>
 <li><p>multiple-response procedures have been modeled upon how early single-response procedures were supposed to have been used, rather than upon how they were in fact used</p></li>
 <li><p>factor analysis</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>reduce dimensionality with new coordinates</p></li>
 <li><p>rotate to find meaningful coordinates</p></li>
 </ol>
@@ -1439,7 +1085,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="models">
-<h3><span class="section-number">4.2.7.3. </span>models<a class="headerlink" href="#models" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.7.6.3. </span>models<a class="headerlink" href="#models" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>normative - fully interpretable + modelled</p>
 <ul>
@@ -1456,9 +1102,9 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="exaggerated-claims">
-<h3><span class="section-number">4.2.7.4. </span>exaggerated claims<a class="headerlink" href="#exaggerated-claims" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.7.6.4. </span>exaggerated claims<a class="headerlink" href="#exaggerated-claims" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><a class="reference external" href="https://www.youtube.com/watch?time_continue=4&amp;v=PwCyvSDkUCY&amp;feature=emb_logo">video</a> by Rob Kass</p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?time_continue=4&amp;amp;v=PwCyvSDkUCY&amp;amp;feature=emb_logo">video</a> by Rob Kass</p></li>
 <li><p>concepts are ambiguous and have many mathematical instantiations</p>
 <ul>
 <li><p>e.g. “central tendency” can be mean or median</p></li>
@@ -1507,7 +1153,7 @@ title="Print to PDF"
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./notes/stat"
         },
         predefinedOutput: true
@@ -1515,55 +1161,130 @@ title="Print to PDF"
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="graphical_models.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">4.1. </span>graphical models</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="linear_models.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">4.6. </span>linear models</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="testing.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="testing.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">4.3. </span>testing</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+        <p class="prev-next-title"><span class="section-number">4.8. </span>testing</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pqrs">4.7.1. pqrs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization">4.7.2. visualization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understand-the-context-1">4.7.2.1. understand the context (1)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#choose-an-effective-visual-2">4.7.2.2. choose an effective visual (2)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eliminate-clutter-3">4.7.2.3. eliminate clutter (3)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#focus-attention-4">4.7.2.4. focus attention (4)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tell-a-story-think-like-a-designer-5">4.7.2.5. tell a story / think like a designer (5)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-summaries">4.7.2.6. visual summaries</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imbalanced-data">4.7.3. imbalanced data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-data-imputation">4.7.4. missing-data imputation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-completion">4.7.4.1. matrix completion</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing">4.7.5. preprocessing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principles">4.7.6. principles</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#breiman">4.7.6.1. breiman</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#box-tukey">4.7.6.2. box + tukey</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#models">4.7.6.3. models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exaggerated-claims">4.7.6.4. exaggerated claims</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Chandan Singh<br/>
+  <div class="footer-item">
+    
+<p class="component-author">
+By Chandan Singh
+</p>
+
+  </div>
   
-      &copy; Copyright None.<br/>
-    <div class="extra_footer">
-      <p>
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright None.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>
 Many of these images are taken from resources on the web.
 </p>
-    </div>
-</p>
-        </footer>
-    </div>
-    
 </div>
+  </div>
+  
+</div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

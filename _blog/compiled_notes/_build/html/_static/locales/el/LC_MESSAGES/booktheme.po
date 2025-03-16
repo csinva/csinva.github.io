@@ -8,26 +8,32 @@ msgstr ""
 "Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "Download this page"
-msgstr "Λήψη αυτής της σελίδας"
+msgid "By the"
+msgstr "Από το"
 
-msgid "Download notebook file"
-msgstr "Λήψη αρχείου σημειωματάριου"
-
-msgid "Open an issue"
-msgstr "Ανοίξτε ένα ζήτημα"
-
-msgid "repository"
-msgstr "αποθήκη"
-
-msgid "Theme by the"
-msgstr "Θέμα από το"
+msgid "By"
+msgstr "Με"
 
 msgid "Contents"
 msgstr "Περιεχόμενα"
 
-msgid "next page"
-msgstr "επόμενη σελίδα"
+msgid "Copyright"
+msgstr "Πνευματική ιδιοκτησία"
+
+msgid "Download notebook file"
+msgstr "Λήψη αρχείου σημειωματάριου"
+
+msgid "Download source file"
+msgstr "Λήψη αρχείου προέλευσης"
+
+msgid "Download this page"
+msgstr "Λήψη αυτής της σελίδας"
+
+msgid "Edit this page"
+msgstr "Επεξεργαστείτε αυτήν τη σελίδα"
+
+msgid "Fullscreen mode"
+msgstr "ΛΕΙΤΟΥΡΓΙΑ ΠΛΗΡΟΥΣ ΟΘΟΝΗΣ"
 
 msgid "Last updated on"
 msgstr "Τελευταία ενημέρωση στις"
@@ -35,47 +41,35 @@ msgstr "Τελευταία ενημέρωση στις"
 msgid "Launch"
 msgstr "Εκτόξευση"
 
-msgid "Edit this page"
-msgstr "Επεξεργαστείτε αυτήν τη σελίδα"
-
-msgid "Source repository"
-msgstr "Αποθήκη πηγής"
-
-msgid "Download source file"
-msgstr "Λήψη αρχείου προέλευσης"
-
-msgid "Sphinx Book Theme"
-msgstr "Θέμα βιβλίου Sphinx"
-
-msgid "Copyright"
-msgstr "Πνευματική ιδιοκτησία"
-
-msgid "Fullscreen mode"
-msgstr "ΛΕΙΤΟΥΡΓΙΑ ΠΛΗΡΟΥΣ ΟΘΟΝΗΣ"
-
-msgid "Search the docs ..."
-msgstr "Αναζήτηση στα έγγραφα ..."
-
-msgid "suggest edit"
-msgstr "προτείνω επεξεργασία"
-
-msgid "Search this book..."
-msgstr "Αναζήτηση σε αυτό το βιβλίο ..."
-
-msgid "By"
-msgstr "Με"
-
-msgid "open issue"
-msgstr "ανοιχτό ζήτημα"
+msgid "Open an issue"
+msgstr "Ανοίξτε ένα ζήτημα"
 
 msgid "Print to PDF"
 msgstr "Εκτύπωση σε PDF"
 
-msgid "previous page"
-msgstr "προηγούμενη σελίδα"
+msgid "Source repository"
+msgstr "Αποθήκη πηγής"
+
+msgid "Sphinx Book Theme"
+msgstr "Θέμα βιβλίου Sphinx"
+
+msgid "Theme by the"
+msgstr "Θέμα από το"
 
 msgid "Toggle navigation"
 msgstr "Εναλλαγή πλοήγησης"
 
-msgid "By the"
-msgstr "Από το"
+msgid "next page"
+msgstr "επόμενη σελίδα"
+
+msgid "open issue"
+msgstr "ανοιχτό ζήτημα"
+
+msgid "previous page"
+msgstr "προηγούμενη σελίδα"
+
+msgid "repository"
+msgstr "αποθήκη"
+
+msgid "suggest edit"
+msgstr "προτείνω επεξεργασία"

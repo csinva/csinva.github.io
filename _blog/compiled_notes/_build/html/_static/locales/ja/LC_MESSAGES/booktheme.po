@@ -8,26 +8,32 @@ msgstr ""
 "Language: ja\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "Download this page"
-msgstr "このページをダウンロード"
+msgid "By the"
+msgstr "によって"
 
-msgid "Download notebook file"
-msgstr "ノートブックファイルをダウンロード"
-
-msgid "Open an issue"
-msgstr "問題を報告"
-
-msgid "repository"
-msgstr "リポジトリ"
-
-msgid "Theme by the"
-msgstr "のテーマ"
+msgid "By"
+msgstr "著者"
 
 msgid "Contents"
 msgstr "目次"
 
-msgid "next page"
-msgstr "次のページ"
+msgid "Copyright"
+msgstr "Copyright"
+
+msgid "Download notebook file"
+msgstr "ノートブックファイルをダウンロード"
+
+msgid "Download source file"
+msgstr "ソースファイルをダウンロード"
+
+msgid "Download this page"
+msgstr "このページをダウンロード"
+
+msgid "Edit this page"
+msgstr "このページを編集"
+
+msgid "Fullscreen mode"
+msgstr "全画面モード"
 
 msgid "Last updated on"
 msgstr "最終更新日"
@@ -35,47 +41,35 @@ msgstr "最終更新日"
 msgid "Launch"
 msgstr "起動"
 
-msgid "Edit this page"
-msgstr "このページを編集"
-
-msgid "Source repository"
-msgstr "ソースリポジトリ"
-
-msgid "Download source file"
-msgstr "ソースファイルをダウンロード"
-
-msgid "Sphinx Book Theme"
-msgstr "スフィンクスの本のテーマ"
-
-msgid "Copyright"
-msgstr "Copyright"
-
-msgid "Fullscreen mode"
-msgstr "全画面モード"
-
-msgid "Search the docs ..."
-msgstr "ドキュメントを検索..."
-
-msgid "suggest edit"
-msgstr "編集を提案する"
-
-msgid "Search this book..."
-msgstr "この本を検索..."
-
-msgid "By"
-msgstr "著者"
-
-msgid "open issue"
-msgstr "未解決の問題"
+msgid "Open an issue"
+msgstr "問題を報告"
 
 msgid "Print to PDF"
 msgstr "PDFに印刷"
 
-msgid "previous page"
-msgstr "前のページ"
+msgid "Source repository"
+msgstr "ソースリポジトリ"
+
+msgid "Sphinx Book Theme"
+msgstr "スフィンクスの本のテーマ"
+
+msgid "Theme by the"
+msgstr "のテーマ"
 
 msgid "Toggle navigation"
 msgstr "ナビゲーションを切り替え"
 
-msgid "By the"
-msgstr "によって"
+msgid "next page"
+msgstr "次のページ"
+
+msgid "open issue"
+msgstr "未解決の問題"
+
+msgid "previous page"
+msgstr "前のページ"
+
+msgid "repository"
+msgstr "リポジトリ"
+
+msgid "suggest edit"
+msgstr "編集を提案する"

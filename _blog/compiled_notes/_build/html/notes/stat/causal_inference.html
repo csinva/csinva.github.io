@@ -1,110 +1,178 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="../../" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>4.4. causal inference</title>
-    
+    <title>4.3. causal inference</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notes/stat/causal_inference';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="4.5. info theory" href="info_theory.html" />
-    <link rel="prev" title="4.3. testing" href="testing.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+    <link rel="next" title="4.4. game theory" href="game_theory.html" />
+    <link rel="prev" title="4.2. graphical models" href="graphical_models.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
-    
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../../index.html">
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../../_static/logo.png" class="logo" alt="logo">
-      
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt=" - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -114,1040 +182,333 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../research_ovws/research_ovws.html">
-   1. research_ovws
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">
-     1.1. transfer learning
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../research_ovws/ovw_disentanglement.html">
-     1.2. disentanglement
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../research_ovws/ovw_omics.html">
-     1.3. omics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../research_ovws/ovw_complexity.html">
-     1.4. complexity
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../research_ovws/ovw_interesting_science.html">
-     1.5. interesting science
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../research_ovws/ovw_dl_theory.html">
-     1.6. dl theory
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../research_ovws/ovw_scat.html">
-     1.7. scattering transform
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">
-     1.8. ml in medicine
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../research_ovws/ovw_transformers.html">
-     1.9. transformers
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../research_ovws/ovw_causal_inference.html">
-     1.10. causal inference
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../research_ovws/ovw_uncertainty.html">
-     1.11. uncertainty
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../research_ovws/ovw_interp.html">
-     1.12. interpretability
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../research_ovws/ovw_generalization.html">
-     1.13. generalization
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../cs/cs.html">
-   2. cs
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cs/retrieval.html">
-     2.1. info retrieval
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cs/data_structures.html">
-     2.2. data structures
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cs/languages.html">
-     2.3. languages
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cs/software.html">
-     2.4. software engineering
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cs/quantum.html">
-     2.5. quantum
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cs/algo.html">
-     2.6. algorithms
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cs/graphs.html">
-     2.7. graphs
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cs/os.html">
-     2.8. os
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cs/arch.html">
-     2.9. architecture
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cs/reproducibility.html">
-     2.10. reproducibility
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cs/comp_theory.html">
-     2.11. cs theory
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../math/math.html">
-   3. math
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../math/differential_equations.html">
-     3.1. differential equations
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../math/proofs.html">
-     3.2. proofs
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../math/analysis.html">
-     3.3. real analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../math/linear_algebra.html">
-     3.4. linear algebra
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../math/signals.html">
-     3.5. signals
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../math/optimization.html">
-     3.6. optimization
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../math/calculus.html">
-     3.7. calculus
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../math/chaos.html">
-     3.8. chaos
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../math/math_basics.html">
-     3.9. math basics
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="stat.html">
-   4. stat
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="graphical_models.html">
-     4.1. graphical models
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="data_analysis.html">
-     4.2. data analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="testing.html">
-     4.3. testing
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     4.4. causal inference
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="info_theory.html">
-     4.5. info theory
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="linear_models.html">
-     4.6. linear models
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="time_series.html">
-     4.7. time series
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="game_theory.html">
-     4.8. game theory
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../ml/ml.html">
-   5. ml
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ml/kernels.html">
-     5.1. kernels
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ml/nlp.html">
-     5.2. nlp
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ml/comp_vision.html">
-     5.3. computer vision
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ml/structure_ml.html">
-     5.4. structure learning
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ml/classification.html">
-     5.5. classification
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ml/unsupervised.html">
-     5.6. unsupervised
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ml/deep_learning.html">
-     5.7. deep learning
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ml/feature_selection.html">
-     5.8. feature selection
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ml/learning_theory.html">
-     5.9. learning theory
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ml/evaluation.html">
-     5.10. evaluation
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../ai/ai.html">
-   6. ai
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ai/search.html">
-     6.1. search
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ai/decisions_rl.html">
-     6.2. decisions, rl
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ai/fairness_sts.html">
-     6.3. fairness, sts
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ai/cogsci.html">
-     6.4. cogsci
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ai/ai_futures.html">
-     6.5. ai futures
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ai/logic.html">
-     6.6. logic
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ai/philosophy.html">
-     6.7. philosophy
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ai/psychology.html">
-     6.8. psychology
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ai/knowledge_rep.html">
-     6.9. representations
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../neuro/neuro.html">
-   7. neuro
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../neuro/disease.html">
-     7.1. disease
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../neuro/brain_basics.html">
-     7.2. brain basics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../neuro/vissci.html">
-     7.3. vision
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../neuro/comp_neuro.html">
-     7.4. comp neuro
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../neuro/sensory_input.html">
-     7.5. sensory input
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../neuro/memory.html">
-     7.6. memory
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../neuro/motor.html">
-     7.7. motor system
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../neuro/development.html">
-     7.8. development
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ai/ai.html">1. ai</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ai/knowledge_rep.html">1.1. representations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/psychology.html">1.2. psychology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/fairness_sts.html">1.3. fairness, sts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/philosophy.html">1.4. philosophy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/ai_futures.html">1.5. ai futures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/cogsci.html">1.6. cognitive science</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/llms.html">1.7. llms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/logic.html">1.8. logic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/search.html">1.9. search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ai/decisions_rl.html">1.10. decisions, rl</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math.html">2. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">2.1. linear algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">2.2. optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/differential_equations.html">2.3. differential equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">2.4. chaos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">2.5. math basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">2.6. signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">2.7. calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/proofs.html">2.8. proofs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">2.9. real analysis</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml.html">3. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">3.1. unsupervised</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/structure_ml.html">3.2. structure learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">3.3. learning theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">3.4. deep learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/comp_vision.html">3.5. computer vision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/kernels.html">3.6. kernels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/nlp.html">3.7. nlp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/feature_selection.html">3.8. feature selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">3.9. evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">3.10. classification</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="stat.html">4. stat</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="time_series.html">4.1. time series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphical_models.html">4.2. graphical models</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">4.3. causal inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="game_theory.html">4.4. game theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="info_theory.html">4.5. info theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linear_models.html">4.6. linear models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_analysis.html">4.7. data analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html">4.8. testing</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro.html">5. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../neuro/motor.html">5.1. motor system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../neuro/memory.html">5.2. memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../neuro/development.html">5.3. development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../neuro/sensory_input.html">5.4. sensory input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../neuro/comp_neuro.html">5.5. comp neuro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../neuro/disease.html">5.6. disease</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../neuro/vissci.html">5.7. vision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../neuro/brain_basics.html">5.8. brain basics</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs.html">6. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">6.1. cs theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/graphs.html">6.2. graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval.html">6.3. info retrieval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">6.4. data structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">6.5. os</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">6.6. quantum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/software.html">6.7. software engineering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">6.8. algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">6.9. architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/languages.html">6.10. languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/reproducibility.html">6.11. reproducibility</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../research_ovws/research_ovws.html">7. research_ovws</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">7.1. disentanglement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">7.2. uncertainty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_generalization.html">7.3. generalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">7.4. causal inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_omics.html">7.5. omics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">7.6. ml in medicine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_llms.html">7.7. llms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">7.8. transfer learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interp.html">7.9. interpretability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_complexity.html">7.10. complexity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">7.11. dl theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_scat.html">7.12. scattering transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">7.13. interesting science</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
-          
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
 
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
 <div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
 
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
     </div>
-    <div class="header-article__right">
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/csinva/csinva.github.io" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-<a href="https://github.com/csinva/csinva.github.io"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="bottom"
-title="Source repository"
->
-  
-
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fab fa-github"></i>
   </span>
 
 </a>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../../_sources/notes/stat/causal_inference.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notes/stat/causal_inference.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.md</span>
+<span class="btn__text-container">.md</span>
 </a>
-
-      </li>
+</li>
+      
+      
+      
       
       <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file-pdf"></i>
   </span>
-<span class="headerbtn__text-container">.pdf</span>
+<span class="btn__text-container">.pdf</span>
 </button>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
   </span>
 
-</label>
+</button>
 
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#basics">
-   4.4.1. basics
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#intuition">
-     4.4.1.1. intuition
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#measures-of-association">
-     4.4.1.2. measures of association
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#causal-ladder-different-levels-of-inference">
-     4.4.1.3. causal ladder (different levels of inference)
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#frameworks">
-   4.4.2. frameworks
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#fisher-randomization-test">
-     4.4.2.1. fisher randomization test
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#potential-outcome-framework-neyman-rubin">
-     4.4.2.2. potential outcome framework (neyman-rubin)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#dags-structural-causal-models-pearl-et-al">
-     4.4.2.3. DAGs / structural causal models (pearl et al.)
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#randomized-experiments">
-   4.4.3. randomized experiments
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#design">
-     4.4.3.1. design
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#stratification-matched-pairs-design">
-       4.4.3.1.1. stratification / matched-pairs design
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#rerandomization-balances-covariates">
-       4.4.3.1.2. rerandomization balances covariates
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#post-hoc-analysis">
-     4.4.3.2. post-hoc analysis
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#statification-matching">
-       4.4.3.2.1. statification / matching
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#regression-adjustment-balances-covariates">
-       4.4.3.2.2. regression adjustment balances covariates
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#quasi-experiments">
-   4.4.4. quasi-experiments
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#natural-experiments">
-     4.4.4.1. natural experiments
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#back-door-criterion-capture-parents-of-t">
-     4.4.4.2. back-door criterion: capture parents of T
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#front-door-criterion-good-mediator-variable">
-     4.4.4.3. front-door criterion: good mediator variable
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#regression-discontinuity-running-variable">
-     4.4.4.4. regression discontinuity: running variable
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#difference-in-difference">
-     4.4.4.5. difference-in-difference
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#instrumental-variable">
-     4.4.4.6. instrumental variable
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#effect-under-non-compliance">
-       4.4.4.6.1. effect under non-compliance
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#proximal-algorithms">
-     4.4.4.7. proximal algorithms
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#synthetic-data-experiments">
-     4.4.4.8. synthetic data experiments
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#observational-analysis">
-   4.4.5. observational analysis
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#ate-estimation-basics">
-     4.4.5.1. ATE estimation basics
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#regression-adjustments">
-     4.4.5.2. regression adjustments
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#weighting-methods">
-     4.4.5.3. weighting methods
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#inverse-propensity-weighting">
-       4.4.5.3.1. inverse propensity weighting
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#doubly-robust-estimator">
-       4.4.5.3.2. doubly robust estimator
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#alternative-weighting">
-       4.4.5.3.3. alternative weighting
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#stratification-matching">
-     4.4.5.4. stratification / matching
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#misc-methods">
-     4.4.5.5. misc methods
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#assumptions">
-   4.4.6. assumptions
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#common-assumptions">
-     4.4.6.1. common assumptions
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#assumption-checking">
-     4.4.6.2. assumption checking
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#check-ignorability-use-auxilary-outcome">
-       4.4.6.2.1. check ignorability: use auxilary outcome
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#check-ignorability-impact-sensitivity-analysis-wrt-unmeasured-confounding">
-       4.4.6.2.2. check ignorability impact: sensitivity analysis wrt unmeasured confounding
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>causal inference</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#basics">
-   4.4.1. basics
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#intuition">
-     4.4.1.1. intuition
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#measures-of-association">
-     4.4.1.2. measures of association
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#causal-ladder-different-levels-of-inference">
-     4.4.1.3. causal ladder (different levels of inference)
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#frameworks">
-   4.4.2. frameworks
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#fisher-randomization-test">
-     4.4.2.1. fisher randomization test
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#potential-outcome-framework-neyman-rubin">
-     4.4.2.2. potential outcome framework (neyman-rubin)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#dags-structural-causal-models-pearl-et-al">
-     4.4.2.3. DAGs / structural causal models (pearl et al.)
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#randomized-experiments">
-   4.4.3. randomized experiments
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#design">
-     4.4.3.1. design
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#stratification-matched-pairs-design">
-       4.4.3.1.1. stratification / matched-pairs design
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#rerandomization-balances-covariates">
-       4.4.3.1.2. rerandomization balances covariates
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#post-hoc-analysis">
-     4.4.3.2. post-hoc analysis
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#statification-matching">
-       4.4.3.2.1. statification / matching
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#regression-adjustment-balances-covariates">
-       4.4.3.2.2. regression adjustment balances covariates
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#quasi-experiments">
-   4.4.4. quasi-experiments
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#natural-experiments">
-     4.4.4.1. natural experiments
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#back-door-criterion-capture-parents-of-t">
-     4.4.4.2. back-door criterion: capture parents of T
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#front-door-criterion-good-mediator-variable">
-     4.4.4.3. front-door criterion: good mediator variable
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#regression-discontinuity-running-variable">
-     4.4.4.4. regression discontinuity: running variable
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#difference-in-difference">
-     4.4.4.5. difference-in-difference
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#instrumental-variable">
-     4.4.4.6. instrumental variable
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#effect-under-non-compliance">
-       4.4.4.6.1. effect under non-compliance
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#proximal-algorithms">
-     4.4.4.7. proximal algorithms
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#synthetic-data-experiments">
-     4.4.4.8. synthetic data experiments
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#observational-analysis">
-   4.4.5. observational analysis
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#ate-estimation-basics">
-     4.4.5.1. ATE estimation basics
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#regression-adjustments">
-     4.4.5.2. regression adjustments
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#weighting-methods">
-     4.4.5.3. weighting methods
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#inverse-propensity-weighting">
-       4.4.5.3.1. inverse propensity weighting
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#doubly-robust-estimator">
-       4.4.5.3.2. doubly robust estimator
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#alternative-weighting">
-       4.4.5.3.3. alternative weighting
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#stratification-matching">
-     4.4.5.4. stratification / matching
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#misc-methods">
-     4.4.5.5. misc methods
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#assumptions">
-   4.4.6. assumptions
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#common-assumptions">
-     4.4.6.1. common assumptions
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#assumption-checking">
-     4.4.6.2. assumption checking
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#check-ignorability-use-auxilary-outcome">
-       4.4.6.2.1. check ignorability: use auxilary outcome
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#check-ignorability-impact-sensitivity-analysis-wrt-unmeasured-confounding">
-       4.4.6.2.2. check ignorability impact: sensitivity analysis wrt unmeasured confounding
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>causal inference</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basics">4.3.1. basics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intuition">4.3.1.1. intuition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#measures-of-association">4.3.1.2. measures of association</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#causal-ladder-different-levels-of-inference">4.3.1.3. causal ladder (different levels of inference)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frameworks">4.3.2. frameworks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fisher-randomization-test">4.3.2.1. fisher randomization test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#potential-outcome-framework-neyman-rubin">4.3.2.2. potential outcome framework (neyman-rubin)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dags-structural-causal-models-pearl-et-al">4.3.2.3. DAGs / structural causal models (pearl et al.)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#randomized-experiments">4.3.3. randomized experiments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#design">4.3.3.1. design</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#stratification-matched-pairs-design">4.3.3.1.1. stratification / matched-pairs design</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rerandomization-balances-covariates">4.3.3.1.2. rerandomization balances covariates</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#post-hoc-analysis">4.3.3.2. post-hoc analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#statification-matching">4.3.3.2.1. statification / matching</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-adjustment-balances-covariates">4.3.3.2.2. regression adjustment balances covariates</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quasi-experiments">4.3.4. quasi-experiments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#natural-experiments">4.3.4.1. natural experiments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#back-door-criterion-capture-parents-of-t">4.3.4.2. back-door criterion: capture parents of T</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#front-door-criterion-good-mediator-variable">4.3.4.3. front-door criterion: good mediator variable</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-discontinuity-running-variable">4.3.4.4. regression discontinuity: running variable</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#difference-in-difference">4.3.4.5. difference-in-difference</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instrumental-variable">4.3.4.6. instrumental variable</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#effect-under-non-compliance">4.3.4.6.1. effect under non-compliance</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proximal-algorithms">4.3.4.7. proximal algorithms</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#synthetic-data-experiments">4.3.4.8. synthetic data experiments</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#observational-analysis">4.3.5. observational analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ate-estimation-basics">4.3.5.1. ATE estimation basics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-adjustments">4.3.5.2. regression adjustments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weighting-methods">4.3.5.3. weighting methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inverse-propensity-weighting">4.3.5.3.1. inverse propensity weighting</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#doubly-robust-estimator">4.3.5.3.2. doubly robust estimator</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-weighting">4.3.5.3.3. alternative weighting</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stratification-matching">4.3.5.4. stratification / matching</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#misc-methods">4.3.5.5. misc methods</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assumptions">4.3.6. assumptions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-assumptions">4.3.6.1. common assumptions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assumption-checking">4.3.6.2. assumption checking</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#check-ignorability-use-auxilary-outcome">4.3.6.2.1. check ignorability: use auxilary outcome</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#check-ignorability-impact-sensitivity-analysis-wrt-unmeasured-confounding">4.3.6.2.2. check ignorability impact: sensitivity analysis wrt unmeasured confounding</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="causal-inference">
-<h1><span class="section-number">4.4. </span>causal inference<a class="headerlink" href="#causal-inference" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">4.3. </span>causal inference<a class="headerlink" href="#causal-inference" title="Link to this heading">#</a></h1>
 <p><em>Some notes on causal inference both from the following resources</em>:</p>
 <ul class="simple">
 <li><p>introductory courses following neyman-rubin framework at UC Berkeley</p></li>
@@ -1160,7 +521,7 @@ title="Print to PDF"
 <li><p>wonderful review / <a class="reference external" href="https://dl.acm.org/doi/abs/10.1145/3397269?casa_token=Fsu-uKOSfUEAAAAA:4hCvZEsOPvbIfV92-17vP82pnVxAlZ8I4z62KsXjLGFse1wfP6uFfvqYzCa4wnueggWOB8KbFA2L">intro paper</a> (guo et al. 2020)</p></li>
 </ul>
 <section id="basics">
-<h2><span class="section-number">4.4.1. </span>basics<a class="headerlink" href="#basics" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.3.1. </span>basics<a class="headerlink" href="#basics" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>confounding</strong> = difference between groups other than the treatment which affects the response</p>
 <ul>
@@ -1229,7 +590,7 @@ title="Print to PDF"
 </li>
 </ul>
 <section id="intuition">
-<h3><span class="section-number">4.4.1.1. </span>intuition<a class="headerlink" href="#intuition" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.3.1.1. </span>intuition<a class="headerlink" href="#intuition" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Bradford_Hill_criteria">bradford hill criteria</a> - some simple criteria for establishing causality (e.g. strength, consistency, specificity)</p>
 <ul>
@@ -1257,7 +618,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="measures-of-association">
-<h3><span class="section-number">4.4.1.2. </span>measures of association<a class="headerlink" href="#measures-of-association" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.3.1.2. </span>measures of association<a class="headerlink" href="#measures-of-association" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>correlation</p></li>
 <li><p>regression coefficient</p></li>
@@ -1272,14 +633,14 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="causal-ladder-different-levels-of-inference">
-<h3><span class="section-number">4.4.1.3. </span>causal ladder (different levels of inference)<a class="headerlink" href="#causal-ladder-different-levels-of-inference" title="Permalink to this headline">#</a></h3>
-<ol class="simple">
+<h3><span class="section-number">4.3.1.3. </span>causal ladder (different levels of inference)<a class="headerlink" href="#causal-ladder-different-levels-of-inference" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
 <li><p><strong>prediction/association</strong> <span class="math notranslate nohighlight">\(P(Y|T)\)</span></p></li>
 </ol>
 <ul class="simple">
 <li><p>only requires joint distr. of the variables</p></li>
 </ul>
-<ol class="simple">
+<ol class="arabic simple" start="2">
 <li><p><strong>intervention</strong> <span class="math notranslate nohighlight">\(P(Y^{T=t}) = P(Y|do(T=t))\)</span></p></li>
 </ol>
 <ul class="simple">
@@ -1291,7 +652,7 @@ title="Print to PDF"
 <li><p>see introductory paper <a class="reference external" href="https://arxiv.org/pdf/1305.5506.pdf">here</a>, more detailed paper <a class="reference external" href="https://ftp.cs.ucla.edu/pub/stat_ser/r416-reprint.pdf">here</a> (pearl 2013)</p></li>
 <li><p>by assuming structure, we learn how large impacts are</p></li>
 </ul>
-<ol class="simple">
+<ol class="arabic simple" start="3">
 <li><p><strong>counterfactuals</strong> <span class="math notranslate nohighlight">\(P(Y^{T=t'} = y'|T=t, y=y)\)</span></p></li>
 </ol>
 <ul class="simple">
@@ -1317,9 +678,9 @@ title="Print to PDF"
 </section>
 </section>
 <section id="frameworks">
-<h2><span class="section-number">4.4.2. </span>frameworks<a class="headerlink" href="#frameworks" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.3.2. </span>frameworks<a class="headerlink" href="#frameworks" title="Link to this heading">#</a></h2>
 <section id="fisher-randomization-test">
-<h3><span class="section-number">4.4.2.1. </span>fisher randomization test<a class="headerlink" href="#fisher-randomization-test" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.3.2.1. </span>fisher randomization test<a class="headerlink" href="#fisher-randomization-test" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><em>this framework seeks evidence against the null hypothesis (e.g. that there is no causal effect)</em></p></li>
 </ul>
@@ -1374,7 +735,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="potential-outcome-framework-neyman-rubin">
-<h3><span class="section-number">4.4.2.2. </span>potential outcome framework (neyman-rubin)<a class="headerlink" href="#potential-outcome-framework-neyman-rubin" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.3.2.2. </span>potential outcome framework (neyman-rubin)<a class="headerlink" href="#potential-outcome-framework-neyman-rubin" title="Link to this heading">#</a></h3>
 <p><em>In this framework, try to explicitly compute the effect</em></p>
 <ul>
 <li><p><strong>average treatment effect ATE</strong> <span class="math notranslate nohighlight">\(\tau = E \{Y^{T=1} - Y^{T=0} \}\)</span></p>
@@ -1401,7 +762,7 @@ title="Print to PDF"
 </ul>
 </li>
 <li><p>advantages over DAGs: easy to express some common assumptions, such as monotonicity / convexity</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p><strong>neyman-rubin model</strong>: <span class="math notranslate nohighlight">\(Y_i = \begin{cases} Y_i^{T=1}, &amp;\text{if } T_i=1\\Y_i^{T=0}, &amp;\text{if } T_i=0 \end{cases}\)</span></p></li>
 </ol>
 <ul class="simple">
@@ -1413,20 +774,20 @@ title="Print to PDF"
 </ul>
 </li>
 </ul>
-<ol class="simple">
+<ol class="arabic simple" start="2">
 <li><p>neyman-pearson</p></li>
 </ol>
 <ul class="simple">
 <li><p>null + alternative hypothesis</p></li>
 </ul>
-<ol class="simple">
+<ol class="arabic simple" start="3">
 <li><p>can also take a bayesian perspective on the missing data</p></li>
 </ol>
 </li>
 </ul>
 </section>
 <section id="dags-structural-causal-models-pearl-et-al">
-<h3><span class="section-number">4.4.2.3. </span>DAGs / structural causal models (pearl et al.)<a class="headerlink" href="#dags-structural-causal-models-pearl-et-al" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.3.2.3. </span>DAGs / structural causal models (pearl et al.)<a class="headerlink" href="#dags-structural-causal-models-pearl-et-al" title="Link to this heading">#</a></h3>
 <p><em>In this framework, depict assumptions in a DAG / SEM and use it to reason about effects. For notes on graphical models, see <a class="reference external" href="https://csinva.io/notes/stat/graphical_models.html">here</a> and basics of do-calculus see <a class="reference external" href="https://www.inference.vc/untitled/">here</a>.</em></p>
 <ul class="simple">
 <li><p>comparison to potential outcomes</p>
@@ -1454,7 +815,7 @@ title="Print to PDF"
 </ul>
 </li>
 </ul>
-<table class="colwidths-auto table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>forks</p></th>
 <th class="head"><p>mediators</p></th>
@@ -1472,6 +833,7 @@ title="Print to PDF"
 </tr>
 </tbody>
 </table>
+</div>
 <ul class="simple">
 <li><p><strong>structural causal model (scm)</strong> gives a set of variables <span class="math notranslate nohighlight">\(X_1, ... X_i\)</span> and and assignments of the form <span class="math notranslate nohighlight">\(X_i := f_i(X_{parents(i)}, \epsilon_i)\)</span>, which tell how to compute value of each node given parents</p>
 <ul>
@@ -1552,12 +914,12 @@ title="Print to PDF"
 </section>
 </section>
 <section id="randomized-experiments">
-<h2><span class="section-number">4.4.3. </span>randomized experiments<a class="headerlink" href="#randomized-experiments" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.3.3. </span>randomized experiments<a class="headerlink" href="#randomized-experiments" title="Link to this heading">#</a></h2>
 <p><em>Randomized experiments randomly assign a treatment, thus creating comparable treatment and control groups on average (i.e. controlling for any confounders).</em></p>
 <section id="design">
-<h3><span class="section-number">4.4.3.1. </span>design<a class="headerlink" href="#design" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.3.3.1. </span>design<a class="headerlink" href="#design" title="Link to this heading">#</a></h3>
 <section id="stratification-matched-pairs-design">
-<h4><span class="section-number">4.4.3.1.1. </span>stratification / matched-pairs design<a class="headerlink" href="#stratification-matched-pairs-design" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">4.3.3.1.1. </span>stratification / matched-pairs design<a class="headerlink" href="#stratification-matched-pairs-design" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>sometimes we want different strata, ex. on feature <span class="math notranslate nohighlight">\(X_i \in \{1, ..., K \}\)</span></p>
 <ul>
@@ -1608,7 +970,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="rerandomization-balances-covariates">
-<h4><span class="section-number">4.4.3.1.2. </span>rerandomization balances covariates<a class="headerlink" href="#rerandomization-balances-covariates" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">4.3.3.1.2. </span>rerandomization balances covariates<a class="headerlink" href="#rerandomization-balances-covariates" title="Link to this heading">#</a></h4>
 <p><em>rerandomization</em> adjusts for covariate imbalance given covariate vector <span class="math notranslate nohighlight">\(\mathbf x\)</span> (assume mean 0) at design stage</p>
 <ul class="simple">
 <li><p>covariate difference-in-means: <span class="math notranslate nohighlight">\(\mathbf{\hat \tau_x} = \frac 1 {n_1} \sum_i T_i \mathbf x_i - \frac 1 {n_0} \sum_i (1 - T_i)\mathbf  x_i\)</span></p>
@@ -1637,9 +999,9 @@ title="Print to PDF"
 </section>
 </section>
 <section id="post-hoc-analysis">
-<h3><span class="section-number">4.4.3.2. </span>post-hoc analysis<a class="headerlink" href="#post-hoc-analysis" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.3.3.2. </span>post-hoc analysis<a class="headerlink" href="#post-hoc-analysis" title="Link to this heading">#</a></h3>
 <section id="statification-matching">
-<h4><span class="section-number">4.4.3.2.1. </span>statification / matching<a class="headerlink" href="#statification-matching" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">4.3.3.2.1. </span>statification / matching<a class="headerlink" href="#statification-matching" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>post-stratification at analysis stage: condition on stratum</p>
 <ul>
@@ -1653,11 +1015,11 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="regression-adjustment-balances-covariates">
-<h4><span class="section-number">4.4.3.2.2. </span>regression adjustment balances covariates<a class="headerlink" href="#regression-adjustment-balances-covariates" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">4.3.3.2.2. </span>regression adjustment balances covariates<a class="headerlink" href="#regression-adjustment-balances-covariates" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p><em>regression adjustment</em> at analysis stage account for covariates <strong>x</strong></p></li>
 <li><p>fisher random trial adjustment - 2 strategies</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>construct test-statistic based on residuals of statistical models</p>
 <ul>
 <li><p>regress <span class="math notranslate nohighlight">\(Y_i\)</span> on <span class="math notranslate nohighlight">\(\mathbf x_i\)</span> to obtain residual <span class="math notranslate nohighlight">\(e_i\)</span> - then treat <span class="math notranslate nohighlight">\(e_i\)</span> as pseudo outcome to construct test statistics</p></li>
@@ -1684,17 +1046,17 @@ title="Print to PDF"
 </section>
 </section>
 <section id="quasi-experiments">
-<h2><span class="section-number">4.4.4. </span>quasi-experiments<a class="headerlink" href="#quasi-experiments" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.3.4. </span>quasi-experiments<a class="headerlink" href="#quasi-experiments" title="Link to this heading">#</a></h2>
 <p><em>Can also be called pseudo-experiments. These don’t explicitly randomize treatment, as in RCTs, but some property of the data allows us to control for confounders.</em></p>
 <section id="natural-experiments">
-<h3><span class="section-number">4.4.4.1. </span>natural experiments<a class="headerlink" href="#natural-experiments" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.3.4.1. </span>natural experiments<a class="headerlink" href="#natural-experiments" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>hard to justify</p></li>
 <li><p>e.g. jon snow on cholera - something acts as if it were randomized</p></li>
 </ul>
 </section>
 <section id="back-door-criterion-capture-parents-of-t">
-<h3><span class="section-number">4.4.4.2. </span>back-door criterion: capture parents of T<a class="headerlink" href="#back-door-criterion-capture-parents-of-t" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.3.4.2. </span>back-door criterion: capture parents of T<a class="headerlink" href="#back-door-criterion-capture-parents-of-t" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>back-door criterion</strong> - establishes if variables <span class="math notranslate nohighlight">\(T\)</span> and  <span class="math notranslate nohighlight">\(Y\)</span> are confounded in a graph given set <span class="math notranslate nohighlight">\(S\)</span></p></li>
 <li><p><em>sufficient set</em> <span class="math notranslate nohighlight">\(S\)</span> = admissible set - set of factors to calculate causal effect of <span class="math notranslate nohighlight">\(T\)</span> on <span class="math notranslate nohighlight">\(Y\)</span> requires 2 conditions
@@ -1720,7 +1082,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="front-door-criterion-good-mediator-variable">
-<h3><span class="section-number">4.4.4.3. </span>front-door criterion: good mediator variable<a class="headerlink" href="#front-door-criterion-good-mediator-variable" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.3.4.3. </span>front-door criterion: good mediator variable<a class="headerlink" href="#front-door-criterion-good-mediator-variable" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>front-door criterion</strong> - establishes if variables <span class="math notranslate nohighlight">\(T\)</span> and  <span class="math notranslate nohighlight">\(Y\)</span> are confounded in a graph given mediators <span class="math notranslate nohighlight">\(M\)</span></p>
 <ul>
@@ -1749,7 +1111,7 @@ M --&gt; Y
 </div>
 </section>
 <section id="regression-discontinuity-running-variable">
-<h3><span class="section-number">4.4.4.4. </span>regression discontinuity: running variable<a class="headerlink" href="#regression-discontinuity-running-variable" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.3.4.4. </span>regression discontinuity: running variable<a class="headerlink" href="#regression-discontinuity-running-variable" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>dates back to <a class="reference external" href="https://psycnet.apa.org/record/1962-00061-001">thistlethwaite &amp; campbell, 1960</a></p></li>
 <li><p>treatment definition (e.g. high-school acceptance) has an arbitrary threshold (e.g. score on a test)</p>
@@ -1772,7 +1134,7 @@ M --&gt; Y
 </ul>
 </section>
 <section id="difference-in-difference">
-<h3><span class="section-number">4.4.4.5. </span>difference-in-difference<a class="headerlink" href="#difference-in-difference" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.3.4.5. </span>difference-in-difference<a class="headerlink" href="#difference-in-difference" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>difference-in-difference is a name given to many methods for estimating effects in longitudinal data = panel data</p>
 <ul>
@@ -1800,7 +1162,7 @@ M --&gt; Y
 <li><p>can estimate with synthetic controls (<a class="reference external" href="https://amstat.tandfonline.com/doi/abs/10.1198/jasa.2009.ap08746">abadie, diamon, &amp; hainmueller, 2010</a>)</p>
 <ul>
 <li><p>artificially re-weight unexposed units (i.e. units with <span class="math notranslate nohighlight">\(T_i=0\)</span>) so their average trend matches the unweighted mean trend up to time <span class="math notranslate nohighlight">\(t_0\)</span></p></li>
-<li><p>if the weights create thes parallel trends, they should alos balance the latent factors <span class="math notranslate nohighlight">\(A_i\)</span></p></li>
+<li><p>if the weights create thes parallel trends, they should also balance the latent factors <span class="math notranslate nohighlight">\(A_i\)</span></p></li>
 <li><p><img alt="src:wager lecture notes" src="../../_images/synth_control_did.png" /></p>
 <ul>
 <li><p>trends are clearly not parallel, but after reweighting they become parallel</p></li>
@@ -1820,7 +1182,7 @@ M --&gt; Y
 </ul>
 </section>
 <section id="instrumental-variable">
-<h3><span class="section-number">4.4.4.6. </span>instrumental variable<a class="headerlink" href="#instrumental-variable" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.3.4.6. </span>instrumental variable<a class="headerlink" href="#instrumental-variable" title="Link to this heading">#</a></h3>
 <ul>
 <li><div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>graph LR
 I --&gt; T
@@ -1874,7 +1236,7 @@ T --&gt; Y
 </li>
 </ul>
 <section id="effect-under-non-compliance">
-<h4><span class="section-number">4.4.4.6.1. </span>effect under non-compliance<a class="headerlink" href="#effect-under-non-compliance" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">4.3.4.6.1. </span>effect under non-compliance<a class="headerlink" href="#effect-under-non-compliance" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p><strong>CACE</strong> <span class="math notranslate nohighlight">\(\tau_c\)</span> (complier average causal effect) = <strong>LATE</strong> (local average treatement effect)</p></li>
 <li><p>technical setting: <strong>noncompliance</strong> - sometimes treatment assigned <span class="math notranslate nohighlight">\(I\)</span> and treatment received <span class="math notranslate nohighlight">\(T\)</span> are different</p></li>
@@ -1940,13 +1302,13 @@ T --&gt; Y
 </section>
 </section>
 <section id="proximal-algorithms">
-<h3><span class="section-number">4.4.4.7. </span>proximal algorithms<a class="headerlink" href="#proximal-algorithms" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.3.4.7. </span>proximal algorithms<a class="headerlink" href="#proximal-algorithms" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/2108.06818">The Proximal ID Algorithm</a></p></li>
 </ul>
 </section>
 <section id="synthetic-data-experiments">
-<h3><span class="section-number">4.4.4.8. </span>synthetic data experiments<a class="headerlink" href="#synthetic-data-experiments" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.3.4.8. </span>synthetic data experiments<a class="headerlink" href="#synthetic-data-experiments" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/2007.06570">Towards causal benchmarking of bias in face analysis algorithms</a> (balakrishnan et al. 2020) - use GANs to generate synthetic data where only attribute varies</p></li>
 <li><p>causal imputation / causal transport = mapping bbetween different domains, where only one domain at a time is ever observed</p>
@@ -1965,10 +1327,12 @@ T --&gt; Y
 </section>
 </section>
 <section id="observational-analysis">
-<h2><span class="section-number">4.4.5. </span>observational analysis<a class="headerlink" href="#observational-analysis" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.3.5. </span>observational analysis<a class="headerlink" href="#observational-analysis" title="Link to this heading">#</a></h2>
 <p><em>The emphasis in this section is on ATE estimation, as an example of the considerations required for making causal conclusions. Observational analysis focuses on adjusting for observed confounding.</em></p>
+<p><img alt="Screenshot 2024-05-31 at 10.39.08 AM" src="notes/assets/Screenshot%202024-05-31%20at%2010.39.08%E2%80%AFAM.png" /></p>
+<p><img alt="Screenshot 2024-05-31 at 10.39.15 AM" src="notes/assets/Screenshot%202024-05-31%20at%2010.39.15%E2%80%AFAM.png" /></p>
 <section id="ate-estimation-basics">
-<h3><span class="section-number">4.4.5.1. </span>ATE estimation basics<a class="headerlink" href="#ate-estimation-basics" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.3.5.1. </span>ATE estimation basics<a class="headerlink" href="#ate-estimation-basics" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>assume we are given iid samples of <span class="math notranslate nohighlight">\(\{ X_i, T_i, Y_i^{T=1}, Y_i^{T=0} \}\)</span>, and drop the index <span class="math notranslate nohighlight">\(i\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\tau = E\{Y^{T=1} - Y^{T=0}\}\)</span>: <strong>average treatment effect (ATE)</strong> - goal is to estimate this</p></li>
@@ -2003,7 +1367,7 @@ T --&gt; Y
 </ul>
 </section>
 <section id="regression-adjustments">
-<h3><span class="section-number">4.4.5.2. </span>regression adjustments<a class="headerlink" href="#regression-adjustments" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.3.5.2. </span>regression adjustments<a class="headerlink" href="#regression-adjustments" title="Link to this heading">#</a></h3>
 <ul>
 <li><p>ATE <strong>conditional outcome modeling</strong> (all assume ignorability)</p>
 <ul class="simple">
@@ -2073,10 +1437,10 @@ U2 --&gt; Y
 </ul>
 </section>
 <section id="weighting-methods">
-<h3><span class="section-number">4.4.5.3. </span>weighting methods<a class="headerlink" href="#weighting-methods" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.3.5.3. </span>weighting methods<a class="headerlink" href="#weighting-methods" title="Link to this heading">#</a></h3>
 <p><em>Weighting methods assign a different importance weight to each unit to match the covariates distributions across treatment groups after reweighting. Balance is often used as a goodness of fit check after weighting (<a class="reference external" href="https://www.cambridge.org/core/books/causal-inference-for-statistics-social-and-biomedical-sciences/71126BE90C58F1A431FE9B2DD07938AB">imbens &amp; rubin 2015</a>).</em></p>
 <section id="inverse-propensity-weighting">
-<h4><span class="section-number">4.4.5.3.1. </span>inverse propensity weighting<a class="headerlink" href="#inverse-propensity-weighting" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">4.3.5.3.1. </span>inverse propensity weighting<a class="headerlink" href="#inverse-propensity-weighting" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p><strong>propensity score</strong> <span class="math notranslate nohighlight">\(e(X, Y^{T=1}, Y^{T=0}) = P\{T=1|X, Y^{T=1}, Y^{T=0}\}\)</span></p>
 <ul>
@@ -2131,7 +1495,7 @@ U2 --&gt; Y
 </ul>
 </section>
 <section id="doubly-robust-estimator">
-<h4><span class="section-number">4.4.5.3.2. </span>doubly robust estimator<a class="headerlink" href="#doubly-robust-estimator" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">4.3.5.3.2. </span>doubly robust estimator<a class="headerlink" href="#doubly-robust-estimator" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>combines weighting and regr. adjustment</p></li>
 <li><p><span class="math notranslate nohighlight">\(\hat \tau^{\text{dr}} = \hat \mu_1^{dr} - \hat \mu_0^{dr}\)</span> = <strong>doubly robust estimator</strong> = augmented inverse propensity score weighting estimator (<a class="reference external" href="https://www.tandfonline.com/doi/abs/10.1080/01621459.1994.10476818?casa_token=XYTwc8KlTqIAAAAA:zfCvbnWKpatYa1KbWIj9GUrCXpze65EEtzAuhuWD-Oztr7UBle1pivvp2481l-y_t08nScDMrql9">robins, rotnizky, &amp; zhao 1994</a>, scharfstein et al. 1999, <a class="reference external" href="https://onlinelibrary.wiley.com/doi/full/10.1111/j.1541-0420.2005.00377.x?casa_token=oqdc-GxLFTYAAAAA%3A7CETBzsiHXXEu23NM-sMJ1CXlgI6oeAxt1Ydca3wXmPoTGsORR0IEoYszCo1GzNLtYXGNgxU4blu4gLn">bang &amp; robins 2005</a>)</p>
@@ -2169,7 +1533,7 @@ U2 --&gt; Y
 </ul>
 </section>
 <section id="alternative-weighting">
-<h4><span class="section-number">4.4.5.3.3. </span>alternative weighting<a class="headerlink" href="#alternative-weighting" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">4.3.5.3.3. </span>alternative weighting<a class="headerlink" href="#alternative-weighting" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>solutions to deal with extreme weights (from assaad et al. 2020): <img alt="tilting_functions" src="../../_images/tilting_functions.png" /></p>
 <ul>
@@ -2179,7 +1543,7 @@ U2 --&gt; Y
 </ul>
 </li>
 <li><p>when estimating propensity scores with neural nets, often overconfident</p></li>
-<li><p>in general, there is a more general class of weights that can be used to balance covariates (<a class="reference external" href="https://www.tandfonline.com/doi/full/10.1080/01621459.2016.1260466?scroll=top&amp;needAccess=true">li, morgan, &amp; zaslavsky, 2016</a>)</p></li>
+<li><p>in general, there is a more general class of weights that can be used to balance covariates (<a class="reference external" href="https://www.tandfonline.com/doi/full/10.1080/01621459.2016.1260466?scroll=top&amp;amp;needAccess=true">li, morgan, &amp; zaslavsky, 2016</a>)</p></li>
 <li><p>directly incorporating covariate imbalance in weight construction (Graham et al., 2012; Diamond &amp; Sekhon, 2013)</p>
 <ul>
 <li><p>unifying perspective on these methods via covariate-balancing loss functions (<a class="reference external" href="https://projecteuclid.org/euclid.aos/1547197245">zhao, 2019</a>)</p></li>
@@ -2203,7 +1567,7 @@ U2 --&gt; Y
 </section>
 </section>
 <section id="stratification-matching">
-<h3><span class="section-number">4.4.5.4. </span>stratification / matching<a class="headerlink" href="#stratification-matching" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.3.5.4. </span>stratification / matching<a class="headerlink" href="#stratification-matching" title="Link to this heading">#</a></h3>
 <p><em>Matching methods choose try to to equate (or “balance’’) the distribution of covariates in the treated and control groups  by picking well-matched samples of the original treated and control groups</em></p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2943670/pdf/nihms200640.pdf">Matching methods for causal inference: A review and a look forward</a> (stuart 2010)</p>
@@ -2282,7 +1646,7 @@ U2 --&gt; Y
 </ul>
 </section>
 <section id="misc-methods">
-<h3><span class="section-number">4.4.5.5. </span>misc methods<a class="headerlink" href="#misc-methods" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.3.5.5. </span>misc methods<a class="headerlink" href="#misc-methods" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>double machine learning</p>
 <ul>
@@ -2306,9 +1670,9 @@ U2 --&gt; Y
 </section>
 </section>
 <section id="assumptions">
-<h2><span class="section-number">4.4.6. </span>assumptions<a class="headerlink" href="#assumptions" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.3.6. </span>assumptions<a class="headerlink" href="#assumptions" title="Link to this heading">#</a></h2>
 <section id="common-assumptions">
-<h3><span class="section-number">4.4.6.1. </span>common assumptions<a class="headerlink" href="#common-assumptions" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.3.6.1. </span>common assumptions<a class="headerlink" href="#common-assumptions" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>unconfoundedness</strong></p>
 <ul>
@@ -2425,9 +1789,9 @@ U2 --&gt; Y
 </ul>
 </section>
 <section id="assumption-checking">
-<h3><span class="section-number">4.4.6.2. </span>assumption checking<a class="headerlink" href="#assumption-checking" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.3.6.2. </span>assumption checking<a class="headerlink" href="#assumption-checking" title="Link to this heading">#</a></h3>
 <section id="check-ignorability-use-auxilary-outcome">
-<h4><span class="section-number">4.4.6.2.1. </span>check ignorability: use auxilary outcome<a class="headerlink" href="#check-ignorability-use-auxilary-outcome" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">4.3.6.2.1. </span>check ignorability: use auxilary outcome<a class="headerlink" href="#check-ignorability-use-auxilary-outcome" title="Link to this heading">#</a></h4>
 <ul>
 <li><p><strong>negative outcome</strong> - assume we have a secondary informative outcome <span class="math notranslate nohighlight">\(Y'\)</span></p>
 <ul class="simple">
@@ -2467,7 +1831,7 @@ T --&gt; Y
 </ul>
 </section>
 <section id="check-ignorability-impact-sensitivity-analysis-wrt-unmeasured-confounding">
-<h4><span class="section-number">4.4.6.2.2. </span>check ignorability impact: sensitivity analysis wrt unmeasured confounding<a class="headerlink" href="#check-ignorability-impact-sensitivity-analysis-wrt-unmeasured-confounding" title="Permalink to this headline">#</a></h4>
+<h4><span class="section-number">4.3.6.2.2. </span>check ignorability impact: sensitivity analysis wrt unmeasured confounding<a class="headerlink" href="#check-ignorability-impact-sensitivity-analysis-wrt-unmeasured-confounding" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>sensitivity analysis measures how “sensitive” a model is to changes in the value of the parameters / structure / assumptions of the model</p></li>
 <li><p>we focus on sensitivity analyses <em>wrt unmeasured confounding</em> - how strong the effects of an unobserved covariate <span class="math notranslate nohighlight">\(U\)</span> on the exposure and/or the outcome would have to be to change the study inference (estimated effect of <span class="math notranslate nohighlight">\(T\)</span> on <span class="math notranslate nohighlight">\(Y\)</span>)</p></li>
@@ -2503,7 +1867,7 @@ T --&gt; Y
 <ul>
 <li><p>this approach can relax some assumptions, such as the no-three-way-interaction assumption</p></li>
 <li><p>specifications: <span class="math notranslate nohighlight">\(P(U|T=1), P(U|T=0), OR_{\text{UY|T=1}}, OR_{\text{UY|T=0}}\)</span>(<a class="reference external" href="https://www.jstor.org/stable/2533848?casa_token=VUsEU1I6EgIAAAAA:RZQhdfGYtwlSb2GO_PQvR68CM-mx-RmOcoKMNImxX8-sMxd_M7nmVwWSn6CqVHs6ai0tqBWr54PvUfj--zqGtUFVEw-2Muw8y9HIXBQUoWYosF77m4-f">lin et al. 1998</a>)</p></li>
-<li><p>specifications: <span class="math notranslate nohighlight">\(P(U|T=1), P(U|T=0), OR_{\text{UY}}\)</span> (<a class="reference external" href="https://www.jstor.org/stable/29764679?casa_token=4Gd4twU75G8AAAAA%3AZw_K4QbIK3-VKJMKOzYICbDbW-YASmvJYLfMwyhWISXvnH-3u9S1F_vss66QYrlHpVEfcJar94PaKGKgPLheaTp2-KGD9CHDLLv4cGBkvn7igRzdlpoy&amp;seq=1#metadata_info_tab_contents">vanderweele &amp; arah, 2011</a>)</p></li>
+<li><p>specifications: <span class="math notranslate nohighlight">\(P(U|T=1), P(U|T=0), OR_{\text{UY}}\)</span> (<a class="reference external" href="https://www.jstor.org/stable/29764679?casa_token=4Gd4twU75G8AAAAA%3AZw_K4QbIK3-VKJMKOzYICbDbW-YASmvJYLfMwyhWISXvnH-3u9S1F_vss66QYrlHpVEfcJar94PaKGKgPLheaTp2-KGD9CHDLLv4cGBkvn7igRzdlpoy&amp;amp;seq=1#metadata_info_tab_contents">vanderweele &amp; arah, 2011</a>)</p></li>
 </ul>
 </li>
 </ul>
@@ -2524,7 +1888,7 @@ T --&gt; Y
 </ul>
 </li>
 <li><p>ex. bounds on direct effects with confounded intermediate variables (<a class="reference external" href="https://onlinelibrary.wiley.com/doi/full/10.1111/j.1541-0420.2007.00949.x?casa_token=WdtSDtKM_zsAAAAA%3AyEmvyHkEBk5qtvcj4p8r5ewrI5npbTts9J9IKRQyc4XmbpDvsmtIDy28sbOU2m32oT31ol2VM4Kb5w">Cai et al. 2008</a>)</p></li>
-<li><p><strong>bounds with no assumptions</strong> (<a class="reference external" href="https://www.jstor.org/stable/2006592?casa_token=5wsmh0n73ecAAAAA%3AGrmKG84ZmaGgvx7Xsadw_Gta7y59XrUMUe8IpYH-IWfN7mVx0p51Wte4H8m7zZy6l06TYQZeNHRgpz7cPAvXtrw2O6pABDcgYanESUXjuyhM7_9vAOws&amp;seq=1#metadata_info_tab_contents">manski 1990</a>)</p>
+<li><p><strong>bounds with no assumptions</strong> (<a class="reference external" href="https://www.jstor.org/stable/2006592?casa_token=5wsmh0n73ecAAAAA%3AGrmKG84ZmaGgvx7Xsadw_Gta7y59XrUMUe8IpYH-IWfN7mVx0p51Wte4H8m7zZy6l06TYQZeNHRgpz7cPAvXtrw2O6pABDcgYanESUXjuyhM7_9vAOws&amp;amp;seq=1#metadata_info_tab_contents">manski 1990</a>)</p>
 <ul>
 <li><p>worst-case bounds are very poor</p></li>
 <li><p>also bounds with monotone treatment response (<a class="reference external" href="https://ideas.repec.org/a/ecm/emetrp/v65y1997i6p1311-1334.html">manski, 1997</a>)</p></li>
@@ -2559,7 +1923,7 @@ T --&gt; Y
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./notes/stat"
         },
         predefinedOutput: true
@@ -2567,55 +1931,168 @@ T --&gt; Y
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="testing.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">4.3. </span>testing</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="graphical_models.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">4.2. </span>graphical models</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="info_theory.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="game_theory.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">4.5. </span>info theory</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+        <p class="prev-next-title"><span class="section-number">4.4. </span>game theory</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basics">4.3.1. basics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intuition">4.3.1.1. intuition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#measures-of-association">4.3.1.2. measures of association</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#causal-ladder-different-levels-of-inference">4.3.1.3. causal ladder (different levels of inference)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frameworks">4.3.2. frameworks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fisher-randomization-test">4.3.2.1. fisher randomization test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#potential-outcome-framework-neyman-rubin">4.3.2.2. potential outcome framework (neyman-rubin)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dags-structural-causal-models-pearl-et-al">4.3.2.3. DAGs / structural causal models (pearl et al.)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#randomized-experiments">4.3.3. randomized experiments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#design">4.3.3.1. design</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#stratification-matched-pairs-design">4.3.3.1.1. stratification / matched-pairs design</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rerandomization-balances-covariates">4.3.3.1.2. rerandomization balances covariates</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#post-hoc-analysis">4.3.3.2. post-hoc analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#statification-matching">4.3.3.2.1. statification / matching</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-adjustment-balances-covariates">4.3.3.2.2. regression adjustment balances covariates</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quasi-experiments">4.3.4. quasi-experiments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#natural-experiments">4.3.4.1. natural experiments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#back-door-criterion-capture-parents-of-t">4.3.4.2. back-door criterion: capture parents of T</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#front-door-criterion-good-mediator-variable">4.3.4.3. front-door criterion: good mediator variable</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-discontinuity-running-variable">4.3.4.4. regression discontinuity: running variable</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#difference-in-difference">4.3.4.5. difference-in-difference</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instrumental-variable">4.3.4.6. instrumental variable</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#effect-under-non-compliance">4.3.4.6.1. effect under non-compliance</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proximal-algorithms">4.3.4.7. proximal algorithms</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#synthetic-data-experiments">4.3.4.8. synthetic data experiments</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#observational-analysis">4.3.5. observational analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ate-estimation-basics">4.3.5.1. ATE estimation basics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-adjustments">4.3.5.2. regression adjustments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weighting-methods">4.3.5.3. weighting methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inverse-propensity-weighting">4.3.5.3.1. inverse propensity weighting</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#doubly-robust-estimator">4.3.5.3.2. doubly robust estimator</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-weighting">4.3.5.3.3. alternative weighting</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stratification-matching">4.3.5.4. stratification / matching</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#misc-methods">4.3.5.5. misc methods</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assumptions">4.3.6. assumptions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-assumptions">4.3.6.1. common assumptions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assumption-checking">4.3.6.2. assumption checking</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#check-ignorability-use-auxilary-outcome">4.3.6.2.1. check ignorability: use auxilary outcome</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#check-ignorability-impact-sensitivity-analysis-wrt-unmeasured-confounding">4.3.6.2.2. check ignorability impact: sensitivity analysis wrt unmeasured confounding</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Chandan Singh<br/>
+  <div class="footer-item">
+    
+<p class="component-author">
+By Chandan Singh
+</p>
+
+  </div>
   
-      &copy; Copyright None.<br/>
-    <div class="extra_footer">
-      <p>
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright None.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>
 Many of these images are taken from resources on the web.
 </p>
-    </div>
-</p>
-        </footer>
-    </div>
-    
 </div>
+  </div>
+  
+</div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

@@ -8,26 +8,32 @@ msgstr ""
 "Language: uk\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "Download this page"
-msgstr "Завантажте цю сторінку"
+msgid "By the"
+msgstr "По"
 
-msgid "Download notebook file"
-msgstr "Завантажте файл блокнота"
-
-msgid "Open an issue"
-msgstr "Відкрийте випуск"
-
-msgid "repository"
-msgstr "сховище"
-
-msgid "Theme by the"
-msgstr "Тема від"
+msgid "By"
+msgstr "Автор"
 
 msgid "Contents"
 msgstr "Зміст"
 
-msgid "next page"
-msgstr "Наступна сторінка"
+msgid "Copyright"
+msgstr "Авторське право"
+
+msgid "Download notebook file"
+msgstr "Завантажте файл блокнота"
+
+msgid "Download source file"
+msgstr "Завантажити вихідний файл"
+
+msgid "Download this page"
+msgstr "Завантажте цю сторінку"
+
+msgid "Edit this page"
+msgstr "Редагувати цю сторінку"
+
+msgid "Fullscreen mode"
+msgstr "Повноекранний режим"
 
 msgid "Last updated on"
 msgstr "Останнє оновлення:"
@@ -35,47 +41,35 @@ msgstr "Останнє оновлення:"
 msgid "Launch"
 msgstr "Запуск"
 
-msgid "Edit this page"
-msgstr "Редагувати цю сторінку"
-
-msgid "Source repository"
-msgstr "Джерело сховища"
-
-msgid "Download source file"
-msgstr "Завантажити вихідний файл"
-
-msgid "Sphinx Book Theme"
-msgstr "Тема книги \"Сфінкс\""
-
-msgid "Copyright"
-msgstr "Авторське право"
-
-msgid "Fullscreen mode"
-msgstr "Повноекранний режим"
-
-msgid "Search the docs ..."
-msgstr "Шукати в документах ..."
-
-msgid "suggest edit"
-msgstr "запропонувати редагувати"
-
-msgid "Search this book..."
-msgstr "Шукати в цій книзі ..."
-
-msgid "By"
-msgstr "Автор"
-
-msgid "open issue"
-msgstr "відкритий випуск"
+msgid "Open an issue"
+msgstr "Відкрийте випуск"
 
 msgid "Print to PDF"
 msgstr "Друк у форматі PDF"
 
-msgid "previous page"
-msgstr "Попередня сторінка"
+msgid "Source repository"
+msgstr "Джерело сховища"
+
+msgid "Sphinx Book Theme"
+msgstr "Тема книги \"Сфінкс\""
+
+msgid "Theme by the"
+msgstr "Тема від"
 
 msgid "Toggle navigation"
 msgstr "Переключити навігацію"
 
-msgid "By the"
-msgstr "По"
+msgid "next page"
+msgstr "Наступна сторінка"
+
+msgid "open issue"
+msgstr "відкритий випуск"
+
+msgid "previous page"
+msgstr "Попередня сторінка"
+
+msgid "repository"
+msgstr "сховище"
+
+msgid "suggest edit"
+msgstr "запропонувати редагувати"

@@ -8,20 +8,26 @@ msgstr ""
 "Language: ms\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "Download this page"
-msgstr "Muat turun halaman ini"
+msgid "By the"
+msgstr "Oleh"
+
+msgid "By"
+msgstr "Oleh"
+
+msgid "Copyright"
+msgstr "hak cipta"
 
 msgid "Download notebook file"
 msgstr "Muat turun fail buku nota"
 
-msgid "Open an issue"
-msgstr "Buka masalah"
+msgid "Download source file"
+msgstr "Muat turun fail sumber"
 
-msgid "Theme by the"
-msgstr "Tema oleh"
+msgid "Download this page"
+msgstr "Muat turun halaman ini"
 
-msgid "next page"
-msgstr "muka surat seterusnya"
+msgid "Edit this page"
+msgstr "Edit halaman ini"
 
 msgid "Last updated on"
 msgstr "Terakhir dikemas kini pada"
@@ -29,41 +35,32 @@ msgstr "Terakhir dikemas kini pada"
 msgid "Launch"
 msgstr "Lancarkan"
 
-msgid "Edit this page"
-msgstr "Edit halaman ini"
-
-msgid "Source repository"
-msgstr "Repositori sumber"
-
-msgid "Download source file"
-msgstr "Muat turun fail sumber"
-
-msgid "Sphinx Book Theme"
-msgstr "Tema Buku Sphinx"
-
-msgid "Copyright"
-msgstr "hak cipta"
-
-msgid "suggest edit"
-msgstr "cadangkan edit"
-
-msgid "Search this book..."
-msgstr "Cari buku ini ..."
-
-msgid "By"
-msgstr "Oleh"
-
-msgid "open issue"
-msgstr "isu terbuka"
+msgid "Open an issue"
+msgstr "Buka masalah"
 
 msgid "Print to PDF"
 msgstr "Cetak ke PDF"
 
-msgid "previous page"
-msgstr "halaman sebelumnya"
+msgid "Source repository"
+msgstr "Repositori sumber"
+
+msgid "Sphinx Book Theme"
+msgstr "Tema Buku Sphinx"
+
+msgid "Theme by the"
+msgstr "Tema oleh"
 
 msgid "Toggle navigation"
 msgstr "Togol navigasi"
 
-msgid "By the"
-msgstr "Oleh"
+msgid "next page"
+msgstr "muka surat seterusnya"
+
+msgid "open issue"
+msgstr "isu terbuka"
+
+msgid "previous page"
+msgstr "halaman sebelumnya"
+
+msgid "suggest edit"
+msgstr "cadangkan edit"
