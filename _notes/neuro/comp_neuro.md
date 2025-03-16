@@ -1122,10 +1122,14 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - NeuroQuery, comprehensive meta-analysis of human brain mapping ([dockes, poldrack, ..., yarkonig, suchanek, thirion, & varoquax](https://elifesciences.org/articles/53385)) [[website](https://neuroquery.org/query?text=checkerboard)]
     - train on keywords to directly predict weights for each query-expanded keyword and the produce linearly combined brainmap
 
-## speech
+## speech / ECoG
 
 - Improving semantic understanding in speech language models via brain-tuning ([moussa, klakow, & toneva, 2024](https://arxiv.org/abs/2410.09230))
-- BrainWavLM: Fine-tuning Speech Representations with Brain Responses to Language ([vattikonda, vaidya, antonello, & huth, 2025](https://arxiv.org/abs/2502.08866))
+  - BrainWavLM: Fine-tuning Speech Representations with Brain Responses to Language ([vattikonda, vaidya, antonello, & huth, 2025](https://arxiv.org/abs/2502.08866))
+
+- A shared model-based linguistic space for transmitting our thoughts from brain to brain in natural conversations ([zada…hasson, 2024](https://www.cell.com/neuron/fulltext/S0896-6273(24)00460-4))
+  - previous inter-subject correlation analyses directly map between speaker’s brain activity & listener’s brain activity during communication
+  - this work adds a semantic feature space to predict speaker/listener activity & partitions predicting the other person’s brain activity from these
 
 
 # advanced topics

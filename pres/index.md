@@ -5,10 +5,10 @@ title: presentations
 
 *Links to many of my presentations*
 
-## 2024
-- [Using LLMs to bridge data-driven models and scientific theories in language neuroscience](https://docs.google.com/presentation/d/1g0EPeyemIM7FW1mv8CA97fE5E7kIZJmbQbYMHuNXLWs/edit?usp=sharing)
+## 2024 / 2025
+- [Using LLMs to bridge data-driven models and scientific theories in language neuroscience](https://docs.google.com/presentation/d/1bFZZ8-OwwNxN3DjPdyPFKuP16yyYTP9DlaTzKOaYVWI/)
     - <details>
-    <summary>UCSF talk</summary>
+    <summary>UCSF Biostat talk (45-min)</summary>
     Title: Using LLMs to bridge data-driven models and scientific theories in language neuroscience<br/><br/>
     Abstract: Science faces an explainability crisis: data-driven deep learning methods are proving capable of *predicting* many natural phenomena but not at *explaining* them. One emblematic field is language neuroscience, where LLMs are highly effective at predicting human brain responses to natural language, but are virtually impossible to interpret or analyze by hand. To overcome this challenge, we introduce a framework that translates deep learning models of language selectivity in the brain into concise verbal explanations, and then designs follow-up experiments to verify that these explanations are causally related to brain activity. This approach is successful at explaining selectivity both in individual voxels and cortical regions of interest, demonstrating that LLMs can be used to bridge the widening gap between data-driven models and formal scientific theories. This talk covers 2 papers: Benara et al. ([NeurIPS 2024](https://arxiv.org/abs/2405.16714v1)) & Antonello et al. ([arXiv, 2024](https://arxiv.org/abs/2410.00812)).
     </details>

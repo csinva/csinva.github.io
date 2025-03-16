@@ -8,25 +8,23 @@ category: research
 
 {:toc}
 
+The definition of interpretability I like most is that given in [murdoch et al. 2019](https://arxiv.org/abs/1901.04592), which states that  interpretability needs to be grounded in order to be useful. Specifically, interpretability is only defined with respect to a specific audience + problem and an interpretation should be evaluated in terms of how well it benefits that context. 
+
 ![](https://csinva.io/notes/cheat_sheets/interp.svg)
 
-# reviews
+<details>
+  <summary>Useful overview figures from the papers below</summary>
+	<p>
+	<img class="medium_image" src="../assets/black_box_explainers.png"/>
+	<img class="medium_image" src="../assets/black_box_explainers_legend.png"/>
+	<img class="medium_image" src="../assets/explainers_table.png"/>
+	<img class="medium_image" src="../assets/vims.png"/>
+</p>
+</details>
 
-## definitions
-
-The definition of interpretability I find most useful is that given in [murdoch et al. 2019](https://arxiv.org/abs/1901.04592): basically that interpretability requires a pragmatic approach in order to be useful. As such, interpretability is only defined with respect to a specific audience + problem and an interpretation should be evaluated in terms of how well it benefits a specific context. It has been defined and studied more broadly in a variety of works:
-
-- Explore, Explain and Examine Predictive Models ([biecek & burzykowski, in progress](https://pbiecek.github.io/ema/)) - another book on exploratory analysis with interpretability
-- [Explanation Methods in Deep Learning: Users, Values, Concerns and Challenges](https://arxiv.org/abs/1803.07517) (ras et al. 2018)
-- [Explainable Deep Learning: A Field Guide for the Uninitiated](https://arxiv.org/pdf/2004.14545.pdf)
-- [Explainable AI: A Brief Survey on History, Research Areas, Approaches and Challenges](https://link.springer.com/chapter/10.1007/978-3-030-32236-6_51)
-- [Explainable Artificial Intelligence (XAI): Concepts, Taxonomies, Opportunities and Challenges toward Responsible AI](https://arxiv.org/abs/1910.10045)
-- [Against Interpretability: a Critical Examination of the Interpretability Problem in Machine Learning](https://link.springer.com/article/10.1007/s13347-019-00372-9) - "where possible, discussion should be reformulated in terms of the ends of interpretability"
-
-
-
-## overviews
-
+- Feature (variable) importance measurement review (VIM) ([wei et al. 2015](https://www.sciencedirect.com/science/article/pii/S0951832015001672) )
+  - often-termed sensitivity, contribution, or impact
+  - some of these can be applied to data directly w/out model (e.g. correlation coefficient, rank correlation coefficient, moment-independent VIMs)
 - Towards a Generic Framework for Black-box Explanation Methods ([henin & metayer 2019](https://hal.inria.fr/hal-02131174v2/document))
   - sampling - selection of inputs to submit to the system to be explained
   - generation - analysis of links between selected inputs and corresponding outputs to generate explanations
@@ -34,28 +32,20 @@ The definition of interpretability I find most useful is that given in [murdoch 
     2. *explanation generation* - explains the proxy (ex. just give most important 2 features in rule list proxy, ex. LIME gives coefficients of linear model, Shap: sums of elements)
   - interaction (with the user)
   - this is a super useful way to think about explanations (especially local), but doesn't work for SHAP / CD which are more about how much a variable contributes rather than a local approximation
-
-<img class="medium_image" src="../assets/black_box_explainers.png"/>
-
-<img class="medium_image" src="../assets/black_box_explainers_legend.png"/>
-
-<img class="medium_image" src="../assets/explainers_table.png"/>
-
-- [feature (variable) importance measurement review (VIM)](https://www.sciencedirect.com/science/article/pii/S0951832015001672) (wei et al. 2015)
-  - often-termed sensitivity, contribution, or impact
-  - some of these can be applied to data directly w/out model (e.g. correlation coefficient, rank correlation coefficient, moment-independent VIMs)
-  - <img class="medium_image" src="../assets/vims.png"/>
-- [Pitfalls to Avoid when Interpreting Machine Learning Models](https://arxiv.org/pdf/2007.04131.pdf) (molnar et al. 2020)
-- [Interpretable Machine Learning: Fundamental Principles and 10 Grand Challenges](https://arxiv.org/abs/2103.11251) (rudin et al. '21)
-- [Feature Removal Is a Unifying Principle for Model Explanation Methods](https://arxiv.org/abs/2011.03623#:~:text=Feature%20Removal%20Is%20a%20Unifying%20Principle%20for%20Model%20Explanation%20Methods,-Ian%20Covert%2C%20Scott&text=Exposing%20the%20fundamental%20similarities%20between,ongoing%20research%20in%20model%20explainability.) (covert, lundberg, & lee 2020)
+- Interpretable Machine Learning: Fundamental Principles and 10 Grand Challenges ([rudin et al. '21](https://arxiv.org/abs/2103.11251)) - emphasizes building glass-box models
 
 # evaluating interpretability
 
-Evaluating interpretability can be very difficult (largely because it rarely makes sense to talk about interpretability outside of a specific context). The best possible evaluation of interpretability requires benchmarking it with respect to the relevant audience in a context. For example, if an interpretation claims to help understand radiology models, it should be tested based on how well it helps radiologists when actually making diagnoses. The papers here try to find more generic alternative ways to evaluate interp methods (or just define desiderata to do so).
+Evaluating interpretability is often fraught (largely because it rarely makes sense to talk about interpretability outside of a specific context, so ML conference papers instead evaluate whatever proxy makes their method look good). The best possible evaluation of interpretability requires benchmarking it with respect to the relevant audience in a context. For example, if an interpretation claims to help understand radiology models, it should be tested based on how well it helps radiologists when actually making diagnoses. The papers here try to find more generic alternative ways to evaluate interp methods (or just define desiderata to do so).
 
 - Towards A Rigorous Science of Interpretable Machine Learning ([doshi-velez & kim 2017](https://arxiv.org/pdf/1702.08608.pdf))
-  - ![](../assets/interp_eval_table.png)
-
+  
+  - |                                  | Humans         | Tasks        |
+    | :------------------------------- | :------------- | :----------- |
+    | Application-grounded Evaluation  | Real  Humans   | Real Tasks   |
+    | Human-grounded Evaluation        | Real Humans    | Simple Tasks |
+    | Functionally-grounded Evaluation | No Real Humans | Proxy Tasks  |
+  
 - Feature importance
 
   - Benchmarking Attribution Methods with Relative Feature Importance ([yang & kim 2019](https://arxiv.org/abs/1907.09701)) - train a classifier, add random stuff (like dogs) to the image, classifier should assign them little importance
@@ -80,48 +70,40 @@ Evaluating interpretability can be very difficult (largely because it rarely mak
     - fidelity (does explanation reflect the target system well)
     - persuasibility (does human satisfy or comprehend explanation well)
 
-  - [On the (In)fidelity and Sensitivity for Explanations](https://arxiv.org/abs/1901.09392)
-  - [On Validating, Repairing and Refining Heuristic ML Explanations](https://arxiv.org/abs/1907.02509)
-  - [How Much Can We See? A Note on Quantifying Explainability of Machine Learning Models](https://arxiv.org/abs/1910.13376)
-  - [Towards a Framework for Validating Machine Learning Results in Medical Imaging](https://dl.acm.org/citation.cfm?id=3332193)
-  - [An Integrative 3C evaluation framework for Explainable Artificial Intelligence](https://aisel.aisnet.org/amcis2019/ai_semantic_for_intelligent_info_systems/ai_semantic_for_intelligent_info_systems/10/)
-
-## saliency maps
-
-- Sanity Checks for Saliency Maps ([adebayo et al. 2018](https://papers.nips.cc/paper/8160-sanity-checks-for-saliency-maps.pdf))
-  - **Model Parameter Randomization Test** - attributions should be different for trained vs random model, but they aren't for many attribution methods
-- Rethinking the Role of Gradient-based Attribution Methods for Model Interpretability ([srinivas & fleuret, 2021](https://openreview.net/forum?id=dYeAHXnpWJ4))
-  - logits can be arbitrarily shifted without affecting preds / gradient-based explanations
-  - gradient-based explanations then, don't necessarily capture info about $p_\theta(y|x)$
-- [Assessing the (Un)Trustworthiness of Saliency Maps for Localizing Abnormalities in Medical Imaging](https://www.medrxiv.org/content/10.1101/2020.07.28.20163899v1.full.pdf) (arun et al. 2020) - CXR images from SIIM-ACR Pneumothorax Segmentation + RSNA Pneumonia Detection
-  - metrics: localizers (do they overlap with GT segs/bounding boxes), variation with model weight randomization, repeatable (i.e. same after retraining?), reproducibility (i.e. same after training different model?)
-- [Interpretable Deep Learning under Fire](https://arxiv.org/abs/1812.00891) (zhang et al. 2019)
-- Wittgenstein: "if a lion could speak, we could not understand him."
-- Evaluating the Utility of Model Explanations for Model Development ([im, andreas, & zhao, 2023](https://arxiv.org/abs/2312.06032))
-
 ## human-centric
-
-- An Evaluation of the Human-Interpretability of Explanation ([lage...been kim, gershman, doshi-velez 2019](https://arxiv.org/pdf/1902.00006.pdf)) - controlled human experiments as a few key aspects (explanation length, number of concepts, repeated terms) are varied
 
 - Interpreting Interpretability: Understanding Data Scientists’ Use of Interpretability Tools for Machine Learning ([kaur, ..., caruana, wallach, vaughan, 2020](https://dl.acm.org/doi/pdf/10.1145/3313831.3376219))
   - used contextual inquiry + survey of data scientists (SHAP & InterpretML GAMs)
   - results indicate that data scientists over-trust and misuse interpretability tools 
   - few of our participants were able to accurately describe the visualizations output by these tools
 
+- An Evaluation of the Human-Interpretability of Explanation ([lage...been kim, gershman, doshi-velez 2019](https://arxiv.org/pdf/1902.00006.pdf)) - controlled human experiments as a few key aspects (explanation length, number of concepts, repeated terms) are varied
 - Manipulating and Measuring Model Interpretability ([sangdeh ... vaughan, wallach 2019](https://arxiv.org/abs/1802.07810))
   - participants who were shown a clear model with a small number of features were better able to simulate the model’s predictions
   - no improvements in the degree to which participants followed the model’s predictions when it was beneficial to do so.
   - increased transparency hampered people’s ability to detect when the model makes a sizable mistake and correct for it, seemingly due to information overload
 - On Evaluating Explanation Utility for Human-AI Decision-Making in NLP ([chaleshtori, ghoshal, marasovic, 2023](https://openreview.net/pdf?id=8BR8EaWNTZ)) - different human evaluations of NLP explanations have succeeded in different ways (meta-analysis)
+- Evaluating the Utility of Model Explanations for Model Development ([im, andreas, & zhao, 2023](https://arxiv.org/abs/2312.06032))
 
-## adv. vulnerabilities
+## interpretation weaknesses & sanity checks
 
-- [Interpretation of Neural Networks is Fragile](https://arxiv.org/abs/1710.10547) (ghorbani et al. 2018)
+- Sanity Checks for Saliency Maps ([adebayo et al. 2018](https://papers.nips.cc/paper/8160-sanity-checks-for-saliency-maps.pdf))- test what happens when randomizing model parameters - attributions should be different for trained vs random model, but they aren't for many attribution methods
+- Rethinking the Role of Gradient-based Attribution Methods for Model Interpretability ([srinivas & fleuret, 2021](https://openreview.net/forum?id=dYeAHXnpWJ4))
+  - logits can be arbitrarily shifted without affecting preds / gradient-based explanations
+  - gradient-based explanations then, don't necessarily capture info about $p_\theta(y|x)$
+
+- Interpretation of Neural Networks is Fragile ([ghorbani et al. 2018](https://arxiv.org/abs/1710.10547))
   - minor perturbations to inputs can drastically change DNN interpretations
-- [How can we fool LIME and SHAP? Adversarial Attacks on Post hoc Explanation Methods](https://arxiv.org/abs/1911.02508) (slack, ..., singh, lakkaraju, 2020)
+  - <details>
+    <summary>Intuition figure</summary>
+    <p>	<img class="medium_image" src="../assets/Screenshot%202025-03-14%20at%202.22.58%E2%80%AFPM.png"/>
+    </p>
+    </details>
+- How can we fool LIME and SHAP? Adversarial Attacks on Post hoc Explanation Methods ([slack, ..., singh, lakkaraju, 2020](https://arxiv.org/abs/1911.02508))
   - we can build classifiers which use important features (such as race) but explanations will not reflect that
   - basically classifier is different on X which is OOD (and used by LIME and SHAP)
-- [Fooling Neural Network Interpretations via Adversarial Model Manipulation](https://arxiv.org/abs/1902.02041) (heo, joo, & moon 2019) - can change model weights so that it keeps predictive accuracy but changes its interpretation
+  
+- Fooling Neural Network Interpretations via Adversarial Model Manipulation ([heo, joo, & moon 2019](https://arxiv.org/abs/1902.02041)) - can change model weights so that it keeps predictive accuracy but changes its interpretation
   - motivation: could falsely look like a model is "fair" because it places little saliency on sensitive attributes
     - output of model can still be checked regardless
   - fooled interpretation generalizes to entire validation set
@@ -129,9 +111,15 @@ Evaluating interpretability can be very difficult (largely because it rarely mak
     - passive fooling - highlighting uninformative pixels of the image
     - active fooling - highlighting a completely different object, the firetruck
   - **model does not actually change that much** - predictions when manipulating pixels in order of saliency remains similar, very different from random (fig 4)
-- [Counterfactual Explanations Can Be Manipulated](https://arxiv.org/abs/2106.02666) (slack,...,singh, 2021) - minor changes in the training objective can drastically change counterfactual explanations
+  
+- Counterfactual Explanations Can Be Manipulated ([slack,...,singh, 2021](https://arxiv.org/abs/2106.02666)) - minor changes in the training objective can drastically change counterfactual explanations
 
-# intrinsic interpretability (i.e. how can we fit a simpler model)
+- Do Input Gradients Highlight Discriminative Features? ([shah et a. 2021](https://arxiv.org/abs/2102.12781)) - input gradients often don't highlight relevant features (they work better for adv. robust models)
+
+  - prove/demonstrate this in synthetic dataset where $x=ye_i$ for standard basis vector $e_i$, $y=\{\pm 1\}$
+
+
+# intrinsic interpretability (i.e. how can we fit a simpler model) = transparent models
 
 For an implementation of many of these models, see the python [imodels package](https://github.com/csinva/imodels).
 
@@ -139,15 +127,17 @@ For an implementation of many of these models, see the python [imodels package](
 
 *📌 see also notes on [logic](https://csinva.io/notes/ai/logic.html)*
 
+![rule_models](../assets/rule_models-6174107.png)
+
 - 2 basic concepts for a rule
-  - converage = support
+  - coverage = support
   - accuracy = confidence = consistency
     - measures for rules: precision, info gain, correlation, m-estimate, Laplace estimate
-- these algorithms usually don't support regression, but you can get regression by cutting the outcome into intervals
+- these algorithms often don't natively supportregression, but you can get regression by cutting the outcome into intervals
 - why might these be useful?
-  - [The Magical Mystery Four: How is Working Memory Capacity Limited, and Why?](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2864034/) (cowan, 2010) - a central memory store limited to 3 to 5 meaningful items in young adults
-
-- [Feldman (2000)](https://pubmed.ncbi.nlm.nih.gov/11034211/): humans can understand logical rules with boolean complexity of up to 5–9, depending on their ability, where the boolean complexity is the length of the shortest Boolean formula logically equivalent to the concept, usually expressed in terms of the number of literals
+  - The Magical Mystery Four: How is Working Memory Capacity Limited, and Why? ([cowan, 2010](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2864034/) ) - a central memory store is limited to 3 to 5 meaningful items in young adults
+  - [Feldman (2000)](https://pubmed.ncbi.nlm.nih.gov/11034211/): humans can understand logical rules with boolean complexity of up to 5–9, depending on their ability, where the boolean complexity is the length of the shortest Boolean formula logically equivalent to the concept, usually expressed in terms of the number of literals
+  
 - connections
   - every decision list is a (one-sided) decision tree
   - every decision tree can be expressed as an equivalent decision list (by listing each path to a leaf as a decision rule)
@@ -156,8 +146,6 @@ For an implementation of many of these models, see the python [imodels package](
   1. mathematical programming, including mixed integer programming (MIP) / SAT solvers
   2. stochastic search through the space of trees
   3. customized dynamic programming algorithms that incorporate branch-and-bound techniques for reducing the size of the search space
-
-![rule_models](../assets/rule_models-6174107.png)
 
 ### rule sets
 
@@ -176,7 +164,7 @@ For an implementation of many of these models, see the python [imodels package](
     - note: from every pair of complementary singleton rules (e.g., $X_j \leq1$, $X_j > 1$), they remove one member as otherwise the pair together is collinear
   - [Multivariate Adaptive Regression Splines (MARS)](https://www.jstor.org/stable/2241837?casa_token=15XQTGF9ItgAAAAA%3A3dmi0WboPsb0TMDj6d0yefz1YUWUrQmKzh21NvMgpyQ_gbuveUibjIQY2Gq6J8C9-9HJ70QZns9x2MfB70dEGlll5RIgZ_VS3qPhRbbBMsrLwuD8H-0wmQ&seq=1#metadata_info_tab_contents) (friedman, 1991) - sequentially learn weighted linear sum of ReLus (or products of ReLus)
     - do backward deletion procedure at the end
-    - [MARS via LASSO](https://arxiv.org/pdf/2111.11694.pdf) (ki, fang, & guntuboyina, 2021) - MARS but use LASSO
+    - [MARS via LASSO](https://arxiv.org/pdf/2111.11694.pdf) (ki, fang, & guntuboyina, 2021)
   - [Hardy-Krause denoising](https://arxiv.org/abs/1903.01395) (fang, guntuboyina, & sen, 2020) - builds additive models of piecewise constant functions along with interactions and then does LASSO on them
 - more recent global versions of learning rule sets
   - [interpretable decision set](https://dl.acm.org/citation.cfm?id=2939874) (lakkaraju et al. 2016) - set of if then rules
@@ -192,10 +180,11 @@ For an implementation of many of these models, see the python [imodels package](
 ### rule lists
 
 - oneR algorithm - select feature that carries most information about the outcome and then split multiple times on that feature
-- **sequential covering** - keep trying to cover more points sequentially
+- sequential covering - keep trying to cover more points sequentially
 - pre-mining frequent patterns (want them to apply to a large amount of data and not have too many conditions)
   - FP-Growth algorithm (borgelt 2005) is fast
   - Aprior + Eclat do the same thing, but with different speeds
+  - [random intersection trees](https://arxiv.org/pdf/1303.6223.pdf)
 - [interpretable classifiers using rules and bayesian analysis](https://projecteuclid.org/download/pdfview_1/euclid.aoas/1446488742) (letham et al. 2015)
   - start by pre-mining frequent patterns rules
     - current approach does not allow for negation (e.g. not diabetes) and must split continuous variables into categorical somehow (e.g. quartiles)
@@ -212,13 +201,23 @@ For an implementation of many of these models, see the python [imodels package](
 - [Expert-augmented machine learning](https://arxiv.org/abs/1903.09731) (gennatas et al. 2019)
   - make rule lists, then compare the outcomes for each rule with what clinicians think should be outcome for each rule
   - look at rules with biggest disagreement and engineer/improve rules or penalize unreliable rules
-- [Fast and frugal heuristics: The adaptive toolbox. - APA PsycNET](https://psycnet.apa.org/record/1999-04366-001) (gigerenzer et al. 1999) - makes rule lists that can split on either node of the tree each time
+- [Fast and frugal heuristics: The adaptive toolbox.](https://psycnet.apa.org/record/1999-04366-001) (gigerenzer et al. 1999) - makes rule lists that can split on either node of the tree each time
 
 ### trees
 
 *Trees suffer from the fact that they have to cover the entire decision space and often we end up with replicated subtrees.*
 
+- history
+  
+  - automatic interaction detection (AID) regression trees (Morgan & Sonquist, 1963)
+  - THeta Automatic Interaction Detection (THAID) classification trees (Messenger & Mandell, 1972)
+  - Chi-squared Automatic Interaction Detector (CHAID) (Kass, 1980)
+  - CART: Classification And Regression Trees  ([Breiman et al. 1984](https://www.taylorfrancis.com/books/mono/10.1201/9781315139470/classification-regression-trees-leo-breiman-jerome-friedman-richard-olshen-charles-stone)) - splits on GINI
+  - ID3 (Quinlan, 1986)
+  - C4.5 (Quinlan, 1993) - splits on binary entropy instead of GINI
+  
 - optimal trees
+  
   - motivation
     - cost-complexity pruning ([breiman et al. 1984](https://www.taylorfrancis.com/books/mono/10.1201/9781315139470/classification-regression-trees-leo-breiman-jerome-friedman-richard-olshen-charles-stone) ch 3) - greedily prune while minimizing loss function of loss + $\lambda \cdot (\text{numLeaves})$
     - replicated subtree problem ([Bagallo & Haussler, 1990](https://link.springer.com/content/pdf/10.1007/BF00115895.pdf)) - they propose iterative algorithms to try to overcome it
@@ -246,7 +245,7 @@ For an implementation of many of these models, see the python [imodels package](
     - optimal classification trees on PECARN TBI ([bertsimas et al. 2019](https://jamanetwork.com/journals/jamapediatrics/article-abstract/2733157))
   - Learning Optimal Fair Classification Trees ([jo et al. 2022](https://arxiv.org/pdf/2201.09932.pdf))
   - Better Short than Greedy: Interpretable Models through Optimal Rule Boosting ([boley, ..., webb, 2021](https://epubs.siam.org/doi/pdf/10.1137/1.9781611976700.40)) - find optimal tree **ensemble** (only works for very small data)
-
+  
 - connections with boosting
   - Fast Interpretable Greedy-Tree Sums (FIGS) ([tan et al. 2022](https://arxiv.org/abs/2201.11931)) - extend cart to learn concise tree ensembles 🌳 ➡️ 🌱+🌱
     - very nice results for generalization + disentanglement
@@ -278,8 +277,8 @@ For an implementation of many of these models, see the python [imodels package](
 
   - Hierarchical Shrinkage: improving accuracy and interpretability of tree-based methods ([agarwal et al. 2021](https://arxiv.org/abs/2202.00858)) - post-hoc shrinkage improves trees
   - Hierarchical priors for Bayesian CART shrinkage ([chipman & mcculloch, 2000](https://link.springer.com/article/10.1023/A:1008980332240))
-  - [Connecting Interpretability and Robustness in Decision Trees through Separation](https://arxiv.org/abs/2102.07048) (moshkovitz et al. 2021)
-  - [Efficient Training of Robust Decision Trees Against Adversarial Examples](https://arxiv.org/abs/2012.10438)
+  - Connecting Interpretability and Robustness in Decision Trees through Separation ([moshkovitz et al. 2021](https://arxiv.org/abs/2102.07048))
+    - [Efficient Training of Robust Decision Trees Against Adversarial Examples](https://arxiv.org/abs/2012.10438)
   - [Robust Decision Trees Against Adversarial Examples](https://arxiv.org/abs/1902.10660) (chen, ..., hsieh, 2019)
     - optimize tree performance under worst-case input-feature perturbation
 
@@ -294,34 +293,22 @@ For an implementation of many of these models, see the python [imodels package](
 
   - Density Estimation Trees ([ram & gray, 2011](https://mlpack.org/papers/det.pdf))
   - Sparse Density Trees and Lists: An Interpretable Alternative to High-Dimensional Histograms ([goh, semenova, & rudin, 2024](https://pubsonline.informs.org/doi/pdf/10.1287/ijds.2021.0001))
+  - On the price of explainability for some clustering problems ([laber et al. 2021](https://arxiv.org/abs/2101.01576)) - trees for clustering
+  - Interpretable clustering: an optimization approach ([bertsimas…wilberg, 2020](https://link.springer.com/article/10.1007/s10994-020-05896-2))
 
-- history
-  - automatic interaction detection (AID) regression trees (Morgan & Sonquist, 1963)
-  - THeta Automatic Interaction Detection (THAID) classification trees (Messenger & Mandell, 1972)
-  - Chi-squared Automatic Interaction Detector (CHAID) (Kass, 1980)
-  - CART: Classification And Regression Trees  ([Breiman et al. 1984](https://www.taylorfrancis.com/books/mono/10.1201/9781315139470/classification-regression-trees-leo-breiman-jerome-friedman-richard-olshen-charles-stone)) - splits on GINI
-  - ID3 (Quinlan, 1986)
-  - C4.5 (Quinlan, 1993) - splits on binary entropy instead of GINI
-
-- open problems
-  - ensemble methods
-  - improvements in splitting criteria, missing variables
-  - longitudinal data, survival curves
-
+- open problems: ensemble methods, improvements in splitting criteria, missing variables, longitudinal data, survival curves
+  
 - misc
   
   - On the Power of Decision Trees in Auto-Regressive Language Modeling ([gan, galanti, poggio, malach, 2024](https://arxiv.org/pdf/2409.19150))
     - get token word embeddings
     - compute exp. weighted avg of embeddings (upweights most recent tokens)
     - predicts next embedding with XGBoost (regression loss) then finds closest token
-  
   - counterfactuals
     - [Counterfactual Explanations for Oblique Decision Trees: Exact, Efficient Algorithms](https://arxiv.org/abs/2103.01096) (2021)
     - [Optimal Counterfactual Explanations in Tree Ensembles](https://arxiv.org/abs/2106.06631)
     - [Desiderata for Interpretability: Explaining Decision Tree Predictions with Counterfactuals](https://ojs.aaai.org//index.php/AAAI/article/view/5154)
-  - [Human knowledge models: Learning applied knowledge from the data | PLOS ONE](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0275814) (dudyrev...pianykh, 2022) - very concise logic model
-  - On the price of explainability for some clustering problems ([laber et al. 2021](https://arxiv.org/abs/2101.01576)) - trees for clustering
-  - Interpretable clustering: an optimization approach ([bertsimas…wilberg, 2020](https://link.springer.com/article/10.1007/s10994-020-05896-2))
+  - [Human knowledge models: Learning applied knowledge from the data](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0275814) (dudyrev...pianykh, 2022) - very concise logic model
   - extremely randomized trees ([geurts ernst, & wehenkel, 2006](https://link.springer.com/article/10.1007/s10994-006-6226-1)) - randomness goes further than Random Forest - randomly select not only the feature but also the split thresholds (and select the best out of some random set)
   - Constraint Enforcement on Decision Trees: A Survey ([nanfack...brenay, 2022](https://dl.acm.org/doi/pdf/10.1145/3506734))
     - 3 classes of constraints
@@ -339,9 +326,9 @@ For an implementation of many of these models, see the python [imodels package](
 
 ### decision diagrams
 
-*=decision graphs / decision streams*
+*Also called decision graphs / decision streams*
 
-- Many algorithms for learning diagrams, usually by postprocessing a given tree (and taking an MDL perspective)
+- Algorithms for learning diagrams usually postprocess a given tree (and taking an MDL perspective)
 - Decision diagrams for model compression
   - [Simplifying decision trees: A survey](https://www.cambridge.org/core/journals/knowledge-engineering-review/article/abs/simplifying-decision-trees-a-survey/CEE7A6994E66E821DB4A12DD83DC3810) (breslow & aha, 1997)
   - [Large Random Forests: Optimisation for Rapid Evaluation](https://arxiv.org/abs/1912.10934) (gossen & steffen, 2019)
@@ -352,7 +339,7 @@ For an implementation of many of these models, see the python [imodels package](
   - merge nodes from different branches based on their similarity that is estimated with two-sample test statistics
   - nothing to do with deep learning
 
-- recent interpretability
+- misc
   - [Optimizing Binary Decision Diagrams for Interpretable Machine Learning Classification](https://ieeexplore.ieee.org/abstract/document/9474083) (cabodi et al. 2021)
   - proposing a SAT-based model for computing a decision tree as the smallest Reduced Ordered Binary Decision Diagram
   - exploring heuristic approaches for deriving sub-optimal (i.e., not minimal) ROBDDs, in order to improve the scalability of the proposed technique.
@@ -362,27 +349,10 @@ For an implementation of many of these models, see the python [imodels package](
 
 ## linear (+algebraic) models
 
-### supersparse models
-
-- four main types of approaches to building scoring systems
-  1. exact solutions using optimization techniques (often use MIP)
-  2. approximation algorithms using linear programming (use L1 penalty instead of L0)
-     1. can also try sampling
-  3. more sophisticated rounding techniques - e.g. random, constrain sum, round each coef sequentially
-  4. computeraided exploration techniques
-- [Supersparse linear integer models for optimized medical scoring systems](https://link.springer.com/content/pdf/10.1007/s10994-015-5528-6.pdf) (ustun & rudin 2016)
-  - [2helps2b paper](https://www.ncbi.nlm.nih.gov/pubmed/29052706)
-  - ![](../assets/2helps2b.png)
-  - note: scoring systems map points to a risk probability
-- [An Interpretable Model with Globally Consistent Explanations for Credit Risk](https://arxiv.org/abs/1811.12615) (chen et al. 2018) - a 2-layer linear additive model
-- [Fast Sparse Classification for Generalized Linear and Additive Models](https://arxiv.org/abs/2202.11389) (liu, ..., seltzer, rudin, 2022)
-- [Naive Feature Selection: Sparsity in Naive Bayes](http://proceedings.mlr.press/v108/askari20a.html) (askari...el ghaoui, 2020) - sparse naive bayes feature selection is on par with lasso but much faster
-- GroupFasterRisk: Fast and Interpretable Mortality Risk Scores for Critical Care Patients ([zhu...rudin, 2023](https://arxiv.org/pdf/2311.13015.pdf)) - builds linear integer model over bins of features. Group sparsity penalty penalizes number of unique features, whereas a secondary penalty controls the number of bins used per feature
-
 ### gams (generalized additive models)
 
 - gam takes form $g(\mu) = b + f_0(x_0) + f_1(x_1) + f_2(x_2) + ...$
-  - usually assume some basis for the shape functions $f$, like splines or polynomials (and we select how many either manually or with some complexity penalty)
+  - usually assume some basis for the shape functions $f$, like splines, polynomials, or tree sums (and we select how many either manually or with some complexity penalty)
   - *backfitting* - traditional way to fit - each $f_i$ is fitted sequentially to the residuals of the previously fitted $f_0,...,f_{i-1}$ ([hastie & tibshirani, 1989](https://www.jstor.org/stable/2241560?seq=1#metadata_info_tab_contents))
     - once all are fit, discard each shape function and re-fit to the residuals of all others one at a time
   - *boosting* - fit all $f$ simultaneously, e.g. one tree for each $f_i$ on each iteration
@@ -406,16 +376,12 @@ For an implementation of many of these models, see the python [imodels package](
     - fix them and predict residuals with next order (and repeat for as many orders as desired)
 - Spline-based models
   - Fast Stable Direct Fitting and Smoothness Selection for Generalized Additive Models ([wood, 2008](https://academic.oup.com/jrsssb/article/70/3/495/7109556))
-
 - Other models
   - Additive Models with Trend Filtering ([sadhanala & tibshirani, 2018](https://arxiv.org/abs/1702.05037)) - piecewise polynomial components with total variation regularization
   - Fused Lasso Additive Model ([petersen, weitten & simon, 2014](https://www.tandfonline.com/doi/abs/10.1080/10618600.2015.1073155)) - shape functions are piecewise constant with a small number of knots
-
-- Aug-GAM ([singh, askari, caruana & gao, 2022](https://arxiv.org/abs/2209.11799)) - use language model to extract embeddings which are then used to fit a better GAM (focuses on NLP)
 - Ensembling
   - Ensemble classification based on generalized additive models ([bock...poel, 2009](https://ideas.repec.org/p/rug/rugwps/09-625.html)) - use sample bagging, feature bagging, and combine both to find improved performance (use spline-based GAMs)
   - Efficiently Training Intelligible Models for Global Explanations ([lou...dong, 2020](http://yinlou.github.io/papers/lou-cikm20.pdf)) - use subsample bagging (bags select from a subset of samples) and speed up fitting by sharing computation between bags that share points
-
 - misc improvements
   - Axiomatic Interpretability for Multiclass Additive Models ([zhang, tan, ... caruana, 2019](https://dl.acm.org/doi/abs/10.1145/3292500.3330898)) - extend GAM to multiclass and improve visualizations in that setting
   - [Sparse Partially Linear Additive Models](https://www.tandfonline.com/doi/full/10.1080/10618600.2015.1089775) (lou, bien, caruana & gehrke, 2015) - some terms are linear and some use $f_i(x_i)$
@@ -426,14 +392,30 @@ For an implementation of many of these models, see the python [imodels package](
     - overly smooth GAMs may fail to identify sharp jumps that may be errors in data
     - bias-variance decomposition of different GAM algorithms (based on multiple refits and predictions) shows that some have less bias whereas others less variance
 
+### supersparse models
+
+- four main types of approaches to building scoring systems
+  1. exact solutions using optimization techniques (often use MIP)
+  2. approximation algorithms using linear programming (use L1 penalty instead of L0)
+     1. can also try sampling
+  3. more sophisticated rounding techniques - e.g. random, constrain sum, round each coef sequentially
+  4. computeraided exploration techniques
+- Supersparse linear integer models for optimized medical scoring systems ([ustun & rudin 2016](https://link.springer.com/content/pdf/10.1007/s10994-015-5528-6.pdf))
+  - [2helps2b paper](https://www.ncbi.nlm.nih.gov/pubmed/29052706)
+  - ![](../assets/2helps2b.png)
+  - note: scoring systems map points to a risk probability
+- An Interpretable Model with Globally Consistent Explanations for Credit Risk ([chen et al. 2018](https://arxiv.org/abs/1811.12615)) - a 2-layer linear additive model
+- Fast Sparse Classification for Generalized Linear and Additive Models ([liu, ..., seltzer, rudin, 2022](https://arxiv.org/abs/2202.11389))
+- Naive Feature Selection: Sparsity in Naive Bayes ([askari...el ghaoui, 2020](http://proceedings.mlr.press/v108/askari20a.html)) - sparse naive bayes feature selection is on par with lasso but much faster
+- GroupFasterRisk: Fast and Interpretable Mortality Risk Scores for Critical Care Patients ([zhu...rudin, 2023](https://arxiv.org/pdf/2311.13015.pdf)) - builds linear integer model over bins of features. Group sparsity penalty penalizes number of unique features, whereas a secondary penalty controls the number of bins used per feature
 
 ### symbolic regression
 
-Symbolic regression learns a symbolic (e.g. a mathematical formula) for a function from data priors on what kinds of symbols (e.g. `sin`, `exp`) are more "difficult"
+Symbolic regression learns a symbolic expression for a function (e.g. a mathematical formula) given priors on what kinds of symbols (e.g. `addition` versus `sin`) are more "difficult" [see also notes on LLM-in-the-loop symbolic regression]
 
 - Interpretable Scientific Discovery with Symbolic Regression: A Review ([makke & chawla, 2022](https://arxiv.org/abs/2211.10873))
 - Genetic algorithms
-  - Search for tree that represents expression: maximize acc + minimize number of nodes in the tree (e.g. PySR package, [Cranmer 2023](https://arxiv.org/abs/2305.01582))
+  - Search for tree that represents expression: maximize acc + minimize number of nodes in the tree (e.g. PySR package, [cranmer 2023](https://arxiv.org/abs/2305.01582))
   - Discovering Symbolic Models from Deep Learning with Inductive Biases ([cranmer...ho, 2020](https://arxiv.org/abs/2006.11287)) - rather than learning entire function class at once, learn compositions (so second function takes first function as input), which allows functions to gradually become much more complex
   - Symbolic-Regression Boosting ([sipper & moore, 2022](https://arxiv.org/abs/2206.12082))
   
@@ -442,9 +424,9 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
     - Symbolic Metamodels for Interpreting Black-boxes Using Primitive Functions ([abroshan...khalili, 2023](https://arxiv.org/abs/2302.04791)) - use GP approach
     - Neural Symbolic Regression using Control Variables ([chu...shao, 2023](https://arxiv.org/abs/2306.04718))
   - Discovering Symbolic Models from Deep Learning with Inductive Biases ([cranmer...ho, 2020](https://arxiv.org/abs/2006.11287)) - focused on GNNs
-  - Bridging the Gap: Providing Post-Hoc Symbolic Explanations for Sequential Decision-Making Problems with Black Box Simulators ([sreedharan et al. 2020](https://arxiv.org/abs/2002.01080))
+  - Providing Post-Hoc Symbolic Explanations for Sequential Decision-Making Problems with Black Box Simulators ([sreedharan et al. 2020](https://arxiv.org/abs/2002.01080))
 - neural networks
-  - 2-step symbolic regr: First generate equation skeleton, then optimize constants with GD
+  - 2-step symbolic regr: first generate equation skeleton, then optimize constants with GD
     - Neural Symbolic Regression that Scales ([biggio et al. 2021](https://arxiv.org/abs/2106.06427)) - use large pretraining set
     - SymbolicGPT ([valipour...ghodsi, 2021](https://arxiv.org/abs/2106.14131)) - similar but use point cloud rather than attention
     - Deep symbolic regression ([petersen...kim, 2021](https://arxiv.org/pdf/1912.04871.pdf)) - RL-based
@@ -455,58 +437,55 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
     - Deep Generative Symbolic Regression ([holt...van der schaar, 2023](https://openreview.net/forum?id=o7koEEMA1bR)) - use RL
   - Building and Evaluating Interpretable Models using Symbolic Regression and Generalized Additive Models ([sharif, 2017](https://openreview.net/pdf?id=BkgyvQzmW))
 - Logic Regression ([ruczinski, kooperberg & leblanc, 2012](https://amstat.tandfonline.com/doi/abs/10.1198/1061860032238?casa_token=WVNXGYsNPLsAAAAA:eCjYgsRw_WZ6g0GPG9x3CMyHyEV9kwcXvWCC1S0TTbLc7SDBiiyHiKLNtYsuC6WYOpto7xAi6tQ5eQ#.YJB3bGZKjzc)) - given binary input variables, automatically construct interaction terms and linear model (fit using simulated annealing)
-- Model Learning with Personalized Interpretability Estimation ([ML-PIE](https://arxiv.org/abs/2104.06060)) - use HITL to decide which symbolic functions are most interpretable
+- Model Learning with Personalized Interpretability Estimation ([virgolin...wahde, 2021](https://arxiv.org/abs/2104.06060)) - use HITL to decide which symbolic functions are most interpretable
 
 ## interpretable neural nets
 
-- Adaptive wavelet distillation from neural networks through interpretations" ([Ha et al. 2021](https://arxiv.org/abs/2107.09145))
+- Adaptive wavelet distillation from neural networks through interpretations ([Ha et al. 2021](https://arxiv.org/abs/2107.09145)) - distill flexible wavelet using gradient-based interpretation scores from a neural net
 - PINN: Physics-informed neural networks: A deep learning framework for solving forward and inverse problems involving nonlinear partial differential equations ([raissi et al. 2019](https://www.sciencedirect.com/science/article/pii/S0021999118307125)) - solve PDEs by constraining neural net to predict specific parameters / derivatives
-- [Improved Deep Fuzzy Clustering for Accurate and Interpretable Classifiers](https://ieeexplore.ieee.org/abstract/document/8858809) - extract features with a DNN then do fuzzy clustering on this
-- [Two Instances of Interpretable Neural Network for Universal Approximations](https://arxiv.org/abs/2112.15026) (tjoa & cuntai, 2021) - each neuron responds to a training point
-- [B-Cos Networks: Alignment Is All We Need for Interpretability](https://openaccess.thecvf.com/content/CVPR2022/html/Bohle_B-Cos_Networks_Alignment_Is_All_We_Need_for_Interpretability_CVPR_2022_paper.html) - promotes weight-input alignment during training
+- Two Instances of Interpretable Neural Network for Universal Approximations ([tjoa & cuntai, 2021](https://arxiv.org/abs/2112.15026)) - each neuron responds to a training point
+- B-Cos Networks: Alignment Is All We Need for Interpretability ([bohle...schiele, 2022](https://openaccess.thecvf.com/content/CVPR2022/html/Bohle_B-Cos_Networks_Alignment_Is_All_We_Need_for_Interpretability_CVPR_2022_paper.html)) - promotes weight-input alignment during training
 
 ### concepts
 
-- CBM: Concept Bottleneck Models ([koh et al. 2020](https://arxiv.org/pdf/2007.04612.pdf)) - predict concepts before making final prediction
-  - Post-hoc CBM ([yuksekgonul...zou, 2022](https://arxiv.org/abs/2205.15480)) - automatically project embeddings to concepts and train linear model on those
-    - Label-Free CBM ([oikarinen...weng, 2023](https://arxiv.org/abs/2304.06129)) - extend to learn to match text concepts extracted with embeddings of any vision model
-    - uses CLIP-Dissect method ([oikarinen & weng, 2023](https://arxiv.org/abs/2204.10965))
+*📌 see also notes on LLMs*
+
+- CBM: Concept Bottleneck Models ([koh et al. 2020](https://arxiv.org/pdf/2007.04612.pdf)) - predict intermediate concepts before making final prediction
+- Post-hoc CBM ([yuksekgonul...zou, 2022](https://arxiv.org/abs/2205.15480)) - automatically project embeddings to concepts and train linear model on those
+  - Label-Free CBM ([oikarinen...lily weng, 2023](https://arxiv.org/abs/2304.06129)) - extend to learn to match text concepts extracted with embeddings of any vision model
+  - uses CLIP-Dissect method ([oikarinen & lily weng, 2023](https://arxiv.org/abs/2204.10965))
+- CBMs with LLMs / VLMs
+  - Crafting Interpretable Embeddings by Asking LLMs Questions ([benara...gao, 2024](https://arxiv.org/pdf/2405.16714)) - use LLM to generate and answer questions corresponding to concepts, then use LASSO to select relevant questions
+  - BC-LLM: Bayesian Concept Bottleneck Models with LLM Priors ([feng...tan, 2024](https://arxiv.org/abs/2410.15555)) - use LLM to generate questions from extracted keywords, then iterate on fitting predictive models and searching for new concepts with a Bayesian approach
   - LaBO: Language in a Bottle: Language Model Guided Concept Bottlenecks for Interpretable Image Classification ([yang...yatskar, 2022](https://arxiv.org/pdf/2211.11158.pdf)) - generate prompt-based features using GPT-3 (e.g. "brown head with white stripes") and use CLIP to check for the presence of those features, all before learning simple linear model
-    - CB-LLM: Crafting Large Language Models for Enhanced Interpretability ([sun...weng, 2024](https://lilywenglab.github.io/WengLab_2024_CBLLM.pdf))
-      - Compute embedding similarity of concepts and input, and train layer to predict each of these similarity scores as concept bottleneck
-        - Before training bottleneck, use ChatGPT to help correct any concept scores that seem incorrect
-      - Human evaluation: agreement of concept scores and contribution of concept to output
-    - Concept Bottleneck Large Language Models ([sun, oikarinen, ustun, & weng, 2024](https://arxiv.org/abs/2412.07992))
-      - Version 2 of this paper also has results for language modeling
-  - Concept transformers ([rigotti, ... scotton, 2022](https://openreview.net/pdf?id=kAa9eDS0RdO)) - use human-given concepts and explain predictions as a function of these concepts
-  - Knowledge-enhanced Bottlenecks (KnoBo) - A Textbook Remedy for Domain Shifts: Knowledge Priors for Medical Image Analysis ([yang...yatskar, 2024](https://yueyang1996.github.io/papers/knobo.pdf)) - CBMs that incorporate knowledge priors that constrain it to reason with clinically relevant factors found in medical textbooks or PubMed
-  - Crafting Interpretable Embeddings by Asking LLMs Questions ([benara...gao, 2024](https://arxiv.org/pdf/2405.16714))
-  - Tree-Based Leakage Inspection and Control in Concept Bottleneck Models ([ragkousis & parbhoo, 2024](https://arxiv.org/abs/2410.06352)) - investigate where soft version of a feature outperforms hard version of the feature
-  - BC-LLM: Bayesian Concept Bottleneck Models with LLM Priors ([feng...tan, 2024](https://arxiv.org/abs/2410.15555))
+    - Knowledge-enhanced Bottlenecks (KnoBo) - A Textbook Remedy for Domain Shifts: Knowledge Priors for Medical Image Analysis ([yang...yatskar, 2024](https://yueyang1996.github.io/papers/knobo.pdf)) - CBMs that incorporate knowledge priors that constrain it to reason with clinically relevant factors found in medical textbooks or PubMed
+  - CB-LLM: Crafting Large Language Models for Enhanced Interpretability ([sun...lily weng, 2024](https://lilywenglab.github.io/WengLab_2024_CBLLM.pdf))
+    - compute embedding similarity of concepts and input, and train layer to predict each of these similarity scores as concept bottleneck
+      - before training bottleneck, use ChatGPT to help correct any concept scores that seem incorrect
+    - Human evaluation: agreement of concept scores and contribution of concept to output
+    - Concept Bottleneck Large Language Models ([sun, oikarinen, ustun, & lily weng, 2024](https://arxiv.org/abs/2412.07992)) - this updated version of the paper also has results for language modeling
   - Towards Achieving Concept Completeness for Unsupervised Textual Concept Bottleneck Models ([bhan…lesot, 2025](https://arxiv.org/abs/2502.11100)) - distill embeddings from a trained model
+
+- Refining CBMs
+  - Tree-Based Leakage Inspection and Control in Concept Bottleneck Models ([ragkousis & parbhoo, 2024](https://arxiv.org/abs/2410.06352)) - investigate where soft version of a feature outperforms hard version of the feature
   - Stochastic Concept Bottleneck Models ([vandenhirtz...vogt, 2024](https://arxiv.org/pdf/2406.19272)) - model covariance between concepts
   - Coarse-to-Fine Concept Bottleneck Models ([panousis...marcos, 2024](https://arxiv.org/pdf/2310.02116))
-- MoIE: Route, Interpret, Repeat: Blurring the Line Between Post hoc Explainability and Interpretable Models ([ghosh, ..., batmangehelich, 2023](https://arxiv.org/abs/2302.10289#)) - mixture of different interpretable models, with black-box routing
-- SASC - learn factors from BERT using dictionary learning, assign each factor a natural-language explanation, then build a sparse linear model of these factors ([singh, ..., gao, 2023](https://arxiv.org/abs/2305.09863))
-- [Concept Whitening for Interpretable Image Recognition](https://arxiv.org/pdf/2002.01650.pdf) (chen et al. 2020) - force network to separate "concepts" (like in TCAV) along different axes
-- [Interpretability Beyond Classification Output: Semantic Bottleneck Networks](https://arxiv.org/abs/1907.10882) - add an interpretable intermediate bottleneck representation
-- [Towards Robust Interpretability with Self-Explaining Neural Networks](https://arxiv.org/pdf/1806.07538.pdf) (alvarez-melis & jaakkola 2018) - use regularization to ensure model is aligned with concepts
+- MoIE: Route, Interpret, Repeat ([ghosh, ..., batmangehelich, 2023](https://arxiv.org/abs/2302.10289#)) - mixture of different interpretable models, with black-box routing
+- SASC ([singh, ..., gao, 2023](https://arxiv.org/abs/2305.09863)) - learn factors from BERT using dictionary learning, assign each factor a natural-language explanation, then build a sparse linear model of these factors
+- Towards Robust Interpretability with Self-Explaining Neural Networks ([alvarez-melis & jaakkola 2018](https://arxiv.org/pdf/1806.07538.pdf)) - use regularization to ensure model is aligned with concepts
 
 ### localization
 
-- [WILDCAT: Weakly Supervised Learning of Deep ConvNets for Image Classification, Pointwise Localization and Segmentation](https://openaccess.thecvf.com/content_cvpr_2017/html/Durand_WILDCAT_Weakly_Supervised_CVPR_2017_paper.html) (durand et al. 2017) - constrains architecture
-  - after extracting conv features, replace linear layers with special pooling layers, which helps with spatial localization
-    - each class gets a pooling map
+- WILDCAT: Weakly Supervised Learning of Deep ConvNets for Image Classification, Pointwise Localization and Segmentation ([durand et al. 2017](https://openaccess.thecvf.com/content_cvpr_2017/html/Durand_WILDCAT_Weakly_Supervised_CVPR_2017_paper.html)) - constrains architecture: after extracting conv features, replace linear layers with special pooling layers, which helps with spatial localization
+  - - each class gets a pooling map
     - prediction for a class is based on top-k spatial regions for a class
     - finally, can combine the predictions for each class
-- [Approximating CNNs with Bag-of-local-Features models works surprisingly well on ImageNet](https://arxiv.org/abs/1904.00760)
-  - CNN is restricted to look at very local features only and still does well (and produces an inbuilt saliency measure)
-  - [learn shapes not texture](https://openreview.net/pdf?id=Bygh9j09KX)
-- [Symbolic Semantic Segmentation and Interpretation of COVID-19 Lung Infections in Chest CT volumes based on Emergent Languages](https://arxiv.org/pdf/2008.09866v1.pdf) (chowdhury et al. 2020) - combine some segmentation with the classifier
+- BagNet: Approximating CNNs with Bag-of-local-Features models works surprisingly well on ImageNet ([brendel & bethge, 2019](https://arxiv.org/abs/1904.00760) - CNN is restricted to look at very local features only and still does well (and produces an inbuilt saliency measure)
+  - Models are generally biased to learn shapes not texture ([geirhos...brendel, 2019](https://openreview.net/pdf?id=Bygh9j09KX))
 
 ### example-based = case-based (e.g. prototypes, nearest neighbor)
 
-- ProtoPNet: This looks like that (2nd paper) ([chen, ..., rudin, 2018](https://arxiv.org/abs/1806.10574)) - learn convolutional prototypes that are smaller than the original input size
+- ProtoPNet: This looks like that ([chen, ..., rudin, 2018](https://arxiv.org/abs/1806.10574); 2nd prototypes paper) - learn convolutional prototypes that are smaller than the original input size
   - use L2 distance in repr space to measure distance between patches and prototypes
   - loss function
     - require the filters to be identical to the latent representation of some training image patch
@@ -517,32 +496,32 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
     - train everything: classification + clustering around intraclass prototypes + separation between interclass prototypes (last layer fixed to 1s / -0.5s)
     - project prototypes to data patches
     - learn last (linear) layer
-  - ProtoNets: original prototypes paper ([li, ..., rudin, 2017](https://arxiv.org/pdf/1710.04806.pdf)) - older paper
+  - ProtoNets ([li, ..., rudin, 2017](https://arxiv.org/pdf/1710.04806.pdf); 1st prototypes paper)
     - uses encoder/decoder setup
     - encourage every prototype to be similar to at least one encoded input
-    - results: learned prototypes in fact look like digits
-      - correct class prototypes go to correct classes
+    - results: learned prototypes in fact look like digits & correct class prototypes go to correct classes
     - loss: classification + reconstruction + distance to a training point
-- IAIA-BL: A Case-based Interpretable Deep Learning Model for Classification of Mass Lesions in Digital Mammography ([barnet...rudin, 2021](https://arxiv.org/abs/2103.12308)) - improve algorithm specifically for mammography
-- This Looks Like That, Because ... Explaining Prototypes for Interpretable Image Recognition ([nauta et al. 2020](https://arxiv.org/abs/2011.02863))
-  - add textual quantitative information about visual characteristics deemed important by the classification model e.g. colour hue, shape, texture, contrast and saturation
-- Neural Prototype Trees for Interpretable Fine-Grained Image Recognition ([nauta et al. 2021](https://openaccess.thecvf.com/content/CVPR2021/html/Nauta_Neural_Prototype_Trees_for_Interpretable_Fine-Grained_Image_Recognition_CVPR_2021_paper.html)) - build decision trees on top of prototypes
-  - performance is slightly poor until they use ensembles
-- PIP-NET ([nauta...seifert, 2023](https://arxiv.org/pdf/2307.10404.pdf)) - applying prototypes to medical image classification
-  - http://openaccess.thecvf.com/content/CVPR2023/html/Nauta_PIP-Net_Patch-Based_Intuitive_Prototypes_for_Interpretable_Image_Classification_CVPR_2023_paper.html
-- XProtoNet: Diagnosis in Chest Radiography With Global and Local Explanations ([kim et al. 2021](https://openaccess.thecvf.com/content/CVPR2021/html/Kim_XProtoNet_Diagnosis_in_Chest_Radiography_With_Global_and_Local_Explanations_CVPR_2021_paper.html))
-  - alter ProtoPNet to use dynamically sized patches for prototype matching rather than fixed-size patches
-- [AutoProtoNet: Interpretability for Prototypical Networks](https://arxiv.org/abs/2204.00929) (sandoval-segura & lawson, 2022)
+  - Concept Whitening for Interpretable Image Recognition ([chen, bei, & rudin, 2020](https://arxiv.org/pdf/2002.01650.pdf)) - force network to separate "concepts" (like in TCAV) along different axes
+- This Looks Like That, Because ... Explaining Prototypes for Interpretable Image Recognition ([nauta...seifert 2020](https://arxiv.org/abs/2011.02863)) - add textual quantitative information about visual characteristics deemed important by the classification model e.g. colour hue, shape, texture, contrast and saturation
+  - Neural Prototype Trees for Interpretable Fine-Grained Image Recognition ([nauta...seifert 2021](https://openaccess.thecvf.com/content/CVPR2021/html/Nauta_Neural_Prototype_Trees_for_Interpretable_Fine-Grained_Image_Recognition_CVPR_2021_paper.html)) - build decision trees on top of prototypes - performance is slightly poor until they use ensembles
+- Concept transformers ([rigotti... scotton, 2022](https://openreview.net/pdf?id=kAa9eDS0RdO)) - use human-given concepts and explain predictions as a function of these concepts
+- applications to medical imaging
+  - IAIA-BL: A Case-based Interpretable Deep Learning Model for Classification of Mass Lesions in Digital Mammography ([barnet...rudin, 2021](https://arxiv.org/abs/2103.12308)) - improve algorithm specifically for mammography
+
+  - XProtoNet: Diagnosis in Chest Radiography With Global and Local Explanations ([eunji kim...yoon, 2021](https://openaccess.thecvf.com/content/CVPR2021/html/Kim_XProtoNet_Diagnosis_in_Chest_Radiography_With_Global_and_Local_Explanations_CVPR_2021_paper.html)) - alter ProtoPNet to use dynamically sized patches for prototype matching rather than fixed-size patches
+  - PIP-NET ([nauta...seifert, 2023](https://arxiv.org/pdf/2307.10404.pdf)) - applying prototypes to medical image classification
+  - ProtoMIL: Multiple Instance Learning with Prototypical Parts for Fine-Grained Interpretability ([Rymarczyk et al. 2021](https://arxiv.org/abs/2108.10612))
+
+- AutoProtoNet: Interpretability for Prototypical Networks ([sandoval-segura & lawson, 2022](https://arxiv.org/abs/2204.00929))
   - builds interpretability into Prototypical Networks by training an embedding space suitable for reconstructing inputs
   - also devise a prototype refinement method, which allows a human to debug inadequate classification parameters
 - TesNet: Interpretable Image Recognition by Constructing Transparent Embedding Space ([wang et al. 2021](https://openaccess.thecvf.com/content/ICCV2021/html/Wang_Interpretable_Image_Recognition_by_Constructing_Transparent_Embedding_Space_ICCV_2021_paper.html)) - alter ProtoPNet to get "orthogonal" basis concepts
 - ProtoPShare: Prototype Sharing for Interpretable Image Classification and Similarity Discovery ([Rymarczyk et al. 2020](https://arxiv.org/abs/2011.14340)),- share some prototypes between classes with data-dependent merge pruning
 
   - merge "similar" prototypes, where similarity is measured as dist of all training patches in repr. space
-  - ProtoMIL: Multiple Instance Learning with Prototypical Parts for Fine-Grained Interpretability ([Rymarczyk et al. 2021](https://arxiv.org/abs/2108.10612))
   - Interpretable Image Classification with Differentiable Prototypes Assignment ([rmyarczyk et al. 2021](https://arxiv.org/abs/2112.02902))
 - These *do not* Look Like Those: An Interpretable Deep Learning Model for Image Recognition ([singh & yow, 2021](https://ieeexplore.ieee.org/abstract/document/9373404)) - all weights for prototypes are either 1 or -1
-- Towards Explainable Deep Neural Networks (xDNN)([angelov & soares 2019](https://arxiv.org/abs/1912.02523) ) - more complex version of using prototypes
+- Towards Explainable Deep Neural Networks ([angelov & soares 2019](https://arxiv.org/abs/1912.02523)) - more complex version of using prototypes
 - Self-Interpretable Model with Transformation Equivariant Interpretation ([wang & wang, 2021](https://arxiv.org/abs/2111.04927))
   - generate data-dependent prototypes for each class and formulate the prediction as the inner product between each prototype and the extracted features
     - interpretation is hadamard product of prototype and extracted features (prediction is sum of this product)
@@ -556,99 +535,83 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
 - Explaining Latent Representations with a Corpus of Examples ([crabbe, ..., van der schaar 2021](https://arxiv.org/pdf/2110.15355.pdf)) - for an individual prediction,
   1. Which corpus examples explain the prediction issued for a given test example?
   2. What features of these corpus examples are relevant for the model to relate them to the test example?
+- [Interpreting Deep Neural Networks through Prototype Factorization](https://ieeexplore.ieee.org/abstract/document/9346401) - posthoc convert DNN into having different factors
 - ProtoPFormer: Concentrating on Prototypical Parts in Vision Transformers for Interpretable Image Recognition ([xue et al. 2022](https://arxiv.org/abs/2208.10431))
 - Learning Optimally Sparse Support Vector Machines ([cotter, shalev-shwartz, & srebro, 2013](http://proceedings.mlr.press/v28/cotter13.pdf)) - minimize number of support vectors 
   - Counterfactual Explanations for Support Vector Machine Models ([salazar et al. 2022](https://arxiv.org/abs/2212.07432))
 
-### transformers
-
-- Augmenting Interpretable Models with LLMs during Training ([singh, askari, caruana & gao, 2023](https://arxiv.org/abs/2209.11799))
-  - use language model to extract embeddings which are then used to fit a better GAM or better tree (focuses on NLP)
-  - Backpack Language Models ([hewit, thickstun, manning, & liang, 2023](https://arxiv.org/abs/2305.16765)) - change transformer layers to represent each word
-- CHiLL: Zero-shot Custom Interpretable Feature Extraction from Clinical Notes with Large Language Models ([mcinerney, ..wallace, 2023](https://arxiv.org/abs/2302.12343))
-  - extract interpretable feature (e.g. "Does this patient have a chronic illness?") and use in a linear model (use Flan-T5)
-  - interpretable features: 10 ICD codes + (1) Does the patient have a chronic illness? (2) Is the condition life-threatening?
-- Learning Transformer Programs ([friedman, wettig, & chen, 2023](https://arxiv.org/abs/2306.01128)) - place strong constraints on transformer architecture that allow it to be written as a [RASP]([https://arxiv.org/abs/2106.06981) program compiled with [Tracr](https://arxiv.org/abs/2301.05062)
-  - 2 contraints
-    - disentangled residual stream - attention head inputs K/Q/V are one-hot, ouputs are concatenated at each layer
-    - each module implements rule-based mapping: attention is onehot
-
-
 ### connecting dnns and rules
 
-- interpretable
-  - Distilling a Neural Network Into a Soft Decision Tree ([frosst & hinton 2017](https://arxiv.org/pdf/1711.09784.pdf)) - distills DNN into DNN-like tree which uses sigmoid neuron decides which path to follow
-    - training on distilled DNN predictions outperforms training on original labels
-    - to make the decision closer to a hard cut, can multiply by a large scalar before applying sigmoid
-    - parameters updated with backprop
-    - regularization to ensure that all paths are taken equally likely
-  - Learning Binary Decision Trees by Argmin Differentiation ([zantedeschi et al. 2021](https://arxiv.org/abs/2010.04627))
-    - argmin differentiation - solving an optimization problem as a differentiable module within a parent problem tackled with gradient-based optimization methods
-    - relax hard splits into soft ones and learn via gradient descent
-  - Optimizing for Interpretability in Deep Neural Networks with Tree Regularization ([wu...doshi-velez, 2021](https://www.jair.org/index.php/jair/article/view/12558)) - regularize DNN prediction function towards tree (potentially only for some region)
-  - Adaptive Neural Trees ([tanno et al. 2019](http://proceedings.mlr.press/v97/tanno19a.html?utm_campaign=piqcy&utm_medium=email&utm_source=Revue%20newsletter)) - adaptive neural tree mechanism with trainable nodes, edges, and leaves
-- loosely interpretable
-  - mixture of experts (MOE) / hierarchical MOE
-  - Attention Convolutional Binary Neural Tree for Fine-Grained Visual Categorization ([ji et al. 2020](https://openaccess.thecvf.com/content_CVPR_2020/html/Ji_Attention_Convolutional_Binary_Neural_Tree_for_Fine-Grained_Visual_Categorization_CVPR_2020_paper.html))
-  - Oblique Decision Trees from Derivatives of ReLU Networks ([lee & jaakkola, 2020](https://arxiv.org/abs/1909.13488))
-    - locally constant networks (which are derivatives of relu networks) are equivalent to trees
-    - they perform well and can use DNN tools e.g. Dropconnect on them
-    - note: deriv wrt to input can be high-dim
-      - they define locally constant network LCN scalar prediction as derivative wrt every parameter transposed with the activations of every corresponding neuron
-      - approximately locally constant network ALCN: replace Relu $\max(0, x)$ with softplus $1+\exp(x)$
-      - ensemble these with boosting to improve performance
-  - TAO: Alternating optimization of decision trees, with application to learning sparse oblique trees ([carreira-perpinan, tavallali, 2018](https://proceedings.neurips.cc/paper/2018/hash/185c29dc24325934ee377cfda20e414c-Abstract.html))
-    - Minimize loss function with sparsity of features at each node + predictive performance
-    - Algorithm: update each node one at a time while keeping all others fixed (finds a local optimum of loss)
-    - Fast for 2 reasons
-      - separability - nodes which aren't on same path from root-to-leaf can be optimized separately
-      - reduced problem - for any given node, *we only solve a binary classification* where the labels are the predictions that a point would be given if it were sent left/right
-        - in this work, solve binary classification by approximating it with sparse logistic regression
-    - TAO trees with boosting performs well + works for regression ([Zharmagambetov and Carreira-Perpinan, 2020](https://faculty.ucmerced.edu/mcarreira-perpinan/papers/icml20.pdf))
-    - TAO trees with bagging performs well ([Carreira-Perpiñán & Zharmagambetov, 2020](http://graduatestudents.ucmerced.edu/azharmagambetov/files/papers/fods20.pdf))
-    - Learning a Tree of Neural Nets ([Zharmagambetov and Carreira-Perpinan, 2020](https://ieeexplore.ieee.org/abstract/document/9413718)) - use neural net rather than binary classification at each node
-    - Also use TAO trained on neural net features do speed-up/improve the network
-  - Efficient Decompositional Rule Extraction for Deep Neural Networks ([zarlenga...jamnik, 2021](https://arxiv.org/abs/2111.12628))
-- recurrent neural nets
-  - Automatic Rule Extraction from Long Short Term Memory Networks ([murdoch & szlam, 2017](https://arxiv.org/abs/1702.02540)) - extract out phrases using feature importance
-  - A Comparative Study of Rule Extraction for Recurrent Neural Networks ([wang et al. 2018](https://arxiv.org/abs/1801.05420)) - create automata based on interpretable states to track RNNs
+- TAO: Alternating optimization of decision trees, with application to learning sparse oblique trees ([carreira-perpinan, tavallali, 2018](https://proceedings.neurips.cc/paper/2018/hash/185c29dc24325934ee377cfda20e414c-Abstract.html))
+  - Minimize loss function with sparsity of features at each node + predictive performance
+  - Algorithm: update each node one at a time while keeping all others fixed (finds a local optimum of loss)
+  - Fast for 2 reasons
+    - separability - nodes which aren't on same path from root-to-leaf can be optimized separately
+    - reduced problem - for any given node, *we only solve a binary classification* where the labels are the predictions that a point would be given if it were sent left/right
+      - in this work, solve binary classification by approximating it with sparse logistic regression
+  - TAO trees with boosting performs well + works for regression ([zharmagambetov and carreira-perpinan, 2020](https://faculty.ucmerced.edu/mcarreira-perpinan/papers/icml20.pdf))
+  - TAO trees with bagging performs well ([carreira-perpiñán & zharmagambetov, 2020](http://graduatestudents.ucmerced.edu/azharmagambetov/files/papers/fods20.pdf))
+  - Learning a Tree of Neural Nets ([zharmagambetov and carreira-perpinan, 2020](https://ieeexplore.ieee.org/abstract/document/9413718)) - use neural net rather than binary classification at each node
+  - Also use TAO trained on neural net features do speed-up/improve the network
+
 - incorporating prior knowledge
-  - Controlling Neural Networks with Rule Representations ([seo, ..., pfister, 21](https://arxiv.org/abs/2106.07804))
-    - DEEPCTRL - encodes rules into DNN
-      - one encoder for rules, one for data
-        - both are concatenated with stochastic parameter $\alpha$ (which also weights the loss)
-        - at test-time, can select $\alpha$ to vary contribution of rule part can be varied (e.g. if rule doesn't apply to a certain point)
-      - training
-        - normalize losses initially to ensure they are on the same scale
-        - some rules can be made differentiable in a straightforward way: $r(x, \hat y) \leq \tau \to \max (r(x, \hat y ) - \tau, 0)$, but can't do this for everything e.g. decision tree rules
-        - rule-based loss is defined by looking at predictions fo perturbations of the input
-      - evaluation
-        - `verification ratio` - fraction of samples that satisfy the rule
-      - see also Lagrangian Duality for Constrained Deep Learning ([fioretto et al. 2020](https://arxiv.org/abs/2001.09394))
+  - DeepCTRL: Controlling Neural Networks with Rule Representations ([seo...pfister, 21](https://arxiv.org/abs/2106.07804))
+    - one encoder for rules, one for data
+      - both are concatenated with stochastic parameter $\alpha$ (which also weights the loss)
+      - at test-time, can select $\alpha$ to vary contribution of rule part (e.g. if rule doesn't apply to a certain point)
+    - training
+      - normalize losses initially to ensure they are on the same scale
+      - some rules can be made differentiable in a straightforward way: $r(x, \hat y) \leq \tau \to \max (r(x, \hat y ) - \tau, 0)$, but can't do this for everything e.g. decision tree rules
+      - rule-based loss is defined by looking at predictions for perturbations of the input
+    - evaluate the `verification ratio`= fraction of samples that satisfy the rule
+    - see also Lagrangian Duality for Constrained Deep Learning ([fioretto et al. 2020](https://arxiv.org/abs/2001.09394))
   - RRL: A Scalable Classifier for Interpretable Rule-Based Representation Learning ([wang et al. 2020](https://openreview.net/forum?id=UwOMufsTqCy))
     - Rule-based Representation Learner (RRL) - automatically learns interpretable non-fuzzy rules for data representation
     - project RRL it to a continuous space and propose a novel training method, called Gradient Grafting, that can directly optimize the discrete model using gradient descent
   - Harnessing Deep Neural Networks with Logic Rules ([hu, ..., xing, 2020](https://arxiv.org/pdf/1603.06318.pdf)) - iterative distillation method that transfers the structured information of logic rules into the weights of neural networks
-- just trying to improve performance
+- soft decision trees
   - Neural Random Forests ([biau et al. 2018](https://link.springer.com/article/10.1007/s13171-018-0133-y)) - convert RF to DNN
     - first layer learns a node for each split
     - second layer learns a node for each leaf (by only connecting to nodes on leaves in the path)
     - finally map each leaf to a value
     - relax + retrain
     - Gradient Boosted Decision Tree Neural Network ([saberian...raimond, 2019](https://arxiv.org/abs/1910.09340)) - build DNN based on decision tree ensemble - basically the same but with gradient-boosted trees
+  - Distilling a DNN Into a Soft Decision Tree ([frosst & hinton 2017](https://arxiv.org/pdf/1711.09784.pdf)) - distills DNN into DNN-like tree which uses sigmoid neuron to decide which path to follow
+    - training on distilled DNN predictions outperforms training on original labels
+    - to make the decision closer to a hard cut, can multiply by a large scalar before applying sigmoid
+    - parameters updated with backprop
+    - regularization to ensure that all paths are taken equally likely
   - these papers are basically learning trees via backprop, where splits are "smoothed" during training
-    - [End-to-End Learning of Decision Trees and Forests](https://link.springer.com/article/10.1007/s11263-019-01237-6)
-    - [SDTR: Soft Decision Tree Regressor for Tabular Data](https://ieeexplore.ieee.org/document/9393908)
-  - [Deep Neural Decision Forests](https://www.cv-foundation.org/openaccess/content_iccv_2015/papers/Kontschieder_Deep_Neural_Decision_ICCV_2015_paper.pdf) (2015)
-    - dnn learns small intermediate representation, which outputs all possible splits in a tree
-    - these splits are forced into a tree-structure and optimized via SGD
-      - neurons use sigmoid function
+    - [End-to-End Learning of Decision Trees and Forests](https://link.springer.com/article/10.1007/s11263-019-01237-6); [SDTR: Soft Decision Tree Regressor for Tabular Data](https://ieeexplore.ieee.org/document/9393908)
+    - Deep Neural Decision Forests ([2015](https://www.cv-foundation.org/openaccess/content_iccv_2015/papers/Kontschieder_Deep_Neural_Decision_ICCV_2015_paper.pdf))
+      - dnn learns small intermediate representation, which outputs all possible splits in a tree
+      - these splits are forced into a tree-structure and optimized via SGD
+        - neurons use sigmoid function
   - Neural Decision Trees ([balestriero, 2017](https://arxiv.org/abs/1702.07360)) - treat each neural net like a node in a tree
   - Differentiable Pattern Set Mining ([fischer & vreeken, 2021](http://eda.mmci.uni-saarland.de/pubs/2021/binaps-fischer,vreeken.pdf))
     - use neural autoencoder with binary activations + binarizing weights
     - optimizing a data-sparsity aware reconstruction loss, continuous versions of the weights are learned in small, noisy steps
+- Extracting rules from (recurrent) DNNs
+  - [set of methods](https://github.com/mateoespinosa/remix) for extracting rules from DNNN
+  - Automatic Rule Extraction from Long Short Term Memory Networks ([murdoch & szlam, 2017](https://arxiv.org/abs/1702.02540)) - extract out phrases using feature importance
+  - A Comparative Study of Rule Extraction for Recurrent Neural Networks ([wang et al. 2018](https://arxiv.org/abs/1801.05420)) - create automata based on interpretable states to track RNNs
+  - Efficient Decompositional Rule Extraction for Deep Neural Networks ([zarlenga...jamnik, 2021](https://arxiv.org/abs/2111.12628))
+- Learning Binary Decision Trees by Argmin Differentiation ([zantedeschi et al. 2021](https://arxiv.org/abs/2010.04627))
+  - argmin differentiation - solving an optimization problem as a differentiable module within a parent problem tackled with gradient-based optimization methods
+  - relax hard splits into soft ones and learn via gradient descent
+- Optimizing for Interpretability in DNNs with Tree Regularization ([wu...doshi-velez, 2021](https://www.jair.org/index.php/jair/article/view/12558)) - regularize DNN prediction function towards tree (potentially only for some region)
+  - [Beyond Sparsity: Tree Regularization of Deep Models for Interpretability](https://arxiv.org/pdf/1711.06178.pdf) - regularize so that deep model can be closely modeled by tree w/ few nodes
+- Adaptive Neural Trees ([tanno et al. 2019](http://proceedings.mlr.press/v97/tanno19a.html?utm_campaign=piqcy&utm_medium=email&utm_source=Revue%20newsletter)) - adaptive neural tree mechanism with trainable nodes, edges, and leaves
+- mixture of experts (MOE) / hierarchical MOE
+- Oblique Decision Trees from Derivatives of ReLU Networks ([lee & jaakkola, 2020](https://arxiv.org/abs/1909.13488))
+  - locally constant networks (which are derivatives of relu networks) are equivalent to trees
+  - they perform well and can use DNN tools e.g. Dropconnect on them
+  - note: deriv wrt to input can be high-dim
+    - they define locally constant network LCN scalar prediction as derivative wrt every parameter transposed with the activations of every corresponding neuron
+    - approximately locally constant network ALCN: replace Relu $\max(0, x)$ with softplus $1+\exp(x)$
+    - ensemble these with boosting to improve performance
 
-## constrained outputs (e.g. monotonicity)
+## constrained models (e.g. monotonicity)
 
 - different constraints in [tensorflow lattice](https://www.tensorflow.org/lattice/overview)
   - e.g. monoticity, convexity, unimodality (unique peak), pairwise trust (model has higher slope for one feature when another feature is in particular value range)
@@ -658,12 +621,12 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
 
   - Monotonic Calibrated Interpolated Look-Up Tables ([gupta et al. 2016](https://www.jmlr.org/papers/volume17/15-243/15-243.pdf))
     - speed up $D$-dimensional interpolation to $O(D \log D)$
-    - follow-up work: Deep Lattice Networks and Partial Monotonic Functions ([you,...,gupta, 2017](https://proceedings.neurips.cc//paper/2017/file/464d828b85b0bed98e80ade0a5c43b0f-Paper.pdf)) - use many layers
+    - follow-up work: Deep Lattice Networks and Partial Monotonic Functions ([you...gupta, 2017](https://proceedings.neurips.cc//paper/2017/file/464d828b85b0bed98e80ade0a5c43b0f-Paper.pdf)) - use many layers
 - neural nets
-  - [Sparse Epistatic Regularization of Deep Neural Networks for Inferring Fitness Functions](https://www.biorxiv.org/content/10.1101/2020.11.24.396994v1) (aghazadeh et al. 2020) - directly regularize interactions / high-order freqs in DNNs
-  - [MonoNet: Towards Interpretable Models by Learning Monotonic Features](https://arxiv.org/abs/1909.13611) - enforce output to be a monotonic function of individuaul features
-- monotonicity constrainits in histogram-based gradient boosting ([see sklearn](https://scikit-learn.org/stable/modules/ensemble.html#histogram-based-gradient-boosting))
-- [How to represent part-whole hierarchies in a neural network](https://arxiv.org/abs/2102.12627) (hinton, 2021)
+  - Sparse Epistatic Regularization of Deep Neural Networks for Inferring Fitness Functions ([aghazadeh et al. 2020](https://www.biorxiv.org/content/10.1101/2020.11.24.396994v1)) - directly regularize interactions / high-order freqs in DNNs
+  - [MonoNet: Towards Interpretable Models by Learning Monotonic Features](https://arxiv.org/abs/1909.13611) - enforce output to be a monotonic function of individual features
+- monotonicity constraints in histogram-based gradient boosting ([see sklearn](https://scikit-learn.org/stable/modules/ensemble.html#histogram-based-gradient-boosting))
+- Capsules: How to represent part-whole hierarchies in a neural network ([hinton, 2021](https://arxiv.org/abs/2102.12627))
   - The idea is simply to use islands of identical vectors to represent the nodes in the parse tree (parse tree would be things like wheel-> cabin -> car)
   - each patch / pixel gets representations at different levels (e.g. texture, parrt of wheel, part of cabin, etc.)
     - each repr. is a vector - vector for high-level stuff (e.g. car) will agree for different pixels but low level (e.g. wheel) will differ
@@ -672,7 +635,7 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
       - also attention mechanism across other locations in same layer
     - each location also takes in its positional location (x, y)
     - could have the lowest-level repr start w/ a convnet
-  - [iCaps: An Interpretable Classifier via Disentangled Capsule Networks](https://arxiv.org/abs/2008.08756) (jung et al. 2020)
+  - iCaps: An Interpretable Classifier via Disentangled Capsule Networks ([jung et al. 2020](https://arxiv.org/abs/2008.08756))
     - the class capsule also includes classification-irrelevant information
       - uses a novel class-supervised disentanglement algorithm
     - entities represented by the class capsule overlap
@@ -680,21 +643,10 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
 
 ## misc models
 
-- Verifiable Feature Attributions: A Bridge between Post Hoc Explainability and Inherent Interpretability ([bhalla...lakkaraju, 2023](https://arxiv.org/abs/2307.15007))
-- [AdaAX: Explaining Recurrent Neural Networks by Learning Automata with Adaptive States](https://dl.acm.org/doi/abs/10.1145/3534678.3539356) (hong...wang, 2022)
-- learning AND-OR Templates for Object Recognition and Detection (zhu_13)
-- ross et al. - constraing model during training
-- scat transform idea (mallat_16 rvw, oyallan_17)
-- force interpretable description by piping through something interpretable (ex. tenenbaum scene de-rendering)
-- learn concepts through probabilistic program induction
-- force biphysically plausible learning rules
 - [The Convolutional Tsetlin Machine](https://arxiv.org/pdf/1905.09688.pdf) - uses easy-to-interpret conjunctive clauses
   - [The Tsetlin Machine](https://arxiv.org/pdf/1804.01508.pdf)
-- [Beyond Sparsity: Tree Regularization of Deep Models for Interpretability](https://arxiv.org/pdf/1711.06178.pdf)
-  - regularize so that deep model can be closely modeled by tree w/ few nodes
 - [Tensor networks](https://www.perimeterinstitute.ca/research/research-initiatives/tensor-networks-initiative) - like DNN that only takes boolean inputs and deals with interactions explicitly
   - widely used in physics
-- [Coefficient tree regression: fast, accurate and interpretable predictive modeling](https://link-springer-com.libproxy.berkeley.edu/article/10.1007/s10994-021-06091-7) (surer, apley, & malthouse, 2021) - iteratively group linear terms with similar coefficients into a bigger term
 
 ### bayesian models
 
@@ -705,17 +657,17 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
 
 - **program synthesis** - automatically find a program in an underlying programming language that satisfies some user intent
   - **ex. program induction** - given a dataset consisting of input/output pairs, generate a (simple?) program that produces the same pairs
-- [Programs as Black-Box Explanations](https://arxiv.org/pdf/1611.07579.pdf) (singh et al. 2016)
+- Programs as Black-Box Explanations ([singh et al. 2016](https://arxiv.org/pdf/1611.07579.pdf))
 - [probabilistic programming](https://en.wikipedia.org/wiki/Probabilistic_programming) - specify graphical models via a programming language
 
 # posthoc interpretability (i.e. how can we interpret a fitted model)
 
-*Note that in this section we also include importances that work directly on the data (e.g. we do not first fit a model, rather we do nonparametric calculations of importance)*
+Note that in this section we also include *dataset interpretations* that work directly on data (rather than first fitting a model)
 
 ## model-agnostic
 
 - Feature Removal Is a Unifying Principle for Model Explanation Methods ([cover, lundberg, & lee, 2020](https://arxiv.org/abs/2011.03623)) - many different methods, e.g. SHAP, LIME, meaningful perturbations, permutation tests, RISE can be viewed through feature removal
-- local surrogate ([LIME](https://arxiv.org/abs/1602.04938)) - fit a simple model locally to on point and interpret that
+- LIME: local surrogate ([ribeiro et al. 2016](https://arxiv.org/abs/1602.04938)) - fit a simple model locally to on point and interpret that
    - select data perturbations and get new predictions
      - for tabular data, this is just varying the values around the prediction
      - for images, this is turning superpixels on/off
@@ -723,12 +675,10 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
    - weight the new samples based on their proximity
    - train a kernel-weighted, interpretable model on these points
    - LEMNA - like lime but uses lasso + small changes
-- [anchors](https://www.aaai.org/ocs/index.php/AAAI/AAAI18/paper/view/16982/15850) (ribeiro et al. 2018) - find biggest square region of input space that contains input and preserves same output (with high precision)
-   1. does this search via iterative rules
-- [What made you do this? Understanding black-box decisions with sufficient input subsets](https://arxiv.org/pdf/1810.03805.pdf)
-   - want to find smallest subsets of features which can produce the prediction
-     - other features are masked or imputed
-- [VIN](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.91.7500&rep=rep1&type=pdf) (hooker 04) - variable interaction networks - globel explanation based on detecting additive structure in a black-box, based on ANOVA
+- anchors: ([ribeiro et al. 2018](https://www.aaai.org/ocs/index.php/AAAI/AAAI18/paper/view/16982/15850)) - find biggest square region of input space that contains input and preserves same output (with high precision)
+   - does this search via iterative rules
+- [Sufficient input subsets](https://arxiv.org/pdf/1810.03805.pdf) - seek the smallest subsets of features which produce the prediction
+   - other features are masked or imputed
 - [local-gradient](http://www.jmlr.org/papers/v11/baehrens10a.html) (bahrens et al. 2010) - direction of highest slope towards a particular class / other class
 - [golden eye](https://idp.springer.com/authorize/casa?redirect_uri=https://link.springer.com/article/10.1007/s10618-014-0368-8&casa_token=AhKnW6Xx4L0AAAAA:-SEMsMjDX3_rU5gyGx6plcmF5A_ufXvsWJHzjCUIGWHGW0fqOe50yhWKYOK6UIPDHQaUwEkE3RK17XOByzo) (henelius et al. 2014) - randomize different groups of features and search for groups which interact
 - **[shapley value](http://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predicti)** - average marginal contribution of a feature value across all possible sets of feature values
@@ -745,10 +695,10 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
       - consistency - if a model changes so that some simplified input’s contribution increases or stays the same regardless of the other inputs, that input’s attribution should not decrease.
   - interpretation: Given the current set of feature values, the contribution of a feature value to the difference between the actual prediction and the mean prediction is the estimated Shapley value
   - recalculate via sampling other features in expectation
-  - followup [propagating shapley values](https://arxiv.org/pdf/1911.11888.pdf) (chen, lundberg, & lee 2019) - can work with stacks of different models
+  - propagating shapley values ([chen, lundberg, & lee 2019](https://arxiv.org/pdf/1911.11888.pdf)) - can work with stacks of different models
   - averaging these across dataset can be misleading ([okeson et al. 2021](https://aokeson.github.io/files/global_feature_attributions.pdf))
-  - [Understanding Global Feature Contributions Through Additive Importance Measures](https://arxiv.org/abs/2004.00668) (covert, lundberg, & lee 2020)
-		- SAGE score looks at reduction in predictive accuracy due to subsets of features
+  - Understanding Global Feature Contributions Through Additive Importance Measures ([covert, lundberg, & lee 2020](https://arxiv.org/abs/2004.00668))
+  	- SAGE score looks at reduction in predictive accuracy due to subsets of features
 - [probes](https://nlp.stanford.edu/~johnhew/interpreting-probes.html) - check if a representation (e.g. BERT embeddings) learned a certain property (e.g. POS tagging) by seeing if we can predict this property (maybe linearly) directly from the representation
     - problem: if the post-hoc probe is a complex model (e.g. MLP), it can accurately predict a property even if that property isn't really contained in the representation
     - potential solution: benchmark against control tasks, where we construct a new random task to predict given a representation, and see how well the post-hoc probe can do on that task
@@ -764,13 +714,11 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
 - [L2X: information-theoretical local approximation](https://arxiv.org/pdf/1802.07814.pdf) (chen et al. 2018) - locally assign feature importance based on mutual information with function
 - [Learning Explainable Models Using Attribution Priors + Expected Gradients](https://arxiv.org/abs/1906.10670) - like doing integrated gradients in many directions (e.g. by using other points in the training batch as the baseline)
     - can use this prior to help improve performance
-- [Variable Importance Clouds: A Way to Explore Variable Importance for the Set of Good Models](https://arxiv.org/pdf/1901.03209.pdf) 
-- [All Models are Wrong, but Many are Useful: Learning a Variable's Importance by Studying an Entire Class of Prediction Models Simultaneously](https://arxiv.org/abs/1801.01489) (Aaron, Rudin, & Dominici 2018)
 - [Interpreting Black Box Models via Hypothesis Testing](https://arxiv.org/abs/1904.00045)
 
-### vim (variable importance measure) framework
+### variable importances (VIs)
 
-- VIM
+- variable importance definitions
   1. a quantitative indicator that quantifies the change of model output value w.r.t. the change or permutation of one or a set of input variables
   2. an indicator that quantifies the contribution of the uncertainties of one or a set of input variables to the uncertainty of model output variable
   3. an indicator that quantifies the strength of dependence between the model output variable and one or a set of input variables. 
@@ -799,7 +747,7 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
     - ex. see if means vary
     - ex. look at entropy reduction
   - other hypothesis tests include the squared rank difference, 2D kolmogorov-smirnov test, and distance-based tests
-- variance-based vim (sobol's indices)
+- variance-based VI(sobol's indices)
   - **ANOVA decomposition** - decompose model into conditional expectations $Y = g_0 + \sum_i g_i (X_i) + \sum_i \sum_{j > i} g_{ij} (X_i, X_j) + \dots + g_{1,2,..., p}$
     - $g_0 = \mathbf E (Y)\\ g_i = \mathbf E(Y \vert X_i) - g_0 \\ g_{ij} = \mathbf E (Y \vert X_i, X_j) - g_i - g_j - g_0\\...$
     - take variances of these terms
@@ -813,33 +761,33 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
   - equivalently, $V(Y) - V(E[Y \vert X_{\sim i}])$
     - usually used to screen unimportant variables
       - it is common to normalize these indices by the total variance $V(Y)$
-    - three methods for computation - Fourire amplitude sensitivity test, meta-model, MCMC
+    - three methods for computation - Fourier amplitude sensitivity test, meta-model, MCMC
     - when features are correlated, these can be strange (often inflating the main effects)
       - can consider $X_i^{\text{Correlated}} = E(X_i \vert X_{\sim i})$ and $X_i^{\text{Uncorrelated}} = X_i - X_i^{\text{Correlated}}$
   - this can help us understand the contributions that come from different features, as well as the correlations between features (e.g. $S_i^{\text{Uncorrelated}} = V(E[Y \vert X_i^{\text{Uncorrelated}}])/V(Y)$
     - [sobol indices connected to shapley value](https://epubs.siam.org/doi/pdf/10.1137/130936233)
       - $SHAP_i = \underset{S, i \in S}{\sum} V(g_S) / \vert S \vert$
   - efficiently compute SHAP values directly from data ([williamson & feng, 2020 icml](http://proceedings.mlr.press/v119/williamson20a/williamson20a.pdf))
-- moment-independent vim
+- moment-independent VI
   - want more than just the variance ot the output variables
   - e.g. **delta index** = average dist. between $f_Y(y)$ and $f_{Y \vert X_i}(y)$ when $X_i$ is fixed over its full distr.
     - $\delta_i = \frac 1 2 \mathbb E \int \vert f_Y(y) - f_{Y\vert X_i} (y) \vert dy = \frac 1 2 \int \int \vert f_{Y, X_i}(y, x_i) - f_Y(y) f_{X_i}(x_i) \vert dy \,dx_i$
     - moment-independent because it depends on the density, not just any moment (like measure of dependence between $y$ and $X_i$
   - can also look at KL, max dist..
-- graphic vim - like curves
+- graphic VI - like curves
   - e.g. scatter plot, meta-model plot, regional VIMs, parametric VIMs
   - CSM - relative change of model ouput mean when range of $X_i$ is reduced to any subregion
   - CSV - same thing for variance
 - Sparse and Faithful Explanations Without Sparse Models ([sun...wang, rudin, 2024](https://arxiv.org/pdf/2402.09702.pdf)) - introduce sparse explanation value (SEV) - that measure the decision sparsity of a model (defined using movements over a hypercube)
 - [A Simple and Effective Model-Based Variable Importance Measure](https://arxiv.org/pdf/1805.04755.pdf)
-    - measures the feature importance (defined as the variance of the 1D partial dependence function) of one feature conditional on different, fixed points of the other feature. When the variance is high, then the features interact with each other, if it is zero, they don’t interact.
-- [Learning to Explain: Generating Stable Explanations Fast - ACL Anthology](https://aclanthology.org/2021.acl-long.415/) (situ et al. 2021) - train a model on "teacher" importance scores (e.g. SHAP) and then use it to quickly predict importance scores on new examples
+    - measures the feature importance (defined as the variance of the 1D partial dependence function) of one feature conditional on different, fixed points of the other feature. When the variance is high, then the features interact with each other, if it is zero, they don’t interact
+- Learning to Explain: Generating Stable Explanations Fast ([situ et al. 2021](https://aclanthology.org/2021.acl-long.415/)) - train a model on "teacher" importance scores (e.g. SHAP) and then use it to quickly predict importance scores on new examples
 - Guarantee Regions for Local Explanations ([havasi...doshi-velez, 2024](https://arxiv.org/abs/2402.12737v1)) - use anchor points to find regions for which local interp methods reliably fit the full model
 
 ### importance curves
 
 - **pdp plots** - marginals (force value of plotted var to be what you want it to be)
-   - separate into **ice plots**  - marginals for instance
+   - separate into **ice plots** - marginals for instance
      - average of ice plots = pdp plot
      - sometimes these are centered, sometimes look at derivative
    - both pdp ice suffer from many points possibly not being real
@@ -860,15 +808,15 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
 
 ## tree ensembles
 
-- **mean decrease impurity** = MDI = Gini importance
-- Breiman proposes **permutation tests** = MDA: Breiman, Leo. 2001. “Random Forests.” Machine Learning 45 (1). Springer: 5–32
-  - [conditional variable importance for random forests](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-9-307) (strobl et al. 2008)
+- MDI = **mean decrease impurity** = Gini importance
+- MDA = mean decrease accuracy = **permutation tests**: (breiman, 20010
+  - conditional variable importance for random forests ([strobl et al. 2008](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-9-307))
     - propose permuting conditioned on the values of variables not being permuted
       - to find region in which to permute, define the grid within which the values of $X_j$ are permuted for each tree by means of the partition of the feature space induced by that tree
     - many scores (such as MDI, MDA) measure marginal importance, not conditional importance
       - as a result, correlated variables get importances which are too high
-- [Extracting Optimal Explanations for Ensemble Trees via Logical Reasoning](https://arxiv.org/abs/2103.02191) (zhang et al. '21) - OptExplain: extracts global explanation of tree ensembles using logical reasoning, sampling, + optimization
-- [treeshap](https://arxiv.org/abs/1802.03888) (lundberg, erion & lee, 2019): prediction-level
+- Extracting Optimal Explanations for Ensemble Trees via Logical Reasoning ([zhang et al. '21](https://arxiv.org/abs/2103.02191)) - OptExplain: extracts global explanation of tree ensembles using logical reasoning, sampling, + optimization
+- treeshap ([lundberg, erion & lee, 2019](https://arxiv.org/abs/1802.03888)): prediction-level
   - individual feature attribution: want to decompose prediction into sum of attributions for each feature
     - each thing can depend on all features
   - Saabas method: basic thing for tree
@@ -887,23 +835,16 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
     - can quantitatively evaluate based on clustering of explanations
   - their fig 8 - qualitatively can see how different features alter outpu
   - gini importance is like weighting all of the orderings
-- [Explainable AI for Trees: From Local Explanations to Global Understanding](https://arxiv.org/abs/1905.04610) (lundberg et al. 2019)
+- Explainable AI for Trees: From Local Explanations to Global Understanding ([lundberg et al. 2019](https://arxiv.org/abs/1905.04610))
   - shap-interaction scores - distribute among pairwise interactions + local effects
   - plot lots of local interactions together - helps detect trends
   - propose doing shap directly on loss function (identify how features contribute to loss instead of prediction)
   - can run supervised clustering (where SHAP score is the label) to get meaningful clusters
     - alternatively, could do smth like CCA on the model output
-- [understanding variable importances in forests of randomized trees](http://papers.nips.cc/paper/4928-understanding-variable-importances-in-forests-of-randomized-tre) (louppe et al. 2013)
-  - consider fully randomized trees
-    - assume all categorical
-    - randomly pick feature at each depth, split on all possibilities
-    - also studied by biau 2012
-    - extreme case of random forest w/ binary vars?
-  - real trees are harder: correlated vars and stuff mask results of other vars lower down
-  - asymptotically, randomized trees might actually be better
-- [Actionable Interpretability through Optimizable Counterfactual Explanations for Tree Ensembles](https://arxiv.org/pdf/1911.12199v1.pdf) (lucic et al. 2019)
+- understanding variable importances in forests of randomized trees ([louppe et al. 2013](http://papers.nips.cc/paper/4928-understanding-variable-importances-in-forests-of-randomized-tre)) = consider fully randomized trees (all categorical, randomly pick feature at each depth, split on all possibilities)
+- Optimizable Counterfactual Explanations for Tree Ensembles ([lucic et al. 2019](https://arxiv.org/pdf/1911.12199v1.pdf))
 
-## neural nets (dnns)
+## neural networks (dnns)
 
 ### dnn visualization
 
@@ -915,7 +856,7 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
       - project filter weights into the image space
       - pooling layers make this harder
     3. *deep visualization* - yosinski 15
-    4. [Understanding Deep Image Representations by Inverting Them](https://arxiv.org/abs/1412.0035) (mahendran & vedaldi 2014) - generate image given representation
+    4. Understanding Deep Image Representations by Inverting Them ([mahendran & vedaldi 2014](https://arxiv.org/abs/1412.0035) ) - generate image given representation
     5. [pruning for identifying critical data routing paths](https://openaccess.thecvf.com/content_cvpr_2018/html/Wang_Interpret_Neural_Networks_CVPR_2018_paper.html) - prune net (while preserving prediction) to identify neurons which result in critical paths
 - penalizing activations
     - [interpretable cnns](http://openaccess.thecvf.com/content_cvpr_2018/CameraReady/0490.pdf) (zhang et al. 2018) - penalize activations to make filters slightly more intepretable
@@ -970,32 +911,25 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
 - [Understanding Deep Architectures by Visual Summaries](http://bmvc2018.org/papers/0794.pdf)
 - [Semantics for Global and Local Interpretation of Deep Neural Networks](https://arxiv.org/abs/1910.09085)
 - [Iterative augmentation of visual evidence for weakly-supervised lesion localization in deep interpretability frameworks](https://arxiv.org/abs/1910.07373)
-- [explaining image classifiers by counterfactual generation](https://arxiv.org/pdf/1807.08024.pdf) 
-    - generate changes (e.g. with GAN in-filling) and see if pred actually changes
+- FIDO: [explaining image classifiers by counterfactual generation](https://arxiv.org/pdf/1807.08024.pdf)  - generate changes (e.g. with GAN in-filling) and see if pred actually changes
     - can search for smallest sufficient region and smallest destructive region
-    - ![](../assets/fido.png)
 
 ### dnn concept-based explanations
 
-- [concept activation vectors](https://arxiv.org/abs/1711.11279) (kim et al. 2018)
-    - Given: a user-defined set of examples for a concept (e.g., ‘striped’), and random
-            examples, labeled training-data examples for the studied class (zebras) 
-        - given trained network
-        - TCAV can quantify the model’s sensitivity to the concept for that class. CAVs are learned by training a linear classifier to distinguish between the activations produced by
-            a concept’s examples and examples in any layer
-        - CAV - vector orthogonal to the classification boundary
+- TCAV: concept activation vectors ([kim et al. 2018](https://arxiv.org/abs/1711.11279))
+    - Given: a user-defined set of examples for a concept (e.g., ‘striped’), and random examples, labeled training-data examples for the studied class (zebras), trained DNN
+        - CAV - vector orthogonal to the linear classification boundary in activation space
         - TCAV uses the derivative of the CAV direction wrt input
     - automated concept activation vectors ([ghorbani, ..., zhou, kim, 2019](https://arxiv.org/abs/1902.03129)) - Given a set of concept discovery images, each image is segmented with different resolutions to find concepts that are captured best at different sizes. (b) After removing duplicate segments, each segment is resized tothe original input size resulting in a pool of resized segments of the discovery images. (c) Resized segments are mapped to a model’s activation space at a bottleneck layer. To discover the concepts associated with the target class, clustering with outlier removal is performed. (d) The output of our method is a set of discovered concepts for each class, sorted by their importance in prediction
     - Discover and Cure: Concept-aware Mitigation of Spurious Correlation ([wu...zou, 2023](https://www.semanticscholar.org/reader/6f0d9e2aa3f40aee571c7e35958598d4f82cdab5))
 - Concept Gradient: Concept-based Interpretation Without Linear Assumption ([bai...ravikumar..hsieh, 2022](https://arxiv.org/pdf/2208.14966.pdf))
 - [On Completeness-aware Concept-Based Explanations in Deep Neural Networks](https://arxiv.org/abs/1910.07969)
 - [Interpretable Basis Decomposition for Visual Explanation](https://openaccess.thecvf.com/content_ECCV_2018/html/Antonio_Torralba_Interpretable_Basis_Decomposition_ECCV_2018_paper.html) (zhou et al. 2018) - decompose activations of the input image into semantically interpretable components pre-trained from a large concept corpus
-- [Explaining in Style: Training a GAN to explain a classifier in StyleSpace](https://arxiv.org/abs/2104.13369) (lang et al. 2021)
 
 
 ### dnn causal-motivated attribution
 
-- [Explaining The Behavior Of Black-Box Prediction Algorithms With Causal Learning](https://arxiv.org/abs/2006.02482) - specify some interpretable features and learn a causal graph of how the classifier uses these features (sani et al. 2021)
+- Explaining The Behavior Of Black-Box Prediction Algorithms With Causal Learning ([sani et al. 2021](https://arxiv.org/abs/2006.02482)) - specify some interpretable features and learn a causal graph of how the classifier uses these features 
   - **partial ancestral graph (PAG)** ([zhang 08](https://www.jmlr.org/papers/volume9/zhang08a/zhang08a.pdf)) is a graphical representation which includes
     - directed edges (X $\to$ Y means X is a causal ancestor of Y)
     - bidirected edges (X $\leftrightarrow$ Y means X and Y are both caused by some unmeasured common factor(s), e.g., X ← U → Y )
@@ -1004,20 +938,20 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
   - given a model's predictions $\hat Y$ and some potential causes $Z$, learn a PAGE among them all
     - assume $\hat Y$ is a causal non-ancestor of $Z$ (there is no directed path from $\hat Y$ into any element of $Z$)
     - search for a PAG and not DAG bc $Z$ might not include all possibly relevant variables
-- [Neural Network Attributions: A Causal Perspective](http://proceedings.mlr.press/v97/chattopadhyay19a.html) (Chattopadhyay et al. 2019)
+- Neural Network Attributions: A Causal Perspective ([Chattopadhyay et al. 2019](http://proceedings.mlr.press/v97/chattopadhyay19a.html))
   - the neural network architecture is viewed as a Structural Causal Model, and a methodology to compute the causal effect of each feature on the output is presented
-- [CXPlain: Causal Explanations for Model Interpretation under Uncertainty](https://arxiv.org/abs/1910.12336) (schwab & karlen, 2019)
+- CXPlain: Causal Explanations for Model Interpretation under Uncertainty ([schwab & karlen, 2019](https://arxiv.org/abs/1910.12336))
   - model-agnostic - efficiently query model to figure out which inputs are most important
   - pixel-level attributions
-- [Amnesic Probing: Behavioral Explanation with Amnesic Counterfactuals](https://arxiv.org/abs/2006.00995) (elezar...goldberg, 2020)
+- Amnesic Probing: Behavioral Explanation with Amnesic Counterfactuals ([elezar...goldberg, 2020](https://arxiv.org/abs/2006.00995))
   - instead of simple probing, generate counterfactuals in representations and see how final prediction changes
     - remove a property (e.g. part of speech) from the repr. at a layer using Iterative Nullspace Projection (INLP) ([Ravfogel et al., 2020](https://arxiv.org/abs/2004.07667))
       - iteratively tries to predict the property linearly, then removes these directions
-- [Bayesian Interpolants as Explanations for Neural Inferences](https://arxiv.org/abs/2004.04198) (mcmillan 20)
+- Bayesian Interpolants as Explanations for Neural Inferences ([mcmillan 20](https://arxiv.org/abs/2004.04198))
   - if $A \implies B$, *interpolant* $I$ satisfies $A\implies I$, $I \implies B$ and $I$ expressed only using variables common to $A$ and $B$
     - here, $A$ is model input, $B$ is prediction, $I$ is activation of some hidden layer
   - *Bayesian interpolant* show $P(A|B) \geq \alpha^2$ when $P(I|A) \geq \alpha$ and $P(B|I) \geq \alpha$
-- [Towards Axiomatic, Hierarchical, and Symbolic Explanation for Deep Models](https://arxiv.org/abs/2111.06206) (ren...zhang, 2021) - summarize DNN predictions as a DAG
+- Towards Axiomatic, Hierarchical, and Symbolic Explanation for Deep Models ([ren...zhang, 2021](https://arxiv.org/abs/2111.06206)) - summarize DNN predictions as a DAG
   - DAG can be further summarized into set of AND nodes followed by OR nodes
 
 
@@ -1034,12 +968,14 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
        1. sum the activations across channels (weighted by their weight for a particular class)
        2. weirdness: drop negative activations (can be okay if using relu), normalize to 0-1 range
           1. CALM ([kim et al. 2021](https://arxiv.org/pdf/2106.07861.pdf)) - fix issues with normalization before by introducing a latent variable on the activations
-    4. [RISE](https://arxiv.org/pdf/1806.07421.pdf) (Petsiuk et al. 2018) - randomized input sampling
+    4. RISE ([petsiuk et al. 2018](https://arxiv.org/pdf/1806.07421.pdf)) - randomized input sampling
        1. randomly mask the images, get prediction
        2. saliency map = sum of masks weighted by the produced predictions
+    5. Quantifying Attention Flow in Transformers ([abnar & zuidema](https://arxiv.org/abs/2005.00928)) - solves the problem where the attention of the previous layer is  combined nonlinearly with the attention of the next layer by introducing **attention rollout** - combining attention maps and assuming linearity
+    
 - gradient-based methods - visualize what in image would change class label
   - gradient * input
-  - [integrated gradients](http://proceedings.mlr.press/v70/sundararajan17a/sundararajan17a.pdf) (sundararajan et al. 2017) - just sum up the gradients from some baseline to the image times the differ  (in 1d, this is just $\int_{x'=baseline}^{x'=x} (x-x') \cdot (f(x) - f(x'))$
+  - integrated gradients ([sundararajan et al. 2017](http://proceedings.mlr.press/v70/sundararajan17a/sundararajan17a.pdf)) - just sum up the gradients from some baseline to the image times the differ  (in 1d, this is just $\int_{x'=baseline}^{x'=x} (x-x') \cdot (f(x) - f(x'))$
     - in higher dimensions, such as images, we pick the path to integrate by starting at some baseline (e.g. all zero) and then get gradients as we interpolate between the zero image and the real image
     - if we picture 2 features, we can see that integrating the gradients will not just yield $f(x) - f(baseline)$, because each time we evaluate the gradient we change both features
     - [explanation distill article](https://distill.pub/2020/attribution-baselines/) 
@@ -1055,36 +991,20 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
   - guided backpropagation - springenberg et al
   - lets you better create maximally specific image
   - selvaraju 17 - *grad-CAM*
-  - [grad-cam++](https://arxiv.org/abs/1710.11063)
-  - [competitive gradients](https://arxiv.org/pdf/1905.12152.pdf) (gupta & arora 2019)
-  - Label  "wins" a pixel if either (a) its map assigns that pixel a positive score higher than the scores assigned by every other label ora negative score lower than the scores assigned by every other label. 
-  - final saliency map consists of scores assigned by the chosen label to each pixel it won, with the map containing a score 0 for any pixel it did not win.
-  - can be applied to any method which satisfies completeness (sum of pixel scores is exactly the logit value)
-  - [Saliency Methods for Explaining Adversarial Attacks](https://arxiv.org/abs/1908.08413)
-- critiques
-    - [Do Input Gradients Highlight Discriminative Features?](https://arxiv.org/abs/2102.12781) (shah et a. 2021) - input gradients often don't highlight relevant features (they work better for adv. robust models)
-        - prove/demonstrate this in synthetic dataset where $x=ye_i$ for standard basis vector $e_i$, $y=\{\pm 1\}$
-- newer methods
-    - [Quantifying Attention Flow in Transformers](https://arxiv.org/abs/2005.00928) (abnar & zuidema) - solves the problem where the attention of the previous layer is  combined nonlinearly with the attention of the next layer by introducing **attention rollout** - combining attention maps and assuming linearity
-    - [Score-CAM:Improved Visual Explanations Via Score-Weighted Class Activation Mapping](https://arxiv.org/abs/1910.01279)
-    - [Removing input features via a generative model to explain their attributions to classifier's decisions](https://arxiv.org/abs/1910.04256)
-    - [NeuroMask: Explaining Predictions of Deep Neural Networks through Mask Learning](https://ieeexplore.ieee.org/abstract/document/8784063)
-    - [Interpreting Undesirable Pixels for Image Classification on Black-Box Models](https://arxiv.org/abs/1909.12446)
-    - [Guideline-Based Additive Explanation for Computer-Aided Diagnosis of Lung Nodules](https://link.springer.com/chapter/10.1007/978-3-030-33850-3_5)
-    - [Learning how to explain neural networks: PatternNet and PatternAttribution](https://arxiv.org/abs/1705.05598) - still gradient-based
-        - [Generalized PatternAttribution for Neural Networks with Sigmoid Activations](https://ieeexplore.ieee.org/abstract/document/8851761)
-    - [Learning Reliable Visual Saliency for Model Explanations](https://ieeexplore.ieee.org/abstract/document/8884184)
-    - [Neural Network Attributions: A Causal Perspective](https://arxiv.org/abs/1902.02302)
-    - [Gradient Weighted Superpixels for Interpretability in CNNs](https://arxiv.org/abs/1908.08997)
-    - [Decision Explanation and Feature Importance for Invertible Networks](https://arxiv.org/abs/1910.00406) (mundhenk et al. 2019)
-    - [Efficient Saliency Maps for Explainable AI](https://deepai.org/publication/efficient-saliency-maps-for-explainable-ai) 
-    
+    - [grad-cam++](https://arxiv.org/abs/1710.11063)
+  - competitive gradients ([gupta & arora 2019](https://arxiv.org/pdf/1905.12152.pdf))
+    - Label  "wins" a pixel if either (a) its map assigns that pixel a positive score higher than the scores assigned by every other label ora negative score lower than the scores assigned by every other label. 
+    - final saliency map consists of scores assigned by the chosen label to each pixel it won, with the map containing a score 0 for any pixel it did not win.
+    - can be applied to any method which satisfies completeness (sum of pixel scores is exactly the logit value)
+  
+  - [Learning how to explain neural networks: PatternNet and PatternAttribution](https://arxiv.org/abs/1705.05598) - still gradient-based
 
 ### dnn language models / transformers
 
-- [Staying True to Your Word: (How) Can Attention Become Explanation?](https://arxiv.org/abs/2005.09379)
-- [attention is not explanation](https://arxiv.org/abs/1902.10186) (jain & wallace, 2019)
-- [attention is not **not** explanation](https://arxiv.org/abs/1908.04626) (wiegreffe & pinter, 2019)
+- attention is not explanation ([jain & wallace, 2019](https://arxiv.org/abs/1902.10186))
+  - attention is not **not** explanation ([wiegreffe & pinter, 2019](https://arxiv.org/abs/1908.04626))
+  - [Staying True to Your Word: (How) Can Attention Become Explanation?](https://arxiv.org/abs/2005.09379)
+
 - influence = pred with a word - pred with a word masked
 - attention corresponds to this kind of influence
 - deceptive attention - we can successfully train a model to make similar predictions but have different attention
@@ -1099,15 +1019,17 @@ Symbolic regression learns a symbolic (e.g. a mathematical formula) for a functi
 
 How interactions are defined and summarized is a very difficult thing to specify. For example, interactions can change based on monotonic transformations of features (e.g. $y= a \cdot b$, $\log y = \log a + \log b$). Nevertheless, when one has a specific question it can make sense to pursue finding and understanding interactions.
 
-- build-up = context-free, less faithful: score is contribution of only variable of interest ignoring other variables
-- break-down = occlusion = context-dependent, more faithful: score is contribution of variable of interest given all other variables (e.g. permutation test - randomize var of interest from right distr.)
+- basic methods
+  - occlusion = context-dependent = "break-down" , more faithful: score is contribution of variable of interest given all other variables (e.g. permutation test - randomize var of interest from right distr.)
+  - context-free = "build-up", less faithful: score is contribution of only variable of interest ignoring other variables
+
 - *H-statistic*: 0 for no interaction, 1 for complete interaction
   - how much of the variance of the output of the joint partial dependence is explained by the interaction instead of the individuals
   - $$H^2_{jk} = \underbrace{\sum_i [\overbrace{PD(x_j^{(i)}, x_k^{(i)})}^{\text{interaction}} \overbrace{- PD(x_j^{(i)}) - PD(x_k^{(i)})}^{\text{individual}}]^2}_{\text{sum over data points}} \: / \: \underbrace{\sum_i [PD(x_j^{(i)}, x_k^{(i)})}_{\text{normalization}}]^2$$
   - alternatively, using ANOVA decomp: $H_{jk}^2 = \sum_i g_{ij}^2 / \sum_i (\mathbb E [Y \vert X_i, X_j])^2$
   - same assumptions as PDP: features need to be independent
 - alternatives
-  - variable interaction networks (Hooker, 2004) - decompose pred into main effects + feature interactions
+  - variable interaction networks ([hooker 2004](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.91.7500&rep=rep1&type=pdf)) - decompose pred into main effects + feature interactions
   - PDP-based feature interaction (greenwell et al. 2018)
 - feature-screening ([li, feng ruan, 2020](https://arxiv.org/abs/2011.12215))
   - want to find beta which is positive when a variable is important
@@ -1118,25 +1040,22 @@ How interactions are defined and summarized is a very difficult thing to specify
     - *pure interaction effects* - variance in the outcome which cannot be represented by any subset of features
       - has an equivalence with the Functional ANOVA decomposition
 - Automatic Interaction Detection (AID) - detects interactions by subdividing data into disjoint exhaustive subsets to model an outcome based on categorical features
+- SPEX: Scaling Feature Interaction Explanations for LLMs ([kang, butler, agarwal...ramachandran, yu, 2025](https://arxiv.org/pdf/2502.13870#page=1.00)) - efficient search over binary interactions, applied to inputs of LLMs / VLMs
 - Shapley Taylor Interaction Index (STI) (Dhamdhere et al., 2019) - extends shap to all interactions
 - Faith-Shap: The Faithful Shapley Shapley Interaction Index ([tsai, yeh, & ravikumar, 2019](https://arxiv.org/abs/2203.00870#:~:text=Shapley%20values%2C%20which%20were%20originally,black%2Dbox%20machine%20learning%20models.))
   - SHAP axioms for interactions no longer specify a unique interaction index
   - here, adopt the viewpoint of Shapley values as coefficients of the most faithful linear approximation to the pseudo-Boolean coalition game value function
-
 - gradient-based methods (originally Friedman and Popescu, 2008 then later used with many models such as logit)
   - test if partial derivatives for some subset (e.g. $x_1, ..., x_p$) are nonzero $$\mathbb{E}_{\mathbf{x}}\left[\frac{\partial^p f(\mathbf{x})}{\partial x_{i_{1}} \partial x_{i_{2}} \ldots \partial x_{i_p}}\right]^{2}>0$$
   - doesn't work well for piecewise functions (e.g. Relu) and computationally expensive
 - include interactions explicitly then run lasso (e.g. bien et al. 2013)
-- methods for finding frequent item sets
-  - [random intersection trees](https://arxiv.org/pdf/1303.6223.pdf)
-  - [fp-growth](https://www.softwaretestinghelp.com/fp-growth-algorithm-data-mining/)
-  - eclat
+- might first limit interaction search using frequent itemsets (📌 see notes on rules)
 
 ### tree-based interactions
 
-- [iterative random forest](https://www.pnas.org/content/115/8/1943) (basu et al. 2018)
+- iterative random forest ([basu et al. 2018](https://www.pnas.org/content/115/8/1943))
   - interaction scoring - find interactions as features which co-occur on paths (using RIT algorithm)
-    - [signed iterative Random Forests](https://arxiv.org/abs/1810.07287) (kumbier et al. 2018) 
+    - signed iterative Random Forests ([kumbier et al. 2018](https://arxiv.org/abs/1810.07287)) 
   - repeated refitting
     - fit RF and get MDI importances
     - iteratively refit RF, weighting probability of feature being selected by its previous MDI
@@ -1144,7 +1063,7 @@ How interactions are defined and summarized is a very difficult thing to specify
 - GUIDE: Regression trees with unbiased variable selection and interaction detection ([loh, 2002](https://www.jstor.org/stable/24306967?casa_token=c5imnuT3UTcAAAAA%3ARq78kxZpxxwcqL4DyuMwb5PHsQmDgQcsEnOlTwzvvS7xRCJGrcr-ABWR9XDuoP_d3D2puv7HwzEBZCibKyytW4iwuYFXIaBGEnrY4gKT90E3aavH0w)) - tests pairwise interactions based on the $\chi^2$ test
 - FAST ([lou, caruana, gehrke, & hooker, 2013](https://dl.acm.org/doi/abs/10.1145/2487575.2487579)) - given model of marginal curves, test adding a pairwise interaction using a restricted tree that makes exacttly one split on each of the two interacting features
 - SBART: Bayesian regression tree ensembles that adapt to smoothness and sparsity ([linero & yang, 2018](https://rss.onlinelibrary.wiley.com/doi/full/10.1111/rssb.12293?casa_token=Pj1jdf_Cdy0AAAAA%3AWLdBFv0Y9oC5i8CUfAFDWuXR9WCww4Vne9pQazuUhIq7cFiaUZhUe8g3NlzydWch1WHtMtcSa95Q66lqGw)) - adapts BART to sparsity
-- DP-Forests: [bayesian decision tree ensembles for interaction detection](https://arxiv.org/abs/1809.08524) (du & linero, 2018)
+- DP-Forests: bayesian decision tree ensembles for interaction detection ([du & linero, 2018](https://arxiv.org/abs/1809.08524))
   - Bayesian tree ensembles (e.g. BART) generally detect too many (high-order) interactions
   - Dirichlet-process forests (DP-Forests) emphasize low-order interactions
     - create groups of trees which each use non-overlapping features
@@ -1153,55 +1072,50 @@ How interactions are defined and summarized is a very difficult thing to specify
       - $\alpha$ parameter for Dirichlet process describes how strongly to enforce this grouping
   - interaction definition: $x_{j}$ and $x_{k}$ are interact if $f_{0}(x)$ cannot be written as $f_{0}(x)=f_{0 \backslash j}(x)+f_{0 \backslash k}(x)$ where $f_{0 \backslash j}$ and $f_{0 \backslash k}$ do not depend on $x_{j}$ and $x_{k}$ respectively
 
-
-
 ### dnn interactions
 
 - ACD: hierarchical interpretations for neural network predictions ([singh et al. 2019](https://arxiv.org/abs/1806.05337))
-  - [contextual decomposition](https://arxiv.org/abs/1801.05453) (murdoch et al. 2018)
+  - contextual decomposition ([murdoch et al. 2018](https://arxiv.org/abs/1801.05453))
   - [Towards Hierarchical Importance Attribution: Explaining Compositional Semantics for Neural Sequence Models](https://openreview.net/forum?id=BkxRRkSKwr)
-  - [Compositional Explanations for Image Classifiers](https://arxiv.org/abs/2103.03622) (chockler et al. 21) - use perturbation-based interpretations to greedily search for pixels which increase prediction the most (simpler version of ACD)
-- Detecting Statistical Interactions from Neural Network Weights ([tsang et al. 2018](https://arxiv.org/abs/1705.04977)) - interacting inputs must follow strongly weighted connections to a common hidden unit before the final output
-  - Neural interaction transparency (NIT) ([tsang et al. 2017](https://dl.acm.org/citation.cfm?id=3327482))
-- [Explaining Explanations: Axiomatic Feature Interactions for Deep Networks](https://arxiv.org/abs/2002.04138) (janizek et al. 2020) - integrated hessians
-  - not clear the distinction between main and interaction effects
-- [Interpretable Artificial Intelligence through the Lens of Feature Interaction](https://arxiv.org/abs/2103.03103) (tsang et al. 2021)
-  - feature interaction- any non-additive effect between multiple features on an outcome (i.e. cannot be decomposed into a sum of subfunctions of individual variables)
-- [Learning Global Pairwise Interactions with Bayesian Neural Networks](https://arxiv.org/abs/1901.08361) (cui et al. 2020) - Bayesian Group Expected Hessian (GEH) - train bayesian neural net and analyze hessian to understand interactions
+  - Compositional Explanations for Image Classifiers ([chockler et al. 21](https://arxiv.org/abs/2103.03622)) - use perturbation-based interpretations to greedily search for pixels which increase prediction the most (simpler version of ACD)
+- Interpretable Artificial Intelligence through the Lens of Feature Interaction ([tsang et al. 2021](https://arxiv.org/abs/2103.03103))
+  - `feature interaction`= any non-additive effect between multiple features on an outcome (i.e. cannot be decomposed into a sum of subfunctions of individual variables)
+  - Detecting Statistical Interactions from Neural Network Weights ([tsang et al. 2018](https://arxiv.org/abs/1705.04977)) - interacting inputs must follow strongly weighted connections to a common hidden unit before the final output
+    - Neural interaction transparency (NIT) ([tsang et al. 2017](https://dl.acm.org/citation.cfm?id=3327482))
+- Explaining Explanations: Axiomatic Feature Interactions for Deep Networks ([janizek et al. 2020](https://arxiv.org/abs/2002.04138)) - integrated hessians - makes the distinction between main & interaction effects unclear
+- Learning Global Pairwise Interactions with Bayesian Neural Networks ([cui et al. 2020](https://arxiv.org/abs/1901.08361)) - Bayesian Group Expected Hessian (GEH) - train bayesian neural net and analyze hessian to understand interactions
 - Feature Interactions Reveal Linguistic Structure in Language Models ([jumelet & zuidema, 2023](https://arxiv.org/pdf/2306.12181.pdf)) - evaluate ability to find interactions using synthetic data / models
 
 ### linear interactions
 
 - often use "hierarchy" or "heredity" constraint - means interaction term is only added when both main effects are also included
-- hierarchical group lasso ([lim & hastie, 2015](https://pubmed.ncbi.nlm.nih.gov/26759522/)) - learns pairwise interactions in a linear model
-  - uses hierarchy constraint
-- VANISH: [Variable Selection Using Adaptive Nonlinear Interaction Structures in High Dimensions](https://www.tandfonline.com/doi/abs/10.1198/jasa.2010.tm10130?casa_token=HhKY3HXj0fYAAAAA:vTRgqAqWy3DZ9r9vXEinQOZbWuctLPA3J9bACTbrnKIkUPV19yqaDV5zr9dD6IiTrYXsj6HT_kDYNN8) (radchenko & james, 2012) - learns pairwise interactions via basis function expansions
+- hierarchical group lasso ([lim & hastie, 2015](https://pubmed.ncbi.nlm.nih.gov/26759522/)) - learns pairwise interactions in a linear model using a hierarchy constraint
+- VANISH: Variable Selection Using Adaptive Nonlinear Interaction Structures in High Dimensions ([radchenko & james, 2012](https://www.tandfonline.com/doi/abs/10.1198/jasa.2010.tm10130?casa_token=HhKY3HXj0fYAAAAA:vTRgqAqWy3DZ9r9vXEinQOZbWuctLPA3J9bACTbrnKIkUPV19yqaDV5zr9dD6IiTrYXsj6HT_kDYNN8)) - learns pairwise interactions via basis function expansions
   - uses hierarchiy constraint
+- Coefficient tree regression: fast, accurate and interpretable predictive modeling ([surer, apley, & malthouse, 2021](https://link-springer-com.libproxy.berkeley.edu/article/10.1007/s10994-021-06091-7)) - iteratively group linear terms with similar coefficients into a bigger term
 
-
-## example-based explanations
+## finding influential examples
 
 - influential instances - want to find important data points
 - deletion diagnostics - delete a point and see how much it changed
-- [influence funcs](https://arxiv.org/abs/1703.04730) (koh & liang, 2017): use **Hessian** ($\in \mathbb{R}^{\theta   \times \theta}$) to give effect of upweighting a point
+- influence funcs ([koh & liang, 2017](https://arxiv.org/abs/1703.04730)): use **Hessian** ($\in \mathbb{R}^{\theta   \times \theta}$) to estimate the effect of upweighting a point
   - influence functions = inifinitesimal approach - upweight one point by infinitesimally small weight and see how much estimate changes (e.g. calculate first derivative)
   - influential instance - when data point removed, has a strong effect on the model (not necessarily same as an outlier)
   - requires access to gradient (e.g. nn, logistic regression)
   - take single step with Newton's method after upweighting loss
-  - yield change in parameters by removing one point
-  - yield change in loss at one point by removing a different point (by multiplying above by chain rule)
-  - yield change in parameters by modifying one point
-- [Representer Point Selection for Explaining Deep Neural Networks](https://arxiv.org/abs/1811.09720) (yeh, ... , ravikumar, 2018)
-  - **representer values** - decomposes pre-activation single prediction of a DNN into linear combinations of training points -- weights are the representer values
-    - much faster than influence funcs
-    - gives signed values
-
+  - measure change in parameters by removing one point
+  - measure change in loss at one point by removing a different point (by multiplying above by chain rule)
+  - measure change in parameters by modifying one point
+- Representer Point Selection for Explaining Deep Neural Networks ([yeh, ... , ravikumar, 2018](https://arxiv.org/abs/1811.09720))
+  - **representer values** - decompose pre-activation single prediction of a DNN into linear combinations of training points - weights are the representer values
+    - much faster than influence funcs & gives signed values
+    
   - a **representer theorem** is any of several related results stating that a minimizer $f^*$ of a regularized [empirical risk functional](https://en.wikipedia.org/wiki/Empirical_risk_minimization) defined over a reproducing kernel Hilbert space can be represented as a finite linear combination of kernel products evaluated on the input points in the training set data
-
+  
 - Revisiting Methods for Finding Influential Examples ([k & sogaard, 2021](https://arxiv.org/pdf/2111.04683.pdf))
-  - argue that influence should be estimated relative to model states and data samples -- *expected* influence scores
+  - argue that influence should be estimated relative to model states and data samples = `expected influence scores`
   - different ways to compute the influence of a training example $x_{train}$ on a test example $x_{test}$
-  - *leave-one-out*: calculate loss on $x_{test}$ when trained on all points except x_train - loss when trained on all points
+  - *leave-one-out*: calculate loss on $x_{test}$ when trained on all points except $x_{\text{train}}$ - loss when trained on all points
   - *influence functions*: $I\left(x_{\text {train }}, x_{\text {test }}\right)=$ $\nabla_{\theta} L\left(x_{\text {test }}, \hat{\theta}\right)^{T} H_{\hat{\theta}}^{-1} \nabla_{\theta} L\left(x_{\text {train }}, \hat{\theta}\right)$, where $\hat{\theta}$ is the weights of the trained model and $H_{\hat{\theta}}=\frac{1}{n} \sum_{i=1}^{n} \nabla_{\theta}^{2} L\left(x_{i}, \hat{\theta}\right)$
   - *TraceInIdeal* (pruthi et al. 2020): train with batch size 1, measure change in loss of $x_{test}$ after taking a training step with $x_{train}$
     - *TraceInCP* approximates this using larger batch sizes
@@ -1209,39 +1123,33 @@ How interactions are defined and summarized is a very difficult thing to specify
   - *representer point selection*: $I\left(x_{\text {train }}, x_{\text {test }}\right)=\frac{-1}{2 \lambda n} \frac{\partial L\left(x_{\text {train }}, \hat{\theta}\right)}{\partial \Phi\left(x_{\text {train }}, \hat{\theta}\right)} f\left(x_{\text {train }}\right)^{T} f\left(x_{\text {test }}\right)$
   - *Grad-dot*: $I\left(x_{\text {train }}, x_{t e s t}\right)=\nabla_{\theta} L\left(x_{\text {train }}, \hat{\theta}\right)^{T} \nabla_{\theta} L\left(x_{\text {test }}, \hat{\theta}\right) .$
 
+## model summarization / distillation
 
-## model summarization
-
-- [piecewise linear interp](https://arxiv.org/pdf/1806.10270.pdf)
-- [Computing Linear Restrictions of Neural Networks](https://arxiv.org/abs/1908.06214) - calculate function of neural network restricting its points to lie on a line
-- [Interpreting CNN Knowledge via an Explanatory Graph](https://arxiv.org/abs/1708.01785) (zhang et al. 2017) - create a graph that responds better to things like objects than individual neurons
 - [Considerations When Learning Additive Explanations for Black-Box Models](https://arxiv.org/abs/1801.08640)
   - when we have a nonlinear model or correlated components, impossible to uniquely distill it into an additive surrogate model
   - 4 potential additive surrogate models:
-    - distilled additive- tend to be the most faithful
+    - distilled additive - tend to be the most faithful
     - partial-dependence
     - Shapley explanations (averaged)
     - gradient-based
-- [Interpreting Deep Neural Networks through Prototype Factorization](https://ieeexplore.ieee.org/abstract/document/9346401) - posthoc convert DNN into having different factors
-- [ModelDiff: A Framework for Comparing Learning Algorithms](https://arxiv.org/abs/2211.12491) (shah, ..., ilyas, madry, 2022) - find the difference between 2 learned models (by searching for feature transformations where they differ)
+- [piecewise linear interp](https://arxiv.org/pdf/1806.10270.pdf)
+- [Computing Linear Restrictions of Neural Networks](https://arxiv.org/abs/1908.06214) - calculate function of neural network restricting its points to lie on a line
+- Interpreting CNN Knowledge via an Explanatory Graph ([zhang et al. 2017](https://arxiv.org/abs/1708.01785)) - create a graph that responds better to things like objects than individual neurons
+- ModelDiff: A Framework for Comparing Learning Algorithms ([shah, ..., ilyas, madry, 2022](https://arxiv.org/abs/2211.12491)) - find the difference between 2 learned models by searching for feature transformations where they differ
 
+*usually distillation refers to training a surrogate model on the predictions of the original model, but it is sometimes used more loosely to refer to using information from an original model to inform a surrogate/student model*
 
-
-## distillation
-
-- usually distillation refers to training a surrogate model on the predictions of the original model, but here I use it looser
-- model distillation (model-agnostic)
+- model-agnostic model distillation
   - Trepan - approximate model w/ a decision tree
-  - [BETA](https://arxiv.org/abs/1707.01154) (lakkaraju et al. 2017) - approximate model by a rule list
-- [set of methods](https://github.com/mateoespinosa/remix) for extracting rules from DNNN
+  - BETA ([lakkaraju et al. 2017](https://arxiv.org/abs/1707.01154)) - approximate model with a rule list
 - exact distillation
-  - [Born-again tree ensembles](https://arxiv.org/pdf/2003.11132.pdf) (vidal et al. 2020) - efficient algorithm to exactly find a minimal tree which reproduces the predictions of a tree ensemble
-- [Knowledge Distillation as Semiparametric Inference](https://arxiv.org/abs/2104.09732) (dao...mackey, 2021
-  - background on when kd should succeed
+  - Born-again tree ensembles ([vidal et al. 2020](https://arxiv.org/pdf/2003.11132.pdf)) - efficient algorithm to exactly find a minimal tree which reproduces the predictions of a tree ensemble
+- Knowledge Distillation as Semiparametric Inference ([dao...mackey, 2021](https://arxiv.org/abs/2104.09732))
+  - when KD should succeed
     - probabilities more informative than labels (hinton, vinyals, & dean, 2015)
     - linear students exactly mimic linear teachers (phuong & lampert, 2019)
     - students can learn at a faster rate given knowledge of datapoint difficulty (lopez-paz et al. 2015)
-    - [regularization for kernel ridge regression](https://arxiv.org/pdf/2002.05715.pdf) (mobahi farajtabar, & bartlett, 2020)
+    - regularization for kernel ridge regression ([mobahi farajtabar, & bartlett, 2020](https://arxiv.org/pdf/2002.05715.pdf))
     - teacher class probabilities are proxies for the true bayes class probabilities $\mathbb E [Y|x]$
   - adjustments
     - teacher underfitting $\to$ loss correction
@@ -1251,49 +1159,42 @@ How interactions are defined and summarized is a very difficult thing to specify
 
 ## improving models
 
-Nice overview [here](https://github.com/stefanoteso/awesome-explanatory-supervision).
+*nice reference list [here](https://github.com/stefanoteso/awesome-explanatory-supervision)*
 
 - Interpretations are useful: penalizing explanations to align neural networks with prior knowledge ([rieger et al. 2020](https://arxiv.org/abs/1909.13584))
-  - [Refining Neural Networks with Compositional Explanations](https://arxiv.org/abs/2103.10415) (yao et al. 21) - human looks at saliency maps of interactions, gives natural language explanation, this is converted back to interactions (defined using IG), and then regularized
-  - [Dropout as a Regularizer of Interaction Effects](https://arxiv.org/abs/2007.00823) (lengerich...caruana, 21) - dropout regularizes interaction effects
-  - [Sparse Epistatic Regularization of Deep Neural Networks for Inferring Fitness Functions](https://www.biorxiv.org/content/10.1101/2020.11.24.396994v1) (aghazadeh ... listgarten, ramchandran, 2020) - penalize DNNs spectral representation to limit learning noisy high-order interactions
+  - Refining Neural Networks with Compositional Explanations ([yao et al. 21](https://arxiv.org/abs/2103.10415)) - human looks at saliency maps of interactions, gives natural language explanation, this is converted back to interactions (defined using IG), and then regularized
+  - Dropout as a Regularizer of Interaction Effects ([lengerich...caruana, 21](https://arxiv.org/abs/2007.00823)) - dropout regularizes interaction effects
+  - Sparse Epistatic Regularization of Deep Neural Networks for Inferring Fitness Functions ([aghazadeh ... listgarten, ramchandran, 2020](https://www.biorxiv.org/content/10.1101/2020.11.24.396994v1)) - penalize DNNs spectral representation to limit learning noisy high-order interactions
 - Right for the Right Reasons: Training Differentiable Models by Constraining their Explanations ([ross et al. 2017](https://arxiv.org/abs/1703.03717)) - selectively penalize input gradients
-- [Explain and improve: LRP-inference fine-tuning for image captioning models ](https://www.sciencedirect.com/science/article/pii/S1566253521001494) (sun et al. 2022)
-  - [Pruning by explaining: A novel criterion for deep neural network pruning](https://www.sciencedirect.com/science/article/pii/S0031320321000868) (yeom et al. 2021) - use LRP-based score to prune DNN
-- [Explain to Fix: A Framework to Interpret and Correct DNN Object Detector Predictions](https://arxiv.org/pdf/1811.08011.pdf)
+- Explain and improve: LRP-inference fine-tuning for image captioning models ([sun et al. 2022](https://www.sciencedirect.com/science/article/pii/S1566253521001494))
+  - Pruning by explaining: A novel criterion for deep neural network pruning ([yeom et al. 2021](https://www.sciencedirect.com/science/article/pii/S0031320321000868)) - use LRP-based score to prune DNN
 - [Understanding Misclassifications by Attributes](https://arxiv.org/abs/1910.07416)
-- [Improving VQA and its Explanations by Comparing Competing Explanations](https://arxiv.org/abs/2006.15631) (wu et al. 2020)
-  - train to distinguish correct human explanations from competing explanations supporting incorrect answers
-    - first, predict answer candidates
-    - second, retrieve/generate explanation for each candidate
-    - third, predict verification score from explanation (trained on gt explanations)
-    - fourth, reweight predictions by verification scores
-  - generated explanations are rated higher by humans
-  - [VQA-E: Explaining, Elaborating, and Enhancing Your Answers for Visual Questions](https://arxiv.org/abs/1803.07464) (li et al. 2018) - train to jointly predict answer + generate an explanation
-  - [Self-Critical Reasoning for Robust Visual Question Answering](https://proceedings.neurips.cc/paper/2019/hash/33b879e7ab79f56af1e88359f9314a10-Abstract.html) (wu & mooney, 2019) - use textual explanations to extract a set of important visual objects
+- Improving VQA and its Explanations by Comparing Competing Explanations ([wu et al. 2020](https://arxiv.org/abs/2006.15631)) - train to distinguish correct human explanations from competing explanations supporting incorrect answers
+  - VQA-E: Explaining, Elaborating, and Enhancing Your Answers for Visual Questions ([li et al. 2018](https://arxiv.org/abs/1803.07464)) - train to jointly predict answer + generate an explanation
+  - Self-Critical Reasoning for Robust Visual Question Answering ([wu & mooney, 2019](https://proceedings.neurips.cc/paper/2019/hash/33b879e7ab79f56af1e88359f9314a10-Abstract.html)) - use textual explanations to extract a set of important visual objects
 
 **complementarity** - ML should focus on points hard for humans + seek human input on points hard for ML
 
 - note: goal of ML isn't to learn categories but learn things that are associated with actions
-- [Predict Responsibly: Improving Fairness and Accuracy by Learning to Defer](http://papers.nips.cc/paper/7853-predict-responsibly-improving-fairness-and-accuracy-by-learning-to-defer) (madras et al. 2018) - adaptive rejection learning - build on rejection learning considering the strengths/weaknesses of humans
-- [Learning to Complement Humans](https://arxiv.org/abs/2005.00582) (wilder et al. 2020) - 2 approaches for how to incorporate human input
+- Predict Responsibly: Improving Fairness and Accuracy by Learning to Defer ([madras et al. 2018](http://papers.nips.cc/paper/7853-predict-responsibly-improving-fairness-and-accuracy-by-learning-to-defer)) - adaptive rejection learning - build on rejection learning considering the strengths/weaknesses of humans
+- Learning to Complement Humans ([wilder et al. 2020](https://arxiv.org/abs/2005.00582)) - 2 approaches for how to incorporate human input
   - discriminative approach - jointly train predictive model and policy for deferring to human (with a cost for deferring)
   - decision-theroetic approach - train predictive model + policy jointly based on value of information (VOI)
   - do real-world experiments w/ humans to validate:  scientific discovery (a galaxy classification task) & medical diagnosis (detection of breast cancer metastasis)
-- Gaining Free or Low-Cost Transparency with Interpretable Partial Substitute ([wang, 2019](https://arxiv.org/pdf/1802.04346.pdf)) - given a black-box model, find a subset of the data for which predictions can be made using a simple rule-list ([tong wang](https://scholar.google.com/citations?hl=en&user=KB6A0esAAAAJ&view_op=list_works&sortby=pubdate) has a few papers like this)
+- Gaining Free or Low-Cost Transparency with Interpretable Partial Substitute ([wang, 2019](https://arxiv.org/pdf/1802.04346.pdf)) - given a black-box model, find a subset of the data for which predictions can be made using a simple rule-list ([tong wang](https://scholar.google.com/citations?hl=en&user=KB6A0esAAAAJ&view_op=list_works&sortby=pubdate) has a few nice papers like this)
   - Interpretable Companions for Black-Box Models ([pan, wang, et al. 2020](https://arxiv.org/abs/2002.03494) ) - offer an interpretable, but slightly less acurate model for each decision
     - human experiment evaluates how much humans are able to tolerate
   - Hybrid Predictive Models: When an Interpretable Model Collaborates with a Black-box Model ([wang & lin, 2021](https://www.jmlr.org/papers/volume22/19-325/19-325.pdf)) - use interpretable model on subset where it works
     - objective function considers predictive accuracy, model interpretability, and model transparency (defined as the percentage of data processed by the interpretable substitute)
   - Partially Interpretable Estimators (PIE): Black-Box-Refined Interpretable Machine Learning ([wang et al. 2021](https://arxiv.org/abs/2105.02410)) - interpretable model for individual features and black-box model captures feature interactions (on residuals)
-- [Three Maxims for Developing Human-Centered AI for Decision Making](https://www.proquest.com/docview/2628490400?pq-origsite=gscholar&fromopenview=true) (2022) - [‪Gagan Bansal‬](https://scholar.google.com/citations?user=eCSI4pMAAAAJ&hl=en&oi=ao) has more papers like this
+- Three Maxims for Developing Human-Centered AI for Decision Making ([bansal et al. 2022](https://www.proquest.com/docview/2628490400?pq-origsite=gscholar&fromopenview=true); gagan bansal has a few nice papers like this)
   - help users understand *when to trust* AI recommendations
   - *preserve user’s mental model of AI’s trustworthiness*
   - train AI to *optimize for team performance*.
 
 ## human-in-the-loop (HITL)
 
-- rethinking human-ai interaction ([jessy lin, blog](https://jessylin.com/2020/06/08/rethinking-human-ai-interaction/))
+- rethinking human-ai interaction ([jessy lin blog post, 2020](https://jessylin.com/2020/06/08/rethinking-human-ai-interaction/))
   - humans-as-backup - most common hitl system - human checks prediction if it is low confidence
     - e.g. driving, content moderation, machine translation
     - this system can behave worse if humans (e.g. drivers, doctors) expect it to work autonomously
@@ -1316,9 +1217,10 @@ Nice overview [here](https://github.com/stefanoteso/awesome-explanatory-supervis
 - Human-in-the-loop Extraction of Interpretable Concepts in Deep Learning Models ([zhao et al. 2021](https://ieeexplore.ieee.org/abstract/document/9552218))
   - human knowledge and feedback are combined to train a concept extractor
   - by identifying visual concepts that negatively affect model performance, we develop the corresponding data augmentation strategy that consistently improves model performance
-- Making deep neural networks right for the right scientific reasons by interacting with their explanations ([schramowski, ... kersting, 2020](https://www.nature.com/articles/s42256-020-0212-3)) - scientist iteratively provides feedback on DNN's explanation
+- Making deep neural networks right for the right scientific reasons by interacting with their explanations ([schramowski...kersting, 2020](https://www.nature.com/articles/s42256-020-0212-3)) - scientist iteratively provides feedback on DNN's explanation
+  - Interactive Disentanglement: Learning Concepts by Interacting with their Prototype Representations ([stammer...scharmowski, kersting, 2021](https://arxiv.org/abs/2112.02290)) - humans provide weak supervision, tested on toy datasets
+
 - POTATO: exPlainable infOrmation exTrAcTion framewOrk ([kovacs et al. 2022](https://arxiv.org/abs/2201.13230)) - humans select rules using graph-based feature for text classification
-- Interactive Disentanglement: Learning Concepts by Interacting with their Prototype Representations ([stammer...scharmowski, kersting, 2021](https://arxiv.org/abs/2112.02290)) - humans provide weak supervision, tested on toy datasets
 - Fanoos: Multi-Resolution, Multi-Strength, Interactive Explanations for Learned Systems ([bayan & mitsch, 2022](https://arxiv.org/abs/2006.12453)) - a framework for combining formal verification techniques, heuristic search, and user interaction to explore explanations at the desired level of granularity and fidelity
   - asks questions about sets e.g. "when do you", or "what do you do when"
 
@@ -1328,7 +1230,7 @@ Nice overview [here](https://github.com/stefanoteso/awesome-explanatory-supervis
 - Responsible AI toolbox ([github](https://github.com/microsoft/responsible-ai-toolbox))
 - auto-sklearn interpretability subset ([link](https://automl.github.io/auto-sklearn/master/examples/40_advanced/example_interpretable_models.html))
 - Automatic Componentwise Boosting: An Interpretable AutoML System ([coors...rugamer, 2021](https://arxiv.org/abs/2109.05583)) - restrict AutoML to GAMs
-- **Coreset algorithms** - summarize datasets with smaller dataset that accurately represent the full dataset on downstream tasks
+- **coreset algorithms** - summarize datasets with smaller dataset that accurately represent the full dataset on downstream tasks
   - [Introduction to Coresets: Accurate Coresets](https://arxiv.org/abs/1910.08707)
   - Efficient Dataset Distillation Using Random Feature Approximation ([loo...rus, 2022](https://arxiv.org/abs/2210.12067))
 
@@ -1351,30 +1253,24 @@ Nice overview [here](https://github.com/stefanoteso/awesome-explanatory-supervis
   - Linear Model tree allows leaf nodes to contain a linear model, rather than simple constants
     - introduce novel on-line learning algo for this which uses SGD to update the linear models
   - [U-tree](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.46.3832&rep=rep1&type=pdf) is a classic online reinforcement learning method which represents a Q function using a tree structure
-- [Programmatically Interpretable Reinforcement Learning](http://proceedings.mlr.press/v80/verma18a.html) (verma et al. 2018) - represent policies as interpretable programs
+- Programmatically Interpretable Reinforcement Learning([verma et al. 2018](http://proceedings.mlr.press/v80/verma18a.html)) - represent policies as interpretable programs
   - first learn neural policy DRL, then performing a local search over programmatic policies that seeks to minimize a distance from this neural “oracle”
-- [Neural-to-Tree Policy Distillation with Policy Improvement Criterion](https://arxiv.org/abs/2108.06898) (li et al. 2021)
+- Neural-to-Tree Policy Distillation with Policy Improvement Criterion ([li et al. 2021](https://arxiv.org/abs/2108.06898))
   - typical policy distillation that clones model behaviors with even a small error could bring a data distribution shift
   - propose DPIC - changes distillation objective from behavior cloning to maximizing an advantage evaluation (maximizes an approximated cumulative reward)
     - hard to apply policy optimization because no gradients
   - initialize by modifying criterion to optimize the policy improvement criterion
   - then, use viper imitation-learning approach
-- [Towards Generalization and Simplicity in Continuous Control](https://arxiv.org/abs/1703.02660) (rajeswaran, .., kakade, 2018) - simple policies (e.g. linear or RBF kernel) - work fairly well for many continuous control tasks
+- Towards Generalization and Simplicity in Continuous Control ([rajeswaran, .., kakade, 2018](https://arxiv.org/abs/1703.02660)) - simple policies (e.g. linear or RBF kernel) - work fairly well for many continuous control tasks
 - historical
-  - [Tree-Based Batch Mode Reinforcement Learning](https://www.jmlr.org/papers/volume6/ernst05a/ernst05a.pdf) (ernst et al. 2005) - one of the first fitted Q iteration papers actually used trees
-
-
-
-## differential privacy
-
-- differential private if the outputs of the model do not change (within some epsilon tolerance) if you remove a single datapoint
+  - Tree-Based Batch Mode Reinforcement Learning ([ernst et al. 2005](https://www.jmlr.org/papers/volume6/ernst05a/ernst05a.pdf)) - one of the first fitted Q iteration papers actually used trees
 
 ## interpretation over sets / perturbations
 
 These papers don't quite connect to prediction, but are generally about finding stable interpretations across a set of models / choices.
 
-- [Exploring the cloud of variable importance for the set of all good models](https://www.nature.com/articles/s42256-020-00264-0) (dong & rudin, 2020)
-- [All Models are Wrong, but Many are Useful: Learning a Variable’s Importance by Studying an Entire Class of Prediction Models Simultaneously](https://www.jmlr.org/papers/volume20/18-760/18-760.pdf) (fisher, rudin, & dominici, 2019) - also had title *Model class reliance: Variable importance measures for any machine learning model class, from the “Rashomon” perspective*
+- Exploring the cloud of variable importance for the set of all good models ([dong & rudin, 2020](https://www.nature.com/articles/s42256-020-00264-0))
+- All Models are Wrong, but Many are Useful: Learning a Variable’s Importance by Studying an Entire Class of Prediction Models Simultaneously ([fisher, rudin, & dominici, 2019](https://www.jmlr.org/papers/volume20/18-760/18-760.pdf)) - also had title *Model class reliance: Variable importance measures for any machine learning model class, from the “Rashomon” perspective*
   - **model reliance** = MR - like permutation importance, measures how much a model relies on covariates of interest for its accuracy
     - defined (for a feature) as the ratio of expected loss after permuting (with all possible permutation pairs) to before permuting
       - could also be defined as a difference or using predictions rather than loss
@@ -1394,16 +1290,16 @@ These papers don't quite connect to prediction, but are generally about finding 
     - conditional importance measures a different notion (takes away things attributed to spurious variables)
       - can be hard to do conditional permutation well when some feature pairs are rare so can use weighting, matching, or imputation
   - here, application is to see on COMPAS dataset whether one can build an accurate model which doesn't rely on race / sex (in order to audit black-box COMPAS models)
-- [A Theory of Statistical Inference for Ensuring the Robustness of Scientific Results](https://arxiv.org/abs/1804.08646) (coker, rudin, & king, 2018)
+- A Theory of Statistical Inference for Ensuring the Robustness of Scientific Results ([coker, rudin, & king, 2018](https://arxiv.org/abs/1804.08646))
   - Inference = process of using facts we know to learn about facts we do not know
   - **hacking intervals** - the range of a summary statistic one may obtain given a class of possible endogenous manipulations of the data
     - **prescriptively constrained** hacking intervals - explicitly define reasonable analysis perturbations
-      - ex. hyperparameters (e.g. k in kNN), matching algorithm, adding a new feature
+      - e.g. hyperparameters (such as k in kNN), matching algorithm, adding a new feature
     - **tethered hacking intervals** - take any model with small enough loss on the data
       - rather than choosing $\alpha$, we choose error tolerance
       - for MLE, equivalent to profile likelihood confidence intervals
-      - ex. SVM distance from point to boundary, Kernel regression prediction for a specific new point, feature selection
-      - ex. linear regression ATE, individual treatment effect
+      - e.g. SVM distance from point to boundary, Kernel regression prediction for a specific new point, feature selection
+      - e.g. linear regression ATE, individual treatment effect
     - PCS intervals could be seen as slightly broader, including data cleaning and problem translations
   - different theories of inference have different counterfactual worlds
     - p-values - data from a superpopulation
@@ -1418,7 +1314,7 @@ These papers don't quite connect to prediction, but are generally about finding 
   - **rashomon ratio** - ratio of the volume of the set of accurate models to the volume of the hypothesis space
     - can use this to perform model selection over different hypothesis spaces using empirical risk v. rashomon ratio (*rashomon curve*)
   - **pattern Rashomon ratio** - considers unique predictions on the data (called “patterns”) rather than the count of functions themselves.
-- [Underspecification Presents Challenges for Credibility in Modern Machine Learning](https://arxiv.org/pdf/2011.03395.pdf) (D’Amour et al. 2020)
+- Underspecification Presents Challenges for Credibility in Modern Machine Learning ([D’Amour et al. 2020](https://arxiv.org/pdf/2011.03395.pdf))
   - different models can achieve the same validation accuracy but perform differently wrt different data perturbations
   - shortcuts = spurious correlations cause failure because of ambiguity in the data
   - *stress tests* probe a broader set of requirements
@@ -1426,29 +1322,32 @@ These papers don't quite connect to prediction, but are generally about finding 
   - suggestions
     - need to test models more thoroughly
     - need criteria to select among good models (e.g. explanations)
-- [Predictive Multiplicity in Classification](https://arxiv.org/pdf/1909.06677.pdf) (marx et al. 2020)
+- Predictive Multiplicity in Classification ([marx et al. 2020](https://arxiv.org/pdf/1909.06677.pdf))
   - predictive multiplicity = ability of a prediction problem to admit competing models with conflicting predictions
-- [A general framework for inference on algorithm-agnostic variable importance](https://www-tandfonline-com.libproxy.berkeley.edu/doi/full/10.1080/01621459.2021.2003200?needAccess=true) (williamson et al. 2021)
+- A general framework for inference on algorithm-agnostic variable importance ([williamson et al. 2021](https://www-tandfonline-com.libproxy.berkeley.edu/doi/full/10.1080/01621459.2021.2003200?needAccess=true))
 - An Automatic Finite-Sample Robustness Metric: When Can Dropping a Little Data Make a Big Difference? ([broderick et al. 2021](https://arxiv.org/abs/2011.14999))
   - Approximate Maximum Influence Perturbation -  method to assess the sensitivity of econometric analyses to the removal of a small fraction of the data
   - results of several economics papers can be overturned by removing less than 1% of the sample
-- Understanding and Exploring the Whole Set of Good Sparse Generalized Additive Models ([chen, zhong, seltzer, & rudin, 2023](https://arxiv.org/abs/2303.16047)) - algorithm produces many models from which to choose, instead of just one
+- Understanding and Exploring the Whole Set of Good Sparse Generalized Additive Models ([chen, zhong, seltzer, & rudin, 2023](https://arxiv.org/abs/2303.16047)) - algorithm produces many GAMs from which to choose, instead of just one
 
 ## ai safety
 
 **agi definitions**
 
 -  AI systems are fully substitutable for human labor, or have a comparably large impact (from Future Fund prize)
+
+   -  when will [AGI be developed]([Announcing the Future Fund’s AI Worldview Prize – Future Fund](https://ftxfuturefund.org/announcing-the-future-funds-ai-worldview-prize/)) (future fund competition)
+
 -  APS properties (carlsmith, 2022)
 
-   -  **A**dvanced capability: they outperform the best humans on some set of tasks which when performed at advanced levels grant significant power in today’s world (tasks like scientific research, business/military/political strategy, engineering, and persuasion/manipulation)
-   
-   
+   -  **A**dvanced capability: they outperform the best humans on some set of tasks which, when performed at advanced levels, grant significant power in today’s world (e.g. scientific research, business/military/political strategy, engineering, and persuasion/manipulation)
+
+
       -  Agentic **p**lanning: they make and execute plans, in pursuit of objectives, on the basis of models of the world
-   
-   
+
+
       -  **S**trategic awareness: the models they use in making plans represent with reasonable accuracy the causal upshot of gaining and maintaining power over humans and the real-world environment.
-   
+
 
 **papers**
 
@@ -1458,9 +1357,7 @@ These papers don't quite connect to prediction, but are generally about finding 
   - **Avoiding negative side effects.** *Can we transform an RL agent’s [reward function](https://webdocs.cs.ualberta.ca/~sutton/book/ebook/node9.html) to avoid undesired effects on the environment?*
   - **Avoiding “reward hacking” and “[wireheading](http://www.agroparistech.fr/mmip/maths/laurent_orseau/papers/ring-orseau-AGI-2011-delusion.pdf)”.** *Can we prevent agents from “gaming” their reward functions, such as by distorting their observations?*
   - **Scalable oversight.** *Can RL agents efficiently achieve goals for which feedback is very expensive?*
-
--  When will [AGI be developed]([Announcing the Future Fund’s AI Worldview Prize – Future Fund](https://ftxfuturefund.org/announcing-the-future-funds-ai-worldview-prize/)) (future fund competition)
--  [Is Power-Seeking AI an Existential Risk?](https://arxiv.org/abs/2206.13353) (carlsmith, 2022)
+-  Is Power-Seeking AI an Existential Risk? ([carlsmith, 2022](https://arxiv.org/abs/2206.13353))
   - 6 points
     1. it will become possible and financially feasible to build relevantly powerful and agentic AI systems
     2. there will be strong incentives to do so
@@ -1471,10 +1368,9 @@ These papers don't quite connect to prediction, but are generally about finding 
   - backdrop
     - no reason to believe brain is anywhere near a hard limit (e.g. limitations on speed, memory)
     - AI systems that don’t seek to gain or maintain power may cause a lot of harm, but this harm is more easily limited by the power they already have (so wouldn't count as existential risk)
--  [Why I Think More NLP Researchers Should Engage with AI Safety Concerns – NYU Alignment Research Group](https://wp.nyu.edu/arg/why-ai-safety/) (sam bowman, 2022)
-  - AI Safety and Neighboring Communities: A Quick-Start Guide, as of Summer 2022 - AI Alignment Forum (sam bowman, 2022)
+-  Why I Think More NLP Researchers Should Engage with AI Safety Concerns ([sam bowman, 2022](https://wp.nyu.edu/arg/why-ai-safety/))
 -  Large Language Model Alignment: A Survey ([shen...xiong, 2023](https://arxiv.org/pdf/2309.15025.pdf))
    -  **Outer Alignment**  - choose the right loss functions or reward fuctions and ensure that the training objectives of AI systems match human values.
-      -  In other words, outer alignment attempts to align the specified training objective to the goal of its designer
+      -  Outer alignment attempts to align the specified training objective to the goal of its designer
    -  **Inner Alignment** - This is to ensure that AI systems are actually trained to achieve the goals set by their designers.
       -  Once we have specified training objectives, we need to ensure that the behaviors of AI systems actually align with those specifications (e.g. they don't use shortcuts)cc
