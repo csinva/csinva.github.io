@@ -22,7 +22,7 @@ The definition of interpretability I like most is that given in [murdoch et al. 
 </p>
 </details>
 
-- Feature (variable) importance measurement review (VIM) ([wei et al. 2015](https://www.sciencedirect.com/science/article/pii/S0951832015001672) )
+- Feature (variable) importance measurement review (VIM) ([wei et al. 2015](https://www.sciencedirect.com/science/article/pii/S0951832015001672))
   - often-termed sensitivity, contribution, or impact
   - some of these can be applied to data directly w/out model (e.g. correlation coefficient, rank correlation coefficient, moment-independent VIMs)
 - Towards a Generic Framework for Black-box Explanation Methods ([henin & metayer 2019](https://hal.inria.fr/hal-02131174v2/document))
@@ -33,6 +33,7 @@ The definition of interpretability I like most is that given in [murdoch et al. 
   - interaction (with the user)
   - this is a super useful way to think about explanations (especially local), but doesn't work for SHAP / CD which are more about how much a variable contributes rather than a local approximation
 - Interpretable Machine Learning: Fundamental Principles and 10 Grand Challenges ([rudin et al. '21](https://arxiv.org/abs/2103.11251)) - emphasizes building glass-box models
+- Stop Explaining Black Box Machine Learning Models for High Stakes Decisions and Use Interpretable Models Instead ([rudin, 2019](https://arxiv.org/abs/1811.10154))
 
 # evaluating interpretability
 
