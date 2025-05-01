@@ -15,6 +15,7 @@ subtitle: Some notes on a computational perspective on cognitive science.
   - **nativism** - plato - representation w/out learning
   - **empiricism** - aristotle - learning w/out representation
   - **constructivism** - jean piaget - cognitive development
+    
     - types
       - assimilation - start with schema, which tells you how to act
       - accomodation - adjust schema based on what you see

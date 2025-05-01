@@ -87,8 +87,7 @@ displays
 ### environment
 
 - [vscode](https://code.visualstudio.com) (with jupyter support) is the best ide for data science
-  - ~~it's hard to pick a good ide for data science. [jupyter](https://jupyter.org/) notebooks are great for exploratory analysis, while more fully built ides like [pycharm](https://www.jetbrains.com/pycharm/) or [vscode](https://code.visualstudio.com) are better for large-scale projects~~
-  - ~~using [atom](https://atom.io/) with the [hydrogen](https://atom.io/packages/hydrogen) plugin often strikes a nice balance~~ (sadly no longer maintained 😢)
+  - it's often easier to build with interactive cells (`#%%`) rather than jupyter notebooks for non-visualization tasks, so that they are easier to convert to scripts later on
   
 - [github copilot](https://github.com/features/copilot) is a ~~nice~~ critical add-in
 - [jupytertext](https://github.com/mwouts/jupytext) offers a nice way to use version control with jupyter
@@ -166,6 +165,7 @@ displays
 
 ### data
 
+- [skrub](https://www.youtube.com/watch?v=hdWWhwmRpbA) is an awesome data cleaning package
 - cool analysis / data from BuzzFeed [here](https://github.com/BuzzFeedNews/everything)
 
 ## js demo libraries

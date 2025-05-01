@@ -356,7 +356,7 @@ For an implementation of many of these models, see the python [imodels package](
   - usually assume some basis for the shape functions $f$, like splines, polynomials, or tree sums (and we select how many either manually or with some complexity penalty)
   - *backfitting* - traditional way to fit - each $f_i$ is fitted sequentially to the residuals of the previously fitted $f_0,...,f_{i-1}$ ([hastie & tibshirani, 1989](https://www.jstor.org/stable/2241560?seq=1#metadata_info_tab_contents))
     - once all are fit, discard each shape function and re-fit to the residuals of all others one at a time
-  - *boosting* - fit all $f$ simultaneously, e.g. one tree for each $f_i$ on each iteration
+  - (cyclic) *boosting* - fit all $f$ simultaneously, e.g. one tree for each $f_i$ on each iteration
   - interpretability depends on (1) transparency of $f_i$ and (2) number of terms
   - can also add in interaction terms (e.g. $f_i(x_1, x_2)$), but need a way to rank which interactions to add (see notes on interactions)
 - Explainable boosting machine: tree-based shape functions trained with cyclical boosting
@@ -402,7 +402,7 @@ For an implementation of many of these models, see the python [imodels package](
   3. more sophisticated rounding techniques - e.g. random, constrain sum, round each coef sequentially
   4. computeraided exploration techniques
 - Supersparse linear integer models for optimized medical scoring systems ([ustun & rudin 2016](https://link.springer.com/content/pdf/10.1007/s10994-015-5528-6.pdf))
-  - [2helps2b paper](https://www.ncbi.nlm.nih.gov/pubmed/29052706)
+  - 2helps2b: seizure prediction from EEG ([struck, ustun...rudin, westover](https://www.ncbi.nlm.nih.gov/pubmed/29052706))
   - ![](../assets/2helps2b.png)
   - note: scoring systems map points to a risk probability
 - An Interpretable Model with Globally Consistent Explanations for Credit Risk ([chen et al. 2018](https://arxiv.org/abs/1811.12615)) - a 2-layer linear additive model
@@ -450,6 +450,8 @@ Symbolic regression learns a symbolic expression for a function (e.g. a mathemat
 ### concepts
 
 *📌 see also notes on LLMs*
+
+![cbm_tradeoffs](../assets/cbm_tradeoffs.png)
 
 - CBM: Concept Bottleneck Models ([koh et al. 2020](https://arxiv.org/pdf/2007.04612.pdf)) - predict intermediate concepts before making final prediction
 - Post-hoc CBM ([yuksekgonul...zou, 2022](https://arxiv.org/abs/2205.15480)) - automatically project embeddings to concepts and train linear model on those
@@ -611,6 +613,7 @@ Symbolic regression learns a symbolic expression for a function (e.g. a mathemat
     - they define locally constant network LCN scalar prediction as derivative wrt every parameter transposed with the activations of every corresponding neuron
     - approximately locally constant network ALCN: replace Relu $\max(0, x)$ with softplus $1+\exp(x)$
     - ensemble these with boosting to improve performance
+  - would be interesting to see if this works for GAMs
 
 ## constrained models (e.g. monotonicity)
 
@@ -1023,7 +1026,6 @@ How interactions are defined and summarized is a very difficult thing to specify
 - basic methods
   - occlusion = context-dependent = "break-down" , more faithful: score is contribution of variable of interest given all other variables (e.g. permutation test - randomize var of interest from right distr.)
   - context-free = "build-up", less faithful: score is contribution of only variable of interest ignoring other variables
-
 - *H-statistic*: 0 for no interaction, 1 for complete interaction
   - how much of the variance of the output of the joint partial dependence is explained by the interaction instead of the individuals
   - $$H^2_{jk} = \underbrace{\sum_i [\overbrace{PD(x_j^{(i)}, x_k^{(i)})}^{\text{interaction}} \overbrace{- PD(x_j^{(i)}) - PD(x_k^{(i)})}^{\text{individual}}]^2}_{\text{sum over data points}} \: / \: \underbrace{\sum_i [PD(x_j^{(i)}, x_k^{(i)})}_{\text{normalization}}]^2$$
@@ -1041,11 +1043,12 @@ How interactions are defined and summarized is a very difficult thing to specify
     - *pure interaction effects* - variance in the outcome which cannot be represented by any subset of features
       - has an equivalence with the Functional ANOVA decomposition
 - Automatic Interaction Detection (AID) - detects interactions by subdividing data into disjoint exhaustive subsets to model an outcome based on categorical features
-- SPEX: Scaling Feature Interaction Explanations for LLMs ([kang, butler, agarwal...ramachandran, yu, 2025](https://arxiv.org/pdf/2502.13870#page=1.00)) - efficient search over binary interactions, applied to inputs of LLMs / VLMs
-- Shapley Taylor Interaction Index (STI) (Dhamdhere et al., 2019) - extends shap to all interactions
 - Faith-Shap: The Faithful Shapley Shapley Interaction Index ([tsai, yeh, & ravikumar, 2019](https://arxiv.org/abs/2203.00870#:~:text=Shapley%20values%2C%20which%20were%20originally,black%2Dbox%20machine%20learning%20models.))
   - SHAP axioms for interactions no longer specify a unique interaction index
-  - here, adopt the viewpoint of Shapley values as coefficients of the most faithful linear approximation to the pseudo-Boolean coalition game value function
+  - here, adopt the viewpoint of Shapley values as coefficients of the most faithful linear approximation to the pseudo-Boolean coalition game value function (and learn with LASSO)
+  - Shapley Taylor Interaction Index (STI) ([dhamdhere...sundararajan, 2019](https://arxiv.org/abs/1902.05622)) - extends shap to all interactions
+- Sparse Epistatic Regularization of Deep Neural Networks for Inferring Fitness Functions ([aghazadeh ... listgarten, ramchandran, 2020](https://www.biorxiv.org/content/10.1101/2020.11.24.396994v1)) - penalize DNNs spectral representation to limit learning noisy high-order interactions
+  - SPEX: Scaling Feature Interaction Explanations for LLMs ([kang, butler, agarwal...ramachandran, yu, 2025](https://arxiv.org/pdf/2502.13870#page=1.00)) - efficient search over binary interactions, applied to inputs of LLMs / VLMs
 - gradient-based methods (originally Friedman and Popescu, 2008 then later used with many models such as logit)
   - test if partial derivatives for some subset (e.g. $x_1, ..., x_p$) are nonzero $$\mathbb{E}_{\mathbf{x}}\left[\frac{\partial^p f(\mathbf{x})}{\partial x_{i_{1}} \partial x_{i_{2}} \ldots \partial x_{i_p}}\right]^{2}>0$$
   - doesn't work well for piecewise functions (e.g. Relu) and computationally expensive
@@ -1165,7 +1168,6 @@ How interactions are defined and summarized is a very difficult thing to specify
 - Interpretations are useful: penalizing explanations to align neural networks with prior knowledge ([rieger et al. 2020](https://arxiv.org/abs/1909.13584))
   - Refining Neural Networks with Compositional Explanations ([yao et al. 21](https://arxiv.org/abs/2103.10415)) - human looks at saliency maps of interactions, gives natural language explanation, this is converted back to interactions (defined using IG), and then regularized
   - Dropout as a Regularizer of Interaction Effects ([lengerich...caruana, 21](https://arxiv.org/abs/2007.00823)) - dropout regularizes interaction effects
-  - Sparse Epistatic Regularization of Deep Neural Networks for Inferring Fitness Functions ([aghazadeh ... listgarten, ramchandran, 2020](https://www.biorxiv.org/content/10.1101/2020.11.24.396994v1)) - penalize DNNs spectral representation to limit learning noisy high-order interactions
 - Right for the Right Reasons: Training Differentiable Models by Constraining their Explanations ([ross et al. 2017](https://arxiv.org/abs/1703.03717)) - selectively penalize input gradients
 - Explain and improve: LRP-inference fine-tuning for image captioning models ([sun et al. 2022](https://www.sciencedirect.com/science/article/pii/S1566253521001494))
   - Pruning by explaining: A novel criterion for deep neural network pruning ([yeom et al. 2021](https://www.sciencedirect.com/science/article/pii/S0031320321000868)) - use LRP-based score to prune DNN
@@ -1335,19 +1337,12 @@ These papers don't quite connect to prediction, but are generally about finding 
 
 **agi definitions**
 
--  AI systems are fully substitutable for human labor, or have a comparably large impact (from Future Fund prize)
-
-   -  when will [AGI be developed]([Announcing the Future Fund’s AI Worldview Prize – Future Fund](https://ftxfuturefund.org/announcing-the-future-funds-ai-worldview-prize/)) (future fund competition)
-
--  APS properties (carlsmith, 2022)
-
-   -  **A**dvanced capability: they outperform the best humans on some set of tasks which, when performed at advanced levels, grant significant power in today’s world (e.g. scientific research, business/military/political strategy, engineering, and persuasion/manipulation)
-
-
-      -  Agentic **p**lanning: they make and execute plans, in pursuit of objectives, on the basis of models of the world
-
-
-      -  **S**trategic awareness: the models they use in making plans represent with reasonable accuracy the causal upshot of gaining and maintaining power over humans and the real-world environment.
+- AI systems are fully substitutable for human labor, or have a comparably large impact (from Future Fund prize)
+   - when will [AGI be developed]([Announcing the Future Fund’s AI Worldview Prize – Future Fund](https://ftxfuturefund.org/announcing-the-future-funds-ai-worldview-prize/)) (future fund competition)
+- APS properties (carlsmith, 2022)
+   - **A**dvanced capability: they outperform the best humans on some set of tasks which, when performed at advanced levels, grant significant power in today’s world (e.g. scientific research, business/military/political strategy, engineering, and persuasion/manipulation)
+      - Agentic **p**lanning: they make and execute plans, in pursuit of objectives, on the basis of models of the world
+      - **S**trategic awareness: the models they use in making plans represent with reasonable accuracy the causal upshot of gaining and maintaining power over humans and the real-world environment.
 
 
 **papers**

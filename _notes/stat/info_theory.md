@@ -29,7 +29,7 @@ subtitle: Material from Cover "Elements of Information Theory"
 - intuition
   - higher entropy $\implies$ more uniform
   - lower entropy $\implies$ more pure
-  1. expectation of variable $W=W(X)$, which assumes the value $-log(p_i)$ with probability $p_i$
+  1. expectation of variable $W=W(X)$, which assumes the value $-\log(p_i)$ with probability $p_i$
   2. minimum, average number of binary questions (like is X=1?) required to determine value is between $H(X)$ and $H(X)+1$
   3. related to asymptotic behavior of sequence of i.i.d. random variables
 
@@ -46,8 +46,8 @@ subtitle: Material from Cover "Elements of Information Theory"
 ## relative entropy / mutual info
 
 - *relative entropy* = *KL divergence* - measures distance between 2 distributions
-  - $$D(p\|\|q) = \sum_x p(x) log \frac{p(x)}{q(x)} = \mathbb E_p log \frac{p(X)}{q(X)} = \mathbb E_p[-\log q(X)] - H(p)	$$
-  - if we knew the true distribution p of the random variable, we could construct a code with average description length H(p). 
+  - $$D(p\|\|q) = \sum_x p(x) \log \frac{p(x)}{q(x)} = \mathbb E_p \log \frac{p(X)}{q(X)} = \mathbb E_p[-\log q(X)] - H(p)	$$
+  - if we knew the true distribution p of the random variable, we could construct a code with average description length $H(p)$
   - If, instead, we used the code for a distribution q, we would need H(p) + D(p\|\|q) bits on average to describe the random variable.
   - $D(p\|\|q) \neq D(q\|\|p)$
   - properties
@@ -72,7 +72,7 @@ subtitle: Material from Cover "Elements of Information Theory"
 - *entropy* $H(X_1, ..., X_n) = \sum_i H(X_i \| X_{i-1}, ..., X_1) = H(X_n \| X_{n-1}, ..., X_1) + ... + H(X_1)$
 - *conditional mutual info* $I(X; Y\|Z) = H(X\|Z) - H(X\|Y,Z)$
   - $I(X_1, ..., X_n; Y) = \sum_i I(X_i; Y\|X_{i-1}, ... , X_1)$
-- *conditional relative entropy* $D(p(y\|x) \|\| q(y\|x)) = \sum_x p(x) \sum_y p(y\|x) log \frac{p(y\|x)}{q(y\|x)}$
+- *conditional relative entropy* $D(p(y\|x) \|\| q(y\|x)) = \sum_x p(x) \sum_y p(y\|x) \log \frac{p(y\|x)}{q(y\|x)}$
   - $D(p(x, y)\|\|q(x, y)) = D(p(x)\|\|q(x)) + D(p(y\|x)\|\|q(y\|x))$
 
 ## axiomatic approach
@@ -80,17 +80,17 @@ subtitle: Material from Cover "Elements of Information Theory"
 - *fundamental theorem of information theory* - it is possible to transmit information through a noisy channel at any rate less than channel capacity with an arbitrarily small probability of error
   - to achieve arbitrarily high reliability, it is necessary to reduce the transmission rate to the *channel capacity*
 - uncertainty measure axioms
-  1. H(1/M,...,1/M)=f(M) is a montonically increasing function of M
-  2. f(ML) = f(M)+f(L) where M,L $\in \mathbb{Z}^+$
+  1. $H(1/M,...,1/M)=f(M)$ is a montonically increasing function of M
+  2. $f(ML) = f(M)+f(L)$ where $M,L \in \mathbb{Z}^+$
   3. *grouping axiom*
-  4. H(p,1-p) is continuous function of p
-- $H(p_1,...,p_M) = - \sum p_i log p_i = E[h(p_i)]$
-  - $h(p_i)= - log(p_i)$
+  4. $H(p,1-p)$ is continuous function of $p$
+- $H(p_1,...,p_M) = - \sum p_i \log p_i = E[h(p_i)]$
+  - $h(p_i)= - \log(p_i)$
   - only solution satisfying above axioms
   - H(p,1-p) has max at 1/2
-- *lemma* - Let $p_1,...,p_M$ and $q_1,...,q_M$ be arbitrary positive numbers with $\sum p_i = \sum q_i = 1$. Then $-\sum p_i log p_i \leq - \sum p_i log q_i$. Only equal if $p_i = q_i \: \forall i$
-  - intuitively, $\sum p_i log q_i$ is maximized when $p_i=q_i$, like a dot product
-- $H(p_1,...,p_M) \leq log M$ with equality iff  all $p_i = 1/M$
+- *lemma* - Let $p_1,...,p_M$ and $q_1,...,q_M$ be arbitrary positive numbers with $\sum p_i = \sum q_i = 1$. Then $-\sum p_i \log p_i \leq - \sum p_i \log q_i$. Only equal if $p_i = q_i \: \forall i$
+  - intuitively, $\sum p_i \log q_i$ is maximized when $p_i=q_i$, like a dot product
+- $H(p_1,...,p_M) \leq \log M$ with equality iff  all $p_i = 1/M$
 - $H(X,Y) \leq H(X) + H(Y)$ with equality iff X and Y are independent
 - $I(X,Y)=H(Y)-H(Y\|X)$
 - sometimes allow p=0 by saying 0log0 = 0
