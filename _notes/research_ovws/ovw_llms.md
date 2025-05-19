@@ -84,14 +84,14 @@ over time, ML has bounced from *feature-engineering* -> *architecture engineerin
 ## chain-of-thought
 
 - [optimizing CoT papers](https://www.aussieai.com/research/cot-optimization#concise)
-
 - understanding chain-of-thought and its faithfulness
   - Faithful Chain-of-Thought Reasoning ([yu et al. 2023](https://arxiv.org/abs/2301.13379))
   - Contrastive Chain-of-Thought Prompting ([chia...bing, 2023](https://arxiv.org/abs/2311.09277))
   - Program of Thoughts Prompting: Disentangling Computation from Reasoning for Numerical Reasoning Tasks ([chen et al. 2022](https://arxiv.org/abs/2211.12588))
+  - Towards Consistent Natural-Language Explanations via Explanation-Consistency Finetuning ([chen...gao, 2024](https://arxiv.org/abs/2401.13986))
+    - How Interpretable are Reasoning Explanations from Prompting Large Language Models? ([yeo...cambria, 2024](https://arxiv.org/abs/2402.11863))
   - Critiques
     - Do Models Explain Themselves? Counterfactual Simulatability of Natural Language Explanations ([yanda chen, zhong, ..., steinhardt, yu, mckeown, 2023](https://arxiv.org/abs/2307.08678))
-      - Towards Consistent Natural-Language Explanations via Explanation-Consistency Finetuning ([chen...gao, 2024](https://arxiv.org/abs/2401.13986))
       - Benchmarking and Improving Generator-Validator Consistency of Language Models ([lisa li...liang, 2023](https://arxiv.org/abs/2310.01846))
     - The Unreliability of Explanations in Few-shot Prompting for Textual Reasoning ([ye & durrett, 2022](https://proceedings.neurips.cc/paper_files/paper/2022/file/c402501846f9fe03e2cac015b3f0e6b1-Paper-Conference.pdf))
     - Language Models Don't Always Say What They Think: Unfaithful Explanations in Chain-of-Thought Prompting ([turpin, ..., bowman, 2023](https://arxiv.org/abs/2305.04388))
@@ -176,15 +176,6 @@ over time, ML has bounced from *feature-engineering* -> *architecture engineerin
     - Calibrate Before Use: Improving Few-Shot Performance of Language Models ([zhao, ..., dan klein, sameer singh, 2021](https://arxiv.org/abs/2102.09690)) - to make prompting easier, first calibrate output distr by making it uniform when given null inputs, e.g. "N/A"
   - Minimum Bayes Risk Decoding ([suzgun, ..., jurafsky, 2022](https://arxiv.org/abs/2211.07634)) or ([freitag et al. 2022](https://arxiv.org/pdf/2111.09388.pdf))
   - A Frustratingly Simple Decoding Method for Neural Text Generation ([yang, ..., shi, 2023](https://arxiv.org/abs/2305.12675)) - build an anti-LM based on previously generated text and use this anti-LM to penalize future generation of what has been generated
-  - fast decoding
-    - [KV caching](https://kipp.ly/transformer-inference-arithmetic/) + some other tricks - if repeatedly using the same tokens at the beginning of the context, can cache the KV vectors for those tokens
-        - KV caching trades off speed with memory
-    - speculative decoding ([leviathan, kalma, & matias, 2022](https://arxiv.org/abs/2211.17192))  - decode multiple tokens in parallel with small model, potentially skipping steps for the large model
-  - early exit - popular way to speed up inference
-    - Multi-exit vision transformer for dynamic inference ([Bakhtiarnia, A., Zhang, Q. and Iosifidis, A., 2021](https://arxiv.org/abs/2106.15183))
-        - early layers have large activation map so early exist classifier must be complex
-        - solution: ViT class token allows early-exit classifier to have constant complexity
-    - DeeBERT: Dynamic early exiting for accelerating BERT inference ([xin...lin, 2020](https://arxiv.org/abs/2004.12993))
 
 ## prompt chaining / ensembling
 
@@ -352,10 +343,21 @@ mixture of experts models have become popular because of the need for (1) fast s
 - Interpretable Mixture of Experts ([ismail...pfister, 2023](https://arxiv.org/abs/2206.02107)) - each sample assigned to single expert for prediction
   - InterpretCC: Intrinsic User-Centric Interpretability through Global Mixture of Experts ([swamy...kaser, 2024](https://arxiv.org/abs/2402.02933v2)) - first, discriminator predicts which features are important. Then, all other features are masked and used for prediction. The discriminator network can additionally select a different network to send different features to
 
-## pruning
+## pruning / caching
 
 - SparseGPT: Massive Language Models Can Be Accurately Pruned in One-Shot ([frantar & alistarh, 2023](https://arxiv.org/abs/2301.00774)) - prune GPT-style models to atleast 50% sparsity in one-shot, without any retraining, at minimal loss of accuracy
 - Cramming: Training a Language Model on a Single GPU in One Day ([geiping & goldstein, 2022](https://arxiv.org/abs/2212.14034)) - tricks for training BERT
+- The Unreasonable Ineffectiveness of the Deeper Layers ([gromov...roberts, 2025](https://arxiv.org/abs/2403.17887)) - use angle similarity to search for which consecutive layers to remove and find that can easily remove large numbers of deep layers
+- fast decoding
+  - [KV caching](https://kipp.ly/transformer-inference-arithmetic/) + some other tricks - if repeatedly using the same tokens at the beginning of the context, can cache the KV vectors for those tokens
+    - KV caching trades off speed with memory
+    - FastGen: Model Tells You What to Discard: Adaptive KV Cache Compression for LLMs ([ge...gao, 2024](https://arxiv.org/abs/2310.01801)) - for each input prompt, run quick profiling to decide whether to evict things from the KV cache (e.g. attention heads that don't care about long context, or heads that attend only to punctuation)
+  - speculative decoding ([leviathan, kalma, & matias, 2022](https://arxiv.org/abs/2211.17192))  - decode multiple tokens in parallel with small model, potentially skipping steps for the large model
+- early exit - popular way to speed up inference
+  - Multi-exit vision transformer for dynamic inference ([Bakhtiarnia, A., Zhang, Q. and Iosifidis, A., 2021](https://arxiv.org/abs/2106.15183))
+    - early layers have large activation map so early exist classifier must be complex
+    - solution: ViT class token allows early-exit classifier to have constant complexity
+  - DeeBERT: Dynamic early exiting for accelerating BERT inference ([xin...lin, 2020](https://arxiv.org/abs/2004.12993))
 
 ## adaptation / transfer
 
@@ -990,6 +992,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
 - Empirical results
   - FunSearch: Mathematical discoveries from program search with LLMs ([deepmind, 2023](https://www.nature.com/articles/s41586-023-06924-6))
     - Discovering Symbolic Cognitive Models from Human and Animal Behavior ([castro...stachenfeld, 2025](https://www.biorxiv.org/content/10.1101/2025.02.05.636732v1))
+    - AlphaEvolve: A coding agent for scientific and algorithmic discovery ([deepmind, 2025](https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/AlphaEvolve.pdf))
   - Faster sorting algorithms discovered using deep reinforcement learning ([deepmind, 2023](https://www.nature.com/articles/s41586-023-06004-9))
   - Discovering faster matrix multiplication algorithms with reinforcement learning ([deepmind, 2022](https://www.nature.com/articles/s41586-022-05172-4))
   - Nuclear fusion control ([deepmind, 2022](https://www.nature.com/articles/s41586-021-04301-9))
@@ -1320,6 +1323,17 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
 
 # misc
 
+## data quality selection
+
+- PPL ([Ankner et al., 2024](https://openreview.net/forum?id=0r0Bg1NY1X)) - selects a samples with the lowest perplexity scores on the validation dataset
+- Semdedup ([Abbas et al., 2023](https://arxiv.org/abs/2303.09540)) - data is clustered and data points farthest from the centroid in each cluster are selected
+- DSIR ([Xie et al., 2023b](https://proceedings.neurips.cc/paper_files/paper/2023/hash/6b9aa8f418bde2840d5f4ab7a02f663b-Abstract-Conference.html)) - use hashed N-gram features to identify and select data that exhibits similarity to a specified dataset
+- QuRating ([Wettig et al., 2024](https://arxiv.org/abs/2402.09739)) - use pre-trained models that annotate qualities like Required Expertise, Writing Style, Facts and
+  Trivia, and Educational Value
+  - Fineweb-edu ([Penedo et al., 2024](https://proceedings.neurips.cc/paper_files/paper/2024/hash/370df50ccfdf8bde18f8f9c2d9151bda-Abstract-Datasets_and_Benchmarks_Track.html)) - similar to QuRating, build an educational value rater
+- MATES ([Yu et al., 2024](https://proceedings.neurips.cc/paper_files/paper/2024/hash/c4bec0d2fd217e6c2c3eafeced432582-Abstract-Conference.html)) - data influence model continuously adapts to approximate influence on the pretraining model
+- PRRC ([zhuang...he, 2025](https://arxiv.org/pdf/2504.14194)) - train rating models for professionalism, readability, reasoning, & cleanliness
+
 ## security
 
 - benchmarks: [harmbench](https://www.harmbench.org) (Automated Red Teaming and Robust Refusal) & [trustllm](https://arxiv.org/abs/2401.05561) (diverse collection of datasets) & [jailbreakbench](https://jailbreakbench.github.io/)
@@ -1526,6 +1540,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - One Step of Gradient Descent is Provably the Optimal In-Context Learner with One Layer of Linear Self-Attention ([Mahankali, Hashimoto, Ma, 23](https://arxiv.org/pdf/2307.03576.pdf))
     - math analysis for: icl can do gradient decent on linear regression
   - Pretraining task diversity and the emergence of non-Bayesian in-context learning for regression ([raventos…ganguli, 2023](https://openreview.net/forum?id=BtAz4a5xDg))
+  - Understanding In-context Learning of Addition via Activation Subspaces ([hu, yin, jordan, steinhardt, & chen, 2025](https://arxiv.org/pdf/2505.05145)) - in ICL addition task, find low-dim subspace that tracks the unit digit, the tens digit, and identifies which tokens contain the most info
 - Transformers Learn Higher-Order Optimization Methods for In-Context Learning: A Study with Linear Models ([fu...sharan, 2023](https://arxiv.org/abs/2310.17086))
   - How Well Can Transformers Emulate In-context Newton’s Method? ([giannou...papailiopoulos, & lee, 2024](https://arxiv.org/pdf/2403.03183v1.pdf))
 - Teaching Algorithmic Reasoning via In-context Learning ([zhou...sedghi, 2022](https://arxiv.org/abs/2211.09066))
