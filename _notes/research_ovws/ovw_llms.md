@@ -176,6 +176,8 @@ over time, ML has bounced from *feature-engineering* -> *architecture engineerin
     - Calibrate Before Use: Improving Few-Shot Performance of Language Models ([zhao, ..., dan klein, sameer singh, 2021](https://arxiv.org/abs/2102.09690)) - to make prompting easier, first calibrate output distr by making it uniform when given null inputs, e.g. "N/A"
   - Minimum Bayes Risk Decoding ([suzgun, ..., jurafsky, 2022](https://arxiv.org/abs/2211.07634)) or ([freitag et al. 2022](https://arxiv.org/pdf/2111.09388.pdf))
   - A Frustratingly Simple Decoding Method for Neural Text Generation ([yang, ..., shi, 2023](https://arxiv.org/abs/2305.12675)) - build an anti-LM based on previously generated text and use this anti-LM to penalize future generation of what has been generated
+  - Mixture of Inputs: Text Generation Beyond Discrete Token Sampling ([zhuang, liu, singh, shang, & gao, 2025](https://arxiv.org/abs/2505.14827))
+    - Soft Thinking: Unlocking the Reasoning Potential of LLMs in Continuous Concept Space ([zhang...shen, xin eric wang, 2025](https://arxiv.org/abs/2505.15778))
 
 ## prompt chaining / ensembling
 
@@ -266,7 +268,7 @@ over time, ML has bounced from *feature-engineering* -> *architecture engineerin
 - FUDGE: Controlled Text Generation With Future Discriminators ([yang & klein, 2021](https://arxiv.org/abs/2104.05218))
     - classifier predicts probability of attribute for running sequence with each next-token appended
     - these attribute probs. are multiplied with next-token probs for each token and then we sample from that distr (after normalization)
-- Diffusion-LM Improves Controllable Text Generation ([lisa li, thickstun, gulrajani, liang, & hashimoto, 2022](https://arxiv.org/abs/2205.14217))
+- Diffusion-LM Improves Controllable Text Generation ([lisa li, thickstun, gulrajani, liang, & hashimoto, 2022](https://arxiv.org/abs/2205.14217)) - continuous embeddings
 - Mixture of Soft Prompts for Controllable Data Generation ([chen, lee, …, yu, 2023](https://arxiv.org/pdf/2303.01580.pdf)) - trains a small model on data from a big frozen LLM that is then more controllable
 
 # architecture engineering & vetting
@@ -302,7 +304,8 @@ over time, ML has bounced from *feature-engineering* -> *architecture engineerin
   - Discrete Diffusion Modeling by Estimating the Ratios of the Data Distribution ([lou, meng, & ermon, 2024](https://arxiv.org/abs/2310.16834)) - model $p(\text{altered text}) / p(\text{orig text})$, and make alterations using word swaps at individual locations
     - From Denoising Diffusions to Denoising Markov Models ([benton...doucet, 2024](https://arxiv.org/abs/2211.03595))
     - Not clear that these are better than just iteratively masking/replacing a word with BERT
-
+  - Energy-Based Diffusion Language Models for Text Generation ([xu...leskovec, ermon, & vahdat, 2024](https://arxiv.org/abs/2410.21357))
+  - LLaDA: Large Language Diffusion Models ([nie, ..., li, 2025](https://arxiv.org/abs/2502.09992))
 
 ## mixture of experts (MoE) / routing
 
@@ -809,6 +812,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
     - output2prompt ([zhang, morris, & shmatikov, 2024](https://arxiv.org/pdf/2405.15012)) - recover prompt from long text outputs (by building a model of the sparse encodings of the outputs)
     - ZSInvert: universal zero-shot embedding inversion ([zhang, morris, & shmatikov, 2025](https://arxiv.org/pdf/2504.00147)) - beam search but keep prefixes that have best similarity with given embedding & train text-to-text correction model that helps refine hypotheses
       - builds on adversarial decoding ([zhang, zhang, & shmatikov, 2024](https://arxiv.org/abs/2410.02163)) - use beam search with multiple scorers besides just perplexity (e.g. for defense evasion)
+    - vec2vec ([jha, zhang, shmatikov, & morris, 2025](https://arxiv.org/pdf/2505.12540)) - use cyclegan-style approach to translate embeddings from one space to another (without paired samples)
 - RAPTOR: Recursive Abstractive Processing for Tree-Organized Retrieval ([sarthi...manning](https://arxiv.org/abs/2401.18059)) - retrieve many docs and cluster/summarize before using
 - Seven Failure Points When Engineering a Retrieval Augmented Generation System ([barnet...abdelrazek, 2024](https://arxiv.org/abs/2401.05856))
 - Retrieve to Explain: Evidence-driven Predictions with Language Models ([patel...corneil, 2024](https://arxiv.org/pdf/2402.04068.pdf))
@@ -1021,6 +1025,10 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
     - STaR-GATE: Teaching Language Models to Ask Clarifying Questions ([andukuri...goodman, 2024](https://arxiv.org/abs/2403.19154))
     - Rephrase and Respond: Let Large Language Models Ask Better Questions for Themselves ([deng...gu, 2024](https://arxiv.org/abs/2311.04205))
   - Loose LIPS Sink Ships:  Asking Questions in *Battleship* with Language-Informed Program Sampling ([grand, pepe, andreas, & tenenbaum , 2024](https://arxiv.org/pdf/2402.19471.pdf)) - language-informed program sampling (LIPS) model uses large language models (LLMs) to generate NL questions, translate them into symbolic programs, and evaluate their expected info gain
+- AI tutor
+  - Unifying AI Tutor Evaluation: An Evaluation Taxonomy for
+    Pedagogical Ability Assessment of LLM-Powered AI Tutors ([maurya et al. 2025](https://arxiv.org/pdf/2412.09416)) - evaluate LLM tutor/student conversations by rating them on several automated metrics, e.g. "Has the tutor identified/recognized a mistake in a student’s response?"
+
 - LLM-based game agents ([awesome repo](https://github.com/git-disl/awesome-LLM-game-agent-papers))
   - Baba Is AI: Break the Rules to Beat the Benchmark ([cloos...barbu, cueva, 2024](https://arxiv.org/pdf/2407.13729))
   - BALROG: Benchmarking Agentic LLM and VLM Reasoning On Games ([paglieri...rocktäschel, 2024](https://arxiv.org/abs/2411.13543))
@@ -1325,7 +1333,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
 
 ## data quality selection
 
-- PPL ([Ankner et al., 2024](https://openreview.net/forum?id=0r0Bg1NY1X)) - selects a samples with the lowest perplexity scores on the validation dataset
+- PPL ([Ankner et al., 2024](https://openreview.net/forum?id=0r0Bg1NY1X)) - selects samples with the lowest perplexity scores on the validation dataset
 - Semdedup ([Abbas et al., 2023](https://arxiv.org/abs/2303.09540)) - data is clustered and data points farthest from the centroid in each cluster are selected
 - DSIR ([Xie et al., 2023b](https://proceedings.neurips.cc/paper_files/paper/2023/hash/6b9aa8f418bde2840d5f4ab7a02f663b-Abstract-Conference.html)) - use hashed N-gram features to identify and select data that exhibits similarity to a specified dataset
 - QuRating ([Wettig et al., 2024](https://arxiv.org/abs/2402.09739)) - use pre-trained models that annotate qualities like Required Expertise, Writing Style, Facts and
