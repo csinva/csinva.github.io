@@ -84,15 +84,14 @@ over time, ML has bounced from *feature-engineering* -> *architecture engineerin
 ## chain-of-thought
 
 - [optimizing CoT papers](https://www.aussieai.com/research/cot-optimization#concise)
-
 - understanding chain-of-thought and its faithfulness
   - Faithful Chain-of-Thought Reasoning ([yu et al. 2023](https://arxiv.org/abs/2301.13379))
   - Contrastive Chain-of-Thought Prompting ([chia...bing, 2023](https://arxiv.org/abs/2311.09277))
   - Program of Thoughts Prompting: Disentangling Computation from Reasoning for Numerical Reasoning Tasks ([chen et al. 2022](https://arxiv.org/abs/2211.12588))
+  - Towards Consistent Natural-Language Explanations via Explanation-Consistency Finetuning ([chen...gao, 2024](https://arxiv.org/abs/2401.13986))
+  - Benchmarking and Improving Generator-Validator Consistency of Language Models ([lisa li...liang, 2023](https://arxiv.org/abs/2310.01846))
   - Critiques
     - Do Models Explain Themselves? Counterfactual Simulatability of Natural Language Explanations ([yanda chen, zhong, ..., steinhardt, yu, mckeown, 2023](https://arxiv.org/abs/2307.08678))
-      - Towards Consistent Natural-Language Explanations via Explanation-Consistency Finetuning ([chen...gao, 2024](https://arxiv.org/abs/2401.13986))
-      - Benchmarking and Improving Generator-Validator Consistency of Language Models ([lisa li...liang, 2023](https://arxiv.org/abs/2310.01846))
     - The Unreliability of Explanations in Few-shot Prompting for Textual Reasoning ([ye & durrett, 2022](https://proceedings.neurips.cc/paper_files/paper/2022/file/c402501846f9fe03e2cac015b3f0e6b1-Paper-Conference.pdf))
     - Language Models Don't Always Say What They Think: Unfaithful Explanations in Chain-of-Thought Prompting ([turpin, ..., bowman, 2023](https://arxiv.org/abs/2305.04388))
       - CoT explanations can be heavily influenced by biasing the model towards certain answers, thereby yielding invalid explanations
@@ -100,6 +99,7 @@ over time, ML has bounced from *feature-engineering* -> *architecture engineerin
     - Two Failures of Self-Consistency in the Multi-Step Reasoning of LLMs ([chen, ..., bowman, cho, 2023](https://arxiv.org/abs/2305.14279)) - models fail at these 2 tasks:
       - hypothetical consistency (the ability for a model to predict what its output would be in a hypothetical other context)
       - compositional consistency (consistency of a model's outputs for a compositional task even when an intermediate step is replaced with the model's output for that step)
+    - Measuring the Faithfulness of Thinking Drafts in Large Reasoning Models ([xiong...lakkaraju, 2025](https://arxiv.org/abs/2505.13774))
   - faithfulness metric = model sensitivity to removing some of the explanation
     - Question Decomposition Improves the Faithfulness of Model-Generated Reasoning ([anthropic, 2023](https://www-files.anthropic.com/production/files/question-decomposition-improves-the-faithfulness-of-model-generated-reasoning.pdf)) - introduce factored decomposition to improve faithfulness metric
     - Measuring Faithfulness in Chain-of-Thought Reasoning ([anthropic, 2023](https://www-files.anthropic.com/production/files/measuring-faithfulness-in-chain-of-thought-reasoning.pdf)) - in addition to just removing some of the explanation, also add mistakes to it / paraphrase it
@@ -218,6 +218,9 @@ over time, ML has bounced from *feature-engineering* -> *architecture engineerin
   - few-shot text classification
     - FastFit ([yehudai & bandel, 2024](https://arxiv.org/pdf/2404.12365.pdf)) - fit few-shot batch with contrastive examples then predict using similarities to shots rather than a classification head (base model is roberta)
       - SetFit ([tunstal…pereg, 2022](https://arxiv.org/abs/2209.11055)) - finetune stentence transformer with contrastive loss, then train classification head
+- Dense Communication between Language Models ([wu, wang, yao, 2025](https://arxiv.org/pdf/2505.12741)) - use pre-trained LMs as modules, and pass continuous embeddings between them
+  - train seq2seq models to connect the different small LMs, and get strong performance with very small training cost
+
 
 ## llm querying / causal inference
 

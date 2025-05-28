@@ -8,11 +8,9 @@ title: presentations
 ## 2024 / 2025
 
 - [LLM research overview lecture](https://docs.google.com/presentation/d/1PnsRaykeXovIU45lu029LOdPSeEWwbJwNcBujP7YWAM/edit?usp=sharing) (1-hr)
-    
     - In this lecture I’ll cover a selection of topics underlying modern transformers/LLMs and emerging directions of research. I’ll start with a technical overview of LLMs and general research directions and progress. Then, I’ll go into vignettes of recent research work on interpretability, test-time training, and frontier applications for LLMs. I’ll end with some open questions in LLM research.
     
 - [Using LLMs to bridge data-driven models and scientific theories in language neuroscience](https://docs.google.com/presentation/d/1bFZZ8-OwwNxN3DjPdyPFKuP16yyYTP9DlaTzKOaYVWI/)
-
     - <details>
     <summary>UCSF Biostat talk (45-min)</summary>
     Title: Using LLMs to bridge data-driven models and scientific theories in language neuroscience<br/><br/>
@@ -200,6 +198,12 @@ Deep learning models have achieved impressive predictive performance by learning
 
 
 ## bios
+
+<details>
+<summary>One-paragraph bio (may 2025)</summary>
+Chandan works on interpretable machine learning with the broad goal of improving science and medicine using data. Recently, he has focused on language models and how they can be used to directly explain data from language neuroscience. Separately, he has also worked on developing highly accurate transparent models, such as improving linear models and decision trees. He received his PhD from UC Berkeley in 2022.
+</details>
+
 
 <details>
 <summary>One-paragraph bio (nov 2023)</summary>

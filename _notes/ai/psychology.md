@@ -512,6 +512,32 @@ subtitle: Some notes on papers / books surrounding psychology, especially evolut
 
 
 
+# a brief history of intelligence
+
+- LUCA: "last universal common ancestor" of all life
+
+- early cyanobacteria evolved photosynthesis
+
+  - they started polluting the atmosphere with oxygen
+
+  - respiring microbes emerged to convert sugar and oxygen back into carbon dioxidek resulting in the greatest symbiosis ever found (and lasts to this day)
+
+    - photosynthetic: converting water/C02 -> sugar & oxygen
+
+    - respiratory: converting sugar & oxygen -> C02
+
+- original prupose of neurons/muscles was likely simply swallowing
+
+- emotion
+
+  - two axes, together called *affect*: valence (goodnes or badness of a stimulus) and arousal
+  - dating back to nematode, neurotransmitters emerged to control these 2 axes
+    - dopamine - released when food is detected around worm (local search, high arousal, positive valence)
+    - serotonin - released when food is inside worm (rest and digest, low arousal, positive valence)
+    - adrenaline - relocate (escape, high arousal, negative valence)
+    - opioids - anti-stress, released after period of extreme activity
+    - chronic stress (like depression) - released when giving up after acute stress (e.g. need to preserve energy) - also releases serotonin
+
 # homo deus
 
 ## old problems: famine, war, plague

@@ -851,6 +851,10 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 | temporal res | mid-high | high              | high                                                | super high  | high            | very low |
 | invasiveness | non      | yes (under skull) | very                                                | very        | non             | non      |
 
+- static data gold standard is electron microscopy
+
+  - alternatively, can do connectomics from light microscopy + adaptive optics ([takavoli...jain, danzil, 2025](https://www.nature.com/articles/s41586-025-08985-1))
+
 - [ovw of advancements in neuroengineering](https://medium.com/neurotechx/timeline-of-global-highlights-in-neuroengineering-2005-2018-75e4637b9e38)
 
 - **pro big-data**
