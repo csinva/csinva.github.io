@@ -492,6 +492,8 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
 
 ## contrastive learning
 
+- I-Con: A Unifying Framework for Representation Learning ([alshammari...freeman, hamilton, 2025](https://arxiv.org/abs/2504.16929))
+  - ![Screenshot 2025-05-12 at 1.43.06 PM](../assets/Screenshot%202025-05-12%20at%201.43.06%E2%80%AFPM.png)
 - [What makes for good views for contrastive learning](https://arxiv.org/abs/2005.10243) (tian et al. 2020)
   - how to select views (e.g. transformations we want to be invariant to)?
   - reduce the mutual information (MI) between views while keeping task-relevant information intact

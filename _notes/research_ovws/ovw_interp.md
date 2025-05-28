@@ -455,8 +455,10 @@ Symbolic regression learns a symbolic expression for a function (e.g. a mathemat
 
 - CBM: Concept Bottleneck Models ([koh et al. 2020](https://arxiv.org/pdf/2007.04612.pdf)) - predict intermediate concepts before making final prediction
 - Post-hoc CBM ([yuksekgonul...zou, 2022](https://arxiv.org/abs/2205.15480)) - automatically project embeddings to concepts and train linear model on those
+  - Visual Classification via Description from Large Language Models ([menon & vondrick, 2022](https://arxiv.org/abs/2210.07183)) - LLM lists relevant classes, and predict using VLM embedding similarities to those claseses
   - Label-Free CBM ([oikarinen...lily weng, 2023](https://arxiv.org/abs/2304.06129)) - extend to learn to match text concepts extracted with embeddings of any vision model
   - uses CLIP-Dissect method ([oikarinen & lily weng, 2023](https://arxiv.org/abs/2204.10965))
+  
 - CBMs with LLMs / VLMs
   - Crafting Interpretable Embeddings by Asking LLMs Questions ([benara...gao, 2024](https://arxiv.org/pdf/2405.16714)) - use LLM to generate and answer questions corresponding to concepts, then use LASSO to select relevant questions
   - BC-LLM: Bayesian Concept Bottleneck Models with LLM Priors ([feng...tan, 2024](https://arxiv.org/abs/2410.15555)) - use LLM to generate questions from extracted keywords, then iterate on fitting predictive models and searching for new concepts with a Bayesian approach
@@ -468,7 +470,6 @@ Symbolic regression learns a symbolic expression for a function (e.g. a mathemat
     - Human evaluation: agreement of concept scores and contribution of concept to output
     - Concept Bottleneck Large Language Models ([sun, oikarinen, ustun, & lily weng, 2024](https://arxiv.org/abs/2412.07992)) - this updated version of the paper also has results for language modeling
   - Towards Achieving Concept Completeness for Unsupervised Textual Concept Bottleneck Models ([bhan…lesot, 2025](https://arxiv.org/abs/2502.11100)) - distill embeddings from a trained model
-
 - Refining CBMs
   - Tree-Based Leakage Inspection and Control in Concept Bottleneck Models ([ragkousis & parbhoo, 2024](https://arxiv.org/abs/2410.06352)) - investigate where soft version of a feature outperforms hard version of the feature
   - Stochastic Concept Bottleneck Models ([vandenhirtz...vogt, 2024](https://arxiv.org/pdf/2406.19272)) - model covariance between concepts
