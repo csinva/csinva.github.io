@@ -419,12 +419,12 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
 - then train a DNN to invert this procedure step-by-step
   - single model handles many different noise levels with shared parameters
 - [blog post](https://benanne.github.io/2022/01/31/diffusion.html)
-- seminal paper: [Generative Modeling by Estimating Gradients of the Data Distribution](https://arxiv.org/abs/1907.05600) (song & ermon, 2019)
-  - really started earlier: [Deep Unsupervised Learning using Nonequilibrium Thermodynamics](https://arxiv.org/abs/1503.03585) (sohl-dickstein, ..., ganguli, 2015)
+- seminal paper: Generative Modeling by Estimating Gradients of the Data Distribution ([song & ermon, 2019](https://arxiv.org/abs/1907.05600))
+  - really started earlier: Deep Unsupervised Learning using Nonequilibrium Thermodynamics ([sohl-dickstein, ..., ganguli, 2015](https://arxiv.org/abs/1503.03585))
 
-- [Improved Denoising Diffusion Probabilistic Models](https://arxiv.org/abs/2102.0 9672) (2021)
+- Improved Denoising Diffusion Probabilistic Models ([2021](https://arxiv.org/abs/2102.0 9672))
   - can make this class-conditionnal by incorporating classifier into the model which inverts the noise
-  - [Diffusion Models Beat GANs on Image Synthesis](https://arxiv.org/abs/2105.05233) (2021)
+  - Diffusion Models Beat GANs on Image Synthesis ([2021](https://arxiv.org/abs/2105.05233))
 
 
 

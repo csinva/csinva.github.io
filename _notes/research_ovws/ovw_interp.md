@@ -1191,6 +1191,8 @@ How interactions are defined and summarized is a very difficult thing to specify
   - Hybrid Predictive Models: When an Interpretable Model Collaborates with a Black-box Model ([wang & lin, 2021](https://www.jmlr.org/papers/volume22/19-325/19-325.pdf)) - use interpretable model on subset where it works
     - objective function considers predictive accuracy, model interpretability, and model transparency (defined as the percentage of data processed by the interpretable substitute)
   - Partially Interpretable Estimators (PIE): Black-Box-Refined Interpretable Machine Learning ([wang et al. 2021](https://arxiv.org/abs/2105.02410)) - interpretable model for individual features and black-box model captures feature interactions (on residuals)
+  - Contextualized Machine Learning ([lengerich, ellington...xing, 2023](https://arxiv.org/abs/2310.11340)) - given some context, predict parameters of an interpretable model, e.g. $Y = X\beta \to  Y = X\beta(C)$, where the coefficients $\beta$ are now a function of context $C$
+  - LassoNet: A Neural Network with Feature Sparsity ([lemhadri...tibshirani, 2021](https://www.jmlr.org/papers/v22/20-848.html)) - neural net only can use feats with nonzero sparsity
 - Three Maxims for Developing Human-Centered AI for Decision Making ([bansal et al. 2022](https://www.proquest.com/docview/2628490400?pq-origsite=gscholar&fromopenview=true); gagan bansal has a few nice papers like this)
   - help users understand *when to trust* AI recommendations
   - *preserve user’s mental model of AI’s trustworthiness*
