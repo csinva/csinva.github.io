@@ -512,7 +512,18 @@ subtitle: Some notes on papers / books surrounding psychology, especially evolut
 
 
 
-# a brief history of intelligence
+# a brief history of intelligence (max bennett)
+
+- 5 breakthroughs
+  - steering
+
+  - reinforcement learning
+
+  - simulating
+
+  - mentalizing (e.g. theory of mind)
+
+  - language
 
 - LUCA: "last universal common ancestor" of all life
 
@@ -537,6 +548,55 @@ subtitle: Some notes on papers / books surrounding psychology, especially evolut
     - adrenaline - relocate (escape, high arousal, negative valence)
     - opioids - anti-stress, released after period of extreme activity
     - chronic stress (like depression) - released when giving up after acute stress (e.g. need to preserve energy) - also releases serotonin
+- temporal difference learning - when the presentation of an unexpected reward increases dopamine activity, the ommission of an expected reward decreases dopamine activity
+  - repurposed from a fuzzy average of recently detected food to an ever fluctuating, precisely measured, and meticulously computed predicted-future-reward signal
+  - the basal ganglia is a student, always trying to satisfy its vague but stern hypothalamic judge
+  - the best way to get a rat to obsessively push a lever for food is not to have the lever release food pellets every time it is pressed; instead it is to have the lever randomly release food pellets
+
+- triassic mass extenction event - deadliest of all extinction events
+  - 1.5 BYA cyanobacteria suffocated earth with C02 and polluted it with O2
+  - over a billion years later, triassic mass extinction event -> the explosion of plants on land seems to have committed a similar crime
+- core evolutionary function of the neocortex might have been the opposite--recognition might have been the means that unlocked the adaptive benefit of simulating
+  - recording studies corroborate the idea that the aPFC creates a model of an animal's goals
+  - the aPFC doesn't want to adjust its model of your intent to assume you are not thirsty, instead if wants to pause the basal ganglia's mistake, and convince it to turn around and go toward the water
+  - persistent tension between our moment-to-moment cravings (as controlled by the amygdala and basal ganglia) and what we wknow to be a better choice (as controlled by the aPFC)
+    - this is why ppl become more impulsive when tired/stressed -- the aPFC is energetically expensive to run, software i you are tired or stressed, the aPFC will be much less effective at inhibiting the amygdala
+    - the aPFC learns to predict movements of navigational paths, whereas the motor cortex learns to predict movements of specific body parts
+    - the motor cortex was originally not the locus of motor commands but of motor planning
+    - the neocortex offers a slower but more flexible system for training, and the basal ganglia offers a faster but less flexible version for well-trained paths and movements
+
+- correlation: bigger primate neocortex and social group size
+  - correlation between grooming time & group size (but not body size)
+  - one thing that determines monkey's palce in its group is the famility is born into
+  - correlation between free time & time spent socializing
+
+- gPFC: granular prefreontal cortex is uniquely active during tasks that require self-reference
+  - gPFC constructs explanations of the simulation itself (metacognition)
+  - mirror neurons have been found in numerous behaviors across multiple areas of cortex
+  - temporarily inhibiting a human's premotor cortex impairs their ability to correctly infer the weight of a box when watching a video of someone picking it up
+  - the ability to use tools is less about ingenuity & more about transmissibility
+  - is imagining the mind of someone else really any different from imagining the mind of your future self?
+    - people make similar types of mistakes in tasks of theory of mind & of anticipating future needs
+
+- the ecological-brain hypothesis argues that it was the frugivore diet of early primates that drove the rapid expansion of their brains
+  - for fruits that are more popular, monkeys will go out of their way to plan where they sleep to be en route to these fruits
+- language
+  - no other known form of naturally occuring animal communication assigns declarative labels (otherwise known as symbols)
+    - in nonhuman primates, the meanings of these gestures and vocalizations is not assigned through declaratie labeling but emerge directly from genetic hardwiring
+    - imperative (non-declarative) labels yield a reward
+
+  - the second way in which human language differs from other animal communication is that it contains a grammar
+  - it seems conversation is not a natural consequence of the ability to learn language; rather, the ability to learn language is, at least in part, a consequence of a simpler genetically hard-coded instinct to engage in conversation
+    - what is unique in the human brain is not in the necortext; it is hidden & subtle, tucked in older structures like the amygdala & brain stem - an adjustment to hardwired instincts that make us take turns, makes children & parents stare back and forth, and makes us ask questions
+
+  - misc
+    - all languages use the same rising intonation when asking yes/no questions
+    - only 2 mammals on earth produce females that are not reproductively capable until death: orcas & humans
+
+- all humans alive today have a common ancestor~100K years ago. Nearest living cousin is chimp, whose shared common ancestor was >7MYA
+  - larynx & vocal cords of our ancestors weren't adapted to vacal language until ~500K years ago
+
+- gossip enables a stable system of reciprocal altruism among a large group of individuals
 
 # homo deus
 
