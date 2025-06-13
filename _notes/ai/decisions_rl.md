@@ -251,8 +251,7 @@ typora-copy-images-to: ../assets
   - like an approximation of ADP
   - when we transition $s \to s'$, update $U^\pi(s) = U^\pi (s) + \alpha \left[R(s) - U^\pi (s) + \gamma \:U^\pi (s') \right]$
     - $\alpha$ should decrease over time to converge
-  - *prioritized sweeping* - prefer adjustments to states whose likely successors have just undergone a large adjustment in their own utility estimates
-    - speeds things up
+  - *prioritized sweeping* - prefer adjustments to states whose likely successors have just undergone a large adjustment in their own utility estimates (speeds things up)
 
 ## active reinforcement learning
 

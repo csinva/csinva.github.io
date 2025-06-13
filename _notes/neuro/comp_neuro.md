@@ -969,11 +969,12 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 - [non-human primate optogenetics datasets](https://osf.io/mknfu/)
 - [vision dsets](https://www.visualdata.io/)
   - MRNet: knee MRI diagnosis
+  - [natural scenes dataset (NSD)](https://naturalscenesdataset.org/) - vision fMRI
+    - NSD-Imagery: A benchmark dataset for extending fMRI vision decoding methods to mental imagery ([kneeland...kay, naselaris, 2025](https://arxiv.org/abs/2506.06898)) - participants memorized a handful of image stimuli and were asked to imagine a particular one
 - [datalad lots of stuff](http://datalad.org/datasets.html)
 - calcium imaging records in mice
 
   - Recordings of ten thousand neurons in visual cortex during spontaneous behaviors ([stringer et al. 2018](https://figshare.com/articles/dataset/Recordings_of_ten_thousand_neurons_in_visual_cortex_during_spontaneous_behaviors/6163622)) - 10k neuron responses to 2800 images
-
 - neuropixels probes
   - [10k neurons visual coding](https://portal.brain-map.org/explore/circuits/visual-coding-neuropixels) from allen institute
   - this probe has also been used in [macaques](https://www.cell.com/neuron/pdf/S0896-6273(19)30428-3.pdf)
@@ -1024,6 +1025,11 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 - model frequency bands
   - EEG foundation model: Learning Topology-Agnostic EEG Representations with Geometry-Aware Modeling ([yi...dongsheng li, 2023](https://openreview.net/pdf?id=hiOUySN0ub))
 - Strong Prediction: Language Model Surprisal Explains Multiple N400 Effects  ([michaelov...coulson, 2024](https://direct.mit.edu/nol/article/5/1/107/115605/Strong-Prediction-Language-Model-Surprisal))
+- datasets
+  - DEAP: A Database for Emotion Analysis ;Using Physiological Signals ([koelstra...ebrahimi, 2012](https://ieeexplore.ieee.org/abstract/document/5871728)) - 32-channel system
+  - SEED: Investigating Critical Frequency Bands and Channels for EEG-Based Emotion Recognition with Deep Neural Networks ([zheng & lu, 2015](https://ieeexplore.ieee.org/abstract/document/7104132)) - 64-channel system
+  - HBN-EEG dataset ([shirazi...makeig, 2024](https://www.biorxiv.org/content/10.1101/2024.10.03.615261v2)) - EEG recordings from over 3,000 participants across six distinct cognitive tasks
+
 
 ## cross-subject modeling
 
@@ -1116,6 +1122,7 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - Aligning brain functions boosts the decoding of visual semantics in novel subjects ([thual...king, 2023](https://arxiv.org/abs/2312.06467)) - align across subjects before doing decoding
   - A variational autoencoder provides novel, data-driven features that explain functional brain representations in a naturalistic navigation task ([cho, zhang, & gallant, 2023](https://jov.arvojournals.org/article.aspx?articleid=2792546))
   - What's the Opposite of a Face? Finding Shared Decodable Concepts and their Negations in the Brain ([efird...fyshe, 2024](https://arxiv.org/abs/2405.17663)) - build clustering shared across subjects in CLIP space
+  - When compared to vision, brain activity patterns measured during mental imagery have much lower signal-to-noise ratios (SNR) ([roy...kay, naselaris, 2023](https://jov.arvojournals.org/article.aspx?articleid=2792335)), vary along fewer signal dimensions ([roy...kay, naselaris, 2024](https://2024.ccneuro.org/pdf/415_Paper_authored_tiasha_ccn2024_withauthors.pdf)), and encode imagined stimuli with expanded receptive fields and lower spatial frequency preferences, especially in early visual cortex ([breedlove...naselaris, 2020](https://www.cell.com/current-biology/fulltext/S0960-9822(20)30494-2?dgcid=raven_jbs_etoc_email))
 - bmi
   - Accelerated learning of a noninvasive human brain-computer interface via manifold geometry ([busch...turk-brown, 2025](https://www.biorxiv.org/content/10.1101/2025.03.29.646109v1)) - train subjects to control avatar navigation through fMRI, then perturb environment and evaluate decoder
 
@@ -1148,6 +1155,12 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - Shared computational principles for language processing in humans and deep language models ([goldstein...hasson, 2022](https://www.nature.com/articles/s41593-022-01026-4)) - predict ECoG responses to podcasts from DL embeddings
   
 
+# brain foundation models
+
+- Brain Foundation Models: A Survey on Advancements in Neural Signal Processing and Brain Discovery ([zhou, liu...wen, 2025](https://arxiv.org/pdf/2503.00580))
+- Brain-JEPA: Brain Dynamics Foundation Model with Gradient Positioning and Spatiotemporal Masking ([dong...zhou, 2024](https://proceedings.neurips.cc/paper_files/paper/2024/hash/9c3828adf1500f5de3c56f6550dfe43c-Abstract-Conference.html)) - fMRI modeling that uses positional embedding matrix based on brain gradient positioning + temporal encoding matrix using sine/cosine for temporal positioning
+- Brant: Foundation Model for Intracranial Neural Signal ([zhang...li, 2023](https://proceedings.neurips.cc/paper_files/paper/2023/hash/535915d26859036410b0533804cee788-Abstract-Conference.html)) - predict iEEG with learnable position encoding
+- LaBraM: Large Brain Model for Learning Generic Representations with Tremendous EEG Data in BCI ([jiang, zhou, lu, 2024](https://arxiv.org/abs/2405.18765)) - predict EEG with learnable temporal & spatial encoding matrix
 
 # advanced topics
 

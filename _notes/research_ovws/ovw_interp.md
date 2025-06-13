@@ -424,7 +424,7 @@ Symbolic regression learns a symbolic expression for a function (e.g. a mathemat
   - Demystifying Black-box Models with Symbolic Metamodels ([alaa, van der schaar, 2019](https://papers.nips.cc/paper/9308-demystifying-black-box-models-with-symbolic-metamodels.pdf)) - distill black-box model with Meijer G-functions (rather than pre-specifying some forms, as is done with symbolic regression)
     - Symbolic Metamodels for Interpreting Black-boxes Using Primitive Functions ([abroshan...khalili, 2023](https://arxiv.org/abs/2302.04791)) - use GP approach
     - Neural Symbolic Regression using Control Variables ([chu...shao, 2023](https://arxiv.org/abs/2306.04718))
-  - Discovering Symbolic Models from Deep Learning with Inductive Biases ([cranmer...ho, 2020](https://arxiv.org/abs/2006.11287)) - focused on GNNs
+  - Discovering Symbolic Models from Deep Learning with Inductive Biases ([cranmer...ho, 2020](https://arxiv.org/abs/2006.11287)) - focused on GNNs, extracts equations from model weights
   - Providing Post-Hoc Symbolic Explanations for Sequential Decision-Making Problems with Black Box Simulators ([sreedharan et al. 2020](https://arxiv.org/abs/2002.01080))
 - neural networks
   - 2-step symbolic regr: first generate equation skeleton, then optimize constants with GD
@@ -433,7 +433,7 @@ Symbolic regression learns a symbolic expression for a function (e.g. a mathemat
     - Deep symbolic regression ([petersen...kim, 2021](https://arxiv.org/pdf/1912.04871.pdf)) - RL-based
   - End-to-End symbolic regression (still use final refinement step)
     - AI Feynman: A physics-inspired method for symbolic regression ([udresku & tegmark, 2020](https://www.science.org/doi/10.1126/sciadv.aay2631)) - use a loop with many if-then checks to decompose the equations
-    - End-to-end symbolic regression with transformers ([kamienny...charton, 2022](https://arxiv.org/abs/2204.10532))
+    - End-to-end symbolic regression with transformers ([kamienny...charton, 2022](https://arxiv.org/abs/2204.10532)) - explicitly train transformer from scratch to do the task
     - SymFormer ([vastl...babuska, 2022](https://arxiv.org/abs/2205.15764))
     - Deep Generative Symbolic Regression ([holt...van der schaar, 2023](https://openreview.net/forum?id=o7koEEMA1bR)) - use RL
   - Building and Evaluating Interpretable Models using Symbolic Regression and Generalized Additive Models ([sharif, 2017](https://openreview.net/pdf?id=BkgyvQzmW))
