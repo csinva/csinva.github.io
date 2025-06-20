@@ -135,7 +135,7 @@ subtitle: Notes on philosophy relevant to explanation (particularly in science)
 # the beggining of infinity (david deutsch, 2011)
 
 - all progress has resulted from the quest for good explanations
-  - *good explanation* - hard to vary while still acocounting for what it purports to account for
+  - *good explanation* - hard to vary while still accounting for what it purports to account for
   - the *reach* of an explanation is something we find out only after the fact (though we strive for explanations with good reach)
   - seek "an idea so simple...that...we sill all say to each other, how could it have been otherwise"?
 - tenets
@@ -159,7 +159,7 @@ subtitle: Notes on philosophy relevant to explanation (particularly in science)
   - creativity developed as a way to better emulate ordinary things for mate selection, but proved to have much greater reach
 - morality
   - moral philosophy addresses the problem of what sort of life to want
-  - reductionism - misocnception that mus always explain things by analyzing them into components
+  - reductionism - misconception that we must always explain things by analyzing them into components
   - 'you can't derive an ought from an is' (paraphrase from David Hume)
 - politics
   - just as science seeks explanations that are experimentally testable, a rational political system makes it as easy as possible to detect + persuade others that a leader or policy is bad, and to remove them without violence if they are (popper's criterion)
@@ -174,7 +174,7 @@ subtitle: Notes on philosophy relevant to explanation (particularly in science)
   - many theories for sustaining may be too limiting (e.g. propose studying carbon capture rather than limiting carbon production)
 - minor
   - people in 1900 did not consider the internet or nuclear power unlikely: they did not conceive of them at all
-  - the original sources of scientific theories are almost nevery good - weird that philiosophy places such an emphasis on original texts
+  - the original sources of scientific theories are almost never good - weird that philiosophy places such an emphasis on original texts
   - most people believe that an income of about twice their own should be sufficient to satisfy any reasonable person (hard to imagine what it would be like to have twice as much) - David Friedman
 
 # philosophy of science

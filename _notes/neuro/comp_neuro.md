@@ -959,6 +959,7 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 - cross-modality (language-adjacent)
   - language
     - A synchronized multimodal neuroimaging dataset to study brain language processing ([wang...zong, 2023](https://openneuro.org/datasets/ds004078/versions/1.2.1))
+    - CineBrain: A Large-Scale Multi-Modal Brain Dataset During Naturalistic Audiovisual Narrative Processing ([gao…fu, 2025](https://arxiv.org/abs/2503.06940)) -  6 hours of simultaneous EEG and fMRI while watching big bang theory
   - language-adjacent
     - NeuroBOLT data ([li...chang, 2024](https://arxiv.org/abs/2410.05341); code [link](https://drive.google.com/file/d/1s9LzdBx1afGYiGbpi3p-oFh-CnYLyYqM/view?usp=sharing))
     - An open-access dataset of naturalistic viewing using simultaneous EEG-fMRI ([telesford...franco, 2023](https://www.nature.com/articles/s41597-023-02458-8))
