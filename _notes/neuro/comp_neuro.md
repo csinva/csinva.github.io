@@ -933,15 +933,20 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
     - 345 subjects, 891 functional scans, and 27 diverse stories of varying duration totaling ~4.6 hours of unique stimuli (~43,000 words) and total collection time is ~6.4 days
   - Preprocessed short datasets used in [AlKhamissi et al. 2025](https://arxiv.org/pdf/2503.01830) and available through [brain-score-language](https://github.com/brain-score/language/tree/main?tab=readme-ov-file)
   - [Schoffelen et al. 2019](https://www.nature.com/articles/s41597-019-0020-y): 100 subjects recorded with fMRI and MEG, listening to de-contextualised sentences and word lists, no repeated session
+  - Le Petit Prince multilingual naturalistic fMRI corpus ([li...hale, 2022](https://www.nature.com/articles/s41597-022-01625-7)) - 49 English speakers, 35 Chinese speakers and 28 French speakers listened to the same audiobook *The Little Prince* in their native language while fMRI was recorded
   - [Huth et al. 2016](https://www.nature.com/articles/nature17637) released data from [one subject](https://github.com/HuthLab/speechmodeltutorial)
   - Visual and linguistic semantic representations are aligned at the border of human visual cortex ([popham, huth et al. 2021](https://www.nature.com/articles/s41593-021-00921-6#data-availability)) - compared semantic maps obtained from two functional magnetic resonance imaging experiments in the same participants: one that used silent movies as stimuli and another that used narrative stories ([data link](https://berkeley.app.box.com/s/l95gie5xtv56zocsgugmb7fs12nujpog))
 - MEG datasets
   - MEG-MASC ([gwilliams...king, 2023](https://www.nature.com/articles/s41597-023-02752-5)) - 27 English-speaking subjects MEG, each ~2 hours of story listening, punctuated by random word lists and comprehension questions in the MEG scanner. Usually each subject listened to four distinct fictional stories twice
   - WU-Minn human connectome project ([van Essen et al. 2013](https://www.nature.com/articles/s41597-022-01382-7)) - 72 subjects recorded with fMRI and MEG as part of the Human Connectome Project, listening to 10 minutes of short stories, no repeated session
   - [Armeni et al. 2022](https://www.nature.com/articles/s41597-022-01382-7): 3 subjects recorded with MEG, listening to 10 hours of Sherlock Holmes, no repeated session
+  - [LibriBrain 2025](https://neural-processing-lab.github.io/2025-libribrain-competition/participate/)  - bunch of listening data (50+ hours) for single subject
 - EEG
   - [Brennan & Hale, 2019](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0207741): 33 subjects recorded with EEG, listening to 12 min of a book chapter, no repeated session
   - [Broderick et al. 2018](https://www.cell.com/current-biology/pdf/S0960-9822(18)30146-5.pdf): 9–33 subjects recorded with EEG, conducting different speech tasks, no repeated sessions
+  - DEAP: A Database for Emotion Analysis ;Using Physiological Signals ([koelstra...ebrahimi, 2012](https://ieeexplore.ieee.org/abstract/document/5871728)) - 32-channel system
+  - SEED: Investigating Critical Frequency Bands and Channels for EEG-Based Emotion Recognition with Deep Neural Networks ([zheng & lu, 2015](https://ieeexplore.ieee.org/abstract/document/7104132)) - 64-channel system
+  - HBN-EEG dataset ([shirazi...makeig, 2024](https://www.biorxiv.org/content/10.1101/2024.10.03.615261v2)) - EEG recordings from over 3,000 participants across six distinct cognitive tasks [used in eeg2025 NeurIPS competition]
 - ECoG
   - The “Podcast” ECoG dataset for modeling neural activity during
     natural language comprehension ([zada...hasson, 2025](https://www.biorxiv.org/content/10.1101/2025.02.14.638352v1.full.pdf)) - 9 subjects listening to the same story
@@ -1018,19 +1023,6 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 - joint prediction of different input/output relationships
 - joint prediction of neurons from other areas
 
-## eeg
-
-- directly model time series
-  - BENDR: using transformers and a contrastive self-supervised learning task to learn from massive amounts of EEG data ([kostas...rudzicz, 2021](https://arxiv.org/abs/2101.12037))
-  - Neuro-GPT: Developing A Foundation Model for EEG ([cui...leahy, 2023](https://arxiv.org/abs/2311.03764))
-- model frequency bands
-  - EEG foundation model: Learning Topology-Agnostic EEG Representations with Geometry-Aware Modeling ([yi...dongsheng li, 2023](https://openreview.net/pdf?id=hiOUySN0ub))
-- Strong Prediction: Language Model Surprisal Explains Multiple N400 Effects  ([michaelov...coulson, 2024](https://direct.mit.edu/nol/article/5/1/107/115605/Strong-Prediction-Language-Model-Surprisal))
-- datasets
-  - DEAP: A Database for Emotion Analysis ;Using Physiological Signals ([koelstra...ebrahimi, 2012](https://ieeexplore.ieee.org/abstract/document/5871728)) - 32-channel system
-  - SEED: Investigating Critical Frequency Bands and Channels for EEG-Based Emotion Recognition with Deep Neural Networks ([zheng & lu, 2015](https://ieeexplore.ieee.org/abstract/document/7104132)) - 64-channel system
-  - HBN-EEG dataset ([shirazi...makeig, 2024](https://www.biorxiv.org/content/10.1101/2024.10.03.615261v2)) - EEG recordings from over 3,000 participants across six distinct cognitive tasks
-
 
 ## cross-subject modeling
 
@@ -1039,7 +1031,7 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 - hyperalignment techniques have been developed in fMRI research to aggregate information across subjects into a unified information space while overcoming the misalignment of functional topographies across subjects ([Haxby et al., 2011](https://www.cell.com/neuron/fulltext/S0896-6273(15)00933-2); shared response model [Chen et al., 2015](https://proceedings.neurips.cc/paper/2015/hash/b3967a0e938dc2a6340e258630febd5a-Abstract.html); [Guntupalli...Haxby, 2016](https://academic.oup.com/cercor/article/26/6/2919/1754308); [Haxby et al., 2020](https://elifesciences.org/articles/56601); [Feilong et al., 2023](https://direct.mit.edu/imag/article/doi/10.1162/imag_a_00032/117980))
 - shared response model [Chen et al., 2015](https://proceedings.neurips.cc/paper/2015/hash/b3967a0e938dc2a6340e258630febd5a-Abstract.html) - learns orthonormal, linear subject-specific transformations that map from each subject’s response  space to a shared space based on a subset of training data, then uses these learned transformations to map a subset of test data into the shared space
 
-# fMRI
+# language (mostly fMRI)
 
 ## language
 
@@ -1085,6 +1077,18 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
     - Lexical-Semantic Content, Not Syntactic Structure, Is the Main Contributor to ANN-Brain Similarity of fMRI Responses in the Language Network  ([kauf...andreas, fedorenko, 2024](https://direct.mit.edu/nol/article/5/1/7/116784/Lexical-Semantic-Content-Not-Syntactic-Structure)) - lexical semantic sentence content, not syntax, drive alignment.
     - Artificial Neural Network Language Models Predict Human Brain Responses to Language Even After a Developmentally Realistic Amount of Training  ([hosseini...fedorenko, 2024](https://direct.mit.edu/nol/article/5/1/43/119156/Artificial-Neural-Network-Language-Models-Predict)) - models trained on a developmentally plausible amount of data (100M tokens) already align closely with human benchmarks
     - Improving semantic understanding in speech language models via brain-tuning ([moussa...toneva, 2024](https://arxiv.org/abs/2410.09230))
+  
+  - eeg models
+  
+    - directly model time series
+  
+      - BENDR: using transformers and a contrastive self-supervised learning task to learn from massive amounts of EEG data ([kostas...rudzicz, 2021](https://arxiv.org/abs/2101.12037))
+      - Neuro-GPT: Developing A Foundation Model for EEG ([cui...leahy, 2023](https://arxiv.org/abs/2311.03764))
+  
+      - model frequency bands
+        - EEG foundation model: Learning Topology-Agnostic EEG Representations with Geometry-Aware Modeling ([yi...dongsheng li, 2023](https://openreview.net/pdf?id=hiOUySN0ub))
+  
+    - Strong Prediction: Language Model Surprisal Explains Multiple N400 Effects  ([michaelov...coulson, 2024](https://direct.mit.edu/nol/article/5/1/107/115605/Strong-Prediction-Language-Model-Surprisal))
 - changing experimental design
   - Semantic representations during language comprehension are affected by context (i.e. how langauge is presented) ([deniz...gallant, 2021](https://www.biorxiv.org/content/10.1101/2021.12.15.472839v1.full.pdf)) - stimuli with more context (stories, sentences) evoke better responses than stimuli with little context (Semantic Blocks, Single Words)
   - Combining computational controls with natural text reveals new aspects of meaning composition ([toneva, mitchell, & wehbe, 2022](https://www.biorxiv.org/content/biorxiv/early/2022/08/09/2020.09.28.316935.full.pdf)) - study word interactions by using encoding vector emb(phrase) - emb(word1) - emb(word2)...

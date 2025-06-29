@@ -17,7 +17,7 @@ Many interpretable models have been proposed to interpret data involved in predi
 | :----------------------------------------------------------: | :-----------------------------------------------------: | :-----------------------------------------------------: | :----------------------------------------------------------: |
 | <img src="https://csinva.io/imodels/img/rule_set.jpg" class="full_image"> | <img src="https://csinva.io/imodels/img/rule_list.jpg" class="full_image"> | <img src="https://csinva.io/imodels/img/rule_tree.jpg" class="full_image"> | <img src="https://csinva.io/imodels/img/algebraic_models.jpg" class="full_image"> |
 
-<p align="center"><b>Figure 1. </b>Different types of interpretable models. See scikit-learn friendly implementations [here](https://github.com/csinva/imodels),</p>
+<p align="center"><b>Figure 1. </b>Different types of interpretable models. See scikit-learn friendly implementations in the <a href="https://github.com/csinva/imodels">imodels package</a>.</p>
 
 # Adding LMs to interpretable models
 
@@ -26,12 +26,13 @@ Fig 2 shows some newer model forms that seek data explanations using LMs/ interp
 In the most direct case, an LM is fed data corresponding to 2 groups (binary classification) and prompted to directly produce a description of the difference between the groups ([D3](https://proceedings.mlr.press/v162/zhong22a.html)/[D5](https://arxiv.org/abs/2302.14233)).
 Alternatively, given a dataset and a pre-trained LM, [iPrompt](https://arxiv.org/abs/2210.01848) searches for a natural-language prompt that works well to predict on the dataset, which serves as a description of the data. This is more general than D3, as it is not restricted to binary groups, but is also more computationally intensive, as finding a good prompt often requires iterative LM calls.
 Either of these approaches can also be applied recursively ([TreePrompt](https://arxiv.org/abs/2310.14034)), resulting in a hierarchical natural-language description of the data.
+Alternatively, many LLM answers to different questions can be concatenated into an embedding ([QA-Emb](https://arxiv.org/abs/2405.16714)), potentially incorporating bayesian iteration ([BC-LLM](https://arxiv.org/abs/2410.15555)), which can then be used to train a fully interpretable model, e.g. a linear model.
 
 <img src="assets/interpretable_models.svg" class="full_image">
-<p align="center" style="margin-top:-20px"><b>Figure 2. </b>Different types of interpretable models, with text-specific approaches in bold.</p>
+<p align="center" style="margin-top:-20px"><b>Figure 2. </b>Different types of interpretable models, with text-specific approaches in bold. See scikit-learn friendly implementations in the <a href="https://github.com/csinva/imodelsX">imodelsX package</a>.</p>
 
 In parallel to these methods, [Aug-imodels](https://arxiv.org/abs/2209.11799) use LMs to improve fully interpretable models directly.
 For example, Aug-Linear uses an LM to augment a linear model, resulting in a more accurate model that is still completely interpretable.
-Aug-Tree uses an LM to augment the keyphrases used in a decision tree split, resulting in a more accurate but still fully interpretable decsion tree.
+Aug-Tree uses an LM to augment the keyphrases used in a decision tree split, resulting in a more accurate but still fully interpretable decision tree.
 
-This line of research is still in its infancy, but there is great potential in combining LMs and interpretable models!
+This line of research is still in its infancy -- there's a lot to be done in combining LMs and interpretable models!
