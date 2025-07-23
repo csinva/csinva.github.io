@@ -947,11 +947,13 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - DEAP: A Database for Emotion Analysis ;Using Physiological Signals ([koelstra...ebrahimi, 2012](https://ieeexplore.ieee.org/abstract/document/5871728)) - 32-channel system
   - SEED: Investigating Critical Frequency Bands and Channels for EEG-Based Emotion Recognition with Deep Neural Networks ([zheng & lu, 2015](https://ieeexplore.ieee.org/abstract/document/7104132)) - 64-channel system
   - HBN-EEG dataset ([shirazi...makeig, 2024](https://www.biorxiv.org/content/10.1101/2024.10.03.615261v2)) - EEG recordings from over 3,000 participants across six distinct cognitive tasks [used in eeg2025 NeurIPS competition]
+  - YOTO (You Only Think Once): A Human EEG Dataset for Multisensory Perception and Mental Imagery ([chang...wei, 2025](https://www.biorxiv.org/content/10.1101/2025.04.17.645384v1))
 - ECoG
   - The “Podcast” ECoG dataset for modeling neural activity during
     natural language comprehension ([zada...hasson, 2025](https://www.biorxiv.org/content/10.1101/2025.02.14.638352v1.full.pdf)) - 9 subjects listening to the same story
     - 30-min story (1330 total electrodes, ~5000 spoken words (non-unique)) has female interviewer/voiceover and a male speaker, occasionally background music
     - contextual word embeddings from GPT-2 XL (middle layer) accounted for most of the variance across nearly all the electrodes tested
+  - single-subject intracortical words: https://www.kaggle.com/competitions/brain-to-text-25 (from [card et al. 2024](https://www.nejm.org/doi/full/10.1056/NEJMoa2314132))
   - Brain Treebank: Large-scale intracranial recordings from naturalistic language stimuli ([wang...barbu, 2024](https://arxiv.org/pdf/2411.08343))
     - Some works on this dataset
       - BrainBERT: Self-supervised representation learning for intracranial recordings ([wang…barbu, 2023](https://arxiv.org/abs/2302.14367))
@@ -1113,10 +1115,15 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
     - for stimulus-based experiments, encoding model is the causal direction
 - language
   - Semantic reconstruction of continuous language from non-invasive brain recordings ([tang, lebel, jain, & huth, 2023](https://www.nature.com/articles/s41593-023-01304-9)) - reconstruct continuous natural language from fMRI, including to imagined speech
+    - Generative language reconstruction from brain recordings ([ye...ruotsalo, 2025](https://www.nature.com/articles/s42003-025-07731-7)) - map embedding into token space and finetune LM to decode text conditioned on the tokens (solves the token timing issue)
   - Brain-to-Text Decoding: A Non-invasive Approach via Typing ([levy...king, 2025](https://scontent.fphl1-1.fna.fbcdn.net/v/t39.2365-6/475464888_600710912891423_9108680259802499048_n.pdf?_nc_cat=102&ccb=1-7&_nc_sid=3c67a6&_nc_ohc=EryvneL7DMcQ7kNvgFI6M7D&_nc_oc=Adi15_Ln_aPZ_nUY7RyiXzmEzdKu0opFDIwv3J7P55siQ-yn-FUdKQ6_H6PZBKiwBiY&_nc_zt=14&_nc_ht=scontent.fphl1-1.fna&_nc_gid=A441zcs56M0HTpo4ZEEWBSk&oh=00_AYAZ7fX4RhYWqMu2aMria3GoOB6uMNIiIciUQzU0vXy3Tw&oe=67AC0C96)) - decode characters typed from MEG/EEG
   - From Thought to Action: How a Hierarchy of Neural Dynamics Supports Language Production ([zhang, levy, ...king, 2025](https://ai.meta.com/research/publications/from-thought-to-action-how-a-hierarchy-of-neural-dynamics-supports-language-production/)) - when decoding during typing, first decode phrase, then word, then syllable, then letter
   - Decoding speech from non-invasive brain recordings ([defossez, caucheteux, ..., remi-king, 2022](https://arxiv.org/abs/2208.12266))
-
+  - fNIRS
+    - MindSpeech: Continuous Imagined Speech Decoding using High-Density fNIRS and Prompt Tuning for Advanced Human-AI Interaction (MindPortal; [zhang…dehghani, 2024](https://arxiv.org/abs/2408.05362))
+      - prompts participants to imagine sentences of different topics by providing topic words & keywords - afterwards, participants type out the sentence
+      - MindGPT: Advancing Human-AI Interaction with Non-Invasive fNIRS-Based Imagined Speech Decoding (MindPortal; [zhang…dehghani, 2024](https://arxiv.org/abs/2408.05361)) - classify semantically different sentences from fNIRS during imagined speech
+  
 - vision
   - Decoding the Semantic Content of Natural Movies from Human Brain Activity ([huth...gallant, 2016](https://www.frontiersin.org/journals/systems-neuroscience/articles/10.3389/fnsys.2016.00081/full)) - direct decoding of concepts from movies using hierarchical logistic regression
     - interpreting weights from a decoding model can be tricky, even if if a concept is reflected in the voxel, it may not be uniquely reflected in the voxel and therefore assigned low weight

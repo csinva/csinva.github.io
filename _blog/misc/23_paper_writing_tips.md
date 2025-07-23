@@ -35,7 +35,7 @@ In general, I highly recommend the book [storytelling with data](https://github.
 
 ### Writing
 
-- Here's are some [nice, brief notes](https://www.cs.ubc.ca/~schmidtm/Courses/Notes/writing.pdf) on academic writing
+- Here are some [nice, brief notes](https://www.cs.ubc.ca/~schmidtm/Courses/Notes/writing.pdf) on academic writing
 - Write in present tense
 - First-person is fine when it simplifies writing
 - Make your abstract really good: most people will only ever read the abstract

@@ -238,3 +238,7 @@ Nice repo keeping track of progress [here](https://github.com/sebastianruder/NLP
   - **phonology** - study of the organization of sounds independent of their physical realization in speech / sign language
   - **morphology** - study of the internal structure of words in a language
   - **pragmatics** - study of the way in which context during communication contributes to meaning
+- What we mean when we say semantic: Toward a multidisciplinary semantic glossary ([reilly...venson, 2024](https://link.springer.com/article/10.3758/s13423-024-02556-7)) - when a linguist refers to semantics, they are talking about word meaning, but a semantic memory is typically referencing concepts
+  - abstract - The quality of a concept (or word) whose meaning is understood primarily on the basis of language, but also draws from interoceptive experiences, including emotion, introspection, and metacognition
+  - Concepts -  coherent, relatively stable (but not static) units of knowledge in long-term memory that provide the elements from which more complex thoughts can be constructed. A concept captures commonalities and distinctions between a set of objects, events, relations, properties, and
+    states. Concepts allow for the transfer and generalization of information without requiring explicit learning of every new instance

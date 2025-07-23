@@ -464,6 +464,7 @@ Symbolic regression learns a symbolic expression for a function (e.g. a mathemat
   - BC-LLM: Bayesian Concept Bottleneck Models with LLM Priors ([feng...tan, 2024](https://arxiv.org/abs/2410.15555)) - use LLM to generate questions from extracted keywords, then iterate on fitting predictive models and searching for new concepts with a Bayesian approach
   - LaBO: Language in a Bottle: Language Model Guided Concept Bottlenecks for Interpretable Image Classification ([yang...yatskar, 2022](https://arxiv.org/pdf/2211.11158.pdf)) - generate prompt-based features using GPT-3 (e.g. "brown head with white stripes") and use CLIP to check for the presence of those features, all before learning simple linear model
     - Knowledge-enhanced Bottlenecks (KnoBo) - A Textbook Remedy for Domain Shifts: Knowledge Priors for Medical Image Analysis ([yang...yatskar, 2024](https://yueyang1996.github.io/papers/knobo.pdf)) - CBMs that incorporate knowledge priors that constrain it to reason with clinically relevant factors found in medical textbooks or PubMed
+  - Concept Sliders: LoRA Adaptors for Precise Control in Diffusion Models ([gandikota…torralba, bau, 2024](https://link.springer.com/chapter/10.1007/978-3-031-73661-2_10))
   - CB-LLM: Crafting Large Language Models for Enhanced Interpretability ([sun...lily weng, 2024](https://lilywenglab.github.io/WengLab_2024_CBLLM.pdf))
     - compute embedding similarity of concepts and input, and train layer to predict each of these similarity scores as concept bottleneck
       - before training bottleneck, use ChatGPT to help correct any concept scores that seem incorrect
@@ -1098,6 +1099,13 @@ How interactions are defined and summarized is a very difficult thing to specify
 - VANISH: Variable Selection Using Adaptive Nonlinear Interaction Structures in High Dimensions ([radchenko & james, 2012](https://www.tandfonline.com/doi/abs/10.1198/jasa.2010.tm10130?casa_token=HhKY3HXj0fYAAAAA:vTRgqAqWy3DZ9r9vXEinQOZbWuctLPA3J9bACTbrnKIkUPV19yqaDV5zr9dD6IiTrYXsj6HT_kDYNN8)) - learns pairwise interactions via basis function expansions
   - uses hierarchiy constraint
 - Coefficient tree regression: fast, accurate and interpretable predictive modeling ([surer, apley, & malthouse, 2021](https://link-springer-com.libproxy.berkeley.edu/article/10.1007/s10994-021-06091-7)) - iteratively group linear terms with similar coefficients into a bigger term
+- The Most Important Features in GAMs Might Be Groups of Features ([bosschieter...caruana, pohl, 2025](https://arxiv.org/pdf/2506.19937)) - define importance of a group of features as the the sum over samples of the absolute value of the sum of the component functions for the group
+  - single-feature importance for feature $x_j$:
+    - $I_{x_j}=\frac{1}{|\mathscr{T}|} \sum_{t \in \mathscr{T}}\left|f_j\left(t_j\right)\right|$
+
+  - group feature importance for group $G=\left\{x_{i_1}, \ldots, x_{i_k}\right\}$: 
+    - $I_G:=\frac{1}{|\mathscr{T}|} \sum_{t \in \mathscr{T}}\left|f_{i_1}\left(t_{i_1}\right)+\cdots+f_{i_k}\left(t_{i_k}\right)\right|$
+
 
 ## finding influential examples
 
