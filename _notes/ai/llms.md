@@ -21,7 +21,7 @@ See related papers in the [📌 llm research](https://csinva.io/notes/research_o
 - vanilla transformer: multihead attention, add + norm, position-wise ffn, add + norm
 - self-attention layer [implementation](https://github.com/mertensu/transformer-tutorial), [mathematics](https://homes.cs.washington.edu/~thickstn/docs/transformers.pdf), and **chandan's self-attention [cheat-sheet](https://slides.com/chandansingh-2/deck-51f404)**
 
-# historically influential transformer-based model
+# historically influential transformer-based models
 
 **nlp** (see also [this link](https://medium.com/nlplanet/a-brief-timeline-of-nlp-from-bag-of-words-to-the-transformer-family-7caad8bbba56))
 
@@ -67,7 +67,6 @@ See related papers in the [📌 llm research](https://csinva.io/notes/research_o
   - MAMBA ([gu & dao, 2023](https://arxiv.org/abs/2312.00752)) - state-space model
 - reasoning models
   - O1, O3, Deepseek-R1, ...
-
 - smaller newer models
   - phi-1, phi-2
   - mistral 7B, mixtral MoE
@@ -81,20 +80,9 @@ See related papers in the [📌 llm research](https://csinva.io/notes/research_o
     - Med-PaLM 2 ([google, 2023](https://arxiv.org/abs/2305.09617)) - state of the art QA
       - LLMs Encode Clinical Knowledge ([singhal, ..., natarajan, 2022, google/deepmind](https://arxiv.org/abs/2212.13138)) - introduce MultiMedQA dataset + derive Med-PaLM, a prompt-tuned version of PaLM
     - PMC-LLaMA ([wu et al. 2023](https://arxiv.org/pdf/2304.14454.pdf))
-
 - paper parsing
   - Nougat: Neural Optical Understanding for Academic Documents ([blecher…scialom, sojnic, 2023](https://arxiv.org/abs/2308.13418))
   - PDFTriage: Question Answering over Long, Structured Documents ([adobe, 2023](https://arxiv.org/abs/2309.08872))
-
-- information extraction / named entity recognition
-  - Some popular models: [bert-base-NER](https://huggingface.co/dslim/bert-base-NER), [medical-NER](https://huggingface.co/blaze999/Medical-NER)
-  - two most frequent categories of IE targets are entity and relation, which structure many IE tasks, such as named entity recognition ([Sang and Meulder, 200](https://arxiv.org/abs/cs/0306050)3), relation extraction ([Carreras and Màrquez, 2004](https://aclanthology.org/W05-0620.pdf)), event extraction ([Walker et al., 2006](https://cir.nii.ac.jp/crid/1880865118012204544)), and others
-  - Universal NER has a good dataset for a wide variety of attribute labels (https://universal-ner.github.io/), could just finetune something here [they finetune a 7B model to answer one question at a time]
-    - Outperforms previous best model InstructUIE ([2023](https://arxiv.org/abs/2304.08085))
-  - Cuckoo: An IE Free Rider Hatched by Massive Nutrition in LLM’s Nest ([peng, wang, yao, & shang, 2025](https://arxiv.org/pdf/2502.11275))
-    - use repeated text as label
-    - filter repeated text to only include non-overlapping noun phrases from spacy
-    - BIO tags mark each token with beginning (B), inside (I), and outside (O) tagging schemes
 
 
 **other**

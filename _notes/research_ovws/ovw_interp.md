@@ -471,6 +471,7 @@ Symbolic regression learns a symbolic expression for a function (e.g. a mathemat
     - Human evaluation: agreement of concept scores and contribution of concept to output
     - Concept Bottleneck Large Language Models ([sun, oikarinen, ustun, & lily weng, 2024](https://arxiv.org/abs/2412.07992)) - this updated version of the paper also has results for language modeling
   - Towards Achieving Concept Completeness for Unsupervised Textual Concept Bottleneck Models ([bhan…lesot, 2025](https://arxiv.org/abs/2502.11100)) - distill embeddings from a trained model
+  - Constructing Concept-based Models to Mitigate Spurious Correlations with Minimal Human Effort ([kim, wang, & qiu, 2024](https://arxiv.org/abs/2407.08947)) - in vision models, use LLM to brainstorm and annotate features, especially correlated spurious ones
 - Refining CBMs
   - Tree-Based Leakage Inspection and Control in Concept Bottleneck Models ([ragkousis & parbhoo, 2024](https://arxiv.org/abs/2410.06352)) - investigate where soft version of a feature outperforms hard version of the feature
   - Stochastic Concept Bottleneck Models ([vandenhirtz...vogt, 2024](https://arxiv.org/pdf/2406.19272)) - model covariance between concepts
