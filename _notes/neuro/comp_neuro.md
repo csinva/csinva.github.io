@@ -1025,13 +1025,18 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 - joint prediction of different input/output relationships
 - joint prediction of neurons from other areas
 
-
 ## cross-subject modeling
 
 - Aligning Brains into a Shared Space Improves their Alignment to Large Language Models ([bhattacharjee, zaida..., hasson, goldstein, nastase, 2024](https://www.biorxiv.org/content/10.1101/2024.06.04.597448v1))
 - while a coarse alignment exists across individual brains ([Nastase et al., 2019](https://academic.oup.com/scan/article/14/6/667/5489905); [2021](https://www.nature.com/articles/s41597-021-01033-3)), the finer cortical topographies for language representation exhibit significant idiosyncrasies among individuals ([Fedorenko et al., 2010](https://journals.physiology.org/doi/full/10.1152/jn.00032.2010); [Nieto-Castañón & Fedorenko, 2012](https://www.sciencedirect.com/science/article/abs/pii/S1053811912006817); [Braga et al., 2020](https://journals.physiology.org/doi/full/10.1152/jn.00753.2019); [Lipkin et al., 2022](https://www.nature.com/articles/s41597-022-01645-3))
 - hyperalignment techniques have been developed in fMRI research to aggregate information across subjects into a unified information space while overcoming the misalignment of functional topographies across subjects ([Haxby et al., 2011](https://www.cell.com/neuron/fulltext/S0896-6273(15)00933-2); shared response model [Chen et al., 2015](https://proceedings.neurips.cc/paper/2015/hash/b3967a0e938dc2a6340e258630febd5a-Abstract.html); [Guntupalli...Haxby, 2016](https://academic.oup.com/cercor/article/26/6/2919/1754308); [Haxby et al., 2020](https://elifesciences.org/articles/56601); [Feilong et al., 2023](https://direct.mit.edu/imag/article/doi/10.1162/imag_a_00032/117980))
 - shared response model [Chen et al., 2015](https://proceedings.neurips.cc/paper/2015/hash/b3967a0e938dc2a6340e258630febd5a-Abstract.html) - learns orthonormal, linear subject-specific transformations that map from each subject’s response  space to a shared space based on a subset of training data, then uses these learned transformations to map a subset of test data into the shared space
+
+## representational aligment
+
+- Representation biases: will we achieve complete understanding by analyzing representations? ([lampinen, chan, li, & hermann, 2025](https://arxiv.org/abs/2507.22216))
+- Getting aligned on representational alignment ([sucholutsky...griffiths, 2024](https://arxiv.org/abs/2310.13018))
+- Does Maximizing Neural Regression Scores Teach Us About The Brain? ([schaeffer...koyejo, 2024](https://openreview.net/forum?id=f6IB0WrOKS&referrer=%5Bthe%20profile%20of%20Mikail%20Khona%5D(%2Fprofile%3Fid%3D~Mikail_Khona2)))
 
 # language (mostly fMRI)
 
