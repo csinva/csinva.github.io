@@ -302,6 +302,8 @@ over time, ML has bounced from *feature-engineering* -> *architecture engineerin
   - Dream 7B ([ye...kong, 2025](https://github.com/HKUNLP/Dream))
     - DiffuLLaMA ([gong...jiawei han, kong, 2025](https://openreview.net/pdf?id=j1tSLYKwg8)) - adapt LM by annealing the causal mask  causal mask during training then slowly predicting a masked token's label rather than the next token (minor point about shifting: still have each head predict the label of the next token rather than the current token, since its more similar to what the original model was trianed for)
     - Diffusion Language Models Can Perform Many Tasks with Scaling and Instruction-Finetuning ([ye...quanquan gu, 2023](https://arxiv.org/abs/2308.12219)) - adapt LLaMA to DLM via masked language modeling, but lose skills during adaptation
+    - Diffusion text embedding models ([zhang...zhao, 2025](https://arxiv.org/pdf/2505.15045)) - finetune DREAM 7B
+    - DreamOn ([wu...kong, 2025](https://hkunlp.github.io/blog/2025/dreamon/)) - finetune Dream 7B for variable length generation
   - Diffusion Beats Autoregressive in Data-Constrained Settings ([prabhudesai...pathak, 2025](https://arxiv.org/abs/2507.15857))
   - Accelerating Diffusion LLMs via Adaptive Parallel Decoding ([israel, van den broeck, grover, 2025](https://arxiv.org/abs/2506.00413)) - dynamically adjusts the number of tokens sampled in parallel using small autoregressive model to help (kind of like opposite of speculative decoding)
     - DiffuSeq-v2: Bridging Discrete and Continuous Text Spaces for Accelerated Seq2Seq Diffusion Models ([gong...kong, 2023](https://arxiv.org/abs/2310.05793)) - parallel text generation
@@ -313,7 +315,6 @@ over time, ML has bounced from *feature-engineering* -> *architecture engineerin
   - UDLM: Simple Guidance Mechanisms for Discrete Diffusion Models ([schif...kuleshov, 2024](https://arxiv.org/abs/2412.10193))
   - Duo: The Diffusion Duality ([sahoo...kuleshov, 2025](https://arxiv.org/abs/2506.10892)) - show that uniform-state discrete diffusion models can be built form underlying Gaussian diffusion, yielding faster generation (fewer steps)
 - applications
-  - Diffusion text embedding models ([zhang...zhao, 2025](https://arxiv.org/pdf/2505.15045)) - finetune DREAM 7B
   - PLANNER: Generating Diversified Paragraph via Latent Language Diffusion Model ([zhang...jaitly, 2023](https://proceedings.neurips.cc/paper_files/paper/2023/hash/fdba5e0a9b57fce03e89cc0cad0a24e9-Abstract-Conference.html))
   - Edit Flows: Flow Matching with Edit Operations ([havasi...chen, 2025](https://arxiv.org/abs/2506.09018)) - trains flow matching with substitution, insertion, and delete operations to natively handle generative variable-length sequences
   - Deep Researcher with Test-Time Diffusion ([han...pfister, lee, 2025](https://arxiv.org/pdf/2507.16075v1)) - not really a diffusion model, just resamples things
@@ -467,8 +468,10 @@ mixture of experts models have become popular because of the need for (1) fast s
 
 - PASTA: Tell Your Model Where to Attend: Post-hoc Attention Steering for LLMs, PASTA ([zhang et al. 2023](https://arxiv.org/abs/2311.02262)) - select attention heads to upweight for specific part of the prompt
   - Model Tells Itself Where to Attend: Faithfulness Meets Automatic Attention Steering ([zhang et al. 2024](https://arxiv.org/abs/2409.10790)) - rather than user-given prompt upweighting, instead model decides what to upweight
-  - Attention Reveals More Than Tokens: Training-Free Long-Context Reasoning with Attention-guided Retrieval ([zhang...shang, 2025](https://arxiv.org/pdf/2503.09819)) - see what context tokens get high attention scores during CoT, then explicitly retrieve those and use in new CoT
+  - Attention Reveals More Than Tokens: Training-Free Long-Context Reasoning with Attention-guided Retrieval ([zhang...jingbo shang, 2025](https://arxiv.org/pdf/2503.09819)) - see what context tokens get high attention scores during CoT, then explicitly retrieve those and use in new CoT
   - Instruction Following by Boosting Attention of Large Language Models ([guardierio...wong, 2025](https://www.arxiv.org/pdf/2506.13734)) - like PASTA with cheaper profiling
+  - Focus on This, Not That! Steering LLMs with Adaptive Feature Specification ([lamb, davies, paren, torr, & pinto, 2025](https://arxiv.org/abs/2410.22944)) - add focus instruction tuning, which finetunes LLM specifically to focus on some things while ignoring others
+  - SIMS: Self-Improving Model Steering ([zhu…wang, 2025](https://arxiv.org/abs/2507.08967)) - generates and refines contrastive samples through iterative self-improvement cycles, enabling adaptive, context-specific steerin
 - HonestLLaMA = Inference-Time Intervention: Eliciting Truthful Answers from a Language Model ([li...wattenberg, 2023](https://arxiv.org/abs/2306.03341)) - observe a full 40% difference between probe accuracy (decoding from activations) and generation accuracy (generating answer throught prompting) on TruthfulQA
   - step 1 = profiling: identify a sparse set of attention heads with high linear probing accuracy for truthfulness (from small profiling set on truthfulqa)
   - step 2 = shift activation along these truth-correlated directions at inference time
@@ -1082,8 +1085,10 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
     - Faithfulness Tests for Natural Language Explanations ([atanasova...augenstein, 2023](https://arxiv.org/abs/2305.18029))
       - propose a counterfactual input editor for inserting reasons that lead to counterfactual predictions but are not reflected by the explanation
       - reconstruct inputs from the reasons stated in the generated explanations and check how often they lead to the same prediction
-    - Potemkin Understanding in LLMs ([mancoridis...mullainathan, 2025](https://arxiv.org/pdf/2506.21521)) - models can often explaini rules, even when they can't follow them
+    - Potemkin Understanding in LLMs ([mancoridis...mullainathan, 2025](https://arxiv.org/pdf/2506.21521)) - models can often explain rules, even when they can't follow them
   - How Interpretable are Reasoning Explanations from Prompting LLMs? ([yeo...cambria, 2024](https://arxiv.org/abs/2402.11863)) - evaluate different methods using paraphrases, counterfactuals, adding mistakes, and simulatability 
+  - Humans Perceive Wrong Narratives from AI Reasoning Texts ([levy, elyoseph, & goldberg, 2025](https://do-you-understand-ai.com/paper/paper.pdf))
+  - CoT May Be Highly Informative Despite “Unfaithfulness” ([METR blog post, 2025](https://metr.org/blog/2025-08-08-cot-may-be-highly-informative-despite-unfaithfulness/)) - CoT is informative about LLM cognition as long as the cognition is complex enough that it can’t be performed in a single forward pass
   - overview paper: Chain-of-Thought Is Not Explainability ([barez...bengio, 2025](https://www.alphaxiv.org/abs/2025.02))
 - large reasoning models (LRMs)
   - Measuring the Faithfulness of Thinking Drafts in LRMs ([xiong...lakkaraju, 2025](https://arxiv.org/abs/2505.13774))
@@ -1173,8 +1178,10 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
     - DSBench ([jing...yu, 2024](https://arxiv.org/abs/2409.07703))
   - Tapilot-Crossing: Benchmarking and Evolving LLMs Towards Interactive Data Analysis Agents ([li...cheng, 2024](https://arxiv.org/pdf/2403.05307)) - contains 1024 examples of interactions between data analysis agents simulating humans (e.g. asking for clarifications)
 - agent stystems
+  - The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery ([lu...clune, ha, 2024](https://arxiv.org/abs/2408.06292))
   - R&D-Agent: Automating Data-Driven AI Solution Building Through LLM-Powered Automated Research, Development, and Evolution ([yang...bian, 2025](https://arxiv.org/abs/2505.14738)) - do well on MLE-Bench
   - The Virtual Lab of AI agents designs new SARS-CoV-2 nanobodies ([swanson...james zou, 2025](https://www.nature.com/articles/s41586-025-09442-9)) - use human to guide a set of agents each with their own expertise
+  - AI-Researcher: Autonomous Scientific Innovation ([tang...huang, 2025](https://arxiv.org/pdf/2505.18705))
   
 - LLMs for Automated Open-domain Scientific Hypotheses Discovery ([yang...cambria, 2023](https://arxiv.org/abs/2309.02726)) - pipeline to generate new hypotheses from social science academic papers
   - Can LLMs Generate Novel Research Ideas? A Large-Scale Human Study with 100+ NLP Researchers ([si, yang, & hashimoto, 2024](https://arxiv.org/abs/2409.04109)) - LLM ideas are judged to be slightly better than human expert ideas
@@ -1182,6 +1189,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - Autonomous LLM-driven research from data to human-verifiable research papers ([ifaragan...kishony, 2024](https://arxiv.org/abs/2404.17605))
   - From Zero to One: Building An Autonomous and Open Data Scientist Agent from Scratch ([bianchi...james zou, 2025](https://www.together.ai/blog/building-an-autonomous-and-open-data-scientist-agent-from-scratch))
   - Agent Laboratory: Using LLM Agents as Research Assistants ([schmidgall...barsoum, 2025](https://arxiv.org/pdf/2501.04227))
+  - Large language models surpass human experts in predicting neuroscience results ([luo...love, 2024](https://www.nature.com/articles/s41562-024-02046-9)) - finetune a model to do well on BrainBench, which is a classification task built by modifying new Neuroscience paper abstracts to change a key result or keep the accurate one
 
 ## visualization / charts
 
