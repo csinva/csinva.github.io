@@ -1051,6 +1051,8 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
     - ![fedorenko_fig1](../assets/fedorenko_fig1.png)
   - language areas engage during both comprehension and production; are input and output modality-independent
   - damage to left-hemisphere frontal/temporal brain areas leads to aphasia (deficits in language comprehension and production)
+  - Language models align with brain regions that represent concepts across modalities ([ryskina, tuckute, ..., fedorenko, 2025](https://arxiv.org/pdf/2508.11536)) - use data that presents the same concepts in word map, sentences, or pictures to find brain areas that respond in a modality-agnostic way
+    - language-only and language-vision models predict the signal better in more meaning-consistent areas of the brain
 - Language is widely distributed throughout the brain ([drijvers, small, & skipper, 2025](https://www.nature.com/articles/s41583-024-00903-0)) - respond that rather than a "language network", the ‘language network’ could more simply be conceived of as a collection of hierarchically organized auditory association cortices communicating with functional connectivity hubs that coordinate a whole-brain distribution of contextually determined and, thus, highly variable ‘peripheral’ regions
 - Semantic encoding during language comprehension at single-cell resolution ([jamali...fedorenko, williams, 2024](https://www.nature.com/articles/s41586-024-07643-2))
 - interpreting brain encoding models

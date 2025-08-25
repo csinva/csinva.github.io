@@ -78,3 +78,469 @@
         border-color: black;
     }
 </style>
+
+<!-- Link preview: small popover that appears when hovering links in the markdown content -->
+<style>
+    /* Popover container */
+    .link-preview {
+        position: absolute;
+        z-index: 99999;
+        width: 420px;
+        max-width: calc(100vw - 40px);
+        max-height: 320px;
+        background: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 6px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        overflow: hidden;
+        font-size: 13px;
+        color: #222;
+        display: none;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    .link-preview .pp-inner {
+        display: flex;
+        gap: 10px;
+        padding: 12px;
+        align-items: flex-start;
+    }
+
+    .link-preview .pp-thumbnail {
+        width: 120px;
+        height: 80px;
+        background: #f7f7f7;
+        border-radius: 4px;
+        overflow: hidden;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .link-preview .pp-thumbnail img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .link-preview .pp-meta {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .link-preview .pp-title {
+        margin: 0;
+        font-weight: 600;
+        font-size: 14px;
+        color: #111;
+    }
+
+    .link-preview .pp-desc {
+        margin-top: 6px;
+        color: #444;
+        font-size: 12px;
+        line-height: 1.3;
+        max-height: 120px;
+        overflow: auto;
+    }
+
+    .link-preview .pp-url {
+        margin-top: 8px;
+        color: #888;
+        font-size: 11px;
+        word-break: break-all;
+    }
+
+    .link-preview .pp-actions {
+        display: flex;
+        gap: 8px;
+        margin-top: 8px;
+        align-items: center;
+    }
+
+    .link-preview a.open-link {
+        font-size: 12px;
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    .link-preview a.open-link:hover {
+        text-decoration: underline;
+    }
+
+    /* iframe mode: when an embedded page is displayed */
+    .link-preview.iframe-preview {
+        padding: 0;
+        height: 320px;
+        width: 640px;
+        max-width: calc(100vw - 40px);
+    }
+
+    .link-preview.iframe-preview iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        display: block;
+    }
+
+    /* small helpers */
+    .link-preview .pp-desc::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    .link-preview .pp-desc::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.08);
+        border-radius: 3px;
+    }
+</style>
+
+<!-- Dark popover overrides -->
+<style>
+    .link-preview {
+        background: linear-gradient(180deg, #0b1220, #0f1724);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        box-shadow: 0 10px 30px rgba(2, 6, 23, 0.8), 0 2px 8px rgba(0, 0, 0, 0.6);
+        color: #e6eef8;
+    }
+
+    .link-preview .pp-inner {
+        background: transparent;
+    }
+
+    .link-preview .pp-thumbnail {
+        background: #0b1220;
+    }
+
+    .link-preview .pp-title {
+        color: #ffffff;
+    }
+
+    .link-preview .pp-authors {
+        color: #9fb0c9;
+    }
+
+    .link-preview .pp-desc {
+        color: #cbd5e1;
+    }
+
+    .link-preview .pp-url {
+        color: #9aa5b3;
+    }
+
+    .link-preview a.open-link {
+        color: #7dd3fc;
+    }
+
+    .link-preview a.open-link:hover {
+        color: #9be5ff;
+        text-decoration: underline;
+    }
+
+    .link-preview .pp-desc::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.06);
+    }
+</style>
+
+<script type="text/javascript">
+    (function ($) {
+        $(function () {
+            // Create preview element
+            var $preview = $(
+                '<div class="link-preview" id="link-preview" aria-hidden="true">' +
+                '<div class="pp-inner">' +
+                '<div class="pp-thumbnail"></div>' +
+                '<div class="pp-meta">' +
+                '<div class="pp-title"></div>' +
+                '<div class="pp-authors"></div>' +
+                '<div class="pp-desc"></div>' +
+                '<div class="pp-url"></div>' +
+                '<div class="pp-actions"></div>' +
+                '</div>' +
+                '</div>' +
+                '</div>'
+            );
+            // Ensure the preview is attached once
+            $('body').append($preview);
+
+            var showTimer = null;
+            var hideTimer = null;
+            var currentUrl = null;
+
+            function isSameOrigin(url) {
+                try {
+                    var u = new URL(url, location.href);
+                    return u.origin === location.origin;
+                } catch (e) {
+                    return false;
+                }
+            }
+
+            function sanitize(str) {
+                return (str || '').toString().trim();
+            }
+
+            function positionPreview($anchor) {
+                var offset = $anchor.offset();
+                var anchorHeight = $anchor.outerHeight();
+                var previewWidth = $preview.outerWidth();
+                var left = offset.left;
+                var top = offset.top + anchorHeight + 8;
+
+                var viewportW = $(window).width();
+                var viewportH = $(window).height();
+                var scrollTop = $(window).scrollTop();
+
+                // Avoid overflowing to the right
+                if (left + previewWidth > viewportW - 20) {
+                    left = Math.max(20, viewportW - previewWidth - 20);
+                }
+                // If bottom overflows, show above the anchor
+                var previewHeight = $preview.outerHeight();
+                if (top - scrollTop + previewHeight > viewportH - 20) {
+                    top = offset.top - previewHeight - 8;
+                }
+
+                $preview.css({ left: left + 'px', top: top + 'px' });
+            }
+
+            function setPreviewContent(data, anchor) {
+                data = data || {};
+                var title = sanitize(data.title) || sanitize(anchor.attr('title')) || sanitize(anchor.text()) || data.url || '';
+                var desc = sanitize(data.desc) || '';
+                var url = data.url || anchor.attr('href') || '';
+
+                // If iframe preview requested
+                if (data.iframe) {
+                    $preview.addClass('iframe-preview');
+                    $preview.html('<iframe src="' + url + '"></iframe>');
+                    $preview.attr('aria-hidden', 'false');
+                    $preview.show();
+                    return;
+                }
+
+                // Non-iframe (meta) view
+                $preview.removeClass('iframe-preview');
+                // The inner markup (reset)
+                $preview.html(
+                    '<div class="pp-inner">' +
+                    '<div class="pp-thumbnail"></div>' +
+                    '<div class="pp-meta">' +
+                    '<div class="pp-title"></div>' +
+                    '<div class="pp-authors"></div>' +
+                    '<div class="pp-desc"></div>' +
+                    '<div class="pp-url"></div>' +
+                    '<div class="pp-actions"></div>' +
+                    '</div>' +
+                    '</div>'
+                );
+
+                if (data.image) {
+                    var imageUrl = data.image;
+                    try { imageUrl = new URL(imageUrl, url).href; } catch (e) { /* ignore */ }
+                    $preview.find('.pp-thumbnail').html('<img src="' + imageUrl + '" alt="" />');
+                } else {
+                    // Leave thumbnail empty or small placeholder
+                    $preview.find('.pp-thumbnail').html('');
+                }
+
+                $preview.find('.pp-title').text(title);
+                if (data.authors) {
+                    $preview.find('.pp-authors').text('Authors: ' + data.authors);
+                } else {
+                    $preview.find('.pp-authors').text('');
+                }
+                $preview.find('.pp-desc').text(desc);
+                $preview.find('.pp-url').text(url);
+                $preview.find('.pp-actions').html('<a class="open-link" href="' + url + '" target="_blank" rel="noopener">Open</a>');
+
+                $preview.attr('aria-hidden', 'false');
+                $preview.show();
+            }
+
+            function fetchPreview(url, anchor) {
+                currentUrl = url;
+                // Initial placeholder while loading
+                setPreviewContent({ title: 'Loading preview...', desc: '', url: url }, anchor);
+                positionPreview(anchor);
+
+                // skip mailto / javascript / anchor-only
+                if (!url || url.indexOf('mailto:') === 0 || url.indexOf('javascript:') === 0 || url === '#') {
+                    setPreviewContent({ title: anchor.text() || url, desc: '(preview not available)', url: url }, anchor);
+                    return;
+                }
+
+                // If same origin, try to fetch page and parse metadata
+                if (isSameOrigin(url)) {
+                    $.get(url).done(function (html) {
+                        // Use DOMParser for safe parsing
+                        try {
+                            var parser = new DOMParser();
+                            var doc = parser.parseFromString(html, 'text/html');
+                            var title = (doc.querySelector("meta[property='og:title']") && doc.querySelector("meta[property='og:title']").getAttribute('content')) || doc.title || '';
+                            var desc = (doc.querySelector("meta[property='og:description']") && doc.querySelector("meta[property='og:description']").getAttribute('content')) || (doc.querySelector("meta[name='description']") && doc.querySelector("meta[name='description']").getAttribute('content')) || (doc.querySelector('p') ? doc.querySelector('p').innerText : '');
+                            var image = (doc.querySelector("meta[property='og:image']") && doc.querySelector("meta[property='og:image']").getAttribute('content')) || (doc.querySelector('img') && doc.querySelector('img').getAttribute('src')) || null;
+
+                            // Extract authors for arXiv pages (if any)
+                            var authors = null;
+                            try {
+                                if ((new URL(url, location.href)).hostname.indexOf('arxiv.org') !== -1) {
+                                    var metaAuthors = doc.querySelectorAll("meta[name='citation_author']");
+                                    if (metaAuthors && metaAuthors.length) {
+                                        var tmp = [];
+                                        for (var i = 0; i < metaAuthors.length; i++) {
+                                            var a = metaAuthors[i].getAttribute('content');
+                                            if (a) tmp.push(a);
+                                        }
+                                        if (tmp.length) authors = tmp.join(', ');
+                                    } else {
+                                        var authEl = doc.querySelector('.authors') || doc.querySelector('div.authors');
+                                        if (authEl) {
+                                            var ta = authEl.textContent.replace(/^Authors?:/i, '').trim();
+                                            if (ta) authors = ta;
+                                        }
+                                    }
+                                }
+                            } catch (e) { /* ignore */ }
+
+                            // If results correspond to the most recent request, show them
+                            if (currentUrl === url) {
+                                setPreviewContent({ title: title, desc: desc, image: image, url: url, authors: authors }, anchor);
+                                positionPreview(anchor);
+                            }
+                        } catch (e) {
+                            if (currentUrl === url) {
+                                setPreviewContent({ title: anchor.text() || url, desc: '(preview unavailable)', url: url }, anchor);
+                            }
+                        }
+                    }).fail(function () {
+                        if (currentUrl === url) {
+                            setPreviewContent({ title: anchor.text() || url, desc: '(preview unavailable)', url: url }, anchor);
+                        }
+                    });
+                } else {
+                    // external link: show favicon + label immediately, then try to enrich via a CORS proxy
+                    var display = anchor.attr('title') || anchor.text() || url;
+                    var domain = url;
+                    try { domain = new URL(url).hostname; } catch (e) { }
+
+                    // favicon (Google S2) as a cheap thumbnail fallback
+                    var favicon = 'https://www.google.com/s2/favicons?domain=' + encodeURIComponent(domain) + '&sz=128';
+
+                    setPreviewContent({ title: display, desc: 'External site — ' + domain, image: favicon, url: url }, anchor);
+                    positionPreview(anchor);
+
+                    // Try to fetch metadata via AllOrigins CORS proxy (returns raw HTML)
+                    var proxy = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(url);
+
+                    $.ajax({ url: proxy, method: 'GET', timeout: 8000, dataType: 'text' }).done(function (html) {
+                        try {
+                            var parser = new DOMParser();
+                            var doc = parser.parseFromString(html, 'text/html');
+                            var title = (doc.querySelector("meta[property='og:title']") && doc.querySelector("meta[property='og:title']").getAttribute('content')) || doc.title || '';
+                            var desc = (doc.querySelector("meta[property='og:description']") && doc.querySelector("meta[property='og:description']").getAttribute('content')) || (doc.querySelector("meta[name='description']") && doc.querySelector("meta[name='description']").getAttribute('content')) || (doc.querySelector('p') ? doc.querySelector('p').innerText : '');
+                            var image = (doc.querySelector("meta[property='og:image']") && doc.querySelector("meta[property='og:image']").getAttribute('content')) || (doc.querySelector("meta[name='twitter:image']") && doc.querySelector("meta[name='twitter:image']").getAttribute('content')) || (doc.querySelector('img') && doc.querySelector('img').getAttribute('src')) || null;
+
+                            // Extract authors for arXiv pages (if any)
+                            var authors = null;
+                            try {
+                                if ((new URL(url)).hostname.indexOf('arxiv.org') !== -1) {
+                                    var metaAuthors = doc.querySelectorAll("meta[name='citation_author']");
+                                    if (metaAuthors && metaAuthors.length) {
+                                        var tmp = [];
+                                        for (var i = 0; i < metaAuthors.length; i++) {
+                                            var a = metaAuthors[i].getAttribute('content');
+                                            if (a) tmp.push(a);
+                                        }
+                                        if (tmp.length) authors = tmp.join(', ');
+                                    } else {
+                                        var authEl = doc.querySelector('.authors') || doc.querySelector('div.authors');
+                                        if (authEl) {
+                                            var ta = authEl.textContent.replace(/^Authors?:/i, '').trim();
+                                            if (ta) authors = ta;
+                                        }
+                                    }
+                                }
+                            } catch (e) { /* ignore */ }
+
+                            if (image) {
+                                try { image = new URL(image, url).href; } catch (e) { /* ignore */ }
+                            }
+
+                            if (currentUrl === url) {
+                                // show enriched content only if data found; otherwise keep favicon-based preview
+                                if (title || desc || image || authors) {
+                                    setPreviewContent({ title: title || display, desc: desc || '', image: image || favicon, url: url, authors: authors }, anchor);
+                                    positionPreview(anchor);
+                                }
+                            }
+                        } catch (e) {
+                            // parsing error: do nothing, keep fallback
+                        }
+                    }).fail(function () {
+                        // If the proxy fails, try a lightweight plaintext scrape via r.jina.ai (best-effort)
+                        try {
+                            var jinaUrl = 'https://r.jina.ai/http://' + url.replace(/^https?:\/\//i, '');
+
+                            $.ajax({ url: jinaUrl, method: 'GET', timeout: 7000, dataType: 'text' }).done(function (text) {
+                                if (currentUrl === url) {
+                                    var summary = '';
+                                    if (text) {
+                                        summary = text.split('\n').filter(Boolean).slice(0, 4).join(' ');
+                                    }
+                                    setPreviewContent({ title: display, desc: summary || ('External site — ' + domain), image: favicon, url: url }, anchor);
+                                    positionPreview(anchor);
+                                }
+                            }).fail(function () {
+                                // give up silently; keep favicon + domain preview
+                            });
+                        } catch (e) {
+                            // silent
+                        }
+                    });
+                }
+            }
+
+            // Hover handlers (delegated): only for links inside the article markdown container
+            $('.markdown').on('mouseenter', 'a', function () {
+                var $a = $(this);
+                var href = $a.attr('href');
+                if (!$a || $a.attr('data-no-preview') !== undefined) return; // opt-out attribute
+
+                clearTimeout(hideTimer);
+                clearTimeout(showTimer);
+
+                showTimer = setTimeout(function () {
+                    fetchPreview(href, $a);
+                }, 300);
+            }).on('mouseleave', 'a', function () {
+                clearTimeout(showTimer);
+                // only hide after a short delay to allow moving into the popover
+                hideTimer = setTimeout(function () {
+                    $preview.fadeOut(120);
+                    $preview.attr('aria-hidden', 'true');
+                }, 350);
+            });
+
+            // Keep preview visible while hovered
+            $(document).on('mouseenter', '.link-preview', function () {
+                clearTimeout(hideTimer);
+            }).on('mouseleave', '.link-preview', function () {
+                hideTimer = setTimeout(function () {
+                    $preview.fadeOut(120);
+                    $preview.attr('aria-hidden', 'true');
+                }, 160);
+            });
+
+            // Reposition preview on scroll/resize
+            $(window).on('scroll resize', function () {
+                if ($preview.is(':visible') && $('.markdown a:hover').length) {
+                    positionPreview($('.markdown a:hover').first());
+                }
+            });
+
+        });
+    })(jQuery);
+</script>
