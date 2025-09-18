@@ -455,7 +455,7 @@ Symbolic regression learns a symbolic expression for a function (e.g. a mathemat
 
 - CBM: Concept Bottleneck Models ([koh et al. 2020](https://arxiv.org/pdf/2007.04612.pdf)) - predict intermediate concepts before making final prediction
 - Post-hoc CBM ([yuksekgonul...zou, 2022](https://arxiv.org/abs/2205.15480)) - automatically project embeddings to concepts and train linear model on those
-  - Visual Classification via Description from Large Language Models ([menon & vondrick, 2022](https://arxiv.org/abs/2210.07183)) - LLM lists relevant classes, and predict using VLM embedding similarities to those claseses
+  - Visual Classification via Description from LLMs ([menon & vondrick, 2022](https://arxiv.org/abs/2210.07183)) - LLM lists relevant classes, and predict using VLM embedding similarities to those claseses
   - Label-Free CBM ([oikarinen...lily weng, 2023](https://arxiv.org/abs/2304.06129)) - extend to learn to match text concepts extracted with embeddings of any vision model
   - uses CLIP-Dissect method ([oikarinen & lily weng, 2023](https://arxiv.org/abs/2204.10965))
   
@@ -465,11 +465,11 @@ Symbolic regression learns a symbolic expression for a function (e.g. a mathemat
   - LaBO: Language in a Bottle: Language Model Guided Concept Bottlenecks for Interpretable Image Classification ([yang...yatskar, 2022](https://arxiv.org/pdf/2211.11158.pdf)) - generate prompt-based features using GPT-3 (e.g. "brown head with white stripes") and use CLIP to check for the presence of those features, all before learning simple linear model
     - Knowledge-enhanced Bottlenecks (KnoBo) - A Textbook Remedy for Domain Shifts: Knowledge Priors for Medical Image Analysis ([yang...yatskar, 2024](https://yueyang1996.github.io/papers/knobo.pdf)) - CBMs that incorporate knowledge priors that constrain it to reason with clinically relevant factors found in medical textbooks or PubMed
   - Concept Sliders: LoRA Adaptors for Precise Control in Diffusion Models ([gandikota…torralba, bau, 2024](https://link.springer.com/chapter/10.1007/978-3-031-73661-2_10))
-  - CB-LLM: Crafting Large Language Models for Enhanced Interpretability ([sun...lily weng, 2024](https://lilywenglab.github.io/WengLab_2024_CBLLM.pdf))
+  - CB-LLM: Crafting LLMs for Enhanced Interpretability ([sun...lily weng, 2024](https://lilywenglab.github.io/WengLab_2024_CBLLM.pdf))
     - compute embedding similarity of concepts and input, and train layer to predict each of these similarity scores as concept bottleneck
       - before training bottleneck, use ChatGPT to help correct any concept scores that seem incorrect
     - Human evaluation: agreement of concept scores and contribution of concept to output
-    - Concept Bottleneck Large Language Models ([sun, oikarinen, ustun, & lily weng, 2024](https://arxiv.org/abs/2412.07992)) - this updated version of the paper also has results for language modeling
+    - Concept Bottleneck LLMs ([sun, oikarinen, ustun, & lily weng, 2024](https://arxiv.org/abs/2412.07992)) - this updated version of the paper also has results for language modeling
   - Towards Achieving Concept Completeness for Unsupervised Textual Concept Bottleneck Models ([bhan…lesot, 2025](https://arxiv.org/abs/2502.11100)) - distill embeddings from a trained model
   - Constructing Concept-based Models to Mitigate Spurious Correlations with Minimal Human Effort ([kim, wang, & qiu, 2024](https://arxiv.org/abs/2407.08947)) - in vision models, use LLM to brainstorm and annotate features, especially correlated spurious ones
 - Refining CBMs
@@ -1377,7 +1377,7 @@ These papers don't quite connect to prediction, but are generally about finding 
     - no reason to believe brain is anywhere near a hard limit (e.g. limitations on speed, memory)
     - AI systems that don’t seek to gain or maintain power may cause a lot of harm, but this harm is more easily limited by the power they already have (so wouldn't count as existential risk)
 -  Why I Think More NLP Researchers Should Engage with AI Safety Concerns ([sam bowman, 2022](https://wp.nyu.edu/arg/why-ai-safety/))
--  Large Language Model Alignment: A Survey ([shen...xiong, 2023](https://arxiv.org/pdf/2309.15025.pdf))
+-  LLM Alignment: A Survey ([shen...xiong, 2023](https://arxiv.org/pdf/2309.15025.pdf))
    -  **Outer Alignment**  - choose the right loss functions or reward fuctions and ensure that the training objectives of AI systems match human values.
       -  Outer alignment attempts to align the specified training objective to the goal of its designer
    -  **Inner Alignment** - This is to ensure that AI systems are actually trained to achieve the goals set by their designers.

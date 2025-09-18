@@ -932,10 +932,12 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - Narratives Dataset ([Nastase et al. 2019](http://fcon_1000.projects.nitrc.org/indi/retro/Narratives.html)) - more subjects, less data per subject
     - 345 subjects, 891 functional scans, and 27 diverse stories of varying duration totaling ~4.6 hours of unique stimuli (~43,000 words) and total collection time is ~6.4 days
   - Preprocessed short datasets used in [AlKhamissi et al. 2025](https://arxiv.org/pdf/2503.01830) and available through [brain-score-language](https://github.com/brain-score/language/tree/main?tab=readme-ov-file)
+    - ([Pereira 2018](https://www.nature.com/articles/s41467-018-03068-4)): Toward a universal decoder of linguistic meaning from brain activation - decode target sentence from a pair of presented sentences
   - [Schoffelen et al. 2019](https://www.nature.com/articles/s41597-019-0020-y): 100 subjects recorded with fMRI and MEG, listening to de-contextualised sentences and word lists, no repeated session
   - Le Petit Prince multilingual naturalistic fMRI corpus ([li...hale, 2022](https://www.nature.com/articles/s41597-022-01625-7)) - 49 English speakers, 35 Chinese speakers and 28 French speakers listened to the same audiobook *The Little Prince* in their native language while fMRI was recorded
   - [Huth et al. 2016](https://www.nature.com/articles/nature17637) released data from [one subject](https://github.com/HuthLab/speechmodeltutorial)
   - Visual and linguistic semantic representations are aligned at the border of human visual cortex ([popham, huth et al. 2021](https://www.nature.com/articles/s41593-021-00921-6#data-availability)) - compared semantic maps obtained from two functional magnetic resonance imaging experiments in the same participants: one that used silent movies as stimuli and another that used narrative stories ([data link](https://berkeley.app.box.com/s/l95gie5xtv56zocsgugmb7fs12nujpog))
+  - A multimodal fMRI dataset unifying naturalistic processes with a rich array of experimental tasks ([jung...wager, 2025](https://www.biorxiv.org/content/10.1101/2024.06.21.599974v1)) - N = 101 x 6 hours each = 606 functional iso-hours combining movies, pain, faces, theory-of-mind and other cognitive tasks!
 - MEG datasets
   - MEG-MASC ([gwilliams...king, 2023](https://www.nature.com/articles/s41597-023-02752-5)) - 27 English-speaking subjects MEG, each ~2 hours of story listening, punctuated by random word lists and comprehension questions in the MEG scanner. Usually each subject listened to four distinct fictional stories twice
   - WU-Minn human connectome project ([van Essen et al. 2013](https://www.nature.com/articles/s41597-022-01382-7)) - 72 subjects recorded with fMRI and MEG as part of the Human Connectome Project, listening to 10 minutes of short stories, no repeated session
@@ -1071,12 +1073,13 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
     - A generative framework to bridge data-driven models and scientific theories in language neuroscience ([antonello et al. 2024](https://arxiv.org/abs/2410.00812))
     - Explanations of Deep Language Models Explain Language
       Representations in the Brain ([rahimi...daliri, 2025](https://arxiv.org/pdf/2502.14671)) - build features using attribution methods and find some small perf. improvements in early language areas
-  - Deep language algorithms predict semantic comprehension from brain activity )([caucheteux, gramfort, & king, facebook, 2022](https://www.nature.com/articles/s41598-022-20460-9)) - predicts fMRI with gpt-2 on the narratives dataset
+  - Deep language algorithms predict semantic comprehension from brain activity)([caucheteux, gramfort, & king, facebook, 2022](https://www.nature.com/articles/s41598-022-20460-9)) - predicts fMRI with gpt-2 on the narratives dataset
     - GPT‐2 representations predict fMRI response + extent to which subjects understand corresponding narratives
     - compared different encoding features: phoneme, word, gpt-2 layers, gpt-2 attention sizes
     - brain mapping finding: auditory cortices integrate information over short time windows, and the fronto-parietal areas combine supra-lexical information over long time windows
     - gpt2 models predict brain responses well ([caucheteux & king, 2021](https://www.biorxiv.org/content/10.1101/2020.07.03.186288v2.abstract))
     - Disentangling syntax and semantics in the brain with deep networks ([caucheteux, gramfort, & king, 2021](https://proceedings.mlr.press/v139/caucheteux21a.html)) - identify which brain networks are involved in syntax, semantics, compositionality
+    - Disentangling the Factors of Convergence between Brains and CV Models ([raugel...king, 2025](https://arxiv.org/abs/2508.18226)) - map DINOv3 onto fMRI/MEG responses to images
   - Incorporating Context into Language Encoding Models for fMRI ([jain & huth, 2018](https://proceedings.neurips.cc/paper/2018/hash/f471223d1a1614b58a7dc45c9d01df19-Abstract.html)) - LSTMs improve encoding model
     - The neural architecture of language: Integrative modeling converges on predictive processing ([schrimpf, .., tenenbaum, fedorenko, 2021](https://www.pnas.org/doi/abs/10.1073/pnas.2105646118)) - transformers better predict brain responses to natural language (and larger transformers predict better)
     - Predictive Coding or Just Feature Discovery? An Alternative Account of Why Language Models Fit Brain Data ([antonello & huth, 2022](https://direct.mit.edu/nol/article/doi/10.1162/nol_a_00087/113632/Predictive-Coding-or-Just-Feature-Discovery-An) )
@@ -1086,7 +1089,8 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
     - Lexical-Semantic Content, Not Syntactic Structure, Is the Main Contributor to ANN-Brain Similarity of fMRI Responses in the Language Network  ([kauf...andreas, fedorenko, 2024](https://direct.mit.edu/nol/article/5/1/7/116784/Lexical-Semantic-Content-Not-Syntactic-Structure)) - lexical semantic sentence content, not syntax, drive alignment.
     - Artificial Neural Network Language Models Predict Human Brain Responses to Language Even After a Developmentally Realistic Amount of Training  ([hosseini...fedorenko, 2024](https://direct.mit.edu/nol/article/5/1/43/119156/Artificial-Neural-Network-Language-Models-Predict)) - models trained on a developmentally plausible amount of data (100M tokens) already align closely with human benchmarks
     - Improving semantic understanding in speech language models via brain-tuning ([moussa...toneva, 2024](https://arxiv.org/abs/2410.09230))
-  
+    - Individual differences shape conceptual representation in the brain ([Visconti di Oleggio Castello, la Tour, & Gallant, 2025](https://www.biorxiv.org/content/10.1101/2025.08.22.671848v1))
+    
   - eeg models
   
     - directly model time series
@@ -1123,6 +1127,8 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 - language
   - Semantic reconstruction of continuous language from non-invasive brain recordings ([tang, lebel, jain, & huth, 2023](https://www.nature.com/articles/s41593-023-01304-9)) - reconstruct continuous natural language from fMRI, including to imagined speech
     - Generative language reconstruction from brain recordings ([ye...ruotsalo, 2025](https://www.nature.com/articles/s42003-025-07731-7)) - map embedding into token space and finetune LM to decode text conditioned on the tokens (solves the token timing issue)
+      - baselines: standard LLM (StdLLM) that doesn't use brain recordings or  PerBrainLLM that uses permuted brain recordings
+      - eval metrics: 
   - Brain-to-Text Decoding: A Non-invasive Approach via Typing ([levy...king, 2025](https://scontent.fphl1-1.fna.fbcdn.net/v/t39.2365-6/475464888_600710912891423_9108680259802499048_n.pdf?_nc_cat=102&ccb=1-7&_nc_sid=3c67a6&_nc_ohc=EryvneL7DMcQ7kNvgFI6M7D&_nc_oc=Adi15_Ln_aPZ_nUY7RyiXzmEzdKu0opFDIwv3J7P55siQ-yn-FUdKQ6_H6PZBKiwBiY&_nc_zt=14&_nc_ht=scontent.fphl1-1.fna&_nc_gid=A441zcs56M0HTpo4ZEEWBSk&oh=00_AYAZ7fX4RhYWqMu2aMria3GoOB6uMNIiIciUQzU0vXy3Tw&oe=67AC0C96)) - decode characters typed from MEG/EEG
   - From Thought to Action: How a Hierarchy of Neural Dynamics Supports Language Production ([zhang, levy, ...king, 2025](https://ai.meta.com/research/publications/from-thought-to-action-how-a-hierarchy-of-neural-dynamics-supports-language-production/)) - when decoding during typing, first decode phrase, then word, then syllable, then letter
   - Decoding speech from non-invasive brain recordings ([defossez, caucheteux, ..., remi-king, 2022](https://arxiv.org/abs/2208.12266))
@@ -1130,6 +1136,7 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
     - MindSpeech: Continuous Imagined Speech Decoding using High-Density fNIRS and Prompt Tuning for Advanced Human-AI Interaction (MindPortal; [zhang…dehghani, 2024](https://arxiv.org/abs/2408.05362))
       - prompts participants to imagine sentences of different topics by providing topic words & keywords - afterwards, participants type out the sentence
       - MindGPT: Advancing Human-AI Interaction with Non-Invasive fNIRS-Based Imagined Speech Decoding (MindPortal; [zhang…dehghani, 2024](https://arxiv.org/abs/2408.05361)) - classify semantically different sentences from fNIRS during imagined speech
+  - Brain–computer interface control with artificial intelligence copilots ([lee...kao, 2025](https://www.nature.com/articles/s42256-025-01090-y)) - non-invasive EEG for cursor control / robotic arm task
   
 - vision
   - Decoding the Semantic Content of Natural Movies from Human Brain Activity ([huth...gallant, 2016](https://www.frontiersin.org/journals/systems-neuroscience/articles/10.3389/fnsys.2016.00081/full)) - direct decoding of concepts from movies using hierarchical logistic regression
@@ -1144,6 +1151,7 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - When compared to vision, brain activity patterns measured during mental imagery have much lower signal-to-noise ratios (SNR) ([roy...kay, naselaris, 2023](https://jov.arvojournals.org/article.aspx?articleid=2792335)), vary along fewer signal dimensions ([roy...kay, naselaris, 2024](https://2024.ccneuro.org/pdf/415_Paper_authored_tiasha_ccn2024_withauthors.pdf)), and encode imagined stimuli with expanded receptive fields and lower spatial frequency preferences, especially in early visual cortex ([breedlove...naselaris, 2020](https://www.cell.com/current-biology/fulltext/S0960-9822(20)30494-2?dgcid=raven_jbs_etoc_email))
 - bmi
   - Accelerated learning of a noninvasive human brain-computer interface via manifold geometry ([busch...turk-brown, 2025](https://www.biorxiv.org/content/10.1101/2025.03.29.646109v1)) - train subjects to control avatar navigation through fMRI, then perturb environment and evaluate decoder
+  - Neural-Driven Image Editing ([zhou...you, 2025](https://arxiv.org/abs/2507.05397)) - use EEG/fNIRS and image pairs to train a model for image editing
 
 
 
