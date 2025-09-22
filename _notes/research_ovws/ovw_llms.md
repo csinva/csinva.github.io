@@ -736,8 +736,8 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - Efficient Streaming LMs with Attention Sinks ([xiao...lewis, 2023](https://arxiv.org/pdf/2309.17453.pdf)) - keep the first four tokens even when using a sliding window on a long context
     - observation: the first few tokens make up for a shockingly large amount of the attention score, even if the tokens are not semantically important
     - potential explanation: if the next token to be generated has no match with any of the prior tokens, then the Softmax operation still forces the attention to sum to 1
-    - [(sun...kolter, liu 2024)](https://arxiv.org/abs/2402.17762) demonstrated that “attention sinks” emerge due to previous massive neuron activation
-    - [(yona...gandelsman, 2025)](https://arxiv.org/abs/2503.08908) linked the emergence of “attention sinks” to the inability of LMs to repeatedly generate a single token, and suggested a test-time fix by zeroing out the relevant activated neuron
+    - [sun...kolter, liu 2024](https://arxiv.org/abs/2402.17762) demonstrated that “attention sinks” emerge due to previous massive neuron activation
+    - [yona...gandelsman, 2025](https://arxiv.org/abs/2503.08908) linked the emergence of “attention sinks” to the inability of LMs to repeatedly generate a single token, and suggested a test-time fix by zeroing out the relevant activated neuron
 
 
 ## sparse autoencoders (saes)

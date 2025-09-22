@@ -12,9 +12,11 @@ See related papers in the [📌 llm research](https://csinva.io/notes/research_o
 
 # basics
 
-![transformer_sizes](../assets/transformer_sizes.png)
+Here is my best diagram of essential components of transformer sizes (I find it very useful to remember the shapes of all the matrices):
+<img src="../assets/transformer_sizes.png" alt="transformer_sizes" style="width:100%;"/>
 
-![kv_caching_diagram](../assets/kv_caching_diagram.png)
+Here is a follow-up diagram showing how key-value caching works during inference to speed things up:
+<img src="../assets/kv_caching_diagram.png" alt="kv_caching_diagram" style="width:100%;"/>
 
 - **attention** = vector of importance weights
   - to predict or infer one element, such as a pixel in an image or a word in a sentence, we estimate using the attention vector how strongly it is correlated with (or “*attends to*” other elements and take the sum of their values weighted by the attention vector as the approximation of the target
@@ -84,7 +86,6 @@ See related papers in the [📌 llm research](https://csinva.io/notes/research_o
   - Nougat: Neural Optical Understanding for Academic Documents ([blecher…scialom, sojnic, 2023](https://arxiv.org/abs/2308.13418))
   - PDFTriage: Question Answering over Long, Structured Documents ([adobe, 2023](https://arxiv.org/abs/2309.08872))
 
-
 **other**
 
 - text-vision models
@@ -112,8 +113,8 @@ See related papers in the [📌 llm research](https://csinva.io/notes/research_o
   - SAM 2 ([FAIR, 2024](https://arxiv.org/abs/2408.00714)) - strong segmentation model (handles 2D images or 2D images + time)
     - SAM 1 ([FAIR, 2023](https://arxiv.org/abs/2304.02643)) - segmentation for 2D images
   - Masked Autoencoders Are Scalable Vision Learners ([he...dollar, girshick, 2021](https://arxiv.org/abs/2111.06377)) - BERT-style training
-    -  speed up by not applying encoder to mask tokens + adding mask to a lot of the data (like 75%)
-    -  really good results without much data
+    - speed up by not applying encoder to mask tokens + adding mask to a lot of the data (like 75%)
+    - really good results without much data
   - spatial transformers networks ([deepmind, 2015](https://papers.nips.cc/paper/5854-spatial-transformer-networks.pdf ))
   
 - reinforcement learning (RL)
@@ -144,12 +145,13 @@ See related papers in the [📌 llm research](https://csinva.io/notes/research_o
   - Generating Question Titles for Stack Overflow from Mined Code Snippets ([Gao et al. 2020](https://dl.acm.org/doi/abs/10.1145/3401026?casa_token=FEWYSo9ZmNIAAAAA:-_ZIkXQVUR3xYaB3NtrzBv0jZU6IZ6O4f_W_ZDtb6TipLBV4YHB-0lbO1JU8T9wwIl_jLBS3ts0))
   - Automatic Program Repair with OpenAI's Codex: Evaluating QuixBugs ([Prenner & Robbes, 2021](https://arxiv.org/abs/2111.03922))
     - use prompt like:
+
       ```python
       ### fix the bug in the following function
       <buggy function and/or docstring here>
       ### fixed function
       ```
-    
+
   - program synthesis [arxiv.org/abs/2108.07732](https://arxiv.org/abs/2108.07732) - formalize natural language into runnable code
 
 - science
@@ -225,9 +227,9 @@ See related papers in the [📌 llm research](https://csinva.io/notes/research_o
 
 # visual explanation of self-attention
 
--  based on article by jay allamar
+- based on article by jay allamar
 
-- **self-attention ** - layer that lets word learn its relation to other layers
+- **self-attention** - layer that lets word learn its relation to other layers
   - for each word, want score telling how much importance to place on each other word (queries $\cdot$ keys)
   - we get an encoding for each word
     - the encoding of each word returns a weighted sum of the values of the words (the current word gets the highest weight)
