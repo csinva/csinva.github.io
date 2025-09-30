@@ -1,13 +1,25 @@
 .sidenav {
-    height: 100%;
-    width: 20%;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #000;
-    overflow-x: hidden;
-    padding-top: 80px;
+	height: 100%;
+	width: 230px; /* collapsed width */
+	position: fixed;
+	z-index: 100; /* above main content for any internal overlays */
+	top: 0;
+	left: 0;
+	/* Dark gray background (removed blue-toned gradient) */
+	background: #1f1f22; /* base */
+	background-image: linear-gradient(180deg,#232325 0%,#1f1f22 70%,#1a1a1c 100%); /* subtle depth */
+	border-right: 1px solid rgba(255,255,255,0.08);
+	overflow-x: hidden;
+	overflow-y: auto;
+	padding-top: 80px;
+	scrollbar-width: thin;
+	scrollbar-color: #3a3a42 transparent;
+	transition: width .25s ease, box-shadow .25s ease;
+}
+
+.sidenav:hover {
+	width: 420px; /* expand to reveal full single-line headings without wrapping */
+	box-shadow: 4px 0 18px -6px rgba(0,0,0,.6);
 }
 
 .sidenav a {
@@ -26,8 +38,8 @@
 }
 
 .main {
-    margin-left: 25%; /* Same as the width of the sidenav */
-    padding-top: 80px;
+	margin-left: 250px; /* matches fixed sidenav width */
+	padding-top: 80px;
 }
 
 @media screen and (max-height: 450px) {
@@ -146,4 +158,92 @@ img {
 		100% {
 				background-position: top right;
 		}
+}
+
+/* ------------------------------ */
+/* Professional TOC styling       */
+/* ------------------------------ */
+
+/* Reset default list look inside generated TOC */
+.sidenav #toc { 
+	padding: 0 0 32px 0; 
+	font-size: 13px; 
+	line-height: 1.3; 
+}
+.sidenav #toc ul { 
+	list-style: none; 
+	margin: 0; 
+	padding: 0; 
+}
+.sidenav #toc ul ul { 
+	padding-left: 12px; 
+	border-left: 1px solid rgba(255,255,255,0.08); 
+	margin: 2px 0; 
+}
+.sidenav #toc li { 
+	margin: 2px 0; 
+}
+
+/* TOC links: truncated by default (collapsed width) */
+.sidenav #toc a { 
+	position: relative; 
+	display: block; 
+	padding: 4px 12px 4px 18px; 
+	color: #94a3b8; 
+	text-decoration: none; 
+	border-radius: 4px; 
+	white-space: nowrap; 
+	overflow: hidden; 
+	text-overflow: ellipsis; 
+	max-width: 100%; 
+	transition: background .15s ease, color .15s ease; 
+}
+.sidenav #toc a:hover { 
+	background: rgba(255,255,255,0.06); 
+	color: #fff; 
+}
+.sidenav #toc a:focus, 
+.sidenav #toc a.active { 
+	background: linear-gradient(90deg,#1e293b,#0f172a); 
+	color: #fff; 
+	outline: none; 
+}
+
+/* Hover: keep single-line (no wrap) but allow full text to show by widening container */
+.sidenav:hover #toc a { 
+	overflow: visible; 
+	text-overflow: clip; 
+}
+
+/* Subtle level indicator bullets using before pseudo-element (optional) */
+.sidenav #toc ul ul > li > a { 
+	padding-left: 22px; 
+}
+.sidenav #toc ul ul > li > a:before { 
+	content: ''; 
+	position: absolute; 
+	left: 10px; 
+	top: 50%; 
+	width: 6px; 
+	height: 6px; 
+	margin-top: -3px; 
+	background: #334155; 
+	border-radius: 50%; 
+}
+.sidenav #toc a:hover:before, 
+.sidenav #toc a.active:before { 
+	background: #5bc0de; 
+}
+
+/* Scrollbar styling */
+.sidenav::-webkit-scrollbar { width: 8px; }
+.sidenav::-webkit-scrollbar-track { background: transparent; }
+.sidenav::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+.sidenav::-webkit-scrollbar-thumb:hover { background: #334155; }
+
+/* Responsive fallback: on very narrow screens, keep full width static */
+@media (max-width: 880px) {
+	.sidenav { width: 70%; }
+	.sidenav:hover { width: 70%; }
+	.main { margin-left: 0; }
 }
