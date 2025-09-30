@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>1.10. decisions, rl</title>
+    <title>6.3. decisions, rl</title>
   
   
   
@@ -28,11 +28,11 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -62,8 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/ai/decisions_rl';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="2. math" href="../math/math.html" />
-    <link rel="prev" title="1.9. search" href="search.html" />
+    <link rel="next" title="6.4. fairness, sts" href="fairness_sts.html" />
+    <link rel="prev" title="6.2. search" href="search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -182,94 +182,94 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="ai.html">1. ai</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="knowledge_rep.html">1.1. representations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="psychology.html">1.2. psychology</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fairness_sts.html">1.3. fairness, sts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="philosophy.html">1.4. philosophy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ai_futures.html">1.5. ai futures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cogsci.html">1.6. cognitive science</a></li>
-<li class="toctree-l2"><a class="reference internal" href="llms.html">1.7. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="logic.html">1.8. logic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="search.html">1.9. search</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">1.10. decisions, rl</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../research_ovws/research_ovws.html">1. research_ovws</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">1.1. transfer learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">1.2. disentanglement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_omics.html">1.3. omics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_llms.html">1.4. llms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_complexity.html">1.5. complexity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">1.6. interesting science</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">1.7. dl theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_scat.html">1.8. scattering transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">1.9. ml in medicine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">1.10. causal inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">1.11. uncertainty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interp.html">1.12. interpretability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_generalization.html">1.13. generalization</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math.html">2. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">2.1. linear algebra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">2.2. optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/differential_equations.html">2.3. differential equations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">2.4. chaos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">2.5. math basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">2.6. signals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">2.7. calculus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/proofs.html">2.8. proofs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">2.9. real analysis</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs.html">2. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval.html">2.1. info retrieval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">2.2. data structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/languages.html">2.3. languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/software.html">2.4. software engineering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">2.5. quantum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">2.6. algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/graphs.html">2.7. graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">2.8. os</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">2.9. architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/reproducibility.html">2.10. reproducibility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">2.11. cs theory</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml.html">3. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">3.1. unsupervised</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/structure_ml.html">3.2. structure learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">3.3. learning theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">3.4. deep learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/comp_vision.html">3.5. computer vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/kernels.html">3.6. kernels</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/nlp.html">3.7. nlp</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/feature_selection.html">3.8. feature selection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">3.9. evaluation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">3.10. classification</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../math/math.html">3. math</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../math/differential_equations.html">3.1. differential equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/proofs.html">3.2. proofs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/analysis.html">3.3. real analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/linear_algebra.html">3.4. linear algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/signals.html">3.5. signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/optimization.html">3.6. optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/calculus.html">3.7. calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/chaos.html">3.8. chaos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/math_basics.html">3.9. math basics</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../stat/stat.html">4. stat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.1. time series</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.2. graphical models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.3. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/game_theory.html">4.4. game theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/graphical_models.html">4.1. graphical models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.2. data analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.3. testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/causal_inference.html">4.4. causal inference</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../stat/info_theory.html">4.5. info theory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../stat/linear_models.html">4.6. linear models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/data_analysis.html">4.7. data analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../stat/testing.html">4.8. testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/time_series.html">4.7. time series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stat/game_theory.html">4.8. game theory</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro.html">5. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/motor.html">5.1. motor system</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/memory.html">5.2. memory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/development.html">5.3. development</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/sensory_input.html">5.4. sensory input</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/comp_neuro.html">5.5. comp neuro</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/disease.html">5.6. disease</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/vissci.html">5.7. vision</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../neuro/brain_basics.html">5.8. brain basics</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ml/ml.html">5. ml</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ml/kernels.html">5.1. kernels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/nlp.html">5.2. nlp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/comp_vision.html">5.3. computer vision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/structure_ml.html">5.4. structure learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/classification.html">5.5. classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/unsupervised.html">5.6. unsupervised</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/deep_learning.html">5.7. deep learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/feature_selection.html">5.8. feature selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/learning_theory.html">5.9. learning theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ml/evaluation.html">5.10. evaluation</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../cs/cs.html">6. cs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../cs/comp_theory.html">6.1. cs theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/graphs.html">6.2. graphs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/retrieval.html">6.3. info retrieval</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/data_structures.html">6.4. data structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/os.html">6.5. os</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/quantum.html">6.6. quantum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/software.html">6.7. software engineering</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/algo.html">6.8. algorithms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/arch.html">6.9. architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/languages.html">6.10. languages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cs/reproducibility.html">6.11. reproducibility</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="ai.html">6. ai</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="llms.html">6.1. llms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search.html">6.2. search</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">6.3. decisions, rl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fairness_sts.html">6.4. fairness, sts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cogsci.html">6.5. cognitive science</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ai_futures.html">6.6. ai futures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logic.html">6.7. logic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="philosophy.html">6.8. philosophy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="psychology.html">6.9. psychology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="knowledge_rep.html">6.10. representations</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../research_ovws/research_ovws.html">7. research_ovws</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_disentanglement.html">7.1. disentanglement</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_uncertainty.html">7.2. uncertainty</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_generalization.html">7.3. generalization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_causal_inference.html">7.4. causal inference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_omics.html">7.5. omics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_ml_medicine.html">7.6. ml in medicine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_llms.html">7.7. llms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_transfer_learning.html">7.8. transfer learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interp.html">7.9. interpretability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_complexity.html">7.10. complexity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_dl_theory.html">7.11. dl theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_scat.html">7.12. scattering transform</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../research_ovws/ovw_interesting_science.html">7.13. interesting science</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../neuro/neuro.html">7. neuro</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../neuro/disease.html">7.1. disease</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../neuro/brain_basics.html">7.2. brain basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../neuro/vissci.html">7.3. vision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../neuro/comp_neuro.html">7.4. comp neuro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../neuro/sensory_input.html">7.5. sensory input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../neuro/memory.html">7.6. memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../neuro/motor.html">7.7. motor system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../neuro/development.html">7.8. development</a></li>
 </ul>
 </details></li>
 </ul>
@@ -435,40 +435,40 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cience">1.10.1. cience</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#game-trees-r-n-5-2-5-5">1.10.2. game trees - R&amp;N 5.2-5.5</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#utilities-decision-theory-r-n-16-1-16-3-mazzonni-quant-finance-book">1.10.2.1. utilities / decision theory – R&amp;N 16.1-16.3, mazzonni quant finance book</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#utility-functions">1.10.2.2. utility functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cience">6.3.1. cience</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#game-trees-r-n-5-2-5-5">6.3.2. game trees - R&amp;N 5.2-5.5</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#utilities-decision-theory-r-n-16-1-16-3-mazzonni-quant-finance-book">6.3.2.1. utilities / decision theory – R&amp;N 16.1-16.3, mazzonni quant finance book</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#utility-functions">6.3.2.2. utility functions</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-theory-vpi-r-n-16-5-16-6">1.10.3. decision theory / VPI – R&amp;N 16.5 &amp; 16.6</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-value-of-information">1.10.3.1. the value of information</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-theory-vpi-r-n-16-5-16-6">6.3.3. decision theory / VPI – R&amp;N 16.5 &amp; 16.6</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-value-of-information">6.3.3.1. the value of information</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mdps-and-rl-r-n-17-1-17-4">1.10.4. mdps and rl - R&amp;N 17.1-17.4</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#value-iteration">1.10.4.1. value iteration</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#policy-iteration">1.10.4.2. policy iteration</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#partially-observable-markov-decision-processes-pomdp">1.10.4.3. partially observable markov decision processes (POMDP)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mdps-and-rl-r-n-17-1-17-4">6.3.4. mdps and rl - R&amp;N 17.1-17.4</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#value-iteration">6.3.4.1. value iteration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#policy-iteration">6.3.4.2. policy iteration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#partially-observable-markov-decision-processes-pomdp">6.3.4.3. partially observable markov decision processes (POMDP)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reinforcement-learning-r-n-21-1-21-6">1.10.5. reinforcement learning – R&amp;N 21.1-21.6</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#passive-reinforcement-learning-estimate-value-function-given-policy">1.10.5.1. passive reinforcement learning (estimate value function given policy)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#active-reinforcement-learning">1.10.5.2. active reinforcement learning</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#agent-examples">1.10.5.2.1. agent examples</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-action-utility-function-q-s-a">1.10.5.2.2. learning action-utility function <span class="math notranslate nohighlight">\(Q(s, a)\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reinforcement-learning-r-n-21-1-21-6">6.3.5. reinforcement learning – R&amp;N 21.1-21.6</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#passive-reinforcement-learning-estimate-value-function-given-policy">6.3.5.1. passive reinforcement learning (estimate value function given policy)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#active-reinforcement-learning">6.3.5.2. active reinforcement learning</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#agent-examples">6.3.5.2.1. agent examples</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-action-utility-function-q-s-a">6.3.5.2.2. learning action-utility function <span class="math notranslate nohighlight">\(Q(s, a)\)</span></a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#policy-search">1.10.5.3. policy search</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#policy-search">6.3.5.3. policy search</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-rl-course">1.10.6. deep rl course</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#supervised-rl-imitation-learning">1.10.6.1. “supervised rl” (imitation learning)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rl-algorithms-overview">1.10.6.2. rl algorithms overview</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-problems">1.10.6.3. other problems</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inverse-rl">1.10.6.3.1. inverse rl</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#planning">1.10.6.3.2. planning</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#metalearning">1.10.6.3.3. metalearning</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#offline-rl">1.10.6.3.4. offline rl</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-rl-course">6.3.6. deep rl course</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#supervised-rl-imitation-learning">6.3.6.1. “supervised rl” (imitation learning)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rl-algorithms-overview">6.3.6.2. rl algorithms overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-problems">6.3.6.3. other problems</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inverse-rl">6.3.6.3.1. inverse rl</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#planning">6.3.6.3.2. planning</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#metalearning">6.3.6.3.3. metalearning</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#offline-rl">6.3.6.3.4. offline rl</a></li>
 </ul>
 </li>
 </ul>
@@ -485,16 +485,16 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="decisions-rl">
-<h1><span class="section-number">1.10. </span>decisions, rl<a class="headerlink" href="#decisions-rl" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">6.3. </span>decisions, rl<a class="headerlink" href="#decisions-rl" title="Link to this heading">#</a></h1>
 <section id="cience">
-<h2><span class="section-number">1.10.1. </span>cience<a class="headerlink" href="#cience" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">6.3.1. </span>cience<a class="headerlink" href="#cience" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Means%E2%80%93ends_analysis">Means–ends analysis</a> - for planning subgoals, use the distance-to-the-goal as a continuous reward signal (and basically do greedy search with backtracking)</p></li>
 <li><p>at test-time, we solve an optimization problem</p></li>
 </ul>
 </section>
 <section id="game-trees-r-n-5-2-5-5">
-<h2><span class="section-number">1.10.2. </span>game trees - R&amp;N 5.2-5.5<a class="headerlink" href="#game-trees-r-n-5-2-5-5" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">6.3.2. </span>game trees - R&amp;N 5.2-5.5<a class="headerlink" href="#game-trees-r-n-5-2-5-5" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>like search (adversarial search)</p></li>
 <li><p><em>minimax algorithm</em></p>
@@ -552,7 +552,7 @@ document.write(`
 </li>
 </ul>
 <section id="utilities-decision-theory-r-n-16-1-16-3-mazzonni-quant-finance-book">
-<h3><span class="section-number">1.10.2.1. </span>utilities / decision theory – R&amp;N 16.1-16.3, mazzonni quant finance book<a class="headerlink" href="#utilities-decision-theory-r-n-16-1-16-3-mazzonni-quant-finance-book" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">6.3.2.1. </span>utilities / decision theory – R&amp;N 16.1-16.3, mazzonni quant finance book<a class="headerlink" href="#utilities-decision-theory-r-n-16-1-16-3-mazzonni-quant-finance-book" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>lottery</strong> - any function of a random variable</p></li>
 <li><p><strong>utility function</strong> - lottery that satisfiers certain properties (e.g. transitivity)</p>
@@ -601,7 +601,7 @@ document.write(`
 </ul>
 </section>
 <section id="utility-functions">
-<h3><span class="section-number">1.10.2.2. </span>utility functions<a class="headerlink" href="#utility-functions" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">6.3.2.2. </span>utility functions<a class="headerlink" href="#utility-functions" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><em>preference elicitation</em> - finds utility function</p>
 <ul>
@@ -644,7 +644,7 @@ document.write(`
 </section>
 </section>
 <section id="decision-theory-vpi-r-n-16-5-16-6">
-<h2><span class="section-number">1.10.3. </span>decision theory / VPI – R&amp;N 16.5 &amp; 16.6<a class="headerlink" href="#decision-theory-vpi-r-n-16-5-16-6" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">6.3.3. </span>decision theory / VPI – R&amp;N 16.5 &amp; 16.6<a class="headerlink" href="#decision-theory-vpi-r-n-16-5-16-6" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>note: here we are just making 1 decision</p></li>
 <li><p><em>decision network</em> (sometimes called <em>influence diagram</em>)</p>
@@ -678,7 +678,7 @@ document.write(`
 </li>
 </ul>
 <section id="the-value-of-information">
-<h3><span class="section-number">1.10.3.1. </span>the value of information<a class="headerlink" href="#the-value-of-information" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">6.3.3.1. </span>the value of information<a class="headerlink" href="#the-value-of-information" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><em>information value theory</em> - enables agent to choose what info to acquire</p>
 <ul>
@@ -714,7 +714,7 @@ document.write(`
 </section>
 </section>
 <section id="mdps-and-rl-r-n-17-1-17-4">
-<h2><span class="section-number">1.10.4. </span>mdps and rl - R&amp;N 17.1-17.4<a class="headerlink" href="#mdps-and-rl-r-n-17-1-17-4" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">6.3.4. </span>mdps and rl - R&amp;N 17.1-17.4<a class="headerlink" href="#mdps-and-rl-r-n-17-1-17-4" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>sequences of actions</p></li>
 <li><p><em>fully observable</em> - agent knows its state</p></li>
@@ -769,7 +769,7 @@ document.write(`
 </li>
 </ul>
 <section id="value-iteration">
-<h3><span class="section-number">1.10.4.1. </span>value iteration<a class="headerlink" href="#value-iteration" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">6.3.4.1. </span>value iteration<a class="headerlink" href="#value-iteration" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><em>value iteration</em> - calculates utility of each state and uses utilities to find optimal policy</p>
 <ul>
@@ -798,7 +798,7 @@ document.write(`
 </ul>
 </section>
 <section id="policy-iteration">
-<h3><span class="section-number">1.10.4.2. </span>policy iteration<a class="headerlink" href="#policy-iteration" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">6.3.4.2. </span>policy iteration<a class="headerlink" href="#policy-iteration" title="Link to this heading">#</a></h3>
 <ul>
 <li><p>another way to find optimal policies</p>
 <ol class="arabic simple">
@@ -823,7 +823,7 @@ document.write(`
 </ul>
 </section>
 <section id="partially-observable-markov-decision-processes-pomdp">
-<h3><span class="section-number">1.10.4.3. </span>partially observable markov decision processes (POMDP)<a class="headerlink" href="#partially-observable-markov-decision-processes-pomdp" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">6.3.4.3. </span>partially observable markov decision processes (POMDP)<a class="headerlink" href="#partially-observable-markov-decision-processes-pomdp" title="Link to this heading">#</a></h3>
 <ul>
 <li><p>agent is not sure what state it’s in</p></li>
 <li><p>same elements but add <em>sensor model</em> <span class="math notranslate nohighlight">\(P(e \vert s)\)</span></p></li>
@@ -862,7 +862,7 @@ document.write(`
 </section>
 </section>
 <section id="reinforcement-learning-r-n-21-1-21-6">
-<h2><span class="section-number">1.10.5. </span>reinforcement learning – R&amp;N 21.1-21.6<a class="headerlink" href="#reinforcement-learning-r-n-21-1-21-6" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">6.3.5. </span>reinforcement learning – R&amp;N 21.1-21.6<a class="headerlink" href="#reinforcement-learning-r-n-21-1-21-6" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><em>reinforcement learning</em> - use observed rewards to learn optimal policy for the environment</p>
 <ul>
@@ -896,7 +896,7 @@ document.write(`
 </li>
 </ul>
 <section id="passive-reinforcement-learning-estimate-value-function-given-policy">
-<h3><span class="section-number">1.10.5.1. </span>passive reinforcement learning (estimate value function given policy)<a class="headerlink" href="#passive-reinforcement-learning-estimate-value-function-given-policy" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">6.3.5.1. </span>passive reinforcement learning (estimate value function given policy)<a class="headerlink" href="#passive-reinforcement-learning-estimate-value-function-given-policy" title="Link to this heading">#</a></h3>
 <ul>
 <li><p>given policy <span class="math notranslate nohighlight">\(\pi\)</span>, learn <span class="math notranslate nohighlight">\(U^\pi (s) = \mathbb E\left[ \sum_{t=0}^{\infty} \gamma^t R(S_t)\right]\)</span></p>
 <ul class="simple">
@@ -942,17 +942,13 @@ document.write(`
 <li><p><span class="math notranslate nohighlight">\(\alpha\)</span> should decrease over time to converge</p></li>
 </ul>
 </li>
-<li><p><em>prioritized sweeping</em> - prefer adjustments to states whose likely successors have just undergone a large adjustment in their own utility estimates</p>
-<ul>
-<li><p>speeds things up</p></li>
-</ul>
-</li>
+<li><p><em>prioritized sweeping</em> - prefer adjustments to states whose likely successors have just undergone a large adjustment in their own utility estimates (speeds things up)</p></li>
 </ul>
 </li>
 </ul>
 </section>
 <section id="active-reinforcement-learning">
-<h3><span class="section-number">1.10.5.2. </span>active reinforcement learning<a class="headerlink" href="#active-reinforcement-learning" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">6.3.5.2. </span>active reinforcement learning<a class="headerlink" href="#active-reinforcement-learning" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>no longer following set policy</p>
 <ul>
@@ -969,7 +965,7 @@ document.write(`
 <li><p>coorect schemes should be <em>GLIE</em> - greedy in the limit of infinite exploration - visits all states infinitely, but eventually become greedy</p></li>
 </ul>
 <section id="agent-examples">
-<h4><span class="section-number">1.10.5.2.1. </span>agent examples<a class="headerlink" href="#agent-examples" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">6.3.5.2.1. </span>agent examples<a class="headerlink" href="#agent-examples" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>ex. choose random action <span class="math notranslate nohighlight">\(1/t\)</span> of the time</p></li>
 <li><p>ex. active adp agent</p>
@@ -991,7 +987,7 @@ document.write(`
 </ul>
 </section>
 <section id="learning-action-utility-function-q-s-a">
-<h4><span class="section-number">1.10.5.2.2. </span>learning action-utility function <span class="math notranslate nohighlight">\(Q(s, a)\)</span><a class="headerlink" href="#learning-action-utility-function-q-s-a" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">6.3.5.2.2. </span>learning action-utility function <span class="math notranslate nohighlight">\(Q(s, a)\)</span><a class="headerlink" href="#learning-action-utility-function-q-s-a" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(U(s) = \underset{a}{\max} \: Q(s,a)\)</span></p>
 <ul>
@@ -1019,7 +1015,7 @@ document.write(`
 </section>
 </section>
 <section id="policy-search">
-<h3><span class="section-number">1.10.5.3. </span>policy search<a class="headerlink" href="#policy-search" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">6.3.5.3. </span>policy search<a class="headerlink" href="#policy-search" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>keep twiddling the policy as long as it improves, then stop</p>
 <ul>
@@ -1052,10 +1048,10 @@ document.write(`
 </section>
 </section>
 <section id="deep-rl-course">
-<h2><span class="section-number">1.10.6. </span>deep rl course<a class="headerlink" href="#deep-rl-course" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">6.3.6. </span>deep rl course<a class="headerlink" href="#deep-rl-course" title="Link to this heading">#</a></h2>
 <p><strong><a class="reference external" href="https://rail.eecs.berkeley.edu/deeprlcourse/">berkeley (sergey levine)</a></strong></p>
 <section id="supervised-rl-imitation-learning">
-<h3><span class="section-number">1.10.6.1. </span>“supervised rl” (imitation learning)<a class="headerlink" href="#supervised-rl-imitation-learning" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">6.3.6.1. </span>“supervised rl” (imitation learning)<a class="headerlink" href="#supervised-rl-imitation-learning" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>imitation learning / behavioral cloning – given pairs of observations / actions, learn policy to take action given observation <span class="math notranslate nohighlight">\(\pi_\theta(a_t|o_t)\)</span></p>
 <ul>
@@ -1084,7 +1080,7 @@ document.write(`
 </ul>
 </section>
 <section id="rl-algorithms-overview">
-<h3><span class="section-number">1.10.6.2. </span>rl algorithms overview<a class="headerlink" href="#rl-algorithms-overview" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">6.3.6.2. </span>rl algorithms overview<a class="headerlink" href="#rl-algorithms-overview" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>3 general steps (iterated)</p>
 <ul>
@@ -1157,9 +1153,9 @@ document.write(`
 <p><img alt="rl_sample_efficiency" src="../../_images/rl_sample_efficiency.png" /></p>
 </section>
 <section id="other-problems">
-<h3><span class="section-number">1.10.6.3. </span>other problems<a class="headerlink" href="#other-problems" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">6.3.6.3. </span>other problems<a class="headerlink" href="#other-problems" title="Link to this heading">#</a></h3>
 <section id="inverse-rl">
-<h4><span class="section-number">1.10.6.3.1. </span>inverse rl<a class="headerlink" href="#inverse-rl" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">6.3.6.3.1. </span>inverse rl<a class="headerlink" href="#inverse-rl" title="Link to this heading">#</a></h4>
 <p>Inverse RL - learning reward functions from example</p>
 <ul class="simple">
 <li><p>ai should be uncertain about utitilies</p></li>
@@ -1170,7 +1166,7 @@ document.write(`
 </ul>
 </section>
 <section id="planning">
-<h4><span class="section-number">1.10.6.3.2. </span>planning<a class="headerlink" href="#planning" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">6.3.6.3.2. </span>planning<a class="headerlink" href="#planning" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p><a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/4220851?casa_token=Nw_d05ju8VcAAAAA:iXvxp_PDrMHtsoIk1_g2CnPPGFdMZcu_PqcyeyFUXsGrQWoQFRz8JvRmzjgofdwlQKYdsfpvK-g">Efficient Learning in Cellular Simultaneous Recurrent Neural Networks - The Case of Maze Navigation Problem</a> (ilin et al. 2007) - explored connections between planning algorithms and recurrent NNs</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1602.02867">Value Iteration Networks</a> (tamar…levine, &amp; abbeel, 2017)</p>
@@ -1181,7 +1177,7 @@ document.write(`
 </ul>
 </section>
 <section id="metalearning">
-<h4><span class="section-number">1.10.6.3.3. </span>metalearning<a class="headerlink" href="#metalearning" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">6.3.6.3.3. </span>metalearning<a class="headerlink" href="#metalearning" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>learning to learn (very close to multi-task learning)</p>
 <ul>
@@ -1199,7 +1195,7 @@ document.write(`
 </ul>
 </section>
 <section id="offline-rl">
-<h4><span class="section-number">1.10.6.3.4. </span>offline rl<a class="headerlink" href="#offline-rl" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">6.3.6.3.4. </span>offline rl<a class="headerlink" href="#offline-rl" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>core issue with offline RL: want policy that improves over the training policy, but can’t deviate from the training policy due to distr. shift</p></li>
 <li><p>one idea: instead of collecting new samples with policy, reweight samples using importance sampling based on policy</p></li>
@@ -1250,15 +1246,15 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">1.9. </span>search</p>
+        <p class="prev-next-title"><span class="section-number">6.2. </span>search</p>
       </div>
     </a>
     <a class="right-next"
-       href="../math/math.html"
+       href="fairness_sts.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2. </span>math</p>
+        <p class="prev-next-title"><span class="section-number">6.4. </span>fairness, sts</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1278,40 +1274,40 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cience">1.10.1. cience</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#game-trees-r-n-5-2-5-5">1.10.2. game trees - R&amp;N 5.2-5.5</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#utilities-decision-theory-r-n-16-1-16-3-mazzonni-quant-finance-book">1.10.2.1. utilities / decision theory – R&amp;N 16.1-16.3, mazzonni quant finance book</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#utility-functions">1.10.2.2. utility functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cience">6.3.1. cience</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#game-trees-r-n-5-2-5-5">6.3.2. game trees - R&amp;N 5.2-5.5</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#utilities-decision-theory-r-n-16-1-16-3-mazzonni-quant-finance-book">6.3.2.1. utilities / decision theory – R&amp;N 16.1-16.3, mazzonni quant finance book</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#utility-functions">6.3.2.2. utility functions</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-theory-vpi-r-n-16-5-16-6">1.10.3. decision theory / VPI – R&amp;N 16.5 &amp; 16.6</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-value-of-information">1.10.3.1. the value of information</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-theory-vpi-r-n-16-5-16-6">6.3.3. decision theory / VPI – R&amp;N 16.5 &amp; 16.6</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-value-of-information">6.3.3.1. the value of information</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mdps-and-rl-r-n-17-1-17-4">1.10.4. mdps and rl - R&amp;N 17.1-17.4</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#value-iteration">1.10.4.1. value iteration</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#policy-iteration">1.10.4.2. policy iteration</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#partially-observable-markov-decision-processes-pomdp">1.10.4.3. partially observable markov decision processes (POMDP)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mdps-and-rl-r-n-17-1-17-4">6.3.4. mdps and rl - R&amp;N 17.1-17.4</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#value-iteration">6.3.4.1. value iteration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#policy-iteration">6.3.4.2. policy iteration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#partially-observable-markov-decision-processes-pomdp">6.3.4.3. partially observable markov decision processes (POMDP)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reinforcement-learning-r-n-21-1-21-6">1.10.5. reinforcement learning – R&amp;N 21.1-21.6</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#passive-reinforcement-learning-estimate-value-function-given-policy">1.10.5.1. passive reinforcement learning (estimate value function given policy)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#active-reinforcement-learning">1.10.5.2. active reinforcement learning</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#agent-examples">1.10.5.2.1. agent examples</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-action-utility-function-q-s-a">1.10.5.2.2. learning action-utility function <span class="math notranslate nohighlight">\(Q(s, a)\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reinforcement-learning-r-n-21-1-21-6">6.3.5. reinforcement learning – R&amp;N 21.1-21.6</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#passive-reinforcement-learning-estimate-value-function-given-policy">6.3.5.1. passive reinforcement learning (estimate value function given policy)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#active-reinforcement-learning">6.3.5.2. active reinforcement learning</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#agent-examples">6.3.5.2.1. agent examples</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-action-utility-function-q-s-a">6.3.5.2.2. learning action-utility function <span class="math notranslate nohighlight">\(Q(s, a)\)</span></a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#policy-search">1.10.5.3. policy search</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#policy-search">6.3.5.3. policy search</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-rl-course">1.10.6. deep rl course</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#supervised-rl-imitation-learning">1.10.6.1. “supervised rl” (imitation learning)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rl-algorithms-overview">1.10.6.2. rl algorithms overview</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-problems">1.10.6.3. other problems</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inverse-rl">1.10.6.3.1. inverse rl</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#planning">1.10.6.3.2. planning</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#metalearning">1.10.6.3.3. metalearning</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#offline-rl">1.10.6.3.4. offline rl</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-rl-course">6.3.6. deep rl course</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#supervised-rl-imitation-learning">6.3.6.1. “supervised rl” (imitation learning)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rl-algorithms-overview">6.3.6.2. rl algorithms overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-problems">6.3.6.3. other problems</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inverse-rl">6.3.6.3.1. inverse rl</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#planning">6.3.6.3.2. planning</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#metalearning">6.3.6.3.3. metalearning</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#offline-rl">6.3.6.3.4. offline rl</a></li>
 </ul>
 </li>
 </ul>

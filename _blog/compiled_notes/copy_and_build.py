@@ -14,8 +14,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from tqdm import tqdm
 
 # source / dest
-repo_dir = '/home/chansingh/csinva.github.io/'
-# repo_dir = '/Users/chandan/website/'
+# repo_dir = '/home/chansingh/csinva.github.io/'
+repo_dir = '/Users/chandan/website/'
 src = join(repo_dir, '_notes/')
 
 dest = 'notes'
@@ -62,7 +62,7 @@ for folder in os.listdir(dest):
 toc_file = join(repo_dir, '_blog/compiled_notes/_toc.yml')
 open(toc_file, 'w').write(toc)
 os.system(
-    f'jupyter-book toc migrate {toc_file} -o {toc_file}')
+    f'uv run jupyter-book toc migrate {toc_file} -o {toc_file}')
 
 # make visualization
 fnames = [x.replace('_', ' ').replace('ovw ', '*') for x in fnames]
@@ -106,7 +106,8 @@ plt.tight_layout()
 plt.savefig('similarities_graph.svg')
 
 # jb build .
-subprocess.run(['jb', 'build', '.'])
+# subprocess.run(['uv run jupyter-book', 'build', '.'])
+os.system('uv run jupyter-book build .')
 # jb build . --builder pdfhtml # make pdf
 
 # rm notes
