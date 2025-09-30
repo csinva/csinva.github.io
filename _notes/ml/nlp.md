@@ -126,6 +126,8 @@ Nice repo keeping track of progress [here](https://github.com/sebastianruder/NLP
 
 [Tokenizers - Hugging Face Course](https://huggingface.co/course/chapter2/4?fw=pt)
 
+- nice blog post pointing out that things can't really be "tokenizer-free" ([arnet, 2025](https://huggingface.co/blog/catherinearnett/in-defense-of-tokenizers))
+
 - word-based
   - punctuation splitting
   - unknown token [UNK] for anything not seen - to reduce the amount of this, can get character-based tokens

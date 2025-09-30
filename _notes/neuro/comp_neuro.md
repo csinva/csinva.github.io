@@ -880,19 +880,19 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - whole-brain light sheet imaging
   - voltage-sensitive dyes / voltage imaging
   - **adaptive optics**
-  - - fNIRSlike fMRI but cheaper, allows more immobility, slightly worse spatial res
   - **oct** - noninvasive - can look at retina (maybe find biomarkers of alzheimer's)
   - fiber photometry - optical fiber implanted delivers excitation light
-
+  
 - high-level
   - EEG/ECoG
   - MEG
+  - fNIRS - like fMRI but cheaper, allows more immobility, slightly worse spatial res
   - fMRI/PET
     - MRI with [millisecond temporal precision](https://www.biorxiv.org/content/10.1101/2021.05.21.444581v2)
     - molecular fmri (bartelle)
   - MRS
   - event-related optical signal = near-infrared spectroscopy
-
+  
 - implantable
   - neural dust
 
@@ -931,10 +931,11 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
     - 3 of the particpants have ~20 hours (~95 stories, 33k timepoints)
   - Narratives Dataset ([Nastase et al. 2019](http://fcon_1000.projects.nitrc.org/indi/retro/Narratives.html)) - more subjects, less data per subject
     - 345 subjects, 891 functional scans, and 27 diverse stories of varying duration totaling ~4.6 hours of unique stimuli (~43,000 words) and total collection time is ~6.4 days
+  - Le Petit Prince multilingual naturalistic fMRI corpus ([li...hale, 2022](https://www.nature.com/articles/s41597-022-01625-7)) - 49 English speakers, 35 Chinese speakers and 28 French speakers listened to the same audiobook *The Little Prince* in their native language while fMRI was recorded
+  - LITcoder: A General-Purpose Library for Building and Comparing Encoding Models ([binhuraib, gao & ivanova, 2025](https://arxiv.org/abs/2509.09152)) -- standardized preprocessing for encoding models on the 3 datasets above (lebel et al, narratives, the little prince)
   - Preprocessed short datasets used in [AlKhamissi et al. 2025](https://arxiv.org/pdf/2503.01830) and available through [brain-score-language](https://github.com/brain-score/language/tree/main?tab=readme-ov-file)
     - ([Pereira 2018](https://www.nature.com/articles/s41467-018-03068-4)): Toward a universal decoder of linguistic meaning from brain activation - decode target sentence from a pair of presented sentences
   - [Schoffelen et al. 2019](https://www.nature.com/articles/s41597-019-0020-y): 100 subjects recorded with fMRI and MEG, listening to de-contextualised sentences and word lists, no repeated session
-  - Le Petit Prince multilingual naturalistic fMRI corpus ([li...hale, 2022](https://www.nature.com/articles/s41597-022-01625-7)) - 49 English speakers, 35 Chinese speakers and 28 French speakers listened to the same audiobook *The Little Prince* in their native language while fMRI was recorded
   - [Huth et al. 2016](https://www.nature.com/articles/nature17637) released data from [one subject](https://github.com/HuthLab/speechmodeltutorial)
   - Visual and linguistic semantic representations are aligned at the border of human visual cortex ([popham, huth et al. 2021](https://www.nature.com/articles/s41593-021-00921-6#data-availability)) - compared semantic maps obtained from two functional magnetic resonance imaging experiments in the same participants: one that used silent movies as stimuli and another that used narrative stories ([data link](https://berkeley.app.box.com/s/l95gie5xtv56zocsgugmb7fs12nujpog))
   - A multimodal fMRI dataset unifying naturalistic processes with a rich array of experimental tasks ([jung...wager, 2025](https://www.biorxiv.org/content/10.1101/2024.06.21.599974v1)) - N = 101 x 6 hours each = 606 functional iso-hours combining movies, pain, faces, theory-of-mind and other cognitive tasks!
@@ -955,16 +956,15 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
     natural language comprehension ([zada...hasson, 2025](https://www.biorxiv.org/content/10.1101/2025.02.14.638352v1.full.pdf)) - 9 subjects listening to the same story
     - 30-min story (1330 total electrodes, ~5000 spoken words (non-unique)) has female interviewer/voiceover and a male speaker, occasionally background music
     - contextual word embeddings from GPT-2 XL (middle layer) accounted for most of the variance across nearly all the electrodes tested
-  - single-subject intracortical words: https://www.kaggle.com/competitions/brain-to-text-25 (from [card et al. 2024](https://www.nejm.org/doi/full/10.1056/NEJMoa2314132))
   - Brain Treebank: Large-scale intracranial recordings from naturalistic language stimuli ([wang...barbu, 2024](https://arxiv.org/pdf/2411.08343))
     - Some works on this dataset
       - BrainBERT: Self-supervised representation learning for intracranial recordings ([wang…barbu, 2023](https://arxiv.org/abs/2302.14367))
       - Revealing Vision-Language Integration in the Brain with Multimodal Networks ([subramaniam…barbu, 2024](https://arxiv.org/abs/2406.14481))
       - Population Transformer: Learning Population-Level Representations of Neural Activity ([chau…barbu, 2024](https://pmc.ncbi.nlm.nih.gov/articles/PMC11177958/))
+  - single-subject intracortical words: https://www.kaggle.com/competitions/brain-to-text-25 (from [card et al. 2024](https://www.nejm.org/doi/full/10.1056/NEJMoa2314132))
 - single-cell
 
   - Semantic encoding during language comprehension at single-cell resolution ([jamali...fedorenko, williams, 2024](https://www.nature.com/articles/s41586-024-07643-2)) - extremely small dataset released: mostly sentences
-
 - cross-modality (language-adjacent)
   - language
     - A synchronized multimodal neuroimaging dataset to study brain language processing ([wang...zong, 2023](https://openneuro.org/datasets/ds004078/versions/1.2.1))
