@@ -167,7 +167,7 @@ img {
 /* Reset default list look inside generated TOC */
 .sidenav #toc { 
 	padding: 0 0 32px 0; 
-	font-size: 13px; 
+	font-size: 12px; /* slightly smaller than previous 13px */
 	line-height: 1.3; 
 }
 .sidenav #toc ul { 
@@ -241,9 +241,47 @@ img {
 .sidenav::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
 .sidenav::-webkit-scrollbar-thumb:hover { background: #334155; }
 
-/* Responsive fallback: on very narrow screens, keep full width static */
+/* Responsive mobile behavior: collapsed narrow rail that can expand */
 @media (max-width: 880px) {
-	.sidenav { width: 70%; }
-	.sidenav:hover { width: 70%; }
-	.main { margin-left: 0; }
+	/* Base collapsed state */
+		.sidenav {
+			width: 84px; /* widened collapsed width (approx 2x previous 42px) */
+			padding-top: 80px; /* keep existing offset */
+			overflow-x: visible; /* allow pseudo-label to show */
+		}
+		/* Provide space for collapsed rail so content isn't hidden */
+		.main { margin-left: 92px; }
+	/* Hover expansion (for devices that support hover) */
+	.sidenav:hover { width: 82%; }
+	/* Open state via JS toggle (tap on touch devices) */
+	.sidenav.open { width: 82%; }
+	.sidenav.open:hover { width: 82%; }
+
+	/* Vertical label when collapsed (hidden when expanded) */
+		.sidenav::after {
+			content: 'TOC';
+			position: absolute;
+			top: 108px; /* slight tweak for new width */
+			left: 0;
+			right: 0;
+			writing-mode: vertical-rl;
+			transform: rotate(180deg);
+			font-size: 11px;
+			letter-spacing: 2px;
+			text-align: center;
+			color: #64748b;
+			opacity: 0.85;
+			pointer-events: none; /* let clicks pass through */
+			transition: opacity .25s ease;
+		}
+	.sidenav.open::after,
+	.sidenav:hover::after { opacity: 0; }
+
+	/* When collapsed, hide overflowing TOC text; expansion handled by width change */
+	.sidenav #toc a { max-width: 100%; }
+}
+
+/* Extra-narrow screens: ensure expansion uses most of the screen */
+@media (max-width: 520px) {
+	.sidenav.open, .sidenav:hover { width: 94%; }
 }

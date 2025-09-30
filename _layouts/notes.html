@@ -1,7 +1,6 @@
 <head>
     {% include head.html %}
     {% include navigation.html %}
-    {% include google_analytics.html %}
     {% include js.html %}
     <link href="{{ site.baseurl }}/assets/css/notes.css" rel="stylesheet">
     <link href="{{ site.baseurl }}/assets/css/highlight.css" rel="stylesheet">
@@ -70,6 +69,48 @@
     $(document).ready(function () {
         $('#toc').toc();
     });
+</script>
+
+<!-- Mobile TOC expand/collapse (tap to open on small screens) -->
+<script type="text/javascript">
+    (function () {
+        function initMobileTOCToggle() {
+            var sidenav = document.querySelector('.sidenav');
+            if (!sidenav) return;
+            function isMobile() { return window.innerWidth <= 880; }
+
+            // Close when clicking outside
+            document.addEventListener('click', function (e) {
+                if (!isMobile()) return;
+                if (!sidenav.contains(e.target)) {
+                    sidenav.classList.remove('open');
+                }
+            });
+
+            // Toggle open on tap/click inside collapsed rail
+            sidenav.addEventListener('click', function (e) {
+                if (!isMobile()) return;
+                // If already open, allow normal link clicks
+                if (sidenav.classList.contains('open')) return;
+                // Prevent immediate navigation on first tap when collapsed
+                var target = e.target.closest('a');
+                if (target) {
+                    e.preventDefault();
+                }
+                sidenav.classList.add('open');
+            });
+
+            // Adapt on resize (remove open state when leaving mobile)
+            window.addEventListener('resize', function () {
+                if (!isMobile()) sidenav.classList.remove('open');
+            });
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initMobileTOCToggle);
+        } else {
+            initMobileTOCToggle();
+        }
+    })();
 </script>
 
 <style>
