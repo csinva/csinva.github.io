@@ -19,7 +19,7 @@ The work introduces three desiderata a good interpretable ML pipeline should sat
 
 The work also categorizes existing methods into two main categories: **model-based interpretability** (i.e. the construction of models that readily provide insight into the relationships they have learned) and **post-hoc interpretability** (i.e. methods that analyze a trained model in order to provide insights into the learned relationships).
 
-# some examples
+## some examples
 
 We have also been working on a line of work focused on understanding and using interactions in post-hoc interpretability: 
 
