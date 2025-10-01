@@ -365,3 +365,46 @@ img {
 
 /* Tighten vertical rhythm globally */
 .markdown li { line-height: 1.35; }
+
+/* Accessible details toggles with high-contrast caret */
+.markdown details {
+	margin: 1em 0;
+}
+
+.markdown details summary {
+	position: relative;
+	padding-left: 1.4em;
+	cursor: pointer;
+	color: #e2e8f0;
+}
+
+
+.markdown details summary::-webkit-details-marker {
+	display: none;
+}
+
+.markdown details summary::marker {
+	content: '';
+	font-size: 0;
+	color: transparent;
+}
+
+.markdown details summary::before {
+	content: '\25B6';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	color: #ffffff;
+	transition: transform 0.2s ease;
+}
+
+.markdown details[open] summary::before {
+	content: '\25BC';
+}
+
+.markdown details summary:focus-visible {
+	outline: 2px solid rgba(56, 189, 248, 0.6);
+	border-radius: 4px;
+	outline-offset: 2px;
+}
