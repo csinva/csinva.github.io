@@ -14,18 +14,18 @@
             <div id="toc"></div>
         </div>
 
-        <div class="main" style="margin-right: 15%;">
-            <div id="content" class="markdown">
-                <hr>
-                <p class="title" style="font-size: xx-large; text-align: center; margin-bottom: 0px;">
+        <div class="main notes-layout">
+            <div id="content" class="markdown note-box">
+                <!-- <hr> -->
+                <p class="title" style="font-size: xx-large; text-align: left; margin-bottom: 0px;">
                     {{ page.title }} <a class="btn btn-primary" style="text-transform: lowercase"
                         href="https://github.com/csinva/csinva.github.io/blob/master/{{ page.path }}">view
                         markdown <i class="fa fa-github fa-fw"></i></a>
                     {% if page.subtitle %}
-                <p class="subtitle" style="font-size: large; text-align: center;">{{page.subtitle }}</p>
+                <p class="subtitle" style="font-size: large; text-align: left;">{{page.subtitle }}</p>
                 {% endif %}
                 </p>
-                <hr>
+                <hr style="width: 100%;">
                 {{ page.content | markdownify }}
                 <!-- Check if page has attribute subtitle -->
 
@@ -78,9 +78,32 @@
         window.addEventListener('resize', updateTOCOffset);
 
         var $tocContainer = $('#toc');
+        var sidenavEl = document.querySelector('.sidenav');
         if (!$tocContainer.length) {
             window.addEventListener('load', updateTOCOffset);
             return;
+        }
+
+        if (sidenavEl) {
+            var tocElement = $tocContainer[0];
+            var expandTOC = function () {
+                sidenavEl.classList.add('sidenav--expanded');
+            };
+            var collapseTOC = function () {
+                if (!sidenavEl.classList.contains('open')) {
+                    sidenavEl.classList.remove('sidenav--expanded');
+                }
+            };
+
+            tocElement.addEventListener('mouseenter', expandTOC);
+            tocElement.addEventListener('mouseleave', collapseTOC);
+            tocElement.addEventListener('focusin', expandTOC);
+            tocElement.addEventListener('focusout', function (event) {
+                var next = event.relatedTarget;
+                if (!next || !tocElement.contains(next)) {
+                    collapseTOC();
+                }
+            });
         }
 
         $tocContainer.toc();
@@ -348,6 +371,7 @@
                 if (!isMobile()) return;
                 if (!sidenav.contains(e.target)) {
                     sidenav.classList.remove('open');
+                    sidenav.classList.remove('sidenav--expanded');
                 }
             });
 
@@ -362,12 +386,14 @@
                     e.preventDefault();
                 }
                 sidenav.classList.add('open');
+                sidenav.classList.add('sidenav--expanded');
             });
 
             // Auto-close when pointer leaves the expanded sidenav
             sidenav.addEventListener('mouseleave', function () {
                 if (!isMobile()) return;
                 sidenav.classList.remove('open');
+                sidenav.classList.remove('sidenav--expanded');
             });
 
             // Close after clicking a TOC link to return to content
@@ -377,13 +403,17 @@
                 if (link && sidenav.classList.contains('open')) {
                     setTimeout(function () {
                         sidenav.classList.remove('open');
+                        sidenav.classList.remove('sidenav--expanded');
                     }, 0);
                 }
             });
 
             // Adapt on resize (remove open state when leaving mobile)
             window.addEventListener('resize', function () {
-                if (!isMobile()) sidenav.classList.remove('open');
+                if (!isMobile()) {
+                    sidenav.classList.remove('open');
+                    sidenav.classList.remove('sidenav--expanded');
+                }
             });
         }
         if (document.readyState === 'loading') {
