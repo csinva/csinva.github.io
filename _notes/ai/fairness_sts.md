@@ -277,23 +277,14 @@ typora-copy-images-to: ../assets
 # concrete ai harms
 
 - [awful-ai](https://github.com/daviddao/awful-ai) - list of scary usages of ai
-
-Technologies, especially world-shaping technologies like CNNs, are never objective. Their existence and adoption change the world in terms of 
-
+	- Technologies, especially world-shaping technologies like CNNs, are never objective. Their existence and adoption change the world in terms of 
 - consolidation of power (e.g. facial-rec used to target Uighurs, increased rationale for amassing user data)
-
 - a shift toward the quantitative (which can lead to the the type of click-bait extremization we see online)
-
 - automation (low-level layoffs, which also help consolidate power to tech giants)
-
 - energy usage (the exorbitant footprint of models like GPT-3)
-
 - access to media (deepfakes, etc.)
-
 - a lot more
-
 - pandemic
-
   - I hope the pandemic, which has boosted the desire for tracking, does not result in a long-term arc towards more serveillance
   - from [here](https://www.theatlantic.com/magazine/archive/2020/09/china-ai-surveillance/614197/): City Brain would be especially useful in a pandemic. (One of Alibaba’s sister companies created the app that color-coded citizens’ disease risk, while silently sending their health and travel data to police.) As Beijing’s outbreak spread, some malls and restaurants in the city began scanning potential customers’ phones, pulling data from mobile carriers to see whether they’d recently traveled. Mobile carriers also sent municipal governments lists of people who had come to their city from Wuhan, where the coronavirus was first detected. And Chinese AI companies began making networked facial-recognition helmets for police, with built-in infrared fever detectors, capable of sending data to the government. City Brain could automate these processes, or integrate its data streams.
   - "The pandemic may even make people value privacy less, as one early poll in the U.S. suggests"

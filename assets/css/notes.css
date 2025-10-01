@@ -18,6 +18,24 @@
 	transition: width .25s ease, box-shadow .25s ease;
 }
 
+#bg-particles {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	z-index: 0;
+	background: transparent;
+}
+
+.wrapper,
+.main.notes-layout,
+.main.notes-layout .note-box {
+	position: relative;
+	z-index: 1;
+}
+
 nav.navbar-custom.navbar-fixed-top {
 	z-index: 1500;
 	background: rgba(0, 0, 0, 0.94);

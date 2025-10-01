@@ -8,8 +8,6 @@ typora-copy-images-to: ../assets
 
 {:toc}
 
-# cience
-
 - [Means–ends analysis](https://en.wikipedia.org/wiki/Means%E2%80%93ends_analysis) - for planning subgoals, use the distance-to-the-goal as a continuous reward signal (and basically do greedy search with backtracking)
 - at test-time, we solve an optimization problem
 
