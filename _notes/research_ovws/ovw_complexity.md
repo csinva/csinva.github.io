@@ -226,4 +226,3 @@ Complexity can be a useful notion for many things in statistical models. It can 
 - [Towards Learning Convolutions from Scratch](https://arxiv.org/pdf/2007.13657v1.pdf) (neyshabur 2020)
   - uses some mdl as guiding principles
   - training with $\beta$-lasso, fc weights become very local
-
