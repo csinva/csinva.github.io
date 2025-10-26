@@ -1092,6 +1092,11 @@ How interactions are defined and summarized is a very difficult thing to specify
 - Explaining Explanations: Axiomatic Feature Interactions for Deep Networks ([janizek et al. 2020](https://arxiv.org/abs/2002.04138)) - integrated hessians - makes the distinction between main & interaction effects unclear
 - Learning Global Pairwise Interactions with Bayesian Neural Networks ([cui et al. 2020](https://arxiv.org/abs/1901.08361)) - Bayesian Group Expected Hessian (GEH) - train bayesian neural net and analyze hessian to understand interactions
 - Feature Interactions Reveal Linguistic Structure in Language Models ([jumelet & zuidema, 2023](https://arxiv.org/pdf/2306.12181.pdf)) - evaluate ability to find interactions using synthetic data / models
+- Network dissection - associates each neuron with the single concept that maximizes the spatial alignment between a neuron activation range and concepts
+  - Network Dissection: Quantifying Interpretability of Deep Visual Representations ([bau...torralba, 2017](https://arxiv.org/abs/1704.05796))
+  - Understanding the Role of Individual Units in a Deep Neural Network ([bau...torralba, 2020](https://arxiv.org/abs/2009.05041))
+  - Compositional Explanations of Neurons ([mu & andreas, 2020](https://arxiv.org/abs/2006.14032)) - extend this approach to associate relationships between multiple concepts
+
 
 ### linear interactions
 

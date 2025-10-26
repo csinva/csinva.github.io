@@ -1033,6 +1033,8 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 - while a coarse alignment exists across individual brains ([Nastase et al., 2019](https://academic.oup.com/scan/article/14/6/667/5489905); [2021](https://www.nature.com/articles/s41597-021-01033-3)), the finer cortical topographies for language representation exhibit significant idiosyncrasies among individuals ([Fedorenko et al., 2010](https://journals.physiology.org/doi/full/10.1152/jn.00032.2010); [Nieto-Castañón & Fedorenko, 2012](https://www.sciencedirect.com/science/article/abs/pii/S1053811912006817); [Braga et al., 2020](https://journals.physiology.org/doi/full/10.1152/jn.00753.2019); [Lipkin et al., 2022](https://www.nature.com/articles/s41597-022-01645-3))
 - hyperalignment techniques have been developed in fMRI research to aggregate information across subjects into a unified information space while overcoming the misalignment of functional topographies across subjects ([Haxby et al., 2011](https://www.cell.com/neuron/fulltext/S0896-6273(15)00933-2); shared response model [Chen et al., 2015](https://proceedings.neurips.cc/paper/2015/hash/b3967a0e938dc2a6340e258630febd5a-Abstract.html); [Guntupalli...Haxby, 2016](https://academic.oup.com/cercor/article/26/6/2919/1754308); [Haxby et al., 2020](https://elifesciences.org/articles/56601); [Feilong et al., 2023](https://direct.mit.edu/imag/article/doi/10.1162/imag_a_00032/117980))
 - shared response model [Chen et al., 2015](https://proceedings.neurips.cc/paper/2015/hash/b3967a0e938dc2a6340e258630febd5a-Abstract.html) - learns orthonormal, linear subject-specific transformations that map from each subject’s response  space to a shared space based on a subset of training data, then uses these learned transformations to map a subset of test data into the shared space
+- Model-brain comparison using inter-animal transforms ([thobani...yamins, 2025](https://arxiv.org/abs/2510.02523))
+  - IATC is the set of mappings needed to align brains to another within a population (e.g. a population of typical mice) - identify it then try aligning models to brains using the empirically identified IATC
 
 ## representational aligment
 
@@ -1188,6 +1190,10 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 - Brain-JEPA: Brain Dynamics Foundation Model with Gradient Positioning and Spatiotemporal Masking ([dong...zhou, 2024](https://proceedings.neurips.cc/paper_files/paper/2024/hash/9c3828adf1500f5de3c56f6550dfe43c-Abstract-Conference.html)) - fMRI modeling that uses positional embedding matrix based on brain gradient positioning + temporal encoding matrix using sine/cosine for temporal positioning
 - Brant: Foundation Model for Intracranial Neural Signal ([zhang...li, 2023](https://proceedings.neurips.cc/paper_files/paper/2023/hash/535915d26859036410b0533804cee788-Abstract-Conference.html)) - predict iEEG with learnable position encoding
 - LaBraM: Large Brain Model for Learning Generic Representations with Tremendous EEG Data in BCI ([jiang, zhou, lu, 2024](https://arxiv.org/abs/2405.18765)) - predict EEG with learnable temporal & spatial encoding matrix
+- Estimating Brain Activity with High Spatial and Temporal Resolution using a Naturalistic MEG-fMRI Encoding Model ([jin & wehbe, 2025](https://arxiv.org/abs/2510.09415)) - build joint encoding model to predict MEG/fMRI from moth stories
+  - model is trained to predict MEG and fMRI from multiple subjects simultaneously, with a latent layer that represents estimates of reconstructed cortical sources
+  - Estimated activity in thesource space predict ECoG better than an ECoG-trained encoding model in an entirely new dataset
+
 
 # advanced topics
 
