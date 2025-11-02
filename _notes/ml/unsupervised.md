@@ -160,7 +160,6 @@ Xrot_reduced = X @ U[:, :2] # project onto first 2 dimensions (n x 2)
 ## topic modeling
 
 - similar, try to discover topics in a model (which maybe can be linearly combined to produce the original document)
-
 - ex. LDA - generative model: posits that each document is a mixture of a **small number of topics** and that **each word's presence is attributable to one of the document's topics**
 
 ## sparse coding = sparse dictionary learning
@@ -257,7 +256,6 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
 - Sparse Component Analysis ([zimnik...cunningham, paninski, churchland, & glaser, 2024](https://www.biorxiv.org/content/10.1101/2024.02.05.578988v1.full.pdf))
   - $\arg \min _{U, V}\left(\|W(X-X U V)\|_F^2+\lambda_{\text {sparse }}\|X U\|_1+\lambda_{\text {orth }}\left\|V V^{\top}-I\right\|_F^2\right)$
     - where $U$ is encoding matrix and $V$ is decoding, the final loss term is imposing orthogonality of the columns of V
-
 - [NNK-Means: Dictionary Learning using Non-Negative Kernel regression](https://arxiv.org/abs/2110.08212) (shekkizhar & ortega, 2021)
   - data summarization - represent large datasets by a small set of elements (e.g. k-means)
   - here, use dictionary learning instead of k-means to summarize data
@@ -298,38 +296,6 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
   - can use **Fisher score** $\nabla_\theta \log p_\theta (x)$
 
 
-
-### flow models
-
-- good intro to implementing invertible neural networks: https://hci.iwr.uni-heidelberg.de/vislearn/inverse-problems-invertible-neural-networks/
-  - input / output dimension need to have same dimension
-  - we can get around this by padding one of the dimensions with noise variables (and we might want to penalize these slightly during training)
-- [normalizing flows](https://arxiv.org/pdf/1908.09257.pdf)
-- ultimate goal: a likelihood-based model with
-  - fast sampling
-  - fast inference (evaluating the likelihood)
-  - fast training
-  - good samples
-  - good compression
-- transform some $p(x)$ to some $p(z)$
-  - $x \to z = f_\theta (x)$, where $z \sim p_Z(z)$
-  - $p_\theta (x) dx = p(z)dz$
-  - $p_\theta(x) = p(f_\theta(x))|\frac {\partial f_\theta (x)}{\partial x}|$
-- autoregressive flows
-  - map $x\to z$ invertible
-    - $x \to z$ is same as log-likelihood computation
-    - $z\to x$ is like sampling
-  - end up being as deep as the number of variables
-- realnvp (dinh et al. 2017) - can couple layers to preserve invertibility but still be tractable
-  - downsample things and have different latents at different spatial scales
-- other flows
-  - flow++
-  - glow
-  - FFJORD - continuous time flows
-- discrete data can be harder to model
-  - **dequantization** - add noise (uniform) to discrete data
-
-
 ## vaes
 
 - [intuitively understanding vae](https://towardsdatascience.com/intuitively-understanding-variational-autoencoders-1bfe67eb5daf)
@@ -363,32 +329,23 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
   - **FID** - Frechet inception score works directly on embedded features from inception v3 model
     - embed population of images and calculate mean + variance in embedding space
     - measure distance between these means / variances for real/synthetic images using Frechet distance = Wasseterstein-2 distance
-
 - infogan
   - ![infogan](../assets/infogan.png)
-
 - problems
   - mode collapse - pick just one mode in the distr.
-
 - train network to be loss function
-
 - original gan paper (2014)
-
 - *generative adversarial network*
-
 - goal: want G to generate distribution that follows data
   - ex. generate good images
-
 - two models
   - *G* - generative
   - *D* - discriminative
-
 - G generates adversarial sample x for D
   - G has prior z
   - D gives probability p that x comes from data, not G
     - like a binary classifier: 1 if from data, 0 from G
   - *adversarial sample* - from G, but tricks D to predicting 1
-
 - training goals
   - G wants D(G(z)) = 1
   - D wants D(G(z)) = 0
@@ -396,12 +353,9 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
   - converge when D(G(z)) = 1/2
   - G loss function: $G = \text{argmin}_G \log(1-D(G(Z))$
   - overall $\min_g \max_D$ log(1-D(G(Z))
-
 - training algorithm
   - in the beginning, since G is bad, only train  my minimizing G loss function
-
 - **projecting into gan latent space (=gan inversion)**
-
   - 2 general approaches
     1. learn an encoder to go image -> latent space
        - [In-Domain GAN Inversion for Real Image Editing](https://arxiv.org/pdf/2004.00049.pdf) (zhu et al. 2020) 
@@ -421,10 +375,54 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
 - [blog post](https://benanne.github.io/2022/01/31/diffusion.html)
 - seminal paper: Generative Modeling by Estimating Gradients of the Data Distribution ([song & ermon, 2019](https://arxiv.org/abs/1907.05600))
   - really started earlier: Deep Unsupervised Learning using Nonequilibrium Thermodynamics ([sohl-dickstein, ..., ganguli, 2015](https://arxiv.org/abs/1503.03585))
-
 - Improved Denoising Diffusion Probabilistic Models ([2021](https://arxiv.org/abs/2102.0 9672))
   - can make this class-conditionnal by incorporating classifier into the model which inverts the noise
   - Diffusion Models Beat GANs on Image Synthesis ([2021](https://arxiv.org/abs/2105.05233))
+
+## flow models
+
+- nice [flows/flow-matching video](https://www.youtube.com/watch?v=DDq_pIfHqLs)
+- goal: learn generator function $G$ to map gaussian samples z into real data samples x (like images)
+  - learn density $p\left(\mathbf{x}^{\prime}\right)=p_{\text {base }}\left(\mathbf{z}^{\prime}\right)\left|\frac{\partial \mathbf{z}}{\partial \mathbf{x}}\right|$ (because multiplying by $\partial x$ gives you the area under the density function)
+    - this generalizes to $p\left(\mathbf{x}^{\prime}\right)=p_{\text {base }}\left(\mathbf{z}^{\prime}\right)\left|\operatorname{det}\left[\boldsymbol{J}_{\boldsymbol{G}^{-1}}\right]\right|$ for multiple dimensions
+
+- computing likelihood of p(x) requires that $G$ is invertible and to compute the above det efficiently
+  - Solution in NICE ([dinh, krueger & bengio, 2014](https://arxiv.org/abs/1410.8516)) and Real NVP ([dinh, sohl-dickstein & bengio, 2016](https://arxiv.org/abs/1605.08803)) is to use an Affine coupling layer
+    - this layer outputs (1) a copy of half the inputs and (2) uses a neural net to predict a scalar and offset for the other half of the inputs. This allows easy invertibility and det computation
+    - Can set up the masks for which half to copy in a structured way. Glow ([kingma & dhariwal, 2018](https://arxiv.org/abs/1807.03039)) uses invertible 1x1 convolutions on top of this to improve performance
+
+  - Solution in autoregressive flow ([kingma...welling, 2016](https://arxiv.org/abs/1606.04934); [papamakarios, pavlakou & murray, 2017](https://arxiv.org/abs/1705.07057)) - use preceding inputs to predict parameters for an invertible function to transform an input
+  - Residual flows (Invertible Residual Networks ([behrmann...jacobsen, 2018](https://arxiv.org/abs/1811.00995)); Residual Flows ([chen, behrmann, duvenaud & jacobsen, 2019](https://arxiv.org/abs/1906.02735))) - allow Jacobian to be relatively unconstrained but use approximations of neural net to allow invertibility
+    - output is input plus a contractive map function of the input
+
+    - good intro to implementing invertible neural networks: https://hci.iwr.uni-heidelberg.de/vislearn/inverse-problems-invertible-neural-networks/
+      - input / output dimension need to have same dimension
+      - we can get around this by padding one of the dimensions with noise variables (and we might want to penalize these slightly during training)
+
+  - if we allow for many layers, we can parameterize with time to get continuous normalizing flows (FFJORD ([grathwohl...duvenaud, 2018](https://arxiv.org/abs/1810.01367)))
+    - Flow Matching for Generative Modeling ([lipman...le, 2022](https://arxiv.org/abs/2210.02747)) - match the flow that evolves over time rather than using an ODE solver
+      - this requires assumptions for computing the conditional distribution and path for getting x at time zero (noise) to final s, e.g. linear interpolation over time
+        - varying these assumptions leads to methods like rectified flow ([liu, gong & liu, 2022](https://arxiv.org/abs/2209.03003)) or Stochastic Interpolants ([albergo, boffi & vanden-eijnden, 2023](https://arxiv.org/abs/2303.08797))
+
+      - moving beyond mapping simple pairs, we can match over multiple simultaneous pairs using optimal transport, e.g. OT-CFM([tong...bengio, 2023](https://arxiv.org/abs/2302.00482)) or Multisample Flow Matching ([pooladian...chen, 2023](https://arxiv.org/abs/2304.14772))
+
+- ultimate goal: a likelihood-based model with
+  - fast sampling
+  - fast inference (evaluating the likelihood)
+  - fast training
+  - good samples
+  - good compression
+- transform some $p(x)$ to some $p(z)$
+  - $x \to z = f_\theta (x)$, where $z \sim p_Z(z)$
+  - $p_\theta (x) dx = p(z)dz$
+  - $p_\theta(x) = p(f_\theta(x))|\frac {\partial f_\theta (x)}{\partial x}|$
+- autoregressive flows
+  - map $x\to z$ invertible
+    - $x \to z$ is same as log-likelihood computation
+    - $z\to x$ is like sampling
+  - end up being as deep as the number of variables
+- discrete data can be harder to model
+  - **dequantization** - add noise (uniform) to discrete data
 
 
 

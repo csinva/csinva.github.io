@@ -1052,6 +1052,9 @@ How interactions are defined and summarized is a very difficult thing to specify
   - Shapley Taylor Interaction Index (STI) ([dhamdhere...sundararajan, 2019](https://arxiv.org/abs/1902.05622)) - extends shap to all interactions
 - Sparse Epistatic Regularization of Deep Neural Networks for Inferring Fitness Functions ([aghazadeh ... listgarten, ramchandran, 2020](https://www.biorxiv.org/content/10.1101/2020.11.24.396994v1)) - penalize DNNs spectral representation to limit learning noisy high-order interactions
   - SPEX: Scaling Feature Interaction Explanations for LLMs ([kang, butler, agarwal...ramachandran, yu, 2025](https://arxiv.org/pdf/2502.13870#page=1.00)) - efficient search over binary interactions, applied to inputs of LLMs / VLMs
+  - ProxySPEX: Inference-Efficient Interpretability via Sparse Feature Interactions in LLMs ([butler...ramchandran, 2025](https://arxiv.org/abs/2505.17495)) - reduces number of queries needed to extract interactions
+    - first fits gradient boosted trees to masked LLM outputs and then extracts the important interactions
+    - intuition: higher-order interactions often include their lower-order subsets
 - gradient-based methods (originally Friedman and Popescu, 2008 then later used with many models such as logit)
   - test if partial derivatives for some subset (e.g. $x_1, ..., x_p$) are nonzero $$\mathbb{E}_{\mathbf{x}}\left[\frac{\partial^p f(\mathbf{x})}{\partial x_{i_{1}} \partial x_{i_{2}} \ldots \partial x_{i_p}}\right]^{2}>0$$
   - doesn't work well for piecewise functions (e.g. Relu) and computationally expensive
