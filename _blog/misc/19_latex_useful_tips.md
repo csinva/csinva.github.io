@@ -11,9 +11,13 @@ category: blog
 
 - really good introduction [here](https://www.overleaf.com/learn/latex/Free_online_introduction_to_LaTeX_(part_1))
 
+## diffing latex projects (easy)
 
+- from overleaf, create a `latexmkrc` file with this content: `$pdflatex = "latexdiff main_old.tex main.tex > main-d.tex; pdflatex %O  main-d"`
+  - Save the original version into “main_old.tex” and the current version as “main.tex”
+  - This will render a marked up pdf with the differences
 
-## diffing complex latex files
+## diffing complex latex files (hard)
 
 **Pipeline for finding the differences between 2 versions of complex latex projects.**
 

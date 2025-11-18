@@ -284,7 +284,8 @@ Over time, ML has bounced from *feature-engineering* -> *architecture engineerin
   - BitNet: Scaling 1-bit Transformers for LLMs ([wang...wei, 2023](https://arxiv.org/abs/2310.11453))
 - HRM: Hierarchical Reasoning Model (Sapient; [wang...yadkori, 2025](https://arxiv.org/abs/2506.21734)) - 4 learnable components: an input network, a low-level recurrent module, a high-level recurrent module, and an output network
   - TRM: Tiny Recursive Model: Recursive Reasoning with Tiny Networks ([jolicoeur-martineau, 2025](https://arxiv.org/abs/2510.04871))
-
+  - Teaching Pretrained LMs to Think Deeper with Retrofitted Recurrence ([mcleish...goldblum, 2025](https://arxiv.org/abs/2511.07384)) - post-train regular LMs into looped models
+  
 - The Dragon Hatchling: The Missing Link between the Transformer and Models of the Brain (Pathway; [kosowski...bartoszkiewicz, 2025](https://arxiv.org/abs/2509.26507))
 - Misc
   - Tree Transformer: Integrating Tree Structures into Self-Attention ([wang, .., chen, 2019](https://arxiv.org/pdf/1909.06639.pdf))
@@ -565,7 +566,9 @@ Nice survey here: A Survey on dLLMs ([li, chen, guo & shen, 2025](https://arxiv.
   - Agentic Context Engineering (ACE): Evolving Contexts for Self-Improving LMs ([zhang...olukotun, 2025](https://arxiv.org/abs/2510.04618))
     - context collapse - when an LLM is tasked with fully rewriting the accumulated context at each adaptation step (e.g. Dynamic Cheatsheet ([suzgun...zou, 2025](https://arxiv.org/abs/2504.07952)) or A-MEM ([xu...zhang, 2025](https://arxiv.org/abs/2502.12110))), the summaries become much shorter and less informative over time
     - ACE introduces 3 roles: generator, reflector, and curator
-  
+  - Scaling Latent Reasoning via Looped LMs ([Bytedance; zhu...eshraghian, 2025](https://arxiv.org/abs/2510.25741)) - build reasoning in during pre-training
+  - AsyncThink -- The Era of Agentic Organization: Learning to Organize with LMs ([chi...furu wei, 2025](https://arxiv.org/abs/2510.26658))
+  - ExpeL: LLM Agents Are Experiential Learners ([zhao...huang, 2023](https://arxiv.org/abs/2308.10144)) - extract insights that are not query-specific
 - variations on finding solution paths (add some post-training to make these work)
   - Recursive Self-Aggregation Unlocks Deep Thinking in LLMs ([venkatraman...jain, 2025](https://arxiv.org/abs/2509.26626))
     - self-aggregation: provide LRM with the query and a set of candidate solutions, then prompt it to produce an improved solution
@@ -787,6 +790,8 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
 - Retrieval Head Mechanistically Explains Long-Context Factuality ([wu...fu, 2024](https://arxiv.org/abs/2404.15574))
 - A Phase Transition between Positional and Semantic Learning in a Solvable Model of Dot-Product Attention ([cui...zdeborova, 2024](https://arxiv.org/pdf/2402.03902.pdf)) - solve 1-layer attention model for histogram task and find  phase transition
 - The Hydra Effect: Emergent Self-repair in LM Computations ([mcgrath...legg, 2023](https://arxiv.org/abs/2307.15771)) - ablations atone attention layer of an LLM cause another layer to compensate
+  - LLM Layers Immediately Correct Each Other ([patrawala, feng, jones & steinhardt, 2025](https://openreview.net/forum?id=7DY7kB8wyZ&referrer=%5Bthe%20profile%20of%20Jacob%20Steinhardt%5D(%2Fprofile%3Fid%3D~Jacob_Steinhardt1)))
+
 - Neurons in LLMs: Dead, N-gram, Positional ([voita, ferrando, & nalmpantis, 2023](https://arxiv.org/pdf/2309.04827.pdf))
 - Codebook Features: Sparse and Discrete Interpretability for Neural Networks ([tamkin, taufeeque, & goodman, 2023](https://arxiv.org/abs/2310.17230))
 - Program synthesis via mechanistic interpretability ([michaud...tegmark](https://arxiv.org/abs/2402.05110)) - condense RNN on simple algorithmic tasks into code
@@ -804,6 +809,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
     - [sun...kolter, liu 2024](https://arxiv.org/abs/2402.17762) demonstrated that “attention sinks” emerge due to previous massive neuron activation
     - [yona...gandelsman, 2025](https://arxiv.org/abs/2503.08908) linked the emergence of “attention sinks” to the inability of LMs to repeatedly generate a single token, and suggested a test-time fix by zeroing out the relevant activated neuron
     - Why do LLMs attend to the first token? ([barbero...pascanu, 2025](https://arxiv.org/abs/2504.02732)) - attention sink provides a method for LLMs to avoid over-mixing
+  - Attention Sinks in dLLMs ([rulli...devoto, 2025](https://arxiv.org/abs/2510.15731)) - dLLMs (1) attend to different sink tokens during unmasking, and (2) masking out sinks doesn't hurt performance too much
 
 
 ## sparse autoencoders (saes)
@@ -992,6 +998,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - Explain via Any Concept: Concept Bottleneck Model with Open Vocabulary Concepts ([tan, zhou, & chen, 2024](https://arxiv.org/pdf/2408.02265))
   - Interpretable-by-Design Text Understanding with Iteratively Generated Concept Bottleneck ([ludan...callison-burch, 2023](https://arxiv.org/abs/2310.19660))
   - BC-LLM: Bayesian Concept Bottleneck Models with LLM Priors ([feng...tan, 2024](https://arxiv.org/abs/2410.15555))
+    - Learning Interpretable Concept-Based Models with Human Feedback ([lage & doshi-velez, 2020](https://arxiv.org/abs/2012.02898))
   - HypotheSAEs ([movva...pierson, 2025](https://arxiv.org/abs/2502.04382))
   - Verbalized Sampling ([zhang...shi, 2025](https://arxiv.org/abs/2510.01171))
   
@@ -1274,6 +1281,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - InfiAgent-DABench: Evaluating Agents on Data Analysis Tasks ([hu...wu, 2024](https://arxiv.org/abs/2401.05507)) - 257 precise (relatively easy) questions that can be answered from 1 of 52 csv datasets
     - ![Screenshot 2025-06-19 at 3.53.53 PM](../assets/Screenshot%202025-06-19%20at%203.53.53%E2%80%AFPM.png)
 - earlier benchmarks (+their associated models)
+  - DataSciBench: An LLM Agent Benchmark for Data Science ([zhang...yue, 2025](https://arxiv.org/abs/2502.13897))
   - Data Interpreter: An LLM Agent For Data Science ([hong...wu, 2024](https://arxiv.org/pdf/2402.18679.pdf))
   - QRdata benchmark ([liu...kai-wei cheng, feng, 2024](https://arxiv.org/abs/2402.17644)) - 411 questions accompanied by data sheets from textbooks, online learning materials, and academic papers
   - DS-Agent: Automated Data Science by Empowering LLMs with Case-Based Reasoning ([guo...wang, 2024](https://arxiv.org/abs/2402.17453)) - store reasoning/code from solutions to training kaggle tasks, then use them given new kaggle task
@@ -1294,6 +1302,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - forecasting paper titles ([blog post](https://csinva.io/gpt-paper-title-generator/))
   - All That Glitters is Not Novel: Plagiarism in AI Generated Research ([gupta & pruthi, 2025](https://arxiv.org/pdf/2502.16487))
   - AI-Researcher: Autonomous Scientific Innovation ([tang, xia, li & huang, 2025](https://arxiv.org/abs/2505.18705))
+  - Kosmos: An AI Scientist for Autonomous Discovery ([mitchener...white, 2025](https://arxiv.org/abs/2511.02824))
 - LLMs for Automated Open-domain Scientific Hypotheses Discovery ([yang...cambria, 2023](https://arxiv.org/abs/2309.02726)) - pipeline to generate new hypotheses from social science academic papers
   - Can LLMs Generate Novel Research Ideas? A Large-Scale Human Study with 100+ NLP Researchers ([si, yang, & hashimoto, 2024](https://arxiv.org/abs/2409.04109)) - LLM ideas are judged to be slightly better than human expert ideas
     - The Ideation-Execution Gap: Execution Outcomes of LLM-Generated versus Human Research Ideas ([si, hashimoto, & yang, 2025](https://arxiv.org/abs/2506.20803)) - after implementation and reporting in a 4-pg paper, LLM ideas are no longer judged to be better
@@ -1359,12 +1368,15 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
     - Rephrase and Respond: Let LLMs Ask Better Questions for Themselves ([deng...gu, 2024](https://arxiv.org/abs/2311.04205))
   - Loose LIPS Sink Ships:  Asking Questions in *Battleship* with Language-Informed Program Sampling ([grand, pepe, andreas, & tenenbaum , 2024](https://arxiv.org/pdf/2402.19471.pdf)) - language-informed program sampling (LIPS) model uses LLMs (LLMs) to generate NL questions, translate them into symbolic programs, and evaluate their expected info gain
     - Shoot First, Ask Questions Later? Building Rational Agents that Explore and Act Like People ([grand, pepe, andreas & tenenbaum, 2025](https://arxiv.org/abs/2510.20886)) - agent tries to ask useful questions to another agent that can see the whole board
+    - Completion $\neq$ Collaboration: Scaling Collaborative Effort with Agents ([shen...sontag, 2025](https://arxiv.org/abs/2510.25744))
   - Proactive Agents for Multi-Turn Text-to-Image Generation Under Uncertainty ([hahn...been kim, wang 2024](https://arxiv.org/abs/2412.06771)) - maintain explicit and organized knowledge graph of the user’s stated understanding and confusion
+  - Tandem Training for LMs ([west, anderson, kamar & horvitz, 2025](https://arxiv.org/abs/2510.13551)) - during training, encourage big LM to produce solutions that remain intelligible to weaker LM
 - User simulators
   - Nice blog posts: https://jessylin.com/2025/07/10/user-simulators-1/
   - On the Utility of Learning about Humans for Human-AI Coordination ([carroll...dragan, 2019](https://arxiv.org/abs/1910.05789))
     - self-play training against a model that hasn’t been trained to be human-like only teaches the model to collaborate with other models in [narrow ways](https://arxiv.org/abs/1910.05789), falling flat when faced with (out-of-distribution) human behavior
-
+  - Flipping the Dialogue: Training and Evaluating User LMs ([naous, laban, xu & neville, 2025](https://arxiv.org/abs/2510.06552)) - train an 8B model to better work as a user simulator
+  
 - AI tutor
   - Unifying AI Tutor Evaluation: An Evaluation Taxonomy for Pedagogical Ability Assessment of LLM-Powered AI Tutors ([maurya et al. 2025](https://arxiv.org/pdf/2412.09416)) - evaluate LLM tutor/student conversations by rating them on several automated metrics, e.g. "Has the tutor identified/recognized a mistake in a student’s response?"
   - Zone of Proximal Development (ZPD) (Vygotsky, 1978) posits that learning is maximized when
@@ -1402,6 +1414,16 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
 
 - Forecasting Future World Events with Neural Networks ([zou...hendrycks, 2022](https://arxiv.org/abs/2206.15474)) - takes tasks from metaculus
 
+  - ForecastBench: A Dynamic Benchmark of AI Forecasting Capabilities ([karger...tetlock, 2024](https://arxiv.org/abs/2409.19839))
+  - AIA Forecaster ([alur...sekhon, 2025; bridgewater](https://www.arxiv.org/abs/2511.07678))
+    - combines 3 elements
+      - agentic search over high-quality news  sources
+      - supervisor agent that reconciles disparate forecasts for the same event
+      - set of statistical calibration techniques to counter behavioral biases in LLMs
+
+    - evaluate on real-time, forward-looking forecasts
+    - LLMs are too cautious, require calibration
+
 - Shortcut Learning of LLMs in Natural Language Understanding: A Survey ([du et al. 2022](https://arxiv.org/abs/2208.11857))
 
 - science
@@ -1413,14 +1435,14 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
 - evaluation without groundtruth
   - Evaluating Superhuman Models with Consistency Checks ([fluri, …, tramer, 2023](https://arxiv.org/abs/2306.09983))
   - A Taxonomy of Transcendence ([abreu, zhang, malach & saphra, 2025](https://arxiv.org/abs/2508.17669))
-  
+
 - Learning from learning machines: a new generation of AI technology to meet the needs of science ([berkeley+lbnl+, 2021](https://arxiv.org/pdf/2111.13786.pdf))
   - do more than predict what will happen, they attempt to offer insight into how or why
   - AI-based LMs powering drug discovery and development ([liu et al. 2021](https://www.sciencedirect.com/science/article/pii/S1359644621002816))
   - BioTranslator: Multilingual translation for zero-shot biomedical classification ([xu, woicik, poon, altman, & wang, 2023](https://www.nature.com/articles/s41467-023-36476-2)) - takes a user- written textual description of a new concept and then translates this description to a non-text biological data instance
     - results for biological data, e.g. genes, proteins
     - enables the identification of novel cell types using only a textual description
-  
+
 - Communication with animals
   - [Coller-Dolittle Prize](https://coller-dolittle-24.sites.tau.ac.il) for Inter-species Communication
   - Cetacean Translation Initiative: a roadmap to deciphering the communication of sperm whales ([andreas, begus, …, wood, 2021](https://arxiv.org/pdf/2104.08614.pdf))
@@ -1429,7 +1451,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - A Theory of Unsupervised Translation Motivated by Understanding Animal Communication ([goldwasser…paradise, 2023](https://arxiv.org/abs/2211.11081))
   - Approaching an unknown communication system by latent space exploration and causal inference ([begus, leban, & gero, 2023](https://arxiv.org/abs/2303.10931)) - manipulate GAN latent variables in approach called causal disentanglement with extreme values (CDEV)
   - Vowels and Diphthongs in Sperm Whales ([begus, sprous, leban, & gero, 2023](https://osf.io/preprints/osf/285cs)) - use data from the dominica sperm whale project ([gero et al. 2014](https://onlinelibrary.wiley.com/doi/abs/10.1111/mms.12086))
-  
+
 - scientific organization ([galactica](https://galactica.org/static/paper.pdf))
   - related but smaller models
     - SciBERT ([beltagy...cohan, 2019](https://arxiv.org/abs/1903.10676))
@@ -1473,7 +1495,6 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - MedCalc-Bench: Evaluating LLMs for Medical Calculations ([khandekar...lu, 2024](https://arxiv.org/abs/2406.12036)) - create examples / questions from popular MDCalc guidelines
   - CDR-Agent: Intelligent Selection and Execution of Clinical Decision Rules Using LLM Agents ([xiang...yu, 2025](https://arxiv.org/abs/2505.23055))
   - MedCaseReasoning: Evaluating and learning diagnostic reasoning from clinical case reports ([wu...zou, 2025](https://arxiv.org/abs/2505.11733))
-  
 - Health system-scale LMs are all-purpose prediction engines ([NYU 2023](https://www.nature.com/articles/s41586-023-06160-y))
 - Sequential Diagnosis with LMs ([nori...horvitz, 2025](https://arxiv.org/abs/2506.22405v1)) - train LLM system to solve hard cases from NEJM - AI starts with limited information and can order tests (by querying info), and tries to minimize overall cost
   - AMIE: Towards Conversational Diagnostic AI ([tu...natarajan, 2024](https://arxiv.org/abs/2401.05654))
@@ -1503,7 +1524,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
         - age and timeline start year are encoded as coarse 5-year interval tokens
       - assess zero-shot performance on ICU mortality / 30-day inpatient readmission
   - ETHOS: Zero shot health trajectory prediction using transformer ([renc…sitek, 2024](https://www.nature.com/articles/s41746-024-01235-0))
-      - ARES (ETHOS followup) - Foundation Model of Electronic Medical Records for Adaptive Risk Estimation ([renc…sitek, 2025](https://arxiv.org/abs/2502.06124))
+      - ARES (ETHOS followup) - Foundation Model of Electronic Medical Records for Adaptive Risk Estimation ([renc…sitek, 2025](https://arxiv.org/abs/2502.06124)) - compute dynamic, personalized risk probabilities for clinician-defined critical events (i.e. risk updates as new patient data is added)
   - Exploring Scaling Laws for EHR Foundation Models ([zhang…wong, naumann, poon, 2025](https://arxiv.org/abs/2505.22964)) - train models from scratch up to 1B with LLaMA architecture
 - Training LLMs for EHR-Based Reasoning Tasks via Reinforcement Learning ([lin, wu, & sun, 2025](https://arxiv.org/abs/2505.24105)) - train on MedCalc-Bench and eval on risk calculator computation (MedCalc-Bench), clinical trial matching (TREC Clinical Trials), and disease diagnosis (EHRShot)
   - start with supervised finetuning before applying RLVR
