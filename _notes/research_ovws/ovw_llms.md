@@ -811,7 +811,6 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
     - Why do LLMs attend to the first token? ([barbero...pascanu, 2025](https://arxiv.org/abs/2504.02732)) - attention sink provides a method for LLMs to avoid over-mixing
   - Attention Sinks in dLLMs ([rulli...devoto, 2025](https://arxiv.org/abs/2510.15731)) - dLLMs (1) attend to different sink tokens during unmasking, and (2) masking out sinks doesn't hurt performance too much
 
-
 ## sparse autoencoders (saes)
 
 - early papers
@@ -1567,7 +1566,13 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
 
 - neurips 2023 [tabular workshop](https://table-representation-learning.github.io) and [review](https://arxiv.org/abs/2402.05121) from feb 4 2024
 
-- best benchmark: TabArena ([erickson...salinas, hutter, 2025](https://arxiv.org/abs/2506.16791))
+- benchmarks
+
+  - TabArena ([erickson...salinas, hutter, 2025](https://arxiv.org/abs/2506.16791))
+
+  - TALENT benchmark ([ye...zhan, 2024](https://arxiv.org/abs/2407.00956))
+
+  - meta-test bechmark ([holzmuller, grinsztajn, & steinwart, 2024](https://proceedings.neurips.cc/paper_files/paper/2024/file/2ee1c87245956e3eaa71aaba5f5753eb-Paper-Conference.pdf))
 
 - tabPFN main works
   - TabICL: A Tabular Foundation Model for In-Context Learning on Large Data ([qu...varoquax, le morvan, 2025](https://www.arxiv.org/abs/2502.05564))
@@ -1627,6 +1632,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - TABBIE ([Iida, ..., Iyyer, 2021](https://arxiv.org/abs/2105.02584)) - trained to detect corrupted cells (then embeddings used for downstream tasks)
     - average row/column embeddings
   - Enhanced Model-agnostic Training of Deep Tabular Generation Models https://openreview.net/forum?id=gJiOQw1fkF
+
 - jointly encode table with text prompt / text in the table
   - TP-BERTa: Making Pre-trained LMs Great on Tabular Prediction ([2023](https://openreview.net/forum?id=anzIzGZuLi))
     - adds *relative magnitude tokenization* - converts scalar numerical feature values to discrete tokens (discretization requires a label)
@@ -1658,6 +1664,30 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - CTAB-GAN+ ([zhao...chen, 2022](https://arxiv.org/abs/2204.00401))
     - CTAB-GAN ([zhao...chen, 2021](https://proceedings.mlr.press/v157/zhao21a))
     - CTGAN ([xu...veeramachaneni, 2019](https://proceedings.neurips.cc/paper/2019/hash/254ed7d2de3b23ab10936522dd547b78-Abstract.html))
+
+- kernel approaches
+
+  - xRFM: Accurate, scalable, and interpretable feature learning models for tabular data ([beaglehole, holzmüller, radhakrishnan & belkin, 2025](https://arxiv.org/abs/2508.10053))
+
+    - use more general kernel than RFM with parameters
+
+    - recursively learn a decision tree by splitting on the kernel eigenvector direction of 1-step RFM
+
+    - Recursive Feature Machine (RFM) ([radhakrishnan…belkin, 2024](https://www.science.org/doi/abs/10.1126/science.adi5639))
+
+      - use the Average Gradient Outer Product (AGOP). Given a predictive model $\widehat{f}: \mathbb{R}^d \rightarrow \mathbb{R}$ and data $S=\left\{x^{(1)}, \ldots, x^{(n)}\right\} \subset \mathbb{R}^d$, the AGOP is defined as
+
+        $$
+        \operatorname{AGOP}(\widehat{f}, S)=\frac{1}{n} \sum_{i=1}^n \nabla \widehat{f}\left(x^{(i)}\right) \nabla \widehat{f}\left(x^{(i)}\right)^T \in \mathbb{R}^{d \times d}
+        $$
+
+        where $\nabla \widehat{f}\left(x^{(i)}\right)$ denotes the gradient of $\widehat{f}$ at the point $x^{(i)}$. The AGOP is an estimate of the (un-centered) covariance of the gradients of $\widehat{f}$ and intuitively captures the subspace along which the predictor highly varies
+
+        - diagonal indicates coordinates relevant for prediction (basically the average )
+        - top eigenvectors indicate directions in data most relevant for prediction
+
+      - RFM iterates between training $\hat f$ and using the AGOP of the trained model to select features and linearly transform input data
+
 - reviews
   - Transformers for Tabular Data Representation: A Survey of Models and Applications ([badaro...papotti, 2023](https://direct.mit.edu/tacl/article/doi/10.1162/tacl_a_00544/115239/Transformers-for-Tabular-Data-Representation-A))
     - common data sources: Wikipedia tables for QA (e.g. 3.2M tables in [this paper](https://www.semanticscholar.org/paper/TabEL%3A-Entity-Linking-in-Web-Tables-Bhagavatula-Noraset/8ffcad9346c4978a211566fde6807d6fb4bfa5ed)) or WDC web table corpus (233M tables from [lehmberg et al. 2016](https://dl.acm.org/doi/10.1145/2872518.2889386))
