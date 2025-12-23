@@ -608,6 +608,7 @@ Symbolic regression learns a symbolic expression for a function (e.g. a mathemat
 - Optimizing for Interpretability in DNNs with Tree Regularization ([wu...doshi-velez, 2021](https://www.jair.org/index.php/jair/article/view/12558)) - regularize DNN prediction function towards tree (potentially only for some region)
   - [Beyond Sparsity: Tree Regularization of Deep Models for Interpretability](https://arxiv.org/pdf/1711.06178.pdf) - regularize so that deep model can be closely modeled by tree w/ few nodes
 - Adaptive Neural Trees ([tanno et al. 2019](http://proceedings.mlr.press/v97/tanno19a.html?utm_campaign=piqcy&utm_medium=email&utm_source=Revue%20newsletter)) - adaptive neural tree mechanism with trainable nodes, edges, and leaves
+- Neural Rule Lists: Learning Discretizations, Rules, and Order in One Go ([xu, walter & vreeken, 2025](https://openreview.net/forum?id=oBf5eZSeBT))
 - mixture of experts (MOE) / hierarchical MOE
 - Oblique Decision Trees from Derivatives of ReLU Networks ([lee & jaakkola, 2020](https://arxiv.org/abs/1909.13488))
   - locally constant networks (which are derivatives of relu networks) are equivalent to trees

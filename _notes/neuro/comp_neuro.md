@@ -890,6 +890,7 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - fMRI/PET
     - MRI with [millisecond temporal precision](https://www.biorxiv.org/content/10.1101/2021.05.21.444581v2)
     - molecular fmri (bartelle)
+    - there are some issues with the relationship between BOLD and underlying neuronal activity (e.g. see [epp et al. 2025](https://www.nature.com/articles/s41593-025-02132-9))
   - MRS
   - event-related optical signal = near-infrared spectroscopy
   
@@ -1057,6 +1058,7 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - damage to left-hemisphere frontal/temporal brain areas leads to aphasia (deficits in language comprehension and production)
   - Language models align with brain regions that represent concepts across modalities ([ryskina, tuckute, ..., fedorenko, 2025](https://arxiv.org/pdf/2508.11536)) - use data that presents the same concepts in word map, sentences, or pictures to find brain areas that respond in a modality-agnostic way
     - language-only and language-vision models predict the signal better in more meaning-consistent areas of the brain
+  - What does it mean to understand language? ([casto, ivanova, fedorenko & kanwisher, 2025](https://arxiv.org/abs/2511.19757)) - the language system exports info to other parts of the brain for deep understanding
 - Language is widely distributed throughout the brain ([drijvers, small, & skipper, 2025](https://www.nature.com/articles/s41583-024-00903-0)) - respond that rather than a "language network", the ‘language network’ could more simply be conceived of as a collection of hierarchically organized auditory association cortices communicating with functional connectivity hubs that coordinate a whole-brain distribution of contextually determined and, thus, highly variable ‘peripheral’ regions
 - Semantic encoding during language comprehension at single-cell resolution ([jamali...fedorenko, williams, 2024](https://www.nature.com/articles/s41586-024-07643-2))
 - interpreting brain encoding models
@@ -1072,7 +1074,7 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 
   - Seminal language-semantics fMRI study ([huth…gallant, 2016](https://www.nature.com/articles/nature17637)) - build mapping of semantic concepts across cortex using word vecs
     - Crafting Interpretable Embeddings for Language Neuroscience by Asking LLMs Questions ([benara et al. 2024](https://openreview.net/pdf?id=mxMvWwyBWe))
-    - A generative framework to bridge data-driven models and scientific theories in language neuroscience ([antonello et al. 2024](https://arxiv.org/abs/2410.00812))
+    - Generative causal testing to bridge data-driven models and scientific theories in language neuroscience ([antonello et al. 2024](https://arxiv.org/abs/2410.00812))
     - Explanations of Deep Language Models Explain Language
       Representations in the Brain ([rahimi...daliri, 2025](https://arxiv.org/pdf/2502.14671)) - build features using attribution methods and find some small perf. improvements in early language areas
   - Deep language algorithms predict semantic comprehension from brain activity)([caucheteux, gramfort, & king, facebook, 2022](https://www.nature.com/articles/s41598-022-20460-9)) - predicts fMRI with gpt-2 on the narratives dataset
@@ -1092,7 +1094,6 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
     - Artificial Neural Network Language Models Predict Human Brain Responses to Language Even After a Developmentally Realistic Amount of Training  ([hosseini...fedorenko, 2024](https://direct.mit.edu/nol/article/5/1/43/119156/Artificial-Neural-Network-Language-Models-Predict)) - models trained on a developmentally plausible amount of data (100M tokens) already align closely with human benchmarks
     - Improving semantic understanding in speech language models via brain-tuning ([moussa...toneva, 2024](https://arxiv.org/abs/2410.09230))
     - Individual differences shape conceptual representation in the brain ([Visconti di Oleggio Castello, la Tour, & Gallant, 2025](https://www.biorxiv.org/content/10.1101/2025.08.22.671848v1))
-    
   - eeg models
   
     - directly model time series
@@ -1151,6 +1152,9 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - A variational autoencoder provides novel, data-driven features that explain functional brain representations in a naturalistic navigation task ([cho, zhang, & gallant, 2023](https://jov.arvojournals.org/article.aspx?articleid=2792546))
   - What's the Opposite of a Face? Finding Shared Decodable Concepts and their Negations in the Brain ([efird...fyshe, 2024](https://arxiv.org/abs/2405.17663)) - build clustering shared across subjects in CLIP space
   - When compared to vision, brain activity patterns measured during mental imagery have much lower signal-to-noise ratios (SNR) ([roy...kay, naselaris, 2023](https://jov.arvojournals.org/article.aspx?articleid=2792335)), vary along fewer signal dimensions ([roy...kay, naselaris, 2024](https://2024.ccneuro.org/pdf/415_Paper_authored_tiasha_ccn2024_withauthors.pdf)), and encode imagined stimuli with expanded receptive fields and lower spatial frequency preferences, especially in early visual cortex ([breedlove...naselaris, 2020](https://www.cell.com/current-biology/fulltext/S0960-9822(20)30494-2?dgcid=raven_jbs_etoc_email))
+  - Reading specific memories from human neurons before and after sleep ([ding…fried, 2025](https://www.biorxiv.org/content/10.1101/2025.07.01.662486v3))
+    - predict neuronal spikes from intracranial microelectrodes recorded during a single viewing of an audiovisual episode
+    - after viewing, they decode concepts during memory tests (e.g. persons or place) both before and after sleep, and and show that the decoding weights change
 - bmi
   - Accelerated learning of a noninvasive human brain-computer interface via manifold geometry ([busch...turk-brown, 2025](https://www.biorxiv.org/content/10.1101/2025.03.29.646109v1)) - train subjects to control avatar navigation through fMRI, then perturb environment and evaluate decoder
   - Neural-Driven Image Editing ([zhou...you, 2025](https://arxiv.org/abs/2507.05397)) - use EEG/fNIRS and image pairs to train a model for image editing
@@ -1193,6 +1197,10 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 - Estimating Brain Activity with High Spatial and Temporal Resolution using a Naturalistic MEG-fMRI Encoding Model ([jin & wehbe, 2025](https://arxiv.org/abs/2510.09415)) - build joint encoding model to predict MEG/fMRI from moth stories
   - model is trained to predict MEG and fMRI from multiple subjects simultaneously, with a latent layer that represents estimates of reconstructed cortical sources
   - Estimated activity in thesource space predict ECoG better than an ECoG-trained encoding model in an entirely new dataset
+- Meta-Learning an In-Context Transformer Model of Human Higher Visual Cortex ([yu...luo, 2025](https://arxiv.org/abs/2505.15813)) - learn to predict encoding weights (for a particular feature space) from single voxel activity; use synthetic data for training
+- Brain-Like Processing Pathways Form in Models With Heterogeneous Experts ([cook, akarca, costa & achterberg, 2025](https://arxiv.org/abs/2506.02813)) - predicting various actions in the time-series cogsci [Neurogym](https://pure.eur.nl/ws/portalfiles/portal/59119331/MolanoMazon_Neurogym.pdf) leads
+  - imposing cost to route to experts enables more difficult experts to be used for more difficult tasks
+
 
 
 # advanced topics

@@ -177,6 +177,14 @@
 
 
 
+# publishing
+
+- Context Widows ([kevin baker, 2025](https://artificialbureaucracy.substack.com/p/context-widows)) - publishing system is broken & LLMs exacerbate the issue
+  - One answer, developed through the 1960s and institutionalized in the 1970s, was citation metrics. Eugene Garfield’s Institute for Scientific Information built tools to track who cited whom, which journals mattered, which papers had influence
+  - The tools built to navigate the literature became tools to evaluate the people who produced it
+- Measures as ends ([ben recht, 2025](https://www.argmin.net/p/measures-as-ends))
+  - Goodhart was after the idea that measurements are attempts at extracting information about latent states that aren’t directly measurable. Once the measurement is mispurposed as an optimization target, it fails to provide information about those latent states. Sociologist Robert Merton, who coined the term goal displacement, argued that *all* measurements become targets in bureaucratic systems. This is far more concerning. And yet it is so obviously true.
+
 # workism
 
 - “I don’t have a dream job because i don’t dream of labor”
