@@ -129,6 +129,7 @@ Over time, ML has bounced from *feature-engineering* -> *architecture engineerin
   - Aug-tree ([singh, askari, caruana, & gao, 2023](https://arxiv.org/abs/2209.11799))
   - Tree-prompting ([morris, singh, rush, gao, & deng, 2023](https://arxiv.org/abs/2310.14034))
     - Interpretable-by-Design Text Classification with Iteratively Generated Concept Bottleneck ([ludan...callison-burch, 2023](https://arxiv.org/abs/2310.19660))
+    - ACT: Agentic Classification Tree ([grari...detyniecki, 2025](https://arxiv.org/abs/2509.26433)) - same as tree-prompting
   - tree of thoughts ([yao et al. 2023](https://arxiv.org/abs/2305.10601)) - LLM generates a tree of intermediate answers and perform steps such as backtracking
     - Graph of Thoughts: Solving Elaborate Problems with LLMs ([besta, .., hoefler, 2023](https://arxiv.org/pdf/2308.09687.pdf)) - allows merging/looping in the tree, e.g. for sorting
 - optimizing cost efficiency
@@ -156,6 +157,7 @@ Over time, ML has bounced from *feature-engineering* -> *architecture engineerin
     - Min-p, Max Exaggeration: A Critical Analysis of Min-p Sampling in LMs ([schaeffer...denisov-blanch, 2025](https://arxiv.org/abs/2506.13681))
   - Sampling from Your LM One Byte at a Time ([hayase, liu, smith, oh, 2025](https://arxiv.org/pdf/2506.14123))
     - Broken Tokens? Your LM can Secretly Handle Non-Canonical Tokenizations ([zheng...choi, smith, 2025](https://arxiv.org/abs/2506.19004)) - some sequences can be tokenized in different ways (e.g. using character-level tokenizer) -- feeding these into a model still generally works
+  - Verbalized Sampling ([zhang...shi, 2025](https://arxiv.org/abs/2510.01171)) - simple prompting strategy for more diverse sampling, e.g. "Generate 5 jokes about coffee and their corresponding probabilities"
 
 ## prompt chaining / ensembling
 
@@ -561,6 +563,7 @@ Nice survey here: A Survey on dLLMs ([li, chen, guo & shen, 2025](https://arxiv.
 - nice blog post on scaling RL/RLVR: https://yidingjiang.github.io/blog/post/exploration/
 - Reasoning Activation in LLMs via Small Model Transfer ([ouyang...jiawei han, 2025](https://ozyyshr.github.io/RAST/)) - perform RL finetuning on small model, then take [difference between RL-finetuned small model and original small model] and add difference to logits from big model
 - reasoning gym: https://github.com/open-thought/reasoning-gym
+- Meta-RL Induces Exploration in Language Agents ([jiang...brbic, 2025](https://arxiv.org/abs/2512.16848))
 
 ## test-time training
 
@@ -578,7 +581,8 @@ Nice survey here: A Survey on dLLMs ([li, chen, guo & shen, 2025](https://arxiv.
   - The Markovian Thinker ([aghajohari...sordoni, courville, reddy, 2025](https://arxiv.org/abs/2510.06557v1)) - want to reason over long contexts with a fixed state length
     - create environment "Delethink", where LRM iteratively keeps deleting most of the context (keeping only the question and the end text) and then continuing to answer
     - use RL to train a 1.5B R1-Distill model
-  - Recursive Language Models ([zhang & kattab, 2025 blog post](https://alexzhang13.github.io/blog/2025/rlm/)) - explore LLMs that recursively call themselves or other LLMs before providing a final answer
+  - Recursive LMs ([zhang, kraska & khattab, 2025 paper](https://arxiv.org/abs/2512.24601v1))
+    - Recursive Language Models ([zhang & kattab, 2025 blog post](https://alexzhang13.github.io/blog/2025/rlm/)) - explore LLMs that recursively call themselves or other LLMs before providing a final answer
     - enables GPT-5-mini to outperform GPT-5 on OOLONG long-context benchmark
   - Agentic Context Engineering (ACE): Evolving Contexts for Self-Improving LMs ([zhang...olukotun, 2025](https://arxiv.org/abs/2510.04618))
     - context collapse - when an LLM is tasked with fully rewriting the accumulated context at each adaptation step (e.g. Dynamic Cheatsheet ([suzgun...zou, 2025](https://arxiv.org/abs/2504.07952)) or A-MEM ([xu...zhang, 2025](https://arxiv.org/abs/2502.12110))), the summaries become much shorter and less informative over time
@@ -1022,9 +1026,8 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - BC-LLM: Bayesian Concept Bottleneck Models with LLM Priors ([feng...tan, 2024](https://arxiv.org/abs/2410.15555))
     - Learning Interpretable Concept-Based Models with Human Feedback ([lage & doshi-velez, 2020](https://arxiv.org/abs/2012.02898))
     - Interpretable-by-Design Text Understanding with Iteratively Generated Concept Bottleneck ([ludan...callison-burch, 2023](https://arxiv.org/abs/2310.19660))
-    - Programmatic Representation Learning with LMs ([poesia & sampaio, 2025](https://arxiv.org/abs/2510.14825)) - build decision trees on llm-extracte features
+    - Programmatic Representation Learning with LMs ([poesia & sampaio, 2025](https://arxiv.org/abs/2510.14825)) - build decision trees on llm-extracted features
   - HypotheSAEs ([movva...pierson, 2025](https://arxiv.org/abs/2502.04382))
-  - Verbalized Sampling ([zhang...shi, 2025](https://arxiv.org/abs/2510.01171))
   - Evaluating scientific theories as predictive models in language neuroscience ([singh...huth, 2025](https://www.biorxiv.org/content/10.1101/2025.08.12.669958v1))
     - Bridging Brains and Concepts: Interpretable Visual Decoding from fMRI with Semantic Bottlenecks ([cammarota, ferrante & toschi, 2025](https://openreview.net/forum?id=K6ijewH34E))
     - Disentangling Superpositions: Interpretable Brain Encoding Model with Sparse Concept Atoms ([zeng & gallant, 2025](https://openreview.net/forum?id=3aNvX9TQTo))
@@ -1161,7 +1164,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - SASC: Explaining black box text modules in natural language with LMs ([singh, hsu, ..., gao, 2023](https://arxiv.org/abs/2305.09863))
 	  - Zero-shot LLM-guided Counterfactual Generation for Text ([bhattacharjee...liu, 2024](https://arxiv.org/pdf/2405.04793))
     - SAGE: An Agentic Explainer Framework for Interpreting SAE Features in LMs ([han, xu, jin & du, 2025](https://arxiv.org/abs/2511.20820)) - iterates and tests natural language explanations
-    - Capturing Polysemanticity with PRISM: A Multi-Concept Feature Description Framework ([kopf...eberle, 2025](https://arxiv.org/abs/2506.15538v3)) - combines SASC with QA-Emb ([benara...gao, 2024](https://arxiv.org/pdf/2405.16714)) and clusters NL explanations for an individual neuron
+    - PRISM: A Multi-Concept Feature Description Framework ([kopf...eberle, 2025](https://arxiv.org/abs/2506.15538v3)) - combines SASC with QA-Emb ([benara...gao, 2024](https://arxiv.org/pdf/2405.16714)) and clusters NL explanations for an individual neuron
   - LMs can explain neurons in LMs ([bills, cammarata, ...saunders, 2023, openai](https://openaipublic.blob.core.windows.net/neuron-explainer/paper/index.html))
     - goal: explain a neuron
       - step 1: summarize (token, activation) pairs into an explanation
@@ -1210,6 +1213,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - CoT May Be Highly Informative Despite “Unfaithfulness” ([METR blog post, 2025](https://metr.org/blog/2025-08-08-cot-may-be-highly-informative-despite-unfaithfulness/)) - CoT is informative about LLM cognition as long as the cognition is complex enough that it can’t be performed in a single forward pass
   - overview paper: CoT Is Not Explainability ([barez...bengio, 2025](https://www.alphaxiv.org/abs/2025.02))
   - Monitoring Monitorability ([openai, 2025](https://cdn.openai.com/pdf/d57827c6-10bc-47fe-91aa-0fde55bd3901/monitoring-monitorability.pdf)) - define monitorability metric based on whether a model's actions can be predicted from its CoT (e.g. reward hacking, sycophantic)
+  - Is Chain-of-Thought Really Not Explainability? Chain-of-Thought Can Be Faithful without Hint Verbalization ([zaman & srivastava, 2025](https://arxiv.org/abs/2512.23032))
 - large reasoning models (LRMs)
   - Measuring the Faithfulness of Thinking Drafts in LRMs ([xiong...lakkaraju, 2025](https://arxiv.org/abs/2505.13774))
     - Intra-Draft Faithfulness - uses counterfactual step insertions to assess whether individual reasoning steps causally influence subsequent steps and final draft conclusion
@@ -1409,6 +1413,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
     - Completion $\neq$ Collaboration: Scaling Collaborative Effort with Agents ([shen...sontag, 2025](https://arxiv.org/abs/2510.25744))
   - Proactive Agents for Multi-Turn Text-to-Image Generation Under Uncertainty ([hahn...been kim, wang 2024](https://arxiv.org/abs/2412.06771)) - maintain explicit and organized knowledge graph of the user’s stated understanding and confusion
   - Tandem Training for LMs ([west, anderson, kamar & horvitz, 2025](https://arxiv.org/abs/2510.13551)) - during training, encourage big LM to produce solutions that remain intelligible to weaker LM
+  - Bridging the Gulf of Envisioning: Cognitive Design Challenges in LLM Interfaces ([subramonyam...seifert, 2023](https://arxiv.org/abs/2309.14459))
 - User simulators
   - Nice blog posts: https://jessylin.com/2025/07/10/user-simulators-1/
   - On the Utility of Learning about Humans for Human-AI Coordination ([carroll...dragan, 2019](https://arxiv.org/abs/1910.05789))
@@ -1987,6 +1992,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - One Step of Gradient Descent is Provably the Optimal In-Context Learner with One Layer of Linear Self-Attention ([Mahankali, Hashimoto, Ma, 23](https://arxiv.org/pdf/2307.03576.pdf))
     - math analysis for: icl can do gradient decent on linear regression
   - Pretraining task diversity and the emergence of non-Bayesian in-context learning for regression ([raventos…ganguli, 2023](https://openreview.net/forum?id=BtAz4a5xDg))
+  - The Bayesian Geometry of Transformer Attention ([aggarwal, dalal & misra, 2025](https://arxiv.org/abs/2512.22471)) - use synthetic tasks to track bayersian inference by attention
   - Understanding In-context Learning of Addition via Activation Subspaces ([hu, yin, jordan, steinhardt, & chen, 2025](https://arxiv.org/pdf/2505.05145)) - in ICL addition task, find low-dim subspace that tracks the unit digit, the tens digit, and identifies which tokens contain the most info
 - Transformers Learn Higher-Order Optimization Methods for In-Context Learning: A Study with Linear Models ([fu...sharan, 2023](https://arxiv.org/abs/2310.17086))
   - How Well Can Transformers Emulate In-context Newton’s Method? ([giannou...papailiopoulos, & lee, 2024](https://arxiv.org/pdf/2403.03183v1.pdf))
