@@ -1215,6 +1215,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - Monitoring Monitorability ([openai, 2025](https://cdn.openai.com/pdf/d57827c6-10bc-47fe-91aa-0fde55bd3901/monitoring-monitorability.pdf)) - define monitorability metric based on whether a model's actions can be predicted from its CoT (e.g. reward hacking, sycophantic)
   - Is Chain-of-Thought Really Not Explainability? Chain-of-Thought Can Be Faithful without Hint Verbalization ([zaman & srivastava, 2025](https://arxiv.org/abs/2512.23032))
 - large reasoning models (LRMs)
+  - Do explanations generalize across large reasoning models? ([pal, bau & singh, 2026](https://arxiv.org/abs/2601.11517))
   - Measuring the Faithfulness of Thinking Drafts in LRMs ([xiong...lakkaraju, 2025](https://arxiv.org/abs/2505.13774))
     - Intra-Draft Faithfulness - uses counterfactual step insertions to assess whether individual reasoning steps causally influence subsequent steps and final draft conclusion
     - Draft-to-Answer Faithfulness - perturbs draft's concluding logic to assess whether final answers follow from the the thinking draft
@@ -1291,7 +1292,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - Accurate proteome-wide missense variant effect prediction with AlphaMissense ([deepmind, 2023](https://www.science.org/doi/full/10.1126/science.adg7492)) - predict effects of varying single-amino acid changes
   - Bridging the Human-AI Knowledge Gap: Concept Discovery and Transfer in AlphaZero ([schut...hassabis, paquet, & been kim, 2023](https://arxiv.org/abs/2310.16410))
 - Learning a Decision Tree Algorithm with Transformers ([zhuang...gao, 2024](https://arxiv.org/abs/2402.03774))
-- Meta-Statistical Learning: Supervised Learning of Statistical Inference ([peyrard & cho, 2025](https://arxiv.org/pdf/2502.12088))
+- Meta-Statistical Learning: Supervised Learning of Statistical Inference ([peyrard & cho, 2025](https://arxiv.org/abs/2502.12088))
 - Targeted Cause Discovery with Data-Driven Learning ([kim...cho, 2024](https://arxiv.org/abs/2408.16218))
   - Sample, estimate, aggregate: A recipe for causal discovery foundation models ([wu, bao, barzilay, & jaakkola, 2024](https://arxiv.org/abs/2402.01929))
 
@@ -1534,6 +1535,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - LLMs are Few-Shot Clinical Information Extractors ([agrawal...sontag, 2022](https://arxiv.org/abs/2205.12689)) - use GPT3
   - Universal Abstraction: Harnessing Frontier Models to Structure Real-World Data at Scale ([wong...poon, 2025](https://arxiv.org/abs/2502.00943)) - specialized prompt template for extracting attributes using LLM
   - OmniStruct: Universal Text-to-Structure Generation across Diverse Schemas ([huang...chen, 2025](https://arxiv.org/abs/2511.18335)) - aggregate benchmarks to evaluate output formatting, e.g. in structured json
+- Human-AI Co-design for Clinical Prediction Models ([feng...singh, 2026](https://arxiv.org/abs/2601.09072))
 - guideline / decision rule following
   - CancerGUIDE: Cancer Guideline Understanding via Internal Disagreement Estimation ([unell...poon, 2025](https://arxiv.org/abs/2509.07325)) - construct clinician-annotated dataset for 121 NSCLC patient guideline trajectories & evaluate LLMs on it (closed source)
   - MedGUIDE: Benchmarking Clinical Decision-Making in LLMs ([li...wang, 2025](https://arxiv.org/abs/2505.11613)) - construct manually annotated dataset for ~7k samples from 55 trees across 17 cancer types for NCCN guidelines of patient trajectories [samples are synthetic]
