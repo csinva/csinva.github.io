@@ -1118,6 +1118,10 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - Multilingual Computational Models Reveal Shared Brain Responses to 21 Languages ([gregor de varda, malik-moraleda...tuckute, fedorenko, 2025](https://www.biorxiv.org/content/10.1101/2025.02.01.636044v1))
   - Constructed languages are processed by the same brain mechanisms as natural languages ([malik-moraleda...fedorenko, 2023](https://www.biorxiv.org/content/10.1101/2023.07.28.550667v2))
 
+## related modalities
+
+- Vicarious body maps bridge vision and touch in the human brain ([hedger, naselaris, kay, & knapen, 2025](https://www.nature.com/articles/s41586-025-09796-0))
+
 ## semantic decoding / bmi
 
 - duality between encoding and decoding (e.g. for probing smth like syntax in LLM)
