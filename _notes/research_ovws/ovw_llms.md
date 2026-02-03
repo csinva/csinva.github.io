@@ -541,6 +541,7 @@ Nice survey here: A Survey on dLLMs ([li, chen, guo & shen, 2025](https://arxiv.
   - CoTFormer: A Chain-of-Thought Driven Architecture with Budget-Adaptive Computation Cost at Inference ([mohtashami, pagliardini & jaggi, 2023](https://arxiv.org/abs/2310.10845)) - every forward pass first computes preliminary token embeddings; these activations are then interleaved back into the sequence and the shared block
     stack is executed again
   - CODI: Compressing Chain-of-Thought into Continuous Space via Self-Distillation ([shen...he, 2025](https://arxiv.org/abs/2502.21074)) - learns to align recurrent hidden states through distillation of final answer between teacher (with full CoT) and student (with compressed reasoning) paths
+  - Do Latent Tokens Think? A Causal and Adversarial Analysis of Chain-of-Continuous-Thought ([zhang...liu, 2025](https://arxiv.org/abs/2512.21711)) -- suggests that latent tokens aren't actually doing thinking but just serving as placeholders (although eval datasets are a little strange)
 - Training-free continuous latent reasoning
   - Mixture of Inputs: Text Generation Beyond Discrete Token Sampling ([zhuang, liu, singh, shang, & gao, 2025](https://arxiv.org/abs/2505.14827)) - post-hoc (requires no finetuning)
     - Soft Thinking: Unlocking the Reasoning Potential of LLMs in Continuous Concept Space ([zhang...shen, xin eric wang, 2025](https://arxiv.org/abs/2505.15778)) - post-hoc (requires no finetuning, outperformed by mixture of inputs)
@@ -561,6 +562,10 @@ Nice survey here: A Survey on dLLMs ([li, chen, guo & shen, 2025](https://arxiv.
   - Lost in Transmission: When and Why LLMs Fail to Reason Globally ([schnabel, tomlinson, swaminathan & neville, 2025](https://arxiv.org/abs/2505.08140)) - LRMs struggle with problems that require integrating information across multiple tokens in context (introduce BAPO measure to quantify this)
 - RL Teachers of Test Time Scaling ([cetin, zhao, & tang, 2025](https://arxiv.org/pdf/2506.08388)) - rather than learning through exploration, give teacher models the correct explanation and ask them to “connect-the-dots" with explanations for their students
   - this yields more accurate teachers, and better distillation data from the teachers for student models
+- RL via Self-Distillation ([hübotter...krause, 2026](https://arxiv.org/abs/2601.20802)) - self-distillation + privileged information (feedback)
+  - Self-Distilled Reasoner: On-Policy Self-Distillation for LLMs ([zhao...grover, 2026](https://siyan-zhao.github.io/assets/papers/OPSD.pdf))
+  - Self-Distillation Enables Continual Learning ([shenfeld, damani, hübotter & agrawal, 2026](https://arxiv.org/abs/2601.19897)) - model writes its own answers (a) on its own  and (b) after seeing the true answer. Then train to make (a) close to (b) by minimizing the KL divergence. 
+  
 - nice blog post on scaling RL/RLVR: https://yidingjiang.github.io/blog/post/exploration/
 - Reasoning Activation in LLMs via Small Model Transfer ([ouyang...jiawei han, 2025](https://ozyyshr.github.io/RAST/)) - perform RL finetuning on small model, then take [difference between RL-finetuned small model and original small model] and add difference to logits from big model
 - reasoning gym: https://github.com/open-thought/reasoning-gym
@@ -755,6 +760,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - Circuit Component Reuse Across Tasks in Transformer LMs ([merullo, eickhoff, & pavlick 2024](https://arxiv.org/abs/2310.08744)) - find that the same circuit is used for 2 different tasks: IOI from above and Colored objects (from big-bench)
   - Sparse Feature Circuits: Discovering and Editing Interpretable Causal Graphs in LMs ([marks...belinkov, bau, mueller, 2024](https://arxiv.org/abs/2403.19647v1))
     - ex. for biasbios, find circuit and intervene so that it doesn't rely on gender
+  - Efficient Automated Circuit Discovery in Transformers using Contextual Decomposition ([hsu...yu, 2024](https://arxiv.org/abs/2407.00886)) - generalize [contextual decomposition](https://arxiv.org/abs/1806.05337) to transformers and identify circuits that can perfectly replicate original models’ behavior (faithfulness = 1) using fewer nodes than the baselines for all tasks (indirect object identification, greater-than comparisons, and docstring completion)
 - Interpretability at Scale: Identifying Causal Mechanisms in Alpaca ([wu..., potts, goodman, 2023](https://arxiv.org/pdf/2305.08809.pdf)) - propose boundless DAS and automatically identify a circuit for math
   - builds on DAS ([geiger, ...goodman, 2023](https://arxiv.org/abs/2303.02536))
 - N2G: A Scalable Approach for Quantifying Interpretable Neuron Representations in LLMs ([foote, nanda, ..., barez, 2023](https://arxiv.org/abs/2304.12918)) - explain each neuron in a graph
@@ -879,6 +885,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - some directions correspond to misalignment in a narrow domain, e.g. medicine
 - Uncovering Meanings of Embeddings via Partial Orthogonality ([jiang, aragam, & veitch, 2023](https://arxiv.org/abs/2310.17611))
 - Emergent Linear Representations in World Models of Self-Supervised Sequence Models ([nanda, lee, & wattenberg, 2023](https://arxiv.org/abs/2309.00941))
+- Linear representations in LMs can change dramatically over a conversation ([lampinen...shanahan, 2026](https://arxiv.org/abs/2601.20834))
 - LEACE: Perfect linear concept erasure in closed form ([belrose...biderman, 2023](https://arxiv.org/abs/2306.03819)) - a classification task is linearly guarded if and only if every class has exactly the same
   mean feature vector
   - Null It Out: Guarding Protected Attributes by Iterative Nullspace Projection ([ravfogel...gonen, twiton, goldberg, 2020](https://arxiv.org/abs/2004.07667))
@@ -895,6 +902,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
 - The Platonic Representation Hypothesis ([huh, cheung, wang, & isola, 2024](https://arxiv.org/abs/2405.07987))
   - vec2vec ([jha, zhang, shmatikov, & morris, 2025](https://arxiv.org/pdf/2505.12540)) - use cyclegan-style approach to translate embeddings from one space to another (without paired samples)
   - The Universal Weight Subspace Hypothesis ([kaushik...yuille, 2025](https://www.arxiv.org/abs/2512.05117))
+  - Anatomy of a ML Ecosystem: 2 Million Models on Hugging Face ([laufer, oderinwale & kleinberg, 2025](https://arxiv.org/abs/2508.06811))
 - Rosetta Neurons: Mining the Common Units in a Model Zoo ([dravid, ..., efros, shocher, 2023](https://openaccess.thecvf.com/content/ICCV2023/html/Dravid_Rosetta_Neurons_Mining_the_Common_Units_in_a_Model_Zoo_ICCV_2023_paper.html))
   - Multimodal Neurons in Pretrained Text-Only Transformers ([schwettmann...torralba, 2023](https://arxiv.org/pdf/2308.01544.pdf))
   - Interpreting CLIP's Image Representation via Text-Based Decomposition ([gandelsman, efros, & steinhardt, 2023](https://arxiv.org/abs/2310.05916))
@@ -1073,6 +1081,8 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
     | SPALM, Adaptive kNN        | Tokens      | Output        | Adaptive                   | Independent*, Joint      | $O\left(10^9\right)$    |
 
   - RAGGED: Towards Informed Design of Retrieval Augmented Generation Systems ([hsia...neubig, 2024](https://arxiv.org/pdf/2403.09040.pdf)) - gives benchmark of multi-hop QA questions for evaluating RAG systems holistically
+
+  - https://pageindex.ai/ - popular system that replaces vector-based rag with table-of-contents based search for docs that are already well organized
 
 - dynamic systems
 
@@ -1314,6 +1324,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
 
 - datasets (some of these also introduce a method along with the dset)
   - Evaluating LLMs in Scientific Discovery ([song...duan, 2025](https://arxiv.org/abs/2512.15567)) - interesting very hard benchmark at two levels: QA and open-ended discovery
+  - DSGym: A Holistic Framework for Evaluating and Training Data Science Agents ([nie...zou, 2026](https://arxiv.org/abs/2601.16344))
   - ScienceAgentBench ([chen...huan sun, 2024](https://arxiv.org/abs/2410.05080)) - 102 scientific coding tasks (from 44 papers in 4 disciplines validated by 9 subject-matter experts)
     - target output for every task is a self-contained Python file
     - each task has (a) task instruction, (b) dataset info, (c) expert-provided info and (d) a groundtruth annotated program
@@ -1323,7 +1334,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - DiscoveryBench: Towards Data-Driven Discovery with LLMs ([majumder...clark, 2024](https://arxiv.org/abs/2407.01725)) - 264 tasks collected across 6 diverse domains, such as sociology and engineering, by manually deriving discovery workflows from papers
     - each task has datasets, metadata, natural-language discovery goal
     - ![Screenshot 2025-06-19 at 2.18.31 PM](../assets/Screenshot%202025-06-19%20at%202.18.31%E2%80%AFPM.png)
-  - BLADE: Benchmarking LM Agents for Data-Driven Science ([gu...althoff, 2024](https://arxiv.org/pdf/2408.09667)) - 12 tasks, each has a (fairly open-ended) research question, dataset, and groundtruth expert-conducted analysis
+  - BLADE: Benchmarking LM Agents for Data-Driven Science ([gu...althoff, 2024](https://arxiv.org/abs/2408.09667)) - 12 tasks, each has a (fairly open-ended) research question, dataset, and groundtruth expert-conducted analysis
     - ![Screenshot 2025-06-19 at 4.22.04 PM](../assets/Screenshot%202025-06-19%20at%204.22.04%E2%80%AFPM.png)
   - Mlagentbench: Benchmarking LLMs As AI Research Agents ([huang, vora, liang, & leskovec, 2023](https://arxiv.org/abs/2310.03302v2)) - 13 prediction tasks, e.g. CIFAR-10, BabyLM, kaggle (evaluate via test prediction perf.)
     - ![Screenshot 2025-06-19 at 4.02.49 PM](../assets/Screenshot%202025-06-19%20at%204.02.49%E2%80%AFPM.png)
@@ -1342,39 +1353,101 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
     - DSEval ([zhang...ren, 2024](https://arxiv.org/abs/2402.17168))
     - DS-1000: A Natural and Reliable Benchmark for Data Science Code Generation ([lai...yu, 2023](https://proceedings.mlr.press/v202/lai23b.html))
     - DSBench ([jing...yu, 2024](https://arxiv.org/abs/2409.07703))
+  - LLMs for Semi-Automated Data Science: Introducing CAAFE for Context-Aware Automated Feature Engineering ([hollmann, muller & hutter, 2023](https://arxiv.org/abs/2305.03403))
   - Tapilot-Crossing: Benchmarking and Evolving LLMs Towards Interactive Data Analysis Agents ([li...cheng, 2024](https://arxiv.org/pdf/2403.05307)) - contains 1024 examples of interactions between data analysis agents simulating humans (e.g. asking for clarifications)
-- agent systems
-  - The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery ([lu...clune, ha, 2024](https://arxiv.org/abs/2408.06292))
+- fully autonomous agent systems
+  - The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery ([chris lu...clune, ha; sakana ai, 2024](https://arxiv.org/abs/2408.06292))
+    - The AI Scientist-v2: Workshop-Level Automated Scientific Discovery via Agentic Tree Search ([yamada...ha, 2025](https://arxiv.org/abs/2504.08066))
   - R&D-Agent: Automating Data-Driven AI Solution Building Through LLM-Powered Automated Research, Development, and Evolution ([yang...bian, 2025](https://arxiv.org/abs/2505.14738)) - do well on MLE-Bench
-  - The Virtual Lab of AI agents designs new SARS-CoV-2 nanobodies ([swanson...james zou, 2025](https://www.nature.com/articles/s41586-025-09442-9)) - use human to guide a set of agents each with their own expertise
   - Paper2Agent: Reimagining Research Papers As Interactive and Reliable AI Agents ([miao, davis, pritchard & zou, 2025](https://arxiv.org/abs/2509.06917)) - read paper and have agents write code to implement the paper
-- Towards an AI co-scientist ([gottweis...natarajan, 2025](https://storage.googleapis.com/coscientist_paper/ai_coscientist.pdf))
+  - AI-Researcher: Autonomous Scientific Innovation ([tang, xia, li & huang, 2025](https://arxiv.org/abs/2505.18705))
+  - Kosmos: An AI Scientist for Autonomous Discovery ([mitchener...white, 2025](https://arxiv.org/abs/2511.02824))
+  - Autonomous LLM-driven research from data to human-verifiable research papers ([ifaragan...kishony, 2024](https://arxiv.org/abs/2404.17605))
+- semi-autonomous AI scientists systems
+  - Towards an AI co-scientist ([gottweis...natarajan, 2025](https://arxiv.org/abs/2502.18864))
+  - From Zero to One: Building An Autonomous and Open Data Scientist Agent from Scratch ([bianchi...james zou, 2025](https://www.together.ai/blog/building-an-autonomous-and-open-data-scientist-agent-from-scratch))
+  - Agent Laboratory: Using LLM Agents as Research Assistants ([schmidgall...barsoum, 2025](https://arxiv.org/abs/2501.04227))
+  - The Virtual Lab of AI agents designs new SARS-CoV-2 nanobodies ([swanson...james zou, 2025](https://www.nature.com/articles/s41586-025-09442-9)) - use human to guide a set of agents each with their own expertise
+  - Human-AI Co-design for Clinical Prediction Models ([feng...singh, 2026](https://arxiv.org/abs/2601.09072))
+  - aiXiv: A Next-Generation Open Access Ecosystem for Scientific Discovery Generated by AI Scientists ([zhang...liu, 2025](https://www.arxiv.org/abs/2508.15126))
+  - Virtuous Machines: Towards Artificial General Science ([wehr...ehrhardt, 2025](https://arxiv.org/abs/2508.13421))
+- AI for hypothesis generation
+  - LLMs for Automated Open-domain Scientific Hypotheses Discovery ([yang...cambria, 2023](https://arxiv.org/abs/2309.02726)) - pipeline to generate new hypotheses from social science academic papers
+    - Can LLMs Generate Novel Research Ideas? A Large-Scale Human Study with 100+ NLP Researchers ([si, yang, & hashimoto, 2024](https://arxiv.org/abs/2409.04109)) - LLM ideas are judged to be slightly better than human expert ideas
+      - The Ideation-Execution Gap: Execution Outcomes of LLM-Generated versus Human Research Ideas ([si, hashimoto, & yang, 2025](https://arxiv.org/abs/2506.20803)) - after implementation and reporting in a 4-pg paper, LLM ideas are no longer judged to be better
+
   - Learning to Generate Novel Scientific Directions with Contextualized Literature-based Discovery ([wang...hope, 2023](https://arxiv.org/abs/2305.14259))
   - literature-based discovery ([swanson, 1986](https://www.journals.uchicago.edu/doi/abs/10.1086/601720)) - focus on predicting pairwise links between concepts from papers (e.g. drug-disease links)
     - task 1: idea-sentence generation -- given sentences describing background context + a seed term, generate a sentence describing an idea
     - task 2: idea-node prediction -- given the background context, predict new links between existing concepts (and generate new concepts)
   - forecasting paper titles ([blog post](https://csinva.io/gpt-paper-title-generator/))
-  - All That Glitters is Not Novel: Plagiarism in AI Generated Research ([gupta & pruthi, 2025](https://arxiv.org/pdf/2502.16487))
-  - AI-Researcher: Autonomous Scientific Innovation ([tang, xia, li & huang, 2025](https://arxiv.org/abs/2505.18705))
-  - Kosmos: An AI Scientist for Autonomous Discovery ([mitchener...white, 2025](https://arxiv.org/abs/2511.02824))
-- LLMs for Automated Open-domain Scientific Hypotheses Discovery ([yang...cambria, 2023](https://arxiv.org/abs/2309.02726)) - pipeline to generate new hypotheses from social science academic papers
-  - Can LLMs Generate Novel Research Ideas? A Large-Scale Human Study with 100+ NLP Researchers ([si, yang, & hashimoto, 2024](https://arxiv.org/abs/2409.04109)) - LLM ideas are judged to be slightly better than human expert ideas
-    - The Ideation-Execution Gap: Execution Outcomes of LLM-Generated versus Human Research Ideas ([si, hashimoto, & yang, 2025](https://arxiv.org/abs/2506.20803)) - after implementation and reporting in a 4-pg paper, LLM ideas are no longer judged to be better
-  - Autonomous LLM-driven research from data to human-verifiable research papers ([ifaragan...kishony, 2024](https://arxiv.org/abs/2404.17605))
-  - From Zero to One: Building An Autonomous and Open Data Scientist Agent from Scratch ([bianchi...james zou, 2025](https://www.together.ai/blog/building-an-autonomous-and-open-data-scientist-agent-from-scratch))
-  - Agent Laboratory: Using LLM Agents as Research Assistants ([schmidgall...barsoum, 2025](https://arxiv.org/pdf/2501.04227))
   - domain-specific
     - LLMs surpass human experts in predicting neuroscience results ([luo...love, 2024](https://www.nature.com/articles/s41562-024-02046-9)) - finetune a model to do well on BrainBench, which is a classification task built by modifying new Neuroscience paper abstracts to change a key result or keep the accurate one
     - AutoClimDS: Climate Data Science Agentic AI -- A Knowledge Graph is All You Need ([jaber...zheng, 2025](https://arxiv.org/abs/2509.21553)) - use agents to help collect + verify related works
-  - aiXiv: A Next-Generation Open Access Ecosystem for Scientific Discovery Generated by AI Scientists ([zhang...liu, 2025](https://www.arxiv.org/abs/2508.15126))
-  - Virtuous Machines: Towards Artificial General Science ([wehr...ehrhardt, 2025](https://arxiv.org/abs/2508.13421))
 - critiques
   - LLM Hacking: Quantifying the Hidden Risks of Using LLMs for Text Annotation ([baumann...hovy, 2025](https://arxiv.org/abs/2509.08825))
   - The threat of analytic flexibility in using LLMs to simulate human data: A call to attention ([cummins, 2025](https://arxiv.org/abs/2509.13397))
   - Evaluating LLMs as Expert Annotators ([tseng, chen, chen & chen, 2025](https://arxiv.org/abs/2508.07827)) - multi-agent discussion improves annotations
   - The More You Automate, the Less You See: Hidden Pitfalls of AI Scientist Systems ([luo, kasirzadeh & shah, 2025](https://arxiv.org/abs/2509.08713))
+  - All That Glitters is Not Novel: Plagiarism in AI Generated Research ([gupta & pruthi, 2025](https://arxiv.org/abs/2502.16487))
 
-## visualization / charts
+## teaching, HITL
+
+- overviews
+  - AI & Human Co-Improvement for Safer Co-Superintelligence ([weston & foerster, 2025](https://arxiv.org/abs/2512.05356))
+- LLMs asking questions
+  - CollabLLM: From Passive Responders to Active Collaborators ([wu, galley, …, gao, 2025](https://arxiv.org/abs/2502.00640))
+    - Can LMs Teach Weaker Agents? Teacher Explanations Improve Students via Personalization ([saha…bansal, 2023](https://arxiv.org/pdf/2306.09299))
+    - Know Thy Student: Interactive Learning with Gaussian Processes ([wang…goodman, 2022](https://arxiv.org/abs/2204.12072))
+  - GATE: Eliciting Human Preferences with LMs ([li, tamkin, goodman, & andreas, 2023](https://arxiv.org/pdf/2310.11589.pdf)) - LMs guide the task specification process (e.g. content recommendation), which is both free-form and interactive
+    - Task Ambiguity in Humans and LMs ([tamkin, .., goodman, 2023](https://arxiv.org/abs/2212.10711))
+    - Bayesian Preference Elicitation with LMs ([handa, gal, pavlick, goodman, tamkin, andreas, & li, 2024](https://arxiv.org/pdf/2403.05534v1.pdf))
+    - STaR-GATE: Teaching LMs to Ask Clarifying Questions ([andukuri...goodman, 2024](https://arxiv.org/abs/2403.19154))
+    - Rephrase and Respond: Let LLMs Ask Better Questions for Themselves ([deng...gu, 2024](https://arxiv.org/abs/2311.04205))
+    - How AI Impacts Skill Formation ([shen & tamkin, 2026](https://arxiv.org/abs/2601.20245)) -  study how developers gained mastery of a new programming library w/ & w/out AI. 
+      - AI hurts understanding, esp. for participants who fully delegated coding tasks
+  - Loose LIPS Sink Ships:  Asking Questions in *Battleship* with Language-Informed Program Sampling ([grand, pepe, andreas, & tenenbaum , 2024](https://arxiv.org/pdf/2402.19471.pdf)) - language-informed program sampling (LIPS) model uses LLMs (LLMs) to generate NL questions, translate them into symbolic programs, and evaluate their expected info gain
+    - Shoot First, Ask Questions Later? Building Rational Agents that Explore and Act Like People ([grand, pepe, andreas & tenenbaum, 2025](https://arxiv.org/abs/2510.20886)) - agent tries to ask useful questions to another agent that can see the whole board
+    - Completion $\neq$ Collaboration: Scaling Collaborative Effort with Agents ([shen...sontag, 2025](https://arxiv.org/abs/2510.25744))
+  - Proactive Agents for Multi-Turn Text-to-Image Generation Under Uncertainty ([hahn...been kim, wang 2024](https://arxiv.org/abs/2412.06771)) - maintain explicit and organized knowledge graph of the user’s stated understanding and confusion
+  - Tandem Training for LMs ([west, anderson, kamar & horvitz, 2025](https://arxiv.org/abs/2510.13551)) - during training, encourage big LM to produce solutions that remain intelligible to weaker LM
+  - Bridging the Gulf of Envisioning: Cognitive Design Challenges in LLM Interfaces ([subramonyam...seifert, 2023](https://arxiv.org/abs/2309.14459))
+- User simulators
+  - Nice blog posts: https://jessylin.com/2025/07/10/user-simulators-1/
+  - On the Utility of Learning about Humans for Human-AI Coordination ([carroll...dragan, 2019](https://arxiv.org/abs/1910.05789))
+    - self-play training against a model that hasn’t been trained to be human-like only teaches the model to collaborate with other models in [narrow ways](https://arxiv.org/abs/1910.05789), falling flat when faced with (out-of-distribution) human behavior
+  - Flipping the Dialogue: Training and Evaluating User LMs ([naous, laban, xu & neville, 2025](https://arxiv.org/abs/2510.06552)) - train an 8B model to better work as a user simulator
+- AI tutor
+  - Unifying AI Tutor Evaluation: An Evaluation Taxonomy for Pedagogical Ability Assessment of LLM-Powered AI Tutors ([maurya et al. 2025](https://arxiv.org/pdf/2412.09416)) - evaluate LLM tutor/student conversations by rating them on several automated metrics, e.g. "Has the tutor identified/recognized a mistake in a student’s response?"
+  - Zone of Proximal Development (ZPD) (Vygotsky, 1978) posits that learning is maximized when
+    individuals tackle tasks slightly beyond their current independent capabilities, but achievable with
+    guidance
+  - SocraticLM: Exploring Socratic Personalized Teaching
+    with LLMs ([liu...chen, 2024](https://proceedings.neurips.cc/paper_files/paper/2024/file/9bae399d1f34b8650351c1bd3692aeae-Paper-Conference.pdf)) - build a dataset (SocraTeach) using agents that has socratic multi-round teaching dialogues for math
+    - finetune models on them and evaluate using 5 pedagogical dimensions (e.g. "problem understanding")
+  - Collaborative Gym: A Framework for Enabling and Evaluating Human-Agent Collaboration ([shao...diyi yang, 2025](https://arxiv.org/pdf/2412.15701))
+  - SimulatorArena: Are User Simulators Reliable Proxies for Multi-Turn Evaluation of AI Assistants? ([dou...gao, 2025](https://arxiv.org/abs/2510.05444))
+- Learning to Make MISTAKEs: Modeling Incorrect Student Thinking And Key Errors ([ross & andreas, 2025](https://arxiv.org/abs/2510.11502)) - unsupervised method for teaching LLMs how to model student reasoning errors without any annotations
+  -  generate synth data that enforces cycle consistency  between: incorrect answers  & inferred misconceptions  (& associated reasoning chains)
+  - Modeling Student Learning with 3.8 Million Program Traces ([ross, srivastava, blanchard & andreas, 2025](https://arxiv.org/abs/2510.05056)) - train LMs on error traces from Pencil Code (programming education website)
+- LLM-based game agents ([awesome repo](https://github.com/git-disl/awesome-LLM-game-agent-papers))
+  - Baba Is AI: Break the Rules to Beat the Benchmark ([cloos...barbu, cueva, 2024](https://arxiv.org/pdf/2407.13729))
+  - BALROG: Benchmarking Agentic LLM and VLM Reasoning On Games ([paglieri...rocktäschel, 2024](https://arxiv.org/abs/2411.13543))
+- chess-specific
+  - Aligning Superhuman AI with Human Behavior: Chess as a Model System ([mcilroy-young, sen, kleinberg & anderson, 2020](https://arxiv.org/abs/2006.01855))
+  - Designing Skill-Compatible AI: Methodologies and Frameworks in Chess ([hamade...anderson, 2024](https://arxiv.org/abs/2405.05066))
+- modeling
+  - TalkToModel: Explaining Machine Learning Models with Interactive Natural Language Conversations ([slack, krishna, lakkaraju, & singh, 2023](https://arxiv.org/abs/2207.04154)) - train model to translate human queries into API calls (~30 calls, things like feature importance, filter data, counterfactual explanation)
+  - TalkToEBM: LLMs Understand Glass-Box Models, Discover Surprises, and Suggest Repairs ([lengerich...caruana, 2023](https://arxiv.org/abs/2308.01157)) - use LLMs to analyze tabular data and make suggestions for EBMs
+    - Data Science with LLMs and Interpretable Models ([bordt, lengerich, nori, & carauna, 2024](https://arxiv.org/pdf/2402.14474.pdf))
+    - GAM Changer: Editing Generalized Additive Models with Interactive Visualization ([wang...caruana, 2021](https://arxiv.org/abs/2112.03245)) - gui for editing GAMs
+  - LMPriors: Pre-Trained LMs as Task-Specific Priors ([choi...ermon, 2022](https://arxiv.org/abs/2210.12530))
+    - LLM-Lasso: A Robust Framework for Domain-Informed Feature Selection and Regularization ([zhang...tibshirani, 2025](https://arxiv.org/pdf/2502.10648))
+  - Tisane: Authoring Statistical Models via Formal Reasoning from Conceptual and Data Relationships ([jun, seo, heer, & just, 2022](https://eunicemjun.com/assets/files/jun2022tisane.pdf)) - language to better specify assumptions when fitting GLMs / GLMMs
+  - Interpretable Medical Diagnostics with Structured Data Extraction by LLMs ([bisercic...petrovic, 2023](https://arxiv.org/abs/2306.05052)) - extract tabular datasets from unstructured text and then train interpretable models (linear regression and small decision trees) on top of this data
+- agent interfaces to tools for agents : MCP (anthropic) & A2A (google)
+
+## data visualization / charts
 
 - similar to causality, we may want to use interpretability just to understand our data rather than to get any form of model
 - visualization
@@ -1409,65 +1482,6 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
       - Patterns of Attention: How Data Visualizations are Read ([matzen...stites, 2017](https://www.osti.gov/servlets/purl/1425321))
       - Eye Fixation Metrics for Large Scale Analysis Eye Movement Metrics for Information Visualizations of Information Visualizations ([bylinskii & borkin, 2015](https://web.mit.edu/zoya/www/Bylinskii_eyefixations_small.pdf)) - different ways to visualize eye-tracking data
     - “Seeing” Data Like an Expert: An Eye-Tracking Study Using Graphical Data Representations ([harsh...maltese, 2019](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6755310/))
-
-## teaching, HITL
-
-- overviews
-  - AI & Human Co-Improvement for Safer Co-Superintelligence ([weston & foerster, 2025](https://arxiv.org/abs/2512.05356))
-  
-- LLMs asking questions
-  - CollabLLM: From Passive Responders to Active Collaborators ([wu, galley, …, gao, 2025](https://arxiv.org/abs/2502.00640))
-    - Can LMs Teach Weaker Agents? Teacher Explanations Improve Students via Personalization ([saha…bansal, 2023](https://arxiv.org/pdf/2306.09299))
-    - Know Thy Student: Interactive Learning with Gaussian Processes ([wang…goodman, 2022](https://arxiv.org/abs/2204.12072))
-  - GATE: Eliciting Human Preferences with LMs ([li, tamkin, goodman, & andreas, 2023](https://arxiv.org/pdf/2310.11589.pdf)) - LMs guide the task specification process (e.g. content recommendation), which is both free-form and interactive
-    - Task Ambiguity in Humans and LMs ([tamkin, .., goodman, 2023](https://arxiv.org/abs/2212.10711))
-    - Bayesian Preference Elicitation with LMs ([handa, gal, pavlick, goodman, tamkin, andreas, & li, 2024](https://arxiv.org/pdf/2403.05534v1.pdf))
-    - STaR-GATE: Teaching LMs to Ask Clarifying Questions ([andukuri...goodman, 2024](https://arxiv.org/abs/2403.19154))
-    - Rephrase and Respond: Let LLMs Ask Better Questions for Themselves ([deng...gu, 2024](https://arxiv.org/abs/2311.04205))
-  - Loose LIPS Sink Ships:  Asking Questions in *Battleship* with Language-Informed Program Sampling ([grand, pepe, andreas, & tenenbaum , 2024](https://arxiv.org/pdf/2402.19471.pdf)) - language-informed program sampling (LIPS) model uses LLMs (LLMs) to generate NL questions, translate them into symbolic programs, and evaluate their expected info gain
-    - Shoot First, Ask Questions Later? Building Rational Agents that Explore and Act Like People ([grand, pepe, andreas & tenenbaum, 2025](https://arxiv.org/abs/2510.20886)) - agent tries to ask useful questions to another agent that can see the whole board
-    - Completion $\neq$ Collaboration: Scaling Collaborative Effort with Agents ([shen...sontag, 2025](https://arxiv.org/abs/2510.25744))
-  - Proactive Agents for Multi-Turn Text-to-Image Generation Under Uncertainty ([hahn...been kim, wang 2024](https://arxiv.org/abs/2412.06771)) - maintain explicit and organized knowledge graph of the user’s stated understanding and confusion
-  - Tandem Training for LMs ([west, anderson, kamar & horvitz, 2025](https://arxiv.org/abs/2510.13551)) - during training, encourage big LM to produce solutions that remain intelligible to weaker LM
-  - Bridging the Gulf of Envisioning: Cognitive Design Challenges in LLM Interfaces ([subramonyam...seifert, 2023](https://arxiv.org/abs/2309.14459))
-- User simulators
-  - Nice blog posts: https://jessylin.com/2025/07/10/user-simulators-1/
-  - On the Utility of Learning about Humans for Human-AI Coordination ([carroll...dragan, 2019](https://arxiv.org/abs/1910.05789))
-    - self-play training against a model that hasn’t been trained to be human-like only teaches the model to collaborate with other models in [narrow ways](https://arxiv.org/abs/1910.05789), falling flat when faced with (out-of-distribution) human behavior
-  - Flipping the Dialogue: Training and Evaluating User LMs ([naous, laban, xu & neville, 2025](https://arxiv.org/abs/2510.06552)) - train an 8B model to better work as a user simulator
-
-- AI tutor
-  - Unifying AI Tutor Evaluation: An Evaluation Taxonomy for Pedagogical Ability Assessment of LLM-Powered AI Tutors ([maurya et al. 2025](https://arxiv.org/pdf/2412.09416)) - evaluate LLM tutor/student conversations by rating them on several automated metrics, e.g. "Has the tutor identified/recognized a mistake in a student’s response?"
-  - Zone of Proximal Development (ZPD) (Vygotsky, 1978) posits that learning is maximized when
-    individuals tackle tasks slightly beyond their current independent capabilities, but achievable with
-    guidance
-  - SocraticLM: Exploring Socratic Personalized Teaching
-    with LLMs ([liu...chen, 2024](https://proceedings.neurips.cc/paper_files/paper/2024/file/9bae399d1f34b8650351c1bd3692aeae-Paper-Conference.pdf)) - build a dataset (SocraTeach) using agents that has socratic multi-round teaching dialogues for math
-    - finetune models on them and evaluate using 5 pedagogical dimensions (e.g. "problem understanding")
-  - Collaborative Gym: A Framework for Enabling and Evaluating Human-Agent Collaboration ([shao...diyi yang, 2025](https://arxiv.org/pdf/2412.15701))
-  - SimulatorArena: Are User Simulators Reliable Proxies for Multi-Turn Evaluation of AI Assistants? ([dou...gao, 2025](https://arxiv.org/abs/2510.05444))
-- Learning to Make MISTAKEs: Modeling Incorrect Student Thinking And Key Errors ([ross & andreas, 2025](https://arxiv.org/abs/2510.11502)) - unsupervised method for teaching LLMs how to model student reasoning errors without any annotations
-  -  generate synth data that enforces cycle consistency  between: incorrect answers  & inferred misconceptions  (& associated reasoning chains)
-  - Modeling Student Learning with 3.8 Million Program Traces ([ross, srivastava, blanchard & andreas, 2025](https://arxiv.org/abs/2510.05056)) - train LMs on error traces from Pencil Code (programming education website)
-
-- LLM-based game agents ([awesome repo](https://github.com/git-disl/awesome-LLM-game-agent-papers))
-  - Baba Is AI: Break the Rules to Beat the Benchmark ([cloos...barbu, cueva, 2024](https://arxiv.org/pdf/2407.13729))
-  - BALROG: Benchmarking Agentic LLM and VLM Reasoning On Games ([paglieri...rocktäschel, 2024](https://arxiv.org/abs/2411.13543))
-- chess-specific
-  - Aligning Superhuman AI with Human Behavior: Chess as a Model System ([mcilroy-young, sen, kleinberg & anderson, 2020](https://arxiv.org/abs/2006.01855))
-  - Designing Skill-Compatible AI: Methodologies and Frameworks in Chess ([hamade...anderson, 2024](https://arxiv.org/abs/2405.05066))
-
-- modeling
-  - TalkToModel: Explaining Machine Learning Models with Interactive Natural Language Conversations ([slack, krishna, lakkaraju, & singh, 2023](https://arxiv.org/abs/2207.04154)) - train model to translate human queries into API calls (~30 calls, things like feature importance, filter data, counterfactual explanation)
-  - TalkToEBM: LLMs Understand Glass-Box Models, Discover Surprises, and Suggest Repairs ([lengerich...caruana, 2023](https://arxiv.org/abs/2308.01157)) - use LLMs to analyze tabular data and make suggestions for EBMs
-    - Data Science with LLMs and Interpretable Models ([bordt, lengerich, nori, & carauna, 2024](https://arxiv.org/pdf/2402.14474.pdf))
-    - GAM Changer: Editing Generalized Additive Models with Interactive Visualization ([wang...caruana, 2021](https://arxiv.org/abs/2112.03245)) - gui for editing GAMs
-  - LMPriors: Pre-Trained LMs as Task-Specific Priors ([choi...ermon, 2022](https://arxiv.org/abs/2210.12530))
-    - LLM-Lasso: A Robust Framework for Domain-Informed Feature Selection and Regularization ([zhang...tibshirani, 2025](https://arxiv.org/pdf/2502.10648))
-  - Tisane: Authoring Statistical Models via Formal Reasoning from Conceptual and Data Relationships ([jun, seo, heer, & just, 2022](https://eunicemjun.com/assets/files/jun2022tisane.pdf)) - language to better specify assumptions when fitting GLMs / GLMMs
-  - LLMs for Semi-Automated Data Science: Introducing CAAFE for Context-Aware Automated Feature Engineering ([hollmann, muller & hutter, 2023](https://arxiv.org/abs/2305.03403))
-  - Interpretable Medical Diagnostics with Structured Data Extraction by LLMs ([bisercic...petrovic, 2023](https://arxiv.org/abs/2306.05052)) - extract tabular datasets from unstructured text and then train interpretable models (linear regression and small decision trees) on top of this data
-- agent interfaces to tools for agents : MCP (anthropic) & A2A (google)
 
 ## cool tasks
 
