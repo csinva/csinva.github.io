@@ -565,11 +565,12 @@ Nice survey here: A Survey on dLLMs ([li, chen, guo & shen, 2025](https://arxiv.
 - RL via Self-Distillation ([hübotter...krause, 2026](https://arxiv.org/abs/2601.20802)) - self-distillation + privileged information (feedback)
   - Self-Distilled Reasoner: On-Policy Self-Distillation for LLMs ([zhao...grover, 2026](https://siyan-zhao.github.io/assets/papers/OPSD.pdf))
   - Self-Distillation Enables Continual Learning ([shenfeld, damani, hübotter & agrawal, 2026](https://arxiv.org/abs/2601.19897)) - model writes its own answers (a) on its own  and (b) after seeing the true answer. Then train to make (a) close to (b) by minimizing the KL divergence. 
-  
 - nice blog post on scaling RL/RLVR: https://yidingjiang.github.io/blog/post/exploration/
 - Reasoning Activation in LLMs via Small Model Transfer ([ouyang...jiawei han, 2025](https://ozyyshr.github.io/RAST/)) - perform RL finetuning on small model, then take [difference between RL-finetuned small model and original small model] and add difference to logits from big model
 - reasoning gym: https://github.com/open-thought/reasoning-gym
 - Meta-RL Induces Exploration in Language Agents ([jiang...brbic, 2025](https://arxiv.org/abs/2512.16848))
+- RL for Reasoning in LLMs with One Training Example ([wang...shen, 2025](https://arxiv.org/abs/2504.20571))
+  - One Sample to Rule Them All: Extreme Data Efficiency in RL Scaling ([li...liu, 2026](https://arxiv.org/abs/2601.03111))
 
 ## test-time training
 
@@ -582,7 +583,7 @@ Nice survey here: A Survey on dLLMs ([li, chen, guo & shen, 2025](https://arxiv.
 ## test-time scaling
 
 - Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters ([snell, lee, xu & kumar, 2024](https://arxiv.org/abs/2408.03314))
-- Knowledge Flow: Scaling Reasoning Beyond the Context Limit ([zhuang...gao, 2025; blog post](https://yufanzhuang.notion.site/knowledge-flow)) - iteratively update a knowledge list between LLM rollouts
+- Test-time Recursive Thinking: Self-Improvement without External Feedback ([zhuang...chen, 2026](https://arxiv.org/abs/2602.03094)) [original blog post called [knowledge flow](https://yufanzhuang.notion.site/knowledge-flow)] - iteratively update a knowledge list between LLM rollouts at test time
   - ReasoningBank: Scaling Agent Self-Evolving with Reasoning Memory ([ouyang...pfister, 2025](https://arxiv.org/abs/2509.25140)) - store and retrieve text memories during learning (or during test-time scaling)
   - The Markovian Thinker ([aghajohari...sordoni, courville, reddy, 2025](https://arxiv.org/abs/2510.06557v1)) - want to reason over long contexts with a fixed state length
     - create environment "Delethink", where LRM iteratively keeps deleting most of the context (keeping only the question and the end text) and then continuing to answer
@@ -1427,6 +1428,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
     - finetune models on them and evaluate using 5 pedagogical dimensions (e.g. "problem understanding")
   - Collaborative Gym: A Framework for Enabling and Evaluating Human-Agent Collaboration ([shao...diyi yang, 2025](https://arxiv.org/pdf/2412.15701))
   - SimulatorArena: Are User Simulators Reliable Proxies for Multi-Turn Evaluation of AI Assistants? ([dou...gao, 2025](https://arxiv.org/abs/2510.05444))
+  - Skill-Targeted Adaptive Training ([he, panigrahi, lin & arora, 2025](https://arxiv.org/abs/2510.10023)) - big models teaching small models by understanding their missing skillls
 - Learning to Make MISTAKEs: Modeling Incorrect Student Thinking And Key Errors ([ross & andreas, 2025](https://arxiv.org/abs/2510.11502)) - unsupervised method for teaching LLMs how to model student reasoning errors without any annotations
   -  generate synth data that enforces cycle consistency  between: incorrect answers  & inferred misconceptions  (& associated reasoning chains)
   - Modeling Student Learning with 3.8 Million Program Traces ([ross, srivastava, blanchard & andreas, 2025](https://arxiv.org/abs/2510.05056)) - train LMs on error traces from Pencil Code (programming education website)
