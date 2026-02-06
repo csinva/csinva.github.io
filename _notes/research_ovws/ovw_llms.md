@@ -588,6 +588,7 @@ Nice survey here: A Survey on dLLMs ([li, chen, guo & shen, 2025](https://arxiv.
   - The Markovian Thinker ([aghajohari...sordoni, courville, reddy, 2025](https://arxiv.org/abs/2510.06557v1)) - want to reason over long contexts with a fixed state length
     - create environment "Delethink", where LRM iteratively keeps deleting most of the context (keeping only the question and the end text) and then continuing to answer
     - use RL to train a 1.5B R1-Distill model
+  - Reasoning Cache: Continual Improvement Over Long Horizons via Short-Horizon RL ([wu, qu, setlur & kumar, 2026](https://arxiv.org/abs/2602.03773)) - use RL to train markovian-thinker style long-context reasoning, but used summarization rather than simply passing on state
   - Recursive LMs ([zhang, kraska & khattab, 2025 paper](https://arxiv.org/abs/2512.24601v1))
     - Recursive Language Models ([zhang & kattab, 2025 blog post](https://alexzhang13.github.io/blog/2025/rlm/)) - explore LLMs that recursively call themselves or other LLMs before providing a final answer
     - enables GPT-5-mini to outperform GPT-5 on OOLONG long-context benchmark
@@ -723,7 +724,6 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - influence function-based methods
   - prompt-based (e.g. only change prompt rather than model parameters)
   - Offset Unlearning for LLMs ([huang...poon, chen , 2024](https://arxiv.org/pdf/2404.11045.pdf)) - unlearning for black-box models by learning the logit offset for contrasting with a smaller model
-- Steering Out-of-Distribution Generalization with Concept Ablation Fine-Tuning ([casademunt...nanda, 2025](https://arxiv.org/abs/2507.16795)) - don't actually modify weights, just ablate concept embeddings during finetuning
 
 ## direct weight inspection
 
@@ -875,6 +875,45 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - Sparse Autoencoders Can Interpret Randomly Initialized Transformers ([heap...aitchison, 2025](https://arxiv.org/abs/2501.17727))
   - Sparse Autoencoders Trained on the Same Data Learn Different Features ([paulo & belrose, 2025](https://arxiv.org/abs/2501.16615))
 
+## interp for improved training (intentional design)
+
+- Intentionally designing the future of AI ([goodfire blog post; mcgrath, 2026](https://www.goodfire.ai/blog/intentional-design))
+  - Steering Out-of-Distribution Generalization with Concept Ablation Fine-Tuning ([casademunt...nanda, 2025](https://arxiv.org/abs/2507.16795)) - don't actually modify weights, just ablate concept embeddings during finetuning
+
+  - Patterning: The Dual of Interpretability ([timaeus blog post; wang & murfet, 2026](https://timaeus.co/research/2026-01-20-patterning/)) - given a desired form of generalization, determine what training data produces it
+    - demonstrate patterning in a small LM, showing that re-weighting training data along principal susceptibility directions can accelerate or delay the formation of structure, such as the induction circuit
+
+  - Gradient Routing: Masking Gradients to Localize Computation in Neural Networks ([cloud...turner, 2024](https://arxiv.org/abs/2410.04332))
+    - applies user-supplied data-dependent, weighted masks to gradients during backpropagation so that certain things are learned in certain paramter subsets
+    - example: learn some mnist digits in part of the network and other mnist digits elsewhere
+
+  - Persona Vectors: Monitoring and Controlling Character Traits in LMs ([chen...lindsey, 2025](https://arxiv.org/abs/2507.21509))
+
+- Training large language models on narrow tasks can lead to broad misalignment ([betley...evans, 2026](https://www.nature.com/articles/s41586-025-09937-5))
+- interpretability in parameter space
+
+  - Both APD and SPD seek a learned decomposition of parameters satisfying the following:
+
+    - Faithfulness - components should sum to original params
+    - Minimality - forward pass should use few components for a training point
+    - Simplicity - minimize number of matrices and ranks used by components
+
+  - APD: Minimizing Mechanistic Description Length with Attribution-based Parameter Decomposition ([braun...sharkey, 2025](https://arxiv.org/abs/2501.14926)) uses 3 losses to achieve this:
+
+    1. parameter components are trained to sum to the original params
+    2. for a point, gradient-based attributions select the top-k most important parameter components, which are summed and trained to reproduce the original output
+
+    3. components have their individual spectral p-norms minimized
+
+  - SPD: Stochastic Parameter Decomposition ([bushnaq, braun & sharkey, 2025](https://arxiv.org/abs/2506.20790))
+
+    1. parameter components are trained to sum to the original params (same as APD)
+
+    2. optimizes rank-one subcomponents instead of full-rank parameter
+       components
+
+    3. optimizes for minimality and simplicity by learning a causal importance function to stochastically sample masks
+
 ## linear representations
 
 - Efficient Estimation of Word Representations in Vector Space ([mikolov...dean, 2013](https://arxiv.org/abs/1301.3781)) - find linear directions in word embeddings
@@ -934,15 +973,24 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - specify patches with natural language rather than hard rule, allowing them to better handle text
   - finetune a model to combine original model output with output from a patch-conditioned interpreter head
 
-## interpretable models
+## interpretable LM models
 
 - Backpack LMs ([hewit, thickstun, manning, & liang, 2023](https://arxiv.org/abs/2305.16765)) - change transformer layers to represent each word
-- [(DirtyCat): Encoding High-Cardinality String Categorical Variables](https://ieeexplore.ieee.org/abstract/document/9086128) (cerda & varoquax, 2020) - use embedding model to improve string categorical variables
+- (DirtyCat): Encoding High-Cardinality String Categorical Variables ([cerda & varoquax, 2020](https://ieeexplore.ieee.org/abstract/document/9086128)) - use embedding model to improve string categorical variables
 - LLMs can Learn Rules ([zhu...dai, 2024](https://arxiv.org/abs/2310.07064))
 - Learning Transformer Programs ([friedman, wettig, & chen, 2023](https://arxiv.org/abs/2306.01128)) - place strong constraints on transformer architecture that allow it to be written as a [RASP]([https://arxiv.org/abs/2106.06981) program compiled with [Tracr](https://arxiv.org/abs/2301.05062)
   - 2 contraints
     - disentangled residual stream - attention head inputs K/Q/V are one-hot, ouputs are concatenated at each layer
     - each module implements rule-based mapping: attention is onehot
+- Interpretable Next-token Prediction via the Generalized Induction Head ([kim...gao, 2024](https://arxiv.org/abs/2411.00066))
+  - Infini-gram: Scaling Unbounded n-gram LMs to a Trillion Tokens ([liu...hajishirzi, 2024](https://arxiv.org/abs/2401.17377))
+- CB-LLM: Crafting LLMs for Enhanced Interpretability ([sun...lily weng, 2024](https://arxiv.org/abs/2407.04307))
+  - compute embedding similarity of concepts and input, and train layer to predict each of these similarity scores as concept bottleneck
+    - before training bottleneck, use ChatGPT to help correct any concept scores that seem incorrect
+  - Human evaluation: agreement of concept scores and contribution of concept to output
+  - Concept Bottleneck LLMs ([sun, oikarinen, ustun, & lily weng, 2024](https://arxiv.org/abs/2412.07992)) - this updated version of the paper also has results for language modeling
+
+
 
 # embeddings
 
