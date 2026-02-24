@@ -1073,10 +1073,11 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 - encoding models
 
   - Seminal language-semantics fMRI study ([huth…gallant, 2016](https://www.nature.com/articles/nature17637)) - build mapping of semantic concepts across cortex using word vecs
-    - Crafting Interpretable Embeddings for Language Neuroscience by Asking LLMs Questions ([benara et al. 2024](https://openreview.net/pdf?id=mxMvWwyBWe))
+    - Evaluating scientific theories as predictive models in language neuroscience ([singh...huth, 2025](https://www.biorxiv.org/content/10.1101/2025.08.12.669958v1))
+      - Crafting Interpretable Embeddings for Language Neuroscience by Asking LLMs Questions ([benara et al. 2024](https://openreview.net/pdf?id=mxMvWwyBWe))
     - Generative causal testing to bridge data-driven models and scientific theories in language neuroscience ([antonello et al. 2024](https://arxiv.org/abs/2410.00812))
-    - Explanations of Deep Language Models Explain Language
-      Representations in the Brain ([rahimi...daliri, 2025](https://arxiv.org/pdf/2502.14671)) - build features using attribution methods and find some small perf. improvements in early language areas
+    - Explanations of Deep Language Models Explain Language Representations in the Brain ([rahimi...daliri, 2025](https://arxiv.org/pdf/2502.14671)) - build features using attribution methods and find some small perf. improvements in early language areas
+    - Representations of semantic relations in the human cerebral cortex ([chen...deniz, klein, & gallant, 2026](https://www.biorxiv.org/content/10.64898/2026.02.19.706815v1.abstract))
   - Deep language algorithms predict semantic comprehension from brain activity)([caucheteux, gramfort, & king, facebook, 2022](https://www.nature.com/articles/s41598-022-20460-9)) - predicts fMRI with gpt-2 on the narratives dataset
     - GPT‐2 representations predict fMRI response + extent to which subjects understand corresponding narratives
     - compared different encoding features: phoneme, word, gpt-2 layers, gpt-2 attention sizes
@@ -1169,10 +1170,16 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 
 - The generalizability crisis ([yarkoni, 2020](https://mzettersten.github.io/assets/pdf/ManyBabies_BBS_commentary.pdf)) - there is widespread difficulty in converting informal verbal hypotheses into quantitative models
 - Formalising the role of behaviour in neuroscience ([piantadosi & gallistel, 2024](https://onlinelibrary.wiley.com/doi/10.1111/ejn.16372)) - can build isomorphisms between behavior and mathematical theories of representations
-- [NeuroSynth website](https://www.neurosynth.org/analyses/terms/)
-  - Large-scale automated synthesis of human functional neuroimaging data ([yarkoni, poldrack, nichols, van essen, & wager, 2011](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3146590/pdf/nihms-300972.pdf)) 
-  - NeuroQuery, comprehensive meta-analysis of human brain mapping ([dockes, poldrack, ..., yarkonig, suchanek, thirion, & varoquax](https://elifesciences.org/articles/53385)) [[website](https://neuroquery.org/query?text=checkerboard)]
+- coordinate-based meta-analysis
+  - BrainMap: The social evolution of a human brain mapping database ([laird, lancaster, & fox, 2005](https://link.springer.com/article/10.1385/NI:3:1:065)) - manually curate reported brain coordinates and annotate them according to a specialized taxonomy
+  - Neurosynth: Large-scale automated synthesis of human functional neuroimaging data ([yarkoni, poldrack, nichols, van essen, & wager, 2011](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3146590/pdf/nihms-300972.pdf)) [[NeuroSynth website](https://www.neurosynth.org/analyses/terms/)] - uses term-frequency of abstracts to predict functional maps
+  - GCLDA: Decoding brain activity using a large-scale probabilistic functional-anatomical atlas of human cognition ([rubin...poldrack, yarkoni, 2017](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005649))
+  - NeuroQuery: comprehensive meta-analysis of human brain mapping ([dockes, poldrack, ..., yarkoni, suchanek, thirion, & varoquax, 2020](https://elifesciences.org/articles/53385)) [[website](https://neuroquery.org/query?text=checkerboard)] - uses TF-IDF on full texts rather than abstracts
     - train on keywords to directly predict weights for each query-expanded keyword and the produce linearly combined brainmap
+  - Text2Brain: Synthesis of Brain Activation Maps from Free-form Text Query ([ngo, nguyen, chen & sabuncu, 2021](https://arxiv.org/abs/2109.13814)) - encodes text and then feeds into into a 3D CNN to estimate spatial brain activation maps
+    - Chat2Brain: A Method for Mapping Open-Ended Semantic Queries to Brain Activation Maps ([wei...liu, 2023](https://ieeexplore.ieee.org/abstract/document/10385933)) - uses LLMs to map open-ended semantic queries into text for Text2Brain
+  - NeuroConText: Contrastive Learning for Neuroscience Meta-Analysis with Rich Text Representation ([ghayem...thirion, wassermann, 2026](https://direct.mit.edu/imag/article/doi/10.1162/IMAG.a.1162/135353)) - predictive model which uses contrastive learning on full-text data to enable both retrieval and reconstruction of brain activation patterns simultaneously
+
 
 ## speech / ECoG
 
