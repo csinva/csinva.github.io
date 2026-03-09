@@ -159,6 +159,7 @@ Over time, ML has bounced from *feature-engineering* -> *architecture engineerin
   - Sampling from Your LM One Byte at a Time ([hayase, liu, smith, oh, 2025](https://arxiv.org/pdf/2506.14123))
     - Broken Tokens? Your LM can Secretly Handle Non-Canonical Tokenizations ([zheng...choi, smith, 2025](https://arxiv.org/abs/2506.19004)) - some sequences can be tokenized in different ways (e.g. using character-level tokenizer) -- feeding these into a model still generally works
   - Verbalized Sampling ([zhang...shi, 2025](https://arxiv.org/abs/2510.01171)) - simple prompting strategy for more diverse sampling, e.g. "Generate 5 jokes about coffee and their corresponding probabilities"
+  - Alien Science: Sampling Coherent but Cognitively Unavailable Research Directions from Idea Atoms ([artiles...rahaman, 2026](https://arxiv.org/abs/2603.01092))
 
 ## prompt chaining / ensembling
 
@@ -347,6 +348,7 @@ mixture of experts models have become popular because of the need for (1) fast s
     - KV caching trades off speed with memory
     - FastGen: Model Tells You What to Discard: Adaptive KV Cache Compression for LLMs ([ge...gao, 2024](https://arxiv.org/abs/2310.01801)) - for each input prompt, run quick profiling to decide whether to evict things from the KV cache (e.g. attention heads that don't care about long context, or heads that attend only to punctuation)
   - speculative decoding ([leviathan, kalma, & matias, 2022](https://arxiv.org/abs/2211.17192))  - decode multiple tokens in parallel with small model, potentially skipping steps for the large model
+    - Speculative Speculative Decoding ([kumar, dao & may, 2026](https://arxiv.org/abs/2603.03251)) - while big model is verifying speculation, also generate more speculations with the small model (based on guessing what will be verified)
 - early exit - popular way to speed up inference
   - Multi-exit vision transformer for dynamic inference ([Bakhtiarnia, A., Zhang, Q. and Iosifidis, A., 2021](https://arxiv.org/abs/2106.15183))
     - early layers have large activation map so early exist classifier must be complex
@@ -479,7 +481,7 @@ mixture of experts models have become popular because of the need for (1) fast s
 
 ## diffusion LLMs (dLLMs)
 
-Nice survey here: A Survey on dLLMs ([li, chen, guo & shen, 2025](https://arxiv.org/abs/2508.10875))
+Nice survey here: A Survey on dLLMs ([li, chen, guo & shen, 2025](https://arxiv.org/abs/2508.10875)) and helpful code package here: Simple Diffusion Language Modeling ([zhou, chen, tong & song, 2026](https://arxiv.org/abs/2602.22661v1))
 
 - Continuous modeling - transform discrete text into a continuous latent space, apply a diffusion process and then decode the output back into discrete tex
   - Diffusion-LM Improves Controllable Text Generation ([lisa li, thickstun, gulrajani, liang, & hashimoto, 2022](https://arxiv.org/abs/2205.14217)) - fixed set of continuous word vectors are progressively denoised from Gaussian noise
@@ -575,15 +577,7 @@ Nice survey here: A Survey on dLLMs ([li, chen, guo & shen, 2025](https://arxiv.
 - RL for Reasoning in LLMs with One Training Example ([wang...shen, 2025](https://arxiv.org/abs/2504.20571))
   - One Sample to Rule Them All: Extreme Data Efficiency in RL Scaling ([li...liu, 2026](https://arxiv.org/abs/2601.03111))
 
-## test-time training
-
-- Learning to (Learn at Test Time): RNNs with Expressive Hidden States ([sun...guestrin, 2024](https://arxiv.org/abs/2407.04620))
-  - ![ttt_lm](../assets/ttt_lm.jpeg)
-- Critique Fine-Tuning: Learning to Critique is More Effective than Learning to Imitate ([wang...chen, 2025](https://arxiv.org/abs/2501.17703))
-- s1: Simple test-time scaling ([muennighof...hashimoto, 2025](https://arxiv.org/pdf/2501.19393))
-- Let's (not) just put things in Context: Test-Time Training for Long-Context LLMs ([bansal...jelassi, 2025](https://www.arxiv.org/abs/2512.13898))
-
-## test-time scaling
+## test-time scaling/training
 
 - Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters ([snell, lee, xu & kumar, 2024](https://arxiv.org/abs/2408.03314))
 - Test-time Recursive Thinking: Self-Improvement without External Feedback ([zhuang...chen, 2026](https://arxiv.org/abs/2602.03094)) [original blog post called [knowledge flow](https://yufanzhuang.notion.site/knowledge-flow)] - iteratively update a knowledge list between LLM rollouts at test time
@@ -607,7 +601,7 @@ Nice survey here: A Survey on dLLMs ([li, chen, guo & shen, 2025](https://arxiv.
     - self-aggregation: provide LRM with the query and a set of candidate solutions, then prompt it to produce an improved solution
     - repeat this process recursively with a population of candidate solutions
   - Parallel-R1: Towards Parallel Thinking via RL ([zheng...yu, 2025](https://arxiv.org/abs/2509.07980))
-- aggregating information across tasks
+- aggregating information across examples
   - RLAD: Training LLMs to Discover Abstractions for Solving Reasoning Problems ([qu...kumar, 2025](https://arxiv.org/abs/2510.02263)) - use NL abstractions to guide more general reasoning paths
     - SkillRL: Evolving Agents via Recursive Skill-Augmented RL ([xia...yao, 2026](https://arxiv.org/abs/2602.08234))
     - Hybrid-Gym: Training Coding Agents to Generalize Across Tasks ([xie...fried, 2026](https://arxiv.org/abs/2602.16819))
@@ -615,14 +609,20 @@ Nice survey here: A Survey on dLLMs ([li, chen, guo & shen, 2025](https://arxiv.
   - Metacognitive Reuse: Turning Recurring LLM Reasoning Into Concise Behaviors ([didolkar, ballas, arora & goyal, 2025](https://arxiv.org/abs/2509.13237))
   - WALT: Web Agents that Learn Tools ([prabhu...xu, 2025](https://arxiv.org/abs/2510.01524))
     - ReUseIt: Synthesizing Reusable AI Agent Workflows for Web Automation ([liu, sra, inala & wang, 2025](https://arxiv.org/abs/2510.14308))
-  - EvoLib: Evolving Library Through Self-Play ([xu et al. 2026, blog post](https://www.notion.so/EvoLib-Evolving-Library-Through-Self-Play-2cccfcea3dd081e7bd2ef1735a29672d))
   - MemEvolve: Meta-Evolution of Agent Memory Systems ([zhang...yan, 2025](https://arxiv.org/abs/2512.18746))
-  - Evo-Memory: Benchmarking LLM Agent Test-time Learning with Self-Evolving Memory ([wei...cheng, 2025](https://arxiv.org/abs/2511.20857))
+  - EvoLib: Evolving Library Through Self-Play ([xu et al. 2026, blog post](https://www.notion.so/EvoLib-Evolving-Library-Through-Self-Play-2cccfcea3dd081e7bd2ef1735a29672d)) - these works learned shared strategies using test time examples with no labels
+    - Evo-Memory: Benchmarking LLM Agent Test-time Learning with Self-Evolving Memory ([wei...cheng, 2025](https://arxiv.org/abs/2511.20857)) - store examples along with attempted  solutions and metadata
+    - Dynamic Cheatsheet: Test-Time Learning with Adaptive Memory ([suzgun...zou, 2025](https://arxiv.org/abs/2504.07952))
+  - Tool-R0: Self-Evolving LLM Agents for Tool-Learning from Zero Data ([acikgoz...tur, 2026](https://arxiv.org/abs/2602.21320))
 - training to enable scaling test-time reasoning
   - ExGRPO: Learning to Reason from Experience ([zhan...cheng, 2025](https://arxiv.org/abs/2510.02245))
   - Meta-RL Induces Exploration in Language Agents ([jiang...brbic, 2025](https://arxiv.org/abs/2512.16848))
-
-
+- Learning to (Learn at Test Time): RNNs with Expressive Hidden States ([sun...guestrin, 2024](https://arxiv.org/abs/2407.04620))
+  - ![ttt_lm](../assets/ttt_lm.jpeg)
+- Critique Fine-Tuning: Learning to Critique is More Effective than Learning to Imitate ([wang...chen, 2025](https://arxiv.org/abs/2501.17703))
+- s1: Simple test-time scaling ([muennighof...hashimoto, 2025](https://arxiv.org/pdf/2501.19393))
+- Let's (not) just put things in Context: Test-Time Training for Long-Context LLMs ([bansal...jelassi, 2025](https://www.arxiv.org/abs/2512.13898))
+- Sleep-time Compute: Beyond Inference Scaling at Test-time ([lin...gonzalez, 2025](https://arxiv.org/abs/2504.13171))
 
 # (mech) interp
 
@@ -780,45 +780,54 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
 - N2G: A Scalable Approach for Quantifying Interpretable Neuron Representations in LLMs ([foote, nanda, ..., barez, 2023](https://arxiv.org/abs/2304.12918)) - explain each neuron in a graph
 - Finding Skill Neurons in Pre-trained Transformer-based LMs ([wang et al. 2022](https://arxiv.org/abs/2211.07349)) - some individual neurons are predictive of the final task (dubbed "skill neurons')
 - circuits thread ([elhage...olah, 2021](https://transformer-circuits.pub/2021/framework/index.html))
-- all layers are same dimension and each attention block **adds** a vector to it
-- Although they’re parameterized as separate matrices, $W_O W_V$ and $W_Q^T W_K$ can always be thought of as individual, low-rank matrices
-  - $x \in \mathbb R^{d_{embed} \times d_{sequence}}$: $d_{embed}$ can be hundreds - tens of thousands 
-  - $W_Q, W_K, W_V \in \mathbb R^{d_{attn} \times d_{embed}}$
+  - all layers are same dimension and each attention block **adds** a vector to it
+  - Although they’re parameterized as separate matrices, $W_O W_V$ and $W_Q^T W_K$ can always be thought of as individual, low-rank matrices
+    - $x \in \mathbb R^{d_{embed} \times d_{sequence}}$: $d_{embed}$ can be hundreds - tens of thousands 
+    - $W_Q, W_K, W_V \in \mathbb R^{d_{attn} \times d_{embed}}$
     - $W_Q^TW_k \in \mathbb R ^{d_{embed} \times d_{embed}}$
-  - $W_O \in \mathbb R^{d_{embed} \times d_{attn}}$: projects attention values back to embedding dimention
+    - $W_O \in \mathbb R^{d_{embed} \times d_{attn}}$: projects attention values back to embedding dimention
     - $W_O W_V \in \mathbb R ^{d_{embed} \times d_{embed}}$
-  - $W_E \in \mathbb R^{d_{embed} \times d_{vocab}}$ embeds initial tokens and $W_U \in \mathbb R^{d_{vocab} \times d_{embed}}$ undoes the embedding
+    - $W_E \in \mathbb R^{d_{embed} \times d_{vocab}}$ embeds initial tokens and $W_U \in \mathbb R^{d_{vocab} \times d_{embed}}$ undoes the embedding
     - $d_{vocab}$ can be very large, e.g. 50k
-  - $A = \text{softmax}(x^TW_Q^TW_kx) \in \mathbb R^{d_{sequence} \times d_{sequence}}$
-- if we have a 0-layer net (e.g. predict next token with linear layer given current token), we just learn bigram log-likelihood
-- 2 circuits
-  - QK circuit determines which "source" token the present "destination" token attends back to and copies information from
+    - $A = \text{softmax}(x^TW_Q^TW_kx) \in \mathbb R^{d_{sequence} \times d_{sequence}}$
+
+  - if we have a 0-layer net (e.g. predict next token with linear layer given current token), we just learn bigram log-likelihood
+  - 2 circuits
+    - QK circuit determines which "source" token the present "destination" token attends back to and copies information from
     - $W_{E}^{T} W_{Q}^{T} W_{K} W_{E} \in \mathbb R ^{d_{vocab} \times d_{vocab}}$
-  - OV circuit describes what the resulting effect on the "out" predictions for the next token is
+    - OV circuit describes what the resulting effect on the "out" predictions for the next token is
     - $W_{U} W_{O} W_{V} W_{E} \in \mathbb R ^{d_{vocab} \times d_{vocab}}$
-- if a single head increases the probability of both `keep… in mind` and `keep… at bay`, it *must* also increase the probability of `keep… in bay` and `keep… at mind`
-- **induction heads** search previous examples of present token
-  - If they don't find it, they attend to the first token and do nothing
-  - if they do find it, they then look at the *next* token and copy it. This allows them to repeat previous sequences of tokens, both exactly and approximately
-  - sometimes can do some kind of "fuzzy" matching
-- tensor/kronecker product $\bigotimes$:
-  - Left-right multiplying: Multiplying $x$ by a tensor product $A \otimes W$ is equivalent to simultaneously left and right multiplying: $(A \otimes W) x=A x W^{T}$
-  - When we add them, it is equivalent to adding the results of this multiplication: $\left(A_{1} \otimes W_{1}+A_{2} \otimes W_{2}\right) x=A_{1} x W_{1}^{T}+A_{2} x W_{2}^{T}$ 
-  **[Softmax Linear Units](https://transformer-circuits.pub/2022/solu/index.html)**
-- replacing activation function with softmax linear unit increases fraction of MLP neurons which are "interpretable", i.e. correspond to meaningful features
-  - however, may “hide” some non-neuron-aligned features by decreasing their magnitude and then later recovering it with LayerNorm
-- the presence of nonlinear activation functions createse an incentive for features to align with this basis and not get superposed
-  - if the gains to sparse coding are large enough, this incentive will get overwhelmed
-- ways to combat polysemanticity
-  - activation sparsity
-  - lateral inhibition / co-occurrence sparsity
-  - weight sparsity
-  - superlinear activation functions
-  - increase neurons per param
-- $\text{SoLU}(x) = x \cdot \text{softmax}(x)$
-  - adds lateral inhibition, superlinearity, approximate sparsity
-  - changes GeLU, which is approximately $\text{sigmoid}(1.7x) \cdot x$
-  - just changing to SoLU decrease performance, had to add LayerNorm afterwards
+
+  - if a single head increases the probability of both `keep… in mind` and `keep… at bay`, it *must* also increase the probability of `keep… in bay` and `keep… at mind`
+  - **induction heads** search previous examples of present token
+    - If they don't find it, they attend to the first token and do nothing
+    - if they do find it, they then look at the *next* token and copy it. This allows them to repeat previous sequences of tokens, both exactly and approximately
+    - sometimes can do some kind of "fuzzy" matching
+
+  - tensor/kronecker product $\bigotimes$:
+    - Left-right multiplying: Multiplying $x$ by a tensor product $A \otimes W$ is equivalent to simultaneously left and right multiplying: $(A \otimes W) x=A x W^{T}$
+    - When we add them, it is equivalent to adding the results of this multiplication: $\left(A_{1} \otimes W_{1}+A_{2} \otimes W_{2}\right) x=A_{1} x W_{1}^{T}+A_{2} x W_{2}^{T}$ 
+      **[Softmax Linear Units](https://transformer-circuits.pub/2022/solu/index.html)**
+
+  - replacing activation function with softmax linear unit increases fraction of MLP neurons which are "interpretable", i.e. correspond to meaningful features
+    - however, may “hide” some non-neuron-aligned features by decreasing their magnitude and then later recovering it with LayerNorm
+
+  - the presence of nonlinear activation functions createse an incentive for features to align with this basis and not get superposed
+    - if the gains to sparse coding are large enough, this incentive will get overwhelmed
+
+  - ways to combat polysemanticity
+    - activation sparsity
+    - lateral inhibition / co-occurrence sparsity
+    - weight sparsity
+    - superlinear activation functions
+    - increase neurons per param
+
+  - $\text{SoLU}(x) = x \cdot \text{softmax}(x)$
+    - adds lateral inhibition, superlinearity, approximate sparsity
+    - changes GeLU, which is approximately $\text{sigmoid}(1.7x) \cdot x$
+    - just changing to SoLU decrease performance, had to add LayerNorm afterwards
+
+- Tracing Attention Computation Through Feature Interactions ([kamath...olah, lindsey, 2025](https://transformer-circuits.pub/2025/attention-qk/index.html)) - use SAE on MLP features, then rewrite QK attention matrix as a sum of interpretable interaction features
 - logit lens ([2020](https://www.alignmentforum.org/posts/AcKRB8wDpdaN6v6ru/interpreting-gpt-the-logit-lens)) - apply unembedding matrix to outputs of each transformer layer
   - tuned-lens ([belrose...steinhardt, 2023](https://arxiv.org/abs/2303.08112)) - train linear model for each layer to decode vocab
   - Analyzing Transformers in Embedding Space ([dar, ..., berant, 2022](https://arxiv.org/pdf/2209.02535.pdf)) - apply unembeddix matrix to weights, etc. to interpret transformers
@@ -994,9 +1003,10 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
 - (DirtyCat): Encoding High-Cardinality String Categorical Variables ([cerda & varoquax, 2020](https://ieeexplore.ieee.org/abstract/document/9086128)) - use embedding model to improve string categorical variables
 - LLMs can Learn Rules ([zhu...dai, 2024](https://arxiv.org/abs/2310.07064))
 - Learning Transformer Programs ([friedman, wettig, & chen, 2023](https://arxiv.org/abs/2306.01128)) - place strong constraints on transformer architecture that allow it to be written as a [RASP]([https://arxiv.org/abs/2106.06981) program compiled with [Tracr](https://arxiv.org/abs/2301.05062)
-  - 2 contraints
+  - 2 constraints
     - disentangled residual stream - attention head inputs K/Q/V are one-hot, ouputs are concatenated at each layer
     - each module implements rule-based mapping: attention is onehot
+  - Discovering Interpretable Algorithms by Decompiling Transformers to RASP ([huang...hahn, 2026](https://arxiv.org/abs/2602.08857))
 - Interpretable Next-token Prediction via the Generalized Induction Head ([kim...gao, 2024](https://arxiv.org/abs/2411.00066))
   - Infini-gram: Scaling Unbounded n-gram LMs to a Trillion Tokens ([liu...hajishirzi, 2024](https://arxiv.org/abs/2401.17377))
 - CB-LLM: Crafting LLMs for Enhanced Interpretability ([sun...lily weng, 2024](https://arxiv.org/abs/2407.04307))
@@ -1182,7 +1192,14 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
     - Self-Retrieval: Building an Information Retrieval System with One LLM ([tang...li, 2024](https://arxiv.org/pdf/2403.00801.pdf)) - LLM learns to generate retrieved document from query
   - xRAG: Extreme Context Compression for Retrieval-augmented Generation with One Token ([cheng...furu wei...zhao, 2024](https://arxiv.org/pdf/2405.13792))
 
+- interpretable RAG
+
+  - PlugMem: A Task-Agnostic Plugin Memory Module for LLM Agents ([ke yang, ..., galley, wang, gao, han, & zhai, 2026](https://empathyang.github.io/files/PlugMem.pdf)) - optimize performance vs num tokens in memory
+  - T-Retriever: Tree-based Hierarchical Retrieval Augmented Generation for Textual Graphs ([wei...chen, 2026](https://arxiv.org/abs/2601.04945))
+
 ## external memory
+
+- Memex(RL): Scaling Long-Horizon LLM Agents via Indexed Experience Memory ([wang...wei, 2026](https://arxiv.org/abs/2603.04257))
 
 - Engram: Conditional Memory via Scalable Lookup: A New Axis of Sparsity for LLMs ([cheng...liang; deepseek, 2026](https://arxiv.org/abs/2601.07372))
     - STEM: Scaling Transformers with Embedding Modules ([sadhukhan...chen, 2026](https://arxiv.org/abs/2601.10639))
@@ -1286,6 +1303,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - Chain of Code: Reasoning with a LM-Augmented Code Emulator ([li...levine, fei-fei, xia, ichter, 2024](https://arxiv.org/abs/2312.04474)) - attempts to write and evaluate variables using code, otherwise evaluates them using LLM
 - finetuning-based methods
   - Towards Consistent Natural-Language Explanations via Explanation-Consistency Finetuning ([chen...gao, 2024](https://arxiv.org/abs/2401.13986)) - measure consistent NL explanations and finetune on consistent examples
+    - Counterfactual Simulation Training for Chain-of-Thought Faithfulness ([hase & potts, 2026](https://arxiv.org/abs/2602.20710))
   - Benchmarking and Improving Generator-Validator Consistency of LMs ([lisa li...liang, 2023](https://arxiv.org/abs/2310.01846)) - measure generator-validator consistency and finetune on consistent examples
   - Inducing Faithfulness in Structured Reasoning via Counterfactual Sensitivity ([akter, shihab & sharma, 2025](https://arxiv.org/abs/2509.01544)) - finetune to avoid getting the same answer when introducing small logical errors into the CoT
   - ReFIne: A Framework for Trustworthy Large Reasoning Models with Reliability, Faithfulness, and Interpretability ([sun, yan, kulkarni & weng, 2025](https://arxiv.org/abs/2510.09062)) - add extra parts besides *think* tag, like *facts* and *self_assesment* tags
@@ -1375,6 +1393,9 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
       - DeltaEvolve: Accelerating Scientific Discovery through Momentum-Driven Evolution ([jiang, ding & zhu, 2026](https://arxiv.org/abs/2602.02919))
       - ImprovEvolve: Ask AlphaEvolve to Improve the Input Solution and Then Improvise ([kravatskiy, khrulkov & oseledets, 2026](https://arxiv.org/abs/2602.10233))
       - Learning to Discover at Test Time ([yuksekgonul...zou, guestrin, yu sun, 2026](https://test-time-training.github.io/discover.pdf)) - use test-time training (built into the architecture) to improve on these discovery tasks
+      - SkyDiscover: A Flexible Framework for AI-Driven Scientific and Algorithmic Discovery ([blog post, 2026](https://skydiscover-ai.github.io/blog.html))
+        - AdaEvolve: Adaptive LLM Driven Zeroth-Order Optimization ([cemri...stoica, 2026](https://arxiv.org/abs/2602.20133))
+        - EvoX: Meta-Evolution for Automated Discovery ([liu...stoica, 2026](https://arxiv.org/abs/2602.23413))
     - Applications
       - Discovering Symbolic Cognitive Models from Human and Animal Behavior ([castro...stachenfeld, 2025](https://www.biorxiv.org/content/10.1101/2025.02.05.636732v1))
       - An AI system to help scientists write expert-level empirical software ([aygün...brenner, 2025](https://arxiv.org/abs/2509.06503)) - use tree search with LLMs; train on kaggle and evaluate on a few interesting datasets (e.g. predict zebrafish neuron activity, predict covid hospitalization)
@@ -1495,6 +1516,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
     - self-play training against a model that hasn’t been trained to be human-like only teaches the model to collaborate with other models in [narrow ways](https://arxiv.org/abs/1910.05789), falling flat when faced with (out-of-distribution) human behavior
   - UserLM: Flipping the Dialogue: Training and Evaluating User LMs ([naous, laban, xu & neville, 2025](https://arxiv.org/abs/2510.06552)) - train an 8B model to better work as a user simulator
   - HUMANLM: Simulating Users with State Alignment Beats Response Imitation ([shirley wu...leskovec, zou, 2026](https://humanlm.stanford.edu/HumanLM_paper.pdf))
+  - Nested Training for Mutual Adaptation in Human-AI Teaming ([biswas, kalwar, kambhampati & sreedharan, 2026](https://arxiv.org/abs/2602.17737)) - alternate between training robot model vs human model to mitigate weird joint strategies emerging
 - AI tutor
   - Unifying AI Tutor Evaluation: An Evaluation Taxonomy for Pedagogical Ability Assessment of LLM-Powered AI Tutors ([maurya et al. 2025](https://arxiv.org/pdf/2412.09416)) - evaluate LLM tutor/student conversations by rating them on several automated metrics, e.g. "Has the tutor identified/recognized a mistake in a student’s response?"
   - Zone of Proximal Development (ZPD) (Vygotsky, 1978) posits that learning is maximized when
