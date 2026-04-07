@@ -3,7 +3,6 @@ layout: notes
 title: causal inference
 category: research
 ---
-
 {:toc}
 
 Some good packages: msft [econML](https://github.com/microsoft/EconML), uber [causalml](https://github.com/uber/causalml), msft [dowhy](https://github.com/microsoft/dowhy)
@@ -55,18 +54,22 @@ Some good packages: msft [econML](https://github.com/microsoft/EconML), uber [ca
 - **simpson's paradox** = **yule-simpson paradox** - trend appears in several different groups but disappears/reverses when groups are combined
   - [Sex Bias in Graduate Admissions: Data from Berkeley](https://homepage.stat.uiowa.edu/~mbognar/1030/Bickel-Berkeley.pdf) (bickel et al. 1975)
   - e.g. overall men seemed to have higher acceptance rates, but in each dept. women seemed to have higher acceptance rates - explanation is that women selectively apply to harder depts.
+
 ```mermaid
 graph LR
 A(Gender) -->B(Dept Choice)
 B --> C(Acceptance rate)
 A --> C
 ```
+
 - monty hall problem: why you should switch
+
 ```mermaid
 graph LR
 A(Your Door) -->B(Door Opened)
 C(Location of Car) --> B
 ```
+
 - berkson's paradox - diseases in hospitals are correlated even when they are not in the general population
   - possible explanation - only having both diseases together is strong enough to put you in the hospital
 
@@ -83,67 +86,51 @@ C(Location of Car) --> B
 *Mediation analysis aims to identify a mechanism through which a cause has an effect. Direct effects measure when the treatment varies as mediators are held constant.*
 
 - if there are multiple possible paths by which a variable can exert influence, can figure out which path does what, even with just observational data
-
 - cannot just condition on $M$! This can lead to spurious associations
-
 - which pathway do causes flow through from X to Y (direct/indirect?)
-
 - ![mediation_graph](../assets/mediation_graph-5770090.png)
-
 - consider potential outcomes with hypothetical intervention on $T$:
-  
+
   - $\{M(t), Y(t)\}$
-  
 - hypothetical intervention on $T$ and $M$:
-  
+
   - $\{Y(t, m)\}$
-  
 - hypothetical intervention on $T$ fixing $M$ to $M(t') = M_{t'}$ (nested potential outcome, robs & greenland, 1992; pearl, 2001)
+
   - $\{Y(t, M_{t'})\}$
   - has also been called a priori counterfactual (frangakis & rubin, 2002)
   - when $t \neq t'$, this can't be observed and can't be falsified
-  
 - **total effect** $\tau=E\{Y(1)-Y(0)\} = \textrm{NDE + NIE}$
-  
+
   - assumes composition assumption $Y(1, M_1) = Y(1)$, very reasonable
-  
 - **natural direct effect** $\mathrm{NDE}=E\left\{Y\left(1, M_{0}\right)-Y\left(0, M_{0}\right)\right\}$
 
   - **controlled direct effect** $\mathrm{CDE}=E\left\{Y\left(1, m\right)-Y\left(0, m\right)\right\}$ is simpler: sets mediator to some assumed value $m$ rather than the actual value seen in the data $M_0$
   - w/ composition: $=E\left\{Y\left(1, M_{0}\right)-Y\left(0\right)\right\}$
-
 - **natural indirect effect** $\mathrm{NIE}=E\left\{Y\left(1, M_1\right)-Y\left(1, M_{0}\right)\right\}$
-  
 - w/ composition: $=E\left\{Y\left( 1 \right)-Y\left(1, M_0\right)\right\}$
-  
 - **mediation formula**
 
   - can condition effects on $x$
 
     - $\operatorname{NDE}(x)=E\left\{Y\left(1, M_{0}\right)-Y\left(0, M_{0}\right) \mid X=x\right\}$
     - $\operatorname{NIE}(x)=E\left\{Y\left(1, M_{1}\right)-Y\left(1, M_{0}\right) \mid X=x\right\}$
-    
   - estimators
 
     - $\widehat{NDE}(x) = E\left\{Y\left(t, M_{t^{\prime}}\right) \mid X=x\right\}=\sum_{m} E(Y \mid T=t, M=m, X=x) \operatorname{pr}\left(M=m \mid T=t^{\prime}, X=x\right)$
     - $\widehat{NIE}(x) = E\left\{Y\left(t, M_{t^{\prime}}\right)\right\}=\sum_{x} E\left\{Y\left(t, M_{t^{\prime}}\right) \mid X=x\right\} P(X=x)$
-
   - estimators depend on 4 assumptions
 
     1. no treatment-outcome confounding: $T \perp Y(t, m) \mid X$
-
     2. no mediator-outcome confounding: $M \perp Y(t, m) \mid (X, T)$
-
     3. assumption 3: no treatment-mediator confounding: $T \perp M(t) \mid X$
-
     4. no cross-world independence between potential outcomes and potential mdediators: $Y(t, m) \perp M(z') \; \forall \; t, t', m$
-
   - assumption notes
+
     - 1 + 2 are equivalent to $T, M) \perp Y(t, m) \mid X$
     - first three essentially assume that $T$ and $M$ are both randomized
     - 1-3 are very strong but hold with squentially randomized treatment + mediator
     - 4 cannot be verified
-
   - baron-kenny method (assumes linear models): ![baron_kenny](../assets/baron_kenny.png)
 
 ## heterogenous treatment effects
@@ -159,7 +146,7 @@ C(Location of Car) --> B
       - doesn't do well with variation in the propensity score. If $e(x)$ varies considerably, then our estimates of $\hat \mu(0)$ will be driven by data in areas with many control units (i.e., with $e(x)$ closer to 0), and those of $\hat \mu (1)$ by regions with more treated units (i.e., with e(x) closer to 1).
     - e.g. X-learner ([kunzel et al. 19](https://www.pnas.org/content/116/10/4156.short)) - "X" stands for crossing between estimates and conditional outcomes for each group
       - first, fit $\hat \mu_1(x), \hat \mu_0(x)$
-      - second, compute effects using all the data $\begin{aligned} \hat{\tau}_{1, i} &=Y_{i}(1)-\hat{\mu}_{0}\left(x_{i}\right) \\ \hat{\tau}_{0, i} &=\hat{\mu}_{1}\left(x_{i}\right)-Y_{i}(0) \end{aligned}$ 
+      - second, compute effects using all the data $\begin{aligned} \hat{\tau}_{1, i} &=Y_{i}(1)-\hat{\mu}_{0}\left(x_{i}\right) \\ \hat{\tau}_{0, i} &=\hat{\mu}_{1}\left(x_{i}\right)-Y_{i}(0) \end{aligned}$
       - finally, combine effects $\hat{\tau}(x)=g(x) \hat{\tau}_{0}(x)+(1-g(x)) \hat{\tau}_{1}(x)$
         - $g(x)$ is weighting function, e.g. estimated propensity score
     - e.g. R-learner ([robinson, 1988](https://www.jstor.org/stable/1912705?casa_token=MIFpVeGtg_AAAAAA%3ASw_iZBgtJwx_P6jezFPxHXy8USBdJugzBzt5S9I2sc1j83K_dmYJmskt-l8cTxMBHffbZFTjPCO7KQzrPGkr4SyAAOID7engZqQrMLQy2fv2yQ-C0rs&seq=1#metadata_info_tab_contents); nie-wager, 20) - regularized semiparametric learner
@@ -211,28 +198,30 @@ C(Location of Car) --> B
 - rather than estimating a treatment effect, find a policy that maximizes some expected utility (e.g. can define utility as the potential outcome $\mathbb E[Y_i(\pi(X_i))]$)
 - in this case, policy is like an intervention
 
-
-
 ## causal discovery
 
 *Causal discovery aims to identify causal relationships (sometimes under some smoothness / independence assumptions. This is often impossible in general. Also called causal relation learning, causal search.*
 
 - a lot of our science does not actually rest on experiments (e.g. physics, geology)
+
   - hume (1739) - all we can observe is association, never actual counterfactuals or causes ("necesary connexion")
   - requires careful model selection
   - rvw: [Review of Causal Discovery Methods Based on Graphical Models](https://www.frontiersin.org/articles/10.3389/fgene.2019.00524/full)
 - **constraint-based algorithms** - use conditional indep. checks to determine graphs up to markov equivalence
-    - *faithfulness* means the statistical dependence between variables estimated from the data does not violate the independence defined by any causal graph which generates the data
-    - extensions to more general distrs., unobserved confounders
-    - **peter-clark (PC) algorithm** - first learns undirected graph, then detects edge directions and returns equivalence class
-      - assumes that there is no confounder (unobserved direct common cause of two measured variables)
+
+  - *faithfulness* means the statistical dependence between variables estimated from the data does not violate the independence defined by any causal graph which generates the data
+  - extensions to more general distrs., unobserved confounders
+  - **peter-clark (PC) algorithm** - first learns undirected graph, then detects edge directions and returns equivalence class
+    - assumes that there is no confounder (unobserved direct common cause of two measured variables)
   - fast causal inference (FCI) (spirtes et al. 200)
     - can deal with confounders - instead of edge/no edge have 3 possibilities: edge, no edge, confounding by unobserved missing common cause (+possibly another possibility for "unknown")
 - **score-based algorithms** - replace conditional indep. tests with godness of fit tests (e.g. BIC)
+
   - assume there are no confounders
   - still can only determine graphs up to markov equivalence
   - optimizing goodness of fit is NP-hard, so often use heuristics such as greedy equivalence search (GES) ([chickering, 2002](https://www.jmlr.org/papers/v3/chickering02b.html))
 - **functional causal models** - assume a variable can be written as a function of its direct causes and some noise term
+
   - can distinguish between different DAGs in same equivalence class
   - e.g. (hyavarinen & zhang, 2016) assume additive noise and that $p(E|C)$ can be modeled while $P(C|E)$ cannot
   - e.g. LiNGAM (Shimizu et al., 2006), ICA-LINGAM - linear relations between different variables and noise
@@ -240,15 +229,18 @@ C(Location of Car) --> B
     - ANM-MM (Hu et al., 2018)
   - post-nonlinear models PNL (Zhang and Hyvarinen, 2009) expand the functional space with non-linear relations between the variables and the noise
 - many models assume the generating cause distribution $p(C)$ is in some sense "independent" to the mechanism $P(E|C)$
+
   - e.g. IGCI (Janzing et al., 2012) uses orthogonality in information space to express the independence between the two distributions
   - e.g. KCDC (Mitrovic et al., 2018) uses  invariance of Kolmogorov complexity of conditional distribution
   - e.g. RECI (Blobaum et al., 2018) extends IGCI to the setting with small noise, and proceeds by comparing the regression errors in both possible directions
 - check variables which reduce entropy the most
-    - [Origo : causal inference by compression](https://link.springer.com/article/10.1007/s10115-017-1130-5) (budhathoki & vreekan, 2017) - similar intuition as ICM: causal directions are more easily compressible
+
+  - [Origo : causal inference by compression](https://link.springer.com/article/10.1007/s10115-017-1130-5) (budhathoki & vreekan, 2017) - similar intuition as ICM: causal directions are more easily compressible
 - [Learning and Testing Causal Models with Interventions](https://proceedings.neurips.cc/paper/2018/hash/78631a4bb5303be54fa1cfdcb958c00a-Abstract.html) (acharya et al. 2018)
-  
+
   - given DAG, want to learn distribution on interventions with minimum number of interventions, variables intevened on, numper of samples draw per intervention
 - [Discovering Causal Signals in Images](http://openaccess.thecvf.com/content_cvpr_2017/papers/Lopez-Paz_Discovering_Causal_Signals_CVPR_2017_paper.pdf) (lopez-paz et al. 2017)
+
   - C(A, B) - count number of images in which B would disappear if A was removed
   - we say A *causes* B when C(A, B) is (sufficiently) greater than the converse C(B, A)
   - basics
@@ -265,6 +257,7 @@ C(Location of Car) --> B
     - eval - when one thing is erased, does the other also get erased?
   - [link to iclr talk](https://www.technologyreview.com/s/613502/deep-learning-could-reveal-why-the-world-works-the-way-it-does/?fbclid=IwAR3LF2dc_3EvWXzEHhtrsqtH9Vs-4pjPALfuqKCOma9_gqLXMKDeCWrcdrQ) (bottou 2019)
 - [Visual Causal Feature Learning](https://arxiv.org/abs/1412.2309) (chalupka, perona, & eberhardt, 2015)
+
   - assume the behavior $T$ is a function of some hidden causes $H_i$ and the image
     - ![Screen Shot 2020-02-03 at 2.27.27 PM](../assets/hidden_graphical_node.png)
   - **Causal Coarsening Theorem** - causal partition is coarser version of the observational partition
@@ -279,6 +272,7 @@ C(Location of Car) --> B
     - first, create causal dataset of $P(T|man(I))$ and train, so the model can't learn spurious correlations
     - then train on this - very similar to adversarial training
 - [Visual Physics: Discovering Physical Laws from Videos](https://arxiv.org/abs/1911.11893)
+
   - 3 steps
     - Mask R-CNN finds bounding box of object and center of bounding box is taken to be location
     - $\beta-VAE$ compresses the trajectory to some latent repr. (while also being able to predict held-out points of the trajectory)
@@ -290,6 +284,7 @@ C(Location of Car) --> B
     - genetic programming is the most pervalent method here
     - alternatives: sparse regression, dimensional function synthesis
 - Causal Mosaic: Cause-Effect Inference via Nonlinear ICA and Ensemble Method ([wu & fukumizu, 2020](https://arxiv.org/abs/2001.01894))
+
   - focus on bivariate case
 
 ## stable/invariant predictors
@@ -317,6 +312,7 @@ C(Location of Car) --> B
 ### invariance algorithms
 
 - algorithms overview (see papers for more details) + [implementations](https://github.com/facebookresearch/InvarianceUnitTests)
+
   - *ICP* - invariant causal prediction - find feature set where, after conditioning, loss is the same for all environments
     - fails when distr. of residuals varies across environments
   - *IRM* - invariant risk minimization (v1) - find a feature repr. such that the optimal classifier, on top of that repr., is the identity function for all environments
@@ -326,8 +322,8 @@ C(Location of Car) --> B
     - fails when distr. of causes changes across environments
   - *AND-mask* - minimize the err only in directions where the sign of the gradient of the loss is the same for most environments
   - [IGA]() - inter-environmental gradient alignment - ERM + reduce variance of the gradient of the loss per environment: $\lambda \operatorname{trace}\left(\operatorname{Var}\left(\nabla_{\theta} L_{\mathcal{E}}(\theta)\right)\right)$
-  
 - [Invariance, Causality and Robustness](https://arxiv.org/abs/1812.08233) - ICP (buhlmann 18)
+
   - predict $Y^e$ given $X^e$ such that the prediction “works well” or is “robust” for all $e ∈ \mathcal F$ based on data from much fewer environments $e \in \mathcal E$
     - **key assumption (*invariance*)**: there exists a subset of "causal" covariates - when conditioning on these covariates, the loss is the same across all environments $e$
     - assumption: ideally $e$ changes only the distr. of $X^e$ (so doesn't act directly on $Y^e$ or change the mechanism between $X^e$ and $Y^e$)
@@ -336,8 +332,8 @@ C(Location of Car) --> B
     - **Invariant Causal Prediction (ICP)** only identifies variables as causal if they appear in all invariant sets (see also [Peters, Buhlmann, & Meinshausen, 2015](https://arxiv.org/abs/1501.01332))
     - brute-force feature selection
   - anchor regression model helps to relax assumptions
-  
 - [Invariant Risk Minimization](https://arxiv.org/abs/1907.02893) - IRM (arjovsky, bottou, gulrajani, & lopez-paz 2019)
+
   - idealized formulation: $\begin{array}{ll}\min _{\Phi: \mathcal{X} \rightarrow \mathcal{H}} & \sum_{e \in \mathcal{E}_{\mathrm{tr}}} R^{e}(w \circ \Phi) \\ \text { subject to } & w \in \underset{\bar{w}: \mathcal{H} \rightarrow \mathcal{Y}}{\arg \min  } \: R^{e}(\bar{w} \circ \Phi), \text { for all } e \in \mathcal{E}_{\mathrm{tr}}\end{array}$
     - $\Phi$ is repr., $w \circ \Phi$ is predictor
   - practical formulation: $\min _{\Phi: \mathcal{X} \rightarrow \mathcal{Y}} \sum_{e \in \mathcal{E}_{\mathrm{tr}}} R^{e}(\Phi)+\lambda \cdot\left\|\nabla_{w \mid w=1.0} R^{e}(w \cdot \Phi)\right\|^{2}$
@@ -349,8 +345,8 @@ C(Location of Car) --> B
   - assume we have infinite data, and know what kinds of changes our distribution for the problem might have (e.g. variance of features might change)
     - make a model which has the minimum test error regardless of the distribution of the problem
   - adds a penalty inspired by invariance (which can be viewed as a stability criterion)
-
 - [Learning explanations that are hard to vary](https://arxiv.org/abs/2009.00329) - AND-mask (parascandolo...sholkopf, 2020)
+
   - basically, gradients should be consistent during learning
     - after learning, they should be consistent within some epsilon ball
   - practical algorithm: AND-mask
@@ -368,17 +364,17 @@ C(Location of Car) --> B
   - given algorithm $\mathcal A$, maximize this: $\mathrm{ILC}\left(\mathcal{A}, p_{\theta^{0}}\right):= \underbrace{-\mathbb{E}_{\theta^{0} \sim p\left(\theta^{0}\right)}}_{\text{expectation over reinits}}\left[\mathcal{I}^{\epsilon} (\underbrace{\mathcal{A}_{\infty}(\theta^{0}, \mathcal{E}}_{\hat \theta}) \right]$
     - **inconsistency score** for a solution $\hat \theta$ given environments $e$: $\mathcal{I}^{\epsilon}(\hat \theta):=\overbrace{\max _{\left(e, e^{\prime}\right) \in \mathcal{E}^{2}} }^{\text{env. pairs}} \underbrace{\max _{\theta \in N_{e, \hat \theta}^{\epsilon}}}_{\text{low-loss region around $\hat \theta$}} \overbrace{\mid \mathcal{L}_{e^{\prime}}(\theta)-\mathcal{L}_{e}(\theta)|}^{\text{loss between envs.}}$
       - $N_{e, \hat \theta}^{\epsilon}$ is path-connected region around $\hat \theta$ where $\left\{\theta \in \Theta\right.$ s.t. $\left|\mathcal{L}_{e}(\theta)-\mathcal{L}_{e}\left(\hat \theta\right)\right| \leqslant \epsilon$
-  
 - [Invariant Risk Minimization Games](https://arxiv.org/abs/2002.04692) (ahuja et al. 2020) - pose IRM as finding the Nash equilibrium of an ensemble game among several environments
-
 - [Invariant Rationalization](https://arxiv.org/abs/2003.09772) (chang et al. 2020) - identify a small subset of input features -- the rationale -- that best explains or supports the prediction
+
   - key assumption: $Y \perp E | Z$
   - $\max _{\boldsymbol{m} \in \mathcal{S}} I(Y ; \boldsymbol{Z}) \quad$ s.t. $\boldsymbol{Z}= \overbrace{\boldsymbol{m}}^{\text{binary mask}} \odot \boldsymbol{X}, \quad \underbrace{Y \perp E \mid \boldsymbol{Z}}_{\text{this part is invariance}}$
     - solve this via 3 nets with adv. penalty to approximate invariance
     - standard maximum mutual info objective is just $\max _{\boldsymbol{m} \in \mathcal{S}} I(Y ; \boldsymbol{Z}) \quad$ s.t. $\boldsymbol{Z}= \overbrace{\boldsymbol{m}}^{\text{binary mask}} \odot \boldsymbol{X}$ (see [lei et al. 2016](https://arxiv.org/abs/1606.04155))
     - ex. $X$ is text reviews for beer, $Y$ is aroma, $E$ could be beer brand
 - [Linear unit-tests for invariance discovery](https://www.cmu.edu/dietrich/causality/CameraReadys-accepted%20papers/32%5CCameraReady%5Cdatasets.pdf)  (aubin et al. 2020) - a set of 6 simple settings where current IRM procedures fail
-  - test 1 (colormnist-style linear regr): $x_{inv}  \to \tilde y \to x_{spu}$ 
+
+  - test 1 (colormnist-style linear regr): $x_{inv}  \to \tilde y \to x_{spu}$
     - $\tilde y \to y$
   - test 2 (cows vs camels binary classification): $y=mean(x_{inv})>0$, but $x_{inv} \propto x_{spu}$
   - test 3 (small invariant margin): $y_i\sim Bern(1/2)$, $x_{inv} = \pm 0.1+$noise, $x_{spu} = \pm \mu^e$ + noise, where $\mu^e ~ N(0, 1)$
@@ -387,21 +383,20 @@ C(Location of Car) --> B
 ## misc problems
 
 - [Incremental causal effects](https://arxiv.org/abs/1907.13258) (rothenhausler & yu, 2019)
+
   - instead of considering a treatment, consider an infinitesimal change in a continuous treatment
   - use assumption of local independence and can prove some nice things
     - local ignorability assumption states that potential outcomes are independent of the current treatment assignment in a neighborhood of observations
-  
 - **probability of necessity** $PN(t, y) = P(Y^{T=t'}=y'|T=t, Y=y)$ = "probability of causation" (Robins & Greenland, 1989)
 
   - find the probability that $Y$ would be $y′$ had $T$ been $t'$, given that, in reality, $Y$ is actually $y$ and $T$ is $t$
-
   - If $Y$ is monotonic relative to $T$ $i.e ., Y^{T=1}(x) \geq Y^{T=0}(x),$ then $\mathrm{PN}$ is identifiable whenever the causal effect $P(y \mid d o(t))$ is identifiable and, moreover,
+
     $$
     \mathrm{PN}=\underbrace{\frac{P(y \mid t)-P\left(y \mid t^{\prime}\right)}{P(y \mid t)}}_{\text{excess risk ratio}}+\underbrace{\frac{P\left(y \mid t^{\prime}\right)-P\left(y \mid d o\left(t^{\prime}\right)\right)}{P(t, y)}}_{\text{confounding adjustment}}
-    $$
-  
-- **causal transportability** - seeks to identify conditions under which causal knowledge learned from experiments can be reused in different domains with observational data only
 
+    $$
+- **causal transportability** - seeks to identify conditions under which causal knowledge learned from experiments can be reused in different domains with observational data only
 - [Radical Empiricism and Machine Learning Research](https://ftp.cs.ucla.edu/pub/stat_ser/r502.pdf) (pearl 2021)
 
   - contrast the “data fitting” vs. “data interpreting” approaches to data-science
@@ -423,7 +418,7 @@ C(Location of Car) --> B
 - unconfoundedness $T_i \perp (Y_i(0), Y_i(1)) | X_i$ is strong
   - sometimes we may perfer $T_i \perp (Y_i(0), Y_i(1)) | X_i, Z_i$ for some unobserved $Z_i$ that we need to figure out
 - [The Blessings of Multiple Causes](https://arxiv.org/abs/1805.06826) (wang & blei, 2019) - having multiple causes can help construct / find all the confounders
-  - **deconfounder algorithm** 
+  - **deconfounder algorithm**
     - fit a factor model of causes
     - estimate a repr $Z_i$ of data point $A_i$ - $Z_i$ renders the causes conditionally independent
     - now, $Z_i$ is a substitute for unobserved confounders

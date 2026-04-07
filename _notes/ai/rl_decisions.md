@@ -1,6 +1,6 @@
 ---
 layout: notes
-title: decisions, rl
+title: rl, decisions
 subtitle: Some notes on decision theory based on Berkeley's CS 188 course and  "Artificial Intelligence" Russel & Norvig 3rd Edition
 category: ai
 typora-copy-images-to: ../assets
@@ -393,3 +393,13 @@ Inverse RL - learning reward functions from example
 - one idea: instead of collecting new samples with policy, reweight samples using importance sampling based on policy
 - [IQL: Implicit Q-learning](https://arxiv.org/abs/2110.06169) (ashvin’s paper, 2021)
   - IQL - foregoes need to evaluate unseen actions
+
+# RL for LLMs
+
+- PPO: Proximal Policy Optimization ([schulman et al. 2017](https://arxiv.org/abs/1707.06347))
+  - uses a policy gradient method to update the policy based on the reward from a separate reward model
+
+- DPO: Direct Preference Optimization ([rafailov...manning, finn, 2023](https://arxiv.org/abs/2305.18290)) - simpler technique that eliminates the need for a separate reward model using preference data directly
+  - essentially frames the problem as a classification task between the chosen and rejected responses
+
+- GRPO: Group Relative Policy Optimization ([deepseek-r1, 2025](https://arxiv.org/abs/2501.12948)) - groups similar samples together and compares them as a group (can evaluate them in different ways, e.g. with reward model or function like a code solver)
