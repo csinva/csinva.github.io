@@ -587,6 +587,8 @@ Nice survey here: A Survey on dLLMs ([li, chen, guo & shen, 2025](https://arxiv.
   - AsyncThink -- The Era of Agentic Organization: Learning to Organize with LMs ([chi...furu wei, 2025](https://arxiv.org/abs/2510.26658))
   - ExpeL: LLM Agents Are Experiential Learners ([zhao...huang, 2023](https://arxiv.org/abs/2308.10144)) - extract insights that are not query-specific
   - Rethinking Thinking Tokens: LLMs as Improvement Operators ([madaan...goyal, 2025](https://arxiv.org/abs/2510.01123)) - use paralell refinement + finetune an 8B model to be compatible with the Knowledge-Flow style inference procedure
+  - Scaling Latent Reasoning via Looped LMs ([zhu...eshraghian, 2025](https://arxiv.org/abs/2510.25741))
+  - Memento: Teaching LLMs to Manage Their Own Context ([kontonis...langford, papailiopoulos, 2026](https://www.microsoft.com/en-us/research/articles/memento-teaching-llms-to-manage-their-own-context/)) - models learn to compress their reasoning chunks
 - variations on finding solution paths (add some post-training to make these work)
   - Recursive Self-Aggregation Unlocks Deep Thinking in LLMs ([venkatraman...jain, 2025](https://arxiv.org/abs/2509.26626))
     - self-aggregation: provide LRM with the query and a set of candidate solutions, then prompt it to produce an improved solution
@@ -608,8 +610,10 @@ Nice survey here: A Survey on dLLMs ([li, chen, guo & shen, 2025](https://arxiv.
     - EvoSkill: Automated Skill Discovery for Multi-Agent Systems ([alzubi...vu, 2026](https://arxiv.org/abs/2603.02766))
     - Memento-Skills: Let Agents Design Agents ([zhou...wang, 2026](https://arxiv.org/abs/2603.18743))
     - autoresearch-skill ([tweet](https://x.com/itsolelehmann/status/2033919415771713715?s=20); [github](https://github.com/olelehmann100kMRR/autoresearch-skill))
+    - SKILLFOUNDRY: Building Self-Evolving Agent Skill Libraries from Heterogeneous Scientific Resources ([shen...ma, 2026](https://arxiv.org/abs/2604.03964))
   - Tool-R0: Self-Evolving LLM Agents for Tool-Learning from Zero Data ([acikgoz...tur, 2026](https://arxiv.org/abs/2602.21320))
     - SKILL0: In-Context Agentic RL for Skill Internalization ([lu...shen, 2026](https://arxiv.org/abs/2604.02268))
+    - SkillClaw: Let Skills Evolve Collectively with Agentic Evolver ([ma...chu, 2026](https://arxiv.org/abs/2604.08377))
 - Meta-Harness: End-to-End Optimization of Model Harnesses ([lee...finn, 2026](https://arxiv.org/abs/2603.28052))
 - training to enable scaling test-time reasoning
   - ExGRPO: Learning to Reason from Experience ([zhan...cheng, 2025](https://arxiv.org/abs/2510.02245))
@@ -1038,7 +1042,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   2. weak unsupervised pre-training, e.g. weakly related text pairs, such as QA pairs from forums like StackExchange and Quora
   3. high-quality contrastive finetuning on curated paired data, e.g. QA from web searches
 - datasets
-  - **[MTEB leaderboard](https://huggingface.co/spaces/mteb/leaderboard)**
+  - **[MTEB leaderboard](https://huggingface.co/spaces/mteb/leaderboard)** & newer [RTEB](https://huggingface.co/blog/rteb)
   - Instructor eval: Billboard, Prompt retrieval
   - [FollowIR](https://arxiv.org/abs/2403.15246) (weller...soldaini, 2024)
   - [TREC-RAG](https://trec-rag.github.io/)
@@ -1430,7 +1434,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
 ## (automatic) data science
 
 - datasets (some of these also introduce a method along with the dset)
-  - Evaluating LLMs in Scientific Discovery ([song...duan, 2025](https://arxiv.org/abs/2512.15567)) - interesting very hard benchmark at two levels: QA and open-ended discovery
+  - Evaluating LLMs in Scientific Discovery ([song...duan, 2025](https://arxiv.org/abs/2512.15567)) - interesting very hard benchmark at two levels: QA and open-ended discovery (in a few scientific domains, e.g. a symbolic regerssion task)
   - DSGym: A Holistic Framework for Evaluating and Training Data Science Agents ([nie...zou, 2026](https://arxiv.org/abs/2601.16344))
     - mostly prediction tasks
     - also has DSBio, which are QA tasks that require data analysis, e.g. "Identify co-expression modules in endothelial cells using hierarchical clustering on gene-gene correlation matrix. Using Pearson correlation on the top 500 most variable genes, cut the dendrogram at height 0.7 to define modules. How many genes belong to the largest co-expression module?"
@@ -1506,6 +1510,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - All That Glitters is Not Novel: Plagiarism in AI Generated Research ([gupta & pruthi, 2025](https://arxiv.org/abs/2502.16487))
   - Do Claude Code and Codex P-Hack? Sycophancy and Statistical Analysis in LLMs ([asher...hall, 2026](https://andrewbenjaminhall.com/asher_et_al_LLM_sycophancy.pdf))
   - Many AI Analysts, One Dataset: Navigating the Agentic Data Science Multiverse ([bertran, fogliato & wu, 2026](https://arxiv.org/abs/2602.18710)) - recomend showing LLM judgement calls along with estimand distribution
+    - Beyond Quantification: Navigating Uncertainty in Professional AI Systems ([delacroix...lawrence, 2025](https://academic.oup.com/rssdat/article/1/1/udaf002/8317136?guestAccessKey=))
 
 ## teaching, HITL
 
@@ -1983,7 +1988,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
     - gradient-based word perturbing ([yoo et al., 2021](https://arxiv.org/abs/2109.00544))
     - Cats Confuse Reasoning LLM: Query Agnostic Adversarial Triggers for Reasoning Models ([rajeev...james zou, rajani, 2025](https://arxiv.org/abs/2503.01781))
 
-**Misc**
+    **Misc**
 
 - Effective Backdoor Mitigation Depends on the Pre-training Objective ([verma...bilmes, 2023](https://arxiv.org/abs/2311.14948))
     - CleanCLIP mitigates backdoors by finetuning models on a clean subset of image-text pairs using a combination of contrastive and self-supervised loss
@@ -2090,7 +2095,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
 - multilingual defenses
   - PolyGuard: A Multilingual Safety Moderation Tool for 17 Languages ([kumar...sap, 2025](https://arxiv.org/abs/2504.04377))
 
-**multilingual learning**
+  **multilingual learning**
 
 - Multilingual Jailbreak Challenges in LLMs ([deng…bing, 2024](https://openreview.net/forum?id=vESNKdEMGp)) - jailbreaks work better in low-resource languages - propose to remedy this by safety finetuning on multilingual data
 - *Evaluating and Mitigating Linguistic Discrimination in LLMs* ([dong…wang, 2024](https://arxiv.org/abs/2404.18534)) - translate all queries into multiple languages and then get the response from the model, and then convert the responses to English and give the answer that has highest similarities to other answers
@@ -2218,3 +2223,10 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - filter repeated text to only include non-overlapping noun phrases from spacy
   - BIO tags mark each token with beginning (B), inside (I), and outside (O) tagging schemes
 - text classification but related idea: Joint Embedding of Words and Labels for Text Classification ([wang, li…henao, carin, 2018](https://arxiv.org/abs/1805.04174))
+
+## benchmarks
+
+- [agent-board](https://github.com/hkust-nlp/AgentBoard) (9 multi-turn tasks)
+- [terminal-bench](https://www.tbench.ai/)
+- [OfficeQA](https://arxiv.org/abs/2603.08655) (grounded reasoning benchmark over U.S. Treasury text/tabular data)
+- [GAIA](https://arxiv.org/abs/2311.12983) (general assistants benchmark, questions that require reasoning, multi-modality handling, web browsing, and generally tool-use proficiency)

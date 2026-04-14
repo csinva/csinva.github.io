@@ -119,3 +119,15 @@ category: ml
 # nlp
 
 - [BLEU (**B**i**L**ingual **E**valuation **U**nderstudy)](https://en.wikipedia.org/wiki/BLEU) is a metric for automatically evaluating machine-translated text. The BLEU score is a number between zero and one that measures the similarity of the machine-translated text to a set of high quality reference translations
+- ROUGE, BLEU
+- BERTScore, BLEURTScore
+
+
+
+# ranking
+
+- mean reciprocal rank
+- normalized discounted cumulative gain (NCDG)
+  - discounted cumulative gain: $\sum_{i=1}^p \frac{r e l_i}{\log _2(i+1)}$, where $rel_i$ is usually binary and denominator emphasizes putting higher relevance results first
+  - normalized CDG normalizes this by the ideal (so just putting all ones in the numerator)
+  - sometimes, when $rel_i \in (0, 1)$ rather than binary, people use $2^{rel_i} - 1$ to further incentivize relevances closer to 1

@@ -60,5 +60,3 @@ In general, I highly recommend the book [storytelling with data](https://github.
       - This makes it easier to elicit feedback
       - Save the final polishing of writing / cleaning figures until everything is set
     - Writing should be clear and easy to skim
-
-<br/>
