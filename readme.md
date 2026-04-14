@@ -1,7 +1,6 @@
 <!-- <h1 align="center">Source for <a href="https://csinva.github.io">csinva.io</a></h1> -->
 Hi 👋 I'm Chandan, a Senior Researcher at Microsoft Research working on interpretable machine learning. I've been compulsively taking / improving my notes since my PhD at UC Berkeley and share them on this website. Hope they're helpful :)
 
-
 <p align="center">
   <a href="pres">Slides</a> •
   <a href="_notes/research_ovws">Research overviews</a> •
@@ -20,10 +19,10 @@ Hi 👋 I'm Chandan, a Senior Researcher at Microsoft Research working on interp
 <summary>The <a href="pres">pres</a> folder contains source for presentations, including <a href="https://csinva.github.io/pres/189/#/">ML slides</a> from teaching machine learning at berkeley</summary>
 The source is in markdown (<a href="https://csinva.io/blog/misc/reveal_md_enhanced/readme">built with reveal-md</a>) and is easily editable / exportable
 <ul>
-	<li><a href="https://csinva.io/pres/189/#/">ML slides (berkeley cs 189)</a></li>
-	<li><a href="https://csinva.io/pres/188/#/">AI slides (berkeley cs 188)</a></li>   <li><a href="https://docs.google.com/presentation/d/1RIdbV279r20marRrN0b1bu2z9STkrivsMDa_Dauk8kE/present?slide=id.p">Interpretability workshop</a></li> 
-	<li><a href="https://docs.google.com/presentation/d/1cdzZsyRYRs9GiR9s2-V7OO8oIcaabT5TVJFGR9qk_HY/present?slide=id.p">Disentangled interpretations</a></li> 
-</ul> 
+ <li><a href="https://csinva.io/pres/189/#/">ML slides (berkeley cs 189)</a></li>
+ <li><a href="https://csinva.io/pres/188/#/">AI slides (berkeley cs 188)</a></li>   <li><a href="https://docs.google.com/presentation/d/1RIdbV279r20marRrN0b1bu2z9STkrivsMDa_Dauk8kE/present?slide=id.p">Interpretability workshop</a></li>
+ <li><a href="https://docs.google.com/presentation/d/1cdzZsyRYRs9GiR9s2-V7OO8oIcaabT5TVJFGR9qk_HY/present?slide=id.p">Disentangled interpretations</a></li>
+</ul>
 </details>
 
 ![](assets/img/pres_demo.gif)
@@ -62,11 +61,11 @@ The source is in markdown (<a href="https://csinva.io/blog/misc/reveal_md_enhanc
 
 ![notes](https://csinva.io/notes/cheat_sheets/interp.svg?sanitize=True)
 
-
 ## Posts
 
 Posts on various aspects of machine learning / statistics / neuroscience advancements (some selected posts below)
-- paper writing tips([2023](https://csinva.io/blog/misc/23_paper_writing_tips))
+
+- paper writing tips ([2023](https://csinva.io/blog/misc/23_paper_writing_tips))
 - forecasting paper titles ([2022](https://csinva.io/gpt-paper-title-generator/))
 - imodels ([2022, bairblog](https://bair.berkeley.edu/blog/2022/02/02/imodels/))
 
