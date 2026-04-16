@@ -60,6 +60,9 @@ You are writing technical content that should be precise, clear, and grounded. Y
 - Figs should be in a vector format (e.g. pdf) so that their resolution stays sharp even when zoomed in.
   - The only exception to this is when you’re plotting a *ton* of data: in this case, vector files can become big and you should instead use a rasterized format with high resolution (e.g. png at 300 dpi)
 - Do not invert axes, it is okay for lower to be "better"
+- Legends should never cover data in the figure, often the best place for a legend is outside the figure (e.g. to the right or below)
+- Figures should generally make good use of horizontal whitespace and avoid being too vertically long, which wastes space on a page
+- Legend names and text annotations should be easily legible and avoid underscores, e.g. rename model_v1 to "Model (v1)"
 
 ## Tables
 
@@ -67,6 +70,7 @@ You are writing technical content that should be precise, clear, and grounded. Y
   - Numbers that begin with a decimal point should be left-padded with a "0"
 - Use bolding for emphasis
 - Whenever possible, include an "Average" column that show averages making the takeaway from a large table clear
+- Show standard error in tables whenever possible, show it using $\pm$ notation and in a slightly smaller font than the main number
 
 ## Avoid AI writing
 
@@ -84,4 +88,6 @@ Avoid using the following:
   - This makes it easier to elicit feedback
   - Save the final polishing of writing / cleaning figures until everything is set
 - After finishing, go through the paper and make sure it is well-written, clear, and concise. Pretend you are a reviewer for NeurIPS and read through the paper critically, writing a detailed `self_review.md` report looking for any areas that could be improved or clarified, and suggesting any additional experiments or revisions. Then, make any necessary revisions to the paper based on your review, and write a final `response_to_self_review.md` document that addresses each point raised in the review, explaining how you have revised the paper in response.
-- If you are editing a latex project, do not edit the `.bib` file or the `.sty` files, only the `.tex` filesYou may write python code to help make figures or tables, which should be saved into their own subfolders, then loaded by the `.tex` files. Be thorough but concise in your writing, and make sure to clearly explain the methods and results.
+- If you are editing a latex project, do not edit the `.bib` file or the `.sty` files, only the `.tex` files
+  - You may write python code to help make figures or tables, which should be saved into their own subfolders, then loaded by the `.tex` files. Be thorough but concise in your writing, and make sure to clearly explain the methods and results.
+  - Always use \cref for cross-referencing sections, figures, and tables in latex.

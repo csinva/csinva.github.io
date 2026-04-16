@@ -589,6 +589,7 @@ Nice survey here: A Survey on dLLMs ([li, chen, guo & shen, 2025](https://arxiv.
   - Rethinking Thinking Tokens: LLMs as Improvement Operators ([madaan...goyal, 2025](https://arxiv.org/abs/2510.01123)) - use paralell refinement + finetune an 8B model to be compatible with the Knowledge-Flow style inference procedure
   - Scaling Latent Reasoning via Looped LMs ([zhu...eshraghian, 2025](https://arxiv.org/abs/2510.25741))
   - Memento: Teaching LLMs to Manage Their Own Context ([kontonis...langford, papailiopoulos, 2026](https://www.microsoft.com/en-us/research/articles/memento-teaching-llms-to-manage-their-own-context/)) - models learn to compress their reasoning chunks
+  - Memory Caching: RNNs with Growing Memory ([behrouz...mirrokni, 2026](https://arxiv.org/abs/2602.24281))
 - variations on finding solution paths (add some post-training to make these work)
   - Recursive Self-Aggregation Unlocks Deep Thinking in LLMs ([venkatraman...jain, 2025](https://arxiv.org/abs/2509.26626))
     - self-aggregation: provide LRM with the query and a set of candidate solutions, then prompt it to produce an improved solution
@@ -1294,6 +1295,8 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - CoSy: Evaluating Textual Explanations of Neurons ([kopf...bykov, 2024](https://arxiv.org/abs/2405.20331))
   - Evaluating Concept-based Explanations of LMs: A Study on Faithfulness and Readability ([li...wang, 2024](https://arxiv.org/pdf/2404.18533))
   - A Multimodal Automated Interpretability Agent ([shaham...hernandez, andreas, torralba, 2024](https://arxiv.org/pdf/2404.14394))
+    - ADAG: Automatically Describing Attribution Graphs ([arora, wu, steinhardt & schwettmann, 2026](https://arxiv.org/abs/2604.07615)) - NL descriptions for components, which can then be used for steering harmful advice
+  
   - MILAN: Natural Language Descriptions of Deep Visual Features ([hernandez...david bau...torallba, andreas, 2022](https://openreview.net/forum?id=NudBMY-tzDr)) - given a neuron, generates a natural-language string that maximizes pointwise mutual information with the image regions in which the neuron is active
     - Scale Alone Does not Improve Mechanistic Interpretability in Vision Models ([zimmermann, klein, & brendel, 2023](https://arxiv.org/abs/2307.05471)) - perform human eval of interpretability of different units (show human top-activating patches and ask them to decide which of 2 patches will be top-activating)
     - CLIP-Dissect: Automatic Description of Neuron Representations in Deep Vision Networks ([oikarinen & weng, 2023](https://arxiv.org/abs/2204.10965))
@@ -1540,6 +1543,9 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - UserLM: Flipping the Dialogue: Training and Evaluating User LMs ([naous, laban, xu & neville, 2025](https://arxiv.org/abs/2510.06552)) - train an 8B model to better work as a user simulator
   - HUMANLM: Simulating Users with State Alignment Beats Response Imitation ([shirley wu...leskovec, zou, 2026](https://humanlm.stanford.edu/HumanLM_paper.pdf))
   - Nested Training for Mutual Adaptation in Human-AI Teaming ([biswas, kalwar, kambhampati & sreedharan, 2026](https://arxiv.org/abs/2602.17737)) - alternate between training robot model vs human model to mitigate weird joint strategies emerging
+- Weak-to-Strong Generalization: Eliciting Strong Capabilities With Weak Supervision ([burns...wu, 2023](https://arxiv.org/abs/2312.09390))
+  - Can weaker model (human proxy) teach a stronger model (AGI proxy) to do better than the teacher itself at a task?
+  - Automated Weak-to-Strong Researcher ([wen…leike, 2026](https://alignment.anthropic.com/2026/automated-w2s-researcher/)) - autoresearch applied to this task
 - AI tutor
   - Unifying AI Tutor Evaluation: An Evaluation Taxonomy for Pedagogical Ability Assessment of LLM-Powered AI Tutors ([maurya et al. 2025](https://arxiv.org/pdf/2412.09416)) - evaluate LLM tutor/student conversations by rating them on several automated metrics, e.g. "Has the tutor identified/recognized a mistake in a student’s response?"
   - Zone of Proximal Development (ZPD) (Vygotsky, 1978) posits that learning is maximized when

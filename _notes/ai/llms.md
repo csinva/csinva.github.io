@@ -15,6 +15,8 @@ See related papers in the [📌 llm research](https://csinva.io/notes/research_o
 Here is my best diagram of essential components of transformer sizes (I find it very useful to remember the shapes of all the matrices):
 <img src="../assets/transformer_sizes.png" alt="transformer_sizes" style="width:100%;"/>
 
+- Note that query is "what is the token looking for" and key is more like the index
+
 Here is a follow-up diagram showing how key-value caching works during inference to speed things up:
 <img src="../assets/kv_caching_diagram.png" alt="kv_caching_diagram" style="width:100%;"/>
 
