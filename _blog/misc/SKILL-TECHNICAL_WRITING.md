@@ -80,7 +80,7 @@ Avoid using the following:
 - The following phrases: delve / delve into, landscape (metaphor), tapestry, realm, paradigm, embark, beacon, testament to, robust, comprehensive, cutting-edge, leverage (verb), pivotal, underscores, meticulous / meticulously, seamless / seamlessly, game-changer / game-changing, hit differently / hits different, utilize, watershed moment, marking a pivotal moment, the future looks bright, only time will tell, nestled, vibrant, thriving, despite challenges… continues to thrive, showcasing, deep dive / dive into, unpack / unpacking, bustling, intricate / intricacies, complexities, ever-evolving, enduring, daunting, holistic / holistically, actionable, impactful, learnings, thought leader / thought leadership, best practices, at its core, synergy / synergies, interplay, in order to, due to the fact that, serves as, features (verb), boasts, presents (inflated), commence, ascertain, endeavor, keen (as intensifier), symphony (metaphor), embrace (metaphor)
 - Default to "is" or "has" unless a more specific verb genuinely adds meaning
 - Use sentence case for headings
-- Too many headers in short text:
+- Too many headers in short text
 
 ## Writing process
 
