@@ -882,7 +882,7 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - **adaptive optics**
   - **oct** - noninvasive - can look at retina (maybe find biomarkers of alzheimer's)
   - fiber photometry - optical fiber implanted delivers excitation light
-  
+
 - high-level
   - EEG/ECoG
   - MEG
@@ -893,9 +893,15 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
     - there are some issues with the relationship between BOLD and underlying neuronal activity (e.g. see [epp et al. 2025](https://www.nature.com/articles/s41593-025-02132-9))
   - MRS
   - event-related optical signal = near-infrared spectroscopy
-  
+
 - implantable
   - neural dust
+
+- modern criqitues of fMRI / blood oxygenation
+
+  - BOLD signal changes can oppose oxygen metabolism across the human cortex ([epp...riedl, 2025](https://www.nature.com/articles/s41593-025-02132-9))
+  - Brainwide blood volume reflects opposing neural populations ([landemard...carandini, 2026](https://www.nature.com/articles/s41586-026-10350-9.epdf?sharing_token=dUnZ0V-MqB2AouW05ozejNRgN0jAjWel9jnR3ZoTv0PiLLAOX6tx6omPIRJNbIlNMUlC3SqEubdLDpML1Dr8wIGS32d1HGSF8hXB50mBnJtjj36Hsk96S47P5ejT9R1d-7tXnNoVUuV3JW8oIVPAOv9rpdhKV-z7oLk6FJJKbIQ%3D))
+
 
 ## interventions
 

@@ -204,6 +204,10 @@ Deep learning models have achieved impressive predictive performance by learning
 ## bios
 
 <details>
+<summary>One-paragraph bio (may 2026)</summary>
+Chandan is a researcher in the Deep learning gorup at MSR, working on interpretability and LLMs, with the broad goal of improving science and medicine using data. Recently, he has focused on how to reliably use LLMs to extract new insights in clinical data and  language fMRI. Separately, he has also worked on developing highly accurate transparent models, such as improving linear models and decision trees. He received his PhD from UC Berkeley in 2022 advised by Professor Bin Yu.
+</details>
+
 <summary>One-paragraph bio (may 2025)</summary>
 Chandan works on interpretable machine learning with the broad goal of improving science and medicine using data. Recently, he has focused on language models and how they can be used to directly explain data from language neuroscience. Separately, he has also worked on developing highly accurate transparent models, such as improving linear models and decision trees. He received his PhD from UC Berkeley in 2022.
 </details>

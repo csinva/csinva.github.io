@@ -236,6 +236,10 @@ pd.merge(df1, df2, how='left', on='x1')
   * operator fusion allows us to do many operations at once before moving back to DRAM
     * can lead to interesting things, e.g.  activation functions are nearly all the same cost, despite `gelu` obviously consisting of many more operations than `relu`
 
+# filetypes
+
+**Apache Parquet** - an open-source, column-oriented data file format designed for efficient data storage and high-performance retrieval in big data analytics. Unlike row-based formats (like CSV), Parquet stores data by column, allowing for better compression and faster analytical queries by only reading necessary columns
+
 # c/c++
 
 * The C memory model: global, local, and heap variables. Where they are stored, their properties, etc.
@@ -306,7 +310,7 @@ x = &val; //take address of a variable
 ```
 
 //Hello World
-
+```C
 # include <iostream>
 
 using namespace std; //always comes after the includes, like a weaker version of packages
@@ -667,6 +671,7 @@ class foo {
 public:
 virtual void bar() = 0;
 };
+```
 
 Types of multiple inheritance
 

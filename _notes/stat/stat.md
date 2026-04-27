@@ -19,8 +19,8 @@ subtitle: general notes on stat
   - $V(X_1-X_2) = V(X_1) + V(X_2)$ if $X_1,X_2$ independent
   - $V(a_1X_...+a_nX_n) =  \sum_{i=1}^{n}\sum_{j=1}^{n}a_ia_jcov(X_i,X_j)$
   - $V[h(X)] \approx h'(E[X])^2 V[X]$
-  - standard deviation - sqrt of variance
-  - standard error - error of the mean
+  - standard deviation $\sigma(X)=\sqrt{V[X]}$
+  - standard error = error of the mean = $\sigma / \sqrt n$
 - $Cov[X,Y] = E[(X-\mu_X)(Y-\mu_Y)] = E[XY]-E[X]E[Y]$
   - $Cov(aX+bY,Z) = aCov(X,Z)+bCov(Y,Z)$
 - $Corr(Y,X) = \rho = \frac{Cov(Y,X)}{s_xs_y}$
@@ -32,10 +32,7 @@ subtitle: general notes on stat
 
 ## error bars
 
-- always write what you use
-  - standard dev
-  - standard error = standard dev / sqrt(n) = standard error of the mean when you're estimating a mean
-  - 95% confidence interval = 2*standard error
+- always write what you use: standard dev, standard error, or 95% confidence interval = 1.96 * standard error
 - can get prediction intervals for on-line data using [conformal prediction](https://arxiv.org/abs/0706.3188)
   - *nonconformity measure* - how unusual an examples looks relative to previous examples
 
@@ -45,26 +42,22 @@ subtitle: general notes on stat
   - from -1 to 1 (1 is perfect agreement)
   - $\kappa = 1 - \frac{1 - p_o}{1-p_e}$ where $p_o$ is the relative observed agreement among raters (identical to [accuracy](https://en.wikipedia.org/wiki/Evaluation_of_binary_classifiers)), and $p_e$ is the hypothetical probability of chance agreement, using the observed data to calculate the probabilities of each observer randomly seeing each category
 
-## sample-size calculation
-
-- how many samples must I collect?
-
 ## inequalities
 
 - *cauchy-schwarz*: $|x \cdot y| \leq ||x||\:||y||$
   - $E[XY]^2 \leq E[X^2] E[Y^2]$
+- *jensen's*: $f(E[X]) \leq E[f(X)]$ for convex $f$
 - *triangle*: $\vert \vert x + y \vert \vert \leq \vert \vert x \vert \vert + \vert \vert y \vert \vert$
 - *markov's*: $P(X \geq a) \leq \frac{E[X]}{a}$
   - X is typically running time of the algorithm
   - if we don't have E[X], can use upper bound for E[X]
 - *chebyshev's*: $P(\vert X-\mu\vert  \geq a) \leq \frac{Var[X]}{a^2}$
   - utilizes the variance to get a better bound
-- *jensen's*: $f(E[X]) \leq E[f(X)]$ for convex $f$
 
 ## moment-generating function
 
 - $M_X(t) = E(e^{tX})$
-  - derivatives yield moments: $\frac{d^r}{dX^r}M_X (0) = E(X^r) $
+  - derivatives yield moments: $\frac{d^r}{dX^r} M_X (0) = E(X^r)$
 - sometimes $\ln[M_x(t)]$ yields $\mu$ and $V(X)$
 - $Y = aX+b \implies M_y(t) = e^{bt}M_x(at)$
 - $Y = a_1X_1+a_2X_2 \implies M_Y(t) = M_{X_1}(a_1t)M_{X_2}(a_2t)$ if $X_i$ independent
@@ -103,8 +96,8 @@ subtitle: general notes on stat
 ## law of large numbers
 
 - equivalent statements
-  - $ E(\bar{X}-\mu)^2 \to 0$ as $n \to \infty,$
-  - $ P(\vert\bar{X}-\mu\vert \geq \epsilon) \to 0$ as $n \to \infty$
+  - $E(\bar{X}-\mu)^2 \to 0$ as $n \to \infty,$
+  - $P(\vert\bar{X}-\mu\vert \geq \epsilon) \to 0$ as $n \to \infty$
   - $T_o = X_1+...+X_n, E(T_o) = n\mu , V(T_o) = n\mu ^2$
 - implications
   - $E(\bar{X}) = \mu$
@@ -113,7 +106,7 @@ subtitle: general notes on stat
 ## central limit thm
 
 - 2 characterizations
-  - random samples have a normal distr. if n is large
+  - random sample means have a normal distr. if n is large
   - $lim_{n\to\infty}P(\frac{\bar{X}-\mu}{\sigma/\sqrt{n}}\leq z)=P(Z\leq z) = \Phi(z)$
 - implications
   - $X_1*..*X_n$ has approximately lognormal distribution if all $P(X_i>0)$
@@ -123,7 +116,6 @@ subtitle: general notes on stat
 - *point estimator* $\hat{\theta}$ - statistic that predicts a parameter
   - *point estimate* - single number prediction
 - **bias**: $E(\hat{\theta}) - \theta$
-  - [really nice example](https://www.lesswrong.com/s/5g5TkQTe9rmPS5vvM/p/ptxnyfLWqRZ98wnYi)
   - more complex models (more nonzero parameters) have lower bias, higher variance
     - if high bias, train and test error will be very close (model isn't complex enough)
   - after unbiased we want MVUE (minimum variance unbiased estimator)

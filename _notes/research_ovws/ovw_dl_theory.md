@@ -433,6 +433,4 @@ some more concrete questions:
     - [stanford class](https://stats385.github.io/) ([good readings](https://stats385.github.io/readings))
     - [dali 2018 talks](http://dalimeeting.org/dali2018/workshopTheoryDL.html)
     - [overview (myths)](http://www.mit.edu/~rakhlin/papers/myths.pdf) 
-- some people involved: nathan srebro, sanjeev arora, jascha sohl-dickstein, tomaso poggio, stefano soatto, ben recht, [olivier bousquet](https://arxiv.org/abs/1803.08367), jason lee, simon shaolei du
-  - interpretability: cynthia rudin, rich caruana, been kim, nicholas papernot, finale doshi-velez
-  - neuro: eero simoncelli, haim sompolinsky
+- There Will Be a Scientific Theory of Deep Learning ([simon...turnbull, 2026](https://arxiv.org/abs/2604.21691))

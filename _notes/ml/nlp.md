@@ -134,6 +134,7 @@ Nice repo keeping track of progress [here](https://github.com/sebastianruder/NLP
   - vocab tends to be too big
 - **subword-based** - break apart meaningful subparts of words, most popular (2022)
   - many more (e.g. byte-level BPE, used in GPT-2)
+  - BPE basic algo: take all current tokens (originally characters), see the most frequently recurring pair, make it a token, tokenize everything, then repeat
 - character-based - very little prior, generally sequences are too long
 - vocabulary
   - sometimes closed, otherwise have unkown words, which we assign its own symbol
@@ -143,6 +144,10 @@ Nice repo keeping track of progress [here](https://github.com/sebastianruder/NLP
     - most common way to do this is Porter's algorithm, which has 5 phrases of rule-based word reductions
 
   - lemmatization - smarter version that takes into account vocab / morphological analysis (e.g. "am, are, is" -> "be")
+
+- inference time
+  - standard algo is to start from left and look for longest substring that is a token, use it, then iterate
+
 
 
 ## token / word embeddings

@@ -490,12 +490,17 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
 
 ## contrastive learning
 
+- $L_{\text {InfoNCE }}=-\log \frac{\exp \left(\operatorname{sim}\left(x, x^{+}\right) / \tau\right)}{\exp \left(\operatorname{sim}\left(x, x^{+}\right) / \tau\right)+\sum_{i=1}^K \exp \left(\operatorname{sim}\left(x, x_i^{-}\right) / \tau\right)}$
+  - *sim(u, v)*: A similarity function
+  - $\tau$ (temperature): A hyperparameter that scales the scores to control how "sharp" the probability distribution is
+    - gradient is proportional to $1/ \tau$, so lower (like  $\tau < 1$) makes it more sensitive to small differences in similarity score but also less stable to train
+  - often times a projection head (small adapter) is added on top of the main representation before computing the loss
 - I-Con: A Unifying Framework for Representation Learning ([alshammari...freeman, hamilton, 2025](https://arxiv.org/abs/2504.16929))
   - ![Screenshot 2025-05-12 at 1.43.06 PM](../assets/Screenshot%202025-05-12%20at%201.43.06%E2%80%AFPM.png)
-- [What makes for good views for contrastive learning](https://arxiv.org/abs/2005.10243) (tian et al. 2020)
+- What makes for good views for contrastive learning ([tian et al. 2020](https://arxiv.org/abs/2005.10243))
   - how to select views (e.g. transformations we want to be invariant to)?
   - reduce the mutual information (MI) between views while keeping task-relevant information intact
-- [Supervised Contrastive Learning](https://arxiv.org/abs/2004.11362) (khosla et al. 2020)
+- Supervised Contrastive Learning ([khosla et al. 2020](https://arxiv.org/abs/2004.11362))
 - [Data-Efficient Image Recognition with Contrastive Predictive Coding](https://arxiv.org/pdf/1905.09272.pdf)
   - pre-training with CPC on ImageNet improves accuracy
 - [Automatically Discovering and Learning New Visual Categories with Ranking Statistics](https://arxiv.org/pdf/2002.05714.pdf)

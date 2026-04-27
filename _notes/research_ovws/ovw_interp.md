@@ -1089,6 +1089,7 @@ How interactions are defined and summarized is a very difficult thing to specify
   - Network Dissection: Quantifying Interpretability of Deep Visual Representations ([bau...torralba, 2017](https://arxiv.org/abs/1704.05796))
   - Understanding the Role of Individual Units in a Deep Neural Network ([bau...torralba, 2020](https://arxiv.org/abs/2009.05041))
   - Compositional Explanations of Neurons ([mu & andreas, 2020](https://arxiv.org/abs/2006.14032)) - extend this approach to associate relationships between multiple concepts
+- Selecting Feature Interactions for Generalized Additive Models by Distilling FMs ([jia, singh, caruana & lengerich, 2026](https://arxiv.org/abs/2604.13332))
 
 ### linear interactions
 
