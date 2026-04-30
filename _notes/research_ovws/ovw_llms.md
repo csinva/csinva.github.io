@@ -1224,6 +1224,9 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
 
 ## external memory
 
+- The AI Hippocampus: How Far are We From Human Memory? ([jia...zhu, 2026](https://arxiv.org/abs/2601.09113))
+    - delineate implicit memory (neocortex, learned weights), explicit memory (hippocampus, episodic memory/RAG), agentic memory (PFC, state and scratchpad)
+
 - Memex(RL): Scaling Long-Horizon LLM Agents via Indexed Experience Memory ([wang...wei, 2026](https://arxiv.org/abs/2603.04257))
 
 - Engram: Conditional Memory via Scalable Lookup: A New Axis of Sparsity for LLMs ([cheng...liang; deepseek, 2026](https://arxiv.org/abs/2601.07372))
