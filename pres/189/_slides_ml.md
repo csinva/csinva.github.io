@@ -16,8 +16,6 @@ revealOptions:
 
 [![](assets_files/GitHub-Mark-64px.png)](https://github.com/csinva/csinva.github.io/blob/master/_slides/ml_slides/slides.md)
 
-
-
 ## <div> </div>
 
 | Section               | Topic              |
@@ -28,8 +26,6 @@ revealOptions:
 | classification | [discr. vs. generative](https://csinva.github.io/pres/189/#/13), [nearest neighbor](https://csinva.github.io/pres/189/#/19), [DNNs](https://csinva.github.io/pres/189/#/12), [log. regression](https://csinva.github.io/pres/189/#/14), [lda/qda](https://csinva.github.io/pres/189/#/15), [decision trees](https://csinva.github.io/pres/189/#/21), [svms](https://csinva.github.io/pres/189/#/17) |
 | optimization | [problems](https://csinva.github.io/pres/189/#/10), [algorithms](https://csinva.github.io/pres/189/#/11), [duality](https://csinva.github.io/pres/189/#/18), [boosting](https://csinva.github.io/pres/189/#/22), [em](https://csinva.github.io/pres/189/#/16) |
 
-
-
 ## pre-reqs
 
 - linear algebra
@@ -39,9 +35,7 @@ revealOptions:
 
 ## reference
 
-http://www.eecs189.org/
-
-
+<http://www.eecs189.org/>
 
 # introduction
 
@@ -101,7 +95,6 @@ http://www.eecs189.org/
 - $||x||$ usually means $||x||_2$
   - $||x||^2 = x^Tx$
 
-
 ## matrix norms
 
 - nuclear norm: $||X||_* = \sum_i \sigma_i$
@@ -153,14 +146,16 @@ equivalent to the triangle inequality $||x+y||_2^2 \leq (||x||_2 + ||y||_2)^2$
 ![kulum-alin11-jan2014-28-638](assets_files/kulum-alin11-jan2014-28-638.jpg)
 
 ## svd
+
 nxp matrix: $X=U \Sigma V^T$
 
 - cols of U (nxn) are eigenvectors of $XX^T$
 - cols of V (pxp) are eigenvectors of $X^TX$
 - r singular values on diagonal of $\Sigma$ (nxp)
-	- square roots of nonzero eigenvalues of both $XX^T$ and $X^TX$
+ 	- square roots of nonzero eigenvalues of both $XX^T$ and $X^TX$
 
 ## svd vs evd
+
 - evd
   - not always orthogonal columns
   - complex eigenvalues
@@ -181,7 +176,7 @@ nxp matrix: $X=U \Sigma V^T$
 ## positive semi-definite (psd)
 
 - defn 1: all eigenvalues are nonnegative
-- defn 2: $x^TAx \geq 0 \:\forall x \in R^n$ 
+- defn 2: $x^TAx \geq 0 \:\forall x \in R^n$
 
 ## psd notation
 
@@ -195,14 +190,14 @@ nxp matrix: $X=U \Sigma V^T$
 
 ## jacobian
 
-function f: $\mathbb{R}^n \to \mathbb{R}^m$ 
+function f: $\mathbb{R}^n \to \mathbb{R}^m$
 *Jacobian matrix* : $$\mathbf J= \begin{bmatrix}    \dfrac{\partial \mathbf{f}}{\partial x_1} & \cdots & \dfrac{\partial \mathbf{f}}{\partial x_n} \end{bmatrix}$$
 
 `$$= \begin{bmatrix}    \dfrac{\partial f_1}{\partial x_1} & \cdots & \dfrac{\partial f_1}{\partial x_n}\\   \vdots & \ddots & \vdots\\    \dfrac{\partial f_m}{\partial x_1} & \cdots & \dfrac{\partial f_m}{\partial x_n} \end{bmatrix}$$`
 
 ## hessian
 
-function f: $\mathbb{R}^n \to \mathbb{R}$ 
+function f: $\mathbb{R}^n \to \mathbb{R}$
 
 `$$\mathbf H = \nabla^2 f(x)_{ij} = \frac{\partial^2 f(x)}{\partial x_i \partial x_j}$$` <div style="font-size: 23px;">
 `$$= \begin{bmatrix}  \dfrac{\partial^2 f}{\partial x_1^2} & \dfrac{\partial^2 f}{\partial x_1\,\partial x_2} & \cdots & \dfrac{\partial^2 f}{\partial x_1\,\partial x_n} \\[2.2ex]  \dfrac{\partial^2 f}{\partial x_2\,\partial x_1} & \dfrac{\partial^2 f}{\partial x_2^2} & \cdots & \dfrac{\partial^2 f}{\partial x_2\,\partial x_n} \\[2.2ex]  \vdots & \vdots & \ddots & \vdots \\[2.2ex]  \dfrac{\partial^2 f}{\partial x_n\,\partial x_1} & \dfrac{\partial^2 f}{\partial x_n\,\partial x_2} & \cdots & \dfrac{\partial^2 f}{\partial x_n^2}\end{bmatrix}$$`
@@ -218,6 +213,7 @@ function f: $\mathbb{R}^n \to \mathbb{R}$
 # linear regression
 
 ## regression
+
 - what is regression?
 - how does regression fit into the ml framework?
 
@@ -247,8 +243,6 @@ d = dimension of each data point
 
 $\mathbf{\hat{y}} = \mathbf{X} \mathbf{\hat{w}}$
 
-  
-
 | Model | Loss |
 | -- | -- |
 |  OLS     | $\vert \vert y - \hat{y} \vert \vert^2$ |
@@ -266,8 +260,6 @@ $\mathbf{\hat{y}} = \mathbf{X} \mathbf{\hat{w}}$
 $\hat w_{RIDGE} = (X^TX \color{red}{+ \lambda I})^{-1}X^Ty$
 ![1d8XV](assets_files/1d8XV.png)
 
-
-
 # parameter estimation
 
 ## probabilistic model
@@ -281,9 +273,10 @@ $\hat w_{RIDGE} = (X^TX \color{red}{+ \lambda I})^{-1}X^Ty$
 $\overbrace{p(\theta \vert x)}^{\text{posterior}} = \frac{\overbrace{p(x\vert\theta)}^{\text{likelihood}} \overbrace{p(\theta)}^{\text{prior}}}{p(x)}$
 ![bayes2](assets_files/bayes2.jpg)
 
-## likelihood 
+## likelihood
 
 $\mathcal L = p(data | \theta)$~ product over all n examples
+
 - $p(x|\theta)$?
 - $p(y|x; \theta)$?
 - $p(x, y | \theta)$?
@@ -407,14 +400,14 @@ orthogonal dimensions that maximize variance of $X$
 
 ```python
 X -= np.mean(X, axis=0) #zero-center data (nxd) 
-cov = np.dot(X.T, X) / X.shape[0] #get cov. matrix (dxd) 
-U, D, V = np.linalg.svd(cov) #compute svd, (all dxd) 
-X_2d = np.dot(X, U[:, :2]) #project in 2d (nx2)
+U, S, V = np.linalg.svd(X) # V is dxd
+components = V[:2] # V is m x d, these are the eigenvectors of the covariance matrix
+projected = X @ components.T # n x m
 ```
 
 ## pca in practice
 
-- eigenvalue represents prop. of explained variance: $\sum \lambda_i = tr(\Sigma) = \sum Var(X_i)$	
+- eigenvalue represents prop. of explained variance: $\sum \lambda_i = tr(\Sigma) = \sum Var(X_i)$ 
 - use svd
 - adaptive PCA is faster (sequential)
 
@@ -450,23 +443,23 @@ X_2d = np.dot(X, U[:, :2]) #project in 2d (nx2)
 
 ## ex. kernel ridge regression
 
-- linear kernel: $\widehat{w} = X^T(XX^T + \lambda I)^{-1}y$ 
-- generic kernel: $\widehat{w} = \mathbf \phi^T(\mathbf \phi\mathbf \phi^T + \lambda I)^{-1}y$ 
+- linear kernel: $\widehat{w} = X^T(XX^T + \lambda I)^{-1}y$
+- generic kernel: $\widehat{w} = \mathbf \phi^T(\mathbf \phi\mathbf \phi^T + \lambda I)^{-1}y$
   - at test time, $\widehat{y}(x) = \phi(x) \mathbf \phi^T(\mathbf \phi\mathbf \phi^T + \lambda I)^{-1}y$
-  - only requires kernel products! 
+  - only requires kernel products!
 
-## kernel trick ex.
+## kernel trick ex
 
 - $\mathbf{x} = [x_1, x_2]$
 - $\phi(\mathbf x) = \begin{bmatrix} x_1^2 & x_2^2 &\sqrt{2}x_1x_2 & \sqrt{2}x_1 & \sqrt{2}x_2 &1\end{bmatrix}^T $
 
 `$k(\mathbf{x}, \mathbf{z}) = \underbrace{\phi(\mathbf x)^T \phi (\mathbf z)}_{\text{O(augmented feature space)}} = \underbrace{(\mathbf x^T \mathbf z+ 1)^2}_{\text{O(original feature space + log(degree))}}$`
+
 - another ex. rbf kernel: $k(\mathbf x, \mathbf z) = \exp(-\gamma \vert \vert \mathbf x - \mathbf z \vert \vert ^2 )$
 
+## different from kernel regression
 
-## different from kernel regression...
-
-- note, what discussed here is different from the nonparametric technique of kernel regression: 
+- note, what discussed here is different from the nonparametric technique of kernel regression:
 - ```$\widehat{y}_h(x)=\frac{\sum_{i=1}^n K_h(x-x_i) y_i}{\sum_{j=1}^nK_h(x-x_j)} $```
   - K is a kernel with a bandwidth h
 
@@ -484,7 +477,6 @@ X_2d = np.dot(X, U[:, :2]) #project in 2d (nx2)
 - Hessian $\nabla^2 f(x) \succeq 0 \: \forall x$
 
 - $f(x_2) \geq f(x_1) + \nabla f(x_1) (x_2 - x_1)$
-
 
 ## convexity continued
 
@@ -504,8 +496,7 @@ M-smooth = Lipschitz continuous gradient: $||\nabla f(x_2) - \nabla f(x_1)|| \le
 
 | Lipschitz continuous f | M-smooth |
 | :-- | --:- |
-|  	![lipschitz_continuous_func](assets_files/lipschitz_continuous_func.gif) | ![lipschitz](assets_files/lipschitz.jpg)  |
-
+|   ![lipschitz_continuous_func](assets_files/lipschitz_continuous_func.gif) | ![lipschitz](assets_files/lipschitz.jpg)  |
 
 # optimization algorithms
 
@@ -522,8 +513,6 @@ M-smooth = Lipschitz continuous gradient: $||\nabla f(x_2) - \nabla f(x_1)|| \le
 
 ![stochastic-vs-batch-gradient-descent](assets_files/stochastic-vs-batch-gradient-descent.png)
 
-
-
 ## [momentum demo](https://distill.pub/2017/momentum/)
 
 - $$\theta^{(t+1)} = \theta^{(t)} - \alpha_t \nabla f(\theta^{(t)}) + \color{cornflowerblue}{\underset{\text{momentum}}{\beta_t (f(\theta^{(t)}) - f(\theta^{(t-1)}))}}$$
@@ -532,10 +521,10 @@ M-smooth = Lipschitz continuous gradient: $||\nabla f(x_2) - \nabla f(x_1)|| \le
       <iframe class="iframemomentum" src="https://distill.pub/2017/momentum/" scrolling="no" frameborder="no" style="position:absolute; top:-165px; left: -25px; width:1420px; height: 768px"></iframe>
   </div>
 
-
 ## newton-raphson
 
 ![slide_8](assets_files/slide_8.jpg)
+
 - apply to find roots of **f'(x)**: $\theta^{(t+1)} = \theta^{(t)} - \nabla^2 f(\theta^{(t)})^{-1}\nabla f(\theta^{(t)})$
 
 ## gauss-newton
@@ -566,12 +555,9 @@ M-smooth = Lipschitz continuous gradient: $||\nabla f(x_2) - \nabla f(x_1)|| \le
 
 also see [nn demo playground](https://playground.tensorflow.org/#activation=tanh&batchSize=10&dataset=circle&regDataset=reg-plane&learningRate=0.03&regularizationRate=0&noise=0&networkShape=4,2&seed=0.63885&showTestData=false&discretize=false&percTrainData=50&x=true&y=true&xTimesY=false&xSquared=false&ySquared=false&cosX=false&sinX=false&cosY=false&sinY=false&collectStats=false&problem=classification&initZero=false&hideText=false)
 
-
 ## going deeper
 
 ![1_gccuMDV8fXjcvz1RSk4kgQ](assets_files/1_gccuMDV8fXjcvz1RSk4kgQ.png)
-
-
 
 ## coding DNNs in numpy
 
@@ -585,8 +571,6 @@ for iteration in range(10000):
     w += X.T @ (Y - Yhat) * Yhat * (1 - Yhat)
 print(1 / (1 + exp(-(array([1, 0, 0] @ w))))
 ```
-
-
 
 ## coding DNNs in advanced numpy
 
@@ -657,7 +641,7 @@ decision trees / random forests </br>
 
 - with 0-1 error: $f^*(x) = \underset{y}{argmax} \: p(y|x) = \underset{y}{argmax} \: p(x|y) \cdot p(y)$
   - let y be sentiment (positive or negative)
-  - let x be words 
+  - let x be words
 
 # logistic regression
 
@@ -723,8 +707,6 @@ decision trees / random forests </br>
 
 ![lda_1](assets_files/lda_1.png)
 
-
-
 ## multiclass lda vs. qda
 
 ![Screen Shot 2018-07-21 at 10.41.16 AM](assets_files/multiclass.png)
@@ -737,11 +719,7 @@ decision trees / random forests </br>
 
 ## mixture of gaussians (2d)
 
-
-
 ![](assets_files/inside-cluster-em.gif)![](assets_files/ad8e9b45e3d01deef10f0cc07ec22144c3c631b3.gif)
-
-
 
 ## mixture of gaussians (1d)
 
@@ -750,6 +728,7 @@ decision trees / random forests </br>
 ## EM
 
 want to maximize *complete log-likelihood* $l (\theta; x, z) = log \: p(x,z\|\theta)$ but don't know latent z
+
 - *expectation step* - values of z filled in
 - *maximization step* - parameters are adjusted based on z
 
@@ -815,8 +794,6 @@ $\underset{w, b}{\min} \quad \frac{1}{2}||w||^2 + C\sum_i \max(1-y_i(w^Tx_i - b)
 - svm: hinge loss
 - log. regression: log loss
 - perceptron: perceptron loss
-
-
 
 ## binary classification
 
@@ -893,7 +870,6 @@ ridge: ```$\underset{w}{\min} \quad ||Xw-y||_2^2\\s.t.\quad\color{cadetblue}{||w
 
 </div>
 
-
 ![Screen Shot 2018-07-03 at 9.16.55 AM](assets_files/constrained.png)
 
 ## dual form
@@ -943,7 +919,6 @@ maximize H(parent) - [weighted average] $\cdot$ H(children)
 
 ![c50](assets_files/c50.png)
 
-
 ## info theory
 
 - maximize $I(X; Y) \equiv$ minimize $H(Y|X)$
@@ -951,6 +926,7 @@ maximize H(parent) - [weighted average] $\cdot$ H(children)
 ![entropy-venn-diagram](assets_files/entropy-venn-diagram.png)
 
 ## split functions
+
 - info gain (approximate w/ gini impurity)
 - misclassification rate
 - (40-40);  could be: (30-10, 10-30), (20-40, 20-0)

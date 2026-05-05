@@ -1531,8 +1531,9 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - Do Claude Code and Codex P-Hack? Sycophancy and Statistical Analysis in LLMs ([asher...hall, 2026](https://andrewbenjaminhall.com/asher_et_al_LLM_sycophancy.pdf))
   - Many AI Analysts, One Dataset: Navigating the Agentic Data Science Multiverse ([bertran, fogliato & wu, 2026](https://arxiv.org/abs/2602.18710)) - recomend showing LLM judgement calls along with estimand distribution
     - Beyond Quantification: Navigating Uncertainty in Professional AI Systems ([delacroix...lawrence, 2025](https://academic.oup.com/rssdat/article/1/1/udaf002/8317136?guestAccessKey=))
+  - Stop Automating Peer Review Without Rigorous Evaluation ([baumann...hovy, 2026](https://joe-baumann.com/aipeerreview.pdf))
 
-## teaching, HITL
+teaching, HITL, user simulators
 
 - overviews
   - AI & Human Co-Improvement for Safer Co-Superintelligence ([weston & foerster, 2025](https://arxiv.org/abs/2512.05356))
@@ -1553,13 +1554,16 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - Proactive Agents for Multi-Turn Text-to-Image Generation Under Uncertainty ([hahn...been kim, wang 2024](https://arxiv.org/abs/2412.06771)) - maintain explicit and organized knowledge graph of the user’s stated understanding and confusion
   - Tandem Training for LMs ([west, anderson, kamar & horvitz, 2025](https://arxiv.org/abs/2510.13551)) - during training, encourage big LM to produce solutions that remain intelligible to weaker LM
   - Bridging the Gulf of Envisioning: Cognitive Design Challenges in LLM Interfaces ([subramonyam...seifert, 2023](https://arxiv.org/abs/2309.14459))
+  - CollabSkill: Evaluating Human-Agent Collaboration On Real-World Tasks ([shao...yang, 2026](https://github.com/SALT-NLP/collaborative-gym/blob/main/assets/collabskill_framework.pdf))
 - User simulators
   - Nice blog posts: https://jessylin.com/2025/07/10/user-simulators-1/
   - On the Utility of Learning about Humans for Human-AI Coordination ([carroll...dragan, 2019](https://arxiv.org/abs/1910.05789))
     - self-play training against a model that hasn’t been trained to be human-like only teaches the model to collaborate with other models in [narrow ways](https://arxiv.org/abs/1910.05789), falling flat when faced with (out-of-distribution) human behavior
+  - This human study did not involve human subjects: Validating LLM simulations as behavioral evidence ([hullman, broska, sun & shaw, 2026](https://arxiv.org/abs/2602.15785))
   - UserLM: Flipping the Dialogue: Training and Evaluating User LMs ([naous, laban, xu & neville, 2025](https://arxiv.org/abs/2510.06552)) - train an 8B model to better work as a user simulator
   - HUMANLM: Simulating Users with State Alignment Beats Response Imitation ([shirley wu...leskovec, zou, 2026](https://humanlm.stanford.edu/HumanLM_paper.pdf))
   - Nested Training for Mutual Adaptation in Human-AI Teaming ([biswas, kalwar, kambhampati & sreedharan, 2026](https://arxiv.org/abs/2602.17737)) - alternate between training robot model vs human model to mitigate weird joint strategies emerging
+  - Centaur: A foundation model to predict and capture human cognition ([binz...schulz, 2025](https://www.nature.com/articles/s41586-025-09215-4))
 - Weak-to-Strong Generalization: Eliciting Strong Capabilities With Weak Supervision ([burns...wu, 2023](https://arxiv.org/abs/2312.09390))
   - Can weaker model (human proxy) teach a stronger model (AGI proxy) to do better than the teacher itself at a task?
   - Automated Weak-to-Strong Researcher ([wen…leike, 2026](https://alignment.anthropic.com/2026/automated-w2s-researcher/)) - autoresearch applied to this task
@@ -1663,7 +1667,6 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
 - evaluation without groundtruth
   - Evaluating Superhuman Models with Consistency Checks ([fluri, …, tramer, 2023](https://arxiv.org/abs/2306.09983))
   - A Taxonomy of Transcendence ([abreu, zhang, malach & saphra, 2025](https://arxiv.org/abs/2508.17669))
-
 - Learning from learning machines: a new generation of AI technology to meet the needs of science ([berkeley+lbnl+, 2021](https://arxiv.org/abs/2111.13786.pdf))
   - do more than predict what will happen, they attempt to offer insight into how or why
   - AI-based LMs powering drug discovery and development ([liu et al. 2021](https://www.sciencedirect.com/science/article/pii/S1359644621002816))
@@ -1737,7 +1740,6 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - AMIE: Towards Conversational Diagnostic AI ([tu...natarajan, 2024](https://arxiv.org/abs/2401.05654))
   - Polaris: A Safety-focused LLM Constellation Architecture for Healthcare ([mukherjee...miller, 2024](https://arxiv.org/abs/2403.13313.pdf))
 - GPT4 in medicine book ([lee, goldberg, & kohane, 2023](https://www.amazon.com/AI-Revolution-Medicine-GPT-4-Beyond/dp/0138200130))
-  - For summaries: "Can you check the proposed note and identify any facts in it that don't appear explicitly in the transcript?" - gpt often better at reviewing text than writing it
   - evaluation: hard to run gpt clinical trial, although can be used to identify candidates, e.g. biomarkers for followup tests
   - paperwork - replace patient intake form, medical encounter note, prior authorization note (to insurance), universal translator for health info / formatting
 - Evaluating LLMs on Medical Evidence Summarization ([tang...peng, 2023](https://pubmed.ncbi.nlm.nih.gov/37162998/)) - score summaries based on 6 dimensions (e.g. coherence)
