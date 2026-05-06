@@ -403,3 +403,14 @@ Inverse RL - learning reward functions from example
   - essentially frames the problem as a classification task between the chosen and rejected responses
 
 - GRPO: Group Relative Policy Optimization ([deepseek-r1, 2025](https://arxiv.org/abs/2501.12948)) - groups similar samples together and compares them as a group (can evaluate them in different ways, e.g. with reward model or function like a code solver)
+
+- some basic thoughts from "On SFT, RL, and on-policy distillation" [tweet](https://x.com/willccbb/status/2050038277454143918) (will brown)
+  - SFT helps quickly get to teacher ceiling, works better with matched tokenizer / general training recipe
+    - SFT before RL is generally more efficient, as it sets it up to get better samples
+    - Rejection-sampled SFT (SFT-RS, sometimes RFT) - sample from the teacher or the student, filter for correctness, train on the survivors) - better than standard SFT, but saturates based on your filter (often some reward model)
+  - On-policy distillation ([thinking machines blog post, 2025](https://thinkingmachines.ai/blog/on-policy-distillation/); +Qwen3 tech report)
+    - student samples its own rollouts — so you get RL's compounding in the sampling distribution — but each token in the rollout is graded by the teacher via per-token reverse KL (probability of token under teacher - probability of token under student)
+    - when we have different tokenizers/model for teacher/student, we can use student with priveleged info as the teacher
+      - ex. SDFT (Self-Distillation Enables Continual Learning ([shenfeld, damani, hübotter & agrawal, 2026](https://arxiv.org/abs/2601.19897))) - condition on expert demonstration (possibly for a different task)
+      - ex. OPSD = On-policy self-distillation ([zhao...grover, 2026](https://arxiv.org/abs/2601.18734)) - condition on groundtruth answer
+        - note: OPSD can have very large gradients on individual tokens, where models differ, sometimes leading the model astray -- to fix this, often cap the update for an individual token ("point-wise KL clipping")

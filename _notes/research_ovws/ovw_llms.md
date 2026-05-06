@@ -592,9 +592,10 @@ Nice survey here: A Survey on dLLMs ([li, chen, guo & shen, 2025](https://arxiv.
   - Memento: Teaching LLMs to Manage Their Own Context ([kontonis...langford, papailiopoulos, 2026](https://www.microsoft.com/en-us/research/articles/memento-teaching-llms-to-manage-their-own-context/)) - models learn to compress their reasoning chunks
   - Memory Caching: RNNs with Growing Memory ([behrouz...mirrokni, 2026](https://arxiv.org/abs/2602.24281))
 - variations on finding solution paths (add some post-training to make these work)
-  - Recursive Self-Aggregation Unlocks Deep Thinking in LLMs ([venkatraman...jain, 2025](https://arxiv.org/abs/2509.26626))
+  - RSA: Recursive Self-Aggregation Unlocks Deep Thinking in LLMs ([venkatraman...jain, 2025](https://arxiv.org/abs/2509.26626))
     - self-aggregation: provide LRM with the query and a set of candidate solutions, then prompt it to produce an improved solution
     - repeat this process recursively with a population of candidate solutions
+    - HeavySkill: Heavy Thinking as the Inner Skill in Agentic Harness ([wang...cai, 2026](https://arxiv.org/abs/2605.02396)) - use RL to improve RSA as a skill
   - Parallel-R1: Towards Parallel Thinking via RL ([zheng...yu, 2025](https://arxiv.org/abs/2509.07980))
 - aggregating information across examples
   - RLAD: Training LLMs to Discover Abstractions for Solving Reasoning Problems ([qu...kumar, 2025](https://arxiv.org/abs/2510.02263)) - use NL abstractions to guide more general reasoning paths
@@ -619,6 +620,8 @@ Nice survey here: A Survey on dLLMs ([li, chen, guo & shen, 2025](https://arxiv.
     - SKILL0: In-Context Agentic RL for Skill Internalization ([lu...shen, 2026](https://arxiv.org/abs/2604.02268))
     - SkillClaw: Let Skills Evolve Collectively with Agentic Evolver ([ma...chu, 2026](https://arxiv.org/abs/2604.08377))
 - Meta-Harness: End-to-End Optimization of Model Harnesses ([lee...finn, 2026](https://arxiv.org/abs/2603.28052))
+  - The Last Harness You'll Ever Build ([seong, yin, zhang & shi, 2026](https://arxiv.org/abs/2604.21003))
+
 - training to enable scaling test-time reasoning
   - ExGRPO: Learning to Reason from Experience ([zhan...cheng, 2025](https://arxiv.org/abs/2510.02245))
   - Meta-RL Induces Exploration in Language Agents ([jiang...brbic, 2025](https://arxiv.org/abs/2512.16848))
