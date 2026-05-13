@@ -414,3 +414,11 @@ Inverse RL - learning reward functions from example
       - ex. SDFT (Self-Distillation Enables Continual Learning ([shenfeld, damani, hübotter & agrawal, 2026](https://arxiv.org/abs/2601.19897))) - condition on expert demonstration (possibly for a different task)
       - ex. OPSD = On-policy self-distillation ([zhao...grover, 2026](https://arxiv.org/abs/2601.18734)) - condition on groundtruth answer
         - note: OPSD can have very large gradients on individual tokens, where models differ, sometimes leading the model astray -- to fix this, often cap the update for an individual token ("point-wise KL clipping")
+- without updating parameters
+  - SDPO: RL via Self-Distillation ([hübotter...krause, 2026](https://arxiv.org/abs/2601.20802))
+  - ERL: Experiential RL ([shi...zhao, 2026](https://arxiv.org/abs/2602.13949))
+  - Training-Free GRPO ([cai...sun, 2025](https://arxiv.org/abs/2510.08191))
+  - SkillRL: Evolving Agents via Recursive Skill-Augmented RL ([xia...yao, 2026](https://arxiv.org/abs/2602.08234))
+  - Skill0: In-Context Agentic RL for Skill Internalization ([lu...shen, 2026](https://arxiv.org/abs/2604.02268))
+  - Skill1: Unified Evolution of Skill-Augmented Agents via RL ([shi...zhang, 2026](https://arxiv.org/abs/2605.06130))
+  - MemRL: Self-Evolving Agents via Runtime RL on Episodic Memory ([zhang...wen, 2026](https://arxiv.org/abs/2601.03192))

@@ -599,9 +599,9 @@ Nice survey here: A Survey on dLLMs ([li, chen, guo & shen, 2025](https://arxiv.
   - Parallel-R1: Towards Parallel Thinking via RL ([zheng...yu, 2025](https://arxiv.org/abs/2509.07980))
 - aggregating information across examples
   - RLAD: Training LLMs to Discover Abstractions for Solving Reasoning Problems ([qu...kumar, 2025](https://arxiv.org/abs/2510.02263)) - use NL abstractions to guide more general reasoning paths
-    - SkillRL: Evolving Agents via Recursive Skill-Augmented RL ([xia...yao, 2026](https://arxiv.org/abs/2602.08234))
     - Hybrid-Gym: Training Coding Agents to Generalize Across Tasks ([xie...fried, 2026](https://arxiv.org/abs/2602.16819))
       - Inducing Programmatic Skills for Agentic Tasks ([wang, gandhi, neubig & fried, 2025](https://arxiv.org/abs/2504.06821))
+    - Memento-Skills: Let Agents Design Agents ([zhou...wang, 2026](https://arxiv.org/abs/2603.18743))
   - Metacognitive Reuse: Turning Recurring LLM Reasoning Into Concise Behaviors ([didolkar, ballas, arora & goyal, 2025](https://arxiv.org/abs/2509.13237))
   - WALT: Web Agents that Learn Tools ([prabhu...xu, 2025](https://arxiv.org/abs/2510.01524))
     - ReUseIt: Synthesizing Reusable AI Agent Workflows for Web Automation ([liu, sra, inala & wang, 2025](https://arxiv.org/abs/2510.14308))
@@ -616,12 +616,14 @@ Nice survey here: A Survey on dLLMs ([li, chen, guo & shen, 2025](https://arxiv.
     - Memento-Skills: Let Agents Design Agents ([zhou...wang, 2026](https://arxiv.org/abs/2603.18743))
     - autoresearch-skill ([tweet](https://x.com/itsolelehmann/status/2033919415771713715?s=20); [github](https://github.com/olelehmann100kMRR/autoresearch-skill))
     - SKILLFOUNDRY: Building Self-Evolving Agent Skill Libraries from Heterogeneous Scientific Resources ([shen...ma, 2026](https://arxiv.org/abs/2604.03964))
+    - LLMs Improving LLMs: Agentic Discovery for Test-Time Scaling ([zheng...huang, 2026](https://arxiv.org/abs/2605.08083))
   - Tool-R0: Self-Evolving LLM Agents for Tool-Learning from Zero Data ([acikgoz...tur, 2026](https://arxiv.org/abs/2602.21320))
-    - SKILL0: In-Context Agentic RL for Skill Internalization ([lu...shen, 2026](https://arxiv.org/abs/2604.02268))
+    - AEL: Agent Evolving Learning for Open-Ended Environments ([xu...metaxas, 2026](https://arxiv.org/abs/2604.21725))
     - SkillClaw: Let Skills Evolve Collectively with Agentic Evolver ([ma...chu, 2026](https://arxiv.org/abs/2604.08377))
+    - From Skill Text to Skill Structure: The Scheduling-Structural-Logical Representation for Agent Skills ([liang, wang, liang & liu, 2026](https://arxiv.org/abs/2604.24026))
+    - Agent-World: Scaling Real-World Environment Synthesis for Evolving General Agent Intelligence ([dong...dou, 2026](https://arxiv.org/abs/2604.18292))
 - Meta-Harness: End-to-End Optimization of Model Harnesses ([lee...finn, 2026](https://arxiv.org/abs/2603.28052))
   - The Last Harness You'll Ever Build ([seong, yin, zhang & shi, 2026](https://arxiv.org/abs/2604.21003))
-
 - training to enable scaling test-time reasoning
   - ExGRPO: Learning to Reason from Experience ([zhan...cheng, 2025](https://arxiv.org/abs/2510.02245))
   - Meta-RL Induces Exploration in Language Agents ([jiang...brbic, 2025](https://arxiv.org/abs/2512.16848))
@@ -1052,16 +1054,27 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   2. weak unsupervised pre-training, e.g. weakly related text pairs, such as QA pairs from forums like StackExchange and Quora
   3. high-quality contrastive finetuning on curated paired data, e.g. QA from web searches
 - datasets
-  - **[MTEB leaderboard](https://huggingface.co/spaces/mteb/leaderboard)** & newer [RTEB](https://huggingface.co/blog/rteb)
+  - **[MTEB leaderboard](https://huggingface.co/spaces/mteb/leaderboard)** - most common (but potentially overfitted) benchmark
+    - PTEB paper ([frank & afli, 2025](https://arxiv.org/abs/2510.06730)) finds that paraphrasing MTEB test sets substantially lowers scores (suggesting overfitting)
+    - SAGE: A Realistic Benchmark for Semantic Understanding ([goel, lee & ramchandran, 2025](https://arxiv.org/abs/2509.21310)) - evaluates retreival robustness under adversarial and noisy conditions
+    - AIR-Bench: Automated Heterogeneous Information Retrieval Benchmark ([chen...liu, 2024](https://arxiv.org/abs/2412.13102)) - refreshable llm-generated eval data
+    - Older: [BEIR benchmark](https://arxiv.org/abs/2104.08663)
+  - agentic search
+    - BrowseComp-Plus ([chen...lin, 2025](https://arxiv.org/abs/2508.06600)) - evaluates deep research when searching a fixed corpus
+      - extends BrowseComp ([wei...glaese, 2025](https://arxiv.org/abs/2504.12516)) - uses web search to evaluate QA
+    - InfoDeepSeek: Benchmarking Agentic Information Seeking for Retrieval-Augmented Generation ([xi...yu, 2025](https://arxiv.org/abs/2505.15872))
+  - newer retrieval benchmarks
+    - [RTEB](https://huggingface.co/blog/rteb) - retrieval only benchmark of 48 datasets, with 28 private datasets and 26 code-retrieval datasets
+    - OBLIQ-Bench: Exposing Overlooked Bottlenecks in Modern Retrievers with Latent and Implicit Queries ([tchuindjo, shah & khattab, 2026](https://arxiv.org/abs/2605.06235))
+    - EnterpriseRAG-Bench: A RAG Benchmark for Company Internal Knowledge ([sun...butler, 2026](https://arxiv.org/abs/2605.05253))
   - Instructor eval: Billboard, Prompt retrieval
-  - [FollowIR](https://arxiv.org/abs/2403.15246) (weller...soldaini, 2024)
+  - FollowIR ([weller...soldaini, 2024](https://arxiv.org/abs/2403.15246))
   - [TREC-RAG](https://trec-rag.github.io/)
   - Long contexts: [LoCo Benchmark](https://hazyresearch.stanford.edu/blog/2024-01-11-m2-bert-retrieval), [Jina Long Context Benchmark](https://arxiv.org/abs/2310.19923.pdf)
-  - Older: BEIR benchmark](https://arxiv.org/abs/2104.08663)
   - Training
     - Nomic 235M curated text pairs (mostly filtered from [here](https://huggingface.co/datasets/sentence-transformers/embedding-training-data))
       - Followed by supervised contrastive fine-tuning on datasets like MSMarco, NQ, NLI, HotpotQA, Fever, WikiAnswers, etc.
-
+  
     - MEDI (from Instructor paper): combines 300 datasets from Super- NaturalInstructions with 30 datasets from existing collections designed for embedding training
 - customization
   - e.g. add prompt or prefixes like *search query*, *search document*, *classification*, *clustering* before embedding so model knows how to match things
@@ -1122,10 +1135,23 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
 - RAPTOR: Recursive Abstractive Processing for Tree-Organized Retrieval ([sarthi...manning](https://arxiv.org/abs/2401.18059)) - retrieve many docs and cluster/summarize before using
 - Seven Failure Points When Engineering a Retrieval Augmented Generation System ([barnet...abdelrazek, 2024](https://arxiv.org/abs/2401.05856))
 - Retrieve to Explain: Evidence-driven Predictions with LMs ([patel...corneil, 2024](https://arxiv.org/abs/2402.04068.pdf))
-- simple baseline from "A Simple but Tough-to-Beat Baseline for Sentence Embeddings ([arora, liang & ma, 2017](https://openreview.net/forum?id=SyK00v5xx))"
+- simple baseline from A Simple but Tough-to-Beat Baseline for Sentence Embeddings ([arora, liang & ma, 2017](https://openreview.net/forum?id=SyK00v5xx))
   - average word embeddings in a sentence, downweighting words by their frequency
   - to remove the "common background direction", compute the top pca component from many sentence embeddings then remove that direction
 
+## agentic search
+
+Agentic search - agent actively plans, executes, and iterates on searches to answer a query, rather than just running a single keyword lookup and handing back results
+
+- Search-R1: Training LLMs to Reason and Leverage Search Engines with RL ([jin...han, 2025](https://arxiv.org/abs/2503.09516))
+- Beyond Semantic Similarity: Rethinking Retrieval for Agentic Search via Direct Corpus Interaction ([li...zhang, 2026](https://arxiv.org/abs/2605.05242)) - agent searches the raw corpus directly using **`grep`, `find`, `bash`, shell pipelines** rather than embedding models
+- Chroma Context-1: Training a Self-Editing Search Agent ([bashir, hong, jiang, & shi, 2026](https://www.trychroma.com/research/context-1))
+- MemReranker: Reasoning-Aware Reranking for Agent Memory Retrieval ([li...li, 2026](https://arxiv.org/abs/2605.06132))
+- Superintelligent Retrieval Agent: The Next Frontier of Information Retrieval ([yang, ma, chen & shrivastava, 2026](https://arxiv.org/abs/2605.06647))
+  - SIRA does not merely ask what terms are relevant to the query; it asks which terms are likely to separate the desired evidence from corpus-level confusers
+  - doc side: LLM enriches each document offline with missing search vocabulary
+  - query side: predicts evidence vocabulary omitted by the query &  document-frequency statistics as a tool call to filter proposed terms that are absent, overly common, or unlikely to create retrieval margin
+  - final retrieval step is a single weighted BM25 call combining the original query with the validated expansion
 
 ## explainable embeddings
 
@@ -1309,6 +1335,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
     - they use synthetic generated data to revise the explanation
     - they also do some recovery tests on "neuron puzzles"
     - The Importance of Prompt Tuning for Automated Neuron Explanations ([lee...weng, 2023](https://arxiv.org/abs/2310.06200)) - improve the prompt used to generate the explanations
+  - NLAs: Natural Language Autoencoders Produce Unsupervised Explanations of LLM Activations ([anthropic, 2026](https://transformer-circuits.pub/2026/nla/index.html)) - train network that converts activations to NL description then reconstructs the activation from the description (so natural language serves as a bottleneck)
   - CoSy: Evaluating Textual Explanations of Neurons ([kopf...bykov, 2024](https://arxiv.org/abs/2405.20331))
   - Evaluating Concept-based Explanations of LMs: A Study on Faithfulness and Readability ([li...wang, 2024](https://arxiv.org/abs/2404.18533))
   - A Multimodal Automated Interpretability Agent ([shaham...hernandez, andreas, torralba, 2024](https://arxiv.org/abs/2404.14394))
@@ -1534,6 +1561,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - Do Claude Code and Codex P-Hack? Sycophancy and Statistical Analysis in LLMs ([asher...hall, 2026](https://andrewbenjaminhall.com/asher_et_al_LLM_sycophancy.pdf))
   - Many AI Analysts, One Dataset: Navigating the Agentic Data Science Multiverse ([bertran, fogliato & wu, 2026](https://arxiv.org/abs/2602.18710)) - recomend showing LLM judgement calls along with estimand distribution
     - Beyond Quantification: Navigating Uncertainty in Professional AI Systems ([delacroix...lawrence, 2025](https://academic.oup.com/rssdat/article/1/1/udaf002/8317136?guestAccessKey=))
+  - Are LLMs Reliable AI Scientists? Assessing Reverse-Engineering of Black-Box Systems ([geng, chen, arumugam & griffiths, 2025](https://arxiv.org/abs/2505.17968))
   - Stop Automating Peer Review Without Rigorous Evaluation ([baumann...hovy, 2026](https://joe-baumann.com/aipeerreview.pdf))
 
 teaching, HITL, user simulators
