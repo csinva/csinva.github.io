@@ -1047,7 +1047,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
 ## embedding models
 
 - detailed overview of info retrieval ([bruch, 2024](https://arxiv.org/abs/2401.09350.pdf))
-  - Faiss: A library for efficient similarity search ([johnson et al 2019](https://engineering.fb.com/2017/03/29/data-infrastructure/faiss-a-library-for-efficient-similarity-search/)) - implement fast approximante nearest neighbor search
+  - Faiss: A library for efficient similarity search ([johnson et al 2019](https://engineering.fb.com/2017/03/29/data-infrastructure/faiss-a-library-for-efficient-similarity-search/)) - implement fast approximate nearest neighbor search
 - introductory [blog post](https://osanseviero.github.io/hackerllama/blog/posts/sentence_embeddings/) on embeddings
 - basic training pipeline
   1. standard self-supervised pre-training, e.g. BERT
@@ -1062,7 +1062,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - agentic search
     - BrowseComp-Plus ([chen...lin, 2025](https://arxiv.org/abs/2508.06600)) - evaluates deep research when searching a fixed corpus
       - extends BrowseComp ([wei...glaese, 2025](https://arxiv.org/abs/2504.12516)) - uses web search to evaluate QA
-    - InfoDeepSeek: Benchmarking Agentic Information Seeking for Retrieval-Augmented Generation ([xi...yu, 2025](https://arxiv.org/abs/2505.15872))
+    - InfoDeepSeek: Benchmarking Agentic Information Seeking for RAG ([xi...yu, 2025](https://arxiv.org/abs/2505.15872))
   - newer retrieval benchmarks
     - [RTEB](https://huggingface.co/blog/rteb) - retrieval only benchmark of 48 datasets, with 28 private datasets and 26 code-retrieval datasets
     - OBLIQ-Bench: Exposing Overlooked Bottlenecks in Modern Retrievers with Latent and Implicit Queries ([tchuindjo, shah & khattab, 2026](https://arxiv.org/abs/2605.06235))
@@ -1075,7 +1075,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
     - Nomic 235M curated text pairs (mostly filtered from [here](https://huggingface.co/datasets/sentence-transformers/embedding-training-data))
       - Followed by supervised contrastive fine-tuning on datasets like MSMarco, NQ, NLI, HotpotQA, Fever, WikiAnswers, etc.
   
-    - MEDI (from Instructor paper): combines 300 datasets from Super- NaturalInstructions with 30 datasets from existing collections designed for embedding training
+    - MEDI (from Instructor paper): combines 300 datasets from Super-NaturalInstructions with 30 datasets from existing collections designed for embedding training
 - customization
   - e.g. add prompt or prefixes like *search query*, *search document*, *classification*, *clustering* before embedding so model knows how to match things
 - top-performing models
@@ -1148,10 +1148,11 @@ Agentic search - agent actively plans, executes, and iterates on searches to ans
 - Chroma Context-1: Training a Self-Editing Search Agent ([bashir, hong, jiang, & shi, 2026](https://www.trychroma.com/research/context-1))
 - MemReranker: Reasoning-Aware Reranking for Agent Memory Retrieval ([li...li, 2026](https://arxiv.org/abs/2605.06132))
 - Superintelligent Retrieval Agent: The Next Frontier of Information Retrieval ([yang, ma, chen & shrivastava, 2026](https://arxiv.org/abs/2605.06647))
-  - SIRA does not merely ask what terms are relevant to the query; it asks which terms are likely to separate the desired evidence from corpus-level confusers
+  - asks which terms are likely to separate the desired evidence from corpus-level confusers
   - doc side: LLM enriches each document offline with missing search vocabulary
   - query side: predicts evidence vocabulary omitted by the query &  document-frequency statistics as a tool call to filter proposed terms that are absent, overly common, or unlikely to create retrieval margin
-  - final retrieval step is a single weighted BM25 call combining the original query with the validated expansion
+  - final retrieval step is weighted BM25 call combining the original query with the validated expansion
+- Is Grep All You Need? How Agent Harnesses Reshape Agentic Search ([sen...subbiah, 2026](https://arxiv.org/abs/2605.15184)) - grep generally outperforms vector retrieval in agentic RAG workflows, but overall accuracy depends heavily on agent harness
 
 ## explainable embeddings
 
@@ -1194,7 +1195,7 @@ Agentic search - agent actively plans, executes, and iterates on searches to ans
   - Analogies and Feature Attributions for Model Agnostic Explanation of Similarity Learners ([ramamurthy…tariq, 2022](https://arxiv.org/abs/2202.01153.pdf)) - returned explanation is an analogy (pair from the training set) rather than a saliency map
   - Sim2Word: Explaining Similarity with Representative Attribute Words via Counterfactual Explanations ([chen…cao, 2023](https://dl.acm.org/doi/full/10.1145/3563039)) - give both saliency map + counterfactual explanation
 
-## retrieval-augmented generation (RAG)
+## RAG (RAG)
 
 - RAG perspective paper ([asai, zhong, chen, koh, zettlemoyer, hajishirzi, & yih, 2024](https://arxiv.org/abs/2403.03187.pdf))
 
@@ -1224,7 +1225,7 @@ Agentic search - agent actively plans, executes, and iterates on searches to ans
   - Adaptive-RAG: Learning to Adapt Retrieval-Augmented LLMs through Question Complexity ([jeong...park, 2024](https://arxiv.org/abs/2403.14403)) - dynamically selects the most suitable retrieval-augmented strategy based on the predicted complexity level of input query
   - From Local to Global: A Graph RAG Approach to Query-Focused Summarization ([edge...larson, 2024](https://arxiv.org/abs/2404.16130)) - build and summarize a graph of documents to be used at query time for summarizing docs
 - Original papers
-  - Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks ([lewis, perez, ...kiela, 2020](https://arxiv.org/abs/2005.11401)) - introduce idea of end-to-end RAG
+  - RAG for Knowledge-Intensive NLP Tasks ([lewis, perez, ...kiela, 2020](https://arxiv.org/abs/2005.11401)) - introduce idea of end-to-end RAG
   - k-nearest neighbors LM ([khandelwal…zettlemoyer, lewis, 2020](https://arxiv.org/abs/1911.00172))
   - REALM ([guu, ..., chang, 2020](https://arxiv.org/abs/2002.08909)) - retrieves document chunks from corpus and adds them to context, for open-domain QA
   - early systems
@@ -1238,13 +1239,13 @@ Agentic search - agent actively plans, executes, and iterates on searches to ans
   - DRAGON: Diverse Augmentation Towards Generalizable Dense Retrieval [(Lin et al 2023)](https://arxiv.org/abs/2302.07452) 
   - Knowledgeable Prompt-tuning ([Hu et al. 2021](https://arxiv.org/abs/2108.02035)) - add knowledge-base info into the prompt search
   - Atlas: Few-shot Learning with Retrieval Augmented LMs ([meta, 2022](https://arxiv.org/abs/2208.03299))
-  - GRIT: Generative Representational Instruction Tuning [(Muennighoff et al 2024)](https://arxiv.org/abs/2402.09906) - train same model for  text generation and retrieval tasks
+  - GRIT: Generative Representational Instruction Tuning ([muennighoff et al 2024](https://arxiv.org/abs/2402.09906)) - train same model for  text generation and retrieval tasks
   - Fine-grained Hallucination Detection and Editing for LMs ([mishra, ..., hajishirzi, 2024](https://arxiv.org/abs/2401.06855)) - train a retrieval-augmented LM to correct fine-grained hallucinations
   - RAG can even outperform LMs fine-tuned on the downstream domain data on QA ([Ovadia et al., 2023](https://arxiv.org/abs/2312.05934); [Gupta et al., 2024](https://arxiv.org/abs/2401.08406))
 - Different ideas
   - Transformer Memory as a Differentiable Search Index ([Tay at al 2022](https://arxiv.org/abs/2202.06991)) - Same model learns to encode documents and find closest search index (rather than retrieving with maximal inner product search)
     - Self-Retrieval: Building an Information Retrieval System with One LLM ([tang...li, 2024](https://arxiv.org/abs/2403.00801.pdf)) - LLM learns to generate retrieved document from query
-  - xRAG: Extreme Context Compression for Retrieval-augmented Generation with One Token ([cheng...furu wei...zhao, 2024](https://arxiv.org/abs/2405.13792))
+  - xRAG: Extreme Context Compression for RAG with One Token ([cheng...furu wei...zhao, 2024](https://arxiv.org/abs/2405.13792))
 
 - interpretable RAG
 
@@ -1506,6 +1507,7 @@ Agentic search - agent actively plans, executes, and iterates on searches to ans
     - ![mlebench](../assets/mlebench.png)
   - InfiAgent-DABench: Evaluating Agents on Data Analysis Tasks ([hu...wu, 2024](https://arxiv.org/abs/2401.05507)) - 257 precise (relatively easy) questions that can be answered from 1 of 52 csv datasets
     - ![Screenshot 2025-06-19 at 3.53.53 PM](../assets/Screenshot%202025-06-19%20at%203.53.53%E2%80%AFPM.png)
+  - FrontierCS: Evolving Challenges for Evolving Intelligence ([mang...cheung, 2025](https://arxiv.org/abs/2512.15699)) - verifiable but unconstrained CS problems (like circle packing)
 - earlier benchmarks (+their associated models)
   - DataSciBench: An LLM Agent Benchmark for Data Science ([zhang...yue, 2025](https://arxiv.org/abs/2502.13897)) - semi-automated pipeline for generating ground truth (GT) and validating evaluation metrics (using self-consistency)
   - Data Interpreter: An LLM Agent For Data Science ([hong...wu, 2024](https://arxiv.org/abs/2402.18679.pdf))
@@ -1595,6 +1597,7 @@ teaching, HITL, user simulators
   - HUMANLM: Simulating Users with State Alignment Beats Response Imitation ([shirley wu...leskovec, zou, 2026](https://humanlm.stanford.edu/HumanLM_paper.pdf))
   - Nested Training for Mutual Adaptation in Human-AI Teaming ([biswas, kalwar, kambhampati & sreedharan, 2026](https://arxiv.org/abs/2602.17737)) - alternate between training robot model vs human model to mitigate weird joint strategies emerging
   - Centaur: A foundation model to predict and capture human cognition ([binz...schulz, 2025](https://www.nature.com/articles/s41586-025-09215-4))
+  - Quantifying the Utility of User Simulators for Building Collaborative LLM Assistants ([suh, raj, kang & chang, 2026](https://arxiv.org/abs/2605.09808))
 - Weak-to-Strong Generalization: Eliciting Strong Capabilities With Weak Supervision ([burns...wu, 2023](https://arxiv.org/abs/2312.09390))
   - Can weaker model (human proxy) teach a stronger model (AGI proxy) to do better than the teacher itself at a task?
   - Automated Weak-to-Strong Researcher ([wen…leike, 2026](https://alignment.anthropic.com/2026/automated-w2s-researcher/)) - autoresearch applied to this task
@@ -1759,7 +1762,8 @@ teaching, HITL, user simulators
 - Human-AI Co-design for Clinical Prediction Models ([feng...singh, 2026](https://arxiv.org/abs/2601.09072))
   - Scaling Clinician-Grade Feature Generation from Clinical Notes with Multi-Agent LMs ([wang...bayati, 2025](https://arxiv.org/abs/2508.01956))
   - CliMB: An AI-enabled Partner for Clinical Predictive Modeling ([saveliev...van der schaar, 2024](https://arxiv.org/abs/2410.03736))
-
+  - From Fuzzy to Formal: Scaling Hospital Quality Improvement with AI ([vossler...zier, 2026](https://arxiv.org/abs/2604.20055))
+  
 - guideline / decision rule following
   - CancerGUIDE: Cancer Guideline Understanding via Internal Disagreement Estimation ([unell...poon, 2025](https://arxiv.org/abs/2509.07325)) - construct clinician-annotated dataset for 121 NSCLC patient guideline trajectories & evaluate LLMs on it (closed source)
   - MedGUIDE: Benchmarking Clinical Decision-Making in LLMs ([li...wang, 2025](https://arxiv.org/abs/2505.11613)) - construct manually annotated dataset for ~7k samples from 55 trees across 17 cancer types for NCCN guidelines of patient trajectories [samples are synthetic]

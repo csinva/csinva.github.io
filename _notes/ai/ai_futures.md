@@ -7,6 +7,7 @@ category: ai
 {:toc}
 
 # 🤖 AGI thoughts
+
 - nice AGI definition:  AI systems are fully substitutable for human labor (or have a comparably large impact)
 - AI risk by deliberate human actors (i.e. concentrating power) seems to be a greater risk than unintended use (i.e. loss of control) [see some thought-out risks [here](https://cdn.openai.com/openai-preparedness-framework-beta.pdf)]
     - Caveat: AGI risk may still be high - nefarious use can easily be worse than accidental misuse

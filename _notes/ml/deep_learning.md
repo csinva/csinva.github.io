@@ -243,7 +243,6 @@ See also notes in [📌 unsupervised learning](https://csinva.io/notes/ml/unsupe
 - [A Deeper Look at Zero-Cost Proxies for Lightweight NAS · The ICLR Blog Track](https://iclr-blog-track.github.io/2022/03/25/zero-cost-proxies/) (white...bubeck, dey, 2022)
   - tl;dr A single minibatch of data is used to score neural networks for NAS instead of performing full training.
 
-
 # misc
 
 - [Deep Learning Interviews: Hundreds of fully solved job interview questions from a wide range of key topics in AI](https://arxiv.org/abs/2201.00650)
@@ -261,3 +260,37 @@ See also notes in [📌 unsupervised learning](https://csinva.io/notes/ml/unsupe
 - Language model compression with weighted low-rank factorization ([hsu et al. 2022](https://arxiv.org/abs/2207.00112)) \- incorporate fisher info of weights when compressing via SVD (this helps preserve the weights which are important for prediction)
   - can represent a full-rank weight matrix as a product of low-rank matrices, e.g. to get rank *r* repr of 10x10 matrix, make it a product of a 10xr and an rx10 matrix
   - people often use SVD to posthoc compress a DNN
+
+# empirical notes
+
+### nrom layers
+
+**Batch Normalization** - for a mini-batch $\mathcal{B} = {x_1, x_2, \ldots, x_m}$, normalize each feature across the batch dimension:
+
+$$\mu_\mathcal{B} = \frac{1}{m} \sum_{i=1}^{m} x_i$$
+
+$$\sigma_\mathcal{B}^2 = \frac{1}{m} \sum_{i=1}^{m} (x_i - \mu_\mathcal{B})^2$$
+
+$$\hat{x}_i = \frac{x_i - \mu*\mathcal{B}}{\sqrt{\sigma_\mathcal{B}^2 + \epsilon}}, \quad y_i = \gamma \hat{x}_i + \beta$$
+
+where $\gamma$ and $\beta$ are learnable scale and shift parameters, and $\epsilon$ is a small constant for numerical stability.
+
+**Layer Normalization** - same thing except normalize across features (don't average over tokens):
+
+$$\mu = \frac{1}{d} \sum_{i=1}^{d} x_i$$
+
+$$\sigma^2 = \frac{1}{d} \sum_{i=1}^{d} (x_i - \mu)^2$$
+
+$$\hat{x}_i = \frac{x_i - \mu}{\sqrt{\sigma^2 + \epsilon}}, \quad y_i = \gamma_i \hat{x}_i + \beta_i$$
+
+where $\gamma, \beta \in \mathbb{R}^d$ are learnable per-feature parameters.
+
+**RMS Normalization**
+
+Root Mean Square normalization drops the mean-centering step:
+
+$$\text{RMS}(x) = \sqrt{\frac{1}{d} \sum_{i=1}^{d} x_i^2}$$
+
+$$\hat{x}_i = \frac{x_i}{\sqrt{\text{RMS}(x)^2 + \epsilon}} \quad y_i = \gamma_i \hat{x}_i$$
+
+where $\gamma \in \mathbb{R}^d$ is a learnable scale parameter. Note there is no shift parameter $\beta$, and no mean subtraction — making it cheaper to compute than LayerNorm

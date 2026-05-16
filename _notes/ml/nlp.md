@@ -110,13 +110,15 @@ Nice repo keeping track of progress [here](https://github.com/sebastianruder/NLP
 - then twitter
 - then Wikipedia
 
-## eval metrics
+## eval/training metrics
 
-- **perplexity (PP)** - inverse probability of the test set, normalized by the number of words (want to minimize it)
+- **loss**: cross-entropy (with binary labels) ends up just the likelihood of the data:
+  - $-\frac{1}{T} \sum_{t=1}^T \log p_\theta\left(x_t \mid x_{<t}\right)$
 
-  - $PP(W_{test}) = P(w_1, ..., w_N)^{-1/N}$
-  - can think of this as the weighted average branching factor of a language
+- **perplexity (PP)** - exponent of the loss
+  - $\begin{array}{r}\operatorname{PPL}=\exp \left(-\frac{1}{T} \sum_{t=1}^T \log p_\theta\left(x_t \mid x_{<t}\right)\right) \\ =\left(\prod_{t=1}^T p_\theta\left(x_t \mid x_{<t}\right)\right)^{-1 / T}\end{array}$
   - should only be compared across models w/ same vocab
+
 - BLEU
 - bert-score: https://github.com/Tiiiger/bert_score
 

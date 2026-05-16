@@ -348,6 +348,13 @@ typora-copy-images-to: ../assets
   - adagrad - maintains a per-parameter learning rate that improves performance on problems with sparse gradients
   - rmsprop - (ignore) per-parameter learning rates that are adapted based on the average of recent magnitudes of the gradients for the weight (e.g. how quickly it is changing)
 - adam - "adaptive moment estimation" (kingma_2015)
+  - $m_t=\beta_1 m_{t-1}+\left(1-\beta_1\right) g_t(1$ st moment $)$
+    $v_t=\beta_2 v_{t-1}+\left(1-\beta_2\right) g_t^2$ (2nd moment)
+    $\widehat{m}_t=\frac{m_t}{1-\beta_1^t}$ (bias correction)
+    $\hat{v}_t=\frac{v_t}{1-\beta_2^t}$ (bias correction)
+    $\theta_t=\theta_{t-1}-\alpha \frac{\widehat{m}_t}{\sqrt{\hat{v}_t}+\epsilon}$
+  - Hyperparameters: $\beta_1=0.9, \beta_2=0.999, \epsilon= 10^{-8}$
+  - Intuition: $m_t$ is an EMA of gradients (momentum), and $v_t$ is an EMA of squared gradients (adaptive per-parameter scaling, like RMSProp). Dividing by $\sqrt{\hat{v}_t}$ gives each parameter its own effective learning rate - large-gradient directions get damped, small-gradient directions get amplified. The bias-correction terms fix the fact that $m_t$ and $v_t$ are biased toward zero in early steps (since they're initialized at zero) with $m_0=v_0=0$.
   - keep track of per-parameter learning rate (based on first moment of gradients tracked) and per-parameter second moment (based on variance of gradients tracked)
   - alpha - learning rate
   - beta1 - exponential decay rate for first moment estimate
@@ -355,8 +362,7 @@ typora-copy-images-to: ../assets
   - beta2 - exponential decay rate for 2nd moment estimates (should be higher when gradients sparser)
     - default 0.999
   - epsilon - small number to prevent division by zero
-    - default 1e-8 - usually requires tuning (ex. inception requires 1e-1) ![Screen Shot 2018-10-11 at 8.07.56 AM](../assets/adam.png)visualization
-
+  
 - requires low dims
   - goodfellow 2015 "Qualitatively characterizing neural network optimization problems" plots loss on line from starting point to ending point
   - could do PCA on params
