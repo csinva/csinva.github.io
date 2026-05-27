@@ -1523,13 +1523,14 @@ Agentic search - agent actively plans, executes, and iterates on searches to ans
   - Accelerating Scientific Discovery with Autonomous Goal-evolving Agents ([du...jin, 2025](https://arxiv.org/abs/2512.21782))
   - The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery ([chris lu...clune, ha; sakana ai, 2024](https://arxiv.org/abs/2408.06292))
     - The AI Scientist-v2: Workshop-Level Automated Scientific Discovery via Agentic Tree Search ([yamada...ha, 2025](https://arxiv.org/abs/2504.08066))
+    - 
   - R&D-Agent: Automating Data-Driven AI Solution Building Through LLM-Powered Automated Research, Development, and Evolution ([yang...bian, 2025](https://arxiv.org/abs/2505.14738)) - do well on MLE-Bench
   - Paper2Agent: Reimagining Research Papers As Interactive and Reliable AI Agents ([miao, davis, pritchard & zou, 2025](https://arxiv.org/abs/2509.06917)) - read paper and have agents write code to implement the paper
   - AI-Researcher: Autonomous Scientific Innovation ([tang, xia, li & huang, 2025](https://arxiv.org/abs/2505.18705))
   - Kosmos: An AI Scientist for Autonomous Discovery ([mitchener...white, 2025](https://arxiv.org/abs/2511.02824))
   - Autonomous LLM-driven research from data to human-verifiable research papers ([ifaragan...kishony, 2024](https://arxiv.org/abs/2404.17605))
 - semi-autonomous AI scientists systems
-  - Towards an AI co-scientist ([gottweis...natarajan, 2025](https://arxiv.org/abs/2502.18864))
+  - Accelerating scientific discovery with Co-Scientist ([gottweis...natarajan, 2025](https://www.nature.com/articles/s41586-026-10644-y)) - scale gemini + 3 wet-lab validations
   - From Zero to One: Building An Autonomous and Open Data Scientist Agent from Scratch ([bianchi...james zou, 2025](https://www.together.ai/blog/building-an-autonomous-and-open-data-scientist-agent-from-scratch))
   - Agent Laboratory: Using LLM Agents as Research Assistants ([schmidgall...barsoum, 2025](https://arxiv.org/abs/2501.04227))
   - The Virtual Lab of AI agents designs new SARS-CoV-2 nanobodies ([swanson...james zou, 2025](https://www.nature.com/articles/s41586-025-09442-9)) - use human to guide a set of agents each with their own expertise
