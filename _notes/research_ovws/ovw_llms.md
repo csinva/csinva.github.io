@@ -374,7 +374,11 @@ mixture of experts models have become popular because of the need for (1) fast s
   - Combining Modular Skills in Multitask Learning ([ponti, sordoni, bengio, & reddy, 2022](https://arxiv.org/abs/2202.13914.pdf)) - learn adaptor with disentangled inventory of skills
   - [Parameter-Efficient Transfer Learning for NLP](http://proceedings.mlr.press/v97/houlsby19a.html)
   - [AdapterHub: A Framework for Adapting Transformers](https://arxiv.org/abs/2007.07779)
-  - Text-to-LoRA: Instant Transformer Adaption ([charakorn…lange, 2025](https://arxiv.org/abs/2506.06105))
+  - Programs-as-weights https://x.com/yuntiandeng/status/2044086557330579851?s=20 - for tasks that are easy to describe but annoying to implement with rigid rules, e.g. Urgency triage. Broken JSON repair. Log filtering. Tool routing.
+    - Text-to-LoRA: Instant Transformer Adaption ([charakorn, cetin, tang & lange, 2025](https://arxiv.org/abs/2506.06105))
+    - Learning to Generate Task-Specific Adapters from Task Description ([ye & ren, 2021](https://arxiv.org/abs/2101.00420))
+    - HINT: Hypernetwork Instruction Tuning for Efficient Zero- & Few-Shot Generalisation ([ivison...peters, 2022](https://arxiv.org/abs/2212.10315))
+    - HyperTuning: Toward Adapting LLMs without Back-propagation ([phang, mao, he & chen, 2022](https://arxiv.org/abs/2211.12485))
 - vaguely similar to adapter
   - LoRA
   - QLoRA: Efficient Finetuning of Quantized LLMs ([dettmers, ..., zettlemoyer, 2023](https://arxiv.org/abs/2305.14314))
@@ -384,7 +388,6 @@ mixture of experts models have become popular because of the need for (1) fast s
   - LoRA-Squeeze: Simple and Effective Post-Tuning and In-Tuning Compression of LoRA Modules ([vulić, grycner, de laroussilhe & pfeiffer, 2026](https://arxiv.org/abs/2602.10993)) - first learn high-rank LoRA, then squeeze to target rank.
 - focused on editing
   - Continual Learning via Sparse Memory Finetuning ([jessy lin, zettlemoyer...oğuz, 2025](https://arxiv.org/abs/2510.15103); + [blog post](https://jessylin.com/2025/10/20/continual-learning/)) - learn sparse layers building on memory layers ([berges...ghosh, 2024](https://arxiv.org/abs/2412.09764)) that show strong performance improvements
-
 - predict a mask
   - ablate some model weights by training a binary mask over model parameters (Zhao et al., 2020; Radiya-Dixit and Wang, 2020)
   - predict mask over attention heads
@@ -410,7 +413,6 @@ mixture of experts models have become popular because of the need for (1) fast s
     - progressive extension (first extend to 256k then to 2048k)
     - readjust on short contexts to preserve original perf
 - Self-Adapting LMs ([zweiger...pulkit agrawal, 2025](https://arxiv.org/abs/2506.10943)) - use RL to have LLMs self-adapt by generating their own finetuning data (+maybe some hyperparameters / augmentations / other details) and the LoRA finetuning on that data
-
 - **mt-dnn line of work**
 
   - Multi-Task Deep Neural Networks for Natural Language Understanding ([xiaodong liu ... gao 2019](https://aclweb.org/anthology/papers/P/P19/P19-1441/)) - multi-task learning on the 9 glue tasks (first layers are shared, then some task-specific layers at top)
@@ -617,6 +619,8 @@ Nice survey here: A Survey on dLLMs ([li, chen, guo & shen, 2025](https://arxiv.
     - autoresearch-skill ([tweet](https://x.com/itsolelehmann/status/2033919415771713715?s=20); [github](https://github.com/olelehmann100kMRR/autoresearch-skill))
     - SKILLFOUNDRY: Building Self-Evolving Agent Skill Libraries from Heterogeneous Scientific Resources ([shen...ma, 2026](https://arxiv.org/abs/2604.03964))
     - LLMs Improving LLMs: Agentic Discovery for Test-Time Scaling ([zheng...huang, 2026](https://arxiv.org/abs/2605.08083))
+    - Harnessing Agentic Evolution ([zhang...luo, 2026](https://arxiv.org/abs/2605.13821))
+    - SkillOpt: Executive Strategy for Self-Evolving Agent Skills ([yang...luo, 2026](https://arxiv.org/abs/2605.23904))
   - Tool-R0: Self-Evolving LLM Agents for Tool-Learning from Zero Data ([acikgoz...tur, 2026](https://arxiv.org/abs/2602.21320))
     - AEL: Agent Evolving Learning for Open-Ended Environments ([xu...metaxas, 2026](https://arxiv.org/abs/2604.21725))
     - SkillClaw: Let Skills Evolve Collectively with Agentic Evolver ([ma...chu, 2026](https://arxiv.org/abs/2604.08377))
@@ -627,6 +631,7 @@ Nice survey here: A Survey on dLLMs ([li, chen, guo & shen, 2025](https://arxiv.
 - training to enable scaling test-time reasoning
   - ExGRPO: Learning to Reason from Experience ([zhan...cheng, 2025](https://arxiv.org/abs/2510.02245))
   - Meta-RL Induces Exploration in Language Agents ([jiang...brbic, 2025](https://arxiv.org/abs/2512.16848))
+  - Recursive Agent Optimization ([gandhi...neubig, 2026](https://arxiv.org/abs/2605.06639)) - rl for training agents that spawn and use other agents
 - Learning to (Learn at Test Time): RNNs with Expressive Hidden States ([sun...guestrin, 2024](https://arxiv.org/abs/2407.04620))
   - ![ttt_lm](../assets/ttt_lm.jpeg)
   - GradMem: Learning to Write Context into Memory with Test-Time Gradient Descent ([kuratov...burtsev, 2026](https://arxiv.org/abs/2603.13875v1))
@@ -1104,8 +1109,10 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - 3 levels of interaction
     - bi-encoder: separately encode query & doc
     - cross-encoder: encode query and doc together
-    - late-interaction encoder: hybrid, separately encode, but then learn some params on how to compute similarity between them (e.g. ColBERT ([khattab & zaharia, 2020](https://arxiv.org/abs/2004.12832)))
-
+    - late-interaction encoder: hybrid, separately encode, but then learn some params on how to compute similarity between them
+      - e.g. ColBERT ([khattab & zaharia, 2020](https://arxiv.org/abs/2004.12832)) uses maxsim to compare, which keeps the vector for each token and then for each token in the query, finds the candidate token it matches best (highest cosine similarity), then averages those best-match scores across all query tokens
+      - Your Embedding Model is SMARTer Than You Think ([zhang...lee, 2026](https://arxiv.org/abs/2605.24938)) - use the maxsim score (along with the original last-token score) to do late interaction without requiring post-training
+    
   - expansion & reweighting (e.g. doc2query)
   - sparse representation learning (e.g. UHD-BERT ([jang...seo, 2021](https://arxiv.org/abs/2104.07198)))
   - joint learning with index
@@ -1153,6 +1160,7 @@ Agentic search - agent actively plans, executes, and iterates on searches to ans
   - query side: predicts evidence vocabulary omitted by the query &  document-frequency statistics as a tool call to filter proposed terms that are absent, overly common, or unlikely to create retrieval margin
   - final retrieval step is weighted BM25 call combining the original query with the validated expansion
 - Is Grep All You Need? How Agent Harnesses Reshape Agentic Search ([sen...subbiah, 2026](https://arxiv.org/abs/2605.15184)) - grep generally outperforms vector retrieval in agentic RAG workflows, but overall accuracy depends heavily on agent harness
+- MemEx: A Programmable Scratchpad for LLM Agents ([databricks research team, 2026](https://www.databricks.com/blog/memex-programmable-scratchpad-llm-agents)) - improves token efficiency with a wrapper layer over tools, that stores objects in python rather than text every time
 
 ## explainable embeddings
 
@@ -1262,6 +1270,7 @@ Agentic search - agent actively plans, executes, and iterates on searches to ans
 - Engram: Conditional Memory via Scalable Lookup: A New Axis of Sparsity for LLMs ([cheng...liang; deepseek, 2026](https://arxiv.org/abs/2601.07372))
     - STEM: Scaling Transformers with Embedding Modules ([sadhukhan...chen, 2026](https://arxiv.org/abs/2601.10639))
 
+- MeMo: Memory as a Model ([quek...solar-lezama, 2026](https://arxiv.org/abs/2605.15156)) - train a model to learn a corpus (replacing retrieval piece in RAG), and then use it along with a frozen LLM to retrieve knowledge
 - memorizing transformers ([wu...szegedy, 2022](https://arxiv.org/abs/2203.08913)) - knn-based learned indexing + retrieval at training time
   - at test time, you just need to index the entire context and the model will be able to use it
   - kNN Prompting: Learning Beyond the Context with Nearest Neighbor Inference ([xu...zhang, 2023](https://openreview.net/forum?id=fe2S7736sNS)) - instead of verbalizer, use nearest-neighbor (nice results for dbpedia)
@@ -1599,6 +1608,7 @@ teaching, HITL, user simulators
   - Nested Training for Mutual Adaptation in Human-AI Teaming ([biswas, kalwar, kambhampati & sreedharan, 2026](https://arxiv.org/abs/2602.17737)) - alternate between training robot model vs human model to mitigate weird joint strategies emerging
   - Centaur: A foundation model to predict and capture human cognition ([binz...schulz, 2025](https://www.nature.com/articles/s41586-025-09215-4))
   - Quantifying the Utility of User Simulators for Building Collaborative LLM Assistants ([suh, raj, kang & chang, 2026](https://arxiv.org/abs/2605.09808))
+  - Simulating Human Memory with LMs ([wang...linzen, 2026](https://arxiv.org/abs/2605.25680)) - LMs have better memory than humans, but prompting/compacting can help them better match humans as user simulators
 - Weak-to-Strong Generalization: Eliciting Strong Capabilities With Weak Supervision ([burns...wu, 2023](https://arxiv.org/abs/2312.09390))
   - Can weaker model (human proxy) teach a stronger model (AGI proxy) to do better than the teacher itself at a task?
   - Automated Weak-to-Strong Researcher ([wen…leike, 2026](https://alignment.anthropic.com/2026/automated-w2s-researcher/)) - autoresearch applied to this task
@@ -1987,6 +1997,7 @@ teaching, HITL, user simulators
 - CLAP: Learning Audio Concepts From Natural Language Supervision ([elizalde…wang, 2022](https://arxiv.org/abs/2206.04769)) - learn audio-text embeddings through contrastive learning (like CLIP)
     - Learning Audio Concepts from Counterfactual Natural Language ([vosoughi…xu, 2024](https://arxiv.org/abs/2401.04935)) - improve learning signal by prompting text-only model to modify caption in a particular way that preserves the primary info and then using that as a third input during contrastive learning
 - Leveraging Pre-Trained Autoencoders for Interpretable Prototype Learning of Music Audio ([alonso-jimenez…rocamora, 2024](https://arxiv.org/abs/2402.09318))
+- Nexus: An Agentic Framework for Time Series Forecasting ([das...pfister, 2026](https://arxiv.org/abs/2605.14389))
 
 ## education
 - Towards Responsible Development of Generative AI for Education: An Evaluation-Driven Approach ([jurenka…ibrahim, 2024](https://storage.googleapis.com/deepmind-media/LearnLM/LearnLM_paper.pdf))

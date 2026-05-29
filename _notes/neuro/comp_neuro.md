@@ -1217,6 +1217,8 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 - Meta-Learning an In-Context Transformer Model of Human Higher Visual Cortex ([yu...luo, 2025](https://arxiv.org/abs/2505.15813)) - learn to predict encoding weights (for a particular feature space) from single voxel activity; use synthetic data for training
 - Brain-Like Processing Pathways Form in Models With Heterogeneous Experts ([cook, akarca, costa & achterberg, 2025](https://arxiv.org/abs/2506.02813)) - predicting various actions in the time-series cogsci [Neurogym](https://pure.eur.nl/ws/portalfiles/portal/59119331/MolanoMazon_Neurogym.pdf) leads
   - imposing cost to route to experts enables more difficult experts to be used for more difficult tasks
+- Fine-tuning language encoding models on slow fMRI improves prediction for fast ECoG ([vaidya, antonello & huth, 2026](https://arxiv.org/abs/2605.19224))
+- Scaling Vision Transformers for Functional MRI with Flat Maps ([lane...scotti, 2025](https://arxiv.org/abs/2510.13768))
 
 
 
