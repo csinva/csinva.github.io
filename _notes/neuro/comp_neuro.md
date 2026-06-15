@@ -959,8 +959,7 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - HBN-EEG dataset ([shirazi...makeig, 2024](https://www.biorxiv.org/content/10.1101/2024.10.03.615261v2)) - EEG recordings from over 3,000 participants across six distinct cognitive tasks [used in eeg2025 NeurIPS competition]
   - YOTO (You Only Think Once): A Human EEG Dataset for Multisensory Perception and Mental Imagery ([chang...wei, 2025](https://www.biorxiv.org/content/10.1101/2025.04.17.645384v1))
 - ECoG
-  - The “Podcast” ECoG dataset for modeling neural activity during
-    natural language comprehension ([zada...hasson, 2025](https://www.biorxiv.org/content/10.1101/2025.02.14.638352v1.full.pdf)) - 9 subjects listening to the same story
+  - The “Podcast” ECoG dataset for modeling neural activity during natural language comprehension ([zada...hasson, 2025](https://www.biorxiv.org/content/10.1101/2025.02.14.638352v1.full.pdf)) - 9 subjects listening to the same story
     - 30-min story (1330 total electrodes, ~5000 spoken words (non-unique)) has female interviewer/voiceover and a male speaker, occasionally background music
     - contextual word embeddings from GPT-2 XL (middle layer) accounted for most of the variance across nearly all the electrodes tested
   - Brain Treebank: Large-scale intracranial recordings from naturalistic language stimuli ([wang...barbu, 2024](https://arxiv.org/pdf/2411.08343))

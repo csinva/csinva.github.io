@@ -857,6 +857,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - Do Natural Language Descriptions of Model Activations Convey Privileged Information? ([li...wallace, 2025](https://arxiv.org/abs/2509.13316)) - this type of method may not really tell us about the activations so much as the inputs
   - LatentQA: Teaching LLMs to Decode Activations Into Natural Language ([pan, chen & steinhardt, 2024](https://arxiv.org/abs/2412.08686)) - train model to answer NL questions about activations
     - Activation Oracles: Training and Evaluating LLMs as General-Purpose Activation Explainers ([karvonen...evans, marks, 2025](https://arxiv.org/abs/2512.15674)) - extend latentQA to broader tasks with more training and test generalization to new settings
+      - Building Better Activation Oracles ([bauer...nanda, 2026](https://arxiv.org/abs/2606.02609))
     - Predictive Concept Decoders: Training Scalable End-to-End Interpretability Assistants ([huang...steinhardt, 2025](https://arxiv.org/abs/2512.15712)) - extend latentQA by having LM generate explanations from a sparse bottleneck of the activations
     - Training LMs to Explain Their Own Computations ([li...andreas, 2025](https://arxiv.org/abs/2511.08579))
       - finetune LMs to generate NL descriptions of (1) the information encoded by LM features, (2) the causal structure of LMs’ internal activations, and (3) the influence of specific input tokens on LM outputs
@@ -1190,6 +1191,7 @@ Agentic search - agent actively plans, executes, and iterates on searches to ans
     - Disentangling Superpositions: Interpretable Brain Encoding Model with Sparse Concept Atoms ([zeng & gallant, 2025](https://openreview.net/forum?id=3aNvX9TQTo))
       - apply sparse coding to word embeddings (e.g. eng1000) before fitting linear encoding models to mitigate feature correlations
         - normalize word embeddings before fitting so that highly frequent words (which are closer to the origin) do not end up with the same dictionary codes simply because of their frequency
+      - Interpreting Brain Responses to Language with Sparse Features from LMs ([lepori, kay & tuckute, 2026](https://arxiv.org/abs/2606.06857))
 - Box Embeddings: An open-source library for representation learning using geometric structures ([chheda...mccallum, 2021](https://arxiv.org/abs/2109.04997)) - allow for learning non-symmetric relations (e.g. entailment)
   - Bridging Continuous and Discrete Spaces: Interpretable Sentence Representation Learning via Compositional Operations ([huang...yu, 2023](https://arxiv.org/abs/2305.14599)) - learn interpretable compositional operations, which helps with similarities for compositional tasks
 - Dense Retrievers Know More Than They Can Express ([mixedbread ai blog post, 2026](https://www.mixedbread.com/blog/latent-terms)) - use SAE followed by BM25 on SAE embeddings
@@ -1476,6 +1478,7 @@ Agentic search - agent actively plans, executes, and iterates on searches to ans
       - DiscoGen: Procedural Generation of Algorithm Discovery Tasks in ML ([goldie...foerster, 2026](https://arxiv.org/abs/2603.17863)) - benchmark
     - Applications
       - Discovering Symbolic Cognitive Models from Human and Animal Behavior ([castro...stachenfeld, 2025](https://www.biorxiv.org/content/10.1101/2025.02.05.636732v1))
+        - AI-Discovered Cognitive Models Reveal Novel Insights into Human and Animal Learning ([kasenberg, castro, ..., stachenfeld, miller, 2026](https://www.biorxiv.org/content/10.64898/2026.05.18.725921v1))
       - An AI system to help scientists write expert-level empirical software ([aygün...brenner, 2025](https://arxiv.org/abs/2509.06503)) - use tree search with LLMs; train on kaggle and evaluate on a few interesting datasets (e.g. predict zebrafish neuron activity, predict covid hospitalization)
     
   - Faster sorting algorithms discovered using deep reinforcement learning ([deepmind, 2023](https://www.nature.com/articles/s41586-023-06004-9))
@@ -1548,7 +1551,7 @@ Agentic search - agent actively plans, executes, and iterates on searches to ans
   - From Zero to One: Building An Autonomous and Open Data Scientist Agent from Scratch ([bianchi...james zou, 2025](https://www.together.ai/blog/building-an-autonomous-and-open-data-scientist-agent-from-scratch))
   - Agent Laboratory: Using LLM Agents as Research Assistants ([schmidgall...barsoum, 2025](https://arxiv.org/abs/2501.04227))
   - The Virtual Lab of AI agents designs new SARS-CoV-2 nanobodies ([swanson...james zou, 2025](https://www.nature.com/articles/s41586-025-09442-9)) - use human to guide a set of agents each with their own expertise
-  - HACHI: Human-AI Co-design for Clinical Prediction Models ([feng...singh, 2026](https://arxiv.org/abs/2601.09072))
+  - HACHI: Human-AI Co-design for Clinical Prediction Models ([feng...singh, 2026](https://www.nature.com/articles/s41746-026-02838-5))
   - aiXiv: A Next-Generation Open Access Ecosystem for Scientific Discovery Generated by AI Scientists ([zhang...liu, 2025](https://www.arxiv.org/abs/2508.15126))
   - Virtuous Machines: Towards Artificial General Science ([wehr...ehrhardt, 2025](https://arxiv.org/abs/2508.13421))
 - Autoresearch: https://github.com/karpathy/autoresearch
@@ -1610,6 +1613,7 @@ teaching, HITL, user simulators
   - This human study did not involve human subjects: Validating LLM simulations as behavioral evidence ([hullman, broska, sun & shaw, 2026](https://arxiv.org/abs/2602.15785))
   - UserLM: Flipping the Dialogue: Training and Evaluating User LMs ([naous, laban, xu & neville, 2025](https://arxiv.org/abs/2510.06552)) - train an 8B model to better work as a user simulator
   - HUMANLM: Simulating Users with State Alignment Beats Response Imitation ([shirley wu...leskovec, zou, 2026](https://humanlm.stanford.edu/HumanLM_paper.pdf))
+  - https://github.com/sunnweiwei/OdysSim/blob/main/assets/Building%20Foundation%20Models%20for%20Human%20Behavior%20Simulation.pdf
   - Nested Training for Mutual Adaptation in Human-AI Teaming ([biswas, kalwar, kambhampati & sreedharan, 2026](https://arxiv.org/abs/2602.17737)) - alternate between training robot model vs human model to mitigate weird joint strategies emerging
   - Centaur: A foundation model to predict and capture human cognition ([binz...schulz, 2025](https://www.nature.com/articles/s41586-025-09215-4))
   - Quantifying the Utility of User Simulators for Building Collaborative LLM Assistants ([suh, raj, kang & chang, 2026](https://arxiv.org/abs/2605.09808))
@@ -1775,7 +1779,7 @@ teaching, HITL, user simulators
   - LLMs are Few-Shot Clinical Information Extractors ([agrawal...sontag, 2022](https://arxiv.org/abs/2205.12689)) - use GPT3
   - Universal Abstraction: Harnessing Frontier Models to Structure Real-World Data at Scale ([wong...poon, 2025](https://arxiv.org/abs/2502.00943)) - specialized prompt template for extracting attributes using LLM
   - OmniStruct: Universal Text-to-Structure Generation across Diverse Schemas ([huang...chen, 2025](https://arxiv.org/abs/2511.18335)) - aggregate benchmarks to evaluate output formatting, e.g. in structured json
-- Human-AI Co-design for Clinical Prediction Models ([feng...singh, 2026](https://arxiv.org/abs/2601.09072))
+- HACHI: Human-AI Co-design for Clinical Prediction Models ([feng...singh, 2026](https://www.nature.com/articles/s41746-026-02838-5))
   - Scaling Clinician-Grade Feature Generation from Clinical Notes with Multi-Agent LMs ([wang...bayati, 2025](https://arxiv.org/abs/2508.01956))
   - CliMB: An AI-enabled Partner for Clinical Predictive Modeling ([saveliev...van der schaar, 2024](https://arxiv.org/abs/2410.03736))
   - From Fuzzy to Formal: Scaling Hospital Quality Improvement with AI ([vossler...zier, 2026](https://arxiv.org/abs/2604.20055))
