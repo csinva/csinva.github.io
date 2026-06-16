@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Redirecting …</title>
+<meta name="robots" content="noindex">
+<script>
+  // Forward /quick-viz and everything under it to /deep-dive, keeping the
+  // rest of the path, query string, and hash intact.
+  (function () {
+    var m = location.pathname.match(/^\/quick-viz(\/.*)?$/);
+    if (m) {
+      location.replace("/deep-dive" + (m[1] || "/") + location.search + location.hash);
+    }
+  })();
+</script>
+</head>
+<body>
+  <p>Page not found. <a href="/">Go to csinva.io →</a></p>
+</body>
+</html>
