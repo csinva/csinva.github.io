@@ -1151,6 +1151,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
 
 Agentic search - agent actively plans, executes, and iterates on searches to answer a query, rather than just running a single keyword lookup and handing back results
 
+- FastContext: Training Efficient Repository Explorer for Coding Agents ([zhang...fu, 2026](https://arxiv.org/abs/2606.14066)) - exploration models from 4B-30B
 - Search-R1: Training LLMs to Reason and Leverage Search Engines with RL ([jin...han, 2025](https://arxiv.org/abs/2503.09516))
 - Beyond Semantic Similarity: Rethinking Retrieval for Agentic Search via Direct Corpus Interaction ([li...zhang, 2026](https://arxiv.org/abs/2605.05242)) - agent searches the raw corpus directly using **`grep`, `find`, `bash`, shell pipelines** rather than embedding models
 - Chroma Context-1: Training a Self-Editing Search Agent ([bashir, hong, jiang, & shi, 2026](https://www.trychroma.com/research/context-1))
@@ -1165,6 +1166,8 @@ Agentic search - agent actively plans, executes, and iterates on searches to ans
   - Is Grep All You Need? How Agent Harnesses Reshape Agentic Search ([sen...subbiah, 2026](https://arxiv.org/abs/2605.15184)) - grep generally outperforms vector retrieval in agentic RAG workflows, but overall accuracy depends heavily on agent harness
 
 - MemEx: A Programmable Scratchpad for LLM Agents ([databricks research team, 2026](https://www.databricks.com/blog/memex-programmable-scratchpad-llm-agents)) - improves token efficiency with a wrapper layer over tools, that stores objects in python rather than text every time
+
+- ![IR-pareto-frontier](https://jbarrow.ai/2026-06-12-searching-fast-and-slow/IR-pareto-frontier.svg) ([ref](https://jbarrow.ai/2026-06-12-searching-fast-and-slow/))
 
 ## explainable embeddings
 
@@ -1470,6 +1473,7 @@ Agentic search - agent actively plans, executes, and iterates on searches to ans
       - ThetaEvolve: Test-time Learning on Open Problems ([wang...shen, 2025](https://arxiv.org/abs/2511.23473)) - use RL and a weaker model to learn the pipeline end to end
         - Self-Improving LMs for Evolutionary Program Synthesis: A Case Study on ARC-AGI ([pourcel, colas & oudeyer, 2025](https://arxiv.org/abs/2507.14172))
       - DeltaEvolve: Accelerating Scientific Discovery through Momentum-Driven Evolution ([jiang, ding & zhu, 2026](https://arxiv.org/abs/2602.02919))
+      - CORAL: Towards Autonomous Multi-Agent Evolution for Open-Ended Discovery ([qu...liang, 2026](https://arxiv.org/abs/2604.01658v2))
       - ImprovEvolve: Ask AlphaEvolve to Improve the Input Solution and Then Improvise ([kravatskiy, khrulkov & oseledets, 2026](https://arxiv.org/abs/2602.10233))
       - Learning to Discover at Test Time ([yuksekgonul...zou, guestrin, yu sun, 2026](https://test-time-training.github.io/discover.pdf)) - use test-time training (built into the architecture) to improve on these discovery tasks
       - SkyDiscover: A Flexible Framework for AI-Driven Scientific and Algorithmic Discovery ([blog post, 2026](https://skydiscover-ai.github.io/blog.html))

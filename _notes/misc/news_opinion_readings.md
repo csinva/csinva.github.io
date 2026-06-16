@@ -1,5 +1,9 @@
 [toc]
 
+# 2026
+
+- https://www.economist.com/finance-and-economics/2026/06/15/meet-the-worlds-top-ai-pilled-economists
+
 # 2023
 
 - https://time.com/6297403/india-ai-karya-startup/
