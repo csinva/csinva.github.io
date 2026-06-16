@@ -125,6 +125,8 @@ const METRICS = [
     blurb:"Most total points in a single season — Wilt's 4,029 will never be touched." },
   { k:"sdd",    label:"Season Dbl-Dbls", lo:"📎 occasional", hi:"🔁 one every single night",
     blurb:"Most double-doubles in a single season." },
+  { k:"ig",     label:"IG Followers", lo:"👻 ghost account", hi:"📸 160M and counting",
+    blurb:"Approximate Instagram followers — LeBron's ~160M dwarfs the league. (Pre-internet legends never had an account.)" },
 ];
 
 // ---------------- data ----------------
@@ -232,6 +234,31 @@ const SONGS = [
 ["Ben Wallace", "Center", 81, 41.4, 5.7, 1.3, 9.6, 13.0, 1, 1996, 98, 55, 75, "Undrafted: four DPOYs, a ring, the best afro in league history. 41% from the line, 100% from the heart.", "wPRLMb-AET4", 2.0, 1.3, 4, 1, 760, 50],
 ];
 
+// Instagram followers in millions (approximate, mid-2026). Pre-internet & no-account
+// legends sit near zero; deceased-pre-social names are 0.
+const IG = {
+  "Magic Johnson":4.5,"Stephen Curry":57,"Chris Paul":10.5,"Allen Iverson":4.0,"John Stockton":0.05,
+  "Steve Nash":0.5,"Russell Westbrook":14,"Kyrie Irving":18,"Damian Lillard":8.5,"Jason Kidd":1.0,
+  "Oscar Robertson":0.05,"Muggsy Bogues":0.2,"Luka Doncic":12,"Shai Gilgeous-Alexander":3.5,"Ja Morant":9,
+  "Michael Jordan":10,"Kobe Bryant":20,"Dwyane Wade":17,"James Harden":13,"Ray Allen":3.0,
+  "Reggie Miller":0.7,"Klay Thompson":7,"Devin Booker":7.5,"Anthony Edwards":5,"Manu Ginobili":2.5,
+  "Vince Carter":2.5,"LeBron James":160,"Kevin Durant":25,"Larry Bird":0.05,"Kawhi Leonard":3.5,
+  "Jayson Tatum":6.5,"Carmelo Anthony":13,"Scottie Pippen":2.0,"Julius Erving":0.5,"Jimmy Butler":10,
+  "Tracy McGrady":2.0,"Tim Duncan":0.05,"Giannis Antetokounmpo":17,"Dirk Nowitzki":4.5,"Karl Malone":0.3,
+  "Charles Barkley":0.05,"Kevin Garnett":6.0,"Anthony Davis":7,"Draymond Green":8,"Dennis Rodman":2.0,
+  "Pau Gasol":4.0,"Kareem Abdul-Jabbar":1.0,"Wilt Chamberlain":0,"Shaquille O'Neal":35,"Hakeem Olajuwon":0.6,
+  "Bill Russell":0.3,"Nikola Jokic":0.05,"Joel Embiid":7,"Victor Wembanyama":5,"David Robinson":0.4,
+  "Patrick Ewing":0.4,"Moses Malone":0,"Yao Ming":0.5,"Manute Bol":0,"Rudy Gobert":3.5,
+  "Jalen Brunson":2.0,"Cade Cunningham":1.2,"Donovan Mitchell":4.5,"Jaylen Brown":5,"Evan Mobley":0.8,
+  "Julius Randle":1.5,"DeMar DeRozan":5.5,"Paul George":11,"Isaiah Thomas":3.0,"Kyle Lowry":2.5,
+  "Marc Gasol":2.0,"LaMarcus Aldridge":2.0,"DeMarcus Cousins":5,"DeAndre Jordan":3.5,"Pascal Siakam":2.5,
+  "Dwight Howard":9,"Derrick Rose":12,"Tony Parker":4.5,"Chris Bosh":4.0,"Amar'e Stoudemire":3.5,
+  "Blake Griffin":6,"Gilbert Arenas":3.5,"Deron Williams":0.8,"Brandon Roy":0.3,"Andrew Bynum":0.3,
+  "Kevin Love":6.5,"Joakim Noah":1.5,"Gary Payton":1.5,"Chauncey Billups":1.0,"Sam Cassell":0.4,
+  "Baron Davis":1.5,"Eddie Jones":0.2,"Grant Hill":0.8,"Peja Stojakovic":0.4,"Chris Webber":1.0,
+  "Jermaine O'Neal":0.8,"Elton Brand":0.3,"Alonzo Mourning":0.7,"Dikembe Mutombo":0.5,"Ben Wallace":0.6,
+};
+
 // ---------------- state ----------------
 let metricX = METRICS[10]; // Debut
 let metricY = METRICS[11]; // Season 3PM
@@ -242,7 +269,7 @@ const TOUCH = matchMedia("(hover: none), (pointer: coarse)").matches;
 
 const songs = SONGS.map((p, i) => ({
   title: p[0], album: p[1], hin: p[2], ftp: p[3], ppgV: p[4], apgV: p[5], rpgV: p[6], p3V: p[7],
-  ringsV: p[8], debut: p[9], defense: p[10], clutch: p[11], aura: p[12], note: p[13], yt: p[14], bpg: p[15], spgV: p[16], asV: p[17], s3mV: p[18], sptsV: p[19], sddV: p[20], id: i
+  ringsV: p[8], debut: p[9], defense: p[10], clutch: p[11], aura: p[12], note: p[13], yt: p[14], bpg: p[15], spgV: p[16], asV: p[17], s3mV: p[18], sptsV: p[19], sddV: p[20], igV: IG[p[0]] ?? 0, id: i
 }));
 // normalize every raw stat to 0–100 for plotting; tooltips show the real values
 const norm = (get, k) => {
@@ -254,8 +281,11 @@ norm(s => s.apgV, "apg"); norm(s => s.rpgV, "rpg"); norm(s => s.p3V, "p3");
 norm(s => s.ringsV, "rings"); norm(s => s.debut, "rel"); norm(s => s.bpg, "blk");
 norm(s => s.spgV, "spg"); norm(s => s.asV, "allstar");
 norm(s => s.s3mV, "s3m"); norm(s => s.sptsV, "spts"); norm(s => s.sddV, "sdd");
+norm(s => s.igV, "ig");
 const fmtH = h => Math.floor(h / 12) + "'" + (h % 12) + '"';
+const fmtIG = v => v === 0 ? "no Instagram" : v >= 1 ? v.toFixed(1) + "M followers" : Math.round(v * 1000) + "K followers";
 const disp = (s, m) =>
+  m.k === "ig" ? fmtIG(s.igV) :
   m.k === "height" ? fmtH(s.hin) : m.k === "ft" ? s.ftp.toFixed(1) + "%" :
   m.k === "ppg" ? s.ppgV.toFixed(1) + " ppg" : m.k === "apg" ? s.apgV.toFixed(1) + " apg" :
   m.k === "rpg" ? s.rpgV.toFixed(1) + " rpg" : m.k === "p3" ? s.p3V.toFixed(1) + "%" :
@@ -265,7 +295,8 @@ const disp = (s, m) =>
   m.k === "rings" ? s.ringsV + (s.ringsV === 1 ? " ring" : " rings") :
   m.k === "rel" ? s.debut : s[m.k];
 // every basketball metric is a real measurement → number the axes with actual values.
-// ranges are modest (height, %, per-game, counts, year) so all stay linear.
+// ranges are modest (height, %, per-game, counts, year) so all stay linear —
+// except Instagram, whose long tail (LeBron at ~160M) just sits far out on the same linear axis.
 const _BBV = {
   ppg: [s => s.ppgV, v => v.toFixed(1)], height: [s => s.hin, v => fmtH(Math.round(v))],
   ft: [s => s.ftp, v => Math.round(v) + "%"], p3: [s => s.p3V, v => Math.round(v) + "%"],
@@ -274,6 +305,7 @@ const _BBV = {
   allstar: [s => s.asV, v => Math.round(v)], rings: [s => s.ringsV, v => Math.round(v)],
   rel: [s => s.debut, v => String(Math.round(v))], s3m: [s => s.s3mV, v => Math.round(v)],
   spts: [s => s.sptsV, v => Math.round(v).toLocaleString()], sdd: [s => s.sddV, v => Math.round(v)],
+  ig: [s => s.igV, v => v >= 1 ? Math.round(v) + "M" : Math.round(v * 1000) + "K"],
 };
 const AXIS = {};
 Object.keys(_BBV).forEach(k => { const vs = songs.map(_BBV[k][0]); AXIS[k] = { lo: Math.min(...vs), hi: Math.max(...vs), fmt: _BBV[k][1] }; });
@@ -534,6 +566,7 @@ const THEMES = [
   { name: "Skyline Member",        emoji: "🦒", color: "#a05cc8", v: s => s.height },
   { name: "Charity Stripe Sniper", emoji: "🎯", color: "#f48fb1", v: s => s.ft },
   { name: "Old Head",              emoji: "🏛️", color: "#9aa0a6", v: s => 100 - s.rel },
+  { name: "Social Media Star",     emoji: "📸", color: "#e1306c", v: s => s.ig },
 ];
 const picks = [];
 const searchEl = document.getElementById("songSearch");
