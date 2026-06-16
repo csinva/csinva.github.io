@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<title>The Curry Deep-Dive — every pot, every dimension</title>
+<link rel="stylesheet" href="assets/deepdive.css">
+<style>
+  /* text filter chips (this page uses chips, not album thumbnails) */
+  .covers { gap: 9px; }
+  .pos-chip {
+    background: #181425; border: 1.5px solid; border-radius: 999px;
+    padding: 8px 18px; font-weight: 800; font-size: 13.5px; cursor: pointer;
+    transition: all .18s; font-family: inherit;
+  }
+  .pos-chip:hover { transform: translateY(-2px); }
+  .pos-chip.solo { box-shadow: 0 0 16px currentColor; background: #241b3a; }
+  #tip .t-play.bref { background: #e8731a; }
+  @media (max-width: 700px) { .pos-chip { padding: 6px 12px; font-size: 12px; } }
+</style>
+</head>
+<body>
+<a class="home-btn" href="index.html" title="Back to deep-dive">⌂ Home</a>
+<div class="made-by">Made with love by <a href="https://x.com/csinva" target="_blank" rel="noopener">@csinva</a></div>
+<div class="wrap">
+  <header>
+    <h1>The Curry Deep-Dive</h1>
+    <div class="sub"><b>151 curries</b> — from korma to phaal, Bengal to Addis Ababa, Chiang Mai to Glasgow. Pick one dimension per axis, filter by tradition, and hover any dot for the tasting card.</div>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab active" data-page="spectrum">🌌 The Deep-Dive</button>
+    <button class="tab" data-page="aura">🍛 Your Curry Profile</button>
+  </nav>
+
+  <div class="page" id="page-spectrum">
+  <div class="covers" id="covers"></div>
+  <div class="covers-hint">click a tradition to solo it · click again to bring everyone back</div>
+
+  <div class="chart-zone">
+    <div class="axis-picker y" id="metricsY">
+      <div class="picker-cap"><b>↑</b> vertical axis<br><span>click a pill to change it</span></div>
+    </div>
+    <div class="chart-main">
+      <div class="chart-card">
+        <div id="stage"></div>
+        <div class="axis-labels"><span class="lo" id="xLoLab"></span><span class="xblurb" id="xBlurb"></span><span class="hi" id="xHiLab"></span></div>
+      </div>
+      <div class="axis-picker x" id="metricsX">
+        <div class="picker-cap"><b>→</b> horizontal axis · <span>click a pill to change it</span></div>
+      </div>
+    </div>
+    <div class="side-boards" id="sideBoards"></div>
+  </div>
+
+  </div><!-- /page-spectrum -->
+
+  <div class="page hidden" id="page-aura">
+    <div class="aura-intro">Pick <b>three to five</b> of your favorite curries — start typing or browse the menu below. We'll find your dominant flavor identity and minor placements, then read your order — who you are, what you crave, and what to do about it.</div>
+    <div class="picker">
+      <input id="songSearch" placeholder="Start typing a curry… (the classics are waiting below)" autocomplete="off">
+      <div id="suggest"></div>
+    </div>
+    <div id="chips"></div>
+    <button id="auraBtn" disabled></button>
+    <div id="auraResult"></div>
+    <div class="catalogue" id="catalogue"></div>
+  </div>
+
+  <footer>
+    Every dimension is Claude-annotated opinion (0–100) except cook times and spice counts, which are honest estimates for classic versions.<br>
+    151 curries across eight traditions, chosen for spread and outliers: rendang anchors dry, rasam anchors soupy, phaal anchors regret, and currywurst is here over the objections of several nations.<br>
+    Hover a dot for the tasting card — recipe videos via YouTube.
+  </footer>
+</div>
+
+<div id="tip"></div>
+
+<script>
+const ART = {};
+
+// ---------------- albums & colors ----------------
+const ALBUMS = {
+  "North India":          { c: "#e8b647", y: "ghee, cream, empire", t: "N. India" },
+  "South India":          { c: "#6fae4e", y: "tamarind & curry leaves", t: "S. India" },
+  "East & Bengal":        { c: "#d4658f", y: "mustard, fish & five-spice", t: "Bengal" },
+  "Thailand":             { c: "#3fb8af", y: "balance as religion", t: "Thai" },
+  "SE Asia & Islands":    { c: "#c97a3d", y: "lemongrass & patience", t: "SEA" },
+  "East Asia":            { c: "#7b8cde", y: "comfort engineering", t: "E. Asia" },
+  "Persia, Arabia & Africa": { c: "#a78bd0", y: "saffron, dried lime & berbere", t: "Persia/Afr" },
+  "Diaspora & Fusion":    { c: "#d6453c", y: "curry with a passport", t: "fusion" },
+};
+
+// ---------------- metrics ----------------
+const METRICS = [
+  { k:"heat",   label:"Heat",            lo:"🧊 mild as milk", hi:"🥵 sign the waiver",
+    blurb:"Claude-annotated Scoville vibes — korma to phaal." },
+  { k:"cream",  label:"Creaminess",      lo:"💧 broth-thin", hi:"🥥 liquid velvet",
+    blurb:"Coconut milk, cream, and cashew content." },
+  { k:"sweet",  label:"Sweetness",       lo:"🧂 fully savory", hi:"🍯 dessert-adjacent",
+    blurb:"From bone-dry savory to Japanese-curry sweet." },
+  { k:"tang",   label:"Tang",            lo:"😶 no acid", hi:"🍋 pucker up",
+    blurb:"Tamarind, vinegar, kokum, and lime doing structural work." },
+  { k:"soup",   label:"Soupiness",       lo:"🏜️ rendang-dry", hi:"🍜 basically soup",
+    blurb:"Sauce viscosity, from clings-to-the-meat to ladled like weather." },
+  { k:"comfort",label:"Comfort",         lo:"⚡ keeps you alert", hi:"🛋️ edible blanket",
+    blurb:"How thoroughly it ends your day's problems." },
+  { k:"fame",   label:"Fame",            lo:"💎 regional secret", hi:"🌍 global menu staple",
+    blurb:"How likely it appears on a menu anywhere on Earth." },
+  { k:"rice",   label:"Rice Dependence", lo:"🍞 rice optional", hi:"🍚 rice mandatory",
+    blurb:"From served-in-a-bread-loaf to inseparable-from-rice." },
+  { k:"cook",   label:"Cook Time",       lo:"⚡ weeknight fast", hi:"⏳ all-day project",
+    blurb:"Honest minutes from cutting board to table." },
+  { k:"spices", label:"Complexity",      lo:"🖐️ five ingredients", hi:"📚 spice library",
+    blurb:"Distinct spices and aromatics in a classic version." },
+];
+
+// ---------------- data ----------------
+// [name, region, heat, cream, sweet, tang, soup, comfort, fame, rice, cookMin, spiceCount, note, recipeYtId]
+const SONGS = [
+["Butter Chicken", "North India", 25, 95, 60, 30, 45, 95, 98, 60, 90, 15, "Invented in Delhi to rescue leftover tandoori chicken; now it rescues everyone.", "ugiNvxnts3I"],
+["Korma", "North India", 10, 90, 70, 15, 50, 85, 80, 60, 80, 12, "The gateway curry — Mughal royalty's almond-cashew hug.", "Tf7Bcfp88hE"],
+["Rogan Josh", "North India", 55, 45, 20, 30, 55, 75, 75, 70, 120, 16, "Kashmiri lamb stained crimson by ratan jot, not by pain.", "g_hvkyYPAMQ"],
+["Dal Makhani", "North India", 20, 80, 30, 15, 55, 92, 70, 75, 360, 10, "Black lentils simmered overnight; butter measured in geological layers.", "rfv3ypHTn7Y"],
+["Chana Masala", "North India", 45, 15, 25, 60, 45, 75, 85, 70, 45, 12, "The chickpea workhorse with amchoor tang. Street-corner royalty.", "J4PDmokeSz8"],
+["Palak Paneer", "North India", 20, 60, 15, 20, 50, 80, 75, 65, 40, 9, "Spinach velvet with cheese cubes — vegetarianism's best recruiter.", "yNy59PNd9Ro"],
+["Dhaba Egg Curry", "North India", 50, 35, 20, 30, 60, 70, 50, 80, 30, 11, "Boiled eggs elevated to highway-dhaba legend.", "_BA9OiyjReQ"],
+["Kadai Paneer", "North India", 40, 55, 25, 30, 40, 75, 65, 60, 35, 12, "Wok-fired peppers and paneer; the sizzle is part of the recipe.", "1dec3Cs7LAY"],
+["Sambar", "South India", 40, 5, 15, 70, 90, 80, 70, 90, 40, 14, "The lentil-tamarind workhorse, ladled over everything, beloved by all.", "ApQU8evkEkc"],
+["Rasam", "South India", 50, 0, 10, 90, 100, 75, 55, 70, 25, 10, "Technically a soup, spiritually a curry, medicinally a miracle.", "WL9k9AoB8Tk"],
+["Kerala Fish Curry", "South India", 65, 55, 10, 75, 65, 70, 60, 85, 35, 12, "Kokum-sour, coconut-rich, backwater-perfect.", "W_bymAzPwWc"],
+["Goan Fish Curry", "South India", 60, 60, 15, 70, 70, 70, 60, 85, 35, 13, "Coconut and kokum negotiating a truce over the day's catch.", "KIO4_cPoncs"],
+["Vindaloo", "South India", 90, 20, 15, 85, 40, 55, 80, 80, 100, 14, "Portuguese vinha d'alhos gone gloriously rogue in Goa. Vinegar and fire.", "DvkSa2S8sfg"],
+["Chettinad Chicken", "South India", 80, 30, 10, 35, 45, 65, 55, 80, 60, 24, "Tamil Nadu's spice-cabinet flex — star anise, stone flower, fennel, fury.", "LK4TIYBnZQU"],
+["Avial", "South India", 15, 50, 20, 40, 55, 70, 40, 75, 35, 8, "Kerala's vegetable congress, bound by coconut and yogurt.", "_C9SZg3adxI"],
+["Thai Green Curry", "Thailand", 70, 75, 35, 25, 70, 75, 90, 85, 35, 12, "Sweet basil deception: the prettiest one bites the hardest.", "3Z9lEOGmSjw"],
+["Thai Red Curry", "Thailand", 60, 70, 30, 25, 65, 75, 85, 85, 30, 11, "The dependable middle child of the chili-paste family.", "LO9XXx9uh6U"],
+["Thai Yellow Curry", "Thailand", 35, 75, 45, 20, 60, 80, 75, 80, 35, 12, "Turmeric-gold and gentle — the diplomatic option.", "hRdL3LC8VKw"],
+["Massaman", "Thailand", 25, 80, 65, 35, 55, 90, 85, 80, 120, 16, "Persian-influenced, peanut-laden, once voted world's best food.", "Z5v8F_zhwF8"],
+["Panang", "Thailand", 55, 80, 45, 20, 45, 80, 75, 75, 30, 12, "Red curry, concentrated: thicker, nuttier, fewer survivors.", "DSGRNoSTvLg"],
+["Jungle Curry", "Thailand", 95, 0, 10, 30, 75, 40, 35, 80, 30, 14, "No coconut to save you. Forest herbs, open flame, good luck.", "qaeiUpMz028"],
+["Khao Soi", "Thailand", 45, 70, 35, 40, 80, 90, 70, 30, 45, 13, "Chiang Mai's crispy-noodle coconut masterpiece. Rice was not invited.", "gwV9SJtewCY"],
+["Beef Rendang", "SE Asia & Islands", 60, 65, 30, 20, 5, 85, 80, 75, 240, 18, "Cooked until the sauce surrenders entirely. Technically dry; spiritually a monument.", "MPo-7KPhRa4"],
+["Laksa", "SE Asia & Islands", 55, 70, 25, 45, 95, 80, 70, 25, 60, 16, "The coconut noodle soup that ruins all other soups.", "NyRg8HLU3r0"],
+["Gulai Ayam", "SE Asia & Islands", 45, 70, 25, 30, 70, 70, 45, 80, 50, 15, "Sumatra's golden gravy — rendang's soupier, faster cousin.", "YTXw4oYx9OY"],
+["Burmese Chicken Curry", "SE Asia & Islands", 40, 30, 20, 30, 55, 70, 40, 75, 50, 11, "Oil-crowned and onion-heavy; criminally under-famous.", "XNWyTMFRWPc"],
+["Kare-Kare", "SE Asia & Islands", 10, 60, 35, 10, 60, 85, 50, 85, 120, 9, "Filipino peanut-sauce oxtail; the shrimp paste on the side does the seasoning.", "eVjc3kiFmNg"],
+["Fish Amok", "SE Asia & Islands", 30, 75, 30, 25, 35, 70, 45, 75, 45, 13, "Cambodia's steamed coconut custard-curry, served in a banana leaf.", "mlngdPqXi10"],
+["Sri Lankan Black Pork Curry", "SE Asia & Islands", 75, 25, 15, 40, 40, 65, 45, 85, 90, 17, "Roasted-curry-powder darkness from the island that grows the spices.", "Q28PftjncWc"],
+["Japanese Curry Rice", "East Asia", 15, 50, 70, 10, 55, 95, 85, 95, 40, 8, "A naval import perfected into the nation's comfort blanket. The sweetness is intentional.", "UuOI5uT00T4"],
+["Katsu Curry", "East Asia", 15, 50, 65, 10, 50, 95, 85, 90, 50, 8, "Japanese curry rice, but with armor.", "ivt6MgkemIE"],
+["Hong Kong Curry Chicken", "East Asia", 35, 40, 40, 15, 60, 75, 55, 85, 35, 9, "Cha chaan teng classic — curry by way of three empires.", "ivEQC1x1IYI"],
+["Korean Instant Curry", "East Asia", 20, 45, 60, 10, 55, 75, 40, 90, 15, 7, "From a packet, into your heart. Dorm-room canon.", "xPoBoYoUwdk"],
+["Chicken Tikka Masala", "Diaspora & Fusion", 30, 85, 55, 35, 50, 90, 97, 55, 75, 14, "Britain's national dish, allegedly invented in Glasgow. The diplomacy of curries.", "2ib4NQqdUn8"],
+["Madras", "Diaspora & Fusion", 70, 30, 15, 45, 50, 65, 75, 75, 60, 13, "The British curry-house heat ladder, rung eight.", "ijYNQSXTbdo"],
+["Phaal", "Diaspora & Fusion", 100, 10, 5, 40, 35, 25, 45, 70, 75, 12, "Requires a waiver in some restaurants. Pain as a service.", "UgtFyGMUiyg"],
+["Jamaican Curry Goat", "Diaspora & Fusion", 65, 25, 20, 25, 50, 80, 70, 85, 180, 12, "Allspice and scotch bonnet meet turmeric — carnival in a pot.", "el7KKPlS8cU"],
+["Trinidad Curry Chicken", "Diaspora & Fusion", 55, 20, 20, 30, 55, 75, 55, 80, 60, 11, "Curry crossed the ocean and learned to lime.", "kvNeX4v5I-Q"],
+["Durban Bunny Chow", "Diaspora & Fusion", 80, 20, 15, 30, 60, 75, 50, 5, 75, 14, "Curry served inside a hollowed bread loaf. Rice was not consulted.", "nyaWt4Vo3L4"],
+["Cape Malay Chicken Curry", "Diaspora & Fusion", 35, 45, 50, 35, 55, 75, 40, 75, 75, 13, "Sweet-spiced Cape Town heritage, generations deep.", "gNbffMJ0-9k"],
+["Currywurst", "Diaspora & Fusion", 20, 5, 65, 40, 30, 60, 65, 0, 15, 6, "Germany's ketchup-curry sausage. The least curry curry; we plot it anyway.", "wFRd6Z9QpGY"],
+["Chip-Shop Curry Sauce", "Diaspora & Fusion", 15, 30, 55, 10, 75, 70, 45, 0, 10, 5, "Britain's neon chip lubricant. Spiritually a curry, legally a sauce.", "28gxiUJ-FMg"],
+
+// ---- North India (expanded) ----
+["Malai Kofta", "North India", 20, 90, 45, 20, 55, 88, 70, 65, 60, 14, "Fried paneer-and-potato dumplings bobbing in a cashew gravy sweet enough to end an argument.", ""],
+["Shahi Paneer", "North India", 18, 88, 55, 20, 50, 85, 68, 60, 40, 13, "Mughlai 'royal' paneer — cream, nuts, and a saffron budget.", ""],
+["Kashmiri Dum Aloo", "North India", 55, 60, 25, 35, 55, 78, 50, 65, 60, 15, "Baby potatoes pricked, fried, and simmered in a fennel-ginger yogurt gravy the colour of a Kashmiri autumn.", ""],
+["Rajma", "North India", 35, 35, 20, 35, 60, 90, 65, 90, 90, 12, "Kidney beans and rice — the Sunday lunch that raised half of North India.", ""],
+["Aloo Gobi", "North India", 35, 10, 15, 25, 20, 80, 75, 55, 35, 10, "Potato and cauliflower, turmeric-yellow and dry — the lunchbox that never lets you down.", ""],
+["Matar Paneer", "North India", 30, 55, 35, 30, 55, 82, 72, 65, 35, 12, "Peas and paneer in a tomato gravy — the dependable Tuesday of Punjabi cooking.", ""],
+["Nihari", "North India", 55, 25, 15, 20, 65, 88, 60, 30, 420, 20, "Shank meat simmered from midnight to dawn; breakfast for emperors and night-shift workers alike.", ""],
+["Laal Maas", "North India", 90, 20, 10, 30, 55, 70, 55, 70, 90, 14, "Rajasthani red mutton dyed and detonated by Mathania chillies — heat as a hunting trophy.", ""],
+["Methi Malai Murg", "North India", 25, 80, 35, 15, 50, 82, 50, 60, 45, 13, "Fenugreek's pleasant bitterness folded into cream — the curry that tastes like a cashmere scarf.", ""],
+["Kadhi Pakora", "North India", 30, 55, 30, 70, 75, 85, 60, 95, 60, 11, "Yogurt-and-gram-flour curry studded with fritters; sour, soothing, and rice's closest ally.", ""],
+["Baingan Bharta", "North India", 40, 15, 20, 30, 25, 78, 60, 55, 45, 10, "Eggplant charred over open flame, then mashed into smoky submission.", ""],
+["Mughlai Chicken", "North India", 30, 80, 40, 20, 55, 84, 55, 65, 60, 16, "Chicken drowned in a court of almonds, cream, and saffron — subtlety with a crown.", ""],
+["Sarson da Saag", "North India", 30, 25, 15, 20, 50, 88, 58, 20, 120, 9, "Slow-cooked mustard greens crowned with butter, married for life to makki di roti.", ""],
+["Achari Gosht", "North India", 60, 25, 15, 65, 55, 72, 45, 70, 90, 16, "Mutton cooked with the whole pickle spice drawer — nigella, fennel, mustard, fenugreek, mischief.", ""],
+["Keema Matar", "North India", 45, 25, 20, 25, 40, 85, 62, 65, 45, 13, "Minced meat and peas — the curry that fills parathas and pav alike.", ""],
+["Tariwala Chicken", "North India", 50, 20, 15, 30, 80, 86, 50, 75, 45, 12, "Home-style thin-gravy chicken — no cream, no cashews, just the curry your grandmother actually makes.", ""],
+["Paneer Do Pyaza", "North India", 35, 45, 30, 30, 45, 78, 55, 60, 40, 12, "Paneer with onions twice over — diced into the gravy and again on top, because once was not enough.", ""],
+
+// ---- South India (expanded) ----
+["Hyderabadi Haleem", "South India", 40, 30, 15, 25, 50, 90, 60, 25, 360, 18, "Wheat, lentils, and meat pounded for hours into a Ramadan paste rich enough to fast on.", ""],
+["Bagara Baingan", "South India", 50, 35, 25, 55, 55, 75, 55, 75, 50, 16, "Hyderabadi eggplant in a peanut-sesame-tamarind gravy built to flank a biryani.", ""],
+["Gongura Mutton", "South India", 80, 15, 10, 75, 45, 72, 45, 80, 75, 14, "Andhra sorrel leaves turn this mutton fiery and tart — sourness as a personality trait.", ""],
+["Andhra Kodi Kura", "South India", 85, 20, 10, 35, 55, 75, 50, 85, 50, 15, "Andhra chicken curry, calibrated for people who find Madras a little timid.", ""],
+["Kerala Beef Ularthiyathu", "South India", 65, 25, 10, 25, 15, 82, 55, 50, 75, 16, "Beef slow-roasted with coconut chips and curry leaves until dark, glossy, and faintly illegal in Kerala's better stories.", ""],
+["Mambazha Pulissery", "South India", 25, 60, 60, 60, 70, 80, 35, 80, 30, 9, "Ripe mango simmered in coconut-yogurt — Kerala's sweet-sour-savoury tightrope.", ""],
+["Meen Moilee", "South India", 25, 75, 20, 40, 70, 80, 50, 75, 30, 11, "A gentle coconut-milk fish stew, pale gold and turmeric-soft — the Kerala cousin who never raises their voice.", ""],
+["Theeyal", "South India", 50, 40, 25, 65, 60, 75, 35, 80, 45, 13, "Roasted coconut ground dark and brown, then soured with tamarind — Kerala's most underrated gravy.", ""],
+["Erissery", "South India", 25, 65, 35, 20, 50, 80, 35, 75, 40, 9, "Pumpkin and beans in coconut, finished with a toasted-coconut crackle — Onam sadhya royalty.", ""],
+["Mangalorean Ghee Roast", "South India", 75, 25, 20, 50, 25, 80, 55, 60, 50, 15, "Byadgi-chilli paste fried in ghee until it clings to the chicken like a sunset. Sticky, fiery, unforgettable.", ""],
+["Kori Gassi", "South India", 70, 70, 15, 40, 70, 80, 45, 85, 50, 16, "Mangalore's coconut chicken curry, eaten with rice-flour roti and zero regret.", ""],
+["Coorg Pandi Curry", "South India", 70, 15, 15, 70, 50, 78, 40, 75, 75, 14, "Coorg pork blackened with kachampuli vinegar — sour, dark, and proudly from the hills.", ""],
+["Mirchi ka Salan", "South India", 65, 40, 25, 60, 55, 70, 45, 70, 50, 16, "Whole green chillies swimming in peanut-sesame-tamarind gravy; biryani's loyal bodyguard.", ""],
+["Kerala Ishtu", "South India", 15, 75, 25, 15, 75, 85, 50, 60, 40, 8, "A whisper-mild coconut-milk stew for chicken or vegetables, ladled over appams at Sunday breakfast.", ""],
+["Karnataka Saagu", "South India", 35, 55, 25, 30, 65, 78, 40, 55, 35, 12, "Bangalore's coconut-and-poppyseed veg curry, the rava idli's chosen companion.", ""],
+
+// ---- East & Bengal ----
+["Macher Jhol", "East & Bengal", 35, 10, 15, 35, 80, 85, 55, 90, 35, 9, "Bengal's everyday fish curry — light, ginger-bright, and ladled over rice every single day.", ""],
+["Shorshe Ilish", "East & Bengal", 40, 20, 10, 30, 65, 82, 55, 90, 30, 8, "Hilsa in a pungent mustard gravy that makes Bengalis weep with both joy and sinus pain.", ""],
+["Chingri Malai Curry", "East & Bengal", 25, 85, 35, 15, 60, 85, 55, 85, 40, 11, "Prawns bathed in coconut milk — the wedding-feast flex of Bengali kitchens.", ""],
+["Kosha Mangsho", "East & Bengal", 50, 25, 20, 25, 35, 88, 55, 80, 120, 16, "Mutton slow-fried in its own spices until dark and glossy — Sunday lunch as a love language.", ""],
+["Aloo Posto", "East & Bengal", 20, 25, 15, 10, 25, 85, 45, 85, 35, 6, "Potatoes in a poppyseed paste — proof Bengal can make magic from almost nothing.", ""],
+["Doi Maach", "East & Bengal", 30, 50, 25, 55, 60, 80, 45, 85, 35, 11, "Fish in spiced yogurt — tangy, gentle, and old as the zamindars.", ""],
+["Chanar Dalna", "East & Bengal", 30, 40, 25, 25, 55, 78, 35, 75, 45, 12, "Bengali cottage-cheese dumplings in a light potato gravy — the vegetarian feast-day centrepiece.", ""],
+["Shukto", "East & Bengal", 15, 40, 25, 15, 55, 72, 35, 80, 45, 11, "A bittersweet mixed-vegetable curry served first, to wake the palate up — bitter gourd and all.", ""],
+["Bangladeshi Beef Bhuna", "East & Bengal", 60, 15, 15, 25, 30, 85, 50, 80, 90, 16, "Beef fried down with onions until the masala turns to lacquer — Dhaka's wedding-tent staple.", ""],
+["Mezbani Beef", "East & Bengal", 80, 15, 10, 30, 60, 80, 40, 80, 120, 18, "Chittagong's fiery communal beef curry, cooked in vats and served to entire neighbourhoods.", ""],
+["Odia Dalma", "East & Bengal", 25, 15, 20, 20, 65, 82, 30, 85, 50, 9, "Odisha's lentils-and-vegetables temple food, tempered with cumin and a holy restraint.", ""],
+["Mansa Tarkari", "East & Bengal", 55, 15, 15, 25, 65, 80, 30, 80, 75, 13, "Odia mutton curry with potato — Sunday's reward, thin-gravied and pepper-warm.", ""],
+["Masor Tenga", "East & Bengal", 25, 5, 10, 80, 80, 78, 35, 85, 30, 7, "Assam's sour fish curry, tartened with tomato, lemon, or elephant-apple — summer in a bowl.", ""],
+["Assamese Duck Curry", "East & Bengal", 45, 20, 15, 40, 55, 78, 30, 75, 90, 12, "Duck simmered with ash gourd and whole spices — a winter-festival bird with gravitas.", ""],
+["Khasi ko Masu", "East & Bengal", 55, 15, 10, 25, 70, 82, 40, 80, 75, 13, "Nepali goat curry, peppery and brothy, the heart of every Dashain feast.", ""],
+["Aloo Tama", "East & Bengal", 45, 10, 10, 65, 80, 78, 30, 80, 50, 11, "Sour bamboo shoots, potatoes, and black-eyed peas — Nepal's funkiest, most addictive bowl.", ""],
+["Axone Pork", "East & Bengal", 65, 5, 5, 30, 45, 72, 25, 85, 75, 9, "Naga pork with fermented soybean and bamboo shoot — pungent enough to clear a room, beloved enough to fill one.", ""],
+
+// ---- Thailand (expanded) ----
+["Gaeng Som", "Thailand", 75, 0, 25, 90, 85, 65, 45, 80, 35, 10, "Thailand's sour orange curry — no coconut, no mercy, all tamarind and chilli.", ""],
+["Gaeng Hung Lay", "Thailand", 45, 20, 45, 50, 50, 82, 45, 70, 120, 16, "Northern Thai pork-belly curry, Burmese-influenced, ginger-bright and tamarind-sticky.", ""],
+["Choo Chee", "Thailand", 55, 80, 40, 25, 35, 78, 50, 70, 25, 12, "A thick red curry reduced to a glaze, draped over crispy fish — the curry that learned to cling.", ""],
+["Gaeng Tai Pla", "Thailand", 90, 10, 15, 45, 70, 55, 30, 85, 45, 14, "Southern Thailand's fermented fish-gut curry — pungent, ferocious, and not seeking your approval.", ""],
+["Khua Kling", "Thailand", 95, 5, 10, 25, 5, 60, 40, 90, 25, 13, "Bone-dry minced-meat curry from the south, fried with a chilli paste that means business.", ""],
+["Gaeng Liang", "Thailand", 55, 0, 20, 20, 85, 72, 35, 75, 30, 7, "An ancient peppercorn-and-herb vegetable curry — chilli-free heat from black pepper alone.", ""],
+["Gaeng Phet Ped Yang", "Thailand", 60, 75, 50, 35, 65, 80, 55, 75, 35, 13, "Roast-duck red curry with pineapple and grapes — sweet, fruity, and unexpectedly elegant.", ""],
+["Khanom Jeen Nam Ya", "Thailand", 60, 55, 25, 35, 75, 78, 45, 40, 60, 13, "A fish-and-krachai curry ladled over fermented rice noodles — Thailand's breakfast of champions.", ""],
+
+// ---- SE Asia & Islands (expanded) ----
+["Sri Lankan Dhal Curry", "SE Asia & Islands", 40, 60, 15, 25, 75, 88, 55, 85, 30, 9, "Red lentils in coconut milk, tempered with curry leaves and mustard — Sri Lanka's three-meals-a-day backbone.", ""],
+["Sri Lankan Chicken Curry", "SE Asia & Islands", 70, 55, 15, 40, 60, 82, 55, 85, 50, 16, "Dark-roasted curry powder gives this its smoulder; coconut milk talks it back down.", ""],
+["Jaffna Crab Curry", "SE Asia & Islands", 85, 45, 10, 45, 65, 78, 45, 80, 50, 17, "Tamil Sri Lanka's crab curry, built on a roasted spice blend hot enough to need a finger-bowl and a nap.", ""],
+["Polos Curry", "SE Asia & Islands", 50, 55, 15, 35, 55, 80, 35, 80, 60, 14, "Young green jackfruit simmered into something so meaty carnivores file complaints.", ""],
+["Ambul Thiyal", "SE Asia & Islands", 55, 5, 10, 85, 10, 70, 40, 80, 45, 11, "Sour dry fish curry blackened with goraka — a pre-refrigeration trick that became a delicacy.", ""],
+["Opor Ayam", "SE Asia & Islands", 25, 80, 30, 20, 60, 85, 50, 85, 50, 15, "Indonesia's pale, gentle coconut chicken — the Lebaran feast's calm centre.", ""],
+["Gulai Kambing", "SE Asia & Islands", 55, 70, 25, 30, 70, 80, 45, 85, 90, 18, "Goat in a golden, spice-thick coconut gravy — Padang's answer to a cold heart.", ""],
+["Sayur Lodeh", "SE Asia & Islands", 30, 65, 25, 25, 80, 80, 40, 85, 40, 12, "A coconut vegetable curry that turns whatever's in the fridge into a Javanese comfort.", ""],
+["Asam Laksa", "SE Asia & Islands", 60, 0, 30, 85, 90, 72, 60, 40, 60, 12, "Penang's sour mackerel laksa — tamarind-sharp, coconut-free, and a personal rebuttal to the creamy kind.", ""],
+["Kari Debal", "SE Asia & Islands", 85, 20, 20, 65, 50, 72, 35, 80, 60, 16, "The Kristang 'Devil's Curry' — a Eurasian Boxing-Day blaze of vinegar, mustard, and leftover heat.", ""],
+["Curry Kapitan", "SE Asia & Islands", 50, 60, 30, 45, 55, 80, 45, 80, 60, 16, "Nyonya chicken curry with candlenut and a squeeze of lime — named for a sea captain who allegedly only ate this.", ""],
+["Singapore Fish Head Curry", "SE Asia & Islands", 65, 45, 20, 65, 75, 78, 55, 80, 50, 15, "South-Indian fire meets a Chinese love of fish heads — Singapore's great culinary handshake, eyeballs included.", ""],
+["Cà Ri Gà", "SE Asia & Islands", 35, 65, 40, 20, 70, 82, 50, 55, 50, 12, "Vietnamese chicken curry, lemongrass-scented and sweet-potato-soft, eaten with a baguette the French left behind.", ""],
+["Samlor Kari", "SE Asia & Islands", 35, 70, 45, 25, 70, 82, 45, 60, 50, 13, "Cambodia's mild red coconut curry, also served with bread — gentle, fragrant, and quietly confident.", ""],
+["Or Lam", "SE Asia & Islands", 55, 0, 15, 30, 75, 75, 30, 60, 60, 12, "Luang Prabang's herbal stew-curry, numbed and warmed by sakhan pepper-wood — Laos in a clay pot.", ""],
+["Bicol Express", "SE Asia & Islands", 85, 70, 20, 20, 45, 80, 50, 90, 40, 9, "Pork, coconut milk, and a reckless quantity of chillies — named after a train, paced like one too.", ""],
+
+// ---- East Asia (expanded) ----
+["Curry Udon", "East Asia", 25, 35, 55, 10, 80, 90, 65, 20, 30, 8, "Japanese curry loosened with dashi and poured over fat udon — the world's most slurpable curry.", ""],
+["Sapporo Soup Curry", "East Asia", 45, 20, 35, 25, 95, 85, 50, 70, 90, 16, "Hokkaido's thin, spiced curry-soup with a whole chicken leg and towers of vegetables standing proud.", ""],
+["Japanese Keema Curry", "East Asia", 30, 20, 50, 20, 25, 85, 55, 85, 40, 10, "Dry minced-meat curry over rice, often crowned with a soft egg — weeknight Japan at its kindest.", ""],
+["Curry Fish Balls", "East Asia", 45, 30, 45, 15, 60, 80, 55, 5, 30, 8, "Hong Kong's skewered street snack, bobbing in sweet curry sauce on every corner after school.", ""],
+["Macanese African Chicken", "East Asia", 45, 60, 30, 25, 35, 80, 40, 60, 70, 14, "Portugal sailed coconut, chilli, and peanut from Africa to Macau and baked them onto a chicken — a four-continent curry.", ""],
+["Taiwanese Curry Rice", "East Asia", 20, 35, 60, 10, 50, 88, 50, 90, 40, 8, "Japanese-style curry, sweetened and potato-heavy, that became a Taiwanese lunchbox institution.", ""],
+["HK Curry Beef Brisket", "East Asia", 40, 35, 40, 20, 65, 85, 55, 70, 120, 11, "Tendon-and-brisket in a sweet curry gravy — the cha-chaan-teng dish that demands extra rice.", ""],
+
+// ---- Persia, Arabia & Africa ----
+["Khoresh Gheimeh", "Persia, Arabia & Africa", 25, 10, 20, 55, 65, 82, 40, 90, 90, 11, "Persian split-pea and lamb stew, soured with dried lime and crowned with shoestring fries — yes, on top.", ""],
+["Ghormeh Sabzi", "Persia, Arabia & Africa", 20, 5, 10, 65, 65, 88, 50, 90, 180, 10, "Iran's beloved herb stew — fenugreek, kidney beans, and dried lime simmered until almost black. The national hug.", ""],
+["Fesenjan", "Persia, Arabia & Africa", 15, 30, 55, 70, 55, 82, 45, 90, 120, 9, "Duck or chicken in a pomegranate-walnut sauce so sweet-sour and dark it tastes medieval — because it is.", ""],
+["Saltah", "Persia, Arabia & Africa", 40, 15, 10, 30, 70, 80, 35, 50, 60, 12, "Yemen's bubbling stone-pot stew, capped with a green fenugreek froth called hilbeh — eaten the instant it stops boiling.", ""],
+["Fahsa", "Persia, Arabia & Africa", 45, 10, 10, 25, 65, 80, 30, 55, 90, 12, "Shredded lamb in a clay pot, whipped with hilbeh and served still erupting — Yemen does not believe in lukewarm.", ""],
+["Bamia", "Persia, Arabia & Africa", 35, 5, 15, 45, 70, 80, 45, 80, 75, 9, "Okra and lamb stewed in garlicky tomato — the Iraqi-Egyptian comfort that proves okra's worth to the skeptics.", ""],
+["Molokhia", "Persia, Arabia & Africa", 30, 5, 10, 30, 80, 82, 45, 80, 45, 7, "Jute leaves cooked into a green, garlicky, faintly slippery stew Egyptians would defend with their lives.", ""],
+["Doro Wat", "Persia, Arabia & Africa", 75, 10, 15, 35, 55, 85, 55, 5, 150, 18, "Ethiopia's berbere-red chicken stew with a whole boiled egg, scooped up with injera — the Sunday and the celebration.", ""],
+["Misir Wat", "Persia, Arabia & Africa", 70, 10, 15, 30, 60, 82, 45, 5, 60, 14, "Red lentils stewed in berbere and onions melted to nothing — Ethiopia's vegan firework, fasting-day approved.", ""],
+["Alicha", "Persia, Arabia & Africa", 15, 15, 25, 20, 60, 80, 35, 5, 60, 9, "The mild, turmeric-gold Ethiopian stew for days when berbere feels like too much commitment.", ""],
+["Somali Suqaar", "Persia, Arabia & Africa", 45, 10, 15, 25, 40, 80, 30, 70, 40, 13, "Diced meat sautéed with xawaash spice and peppers — the quick Somali curry that flexes the old spice routes.", ""],
+["Kuku Paka", "Persia, Arabia & Africa", 40, 70, 20, 35, 60, 82, 40, 75, 50, 12, "Swahili-coast chicken grilled, then simmered in coconut and lime — East Africa where India meets the Indian Ocean.", ""],
+["Zanzibar Fish Curry", "Persia, Arabia & Africa", 45, 70, 25, 50, 70, 80, 40, 80, 40, 14, "Spice-island fish in coconut and tamarind — cloves, cardamom, and a port's worth of history in one pot.", ""],
+["Nigerian Curry Chicken", "Persia, Arabia & Africa", 60, 10, 15, 25, 55, 78, 40, 80, 50, 11, "Curry powder, scotch bonnet, and a fistful of thyme — West Africa's brisk, peppery take on the curry pot.", ""],
+["Maafe", "Persia, Arabia & Africa", 35, 40, 30, 30, 70, 85, 45, 80, 90, 10, "Senegal's groundnut stew — peanut butter, tomato, and meat melted into West Africa's answer to massaman.", ""],
+["Afghan Qorma", "Persia, Arabia & Africa", 30, 15, 25, 30, 55, 85, 40, 85, 90, 12, "An onion-and-tomato lamb korma with no cream in sight — Afghanistan's foundation stone, ladled over palaw.", ""],
+
+// ---- Diaspora & Fusion (expanded) ----
+["Balti", "Diaspora & Fusion", 55, 35, 25, 35, 45, 80, 60, 50, 35, 14, "Birmingham's wok-cooked curry, served in the same bowl it's cooked in and mopped up with a naan the size of a pillow.", ""],
+["Jalfrezi", "Diaspora & Fusion", 70, 20, 25, 35, 35, 75, 65, 65, 30, 13, "Peppers, onions, and green chillies stir-fried hot — the curry-house answer to leftover roast.", ""],
+["Pathia", "Diaspora & Fusion", 65, 25, 55, 70, 50, 72, 45, 65, 35, 13, "The curry-house sweet-sour-hot trifecta — Parsi roots, British-Indian wardrobe.", ""],
+["Trini Curry Crab & Dumpling", "Diaspora & Fusion", 60, 50, 15, 30, 60, 80, 45, 30, 60, 12, "Tobago's beach lunch — curried blue crab with chewy flour dumplings and a stack of napkins.", ""],
+["Curry Duck", "Diaspora & Fusion", 70, 25, 15, 35, 50, 80, 40, 70, 90, 13, "Trini-Guyanese 'liming' food — duck curried over a fire while the rum goes around.", ""],
+["Fiji Lamb Curry", "Diaspora & Fusion", 55, 30, 20, 30, 60, 82, 35, 80, 75, 14, "Indo-Fijian curry built on hand-roasted masala — the indenture-era recipe that became a national comfort.", ""],
+["Mauritian Cari Poulet", "Diaspora & Fusion", 45, 20, 20, 35, 50, 80, 40, 75, 50, 13, "Island chicken curry scented with thyme and curry leaves, served with rougaille and a heap of rice.", ""],
+["Country Captain", "Diaspora & Fusion", 30, 25, 40, 35, 45, 80, 35, 80, 60, 11, "A Raj-era curry that sailed to Georgia and became Southern — chicken, currants, and a colonial backstory.", ""],
+["Coronation Chicken", "Diaspora & Fusion", 20, 70, 55, 40, 25, 75, 60, 30, 30, 8, "Cold curried-mayo chicken invented for Elizabeth II's 1953 coronation — the sandwich filling that conquered Britain.", ""],
+["Bobotie", "Diaspora & Fusion", 25, 35, 55, 40, 20, 80, 45, 65, 75, 12, "Cape Malay curried mince baked under an egg custard, studded with raisins and bay — South Africa's sweet-spiced comfort.", ""],
+["Railway Mutton Curry", "Diaspora & Fusion", 50, 30, 20, 40, 70, 80, 45, 75, 90, 14, "Mild, soupy, coconut-tamarind mutton invented to keep first-class Raj passengers from complaining — about the food and the carriage.", ""],
+["Dak Bungalow Curry", "Diaspora & Fusion", 55, 25, 20, 35, 60, 78, 35, 75, 75, 14, "The curry cooked by rest-house caretakers for travelling sahibs — whatever the bungalow had, plus a boiled egg on top.", ""],
+["Surinamese Roti Kip", "Diaspora & Fusion", 45, 25, 25, 25, 45, 82, 40, 20, 60, 13, "Chicken-and-potato masala wrapped in a flaky roti — the Dutch-Caribbean lunch that runs Amsterdam.", ""],
+];
+
+// ---------------- state ----------------
+let metricX = METRICS[0]; // Heat
+let metricY = METRICS[1]; // Creaminess
+const off = new Set();
+const stage = document.getElementById("stage");
+const tip = document.getElementById("tip");
+const TOUCH = matchMedia("(hover: none), (pointer: coarse)").matches;
+
+const songs = SONGS.map((p, i) => ({
+  title: p[0], album: p[1], heat: p[2], cream: p[3], sweet: p[4], tang: p[5], soup: p[6],
+  comfort: p[7], fame: p[8], rice: p[9], cookMin: p[10], spiceCount: p[11], note: p[12], yt: p[13], id: i
+}));
+// cook time & spice count are real values, normalized to 0–100 for plotting
+const norm = (get, k) => {
+  const vs = songs.map(get), lo = Math.min(...vs), hi = Math.max(...vs);
+  songs.forEach(s => s[k] = Math.round((get(s) - lo) / (hi - lo) * 100));
+};
+norm(s => s.spiceCount, "spices");
+// cook time spans 10m to 7h — a log scale separates the weeknight curries from the all-day projects
+const lgc = x => Math.log10(Math.max(1, x));
+const minCook = Math.min(...songs.map(s => s.cookMin)), maxCook = Math.max(...songs.map(s => s.cookMin));
+songs.forEach(s => s.cook = Math.round((lgc(s.cookMin) - lgc(minCook)) / (lgc(maxCook) - lgc(minCook)) * 100));
+const fmtCook = m => m >= 60 ? (m % 60 ? (m / 60).toFixed(1) : m / 60) + "h" : m + "m";
+const disp = (s, m) =>
+  m.k === "cook" ? fmtCook(s.cookMin) : m.k === "spices" ? s.spiceCount + " spices" : s[m.k];
+// real-valued axes: actual numbers at each gridline. Cook time is log-scaled; spice count linear.
+const minSpice = Math.min(...songs.map(s => s.spiceCount)), maxSpice = Math.max(...songs.map(s => s.spiceCount));
+const AXIS = {
+  cook:   { lo: minCook,  hi: maxCook,  log: true,  fmt: v => fmtCook(Math.round(v)) },
+  spices: { lo: minSpice, hi: maxSpice, log: false, fmt: v => Math.round(v) },
+};
+const valueAt = (c, t) => c.log
+  ? Math.pow(10, Math.log10(c.lo) + (t / 100) * (Math.log10(c.hi) - Math.log10(c.lo)))
+  : c.lo + (t / 100) * (c.hi - c.lo);
+const tickLabel = (m, v) => AXIS[m.k] ? AXIS[m.k].fmt(valueAt(AXIS[m.k], v)) : v;
+
+// ---------------- build UI ----------------
+function soloAlbum(name) {
+  const isSolo = !off.has(name) && off.size === Object.keys(ALBUMS).length - 1;
+  off.clear();
+  if (!isSolo) Object.keys(ALBUMS).forEach(n => { if (n !== name) off.add(n); });
+  render(false);
+}
+
+const coversEl = document.getElementById("covers");
+Object.keys(ALBUMS).forEach(name => {
+  const b = document.createElement("button");
+  b.className = "pos-chip";
+  b.textContent = name;
+  b.title = ALBUMS[name].y;
+  b.style.borderColor = ALBUMS[name].c;
+  b.style.color = ALBUMS[name].c;
+  b.dataset.album = name;
+  b.onclick = () => soloAlbum(name);
+  coversEl.appendChild(b);
+});
+
+const metricsXEl = document.getElementById("metricsX");
+const metricsYEl = document.getElementById("metricsY");
+function buildPills(el, axis) {
+  METRICS.forEach(m => {
+    const b = document.createElement("button");
+    b.className = "pill"; b.textContent = m.label;
+    b.dataset.k = m.k;
+    b.onclick = () => {
+      // picking the metric already on the other axis swaps them
+      if (axis === "x") { if (m.k === metricY.k) metricY = metricX; metricX = m; }
+      else { if (m.k === metricX.k) metricX = metricY; metricY = m; }
+      render();
+    };
+    el.appendChild(b);
+  });
+}
+buildPills(metricsXEl, "x");
+buildPills(metricsYEl, "y");
+
+// gridlines (both directions), Y-axis end labels, corner annotations
+for (let v = 0; v <= 100; v += 25) {
+  for (const [cls, tick] of [["gridline", "gridtick"], ["gridlineH", "gridtickY"]]) {
+    const g = document.createElement("div");
+    g.className = cls; g.dataset.v = v;
+    stage.appendChild(g);
+    const t = document.createElement("div");
+    t.className = tick; t.dataset.v = v; t.textContent = v;
+    stage.appendChild(t);
+  }
+}
+const yLabHi = document.createElement("div"); yLabHi.className = "ylab hi"; stage.appendChild(yLabHi);
+const yLabLo = document.createElement("div"); yLabLo.className = "ylab lo"; stage.appendChild(yLabLo);
+const yBlurb = document.createElement("div"); yBlurb.className = "yblurb"; stage.appendChild(yBlurb);
+const xBlurb = document.getElementById("xBlurb");
+const corners = ["tl", "tr", "bl", "br"].map(k => {
+  const c = document.createElement("div");
+  c.className = "corner " + k;
+  stage.appendChild(c);
+  return c;
+});
+
+// dots — each wears its album cover, ringed in era color
+const dotEls = songs.map(s => {
+  const d = document.createElement("div");
+  const a = ALBUMS[s.album];
+  d.className = "dot";
+  if (ART[s.album]) d.style.backgroundImage = `url(${ART[s.album]})`;
+  else d.style.background = a.c;
+  d.style.border = `1.5px solid ${a.c}`;
+  d.style.boxShadow = `0 0 8px ${a.c}55`;
+  d.onmouseenter = () => showTip(d, s);
+  d.onmouseleave = scheduleHideTip;
+  d.onclick = () => TOUCH ? showTip(d, s) : window.open(s.yt ? "https://www.youtube.com/watch?v=" + s.yt : "https://www.youtube.com/results?search_query=" + encodeURIComponent(s.title + " recipe"), "_blank");
+  stage.appendChild(d);
+  return d;
+});
+
+// labels for extremes
+const labelPool = Array.from({length: 6}, () => {
+  const l = document.createElement("div");
+  l.className = "dot-label";
+  stage.appendChild(l);
+  return l;
+});
+
+
+let tipTimer = null;
+function hideTip() { tip.style.opacity = 0; tip.style.pointerEvents = "none"; }
+function scheduleHideTip() { tipTimer = setTimeout(hideTip, 250); }
+tip.onmouseenter = () => clearTimeout(tipTimer);
+tip.onmouseleave = hideTip;
+
+function showTip(el, s) {
+  clearTimeout(tipTimer);
+  const a = ALBUMS[s.album];
+  const cover = ART[s.album] ? `<img class="t-cover" src="${ART[s.album]}">` : "";
+  tip.innerHTML = `
+    <div class="t-head">${cover}
+      <div>
+        <div class="t-title">${s.title}</div>
+        <div class="t-album" style="color:${a.c}">${s.album} · ${a.y}</div>
+      </div>
+    </div>
+    <div class="t-metric">→ ${metricX.label}: <span class="t-score">${disp(s, metricX)}</span> &nbsp;·&nbsp; ↑ ${metricY.label}: <span class="t-score">${disp(s, metricY)}</span></div>
+    <div class="t-note">${s.note}</div>
+    <div class="t-actions">
+      <a class="t-play yt" href="${s.yt ? "https://www.youtube.com/watch?v=" + s.yt : "https://www.youtube.com/results?search_query=" + encodeURIComponent(s.title + " recipe")}" target="_blank">▶ Recipe video</a>
+      <a class="t-play bref" href="https://www.google.com/search?q=${encodeURIComponent(s.title + " recipe")}" target="_blank">🔍 Recipes</a>
+    </div>`;
+  tip.style.opacity = 1;
+  tip.style.pointerEvents = "auto";
+  const r = el.getBoundingClientRect(), tw = tip.offsetWidth, th = tip.offsetHeight, pad = 10;
+  let x = r.right + pad;
+  if (x + tw > innerWidth - 8) x = r.left - tw - pad;
+  tip.style.left = Math.max(8, x) + "px";
+  tip.style.top = Math.max(8, Math.min(r.top - 8, innerHeight - th - 8)) + "px";
+}
+
+// ---------------- layout & render ----------------
+function layout() {
+  const W = stage.clientWidth, H = stage.clientHeight;
+  const mobile = matchMedia("(max-width: 700px)").matches;
+  const padL = mobile ? 52 : 80, padR = mobile ? 14 : 20, padT = 26, padB = 30;
+  const xOf = v => padL + (v / 100) * (W - padL - padR);
+  const yOf = v => H - padB - (v / 100) * (H - padT - padB);
+
+  stage.querySelectorAll(".gridline").forEach(g => g.style.left = xOf(+g.dataset.v) + "px");
+  stage.querySelectorAll(".gridtick").forEach(t => t.style.left = xOf(+t.dataset.v) + "px");
+  stage.querySelectorAll(".gridlineH").forEach(g => g.style.top = yOf(+g.dataset.v) + "px");
+  stage.querySelectorAll(".gridtickY").forEach(t => t.style.top = yOf(+t.dataset.v) + "px");
+
+  // exact ties fan out on a small golden-angle spiral so stacks stay readable
+  const seen = new Map();
+  return songs.map(s => {
+    const key = s[metricX.k] + "," + s[metricY.k];
+    const n = seen.get(key) || 0;
+    seen.set(key, n + 1);
+    const rad = n ? 6 * Math.sqrt(n) : 0, ang = n * 2.39996;
+    return { x: xOf(s[metricX.k]) + rad * Math.cos(ang), y: yOf(s[metricY.k]) + rad * Math.sin(ang) };
+  });
+}
+
+function render(relayout = true) {
+  metricsXEl.querySelectorAll(".pill").forEach(p => p.classList.toggle("active", p.dataset.k === metricX.k));
+  metricsYEl.querySelectorAll(".pill").forEach(p => p.classList.toggle("activeY", p.dataset.k === metricY.k));
+  xBlurb.textContent = metricX.blurb;
+  yBlurb.textContent = metricY.blurb;
+  document.getElementById("xLoLab").textContent = metricX.lo;
+  document.getElementById("xHiLab").textContent = metricX.hi;
+  // counter-rotate the leading emoji so it stays upright in vertical text
+  const upright = t => { const i = t.indexOf(" "); return `<span class="up">${t.slice(0, i)}</span>${t.slice(i)}`; };
+  yLabHi.innerHTML = upright(metricY.hi);
+  yLabLo.innerHTML = upright(metricY.lo);
+  corners[0].textContent = metricX.lo + " · " + metricY.hi;
+  corners[1].textContent = metricX.hi + " · " + metricY.hi;
+  corners[2].textContent = metricX.lo + " · " + metricY.lo;
+  corners[3].textContent = metricX.hi + " · " + metricY.lo;
+  coversEl.querySelectorAll("[data-album]").forEach(c =>
+    c.classList.toggle("solo", !off.has(c.dataset.album) && off.size === Object.keys(ALBUMS).length - 1));
+  // number the axes with real values (cook time / spice count)
+  stage.querySelectorAll(".gridtick").forEach(t => t.textContent = tickLabel(metricX, +t.dataset.v));
+  stage.querySelectorAll(".gridtickY").forEach(t => t.textContent = tickLabel(metricY, +t.dataset.v));
+
+  const pos = layout();
+  songs.forEach((s, i) => {
+    dotEls[i].style.left = pos[i].x + "px";
+    dotEls[i].style.top = pos[i].y + "px";
+    dotEls[i].classList.toggle("dim", off.has(s.album));
+  });
+
+  // label the extremes: ends of each axis plus the two diagonals
+  const vis = songs.filter(s => !off.has(s.album));
+  const pick = fn => vis.length ? vis.reduce((a, b) => fn(b) > fn(a) ? b : a) : null;
+  const tagged = [...new Set([
+    pick(s => s[metricX.k]), pick(s => -s[metricX.k]),
+    pick(s => s[metricY.k]), pick(s => -s[metricY.k]),
+    pick(s => s[metricX.k] + s[metricY.k]), pick(s => -s[metricX.k] - s[metricY.k]),
+  ].filter(Boolean))];
+  labelPool.forEach((l, i) => {
+    const s = tagged[i];
+    if (!s) { l.style.opacity = 0; return; }
+    l.textContent = s.title;
+    l.style.left = pos[s.id].x + "px";
+    l.style.top = pos[s.id].y + "px";
+    l.style.opacity = 1;
+  });
+
+  fillSide(vis);
+}
+
+function fillSide(vis) {
+  const block = (m, arrow, cls) => {
+    const top = [...vis].sort((a, b) => b[m.k] - a[m.k]).slice(0, 7);
+    return `<div><div class="sb-cap ${cls}">${arrow} ${m.label} <span>· top 7</span></div>` +
+      top.map(s => {
+        const a = ALBUMS[s.album];
+        const cv = ART[s.album] ? `<img src="${ART[s.album]}">` : `<span class="sb-dot" style="background:${a.c}"></span>`;
+        return `<div class="sb-row" title="${s.title} (${s.album})">${cv}<span class="sb-nm">${s.title}</span><span class="sb-v">${disp(s, m)}</span></div>`;
+      }).join("") + `</div>`;
+  };
+  document.getElementById("sideBoards").innerHTML = block(metricY, "↑", "y") + block(metricX, "→", "x");
+}
+
+// ---------------- tabs ----------------
+document.querySelectorAll(".tab").forEach(t => {
+  t.onclick = () => {
+    document.querySelectorAll(".tab").forEach(x => x.classList.toggle("active", x === t));
+    document.getElementById("page-spectrum").classList.toggle("hidden", t.dataset.page !== "spectrum");
+    document.getElementById("page-aura").classList.toggle("hidden", t.dataset.page !== "aura");
+    if (t.dataset.page === "spectrum") render(false); // re-measure after being hidden
+  };
+});
+
+// ---------------- aura quiz ----------------
+const THEMES = [
+  { name: "Heat Seeker",       emoji: "🔥", color: "#ff6b6b", v: s => s.heat },
+  { name: "Coconut Cult",      emoji: "🥥", color: "#cfcabd", v: s => s.cream },
+  { name: "Sweet Tooth",       emoji: "🍯", color: "#ffd166", v: s => s.sweet },
+  { name: "Tang Gang",         emoji: "🍋", color: "#d4e157", v: s => s.tang },
+  { name: "Broth Believer",    emoji: "🍜", color: "#5dade2", v: s => s.soup },
+  { name: "Comfort Core",      emoji: "🛋️", color: "#f48fb1", v: s => s.comfort },
+  { name: "Deep Cut Diner",    emoji: "💎", color: "#9fd8ff", v: s => 100 - s.fame },
+  { name: "Rice Loyalist",     emoji: "🍚", color: "#efe9d6", v: s => s.rice },
+  { name: "Slow Food Scholar", emoji: "⏳", color: "#c97a3d", v: s => s.cook },
+  { name: "Spice Librarian",   emoji: "🧂", color: "#a05cc8", v: s => s.spices },
+];
+const picks = [];
+const searchEl = document.getElementById("songSearch");
+const suggestEl = document.getElementById("suggest");
+const chipsEl = document.getElementById("chips");
+const auraBtn = document.getElementById("auraBtn");
+
+function refreshSuggest() {
+  const q = searchEl.value.trim().toLowerCase();
+  if (picks.length >= 5) { suggestEl.style.display = "none"; return; }
+  const hits = q
+    ? songs.filter(s => !picks.includes(s) &&
+        (s.title.toLowerCase().includes(q) || s.album.toLowerCase().includes(q)))
+    : [...songs].filter(s => !picks.includes(s)).sort((a, b) => b.fame - a.fame).slice(0, 5);
+  suggestEl.style.display = hits.length ? "block" : "none";
+  suggestEl.innerHTML = hits.map(s => {
+    const a = ALBUMS[s.album];
+    const cv = ART[s.album] ? `<img src="${ART[s.album]}">` : `<span class="cv-fallback" style="background:${a.c}"></span>`;
+    return `<div class="sg" data-id="${s.id}">${cv}<span>${s.title}</span><span class="sg-al" style="color:${a.c}">${s.album}</span></div>`;
+  }).join("");
+  suggestEl.querySelectorAll(".sg").forEach(el => el.onclick = () => addPick(songs[+el.dataset.id], true));
+}
+function addPick(s, fromSearch) {
+  if (picks.length >= 5 || picks.includes(s)) return;
+  picks.push(s);
+  searchEl.value = "";
+  refreshSuggest();
+  drawChips();
+  if (fromSearch && picks.length < 5) searchEl.focus();
+}
+function removePick(s) {
+  picks.splice(picks.indexOf(s), 1);
+  drawChips();
+}
+function drawChips() {
+  chipsEl.innerHTML = picks.map(s => {
+    const a = ALBUMS[s.album];
+    const cv = ART[s.album] ? `<img src="${ART[s.album]}">` : "";
+    return `<div class="chip" style="border-color:${a.c}88">${cv}${s.title}<span class="x" data-id="${s.id}">✕</span></div>`;
+  }).join("");
+  chipsEl.querySelectorAll(".x").forEach(el => el.onclick = () => removePick(songs[+el.dataset.id]));
+  auraBtn.disabled = picks.length < 3;
+  auraBtn.textContent = picks.length >= 3 ? "🍛 Read my order" : `🍛 Read my order (${picks.length}/3 minimum)`;
+  catEl.querySelectorAll(".cat-song").forEach(b => {
+    const s = songs[+b.dataset.id];
+    b.classList.toggle("picked", picks.includes(s));
+    b.classList.toggle("maxed", picks.length >= 5 && !picks.includes(s));
+  });
+}
+searchEl.addEventListener("input", refreshSuggest);
+searchEl.addEventListener("focus", refreshSuggest);
+searchEl.addEventListener("keydown", e => {
+  if (e.key === "Enter") {
+    const first = suggestEl.querySelector(".sg");
+    if (first) addPick(songs[+first.dataset.id], true);
+  }
+});
+document.addEventListener("click", e => {
+  if (!e.target.closest(".picker")) suggestEl.style.display = "none";
+  if (!e.target.closest(".dot") && !e.target.closest("#tip")) hideTip();
+});
+
+// full catalogue browser at the bottom of the aura page — click to toggle picks
+const catEl = document.getElementById("catalogue");
+catEl.innerHTML = `<div class="cat-head">…or browse the whole menu</div>` +
+  Object.keys(ALBUMS).map(album => {
+    const list = songs.filter(s => s.album === album);
+    if (!list.length) return "";
+    const cover = ART[album] ? `<img src="${ART[album]}">` : "";
+    return `<div class="cat-era" style="color:${ALBUMS[album].c}">${cover}${album} <span>${ALBUMS[album].y}</span></div>
+      <div class="cat-songs">` +
+      list.map(s => `<button class="cat-song" data-id="${s.id}">${s.title}</button>`).join("") +
+      `</div>`;
+  }).join("");
+catEl.querySelectorAll(".cat-song").forEach(b => b.onclick = () => {
+  const s = songs[+b.dataset.id];
+  picks.includes(s) ? removePick(s) : addPick(s);
+});
+
+drawChips();
+
+const ERA_READINGS = {
+  "North India": "Your home base is the North Indian canon: ghee, cream, and gravies that took an empire to perfect. You believe richness is a virtue and naan is a utensil.",
+  "South India": "Your home base is South India: tamarind, curry leaves, and the confidence to serve fire as breakfast. You like your comfort with acid and your rice mandatory.",
+  "Thailand": "Your home base is Thailand: balance as a religion — hot, sweet, sour, salty, all at once, all on a weeknight. Speed and aromatics over slow brooding.",
+  "SE Asia & Islands": "Your home base is the archipelago: lemongrass, galangal, and patience. You believe the best things reduce slowly and the sauce should earn its thickness.",
+  "East Asia": "Your home base is East Asian comfort curry: mild, sweet, engineered for the soul. You do not need to be impressed; you need to be okay. The roux understands.",
+  "Diaspora & Fusion": "Your home base is the diaspora: curry that crossed oceans and adapted on arrival. Authenticity debates bore you — deliciousness is the only passport that matters.",
+};
+const THEME_OPENERS = {
+  "Heat Seeker": [
+    "You order the thing the menu warns you about. Endorphins are a food group, and mild is a personality flaw you have chosen not to have.",
+    "Your spice tolerance is a long-term construction project and you are the proud foreman. The waiter's raised eyebrow is your appetizer.",
+  ],
+  "Coconut Cult": [
+    "You believe most problems can be solved with coconut milk, and the evidence is on your side. Velvet is a texture and a lifestyle.",
+    "Richness does not scare you; thinness does. If a sauce cannot coat a spoon, what exactly is it doing there?",
+  ],
+  "Sweet Tooth": [
+    "You like a curry that has made peace with sugar. Comfort first, machismo never — the Japanese navy figured this out a century ago and so have you.",
+    "You season toward gentleness on purpose. Sweetness is not a compromise; it is a decision about what dinner is for.",
+  ],
+  "Tang Gang": [
+    "Tamarind, vinegar, lime — you want acid doing structural work. A curry without brightness is just a stew with ambitions.",
+    "Your palate runs on contrast. The pucker is the point; everything else is backdrop.",
+  ],
+  "Broth Believer": [
+    "You want your curry pourable, slurpable, practically weather. Dryness is for deserts; you came for the monsoon.",
+    "Soup-adjacent is your home territory. If it cannot be ladled, you are merely tolerating it.",
+  ],
+  "Comfort Core": [
+    "You eat to be held. Your favorite curries are blankets with seasoning, and you have strong opinions about which bowl is the good bowl.",
+    "Novelty is fine for other people. You have a usual order, a usual spot, and a usual feeling — and all three are excellent.",
+  ],
+  "Deep Cut Diner": [
+    "You order the regional dish the menu barely explains. Fame is a seasoning you can taste and you prefer your food without it.",
+    "Your favorite curry has no Wikipedia page, and you like it that way. Twelve people know; you are their president.",
+  ],
+  "Rice Loyalist": [
+    "Rice is not a side; rice is the venue. Everything else is a guest performing at rice's invitation.",
+    "You judge a curry by how it behaves over rice, because that is where curries are honest.",
+  ],
+  "Slow Food Scholar": [
+    "You believe time is an ingredient. Four-hour reductions, overnight dals — anything worth eating has a backstory measured in hours.",
+    "Your love language is a pot that has been on the stove since morning. Shortcuts are for people who have not tasted the difference.",
+  ],
+  "Spice Librarian": [
+    "Your spice rack has a filing system and possibly a waitlist. You can taste the difference between toasted and untoasted cumin from across the room.",
+    "Complexity is the point. Twenty-spice masalas are not showing off — they are literature, and you read closely.",
+  ],
+};
+const TODO_BANK = [
+  "Toast whole spices in a dry pan tonight until the kitchen smells like a decision. Then cook anything.",
+  "Order the dish you cannot pronounce this week. Point at the menu with confidence.",
+  "Make rice properly — rinsed, rested, fluffed. Notice the difference. Apologize to past rice.",
+  "Buy one spice you have never used. Smell it daily until inspiration strikes.",
+  "Cook something low and slow on Sunday. Leave the lid on. Trust the process.",
+  "Eat one meal this week with your hands. It tastes different. This is documented.",
+  "Find the closest restaurant you have never tried and order their special, no questions.",
+  "Squeeze lime over something that did not ask for it. Report the improvement.",
+  "Make double and give half away. Curry diplomacy is real diplomacy.",
+  "Visit an international grocery and leave with exactly three things you did not plan on.",
+  "Tell the chef it was excellent, specifically. Specificity is the tip they remember.",
+  "Upgrade your rice-to-curry ratio philosophy. You know your current one is wrong.",
+  "Keep the leftover curry until tomorrow. It is better tomorrow. It is always better tomorrow.",
+  "Learn one curry well enough to cook it without a recipe. That one is yours forever.",
+  "Add the extra clove of garlic. The recipe was being polite.",
+  "Invite someone over on a weeknight and feed them like it is a weekend.",
+];
+function buildStory(picks, scored, era) {
+  const avg = k => picks.reduce((a, s) => a + s[k], 0) / picks.length;
+  // everything below is seeded by the picks: same order, same reading
+  let seed = picks.reduce((a, s) => (a * 31 + s.id + 7) >>> 0, picks.length);
+  const rand = () => (seed = (seed * 1664525 + 1013904223) >>> 0) / 4294967296;
+  const choose = arr => arr[Math.floor(rand() * arr.length)];
+  const draw = (pool, n) => {
+    const p = [...pool], out = [];
+    while (out.length < n && p.length) out.push(p.splice(Math.floor(rand() * p.length), 1)[0]);
+    return out;
+  };
+
+  const byHeat = [...picks].sort((a, b) => a.heat - b.heat);
+  const mildest = byHeat[0], hottest = byHeat[byHeat.length - 1];
+  const byFame = [...picks].sort((a, b) => a.fame - b.fame);
+  const obscure = byFame[0], famous = byFame[byFame.length - 1];
+  const bySlow = [...picks].sort((a, b) => b.cookMin - a.cookMin);
+  const slowest = bySlow[0];
+  const regionCounts = {};
+  picks.forEach(s => regionCounts[s.album] = (regionCounts[s.album] || 0) + 1);
+  const regionCount = Object.keys(regionCounts).length;
+  const maxRegion = Object.entries(regionCounts).sort((a, b) => b[1] - a[1])[0];
+
+  const obs = [];
+  if (regionCount >= 4) obs.push(`You pulled from ${regionCount} different curry traditions without blinking — your passport is a palate, and it has stamps.`);
+  if (maxRegion[1] >= 3) obs.push(`${maxRegion[1]} of your picks come from ${maxRegion[0]}. That is not a preference; that is citizenship.`);
+  if (hottest.heat >= 80 && mildest.heat <= 25) obs.push(`${hottest.title} and ${mildest.title} on the same order: your spice tolerance has moods, and you honor all of them.`);
+  if (famous.fame >= 90 && obscure.fame <= 50) obs.push(`${famous.title} next to ${obscure.title} — you love the global headliner and the regional secret with equal sincerity. Menus fear you.`);
+  if (avg("cookMin") >= 110) obs.push(`Your average pick simmers for ${Math.round(avg("cookMin"))} minutes. You are not hungry; you are devoted.`);
+  if (avg("cookMin") <= 35) obs.push("Everything you picked is on the table in under an hour. Weeknight realism is its own cuisine, and you are fluent.");
+  if (!obs.length) obs.push("Your picks cluster tight — you know exactly what you want in a pot, and consistency like that is a recipe in itself.");
+  const observed = draw(obs, 2).join(" ");
+
+  const traits = [
+    [avg("heat") >= 60, "You ask 'how spicy can you make it' and mean it as a challenge, not a question."],
+    [avg("heat") <= 25, "You know mild does not mean boring — it means the other flavors get to speak."],
+    [avg("cream") >= 65, "Coconut milk and cream are load-bearing elements of your happiness."],
+    [avg("soup") >= 65, "You believe the sauce-to-solid ratio should favor the sauce, always."],
+    [avg("soup") <= 30, "You like your curries reduced until they mean it. Watery gravy is broken trust."],
+    [avg("comfort") >= 80, "You eat for the feeling afterward — the deep, blanketed okay-ness."],
+    [avg("fame") <= 55, "You treat menus like maps and head straight for the unmarked roads."],
+    [avg("rice") >= 75, "Rice is the venue, the audience, and the closing act."],
+    [avg("rice") <= 35, "Noodles, bread, a hollowed loaf — you accept many vessels. Heresy, technically. Delicious, definitely."],
+    [avg("spiceCount") >= 14, "Your ideal recipe has an ingredient list that scrolls. Depth over speed, every time."],
+    [avg("tang") >= 50, "You want acid in the architecture — tamarind, lime, vinegar doing real work."],
+    [avg("sweet") >= 50, "You have made peace with sweetness in savory places, and you are happier for it."],
+  ];
+  const satisfied = traits.filter(x => x[0]).map(x => x[1]);
+  const light = satisfied.length ? draw(satisfied, 3) :
+    ["You are suspiciously balanced — a palate with no blind spots and no obsessions. Rare, and a little unnerving."];
+
+  const H = avg("heat"), Co = avg("comfort"), F = avg("fame"), S = avg("spiceCount");
+  const want = choose(
+    H >= 60 ? [
+      "What you actually want: the burn that builds, the sweat that means it is working, and somebody across the table who can keep up.",
+      "What you actually want: to feel something at dinner. The endorphins are the point; the rice is the safety net.",
+    ] : Co >= 80 ? [
+      "What you actually want: the bowl that makes the day stop mattering. Warmth, weight, and nobody asking you to share.",
+      "What you actually want: dinner as a hug with a lid on it. You will take seconds, and the question was rhetorical.",
+    ] : F <= 55 ? [
+      "What you actually want: to be the person who introduces everyone to the dish they will not stop talking about. Discovery is your love language.",
+      "What you actually want: the back page of the menu, the handwritten special, the thing the kitchen makes for itself.",
+    ] : S >= 14 ? [
+      "What you actually want: depth. Twenty spices in conversation, a sauce with a backstory, and the patience rewarded.",
+      "What you actually want: complexity you can taste in layers — first the heat, then the sweet, then the thing you cannot name. Especially that one.",
+    ] : [
+      "What you actually want: a table full of different pots and permission to try all of them. Commitment is for entrées; you are a thali person.",
+      "What you actually want: balance — heat with sweetness, richness with acid, dinner with leftovers. The whole equation.",
+    ]);
+
+  const prophecy = choose([
+    `This week, someone will ask for your ${famous.title} opinion. You have one. Deliver it with the confidence of a head chef.`,
+    `You will smell ${hottest.title === mildest.title ? "curry" : hottest.title} from an open window this week and change your dinner plans on the spot. Obey the window.`,
+    `The leftover ${slowest.title} will taste better tomorrow. It always does. Plan for this.`,
+    `A menu will offer you a choice between safe and ${obscure.title}. You already know which one you came for.`,
+  ]);
+
+  const todos = draw([...TODO_BANK,
+    `Cook or order ${obscure.title} this week and make one person try it. Witnesses matter.`,
+    `Block out an afternoon for ${slowest.title}. The hours are the recipe.`,
+    `Have ${famous.title} the proper way once this week — no laptop, no phone, full attention.`,
+  ], 3);
+  const nextWeekday = new Date(Date.now() + 6 * 864e5).toLocaleDateString("en-US", { weekday: "long" });
+  return `
+    <div class="aura-story">
+      <div class="as-head">🍛 Your Order, Read</div>
+      <div class="as-signs">☀️ Sun in ${scored[0].name} · 🌙 Moon in ${scored[1].name} · ⬆️ ${scored[2].name} Rising</div>
+      <p>${choose(THEME_OPENERS[scored[0].name])}</p>
+      <p>${ERA_READINGS[era]}</p>
+      <p>${observed}</p>
+      <p>${light.join(" ")}</p>
+      <p>${want}</p>
+      <p class="as-prophecy">${prophecy}</p>
+      <div class="as-sub">Do these three things before next ${nextWeekday}</div>
+      <ul class="as-todo">${todos.map(t => `<li>${t}</li>`).join("")}</ul>
+    </div>`;
+}
+
+auraBtn.onclick = () => {
+  const res = document.getElementById("auraResult");
+  auraBtn.disabled = true;
+  res.innerHTML = `<div class="aura-loading"><div class="orb"></div><div class="al-text">Figuring out your groove…</div></div>`;
+  res.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  const msgs = ["Toasting the spices…", "Letting it simmer…", "Consulting the aunties…"];
+  let mi = 0;
+  const cycle = setInterval(() => { res.querySelector(".al-text").textContent = msgs[++mi % msgs.length]; }, 1000);
+  setTimeout(() => { clearInterval(cycle); drawChips(); revealAura(); }, 3000);
+};
+
+function revealAura() {
+  // costar-style: one dominant sign (70%+) and two minor placements
+  const scored = THEMES
+    .map(t => ({ ...t, raw: picks.reduce((sum, s) => sum + t.v(s), 0) / picks.length }))
+    .sort((a, b) => b.raw - a.raw).slice(0, 3);
+  const [r1, r2, r3] = scored.map(t => t.raw);
+  scored[0].pct = 70 + Math.min(15, Math.round((r1 - r2) / Math.max(r1, 1) * 45));
+  const rest = 100 - scored[0].pct;
+  scored[1].pct = Math.round(rest * r2 / Math.max(r2 + r3, 1));
+  scored[2].pct = rest - scored[1].pct;
+
+  const tally = {};
+  picks.forEach(s => tally[s.album] = (tally[s.album] || 0) + 1);
+  const era = Object.entries(tally).sort((a, b) => b[1] - a[1])[0][0];
+
+  const Cr = 84, C = 2 * Math.PI * Cr;
+  let offset = 0;
+  const arcs = scored.map(t => {
+    const seg = t.pct / 100 * C;
+    const segLen = Math.max(seg - 3, 0.5);
+    const el = `<circle cx="110" cy="110" r="${Cr}" fill="none" stroke="${t.color}" stroke-width="26"
+      stroke-dasharray="0 ${C}" data-dash="${segLen} ${C - segLen}"
+      stroke-dashoffset="${-offset}" transform="rotate(-90 110 110)" stroke-linecap="round"/>`;
+    offset += seg;
+    return el;
+  }).join("");
+
+  document.getElementById("auraResult").innerHTML = `
+    <div class="aura-card">
+      <div class="aura-headline">You are <b style="color:${scored[0].color}">${scored[0].pct}% ${scored[0].name} ${scored[0].emoji}</b>
+        — and your home tradition is <b style="color:${ALBUMS[era].c}">${era}</b></div>
+      <div class="aura-flex">
+        <div class="donut-wrap">
+          <svg width="220" height="220">${arcs}</svg>
+          <div class="donut-center">${scored[0].emoji}<small>${scored[0].name}</small></div>
+        </div>
+        <div class="aura-bars">
+          ${scored.map(t => `
+            <div class="aura-row">
+              <span class="ar-emoji">${t.emoji}</span>
+              <span class="ar-name">${t.name}</span>
+              <div class="ar-track"><div class="ar-fill" data-w="${t.pct}" style="background:${t.color}"></div></div>
+              <span class="ar-pct" style="color:${t.color}">${t.pct}%</span>
+            </div>`).join("")}
+        </div>
+      </div>
+      ${buildStory(picks, scored, era)}
+      <div class="aura-songs">${picks.map(s => ART[s.album] ? `<img src="${ART[s.album]}" title="${s.title}">` : "").join("")}
+        <span>based on: ${picks.map(s => s.title).join(" · ")}</span></div>
+    </div>`;
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    document.querySelectorAll("#auraResult circle").forEach(c => c.setAttribute("stroke-dasharray", c.dataset.dash));
+    document.querySelectorAll("#auraResult .ar-fill").forEach(f => f.style.width = f.dataset.w + "%");
+  }));
+  document.getElementById("auraResult").scrollIntoView({ behavior: "smooth", block: "nearest" });
+}
+
+window.addEventListener("resize", () => render(false));
+render();
+</script>
+</body>
+</html>

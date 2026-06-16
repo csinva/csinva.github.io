@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<title>The Swiftie Deep-Dive — every era, every feeling</title>
+<link rel="stylesheet" href="assets/deepdive.css">
+</head>
+<body>
+<a class="home-btn" href="index.html" title="Back to deep-dive">⌂ Home</a>
+<div class="made-by">Made with love by <a href="https://x.com/csinva" target="_blank" rel="noopener">@csinva</a></div>
+<div class="wrap">
+  <header>
+    <h1>The Swiftie Deep-Dive</h1>
+    <div class="sub"><b>252 songs</b>. Pick one metric per axis, filter by album, and hover by dot for song details.</div>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab active" data-page="spectrum">🌌 The Deep-Dive</button>
+    <button class="tab" data-page="aura">🔮 Your Aura</button>
+  </nav>
+
+  <div class="page" id="page-spectrum">
+  <div class="covers" id="covers"></div>
+  <div class="covers-hint">click a cover to solo that era · click again to bring everyone back</div>
+
+  <div class="chart-zone">
+    <div class="axis-picker y" id="metricsY">
+      <div class="picker-cap"><b>↑</b> vertical axis<br><span>click a pill to change it</span></div>
+    </div>
+    <div class="chart-main">
+      <div class="chart-card">
+        <div id="stage"></div>
+        <div class="axis-labels"><span class="lo" id="xLoLab"></span><span class="xblurb" id="xBlurb"></span><span class="hi" id="xHiLab"></span></div>
+      </div>
+      <div class="axis-picker x" id="metricsX">
+        <div class="picker-cap"><b>→</b> horizontal axis · <span>click a pill to change it</span></div>
+      </div>
+    </div>
+    <div class="side-boards" id="sideBoards"></div>
+  </div>
+
+  </div><!-- /page-spectrum -->
+
+  <div class="page hidden" id="page-aura">
+    <div class="aura-intro">Pick <b>three to five</b> of your favorite Taylor Swift songs — start typing and choose from the matches. We'll find your dominant sign and minor placements, then read your chart — who you are, what you carry, what you actually want, and what to do about it.</div>
+    <div class="picker">
+      <input id="songSearch" placeholder="Start typing a song… (her biggest hits are waiting below)" autocomplete="off">
+      <div id="suggest"></div>
+    </div>
+    <div id="chips"></div>
+    <button id="auraBtn" disabled></button>
+    <div id="auraResult"></div>
+    <div class="catalogue" id="catalogue"></div>
+  </div>
+
+  <footer>
+    Scores are Claude-annotated opinion (0–100), not Spotify audio features.<br>
+    Track lists verified against the iTunes catalog: standard + deluxe + Taylor's Version vault tracks for all 12 albums, plus a shelf of non-album singles.<br>
+    Excluded: remixes, acoustic/piano alternates, live cuts, the Beautiful Eyes EP, and holiday covers.<br>Song lengths are real (iTunes catalog) and popularity is real (lifetime Spotify streams via kworb.net) — yes, the ten-minute one is plotted to scale.
+  </footer>
+</div>
+
+<div id="tip"></div>
+
+<script>
+const ART = {"Taylor Swift": "assets/img/taylor/taylor-swift.jpg", "Fearless": "assets/img/taylor/fearless.jpg", "Speak Now": "assets/img/taylor/speak-now.jpg", "Red": "assets/img/taylor/red.jpg", "1989": "assets/img/taylor/1989.jpg", "Reputation": "assets/img/taylor/reputation.jpg", "Lover": "assets/img/taylor/lover.jpg", "Folklore": "assets/img/taylor/folklore.jpg", "Evermore": "assets/img/taylor/evermore.jpg", "Midnights": "assets/img/taylor/midnights.jpg", "TTPD": "assets/img/taylor/ttpd.jpg", "Showgirl": "assets/img/taylor/showgirl.jpg"};
+
+// ---------------- albums & colors ----------------
+const ALBUMS = {
+  "Taylor Swift": { c: "#6fae4e", y: "2006", t: "’06" },
+  "Fearless":     { c: "#e8b647", y: "2008", t: "’08" },
+  "Speak Now":    { c: "#a05cc8", y: "2010", t: "’10" },
+  "Red":          { c: "#d6453c", y: "2012", t: "’12" },
+  "1989":         { c: "#5dade2", y: "2014", t: "’14" },
+  "Reputation":   { c: "#9aa0a6", y: "2017", t: "’17" },
+  "Lover":        { c: "#f48fb1", y: "2019", t: "’19" },
+  "Folklore":     { c: "#cfcabd", y: "2020", t: "’20" },
+  "Evermore":     { c: "#b56a32", y: "2020", t: "’20" },
+  "Midnights":    { c: "#7b8cde", y: "2022", t: "’22" },
+  "TTPD":         { c: "#efe9d6", y: "2024", t: "’24" },
+  "Showgirl":     { c: "#ff8c42", y: "2025", t: "’25" },
+  "Extras":       { c: "#3fb8af", y: "2008–2026", t: "misc" },
+};
+
+// ---------------- metrics ----------------
+const METRICS = [
+  { k:"mood",    label:"Happiness",     lo:"😭 devastating", hi:"😄 euphoric",
+    blurb:"Bathroom-floor sobbing to kitchen dancing." },
+  { k:"pop",     label:"Popularity",    lo:"💎 deep cut", hi:"🌍 inescapable",
+    blurb:"Lifetime Spotify streams, log scale." },
+  { k:"trend",   label:"Trending (Jun ’26)", lo:"🧊 dormant", hi:"📈 on fire right now",
+    blurb:"Spotify streams per week as of June 2026 (log scale)." },
+  { k:"rel",     label:"Released",      lo:"🧒 the debut era", hi:"💿 brand new",
+    blurb:"When the song actually dropped — vault tracks count from their Taylor's Version." },
+  { k:"love",    label:"Romance",       lo:"💔 wreckage", hi:"💘 head over heels",
+    blurb:"Scorched earth to golden-daylight devotion." },
+  { k:"anger",   label:"Anger",         lo:"🕊️ serene", hi:"🔥 burn the evidence",
+    blurb:"How badly someone should regret their choices." },
+  { k:"country", label:"Country",       lo:"🏙️ pure pop", hi:"🤠 full twang",
+    blurb:"Banjos, fiddles, pickup trucks per capita." },
+  { k:"nostalgia",label:"Nostalgia",    lo:"⏩ present tense", hi:"📼 aching for the past",
+    blurb:"The 'remember when' coefficient." },
+  { k:"len",     label:"Length",        lo:"⏱️ over in a blink", hi:"📜 ten-minute epic",
+    blurb:"Actual runtime, plotted to scale." },
+  { k:"scream",  label:"Screamability", lo:"🤫 hum quietly", hi:"🚗 windows down, full belt",
+    blurb:"Beltability, alone on the highway at 11pm." },
+  { k:"sparkle", label:"Sparkle",       lo:"🪕 acoustic & hushed", hi:"✨ maximum glitter",
+    blurb:"Production gloss, synths, and glitter." },
+  { k:"whole",   label:"Wholesomeness", lo:"😈 scandalous", hi:"😇 pure of heart",
+    blurb:"Could you play it at a family reunion?" },
+];
+
+// ---------------- data ----------------
+// [title, album, mood, love, anger, country, nostalgia, bridge(unused), scream, sparkle, note, seconds, streams, spotifyTrackId, wholesomeness, releaseDate, youtubeId, dailyStreams]
+const SONGS = [
+// ---- Taylor Swift (2006) — 14
+["Tim McGraw", "Taylor Swift", 38, 55, 5, 95, 92, 45, 30, 8, "Nostalgia so strong it invented her career.", 232, 168116424, "0Om9WAB5RS09L80DyOfTNa", 75, "2006-10-24", "GkD20ajVxnY", 42826],
+["Picture to Burn", "Taylor Swift", 55, 8, 88, 92, 15, 40, 80, 22, "Pre-reputation revenge. The banjo is also angry.", 173, 257655650, "32mVHdy0bi1XKgr0ajsBlG", 25, "2006-10-24", "yCMqcFAigRg", 66676],
+["Teardrops on My Guitar", "Taylor Swift", 22, 25, 12, 80, 40, 35, 45, 15, "Drew looks at her. Look at all the pain it caused.", 203, 266839608, "7eGeUVeCEvEQrivmjl9Qn3", 65, "2006-10-24", "xKCek6_dB0M", 55945],
+["A Place in This World", "Taylor Swift", 45, 40, 8, 75, 30, 30, 35, 15, "Don't know what she wants, so don't ask her. Relatable since 2006.", 199, 58007224, "2RSYYe7LhKFxIi50T5XtUo", 80, "2006-10-24", "_FNQ5qLuLjA", 24511],
+["Cold as You", "Taylor Swift", 15, 10, 55, 70, 20, 50, 40, 10, "'You come away with a great little story' — the first great Taylor put-down.", 239, 59047295, "7an1exwMnfYRcdVQm0yDev", 40, "2006-10-24", "f5e2ArH5-14", 18381],
+["The Outside", "Taylor Swift", 30, 30, 10, 72, 35, 30, 30, 12, "Written at 12 about being left out. The outsiders won eventually.", 207, 42383188, "2QA3IixpRcKyOdG7XDzRgv", 70, "2006-10-24", "9rkJJoa4L1Y", 16722],
+["Tied Together with a Smile", "Taylor Swift", 18, 25, 8, 70, 15, 40, 30, 10, "Written for a struggling friend — heavy cargo for track seven.", 248, 45925444, "4qNEi8zGIYLiMtoW8OaJdx", 78, "2006-10-24", "B39pr0-LOz4", 15107],
+["Stay Beautiful", "Taylor Swift", 70, 65, 3, 78, 40, 35, 40, 15, "Cory's eyes are like a jungle. Cory never knew what hit him.", 236, 47547104, "2ZoOmCSgj0ypVAmGd1ve4y", 80, "2006-10-24", "RXhgAdLXvNA", 15549],
+["Should've Said No", "Taylor Swift", 35, 10, 90, 85, 12, 70, 85, 25, "The rain-soaked CMA performance lives in our heads rent-free.", 242, 159568353, "16MVSD0mGI4RMQT83Qzm69", 35, "2006-10-24", "f85AAi3VOLo", 40439],
+["Mary's Song (Oh My My My)", "Taylor Swift", 85, 92, 2, 95, 80, 50, 45, 12, "Ages seven to eighty-seven in one love story. Grandparent-core.", 213, 64263545, "2QrQCMel6v2JiLxqrg4p2O", 98, "2006-10-24", "9TCRiGA1A2U", 22265],
+["Our Song", "Taylor Swift", 88, 90, 2, 98, 55, 50, 70, 20, "Slamming screen doors per capita: maximal.", 201, 467531546, "7qGr3rjRhndRIpFUA5f2HJ", 92, "2006-10-24", "Jb2stN7kH28", 146606],
+["I'm Only Me When I'm with You", "Taylor Swift", 80, 75, 4, 85, 40, 40, 60, 20, "Fiddle-fueled best-friend anthem.", 213, 68830483, "6Py8IKZqDyU8aQVrjilbJw", 88, "2006-10-24", "AlTfYj7q5gQ", 35181],
+["Invisible", "Taylor Swift", 25, 22, 8, 65, 25, 25, 25, 8, "She sings about rain; he can't see her. Standard 2006 problems.", 203, 46815192, "0kqC185OTcnuhbz4T7g5RB", 65, "2006-10-24", "Q3ZBGI3Jo5c", 14163],
+["A Perfectly Good Heart", "Taylor Swift", 20, 15, 15, 68, 15, 35, 40, 12, "Why would you wanna break it? A fair question, unanswered.", 220, 35506709, "1spLfUJxtyVyiKKTegQ2r4", 70, "2006-10-24", "4-vbnfB29II", 12055],
+// ---- Fearless (2008) — 25
+["Fearless", "Fearless", 85, 88, 2, 70, 58, 55, 65, 35, "Dancing in a storm in your best dress: the blueprint.", 242, 468733430, "77sMIMlNaSURUAXq5coCxE", 88, "2008-11-11", "21U1JAUXH7E", 156562],
+["Fifteen", "Fearless", 30, 30, 8, 72, 96, 55, 40, 18, "Abigail deserved better and so did we all.", 294, 134899385, "2nqio0SfWg6gh2eCtfuMa5", 85, "2008-11-11", "Pb-K2tXWK4w", 34069],
+["Love Story", "Fearless", 90, 95, 5, 75, 60, 85, 90, 40, "'Marry me, Juliet' — the single greatest key-change-adjacent moment in pop-country.", 236, 1202578836, "6YvqWjhGD8mB5QXcbcUKtx", 90, "2008-11-11", "8xg3vE8Ie_E", 539735],
+["Hey Stephen", "Fearless", 78, 72, 3, 72, 30, 35, 50, 20, "All those other girls are beautiful, but would they write you a song? No.", 254, 121216359, "550erGcdD9n6PnwxrvYqZT", 85, "2008-11-11", "tMhiHrL7rPE", 38097],
+["White Horse", "Fearless", 12, 12, 25, 68, 42, 40, 35, 10, "The fairy tale is cancelled. Bring tissues.", 235, 157908900, "5YL553x8sHderRBDlm3NM3", 55, "2008-11-11", "D1Xr-JFLxik", 63338],
+["You Belong With Me", "Fearless", 75, 60, 18, 70, 45, 75, 92, 45, "She wears short skirts, this song wears the crown.", 231, 1108422743, "1qrpoAMXodY6895hGKoUpA", 75, "2008-11-11", "EA2XjZC7GCw", 470212],
+["Breathe", "Fearless", 18, 15, 10, 55, 45, 45, 40, 18, "A breakup song for a friendship, with Colbie Caillat harmonies.", 263, 89149132, "7HC7R2D8WjXVcUHJyEGjRs", 70, "2008-11-11", "qsUK-BG5OQQ", 23150],
+["Tell Me Why", "Fearless", 30, 18, 68, 68, 15, 50, 65, 22, "Taking down a hot-and-cold guy with maximum banjo.", 201, 75875024, "0k0vFacOHNuArLWMiH60p7", 35, "2008-11-11", "cwFbq-70EwE", 18213],
+["You're Not Sorry", "Fearless", 15, 10, 55, 50, 20, 55, 55, 20, "The CSI remix exists and that's canon.", 262, 99934350, "6iiAfo4wTA2CVC3Uwx9uh8", 40, "2008-11-11", "DNaSlUYIXBg", 26314],
+["The Way I Loved You", "Fearless", 45, 35, 25, 62, 70, 65, 75, 28, "Screaming and fighting and kissing in the rain — she misses the chaos.", 243, 597328158, "22bPsP2jCgbLUvh82U0Z3M", 50, "2008-11-11", "DlexmDDSDZ0", 218232],
+["Forever & Always", "Fearless", 28, 15, 72, 60, 25, 65, 78, 38, "Written about a 27-second phone call, in roughly that amount of time.", 225, 150130378, "1msEuwSBneBKpVCZQcFTsU", 35, "2008-11-11", "SR7Ewm8g-mk", 42211],
+["The Best Day", "Fearless", 70, 60, 2, 60, 100, 50, 30, 12, "The mom song. Do not operate heavy machinery while listening.", 245, 72748800, "6ON9UuIq49xXY9GPmHIYRp", 100, "2008-11-11", "n0cde-Km05o", 47313],
+["Change", "Fearless", 65, 30, 30, 45, 20, 70, 72, 35, "Underdog fight song; these walls that they put up to hold us back will fall down.", 279, 59636136, "3ExweHKZF9B752DPQByRVT", 85, "2008-11-11", "B1jYllE0T-k", 14709],
+["Jump Then Fall", "Fearless", 85, 88, 2, 70, 25, 35, 45, 22, "Bluebirds, honey, zero red flags.", 238, 78030132, "2m3ObD945KvpE5y9A1eUWm", 92, "2008-11-11", "vUHDR6Rg3Y4", 24540],
+["Untouchable", "Fearless", 40, 55, 5, 40, 40, 50, 45, 30, "A cover she fully colonized. Burn burn burn brighter.", 312, 88148294, "0tQ9vBYpldCuikPsbgOVKA", 75, "2009-10-26", "8bNlGwnEUAs", 40894],
+["Come In with the Rain", "Fearless", 25, 28, 8, 58, 35, 40, 35, 18, "Leaving the window open, emotionally and literally.", 237, 54628261, "1n2wszmJyVkw6FHqyLnQsY", 65, "2009-10-26", "ePjcjLRHPOo", 14502],
+["Superstar", "Fearless", 40, 45, 4, 55, 30, 30, 35, 18, "In love with the guy on the poster. We've all been there.", 264, 49197614, "51A8eKvvZz9uydvIZ7xRSV", 78, "2009-10-26", "IsCik8wznlU", 12785],
+["The Other Side of the Door", "Fearless", 45, 35, 45, 60, 30, 75, 72, 28, "Says leave, means stay — the bridge confesses everything.", 238, 99148919, "1cSFlSBdpT4F5vb1frQ231", 55, "2009-10-26", "425n1NoRtgA", 31262],
+["Today Was a Fairytale", "Fearless", 82, 85, 2, 55, 45, 35, 50, 30, "A 2010 time capsule of butterflies, via the Valentine's Day soundtrack.", 242, 74043066, "2JoJrsEV15OzbijS47lids", 95, "2010-01-19", "xSWVPqnKcXQ", 20890],
+["You All Over Me", "Fearless", 25, 18, 12, 68, 60, 40, 30, 18, "Vault: wearing him like a stain, with Maren Morris on harmonies.", 221, 134188939, "4CHpVfAhuxNJ3ibExe6kxO", 50, "2021-04-09", "XKaMUm7YwZc", 22805],
+["Mr. Perfectly Fine", "Fearless", 55, 15, 60, 58, 25, 60, 75, 40, "'Mr. casually cruel' — the vault's pettiest banger. Hi, Joe.", 278, 478041889, "2CYVETnhM9aytqrazYYwrK", 30, "2021-04-09", "rFjJs6ZjPe8", 135622],
+["We Were Happy", "Fearless", 22, 20, 8, 62, 75, 45, 30, 15, "Past-tense happiness: the saddest tense.", 244, 76470568, "34V9RiEPe8MNdU32qJsJa1", 70, "2021-04-09", "seU5y5EgIwk", 14978],
+["That's When", "Fearless", 60, 60, 8, 60, 40, 40, 40, 22, "Keith Urban duet about leaving and being welcomed back.", 189, 101970229, "7eResoqEJJAVTkQYSqvO3P", 75, "2021-04-09", "aOa6D6ku3dM", 21457],
+["Don't You", "Fearless", 30, 22, 15, 40, 35, 40, 35, 30, "Synthier vault sadness: please don't be kind, it hurts more.", 209, 94536696, "4uuEGH5SVuzkkSFjo2DEiY", 50, "2021-04-09", "dHdAN4FXzmc", 25554],
+["Bye Bye Baby", "Fearless", 28, 20, 12, 58, 45, 40, 35, 25, "The almost-relationship gets its final boarding call.", 242, 71703922, "4qUijfYU8EoIWiY6oSyrgT", 60, "2021-04-09", "yuFuwXd-B9E", 13918],
+// ---- Speak Now (2010) — 22
+["Mine", "Speak Now", 80, 85, 5, 55, 50, 72, 72, 48, "Careless man's careful daughter — résumé line of the decade.", 232, 282387247, "7G0gBu6nLdhFDPRLc0HdDG", 85, "2010-10-25", "XPBwXKgDTdE", 109303],
+["Sparks Fly", "Speak Now", 75, 78, 3, 55, 30, 70, 82, 40, "Drop everything now. The green-eyed thesis statement.", 261, 211896471, "5h2sBwpUSAndjObfU3ti2r", 70, "2010-10-25", "oKar-tF__ac", 39551],
+["Back to December", "Speak Now", 18, 28, 8, 50, 85, 60, 48, 22, "The only apology song. Taylor Lautner won the lottery.", 294, 509413168, "4moQek8ZD57EpFHby1uyOu", 65, "2010-10-25", "QUwxKWT6m7U", 148918],
+["Speak Now", "Speak Now", 70, 55, 20, 45, 15, 55, 55, 30, "Crashes a wedding; the organ never recovers.", 242, 163451282, "1XLc4irbX7oQSneh6gWv3O", 60, "2010-10-25", "JlZnvyBqceY", 24199],
+["Dear John", "Speak Now", 10, 5, 85, 40, 30, 92, 88, 18, "Six minutes and 43 seconds of beautifully composed fury.", 406, 157148209, "5tMJg8uuZ6tBPRvL37sab7", 15, "2010-10-25", "N-FYySSy0rM", 22990],
+["Mean", "Speak Now", 60, 50, 70, 96, 15, 40, 62, 15, "Someday she'll be living in a big old city. (She does. Several.)", 239, 270013953, "5rcHBt2aNcGFWW0jaAUe1L", 55, "2010-10-25", "jYa1eI1hpDE", 63325],
+["The Story of Us", "Speak Now", 45, 18, 45, 40, 25, 55, 75, 55, "Next chapter: screaming 'I'M DYING TO KNOW' alone in a crowded room.", 268, 168226152, "2fF3QzbGCrtrDXIdWcg1mv", 45, "2010-10-25", "nN6VR92V70M", 21309],
+["Never Grow Up", "Speak Now", 25, 30, 3, 55, 100, 45, 25, 8, "Responsible for roughly 60% of all graduation-slideshow tears.", 293, 100758231, "1UPDfqsVIZLEiZeMuUsni2", 100, "2010-10-25", "maEVfpxDB8k", 19761],
+["Enchanted", "Speak Now", 62, 75, 2, 28, 55, 90, 93, 45, "'Please don't be in love with someone else' — screamed by 80,000 people nightly.", 353, 1031352861, "5lg33MHs1BoUtJVClw8ZpI", 80, "2010-10-25", "ZRIX3zQhlZA", 327287],
+["Better Than Revenge", "Speak Now", 45, 8, 95, 42, 10, 68, 82, 42, "The most pointed use of the word 'mattress' in recorded music.", 220, 254295757, "5Ivr5c3f3WNXjBHhtsL19v", 10, "2010-10-25", "KdJHBYb8S4Y", 105224],
+["Innocent", "Speak Now", 40, 25, 15, 40, 50, 45, 30, 25, "The Kanye forgiveness song; 32 and still growing up now.", 301, 68829769, "12nBPF4Rh4XLFJV0YLN7uj", 70, "2010-10-25", "vO6JqQpJboY", 20032],
+["Haunted", "Speak Now", 20, 15, 40, 30, 20, 65, 70, 45, "Strings! Drama! Gothic cathedral energy!", 245, 129389738, "4tMzIAFTFdqGBQLdfbPces", 35, "2010-10-25", "4cC6fw8EqWU", 43662],
+["Last Kiss", "Speak Now", 5, 10, 8, 45, 80, 60, 50, 10, "'I'll watch your life in pictures' — quietly the saddest thing on the album.", 369, 141820271, "0qLPFc6NZR3bIpiP7VglGd", 55, "2010-10-25", "idWma942CUI", 28299],
+["Long Live", "Speak Now", 78, 55, 4, 38, 98, 82, 90, 42, "A graduation song disguised as a fantasy epic. Cry accordingly.", 318, 226128235, "4hqJ4bSlYJOXb6Z4SRmzxs", 95, "2010-10-25", "F5TMU6916U8", 102301],
+["Ours", "Speak Now", 78, 82, 5, 60, 25, 40, 35, 18, "Don't you worry your pretty little mind.", 236, 83662568, "3yNJkriPzWjkkDAWHIAVUq", 90, "2010-10-25", "LZ34LlaIk88", 24214],
+["Superman", "Speak Now", 60, 55, 5, 45, 20, 35, 40, 30, "Tall, dark and super, man.", 275, 58927028, "4evLyY5Ue1Wesc61t2KXAU", 75, "2010-10-25", "Fn0er7H1Dm0", 18151],
+["Electric Touch", "Speak Now", 55, 60, 8, 35, 20, 55, 65, 55, "Fall Out Boy vault crossover; hope vs. track record.", 266, 124662378, "4e3ZNTAV6PCrdYMUrUlMpQ", 65, "2023-07-07", "hMPK2vNXr-E", 34520],
+["When Emma Falls in Love", "Speak Now", 55, 55, 3, 50, 40, 50, 40, 20, "A love song about a friend — Emma never confirmed, eternally suspected.", 252, 112274398, "0zo975x58DlXbZllWvfYhg", 90, "2023-07-07", "IYqgVYjN3Go", 27045],
+["I Can See You", "Speak Now", 60, 65, 15, 25, 15, 55, 60, 55, "The flirtiest vault track; security-footage romance.", 273, 346608346, "5kHMfzgLZP95O9NBy0ku4v", 25, "2023-07-07", "hf40FF-aifc", 103488],
+["Castles Crumbling", "Speak Now", 15, 15, 35, 30, 45, 60, 55, 30, "With Hayley Williams: empire-collapse anxiety, 2010 edition.", 306, 118795082, "4ABYxlb92WBIjHu7TIKmml", 40, "2023-07-07", "V80A8qN4fR8", 31643],
+["Foolish One", "Speak Now", 30, 25, 18, 45, 30, 50, 40, 20, "The delusional-crush autopsy: you will take the long way.", 312, 139551762, "4s8BIKx4Zh6ryAEz8RTlaU", 45, "2023-07-07", "6-x1AlDudZw", 62554],
+["Timeless", "Speak Now", 70, 85, 2, 55, 90, 55, 35, 15, "Antique-shop photographs and wartime letters. Sobbing.", 321, 131556726, "1HCdems7PQZRj42QDWLA0A", 95, "2023-07-07", "osmzwWw4RYM", 44409],
+// ---- Red (2012) — 29
+["State of Grace", "Red", 55, 70, 10, 15, 38, 55, 72, 55, "The runway before the album takes off. Mosaic broken hearts.", 295, 164680006, "6lzc0Al0zfZOIFsFvBS1ki", 60, "2012-10-22", "-mrC5tRkxrY", 45482],
+["Red", "Red", 45, 40, 25, 55, 70, 55, 82, 48, "Loving him was a Maserati and a color-theory lecture at once.", 223, 451679025, "4OAuvHryIVv4kMDNSLuPt6", 60, "2012-10-22", "Zlot0i3Zykw", 195974],
+["Treacherous", "Red", 50, 68, 5, 30, 20, 60, 55, 30, "Two headlights shine through the sleepless night.", 243, 147365597, "3S7HNKPakdwNEBFIVTL6dZ", 35, "2012-10-22", "u1D1AgDfreg", 32729],
+["I Knew You Were Trouble", "Red", 30, 12, 65, 12, 28, 60, 86, 80, "The goat remix walked so dubstep Taylor could run.", 220, 1133519035, "2o2IVjuqRkR9hJxtPjtAP0", 30, "2012-10-22", "vNoKguSdy4Y", 454123],
+["All Too Well", "Red", 12, 10, 50, 35, 95, 95, 90, 22, "The original five minutes that started the scarf discourse.", 329, 394613929, "3nsfB1vus2qaloUdcBZvDu", 35, "2012-10-22", "tollGa3S0o8", 216913],
+["22", "Red", 95, 45, 3, 10, 30, 45, 88, 82, "Happy, free, confused, and lonely — the four houses of being 22.", 231, 470074484, "2P5gfMtCcKP0CkmgqFMyPg", 75, "2012-10-22", "AgFeZr5ptV8", 112384],
+["I Almost Do", "Red", 22, 25, 8, 45, 45, 45, 35, 18, "The phone call drafted and never sent.", 245, 128336105, "2r9CbjYgFhtAmcFv1cSquB", 55, "2012-10-22", "w1AV_35zVwU", 39305],
+["We Are Never Ever Getting Back Together", "Red", 70, 5, 60, 25, 18, 50, 85, 72, "Like, ever. Indie records remain much cooler than his.", 193, 811669408, "7AEAGTc8cReDqcbPoY9gwo", 50, "2012-10-22", "WA4iX5D9Z64", 199634],
+["Stay Stay Stay", "Red", 88, 85, 3, 60, 15, 35, 40, 28, "Threw her phone across the room; he stayed anyway.", 206, 115126568, "7eQj6r5PIdYKEIZjucBMcq", 90, "2012-10-22", "OhJ-S9Nrh7Q", 26823],
+["The Last Time", "Red", 15, 15, 20, 20, 25, 60, 55, 35, "Gary Lightbody duet — two people giving up in stereo.", 299, 167393798, "0y6kdSRCVQhSsHSpWvTUm7", 40, "2012-10-22", "QuijXg8wm28", 54399],
+["Holy Ground", "Red", 80, 45, 4, 40, 80, 55, 70, 45, "A breakup song that dances. Right there where we stood.", 203, 119911395, "7J4b3LVCIGO4CMBDFLPoP6", 65, "2012-10-22", "S4PuN-IWi2g", 31419],
+["Sad Beautiful Tragic", "Red", 10, 15, 5, 35, 70, 40, 25, 8, "Exactly what it says on the tin, in waltz time.", 285, 138266626, "73qMN9bXy7MSPwwGfH3wQr", 45, "2012-10-22", "jQfB4Gahi3I", 39240],
+["The Lucky One", "Red", 35, 20, 25, 40, 55, 55, 40, 28, "Fame cautionary tale that aged into prophecy.", 240, 102196115, "4e5ayHsOLJNLTGfjau2mEw", 50, "2012-10-22", "4LtQxA_ooLk", 23052],
+["Everything Has Changed", "Red", 78, 82, 2, 42, 35, 40, 42, 30, "Ed Sheeran feature, trampoline music video, pure serotonin.", 245, 317478114, "4NAmRvqSITAAzKWnC8yRq3", 92, "2012-10-22", "w1oM3kQpXRo", 52701],
+["Starlight", "Red", 85, 80, 2, 30, 75, 40, 50, 55, "Bobby and Ethel Kennedy fanfic, glittering.", 220, 95933178, "7A2cNLRT0YJc1yjxHlKihs", 90, "2012-10-22", "lPvcwgEuKTg", 25479],
+["Begin Again", "Red", 62, 60, 4, 60, 55, 45, 30, 15, "Wednesday in a café: the healing begins.", 239, 170187466, "05GsNucq8Bngd9fnd4fRa0", 80, "2012-10-22", "179RVBPJp-w", 101688],
+["The Moment I Knew", "Red", 8, 12, 30, 30, 40, 55, 45, 18, "He didn't come to her birthday party. Unforgivable. Documented.", 285, 97069031, "0NRHj8hDwwmSPaA41o379r", 45, "2012-10-22", "LmXn6BU16e0", 24050],
+["Come Back...Be Here", "Red", 25, 35, 10, 30, 40, 50, 55, 30, "Long-distance ache, New York to London, in 4/4.", 223, 162277964, "4pNApnaUWAL2J4KO2eqokq", 55, "2012-10-22", "hHWOAUjnmjQ", 53238],
+["Girl at Home", "Red", 55, 15, 45, 45, 10, 30, 30, 35, "Cheater PSA, later given a synth-pop glow-up it didn't ask for.", 221, 79224874, "0DMVrlMUn01M0IcpDbwgu7", 55, "2012-10-22", "UNckfN9upqo", 18642],
+["Ronan", "Red", 2, 20, 5, 30, 85, 50, 20, 5, "Charity single built from a grieving mother's blog. The hardest listen in the catalog.", 264, 59095471, "7nWui6jiMM2m9qFmET1Mtj", 90, "2012-09-08", "kdiBc40gW7s", 14413],
+["Better Man", "Red", 20, 18, 30, 75, 65, 60, 55, 20, "Gave it to Little Big Town; took it back better.", 297, 209756550, "4OmFmE0fzcMG6g0Y8p4eSD", 50, "2021-11-12", "3KE_Hkz6-Uo", 107257],
+["Nothing New", "Red", 18, 20, 12, 40, 60, 55, 35, 15, "With Phoebe Bridgers: how can a person know everything at 18 and nothing at 22?", 259, 303862098, "01K4zKU104LyJ8gMb7227B", 55, "2021-11-12", "m3fWCRvz5JA", 97095],
+["Babe", "Red", 40, 15, 50, 55, 30, 45, 55, 35, "What a shame, what a waste — the vault's breakup bop.", 224, 170756401, "0v4z1tuZvn6LGknom9Qx7d", 35, "2021-11-12", "l25AL0BdD6w", 72874],
+["Message in a Bottle", "Red", 75, 70, 3, 15, 20, 40, 55, 75, "The first Max Martin collab, freed from the vault. Pure fizz.", 226, 291037511, "3z6XUommYDWPHeFhmhhT6j", 80, "2021-11-12", "cVaG6adE2mA", 118375],
+["I Bet You Think About Me", "Red", 60, 20, 55, 85, 40, 55, 65, 25, "Chris Stapleton + wine-stained dress on a white wedding cake.", 285, 290568060, "4CkgMiMqZ5JzW9iYXSTMTL", 35, "2021-11-12", "5UMCrq-bBCg", 95173],
+["Forever Winter", "Red", 30, 30, 10, 35, 40, 55, 50, 30, "Worrying about a friend who's not okay, with horns.", 264, 124155284, "3oGVx9RBmiYGv5ZCecWLkx", 75, "2021-11-12", "TkAomsYFsJw", 25704],
+["Run", "Red", 55, 70, 4, 45, 25, 40, 35, 22, "Ed Sheeran duet: elope, but make it quiet.", 240, 168827472, "4IQkfUsrwXol38VV3U7t7T", 70, "2021-11-12", "flv8AEWrRMI", 25167],
+["The Very First Night", "Red", 78, 55, 5, 30, 70, 45, 60, 65, "Vault disco about missing the beginning of things.", 200, 232020758, "6pYNq0ZwpPVazKzsqpf0G8", 70, "2021-11-12", "rVuyi-dPMIc", 58854],
+["All Too Well (10 Min)", "Red", 6, 8, 62, 30, 100, 100, 100, 25, "The scarf. The keychain. The f-word. A short film. A religion.", 613, 1220676644, "5enxwA8aAbwZbf5qCHORXi", 25, "2021-11-12", "sRxrwjOtIag", 519134],
+// ---- 1989 (2014) — 21
+["Welcome to New York", "1989", 88, 40, 2, 2, 20, 25, 55, 90, "The lights are so bright but they never blind her. Rent does.", 213, 303396803, "6qnM0XXPZOINWA778uNqQ9", 80, "2014-10-27", "FsGdznlfE2U", 97919],
+["Blank Space", "1989", 65, 35, 55, 4, 10, 62, 88, 90, "A satire so good half the planet took it literally.", 232, 2473512628, "1p80LdxRV74UKvL8gnD7ky", 25, "2014-10-27", "e-ORhEE9VVg", 1075167],
+["Style", "1989", 58, 55, 15, 3, 40, 58, 72, 88, "James Dean daydream. Never goes out of — you know.", 231, 1800410630, "4lIxdJw6W3Fg4vUIYCB0S5", 30, "2014-10-27", "-CmadmM5cOk", 1030077],
+["Out of the Woods", "1989", 35, 30, 18, 2, 72, 85, 90, 92, "Twenty stitches in a hospital room, a thousand layers of synth.", 236, 370822080, "5OndtwLGA9O6XHFcGm2H7r", 55, "2014-10-27", "JLf9q36UsBk", 73571],
+["All You Had to Do Was Stay", "1989", 45, 18, 35, 5, 30, 50, 65, 80, "That high-pitched 'STAY!' came to her in a dream. Literally.", 193, 248533663, "0dAb8TY433dl3ZfXYCLE19", 50, "2014-10-27", "_Usd5X5XJXM", 39805],
+["Shake It Off", "1989", 96, 40, 12, 5, 5, 50, 80, 96, "The haters gonna hate; the horn section gonna horn.", 219, 1911553347, "5xTtaWoae3wi06K5WfVUUH", 85, "2014-10-27", "nfWlot6h_JM", 789731],
+["I Wish You Would", "1989", 50, 45, 15, 4, 45, 55, 70, 82, "2am drive-by feelings at the speed of headlights.", 208, 169689984, "3wmN11qXGL0HyPojvEE1D9", 55, "2014-10-27", "89aQIli8aVU", 25746],
+["Bad Blood", "1989", 40, 10, 85, 3, 15, 45, 75, 88, "Band-aids don't fix bullet holes. The discourse never healed either.", 211, 755782697, "273dCMFseLcVsoSWx59IoE", 25, "2014-10-27", "QcIy9NiNbmo", 243720],
+["Wildest Dreams", "1989", 32, 42, 8, 6, 80, 60, 68, 75, "Asking to be remembered this well is a power move.", 220, 1201328856, "59HjlYCeBsxdI0fcm3zglw", 30, "2014-10-27", "IdneKLhsWOQ", 493227],
+["How You Get the Girl", "1989", 75, 55, 5, 6, 20, 40, 60, 82, "An instruction manual with a glitter cover.", 248, 196119378, "4dYUOfmWna6DFccnz732n8", 65, "2014-10-27", "rnwD7veCoFQ", 42759],
+["This Love", "1989", 40, 55, 5, 5, 55, 40, 30, 40, "The tide comes back in. Whispered, oceanic.", 250, 378996313, "5QVVjX0ZItqlVpEuVCM9Yg", 60, "2014-10-27", "mvxQYPR4lmU", 163938],
+["I Know Places", "1989", 40, 55, 30, 3, 10, 55, 60, 75, "Foxes, hunters, paparazzi-proof love.", 196, 147678253, "3jBMHD19RZdAqG9iFQh7xc", 45, "2014-10-27", "0jTGzm-6cYE", 17794],
+["Clean", "1989", 48, 20, 5, 5, 55, 70, 45, 55, "Ten months sober — the quiet exhale that ends the storm.", 271, 217898068, "06WgOCf0LV2h4keYXDRnuh", 70, "2014-10-27", "AppsjTInqiw", 29659],
+["Wonderland", "1989", 45, 35, 25, 3, 35, 60, 75, 85, "Both of them went mad. The Cheshire grin was a warning.", 246, 167460290, "6RvRzl1YJTDnUvdOtV21IK", 40, "2014-10-27", "JhICcmiIE80", 19836],
+["You Are in Love", "1989", 60, 90, 2, 4, 40, 55, 30, 45, "'You can hear it in the silence' — the platonic ideal of being chosen.", 267, 167108673, "4UwqOWDpdeIDVQDuKT6iza", 90, "2014-10-27", "M7ySK0keirY", 91881],
+["New Romantics", "1989", 90, 35, 20, 2, 18, 55, 85, 95, "The best people in life are free, and so is this bonus track's spirit.", 230, 332969175, "0qAIiGFKLdV1xpNlEhjpq8", 50, "2014-10-27", "wyK7YuwUWsU", 69722],
+["\"Slut!\"", "1989", 55, 75, 10, 4, 25, 45, 35, 60, "The softest title-to-sound bait-and-switch in the vault.", 180, 455336509, "71BqAINEnezjQfxE4VuJfq", 35, "2023-10-27", "qrxsceexTBw", 185003],
+["Say Don't Go", "1989", 25, 20, 25, 5, 30, 60, 75, 70, "Why'd you have to lead her on? A vault gut-punch.", 280, 289472114, "4NioO5R9sHEZh4cGzMHyNt", 45, "2023-10-27", "c043spIS2gc", 110021],
+["Now That We Don't Talk", "1989", 50, 25, 30, 3, 40, 40, 55, 75, "Shortest song, longest grudge. Enjoy the yacht, sir.", 146, 437718234, "5KD6AEm19QnMbfWpfoOHMl", 40, "2023-10-27", "yF4ulRTCn44", 118227],
+["Suburban Legends", "1989", 45, 40, 15, 4, 65, 45, 50, 72, "Class-reunion clairvoyance that didn't pan out.", 172, 162033655, "6T0sEnqjmHISIKwFETeeiP", 50, "2023-10-27", "ZGBPKYbzSXs", 44917],
+["Is It Over Now?", "1989", 35, 15, 60, 4, 45, 65, 85, 78, "Blue dress on a boat. The vault said: more receipts.", 229, 591198082, "1Iq8oo9XkmmvCQiGOfORiz", 25, "2023-10-27", "tNxUxm3-658", 152683],
+// ---- Reputation (2017) — 15
+["...Ready for It?", "Reputation", 55, 55, 40, 2, 8, 55, 72, 92, "Industrial clang, then the softest 'island breeze' switch-up in history.", 208, 1030687716, "2yLa0QULdQr0qAIvVwN6B5", 30, "2017-11-10", "wIft-t-MQuE", 275457],
+["End Game", "Reputation", 58, 55, 25, 3, 10, 35, 55, 85, "Reputation precedes her. Future and Ed both showed up.", 245, 631954595, "2x0WlnmfG39ZuDmstl9xfX", 35, "2017-11-10", "dfnCAmr569k", 144360],
+["I Did Something Bad", "Reputation", 60, 10, 90, 2, 5, 60, 85, 90, "They're burning all the witches even if you aren't one.", 238, 586138310, "4svZDCRz4cJoneBpjpx8DJ", 10, "2017-11-10", "xYLxUJ9v6KU", 125845],
+["Don't Blame Me", "Reputation", 55, 85, 30, 3, 5, 70, 90, 85, "Love-as-religion with a gospel drop the size of a stadium.", 236, 1611939439, "1R0a2iXumgCiFb7HEZ7gUE", 35, "2017-11-10", "kRJKB291Z1g", 461767],
+["Delicate", "Reputation", 55, 65, 8, 4, 15, 55, 52, 72, "'Is it cool that I said all that?' Yes. Eternally yes.", 232, 1338451297, "6NFyWDv5CjfwuzoCkw47Xf", 55, "2017-11-10", "tCXGJQYZ9JA", 417665],
+["Look What You Made Me Do", "Reputation", 42, 8, 96, 2, 12, 72, 78, 88, "The old Taylor can't come to the phone. She's busy charting.", 212, 1441589204, "1P17dC1amhFzptugyAO7Il", 10, "2017-11-10", "3tmd-ClpJxA", 274209],
+["So It Goes...", "Reputation", 50, 65, 15, 2, 8, 45, 40, 75, "The album's forgotten middle child, scratching down your back.", 228, 250246972, "5PxFv9yJEg9dxvbZggykro", 20, "2017-11-10", "iAv1Y1YIwm8", 58875],
+["Gorgeous", "Reputation", 65, 55, 25, 3, 8, 40, 55, 80, "You make her so happy it turns back to sad. There's nothing she hates more than what she can't have.", 210, 748129134, "1ZY1PqizIl78geGM4xWlEA", 40, "2017-11-10", "EUoe7cf0HYw", 158321],
+["Getaway Car", "Reputation", 48, 18, 35, 3, 45, 95, 94, 90, "A heist where she robs both men AND the bridge.", 234, 927624042, "0VE4kBnHJUgtMf0dy6DRmW", 30, "2017-11-10", "FhPLQVlUiNQ", 295815],
+["King of My Heart", "Reputation", 70, 85, 8, 3, 10, 60, 55, 78, "American boys get dunked on in one verse flat.", 214, 376205765, "7HuBDWi18s4aJM8UFnNheH", 60, "2017-11-10", "5U7bF68xcRg", 116959],
+["Dancing With Our Hands Tied", "Reputation", 40, 60, 12, 2, 25, 55, 60, 80, "Reputation's secret heart: a doomed slow-dance rave.", 211, 345043391, "7I7JbDv63ZJJsSi24DyJrz", 45, "2017-11-10", "NG-IlBC5of8", 76893],
+["Dress", "Reputation", 60, 80, 6, 2, 12, 60, 55, 70, "The most scandalous thing here is how underrated it is.", 230, 594364837, "6oVxXO5oQ4pTpO8RSnkzvv", 10, "2017-11-10", "FNEoPctNIUE", 460735],
+["This Is Why We Can't Have Nice Things", "Reputation", 62, 12, 88, 3, 18, 65, 75, 82, "A champagne-soaked diss track with a giggle in the middle.", 207, 286129030, "07NxDD1iKCHbAldceD7QLP", 15, "2017-11-10", "6Z3QJ4L1Bg0", 55009],
+["Call It What You Want", "Reputation", 68, 85, 10, 4, 28, 55, 42, 62, "Castle crumbled, found a guy, kept the crown jewels.", 204, 594294268, "1GwMQaZz6Au3QLDbjbMdme", 65, "2017-11-10", "V54CEElTF_U", 239614],
+["New Year's Day", "Reputation", 55, 80, 3, 8, 60, 50, 25, 12, "Cleaning up bottles; please don't ever become a stranger.", 235, 276599081, "7F5oktn5YOsR9eR5YsFtqb", 92, "2017-11-10", "KkvTYrFIxNM", 67129],
+// ---- Lover (2019) — 18
+["I Forgot That You Existed", "Lover", 70, 25, 35, 3, 10, 30, 45, 70, "Indifference as a flex, with a giggle.", 171, 419913948, "43rA71bccXFGD4C8GOpIlN", 45, "2019-08-23", "p1cEvNn88jM", 82260],
+["Cruel Summer", "Lover", 60, 70, 18, 3, 22, 92, 98, 93, "'I love you, ain't that the worst thing you ever heard?' — screamed, always.", 178, 3381354868, "1BxfuPKGuaTgP7aM0Bbdwr", 35, "2019-08-23", "ic8j13piAhQ", 1181248],
+["Lover", "Lover", 80, 98, 2, 18, 40, 72, 70, 42, "Guitar-string scars and the bridge that became a wedding industry.", 221, 2056429088, "1dGr1c8CrMLDpV6mPbImSI", 88, "2019-08-23", "-BjZmE2gtdo", 686717],
+["The Man", "Lover", 60, 25, 70, 3, 5, 50, 70, 85, "If she were a man, she'd be THE man. Hypothesis since verified.", 190, 1018805179, "3RauEVgRgj1IuWdJ9fDs70", 45, "2019-08-23", "AqAJLh9wuZ0", 248717],
+["The Archer", "Lover", 25, 35, 15, 4, 45, 55, 48, 60, "Who could ever leave me, darling — but who could stay? (therapy, audibly)", 211, 561963369, "3pHkh7d0lzM2AldUtz2x37", 55, "2019-08-23", "8KpKc3C9V3w", 168864],
+["I Think He Knows", "Lover", 78, 80, 5, 2, 8, 50, 55, 80, "Sixteenth Avenue strut. He got that boyish look that she likes in a man.", 173, 350537210, "2YWtcWi3a83pdEg3Gif4Pd", 50, "2019-08-23", "2d1wKn-oJnA", 69819],
+["Miss Americana & the Heartbreak Prince", "Lover", 35, 45, 40, 5, 55, 75, 80, 75, "High-school-as-America allegory; the marching band plays doom.", 234, 567347918, "214nt20w5wOxJnY462klLw", 35, "2019-08-23", "Kwf7P2GNAVw", 152724],
+["Paper Rings", "Lover", 94, 96, 2, 12, 30, 55, 78, 80, "Would marry you with paper rings; would mosh at the wedding.", 222, 845718049, "4y5bvROuBDPr5fuwXbIBZR", 95, "2019-08-23", "8zdg-pDF10g", 232345],
+["Cornelia Street", "Lover", 40, 62, 6, 5, 78, 65, 55, 48, "Pre-emptive nostalgia for an address. Devastatingly specific.", 287, 459312470, "12M5uqx0ZuwkpLp5rJim1a", 60, "2019-08-23", "VikHHWrgb4Y", 171308],
+["Death by a Thousand Cuts", "Lover", 22, 15, 18, 5, 50, 90, 72, 58, "What a name for a breakup song from someone NOT broken up.", 199, 377623016, "2dgFqt3w9xIQRjhPtwNk3D", 45, "2019-08-23", "GTEFSuFfgnU", 109582],
+["London Boy", "Lover", 80, 75, 3, 4, 10, 30, 45, 75, "An itinerary disguised as a love song. Stick to the suburbs!", 190, 440476917, "1LLXZFeAHK9R4xUramtUKw", 80, "2019-08-23", "VsKoOH6DVys", 113689],
+["Soon You'll Get Better", "Lover", 5, 25, 5, 55, 40, 45, 15, 5, "The mom hospital song, skipped on purpose by the entire fandom, lovingly.", 202, 181226384, "4AYtqFyFbX0Xkc2wtcygTr", 95, "2019-08-23", "tMoW5G5LU08", 36186],
+["False God", "Lover", 50, 70, 10, 2, 10, 40, 30, 55, "Sax-soaked sacrilege; religion's in your lips.", 200, 382573809, "5hQSXkFgbxjZo9uCwd11so", 15, "2019-08-23", "acQXa5ArHIk", 158800],
+["You Need to Calm Down", "Lover", 82, 30, 45, 5, 5, 35, 65, 92, "Shade never made anybody less gay. Verified.", 171, 1140979465, "6RRNNciQGZEXnqk8SQ9yv5", 70, "2019-08-23", "Dkk9gvTmCXY", 192795],
+["Afterglow", "Lover", 40, 55, 20, 3, 15, 50, 55, 65, "An apology with arena reverb: it's all her, in her head.", 223, 515545181, "1SymEzIT3H8UZfibCs3TYi", 55, "2019-08-23", "8HxbqAsppwU", 136545],
+["ME!", "Lover", 92, 55, 3, 3, 3, 30, 60, 95, "Spelling is fun! The exclamation point is load-bearing.", 193, 985449007, "2Rk4JlNc2TPmZe2af99d45", 90, "2019-08-23", "FuXNumBwDOM", 129468],
+["It's Nice to Have a Friend", "Lover", 60, 65, 2, 5, 55, 30, 15, 30, "Steel drums, school bells, a tiny wedding. A palate cleanser.", 150, 164016662, "1SmiQ65iSAbPto6gPFlBYm", 98, "2019-08-23", "eaP1VswBF28", 27455],
+["Daylight", "Lover", 75, 92, 3, 5, 52, 60, 38, 45, "Burning red was a draft; golden is the final edit.", 293, 725623166, "1fzAuUVbzlhZ1lJAx9PtY6", 85, "2019-08-23", "u9raS7-NisU", 444528],
+// ---- Folklore (2020) — 17
+["the 1", "Folklore", 42, 25, 8, 15, 82, 45, 30, 20, "'It would've been fun, if you would've been the one' — casual, lethal.", 210, 785471093, "0Jlcvv8IykzHaSmj49uNW8", 50, "2020-07-24", "KsZ6tROaVOQ", 239806],
+["cardigan", "Folklore", 35, 40, 15, 10, 80, 72, 45, 32, "Being someone's favorite old sweater: peak romance, somehow.", 240, 2002007871, "4R2kfaDFhslZEMJqAFNpdd", 50, "2020-07-24", "K-a8s8OLBSE", 780523],
+["the last great american dynasty", "Folklore", 65, 30, 25, 10, 75, 75, 60, 45, "Rebekah had a marvelous time ruining everything. So did Taylor.", 231, 463687631, "2Eeur20xVqfUoM3Q7EFPFt", 40, "2020-07-24", "2s5xdY6MCeI", 108155],
+["exile", "Folklore", 10, 10, 30, 18, 55, 80, 75, 25, "Two people arguing in harmony. Bon Iver as the wrong boyfriend.", 286, 1101677186, "4pvb0WLRcMtbPGmtejJJ6y", 45, "2020-07-24", "o5SQIECedTY", 421326],
+["my tears ricochet", "Folklore", 8, 5, 78, 8, 40, 88, 72, 30, "A funeral for a masters catalog. The ghost attended her own.", 256, 855707786, "1MgV7FIyNxIG7WzMRJV5HC", 30, "2020-07-24", "OWbDJFtHl3w", 383231],
+["mirrorball", "Folklore", 30, 38, 4, 8, 42, 40, 35, 38, "Spinning on her tallest tiptoes for your entertainment. Are you not?", 209, 586767784, "0ZNU020wNYvgW84iljPkPP", 55, "2020-07-24", "KaM1bCuG4xo", 171870],
+["seven", "Folklore", 45, 40, 10, 25, 100, 55, 45, 25, "Braids, haunted houses, pirate plans — childhood preserved in amber.", 209, 410915980, "6KJqZcs9XDgVck7Lg9QOTC", 95, "2020-07-24", "pEY-GPsru_E", 90786],
+["august", "Folklore", 38, 30, 8, 12, 90, 82, 85, 52, "Lost in the memory of a summer that was never yours. Salt air. Tears.", 262, 1806366787, "3hUxzQpSfdDqwM3ZTFQY0K", 40, "2020-07-24", "nn_0zPAfyo8", 726006],
+["this is me trying", "Folklore", 15, 25, 10, 10, 55, 60, 40, 30, "The bar parking lot monologue of the century.", 195, 585687382, "7kt9e9LFSpN1zQtYEl19o1", 55, "2020-07-24", "9bdLTPNrlEg", 196065],
+["illicit affairs", "Folklore", 12, 20, 55, 12, 40, 95, 82, 18, "'You taught me a secret language' — RUINOUS in the bridge.", 191, 624936737, "2NmsngXHeC1GQ9wWrzhOMf", 10, "2020-07-24", "MLV2SJKWk4M", 197654],
+["invisible string", "Folklore", 75, 90, 3, 15, 55, 50, 30, 28, "One single thread of gold tied her to him. (The string was later cut.)", 253, 532815137, "6VsvKPJ4xjVNKpI8VVZ3SV", 90, "2020-07-24", "OuFnpmGwg5k", 167774],
+["mad woman", "Folklore", 15, 8, 90, 8, 20, 60, 55, 30, "There's nothing like a mad woman; you made her like that.", 237, 276380472, "2QDyYdZyhlP2fp79KZX8Bi", 15, "2020-07-24", "6DP4q_1EgQQ", 55382],
+["epiphany", "Folklore", 15, 15, 5, 8, 55, 40, 15, 20, "Her grandfather's war and a pandemic ICU in one held breath.", 290, 237929586, "08fa9LFcFBTcilB3iq2e2A", 80, "2020-07-24", "DUnDkI7l9LQ", 51223],
+["betty", "Folklore", 55, 55, 12, 75, 68, 75, 68, 25, "Seventeen, on a skateboard, with a harmonica and an apology.", 295, 458890916, "5kI4eCXXzyuIUXjQra0Cxi", 50, "2020-07-24", "6TAPqXkZW_I", 109811],
+["peace", "Folklore", 45, 80, 5, 10, 20, 40, 25, 15, "'I'd give you my sunshine, give you my best' — the realest vow she's written.", 234, 273920960, "7MbT4I8qGntX4fMdqMQgke", 85, "2020-07-24", "HpxX4ZE4KWE", 64068],
+["hoax", "Folklore", 8, 15, 20, 8, 30, 40, 25, 10, "Your faithless love is the only hoax she believes in. Bleak piano.", 220, 247622643, "6MWoRt97mnSTXZhu3ggi9C", 35, "2020-07-24", "ryLGxpjwAhM", 57529],
+["the lakes", "Folklore", 35, 60, 25, 5, 60, 50, 35, 18, "Take her to the Lakes where all the poets went to die. A mood.", 212, 213910699, "0zEprKYeuGOIZoHyu6O1E2", 65, "2020-08-18", "tOHcAc3r2kw", 56205],
+// ---- Evermore (2020) — 17
+["willow", "Evermore", 62, 82, 4, 35, 30, 50, 42, 40, "Witchy wanting. The water-to-devotion pipeline.", 215, 1093252437, "2gVhfX2Gy1T9kDuS9azrF7", 75, "2020-12-11", "RsEZmictANA", 239268],
+["champagne problems", "Evermore", 8, 12, 10, 30, 65, 98, 90, 15, "'She would've made such a lovely bride' — a proposal dies onscreen.", 244, 835257058, "1gcyHQpBQ1lfXGdhZmWrHP", 45, "2020-12-11", "wMpqCRF7TKg", 197857],
+["gold rush", "Evermore", 50, 45, 12, 8, 35, 55, 45, 68, "A daydream fight with everyone else who finds him attractive.", 185, 363125695, "3Dby3p1m6IOZn2gIIqECgK", 55, "2020-12-11", "Pz-f9mM3Ms8", 66969],
+["'tis the damn season", "Evermore", 35, 42, 8, 55, 95, 60, 55, 28, "Hometown hookup elegy. The road not taken looks real good in December.", 230, 344109415, "6sQckd3Z8NPxVVKUnavY1F", 40, "2020-12-11", "WuvhOD-mP8M", 62220],
+["tolerate it", "Evermore", 10, 18, 35, 15, 30, 85, 65, 18, "Track five sets the table, polishes plates, breaks your heart.", 245, 441589473, "6lCvK2AR2uOKkVFCVlAzzm", 35, "2020-12-11", "ukxEKY_7MOc", 107877],
+["no body, no crime", "Evermore", 50, 5, 92, 90, 15, 60, 78, 30, "Este's husband did it. Taylor and HAIM did it back. Allegedly.", 216, 351835286, "6uwfVkaOM1mcMkFmSn35ix", 10, "2020-12-11", "IEPomqor2A8", 62970],
+["happiness", "Evermore", 25, 22, 20, 10, 55, 55, 28, 15, "There'll be happiness after you — her most adult divorce song.", 315, 248349070, "55Vf4bimc1Rtfg0PAQRAo2", 55, "2020-12-11", "tP4TTgt4nb0", 71335],
+["dorothea", "Evermore", 55, 40, 5, 55, 80, 45, 40, 25, "The hometown friend watching you on screens.", 226, 235805842, "66tOfHVH3aUrscg8vExRV4", 80, "2020-12-11", "zI4DS5GmQWE", 72777],
+["coney island", "Evermore", 20, 18, 12, 12, 65, 50, 30, 25, "With The National: a breakup conducted on a cold boardwalk bench.", 275, 235622629, "2awNGIJHodfLZSClB3PYhz", 50, "2020-12-11", "c_p_TBaHvos", 47806],
+["ivy", "Evermore", 45, 68, 10, 55, 38, 68, 60, 28, "Married to someone else, in love like an invasive plant.", 260, 290227552, "43Ykum9T72UOPhBN31grpN", 20, "2020-12-11", "9nIOx-ezlzA", 67275],
+["cowboy like me", "Evermore", 42, 70, 8, 80, 45, 55, 38, 20, "Two grifters fall in actual love. Bandit hearts, dancing forever.", 275, 262372346, "52OkpDsU6MmPx1AwGOb6Ap", 40, "2020-12-11", "YPlNBb6I8qU", 84528],
+["long story short", "Evermore", 75, 60, 15, 10, 45, 50, 55, 60, "The reputation era recapped at double speed: she survived.", 216, 263031515, "5VYWxXUpxuxEmCqMLDqICo", 70, "2020-12-11", "BHZt0_sZJlQ", 59359],
+["marjorie", "Evermore", 20, 30, 3, 15, 98, 60, 35, 25, "What died didn't stay dead — her grandmother sings backup. Sob.", 258, 321486584, "5uICWmZTLkpEVbK22PBP6e", 95, "2020-12-11", "hP6QpMeSG6s", 73359],
+["closure", "Evermore", 45, 15, 45, 5, 15, 35, 25, 40, "Yes it's been a long time; no, she doesn't need your letter.", 181, 159001119, "6a8aUhYbaQBUI8PcJ5ZmQ6", 40, "2020-12-11", "AIFnKqIeEdY", 31002],
+["evermore", "Evermore", 15, 20, 8, 15, 40, 75, 45, 15, "Bon Iver returns; the pain stops being permanent in the bridge.", 304, 305853321, "6Wlq9rqkxrqj5Kls4Kw14H", 55, "2020-12-11", "RsEZmictANA", 78086],
+["right where you left me", "Evermore", 12, 10, 15, 40, 92, 70, 72, 25, "Still at that restaurant table. Dust gathered. We weep.", 245, 511514394, "3zwMVvkBe2qIKDObWgXw4N", 50, "2021-01-07", "Ur_wAcYDnuA", 213705],
+["it's time to go", "Evermore", 45, 20, 25, 12, 35, 40, 30, 18, "Sometimes leaving is the brave thing. A quiet exit anthem.", 255, 152207320, "1kdWw77ZpYOkhxeuhzU1j6", 65, "2021-01-07", "1iRbIYkccgw", 44182],
+// ---- Midnights (2022) — 21
+["Lavender Haze", "Midnights", 70, 82, 15, 2, 8, 40, 52, 88, "Refusing the 1950s and the tabloids in one purple exhale.", 202, 894717225, "5jQI2r1RdgtuT8S3iG8zFC", 50, "2022-10-21", "_Y3ytTk6z1s", 148351],
+["Maroon", "Midnights", 35, 30, 18, 3, 70, 55, 60, 65, "Burgundy on her t-shirt — the grown-up sequel to Red.", 218, 620111726, "3eX0NZfLtGzoLUxPNvRfqm", 30, "2022-10-21", "_29UVDO55f4", 153506],
+["Anti-Hero", "Midnights", 35, 25, 20, 3, 25, 75, 82, 80, "It's her, hi. The problem also charted at #1 for weeks.", 201, 2016445293, "0V3wPSX9ygBnCm8psDIegu", 45, "2022-10-21", "WYSvKr-I4ck", 403818],
+["Snow on the Beach", "Midnights", 55, 72, 3, 4, 30, 40, 28, 62, "Weird but beautiful, with Lana audible from this distance.", 256, 526273239, "1wtOxkiel43cVs0Yux5Q4h", 65, "2022-10-21", "ycE7bUq3-2k", 92332],
+["You're On Your Own, Kid", "Midnights", 22, 18, 12, 8, 95, 92, 80, 55, "'So make the friendship bracelets' — a throwaway line that built a tour.", 194, 874499398, "4D7BCuvgdJlYvlX5WlN54t", 70, "2022-10-21", "7Gbg6Z70J7E", 317966],
+["Midnight Rain", "Midnights", 35, 22, 10, 5, 72, 55, 48, 72, "He wanted comfortable; she wanted that pitch-shifted intro.", 175, 861577715, "3rWDp9tBPQR9z6U5YyRSK4", 45, "2022-10-21", "Odh9ddPUkEY", 200916],
+["Question...?", "Midnights", 50, 35, 25, 3, 55, 50, 55, 70, "Did you ever have someone kiss you in a crowded room? Asking for her.", 211, 366439153, "0heeNYlwOGuUSe7TgUD27B", 40, "2022-10-21", "xxrf_QBD5DE", 60392],
+["Vigilante Shit", "Midnights", 45, 8, 90, 2, 5, 40, 50, 60, "Draws cat eyes sharp enough to kill a man. Dresses for revenge.", 165, 517241363, "1xwAWUI6Dj0WGC3KiUPN0O", 10, "2022-10-21", "Uoey4W_3bos", 87953],
+["Bejeweled", "Midnights", 85, 30, 35, 2, 10, 45, 62, 94, "Can still make the whole place shimmer. Polishes tiara, reclaims castle.", 194, 720282902, "3qoftcUZaUOncvIYjFSPdE", 55, "2022-10-21", "b7QlX3yR2xs", 178873],
+["Labyrinth", "Midnights", 30, 55, 3, 2, 15, 40, 15, 55, "Uh oh, falling in love again — breathed, not sung.", 248, 407893473, "0A1JLUlkZkp2EFrosoNQi0", 60, "2022-10-21", "xTXsKMXUi7w", 181230],
+["Karma", "Midnights", 90, 40, 55, 3, 5, 45, 75, 93, "Karma is a cat. Karma is a relaxing thought. Karma is a chart position.", 205, 1026290492, "7KokYm8cMIXCsGVmUvKtqf", 45, "2022-10-21", "XzOvgu3GPwY", 222444],
+["Sweet Nothing", "Midnights", 75, 92, 2, 5, 25, 40, 20, 35, "Industry disclaims; he wants sweet nothing. (Poignant in hindsight.)", 188, 373820378, "0wavGRldH0AWyu2zvTz8zb", 95, "2022-10-21", "rn0brgg2BpI", 97316],
+["Mastermind", "Midnights", 68, 80, 12, 2, 22, 65, 50, 78, "'None of it was accidental' — the villain reveal as a love letter.", 191, 465413702, "7FmYn9e7KHMXcxqGSj9LjH", 40, "2022-10-21", "Tmz1lz0zcLQ", 123264],
+["The Great War", "Midnights", 40, 55, 30, 5, 25, 60, 55, 60, "Military-grade relationship repair; poppies grow at the end.", 240, 383430149, "2VuqMjgoKaOHNM8HpxtXKx", 55, "2022-10-21", "iFX6_9h7th0", 99583],
+["Bigger Than the Whole Sky", "Midnights", 5, 15, 5, 4, 30, 45, 25, 35, "A goodbye to something that never got a name. Devastating on purpose.", 219, 254910761, "71CBDRKmF2VeRKYMG1DFBh", 70, "2022-10-21", "l8Tps3PITx4", 63134],
+["Paris", "Midnights", 80, 80, 3, 2, 15, 35, 40, 75, "Romance as escapism; cheap wine and drawn blinds.", 196, 244950966, "5tWxKWq1DSP1s9WQ5PWuqu", 65, "2022-10-21", "ySZGZrcqvr4", 60729],
+["High Infidelity", "Midnights", 25, 12, 35, 4, 40, 50, 40, 50, "Do you really wanna know where she was April 29th?", 231, 204094637, "1SztNGCwEHJEVFx90E5g7D", 10, "2022-10-21", "-qee6dFKlw4", 59989],
+["Glitch", "Midnights", 60, 60, 10, 2, 5, 35, 30, 70, "The situationship that kept working long past the warranty.", 149, 160341775, "7C0w28EsX0Um2FrZs9gso2", 35, "2022-10-21", "Y2a73EvnZ4s", 31543],
+["Would've, Could've, Should've", "Midnights", 12, 8, 88, 25, 80, 95, 95, 45, "The dance hall ghost — spiritually a sequel to Dear John with sharper knives.", 260, 367918820, "4txojlesMFQZGWxwz2EeqB", 20, "2022-10-21", "B-MfwP_RmHY", 91043],
+["Dear Reader", "Midnights", 25, 20, 10, 3, 30, 40, 25, 45, "Advice column from someone who admits she's a flawed source.", 225, 180156852, "10GRRCR5fctuOF4GFmATJI", 50, "2022-10-21", "X0Jti9F-oQA", 47178],
+["Hits Different", "Midnights", 55, 20, 30, 5, 35, 55, 70, 75, "Drunk crying in heels; the bonus track that out-bopped the tracklist.", 234, 292197083, "3xYJScVfxByb61dYHTwiby", 35, "2022-10-21", "_f4yoKJL7IQ", 132752],
+// ---- TTPD (2024) — 31
+["Fortnight", "TTPD", 25, 18, 30, 3, 28, 45, 40, 68, "Functional-alcoholic neighbor-love with Post Malone harmonies.", 229, 1192694274, "2OzhQlSqBEmt7hmkYxfT6m", 20, "2024-04-19", "X3BAOxJFK74", 572769],
+["The Tortured Poets Department", "TTPD", 35, 40, 22, 3, 25, 50, 55, 55, "You're not Dylan Thomas, she's not Patti Smith, but the typewriter stays.", 293, 338657249, "3NMrVbIVWT3fPXBj0rNDKG", 35, "2024-04-19", "_XGbyjwGiCA", 135675],
+["My Boy Only Breaks His Favorite Toys", "TTPD", 30, 20, 25, 4, 25, 50, 55, 55, "Being the favorite toy is not the honor it sounds like.", 204, 415205165, "2XXwLdtuAcE0HSCu61ijAb", 35, "2024-04-19", "wRKXAAV6jh4", 178489],
+["Down Bad", "TTPD", 20, 15, 45, 3, 15, 55, 85, 72, "Crying at the gym after cosmic love. 'F— it if I can't have him.'", 261, 536737878, "2F3N9tdombb64aW6VtZOdo", 25, "2024-04-19", "EVbtjaWXQVg", 220283],
+["So Long, London", "TTPD", 8, 6, 40, 2, 75, 80, 70, 52, "Track five does it again. A whole city, returned like a ring.", 263, 430585492, "3Vevii7qKqrmW8CcyzBHDl", 40, "2024-04-19", "CCUr2pNJft4", 153172],
+["But Daddy I Love Him", "TTPD", 55, 85, 70, 50, 15, 80, 88, 55, "She's having his baby! (No she's not, but you should see your faces.)", 340, 382926581, "5og4Qzt92jJzVDkOtSEilb", 30, "2024-04-19", "U2W173hRfyA", 174925],
+["Fresh Out the Slammer", "TTPD", 45, 55, 20, 15, 40, 40, 35, 45, "Prison metaphors for a six-year relationship: bold, pointed.", 211, 261894460, "3fO566xJgwxIa3qGCGBvIC", 30, "2024-04-19", "0EKbEP2L32M", 130502],
+["Florida!!!", "TTPD", 55, 15, 50, 8, 10, 65, 80, 75, "Florence + a getaway state + three exclamation points of menace.", 215, 336733402, "3ZVFcD8Wlw9T9klGqmJf9F", 15, "2024-04-19", "uEssK8o3jKg", 128490],
+["Guilty as Sin?", "TTPD", 55, 75, 10, 3, 25, 70, 70, 55, "Fantasizing so vividly it requires legal counsel and absolution.", 254, 589403275, "0W0iAC1VGlB82PI6elxFYf", 15, "2024-04-19", "OOYlWF6V8t8", 367273],
+["Who's Afraid of Little Old Me?", "TTPD", 15, 8, 98, 8, 30, 95, 97, 40, "'You should be' — the final boss of the catalog.", 334, 442541812, "36t6frENUtCYKuZus6aYDO", 15, "2024-04-19", "vOZFiX6hDXQ", 177718],
+["I Can Fix Him (No Really I Can)", "TTPD", 50, 60, 20, 40, 5, 50, 40, 35, "Narrator voice: she could not. (She admits it on the last line.)", 156, 190096339, "2h3MDMf8sd9s4XIzpTBIjX", 30, "2024-04-19", "OKWfv-x2rdU", 63081],
+["loml", "TTPD", 5, 8, 25, 5, 70, 75, 45, 10, "Loss of my life. The acronym was a trap the whole time.", 277, 380916114, "6RSG1dKPV5gEvILwJb4QtS", 40, "2024-04-19", "GZ4vaTRn0HU", 285888],
+["I Can Do It With a Broken Heart", "TTPD", 55, 10, 25, 2, 12, 50, 75, 96, "The saddest song that sounds like confetti. 'Lights, camera, b—, smile.'", 218, 833234675, "4q5YezDOIPcoLr8R81x9qy", 40, "2024-04-19", "Sl6en1NPTYM", 375264],
+["The Smallest Man Who Ever Lived", "TTPD", 8, 5, 94, 4, 20, 98, 96, 35, "A character assassination so complete it required a second funeral.", 246, 347151003, "2v1ivOOsgn64g5OywuH55L", 10, "2024-04-19", "Atdzfj8LcuY", 150585],
+["The Alchemy", "TTPD", 70, 85, 8, 3, 10, 40, 40, 55, "Touchdown metaphors. Subtlety was not the assignment.", 197, 286949442, "1dhMTsEZz6ZEquGvmzVoHn", 70, "2024-04-19", "iMMUAd66vxo", 132853],
+["Clara Bow", "TTPD", 40, 25, 25, 10, 70, 55, 40, 40, "The It-Girl conveyor belt, ending with 'you look like Taylor Swift.'", 217, 179535499, "1UlhrRvYzbHEyugEDspXUB", 55, "2024-04-19", "fcVUbmdQfaE", 62745],
+["The Black Dog", "TTPD", 12, 10, 55, 3, 55, 80, 80, 45, "He forgot to turn off location sharing. Forensic heartbreak.", 239, 219006885, "62E2nR0od0M5HYxuYLaDz7", 25, "2024-04-19", "56TZ3B8Qxsk", 94445],
+["imgonnagetyouback", "TTPD", 55, 45, 40, 2, 10, 40, 50, 65, "Revenge or reunion — she hasn't decided, and neither has the song.", 222, 262006533, "1kcwpPDQnqEqmezzXdJTCP", 25, "2024-04-19", "SBGdvxi2JmU", 142707],
+["The Albatross", "TTPD", 30, 30, 30, 10, 25, 45, 30, 30, "She's the albatross; cross her at your own maritime peril.", 184, 148390452, "4EF6IyONolQy0bIQXm2EmX", 40, "2024-04-19", "4wOsiM2T_xc", 53091],
+["Chloe or Sam or Sophia or Marcus", "TTPD", 15, 15, 15, 4, 60, 55, 35, 25, "Names of people who got to stay ordinary. A piano loop of doom.", 213, 170625599, "1rmEsOezwf2lmIZTMAO5Ag", 35, "2024-04-19", "gOtOWeD9YJk", 84227],
+["How Did It End?", "TTPD", 10, 8, 20, 5, 45, 65, 40, 25, "The autopsy everyone gossips about; come one, come all.", 239, 222803454, "5Bedn0svl0ZD7RGmJkmKKw", 30, "2024-04-19", "O3wlMR0y4a4", 92649],
+["So High School", "TTPD", 80, 85, 5, 8, 55, 40, 55, 60, "Grand Theft Auto and Aristotle in one rhyme. Travis-core.", 229, 417241371, "7Mts0OfPorF4iwOomvfqn1", 80, "2024-04-19", "w-FkV0EM_CU", 309034],
+["I Hate It Here", "TTPD", 30, 20, 30, 8, 65, 45, 25, 20, "Secret gardens in her mind; would rather be anywhere but the present.", 244, 179825668, "3hlGuz3loYoLfI3bpwieWq", 50, "2024-04-19", "BpkmUfv1I4Q", 79477],
+["thanK you aIMee", "TTPD", 55, 15, 70, 30, 35, 55, 50, 45, "The capital letters spell it out. The bridge twists the knife sweetly.", 264, 138969974, "7ogK4lJDVDMU6A6vYR5rvD", 25, "2024-04-19", "oaBJlKXBvjk", 49617],
+["I Look in People's Windows", "TTPD", 25, 20, 10, 8, 55, 30, 15, 18, "A 90-second spiral of what-if. Certified lurker ballad.", 132, 134925444, "1Zai5UJ2di3qEuR2HeT2s8", 50, "2024-04-19", "6HIA7ouBfGY", 51924],
+["The Prophecy", "TTPD", 15, 30, 15, 10, 40, 60, 45, 25, "Begging the universe to change fate: don't want money, just somebody who wants her.", 250, 276731782, "18WFFUIsewmA8g31KAeo3e", 60, "2024-04-19", "_PsBoqNwYo4", 156818],
+["Cassandra", "TTPD", 20, 10, 70, 5, 30, 55, 45, 30, "She told the truth and they burned the witch anyway.", 240, 126471696, "0g4fMVo4JjwnIpTfFfLdxS", 30, "2024-04-19", "0hYY86DmqPY", 43787],
+["Peter", "TTPD", 15, 25, 10, 5, 80, 60, 35, 15, "Peter Pan never grew up; she finally closed the window.", 284, 177226888, "3zMDGj4D8ogaYgAIZPeU7S", 70, "2024-04-19", "Mxxswu7V1Us", 97613],
+["The Bolter", "TTPD", 60, 30, 15, 15, 45, 50, 40, 40, "Runs from everything; freedom feels like splashing out of cold water.", 238, 167902605, "2913xXOVAIDAqxzV2g4VcU", 45, "2024-04-19", "bAi80EylyXQ", 89027],
+["Robin", "TTPD", 50, 45, 3, 8, 75, 35, 15, 20, "A child's pre-grief innocence, protected for one more song.", 241, 97169650, "2CnjDMdpRjlWv04Xk3s6MW", 95, "2024-04-19", "FQyEZZPbOb0", 38969],
+["The Manuscript", "TTPD", 20, 15, 8, 5, 90, 60, 25, 12, "The story isn't hers anymore — the closing credits of the Anthology.", 225, 110871263, "1DTRUYVd8rYpla9hhVVwjo", 60, "2024-04-19", "iY6Qhlua8Zw", 52684],
+// ---- The Life of a Showgirl (2025) — 12
+["The Fate of Ophelia", "Showgirl", 80, 88, 8, 3, 15, 60, 85, 92, "Pulled from Hamlet's pond straight into a disco.", 226, 1439018972, "1dosSsKwYF7hoQA2kuu6wI", 60, "2025-10-03", "ko70cExuzZM", 2616936],
+["Elizabeth Taylor", "Showgirl", 55, 60, 20, 2, 40, 55, 60, 85, "Diamonds, divorces, and old-Hollywood armor.", 208, 359465406, "1A2vZKJZovt4828jwLgiB3", 45, "2025-10-03", "WqbJT_vC0rs", 509913],
+["Opalite", "Showgirl", 90, 85, 3, 4, 20, 55, 75, 90, "Manufactured stone, real joy — the sky is finally onyx-free.", 235, 762910345, "67osB3wmJVTFzKhWqPb1Hm", 80, "2025-10-03", "1FVF-9KQiPo", 1463089],
+["Father Figure", "Showgirl", 40, 15, 70, 4, 35, 65, 55, 70, "George Michael interpolation; the protégé becomes the don.", 213, 315532351, "1lD0oPIfSYid1LhPvgrz10", 25, "2025-10-03", "ZDhbG7aY0_o", 321457],
+["Eldest Daughter", "Showgirl", 25, 45, 10, 12, 65, 70, 40, 35, "Track five strikes again: never been a cool girl, always the firstborn.", 246, 215229311, "6iC3L3YmAkGucvJbXKDanA", 85, "2025-10-03", "HwQnW_ZRKhc", 203288],
+["Ruin the Friendship", "Showgirl", 55, 60, 8, 15, 70, 55, 50, 55, "Should've kissed him in the truck. Advice given too late to take.", 221, 230688495, "34xxPZWbEyg5iDKEBqdsBZ", 50, "2025-10-03", "WQCPl5rTMDQ", 311965],
+["Actually Romantic", "Showgirl", 65, 15, 70, 3, 5, 45, 60, 75, "'Thanks for the dedication' — a thank-you note shaped like a knife.", 164, 242708374, "6ZSxG2QvGmwXbTfn7iDq7a", 25, "2025-10-03", "FnEg1RgmqO4", 245662],
+["Wi$h Li$t", "Showgirl", 70, 80, 12, 3, 10, 40, 45, 80, "Everyone wants yachts; she wants him and a basketball hoop in the driveway.", 207, 281145825, "3Qeh4z08FfDBRfQMfDv83f", 75, "2025-10-03", "wqgUzLHgNMI", 321494],
+["Wood", "Showgirl", 85, 85, 5, 5, 5, 40, 55, 80, "The innuendo heard round the world. New heights, indeed.", 151, 245602818, "0129EujhGkwtwTFADGem5P", 5, "2025-10-03", "6m50keINEOI", 224187],
+["CANCELLED!", "Showgirl", 55, 20, 75, 2, 8, 50, 60, 80, "Likes her friends cloaked in Gucci and scandal. Reputation's chaotic niece.", 211, 234526865, "3FzJDGVjRGNc7KrkabU5N0", 15, "2025-10-03", "F-5XoUZ42Tc", 209186],
+["Honey", "Showgirl", 75, 80, 5, 8, 15, 40, 40, 70, "Reclaiming every pet name ever said with a sneer.", 182, 197716541, "3vGd1heFoUuFGvKvl0SdW3", 75, "2025-10-03", "4-EzK5UB40U", 247960],
+["The Life of a Showgirl", "Showgirl", 60, 35, 25, 3, 45, 60, 55, 85, "Sabrina Carpenter duet: the glitter, the grit, the baton pass.", 242, 279143198, "243KxZULAjWO3KREpVHgOH", 50, "2025-10-03", "ko70cExuzZM", 309014],
+// ---- Singles & Extras — 9
+["Crazier", "Extras", 70, 80, 2, 75, 55, 40, 40, 15, "The Hannah Montana movie scene that awakened a generation.", 192, 148499351, "5vyxXfD5gLlyPxGZMEjtmd", 95, "2009-03-24", "B0p4Lv0t124", 43727],
+["Safe & Sound", "Extras", 15, 25, 5, 60, 40, 30, 15, 5, "Hunger Games lullaby with The Civil Wars; hauntingly sparse.", 240, 258310608, "0z9UVN8VBHJ9HdfYsOuuNf", 90, "2011-12-23", "RzhAS_GnJIc", 26941],
+["Eyes Open", "Extras", 45, 15, 40, 25, 15, 45, 60, 50, "The other Hunger Games song: paranoia pop-rock.", 245, 51474860, "0gPmM1WtVRg3uENW3o8bfx", 60, "2012-03-20", "8hsVICl7d8k", 10357],
+["Sweeter Than Fiction", "Extras", 85, 60, 3, 15, 40, 45, 55, 75, "A soundtrack sparkler that was secretly a 1989 test flight.", 235, 26299583, "0RFCHlNuTeUHIB36VuVbOL", 90, "2013-10-21", "ytGqUs3UIPk", 10998],
+["Beautiful Ghosts", "Extras", 25, 30, 5, 5, 70, 45, 30, 20, "Written for Cats (2019). Not her fault. The song is lovely.", 261, 20657711, "2evEoQAhIMaa9PfjTT5skG", 75, "2019-11-15", "trIjpVH8h88", 4497],
+["Christmas Tree Farm", "Extras", 88, 75, 2, 30, 70, 35, 50, 75, "Her heart is, in fact, a Christmas tree farm.", 228, 288456553, "4mKye6Z1kXuKolzMkJoKFA", 100, "2019-12-06", "mN3rDTAdM2o", 6430],
+["Only the Young", "Extras", 40, 20, 55, 5, 25, 50, 45, 55, "Protest pop that keeps getting un-retired by the news cycle.", 158, 140998295, "2slqvGLwzZZYsT4K4Y1GBC", 65, "2020-01-31", "GJU-S1t2r1M", 15829],
+["Carolina", "Extras", 12, 10, 20, 55, 55, 40, 25, 8, "Where the Crawdads Sing murder-folk, recorded in one take, allegedly.", 164, 95663807, "4axSuOg3BqsowKjRpj59RU", 30, "2022-06-24", "egxyRSb_XtI", 23013],
+["All of the Girls You Loved Before", "Extras", 60, 75, 5, 5, 55, 40, 30, 50, "TikTok demanded its release; every ex was a stepping stone.", 221, 484557893, "17yraMKqmZIKAv3iaGcoLX", 70, "2023-03-17", "SpLJl9Au3fw", 110322],
+["I Knew It, I Knew You", "Extras", 65, 75, 5, 10, 60, 50, 55, 65, "Brand-new June 2026 single — so fresh these scores are first-listen impressions. She knew it; we're still learning it.", 178, 31807342, "5uPaqMMt59KGrdKIitDRqa", 70, "2026-06-05", "hDU4GB1PTxc", 4039436],
+];
+
+// ---------------- state ----------------
+let metricX = METRICS[1]; // Popularity
+let metricY = METRICS[0]; // Happiness
+const off = new Set();
+const stage = document.getElementById("stage");
+const tip = document.getElementById("tip");
+const TOUCH = matchMedia("(hover: none), (pointer: coarse)").matches;
+const metricKeys = ["mood","love","anger","country","nostalgia","bridge","scream","sparkle"];
+
+const songs = SONGS.map((s, i) => {
+  const o = { title:s[0], album:s[1], note:s[10], sec:s[11], streams:s[12], spid:s[13], whole:s[14], date:s[15], yt:s[16], daily:s[17], id:i };
+  metricKeys.forEach((k, j) => o[k] = s[j+2]);
+  return o;
+});
+// song length → 0–100 across the catalog's min/max runtime; shown as m:ss
+const minSec = Math.min(...songs.map(s => s.sec)), maxSec = Math.max(...songs.map(s => s.sec));
+songs.forEach(s => s.len = Math.round((s.sec - minSec) / (maxSec - minSec) * 100));
+// popularity → 0–100 on a log scale (streams span 20M to 3.4B); shown as 353M / 2.1B
+const lg = n => Math.log10(n);
+const minSt = Math.min(...songs.map(s => s.streams)), maxSt = Math.max(...songs.map(s => s.streams));
+songs.forEach(s => s.pop = Math.round((lg(s.streams) - lg(minSt)) / (lg(maxSt) - lg(minSt)) * 100));
+// trending → 0–100 on log of current daily streams
+const minD = Math.min(...songs.map(s => Math.max(s.daily, 1))), maxD = Math.max(...songs.map(s => s.daily));
+songs.forEach(s => s.trend = Math.round((lg(Math.max(s.daily, 1)) - lg(minD)) / (lg(maxD) - lg(minD)) * 100));
+// release date → 0–100 between the 2006 debut and the newest release
+const ts = s => new Date(s.date + "T00:00:00").getTime();
+const minT = Math.min(...songs.map(ts)), maxT = Math.max(...songs.map(ts));
+songs.forEach(s => s.rel = Math.round((ts(s) - minT) / (maxT - minT) * 100));
+const MO = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const fmtLen = sec => Math.floor(sec / 60) + ":" + String(sec % 60).padStart(2, "0");
+const fmtSt = n => n >= 1e9 ? (n / 1e9).toFixed(2) + "B" : Math.round(n / 1e6) + "M";
+const fmtDate = d => MO[+d.split("-")[1] - 1] + " " + d.split("-")[0];
+const fmtTrend = d => { const wk = d * 7; return wk >= 1e6 ? (wk / 1e6).toFixed(1) + "M/wk" : Math.round(wk / 1e3) + "K/wk"; };
+const disp = (s, m) => m.k === "len" ? fmtLen(s.sec) : m.k === "pop" ? fmtSt(s.streams)
+  : m.k === "trend" ? fmtTrend(s.daily) : m.k === "rel" ? fmtDate(s.date) : s[m.k];
+// real-valued axes: print actual numbers at each gridline (inverting each metric's scale).
+// annotated 0–100 scores keep their plain score ticks.
+const fmtDateTs = t => { const d = new Date(t); return MO[d.getMonth()] + " " + d.getFullYear(); };
+const AXIS = {
+  len:   { lo: minSec, hi: maxSec, log: false, fmt: v => fmtLen(Math.round(v)) },
+  pop:   { lo: minSt,  hi: maxSt,  log: true,  fmt: v => fmtSt(v) },
+  trend: { lo: minD,   hi: maxD,   log: true,  fmt: v => fmtTrend(v) },
+  rel:   { lo: minT,   hi: maxT,   log: false, fmt: v => fmtDateTs(v) },
+};
+const valueAt = (c, t) => c.log
+  ? Math.pow(10, lg(c.lo) + (t / 100) * (lg(c.hi) - lg(c.lo)))
+  : c.lo + (t / 100) * (c.hi - c.lo);
+const tickLabel = (m, v) => AXIS[m.k] ? AXIS[m.k].fmt(valueAt(AXIS[m.k], v)) : v;
+
+// ---------------- build UI ----------------
+function soloAlbum(name) {
+  const isSolo = !off.has(name) && off.size === Object.keys(ALBUMS).length - 1;
+  off.clear();
+  if (!isSolo) Object.keys(ALBUMS).forEach(n => { if (n !== name) off.add(n); });
+  render(false);
+}
+
+const coversEl = document.getElementById("covers");
+Object.keys(ALBUMS).forEach(name => {
+  if (!ART[name]) return;
+  const img = document.createElement("img");
+  img.src = ART[name];
+  img.title = name + " (" + ALBUMS[name].y + ")";
+  img.style.setProperty("--ec", ALBUMS[name].c);
+  img.dataset.album = name;
+  img.onclick = () => soloAlbum(name);
+  coversEl.appendChild(img);
+});
+
+const metricsXEl = document.getElementById("metricsX");
+const metricsYEl = document.getElementById("metricsY");
+function buildPills(el, axis) {
+  METRICS.forEach(m => {
+    const b = document.createElement("button");
+    b.className = "pill"; b.textContent = m.label;
+    b.dataset.k = m.k;
+    b.onclick = () => {
+      // picking the metric already on the other axis swaps them
+      if (axis === "x") { if (m.k === metricY.k) metricY = metricX; metricX = m; }
+      else { if (m.k === metricX.k) metricX = metricY; metricY = m; }
+      render();
+    };
+    el.appendChild(b);
+  });
+}
+buildPills(metricsXEl, "x");
+buildPills(metricsYEl, "y");
+
+// gridlines (both directions), Y-axis end labels, corner annotations
+for (let v = 0; v <= 100; v += 25) {
+  for (const [cls, tick] of [["gridline", "gridtick"], ["gridlineH", "gridtickY"]]) {
+    const g = document.createElement("div");
+    g.className = cls; g.dataset.v = v;
+    stage.appendChild(g);
+    const t = document.createElement("div");
+    t.className = tick; t.dataset.v = v; t.textContent = v;
+    stage.appendChild(t);
+  }
+}
+const yLabHi = document.createElement("div"); yLabHi.className = "ylab hi"; stage.appendChild(yLabHi);
+const yLabLo = document.createElement("div"); yLabLo.className = "ylab lo"; stage.appendChild(yLabLo);
+const yBlurb = document.createElement("div"); yBlurb.className = "yblurb"; stage.appendChild(yBlurb);
+const xBlurb = document.getElementById("xBlurb");
+const corners = ["tl", "tr", "bl", "br"].map(k => {
+  const c = document.createElement("div");
+  c.className = "corner " + k;
+  stage.appendChild(c);
+  return c;
+});
+
+// dots — each wears its album cover, ringed in era color
+const dotEls = songs.map(s => {
+  const d = document.createElement("div");
+  const a = ALBUMS[s.album];
+  d.className = "dot";
+  if (ART[s.album]) d.style.backgroundImage = `url(${ART[s.album]})`;
+  else d.style.background = a.c;
+  d.style.border = `1.5px solid ${a.c}`;
+  d.style.boxShadow = `0 0 8px ${a.c}55`;
+  d.onmouseenter = () => showTip(d, s);
+  d.onmouseleave = scheduleHideTip;
+  d.onclick = () => TOUCH ? showTip(d, s) : playSpotify(s.spid);
+  stage.appendChild(d);
+  return d;
+});
+
+// labels for extremes
+const labelPool = Array.from({length: 6}, () => {
+  const l = document.createElement("div");
+  l.className = "dot-label";
+  stage.appendChild(l);
+  return l;
+});
+
+// try the Spotify app first; fall back to the web player if nothing launches
+function playSpotify(spid) {
+  let launched = false;
+  const onBlur = () => launched = true;
+  window.addEventListener("blur", onBlur);
+  location.href = "spotify:track:" + spid;
+  setTimeout(() => {
+    window.removeEventListener("blur", onBlur);
+    if (!launched && !document.hidden) window.open("https://open.spotify.com/track/" + spid, "_blank");
+  }, 1400);
+  return false;
+}
+
+let tipTimer = null;
+function hideTip() { tip.style.opacity = 0; tip.style.pointerEvents = "none"; }
+function scheduleHideTip() { tipTimer = setTimeout(hideTip, 250); }
+tip.onmouseenter = () => clearTimeout(tipTimer);
+tip.onmouseleave = hideTip;
+
+function showTip(el, s) {
+  clearTimeout(tipTimer);
+  const a = ALBUMS[s.album];
+  const cover = ART[s.album] ? `<img class="t-cover" src="${ART[s.album]}">` : "";
+  tip.innerHTML = `
+    <div class="t-head">${cover}
+      <div>
+        <div class="t-title">${s.title}</div>
+        <div class="t-album" style="color:${a.c}">${s.album} · ${a.y}</div>
+      </div>
+    </div>
+    <div class="t-metric">→ ${metricX.label}: <span class="t-score">${disp(s, metricX)}</span> &nbsp;·&nbsp; ↑ ${metricY.label}: <span class="t-score">${disp(s, metricY)}</span></div>
+    <div class="t-note">${s.note}</div>
+    <div class="t-actions">
+      <a class="t-play" href="spotify:track:${s.spid}" onclick="return playSpotify('${s.spid}')">▶ Spotify</a>
+      <a class="t-play yt" href="${s.yt ? "https://www.youtube.com/watch?v=" + s.yt : "https://www.youtube.com/results?search_query=" + encodeURIComponent("Taylor Swift " + s.title)}" target="_blank">▶ YouTube</a>
+    </div>`;
+  tip.style.opacity = 1;
+  tip.style.pointerEvents = "auto";
+  const r = el.getBoundingClientRect(), tw = tip.offsetWidth, th = tip.offsetHeight, pad = 10;
+  let x = r.right + pad;
+  if (x + tw > innerWidth - 8) x = r.left - tw - pad;
+  tip.style.left = Math.max(8, x) + "px";
+  tip.style.top = Math.max(8, Math.min(r.top - 8, innerHeight - th - 8)) + "px";
+}
+
+// ---------------- layout & render ----------------
+function layout() {
+  const W = stage.clientWidth, H = stage.clientHeight;
+  const mobile = matchMedia("(max-width: 700px)").matches;
+  const padL = mobile ? 52 : 80, padR = mobile ? 14 : 20, padT = 26, padB = 30;
+  const xOf = v => padL + (v / 100) * (W - padL - padR);
+  const yOf = v => H - padB - (v / 100) * (H - padT - padB);
+
+  stage.querySelectorAll(".gridline").forEach(g => g.style.left = xOf(+g.dataset.v) + "px");
+  stage.querySelectorAll(".gridtick").forEach(t => t.style.left = xOf(+t.dataset.v) + "px");
+  stage.querySelectorAll(".gridlineH").forEach(g => g.style.top = yOf(+g.dataset.v) + "px");
+  stage.querySelectorAll(".gridtickY").forEach(t => t.style.top = yOf(+t.dataset.v) + "px");
+
+  // exact ties fan out on a small golden-angle spiral so stacks stay readable
+  const seen = new Map();
+  return songs.map(s => {
+    const key = s[metricX.k] + "," + s[metricY.k];
+    const n = seen.get(key) || 0;
+    seen.set(key, n + 1);
+    const rad = n ? 6 * Math.sqrt(n) : 0, ang = n * 2.39996;
+    return { x: xOf(s[metricX.k]) + rad * Math.cos(ang), y: yOf(s[metricY.k]) + rad * Math.sin(ang) };
+  });
+}
+
+function render(relayout = true) {
+  metricsXEl.querySelectorAll(".pill").forEach(p => p.classList.toggle("active", p.dataset.k === metricX.k));
+  metricsYEl.querySelectorAll(".pill").forEach(p => p.classList.toggle("activeY", p.dataset.k === metricY.k));
+  xBlurb.textContent = metricX.blurb;
+  yBlurb.textContent = metricY.blurb;
+  document.getElementById("xLoLab").textContent = metricX.lo;
+  document.getElementById("xHiLab").textContent = metricX.hi;
+  // counter-rotate the leading emoji so it stays upright in vertical text
+  const upright = t => { const i = t.indexOf(" "); return `<span class="up">${t.slice(0, i)}</span>${t.slice(i)}`; };
+  yLabHi.innerHTML = upright(metricY.hi);
+  yLabLo.innerHTML = upright(metricY.lo);
+  corners[0].textContent = metricX.lo + " · " + metricY.hi;
+  corners[1].textContent = metricX.hi + " · " + metricY.hi;
+  corners[2].textContent = metricX.lo + " · " + metricY.lo;
+  corners[3].textContent = metricX.hi + " · " + metricY.lo;
+  coversEl.querySelectorAll("img").forEach(c =>
+    c.classList.toggle("solo", !off.has(c.dataset.album) && off.size === Object.keys(ALBUMS).length - 1));
+  // number the axes with real values where the metric is a real measurement
+  stage.querySelectorAll(".gridtick").forEach(t => t.textContent = tickLabel(metricX, +t.dataset.v));
+  stage.querySelectorAll(".gridtickY").forEach(t => t.textContent = tickLabel(metricY, +t.dataset.v));
+
+  const pos = layout();
+  songs.forEach((s, i) => {
+    dotEls[i].style.left = pos[i].x + "px";
+    dotEls[i].style.top = pos[i].y + "px";
+    dotEls[i].classList.toggle("dim", off.has(s.album));
+  });
+
+  // label the extremes: ends of each axis plus the two diagonals
+  const vis = songs.filter(s => !off.has(s.album));
+  const pick = fn => vis.length ? vis.reduce((a, b) => fn(b) > fn(a) ? b : a) : null;
+  const tagged = [...new Set([
+    pick(s => s[metricX.k]), pick(s => -s[metricX.k]),
+    pick(s => s[metricY.k]), pick(s => -s[metricY.k]),
+    pick(s => s[metricX.k] + s[metricY.k]), pick(s => -s[metricX.k] - s[metricY.k]),
+  ].filter(Boolean))];
+  labelPool.forEach((l, i) => {
+    const s = tagged[i];
+    if (!s) { l.style.opacity = 0; return; }
+    l.textContent = s.title;
+    l.style.left = pos[s.id].x + "px";
+    l.style.top = pos[s.id].y + "px";
+    l.style.opacity = 1;
+  });
+
+  fillSide(vis);
+}
+
+function fillSide(vis) {
+  const block = (m, arrow, cls) => {
+    const top = [...vis].sort((a, b) => b[m.k] - a[m.k]).slice(0, 7);
+    return `<div><div class="sb-cap ${cls}">${arrow} ${m.label} <span>· top 7</span></div>` +
+      top.map(s => {
+        const a = ALBUMS[s.album];
+        const cv = ART[s.album] ? `<img src="${ART[s.album]}">` : `<span class="sb-dot" style="background:${a.c}"></span>`;
+        return `<div class="sb-row" title="${s.title} (${s.album})">${cv}<span class="sb-nm">${s.title}</span><span class="sb-v">${disp(s, m)}</span></div>`;
+      }).join("") + `</div>`;
+  };
+  document.getElementById("sideBoards").innerHTML = block(metricY, "↑", "y") + block(metricX, "→", "x");
+}
+
+// ---------------- tabs ----------------
+document.querySelectorAll(".tab").forEach(t => {
+  t.onclick = () => {
+    document.querySelectorAll(".tab").forEach(x => x.classList.toggle("active", x === t));
+    document.getElementById("page-spectrum").classList.toggle("hidden", t.dataset.page !== "spectrum");
+    document.getElementById("page-aura").classList.toggle("hidden", t.dataset.page !== "aura");
+    if (t.dataset.page === "spectrum") render(false); // re-measure after being hidden
+  };
+});
+
+// ---------------- aura quiz ----------------
+const THEMES = [
+  { name: "Gen Z Sunshine",              emoji: "🌞", color: "#ffd166", v: s => s.mood },
+  { name: "Sad Girl Autumn",             emoji: "🍂", color: "#8fb4ff", v: s => 100 - s.mood },
+  { name: "Lovestruck Golden Retriever", emoji: "🐶", color: "#f48fb1", v: s => s.love },
+  { name: "Situationship Survivor",      emoji: "💔", color: "#b08aff", v: s => 100 - s.love },
+  { name: "Petty Crimes Enthusiast",     emoji: "🔥", color: "#ff6b6b", v: s => s.anger },
+  { name: "Cottagecore Yeehaw",          emoji: "🤠", color: "#6fae4e", v: s => s.country },
+  { name: "Polaroid Hoarder",            emoji: "📼", color: "#c97a3d", v: s => s.nostalgia },
+  { name: "Director's Cut Truther",     emoji: "📜", color: "#a05cc8", v: s => s.len },
+  { name: "Shopping Cart Saint",         emoji: "😇", color: "#90d4a0", v: s => s.whole },
+  { name: "Highway Banshee",             emoji: "🚗", color: "#5dade2", v: s => s.scream },
+  { name: "Smokepop",                    emoji: "🪩", color: "#ff8c42", v: s => s.sparkle },
+];
+const picks = [];
+const searchEl = document.getElementById("songSearch");
+const suggestEl = document.getElementById("suggest");
+const chipsEl = document.getElementById("chips");
+const auraBtn = document.getElementById("auraBtn");
+
+function refreshSuggest() {
+  const q = searchEl.value.trim().toLowerCase();
+  if (picks.length >= 5) { suggestEl.style.display = "none"; return; }
+  const hits = q
+    ? songs.filter(s => !picks.includes(s) &&
+        (s.title.toLowerCase().includes(q) || s.album.toLowerCase().includes(q)))
+    : [...songs].filter(s => !picks.includes(s)).sort((a, b) => b.streams - a.streams).slice(0, 5);
+  suggestEl.style.display = hits.length ? "block" : "none";
+  suggestEl.innerHTML = hits.map(s => {
+    const a = ALBUMS[s.album];
+    const cv = ART[s.album] ? `<img src="${ART[s.album]}">` : `<span class="cv-fallback" style="background:${a.c}"></span>`;
+    return `<div class="sg" data-id="${s.id}">${cv}<span>${s.title}</span><span class="sg-al" style="color:${a.c}">${s.album}</span></div>`;
+  }).join("");
+  suggestEl.querySelectorAll(".sg").forEach(el => el.onclick = () => addPick(songs[+el.dataset.id], true));
+}
+function addPick(s, fromSearch) {
+  if (picks.length >= 5 || picks.includes(s)) return;
+  picks.push(s);
+  searchEl.value = "";
+  refreshSuggest();
+  drawChips();
+  if (fromSearch && picks.length < 5) searchEl.focus();
+}
+function removePick(s) {
+  picks.splice(picks.indexOf(s), 1);
+  drawChips();
+}
+function drawChips() {
+  chipsEl.innerHTML = picks.map(s => {
+    const a = ALBUMS[s.album];
+    const cv = ART[s.album] ? `<img src="${ART[s.album]}">` : "";
+    return `<div class="chip" style="border-color:${a.c}88">${cv}${s.title}<span class="x" data-id="${s.id}">✕</span></div>`;
+  }).join("");
+  chipsEl.querySelectorAll(".x").forEach(el => el.onclick = () => removePick(songs[+el.dataset.id]));
+  auraBtn.disabled = picks.length < 3;
+  auraBtn.textContent = picks.length >= 3 ? "🔮 Reveal my aura" : `🔮 Reveal my aura (${picks.length}/3 minimum)`;
+  catEl.querySelectorAll(".cat-song").forEach(b => {
+    const s = songs[+b.dataset.id];
+    b.classList.toggle("picked", picks.includes(s));
+    b.classList.toggle("maxed", picks.length >= 5 && !picks.includes(s));
+  });
+}
+searchEl.addEventListener("input", refreshSuggest);
+searchEl.addEventListener("focus", refreshSuggest);
+searchEl.addEventListener("keydown", e => {
+  if (e.key === "Enter") {
+    const first = suggestEl.querySelector(".sg");
+    if (first) addPick(songs[+first.dataset.id], true);
+  }
+});
+document.addEventListener("click", e => {
+  if (!e.target.closest(".picker")) suggestEl.style.display = "none";
+  if (!e.target.closest(".dot") && !e.target.closest("#tip")) hideTip();
+});
+
+// full catalogue browser at the bottom of the aura page — click to toggle picks
+const catEl = document.getElementById("catalogue");
+catEl.innerHTML = `<div class="cat-head">…or browse the whole catalogue</div>` +
+  Object.keys(ALBUMS).map(album => {
+    const list = songs.filter(s => s.album === album);
+    if (!list.length) return "";
+    const cover = ART[album] ? `<img src="${ART[album]}">` : "";
+    return `<div class="cat-era" style="color:${ALBUMS[album].c}">${cover}${album} <span>${ALBUMS[album].y}</span></div>
+      <div class="cat-songs">` +
+      list.map(s => `<button class="cat-song" data-id="${s.id}">${s.title}</button>`).join("") +
+      `</div>`;
+  }).join("");
+catEl.querySelectorAll(".cat-song").forEach(b => b.onclick = () => {
+  const s = songs[+b.dataset.id];
+  picks.includes(s) ? removePick(s) : addPick(s);
+});
+
+drawChips();
+
+const ERA_READINGS = {
+  "Taylor Swift": "Your dominant era is the debut: you trust first instincts, handwritten things, and people who wave at trucks. You never fully left the front porch, and that's your superpower.",
+  "Fearless": "Your dominant era is Fearless: you are hope with a driver's license. You believe the storm is something to dance in, and you are usually right.",
+  "Speak Now": "Your dominant era is Speak Now: you say the thing everyone else is whispering. Dramatic? Yes. Wrong? Rarely. You would interrupt a wedding for the truth.",
+  "Red": "Your dominant era is Red: you feel everything at eleven and refuse to apologize for it. Autumn was invented for you specifically.",
+  "1989": "Your dominant era is 1989: reinvention is your cardio. You collect skylines and clean exits, and you always land on your feet — usually in better shoes.",
+  "Reputation": "Your dominant era is Reputation: you have a moat, a drawbridge, and exactly four people allowed across. Those four would die for you.",
+  "Lover": "Your dominant era is Lover: you love loudly and decorate accordingly. Golden hour follows you around like a well-trained pet.",
+  "Folklore": "Your dominant era is Folklore: you maintain a rich interior world with limited visiting hours. You have grieved people who do not technically exist.",
+  "Evermore": "Your dominant era is Evermore: you take the long walk in the woods on purpose. Unresolved endings don't scare you — they're just rooms you still visit.",
+  "Midnights": "Your dominant era is Midnights: your best thinking happens at 3am, and your worst thinking also happens at 3am. Self-awareness is both your gift and your hobby.",
+  "TTPD": "Your dominant era is Tortured Poets: you process feelings by writing them into evidence. Your drafts folder could end careers.",
+  "Showgirl": "Your dominant era is Showgirl: you understand the glitter is load-bearing. The show goes on because you personally make it go on.",
+  "Extras": "Your dominant era is the space between eras: you were never taking the marked path. B-sides, soundtracks, the song nobody else knows — that's where you live.",
+};
+const THEME_OPENERS = {
+  "Gen Z Sunshine": [
+    "You lead with joy, and people sometimes mistake that for simplicity. It is not simplicity — it is a decision you remake every morning, and it costs more than you let on.",
+    "Optimism, for you, is not a mood — it is a discipline. You have seen the bathroom-floor version of life and chosen the kitchen-dancing version anyway. Daily. On purpose.",
+  ],
+  "Sad Girl Autumn": [
+    "You lead with the wound. Not because you enjoy it, but because it is the most honest thing you own, and you have decided to be an honest person.",
+    "Your sadness has a skincare routine and a window seat. You do not wallow — you curate. There is a difference, and you will explain it to anyone brave enough to ask.",
+  ],
+  "Lovestruck Golden Retriever": [
+    "You are devotion-forward. When you commit — to people, to songs, to Tuesday plans — you commit completely, and you quietly grade everyone else on the same scale.",
+    "You love like it has never gone badly, which is remarkable, because it has. That is not amnesia — that is courage with better branding.",
+  ],
+  "Situationship Survivor": [
+    "You carry an ending around with you. It has shaped your posture, your playlists, and your standards — mostly for the better, though you would not have chosen the tuition.",
+    "You have read meaning into a text message's punctuation and been right. You keep the footnotes of everyone who almost stayed, and the bibliography is getting long.",
+  ],
+  "Petty Crimes Enthusiast": [
+    "You remember everything. This is a kind of power most people are too lazy to maintain, and the right people are a little afraid of you. Good.",
+    "Forgiveness and revenge are both on your menu; you simply believe in ordering for the table. You have never started anything. You have finished several things.",
+  ],
+  "Cottagecore Yeehaw": [
+    "Some part of you is permanently standing on a porch at dusk. It is the wisest part of you, and you should consult it more often than you do.",
+    "You want a love that slams a screen door and a story with dirt roads in it — and you want it with modern plumbing. This is reasonable. Do not apologize for it.",
+  ],
+  "Polaroid Hoarder": [
+    "You experience the present tense mostly as future nostalgia — you are pre-missing this exact moment. It makes you gentle with endings and terrible at goodbyes.",
+    "Your memory is a museum with generous opening hours, and you are both the curator and the most frequent visitor. Some exhibits still sting. You renew your membership anyway.",
+  ],
+  "Director's Cut Truther": [
+    "You distrust anything that resolves too quickly: songs, arguments, people. You are built for the long version, and you suspect the short version was a cover-up.",
+    "Ten minutes was never too long; three minutes was always too short. You read the liner notes, stay past the credits, and consider the radio edit a crime scene.",
+  ],
+  "Highway Banshee": [
+    "Your feelings require horsepower. Containment was never a real option for you, and the people who love you have learned to roll the windows down.",
+    "Your emotional regulation strategy has a speed limit, and you treat it as advisory. The steering wheel has heard your best performances; honestly, it should pay rent.",
+  ],
+  "Smokepop": [
+    "You believe presentation is a form of sincerity, and you are correct. The glitter is not hiding anything — the glitter is the message.",
+    "You want production value in all things, feelings included. If a moment matters, it should shimmer; if it shimmers, it mattered. This logic has never once failed you.",
+  ],
+  "Shopping Cart Saint": [
+    "Your kindness is not naivety. It is a strategy, refined over years, and it has never once failed you — even on the days it looked like it was failing.",
+    "You are the person people call from parking lots and airports. Being dependable is not boring — it is the rarest aesthetic, and you wear it well.",
+  ],
+};
+const TODO_BANK = [
+  "Go to a movie you did not anticipate seeing — pick the showtime first and the film second. Stay through the credits.",
+  "Try the olive martini. You will know when.",
+  "Take a walk at 3:40pm tomorrow. The light will be doing something you need to see. This one is for extra luck.",
+  "Text the person whose name you just thought of. Not the second name — the first one.",
+  "Re-listen to track five of your favorite album in a parked car before going inside. Do not skip the bridge.",
+  "Wear the good perfume on a day with no plans.",
+  "Make the playlist you have been composing in your head for three weeks. Title it honestly.",
+  "Say no to one thing this week without offering a reason. The reason is the no.",
+  "Buy the ticket. Future you already said yes and is waiting for you to catch up.",
+  "Clean out exactly one drawer. The feeling will spread on its own.",
+  "Cook something that takes too long, on purpose, on Sunday.",
+  "Leave a five-star review for something small that deserves it. The universe keeps these receipts.",
+  "Call instead of texting on Thursday. Thursday specifically.",
+  "Take the long way home on Wednesday. There is something on the long way.",
+  "Write down the sentence you keep almost saying. You do not have to send it. You do have to write it.",
+  "Light the candle you have been saving. It was never being saved for anything better than this.",
+  "Wear red on Friday. Do not ask questions about this one.",
+  "Delete the screenshot. You know exactly which one.",
+  "Go to bed 40 minutes early on Sunday. The dream will be informative.",
+  "Order dessert first somewhere, once, this week. Watch what it does to the rest of the meal.",
+];
+function buildStory(picks, scored, era) {
+  const avg = k => picks.reduce((a, s) => a + s[k], 0) / picks.length;
+  // everything below is seeded by the picks: same songs, same reading
+  let seed = picks.reduce((a, s) => (a * 31 + s.id + 7) >>> 0, picks.length);
+  const rand = () => (seed = (seed * 1664525 + 1013904223) >>> 0) / 4294967296;
+  const choose = arr => arr[Math.floor(rand() * arr.length)];
+  const draw = (pool, n) => {
+    const p = [...pool], out = [];
+    while (out.length < n && p.length) out.push(p.splice(Math.floor(rand() * p.length), 1)[0]);
+    return out;
+  };
+
+  // analysis of this exact combination
+  const byDate = [...picks].sort((a, b) => a.date < b.date ? -1 : 1);
+  const oldest = byDate[0], newest = byDate[byDate.length - 1];
+  const span = +newest.date.slice(0, 4) - +oldest.date.slice(0, 4);
+  const byPop = [...picks].sort((a, b) => a.streams - b.streams);
+  const deepCut = byPop[0], hit = byPop[byPop.length - 1];
+  const bySad = [...picks].sort((a, b) => a.mood - b.mood);
+  const saddest = bySad[0], happiest = bySad[bySad.length - 1];
+  const loud = [...picks].sort((a, b) => b.scream - a.scream)[0];
+  const albumCounts = {};
+  picks.forEach(s => albumCounts[s.album] = (albumCounts[s.album] || 0) + 1);
+  const eraCount = Object.keys(albumCounts).length;
+  const maxAlbum = Object.entries(albumCounts).sort((a, b) => b[1] - a[1])[0];
+
+  const obs = [];
+  if (eraCount === picks.length && eraCount >= 4) obs.push(`You pulled from ${eraCount} different eras without repeating once — you do not have a favorite child, you have a favorite feeling, and you will chase it across any decade.`);
+  if (maxAlbum[1] >= 3) obs.push(`${maxAlbum[1]} of your picks live on ${maxAlbum[0]}. That is not a coincidence; that is an address. Part of you still lives there, and the rent is emotional.`);
+  if (span >= 12) obs.push(`Your picks span ${span} years — from “${oldest.title}” to “${newest.title}” — which means you did not find this music. You grew up inside it.`);
+  if (hit.streams >= 15e8 && deepCut.streams <= 2e8) obs.push(`“${hit.title}” next to “${deepCut.title}”: you love the headliner and the understudy with equal sincerity, which is the rarest kind of fan.`);
+  else if (deepCut.streams <= 12e7) obs.push(`You chose “${deepCut.title}” — a song whose true believers could fit in one group chat. You are clearly its president.`);
+  if (saddest.mood <= 20 && happiest.mood >= 80) obs.push(`The distance between “${saddest.title}” and “${happiest.title}” is the entire emotional spectrum. You did that on purpose. You always do.`);
+  if (!obs.length) obs.push(`Your picks orbit close together — you know exactly what you came for, and consistency like that is its own kind of confession.`);
+  const observed = draw(obs, 2).join(" ");
+
+  const traits = [
+    [avg("whole") >= 65, "People hand you their secrets unprompted — you radiate the energy of someone who returns the shopping cart."],
+    [avg("whole") <= 35, "You keep a villain era on standby, fully charged, and honestly it suits you."],
+    [avg("pop") >= 75, "You are not embarrassed to love what everyone loves; sincerity is your rebellion."],
+    [avg("pop") <= 45, "You would rather be understood by twelve people than liked by twelve million — deep cuts are your native language."],
+    [avg("nostalgia") >= 60, "Part of you permanently lives in a room that no longer exists, and you keep paying the emotional rent."],
+    [avg("scream") >= 70, "Catharsis is your love language. The car is your cathedral; the highway, your choir."],
+    [avg("mood") <= 35, "You treat sadness like a craft you are getting genuinely good at — not a cry for help, a portfolio."],
+    [avg("mood") >= 70 && avg("sparkle") >= 70, "You metabolize joy loudly and on purpose. Confetti is a personality when you do it."],
+    [avg("anger") >= 50, "You keep receipts. Forgiveness is available, but it is earned, notarized, and non-transferable."],
+    [avg("len") >= 60, "You stay past the credits. Ten-minute versions exist because of people like you."],
+    [avg("rel") <= 35, "Old soul, confirmed: you suspect things were better before, and you have the tracklist to prove it."],
+    [avg("rel") >= 75, "You live in the present tense — new eras do not scare you; they are invitations."],
+    [avg("country") >= 50, "There is hay in your emotional support system somewhere. You trust songs with proper nouns and gravel roads in them."],
+    [avg("sparkle") <= 30, "You like your songs human-sized — a voice, an instrument, and nowhere to hide. Studio tricks make you suspicious."],
+  ];
+  const satisfied = traits.filter(x => x[0]).map(x => x[1]);
+  const light = satisfied.length ? draw(satisfied, 3) :
+    ["You are suspiciously balanced — the rare listener whose chart refuses to pick a fight."];
+
+  const L = avg("love"), M = avg("mood"), A = avg("anger"), N = avg("nostalgia");
+  const want = choose(
+    L >= 60 && M >= 55 ? [
+      "What you actually want: a love you would write down. Paper rings over diamonds, Wednesdays in cafés, someone who knows the bridge is coming and lets you have it.",
+      "What you actually want: the daylight kind of love — golden, unembarrassed, slightly too loud in restaurants. You would take a hand squeeze over a grand gesture. You would also take the grand gesture.",
+    ] : L >= 60 ? [
+      "What you actually want: devotion that survives the sad parts — someone who stays through track five and does not flinch.",
+      "What you actually want: to be chosen on the bad days, specifically. Anyone can love a chorus; you want someone who loves the bridge.",
+    ] : L < 42 && A >= 45 ? [
+      "What you actually want: not an apology — an acknowledgment. The ledger balanced, the record corrected, the smallest man held accountable.",
+      "What you actually want: for them to know. Not to suffer, necessarily — just to know, fully and precisely, what they did. The suffering is optional but welcome.",
+    ] : L < 42 && N >= 55 ? [
+      "What you actually want: a door back into a room that no longer exists. You know it. You would still knock.",
+      "What you actually want: one more lap of a year that already ended. You would not change anything — you would just like to attend it again, knowing what you know now.",
+    ] : [
+      "What you actually want: to feel everything at full volume and be loved anyway — preferably with the windows down.",
+      "What you actually want: intensity with a seatbelt. All of the feeling, none of the apology, and a passenger who never reaches for the volume knob.",
+    ]);
+
+  const prophecy = choose([
+    `This week, the bridge of “${loud.title}” will feel personally addressed. Let it.`,
+    `“${oldest.title}” will come on shuffle at a moment so precise it will feel like surveillance. It is not surveillance. It is alignment.`,
+    `Someone will mention “${hit.title}” this week without knowing what it means to you. Smile. Say nothing. Power.`,
+    `You will think of “${saddest.title}” on ${new Date(Date.now() + 3 * 864e5).toLocaleDateString("en-US", { weekday: "long" })}. Drink some water first.`,
+  ]);
+
+  const todos = draw([...TODO_BANK,
+    `Listen to “${deepCut.title}” on headphones, outside, at dusk. It has more to say.`,
+    `Play “${oldest.title}” and sit with the person you were when you first heard it. Report back to no one.`,
+    `Queue “${loud.title}” for the drive home on Friday and do not perform restraint.`,
+  ], 3);
+  const nextWeekday = new Date(Date.now() + 6 * 864e5).toLocaleDateString("en-US", { weekday: "long" });
+  return `
+    <div class="aura-story">
+      <div class="as-head">🔮 Your Reading</div>
+      <div class="as-signs">☀️ Sun in ${scored[0].name} · 🌙 Moon in ${scored[1].name} · ⬆️ ${scored[2].name} Rising</div>
+      <p>${choose(THEME_OPENERS[scored[0].name])}</p>
+      <p>${ERA_READINGS[era]}</p>
+      <p>${observed}</p>
+      <p>${light.join(" ")}</p>
+      <p>${want}</p>
+      <p class="as-prophecy">${prophecy}</p>
+      <div class="as-sub">Do these three things before next ${nextWeekday}</div>
+      <ul class="as-todo">${todos.map(t => `<li>${t}</li>`).join("")}</ul>
+    </div>`;
+}
+
+auraBtn.onclick = () => {
+  const res = document.getElementById("auraResult");
+  auraBtn.disabled = true;
+  res.innerHTML = `<div class="aura-loading"><div class="orb"></div><div class="al-text">Figuring out your groove…</div></div>`;
+  res.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  const msgs = ["Figuring out your groove…", "Consulting the bridges…", "Aligning your eras…"];
+  let mi = 0;
+  const cycle = setInterval(() => { res.querySelector(".al-text").textContent = msgs[++mi % msgs.length]; }, 1000);
+  setTimeout(() => { clearInterval(cycle); drawChips(); revealAura(); }, 3000);
+};
+
+function revealAura() {
+  // costar-style: one dominant sign (70%+) and two minor placements
+  const scored = THEMES
+    .map(t => ({ ...t, raw: picks.reduce((sum, s) => sum + t.v(s), 0) / picks.length }))
+    .sort((a, b) => b.raw - a.raw).slice(0, 3);
+  const [r1, r2, r3] = scored.map(t => t.raw);
+  scored[0].pct = 70 + Math.min(15, Math.round((r1 - r2) / Math.max(r1, 1) * 45));
+  const rest = 100 - scored[0].pct;
+  scored[1].pct = Math.round(rest * r2 / Math.max(r2 + r3, 1));
+  scored[2].pct = rest - scored[1].pct;
+
+  const tally = {};
+  picks.forEach(s => tally[s.album] = (tally[s.album] || 0) + 1);
+  const era = Object.entries(tally).sort((a, b) => b[1] - a[1])[0][0];
+
+  const Cr = 84, C = 2 * Math.PI * Cr;
+  let offset = 0;
+  const arcs = scored.map(t => {
+    const seg = t.pct / 100 * C;
+    const segLen = Math.max(seg - 3, 0.5);
+    const el = `<circle cx="110" cy="110" r="${Cr}" fill="none" stroke="${t.color}" stroke-width="26"
+      stroke-dasharray="0 ${C}" data-dash="${segLen} ${C - segLen}"
+      stroke-dashoffset="${-offset}" transform="rotate(-90 110 110)" stroke-linecap="round"/>`;
+    offset += seg;
+    return el;
+  }).join("");
+
+  document.getElementById("auraResult").innerHTML = `
+    <div class="aura-card">
+      <div class="aura-headline">You are <b style="color:${scored[0].color}">${scored[0].pct}% ${scored[0].name} ${scored[0].emoji}</b>
+        — and your era match is <b style="color:${ALBUMS[era].c}">${era}</b></div>
+      <div class="aura-flex">
+        <div class="donut-wrap">
+          <svg width="220" height="220">${arcs}</svg>
+          <div class="donut-center">${scored[0].emoji}<small>${scored[0].name}</small></div>
+        </div>
+        <div class="aura-bars">
+          ${scored.map(t => `
+            <div class="aura-row">
+              <span class="ar-emoji">${t.emoji}</span>
+              <span class="ar-name">${t.name}</span>
+              <div class="ar-track"><div class="ar-fill" data-w="${t.pct}" style="background:${t.color}"></div></div>
+              <span class="ar-pct" style="color:${t.color}">${t.pct}%</span>
+            </div>`).join("")}
+        </div>
+      </div>
+      ${buildStory(picks, scored, era)}
+      <div class="aura-songs">${picks.map(s => ART[s.album] ? `<img src="${ART[s.album]}" title="${s.title}">` : "").join("")}
+        <span>based on: ${picks.map(s => s.title).join(" · ")}</span></div>
+    </div>`;
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    document.querySelectorAll("#auraResult circle").forEach(c => c.setAttribute("stroke-dasharray", c.dataset.dash));
+    document.querySelectorAll("#auraResult .ar-fill").forEach(f => f.style.width = f.dataset.w + "%");
+  }));
+  document.getElementById("auraResult").scrollIntoView({ behavior: "smooth", block: "nearest" });
+}
+
+window.addEventListener("resize", () => render(false));
+render();
+</script>
+</body>
+</html>

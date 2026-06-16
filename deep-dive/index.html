@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<title>Data-driven deep-dives — interactive maps of everything</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    min-height: 100vh;
+    color: #eaf6fb;
+    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    display: flex; flex-direction: column; align-items: center;
+    padding: 56px 10px 40px;
+    background:
+      radial-gradient(120% 78% at 50% -22%, rgba(126, 214, 255, .22), transparent 60%),
+      linear-gradient(180deg, #0e5a7e 0%, #0a3f5c 24%, #072c42 48%, #04161f 76%, #020b12 100%);
+    background-attachment: fixed;
+  }
+
+  /* ---------- the dive ---------- */
+  .ocean { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+
+  .caustics {
+    position: absolute; inset: 0; mix-blend-mode: screen; opacity: .55;
+    background:
+      radial-gradient(55% 30% at 28% 0%, rgba(130, 224, 255, .12), transparent 70%),
+      radial-gradient(50% 26% at 68% 0%, rgba(130, 224, 255, .09), transparent 70%);
+    animation: drift 19s ease-in-out infinite alternate;
+  }
+  @keyframes drift { from { transform: translateX(-2.5%); } to { transform: translateX(2.5%); } }
+
+  .ray {
+    position: absolute; top: -25%; height: 150%; transform-origin: top center;
+    background: linear-gradient(180deg, rgba(155, 228, 255, .17), rgba(155, 228, 255, .03) 55%, transparent 80%);
+    filter: blur(7px); mix-blend-mode: screen;
+    animation: ray 13s ease-in-out infinite alternate;
+  }
+  @keyframes ray {
+    from { transform: rotate(var(--r1)) translateX(-12px); opacity: .25; }
+    to   { transform: rotate(var(--r2)) translateX(16px);  opacity: .6; }
+  }
+
+  /* fish — drift across at long intervals */
+  .fish { position: absolute; left: 0; top: var(--top); z-index: 1; opacity: 0; will-change: transform, opacity; }
+  .fish.r { animation: swimR var(--fd) linear infinite; }
+  .fish.l { animation: swimL var(--fd) linear infinite; }
+  .fish .shape { position: relative; display: block; width: var(--fw); height: calc(var(--fw) * .46);
+    background: var(--fc); border-radius: 50% 58% 58% 50% / 50%;
+    box-shadow: 0 0 14px -2px var(--fc); }
+  .fish.l .shape { transform: scaleX(-1); }
+  .fish .tail {
+    position: absolute; right: 100%; top: 50%; width: 0; height: 0;
+    border-top: calc(var(--fw) * .17) solid transparent;
+    border-bottom: calc(var(--fw) * .17) solid transparent;
+    border-right: calc(var(--fw) * .3) solid var(--fc);
+    transform-origin: right center;
+    animation: tailwag .45s ease-in-out infinite alternate;
+  }
+  .fish .eye { position: absolute; right: 16%; top: 32%;
+    width: calc(var(--fw) * .085); height: calc(var(--fw) * .085);
+    border-radius: 50%; background: #0a1018; }
+  @keyframes tailwag { from { transform: translateY(-50%) rotate(-14deg); } to { transform: translateY(-50%) rotate(14deg); } }
+  @keyframes swimR {
+    0%   { transform: translateX(-14vw) translateY(0);    opacity: 0; }
+    8%   { opacity: var(--op); }
+    50%  { transform: translateX(50vw) translateY(-12px); }
+    92%  { opacity: var(--op); }
+    100% { transform: translateX(115vw) translateY(7px);  opacity: 0; }
+  }
+  @keyframes swimL {
+    0%   { transform: translateX(115vw) translateY(0);    opacity: 0; }
+    8%   { opacity: var(--op); }
+    50%  { transform: translateX(50vw) translateY(-12px); }
+    92%  { opacity: var(--op); }
+    100% { transform: translateX(-14vw) translateY(7px);  opacity: 0; }
+  }
+
+  /* bubbles rising */
+  .bubble {
+    position: absolute; bottom: -6%; width: var(--s); height: var(--s); border-radius: 50%; z-index: 1;
+    background: radial-gradient(circle at 32% 30%, rgba(255,255,255,.7), rgba(200,240,255,.12) 60%, transparent 72%);
+    border: 1px solid rgba(195, 235, 255, .22);
+    opacity: 0; will-change: transform, opacity;
+    animation: rise var(--d) linear infinite;
+  }
+  @keyframes rise {
+    0%   { transform: translateY(0) translateX(0);                  opacity: 0; }
+    12%  { opacity: .85; }
+    50%  { transform: translateY(-58vh) translateX(var(--drift)); }
+    88%  { opacity: .65; }
+    100% { transform: translateY(-116vh) translateX(0);            opacity: 0; }
+  }
+
+  /* kelp forest along the seabed */
+  .kelp { position: absolute; bottom: -4px; z-index: 2; }
+  .blade {
+    position: absolute; bottom: 0; width: var(--w, 18px); height: var(--h);
+    background: linear-gradient(180deg, var(--c1), var(--c2));
+    border-radius: 50% 50% 7px 7px / 82% 82% 4% 4%;
+    transform-origin: bottom center; filter: blur(.4px); opacity: .82;
+    animation: sway var(--sd) ease-in-out infinite alternate;
+    animation-delay: var(--sdelay, 0s);
+  }
+  @keyframes sway {
+    from { transform: rotate(var(--a1)) skewX(calc(var(--a1) * -0.5)); }
+    to   { transform: rotate(var(--a2)) skewX(calc(var(--a2) * -0.5)); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .caustics, .ray, .fish, .bubble, .blade { animation: none !important; }
+    .fish, .bubble { opacity: 0; }
+  }
+
+  /* ---------- content ---------- */
+  header { text-align: center; margin-bottom: 40px; max-width: 720px; position: relative; z-index: 5; }
+  h1 {
+    font-size: clamp(40px, 8vw, 72px); font-weight: 800; letter-spacing: -0.03em;
+    color: #aef0ff;
+    text-shadow: 0 2px 30px rgba(120, 215, 255, .25);
+  }
+  .tag { color: #93b6c6; margin-top: 12px; font-size: 16px; line-height: 1.6; }
+
+  .feed { width: 100%; max-width: 960px; display: flex; flex-direction: column; gap: 22px; position: relative; z-index: 5; }
+  .feed-label {
+    font-size: 12px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+    color: #5f8497; margin: 4px 2px 2px; display: flex; align-items: center; gap: 10px;
+  }
+  .feed-label::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, #1d4357, transparent); }
+
+  .post {
+    position: relative; display: block; text-decoration: none; color: inherit;
+    width: 100%; border-radius: 20px; padding: 24px 28px 24px;
+    border: 1px solid #173a4a; overflow: hidden;
+    background-color: rgba(7, 22, 33, .55); backdrop-filter: blur(3px);
+    transition: transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s, border-color .25s;
+  }
+  .post:hover { transform: translateY(-4px); border-color: #ffffff44; }
+  .post.taylor   { background-image: linear-gradient(150deg, #241b3aE6 0%, #14101fE6 55%, #1d1430E6 100%); box-shadow: 0 18px 50px rgba(110, 70, 200, .25); }
+  .post.taylor:hover   { box-shadow: 0 26px 70px rgba(150, 100, 255, .42); }
+  .post.olivia   { background-image: linear-gradient(150deg, #321526E6 0%, #15101cE6 55%, #2a1230E6 100%); box-shadow: 0 18px 50px rgba(210, 60, 110, .24); }
+  .post.olivia:hover   { box-shadow: 0 26px 70px rgba(230, 80, 130, .4); }
+  .post.bball    { background-image: linear-gradient(150deg, #2e1d12E6 0%, #161013E6 55%, #2a1a0eE6 100%); box-shadow: 0 18px 50px rgba(232, 115, 26, .22); }
+  .post.bball:hover    { box-shadow: 0 26px 70px rgba(232, 115, 26, .38); }
+  .post.curry    { background-image: linear-gradient(150deg, #2e2410E6 0%, #171208E6 55%, #2c1c0aE6 100%); box-shadow: 0 18px 50px rgba(212, 160, 40, .22); }
+  .post.curry:hover    { box-shadow: 0 26px 70px rgba(232, 180, 60, .38); }
+  .post.worldcup { background-image: linear-gradient(150deg, #10301dE6 0%, #0d1714E6 55%, #0e2a1aE6 100%); box-shadow: 0 18px 50px rgba(47, 175, 90, .22); }
+  .post.worldcup:hover { box-shadow: 0 26px 70px rgba(60, 200, 110, .38); }
+  .post .glow {
+    position: absolute; top: -70px; right: -60px; width: 190px; height: 190px;
+    border-radius: 50%; filter: blur(55px); opacity: .5;
+  }
+  .taylor .glow { background: #8b5cf6; }
+  .olivia .glow { background: #e0356e; }
+  .bball .glow { background: #e8731a; }
+  .curry .glow { background: #d4a028; }
+  .worldcup .glow { background: #2faf5a; }
+
+  .post .icon {
+    position: absolute; top: 20px; right: 22px; width: 54px; height: 54px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(8, 20, 28, .5); border: 1px solid rgba(255, 255, 255, .14); backdrop-filter: blur(2px);
+  }
+  .post .icon svg { width: 30px; height: 30px; }
+  .taylor   .icon { color: #d9c9ff; box-shadow: 0 0 16px rgba(150, 100, 255, .32); }
+  .olivia   .icon { color: #ff9fb8; box-shadow: 0 0 16px rgba(230, 80, 130, .32); }
+  .bball    .icon { color: #ffb066; box-shadow: 0 0 16px rgba(232, 115, 26, .32); }
+  .curry    .icon { color: #ffd166; box-shadow: 0 0 16px rgba(212, 160, 40, .32); }
+  .worldcup .icon { color: #7fe0a0; box-shadow: 0 0 16px rgba(47, 175, 90, .32); }
+  .post .byline, .post h2 { padding-right: 64px; }
+
+  .byline { display: flex; align-items: center; gap: 9px; flex-wrap: wrap; font-size: 12.5px; color: #8d94a8; }
+  .byline .dot { width: 9px; height: 9px; border-radius: 50%; flex: none; }
+  .taylor .byline .dot { background: #8b5cf6; }
+  .olivia .byline .dot { background: #e0356e; }
+  .bball .byline .dot { background: #e8731a; }
+  .curry .byline .dot { background: #d4a028; }
+  .worldcup .byline .dot { background: #2faf5a; }
+  .byline time { font-weight: 700; color: #cfe2ec; }
+  .byline .who { letter-spacing: .12em; text-transform: uppercase; font-weight: 700; font-size: 11.5px; }
+
+  .post h2 { font-size: clamp(22px, 4.2vw, 27px); font-weight: 800; margin: 9px 0 9px; }
+  .taylor h2 { color: #d9c9ff; }
+  .olivia h2 { color: #ff9fb8; }
+  .bball h2 { color: #ffb066; }
+  .curry h2 { color: #ffd166; }
+  .worldcup h2 { color: #7fe0a0; }
+  .desc { color: #b3c2cf; font-size: 14px; line-height: 1.65; }
+  .eras { display: flex; gap: 5px; margin: 16px 0 13px; }
+  .eras i { height: 8px; border-radius: 8px; flex: 1; opacity: .85; }
+  .meta { display: flex; gap: 14px; flex-wrap: wrap; color: #8997a4; font-size: 12.5px; }
+  .meta b { color: #e8f1f8; }
+  .go {
+    margin-top: 18px; display: inline-block; font-weight: 800; font-size: 13.5px;
+    color: #fff; padding: 9px 19px; border-radius: 999px;
+  }
+  .taylor .go   { background: linear-gradient(90deg, #6d4fc2, #a64fc2); box-shadow: 0 0 18px rgba(150,100,255,.4); }
+  .olivia .go   { background: linear-gradient(90deg, #c2275a, #e0356e); box-shadow: 0 0 18px rgba(230,80,130,.4); }
+  .bball .go    { background: linear-gradient(90deg, #c25a1a, #e8731a); box-shadow: 0 0 18px rgba(232,115,26,.4); }
+  .curry .go    { background: linear-gradient(90deg, #b8860b, #d4a028); box-shadow: 0 0 18px rgba(212,160,40,.4); }
+  .worldcup .go { background: linear-gradient(90deg, #1f8f4a, #2faf5a); box-shadow: 0 0 18px rgba(47,175,90,.4); }
+
+  footer { margin-top: 46px; color: #4a6470; font-size: 12.5px; text-align: center; line-height: 1.7; max-width: 720px; position: relative; z-index: 5; }
+  footer a { color: #7fa6b6; text-decoration: none; border-bottom: 1px solid #2d4855; }
+
+  .home-link {
+    position: fixed; top: 16px; left: 16px; z-index: 20;
+    display: flex; align-items: center; gap: 7px;
+    padding: 8px 14px 8px 11px; border-radius: 999px;
+    font-size: 13px; font-weight: 700; text-decoration: none; color: #cfe2ec;
+    background: rgba(7, 22, 33, .55); border: 1px solid #173a4a; backdrop-filter: blur(3px);
+    transition: transform .2s, border-color .2s, color .2s;
+  }
+  .home-link:hover { transform: translateY(-1px); border-color: #ffffff44; color: #aef0ff; }
+  .home-link svg { width: 15px; height: 15px; }
+</style>
+</head>
+<body>
+<a class="home-link" href="https://csinva.io">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+  csinva.io
+</a>
+<div class="ocean" id="ocean">
+  <div class="caustics"></div>
+  <div class="ray" style="left:14%; width:120px; --r1:7deg;  --r2:13deg; animation-delay:-2s;"></div>
+  <div class="ray" style="left:38%; width:170px; --r1:10deg; --r2:15deg; animation-delay:-7s;"></div>
+  <div class="ray" style="left:63%; width:130px; --r1:6deg;  --r2:11deg; animation-delay:-4s;"></div>
+  <div class="ray" style="left:84%; width:150px; --r1:9deg;  --r2:14deg; animation-delay:-9s;"></div>
+
+  <!-- kelp -->
+  <div class="kelp" style="left:1%">
+    <span class="blade" style="--h:230px; --w:20px; --a1:-7deg; --a2:6deg;  --sd:6.5s; left:0;"></span>
+    <span class="blade" style="--h:300px; --w:22px; --a1:-5deg; --a2:8deg;  --sd:8s;  --sdelay:-2s; left:18px; --c1:#39c08e; --c2:#0e4a37;"></span>
+    <span class="blade" style="--h:180px; --w:16px; --a1:-9deg; --a2:5deg;  --sd:7s;  --sdelay:-1s; left:40px; --c1:#2a9d72; --c2:#0a3a2b;"></span>
+  </div>
+  <div class="kelp" style="left:46%">
+    <span class="blade" style="--h:160px; --w:15px; --a1:-6deg; --a2:7deg;  --sd:7.5s; left:0; --c1:#2fae7f; --c2:#0c4334;"></span>
+    <span class="blade" style="--h:215px; --w:18px; --a1:-8deg; --a2:6deg;  --sd:9s;  --sdelay:-3s; left:16px;"></span>
+  </div>
+  <div class="kelp" style="right:2%">
+    <span class="blade" style="--h:260px; --w:21px; --a1:-6deg; --a2:9deg;  --sd:7s;  right:0;"></span>
+    <span class="blade" style="--h:190px; --w:16px; --a1:-9deg; --a2:5deg;  --sd:8.5s; --sdelay:-2s; right:22px; --c1:#39c08e; --c2:#0e4a37;"></span>
+    <span class="blade" style="--h:330px; --w:23px; --a1:-4deg; --a2:8deg;  --sd:10s; --sdelay:-4s; right:42px; --c1:#2a9d72; --c2:#0a3a2b;"></span>
+  </div>
+</div>
+
+<header>
+  <h1>Data-driven deep-dives</h1>
+  <div class="tag">A blog of interactive data deep-dives — entire catalogs scored, plotted, and clickable. Pop discographies, hoops legends, the world's curries, a live World Cup. Every dot tells a story. Plus your aura.</div>
+</header>
+
+<main class="feed">
+  <div class="feed-label">Latest posts</div>
+
+  <a class="post worldcup" href="worldcup2026.html">
+    <div class="glow"></div>
+    <div class="byline"><span class="dot"></span><time>Jun 16, 2026</time> · <span class="who">World Cup · 1958–2026</span></div>
+    <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><circle cx="12" cy="12" r="9.3"/><path d="M12 7.3l3.4 2.5-1.3 4h-4.2L8.6 9.8z" fill="currentColor" stroke="none"/><path d="M12 2.7v4.6M4.1 9.4l4.5.4M19.9 9.4l-4.5.4M9.3 13.8l-2.7 3.7M14.7 13.8l2.7 3.7"/></svg></div>
+    <h2>The World Cup Deep-Dive</h2>
+    <div class="desc">122 players — Pelé, Maradona and the all-time greats beside the stars, wonderkids and viral breakouts of the 2026 tournament — plotted by goals, caps, titles, Insta boom (followers before kickoff vs today), and aura. Pick your front five and get scouted.</div>
+    <div class="eras">
+      <i style="background:#d6453c"></i><i style="background:#3fb8af"></i>
+      <i style="background:#5dade2"></i><i style="background:#e8b647"></i>
+    </div>
+    <div class="meta"><span><b>122</b> players</span><span><b>4</b> positions</span><span><b>13</b> stats</span><span><b>⚽</b> scouting reports</span></div>
+    <span class="go">Kick off →</span>
+  </a>
+
+  <a class="post curry" href="curry.html">
+    <div class="glow"></div>
+    <div class="byline"><span class="dot"></span><time>Jun 16, 2026</time> · <span class="who">The world's curries</span></div>
+    <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18a9 9 0 0 1-18 0z" fill="currentColor" stroke="none"/><path d="M2.4 12h19.2"/><path d="M8.5 4.2c-1.1 1.1.9 2.2 0 3.3M12 3.8c-1.1 1.1.9 2.2 0 3.3M15.5 4.2c-1.1 1.1.9 2.2 0 3.3"/></svg></div>
+    <h2>The Curry Deep-Dive</h2>
+    <div class="desc">151 curries from korma to phaal, Bengal to Addis Ababa, Chiang Mai to Glasgow — mapped by heat, creaminess, tang, soupiness, and cook time. Rendang anchors dry; rasam anchors soup; currywurst attends under protest.</div>
+    <div class="eras">
+      <i style="background:#e8b647"></i><i style="background:#6fae4e"></i><i style="background:#d4658f"></i><i style="background:#3fb8af"></i>
+      <i style="background:#c97a3d"></i><i style="background:#7b8cde"></i><i style="background:#a78bd0"></i><i style="background:#d6453c"></i>
+    </div>
+    <div class="meta"><span><b>151</b> curries</span><span><b>8</b> traditions</span><span><b>10</b> dimensions</span><span><b>🍛</b> order readings</span></div>
+    <span class="go">Order the spread →</span>
+  </a>
+
+  <a class="post bball" href="basketball.html">
+    <div class="glow"></div>
+    <div class="byline"><span class="dot"></span><time>Jun 13, 2026</time> · <span class="who">NBA · 1956–2026</span></div>
+    <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9.3"/><path d="M12 2.7v18.6M2.7 12h18.6M5.5 5.5c3.2 2.6 3.2 10.9 0 13.5M18.5 5.5c-3.2 2.6-3.2 10.9 0 13.5"/></svg></div>
+    <h2>The Basketball Deep-Dive</h2>
+    <div class="desc">100 legends and current stars — Muggsy to Manute, Russell to Wemby — plotted by height, free throws, rings, clutch, and aura. Build your starting five and get scouted.</div>
+    <div class="eras">
+      <i style="background:#5dade2"></i><i style="background:#e8b647"></i><i style="background:#6fae4e"></i>
+      <i style="background:#d6453c"></i><i style="background:#a05cc8"></i>
+    </div>
+    <div class="meta"><span><b>100</b> players</span><span><b>5</b> positions</span><span><b>14</b> stats</span><span><b>📋</b> scouting reports</span></div>
+    <span class="go">Take the court →</span>
+  </a>
+
+  <a class="post olivia" href="olivia.html">
+    <div class="glow"></div>
+    <div class="byline"><span class="dot"></span><time>Jun 12, 2026</time> · <span class="who">Olivia Rodrigo</span></div>
+    <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="2.8" y="5.8" width="18.4" height="12.4" rx="2.2"/><circle cx="9" cy="12" r="2"/><circle cx="15" cy="12" r="2"/><path d="M6.5 18.2l1.6-2.7h7.8l1.6 2.7" stroke-linecap="round"/></svg></div>
+    <h2>The Rodrigo Deep-Dive</h2>
+    <div class="desc">All 43 songs — SOUR, GUTS (spilled), the brand-new <i>you seem pretty sad for a girl so in love</i>, and the soundtrack era — mapped from serene to scorched-earth.</div>
+    <div class="eras">
+      <i style="background:#b18cff"></i><i style="background:#d63b5e"></i><i style="background:#e8927c"></i><i style="background:#3fb8af"></i>
+    </div>
+    <div class="meta"><span><b>43</b> songs</span><span><b>4</b> eras</span><span><b>9</b> metrics</span><span><b>🔮</b> aura readings</span></div>
+    <span class="go">Spill your guts →</span>
+  </a>
+
+  <a class="post taylor" href="taylor.html">
+    <div class="glow"></div>
+    <div class="byline"><span class="dot"></span><time>Jun 11, 2026</time> · <span class="who">Taylor Swift</span></div>
+    <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9.3"/><circle cx="12" cy="12" r="3.8"/><circle cx="12" cy="12" r="1.1" fill="currentColor" stroke="none"/></svg></div>
+    <h2>The Swiftie Deep-Dive</h2>
+    <div class="desc">All 252 songs — every album track, vault track, and loose single from the 2006 debut to last week — across happiness, heartbreak, vengeance, country-ness, and more.</div>
+    <div class="eras">
+      <i style="background:#6fae4e"></i><i style="background:#e8b647"></i><i style="background:#a05cc8"></i>
+      <i style="background:#d6453c"></i><i style="background:#5dade2"></i><i style="background:#9aa0a6"></i>
+      <i style="background:#f48fb1"></i><i style="background:#cfcabd"></i><i style="background:#b56a32"></i>
+      <i style="background:#7b8cde"></i><i style="background:#efe9d6"></i><i style="background:#ff8c42"></i>
+    </div>
+    <div class="meta"><span><b>252</b> songs</span><span><b>13</b> eras</span><span><b>10</b> metrics</span><span><b>🔮</b> aura readings</span></div>
+    <span class="go">Enter the multiverse →</span>
+  </a>
+</main>
+
+<footer>
+  Hand-annotated by Claude · streams &amp; lengths via the iTunes catalog and kworb.net · hover any dot inside to play the song.<br>
+  Your aura is computed locally from your picks. The kelp is decorative. Probably.<br>
+  Made with love by <a href="https://x.com/csinva" target="_blank" rel="noopener">@csinva</a>
+</footer>
+
+<script>
+  // populate the dive with bubbles and the occasional passing fish (CSS does the swimming)
+  const ocean = document.getElementById("ocean");
+  const rnd = (a, b) => a + Math.random() * (b - a);
+
+  for (let i = 0; i < 18; i++) {
+    const b = document.createElement("span");
+    b.className = "bubble";
+    b.style.left = rnd(0, 100).toFixed(1) + "%";
+    b.style.setProperty("--s", rnd(4, 13).toFixed(1) + "px");
+    b.style.setProperty("--d", rnd(9, 19).toFixed(1) + "s");
+    b.style.setProperty("--drift", rnd(-22, 22).toFixed(0) + "px");
+    b.style.animationDelay = (-rnd(0, 19)).toFixed(1) + "s";
+    ocean.appendChild(b);
+  }
+
+  const palette = ["#e8915a", "#f0c46a", "#cfe8ff", "#9fd6c0", "#e88ba0", "#84c8e8"];
+  for (let i = 0; i < 6; i++) {
+    const f = document.createElement("div");
+    f.className = "fish " + (Math.random() < 0.5 ? "r" : "l");
+    f.style.setProperty("--fw", rnd(26, 60).toFixed(0) + "px");
+    f.style.setProperty("--top", rnd(8, 80).toFixed(1) + "%");
+    f.style.setProperty("--fd", rnd(22, 42).toFixed(1) + "s");
+    f.style.setProperty("--fc", palette[i % palette.length]);
+    f.style.setProperty("--op", rnd(0.38, 0.7).toFixed(2));
+    f.style.animationDelay = (-rnd(0, 42)).toFixed(1) + "s";
+    f.innerHTML = '<span class="shape"><span class="tail"></span><span class="eye"></span></span>';
+    ocean.appendChild(f);
+  }
+</script>
+</body>
+</html>

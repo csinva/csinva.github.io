@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<title>The Rodrigo Deep-Dive — every era, every feeling</title>
+<link rel="stylesheet" href="assets/deepdive.css">
+</head>
+<body>
+<a class="home-btn" href="index.html" title="Back to deep-dive">⌂ Home</a>
+<div class="made-by">Made with love by <a href="https://x.com/csinva" target="_blank" rel="noopener">@csinva</a></div>
+<div class="wrap">
+  <header>
+    <h1>The Rodrigo Deep-Dive</h1>
+    <div class="sub"><b>43 songs</b>. Pick one metric per axis, filter by album, and hover by dot for song details.</div>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab active" data-page="spectrum">🌌 The Deep-Dive</button>
+    <button class="tab" data-page="aura">🔮 Your Aura</button>
+  </nav>
+
+  <div class="page" id="page-spectrum">
+  <div class="covers" id="covers"></div>
+  <div class="covers-hint">click a cover to solo that era · click again to bring everyone back</div>
+
+  <div class="chart-zone">
+    <div class="axis-picker y" id="metricsY">
+      <div class="picker-cap"><b>↑</b> vertical axis<br><span>click a pill to change it</span></div>
+    </div>
+    <div class="chart-main">
+      <div class="chart-card">
+        <div id="stage"></div>
+        <div class="axis-labels"><span class="lo" id="xLoLab"></span><span class="xblurb" id="xBlurb"></span><span class="hi" id="xHiLab"></span></div>
+      </div>
+      <div class="axis-picker x" id="metricsX">
+        <div class="picker-cap"><b>→</b> horizontal axis · <span>click a pill to change it</span></div>
+      </div>
+    </div>
+    <div class="side-boards" id="sideBoards"></div>
+  </div>
+
+  </div><!-- /page-spectrum -->
+
+  <div class="page hidden" id="page-aura">
+    <div class="aura-intro">Pick <b>three to five</b> of your favorite Olivia Rodrigo songs — start typing and choose from the matches. We'll find your dominant sign and minor placements, then read your chart — who you are, what you carry, what you actually want, and what to do about it.</div>
+    <div class="picker">
+      <input id="songSearch" placeholder="Start typing a song… (her biggest hits are waiting below)" autocomplete="off">
+      <div id="suggest"></div>
+    </div>
+    <div id="chips"></div>
+    <button id="auraBtn" disabled></button>
+    <div id="auraResult"></div>
+    <div class="catalogue" id="catalogue"></div>
+  </div>
+
+  <footer>
+    Scores are Claude-annotated opinion (0–100), not Spotify audio features.<br>
+    Track lists verified against the iTunes catalog: SOUR, GUTS (spilled), and <i>you seem pretty sad for a girl so in love</i>, plus the soundtrack-era singles.<br>
+    Lengths and popularity are real (iTunes + lifetime Spotify streams via kworb.net). The new album dropped June 11, 2026 — its deep cuts carry day-one stream estimates and first-listen vibe scores.
+  </footer>
+</div>
+
+<div id="tip"></div>
+
+<script>
+const ART = {"SOUR": "assets/img/olivia/sour.jpg", "GUTS": "assets/img/olivia/guts.jpg", "Pretty Sad": "assets/img/olivia/pretty-sad.jpg"};
+
+// ---------------- albums & colors ----------------
+const ALBUMS = {
+  "SOUR":       { c: "#b18cff", y: "2021", t: "’21" },
+  "GUTS":       { c: "#d63b5e", y: "2023", t: "’23" },
+  "Pretty Sad": { c: "#e8927c", y: "2026", t: "’26" },
+  "Extras":     { c: "#3fb8af", y: "2019–2023", t: "misc" },
+};
+
+// ---------------- metrics ----------------
+const METRICS = [
+  { k:"mood",    label:"Happiness",     lo:"😭 devastating", hi:"😄 euphoric",
+    blurb:"Bathroom-floor sobbing to kitchen dancing." },
+  { k:"pop",     label:"Popularity",    lo:"💎 deep cut", hi:"🌍 inescapable",
+    blurb:"Lifetime Spotify streams, log scale." },
+  { k:"trend",   label:"Trending (Jun ’26)", lo:"🧊 dormant", hi:"📈 on fire right now",
+    blurb:"Spotify streams per week as of June 2026 (log scale)." },
+  { k:"rel",     label:"Released",      lo:"🧒 the debut era", hi:"💿 brand new",
+    blurb:"When the song actually dropped — vault tracks count from their Taylor's Version." },
+  { k:"love",    label:"Romance",       lo:"💔 wreckage", hi:"💘 head over heels",
+    blurb:"Scorched earth to golden-daylight devotion." },
+  { k:"anger",   label:"Anger",         lo:"🕊️ serene", hi:"🔥 burn the evidence",
+    blurb:"How badly someone should regret their choices." },
+  { k:"nostalgia",label:"Nostalgia",    lo:"⏩ present tense", hi:"📼 aching for the past",
+    blurb:"The 'remember when' coefficient." },
+  { k:"len",     label:"Length",        lo:"⏱️ over in a blink", hi:"📜 ten-minute epic",
+    blurb:"Actual runtime, plotted to scale." },
+  { k:"scream",  label:"Screamability", lo:"🤫 hum quietly", hi:"🚗 windows down, full belt",
+    blurb:"Beltability, alone on the highway at 11pm." },
+  { k:"sparkle", label:"Sparkle",       lo:"🪕 acoustic & hushed", hi:"✨ maximum glitter",
+    blurb:"Production gloss, synths, and glitter." },
+  { k:"whole",   label:"Wholesomeness", lo:"😈 scandalous", hi:"😇 pure of heart",
+    blurb:"Could you play it at a family reunion?" },
+];
+
+// ---------------- data ----------------
+// [title, album, mood, love, anger, country, nostalgia, bridge(unused), scream, sparkle, note, seconds, streams, spotifyTrackId, wholesomeness, releaseDate, youtubeId, dailyStreams]
+const SONGS = [
+["brutal", "SOUR", 25, 20, 80, 2, 15, 40, 85, 60, "God, it's brutal out here — teenage angst with a string-section fakeout.", 144, 844153041, "6SRsiMl7w1USE4mFqrOhHC", 25, "2021-05-21", "OGUy2UmRxJ0", 302843],
+["traitor", "SOUR", 12, 15, 55, 3, 40, 75, 80, 35, "Not cheating, but close enough to count. 'Guess you didn't cheat, but you're still a traitor' — kill shot.", 229, 2348318682, "5CZ40GBx1sQ9agT82CLQCT", 45, "2021-05-21", "CRrf3h9vhp8", 1026187],
+["drivers license", "SOUR", 8, 12, 30, 3, 55, 90, 92, 40, "The bridge that broke SNL, charts, and several million hearts at once.", 242, 2863344932, "5wANPM4fQCJwkGd4rN57mH", 50, "2021-01-08", "ZmDBbnmKpqQ", 1045699],
+["1 step forward, 3 steps back", "SOUR", 22, 35, 25, 2, 25, 40, 25, 15, "Anxiety as choreography, over a Taylor Swift interpolation.", 164, 709032673, "4wcBRRpIfesgcyUtis7PEg", 55, "2021-05-21", "q8mGGPtoPdo", 296806],
+["deja vu", "SOUR", 45, 25, 50, 2, 65, 70, 70, 65, "Strawberry ice cream in Malibu — she showed him Billy Joel first, your honor.", 216, 2305249864, "6HU7h9RYOaPRFeh0R3UeAr", 45, "2021-04-01", "cii6ruuycQA", 1113876],
+["good 4 u", "SOUR", 55, 8, 92, 2, 10, 60, 95, 80, "Like a damn sociopath! The pop-punk revenge serve heard around the world.", 178, 2662478197, "4ZtFanR9U6ndgddUvNcjcG", 25, "2021-05-14", "gNi_6U5Pm_o", 700366],
+["enough for you", "SOUR", 10, 18, 35, 8, 35, 55, 45, 12, "Stupid, emotional, obsessed — acoustic devastation in plain language.", 203, 648447286, "2TOzTqQXNmR2zDJXihjZ2e", 55, "2021-05-21", "AqRXiQkyxvI", 292788],
+["happier", "SOUR", 15, 25, 40, 3, 40, 60, 55, 25, "Wishing the new girl happiness, 'but not as happy as you were with me.' Honest, at least.", 176, 1655955115, "2tGvwE8GcFKwNdAXMnlbfl", 45, "2021-05-21", "ZQFmRXgeR-s", 709050],
+["jealousy, jealousy", "SOUR", 35, 15, 70, 2, 5, 55, 65, 55, "Instagram-induced spiral with a strutting bassline.", 173, 1272789998, "0MMyJUC3WNnFS1lit5pTjk", 35, "2021-05-21", "Z-9gQjUZMm0", 485704],
+["favorite crime", "SOUR", 18, 30, 40, 10, 60, 60, 50, 15, "Accomplice heartbreak in harmony — the hands you used as weapons.", 153, 1550811051, "5JCoSi02qi3jJeHdZXMmR8", 30, "2021-05-21", "AyX_LL9nWSE", 579600],
+["hope ur ok", "SOUR", 30, 35, 10, 5, 75, 45, 30, 25, "A hug for the kids who raised themselves. Genuinely, disarmingly kind.", 210, 432094305, "1zejeOnykpCoyVSit6Bwp3", 90, "2021-05-21", "ZLlsmB1D4Q0", 171531],
+["all-american bitch", "GUTS", 50, 20, 75, 5, 10, 65, 85, 65, "Sweet folk verses, scream-therapy chorus. Light as a feather, stiff as a board.", 166, 425126682, "34sOdxWu9FljH84UXdRwu1", 25, "2023-09-08", "n2BnbpjpRdo", 240443],
+["bad idea right?", "GUTS", 75, 35, 15, 2, 20, 55, 80, 80, "Seeing your ex! Just for tonight! The brain literally goes 'haha.'", 185, 729742863, "3IX0yuEVvDbnqUwMBB3ouC", 20, "2023-08-11", "Dj9qJsJTsjQ", 381592],
+["vampire", "GUTS", 15, 10, 85, 2, 25, 80, 90, 65, "Bloodsucker, fame-f—er — the piano ballad that detonates mid-flight.", 220, 1664855510, "1kuGVB7EU95pJObxwvfwKS", 30, "2023-06-30", "RlPNh_PBZb4", 875105],
+["lacy", "GUTS", 20, 25, 45, 5, 15, 50, 35, 20, "Envy written as a love letter. Skin like puff pastry; problems like ours.", 177, 532057932, "6QT6j7rKt7Vk3IuV2AUO9W", 40, "2023-09-08", "_IB5EYuz3XM", 461819],
+["ballad of a homeschooled girl", "GUTS", 35, 15, 55, 2, 15, 50, 80, 70, "Social suicide set to pop-punk. Everything she does is tragic, and relatable.", 203, 252469460, "5sp71CUt0jXRNqHblPGp7b", 35, "2023-09-08", "ugmjPLNvB8E", 184784],
+["making the bed", "GUTS", 18, 25, 25, 3, 45, 55, 40, 35, "Self-aware sadness — she's the one pulling back the covers, and she knows it.", 199, 343813115, "5CscrLqFBgPfZR8fGtikov", 55, "2023-09-08", "OuuBnf2aGCc", 304298],
+["logical", "GUTS", 10, 15, 45, 3, 30, 75, 55, 20, "Two plus two equals five if you love wrong enough. Master manipulator math.", 232, 247619710, "53dtP2iUMvaF28JZcHnFuU", 50, "2023-09-08", "I6OeAufKDBg", 181652],
+["get him back!", "GUTS", 70, 30, 70, 2, 15, 60, 85, 75, "Revenge AND reunion, simultaneously. The double-entendre anthem.", 211, 527686928, "2gyxAWHebV7xPYVxqoi86f", 15, "2023-09-08", "ZsJ-BHohXRI", 326052],
+["love is embarrassing", "GUTS", 65, 25, 50, 2, 10, 50, 75, 78, "Whole dang life consecrated to a loser — and dancing about it anyway.", 155, 345936403, "26QLJMK8G0M06sk7h7Fkse", 40, "2023-09-08", "AXi213cWgYM", 243490],
+["the grudge", "GUTS", 12, 15, 60, 3, 45, 70, 50, 18, "'My undying love, now I hold it like a grudge.' Oof.", 189, 390201097, "3Nl5OkkmS5DaBZvuYofpAt", 45, "2023-09-08", "Qt5wB7KXSaM", 277159],
+["pretty isn't pretty", "GUTS", 25, 20, 40, 2, 20, 45, 55, 65, "The beauty-standard treadmill, with chorus reverb to run on.", 199, 297550504, "6W9l02gRsXVxzIuQC1oc1X", 60, "2023-09-08", "G0R7Z2A0XeY", 356578],
+["teenage dream", "GUTS", 15, 20, 30, 3, 70, 80, 55, 30, "'When does the teenage dream end?' The closer that asks and doesn't answer.", 222, 206308894, "7fesNTgTEMEH0ye8MOgEDY", 60, "2023-09-08", "F33uCg-3XiY", 176322],
+["obsessed", "GUTS", 50, 20, 65, 2, 10, 55, 80, 75, "Obsessed with your ex's ex. Rock-star paranoia banger.", 171, 356566430, "6tNgRQ0K2NYZ0Rb9l9DzL8", 25, "2024-03-22", "QXcjPySjdJU", 222554],
+["girl i've always been", "GUTS", 60, 40, 25, 25, 40, 45, 45, 45, "Jangly, self-assured spilled-track charm in two minutes flat.", 121, 82388055, "0bJAmhSAeMSfsyazOEUVFf", 65, "2024-03-22", "1-dT9r5nbks", 97710],
+["scared of my guitar", "GUTS", 18, 25, 20, 8, 35, 55, 35, 15, "The guitar knows the truth before she's ready to say it.", 264, 113740952, "7JqH46zlr7XV7vMBt4slE6", 55, "2024-03-22", "dSb3JRCCynk", 188336],
+["stranger", "GUTS", 35, 30, 20, 5, 50, 50, 35, 30, "Walking away politely; becoming strangers gracefully.", 193, 157300529, "2U3jOPfO4wZZFaaWS4Dcj6", 65, "2024-03-22", "no0S6UzeRlA", 225760],
+["so american", "GUTS", 80, 90, 5, 8, 15, 45, 60, 60, "He laughs at all her jokes and makes her breakfast. God, love's embarrassing and great.", 170, 274406245, "5Jh1i0no3vJ9u4deXkb4aV", 70, "2024-03-22", "W-PGNyhmSKA", 269552],
+["drop dead", "Pretty Sad", 55, 45, 70, 2, 10, 55, 80, 80, "Lead single of the new era — the remix titles alone ('stalked you on the internet') say plenty. Day-one provisional scores.", 225, 229078376, "7Hc6qcJG4NtyZgbNvQyd8U", 25, "2026-04-17", "78wrful9cVU", 3053902],
+["stupid song", "Pretty Sad", 60, 70, 25, 3, 15, 50, 60, 70, "Falling hard and resenting the cliché. (First-listen read — album is one day old.)", 210, 3000000, "", 50, "2026-06-11", "Rt9tW3cMLhI", 1500000],
+["honeybee", "Pretty Sad", 65, 80, 10, 5, 20, 50, 45, 55, "Sweetness with a stinger somewhere, presumably. (Day-one provisional.)", 223, 3000000, "", 65, "2026-06-11", "60rlboK94mE", 1500000],
+["maggots for brains", "Pretty Sad", 25, 30, 65, 2, 10, 55, 70, 60, "The title is doing a lot of confident work. (Day-one provisional.)", 240, 3000000, "", 20, "2026-06-11", "lwiQSOaI_XE", 1500000],
+["u + me = <3", "Pretty Sad", 80, 90, 5, 2, 15, 50, 55, 75, "Math notation romance — the girl is IN LOVE. (Day-one provisional.)", 248, 3000000, "", 70, "2026-06-11", "p-YnaSsGsPU", 1500000],
+["my way", "Pretty Sad", 55, 25, 55, 3, 15, 50, 60, 65, "Self-possession anthem energy. (Day-one provisional.)", 181, 3000000, "", 40, "2026-06-11", "aSWBaZi7UYc", 1500000],
+["purple", "Pretty Sad", 35, 60, 15, 3, 55, 55, 45, 45, "SOUR was purple too; this purple sounds like dusk. (Day-one provisional.)", 240, 3000000, "", 60, "2026-06-11", "nXIXeFgBAa8", 1500000],
+["the cure", "Pretty Sad", 30, 50, 25, 3, 35, 60, 55, 40, "The five-minute second single — love as medicine, or the search for it. Provisional.", 297, 96783546, "5gJMjRYDWy2vxUi9v1ZWd8", 55, "2026-05-20", "B402rKl4bUg", 3930370],
+["begged", "Pretty Sad", 15, 30, 50, 3, 25, 60, 65, 35, "Past tense of dignity. (Day-one provisional.)", 218, 3000000, "", 40, "2026-06-11", "NmGGDYyJ8tU", 1500000],
+["what's wrong with me", "Pretty Sad", 30, 25, 45, 3, 20, 55, 60, 55, "The self-interrogation track — every album needs one. (Day-one provisional.)", 225, 3000000, "", 45, "2026-06-11", "oOEGRpfitAg", 1500000],
+["less", "Pretty Sad", 20, 30, 35, 3, 30, 50, 40, 30, "Asking to be loved without shrinking. (Day-one provisional.)", 194, 3000000, "", 50, "2026-06-11", "Z4BGtpcp1Jg", 1500000],
+["expectations", "Pretty Sad", 30, 35, 40, 3, 25, 50, 50, 45, "The weight of being everyone's idea of you. (Day-one provisional.)", 222, 3000000, "", 50, "2026-06-11", "nBv5BzFpvvE", 1500000],
+["cigarette smoke", "Pretty Sad", 18, 35, 25, 3, 60, 60, 45, 25, "The 5:41 closer — longest song she's ever released. Built for sitting in the car after.", 341, 3000000, "", 35, "2026-06-11", "mA9HZEJfmGw", 1500000],
+["All I Want", "Extras", 20, 25, 15, 5, 30, 50, 60, 30, "The HSMTMTS ballad that started it all — Disney+ to a billion streams.", 177, 1160781213, "4Yxc55NX3tAXC2mHRAhtcW", 75, "2019-11-15", "OOgvDiXl6hA", 501641],
+["Can't Catch Me Now", "Extras", 25, 15, 55, 25, 45, 65, 55, 35, "Hunger Games folk menace — she's in the trees, she's in the breeze.", 205, 522923834, "17cia5k4BpGVlyEfqrFH50", 50, "2023-11-10", "GlM6lcFbLSg", 368140],
+];
+
+// ---------------- state ----------------
+let metricX = METRICS[5]; // Anger
+let metricY = METRICS[0]; // Happiness
+const off = new Set();
+const stage = document.getElementById("stage");
+const tip = document.getElementById("tip");
+const TOUCH = matchMedia("(hover: none), (pointer: coarse)").matches;
+const metricKeys = ["mood","love","anger","country","nostalgia","bridge","scream","sparkle"];
+
+const songs = SONGS.map((s, i) => {
+  const o = { title:s[0], album:s[1], note:s[10], sec:s[11], streams:s[12], spid:s[13], whole:s[14], date:s[15], yt:s[16], daily:s[17], id:i };
+  metricKeys.forEach((k, j) => o[k] = s[j+2]);
+  return o;
+});
+// song length → 0–100 across the catalog's min/max runtime; shown as m:ss
+const minSec = Math.min(...songs.map(s => s.sec)), maxSec = Math.max(...songs.map(s => s.sec));
+songs.forEach(s => s.len = Math.round((s.sec - minSec) / (maxSec - minSec) * 100));
+// popularity → 0–100 on a log scale (streams span 20M to 3.4B); shown as 353M / 2.1B
+const lg = n => Math.log10(n);
+const minSt = Math.min(...songs.map(s => s.streams)), maxSt = Math.max(...songs.map(s => s.streams));
+songs.forEach(s => s.pop = Math.round((lg(s.streams) - lg(minSt)) / (lg(maxSt) - lg(minSt)) * 100));
+// trending → 0–100 on log of current daily streams
+const minD = Math.min(...songs.map(s => Math.max(s.daily, 1))), maxD = Math.max(...songs.map(s => s.daily));
+songs.forEach(s => s.trend = Math.round((lg(Math.max(s.daily, 1)) - lg(minD)) / (lg(maxD) - lg(minD)) * 100));
+// release date → 0–100 between the 2006 debut and the newest release
+const ts = s => new Date(s.date + "T00:00:00").getTime();
+const minT = Math.min(...songs.map(ts)), maxT = Math.max(...songs.map(ts));
+songs.forEach(s => s.rel = Math.round((ts(s) - minT) / (maxT - minT) * 100));
+const MO = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const fmtLen = sec => Math.floor(sec / 60) + ":" + String(sec % 60).padStart(2, "0");
+const fmtSt = n => n >= 1e9 ? (n / 1e9).toFixed(2) + "B" : Math.round(n / 1e6) + "M";
+const fmtDate = d => MO[+d.split("-")[1] - 1] + " " + d.split("-")[0];
+const fmtTrend = d => { const wk = d * 7; return wk >= 1e6 ? (wk / 1e6).toFixed(1) + "M/wk" : Math.round(wk / 1e3) + "K/wk"; };
+const disp = (s, m) => m.k === "len" ? fmtLen(s.sec) : m.k === "pop" ? fmtSt(s.streams)
+  : m.k === "trend" ? fmtTrend(s.daily) : m.k === "rel" ? fmtDate(s.date) : s[m.k];
+// real-valued axes: print actual numbers at each gridline (inverting each metric's scale).
+// annotated 0–100 scores keep their plain score ticks.
+const fmtDateTs = t => { const d = new Date(t); return MO[d.getMonth()] + " " + d.getFullYear(); };
+const AXIS = {
+  len:   { lo: minSec, hi: maxSec, log: false, fmt: v => fmtLen(Math.round(v)) },
+  pop:   { lo: minSt,  hi: maxSt,  log: true,  fmt: v => fmtSt(v) },
+  trend: { lo: minD,   hi: maxD,   log: true,  fmt: v => fmtTrend(v) },
+  rel:   { lo: minT,   hi: maxT,   log: false, fmt: v => fmtDateTs(v) },
+};
+const valueAt = (c, t) => c.log
+  ? Math.pow(10, lg(c.lo) + (t / 100) * (lg(c.hi) - lg(c.lo)))
+  : c.lo + (t / 100) * (c.hi - c.lo);
+const tickLabel = (m, v) => AXIS[m.k] ? AXIS[m.k].fmt(valueAt(AXIS[m.k], v)) : v;
+
+// ---------------- build UI ----------------
+function soloAlbum(name) {
+  const isSolo = !off.has(name) && off.size === Object.keys(ALBUMS).length - 1;
+  off.clear();
+  if (!isSolo) Object.keys(ALBUMS).forEach(n => { if (n !== name) off.add(n); });
+  render(false);
+}
+
+const coversEl = document.getElementById("covers");
+Object.keys(ALBUMS).forEach(name => {
+  if (!ART[name]) return;
+  const img = document.createElement("img");
+  img.src = ART[name];
+  img.title = name + " (" + ALBUMS[name].y + ")";
+  img.style.setProperty("--ec", ALBUMS[name].c);
+  img.dataset.album = name;
+  img.onclick = () => soloAlbum(name);
+  coversEl.appendChild(img);
+});
+
+const metricsXEl = document.getElementById("metricsX");
+const metricsYEl = document.getElementById("metricsY");
+function buildPills(el, axis) {
+  METRICS.forEach(m => {
+    const b = document.createElement("button");
+    b.className = "pill"; b.textContent = m.label;
+    b.dataset.k = m.k;
+    b.onclick = () => {
+      // picking the metric already on the other axis swaps them
+      if (axis === "x") { if (m.k === metricY.k) metricY = metricX; metricX = m; }
+      else { if (m.k === metricX.k) metricX = metricY; metricY = m; }
+      render();
+    };
+    el.appendChild(b);
+  });
+}
+buildPills(metricsXEl, "x");
+buildPills(metricsYEl, "y");
+
+// gridlines (both directions), Y-axis end labels, corner annotations
+for (let v = 0; v <= 100; v += 25) {
+  for (const [cls, tick] of [["gridline", "gridtick"], ["gridlineH", "gridtickY"]]) {
+    const g = document.createElement("div");
+    g.className = cls; g.dataset.v = v;
+    stage.appendChild(g);
+    const t = document.createElement("div");
+    t.className = tick; t.dataset.v = v; t.textContent = v;
+    stage.appendChild(t);
+  }
+}
+const yLabHi = document.createElement("div"); yLabHi.className = "ylab hi"; stage.appendChild(yLabHi);
+const yLabLo = document.createElement("div"); yLabLo.className = "ylab lo"; stage.appendChild(yLabLo);
+const yBlurb = document.createElement("div"); yBlurb.className = "yblurb"; stage.appendChild(yBlurb);
+const xBlurb = document.getElementById("xBlurb");
+const corners = ["tl", "tr", "bl", "br"].map(k => {
+  const c = document.createElement("div");
+  c.className = "corner " + k;
+  stage.appendChild(c);
+  return c;
+});
+
+// dots — each wears its album cover, ringed in era color
+const dotEls = songs.map(s => {
+  const d = document.createElement("div");
+  const a = ALBUMS[s.album];
+  d.className = "dot";
+  if (ART[s.album]) d.style.backgroundImage = `url(${ART[s.album]})`;
+  else d.style.background = a.c;
+  d.style.border = `1.5px solid ${a.c}`;
+  d.style.boxShadow = `0 0 8px ${a.c}55`;
+  d.onmouseenter = () => showTip(d, s);
+  d.onmouseleave = scheduleHideTip;
+  d.onclick = () => TOUCH ? showTip(d, s) : (s.spid ? playSpotify(s.spid) : window.open("https://open.spotify.com/search/" + encodeURIComponent("Olivia Rodrigo " + s.title), "_blank"));
+  stage.appendChild(d);
+  return d;
+});
+
+// labels for extremes
+const labelPool = Array.from({length: 6}, () => {
+  const l = document.createElement("div");
+  l.className = "dot-label";
+  stage.appendChild(l);
+  return l;
+});
+
+// try the Spotify app first; fall back to the web player if nothing launches
+function playSpotify(spid) {
+  let launched = false;
+  const onBlur = () => launched = true;
+  window.addEventListener("blur", onBlur);
+  location.href = "spotify:track:" + spid;
+  setTimeout(() => {
+    window.removeEventListener("blur", onBlur);
+    if (!launched && !document.hidden) window.open("https://open.spotify.com/track/" + spid, "_blank");
+  }, 1400);
+  return false;
+}
+
+let tipTimer = null;
+function hideTip() { tip.style.opacity = 0; tip.style.pointerEvents = "none"; }
+function scheduleHideTip() { tipTimer = setTimeout(hideTip, 250); }
+tip.onmouseenter = () => clearTimeout(tipTimer);
+tip.onmouseleave = hideTip;
+
+function showTip(el, s) {
+  clearTimeout(tipTimer);
+  const a = ALBUMS[s.album];
+  const cover = ART[s.album] ? `<img class="t-cover" src="${ART[s.album]}">` : "";
+  tip.innerHTML = `
+    <div class="t-head">${cover}
+      <div>
+        <div class="t-title">${s.title}</div>
+        <div class="t-album" style="color:${a.c}">${s.album} · ${a.y}</div>
+      </div>
+    </div>
+    <div class="t-metric">→ ${metricX.label}: <span class="t-score">${disp(s, metricX)}</span> &nbsp;·&nbsp; ↑ ${metricY.label}: <span class="t-score">${disp(s, metricY)}</span></div>
+    <div class="t-note">${s.note}</div>
+    <div class="t-actions">
+      <a class="t-play" href="${s.spid ? "spotify:track:" + s.spid : "https://open.spotify.com/search/" + encodeURIComponent("Olivia Rodrigo " + s.title)}" ${s.spid ? `onclick="return playSpotify('${s.spid}')"` : `target="_blank"`}>▶ Spotify</a>
+      <a class="t-play yt" href="${s.yt ? "https://www.youtube.com/watch?v=" + s.yt : "https://www.youtube.com/results?search_query=" + encodeURIComponent("Olivia Rodrigo " + s.title)}" target="_blank">▶ YouTube</a>
+    </div>`;
+  tip.style.opacity = 1;
+  tip.style.pointerEvents = "auto";
+  const r = el.getBoundingClientRect(), tw = tip.offsetWidth, th = tip.offsetHeight, pad = 10;
+  let x = r.right + pad;
+  if (x + tw > innerWidth - 8) x = r.left - tw - pad;
+  tip.style.left = Math.max(8, x) + "px";
+  tip.style.top = Math.max(8, Math.min(r.top - 8, innerHeight - th - 8)) + "px";
+}
+
+// ---------------- layout & render ----------------
+function layout() {
+  const W = stage.clientWidth, H = stage.clientHeight;
+  const mobile = matchMedia("(max-width: 700px)").matches;
+  const padL = mobile ? 52 : 80, padR = mobile ? 14 : 20, padT = 26, padB = 30;
+  const xOf = v => padL + (v / 100) * (W - padL - padR);
+  const yOf = v => H - padB - (v / 100) * (H - padT - padB);
+
+  stage.querySelectorAll(".gridline").forEach(g => g.style.left = xOf(+g.dataset.v) + "px");
+  stage.querySelectorAll(".gridtick").forEach(t => t.style.left = xOf(+t.dataset.v) + "px");
+  stage.querySelectorAll(".gridlineH").forEach(g => g.style.top = yOf(+g.dataset.v) + "px");
+  stage.querySelectorAll(".gridtickY").forEach(t => t.style.top = yOf(+t.dataset.v) + "px");
+
+  // exact ties fan out on a small golden-angle spiral so stacks stay readable
+  const seen = new Map();
+  return songs.map(s => {
+    const key = s[metricX.k] + "," + s[metricY.k];
+    const n = seen.get(key) || 0;
+    seen.set(key, n + 1);
+    const rad = n ? 6 * Math.sqrt(n) : 0, ang = n * 2.39996;
+    return { x: xOf(s[metricX.k]) + rad * Math.cos(ang), y: yOf(s[metricY.k]) + rad * Math.sin(ang) };
+  });
+}
+
+function render(relayout = true) {
+  metricsXEl.querySelectorAll(".pill").forEach(p => p.classList.toggle("active", p.dataset.k === metricX.k));
+  metricsYEl.querySelectorAll(".pill").forEach(p => p.classList.toggle("activeY", p.dataset.k === metricY.k));
+  xBlurb.textContent = metricX.blurb;
+  yBlurb.textContent = metricY.blurb;
+  document.getElementById("xLoLab").textContent = metricX.lo;
+  document.getElementById("xHiLab").textContent = metricX.hi;
+  // counter-rotate the leading emoji so it stays upright in vertical text
+  const upright = t => { const i = t.indexOf(" "); return `<span class="up">${t.slice(0, i)}</span>${t.slice(i)}`; };
+  yLabHi.innerHTML = upright(metricY.hi);
+  yLabLo.innerHTML = upright(metricY.lo);
+  corners[0].textContent = metricX.lo + " · " + metricY.hi;
+  corners[1].textContent = metricX.hi + " · " + metricY.hi;
+  corners[2].textContent = metricX.lo + " · " + metricY.lo;
+  corners[3].textContent = metricX.hi + " · " + metricY.lo;
+  coversEl.querySelectorAll("img").forEach(c =>
+    c.classList.toggle("solo", !off.has(c.dataset.album) && off.size === Object.keys(ALBUMS).length - 1));
+  // number the axes with real values where the metric is a real measurement
+  stage.querySelectorAll(".gridtick").forEach(t => t.textContent = tickLabel(metricX, +t.dataset.v));
+  stage.querySelectorAll(".gridtickY").forEach(t => t.textContent = tickLabel(metricY, +t.dataset.v));
+
+  const pos = layout();
+  songs.forEach((s, i) => {
+    dotEls[i].style.left = pos[i].x + "px";
+    dotEls[i].style.top = pos[i].y + "px";
+    dotEls[i].classList.toggle("dim", off.has(s.album));
+  });
+
+  // label the extremes: ends of each axis plus the two diagonals
+  const vis = songs.filter(s => !off.has(s.album));
+  const pick = fn => vis.length ? vis.reduce((a, b) => fn(b) > fn(a) ? b : a) : null;
+  const tagged = [...new Set([
+    pick(s => s[metricX.k]), pick(s => -s[metricX.k]),
+    pick(s => s[metricY.k]), pick(s => -s[metricY.k]),
+    pick(s => s[metricX.k] + s[metricY.k]), pick(s => -s[metricX.k] - s[metricY.k]),
+  ].filter(Boolean))];
+  labelPool.forEach((l, i) => {
+    const s = tagged[i];
+    if (!s) { l.style.opacity = 0; return; }
+    l.textContent = s.title;
+    l.style.left = pos[s.id].x + "px";
+    l.style.top = pos[s.id].y + "px";
+    l.style.opacity = 1;
+  });
+
+  fillSide(vis);
+}
+
+function fillSide(vis) {
+  const block = (m, arrow, cls) => {
+    const top = [...vis].sort((a, b) => b[m.k] - a[m.k]).slice(0, 7);
+    return `<div><div class="sb-cap ${cls}">${arrow} ${m.label} <span>· top 7</span></div>` +
+      top.map(s => {
+        const a = ALBUMS[s.album];
+        const cv = ART[s.album] ? `<img src="${ART[s.album]}">` : `<span class="sb-dot" style="background:${a.c}"></span>`;
+        return `<div class="sb-row" title="${s.title} (${s.album})">${cv}<span class="sb-nm">${s.title}</span><span class="sb-v">${disp(s, m)}</span></div>`;
+      }).join("") + `</div>`;
+  };
+  document.getElementById("sideBoards").innerHTML = block(metricY, "↑", "y") + block(metricX, "→", "x");
+}
+
+// ---------------- tabs ----------------
+document.querySelectorAll(".tab").forEach(t => {
+  t.onclick = () => {
+    document.querySelectorAll(".tab").forEach(x => x.classList.toggle("active", x === t));
+    document.getElementById("page-spectrum").classList.toggle("hidden", t.dataset.page !== "spectrum");
+    document.getElementById("page-aura").classList.toggle("hidden", t.dataset.page !== "aura");
+    if (t.dataset.page === "spectrum") render(false); // re-measure after being hidden
+  };
+});
+
+// ---------------- aura quiz ----------------
+const THEMES = [
+  { name: "Gen Z Sunshine",              emoji: "🌞", color: "#ffd166", v: s => s.mood },
+  { name: "Sad Girl Autumn",             emoji: "🍂", color: "#8fb4ff", v: s => 100 - s.mood },
+  { name: "Lovestruck Golden Retriever", emoji: "🐶", color: "#f48fb1", v: s => s.love },
+  { name: "Situationship Survivor",      emoji: "💔", color: "#b08aff", v: s => 100 - s.love },
+  { name: "Petty Crimes Enthusiast",     emoji: "🔥", color: "#ff6b6b", v: s => s.anger },
+  { name: "Polaroid Hoarder",            emoji: "📼", color: "#c97a3d", v: s => s.nostalgia },
+  { name: "Director's Cut Truther",     emoji: "📜", color: "#a05cc8", v: s => s.len },
+  { name: "Shopping Cart Saint",         emoji: "😇", color: "#90d4a0", v: s => s.whole },
+  { name: "Highway Banshee",             emoji: "🚗", color: "#5dade2", v: s => s.scream },
+  { name: "Smokepop",                    emoji: "🪩", color: "#ff8c42", v: s => s.sparkle },
+];
+const picks = [];
+const searchEl = document.getElementById("songSearch");
+const suggestEl = document.getElementById("suggest");
+const chipsEl = document.getElementById("chips");
+const auraBtn = document.getElementById("auraBtn");
+
+function refreshSuggest() {
+  const q = searchEl.value.trim().toLowerCase();
+  if (picks.length >= 5) { suggestEl.style.display = "none"; return; }
+  const hits = q
+    ? songs.filter(s => !picks.includes(s) &&
+        (s.title.toLowerCase().includes(q) || s.album.toLowerCase().includes(q)))
+    : [...songs].filter(s => !picks.includes(s)).sort((a, b) => b.streams - a.streams).slice(0, 5);
+  suggestEl.style.display = hits.length ? "block" : "none";
+  suggestEl.innerHTML = hits.map(s => {
+    const a = ALBUMS[s.album];
+    const cv = ART[s.album] ? `<img src="${ART[s.album]}">` : `<span class="cv-fallback" style="background:${a.c}"></span>`;
+    return `<div class="sg" data-id="${s.id}">${cv}<span>${s.title}</span><span class="sg-al" style="color:${a.c}">${s.album}</span></div>`;
+  }).join("");
+  suggestEl.querySelectorAll(".sg").forEach(el => el.onclick = () => addPick(songs[+el.dataset.id], true));
+}
+function addPick(s, fromSearch) {
+  if (picks.length >= 5 || picks.includes(s)) return;
+  picks.push(s);
+  searchEl.value = "";
+  refreshSuggest();
+  drawChips();
+  if (fromSearch && picks.length < 5) searchEl.focus();
+}
+function removePick(s) {
+  picks.splice(picks.indexOf(s), 1);
+  drawChips();
+}
+function drawChips() {
+  chipsEl.innerHTML = picks.map(s => {
+    const a = ALBUMS[s.album];
+    const cv = ART[s.album] ? `<img src="${ART[s.album]}">` : "";
+    return `<div class="chip" style="border-color:${a.c}88">${cv}${s.title}<span class="x" data-id="${s.id}">✕</span></div>`;
+  }).join("");
+  chipsEl.querySelectorAll(".x").forEach(el => el.onclick = () => removePick(songs[+el.dataset.id]));
+  auraBtn.disabled = picks.length < 3;
+  auraBtn.textContent = picks.length >= 3 ? "🔮 Reveal my aura" : `🔮 Reveal my aura (${picks.length}/3 minimum)`;
+  catEl.querySelectorAll(".cat-song").forEach(b => {
+    const s = songs[+b.dataset.id];
+    b.classList.toggle("picked", picks.includes(s));
+    b.classList.toggle("maxed", picks.length >= 5 && !picks.includes(s));
+  });
+}
+searchEl.addEventListener("input", refreshSuggest);
+searchEl.addEventListener("focus", refreshSuggest);
+searchEl.addEventListener("keydown", e => {
+  if (e.key === "Enter") {
+    const first = suggestEl.querySelector(".sg");
+    if (first) addPick(songs[+first.dataset.id], true);
+  }
+});
+document.addEventListener("click", e => {
+  if (!e.target.closest(".picker")) suggestEl.style.display = "none";
+  if (!e.target.closest(".dot") && !e.target.closest("#tip")) hideTip();
+});
+
+// full catalogue browser at the bottom of the aura page — click to toggle picks
+const catEl = document.getElementById("catalogue");
+catEl.innerHTML = `<div class="cat-head">…or browse the whole catalogue</div>` +
+  Object.keys(ALBUMS).map(album => {
+    const list = songs.filter(s => s.album === album);
+    if (!list.length) return "";
+    const cover = ART[album] ? `<img src="${ART[album]}">` : "";
+    return `<div class="cat-era" style="color:${ALBUMS[album].c}">${cover}${album} <span>${ALBUMS[album].y}</span></div>
+      <div class="cat-songs">` +
+      list.map(s => `<button class="cat-song" data-id="${s.id}">${s.title}</button>`).join("") +
+      `</div>`;
+  }).join("");
+catEl.querySelectorAll(".cat-song").forEach(b => b.onclick = () => {
+  const s = songs[+b.dataset.id];
+  picks.includes(s) ? removePick(s) : addPick(s);
+});
+
+drawChips();
+
+const ERA_READINGS = {
+  "SOUR": "Your dominant era is SOUR: you got your heart broken exactly once and built a cathedral on the site. Purple is a feeling, and you have it chronically.",
+  "GUTS": "Your dominant era is GUTS: you metabolize embarrassment into bangers. You know the joke is on you — you wrote the joke. That is the power move.",
+  "Pretty Sad": "Your dominant era is the brand-new one: you are forming attachments to an album that came out yesterday. Early adopter, deeply in feelings, possibly unwell. Respect.",
+  "Extras": "Your dominant era is the soundtrack years: you knew before the world did. HSMTMTS truthers do not need apologies — they need acknowledgment.",
+};
+const THEME_OPENERS = {
+  "Gen Z Sunshine": [
+    "You lead with joy, and people sometimes mistake that for simplicity. It is not simplicity — it is a decision you remake every morning, and it costs more than you let on.",
+    "Optimism, for you, is not a mood — it is a discipline. You have seen the bathroom-floor version of life and chosen the kitchen-dancing version anyway. Daily. On purpose.",
+  ],
+  "Sad Girl Autumn": [
+    "You lead with the wound. Not because you enjoy it, but because it is the most honest thing you own, and you have decided to be an honest person.",
+    "Your sadness has a skincare routine and a window seat. You do not wallow — you curate. There is a difference, and you will explain it to anyone brave enough to ask.",
+  ],
+  "Lovestruck Golden Retriever": [
+    "You are devotion-forward. When you commit — to people, to songs, to Tuesday plans — you commit completely, and you quietly grade everyone else on the same scale.",
+    "You love like it has never gone badly, which is remarkable, because it has. That is not amnesia — that is courage with better branding.",
+  ],
+  "Situationship Survivor": [
+    "You carry an ending around with you. It has shaped your posture, your playlists, and your standards — mostly for the better, though you would not have chosen the tuition.",
+    "You have read meaning into a text message's punctuation and been right. You keep the footnotes of everyone who almost stayed, and the bibliography is getting long.",
+  ],
+  "Petty Crimes Enthusiast": [
+    "You remember everything. This is a kind of power most people are too lazy to maintain, and the right people are a little afraid of you. Good.",
+    "Forgiveness and revenge are both on your menu; you simply believe in ordering for the table. You have never started anything. You have finished several things.",
+  ],
+  "Polaroid Hoarder": [
+    "You experience the present tense mostly as future nostalgia — you are pre-missing this exact moment. It makes you gentle with endings and terrible at goodbyes.",
+    "Your memory is a museum with generous opening hours, and you are both the curator and the most frequent visitor. Some exhibits still sting. You renew your membership anyway.",
+  ],
+  "Director's Cut Truther": [
+    "You distrust anything that resolves too quickly: songs, arguments, people. You are built for the long version, and you suspect the short version was a cover-up.",
+    "Ten minutes was never too long; three minutes was always too short. You read the liner notes, stay past the credits, and consider the radio edit a crime scene.",
+  ],
+  "Highway Banshee": [
+    "Your feelings require horsepower. Containment was never a real option for you, and the people who love you have learned to roll the windows down.",
+    "Your emotional regulation strategy has a speed limit, and you treat it as advisory. The steering wheel has heard your best performances; honestly, it should pay rent.",
+  ],
+  "Smokepop": [
+    "You believe presentation is a form of sincerity, and you are correct. The glitter is not hiding anything — the glitter is the message.",
+    "You want production value in all things, feelings included. If a moment matters, it should shimmer; if it shimmers, it mattered. This logic has never once failed you.",
+  ],
+  "Shopping Cart Saint": [
+    "Your kindness is not naivety. It is a strategy, refined over years, and it has never once failed you — even on the days it looked like it was failing.",
+    "You are the person people call from parking lots and airports. Being dependable is not boring — it is the rarest aesthetic, and you wear it well.",
+  ],
+};
+const TODO_BANK = [
+  "Go to a movie you did not anticipate seeing — pick the showtime first and the film second. Stay through the credits.",
+  "Try the olive martini. You will know when.",
+  "Take a walk at 3:40pm tomorrow. The light will be doing something you need to see. This one is for extra luck.",
+  "Text the person whose name you just thought of. Not the second name — the first one.",
+  "Re-listen to track five of your favorite album in a parked car before going inside. Do not skip the bridge.",
+  "Wear the good perfume on a day with no plans.",
+  "Make the playlist you have been composing in your head for three weeks. Title it honestly.",
+  "Say no to one thing this week without offering a reason. The reason is the no.",
+  "Buy the ticket. Future you already said yes and is waiting for you to catch up.",
+  "Clean out exactly one drawer. The feeling will spread on its own.",
+  "Cook something that takes too long, on purpose, on Sunday.",
+  "Leave a five-star review for something small that deserves it. The universe keeps these receipts.",
+  "Call instead of texting on Thursday. Thursday specifically.",
+  "Take the long way home on Wednesday. There is something on the long way.",
+  "Write down the sentence you keep almost saying. You do not have to send it. You do have to write it.",
+  "Light the candle you have been saving. It was never being saved for anything better than this.",
+  "Wear red on Friday. Do not ask questions about this one.",
+  "Delete the screenshot. You know exactly which one.",
+  "Go to bed 40 minutes early on Sunday. The dream will be informative.",
+  "Order dessert first somewhere, once, this week. Watch what it does to the rest of the meal.",
+];
+function buildStory(picks, scored, era) {
+  const avg = k => picks.reduce((a, s) => a + s[k], 0) / picks.length;
+  // everything below is seeded by the picks: same songs, same reading
+  let seed = picks.reduce((a, s) => (a * 31 + s.id + 7) >>> 0, picks.length);
+  const rand = () => (seed = (seed * 1664525 + 1013904223) >>> 0) / 4294967296;
+  const choose = arr => arr[Math.floor(rand() * arr.length)];
+  const draw = (pool, n) => {
+    const p = [...pool], out = [];
+    while (out.length < n && p.length) out.push(p.splice(Math.floor(rand() * p.length), 1)[0]);
+    return out;
+  };
+
+  // analysis of this exact combination
+  const byDate = [...picks].sort((a, b) => a.date < b.date ? -1 : 1);
+  const oldest = byDate[0], newest = byDate[byDate.length - 1];
+  const span = +newest.date.slice(0, 4) - +oldest.date.slice(0, 4);
+  const byPop = [...picks].sort((a, b) => a.streams - b.streams);
+  const deepCut = byPop[0], hit = byPop[byPop.length - 1];
+  const bySad = [...picks].sort((a, b) => a.mood - b.mood);
+  const saddest = bySad[0], happiest = bySad[bySad.length - 1];
+  const loud = [...picks].sort((a, b) => b.scream - a.scream)[0];
+  const albumCounts = {};
+  picks.forEach(s => albumCounts[s.album] = (albumCounts[s.album] || 0) + 1);
+  const eraCount = Object.keys(albumCounts).length;
+  const maxAlbum = Object.entries(albumCounts).sort((a, b) => b[1] - a[1])[0];
+
+  const obs = [];
+  if (eraCount === picks.length && eraCount >= 4) obs.push(`You pulled from ${eraCount} different eras without repeating once — you do not have a favorite child, you have a favorite feeling, and you will chase it across any decade.`);
+  if (maxAlbum[1] >= 3) obs.push(`${maxAlbum[1]} of your picks live on ${maxAlbum[0]}. That is not a coincidence; that is an address. Part of you still lives there, and the rent is emotional.`);
+  if (span >= 12) obs.push(`Your picks span ${span} years — from “${oldest.title}” to “${newest.title}” — which means you did not find this music. You grew up inside it.`);
+  if (hit.streams >= 15e8 && deepCut.streams <= 2e8) obs.push(`“${hit.title}” next to “${deepCut.title}”: you love the headliner and the understudy with equal sincerity, which is the rarest kind of fan.`);
+  else if (deepCut.streams <= 12e7) obs.push(`You chose “${deepCut.title}” — a song whose true believers could fit in one group chat. You are clearly its president.`);
+  if (saddest.mood <= 20 && happiest.mood >= 80) obs.push(`The distance between “${saddest.title}” and “${happiest.title}” is the entire emotional spectrum. You did that on purpose. You always do.`);
+  if (!obs.length) obs.push(`Your picks orbit close together — you know exactly what you came for, and consistency like that is its own kind of confession.`);
+  const observed = draw(obs, 2).join(" ");
+
+  const traits = [
+    [avg("whole") >= 65, "People hand you their secrets unprompted — you radiate the energy of someone who returns the shopping cart."],
+    [avg("whole") <= 35, "You keep a villain era on standby, fully charged, and honestly it suits you."],
+    [avg("pop") >= 75, "You are not embarrassed to love what everyone loves; sincerity is your rebellion."],
+    [avg("pop") <= 45, "You would rather be understood by twelve people than liked by twelve million — deep cuts are your native language."],
+    [avg("nostalgia") >= 60, "Part of you permanently lives in a room that no longer exists, and you keep paying the emotional rent."],
+    [avg("scream") >= 70, "Catharsis is your love language. The car is your cathedral; the highway, your choir."],
+    [avg("mood") <= 35, "You treat sadness like a craft you are getting genuinely good at — not a cry for help, a portfolio."],
+    [avg("mood") >= 70 && avg("sparkle") >= 70, "You metabolize joy loudly and on purpose. Confetti is a personality when you do it."],
+    [avg("anger") >= 50, "You keep receipts. Forgiveness is available, but it is earned, notarized, and non-transferable."],
+    [avg("len") >= 60, "You stay past the credits. Ten-minute versions exist because of people like you."],
+    [avg("rel") <= 35, "Old soul, confirmed: you suspect things were better before, and you have the tracklist to prove it."],
+    [avg("rel") >= 75, "You live in the present tense — new eras do not scare you; they are invitations."],
+    [avg("sparkle") <= 30, "You like your songs human-sized — a voice, an instrument, and nowhere to hide. Studio tricks make you suspicious."],
+  ];
+  const satisfied = traits.filter(x => x[0]).map(x => x[1]);
+  const light = satisfied.length ? draw(satisfied, 3) :
+    ["You are suspiciously balanced — the rare listener whose chart refuses to pick a fight."];
+
+  const L = avg("love"), M = avg("mood"), A = avg("anger"), N = avg("nostalgia");
+  const want = choose(
+    L >= 60 && M >= 55 ? [
+      "What you actually want: a love you would write down. Paper rings over diamonds, Wednesdays in cafés, someone who knows the bridge is coming and lets you have it.",
+      "What you actually want: the daylight kind of love — golden, unembarrassed, slightly too loud in restaurants. You would take a hand squeeze over a grand gesture. You would also take the grand gesture.",
+    ] : L >= 60 ? [
+      "What you actually want: devotion that survives the sad parts — someone who stays through track five and does not flinch.",
+      "What you actually want: to be chosen on the bad days, specifically. Anyone can love a chorus; you want someone who loves the bridge.",
+    ] : L < 42 && A >= 45 ? [
+      "What you actually want: not an apology — an acknowledgment. The ledger balanced, the record corrected, the smallest man held accountable.",
+      "What you actually want: for them to know. Not to suffer, necessarily — just to know, fully and precisely, what they did. The suffering is optional but welcome.",
+    ] : L < 42 && N >= 55 ? [
+      "What you actually want: a door back into a room that no longer exists. You know it. You would still knock.",
+      "What you actually want: one more lap of a year that already ended. You would not change anything — you would just like to attend it again, knowing what you know now.",
+    ] : [
+      "What you actually want: to feel everything at full volume and be loved anyway — preferably with the windows down.",
+      "What you actually want: intensity with a seatbelt. All of the feeling, none of the apology, and a passenger who never reaches for the volume knob.",
+    ]);
+
+  const prophecy = choose([
+    `This week, the bridge of “${loud.title}” will feel personally addressed. Let it.`,
+    `“${oldest.title}” will come on shuffle at a moment so precise it will feel like surveillance. It is not surveillance. It is alignment.`,
+    `Someone will mention “${hit.title}” this week without knowing what it means to you. Smile. Say nothing. Power.`,
+    `You will think of “${saddest.title}” on ${new Date(Date.now() + 3 * 864e5).toLocaleDateString("en-US", { weekday: "long" })}. Drink some water first.`,
+  ]);
+
+  const todos = draw([...TODO_BANK,
+    `Listen to “${deepCut.title}” on headphones, outside, at dusk. It has more to say.`,
+    `Play “${oldest.title}” and sit with the person you were when you first heard it. Report back to no one.`,
+    `Queue “${loud.title}” for the drive home on Friday and do not perform restraint.`,
+  ], 3);
+  const nextWeekday = new Date(Date.now() + 6 * 864e5).toLocaleDateString("en-US", { weekday: "long" });
+  return `
+    <div class="aura-story">
+      <div class="as-head">🔮 Your Reading</div>
+      <div class="as-signs">☀️ Sun in ${scored[0].name} · 🌙 Moon in ${scored[1].name} · ⬆️ ${scored[2].name} Rising</div>
+      <p>${choose(THEME_OPENERS[scored[0].name])}</p>
+      <p>${ERA_READINGS[era]}</p>
+      <p>${observed}</p>
+      <p>${light.join(" ")}</p>
+      <p>${want}</p>
+      <p class="as-prophecy">${prophecy}</p>
+      <div class="as-sub">Do these three things before next ${nextWeekday}</div>
+      <ul class="as-todo">${todos.map(t => `<li>${t}</li>`).join("")}</ul>
+    </div>`;
+}
+
+auraBtn.onclick = () => {
+  const res = document.getElementById("auraResult");
+  auraBtn.disabled = true;
+  res.innerHTML = `<div class="aura-loading"><div class="orb"></div><div class="al-text">Figuring out your groove…</div></div>`;
+  res.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  const msgs = ["Figuring out your groove…", "Consulting the bridges…", "Aligning your eras…"];
+  let mi = 0;
+  const cycle = setInterval(() => { res.querySelector(".al-text").textContent = msgs[++mi % msgs.length]; }, 1000);
+  setTimeout(() => { clearInterval(cycle); drawChips(); revealAura(); }, 3000);
+};
+
+function revealAura() {
+  // costar-style: one dominant sign (70%+) and two minor placements
+  const scored = THEMES
+    .map(t => ({ ...t, raw: picks.reduce((sum, s) => sum + t.v(s), 0) / picks.length }))
+    .sort((a, b) => b.raw - a.raw).slice(0, 3);
+  const [r1, r2, r3] = scored.map(t => t.raw);
+  scored[0].pct = 70 + Math.min(15, Math.round((r1 - r2) / Math.max(r1, 1) * 45));
+  const rest = 100 - scored[0].pct;
+  scored[1].pct = Math.round(rest * r2 / Math.max(r2 + r3, 1));
+  scored[2].pct = rest - scored[1].pct;
+
+  const tally = {};
+  picks.forEach(s => tally[s.album] = (tally[s.album] || 0) + 1);
+  const era = Object.entries(tally).sort((a, b) => b[1] - a[1])[0][0];
+
+  const Cr = 84, C = 2 * Math.PI * Cr;
+  let offset = 0;
+  const arcs = scored.map(t => {
+    const seg = t.pct / 100 * C;
+    const segLen = Math.max(seg - 3, 0.5);
+    const el = `<circle cx="110" cy="110" r="${Cr}" fill="none" stroke="${t.color}" stroke-width="26"
+      stroke-dasharray="0 ${C}" data-dash="${segLen} ${C - segLen}"
+      stroke-dashoffset="${-offset}" transform="rotate(-90 110 110)" stroke-linecap="round"/>`;
+    offset += seg;
+    return el;
+  }).join("");
+
+  document.getElementById("auraResult").innerHTML = `
+    <div class="aura-card">
+      <div class="aura-headline">You are <b style="color:${scored[0].color}">${scored[0].pct}% ${scored[0].name} ${scored[0].emoji}</b>
+        — and your era match is <b style="color:${ALBUMS[era].c}">${era}</b></div>
+      <div class="aura-flex">
+        <div class="donut-wrap">
+          <svg width="220" height="220">${arcs}</svg>
+          <div class="donut-center">${scored[0].emoji}<small>${scored[0].name}</small></div>
+        </div>
+        <div class="aura-bars">
+          ${scored.map(t => `
+            <div class="aura-row">
+              <span class="ar-emoji">${t.emoji}</span>
+              <span class="ar-name">${t.name}</span>
+              <div class="ar-track"><div class="ar-fill" data-w="${t.pct}" style="background:${t.color}"></div></div>
+              <span class="ar-pct" style="color:${t.color}">${t.pct}%</span>
+            </div>`).join("")}
+        </div>
+      </div>
+      ${buildStory(picks, scored, era)}
+      <div class="aura-songs">${picks.map(s => ART[s.album] ? `<img src="${ART[s.album]}" title="${s.title}">` : "").join("")}
+        <span>based on: ${picks.map(s => s.title).join(" · ")}</span></div>
+    </div>`;
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    document.querySelectorAll("#auraResult circle").forEach(c => c.setAttribute("stroke-dasharray", c.dataset.dash));
+    document.querySelectorAll("#auraResult .ar-fill").forEach(f => f.style.width = f.dataset.w + "%");
+  }));
+  document.getElementById("auraResult").scrollIntoView({ behavior: "smooth", block: "nearest" });
+}
+
+window.addEventListener("resize", () => render(false));
+render();
+</script>
+</body>
+</html>

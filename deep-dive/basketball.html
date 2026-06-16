@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<title>The Basketball Deep-Dive — every legend, every stat</title>
+<link rel="stylesheet" href="assets/deepdive.css">
+<style>
+  /* text filter chips (this page uses chips, not album thumbnails) */
+  .covers { gap: 9px; }
+  .pos-chip {
+    background: #181425; border: 1.5px solid; border-radius: 999px;
+    padding: 8px 18px; font-weight: 800; font-size: 13.5px; cursor: pointer;
+    transition: all .18s; font-family: inherit;
+  }
+  .pos-chip:hover { transform: translateY(-2px); }
+  .pos-chip.solo { box-shadow: 0 0 16px currentColor; background: #241b3a; }
+  #tip .t-play.bref { background: #e8731a; }
+  @media (max-width: 700px) { .pos-chip { padding: 6px 12px; font-size: 12px; } }
+  /* photo dots */
+  .dot { opacity: .82; }
+  .dot:hover { opacity: 1; }
+  .dot.face { width: 28px; height: 28px; margin: -14px 0 0 -14px; opacity: .92; }
+</style>
+</head>
+<body>
+<a class="home-btn" href="index.html" title="Back to deep-dive">⌂ Home</a>
+<div class="made-by">Made with love by <a href="https://x.com/csinva" target="_blank" rel="noopener">@csinva</a></div>
+<div class="wrap">
+  <header>
+    <h1>The Basketball Deep-Dive</h1>
+    <div class="sub"><b>100 players</b> — six decades of legends, current stars, and every All-NBA 1st/2nd teamer from 2000–2026. Pick one stat per axis, filter by position, and hover any dot for the scouting card.</div>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab active" data-page="spectrum">🌌 The Deep-Dive</button>
+    <button class="tab" data-page="aura">🏀 Your Starting Five</button>
+  </nav>
+
+  <div class="page" id="page-spectrum">
+  <div class="covers" id="covers"></div>
+  <div class="covers-hint">click a position to solo it · click again to bring everyone back</div>
+
+  <div class="chart-zone">
+    <div class="axis-picker y" id="metricsY">
+      <div class="picker-cap"><b>↑</b> vertical axis<br><span>click a pill to change it</span></div>
+    </div>
+    <div class="chart-main">
+      <div class="chart-card">
+        <div id="stage"></div>
+        <div class="axis-labels"><span class="lo" id="xLoLab"></span><span class="xblurb" id="xBlurb"></span><span class="hi" id="xHiLab"></span></div>
+      </div>
+      <div class="axis-picker x" id="metricsX">
+        <div class="picker-cap"><b>→</b> horizontal axis · <span>click a pill to change it</span></div>
+      </div>
+    </div>
+    <div class="side-boards" id="sideBoards"></div>
+  </div>
+
+  </div><!-- /page-spectrum -->
+
+  <div class="page hidden" id="page-aura">
+    <div class="aura-intro">Pick <b>three to five</b> of your favorite players — start typing or browse the league below. We'll find your dominant identity and minor placements, then file your scouting report — who you are, how you play, and what to do about it.</div>
+    <div class="picker">
+      <input id="songSearch" placeholder="Start typing a player… (the legends are waiting below)" autocomplete="off">
+      <div id="suggest"></div>
+    </div>
+    <div id="chips"></div>
+    <button id="auraBtn" disabled></button>
+    <div id="auraResult"></div>
+    <div class="catalogue" id="catalogue"></div>
+  </div>
+
+  <footer>
+    All axes are career box-score stats — the three "Season" axes are single-season career highs — approximate through June 2026. Steals and blocks were not tracked before 1973-74, so pre-era careers (Russell, Wilt, Oscar) carry historians' estimates.<br>
+    100 players across six decades — heights from Muggsy Bogues (5'3\") to Manute Bol (7'7\"). Pre-1980 legends shot 0% from three because the line did not exist yet; we plot it anyway.<br>
+    Hover a dot for the scouting card — highlights go to YouTube, career numbers to Basketball-Reference.
+  </footer>
+</div>
+
+<div id="tip"></div>
+
+<script>
+const ART = {};
+const FACES = {
+  "Victor Wembanyama": "assets/img/basketball/victor-wembanyama.jpg",
+  "Michael Jordan": "assets/img/basketball/michael-jordan.png", "Stephen Curry": "assets/img/basketball/stephen-curry.png", "LeBron James": "assets/img/basketball/lebron-james.png", "Tim Duncan": "assets/img/basketball/tim-duncan.png", "Shaquille O'Neal": "assets/img/basketball/shaquille-o-neal.png", "Nikola Jokic": "assets/img/basketball/nikola-jokic.png", "Joel Embiid": "assets/img/basketball/joel-embiid.png", "Shai Gilgeous-Alexander": "assets/img/basketball/shai-gilgeous-alexander.png", "Giannis Antetokounmpo": "assets/img/basketball/giannis-antetokounmpo.png", "James Harden": "assets/img/basketball/james-harden.png", "Russell Westbrook": "assets/img/basketball/russell-westbrook.png", "Kevin Durant": "assets/img/basketball/kevin-durant.png", "Derrick Rose": "assets/img/basketball/derrick-rose.png", "Kobe Bryant": "assets/img/basketball/kobe-bryant.png", "Dirk Nowitzki": "assets/img/basketball/dirk-nowitzki.png"};
+
+// ---------------- albums & colors ----------------
+const ALBUMS = {
+  "Point Guard":    { c: "#5dade2", y: "the floor generals", t: "PG" },
+  "Shooting Guard": { c: "#e8b647", y: "the bucket getters", t: "SG" },
+  "Small Forward":  { c: "#6fae4e", y: "the do-it-alls", t: "SF" },
+  "Power Forward":  { c: "#d6453c", y: "the enforcers", t: "PF" },
+  "Center":         { c: "#a05cc8", y: "the giants", t: "C" },
+};
+
+// ---------------- metrics ----------------
+const METRICS = [
+  { k:"ppg",    label:"Points",          lo:"🛡️ role player", hi:"🔥 bucket getter",
+    blurb:"Career points per game." },
+  { k:"height", label:"Height",       lo:"🐜 fun-sized", hi:"🦒 skyscraper",
+    blurb:"Listed height — Muggsy Bogues (5'3\") to Manute Bol (7'7\")." },
+  { k:"ft",     label:"FT%",          lo:"🧱 hack-me", hi:"🎯 automatic",
+    blurb:"Career free-throw percentage." },
+  { k:"p3",     label:"3PT%",         lo:"🚫 stays in the paint", hi:"🌧️ rains threes",
+    blurb:"Career three-point percentage. (Pre-1980 legends never had a line.)" },
+  { k:"apg",    label:"Assists",          lo:"🕳️ black hole", hi:"🎩 floor general",
+    blurb:"Career assists per game." },
+  { k:"rpg",    label:"Rebounds",          lo:"🪶 allergic to glass", hi:"🧹 glass cleaner",
+    blurb:"Career rebounds per game." },
+  { k:"spg",    label:"Steals",          lo:"🚪 hands in pockets", hi:"🧤 the glove",
+    blurb:"Career steals per game. (Untracked before 1974 — pre-era careers are estimates.)" },
+  { k:"allstar",label:"All-Stars",    lo:"📋 zero nods", hi:"⭐ nineteen and counting",
+    blurb:"Career All-Star selections — Kareem holds the record at 19." },
+  { k:"blk",    label:"Blocks",          lo:"🚶 matador", hi:"🚫 shot graveyard",
+    blurb:"Career blocks per game. (Russell and Wilt predate the stat — partial-tracking estimates.)" },
+  { k:"rings",  label:"Rings",        lo:"💍 ringless", hi:"🏆 count 'em",
+    blurb:"Championships won. Bill Russell has eleven. Eleven." },
+  { k:"rel",    label:"Debut",        lo:"🏛️ short-shorts era", hi:"👶 new school",
+    blurb:"Rookie season — six decades of hoops." },
+  { k:"s3m",    label:"Season 3PM",   lo:"🦕 made zero, ever", hi:"💦 402 and raining",
+    blurb:"Most threes made in a single season — Curry's 402 is the ceiling." },
+  { k:"spts",   label:"Season Points",lo:"🔋 energy guy", hi:"🌋 the 4,029 mountain",
+    blurb:"Most total points in a single season — Wilt's 4,029 will never be touched." },
+  { k:"sdd",    label:"Season Dbl-Dbls", lo:"📎 occasional", hi:"🔁 one every single night",
+    blurb:"Most double-doubles in a single season." },
+];
+
+// ---------------- data ----------------
+// [name, pos, heightIn, ft%, ppg, apg, rpg, 3p%, rings, debutYear, defense, clutch, aura, note, youtubeId, bpg, spg, allStarCount, bestSeason3PM, bestSeasonPts, bestSeasonDD]
+const SONGS = [
+["Magic Johnson", "Point Guard", 81, 84.8, 19.5, 11.2, 7.2, 30.3, 5, 1979, 60, 90, 95, "A 6'9\" point guard who played center in a Finals as a rookie. Showtime incarnate.", "prvjNFHSOj0", 0.4, 1.9, 12, 106, 1909, 58],
+["Stephen Curry", "Point Guard", 74, 91.0, 24.7, 6.4, 4.7, 42.6, 4, 2009, 55, 92, 95, "Changed the geometry of the sport from 30 feet. Best free-throw shooter ever, too.", "NHhTMh0nURA", 0.2, 1.5, 11, 402, 2375, 20],
+["Chris Paul", "Point Guard", 72, 87.0, 17.5, 9.4, 4.5, 36.9, 0, 2005, 80, 70, 70, "The Point God. Twelve thousand assists and one missing parade.", "QHsntNaDZh0", 0.1, 2.1, 12, 183, 1684, 48],
+["Allen Iverson", "Point Guard", 72, 78.0, 26.7, 6.2, 3.7, 31.3, 0, 1996, 55, 85, 98, "Six feet, 165 pounds, crossed up a dynasty. We're talking about practice.", "rvz-p65_ZO0", 0.2, 2.2, 11, 104, 2377, 10],
+["John Stockton", "Point Guard", 73, 82.6, 13.1, 10.5, 2.7, 38.4, 0, 1984, 75, 75, 40, "All-time assists leader by a country mile. Wore the same shorts for 19 years.", "QJOYt5pkN4I", 0.2, 2.2, 10, 90, 1400, 65],
+["Steve Nash", "Point Guard", 75, 90.4, 14.3, 8.5, 3.0, 42.8, 0, 1996, 35, 75, 70, "Back-to-back MVPs; seven seconds or less; hair always in playoff form.", "8EkILfAOk68", 0.1, 0.7, 8, 179, 1480, 53],
+["Russell Westbrook", "Point Guard", 75, 78.0, 21.7, 8.1, 7.1, 30.5, 0, 2008, 60, 65, 85, "Averaged a triple-double for a whole season. Then did it three more times.", "AG63lkuQ0bI", 0.3, 1.6, 9, 200, 2558, 62],
+["Kyrie Irving", "Point Guard", 74, 88.5, 23.5, 5.7, 3.9, 39.4, 1, 2011, 45, 93, 80, "The most beautiful handle the game has produced, and THE shot in Game 7.", "R0PMYEeTH3A", 0.4, 1.3, 9, 230, 1816, 12],
+["Damian Lillard", "Point Guard", 74, 89.7, 25.1, 6.7, 4.2, 37.1, 0, 2012, 45, 95, 80, "Dame Time is a legally recognized time zone. Series-enders from the logo.", "RxxueDqPAyU", 0.3, 0.9, 9, 275, 2000, 18],
+["Jason Kidd", "Point Guard", 76, 78.5, 12.6, 8.7, 6.3, 34.9, 1, 1994, 85, 70, 60, "Triple-double machine who saw the whole floor like a chessboard.", "fv07_6Y4HvQ", 0.3, 1.9, 10, 145, 1300, 58],
+["Oscar Robertson", "Point Guard", 77, 83.8, 25.7, 9.5, 7.5, 0.0, 1, 1960, 70, 80, 70, "Averaged a triple-double in 1962, before they even tracked it as a thing.", "85IEXNTmu_U", 0.4, 1.1, 12, 0, 2432, 76],
+["Muggsy Bogues", "Point Guard", 63, 82.8, 7.7, 7.6, 2.6, 27.8, 0, 1987, 70, 50, 75, "5'3\" and played 14 NBA seasons. Heart measured in stories, not inches.", "uXpbylUMawM", 0.0, 1.5, 0, 20, 866, 22],
+["Luka Doncic", "Point Guard", 79, 73.7, 28.6, 8.3, 8.7, 34.3, 0, 2018, 45, 90, 85, "Stepback in five languages. Complains in six.", "dO14Pt11sE8", 0.4, 1.2, 6, 284, 2370, 50],
+["Shai Gilgeous-Alexander", "Point Guard", 78, 88.0, 25.6, 5.5, 4.8, 35.3, 1, 2018, 75, 88, 80, "Free-throw merchant turned MVP. Smoothest mid-range in the modern game.", "LgY4QpU4Yss", 0.9, 1.3, 4, 160, 2484, 12],
+["Ja Morant", "Point Guard", 74, 76.0, 22.5, 7.4, 4.8, 32.0, 0, 2019, 40, 80, 85, "Gravity is a suggestion. The dunks arrive before the defense does.", "ARK5aoKBIw0", 0.3, 1.1, 2, 121, 1600, 20],
+["Michael Jordan", "Shooting Guard", 78, 83.5, 30.1, 5.3, 6.2, 32.7, 6, 1984, 95, 100, 100, "Six Finals, six rings, six Finals MVPs. The shrug. The flu game. The bar.", "jbW4f60dCNA", 0.8, 2.3, 14, 111, 3041, 25],
+["Kobe Bryant", "Shooting Guard", 78, 83.7, 25.0, 4.7, 5.2, 32.9, 5, 1996, 85, 96, 95, "81 points one night. Mamba Mentality is a curriculum now.", "1fjhIWJSxfw", 0.5, 1.4, 18, 180, 2832, 15],
+["Dwyane Wade", "Shooting Guard", 76, 76.5, 22.0, 5.4, 4.7, 29.3, 3, 2003, 75, 90, 85, "2006 Finals: averaged 34.7 and personally relocated a championship.", "BjTcXjL2moE", 0.8, 1.5, 13, 88, 2386, 25],
+["James Harden", "Shooting Guard", 77, 86.1, 24.1, 7.1, 5.6, 36.2, 0, 2009, 40, 60, 70, "The stepback that launched a thousand free throws.", "rHG4uHOY5SM", 0.5, 1.5, 11, 378, 2818, 38],
+["Ray Allen", "Shooting Guard", 77, 89.4, 18.9, 3.4, 4.1, 40.0, 2, 1996, 60, 92, 65, "The corner three in Game 6 of 2013. Jesus Shuttlesworth saves.", "_J_csbymwXE", 0.2, 1.1, 10, 269, 1812, 8],
+["Reggie Miller", "Shooting Guard", 79, 88.8, 18.2, 3.0, 3.0, 39.5, 0, 1987, 55, 94, 80, "Eight points in nine seconds. Spike Lee has never emotionally recovered.", "rmme_HV1ccY", 0.2, 1.1, 5, 229, 2016, 5],
+["Klay Thompson", "Shooting Guard", 78, 84.7, 19.2, 2.3, 3.5, 41.3, 4, 2011, 80, 85, 70, "37 points in a quarter. 60 on eleven dribbles. Game 6 Klay is folklore.", "0JQ89g1xdSQ", 0.5, 0.8, 5, 276, 1771, 6],
+["Devin Booker", "Shooting Guard", 77, 86.8, 24.4, 4.8, 4.0, 35.4, 0, 2015, 60, 80, 70, "70 in Boston as a sophomore. Be legendary.", "y-OsHJYxg3k", 0.3, 0.9, 5, 185, 1866, 12],
+["Anthony Edwards", "Shooting Guard", 76, 78.5, 23.5, 4.4, 5.3, 36.0, 0, 2020, 65, 80, 90, "Prime swagger delivery vehicle. Calls everyone 'big fella,' dunks accordingly.", "5zBzMZnUoJk", 0.6, 1.2, 4, 225, 2180, 10],
+["Manu Ginobili", "Shooting Guard", 78, 82.7, 13.3, 3.8, 3.5, 36.9, 4, 2002, 70, 88, 75, "The Eurostep's chief evangelist. Sixth man, first in chaos.", "AJUhzQEPCvE", 0.3, 1.3, 2, 134, 1342, 8],
+["Vince Carter", "Shooting Guard", 78, 79.8, 16.7, 3.1, 4.3, 37.1, 0, 1998, 50, 70, 92, "The 2000 dunk contest was a religious event. Half-man, half-amazing, 22 seasons.", "-nLPh8MTAd4", 0.6, 1.0, 8, 160, 2070, 12],
+["LeBron James", "Small Forward", 81, 73.5, 27.1, 7.4, 7.5, 34.9, 4, 2003, 80, 88, 98, "All-time scoring leader, four rings in three cities, chase-down block included.", "-9lP95Qo-I0", 0.7, 1.5, 21, 160, 2478, 47],
+["Kevin Durant", "Small Forward", 83, 88.3, 27.2, 4.4, 7.0, 38.8, 2, 2007, 65, 90, 80, "Seven feet of pull-up jumper. The most unguardable shot since the skyhook.", "e0cKk6Vhyws", 1.1, 1.1, 15, 185, 2592, 30],
+["Larry Bird", "Small Forward", 81, 88.6, 24.3, 6.3, 10.0, 37.6, 3, 1979, 70, 95, 92, "Told defenders the play and ran it anyway. Won a three-point contest in a warmup jacket.", "hcXv0JtzNQA", 0.8, 1.7, 12, 90, 2295, 52],
+["Kawhi Leonard", "Small Forward", 79, 85.7, 19.9, 3.0, 6.4, 38.7, 2, 2011, 95, 90, 55, "The 2019 Game 7 bouncer. Board man gets paid; fun guy laughs in fax-machine.", "xxueY7lyF5k", 0.6, 1.6, 6, 147, 1888, 15],
+["Jayson Tatum", "Small Forward", 80, 83.2, 23.3, 4.0, 7.2, 37.4, 1, 2017, 70, 75, 70, "Banner 18's cornerstone; the bag gets deeper every May.", "UzoBGQlNyEY", 0.6, 1.1, 6, 240, 2225, 28],
+["Carmelo Anthony", "Small Forward", 79, 81.4, 22.5, 2.7, 6.2, 35.5, 0, 2003, 40, 80, 80, "The jab step had its own gravitational field. Olympic Melo remains undefeated.", "Ut29ViTVqQM", 0.5, 1.0, 10, 157, 1920, 25],
+["Scottie Pippen", "Small Forward", 80, 70.4, 16.1, 5.2, 6.4, 32.6, 6, 1987, 95, 70, 65, "The best Robin ever, and a top-five defender of any era, any costume.", "T8_GiznzWbk", 0.8, 2.0, 7, 150, 1720, 30],
+["Julius Erving", "Small Forward", 79, 77.7, 22.0, 3.9, 6.7, 26.1, 1, 1971, 65, 85, 95, "Dr. J took off from the free-throw line and basketball never landed.", "zj4Tocdywmc", 1.5, 1.8, 11, 25, 2100, 40],
+["Jimmy Butler", "Small Forward", 79, 84.3, 18.3, 4.3, 5.3, 32.3, 0, 2011, 80, 92, 85, "Playoff Jimmy is a separate, much scarier person. Emotionally unavailable, professionally lethal.", "0RB6OD7cW04", 0.5, 1.6, 6, 104, 1816, 25],
+["Tracy McGrady", "Small Forward", 80, 74.6, 19.6, 4.4, 5.6, 33.8, 0, 1997, 50, 85, 80, "13 points in 33 seconds. The sleepy eyes were a trap.", "NollBuDyU6Q", 0.9, 1.2, 7, 173, 2407, 15],
+["Tim Duncan", "Power Forward", 83, 69.6, 19.0, 3.0, 10.8, 17.9, 5, 1997, 95, 85, 45, "The Big Fundamental. Two decades of bank shots and quiet excellence.", "OL1sORY3Kh4", 2.2, 0.7, 15, 10, 2091, 64],
+["Giannis Antetokounmpo", "Power Forward", 83, 69.0, 23.3, 4.9, 9.9, 28.8, 1, 2013, 85, 80, 85, "From selling sunglasses in Athens to a 50-piece in a closeout Finals game.", "rp8mc34NztY", 1.2, 1.1, 10, 89, 2222, 57],
+["Dirk Nowitzki", "Power Forward", 84, 87.9, 20.7, 2.4, 7.5, 38.0, 1, 1998, 50, 90, 75, "The one-legged fadeaway that launched a thousand imitators. 2011 was a heist.", "BfixJPEky1I", 0.8, 0.8, 14, 148, 2151, 46],
+["Karl Malone", "Power Forward", 81, 74.2, 25.0, 3.6, 10.1, 27.4, 0, 1985, 70, 60, 60, "The Mailman delivered for 18 seasons — except, famously, on Sundays in June.", "lbrMplWW3lc", 0.8, 1.4, 14, 16, 2540, 62],
+["Charles Barkley", "Power Forward", 78, 73.5, 22.1, 3.9, 11.7, 26.6, 0, 1984, 60, 75, 92, "6'6\" and led the league in rebounding. Turrible takes, incredible game.", "jJJDQe7jD3E", 0.8, 1.5, 11, 67, 2264, 65],
+["Kevin Garnett", "Power Forward", 83, 78.9, 17.8, 3.7, 10.0, 27.5, 1, 1995, 95, 75, 90, "ANYTHING IS POSSIBLE. Intensity that needed its own zip code.", "0mhUlZl3tyU", 1.4, 1.3, 15, 37, 1984, 71],
+["Anthony Davis", "Power Forward", 82, 79.5, 24.1, 2.6, 10.4, 30.0, 1, 2012, 90, 75, 60, "The brow, the blocks, the bubble title. Health sold separately.", "0ufyaXWbsnc", 2.3, 1.3, 10, 72, 2108, 54],
+["Draymond Green", "Power Forward", 78, 71.3, 8.7, 5.6, 6.9, 31.5, 4, 2012, 95, 70, 80, "Triple-single energy with championship gravity. The podcast is always live.", "RnbnX10Z0CI", 0.9, 1.4, 4, 100, 1134, 36],
+["Dennis Rodman", "Power Forward", 79, 58.4, 7.3, 1.8, 13.1, 23.1, 5, 1986, 95, 50, 90, "Led the league in rebounds and chaos seven years straight.", "XBoVDIvOrfI", 0.6, 0.7, 2, 12, 951, 60],
+["Pau Gasol", "Power Forward", 84, 75.3, 17.0, 3.2, 9.2, 36.8, 2, 2001, 65, 75, 55, "The skill big who made the Kobe years rings. Elbow passes like poetry.", "xYP2EFEjqxc", 1.6, 0.5, 6, 17, 1541, 55],
+["Kareem Abdul-Jabbar", "Center", 86, 72.1, 24.6, 3.6, 11.2, 5.6, 6, 1969, 85, 90, 80, "The skyhook: unblocked for twenty years and counting.", "6dCR8B0SFp4", 2.6, 0.9, 19, 1, 2822, 70],
+["Wilt Chamberlain", "Center", 85, 51.1, 30.1, 4.4, 22.9, 0.0, 2, 1959, 85, 70, 95, "Scored 100 in a game. Led the league in assists once, out of spite.", "qfczQovODz8", 8.8, 1.0, 13, 0, 4029, 80],
+["Shaquille O'Neal", "Center", 85, 52.7, 23.7, 2.5, 10.9, 4.5, 4, 1992, 75, 70, 97, "The most dominant physical force the league has met. Free throws sold separately.", "3VlMSo7AXow", 2.3, 0.6, 15, 1, 2344, 62],
+["Hakeem Olajuwon", "Center", 84, 71.2, 21.8, 2.5, 11.1, 20.2, 2, 1984, 98, 88, 70, "The Dream Shake sent half the Hall of Fame the wrong direction.", "_m8OeZWbcOE", 3.1, 1.7, 12, 21, 2140, 65],
+["Bill Russell", "Center", 82, 56.1, 15.1, 4.3, 22.5, 0.0, 11, 1956, 100, 95, 85, "Eleven rings in thirteen seasons. They named the Finals MVP trophy after him.", "qT5GlgXrX-0", 8.1, 1.0, 12, 0, 1436, 76],
+["Nikola Jokic", "Center", 83, 82.8, 21.6, 7.0, 10.7, 35.0, 1, 2015, 60, 90, 75, "Sees passes that don't exist yet. Would rather be home with his horses.", "7A-QGpW2GnA", 0.7, 1.3, 8, 130, 2072, 66],
+["Joel Embiid", "Center", 84, 81.4, 27.7, 3.6, 11.2, 33.5, 0, 2016, 80, 70, 75, "An MVP who shoots like a guard and posts like it's 1995. Trust the process.", "h_kQH5itWsg", 1.7, 0.9, 7, 90, 2184, 50],
+["Victor Wembanyama", "Center", 88, 80.3, 22.5, 3.8, 10.8, 33.0, 0, 2023, 98, 75, 90, "The scouting report just says 'alien.' Blocks shots that haven't been attempted yet.", "vqsKhehN38A", 3.6, 1.2, 2, 130, 1600, 50],
+["David Robinson", "Center", 85, 73.6, 21.1, 2.5, 10.6, 25.0, 2, 1989, 95, 70, 60, "The Admiral: Navy officer, MVP, 71-point game, gentleman.", "jM4oY9OPt04", 3.0, 1.4, 10, 6, 2383, 65],
+["Patrick Ewing", "Center", 84, 74.0, 21.0, 1.9, 9.8, 15.2, 0, 1985, 85, 65, 60, "Carried the 90s Knicks on two surgically repaired knees and one snarl.", "sgI0YCVse9U", 2.4, 1.0, 11, 6, 2347, 60],
+["Moses Malone", "Center", 82, 76.9, 20.3, 1.3, 12.3, 10.0, 1, 1976, 70, 80, 65, "Fo', fo', fo'. Called the sweep, then nearly did it.", "x8ynWTvgIuA", 1.3, 0.8, 12, 0, 2519, 70],
+["Yao Ming", "Center", 90, 83.3, 19.0, 1.6, 9.2, 20.0, 0, 2002, 70, 65, 75, "7'6\" with a feathery touch; a bridge between basketball worlds.", "Ve3H4tYj47c", 1.9, 0.4, 8, 1, 1465, 50],
+["Manute Bol", "Center", 91, 56.1, 2.6, 0.3, 4.2, 21.0, 0, 1985, 90, 30, 85, "7'7\". Blocked shots by the dozen and once hit six threes in a half.", "hePuvt8REqE", 3.3, 0.3, 0, 20, 344, 8],
+["Rudy Gobert", "Center", 85, 63.8, 12.0, 1.3, 11.7, 0.0, 0, 2013, 96, 45, 45, "Four DPOYs; the rim has a restraining order against everyone else.", "N1e4cGAFJK8", 2.1, 0.7, 3, 0, 1030, 58],
+["Jalen Brunson", "Point Guard", 74, 82.5, 20.5, 5.6, 3.2, 37.0, 0, 2018, 45, 92, 75, "The Garden's favorite son — playoff 40-pieces at 6'2\" with a fourth-grade center of gravity.", "9I8nrkTNFOU", 0.2, 0.8, 3, 175, 2212, 15],
+["Cade Cunningham", "Point Guard", 78, 84.0, 22.5, 7.3, 4.9, 34.5, 0, 2021, 60, 80, 75, "Detroit's restoration project, completed: First Team All-NBA in 2026 and the Pistons matter again.", "c-TG9cCKOUM", 0.7, 1.0, 3, 150, 1830, 28],
+["Donovan Mitchell", "Shooting Guard", 75, 83.0, 24.8, 4.6, 4.4, 36.4, 0, 2017, 55, 90, 75, "Spida dropped 71 in a game, and somehow that's only the third thing people mention.", "Ap3IS9RPxFI", 0.3, 1.4, 7, 240, 1922, 8],
+["Jaylen Brown", "Small Forward", 78, 73.5, 21.5, 2.9, 5.3, 36.0, 1, 2016, 80, 80, 70, "2024 Finals MVP — the chip on the shoulder now wears a ring.", "wp4RtGyPm4A", 0.4, 1.1, 4, 184, 1782, 10],
+["Evan Mobley", "Power Forward", 83, 71.5, 16.5, 3.0, 9.0, 33.0, 0, 2021, 95, 65, 60, "2025 Defensive Player of the Year — long arms, longer future.", "03p5rQrphNc", 1.5, 0.8, 2, 96, 1320, 45],
+["Julius Randle", "Power Forward", 80, 73.0, 19.5, 3.6, 9.2, 33.5, 0, 2014, 50, 65, 60, "Lefty bully-ball aesthetics, two All-NBA nods, and the full New York emotional experience.", "jftF75YTfWM", 0.4, 0.7, 3, 160, 1711, 43],
+["DeMar DeRozan", "Shooting Guard", 78, 84.5, 21.0, 4.0, 4.3, 29.5, 0, 2009, 45, 88, 70, "The mid-range's last great defender — keeping a dying art form not just alive but All-NBA.", "5aC-SLWMrt4", 0.3, 1.0, 6, 80, 2020, 12],
+["Paul George", "Small Forward", 80, 84.5, 20.5, 3.7, 6.3, 38.0, 0, 2010, 85, 65, 70, "PG-13: two-way wing excellence, six All-NBA nods, one podcast too many.", "nB8k4nuBwx8", 0.4, 1.7, 9, 244, 2156, 20],
+["Isaiah Thomas", "Point Guard", 69, 87.0, 17.6, 4.8, 2.4, 36.0, 0, 2011, 30, 88, 75, "5'9\", last pick of the draft, fourth in MVP voting. The King in the Fourth.", "KUWK0sIzARg", 0.1, 0.9, 2, 245, 2199, 8],
+["Kyle Lowry", "Point Guard", 72, 79.5, 14.7, 6.2, 4.3, 36.7, 1, 2006, 75, 75, 65, "Charge-taking champion of the world; Toronto's beating heart in 2019.", "HElflzYcIEk", 0.3, 1.4, 6, 190, 1500, 20],
+["Marc Gasol", "Center", 83, 75.5, 14.0, 3.4, 7.4, 35.2, 1, 2008, 90, 70, 55, "DPOY brain in a seven-foot frame — the Gasol who chose passing angles over posters.", "eMa-xGEtKXQ", 1.4, 0.9, 3, 84, 1443, 35],
+["LaMarcus Aldridge", "Power Forward", 83, 81.0, 19.1, 2.0, 8.1, 32.0, 0, 2006, 60, 70, 50, "The fadeaway from the left block, ten thousand times, beautifully.", "PmNYlvQ0mZ8", 1.1, 0.7, 7, 37, 1700, 45],
+["DeMarcus Cousins", "Center", 82, 73.8, 19.6, 3.0, 10.2, 33.2, 0, 2010, 55, 55, 75, "Boogie: the most talented center of his era, and the most technical fouls too.", "VE4dBclkBe4", 1.1, 1.4, 4, 131, 1944, 55],
+["DeAndre Jordan", "Center", 83, 47.5, 8.8, 1.2, 10.3, 5.0, 1, 2008, 75, 40, 60, "Lob City's finisher. Career 47% from the line — hack-a-DJ was a league-wide strategy.", "Y6CsSW2fNo0", 1.7, 0.6, 1, 1, 943, 60],
+["Pascal Siakam", "Power Forward", 80, 77.0, 17.5, 3.4, 6.7, 33.0, 1, 2016, 70, 70, 60, "Spicy P: from Cameroonian camps to a ring and a spin move that defies scouting.", "uxsj4iA_okQ", 0.6, 0.8, 3, 132, 1550, 30],
+["Dwight Howard", "Center", 82, 56.7, 15.7, 1.3, 11.8, 21.0, 1, 2004, 95, 50, 75, "Three straight DPOYs, eight All-NBA teams, one Superman cape.", "c8nnjY0WQfw", 1.8, 0.9, 8, 2, 1786, 69],
+["Derrick Rose", "Point Guard", 74, 82.3, 17.4, 5.2, 3.2, 31.5, 0, 2008, 45, 80, 85, "Youngest MVP ever. The what-if that still hurts league-wide.", "Xrpkg3Rmln0", 0.3, 0.8, 3, 128, 2026, 25],
+["Tony Parker", "Point Guard", 74, 75.1, 15.5, 5.6, 2.7, 32.4, 4, 2001, 55, 85, 60, "The teardrop merchant — four rings at full sprint.", "4VAd4QdXusM", 0.1, 0.8, 6, 60, 1600, 15],
+["Chris Bosh", "Power Forward", 83, 79.9, 19.2, 2.0, 8.5, 33.5, 2, 2003, 70, 70, 65, "The Heatles' quiet engine; sacrificed stats for rings and made it look dignified.", "207zqesKHuQ", 1.0, 0.8, 11, 60, 1680, 50],
+["Amar'e Stoudemire", "Power Forward", 82, 76.0, 18.9, 1.2, 7.8, 24.0, 0, 2002, 40, 70, 70, "STAT: pick-and-roll detonation specialist of the Seven Seconds or Less Suns.", "_vgZ3DflAKY", 1.2, 0.9, 6, 10, 2080, 45],
+["Blake Griffin", "Power Forward", 81, 69.0, 19.0, 4.0, 8.0, 33.0, 0, 2010, 45, 65, 85, "Jumped over a car, evolved into a point-forward, lives rent-free in posters.", "hoarqsrBULo", 0.5, 0.9, 6, 185, 1838, 63],
+["Gilbert Arenas", "Point Guard", 76, 80.3, 20.7, 5.3, 3.9, 35.1, 0, 2001, 40, 85, 80, "Agent Zero: called game-winners before halftime. Hibachi.", "nusHVIvTI1I", 0.2, 1.6, 3, 205, 2346, 10],
+["Deron Williams", "Point Guard", 75, 82.2, 16.3, 8.1, 3.1, 35.7, 0, 2005, 50, 70, 55, "The crossover that briefly won the Deron-vs-CP3 debate.", "kd0dsWXsMlQ", 0.2, 1.0, 3, 153, 1600, 38],
+["Brandon Roy", "Shooting Guard", 78, 80.0, 18.8, 4.7, 4.3, 34.8, 0, 2006, 50, 85, 65, "Three years of brilliance before his knees called time. Portland still mourns.", "KnGs57A-O0w", 0.3, 1.0, 3, 88, 1763, 8],
+["Andrew Bynum", "Center", 84, 69.2, 11.5, 1.4, 7.7, 10.0, 2, 2005, 70, 55, 50, "Two rings at 22, All-NBA at 24, bowling anecdotes by 26.", "FjpjUxnxBQk", 1.6, 0.4, 1, 1, 1122, 40],
+["Kevin Love", "Power Forward", 82, 82.5, 17.0, 2.4, 10.5, 37.0, 1, 2008, 45, 65, 65, "Outlet passes like artillery; once averaged 26-and-31 in a game. Literally 31.", "nJa0j-lJzio", 0.5, 0.7, 5, 185, 2010, 64],
+["Joakim Noah", "Center", 83, 71.0, 8.8, 2.8, 9.0, 15.0, 0, 2007, 90, 60, 70, "2014 DPOY and the best passing center of his decade; played every possession like a final.", "8hEg6Z2fJZM", 1.3, 0.9, 2, 0, 944, 44],
+["Gary Payton", "Point Guard", 76, 72.9, 16.3, 6.7, 3.9, 31.7, 1, 1990, 98, 75, 85, "The Glove: the only point guard ever to win DPOY. Your ear has never recovered from the trash talk.", "YfS8lEzIVSo", 0.2, 1.8, 9, 170, 1984, 35],
+["Chauncey Billups", "Point Guard", 75, 89.4, 15.2, 5.4, 2.9, 38.7, 1, 1997, 65, 92, 65, "Mr. Big Shot — 2004 Finals MVP for the team with no superstar, which made him one.", "Ca9TVg9ARjs", 0.2, 1.0, 5, 185, 1500, 20],
+["Sam Cassell", "Point Guard", 75, 86.1, 15.7, 6.0, 3.2, 33.5, 3, 1993, 50, 85, 75, "Three rings, one dance, infinite big-shot confidence.", "2DtWVc1AJf4", 0.2, 1.2, 1, 99, 1604, 25],
+["Baron Davis", "Point Guard", 75, 71.1, 16.1, 7.2, 3.8, 32.0, 0, 1999, 60, 80, 80, "We Believe. The dunk on Kirilenko is a regional holiday in Oakland.", "k9NUCr38ykE", 0.4, 1.8, 2, 180, 1700, 30],
+["Eddie Jones", "Shooting Guard", 78, 80.5, 14.8, 3.3, 4.0, 37.1, 0, 1994, 80, 65, 50, "All-defense smoothness; the trade that broke young-Kobe-era Lakers fans' hearts.", "sp7Inn-NBoQ", 0.6, 1.7, 3, 150, 1528, 8],
+["Grant Hill", "Small Forward", 80, 76.9, 16.7, 4.1, 6.0, 31.4, 0, 1994, 70, 75, 80, "Co-Rookie of the Year, proto-LeBron point forward; the ankle stole a top-ten career.", "p_KT5CM24lg", 0.6, 1.2, 7, 33, 1712, 38],
+["Peja Stojakovic", "Small Forward", 82, 89.5, 17.0, 1.8, 4.7, 40.1, 1, 1998, 35, 75, 60, "One of the purest strokes ever recorded; 2002 still makes Sacramento scream.", "nDtYeF2IsXg", 0.1, 0.9, 3, 240, 1960, 10],
+["Chris Webber", "Power Forward", 82, 64.9, 20.7, 4.2, 9.8, 29.9, 0, 1993, 65, 60, 80, "The hub of Sacramento's beautiful basketball — a passing big before it was meta.", "ZOh0wnQ1VZU", 1.4, 1.4, 5, 27, 1897, 58],
+["Jermaine O'Neal", "Power Forward", 83, 71.7, 13.2, 1.4, 7.2, 14.0, 0, 1996, 75, 60, 55, "Prep-to-pro patience rewarded: six straight All-Star teams in Indiana.", "T5Rg1fcaWEs", 1.8, 0.5, 6, 5, 1568, 50],
+["Elton Brand", "Power Forward", 81, 74.0, 15.9, 2.1, 8.5, 12.0, 0, 1999, 70, 60, 45, "Twenty-and-ten metronome on teams that never got the memo.", "0nh9Zke6ySU", 1.6, 1.0, 2, 2, 1951, 55],
+["Alonzo Mourning", "Center", 82, 69.2, 17.1, 1.1, 8.5, 24.7, 1, 1992, 95, 70, 80, "Two DPOYs, one kidney transplant, zero quit. Flexed after every block; earned every flex.", "buX2Ml4qTxM", 2.8, 0.5, 7, 2, 1640, 45],
+["Dikembe Mutombo", "Center", 86, 68.4, 9.8, 1.0, 10.3, 10.0, 0, 1991, 98, 50, 85, "Four DPOYs and the finger wag — not in his house, not in anyone's house.", "nZUL9eugfKA", 2.8, 0.4, 8, 0, 1064, 60],
+["Ben Wallace", "Center", 81, 41.4, 5.7, 1.3, 9.6, 13.0, 1, 1996, 98, 55, 75, "Undrafted: four DPOYs, a ring, the best afro in league history. 41% from the line, 100% from the heart.", "wPRLMb-AET4", 2.0, 1.3, 4, 1, 760, 50],
+];
+
+// ---------------- state ----------------
+let metricX = METRICS[10]; // Debut
+let metricY = METRICS[11]; // Season 3PM
+const off = new Set();
+const stage = document.getElementById("stage");
+const tip = document.getElementById("tip");
+const TOUCH = matchMedia("(hover: none), (pointer: coarse)").matches;
+
+const songs = SONGS.map((p, i) => ({
+  title: p[0], album: p[1], hin: p[2], ftp: p[3], ppgV: p[4], apgV: p[5], rpgV: p[6], p3V: p[7],
+  ringsV: p[8], debut: p[9], defense: p[10], clutch: p[11], aura: p[12], note: p[13], yt: p[14], bpg: p[15], spgV: p[16], asV: p[17], s3mV: p[18], sptsV: p[19], sddV: p[20], id: i
+}));
+// normalize every raw stat to 0–100 for plotting; tooltips show the real values
+const norm = (get, k) => {
+  const vs = songs.map(get), lo = Math.min(...vs), hi = Math.max(...vs);
+  songs.forEach(s => s[k] = Math.round((get(s) - lo) / (hi - lo) * 100));
+};
+norm(s => s.hin, "height"); norm(s => s.ftp, "ft"); norm(s => s.ppgV, "ppg");
+norm(s => s.apgV, "apg"); norm(s => s.rpgV, "rpg"); norm(s => s.p3V, "p3");
+norm(s => s.ringsV, "rings"); norm(s => s.debut, "rel"); norm(s => s.bpg, "blk");
+norm(s => s.spgV, "spg"); norm(s => s.asV, "allstar");
+norm(s => s.s3mV, "s3m"); norm(s => s.sptsV, "spts"); norm(s => s.sddV, "sdd");
+const fmtH = h => Math.floor(h / 12) + "'" + (h % 12) + '"';
+const disp = (s, m) =>
+  m.k === "height" ? fmtH(s.hin) : m.k === "ft" ? s.ftp.toFixed(1) + "%" :
+  m.k === "ppg" ? s.ppgV.toFixed(1) + " ppg" : m.k === "apg" ? s.apgV.toFixed(1) + " apg" :
+  m.k === "rpg" ? s.rpgV.toFixed(1) + " rpg" : m.k === "p3" ? s.p3V.toFixed(1) + "%" :
+  m.k === "blk" ? s.bpg.toFixed(1) + " bpg" : m.k === "spg" ? s.spgV.toFixed(1) + " spg" :
+  m.k === "allstar" ? s.asV + "× All-Star" : m.k === "s3m" ? s.s3mV + " threes" :
+  m.k === "spts" ? s.sptsV.toLocaleString() + " pts" : m.k === "sdd" ? s.sddV + " dbl-dbls" :
+  m.k === "rings" ? s.ringsV + (s.ringsV === 1 ? " ring" : " rings") :
+  m.k === "rel" ? s.debut : s[m.k];
+// every basketball metric is a real measurement → number the axes with actual values.
+// ranges are modest (height, %, per-game, counts, year) so all stay linear.
+const _BBV = {
+  ppg: [s => s.ppgV, v => v.toFixed(1)], height: [s => s.hin, v => fmtH(Math.round(v))],
+  ft: [s => s.ftp, v => Math.round(v) + "%"], p3: [s => s.p3V, v => Math.round(v) + "%"],
+  apg: [s => s.apgV, v => v.toFixed(1)], rpg: [s => s.rpgV, v => v.toFixed(1)],
+  spg: [s => s.spgV, v => v.toFixed(1)], blk: [s => s.bpg, v => v.toFixed(1)],
+  allstar: [s => s.asV, v => Math.round(v)], rings: [s => s.ringsV, v => Math.round(v)],
+  rel: [s => s.debut, v => String(Math.round(v))], s3m: [s => s.s3mV, v => Math.round(v)],
+  spts: [s => s.sptsV, v => Math.round(v).toLocaleString()], sdd: [s => s.sddV, v => Math.round(v)],
+};
+const AXIS = {};
+Object.keys(_BBV).forEach(k => { const vs = songs.map(_BBV[k][0]); AXIS[k] = { lo: Math.min(...vs), hi: Math.max(...vs), fmt: _BBV[k][1] }; });
+const valueAt = (c, t) => c.lo + (t / 100) * (c.hi - c.lo);
+const tickLabel = (m, v) => AXIS[m.k] ? AXIS[m.k].fmt(valueAt(AXIS[m.k], v)) : v;
+// birth year per player (string "birth–death" for those no longer with us)
+const BIRTH = {
+  "Magic Johnson":1959,"Stephen Curry":1988,"Chris Paul":1985,"Allen Iverson":1975,"John Stockton":1962,
+  "Steve Nash":1974,"Russell Westbrook":1988,"Kyrie Irving":1992,"Damian Lillard":1990,"Jason Kidd":1973,
+  "Oscar Robertson":1938,"Muggsy Bogues":1965,"Luka Doncic":1999,"Shai Gilgeous-Alexander":1998,"Ja Morant":1999,
+  "Michael Jordan":1963,"Kobe Bryant":"1978–2020","Dwyane Wade":1982,"James Harden":1989,"Ray Allen":1975,
+  "Reggie Miller":1965,"Klay Thompson":1990,"Devin Booker":1996,"Anthony Edwards":2001,"Manu Ginobili":1977,
+  "Vince Carter":1977,"LeBron James":1984,"Kevin Durant":1988,"Larry Bird":1956,"Kawhi Leonard":1991,
+  "Jayson Tatum":1998,"Carmelo Anthony":1984,"Scottie Pippen":1965,"Julius Erving":1950,"Jimmy Butler":1989,
+  "Tracy McGrady":1979,"Tim Duncan":1976,"Giannis Antetokounmpo":1994,"Dirk Nowitzki":1978,"Karl Malone":1963,
+  "Charles Barkley":1963,"Kevin Garnett":1976,"Anthony Davis":1993,"Draymond Green":1990,"Dennis Rodman":1961,
+  "Pau Gasol":1980,"Kareem Abdul-Jabbar":1947,"Wilt Chamberlain":"1936–1999","Shaquille O'Neal":1972,"Hakeem Olajuwon":1963,
+  "Bill Russell":"1934–2022","Nikola Jokic":1995,"Joel Embiid":1994,"Victor Wembanyama":2004,"David Robinson":1965,
+  "Patrick Ewing":1962,"Moses Malone":"1955–2015","Yao Ming":1980,"Manute Bol":"1962–2010","Rudy Gobert":1992,
+  "Jalen Brunson":1996,"Cade Cunningham":2001,"Donovan Mitchell":1996,"Jaylen Brown":1996,"Evan Mobley":2001,
+  "Julius Randle":1994,"DeMar DeRozan":1989,"Paul George":1990,"Isaiah Thomas":1989,"Kyle Lowry":1986,
+  "Marc Gasol":1985,"LaMarcus Aldridge":1985,"DeMarcus Cousins":1990,"DeAndre Jordan":1988,"Pascal Siakam":1994,
+  "Dwight Howard":1985,"Derrick Rose":1988,"Tony Parker":1982,"Chris Bosh":1984,"Amar'e Stoudemire":1982,
+  "Blake Griffin":1989,"Gilbert Arenas":1982,"Deron Williams":1984,"Brandon Roy":1984,"Andrew Bynum":1987,
+  "Kevin Love":1988,"Joakim Noah":1985,"Gary Payton":1968,"Chauncey Billups":1976,"Sam Cassell":1969,
+  "Baron Davis":1979,"Eddie Jones":1971,"Grant Hill":1972,"Peja Stojakovic":1977,"Chris Webber":1973,
+  "Jermaine O'Neal":1978,"Elton Brand":1979,"Alonzo Mourning":1970,"Dikembe Mutombo":"1966–2024","Ben Wallace":1974,
+};
+const ageOf = s => typeof BIRTH[s.title] === "string" ? "✝ " + BIRTH[s.title]
+  : BIRTH[s.title] ? "🎂 " + (2026 - BIRTH[s.title]) + " yrs" : "";
+
+// ---------------- build UI ----------------
+function soloAlbum(name) {
+  const isSolo = !off.has(name) && off.size === Object.keys(ALBUMS).length - 1;
+  off.clear();
+  if (!isSolo) Object.keys(ALBUMS).forEach(n => { if (n !== name) off.add(n); });
+  render(false);
+}
+
+const coversEl = document.getElementById("covers");
+Object.keys(ALBUMS).forEach(name => {
+  const b = document.createElement("button");
+  b.className = "pos-chip";
+  b.textContent = name;
+  b.title = ALBUMS[name].y;
+  b.style.borderColor = ALBUMS[name].c;
+  b.style.color = ALBUMS[name].c;
+  b.dataset.album = name;
+  b.onclick = () => soloAlbum(name);
+  coversEl.appendChild(b);
+});
+
+const metricsXEl = document.getElementById("metricsX");
+const metricsYEl = document.getElementById("metricsY");
+function buildPills(el, axis) {
+  METRICS.forEach(m => {
+    const b = document.createElement("button");
+    b.className = "pill"; b.textContent = m.label;
+    b.dataset.k = m.k;
+    b.onclick = () => {
+      // picking the metric already on the other axis swaps them
+      if (axis === "x") { if (m.k === metricY.k) metricY = metricX; metricX = m; }
+      else { if (m.k === metricX.k) metricX = metricY; metricY = m; }
+      render();
+    };
+    el.appendChild(b);
+  });
+}
+buildPills(metricsXEl, "x");
+buildPills(metricsYEl, "y");
+
+// gridlines (both directions), Y-axis end labels, corner annotations
+for (let v = 0; v <= 100; v += 25) {
+  for (const [cls, tick] of [["gridline", "gridtick"], ["gridlineH", "gridtickY"]]) {
+    const g = document.createElement("div");
+    g.className = cls; g.dataset.v = v;
+    stage.appendChild(g);
+    const t = document.createElement("div");
+    t.className = tick; t.dataset.v = v; t.textContent = v;
+    stage.appendChild(t);
+  }
+}
+const yLabHi = document.createElement("div"); yLabHi.className = "ylab hi"; stage.appendChild(yLabHi);
+const yLabLo = document.createElement("div"); yLabLo.className = "ylab lo"; stage.appendChild(yLabLo);
+const yBlurb = document.createElement("div"); yBlurb.className = "yblurb"; stage.appendChild(yBlurb);
+const xBlurb = document.getElementById("xBlurb");
+const corners = ["tl", "tr", "bl", "br"].map(k => {
+  const c = document.createElement("div");
+  c.className = "corner " + k;
+  stage.appendChild(c);
+  return c;
+});
+
+// dots — each wears its album cover, ringed in era color
+const dotEls = songs.map(s => {
+  const d = document.createElement("div");
+  const a = ALBUMS[s.album];
+  d.className = "dot";
+  d.style.backgroundColor = a.c;
+  if (FACES[s.title]) { d.style.backgroundImage = `url(${FACES[s.title]})`; d.classList.add("face"); }
+  else if (ART[s.album]) d.style.backgroundImage = `url(${ART[s.album]})`;
+  d.style.border = `1.5px solid ${a.c}`;
+  d.style.boxShadow = `0 0 8px ${a.c}55`;
+  d.onmouseenter = () => showTip(d, s);
+  d.onmouseleave = scheduleHideTip;
+  d.onclick = () => TOUCH ? showTip(d, s) : window.open(s.yt ? "https://www.youtube.com/watch?v=" + s.yt : "https://www.youtube.com/results?search_query=" + encodeURIComponent(s.title + " career highlights"), "_blank");
+  stage.appendChild(d);
+  return d;
+});
+
+// labels for extremes
+const labelPool = Array.from({length: 6}, () => {
+  const l = document.createElement("div");
+  l.className = "dot-label";
+  stage.appendChild(l);
+  return l;
+});
+
+
+let tipTimer = null;
+function hideTip() { tip.style.opacity = 0; tip.style.pointerEvents = "none"; }
+function scheduleHideTip() { tipTimer = setTimeout(hideTip, 250); }
+tip.onmouseenter = () => clearTimeout(tipTimer);
+tip.onmouseleave = hideTip;
+
+function showTip(el, s) {
+  clearTimeout(tipTimer);
+  const a = ALBUMS[s.album];
+  const cover = FACES[s.title] ? `<img class="t-cover" src="${FACES[s.title]}" style="object-fit:contain;background:#ffffff14">` : ART[s.album] ? `<img class="t-cover" src="${ART[s.album]}">` : "";
+  tip.innerHTML = `
+    <div class="t-head">${cover}
+      <div>
+        <div class="t-title">${s.title}</div>
+        <div class="t-album" style="color:${a.c}">${s.album} · ${a.y}</div>
+        <div style="font-size:12px;margin-top:2px;color:#cfc6e6">${ageOf(s)}</div>
+      </div>
+    </div>
+    <div class="t-metric">→ ${metricX.label}: <span class="t-score">${disp(s, metricX)}</span> &nbsp;·&nbsp; ↑ ${metricY.label}: <span class="t-score">${disp(s, metricY)}</span></div>
+    <div class="t-note">${s.note}</div>
+    <div class="t-actions">
+      <a class="t-play yt" href="${s.yt ? "https://www.youtube.com/watch?v=" + s.yt : "https://www.youtube.com/results?search_query=" + encodeURIComponent(s.title + " career highlights")}" target="_blank">▶ Highlights</a>
+      <a class="t-play bref" href="https://www.basketball-reference.com/search/search.fcgi?search=${encodeURIComponent(s.title)}" target="_blank">📊 Career stats</a>
+    </div>`;
+  tip.style.opacity = 1;
+  tip.style.pointerEvents = "auto";
+  const r = el.getBoundingClientRect(), tw = tip.offsetWidth, th = tip.offsetHeight, pad = 10;
+  let x = r.right + pad;
+  if (x + tw > innerWidth - 8) x = r.left - tw - pad;
+  tip.style.left = Math.max(8, x) + "px";
+  tip.style.top = Math.max(8, Math.min(r.top - 8, innerHeight - th - 8)) + "px";
+}
+
+// ---------------- layout & render ----------------
+function layout() {
+  const W = stage.clientWidth, H = stage.clientHeight;
+  const mobile = matchMedia("(max-width: 700px)").matches;
+  const padL = mobile ? 52 : 80, padR = mobile ? 14 : 20, padT = 26, padB = 30;
+  const xOf = v => padL + (v / 100) * (W - padL - padR);
+  const yOf = v => H - padB - (v / 100) * (H - padT - padB);
+
+  stage.querySelectorAll(".gridline").forEach(g => g.style.left = xOf(+g.dataset.v) + "px");
+  stage.querySelectorAll(".gridtick").forEach(t => t.style.left = xOf(+t.dataset.v) + "px");
+  stage.querySelectorAll(".gridlineH").forEach(g => g.style.top = yOf(+g.dataset.v) + "px");
+  stage.querySelectorAll(".gridtickY").forEach(t => t.style.top = yOf(+t.dataset.v) + "px");
+
+  // exact ties fan out on a small golden-angle spiral so stacks stay readable
+  const seen = new Map();
+  return songs.map(s => {
+    const key = s[metricX.k] + "," + s[metricY.k];
+    const n = seen.get(key) || 0;
+    seen.set(key, n + 1);
+    const rad = n ? 6 * Math.sqrt(n) : 0, ang = n * 2.39996;
+    return { x: xOf(s[metricX.k]) + rad * Math.cos(ang), y: yOf(s[metricY.k]) + rad * Math.sin(ang) };
+  });
+}
+
+function render(relayout = true) {
+  metricsXEl.querySelectorAll(".pill").forEach(p => p.classList.toggle("active", p.dataset.k === metricX.k));
+  metricsYEl.querySelectorAll(".pill").forEach(p => p.classList.toggle("activeY", p.dataset.k === metricY.k));
+  xBlurb.textContent = metricX.blurb;
+  yBlurb.textContent = metricY.blurb;
+  document.getElementById("xLoLab").textContent = metricX.lo;
+  document.getElementById("xHiLab").textContent = metricX.hi;
+  // counter-rotate the leading emoji so it stays upright in vertical text
+  const upright = t => { const i = t.indexOf(" "); return `<span class="up">${t.slice(0, i)}</span>${t.slice(i)}`; };
+  yLabHi.innerHTML = upright(metricY.hi);
+  yLabLo.innerHTML = upright(metricY.lo);
+  corners[0].textContent = metricX.lo + " · " + metricY.hi;
+  corners[1].textContent = metricX.hi + " · " + metricY.hi;
+  corners[2].textContent = metricX.lo + " · " + metricY.lo;
+  corners[3].textContent = metricX.hi + " · " + metricY.lo;
+  coversEl.querySelectorAll("[data-album]").forEach(c =>
+    c.classList.toggle("solo", !off.has(c.dataset.album) && off.size === Object.keys(ALBUMS).length - 1));
+  // number the axes with real stat values
+  stage.querySelectorAll(".gridtick").forEach(t => t.textContent = tickLabel(metricX, +t.dataset.v));
+  stage.querySelectorAll(".gridtickY").forEach(t => t.textContent = tickLabel(metricY, +t.dataset.v));
+
+  const pos = layout();
+  songs.forEach((s, i) => {
+    dotEls[i].style.left = pos[i].x + "px";
+    dotEls[i].style.top = pos[i].y + "px";
+    dotEls[i].classList.toggle("dim", off.has(s.album));
+  });
+
+  // label the extremes: ends of each axis plus the two diagonals
+  const vis = songs.filter(s => !off.has(s.album));
+  const pick = fn => vis.length ? vis.reduce((a, b) => fn(b) > fn(a) ? b : a) : null;
+  const tagged = [...new Set([
+    pick(s => s[metricX.k]), pick(s => -s[metricX.k]),
+    pick(s => s[metricY.k]), pick(s => -s[metricY.k]),
+    pick(s => s[metricX.k] + s[metricY.k]), pick(s => -s[metricX.k] - s[metricY.k]),
+  ].filter(Boolean))];
+  labelPool.forEach((l, i) => {
+    const s = tagged[i];
+    if (!s) { l.style.opacity = 0; return; }
+    l.textContent = s.title;
+    l.style.left = pos[s.id].x + "px";
+    l.style.top = pos[s.id].y + "px";
+    l.style.opacity = 1;
+  });
+
+  fillSide(vis);
+}
+
+function fillSide(vis) {
+  const block = (m, arrow, cls) => {
+    const top = [...vis].sort((a, b) => b[m.k] - a[m.k]).slice(0, 7);
+    return `<div><div class="sb-cap ${cls}">${arrow} ${m.label} <span>· top 7</span></div>` +
+      top.map(s => {
+        const a = ALBUMS[s.album];
+        const cv = ART[s.album] ? `<img src="${ART[s.album]}">` : `<span class="sb-dot" style="background:${a.c}"></span>`;
+        return `<div class="sb-row" title="${s.title} (${s.album})">${cv}<span class="sb-nm">${s.title}</span><span class="sb-v">${disp(s, m)}</span></div>`;
+      }).join("") + `</div>`;
+  };
+  document.getElementById("sideBoards").innerHTML = block(metricY, "↑", "y") + block(metricX, "→", "x");
+}
+
+// ---------------- tabs ----------------
+document.querySelectorAll(".tab").forEach(t => {
+  t.onclick = () => {
+    document.querySelectorAll(".tab").forEach(x => x.classList.toggle("active", x === t));
+    document.getElementById("page-spectrum").classList.toggle("hidden", t.dataset.page !== "spectrum");
+    document.getElementById("page-aura").classList.toggle("hidden", t.dataset.page !== "aura");
+    if (t.dataset.page === "spectrum") render(false); // re-measure after being hidden
+  };
+});
+
+// ---------------- aura quiz ----------------
+const THEMES = [
+  { name: "Certified Bucket",      emoji: "🪣", color: "#ff6b6b", v: s => s.ppg },
+  { name: "Floor General",         emoji: "🎩", color: "#5dade2", v: s => s.apg },
+  { name: "Glass Cleaner",         emoji: "🧹", color: "#c97a3d", v: s => s.rpg },
+  { name: "Lockdown Artist",       emoji: "🔒", color: "#90d4a0", v: s => s.defense },
+  { name: "Cold-Blooded",          emoji: "🧊", color: "#9fd8ff", v: s => s.clutch },
+  { name: "Main Character",        emoji: "💫", color: "#ffd166", v: s => s.aura },
+  { name: "Splash Cartographer",   emoji: "🌊", color: "#3fb8af", v: s => s.p3 },
+  { name: "Ring Collector",        emoji: "💍", color: "#e8b647", v: s => s.rings },
+  { name: "Skyline Member",        emoji: "🦒", color: "#a05cc8", v: s => s.height },
+  { name: "Charity Stripe Sniper", emoji: "🎯", color: "#f48fb1", v: s => s.ft },
+  { name: "Old Head",              emoji: "🏛️", color: "#9aa0a6", v: s => 100 - s.rel },
+];
+const picks = [];
+const searchEl = document.getElementById("songSearch");
+const suggestEl = document.getElementById("suggest");
+const chipsEl = document.getElementById("chips");
+const auraBtn = document.getElementById("auraBtn");
+
+function refreshSuggest() {
+  const q = searchEl.value.trim().toLowerCase();
+  if (picks.length >= 5) { suggestEl.style.display = "none"; return; }
+  const hits = q
+    ? songs.filter(s => !picks.includes(s) &&
+        (s.title.toLowerCase().includes(q) || s.album.toLowerCase().includes(q)))
+    : [...songs].filter(s => !picks.includes(s)).sort((a, b) => b.aura - a.aura).slice(0, 5);
+  suggestEl.style.display = hits.length ? "block" : "none";
+  suggestEl.innerHTML = hits.map(s => {
+    const a = ALBUMS[s.album];
+    const cv = ART[s.album] ? `<img src="${ART[s.album]}">` : `<span class="cv-fallback" style="background:${a.c}"></span>`;
+    return `<div class="sg" data-id="${s.id}">${cv}<span>${s.title}</span><span class="sg-al" style="color:${a.c}">${s.album}</span></div>`;
+  }).join("");
+  suggestEl.querySelectorAll(".sg").forEach(el => el.onclick = () => addPick(songs[+el.dataset.id], true));
+}
+function addPick(s, fromSearch) {
+  if (picks.length >= 5 || picks.includes(s)) return;
+  picks.push(s);
+  searchEl.value = "";
+  refreshSuggest();
+  drawChips();
+  if (fromSearch && picks.length < 5) searchEl.focus();
+}
+function removePick(s) {
+  picks.splice(picks.indexOf(s), 1);
+  drawChips();
+}
+function drawChips() {
+  chipsEl.innerHTML = picks.map(s => {
+    const a = ALBUMS[s.album];
+    const cv = ART[s.album] ? `<img src="${ART[s.album]}">` : "";
+    return `<div class="chip" style="border-color:${a.c}88">${cv}${s.title}<span class="x" data-id="${s.id}">✕</span></div>`;
+  }).join("");
+  chipsEl.querySelectorAll(".x").forEach(el => el.onclick = () => removePick(songs[+el.dataset.id]));
+  auraBtn.disabled = picks.length < 3;
+  auraBtn.textContent = picks.length >= 3 ? "🏀 Run the scouting report" : `🏀 Run the scouting report (${picks.length}/3 minimum)`;
+  catEl.querySelectorAll(".cat-song").forEach(b => {
+    const s = songs[+b.dataset.id];
+    b.classList.toggle("picked", picks.includes(s));
+    b.classList.toggle("maxed", picks.length >= 5 && !picks.includes(s));
+  });
+}
+searchEl.addEventListener("input", refreshSuggest);
+searchEl.addEventListener("focus", refreshSuggest);
+searchEl.addEventListener("keydown", e => {
+  if (e.key === "Enter") {
+    const first = suggestEl.querySelector(".sg");
+    if (first) addPick(songs[+first.dataset.id], true);
+  }
+});
+document.addEventListener("click", e => {
+  if (!e.target.closest(".picker")) suggestEl.style.display = "none";
+  if (!e.target.closest(".dot") && !e.target.closest("#tip")) hideTip();
+});
+
+// full catalogue browser at the bottom of the aura page — click to toggle picks
+const catEl = document.getElementById("catalogue");
+catEl.innerHTML = `<div class="cat-head">…or browse the whole league</div>` +
+  Object.keys(ALBUMS).map(album => {
+    const list = songs.filter(s => s.album === album);
+    if (!list.length) return "";
+    const cover = ART[album] ? `<img src="${ART[album]}">` : "";
+    return `<div class="cat-era" style="color:${ALBUMS[album].c}">${cover}${album} <span>${ALBUMS[album].y}</span></div>
+      <div class="cat-songs">` +
+      list.map(s => `<button class="cat-song" data-id="${s.id}">${s.title}</button>`).join("") +
+      `</div>`;
+  }).join("");
+catEl.querySelectorAll(".cat-song").forEach(b => b.onclick = () => {
+  const s = songs[+b.dataset.id];
+  picks.includes(s) ? removePick(s) : addPick(s);
+});
+
+drawChips();
+
+const ERA_READINGS = {
+  "Point Guard": "Your roster core is point guards: you believe the game is a sentence and someone has to write it. Control is your love language; chaos is a turnover.",
+  "Shooting Guard": "Your roster core is shooting guards: you believe most problems are just buckets that have not been gotten yet. Shot selection is a lifestyle, not a critique.",
+  "Small Forward": "Your roster core is wings: you refuse to pick a lane because you can drive in all of them. Do-everything energy, slight martyr complex, elite résumé.",
+  "Power Forward": "Your roster core is power forwards: you do the dirty work and remember exactly who noticed. Screens set, boards crashed, grudges itemized.",
+  "Center": "Your roster core is giants: you believe in gravity, geometry, and standing where the trouble is. Everything else is perimeter noise.",
+};
+const THEME_OPENERS = {
+  "Certified Bucket": [
+    "You believe scoring is a personality trait, and yours is excellent. When things get complicated, you simplify: get a bucket, repeat.",
+    "Your answer to most of life's problems is twenty-five a night. It is not subtle, but it has never once been wrong.",
+  ],
+  "Floor General": [
+    "You see the pass before the play exists. People think you are unselfish; really, you just like being the reason everything worked.",
+    "You run the room the way you run the floor — two steps ahead, calling the sets, mildly disappointed when nobody cuts.",
+  ],
+  "Glass Cleaner": [
+    "You do the unglamorous thing on purpose, every time, and you keep the receipts. Effort is a skill and you are its valedictorian.",
+    "Every missed shot is just a rebound you have not collected yet. This philosophy governs your whole life, not just the paint.",
+  ],
+  "Lockdown Artist": [
+    "You take pride in what does not happen — the shot not taken, the lane not opened. Prevention is your art form, and it is criminally underrated.",
+    "You guard your peace like it is the other team's best scorer: physically, personally, for a full forty-eight.",
+  ],
+  "Cold-Blooded": [
+    "Pressure reads as an invitation to you. While everyone else's heart rate climbs, yours files paperwork and asks for the ball.",
+    "You want the last shot — in games, in arguments, in group chats. History says that is the correct allocation.",
+  ],
+  "Main Character": [
+    "You understand the game is also a show, and you are excellent television. The walk from the tunnel matters. The celebration matters more.",
+    "Gravity bends around your confidence. Some call it ego; the scoreboard usually calls it accurate.",
+  ],
+  "Splash Cartographer": [
+    "You believe distance is a suggestion and the arc is a horizon to be redrawn. Why take two points when three is right there?",
+    "Your range extends past the logo and into your life choices. Ambitious, efficient, occasionally heat-check-shaped.",
+  ],
+  "Ring Collector": [
+    "You judge eras by jewelry. Stats are conversation; banners are evidence. You would trade a scoring title for a parade without blinking.",
+    "You play the long game for the shiny ending. Sacrifice now, dynasty later — it has worked every single time it has worked.",
+  ],
+  "Skyline Member": [
+    "You trust size — in players, in plans, in ambitions. Why solve a problem cleverly when you can simply be taller than it?",
+    "You believe verticality is a virtue. Some problems can be jumped over; the rest can be blocked at the rim.",
+  ],
+  "Charity Stripe Sniper": [
+    "You are the friend who never misses the detail — automatic from the line, automatic with birthdays. Reliability is your highlight reel.",
+    "Free points exist and you simply refuse to leave them on the table. This discipline extends to parking spots and tax deadlines.",
+  ],
+  "Old Head": [
+    "You suspect the golden age ended before you got there, and you have the grainy footage to prove it. Hand-checking was honest work.",
+    "You respect the elders because you are spiritually one of them. Fundamentals, mid-range, black-and-white film: the holy trinity.",
+  ],
+};
+const TODO_BANK = [
+  "Shoot free throws until you hit ten in a row. Do not leave before ten.",
+  "Watch the fourth quarter of a Finals game older than you are. Take notes.",
+  "Call your most competitive friend and challenge them to literally anything.",
+  "Practice your celebration in the mirror. You will need it sooner than you think.",
+  "Box someone out for the last slice of pizza this week. Fundamentals.",
+  "Take the stairs two at a time on Wednesday. Explosiveness is a lifestyle.",
+  "Rewatch your favorite player's draft night. Remember that everyone starts nervous.",
+  "Do one ordinary thing left-handed this week. Ambidexterity is earned, not given.",
+  "Stretch your hamstrings tonight. Every great career is secretly a hamstring story.",
+  "Wear the throwback jersey somewhere it does not belong, like brunch.",
+  "Trash-talk respectfully at your next game night. Channel Bird: state the play, then run the play.",
+  "Pick one small skill and do one hundred reps this week. Boring wins rings.",
+  "Find a park court at golden hour and shoot until the lights come on.",
+  "High-five a stranger after something good happens. Chemistry is built in small moments.",
+  "Drink water like you are in the fourth quarter of a back-to-back.",
+  "Set a hard screen on one bad habit this week. Legal contact only.",
+];
+function buildStory(picks, scored, era) {
+  const avg = k => picks.reduce((a, s) => a + s[k], 0) / picks.length;
+  // everything below is seeded by the picks: same five, same scouting report
+  let seed = picks.reduce((a, s) => (a * 31 + s.id + 7) >>> 0, picks.length);
+  const rand = () => (seed = (seed * 1664525 + 1013904223) >>> 0) / 4294967296;
+  const choose = arr => arr[Math.floor(rand() * arr.length)];
+  const draw = (pool, n) => {
+    const p = [...pool], out = [];
+    while (out.length < n && p.length) out.push(p.splice(Math.floor(rand() * p.length), 1)[0]);
+    return out;
+  };
+
+  // analysis of this exact roster
+  const byDebut = [...picks].sort((a, b) => a.debut - b.debut);
+  const oldest = byDebut[0], newest = byDebut[byDebut.length - 1];
+  const span = newest.debut - oldest.debut;
+  const byFame = [...picks].sort((a, b) => a.aura - b.aura);
+  const cult = byFame[0], famous = byFame[byFame.length - 1];
+  const byH = [...picks].sort((a, b) => a.hin - b.hin);
+  const short = byH[0], tall = byH[byH.length - 1];
+  const clutchest = [...picks].sort((a, b) => b.clutch - a.clutch)[0];
+  const totalRings = picks.reduce((a, s) => a + s.ringsV, 0);
+  const posCounts = {};
+  picks.forEach(s => posCounts[s.album] = (posCounts[s.album] || 0) + 1);
+  const posCount = Object.keys(posCounts).length;
+  const maxPos = Object.entries(posCounts).sort((a, b) => b[1] - a[1])[0];
+
+  const obs = [];
+  if (posCount === 5) obs.push("All five positions covered — you did not pick favorites, you built an actual starting lineup. Coach brain detected.");
+  if (maxPos[1] >= 3) obs.push(`${maxPos[1]} of your picks play ${maxPos[0]}. You do not want a team; you want a ${maxPos[0]} army, and the spacing concerns are somebody else's problem.`);
+  if (span >= 30) obs.push(`Your picks debuted ${span} years apart — from ${oldest.title} to ${newest.title}. You respect the elders and the rookies in equal measure, which is rarer than it should be.`);
+  if (famous.aura >= 90 && cult.aura <= 60) obs.push(`${famous.title} next to ${cult.title}: you watch full games, not just highlights. Box-score literacy confirmed.`);
+  if (tall.hin - short.hin >= 12) obs.push(`${tall.title} and ${short.title} on the same card is ${tall.hin - short.hin} inches of roster chaos. Positionless basketball found its prophet.`);
+  if (totalRings === 0) obs.push("Zero combined championships across your picks. You love the journey; the destination has filed a missing-persons report. This is its own kind of romance.");
+  if (totalRings >= 12) obs.push(`${totalRings} combined rings on this card. You did not come to debate — you came with evidence.`);
+  if (!obs.length) obs.push("Your picks share one basketball brain — you know exactly what you value on a court, and consistency like that is a scouting report in itself.");
+  const observed = draw(obs, 2).join(" ");
+
+  const traits = [
+    [avg("defense") >= 70, "You take pride in the unglamorous stuff — deflections, charges, doing the dishes unprompted."],
+    [avg("ppg") >= 70, "You believe most problems are buckets that have not been gotten yet."],
+    [avg("apg") >= 55, "You keep everyone involved and remember exactly who never passes back."],
+    [avg("rings") >= 50, "You judge everything by trophies, including potlucks."],
+    [avg("rings") <= 15, "You collect brilliant careers that deserved better endings. The heart wants what the front office fumbled."],
+    [avg("aura") >= 80, "You believe games are won in the walk from the tunnel. Presentation is half the score."],
+    [avg("rel") <= 35, "The grainy footage does not scare you — the golden age had better fundamentals and worse shorts, and you are right on both counts."],
+    [avg("rel") >= 70, "You live in the present meta: spacing, pace, and a healthy disrespect for mid-range orthodoxy."],
+    [avg("height") >= 70, "You trust size. Why outsmart a problem you can simply stand taller than?"],
+    [avg("height") <= 40, "You root for the little guy with the fury of someone who has been boxed out by life before."],
+    [avg("ft") >= 70, "Free points exist and you refuse to waste them — at the line or anywhere else."],
+    [avg("clutch") >= 75, "Pressure reads as an invitation to you. Four seconds is plenty."],
+  ];
+  const satisfied = traits.filter(x => x[0]).map(x => x[1]);
+  const light = satisfied.length ? draw(satisfied, 3) :
+    ["You are suspiciously balanced — a two-way roster with no weak link and no headline. Front offices dream about you."];
+
+  const C = avg("clutch"), R = avg("rings"), D = avg("defense"), A = avg("aura");
+  const want = choose(
+    R >= 55 ? [
+      "What you actually want: the parade. The confetti, the duck boats, the trophy with your fingerprints on it. Everything else is preseason.",
+      "What you actually want: June basketball and the jewelry that follows. You would sacrifice touches, minutes, and dignity for the banner.",
+    ] : C >= 70 ? [
+      "What you actually want: the ball, four seconds, down two. Not because you are sure it goes in — because you want to be the one who finds out.",
+      "What you actually want: the moment everyone else is hiding from. You have been practicing the celebration since middle school.",
+    ] : D >= 70 ? [
+      "What you actually want: the respect that never shows up in a box score. The assignment nobody wants, handled. A quiet nod from the bench.",
+      "What you actually want: for someone to finally notice that nothing happened — because you made sure of it. Defense is love made visible.",
+    ] : A >= 75 ? [
+      "What you actually want: the moment, the camera, and the whole arena holding its breath on your count. Admit it.",
+      "What you actually want: to be the show. Not a show — the show. The stats are just the supporting cast.",
+    ] : [
+      "What you actually want: winnable games, a rotation that makes sense, and teammates who run the floor. Basketball utopia is simpler than people think.",
+      "What you actually want: the beautiful game played correctly — the extra pass, the backdoor cut, the box-out. Process over podium, most days.",
+    ]);
+
+  const prophecy = choose([
+    `This week you will sink a crumpled paper ball from across the room. ${clutchest.title} would approve. Hold the follow-through.`,
+    `Someone will start a ${famous.title} debate near you this week. You know the numbers. Strike with precision, then log off.`,
+    `An elevator door will close like a shot clock and you will make it. ${clutchest.title} energy. Spend it on something bigger.`,
+    `You will see someone duck through a doorway and think of ${tall.title}. Text a tall friend; they carry more than you know.`,
+  ]);
+
+  const todos = draw([...TODO_BANK,
+    `Watch ten minutes of ${cult.title} highlights tonight. The tape never lies, and the algorithm forgot them.`,
+    `Channel ${clutchest.title} the next time a deadline tightens. Four seconds is plenty.`,
+    `Walk into Monday the way ${famous.title} walks into a Game 7.`,
+  ], 3);
+  const nextWeekday = new Date(Date.now() + 6 * 864e5).toLocaleDateString("en-US", { weekday: "long" });
+  return `
+    <div class="aura-story">
+      <div class="as-head">📋 Scouting Report</div>
+      <div class="as-signs">☀️ Sun in ${scored[0].name} · 🌙 Moon in ${scored[1].name} · ⬆️ ${scored[2].name} Rising</div>
+      <p>${choose(THEME_OPENERS[scored[0].name])}</p>
+      <p>${ERA_READINGS[era]}</p>
+      <p>${observed}</p>
+      <p>${light.join(" ")}</p>
+      <p>${want}</p>
+      <p class="as-prophecy">${prophecy}</p>
+      <div class="as-sub">Do these three things before next ${nextWeekday}</div>
+      <ul class="as-todo">${todos.map(t => `<li>${t}</li>`).join("")}</ul>
+    </div>`;
+}
+
+auraBtn.onclick = () => {
+  const res = document.getElementById("auraResult");
+  auraBtn.disabled = true;
+  res.innerHTML = `<div class="aura-loading"><div class="orb"></div><div class="al-text">Figuring out your groove…</div></div>`;
+  res.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  const msgs = ["Reviewing the tape…", "Calling the front office…", "Checking with the analytics department…"];
+  let mi = 0;
+  const cycle = setInterval(() => { res.querySelector(".al-text").textContent = msgs[++mi % msgs.length]; }, 1000);
+  setTimeout(() => { clearInterval(cycle); drawChips(); revealAura(); }, 3000);
+};
+
+function revealAura() {
+  // costar-style: one dominant sign (70%+) and two minor placements
+  const scored = THEMES
+    .map(t => ({ ...t, raw: picks.reduce((sum, s) => sum + t.v(s), 0) / picks.length }))
+    .sort((a, b) => b.raw - a.raw).slice(0, 3);
+  const [r1, r2, r3] = scored.map(t => t.raw);
+  scored[0].pct = 70 + Math.min(15, Math.round((r1 - r2) / Math.max(r1, 1) * 45));
+  const rest = 100 - scored[0].pct;
+  scored[1].pct = Math.round(rest * r2 / Math.max(r2 + r3, 1));
+  scored[2].pct = rest - scored[1].pct;
+
+  const tally = {};
+  picks.forEach(s => tally[s.album] = (tally[s.album] || 0) + 1);
+  const era = Object.entries(tally).sort((a, b) => b[1] - a[1])[0][0];
+
+  const Cr = 84, C = 2 * Math.PI * Cr;
+  let offset = 0;
+  const arcs = scored.map(t => {
+    const seg = t.pct / 100 * C;
+    const segLen = Math.max(seg - 3, 0.5);
+    const el = `<circle cx="110" cy="110" r="${Cr}" fill="none" stroke="${t.color}" stroke-width="26"
+      stroke-dasharray="0 ${C}" data-dash="${segLen} ${C - segLen}"
+      stroke-dashoffset="${-offset}" transform="rotate(-90 110 110)" stroke-linecap="round"/>`;
+    offset += seg;
+    return el;
+  }).join("");
+
+  document.getElementById("auraResult").innerHTML = `
+    <div class="aura-card">
+      <div class="aura-headline">You are <b style="color:${scored[0].color}">${scored[0].pct}% ${scored[0].name} ${scored[0].emoji}</b>
+        — and your roster core is <b style="color:${ALBUMS[era].c}">${era}</b></div>
+      <div class="aura-flex">
+        <div class="donut-wrap">
+          <svg width="220" height="220">${arcs}</svg>
+          <div class="donut-center">${scored[0].emoji}<small>${scored[0].name}</small></div>
+        </div>
+        <div class="aura-bars">
+          ${scored.map(t => `
+            <div class="aura-row">
+              <span class="ar-emoji">${t.emoji}</span>
+              <span class="ar-name">${t.name}</span>
+              <div class="ar-track"><div class="ar-fill" data-w="${t.pct}" style="background:${t.color}"></div></div>
+              <span class="ar-pct" style="color:${t.color}">${t.pct}%</span>
+            </div>`).join("")}
+        </div>
+      </div>
+      ${buildStory(picks, scored, era)}
+      <div class="aura-songs">${picks.map(s => ART[s.album] ? `<img src="${ART[s.album]}" title="${s.title}">` : "").join("")}
+        <span>based on: ${picks.map(s => s.title).join(" · ")}</span></div>
+    </div>`;
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    document.querySelectorAll("#auraResult circle").forEach(c => c.setAttribute("stroke-dasharray", c.dataset.dash));
+    document.querySelectorAll("#auraResult .ar-fill").forEach(f => f.style.width = f.dataset.w + "%");
+  }));
+  document.getElementById("auraResult").scrollIntoView({ behavior: "smooth", block: "nearest" });
+}
+
+window.addEventListener("resize", () => render(false));
+render();
+</script>
+</body>
+</html>

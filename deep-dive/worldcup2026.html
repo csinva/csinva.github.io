@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<title>The World Cup Deep-Dive — every legend, every wonderkid</title>
+<link rel="stylesheet" href="assets/deepdive.css">
+<style>
+  /* text filter chips (this page uses chips, not album thumbnails) */
+  .covers { gap: 9px; }
+  .pos-chip {
+    background: #181425; border: 1.5px solid; border-radius: 999px;
+    padding: 8px 18px; font-weight: 800; font-size: 13.5px; cursor: pointer;
+    transition: all .18s; font-family: inherit;
+  }
+  .pos-chip:hover { transform: translateY(-2px); }
+  .pos-chip.solo { box-shadow: 0 0 16px currentColor; background: #241b3a; }
+  #tip .t-play.bref { background: #e8731a; }
+  @media (max-width: 700px) { .pos-chip { padding: 6px 12px; font-size: 12px; } }
+  /* photo dots */
+  .dot { opacity: .82; }
+  .dot:hover { opacity: 1; }
+  .dot.face { width: 28px; height: 28px; margin: -14px 0 0 -14px; opacity: .92; }
+  #tip .t-club { font-size: 12px; margin-top: 2px; color: #cfc6e6; }
+</style>
+</head>
+<body>
+<a class="home-btn" href="index.html" title="Back to deep-dive">⌂ Home</a>
+<div class="made-by">Made with love by <a href="https://x.com/csinva" target="_blank" rel="noopener">@csinva</a></div>
+<div class="wrap">
+  <header>
+    <h1>The World Cup Deep-Dive</h1>
+    <div class="sub"><b>122 players</b> — World Cup legends beside the stars, wonderkids and viral breakouts of the 2026 tournament now underway. Pick one stat per axis, filter by position, and hover any dot for the scouting card.</div>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab active" data-page="spectrum">🌌 The Deep-Dive</button>
+    <button class="tab" data-page="aura">⚽ Your Front Five</button>
+  </nav>
+
+  <div class="page" id="page-spectrum">
+  <div class="covers" id="covers"></div>
+  <div class="covers-hint">click a position to solo it · click again to bring everyone back</div>
+
+  <div class="chart-zone">
+    <div class="axis-picker y" id="metricsY">
+      <div class="picker-cap"><b>↑</b> vertical axis<br><span>click a pill to change it</span></div>
+    </div>
+    <div class="chart-main">
+      <div class="chart-card">
+        <div id="stage"></div>
+        <div class="axis-labels"><span class="lo" id="xLoLab"></span><span class="xblurb" id="xBlurb"></span><span class="hi" id="xHiLab"></span></div>
+      </div>
+      <div class="axis-picker x" id="metricsX">
+        <div class="picker-cap"><b>→</b> horizontal axis · <span>click a pill to change it</span></div>
+      </div>
+    </div>
+    <div class="side-boards" id="sideBoards"></div>
+  </div>
+
+  </div><!-- /page-spectrum -->
+
+  <div class="page hidden" id="page-aura">
+    <div class="aura-intro">Pick <b>three to five</b> of your favorite World Cup players — legends or 2026 wonderkids, start typing or browse below. We'll find your dominant identity and minor placements, then file your scouting report.</div>
+    <div class="picker">
+      <input id="songSearch" placeholder="Start typing a player… (legends and wonderkids below)" autocomplete="off">
+      <div id="suggest"></div>
+    </div>
+    <div id="chips"></div>
+    <button id="auraBtn" disabled></button>
+    <div id="auraResult"></div>
+    <div class="catalogue" id="catalogue"></div>
+  </div>
+
+  <footer>
+    Stats are career World Cup and international numbers, approximate through the eve of the 2026 tournament (kicked off June 11, 2026).<br>
+    122 players: the all-time greats next to 104 of the 2026 cast — the wonderkids (Yamal, Estêvão, Mastantuono, Doué, Cubarsí…) start at zero WC goals, bottom-right, where legends begin. Instagram counts are snapshots before kickoff vs today; Cape Verde keeper Vozinha leads the boom, 31K → 6.8M in a week.<br>
+    Playoff nations (Italy, Turkey, Poland, Sweden…) are regrettably unrepresented pending squads. Hover a dot for the scouting card — highlights via YouTube, numbers via FBref.
+  </footer>
+</div>
+
+<div id="tip"></div>
+
+<script>
+const ART = {};
+const FACES = {
+  "Pelé": "assets/img/worldcup/pele.jpg",
+  "Diego Maradona": "assets/img/worldcup/diego-maradona.jpg",
+  "Ronaldo Nazário": "assets/img/worldcup/ronaldo-nazario.jpg",
+  "Zinedine Zidane": "assets/img/worldcup/zinedine-zidane.jpg",
+  "Miroslav Klose": "assets/img/worldcup/miroslav-klose.jpg",
+  "Ronaldinho": "assets/img/worldcup/ronaldinho.jpg",
+  "Lionel Messi": "assets/img/worldcup/lionel-messi.jpg",
+  "Cristiano Ronaldo": "assets/img/worldcup/cristiano-ronaldo.jpg",
+  "Kylian Mbappé": "assets/img/worldcup/kylian-mbappe.jpg",
+  "Neymar": "assets/img/worldcup/neymar.jpg",
+  "Erling Haaland": "assets/img/worldcup/erling-haaland.jpg",
+  "Lamine Yamal": "assets/img/worldcup/lamine-yamal.jpg",
+  "Jude Bellingham": "assets/img/worldcup/jude-bellingham.jpg",
+  "Luka Modrić": "assets/img/worldcup/luka-modric.jpg",
+  "Harry Kane": "assets/img/worldcup/harry-kane.jpg",
+  "Vinícius Júnior": "assets/img/worldcup/vinicius-junior.jpg",
+  "Kevin De Bruyne": "assets/img/worldcup/kevin-de-bruyne.jpg",
+  "Franz Beckenbauer": "assets/img/worldcup/franz-beckenbauer.jpg",
+  "Pedri": "assets/img/worldcup/pedri.jpg",
+  "Jamal Musiala": "assets/img/worldcup/jamal-musiala.jpg",
+  "Gianluigi Buffon": "assets/img/worldcup/gianluigi-buffon.jpg",
+  "Son Heung-min": "assets/img/worldcup/son-heung-min.jpg",
+};
+
+// ---------------- albums & colors ----------------
+const ALBUMS = {
+  "Forward":    { c: "#d6453c", y: "the goal getters", t: "FW" },
+  "Midfielder": { c: "#3fb8af", y: "the orchestrators", t: "MF" },
+  "Defender":   { c: "#5dade2", y: "the shutdown unit", t: "DF" },
+  "Goalkeeper": { c: "#e8b647", y: "the last line", t: "GK" },
+};
+
+// ---------------- metrics ----------------
+const METRICS = [
+  { k:"boom",   label:"Insta Boom",      lo:"😴 no bump", hi:"🚀 Vozinha's +21,000%",
+    blurb:"Follower growth since the World Cup kicked off — before vs today. Log-scaled; viral unknowns rocket, megastars barely move." },
+  { k:"insta",  label:"Insta Followers", lo:"📵 barely posts", hi:"📸 Ronaldo's 665M",
+    blurb:"Instagram following today, in millions. Log-scaled axis — 0 to 665M is a long way." },
+  { k:"price",  label:"Price Tag",    lo:"🆓 priceless / retired", hi:"💰 €200M wonderkid",
+    blurb:"Estimated transfer market value, € millions — legends sit at zero, the kids carry the price. Log-scaled axis." },
+  { k:"height", label:"Height",       lo:"🐜 Maradona's 165cm", hi:"🦒 Courtois's 200cm",
+    blurb:"Height in centimetres." },
+  { k:"agef",   label:"Debut Age",    lo:"🐣 thrown in as a teen", hi:"🍷 fashionably late",
+    blurb:"Age at their first World Cup — Pelé was 17." },
+  { k:"wcg",    label:"WC Goals",     lo:"🥅 none yet", hi:"👑 Klose's 16",
+    blurb:"Career World Cup goals." },
+  { k:"wcm",    label:"WC Matches",   lo:"🧳 hasn't unpacked", hi:"🗺️ Messi's 26",
+    blurb:"Career World Cup appearances." },
+  { k:"gpm",    label:"Goals/Match",  lo:"🧱 not the job", hi:"💥 Fontaine's 2.17",
+    blurb:"World Cup goals per World Cup match." },
+  { k:"titles", label:"Titles",       lo:"🫥 still chasing", hi:"⭐⭐⭐ Pelé",
+    blurb:"World Cups won." },
+  { k:"intl",   label:"Int'l Goals",  lo:"🛡️ not their job", hi:"🤖 Ronaldo's 138",
+    blurb:"Career international goals." },
+  { k:"caps",   label:"Caps",         lo:"🌱 single digits", hi:"🎖️ 217 and counting",
+    blurb:"Career international appearances." },
+  { k:"rel",    label:"First WC",     lo:"📻 radio era", hi:"🆕 debuts in 2026",
+    blurb:"Year of their first World Cup — 1958 to this week." },
+  { k:"ballon", label:"Ballon d'Ors", lo:"🫥 none (yet)", hi:"🏆 Messi's 8",
+    blurb:"Career Ballon d'Or wins." },
+];
+// per-metric: raw value accessor, axis-tick number formatter, and scale type.
+// followers / transfer value / boom span many orders of magnitude → log scale.
+const M_CFG = {
+  wcg:    { raw: s => s.wcgV,    fmt: v => Math.round(v) },
+  wcm:    { raw: s => s.wcmV,    fmt: v => Math.round(v) },
+  gpm:    { raw: s => s.gpmV,    fmt: v => v.toFixed(2) },
+  titles: { raw: s => s.titlesV, fmt: v => Math.round(v) },
+  intl:   { raw: s => s.intlV,   fmt: v => Math.round(v) },
+  caps:   { raw: s => s.capsV,   fmt: v => Math.round(v) },
+  rel:    { raw: s => s.firstWC, fmt: v => String(Math.round(v)) },
+  agef:   { raw: s => s.agefV,   fmt: v => Math.round(v) },
+  price:  { raw: s => s.priceV,  fmt: v => v < 0.05 ? "€0" : "€" + fmtNum(v) + "M", log: true },
+  insta:  { raw: s => s.instaV,  fmt: v => v < 0.05 ? "0" : fmtNum(v) + "M", log: true },
+  boom:   { raw: s => s.boomV,   fmt: v => v < 1 ? "0" : "+" + Math.round(v).toLocaleString() + "%", log: true },
+  ballon: { raw: s => s.ballonV, fmt: v => Math.round(v) },
+  height: { raw: s => s.htV,     fmt: v => Math.round(v) },
+};
+METRICS.forEach(m => Object.assign(m, M_CFG[m.k]));
+
+// ---------------- data ----------------
+// [name, position, wcGoals, wcMatches, wcTitles, intlGoals, caps, firstWC, debutAge, in2026, priceTagM, instaNowM, instaBeforeWcM, ballonDOrs, heightCm, note, youtubeId]
+const SONGS = [
+["Pelé", "Forward", 12, 14, 3, 77, 92, 1958, 17, 0, 0, 18, 18, 0, 173, "Three World Cups. Seventeen years old in Sweden, immortal by the final.", "WXg8P0u9W9I"],
+["Ronaldo Nazário", "Forward", 15, 19, 2, 62, 98, 1998, 21, 0, 0, 30, 30, 2, 183, "El Fenômeno: the 2002 redemption arc, eight goals, that haircut.", "bBRp7WTP0EY"],
+["Miroslav Klose", "Forward", 16, 24, 1, 71, 137, 2002, 24, 0, 0, 1.5, 1.5, 0, 184, "All-time World Cup scorer: sixteen goals, all poached, zero apologies.", "7fH3zYZn8RI"],
+["Gerd Müller", "Forward", 14, 13, 1, 68, 62, 1970, 24, 0, 0, 0, 0, 1, 176, "Der Bomber: fourteen goals in thirteen World Cup games.", "hCOC1TS9A1I"],
+["Just Fontaine", "Forward", 13, 6, 0, 30, 21, 1958, 24, 0, 0, 0, 0, 0, 174, "Thirteen goals in ONE World Cup (1958). The unbreakable record.", "owlhGSbkbOs"],
+["Thomas Müller", "Forward", 10, 19, 1, 45, 131, 2010, 20, 0, 4, 16, 16, 0, 185, "Ten WC goals by 24 — the Raumdeuter interpreted space itself.", "F1z7Uvjnlns"],
+["Lionel Messi", "Forward", 13, 26, 1, 112, 191, 2006, 18, 1, 15, 506, 504, 8, 170, "The 2022 career-completion ceremony. Back at 38 for one more dance, practically in his Miami backyard.", "YGJPYh713d0"],
+["Cristiano Ronaldo", "Forward", 8, 22, 0, 138, 217, 2006, 21, 1, 12, 665, 664, 5, 187, "His SIXTH World Cup. Still scoring at 41. The machine does not acknowledge time.", "mmeLCAP74KA"],
+["Kylian Mbappé", "Forward", 12, 14, 1, 50, 92, 2018, 19, 1, 180, 130, 128, 0, 178, "Scored a final hat-trick and LOST. Twelve WC goals at 27 — Klose's record is officially nervous.", "6VC5VHn5EQM"],
+["Neymar", "Forward", 8, 13, 0, 79, 128, 2014, 22, 1, 8, 234, 233, 0, 175, "Brazil's all-time scorer, chasing the one trophy that keeps escaping.", "K2csY1cMpfA"],
+["Harry Kane", "Forward", 8, 11, 0, 73, 108, 2018, 24, 1, 60, 18, 17.5, 0, 188, "2018 Golden Boot; England's record scorer still owes them a star.", "FX3f5tOy350"],
+["Luis Suárez", "Forward", 7, 16, 0, 69, 143, 2010, 23, 1, 2, 38, 37.5, 0, 182, "Goals, bites, and a goal-line handball he would absolutely do again.", "7r0RZikEAKo"],
+["Erling Haaland", "Forward", 0, 0, 0, 40, 45, 2026, 25, 1, 200, 41, 39.5, 0, 195, "Norway's first World Cup since 1998 — the goal robot finally gets the stage.", "EppU7FwAyEc"],
+["Son Heung-min", "Forward", 3, 9, 0, 51, 134, 2014, 21, 1, 15, 15, 14.5, 0, 183, "Asia's superstar on one last World Cup run with the armband.", "b2I2goUwrao"],
+["Vinícius Júnior", "Forward", 1, 5, 0, 30, 46, 2022, 22, 1, 140, 60, 58.5, 0, 176, "The winger Brazil builds 2026 around.", "FrmxHd0llCg"],
+["Julián Álvarez", "Forward", 4, 7, 1, 15, 50, 2022, 22, 1, 100, 19, 18, 0, 170, "Won a World Cup at 22 as the spider who never stops running.", "cD70puReIYk"],
+["Lautaro Martínez", "Forward", 0, 7, 1, 33, 75, 2022, 25, 1, 85, 12, 11.5, 0, 174, "Won 2022 without scoring; has been making up for it ever since.", "caXG53bi7Wg"],
+["Bukayo Saka", "Forward", 3, 6, 0, 13, 50, 2022, 21, 1, 110, 9, 8.5, 0, 178, "From the Euro penalty to England's most dependable spark.", "RUqxAK6lDqs"],
+["Cole Palmer", "Forward", 0, 0, 0, 7, 18, 2026, 24, 1, 100, 12, 11, 0, 185, "Cold Palmer's first World Cup. Ice, meet summer.", "3CFm0dj96sI"],
+["Lamine Yamal", "Forward", 0, 0, 0, 22, 28, 2026, 18, 1, 200, 43, 38, 0, 180, "The face of 2026: eighteen years old and already maybe the best winger alive.", "lACgOT_5zNU"],
+["Nico Williams", "Forward", 0, 2, 0, 9, 35, 2022, 20, 1, 40, 7, 6.4, 0, 181, "Spain's other wing — the fast half of the most fun double act in the sport.", "qayCf_u6n7o"],
+["Désiré Doué", "Forward", 0, 0, 0, 4, 15, 2026, 21, 1, 120, 5, 4.8, 0, 181, "The Champions League final star arrives at his first World Cup.", "VnxHqt75EUM"],
+["Estêvão", "Forward", 0, 0, 0, 6, 16, 2026, 19, 1, 80, 6, 5, 0, 176, "They call him Messinho. Chelsea paid accordingly. First World Cup at 19.", "vzwZYkh9wuw"],
+["Rafael Leão", "Forward", 2, 5, 0, 6, 40, 2022, 23, 1, 50, 9, 8.6, 0, 188, "Two sub goals in Qatar; auditioning for the lead role this time.", "YSFGkJCinU0"],
+["Jérémy Doku", "Forward", 0, 3, 0, 6, 35, 2022, 20, 1, 75, 3.5, 3.4, 0, 173, "Belgium's new wave, dribbling out of the golden generation's shadow.", "6NKYM42Ektc"],
+["Jonathan David", "Forward", 0, 3, 0, 32, 70, 2022, 22, 1, 30, 1, 1, 0, 180, "Canada's quiet scoring machine, hosting the world this time.", "Wu62qkHS15I"],
+["Santiago Giménez", "Forward", 0, 0, 0, 14, 40, 2026, 25, 1, 18, 3, 2.9, 0, 183, "El Bebote — Mexico's hope for a home-soil statement.", "9x-xjGPCiI8"],
+["Diego Maradona", "Midfielder", 8, 21, 1, 34, 91, 1982, 21, 0, 0, 8, 8, 0, 165, "The Hand of God and the Goal of the Century, four minutes apart.", "kVBFXwIKhug"],
+["Zinedine Zidane", "Midfielder", 5, 12, 1, 31, 108, 1998, 25, 0, 0, 44, 44, 1, 185, "Two headers in one final, one headbutt in another. Range.", "GkWNboVtzho"],
+["Ronaldinho", "Midfielder", 3, 10, 1, 33, 97, 2002, 22, 0, 0, 78, 78, 1, 181, "The free kick over Seaman, and the smile that won everyone.", "ADi1A1dX9wA"],
+["Andrés Iniesta", "Midfielder", 2, 13, 1, 13, 131, 2006, 22, 0, 0, 43, 43, 0, 171, "The 116th-minute goal that ended eighty years of waiting.", "muwJQ6VT2w4"],
+["Xavi", "Midfielder", 0, 16, 1, 13, 133, 2002, 22, 0, 0, 9, 9, 0, 170, "Tiki-taka's metronome; the 2010 midfield ran on Xavi time.", "lgGUd4CCX9o"],
+["Toni Kroos", "Midfielder", 3, 16, 1, 17, 114, 2010, 20, 0, 0, 48, 48, 0, 183, "The 7-1 had his fingerprints on it. Retired undefeated against chaos.", "Fr-PZ1utSBY"],
+["Luka Modrić", "Midfielder", 3, 19, 0, 27, 188, 2006, 20, 1, 4, 39, 37.4, 1, 172, "2018 Golden Ball; still conducting at 40 like time is a rumor.", "atReonbrBbk"],
+["Kevin De Bruyne", "Midfielder", 2, 14, 0, 30, 110, 2014, 22, 1, 8, 26, 25, 0, 181, "The golden generation's last ride, now with wiser legs.", "_fXA3gPTlEQ"],
+["Christian Pulisic", "Midfielder", 1, 4, 0, 35, 82, 2022, 24, 1, 40, 5, 4.6, 0, 177, "Captain America hosts the party this time.", "Afbp9d7qty8"],
+["Weston McKennie", "Midfielder", 0, 4, 0, 12, 62, 2022, 24, 1, 30, 2, 1.9, 0, 185, "The USMNT's chaos midfielder, at home in every sense.", "9LvlzMAhkZI"],
+["Rodri", "Midfielder", 0, 5, 0, 9, 62, 2022, 26, 1, 50, 7, 6.6, 1, 191, "Ballon d'Or holder; Spain's tempo lives in his boots.", "aRqbw98YphE"],
+["Jude Bellingham", "Midfielder", 1, 5, 0, 10, 48, 2022, 19, 1, 130, 41, 40, 0, 186, "Hey Jude at 19 in Qatar. 2026 is the coronation attempt.", "BgbtHAnTozE"],
+["Jamal Musiala", "Midfielder", 0, 4, 0, 10, 42, 2022, 19, 1, 100, 6.5, 6.2, 0, 184, "Bambi on espresso — Germany's joy merchant.", "gNRJrH1AQ6g"],
+["Florian Wirtz", "Midfielder", 0, 0, 0, 8, 35, 2026, 23, 1, 100, 4, 3.8, 0, 177, "Germany's conductor-in-waiting, finally on the big podium.", "CSMj6VIPGE8"],
+["Enzo Fernández", "Midfielder", 1, 7, 1, 7, 48, 2022, 21, 1, 90, 12, 11.5, 0, 178, "Best young player of 2022; runs the show like it owes him money.", "sDQBa591DK8"],
+["Alexis Mac Allister", "Midfielder", 1, 7, 1, 10, 52, 2022, 23, 1, 70, 7, 6.7, 0, 174, "The most trustworthy man in Argentina's engine room.", "kP4RWQHD418"],
+["Federico Valverde", "Midfielder", 0, 4, 0, 10, 72, 2022, 24, 1, 90, 22, 20.5, 0, 182, "The Falcon: two lungs, one howitzer of a right foot.", "Ok0wtAhKIU0"],
+["Phil Foden", "Midfielder", 0, 4, 0, 5, 48, 2022, 22, 1, 70, 14, 13.4, 0, 171, "The Stockport Iniesta still waiting for his tournament.", "8gFTy6OYCG4"],
+["Pedri", "Midfielder", 0, 4, 0, 4, 35, 2022, 19, 1, 150, 22, 20.5, 0, 174, "Plays like the ball owes him a favor and always pays up.", "cgYfkDXiLBU"],
+["Gavi", "Midfielder", 1, 5, 0, 6, 35, 2022, 18, 1, 30, 12, 11, 0, 173, "Scored in a World Cup at 18 — Spain's snarling heartbeat.", "E5uV8Ax12EU"],
+["Warren Zaïre-Emery", "Midfielder", 0, 0, 0, 2, 12, 2026, 20, 1, 80, 2.5, 2.4, 0, 178, "PSG's homegrown engine, World Cup debut at 20.", "LVZajTuWZHE"],
+["Aurélien Tchouaméni", "Midfielder", 1, 6, 0, 5, 45, 2022, 22, 1, 70, 4.5, 4.3, 0, 187, "Scored against England in a quarterfinal and barely celebrated. Business.", "2tnWjmh-VwA"],
+["Bruno Fernandes", "Midfielder", 2, 10, 0, 26, 82, 2018, 23, 1, 35, 15, 14.4, 0, 179, "Portugal's penalty-box telepath.", "DTxLMavV42w"],
+["Takefusa Kubo", "Midfielder", 0, 2, 0, 6, 48, 2022, 21, 1, 20, 4, 3.8, 0, 173, "Japan's jewel — Real Madrid raised him, the Samurai Blue deploy him.", "tKtZSXAWmdE"],
+["Franco Mastantuono", "Midfielder", 0, 0, 0, 2, 10, 2026, 18, 1, 45, 3, 2.2, 0, 178, "Real Madrid paid for the future; Argentina cashes the check now.", "gTBXNdMvfG0"],
+["Martin Ødegaard", "Midfielder", 0, 0, 0, 11, 68, 2026, 27, 1, 65, 9, 8.6, 0, 178, "Twelve years famous, zero World Cups — until now.", "zZjdyKqXTwE"],
+["Cafu", "Defender", 0, 16, 2, 5, 142, 1994, 23, 0, 0, 2, 2, 0, 176, "Played in three consecutive World Cup finals. The only one ever.", "jql4LqAdFWA"],
+["Paolo Maldini", "Defender", 0, 23, 0, 7, 126, 1990, 21, 0, 0, 6, 6, 0, 186, "Twenty-three World Cup matches of pure elegance, zero titles. Cruel sport.", "_vJb-ag2a6s"],
+["Franz Beckenbauer", "Defender", 5, 18, 1, 14, 103, 1966, 20, 0, 0, 0, 0, 2, 181, "Won it as captain, won it as coach, invented a position in between.", "SvczggHIzMU"],
+["Théo Hernandez", "Defender", 1, 6, 0, 2, 42, 2022, 25, 1, 20, 8, 7.7, 0, 184, "Scored in a World Cup semifinal from left back. Normal stuff.", "RyMQi4ox9a4"],
+["William Saliba", "Defender", 0, 2, 0, 0, 30, 2022, 21, 1, 100, 5, 4.8, 0, 192, "France's calmest human; attackers bounce off the serenity.", "m82wkBfqOXI"],
+["Achraf Hakimi", "Defender", 0, 10, 0, 11, 92, 2018, 19, 1, 80, 24, 23, 0, 181, "The 2022 semifinal run's right flank; the panenka against Spain lives forever.", "MEfr6x6OPd4"],
+["Alphonso Davies", "Defender", 1, 3, 0, 16, 60, 2022, 22, 1, 40, 6.5, 6.2, 0, 183, "Scored Canada's first-ever World Cup goal. Now he's hosting.", "eL6-vT2ikOo"],
+["Pau Cubarsí", "Defender", 0, 0, 0, 1, 16, 2026, 19, 1, 80, 4, 3.2, 0, 184, "Reads the game like a thirty-year-old. Is nineteen.", "iVQIVNaIdW4"],
+["Lev Yashin", "Goalkeeper", 0, 12, 0, 0, 74, 1958, 28, 0, 0, 0, 0, 1, 189, "The Black Spider — still the only goalkeeper to win the Ballon d'Or.", "YCR3mAbXao8"],
+["Gianluigi Buffon", "Goalkeeper", 0, 17, 1, 0, 176, 1998, 20, 0, 0, 11, 11, 0, 192, "2006: five clean sheets and a wall where the goal used to be.", "7Y03hAXQ-Oc"],
+["Manuel Neuer", "Goalkeeper", 0, 18, 1, 0, 124, 2010, 24, 0, 2, 14, 14, 0, 193, "The sweeper-keeper blueprint; redefined where a goalkeeper ends.", "pbsNA_6b8tM"],
+["Emiliano Martínez", "Goalkeeper", 0, 7, 1, 0, 52, 2022, 30, 1, 12, 14, 13.4, 0, 195, "The dark arts in gloves; 2022's decisive paw.", "eV52-Sotw90"],
+["Alisson", "Goalkeeper", 0, 9, 0, 0, 70, 2018, 25, 1, 15, 9, 8.6, 0, 193, "Brazil's calm in goal — order behind the jogo bonito.", "_rB71BAE0p4"],
+["Thibaut Courtois", "Goalkeeper", 0, 14, 0, 0, 102, 2014, 22, 1, 15, 17, 16.3, 0, 200, "Best keeper of 2018; two meters of bad news for strikers.", "g3hqudgOguU"],
+["Ousmane Dembélé", "Forward", 1, 8, 1, 6, 55, 2018, 21, 1, 90, 14, 13.5, 1, 178, "PSG's treble talisman — no longer the wildcard, finally the headline.", ""],
+["Michael Olise", "Forward", 0, 0, 0, 5, 18, 2026, 24, 1, 110, 4, 3.2, 0, 184, "Bayern's creator handed France's right wing on his World Cup debut.", ""],
+["Mohamed Salah", "Forward", 2, 3, 0, 60, 105, 2018, 26, 1, 45, 65.4, 64, 0, 175, "The Egyptian King's first World Cup since 2018 — 65 million followers want a coronation.", ""],
+["Raphinha", "Forward", 0, 4, 0, 14, 45, 2022, 25, 1, 100, 18, 16.5, 0, 176, "Barcelona's relentless winger, finally Brazil's main man up top.", ""],
+["Alexander Isak", "Forward", 0, 0, 0, 16, 50, 2026, 26, 1, 120, 5, 4.5, 0, 192, "Sweden's silk-and-steel striker, a World Cup debut after a record move.", ""],
+["Luis Díaz", "Forward", 0, 0, 0, 20, 60, 2026, 29, 1, 80, 9, 8.5, 0, 180, "Colombia's live wire — Lucho brings the carnival to North America.", ""],
+["Marcus Thuram", "Forward", 0, 3, 0, 6, 30, 2022, 25, 1, 70, 3, 2.8, 0, 192, "Inter's wrecking ball, carrying the Thuram name into a new generation.", ""],
+["Rayan Cherki", "Forward", 0, 0, 0, 3, 8, 2026, 22, 1, 90, 4, 2.5, 0, 176, "City's trickster, France's newest magician — first World Cup at 22.", ""],
+["Antoine Semenyo", "Forward", 0, 0, 0, 8, 30, 2026, 26, 1, 70, 1.5, 0.8, 0, 177, "Bournemouth's bulldozer — Ghana's breakout hope for a deep run.", ""],
+["Viktor Gyökeres", "Forward", 0, 0, 0, 14, 30, 2026, 28, 1, 75, 3, 2.5, 0, 189, "The goal machine who terrorized Europe, now on the world's biggest stage.", ""],
+["Kai Havertz", "Forward", 0, 0, 0, 18, 50, 2022, 23, 1, 70, 7, 6.5, 0, 193, "Germany's elegant nine — the man for the big-final moment.", ""],
+["Cody Gakpo", "Forward", 3, 5, 0, 12, 40, 2022, 23, 1, 75, 6, 5.5, 0, 189, "Three goals in Qatar; Liverpool's Dutchman wants more.", ""],
+["Gabriel Martinelli", "Forward", 0, 3, 0, 5, 30, 2022, 21, 1, 60, 9, 8.5, 0, 178, "Arsenal's blur of pace, Brazil's super-sub turned starter.", ""],
+["Gonçalo Ramos", "Forward", 3, 4, 0, 9, 30, 2022, 21, 1, 65, 5, 4.5, 0, 185, "Hat-trick off the bench in Qatar; the man who benched Ronaldo, briefly.", ""],
+["Raúl Jiménez", "Forward", 1, 7, 0, 40, 100, 2018, 27, 1, 12, 5, 4.8, 0, 190, "Mexico's veteran spear, leading the line on home-ish soil.", ""],
+["Kenan Yıldız", "Forward", 0, 0, 0, 6, 20, 2026, 21, 1, 90, 6, 4.5, 0, 185, "Juventus's number ten — Türkiye's first World Cup since 2002 has a face.", ""],
+["Kaoru Mitoma", "Forward", 0, 4, 0, 8, 35, 2022, 25, 1, 50, 4, 3.5, 0, 178, "Japan's dribble-physics PhD — the millimetre cross of 2022 was just the start.", ""],
+["Sadio Mané", "Forward", 0, 3, 0, 45, 110, 2018, 26, 1, 20, 14, 13.5, 0, 175, "Senegal's talisman, chasing the run his country's golden age deserves.", ""],
+["Endrick", "Forward", 0, 0, 0, 4, 12, 2026, 19, 1, 70, 12, 10.5, 0, 173, "Real Madrid's teen jewel — already a viral sensation before his first World Cup kick.", ""],
+["Julián Quiñones", "Forward", 0, 0, 0, 6, 18, 2026, 28, 1, 15, 1.4, 1, 0, 178, "Scored against South Africa and gained 376,000 followers overnight — host-nation folklore in real time.", ""],
+["Yan Diomande", "Forward", 0, 0, 0, 2, 6, 2026, 19, 1, 40, 0.9, 0.3, 0, 175, "Leipzig's teenage flyer — a wonderkid whose following tripled the week the world tuned in.", ""],
+["Vitinha", "Midfielder", 0, 2, 0, 4, 30, 2022, 22, 1, 90, 5, 4.5, 0, 172, "PSG's metronome — the quiet engine of a Champions League machine.", ""],
+["Bruno Guimarães", "Midfielder", 0, 3, 0, 4, 40, 2022, 24, 1, 80, 6, 5.5, 0, 182, "Newcastle's heartbeat, Brazil's tackle-and-pass midfield general.", ""],
+["João Neves", "Midfielder", 0, 0, 0, 2, 18, 2026, 21, 1, 110, 4, 3, 0, 174, "PSG's all-action 21-year-old — Portugal's future arriving early.", ""],
+["Moisés Caicedo", "Midfielder", 0, 3, 0, 4, 45, 2022, 20, 1, 100, 4, 3.5, 0, 178, "Chelsea's £115M destroyer — Ecuador's shield and spine.", ""],
+["Declan Rice", "Midfielder", 0, 5, 0, 6, 60, 2022, 23, 1, 110, 9, 8.5, 0, 188, "Arsenal's set-piece superweapon and England's unbudgeable base.", ""],
+["Joshua Kimmich", "Midfielder", 0, 9, 0, 8, 100, 2018, 23, 1, 50, 6, 5.5, 0, 177, "Germany's Swiss-army captain — right back, six, whatever the team needs.", ""],
+["Casemiro", "Midfielder", 1, 12, 0, 9, 75, 2018, 26, 1, 15, 30, 29, 0, 185, "The shield in front of Brazil's defence — still breaking up attacks at 34.", ""],
+["Bernardo Silva", "Midfielder", 0, 10, 0, 12, 95, 2018, 23, 1, 50, 12, 11.5, 0, 173, "City's silk — does the work of three and makes it look like a stroll.", ""],
+["Frenkie de Jong", "Midfielder", 0, 5, 0, 3, 60, 2022, 25, 1, 70, 9, 8.5, 0, 180, "Barcelona's glide-past-everyone midfielder, finally fit for a tournament.", ""],
+["Martín Zubimendi", "Midfielder", 0, 0, 0, 2, 20, 2026, 27, 1, 70, 2, 1.6, 0, 181, "Arsenal's positional metronome — the unglamorous reason Spain hum.", ""],
+["Tijjani Reijnders", "Midfielder", 0, 0, 0, 4, 25, 2026, 27, 1, 70, 3, 2.5, 0, 185, "City's box-to-box surge, the Netherlands' new midfield engine.", ""],
+["N'Golo Kanté", "Midfielder", 0, 7, 1, 2, 60, 2018, 27, 1, 20, 11, 10.8, 0, 168, "Won the world in 2018, vanished into space to win the ball back. Back again.", ""],
+["Scott McTominay", "Midfielder", 0, 0, 0, 12, 60, 2026, 29, 1, 45, 3, 2.3, 0, 193, "Napoli's Scudetto hero dragging Scotland to a rare World Cup.", ""],
+["Mikel Merino", "Midfielder", 0, 0, 0, 5, 30, 2026, 30, 1, 50, 1.5, 1.2, 0, 188, "Arsenal's emergency-striker-turned-Spain's-midfield Swiss army knife.", ""],
+["Arda Güler", "Midfielder", 0, 0, 0, 6, 25, 2026, 21, 1, 90, 7, 5, 0, 176, "Real Madrid's left foot from another century — Türkiye's golden boy.", ""],
+["Fermín López", "Midfielder", 0, 0, 0, 4, 15, 2026, 23, 1, 70, 3, 2.2, 0, 179, "Barcelona's big-game midfielder — arrives whenever the lights are brightest.", ""],
+["Virgil van Dijk", "Defender", 0, 5, 0, 9, 80, 2022, 31, 1, 30, 14, 13.5, 0, 195, "The Netherlands' colossus and captain — calm is a tactic.", ""],
+["Marquinhos", "Defender", 0, 11, 0, 7, 90, 2018, 24, 1, 30, 9, 8.5, 0, 183, "Brazil's defensive anchor across three World Cups, chasing the missing star.", ""],
+["Gabriel Magalhães", "Defender", 0, 0, 0, 3, 30, 2026, 28, 1, 75, 5, 4.2, 0, 190, "Arsenal's set-piece cheat code — Brazil's new wall.", ""],
+["Joško Gvardiol", "Defender", 0, 7, 0, 4, 40, 2022, 20, 1, 90, 6, 5.5, 0, 185, "City's ball-playing tank — the best left-sided defender of his generation.", ""],
+["Jules Koundé", "Defender", 0, 6, 1, 1, 40, 2022, 23, 1, 60, 6, 5.5, 0, 178, "Barcelona's right back with a centre back's steel and a stylist's wardrobe.", ""],
+["Nuno Mendes", "Defender", 0, 3, 0, 1, 30, 2022, 20, 1, 80, 4, 3.5, 0, 177, "PSG's afterburner left back — locked up the best wingers in Europe.", ""],
+["Rúben Dias", "Defender", 0, 5, 0, 2, 60, 2022, 25, 1, 75, 7, 6.5, 0, 187, "City's organizer-in-chief — Portugal's back line runs on his voice.", ""],
+["Antonio Rüdiger", "Defender", 0, 8, 0, 4, 75, 2018, 25, 1, 35, 9, 8.5, 0, 190, "Real Madrid's chaos enforcer — strikers leave with a story and a bruise.", ""],
+["Denzel Dumfries", "Defender", 0, 5, 0, 8, 55, 2022, 26, 1, 45, 3, 2.7, 0, 188, "Inter's runaway-train wing back — Oranje's relentless right flank.", ""],
+["Marc Cucurella", "Defender", 0, 0, 0, 1, 25, 2026, 27, 1, 55, 3, 2.5, 0, 172, "Chelsea's curly-haired menace — Spain's combative left side.", ""],
+["Willian Pacho", "Defender", 0, 0, 0, 2, 35, 2026, 24, 1, 70, 1.5, 1, 0, 188, "PSG's unbeaten-season rock — Ecuador's quietly elite centre back.", ""],
+["João Cancelo", "Defender", 0, 3, 0, 10, 55, 2022, 28, 1, 35, 8, 7.5, 0, 182, "A full back on both flanks and a playmaker on neither — Portugal's luxury.", ""],
+["Kim Min-jae", "Defender", 0, 4, 0, 4, 65, 2022, 25, 1, 45, 4, 3.5, 0, 190, "The Monster — Bayern's centre back anchoring Korea's back line.", ""],
+["Lisandro Martínez", "Defender", 0, 6, 1, 1, 35, 2022, 24, 1, 45, 6, 5.5, 0, 175, "The Butcher — 175cm of pure refusal, a World Cup winner who fears no striker.", ""],
+["Mike Maignan", "Goalkeeper", 0, 0, 0, 0, 30, 2026, 30, 1, 35, 4, 3.5, 0, 191, "Milan's commanding keeper — France's post-Lloris last line.", ""],
+["Vozinha", "Goalkeeper", 0, 0, 0, 0, 40, 2026, 33, 1, 1, 6.8, 0.03, 0, 190, "Cape Verde's first-ever World Cup keeper — 31,000 followers to nearly 7 million in a week. The tournament's biggest social-media earthquake.", ""],
+["Unai Simón", "Goalkeeper", 0, 4, 0, 0, 45, 2022, 25, 1, 25, 2, 1.7, 0, 190, "Spain's ball-playing keeper — sweeper of the tiki-taka revival.", ""],
+["Yann Sommer", "Goalkeeper", 0, 4, 0, 0, 95, 2018, 29, 1, 8, 2, 1.8, 0, 183, "Inter's unbeatable wall — Switzerland's evergreen number one.", ""]
+];
+
+// current club (2025–26 season); legends marked with their iconic side
+const CLUBS = {
+  "Pelé": "Santos (legend)", "Ronaldo Nazário": "Real Madrid (legend)", "Miroslav Klose": "Lazio (retired)",
+  "Gerd Müller": "Bayern Munich (legend)", "Just Fontaine": "Reims (legend)", "Thomas Müller": "Vancouver Whitecaps",
+  "Lionel Messi": "Inter Miami", "Cristiano Ronaldo": "Al Nassr", "Kylian Mbappé": "Real Madrid",
+  "Neymar": "Santos", "Harry Kane": "Bayern Munich", "Luis Suárez": "Inter Miami",
+  "Erling Haaland": "Manchester City", "Son Heung-min": "LAFC", "Vinícius Júnior": "Real Madrid",
+  "Julián Álvarez": "Atlético Madrid", "Lautaro Martínez": "Inter", "Bukayo Saka": "Arsenal",
+  "Cole Palmer": "Chelsea", "Lamine Yamal": "Barcelona", "Nico Williams": "Athletic Club",
+  "Désiré Doué": "Paris Saint-Germain", "Estêvão": "Chelsea", "Rafael Leão": "AC Milan",
+  "Jérémy Doku": "Manchester City", "Jonathan David": "Juventus", "Santiago Giménez": "AC Milan",
+  "Diego Maradona": "Napoli (legend)", "Zinedine Zidane": "Real Madrid (legend)", "Ronaldinho": "Barcelona (legend)",
+  "Andrés Iniesta": "Barcelona (retired)", "Xavi": "Barcelona (legend)", "Toni Kroos": "Real Madrid (retired)",
+  "Luka Modrić": "AC Milan", "Kevin De Bruyne": "Napoli", "Christian Pulisic": "AC Milan",
+  "Weston McKennie": "Juventus", "Rodri": "Manchester City", "Jude Bellingham": "Real Madrid",
+  "Jamal Musiala": "Bayern Munich", "Florian Wirtz": "Liverpool", "Enzo Fernández": "Chelsea",
+  "Alexis Mac Allister": "Liverpool", "Federico Valverde": "Real Madrid", "Phil Foden": "Manchester City",
+  "Pedri": "Barcelona", "Gavi": "Barcelona", "Warren Zaïre-Emery": "Paris Saint-Germain",
+  "Aurélien Tchouaméni": "Real Madrid", "Bruno Fernandes": "Manchester United", "Takefusa Kubo": "Real Sociedad",
+  "Franco Mastantuono": "Real Madrid", "Martin Ødegaard": "Arsenal", "Cafu": "AC Milan (legend)",
+  "Paolo Maldini": "AC Milan (legend)", "Franz Beckenbauer": "Bayern Munich (legend)", "Théo Hernandez": "Al-Hilal",
+  "William Saliba": "Arsenal", "Achraf Hakimi": "Paris Saint-Germain", "Alphonso Davies": "Bayern Munich",
+  "Pau Cubarsí": "Barcelona", "Lev Yashin": "Dynamo Moscow (legend)", "Gianluigi Buffon": "Juventus (retired)",
+  "Manuel Neuer": "Bayern Munich", "Emiliano Martínez": "Aston Villa", "Alisson": "Liverpool",
+  "Thibaut Courtois": "Real Madrid", "Ousmane Dembélé": "Paris Saint-Germain", "Michael Olise": "Bayern Munich",
+  "Mohamed Salah": "Liverpool", "Raphinha": "Barcelona", "Alexander Isak": "Liverpool",
+  "Luis Díaz": "Bayern Munich", "Marcus Thuram": "Inter", "Rayan Cherki": "Manchester City",
+  "Antoine Semenyo": "Bournemouth", "Viktor Gyökeres": "Arsenal", "Kai Havertz": "Arsenal",
+  "Cody Gakpo": "Liverpool", "Gabriel Martinelli": "Arsenal", "Gonçalo Ramos": "Paris Saint-Germain",
+  "Raúl Jiménez": "Fulham", "Kenan Yıldız": "Juventus", "Kaoru Mitoma": "Brighton",
+  "Sadio Mané": "Al Nassr", "Endrick": "Real Madrid", "Julián Quiñones": "Al-Qadsiah",
+  "Yan Diomande": "RB Leipzig", "Vitinha": "Paris Saint-Germain", "Bruno Guimarães": "Newcastle United",
+  "João Neves": "Paris Saint-Germain", "Moisés Caicedo": "Chelsea", "Declan Rice": "Arsenal",
+  "Joshua Kimmich": "Bayern Munich", "Casemiro": "Manchester United", "Bernardo Silva": "Manchester City",
+  "Frenkie de Jong": "Barcelona", "Martín Zubimendi": "Arsenal", "Tijjani Reijnders": "Manchester City",
+  "N'Golo Kanté": "Al-Ittihad", "Scott McTominay": "Napoli", "Mikel Merino": "Arsenal",
+  "Arda Güler": "Real Madrid", "Fermín López": "Barcelona", "Virgil van Dijk": "Liverpool",
+  "Marquinhos": "Paris Saint-Germain", "Gabriel Magalhães": "Arsenal", "Joško Gvardiol": "Manchester City",
+  "Jules Koundé": "Barcelona", "Nuno Mendes": "Paris Saint-Germain", "Rúben Dias": "Manchester City",
+  "Antonio Rüdiger": "Real Madrid", "Denzel Dumfries": "Inter", "Marc Cucurella": "Chelsea",
+  "Willian Pacho": "Paris Saint-Germain", "João Cancelo": "Al-Hilal", "Kim Min-jae": "Bayern Munich",
+  "Lisandro Martínez": "Manchester United", "Mike Maignan": "AC Milan", "Vozinha": "Cape Verde NT",
+  "Unai Simón": "Athletic Club", "Yann Sommer": "Inter",
+};
+// current age = age at first World Cup + years since; legends no longer with us show birth–death
+const DECEASED = {
+  "Pelé": "1940–2022", "Diego Maradona": "1960–2020", "Just Fontaine": "1933–2023",
+  "Gerd Müller": "1945–2021", "Franz Beckenbauer": "1945–2024", "Lev Yashin": "1929–1990",
+};
+const ageOf = s => DECEASED[s.title] ? "✝ " + DECEASED[s.title] : "🎂 " + (s.agefV + (2026 - s.firstWC)) + " yrs";
+
+// ---------------- state ----------------
+let metricX = METRICS[0]; // Insta Boom
+let metricY = METRICS[1]; // Insta Followers
+const off = new Set();
+const stage = document.getElementById("stage");
+const tip = document.getElementById("tip");
+const TOUCH = matchMedia("(hover: none), (pointer: coarse)").matches;
+
+const songs = SONGS.map((p, i) => ({
+  title: p[0], album: p[1], wcgV: p[2], wcmV: p[3], titlesV: p[4], intlV: p[5], capsV: p[6],
+  firstWC: p[7], agefV: p[8], now: p[9], priceV: p[10], instaV: p[11], instaBeforeV: p[12],
+  ballonV: p[13], htV: p[14], note: p[15], yt: p[16],
+  gpmV: p[3] ? p[2] / p[3] : 0,
+  // Instagram growth since kickoff (before → today), as a percentage
+  boomV: p[12] > 0 ? (p[11] - p[12]) / p[12] * 100 : 0, id: i
+}));
+const fmtInsta = v => v >= 1 ? (Math.round(v * 10) / 10) + "M" : Math.round(v * 1000) + "K";
+// compact number formatter for axis ticks (followers / € millions): 665, 25, 4.1, 0.4
+const fmtNum = v => v >= 10 ? Math.round(v) : v >= 1 ? Math.round(v * 10) / 10 : Math.round(v * 100) / 100;
+// each metric normalized to 0–100 for plotting; log-scaled where the spread is exponential.
+// raw bounds are stashed on the metric so valueAt() can print real numbers on the axes.
+const Lg = x => Math.log10(1 + Math.max(0, x));
+METRICS.forEach(m => {
+  const vs = songs.map(m.raw);
+  m._lo = Math.min(...vs); m._hi = Math.max(...vs);
+  const lo = m.log ? Lg(m._lo) : m._lo, hi = m.log ? Lg(m._hi) : m._hi, span = (hi - lo) || 1;
+  songs.forEach(s => { const t = m.log ? Lg(m.raw(s)) : m.raw(s); s[m.k] = Math.round((t - lo) / span * 100); });
+});
+// real metric value at a normalized axis position (0–100) — inverts the scale for tick labels
+const valueAt = (m, t) => {
+  const lo = m.log ? Lg(m._lo) : m._lo, hi = m.log ? Lg(m._hi) : m._hi;
+  const y = lo + (t / 100) * (hi - lo);
+  return m.log ? Math.pow(10, y) - 1 : y;
+};
+const disp = (s, m) =>
+  m.k === "wcg" ? s.wcgV + (s.wcgV === 1 ? " goal" : " goals") : m.k === "wcm" ? s.wcmV + " matches" :
+  m.k === "gpm" ? (s.wcmV ? s.gpmV.toFixed(2) + "/match" : "—") :
+  m.k === "titles" ? (s.titlesV ? "⭐".repeat(s.titlesV) : "0 titles") :
+  m.k === "intl" ? s.intlV + " goals" : m.k === "caps" ? s.capsV + " caps" :
+  m.k === "rel" ? s.firstWC : m.k === "agef" ? s.agefV + " yrs" :
+  m.k === "price" ? (s.priceV ? "€" + s.priceV + "M" : "—") :
+  m.k === "insta" ? fmtInsta(s.instaV) :
+  m.k === "boom" ? (s.boomV ? "+" + Math.round(s.boomV).toLocaleString() + "%" : "—") :
+  m.k === "ballon" ? (s.ballonV ? "🏆".repeat(s.ballonV) : "0") :
+  m.k === "height" ? s.htV + " cm" : s[m.k];
+
+// ---------------- build UI ----------------
+function soloAlbum(name) {
+  const isSolo = !off.has(name) && off.size === Object.keys(ALBUMS).length - 1;
+  off.clear();
+  if (!isSolo) Object.keys(ALBUMS).forEach(n => { if (n !== name) off.add(n); });
+  render(false);
+}
+
+const coversEl = document.getElementById("covers");
+Object.keys(ALBUMS).forEach(name => {
+  const b = document.createElement("button");
+  b.className = "pos-chip";
+  b.textContent = name;
+  b.title = ALBUMS[name].y;
+  b.style.borderColor = ALBUMS[name].c;
+  b.style.color = ALBUMS[name].c;
+  b.dataset.album = name;
+  b.onclick = () => soloAlbum(name);
+  coversEl.appendChild(b);
+});
+
+const metricsXEl = document.getElementById("metricsX");
+const metricsYEl = document.getElementById("metricsY");
+function buildPills(el, axis) {
+  METRICS.forEach(m => {
+    const b = document.createElement("button");
+    b.className = "pill"; b.textContent = m.label;
+    b.dataset.k = m.k;
+    b.onclick = () => {
+      // picking the metric already on the other axis swaps them
+      if (axis === "x") { if (m.k === metricY.k) metricY = metricX; metricX = m; }
+      else { if (m.k === metricX.k) metricX = metricY; metricY = m; }
+      render();
+    };
+    el.appendChild(b);
+  });
+}
+buildPills(metricsXEl, "x");
+buildPills(metricsYEl, "y");
+
+// gridlines (both directions), Y-axis end labels, corner annotations
+for (let v = 0; v <= 100; v += 25) {
+  for (const [cls, tick] of [["gridline", "gridtick"], ["gridlineH", "gridtickY"]]) {
+    const g = document.createElement("div");
+    g.className = cls; g.dataset.v = v;
+    stage.appendChild(g);
+    const t = document.createElement("div");
+    t.className = tick; t.dataset.v = v; t.textContent = v;
+    stage.appendChild(t);
+  }
+}
+const yLabHi = document.createElement("div"); yLabHi.className = "ylab hi"; stage.appendChild(yLabHi);
+const yLabLo = document.createElement("div"); yLabLo.className = "ylab lo"; stage.appendChild(yLabLo);
+const yBlurb = document.createElement("div"); yBlurb.className = "yblurb"; stage.appendChild(yBlurb);
+const xBlurb = document.getElementById("xBlurb");
+const corners = ["tl", "tr", "bl", "br"].map(k => {
+  const c = document.createElement("div");
+  c.className = "corner " + k;
+  stage.appendChild(c);
+  return c;
+});
+
+// dots — each wears its album cover, ringed in era color
+const dotEls = songs.map(s => {
+  const d = document.createElement("div");
+  const a = ALBUMS[s.album];
+  d.className = "dot";
+  d.style.backgroundColor = a.c;
+  if (FACES[s.title]) { d.style.backgroundImage = `url(${FACES[s.title]})`; d.classList.add("face"); }
+  else if (ART[s.album]) d.style.backgroundImage = `url(${ART[s.album]})`;
+  d.style.border = `1.5px solid ${a.c}`;
+  d.style.boxShadow = `0 0 8px ${a.c}55`;
+  d.onmouseenter = () => showTip(d, s);
+  d.onmouseleave = scheduleHideTip;
+  d.onclick = () => TOUCH ? showTip(d, s) : window.open(s.yt ? "https://www.youtube.com/watch?v=" + s.yt : "https://www.youtube.com/results?search_query=" + encodeURIComponent(s.title + " football highlights"), "_blank");
+  stage.appendChild(d);
+  return d;
+});
+
+// labels for extremes
+const labelPool = Array.from({length: 6}, () => {
+  const l = document.createElement("div");
+  l.className = "dot-label";
+  stage.appendChild(l);
+  return l;
+});
+
+
+let tipTimer = null;
+function hideTip() { tip.style.opacity = 0; tip.style.pointerEvents = "none"; }
+function scheduleHideTip() { tipTimer = setTimeout(hideTip, 250); }
+tip.onmouseenter = () => clearTimeout(tipTimer);
+tip.onmouseleave = hideTip;
+
+function showTip(el, s) {
+  clearTimeout(tipTimer);
+  const a = ALBUMS[s.album];
+  const cover = FACES[s.title] ? `<img class="t-cover" src="${FACES[s.title]}" style="object-fit:contain;background:#ffffff14">` : ART[s.album] ? `<img class="t-cover" src="${ART[s.album]}">` : "";
+  tip.innerHTML = `
+    <div class="t-head">${cover}
+      <div>
+        <div class="t-title">${s.title}</div>
+        <div class="t-album" style="color:${a.c}">${s.album} · ${s.now ? "⭐ at the 2026 World Cup" : a.y}</div>
+        <div class="t-club">🏟️ ${CLUBS[s.title] || "—"} &nbsp;·&nbsp; ${ageOf(s)}</div>
+      </div>
+    </div>
+    <div class="t-metric">→ ${metricX.label}: <span class="t-score">${disp(s, metricX)}</span> &nbsp;·&nbsp; ↑ ${metricY.label}: <span class="t-score">${disp(s, metricY)}</span></div>
+    <div class="t-note">${s.note}</div>
+    ${s.now ? `<div class="t-metric">📸 Insta: ${fmtInsta(s.instaBeforeV)} <span style="opacity:.6">before WC</span> → ${fmtInsta(s.instaV)} <span style="opacity:.6">today</span> &nbsp;<span class="t-score">${s.boomV ? "+" + Math.round(s.boomV).toLocaleString() + "%" : "±0%"}</span></div>` : ""}
+    <div class="t-actions">
+      <a class="t-play yt" href="${s.yt ? "https://www.youtube.com/watch?v=" + s.yt : "https://www.youtube.com/results?search_query=" + encodeURIComponent(s.title + " football highlights")}" target="_blank">▶ Highlights</a>
+      <a class="t-play bref" href="https://fbref.com/en/search/search.fcgi?search=${encodeURIComponent(s.title)}" target="_blank">📊 Career stats</a>
+    </div>`;
+  tip.style.opacity = 1;
+  tip.style.pointerEvents = "auto";
+  const r = el.getBoundingClientRect(), tw = tip.offsetWidth, th = tip.offsetHeight, pad = 10;
+  let x = r.right + pad;
+  if (x + tw > innerWidth - 8) x = r.left - tw - pad;
+  tip.style.left = Math.max(8, x) + "px";
+  tip.style.top = Math.max(8, Math.min(r.top - 8, innerHeight - th - 8)) + "px";
+}
+
+// ---------------- layout & render ----------------
+function layout() {
+  const W = stage.clientWidth, H = stage.clientHeight;
+  const mobile = matchMedia("(max-width: 700px)").matches;
+  const padL = mobile ? 52 : 80, padR = mobile ? 14 : 20, padT = 26, padB = 30;
+  const xOf = v => padL + (v / 100) * (W - padL - padR);
+  const yOf = v => H - padB - (v / 100) * (H - padT - padB);
+
+  stage.querySelectorAll(".gridline").forEach(g => g.style.left = xOf(+g.dataset.v) + "px");
+  stage.querySelectorAll(".gridtick").forEach(t => t.style.left = xOf(+t.dataset.v) + "px");
+  stage.querySelectorAll(".gridlineH").forEach(g => g.style.top = yOf(+g.dataset.v) + "px");
+  stage.querySelectorAll(".gridtickY").forEach(t => t.style.top = yOf(+t.dataset.v) + "px");
+
+  // exact ties fan out on a small golden-angle spiral so stacks stay readable
+  const seen = new Map();
+  return songs.map(s => {
+    const key = s[metricX.k] + "," + s[metricY.k];
+    const n = seen.get(key) || 0;
+    seen.set(key, n + 1);
+    const rad = n ? 6 * Math.sqrt(n) : 0, ang = n * 2.39996;
+    return { x: xOf(s[metricX.k]) + rad * Math.cos(ang), y: yOf(s[metricY.k]) + rad * Math.sin(ang) };
+  });
+}
+
+function render(relayout = true) {
+  metricsXEl.querySelectorAll(".pill").forEach(p => p.classList.toggle("active", p.dataset.k === metricX.k));
+  metricsYEl.querySelectorAll(".pill").forEach(p => p.classList.toggle("activeY", p.dataset.k === metricY.k));
+  xBlurb.textContent = metricX.blurb;
+  yBlurb.textContent = metricY.blurb;
+  document.getElementById("xLoLab").textContent = metricX.lo;
+  document.getElementById("xHiLab").textContent = metricX.hi;
+  // counter-rotate the leading emoji so it stays upright in vertical text
+  const upright = t => { const i = t.indexOf(" "); return `<span class="up">${t.slice(0, i)}</span>${t.slice(i)}`; };
+  yLabHi.innerHTML = upright(metricY.hi);
+  yLabLo.innerHTML = upright(metricY.lo);
+  corners[0].textContent = metricX.lo + " · " + metricY.hi;
+  corners[1].textContent = metricX.hi + " · " + metricY.hi;
+  corners[2].textContent = metricX.lo + " · " + metricY.lo;
+  corners[3].textContent = metricX.hi + " · " + metricY.lo;
+  coversEl.querySelectorAll("[data-album]").forEach(c =>
+    c.classList.toggle("solo", !off.has(c.dataset.album) && off.size === Object.keys(ALBUMS).length - 1));
+
+  // number the axes with the real metric value at each gridline (log-aware)
+  stage.querySelectorAll(".gridtick").forEach(t => t.textContent = metricX.fmt(valueAt(metricX, +t.dataset.v)));
+  stage.querySelectorAll(".gridtickY").forEach(t => t.textContent = metricY.fmt(valueAt(metricY, +t.dataset.v)));
+
+  const pos = layout();
+  songs.forEach((s, i) => {
+    dotEls[i].style.left = pos[i].x + "px";
+    dotEls[i].style.top = pos[i].y + "px";
+    dotEls[i].classList.toggle("dim", off.has(s.album));
+  });
+
+  // label the extremes: ends of each axis plus the two diagonals
+  const vis = songs.filter(s => !off.has(s.album));
+  const pick = fn => vis.length ? vis.reduce((a, b) => fn(b) > fn(a) ? b : a) : null;
+  const tagged = [...new Set([
+    pick(s => s[metricX.k]), pick(s => -s[metricX.k]),
+    pick(s => s[metricY.k]), pick(s => -s[metricY.k]),
+    pick(s => s[metricX.k] + s[metricY.k]), pick(s => -s[metricX.k] - s[metricY.k]),
+  ].filter(Boolean))];
+  labelPool.forEach((l, i) => {
+    const s = tagged[i];
+    if (!s) { l.style.opacity = 0; return; }
+    l.textContent = s.title;
+    l.style.left = pos[s.id].x + "px";
+    l.style.top = pos[s.id].y + "px";
+    l.style.opacity = 1;
+  });
+
+  fillSide(vis);
+}
+
+function fillSide(vis) {
+  const block = (m, arrow, cls) => {
+    const top = [...vis].sort((a, b) => b[m.k] - a[m.k]).slice(0, 7);
+    return `<div><div class="sb-cap ${cls}">${arrow} ${m.label} <span>· top 7</span></div>` +
+      top.map(s => {
+        const a = ALBUMS[s.album];
+        const cv = ART[s.album] ? `<img src="${ART[s.album]}">` : `<span class="sb-dot" style="background:${a.c}"></span>`;
+        return `<div class="sb-row" title="${s.title} (${s.album})">${cv}<span class="sb-nm">${s.title}</span><span class="sb-v">${disp(s, m)}</span></div>`;
+      }).join("") + `</div>`;
+  };
+  document.getElementById("sideBoards").innerHTML = block(metricY, "↑", "y") + block(metricX, "→", "x");
+}
+
+// ---------------- tabs ----------------
+document.querySelectorAll(".tab").forEach(t => {
+  t.onclick = () => {
+    document.querySelectorAll(".tab").forEach(x => x.classList.toggle("active", x === t));
+    document.getElementById("page-spectrum").classList.toggle("hidden", t.dataset.page !== "spectrum");
+    document.getElementById("page-aura").classList.toggle("hidden", t.dataset.page !== "aura");
+    if (t.dataset.page === "spectrum") render(false); // re-measure after being hidden
+  };
+});
+
+// ---------------- aura quiz ----------------
+const THEMES = [
+  { name: "Poacher",              emoji: "🥅", color: "#ff6b6b", v: s => s.gpm },
+  { name: "Tournament Mile-Eater",emoji: "🗺️", color: "#5dade2", v: s => s.wcm },
+  { name: "Star Collector",       emoji: "⭐", color: "#e8b647", v: s => s.titles },
+  { name: "National Treasure",    emoji: "🎖️", color: "#90d4a0", v: s => s.caps },
+  { name: "Goal Machine",         emoji: "🤖", color: "#c97a3d", v: s => s.intl },
+  { name: "Prodigy",              emoji: "🐣", color: "#ffd166", v: s => 100 - s.agef },
+  { name: "Sepia Romantic",       emoji: "📻", color: "#9aa0a6", v: s => 100 - s.rel },
+  { name: "New Wave",             emoji: "🌊", color: "#3fb8af", v: s => s.rel },
+];
+const picks = [];
+const searchEl = document.getElementById("songSearch");
+const suggestEl = document.getElementById("suggest");
+const chipsEl = document.getElementById("chips");
+const auraBtn = document.getElementById("auraBtn");
+
+function refreshSuggest() {
+  const q = searchEl.value.trim().toLowerCase();
+  if (picks.length >= 5) { suggestEl.style.display = "none"; return; }
+  const hits = q
+    ? songs.filter(s => !picks.includes(s) &&
+        (s.title.toLowerCase().includes(q) || s.album.toLowerCase().includes(q)))
+    : [...songs].filter(s => !picks.includes(s)).sort((a, b) => b.capsV - a.capsV).slice(0, 5);
+  suggestEl.style.display = hits.length ? "block" : "none";
+  suggestEl.innerHTML = hits.map(s => {
+    const a = ALBUMS[s.album];
+    const cv = ART[s.album] ? `<img src="${ART[s.album]}">` : `<span class="cv-fallback" style="background:${a.c}"></span>`;
+    return `<div class="sg" data-id="${s.id}">${cv}<span>${s.title}</span><span class="sg-al" style="color:${a.c}">${s.album}</span></div>`;
+  }).join("");
+  suggestEl.querySelectorAll(".sg").forEach(el => el.onclick = () => addPick(songs[+el.dataset.id], true));
+}
+function addPick(s, fromSearch) {
+  if (picks.length >= 5 || picks.includes(s)) return;
+  picks.push(s);
+  searchEl.value = "";
+  refreshSuggest();
+  drawChips();
+  if (fromSearch && picks.length < 5) searchEl.focus();
+}
+function removePick(s) {
+  picks.splice(picks.indexOf(s), 1);
+  drawChips();
+}
+function drawChips() {
+  chipsEl.innerHTML = picks.map(s => {
+    const a = ALBUMS[s.album];
+    const cv = ART[s.album] ? `<img src="${ART[s.album]}">` : "";
+    return `<div class="chip" style="border-color:${a.c}88">${cv}${s.title}<span class="x" data-id="${s.id}">✕</span></div>`;
+  }).join("");
+  chipsEl.querySelectorAll(".x").forEach(el => el.onclick = () => removePick(songs[+el.dataset.id]));
+  auraBtn.disabled = picks.length < 3;
+  auraBtn.textContent = picks.length >= 3 ? "⚽ Run the scouting report" : `⚽ Run the scouting report (${picks.length}/3 minimum)`;
+  catEl.querySelectorAll(".cat-song").forEach(b => {
+    const s = songs[+b.dataset.id];
+    b.classList.toggle("picked", picks.includes(s));
+    b.classList.toggle("maxed", picks.length >= 5 && !picks.includes(s));
+  });
+}
+searchEl.addEventListener("input", refreshSuggest);
+searchEl.addEventListener("focus", refreshSuggest);
+searchEl.addEventListener("keydown", e => {
+  if (e.key === "Enter") {
+    const first = suggestEl.querySelector(".sg");
+    if (first) addPick(songs[+first.dataset.id], true);
+  }
+});
+document.addEventListener("click", e => {
+  if (!e.target.closest(".picker")) suggestEl.style.display = "none";
+  if (!e.target.closest(".dot") && !e.target.closest("#tip")) hideTip();
+});
+
+// full catalogue browser at the bottom of the aura page — click to toggle picks
+const catEl = document.getElementById("catalogue");
+catEl.innerHTML = `<div class="cat-head">…or browse the whole squad list</div>` +
+  Object.keys(ALBUMS).map(album => {
+    const list = songs.filter(s => s.album === album);
+    if (!list.length) return "";
+    const cover = ART[album] ? `<img src="${ART[album]}">` : "";
+    return `<div class="cat-era" style="color:${ALBUMS[album].c}">${cover}${album} <span>${ALBUMS[album].y}</span></div>
+      <div class="cat-songs">` +
+      list.map(s => `<button class="cat-song" data-id="${s.id}">${s.title}</button>`).join("") +
+      `</div>`;
+  }).join("");
+catEl.querySelectorAll(".cat-song").forEach(b => b.onclick = () => {
+  const s = songs[+b.dataset.id];
+  picks.includes(s) ? removePick(s) : addPick(s);
+});
+
+drawChips();
+
+const ERA_READINGS = {
+  "Forward": "Your spine is built on forwards: you believe games are decided by whoever wants the goal most, and you want it most. Everything else is preamble to the finish.",
+  "Midfielder": "Your spine is built on midfielders: you think the final pass is more beautiful than the goal, and you are willing to argue about it through extra time.",
+  "Defender": "Your spine is built on defenders: you find peace in a clean sheet and poetry in a perfectly timed tackle. Glory that needs highlights isn't your kind of glory.",
+  "Goalkeeper": "Your spine is built on goalkeepers: the loneliest, most honest job in sport. One mistake is a headline; a hundred saves are silence. You respect that math.",
+};
+const THEME_OPENERS = {
+  "Poacher": [
+    "You live for the moment the ball crosses the line. Build-up play is lovely; finishing is the point, and you finish.",
+    "Six yards out, one touch, net. You believe complicated is what people do when they cannot score simple goals.",
+  ],
+  "Tournament Mile-Eater": [
+    "You are built for the long campaign — seven games, six weeks, one trophy. Stamina is a skill and yours is generational.",
+    "You judge careers in knockout minutes. Anyone can shine in October; you want to know who shows up in the semifinal.",
+  ],
+  "Star Collector": [
+    "You count stars on shirts the way accountants count anything. The trophy is the resume; everything else is a cover letter.",
+    "You play the long game for the golden ending. One July afternoon can justify a decade — you have done that math and accepted it.",
+  ],
+  "National Treasure": [
+    "You answer every call-up — friendlies in November, qualifiers at altitude, all of it. The badge is not a brand to you; it is a responsibility.",
+    "A hundred caps is not a stat to you, it is a love story told in airports. Loyalty is your most decorated position.",
+  ],
+  "Goal Machine": [
+    "Your output is industrial. Seasons change, managers change, the net keeps rippling at the same frequency.",
+    "You believe consistency is the rarest talent — anyone can have a night; you have a career.",
+  ],
+  "Prodigy": [
+    "You were never too young, whatever they said. The stage doesn't intimidate people who were born on it.",
+    "You believe in throwing the kids in. The teenager who starts the final becomes the legend who never forgets it.",
+  ],
+  "Sepia Romantic": [
+    "Your heart is in the grainy footage — heavy balls, real grass stains, shirts that fit like tents. The past had fewer cameras and more myths, and you prefer the myths.",
+    "You suspect football peaked before high definition, and you have the YouTube playlists to prove it.",
+  ],
+  "New Wave": [
+    "You live in the present meta — inverted wingers, sweeper-keepers, eighteen-year-olds running the show. The future is your home turf.",
+    "You watch wonderkids the way prospectors watch rivers. 2026 is your tournament: the changing of the guard, live, in your time zone.",
+  ],
+};
+const TODO_BANK = [
+  "Watch one full group-stage match this week without your phone. The boring minutes are where the tournament lives.",
+  "Learn to say 'golazo' with your whole chest. Practice today; deploy this month.",
+  "Juggle anything — a ball, an orange, rolled-up socks — until you hit ten. Do not leave before ten.",
+  "Pick one 2026 group and learn all four anthems' first lines. Trust this.",
+  "Watch the 1970 Brazil team's fourth goal in the final. It explains everything.",
+  "Adopt a second team this tournament — somewhere you have never been. Loyalty can have a plus-one.",
+  "Make game-day food from a country you are not from. The World Cup is a potluck; act like it.",
+  "Take the long way past a park with a pickup game on Wednesday. Watch five minutes. Remember.",
+  "Defend something unfashionable in conversation this week — a 0-0 draw, a holding midfielder, the offside trap.",
+  "Call the friend you watched the last World Cup with. The group chat is not the same and you know it.",
+  "Practice your goal celebration in the mirror. Knees-slide optional, conviction mandatory.",
+  "Wear the jersey to somewhere it does not belong, like a Tuesday meeting.",
+  "Watch a penalty shootout from a tournament you already know the ending of. Notice your heart rate anyway.",
+  "Set an alarm for the weird-timezone match. The best games are always at the worst hours.",
+  "Learn one new player's name per matchday and use it confidently by the round of 16.",
+  "Stretch your calves tonight. You will be jumping off a couch within the month.",
+];
+function buildStory(picks, scored, era) {
+  const avg = k => picks.reduce((a, s) => a + s[k], 0) / picks.length;
+  // everything below is seeded by the picks: same squad, same reading
+  let seed = picks.reduce((a, s) => (a * 31 + s.id + 7) >>> 0, picks.length);
+  const rand = () => (seed = (seed * 1664525 + 1013904223) >>> 0) / 4294967296;
+  const choose = arr => arr[Math.floor(rand() * arr.length)];
+  const draw = (pool, n) => {
+    const p = [...pool], out = [];
+    while (out.length < n && p.length) out.push(p.splice(Math.floor(rand() * p.length), 1)[0]);
+    return out;
+  };
+
+  const byDebut = [...picks].sort((a, b) => a.firstWC - b.firstWC);
+  const oldest = byDebut[0], newest = byDebut[byDebut.length - 1];
+  const span = newest.firstWC - oldest.firstWC;
+  const byCaps = [...picks].sort((a, b) => a.capsV - b.capsV);
+  const cult = byCaps[0], famous = byCaps[byCaps.length - 1];
+  const youngest = [...picks].sort((a, b) => a.agefV - b.agefV)[0];
+  const sharpest = [...picks].sort((a, b) => b.gpmV - a.gpmV)[0];
+  const totalTitles = picks.reduce((a, s) => a + s.titlesV, 0);
+  const now26 = picks.filter(s => s.now).length;
+  const posCounts = {};
+  picks.forEach(s => posCounts[s.album] = (posCounts[s.album] || 0) + 1);
+  const posCount = Object.keys(posCounts).length;
+  const maxPos = Object.entries(posCounts).sort((a, b) => b[1] - a[1])[0];
+
+  const obs = [];
+  if (now26 === picks.length) obs.push("Every one of your picks is playing in the 2026 tournament — you are not here for nostalgia, you are here for the next four weeks. Respect.");
+  if (now26 === 0) obs.push("Not a single active 2026 player in your picks. You watch this World Cup the way historians watch elections: with context, and slight disappointment.");
+  if (maxPos[1] >= 3) obs.push(`${maxPos[1]} of your picks are ${maxPos[0].toLowerCase()}s. Tactically irresponsible; spiritually correct.`);
+  if (span >= 40) obs.push(`Your picks debuted ${span} years apart — from ${oldest.title} to ${newest.title}. You treat football history as one long continuous match.`);
+  if (famous.capsV >= 130 && cult.capsV <= 30) obs.push(`${famous.title} next to ${cult.title}: you honor the loyal centurions and the kids with single-digit caps in the same breath. That is the whole sport.`);
+  if (youngest.agefV <= 19) obs.push(`You picked ${youngest.title}, who debuted at ${youngest.agefV}. You believe in throwing the kids into the deep end, mostly because they swim.`);
+  if (totalTitles >= 6) obs.push(`${totalTitles} World Cup titles across your picks. You did not come to romanticize almosts.`);
+  if (totalTitles === 0) obs.push("Zero World Cup titles among your picks. You fall for the beautiful losers every time — Cruyff would be proud, and so would your therapist.");
+  if (!obs.length) obs.push("Your picks share one football brain — a coherent idea of what the game should look like, which is rarer than a clean penalty shootout.");
+  const observed = draw(obs, 2).join(" ");
+
+  const traits = [
+    [avg("wcg") >= 50, "You measure greatness in tournament goals — the ones that count double because the whole planet was watching."],
+    [avg("wcm") >= 55, "You value the long campaign: the seven-game grind, the squad rotation, the extra-time legs."],
+    [avg("titles") >= 40, "You count stars on shirts before you count anything else."],
+    [avg("titles") <= 10, "You love the brilliant teams that never won it. The 1974 Dutch have a room in your heart."],
+    [avg("caps") >= 60, "Loyalty moves you — the centurions who never skipped a November friendly."],
+    [avg("agef") <= 35, "You trust teenagers on the biggest stage. History keeps proving you right."],
+    [avg("rel") >= 70, "You are fluent in the new wave — you knew these wonderkids before the montages did."],
+    [avg("rel") <= 35, "Your references predate VAR, and frankly so does your idea of a fair tackle."],
+    [avg("gpm") >= 50, "Efficiency thrills you: the striker who needs one chance, the team that needs one counter."],
+    [avg("intl") >= 50, "You respect the grinders who score in qualifiers nobody watches — the goals that get teams to the dance."],
+  ];
+  const satisfied = traits.filter(x => x[0]).map(x => x[1]);
+  const light = satisfied.length ? draw(satisfied, 3) :
+    ["You are suspiciously balanced — a squad with no weak link and no ego. FIFA would like to study you."];
+
+  const T = avg("titles"), R = avg("rel"), G = avg("gpm");
+  const want = choose(
+    T >= 40 ? [
+      "What you actually want: the trophy lift. The confetti, the second star, the open-top bus crawling through a city that called in sick. Everything else is group-stage talk.",
+      "What you actually want: July glory — the kind that renames airports. You would trade a decade of pretty football for one golden month.",
+    ] : R >= 70 ? [
+      "What you actually want: to watch the torch get passed live — an eighteen-year-old taking the tournament by the collar while the commentators run out of adjectives.",
+      "What you actually want: to be early. To say 'I told you about him in the group stage' for the next twenty years. 2026 is your proving ground too.",
+    ] : G >= 50 ? [
+      "What you actually want: the perfect finish — one touch, far corner, no celebration needed because the geometry already said everything.",
+      "What you actually want: lethal simplicity. The game decided in one clean moment you can replay forever.",
+    ] : [
+      "What you actually want: a tournament that earns its month — group-stage chaos, a giant-killing, extra time in the semis, and a final worth the four-year wait.",
+      "What you actually want: the full World Cup experience — heartbreak included. You know the price of admission and you pay it gladly every four years.",
+    ]);
+
+  const prophecy = choose([
+    `Someone will start a ${famous.title} debate near you during the group stage. You have the numbers. Finish the argument like ${sharpest.title} finishes chances.`,
+    `A match this month will go to penalties and you will think of ${oldest.title}. Breathe. The good keepers always guess late.`,
+    `You will see a kid in a ${youngest.title} shirt this summer and feel briefly, enormously optimistic about everything. Allow it.`,
+    `The 2026 bracket will break your heart exactly once. ${famous.title} could not save you from this, and neither can we.`,
+  ]);
+
+  const todos = draw([...TODO_BANK,
+    `Watch ten minutes of ${cult.title} highlights tonight. The algorithm underrates them; you never did.`,
+    `Channel ${sharpest.title} this week: one touch, decisive, no wasted motion — in meetings, in errands, in life.`,
+    `Track ${newest.title}'s next match minute by minute. Witness the beginning of something.`,
+  ], 3);
+  const nextWeekday = new Date(Date.now() + 6 * 864e5).toLocaleDateString("en-US", { weekday: "long" });
+  return `
+    <div class="aura-story">
+      <div class="as-head">⚽ Scouting Report</div>
+      <div class="as-signs">☀️ Sun in ${scored[0].name} · 🌙 Moon in ${scored[1].name} · ⬆️ ${scored[2].name} Rising</div>
+      <p>${choose(THEME_OPENERS[scored[0].name])}</p>
+      <p>${ERA_READINGS[era]}</p>
+      <p>${observed}</p>
+      <p>${light.join(" ")}</p>
+      <p>${want}</p>
+      <p class="as-prophecy">${prophecy}</p>
+      <div class="as-sub">Do these three things before next ${nextWeekday}</div>
+      <ul class="as-todo">${todos.map(t => `<li>${t}</li>`).join("")}</ul>
+    </div>`;
+}
+
+auraBtn.onclick = () => {
+  const res = document.getElementById("auraResult");
+  auraBtn.disabled = true;
+  res.innerHTML = `<div class="aura-loading"><div class="orb"></div><div class="al-text">Figuring out your groove…</div></div>`;
+  res.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  const msgs = ["Checking with VAR…", "Reading the group tables…", "Warming up the wonderkids…"];
+  let mi = 0;
+  const cycle = setInterval(() => { res.querySelector(".al-text").textContent = msgs[++mi % msgs.length]; }, 1000);
+  setTimeout(() => { clearInterval(cycle); drawChips(); revealAura(); }, 3000);
+};
+
+function revealAura() {
+  // costar-style: one dominant sign (70%+) and two minor placements
+  const scored = THEMES
+    .map(t => ({ ...t, raw: picks.reduce((sum, s) => sum + t.v(s), 0) / picks.length }))
+    .sort((a, b) => b.raw - a.raw).slice(0, 3);
+  const [r1, r2, r3] = scored.map(t => t.raw);
+  scored[0].pct = 70 + Math.min(15, Math.round((r1 - r2) / Math.max(r1, 1) * 45));
+  const rest = 100 - scored[0].pct;
+  scored[1].pct = Math.round(rest * r2 / Math.max(r2 + r3, 1));
+  scored[2].pct = rest - scored[1].pct;
+
+  const tally = {};
+  picks.forEach(s => tally[s.album] = (tally[s.album] || 0) + 1);
+  const era = Object.entries(tally).sort((a, b) => b[1] - a[1])[0][0];
+
+  const Cr = 84, C = 2 * Math.PI * Cr;
+  let offset = 0;
+  const arcs = scored.map(t => {
+    const seg = t.pct / 100 * C;
+    const segLen = Math.max(seg - 3, 0.5);
+    const el = `<circle cx="110" cy="110" r="${Cr}" fill="none" stroke="${t.color}" stroke-width="26"
+      stroke-dasharray="0 ${C}" data-dash="${segLen} ${C - segLen}"
+      stroke-dashoffset="${-offset}" transform="rotate(-90 110 110)" stroke-linecap="round"/>`;
+    offset += seg;
+    return el;
+  }).join("");
+
+  document.getElementById("auraResult").innerHTML = `
+    <div class="aura-card">
+      <div class="aura-headline">You are <b style="color:${scored[0].color}">${scored[0].pct}% ${scored[0].name} ${scored[0].emoji}</b>
+        — and your spine is <b style="color:${ALBUMS[era].c}">${era}</b></div>
+      <div class="aura-flex">
+        <div class="donut-wrap">
+          <svg width="220" height="220">${arcs}</svg>
+          <div class="donut-center">${scored[0].emoji}<small>${scored[0].name}</small></div>
+        </div>
+        <div class="aura-bars">
+          ${scored.map(t => `
+            <div class="aura-row">
+              <span class="ar-emoji">${t.emoji}</span>
+              <span class="ar-name">${t.name}</span>
+              <div class="ar-track"><div class="ar-fill" data-w="${t.pct}" style="background:${t.color}"></div></div>
+              <span class="ar-pct" style="color:${t.color}">${t.pct}%</span>
+            </div>`).join("")}
+        </div>
+      </div>
+      ${buildStory(picks, scored, era)}
+      <div class="aura-songs">${picks.map(s => ART[s.album] ? `<img src="${ART[s.album]}" title="${s.title}">` : "").join("")}
+        <span>based on: ${picks.map(s => s.title).join(" · ")}</span></div>
+    </div>`;
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    document.querySelectorAll("#auraResult circle").forEach(c => c.setAttribute("stroke-dasharray", c.dataset.dash));
+    document.querySelectorAll("#auraResult .ar-fill").forEach(f => f.style.width = f.dataset.w + "%");
+  }));
+  document.getElementById("auraResult").scrollIntoView({ behavior: "smooth", block: "nearest" });
+}
+
+window.addEventListener("resize", () => render(false));
+render();
+</script>
+</body>
+</html>
