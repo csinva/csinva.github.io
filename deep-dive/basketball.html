@@ -412,7 +412,7 @@ Object.keys(ALBUMS).forEach(name => {
   const b = document.createElement("button");
   b.className = "pos-chip";
   b.textContent = name;
-  b.title = ALBUMS[name].y;
+  b.title = name;
   b.style.borderColor = ALBUMS[name].c;
   b.style.color = ALBUMS[name].c;
   b.dataset.album = name;
@@ -501,7 +501,7 @@ function showTip(el, s) {
     <div class="t-head">${cover}
       <div>
         <div class="t-title">${s.title}</div>
-        <div class="t-album" style="color:${a.c}">${s.album} · ${a.y}</div>
+        <div class="t-album" style="color:${a.c}">${s.album}</div>
         <div style="font-size:12px;margin-top:2px;color:#cfc6e6">${ageOf(s)}</div>
       </div>
     </div>
@@ -699,7 +699,7 @@ catEl.innerHTML = `<div class="cat-head">…or browse the whole league</div>` +
     const list = songs.filter(s => s.album === album);
     if (!list.length) return "";
     const cover = ART[album] ? `<img src="${ART[album]}">` : "";
-    return `<div class="cat-era" style="color:${ALBUMS[album].c}">${cover}${album} <span>${ALBUMS[album].y}</span></div>
+    return `<div class="cat-era" style="color:${ALBUMS[album].c}">${cover}${album}</div>
       <div class="cat-songs">` +
       list.map(s => `<button class="cat-song" data-id="${s.id}">${s.title}</button>`).join("") +
       `</div>`;
