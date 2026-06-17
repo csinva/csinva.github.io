@@ -1341,11 +1341,14 @@ Agentic search - agent actively plans, executes, and iterates on searches to ans
     - Assisting in Writing Wikipedia-like Articles From Scratch with LLMs ([shao...lam, 2024](https://arxiv.org/abs/2402.14207))
     - Retrieval-based Full-length Wikipedia Generation for Emergent Events ([zhang...li, 2024](https://arxiv.org/abs/2402.18264))
 - module explanation in natural language
+  - GCT: Generative causal testing to bridge data-driven models and scientific theories in language neuroscience ([antonello...huth, 2024](https://arxiv.org/abs/2410.00812))
+	  - Automated Hypothesis Validation with Agentic Sequential Falsifications ([huang...leskovec, 2025](https://openreview.net/forum?id=iTevNo8PzG&noteId=6DFYazHqy1))
+    - Letting the neural code speak: Automated characterization of monkey visual neurons through human language ([lad...karantzas, 2026](https://arxiv.org/abs/2605.12485)) - similar to GCT for vision + single-neuron (but without followup experiment)
+    - Mechanistically Interpretable Neural Encoding Reveals Fine-Grained Functional Selectivity in Human Visual Cortex ([grosbard, geva & yovel, 2026](https://arxiv.org/abs/2605.16468)) - SASC but for vision
   - SASC: Explaining black box text modules in natural language with LMs ([singh, hsu, ..., gao, 2023](https://arxiv.org/abs/2305.09863))
-	  - Zero-shot LLM-guided Counterfactual Generation for Text ([bhattacharjee...liu, 2024](https://arxiv.org/abs/2405.04793))
+    - Zero-shot LLM-guided Counterfactual Generation for Text ([bhattacharjee...liu, 2024](https://arxiv.org/abs/2405.04793))
     - SAGE: An Agentic Explainer Framework for Interpreting SAE Features in LMs ([han, xu, jin & du, 2025](https://arxiv.org/abs/2511.20820)) - iterates and tests natural language explanations
     - PRISM: A Multi-Concept Feature Description Framework ([kopf...eberle, 2025](https://arxiv.org/abs/2506.15538v3)) - combines SASC with QA-Emb ([benara...gao, 2024](https://arxiv.org/abs/2405.16714)) and clusters NL explanations for an individual neuron
-    - Mechanistically Interpretable Neural Encoding Reveals Fine-Grained Functional Selectivity in Human Visual Cortex ([grosbard, geva & yovel, 2026](https://arxiv.org/abs/2605.16468)) - SASC but for vision
   - LMs can explain neurons in LMs ([bills, cammarata, ...saunders, 2023, openai](https://openaipublic.blob.core.windows.net/neuron-explainer/paper/index.html))
     - goal: explain a neuron
       - step 1: summarize (token, activation) pairs into an explanation
@@ -1360,7 +1363,6 @@ Agentic search - agent actively plans, executes, and iterates on searches to ans
   - Evaluating Concept-based Explanations of LMs: A Study on Faithfulness and Readability ([li...wang, 2024](https://arxiv.org/abs/2404.18533))
   - A Multimodal Automated Interpretability Agent ([shaham...hernandez, andreas, torralba, 2024](https://arxiv.org/abs/2404.14394))
     - ADAG: Automatically Describing Attribution Graphs ([arora, wu, steinhardt & schwettmann, 2026](https://arxiv.org/abs/2604.07615)) - NL descriptions for components, which can then be used for steering harmful advice
-  
   - MILAN: Natural Language Descriptions of Deep Visual Features ([hernandez...david bau...torallba, andreas, 2022](https://openreview.net/forum?id=NudBMY-tzDr)) - given a neuron, generates a natural-language string that maximizes pointwise mutual information with the image regions in which the neuron is active
     - Scale Alone Does not Improve Mechanistic Interpretability in Vision Models ([zimmermann, klein, & brendel, 2023](https://arxiv.org/abs/2307.05471)) - perform human eval of interpretability of different units (show human top-activating patches and ask them to decide which of 2 patches will be top-activating)
     - CLIP-Dissect: Automatic Description of Neuron Representations in Deep Vision Networks ([oikarinen & weng, 2023](https://arxiv.org/abs/2204.10965))
@@ -1717,8 +1719,6 @@ teaching, HITL, user simulators
 
 - science
 
-  - Generative causal testing to bridge data-driven models and scientific theories in language neuroscience ([antonello...huth, 2024](https://arxiv.org/abs/2410.00812))
-    - Automated Hypothesis Validation with Agentic Sequential Falsifications ([huang...leskovec, 2025](https://openreview.net/forum?id=iTevNo8PzG&noteId=6DFYazHqy1))
   - Neurosymbolic Programming for Science ([sun...costilla-reyes, 2022](https://arxiv.org/abs/2210.05050))
   - Discovering New Interpretable Conservation Laws as Sparse Invariants ([liu...tegmark, 2023](https://arxiv.org/abs/2305.19525)) - does not use transformers
 
