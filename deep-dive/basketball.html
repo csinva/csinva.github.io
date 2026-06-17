@@ -74,6 +74,7 @@
   <footer>
     All axes are career box-score stats — the three "Season" axes are single-season career highs — approximate through June 2026. Steals and blocks were not tracked before 1973-74, so pre-era careers (Russell, Wilt, Oscar) carry historians' estimates.<br>
     100 players across six decades — heights from Muggsy Bogues (5'3\") to Manute Bol (7'7\"). Pre-1980 legends shot 0% from three because the line did not exist yet; we plot it anyway.<br>
+    The <b>🔥</b> axes are career <i>playoff</i> per-game averages (sourced from StatMuse / Basketball-Reference) — plot them against the regular-season stats to see who rises in May. Only per-game and shooting stats have a playoff version; pre-1974 legends predate steal/block tracking, so those two playoff fields stay historians' estimates.<br>
     Hover a dot for the scouting card — highlights go to YouTube, career numbers to Basketball-Reference.
   </footer>
 </div>
@@ -259,7 +260,47 @@ const IG = {
   "Jermaine O'Neal":0.8,"Elton Brand":0.3,"Alonzo Mourning":0.7,"Dikembe Mutombo":0.5,"Ben Wallace":0.6,
 };
 
+// Career PLAYOFF per-game averages: [ppg, rpg, apg, 3p%, ft%, spg, bpg].
+// Sourced from StatMuse (NBA/Basketball-Reference data), spring 2026. Only per-game / shooting
+// stats have a playoff counterpart — counting-era totals (All-Stars, rings, "Season" highs) are
+// regular-season-only and hidden in playoff mode. The three pre-1974 legends (Oscar, Wilt,
+// Russell) predate steal/block tracking, so those two fields are historians' estimates.
+const PO = {
+  "Magic Johnson":[19.5,7.7,12.3,24.1,83.8,1.9,0.3],"Stephen Curry":[26.8,5.3,6.1,39.7,88.9,1.5,0.3],"Chris Paul":[20.0,4.9,8.3,37.3,85.4,1.9,0.2],"Allen Iverson":[29.7,3.8,6.0,32.7,76.4,2.1,0.2],"John Stockton":[13.4,3.3,10.1,32.6,81.0,1.9,0.3],
+  "Steve Nash":[17.3,3.5,8.8,40.6,90.0,0.6,0.1],"Russell Westbrook":[22.5,6.7,7.1,29.9,82.0,1.7,0.3],"Kyrie Irving":[23.0,3.7,4.9,39.2,88.3,1.3,0.6],"Damian Lillard":[25.2,4.4,6.1,36.8,89.3,1.1,0.3],"Jason Kidd":[12.9,6.7,8.0,32.2,78.1,1.9,0.3],
+  "Oscar Robertson":[22.2,6.7,8.9,0.0,85.5,1.1,0.4],"Muggsy Bogues":[8.9,2.7,5.6,47.6,76.9,1.7,0.0],"Luka Doncic":[30.9,9.2,7.8,34.7,73.7,1.6,0.5],"Shai Gilgeous-Alexander":[26.2,4.8,6.2,34.0,86.9,1.4,1.0],"Ja Morant":[26.0,6.2,8.1,34.4,75.0,1.4,0.3],
+  "Michael Jordan":[33.4,6.4,5.7,33.2,82.8,2.1,0.9],"Kobe Bryant":[25.6,5.1,4.7,33.1,81.6,1.4,0.7],"Dwyane Wade":[22.3,5.2,4.9,33.8,78.0,1.5,1.0],"James Harden":[22.2,5.4,6.4,33.7,86.6,1.6,0.6],"Ray Allen":[16.1,3.8,2.6,40.1,88.3,1.0,0.2],
+  "Reggie Miller":[20.6,2.9,2.5,39.0,89.3,1.0,0.2],"Klay Thompson":[19.2,4.0,2.2,40.5,84.5,0.9,0.5],"Devin Booker":[27.5,5.0,5.2,38.0,89.0,1.0,0.4],"Anthony Edwards":[25.9,6.5,4.9,36.8,79.4,1.2,0.8],"Manu Ginobili":[14.0,4.0,3.8,35.8,81.7,1.3,0.3],
+  "Vince Carter":[18.1,5.4,3.4,33.8,79.6,1.1,0.5],"LeBron James":[28.2,8.9,7.2,33.2,74.1,1.7,1.0],"Kevin Durant":[29.3,7.8,4.2,35.5,86.8,1.0,1.2],"Larry Bird":[23.8,10.3,6.5,32.1,89.0,1.8,0.9],"Kawhi Leonard":[21.5,7.8,3.0,39.9,84.1,1.8,0.7],
+  "Jayson Tatum":[24.2,8.3,5.0,34.9,83.9,1.2,0.8],"Carmelo Anthony":[23.1,6.7,2.5,32.4,82.6,1.2,0.3],"Scottie Pippen":[17.5,7.6,5.0,30.3,72.4,1.9,0.9],"Julius Erving":[21.9,7.0,4.2,19.4,77.9,1.7,1.7],"Jimmy Butler":[21.1,6.2,4.7,34.4,82.7,1.7,0.5],
+  "Tracy McGrady":[22.2,5.7,5.0,29.0,75.7,1.1,0.9],"Tim Duncan":[20.6,11.4,3.0,14.3,68.9,0.7,2.3],"Giannis Antetokounmpo":[27.0,12.2,5.3,25.9,62.5,1.0,1.3],"Dirk Nowitzki":[25.3,10.0,2.5,36.5,89.2,1.0,0.9],"Karl Malone":[24.7,10.7,3.2,0.2,73.6,1.3,0.7],
+  "Charles Barkley":[23.0,12.9,3.9,25.5,71.7,1.6,0.9],"Kevin Garnett":[18.2,10.7,3.3,27.3,78.9,1.2,1.3],"Anthony Davis":[26.1,11.8,2.8,31.3,84.0,1.3,2.2],"Draymond Green":[11.4,8.6,6.0,30.0,72.6,1.5,1.3],"Dennis Rodman":[6.4,9.9,1.2,14.9,54.0,0.6,0.6],
+  "Pau Gasol":[15.4,9.2,3.2,29.7,74.1,0.5,1.7],"Kareem Abdul-Jabbar":[24.3,10.5,3.2,0.0,74.0,1.0,2.4],"Wilt Chamberlain":[22.5,24.5,4.2,0.0,52.4,1.0,8.0],"Shaquille O'Neal":[24.3,11.6,2.7,0.0,50.4,0.5,2.1],"Hakeem Olajuwon":[25.9,11.2,3.2,22.2,71.9,1.7,3.3],
+  "Bill Russell":[16.2,24.9,4.7,0.0,60.3,1.0,8.0],"Nikola Jokic":[27.4,12.4,7.7,37.3,83.3,1.2,0.9],"Joel Embiid":[24.8,10.5,3.3,27.7,82.8,0.8,1.6],"Victor Wembanyama":[23.8,10.9,2.7,34.2,84.7,1.0,3.5],"David Robinson":[18.1,10.6,2.3,0.1,70.8,1.2,2.5],
+  "Patrick Ewing":[20.2,10.3,2.0,34.8,71.8,0.9,2.2],"Moses Malone":[22.1,13.8,1.4,0.0,76.2,0.9,1.6],"Yao Ming":[19.8,9.3,1.0,0.0,83.3,0.3,1.5],"Manute Bol":[2.8,3.8,0.1,8.7,44.4,0.2,2.7],"Rudy Gobert":[11.6,10.4,1.3,0.0,59.7,0.7,1.5],
+  "Jalen Brunson":[26.0,3.7,5.5,34.7,83.1,0.8,0.1],"Cade Cunningham":[27.2,6.1,7.9,35.4,85.4,1.3,0.8],"Donovan Mitchell":[27.8,5.0,4.4,34.9,82.4,1.3,0.3],"Jaylen Brown":[19.6,5.7,2.6,35.7,72.6,1.0,0.5],"Evan Mobley":[15.9,8.6,2.8,35.5,67.3,0.9,1.7],
+  "Julius Randle":[18.4,7.6,3.9,31.2,79.3,0.6,0.1],"DeMar DeRozan":[21.8,4.7,3.7,21.4,85.2,1.1,0.2],"Paul George":[20.8,7.2,4.0,36.4,82.3,1.5,0.5],"Isaiah Thomas":[21.7,3.0,6.1,30.1,84.2,0.8,0.3],"Kyle Lowry":[13.3,4.2,5.3,33.8,80.3,1.3,0.3],
+  "Marc Gasol":[13.4,7.5,3.2,36.6,80.8,0.8,1.4],"LaMarcus Aldridge":[20.8,8.5,1.7,32.7,82.4,0.7,1.4],"DeMarcus Cousins":[8.4,3.5,1.5,39.3,70.4,0.5,0.5],"DeAndre Jordan":[8.0,9.2,0.7,0.0,40.4,0.6,1.7],"Pascal Siakam":[18.1,6.6,3.2,30.9,71.9,0.9,0.6],
+  "Dwight Howard":[15.3,11.8,1.2,0.0,54.8,0.8,2.0],"Derrick Rose":[21.9,4.3,6.3,32.2,84.5,0.9,0.5],"Tony Parker":[17.9,2.9,5.1,30.9,73.1,0.9,0.1],"Chris Bosh":[15.6,7.5,1.3,38.6,80.0,0.8,1.1],"Amar'e Stoudemire":[18.7,7.4,0.8,25.0,75.0,0.8,1.3],
+  "Blake Griffin":[18.2,7.7,3.5,37.7,73.1,1.0,0.8],"Gilbert Arenas":[17.1,3.5,3.8,30.5,76.9,1.2,0.4],"Deron Williams":[15.7,3.2,7.0,39.3,80.3,1.0,0.2],"Brandon Roy":[16.3,3.3,2.6,32.6,80.9,0.6,0.5],"Andrew Bynum":[9.5,6.7,0.6,0.0,72.0,0.3,1.5],
+  "Kevin Love":[12.6,8.3,1.6,39.7,85.5,0.6,0.5],"Joakim Noah":[9.3,10.6,2.7,0.0,67.6,0.9,1.7],"Gary Payton":[14.0,3.7,5.3,31.5,70.6,1.4,0.2],"Chauncey Billups":[17.3,3.4,5.7,36.6,88.0,1.0,0.2],"Sam Cassell":[12.2,2.6,4.4,36.3,84.7,0.8,0.1],
+  "Baron Davis":[18.8,4.3,6.2,35.0,70.9,2.3,0.5],"Eddie Jones":[12.8,4.0,2.4,38.3,78.3,1.3,0.8],"Grant Hill":[13.4,6.1,3.6,23.8,78.1,0.9,0.5],"Peja Stojakovic":[14.4,4.9,1.0,37.6,90.0,0.8,0.2],"Chris Webber":[18.7,8.7,3.6,26.9,61.1,1.1,1.2],
+  "Jermaine O'Neal":[11.6,6.5,1.0,0.0,71.8,0.4,1.7],"Elton Brand":[12.6,6.3,1.6,0.0,71.9,0.6,1.6],"Alonzo Mourning":[13.6,7.0,0.9,36.8,64.9,0.5,2.3],"Dikembe Mutombo":[9.1,9.5,0.8,0.0,70.3,0.4,2.5],"Ben Wallace":[7.2,11.2,1.3,0.0,41.8,1.5,1.9],
+};
+const PO_FIELDS = ["ppg","rpg","apg","p3","ft","spg","blk"];
+
 // ---------------- state ----------------
+// the per-game / shooting stats also exist as playoff categories (see below)
+const DUAL = PO_FIELDS.slice();
+// append a "🔥 playoff" sibling metric for each per-game / shooting stat
+DUAL.forEach(k => {
+  const base = METRICS.find(m => m.k === k);
+  METRICS.push({
+    k: base.k + "_po", base: base.k, po: true,
+    label: "🔥 " + base.label, lo: base.lo, hi: base.hi,
+    blurb: base.blurb.replace(/^Career/, "Career playoff"),
+  });
+});
 let metricX = METRICS[10]; // Debut
 let metricY = METRICS[11]; // Season 3PM
 const off = new Set();
@@ -267,10 +308,15 @@ const stage = document.getElementById("stage");
 const tip = document.getElementById("tip");
 const TOUCH = matchMedia("(hover: none), (pointer: coarse)").matches;
 
-const songs = SONGS.map((p, i) => ({
+const songs = SONGS.map((p, i) => {
+  const po = PO[p[0]] || [];
+  const poObj = {};
+  PO_FIELDS.forEach((f, j) => poObj[f] = po[j] ?? 0);
+  return {
   title: p[0], album: p[1], hin: p[2], ftp: p[3], ppgV: p[4], apgV: p[5], rpgV: p[6], p3V: p[7],
-  ringsV: p[8], debut: p[9], defense: p[10], clutch: p[11], aura: p[12], note: p[13], yt: p[14], bpg: p[15], spgV: p[16], asV: p[17], s3mV: p[18], sptsV: p[19], sddV: p[20], igV: IG[p[0]] ?? 0, id: i
-}));
+  ringsV: p[8], debut: p[9], defense: p[10], clutch: p[11], aura: p[12], note: p[13], yt: p[14], bpg: p[15], spgV: p[16], asV: p[17], s3mV: p[18], sptsV: p[19], sddV: p[20], igV: IG[p[0]] ?? 0, po: poObj, id: i
+  };
+});
 // normalize every raw stat to 0–100 for plotting; tooltips show the real values
 const norm = (get, k) => {
   const vs = songs.map(get), lo = Math.min(...vs), hi = Math.max(...vs);
@@ -282,18 +328,32 @@ norm(s => s.ringsV, "rings"); norm(s => s.debut, "rel"); norm(s => s.bpg, "blk")
 norm(s => s.spgV, "spg"); norm(s => s.asV, "allstar");
 norm(s => s.s3mV, "s3m"); norm(s => s.sptsV, "spts"); norm(s => s.sddV, "sdd");
 norm(s => s.igV, "ig");
+// regular-season raw value per dual stat; playoff raw lives on s.po[k]
+const REG_RAW = { ppg: s => s.ppgV, ft: s => s.ftp, p3: s => s.p3V, apg: s => s.apgV, rpg: s => s.rpgV, spg: s => s.spgV, blk: s => s.bpg };
+// normalize the playoff values into their own "<key>_po" plotting keys
+DUAL.forEach(k => {
+  const vs = songs.map(s => s.po[k]), lo = Math.min(...vs), hi = Math.max(...vs);
+  songs.forEach(s => s[k + "_po"] = hi === lo ? 0 : Math.round((s.po[k] - lo) / (hi - lo) * 100));
+});
+// normalized 0–100 plotting value — playoff metrics already carry their own key
+const nv = (s, m) => s[m.k];
+// unit-formatter per per-game / shooting stat (shared by regular & playoff metrics)
+const STAT_UNIT = {
+  ppg: v => v.toFixed(1) + " ppg", apg: v => v.toFixed(1) + " apg", rpg: v => v.toFixed(1) + " rpg",
+  spg: v => v.toFixed(1) + " spg", blk: v => v.toFixed(1) + " bpg", ft: v => v.toFixed(1) + "%", p3: v => v.toFixed(1) + "%",
+};
 const fmtH = h => Math.floor(h / 12) + "'" + (h % 12) + '"';
 const fmtIG = v => v === 0 ? "no Instagram" : v >= 1 ? v.toFixed(1) + "M followers" : Math.round(v * 1000) + "K followers";
-const disp = (s, m) =>
-  m.k === "ig" ? fmtIG(s.igV) :
-  m.k === "height" ? fmtH(s.hin) : m.k === "ft" ? s.ftp.toFixed(1) + "%" :
-  m.k === "ppg" ? s.ppgV.toFixed(1) + " ppg" : m.k === "apg" ? s.apgV.toFixed(1) + " apg" :
-  m.k === "rpg" ? s.rpgV.toFixed(1) + " rpg" : m.k === "p3" ? s.p3V.toFixed(1) + "%" :
-  m.k === "blk" ? s.bpg.toFixed(1) + " bpg" : m.k === "spg" ? s.spgV.toFixed(1) + " spg" :
-  m.k === "allstar" ? s.asV + "× All-Star" : m.k === "s3m" ? s.s3mV + " threes" :
-  m.k === "spts" ? s.sptsV.toLocaleString() + " pts" : m.k === "sdd" ? s.sddV + " dbl-dbls" :
-  m.k === "rings" ? s.ringsV + (s.ringsV === 1 ? " ring" : " rings") :
-  m.k === "rel" ? s.debut : s[m.k];
+const disp = (s, m) => {
+  if (m.po) return STAT_UNIT[m.base](s.po[m.base]);          // 🔥 playoff per-game
+  if (STAT_UNIT[m.k]) return STAT_UNIT[m.k](REG_RAW[m.k](s)); // regular per-game / shooting
+  return m.k === "ig" ? fmtIG(s.igV) :
+    m.k === "height" ? fmtH(s.hin) :
+    m.k === "allstar" ? s.asV + "× All-Star" : m.k === "s3m" ? s.s3mV + " threes" :
+    m.k === "spts" ? s.sptsV.toLocaleString() + " pts" : m.k === "sdd" ? s.sddV + " dbl-dbls" :
+    m.k === "rings" ? s.ringsV + (s.ringsV === 1 ? " ring" : " rings") :
+    m.k === "rel" ? s.debut : s[m.k];
+};
 // every basketball metric is a real measurement → number the axes with actual values.
 // ranges are modest (height, %, per-game, counts, year) so all stay linear —
 // except Instagram, whose long tail (LeBron at ~160M) just sits far out on the same linear axis.
@@ -309,6 +369,8 @@ const _BBV = {
 };
 const AXIS = {};
 Object.keys(_BBV).forEach(k => { const vs = songs.map(_BBV[k][0]); AXIS[k] = { lo: Math.min(...vs), hi: Math.max(...vs), fmt: _BBV[k][1] }; });
+// axis ranges for the playoff categories, drawn from the playoff raw values
+DUAL.forEach(k => { const vs = songs.map(s => s.po[k]); AXIS[k + "_po"] = { lo: Math.min(...vs), hi: Math.max(...vs), fmt: _BBV[k][1] }; });
 const valueAt = (c, t) => c.lo + (t / 100) * (c.hi - c.lo);
 const tickLabel = (m, v) => AXIS[m.k] ? AXIS[m.k].fmt(valueAt(AXIS[m.k], v)) : v;
 // birth year per player (string "birth–death" for those no longer with us)
@@ -474,11 +536,12 @@ function layout() {
   // exact ties fan out on a small golden-angle spiral so stacks stay readable
   const seen = new Map();
   return songs.map(s => {
-    const key = s[metricX.k] + "," + s[metricY.k];
+    const vx = nv(s, metricX), vy = nv(s, metricY);
+    const key = vx + "," + vy;
     const n = seen.get(key) || 0;
     seen.set(key, n + 1);
     const rad = n ? 6 * Math.sqrt(n) : 0, ang = n * 2.39996;
-    return { x: xOf(s[metricX.k]) + rad * Math.cos(ang), y: yOf(s[metricY.k]) + rad * Math.sin(ang) };
+    return { x: xOf(vx) + rad * Math.cos(ang), y: yOf(vy) + rad * Math.sin(ang) };
   });
 }
 
@@ -514,9 +577,9 @@ function render(relayout = true) {
   const vis = songs.filter(s => !off.has(s.album));
   const pick = fn => vis.length ? vis.reduce((a, b) => fn(b) > fn(a) ? b : a) : null;
   const tagged = [...new Set([
-    pick(s => s[metricX.k]), pick(s => -s[metricX.k]),
-    pick(s => s[metricY.k]), pick(s => -s[metricY.k]),
-    pick(s => s[metricX.k] + s[metricY.k]), pick(s => -s[metricX.k] - s[metricY.k]),
+    pick(s => nv(s, metricX)), pick(s => -nv(s, metricX)),
+    pick(s => nv(s, metricY)), pick(s => -nv(s, metricY)),
+    pick(s => nv(s, metricX) + nv(s, metricY)), pick(s => -nv(s, metricX) - nv(s, metricY)),
   ].filter(Boolean))];
   labelPool.forEach((l, i) => {
     const s = tagged[i];
@@ -532,7 +595,7 @@ function render(relayout = true) {
 
 function fillSide(vis) {
   const block = (m, arrow, cls) => {
-    const top = [...vis].sort((a, b) => b[m.k] - a[m.k]).slice(0, 7);
+    const top = [...vis].sort((a, b) => nv(b, m) - nv(a, m)).slice(0, 7);
     return `<div><div class="sb-cap ${cls}">${arrow} ${m.label} <span>· top 7</span></div>` +
       top.map(s => {
         const a = ALBUMS[s.album];
