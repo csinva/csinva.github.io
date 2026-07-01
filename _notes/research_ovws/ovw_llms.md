@@ -1089,11 +1089,15 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - LLM2Vec: LLMs Are Secretly Powerful Text Encoders ([behnamghader...reddy, 2024](https://arxiv.org/abs/2404.05961))
   - Gecko: Versatile Text Embeddings Distilled from LLMs ([lee...naim, 2024](https://arxiv.org/abs/2403.20327))
   - GRIT: Generative Representational Instruction Tuning ([meunninghoff...kiela, 2024](https://arxiv.org/abs/2402.09906)) - train a single model that, given different instructions, can produce either generations or embeddings
+  - EvoEmbedding: Evolvable Representations for Long-Context Retrieval and Agentic Memory ([nie, fu, feng & shan, 2026](https://arxiv.org/abs/2606.21649)) - maintains a continuously updated latent memory as it sequentially processes inputs, and uses it alongside the raw content to jointly generate embeddings
+    
+  - DREAM: Dense Retrieval Embeddings via Autoregressive Modeling ([tang & yang, 2026](https://arxiv.org/abs/2606.24667)) - instead of contrastive learning, use retriever to replace attention scores for particular heads in next-token prediction task
+    
   - EchoEmbeddings: Repetition Improves LM Embeddings ([springer, kotha, fried, neubig, & raghunathan, 2024](https://arxiv.org/abs/2402.15449.pdf))
     - Feed a prompt such as “Rewrite the sentence: x, rewritten sentence: x” to the LM and pool the contextualized embeddings of the 2nd occurence of x
-
+  
     - include task-specific prefix like in E5-mistral-instruct
-
+  
   - E5-mistral-instruct: Improving Text Embeddings with LLMs ([wang...wei, 2023](https://arxiv.org/abs/2401.00368)) - finetune embeddings on synthetic data
     - first prompt GPT-4 to brainstorm a list of potential retrieval tasks, and then generate *(query, positive, hard negative)* triplets for each task (GPT write the whole documents)
     - builds on E5 ([wang...wei, 2022](https://arxiv.org/abs/2212.03533))
@@ -1624,6 +1628,7 @@ teaching, HITL, user simulators
   - Centaur: A foundation model to predict and capture human cognition ([binz...schulz, 2025](https://www.nature.com/articles/s41586-025-09215-4))
   - Quantifying the Utility of User Simulators for Building Collaborative LLM Assistants ([suh, raj, kang & chang, 2026](https://arxiv.org/abs/2605.09808))
   - Simulating Human Memory with LMs ([wang...linzen, 2026](https://arxiv.org/abs/2605.25680)) - LMs have better memory than humans, but prompting/compacting can help them better match humans as user simulators
+  - Learning User Simulators with Turing Rewards ([wang...kim, 2026](https://arxiv.org/abs/2606.19336))
 - Weak-to-Strong Generalization: Eliciting Strong Capabilities With Weak Supervision ([burns...wu, 2023](https://arxiv.org/abs/2312.09390))
   - Can weaker model (human proxy) teach a stronger model (AGI proxy) to do better than the teacher itself at a task?
   - Automated Weak-to-Strong Researcher ([wen…leike, 2026](https://alignment.anthropic.com/2026/automated-w2s-researcher/)) - autoresearch applied to this task
@@ -1907,7 +1912,7 @@ teaching, HITL, user simulators
   - A Closer Look at TabPFN v2: Strength, Limitation, and Extension ([ye, liu, & chao, 2025](https://arxiv.org/abs/2502.17361))
   - Drift-Resilient TabPFN: In-Context Learning Temporal Distribution Shifts on Tabular Data ([helli...hutter, 2024](https://arxiv.org/abs/2411.10634)) - train and test TabPFN on SCM with edges that change over time
     - In-context learning of evolving data streams with tabular foundational models ([lourenco...marreiros, 2025](https://arxiv.org/abs/2502.16840)) - test TabPFN on SCM wieth edges that change over time
-  
+
 - tabPFN-related
   - GAMformer: In-Context Learning for Generalized Additive Models ([mueller...caruana, hutter, 2024](https://arxiv.org/abs/2410.04560))
   - Transformers Boost the Performance of Decision Trees on Tabular Data across Sample Sizes ([jayawardhana...hutter, white, goldstein, goldblum, 2025](https://arxiv.org/abs/2502.02672))
@@ -1915,6 +1920,10 @@ teaching, HITL, user simulators
     - learn boosted trees on top of LLM-based model to build in prior knowledge
   - Can Transformers Learn Full Bayesian Inference in Context? ([reuter...rugamer, 2025](https://arxiv.org/abs/2501.16825))
   - MotherNet: A Foundational Hypernetwork for Tabular Classification ([muller, curino, & ramakrishan, 2023](https://arxiv.org/abs/2312.08598)) - generate parameters for a net from a training set and then use that net at test time
+
+- interpretation
+
+  - Where Computation Lives Inside TabPFN: Causal Localisation of Attention Head Function ([gupta, kumar, mandal & deshpande, 2026](https://arxiv.org/abs/2606.12917))
 
 - value string methods - directly treating numerical values as strings and finetune GPT on them (everything is represented as text)
   - LIFT: Language-Interfaced Fine-Tuning for Non-Language Machine Learning Tasks ([dinh...lee, 2022](https://arxiv.org/abs/2206.06565))
