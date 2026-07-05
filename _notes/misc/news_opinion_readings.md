@@ -3,6 +3,10 @@
 # 2026
 
 - https://www.economist.com/finance-and-economics/2026/06/15/meet-the-worlds-top-ai-pilled-economists
+- [vibecession astralcodexten](https://www.astralcodexten.com/p/vibecession-much-more-than-you-wanted)
+  - the same average-talent person is getting the same average-salary job they would have forty years ago. But since they have a masters’ degree and five internships and 12,000 LinkedIn contacts, they expected to get a better-than-average job. When they don’t, it feels like success slipping away 
+
+- https://www.astralcodexten.com/p/your-review-dating-men-in-the-bay
 
 # 2023
 
