@@ -1,7 +1,10 @@
 _site/
 .idea
 **.DS_*
-**Icon*
+# macOS custom-folder-icon file (literally "Icon\r"); the trailing ? matches the
+# carriage return. Do NOT use "Icon*" — with core.ignorecase it also swallows
+# icons.css and any icon_*.png asset.
+**Icon?
 **cache*
 pres/ml_resources
 pres/ai_resources
