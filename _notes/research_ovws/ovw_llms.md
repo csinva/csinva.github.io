@@ -983,26 +983,6 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   mean feature vector
   - Null It Out: Guarding Protected Attributes by Iterative Nullspace Projection ([ravfogel...gonen, twiton, goldberg, 2020](https://arxiv.org/abs/2004.07667))
 
-## universal representations
-
-- Universal Sparse Autoencoders: Interpretable Cross-Model Concept Alignment ([thasarathan…derpanis, 2025](https://arxiv.org/abs/2502.03714))
-  - Sparse Crosscoders for Cross-Layer Features and Model Diffing ([anthropic blog post, 2024](https://transformer-circuits.pub/2024/crosscoders/index.html)) - learn SAE across different layers of same model
-  - Quantifying Feature Space Universality Across LLMs via Sparse Autoencoders ([lan…barez, 2025](https://arxiv.org/abs/2410.06981))
-- From Tokens to Thoughts: How LLMs and Humans Trade Compression for Meaning ([shani, jurafsky, lecun, & shwartz-ziv, 2025](https://arxiv.org/abs/2505.17117))
-  - LLM-derived clusters significantly align with human-defined conceptual categories but only modest alignment with human-perceived fine-grained semantic distinctions
-  - LLMs demonstrate markedly superior information-theoretic efficiency in their conceptual representations compared to human conceptual structures
-
-- The Platonic Representation Hypothesis ([huh, cheung, wang, & isola, 2024](https://arxiv.org/abs/2405.07987))
-  - vec2vec ([jha, zhang, shmatikov, & morris, 2025](https://arxiv.org/abs/2505.12540)) - use cyclegan-style approach to translate embeddings from one space to another (without paired samples)
-  - The Universal Weight Subspace Hypothesis ([kaushik...yuille, 2025](https://www.arxiv.org/abs/2512.05117))
-  - Anatomy of a ML Ecosystem: 2 Million Models on Hugging Face ([laufer, oderinwale & kleinberg, 2025](https://arxiv.org/abs/2508.06811))
-  - Canonicalizing Multimodal Contrastive Representation Learning ([gupta...garg, 2026](https://arxiv.org/abs/2602.17584))
-- Rosetta Neurons: Mining the Common Units in a Model Zoo ([dravid, ..., efros, shocher, 2023](https://openaccess.thecvf.com/content/ICCV2023/html/Dravid_Rosetta_Neurons_Mining_the_Common_Units_in_a_Model_Zoo_ICCV_2023_paper.html))
-  - Multimodal Neurons in Pretrained Text-Only Transformers ([schwettmann...torralba, 2023](https://arxiv.org/abs/2308.01544.pdf))
-  - Interpreting CLIP's Image Representation via Text-Based Decomposition ([gandelsman, efros, & steinhardt, 2023](https://arxiv.org/abs/2310.05916))
-  - Universal Neurons in GPT2 LMs ([gurnee...nanda, & bertsimas, 2024](https://arxiv.org/abs/2401.12181)) - study the universality of neurons across GPT2 models trained from different initial random seeds
-- Text-To-Concept (and Back) via Cross-Model Alignment ([moayeri...feizi, 2023](https://arxiv.org/abs/2305.06386)) - given a new image encoder, if we want to align it to a text encoder, we can just learn a linear transformation from image embeddings to CLIP image embeddings and use the CLIP text encoder
-
 ## debugging / interpretation
 
 - reviews
@@ -1161,8 +1141,8 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - The Illusion of Thinking: Understanding the Strengths and Limitations of LRMs via the Lens of Problem Complexity ([shojaee, mirzadeh...samy bengio, farajtabar, 2025](https://ml-site.cdn-apple.com/papers/the-illusion-of-thinking.pdf)) - evaluate LRMs on synthetic tasks (like towers of hanoi) & observe that, depending on task complexity, LRMs can fail to use explicit algorithms and they reason inconsistently across puzzles
     - The Illusion of the Illusion of Thinking ([lawsen, 2025](https://arxiv.org/abs/2506.09250))
   - Are DeepSeek R1 And Other Reasoning Models More Faithful? ([chua & evans, 2025](https://openreview.net/forum?id=rI38nonvF5))
-  - - Thought Anchors: Which LLM Reasoning Steps Matter? ([bogdan…conmy, 2025](https://arxiv.org/abs/2506.19143)) - evaluate reasoning models at the sentence level
-      - find that some sentences (typically planning or backtracking sentences) are esp. important
+  - Thought Anchors: Which LLM Reasoning Steps Matter? ([bogdan…conmy, 2025](https://arxiv.org/abs/2506.19143)) - evaluate reasoning models at the sentence level
+    - find that some sentences (typically planning or backtracking sentences) are esp. important
 - Semantic Regexes: Auto-Interpreting LLM Features with a Structured Language ([boggust...hohman, 2025](https://arxiv.org/abs/2510.06378)) - prompt model to use a particular syntax that includes exact matching, fuzzy matching, field matching, and some common logical operations
 - Critiques
   - The Unreliability of Explanations in Few-shot Prompting for Textual Reasoning ([ye & durrett, 2022](https://proceedings.neurips.cc/paper_files/paper/2022/file/c402501846f9fe03e2cac015b3f0e6b1-Paper-Conference.pdf))

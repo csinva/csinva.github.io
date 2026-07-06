@@ -19,7 +19,7 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
 
 # popular embedding models
 
-- 
+- companies summer 2026: google (gemini embedding), voyage (voyage series, open-source voyage-4-nano), alibaba (qwen embedding, GTE), cohere, openai (relatively outdated), BAAI (BGE), Jina (bought by elastic), NVIDIA (NV-Embed), Microsoft (E5), nomic (nomic-embed)
 - embedding approaches
   - ![embedding_interaction_levels](../assets/embedding_interaction_levels.svg)
 
@@ -35,91 +35,100 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
 
     3. cross-encoder: encode query and doc together
 
-  - expansion & reweighting (e.g. doc2query)
+- key tricks to improve performance
+  - training-time
+    - instruction/task conditioning: prompt or prefixes like *search query*, *search document*, *classification*, *clustering* before embedding so model knows how to customize the embedding
+  
+    - synthetic data from LLMs: generate tuples of (task, query, positive, hard negative) for contrastive training, especially crafting good hard negatives
+  
+    - distillation from more compute-intensive model: e.g. cross-encoder to bi-encoder or post-reranker to before reranker
+  
+    - quantization-aware training
+  
+    - MoE training
+  
+    - sparse representation learning (e.g. UHD-BERT ([jang...seo, 2021](https://arxiv.org/abs/2104.07198)))
+  
+    - joint learning with index
+  
+    - contextualized chunking - generate chunk embeddings for multiple things in one forward pass so they have context
+  
+    - prior work: query expansion, term dependency model (e.g. tf-idf), topic model, translation model
+  
+    - matryoshka representation learning - apply the contrastive loss simultaneously at dims 256, 512, 1024, 2048, etc so users can truncate to tradeoff acc for storage/speed
+  
+    - tailoring to specialized domains (e.g. medical, finance)
+  
+    - minor tricks: model souping / checkpoint merging on different task mixtures, loss balancing across tasks, curriculum over data quality stages, long-context extensions
+  
+  - inference-time
+    - query expansion & reweighting
+      - doc2query ([noguiera, … cho, 2019](https://arxiv.org/abs/1904.08375)) – train passage to query model on MS MARCO then retrieve with BM-25
+      - InPars ([bonifacio…nogueira, 2022](https://dl.acm.org/doi/abs/10.1145/3477495.3531863)) – generate questions with GPT-3; retrieve with BM25
+    - hybrid retrieval, combining with BM-25
+    - reranking with a cross-encoder for topk results
+  
 
-  - sparse representation learning (e.g. UHD-BERT ([jang...seo, 2021](https://arxiv.org/abs/2104.07198)))
 
-  - joint learning with index
 
-  - prior work: query expansion, term dependency model (e.g. tf-idf), topic model, translation model
-- customization
-  - e.g. add prompt or prefixes like *search query*, *search document*, *classification*, *clustering* before embedding so model knows how to match things
-- top-performing models
-  - NV-Embed: Improved Techniques for Training LLMs as Generalist Embedding Models ([lee...ping, 2024](https://arxiv.org/abs/2405.17428))
-  - LLM2Vec: LLMs Are Secretly Powerful Text Encoders ([behnamghader...reddy, 2024](https://arxiv.org/abs/2404.05961))
-  - Gecko: Versatile Text Embeddings Distilled from LLMs ([lee...naim, 2024](https://arxiv.org/abs/2403.20327))
-  - GRIT: Generative Representational Instruction Tuning ([meunninghoff...kiela, 2024](https://arxiv.org/abs/2402.09906)) - train a single model that, given different instructions, can produce either generations or embeddings
-  - EvoEmbedding: Evolvable Representations for Long-Context Retrieval and Agentic Memory ([nie, fu, feng & shan, 2026](https://arxiv.org/abs/2606.21649)) - maintains a continuously updated latent memory as it sequentially processes inputs, and uses it alongside the raw content to jointly generate embeddings
-    
-  - DREAM: Dense Retrieval Embeddings via Autoregressive Modeling ([tang & yang, 2026](https://arxiv.org/abs/2606.24667)) - instead of contrastive learning, use retriever to replace attention scores for particular heads in next-token prediction task
-    
+
+# top-performing models
+
+- baseline simple models
+  - BM25 - uses TF-IDF based on word counts and document frequences
+  -  Simple but Tough-to-Beat Baseline for Sentence Embeddings ([arora, liang & ma, 2017](https://openreview.net/forum?id=SyK00v5xx))
+    - average word embeddings in a sentence, downweighting words by their frequency
+    - to remove the "common background direction", compute the top pca component from many sentence embeddings then remove that direction
+- early models just trained with bi-encoders, e.g. SBERT=Sentence BERT ([reimers & gurevych, 2019](https://arxiv.org/abs/1908.10084)), SimCSE ([gao, yao & chen, 2021](https://arxiv.org/abs/2104.08821))
+  - PromptBERT ([jiang...furu wei...zhang, 2022](https://arxiv.org/abs/2201.04337)):  `This sentence: “ [text] ” means [MASK]` then use the embedding of the mask token - this prevents how all raw embeddings have similar cosine similarities
+    - Scaling Sentence Embeddings with LLMs ([jiang, ..., zhuang, 2023](https://arxiv.org/abs/2307.16645)): `This sentence: “ [text] ” means in one word:` then use the embedding of the final token
+
+- next generation of models started using contrastive pre-training, e.g. E5 ([wang...wei, 2022](https://arxiv.org/abs/2212.03533)), GTE ([li...zhang, 2023](https://arxiv.org/abs/2308.03281)), and BGE ([github](https://github.com/FlagOpen/FlagEmbedding))
+  - this era included instruction-conditioned embeddings, e.g. Instructor ([su, ..., smith, zettlemoyer, yu, 2022](https://instructor-embedding.github.io))
+  - synthetic data became important here, e.g. Promptagator ([dai…wei chang, 2022](https://arxiv.org/abs/2209.11755)) and Gecko ([lee...naim, 2024](https://arxiv.org/abs/2403.20327))
+  - Nomic Embed ([nussbaum, morris, duderstadt, & mulyar, 2024](https://static.nomic.ai/reports/2024_Nomic_Embed_Text_Technical_Report.pdf)), ([blog post](https://blog.nomic.ai/posts/nomic-embed-text-v1))
+  - Jina Embeddings 2 ([gunther...xiao, 2024](https://arxiv.org/abs/2310.19923)) - achieves long context (8192 tokens)
+
+- next, models initialized using a pre-trained LLM, e.g. E5-mistral-instruct ([wang...wei, 2023](https://arxiv.org/abs/2401.00368)), SGPT ([muennighoff, 2022](https://arxiv.org/abs/2202.08904))
+  - during post-training, remove attention masking so stuff is bidirectional, e.g. NV-Embed ([lee...ping, 2024](https://arxiv.org/abs/2405.17428)), LLM2Vec ([behnamghader...reddy, 2024](https://arxiv.org/abs/2404.05961))
+- multimodal??
+- Hypothetical Document Embeddings ([gao…callan, 2022](https://arxiv.org/abs/2212.10496.pdf)) - generate hypothetical document from query + instruction using GPT and find match for that doc
+- RAPTOR: Recursive Abstractive Processing for Tree-Organized Retrieval ([sarthi...manning](https://arxiv.org/abs/2401.18059)) - retrieve many docs and cluster/summarize before using
+- foundations of vector retrieval book ([bruch, 2024](https://arxiv.org/abs/2401.09350.pdf))
+- papers with a little trick
   - EchoEmbeddings: Repetition Improves LM Embeddings ([springer, kotha, fried, neubig, & raghunathan, 2024](https://arxiv.org/abs/2402.15449.pdf))
     - Feed a prompt such as “Rewrite the sentence: x, rewritten sentence: x” to the LM and pool the contextualized embeddings of the 2nd occurence of x
+  - GritLM ([meunninghoff...kiela, 2024](https://arxiv.org/abs/2402.09906)) - train a single model that, given different instructions, can produce either generations or embeddings
+  - Matryoshka Representation Learning ([kusupati...kakade, jain, & farhadi, 2022](https://arxiv.org/abs/2205.13147)) - in training given an embedding of full dimensionality M (e.g. 2048), learn N different distance functions for each prefix of the embedding (e.g. l2_norm(embedding[:32]), l2_norm(embedding[:64]), l2_norm(embedding[:128]), etc). 
+    - Beyond Matryoshka: Revisiting Sparse Coding for Adaptive Representation ([wen...you, 2025](https://arxiv.org/abs/2503.01776)) - instead learn sparse mask on top of original embedding
+    - AGRAME: Any-Granularity Ranking with Multi-Vector Embeddings ([reddy...potdar, 2024](https://arxiv.org/abs/2405.15028)) - rank at varying levels of granularity while maintaining encoding at a single (coarser) level
+  - EvoEmbedding: Evolvable Representations for Long-Context Retrieval and Agentic Memory ([nie, fu, feng & shan, 2026](https://arxiv.org/abs/2606.21649)) - maintains a continuously updated latent memory as it sequentially processes inputs, and uses it alongside the raw content to jointly generate embeddings
+  - DREAM: Dense Retrieval Embeddings via Autoregressive Modeling ([tang & yang, 2026](https://arxiv.org/abs/2606.24667)) - instead of contrastive learning, use retriever to replace attention scores for particular heads in next-token prediction task
 
-    - include task-specific prefix like in E5-mistral-instruct
-
-  - E5-mistral-instruct: Improving Text Embeddings with LLMs ([wang...wei, 2023](https://arxiv.org/abs/2401.00368)) - finetune embeddings on synthetic data
-    - first prompt GPT-4 to brainstorm a list of potential retrieval tasks, and then generate *(query, positive, hard negative)* triplets for each task (GPT write the whole documents)
-    - builds on E5 ([wang...wei, 2022](https://arxiv.org/abs/2212.03533))
-  - Jina Embeddings 2 ([gunther...xiao, 2024](https://arxiv.org/abs/2310.19923)) - achieves long context (8192 tokens)
-  - Instructor: One Embedder, Any Task: Instruction-Finetuned Text Embeddings ([su, ..., smith, zettlemoyer, yu, 2022](https://instructor-embedding.github.io)) - embedding is contextualized to each task
-    - Task-aware Retrieval with Instructions ([asai...riedel, hajishirzi, & yih, 2023](https://aclanthology.org/2023.findings-acl.225/))
-    - PromptBERT ([jiang...furu wei...zhang, 2022](https://arxiv.org/abs/2201.04337)):  `This sentence: “ [text] ” means [MASK]` then use the embedding of the mask token
-    - Scaling Sentence Embeddings with LLMs ([jiang, ..., zhuang, 2023](https://arxiv.org/abs/2307.16645)): `This sentence: “ [text] ” means in one word:` then use the embedding of the final token
-  - GTE: Towards General Text Embeddings with Multi-stage Contrastive Learning ([li...zhang, 2023](https://arxiv.org/abs/2308.03281))
-  - BGE ([github](https://github.com/FlagOpen/FlagEmbedding))
-  - Nomic Embed ([nussbaum, morris, duderstadt, & mulyar, 2024](https://static.nomic.ai/reports/2024_Nomic_Embed_Text_Technical_Report.pdf)), ([blog post](https://blog.nomic.ai/posts/nomic-embed-text-v1))
-  - Older: [SBERT](https://arxiv.org/abs/1908.10084), [SIMCSE](https://arxiv.org/abs/2104.08821), [SGPT](https://arxiv.org/abs/2202.08904)
-- query expansion
-  - doc2query ([noguiera, … cho, 2019](https://arxiv.org/abs/1904.08375)) – train passage to query model on MS MARCO then retrieve with BM-25
-  - InPars ([bonifacio…nogueira, 2022](https://dl.acm.org/doi/abs/10.1145/3477495.3531863)) – generate questions with GPT-3; retrieve with BM25
-- Promptagator ([dai…wei chang, 2022](https://arxiv.org/abs/2209.11755)) – hand-write prompts for each BEIR dataset; generate queries with FLAN; fine-tune
-- Meta-Task Prompting Elicits Embedding from LLMs ([lei...yates, 2024](https://arxiv.org/abs/2402.18458.pdf)) - ask a few pre-canned templates e.g. "Categorize into one of these categories ___" and look at logits for the outputs as an embedding
-- embedding search monograph ([bruch, 2024](https://arxiv.org/abs/2401.09350.pdf))
-- Active Retrieval Augmented Generation ([jiang...neubig, 2023](https://arxiv.org/abs/2305.06983)) - introduce FLARE, a method that iteratively uses a prediction of the upcoming sentence to anticipate future content, which is then utilized as a query to retrieve relevant documents to regenerate the sentence if it contains low-confidence tokens
-- Matryoshka Representation Learning ([kusupati...kakade, jain, & farhadi, 2022](https://arxiv.org/abs/2205.13147)) - in training given an embedding of full dimensionality M (e.g. 2048), learn N different distance functions for each prefix of the embedding (e.g. l2_norm(embedding[:32]), l2_norm(embedding[:64]), l2_norm(embedding[:128]), etc). 
-  - Beyond Matryoshka: Revisiting Sparse Coding for Adaptive Representation ([wen...you, 2025](https://arxiv.org/abs/2503.01776)) - instead learn sparse mask on top of original embedding
-  - AGRAME: Any-Granularity Ranking with Multi-Vector Embeddings ([reddy...potdar, 2024](https://arxiv.org/abs/2405.15028)) - rank at varying levels of granularity while maintaining encoding at a single (coarser) level
-- Hypothetical Document Embeddings ([gao…callan, 2022](https://arxiv.org/abs/2212.10496.pdf)) - generate hypothetical document from query + instruction using GPT and find match for that doc
-- Embedding inversions
-  - Generative Embedding Inversion Attack to Recover the Whole Sentence ([li...song, 2023](https://arxiv.org/abs/2305.03010)) - train projection to LM jointly to reconstruct input
-    - Information Leakage from Embedding in LLMs ([wan...wang, 2024](https://arxiv.org/abs/2405.11916))
-      - base embed inversion - directly pass hidden states to the LM head for generation
-      - hotmap embed inversion - find input which yields embedding with greatest cosine similarity
-      - embed parrot - learn a linear mapping to embedding states that is then 
-  - vec2text ([morris et al. 2023](https://arxiv.org/abs/2310.06816)) - invert embeddings to text without using gradients
-    - logit2prompt ([morris, ..., rush, 2024](https://arxiv.org/abs/2311.13647)) - recover prompt from output logits
-    - output2prompt ([zhang, morris, & shmatikov, 2024](https://arxiv.org/abs/2405.15012)) - recover prompt from long text outputs (by building a model of the sparse encodings of the outputs)
-    - ZSInvert: universal zero-shot embedding inversion ([zhang, morris, & shmatikov, 2025](https://arxiv.org/abs/2504.00147)) - beam search but keep prefixes that have best similarity with given embedding & train text-to-text correction model that helps refine hypotheses
-      - builds on adversarial decoding ([zhang, zhang, & shmatikov, 2024](https://arxiv.org/abs/2410.02163)) - use beam search with multiple scorers besides just perplexity (e.g. for defense evasion)
-  - On the Theoretical Limitations of Embedding-Based Retrieval ([weller, boratko, naim & lee, 2025](https://arxiv.org/abs/2508.21038))
-- RAPTOR: Recursive Abstractive Processing for Tree-Organized Retrieval ([sarthi...manning](https://arxiv.org/abs/2401.18059)) - retrieve many docs and cluster/summarize before using
-- Seven Failure Points When Engineering a Retrieval Augmented Generation System ([barnet...abdelrazek, 2024](https://arxiv.org/abs/2401.05856))
-- Retrieve to Explain: Evidence-driven Predictions with LMs ([patel...corneil, 2024](https://arxiv.org/abs/2402.04068.pdf))
-- simple baseline from A Simple but Tough-to-Beat Baseline for Sentence Embeddings ([arora, liang & ma, 2017](https://openreview.net/forum?id=SyK00v5xx))
-  - average word embeddings in a sentence, downweighting words by their frequency
-  - to remove the "common background direction", compute the top pca component from many sentence embeddings then remove that direction
 
 # datasets / benchmarks
 
 - **[MTEB leaderboard](https://huggingface.co/spaces/mteb/leaderboard)** - most common (but potentially overfitted) benchmark
+  - [MMTEB](https://arxiv.org/abs/2502.13595) - multilingual version
   - PTEB paper ([frank & afli, 2025](https://arxiv.org/abs/2510.06730)) finds that paraphrasing MTEB test sets substantially lowers scores (suggesting overfitting)
   - SAGE: A Realistic Benchmark for Semantic Understanding ([goel, lee & ramchandran, 2025](https://arxiv.org/abs/2509.21310)) - evaluates retreival robustness under adversarial and noisy conditions
   - AIR-Bench: Automated Heterogeneous Information Retrieval Benchmark ([chen...liu, 2024](https://arxiv.org/abs/2412.13102)) - refreshable llm-generated eval data
-  - Older: [BEIR benchmark](https://arxiv.org/abs/2104.08663)
+  - Older: [BEIR benchmark](https://arxiv.org/abs/2104.08663) (part of MTEB)
+- newer retrieval benchmarks
+  - [RTEB](https://huggingface.co/blog/rteb) - retrieval only benchmark of 48 datasets, with 28 private datasets and 26 code-retrieval datasets; newer and hopes to avoid MMTEB overfitting
+  - OBLIQ-Bench: Exposing Overlooked Bottlenecks in Modern Retrievers with Latent and Implicit Queries ([tchuindjo, shah & khattab, 2026](https://arxiv.org/abs/2605.06235))
+  - EnterpriseRAG-Bench: A RAG Benchmark for Company Internal Knowledge ([sun...butler, 2026](https://arxiv.org/abs/2605.05253))
+  - BERRI: Task-aware Retrieval with Instructions ([asai...riedel, hajishirzi, & yih, 2023](https://aclanthology.org/2023.findings-acl.225/)) - dataset for instruction-informed retrieval
+    - FollowIR ([weller...soldaini, 2024](https://arxiv.org/abs/2403.15246))
 - agentic search
   - BrowseComp-Plus ([chen...lin, 2025](https://arxiv.org/abs/2508.06600)) - evaluates deep research when searching a fixed corpus
     - extends BrowseComp ([wei...glaese, 2025](https://arxiv.org/abs/2504.12516)) - uses web search to evaluate QA
   - InfoDeepSeek: Benchmarking Agentic Information Seeking for RAG ([xi...yu, 2025](https://arxiv.org/abs/2505.15872))
-- newer retrieval benchmarks
-  - [RTEB](https://huggingface.co/blog/rteb) - retrieval only benchmark of 48 datasets, with 28 private datasets and 26 code-retrieval datasets
-  - OBLIQ-Bench: Exposing Overlooked Bottlenecks in Modern Retrievers with Latent and Implicit Queries ([tchuindjo, shah & khattab, 2026](https://arxiv.org/abs/2605.06235))
-  - EnterpriseRAG-Bench: A RAG Benchmark for Company Internal Knowledge ([sun...butler, 2026](https://arxiv.org/abs/2605.05253))
-- Instructor eval: Billboard, Prompt retrieval
-- FollowIR ([weller...soldaini, 2024](https://arxiv.org/abs/2403.15246))
-- [TREC-RAG](https://trec-rag.github.io/)
-- Long contexts: [LoCo Benchmark](https://hazyresearch.stanford.edu/blog/2024-01-11-m2-bert-retrieval), [Jina Long Context Benchmark](https://arxiv.org/abs/2310.19923.pdf)
-- Training
+- Misc minor
+  - [TREC-RAG](https://trec-rag.github.io/) dataset
+  - Instructor eval: Billboard, Prompt retrieval
+- Long context datasets: [LoCo Benchmark](https://hazyresearch.stanford.edu/blog/2024-01-11-m2-bert-retrieval), [Jina Long Context Benchmark](https://arxiv.org/abs/2310.19923.pdf)
+- Training datasets
   - Nomic 235M curated text pairs (mostly filtered from [here](https://huggingface.co/datasets/sentence-transformers/embedding-training-data))
     - Followed by supervised contrastive fine-tuning on datasets like MSMarco, NQ, NLI, HotpotQA, Fever, WikiAnswers, etc.
 
@@ -156,6 +165,7 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
     - embeddings consist of answers to questions
     - answer models are finetuned on QA datasets
     - questions are given ahead of time
+  - Meta-Task Prompting Elicits Embedding from LLMs ([lei...yates, 2024](https://arxiv.org/abs/2402.18458.pdf)) - ask a few pre-canned templates e.g. "Categorize into one of these categories ___" and look at logits for the outputs as an embedding
   - Learning Interpretable Style Embeddings via Prompting LLMs ([patel, rao, kothary, mckeown, & callison-burch, 2023](https://arxiv.org/abs/2305.12696))
   - CHiLL: Zero-shot Custom Interpretable Feature Extraction from Clinical Notes with LLMs ([mcinerney...wallace, 2023](https://arxiv.org/abs/2302.12343))
     - extract interpretable feature (e.g. "Does this patient have a chronic illness?") and use in a linear model (use Flan-T5)
@@ -209,6 +219,8 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
 
   - https://pageindex.ai/ - popular system that replaces vector-based rag with table-of-contents based search for docs that are already well organized
 
+  - Seven Failure Points When Engineering a Retrieval Augmented Generation System ([barnet...abdelrazek, 2024](https://arxiv.org/abs/2401.05856))
+
 - dynamic systems
 
   - Active RAG ([jiang...neubig, 2023](https://arxiv.org/abs/2305.06983)) -  propose FLARE, which iteratively uses a prediction of the upcoming sentence to anticipate future content, which is then utilized as a query to retrieve relevant documents to regenerate the sentence if it contains low-confidence tokens
@@ -246,6 +258,42 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
 
   - PlugMem: A Task-Agnostic Plugin Memory Module for LLM Agents ([ke yang, ..., galley, wang, gao, han, & zhai, 2026](https://empathyang.github.io/files/PlugMem.pdf)) - optimize performance vs num tokens in memory
   - T-Retriever: Tree-based Hierarchical Retrieval Augmented Generation for Textual Graphs ([wei...chen, 2026](https://arxiv.org/abs/2601.04945))
+
+# universal representations
+
+- Universal Sparse Autoencoders: Interpretable Cross-Model Concept Alignment ([thasarathan…derpanis, 2025](https://arxiv.org/abs/2502.03714))
+  - Sparse Crosscoders for Cross-Layer Features and Model Diffing ([anthropic blog post, 2024](https://transformer-circuits.pub/2024/crosscoders/index.html)) - learn SAE across different layers of same model
+  - Quantifying Feature Space Universality Across LLMs via Sparse Autoencoders ([lan…barez, 2025](https://arxiv.org/abs/2410.06981))
+- From Tokens to Thoughts: How LLMs and Humans Trade Compression for Meaning ([shani, jurafsky, lecun, & shwartz-ziv, 2025](https://arxiv.org/abs/2505.17117))
+  - LLM-derived clusters significantly align with human-defined conceptual categories but only modest alignment with human-perceived fine-grained semantic distinctions
+  - LLMs demonstrate markedly superior information-theoretic efficiency in their conceptual representations compared to human conceptual structures
+
+- The Platonic Representation Hypothesis ([huh, cheung, wang, & isola, 2024](https://arxiv.org/abs/2405.07987))
+  - vec2vec ([jha, zhang, shmatikov, & morris, 2025](https://arxiv.org/abs/2505.12540)) - use cyclegan-style approach to translate embeddings from one space to another (without paired samples)
+  - The Universal Weight Subspace Hypothesis ([kaushik...yuille, 2025](https://www.arxiv.org/abs/2512.05117))
+  - Anatomy of a ML Ecosystem: 2 Million Models on Hugging Face ([laufer, oderinwale & kleinberg, 2025](https://arxiv.org/abs/2508.06811))
+  - Canonicalizing Multimodal Contrastive Representation Learning ([gupta...garg, 2026](https://arxiv.org/abs/2602.17584))
+- Rosetta Neurons: Mining the Common Units in a Model Zoo ([dravid, ..., efros, shocher, 2023](https://openaccess.thecvf.com/content/ICCV2023/html/Dravid_Rosetta_Neurons_Mining_the_Common_Units_in_a_Model_Zoo_ICCV_2023_paper.html))
+  - Multimodal Neurons in Pretrained Text-Only Transformers ([schwettmann...torralba, 2023](https://arxiv.org/abs/2308.01544.pdf))
+  - Interpreting CLIP's Image Representation via Text-Based Decomposition ([gandelsman, efros, & steinhardt, 2023](https://arxiv.org/abs/2310.05916))
+  - Universal Neurons in GPT2 LMs ([gurnee...nanda, & bertsimas, 2024](https://arxiv.org/abs/2401.12181)) - study the universality of neurons across GPT2 models trained from different initial random seeds
+- Text-To-Concept (and Back) via Cross-Model Alignment ([moayeri...feizi, 2023](https://arxiv.org/abs/2305.06386)) - given a new image encoder, if we want to align it to a text encoder, we can just learn a linear transformation from image embeddings to CLIP image embeddings and use the CLIP text encoder
+
+# embedding inversions
+
+- Generative Embedding Inversion Attack to Recover the Whole Sentence ([li...song, 2023](https://arxiv.org/abs/2305.03010)) - train projection to LM jointly to reconstruct input
+
+  - Information Leakage from Embedding in LLMs ([wan...wang, 2024](https://arxiv.org/abs/2405.11916))
+    - base embed inversion - directly pass hidden states to the LM head for generation
+    - hotmap embed inversion - find input which yields embedding with greatest cosine similarity
+    - embed parrot - learn a linear mapping to embedding states that is then 
+
+- vec2text ([morris et al. 2023](https://arxiv.org/abs/2310.06816)) - invert embeddings to text without using gradients
+  - logit2prompt ([morris, ..., rush, 2024](https://arxiv.org/abs/2311.13647)) - recover prompt from output logits
+  - output2prompt ([zhang, morris, & shmatikov, 2024](https://arxiv.org/abs/2405.15012)) - recover prompt from long text outputs (by building a model of the sparse encodings of the outputs)
+  - ZSInvert: universal zero-shot embedding inversion ([zhang, morris, & shmatikov, 2025](https://arxiv.org/abs/2504.00147)) - beam search but keep prefixes that have best similarity with given embedding & train text-to-text correction model that helps refine hypotheses
+    - builds on adversarial decoding ([zhang, zhang, & shmatikov, 2024](https://arxiv.org/abs/2410.02163)) - use beam search with multiple scorers besides just perplexity (e.g. for defense evasion)
+- On the Theoretical Limitations of Embedding-Based Retrieval ([weller, boratko, naim & lee, 2025](https://arxiv.org/abs/2508.21038))
 
 # external memory enhancements for LLMs
 
@@ -290,7 +338,7 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
 
 - basic training pipeline
 
-  1. standard self-supervised pre-training, e.g. BERT
+  1. standard self-supervised pre-training, e.g. BERT or off-the-shelf model
 
   2. weak unsupervised pre-training, e.g. weakly related text pairs, such as QA pairs from forums like StackExchange and Quora
 
