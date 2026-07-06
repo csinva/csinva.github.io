@@ -1,0 +1,17 @@
+/* Page-specific styles for worldcup2026.html (was inline; loads after deepdive.css). */
+  /* text filter chips (this page uses chips, not album thumbnails) */
+  .covers { gap: 9px; }
+  .pos-chip {
+    background: #181425; border: 1.5px solid; border-radius: 999px;
+    padding: 8px 18px; font-weight: 800; font-size: 13.5px; cursor: pointer;
+    transition: all .18s; font-family: inherit;
+  }
+  .pos-chip:hover { transform: translateY(-2px); }
+  .pos-chip.solo { box-shadow: 0 0 16px currentColor; background: #241b3a; }
+  #tip .t-play.bref { background: #e8731a; }
+  @media (max-width: 700px) { .pos-chip { padding: 6px 12px; font-size: 12px; } }
+  /* photo dots */
+  .dot { opacity: .82; }
+  .dot:hover { opacity: 1; }
+  .dot.face { width: 28px; height: 28px; margin: -14px 0 0 -14px; opacity: .92; }
+  #tip .t-club { font-size: 12px; margin-top: 2px; color: #cfc6e6; }

@@ -3,7 +3,6 @@
     {% include navigation.html %}
     {% include js.html %}
     <link href="{{ site.baseurl }}/assets/css/notes.css" rel="stylesheet">
-    <link href="{{ site.baseurl }}/assets/css/highlight.css" rel="stylesheet">
     <script src="{{ site.baseurl }}/assets/js/highlight.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
 </head>
@@ -19,7 +18,7 @@
             <div id="content" class="markdown note-box">
                 <!-- <hr> -->
                 <p class="title" style="font-size: xx-large; text-align: left; margin-bottom: 0px;">
-                    {{ page.title }} <a class="btn btn-primary" style="text-transform: lowercase"
+                    {{ page.title }} <a class="btn btn-primary"
                         href="https://github.com/csinva/csinva.github.io/blob/master/{{ page.path }}">view
                         markdown <i class="fa fa-github fa-fw"></i></a>
                     {% if page.subtitle %}
@@ -39,18 +38,6 @@
     </div>
 
 </body>
-
-<style>
-    .markdown p,
-    li,
-    ul {
-        font-size: large;
-    }
-
-    #markdown-toc {
-        display: none;
-    }
-</style>
 
 <!--js-->
 <script type="text/x-mathjax-config">
@@ -426,178 +413,6 @@
         }
     })();
 </script>
-
-<style>
-    .highlight {
-        background-color: black;
-        border-color: black;
-    }
-</style>
-
-<!-- Link preview: small popover that appears when hovering links in the markdown content -->
-<style>
-    /* Popover container */
-    .link-preview {
-        position: absolute;
-        z-index: 99999;
-        width: 420px;
-        max-width: calc(100vw - 40px);
-        max-height: 320px;
-        background: #fff;
-        border: 1px solid rgba(0, 0, 0, 0.08);
-        border-radius: 6px;
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-        overflow: hidden;
-        font-size: 13px;
-        color: #222;
-        display: none;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-    }
-
-    .link-preview .pp-inner {
-        display: flex;
-        gap: 10px;
-        padding: 12px;
-        align-items: flex-start;
-    }
-
-    .link-preview .pp-thumbnail {
-        width: 120px;
-        height: 80px;
-        background: #f7f7f7;
-        border-radius: 4px;
-        overflow: hidden;
-        flex-shrink: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .link-preview .pp-thumbnail img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-    }
-
-    .link-preview .pp-meta {
-        flex: 1;
-        min-width: 0;
-    }
-
-    .link-preview .pp-title {
-        margin: 0;
-        font-weight: 600;
-        font-size: 14px;
-        color: #111;
-    }
-
-    .link-preview .pp-desc {
-        margin-top: 6px;
-        color: #444;
-        font-size: 12px;
-        line-height: 1.3;
-        max-height: 120px;
-        overflow: auto;
-    }
-
-    .link-preview .pp-url {
-        margin-top: 8px;
-        color: #888;
-        font-size: 11px;
-        word-break: break-all;
-    }
-
-    .link-preview .pp-actions {
-        display: flex;
-        gap: 8px;
-        margin-top: 8px;
-        align-items: center;
-    }
-
-    .link-preview a.open-link {
-        font-size: 12px;
-        color: #007bff;
-        text-decoration: none;
-    }
-
-    .link-preview a.open-link:hover {
-        text-decoration: underline;
-    }
-
-    /* iframe mode: when an embedded page is displayed */
-    .link-preview.iframe-preview {
-        padding: 0;
-        height: 320px;
-        width: 640px;
-        max-width: calc(100vw - 40px);
-    }
-
-    .link-preview.iframe-preview iframe {
-        width: 100%;
-        height: 100%;
-        border: 0;
-        display: block;
-    }
-
-    /* small helpers */
-    .link-preview .pp-desc::-webkit-scrollbar {
-        height: 6px;
-    }
-
-    .link-preview .pp-desc::-webkit-scrollbar-thumb {
-        background: rgba(0, 0, 0, 0.08);
-        border-radius: 3px;
-    }
-</style>
-
-<!-- Dark popover overrides -->
-<style>
-    .link-preview {
-        background: linear-gradient(180deg, #0b1220, #0f1724);
-        border: 1px solid rgba(255, 255, 255, 0.06);
-        box-shadow: 0 10px 30px rgba(2, 6, 23, 0.8), 0 2px 8px rgba(0, 0, 0, 0.6);
-        color: #e6eef8;
-    }
-
-    .link-preview .pp-inner {
-        background: transparent;
-    }
-
-    .link-preview .pp-thumbnail {
-        background: #0b1220;
-    }
-
-    .link-preview .pp-title {
-        color: #ffffff;
-    }
-
-    .link-preview .pp-authors {
-        color: #9fb0c9;
-    }
-
-    .link-preview .pp-desc {
-        color: #cbd5e1;
-    }
-
-    .link-preview .pp-url {
-        color: #9aa5b3;
-    }
-
-    .link-preview a.open-link {
-        color: #7dd3fc;
-    }
-
-    .link-preview a.open-link:hover {
-        color: #9be5ff;
-        text-decoration: underline;
-    }
-
-    .link-preview .pp-desc::-webkit-scrollbar-thumb {
-        background: rgba(255, 255, 255, 0.06);
-    }
-</style>
 
 <script type="text/javascript">
     (function ($) {

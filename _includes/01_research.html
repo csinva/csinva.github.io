@@ -1,20 +1,5 @@
 <h2 style="text-align: center; margin-top: -150px;"> Research</h2>
 
-<style>
-    .research_box {
-        padding: 10px;
-        margin-bottom: 20px;
-        background-color: #262626;
-        width: 100%;
-        border: 3px solid #3d3c3c;
-    }
-
-    .research_box:hover {
-        border: 3px solid #5bc0de;
-        background-color: #3d3c3c;
-        /* Adjust the border width and color as needed */
-    }
-</style>
 <div style="padding-left: 5%;padding-right: 5%">
     <div style="width: 100%;padding: 8px;margin-bottom: 20px; text-align:center; font-size: large;">
         Some recent work I'm excited about! I put a lot of my code into the <a href="https://github.com/csinva/imodels">imodels</a> and <a
@@ -28,17 +13,17 @@
             interpretability</a>.
         <br>
         <br>
-        <a href="https://www.nature.com/articles/s41467-023-43713-1">augmented imodels</a> - build a
+        <a href="https://www.nature.com/articles/s41467-023-43713-1">Augmented imodels</a> - build a
         transparent model using LLMs<br>
-        <a href="https://github.com/csinva/agentic-imodels">agentic imodels</a> - evolve agent-facing interpretability
+        <a href="https://github.com/csinva/agentic-imodels">Agentic imodels</a> - evolve agent-facing interpretability
         tools
         via autoresearch<br>
         <!-- <a href="https://arxiv.org/abs/2310.14034">tree prompting</a> - improve black-box few-shot text classification -->
         <!-- with decision trees<br> -->
-        <a href="https://arxiv.org/abs/2311.02262">attention steering</a> - mechanistically guide LLMs by
+        <a href="https://arxiv.org/abs/2311.02262">Attention steering</a> - mechanistically guide LLMs by
         emphasizing specific input
         spans<br>
-        <a href="http://proceedings.mlr.press/v119/rieger20a.html">explanation penalization</a> - regularize
+        <a href="http://proceedings.mlr.press/v119/rieger20a.html">Explanation penalization</a> - regularize
         explanations to align models with prior knowledge<br>
         <!-- <a href="https://proceedings.neurips.cc/paper/2021/file/acaa23f71f963e96c8847585e71352d6-Paper.pdf">adaptive -->
         <!-- wavelet distillation</a> - replace neural nets with transparent wavelet models -->
@@ -68,16 +53,16 @@
         <!-- href="https://www.microsoft.com/en-us/research/group/real-world-evidence/">Health Futures team</a>). -->
         <br>
         <br>
-        <a href="https://arxiv.org/abs/2601.09072">human-ai co-design of clinical models</a> - build clinical rules by
+        <a href="https://arxiv.org/abs/2601.09072">Human-AI co-design of clinical models</a> - build clinical rules by
         using LLMs to analyze EHR, vetted by clinicians
         <br>
-        <a href="https://arxiv.org/pdf/2201.11931">greedy tree sums</a> - build accurate, compact tree-based clinical
+        <a href="https://arxiv.org/pdf/2201.11931">Greedy tree sums</a> - build accurate, compact tree-based clinical
         models<br>
-        <a href="https://arxiv.org/abs/2306.00024">clinical self-verification</a> - improve LLM-based clinical
+        <a href="https://arxiv.org/abs/2306.00024">Clinical self-verification</a> - improve LLM-based clinical
         information extraction with self-verirication<br>
         <!-- <a href="https://journals.plos.org/digitalhealth/article?id=10.1371/journal.pdig.0000076">clinical rule -->
         <!-- vetting</a> - test a clinical decision instrument for evaluating intra-abdominal injury<br> -->
-        <a href="https://www.medrxiv.org/content/10.1101/2025.02.12.25320965v1">clinical rule
+        <a href="https://www.medrxiv.org/content/10.1101/2025.02.12.25320965v1">Clinical rule
             bias assessment</a> - evaluate biases in the development of popular clinical decision instruments<br>
     </div>
 
@@ -89,12 +74,12 @@
         <!-- href="https://www.cs.utexas.edu/~huth/index.html">Huth lab</a> at UT Austin). -->
         <br>
         <br>
-        <a href="https://arxiv.org/abs/2410.00812">generative causal testing</a> - causally test fMRI
+        <a href="https://arxiv.org/abs/2410.00812">Generative causal testing</a> - causally test fMRI
         explanations with LLM-generated stimuli<br>
-        <a href="https://www.biorxiv.org/content/10.1101/2025.08.12.669958v1">qa encoding models</a> - model fMRI
+        <a href="https://www.biorxiv.org/content/10.1101/2025.08.12.669958v1">QA encoding models</a> - model fMRI
         language responses to verbal
         theories using LLM annotations<br>
-        <a href="https://arxiv.org/abs/2305.09863">summarize &amp; score explanations</a> - generate natural-language
+        <a href="https://arxiv.org/abs/2305.09863">Summarize &amp; score explanations</a> - generate natural-language
         explanations of fMRI encoding models<br>
     </div>
 
@@ -115,7 +100,7 @@
             dom: 'Bfrtip',
             buttons: [
                 {
-                    text: '🔎 interpretability',
+                    text: '🔎 Interpretability',
                     action: function (e, dt, node, config) {
                         var current_val = $(".dataTables_wrapper input").val();
                         var table = $('#research_table').DataTable();
@@ -123,7 +108,7 @@
                     }
                 },
                 {
-                    text: '🌀 deep learning',
+                    text: '🌀 Deep learning',
                     action: function (e, dt, node, config) {
                         var current_val = $(".dataTables_wrapper input").val();
                         var table = $('#research_table').DataTable();
@@ -131,7 +116,7 @@
                     }
                 },
                 {
-                    text: '🌳 interpretable models',
+                    text: '🌳 Interpretable models',
                     action: function (e, dt, node, config) {
                         var current_val = $(".dataTables_wrapper input").val();
                         var table = $('#research_table').DataTable();
@@ -139,7 +124,7 @@
                     }
                 },
                 {
-                    text: '💻 open-source ML',
+                    text: '💻 Open-source ML',
                     action: function (e, dt, node, config) {
                         var current_val = $(".dataTables_wrapper input").val();
                         var table = $('#research_table').DataTable();
@@ -162,21 +147,21 @@
 <table id="research_table" class="display" style="width:100%">
     <thead>
         <tr>
-            <th>year</th>
-            <th>title</th>
-            <th>authors</th>
-            <th>tags</th>
-            <th>paper</th>
-            <th>code</th>
-            <th>misc</th>
+            <th>Year</th>
+            <th>Title</th>
+            <th>Authors</th>
+            <th>Tags</th>
+            <th>Paper</th>
+            <th>Code</th>
+            <th>Misc</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td class="center">'26</td>
-            <td>Agentic-imodels: Evolving agentic interpretability tools via autoresearch
+            <td>Agentic-imodels: evolving agentic interpretability tools via autoresearch
             </td>
-            <td>singh, tan, xu, gero, yang, galley, & gao</td>
+            <td>Singh, Tan, Xu, Gero, Yang, Galley, & Gao</td>
             <td class="med">🔎🌀</td>
             <td class="center"><a href="https://arxiv.org/abs/2605.03808">arXiv</a></td>
             <td class="big"><a href="https://github.com/csinva/agentic-imodels"><i class="fa fa-github fa-fw"></i></a>
@@ -189,9 +174,9 @@
             <td class="center">'26</td>
             <td>Generative causal testing
             </td>
-            <td>antonello*, singh*, jain, hsu, gao, yu, & huth</td>
+            <td>Antonello*, Singh*, Jain, Hsu, Gao, Yu, & Huth</td>
             <td class="med">🧠🔎🌀</td>
-            <td class="center"><a href="https://arxiv.org/abs/2410.00812">nature neuroscience</a></td>
+            <td class="center"><a href="https://arxiv.org/abs/2410.00812">Nature Neuroscience</a></td>
             <td class="big"><a href="https://github.com/microsoft/automated-explanations"><i
                         class="fa fa-github fa-fw"></i></a></td>
             <td class="med">
@@ -202,9 +187,9 @@
         </tr>
         <tr>
             <td class="center">'26</td>
-            <td>Sanity Checks for agentic Data Science
+            <td>Sanity checks for agentic data science
             </td>
-            <td>rewolinski*, zane*, huang, singh, wang, gao, & yu</td>
+            <td>Rewolinski*, Zane*, Huang, Singh, Wang, Gao, & Yu</td>
             <td class="med">🔎🌀</td>
             <td class="center"><a href="https://arxiv.org/abs/2604.11003">arXiv</a></td>
             <td class="big"><a href="https://github.com/zachrewolinski/stat-genie"><i
@@ -214,9 +199,9 @@
         </tr>
         <tr>
             <td class="center">'26</td>
-            <td>Test-Time Learning with an Evolving Library
+            <td>Test-time learning with an evolving library
             </td>
-            <td>xu, sordoni, singh, gero, galley, yuan, & gao</td>
+            <td>Xu, Sordoni, Singh, Gero, Galley, Yuan, & Gao</td>
             <td class="med">🌀</td>
             <td class="center"><a href="https://arxiv.org/abs/2605.14477">arXiv</a></td>
             <td class="big"></td>
@@ -225,9 +210,9 @@
         </tr>
         <tr>
             <td class="center">'26</td>
-            <td>Test-time Recursive Thinking
+            <td>Test-time recursive thinking
             </td>
-            <td>zhuang, singh, liu, shen, zhang, shang, gao, & chen</td>
+            <td>Zhuang, Singh, Liu, Shen, Zhang, Shang, Gao, & Chen</td>
             <td class="med">🌀</td>
             <td class="center"><a href="https://arxiv.org/abs/2602.03094">arXiv</a></td>
             <td class="big"><a href="https://github.com/EvanZhuang/test_time_recursive_thinking"><i
@@ -238,9 +223,9 @@
         </tr>
         <tr>
             <td class="center">'26</td>
-            <td>Selecting Feature Interactions by Distilling Foundation Models
+            <td>Selecting feature interactions by distilling foundation models
             </td>
-            <td>jia, singh, carauana, & lengerich</td>
+            <td>Jia, Singh, Carauana, & Lengerich</td>
             <td class="med">🔎🌀</td>
             <td class="center"><a href="https://arxiv.org/abs/2604.13332">arXiv</a></td>
             <td class="big"><a href="https://github.com/Clouddelta/tab-distill"><i class="fa fa-github fa-fw"></i></a>
@@ -250,11 +235,11 @@
         </tr>
         <tr>
             <td class="center">'26</td>
-            <td>Human-AI Co-design for Clinical Prediction Models
+            <td>Human-AI co-design for clinical prediction models
             </td>
-            <td>feng*, kothari*, vossler, bishara, zier, addo, kornblith, tan, & singh</td>
+            <td>Feng*, Kothari*, Vossler, Bishara, Zier, Addo, Kornblith, Tan, & Singh</td>
             <td class="med">💊🌀</td>
-            <td class="center"><a href="https://arxiv.org/abs/2601.09072">npj digital medicine</a></td>
+            <td class="center"><a href="https://arxiv.org/abs/2601.09072">npj Digital Medicine</a></td>
             <td class="big"><a href="https://github.com/jjfenglab/HACHI"><i class="fa fa-github fa-fw"></i></a></td>
             <td class="med">
                 <a
@@ -266,7 +251,7 @@
             <td class="center">'26</td>
             <td>Do explanations generalize across large reasoning models?
             </td>
-            <td>pal, bau, & singh</td>
+            <td>Pal, Bau, & Singh</td>
             <td class="med">💊🌀</td>
             <td class="center"><a href="https://arxiv.org/abs/2601.11517">arXiv</a></td>
             <td class="big"><a href="https://github.com/KoyenaPal/genex/"><i class="fa fa-github fa-fw"></i></a></td>
@@ -276,9 +261,9 @@
         </tr>
         <tr>
             <td class="center">'26</td>
-            <td>Interpreting and Steering State-Space Models via Activation Subspace Bottlenecks
+            <td>Interpreting and steering state-space models via activation subspace bottlenecks
             </td>
-            <td>mohan, gupta, das, & singh</td>
+            <td>Mohan, Gupta, Das, & Singh</td>
             <td class="med">🔎🌀</td>
             <td class="center"><a href="https://arxiv.org/abs/2602.22719">ICML</a></td>
             <td class="big"><a href="https://github.com/vanivamshi/activation-subspace-bottlenecks"><i
@@ -290,7 +275,7 @@
             <td class="center">'25</td>
             <td>Evaluating scientific theories as predictive models in language neuroscience
             </td>
-            <td>singh*, antonello*, guo, mischler, gao, mesgarani, & huth</td>
+            <td>Singh*, Antonello*, Guo, Mischler, Gao, Mesgarani, & Huth</td>
             <td class="med">🧠🔎🌀</td>
             <td class="center"><a href="https://www.biorxiv.org/content/10.1101/2025.08.12.669958v1">bioRxiv</a></td>
             <td class="big"><a href="https://github.com/microsoft/automated-brain-explanations"><i
@@ -303,8 +288,8 @@
         </tr>
         <tr>
             <td class="center">'25</td>
-            <td>Mixture of Inputs</td>
-            <td>zhuang, liu, singh, shang, & gao</td>
+            <td>Mixture of inputs</td>
+            <td>Zhuang, Liu, Singh, Shang, & Gao</td>
             <td class="med">🌀</td>
             <td class="center"><a href="https://arxiv.org/abs/2505.14827">NeurIPS</a></td>
             <td class="big"><a href="https://github.com/EvanZhuang/mixinputs"><i class="fa fa-github fa-fw"></i></a>
@@ -315,9 +300,9 @@
         </tr>
         <tr>
             <td class="center">'25</td>
-            <td>Interpretable Language Modeling via Induction-head Ngram Models
+            <td>Interpretable language modeling via induction-head ngram models
             </td>
-            <td>kim*, mantena*, yang, singh, yoon, & gao</td>
+            <td>Kim*, Mantena*, Yang, Singh, Yoon, & Gao</td>
             <td class="med">🧠🔎🌀</td>
             <td class="center"><a href="https://arxiv.org/abs/2411.00066">NeurIPS</a></td>
             <td class="big"><a href="https://github.com/ejkim47/induction-gram"><i class="fa fa-github fa-fw"></i></a>
@@ -328,9 +313,9 @@
         </tr>
         <tr>
             <td class="center">'25</td>
-            <td>Bayesian Concept Bottleneck Models with LLM Priors
+            <td>Bayesian concept bottleneck models with LLM priors
             </td>
-            <td>feng, kothari, zier, singh, & tan</td>
+            <td>Feng, Kothari, Zier, Singh, & Tan</td>
             <td class="med">🔎🌀</td>
             <td class="center"><a href="https://arxiv.org/abs/2410.15555">NeurIPS</a></td>
             <td class="big"><a href="https://github.com/jjfeng/bc-llm"><i class="fa fa-github fa-fw"></i></a>
@@ -342,7 +327,7 @@
         <tr>
             <td class="center">'25</td>
             <td>OmniGuard</td>
-            <td>verma, hines, bilmes, siska, zettlemoyer, gonen, & singh</td>
+            <td>Verma, Hines, Bilmes, Siska, Zettlemoyer, Gonen, & Singh</td>
             <td class="med">🌀</td>
             <td class="center"><a href="https://arxiv.org/abs/2505.23856">EMNLP</a></td>
             <td class="big"><a href="https://github.com/vsahil/OmniGuard"><i class="fa fa-github fa-fw"></i></a>
@@ -353,9 +338,9 @@
         </tr>
         <tr>
             <td class="center">'25</td>
-            <td>Systematic Bias in Clinical Decision Instrument Development
+            <td>Systematic bias in clinical decision instrument development
             </td>
-            <td>obra, singh, et al.</td>
+            <td>Obra, Singh, et al.</td>
             <td class="med">🔎💊</td>
             <td class="center"><a href="https://www.nature.com/articles/s41746-025-02119-7">npj Digital
                     Medicine</a></td>
@@ -368,12 +353,12 @@
         </tr>
         <tr>
             <td class="center">'25</td>
-            <td>Analyzing patient perspectives with llms
+            <td>Analyzing patient perspectives with LLMs
             </td>
-            <td>kornblith*, singh* et al.</td>
+            <td>Kornblith*, Singh* et al.</td>
             <td class="med">💊🌀</td>
-            <td class="center"><a href="https://www.nature.com/articles/s41598-025-89996-w">nature scientific
-                    reports</a></td>
+            <td class="center"><a href="https://www.nature.com/articles/s41598-025-89996-w">Nature Scientific
+                    Reports</a></td>
             <td class="big"><a href="https://github.com/csinva/pedidose-efic-analysis"><i
                         class="fa fa-github fa-fw"></i></a>
             </td>
@@ -385,9 +370,9 @@
             <td class="center">'25</td>
             <td>SimDINO
             </td>
-            <td>wu et al.</td>
+            <td>Wu et al.</td>
             <td class="med">🌀</td>
-            <td class="center"><a href="https://arxiv.org/abs/2502.10385">icml</a></td>
+            <td class="center"><a href="https://arxiv.org/abs/2502.10385">ICML</a></td>
             <td class="big"><a href="https://github.com/RobinWu218/SimDINO"><i class="fa fa-github fa-fw"></i></a>
             </td>
             <td class="med">
@@ -397,11 +382,11 @@
         </tr>
         <tr>
             <td class="center">'25</td>
-            <td>Vector-ICL: In-context Learning with Continuous Vector Representations
+            <td>Vector-ICL: in-context learning with continuous vector representations
             </td>
-            <td>zhuang et al.</td>
+            <td>Zhuang et al.</td>
             <td class="med">🔎🌀</td>
-            <td class="center"><a href="https://arxiv.org/abs/2410.05629">iclr</a></td>
+            <td class="center"><a href="https://arxiv.org/abs/2410.05629">ICLR</a></td>
             <td class="big"><a href="https://github.com/EvanZhuang/vector-icl"><i class="fa fa-github fa-fw"></i></a>
             </td>
             <td class="med">
@@ -410,11 +395,11 @@
         </tr>
         <tr>
             <td class="center">'24</td>
-            <td>Crafting Interpretable Embeddings by Asking LLMs Questions
+            <td>Crafting interpretable embeddings by asking LLMs questions
             </td>
-            <td>benara*, singh*, morris, antonello, stoica, huth, & gao</td>
+            <td>Benara*, Singh*, Morris, Antonello, Stoica, Huth, & Gao</td>
             <td class="med">🧠🔎🌀</td>
-            <td class="center"><a href="https://arxiv.org/abs/2405.16714">neurips</a></td>
+            <td class="center"><a href="https://arxiv.org/abs/2405.16714">NeurIPS</a></td>
             <td class="big"><a href="https://github.com/csinva/interpretable-embeddings"><i
                         class="fa fa-github fa-fw"></i></a></td>
             <td class="med">
@@ -425,11 +410,11 @@
         </tr>
         <tr>
             <td class="center">'25</td>
-            <td>Towards Understanding Graphical Perception in Large Multimodal Models
+            <td>Towards understanding graphical perception in large multimodal models
             </td>
-            <td>zhang et al.</td>
+            <td>Zhang et al.</td>
             <td class="med">🌀</td>
-            <td class="center"><a href="https://arxiv.org/abs/2503.10857">arxiv</a></td>
+            <td class="center"><a href="https://arxiv.org/abs/2503.10857">arXiv</a></td>
             <td class="big"><a href="https://github.com/microsoft/lmm-graphical-perception"><i
                         class="fa fa-github fa-fw"></i></a>
             </td>
@@ -438,11 +423,11 @@
         </tr>
         <tr>
             <td class="center">'24</td>
-            <td>Rethinking Interpretability in the Era of Large Language Models
+            <td>Rethinking interpretability in the era of large language models
             </td>
-            <td>singh, inala, galley, caruana, & gao</td>
+            <td>Singh, Inala, Galley, Caruana, & Gao</td>
             <td class="med">🔎🌀</td>
-            <td class="center"><a href="https://arxiv.org/abs/2402.01761">arxiv</a></td>
+            <td class="center"><a href="https://arxiv.org/abs/2402.01761">arXiv</a></td>
             <td class="big"></td>
             <td class="med">
                 <a href="https://x.com/csinva/status/1754859351360098444"><i class="fa fa-twitter fa-fw"></i></a>
@@ -450,9 +435,9 @@
         </tr>
         <tr>
             <td class="center">'24</td>
-            <td>Towards Consistent Natural-Language Explanations via Explanation-Consistency Finetuning
+            <td>Towards consistent natural-language explanations via explanation-consistency finetuning
             </td>
-            <td>chen et al.</td>
+            <td>Chen et al.</td>
             <td class="med">🔎🌀</td>
             <td class="center"><a href="https://arxiv.org/abs/2401.13986">COLING</a></td>
             <td class="big"><a href="https://github.com/yandachen/explanation-consistency-finetuning"><i
@@ -462,11 +447,11 @@
         </tr>
         <tr>
             <td class="center">'24</td>
-            <td>Learning a Decision Tree Algorithm with Transformers
+            <td>Learning a decision tree algorithm with Transformers
             </td>
-            <td>zhuang et al.</td>
+            <td>Zhuang et al.</td>
             <td class="med">🔎🌀🌳</td>
-            <td class="center"><a href="https://arxiv.org/abs/2402.03774">tmlr</a></td>
+            <td class="center"><a href="https://arxiv.org/abs/2402.03774">TMLR</a></td>
             <td class="big"><a href="https://github.com/EvanZhuang/MetaTree"><i class="fa fa-github fa-fw"></i></a></td>
             <td class="med">
                 <a href="https://x.com/fly51fly/status/1755176136978653466"><i class="fa fa-twitter fa-fw"></i></a>
@@ -475,11 +460,11 @@
 
         <tr>
             <td class="center">'24</td>
-            <td>Model Tells Itself Where to Attend: Faithfulness Meets Automatic Attention Steering
+            <td>Model tells itself where to attend: faithfulness meets automatic attention steering
             </td>
-            <td>zhang*, yu*, et al.</td>
+            <td>Zhang*, Yu*, et al.</td>
             <td class="med">🔎🌀</td>
-            <td class="center"><a href="https://arxiv.org/abs/2409.10790">arxiv</a></td>
+            <td class="center"><a href="https://arxiv.org/abs/2409.10790">arXiv</a></td>
             <td class="big"><a href="https://github.com/QingruZhang/AutoPASTA"><i class="fa fa-github fa-fw"></i></a>
             </td>
             <td class="med">
@@ -488,11 +473,11 @@
 
         <tr>
             <td class="center">'24</td>
-            <td>Tell Your Model Where to Attend: Post-hoc Attention Steering for LLMs
+            <td>Tell your model where to attend: post-hoc attention steering for LLMs
             </td>
-            <td>zhang et al.</td>
+            <td>Zhang et al.</td>
             <td class="med">🔎🌀</td>
-            <td class="center"><a href="https://arxiv.org/abs/2311.02262">iclr</a></td>
+            <td class="center"><a href="https://arxiv.org/abs/2311.02262">ICLR</a></td>
             <td class="big"><a href="https://github.com/QingruZhang/PASTA"><i class="fa fa-github fa-fw"></i></a></td>
             <td class="med">
                 <a href="https://x.com/_akhaliq/status/1721793530706682120"><i class="fa fa-twitter fa-fw"></i></a>
@@ -500,11 +485,11 @@
         </tr>
         <tr>
             <td class="center">'24</td>
-            <td>Attribute Structuring Improves LLM-Based Evaluation of Clinical Text Summaries
+            <td>Attribute structuring improves LLM-based evaluation of clinical text summaries
             </td>
-            <td>gero et al.</td>
+            <td>Gero et al.</td>
             <td class="med">🔎🌀</td>
-            <td class="center"><a href="https://arxiv.org/abs/2403.01002">ml4h findings</a></td>
+            <td class="center"><a href="https://arxiv.org/abs/2403.01002">ML4H findings</a></td>
             <td class="big"><a href="https://github.com/microsoft/attribute-structuring/"><i
                         class="fa fa-github fa-fw"></i></a></td>
             <td class="med">
@@ -512,11 +497,11 @@
         </tr>
         <tr>
             <td class="center">'23</td>
-            <td>Tree Prompting
+            <td>Tree prompting
             </td>
-            <td>morris*, singh*, rush, gao, & deng</td>
+            <td>Morris*, Singh*, Rush, Gao, & Deng</td>
             <td class="med">🔎🌀🌳</td>
-            <td class="center"><a href="https://arxiv.org/abs/2310.14034">emnlp</a></td>
+            <td class="center"><a href="https://arxiv.org/abs/2310.14034">EMNLP</a></td>
             <td class="big"><a href="https://github.com/csinva/tree-prompt"><i class="fa fa-github fa-fw"></i></a></td>
             <td class="med">
                 <a href="https://docs.google.com/presentation/d/1aZephm_rErDCxgAxdbiO4lhfbTK4ftg-Yav127GfdlQ/"><i
@@ -526,11 +511,11 @@
         </tr>
         <tr>
             <td class="center">'23</td>
-            <td>Augmenting Interpretable Models with LLMs during Training
+            <td>Augmenting interpretable models with LLMs during training
             </td>
-            <td>singh, askari, caruana, & gao</td>
+            <td>Singh, Askari, Caruana, & Gao</td>
             <td class="med">🔎🌀🌳</td>
-            <td class="center"><a href="https://arxiv.org/abs/2209.11799">nature communications</a></td>
+            <td class="center"><a href="https://arxiv.org/abs/2209.11799">Nature Communications</a></td>
             <td class="big"><a href="https://github.com/microsoft/augmented-interpretable-models"><i
                         class="fa fa-github fa-fw"></i></a></td>
             <td class="med">
@@ -542,9 +527,9 @@
             <td class="center">'23</td>
             <td>Explaining black box text modules in natural language with language models
             </td>
-            <td>singh*, hsu*, antonello, jain, huth, yu & gao</td>
+            <td>Singh*, Hsu*, Antonello, Jain, Huth, Yu & Gao</td>
             <td class="med">🔎🌀</td>
-            <td class="center"><a href="https://arxiv.org/abs/2305.09863">neurips workshop</a></td>
+            <td class="center"><a href="https://arxiv.org/abs/2305.09863">NeurIPS workshop</a></td>
             <td class="big"><a href="https://github.com/microsoft/automated-explanations"><i
                         class="fa fa-github fa-fw"></i></a></td>
             <td class="med">
@@ -556,11 +541,11 @@
         </tr>
         <tr>
             <td class="center">'23</td>
-            <td>Self-Verification Improves Few-Shot Clinical Information Extraction
+            <td>Self-verification improves few-shot clinical information extraction
             </td>
-            <td>gero*, singh*, cheng, naumann, galley, gao, & poon</td>
+            <td>Gero*, Singh*, Cheng, Naumann, Galley, Gao, & Poon</td>
             <td class="med">🔎🌀💊</td>
-            <td class="center"><a href="https://arxiv.org/abs/2306.00024">icml workshop</a></td>
+            <td class="center"><a href="https://arxiv.org/abs/2306.00024">ICML workshop</a></td>
             <td class="big"><a href="https://github.com/microsoft/clinical-self-verification"><i
                         class="fa fa-github fa-fw"></i></a></td>
             <td class="med">
@@ -570,9 +555,9 @@
             <td class="center">'22</td>
             <td>Explaining patterns in data with language models via interpretable autoprompting
             </td>
-            <td>singh*, morris*, aneja, rush, & gao</td>
+            <td>Singh*, Morris*, Aneja, Rush, & Gao</td>
             <td class="med">🔎🌀</td>
-            <td class="center"><a href="https://arxiv.org/abs/2210.01848">emnlp workshop</a></td>
+            <td class="center"><a href="https://arxiv.org/abs/2210.01848">EMNLP workshop</a></td>
             <td class="big"><a href="https://github.com/csinva/interpretable-autoprompting"><i
                         class="fa fa-github fa-fw"></i></a></td>
             <td class="med">
@@ -612,11 +597,11 @@
             <td class="center">'22</td>
             <td>Stress testing a clinical decision instrument performance for intra-abdominal injury
             </td>
-            <td>kornblith*, singh* et al.</td>
+            <td>Kornblith*, Singh* et al.</td>
             <td class="med">🔎🌳💊</td>
             <td class="center"><a
-                    href="https://journals.plos.org/digitalhealth/article?id=10.1371/journal.pdig.0000076">PLOS digital
-                    health</a></td>
+                    href="https://journals.plos.org/digitalhealth/article?id=10.1371/journal.pdig.0000076">PLOS Digital
+                    Health</a></td>
             <td class="big"><a href="https://github.com/csinva/iai-clinical-decision-rule"><i
                         class="fa fa-github fa-fw"></i></a></td>
             <td class="med">
@@ -627,9 +612,9 @@
         <tr>
             <td class="center">'22</td>
             <td>Fast interpretable greedy-tree sums (FIGS)</td>
-            <td>tan*, singh*, nasseri, agarwal, & yu</td>
+            <td>Tan*, Singh*, Nasseri, Agarwal, & Yu</td>
             <td class="med">🔎🌳</td>
-            <td class="center"><a href="https://arxiv.org/abs/2201.11931">pnas</a></td>
+            <td class="center"><a href="https://arxiv.org/abs/2201.11931">PNAS</a></td>
             <!--            <td></td>-->
             <td class="big"><a href="https://github.com/csinva/imodels"><i class="fa fa-github fa-fw"></i></a>
             </td>
@@ -642,9 +627,9 @@
         <tr>
             <td class="center">'22</td>
             <td>Hierarchical shrinkage for trees</td>
-            <td>agarwal*, tan*, ronen, singh, & yu</td>
+            <td>Agarwal*, Tan*, Ronen, Singh, & Yu</td>
             <td class="med">🔎🌳</td>
-            <td class="center"><a href="https://arxiv.org/abs/2202.00858">icml (spotlight)</a></td>
+            <td class="center"><a href="https://arxiv.org/abs/2202.00858">ICML (spotlight)</a></td>
             <!--            <td></td>-->
             <td class="big"><a href="https://github.com/csinva/imodels"><i class="fa fa-github fa-fw"></i></a>
             </td>
@@ -659,9 +644,9 @@
         <tr>
             <td class="center">'22</td>
             <td>VeridicalFlow: a python package for building trustworthy data science pipelines with PCS</td>
-            <td>duncan*, kapoor*, agarwal*, singh*, & yu</td>
+            <td>Duncan*, Kapoor*, Agarwal*, Singh*, & Yu</td>
             <td class="med">💻🔍</td>
-            <td class="center"><a href="https://joss.theoj.org/papers/10.21105/joss.03895">joss</a></td>
+            <td class="center"><a href="https://joss.theoj.org/papers/10.21105/joss.03895">JOSS</a></td>
             <!--            <td></td>-->
             <td class="big"><a href="https://github.com/Yu-Group/veridical-flow"><i class="fa fa-github fa-fw"></i></a>
             </td>
@@ -673,9 +658,9 @@
         <tr>
             <td class="center">'21</td>
             <td>imodels: a python package for fitting interpretable models</td>
-            <td>singh*, nasseri*, et al.</td>
+            <td>Singh*, Nasseri*, et al.</td>
             <td class="med">💻🔍🌳</td>
-            <td class="center"><a href="https://joss.theoj.org/papers/10.21105/joss.03192">joss</a></td>
+            <td class="center"><a href="https://joss.theoj.org/papers/10.21105/joss.03192">JOSS</a></td>
             <!--            <td></td>-->
             <td class="big"><a href="https://github.com/csinva/imodels"><i class="fa fa-github fa-fw"></i></a>
             </td>
@@ -688,9 +673,9 @@
         <tr>
             <td class="center">'21</td>
             <td>Adaptive wavelet distillation from neural networks through interpretations</td>
-            <td>ha, singh, et al.</td>
+            <td>Ha, Singh, et al.</td>
             <td class="med">🔍🌀🌳</td>
-            <td class="center"><a href="https://arxiv.org/abs/2107.09145">neurips</a></td>
+            <td class="center"><a href="https://arxiv.org/abs/2107.09145">NeurIPS</a></td>
             <!--            <td></td>-->
             <td class="big"><a href="https://github.com/Yu-Group/adaptive-wavelet-distillation"><i
                         class="fa fa-github fa-fw"></i></a>
@@ -704,9 +689,9 @@
         <tr>
             <td class="center">'21</td>
             <td>Matched sample selection with GANs for mitigating attribute confounding</td>
-            <td>singh, balakrishnan, & perona</td>
+            <td>Singh, Balakrishnan, & Perona</td>
             <td class="med">🌀</td>
-            <td class="center"><a href="https://arxiv.org/abs/2103.13455">cvpr workshop</a></td>
+            <td class="center"><a href="https://arxiv.org/abs/2103.13455">CVPR workshop</a></td>
             <!--            <td></td>-->
             <td class="big"><a href="https://github.com/csinva/matching-with-gans"><i
                         class="fa fa-github fa-fw"></i></a>
@@ -719,9 +704,9 @@
         <tr>
             <td class="center">'21</td>
             <td>Revisiting complexity and the bias-variance tradeoff</td>
-            <td>dwivedi*, singh*, yu & wainwright</td>
+            <td>Dwivedi*, Singh*, Yu & Wainwright</td>
             <td class="med">🌀</td>
-            <td class="center"><a href="https://jmlr.org/papers/volume24/21-1133/21-1133.pdf">jmlr</a></td>
+            <td class="center"><a href="https://jmlr.org/papers/volume24/21-1133/21-1133.pdf">JMLR</a></td>
             <td class="big"><a href="https://github.com/csinva/mdl-complexity"><i class="fa fa-github fa-fw"></i></a>
             </td>
             <td class="med">
@@ -732,9 +717,9 @@
         <tr>
             <td class="center">'20</td>
             <td>Curating a COVID-19 data repository and forecasting county-level death counts in the United States</td>
-            <td>altieri et al.</td>
+            <td>Altieri et al.</td>
             <td class="med">🔎🦠</td>
-            <td class="center"><a href="https://arxiv.org/abs/2005.07882">hdsr</a></td>
+            <td class="center"><a href="https://arxiv.org/abs/2005.07882">HDSR</a></td>
             <td class="big"><a href="https://github.com/Yu-Group/covid19-severity-prediction"><i
                         class="fa fa-github fa-fw"></i></a></td>
             <td class="med">
@@ -746,9 +731,9 @@
         <tr>
             <td class="center">'20</td>
             <td>Transformation importance with applications to cosmology</td>
-            <td>singh*, ha*, lanusse, boehm, liu & yu</td>
+            <td>Singh*, Ha*, Lanusse, Boehm, Liu & Yu</td>
             <td class="med">🔎🌀🌌</td>
-            <td class="center"><a href="https://arxiv.org/abs/2003.01926">iclr workshop (spotlight)</a></td>
+            <td class="center"><a href="https://arxiv.org/abs/2003.01926">ICLR workshop (spotlight)</a></td>
             <td class="big"><a href="https://github.com/csinva/transformation-importance"><i
                         class="fa fa-github fa-fw"></i></a>
             </td>
@@ -759,9 +744,9 @@
         <tr>
             <td class="center">'20</td>
             <td>Interpretations are useful: penalizing explanations to align neural networks with prior knowledge</td>
-            <td>rieger, singh, murdoch & yu</td>
+            <td>Rieger, Singh, Murdoch & Yu</td>
             <td class="med">🔎🌀</td>
-            <td class="center"><a href="http://proceedings.mlr.press/v119/rieger20a.html">icml</a>
+            <td class="center"><a href="http://proceedings.mlr.press/v119/rieger20a.html">ICML</a>
             </td>
             <td class="big"><a href="https://github.com/laura-rieger/deep-explanation-penalization"><i
                         class="fa fa-github fa-fw"></i></a></td>
@@ -783,10 +768,10 @@
         </tr>
         <tr>
             <td class="center">'19</td>
-            <td>interpretable machine learning: definitions, methods, and applications</td>
+            <td>Interpretable machine learning: definitions, methods, and applications</td>
             <td>Murdoch*, Singh*, et al.</td>
             <td class="med">🔍🌳🌀</td>
-            <td class="center"><a href="https://arxiv.org/abs/1901.04592">pnas</a></td>
+            <td class="center"><a href="https://arxiv.org/abs/1901.04592">PNAS</a></td>
             <td></td>
             <td class="med"><a
                     href="https://docs.google.com/presentation/d/13jbgFyYSSDaMUd2w4RY9GHteTcWJj1drS6_2sOkvnv4/"><i
@@ -795,17 +780,17 @@
         </tr>
         <tr>
             <td class="center">'19</td>
-            <td>disentangled attribution curves for interpreting random forests and boosted trees</td>
-            <td>devlin, singh, murdoch & yu</td>
+            <td>Disentangled attribution curves for interpreting random forests and boosted trees</td>
+            <td>Devlin, Singh, Murdoch & Yu</td>
             <td class="med">🔍🌳</td>
-            <td class="center"><a href="https://arxiv.org/abs/1905.07631">arxiv</a></td>
+            <td class="center"><a href="https://arxiv.org/abs/1905.07631">arXiv</a></td>
             <td class="big"><a href="https://github.com/csinva/disentangled_attribution_curves"><i
                         class="fa fa-github fa-fw"></i></a></td>
             <td></td>
         </tr>
         <tr>
             <td class="center">'18</td>
-            <td>large scale image segmentation with structured loss based deep learning for connectome reconstruction
+            <td>Large scale image segmentation with structured loss based deep learning for connectome reconstruction
             </td>
             <td>Funke*, Tschopp*, et al.</td>
             <td class="med">🧠🌀</td>
@@ -818,7 +803,7 @@
         </tr>
         <tr>
             <td class="center">'18</td>
-            <td>linearization of excitatory synaptic integration at no extra cost</td>
+            <td>Linearization of excitatory synaptic integration at no extra cost</td>
             <td>Morel, Singh, & Levy</td>
             <td class="med">🧠</td>
             <td class="center"><a href="http://rdcu.be/FDUo">J Comp Neuro</a></td>
@@ -830,10 +815,10 @@
         </tr>
         <tr>
             <td class="center">'17</td>
-            <td>a consensus layer V pyramidal neuron can sustain interpulse-interval coding</td>
+            <td>A consensus layer V pyramidal neuron can sustain interpulse-interval coding</td>
             <td>Singh & Levy</td>
             <td class="med">🧠</td>
-            <td class="center"><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0180839">Plos
+            <td class="center"><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0180839">PLOS
                     One</a></td>
             <td class="big"><a href="https://senselab.med.yale.edu/modeldb/ShowModel.cshtml?model=237594"><i
                         class="fa fa-github fa-fw"></i></a></td>
@@ -843,13 +828,13 @@
         </tr>
         <tr>
             <td class="center">'17</td>
-            <td>a constrained, weighted-l1 minimization approach for joint discovery of heterogeneous neural
+            <td>A constrained, weighted-l1 minimization approach for joint discovery of heterogeneous neural
                 connectivity
                 graphs
             </td>
             <td>Singh, Wang, & Qi</td>
             <td class="med">🧠</td>
-            <td class="center"><a href="https://arxiv.org/abs/1709.04090">neurips Workshop</a></td>
+            <td class="center"><a href="https://arxiv.org/abs/1709.04090">NeurIPS Workshop</a></td>
             <td class="big"><a href="https://cran.r-project.org/web/packages/simule/index.html"><i
                         class="fa fa-github fa-fw"></i></a></td>
             <td class="med"><a
@@ -863,36 +848,3 @@
     </tbody>
 
 </table>
-
-<style>
-    .big {
-        font-size: large;
-        text-align: center;
-    }
-
-    .med {
-        font-size: medium;
-        text-align: center;
-    }
-
-    td {
-        text-align: left;
-    }
-
-    .center {
-        text-align: center;
-    }
-
-    .dt-button span {
-        color: white;
-        font-family: Lora, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    }
-
-    .dt-button {
-        border-color: rgb(141, 141, 141) !important;
-    }
-
-    .dt-button:hover {
-        border: 2px solid #5bc0de !important;
-    }
-</style>

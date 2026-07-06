@@ -1,0 +1,213 @@
+/* home.css — home-page-only styles (index via _layouts/main.html).
+   Merged from chandan_tables.css, lowercase.css and the former inline
+   <style> blocks. Linked last in main.html, after the DataTables CDN
+   sheet, so its table overrides win. */
+
+/* ============================================================
+   chandan_tables.css  (DataTables overrides — must stay after DataTables CDN css)
+   ============================================================ */
+
+td, th {
+    padding: 10px;
+    background: #000;
+}
+.hidden {
+    display: none;
+}
+td.sorting_1 {
+    color: #fff;
+}
+
+table.dataTable.display tbody tr.even>.sorting_1, table.dataTable.order-column.stripe tbody tr.even>.sorting_1, table.dataTable.display tbody tr.odd>.sorting_1, table.dataTable.order-column.stripe tbody tr.odd>.sorting_1{
+   background-color: #222;
+}
+
+input {
+    background: #000;
+    color: #eee;
+}
+
+
+select {
+    background: #a4a4a4;
+    border:1px;
+}
+
+thead, th {text-align: center;}
+
+.dataTables_info{
+    color: #e5e5e5 !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    background-color: #2c2c2c !important;
+    color: #ffffff !important;
+}
+
+label {
+    color: #ccc;
+}
+
+/* ============================================================
+   research boxes  (was inline in _includes/01_research.html)
+   ============================================================ */
+
+    .research_box {
+        padding: 10px;
+        margin-bottom: 20px;
+        background-color: #262626;
+        width: 100%;
+        border: 3px solid #3d3c3c;
+    }
+
+    .research_box:hover {
+        border: 3px solid #5bc0de;
+        background-color: #3d3c3c;
+        /* Adjust the border width and color as needed */
+    }
+
+/* ============================================================
+   research table cells & DataTables buttons  (was inline in _includes/01_research.html)
+   ============================================================ */
+
+    .big {
+        font-size: large;
+        text-align: center;
+    }
+
+    .med {
+        font-size: medium;
+        text-align: center;
+    }
+
+    td {
+        text-align: left;
+    }
+
+    .center {
+        text-align: center;
+    }
+
+    .dt-button span {
+        color: white;
+        font-family: Lora, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    .dt-button {
+        border-color: rgb(141, 141, 141) !important;
+    }
+
+    .dt-button:hover {
+        border: 2px solid #5bc0de !important;
+    }
+
+/* ============================================================
+   gallery  (was inline in _includes/02__gallery.html)
+   ============================================================ */
+
+    div.gallery {
+        margin: 2px;
+        /*border: 1px solid #ccc;*/
+        float: left;
+        width: 20%;
+    }
+
+    div.gallery:hover {
+        border: 1px solid #777;
+    }
+
+    div.gallery img {
+        width: 100%;
+        height: auto;
+        border-radius: 5%;
+        /*hieght: 100px;*/
+        /*width: 300px;*/
+    }
+
+    div.desc {
+        padding: 15px;
+        text-align: center;
+        font-size: medium;
+    }
+
+/* ============================================================
+   column grid & lists  (was inline in _includes/02_notes_main.html)
+   ============================================================ */
+
+    .colfull {
+        float: left;
+        width: 100%;
+        padding-bottom: 5px;
+        text-align: center;
+    }
+
+    .coll {
+        float: left;
+        width: 33.33%;
+        padding-bottom: 50px;
+        text-align: center;
+    }
+
+    .coll2 {
+        float: left;
+        width: 49.9%;
+        padding-bottom: 50px;
+        text-align: center;
+    }
+
+    .coll3 {
+        float: left;
+        width: 32.9%;
+        padding-bottom: 50px;
+        text-align: center;
+    }
+
+    .coll4 {
+        float: left;
+        width: 24.9%;
+        padding-bottom: 50px;
+        text-align: center;
+    }
+
+    .coll5 {
+        float: left;
+        width: 19.99%;
+        padding-bottom: 50px;
+    }
+
+    .coll6 {
+        float: left;
+        width: 16.66%;
+        padding-bottom: 50px;
+    }
+
+    .coll9 {
+        float: left;
+        width: 11.11%;
+        padding-bottom: 50px;
+    }
+
+    .coll10 {
+        float: left;
+        width: 10%;
+        padding-bottom: 50px;
+    }
+
+    .coll12 {
+        float: left;
+        width: 8.33%;
+        padding-bottom: 50px;
+    }
+
+
+    /* Clear floats after the columns */
+    .roww:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    .list-items {
+        display: inline-block;
+        text-align: left;
+    }

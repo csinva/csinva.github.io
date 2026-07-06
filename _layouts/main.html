@@ -6,12 +6,13 @@
     <div id="particles-js" text-align="center"></div>
     {% include navigation.html %}
     {% include js.html %}
-    <script src="https://kit.fontawesome.com/ace312f182.js" crossorigin="anonymous"></script>
 
-    <!-- Styling Tables -->
+    <!-- DataTables CDN stylesheet (overridden by home.css below) -->
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
-    <link href="{{ site.baseurl }}/assets/css/chandan_tables.css" rel="stylesheet">
-    <link href="{{ site.baseurl }}/assets/css/lowercase.css" rel="stylesheet">
+
+    <!-- Home-page CSS (tables + lowercase + former inline blocks), loaded last so it wins the cascade -->
+    <link href="{{ site.baseurl }}/assets/css/home.css" rel="stylesheet">
+    <link href="{{ site.baseurl }}/assets/css/icons.css" rel="stylesheet">
 </head>
 {% include 00_about.html %}
 
