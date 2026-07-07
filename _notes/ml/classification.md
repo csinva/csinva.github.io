@@ -332,15 +332,6 @@ category: ml
       - could just augment data, but can be infeasible
       - computationally costly so we can approximate the curve these rotations make in pixel space with the *invariant tangent line*
       - stores this line for each point and then find distance as the distance between these lines
-- finding NN with *k-d* (k-dimensional) tree
-  - balanced binary tree over data with arbitrary dimensions
-  - each level splits in one dimension
-  - might have to search both branches of tree if close to split
-- finding NN with *locality-sensitive hashing*
-  - approximate
-  - make multiple hash tables
-    - each uses random subset of bit-string dimensions to project onto a line
-    - union candidate points from all hash tables and actually check their distances
 - comparisons
   - error rate of 1 NN is never more than twice that of Bayes error
 

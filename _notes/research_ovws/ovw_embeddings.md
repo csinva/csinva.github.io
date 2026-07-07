@@ -17,57 +17,55 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
 - detailed overview of info retrieval ([bruch, 2024](https://arxiv.org/abs/2401.09350.pdf))
 - introductory [blog post](https://osanseviero.github.io/hackerllama/blog/posts/sentence_embeddings/) on embeddings
 
-# popular embedding models
+# embedding model distinctions
 
-- companies summer 2026: google (gemini embedding), voyage (voyage series, open-source voyage-4-nano), alibaba (qwen embedding, GTE), cohere, openai (relatively outdated), BAAI (BGE), Jina (bought by elastic), NVIDIA (NV-Embed), Microsoft (E5), nomic (nomic-embed)
-- embedding approaches
-  - ![embedding_interaction_levels](../assets/embedding_interaction_levels.svg)
+- leading models as of summer 2026: google (gemini embedding), voyage (voyage series, open-source voyage-4-nano), alibaba (qwen embedding, GTE), cohere, openai (relatively outdated), BAAI (BGE), Jina (bought by elastic), NVIDIA (NV-Embed), Microsoft (E5), nomic (nomic-embed)
+- embedding approaches: ![embedding_interaction_levels](../assets/embedding_interaction_levels.svg)
+- 3 levels of interaction
 
-  - 3 levels of interaction
+  1. bi-encoder: separately encode query & doc into a single vec
 
-    1. bi-encoder: separately encode query & doc into a single vec
+  2. late-interaction encoder: separately encode but keep a vector per token & learn some params on how to compute similarity between them
 
-    2. late-interaction encoder: separately encode but keep a vector per token & learn some params on how to compute similarity between them
+     - e.g. ColBERT ([khattab & zaharia, 2020](https://arxiv.org/abs/2004.12832)) uses maxsim to compare, which keeps the vector for each token and then for each token in the query, finds the candidate token it matches best (highest cosine similarity), then averages those best-match scores across all query tokens
 
-       - e.g. ColBERT ([khattab & zaharia, 2020](https://arxiv.org/abs/2004.12832)) uses maxsim to compare, which keeps the vector for each token and then for each token in the query, finds the candidate token it matches best (highest cosine similarity), then averages those best-match scores across all query tokens
+     - Your Embedding Model is SMARTer Than You Think ([zhang...lee, 2026](https://arxiv.org/abs/2605.24938)) - use the maxsim score (along with the original last-token score) to do late interaction without requiring post-training
 
-       - Your Embedding Model is SMARTer Than You Think ([zhang...lee, 2026](https://arxiv.org/abs/2605.24938)) - use the maxsim score (along with the original last-token score) to do late interaction without requiring post-training
+  3. cross-encoder: encode query and doc together
 
-    3. cross-encoder: encode query and doc together
 
+
+# best practices for training
+
+- basic training pipeline
+
+  1. standard self-supervised pre-training, e.g. BERT or off-the-shelf model like Qwen
+
+  2. weak unsupervised pre-training, e.g. weakly related text pairs, such as QA pairs from forums like StackExchange and Quora
+
+  3. high-quality contrastive finetuning on curated paired data, e.g. QA from web searches
+- after retrieving results, a reranker model that takes in both the inputs and the query can be used to quickly improve performance
 - key tricks to improve performance
   - training-time
     - instruction/task conditioning: prompt or prefixes like *search query*, *search document*, *classification*, *clustering* before embedding so model knows how to customize the embedding
-  
     - synthetic data from LLMs: generate tuples of (task, query, positive, hard negative) for contrastive training, especially crafting good hard negatives
-  
     - distillation from more compute-intensive model: e.g. cross-encoder to bi-encoder or post-reranker to before reranker
-  
     - quantization-aware training
-  
     - MoE training
-  
     - sparse representation learning (e.g. UHD-BERT ([jang...seo, 2021](https://arxiv.org/abs/2104.07198)))
-  
     - joint learning with index
-  
-    - contextualized chunking - generate chunk embeddings for multiple things in one forward pass so they have context
-  
     - prior work: query expansion, term dependency model (e.g. tf-idf), topic model, translation model
-  
     - matryoshka representation learning - apply the contrastive loss simultaneously at dims 256, 512, 1024, 2048, etc so users can truncate to tradeoff acc for storage/speed
-  
     - tailoring to specialized domains (e.g. medical, finance)
-  
+    - sharing embedding spaces across different models ([like in voyage-4](https://blog.voyageai.com/2026/01/15/voyage-4/)) so different sizes can be used for embedding/querying
     - minor tricks: model souping / checkpoint merging on different task mixtures, loss balancing across tasks, curriculum over data quality stages, long-context extensions
-  
-  - inference-time
+  - document embedding-time
+    - contextualized chunking - generate chunk embeddings for multiple chunks in one forward pass so they have context (could even aggregate context across chunks)
+  - query inference-time
     - query expansion & reweighting
-      - doc2query ([noguiera, … cho, 2019](https://arxiv.org/abs/1904.08375)) – train passage to query model on MS MARCO then retrieve with BM-25
-      - InPars ([bonifacio…nogueira, 2022](https://dl.acm.org/doi/abs/10.1145/3477495.3531863)) – generate questions with GPT-3; retrieve with BM25
     - hybrid retrieval, combining with BM-25
     - reranking with a cross-encoder for topk results
-  
+
 
 
 
@@ -82,34 +80,56 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
 - early models just trained with bi-encoders, e.g. SBERT=Sentence BERT ([reimers & gurevych, 2019](https://arxiv.org/abs/1908.10084)), SimCSE ([gao, yao & chen, 2021](https://arxiv.org/abs/2104.08821))
   - PromptBERT ([jiang...furu wei...zhang, 2022](https://arxiv.org/abs/2201.04337)):  `This sentence: “ [text] ” means [MASK]` then use the embedding of the mask token - this prevents how all raw embeddings have similar cosine similarities
     - Scaling Sentence Embeddings with LLMs ([jiang, ..., zhuang, 2023](https://arxiv.org/abs/2307.16645)): `This sentence: “ [text] ” means in one word:` then use the embedding of the final token
-
-- next generation of models started using contrastive pre-training, e.g. E5 ([wang...wei, 2022](https://arxiv.org/abs/2212.03533)), GTE ([li...zhang, 2023](https://arxiv.org/abs/2308.03281)), and BGE ([github](https://github.com/FlagOpen/FlagEmbedding))
+- next era of models started using contrastive pre-training, e.g. E5 ([wang...wei, 2022](https://arxiv.org/abs/2212.03533)), GTE ([li...zhang, 2023](https://arxiv.org/abs/2308.03281)), and BGE ([github](https://github.com/FlagOpen/FlagEmbedding))
   - this era included instruction-conditioned embeddings, e.g. Instructor ([su, ..., smith, zettlemoyer, yu, 2022](https://instructor-embedding.github.io))
   - synthetic data became important here, e.g. Promptagator ([dai…wei chang, 2022](https://arxiv.org/abs/2209.11755)) and Gecko ([lee...naim, 2024](https://arxiv.org/abs/2403.20327))
   - Nomic Embed ([nussbaum, morris, duderstadt, & mulyar, 2024](https://static.nomic.ai/reports/2024_Nomic_Embed_Text_Technical_Report.pdf)), ([blog post](https://blog.nomic.ai/posts/nomic-embed-text-v1))
   - Jina Embeddings 2 ([gunther...xiao, 2024](https://arxiv.org/abs/2310.19923)) - achieves long context (8192 tokens)
-
 - next, models initialized using a pre-trained LLM, e.g. E5-mistral-instruct ([wang...wei, 2023](https://arxiv.org/abs/2401.00368)), SGPT ([muennighoff, 2022](https://arxiv.org/abs/2202.08904))
   - during post-training, remove attention masking so stuff is bidirectional, e.g. NV-Embed ([lee...ping, 2024](https://arxiv.org/abs/2405.17428)), LLM2Vec ([behnamghader...reddy, 2024](https://arxiv.org/abs/2404.05961))
-- multimodal??
-- Hypothetical Document Embeddings ([gao…callan, 2022](https://arxiv.org/abs/2212.10496.pdf)) - generate hypothetical document from query + instruction using GPT and find match for that doc
-- RAPTOR: Recursive Abstractive Processing for Tree-Organized Retrieval ([sarthi...manning](https://arxiv.org/abs/2401.18059)) - retrieve many docs and cluster/summarize before using
+- multimodal embeddings
+  - image-text starts with CLIP ([OpenAI, 2021](https://arxiv.org/abs/2103.00020)), open-source replications like OpenCLIP ([LAION/Stability, 2022](https://arxiv.org/abs/2212.07143)), and improvements like MetaCLIP ([Meta, 2023](https://arxiv.org/abs/2309.16671)) and EVA-CLIP ([BAAI, 2023](https://arxiv.org/abs/2303.15389))
+  - can have many modality embeddings aligned through images ImageBind ([Meta, 2023](https://arxiv.org/abs/2305.05665)) or through text LanguageBind ([PKU, 2023](https://arxiv.org/abs/2310.01852))
+  - more modern multimodal embeddings are built by post-training existing large multimodal models, e.g. E5-V ([BUAA/Microsoft, 2024](https://arxiv.org/abs/2407.12580)), VLM2Vec ([Salesforce/Waterloo, 2024](https://arxiv.org/abs/2410.05160)) , GME ([Alibaba, 2024](https://arxiv.org/abs/2412.16855)), voyage-multimodal-3 ([Voyage AI, 2024](https://blog.voyageai.com/2024/11/12/voyage-multimodal-3/)), , jina-embeddings-v4 ([Jina AI, 2025](https://arxiv.org/abs/2506.18902)), Gemini Embedding ([Google DeepMind, 2025](https://arxiv.org/abs/2503.07891)), Cohere Embed v4 ([Cohere, 2025](https://docs.cohere.com/docs/cohere-embed))
+  - video - usually samples frames and embeds them rather than explicit temporal modeling
+- query inference-time expansions
+  - doc2query ([noguiera, … cho, 2019](https://arxiv.org/abs/1904.08375)) – train passage to query model on MS MARCO then retrieve with BM-25
+  - InPars ([bonifacio…nogueira, 2022](https://dl.acm.org/doi/abs/10.1145/3477495.3531863)) – generate questions with GPT-3; retrieve with BM25
+  - HyDE ([gao…callan, 2022](https://arxiv.org/abs/2212.10496.pdf)) - at inference time, generate synthetic doc from query + instruction & find match for that doc
+- rerankers
+  - 3 common versions: pointwise (score each document independently), pairwise (learn "A beats B"), listwise (optimize the ordering of the whole list, targeting metrics like NDCG directly)
+  - early models like ms-marco-MiniLM were cross-encoders, people later found that prompting an LLM did well but was expensive, so these were distilled
+  - newer models like Rank1 use reasoning for reranking
+- contextualized chunking
+  - voyage does this via explicitly training a model to output separate vectors for each chunk
+  - jina does this via [late chunking](https://jina.ai/news/late-chunking-in-long-context-embedding-models/) (embed whole doc, get embeddings for a chunk by mean pooling over its tokens)
+  - Contextual retreival ([Anthropic blog post, 2024](https://www.anthropic.com/news/contextual-retrieval)) - prepends an LLM-generated summary to every chunk before embedding
+  - more researchy
+    - RAPTOR ([sarthi...manning, 2024](https://arxiv.org/abs/2401.18059)) - build hierarchical index by embedding, clustering, summarizing, and embedding the summaries
+    - Contextual Document Embeddings ([morris & rush, 2024](https://arxiv.org/abs/2410.02525)) - embed docs conditioned on other docs (requires training to do this well)
+
 - foundations of vector retrieval book ([bruch, 2024](https://arxiv.org/abs/2401.09350.pdf))
 - papers with a little trick
-  - EchoEmbeddings: Repetition Improves LM Embeddings ([springer, kotha, fried, neubig, & raghunathan, 2024](https://arxiv.org/abs/2402.15449.pdf))
-    - Feed a prompt such as “Rewrite the sentence: x, rewritten sentence: x” to the LM and pool the contextualized embeddings of the 2nd occurence of x
-  - GritLM ([meunninghoff...kiela, 2024](https://arxiv.org/abs/2402.09906)) - train a single model that, given different instructions, can produce either generations or embeddings
-  - Matryoshka Representation Learning ([kusupati...kakade, jain, & farhadi, 2022](https://arxiv.org/abs/2205.13147)) - in training given an embedding of full dimensionality M (e.g. 2048), learn N different distance functions for each prefix of the embedding (e.g. l2_norm(embedding[:32]), l2_norm(embedding[:64]), l2_norm(embedding[:128]), etc). 
-    - Beyond Matryoshka: Revisiting Sparse Coding for Adaptive Representation ([wen...you, 2025](https://arxiv.org/abs/2503.01776)) - instead learn sparse mask on top of original embedding
-    - AGRAME: Any-Granularity Ranking with Multi-Vector Embeddings ([reddy...potdar, 2024](https://arxiv.org/abs/2405.15028)) - rank at varying levels of granularity while maintaining encoding at a single (coarser) level
-  - EvoEmbedding: Evolvable Representations for Long-Context Retrieval and Agentic Memory ([nie, fu, feng & shan, 2026](https://arxiv.org/abs/2606.21649)) - maintains a continuously updated latent memory as it sequentially processes inputs, and uses it alongside the raw content to jointly generate embeddings
-  - DREAM: Dense Retrieval Embeddings via Autoregressive Modeling ([tang & yang, 2026](https://arxiv.org/abs/2606.24667)) - instead of contrastive learning, use retriever to replace attention scores for particular heads in next-token prediction task
+  - training-time
+    - GritLM ([meunninghoff...kiela, 2024](https://arxiv.org/abs/2402.09906)) - train a single model that, given different instructions, can produce either generations or embeddings
+    - Matryoshka Representation Learning ([kusupati...kakade, jain, & farhadi, 2022](https://arxiv.org/abs/2205.13147)) - in training given an embedding of full dimensionality M (e.g. 2048), learn N different distance functions for each prefix of the embedding (e.g. l2_norm(embedding[:32]), l2_norm(embedding[:64]), l2_norm(embedding[:128]), etc). 
+      - Beyond Matryoshka: Revisiting Sparse Coding for Adaptive Representation ([wen...you, 2025](https://arxiv.org/abs/2503.01776)) - instead learn sparse mask on top of original embedding
+      - AGRAME: Any-Granularity Ranking with Multi-Vector Embeddings ([reddy...potdar, 2024](https://arxiv.org/abs/2405.15028)) - rank at varying levels of granularity while maintaining encoding at a single (coarser) level
+    - EvoEmbedding: Evolvable Representations for Long-Context Retrieval and Agentic Memory ([nie, fu, feng & shan, 2026](https://arxiv.org/abs/2606.21649)) - maintains a continuously updated latent memory as it sequentially processes inputs, and uses it alongside the raw content to jointly generate embeddings
+    - DREAM: Dense Retrieval Embeddings via Autoregressive Modeling ([tang & yang, 2026](https://arxiv.org/abs/2606.24667)) - instead of contrastive learning, use retriever to replace attention scores for particular heads in next-token prediction task
+  - query inference-time
+    - EchoEmbeddings: Repetition Improves LM Embeddings ([springer, kotha, fried, neubig, & raghunathan, 2024](https://arxiv.org/abs/2402.15449.pdf))
+      - Feed a prompt such as “Rewrite the sentence: x, rewritten sentence: x” to the LM and pool the contextualized embeddings of the 2nd occurence of x
 
 
 # datasets / benchmarks
 
 - **[MTEB leaderboard](https://huggingface.co/spaces/mteb/leaderboard)** - most common (but potentially overfitted) benchmark
   - [MMTEB](https://arxiv.org/abs/2502.13595) - multilingual version
+  - mutimodal
+    - MMEB ([huang...meng, 2026](https://arxiv.org/abs/2604.23321))
+    - MIEB: Massive Image Embedding Benchmark ([xiao...muennighoff, 2025](https://arxiv.org/abs/2504.10471))
+    - ViDoRe Benchmark V2 ([macé, loison & faysse, 2025](https://arxiv.org/abs/2505.17166))
   - PTEB paper ([frank & afli, 2025](https://arxiv.org/abs/2510.06730)) finds that paraphrasing MTEB test sets substantially lowers scores (suggesting overfitting)
   - SAGE: A Realistic Benchmark for Semantic Understanding ([goel, lee & ramchandran, 2025](https://arxiv.org/abs/2509.21310)) - evaluates retreival robustness under adversarial and noisy conditions
   - AIR-Bench: Automated Heterogeneous Information Retrieval Benchmark ([chen...liu, 2024](https://arxiv.org/abs/2412.13102)) - refreshable llm-generated eval data
@@ -124,10 +144,13 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
   - BrowseComp-Plus ([chen...lin, 2025](https://arxiv.org/abs/2508.06600)) - evaluates deep research when searching a fixed corpus
     - extends BrowseComp ([wei...glaese, 2025](https://arxiv.org/abs/2504.12516)) - uses web search to evaluate QA
   - InfoDeepSeek: Benchmarking Agentic Information Seeking for RAG ([xi...yu, 2025](https://arxiv.org/abs/2505.15872))
+- Long context datasets
+  - [LoCo Benchmark](https://hazyresearch.stanford.edu/blog/2024-01-11-m2-bert-retrieval)
+  - [Jina Long Context Benchmark](https://arxiv.org/abs/2310.19923.pdf)
+
 - Misc minor
   - [TREC-RAG](https://trec-rag.github.io/) dataset
   - Instructor eval: Billboard, Prompt retrieval
-- Long context datasets: [LoCo Benchmark](https://hazyresearch.stanford.edu/blog/2024-01-11-m2-bert-retrieval), [Jina Long Context Benchmark](https://arxiv.org/abs/2310.19923.pdf)
 - Training datasets
   - Nomic 235M curated text pairs (mostly filtered from [here](https://huggingface.co/datasets/sentence-transformers/embedding-training-data))
     - Followed by supervised contrastive fine-tuning on datasets like MSMarco, NQ, NLI, HotpotQA, Fever, WikiAnswers, etc.
@@ -155,6 +178,94 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
 - MemEx: A Programmable Scratchpad for LLM Agents ([databricks research team, 2026](https://www.databricks.com/blog/memex-programmable-scratchpad-llm-agents)) - improves token efficiency with a wrapper layer over tools, that stores objects in python rather than text every time
 
 - ![IR-pareto-frontier](https://jbarrow.ai/2026-06-12-searching-fast-and-slow/IR-pareto-frontier.svg) ([ref](https://jbarrow.ai/2026-06-12-searching-fast-and-slow/))
+
+# searching embeddings (approximate nearest neighbor)
+
+- locality-sensitive hashing (outdated) is a [fuzzy hashing](https://en.wikipedia.org/wiki/Fuzzy_hashing) technique that hashes similar input items into the same "buckets" with high probability
+  - idea is to project vector along random dimensions to create buckets, and then match those buckets before searching the rest
+  - issue is that the number of dimensions needed to get good performance can quickly grow, obviating the benefit
+  - hash collisions are maximized, rather than minimized as they are in dictionaries
+  - finding embeddings via DNNs is a special case of this (e.g. might call it "semantic hashing")
+<p float="left">
+  <img src="../assets/lsh_index_time_dark.svg" width="45%" />
+  <img src="../assets/lsh_query_time_dark.svg" width="45%" />
+</p>
+- k-d (k-dimensional) tree
+  - balanced binary tree over data with arbitrary dimensions, where each node splits one dim
+  - at inference time, go to leaf and then search all neighbors of the leaf by going back up it
+  - [annoy](https://github.com/spotify/annoy) optimized this to instead use a forest of random trees and to do data-driven splitting (take 2 random points and split on the direction between them) rather than the median of a single dim
+<p float="left">
+  <img src="../assets/kd_tree_index_time_dark.svg" width="45%" />
+  <img src="../assets/kd_tree_query_time_dark.svg" width="45%" />
+</p>
+- inverted file (IVF) - k-means the embeddings into clusters, then at inference first search the cluster centers before searching within the top clusters
+  - to improve performance, add neighbors into mutiple clusters
+<p float="left">
+  <img src="../assets/ivf_index_time_dark.svg" width="45%" />
+  <img src="../assets/ivf_query_time_dark.svg" width="45%" />
+</p>
+- product quantization ([jegou et al. 2011](https://ieeexplore.ieee.org/document/5432202)) - this speeds up the vector comparison time (different from everything else)
+  - separate vector into subvectors (e.g. first half, second half), run k-means for each subvector, then replace the subvector with the index of its closest center mean
+  - at inference time, split the query into the same subvectors, and pre-compute the squared distance to each of the center means for each subvector
+	  - then, for each vector, rather than doing the dot-product, just look up the pre-computed distances for each subvector (add them together to get the squared distance for the whole vector)
+	- note: splitting vectors and clustering struggles if there are lots of correlations between different subvector parts, one fix for this is [Optimized PQ](https://www.microsoft.com/en-us/research/wp-content/uploads/2013/11/pami13opq.pdf) (OPQ), which learns a rotation to apply before splitting so the variance is balanced and decorrelated across subspaces
+<p float="left">
+  <img src="../assets/pq_index_time_wide_dark_v2.svg" width="45%" />
+  <img src="../assets/pq_query_time_wide_dark_v2.svg" width="45%" />
+</p>
+
+- HNSW ([malkov & yashunin, 2016](https://arxiv.org/abs/1603.09320)) - Hierarchical Navigable Small World graphs (most popular modern system including Lucene, pgvector, Qdrant, Weaviate, Milvus, Pinecone's early stack for medium-large scale <10M vectors)
+  - idea is to build a proximity graph over the vectors, and answer queries with greedy best-first traversal - start somewhere, repeatedly hop to the neighbor closest to the query, and search its neighbors
+    - hierarchy: does search at a higher layer, then drops to neighbors in lower layer which are more refined
+    - edge-selection at insert time
+      - note: naive graph of neighbors doesn't work because it's very hard to find a new nieghbor if you search in the wrong place; instead NSW inserts points in random order and connects each to its M nearest *at insertion time* (this leaves long-range edges from the early added nodes)
+  - supports incremental inserts (although build and insert are both expensive)
+    - delete is a pain
+    - requires a lot of RAM (rather than disk access)
+<p float="left">
+  <img src="../assets/hnsw_index_time_insert_dark.svg" width="45%" />
+  <img src="../assets/hnsw_layered_greedy_walk_dark.svg" width="45%" />
+</p>
+
+- moving more stuff to disk instead of RAM (default for very large scale, 100M+ vectors)
+  - DiskANN ([subramanya...harsha vardhan simhadri, 2019; CMU, UT Austin, & MSR](https://suhasjs.github.io/files/diskann_neurips19.pdf)) - store the full-precision vectors and graph on SSD, keep only PQ-compressed vectors in RAM
+    - introduce Vamana graph construction algorithm to produces fewer, longer-range hops in the graph to minimize SSD round-trips
+  - SPANN ([chen...wang, 2021](https://arxiv.org/abs/2111.08566)) - same thing but for IVF cluster approach rather than PQ
+<p float="left">
+  <span style="display: inline-block; width: 45%; text-align: center;">
+    <b>DiskANN</b><br>
+    <img src="../assets/diskann_index_time_dark.svg" width="100%" />
+  </span>
+  <span style="display: inline-block; width: 45%; text-align: center;">
+    <b>SPANN</b><br>
+    <img src="../assets/spann_index_time_dark.svg" width="100%" />
+  </span>
+</p>
+- other considerations
+  - modern libraries often deal carefully with quantization and GPU usability
+  - building compressions/graphs that are filter-aware, e.g. user issues queries like "nearest neighbors WHERE tenant=X AND date>Y." should not break the search
+- libraries:
+
+| Library                                                     | What it is                                                   | Methods it connects to                                       |
+| ----------------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [Faiss](https://github.com/facebookresearch/faiss) (Meta)   | The field's reference library, CPU and GPU. Nearly every classical index type, composable (e.g. IVF coarse layer + PQ codes + rescoring). | Brute force, IVF, PQ/OPQ, IVF-PQ (asymmetric distance computation), HNSW, scalar/binary quantization |
+| [hnswlib](https://github.com/nmslib/hnswlib) (Malkov)       | The canonical lightweight HNSW implementation by the paper's author; embedded inside many engines. Sibling research library: [nmslib](https://github.com/nmslib/nmslib) (original NSW). | HNSW exactly — M, efConstruction, efSearch, diversity pruning |
+| [ScaNN](https://github.com/google-research/scann) (Google)  | Partitioning plus anisotropic quantization — the PQ loss reshaped to penalize ranking-relevant error. | IVF + PQ with a smarter estimator ("train the index for the metric") |
+| [DiskANN](https://github.com/microsoft/DiskANN) (Microsoft) | Vamana graphs served from SSD; Fresh (streaming) and Filtered variants. | DiskANN — α-prune build, PQ-steered beam search, packed SSD sector reads |
+| [SPTAG](https://github.com/microsoft/SPTAG) (Microsoft)     | Tree-plus-graph library; home of the SPANN design used in Bing-scale search. | SPANN — in-RAM centroid routing, closure assignment for boundary vectors |
+| [Annoy](https://github.com/spotify/annoy) (Spotify)         | Random-projection tree forest; mmap-friendly, immutable, simple. Largely legacy now but still deployed. | The tree lineage — the KD-tree's randomized, ensembled descendant |
+| [FALCONN](https://github.com/FALCONN-LIB/FALCONN)           | Research-grade LSH (cross-polytope and hyperplane families) with multi-probe. | LSH, with the modern hash families and fewer tables          |
+| [cuVS](https://github.com/rapidsai/cuvs) (NVIDIA)           | GPU-native ANN: CAGRA graph build and search, GPU IVF-PQ; build speedups that change reindexing economics. | Graph traversal + IVF-PQ, rebuilt for massive parallelism    |
+
+| Engine                                                       | What it is                                                   | Methods it connects to                                       |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [Lucene](https://lucene.apache.org/) (→ Elasticsearch, OpenSearch, MongoDB Atlas) | Segment-based search engine whose vector support underlies Elasticsearch, OpenSearch, and Atlas Vector Search; immutable segments sidestep graph deletes. | HNSW per segment + int8/binary quantization with exact rescoring |
+| [pgvector](https://github.com/pgvector/pgvector)             | Postgres extension; vectors as a column type with SQL filtering and joins. | HNSW, IVF (IVFFlat), and exact brute-force scans             |
+| [Milvus](https://github.com/milvus-io/milvus)                | Distributed vector database; its Knowhere engine wraps multiple index families behind one API. | Nearly everything: Faiss indexes, HNSW, DiskANN, GPU variants |
+| [Qdrant](https://github.com/qdrant/qdrant)                   | Rust vector database emphasizing payload filtering and compression. | HNSW + scalar/binary quantization; filter-aware traversal    |
+| [Weaviate](https://github.com/weaviate/weaviate)             | Go vector database with hybrid (BM25 + vector) search built in. | Custom HNSW with PQ/binary compression and rescoring         |
+
+*Notes: popularity and internals shift quickly — verify against [ann-benchmarks.com](https://ann-benchmarks.com/) before depending on any of these. The engines section contains no new algorithms: each is HNSW-or-IVF plus quantization plus the operational layer (filtering, replication, segments, hybrid search).*
 
 # explainable embeddings
 
@@ -329,19 +440,3 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
     - as we update becomes more skewed towards the things that match the most
 - pre-transformers
     - Improving Neural LMs with a Continuous Cache ([grave...usunier, 2016](https://arxiv.org/abs/1612.04426)) - cache previous embeddings as memory from a document to contextualize an LSTM
-
-# searching embeddings
-
-- Faiss: A library for efficient similarity search ([johnson et al 2019](https://engineering.fb.com/2017/03/29/data-infrastructure/faiss-a-library-for-efficient-similarity-search/)) - implement fast approximate nearest neighbor search
-
-# best practices for training
-
-- basic training pipeline
-
-  1. standard self-supervised pre-training, e.g. BERT or off-the-shelf model
-
-  2. weak unsupervised pre-training, e.g. weakly related text pairs, such as QA pairs from forums like StackExchange and Quora
-
-  3. high-quality contrastive finetuning on curated paired data, e.g. QA from web searches
-
-- after retrieving results, a reranker model that takes in both the inputs and the query can be used to quickly improve performance

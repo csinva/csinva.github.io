@@ -418,10 +418,11 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
     - there's some limit to dt at which information stops increasing
       - this represents temporal resolution at which jitter doesn't stop response from identifying info about the stimulus
     - corrections for finite sample size (Panzeri, Nemenman,...)
-  
+
 2. information in single spikes - how much info does single spike tell us about stimulus
   - don't have to know encoding, mutual info doesn't care
   1. calculate entropy for random stimulus
+
     - $p=\bar{r} \Delta t$ where $\bar{r}$ is the mean firing rate
   2. calculate entropy for specific stimulus
   - let $P(r=1\|s) = r(t) \Delta t$
@@ -1657,12 +1658,7 @@ the operations above allow for encoding many normal data structures into a singl
     - new materials (ex. memristor - 3d crossbar array)
     - can't just do biological mimicry - need to understand the principles
 
-## locality sensitive hashing
-
-- locality-sensitive hashing is a [fuzzy hashing](https://en.wikipedia.org/wiki/Fuzzy_hashing) technique that hashes similar input items into the same "buckets" with high probability
-  - hash collisions are maximized, rather than minimized as they are in dictionaries
-  - finding embeddings via DNNs is a sepcial case of this (e.g. might call it "semantic hashing")
-- [random projections in the brain](https://www.biorxiv.org/content/biorxiv/early/2017/08/25/180471.full.pdf)….doing locality sensitive hashing (basically nearest neighbors)
+- [random projections in the brain](https://www.biorxiv.org/content/biorxiv/early/2017/08/25/180471.full.pdf)….might be doing locality sensitive hashing (basically nearest neighbors)
 
 # neuro-inspired ai (niAI)
 

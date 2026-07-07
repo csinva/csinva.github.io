@@ -131,6 +131,28 @@ nav.navbar-custom.navbar-fixed-top .nav li a:focus {
 	width: 100%;
 }
 
+/* Booktabs-style tables: top rule, one thin mid rule, bottom rule; no inner/vertical lines */
+.note-box table {
+	border-collapse: collapse;
+	margin: 1.75rem auto;
+	line-height: 1.5;
+}
+.note-box table th,
+.note-box table td {
+	border: none;
+	padding: 0.55rem 0.85rem;
+	text-align: left;
+	vertical-align: top;
+}
+.note-box table thead th {
+	font-weight: 600;
+	border-top: 2px solid rgba(148, 163, 184, 0.7);       /* toprule */
+	border-bottom: 1px solid rgba(148, 163, 184, 0.35);   /* midrule (thin) */
+}
+.note-box table tbody tr:last-child td {
+	border-bottom: 2px solid rgba(148, 163, 184, 0.7);    /* bottomrule */
+}
+
 .note-box img {
 	display: block;
 	max-width: 100%;
