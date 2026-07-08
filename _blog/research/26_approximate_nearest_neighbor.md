@@ -120,3 +120,5 @@ Two concerns cut across all of these methods in practice. Modern libraries put a
 | [Milvus](https://github.com/milvus-io/milvus)                | Distributed vector database; its Knowhere engine wraps multiple index families behind one API. | Nearly everything: Faiss indexes, HNSW, DiskANN, GPU variants |
 | [Qdrant](https://github.com/qdrant/qdrant)                   | Rust vector database emphasizing payload filtering and compression. | HNSW + scalar/binary quantization; filter-aware traversal    |
 | [Weaviate](https://github.com/weaviate/weaviate)             | Go vector database with hybrid (BM25 + vector) search built in. | Custom HNSW with PQ/binary compression and rescoring         |
+
+If you want to know (a lot) more about this topic, check out this book: Foundations of vector retrieval book ([bruch, 2024](https://arxiv.org/abs/2401.09350.pdf)).

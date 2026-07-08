@@ -57,7 +57,8 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
     - prior work: query expansion, term dependency model (e.g. tf-idf), topic model, translation model
     - matryoshka representation learning - apply the contrastive loss simultaneously at dims 256, 512, 1024, 2048, etc so users can truncate to tradeoff acc for storage/speed
     - tailoring to specialized domains (e.g. medical, finance)
-    - sharing embedding spaces across different models ([like in voyage-4](https://blog.voyageai.com/2026/01/15/voyage-4/)) so different sizes can be used for embedding/querying
+    - sharing embedding spaces across different model sizes (like in [voyage-4](https://blog.voyageai.com/2026/01/15/voyage-4/)) so different sizes can be used for embedding/querying
+    - same backbone across modalities (like in [voyage-3.5-multimodal](https://blog.voyageai.com/2026/01/15/voyage-multimodal-3-5/)) so that inputs aren't biased towards any one modality
     - minor tricks: model souping / checkpoint merging on different task mixtures, loss balancing across tasks, curriculum over data quality stages, long-context extensions
   - document embedding-time
     - contextualized chunking - generate chunk embeddings for multiple chunks in one forward pass so they have context (could even aggregate context across chunks)
@@ -92,6 +93,7 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
   - can have many modality embeddings aligned through images ImageBind ([Meta, 2023](https://arxiv.org/abs/2305.05665)) or through text LanguageBind ([PKU, 2023](https://arxiv.org/abs/2310.01852))
   - more modern multimodal embeddings are built by post-training existing large multimodal models, e.g. E5-V ([BUAA/Microsoft, 2024](https://arxiv.org/abs/2407.12580)), VLM2Vec ([Salesforce/Waterloo, 2024](https://arxiv.org/abs/2410.05160)) , GME ([Alibaba, 2024](https://arxiv.org/abs/2412.16855)), voyage-multimodal-3 ([Voyage AI, 2024](https://blog.voyageai.com/2024/11/12/voyage-multimodal-3/)), , jina-embeddings-v4 ([Jina AI, 2025](https://arxiv.org/abs/2506.18902)), Gemini Embedding ([Google DeepMind, 2025](https://arxiv.org/abs/2503.07891)), Cohere Embed v4 ([Cohere, 2025](https://docs.cohere.com/docs/cohere-embed))
   - video - usually samples frames and embeds them rather than explicit temporal modeling
+    - [voyage-multimodal-3.5](https://blog.voyageai.com/2026/01/15/voyage-multimodal-3-5/) (jan 2026) - videos are represented as an ordered sequence of frames and input to the model as images - every 1120 pixels of a video counts as a token, for a maximum of 32k tokens
 - query inference-time expansions
   - doc2query ([noguiera, … cho, 2019](https://arxiv.org/abs/1904.08375)) – train passage to query model on MS MARCO then retrieve with BM-25
   - InPars ([bonifacio…nogueira, 2022](https://dl.acm.org/doi/abs/10.1145/3477495.3531863)) – generate questions with GPT-3; retrieve with BM25
@@ -100,6 +102,7 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
   - 3 common versions: pointwise (score each document independently), pairwise (learn "A beats B"), listwise (optimize the ordering of the whole list, targeting metrics like NDCG directly)
   - early models like ms-marco-MiniLM were cross-encoders, people later found that prompting an LLM did well but was expensive, so these were distilled
   - newer models like Rank1 use reasoning for reranking
+  - [rerank-2.5](https://blog.voyageai.com/2025/08/11/rerank-2-5/) (aug 2025) - includes instruction following, e.g. “Prioritize the title and ignore the abstract”
 - contextualized chunking
   - voyage does this via explicitly training a model to output separate vectors for each chunk
   - jina does this via [late chunking](https://jina.ai/news/late-chunking-in-long-context-embedding-models/) (embed whole doc, get embeddings for a chunk by mean pooling over its tokens)
@@ -108,7 +111,6 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
     - RAPTOR ([sarthi...manning, 2024](https://arxiv.org/abs/2401.18059)) - build hierarchical index by embedding, clustering, summarizing, and embedding the summaries
     - Contextual Document Embeddings ([morris & rush, 2024](https://arxiv.org/abs/2410.02525)) - embed docs conditioned on other docs (requires training to do this well)
 
-- foundations of vector retrieval book ([bruch, 2024](https://arxiv.org/abs/2401.09350.pdf))
 - papers with a little trick
   - training-time
     - GritLM ([meunninghoff...kiela, 2024](https://arxiv.org/abs/2402.09906)) - train a single model that, given different instructions, can produce either generations or embeddings
@@ -127,9 +129,9 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
 - **[MTEB leaderboard](https://huggingface.co/spaces/mteb/leaderboard)** - most common (but potentially overfitted) benchmark
   - [MMTEB](https://arxiv.org/abs/2502.13595) - multilingual version
   - mutimodal
-    - MMEB ([huang...meng, 2026](https://arxiv.org/abs/2604.23321))
-    - MIEB: Massive Image Embedding Benchmark ([xiao...muennighoff, 2025](https://arxiv.org/abs/2504.10471))
-    - ViDoRe Benchmark V2 ([macé, loison & faysse, 2025](https://arxiv.org/abs/2505.17166))
+    - standard: MMEB ([huang...meng, 2026](https://arxiv.org/abs/2604.23321)), MIEB: Massive Image Embedding Benchmark ([xiao...muennighoff, 2025](https://arxiv.org/abs/2504.10471))
+    - visual document retrieval: [ViDoRe](https://arxiv.org/abs/2407.01449), [ViDoRe v2](https://arxiv.org/abs/2505.17166), [MIRACL-VISION](https://arxiv.org/abs/2505.11651)
+    - video retrieval: [MSR-VTT](https://openaccess.thecvf.com/content_cvpr_2016/papers/Xu_MSR-VTT_A_Large_CVPR_2016_paper.pdf), [YouCook2](https://arxiv.org/abs/1703.09788), [DiDeMo](https://arxiv.org/abs/1708.01641)
   - PTEB paper ([frank & afli, 2025](https://arxiv.org/abs/2510.06730)) finds that paraphrasing MTEB test sets substantially lowers scores (suggesting overfitting)
   - SAGE: A Realistic Benchmark for Semantic Understanding ([goel, lee & ramchandran, 2025](https://arxiv.org/abs/2509.21310)) - evaluates retreival robustness under adversarial and noisy conditions
   - AIR-Bench: Automated Heterogeneous Information Retrieval Benchmark ([chen...liu, 2024](https://arxiv.org/abs/2412.13102)) - refreshable llm-generated eval data
@@ -138,7 +140,8 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
   - [RTEB](https://huggingface.co/blog/rteb) - retrieval only benchmark of 48 datasets, with 28 private datasets and 26 code-retrieval datasets; newer and hopes to avoid MMTEB overfitting
   - OBLIQ-Bench: Exposing Overlooked Bottlenecks in Modern Retrievers with Latent and Implicit Queries ([tchuindjo, shah & khattab, 2026](https://arxiv.org/abs/2605.06235))
   - EnterpriseRAG-Bench: A RAG Benchmark for Company Internal Knowledge ([sun...butler, 2026](https://arxiv.org/abs/2605.05253))
-  - BERRI: Task-aware Retrieval with Instructions ([asai...riedel, hajishirzi, & yih, 2023](https://aclanthology.org/2023.findings-acl.225/)) - dataset for instruction-informed retrieval
+  - [MAIR (Massive Instructed Retrieval) benchmark](https://arxiv.org/abs/2410.10127) - dataset for instruction-informed retrieval
+    - BERRI: Task-aware Retrieval with Instructions ([asai...riedel, hajishirzi, & yih, 2023](https://aclanthology.org/2023.findings-acl.225/))
     - FollowIR ([weller...soldaini, 2024](https://arxiv.org/abs/2403.15246))
 - agentic search
   - BrowseComp-Plus ([chen...lin, 2025](https://arxiv.org/abs/2508.06600)) - evaluates deep research when searching a fixed corpus
@@ -147,7 +150,6 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
 - Long context datasets
   - [LoCo Benchmark](https://hazyresearch.stanford.edu/blog/2024-01-11-m2-bert-retrieval)
   - [Jina Long Context Benchmark](https://arxiv.org/abs/2310.19923.pdf)
-
 - Misc minor
   - [TREC-RAG](https://trec-rag.github.io/) dataset
   - Instructor eval: Billboard, Prompt retrieval
@@ -266,6 +268,8 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
 | [Weaviate](https://github.com/weaviate/weaviate)             | Go vector database with hybrid (BM25 + vector) search built in. | Custom HNSW with PQ/binary compression and rescoring         |
 
 *Notes: popularity and internals shift quickly — verify against [ann-benchmarks.com](https://ann-benchmarks.com/) before depending on any of these. The engines section contains no new algorithms: each is HNSW-or-IVF plus quantization plus the operational layer (filtering, replication, segments, hybrid search).*
+
+- foundations of vector retrieval book ([bruch, 2024](https://arxiv.org/abs/2401.09350.pdf))
 
 # explainable embeddings
 
