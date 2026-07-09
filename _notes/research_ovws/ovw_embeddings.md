@@ -168,6 +168,9 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
 - Beyond Semantic Similarity: Rethinking Retrieval for Agentic Search via Direct Corpus Interaction ([li...zhang, 2026](https://arxiv.org/abs/2605.05242)) - agent searches the raw corpus directly using **`grep`, `find`, `bash`, shell pipelines** rather than embedding models
 - Chroma Context-1: Training a Self-Editing Search Agent ([bashir, hong, jiang, & shi, 2026](https://www.trychroma.com/research/context-1))
 - MemReranker: Reasoning-Aware Reranking for Agent Memory Retrieval ([li...li, 2026](https://arxiv.org/abs/2605.06132))
+- Are We Ready For An Agent-Native Memory System? ([zhou...wu, 2026](https://arxiv.org/abs/2606.24775))
+  - MemoryBank: Enhancing LLMs with Long-Term Memory ([zhong...wang, 2023](https://arxiv.org/abs/2305.10250)) - maintains experiences as timestamped memory streams and periodically summarizes them into higher-level reflections
+
 - Superintelligent Retrieval Agent: The Next Frontier of Information Retrieval ([yang, ma, chen & shrivastava, 2026](https://arxiv.org/abs/2605.06647))
   - asks which terms are likely to separate the desired evidence from corpus-level confusers
   - doc side: LLM enriches each document offline with missing search vocabulary
@@ -179,7 +182,9 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
 
 - MemEx: A Programmable Scratchpad for LLM Agents ([databricks research team, 2026](https://www.databricks.com/blog/memex-programmable-scratchpad-llm-agents)) - improves token efficiency with a wrapper layer over tools, that stores objects in python rather than text every time
 
-- ![IR-pareto-frontier](https://jbarrow.ai/2026-06-12-searching-fast-and-slow/IR-pareto-frontier.svg) ([ref](https://jbarrow.ai/2026-06-12-searching-fast-and-slow/))
+- https://jbarrow.ai/2026-06-12-searching-fast-and-slow/: 
+  - ![IR-pareto-frontier](https://jbarrow.ai/2026-06-12-searching-fast-and-slow/IR-pareto-frontier.svg) ([ref](https://jbarrow.ai/2026-06-12-searching-fast-and-slow/))
+
 
 # searching embeddings (approximate nearest neighbor)
 
@@ -409,6 +414,8 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
   - ZSInvert: universal zero-shot embedding inversion ([zhang, morris, & shmatikov, 2025](https://arxiv.org/abs/2504.00147)) - beam search but keep prefixes that have best similarity with given embedding & train text-to-text correction model that helps refine hypotheses
     - builds on adversarial decoding ([zhang, zhang, & shmatikov, 2024](https://arxiv.org/abs/2410.02163)) - use beam search with multiple scorers besides just perplexity (e.g. for defense evasion)
 - On the Theoretical Limitations of Embedding-Based Retrieval ([weller, boratko, naim & lee, 2025](https://arxiv.org/abs/2508.21038))
+  - Multi-Vector Embeddings are Provably More Expressive than Single Vector Embeddings ([jayaram, 2026](https://arxiv.org/abs/2606.23475))
+
 
 # external memory enhancements for LLMs
 
