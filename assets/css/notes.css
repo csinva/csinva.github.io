@@ -164,12 +164,23 @@ nav.navbar-custom.navbar-fixed-top .nav li a:focus {
 	.sidenav a {font-size: 18px;}
 }
 
-img {
+/* Smart inversion (Google Scholar PDF-reader style), default for notes images:
+   - invert(1): full luminance flip, so pure white backgrounds map to pure
+     black and blend seamlessly with the dark note background
+   - hue-rotate(180deg): undoes the hue flip from inversion so colors keep
+     roughly their original hue (blue stays blue instead of turning orange) */
+img,
+.smart-inverted {
     background:none;
     border:none;
     box-shadow:none;
-    filter: invert(1);
+    filter: invert(1) hue-rotate(180deg);
     width: 35%;
+}
+
+/* Legacy full inversion, opt-in */
+.inverted {
+    filter: invert(1);
 }
 
 .noninverted {

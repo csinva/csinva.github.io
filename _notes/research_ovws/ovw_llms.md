@@ -628,6 +628,7 @@ Nice survey here: A Survey on dLLMs ([li, chen, guo & shen, 2025](https://arxiv.
     - Agent-World: Scaling Real-World Environment Synthesis for Evolving General Agent Intelligence ([dong...dou, 2026](https://arxiv.org/abs/2604.18292))
 - Meta-Harness: End-to-End Optimization of Model Harnesses ([lee...finn, 2026](https://arxiv.org/abs/2603.28052))
   - The Last Harness You'll Ever Build ([seong, yin, zhang & shi, 2026](https://arxiv.org/abs/2604.21003))
+  - https://lilianweng.github.io/posts/2026-07-04-harness/
 - training to enable scaling test-time reasoning
   - ExGRPO: Learning to Reason from Experience ([zhan...cheng, 2025](https://arxiv.org/abs/2510.02245))
   - Meta-RL Induces Exploration in Language Agents ([jiang...brbic, 2025](https://arxiv.org/abs/2512.16848))
@@ -854,6 +855,8 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - Getting More from Less: LLMs are Good Spontaneous Multilingual Learners ([zhang...huang, 2024](https://arxiv.org/abs/2405.13816v2)) - applying logit lens finds that model internally translates to english in multilingual tasks
   - Future Lens: Anticipating Subsequent Tokens from a Single Hidden State ([pal...wallace, bau, 2023](https://arxiv.org/abs/2311.04897)) - can train linear decoder to decode future tokens from current hidden states
   - Patchscopes ([ghandeharioun...geva, 2023](https://arxiv.org/abs/2401.06102)) - decode LLM's representation of a token by asking another copy of it to decode from that same representation (by repeating)
+  - Jacobian lenses: Linearity of Relation Decoding in Transformer LMs ([hernandez...bau, 2023](https://arxiv.org/abs/2308.09124))
+    - J-Space: Verbalizable Representations Form a Global Workspace in Language Models ([anthropic, 2026](https://transformer-circuits.pub/2026/workspace/index.html)) - jacobian lens takes derivative of each output token (after unembedding) wrt to neurons at a layer, then can average these over many contexts and see which neurons influence which outputs
   - Do Natural Language Descriptions of Model Activations Convey Privileged Information? ([li...wallace, 2025](https://arxiv.org/abs/2509.13316)) - this type of method may not really tell us about the activations so much as the inputs
   - LatentQA: Teaching LLMs to Decode Activations Into Natural Language ([pan, chen & steinhardt, 2024](https://arxiv.org/abs/2412.08686)) - train model to answer NL questions about activations
     - Activation Oracles: Training and Evaluating LLMs as General-Purpose Activation Explainers ([karvonen...evans, marks, 2025](https://arxiv.org/abs/2512.15674)) - extend latentQA to broader tasks with more training and test generalization to new settings
@@ -872,6 +875,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - Does Time Have Its Place? Temporal Heads: Where LMs Recall Time-specific Information ([park...kang, 2025](https://arxiv.org/abs/2502.14258))
   - The Dual-Route Model of Induction ([feucht...bau, 2025](https://arxiv.org/abs/2504.03022)) - "concept induction heads" - copy entire lexical units rather than individual tokens
   - Iteration heads ([cabannes...charton, kempe, 2024](https://arxiv.org/abs/2406.02128)) - when doing CoT for tokens, hypothesized iteration head (which shows up in small transformers trained on custom iterations tasks) implements attending to tokens sequentially and also the preceding CoT token
+  - Countdown heads: A Shared Subcircuit Lets LLMs Count Down Across Tasks ([dunefsky, gurnee & ameisen, 2026](https://arxiv.org/abs/2607.12279))
 - Causal Interpretation of Neural Network Computations with Contribution Decomposition ([melander...baccus, 2026](https://arxiv.org/abs/2603.06557#)) - first run attribution on internals for output then link these grouped to the outcome
 - ICL performance depends primarily on function-vector heads rather than induction heads ([yin & steinhardt, 2025](https://arxiv.org/abs/2502.14010))
   - function-vector headsare a compact representation of a task extracted from specific attention heads, and they can be added to a model’s computation to recover ICL behavior without in-context demonstrations
@@ -921,6 +925,9 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - Using Interpretability to Identify a Novel Class of Alzheimer's Biomarkers ([wang…solanki, 2026](https://www.goodfire.ai/research/interpretability-for-alzheimers-detection#)) - interpret a pre-trained model that predicts alzheimer’s from cell-free DNA in blood
     - used SAE to find that DNA fragment length patterns dominate its decision-making
     - use this to build a human-interpretable classifier that generalizes better than previous biomarkers
+- misc papers
+  - Structuring Sparsity: Block-Sparse Featurizers Capture Visual Concept Manifolds ([fel...geiger, 2026](https://arxiv.org/abs/2606.25234)) - SAE imposes sparsity on every unit, here they instead impose sparsity of groups (”blocks”) of units - this enables representing structure that isn’t in a linear direction
+
 - sparse autoencoder (sae) critiques
   - AxBench: Steering LLMs? Even Simple Baselines Outperform SAEs ([wu...jurafsky, manning, potts, 2025](https://arxiv.org/abs/2501.17148))
   - SAEs Can Interpret Randomly Initialized Transformers ([heap...aitchison, 2025](https://arxiv.org/abs/2501.17727))
@@ -1069,6 +1076,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
 	  - Automated Hypothesis Validation with Agentic Sequential Falsifications ([huang...leskovec, 2025](https://openreview.net/forum?id=iTevNo8PzG&noteId=6DFYazHqy1))
     - Letting the neural code speak: Automated characterization of monkey visual neurons through human language ([lad...karantzas, 2026](https://arxiv.org/abs/2605.12485)) - similar to GCT for vision + single-neuron (but without followup experiment)
     - Mechanistically Interpretable Neural Encoding Reveals Fine-Grained Functional Selectivity in Human Visual Cortex ([grosbard, geva & yovel, 2026](https://arxiv.org/abs/2605.16468)) - SASC but for vision
+    - NEvo: Neural-Guided Evolutionary Video Synthesis for Dynamic Visual Selectivity ([tang...schrimpf, 2026](https://arxiv.org/abs/2607.02317)) - SASC but with video (no followup)
   - SASC: Explaining black box text modules in natural language with LMs ([singh, hsu, ..., gao, 2023](https://arxiv.org/abs/2305.09863))
     - Zero-shot LLM-guided Counterfactual Generation for Text ([bhattacharjee...liu, 2024](https://arxiv.org/abs/2405.04793))
     - SAGE: An Agentic Explainer Framework for Interpreting SAE Features in LMs ([han, xu, jin & du, 2025](https://arxiv.org/abs/2511.20820)) - iterates and tests natural language explanations

@@ -1065,6 +1065,11 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - Language models align with brain regions that represent concepts across modalities ([ryskina, tuckute, ..., fedorenko, 2025](https://arxiv.org/pdf/2508.11536)) - use data that presents the same concepts in word map, sentences, or pictures to find brain areas that respond in a modality-agnostic way
     - language-only and language-vision models predict the signal better in more meaning-consistent areas of the brain
   - What does it mean to understand language? ([casto, ivanova, fedorenko & kanwisher, 2025](https://arxiv.org/abs/2511.19757)) - the language system exports info to other parts of the brain for deep understanding
+  - Evidence from Formal Logical Reasoning Reveals that the Language of Thought is not Natural Language ([kean, …, fedorenko, 2026](https://www.biorxiv.org/content/10.1101/2025.07.26.666979v3))
+    - the language brain network is not engaged during logical reasoning, and patients with severe aphasia exhibit intact performance on logic tasks
+    - methods
+      - fMRI while healthy adults engaged in logical reasoning tasks
+      - evaluated logical abilities in individuals with extensive lesions to the language brain areas and consequent severe linguistic impairment
 - Language is widely distributed throughout the brain ([drijvers, small, & skipper, 2025](https://www.nature.com/articles/s41583-024-00903-0)) - respond that rather than a "language network", the ‘language network’ could more simply be conceived of as a collection of hierarchically organized auditory association cortices communicating with functional connectivity hubs that coordinate a whole-brain distribution of contextually determined and, thus, highly variable ‘peripheral’ regions
 - Semantic encoding during language comprehension at single-cell resolution ([jamali...fedorenko, williams, 2024](https://www.nature.com/articles/s41586-024-07643-2))
 - interpreting brain encoding models
