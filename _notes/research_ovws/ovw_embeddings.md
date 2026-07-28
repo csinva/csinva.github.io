@@ -40,7 +40,6 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
 - basic training pipeline
   1. standard self-supervised pre-training, e.g. BERT or off-the-shelf model like Qwen
   2. weak unsupervised pre-training, e.g. weakly related text pairs, such as QA pairs from forums like StackExchange and Quora
-    - $\mathcal{L}_{\text{InfoNCE}} = -\,\mathbb{E}\left[\log\frac{\textcolor{teal}{\exp\!\left(\operatorname{sim}(\mathbf{z}_i,\mathbf{z}_i^{+})/\textcolor{orange}{\tau}\right)}}{\textcolor{purple}{\sum_{j=0}^{N}\exp\!\left(\operatorname{sim}(\mathbf{z}_i,\mathbf{z}_j)/\textcolor{orange}{\tau}\right)}}\right]\quad\textcolor{teal}{\text{positive pair}},\;\textcolor{purple}{\text{all pairs (norm.)}},\;\textcolor{orange}{\tau=\text{temperature}}$
   3. high-quality contrastive finetuning on curated paired data, e.g. QA from web searches
 - after retrieving results, a reranker model that takes in both the inputs and the query can be used to quickly improve performance
 - key tricks to improve performance
@@ -67,7 +66,11 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
 
 
 
-
+# losses
+- $\mathcal{L}_{\text{InfoNCE}} = -\,\mathbb{E}\left[\log\frac{\textcolor{teal}{\exp\!\left(\operatorname{sim}(\mathbf{z}_i,\mathbf{z}_i^{+})/\textcolor{orange}{\tau}\right)}}{\textcolor{purple}{\sum_{j=0}^{N}\exp\!\left(\operatorname{sim}(\mathbf{z}_i,\mathbf{z}_j)/\textcolor{orange}{\tau}\right)}}\right]\quad\textcolor{teal}{\text{positive pair}},\;\textcolor{purple}{\text{all pairs (norm.)}},\;\textcolor{orange}{\tau=\text{temperature}}$
+  - large batch sizes are important, can speed up computation with gradcache ([gao et al. 2021](https://arxiv.org/abs/2101.06983)) (computes loss wrt embs, then backprops through whole computation different examples at at time)
+  - low temp. signals "focus on the hardest cases" while high temp says "treat all negatives equally" 
+- Proxy-NCA ([movshovitz-attias et al. 2017](https://arxiv.org/abs/1703.07464)) generalizes this by learning a proxy embedding per class and comparing samples to proxies, sidestepping the combinatorial explosion of pair/triplet sampling
 
 # top-performing models
 
@@ -89,7 +92,10 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
 
 - next, models initialized using a pre-trained LLM, e.g. E5-mistral-instruct ([wang...wei, 2023](https://arxiv.org/abs/2401.00368)), SGPT ([muennighoff, 2022](https://arxiv.org/abs/2202.08904))
   - during post-training, remove attention masking so stuff is bidirectional, e.g. NV-Embed ([lee...ping, 2024](https://arxiv.org/abs/2405.17428)), LLM2Vec ([behnamghader...reddy, 2024](https://arxiv.org/abs/2404.05961))
-
+  - Nemotron-3-Embed ([blog post, 2026](https://huggingface.co/blog/nvidia/nemotron-3-embed-wins-rteb)) - 3 sizes: 8B (BF16), 1B (BF16), 1B (NVFP4), all available with very permissive `openmdw-1.1` license
+    - 8B model is adapted from Ministral-3-8B-Instruct-2512 ([Mistral, Jan 2026](https://arxiv.org/abs/2601.08584))
+    - 1B model is adapted in two stages, first post-training Ministral-3-3B-Instruct-2512, then distilling it to 2B and posttraining, then distilling it to 1B and posttraining
+  
 - multimodal embeddings
   - image-text starts with CLIP ([OpenAI, 2021](https://arxiv.org/abs/2103.00020)), open-source replications like OpenCLIP ([LAION/Stability, 2022](https://arxiv.org/abs/2212.07143)), and improvements like MetaCLIP ([Meta, 2023](https://arxiv.org/abs/2309.16671)) and EVA-CLIP ([BAAI, 2023](https://arxiv.org/abs/2303.15389))
   - can have many modality embeddings aligned through images ImageBind ([Meta, 2023](https://arxiv.org/abs/2305.05665)) or through text LanguageBind ([PKU, 2023](https://arxiv.org/abs/2310.01852))
