@@ -33,8 +33,6 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
 
   3. cross-encoder: encode query and doc together
 
-
-
 # best practices for training
 
 - basic training pipeline
@@ -98,11 +96,20 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
     - [voyage-multimodal-3.5](https://blog.voyageai.com/2026/01/15/voyage-multimodal-3-5/) (jan 2026) - videos are represented as an ordered sequence of frames and input to the model as images - every 1120 pixels of a video counts as a token, for a maximum of 32k tokens
 
 - query inference-time expansions
-  - doc2query ([noguiera, … cho, 2019](https://arxiv.org/abs/1904.08375)) – train passage to query model on MS MARCO then retrieve with BM-25
-  - InPars ([bonifacio…nogueira, 2022](https://dl.acm.org/doi/abs/10.1145/3477495.3531863)) – generate questions with GPT-3; retrieve with BM25
-  - HyDE ([gao…callan, 2022](https://arxiv.org/abs/2212.10496.pdf)) - at inference time, generate synthetic doc from query + instruction & find match for that doc
+  - query2doc expansion
+    - HyDE ([gao…callan, 2022](https://arxiv.org/abs/2212.10496.pdf)) - at inference time, generate synthetic doc from query + instruction & find match for that doc
+  - multi-query fusion
+    - InPars ([bonifacio…nogueira, 2022](https://dl.acm.org/doi/abs/10.1145/3477495.3531863)) – generate questions with GPT-3; retrieve with BM25
+    - retrieve based on multiple paraphrases and then average their reciprocal ranks to get the final reciprocal ranks
+  - doc2query ([noguiera, … cho, 2019](https://arxiv.org/abs/1904.08375)) – train passage-to-query model on MS MARCO then retrieve with BM-25
   - Iterative Query Expansion with Retrieval-Grounded Relevance Feedback ([bigdeli...bagheri, 2026](https://arxiv.org/abs/2606.13905)) - at inference time, expand query (with LLM), retrieve docs for expanded query, measure similarity *to original query*, then re-expand and repeat (with LLM given context)
-  - Adaptive Re-Ranking ([genc, korukluoglu & allan, 2026](https://arxiv.org/abs/2606.25249)) - ends each query to the cheapest effective re-ranking strategy, cutting latency by avoiding heavy cross-encoders on simple queries
+  - Adaptive Re-Ranking ([genc, korukluoglu & allan, 2026](https://arxiv.org/abs/2606.25249)) - sends each query to the cheapest effective re-ranking strategy, cutting latency by avoiding heavy cross-encoders on simple queries
+  - distilling query expansions during training time
+    - SoftQE ([pimpalkhute et al., 2024](https://arxiv.org/abs/2402.12663)) - trains the query encoder to match embeddings of LLM-expanded queries
+      - ExpandR ([yao et al., 2025](https://arxiv.org/abs/2502.17057)) - jointly trains the retriever on LLM expansions while aligning the LLM with DPO
+    - CAPSTONE ([he et al., 2023](https://arxiv.org/pdf/2212.09114)) - moves expansion to the document side with curriculum sampling, so all generation cost is paid at indexing rather than query time
+    - Retrieval-Feedback Distillation + Preference Alignment ([Li & Zhou, 2026](https://arxiv.org/html/2603.13776)) - Transfers retrieval-friendly expansion behavior from a teacher LLM to a compact student via retrieval feedback
+      - AQE ([Yang et al., 2025](https://arxiv.org/abs/2507.11042)) - finetune small LLM to generate retrieval-optimized expansions
   
 - rerankers
   - 3 common versions: pointwise (score each document independently), pairwise (learn "A beats B"), listwise (optimize the ordering of the whole list, targeting metrics like NDCG directly)
@@ -133,6 +140,7 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
   - DREAM: Dense Retrieval Embeddings via Autoregressive Modeling ([tang & yang, 2026](https://arxiv.org/abs/2606.24667)) - instead of contrastive learning, use retriever to replace attention scores for particular heads in next-token prediction task
   - Relevance-Based Embeddings ([shevkunov, ploskonosov & prokhorenkova, 2026](https://arxiv.org/abs/2607.03515)) - rather than biencoder, generate embedding vector by concatenating the cross-encoder similarity of query to a list of support docs
   - Lightweight Fine-Tuning for Flexible Multi-Vector Compression ([josef, 2026](https://arxiv.org/abs/2607.06036)) - lightweight k-means pooling-aware fine-tuning lets ColBERT models compress vectors with no accuracy loss
+  - AutoIndex: Learning Representation Programs for Retrieval ([o'nuallain...drozdov, 2026](https://arxiv.org/abs/2607.18603)) - autoresearch for learning how to embed using a fixed BM25 retriever
   - post-hoc
     - Your UnEmbedding Matrix is Secretly a Feature Lens for Text Embeddings ([wu...yan, 2026](https://arxiv.org/abs/2606.07502)) - project out directions for small SVs of unembedding matrix inverse (these are in the null space and where constant bias is held) and for large SVs (these are shared between everything and not helpful for embeddings)
 - query inference-time
@@ -295,6 +303,8 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
 - foundations of vector retrieval book ([bruch, 2024](https://arxiv.org/abs/2401.09350.pdf))
 - similarity metrics
   - Anisotropy Decides Cosine vs. Rank Metrics for Text Embeddings ([parupudi, 2026](https://arxiv.org/abs/2606.29571)) - choice of similarity metric depends on embedding geometry: cosine is best when variance spreads evenly & L1-type metrics win when variance concentrates into a few directions
+  - euclidean, cosine, and dot product are most common
+    - when embeddings normalized to have norm 1, euclidean and dot product yield the same rankings because $$\|q - d\|^2 = \|q\|^2 + \|d\|^2 - 2(q \cdot d) = 2 - 2(q \cdot d)$$
 
 
 # explainable embeddings
