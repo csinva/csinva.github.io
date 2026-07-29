@@ -1314,6 +1314,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
   - Sanity Checks for Agentic Data Science ([rewolinski...yu, 2026](https://arxiv.org/abs/2604.11003))
   - LLM Hacking: Quantifying the Hidden Risks of Using LLMs for Text Annotation ([baumann...hovy, 2025](https://arxiv.org/abs/2509.08825))
   - The threat of analytic flexibility in using LLMs to simulate human data: A call to attention ([cummins, 2025](https://arxiv.org/abs/2509.13397))
+  - Can AI Agents Synthesize Scientific Conclusions? ([jung...ribeiro, 2026](https://arxiv.org/abs/2606.11337))
   - Evaluating LLMs as Expert Annotators ([tseng, chen, chen & chen, 2025](https://arxiv.org/abs/2508.07827)) - multi-agent discussion improves annotations
   - The More You Automate, the Less You See: Hidden Pitfalls of AI Scientist Systems ([luo, kasirzadeh & shah, 2025](https://arxiv.org/abs/2509.08713))
   - All That Glitters is Not Novel: Plagiarism in AI Generated Research ([gupta & pruthi, 2025](https://arxiv.org/abs/2502.16487))
