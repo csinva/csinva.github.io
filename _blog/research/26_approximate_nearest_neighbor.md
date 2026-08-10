@@ -1,6 +1,6 @@
 ---
 layout: notes
-title: Approximate nearest neighbor search
+title: Vector search
 category: blog
 ---
 *July 7, 2026*

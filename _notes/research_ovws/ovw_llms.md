@@ -1593,11 +1593,23 @@ teaching, HITL, user simulators
 
 # other modalities / domains
 
-## tabular data
+## tabular data / regression
 
+- QIM: Decoding the quantitative world from any observation ([song, akhaur, et al, deepmind, 2026](https://github.com/google-deepmind/regress-lm)) - quantitative inductive machine (QIM) uses encoder-decoder architecture to predict a number from token sequences
+  
+  - requires pre-training / finetuning per task
+  - output vocab is just sign token, mantissa tokens, exponent tokens, e.g. 42.123 = +10+01 ×4.2123 = <+><+><0><1><4><2><1>
+    - to do multi-output regression, decoder just decodes the numbers concatenated
+  - questions
+    - baseline is finetune an llm…
+    - could use instructions in this
+    - could do in-context learning on this
+    - encoder uses bidirectional attention
+  
 - LLMs on Tabular Data: A Survey ([fang...qi,...faloutsos, 2024](https://stewarthu.com/papers/LLM-on-tabular-data.pdf))
+  
   - Robustness is Important: Limitations of LLMs for Data Fitting ([liu, yang & adomavicius, 2025](https://arxiv.org/abs/2508.19563v2)) - LMs in tabular tasks are sensitive to variables names and presentation order
-
+  
 - neurips 2023 [tabular workshop](https://table-representation-learning.github.io) and [review](https://arxiv.org/abs/2402.05121) from feb 4 2024
 
 - benchmarks
@@ -1770,6 +1782,14 @@ teaching, HITL, user simulators
 - PRRC ([zhuang...he, 2025](https://arxiv.org/abs/2504.14194)) - train rating models for professionalism, readability, reasoning, & cleanliness
 - Recycling the Web: A Method to Enhance Pre-training Data Quality and Quantity for LMs ([nguyen...zettlmoyer, oh, schmidt, li, 2025](https://arxiv.org/abs/2506.04689))
 - Diversity-driven Data Selection for LM Tuning through Sparse Autoencoder ([yang...mao, 2025](https://arxiv.org/abs/2502.14050))
+- Explorative Modeling: Unlocking a Third Pretraining Axis and End-to-End Generation ([gladstone, ji & du, 2026](https://arxiv.org/abs/2607.27372))
+	- ```
+    losses = []
+    for _ in range(K):
+        y = model(sample_latent())
+        losses.append(recon_loss(y, x))
+    min(losses).backward()
+    ```
 
 ## security
 
@@ -1825,6 +1845,10 @@ teaching, HITL, user simulators
 - Adversaries Can Misuse Combinations of Safe Models ([jones, dragan, & steinhardt, 2024](https://arxiv.org/abs/2406.14595))
 
 
+
+## safety
+
+- AI systems out-persuade expert humans ([hackenburg...summerfield, 2026](https://arxiv.org/abs/2606.16475))
 
 ## privacy / memorization
 
