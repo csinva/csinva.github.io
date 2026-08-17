@@ -252,6 +252,12 @@ category: ml
     - train trees and extract rules from them - these become features in a sparse linear model
     - feature importance becomes a little stickier....
 
+## gaussian processes
+
+- model the relationship between a function's values at different inputs as a multivariate gaussian
+  - the covariance of the gaussisan is given by a kernel (e.g. rbf kernel says that nearby function values are correlated = smooth function)
+  - when you make predictions, you condition on the values you see to get the distribution of outputs for other values
+
 # generative
 
 ## gaussian class-conditioned classifiers
