@@ -165,6 +165,32 @@ pd.merge(df1, df2, how='left', on='x1')
 
 # gpu / parallelization
 
+* [https://horace.io/brrr_intro.html](https://horace.io/brrr_intro.html)
+  * within gpu, all operations require moving from gpu’s DRAM to GPU’s SRAM
+  * for pointwise operations the time to do the moving (memory bandwidth cost) is longer than the computation itself
+  * operator fusion allows us to do many operations at once before moving back to DRAM
+    * can lead to interesting things, e.g.  activation functions are nearly all the same cost, despite `gelu` obviously consisting of many more operations than `relu`
+
+## computations
+
+- **AllReduce:** reduce (e.g. sum) values across ranks = ReduceScatter then AllGather
+
+  - **ReduceScatter:** reduce some slice across ranks and store it scattered across ranks
+
+  - **AllGather:** concatenate values across ranks and share copy everywhere
+
+- **DDP –** model copied on each GPU (it fits), and calculates loss based on input data batch
+
+  - Works by syncing gradients with Allreduce
+
+- **FSDP** – model chunked across GPUs
+
+  - **AllGather** before each forward pass
+  - **AllGather** before each backward pass
+  - **Reduce-Scatter** gradients after backward (to average them)
+
+## pytorch
+
 * new in 1.11: TorchData, functorch (e.g. vmap), DistributedDataParallel is stable
 * huggingface [performance](https://huggingface.co/docs/transformers/main/en/performance) overview
 * overview links from [huggingface](https://huggingface.co/docs/transformers/v4.15.0/parallelism) and [pytorch](https://pytorch.org/tutorials/beginner/dist_overview.html)
@@ -228,13 +254,7 @@ pd.merge(df1, df2, how='left', on='x1')
       * then run dask-worker many times (as many tasks as there are)
     * can also directly submit slurm jobs from dask
 
-## gpu
 
-* [https://horace.io/brrr_intro.html](https://horace.io/brrr_intro.html)
-  * within gpu, all operations require moving from gpu’s DRAM to GPU’s SRAM
-  * for pointwise operations the time to do the moving (memory bandwidth cost) is longer than the computation itself
-  * operator fusion allows us to do many operations at once before moving back to DRAM
-    * can lead to interesting things, e.g.  activation functions are nearly all the same cost, despite `gelu` obviously consisting of many more operations than `relu`
 
 # filetypes
 

@@ -62,6 +62,7 @@
     - data uncertainty (aleatoric): DNN predicts mean + var as separate outputs
       - both are used to calculate loss
     - model uncertainty (epistemic): use MC dropout w/ 10 reps
+- The geometric mean is always less than or equal to the arithmetic mean. They are equal only when every year has the exact same return.
 
 # quant finance
 
