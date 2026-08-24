@@ -68,9 +68,14 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
 - $\mathcal{L}_{\text{InfoNCE}} = -\,\mathbb{E}\left[\log\frac{\textcolor{teal}{\exp\!\left(\operatorname{sim}(\mathbf{z}_i,\mathbf{z}_i^{+})/\textcolor{orange}{\tau}\right)}}{\textcolor{purple}{\sum_{j=0}^{N}\exp\!\left(\operatorname{sim}(\mathbf{z}_i,\mathbf{z}_j)/\textcolor{orange}{\tau}\right)}}\right]\quad\textcolor{teal}{\text{positive pair}},\;\textcolor{purple}{\text{all pairs (norm.)}},\;\textcolor{orange}{\tau=\text{temperature}}$
   - large batch sizes are important, can speed up computation with gradcache ([gao et al. 2021](https://arxiv.org/abs/2101.06983)) (computes loss wrt embs, then backprops through whole computation different examples at at time)
   - low temp. signals "focus on the hardest cases" while high temp says "treat all negatives equally" 
+  - note: this is the same as cross-entropy loss using the exp(similarity score) as the probability
+- losses can use graded information not just pos/neg
+  - issue: don't usually have graded labels across examples in the batch (if you did, could use them directly)
 - Proxy-NCA ([movshovitz-attias et al. 2017](https://arxiv.org/abs/1703.07464)) generalizes this by learning a proxy embedding per class and comparing samples to proxies, sidestepping the combinatorial explosion of pair/triplet sampling
 
 # top-performing models
+
+*Can monitor model popularity via [openrouter](https://openrouter.ai/models?output_modalities=embeddings)*
 
 - baseline simple models
   - BM25 - uses TF-IDF based on word counts and document frequences
@@ -137,6 +142,9 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
 
 # papers with a little trick
 
+- mask removal (masked autoencoder MAE)-time
+  - DupMAE = RetroMAE v2: Duplex Masked Auto-Encoder For Pre-Training Retrieval-Oriented Language Models ([xiao & liu, 2022](https://arxiv.org/abs/2211.08769)) - add loss so that CLS token can recover the entire input and individual token embeddings can recover bag-of-words
+    - then, use low-dim representation of both embeddings concatenated as the embedding
 - training-time
   - GritLM ([meunninghoff...kiela, 2024](https://arxiv.org/abs/2402.09906)) - train a single model that, given different instructions, can produce either generations or embeddings
   - Matryoshka Representation Learning ([kusupati...kakade, jain, & farhadi, 2022](https://arxiv.org/abs/2205.13147)) - in training given an embedding of full dimensionality M (e.g. 2048), learn N different distance functions for each prefix of the embedding (e.g. l2_norm(embedding[:32]), l2_norm(embedding[:64]), l2_norm(embedding[:128]), etc). 

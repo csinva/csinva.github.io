@@ -396,6 +396,7 @@ Inverse RL - learning reward functions from example
 
 # RL for LLMs
 
+- basic intuition: though RL gives less bits than finetuning, the bits are higher signal than all the misc stuff in next-token prediction ([beren, 2026 blog post](https://www.beren.io/2026-07-26-How-Can-LLM-RL-Work-Despite-Information-Theoretic-Inefficiency/))
 - PPO: Proximal Policy Optimization ([schulman et al. 2017](https://arxiv.org/abs/1707.06347))
   - uses a policy gradient method to update the policy based on the reward from a separate reward model
 - DPO: Direct Preference Optimization ([rafailov...manning, finn, 2023](https://arxiv.org/abs/2305.18290)) - simpler technique that eliminates the need for a separate reward model using preference data directly
