@@ -284,6 +284,7 @@ Over time, ML has bounced from *feature-engineering* -> *architecture engineerin
       - $B = B(x)$
       - $C = C(x)$
   - RNNs are not Transformers (Yet): The Key Bottleneck on In-context Retrieval ([wen, dang, & lyu, 2024](https://arxiv.org/abs/2402.18510)) - RNNs fail to retrieve info from long contexts, RAG helps
+- Dynamic Compression in Recurrent Networks ([pari, bahlous-boldi & agrawal, 2026](https://arxiv.org/abs/2608.17896v1)) - allow model to seletively rescan information instead of having fixed-size latent state
 - MAD synthetic tasks: Mechanistic Design and Scaling of Hybrid Architectures ([poli...ermon, re, zhang, & massaroli, 2024](https://arxiv.org/abs/2403.17844)) - introduces 6 synthetic tasks on which performance correlates very well when scaling to real tasks: in-context recall, fuzzy in-context recall, noisy in-context recall, selective copying, compression, memorization
 - Scalable MatMul-free LMs ([zhu...eshraghian, 2024](https://arxiv.org/abs/2406.02528)) - LM architecture that doesn't use matmuls, builds on GRU, and shows improved efficiency on FPGAs
 - The Era of 1-bit LLMs: All LLMs are in 1.58 Bits ([ma...wei, 2024](https://arxiv.org/abs/2402.17764))
@@ -291,12 +292,13 @@ Over time, ML has bounced from *feature-engineering* -> *architecture engineerin
 - HRM: Hierarchical Reasoning Model (Sapient; [wang...yadkori, 2025](https://arxiv.org/abs/2506.21734)) - 4 learnable components: an input network, a low-level recurrent module, a high-level recurrent module, and an output network
   - TRM: Tiny Recursive Model: Recursive Reasoning with Tiny Networks ([jolicoeur-martineau, 2025](https://arxiv.org/abs/2510.04871))
   - Teaching Pretrained LMs to Think Deeper with Retrofitted Recurrence ([mcleish...goldblum, 2025](https://arxiv.org/abs/2511.07384)) - post-train regular LMs into looped models
-  
+
 - The Dragon Hatchling: The Missing Link between the Transformer and Models of the Brain (Pathway; [kosowski...bartoszkiewicz, 2025](https://arxiv.org/abs/2509.26507))
 - Misc
   - Tree Transformer: Integrating Tree Structures into Self-Attention ([wang, .., chen, 2019](https://arxiv.org/abs/1909.06639.pdf))
   - Waveformer: Linear-Time Attention with Forward and Backward Wavelet Transform ([zhuang...shang, 2022](https://arxiv.org/abs/2210.01989))
   - White-Box Transformers via Sparse Rate Reduction: Compression Is All There Is? ([yaodong yu...yi ma, 2023](https://arxiv.org/abs/2311.13110))
+  - Matryoshka LM Suites ([godey & artzi, 2026](https://arxiv.org/abs/2608.09703v1))
 
 
 ## mixture of experts (MoE) / routing
@@ -1112,6 +1114,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
 - finetuning-based methods
   - Towards Consistent Natural-Language Explanations via Explanation-Consistency Finetuning ([chen...gao, 2024](https://arxiv.org/abs/2401.13986)) - measure consistent NL explanations and finetune on consistent examples
     - Counterfactual Simulation Training for Chain-of-Thought Faithfulness ([hase & potts, 2026](https://arxiv.org/abs/2602.20710))
+    - Would this change your answer? Evaluating Explanations of LLM Behavior In The Wild with Counterfactual Experiments ([karvonen, ong, kantamneni & marks, 2026](https://arxiv.org/abs/2608.16747))
   - Benchmarking and Improving Generator-Validator Consistency of LMs ([lisa li...liang, 2023](https://arxiv.org/abs/2310.01846)) - measure generator-validator consistency and finetune on consistent examples
   - Inducing Faithfulness in Structured Reasoning via Counterfactual Sensitivity ([akter, shihab & sharma, 2025](https://arxiv.org/abs/2509.01544)) - finetune to avoid getting the same answer when introducing small logical errors into the CoT
   - ReFIne: A Framework for Trustworthy Large Reasoning Models with Reliability, Faithfulness, and Interpretability ([sun, yan, kulkarni & weng, 2025](https://arxiv.org/abs/2510.09062)) - add extra parts besides *think* tag, like *facts* and *self_assesment* tags
