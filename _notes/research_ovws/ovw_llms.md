@@ -1027,7 +1027,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
     - before training bottleneck, use ChatGPT to help correct any concept scores that seem incorrect
   - Human evaluation: agreement of concept scores and contribution of concept to output
   - Concept Bottleneck LLMs ([sun, oikarinen, ustun, & lily weng, 2024](https://arxiv.org/abs/2412.07992)) - this updated version of the paper also has results for language modeling
-  - https://www.guidelabs.ai/post/interpretable-intelligence/
+  - Steerling-8B: Scaling Inherently Interpretable Language Models ([Guide labs, 2026](https://arxiv.org/abs/2608.07594))
     - Atlas: Orienting the Pre-Training data of an LLM ([Guide labs blog post, 2025](https://www.guidelabs.ai/post/atlas-concept-annotated-pretraining-release/)); released [fineweb atlas](https://huggingface.co/datasets/guidelabs/fineweb-atlas)
 - Prototype LMs ([ley, nguyen, lakkaraju & adebayo, 2026](https://arxiv.org/abs/2607.00510))
 
@@ -1212,6 +1212,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
         - EvoX: Meta-Evolution for Automated Discovery ([liu...stoica, 2026](https://arxiv.org/abs/2602.23413))
       - DiscoGen: Procedural Generation of Algorithm Discovery Tasks in ML ([goldie...foerster, 2026](https://arxiv.org/abs/2603.17863)) - benchmark
       - auto-psych: Automating the science of mind using agent-driven theory discovery and experimentation ([prystawski...frank, 2026](https://arxiv.org/abs/2606.26460))
+    - Model Discovery Agent: LLM-assisted Bayesian experiment design for data-efficient discovery of mechanistic world models ([murphy, 2026](https://arxiv.org/abs/2608.09696)) - include bayesian machinery with autoresearch loop to improve data efficiency
     - Applications
       - Discovering Symbolic Cognitive Models from Human and Animal Behavior ([castro...stachenfeld, 2025](https://www.biorxiv.org/content/10.1101/2025.02.05.636732v1))
         - AI-Discovered Cognitive Models Reveal Novel Insights into Human and Animal Learning ([kasenberg, castro, ..., stachenfeld, miller, 2026](https://www.biorxiv.org/content/10.64898/2026.05.18.725921v1))
@@ -1818,6 +1819,7 @@ teaching, HITL, user simulators
     - Universal and Transferable Adversarial Attacks on Aligned LMs ([zou...fredrikson, 2023](https://arxiv.org/abs/2307.15043))
     - NOTABLE: Transferable Backdoor Attacks Against Prompt-based NLP Models ([mei...ma, 2023](https://aclanthology.org/2023.acl-long.867/))
     - Transferability of Adversarial Images across Prompts on Vision-LMs ([luo...torr, 2024](https://openreview.net/forum?id=nc5GgFAvtk))
+    
 - attacks from [TextAttack](https://github.com/QData/TextAttack) (mostly focused on classification or entailment):
     - hotflip: gradient-based word swap ([Ebrahimi et al., 2017](https://arxiv.org/abs/1712.06751); [Kuleshov et al., 2018](https://openreview.net/pdf?id=r1QZ3zbAZ))
       - word embedding swap with genetic algo ([Wang et al., 2019](https://arxiv.org/abs/1909.06723))
@@ -1839,7 +1841,12 @@ teaching, HITL, user simulators
 - Effective Backdoor Mitigation Depends on the Pre-training Objective ([verma...bilmes, 2023](https://arxiv.org/abs/2311.14948))
     - CleanCLIP mitigates backdoors by finetuning models on a clean subset of image-text pairs using a combination of contrastive and self-supervised loss
     - If the original model is changed with a different pre-training objective, CleanCLIP fails to remove backdoors
+    
 - Adversaries Can Misuse Combinations of Safe Models ([jones, dragan, & steinhardt, 2024](https://arxiv.org/abs/2406.14595))
+
+- Stealing Reasoning Traces from Proprietary LLM APIs ([panfilov...andriushchenko, 2026](https://arxiv.org/abs/2608.09867)) - return encrypted CoT so that they don't have to store it, but user can't read it (this also enables continuing a conversation with a different model size, e.g. haiku continuing opus)
+
+    - authors find that they can jailbreak haiku to give back the CoT from a bigger model by passing in the encrypted CoT from the bigger model
 
 
 
