@@ -75,7 +75,7 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
 
 # top-performing models
 
-*Can monitor model popularity via [openrouter](https://openrouter.ai/models?output_modalities=embeddings)*
+*Can monitor model popularity via [openrouter](https://openrouter.ai/models?output_modalities=embeddings) and some evals at [artificial analysis index](https://artificialanalysis.ai/agents/search-api)*
 
 - baseline simple models
   - BM25 - uses TF-IDF based on word counts and document frequences
