@@ -1210,6 +1210,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
       - SkyDiscover: A Flexible Framework for AI-Driven Scientific and Algorithmic Discovery ([blog post, 2026](https://skydiscover-ai.github.io/blog.html))
         - AdaEvolve: Adaptive LLM Driven Zeroth-Order Optimization ([cemri...stoica, 2026](https://arxiv.org/abs/2602.20133))
         - EvoX: Meta-Evolution for Automated Discovery ([liu...stoica, 2026](https://arxiv.org/abs/2602.23413))
+        - Inductive Deductive Synthesis: Enabling AI to Generate Formally Verified Systems ([agarwal...stoica, lesani, 2026](https://arxiv.org/abs/2605.23109)) - beyond functions to systems (with tests)
       - DiscoGen: Procedural Generation of Algorithm Discovery Tasks in ML ([goldie...foerster, 2026](https://arxiv.org/abs/2603.17863)) - benchmark
       - auto-psych: Automating the science of mind using agent-driven theory discovery and experimentation ([prystawski...frank, 2026](https://arxiv.org/abs/2606.26460))
     - Model Discovery Agent: LLM-assisted Bayesian experiment design for data-efficient discovery of mechanistic world models ([murphy, 2026](https://arxiv.org/abs/2608.09696)) - include bayesian machinery with autoresearch loop to improve data efficiency
@@ -1520,7 +1521,6 @@ teaching, HITL, user simulators
   - Scaling Clinician-Grade Feature Generation from Clinical Notes with Multi-Agent LMs ([wang...bayati, 2025](https://arxiv.org/abs/2508.01956))
   - CliMB: An AI-enabled Partner for Clinical Predictive Modeling ([saveliev...van der schaar, 2024](https://arxiv.org/abs/2410.03736))
   - From Fuzzy to Formal: Scaling Hospital Quality Improvement with AI ([vossler...zier, 2026](https://arxiv.org/abs/2604.20055))
-  
 - guideline / decision rule following
   - CancerGUIDE: Cancer Guideline Understanding via Internal Disagreement Estimation ([unell...poon, 2025](https://arxiv.org/abs/2509.07325)) - construct clinician-annotated dataset for 121 NSCLC patient guideline trajectories & evaluate LLMs on it (closed source)
   - MedGUIDE: Benchmarking Clinical Decision-Making in LLMs ([li...wang, 2025](https://arxiv.org/abs/2505.11613)) - construct manually annotated dataset for ~7k samples from 55 trees across 17 cancer types for NCCN guidelines of patient trajectories [samples are synthetic]
@@ -1556,7 +1556,8 @@ teaching, HITL, user simulators
       - assess zero-shot performance on ICU mortality / 30-day inpatient readmission
   - ETHOS: Zero shot health trajectory prediction using transformer ([renc…sitek, 2024](https://www.nature.com/articles/s41746-024-01235-0))
       - ARES (ETHOS followup) - Foundation Model of Electronic Medical Records for Adaptive Risk Estimation ([renc…sitek, 2025](https://arxiv.org/abs/2502.06124)) - compute dynamic, personalized risk probabilities for clinician-defined critical events (i.e. risk updates as new patient data is added)
-  - Exploring Scaling Laws for EHR Foundation Models ([zhang…wong, naumann, poon, 2025](https://arxiv.org/abs/2505.22964)) - train models from scratch up to 1B with LLaMA architecture
+      - Exploring Scaling Laws for EHR Foundation Models ([zhang…wong, naumann, poon, 2025](https://arxiv.org/abs/2505.22964)) - train models from scratch up to 1B with LLaMA architecture
+      - RL over Patient Trajectories for Clinical Reasoning in EHR FMs ([xiao...liu, 2026](https://arxiv.org/abs/2609.12277)) - use RL to post-train ethors model
 - Training LLMs for EHR-Based Reasoning Tasks via Reinforcement Learning ([lin, wu, & sun, 2025](https://arxiv.org/abs/2505.24105)) - train on MedCalc-Bench and eval on risk calculator computation (MedCalc-Bench), clinical trial matching (TREC Clinical Trials), and disease diagnosis (EHRShot)
   - start with supervised finetuning before applying RLVR
 - Why Chain of Thought Fails in Clinical Text Understanding ([wu...yang, 2025](https://arxiv.org/abs/2509.21933))
