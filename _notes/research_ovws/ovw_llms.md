@@ -1624,21 +1624,23 @@ teaching, HITL, user simulators
 
   - JoLT: Joint Probabilistic Predictions on Tabular Data Using LLMs ([shysheya...duvenaud, turner, 2025](https://arxiv.org/abs/2502.11877))
 
+  - Towards Pretraining Text Encoders for TabPFN ([tajjar, pfefferle, purucker & hutter, 2026](https://arxiv.org/abs/2606.04876v1)) - train adapter from text embeddings to TabPFN
+    
   - TabPFN v2: Accurate predictions on small data with a tabular foundation model ([hollman....hutter, 2025](https://www.nature.com/articles/s41586-024-08328-6))
     - 
       Model is open-source on huggingface and easy to use, but training dataset is not released (it was trained only on synthetic data)
     - Model context length is limited to datasets with 10k samples / 500 features
     - minutia
       - model is not quite invariant to feature order
-
+  
   - TabPFN v1: A Transformer That Solves Small Tabular Classification Problems in a Second ([hollman, ..., hutter, 2022](https://arxiv.org/abs/2207.01848))
     - transformer takes in train + test dataset then outputs predictions
     - each row (data example) is treated as a token and test points attend only to training
       - takes fixed-size 100 columns, with zero-padded columns at the end (during training, randomly subsample columns)
-
+  
   - PFNs: prior-data fitted networks ([muller, ..., hutter, 2021](https://arxiv.org/abs/2112.10510))
     - trained on synthetic data
-
+  
 - using retrieval can help put more relevant rows in context
 
   - two papers do this only during inference
