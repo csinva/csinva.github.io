@@ -69,8 +69,12 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
   - large batch sizes are important, can speed up computation with gradcache ([gao et al. 2021](https://arxiv.org/abs/2101.06983)) (computes loss wrt embs, then backprops through whole computation different examples at at time)
   - low temp. signals "focus on the hardest cases" while high temp says "treat all negatives equally" 
   - note: this is the same as cross-entropy loss using the exp(similarity score) as the probability
-- losses can use graded information not just pos/neg
-  - issue: don't usually have graded labels across examples in the batch (if you did, could use them directly)
+  - this is what is used in CLIP, SimCLR, most popular
+  - issue: can be computationally annoying to have large batch sizes / compute the denominator
+- $$ L_{BCE} = -\mathbb{E} \Big[\, {\color{teal}y_{ij}}\log\sigma\big({\color{green}t} \cdot {\color{purple}\text{sim}(z_i, z_j)} + {\color{orange}b}\big) + (1-{\color{teal}y_{ij}})\log\big(1-\sigma({\color{green}t} \cdot {\color{purple}\text{sim}(z_i, z_j)} + {\color{orange}b})\big) \,\Big] $$ Where: - $\color{teal}y_{ij}$ = label (1 if true positive pair, 0 otherwise) and $\color{green}t$ = learnable temperature (scale) - $\color{orange}b$ = learnable bias
+  - can be easier to compute because it doesn't require large batches / normalization
+  - easier to integrate in graded information, not just pos/neg (infoNCE sturggles because we don't usually have graded labels across examples in the batch; if you did, could use them directly)
+  - used in SigLIP and more
 - Proxy-NCA ([movshovitz-attias et al. 2017](https://arxiv.org/abs/1703.07464)) generalizes this by learning a proxy embedding per class and comparing samples to proxies, sidestepping the combinatorial explosion of pair/triplet sampling
 
 # top-performing models
@@ -138,7 +142,6 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
     - RAPTOR ([sarthi...manning, 2024](https://arxiv.org/abs/2401.18059)) - build hierarchical index by embedding, clustering, summarizing, and embedding the summaries
     - Contextual Document Embeddings ([morris & rush, 2024](https://arxiv.org/abs/2410.02525)) - embed docs conditioned on other docs (requires training to do this well)
 
-  
 
 # papers with a little trick
 
