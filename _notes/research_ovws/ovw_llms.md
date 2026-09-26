@@ -193,6 +193,12 @@ Over time, ML has bounced from *feature-engineering* -> *architecture engineerin
   - few-shot text classification
     - FastFit ([yehudai & bandel, 2024](https://arxiv.org/abs/2404.12365.pdf)) - fit few-shot batch with contrastive examples then predict using similarities to shots rather than a classification head (base model is roberta)
       - SetFit ([tunstal…pereg, 2022](https://arxiv.org/abs/2209.11055)) - finetune stentence transformer with contrastive loss, then train classification head
+  - zero-shot text classification
+    - Jev: Introducing System One Models ([almeida / TypeSafe, 2026](https://typesafe.ai/blog/introducing-system-one-models-and-jev)) - generally accurate and efficient, trained by something called "RLCD"
+    - SemIf ([TheoLeeCJ, 2026](https://github.com/TheoLeeCJ/SemIf)) - open Jev alternative that uses the naive approach of reading a softmax over the answer letters' next-token logits of a frozen open model
+      - JevK5 ([serikbay, 2026](https://huggingface.co/alibiserikbay/JevK5)) - SemIf + some LoRA training on this general task
+    - Kev ([palmer, 2026](https://github.com/jaredpalmer/kev)) - introduce special tokens at the start of (i) the query and (ii) each answer choice, then get embeddings of each answer choice and compare their similarity to the query
+    - CLM: Contrastive Language Models ([kwok…re, mirhoseini, 2026](https://github.com/Contrastive-LM/CLM)) - CLIP-style training of the embeddings of the query and the choices
 - Dense Communication between LMs ([wu, wang, yao, 2025](https://arxiv.org/abs/2505.12741)) - use pre-trained LMs as modules, and pass continuous embeddings between them
   - train seq2seq models to connect the different small LMs, and get strong performance with very small training cost
 
