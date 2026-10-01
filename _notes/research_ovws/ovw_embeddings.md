@@ -22,16 +22,15 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
 - leading models as of summer 2026: google (gemini embedding), voyage (voyage series, open-source voyage-4-nano), alibaba (qwen embedding, GTE), cohere, openai (relatively outdated), BAAI (BGE), Jina (bought by elastic), NVIDIA (NV-Embed), Microsoft (E5), nomic (nomic-embed)
 - embedding approaches: ![embedding_interaction_levels](../assets/embedding_interaction_levels.svg)
 - 3 levels of interaction
+1. bi-encoder: separately encode query & doc into a single vec
 
-  1. bi-encoder: separately encode query & doc into a single vec
+2. late-interaction encoder: separately encode but keep a vector per token & learn some params on how to compute similarity between them
 
-  2. late-interaction encoder: separately encode but keep a vector per token & learn some params on how to compute similarity between them
+   - e.g. ColBERT ([khattab & zaharia, 2020](https://arxiv.org/abs/2004.12832)) uses maxsim to compare, which keeps the vector for each token and then for each token in the query, finds the candidate token it matches best (highest cosine similarity), then averages those best-match scores across all query tokens
+  
+   - Your Embedding Model is SMARTer Than You Think ([zhang...lee, 2026](https://arxiv.org/abs/2605.24938)) - use the maxsim score (along with the original last-token score) to do late interaction without requiring post-training
 
-     - e.g. ColBERT ([khattab & zaharia, 2020](https://arxiv.org/abs/2004.12832)) uses maxsim to compare, which keeps the vector for each token and then for each token in the query, finds the candidate token it matches best (highest cosine similarity), then averages those best-match scores across all query tokens
-
-     - Your Embedding Model is SMARTer Than You Think ([zhang...lee, 2026](https://arxiv.org/abs/2605.24938)) - use the maxsim score (along with the original last-token score) to do late interaction without requiring post-training
-
-  3. cross-encoder: encode query and doc together
+3. cross-encoder: encode query and doc together
 
 # best practices for training
 
@@ -102,13 +101,6 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
   - Nemotron-3-Embed ([blog post, 2026](https://huggingface.co/blog/nvidia/nemotron-3-embed-wins-rteb)) - 3 sizes: 8B (BF16), 1B (BF16), 1B (NVFP4), all available with very permissive `openmdw-1.1` license
     - 8B model is adapted from Ministral-3-8B-Instruct-2512 ([Mistral, Jan 2026](https://arxiv.org/abs/2601.08584))
     - 1B model is adapted in two stages, first post-training Ministral-3-3B-Instruct-2512, then distilling it to 2B and posttraining, then distilling it to 1B and posttraining
-  
-- multimodal embeddings
-  - image-text starts with CLIP ([OpenAI, 2021](https://arxiv.org/abs/2103.00020)), open-source replications like OpenCLIP ([LAION/Stability, 2022](https://arxiv.org/abs/2212.07143)), and improvements like MetaCLIP ([Meta, 2023](https://arxiv.org/abs/2309.16671)) and EVA-CLIP ([BAAI, 2023](https://arxiv.org/abs/2303.15389))
-  - can have many modality embeddings aligned through images ImageBind ([Meta, 2023](https://arxiv.org/abs/2305.05665)) or through text LanguageBind ([PKU, 2023](https://arxiv.org/abs/2310.01852))
-  - more modern multimodal embeddings are built by post-training existing large multimodal models, e.g. E5-V ([BUAA/Microsoft, 2024](https://arxiv.org/abs/2407.12580)), VLM2Vec ([Salesforce/Waterloo, 2024](https://arxiv.org/abs/2410.05160)) , GME ([Alibaba, 2024](https://arxiv.org/abs/2412.16855)), voyage-multimodal-3 ([Voyage AI, 2024](https://blog.voyageai.com/2024/11/12/voyage-multimodal-3/)), , jina-embeddings-v4 ([Jina AI, 2025](https://arxiv.org/abs/2506.18902)), Gemini Embedding ([Google DeepMind, 2025](https://arxiv.org/abs/2503.07891)), Cohere Embed v4 ([Cohere, 2025](https://docs.cohere.com/docs/cohere-embed))
-  - video - usually samples frames and embeds them rather than explicit temporal modeling
-    - [voyage-multimodal-3.5](https://blog.voyageai.com/2026/01/15/voyage-multimodal-3-5/) (jan 2026) - videos are represented as an ordered sequence of frames and input to the model as images - every 1120 pixels of a video counts as a token, for a maximum of 32k tokens
 
 - query inference-time expansions
   - query2doc expansion
@@ -125,7 +117,7 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
     - CAPSTONE ([he et al., 2023](https://arxiv.org/pdf/2212.09114)) - moves expansion to the document side with curriculum sampling, so all generation cost is paid at indexing rather than query time
     - Retrieval-Feedback Distillation + Preference Alignment ([Li & Zhou, 2026](https://arxiv.org/html/2603.13776)) - Transfers retrieval-friendly expansion behavior from a teacher LLM to a compact student via retrieval feedback
       - AQE ([Yang et al., 2025](https://arxiv.org/abs/2507.11042)) - finetune small LLM to generate retrieval-optimized expansions
-  
+
 - rerankers
   - 3 common versions: pointwise (score each document independently), pairwise (learn "A beats B"), listwise (optimize the ordering of the whole list, targeting metrics like NDCG directly)
   - early models like ms-marco-MiniLM were cross-encoders, people later found that prompting an LLM did well but was expensive, so these were distilled
@@ -133,7 +125,7 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
   - voyage [rerank-2.5](https://blog.voyageai.com/2025/08/11/rerank-2-5/) (aug 2025) - includes instruction following, e.g. “Prioritize the title and ignore the abstract”
   - Retrieving a Set, Not Independent Passages: Set-Level Compatibility Learning for Efficient Set Exploration ([song & lee, 2026](https://arxiv.org/abs/2607.05712)) - Introduces a set-level retrieval framework for multi-hop QA that scores query–passage-set compatibility instead of ranking passages independently
   - jina-reranker-v3.5: An Efficient Listwise Reranker with Hybrid Attention and Self-Distillation ([nasika, wang, krasakis & xiao, 2026](https://arxiv.org/abs/2607.18152))
-  
+
 - contextualized chunking
   - voyage does this via explicitly training a model to output separate vectors for each chunk
   - jina does this via [late chunking](https://jina.ai/news/late-chunking-in-long-context-embedding-models/) (embed whole doc, get embeddings for a chunk by mean pooling over its tokens)
@@ -141,6 +133,46 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
   - more researchy
     - RAPTOR ([sarthi...manning, 2024](https://arxiv.org/abs/2401.18059)) - build hierarchical index by embedding, clustering, summarizing, and embedding the summaries
     - Contextual Document Embeddings ([morris & rush, 2024](https://arxiv.org/abs/2410.02525)) - embed docs conditioned on other docs (requires training to do this well)
+
+## multimodal embeddings
+
+- image-text starts with CLIP ([OpenAI, 2021](https://arxiv.org/abs/2103.00020)), open-source replications like OpenCLIP ([LAION/Stability, 2022](https://arxiv.org/abs/2212.07143)), and improvements like MetaCLIP ([Meta, 2023](https://arxiv.org/abs/2309.16671)) and EVA-CLIP ([BAAI, 2023](https://arxiv.org/abs/2303.15389))
+  - SigLIP ([zhai…beyer, 2023](https://arxiv.org/abs/2303.15343)) - replace softmax InfoNCE with a pairwise sigmoid loss so each image-text pair is an independent binary problem (no batch-wide normalization → works at small batch sizes, cheaper); SigLIP 2 ([tschannen…zhai, 2025](https://arxiv.org/abs/2502.14786)) adds captioning + self-distillation + masked-prediction losses and native-resolution variants - now the default vision tower inside most VLMs (e.g. Qwen3-VL, PaliGemma)
+  - LLM2CLIP ([huang…furu wei, 2024](https://arxiv.org/abs/2411.04997)) - swap CLIP's text tower for a contrastively finetuned LLM to fix the 77-token limit and bag-of-words text understanding
+  - Perception Encoder ([bolya…feichtenhofer; Meta, 2025](https://arxiv.org/abs/2504.13181)) - contrastive vision-language pretraining alone yields strong general features, but the best ones live in intermediate layers and need alignment tuning to pull out
+- known weaknesses of dual encoders: modality gap - image and text embeddings occupy disjoint cones even after training ([liang…zou, 2022](https://arxiv.org/abs/2203.02053)); can't embed interleaved text+image; bag-of-words behavior on compositional queries
+  - can have many modality embeddings aligned through images ImageBind ([Meta, 2023](https://arxiv.org/abs/2305.05665)) or through text LanguageBind ([PKU, 2023](https://arxiv.org/abs/2310.01852))
+  - audio-text analogue of CLIP: CLAP ([elizalde…wang; Microsoft, 2022](https://arxiv.org/abs/2206.04769)), LAION-CLAP ([wu…dubnov, 2023](https://arxiv.org/abs/2211.06687))
+- more modern multimodal embeddings are built by post-training existing large multimodal models (single backbone sees interleaved text+images, so a screenshot or PDF page is embedded directly with no OCR/ETL), e.g. VLM2Vec ([Salesforce/Waterloo, 2024](https://arxiv.org/abs/2410.05160)), GME ([Alibaba, 2024](https://arxiv.org/abs/2412.16855)), voyage-multimodal-3 ([Voyage AI, 2024](https://blog.voyageai.com/2024/11/12/voyage-multimodal-3/)), jina-embeddings-v4 ([Jina AI, 2025](https://arxiv.org/abs/2506.18902)), Gemini Embedding ([Google DeepMind, 2025](https://arxiv.org/abs/2503.07891)), Cohere Embed v4 ([Cohere, 2025](https://docs.cohere.com/docs/cohere-embed))
+  - precursors that framed "universal multimodal retrieval" (any-modality query → any-modality doc, instruction-conditioned): UniIR / M-BEIR benchmark ([wei…chen, 2023](https://arxiv.org/abs/2311.17136)), MagicLens ([zhang…chang; Google, 2024](https://arxiv.org/abs/2403.19651)) - mines implicitly related image pairs from the same web page and has an LLM write the relation as the instruction
+  - E5-V ([BUAA/Microsoft, 2024](https://arxiv.org/abs/2407.12580)): even with a *shared* MLLM encoder, untuned image and text embeddings still show a modality gap; they train on text-only NLI pairs with a "summarize in one word" prompt and it transfers to images
+  - MM-Embed ([NVIDIA, 2024](https://arxiv.org/abs/2411.02571)): MLLM retrievers exhibit *modality bias* (asked for an image, they retrieve text), fixed with modality-aware hard-negative mining + a continued text-only finetuning stage to keep MTEB scores
+  - hard-negative tricks: LLaVE ([lan…tang, 2025](https://arxiv.org/abs/2503.04812)) weights in-batch negatives by hardness; UniME ([gu…deng, 2025](https://arxiv.org/abs/2504.17432)) distills from a text LLM then does hard-negative finetuning, and UniME-V2 ([gu…bing, 2025](https://arxiv.org/abs/2510.13515)) uses an MLLM-as-judge to score candidates and train against *soft* matching scores rather than binary pos/neg; QQMM ([2025](https://arxiv.org/abs/2510.xxxxx)) explicitly amplifies the gradient from hard negatives in InfoNCE
+  - keeping generative ability: VladVA ([ouali…tzimiropoulos, 2024](https://arxiv.org/abs/2412.04378)) and CAFe ([yu…, 2025](https://arxiv.org/abs/2503.19900)) add an autoregressive LM loss alongside contrastive loss so the embedder doesn't forget how to generate
+  - MoEMB ([Sep 2026](https://arxiv.org/abs/2609.08663)) - finds one embedder trained jointly over all tasks underperforms per-task models (gradient interference or capacity), motivating sparse MoE embedders
+  - Douyin Multimodal Embedding ([chen…dou; ByteDance, Aug 2026](https://arxiv.org/abs/2608.02148)) - industrial recipe: large-scale contrastive pretraining for a broad space, then a stage that recovers the fine-grained discrimination of CoT-based models without paying generation cost at serving time
+- visual document retrieval (embed page screenshots instead of extracted text)
+  + DSE: Document Screenshot Embedding ([ma…lin, 2024](https://arxiv.org/abs/2406.11251)) - single-vector version
+  + ColPali ([faysse…colombo, 2024](https://arxiv.org/abs/2407.01449)) - late interaction over VLM patch tokens: each page → ~1024 patch embeddings (128-d), scored with MaxSim against query tokens; introduced ViDoRe; skips chunking entirely
+    - family: ColQwen2/2.5/3 (Qwen-VL backbones), ColSmol, ColModernVBERT ([teiletche…, 2025](https://arxiv.org/abs/2510.01149)) - 250M params within 0.6 nDCG of ColPali, Nemotron ColEmbed V2 ([NVIDIA, 2026](https://arxiv.org/abs/2602.03992)) - Qwen3-VL 4B/8B with bidirectional attention; projecting to 128-d keeps ~95% accuracy at 3% storage, but 1M pages still need ~180GB
+    - jina-embeddings-v4 outputs *both* a 2048-d dense vector (MRL-truncatable to 128) and 128-d per-token vectors from one model, so you can trade indexing cost for precision without switching models
+    - MetaEmbed ([Meta, 2025](https://arxiv.org/abs/2509.18095)) - append a small set of learnable "meta tokens" and train so any prefix of them works as a multi-vector embedding → test-time scaling of retrieval quality vs cost (matryoshka over *number* of vectors)
+    - storage is the pain point → training-free multi-vector compression via token pooling / anchor pruning (e.g. Structural Anchor Pruning ([2026](https://arxiv.org/abs/2601.20107))), or MUVERA-style fixed-dimensional encodings that let multi-vector sets use standard ANN
+    - visual-token efficiency for single-vector models: Magic-MM-Embedding ([li…liu, 2026](https://arxiv.org/abs/2602.05275)) reduces visual tokens before pooling
+- reasoning-driven embeddings - let the MLLM think before emitting the vector
+  + UME-R1 ([2025](https://arxiv.org/abs/2511.00405)) - generate a CoT then pool; RL-trained; big gains on compositional/instruction tasks but impractical to serve online
+  + Embed-RL ([jiang…tang, 2026](https://arxiv.org/abs/2602.13823)) - Embedder-Reasoner RL loop where the embedder supervises the reasoner so CoT traces stay aligned with embedding tasks
+  + PLUME ([he…wang, 2026](https://arxiv.org/abs/2604.02073)) - latent (non-verbal) reasoning tokens instead of explicit CoT to recover most of the gain at bi-encoder cost
+- omni-modal (text + image + video + audio in one space)
+  + Omni-Embed-Nemotron ([NVIDIA, 2025](https://arxiv.org/abs/2511.10954)), LCO-Embedding ([2025](https://arxiv.org/abs/2510.11693)) - language-centric omnimodal training on Qwen2.5-Omni
+  + Gemini Embedding 2 ([Google DeepMind, May 2026](https://arxiv.org/abs/2605.27295)) - native multimodal from Gemini; arbitrary interleaved text/image/video/audio/document inputs; multi-task multi-stage contrastive training; SoTA across unimodal, cross-modal, and mixed-modal retrieval simultaneously (69.9 MTEB multilingual, 84.0 MTEB code)
+  + jina-embeddings-v5-omni ([Jina, 2026](https://jina.ai/news/jina-embeddings-v5-omni-multimodal-embeddings-for-text-image-audio-and-video/)) - nano (0.95B) / small (1.57B); bolts SigLIP2 vision + Whisper audio encoders onto the frozen v5 text model so text quality is bit-identical; small matches 7B omni baselines on average, video is the remaining gap
+  + Conan-embedding-v3 ([2026](https://arxiv.org/abs/2606.09331)) - *merge* separately trained modality-specialist backbones; works for vision/video/doc but audio regresses because the projector was calibrated to the audio-specialist backbone ("projector drift"), fixed by re-tuning the projector with backbone frozen
+  + Ovis-Omni-Embedding-3B - initialize from Qwen2.5-Omni Thinker (drop Talker + LM head), last-token pooling; leads MMEB-V3 aggregate
+- video - usually samples frames and embeds them rather than explicit temporal modeling
+  + [voyage-multimodal-3.5](https://blog.voyageai.com/2026/01/15/voyage-multimodal-3-5/) (jan 2026) - videos are represented as an ordered sequence of frames and input to the model as images - every 1120 pixels of a video counts as a token, for a maximum of 32k tokens; first production video model with matryoshka dims
+  + VLM2Vec-V2 ([meng…chen, 2025](https://arxiv.org/abs/2507.04590)) - extends VLM2Vec to videos + visual docs, introduces MMEB-V2
+  + WAVE - unified audio-visual embeddings for audio↔video retrieva
 
 
 # papers with a little trick
