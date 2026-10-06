@@ -1600,53 +1600,46 @@ teaching, HITL, user simulators
 
 ## tabular data / regression
 
-- QIM: Decoding the quantitative world from any observation ([song, akhaur, et al, deepmind, 2026](https://github.com/google-deepmind/regress-lm)) - quantitative inductive machine (QIM) uses encoder-decoder architecture to predict a number from token sequences
-  
-  - requires pre-training / finetuning per task
-  - output vocab is just sign token, mantissa tokens, exponent tokens, e.g. 42.123 = +10+01 ×4.2123 = <+><+><0><1><4><2><1>
-    - to do multi-output regression, decoder just decodes the numbers concatenated
-  - questions
-    - baseline is finetune an llm…
-    - could use instructions in this
-    - could do in-context learning on this
-    - encoder uses bidirectional attention
-  
-- LLMs on Tabular Data: A Survey ([fang...qi,...faloutsos, 2024](https://stewarthu.com/papers/LLM-on-tabular-data.pdf))
-  
-  - Robustness is Important: Limitations of LLMs for Data Fitting ([liu, yang & adomavicius, 2025](https://arxiv.org/abs/2508.19563v2)) - LMs in tabular tasks are sensitive to variables names and presentation order
-  
-- neurips 2023 [tabular workshop](https://table-representation-learning.github.io) and [review](https://arxiv.org/abs/2402.05121) from feb 4 2024
+review blog post ([molnar, feb 2026](https://mindfulmodeler.substack.com/p/the-state-of-tabular-foundation-models))
 
 - benchmarks
 
   - TabArena ([erickson...salinas, hutter, 2025](https://arxiv.org/abs/2506.16791))
+    - BeyondArena ([github, in tabarena repo](https://github.com/autogluon/tabarena)) - next step including non-iid tasks
 
   - TALENT benchmark ([ye...zhan, 2024](https://arxiv.org/abs/2407.00956))
 
   - meta-test bechmark ([holzmuller, grinsztajn, & steinwart, 2024](https://proceedings.neurips.cc/paper_files/paper/2024/file/2ee1c87245956e3eaa71aaba5f5753eb-Paper-Conference.pdf))
 
-- tabPFN main works
-  - TabICL: A Tabular Foundation Model for In-Context Learning on Large Data ([qu...varoquax, le morvan, 2025](https://www.arxiv.org/abs/2502.05564))
+- non-tabPFN leading models
 
+  - TabICL v1 and V2: A Tabular Foundation Model for In-Context Learning on Large Data ([qu...varoquax, le morvan, 2025](https://www.arxiv.org/abs/2502.05564))
+  - [Kumo](https://huggingface.co/blog/nvidia/kumo-tabular) (Nvidia)
+  - TabFM: A Zero-Shot FM for Tabular Data ([kong...das, 2026](https://arxiv.org/abs/2609.37959)) (Google)
+
+- tabPFN main works
   - JoLT: Joint Probabilistic Predictions on Tabular Data Using LLMs ([shysheya...duvenaud, turner, 2025](https://arxiv.org/abs/2502.11877))
 
   - Towards Pretraining Text Encoders for TabPFN ([tajjar, pfefferle, purucker & hutter, 2026](https://arxiv.org/abs/2606.04876v1)) - train adapter from text embeddings to TabPFN
-    
+
+  - TabPFN-3: Technical Report ([grinsztajn...hutter, 2026](https://arxiv.org/abs/2605.13986)) - back to fully synthetic data
+
   - TabPFN v2: Accurate predictions on small data with a tabular foundation model ([hollman....hutter, 2025](https://www.nature.com/articles/s41586-024-08328-6))
+    - Real-TabPFN: Improving Tabular FMs via Continued Pre-training With Real-World Data ([garg...hutter, 2025](https://arxiv.org/abs/2507.03971)) - continue improving by using real users' data
     - 
       Model is open-source on huggingface and easy to use, but training dataset is not released (it was trained only on synthetic data)
     - Model context length is limited to datasets with 10k samples / 500 features
     - minutia
       - model is not quite invariant to feature order
-  
+
   - TabPFN v1: A Transformer That Solves Small Tabular Classification Problems in a Second ([hollman, ..., hutter, 2022](https://arxiv.org/abs/2207.01848))
     - transformer takes in train + test dataset then outputs predictions
     - each row (data example) is treated as a token and test points attend only to training
       - takes fixed-size 100 columns, with zero-padded columns at the end (during training, randomly subsample columns)
-  
+
   - PFNs: prior-data fitted networks ([muller, ..., hutter, 2021](https://arxiv.org/abs/2112.10510))
     - trained on synthetic data
-  
+
 - using retrieval can help put more relevant rows in context
 
   - two papers do this only during inference
@@ -1673,6 +1666,20 @@ teaching, HITL, user simulators
 - interpretation
 
   - Where Computation Lives Inside TabPFN: Causal Localisation of Attention Head Function ([gupta, kumar, mandal & deshpande, 2026](https://arxiv.org/abs/2606.12917))
+  - Selecting Feature Interactions for Generalized Additive Models by Distilling FMs ([jia, singh, caruana & lengerich, 2026](https://arxiv.org/abs/2604.13332))
+
+- unstructured inputs
+
+  - QIM: Decoding the quantitative world from any observation ([song, akhaur, et al, deepmind, 2026](https://github.com/google-deepmind/regress-lm)) - quantitative inductive machine (QIM) uses encoder-decoder architecture to predict a number from token sequences
+
+    - requires pre-training / finetuning per task
+    - output vocab is just sign token, mantissa tokens, exponent tokens, e.g. 42.123 = +10+01 ×4.2123 = <+><+><0><1><4><2><1>
+      - to do multi-output regression, decoder just decodes the numbers concatenated
+    - questions
+      - baseline is finetune an llm…
+      - could use instructions in this
+      - could do in-context learning on this
+      - encoder uses bidirectional attention
 
 - value string methods - directly treating numerical values as strings and finetune GPT on them (everything is represented as text)
   - LIFT: Language-Interfaced Fine-Tuning for Non-Language Machine Learning Tasks ([dinh...lee, 2022](https://arxiv.org/abs/2206.06565))
@@ -1720,6 +1727,7 @@ teaching, HITL, user simulators
 
 - older
 
+  - ORIGAMI: A generative transformer architecture for predictions from semi-structured data ([rückstieß, huang & vujanic, 2024](https://arxiv.org/abs/2412.17348)) - do some json-specific training for next-token prediction
   - AutoInt ([song...tang, 2019](https://dl.acm.org/doi/abs/10.1145/3357384.3357925))
   - (not using transformers): transform a relation table in a graph and perform random walks on the latter to produce node embeddings ([cappuzzo et al., 2020](https://dl.acm.org/doi/10.1145/3318464.3389742))
   - baseline methods: usually flatten tables, maybe with special character for starting each row/col
@@ -1753,15 +1761,9 @@ teaching, HITL, user simulators
 
       - RFM iterates between training $\hat f$ and using the AGOP of the trained model to select features and linearly transform input data
 
-- reviews
-  - Transformers for Tabular Data Representation: A Survey of Models and Applications ([badaro...papotti, 2023](https://direct.mit.edu/tacl/article/doi/10.1162/tacl_a_00544/115239/Transformers-for-Tabular-Data-Representation-A))
-    - common data sources: Wikipedia tables for QA (e.g. 3.2M tables in [this paper](https://www.semanticscholar.org/paper/TabEL%3A-Entity-Linking-in-Web-Tables-Bhagavatula-Noraset/8ffcad9346c4978a211566fde6807d6fb4bfa5ed)) or WDC web table corpus (233M tables from [lehmberg et al. 2016](https://dl.acm.org/doi/10.1145/2872518.2889386))
-    - modifications
-      - positional embeddings based on rows + cols
-      - attention variants: add row-wise, sparse attention allows for adding more context
-    - Table Pre-training: A Survey on Model Architectures, Pretraining Objectives, and Downstream Tasks ([dong et al. 2022](https://www.semanticscholar.org/paper/Table-Pre-training%3A-A-Survey-on-Model-Pretraining-Dong-Cheng/49f4b4ca86e574c7ec688cfd45d2e17ff079c313))
-    - Embeddings for Tabular Data: A Survey ([singh & bedathur, 2023](https://arxiv.org/abs/2302.11777))
-    - Deep neural networks and tabular data: A survey ([borisov et al. 2022]()) - mostly compares performance on standard tasks (e.g. classification)
+- limitations
+
+  - Robustness is Important: Limitations of LLMs for Data Fitting ([liu, yang & adomavicius, 2025](https://arxiv.org/abs/2508.19563v2)) - LMs in tabular tasks are sensitive to variables names and presentation order
 
 ## audio / time-series
 
