@@ -295,7 +295,7 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
   - idea is to build a proximity graph over the vectors, and answer queries with greedy best-first traversal - start somewhere, repeatedly hop to the neighbor closest to the query, and search its neighbors
     - hierarchy: does search at a higher layer, then drops to neighbors in lower layer which are more refined
     - edge-selection at insert time
-      - note: naive graph of neighbors doesn't work because it's very hard to find a new nieghbor if you search in the wrong place; instead NSW inserts points in random order and connects each to its M nearest *at insertion time* (this leaves long-range edges from the early added nodes)
+      - note: naive graph of neighbors doesn't work because it's very hard to find a new neighbor if you search in the wrong place; instead NSW inserts points in random order and connects each to its M nearest *at insertion time* (this leaves long-range edges from the early added nodes)
   - supports incremental inserts (although build and insert are both expensive)
     - delete is a pain
     - requires a lot of RAM (rather than disk access)
@@ -468,6 +468,7 @@ See related papers in the [📌 llm basics](https://csinva.io/notes/ai/llms.html
   - The Universal Weight Subspace Hypothesis ([kaushik...yuille, 2025](https://www.arxiv.org/abs/2512.05117))
   - Anatomy of a ML Ecosystem: 2 Million Models on Hugging Face ([laufer, oderinwale & kleinberg, 2025](https://arxiv.org/abs/2508.06811))
   - Canonicalizing Multimodal Contrastive Representation Learning ([gupta...garg, 2026](https://arxiv.org/abs/2602.17584))
+  - Shared Geometry As A Rosetta Stone: Cross-Modal Alignment Without Paired Data ([schnaus...isola, 2026](https://arxiv.org/abs/2610.09411))
 - Rosetta Neurons: Mining the Common Units in a Model Zoo ([dravid, ..., efros, shocher, 2023](https://openaccess.thecvf.com/content/ICCV2023/html/Dravid_Rosetta_Neurons_Mining_the_Common_Units_in_a_Model_Zoo_ICCV_2023_paper.html))
   - Multimodal Neurons in Pretrained Text-Only Transformers ([schwettmann...torralba, 2023](https://arxiv.org/abs/2308.01544.pdf))
   - Interpreting CLIP's Image Representation via Text-Based Decomposition ([gandelsman, efros, & steinhardt, 2023](https://arxiv.org/abs/2310.05916))

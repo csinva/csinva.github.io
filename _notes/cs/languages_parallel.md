@@ -221,6 +221,8 @@ pd.merge(df1, df2, how='left', on='x1')
   * rather than storing images, can load image from filename in `__getitem__`
 * there's a `torch.nn.Flatten` module
 * following example [here](https://medium.com/codex/a-comprehensive-tutorial-to-pytorch-distributeddataparallel-1f4b42bb1b51)
+* roofline analyses: https://jax-ml.github.io/scaling-book/roofline/
+  * 
 
 ## parallelization
 
@@ -253,8 +255,6 @@ pd.merge(df1, df2, how='left', on='x1')
     * when using slurm, must run dask-scheduler on cluster node
       * then run dask-worker many times (as many tasks as there are)
     * can also directly submit slurm jobs from dask
-
-
 
 # filetypes
 

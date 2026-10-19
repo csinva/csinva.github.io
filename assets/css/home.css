@@ -211,3 +211,34 @@ label {
         display: inline-block;
         text-align: left;
     }
+
+    /* Collapsible "Mini personal projects" section */
+    .mini-projects {
+        clear: both;
+        display: flow-root;
+        width: 100%;
+    }
+
+    .mini-projects > summary {
+        cursor: pointer;
+        text-align: center;
+        list-style: none;
+    }
+
+    .mini-projects > summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .mini-projects > summary > p::before {
+        content: "▸ ";
+    }
+
+    .mini-projects[open] > summary > p::before {
+        content: "▾ ";
+    }
+
+    .mini-projects-note {
+        display: block;
+        font-size: small;
+        opacity: 0.7;
+    }

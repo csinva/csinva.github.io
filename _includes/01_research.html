@@ -2,7 +2,7 @@
 
 <div style="padding-left: 5%;padding-right: 5%">
     <div style="width: 100%;padding: 8px;margin-bottom: 20px; text-align:center; font-size: large;">
-        Some recent work I'm excited about! I put a lot of my code into the <a href="https://github.com/csinva/imodels">imodels</a> and <a
+        Some recent work I'm excited about! I put a lot of my code into the <a href="https://github.com/csinva/imodels">imodels</a> & <a
             href="https://github.com/csinva/imodelsx">imodelsX</a> packages and have a soft spot for <a href="https://docs.google.com/presentation/d/1I9OWLhrmBiBjoe6CJtxdI6qlIuvL26GZRjeO_ir3i_Y/">decision trees</a> and simple things that work.
     </div>
     <!-- . If you want to chat about research or -->
@@ -20,7 +20,7 @@
         via autoresearch<br>
         <!-- <a href="https://arxiv.org/abs/2310.14034">tree prompting</a> - improve black-box few-shot text classification -->
         <!-- with decision trees<br> -->
-        <a href="https://arxiv.org/abs/2311.02262">Attention steering</a> - mechanistically guide LLMs by
+        <a href="https://proceedings.iclr.cc/paper_files/paper/2024/file/b99d6cc40b05809c3d84b57a165448cd-Paper-Conference.pdf">Attention steering</a> - mechanistically guide LLMs by
         emphasizing specific input
         spans<br>
         <a href="http://proceedings.mlr.press/v119/rieger20a.html">Explanation penalization</a> - regularize
@@ -53,19 +53,19 @@
         <!-- href="https://www.microsoft.com/en-us/research/group/real-world-evidence/">Health Futures team</a>). -->
         <br>
         <br>
-        <a href="https://arxiv.org/abs/2601.09072">Human-AI co-design of clinical models</a> - build clinical rules by
+        <a href="https://www.nature.com/articles/s41746-026-02838-5">Human-AI co-design of clinical models</a> - build clinical rules by
         using LLMs to analyze EHR, vetted by clinicians
         <br>
-        <a href="https://arxiv.org/pdf/2201.11931">Greedy tree sums</a> - build accurate, compact tree-based clinical
+        <a href="https://www.pnas.org/doi/10.1073/pnas.2310151122">Greedy tree sums</a> - build accurate, compact tree-based clinical
         models<br>
-        <a href="https://arxiv.org/abs/2306.00024">Clinical self-verification</a> - improve LLM-based clinical
-        information extraction with self-verirication<br>
+        <!-- <a href="https://arxiv.org/abs/2306.00024">Clinical self-verification</a> - improve LLM-based clinical -->
+        <!-- information extraction with self-verirication<br> -->
         <!-- <a href="https://journals.plos.org/digitalhealth/article?id=10.1371/journal.pdig.0000076">clinical rule -->
         <!-- vetting</a> - test a clinical decision instrument for evaluating intra-abdominal injury<br> -->
-        <a href="https://www.medrxiv.org/content/10.1101/2025.02.12.25320965v1">Clinical rule
+        <a href="https://www.nature.com/articles/s41746-025-02119-7">MINT</a> - forecast EHR with a minute-scale foundation model<br>
+        <a href="https://www.nature.com/articles/s41746-025-02119-7">Clinical rule
             bias assessment</a> - evaluate biases in the development of popular clinical decision instruments<br>
     </div>
-
 
     <div class="research_box">
         <strong>🧠 Semantic brain mapping, </strong> mostly using fMRI responses to language.
@@ -96,7 +96,7 @@
         $('#research_table').DataTable({
             "order": [[0, "desc"]],
             "aLengthMenu": [[6, -1], [7, "All"]],
-            "pageLength": 13,
+            "pageLength": 6,
             dom: 'Bfrtip',
             buttons: [
                 {
@@ -191,11 +191,22 @@
             </td>
             <td>Yang, Wang, Galley, Singh, Inala, Zhai, & Gao</td>
             <td class="med">🤖</td>
-            <td class="center"><a href="https://arxiv.org/abs/2609.01591">arXiv</a></td>
+            <td class="center"><a href="https://arxiv.org/abs/2609.01591">NeurIPS workshop</a></td>
             <td class="big"><a href="https://github.com/microsoft/StudentSim"><i
                         class="fa fa-github fa-fw"></i></a></td>
             <td class="med">
                 <a href="https://x.com/EmpathYang/status/2095207469924356369"><i class="fa fa-twitter fa-fw"></i></a>
+            </td>
+        </tr>
+        <tr>
+            <td class="center">'26</td>
+            <td>Learning the electronic health record at the minute-scale
+            </td>
+            <td>Narang et al.</td>
+            <td class="med">🤖💊</td>
+            <td class="center"><a href="https://arxiv.org/abs/2609.12277">arXiv</a></td>
+            <td class="big"></td>
+            <td class="med">
             </td>
         </tr>
         <tr>
@@ -208,6 +219,19 @@
             <td class="big"><a href="https://github.com/xiaoyuxin1002/ETHOS-RL"><i
                         class="fa fa-github fa-fw"></i></a></td>
             <td class="med">
+            </td>
+        </tr>
+        <tr>
+            <td class="center">'26</td>
+            <td>TokenEconomizer: Experience-Driven Black-Box Cost Control for Coding Agents
+            </td>
+            <td>Li, Wu, Singh, Chen, Inala, Siska, Tamersoy, Yu, Stoica, Galley, & Gao</td>
+            <td class="med">🤖</td>
+            <td class="center"><a href="https://arxiv.org/abs/2610.22732">arXiv</a></td>
+            <td class="big"><a href="https://github.com/microsoft/TokenEconomizer"><i class="fa fa-github fa-fw"></i></a>
+            </td>
+            <td class="med">
+                <a href="https://tokeneconomizer.github.io/"><i class="fa fa-home fa-fw"></i></a>
             </td>
         </tr>
         <tr>
@@ -281,7 +305,7 @@
             </td>
             <td>Feng*, Kothari*, Vossler, Bishara, Zier, Addo, Kornblith, Tan, & Singh</td>
             <td class="med">🔍🤖💊🌳</td>
-            <td class="center"><a href="https://arxiv.org/abs/2601.09072">npj Digital Medicine</a></td>
+            <td class="center"><a href="https://www.nature.com/articles/s41746-026-02838-5">npj Digital Medicine</a></td>
             <td class="big"><a href="https://github.com/jjfenglab/HACHI"><i class="fa fa-github fa-fw"></i></a></td>
             <td class="med">
                 <a

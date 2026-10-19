@@ -1217,6 +1217,7 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
         - AdaEvolve: Adaptive LLM Driven Zeroth-Order Optimization ([cemri...stoica, 2026](https://arxiv.org/abs/2602.20133))
         - EvoX: Meta-Evolution for Automated Discovery ([liu...stoica, 2026](https://arxiv.org/abs/2602.23413))
         - Inductive Deductive Synthesis: Enabling AI to Generate Formally Verified Systems ([agarwal...stoica, lesani, 2026](https://arxiv.org/abs/2605.23109)) - beyond functions to systems (with tests)
+        - DuoDiscover: Scaling Autonomous Discovery Beyond the Evaluation Bottleneck ([agarwal...li, 2026](https://arxiv.org/abs/2610.17184)) - simultanesouly disocver algorithm + efficient way to evaluate it 
       - DiscoGen: Procedural Generation of Algorithm Discovery Tasks in ML ([goldie...foerster, 2026](https://arxiv.org/abs/2603.17863)) - benchmark
       - auto-psych: Automating the science of mind using agent-driven theory discovery and experimentation ([prystawski...frank, 2026](https://arxiv.org/abs/2606.26460))
     - Model Discovery Agent: LLM-assisted Bayesian experiment design for data-efficient discovery of mechanistic world models ([murphy, 2026](https://arxiv.org/abs/2608.09696)) - include bayesian machinery with autoresearch loop to improve data efficiency
