@@ -68,13 +68,13 @@ Over time, ML has bounced from *feature-engineering* -> *architecture engineerin
       - reformulating NLP task into differentially optimizing the prompt template + target label (given a pre-trained model)
       - focus on smaller models (Roberta-large + GPT-2) + few training shots
       - fluency constraint to ensure association among prompt embeddings
-  - WARP: Word-level Adversarial ReProgramming ([Hambardzumyan et al. 2021](https://arxiv.org/abs/2101.00121)) - add continous tokens + some task-specific parameters for better generalization
+  - WARP: Word-level Adversarial ReProgramming ([hambardzumyan et al. 2021](https://arxiv.org/abs/2101.00121)) - add continous tokens + some task-specific parameters for better generalization
   - KnowPrompt: Knowledge-aware Prompt-tuning with Synergistic Optimization for Relation Extraction ([chen et al. 2021](https://arxiv.org/abs/2104.07650)) -- incorporate relations, visualize learned prompt vectors with t-SNE
 - misc
   - Context-faithful Prompting for LLMs ([zhou, shang, poon & chen, 2023](https://arxiv.org/abs/2303.11315)) - ask question in clever way to force LLM to follow it
   - SentiPrompt: Sentiment Knowledge Enhanced Prompt-Tuning for Aspect-Based Sentiment Analysis ([zhang et al. 2021](https://arxiv.org/abs/2109.08306)) - use sentiment knowledge penalties in the prompt
   - Meta-learning via LM In-context Tuning ([yanda chen...he, 2022](https://arxiv.org/abs/2110.07814)) - given new task with new instruction
-  - Prompt Programming for LLMs: Beyond the Few-Shot Paradigm ([Reynolds & McDonell, 2021](https://arxiv.org/abs/2102.07350)) - define metaprompts as general wrappers around tasks e.g. “This problem asks us to”
+  - Prompt Programming for LLMs: Beyond the Few-Shot Paradigm ([reynolds & mcdonell, 2021](https://arxiv.org/abs/2102.07350)) - define metaprompts as general wrappers around tasks e.g. “This problem asks us to”
   - Re3: Generating Longer Stories With Recursive Reprompting and Revision ([yang et al. 2022](https://arxiv.org/abs/2210.06774)) - generate summaries, then expand and revise with prompts
   - Directional Stimulus Prompting ([li, baoling peng, ...jianfeng gao, xifeng yan, 2023](https://arxiv.org/abs/2302.11520)) - generate hint keywords using small LLM that are put into the prompt when calling large LLM
   - memory-assisted prompt-editing ([madaan...yang, 2022](https://arxiv.org/abs/2201.06009)) - allows model to "save things to memory" that get added to prompt when needed
@@ -91,7 +91,7 @@ Over time, ML has bounced from *feature-engineering* -> *architecture engineerin
   - Self-Discover: LLMs Self-Compose Reasoning Structures ([zhou...le...zheng, 2024](https://arxiv.org/abs/2402.03620)) - LLMs come up with their own step-by-step structure for a task
   - Self-Consistency Improves CoT Reasoning in LMs ([wang, wei, schuurmans, quoc le, ... zhou, 2022](https://arxiv.org/abs/2203.11171)) - use output samples rather than greedy and return the most consistent final answer in the set
   - Challenging BIG-Bench Tasks and Whether CoT Can Solve Them ([suzgun, ..., quoc le, ..., jason wei, 2022](https://arxiv.org/abs/2210.09261))
-  - self-ask ([Press et al., 2022](https://arxiv.org/abs/2210.03350.pdf)) - LLM asks itself (and then answers) follow-up questions before answering the initial question
+  - self-ask ([press et al., 2022](https://arxiv.org/abs/2210.03350.pdf)) - LLM asks itself (and then answers) follow-up questions before answering the initial question
   - Text Classification via LLMs ([sun...wang, 2023](https://arxiv.org/abs/2305.08377.pdf)) - add clues to the prompt
   - Let's Do a Thought Experiment: Using Counterfactuals to Improve Moral Reasoning ([ma, …, chen, 2023](https://arxiv.org/abs/2306.14308)) - counterfactuals help improve CoT
   - RCOT: Detecting and Rectifying Factual Inconsistency in Reasoning by Reversing CoT ([xue et al. 2023]())
@@ -181,12 +181,12 @@ Over time, ML has bounced from *feature-engineering* -> *architecture engineerin
     - PREFER: Prompt Ensemble Learning via Feedback-Reflect-Refine ([zhang...cai, 2023](https://arxiv.org/abs/2308.12033)) - builds set of prompts dynamically rather than assuming they're fixed
     - PTR: Prompt Tuning with Rules for Text Classification ([han et al. 2021](https://arxiv.org/abs/2105.11259)) -- use logic rules to construct prompts with sub-prompts for many-class text classification (prompt is constructed hierarchically, but only one call is made to the LLM for inference)
   - soft prompts
-    - Learning How to Ask: Querying LMs with Mixtures of Soft Prompts ([Qin & Eisner, 2021](https://arxiv.org/abs/2104.06599)) - learn a mixture of soft prompts using gradient descent
+    - Learning How to Ask: Querying LMs with Mixtures of Soft Prompts ([qin & eisner, 2021](https://arxiv.org/abs/2104.06599)) - learn a mixture of soft prompts using gradient descent
   - require model retraining
     - PRBOOST: Prompt-Based Rule Discovery and Boosting for Interactive Weakly-Supervised Learning ([zhang...zhang, 2022](https://arxiv.org/abs/2203.09735)) - iteratively (1) select high-error examples, (2) have human label them as rules, and (3) use boosting to train model on the new rules + ensemble
     - typical rule generation
-      - Snuba ([Varma and Ré, 2018](https://pubmed.ncbi.nlm.nih.gov/31777681/)) generates heuristics based on a small labeled dataset with pre-defined rule types
-      - TALLOR ([Li et al. 2021a](https://arxiv.org/abs/2107.02282.pdf)) & GLaRA ([Zhao et al. 2021](https://arxiv.org/abs/2104.06230.pdf)) study rule expansion for NER problem based on lexical information and then select rules based on a hand-tuned threshold
+      - Snuba ([varma and ré, 2018](https://pubmed.ncbi.nlm.nih.gov/31777681/)) generates heuristics based on a small labeled dataset with pre-defined rule types
+      - TALLOR ([li et al. 2021a](https://arxiv.org/abs/2107.02282.pdf)) & GLaRA ([zhao et al. 2021](https://arxiv.org/abs/2104.06230.pdf)) study rule expansion for NER problem based on lexical information and then select rules based on a hand-tuned threshold
   - Prompt ensembling / selection without labels
     - Zero-Label Prompt Selection ([liao, zheng, & yang, 2022](https://arxiv.org/abs/2211.04668)) - use prompts to label unlabeled data and then select prompts using these labels
     - A Simple Zero-shot Prompt Weighting Technique to Improve Prompt Ensembling in Text-Image Models ([alingham…lakshminarayanan, 2023](https://proceedings.mlr.press/v202/allingham23a.html)) - use confidence (max output logit) after appropriate normalization as weight
@@ -194,8 +194,8 @@ Over time, ML has bounced from *feature-engineering* -> *architecture engineerin
     - FastFit ([yehudai & bandel, 2024](https://arxiv.org/abs/2404.12365.pdf)) - fit few-shot batch with contrastive examples then predict using similarities to shots rather than a classification head (base model is roberta)
       - SetFit ([tunstal…pereg, 2022](https://arxiv.org/abs/2209.11055)) - finetune stentence transformer with contrastive loss, then train classification head
   - zero-shot text classification
-    - Jev: Introducing System One Models ([almeida / TypeSafe, 2026](https://typesafe.ai/blog/introducing-system-one-models-and-jev)) - generally accurate and efficient, trained by something called "RLCD"
-    - SemIf ([TheoLeeCJ, 2026](https://github.com/TheoLeeCJ/SemIf)) - open Jev alternative that uses the naive approach of reading a softmax over the answer letters' next-token logits of a frozen open model
+    - Jev: Introducing System One Models ([almeida / typesafe, 2026](https://typesafe.ai/blog/introducing-system-one-models-and-jev)) - generally accurate and efficient, trained by something called "RLCD"
+    - SemIf ([theoleecj, 2026](https://github.com/TheoLeeCJ/SemIf)) - open Jev alternative that uses the naive approach of reading a softmax over the answer letters' next-token logits of a frozen open model
       - JevK5 ([serikbay, 2026](https://huggingface.co/alibiserikbay/JevK5)) - SemIf + some LoRA training on this general task
     - Kev ([palmer, 2026](https://github.com/jaredpalmer/kev)) - introduce special tokens at the start of (i) the query and (ii) each answer choice, then get embeddings of each answer choice and compare their similarity to the query
     - CLM: Contrastive Language Models ([kwok…re, mirhoseini, 2026](https://github.com/Contrastive-LM/CLM)) - CLIP-style training of the embeddings of the query and the choices
@@ -248,12 +248,12 @@ Over time, ML has bounced from *feature-engineering* -> *architecture engineerin
   - LMs are often unable to express uncertainties
   - LM confidences tend to be overconfident
   - users rely heavily on LM generations, whether or not they are marked by certainty
-- Teaching Models to Express Their Uncertainty in Words ([Lin et al., 2022](https://arxiv.org/abs/2205.14334)) - GPT3 can  generate both an answer and a level of confidence (e.g. "90% confidence")
+- Teaching Models to Express Their Uncertainty in Words ([lin et al., 2022](https://arxiv.org/abs/2205.14334)) - GPT3 can  generate both an answer and a level of confidence (e.g. "90% confidence")
 - Decomposing Uncertainty for LLMs through Input Clarification Ensembling ([hou...zhang, 2023](https://arxiv.org/abs/2311.08718.pdf))
 
 ## prompt compression / compiling
 
-- Learning How to Ask: Querying LMs with Mixtures of Soft Prompts ([Qin & Eisner, 2021](https://arxiv.org/abs/2104.06599)) - learn a mixture of soft prompts using gradient descent
+- Learning How to Ask: Querying LMs with Mixtures of Soft Prompts ([qin & eisner, 2021](https://arxiv.org/abs/2104.06599)) - learn a mixture of soft prompts using gradient descent
 - [liu…neubig, 2023](https://dl.acm.org/doi/pdf/10.1145/3560815) review discusses different strategies for ensembling prompts, e.g. averaging, weighted averaging
 - Prompt ensembling / selection without labels
   - Zero-Label Prompt Selection ([liao, zheng, & yang, 2022](https://arxiv.org/abs/2211.04668)) - use prompts to label unlabeled data and then select prompts using these labels
@@ -322,11 +322,11 @@ mixture of experts models have become popular because of the need for (1) fast s
         - sometimes route to topk experts rather than top1
     - load balancing - usually add an auxiliary loss to encourage equal tokens being sent to different experts
 - non-specialized experts
-  - Early versions ([Jacobs, michael jordan, nowlan, & hinton, 1991](https://ieeexplore.ieee.org/abstract/document/6797059)) had independent feed-forward networks serving as experts
-  - Sparsely-gated MOE layer ([Shazeer...quoc le, hinton, dean, 2017](https://arxiv.org/abs/1701.06538)) have been studied with token-based routing with backprop
+  - Early versions ([jacobs, michael jordan, nowlan, & hinton, 1991](https://ieeexplore.ieee.org/abstract/document/6797059)) had independent feed-forward networks serving as experts
+  - Sparsely-gated MOE layer ([shazeer...quoc le, hinton, dean, 2017](https://arxiv.org/abs/1701.06538)) have been studied with token-based routing with backprop
   - replace FFN in transformers with expert layers
     - GShard [Lepikhin et al. (2021)](https://arxiv.org/abs/2006.16668), which appplies this concept to machine translation
-    - Switch transformers ([Fedus et al. (2022)](https://www.jmlr.org/papers/volume23/21-0998/21-0998.pdf)) simplifies the architecture to activation of only one expert per layer
+    - Switch transformers ([fedus et al. (2022)](https://www.jmlr.org/papers/volume23/21-0998/21-0998.pdf)) simplifies the architecture to activation of only one expert per layer
   - BASE Layers [Lewis et al. (2021)](https://proceedings.mlr.press/v139/lewis21a.html) - find an alternative approach to routing by formulating it as a linear assignment problem
   - Hash layers [Roller et al. (2021)](https://arxiv.org/abs/2106.04426) use a fixed hash as the gating function
   - THOR ([zuo, liu...zhao, gao, 2022](https://arxiv.org/abs/2110.04260)) - randomly route to different experts then merge at the parameter level at test time
@@ -335,8 +335,8 @@ mixture of experts models have become popular because of the need for (1) fast s
     - highly biased
   - gumbel-softmax- allows for better sampling
 - specialized experts as fully independent models (sometimes for multi-task learning)
-  - DEmix Layers ([Gururangan...smith, zettlemoyer, 2021](https://arxiv.org/abs/2108.05036)) --  DEMix layers – placed in the feedforward layers of the Transformer – contain experts which specialize on specific domains. Routing at train time is determined only by the domain label, but all experts are activated at inference time and mixed according to weights estimated from a validation set
-  - [Sparsely Activated Mixture-of-Experts are Robust Multi-Task Learners](https://arxiv.org/abs/2204.07689) (gupta...awadallah, gao, 2022) - use task description to improve routing
+  - DEmix Layers ([gururangan...smith, zettlemoyer, 2021](https://arxiv.org/abs/2108.05036)) --  DEMix layers – placed in the feedforward layers of the Transformer – contain experts which specialize on specific domains. Routing at train time is determined only by the domain label, but all experts are activated at inference time and mixed according to weights estimated from a validation set
+  - Sparsely Activated Mixture-of-Experts are Robust Multi-Task Learners ([gupta...awadallah, gao, 2022](https://arxiv.org/abs/2204.07689)) - use task description to improve routing
   - [Pfeiffer et al. (2022)](https://arxiv.org/abs/2205.06266) - multilingual expert model with language-specific routing
   - task-level MoE [Kudugunta et al. (2021](https://arxiv.org/abs/2110.03742)) -- multi-task expert model with task-specific routing
   - scaling up
@@ -358,7 +358,7 @@ mixture of experts models have become popular because of the need for (1) fast s
   - speculative decoding ([leviathan, kalma, & matias, 2022](https://arxiv.org/abs/2211.17192))  - decode multiple tokens in parallel with small model, potentially skipping steps for the large model
     - Speculative Speculative Decoding ([kumar, dao & may, 2026](https://arxiv.org/abs/2603.03251)) - while big model is verifying speculation, also generate more speculations with the small model (based on guessing what will be verified)
 - early exit - popular way to speed up inference
-  - Multi-exit vision transformer for dynamic inference ([Bakhtiarnia, A., Zhang, Q. and Iosifidis, A., 2021](https://arxiv.org/abs/2106.15183))
+  - Multi-exit vision transformer for dynamic inference ([bakhtiarnia, a., zhang, q. and iosifidis, a., 2021](https://arxiv.org/abs/2106.15183))
     - early layers have large activation map so early exist classifier must be complex
     - solution: ViT class token allows early-exit classifier to have constant complexity
   - DeeBERT: Dynamic early exiting for accelerating BERT inference ([xin...lin, 2020](https://arxiv.org/abs/2004.12993))
@@ -415,7 +415,7 @@ mixture of experts models have become popular because of the need for (1) fast s
   - RoPE: RoFormer: Enhanced Transformer with Rotary Position Embedding ([su...liu, 2021](https://arxiv.org/abs/2104.09864))
     - encodes the absolute position with a rotation matrix
   - NTK+RoPE (LocalLLaMA reddit post) - unequal interpolation and extrapolation across RoPE dimensions
-  - YaRN ([Peng et al., 2023](https://arxiv.org/abs/2309.00071)) - categorizes RoPE dimensions into 3frequency-based groups & applies extrapolation, NTK, and linear interpolations, respectively
+  - YaRN ([peng et al., 2023](https://arxiv.org/abs/2309.00071)) - categorizes RoPE dimensions into 3frequency-based groups & applies extrapolation, NTK, and linear interpolations, respectively
   - LongRoPE ([ding...yang, 2024](https://arxiv.org/abs/2402.13753))
     - exploit two forms of non-uniformities in positional interpolation through genertic algo search
     - progressive extension (first extend to 256k then to 2048k)
@@ -466,7 +466,7 @@ mixture of experts models have become popular because of the need for (1) fast s
   - LASER: Improving Reasoning in LMs with Layer-Selective Rank Reduction ([sharma...misra, 2023](https://arxiv.org/abs/2312.13558))
 - Teach Llamas to Talk: Recent Progress in Instruction Tuning ([gao blogpost 2023](https://gaotianyu.xyz/blog/2023/11/30/instruction-tuning/))
 - human feedback
-  - Learning to summarize with human feedback ([OpenAI, 2020](https://proceedings.neurips.cc/paper/2020/hash/1f89885d556929e98d3ef9b86448f951-Abstract.html))
+  - Learning to summarize with human feedback ([openai, 2020](https://proceedings.neurips.cc/paper/2020/hash/1f89885d556929e98d3ef9b86448f951-Abstract.html))
   - Can LMs learn from explanations in context? ([lampinen et al. 2022](https://arxiv.org/abs/2204.02329))
   - natural language feedback ([scheurer et al. 2022](https://arxiv.org/abs/2204.14146)) - makes training more efficient
     - Training LMs with Language Feedback at Scale ([scheurer et al. 2023](https://arxiv.org/abs/2303.16755.pdf))
@@ -514,7 +514,7 @@ Nice survey here: A Survey on dLLMs ([li, chen, guo & shen, 2025](https://arxiv.
   - DiffuCoder: Understanding and Improving Masked Diffusion Models for Code Generation ([gong...zhang, 2025](https://arxiv.org/abs/2506.20639)) - increasing sampling temp. diversifies generation order of tokens
   - BERT has a Mouth, and It Must Speak: BERT as a Markov Random Field LM ([wang & cho, 2019](https://arxiv.org/abs/1902.04094)) - older paper using BERT as a diffusion LM
 - Uniform-state discrete diffusion models: fast, few-step generation but generally outperformed by masked diffusion models
-  - D3PM: Structured Denoising Diffusion Models in Discrete State-Spaces ([austin...van den Berg, 2021](https://proceedings.neurips.cc/paper/2021/hash/958c530554f78bcd8e97125b70e6973d-Abstract.html))
+  - D3PM: Structured Denoising Diffusion Models in Discrete State-Spaces ([austin...van den berg, 2021](https://proceedings.neurips.cc/paper/2021/hash/958c530554f78bcd8e97125b70e6973d-Abstract.html))
   - UDLM: Simple Guidance Mechanisms for Discrete Diffusion Models ([schif...kuleshov, 2024](https://arxiv.org/abs/2412.10193))
   - Duo: The Diffusion Duality ([sahoo...kuleshov, 2025](https://arxiv.org/abs/2506.10892)) - show that uniform-state discrete diffusion models can be built form underlying Gaussian diffusion, yielding faster generation (fewer steps)
 - applications
@@ -588,7 +588,7 @@ Nice survey here: A Survey on dLLMs ([li, chen, guo & shen, 2025](https://arxiv.
   - Agentic Context Engineering (ACE): Evolving Contexts for Self-Improving LMs ([zhang...olukotun, 2025](https://arxiv.org/abs/2510.04618))
     - context collapse - when an LLM is tasked with fully rewriting the accumulated context at each adaptation step (e.g. Dynamic Cheatsheet ([suzgun...zou, 2025](https://arxiv.org/abs/2504.07952)) or A-MEM ([xu...zhang, 2025](https://arxiv.org/abs/2502.12110))), the summaries become much shorter and less informative over time
     - ACE introduces 3 roles: generator, reflector, and curator
-  - Scaling Latent Reasoning via Looped LMs ([Bytedance; zhu...eshraghian, 2025](https://arxiv.org/abs/2510.25741)) - build reasoning in during pre-training
+  - Scaling Latent Reasoning via Looped LMs ([bytedance; zhu...eshraghian, 2025](https://arxiv.org/abs/2510.25741)) - build reasoning in during pre-training
   - AsyncThink -- The Era of Agentic Organization: Learning to Organize with LMs ([chi...furu wei, 2025](https://arxiv.org/abs/2510.26658))
   - ExpeL: LLM Agents Are Experiential Learners ([zhao...huang, 2023](https://arxiv.org/abs/2308.10144)) - extract insights that are not query-specific
   - Rethinking Thinking Tokens: LLMs as Improvement Operators ([madaan...goyal, 2025](https://arxiv.org/abs/2510.01123)) - use paralell refinement + finetune an 8B model to be compatible with the Knowledge-Flow style inference procedure
@@ -1033,8 +1033,8 @@ Editing is generally very similar to just adaptation/finetuning. One distinction
     - before training bottleneck, use ChatGPT to help correct any concept scores that seem incorrect
   - Human evaluation: agreement of concept scores and contribution of concept to output
   - Concept Bottleneck LLMs ([sun, oikarinen, ustun, & lily weng, 2024](https://arxiv.org/abs/2412.07992)) - this updated version of the paper also has results for language modeling
-  - Steerling-8B: Scaling Inherently Interpretable Language Models ([Guide labs, 2026](https://arxiv.org/abs/2608.07594))
-    - Atlas: Orienting the Pre-Training data of an LLM ([Guide labs blog post, 2025](https://www.guidelabs.ai/post/atlas-concept-annotated-pretraining-release/)); released [fineweb atlas](https://huggingface.co/datasets/guidelabs/fineweb-atlas)
+  - Steerling-8B: Scaling Inherently Interpretable Language Models ([guide labs, 2026](https://arxiv.org/abs/2608.07594))
+    - Atlas: Orienting the Pre-Training data of an LLM ([guide labs blog post, 2025](https://www.guidelabs.ai/post/atlas-concept-annotated-pretraining-release/)); released [fineweb atlas](https://huggingface.co/datasets/guidelabs/fineweb-atlas)
 - Prototype LMs ([ley, nguyen, lakkaraju & adebayo, 2026](https://arxiv.org/abs/2607.00510))
 
 # explanation / discovery
@@ -1684,9 +1684,9 @@ review blog post ([molnar, feb 2026](https://mindfulmodeler.substack.com/p/the-s
 
 - value string methods - directly treating numerical values as strings and finetune GPT on them (everything is represented as text)
   - LIFT: Language-Interfaced Fine-Tuning for Non-Language Machine Learning Tasks ([dinh...lee, 2022](https://arxiv.org/abs/2206.06565))
-  - GreaT ([Borisov et al., 2022](https://openreview.net/forum?id=cEygmQNOeI))
+  - GreaT ([borisov et al., 2022](https://openreview.net/forum?id=cEygmQNOeI))
     - augmenting a sample with copies of different feature permutations
-  - TapTap ([Zhang et al., 2023](https://arxiv.org/abs/2305.09696))
+  - TapTap ([zhang et al., 2023](https://arxiv.org/abs/2305.09696))
   - Table-GPT ([li...chaudhuri, 2023](https://arxiv.org/abs/2310.09263.pdf))
   - TabFMs: Towards Foundation Models for Learning on Tabular Data ([zhang...bian, 2023](https://arxiv.org/abs/2310.07338)) - unified text
   - TableLlama: Towards Open Large Generalist Models for Tables ([zhang...sun, 2023](https://arxiv.org/abs/2311.09206.pdf))
@@ -1700,9 +1700,9 @@ review blog post ([molnar, feb 2026](https://mindfulmodeler.substack.com/p/the-s
   - FT-Transformer: Revisiting Deep Learning Models for Tabular Data ([gorishniy...babenko, 2021](https://proceedings.neurips.cc/paper_files/paper/2021/hash/9d86d83f925f2149e9edb0ac3b49229c-Abstract.html))
     - XTab: Cross-table Pretraining for Tabular Transformers ([zhu...shoaran, autogluon, 2023](https://openreview.net/forum?id=uGORNDmIdr))
     - Scaling Experiments in Self-Supervised Cross-Table Representation Learning ([schambach...otterbach, 2023](https://arxiv.org/abs/2309.17339.pdf))
-    - CT-BERT ([Ye et al., 2023](https://arxiv.org/abs/2307.04308))
-    - TransTab ([Wang & Sun, 2022](https://proceedings.neurips.cc/paper_files/paper/2022/hash/1377f76686d56439a2bd7a91859972f5-Abstract-Conference.html)) - focus on clinical trial tables
-  - TABBIE ([Iida, ..., Iyyer, 2021](https://arxiv.org/abs/2105.02584)) - trained to detect corrupted cells (then embeddings used for downstream tasks)
+    - CT-BERT ([ye et al., 2023](https://arxiv.org/abs/2307.04308))
+    - TransTab ([wang & sun, 2022](https://proceedings.neurips.cc/paper_files/paper/2022/hash/1377f76686d56439a2bd7a91859972f5-Abstract-Conference.html)) - focus on clinical trial tables
+  - TABBIE ([iida, ..., iyyer, 2021](https://arxiv.org/abs/2105.02584)) - trained to detect corrupted cells (then embeddings used for downstream tasks)
     - average row/column embeddings
   - Enhanced Model-agnostic Training of Deep Tabular Generation Models https://openreview.net/forum?id=gJiOQw1fkF
 
@@ -1782,13 +1782,13 @@ review blog post ([molnar, feb 2026](https://mindfulmodeler.substack.com/p/the-s
 
 ## data quality selection
 
-- PPL ([Ankner et al., 2024](https://openreview.net/forum?id=0r0Bg1NY1X)) - selects samples with the lowest perplexity scores on the validation dataset
-- Semdedup ([Abbas et al., 2023](https://arxiv.org/abs/2303.09540)) - data is clustered and data points farthest from the centroid in each cluster are selected
-- DSIR ([Xie et al., 2023b](https://proceedings.neurips.cc/paper_files/paper/2023/hash/6b9aa8f418bde2840d5f4ab7a02f663b-Abstract-Conference.html)) - use hashed N-gram features to identify and select data that exhibits similarity to a specified dataset
-- QuRating ([Wettig et al., 2024](https://arxiv.org/abs/2402.09739)) - use pre-trained models that annotate qualities like Required Expertise, Writing Style, Facts and
+- PPL ([ankner et al., 2024](https://openreview.net/forum?id=0r0Bg1NY1X)) - selects samples with the lowest perplexity scores on the validation dataset
+- Semdedup ([abbas et al., 2023](https://arxiv.org/abs/2303.09540)) - data is clustered and data points farthest from the centroid in each cluster are selected
+- DSIR ([xie et al., 2023b](https://proceedings.neurips.cc/paper_files/paper/2023/hash/6b9aa8f418bde2840d5f4ab7a02f663b-Abstract-Conference.html)) - use hashed N-gram features to identify and select data that exhibits similarity to a specified dataset
+- QuRating ([wettig et al., 2024](https://arxiv.org/abs/2402.09739)) - use pre-trained models that annotate qualities like Required Expertise, Writing Style, Facts and
   Trivia, and Educational Value
-  - Fineweb-edu ([Penedo et al., 2024](https://proceedings.neurips.cc/paper_files/paper/2024/hash/370df50ccfdf8bde18f8f9c2d9151bda-Abstract-Datasets_and_Benchmarks_Track.html)) - similar to QuRating, build an educational value rater
-- MATES ([Yu et al., 2024](https://proceedings.neurips.cc/paper_files/paper/2024/hash/c4bec0d2fd217e6c2c3eafeced432582-Abstract-Conference.html)) - data influence model continuously adapts to approximate influence on the pretraining model
+  - Fineweb-edu ([penedo et al., 2024](https://proceedings.neurips.cc/paper_files/paper/2024/hash/370df50ccfdf8bde18f8f9c2d9151bda-Abstract-Datasets_and_Benchmarks_Track.html)) - similar to QuRating, build an educational value rater
+- MATES ([yu et al., 2024](https://proceedings.neurips.cc/paper_files/paper/2024/hash/c4bec0d2fd217e6c2c3eafeced432582-Abstract-Conference.html)) - data influence model continuously adapts to approximate influence on the pretraining model
 - PRRC ([zhuang...he, 2025](https://arxiv.org/abs/2504.14194)) - train rating models for professionalism, readability, reasoning, & cleanliness
 - Recycling the Web: A Method to Enhance Pre-training Data Quality and Quantity for LMs ([nguyen...zettlmoyer, oh, schmidt, li, 2025](https://arxiv.org/abs/2506.04689))
 - Diversity-driven Data Selection for LM Tuning through Sparse Autoencoder ([yang...mao, 2025](https://arxiv.org/abs/2502.14050))
@@ -1834,13 +1834,13 @@ review blog post ([molnar, feb 2026](https://mindfulmodeler.substack.com/p/the-s
     
 - attacks from [TextAttack](https://github.com/QData/TextAttack) (mostly focused on classification or entailment):
     - hotflip: gradient-based word swap ([Ebrahimi et al., 2017](https://arxiv.org/abs/1712.06751); [Kuleshov et al., 2018](https://openreview.net/pdf?id=r1QZ3zbAZ))
-      - word embedding swap with genetic algo ([Wang et al., 2019](https://arxiv.org/abs/1909.06723))
-      - input reduction with word deletion ([Feng et al., 2018](https://arxiv.org/abs/1804.07781.pdf))
-      - textbugger: greedy word swap based on saliency ([Ren et al., 2019](https://www.aclweb.org/anthology/P19-1103/))
-      - textfooler: greedy word swap with many constraints: (word emb, part-of-speech, sentence emb ([Jin et al., 2019](https://arxiv.org/abs/1907.11932))
-      - word swap with particle swarm optimization ([Zang et al., 2020](https://www.aclweb.org/anthology/2020.acl-main.540/))
-    - levenshtein edit distance on characters with gradient ([Gao et al., 2018](https://arxiv.org/abs/1801.04354))
-      - character swaps with sentence encoding similarity ([Li et al., 2018](https://arxiv.org/abs/1812.05271))
+      - word embedding swap with genetic algo ([wang et al., 2019](https://arxiv.org/abs/1909.06723))
+      - input reduction with word deletion ([feng et al., 2018](https://arxiv.org/abs/1804.07781.pdf))
+      - textbugger: greedy word swap based on saliency ([ren et al., 2019](https://www.aclweb.org/anthology/P19-1103/))
+      - textfooler: greedy word swap with many constraints: (word emb, part-of-speech, sentence emb ([jin et al., 2019](https://arxiv.org/abs/1907.11932))
+      - word swap with particle swarm optimization ([zang et al., 2020](https://www.aclweb.org/anthology/2020.acl-main.540/))
+    - levenshtein edit distance on characters with gradient ([gao et al., 2018](https://arxiv.org/abs/1801.04354))
+      - character swaps with sentence encoding similarity ([li et al., 2018](https://arxiv.org/abs/1812.05271))
       - greedy character changes ([pruthi et al., 2019](https://arxiv.org/abs/1905.11268))
     - genetic-based word perturbing ([alzantot et al., 2018](https://arxiv.org/abs/1804.07998); [jia et al., 2019](https://arxiv.org/abs/1909.00986))
     - bert masked-token prediction gradient, constrain based on sentence similarity ([garg & ramakrishnan, 2019](https://arxiv.org/abs/2004.01970); [li et al., 2020](https://arxiv.org/abs/2004.09984))
@@ -1909,7 +1909,7 @@ review blog post ([molnar, feb 2026](https://mindfulmodeler.substack.com/p/the-s
     - thinking fast (system 1: fast, intuitive) + slow (system 2: slower, logical, derivative)
   - concrete proposal: transformer activation vector should encode graph of flow through the network
     - ex. task: regurgitate a sequence
-- NECSTransformer: [Enhancing the Transformer with Explicit Relational Encoding for Math Problem Solving](https://www.microsoft.com/en-us/research/publication/enhancing-the-transformer-with-explicit-relational-encoding-for-math-problem-solving/) (schlag, smolensky, ..., schmidhuber, gao, 2019)
+- NECSTransformer: Enhancing the Transformer with Explicit Relational Encoding for Math Problem Solving ([schlag, smolensky, ..., schmidhuber, gao, 2019](https://www.microsoft.com/en-us/research/publication/enhancing-the-transformer-with-explicit-relational-encoding-for-math-problem-solving/))
   - TP-attention
   - beat SOA on free-form math word-problems
   - in addition to K, Q, V, also add a role-vector
@@ -1918,7 +1918,7 @@ review blog post ([molnar, feb 2026](https://mindfulmodeler.substack.com/p/the-s
     - filler - the vector returned by attention
       - ex. one head learns "second-argument-of"
     - role - a relation conceptually labeling an edge of the attention graph
-- [TP-N2F: Tensor Product Representation for Natural To Formal Language Generation - Microsoft Research](https://www.microsoft.com/en-us/research/publication/natural-to-formal-language-generation-using-tensor-product-representations/) (chen...gao, 2019)
+- TP-N2F: Tensor Product Representation for Natural To Formal Language Generation - Microsoft Research ([chen...gao, 2019](https://www.microsoft.com/en-us/research/publication/natural-to-formal-language-generation-using-tensor-product-representations/))
 - Logical Transformers: Infusing Logical Structures into Pre-Trained LMs ([wang, huang, ..., gao, 2023](https://aclanthology.org/2023.findings-acl.111/)) - use logical model to alter embeddings before feeding to LLM
 - Implicit CoT Reasoning via Knowledge Distillation ([deng...smolensky..., 2023](https://arxiv.org/abs/2311.01460))
 
@@ -1949,9 +1949,9 @@ review blog post ([molnar, feb 2026](https://mindfulmodeler.substack.com/p/the-s
     - Relational Memory-Augmented LMs ([liu, yogatama, & blunsom, 2022](https://direct.mit.edu/tacl/article/doi/10.1162/tacl_a_00476/110997/Relational-Memory-Augmented-Language-Models)) - integrate knowledge base triplets with LLM
     - DRAGON: Deep Bidirectional Language-Knowledge Graph Pretraining ([yasanaga, ..., manning, liang, leskovec, 2022](https://arxiv.org/abs/2210.09338))
   - toolformer ([schick, dwivedi-yu, ..., scialom, 2023](https://arxiv.org/abs/2302.04761))
-- webgpt ([nakano, ..., schulman, 2022, OpenAI](https://arxiv.org/abs/2112.09332)) - allows google search to add world info
-  - Internet-augmented LMs ([Lazaridou et al., 2022](https://arxiv.org/abs/2203.05115.pdf))
-  - GopherCite ([menick, ..., mcaleese, 2022, Deepmind](https://arxiv.org/abs/2203.11147)) - generate answers + link/relevant snippet when making predictions (trained with RL from human preferences )
+- webgpt ([nakano, ..., schulman, 2022, openai](https://arxiv.org/abs/2112.09332)) - allows google search to add world info
+  - Internet-augmented LMs ([lazaridou et al., 2022](https://arxiv.org/abs/2203.05115.pdf))
+  - GopherCite ([menick, ..., mcaleese, 2022, deepmind](https://arxiv.org/abs/2203.11147)) - generate answers + link/relevant snippet when making predictions (trained with RL from human preferences )
   - LaMDA ([thoppilan, ..., quoc le, 2022, google](https://arxiv.org/abs/2201.08239)) - allows google search to add world info (in a dialog model)
     - this was the model that sparked the controversy about consciousness 🤔
     - A Neural Corpus Indexer for Document Retrieval ([wang...yang, 2022](https://arxiv.org/abs/2206.02743)) - train model to directly spit out document IDs given queries
@@ -1969,9 +1969,9 @@ review blog post ([molnar, feb 2026](https://mindfulmodeler.substack.com/p/the-s
 - Multilingual Jailbreak Challenges in LLMs ([deng…bing, 2024](https://openreview.net/forum?id=vESNKdEMGp)) - jailbreaks work better in low-resource languages - propose to remedy this by safety finetuning on multilingual data
 - *Evaluating and Mitigating Linguistic Discrimination in LLMs* ([dong…wang, 2024](https://arxiv.org/abs/2404.18534)) - translate all queries into multiple languages and then get the response from the model, and then convert the responses to English and give the answer that has highest similarities to other answers
 - *Getting More from Less: LLMs are Good Spontaneous Multilingual Learners* ([zhang...huang, 2024](https://arxiv.org/abs/2405.13816v2)) - applying logit lens finds that model internally translates to english in multilingual tasks
-- *Low-Resource Languages Jailbreak GPT-4* ([Yong...Bach 2024](https://arxiv.org/abs/2310.02446)): exact same result as the [deng…bing, 2024](https://openreview.net/forum?id=vESNKdEMGp) paper — low resource languages have much higher ASR than high resource languages. They translated AdvBench in 12 languages and did it.
-- *A Cross-Language Investigation into Jailbreak Attacks in LLMs* ([Li...Xue 2024](https://arxiv.org/abs/2401.16765)): Not a well written paper. Findings: GPT4 does not experience difference in ASR across languages, whereas worse models do (for the unintentional case) — similar to our finding for GPT4. They have done some attention visualization for intentional, unintensional, and multilingual case — not in a good manner. Their mitigation is finetuning Vicuna model with questions in multiple languages. This paper created its own dataset and used Microsoft Translate for translation.
-- *Comprehensive Evaluation of ChatGPT Reliability Through Multilingual Inquiries* ([Puttaparthi…Yu 2023](https://arxiv.org/abs/2312.10524)): Constructed their own multilingual dataset, 30 malicious questions translated into 121 languages (Google Translate). Show that some languages have higher ASR than others (low resources ones, but they also generate lot of invalid responses). RQ2 is the interesting study, where they parts of a single question in different languages and mandated response in that language — it increased the ASR. This is useful.
+- *Low-Resource Languages Jailbreak GPT-4* ([yong...bach 2024](https://arxiv.org/abs/2310.02446)): exact same result as the [deng…bing, 2024](https://openreview.net/forum?id=vESNKdEMGp) paper — low resource languages have much higher ASR than high resource languages. They translated AdvBench in 12 languages and did it.
+- *A Cross-Language Investigation into Jailbreak Attacks in LLMs* ([li...xue 2024](https://arxiv.org/abs/2401.16765)): Not a well written paper. Findings: GPT4 does not experience difference in ASR across languages, whereas worse models do (for the unintentional case) — similar to our finding for GPT4. They have done some attention visualization for intentional, unintensional, and multilingual case — not in a good manner. Their mitigation is finetuning Vicuna model with questions in multiple languages. This paper created its own dataset and used Microsoft Translate for translation.
+- *Comprehensive Evaluation of ChatGPT Reliability Through Multilingual Inquiries* ([puttaparthi…yu 2023](https://arxiv.org/abs/2312.10524)): Constructed their own multilingual dataset, 30 malicious questions translated into 121 languages (Google Translate). Show that some languages have higher ASR than others (low resources ones, but they also generate lot of invalid responses). RQ2 is the interesting study, where they parts of a single question in different languages and mandated response in that language — it increased the ASR. This is useful.
 - MindMerger: Efficient Boosting LLM Reasoning in non-English Languages ([huang…yuan, 2024](https://arxiv.org/abs/2405.17386)) - merge capabilities across languages
 
 **multilingual representations**
@@ -1991,11 +1991,11 @@ review blog post ([molnar, feb 2026](https://mindfulmodeler.substack.com/p/the-s
 
 **cipher attacks on LLMs**
 
-- *GPT-4 Is Too Smart To Be Safe: Stealthy Chat with LLMs via Cipher* ([Yuan…Tu 2023](https://arxiv.org/abs/2308.06463)): This is similar to ASCII paper, that when instructed to talk in CIPHER, it can bypass model safety filters. However, if the model has never seen a CIPHER like morse or Caesar than the outputs are hardly valid. Outputs are only valid for ASCII and self-cipher. However, in both these cases one needs atleast 3 unsafe demos that can be recognized by a filter in the input space. Research Problem: So can we design a cipher that has high validity and cannot be detected in the input space with a classifier (self cipher can be, maybe other ciphers cannot be).
-- *ArtPrompt: ASCII Art-based Jailbreak Attacks against Aligned LLMs* ([Xu...Poovendran 2024](https://arxiv.org/abs/2402.11753)): Basically mixing text with ascii increases the AST by a lot, renders defense much less effective. This is similar to mixing english with words from other languages like in ([Puttaparthi…Yu 2023](https://arxiv.org/abs/2312.10524)). They first show that LLMs have poor performance in recognizing ASCII, but not that poor, so the attack can still be executed. They also execute this as a nested attacked (which are the most successful I think). Experiment section well written, lot of baselines and relevant papers. So basically LLMs will execute the attack if it can do some basic understanding, but has not seen that kind of input much in real world.
-- Jailbreaking Proprietary LLMs using Word Substitution Cipher ([Handa…Baral 2024](https://arxiv.org/abs/2402.10601)): short nice paper! just says substitute unsafe words with safe words, provide the mapping to the model and the original question substituted with the words. Ask the LLM to reply, high ASR for ChatGPT and Gemini.
-- CodeChameleon: Personalized Encryption Framework for Jailbreaking LLMs ([Lv…Huang 2024](https://arxiv.org/abs/2402.16717)): In this case they ask the malicious question using code where the input sentence is encrypted using some simple coding schemes (reverse words or sort words by their length) and the code includes the decryption function. Highest ASR among all baselines which includes the CipherChat and multilingual.
-- MULTIVERSE: Exposing LLM Alignment Problems in Diverse Worlds ([Jin…Zhang 2024](https://arxiv.org/abs/2402.01706)): This is not doing cipher language. It creates several layers of alternate worlds where one can put a malicious query and it bypasses model security. The deeper the layers, the higher ASR the attack has.
+- *GPT-4 Is Too Smart To Be Safe: Stealthy Chat with LLMs via Cipher* ([yuan…tu 2023](https://arxiv.org/abs/2308.06463)): This is similar to ASCII paper, that when instructed to talk in CIPHER, it can bypass model safety filters. However, if the model has never seen a CIPHER like morse or Caesar than the outputs are hardly valid. Outputs are only valid for ASCII and self-cipher. However, in both these cases one needs atleast 3 unsafe demos that can be recognized by a filter in the input space. Research Problem: So can we design a cipher that has high validity and cannot be detected in the input space with a classifier (self cipher can be, maybe other ciphers cannot be).
+- *ArtPrompt: ASCII Art-based Jailbreak Attacks against Aligned LLMs* ([xu...poovendran 2024](https://arxiv.org/abs/2402.11753)): Basically mixing text with ascii increases the AST by a lot, renders defense much less effective. This is similar to mixing english with words from other languages like in ([puttaparthi…yu 2023](https://arxiv.org/abs/2312.10524)). They first show that LLMs have poor performance in recognizing ASCII, but not that poor, so the attack can still be executed. They also execute this as a nested attacked (which are the most successful I think). Experiment section well written, lot of baselines and relevant papers. So basically LLMs will execute the attack if it can do some basic understanding, but has not seen that kind of input much in real world.
+- Jailbreaking Proprietary LLMs using Word Substitution Cipher ([handa…baral 2024](https://arxiv.org/abs/2402.10601)): short nice paper! just says substitute unsafe words with safe words, provide the mapping to the model and the original question substituted with the words. Ask the LLM to reply, high ASR for ChatGPT and Gemini.
+- CodeChameleon: Personalized Encryption Framework for Jailbreaking LLMs ([lv…huang 2024](https://arxiv.org/abs/2402.16717)): In this case they ask the malicious question using code where the input sentence is encrypted using some simple coding schemes (reverse words or sort words by their length) and the code includes the decryption function. Highest ASR among all baselines which includes the CipherChat and multilingual.
+- MULTIVERSE: Exposing LLM Alignment Problems in Diverse Worlds ([jin…zhang 2024](https://arxiv.org/abs/2402.01706)): This is not doing cipher language. It creates several layers of alternate worlds where one can put a malicious query and it bypasses model security. The deeper the layers, the higher ASR the attack has.
 - Data Contamination Can Cross Language Barriers ([feng yao, yufan zhuang, ..., jingbo shang](https://arxiv.org/html/2406.13236v1)) - LLMs can overfit to benchmarks by being trained on translations of them
   - To detect this contamination, for each question, we replace all the incorrect choices with correct choices taken from other questions
 
@@ -2020,7 +2020,7 @@ review blog post ([molnar, feb 2026](https://mindfulmodeler.substack.com/p/the-s
 - What learning algorithm is in-context learning? Investigations with linear models ([aykurek, schuurmans, andreas, ma, & zhou, 2023](https://arxiv.org/abs/2211.15661)) - investigate prompting through synthetic experiments with transformers trained for linear regression
   - Transformers as Algorithms: Generalization and Implicit Model Selection in In-context Learning ([li, ..., oymak, 2023](https://arxiv.org/abs/2301.07067.pdf)) - generalization bounds for in-context learning when the input prompt is (1) a sequence of i.i.d. (input, label) pairs or (2) a trajectory arising from a dynamical system
   - Trained Transformers Learn Linear Models In-Context ([zhang, frei, & bartlett, 2023](https://arxiv.org/abs/2306.09927.pdf))
-  - One Step of Gradient Descent is Provably the Optimal In-Context Learner with One Layer of Linear Self-Attention ([Mahankali, Hashimoto, Ma, 23](https://arxiv.org/abs/2307.03576.pdf))
+  - One Step of Gradient Descent is Provably the Optimal In-Context Learner with One Layer of Linear Self-Attention ([mahankali, hashimoto, ma, 23](https://arxiv.org/abs/2307.03576.pdf))
     - math analysis for: icl can do gradient decent on linear regression
   - Pretraining task diversity and the emergence of non-Bayesian in-context learning for regression ([raventos…ganguli, 2023](https://openreview.net/forum?id=BtAz4a5xDg))
   - The Bayesian Geometry of Transformer Attention ([aggarwal, dalal & misra, 2025](https://arxiv.org/abs/2512.22471)) - use synthetic tasks to track bayersian inference by attention
@@ -2084,7 +2084,7 @@ review blog post ([molnar, feb 2026](https://mindfulmodeler.substack.com/p/the-s
 ## information extraction / named entity recognition
 
 - Some popular models: [bert-base-NER](https://huggingface.co/dslim/bert-base-NER), [medical-NER](https://huggingface.co/blaze999/Medical-NER)
-- two most frequent categories of IE targets are entity and relation, which structure many IE tasks, such as named entity recognition ([Sang and Meulder, 2003](https://arxiv.org/abs/cs/0306050)), relation extraction ([Carreras and Màrquez, 2004](https://aclanthology.org/W05-0620.pdf)), event extraction ([Walker et al., 2006](https://cir.nii.ac.jp/crid/1880865118012204544)), and others
+- two most frequent categories of IE targets are entity and relation, which structure many IE tasks, such as named entity recognition ([sang and meulder, 2003](https://arxiv.org/abs/cs/0306050)), relation extraction ([carreras and màrquez, 2004](https://aclanthology.org/W05-0620.pdf)), event extraction ([walker et al., 2006](https://cir.nii.ac.jp/crid/1880865118012204544)), and others
 - Universal NER has a good dataset for a wide variety of attribute labels (https://universal-ner.github.io/), could just finetune something here [they finetune a 7B model to answer one question at a time]
   - Outperforms previous best model InstructUIE ([2023](https://arxiv.org/abs/2304.08085))
 - Cuckoo: An IE Free Rider Hatched by Massive Nutrition in LLM’s Nest ([peng, wang, yao, & shang, 2025](https://arxiv.org/abs/2502.11275))

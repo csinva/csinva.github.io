@@ -9,16 +9,16 @@ Some good packages: msft [econML](https://github.com/microsoft/EconML), uber [ca
 
 # classic studies
 
-- [Descriptive Representation and Judicial Outcomes in Multiethnic Societies](https://onlinelibrary.wiley.com/doi/full/10.1111/ajps.12187) (Grossman et al. 2016)
+- Descriptive Representation and Judicial Outcomes in Multiethnic Societies ([grossman et al. 2016](https://onlinelibrary.wiley.com/doi/full/10.1111/ajps.12187))
   - judicial outcomes of arabs depended on whether there was an Arab judge on the panel
-- [Using Maimonides' Rule to Estimate the Effect of Class Size on Scholastic Achievement](http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.554.9675) (angrist & lavy 1999)
+- Using Maimonides' Rule to Estimate the Effect of Class Size on Scholastic Achievement ([angrist & lavy 1999](http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.554.9675))
   - reducing class size induces a signicant and substantial increase in test scores for fourth and 5th graders, although not for third graders.
-- [Smoking and Lung Cancer: Recent Evidence and a Discussion of Some Questions](https://academic.oup.com/jnci/article/22/1/173/912572) (cornfield et al. 1959)
+- Smoking and Lung Cancer: Recent Evidence and a Discussion of Some Questions ([cornfield et al. 1959](https://academic.oup.com/jnci/article/22/1/173/912572))
   - not a traditional statistics paper
   - most of it is a review of various scientific evidence about smoking and cancer
   - small methodology section that describes an early version of sensitivity analysis
   - describes one of the most important contributions causal inference has made to science
-- [Attributing Effects to a Cluster-Randomized Get-Out-the-Vote Campaign](https://www.tandfonline.com/doi/abs/10.1198/jasa.2009.ap06589) (hansen & bowers 2009)
+- Attributing Effects to a Cluster-Randomized Get-Out-the-Vote Campaign ([hansen & bowers 2009](https://www.tandfonline.com/doi/abs/10.1198/jasa.2009.ap06589))
   - about a randomized experiment
   - proved complex to analyze and led to some controversy in political science
   - resolves that controversy using well-chosen statistical tools.
@@ -27,16 +27,16 @@ Some good packages: msft [econML](https://github.com/microsoft/EconML), uber [ca
 ## natural experiments
 
 - [John Snow on cholera](https://alondoninheritance.com/london-characters/john-snow-soho-cholera-outbreak-1864/) - natural experiment - change of water pollution allowed for computing effect of the water pollution on cholera
-- [Who Gets a Swiss Passport? A Natural Experiment in Immigrant Discrimination](http://www.hangartner.net/files/passportapsr.pdf) (Hainmueller & Hangartner 2013)
+- Who Gets a Swiss Passport? A Natural Experiment in Immigrant Discrimination ([hainmueller & hangartner 2013](http://www.hangartner.net/files/passportapsr.pdf))
   - naturalization decisions vary with immigrants' attributes
   - is there immigration against immigrants based on country of origin?
   - citizenship requires voting by municipality
-- [When Natural Experiments Are Neither Natural nor Experiments](http://sekhon.berkeley.edu/papers/SekhonTitiunik.pdf) (sekhon & titunik 2012)
+- When Natural Experiments Are Neither Natural nor Experiments ([sekhon & titunik 2012](http://sekhon.berkeley.edu/papers/SekhonTitiunik.pdf))
   - even when natural interventions are randomly assigned, some of the treatment–control comparisons made available by natural experiments may not be valid
 
 ## instrumental variables
 
-- [Identification of Causal Effects Using Instrumental Variables](https://www.jstor.org/stable/2291629?seq=1#metadata_info_tab_contents) (angrist, imbens, & rubin 1996)
+- Identification of Causal Effects Using Instrumental Variables ([angrist, imbens, & rubin 1996](https://www.jstor.org/stable/2291629?seq=1#metadata_info_tab_contents))
   - bridges the literature of instrumental variables in econometrics and the literature of causal inference in statistics
   - applied paper with delicate statistics
   - carefully discuss the assumptions
@@ -45,14 +45,14 @@ Some good packages: msft [econML](https://github.com/microsoft/EconML), uber [ca
 
 ## matching
 
-- [Matching and thick description in an observational study of mortality after surgery.](https://www.ncbi.nlm.nih.gov/pubmed/12933551) (rosenbaum & silber 2001)
+- Matching and thick description in an observational study of mortality after surgery. ([rosenbaum & silber 2001](https://www.ncbi.nlm.nih.gov/pubmed/12933551))
   - spends a lot of time discussing links between quantitative and qualitative analyses
   - takes the process of checking assumptions very seriously, and it deals with an important scientific problem
 
 ## "paradoxes"
 
 - **simpson's paradox** = **yule-simpson paradox** - trend appears in several different groups but disappears/reverses when groups are combined
-  - [Sex Bias in Graduate Admissions: Data from Berkeley](https://homepage.stat.uiowa.edu/~mbognar/1030/Bickel-Berkeley.pdf) (bickel et al. 1975)
+  - Sex Bias in Graduate Admissions: Data from Berkeley ([bickel et al. 1975](https://homepage.stat.uiowa.edu/~mbognar/1030/Bickel-Berkeley.pdf))
   - e.g. overall men seemed to have higher acceptance rates, but in each dept. women seemed to have higher acceptance rates - explanation is that women selectively apply to harder depts.
 
 ```mermaid
@@ -167,7 +167,7 @@ C(Location of Car) --> B
   - more discussion in ([athey & wager, 2019](https://arxiv.org/abs/1902.07409)) and ([chernozhukov et al. 2017](https://arxiv.org/abs/1712.04802))
 - **subgroup analysis** - identify subgroups with treatment effects far from the average
   - generally easier than CATE
-- [staDISC](https://arxiv.org/pdf/2008.10109.pdf) (dwivedi, tan et al. 2020) - learn stable / interpretable subgroups for causal inference
+- staDISC ([dwivedi, tan et al. 2020](https://arxiv.org/pdf/2008.10109.pdf)) - learn stable / interpretable subgroups for causal inference
   - CATE - estimate with a bunch of different models
     - meta-learners: T/X/R/S-learners
     - tree-based methods: causal tree/forest, BART
@@ -190,7 +190,7 @@ C(Location of Car) --> B
         - remove all cells contained in another cell
         - pick one randomly, remove all points in this cell, then continue
     - stability: rerun search multiple times and look for stable cells / stable cell coverage
-- [Estimating individual treatment effect: generalization bounds and algorithms](https://arxiv.org/abs/1606.03976) (shalit, johansson, & sontag, 2017)
+- Estimating individual treatment effect: generalization bounds and algorithms ([shalit, johansson, & sontag, 2017](https://arxiv.org/abs/1606.03976))
   - bound the ITE estimation error using (1) generalization err of the repr. and (2) the distance between the treated and control distrs., e.g. MMD
 
 ## reinforcement (policy) learning
@@ -235,11 +235,11 @@ C(Location of Car) --> B
   - e.g. RECI (Blobaum et al., 2018) extends IGCI to the setting with small noise, and proceeds by comparing the regression errors in both possible directions
 - check variables which reduce entropy the most
 
-  - [Origo : causal inference by compression](https://link.springer.com/article/10.1007/s10115-017-1130-5) (budhathoki & vreekan, 2017) - similar intuition as ICM: causal directions are more easily compressible
-- [Learning and Testing Causal Models with Interventions](https://proceedings.neurips.cc/paper/2018/hash/78631a4bb5303be54fa1cfdcb958c00a-Abstract.html) (acharya et al. 2018)
+  - Origo : causal inference by compression ([budhathoki & vreekan, 2017](https://link.springer.com/article/10.1007/s10115-017-1130-5)) - similar intuition as ICM: causal directions are more easily compressible
+- Learning and Testing Causal Models with Interventions ([acharya et al. 2018](https://proceedings.neurips.cc/paper/2018/hash/78631a4bb5303be54fa1cfdcb958c00a-Abstract.html))
 
   - given DAG, want to learn distribution on interventions with minimum number of interventions, variables intevened on, numper of samples draw per intervention
-- [Discovering Causal Signals in Images](http://openaccess.thecvf.com/content_cvpr_2017/papers/Lopez-Paz_Discovering_Causal_Signals_CVPR_2017_paper.pdf) (lopez-paz et al. 2017)
+- Discovering Causal Signals in Images ([lopez-paz et al. 2017](http://openaccess.thecvf.com/content_cvpr_2017/papers/Lopez-Paz_Discovering_Causal_Signals_CVPR_2017_paper.pdf))
 
   - C(A, B) - count number of images in which B would disappear if A was removed
   - we say A *causes* B when C(A, B) is (sufficiently) greater than the converse C(B, A)
@@ -255,8 +255,8 @@ C(Location of Car) --> B
     - can turn this into binary classification and learn w/ network: given X, Y, does X->Y or Y-X?
   - on images, they get scores for different objects (w/ bounding boxes)
     - eval - when one thing is erased, does the other also get erased?
-  - [link to iclr talk](https://www.technologyreview.com/s/613502/deep-learning-could-reveal-why-the-world-works-the-way-it-does/?fbclid=IwAR3LF2dc_3EvWXzEHhtrsqtH9Vs-4pjPALfuqKCOma9_gqLXMKDeCWrcdrQ) (bottou 2019)
-- [Visual Causal Feature Learning](https://arxiv.org/abs/1412.2309) (chalupka, perona, & eberhardt, 2015)
+  - link to iclr talk ([bottou 2019](https://www.technologyreview.com/s/613502/deep-learning-could-reveal-why-the-world-works-the-way-it-does/?fbclid=IwAR3LF2dc_3EvWXzEHhtrsqtH9Vs-4pjPALfuqKCOma9_gqLXMKDeCWrcdrQ))
+- Visual Causal Feature Learning ([chalupka, perona, & eberhardt, 2015](https://arxiv.org/abs/1412.2309))
 
   - assume the behavior $T$ is a function of some hidden causes $H_i$ and the image
     - ![Screen Shot 2020-02-03 at 2.27.27 PM](../assets/hidden_graphical_node.png)
@@ -279,7 +279,7 @@ C(Location of Car) --> B
     - **Eureqa** package does eq. discovery on latent repr + trajectory
       - includes all basic operations, such as addition, mult., sine function
       - R-squared value measures goodness of fit
-  - see also SciNet -  [Discovering physical concepts with neural networks](https://arxiv.org/abs/1807.10300) (iten et al. 2020)
+  - see also SciNet -  Discovering physical concepts with neural networks ([iten et al. 2020](https://arxiv.org/abs/1807.10300))
   - see also the field of symbolic regression
     - genetic programming is the most pervalent method here
     - alternatives: sparse regression, dimensional function synthesis
@@ -293,7 +293,7 @@ C(Location of Car) --> B
 
 ### invariance hierarchies
 
-- [The Hierarchy of Stable Distributions and Operators to Trade Off Stability and Performance](https://arxiv.org/abs/1905.11374) (subbaswamy, chen, & saria 2019)
+- The Hierarchy of Stable Distributions and Operators to Trade Off Stability and Performance ([subbaswamy, chen, & saria 2019](https://arxiv.org/abs/1905.11374))
   - different predictors learn different things
   - only pick the stable parts of what they learn (in a graph representation)
   - there is a tradeoff between stability to all shifts and average performance on the shifts we expect to see
@@ -306,7 +306,7 @@ C(Location of Car) --> B
     - level 1 - invariant conditional distrs. of the form $P(Y|\mathbf Z)$
     - level 2 - conditional interventional distrs. of the form $P(Y|do(\mathbf W), \mathbf Z)$
     - level 3 - distributions corresponding to counterfactuals
-- [Causality for Machine Learning](https://arxiv.org/abs/1911.10500) (scholkopf 19)
+- Causality for Machine Learning ([scholkopf 19](https://arxiv.org/abs/1911.10500))
   - most of ml is built on the iid assumption and fails when it is violated (e.g. cow on a beach)
 
 ### invariance algorithms
@@ -364,15 +364,15 @@ C(Location of Car) --> B
   - given algorithm $\mathcal A$, maximize this: $\mathrm{ILC}\left(\mathcal{A}, p_{\theta^{0}}\right):= \underbrace{-\mathbb{E}_{\theta^{0} \sim p\left(\theta^{0}\right)}}_{\text{expectation over reinits}}\left[\mathcal{I}^{\epsilon} (\underbrace{\mathcal{A}_{\infty}(\theta^{0}, \mathcal{E}}_{\hat \theta}) \right]$
     - **inconsistency score** for a solution $\hat \theta$ given environments $e$: $\mathcal{I}^{\epsilon}(\hat \theta):=\overbrace{\max _{\left(e, e^{\prime}\right) \in \mathcal{E}^{2}} }^{\text{env. pairs}} \underbrace{\max _{\theta \in N_{e, \hat \theta}^{\epsilon}}}_{\text{low-loss region around $\hat \theta$}} \overbrace{\mid \mathcal{L}_{e^{\prime}}(\theta)-\mathcal{L}_{e}(\theta)|}^{\text{loss between envs.}}$
       - $N_{e, \hat \theta}^{\epsilon}$ is path-connected region around $\hat \theta$ where $\left\{\theta \in \Theta\right.$ s.t. $\left|\mathcal{L}_{e}(\theta)-\mathcal{L}_{e}\left(\hat \theta\right)\right| \leqslant \epsilon$
-- [Invariant Risk Minimization Games](https://arxiv.org/abs/2002.04692) (ahuja et al. 2020) - pose IRM as finding the Nash equilibrium of an ensemble game among several environments
-- [Invariant Rationalization](https://arxiv.org/abs/2003.09772) (chang et al. 2020) - identify a small subset of input features -- the rationale -- that best explains or supports the prediction
+- Invariant Risk Minimization Games ([ahuja et al. 2020](https://arxiv.org/abs/2002.04692)) - pose IRM as finding the Nash equilibrium of an ensemble game among several environments
+- Invariant Rationalization ([chang et al. 2020](https://arxiv.org/abs/2003.09772)) - identify a small subset of input features -- the rationale -- that best explains or supports the prediction
 
   - key assumption: $Y \perp E | Z$
   - $\max _{\boldsymbol{m} \in \mathcal{S}} I(Y ; \boldsymbol{Z}) \quad$ s.t. $\boldsymbol{Z}= \overbrace{\boldsymbol{m}}^{\text{binary mask}} \odot \boldsymbol{X}, \quad \underbrace{Y \perp E \mid \boldsymbol{Z}}_{\text{this part is invariance}}$
     - solve this via 3 nets with adv. penalty to approximate invariance
     - standard maximum mutual info objective is just $\max _{\boldsymbol{m} \in \mathcal{S}} I(Y ; \boldsymbol{Z}) \quad$ s.t. $\boldsymbol{Z}= \overbrace{\boldsymbol{m}}^{\text{binary mask}} \odot \boldsymbol{X}$ (see [lei et al. 2016](https://arxiv.org/abs/1606.04155))
     - ex. $X$ is text reviews for beer, $Y$ is aroma, $E$ could be beer brand
-- [Linear unit-tests for invariance discovery](https://www.cmu.edu/dietrich/causality/CameraReadys-accepted%20papers/32%5CCameraReady%5Cdatasets.pdf)  (aubin et al. 2020) - a set of 6 simple settings where current IRM procedures fail
+- Linear unit-tests for invariance discovery ([aubin et al. 2020](https://www.cmu.edu/dietrich/causality/CameraReadys-accepted%20papers/32%5CCameraReady%5Cdatasets.pdf)) - a set of 6 simple settings where current IRM procedures fail
 
   - test 1 (colormnist-style linear regr): $x_{inv}  \to \tilde y \to x_{spu}$
     - $\tilde y \to y$
@@ -382,7 +382,7 @@ C(Location of Car) --> B
 
 ## misc problems
 
-- [Incremental causal effects](https://arxiv.org/abs/1907.13258) (rothenhausler & yu, 2019)
+- Incremental causal effects ([rothenhausler & yu, 2019](https://arxiv.org/abs/1907.13258))
 
   - instead of considering a treatment, consider an infinitesimal change in a continuous treatment
   - use assumption of local independence and can prove some nice things
@@ -397,7 +397,7 @@ C(Location of Car) --> B
 
     $$
 - **causal transportability** - seeks to identify conditions under which causal knowledge learned from experiments can be reused in different domains with observational data only
-- [Radical Empiricism and Machine Learning Research](https://ftp.cs.ucla.edu/pub/stat_ser/r502.pdf) (pearl 2021)
+- Radical Empiricism and Machine Learning Research ([pearl 2021](https://ftp.cs.ucla.edu/pub/stat_ser/r502.pdf))
 
   - contrast the “data fitting” vs. “data interpreting” approaches to data-science
   - current research is too empiricist (data-fitting based) - should include man-made models of how data are generated
@@ -417,7 +417,7 @@ C(Location of Car) --> B
 
 - unconfoundedness $T_i \perp (Y_i(0), Y_i(1)) | X_i$ is strong
   - sometimes we may perfer $T_i \perp (Y_i(0), Y_i(1)) | X_i, Z_i$ for some unobserved $Z_i$ that we need to figure out
-- [The Blessings of Multiple Causes](https://arxiv.org/abs/1805.06826) (wang & blei, 2019) - having multiple causes can help construct / find all the confounders
+- The Blessings of Multiple Causes ([wang & blei, 2019](https://arxiv.org/abs/1805.06826)) - having multiple causes can help construct / find all the confounders
   - **deconfounder algorithm**
     - fit a factor model of causes
     - estimate a repr $Z_i$ of data point $A_i$ - $Z_i$ renders the causes conditionally independent
@@ -432,8 +432,8 @@ C(Location of Car) --> B
     - with observed covariates X, weak unconfoundedness: $A_1, ...A_m \perp Y(a) | Z, X$ (i.e. $Z$ contains all multi-cause confounders, $X$ contains all single-cause confounders)
   - replaces an uncheckable search for possible confounders with the checkable goal of building a good factor model of observed casts.
   - controversial whether this works in general
-  - [Towards Clarifying the Theory of the Deconfounder](https://arxiv.org/abs/2003.04948) (wang & blei, 2020)
-  - [On Multi-Cause Causal Inference with Unobserved Confounding: Counterexamples, Impossibility, and Alternatives](https://arxiv.org/abs/1902.10286) (d'amour 2019)
+  - Towards Clarifying the Theory of the Deconfounder ([wang & blei, 2020](https://arxiv.org/abs/2003.04948))
+  - On Multi-Cause Causal Inference with Unobserved Confounding: Counterexamples, Impossibility, and Alternatives ([d'amour 2019](https://arxiv.org/abs/1902.10286))
 
 ## synthetic control/interventions
 
@@ -444,14 +444,14 @@ C(Location of Car) --> B
     - approach: impute counterfactual (california time-series without policy) by weighted combination on observed outcomes for other observations (e.g. average other "similar" states)
       - per-observation weights are learned during pre-intervention period with cross-validation procedure
         - per-feature weights are also learned (bc matching on some features is more important than others)
-  - The Economic Costs of Conflict: A Case Study of the Basque Country ([Abadie & G, 2003](https://economics.mit.edu/files/11870))
+  - The Economic Costs of Conflict: A Case Study of the Basque Country ([abadie & g, 2003](https://economics.mit.edu/files/11870))
   - Synthetic Control Methods for Comparative Case Studies: Estimating the Effect of California's Tobacco Control Program ([abadie et al. 2010](https://economics.mit.edu/files/11859))
 
 # solutions to basic problems
 
 ## learning "causal representations"
 
-- [Learning Representations for Counterfactual Inference](https://arxiv.org/abs/1605.03661) (johansson et al. 2016)
+- Learning Representations for Counterfactual Inference ([johansson et al. 2016](https://arxiv.org/abs/1605.03661))
   - ![learning_causal_repr](../assets/learning_causal_repr.png)
   - assumption similar to ignorability: the treatment assignment information (and any info which predicts it) should not influence the ITE: $T \perp \!\!\! \perp \{ Y^{T=1}, Y^{T=0}\} | X$
     - often not the case, e.g. medical symptoms lead doctors to give a treatment more
@@ -459,33 +459,33 @@ C(Location of Car) --> B
   - also an extra loss: penalty that encourages counterfactual preds to be close to nearest observed outcome from the same set
   - fit linear ridge regression on top of representation $\phi$
   - not exactly the same as the setting in [fair repr. learning](http://www.cs.toronto.edu/~zemel/documents/fair-icml-final.pdf) or [domain adversarial training](https://www.jmlr.org/papers/volume17/15-239/15-239.pdf) - MMD or Wasserstein distance instead of classification
-  - same idea present in [Training confounder-free deep learning models for medical applications](https://www.nature.com/articles/s41467-020-19784-9) (zhou et al. 2020)
-- [Estimating individual treatment effect: generalization bounds and algorithms](https://arxiv.org/abs/1606.03976) (shalit et al. 2017)
+  - same idea present in Training confounder-free deep learning models for medical applications ([zhou et al. 2020](https://www.nature.com/articles/s41467-020-19784-9))
+- Estimating individual treatment effect: generalization bounds and algorithms ([shalit et al. 2017](https://arxiv.org/abs/1606.03976))
   - ![ite_dnn](../assets/ite_dnn.png)
   - bound for estimating ITE $\tau(x)$ is uper bounded by error for learning $Y_1$ and $Y_0$ plus a term for the  Integral Probability Metric (IPM)
   - IPM measures distance between $p(x|T = 0)$ and $P(x|T = 1)$, and requires that they overlap at $x$
   - In his foundational text about causality, Pearl (2009) writes: “Whereas in traditional learning tasks we attempt to generalize from one set of insteances to another, the causal modeling task is to generalize from behavior under one set of conditions to behavior under another set. *Causal models should therefore be chosen by a criterion that challenges their stability against changing conditions..*.”
-- [Learning Weighted Representations for Generalization Across Designs](https://arxiv.org/abs/1802.08598) (johansson et al. 2018)
+- Learning Weighted Representations for Generalization Across Designs ([johansson et al. 2018](https://arxiv.org/abs/1802.08598))
   - ![weighted_causal_repr](../assets/weighted_causal_repr.png)
-- [Counterfactual Representation Learning with Balancing Weights](https://arxiv.org/abs/2010.12618) (assaad et al. 2020)
+- Counterfactual Representation Learning with Balancing Weights ([assaad et al. 2020](https://arxiv.org/abs/2010.12618))
   - combine balancing weights with representation learning: Balancing Weights Counterfactual Regression (BWCFR)
-    - representation learning has trade-off between balance and predictive power ([zhang, bellot, & van der Schaar, 2020](https://arxiv.org/abs/2001.04754))
+    - representation learning has trade-off between balance and predictive power ([zhang, bellot, & van der schaar, 2020](https://arxiv.org/abs/2001.04754))
     - weights are from propensity scores, unlike johansson et al. 2018
     - intuition: upweight regions with good overlap
   - bounds on degree of imbalance as a function of propensity model
-- [Causal Effect Inference with Deep Latent-Variable Models](https://arxiv.org/abs/1705.08821) (louizos et al. 2017) - like vae but learn latent distr. that also changes based on treatment
-- [Invariant Representation Learning for Treatment Effect Estimation](https://arxiv.org/abs/2011.12379) (shi, veitch, & blei, 2020)
+- Causal Effect Inference with Deep Latent-Variable Models ([louizos et al. 2017](https://arxiv.org/abs/1705.08821)) - like vae but learn latent distr. that also changes based on treatment
+- Invariant Representation Learning for Treatment Effect Estimation ([shi, veitch, & blei, 2020](https://arxiv.org/abs/2011.12379))
   - Nearly Invariant Causal Estimation - uses IRM to learn repr. that strips out bad controls but preserves sufficient information to adjust for confounding
     - observe data from multiple environments
     - covariates contain some causal variables
     - covariates also contain some false confounders
-- [DeepMatch: Balancing Deep Covariate Representations for Causal Inference Using Adversarial Training](https://arxiv.org/abs/1802.05664) (kallus, 2018)
+- DeepMatch: Balancing Deep Covariate Representations for Causal Inference Using Adversarial Training ([kallus, 2018](https://arxiv.org/abs/1802.05664))
   - weighting and a discriminator network compete adversarially to minimize "discriminative discrepancy metric" for measuring covariate balance
   - this metric goes beyond just the original feature space
 
 ## limitations
 
-- [Limits of Estimating Heterogeneous Treatment Effects: Guidelines for Practical Algorithm Design](http://proceedings.mlr.press/v80/alaa18a.html) (alaa & van der schaar, 2018)
+- Limits of Estimating Heterogeneous Treatment Effects: Guidelines for Practical Algorithm Design ([alaa & van der schaar, 2018](http://proceedings.mlr.press/v80/alaa18a.html))
   - over enforcing balance can be harmful, as it may inadvertently remove information that is predictive of outcomes
   - analyze optimal minimax rate for ITE using Bayesian nonparametric methods
     - with small sample size: selection bias matters

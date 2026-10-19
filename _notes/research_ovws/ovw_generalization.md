@@ -24,7 +24,7 @@ subtitle: Some notes on generalization bounds in machine learning with an emphas
 
 # trees
 
-- [A cautionary tale on fitting decision trees to data from additive models: generalization lower bounds](https://arxiv.org/abs/2110.09626) (tan, agarwal, & yu, 2021)
+- A cautionary tale on fitting decision trees to data from additive models: generalization lower bounds ([tan, agarwal, & yu, 2021](https://arxiv.org/abs/2110.09626))
   - (generalized) additive models: $y = f(X_1) + f(X_2) + ... f(X_p)$ (as opposed to linear models)
   - main result
     - lower bound: can't peform better than $\Omega (n^{-\frac{2}{s+2}})$ in $\ell_2$ risk (as defined above)

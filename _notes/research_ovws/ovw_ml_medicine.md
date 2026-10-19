@@ -71,7 +71,7 @@ subtitle: Some rough notes on ml in medicine
   - When Personalization Harms Performance: Reconsidering the Use of Group Attributes in Prediction ([suriyakumar, ghassemi, & ustun, 2023](https://www.berkustun.com/docs/suriyakumar_2023_fairuse.pdf)) - group attributes to improve performance at a *population level* but often hurt at a *group level*
   - Coarse race data conceals disparities in clinical risk score performance ([movva...pierson, 2023](https://arxiv.org/abs/2304.09270))
 - CDI guidelines
-  - Reporting and Methods in Clinical Prediction Research: A Systematic Review ([Bouwmeester...moons, 2012](https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1001221)) - review publications in 2008, mostly about algorithmic methodology
+  - Reporting and Methods in Clinical Prediction Research: A Systematic Review ([bouwmeester...moons, 2012](https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1001221)) - review publications in 2008, mostly about algorithmic methodology
   - Transparent reporting of a multivariable prediction model for individual prognosis or diagnosis (TRIPOD): the TRIPOD Statement ([collins...moons, 2015](https://bmcmedicine.biomedcentral.com/articles/10.1186/s12916-014-0241-z))
   - Framework for the impact analysis and implementation of Clinical Prediction Rules (CPRs) ([IDAPP group, 2011](https://bmcmedinformdecismak.biomedcentral.com/articles/10.1186/1472-6947-11-62)) - stress validating old rules
   - Predictability and stability testing to assess clinical decision instrument performance for children after blunt torso trauma ([kornblith...yu, 2022](https://journals.plos.org/digitalhealth/article?id=10.1371/journal.pdig.0000076)) - stress the use of stability, application to IAI
@@ -98,7 +98,7 @@ subtitle: Some rough notes on ml in medicine
 ## ucsf de-id data
 
 - black-box
-  - predict [postoperative delirium prediction](https://bmcanesthesiol.biomedcentral.com/articles/10.1186/s12871-021-01543-y) (bishara, ..., donovan, 2022)
+  - predict postoperative delirium prediction ([bishara, ..., donovan, 2022](https://bmcanesthesiol.biomedcentral.com/articles/10.1186/s12871-021-01543-y))
 - intrepretable
   - predict multiple sceloris by incorporating domain knowledge into biomedical knowledge graph ([nelson, ..., baranzini, 2022](https://academic.oup.com/jamia/article/29/3/424/6463510))
   - predict mayo endoscopic subscores from colonoscopy reports ([silverman, ..., 2022](https://www.medrxiv.org/content/10.1101/2022.06.19.22276606.abstract))
@@ -112,7 +112,7 @@ subtitle: Some rough notes on ml in medicine
   - alternatively, focus on automating problems parents can do to screen people at home in cost-effective way
 - **pathology** - branch of medicine where you take some tissue from a patient (e.g. tumor), look at it under a microscope, and make an assesment of what the disease is
 - websites are often easier than apps for patients
-- [The clinical artificial intelligence department: a prerequisite for success](https://informatics.bmj.com/content/27/1/e100183) (cosgriff et al. 2020) - we need designated departments for clinical ai so we don't have to rely on 3rd-party vendors and can test for things like distr. shift
+- The clinical artificial intelligence department: a prerequisite for success ([cosgriff et al. 2020](https://informatics.bmj.com/content/27/1/e100183)) - we need designated departments for clinical ai so we don't have to rely on 3rd-party vendors and can test for things like distr. shift
 - [challenges in ai healthcare (news)](https://www.statnews.com/2019/06/19/what-if-ai-in-health-care-is-next-asbestos/)
   - adversarial examples
   - things can't be de-identified
@@ -191,7 +191,7 @@ subtitle: Some rough notes on ml in medicine
 - rules are often ambiguous (e.g. what constitutes vomiting)
 - **doctors adapt to personal experience** - may be unfair to evaluate them on larger dataset
 - sometimes said that doctors know 10 medications by heart
-- [Overconfidence in Clinical Decision Making](https://www.amjmed.com/article/S0002-9343(08)00152-6/pdf) (croskerry 2008)
+- Overconfidence in Clinical Decision Making ([croskerry 2008](https://www.amjmed.com/article/S0002-9343(08)00152-6/pdf))
   - most uncertainty: family medicine [FM] and emergency medicine [EM]
   - some uncertainty: internal medicine
   - little uncertainty: specialty disciplines
@@ -199,14 +199,14 @@ subtitle: Some rough notes on ml in medicine
     - a combination of both performs best
   - doctors are often black boxes as well - validated infrequently, unclear how closely they follow rules
   - doctors adapt to local conditions - should be evaluated only on local dataset
--  [potential liabilities for physicians using ai](https://jamanetwork.com/journals/jama/fullarticle/2752750) (price et al. 2019)
+-  potential liabilities for physicians using ai ([price et al. 2019](https://jamanetwork.com/journals/jama/fullarticle/2752750))
 - [What's the trouble. How doctors think](https://www.newyorker.com/magazine/2007/01/29/whats-the-trouble). New Yorker. 2007
 - [JAMA Users’ Guide to the Medical Literature](https://jamanetwork.com/journals/jama/article-abstract/192850?utm_campaign=articlePDF&utm_medium=articlePDFlink&utm_source=articlePDF&utm_content=jamapediatrics.2019.1075)
 - [TRIPOD 22 points paper](https://www.tripod-statement.org/Portals/0/Tripod Checklist Prediction Model Development and Validation PDF.pdf)
 - [basic stats in the step1 exam](https://step1.medbullets.com/topic/dashboard?id=101&specialty=101)
 - [How to Read Articles That Use Machine Learning: Users’ Guides to the Medical Literature](https://jamanetwork.com/journals/jama/fullarticle/2754798) (liu et al. 2019
 - [Carmelli et al. 2018](https://www.annemergmed.com/article/S0196-0644(18)30327-5/pdf) - primer for CDRs but also a good example of what sort of article I have envisioned creating.
-- [Looking through the retrospectoscope: reducing bias in emergency medicine chart review studies.](https://www.ncbi.nlm.nih.gov/pubmed/24746846) (kaji et al. 2018)
+- Looking through the retrospectoscope: reducing bias in emergency medicine chart review studies. ([kaji et al. 2018](https://www.ncbi.nlm.nih.gov/pubmed/24746846))
 
 ## communicating findings
 
@@ -222,7 +222,7 @@ subtitle: Some rough notes on ml in medicine
 
 ## succesful examples of ai in medicine
 
-- [ECG](https://www.nejm.org/doi/full/10.1056/NEJM199112193252503) (NEJM, 1991)
+- ECG ([NEJM, 1991](https://www.nejm.org/doi/full/10.1056/NEJM199112193252503))
 - EKG has a small interpretation on it
 - there used to be bayesian networks / expert systems but they went away...
 
@@ -253,7 +253,7 @@ subtitle: Some rough notes on ml in medicine
 
 # improving medical studies
 
-- Machine learning methods for developing precision treatment rules with observational data ([Kessler et al. 2019](https://pubmed.ncbi.nlm.nih.gov/31233922/))
+- Machine learning methods for developing precision treatment rules with observational data ([kessler et al. 2019](https://pubmed.ncbi.nlm.nih.gov/31233922/))
   - goal: find precision treatment rules
   - problem: need large sample sizes but can't obtain them in RCTs
   - recommendations

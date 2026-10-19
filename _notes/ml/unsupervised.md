@@ -256,7 +256,7 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
 - Sparse Component Analysis ([zimnik...cunningham, paninski, churchland, & glaser, 2024](https://www.biorxiv.org/content/10.1101/2024.02.05.578988v1.full.pdf))
   - $\arg \min _{U, V}\left(\|W(X-X U V)\|_F^2+\lambda_{\text {sparse }}\|X U\|_1+\lambda_{\text {orth }}\left\|V V^{\top}-I\right\|_F^2\right)$
     - where $U$ is encoding matrix and $V$ is decoding, the final loss term is imposing orthogonality of the columns of V
-- [NNK-Means: Dictionary Learning using Non-Negative Kernel regression](https://arxiv.org/abs/2110.08212) (shekkizhar & ortega, 2021)
+- NNK-Means: Dictionary Learning using Non-Negative Kernel regression ([shekkizhar & ortega, 2021](https://arxiv.org/abs/2110.08212))
   - data summarization - represent large datasets by a small set of elements (e.g. k-means)
   - here, use dictionary learning instead of k-means to summarize data
     - each dictionary element is a sparse combination of inputs
@@ -358,7 +358,7 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
 - **projecting into gan latent space (=gan inversion)**
   - 2 general approaches
     1. learn an encoder to go image -> latent space
-       - [In-Domain GAN Inversion for Real Image Editing](https://arxiv.org/pdf/2004.00049.pdf) (zhu et al. 2020) 
+       - In-Domain GAN Inversion for Real Image Editing ([zhu et al. 2020](https://arxiv.org/pdf/2004.00049.pdf)) 
        - learn encoder to project image into latent space, with regularizer to make sure it follows the right distr.
 
   2. optimize latent code wrt image directly
@@ -453,9 +453,9 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
 - momentum contrast - queue of previous embeddings are "keys"
   - match new embedding (query) against keys and use contrastive loss
   - similar idea as memory bank
-- [Unsupervised Visual Representation Learning by Context Prediction](https://www.cv-foundation.org/openaccess/content_iccv_2015/html/Doersch_Unsupervised_Visual_Representation_ICCV_2015_paper.html) (efros 15)
+- Unsupervised Visual Representation Learning by Context Prediction ([efros 15](https://www.cv-foundation.org/openaccess/content_iccv_2015/html/Doersch_Unsupervised_Visual_Representation_ICCV_2015_paper.html))
   - predict relative location of different patches
-- SimCLR ([Chen et al, 2020](https://arxiv.org/abs/2002.05709))
+- SimCLR ([chen et al, 2020](https://arxiv.org/abs/2002.05709))
   - maximize agreement for different points after some augmentation (contrastive loss)
 
 
@@ -466,7 +466,7 @@ $$\underset {\mathbf{D}} \min \underset t \sum \underset {\mathbf{a^{(t)}}} \min
   - entropy minimization - try to minimize the entropy of output predictions (like making confident predictions labels)
   - pseudo labeling - just take argmax pred as if it were the label
 - label consistency with data augmentation
-- [Billion-scale semi-supervised learning for image classification](https://arxiv.org/pdf/1905.00546.pdf) (FAIR, 19)
+- Billion-scale semi-supervised learning for image classification ([FAIR, 19](https://arxiv.org/pdf/1905.00546.pdf))
   - unsupervised learning + model distillation succeeds on imagenet
 - ensembling
   - temporal ensembling - ensemble multiple models at different training epochs

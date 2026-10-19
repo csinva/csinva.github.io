@@ -139,7 +139,7 @@
 - [Opinion | The Extraordinary Courage of Aleksei Navalny - The New York Times](https://www.nytimes.com/2021/01/17/opinion/aleksei-navalny-russia.html?action=click&module=Opinion&pgtype=Homepage)
 - [Why Eric Lander’s Controversial Paper “The Heroes of CRISPR” Is Not Solid Historical Research | American Scientist](https://www.americanscientist.org/blog/macroscope/why-eric-lander%E2%80%99s-controversial-paper-%E2%80%9Cthe-heroes-of-crispr%E2%80%9D-is-not-solid-historical)
 - [Why Aren't We Wearing Better Masks? - The Atlantic](https://www.theatlantic.com/health/archive/2021/01/why-arent-we-wearing-better-masks/617656/)
-- [Opinion | This Is When the Fever Breaks - The New York Times](https://www.nytimes.com/2021/01/07/opinion/capitol-riot-republicans.html?action=click&module=Opinion&pgtype=Homepage) (David Brooks)
+- Opinion | This Is When the Fever Breaks - The New York Times ([david brooks](https://www.nytimes.com/2021/01/07/opinion/capitol-riot-republicans.html?action=click&module=Opinion&pgtype=Homepage))
 - [A Rebuttal to some CS Academics’ “Free Speech” Open Letter to the ACM | by David Karger | Jan, 2021 | Medium](https://david-karger.medium.com/a-rebuttal-to-some-cs-academics-free-speech-open-letter-to-the-acm-729ce1cb6caf) - cancel culture needs calibrate its threshold to balance false positives and false negatives
 - [Does Class Warfare Have A Free-Rider Problem? | Slate Star Codex](https://slatestarcodex.com/2014/09/14/does-class-warfare-have-a-free-rider-problem/)
   - [Too Much Dark Money In Almonds | Slate Star Codex](https://slatestarcodex.com/2019/09/18/too-much-dark-money-in-almonds/) - many don't donate for fear that others won't, leading to a surprisingly low amount of political donations
@@ -173,7 +173,7 @@
   - effects
     - shifts politics towards identities
     - fails to define boundaries of citizenship and rights: if rights are fundamental to all humans, how can we deny citizenship / rights to migrants?
-- [Opinion | 2020 Was the Year Reaganism Died - The New York Times](https://www.nytimes.com/2020/12/28/opinion/reagan-economy-covid.html?action=click&module=Opinion&pgtype=Homepage) (Paul Krugman) - this year, we saw gov. aid to unemployed works lead to very good outcomes with essentially no drawbacks
+- Opinion | 2020 Was the Year Reaganism Died - The New York Times ([paul krugman](https://www.nytimes.com/2020/12/28/opinion/reagan-economy-covid.html?action=click&module=Opinion&pgtype=Homepage)) - this year, we saw gov. aid to unemployed works lead to very good outcomes with essentially no drawbacks
 
 # misc old
 
@@ -198,22 +198,22 @@
 
 - “I don’t have a dream job because i don’t dream of labor”
 - Is Following Your Work Passion Overrated? ([tugend, 2023](https://www.nytimes.com/2023/08/03/business/work-passion-overrated.html?smid=nytcore-ios-share&referringSource=articleShare))
-- [The perfectionism trap | The Economist](https://www.economist.com/1843/2021/08/10/the-perfectionism-trap?utm_campaign=a.coronavirus-special-edition&utm_medium=email.internal-newsletter.np&utm_source=salesforce-marketing-cloud&utm_term=20220730&utm_content=ed-picks-article-link-5&etear=nl_special_5&utm_campaign=a.coronavirus-special-edition&utm_medium=email.internal-newsletter.np&utm_source=salesforce-marketing-cloud&utm_term=7/30/2022&utm_id=1258967) (josh cohen, 2022)
+- The perfectionism trap | The Economist ([josh cohen, 2022](https://www.economist.com/1843/2021/08/10/the-perfectionism-trap?utm_campaign=a.coronavirus-special-edition&utm_medium=email.internal-newsletter.np&utm_source=salesforce-marketing-cloud&utm_term=20220730&utm_content=ed-picks-article-link-5&etear=nl_special_5&utm_campaign=a.coronavirus-special-edition&utm_medium=email.internal-newsletter.np&utm_source=salesforce-marketing-cloud&utm_term=7/30/2022&utm_id=1258967))
   - "For centuries [Religion] was the primary means through which we came to terms with being fallen and flawed"
-- [Opinion | 'Lying Flat': Tired Workers Are Opting Out of Careers and Capitalism - The New York Times](https://www.nytimes.com/2021/08/22/opinion/lying-flat-work-rest.html?referringSource=articleShare) (cassady rosenblum, 2021)
-  - [These Chinese Millennials Are ‘Chilling,’ and Beijing Isn’t Happy - The New York Times](https://www.nytimes.com/2021/07/03/world/asia/china-slackers-tangping.html) (elsie chen, 2021)
-  - [‘Lie Flat’ If You Want, But Be Ready to Pay the Price - Bloomberg](https://www.bloomberg.com/opinion/articles/2021-09-13/-lie-flat-if-you-want-but-be-ready-to-pay-the-price?sref=2o0rZsF1&utm_medium=social&utm_content=view&utm_campaign=socialflow-organic&utm_source=twitter&cmpid%3D=socialflow-twitter-view) (schrager, 2021)
+- Opinion | 'Lying Flat': Tired Workers Are Opting Out of Careers and Capitalism - The New York Times ([cassady rosenblum, 2021](https://www.nytimes.com/2021/08/22/opinion/lying-flat-work-rest.html?referringSource=articleShare))
+  - These Chinese Millennials Are ‘Chilling,’ and Beijing Isn’t Happy - The New York Times ([elsie chen, 2021](https://www.nytimes.com/2021/07/03/world/asia/china-slackers-tangping.html))
+  - ‘Lie Flat’ If You Want, But Be Ready to Pay the Price - Bloomberg ([schrager, 2021](https://www.bloomberg.com/opinion/articles/2021-09-13/-lie-flat-if-you-want-but-be-ready-to-pay-the-price?sref=2o0rZsF1&utm_medium=social&utm_content=view&utm_campaign=socialflow-organic&utm_source=twitter&cmpid%3D=socialflow-twitter-view))
     - people in the developed world have never [worked so little](https://ourworldindata.org/working-hours)
     - one [study estimates](https://www.nber.org/papers/w12082) that between 1965 and 2003, American men gained an extra six to eight hours of leisure time a week; women gained four to eight
     - since 2003, leisure time [has increased further](https://data.bls.gov/pdq/SurveyOutputServlet)
 - [How to escape the 'productivity trap' - BBC Worklife](https://www.bbc.com/worklife/article/20210805-how-to-escape-the-productivity-trap)
   - humankind’s peculiar preoccupation with time – and, in particular, whether we spend it “productively” – became much greater with the common usage of the clock and the emergence of the Industrial Revolution
-- [The Religion of Workism Is Making Americans Miserable - The Atlantic](https://www.theatlantic.com/ideas/archive/2019/02/religion-workism-making-americans-miserable/583441/) (derek thompson, 2019)
+- The Religion of Workism Is Making Americans Miserable - The Atlantic ([derek thompson, 2019](https://www.theatlantic.com/ideas/archive/2019/02/religion-workism-making-americans-miserable/583441/))
   - For the college-educated elite, work has morphed into a religious identity—promising transcendence and community, but failing to deliver.
   - "In a 1957 [article](https://timesmachine.nytimes.com/timesmachine/1957/09/22/96028167.html?action=click&contentCollection=Archives&module=ArticleEndCTA&region=ArchiveBody&pgtype=article&pageNumber=315) in *The New York Times*, the writer Erik Barnouw [predicted](http://timesmachine.nytimes.com/timesmachine/1957/09/22/issue.html?action=click&contentCollection=Archives&module=ArticleEndCTA&region=ArchiveBody&pgtype=article) that, as work became easier, our identity would be defined by our hobbies, or our family life."
   - the American conception of work has shifted from *jobs* to *careers* to *callings*
-  - [Why Are Young People Pretending to Love Work? - The New York Times](https://www.nytimes.com/2019/01/26/business/against-hustle-culture-rise-and-grind-tgim.html) (erin griffith, 2019)
-- [Less Work For Mother? | AMERICAN HERITAGE](https://www.americanheritage.com/less-work-mother) (ruth schwartz cowan, 1987)
+  - Why Are Young People Pretending to Love Work? - The New York Times ([erin griffith, 2019](https://www.nytimes.com/2019/01/26/business/against-hustle-culture-rise-and-grind-tgim.html))
+- Less Work For Mother? | AMERICAN HERITAGE ([ruth schwartz cowan, 1987](https://www.americanheritage.com/less-work-mother))
 
 
 

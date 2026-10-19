@@ -15,7 +15,7 @@ category: stat
 - [in-progress book](https://www.bradyneal.com/causal-inference-course) by brady neal
 - [course notes](https://web.stanford.edu/~swager/stats361.pdf) by stefan wager
 - rebecca barter's [blog posts](http://www.rebeccabarter.com/blog/2017-07-05-ip-weighting/)
-- wonderful review / [intro paper](https://dl.acm.org/doi/abs/10.1145/3397269?casa_token=Fsu-uKOSfUEAAAAA:4hCvZEsOPvbIfV92-17vP82pnVxAlZ8I4z62KsXjLGFse1wfP6uFfvqYzCa4wnueggWOB8KbFA2L) (guo et al. 2020)
+- wonderful review / intro paper ([guo et al. 2020](https://dl.acm.org/doi/abs/10.1145/3397269?casa_token=Fsu-uKOSfUEAAAAA:4hCvZEsOPvbIfV92-17vP82pnVxAlZ8I4z62KsXjLGFse1wfP6uFfvqYzCa4wnueggWOB8KbFA2L))
 
 # basics
 
@@ -89,7 +89,7 @@ category: stat
   - to get this, we assume the causal structure (can still kind of test it based on conditional distrs.)
   - having assumed the structure, we delete all edges going into a do operator and set the value of $x$
   - then, do-calculus yields a formula to estimate $p(y|do(x))$ assuming this causal structure
-  - see introductory paper [here](https://arxiv.org/pdf/1305.5506.pdf), more detailed paper [here](https://ftp.cs.ucla.edu/pub/stat_ser/r416-reprint.pdf) (pearl 2013)
+  - see introductory paper [here](https://arxiv.org/pdf/1305.5506.pdf), more detailed paper here ([pearl 2013](https://ftp.cs.ucla.edu/pub/stat_ser/r416-reprint.pdf))
   - by assuming structure, we learn how large impacts are
   
 3. **counterfactuals** $P(Y^{T=t'} = y'|T=t, y=y)$
@@ -211,7 +211,7 @@ category: stat
         - can plug into the algebra of an SEM to see the effect of intervention
         - alternatively, can factorize the graph, set $x=x_0$ and then marginalize over all variables not in the quantity we want to estimate
           - this is what people commonly call "adjusting for confounders"
-        - this is the same as the G-computation formula ([Robins, 1987](https://www.sciencedirect.com/science/article/abs/pii/S0021968187800188)), which was derived from a more complext set of assumptions
+        - this is the same as the G-computation formula ([robins, 1987](https://www.sciencedirect.com/science/article/abs/pii/S0021968187800188)), which was derived from a more complext set of assumptions
 - rules of *do*-calculus allow us to identify causal effects in general (e.g. in front-door adjustement)
 - general criterion
     - back-door / front-door
@@ -448,7 +448,7 @@ M --> Y
     - if we have some confounders $X$, can adjust for them
     - the smaller $\tau_T$ is (i.e. the more noncompliance there is), the worse properties the LATE estimator has
     - instrumental variable inequalities $E(Q|I=1) \geq E(Q|I=0)$ where $Q = TY, T(1-Y), (1-T)Y, T+Y - TY$
-  - *instrumental inequality* ([Pearl 1995](https://arxiv.org/abs/1302.4976)) - a necessary condition for any variable $I$ to qualify as an instrument relative to the pair $(T, Y)$: $\max_T \sum_Y \left[ \max_I P(T,Y | I) \right] \leq 1$
+  - *instrumental inequality* ([pearl 1995](https://arxiv.org/abs/1302.4976)) - a necessary condition for any variable $I$ to qualify as an instrument relative to the pair $(T, Y)$: $\max_T \sum_Y \left[ \max_I P(T,Y | I) \right] \leq 1$
     - when all vars are binary, this reduces to the following:
     - $P(Y=0, T=0 \mid I=0) + P(Y=1, T=0 \mid I=1) \leq 1$
       $P(Y=0, T=1 \mid I=0)+P(Y=1, T=1 \mid I=1) \leq 1$
@@ -465,13 +465,13 @@ M --> Y
 
 ## synthetic data experiments
 
-- [Towards causal benchmarking of bias in face analysis algorithms](https://arxiv.org/abs/2007.06570) (balakrishnan et al. 2020) - use GANs to generate synthetic data where only attribute varies
+- Towards causal benchmarking of bias in face analysis algorithms ([balakrishnan et al. 2020](https://arxiv.org/abs/2007.06570)) - use GANs to generate synthetic data where only attribute varies
 - causal imputation / causal transport = mapping bbetween different domains, where only one domain at a time is ever observed
-  - [Multi-Domain Translation by Learning Uncoupled Autoencoders](https://arxiv.org/abs/1902.03515) (yang & uhler 2019)
+  - Multi-Domain Translation by Learning Uncoupled Autoencoders ([yang & uhler 2019](https://arxiv.org/abs/1902.03515))
     - learn autoencoders for different domains that all map to a shared latent space
     - this allows to translate between different domains, by using one encoder and then a different decoder
-  - [Causal Imputation via Synthetic Interventions](https://arxiv.org/abs/2011.03127) (squires, ..., uhler 2020)
-  - [Matched sample selection with GANs for mitigating attribute confounding](https://arxiv.org/abs/2103.13455) (singh et al. 2021)
+  - Causal Imputation via Synthetic Interventions ([squires, ..., uhler 2020](https://arxiv.org/abs/2011.03127))
+  - Matched sample selection with GANs for mitigating attribute confounding ([singh et al. 2021](https://arxiv.org/abs/2103.13455))
 
 # observational analysis
 
@@ -623,13 +623,13 @@ M --> Y
   - hard moment-matching conditions (Li & Fu, 2017; entropy balancing from [Hainmueller, 2012](https://www.cambridge.org/core/journals/political-analysis/article/entropy-balancing-for-causal-effects-a-multivariate-reweighting-method-to-produce-balanced-samples-in-observational-studies/220E4FC838066552B53128E647E4FAA7); Imai & Ratkovic, 2014)
   - soft moment-matching conditions  (Zubizarreta, 2015)
 - approximate residual balancing (athey, imbens, & wager, 2018) - combines balancing weights with a regularized regression adjustment for learning ATE from high-dimensional data
-- [Learning Causal Effects via Weighted Empirical Risk Minimization](https://causalai.net/r62.pdf) (jung et al. 2020) - estimate any computation (which usually requires actually modeling individual conditional probabilities) using weighted empirical risk minimization
+- Learning Causal Effects via Weighted Empirical Risk Minimization ([jung et al. 2020](https://causalai.net/r62.pdf)) - estimate any computation (which usually requires actually modeling individual conditional probabilities) using weighted empirical risk minimization
 
 ## stratification / matching
 
 *Matching methods choose try to to equate (or "balance'') the distribution of covariates in the treated and control groups  by picking well-matched samples of the original treated and control groups*
 
-- [Matching methods for causal inference: A review and a look forward](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2943670/pdf/nihms200640.pdf) (stuart 2010)
+- Matching methods for causal inference: A review and a look forward ([stuart 2010](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2943670/pdf/nihms200640.pdf))
   - matching basics
     - includes 1:1 matching, weighting, or subclassification
     - linear regression adjustment (so not matching) can actually increase bias in the estimated treatment effect when the true relationship between the covariate and outcome is even moderately non-linear, especially when there are large differences in the means and variances of the covariates in the treated and control groups
@@ -814,7 +814,7 @@ M --> Y
     - $\mathrm{RR}_{U Y \mid x}=\frac{\operatorname{pr}(Y=1 \mid U=1, X=x)}{\operatorname{pr}(Y=1 \mid U=0, X=x)}$
     - *Thm*: under latent ignorability, $\mathrm{RR}_{x}^{\mathrm{obs}} \leq \frac{\mathrm{R} \mathrm{R}_{T U \mid x} \mathrm{RR}_{U Y \mid x}}{\mathrm{RR}_{T U \mid x}+\mathrm{RR}_{U Y \mid x}-1}$
 
-- ex. bounds on direct effects with confounded intermediate variables ([Cai et al. 2008](https://onlinelibrary.wiley.com/doi/full/10.1111/j.1541-0420.2007.00949.x?casa_token=WdtSDtKM_zsAAAAA%3AyEmvyHkEBk5qtvcj4p8r5ewrI5npbTts9J9IKRQyc4XmbpDvsmtIDy28sbOU2m32oT31ol2VM4Kb5w))
+- ex. bounds on direct effects with confounded intermediate variables ([cai et al. 2008](https://onlinelibrary.wiley.com/doi/full/10.1111/j.1541-0420.2007.00949.x?casa_token=WdtSDtKM_zsAAAAA%3AyEmvyHkEBk5qtvcj4p8r5ewrI5npbTts9J9IKRQyc4XmbpDvsmtIDy28sbOU2m32oT31ol2VM4Kb5w))
 
 - **bounds with no assumptions** ([manski 1990](https://www.jstor.org/stable/2006592?casa_token=5wsmh0n73ecAAAAA%3AGrmKG84ZmaGgvx7Xsadw_Gta7y59XrUMUe8IpYH-IWfN7mVx0p51Wte4H8m7zZy6l06TYQZeNHRgpz7cPAvXtrw2O6pABDcgYanESUXjuyhM7_9vAOws&seq=1#metadata_info_tab_contents))
   - worst-case bounds are very poor
@@ -825,5 +825,5 @@ M --> Y
 
   - **E-value** = min strength of association (risk ratio) that an unmeasured confounder would require with both $T$ and $Y$ to explain away a specific treatment-outcome association, conditional on $X$
     - higher = more causal
-- [Interpretable Sensitivity Analysis for Balancing Weights](https://arxiv.org/abs/2102.13218) (soriano et al. 2021) - percentile bootstrap procedure applied to balancing weights estimators
+- Interpretable Sensitivity Analysis for Balancing Weights ([soriano et al. 2021](https://arxiv.org/abs/2102.13218)) - percentile bootstrap procedure applied to balancing weights estimators
 

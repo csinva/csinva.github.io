@@ -112,7 +112,7 @@ category: neuro
 
 ## papers
 
-- [Deep Learning Models for Digital Pathology](https://arxiv.org/abs/1910.12329) (BenTaieb & Hamarneh, 2019)
+- Deep Learning Models for Digital Pathology ([bentaieb & hamarneh, 2019](https://arxiv.org/abs/1910.12329))
    - note: alternative to histopathology are more expensive / slower (e.g. molecular profiling)
    - to promote consistency and objective inter-observer agreement, most pathologists are trained to follow simple algorithmic decision rules that sufficiently stratify patients into reproducible groups based on tumor type and aggressiveness
    - magnification usually given in microns per pixel
@@ -138,14 +138,14 @@ category: neuro
       - alternatively, can formulate as a regression task, where pixelwise prediction tells distance to nearest centroid of object
       - could also just directly predict the count
    - can also predict survival analysis 
-- [Clinical-grade computational pathology using weakly supervised deep learning on whole slide images](https://www.nature.com/articles/s41591-019-0508-1) (campanella et al. 2019)
+- Clinical-grade computational pathology using weakly supervised deep learning on whole slide images ([campanella et al. 2019](https://www.nature.com/articles/s41591-019-0508-1))
    - use slide-level diagnosis as "weak supervision" for all contained patches
    - 1st step: train patch-level CNNs using MIL
       - if label is 0, then all patches should be 0
       - if label is 1, then only pass gradients to the top-k predicted patches
    - 2nd step: use RNN (or another net) to combine info across *S* most suspicious tiles
-- [Human-interpretable image features derived from densely mapped cancer pathology slides predict diverse molecular phenotypes](https://www.nature.com/articles/s41467-021-21896-9) (diao et al. 21)
-- [An artificial intelligence algorithm for prostate cancer diagnosis in whole slide images of core needle biopsies: a blinded clinical validation and deployment study](https://www.thelancet.com/journals/landig/article/PIIS2589-7500(20)30159-X/fulltext) (pantanowitz et al. 2020 - ibex)
+- Human-interpretable image features derived from densely mapped cancer pathology slides predict diverse molecular phenotypes ([diao et al. 21](https://www.nature.com/articles/s41467-021-21896-9))
+- An artificial intelligence algorithm for prostate cancer diagnosis in whole slide images of core needle biopsies: a blinded clinical validation and deployment study ([pantanowitz et al. 2020 - ibex](https://www.thelancet.com/journals/landig/article/PIIS2589-7500(20)30159-X/fulltext))
    - 549 train, 2501 internal test slides, 1627 external validation
    - predict cancer prob., gleason score 7-10, gleason pattern 5, perneural invasion, cancer percentage
    - algorithm
@@ -233,7 +233,7 @@ category: neuro
       - secondary gleason: k=0.37
       - sum: k=0.43
 - ai papers
-   - [Learning Whole-Slide Segmentation from Inexact and Incomplete Labels using Tissue Graphs](https://arxiv.org/abs/2103.03129) (anklin et al. 2021)
+   - Learning Whole-Slide Segmentation from Inexact and Incomplete Labels using Tissue Graphs ([anklin et al. 2021](https://arxiv.org/abs/2103.03129))
       - SegGini, a weakly supervised segmentation method using graphs
          - constructs a tissue-graph for WSI (node is tissue region)
          - weakly-supervised segmentation via node classification
@@ -258,25 +258,25 @@ category: neuro
       - high-grade (worse) = poorly differentiated, undifferentiated
    
 - human benchmark
-   - [The reliability of staging and grading of bladder tumours. Impact of misinformation on the pathologist's diagnosis](https://pubmed.ncbi.nlm.nih.gov/8290915/) (olsen et al. 1993)
+   - The reliability of staging and grading of bladder tumours. Impact of misinformation on the pathologist's diagnosis ([olsen et al. 1993](https://pubmed.ncbi.nlm.nih.gov/8290915/))
       - 4 consultant pathologists
       - 40 biopsy specimens of bladder tumours staging invasion
          - grading using Bergkvist classification
       - kappa < 0.50
    
 - ai papers
-   - [Bladder cancer in the time of machine learning: Intelligent tools for diagnosis and management](https://journals.sagepub.com/doi/abs/10.1177/0391560320987169) (2021)
+   - Bladder cancer in the time of machine learning: Intelligent tools for diagnosis and management ([2021](https://journals.sagepub.com/doi/abs/10.1177/0391560320987169))
       - bladder cancel ranks tenth in worldwide absolute cancer incidence
    - non-pathology
       - [Integrating Diagnosis Rules into Deep Neural Networks for Bladder Cancer Staging](https://dl.acm.org/doi/abs/10.1145/3340531.3412122) - bladder cancer staging from MR images
       - [Deep Learning Approach for Assessment of Bladder Cancer Treatment Response](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6403041/) - bladder cancer treatment assessment from CT scans
    - cystoscopy - few DNN papers here
    - pathology
-      - [Urinary Bladder Tumor Grade Diagnosis Using Online Trained Neural Networks](https://link.springer.com/chapter/10.1007/978-3-540-45224-9_29) (2003)
+      - Urinary Bladder Tumor Grade Diagnosis Using Online Trained Neural Networks ([2003](https://link.springer.com/chapter/10.1007/978-3-540-45224-9_29))
          - 92 patients with BC
          - 90%, 94.9%, and 97.3%, for Grade I, II, and III respectively
-         - builds on [Neural network-based segmentation and classification system for automated grading of histologic sections of bladder carcinoma](https://europepmc.org/article/med/12508689) (2002)
-      - [Deep Learning Predicts Molecular Subtype of Muscle-invasive Bladder Cancer from Conventional Histopathological Slides](https://pubmed.ncbi.nlm.nih.gov/32354610/) (woerl et al. 2020) - predict *molecular subtype* using histopathology images in Cancer Genome Atlas Urothelial Bladder Carcinoma dataset
+         - builds on Neural network-based segmentation and classification system for automated grading of histologic sections of bladder carcinoma ([2002](https://europepmc.org/article/med/12508689))
+      - Deep Learning Predicts Molecular Subtype of Muscle-invasive Bladder Cancer from Conventional Histopathological Slides ([woerl et al. 2020](https://pubmed.ncbi.nlm.nih.gov/32354610/)) - predict *molecular subtype* using histopathology images in Cancer Genome Atlas Urothelial Bladder Carcinoma dataset
    
 - bladder basics
 

@@ -4,7 +4,7 @@ title: interpretability
 category: research
 ---
 
-**Some interesting papers on interpretable machine learning, largely organized based on this [interpretable ml review](https://arxiv.org/abs/1901.04592) (murdoch et al. 2019) and notes from this [interpretable ml book](https://christophm.github.io/interpretable-ml-book/) (molnar 2019). For interpretability specific to transformers, see [here](https://csinva.io/notes/research_ovws/ovw_transformers.html)**.
+**Some interesting papers on interpretable machine learning, largely organized based on this interpretable ml review ([murdoch et al. 2019](https://arxiv.org/abs/1901.04592)) and notes from this interpretable ml book ([molnar 2019](https://christophm.github.io/interpretable-ml-book/)). For interpretability specific to transformers, see [here](https://csinva.io/notes/research_ovws/ovw_transformers.html)**.
 
 {:toc}
 
@@ -152,27 +152,27 @@ For an implementation of many of these models, see the python [imodels package](
 *Rule sets commonly look like a series of independent if-then rules. Unlike trees / lists, these rules can be overlapping and might not cover the whole space. Final predictions can be made via majority vote, using most accurate rule, or averaging predictions. Sometimes also called rule ensembles.*
 
 - popular ways to learn rule sets
-  - [SLIPPER](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.33.1184&rep=rep1&type=pdf) (cohen, & singer, 1999) - repeatedly boosting a simple, greedy rule-builder
-  - [Lightweight Rule Induction](http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.34.4619) (weiss & indurkhya, 2000) - specify number + size of rules and classify via majority vote
-  - [Maximum Likelihood Rule Ensembles](https://dl.acm.org/doi/pdf/10.1145/1390156.1390185?casa_token=Lj3Ypp6bLzoAAAAA:t4p9YRPHEXJEL723ygEW5BJ9qft8EeU5934vPJFf1GrF1GWm1kctIePQGeaRiKHJa6ybpqtTqGg1Ig) (Dembczyński et al. 2008) - MLRules - rule is base estimator in ensemble - build by greedily maximizing log-likelihood
-- [rulefit](https://projecteuclid.org/euclid.aoas/1223908046) (friedman & popescu, 2008) - extract rules from many decision trees, then fit sparse linear model on them
-  - [A statistical approach to rule learning](https://dl.acm.org/doi/abs/10.1145/1143844.1143943?casa_token=74Cp4L015WQAAAAA:V8gYM4NMkiqRTmuGxtsnnTVZFaXl-eSzmLWFt78aVfoukuuZ-Y4-H-p3e-bF7EhA23uxKJ_oqLNq) (ruckert & kramer, 2006) - unsupervised objective to mine rules with large maring and low variance before fitting linear model
-  - [Generalized Linear Rule Models](http://proceedings.mlr.press/v97/wei19a.html) (wei et al. 2019) - use column generation (CG) to intelligently search space of rules
+  - SLIPPER ([cohen, & singer, 1999](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.33.1184&rep=rep1&type=pdf)) - repeatedly boosting a simple, greedy rule-builder
+  - Lightweight Rule Induction ([weiss & indurkhya, 2000](http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.34.4619)) - specify number + size of rules and classify via majority vote
+  - Maximum Likelihood Rule Ensembles ([dembczyński et al. 2008](https://dl.acm.org/doi/pdf/10.1145/1390156.1390185?casa_token=Lj3Ypp6bLzoAAAAA:t4p9YRPHEXJEL723ygEW5BJ9qft8EeU5934vPJFf1GrF1GWm1kctIePQGeaRiKHJa6ybpqtTqGg1Ig)) - MLRules - rule is base estimator in ensemble - build by greedily maximizing log-likelihood
+- rulefit ([friedman & popescu, 2008](https://projecteuclid.org/euclid.aoas/1223908046)) - extract rules from many decision trees, then fit sparse linear model on them
+  - A statistical approach to rule learning ([ruckert & kramer, 2006](https://dl.acm.org/doi/abs/10.1145/1143844.1143943?casa_token=74Cp4L015WQAAAAA:V8gYM4NMkiqRTmuGxtsnnTVZFaXl-eSzmLWFt78aVfoukuuZ-Y4-H-p3e-bF7EhA23uxKJ_oqLNq)) - unsupervised objective to mine rules with large maring and low variance before fitting linear model
+  - Generalized Linear Rule Models ([wei et al. 2019](http://proceedings.mlr.press/v97/wei19a.html)) - use column generation (CG) to intelligently search space of rules
     - re-fit GLM as rules are generated, reweighting + discarding
       - with large number of columns, can be intractable even to enumerate rules - CG avoids this by fitting a subset and using it to construct most promising next column
     - also propose a non-CG algorithm using only 1st-degree rules
     - note: from every pair of complementary singleton rules (e.g., $X_j \leq1$, $X_j > 1$), they remove one member as otherwise the pair together is collinear
-  - [Multivariate Adaptive Regression Splines (MARS)](https://www.jstor.org/stable/2241837?casa_token=15XQTGF9ItgAAAAA%3A3dmi0WboPsb0TMDj6d0yefz1YUWUrQmKzh21NvMgpyQ_gbuveUibjIQY2Gq6J8C9-9HJ70QZns9x2MfB70dEGlll5RIgZ_VS3qPhRbbBMsrLwuD8H-0wmQ&seq=1#metadata_info_tab_contents) (friedman, 1991) - sequentially learn weighted linear sum of ReLus (or products of ReLus)
+  - Multivariate Adaptive Regression Splines (MARS) ([friedman, 1991](https://www.jstor.org/stable/2241837?casa_token=15XQTGF9ItgAAAAA%3A3dmi0WboPsb0TMDj6d0yefz1YUWUrQmKzh21NvMgpyQ_gbuveUibjIQY2Gq6J8C9-9HJ70QZns9x2MfB70dEGlll5RIgZ_VS3qPhRbbBMsrLwuD8H-0wmQ&seq=1#metadata_info_tab_contents)) - sequentially learn weighted linear sum of ReLus (or products of ReLus)
     - do backward deletion procedure at the end
-    - [MARS via LASSO](https://arxiv.org/pdf/2111.11694.pdf) (ki, fang, & guntuboyina, 2021)
-  - [Hardy-Krause denoising](https://arxiv.org/abs/1903.01395) (fang, guntuboyina, & sen, 2020) - builds additive models of piecewise constant functions along with interactions and then does LASSO on them
+    - MARS via LASSO ([ki, fang, & guntuboyina, 2021](https://arxiv.org/pdf/2111.11694.pdf))
+  - Hardy-Krause denoising ([fang, guntuboyina, & sen, 2020](https://arxiv.org/abs/1903.01395)) - builds additive models of piecewise constant functions along with interactions and then does LASSO on them
 - more recent global versions of learning rule sets
-  - [interpretable decision set](https://dl.acm.org/citation.cfm?id=2939874) (lakkaraju et al. 2016) - set of if then rules
+  - interpretable decision set ([lakkaraju et al. 2016](https://dl.acm.org/citation.cfm?id=2939874)) - set of if then rules
     - short, accurate, and non-overlapping rules that cover the whole feature space and pay attention to small but important classes
-  - [A Bayesian Framework for Learning Rule Sets for Interpretable Classification](http://www.jmlr.org/papers/volume18/16-003/16-003.pdf) (wang et al. 2017) - rules are a bunch of clauses OR'd together (e.g. if (X1>0 AND X2<1) OR (X2<1 AND X3>1) OR ... then Y=1)
+  - A Bayesian Framework for Learning Rule Sets for Interpretable Classification ([wang et al. 2017](http://www.jmlr.org/papers/volume18/16-003/16-003.pdf)) - rules are a bunch of clauses OR'd together (e.g. if (X1>0 AND X2<1) OR (X2<1 AND X3>1) OR ... then Y=1)
     - they call this method "Bayesian Rule Sets"
-    - [Or's of And's for Interpretable Classification, with Application to Context-Aware Recommender Systems](https://arxiv.org/abs/1504.07614) (wang et al. 2015) - BOA - Bayesian Or's of And's
-  - [Vanishing boosted weights: A consistent algorithm to learn interpretable rules](https://www.sciencedirect.com/science/article/abs/pii/S0167865521003081) (sokolovska et al. 2021) - simple efficient fine-tuning procedure for decision stumps
+    - Or's of And's for Interpretable Classification, with Application to Context-Aware Recommender Systems ([wang et al. 2015](https://arxiv.org/abs/1504.07614)) - BOA - Bayesian Or's of And's
+  - Vanishing boosted weights: A consistent algorithm to learn interpretable rules ([sokolovska et al. 2021](https://www.sciencedirect.com/science/article/abs/pii/S0167865521003081)) - simple efficient fine-tuning procedure for decision stumps
 - when learning sequentially, often useful to prune at each step (Furnkranz, 1997)
 - Multi-value Rule Sets for Interpretable Classification with Feature-Efficient Representations ([wang, 2018](https://proceedings.neurips.cc/paper/2018/file/32bbf7b2bc4ed14eb1e9c2580056a989-Paper.pdf))
   - measure how long it takes for people to calculate predictions from different rule-based models
@@ -185,7 +185,7 @@ For an implementation of many of these models, see the python [imodels package](
   - FP-Growth algorithm (borgelt 2005) is fast
   - Aprior + Eclat do the same thing, but with different speeds
   - [random intersection trees](https://arxiv.org/pdf/1303.6223.pdf)
-- [interpretable classifiers using rules and bayesian analysis](https://projecteuclid.org/download/pdfview_1/euclid.aoas/1446488742) (letham et al. 2015)
+- interpretable classifiers using rules and bayesian analysis ([letham et al. 2015](https://projecteuclid.org/download/pdfview_1/euclid.aoas/1446488742))
   - start by pre-mining frequent patterns rules
     - current approach does not allow for negation (e.g. not diabetes) and must split continuous variables into categorical somehow (e.g. quartiles)
     - mines things that frequently occur together, but doesn't look at outcomes in this step - okay (since this is all about finding rules with high support)
@@ -193,15 +193,15 @@ For an implementation of many of these models, see the python [imodels package](
     - start w/ random list
     - sample new lists by adding/removing/moving a rule
     - at the end, return the list that had the highest probability
-  - [scalable bayesian rule lists](https://dl.acm.org/citation.cfm?id=3306086) (yang et al. 2017) - faster algorithm for computing
+  - scalable bayesian rule lists ([yang et al. 2017](https://dl.acm.org/citation.cfm?id=3306086)) - faster algorithm for computing
     - doesn't return entire posterior
-  - [learning certifiably optimal rules lists](https://dl.acm.org/citation.cfm?id=3098047) (angelino et al. 2017) - even faster optimization for categorical feature space
+  - learning certifiably optimal rules lists ([angelino et al. 2017](https://dl.acm.org/citation.cfm?id=3098047)) - even faster optimization for categorical feature space
     - can get upper / lower bounds for loss = risk + $\lambda$ * listLength
     - doesn't return entire posterior
-- [Expert-augmented machine learning](https://arxiv.org/abs/1903.09731) (gennatas et al. 2019)
+- Expert-augmented machine learning ([gennatas et al. 2019](https://arxiv.org/abs/1903.09731))
   - make rule lists, then compare the outcomes for each rule with what clinicians think should be outcome for each rule
   - look at rules with biggest disagreement and engineer/improve rules or penalize unreliable rules
-- [Fast and frugal heuristics: The adaptive toolbox.](https://psycnet.apa.org/record/1999-04366-001) (gigerenzer et al. 1999) - makes rule lists that can split on either node of the tree each time
+- Fast and frugal heuristics: The adaptive toolbox. ([gigerenzer et al. 1999](https://psycnet.apa.org/record/1999-04366-001)) - makes rule lists that can split on either node of the tree each time
 
 ### trees
 
@@ -212,7 +212,7 @@ For an implementation of many of these models, see the python [imodels package](
   - automatic interaction detection (AID) regression trees (Morgan & Sonquist, 1963)
   - THeta Automatic Interaction Detection (THAID) classification trees (Messenger & Mandell, 1972)
   - Chi-squared Automatic Interaction Detector (CHAID) (Kass, 1980)
-  - CART: Classification And Regression Trees  ([Breiman et al. 1984](https://www.taylorfrancis.com/books/mono/10.1201/9781315139470/classification-regression-trees-leo-breiman-jerome-friedman-richard-olshen-charles-stone)) - splits on GINI
+  - CART: Classification And Regression Trees  ([breiman et al. 1984](https://www.taylorfrancis.com/books/mono/10.1201/9781315139470/classification-regression-trees-leo-breiman-jerome-friedman-richard-olshen-charles-stone)) - splits on GINI
   - ID3 (Quinlan, 1986)
   - C4.5 (Quinlan, 1993) - splits on binary entropy instead of GINI
   
@@ -220,10 +220,10 @@ For an implementation of many of these models, see the python [imodels package](
   
   - motivation
     - cost-complexity pruning ([breiman et al. 1984](https://www.taylorfrancis.com/books/mono/10.1201/9781315139470/classification-regression-trees-leo-breiman-jerome-friedman-richard-olshen-charles-stone) ch 3) - greedily prune while minimizing loss function of loss + $\lambda \cdot (\text{numLeaves})$
-    - replicated subtree problem ([Bagallo & Haussler, 1990](https://link.springer.com/content/pdf/10.1007/BF00115895.pdf)) - they propose iterative algorithms to try to overcome it
+    - replicated subtree problem ([bagallo & haussler, 1990](https://link.springer.com/content/pdf/10.1007/BF00115895.pdf)) - they propose iterative algorithms to try to overcome it
   - GOSDT: Generalized and Scalable Optimal Sparse Decision Trees ([lin...rudin, seltzer, 2020](https://arxiv.org/abs/2006.08690))
     - optimize for $\min L(X, y) + \lambda \cdot (\text{numLeaves})$
-    - full decision tree optimization is NP-hard ([Laurent & Rivest, 1976](https://people.csail.mit.edu/rivest/HyafilRivest-ConstructingOptimalBinaryDecisionTreesIsNPComplete.pdf))
+    - full decision tree optimization is NP-hard ([laurent & rivest, 1976](https://people.csail.mit.edu/rivest/HyafilRivest-ConstructingOptimalBinaryDecisionTreesIsNPComplete.pdf))
     - can optimize many different losses (e.g. accuracy, AUC)
     - speedups: use dynamic programming, prune the search-space with bounds
       - How Smart Guessing Strategies Can Yield Massive Scalability Improvements for Sparse Decision Tree Optimization ([mctavish...rudin, seltzer, 2021](https://arxiv.org/abs/2112.00798))
@@ -279,7 +279,7 @@ For an implementation of many of these models, see the python [imodels package](
   - Hierarchical priors for Bayesian CART shrinkage ([chipman & mcculloch, 2000](https://link.springer.com/article/10.1023/A:1008980332240))
   - Connecting Interpretability and Robustness in Decision Trees through Separation ([moshkovitz et al. 2021](https://arxiv.org/abs/2102.07048))
     - [Efficient Training of Robust Decision Trees Against Adversarial Examples](https://arxiv.org/abs/2012.10438)
-  - [Robust Decision Trees Against Adversarial Examples](https://arxiv.org/abs/1902.10660) (chen, ..., hsieh, 2019)
+  - Robust Decision Trees Against Adversarial Examples ([chen, ..., hsieh, 2019](https://arxiv.org/abs/1902.10660))
     - optimize tree performance under worst-case input-feature perturbation
 
 - trees for density estimation
@@ -305,10 +305,10 @@ For an implementation of many of these models, see the python [imodels package](
     - compute exp. weighted avg of embeddings (upweights most recent tokens)
     - predicts next embedding with XGBoost (regression loss) then finds closest token
   - counterfactuals
-    - [Counterfactual Explanations for Oblique Decision Trees: Exact, Efficient Algorithms](https://arxiv.org/abs/2103.01096) (2021)
+    - Counterfactual Explanations for Oblique Decision Trees: Exact, Efficient Algorithms ([2021](https://arxiv.org/abs/2103.01096))
     - [Optimal Counterfactual Explanations in Tree Ensembles](https://arxiv.org/abs/2106.06631)
     - [Desiderata for Interpretability: Explaining Decision Tree Predictions with Counterfactuals](https://ojs.aaai.org//index.php/AAAI/article/view/5154)
-  - [Human knowledge models: Learning applied knowledge from the data](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0275814) (dudyrev...pianykh, 2022) - very concise logic model
+  - Human knowledge models: Learning applied knowledge from the data ([dudyrev...pianykh, 2022](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0275814)) - very concise logic model
   - extremely randomized trees ([geurts ernst, & wehenkel, 2006](https://link.springer.com/article/10.1007/s10994-006-6226-1)) - randomness goes further than Random Forest - randomly select not only the feature but also the split thresholds (and select the best out of some random set)
   - Constraint Enforcement on Decision Trees: A Survey ([nanfack...brenay, 2022](https://dl.acm.org/doi/pdf/10.1145/3506734))
     - 3 classes of constraints
@@ -329,20 +329,20 @@ For an implementation of many of these models, see the python [imodels package](
 
 - Algorithms for learning diagrams usually postprocess a given tree (and taking an MDL perspective)
 - Decision diagrams for model compression
-  - [Simplifying decision trees: A survey](https://www.cambridge.org/core/journals/knowledge-engineering-review/article/abs/simplifying-decision-trees-a-survey/CEE7A6994E66E821DB4A12DD83DC3810) (breslow & aha, 1997)
-  - [Large Random Forests: Optimisation for Rapid Evaluation](https://arxiv.org/abs/1912.10934) (gossen & steffen, 2019)
-- [Optimal Decision Diagrams for Classification](https://arxiv.org/pdf/2205.14500.pdf) (florio...vidal 2022) - decision diagrams are like trees but paths can rejoin
+  - Simplifying decision trees: A survey ([breslow & aha, 1997](https://www.cambridge.org/core/journals/knowledge-engineering-review/article/abs/simplifying-decision-trees-a-survey/CEE7A6994E66E821DB4A12DD83DC3810))
+  - Large Random Forests: Optimisation for Rapid Evaluation ([gossen & steffen, 2019](https://arxiv.org/abs/1912.10934))
+- Optimal Decision Diagrams for Classification ([florio...vidal 2022](https://arxiv.org/pdf/2205.14500.pdf)) - decision diagrams are like trees but paths can rejoin
 - Extracting rules from neural networks as decision diagrams [(Chorowski, J., J.M. Zurada. 2011](https://pubmed.ncbi.nlm.nih.gov/21335310/))
-- [Decision Jungles: Compact and Rich Models for Classification](https://proceedings.neurips.cc/paper/2013/hash/69adc1e107f7f7d035d7baf04342e1ca-Abstract.html) (shotton et al. 2013) - ensembles of decision diagrams
-- [Decision Stream: Cultivating Deep Decision Trees](https://ieeexplore.ieee.org/abstract/document/8372043) (ignatov & ignatov, 2017)
+- Decision Jungles: Compact and Rich Models for Classification ([shotton et al. 2013](https://proceedings.neurips.cc/paper/2013/hash/69adc1e107f7f7d035d7baf04342e1ca-Abstract.html)) - ensembles of decision diagrams
+- Decision Stream: Cultivating Deep Decision Trees ([ignatov & ignatov, 2017](https://ieeexplore.ieee.org/abstract/document/8372043))
   - merge nodes from different branches based on their similarity that is estimated with two-sample test statistics
   - nothing to do with deep learning
 
 - misc
-  - [Optimizing Binary Decision Diagrams for Interpretable Machine Learning Classification](https://ieeexplore.ieee.org/abstract/document/9474083) (cabodi et al. 2021)
+  - Optimizing Binary Decision Diagrams for Interpretable Machine Learning Classification ([cabodi et al. 2021](https://ieeexplore.ieee.org/abstract/document/9474083))
   - proposing a SAT-based model for computing a decision tree as the smallest Reduced Ordered Binary Decision Diagram
   - exploring heuristic approaches for deriving sub-optimal (i.e., not minimal) ROBDDs, in order to improve the scalability of the proposed technique.
-  - [Optimizing Binary Decision Diagrams with MaxSAT for classification](https://arxiv.org/abs/2203.11386) (hu et al. 2022)
+  - Optimizing Binary Decision Diagrams with MaxSAT for classification ([hu et al. 2022](https://arxiv.org/abs/2203.11386))
   - Deep Differentiable Logic Gate Networks ([peterson, ..., deussen, 2022](https://arxiv.org/pdf/2210.08277.pdf))
 
 ## linear (+algebraic) models
@@ -368,9 +368,9 @@ For an implementation of many of these models, see the python [imodels package](
   - NODE-GAM: Neural Generalized Additive Model for Interpretable Deep Learning ([chang, caruana, & goldenberg, 2021](https://arxiv.org/abs/2106.01613))
     - $NODE-GA^2M$: include interaction terms by initializing with all interaction terms and backprop decides which are kept
     - uses neural oblivious trees rather than standard DNN
-    - idea dates back to [Generalized Additive Neural Networks](https://dl.acm.org/doi/pdf/10.1145/312129.312228) (potts, 1999)
+    - idea dates back to Generalized Additive Neural Networks ([potts, 1999](https://dl.acm.org/doi/pdf/10.1145/312129.312228))
   - [Sparse Neural Additive Model: Interpretable Deep Learning with Feature Selection via Group Sparsity](https://arxiv.org/abs/2202.12482)
-  - [Creating Powerful and Interpretable Models with Regression Networks](https://arxiv.org/abs/2107.14417) (2021) - generalizes neural GAM to include interaction terms
+  - Creating Powerful and Interpretable Models with Regression Networks ([2021](https://arxiv.org/abs/2107.14417)) - generalizes neural GAM to include interaction terms
     - train first-order functions
     - fix them and predict residuals with next order (and repeat for as many orders as desired)
 - Spline-based models
@@ -383,9 +383,9 @@ For an implementation of many of these models, see the python [imodels package](
   - Efficiently Training Intelligible Models for Global Explanations ([lou...dong, 2020](http://yinlou.github.io/papers/lou-cikm20.pdf)) - use subsample bagging (bags select from a subset of samples) and speed up fitting by sharing computation between bags that share points
 - misc improvements
   - Axiomatic Interpretability for Multiclass Additive Models ([zhang, tan, ... caruana, 2019](https://dl.acm.org/doi/abs/10.1145/3292500.3330898)) - extend GAM to multiclass and improve visualizations in that setting
-  - [Sparse Partially Linear Additive Models](https://www.tandfonline.com/doi/full/10.1080/10618600.2015.1089775) (lou, bien, caruana & gehrke, 2015) - some terms are linear and some use $f_i(x_i)$
-  - [Neural Basis Models for Interpretability](https://arxiv.org/abs/2205.14120) (2022)
-  - [Scalable Interpretability via Polynomials](https://arxiv.org/abs/2205.14108) (2022)
+  - Sparse Partially Linear Additive Models ([lou, bien, caruana & gehrke, 2015](https://www.tandfonline.com/doi/full/10.1080/10618600.2015.1089775)) - some terms are linear and some use $f_i(x_i)$
+  - Neural Basis Models for Interpretability ([2022](https://arxiv.org/abs/2205.14120))
+  - Scalable Interpretability via Polynomials ([2022](https://arxiv.org/abs/2205.14108))
   - How Interpretable and Trustworthy are GAMs? ([chang, tan, lengerich, goldenberg, & caruana, 2021](https://arxiv.org/abs/2006.06466)) - different GAM algorithms provide different interpretations, tree-based GAMs appear best
     - feature-sparse GAMs may perform worse on some data subsets
     - overly smooth GAMs may fail to identify sharp jumps that may be errors in data
@@ -440,7 +440,7 @@ Symbolic regression learns a symbolic expression for a function (e.g. a mathemat
 
 ## interpretable neural nets
 
-- Adaptive wavelet distillation from neural networks through interpretations ([Ha et al. 2021](https://arxiv.org/abs/2107.09145)) - distill flexible wavelet using gradient-based interpretation scores from a neural net
+- Adaptive wavelet distillation from neural networks through interpretations ([ha et al. 2021](https://arxiv.org/abs/2107.09145)) - distill flexible wavelet using gradient-based interpretation scores from a neural net
 - PINN: Physics-informed neural networks: A deep learning framework for solving forward and inverse problems involving nonlinear partial differential equations ([raissi et al. 2019](https://www.sciencedirect.com/science/article/pii/S0021999118307125)) - solve PDEs by constraining neural net to predict specific parameters / derivatives
 - Two Instances of Interpretable Neural Network for Universal Approximations ([tjoa & cuntai, 2021](https://arxiv.org/abs/2112.15026)) - each neuron responds to a training point
 - B-Cos Networks: Alignment Is All We Need for Interpretability ([bohle...schiele, 2022](https://openaccess.thecvf.com/content/CVPR2022/html/Bohle_B-Cos_Networks_Alignment_Is_All_We_Need_for_Interpretability_CVPR_2022_paper.html)) - promotes weight-input alignment during training
@@ -509,13 +509,13 @@ Symbolic regression learns a symbolic expression for a function (e.g. a mathemat
 
   - XProtoNet: Diagnosis in Chest Radiography With Global and Local Explanations ([eunji kim...yoon, 2021](https://openaccess.thecvf.com/content/CVPR2021/html/Kim_XProtoNet_Diagnosis_in_Chest_Radiography_With_Global_and_Local_Explanations_CVPR_2021_paper.html)) - alter ProtoPNet to use dynamically sized patches for prototype matching rather than fixed-size patches
   - PIP-NET ([nauta...seifert, 2023](https://arxiv.org/pdf/2307.10404.pdf)) - applying prototypes to medical image classification
-  - ProtoMIL: Multiple Instance Learning with Prototypical Parts for Fine-Grained Interpretability ([Rymarczyk et al. 2021](https://arxiv.org/abs/2108.10612))
+  - ProtoMIL: Multiple Instance Learning with Prototypical Parts for Fine-Grained Interpretability ([rymarczyk et al. 2021](https://arxiv.org/abs/2108.10612))
 
 - AutoProtoNet: Interpretability for Prototypical Networks ([sandoval-segura & lawson, 2022](https://arxiv.org/abs/2204.00929))
   - builds interpretability into Prototypical Networks by training an embedding space suitable for reconstructing inputs
   - also devise a prototype refinement method, which allows a human to debug inadequate classification parameters
 - TesNet: Interpretable Image Recognition by Constructing Transparent Embedding Space ([wang et al. 2021](https://openaccess.thecvf.com/content/ICCV2021/html/Wang_Interpretable_Image_Recognition_by_Constructing_Transparent_Embedding_Space_ICCV_2021_paper.html)) - alter ProtoPNet to get "orthogonal" basis concepts
-- ProtoPShare: Prototype Sharing for Interpretable Image Classification and Similarity Discovery ([Rymarczyk et al. 2020](https://arxiv.org/abs/2011.14340)),- share some prototypes between classes with data-dependent merge pruning
+- ProtoPShare: Prototype Sharing for Interpretable Image Classification and Similarity Discovery ([rymarczyk et al. 2020](https://arxiv.org/abs/2011.14340)),- share some prototypes between classes with data-dependent merge pruning
 
   - merge "similar" prototypes, where similarity is measured as dist of all training patches in repr. space
   - Interpretable Image Classification with Differentiable Prototypes Assignment ([rmyarczyk et al. 2021](https://arxiv.org/abs/2112.02902))
@@ -680,8 +680,8 @@ Note that in this section we also include *dataset interpretations* that work di
   - does this search via iterative rules
 - [Sufficient input subsets](https://arxiv.org/pdf/1810.03805.pdf) - seek the smallest subsets of features which produce the prediction
   - other features are masked or imputed
-- [local-gradient](http://www.jmlr.org/papers/v11/baehrens10a.html) (bahrens et al. 2010) - direction of highest slope towards a particular class / other class
-- [golden eye](https://idp.springer.com/authorize/casa?redirect_uri=https://link.springer.com/article/10.1007/s10618-014-0368-8&casa_token=AhKnW6Xx4L0AAAAA:-SEMsMjDX3_rU5gyGx6plcmF5A_ufXvsWJHzjCUIGWHGW0fqOe50yhWKYOK6UIPDHQaUwEkE3RK17XOByzo) (henelius et al. 2014) - randomize different groups of features and search for groups which interact
+- local-gradient ([bahrens et al. 2010](http://www.jmlr.org/papers/v11/baehrens10a.html)) - direction of highest slope towards a particular class / other class
+- golden eye ([henelius et al. 2014](https://idp.springer.com/authorize/casa?redirect_uri=https://link.springer.com/article/10.1007/s10618-014-0368-8&casa_token=AhKnW6Xx4L0AAAAA:-SEMsMjDX3_rU5gyGx6plcmF5A_ufXvsWJHzjCUIGWHGW0fqOe50yhWKYOK6UIPDHQaUwEkE3RK17XOByzo)) - randomize different groups of features and search for groups which interact
 - **[shapley value](http://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predicti)** - average marginal contribution of a feature value across all possible sets of feature values
   - "how much does prediction change on average when this feature is added?"
   - tells us the difference between the actual prediction and the average prediction
@@ -703,8 +703,8 @@ Note that in this section we also include *dataset interpretations* that work di
 - [probes](https://nlp.stanford.edu/~johnhew/interpreting-probes.html) - check if a representation (e.g. BERT embeddings) learned a certain property (e.g. POS tagging) by seeing if we can predict this property (maybe linearly) directly from the representation
   - problem: if the post-hoc probe is a complex model (e.g. MLP), it can accurately predict a property even if that property isn't really contained in the representation
   - potential solution: benchmark against control tasks, where we construct a new random task to predict given a representation, and see how well the post-hoc probe can do on that task
-- [Explaining individual predictions when features are dependent: More accurate approximations to Shapley values](https://arxiv.org/abs/1903.10464) (aas et al. 2019) - tries to more accurately compute conditional expectation
-- [Feature relevance quantification in explainable AI: A causal problem](https://arxiv.org/abs/1910.13413) (janzing et al. 2019) - argues we should just use unconditional expectation
+- Explaining individual predictions when features are dependent: More accurate approximations to Shapley values ([aas et al. 2019](https://arxiv.org/abs/1903.10464)) - tries to more accurately compute conditional expectation
+- Feature relevance quantification in explainable AI: A causal problem ([janzing et al. 2019](https://arxiv.org/abs/1910.13413)) - argues we should just use unconditional expectation
 - [quantitative input influence](https://ieeexplore.ieee.org/abstract/document/7546525) - similar to shap but more general
 - permutation importance - increase in the prediction error after we permuted the feature's values
   - $\mathbb E[Y] - \mathbb E[Y\vert X_{\sim i}]$
@@ -712,7 +712,7 @@ Note that in this section we also include *dataset interpretations* that work di
   instances (PDP problem)
   - not the same as model variance
   - Adding a correlated feature can decrease the importance of the associated feature
-- [L2X: information-theoretical local approximation](https://arxiv.org/pdf/1802.07814.pdf) (chen et al. 2018) - locally assign feature importance based on mutual information with function
+- L2X: information-theoretical local approximation ([chen et al. 2018](https://arxiv.org/pdf/1802.07814.pdf)) - locally assign feature importance based on mutual information with function
 - [Learning Explainable Models Using Attribution Priors + Expected Gradients](https://arxiv.org/abs/1906.10670) - like doing integrated gradients in many directions (e.g. by using other points in the training batch as the baseline)
   - can use this prior to help improve performance
 - [Interpreting Black Box Models via Hypothesis Testing](https://arxiv.org/abs/1904.00045)
@@ -860,7 +860,7 @@ Note that in this section we also include *dataset interpretations* that work di
     4. Understanding Deep Image Representations by Inverting Them ([mahendran & vedaldi 2014](https://arxiv.org/abs/1412.0035) ) - generate image given representation
     5. [pruning for identifying critical data routing paths](https://openaccess.thecvf.com/content_cvpr_2018/html/Wang_Interpret_Neural_Networks_CVPR_2018_paper.html) - prune net (while preserving prediction) to identify neurons which result in critical paths
 - penalizing activations
-  - [interpretable cnns](http://openaccess.thecvf.com/content_cvpr_2018/CameraReady/0490.pdf) (zhang et al. 2018) - penalize activations to make filters slightly more intepretable
+  - interpretable cnns ([zhang et al. 2018](http://openaccess.thecvf.com/content_cvpr_2018/CameraReady/0490.pdf)) - penalize activations to make filters slightly more intepretable
     - could also just use specific filters for specific classes...
   - teaching compositionality to cnns - mask features by objects
 - approaches based on maximal activation
@@ -882,16 +882,16 @@ Note that in this section we also include *dataset interpretations* that work di
   - saliency maps for each image / class
     - simonyan et al 2014
   - [Diagnostic Visualization for Deep Neural Networks Using Stochastic Gradient Langevin Dynamics](https://arxiv.org/pdf/1812.04604.pdf) - sample deep dream images generated by gan
-- [Zoom In: An Introduction to Circuits](https://distill.pub/2020/circuits/zoom-in/) (olah et al. 2020)
+- Zoom In: An Introduction to Circuits ([olah et al. 2020](https://distill.pub/2020/circuits/zoom-in/))
   - study of inceptionV1 (GoogLeNet)
   - some interesting neuron clusters: curve detectors, high-low freq detectors (useful for finding background)
-- [an overview of early vision](https://distill.pub/2020/circuits/early-vision/#group_conv2d1_complex_gabor) (olah et al. 2020)
+- an overview of early vision ([olah et al. 2020](https://distill.pub/2020/circuits/early-vision/#group_conv2d1_complex_gabor))
   - many groups
     - conv2d0: gabor, color-contrast, other
     - conv2d1: low-freq, gabor-like, color contrast, multicolor, complex gabor, color, hatch, other
     - conv2d2: color contrast, line, shifted line, textures, other, color center-surround, tiny curves, etc.
-- [curve-detectors](https://distill.pub/2020/circuits/curve-detectors/#visualizing-attribution) (cammarata et al. 2020)
-- [curve-circuits](https://distill.pub/2020/circuits/curve-circuits/) (cammarata et al. 2021)
+- curve-detectors ([cammarata et al. 2020](https://distill.pub/2020/circuits/curve-detectors/#visualizing-attribution))
+- curve-circuits ([cammarata et al. 2021](https://distill.pub/2020/circuits/curve-circuits/))
   - engineering curve circuit from scratch
   - ![](../assets/curves.png)
 - [posthoc prototypes](https://openreview.net/forum?id=r1xyx3R9tQ)
@@ -907,7 +907,7 @@ Note that in this section we also include *dataset interpretations* that work di
     - criticism = data instances that is not well represented by the set of prototypes
     - examples: k-medoids or MMD-critic
       - selects prototypes that minimize the discrepancy between the data + prototype distributions
-- [Architecture Disentanglement for Deep Neural Networks](https://arxiv.org/abs/2003.13268) (hu et al. 2021) - "NAD learns to disentangle a pre-trained DNN into sub-architectures according to independent tasks"
+- Architecture Disentanglement for Deep Neural Networks ([hu et al. 2021](https://arxiv.org/abs/2003.13268)) - "NAD learns to disentangle a pre-trained DNN into sub-architectures according to independent tasks"
 - [Explaining Deep Learning Models with Constrained Adversarial Examples](https://arxiv.org/abs/1906.10671)
 - [Understanding Deep Architectures by Visual Summaries](http://bmvc2018.org/papers/0794.pdf)
 - [Semantics for Global and Local Interpretation of Deep Neural Networks](https://arxiv.org/abs/1910.09085)
@@ -925,7 +925,7 @@ Note that in this section we also include *dataset interpretations* that work di
   - Discover and Cure: Concept-aware Mitigation of Spurious Correlation ([wu...zou, 2023](https://www.semanticscholar.org/reader/6f0d9e2aa3f40aee571c7e35958598d4f82cdab5))
 - Concept Gradient: Concept-based Interpretation Without Linear Assumption ([bai...ravikumar..hsieh, 2022](https://arxiv.org/pdf/2208.14966.pdf))
 - [On Completeness-aware Concept-Based Explanations in Deep Neural Networks](https://arxiv.org/abs/1910.07969)
-- [Interpretable Basis Decomposition for Visual Explanation](https://openaccess.thecvf.com/content_ECCV_2018/html/Antonio_Torralba_Interpretable_Basis_Decomposition_ECCV_2018_paper.html) (zhou et al. 2018) - decompose activations of the input image into semantically interpretable components pre-trained from a large concept corpus
+- Interpretable Basis Decomposition for Visual Explanation ([zhou et al. 2018](https://openaccess.thecvf.com/content_ECCV_2018/html/Antonio_Torralba_Interpretable_Basis_Decomposition_ECCV_2018_paper.html)) - decompose activations of the input image into semantically interpretable components pre-trained from a large concept corpus
 
 ### dnn causal-motivated attribution
 
@@ -938,14 +938,14 @@ Note that in this section we also include *dataset interpretations* that work di
   - given a model's predictions $\hat Y$ and some potential causes $Z$, learn a PAGE among them all
     - assume $\hat Y$ is a causal non-ancestor of $Z$ (there is no directed path from $\hat Y$ into any element of $Z$)
     - search for a PAG and not DAG bc $Z$ might not include all possibly relevant variables
-- Neural Network Attributions: A Causal Perspective ([Chattopadhyay et al. 2019](http://proceedings.mlr.press/v97/chattopadhyay19a.html))
+- Neural Network Attributions: A Causal Perspective ([chattopadhyay et al. 2019](http://proceedings.mlr.press/v97/chattopadhyay19a.html))
   - the neural network architecture is viewed as a Structural Causal Model, and a methodology to compute the causal effect of each feature on the output is presented
 - CXPlain: Causal Explanations for Model Interpretation under Uncertainty ([schwab & karlen, 2019](https://arxiv.org/abs/1910.12336))
   - model-agnostic - efficiently query model to figure out which inputs are most important
   - pixel-level attributions
 - Amnesic Probing: Behavioral Explanation with Amnesic Counterfactuals ([elezar...goldberg, 2020](https://arxiv.org/abs/2006.00995))
   - instead of simple probing, generate counterfactuals in representations and see how final prediction changes
-    - remove a property (e.g. part of speech) from the repr. at a layer using Iterative Nullspace Projection (INLP) ([Ravfogel et al., 2020](https://arxiv.org/abs/2004.07667))
+    - remove a property (e.g. part of speech) from the repr. at a layer using Iterative Nullspace Projection (INLP) ([ravfogel et al., 2020](https://arxiv.org/abs/2004.07667))
       - iteratively tries to predict the property linearly, then removes these directions
 - Bayesian Interpolants as Explanations for Neural Inferences ([mcmillan 20](https://arxiv.org/abs/2004.04198))
   - if $A \implies B$, *interpolant* $I$ satisfies $A\implies I$, $I \implies B$ and $I$ expressed only using variables common to $A$ and $B$
@@ -1326,7 +1326,7 @@ These papers don't quite connect to prediction, but are generally about finding 
   - **rashomon ratio** - ratio of the volume of the set of accurate models to the volume of the hypothesis space
     - can use this to perform model selection over different hypothesis spaces using empirical risk v. rashomon ratio (*rashomon curve*)
   - **pattern Rashomon ratio** - considers unique predictions on the data (called “patterns”) rather than the count of functions themselves.
-- Underspecification Presents Challenges for Credibility in Modern Machine Learning ([D’Amour et al. 2020](https://arxiv.org/pdf/2011.03395.pdf))
+- Underspecification Presents Challenges for Credibility in Modern Machine Learning ([d’amour et al. 2020](https://arxiv.org/pdf/2011.03395.pdf))
   - different models can achieve the same validation accuracy but perform differently wrt different data perturbations
   - shortcuts = spurious correlations cause failure because of ambiguity in the data
   - *stress tests* probe a broader set of requirements

@@ -1,10 +1,37 @@
-<h2 align="center" style="margin-top: -150px;"> Resources + posts </h2>
+<h2 class="section-title">Resources + posts</h2>
 
 <!--{% comment %}-->
 <!--{% include 02__carousel.html %}-->
 <!--{% endcomment %}-->
 
-{% include 02__gallery.html %}
+<!-- gallery -->
+<div class="gallery-row">
+    <div class="gallery">
+        <div class="desc">imodels Python package</div>
+        <a target="_blank" href="https://github.com/csinva/imodels">
+            <img src="{{ site.baseurl }}/assets/img/imodels_ovw.jpg">
+        </a>
+    </div>
+
+    <div class="gallery">
+        <div class="desc">Berkeley intro-ML slides</div>
+        <a target="_blank" href="https://csinva.io/pres/189/#/">
+            <img src="{{ site.baseurl }}/assets/img/pres_demo.gif" style="filter: invert(); object-position: center">
+        </a>
+    </div>
+    <div class="gallery">
+        <div class="desc">ML-AI comprehensive guide</div>
+        <a target="_blank" href="https://csinva.io/blog/compiled_notes/_build/html//intro.html">
+            <img src="{{ site.baseurl }}/assets/img/jupyterbook.jpg" style="filter: invert()">
+        </a>
+    </div>
+    <div class="gallery">
+        <div class="desc">Interpretability cheat sheet</div>
+        <a target="_blank" href="{{ site.baseurl }}/notes/research_ovws/ovw_interp.html">
+            <img src="{{ site.baseurl }}/assets/img/interp_small.jpg" style="filter: invert()">
+        </a>
+    </div>
+</div>
 
 </br>
 </br>
@@ -24,7 +51,7 @@
         {% assign doc_disp = doc.title | capitalize | replace: 'Llms','LLMs' | replace: 'Ai ','AI ' | replace: 'Cs ','CS ' | replace: 'Dl ','DL ' | replace: 'Ml ','ML ' | replace: 'Nlp','NLP' | replace: 'Os','OS' | replace: 'sts','STS' | replace: 'Rl,','RL,' %}
         <!-- bold if title is transformers or interpretability-->
         {% if doc.title == "llms" or doc.title == "interpretability" or doc.title == "embeddings"%}
-        <li><a href="{{ site.baseurl }}{{doc.url}}" style="font-size:medium; font-weight: bolder;"> {{ doc_disp }} ⭐ </a></li>
+        <li><a href="{{ site.baseurl }}{{doc.url}}" style="font-size:medium; font-weight: bolder;"> {{ doc_disp }} <span class="feat" title="Featured">★</span> </a></li>
         {% else %}
         <li><a href="{{ site.baseurl }}{{doc.url}}" style="font-size:medium"> {{ doc_disp }} </a></li>
         {% endif %}
@@ -36,14 +63,16 @@
 
 <div class="coll3">
     <h3 align="center">AI posts</h3>
-    <ul class="list-items">
+    <ul class="list-items collapsible-list" id="ai-posts">
         <li>
             <a href="https://csinva.io/imodels/blog.html"
                 style="font-size:medium; font-weight: bolder;"> Autoresearching interpretable models
-            </a> '26 ⭐
+            </a> '26 <span class="feat" title="Featured">★</span>
+        </li>
+        <li>
             <a href="{{ site.baseurl }}/blog/research/26_approximate_nearest_neighbor"
                 style="font-size:medium; font-weight: bolder;"> Vector search
-            </a> '26 ⭐
+            </a> '26 <span class="feat" title="Featured">★</span>
         </li>
         <li>
             <a href="https://yufanzhuang.notion.site/knowledge-flow" style="font-size:medium"> Knowledge flow
@@ -57,7 +86,7 @@
             <a href="https://microsoft.github.io/automated-brain-explanations/"
                 style="font-size:medium; font-weight: bolder;"> Automated brain
                 explanations
-            </a> '25 ⭐
+            </a> '25 <span class="feat" title="Featured">★</span>
         </li>
         <li>
             <a href="{{ site.baseurl }}/blog/misc/25_data_science_benchmarks" style="font-size:medium"> Data science
@@ -67,7 +96,7 @@
         <li>
             <a href="{{ site.baseurl }}/blog/research/23_data_explanation"
                 style="font-size:medium; font-weight: bolder;"> Interpretable text models (with LLMs)
-            </a> '24 ⭐
+            </a> '24 <span class="feat" title="Featured">★</span>
         </li>
         <li>
             <a href="{{ site.baseurl }}/blog/misc/24_tensor_product_repr" style="font-size:medium"> Tensor product
@@ -80,13 +109,13 @@
         <li><a href="https://csinva.github.io/gpt-paper-title-generator" style="font-size:medium"> Forecasting paper
                 titles </a> '22
         </li>
-        <li><a href="https://bair.berkeley.edu/blog/2022/06/30/figs/" style="font-size:medium"> FIGS </a>(bairblog) '22
+        <li><a href="https://bair.berkeley.edu/blog/2022/06/30/figs/" style="font-size:medium"> FIGS </a>(bairblog) '22</li>
         <li><a href="https://bair.berkeley.edu/blog/2022/02/02/imodels/" style="font-size:medium; font-weight: bolder;">
                 imodels
             </a>(bairblog)
-            '22 ⭐
+            '22 <span class="feat" title="Featured">★</span></li>
         <li><a href="https://bair.berkeley.edu/blog/2021/09/28/wavelet/" style="font-size:medium"> Adaptive wavelet
-                distillation </a>(bairblog) '21
+                distillation </a>(bairblog) '21</li>
         <li><a href="{{ site.baseurl }}/blog/misc/20_ml_coding_tips" style="font-size:medium"> ML coding tips </a>'20
         </li>
         <li><a href="{{ site.baseurl }}/blog/misc/20_attributions" style="font-size:medium"> Quick intro to attribution
@@ -116,6 +145,31 @@
                 quickstart </a>'18
         </li>
     </ul>
+    <button type="button" class="list-toggle" data-target="ai-posts" data-visible="14" hidden>
+        <span class="list-toggle-dots">···</span>
+        <span class="list-toggle-label"></span>
+        <span class="list-toggle-chevron" aria-hidden="true"></span>
+    </button>
+    <script>
+        // collapse long lists after data-visible items; without JS the full list shows
+        document.querySelectorAll('.list-toggle').forEach(function (btn) {
+            var list = document.getElementById(btn.dataset.target);
+            var visible = +btn.dataset.visible;
+            var items = list.querySelectorAll(':scope > li');
+            if (items.length <= visible) return;
+            var label = btn.querySelector('.list-toggle-label');
+            items.forEach(function (li, i) { if (i >= visible) li.classList.add('list-extra'); });
+            function render(open) {
+                list.classList.toggle('is-collapsed', !open);
+                btn.classList.toggle('is-open', open);
+                btn.setAttribute('aria-expanded', open);
+                label.textContent = open ? 'Show less' : (items.length - visible) + ' more';
+            }
+            btn.addEventListener('click', function () { render(!btn.classList.contains('is-open')); });
+            render(false);
+            btn.hidden = false;
+        });
+    </script>
 </div>
 
 <div class="coll3">
@@ -125,14 +179,14 @@
         <!-- style="font-size:medium"> converting fMRI models into verbal theories </a> '24 -->
         <!-- </li> -->
         <li><a href="https://docs.google.com/presentation/d/1UK5neDH6qDq1IDjRDtbLLIpVchzmSwRx8-FeIbJu4Yo/"
-                style="font-size:medium; font-weight: bolder;"> Rethinking interpretability </a> '25 ⭐</li>
+                style="font-size:medium; font-weight: bolder;"> Rethinking interpretability </a> '25 <span class="feat" title="Featured">★</span></li>
         <li><a href="https://docs.google.com/presentation/d/1bFZZ8-OwwNxN3DjPdyPFKuP16yyYTP9DlaTzKOaYVWI/"
-                style="font-size:medium; font-weight: bolder;"> Automated brain explanations </a> '24 ⭐</li>
+                style="font-size:medium; font-weight: bolder;"> Automated brain explanations </a> '24 <span class="feat" title="Featured">★</span></li>
         <li><a href="https://docs.google.com/presentation/d/1m6nnDgSUYhzfkJBXrf7EMdvP3nonYYTAofptKKI6dLg/"
                 style="font-size:medium"> Explanations from text data </a> '23</li>
         <li><a href="{{ site.baseurl }}/pres/189/" style="font-size:medium; font-weight: bolder;"> Intro ML
             </a>(<a href="https://github.com/csinva/csinva.github.io/blob/master/pres/189/_slides_ml.md"><i
-                    class="fa fa-github fa-fw"></i></a>) UC Berkeley CS 189 ⭐
+                    class="fa fa-github fa-fw"></i></a>) UC Berkeley CS 189 <span class="feat" title="Featured">★</span>
         </li>
         <li><a href="https://docs.google.com/presentation/d/1PnsRaykeXovIU45lu029LOdPSeEWwbJwNcBujP7YWAM/"
                 style="font-size:medium;"> LLM interpretability / data science overview </a> '25
@@ -253,7 +307,7 @@
 <div class="coll3">
     <h3 align="center">Misc</h3>
     <ul class="list-items">
-        <li><b><a href="https://csinva.io/deep-dive/" style="font-size:medium"> Data deepdives </a> ⭐</b></li>
+        <li><b><a href="https://csinva.io/deep-dive/" style="font-size:medium"> Data deepdives </a> <span class="feat" title="Featured">★</span></b></li>
         <li><a href="https://github.com/csinva/mini-games-java" style="font-size:medium"> Mini-games in Java </a></li>
         <li><a href="http://csinva.io/news-title-bias/app/" style="font-size:medium"> News bias comparisons </a></li>
         <li><a href="https://github.com/csinva/acronym-generator" style="font-size:medium"> Generating paper

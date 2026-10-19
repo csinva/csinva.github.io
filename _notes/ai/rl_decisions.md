@@ -318,7 +318,7 @@ typora-copy-images-to: ../assets
   - we can query observations when deviate slightly from expert trajectory
 - goal-conditioned behavioral cloning - subdivides data based on different goals - learn $\pi_\theta(a|s, g)$
   - example - given a goal location, take actions to move a robot there
-- [Learning to Reach Goals via Iterated Supervised Learning](https://arxiv.org/abs/1912.06088) (ghosh ... levine, 2020)
+- Learning to Reach Goals via Iterated Supervised Learning ([ghosh ... levine, 2020](https://arxiv.org/abs/1912.06088))
   - move robot arm based on policy (initially random)
   - see which random goals are met
   - use this as goal-conditioned behavioral cloning
@@ -368,13 +368,13 @@ Inverse RL - learning reward functions from example
 - ai should be uncertain about utitilies
 - utilties should be inferred from human preferences
 - in systems that interact, need to express preferences in terms of game theory
-- can solve it with a GAN: e.g. [A Connection between Generative Adversarial Networks, Inverse Reinforcement Learning, and Energy-Based Models](https://arxiv.org/abs/1611.03852) (finn et al. 2016)
-- [Apprenticeship learning via inverse reinforcement learning | Proceedings of the twenty-first international conference on Machine learning](https://dl.acm.org/doi/abs/10.1145/1015330.1015430?casa_token=inLo77c-zqAAAAAA:JirDplyZ_94a7A0WXavY3V5napVOxdJ5Qjkzin02K4bapip6D5bQNuPAefmkYeYAb9OSVyqkEKRcCJs) (abbeel & ng, 2004) - good intro to inverse RL
+- can solve it with a GAN: e.g. A Connection between Generative Adversarial Networks, Inverse Reinforcement Learning, and Energy-Based Models ([finn et al. 2016](https://arxiv.org/abs/1611.03852))
+- Apprenticeship learning via inverse reinforcement learning | Proceedings of the twenty-first international conference on Machine learning ([abbeel & ng, 2004](https://dl.acm.org/doi/abs/10.1145/1015330.1015430?casa_token=inLo77c-zqAAAAAA:JirDplyZ_94a7A0WXavY3V5napVOxdJ5Qjkzin02K4bapip6D5bQNuPAefmkYeYAb9OSVyqkEKRcCJs)) - good intro to inverse RL
 
 ### planning
 
-- [Efficient Learning in Cellular Simultaneous Recurrent Neural Networks - The Case of Maze Navigation Problem](https://ieeexplore.ieee.org/abstract/document/4220851?casa_token=Nw_d05ju8VcAAAAA:iXvxp_PDrMHtsoIk1_g2CnPPGFdMZcu_PqcyeyFUXsGrQWoQFRz8JvRmzjgofdwlQKYdsfpvK-g) (ilin et al. 2007) - explored connections between planning algorithms and recurrent NNs
-- [Value Iteration Networks](https://arxiv.org/abs/1602.02867) (tamar...levine, & abbeel, 2017)
+- Efficient Learning in Cellular Simultaneous Recurrent Neural Networks - The Case of Maze Navigation Problem ([ilin et al. 2007](https://ieeexplore.ieee.org/abstract/document/4220851?casa_token=Nw_d05ju8VcAAAAA:iXvxp_PDrMHtsoIk1_g2CnPPGFdMZcu_PqcyeyFUXsGrQWoQFRz8JvRmzjgofdwlQKYdsfpvK-g)) - explored connections between planning algorithms and recurrent NNs
+- Value Iteration Networks ([tamar...levine, & abbeel, 2017](https://arxiv.org/abs/1602.02867))
   - represent value iteration as a fully differentiable DNN using recurrence
 
 ### metalearning
@@ -383,7 +383,7 @@ Inverse RL - learning reward functions from example
   - e.g. learn optimizer, representation
   - e.g. learn how to explore
   - e.g. learn how to do RL for various different walking tasks and then generalize to new walking task with few samples
-  - [Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks](https://proceedings.mlr.press/v70/finn17a.html) (finn, levine, & abbeel, 2017) - treat metalearner itself as an RL algorithm
+  - Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks ([finn, levine, & abbeel, 2017](https://proceedings.mlr.press/v70/finn17a.html)) - treat metalearner itself as an RL algorithm
 - multitask learning
   - sometimes have the ability to decide which new tasks to add (e.g. by changing simulator)
 
@@ -391,7 +391,7 @@ Inverse RL - learning reward functions from example
 
 - core issue with offline RL: want policy that improves over the training policy, but can’t deviate from the training policy due to distr. shift
 - one idea: instead of collecting new samples with policy, reweight samples using importance sampling based on policy
-- [IQL: Implicit Q-learning](https://arxiv.org/abs/2110.06169) (ashvin’s paper, 2021)
+- IQL: Implicit Q-learning ([ashvin’s paper, 2021](https://arxiv.org/abs/2110.06169))
   - IQL - foregoes need to evaluate unseen actions
 
 # RL for LLMs

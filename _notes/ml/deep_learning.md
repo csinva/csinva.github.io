@@ -165,7 +165,7 @@ See also notes in [📌 unsupervised learning](https://csinva.io/notes/ml/unsupe
 - [Theoretical Foundations of Graph Neural Networks](https://www.youtube.com/watch?v=uF53xsT7mjc)
   - inputs are graphs
   - e.g. molecule input to classification
-    - one big study: [a deep learning appraoch to antibiotic discovery](https://www.sciencedirect.com/science/article/pii/S0092867420301021) (stokes et al. 2020) - using GNN classification of antibiotic resistance, came up with 100 candidate antibiotics and were able to test them
+    - one big study: a deep learning appraoch to antibiotic discovery ([stokes et al. 2020](https://www.sciencedirect.com/science/article/pii/S0092867420301021)) - using GNN classification of antibiotic resistance, came up with 100 candidate antibiotics and were able to test them
   - e.g. traffic maps - nodes are intersections
   - invariances in CNNs: translational, neighbor pixels relate a lot more
   - simplest setup: no edges, each node $i$ has a feature vector $x_i$ (really a set not a graph)
@@ -210,37 +210,37 @@ See also notes in [📌 unsupervised learning](https://csinva.io/notes/ml/unsupe
 
 ## top-down feedback
 
-- [Look and Think Twice: Capturing Top-Down Visual Attention With Feedback Convolutional Neural Networks](https://openaccess.thecvf.com/content_iccv_2015/html/Cao_Look_and_Think_ICCV_2015_paper.html) (2015)
+- Look and Think Twice: Capturing Top-Down Visual Attention With Feedback Convolutional Neural Networks ([2015](https://openaccess.thecvf.com/content_iccv_2015/html/Cao_Look_and_Think_ICCV_2015_paper.html))
     - neurons in the feedback hidden layers update their activation status to maximize the confidence output of the target top neuron
-- [Top-Down Neural Attention by Excitation Backprop | SpringerLink](https://link.springer.com/article/10.1007/s11263-017-1059-x) (2017)
+- Top-Down Neural Attention by Excitation Backprop | SpringerLink ([2017](https://link.springer.com/article/10.1007/s11263-017-1059-x))
     - top-down attention maps by extending winner-take-all (WTA) to probabilistic maps
-    - [Modeling visual attention via selective tuning - ScienceDirect](https://www.sciencedirect.com/science/article/pii/0004370295000259) (1995)
+    - Modeling visual attention via selective tuning - ScienceDirect ([1995](https://www.sciencedirect.com/science/article/pii/0004370295000259))
         - original WTA paper provides only binary maps
-- [Bottom-Up and Top-Down Reasoning with Hierarchical Rectified Gaussians](https://arxiv.org/abs/1507.05699) (2016)
-- [Beyond Skip Connections: Top-Down Modulation for Object Detection](https://arxiv.org/abs/1612.06851) (shrivastava…malik, gupta, 2017)
-- [Learning to Combine Top-Down and Bottom-Up Signals in Recurrent Neural Networks with Attention over Modules](http://proceedings.mlr.press/v119/mittal20a.html) (mittal…bengio, 2020)
+- Bottom-Up and Top-Down Reasoning with Hierarchical Rectified Gaussians ([2016](https://arxiv.org/abs/1507.05699))
+- Beyond Skip Connections: Top-Down Modulation for Object Detection ([shrivastava…malik, gupta, 2017](https://arxiv.org/abs/1612.06851))
+- Learning to Combine Top-Down and Bottom-Up Signals in Recurrent Neural Networks with Attention over Modules ([mittal…bengio, 2020](http://proceedings.mlr.press/v119/mittal20a.html))
     - Very similar — each layer passes attention (1) to next layer (2) to itself (3) to previous layer
-    - [Fast and Slow Learning of Recurrent Independent Mechanisms](https://arxiv.org/abs/2105.08710) (madan…bengio, 2021)
-    - [Inductive Biases for Deep Learning of Higher-Level Cognition](https://arxiv.org/abs/2011.15091) (goyal & bengio, 2021)
-- [Neural Networks with Recurrent Generative Feedback](https://proceedings.neurips.cc/paper/2020/hash/0660895c22f8a14eb039bfb9beb0778f-Abstract.html) (huang…tsao, anandkumar, 2020)
+    - Fast and Slow Learning of Recurrent Independent Mechanisms ([madan…bengio, 2021](https://arxiv.org/abs/2105.08710))
+    - Inductive Biases for Deep Learning of Higher-Level Cognition ([goyal & bengio, 2021](https://arxiv.org/abs/2011.15091))
+- Neural Networks with Recurrent Generative Feedback ([huang…tsao, anandkumar, 2020](https://proceedings.neurips.cc/paper/2020/hash/0660895c22f8a14eb039bfb9beb0778f-Abstract.html))
     - [Deconvolutional Generative Model](https://arxiv.org/abs/1811.02657) DGM - hierarchical latent variables capture variation in images + generate images from a coarse to fine detail using deconvolution operations
-- [A generative vision model that trains with high data efficiency and breaks text-based CAPTCHAs](https://www.science.org/doi/full/10.1126/science.aag2612?casa_token=dXK8WGm0t04AAAAA%3ArHcvkJAn4ornLgAxVmjXS_NbVTW7HSvyJVTFuJVgYmq7LYD39noT5W0l-34piGa9R-sFC37wuEF5u1jb) (vicarious, 2016)
+- A generative vision model that trains with high data efficiency and breaks text-based CAPTCHAs ([vicarious, 2016](https://www.science.org/doi/full/10.1126/science.aag2612?casa_token=dXK8WGm0t04AAAAA%3ArHcvkJAn4ornLgAxVmjXS_NbVTW7HSvyJVTFuJVgYmq7LYD39noT5W0l-34piGa9R-sFC37wuEF5u1jb))
     - bayesian model + crf on latents breaks captchas
-- [Combining Top-Down and Bottom-Up Segmentation](https://www.msri.org/people/members/eranb/Combining_td_and_bu.pdf) (2008) (pre-DNNs)
+- Combining Top-Down and Bottom-Up Segmentation ([2008](https://www.msri.org/people/members/eranb/Combining_td_and_bu.pdf)) (pre-DNNs)
     - Bottom-up segmentation: group chunks of image into ever-larger regions based on e.g. texture similarity
     - Top-down segmentation: find object boundaries based on label info
-- [Perceiver: General Perception with Iterative Attention](https://arxiv.org/abs/2103.03206) (2021)
-- [Integration of top-down and bottom-up visual processing using a recurrent convolutional–deconvolutional neural network for semantic segmentation](https://link.springer.com/article/10.1007/s11370-019-00296-5) (2019)
+- Perceiver: General Perception with Iterative Attention ([2021](https://arxiv.org/abs/2103.03206))
+- Integration of top-down and bottom-up visual processing using a recurrent convolutional–deconvolutional neural network for semantic segmentation ([2019](https://link.springer.com/article/10.1007/s11370-019-00296-5))
     - Very similar to our idea - they have deconvolved feedback to earlier layers
     - Architecture’s weird, tho - feedback only goes back a few layers
     - Extremely applied - their result is “we beat SOTA by 3%”
-- [Attentional Neural Network: Feature Selection Using Cognitive Feedback](https://proceedings.neurips.cc/paper/2014/file/1e6e0a04d20f50967c64dac2d639a577-Paper.pdf) (2014)
-- [Efficient Learning of Deep Boltzmann Machines](http://proceedings.mlr.press/v9/salakhutdinov10a/salakhutdinov10a.pdf) (2010)
+- Attentional Neural Network: Feature Selection Using Cognitive Feedback ([2014](https://proceedings.neurips.cc/paper/2014/file/1e6e0a04d20f50967c64dac2d639a577-Paper.pdf))
+- Efficient Learning of Deep Boltzmann Machines ([2010](http://proceedings.mlr.press/v9/salakhutdinov10a/salakhutdinov10a.pdf))
 
 # neural architecture search (NAS)
 
-- [One Network Doesn't Rule Them All: Moving Beyond Handcrafted Architectures in Self-Supervised Learning](https://arxiv.org/abs/2203.08130) (girish, dey et al. 2022) - use NAS for self-supervised setting rather than supervised
-- [A Deeper Look at Zero-Cost Proxies for Lightweight NAS · The ICLR Blog Track](https://iclr-blog-track.github.io/2022/03/25/zero-cost-proxies/) (white...bubeck, dey, 2022)
+- One Network Doesn't Rule Them All: Moving Beyond Handcrafted Architectures in Self-Supervised Learning ([girish, dey et al. 2022](https://arxiv.org/abs/2203.08130)) - use NAS for self-supervised setting rather than supervised
+- A Deeper Look at Zero-Cost Proxies for Lightweight NAS · The ICLR Blog Track ([white...bubeck, dey, 2022](https://iclr-blog-track.github.io/2022/03/25/zero-cost-proxies/))
   - tl;dr A single minibatch of data is used to score neural networks for NAS instead of performing full training.
 
 # misc

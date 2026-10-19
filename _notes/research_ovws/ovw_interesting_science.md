@@ -23,17 +23,17 @@ typora-copy-images-to: ../assets
 - [BOIDS](https://en.wikipedia.org/wiki/Boids): cool simple algorithm for emergent behavior
 - [Image Synthesis with a Single (Robust) Classifier](https://papers.nips.cc/paper/8409-image-synthesis-with-a-single-robust-classifier.pdf)
 - [Shrew skulls shrink for winter survival](https://www.nature.com/news/shrew-skulls-shrink-for-winter-survival-1.22874)
-- [Performance-optimized hierarchical models predict neural responses in higher visual cortex](https://www.pnas.org/content/111/23/8619) (yamins et al. 2014)
-- [Natural speech reveals the semantic maps that tile human cerebral cortex](https://www.nature.com/articles/nature17637) (huth et al. 2016)
-- [A Mathematical Theory of Communication](https://onlinelibrary.wiley.com/doi/10.1002/j.1538-7305.1948.tb01338.x) (shannon 1948)
+- Performance-optimized hierarchical models predict neural responses in higher visual cortex ([yamins et al. 2014](https://www.pnas.org/content/111/23/8619))
+- Natural speech reveals the semantic maps that tile human cerebral cortex ([huth et al. 2016](https://www.nature.com/articles/nature17637))
+- A Mathematical Theory of Communication ([shannon 1948](https://onlinelibrary.wiley.com/doi/10.1002/j.1538-7305.1948.tb01338.x))
 - [hopfield networks](https://en.wikipedia.org/wiki/Hopfield_network)
 - benjamini-hoffberg - controlling decision rate
 - infogan chen et. al 16
 - visual deep reps ganguli 19
 - rulefit friedman & popescu 19
-- [Approximating CNNs with Bag-of-local-Features models works surprisingly well on ImageNet](https://arxiv.org/abs/1904.00760) (brendel & bethge 2019)
+- Approximating CNNs with Bag-of-local-Features models works surprisingly well on ImageNet ([brendel & bethge 2019](https://arxiv.org/abs/1904.00760))
 - [statistical learning by 8-month-old infants 1996](http://science.sciencemag.org/content/274/5294/1926)
-- [Unpaired Image-To-Image Translation Using Cycle-Consistent Adversarial Networks](http://openaccess.thecvf.com/content_iccv_2017/html/Zhu_Unpaired_Image-To-Image_Translation_ICCV_2017_paper.html) (zhu et al. 2017)
+- Unpaired Image-To-Image Translation Using Cycle-Consistent Adversarial Networks ([zhu et al. 2017](http://openaccess.thecvf.com/content_iccv_2017/html/Zhu_Unpaired_Image-To-Image_Translation_ICCV_2017_paper.html))
 - [cyclegan 17](http://openaccess.thecvf.com/content_iccv_2017/html/Zhu_Unpaired_Image-To-Image_Translation_ICCV_2017_paper.html)
 - [oregan 01 vision philosophy](https://www.cambridge.org/core/journals/behavioral-and-brain-sciences/article/sensorimotor-account-of-vision-and-visual-consciousness/BA1638CB7389102A12B336CE687EC270)
 - [The Association Between Income and Life Expectancy in the United States, 2001-2014](https://jamanetwork.com/journals/jama/article-abstract/2513561)

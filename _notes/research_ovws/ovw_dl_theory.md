@@ -43,7 +43,7 @@ some more concrete questions:
 - composition allows an approximation of a function through level sets (split it up and approximate on these sets) - Zuowei Shen ([talk](http://www.ipam.ucla.edu/programs/workshops/workshop-iii-geometry-of-big-data/?tab=schedule), [slides](../../../drive/papers/dl_theory/shen_19_composition_dl_slides.pdf)) 
   - composition operation allows an approximation of a function f through level sets of f --
   - one divides up the range of f into equal intervals and approximate the functions on these sets 
-  - [nonlinear approximation via compositions](https://arxiv.org/pdf/1902.10170.pdf) (shen 2019)
+  - nonlinear approximation via compositions ([shen 2019](https://arxiv.org/pdf/1902.10170.pdf))
 - how do the weights in each layer help this approximation to be more effective?
   - here are some thoughts -- If other layers are like the first layer, the weights "whiten" or make the inputs more independent or random projections -- that is basically finding PC directions for low-rank inputs. 
   - are the outputs from later layers more or less low - rank?
@@ -77,7 +77,7 @@ some more concrete questions:
     - infinite width relu net 1-d input
     - weight decay minimization minimizes derivative of TV
 - [implicit bias towards simpler models](https://arxiv.org/abs/1805.08522)
-- [How do infinite width bounded norm networks look in function space?](https://arxiv.org/pdf/1902.05040.pdf) (savarese...srebro 2019)
+- How do infinite width bounded norm networks look in function space? ([savarese...srebro 2019](https://arxiv.org/pdf/1902.05040.pdf))
   - minimal norm fit for a sample is given by a linear spline interpolation (2 layer net)
 - [analytic theory of generalization + transfer (ganguli 19)](https://arxiv.org/abs/1809.10374)
   - deep linear nets learn important structure of the data first (less noisy eigenvectors)
@@ -104,11 +104,11 @@ some more concrete questions:
 - [rl agents learn some crazy things](https://arxiv.org/pdf/1803.03453.pdf)
   
   - [itemized list](https://docs.google.com/spreadsheets/u/1/d/e/2PACX-1vRPiprOaC3HsCf5Tuum8bRfzYUiKLRqJmbOoC-32JorNdfyTiRRsR7Ea5eWtvsWzuxo8bjOxCG84dAg/pubhtml)
-- [Emergence of Invariance and Disentanglement in Deep Representations](https://arxiv.org/abs/1706.01350) (achille & soatto 2018)
+- Emergence of Invariance and Disentanglement in Deep Representations ([achille & soatto 2018](https://arxiv.org/abs/1706.01350))
   -  information in the weights as a measure of complexity of a learned model (information complexity)
   - IB Lagrangian between the **weights of a network and the training data**, as opposed to the traditional one between the **activations and the test datum**
   - explains tradeoff between over/underfitting
-- [On Dropout, Overfitting, and Interaction Effects in Deep Neural Networks](https://arxiv.org/abs/2007.00823) (lengerich..caruana, 2020)
+- On Dropout, Overfitting, and Interaction Effects in Deep Neural Networks ([lengerich..caruana, 2020](https://arxiv.org/abs/2007.00823))
 
   - use ANOVA to meaure 1st/2nd/3rd order effects and such
     - approximate ANOVA decomp. using boosted trees of depth based on a particular order
@@ -128,7 +128,7 @@ some more concrete questions:
 ## complexity + generalization: dnns are low-rank / redundant parameters
 
 - measuring complexity
-  - [functional decomposition](https://arxiv.org/abs/1904.03867) (molnar 2019)
+  - functional decomposition ([molnar 2019](https://arxiv.org/abs/1904.03867))
     - decompose function into bias + first-order effects (ALE) + interactions
     - 3 things: number of features used, interaction strength, main effect complexity
 - parameters are redundant
@@ -159,7 +159,7 @@ some more concrete questions:
 - original kernels (neal 1994) + (lee et al. 2018) + (matthews et al. 2018)
   - infinitely wide nets and only top layer is trained
   - corresponds to kernel $\text{ker}(x, x') = \mathbb E_{\theta \sim W}[f(\theta, x) \cdot f(\theta, x')]$, where $W$ is an intialization distr. over $\theta$
-- [neural tangent kernel](https://arxiv.org/abs/1806.07572) (jacot et al. 2018)
+- neural tangent kernel ([jacot et al. 2018](https://arxiv.org/abs/1806.07572))
   - $\text{ker}(x, x') = \mathbb E_{\theta \sim W} \left[\left < \frac{f(\theta, x)}{\partial \theta} \cdot \frac{f(\theta, x')}{\partial \theta} \right> \right]$ - evolution of weights over time follows this kernel
     - with very large width, this kernel is the NTK at initialization
     - stays stable during training (since weights don't change much)
@@ -167,17 +167,17 @@ some more concrete questions:
     - evolution of an ANN during training can also be described by a kernel (kernel gradient descent)
   - different types of kernels impose different things on a function (e.g. want more / less low frequencies)
     - gradient descent in kernel space can be convex if kernel is PD (even if nonconvex in the parameter space)
-  - [understanding the neural tangent kernel](https://arxiv.org/pdf/1904.11955.pdf) (arora et al. 2019)
+  - understanding the neural tangent kernel ([arora et al. 2019](https://arxiv.org/pdf/1904.11955.pdf))
     - method to compute the kernel quickly on a gpu
-- [Scaling description of generalization with number of parameters in deep learning](https://arxiv.org/abs/1901.01608) (geiger et al. 2019)
+- Scaling description of generalization with number of parameters in deep learning ([geiger et al. 2019](https://arxiv.org/abs/1901.01608))
   - number of params = N
   - above 0 training err, larger number of params reduces variance but doesn't actually help
     - ensembling with smaller N fixes problem
   - the improvement of generalization performance with N in this classification task originates from reduced variance of fN when N gets large, as recently observed for mean-square regression
-- [On the Inductive Bias of Neural Tangent Kernels](https://arxiv.org/abs/1905.12173) (bietti & mairal 2019)
-- [Kernel and Deep Regimes in Overparametrized Models](https://arxiv.org/abs/1906.05827) (Woodworth...Srebro 2019)
+- On the Inductive Bias of Neural Tangent Kernels ([bietti & mairal 2019](https://arxiv.org/abs/1905.12173))
+- Kernel and Deep Regimes in Overparametrized Models ([woodworth...srebro 2019](https://arxiv.org/abs/1906.05827))
   - transition between *kernel* and *deep regimes*
-- [The HSIC Bottleneck: Deep Learning without Back-Propagation](https://arxiv.org/abs/1908.01580) (Ma et al. 2019)
+- The HSIC Bottleneck: Deep Learning without Back-Propagation ([ma et al. 2019](https://arxiv.org/abs/1908.01580))
   - directly optimize information bottleneck (approximated by HSIC) yields pretty good results
 
 ## random projections
@@ -189,7 +189,7 @@ some more concrete questions:
 
 ## implicit dl + optimization
 
-- [implicit deep learning](https://arxiv.org/abs/1908.06315) (el ghaoui et al. 2019)
+- implicit deep learning ([el ghaoui et al. 2019](https://arxiv.org/abs/1908.06315))
   - $\hat y (u) = Cx + D u $, where $x = \phi(Ax + Bu)$
     - here, $u$ is a new input
     - $x$ is a hidden state which represents some hidden features (which depends on $u$)
@@ -205,13 +205,13 @@ some more concrete questions:
       - $x = (x_L, ..., x_1)$ - concatenate all the activations into one big vector
       - ![implicit_dl](../assets/implicit_dl.png)
       - ex. $Ax + Bu= \begin{bmatrix} W_{L-1}x_{L-1} \\ W_{L-2} x_{L-2} \\ \vdots \\ W_1x_1 \\ \mathbf 0\end{bmatrix} + \begin{bmatrix} 0 \\ 0 \\ \vdots \\ 0 \\ W_0 u \end{bmatrix}$ 
-- [lifted neural networks](https://arxiv.org/abs/1805.01532) (askari et al. 2018)
+- lifted neural networks ([askari et al. 2018](https://arxiv.org/abs/1805.01532))
   - can solve dnn $\hat y = \phi(W_2 \phi (W_1X_0))$ by rewriting using constraints:
     - $X_1 = \phi(W_1 X_0)$
     - $X_2 = \phi(W_2 X_1)$
   - $\begin{align} &\min (y - \hat y)^2\\s.t. X_1 &= \phi(WX_0)\\X_2 &= \phi(WX_1)\end{align}$
   - can be written using Lagrangian multipliers: $\min (y - \hat y)^2 + \lambda_1( X_1 - \phi(WX_0)) + \lambda_2(X_2 - \phi(WX_1))$
-- [Fenchel Lifted Networks: A Lagrange Relaxation of Neural Network Training](https://arxiv.org/abs/1811.08039) (gu et al. 2018)
+- Fenchel Lifted Networks: A Lagrange Relaxation of Neural Network Training ([gu et al. 2018](https://arxiv.org/abs/1811.08039))
   - in the lifted setting above, can replace Lagrangian with simpler expression using Fenchel conjugates
 - robust optimization basics
   - immunize optimization problems against uncertainty in the data
@@ -221,22 +221,22 @@ some more concrete questions:
   - *non-probabilistic robust optimization models* (e.g. Wald's maximin model: $\underset{x}{\max} \underset{u}{\min} f(x, u)$
   - also are *probabilistically robust optimization*
 - distributional robustness - using moments in the dl work
-  - ch 4 and ch10 of [robust optimization book](https://people.eecs.berkeley.edu/~elghaoui/robbook.html) (bental, el ghaoui, & nemirovski 2009)
-  - [Certifying Some Distributional Robustness with Principled Adversarial Training](https://arxiv.org/abs/1710.10571) (sinha,  namkoong, & duchi 2018)
+  - ch 4 and ch10 of robust optimization book ([bental, el ghaoui, & nemirovski 2009](https://people.eecs.berkeley.edu/~elghaoui/robbook.html))
+  - Certifying Some Distributional Robustness with Principled Adversarial Training ([sinha,  namkoong, & duchi 2018](https://arxiv.org/abs/1710.10571))
     - want to guarantee performance under adversarial input perturbations
     - considering a Lagrangian penalty formulation of perturbing the underlying data distribution in a Wasserstein ball
       - during training, augments model parameter updates with worst-case perturbations of training data
     - little extra cost and achieves guarantees for smooth losses
-  - [On Distributionally Robust Chance-Constrained Linear Programs](https://pdfs.semanticscholar.org/dc8a/e0f1ee878d68208184d123020f1acd2525bb.pdf) (calafiore & el ghaoui 2006)
+  - On Distributionally Robust Chance-Constrained Linear Programs ([calafiore & el ghaoui 2006](https://pdfs.semanticscholar.org/dc8a/e0f1ee878d68208184d123020f1acd2525bb.pdf))
     - linear programs where data (in the constraints) is random
     - want to enforce the constraints up to a given prob. level
     - can convert the prob. constraints into convex 2nd-order cone constraints
     - under distrs. for the random data, can guarantee constraints
-- [Differentiable Convex Optimization Layers](http://web.stanford.edu/~boyd/papers/pdf/diff_cvxpy.pdf) (agrawal et al. 2019)
+- Differentiable Convex Optimization Layers ([agrawal et al. 2019](http://web.stanford.edu/~boyd/papers/pdf/diff_cvxpy.pdf))
 
 ## statistical physics
 
-- [Statistical Mechanics of Deep Learning](https://www.annualreviews.org/doi/abs/10.1146/annurev-conmatphys-031119-050745) (bahri et al. 2019)
+- Statistical Mechanics of Deep Learning ([bahri et al. 2019](https://www.annualreviews.org/doi/abs/10.1146/annurev-conmatphys-031119-050745))
   - what is the advantage of depth  - connect to dynamical phase transitions
     - there are several function which require only polynomial nodes in each layer for deep nets, but exponential for shallow nets
   - what is the shape of the loss landscape - connect to random Gaussian processes, sping glasses, and jamming
@@ -252,7 +252,7 @@ some more concrete questions:
     - if parameters are random, indcues a prior distribution $P(\mathcal F)$ over the space of functions
     - in th limit of infinite width, this prior is Gaussian, with a specific correlation kernel
     - learning is similar to learning the Bayesian posterior $P(f|data)$, but connecting this to sgd is still not clear
-- [Neural Mechanics: Symmetry and Broken Conservation Laws in Deep Learning Dynamics](https://arxiv.org/abs/2012.04728) (kunin et al. 2020)
+- Neural Mechanics: Symmetry and Broken Conservation Laws in Deep Learning Dynamics ([kunin et al. 2020](https://arxiv.org/abs/2012.04728))
   - no assumptions about DNN architecture or gradientflow
   - instead, assumptions on symmetries embedded in a network’s architecture constrain training dynamics
     - similar to Noether's thm in physics
@@ -276,12 +276,12 @@ some more concrete questions:
 
 ## adversarial + robustness
 
-- [robustness may be at odds with accuracy](https://openreview.net/pdf?id=SyxAb30cY7) (madry 2019)
+- robustness may be at odds with accuracy ([madry 2019](https://openreview.net/pdf?id=SyxAb30cY7))
   - adversarial training helps w/ little data but hurts with lots of data
   - adversarially trained models have more meaningful gradients (and their adversarial examples actually look like other classes)
 - [Generalizability vs. Robustness: Adversarial Examples for Medical Imaging](https://arxiv.org/abs/1804.00504)
 - [Towards Robust Interpretability with Self-Explaining Neural Networks](https://arxiv.org/pdf/1806.07538.pdf) 
-- [Adversarial Attacks and Defenses in Images, Graphs and Text: A Review](https://arxiv.org/abs/1909.08072) (xu et al. 2019)
+- Adversarial Attacks and Defenses in Images, Graphs and Text: A Review ([xu et al. 2019](https://arxiv.org/abs/1909.08072))
   - *Adversarial examples are inputs to machine learning models that an attacker intentionally designed to cause the model to make mistakes*
   - threat models
     - poisoning attack (insert fake samples into training data) vs. evasion attack (just evade at test time)
@@ -295,7 +295,7 @@ some more concrete questions:
     - adversarial loss - biggest change in loss within some epsilon ball
   - ![Screen Shot 2020-02-04 at 1.54.49 PM](../assets/adv_attacks_table.png)
   - ![Screen Shot 2020-02-04 at 1.54.28 PM](../assets/adv_attack_hierarchy.png)
-- [AugMix: A Simple Data Processing Method to Improve Robustness and Uncertainty](https://arxiv.org/abs/1912.02781) (hendrycks et al. 2020)
+- AugMix: A Simple Data Processing Method to Improve Robustness and Uncertainty ([hendrycks et al. 2020](https://arxiv.org/abs/1912.02781))
   - do a bunch of transformations and average images to create each training image
 - certifying robustness
   - bound gradients of f around x - solve SDP for 2-layer net ([raghunathan, steinhardt, & liang 2018, iclr](https://arxiv.org/abs/1801.09344))
@@ -414,9 +414,9 @@ some more concrete questions:
 
 ## bagging and boosting
 
-- [analyzing bagging](https://projecteuclid.org/download/pdf_1/euclid.aos/1031689014) (buhlmann and yu 2002)
-- [boosting with the L2 loss](http://zmjones.com/static/statistical-learning/buhlmann-jasa-2003.pdf) (buhlmann & yu 2003)
-- [boosting algorithms as gradient descent](http://papers.nips.cc/paper/1766-boosting-algorithms-as-gradient-descent.pdf) (mason et al. 2000)
+- analyzing bagging ([buhlmann and yu 2002](https://projecteuclid.org/download/pdf_1/euclid.aos/1031689014))
+- boosting with the L2 loss ([buhlmann & yu 2003](http://zmjones.com/static/statistical-learning/buhlmann-jasa-2003.pdf))
+- boosting algorithms as gradient descent ([mason et al. 2000](http://papers.nips.cc/paper/1766-boosting-algorithms-as-gradient-descent.pdf))
 
 # basics
 

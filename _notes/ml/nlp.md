@@ -37,19 +37,19 @@ Nice repo keeping track of progress [here](https://github.com/sebastianruder/NLP
 
 - [MMLU](https://arxiv.org/abs/2009.03300): Measuring Massive Multitask Language Understanding (hendrycks, ..., song, steinhardt, 2021) - 57 tasks such as elementary math, clinical knowledge, global facts
 
-- [NLI: allenai natural language instructions](https://github.com/allenai/natural-instructions) (v1: mishra et al. 2022; v2: wang et al. 2022) - 1600+ diverse NLP tasks
+- NLI: allenai natural language instructions ([v1: mishra et al. 2022; v2: wang et al. 2022](https://github.com/allenai/natural-instructions)) - 1600+ diverse NLP tasks
   - Definition which describes the task
   
   - For each example: (input text, output (varies), explanation*) - explanation only for some tasks
   
-- [Big-bench](https://github.com/google/BIG-bench) (2022) - crowdsourced diverse (but random) NLP tasks
+- Big-bench ([2022](https://github.com/google/BIG-bench)) - crowdsourced diverse (but random) NLP tasks
   - No task definitions or explanations: the “definition” is instead concatenated to each example’s input
-- [Unveiling Transformers with LEGO: a synthetic reasoning task](https://arxiv.org/abs/2206.04301) (zhang, ..., bubeck, ..., wagner, 2022) - synthetic reasoning task
+- Unveiling Transformers with LEGO: a synthetic reasoning task ([zhang, ..., bubeck, ..., wagner, 2022](https://arxiv.org/abs/2206.04301)) - synthetic reasoning task
 - [Large Language Models Still Can't Plan (A Benchmark for LLMs on Planning and Reasoning about Change)](https://arxiv.org/abs/2206.10498)
 
 **very popular**
 
-- [SuperGLUE Benchmark](https://super.gluebenchmark.com/) (2019)
+- SuperGLUE Benchmark ([2019](https://super.gluebenchmark.com/))
   - 8 NLU tasks (keeps two hardest from GLUE, marked with ***) extending to coreference resolution and question-answering
   - [BoolQ](https://github.com/google-research-datasets/boolean-questions) (Boolean Questions) - answer a yes/no question about a text passage.
   - [CB](https://github.com/mcdm/CommitmentBank) (CommitmentBank) - given a text and a clause, predict how much the text commits to the clause
@@ -60,7 +60,7 @@ Nice repo keeping track of progress [here](https://github.com/sebastianruder/NLP
   - [WiC](https://pilehvar.github.io/wic/) (Word-in-Context) - word sense disambiguation task cast as binary classification of sentence pairs. Given two text snippets and a polysemous word that appears in both sentences, the task is to determine whether the word is used with the same sense in both sentences
   - $^\dagger$[WSC](https://cs.nyu.edu/~davise/papers/WinogradSchemas/WS.html) (Winograd Schema Challenge) - coreference resolution task in which examples consist of a sentence with a pronoun and a list of noun phrases from the sentence. The system must determine the correct referent of the pronoun from among the provided choices.
 
-- [GLUE Benchmark](https://gluebenchmark.com/) (2019) = General language understanding evaluation
+- GLUE Benchmark ([2019](https://gluebenchmark.com/)) = General language understanding evaluation
   - 9 NLU tasks including question answering, sentiment analysis, text similarity and textual entailment
   -  single-sentence tasks
     - [CoLA](https://nyu-mll.github.io/CoLA/) (Corpus of Linguistic Acceptability) - determine if sentence is grammatically correct
@@ -79,12 +79,12 @@ Nice repo keeping track of progress [here](https://github.com/sebastianruder/NLP
   - ANLI: Adversarial NLI ([nie et al. 2019](https://arxiv.org/abs/1910.14599)) - harder examples found by model failures
   - SNLI Benchmark ([bowman et al. 2015](https://arxiv.org/abs/1508.05326)) = Stanford Natural Languge Inference - entailment dataset
     - 570k human-annotated sentence pairs where people ask about entailment
-  - FEVER: Fact Extraction and VERification ([Thorne et al., 2018](https://aclanthology.org/N18-1074/))
+  - FEVER: Fact Extraction and VERification ([thorne et al., 2018](https://aclanthology.org/N18-1074/))
   - SciTail ([khot et al. 2018](https://ojs.aaai.org/index.php/AAAI/article/view/12022)) - textual entailment derived from science-question answering
 
 - QA
-  - SQuAD 2.0 ([Rajpurkar...liang, 2018](https://arxiv.org/abs/1806.03822)) - adds 50k unanswerable questions; system must know when it can't answer
-  - SQuAD ([Rajpurkar...liang, 2016](https://arxiv.org/abs/1606.05250)) - Stanford Question Answering Dataset (SQuAD)  - 100k questions from 23k passages in 500 wikipedia articles
+  - SQuAD 2.0 ([rajpurkar...liang, 2018](https://arxiv.org/abs/1806.03822)) - adds 50k unanswerable questions; system must know when it can't answer
+  - SQuAD ([rajpurkar...liang, 2016](https://arxiv.org/abs/1606.05250)) - Stanford Question Answering Dataset (SQuAD)  - 100k questions from 23k passages in 500 wikipedia articles
 
 - Text classification datasets (used in [Tree-Prompt](https://arxiv.org/pdf/2310.14034) and [Aug-imodels](https://www.nature.com/articles/s41467-023-43713-1))
 
@@ -162,11 +162,11 @@ Nice repo keeping track of progress [here](https://github.com/sebastianruder/NLP
 - ex. **word2vec** - short, dense vectors
   - intuition: train classifier on binary prediction: is word $w$ likely to show up near this word? (algorithm also called skip-gram)
     - the weights are the embeddings
-  - word2vec paper I: [initial word2vec](https://arxiv.org/abs/1301.3781) (mikolov et al. 2013) - simplifies neural language models for efficient training of word embeddings
+  - word2vec paper I: initial word2vec ([mikolov et al. 2013](https://arxiv.org/abs/1301.3781)) - simplifies neural language models for efficient training of word embeddings
     - maximizing the probabilities of words being predicted by their context words (with a DNN)
     - continuous bag-of-words (CBOW) - predict current word from window (order doesn't matter)
     - skipgram - use current word to predict surrounding window -- nearby context words weighted more heavily
-  - word2vec paper II: [Distributed Representations of Words and Phrases and their Compositionality](https://arxiv.org/abs/1310.4546) (mikolov et al. 2013) - word2vec improvements
+  - word2vec paper II: Distributed Representations of Words and Phrases and their Compositionality ([mikolov et al. 2013](https://arxiv.org/abs/1310.4546)) - word2vec improvements
     - identify key ngrams and give them their own vecs
 - ex. **GloVe** ([pennington, socher, & manning, 2014](https://aclanthology.org/D14-1162.pdf)), which is based on ratios of word co-occurrence probs
 - ex. ELMO ([peters...zettlemoyer, 2022](https://arxiv.org/pdf/1802.05365.pdf)) - use LSTM for word embeddings

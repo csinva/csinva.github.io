@@ -46,7 +46,7 @@
 
 # ml in stock market
 
-- [Uncertainty-Aware Lookahead Factor Models for Quantitative Investing](https://arxiv.org/abs/2007.04082) (chauhan, alberg, & lipton 2020)
+- Uncertainty-Aware Lookahead Factor Models for Quantitative Investing ([chauhan, alberg, & lipton 2020](https://arxiv.org/abs/2007.04082))
   - *fundamentals* - publicly traded companies report these periodically, e.g. revenue, earnings, debt, among others
     - fundamentals forecasting - use LSTM to forecast fundamentals
       - use model uncertainty to avert risk (scale the earnings forecast in inverse proportion to the modeled earnings variance)

@@ -41,7 +41,7 @@ subtitle: An introduction to kernels and recent research.
 
 # kernel papers
 
-- [data spectroscopy paper](https://arxiv.org/pdf/0807.3719) (shi et al. 2009)
+- data spectroscopy paper ([shi et al. 2009](https://arxiv.org/pdf/0807.3719))
   - kernel matrix $K_n$
   - Laplacian matrix $L_n = D_n - K_n$
     - $D_n$ is diagonal matrix, with entries = column sums

@@ -12,7 +12,7 @@ subtitle: Notes on philosophy relevant to explanation (particularly in science)
 
 - try to understand what principles underly all phenomena
 
-- [Machine Learning and the Future of Realism](https://arxiv.org/pdf/1704.04688.pdf) (hooker & hooker, 2017)
+- Machine Learning and the Future of Realism ([hooker & hooker, 2017](https://arxiv.org/pdf/1704.04688.pdf))
   - lack of interpretability in DNNs is part of what makes them powerful
   - *naked predictions* - numbers with no real interpretation
     - more central to science than modelling?
@@ -25,7 +25,7 @@ subtitle: Notes on philosophy relevant to explanation (particularly in science)
     - *unification* - answers *ontology* - the nature of being
     - *realism* in a partially accessible world
   - overall, they believe there is inherent value of ontological description
-- [Explainable Artificial Intelligence and Machine Learning: A reality rooted perspective](https://arxiv.org/pdf/2001.09464v1.pdf) (Emmert-Streib et al. 2020)
+- Explainable Artificial Intelligence and Machine Learning: A reality rooted perspective ([emmert-streib et al. 2020](https://arxiv.org/pdf/2001.09464v1.pdf))
   
   - explainable AI is not a new field but has been already recognized and discussed for expert systems in the 1980s
   1. in some cases, such as simple physics, we can hope to get a **theory** - however, when the underlying process is complicated, interpretation can't hope to simplify it

@@ -45,7 +45,7 @@ category: stat
 
 # similarity measures
 
-- [An Empirical Evaluation of Similarity Measures for Time Series Classification](https://arxiv.org/pdf/1401.3973.pdf) (serra et al. 2014)
+- An Empirical Evaluation of Similarity Measures for Time Series Classification ([serra et al. 2014](https://arxiv.org/pdf/1401.3973.pdf))
   - lock-step measures (Euclidean distance, or any norm)
     - can resample to make them same length
   - feature-based measures (Fourier coefficients)

@@ -937,19 +937,19 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
   - A natural language fMRI dataset for voxelwise encoding models ([lebel, … huth, 2022](https://www.biorxiv.org/content/10.1101/2022.09.22.509104v1.abstract?%3Fcollection=))
     - 8 participants listening to ~6 hours each of the moth radio hour
     - 3 of the particpants have ~20 hours (~95 stories, 33k timepoints)
-  - Narratives Dataset ([Nastase et al. 2019](http://fcon_1000.projects.nitrc.org/indi/retro/Narratives.html)) - more subjects, less data per subject
+  - Narratives Dataset ([nastase et al. 2019](http://fcon_1000.projects.nitrc.org/indi/retro/Narratives.html)) - more subjects, less data per subject
     - 345 subjects, 891 functional scans, and 27 diverse stories of varying duration totaling ~4.6 hours of unique stimuli (~43,000 words) and total collection time is ~6.4 days
   - Le Petit Prince multilingual naturalistic fMRI corpus ([li...hale, 2022](https://www.nature.com/articles/s41597-022-01625-7)) - 49 English speakers, 35 Chinese speakers and 28 French speakers listened to the same audiobook *The Little Prince* in their native language while fMRI was recorded
   - LITcoder: A General-Purpose Library for Building and Comparing Encoding Models ([binhuraib, gao & ivanova, 2025](https://arxiv.org/abs/2509.09152)) -- standardized preprocessing for encoding models on the 3 datasets above (lebel et al, narratives, the little prince)
   - Preprocessed short datasets used in [AlKhamissi et al. 2025](https://arxiv.org/pdf/2503.01830) and available through [brain-score-language](https://github.com/brain-score/language/tree/main?tab=readme-ov-file)
-    - ([Pereira 2018](https://www.nature.com/articles/s41467-018-03068-4)): Toward a universal decoder of linguistic meaning from brain activation - decode target sentence from a pair of presented sentences
+    - ([pereira 2018](https://www.nature.com/articles/s41467-018-03068-4)): Toward a universal decoder of linguistic meaning from brain activation - decode target sentence from a pair of presented sentences
   - [Schoffelen et al. 2019](https://www.nature.com/articles/s41597-019-0020-y): 100 subjects recorded with fMRI and MEG, listening to de-contextualised sentences and word lists, no repeated session
   - [Huth et al. 2016](https://www.nature.com/articles/nature17637) released data from [one subject](https://github.com/HuthLab/speechmodeltutorial)
   - Visual and linguistic semantic representations are aligned at the border of human visual cortex ([popham, huth et al. 2021](https://www.nature.com/articles/s41593-021-00921-6#data-availability)) - compared semantic maps obtained from two functional magnetic resonance imaging experiments in the same participants: one that used silent movies as stimuli and another that used narrative stories ([data link](https://berkeley.app.box.com/s/l95gie5xtv56zocsgugmb7fs12nujpog))
   - A multimodal fMRI dataset unifying naturalistic processes with a rich array of experimental tasks ([jung...wager, 2025](https://www.biorxiv.org/content/10.1101/2024.06.21.599974v1)) - N = 101 x 6 hours each = 606 functional iso-hours combining movies, pain, faces, theory-of-mind and other cognitive tasks!
 - MEG datasets
   - MEG-MASC ([gwilliams...king, 2023](https://www.nature.com/articles/s41597-023-02752-5)) - 27 English-speaking subjects MEG, each ~2 hours of story listening, punctuated by random word lists and comprehension questions in the MEG scanner. Usually each subject listened to four distinct fictional stories twice
-  - WU-Minn human connectome project ([van Essen et al. 2013](https://www.nature.com/articles/s41597-022-01382-7)) - 72 subjects recorded with fMRI and MEG as part of the Human Connectome Project, listening to 10 minutes of short stories, no repeated session
+  - WU-Minn human connectome project ([van essen et al. 2013](https://www.nature.com/articles/s41597-022-01382-7)) - 72 subjects recorded with fMRI and MEG as part of the Human Connectome Project, listening to 10 minutes of short stories, no repeated session
   - [Armeni et al. 2022](https://www.nature.com/articles/s41597-022-01382-7): 3 subjects recorded with MEG, listening to 10 hours of Sherlock Holmes, no repeated session
   - [LibriBrain 2025](https://neural-processing-lab.github.io/2025-libribrain-competition/participate/)  - bunch of listening data (50+ hours) for single subject
 - EEG
@@ -1053,7 +1053,7 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 
 ## language
 
-- Mapping Brains with Language Models: A Survey ([Karamolegkou et al. 2023](https://arxiv.org/abs/2306.05126))
+- Mapping Brains with Language Models: A Survey ([karamolegkou et al. 2023](https://arxiv.org/abs/2306.05126))
 - The language network as a natural kind within the broader landscape of the human brain ([fedorenko, ivanova, & regev, 2024](https://www.researchgate.net/publication/379785120_The_language_network_as_a_natural_kind_within_the_broader_landscape_of_the_human_brain))
   - language processing involves converting linguistic stimuli (audio, vision) -> linguistic forms (words, word sequences) -> meaning and then back
   - averaging over individuals is often infeasible - instead, localizers (which show particular contrasts to subjects) can help identify functional regions
@@ -1073,13 +1073,13 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 - Language is widely distributed throughout the brain ([drijvers, small, & skipper, 2025](https://www.nature.com/articles/s41583-024-00903-0)) - respond that rather than a "language network", the ‘language network’ could more simply be conceived of as a collection of hierarchically organized auditory association cortices communicating with functional connectivity hubs that coordinate a whole-brain distribution of contextually determined and, thus, highly variable ‘peripheral’ regions
 - Semantic encoding during language comprehension at single-cell resolution ([jamali...fedorenko, williams, 2024](https://www.nature.com/articles/s41586-024-07643-2))
 - interpreting brain encoding models
-  - [Brains and algorithms partially converge in natural language processing](https://www.nature.com/articles/s42003-022-03036-1#Sec9) (caucheteux & king, 2022)
+  - Brains and algorithms partially converge in natural language processing ([caucheteux & king, 2022](https://www.nature.com/articles/s42003-022-03036-1#Sec9))
     - best brain-mapping are obtained from the middle layers of DL models
     - whether an algorithm maps onto the brain primarily depends on its ability to predict words context
     - average ROIs across many subjects
     - test "compositionality" of features
-  - [Tracking the online construction of linguistic meaning through negation](https://www.biorxiv.org/content/10.1101/2022.10.14.512299.abstract) (zuanazzi, ..., remi-king, poeppel, 2022)
-  - [Blackbox meets blackbox: Representational Similarity and Stability Analysis of Neural Language Models and Brains](https://arxiv.org/abs/1906.01539) (abnar, … zuidema, emnlp workshop, 2019) - use RSA to compare representations from language models with fMRI data from Wehbe et al. 2014
+  - Tracking the online construction of linguistic meaning through negation ([zuanazzi, ..., remi-king, poeppel, 2022](https://www.biorxiv.org/content/10.1101/2022.10.14.512299.abstract))
+  - Blackbox meets blackbox: Representational Similarity and Stability Analysis of Neural Language Models and Brains ([abnar, … zuidema, emnlp workshop, 2019](https://arxiv.org/abs/1906.01539)) - use RSA to compare representations from language models with fMRI data from Wehbe et al. 2014
   - Evidence of a predictive coding hierarchy in the human brain listening to speech ([caucheteux, gramfot, & king, 2023](https://www.nature.com/articles/s41562-022-01516-2))
 - encoding models
 
@@ -1105,7 +1105,7 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
     - Lexical-Semantic Content, Not Syntactic Structure, Is the Main Contributor to ANN-Brain Similarity of fMRI Responses in the Language Network  ([kauf...andreas, fedorenko, 2024](https://direct.mit.edu/nol/article/5/1/7/116784/Lexical-Semantic-Content-Not-Syntactic-Structure)) - lexical semantic sentence content, not syntax, drive alignment.
     - Artificial Neural Network Language Models Predict Human Brain Responses to Language Even After a Developmentally Realistic Amount of Training  ([hosseini...fedorenko, 2024](https://direct.mit.edu/nol/article/5/1/43/119156/Artificial-Neural-Network-Language-Models-Predict)) - models trained on a developmentally plausible amount of data (100M tokens) already align closely with human benchmarks
     - Improving semantic understanding in speech language models via brain-tuning ([moussa...toneva, 2024](https://arxiv.org/abs/2410.09230))
-    - Individual differences shape conceptual representation in the brain ([Visconti di Oleggio Castello, la Tour, & Gallant, 2025](https://www.biorxiv.org/content/10.1101/2025.08.22.671848v1))
+    - Individual differences shape conceptual representation in the brain ([visconti di oleggio castello, la tour, & gallant, 2025](https://www.biorxiv.org/content/10.1101/2025.08.22.671848v1))
   - eeg models
   
     - directly model time series
@@ -1162,7 +1162,7 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
     - interpreting weights from a decoding model can be tricky, even if if a concept is reflected in the voxel, it may not be uniquely reflected in the voxel and therefore assigned low weight
 
   - Reconstructing Visual Experiences from Brain Activity Evoked by Natural Movies ([nishimoto, …, gallant, 2011](https://www.sciencedirect.com/science/article/pii/S0960982211009377))
-  - Brain Decoding: Toward Real Time Reconstruction of Visual Perception ([Benchetrit...king, 2023](https://ai.meta.com/static-resource/image-decoding)) - use MEG to do visual reconstruction
+  - Brain Decoding: Toward Real Time Reconstruction of Visual Perception ([benchetrit...king, 2023](https://ai.meta.com/static-resource/image-decoding)) - use MEG to do visual reconstruction
   - Seeing Beyond the Brain: Conditional Diffusion Model with Sparse Masked Modeling for Vision Decoding ([chen et al. 2022](https://arxiv.org/pdf/2211.06956.pdf))
   - Aligning brain functions boosts the decoding of visual semantics in novel subjects ([thual...king, 2023](https://arxiv.org/abs/2312.06467)) - align across subjects before doing decoding
   - A variational autoencoder provides novel, data-driven features that explain functional brain representations in a naturalistic navigation task ([cho, zhang, & gallant, 2023](https://jov.arvojournals.org/article.aspx?articleid=2792546))
@@ -1235,9 +1235,9 @@ subtitle: Diverse notes on various topics in computational neuro, data-driven ne
 
 Good overview website: https://www.hd-computing.com
 
-- [ovw talk](https://www.youtube.com/watch?v=82syi1BH_YY) (kanerva, 2022)
+- ovw talk ([kanerva, 2022](https://www.youtube.com/watch?v=82syi1BH_YY))
   - has slide with related references
-- [A comparison of vector symbolic architectures](https://link.springer.com/article/10.1007/s10462-021-10110-3) (schlegel et al. 2021)
+- A comparison of vector symbolic architectures ([schlegel et al. 2021](https://link.springer.com/article/10.1007/s10462-021-10110-3))
 
 **motivation**
 
@@ -1328,7 +1328,7 @@ the operations above allow for encoding many normal data structures into a singl
   - initialize US = (NAME * USA) + (MONEY * DOLLAR)
   - initialize MEXICO = (NAME * MEXICO) + (MONEY * PESO)
   - query: "Dollar of Mexico"? = DOLLAR * US * MEXICO = PESO
-- ex. [text classification](https://iis-people.ee.ethz.ch/~arahimi/papers/DATE16_HD.pdf) (najafabadi et al. 2016)
+- ex. text classification ([najafabadi et al. 2016](https://iis-people.ee.ethz.ch/~arahimi/papers/DATE16_HD.pdf))
 - ex. language classification - "Language Recognition using Random Indexing" ([joshi et al. 2015](https://arxiv.org/abs/1412.7026))
   - scalable, easily use any-order ngrams
   - data
@@ -1381,7 +1381,7 @@ the operations above allow for encoding many normal data structures into a singl
 
 [HDComputing Github Repos](https://github.com/HyperdimensionalComputing/collection) (see [torchhd](https://github.com/hyperdimensional-computing/torchhd))
 
-- [HD computing overview paper](https://link.springer.com/content/pdf/10.1007/s12559-009-9009-8.pdf) (Kanerva, 2009)
+- HD computing overview paper ([kanerva, 2009](https://link.springer.com/content/pdf/10.1007/s12559-009-9009-8.pdf))
   - in these high dimensions, most points are close to equidistant from one another (L1 distance), and are approximately orthogonal (dot product is 0)
   - memory
     - *heteroassociative* - can return stored *X* based on its address *A*
@@ -1391,7 +1391,7 @@ the operations above allow for encoding many normal data structures into a singl
 - Classification and Recall With Binary Hyperdimensional Computing: Tradeoffs in Choice of Density and Mapping Characteristics ([kleyko et al. 2018](https://ieeexplore.ieee.org/abstract/document/8331890?casa_token=FbderL4T3RgAAAAA:LfP2kRSJwhY5z4OHMqvNDrxmSpyIMLzGs80vGj_IdBXVhVVDwZg1tfIeD2nj0S5N7T2YsRrOcg))
   - note: for sparse vectors, might need some threshold before computing mean (otherwise will have too many zeros)
 
-- Neural Statistician ([Edwards & Storkey, 2016](https://arxiv.org/abs/1606.02185)) summarises a dataset by averaging over their embeddings
+- Neural Statistician ([edwards & storkey, 2016](https://arxiv.org/abs/1606.02185)) summarises a dataset by averaging over their embeddings
 - kanerva machine ([yu...lillicrap, 2018](https://arxiv.org/pdf/1804.01756.pdf))
   - like a VAE where the prior is derived from an adaptive memory store
 - theory of sequence indexing and working memory in RNNs
@@ -1399,7 +1399,7 @@ the operations above allow for encoding many normal data structures into a singl
   - VSA as a structured approach for understanding neural networks
   - reservoir computing = state-dependent network = echos-state network = liquid state machine - try to represen sequential temporal data - builds representations on the fly
 - different names
-  - Tony plate: [holographic reduced representation](https://ieeexplore.ieee.org/abstract/document/377968?casa_token=L3jgIZw7e5QAAAAA:m7VbqpNlZkL3kPU1faJe6XDVIxi5N55iToDKMndnknmBFFP7Boi2HZMI2ODCkzX0oXbanAqsZBg) (1995)
+  - Tony plate: holographic reduced representation ([1995](https://ieeexplore.ieee.org/abstract/document/377968?casa_token=L3jgIZw7e5QAAAAA:m7VbqpNlZkL3kPU1faJe6XDVIxi5N55iToDKMndnknmBFFP7Boi2HZMI2ODCkzX0oXbanAqsZBg))
     - related to TPR by paul smolensky
   - ross gayler: multiply-add-permute arch
   - gayler & levi: vector-symbolic arch
@@ -1678,7 +1678,7 @@ the operations above allow for encoding many normal data structures into a singl
 - Computational language modeling and the promise of in silico experimentation ([jain, vo, wehbe, & huth, 2023](https://direct.mit.edu/nol/article/doi/10.1162/nol_a_00101/114613/Computational-language-modeling-and-the-promise-of)) - 4 experimental design examples
 
   - compare concrete & abstract words ([binder et al. 2005](https://direct.mit.edu/jocn/article-abstract/17/6/905/4017/Distinct-Brain-Systems-for-Processing-Concrete-and))
-  - contrast-based study of composition in 2-word phrase ([Bemis & Pylkkanen, 2011](https://www.jneurosci.org/content/31/8/2801.short))
+  - contrast-based study of composition in 2-word phrase ([bemis & pylkkanen, 2011](https://www.jneurosci.org/content/31/8/2801.short))
   - checks for effects between group and individual ([lerner et al. 2011](https://www.jneurosci.org/content/31/8/2906))
   - forgetting behavior using controlled manipulations ([chien & honey, 2020](https://www.sciencedirect.com/science/article/pii/S0896627320301367))
 
@@ -1709,17 +1709,17 @@ the operations above allow for encoding many normal data structures into a singl
 
 - A Path Towards Autonomous Machine Intelligence ([lecun 2022](https://openreview.net/pdf?id=BZ5a1r-kVsf))
 
-- [Towards NeuroAI: Introducing Neuronal Diversity into Artificial Neural Networks](https://www.semanticscholar.org/paper/Towards-NeuroAI%3A-Introducing-Neuronal-Diversity-Fan-Li/c0aae24f2e250c7d4b5aab608622dbb933f43a4d) (2023)
+- Towards NeuroAI: Introducing Neuronal Diversity into Artificial Neural Networks ([2023](https://www.semanticscholar.org/paper/Towards-NeuroAI%3A-Introducing-Neuronal-Diversity-Fan-Li/c0aae24f2e250c7d4b5aab608622dbb933f43a4d))
 
 - A rubric for human-like agents andNeuroAI ([momennejad, 2022](https://royalsocietypublishing.org/doi/epdf/10.1098/rstb.2021.0446)): 3 axes - human-like behavior, neural plausibility, & engineering
 
-- [Designing Ecosystems of Intelligence from First Principles](https://www.semanticscholar.org/paper/Designing-Ecosystems-of-Intelligence-from-First-Friston-Ramstead/98fcb39694d628788b555932f96134280f6a008e) (friston et al. 2022)
+- Designing Ecosystems of Intelligence from First Principles ([friston et al. 2022](https://www.semanticscholar.org/paper/Designing-Ecosystems-of-Intelligence-from-First-Friston-Ramstead/98fcb39694d628788b555932f96134280f6a008e))
 
-- [NeuroAI - A strategic opportunity for Norway and Europe](https://www.semanticscholar.org/paper/NeuroAI-A-strategic-opportunity-for-Norway-and-Nichele-Sæbø/b5e7bacfdd6d080fce402a27b36757f6246eef4d) (2022)
+- NeuroAI - A strategic opportunity for Norway and Europe ([2022](https://www.semanticscholar.org/paper/NeuroAI-A-strategic-opportunity-for-Norway-and-Nichele-Sæbø/b5e7bacfdd6d080fce402a27b36757f6246eef4d))
 
-- [Perceptual Inference, Learning, and Attention in a Multisensory World](https://www.annualreviews.org/doi/abs/10.1146/annurev-neuro-100120-085519) (nopponey, 2021)
+- Perceptual Inference, Learning, and Attention in a Multisensory World ([nopponey, 2021](https://www.annualreviews.org/doi/abs/10.1146/annurev-neuro-100120-085519))
 
-- [Engineering a Less Artificial Intelligence](https://www.sciencedirect.com/science/article/pii/S0896627319307408) (sinz…tolias, 2019) - overview of ideas to make DNNs more brain-like
+- Engineering a Less Artificial Intelligence ([sinz…tolias, 2019](https://www.sciencedirect.com/science/article/pii/S0896627319307408)) - overview of ideas to make DNNs more brain-like
 
 ## credit assignment
 
@@ -1732,23 +1732,23 @@ the operations above allow for encoding many normal data structures into a singl
 
   - haven’t found anything like this for NLP
   - Aligning Model and Macaque Inferior Temporal Cortex Representations Improves Model-to-Human Behavioral Alignment and Adversarial Robustness ([dapello, kar, shrimpf…cox, dicarlo, 2022](https://www.biorxiv.org/content/10.1101/2022.07.01.498495v1.abstract)) - finetune CNN embedding to match monkey brain (IT electrode recordings) before making classifications
-  - [Towards robust vision by multi-task learning on monkey visual cortex](https://proceedings.neurips.cc/paper/2021/hash/06a9d51e04213572ef0720dd27a84792-Abstract.html) (safarani…sinz, 2021) - simultaneously predict monkey v1 (electrode data) and imagenet
-  - [Improved object recognition using neural networks trained to mimic the brain’s statistical properties - ScienceDirect](https://www.sciencedirect.com/science/article/pii/S0893608020302549?casa_token=UBMLt-J8JvgAAAAA:kWdL43r-oYZUUn4Mh41Z2XrMk7FU2WNJKXAvAdWmUjxKCgmTflUfV1tugLFLvQuUX9231x-6) (federer et al. 2020) - simultaneously train CNN to classify objects + have similar reprs to monkey electrode data
-  - [Learning from brains how to regularize machines](https://proceedings.neurips.cc/paper/2019/hash/70117ee3c0b15a2950f1e82a215e812b-Abstract.html) (li …, tolias 2019) - regularize intermediate representations using mouse v1 data (optical imaging) for image classification
+  - Towards robust vision by multi-task learning on monkey visual cortex ([safarani…sinz, 2021](https://proceedings.neurips.cc/paper/2021/hash/06a9d51e04213572ef0720dd27a84792-Abstract.html)) - simultaneously predict monkey v1 (electrode data) and imagenet
+  - Improved object recognition using neural networks trained to mimic the brain’s statistical properties - ScienceDirect ([federer et al. 2020](https://www.sciencedirect.com/science/article/pii/S0893608020302549?casa_token=UBMLt-J8JvgAAAAA:kWdL43r-oYZUUn4Mh41Z2XrMk7FU2WNJKXAvAdWmUjxKCgmTflUfV1tugLFLvQuUX9231x-6)) - simultaneously train CNN to classify objects + have similar reprs to monkey electrode data
+  - Learning from brains how to regularize machines ([li …, tolias 2019](https://proceedings.neurips.cc/paper/2019/hash/70117ee3c0b15a2950f1e82a215e812b-Abstract.html)) - regularize intermediate representations using mouse v1 data (optical imaging) for image classification
   - A Neurobiological Evaluation Metric for Neural Network Model Search ([blanchard, …, bashivan, scheirer, 2019](https://openaccess.thecvf.com/content_CVPR_2019/html/Blanchard_A_Neurobiological_Evaluation_Metric_for_Neural_Network_Model_Search_CVPR_2019_paper.html)) - compare fMRI kernel matrix to DNN kernel matrix - find that the closer it is, the better a network is (and use this metric to perform early stopping)
   - aligning with experimental/psychological data
-    - [How Well Do Unsupervised Learning Algorithms Model Human Real-time and Life-long Learning? | OpenReview](https://openreview.net/forum?id=c0l2YolqD2T) (zhuang...dicarlo, yamins, 2022)
+    - How Well Do Unsupervised Learning Algorithms Model Human Real-time and Life-long Learning? | OpenReview ([zhuang...dicarlo, yamins, 2022](https://openreview.net/forum?id=c0l2YolqD2T))
 - Biologically-inspired DNNs (not data-driven)
   - Relating transformers to models and neural representations of the hippocampal formation ([whittington, warren, & behrens, 2022](https://arxiv.org/abs/2112.04035))
     - transformers, when equipped with recurrent position encodings, replicate the pre- cisely tuned spatial representations of the hippocampal formation; most notably place and grid cells
   - Emergence of foveal image sampling from learning to attend in visual scenes ([cheung, weiss, & olshausen, 2017](https://arxiv.org/abs/1611.09430)) - using neural attention model, learn a retinal sampling lattice
       - can figure out what parts of the input the model focuses on
-  - [Simulating a Primary Visual Cortex at the Front of CNNs Improves Robustness to Image Perturbations](https://proceedings.neurips.cc/paper/2020/hash/98b17f068d5d9b7668e19fb8ae470841-Abstract.html) (dapello…cox, dicarlo, 2020) - biologically inspired early neural-network layers (gabors etc.) improve robustness of CNNs
-      - [Brain-Like Object Recognition with High-Performing Shallow Recurrent ANNs](https://proceedings.neurips.cc/paper/2019/hash/7813d1590d28a7dd372ad54b5d29d033-Abstract.html) (kubilius, schrimpt, kar, …, yamins, dicarlo, 2019)
-      - [Combining Different V1 Brain Model Variants to Improve Robustness to Image Corruptions in CNNs](https://arxiv.org/abs/2110.10645) (baidya, dapello, dicarlo, & marques, 2021)
-  - [Surround Modulation: A Bio-inspired Connectivity Structure for Convolutional Neural Networks](https://proceedings.neurips.cc/paper/2019/hash/c535e3a7f97daf1c4b1eb03cc8e31623-Abstract.html) (hasani, …, aghajan, 2019) - add inhibitory lateral connections in CNNs
-  - [Biologically inspired protection of deep networks from adversarial attacks](https://arxiv.org/abs/1703.09202) (nayebi & ganguli, 2017) - change training to get highly nonlinear, saturated neural nets
-  - [Biological constraints on neural network models of cognitive function](https://www.nature.com/articles/s41583-021-00473-5) (pulvermuller, …, wennekers, 2021) - review on biological constraints
+  - Simulating a Primary Visual Cortex at the Front of CNNs Improves Robustness to Image Perturbations ([dapello…cox, dicarlo, 2020](https://proceedings.neurips.cc/paper/2020/hash/98b17f068d5d9b7668e19fb8ae470841-Abstract.html)) - biologically inspired early neural-network layers (gabors etc.) improve robustness of CNNs
+      - Brain-Like Object Recognition with High-Performing Shallow Recurrent ANNs ([kubilius, schrimpt, kar, …, yamins, dicarlo, 2019](https://proceedings.neurips.cc/paper/2019/hash/7813d1590d28a7dd372ad54b5d29d033-Abstract.html))
+      - Combining Different V1 Brain Model Variants to Improve Robustness to Image Corruptions in CNNs ([baidya, dapello, dicarlo, & marques, 2021](https://arxiv.org/abs/2110.10645))
+  - Surround Modulation: A Bio-inspired Connectivity Structure for Convolutional Neural Networks ([hasani, …, aghajan, 2019](https://proceedings.neurips.cc/paper/2019/hash/c535e3a7f97daf1c4b1eb03cc8e31623-Abstract.html)) - add inhibitory lateral connections in CNNs
+  - Biologically inspired protection of deep networks from adversarial attacks ([nayebi & ganguli, 2017](https://arxiv.org/abs/1703.09202)) - change training to get highly nonlinear, saturated neural nets
+  - Biological constraints on neural network models of cognitive function ([pulvermuller, …, wennekers, 2021](https://www.nature.com/articles/s41583-021-00473-5)) - review on biological constraints
   - [Disentangling with Biological Constraints: A Theory of Functional Cell Types](https://arxiv.org/abs/2210.01768)
   
 

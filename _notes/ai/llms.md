@@ -54,11 +54,11 @@ Here is a follow-up diagram showing how key-value caching works during inference
   - generator replaces many masked tokens with plausible samples - train with MLM
   - discriminator tries to guess which tokens were the masked ones - this is the main model that gets used
 - LongNet: Scaling Transformers to 1,000,000,000 Tokens ([ding, ..., wei, 2023](https://arxiv.org/abs/2307.02486)) - multiscale attention similar to wavelets
-  - Longformer: The Long-Document Transformer ([Beltagy, Peters, & Cohan 2020](https://arxiv.org/abs/2004.05150)) - processes very long contexts
-- PaLM: Scaling Language Modeling with Pathways ([Google 2022](https://arxiv.org/abs/2204.02311)) - 540 Billion params
+  - Longformer: The Long-Document Transformer ([beltagy, peters, & cohan 2020](https://arxiv.org/abs/2004.05150)) - processes very long contexts
+- PaLM: Scaling Language Modeling with Pathways ([google 2022](https://arxiv.org/abs/2204.02311)) - 540 Billion params
   - pathways hardware center allows for fast/efficient training
   - discontinuous improvements - at some point large model improves
-  - Chinchilla: Training Compute-Optimal LLMs ([DeepMind 2022](https://arxiv.org/abs/2203.15556))
+  - Chinchilla: Training Compute-Optimal LLMs ([deepmind 2022](https://arxiv.org/abs/2203.15556))
     - "chinchilla scaling laws" - for compute-optimal training, the model size and the number of training tokens should be scaled equally
 - T0 ([sanh...rush, 2022](https://arxiv.org/pdf/2110.08207.pdf)) - multitask training enables better zero-shot generalization
   - T5 ([raffel...liu, 2020](https://jmlr.org/papers/volume21/20-074/20-074.pdf)) -- text-to-text transfer transformer
@@ -79,8 +79,8 @@ Here is a follow-up diagram showing how key-value caching works during inference
   - BioGPT ([luo...poon, liu, 2022](https://academic.oup.com/bib/article-abstract/23/6/bbac409/6713511))
     - ChatDoctor (finetuned LLAMA) ([yunxiang, ..., you, 2023](https://arxiv.org/abs/2303.14070))
     - PubMedGPT (2.7B): ([bolton, hall, ..., manning, liang, 2022](https://crfm.stanford.edu/2022/12/15/pubmedgpt.html)) -> renamed to *BioMedLM*
-    - BioBERT: [A pre-trained biomedical language representation model for biomedical text mining](https://arxiv.org/abs/1901.08746) (2019)
-    - PubMedBERT: [Domain-Specific Language Model Pretraining for Biomedical Natural Language Processing](https://arxiv.org/abs/2007.15779) (gu...gao, poon, 2021)
+    - BioBERT: A pre-trained biomedical language representation model for biomedical text mining ([2019](https://arxiv.org/abs/1901.08746))
+    - PubMedBERT: Domain-Specific Language Model Pretraining for Biomedical Natural Language Processing ([gu...gao, poon, 2021](https://arxiv.org/abs/2007.15779))
     - Med-PaLM 2 ([google, 2023](https://arxiv.org/abs/2305.09617)) - state of the art QA
       - LLMs Encode Clinical Knowledge ([singhal, ..., natarajan, 2022, google/deepmind](https://arxiv.org/abs/2212.13138)) - introduce MultiMedQA dataset + derive Med-PaLM, a prompt-tuned version of PaLM
     - PMC-LLaMA ([wu et al. 2023](https://arxiv.org/pdf/2304.14454.pdf))
@@ -94,7 +94,7 @@ Here is a follow-up diagram showing how key-value caching works during inference
   - CLIP ([radford et al. 2021](https://cdn.openai.com/papers/Learning_Transferable_Visual_Models_From_Natural_Language.pdf)) - jointly train text/images
     - batch-based loss: encodings from same image/text pair should be close while encodings across different examples in the batch should be different
     - note: empirically works better with very large batch size
-  - DALL-E 2 ([OpenAI, 2022](https://openai.com/dall-e-2/))
+  - DALL-E 2 ([openai, 2022](https://openai.com/dall-e-2/))
     - clip is foundation as generative model
     - generates text + image embeddings
     - "prior network" maps text embedding to image embedding
@@ -103,7 +103,7 @@ Here is a follow-up diagram showing how key-value caching works during inference
     - Imagen ([google, 2022](https://arxiv.org/abs/2205.11487))
   - BLIP-2 ([salesforce, 2023](https://arxiv.org/abs/2301.12597)) - Bootstrapping Language-Image Pre-training with Frozen Image Encoders and LLMs  
     - BEiT-3 ([2022](https://arxiv.org/abs/2208.10442)) - treat vision as language and large-scale multimodal training
-    - outperforms [Flamingo](https://arxiv.org/abs/2204.14198) (2022), which uses more domain knowledge to connect vision & language
+    - outperforms Flamingo ([2022](https://arxiv.org/abs/2204.14198)), which uses more domain knowledge to connect vision & language
   - video
     - Text-To-4D Dynamic Scene Generation ([meta, 2023](https://arxiv.org/abs/2301.11280v1))
 
@@ -142,10 +142,10 @@ Here is a follow-up diagram showing how key-value caching works during inference
   - produce sql/python that then finds an answer ([cheng...zettlemoyer, smith, yu, 2022](https://arxiv.org/abs/2210.02875))
 
 - CODEX: Evaluating LLMs Trained on Code ([2021, openai](https://arxiv.org/abs/2107.03374))
-  - Repair Is Nearly Generation: Multilingual Program Repair with LLMs ([Joshi et al. 2022](https://arxiv.org/abs/2208.11640))
-  - Improving automatically generated code from Codex via Automated Program Repair ([Fan et al. 2022](https://arxiv.org/abs/2205.10583)) - use automated program repair to tweak codex outputs to make them better
-  - Generating Question Titles for Stack Overflow from Mined Code Snippets ([Gao et al. 2020](https://dl.acm.org/doi/abs/10.1145/3401026?casa_token=FEWYSo9ZmNIAAAAA:-_ZIkXQVUR3xYaB3NtrzBv0jZU6IZ6O4f_W_ZDtb6TipLBV4YHB-0lbO1JU8T9wwIl_jLBS3ts0))
-  - Automatic Program Repair with OpenAI's Codex: Evaluating QuixBugs ([Prenner & Robbes, 2021](https://arxiv.org/abs/2111.03922))
+  - Repair Is Nearly Generation: Multilingual Program Repair with LLMs ([joshi et al. 2022](https://arxiv.org/abs/2208.11640))
+  - Improving automatically generated code from Codex via Automated Program Repair ([fan et al. 2022](https://arxiv.org/abs/2205.10583)) - use automated program repair to tweak codex outputs to make them better
+  - Generating Question Titles for Stack Overflow from Mined Code Snippets ([gao et al. 2020](https://dl.acm.org/doi/abs/10.1145/3401026?casa_token=FEWYSo9ZmNIAAAAA:-_ZIkXQVUR3xYaB3NtrzBv0jZU6IZ6O4f_W_ZDtb6TipLBV4YHB-0lbO1JU8T9wwIl_jLBS3ts0))
+  - Automatic Program Repair with OpenAI's Codex: Evaluating QuixBugs ([prenner & robbes, 2021](https://arxiv.org/abs/2111.03922))
     - use prompt like:
 
       ```python
@@ -175,9 +175,9 @@ Here is a follow-up diagram showing how key-value caching works during inference
 - Infini-gram: Scaling Unbounded n-gram Language Models to a Trillion Tokens ([liu, min, zettlemoyer, choic, & hajishirzi, 2024](https://arxiv.org/pdf/2401.17377.pdf))
 
   - motivation: hard to scale ngram models to large datasets and large data lengths
-  - soln 1: backoff ([Jurafsky & Martin, 2000](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=uZg9l58AAAAJ&citation_for_view=uZg9l58AAAAJ:2osOgNQ5qMEC)) - select *n* based on the longest suffix of the prompt that has a non-zero count in the corpus
+  - soln 1: backoff ([jurafsky & martin, 2000](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=uZg9l58AAAAJ&citation_for_view=uZg9l58AAAAJ:2osOgNQ5qMEC)) - select *n* based on the longest suffix of the prompt that has a non-zero count in the corpus
     - counts of the next token yield the prob. of the next token
-    - Katz backoff ([Katz, 1987](https://ieeexplore.ieee.org/abstract/document/1165125)) discounts probs to yield valid prob. distr.
+    - Katz backoff ([katz, 1987](https://ieeexplore.ieee.org/abstract/document/1165125)) discounts probs to yield valid prob. distr.
   - soln 2: represent prob. table in [suffix array](https://en.wikipedia.org/wiki/Suffix_array) to make things very fast
     - suffix array stores address to each location in the training data alphabetically sorted
       - roughly the same size

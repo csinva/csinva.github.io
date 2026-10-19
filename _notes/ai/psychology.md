@@ -46,7 +46,7 @@ subtitle: Some notes on papers / books surrounding psychology, especially evolut
   - Grice’s maxims of conversation: quality, quantity, relation, and manner
     - only say what you believe; only say as much as is necessary; only say what is relevant; and say it in a nice way
 
-## [The structure and function of explanations](https://www.sciencedirect.com/science/article/abs/pii/S1364661306002117) (lombrozo 2006)
+## The structure and function of explanations ([lombrozo 2006](https://www.sciencedirect.com/science/article/abs/pii/S1364661306002117))
 
 - explanation structures
   - accommodate novel info in the context of prior beliefs

@@ -20,7 +20,7 @@ Complexity can be a useful notion for many things in statistical models. It can 
   - complexity takes the form of hierarchy
   - simon, 1981: complex systems are “made up of a large number of parts that have many interactions.”
 
-- [What is complexity?](http://cogprints.org/357/4/evolcomp.pdf) (edmonds 95)
+- What is complexity? ([edmonds 95](http://cogprints.org/357/4/evolcomp.pdf))
   - complexity is only really useful for comparisons
   - properties
     - size - makes things potentially complex
@@ -33,7 +33,7 @@ Complexity can be a useful notion for many things in statistical models. It can 
   - defn: "that property of a language expression which makes it difficult to formulate its overall behaviour even when given almost complete information about its atomic components and their inter-relations"
     - language matters - what about the system are we describing?
     - goal matters - what outcome are interested in?
-- [On Complexity and Emergence](https://arxiv.org/abs/nlin/0101006) (standish 01)
+- On Complexity and Emergence ([standish 01](https://arxiv.org/abs/nlin/0101006))
   - definition close to Kolmogorov / shannon entropy
   - adds context dependence
   - kolmogorov complexity = algorithmic information complexity
@@ -44,12 +44,12 @@ Complexity can be a useful notion for many things in statistical models. It can 
     - $C(x) = \lim _{\ell \to \infty} \log_2 N - \log_2 \omega (\ell, x)$
       - where C(x) is the complexity (measured in bits), $\ell(x)$ the length of the description, N the size of the alphabet used to encode the description and ω(ℓ,x) the size of the class of all descriptions of length less than ℓ equivalent to x.
   - emergence - ex. game of life
-- [What is complexity 2](https://link.springer.com/chapter/10.1007/978-3-642-50007-7_2) (Gell-Mann 02)
+- What is complexity 2 ([gell-mann 02](https://link.springer.com/chapter/10.1007/978-3-642-50007-7_2))
   - AIC - algorithmic information content - contains 2 terms
     - effective complexity (EC) = the length of a very concise description of an entity's regularities
       - regularities are judged subjectively (e.g. birds would judge a bird song's regularity)
     - 2nd term relating to random features
-- [complexity](http://www.scholarpedia.org/article/Complexity) (Sporns 07)
+- complexity ([sporns 07](http://www.scholarpedia.org/article/Complexity))
   - complexity = degree to which **components** engage in organized structured **interactions**
   - High complexity -> mixture of order and disorder (randomness and regularity) + have a high capacity to generate **emergent** phenomena.
   - 2 categories
@@ -63,14 +63,14 @@ Complexity can be a useful notion for many things in statistical models. It can 
 # computational complexity
 
 - amount of computational resource that it takes to solve a class of problem
-- [Computational complexity](https://dl.acm.org/citation.cfm?id=1074233) (Papadimitriou)
+- Computational complexity ([papadimitriou](https://dl.acm.org/citation.cfm?id=1074233))
   - like run times of algorithms etc. $O(n)$
-- [Parameterized complexity](https://www.researchgate.net/profile/Michael_Fellows/publication/2376092_Parameterized_Complexity/links/5419e9240cf25ebee98883da/Parameterized-Complexity.pdf) (Downey and Fellows)
+- Parameterized complexity ([downey and fellows](https://www.researchgate.net/profile/Michael_Fellows/publication/2376092_Parameterized_Complexity/links/5419e9240cf25ebee98883da/Parameterized-Complexity.pdf))
   - want to solve problems that are NP-hard or worse, so we isolate input into a parameter
 
 # bayesian model complexity
 
-- [Bayesian measures of model complexity and fit](https://rss.onlinelibrary.wiley.com/doi/full/10.1111/1467-9868.00353) (spiegelhalter et al.)
+- Bayesian measures of model complexity and fit ([spiegelhalter et al.](https://rss.onlinelibrary.wiley.com/doi/full/10.1111/1467-9868.00353))
 - AIC
 - BIC
 - [TIC](https://arxiv.org/pdf/1803.04947.pdf)
@@ -82,7 +82,7 @@ Complexity can be a useful notion for many things in statistical models. It can 
 
 # misc
 
-- [rashomon curves](https://arxiv.org/abs/1908.01755) (semenova & rudin, 2019)
+- rashomon curves ([semenova & rudin, 2019](https://arxiv.org/abs/1908.01755))
   - **rashomon effect** - many different explanations exist for same phenomenon
   - **rashomon set** - set of almost-equally accurate models for a given problem
   - **rashomon ratio** - ratio of volume of set of accurate models to the volume of the hypothesis space
@@ -117,7 +117,7 @@ Complexity can be a useful notion for many things in statistical models. It can 
 - can do this on an entire function class (e.g. all neural networks) or on a restricted subset (e.g. path during training)
 - [optimal learning via local entropies and sample compression](https://arxiv.org/pdf/1706.01124.pdf)
 - [risk bounds for statistical learning](https://arxiv.org/pdf/math/0702683.pdf)
-- [Chaining Mutual Information and Tightening Generalization Bounds](https://papers.nips.cc/paper/7954-chaining-mutual-information-and-tightening-generalization-bounds.pdf) (asadi et al. 2018)
+- Chaining Mutual Information and Tightening Generalization Bounds ([asadi et al. 2018](https://papers.nips.cc/paper/7954-chaining-mutual-information-and-tightening-generalization-bounds.pdf))
 - describing DNN paths
   - [Online Regularized Nonlinear Acceleration](https://arxiv.org/pdf/1805.09639.pdf) 
 
@@ -127,11 +127,11 @@ Complexity can be a useful notion for many things in statistical models. It can 
 
 - [a hessian-based complexity measure for dnns](https://arxiv.org/abs/1905.11639)with generalization and computation to a different form of stability
   - thm 3 - want function to be smooth wrt to augmented loss
-  - [complexity measure](http://proceedings.mlr.press/v89/liang19a/liang19a.pdf) (liang et al. 2019)
+  - complexity measure ([liang et al. 2019](http://proceedings.mlr.press/v89/liang19a/liang19a.pdf))
 
 # double descent
 
-- [Reconciling modern machine learning and the bias-variance trade-off](https://arxiv.org/abs/1812.11118) (belkin et al. 2018)
+- Reconciling modern machine learning and the bias-variance trade-off ([belkin et al. 2018](https://arxiv.org/abs/1812.11118))
 - [Surprises in High-Dimensional Ridgeless Least Squares Interpolation](https://arxiv.org/abs/1903.08560)
   - main result of limiting risk, where $\gamma \in (0, \infty)$:
     - $R(\gamma) = \begin{cases} \sigma^2 \frac{\gamma}{1-\gamma} & \gamma < 1\\||\beta||_2^2(1 - \frac 1 \gamma) + \sigma^2 \frac{1} {\gamma - 1} & \gamma > 1\end{cases}$
@@ -142,15 +142,15 @@ Complexity can be a useful notion for many things in statistical models. It can 
 - [effective degrees of freedom](https://web.stanford.edu/~hastie/Papers/df_paper_LJrev6.pdf)
 - [high-dimensional ridge](https://projecteuclid.org/euclid.aos/1519268430)
 - [Harmless interpolation of noisy data in regression](https://arxiv.org/abs/1903.09139) - bound on how well interpolative solns can generalize to fresh data (goes to zero with extra features)
-- [Deep Double Descent: Where Bigger Models and More Data Hurt](https://arxiv.org/abs/1912.02292) (nakkiran et al. 2019)
+- Deep Double Descent: Where Bigger Models and More Data Hurt ([nakkiran et al. 2019](https://arxiv.org/abs/1912.02292))
 
 
 
 ## linear models
 
-- [Degrees of Freedom and Model Search](https://arxiv.org/abs/1402.1920) (tibshirani 2014)
+- Degrees of Freedom and Model Search ([tibshirani 2014](https://arxiv.org/abs/1402.1920))
   - degrees of freedom = quantitative description of the amount of fitting performed by a given procedure
-- [linear smoothers and additive models](https://projecteuclid.org/download/pdf_1/euclid.aos/1176347115) (buja et al. 1989) see page 469 for degrees of freedom in ridge
+- linear smoothers and additive models ([buja et al. 1989](https://projecteuclid.org/download/pdf_1/euclid.aos/1176347115)) see page 469 for degrees of freedom in ridge
 
 # minimum description length
 
@@ -158,7 +158,7 @@ Complexity can be a useful notion for many things in statistical models. It can 
 - mdl in linear regression: want to send y over, X is known to both sides, theta is also sent (used to pick a decoder for y)
 	
 	- normalized maximum likelihood (nml): use theta to make codebook, then send code
-- [The Minimum Description Length Principle in Coding and Modeling](https://pdfs.semanticscholar.org/65d3/4977d9055f42e51dc1e7d9b4ca2f36c17537.pdf) (barron, rissanen, & yu, 98)
+- The Minimum Description Length Principle in Coding and Modeling ([barron, rissanen, & yu, 98](https://pdfs.semanticscholar.org/65d3/4977d9055f42e51dc1e7d9b4ca2f36c17537.pdf))
   - mdl: represent an entire class of prob. distrs. as models by a single "universal" representative model such that it would be able to imitate the behavior of any model in the class. The best model class for a set of observed data, then, is the one whose representative premits the shortest coding of the data
   - tradeoff: "good" prob. models for the data permit shorter code lengths
     - generally agrees w/ low mse
@@ -166,7 +166,7 @@ Complexity can be a useful notion for many things in statistical models. It can 
   - mdl
     - likelihood = summarize data in accodance / model (e.g. $P(y|x, \theta)$)
     - parametric complexity = summarize model params
-- [Model Selection and the Principle of Minimum Description Length](https://www.tandfonline.com/doi/abs/10.1198/016214501753168398) (hansen & yu 2001)
+- Model Selection and the Principle of Minimum Description Length ([hansen & yu 2001](https://www.tandfonline.com/doi/abs/10.1198/016214501753168398))
   - mdl: choose the model that gives the shortest description of data
     - description length = length of binary string used to code the data
     - using a prob distr. for coding/description purposes doesn't require that it actually generate our data
@@ -181,7 +181,7 @@ Complexity can be a useful notion for many things in statistical models. It can 
     - mixture
     - predictive
     - normalized maximum likelihood (NML)
-- [mdl intro](http://www.scholarpedia.org/article/Minimum_description_length) (Rissanen, 2008) - scholarpedia
+- mdl intro ([rissanen, 2008](http://www.scholarpedia.org/article/Minimum_description_length)) - scholarpedia
   - coding just the data would be like maximum likelihood
   - minimize $\underset{\text{log-likelihood}}{-\log P(y^n|x^n;\theta)} + \underset{\text{description length}}{L(\theta)}$
     - ex. OLS
@@ -206,23 +206,23 @@ Complexity can be a useful notion for many things in statistical models. It can 
   - *Minimum Description Length*, *MDL*, principle for model selection, of which the original form states that the best model is the one which permits the shortest encoding of the data and the model itself
 - *note: this type of complexity applies to the description, not the system*
 - Look into the neurips [paper](https://papers.nips.cc/paper/7954-chaining-mutual-information-and-tightening-generalization-bounds.pdf) on using mutual information and entropy and this [paper](https://projecteuclid.org/download/pdf_1/euclid.aos/1017939142) by barron that related covering balls etc to minimax bounds
-- [Information Theory in Probability Statistics Learning and Neural Nets](http://www.stat.yale.edu/~arb4/publications_files/COLT97.pdf) (barron 97)
-- [Information-Theoretic Asymptotics of Bayes Methods](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=54897) (Clarke & Barron 90)
+- Information Theory in Probability Statistics Learning and Neural Nets ([barron 97](http://www.stat.yale.edu/~arb4/publications_files/COLT97.pdf))
+- Information-Theoretic Asymptotics of Bayes Methods ([clarke & barron 90](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=54897))
 
 ## mdl in non-linear models
 
-- [MDL-based Decision Tree Pruning](https://www.aaai.org/Papers/KDD/1995/KDD95-025.pdf) (mehta et al. 95)
+- MDL-based Decision Tree Pruning ([mehta et al. 95](https://www.aaai.org/Papers/KDD/1995/KDD95-025.pdf))
 - deep learning
   - high-level
     - most unsupervised learning can be thought of as mdl
     - to compress the data we must take advantage of mutual info between x and y
-  - [Learning Population Codes by Minimizing Description Length](https://www.cs.toronto.edu/~hinton/absps/mdlpop.pdf) (zemel & hinton 1995)
-  - [Keeping Neural Networks Simple by Minimizing the Description Length of the Weights](http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.44.3435) (hinton & van camp 1993)
-  - [The Description Length of Deep Learning Models](https://arxiv.org/pdf/1802.07044.pdf) (blier & ollivier 2018)
+  - Learning Population Codes by Minimizing Description Length ([zemel & hinton 1995](https://www.cs.toronto.edu/~hinton/absps/mdlpop.pdf))
+  - Keeping Neural Networks Simple by Minimizing the Description Length of the Weights ([hinton & van camp 1993](http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.44.3435))
+  - The Description Length of Deep Learning Models ([blier & ollivier 2018](https://arxiv.org/pdf/1802.07044.pdf))
     - compress using prequential mdl
-  - [mdl for attention](https://arxiv.org/abs/1902.10658?utm_source=share&utm_medium=ios_app&utm_name=iossmf) (lin 2019)
-- [Lightlike Neuromanifolds, Occam’s Razor and Deep Learning](https://pdfs.semanticscholar.org/9c61/2ea1d8e8c9ce75427f5fd879a367210c2cc7.pdf) (sun & nielsen 2019)
+  - mdl for attention ([lin 2019](https://arxiv.org/abs/1902.10658?utm_source=share&utm_medium=ios_app&utm_name=iossmf))
+- Lightlike Neuromanifolds, Occam’s Razor and Deep Learning ([sun & nielsen 2019](https://pdfs.semanticscholar.org/9c61/2ea1d8e8c9ce75427f5fd879a367210c2cc7.pdf))
   - "A new MDL formulation which can explain the double descent risk curve of deep learning"
-- [Towards Learning Convolutions from Scratch](https://arxiv.org/pdf/2007.13657v1.pdf) (neyshabur 2020)
+- Towards Learning Convolutions from Scratch ([neyshabur 2020](https://arxiv.org/pdf/2007.13657v1.pdf))
   - uses some mdl as guiding principles
   - training with $\beta$-lasso, fc weights become very local

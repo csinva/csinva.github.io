@@ -89,8 +89,8 @@ typora-copy-images-to: ../assets
 
 ## facial rec. demographic benchmarking
 
-- [gender shades](http://proceedings.mlr.press/v81/buolamwini18a/buolamwini18a.pdf) (Buolamwini & gebru, 2018)
-- [Face Recognition Vendor Test (FRVT) Part 3: Demographic Effects](https://nvlpubs.nist.gov/nistpubs/ir/2019/NIST.IR.8280.pdf) (grother et al. 2019), NIST
+- gender shades ([buolamwini & gebru, 2018](http://proceedings.mlr.press/v81/buolamwini18a/buolamwini18a.pdf))
+- Face Recognition Vendor Test (FRVT) Part 3: Demographic Effects ([grother et al. 2019](https://nvlpubs.nist.gov/nistpubs/ir/2019/NIST.IR.8280.pdf)), NIST
   - facial rec types
     - 1: 1 == **verification**
     - 1: N == **identification**
@@ -111,7 +111,7 @@ typora-copy-images-to: ../assets
       - a few systems have been able to remove bias in these false positives
     - did not analyze cause and effect
       - don't consider skin tone
-- [Saving Face: Investigating the Ethical Concerns of Facial Recognition Auditing](https://dl.acm.org/doi/pdf/10.1145/3375627.3375820) (2020)
+- Saving Face: Investigating the Ethical Concerns of Facial Recognition Auditing ([2020](https://dl.acm.org/doi/pdf/10.1145/3375627.3375820))
 
 ## legal perspectives
 
@@ -119,7 +119,7 @@ typora-copy-images-to: ../assets
 
 
 
-**[ALGORITHMIC ACCOUNTABILITY: A LEGAL AND ECONOMIC FRAMEWORK](http://faculty.haas.berkeley.edu/morse/research/papers/AlgorithmicAccountability_BartlettMorseStantonWallace.pdf) (2020)**
+**ALGORITHMIC ACCOUNTABILITY: A LEGAL AND ECONOMIC FRAMEWORK ([2020](http://faculty.haas.berkeley.edu/morse/research/papers/AlgorithmicAccountability_BartlettMorseStantonWallace.pdf))**
 
 - Title VII defines accountability under under U.S. antidiscrimination law
   - protected attributes: sex, religion, national origin, color
@@ -170,7 +170,7 @@ typora-copy-images-to: ../assets
 
 - [Large image datasets: A pyrrhic win for computer vision?](https://openreview.net/pdf?id=s-e2zaAlG3I) - bias in imagenet / tiny images
 - http://positivelysemidefinite.com/2020/06/160k-students.html
-- [How AI fails us](https://www.ethics.harvard.edu/files/center-for-ethics/files/howai_fails_us_2.pdf) (2021) - alternative to AEAI is not a singular, narrow focus on a specific goal (e.g. AGI), but support for a plurality of complementary and dispersed approaches to developing technology to support the plurality and plasticity of human goals that exist inside the boundaries of a human rights framework
+- How AI fails us ([2021](https://www.ethics.harvard.edu/files/center-for-ethics/files/howai_fails_us_2.pdf)) - alternative to AEAI is not a singular, narrow focus on a specific goal (e.g. AGI), but support for a plurality of complementary and dispersed approaches to developing technology to support the plurality and plasticity of human goals that exist inside the boundaries of a human rights framework
 
 
 # ethics
@@ -191,7 +191,7 @@ typora-copy-images-to: ../assets
 
 ## moral trade
 
-- [Moral Trade](https://www.fhi.ox.ac.uk/wp-content/uploads/moral-trade-1.pdf) (ord 2015) - **moral trade** = trade that is made possible by differences in the parties' moral views
+- Moral Trade ([ord 2015](https://www.fhi.ox.ac.uk/wp-content/uploads/moral-trade-1.pdf)) - **moral trade** = trade that is made possible by differences in the parties' moral views
 - examples
   - one trading their eating meat for another donating more to a certain charity they both believe in
   - donating to/against political parties
@@ -216,7 +216,7 @@ typora-copy-images-to: ../assets
 
 - **social determinism** - theory that social interactions and constructs alone determine individual behavior
 - **technological determinism** - theory that assumes that a society's technology determines the development of its social structure and cultural values
-- [do artifacts have politics?](https://www.cc.gatech.edu/~beki/cs4001/Winner.pdf) (winner 2009)
+- do artifacts have politics? ([winner 2009](https://www.cc.gatech.edu/~beki/cs4001/Winner.pdf))
     - **politics** - arrangements of power and authority in human associations as well as the activitites that take place within those arrangements
     - **technology** -  smaller or larger pieces or systems of hardware of a specific kind. 
     - examples
@@ -233,7 +233,7 @@ typora-copy-images-to: ../assets
       - ex. "If man, by dint of his knowledge and inventive genius has subdued the forces of nature, the latter avenge themselves upon him by subjecting him, insofar as he employs them, to a veritable despotism independent of all social organization."
       - attempts to justify strong authority on the basis of supposedly necessary conditions of technical practice have an ancient history. 
 - [Disembodied Machine Learning: On the Illusion of Objectivity in NLP](https://openreview.net/pdf?id=fkAxTMzy3fs)
-- [less work for mother](https://www.americanheritage.com/less-work-mother) (cowan 1987) - technologies that seem like they save time rarely do (although they increase "productivity")
+- less work for mother ([cowan 1987](https://www.americanheritage.com/less-work-mother)) - technologies that seem like they save time rarely do (although they increase "productivity")
 - [The Concept of Function Creep](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3547903) - “Function creep denotes an imperceptibly transformative and therewith contestable change in a data-processing system’s proper activity.”
 
 
@@ -270,7 +270,7 @@ typora-copy-images-to: ../assets
 
 - [Essays: Cybersecurity for the Public Interest - Schneier on Security](https://www.schneier.com/essays/archives/2019/02/public-interest_tech.html)
 
-- [Machine Learning that Matters](https://arxiv.org/abs/1206.4656) (wagstaff, 2021)
+- Machine Learning that Matters ([wagstaff, 2021](https://arxiv.org/abs/1206.4656))
   - doesn't make sense to compare the same metrics across different dsets (e.g. AUC over entire domain doesn't matter)
   - classification / regr. are overemphasized ([langley, 2011](https://link.springer.com/content/pdf/10.1007/s10994-011-5242-y.pdf))
 

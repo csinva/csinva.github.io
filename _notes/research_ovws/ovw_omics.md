@@ -19,7 +19,7 @@ subtitle: Some papers involving proteins and ml, especially predicting protein s
 - [protein databank](https://www.rcsb.org/) (PDB)
 - rna
   - ~~[RNABase: an annotated database of RNA structures](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC165459/)~~ (2003) - no longer maintained
-  - [Accurate SHAPE-directed RNA structure determination | PNAS](https://www.pnas.org/content/106/1/97) (deigan et al. 2009) - chemical probing
+  - Accurate SHAPE-directed RNA structure determination | PNAS ([deigan et al. 2009](https://www.pnas.org/content/106/1/97)) - chemical probing
 
 
 ## code
@@ -31,7 +31,7 @@ subtitle: Some papers involving proteins and ml, especially predicting protein s
     - [spot rna](https://github.com/jaswindersingh2/SPOT-RNA) / [spot rna2](https://github.com/jaswindersingh2/SPOT-RNA2)
       - uses an Ensemble of Two-dimensional Deep Neural Networks and Transfer Learning
 
-    - [mxfold2](https://github.com/keio-bioinformatics/mxfold2/) (sato et al. 2021)
+    - mxfold2 ([sato et al. 2021](https://github.com/keio-bioinformatics/mxfold2/))
 
 
 # rna structure prediction
@@ -60,7 +60,7 @@ subtitle: Some papers involving proteins and ml, especially predicting protein s
 
 ## algorithms
 
-- [computational bio book ch 10](https://ocw.mit.edu/ans7870/6/6.047/f15/MIT6_047F15_Compiled.pdf) (kellis, 2016)
+- computational bio book ch 10 ([kellis, 2016](https://ocw.mit.edu/ans7870/6/6.047/f15/MIT6_047F15_Compiled.pdf))
   - 2 main approaches to rna folding (i.e. predicting rna structure): 
     - (1) thermodynamic stability of the molecule 
     - (2) probabilistic models 
@@ -73,12 +73,12 @@ subtitle: Some papers involving proteins and ml, especially predicting protein s
     - dynamic programming approach: given energy value for each pair, minimize total energy by pairing up appropriate base pairs
       - **assumption**: no crossings - given a subsequence $[i,j]$, there is either no edge connecting to the ith base (meaning it is unpaired) or there is some edge connecting the ith base to the kth base where $i < k \leq j$ (meaning the ith base is paired to the kth base)
         - this induces a tree-structure to theh problem
-      - [nussinov algorithm](https://www.pnas.org/content/77/11/6309.short) (1978) 
+      - nussinov algorithm ([1978](https://www.pnas.org/content/77/11/6309.short)) 
         - ignores stacking interactions between neighboring pairs (i.e. assumes there are no pseudo-knots)
-      - [zuker algorithm](https://academic.oup.com/nar/article-abstract/9/1/133/1043226) (1981) - includes stacking energies
+      - zuker algorithm ([1981](https://academic.oup.com/nar/article-abstract/9/1/133/1043226)) - includes stacking energies
   - probabilistic approach - uses more statistical likelihood
     - stochastic context-free grammer (SCFG) is like an extension of HMM that incorporates some RNA constraints (e.g. bonds must happen between pairs)
-- [Recent advances in RNA folding - ScienceDirect](https://www.sciencedirect.com/science/article/pii/S0168165617315195) (fallmann et al. 2017)
+- Recent advances in RNA folding - ScienceDirect ([fallmann et al. 2017](https://www.sciencedirect.com/science/article/pii/S0168165617315195))
   - algorithmic advances
     - algorithmic constraints
       - locality - restrict maximal span of base pairs
@@ -91,11 +91,11 @@ subtitle: Some papers involving proteins and ml, especially predicting protein s
     - computing alignments is non-obvious in these representations
     - centroids - structures with a minimum distance to all other structures in the ensemble of possible structures
     - consensus structures - given a good alignment of a collection of related RNA structures, can compute their consensus structure, (i.e., a set of base pairs at corresponding alignment positions)
-- [Folding and Finding RNA Secondary Structure](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2982177/) (matthews et al. 2010)
+- Folding and Finding RNA Secondary Structure ([matthews et al. 2010](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2982177/))
 - new work drops the assumption of no knots (e.g. crossings)
   - project to topology (e.g. low/high genus) - e.g. projecting to a torus can remove crossings but still allow us to use dynamic programming
 
-- [RNA secondary structure prediction using deep learning with thermodynamic integration](https://www.nature.com/articles/s41467-021-21194-4) (sato et al. 2021)
+- RNA secondary structure prediction using deep learning with thermodynamic integration ([sato et al. 2021](https://www.nature.com/articles/s41467-021-21194-4))
   - RNA-folding scores learnt using a DNN are integrated together with Turner’s nearest-neighbor free energy parameters
     - DNN predicts scores that are fed into zuker-style dynamic programming
 
@@ -118,7 +118,7 @@ subtitle: Some papers involving proteins and ml, especially predicting protein s
       - generator proposes new structures (e.g. MCMC)
       - discriminator decides which is the most stable - 3 types of energy to consider
     3. output - sometimes pick lowest energy structure, somestimes cluster low-energy clusters and pick centroid
-    4. all-atom structure reconstruction - the fragment matching algorithm ([Jonikas et al., 2009a](https://academic.oup.com/bioinformatics/article-abstract/25/24/3259/235032)) is often used, followed by structure refinement to remove steric clashes and chain breaks
+    4. all-atom structure reconstruction - the fragment matching algorithm ([jonikas et al., 2009a](https://academic.oup.com/bioinformatics/article-abstract/25/24/3259/235032)) is often used, followed by structure refinement to remove steric clashes and chain breaks
   - 12 papers that differ slightly in these steps
     - ex. graph-based: 2d structure mapped to a graph
     - three open-source papers that yield all-atom structure
@@ -157,9 +157,9 @@ subtitle: Some papers involving proteins and ml, especially predicting protein s
 
 ## deep-learning papers
 
-- [De novo protein design by deep network hallucination | Nature](https://www.nature.com/articles/s41586-021-04184-w) (anishchenko...baker, 2021)
+- De novo protein design by deep network hallucination | Nature ([anishchenko...baker, 2021](https://www.nature.com/articles/s41586-021-04184-w))
   - deep networks trained to predict native protein structures from their sequences can be inverted to design new proteins
-- [Highly accurate protein structure prediction with AlphaFold | Nature](https://www.nature.com/articles/s41586-021-03819-2) (jumper, ..., hassabis, 2021)
+- Highly accurate protein structure prediction with AlphaFold | Nature ([jumper, ..., hassabis, 2021](https://www.nature.com/articles/s41586-021-03819-2))
   - [supp](https://static-content.springer.com/esm/art%3A10.1038%2Fs41586-021-03819-2/MediaObjects/41586_2021_3819_MOESM1_ESM.pdf)
   - [best blog post](https://www.blopig.com/blog/2021/07/alphafold-2-is-here-whats-behind-the-structure-prediction-miracle/) ([other blog post](https://towardsdatascience.com/unfolding-alphafold-683d576a54a3))
   - model overview
@@ -176,7 +176,7 @@ subtitle: Some papers involving proteins and ml, especially predicting protein s
   - structure model - converts msa/pair representations into set of (x,y,z) coordinates
     - "invariant point attention" - invariance to translations and rotations
     - predicts a global frame (residue gas)
-- [MSA Transformer](https://proceedings.mlr.press/v139/rao21a.html) (rao et al. 2021) - predicts contact prediction
+- MSA Transformer ([rao et al. 2021](https://proceedings.mlr.press/v139/rao21a.html)) - predicts contact prediction
   - train via masking
   - output (contact prediction) is just linear combination of attention heads finetuned on relatively little data
   - some architecture tricks
@@ -187,7 +187,7 @@ subtitle: Some papers involving proteins and ml, especially predicting protein s
 
 ## covid
 
-- [The Coronavirus Nucleocapsid Is a Multifunctional Protein](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4147684/) (mcbride et al. 2014)
+- The Coronavirus Nucleocapsid Is a Multifunctional Protein ([mcbride et al. 2014](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4147684/))
   - coronavirus nucleocapsid = N protein
 
 
@@ -217,7 +217,7 @@ subtitle: Some papers involving proteins and ml, especially predicting protein s
 - note: HIV mutates very fast so a TIP in a single person sees a lot of variants
   - HIP also enters the genome (so corresponding TIP does this as well)
 
-- [Identification of a therapeutic interfering particle—A single-dose SARS-CoV-2 antiviral intervention with a high barrier to resistance](https://www.sciencedirect.com/science/article/pii/S0092867421013192?dgcid=coauthor) (chaturvedi...weinberger, 2021)
+- Identification of a therapeutic interfering particle—A single-dose SARS-CoV-2 antiviral intervention with a high barrier to resistance ([chaturvedi...weinberger, 2021](https://www.sciencedirect.com/science/article/pii/S0092867421013192?dgcid=coauthor))
   - DIP = defective interfering particle = wild-type virus
   - single administration of TIP RNA inhibits SARS-CoV-2 sustainably in continuous cultures
   - in hamsters, both prophylactic and therapeutic intranasal administration of lipid-nanoparticle TIPs durably suppressed SARS-CoV-2 by 100-fold in the lungs, reduced pro-inflammatory cytokine expression, and prevented severe pulmonary edema

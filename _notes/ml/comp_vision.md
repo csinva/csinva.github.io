@@ -22,7 +22,7 @@ category: ml
     - classification: non-trivial to define a goodness of fit measure for the landmarks - something like distance between points and strongest nearby edges
     - active shape model - for each landmark, look for nearby groundtruth, adapt PCA values, apply reasonable constraints, then iterate
       - improve speed by doing this at large scales before going to more detailed scales
-- [snakes - active contour models](https://idp.springer.com/authorize/casa?redirect_uri=https://link.springer.com/content/pdf/10.1007/BF00133570.pdf&casa_token=fbscwBB1K_cAAAAA:Qw7Ch9Aa1yKyRFheBNT81ZANMWpjSDwrG1P-_sgL8KkoKAlfgifi36SGO-iFLvb7l5B2HqF4m7b7UZIdXg) (kass et al. 1988)
+- snakes - active contour models ([kass et al. 1988](https://idp.springer.com/authorize/casa?redirect_uri=https://link.springer.com/content/pdf/10.1007/BF00133570.pdf&casa_token=fbscwBB1K_cAAAAA:Qw7Ch9Aa1yKyRFheBNT81ZANMWpjSDwrG1P-_sgL8KkoKAlfgifi36SGO-iFLvb7l5B2HqF4m7b7UZIdXg))
   - deformable spline - pulled towards object contours while internal forces resist deformation
 
 # what's in an image?
@@ -248,7 +248,7 @@ category: ml
       - anything that's not a local maximum is set to 0
       - on line direction, require a weighted average to interpolate between points (bilinear interpolation = average on edges, then average those points)
   4. **hysteresis thresholding** - high threshold to start edge curves then low threshold to continue them
-- [Scale-space and edge detection using anisotropic diffusion](https://ieeexplore.ieee.org/abstract/document/56205) (perona & malik 1990)
+- Scale-space and edge detection using anisotropic diffusion ([perona & malik 1990](https://ieeexplore.ieee.org/abstract/document/56205))
   - introduces **anisotropic diffusion** (see [wiki page](https://en.wikipedia.org/wiki/Anisotropic_diffusion)) - removes image noise without removing content
   - produces series of images, similar to repeatedly convolving with Gaussian
 - filter review
@@ -706,10 +706,10 @@ category: ml
 
 ## unsupervised keypoint learning
 
-- [Unsupervised Learning of Visual 3D Keypoints for Control](https://arxiv.org/abs/2106.07643) (chen, abbeel, & pathak, 2021) - learn keypoints unsupervised from video
-- [KeypointDeformer: Unsupervised 3D Keypoint Discovery for Shape Control](https://tomasjakab.github.io/KeypointDeformer/) (jakab...kanazawa, 2021) - learn to predict keypoints completely unsupervised
+- Unsupervised Learning of Visual 3D Keypoints for Control ([chen, abbeel, & pathak, 2021](https://arxiv.org/abs/2106.07643)) - learn keypoints unsupervised from video
+- KeypointDeformer: Unsupervised 3D Keypoint Discovery for Shape Control ([jakab...kanazawa, 2021](https://tomasjakab.github.io/KeypointDeformer/)) - learn to predict keypoints completely unsupervised
   - can also manipulate keypoints and generate new shape
-- [Lions and Tigers and Bears: Capturing Non-Rigid, 3D, Articulated Shape From Images](https://openaccess.thecvf.com/content_cvpr_2018/html/Zuffi_Lions_and_Tigers_CVPR_2018_paper.html) (zuffi, kanazawa, & black, 2018) - capture 3d shape of animals using 2d images alone
-- [Self-Supervised Learning of Interpretable Keypoints From Unlabelled Videos](https://openaccess.thecvf.com/content_CVPR_2020/html/Jakab_Self-Supervised_Learning_of_Interpretable_Keypoints_From_Unlabelled_Videos_CVPR_2020_paper.html) (jakab et al. 2020 cvpr) - recognize pose uses unlabelled videos + weak empirical prior on the object poses
-- [Unsupervised Object Keypoint Learning using Local Spatial Predictability](https://openreview.net/forum?id=GJwMHetHc73) (gopalakrishnan...schmidhuber, 2021) - identifies salient regions by trying to predict local image regions from spatial neighborhoods
+- Lions and Tigers and Bears: Capturing Non-Rigid, 3D, Articulated Shape From Images ([zuffi, kanazawa, & black, 2018](https://openaccess.thecvf.com/content_cvpr_2018/html/Zuffi_Lions_and_Tigers_CVPR_2018_paper.html)) - capture 3d shape of animals using 2d images alone
+- Self-Supervised Learning of Interpretable Keypoints From Unlabelled Videos ([jakab et al. 2020 cvpr](https://openaccess.thecvf.com/content_CVPR_2020/html/Jakab_Self-Supervised_Learning_of_Interpretable_Keypoints_From_Unlabelled_Videos_CVPR_2020_paper.html)) - recognize pose uses unlabelled videos + weak empirical prior on the object poses
+- Unsupervised Object Keypoint Learning using Local Spatial Predictability ([gopalakrishnan...schmidhuber, 2021](https://openreview.net/forum?id=GJwMHetHc73)) - identifies salient regions by trying to predict local image regions from spatial neighborhoods
   - applications to Atari

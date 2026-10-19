@@ -39,7 +39,7 @@ For neural-net specific transferring see [📌 adaption/transfer](https://csinva
   - Spectral Decoupling (SD, [Pezeshki et al., 2020](https://arxiv.org/abs/2011.09468)) - regularization which forces model to learn more predictive features, even when only a few suffice
 - embedding prior knowledge
   - Style Agnostic Networks (SagNet, [Nam et al., 2020](https://arxiv.org/abs/1910.11645)) - penalize style features (assumed to be spurious)
-  - Penalizing explanations ([Rieger et al. 2020](https://arxiv.org/abs/1909.13584)) - penalize spurious features using prior knowledge
+  - Penalizing explanations ([rieger et al. 2020](https://arxiv.org/abs/1909.13584)) - penalize spurious features using prior knowledge
 - Domain adaptation under structural causal models ([chen & buhlmann, 2020]((https://arxiv.org/abs/2010.15764)))
   - make clearer assumptions for domain adaptation to work
   - introduce CIRM, which works better when both covariates and labels are perturbed in target data
@@ -61,7 +61,7 @@ For neural-net specific transferring see [📌 adaption/transfer](https://csinva
 - Maximum Mean Discrepancy (MMD, [Li et al., 2018](https://openaccess.thecvf.com/content_cvpr_2018/papers/Li_Domain_Generalization_With_CVPR_2018_paper.pdf))
 - adversarial discriminative domain adaptation (ADDA [tzeng et al. 2017](https://arxiv.org/abs/1702.05464))
 - balancing with [importance weighting](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.370.4921&rep=rep1&type=pdf)
-- [Learning Robust Representations by Projecting Superficial Statistics Out](https://arxiv.org/abs/1903.06256) (wang et al. 2019)
+- Learning Robust Representations by Projecting Superficial Statistics Out ([wang et al. 2019](https://arxiv.org/abs/1903.06256))
 
 ## feature learning
 
@@ -69,7 +69,7 @@ For neural-net specific transferring see [📌 adaption/transfer](https://csinva
 
 ## dynamic selection
 
-*Dynamic Selection (DS) refers to techniques in which, for a new test point, pre-trained classifiers are selected/combined from a pool at test time  [review paper](https://www.etsmtl.ca/Unites-de-recherche/LIVIA/Recherche-et-innovation/Publications/Publications-2017/RCruz_InfoFusion.pdf) (cruz et al. 2018), [python package](https://github.com/scikit-learn-contrib/DESlib)*
+*Dynamic Selection (DS) refers to techniques in which, for a new test point, pre-trained classifiers are selected/combined from a pool at test time  review paper ([cruz et al. 2018](https://www.etsmtl.ca/Unites-de-recherche/LIVIA/Recherche-et-innovation/Publications/Publications-2017/RCruz_InfoFusion.pdf)), [python package](https://github.com/scikit-learn-contrib/DESlib)*
 
 1. define region of competence
    1. clustering
@@ -111,7 +111,7 @@ For neural-net specific transferring see [📌 adaption/transfer](https://csinva
 - attacks
   - fast gradient step method - keep adding gradient to maximize noise (limit amplitude of pixel's channel to stay imperceptible)
   - Barrage of Random Transforms for Adversarially Robust Defense ([raff et al. 2019](http://openaccess.thecvf.com/content_CVPR_2019/papers/Raff_Barrage_of_Random_Transforms_for_Adversarially_Robust_Defense_CVPR_2019_paper.pdf)) 
-  - DeepFool: a simple and accurate method to fool deep neural networks ([Moosavi-Dezfooli et. al 2016](https://arxiv.org/abs/1511.04599))
+  - DeepFool: a simple and accurate method to fool deep neural networks ([moosavi-dezfooli et. al 2016](https://arxiv.org/abs/1511.04599))
 - defenses
   - Adversarial training -  training data is augmented with adv examples (Szegedy et al., 2014b; Madry et al., 2017; Tramer et al., 2017; Yu et al., 2019)
     - $$\min _{\boldsymbol{\theta}} \frac{1}{N} \sum_{n=1}^{N} \operatorname{Loss}\left(f_{\theta}\left(x_{n}\right), y_{n}\right)+\lambda\left[\max _{\|\delta\|_{\infty} \leq \epsilon} \operatorname{Loss}\left(f_{\theta}\left(x_{n}+\delta\right), y_{n}\right)\right]$$
@@ -123,26 +123,26 @@ For neural-net specific transferring see [📌 adaption/transfer](https://csinva
   - Manifold projections: an input sample is projected in a lower dimensional space in which the neural network has been trained to be particularly robust (Ilyas et al., 2017; Lamb et al., 2018)
   - Regularization in the loss function: an additional penalty term is added to the optimized objective function to upper bound or to approximate the adversarial loss (Hein and Andriushchenko, 2017; Yan et al., 2018)
   - constraint
-    - robustness as a constraint not a loss ([Constrained Learning with Non-Convex Losses](https://arxiv.org/abs/2103.05134) (chamon et al. 2021))
+    - robustness as a constraint not a loss (Constrained Learning with Non-Convex Losses ([chamon et al. 2021](https://arxiv.org/abs/2103.05134)))
       - $$\begin{aligned}
         \min _{\boldsymbol{\theta}} & \frac{1}{N} \sum_{n=1}^{N} \operatorname{Loss}\left(f_{\theta}\left(x_{n}\right), y_{n}\right) \\
         \text { subject to } & \frac{1}{N} \sum_{n=1}^{N}\left[\max _{\|\delta\|_{\infty} \leq \epsilon} \operatorname{Loss}\left(f_{\theta}\left(\boldsymbol{x}_{n}+\delta\right), y_{n}\right)\right] \leq c
         \end{aligned}$$
       - when penalty is convex, these 2 problems are the same
-  - a possible defense against adversarial attacks is to solve the anticausal classification problem by modeling the causal generative direction, a method which in vision is referred to as *analysis by synthesis* ([Schott et al., 2019](https://arxiv.org/abs/1805.09190))
+  - a possible defense against adversarial attacks is to solve the anticausal classification problem by modeling the causal generative direction, a method which in vision is referred to as *analysis by synthesis* ([schott et al., 2019](https://arxiv.org/abs/1805.09190))
 - robustness vs accuracy
-  - [robustness may be at odds with accuracy](https://openreview.net/pdf?id=SyxAb30cY7) (tsipiras...madry, 2019)
-  - [Precise Tradeoffs in Adversarial Training for Linear Regression](https://arxiv.org/abs/2002.10477) (javanmard et al. 2020) - linear regression with gaussian features
+  - robustness may be at odds with accuracy ([tsipiras...madry, 2019](https://openreview.net/pdf?id=SyxAb30cY7))
+  - Precise Tradeoffs in Adversarial Training for Linear Regression ([javanmard et al. 2020](https://arxiv.org/abs/2002.10477)) - linear regression with gaussian features
     - use adv. training formula above
-  - [Theoretically Principled Trade-off between Robustness and Accuracy](https://arxiv.org/abs/1901.08573) (Zhang, ..., el ghaoui, Jordan, 2019)
+  - Theoretically Principled Trade-off between Robustness and Accuracy ([zhang, ..., el ghaoui, jordan, 2019](https://arxiv.org/abs/1901.08573))
 - adversarial examples
-  - [Decision Boundary Analysis of Adversarial Examples ](https://pdfs.semanticscholar.org/08c5/88465b7d801ad912ef3e9107fa511ea0e403.pdf)(He, Li, & Song 2019)
-  - [Natural Adversarial Examples](https://arxiv.org/abs/1907.07174) (Hendrycks, Zhao, Basart, Steinhardt, & Song 2020)
-  - [Image-Net-Trained CNNs Are Biased Towards Texture](https://openreview.net/pdf?id=Bygh9j09KX) (Geirhos et al. 2019)
+  - Decision Boundary Analysis of Adversarial Examples  ([he, li, & song 2019](https://pdfs.semanticscholar.org/08c5/88465b7d801ad912ef3e9107fa511ea0e403.pdf))
+  - Natural Adversarial Examples ([hendrycks, zhao, basart, steinhardt, & song 2020](https://arxiv.org/abs/1907.07174))
+  - Image-Net-Trained CNNs Are Biased Towards Texture ([geirhos et al. 2019](https://openreview.net/pdf?id=Bygh9j09KX))
 - adversarial transferability
-  - [Transferability in Machine Learning: from Phenomena to Black-Box Attacks using Adversarial Samples](https://arxiv.org/abs/1605.07277) (papernot, mcdaniel, & goodfellow, 2016)
-  - [Ensemble Adversarial Training: Attacks and Defenses](https://arxiv.org/pdf/1705.07204.pdf) (tramer et al. 2018)
-  - [Improving Adversarial Robustness via Promoting Ensemble Diversity](https://arxiv.org/pdf/1901.08846.pdf) (pang et al. 2019)
+  - Transferability in Machine Learning: from Phenomena to Black-Box Attacks using Adversarial Samples ([papernot, mcdaniel, & goodfellow, 2016](https://arxiv.org/abs/1605.07277))
+  - Ensemble Adversarial Training: Attacks and Defenses ([tramer et al. 2018](https://arxiv.org/pdf/1705.07204.pdf))
+  - Improving Adversarial Robustness via Promoting Ensemble Diversity ([pang et al. 2019](https://arxiv.org/pdf/1901.08846.pdf))
     - encourage diversity in non-maximal predictions
 - robustness
   - smoothness yields robustness (but can be robust without smoothness)

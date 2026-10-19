@@ -238,7 +238,7 @@ typora-copy-images-to: ../assets
 
 
 
-# [foundations of rule learning](https://dl.acm.org/citation.cfm?id=2788240) (furnkranz et al. 2014)
+# foundations of rule learning ([furnkranz et al. 2014](https://dl.acm.org/citation.cfm?id=2788240))
 
 - terminology - rule has a condition (conjunctive of binary features) + a conclusion = implication
   - rule has 2 parts
@@ -255,7 +255,7 @@ typora-copy-images-to: ../assets
 ## categorization of tasks (ch 1)
 
 - historically, a lot of this was developed in the data mining community and gave rise to packages such as WEKA, RAPID-I, KNIME, ORANGE
-  - historical algos: AQ2 (michalski, 1969), PRISM (cendrowska, 1987), CN2 (Clar & nibett, 1989), FOIL (quinlan, 1990), RIPPER (cohen 1995), PROGOL (muggleton, 1995), [ALEPH](http://www.comlab.ox.ac.uk/oucl/research/areas/machlearn/Aleph/aleph.pl) (srinivasan, 1999) - entire rule workbench in one prolog file, OPUS (webb, 1955), CBA (lui et al. 1998)
+  - historical algos: AQ2 (michalski, 1969), PRISM (cendrowska, 1987), CN2 (Clar & nibett, 1989), FOIL (quinlan, 1990), RIPPER (cohen 1995), PROGOL (muggleton, 1995), ALEPH ([srinivasan, 1999](http://www.comlab.ox.ac.uk/oucl/research/areas/machlearn/Aleph/aleph.pl)) - entire rule workbench in one prolog file, OPUS (webb, 1955), CBA (lui et al. 1998)
 - predictive rules
   - **propositional learning** (just propositional logic) v **relational learning** (first-order logic) = relational data mining = inductive logic programming
   - **concept learning** - binary classification task

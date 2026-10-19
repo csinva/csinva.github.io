@@ -85,28 +85,28 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
 
 ## vaes for interpretation
 
-- [icam](https://proceedings.neurips.cc/paper/2020/file/56f9f88906aebf4ad985aaec7fa01313-Paper.pdf) (bass et al. 2020) - learn disentangled repr using vae with adv loss to make repr class-relevant
-  - [va-gan](https://openaccess.thecvf.com/content_cvpr_2018/html/Baumgartner_Visual_Feature_Attribution_CVPR_2018_paper.html) (baumgartner et al. 2018) - interpret features in GAN space
+- icam ([bass et al. 2020](https://proceedings.neurips.cc/paper/2020/file/56f9f88906aebf4ad985aaec7fa01313-Paper.pdf)) - learn disentangled repr using vae with adv loss to make repr class-relevant
+  - va-gan ([baumgartner et al. 2018](https://openaccess.thecvf.com/content_cvpr_2018/html/Baumgartner_Visual_Feature_Attribution_CVPR_2018_paper.html)) - interpret features in GAN space
 
 ## various vaes
 
-- [vae](https://arxiv.org/abs/1312.6114) (kingma & welling, 2013)
-- [beta-vae](https://openreview.net/references/pdf?id=Sy2fzU9gl) (higgins et al. 2017) - add hyperparameter $\beta$ to weight the compactness prior term
-- [beta-vae H](https://arxiv.org/pdf/1804.03599.pdf) (burgess et al. 2018) - add parameter $C$ to control the contribution of the compactness prior term
+- vae ([kingma & welling, 2013](https://arxiv.org/abs/1312.6114))
+- beta-vae ([higgins et al. 2017](https://openreview.net/references/pdf?id=Sy2fzU9gl)) - add hyperparameter $\beta$ to weight the compactness prior term
+- beta-vae H ([burgess et al. 2018](https://arxiv.org/pdf/1804.03599.pdf)) - add parameter $C$ to control the contribution of the compactness prior term
   - $\overbrace{\mathbb  E_{p_\phi(\mathbf z\vert \mathbf x)}}^{\text{samples}} [ \underbrace{-\log q_{\mathbf \theta} ( \mathbf x\vert \mathbf z)}_{\text{reconstruction loss}} ]      		+ \textcolor{teal}{\beta}\; \vert\sum_i \underbrace{\text{KL} \left(p_\phi( \mathbf z_i\vert \mathbf x)\:\vert\vert\:prior(\mathbf z_i) \right)}_{\text{compactness prior loss}} -C\vert$
   -  C is gradually increased from zero (allowing for a larger compactness prior loss) until good quality reconstruction is achieved
-- [factor-vae](https://arxiv.org/abs/1802.05983) (kim & minh 2018) - adds total correlation loss term
+- factor-vae ([kim & minh 2018](https://arxiv.org/abs/1802.05983)) - adds total correlation loss term
   - computes *total correlation loss term* using discriminator (can we discriminate between the samples when we shuffle over the batch dimension or not?)
-  - [beta-TC-VAE = beta-total-correlation VAE](https://arxiv.org/abs/1802.04942) (chen et al. 2018) - same objective but computed without need for discriminator
+  - beta-TC-VAE = beta-total-correlation VAE ([chen et al. 2018](https://arxiv.org/abs/1802.04942)) - same objective but computed without need for discriminator
     - use minibatch-weighted sampling to compute each of the 3 terms that make up the original VAE *compactness prior loss*
     - main idea is to better approximate $q(z)$ by weighting samples appropriately - biased, but easier to compute
   - [Interpretable VAEs for nonlinear group factor analysis](https://arxiv.org/abs/1802.06765)
-- [Wasserstein Auto-Encoders](https://arxiv.org/pdf/1711.01558.pdf) (tolstikhin et al.) - removes the mutual info part of the loss
+- Wasserstein Auto-Encoders ([tolstikhin et al.](https://arxiv.org/pdf/1711.01558.pdf)) - removes the mutual info part of the loss
   - wasserstein distance = earth-movers distance, how far apart are 2 distrs
   - minimizes wasserstein distance + penalty which is similar to auto-encoding penalty,  without the mutual info term
   - another intuition: rather than map each point to a ball (since VAE adds noise to each latent repr), we only constraint the overall distr of Z, potentially making reconstructions less blurry (but potentially making latent space less smooth)
   - ![wae](../assets/wae.png)
-- [Adversarial Latent Autoencoder](https://arxiv.org/pdf/2004.04467.pdf) (pidhorskyi et al. 2020)
+- Adversarial Latent Autoencoder ([pidhorskyi et al. 2020](https://arxiv.org/pdf/2004.04467.pdf))
   - improve quality of generated VAE reconstructions by using a different setup which allows for using a GAN loss
   - ![alae](../assets/alae.png)
 - [Variational Autoencoders Pursue PCA Directions (by Accident)](https://arxiv.org/pdf/1812.06775.pdf)
@@ -114,7 +114,7 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
   - prior $p(z)$ is standard normal, so encoder is assumed to be Gaussian with a certain mean, and **diagonal covariance**
   - disentanglement is sensitive to rotations of the latent embeddings but reconstruction err doesn't care
   - for linear autoencoder w/ square-error as reconstruction loss, we recover PCA decomp
-- [Disentangling Disentanglement in Variational Autoencoders](https://arxiv.org/pdf/1812.02833.pdf) (2019)
+- Disentangling Disentanglement in Variational Autoencoders ([2019](https://arxiv.org/pdf/1812.02833.pdf))
   - independence can be too simplistic, instead 2 things:
     - the latent encodings of data having an appropriate level of overlap
       - keeps encodings from just being a lookup table
@@ -124,7 +124,7 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
   - nonisotropic priors -  isotropic priors are only good up to rotation in the latent space
     - by chossing a nonisotropic prior (e.g. nonisotropic gaussian), can learn certain directions more easily
   - sparse prior - can help do clustering
-- [VAE-SNE: a deep generative model for simultaneous dimensionality reduction and clustering](https://www.biorxiv.org/content/10.1101/2020.07.17.207993v1.full.pdf) (graving & couzin 2020) - reduce dims + cluster without specifying number of clusters
+- VAE-SNE: a deep generative model for simultaneous dimensionality reduction and clustering ([graving & couzin 2020](https://www.biorxiv.org/content/10.1101/2020.07.17.207993v1.full.pdf)) - reduce dims + cluster without specifying number of clusters
   - ![Screen Shot 2020-09-10 at 11.40.10 PM](../assets/sne_eq.png)
   - **stochastic neighbor regularizer** that optimizes pairwise similarity kernels between original and latent distrs. to strengthen local neighborhood preservation
     - can use different neighbor kernels, e.g. t-SNE similarity (van der Maaten & Hinton, 2008) or Gaussian SNE kernel (Hinton & Roweis, 2003)
@@ -142,7 +142,7 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
     - convolutional VAE-SNE - extract features from images using some pre-trained net and then run VAE-SNE on these features
   - background: earlier works also used SNE objective for regularization - starts with van der Maaten 2009 (parametric t-SNE)
   - future work: density-preserving versions of t-SNE, modeling hierarchical structure in vae, conditional t-SNE kernel
-- [A Survey of Inductive Biases for Factorial Representation-Learning](https://arxiv.org/abs/1612.05299) (ridgeway 2016)
+- A Survey of Inductive Biases for Factorial Representation-Learning ([ridgeway 2016](https://arxiv.org/abs/1612.05299))
   - desiderata
     - **compact**
     - **faithful** - preserve info required for task
@@ -185,20 +185,20 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
 ## model-based (disentangle during training)
 
 - disentangling architectures
-    - [InfoGAN: Interpretable Representation Learning by Information Maximizing Generative Adversarial Nets](https://arxiv.org/abs/1606.03657) (chen et al. 2016)
+    - InfoGAN: Interpretable Representation Learning by Information Maximizing Generative Adversarial Nets ([chen et al. 2016](https://arxiv.org/abs/1606.03657))
       - encourages $I(x; c)$ to be high for a subset of the latent variables $z$
         - slightly different than vae - defined under the distribution $p(c) p(x\vert c)$ whereas vae uses $p_{data}(x)enc(z\vert x)$
       - mutual info is intractable so optimizes a lower bound
-    - [Stylegan](https://arxiv.org/abs/1812.04948) (karras et al. 2018)
+    - Stylegan ([karras et al. 2018](https://arxiv.org/abs/1812.04948))
       - introduced perceptual path length and linear separability to measure the disentanglement property of latent space
       - ![stylegan](../assets/stylegan.png)
-      - [Stylegan2](https://arxiv.org/abs/1912.04958) (karras et al. 2019): ![stylegan2](../assets/stylegan2.png)
+      - Stylegan2 ([karras et al. 2019](https://arxiv.org/abs/1912.04958)): ![stylegan2](../assets/stylegan2.png)
         - $\psi$ scales the deviation of *w* from the average - $\psi=1$ is original, moving towards 0 improves quality but reduces variety
         - also has jacobian penalty on mapping from style space $w$ to output image $y$
 - [DNA-GAN: Learning Disentangled Representations from Multi-Attribute Images](https://arxiv.org/abs/1711.05415)
 - [Clustering by Directly Disentangling Latent Space](https://arxiv.org/abs/1911.05210) - clustering in the latent space of a gan
 - [Semi-Supervised StyleGAN for Disentanglement Learning](https://arxiv.org/abs/2003.03461) - further improvements on StyleGAN using labels in the training data
-- [The Hessian Penalty: A Weak Prior for Unsupervised Disentanglement](https://arxiv.org/abs/2008.10599) (peebles et al. 2020)
+- The Hessian Penalty: A Weak Prior for Unsupervised Disentanglement ([peebles et al. 2020](https://arxiv.org/abs/2008.10599))
     - if we perturb a single component of a network’s input, then we would like the change in the output to be independent of the other input components
     - minimize off-diagonal entries of Hessian matrix (can be obtained with finite differences)
         - smoother + more disentangled + shrinkage in latent space
@@ -209,37 +209,37 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
 ## post-hoc (disentangle after training)
 
 - mapping latent space
-  - [InterFaceGAN: Interpreting the Disentangled Face Representation Learned by GANs](https://arxiv.org/pdf/2005.09635.pdf) (shen et al. 2020)
-  - [Interpreting the Latent Space of GANs for Semantic Face Editing](https://arxiv.org/abs/1907.10786) (shen et al. 2020)
+  - InterFaceGAN: Interpreting the Disentangled Face Representation Learned by GANs ([shen et al. 2020](https://arxiv.org/pdf/2005.09635.pdf))
+  - Interpreting the Latent Space of GANs for Semantic Face Editing ([shen et al. 2020](https://arxiv.org/abs/1907.10786))
     - find latent directions for each binary attribute, as directions which separate the classes using linear svm
       - validation accuracies in tab 1 are high...much higher for all data (because they have high confidence level on attribute scores maybe) - for PGGAN but not StyleGAN
     - intro of this paper gives good survey of how people have studied GAN latent space
     - few papers posthoc analyze learned latent repr.
-  - [On the "steerability" of generative adversarial networks](https://arxiv.org/abs/1907.07171) (jahanian et al. 2020)
+  - On the "steerability" of generative adversarial networks ([jahanian et al. 2020](https://arxiv.org/abs/1907.07171))
     - learn to approximate edits to images, such as zooms
       - linear walk is as effective as more complex non-linear walks for learning this
       - nonlinear setting - learn a neural network which applies a small perturbation in a specific direction (e.g. zooming)
         - to move further in this space, repeatedly apply the function
-  - [A Disentangling Invertible Interpretation Network for Explaining Latent Representations](https://arxiv.org/abs/2004.13166) (esser et al. 2020) - map latent space to interpretable space, with invertible neural network
+  - A Disentangling Invertible Interpretation Network for Explaining Latent Representations ([esser et al. 2020](https://arxiv.org/abs/2004.13166)) - map latent space to interpretable space, with invertible neural network
       - interpretable space factorizes, so is disentangled
       - individual concepts (e.g. color) can use multiple interpretable latent dims
       - instead of user-supplied interpretable concepts, user supplies two sketches which demonstrate a change in a concept - these sketches are used w/ style transfer to create data points which describe the concept
       - alternatively, with no user-supplied concepts, try to get independent components in unsupervised way
-  - [Disentangling in Latent Space by Harnessing a Pretrained Generator](https://arxiv.org/abs/2005.07728) (nitzan et al. 2020)
+  - Disentangling in Latent Space by Harnessing a Pretrained Generator ([nitzan et al. 2020](https://arxiv.org/abs/2005.07728))
       - learn to map attributes onto latent space of stylegan
       - works using two images at a time and 2 encoders
         - for each image, predict attributes + identity, then mix the attributes
       - results look realy good, but can't vary one attribute at a time (have to transfer all attributes from the new image)
-  - [ELEGANT: Exchanging Latent Encodings with GAN for Transferring Multiple Face Attributes](http://openaccess.thecvf.com/content_ECCV_2018/papers/Taihong_Xiao_ELEGANT_Exchanging_Latent_ECCV_2018_paper.pdf) (xiao et al. 2018)
+  - ELEGANT: Exchanging Latent Encodings with GAN for Transferring Multiple Face Attributes ([xiao et al. 2018](http://openaccess.thecvf.com/content_ECCV_2018/papers/Taihong_Xiao_ELEGANT_Exchanging_Latent_ECCV_2018_paper.pdf))
       - trains 2 images at a time - swap an attribute that differs between the images and reconstruct images that have the transferred attribute
 - bias
-  - [Towards causal benchmarking of bias in computer vision algorithms](https://www.overleaf.com/project/5e6aa80234ed3e0001b9ac23) (balakrishnan et al. 2020) - use human annotations to disentangle latent space
+  - Towards causal benchmarking of bias in computer vision algorithms ([balakrishnan et al. 2020](https://www.overleaf.com/project/5e6aa80234ed3e0001b9ac23)) - use human annotations to disentangle latent space
     - synthesis approach can alter multiple attributes at a time to produce grid-like matched samples of images we call *transects*
     - find directions + orthogonalize same as shen et al. 2020
-  - [Detecting Bias with Generative Counterfactual Face Attribute Augmentation](https://arxiv.org/abs/1906.06439) (denton et al. 2019) - identify latent dims by training a classifier in the latent space on groundtruth attributes of the training images
-  - [Explaining Classifiers with Causal Concept Effect (CaCE)](https://arxiv.org/abs/1907.07165) (goyal et al. 2020) - use vae to disentangle / alter concepts to probe classifier
+  - Detecting Bias with Generative Counterfactual Face Attribute Augmentation ([denton et al. 2019](https://arxiv.org/abs/1906.06439)) - identify latent dims by training a classifier in the latent space on groundtruth attributes of the training images
+  - Explaining Classifiers with Causal Concept Effect (CaCE) ([goyal et al. 2020](https://arxiv.org/abs/1907.07165)) - use vae to disentangle / alter concepts to probe classifier
 - post-hoc
-    - [Explanation by Progressive Exaggeration](https://arxiv.org/abs/1911.00483) (singla et al. 2019)
+    - Explanation by Progressive Exaggeration ([singla et al. 2019](https://arxiv.org/abs/1911.00483))
       - progressively change image to negate the prediction, keeping most features fixed
         - want to learn mapping $I(x, \delta)$ which produces realistic image that changes features by $\delta$
       - 3 losses: **data consistency** (perturbed samples should look real), **prediction changes** (perturbed samples should appropriately alter prediction), **self-consistency** (applying reverse perturbatino should bring x back to original, and $\delta=0$ should return identity)
@@ -247,21 +247,21 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
       - minor
         - used human experiments
         - limited to binary classification
-    - [Interpreting Deep Visual Representations via Network Dissection](https://arxiv.org/abs/1711.05611) (zhou et al. 2017)
+    - Interpreting Deep Visual Representations via Network Dissection ([zhou et al. 2017](https://arxiv.org/abs/1711.05611))
     
       - obtain image attributes for each z (using classifier, not human labels)
         - this classifier may put bias back in
     
       - to find directions representing an attribute, train a linear model to predict it from z
-    - [GAN Dissection: Visualizing and Understanding Generative Adversarial Networks](https://arxiv.org/abs/1811.10597) (bau et al. 2018) - identify group of interpretable units based on segmentation of training images
+    - GAN Dissection: Visualizing and Understanding Generative Adversarial Networks ([bau et al. 2018](https://arxiv.org/abs/1811.10597)) - identify group of interpretable units based on segmentation of training images
       - find directions which allow for altering the attributes
     - [GANSpace: Discovering Interpretable GAN Controls](https://arxiv.org/abs/2004.02546) - use PCA in the latent space (w for styleGAN, activation-space at a specific layer for BigGAN) to select directions
-    - [Editing in Style: Uncovering the Local Semantics of GANs](https://arxiv.org/abs/2004.14367) (collins et al. 2020) - use k-means on gan activations to find meaningful clusters (with quick human annotation)
+    - Editing in Style: Uncovering the Local Semantics of GANs ([collins et al. 2020](https://arxiv.org/abs/2004.14367)) - use k-means on gan activations to find meaningful clusters (with quick human annotation)
       - add style transfer using target/source image
     - [Unsupervised Discovery of Interpretable Directions in the GAN Latent Space](https://arxiv.org/abs/2002.03754) - loss function which tries to recover random shifts made to the latent space
 
 # misc
-- [Learning Diverse and Discriminative Representations via the Principle of Maximal Coding Rate Reduction](https://arxiv.org/abs/2006.08558) (yu, ..., & ma, 2020)
+- Learning Diverse and Discriminative Representations via the Principle of Maximal Coding Rate Reduction ([yu, ..., & ma, 2020](https://arxiv.org/abs/2006.08558))
   - goal: learn low-dimensional structure from high-dim (labeled or unlabeled) data
   - approach: instead of cross-entropy loss, use **maximal coding rate reduction** = MCR loss function to learn linear feature space where:
     - *inter-class discriminative* - features of samples from different classes/clusters are uncorrelated + different low-dim linear subspaces
@@ -294,7 +294,7 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
 
 # evaluating disentanglement
 
-- [Challenging Common Assumptions in the Unsupervised Learning of Disentangled Representations](http://proceedings.mlr.press/v97/locatello19a/locatello19a.pdf) (locatello et al. 2019)
+- Challenging Common Assumptions in the Unsupervised Learning of Disentangled Representations ([locatello et al. 2019](http://proceedings.mlr.press/v97/locatello19a/locatello19a.pdf))
   - state of disentanglement is very poor...depends a lot on architecture/hyperparameters
   - good way to evaluate: make explicit inductive biases, investigate benefits of this disentanglement
   - defining disentanglement - compact, interpretable, independent, helpful for downstream tasks, causal inference
@@ -309,7 +309,7 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
   - create a dataset comprised of pairs of generated data for which a single factor is held constant (e.g. a pair of images which have objects with the same color).
   - use the inference network to map each pair of images to a pair of latent variables.
   - train a linear classifier to predict which interpretable factor was held constant based on the latent representations. The accuracy of this predictor is the disentanglement metric score.
-- [Evaluating Disentangled Representations](https://arxiv.org/abs/1910.05587) (sepliarskaia et al. 2019)
+- Evaluating Disentangled Representations ([sepliarskaia et al. 2019](https://arxiv.org/abs/1910.05587))
   - defn 1  (Higgins et al., 2017; Kim and Mnih, 2018; Eastwood and Williams, 2018) = **factorVAE metric**: A disentangled representation is a representation where a change in one latent dimension corresponds to a change in one generative factor while being relatively invariant to changes in other generative factors.
   - defn 2 (Locatello et al., 2018; Kumar et al., 2017): A disentangled representation is a representation where a change in a single generative factor leads to a change in a single factor in the learned representation.
   - metrics
@@ -320,7 +320,7 @@ def loss_function(x_reconstructed, x, mu, logvar, beta=1):
 
 # non-deep methods
 
-- [unifying vae and nonlinear ica](https://arxiv.org/pdf/1907.04809.pdf) (khemakhem et al. 2020)
+- unifying vae and nonlinear ica ([khemakhem et al. 2020](https://arxiv.org/pdf/1907.04809.pdf))
 	- ICA
 	  - maximize non-gaussianity of $z$ - use kurtosis, negentropy
 	  - minimize mutual info between components of $z$ - use KL, max entropyd
